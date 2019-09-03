@@ -41,6 +41,7 @@
     <import index="jmi8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util(MPS.IDEA/)" />
     <import index="o8e1" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.merge(MPS.IDEA/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -7759,6 +7760,64 @@
                             </node>
                             <node concept="liA8E" id="1KUoCiqb73T" role="2OqNvi">
                               <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="1e1T1BEFPQz" role="3cqZAp">
+                        <node concept="1PaTwC" id="1e1T1BEFPQ$" role="3ndbpf">
+                          <node concept="3oM_SD" id="1e1T1BEFPQA" role="1PaTwD">
+                            <property role="3oM_SC" value="hack" />
+                          </node>
+                          <node concept="3oM_SD" id="1e1T1BEFQ0H" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="1e1T1BEFQ0K" role="1PaTwD">
+                            <property role="3oM_SC" value="fix" />
+                          </node>
+                          <node concept="3oM_SD" id="1e1T1BEFQcd" role="1PaTwD">
+                            <property role="3oM_SC" value="language" />
+                          </node>
+                          <node concept="3oM_SD" id="1e1T1BEFQh9" role="1PaTwD">
+                            <property role="3oM_SC" value="versions" />
+                          </node>
+                          <node concept="3oM_SD" id="1e1T1BEFQyr" role="1PaTwD">
+                            <property role="3oM_SC" value="in" />
+                          </node>
+                          <node concept="3oM_SD" id="1e1T1BEFQzu" role="1PaTwD">
+                            <property role="3oM_SC" value="merged" />
+                          </node>
+                          <node concept="3oM_SD" id="1e1T1BEFQG0" role="1PaTwD">
+                            <property role="3oM_SC" value="models" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbF" id="1e1T1BEzEzk" role="3cqZAp">
+                        <node concept="2YIFZM" id="1e1T1BEzFbh" role="3clFbG">
+                          <ref role="37wK5l" to="p37l:1e1T1BEyzs0" resolve="fixLanguageImportVersionsAfterMerge" />
+                          <ref role="1Pybhc" to="p37l:444ZSQ06W$a" resolve="MetadataUtil" />
+                          <node concept="2OqwBi" id="1e1T1BEzH4w" role="37wK5m">
+                            <node concept="37vLTw" id="1e1T1BEzG2a" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                            </node>
+                            <node concept="liA8E" id="1e1T1BEzHEZ" role="2OqNvi">
+                              <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="1e1T1BEzKw1" role="37wK5m">
+                            <node concept="37vLTw" id="1e1T1BEzJtO" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                            </node>
+                            <node concept="liA8E" id="1e1T1BEzLoR" role="2OqNvi">
+                              <ref role="37wK5l" to="bmv6:3$YpntjF4sH" resolve="getMyModel" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="1e1T1BECHn0" role="37wK5m">
+                            <node concept="37vLTw" id="1e1T1BECHn1" role="2Oq$k0">
+                              <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                            </node>
+                            <node concept="liA8E" id="1e1T1BECHn2" role="2OqNvi">
+                              <ref role="37wK5l" to="bmv6:3$YpntjF4sP" resolve="getRepositoryModel" />
                             </node>
                           </node>
                         </node>

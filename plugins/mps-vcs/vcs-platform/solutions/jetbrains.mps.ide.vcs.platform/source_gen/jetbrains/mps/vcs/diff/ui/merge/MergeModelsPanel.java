@@ -346,6 +346,8 @@ public class MergeModelsPanel extends JPanel {
       public void run() {
         if (myMetadataMergeSession != null) {
           MetadataUtil.applyMetadataChanges(myMergeSession.getResultModel(), myMetadataMergeSession.getResultModel());
+          // hack to fix language versions in merged models 
+          MetadataUtil.fixLanguageImportVersionsAfterMerge(myMergeSession.getResultModel(), myMergeSession.getMyModel(), myMergeSession.getRepositoryModel());
         }
       }
     });

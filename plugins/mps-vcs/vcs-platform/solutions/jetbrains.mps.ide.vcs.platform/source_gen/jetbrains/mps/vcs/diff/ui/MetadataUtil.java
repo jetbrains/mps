@@ -23,8 +23,11 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -91,7 +94,6 @@ public class MetadataUtil {
     // (although the right way is to extract part of smodel language related to metadata handling, like LanguageIdentity 
     // into separate language and re-use it here). 
     SPropertyOperations.assign(rv, PROPS.value$M$5V, langIdentity);
-    SPropertyOperations.assign(rv, PROPS.version$jslc, version);
     return rv;
   }
 
@@ -138,20 +140,22 @@ public class MetadataUtil {
     }
 
     Set<SLanguage> oldImpLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), modelBase.importedLanguageIds());
-    Set<SLanguage> impLang = SetSequence.fromSet(new LinkedHashSet<SLanguage>());
-    for (SNode langNode : ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$8rUz))) {
-      SLanguage lang = getLanguage(langNode);
-      SetSequence.fromSet(impLang).addElement(lang);
-      if (!((SetSequence.fromSet(oldImpLang).contains(lang)))) {
-        modelBase.addLanguage(lang);
+    Set<SLanguage> impLang = SetSequence.fromSetWithValues(new LinkedHashSet<SLanguage>(), ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.language$8rUz)).select(new ISelector<SNode, SLanguage>() {
+      public SLanguage select(SNode it) {
+        return getLanguage(it);
       }
-      if (modelBase.getLanguageImportVersion(lang) != SPropertyOperations.getInteger(langNode, PROPS.version$jslc)) {
-        modelBase.setLanguageImportVersion(lang, SPropertyOperations.getInteger(langNode, PROPS.version$jslc));
-      }
-    }
+    }));
     SetSequence.fromSet(oldImpLang).subtract(SetSequence.fromSet(impLang)).visitAll(new IVisitor<SLanguage>() {
       public void visit(SLanguage it) {
         modelBase.deleteLanguageId(it);
+      }
+    });
+    SetSequence.fromSet(impLang).subtract(SetSequence.fromSet(oldImpLang)).visitAll(new IVisitor<SLanguage>() {
+      public void visit(SLanguage it) {
+        modelBase.addLanguage(it);
+        // Each time after add language we should call: 
+        // but now we don't know what version to take. 
+        // It is hacked for Merge in fixLanguageImportVersionsAfterMerge() but not for Diff. 
       }
     });
 
@@ -208,6 +212,29 @@ public class MetadataUtil {
 
     ((EditableSModel) metadataModel).setChanged(false);
   }
+
+  public static void fixLanguageImportVersionsAfterMerge(SModel resultModel, SModel model1, SModel model2) {
+    // set common language version if both merged models have the same version 
+    SModelBase resultModelBase = (SModelBase) resultModel;
+    SModelBase modelBase1 = (SModelBase) model1;
+    SModelBase modelBase2 = (SModelBase) model2;
+    Map<SLanguage, Integer> langVersion1 = MapSequence.fromMap(new HashMap<SLanguage, Integer>());
+    Map<SLanguage, Integer> langVersion2 = MapSequence.fromMap(new HashMap<SLanguage, Integer>());
+    for (SLanguage lang : CollectionSequence.fromCollection(modelBase1.importedLanguageIds())) {
+      MapSequence.fromMap(langVersion1).put(lang, modelBase1.getLanguageImportVersion(lang));
+    }
+    for (SLanguage lang : CollectionSequence.fromCollection(modelBase2.importedLanguageIds())) {
+      MapSequence.fromMap(langVersion2).put(lang, modelBase2.getLanguageImportVersion(lang));
+    }
+    for (SLanguage lang : CollectionSequence.fromCollection(resultModelBase.importedLanguageIds())) {
+      if (MapSequence.fromMap(langVersion1).containsKey(lang) && MapSequence.fromMap(langVersion2).containsKey(lang)) {
+        if ((int) MapSequence.fromMap(langVersion1).get(lang) == (int) MapSequence.fromMap(langVersion2).get(lang)) {
+          resultModelBase.setLanguageImportVersion(lang, MapSequence.fromMap(langVersion1).get(lang));
+        }
+      } else {
+      }
+    }
+  }
   private static boolean check_ca1g54_a0a0e0i(GeneratableSModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.isDoNotGenerate();
@@ -227,7 +254,6 @@ public class MetadataUtil {
     /*package*/ static final SProperty donotgenerate$pfHD = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x7439be589a4e116dL, 0x7439be589a4e11f4L, "donotgenerate");
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty value$M$5V = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, 0x660570953ee5dadfL, "value");
-    /*package*/ static final SProperty version$jslc = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, 0x3a0603c78a570dceL, "version");
     /*package*/ static final SProperty stringValue$RDoF = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L, 0x39c8ca3b79aaafe2L, "stringValue");
     /*package*/ static final SProperty stringValue$RDd0 = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafdeL, 0x39c8ca3b79aaafdfL, "stringValue");
   }

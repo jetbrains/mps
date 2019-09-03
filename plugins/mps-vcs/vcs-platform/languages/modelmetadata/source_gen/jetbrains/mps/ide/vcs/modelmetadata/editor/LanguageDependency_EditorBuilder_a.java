@@ -23,10 +23,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.editor.runtime.style.StyleImpl;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -55,10 +51,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createProperty_0());
-    editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createConstant_1());
-    editorCell.addEditorCell(createConstant_2());
-    editorCell.addEditorCell(createProperty_1());
     return editorCell;
   }
   private EditorCell createProperty_0() {
@@ -86,59 +78,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
-  private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ",");
-    editorCell.setCellId("Constant_5is5ro_b0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "version");
-    editorCell.setCellId("Constant_5is5ro_c0");
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":");
-    editorCell.setCellId("Constant_5is5ro_d0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createProperty_1() {
-    getCellFactory().pushCellContext();
-    try {
-      final SProperty property = PROPS.version$jslc;
-      getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
-      EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
-      editorCell.setDefaultText("<no version>");
-      editorCell.setCellId("property_version");
-      editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
-      setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
-      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
-        }
-      });
-      if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
-        EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
-        return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
-      } else
-      return editorCell;
-    } finally {
-      getCellFactory().popCellContext();
-    }
-  }
 
   private static final class PROPS {
     /*package*/ static final SProperty value$M$5V = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, 0x660570953ee5dadfL, "value");
-    /*package*/ static final SProperty version$jslc = MetaAdapterFactory.getProperty(0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L, 0x3a0603c78a570dceL, "version");
   }
 
   private static final class CONCEPTS {

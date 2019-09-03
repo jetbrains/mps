@@ -121,11 +121,6 @@
       <property role="TrG5h" value="value" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
-    <node concept="1TJgyi" id="3C60WualKRe" role="1TKVEl">
-      <property role="IQ2nx" value="4181033459614420430" />
-      <property role="TrG5h" value="version" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
   </node>
 </model>
 
