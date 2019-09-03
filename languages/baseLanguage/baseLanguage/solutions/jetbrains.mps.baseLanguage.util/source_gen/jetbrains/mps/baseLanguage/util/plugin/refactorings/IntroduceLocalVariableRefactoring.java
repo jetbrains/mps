@@ -70,7 +70,11 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
   @Override
   public void replaceNode(SNode node, SNode declaration) {
     SNode reference = ((SNode) BHReflection.invoke0(declaration, CONCEPTS.VariableDeclaration$xe, SMethodTrimmedId.create("createReference", null, "hEwJfME")));
-    SNodeOperations.replaceWithAnother(node, reference);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ParenthesizedExpression$vE)) {
+      SNodeOperations.replaceWithAnother(SNodeOperations.getParent(node), reference);
+    } else {
+      SNodeOperations.replaceWithAnother(node, reference);
+    }
     this.moveDeclarationIfNeed(reference, SNodeOperations.getParent(declaration));
   }
   private void moveDeclarationIfNeed(SNode node, SNode declaration) {
@@ -137,6 +141,7 @@ public class IntroduceLocalVariableRefactoring extends IntroduceVariableRefactor
     /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
     /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
     /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
     /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }
