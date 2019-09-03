@@ -52,6 +52,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import java.util.Collection;
 import com.intellij.util.ui.update.Update;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
+import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
 import com.intellij.diff.util.IntPair;
 import com.intellij.diff.contents.DiffContent;
@@ -228,7 +229,15 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       }
       myIsDuringUpdate = true;
 
+      final List<VcsFileRevision> oldSelection = myList.getSelectedObjects();
       myListModel.setItems(myHistoryExtractor.revisions());
+      if (oldSelection.isEmpty()) {
+        if (myListModel.getRowCount() > 0) {
+          myList.setSelection(Collections.singleton(myListModel.getItem(0)));
+        }
+      } else {
+        myList.setSelection(oldSelection);
+      }
 
     } finally {
       myIsDuringUpdate = false;

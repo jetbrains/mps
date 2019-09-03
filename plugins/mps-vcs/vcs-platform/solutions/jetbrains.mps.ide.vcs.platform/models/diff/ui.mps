@@ -242,6 +242,7 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
+      <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
       <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
@@ -13812,6 +13813,26 @@
               </node>
             </node>
             <node concept="3clFbH" id="gkhJ4Lk5j6" role="3cqZAp" />
+            <node concept="3cpWs8" id="yU1vU0dQV2" role="3cqZAp">
+              <node concept="3cpWsn" id="yU1vU0dQV1" role="3cpWs9">
+                <property role="3TUv4t" value="true" />
+                <property role="TrG5h" value="oldSelection" />
+                <node concept="3uibUv" id="yU1vU0dQV3" role="1tU5fm">
+                  <ref role="3uigEE" to="33ny:~List" resolve="List" />
+                  <node concept="3uibUv" id="yU1vU0dQV4" role="11_B2D">
+                    <ref role="3uigEE" to="yah0:~VcsFileRevision" resolve="VcsFileRevision" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="yU1vU0dRON" role="33vP2m">
+                  <node concept="37vLTw" id="yU1vU0dROM" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2cnBllv6gwG" resolve="myList" />
+                  </node>
+                  <node concept="liA8E" id="yU1vU0dROO" role="2OqNvi">
+                    <ref role="37wK5l" to="3pb2:~TableView.getSelectedObjects()" resolve="getSelectedObjects" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="gkhJ4LjOLS" role="3cqZAp">
               <node concept="2OqwBi" id="gkhJ4LjPE_" role="3clFbG">
                 <node concept="37vLTw" id="gkhJ4LjOLR" role="2Oq$k0">
@@ -13825,6 +13846,77 @@
                     </node>
                     <node concept="liA8E" id="gkhJ4LmRE_" role="2OqNvi">
                       <ref role="37wK5l" node="gkhJ4Llh5b" resolve="revisions" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="yU1vU0dXmx" role="3cqZAp">
+              <node concept="3clFbS" id="yU1vU0dXmz" role="3clFbx">
+                <node concept="3clFbJ" id="yU1vU0ehEf" role="3cqZAp">
+                  <node concept="3clFbS" id="yU1vU0ehEh" role="3clFbx">
+                    <node concept="3clFbF" id="yU1vU0e1dE" role="3cqZAp">
+                      <node concept="2OqwBi" id="yU1vU0e238" role="3clFbG">
+                        <node concept="37vLTw" id="yU1vU0e2u4" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2cnBllv6gwG" resolve="myList" />
+                        </node>
+                        <node concept="liA8E" id="yU1vU0e4MH" role="2OqNvi">
+                          <ref role="37wK5l" to="3pb2:~TableView.setSelection(java.util.Collection)" resolve="setSelection" />
+                          <node concept="2YIFZM" id="yU1vU0ex1P" role="37wK5m">
+                            <ref role="37wK5l" to="33ny:~Collections.singleton(java.lang.Object)" resolve="singleton" />
+                            <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                            <node concept="2OqwBi" id="yU1vU0e7EA" role="37wK5m">
+                              <node concept="37vLTw" id="yU1vU0e6CY" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2cnBllv6gwB" resolve="myListModel" />
+                              </node>
+                              <node concept="liA8E" id="yU1vU0epdf" role="2OqNvi">
+                                <ref role="37wK5l" to="g1qu:~ListTableModel.getItem(int)" resolve="getItem" />
+                                <node concept="3cmrfG" id="yU1vU0eqad" role="37wK5m">
+                                  <property role="3cmrfH" value="0" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3eOSWO" id="yU1vU0evlk" role="3clFbw">
+                    <node concept="3cmrfG" id="yU1vU0ev_p" role="3uHU7w">
+                      <property role="3cmrfH" value="0" />
+                    </node>
+                    <node concept="2OqwBi" id="yU1vU0emGB" role="3uHU7B">
+                      <node concept="37vLTw" id="yU1vU0emGC" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2cnBllv6gwB" resolve="myListModel" />
+                      </node>
+                      <node concept="liA8E" id="yU1vU0etaL" role="2OqNvi">
+                        <ref role="37wK5l" to="g1qu:~ListTableModel.getRowCount()" resolve="getRowCount" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="yU1vU0dZeL" role="3clFbw">
+                <node concept="37vLTw" id="yU1vU0dYe5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="yU1vU0dQV1" resolve="oldSelection" />
+                </node>
+                <node concept="liA8E" id="yU1vU0e0kY" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
+                </node>
+              </node>
+              <node concept="9aQIb" id="yU1vU0e9th" role="9aQIa">
+                <node concept="3clFbS" id="yU1vU0e9ti" role="9aQI4">
+                  <node concept="3clFbF" id="yU1vU0e9V0" role="3cqZAp">
+                    <node concept="2OqwBi" id="yU1vU0eb9F" role="3clFbG">
+                      <node concept="37vLTw" id="yU1vU0e9UZ" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2cnBllv6gwG" resolve="myList" />
+                      </node>
+                      <node concept="liA8E" id="yU1vU0ednI" role="2OqNvi">
+                        <ref role="37wK5l" to="3pb2:~TableView.setSelection(java.util.Collection)" resolve="setSelection" />
+                        <node concept="37vLTw" id="yU1vU0egsA" role="37wK5m">
+                          <ref role="3cqZAo" node="yU1vU0dQV1" resolve="oldSelection" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
