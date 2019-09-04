@@ -55,6 +55,7 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="zkib" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.reloading(MPS.Core/)" />
     <import index="ctgy" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.plugins(MPS.IDEA/)" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2171,12 +2172,11 @@
             </node>
             <node concept="liA8E" id="7KPXEkRfHNM" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
-              <node concept="2ShNRf" id="7KPXEkRfHNN" role="37wK5m">
-                <node concept="1pGfFk" id="7KPXEkRfHNO" role="2ShVmc">
-                  <ref role="37wK5l" to="9z78:~TitledBorder.&lt;init&gt;(java.lang.String)" resolve="TitledBorder" />
-                  <node concept="Xl_RD" id="7KPXEkRfHNP" role="37wK5m">
-                    <property role="Xl_RC" value="Generated Files" />
-                  </node>
+              <node concept="2YIFZM" id="3b6xVKVT4r3" role="37wK5m">
+                <ref role="1Pybhc" to="lzb2:~IdeBorderFactory" resolve="IdeBorderFactory" />
+                <ref role="37wK5l" to="lzb2:~IdeBorderFactory.createTitledBorder(java.lang.String)" resolve="createTitledBorder" />
+                <node concept="Xl_RD" id="7KPXEkRfHNP" role="37wK5m">
+                  <property role="Xl_RC" value="Generated Files" />
                 </node>
               </node>
             </node>

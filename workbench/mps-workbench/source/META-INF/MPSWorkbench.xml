@@ -22,8 +22,8 @@
   </application-components>
 
   <extensions defaultExtensionNs="com.intellij">
-    <projectService serviceInterface="jetbrains.mps.ide.make.MakeServiceConfiguration"
-                  serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
+    <mps.projectPrefsPanel implementation="jetbrains.mps.ide.make.MakeSettingsPanel"/>
   </extensions>
 
 </components>

@@ -992,5 +992,42 @@
       <unit id="3361535663822413166" at="15,0,55,0" name="jetbrains.mps.ide.make.MakeServiceConfiguration" />
     </file>
   </root>
+  <root nodeRef="r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/4182099185160006907">
+    <file name="MakeSettingsPanel.java">
+      <node id="2783053129206074262" at="16,0,17,0" concept="5" trace="myMakeConfig" />
+      <node id="2783053129207291590" at="17,0,18,0" concept="5" trace="myMakeInBackground" />
+      <node id="2783053129205139093" at="19,45,20,65" concept="4" />
+      <node id="2783053129205599208" at="24,36,25,29" concept="8" />
+      <node id="2783053129206736499" at="25,29,26,61" concept="4" />
+      <node id="2783053129207044655" at="26,61,27,36" concept="4" />
+      <node id="2783053129207308090" at="27,36,28,65" concept="4" />
+      <node id="2783053129207612546" at="28,65,29,70" concept="4" />
+      <node id="5514400951963262347" at="29,70,30,50" concept="4" />
+      <node id="2783053129206686523" at="30,50,31,13" concept="9" />
+      <node id="4182099185160507711" at="35,31,36,80" concept="9" />
+      <node id="2783053129208318215" at="40,23,41,70" concept="4" />
+      <node id="2783053129208212788" at="45,23,46,70" concept="4" />
+      <node id="4182099185160500769" at="19,0,22,0" concept="2" trace="MakeSettingsPanel#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="4182099185160054244" at="34,0,38,0" concept="7" trace="isModified#()Z" />
+      <node id="4182099185160054252" at="39,0,43,0" concept="7" trace="apply#()V" />
+      <node id="4182099185160054258" at="44,0,48,0" concept="7" trace="reset#()V" />
+      <node id="4182099185160054236" at="23,0,33,0" concept="7" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <scope id="4182099185160500773" at="19,45,20,65" />
+      <scope id="4182099185160054248" at="35,31,36,80" />
+      <scope id="4182099185160054256" at="40,23,41,70" />
+      <scope id="4182099185160054262" at="45,23,46,70" />
+      <scope id="4182099185160500769" at="19,0,22,0">
+        <var name="project" id="2783053129206043191" />
+      </scope>
+      <scope id="4182099185160054244" at="34,0,38,0" />
+      <scope id="4182099185160054252" at="39,0,43,0" />
+      <scope id="4182099185160054258" at="44,0,48,0" />
+      <scope id="4182099185160054240" at="24,36,31,13">
+        <var name="p" id="2783053129205599209" />
+      </scope>
+      <scope id="4182099185160054236" at="23,0,33,0" />
+      <unit id="4182099185160006907" at="15,0,49,0" name="jetbrains.mps.ide.make.MakeSettingsPanel" />
+    </file>
+  </root>
 </debug-info>
 

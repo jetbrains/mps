@@ -28,9 +28,11 @@
     <classNode dependClassName="com.intellij.ui.AnActionButtonRunnable" />
     <classNode dependClassName="com.intellij.ui.IdeBorderFactory" />
     <classNode dependClassName="com.intellij.ui.ToolbarDecorator" />
+    <classNode dependClassName="com.intellij.ui.TreeUIHelper" />
     <classNode dependClassName="com.intellij.ui.components.JBList" />
     <classNode dependClassName="com.intellij.uiDesigner.core.GridConstraints" />
     <classNode dependClassName="com.intellij.uiDesigner.core.GridLayoutManager" />
+    <classNode dependClassName="com.intellij.util.containers.Convertor" />
     <classNode dependClassName="java.awt.Dimension" />
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Object" />
@@ -42,13 +44,9 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="javax.swing.AbstractListModel" />
-    <classNode dependClassName="javax.swing.BoxLayout" />
-    <classNode dependClassName="javax.swing.JCheckBox" />
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode dependClassName="javax.swing.ListSelectionModel" />
-    <classNode dependClassName="javax.swing.border.TitledBorder" />
-    <classNode dependClassName="jetbrains.mps.ide.make.MakeServiceConfiguration" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />

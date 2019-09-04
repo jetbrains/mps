@@ -27,7 +27,7 @@ public final class ProjectPropertiesDialog extends DialogWrapper {
 
   @Override
   public JComponent getPreferredFocusedComponent() {
-    return myPropertiesComponent;
+    return myPropertiesComponent.getPreferredFocusedComponent();
   }
 
   @Override
