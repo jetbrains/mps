@@ -171,24 +171,20 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   }
 
   private boolean tryWrite(final Runnable r) {
-    // XXX why r is not wrapped with myWriteActionDispatcher.wrap?!
-    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, r);
+    final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(r));
 
     // XXX there's only 1 use of the method, and it's from EDT executor, are there any chance not to be in EDT here?
-    if (isInEDT()) {
-      TaskTimer taskTimer = new TaskTimer();
-      taskTimer.start();
-      try {
-        // in fact, there are 2 lock attempts, one to grab IDEA's platform lock (myPlatformWriteHelper.tryWrite),
-        // and another is to grab MPS write lock with lockRunnable
-        myPlatformWriteHelper.tryWrite(lockRunnable);
-      } catch (WriteTimeOutException e) {
-        // XXX why not return false to indicate failed attempt?
-        throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), e);
-      }
-    } else {
-      // unlike myPlatformWriteHelper.tryWrite() above, here we don't care to tryLock IDEA's read, why?
-      ApplicationManager.getApplication().runReadAction(lockRunnable);
+    assert isInEDT();
+    // XXX elapsed time of TaskTimer could be part of WriteTimeOutException!
+    TaskTimer taskTimer = new TaskTimer();
+    taskTimer.start();
+    try {
+      // in fact, there are 2 lock attempts, one to grab IDEA's platform lock (myPlatformWriteHelper.tryWrite),
+      // and another is to grab MPS write lock with lockRunnable
+      myPlatformWriteHelper.tryWrite(lockRunnable);
+    } catch (WriteTimeOutException e) {
+      // XXX why not return false to indicate failed attempt?
+      throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), e);
     }
     return lockRunnable.wasExecuted();
   }
