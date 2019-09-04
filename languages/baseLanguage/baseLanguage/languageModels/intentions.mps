@@ -309,7 +309,7 @@
       </concept>
       <concept id="1240322627579" name="jetbrains.mps.lang.intentions.structure.IntentionParameter" flags="nn" index="38Zlrr" />
       <concept id="1240395258925" name="jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration" flags="ig" index="3dkpOd">
-        <child id="1240395532443" name="queryBlock" index="3dlsAV" />
+        <child id="1240395532443" name="queryFunction" index="3dlsAV" />
       </concept>
       <concept id="1812109616120608865" name="jetbrains.mps.lang.intentions.structure.ParameterizedDescriptionBlock" flags="in" index="1jPt1T" />
       <concept id="1812109616120795373" name="jetbrains.mps.lang.intentions.structure.ParameterizedExecuteBlock" flags="in" index="1jPJzP" />
@@ -17059,7 +17059,7 @@
             <node concept="3clFbJ" id="3kJlys_1LR7" role="3cqZAp">
               <node concept="2OqwBi" id="3kJlys_2hgi" role="3clFbw">
                 <node concept="37vLTw" id="3kJlys_2hcp" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3kJlys_1SEw" />
+                  <ref role="3cqZAo" node="3kJlys_1SEw" resolve="clone" />
                 </node>
                 <node concept="1mIQ4w" id="3kJlys_2hwK" role="2OqNvi">
                   <node concept="chp4Y" id="3kJlys_2hyD" role="cj9EA">
@@ -17078,7 +17078,7 @@
                       </node>
                     </node>
                     <node concept="37vLTw" id="3kJlys_2hAg" role="37vLTJ">
-                      <ref role="3cqZAo" node="3kJlys_21d_" />
+                      <ref role="3cqZAo" node="3kJlys_21d_" resolve="replacement" />
                     </node>
                   </node>
                 </node>
@@ -23241,7 +23241,7 @@
       <node concept="3clFbS" id="45vN3dBmi9v" role="2VODD2">
         <node concept="3clFbF" id="45vN3dBmrJE" role="3cqZAp">
           <node concept="Xl_RD" id="45vN3dBmrJD" role="3clFbG">
-            <property role="Xl_RC" value="Update Comment" />
+            <property role="Xl_RC" value="Update Comment (will remove attributes)" />
           </node>
         </node>
       </node>
@@ -23297,16 +23297,16 @@
                           <node concept="2Sf5sV" id="45vN3dBKuk8" role="2Oq$k0" />
                           <node concept="2qgKlT" id="45vN3dBKA00" role="2OqNvi">
                             <ref role="37wK5l" to="tpek:45vN3dBFprj" resolve="parseAndAddWords" />
-                            <node concept="2OqwBi" id="45vN3dBKEqV" role="37wK5m">
+                            <node concept="2OqwBi" id="3Adf6iPxvsJ" role="37wK5m">
                               <node concept="1PxgMI" id="45vN3dBKEqW" role="2Oq$k0">
                                 <node concept="chp4Y" id="45vN3dBKEqX" role="3oSUPX">
                                   <ref role="cht4Q" to="tpee:5vlcUuJ5uOX" resolve="TextCommentPart" />
                                 </node>
-                                <node concept="37vLTw" id="45vN3dBKEqY" role="1m5AlR">
+                                <node concept="37vLTw" id="3Adf6iPxvfC" role="1m5AlR">
                                   <ref role="3cqZAo" node="45vN3dBmRyS" resolve="part" />
                                 </node>
                               </node>
-                              <node concept="3TrcHB" id="45vN3dBKEqZ" role="2OqNvi">
+                              <node concept="3TrcHB" id="3Adf6iPxvIV" role="2OqNvi">
                                 <ref role="3TsBF5" to="tpee:5vlcUuJ5uOY" resolve="text" />
                               </node>
                             </node>

@@ -70,19 +70,21 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
     return ListSequence.fromList(new ArrayList<SNode>());
   }
   /*package*/ static void parseAndAddWords_id45vN3dBFprj(@NotNull SNode __thisNode__, String text) {
-    String[] words = text.split(" ");
-    SNode l;
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).isNotEmpty()) {
-      l = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).last();
-    } else {
-      l = SLinkOperations.addNewChild(__thisNode__, LINKS.text$BOhB, CONCEPTS.Line$w3);
-    }
-    if (isEmptyString(SPropertyOperations.getString(SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).last(), CONCEPTS.Word$AM), PROPS.value$cK70))) {
-      ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).removeLastElement();
-    }
-    for (String w : words) {
-      SNode word = SNodeFactoryOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
-      SPropertyOperations.assign(word, PROPS.value$cK70, w);
+    if ((text != null && text.length() > 0)) {
+      String[] words = text.split(" ");
+      SNode l;
+      if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).isNotEmpty()) {
+        l = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).last();
+      } else {
+        l = SLinkOperations.addNewChild(__thisNode__, LINKS.text$BOhB, CONCEPTS.Line$w3);
+      }
+      if (isEmptyString(SPropertyOperations.getString(SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).last(), CONCEPTS.Word$AM), PROPS.value$cK70))) {
+        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$eRew)).removeLastElement();
+      }
+      for (String w : words) {
+        SNode word = SNodeFactoryOperations.addNewChild(l, LINKS.elements$eRew, CONCEPTS.Word$AM);
+        SPropertyOperations.assign(word, PROPS.value$cK70, w);
+      }
     }
   }
   /*package*/ static boolean isTODOComment_idRbAU21$c$g(@NotNull SNode __thisNode__) {

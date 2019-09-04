@@ -236,12 +236,8 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1731,8 +1727,28 @@
       </node>
       <node concept="3clFbS" id="54m$yuDZW0o" role="3clF47">
         <node concept="3SKdUt" id="54m$yuE00UY" role="3cqZAp">
-          <node concept="3SKdUq" id="54m$yuE00V0" role="3SKWNk">
-            <property role="3SKdUp" value="old-enum-member | old-enum | enum-migration-info | new-enum" />
+          <node concept="1PaTwC" id="24uceTRVFqC" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFqD" role="1PaTwD">
+              <property role="3oM_SC" value="old-enum-member" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqE" role="1PaTwD">
+              <property role="3oM_SC" value="|" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqF" role="1PaTwD">
+              <property role="3oM_SC" value="old-enum" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqG" role="1PaTwD">
+              <property role="3oM_SC" value="|" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqH" role="1PaTwD">
+              <property role="3oM_SC" value="enum-migration-info" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqI" role="1PaTwD">
+              <property role="3oM_SC" value="|" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFqJ" role="1PaTwD">
+              <property role="3oM_SC" value="new-enum" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="54m$yuDZWWl" role="3cqZAp">
