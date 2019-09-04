@@ -119,13 +119,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       return;
     }
     myCancellableReads.addIfCanCancel(r);
-    myEDTExecutor.scheduleRead(() -> {
-      boolean succeed;
-      if (succeed = tryRead(r)) {
-        myCancellableReads.removeIfCanCancel(r);
-      }
-      return succeed;
-    });
+    myEDTExecutor.scheduleRead(() -> tryRead(r));
   }
 
   // return true if runnable doesn't need further processing
@@ -161,21 +155,23 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     return ApplicationManager.getApplication().isDispatchThread();
   }
 
-  @Override
-  public boolean tryRead(final Runnable r) {
-    if (canRead()) {
-      r.run();
-      return true;
-    }
-
+  /**
+   * @param r has to be original runnable to facilitate {@code CancellableReadAction} check
+   */
+  private boolean tryRead(final Runnable r) {
     // 1 ms is pretty short to be considered 'try'
     final LockRunnable lockRunnable = new LockRunnable(getReadLock(), 1, myReadActionDispatcher.wrap(r));
     // XXX likely, shall try to grab IDEA's read lock much like tryWrite does
     ApplicationManager.getApplication().runReadAction(lockRunnable);
-    return lockRunnable.wasExecuted();
+    if (lockRunnable.wasExecuted()) {
+      myCancellableReads.removeIfCanCancel(r);
+      return true;
+    }
+    return false;
   }
 
   private boolean tryWrite(final Runnable r) {
+    // XXX why r is not wrapped with myWriteActionDispatcher.wrap?!
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, r);
 
     // XXX there's only 1 use of the method, and it's from EDT executor, are there any chance not to be in EDT here?

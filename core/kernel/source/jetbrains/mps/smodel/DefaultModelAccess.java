@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,20 +69,6 @@ class DefaultModelAccess extends ModelAccess {
   @Override
   public void runWriteInEDT(final Runnable r) {
     SwingUtilities.invokeLater(() -> runWriteAction(r));
-  }
-
-  @Override
-  public boolean tryRead(Runnable r) {
-    if (getReadLock().tryLock()) {
-      try {
-        myReadActionDispatcher.dispatch(r);
-      } finally {
-        getReadLock().unlock();
-      }
-      return true;
-    } else {
-      return false;
-    }
   }
 
   /**

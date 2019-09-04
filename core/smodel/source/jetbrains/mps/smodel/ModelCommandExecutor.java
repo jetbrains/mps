@@ -64,35 +64,6 @@ public interface ModelCommandExecutor {
   boolean isInsideCommand(); // openapi.ModelAccess#isCommandAction
 
   /**
-   * Returns true iff the locking and the operation were successful.
-   *
-   * XXX [artem] The only justification for the method I see is that we may use it from UI events like 'show tooltip', where we can ignore
-   * value if not calculated, and don't want to stop UI thread to wait for write command to complete. Asynchronous runReadInEDT() might
-   * come handy replacement if we can update/push UI element (uiComponent.setTooltipText()), but is useless when UI element is queried (e.g. getTooltipText())
-   *
-   * @deprecated  There are no uses in MPS itself, switch to {@code CancellableReadAction} if utterly needed
-   *
-   * @param r
-   * @return
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  boolean tryRead(Runnable r); // extends openapi.ModelAccess with optional read lock
-
-  /**
-   * Returns the result of the computation, null if locking was unsuccessful.
-
-   * @deprecated  There are no uses in MPS itself
-   *
-   * @param c
-   * @param <T>
-   * @return
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  <T> T tryRead(Computable<T> c); // extends openapi.ModelAccess with optional read lock and Computable
-
-  /**
    * @deprecated with no contract, what could justify its use?
    */
   @Deprecated

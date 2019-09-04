@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -107,19 +105,6 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     ComputeRunnable<T> r = new ComputeRunnable<>(c);
     runWriteAction(r);
     return r.getResult();
-  }
-
-  @Override
-  public final <T> T tryRead(final Computable<T> c) {
-    if (canRead()) {
-      return c.compute();
-    }
-
-    ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    if (tryRead(r)) {
-      return r.getResult();
-    }
-    return null;
   }
 
   protected final void assertNotWriteFromRead() {
