@@ -59,7 +59,7 @@ public final class UpdateComment_Intention extends AbstractIntentionDescriptor i
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Update Comment";
+      return "Update Comment (will remove attributes)";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

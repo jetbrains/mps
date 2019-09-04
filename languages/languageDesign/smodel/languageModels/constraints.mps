@@ -4,6 +4,7 @@
   <languages>
     <use id="d4615e3b-d671-4ba9-af01-2b78369b0ba7" name="jetbrains.mps.lang.pattern" version="2" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="4" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -141,12 +142,8 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="6329021646629104957" name="jetbrains.mps.baseLanguage.structure.TextCommentPart" flags="nn" index="3SKdUq">
-        <property id="6329021646629104958" name="text" index="3SKdUp" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
-        <child id="6329021646629175155" name="commentPart" index="3SKWNk" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -3127,8 +3124,19 @@
               </node>
               <node concept="3clFbS" id="28aPEVvn9$z" role="3eOfB_">
                 <node concept="3SKdUt" id="25DDrfqgWhl" role="3cqZAp">
-                  <node concept="3SKdUq" id="25DDrfqgWhn" role="3SKWNk">
-                    <property role="3SKdUp" value="to make completion works" />
+                  <node concept="1PaTwC" id="24uceTRVFow" role="3ndbpf">
+                    <node concept="3oM_SD" id="24uceTRVFox" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="24uceTRVFoy" role="1PaTwD">
+                      <property role="3oM_SC" value="make" />
+                    </node>
+                    <node concept="3oM_SD" id="24uceTRVFoz" role="1PaTwD">
+                      <property role="3oM_SC" value="completion" />
+                    </node>
+                    <node concept="3oM_SD" id="24uceTRVFo$" role="1PaTwD">
+                      <property role="3oM_SC" value="works" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="28aPEVvnfsy" role="3cqZAp">
@@ -3275,8 +3283,25 @@
         <node concept="3clFbJ" id="4kzzLy11GYw" role="3cqZAp">
           <node concept="3clFbS" id="4kzzLy11GYy" role="3clFbx">
             <node concept="3SKdUt" id="4kzzLy11Iwp" role="3cqZAp">
-              <node concept="3SKdUq" id="4kzzLy11Iwr" role="3SKWNk">
-                <property role="3SKdUp" value="Just to make completion works :(" />
+              <node concept="1PaTwC" id="24uceTRVFo_" role="3ndbpf">
+                <node concept="3oM_SD" id="24uceTRVFoA" role="1PaTwD">
+                  <property role="3oM_SC" value="Just" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFoB" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFoC" role="1PaTwD">
+                  <property role="3oM_SC" value="make" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFoD" role="1PaTwD">
+                  <property role="3oM_SC" value="completion" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFoE" role="1PaTwD">
+                  <property role="3oM_SC" value="works" />
+                </node>
+                <node concept="3oM_SD" id="24uceTRVFoF" role="1PaTwD">
+                  <property role="3oM_SC" value=":(" />
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="4kzzLy11Km1" role="3cqZAp">
@@ -3295,8 +3320,34 @@
           </node>
         </node>
         <node concept="3SKdUt" id="28aPEVwavbA" role="3cqZAp">
-          <node concept="3SKdUq" id="28aPEVwavbC" role="3SKWNk">
-            <property role="3SKdUp" value="generation into bl is supported only for these cases" />
+          <node concept="1PaTwC" id="24uceTRVFoG" role="3ndbpf">
+            <node concept="3oM_SD" id="24uceTRVFoH" role="1PaTwD">
+              <property role="3oM_SC" value="generation" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoI" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoJ" role="1PaTwD">
+              <property role="3oM_SC" value="bl" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoK" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoL" role="1PaTwD">
+              <property role="3oM_SC" value="supported" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoM" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoN" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoO" role="1PaTwD">
+              <property role="3oM_SC" value="these" />
+            </node>
+            <node concept="3oM_SD" id="24uceTRVFoP" role="1PaTwD">
+              <property role="3oM_SC" value="cases" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="28aPEVwak5t" role="3cqZAp">

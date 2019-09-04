@@ -19,11 +19,16 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelInternal;
 import java.util.Collection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.SingleLineComment__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.migration.runtime.base.Problem;
+import java.util.List;
+import java.util.ArrayList;
+import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -59,7 +64,11 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
 
           CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$jI, false)).visitAll(new IVisitor<SNode>() {
             public void visit(final SNode slc) {
-              if (ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$_gGy)).isEmpty()) {
+              if (ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$_gGy)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$_gGy)).any(new IWhereFilter<SNode>() {
+                public boolean accept(SNode part) {
+                  return ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.smodelAttribute$K8bJ)).isNotEmpty();
+                }
+              })) {
                 return;
               }
 
@@ -77,10 +86,7 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
               ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$_gGy)).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode part) {
                   if (SNodeOperations.isInstanceOf(part, CONCEPTS.TextCommentPart$lb)) {
-                    String t = SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw);
-                    if ((t != null && t.length() > 0)) {
-                      SingleLineComment__BehaviorDescriptor.parseAndAddWords_id45vN3dBFprj.invoke(slc, t);
-                    }
+                    SingleLineComment__BehaviorDescriptor.parseAndAddWords_id45vN3dBFprj.invoke(slc, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw));
                   }
                 }
               });
@@ -93,6 +99,34 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
           });
         }
       });
+    }
+  }
+  @Override
+  public Iterable<Problem> check(SModule m) {
+    final List<Problem> problems = ListSequence.fromList(new ArrayList<Problem>());
+    {
+      SearchScope scope_ldzx6u_b0f = CommandUtil.createScope(m);
+      final SearchScope scope_ldzx6u_b0f_0 = new EditableFilteringScope(scope_ldzx6u_b0f);
+      QueryExecutionContext context = new QueryExecutionContext() {
+        public SearchScope getDefaultSearchScope() {
+          return scope_ldzx6u_b0f_0;
+        }
+      };
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SingleLineComment$jI, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.commentPart$_gGy)).isNotEmpty();
+        }
+      }).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode slc) {
+          ListSequence.fromList(problems).addElement(new NotMigratedNode(slc) {
+            @Override
+            public String getMessage() {
+              return "The SingleLineComment could not be migrated automatically, as there are attributes attached to the text of the comment.";
+            }
+          });
+        }
+      });
+      return problems;
     }
   }
   public MigrationScriptReference getDescriptor() {
@@ -108,6 +142,7 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
     /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
     /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
