@@ -7785,6 +7785,9 @@
         <node concept="Xl_RD" id="5d$B_bo0qx1" role="37wK5m">
           <property role="Xl_RC" value="mps-boot-util.jar" />
         </node>
+        <node concept="Xl_RD" id="XRbnwf5bbV" role="37wK5m">
+          <property role="Xl_RC" value="mps-persistence.jar" />
+        </node>
       </node>
       <node concept="A3Dl8" id="7yiwGpnLbjo" role="1tU5fm">
         <node concept="17QB3L" id="7yiwGpnLbju" role="A3Ik2" />
@@ -7829,7 +7832,7 @@
           <property role="Xl_RC" value="asm-all-7.0.1.jar" />
         </node>
         <node concept="Xl_RD" id="6gjr9XnnBRi" role="37wK5m">
-          <property role="Xl_RC" value="xstream-1.4.10.jar" />
+          <property role="Xl_RC" value="xstream-1.4.11.1.jar" />
         </node>
         <node concept="Xl_RD" id="6gjr9XnnBRe" role="37wK5m">
           <property role="Xl_RC" value="guava-25.1-jre.jar" />

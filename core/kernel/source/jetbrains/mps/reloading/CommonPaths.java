@@ -119,7 +119,7 @@ public final class CommonPaths {
     addIfExists(result, "lib/ecj-4.10.jar");
     addIfExists(result, "plugins/java/lib/ecj-4.10.jar");
     addIfExists(result, "lib/guava-25.1-jre.jar");
-    addIfExists(result, "lib/xstream-1.4.8.jar");
+    addIfExists(result, "lib/xstream-1.4.11.1.jar");
     addIfExists(result, "lib/asm-all-7.0.1.jar");
   }
 
