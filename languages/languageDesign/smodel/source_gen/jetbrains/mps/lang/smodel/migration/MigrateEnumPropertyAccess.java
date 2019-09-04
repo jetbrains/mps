@@ -199,7 +199,7 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
         }
 
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.SEnum_MemberForValueOperation_Old$M3)) {
-          migration.insertMemberValueOp(newEnum, enumOpInvocation, SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.SEnum_MemberForValueOperation_Old$M3), LINKS.valueExpression$CIew));
+          migration.insertMemberForValueOp(newEnum, enumOpInvocation, SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.SEnum_MemberForValueOperation_Old$M3), LINKS.valueExpression$CIew));
           continue;
         }
 
