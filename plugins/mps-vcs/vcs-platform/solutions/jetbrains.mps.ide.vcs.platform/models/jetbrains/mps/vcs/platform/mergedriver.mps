@@ -7788,6 +7788,9 @@
         <node concept="Xl_RD" id="XRbnwf5bbV" role="37wK5m">
           <property role="Xl_RC" value="mps-persistence.jar" />
         </node>
+        <node concept="Xl_RD" id="7q5OfCw3ADb" role="37wK5m">
+          <property role="Xl_RC" value="mps-constraints-runtime.jar" />
+        </node>
       </node>
       <node concept="A3Dl8" id="7yiwGpnLbjo" role="1tU5fm">
         <node concept="17QB3L" id="7yiwGpnLbju" role="A3Ik2" />
