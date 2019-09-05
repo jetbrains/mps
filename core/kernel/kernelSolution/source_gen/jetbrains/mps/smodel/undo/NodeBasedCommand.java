@@ -5,12 +5,9 @@ package jetbrains.mps.smodel.undo;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
-import java.util.List;
 import jetbrains.mps.smodel.SNodeUndoableAction;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public abstract class NodeBasedCommand extends DefaultCommand {
   @NotNull
@@ -22,11 +19,11 @@ public abstract class NodeBasedCommand extends DefaultCommand {
   }
 
   @Override
-  public Iterable<SNode> getVirtualFileNodes(List<SNodeUndoableAction> actions) {
-    return Sequence.fromIterable(super.getVirtualFileNodes(ListSequence.fromList(actions).where(new IWhereFilter<SNodeUndoableAction>() {
-      public boolean accept(SNodeUndoableAction it) {
-        return !(SNodeOperations.getNodeAncestors(((SNode) it.getAffectedNode()), null, false).contains(myMainNode));
-      }
-    }).toListSequence())).union(Sequence.fromIterable(Sequence.<SNode>singleton(myMainNode)));
+  public Iterable<SNode> getVirtualFileNodes(SNodeUndoableAction action) {
+    SNode actionNode = (SNode) action.getAffectedNode();
+    if (SNodeOperations.getNodeAncestors(actionNode, null, false).contains(myMainNode)) {
+      return Sequence.<SNode>singleton(myMainNode);
+    }
+    return Sequence.fromIterable(super.getVirtualFileNodes(action)).union(Sequence.fromIterable(Sequence.<SNode>singleton(myMainNode)));
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,21 +50,5 @@ public class UndoHelper {
 
   public void addUndoableAction(SNodeUndoableAction action) {
     myHandler.addUndoableAction(action);
-  }
-
-  /**
-   * @deprecated This method is unused, no-op and scheduled for removal, just don't use it any more
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public void flushCommand() {
-  }
-
-  /**
-   * @deprecated This method is unused, no-op and scheduled for removal, just don't use it any more
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public void startCommand(UndoContext context) {
   }
 }

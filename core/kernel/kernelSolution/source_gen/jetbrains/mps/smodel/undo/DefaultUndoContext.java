@@ -5,10 +5,7 @@ package jetbrains.mps.smodel.undo;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.List;
 import jetbrains.mps.smodel.SNodeUndoableAction;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
@@ -17,15 +14,6 @@ public class DefaultUndoContext implements UndoContext {
 
   public DefaultUndoContext(@NotNull SRepository repository) {
     myRepository = repository;
-  }
-
-  @Override
-  public Iterable<SNode> getVirtualFileNodes(List<SNodeUndoableAction> actions) {
-    return ListSequence.fromList(actions).translate(new ITranslator2<SNodeUndoableAction, SNode>() {
-      public Iterable<SNode> translate(SNodeUndoableAction it) {
-        return getVirtualFileNodes(it);
-      }
-    });
   }
 
   @Override

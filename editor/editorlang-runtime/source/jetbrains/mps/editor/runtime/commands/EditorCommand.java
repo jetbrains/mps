@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collections;
-import java.util.List;
 
 /**
  * User: shatalin
@@ -57,11 +56,6 @@ public abstract class EditorCommand implements Runnable, UndoContext {
     } finally {
       myCommandContext.commandFinished();
     }
-  }
-
-  @Override
-  public Iterable<SNode> getVirtualFileNodes(List<SNodeUndoableAction> wrapped) {
-    return getVirtualFileNodes((SNodeUndoableAction) null);
   }
 
   @Override

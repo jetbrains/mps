@@ -3,39 +3,40 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873621017">
     <file name="NodeBasedCommand.java">
-      <node id="6200862514489226698" at="19,85,20,22" concept="5" />
-      <node id="63618339873621398" at="20,22,21,26" concept="1" />
-      <node id="63618339873747973" at="27,53,28,117" concept="4" />
-      <node id="63618339873621342" at="16,0,18,0" concept="2" trace="myMainNode" />
-      <node id="63618339873747466" at="27,0,30,0" concept="3" trace="accept#(Ljetbrains/mps/smodel/SNodeUndoableAction;)Z" />
-      <node id="63618339873621254" at="19,0,23,0" concept="0" trace="NodeBasedCommand#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="7457204892390891715" at="25,81,30,94" concept="4" />
-      <node id="63618339873739135" at="24,0,32,0" concept="3" trace="getVirtualFileNodes#(Ljava/util/List;)Ljava/lang/Iterable;" />
-      <scope id="63618339873747467" at="27,53,28,117" />
-      <scope id="63618339873621258" at="19,85,21,26" />
-      <scope id="63618339873747466" at="27,0,30,0">
-        <var name="it" id="63618339873747466" />
-      </scope>
-      <scope id="63618339873621254" at="19,0,23,0">
+      <node id="6200862514489226698" at="16,85,17,22" concept="7" />
+      <node id="63618339873621398" at="17,22,18,26" concept="1" />
+      <node id="4899561502308399455" at="22,74,23,56" concept="5" />
+      <node id="4899561502308403037" at="24,89,25,51" concept="6" />
+      <node id="4899561502308404991" at="26,5,27,136" concept="6" />
+      <node id="63618339873621342" at="13,0,15,0" concept="2" trace="myMainNode" />
+      <node id="4899561502308401848" at="23,56,26,5" concept="3" />
+      <node id="63618339873621254" at="16,0,20,0" concept="0" trace="NodeBasedCommand#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="63618339873739135" at="21,0,29,0" concept="4" trace="getVirtualFileNodes#(Ljetbrains/mps/smodel/SNodeUndoableAction;)Ljava/lang/Iterable;" />
+      <scope id="4899561502308401850" at="24,89,25,51" />
+      <scope id="63618339873621258" at="16,85,18,26" />
+      <scope id="63618339873621254" at="16,0,20,0">
         <var name="mainNode" id="63618339873621285" />
         <var name="repository" id="6200862514489225615" />
       </scope>
-      <scope id="63618339873739194" at="25,81,30,94" />
-      <scope id="63618339873739135" at="24,0,32,0">
-        <var name="actions" id="63618339873739139" />
+      <scope id="63618339873739194" at="22,74,27,136">
+        <var name="actionNode" id="4899561502308399456" />
       </scope>
-      <unit id="63618339873747466" at="26,100,30,5" name="jetbrains.mps.smodel.undo.NodeBasedCommand$1" />
-      <unit id="63618339873621017" at="15,0,33,0" name="jetbrains.mps.smodel.undo.NodeBasedCommand" />
+      <scope id="63618339873739135" at="21,0,29,0">
+        <var name="action" id="4899561502308396472" />
+      </scope>
+      <unit id="63618339873621017" at="12,0,30,0" name="jetbrains.mps.smodel.undo.NodeBasedCommand" />
     </file>
   </root>
   <root nodeRef="r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873621166">
     <file name="DefaultCommand.java">
-      <node id="6200862514489223972" at="9,58,10,22" concept="5" />
+      <node id="6200862514489223972" at="9,58,10,22" concept="7" />
       <node id="6200862514489223652" at="9,0,12,0" concept="0" trace="DefaultCommand#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
       <scope id="6200862514489223656" at="9,58,10,22" />
       <scope id="6200862514489223652" at="9,0,12,0">
@@ -46,52 +47,35 @@
   </root>
   <root nodeRef="r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873669826">
     <file name="UndoContext.java">
-      <node id="2226919148442713751" at="21,0,22,0" concept="3" trace="getVirtualFileNodes#(Ljetbrains/mps/smodel/SNodeUndoableAction;)Ljava/lang/Iterable;" />
-      <node id="6200862514489213340" at="23,0,25,0" concept="3" trace="getRepository#()Lorg/jetbrains/mps/openapi/module/SRepository;" />
-      <node id="63618339873669860" at="17,0,20,0" concept="3" trace="getVirtualFileNodes#(Ljava/util/List;)Ljava/lang/Iterable;" />
-      <scope id="2226919148442713751" at="21,0,22,0">
+      <node id="2226919148442713751" at="12,0,13,0" concept="4" trace="getVirtualFileNodes#(Ljetbrains/mps/smodel/SNodeUndoableAction;)Ljava/lang/Iterable;" />
+      <node id="6200862514489213340" at="14,0,16,0" concept="4" trace="getRepository#()Lorg/jetbrains/mps/openapi/module/SRepository;" />
+      <scope id="2226919148442713751" at="12,0,13,0">
         <var name="action" id="2226919148442713756" />
       </scope>
-      <scope id="6200862514489213340" at="23,0,25,0" />
-      <scope id="63618339873669860" at="17,0,20,0">
-        <var name="actions" id="63618339873670000" />
-      </scope>
-      <unit id="63618339873669826" at="12,0,26,0" name="jetbrains.mps.smodel.undo.UndoContext" />
+      <scope id="6200862514489213340" at="14,0,16,0" />
+      <unit id="63618339873669826" at="10,0,17,0" name="jetbrains.mps.smodel.undo.UndoContext" />
     </file>
   </root>
   <root nodeRef="r:79655025-bd36-445f-8b79-189312ab627e(jetbrains.mps.smodel.undo)/63618339873681828">
     <file name="DefaultUndoContext.java">
-      <node id="6200862514489216093" at="16,0,17,0" concept="2" trace="myRepository" />
-      <node id="6200862514489219235" at="18,62,19,30" concept="1" />
-      <node id="966725347833325765" at="25,64,26,39" concept="4" />
-      <node id="2226919148442749047" at="32,74,33,106" concept="4" />
-      <node id="6200862514489215079" at="38,38,39,24" concept="4" />
-      <node id="6200862514489218216" at="18,0,21,0" concept="0" trace="DefaultUndoContext#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="966725347833325763" at="25,0,28,0" concept="3" trace="translate#(Ljetbrains/mps/smodel/SNodeUndoableAction;)Ljava/lang/Iterable;" />
-      <node id="2226919148442747416" at="31,0,35,0" concept="3" trace="getVirtualFileNodes#(Ljetbrains/mps/smodel/SNodeUndoableAction;)Ljava/lang/Iterable;" />
-      <node id="63618339873704152" at="23,81,28,7" concept="4" />
-      <node id="6200862514489215072" at="36,0,41,0" concept="3" trace="getRepository#()Lorg/jetbrains/mps/openapi/module/SRepository;" />
-      <node id="63618339873683632" at="22,0,30,0" concept="3" trace="getVirtualFileNodes#(Ljava/util/List;)Ljava/lang/Iterable;" />
-      <scope id="6200862514489218220" at="18,62,19,30" />
-      <scope id="966725347833325764" at="25,64,26,39" />
-      <scope id="2226919148442747423" at="32,74,33,106" />
-      <scope id="6200862514489215076" at="38,38,39,24" />
-      <scope id="6200862514489218216" at="18,0,21,0">
+      <node id="6200862514489216093" at="13,0,14,0" concept="2" trace="myRepository" />
+      <node id="6200862514489219235" at="15,62,16,30" concept="1" />
+      <node id="2226919148442749047" at="20,74,21,106" concept="6" />
+      <node id="6200862514489215079" at="26,38,27,24" concept="6" />
+      <node id="6200862514489218216" at="15,0,18,0" concept="0" trace="DefaultUndoContext#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="2226919148442747416" at="19,0,23,0" concept="4" trace="getVirtualFileNodes#(Ljetbrains/mps/smodel/SNodeUndoableAction;)Ljava/lang/Iterable;" />
+      <node id="6200862514489215072" at="24,0,29,0" concept="4" trace="getRepository#()Lorg/jetbrains/mps/openapi/module/SRepository;" />
+      <scope id="6200862514489218220" at="15,62,16,30" />
+      <scope id="2226919148442747423" at="20,74,21,106" />
+      <scope id="6200862514489215076" at="26,38,27,24" />
+      <scope id="6200862514489218216" at="15,0,18,0">
         <var name="repository" id="6200862514489218641" />
       </scope>
-      <scope id="966725347833325763" at="25,0,28,0">
-        <var name="it" id="966725347833325763" />
-      </scope>
-      <scope id="2226919148442747416" at="31,0,35,0">
+      <scope id="2226919148442747416" at="19,0,23,0">
         <var name="action" id="2226919148442747421" />
       </scope>
-      <scope id="63618339873683640" at="23,81,28,7" />
-      <scope id="6200862514489215072" at="36,0,41,0" />
-      <scope id="63618339873683632" at="22,0,30,0">
-        <var name="actions" id="63618339873683637" />
-      </scope>
-      <unit id="966725347833325763" at="24,56,28,5" name="jetbrains.mps.smodel.undo.DefaultUndoContext$1" />
-      <unit id="63618339873681828" at="15,0,42,0" name="jetbrains.mps.smodel.undo.DefaultUndoContext" />
+      <scope id="6200862514489215072" at="24,0,29,0" />
+      <unit id="63618339873681828" at="12,0,30,0" name="jetbrains.mps.smodel.undo.DefaultUndoContext" />
     </file>
   </root>
 </debug-info>
