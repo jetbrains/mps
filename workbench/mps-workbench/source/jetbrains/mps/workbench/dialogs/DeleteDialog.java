@@ -40,8 +40,7 @@ public class DeleteDialog extends DialogWrapper {
     myOptions = options;
 
     setTitle(caption);
-    setOKButtonText("&Delete");
-    setCancelButtonText("Ca&ncel");
+    setOKButtonText("Delete");
     init();
   }
 
