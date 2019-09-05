@@ -7056,16 +7056,9 @@
                         <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
                       </node>
                       <node concept="3K4zz7" id="1KUoCipv$RZ" role="33vP2m">
-                        <node concept="2OqwBi" id="1KUoCipv$S0" role="3K4E3e">
-                          <node concept="2OqwBi" id="1KUoCipv$S1" role="2Oq$k0">
-                            <node concept="liA8E" id="1KUoCipv$S2" role="2OqNvi">
-                              <ref role="37wK5l" to="bmv6:3$YpntjF4nm" resolve="getAffectedRoots" />
-                            </node>
-                            <node concept="37vLTw" id="1KUoCipv$S3" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2jv$fqwD$oM" resolve="myMetadataMergeSession" />
-                            </node>
-                          </node>
-                          <node concept="1uHKPH" id="1KUoCipv$S4" role="2OqNvi" />
+                        <node concept="2YIFZM" id="6RkMMcXjT_0" role="3K4E3e">
+                          <ref role="37wK5l" to="p37l:6RkMMcXj0kh" resolve="getMetadataRootId" />
+                          <ref role="1Pybhc" to="p37l:444ZSQ06W$a" resolve="MetadataUtil" />
                         </node>
                         <node concept="37vLTw" id="1KUoCipv$S5" role="3K4GZi">
                           <ref role="3cqZAo" node="3SMO48GoPn6" resolve="rootId" />

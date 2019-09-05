@@ -7,9 +7,9 @@ import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
-import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.extapi.model.GeneratableSModel;
@@ -55,13 +55,17 @@ public class MetadataUtil {
     DiffModelUtil.unregisterModel(model);
   }
 
+  public static SNodeId getMetadataRootId() {
+    return PersistenceFacade.getInstance().createNodeId("~root");
+  }
+
   private void createModelRoot(SModel origin) {
     SModelBase modelBase = (SModelBase) origin;
-    SNodeId nodeId = PersistenceFacade.getInstance().createNodeId("~root");
-    SNode root = SModelOperations.createNewNode(myMetadataModel, nodeId, CONCEPTS.Model$$J);
+    // create root with fixed Id (see inspector) 
+    SNode root = SModelOperations.createNewNode(myMetadataModel, getMetadataRootId(), CONCEPTS.Model$$J);
     SPropertyOperations.assign(root, PROPS.longname$pfsG, SModelOperations.getModelName(origin));
     if (origin instanceof GeneratableSModel) {
-      SPropertyOperations.assign(root, PROPS.donotgenerate$pfHD, check_ca1g54_a0a0e0i(((GeneratableSModel) origin)));
+      SPropertyOperations.assign(root, PROPS.donotgenerate$pfHD, check_ca1g54_a0a0e0k(((GeneratableSModel) origin)));
     }
     for (SLanguage language : CollectionSequence.fromCollection(modelBase.importedLanguageIds())) {
       int version = ((SModelBase) origin).getLanguageImportVersion(language);
@@ -235,7 +239,7 @@ public class MetadataUtil {
       }
     }
   }
-  private static boolean check_ca1g54_a0a0e0i(GeneratableSModel checkedDotOperand) {
+  private static boolean check_ca1g54_a0a0e0k(GeneratableSModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.isDoNotGenerate();
     }

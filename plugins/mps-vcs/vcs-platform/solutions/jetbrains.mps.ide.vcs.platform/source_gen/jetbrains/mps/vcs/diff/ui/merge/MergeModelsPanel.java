@@ -270,7 +270,7 @@ public class MergeModelsPanel extends JPanel {
     final MergeSession session = (rootId == null ? myMetadataMergeSession : myMergeSession);
     myProjectRepository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        SNodeId nodeId = (rootId == null ? Sequence.fromIterable(myMetadataMergeSession.getAffectedRoots()).first() : rootId);
+        SNodeId nodeId = (rootId == null ? MetadataUtil.getMetadataRootId() : rootId);
         if (myMergeRootsPane == null) {
           myMergeRootsPane = new MergeRootsPane(myProject, session, nodeId, myMergeTree.getNameForRoot(rootId), myContentTitles);
           DefaultActionGroup actionGroup = new DefaultActionGroup();
