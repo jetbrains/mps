@@ -376,7 +376,10 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     @Override
     public void init() {
       JPanel dependenciesTab = new JPanel();
-      dependenciesTab.setLayout(new GridLayoutManager(1, 1, INSETS, -1, -1));
+      // XXX due to peculiar design, have to account for various uses of the dependenciesTab component in subclasses
+      // in a very uncommon way. In module properties, we add another component to the tab, let layout manager be aware
+      // of another row
+      dependenciesTab.setLayout(new GridLayoutManager(2, 1, INSETS, -1, -1));
 
       final JBTable tableDepend = new JBTable();
       tableDepend.setShowHorizontalLines(false);

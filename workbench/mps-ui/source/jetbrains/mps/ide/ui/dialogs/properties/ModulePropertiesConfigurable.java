@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,12 @@ package jetbrains.mps.ide.ui.dialogs.properties;
 import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ide.util.BrowseFilesListener;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
+import com.intellij.openapi.progress.util.BackgroundTaskUtil;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.util.Disposer;
@@ -41,12 +44,13 @@ import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.AbstractTableCellEditor;
+import com.intellij.util.ui.AnimatedIcon;
+import com.intellij.util.ui.AsyncProcessIcon;
 import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.findUsages.CompositeFinder;
-import jetbrains.mps.generator.impl.plan.ModelScanner;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
@@ -86,7 +90,6 @@ import jetbrains.mps.project.ModuleInstanceCondition;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.VisibleModuleCondition;
-import jetbrains.mps.project.dependency.GeneratorModuleScanner;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
@@ -98,13 +101,10 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_R
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
 import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
 import jetbrains.mps.scope.VisibleDepsSearchScope;
-import jetbrains.mps.smodel.ConceptDeclarationScanner;
-import jetbrains.mps.smodel.EditorDeclarationScanner;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.smodel.ModelDependencyScanner;
+import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ConditionalIterable;
@@ -183,6 +183,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   private final SRepository myModuleRepository;
   private final List<FacetCheckBox> myCheckBoxes = new ArrayList<>();
   private final FacetTabsPersistence myFacetTabsPersistence;
+  private final AnimatedIcon myDependenciesSpinner = new AsyncProcessIcon(getClass().getSimpleName());
 
   // We are tightly coupled with IDEA IDE here, no reason to be shy about project kind.
   public ModulePropertiesConfigurable(SModule module, MPSProject project) {
@@ -525,6 +526,14 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
   public class ModuleDependenciesTab extends DependenciesTab {
 
+    @Override
+    public void init() {
+      super.init();
+      final GridConstraints gc = new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false);
+      getTabComponent().add(myDependenciesSpinner, gc);
+    }
+
     /*package*/ List<DependenciesTableItem> getActualDependencies() {
       int x = myDependTableModel.getRowCount();
       ArrayList<DependenciesTableItem> rv = new ArrayList<>(x);
@@ -589,68 +598,34 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     @Override
     protected TableCellRenderer getTableCellRender() {
       final ModuleTableCellRender mtcr = new ModuleTableCellRender(myModuleRepository);
-      final HashSet<SModuleReference> extendsSet = new HashSet<>();
-      final HashSet<SModuleReference> generationTargets = new HashSet<>();
-      final HashSet<SModuleReference> xModuleSet = new HashSet<>();
-      myModuleRepository.getModelAccess().runReadAction(() -> {
-        // XXX perhaps, worth adding ModuleProperties data collection (much like ModelProperties)
+      final ScanModuleDependencyTask scanTask = new ScanModuleDependencyTask(myModule);
+      //scanTask.whenChanged(myDependTableModel::fireTableDataChanged);
+      Runnable whenDone = () -> {
         if (myModule instanceof Language) {
-          // XXX Next code to find 'true' extends dependencies is pretty similar to LanguageValidator, is there any chance to share it?
-          SModel structureAspect = ((Language) myModule).getStructureModelDescriptor();
-          if (structureAspect != null) {
-            // we keep lang.core.structure reference, if any, just not to warn about superfluous lang.core import
-            ConceptDeclarationScanner cds = new ConceptDeclarationScanner();
-            cds.scan(structureAspect);
-            cds.getDependencyModules().forEach(m -> extendsSet.add(m.getModuleReference()));
-          }
-          SModel editorModel = LanguageAspect.EDITOR.get((Language) myModule);
-          if (editorModel != null) {
-            EditorDeclarationScanner eds = new EditorDeclarationScanner();
-            eds.scan(editorModel);
-            eds.getDependencyModules().forEach(m -> extendsSet.add(m.getModuleReference()));
-          }
-          ModelScanner tms = new ModelScanner();
-          for (Generator g : ((Language) myModule).getOwnedGenerators()) {
-            g.getOwnTemplateModels().forEach(tms::scan);
-          }
-          tms.getTargetLanguages().forEach(l -> generationTargets.add(l.getSourceModuleReference()));
+          // XXX would be great to report superfluous extends for generators as well (populate extendSet from template model scanner
+          //     that knows what constitutes 'extends' between generators. The main problem is nobody knows how to tell generators are truly
+          //     in 'extends' relation.
+          mtcr.addCellState(moduleImport -> {
+            SModuleReference importRef = moduleImport.getModuleReference();
+            // XXX not quite nice as the same module may be imported twice, as a regular dependency as well as 'extends',
+            // here we don't tell one from another and warn both. Would be better to refactor StateTableCellRenderer to give more
+            // info about table row (access to underlying table value?)
+            boolean isExtendsDep = ((ModuleDependTableModel) myDependTableModel).getExtendedModules().contains(importRef);
+            return isExtendsDep && !scanTask.getExtendsSet().contains(moduleImport.getModuleReference());
+          }, DependencyCellState.SUPERFLUOUS_EXTENDS);
         }
-        // collect target modules of cross-model references
-        ModelDependencyScanner mds = new ModelDependencyScanner().usedLanguages(false).crossModelReferences(true).usedConcepts(false);
-        myModule.getModels().forEach(mds::walk);
-        SearchScope moduleScope = myModule.getScope();
-        for (SModelReference xRef : mds.getCrossModelReferences()) {
-          SModel xModel = moduleScope.resolve(xRef);
-          if (xModel != null) {
-            xModuleSet.add(xModel.getModule().getModuleReference());
-          } else if (xRef.getModuleReference() != null) {
-            xModuleSet.add(xRef.getModuleReference());
-          }
-          // bad luck, reference to a model from unknown module, no idea what to do
-        }
-        if (myModule instanceof Generator) {
-          GeneratorModuleScanner gms = new GeneratorModuleScanner();
-          gms.walkPriorityRules((Generator) myModule);
-          xModuleSet.addAll(gms.getReferencedGenerators());
-        }
-      });
-      mtcr.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
-      if (myModule instanceof Language) {
-        // XXX would be great to report superfluous extends for generators as well (populate extendSet from template model scanner
-        //     that knows what constitutes 'extends' between generators. The main problem is nobody knows how to tell generators are truly
-        //     in 'extends' relation.
-        mtcr.addCellState(moduleImport -> {
-          SModuleReference importRef = moduleImport.getModuleReference();
-          // XXX not quite nice as the same module may be imported twice, as a regular dependency as well as 'extends',
-          // here we don't tell one from another and warn both. Would be better to refactor StateTableCellRenderer to give more
-          // info about table row (access to underlying table value?)
-          boolean isExtendsDep = ((ModuleDependTableModel) myDependTableModel).getExtendedModules().contains(importRef);
-          return isExtendsDep && !extendsSet.contains(moduleImport.getModuleReference());
-        }, DependencyCellState.SUPERFLUOUS_EXTENDS);
-      }
-      mtcr.addCellState(
-          moduleImport -> !generationTargets.contains(moduleImport.getModuleReference()) && !xModuleSet.contains(moduleImport.getModuleReference()),
-          DependencyCellState.UNUSED);
+        mtcr.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
+        mtcr.addCellState(
+            moduleImport -> !scanTask.getGenerationTargets().contains(moduleImport.getModuleReference()) && !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
+            DependencyCellState.UNUSED);
+        myDependTableModel.fireTableDataChanged();
+        myDependenciesSpinner.suspend();
+      };
+      // invokeLater(Runnable) uses ModalityState.defaultModalityState() which is non-model when invoked from non-EDT thread
+      // as long as we need this code to get executed in the dialog, have to specify ModalityState explicitly
+      scanTask.whenDone(() -> ApplicationManager.getApplication().invokeLater(whenDone, ModalityState.any()));
+      myDependenciesSpinner.resume();
+      BackgroundTaskUtil.executeOnPooledThread(getDisposable(), new ModelReadRunnable(myModuleRepository, scanTask));
       return mtcr;
     }
 
