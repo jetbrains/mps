@@ -9191,7 +9191,7 @@
       <property role="TrG5h" value="getEnumDecl" />
       <node concept="3Tm1VV" id="66cvXGSmQgl" role="1B3o_S" />
       <node concept="3Tqbb2" id="66cvXGSmQgs" role="3clF45">
-        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       </node>
       <node concept="3clFbS" id="66cvXGSmQgn" role="3clF47">
         <node concept="3clFbF" id="25DDrfqfF6g" role="3cqZAp">
@@ -9226,14 +9226,14 @@
       <property role="TrG5h" value="getEnumDecl" />
       <node concept="3Tm1VV" id="45eRmv04ROs" role="1B3o_S" />
       <node concept="3Tqbb2" id="45eRmv04ROt" role="3clF45">
-        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       </node>
       <node concept="3clFbS" id="45eRmv04ROu" role="3clF47">
         <node concept="3clFbF" id="45eRmv04ROv" role="3cqZAp">
           <node concept="1PxgMI" id="45eRmv0ai1X" role="3clFbG">
             <property role="1BlNFB" value="true" />
             <node concept="chp4Y" id="45eRmv0aicU" role="3oSUPX">
-              <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
             </node>
             <node concept="2OqwBi" id="45eRmv04ROw" role="1m5AlR">
               <node concept="1UdQGJ" id="45eRmv04ROx" role="2Oq$k0">
@@ -9292,14 +9292,14 @@
       <property role="TrG5h" value="getEnumDecl" />
       <node concept="3Tm1VV" id="28aPEVv7w3l" role="1B3o_S" />
       <node concept="3Tqbb2" id="28aPEVv7w3w" role="3clF45">
-        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       </node>
       <node concept="3clFbS" id="28aPEVv7w3n" role="3clF47">
         <node concept="3clFbF" id="28aPEVv7w3_" role="3cqZAp">
           <node concept="1PxgMI" id="25DDrfqgQWq" role="3clFbG">
             <property role="1BlNFB" value="true" />
             <node concept="chp4Y" id="25DDrfqgR5A" role="3oSUPX">
-              <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
             </node>
             <node concept="2OqwBi" id="28aPEVv7IMx" role="1m5AlR">
               <node concept="1UdQGJ" id="28aPEVv7BNR" role="2Oq$k0">

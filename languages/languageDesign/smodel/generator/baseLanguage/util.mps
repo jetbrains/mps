@@ -1469,7 +1469,7 @@
             </node>
             <node concept="1mIQ4w" id="45eRmuZZGt7" role="2OqNvi">
               <node concept="chp4Y" id="45eRmuZZGCN" role="cj9EA">
-                <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
               </node>
             </node>
           </node>

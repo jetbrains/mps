@@ -13301,7 +13301,7 @@
           <node concept="2$VJBW" id="1fV" role="385v07">
             <property role="2$VJBR" value="4241665505353448450" />
             <node concept="2x4n5u" id="1fW" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDeclartaion" />
+              <property role="2x4mPI" value="EnumerationDeclaration" />
               <property role="2x4n5l" value="pfrb7wh3p84f" />
               <node concept="2V$Bhx" id="1fX" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -13321,7 +13321,7 @@
           <node concept="2$VJBW" id="1g0" role="385v07">
             <property role="2$VJBR" value="4241665505353448476" />
             <node concept="2x4n5u" id="1g1" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDeclartaion" />
+              <property role="2x4mPI" value="EnumerationDeclaration" />
               <property role="2x4n5l" value="pfrb7wh3p84f" />
               <node concept="2V$Bhx" id="1g2" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -13341,7 +13341,7 @@
           <node concept="2$VJBW" id="1g5" role="385v07">
             <property role="2$VJBR" value="4241665505353448469" />
             <node concept="2x4n5u" id="1g6" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDeclartaion" />
+              <property role="2x4mPI" value="EnumerationDeclaration" />
               <property role="2x4n5l" value="pfrb7wh3p84f" />
               <node concept="2V$Bhx" id="1g7" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -13361,7 +13361,7 @@
           <node concept="2$VJBW" id="1ga" role="385v07">
             <property role="2$VJBR" value="4241665505353448440" />
             <node concept="2x4n5u" id="1gb" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDeclartaion" />
+              <property role="2x4mPI" value="EnumerationDeclaration" />
               <property role="2x4n5l" value="pfrb7wh3p84f" />
               <node concept="2V$Bhx" id="1gc" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />

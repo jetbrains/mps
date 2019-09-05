@@ -442,7 +442,7 @@
       <node id="1178287490257" at="561,0,562,0" concept="11" trace="PoundExpression$zj" />
       <node id="1178287490257" at="562,0,563,0" concept="11" trace="PrimitiveDataTypeDeclaration$id" />
       <node id="1178287490257" at="563,0,564,0" concept="11" trace="EnumerationDataTypeDeclaration_Old$Ll" />
-      <node id="1178287490257" at="564,0,565,0" concept="11" trace="EnumerationDeclartaion$rG" />
+      <node id="1178287490257" at="564,0,565,0" concept="11" trace="EnumerationDeclaration$rG" />
       <node id="1178287490257" at="565,0,566,0" concept="11" trace="AbstractConceptDeclaration$UN" />
       <node id="1178287490257" at="569,0,570,0" concept="11" trace="operation$X4R8" />
       <node id="1178287490257" at="570,0,571,0" concept="11" trace="property$He2" />

@@ -17,7 +17,7 @@ public final class StructureIds_PastePostProcessor_5 implements PastePostProcess
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
-    SNode e = SNodeOperations.as(SNodeOperations.getContainingRoot(pastedNode), CONCEPTS.EnumerationDeclartaion$rG);
+    SNode e = SNodeOperations.as(SNodeOperations.getContainingRoot(pastedNode), CONCEPTS.EnumerationDeclaration$rG);
     if (e != null) {
       ConceptIdSetter.processEnumMember(pastedNode, e);
     }
@@ -25,6 +25,6 @@ public final class StructureIds_PastePostProcessor_5 implements PastePostProcess
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EnumerationMemberDeclaration$Am = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 }

@@ -411,10 +411,10 @@
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
-      <concept id="2453008993612717253" name="jetbrains.mps.lang.smodel.structure.ExpressionEnumBody" flags="ng" index="3X5gDF">
+      <concept id="2453008993612717253" name="jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody_Expression" flags="ng" index="3X5gDF">
         <child id="2453008993612717254" name="expression" index="3X5gDC" />
       </concept>
-      <concept id="2453008993612717152" name="jetbrains.mps.lang.smodel.structure.EnumBody" flags="ng" index="3X5gFe" />
+      <concept id="2453008993612717152" name="jetbrains.mps.lang.smodel.structure.EnumSwitchCaseBody" flags="ng" index="3X5gFe" />
       <concept id="2453008993612559843" name="jetbrains.mps.lang.smodel.structure.EnumSwitchCase" flags="ng" index="3X5Udd">
         <child id="2453008993612717146" name="body" index="3X5gFO" />
         <child id="2453008993612559844" name="members" index="3X5Uda" />
@@ -3328,11 +3328,11 @@
               <node concept="3cpWsn" id="1KtG1wI4HF0" role="3cpWs9">
                 <property role="TrG5h" value="newTargetEnumeration" />
                 <node concept="3Tqbb2" id="1KtG1wI4HF1" role="1tU5fm">
-                  <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                  <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                 </node>
                 <node concept="1PxgMI" id="1KtG1wI4HF2" role="33vP2m">
                   <node concept="chp4Y" id="1KtG1wI4HF3" role="3oSUPX">
-                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                   </node>
                   <node concept="2OqwBi" id="1KtG1wI4HF4" role="1m5AlR">
                     <node concept="2OqwBi" id="1KtG1wI4HF5" role="2Oq$k0">
@@ -3389,7 +3389,7 @@
         </node>
       </node>
       <node concept="3Tqbb2" id="1KtG1wI4HFr" role="3clF45">
-        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       </node>
       <node concept="37vLTG" id="1KtG1wI4HFs" role="3clF46">
         <property role="TrG5h" value="referenceNode" />
@@ -3679,7 +3679,7 @@
               <node concept="3cpWsn" id="2UidVq786Y7" role="3cpWs9">
                 <property role="TrG5h" value="enumm" />
                 <node concept="3Tqbb2" id="2UidVq786XW" role="1tU5fm">
-                  <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                  <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                 </node>
                 <node concept="1rXfSq" id="2UidVq786Y8" role="33vP2m">
                   <ref role="37wK5l" node="LU8F6FTZGm" resolve="replaceWithNewEnum" />
@@ -3982,7 +3982,7 @@
           <node concept="3cpWsn" id="LU8F6FTZGu" role="3cpWs9">
             <property role="TrG5h" value="newEnum" />
             <node concept="3Tqbb2" id="LU8F6FTZGv" role="1tU5fm">
-              <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
             </node>
             <node concept="2OqwBi" id="LU8F6FTZGw" role="33vP2m">
               <node concept="2OqwBi" id="LU8F6FTZGx" role="2Oq$k0">
@@ -3992,7 +3992,7 @@
                 <node concept="I4A8Y" id="LU8F6FTZGz" role="2OqNvi" />
               </node>
               <node concept="2xF2bX" id="LU8F6FTZG$" role="2OqNvi">
-                <ref role="I8UWU" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                <ref role="I8UWU" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
               </node>
             </node>
           </node>
@@ -4315,7 +4315,7 @@
         </node>
       </node>
       <node concept="3Tqbb2" id="LU8F6FTZGp" role="3clF45">
-        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       </node>
       <node concept="37vLTG" id="LU8F6FTZGq" role="3clF46">
         <property role="TrG5h" value="oldEnum" />
@@ -4941,7 +4941,7 @@
       <node concept="37vLTG" id="LU8F6FUaFJ" role="3clF46">
         <property role="TrG5h" value="enumm" />
         <node concept="3Tqbb2" id="LU8F6FUaFK" role="1tU5fm">
-          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
         </node>
       </node>
       <node concept="3Tm1VV" id="LU8F6FUaFH" role="1B3o_S" />
@@ -6920,7 +6920,7 @@
         <property role="TrG5h" value="enumm" />
         <property role="3TUv4t" value="true" />
         <node concept="3Tqbb2" id="LU8F6FULwN" role="1tU5fm">
-          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
         </node>
       </node>
       <node concept="37vLTG" id="LU8F6FULwO" role="3clF46">
@@ -7125,7 +7125,7 @@
         <property role="TrG5h" value="enumm" />
         <property role="3TUv4t" value="true" />
         <node concept="3Tqbb2" id="LU8F6FUezq" role="1tU5fm">
-          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
         </node>
       </node>
       <node concept="37vLTG" id="LU8F6FUezr" role="3clF46">
@@ -7500,7 +7500,7 @@
                 </node>
                 <node concept="1PxgMI" id="LU8F6GjR1u" role="37vLTx">
                   <node concept="chp4Y" id="LU8F6GjR1v" role="3oSUPX">
-                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                   </node>
                   <node concept="2OqwBi" id="LU8F6GjR1w" role="1m5AlR">
                     <node concept="2OqwBi" id="LU8F6GjR1x" role="2Oq$k0">

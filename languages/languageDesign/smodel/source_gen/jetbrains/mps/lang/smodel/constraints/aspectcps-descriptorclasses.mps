@@ -4206,7 +4206,7 @@
                                     <node concept="3cpWsn" id="nN" role="3cpWs9">
                                       <property role="TrG5h" value="enumDelcaration" />
                                       <node concept="3Tqbb2" id="nP" role="1tU5fm">
-                                        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                                        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                                         <node concept="cd27G" id="nS" role="lGtFl">
                                           <node concept="3u3nmq" id="nT" role="cd27D">
                                             <property role="3u3nmv" value="2453008993616595769" />
@@ -4247,7 +4247,7 @@
                                           <node concept="1PxgMI" id="o9" role="37vLTx">
                                             <property role="1BlNFB" value="true" />
                                             <node concept="chp4Y" id="od" role="3oSUPX">
-                                              <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                                              <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                                               <node concept="cd27G" id="og" role="lGtFl">
                                                 <node concept="3u3nmq" id="oh" role="cd27D">
                                                   <property role="3u3nmv" value="4705942098322585495" />
@@ -9672,7 +9672,7 @@
                                     <node concept="3cpWsn" id="T2" role="3cpWs9">
                                       <property role="TrG5h" value="enumm" />
                                       <node concept="3Tqbb2" id="T4" role="1tU5fm">
-                                        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                                        <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                                         <node concept="cd27G" id="T7" role="lGtFl">
                                           <node concept="3u3nmq" id="T8" role="cd27D">
                                             <property role="3u3nmv" value="2528767443165014355" />

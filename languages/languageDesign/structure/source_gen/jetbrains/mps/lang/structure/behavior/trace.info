@@ -48,7 +48,7 @@
       <node id="1075010451642100701" at="96,40,97,19" concept="9" />
       <node id="1075010451642100701" at="101,0,102,0" concept="12" trace="name$tAp1" />
       <node id="1075010451642100701" at="102,0,103,0" concept="12" trace="presentation$aFIS" />
-      <node id="1075010451642100701" at="106,0,107,0" concept="12" trace="EnumerationDeclartaion$rG" />
+      <node id="1075010451642100701" at="106,0,107,0" concept="12" trace="EnumerationDeclaration$rG" />
       <node id="1075010451642100701" at="110,0,111,0" concept="12" trace="defaultMember$iFMB" />
       <node id="1075010451642100701" at="36,0,38,0" concept="13" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1075010451642100701" at="50,0,52,0" concept="2" trace="EnumerationMemberDeclaration__BehaviorDescriptor#()V" />
@@ -742,7 +742,7 @@
       <node id="1213877313721" at="128,0,129,0" concept="12" trace="memberIdentifierPolicy$DUls" />
       <node id="1213877313721" at="129,0,130,0" concept="12" trace="javaIdentifier$Z5f7" />
       <node id="1213877313721" at="133,0,134,0" concept="12" trace="EnumerationDataTypeDeclaration_Old$Ll" />
-      <node id="1213877313721" at="134,0,135,0" concept="12" trace="EnumerationDeclartaion$rG" />
+      <node id="1213877313721" at="134,0,135,0" concept="12" trace="EnumerationDeclaration$rG" />
       <node id="1213877313721" at="138,0,139,0" concept="12" trace="members$qYq2" />
       <node id="1213877313721" at="139,0,140,0" concept="12" trace="oldMember$bvEy" />
       <node id="1213877313721" at="42,0,44,0" concept="13" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />

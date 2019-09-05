@@ -45,7 +45,7 @@ public class check_DataTypeDeclaration_Ids_NonTypesystemRule extends AbstractNon
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
-    } else if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dtd), CONCEPTS.EnumerationDeclartaion$rG)).any(new IWhereFilter<SNode>() {
+    } else if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(dtd), CONCEPTS.EnumerationDeclaration$rG)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it != dtd && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$Bvg3), SPropertyOperations.getString(dtd, PROPS.datatypeId$Bvg3));
       }
@@ -76,7 +76,7 @@ public class check_DataTypeDeclaration_Ids_NonTypesystemRule extends AbstractNon
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EnumMigrationInfo$2L = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept DataTypeDeclaration$KQ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
   }
 

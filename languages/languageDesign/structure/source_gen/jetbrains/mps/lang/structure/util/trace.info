@@ -36,7 +36,7 @@
       <node id="1135871461211125082" at="69,0,70,0" concept="10" trace="propertyDeclaration$lL73" />
       <node id="1135871461211125082" at="70,0,71,0" concept="10" trace="linkDeclaration$lL6$" />
       <node id="1135871461211125082" at="71,0,72,0" concept="10" trace="members$qYq2" />
-      <node id="1135871461211125082" at="75,0,76,0" concept="10" trace="EnumerationDeclartaion$rG" />
+      <node id="1135871461211125082" at="75,0,76,0" concept="10" trace="EnumerationDeclaration$rG" />
       <node id="241647608299568355" at="17,74,20,5" concept="4" />
       <node id="241647608299588393" at="21,0,24,5" concept="3" />
       <node id="241647608299609780" at="25,0,28,5" concept="3" />

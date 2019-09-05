@@ -36,7 +36,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptEnumMigrationInfo = createDescriptorForEnumMigrationInfo();
   /*package*/ final ConceptDescriptor myConceptEnumPropertyMigrationInfo = createDescriptorForEnumPropertyMigrationInfo();
   /*package*/ final ConceptDescriptor myConceptEnumerationDataTypeDeclaration_Old = createDescriptorForEnumerationDataTypeDeclaration_Old();
-  /*package*/ final ConceptDescriptor myConceptEnumerationDeclartaion = createDescriptorForEnumerationDeclartaion();
+  /*package*/ final ConceptDescriptor myConceptEnumerationDeclaration = createDescriptorForEnumerationDeclaration();
   /*package*/ final ConceptDescriptor myConceptEnumerationMemberDeclaration = createDescriptorForEnumerationMemberDeclaration();
   /*package*/ final ConceptDescriptor myConceptEnumerationMemberDeclaration_Old = createDescriptorForEnumerationMemberDeclaration_Old();
   /*package*/ final ConceptDescriptor myConceptExperimentalAPINodeAttribute = createDescriptorForExperimentalAPINodeAttribute();
@@ -78,7 +78,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclartaion, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
+    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclaration, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
   }
 
   @Override
@@ -117,8 +117,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptEnumPropertyMigrationInfo;
       case LanguageConceptSwitch.EnumerationDataTypeDeclaration_Old:
         return myConceptEnumerationDataTypeDeclaration_Old;
-      case LanguageConceptSwitch.EnumerationDeclartaion:
-        return myConceptEnumerationDeclartaion;
+      case LanguageConceptSwitch.EnumerationDeclaration:
+        return myConceptEnumerationDeclaration;
       case LanguageConceptSwitch.EnumerationMemberDeclaration:
         return myConceptEnumerationMemberDeclaration;
       case LanguageConceptSwitch.EnumerationMemberDeclaration_Old:
@@ -349,8 +349,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("Enum Data Type");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForEnumerationDeclartaion() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumerationDeclartaion", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL);
+  private static ConceptDescriptor createDescriptorForEnumerationDeclaration() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumerationDeclaration", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL);
     b.class_(true, false, true);
     b.super_("jetbrains.mps.lang.structure.structure.DataTypeDeclaration", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L);

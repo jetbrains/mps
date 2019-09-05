@@ -41,7 +41,7 @@ public final class EnumSwitchExpression__BehaviorDescriptor extends BaseBHDescri
     return true;
   }
   /*package*/ static SNode getEnumDecl_id28aPEVv7w3k(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.enumExpression$4kEb)), CONCEPTS.SEnumerationMemberType$rH), LINKS.enum$WChI), CONCEPTS.EnumerationDeclartaion$rG);
+    return SNodeOperations.as(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.enumExpression$4kEb)), CONCEPTS.SEnumerationMemberType$rH), LINKS.enum$WChI), CONCEPTS.EnumerationDeclaration$rG);
   }
   /*package*/ static boolean evaluatesValue_id28aPEVwg1gU(@NotNull SNode __thisNode__) {
     SNode parent = SNodeOperations.getParent(__thisNode__);
@@ -108,7 +108,7 @@ public final class EnumSwitchExpression__BehaviorDescriptor extends BaseBHDescri
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SEnumerationMemberType$rH = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bfe51421L, "jetbrains.mps.lang.smodel.structure.SEnumerationMemberType");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
   }
 }

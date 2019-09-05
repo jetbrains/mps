@@ -43,7 +43,7 @@ public class ConceptIdSetter {
   public static void processDatatype(SNode root, SModel m) {
     SPropertyOperations.assign(root, PROPS.datatypeId$Bvg3, ConceptIdHelper.generateDatatypeId(m, root) + "");
 
-    SNode enumm = SNodeOperations.as(root, CONCEPTS.EnumerationDeclartaion$rG);
+    SNode enumm = SNodeOperations.as(root, CONCEPTS.EnumerationDeclaration$rG);
     for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumm, LINKS.members$qYq2))) {
       processEnumMember(member, enumm);
     }
@@ -72,6 +72,6 @@ public class ConceptIdSetter {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 }

@@ -1240,7 +1240,7 @@
       <node id="8460355373818766253" at="132,0,133,0" concept="10" trace="dataType$fLUl" />
       <node id="8460355373818766253" at="133,0,134,0" concept="10" trace="expression$NDf$" />
       <node id="8460355373818766253" at="134,0,135,0" concept="10" trace="expression$kIm0" />
-      <node id="8460355373818766253" at="138,0,139,0" concept="10" trace="EnumerationDeclartaion$rG" />
+      <node id="8460355373818766253" at="138,0,139,0" concept="10" trace="EnumerationDeclaration$rG" />
       <node id="8460355373818766253" at="139,0,140,0" concept="10" trace="NodeBuilderInitProperty$wV" />
       <node id="8460355373818766253" at="140,0,141,0" concept="10" trace="PropertyAntiquotation$v" />
       <node id="8460355373818766253" at="141,0,142,0" concept="10" trace="EnumPropertyMigrationInfo$Yg" />

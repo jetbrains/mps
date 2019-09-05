@@ -3650,12 +3650,12 @@
                       <node concept="3cpWsn" id="20cGABpPW7m" role="3cpWs9">
                         <property role="TrG5h" value="newEnum" />
                         <node concept="3Tqbb2" id="20cGABpPW7g" role="1tU5fm">
-                          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                         </node>
                         <node concept="1PxgMI" id="20cGABpQtLO" role="33vP2m">
                           <property role="1BlNFB" value="true" />
                           <node concept="chp4Y" id="20cGABpQtPR" role="3oSUPX">
-                            <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                            <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                           </node>
                           <node concept="2OqwBi" id="20cGABpQ1M8" role="1m5AlR">
                             <node concept="37vLTw" id="20cGABpPWoV" role="2Oq$k0">

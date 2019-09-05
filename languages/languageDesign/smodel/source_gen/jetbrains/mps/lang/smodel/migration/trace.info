@@ -798,7 +798,7 @@
       <node id="2309416876627493202" at="1203,0,1204,0" concept="13" trace="IntegerConstant$mo" />
       <node id="2309416876627493202" at="1204,0,1205,0" concept="13" trace="BooleanConstant$Ui" />
       <node id="2309416876627493202" at="1205,0,1206,0" concept="13" trace="SEnumerationMemberType$rH" />
-      <node id="2309416876627493202" at="1206,0,1207,0" concept="13" trace="EnumerationDeclartaion$rG" />
+      <node id="2309416876627493202" at="1206,0,1207,0" concept="13" trace="EnumerationDeclaration$rG" />
       <node id="2309416876627493202" at="1207,0,1208,0" concept="13" trace="StaticMethodDeclaration$eX" />
       <node id="2309416876627493202" at="1208,0,1209,0" concept="13" trace="ClassConcept$IY" />
       <node id="2309416876627493202" at="1209,0,1210,0" concept="13" trace="NPEEqualsExpression$dK" />
@@ -6315,7 +6315,7 @@
       <node id="6491077959642942223" at="353,0,354,0" concept="13" trace="SEnumerationMemberType$rH" />
       <node id="6491077959642942223" at="354,0,355,0" concept="13" trace="EnumerationDataTypeDeclaration_Old$Ll" />
       <node id="6491077959642942223" at="355,0,356,0" concept="13" trace="DotExpression$6a" />
-      <node id="6491077959642942223" at="356,0,357,0" concept="13" trace="EnumerationDeclartaion$rG" />
+      <node id="6491077959642942223" at="356,0,357,0" concept="13" trace="EnumerationDeclaration$rG" />
       <node id="6491077959642942223" at="357,0,358,0" concept="13" trace="SEnum_MembersOperation_Old$eF" />
       <node id="6491077959642942223" at="358,0,359,0" concept="13" trace="SEnum_MemberOperation_Old$l2" />
       <node id="6491077959642942223" at="359,0,360,0" concept="13" trace="SEnum_MemberForValueOperation_Old$M3" />

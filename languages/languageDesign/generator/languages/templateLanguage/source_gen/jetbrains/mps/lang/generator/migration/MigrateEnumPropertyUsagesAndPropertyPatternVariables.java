@@ -53,7 +53,7 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
       for (SNode propertyMacro : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.PropertyMacro$wt, false))) {
         SNode newProperty = migration.migrateEnumPropertyAttribute(propertyMacro);
         if (newProperty != null) {
-          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclartaion$rG);
+          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
           migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyMacro, LINKS.propertyValueFunction$AFdB));
         }
       }
@@ -115,7 +115,7 @@ public class MigrateEnumPropertyUsagesAndPropertyPatternVariables extends Migrat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept PropertyMacro$wt = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro");
     /*package*/ static final SConcept TemplateArgumentPropertyPatternRefExpression$PN = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPropertyPatternRefExpression");
     /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");

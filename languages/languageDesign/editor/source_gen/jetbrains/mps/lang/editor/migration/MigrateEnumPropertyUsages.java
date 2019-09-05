@@ -68,7 +68,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
       for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_TransactionalProperty$oo, false))) {
         SNode prop = migration.migratePropertyReference(node, LINKS.property$p2l_);
 
-        SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(prop, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclartaion$rG);
+        SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(prop, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
         for (SNode newValue : ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(node, LINKS.handlerBlock$XyaY), CONCEPTS.TransactionPropertyHandler_newValue$Y, false, new SAbstractConcept[]{}))) {
           migration.downgradeExpressionType(enumm, newValue);
         }
@@ -186,7 +186,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
     /*package*/ static final SConcept CellModel_Property$iE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
     /*package*/ static final SConcept CellModel_URL$Fw = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x334adf8cb15f3fdeL, "jetbrains.mps.lang.editor.structure.CellModel_URL");
     /*package*/ static final SConcept PropertyDeclarationCellSelector$M4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept TransactionPropertyHandler_newValue$Y = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f75b6dL, "jetbrains.mps.lang.editor.structure.TransactionPropertyHandler_newValue");
     /*package*/ static final SConcept TransactionPropertyHandler_oldValue$Wx = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f6e2acL, "jetbrains.mps.lang.editor.structure.TransactionPropertyHandler_oldValue");
     /*package*/ static final SConcept CellModel_TransactionalProperty$oo = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, "jetbrains.mps.lang.editor.structure.CellModel_TransactionalProperty");

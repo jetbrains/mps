@@ -1959,7 +1959,7 @@
                     <node concept="1PxgMI" id="9A" role="37wK5m">
                       <property role="1BlNFB" value="true" />
                       <node concept="chp4Y" id="9D" role="3oSUPX">
-                        <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                        <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                         <node concept="cd27G" id="9G" role="lGtFl">
                           <node concept="3u3nmq" id="9H" role="cd27D">
                             <property role="3u3nmv" value="1421157252384311164" />
@@ -12582,7 +12582,7 @@
                   </node>
                 </node>
                 <node concept="2RRcyG" id="1ae" role="2OqNvi">
-                  <ref role="2RRcyH" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                  <ref role="2RRcyH" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                   <node concept="cd27G" id="1ao" role="lGtFl">
                     <node concept="3u3nmq" id="1ap" role="cd27D">
                       <property role="3u3nmv" value="7791109065627055962" />
@@ -19154,7 +19154,7 @@
       <node concept="3clFbS" id="1Ne" role="3clF47">
         <node concept="3cpWs6" id="1Nj" role="3cqZAp">
           <node concept="35c_gC" id="1Nl" role="3cqZAk">
-            <ref role="35c_gD" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+            <ref role="35c_gD" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
             <node concept="cd27G" id="1Nn" role="lGtFl">
               <node concept="3u3nmq" id="1No" role="cd27D">
                 <property role="3u3nmv" value="1075010451650513843" />
@@ -19564,7 +19564,7 @@
           <node concept="3cpWsn" id="1PX" role="3cpWs9">
             <property role="TrG5h" value="ed" />
             <node concept="3Tqbb2" id="1PZ" role="1tU5fm">
-              <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
               <node concept="cd27G" id="1Q2" role="lGtFl">
                 <node concept="3u3nmq" id="1Q3" role="cd27D">
                   <property role="3u3nmv" value="1421157252384351781" />
@@ -19574,7 +19574,7 @@
             <node concept="1PxgMI" id="1Q0" role="33vP2m">
               <property role="1BlNFB" value="true" />
               <node concept="chp4Y" id="1Q4" role="3oSUPX">
-                <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                 <node concept="cd27G" id="1Q7" role="lGtFl">
                   <node concept="3u3nmq" id="1Q8" role="cd27D">
                     <property role="3u3nmv" value="1421157252384351788" />

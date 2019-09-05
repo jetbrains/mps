@@ -1757,7 +1757,7 @@
               <node concept="1PxgMI" id="54m$yuE00N1" role="2Oq$k0">
                 <property role="1BlNFB" value="true" />
                 <node concept="chp4Y" id="54m$yuE00Ob" role="3oSUPX">
-                  <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                  <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                 </node>
                 <node concept="2OqwBi" id="54m$yuDZZiH" role="1m5AlR">
                   <node concept="2OqwBi" id="54m$yuDZYwA" role="2Oq$k0">
@@ -6158,7 +6158,7 @@
               <node concept="1PxgMI" id="VFd4X$DLvs" role="2Oq$k0">
                 <property role="1BlNFB" value="true" />
                 <node concept="chp4Y" id="25DDrfqh4Zc" role="3oSUPX">
-                  <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                  <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                 </node>
                 <node concept="2OqwBi" id="VFd4X$DLvu" role="1m5AlR">
                   <node concept="13iPFW" id="VFd4X$DLvv" role="2Oq$k0" />

@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class EnumerationDeclartaion_Editor extends DefaultNodeEditor {
+public class EnumerationDeclaration_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new EnumerationDeclartaion_EditorBuilder_a(editorContext, node).createCell();
+    return new EnumerationDeclaration_EditorBuilder_a(editorContext, node).createCell();
   }
 }

@@ -5666,7 +5666,7 @@
           </node>
         </node>
         <node concept="Jncv_" id="4uA70LEmya7" role="3cqZAp">
-          <ref role="JncvD" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+          <ref role="JncvD" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
           <node concept="37vLTw" id="4uA70LEmyGP" role="JncvB">
             <ref role="3cqZAo" node="4uA70LEglUy" resolve="datatype" />
           </node>

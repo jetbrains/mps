@@ -131,7 +131,7 @@
       <node id="2309416876630286921" at="92,0,93,0" concept="12" trace="applicableProperty$j$lM" />
       <node id="2309416876630286921" at="93,0,94,0" concept="12" trace="dataType$fLUl" />
       <node id="2309416876630286921" at="94,0,95,0" concept="12" trace="propertyGetter$hqdQ" />
-      <node id="2309416876630286921" at="98,0,99,0" concept="12" trace="EnumerationDeclartaion$rG" />
+      <node id="2309416876630286921" at="98,0,99,0" concept="12" trace="EnumerationDeclaration$rG" />
       <node id="2309416876630286921" at="99,0,100,0" concept="12" trace="ConstraintsFunctionParameter_propertyValue$Vd" />
       <node id="2309416876630286921" at="100,0,101,0" concept="12" trace="NodePropertyConstraint$pW" />
       <node id="2309416876630286921" at="101,0,102,0" concept="12" trace="EnumPropertyMigrationInfo$Yg" />

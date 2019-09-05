@@ -51,7 +51,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
       for (SNode propertyConstraint : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePropertyConstraint$pW, false))) {
         SNode newProperty = migration.migratePropertyReference(propertyConstraint, LINKS.applicableProperty$j$lM);
         if (newProperty != null) {
-          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclartaion$rG);
+          SNode newEnum = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
 
           migration.upgradeQueryReturnExpressions(newEnum, SLinkOperations.getTarget(propertyConstraint, LINKS.propertyGetter$hqdQ));
           for (SNode propertyValue : ListSequence.fromList(SNodeOperations.getNodeDescendants(propertyConstraint, CONCEPTS.ConstraintsFunctionParameter_propertyValue$Vd, false, new SAbstractConcept[]{}))) {
@@ -95,7 +95,7 @@ public class MigrateEnumPropertyUsages extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept ConstraintsFunctionParameter_propertyValue$Vd = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10c7c69f5aeL, "jetbrains.mps.lang.constraints.structure.ConstraintsFunctionParameter_propertyValue");
     /*package*/ static final SConcept NodePropertyConstraint$pW = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, "jetbrains.mps.lang.constraints.structure.NodePropertyConstraint");
     /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");

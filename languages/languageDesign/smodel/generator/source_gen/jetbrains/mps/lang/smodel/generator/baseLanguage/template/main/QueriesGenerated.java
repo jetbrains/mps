@@ -1072,7 +1072,7 @@ public class QueriesGenerated {
   public static Object referenceMacro_GetReferent_130_0(final ReferenceMacroContext _context) {
     // shall return pointer to a method with 2 arguments - node, property 
     SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.property$He2), LINKS.dataType$fLUl);
-    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclartaion$rG)) {
+    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclaration$rG)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "5162844862476468451");
     }
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleIntegerOrEnumOfInteger_idhKtGTZR.invoke(datatype)) {
@@ -1087,7 +1087,7 @@ public class QueriesGenerated {
   public static Object referenceMacro_GetReferent_130_1(final ReferenceMacroContext _context) {
     // shall return pointer to a method with 2 arguments - node, property 
     SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.property$He2), LINKS.dataType$fLUl);
-    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclartaion$rG)) {
+    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclaration$rG)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "5162844862476672560");
     }
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleIntegerOrEnumOfInteger_idhKtGTZR.invoke(datatype)) {
@@ -1101,7 +1101,7 @@ public class QueriesGenerated {
   public static Object referenceMacro_GetReferent_130_2(final ReferenceMacroContext _context) {
     // shall return pointer to a method with 3 arguments - node, property, value 
     SNode datatype = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.property$He2), LINKS.dataType$fLUl);
-    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclartaion$rG)) {
+    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclaration$rG)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "5162844862476597943");
     }
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleIntegerOrEnumOfInteger_idhKtGTZR.invoke(datatype)) {
@@ -1115,7 +1115,7 @@ public class QueriesGenerated {
   }
   public static Object referenceMacro_GetReferent_134_0(final ReferenceMacroContext _context) {
     SNode type = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(_context.getNode()), CONCEPTS.SPropertyAccess$bD), LINKS.property$He2), LINKS.dataType$fLUl);
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.EnumerationDeclartaion$rG)) {
+    if (SNodeOperations.isInstanceOf(type, CONCEPTS.EnumerationDeclaration$rG)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "5162844862476559566");
     }
     if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleBooleanOrEnumOfBoolean_idhKtGY3g.invoke(type)) {
@@ -2785,7 +2785,7 @@ public class QueriesGenerated {
     /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
     /*package*/ static final SConcept ConceptSwitchStatement$9V = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x527e98a73771f42dL, "jetbrains.mps.lang.smodel.structure.ConceptSwitchStatement");
     /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
     /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");

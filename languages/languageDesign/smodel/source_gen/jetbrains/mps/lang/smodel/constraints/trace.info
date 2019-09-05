@@ -1534,7 +1534,7 @@
       <node id="4705942098322467901" at="80,0,81,0" concept="9" trace="EnumMemberReference$9_" />
       <node id="4705942098322467901" at="81,0,82,0" concept="9" trace="Property_SetOperation$mX" />
       <node id="4705942098322467901" at="82,0,83,0" concept="9" trace="SPropertyAccess$bD" />
-      <node id="4705942098322467901" at="83,0,84,0" concept="9" trace="EnumerationDeclartaion$rG" />
+      <node id="4705942098322467901" at="83,0,84,0" concept="9" trace="EnumerationDeclaration$rG" />
       <node id="4705942098322467901" at="84,0,85,0" concept="9" trace="EnumMember_IsOperation$fO" />
       <node id="4705942098322467901" at="85,0,86,0" concept="9" trace="EnumSwitchExpression$R0" />
       <node id="4705942098322467901" at="86,0,87,0" concept="9" trace="EnumSwitchCase$37" />

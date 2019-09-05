@@ -321,7 +321,7 @@
       <node id="5834820604012870139" at="32,151,33,146" concept="9" />
       <node id="8673913621388780663" at="35,151,36,146" concept="9" />
       <node id="5834820604012870155" at="37,5,38,144" concept="9" />
-      <node id="8673913621388594827" at="42,0,43,0" concept="11" trace="EnumerationDeclartaion$rG" />
+      <node id="8673913621388594827" at="42,0,43,0" concept="11" trace="EnumerationDeclaration$rG" />
       <node id="8673913621388594827" at="43,0,44,0" concept="11" trace="EnumerationDataTypeDeclaration_Old$Ll" />
       <node id="8673913621388594827" at="47,0,48,0" concept="11" trace="memberDataType$IU7B" />
       <node id="8673913621388594989" at="15,0,17,0" concept="2" trace="PropertiesUtil#()V" />

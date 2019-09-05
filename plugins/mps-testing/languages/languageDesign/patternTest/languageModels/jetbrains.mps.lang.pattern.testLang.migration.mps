@@ -302,7 +302,7 @@
                         <node concept="37vLTG" id="1KtG1wHReBs" role="3clF46">
                           <property role="TrG5h" value="enumeration" />
                           <node concept="3Tqbb2" id="1KtG1wHReBt" role="1tU5fm">
-                            <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                            <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                           </node>
                         </node>
                         <node concept="3clFbS" id="1KtG1wHReBu" role="3clF47">

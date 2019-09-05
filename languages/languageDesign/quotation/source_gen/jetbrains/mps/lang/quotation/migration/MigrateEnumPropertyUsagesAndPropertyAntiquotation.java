@@ -56,7 +56,7 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
       for (SNode propertyInit : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilderInitProperty$wV, false))) {
         SNode newProperty = migration.migratePropertyReference(propertyInit, LINKS.property$NCMw);
         if (newProperty != null) {
-          SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclartaion$rG);
+          SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
           migration.upgradeExpressionType(enumm, SLinkOperations.getTarget(propertyInit, LINKS.expression$NDf$));
         }
       }
@@ -69,7 +69,7 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
         }
 
         SNode newProperty = migration.migrateEnumPropertyAttribute(propertyAntiquotation);
-        SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclartaion$rG);
+        SNode enumm = SNodeOperations.as(SLinkOperations.getTarget(newProperty, LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
         migration.upgradeExpressionType(enumm, SLinkOperations.getTarget(propertyAntiquotation, LINKS.expression$kIm0));
       }
     }
@@ -135,7 +135,7 @@ public class MigrateEnumPropertyUsagesAndPropertyAntiquotation extends Migration
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept NodeBuilderInitProperty$wV = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
     /*package*/ static final SConcept PropertyAntiquotation$v = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation");
     /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");

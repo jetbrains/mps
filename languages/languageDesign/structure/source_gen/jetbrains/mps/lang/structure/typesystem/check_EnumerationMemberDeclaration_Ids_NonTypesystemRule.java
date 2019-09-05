@@ -32,7 +32,7 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
       return;
     }
 
-    SNode ed = SNodeOperations.as(SNodeOperations.getParent(emd), CONCEPTS.EnumerationDeclartaion$rG);
+    SNode ed = SNodeOperations.as(SNodeOperations.getParent(emd), CONCEPTS.EnumerationDeclaration$rG);
 
     if (isEmptyString(SPropertyOperations.getString(emd, PROPS.memberId$d5NS))) {
       {
@@ -76,7 +76,7 @@ public class check_EnumerationMemberDeclaration_Ids_NonTypesystemRule extends Ab
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept EnumerationMemberDeclaration$Am = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
   }
 

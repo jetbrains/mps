@@ -91,7 +91,7 @@
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.ConstrainedDataTypeDeclaration_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.DataTypeDeclaration_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.EnumerationDataTypeDeclaration_Old_Constraints" />
-    <classNode dependClassName="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints" />
+    <classNode dependClassName="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.EnumerationMemberDeclaration_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.ExperimentalAPINodeAttribute_Constraints" />
     <classNode dependClassName="jetbrains.mps.lang.structure.constraints.INamedLanguageElement_Constraints" />
@@ -204,7 +204,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints">
+  <dependency className="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.HashMap" />

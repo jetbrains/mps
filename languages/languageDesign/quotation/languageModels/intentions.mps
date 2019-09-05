@@ -2253,7 +2253,7 @@
                                 <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/5779574625830813396/5779574625830813397" />
                                 <node concept="1PxgMI" id="2ucOSYgcGCE" role="2c44t1">
                                   <node concept="chp4Y" id="2ucOSYgcGFF" role="3oSUPX">
-                                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                                   </node>
                                   <node concept="37vLTw" id="2ucOSYgcGxN" role="1m5AlR">
                                     <ref role="3cqZAo" node="3v7fNhWfNYP" resolve="dataType" />
@@ -2334,7 +2334,7 @@
                     </node>
                     <node concept="1mIQ4w" id="2ucOSYgc_8N" role="2OqNvi">
                       <node concept="chp4Y" id="2ucOSYgc_Yd" role="cj9EA">
-                        <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                        <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                       </node>
                     </node>
                   </node>

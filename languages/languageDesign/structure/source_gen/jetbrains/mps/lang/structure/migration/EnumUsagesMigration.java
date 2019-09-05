@@ -28,7 +28,7 @@ public class EnumUsagesMigration {
   public SNode migrateEnumReference(SNode referenceNode, SReferenceLink link) {
     SNode targetEnumeration = SNodeOperations.as(referenceNode.getReferenceTarget(link), CONCEPTS.IEnumeration$Se);
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(targetEnumeration), CONCEPTS.EnumMigrationInfo$2L)) {
-      SNode newTargetEnumeration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(targetEnumeration)), CONCEPTS.EnumerationDeclartaion$rG);
+      SNode newTargetEnumeration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(targetEnumeration)), CONCEPTS.EnumerationDeclaration$rG);
       referenceNode.setReferenceTarget(link, newTargetEnumeration);
       return newTargetEnumeration;
     }
@@ -48,7 +48,7 @@ public class EnumUsagesMigration {
     /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
     /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
     /*package*/ static final SInterfaceConcept IEnumeration$Se = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L, "jetbrains.mps.lang.structure.structure.IEnumeration");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept EnumMigrationInfo$2L = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
   }
 

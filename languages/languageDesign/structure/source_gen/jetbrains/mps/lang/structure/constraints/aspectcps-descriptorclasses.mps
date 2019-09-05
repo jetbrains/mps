@@ -5478,7 +5478,7 @@
             <node concept="3clFbS" id="uo" role="1pnPq1">
               <node concept="3cpWs6" id="uq" role="3cqZAp">
                 <node concept="1nCR9W" id="ur" role="3cqZAk">
-                  <property role="1nD$Q0" value="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints" />
+                  <property role="1nD$Q0" value="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints" />
                   <node concept="3uibUv" id="us" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
@@ -5486,7 +5486,7 @@
               </node>
             </node>
             <node concept="3gn64h" id="up" role="1pnPq6">
-              <ref role="3gnhBz" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+              <ref role="3gnhBz" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
             </node>
           </node>
           <node concept="1pnPoh" id="tz" role="1_3QMm">
@@ -12896,7 +12896,7 @@
   </node>
   <node concept="312cEu" id="1c6">
     <property role="3GE5qa" value="enums" />
-    <property role="TrG5h" value="EnumerationDeclartaion_Constraints" />
+    <property role="TrG5h" value="EnumerationDeclaration_Constraints" />
     <node concept="3Tm1VV" id="1c7" role="1B3o_S">
       <node concept="cd27G" id="1cf" role="lGtFl">
         <node concept="3u3nmq" id="1cg" role="cd27D">
@@ -12925,7 +12925,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="1BaE9c" id="1cr" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
-            <property role="1BaxDp" value="EnumerationDeclartaion$rG" />
+            <property role="1BaxDp" value="EnumerationDeclaration$rG" />
             <node concept="2YIFZM" id="1ct" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
@@ -12954,7 +12954,7 @@
                 </node>
               </node>
               <node concept="Xl_RD" id="1cy" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" />
+                <property role="Xl_RC" value="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" />
                 <node concept="cd27G" id="1cE" role="lGtFl">
                   <node concept="3u3nmq" id="1cF" role="cd27D">
                     <property role="3u3nmv" value="1075010451653674063" />

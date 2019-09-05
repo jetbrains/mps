@@ -381,7 +381,7 @@
       <node id="669686131486621696" at="64,52,65,17" concept="7" />
       <node id="669686131486621693" at="68,42,69,21" concept="6" />
       <node id="669686131486571737" at="76,41,77,162" concept="6" />
-      <node id="669686131486571737" at="81,0,82,0" concept="8" trace="EnumerationDeclartaion$rG" />
+      <node id="669686131486571737" at="81,0,82,0" concept="8" trace="EnumerationDeclaration$rG" />
       <node id="669686131486571737" at="82,0,83,0" concept="8" trace="EnumMigrationInfo$2L" />
       <node id="669686131486571737" at="83,0,84,0" concept="8" trace="PropertyDeclaration$c5" />
       <node id="669686131486571737" at="84,0,85,0" concept="8" trace="EnumPropertyMigrationInfo$Yg" />

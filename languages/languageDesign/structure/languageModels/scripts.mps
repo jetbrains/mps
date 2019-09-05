@@ -974,7 +974,7 @@
     <property role="_Wzho" value="Enumeration Migration" />
     <node concept="_XfAh" id="_bcZOagSfO" role="_YvDr">
       <property role="_XH9r" value="Find Migrated Enumerations" />
-      <ref role="_XDHR" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <ref role="_XDHR" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       <node concept="_ZGcI" id="_bcZOagSfQ" role="_XPhp">
         <node concept="3clFbS" id="_bcZOagSfS" role="2VODD2">
           <node concept="3SKdUt" id="_bcZOagZjX" role="3cqZAp">

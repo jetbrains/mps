@@ -44,7 +44,7 @@
       <node id="2025969025281435739" at="80,0,81,0" concept="10" trace="stringValueMigrated$gFe8" />
       <node id="2025969025281435739" at="81,0,82,0" concept="10" trace="enumUsageMigrated$lY$m" />
       <node id="2025969025281435739" at="85,0,86,0" concept="10" trace="PropertyDeclaration$c5" />
-      <node id="2025969025281435739" at="86,0,87,0" concept="10" trace="EnumerationDeclartaion$rG" />
+      <node id="2025969025281435739" at="86,0,87,0" concept="10" trace="EnumerationDeclaration$rG" />
       <node id="2025969025281435739" at="87,0,88,0" concept="10" trace="EnumPropertyMigrationInfo$Yg" />
       <node id="2025969025281217727" at="49,0,52,5" concept="3" />
       <node id="2025969025281239604" at="52,5,55,5" concept="3" />

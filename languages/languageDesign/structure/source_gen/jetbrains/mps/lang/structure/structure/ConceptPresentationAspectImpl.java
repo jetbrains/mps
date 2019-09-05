@@ -25,7 +25,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_EnumMigrationInfo;
   private ConceptPresentation props_EnumPropertyMigrationInfo;
   private ConceptPresentation props_EnumerationDataTypeDeclaration_Old;
-  private ConceptPresentation props_EnumerationDeclartaion;
+  private ConceptPresentation props_EnumerationDeclaration;
   private ConceptPresentation props_EnumerationMemberDeclaration;
   private ConceptPresentation props_EnumerationMemberDeclaration_Old;
   private ConceptPresentation props_ExperimentalAPINodeAttribute;
@@ -164,14 +164,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_EnumerationDataTypeDeclaration_Old = cpb.create();
         }
         return props_EnumerationDataTypeDeclaration_Old;
-      case LanguageConceptSwitch.EnumerationDeclartaion:
-        if (props_EnumerationDeclartaion == null) {
+      case LanguageConceptSwitch.EnumerationDeclaration:
+        if (props_EnumerationDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.icon(IconContainer.RESOURCE_a0a2a0a61b0ib);
-          props_EnumerationDeclartaion = cpb.create();
+          props_EnumerationDeclaration = cpb.create();
         }
-        return props_EnumerationDeclartaion;
+        return props_EnumerationDeclaration;
       case LanguageConceptSwitch.EnumerationMemberDeclaration:
         if (props_EnumerationMemberDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L);

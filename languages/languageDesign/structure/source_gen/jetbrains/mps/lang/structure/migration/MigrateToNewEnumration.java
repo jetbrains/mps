@@ -131,7 +131,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
 
 
   public static SNode replaceWithNewEnum(SNode oldEnum) {
-    SNode newEnum = SModelOperations.createNewRootNode(SNodeOperations.getModel(oldEnum), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion"));
+    SNode newEnum = SModelOperations.createNewRootNode(SNodeOperations.getModel(oldEnum), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration"));
     SPropertyOperations.assign(newEnum, PROPS.name$tAp1, SPropertyOperations.getString(oldEnum, PROPS.name$tAp1));
     SPropertyOperations.assign(newEnum, PROPS.virtualPackage$j19t, SPropertyOperations.getString(oldEnum, PROPS.virtualPackage$j19t));
     SPropertyOperations.assign(newEnum, PROPS.datatypeId$Bvg3, SPropertyOperations.getString(oldEnum, PROPS.datatypeId$Bvg3));

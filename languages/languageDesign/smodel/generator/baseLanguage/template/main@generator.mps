@@ -23156,7 +23156,7 @@
                   </node>
                   <node concept="1mIQ4w" id="45eRmuZZLt3" role="2OqNvi">
                     <node concept="chp4Y" id="45eRmuZZLt4" role="cj9EA">
-                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                     </node>
                   </node>
                 </node>
@@ -23339,7 +23339,7 @@
                   </node>
                   <node concept="1mIQ4w" id="45eRmuZZGt7" role="2OqNvi">
                     <node concept="chp4Y" id="45eRmuZZGCN" role="cj9EA">
-                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                     </node>
                   </node>
                 </node>
@@ -23524,7 +23524,7 @@
                   </node>
                   <node concept="1mIQ4w" id="45eRmuZZMnU" role="2OqNvi">
                     <node concept="chp4Y" id="45eRmuZZMnV" role="cj9EA">
-                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                     </node>
                   </node>
                 </node>
@@ -24003,7 +24003,7 @@
                 </node>
                 <node concept="1mIQ4w" id="4uA70LEoI6y" role="2OqNvi">
                   <node concept="chp4Y" id="4uA70LEoI6z" role="cj9EA">
-                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                    <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                   </node>
                 </node>
               </node>
@@ -24277,7 +24277,7 @@
     </node>
     <node concept="3aamgX" id="7DKVVH$LtQv" role="3aUrZf">
       <property role="36QftV" value="true" />
-      <ref role="30HIoZ" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <ref role="30HIoZ" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       <node concept="gft3U" id="7DKVVH$LtQw" role="1lVwrX">
         <node concept="2YIFZM" id="5xOmJgD9WjP" role="gfFT$">
           <ref role="37wK5l" to="i8bi:7DKVVH$LEUq" resolve="serializeEnummember" />
@@ -24467,7 +24467,7 @@
     </node>
     <node concept="3aamgX" id="5xOmJgD968G" role="3aUrZf">
       <property role="36QftV" value="true" />
-      <ref role="30HIoZ" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <ref role="30HIoZ" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       <node concept="gft3U" id="5xOmJgDa569" role="1lVwrX">
         <node concept="2YIFZM" id="5xOmJgDa7Qh" role="gfFT$">
           <ref role="37wK5l" to="i8bi:5xOmJgD7$SW" resolve="deserializeEnummember" />
@@ -25680,7 +25680,7 @@
   </node>
   <node concept="13MO4I" id="2fQWAX_K6Mv">
     <property role="TrG5h" value="reduce_EnumerationDeclaration_SEnumeration" />
-    <ref role="3gUMe" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+    <ref role="3gUMe" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
     <node concept="2YIFZM" id="2fQWAX_K8HI" role="13RCb5">
       <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getEnumeration(long,long,long,java.lang.String):org.jetbrains.mps.openapi.language.SEnumeration" resolve="getEnumeration" />
       <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />

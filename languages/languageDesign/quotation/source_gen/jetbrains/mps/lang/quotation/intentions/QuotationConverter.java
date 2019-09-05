@@ -100,8 +100,8 @@ public class QuotationConverter {
         SLinkOperations.setTarget(pval, LINKS.initValue$nhHN, _quotation_createNode_aytayy_a0a0a0a0f0f(Integer.parseInt(value)));
       } else if ((boolean) DataTypeDeclaration__BehaviorDescriptor.isSimpleStringOrEnumOfString_idhKtGPCt.invoke(dataType)) {
         SLinkOperations.setTarget(pval, LINKS.initValue$nhHN, _quotation_createNode_aytayy_a0a0b0a0f0f(value));
-      } else if (SNodeOperations.isInstanceOf(dataType, CONCEPTS.EnumerationDeclartaion$rG)) {
-        SLinkOperations.setTarget(pval, LINKS.initValue$nhHN, _quotation_createNode_aytayy_a0a0c0a0f0f(SNodeOperations.cast(dataType, CONCEPTS.EnumerationDeclartaion$rG), SNodeOperations.cast(check_aytayy_a1a0a0a2a0a5a5(check_aytayy_a0b0a0a0c0a0f0f(as_aytayy_a0a0b2a0a2a0a5a6(property.getType().fromString(value), SEnumerationLiteral.class)), pval), CONCEPTS.EnumerationMemberDeclaration$Am)));
+      } else if (SNodeOperations.isInstanceOf(dataType, CONCEPTS.EnumerationDeclaration$rG)) {
+        SLinkOperations.setTarget(pval, LINKS.initValue$nhHN, _quotation_createNode_aytayy_a0a0c0a0f0f(SNodeOperations.cast(dataType, CONCEPTS.EnumerationDeclaration$rG), SNodeOperations.cast(check_aytayy_a1a0a0a2a0a5a5(check_aytayy_a0b0a0a0c0a0f0f(as_aytayy_a0a0b2a0a2a0a5a6(property.getType().fromString(value), SEnumerationLiteral.class)), pval), CONCEPTS.EnumerationMemberDeclaration$Am)));
       }
     }
     return pval;
@@ -463,7 +463,7 @@ public class QuotationConverter {
     /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
     /*package*/ static final SConcept NodeBuilder$Gb = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, "jetbrains.mps.lang.quotation.structure.NodeBuilder");
     /*package*/ static final SConcept NodeBuilderExpression$Ub = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept EnumerationMemberDeclaration$Am = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration");
     /*package*/ static final SConcept NodeBuilderRef$az = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a0fa93L, "jetbrains.mps.lang.quotation.structure.NodeBuilderRef");
     /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");

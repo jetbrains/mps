@@ -24472,7 +24472,7 @@
       <node id="6373819377344864763" at="254,0,255,0" concept="12" trace="templateSwitchNode_s05n17_a0a0c0a1a2a1m" />
       <node id="6373819377344864763" at="257,0,258,0" concept="12" trace="PrimitiveDataTypeDeclaration$id" />
       <node id="6373819377344864763" at="258,0,259,0" concept="12" trace="ConstrainedDataTypeDeclaration$Mu" />
-      <node id="6373819377344864763" at="259,0,260,0" concept="12" trace="EnumerationDeclartaion$rG" />
+      <node id="6373819377344864763" at="259,0,260,0" concept="12" trace="EnumerationDeclaration$rG" />
       <node id="6373819377344864763" at="260,0,261,0" concept="12" trace="EnumerationDataTypeDeclaration_Old$Ll" />
       <node id="6373819377344864763" at="54,0,56,0" concept="7" trace="processNull#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljetbrains/mps/generator/runtime/TemplateContext;)V" />
       <node id="6373819377344864763" at="36,0,39,0" concept="1" trace="Switch_switch_DataTypeDeclaration_deserialize#()V" />
@@ -33218,7 +33218,7 @@
       <node id="8822815258147280394" at="196,0,197,0" concept="12" trace="templateSwitchNode_6q87l7_a0a0c0a1a2a1l" />
       <node id="8822815258147280394" at="199,0,200,0" concept="12" trace="PrimitiveDataTypeDeclaration$id" />
       <node id="8822815258147280394" at="200,0,201,0" concept="12" trace="ConstrainedDataTypeDeclaration$Mu" />
-      <node id="8822815258147280394" at="201,0,202,0" concept="12" trace="EnumerationDeclartaion$rG" />
+      <node id="8822815258147280394" at="201,0,202,0" concept="12" trace="EnumerationDeclaration$rG" />
       <node id="8822815258147280394" at="202,0,203,0" concept="12" trace="EnumerationDataTypeDeclaration_Old$Ll" />
       <node id="8822815258147280394" at="52,0,54,0" concept="7" trace="processNull#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljetbrains/mps/generator/runtime/TemplateContext;)V" />
       <node id="8822815258147280394" at="34,0,37,0" concept="1" trace="Switch_switch_DataTypeDeclaration_serialize#()V" />

@@ -488,7 +488,7 @@
                     <property role="1BlNFB" value="true" />
                     <node concept="1r4N1M" id="6Kv_6E71e6C" role="1m5AlR" />
                     <node concept="chp4Y" id="6Kv_6E71fgw" role="3oSUPX">
-                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                     </node>
                   </node>
                   <node concept="1r4Lsj" id="6Kv_6E71e6E" role="37wK5m" />
@@ -672,7 +672,7 @@
             <node concept="3cpWsn" id="1eSXJRelQRj" role="3cpWs9">
               <property role="TrG5h" value="e" />
               <node concept="3Tqbb2" id="1eSXJRelQRk" role="1tU5fm">
-                <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
               </node>
               <node concept="1PxgMI" id="1eSXJRelQRl" role="33vP2m">
                 <property role="1BlNFB" value="true" />
@@ -681,7 +681,7 @@
                   <node concept="1JFAaq" id="1eSXJRelQRo" role="2Oq$k0" />
                 </node>
                 <node concept="chp4Y" id="1eSXJRelRdI" role="3oSUPX">
-                  <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                  <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                 </node>
               </node>
             </node>

@@ -104,7 +104,7 @@
       <node id="1421157252384386514" at="19,49,20,116" concept="3" />
       <node id="1421157252384386524" at="21,20,22,55" concept="0" />
       <node id="1421157252384386406" at="27,0,28,0" concept="5" trace="EnumerationMemberDeclaration$Am" />
-      <node id="1421157252384386406" at="28,0,29,0" concept="5" trace="EnumerationDeclartaion$rG" />
+      <node id="1421157252384386406" at="28,0,29,0" concept="5" trace="EnumerationDeclaration$rG" />
       <node id="1421157252384386522" at="20,116,23,5" concept="1" />
       <node id="1421157252384386406" at="14,0,18,0" concept="2" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1421157252384386406" at="18,0,25,0" concept="2" trace="postProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -151,7 +151,7 @@
       <node id="5424895381998988244" at="46,0,47,0" concept="5" trace="linkId$ccI3" />
       <node id="5424895381998988244" at="47,0,48,0" concept="5" trace="memberId$d5NS" />
       <node id="5424895381998988244" at="51,0,52,0" concept="5" trace="AbstractConceptDeclaration$UN" />
-      <node id="5424895381998988244" at="52,0,53,0" concept="5" trace="EnumerationDeclartaion$rG" />
+      <node id="5424895381998988244" at="52,0,53,0" concept="5" trace="EnumerationDeclaration$rG" />
       <node id="5424895381998988571" at="17,0,20,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="7791109065626944384" at="22,0,25,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <node id="5424895381999015715" at="27,0,30,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />

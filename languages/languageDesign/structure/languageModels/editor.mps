@@ -9849,7 +9849,7 @@
   </node>
   <node concept="24kQdi" id="3naCKAeJ0$r">
     <property role="3GE5qa" value="enums" />
-    <ref role="1XX52x" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+    <ref role="1XX52x" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
     <node concept="3EZMnI" id="3naCKAeJtro" role="2wV5jI">
       <node concept="3EZMnI" id="3naCKAeJtrI" role="3EZMnx">
         <node concept="VPM3Z" id="3naCKAeJtrK" role="3F10Kt" />

@@ -6513,7 +6513,7 @@
       <node id="2453008993616345620" at="105,0,106,0" concept="9" trace="enumExpression$4kEb" />
       <node id="2453008993616345620" at="106,0,107,0" concept="9" trace="enum$WChI" />
       <node id="2453008993616345620" at="110,0,111,0" concept="9" trace="SEnumerationMemberType$rH" />
-      <node id="2453008993616345620" at="111,0,112,0" concept="9" trace="EnumerationDeclartaion$rG" />
+      <node id="2453008993616345620" at="111,0,112,0" concept="9" trace="EnumerationDeclaration$rG" />
       <node id="2453008993616345620" at="112,0,113,0" concept="9" trace="ExpressionStatement$nm" />
       <node id="2453008993616345620" at="37,0,39,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2453008993616345620" at="54,0,56,0" concept="1" trace="EnumSwitchExpression__BehaviorDescriptor#()V" />
@@ -8258,7 +8258,7 @@
       <node id="4705942098322619652" at="83,40,84,19" concept="7" />
       <node id="4705942098322619652" at="88,0,89,0" concept="9" trace="DotExpression$6a" />
       <node id="4705942098322619652" at="89,0,90,0" concept="9" trace="SEnumerationMemberType$rH" />
-      <node id="4705942098322619652" at="90,0,91,0" concept="9" trace="EnumerationDeclartaion$rG" />
+      <node id="4705942098322619652" at="90,0,91,0" concept="9" trace="EnumerationDeclaration$rG" />
       <node id="4705942098322619652" at="94,0,95,0" concept="9" trace="enum$WChI" />
       <node id="4705942098322619652" at="34,0,36,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4705942098322619652" at="41,0,43,0" concept="1" trace="EnumMemberOperation__BehaviorDescriptor#()V" />

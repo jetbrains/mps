@@ -16,7 +16,7 @@ public final class PropertiesUtil {
   }
 
   public static SNodeReference getCastMethod(SNode datatype) {
-    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclartaion$rG)) {
+    if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDeclaration$rG)) {
       return new SNodePointer("r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)", "8673913621388576377");
     }
     if (SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)) {
@@ -39,7 +39,7 @@ public final class PropertiesUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$Ll = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
   }
 

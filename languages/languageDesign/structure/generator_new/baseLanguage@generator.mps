@@ -719,7 +719,7 @@
       <ref role="CY16a" to="tpce:5CkWgdpgEmF" resolve="EnumPropertyMigrationInfo" />
     </node>
     <node concept="3lhOvk" id="VFd4X$J6gi" role="3lj3bC">
-      <ref role="30HIoZ" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <ref role="30HIoZ" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       <ref role="3lhOvi" node="VFd4X$I7YY" resolve="EnumerationDescriptor" />
     </node>
   </node>
@@ -9097,7 +9097,7 @@
     </node>
     <node concept="3Tm1VV" id="VFd4X$I81l" role="1B3o_S" />
     <node concept="n94m4" id="VFd4X$I81m" role="lGtFl">
-      <ref role="n9lRv" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <ref role="n9lRv" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
     </node>
     <node concept="3uibUv" id="VFd4X$I81n" role="1zkMxy">
       <ref role="3uigEE" to="ze1i:~EnumerationDescriptorBase" resolve="EnumerationDescriptorBase" />

@@ -703,12 +703,12 @@
                       <node concept="3cpWsn" id="ATTaJvXFX" role="3cpWs9">
                         <property role="TrG5h" value="enumm" />
                         <node concept="3Tqbb2" id="ATTaJvXFV" role="1tU5fm">
-                          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                          <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                         </node>
                         <node concept="1PxgMI" id="ATTaJvXFY" role="33vP2m">
                           <property role="1BlNFB" value="true" />
                           <node concept="chp4Y" id="ATTaJvXFZ" role="3oSUPX">
-                            <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                            <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                           </node>
                           <node concept="2OqwBi" id="ATTaJvXG0" role="1m5AlR">
                             <node concept="37vLTw" id="ATTaJvXG1" role="2Oq$k0">
@@ -857,12 +857,12 @@
                   <node concept="3cpWsn" id="Ygr8xIRaGY" role="3cpWs9">
                     <property role="TrG5h" value="enumm" />
                     <node concept="3Tqbb2" id="Ygr8xIRaGZ" role="1tU5fm">
-                      <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                      <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                     </node>
                     <node concept="1PxgMI" id="Ygr8xIRaH0" role="33vP2m">
                       <property role="1BlNFB" value="true" />
                       <node concept="chp4Y" id="Ygr8xIRaH1" role="3oSUPX">
-                        <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                        <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                       </node>
                       <node concept="2OqwBi" id="Ygr8xIRaH2" role="1m5AlR">
                         <node concept="37vLTw" id="Ygr8xIRaH3" role="2Oq$k0">

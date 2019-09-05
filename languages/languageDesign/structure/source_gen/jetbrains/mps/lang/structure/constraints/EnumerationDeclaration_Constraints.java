@@ -29,9 +29,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class EnumerationDeclartaion_Constraints extends BaseConstraintsDescriptor {
-  public EnumerationDeclartaion_Constraints() {
-    super(CONCEPTS.EnumerationDeclartaion$rG);
+public class EnumerationDeclaration_Constraints extends BaseConstraintsDescriptor {
+  public EnumerationDeclaration_Constraints() {
+    super(CONCEPTS.EnumerationDeclaration$rG);
   }
 
   @Override
@@ -62,7 +62,7 @@ public class EnumerationDeclartaion_Constraints extends BaseConstraintsDescripto
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_x5hfvc_a0a0a0a0a1a0a0a0d;
+            return breakingNode_ofxjyt_a0a0a0a0a1a0a0a0d;
           }
           @Override
           public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
@@ -79,10 +79,10 @@ public class EnumerationDeclartaion_Constraints extends BaseConstraintsDescripto
     return SModuleOperations.isAspect(model, "structure") || SModelStereotype.isGeneratorModel(model);
   }
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1075010451653674064");
-  private static final SNodePointer breakingNode_x5hfvc_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1075010451653674620");
+  private static final SNodePointer breakingNode_ofxjyt_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1075010451653674620");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 
   private static final class LINKS {

@@ -23,7 +23,7 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)/1075010451653674063">
-    <file name="EnumerationDeclartaion_Constraints.java">
+    <file name="EnumerationDeclaration_Constraints.java">
       <node id="1075010451653674063" at="33,47,34,46" concept="11" />
       <node id="1075010451653674063" at="41,126,42,62" concept="5" />
       <node id="1075010451653674063" at="42,62,43,0" concept="8" />
@@ -38,11 +38,11 @@
       <node id="1075010451653674063" at="75,42,76,22" concept="6" />
       <node id="1075010451653674066" at="78,57,79,102" concept="6" />
       <node id="1075010451653674063" at="81,0,82,0" concept="9" trace="canBeRootBreakingPoint" />
-      <node id="1075010451653674063" at="82,0,83,0" concept="9" trace="breakingNode_x5hfvc_a0a0a0a0a1a0a0a0d" />
-      <node id="1075010451653674063" at="85,0,86,0" concept="9" trace="EnumerationDeclartaion$rG" />
+      <node id="1075010451653674063" at="82,0,83,0" concept="9" trace="breakingNode_ofxjyt_a0a0a0a0a1a0a0a0d" />
+      <node id="1075010451653674063" at="85,0,86,0" concept="9" trace="EnumerationDeclaration$rG" />
       <node id="1075010451653674063" at="89,0,90,0" concept="9" trace="defaultMember$iFMB" />
       <node id="1075010451653674063" at="90,0,91,0" concept="9" trace="members$qYq2" />
-      <node id="1075010451653674063" at="33,0,36,0" concept="0" trace="EnumerationDeclartaion_Constraints#()V" />
+      <node id="1075010451653674063" at="33,0,36,0" concept="0" trace="EnumerationDeclaration_Constraints#()V" />
       <node id="1075010451653674063" at="43,0,46,9" concept="3" />
       <node id="1075010451653674063" at="78,0,81,0" concept="10" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="1075010451653674612" at="55,0,59,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -87,12 +87,12 @@
         <var name="references" id="1075010451653674063" />
       </scope>
       <scope id="1075010451653674063" at="52,0,78,0" />
-      <unit id="1075010451653674063" at="84,0,87,0" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints$CONCEPTS" />
-      <unit id="1075010451653674063" at="88,0,92,0" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints$LINKS" />
-      <unit id="1075010451653674612" at="62,19,71,9" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints$2$1" />
-      <unit id="1075010451653674063" at="39,15,50,5" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints$1" />
-      <unit id="1075010451653674612" at="54,48,73,5" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints$2" />
-      <unit id="1075010451653674063" at="32,0,93,0" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclartaion_Constraints" />
+      <unit id="1075010451653674063" at="84,0,87,0" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints$CONCEPTS" />
+      <unit id="1075010451653674063" at="88,0,92,0" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints$LINKS" />
+      <unit id="1075010451653674612" at="62,19,71,9" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints$2$1" />
+      <unit id="1075010451653674063" at="39,15,50,5" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints$1" />
+      <unit id="1075010451653674612" at="54,48,73,5" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints$2" />
+      <unit id="1075010451653674063" at="32,0,93,0" name="jetbrains.mps.lang.structure.constraints.EnumerationDeclaration_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)/1213104840673">

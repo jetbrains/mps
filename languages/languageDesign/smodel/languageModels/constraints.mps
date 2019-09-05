@@ -2979,7 +2979,7 @@
             <node concept="3cpWsn" id="28aPEVvmKGY" role="3cpWs9">
               <property role="TrG5h" value="enumDelcaration" />
               <node concept="3Tqbb2" id="28aPEVvmKGT" role="1tU5fm">
-                <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
               </node>
               <node concept="10Nm6u" id="28aPEVvmNLM" role="33vP2m" />
             </node>
@@ -2994,7 +2994,7 @@
                   <node concept="1PxgMI" id="45eRmv04JaV" role="37vLTx">
                     <property role="1BlNFB" value="true" />
                     <node concept="chp4Y" id="45eRmv04Jun" role="3oSUPX">
-                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                      <ref role="cht4Q" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
                     </node>
                     <node concept="2OqwBi" id="45eRmv04xD3" role="1m5AlR">
                       <node concept="2OqwBi" id="45eRmv04rxT" role="2Oq$k0">
@@ -3228,7 +3228,7 @@
             <node concept="3cpWsn" id="2cnZ9tLr6_o" role="3cpWs9">
               <property role="TrG5h" value="enumm" />
               <node concept="3Tqbb2" id="2cnZ9tLr6_j" role="1tU5fm">
-                <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+                <ref role="ehGHo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
               </node>
               <node concept="2OqwBi" id="25DDrfqfPDT" role="33vP2m">
                 <node concept="1PxgMI" id="25DDrfqfPf2" role="2Oq$k0">

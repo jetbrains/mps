@@ -2937,7 +2937,7 @@
       <property role="IQ2ns" value="5779574625830813397" />
       <property role="20kJfa" value="enumDeclaration" />
       <property role="20lbJX" value="fLJekj4" />
-      <ref role="20lvS9" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <ref role="20lvS9" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
     </node>
   </node>
   <node concept="1TIwiD" id="50Pb80Hwsgz">

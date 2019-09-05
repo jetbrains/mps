@@ -1911,7 +1911,7 @@
       <node id="8267787266002295635" at="186,0,187,0" concept="11" trace="CellModel_Property$iE" />
       <node id="8267787266002295635" at="187,0,188,0" concept="11" trace="CellModel_URL$Fw" />
       <node id="8267787266002295635" at="188,0,189,0" concept="11" trace="PropertyDeclarationCellSelector$M4" />
-      <node id="8267787266002295635" at="189,0,190,0" concept="11" trace="EnumerationDeclartaion$rG" />
+      <node id="8267787266002295635" at="189,0,190,0" concept="11" trace="EnumerationDeclaration$rG" />
       <node id="8267787266002295635" at="190,0,191,0" concept="11" trace="TransactionPropertyHandler_newValue$Y" />
       <node id="8267787266002295635" at="191,0,192,0" concept="11" trace="TransactionPropertyHandler_oldValue$Wx" />
       <node id="8267787266002295635" at="192,0,193,0" concept="11" trace="CellModel_TransactionalProperty$oo" />

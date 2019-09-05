@@ -47,7 +47,7 @@
       <node id="3752612894699521801" at="112,0,113,0" concept="11" trace="dataType$fLUl" />
       <node id="3752612894699521801" at="113,0,114,0" concept="11" trace="propertyValueFunction$AFdB" />
       <node id="3752612894699521801" at="114,0,115,0" concept="11" trace="propertyPattern$rlsv" />
-      <node id="3752612894699521801" at="118,0,119,0" concept="11" trace="EnumerationDeclartaion$rG" />
+      <node id="3752612894699521801" at="118,0,119,0" concept="11" trace="EnumerationDeclaration$rG" />
       <node id="3752612894699521801" at="119,0,120,0" concept="11" trace="PropertyMacro$wt" />
       <node id="3752612894699521801" at="120,0,121,0" concept="11" trace="TemplateArgumentPropertyPatternRefExpression$PN" />
       <node id="3752612894699521801" at="121,0,122,0" concept="11" trace="EnumPropertyMigrationInfo$Yg" />

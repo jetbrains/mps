@@ -763,7 +763,7 @@
       <node id="8182547171709991160" at="463,0,464,0" concept="13" trace="NodeBuilderNode$RN" />
       <node id="8182547171709991160" at="464,0,465,0" concept="13" trace="NodeBuilder$Gb" />
       <node id="8182547171709991160" at="465,0,466,0" concept="13" trace="NodeBuilderExpression$Ub" />
-      <node id="8182547171709991160" at="466,0,467,0" concept="13" trace="EnumerationDeclartaion$rG" />
+      <node id="8182547171709991160" at="466,0,467,0" concept="13" trace="EnumerationDeclaration$rG" />
       <node id="8182547171709991160" at="467,0,468,0" concept="13" trace="EnumerationMemberDeclaration$Am" />
       <node id="8182547171709991160" at="468,0,469,0" concept="13" trace="NodeBuilderRef$az" />
       <node id="8182547171709991160" at="469,0,470,0" concept="13" trace="LinkDeclaration$bA" />

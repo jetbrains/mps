@@ -8935,7 +8935,7 @@
           <node concept="2$VJBW" id="Pe" role="385v07">
             <property role="2$VJBR" value="4241665505353447976" />
             <node concept="2x4n5u" id="Pf" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDeclartaion" />
+              <property role="2x4mPI" value="EnumerationDeclaration" />
               <property role="2x4n5l" value="pfrb7wh3p84f" />
               <node concept="2V$Bhx" id="Pg" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
@@ -8955,7 +8955,7 @@
           <node concept="2$VJBW" id="Pj" role="385v07">
             <property role="2$VJBR" value="4241665505353447971" />
             <node concept="2x4n5u" id="Pk" role="3iCydw">
-              <property role="2x4mPI" value="EnumerationDeclartaion" />
+              <property role="2x4mPI" value="EnumerationDeclaration" />
               <property role="2x4n5l" value="pfrb7wh3p84f" />
               <node concept="2V$Bhx" id="Pl" role="2x4n5j">
                 <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />

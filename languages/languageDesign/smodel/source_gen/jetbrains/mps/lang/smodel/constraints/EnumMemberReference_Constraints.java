@@ -53,7 +53,7 @@ public class EnumMemberReference_Constraints extends BaseConstraintsDescriptor {
             SNode container = (_context.getReferenceNode() != null ? SNodeOperations.getParent(_context.getReferenceNode()) : _context.getContextNode());
             SNode enumDelcaration = null;
             if (SNodeOperations.isInstanceOf(container, CONCEPTS.Property_SetOperation$mX)) {
-              enumDelcaration = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(SNodeOperations.cast(container, CONCEPTS.Property_SetOperation$mX)), CONCEPTS.SPropertyAccess$bD), LINKS.property$He2), LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclartaion$rG);
+              enumDelcaration = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperation__BehaviorDescriptor.getLeftExpressionOperation_idhEwJdHi.invoke(SNodeOperations.cast(container, CONCEPTS.Property_SetOperation$mX)), CONCEPTS.SPropertyAccess$bD), LINKS.property$He2), LINKS.dataType$fLUl), CONCEPTS.EnumerationDeclaration$rG);
             } else if (SNodeOperations.isInstanceOf(container, CONCEPTS.EnumMember_IsOperation$fO)) {
               enumDelcaration = EnumMemberOperation__BehaviorDescriptor.getEnumDecl_id45eRmv04ROr.invoke(SNodeOperations.cast(container, CONCEPTS.EnumMember_IsOperation$fO));
             } else if (SNodeOperations.isInstanceOf(container, CONCEPTS.EnumSwitchCase$37)) {
@@ -80,7 +80,7 @@ public class EnumMemberReference_Constraints extends BaseConstraintsDescriptor {
     /*package*/ static final SConcept EnumMemberReference$9_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0112b91L, "jetbrains.mps.lang.smodel.structure.EnumMemberReference");
     /*package*/ static final SConcept Property_SetOperation$mX = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1091d8a1d53L, "jetbrains.mps.lang.smodel.structure.Property_SetOperation");
     /*package*/ static final SConcept SPropertyAccess$bD = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept EnumMember_IsOperation$fO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0135694L, "jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation");
     /*package*/ static final SConcept EnumSwitchExpression$R0 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
     /*package*/ static final SConcept EnumSwitchCase$37 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, "jetbrains.mps.lang.smodel.structure.EnumSwitchCase");

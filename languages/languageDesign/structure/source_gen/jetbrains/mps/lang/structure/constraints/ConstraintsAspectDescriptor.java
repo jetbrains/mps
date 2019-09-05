@@ -29,7 +29,7 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
       case 4:
         return new EnumerationDataTypeDeclaration_Old_Constraints();
       case 5:
-        return new EnumerationDeclartaion_Constraints();
+        return new EnumerationDeclaration_Constraints();
       case 6:
         return new EnumerationMemberDeclaration_Constraints();
       case 7:

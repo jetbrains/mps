@@ -25,7 +25,7 @@ public final class LanguageConceptSwitch {
   public static final int EnumMigrationInfo = 13;
   public static final int EnumPropertyMigrationInfo = 14;
   public static final int EnumerationDataTypeDeclaration_Old = 15;
-  public static final int EnumerationDeclartaion = 16;
+  public static final int EnumerationDeclaration = 16;
   public static final int EnumerationMemberDeclaration = 17;
   public static final int EnumerationMemberDeclaration_Old = 18;
   public static final int ExperimentalAPINodeAttribute = 19;
@@ -61,7 +61,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x160b046db949c266L, EnumMigrationInfo);
     builder.put(0x5a14f1035942a5abL, EnumPropertyMigrationInfo);
     builder.put(0xfc26875dfbL, EnumerationDataTypeDeclaration_Old);
-    builder.put(0x2e770ca32c607c5fL, EnumerationDeclartaion);
+    builder.put(0x2e770ca32c607c5fL, EnumerationDeclaration);
     builder.put(0x2e770ca32c607c60L, EnumerationMemberDeclaration);
     builder.put(0xfc321331b2L, EnumerationMemberDeclaration_Old);
     builder.put(0x5cd3594638ad845L, ExperimentalAPINodeAttribute);

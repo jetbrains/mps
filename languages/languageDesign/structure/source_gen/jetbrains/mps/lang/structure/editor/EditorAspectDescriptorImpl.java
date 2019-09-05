@@ -46,7 +46,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 11:
         return Collections.<ConceptEditor>singletonList(new EnumerationDataTypeDeclaration_Old_Editor());
       case 12:
-        return Collections.<ConceptEditor>singletonList(new EnumerationDeclartaion_Editor());
+        return Collections.<ConceptEditor>singletonList(new EnumerationDeclaration_Editor());
       case 13:
         return Collections.<ConceptEditor>singletonList(new EnumerationMemberDeclaration_Editor());
       case 14:

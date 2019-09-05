@@ -35,7 +35,7 @@ public class SetStructureIds {
   }
   public static class NodeFactory_1421157252384198379 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SPropertyOperations.assign(newNode, PROPS.memberId$d5NS, ConceptIdHelper.generateEnumMemberId(SNodeOperations.as(enclosingNode, CONCEPTS.EnumerationDeclartaion$rG), newNode) + "");
+      SPropertyOperations.assign(newNode, PROPS.memberId$d5NS, ConceptIdHelper.generateEnumMemberId(SNodeOperations.as(enclosingNode, CONCEPTS.EnumerationDeclaration$rG), newNode) + "");
     }
   }
 
@@ -49,6 +49,6 @@ public class SetStructureIds {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 }

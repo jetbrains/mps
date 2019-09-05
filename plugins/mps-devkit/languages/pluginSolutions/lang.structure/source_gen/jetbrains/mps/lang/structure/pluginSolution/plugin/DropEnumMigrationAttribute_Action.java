@@ -36,7 +36,7 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode node = event.getData(MPSCommonDataKeys.NODE);
-    return (AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclartaion$rG, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)) != null);
+    return (AttributeOperations.getAttribute(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$rG, true, false), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -61,7 +61,7 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SNode node = event.getData(MPSCommonDataKeys.NODE);
-    SNode enumm = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclartaion$rG, true, false);
+    SNode enumm = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$rG, true, false);
     SNode migrationInfoAttribute = AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L));
 
     int result = Messages.showOkCancelDialog("<html>Enumeration migration's attribute is required for migration of projects that might depend on containing language or uses it. Consider keeping the attribute until the moment when all dependent projects should be migrated.</html>", "Drop Enumeration Migration's Attribute", "Drop Attribute", "Cancel", null);
@@ -75,12 +75,12 @@ public class DropEnumMigrationAttribute_Action extends BaseAction {
   }
   public boolean nodeCondition(SNode parameter) {
     SNode node = parameter;
-    SNode enumDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclartaion$rG, true, false);
+    SNode enumDecl = SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumerationDeclaration$rG, true, false);
     return (AttributeOperations.getAttribute(enumDecl, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)) != null);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
     /*package*/ static final SConcept EnumMigrationInfo$2L = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
   }
 

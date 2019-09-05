@@ -2708,7 +2708,7 @@
   </node>
   <node concept="1M2fIO" id="VFd4X$D$hf">
     <property role="3GE5qa" value="enums" />
-    <ref role="1M2myG" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+    <ref role="1M2myG" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
     <node concept="1N5Pfh" id="VFd4X$D$pO" role="1Mr941">
       <ref role="1N5Vy1" to="tpce:VFd4XzZw5G" resolve="defaultMember" />
       <node concept="3dgokm" id="VFd4X$D$pW" role="1N6uqs">

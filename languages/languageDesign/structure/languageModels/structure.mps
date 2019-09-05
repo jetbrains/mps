@@ -735,7 +735,7 @@
   </node>
   <node concept="1TIwiD" id="2TR3acGo7Lv">
     <property role="EcuMT" value="3348158742936976479" />
-    <property role="TrG5h" value="EnumerationDeclartaion" />
+    <property role="TrG5h" value="EnumerationDeclaration" />
     <property role="34LRSv" value="Enumeration" />
     <property role="3GE5qa" value="enums" />
     <property role="19KtqR" value="true" />
@@ -840,7 +840,7 @@
     <node concept="M6xJ_" id="1ob16QTis9B" role="lGtFl">
       <property role="Hh88m" value="enumMigration" />
       <node concept="trNpa" id="1ob16QTis9F" role="EQaZv">
-        <ref role="trN6q" node="2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+        <ref role="trN6q" node="2TR3acGo7Lv" resolve="EnumerationDeclaration" />
       </node>
       <node concept="tn0Fv" id="1ob16QTis9I" role="HhnKV" />
     </node>
@@ -951,7 +951,7 @@
       <property role="IQ2ns" value="3355805929432017224" />
       <property role="20kJfa" value="enum" />
       <property role="20lbJX" value="fLJekj4/1" />
-      <ref role="20lvS9" node="2TR3acGo7Lv" resolve="EnumerationDeclartaion" />
+      <ref role="20lvS9" node="2TR3acGo7Lv" resolve="EnumerationDeclaration" />
     </node>
     <node concept="M6xJ_" id="2UidVq6Wu_4" role="lGtFl">
       <property role="Hh88m" value="enumCustomMethodReplacement" />

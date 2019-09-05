@@ -33,7 +33,7 @@ public class CorrectDuplicateId_QuickFix extends QuickFix_Runtime {
       SPropertyOperations.assign(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0]), PROPS.datatypeId$Bvg3, ConceptIdHelper.generateDatatypeId(SNodeOperations.getModel(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0])), ((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0])) + "");
     }
     if (((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0]) != null) {
-      SPropertyOperations.assign(((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0]), PROPS.memberId$d5NS, ConceptIdHelper.generateEnumMemberId(SNodeOperations.as(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0]), CONCEPTS.EnumerationDeclartaion$rG), ((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0])) + "");
+      SPropertyOperations.assign(((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0]), PROPS.memberId$d5NS, ConceptIdHelper.generateEnumMemberId(SNodeOperations.as(((SNode) CorrectDuplicateId_QuickFix.this.getField("d")[0]), CONCEPTS.EnumerationDeclaration$rG), ((SNode) CorrectDuplicateId_QuickFix.this.getField("m")[0])) + "");
     }
 
   }
@@ -47,6 +47,6 @@ public class CorrectDuplicateId_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclartaion$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclartaion");
+    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 }
