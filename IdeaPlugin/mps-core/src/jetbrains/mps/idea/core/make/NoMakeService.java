@@ -16,7 +16,7 @@
 
 package jetbrains.mps.idea.core.make;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.make.IMakeNotificationListener;
@@ -35,7 +35,7 @@ import java.util.concurrent.Future;
 /**
  * evgeny, 11/20/11
  */
-public class NoMakeService implements IMakeService, ApplicationComponent {
+public class NoMakeService implements IMakeService, Disposable {
   private final Platform myPlatform;
 
   @Override
@@ -82,23 +82,11 @@ public class NoMakeService implements IMakeService, ApplicationComponent {
 
   public NoMakeService(MPSCoreComponents mpsComponents) {
     myPlatform = mpsComponents.getPlatform();
-  }
-
-  @Override
-  public void initComponent() {
-    // I assume MPSMake is always initialized for the plugin's platform level.
-    // If not, I'd like to know this right away with NPE
     myPlatform.findComponent(MakeServiceComponent.class).install(this);
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     myPlatform.findComponent(MakeServiceComponent.class).uninstall(this);
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "dummy make service";
   }
 }

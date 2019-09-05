@@ -201,7 +201,6 @@
     <orderEntry type="library" name="mps.MPS.OpenAPI_auto" level="project" />
     <orderEntry type="library" name="mps.jetbrains.mps.baseLanguage.references.runtime_auto" level="project" />
     <orderEntry type="library" name="mps.Annotations_auto" level="project" />
-    <orderEntry type="library" name="mps.MPS.IDEA_auto" level="project" />
     <orderEntry type="library" name="mps.jetbrains.mps.lang.feedback.context_auto" level="project" />
     <orderEntry type="library" name="mps.MPS.Core_auto" level="project" />
     <orderEntry type="library" name="mps.jetbrains.mps.baseLanguage.references.runtime_auto" level="project" />

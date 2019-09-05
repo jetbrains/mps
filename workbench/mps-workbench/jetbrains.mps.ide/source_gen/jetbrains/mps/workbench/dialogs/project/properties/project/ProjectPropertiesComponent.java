@@ -5,14 +5,21 @@ package jetbrains.mps.workbench.dialogs.project.properties.project;
 import com.intellij.ui.components.JBPanel;
 import org.jetbrains.mps.openapi.ui.Modifiable;
 import jetbrains.mps.project.StandaloneMPSProject;
+import com.intellij.ui.components.JBList;
+import jetbrains.mps.project.structure.project.ModulePath;
+import java.util.List;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.util.annotation.ToRemove;
+import java.util.Arrays;
+import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import com.intellij.openapi.extensions.Extensions;
 import com.intellij.uiDesigner.core.GridConstraints;
 import javax.swing.JComponent;
-import com.intellij.ui.components.JBList;
 import jetbrains.mps.workbench.dialogs.project.components.parts.renderers.PathRenderer;
 import javax.swing.ListSelectionModel;
+import com.intellij.ui.TreeUIHelper;
+import com.intellij.util.containers.Convertor;
 import com.intellij.ui.ToolbarDecorator;
 import com.intellij.ui.AnActionButtonRunnable;
 import com.intellij.ui.AnActionButton;
@@ -25,34 +32,41 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.project.ProjectUtil;
-import jetbrains.mps.project.structure.project.ModulePath;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.function.Predicate;
 import javax.swing.AbstractListModel;
-import java.util.List;
-import jetbrains.mps.ide.make.MakeServiceConfiguration;
-import javax.swing.JCheckBox;
-import javax.swing.border.TitledBorder;
-import javax.swing.BoxLayout;
 
 public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   private final StandaloneMPSProject myProject;
   private final ProjectProperties myProperties = new ProjectProperties();
-  private final ProjectPrefsExtraPanel[] myExtraPanels;
-  private final MakeServiceGroup myMakeGroup;
 
+  private JBList<ModulePath> myModulesList;
+  private final List<ProjectPrefsExtraPanel> myExtraPanels;
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent#ProjectPropertiesComponent(Project, List<ProjectPrefsExtraPanel>) instead}
+   */
+  @Deprecated
+  @ToRemove(version = 2019.2)
   public ProjectPropertiesComponent(Project project, ProjectPrefsExtraPanel[] extraPanels) {
+    this(project, (extraPanels != null ? Arrays.asList(extraPanels) : new ArrayList<ProjectPrefsExtraPanel>()));
+  }
+
+  public ProjectPropertiesComponent(Project project, @NotNull List<ProjectPrefsExtraPanel> extraPanels) {
     super(true);
     myProject = (StandaloneMPSProject) project.getComponent(MPSProject.class);
-    myExtraPanels = (extraPanels != null ? extraPanels : new ProjectPrefsExtraPanel[0]);
+    myExtraPanels = extraPanels;
     myProperties.loadFrom(myProject);
-    myMakeGroup = new MakeServiceGroup(project);
     init();
   }
+
   public ProjectPropertiesComponent(Project project) {
-    this(project, Extensions.getExtensions(ProjectPrefsExtraPanel.EP_NAME, project));
+    this(project, ProjectPrefsExtraPanel.EP_NAME.getExtensionList(project));
   }
 
   private static Object getGridConstraints(int row, boolean fill) {
@@ -63,19 +77,26 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   }
 
   private JComponent createProjectModulesList() {
-    final JBList list = new JBList(new PathsListModel());
+    myModulesList = new JBList<ModulePath>(new PathsListModel());
 
-    list.setCellRenderer(new PathRenderer());
-    list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    myModulesList.setCellRenderer(new PathRenderer());
+    myModulesList.setEmptyText("No modules");
+    myModulesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-    ToolbarDecorator decorator = ToolbarDecorator.createDecorator(list);
+    TreeUIHelper.getInstance().installListSpeedSearch(myModulesList, new Convertor<ModulePath, String>() {
+      public String convert(ModulePath modulePath) {
+        return modulePath.getPath();
+      }
+    });
+
+    ToolbarDecorator decorator = ToolbarDecorator.createDecorator(myModulesList);
     decorator.setAddAction(new AnActionButtonRunnable() {
       @Override
       public void run(AnActionButton button) {
         FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor().withFileFilter(new Condition<VirtualFile>() {
           private String[] EXTENTIONS = new String[]{MPSExtentions.LANGUAGE, MPSExtentions.SOLUTION, MPSExtentions.DEVKIT, "lib"};
           public boolean value(final VirtualFile file) {
-            // TODO: create some method to get all extetions by object type (project, module, model) 
+            // TODO: create some method to get all extensions by object type (project, module, model) 
             return Sequence.fromIterable(Sequence.fromArray(EXTENTIONS)).any(new IWhereFilter<String>() {
               public boolean accept(String it) {
                 return it.equalsIgnoreCase(file.getExtension());
@@ -83,27 +104,32 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
             });
           }
         });
-        VirtualFile file = FileChooser.chooseFile(descriptor, list, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));
+        VirtualFile file = FileChooser.chooseFile(descriptor, myModulesList, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));
 
         if (file == null) {
           return;
         }
 
         ModulePath path = new ModulePath(file.getPath(), null);
-        for (ModulePath p : ((PathsListModel) list.getModel()).getPaths()) {
+        for (ModulePath p : ((PathsListModel) myModulesList.getModel()).getPaths()) {
           if (p.getPath().equals(path.getPath())) {
-            list.setSelectedValue(p, true);
+            myModulesList.setSelectedValue(p, true);
             return;
           }
         }
-        ((PathsListModel) list.getModel()).addPath(path);
+        myModulesList.setSelectedIndex(((PathsListModel) myModulesList.getModel()).addPath(path));
       }
     }).setRemoveAction(new AnActionButtonRunnable() {
       @Override
       public void run(AnActionButton button) {
-        ((PathsListModel) list.getModel()).removePath(list.getSelectedValue());
+        int selectedIndex = myModulesList.getSelectedIndex();
+        ((PathsListModel) myModulesList.getModel()).removePath(myModulesList.getSelectedValue());
+        if (myModulesList.getItemsCount() > 0) {
+          myModulesList.setSelectedIndex((selectedIndex < myModulesList.getItemsCount() ? selectedIndex : myModulesList.getItemsCount() - 1));
+        }
+
       }
-    }).disableUpAction().disableDownAction();
+    }).disableUpDownActions();
     decorator.setPreferredSize(new Dimension(500, 150));
 
     JPanel panel = decorator.createPanel();
@@ -111,26 +137,33 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
     return panel;
   }
 
+  /*package*/ JComponent getPreferredFocusedComponent() {
+    return myModulesList;
+  }
+
+
   @Override
   public void init() {
-    int rowCount = 2 + ((myExtraPanels == null ? 0 : myExtraPanels.length));
+    int rowCount = 1 + myExtraPanels.size();
     int rowIndex = 0;
     this.setLayout(new GridLayoutManager(rowCount, 1));
     this.setAutoscrolls(false);
+
     this.add(createProjectModulesList(), getGridConstraints(rowIndex++, true));
-    add(myMakeGroup.createComponent(), getGridConstraints(rowIndex++, false));
-    for (ProjectPrefsExtraPanel extraPanel : myExtraPanels) {
+    for (ProjectPrefsExtraPanel extraPanel : ListSequence.fromList(myExtraPanels)) {
       this.add(extraPanel.getComponent(), getGridConstraints(rowIndex++, false));
     }
   }
+
   @Override
   public boolean isModified() {
-    return !(myProperties.isSame(myProject.getProjectDescriptor())) || Sequence.fromIterable(Sequence.fromArray(myExtraPanels)).any(new IWhereFilter<ProjectPrefsExtraPanel>() {
-      public boolean accept(ProjectPrefsExtraPanel ep) {
-        return ep.isModified();
+    return !(myProperties.isSame(myProject.getProjectDescriptor())) || myExtraPanels.stream().anyMatch(new Predicate<ProjectPrefsExtraPanel>() {
+      public boolean test(ProjectPrefsExtraPanel extraPanel) {
+        return extraPanel.isModified();
       }
-    }) || myMakeGroup.isModified();
+    });
   }
+
   @Override
   public void apply() {
     myProject.getModelAccess().runWriteAction(new Runnable() {
@@ -139,22 +172,21 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
         myProperties.saveTo(myProject);
       }
     });
-    myMakeGroup.apply();
-    for (ProjectPrefsExtraPanel ep : myExtraPanels) {
+    for (ProjectPrefsExtraPanel ep : ListSequence.fromList(myExtraPanels)) {
       ep.apply();
     }
   }
+
   public void reset() {
-    myMakeGroup.reset();
     myProperties.loadFrom(myProject);
-    for (ProjectPrefsExtraPanel ep : myExtraPanels) {
+    for (ProjectPrefsExtraPanel ep : ListSequence.fromList(myExtraPanels)) {
       ep.reset();
     }
   }
 
 
 
-  private class PathsListModel extends AbstractListModel {
+  private class PathsListModel extends AbstractListModel<ModulePath> {
     public PathsListModel() {
     }
 
@@ -162,52 +194,25 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
     public int getSize() {
       return myProperties.getModules().size();
     }
+
     @Override
-    public Object getElementAt(int i) {
+    public ModulePath getElementAt(int i) {
       return myProperties.getModules().get(i);
     }
+
     public List<ModulePath> getPaths() {
       return myProperties.getModules();
     }
-    public void addPath(ModulePath path) {
+
+    public int addPath(ModulePath path) {
       int i = myProperties.add(path);
       fireIntervalAdded(this, i, i);
+      return i;
     }
-    public void removePath(Object path) {
-      int i = myProperties.remove((ModulePath) path);
+
+    public void removePath(ModulePath path) {
+      int i = myProperties.remove(path);
       fireIntervalRemoved(this, i, i);
     }
-  }
-
-  private static class MakeServiceGroup {
-    private final MakeServiceConfiguration myMakeConfig;
-    private JCheckBox myMakeInBackground;
-
-    private MakeServiceGroup(Project project) {
-      myMakeConfig = MakeServiceConfiguration.getInstance(project);
-    }
-
-    /*package*/ boolean isModified() {
-      return myMakeConfig.isMakeInBackground() != myMakeInBackground.isSelected();
-    }
-
-    /*package*/ void apply() {
-      myMakeConfig.setMakeInBackground(myMakeInBackground.isSelected());
-    }
-
-    /*package*/ void reset() {
-      myMakeInBackground.setSelected(myMakeConfig.isMakeInBackground());
-    }
-
-    /*package*/ JComponent createComponent() {
-      JPanel p = new JPanel();
-      p.setBorder(new TitledBorder("Make"));
-      p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-      myMakeInBackground = new JCheckBox("Perform in background");
-      myMakeInBackground.setSelected(myMakeConfig.isMakeInBackground());
-      p.add(myMakeInBackground);
-      return p;
-    }
-
   }
 }

@@ -49,6 +49,12 @@
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
+    <import index="xick" ref="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)" />
+    <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
+    <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
+    <import index="9z78" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.border(JDK/)" />
+    <import index="qqrq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.components(MPS.IDEA/)" />
+    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -6327,6 +6333,258 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="3C9NgOqUqNV">
+    <property role="TrG5h" value="MakeSettingsPanel" />
+    <property role="1EXbeo" value="true" />
+    <node concept="312cEg" id="2qvp1d_nwIm" role="jymVt">
+      <property role="TrG5h" value="myMakeConfig" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2qvp1d_nwIn" role="1B3o_S" />
+      <node concept="3uibUv" id="2qvp1d_nwIo" role="1tU5fm">
+        <ref role="3uigEE" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+      </node>
+    </node>
+    <node concept="312cEg" id="2qvp1d_s9V6" role="jymVt">
+      <property role="TrG5h" value="myMakeInBackground" />
+      <node concept="3Tm6S6" id="2qvp1d_rZPN" role="1B3o_S" />
+      <node concept="3uibUv" id="2qvp1d_s4IZ" role="1tU5fm">
+        <ref role="3uigEE" to="dxuu:~JCheckBox" resolve="JCheckBox" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3C9NgOqWilU" role="jymVt" />
+    <node concept="3clFbW" id="3C9NgOqWjox" role="jymVt">
+      <node concept="37vLTG" id="2qvp1d_np8R" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="2qvp1d_np8Q" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="3C9NgOqWjoy" role="3clF45" />
+      <node concept="3Tm1VV" id="3C9NgOqWjoz" role="1B3o_S" />
+      <node concept="3clFbS" id="3C9NgOqWjo_" role="3clF47">
+        <node concept="3clFbF" id="2qvp1d_jWql" role="3cqZAp">
+          <node concept="37vLTI" id="2qvp1d_k3Qx" role="3clFbG">
+            <node concept="2YIFZM" id="2qvp1d_keUy" role="37vLTx">
+              <ref role="1Pybhc" node="2UA$I15WhPI" resolve="MakeServiceConfiguration" />
+              <ref role="37wK5l" node="2UA$I15WtCC" resolve="getInstance" />
+              <node concept="37vLTw" id="2qvp1d_khKZ" role="37wK5m">
+                <ref role="3cqZAo" node="2qvp1d_np8R" resolve="project" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="2qvp1d_jWqj" role="37vLTJ">
+              <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3C9NgOqWjkf" role="jymVt" />
+    <node concept="3Tm1VV" id="3C9NgOqUqNW" role="1B3o_S" />
+    <node concept="3uibUv" id="3C9NgOqUAm5" role="EKbjA">
+      <ref role="3uigEE" to="xick:6JcTxuSCvZI" resolve="ProjectPrefsExtraPanel" />
+    </node>
+    <node concept="3clFb_" id="3C9NgOqUAns" role="jymVt">
+      <property role="TrG5h" value="getComponent" />
+      <node concept="3Tm1VV" id="3C9NgOqUAnu" role="1B3o_S" />
+      <node concept="3uibUv" id="3C9NgOqUAnv" role="3clF45">
+        <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
+      </node>
+      <node concept="3clFbS" id="3C9NgOqUAnw" role="3clF47">
+        <node concept="3cpWs8" id="2qvp1d_lGJC" role="3cqZAp">
+          <node concept="3cpWsn" id="2qvp1d_lGJD" role="3cpWs9">
+            <property role="TrG5h" value="p" />
+            <node concept="3uibUv" id="2qvp1d_lGJE" role="1tU5fm">
+              <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
+            </node>
+            <node concept="2ShNRf" id="2qvp1d_lMbJ" role="33vP2m">
+              <node concept="1pGfFk" id="2qvp1d_m4QT" role="2ShVmc">
+                <ref role="37wK5l" to="qqrq:~JBPanel.&lt;init&gt;()" resolve="JBPanel" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2qvp1d_q2pN" role="3cqZAp">
+          <node concept="2OqwBi" id="2qvp1d_q2$S" role="3clFbG">
+            <node concept="37vLTw" id="2qvp1d_q2pL" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
+            </node>
+            <node concept="liA8E" id="2qvp1d_q5tc" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
+              <node concept="2YIFZM" id="3b6xVKVT4r3" role="37wK5m">
+                <ref role="1Pybhc" to="lzb2:~IdeBorderFactory" resolve="IdeBorderFactory" />
+                <ref role="37wK5l" to="lzb2:~IdeBorderFactory.createTitledBorder(java.lang.String)" resolve="createTitledBorder" />
+                <node concept="Xl_RD" id="2qvp1d_qzPT" role="37wK5m">
+                  <property role="Xl_RC" value="Make" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2qvp1d_rdCJ" role="3cqZAp">
+          <node concept="2OqwBi" id="2qvp1d_rdWZ" role="3clFbG">
+            <node concept="37vLTw" id="2qvp1d_rdCH" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
+            </node>
+            <node concept="liA8E" id="2qvp1d_rgIH" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.setLayout(java.awt.LayoutManager)" resolve="setLayout" />
+              <node concept="2ShNRf" id="2qvp1d_rkuI" role="37wK5m">
+                <node concept="1pGfFk" id="6ZswXi8zjnV" role="2ShVmc">
+                  <ref role="37wK5l" to="z60i:~BorderLayout.&lt;init&gt;()" resolve="BorderLayout" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2qvp1d_sdWU" role="3cqZAp">
+          <node concept="37vLTI" id="2qvp1d_skuh" role="3clFbG">
+            <node concept="2ShNRf" id="2qvp1d_sooN" role="37vLTx">
+              <node concept="1pGfFk" id="2qvp1d_snQc" role="2ShVmc">
+                <ref role="37wK5l" to="qqrq:~JBCheckBox.&lt;init&gt;(java.lang.String)" resolve="JBCheckBox" />
+                <node concept="Xl_RD" id="2qvp1d_t0KZ" role="37wK5m">
+                  <property role="Xl_RC" value="Perform in background" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="2qvp1d_sdWS" role="37vLTJ">
+              <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2qvp1d_toi2" role="3cqZAp">
+          <node concept="2OqwBi" id="2qvp1d_tscB" role="3clFbG">
+            <node concept="37vLTw" id="2qvp1d_toi0" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+            </node>
+            <node concept="liA8E" id="2qvp1d_tvCW" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean)" resolve="setSelected" />
+              <node concept="2OqwBi" id="2qvp1d_tH6l" role="37wK5m">
+                <node concept="37vLTw" id="2qvp1d_tAEj" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+                </node>
+                <node concept="liA8E" id="2qvp1d_tLF9" role="2OqNvi">
+                  <ref role="37wK5l" node="2UA$I15W_rA" resolve="isMakeInBackground" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4M75Bc2Q9Qb" role="3cqZAp">
+          <node concept="2OqwBi" id="4M75Bc2Qctv" role="3clFbG">
+            <node concept="37vLTw" id="4M75Bc2Q9Q9" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
+            </node>
+            <node concept="liA8E" id="4M75Bc2Qldu" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="4M75Bc2QpWQ" role="37wK5m">
+                <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+              </node>
+              <node concept="10M0yZ" id="6ZswXi8zl2L" role="37wK5m">
+                <ref role="3cqZAo" to="z60i:~BorderLayout.NORTH" resolve="NORTH" />
+                <ref role="1PxDUh" to="z60i:~BorderLayout" resolve="BorderLayout" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2qvp1d_pQcV" role="3cqZAp">
+          <node concept="37vLTw" id="2qvp1d_pUl4" role="3cqZAk">
+            <ref role="3cqZAo" node="2qvp1d_lGJD" resolve="p" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3C9NgOqUAnx" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2CR06QAdgdA" role="jymVt" />
+    <node concept="3clFb_" id="3C9NgOqUAn$" role="jymVt">
+      <property role="TrG5h" value="isModified" />
+      <node concept="3Tm1VV" id="3C9NgOqUAnA" role="1B3o_S" />
+      <node concept="10P_77" id="3C9NgOqUAnB" role="3clF45" />
+      <node concept="3clFbS" id="3C9NgOqUAnC" role="3clF47">
+        <node concept="3clFbF" id="3C9NgOqWl4Z" role="3cqZAp">
+          <node concept="3y3z36" id="2qvp1d_llh2" role="3clFbG">
+            <node concept="2OqwBi" id="2qvp1d_sO7s" role="3uHU7w">
+              <node concept="37vLTw" id="2qvp1d_sJSH" role="2Oq$k0">
+                <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+              </node>
+              <node concept="liA8E" id="2qvp1d_sTSH" role="2OqNvi">
+                <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="2qvp1d_lbcg" role="3uHU7B">
+              <node concept="37vLTw" id="2qvp1d_pCP_" role="2Oq$k0">
+                <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+              </node>
+              <node concept="liA8E" id="2qvp1d_pI1u" role="2OqNvi">
+                <ref role="37wK5l" node="2UA$I15W_rA" resolve="isMakeInBackground" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3C9NgOqUAnD" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2CR06QAdgMo" role="jymVt" />
+    <node concept="3clFb_" id="3C9NgOqUAnG" role="jymVt">
+      <property role="TrG5h" value="apply" />
+      <node concept="3Tm1VV" id="3C9NgOqUAnI" role="1B3o_S" />
+      <node concept="3cqZAl" id="3C9NgOqUAnJ" role="3clF45" />
+      <node concept="3clFbS" id="3C9NgOqUAnK" role="3clF47">
+        <node concept="3clFbF" id="2qvp1d_w4$7" role="3cqZAp">
+          <node concept="2OqwBi" id="2qvp1d_w7Wm" role="3clFbG">
+            <node concept="37vLTw" id="2qvp1d_w4$5" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+            </node>
+            <node concept="liA8E" id="2qvp1d_waCW" role="2OqNvi">
+              <ref role="37wK5l" node="2UA$I15W_Z7" resolve="setMakeInBackground" />
+              <node concept="2OqwBi" id="2qvp1d_vPIY" role="37wK5m">
+                <node concept="37vLTw" id="2qvp1d_vLPA" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+                </node>
+                <node concept="liA8E" id="2qvp1d_vWtl" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3C9NgOqUAnL" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2CR06QAdh9h" role="jymVt" />
+    <node concept="3clFb_" id="3C9NgOqUAnM" role="jymVt">
+      <property role="TrG5h" value="reset" />
+      <node concept="3Tm1VV" id="3C9NgOqUAnO" role="1B3o_S" />
+      <node concept="3cqZAl" id="3C9NgOqUAnP" role="3clF45" />
+      <node concept="3clFbS" id="3C9NgOqUAnQ" role="3clF47">
+        <node concept="3clFbF" id="2qvp1d_vEOO" role="3cqZAp">
+          <node concept="2OqwBi" id="2qvp1d_vEOP" role="3clFbG">
+            <node concept="37vLTw" id="2qvp1d_vEOQ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2qvp1d_s9V6" resolve="myMakeInBackground" />
+            </node>
+            <node concept="liA8E" id="2qvp1d_vEOR" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean)" resolve="setSelected" />
+              <node concept="2OqwBi" id="2qvp1d_vEOS" role="37wK5m">
+                <node concept="37vLTw" id="2qvp1d_vEOT" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
+                </node>
+                <node concept="liA8E" id="2qvp1d_vEOU" role="2OqNvi">
+                  <ref role="37wK5l" node="2UA$I15W_rA" resolve="isMakeInBackground" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3C9NgOqUAnR" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

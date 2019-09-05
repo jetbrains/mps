@@ -16,7 +16,7 @@
 package jetbrains.mps.idea.core.navigation;
 
 import com.intellij.ide.util.PsiNavigationSupport;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiElement;
 import jetbrains.mps.ide.editor.MPSEditorOpener;
@@ -34,20 +34,19 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 /**
  * evgeny, 11/21/11
+ *
+ * TODO: rewrite as service
  */
-public class NavigationSupportImpl extends NavigationSupport implements ApplicationComponent {
+public class NavigationSupportImpl extends NavigationSupport implements Disposable {
 
-  @NotNull
-  public String getComponentName() {
-    return "Navigation Support";
-  }
-
-  public void initComponent() {
+  public NavigationSupportImpl() {
+    super();
     init();
   }
 
-  public void disposeComponent() {
-    dispose();
+  @Override
+  public void dispose() {
+    super.dispose();
   }
 
   @Override

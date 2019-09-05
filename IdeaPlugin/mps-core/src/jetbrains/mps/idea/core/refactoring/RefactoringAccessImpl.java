@@ -16,7 +16,7 @@
 
 package jetbrains.mps.idea.core.refactoring;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.findusages.model.SearchResults;
@@ -26,38 +26,25 @@ import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
 import jetbrains.mps.idea.core.ui.ModelOrNodeChooser;
 import jetbrains.mps.idea.core.ui.RefactoringViewItemImpl;
-import jetbrains.mps.refactoring.framework.IRefactoring;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * User: shatalin
  * Date: 2/20/12
  */
-public class RefactoringAccessImpl extends RefactoringAccessEx implements ApplicationComponent {
+public class RefactoringAccessImpl extends RefactoringAccessEx implements Disposable {
 
   public RefactoringAccessImpl(MPSCoreComponents coreComponents) {
     super(coreComponents.getPlatform());
-  }
-
-  @Override
-  public void initComponent() {
     RefactoringAccessEx.setInstance(this);
   }
 
   @Override
-  public void disposeComponent() {
+  public void dispose() {
     RefactoringAccessEx.setInstance(null);
   }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "IDEA Plugin-specific Refactoring Access implementation";
-  }
-
 
   @Override
   public ModelElementTargetChooser createTargetChooser(Project project, SNode node) {

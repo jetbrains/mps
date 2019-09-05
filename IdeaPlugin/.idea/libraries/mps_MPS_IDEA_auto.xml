@@ -1,11 +1,7 @@
 <component name="libraryTable">
   <library name="mps.MPS.IDEA_auto" type="mps.solution.library">
     <CLASSES>
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-common-4.1.36.Final.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/lib/jdom.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-codec-http-4.1.36.Final.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-codec-4.1.36.Final.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-buffer-4.1.36.Final.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/lib/forms_rt.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/lib/extensions.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/lib/platform-util-ui.jar!/" />
@@ -25,10 +21,17 @@
       <root url="jar://$APPLICATION_HOME_DIR$/lib/images.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/" />
       <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/languages/mps-stubs.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-transport-4.1.36.Final.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/lib/intellij-xml.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-resolver-4.1.36.Final.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-handler-4.1.36.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-buffer-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-codec-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-codec-http-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-codec-http2-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-codec-socks-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-common-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-handler-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-handler-proxy-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-resolver-4.1.38.Final.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/netty-transport-4.1.38.Final.jar!/" />
     </CLASSES>
     <JAVADOC />
     <MPS_MODULE_XML>

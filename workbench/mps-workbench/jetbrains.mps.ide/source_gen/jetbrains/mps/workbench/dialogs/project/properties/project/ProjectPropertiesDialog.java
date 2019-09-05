@@ -4,34 +4,37 @@ package jetbrains.mps.workbench.dialogs.project.properties.project;
 
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
 import javax.swing.JComponent;
-import org.jetbrains.annotations.NonNls;
 
 public final class ProjectPropertiesDialog extends DialogWrapper {
   private ProjectPropertiesComponent myPropertiesComponent;
 
   public ProjectPropertiesDialog(final Project project) {
     super(project);
-    myPropertiesComponent = new ProjectPropertiesComponent(project, null);
-    setTitle(project.getName() + " Properties");
-    setOKButtonText("&Apply");
-    setCancelButtonText("Ca&ncel");
+    myPropertiesComponent = new ProjectPropertiesComponent(project, new ArrayList<ProjectPrefsExtraPanel>());
+    setTitle("Project Modules");
+    setOKButtonText("Apply");
+    setOKButtonMnemonic('A');
 
     init();
   }
 
-  @Nullable
   @Override
   public JComponent createCenterPanel() {
     return myPropertiesComponent;
   }
-  @Nullable
-  @NonNls
+
+  @Override
+  public JComponent getPreferredFocusedComponent() {
+    return myPropertiesComponent.getPreferredFocusedComponent();
+  }
+
   @Override
   protected String getDimensionServiceKey() {
     return this.getClass().getCanonicalName();
   }
+
   @Override
   protected void doOKAction() {
     myPropertiesComponent.apply();

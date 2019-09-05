@@ -7,7 +7,7 @@ import jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsEx
 import javax.swing.JCheckBox;
 import com.intellij.openapi.project.Project;
 import java.awt.BorderLayout;
-import javax.swing.border.TitledBorder;
+import com.intellij.ui.IdeBorderFactory;
 import javax.swing.JComponent;
 
 public class VcsGeneratedFilesPanel extends JPanel implements ProjectPrefsExtraPanel {
@@ -17,7 +17,7 @@ public class VcsGeneratedFilesPanel extends JPanel implements ProjectPrefsExtraP
     myProject = project;
     setLayout(new BorderLayout());
     JPanel generatedFilesPanel = new JPanel(new BorderLayout());
-    generatedFilesPanel.setBorder(new TitledBorder("Generated Files"));
+    generatedFilesPanel.setBorder(IdeBorderFactory.createTitledBorder("Generated Files"));
     myIgnoreGeneratedFilesCheckBox.setToolTipText("Do not store generated files and model caches (source_gen/*, source_gen.caches/*) in repository");
     generatedFilesPanel.add(myIgnoreGeneratedFilesCheckBox);
     add(generatedFilesPanel, BorderLayout.NORTH);
