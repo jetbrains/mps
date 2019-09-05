@@ -69,7 +69,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ModelProperties_Action());
     addAction(new ModuleProperties_Action());
     addAction(new MoveFileOrDirectory_Action());
-    addAction(new MoveModel_Action());
     addAction(new NewDirectory_Action());
     addAction(new NewElement_Action());
     addAction(new NewFile_Action());
@@ -150,7 +149,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addGroup(new MessagesViewActions_ActionGroup(this));
     addGroup(new ModelActions_ActionGroup(this));
     addGroup(new ModelNewActions_ActionGroup(this));
-    addGroup(new ModelRefactoring_ActionGroup(this));
     addGroup(new ModuleActions_ActionGroup(this));
     addGroup(new NamespaceActions_ActionGroup(this));
     addGroup(new NamespaceInternalActions_ActionGroup(this));
@@ -225,7 +223,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(FileSystemNewActions_ActionGroup.ID, AbstractFileActions_ActionGroup.ID, AbstractFileActions_ActionGroup.LABEL_ID_new);
     insertGroupIntoAnother(NamespaceNewActions_ActionGroup.ID, FlyingActions_ActionGroup.ID, null);
     insertGroupIntoAnother(PackageNewActions_ActionGroup.ID, PackageActions_ActionGroup.ID, PackageActions_ActionGroup.LABEL_ID_newActions);
-    insertGroupIntoAnother(ModelRefactoring_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_refactoring);
     insertGroupIntoAnother(SolutionRefactoring_ActionGroup.ID, CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_refactoring);
     insertGroupIntoAnother(CreateRootNodeAdapter_ActionGroup.ID, CreateRootNode_ActionGroup.ID, CreateRootNode_ActionGroup.LABEL_ID_newRoot);
     insertGroupIntoAnother(Tools_ActionGroup.ID, "ToolsMenu", null);

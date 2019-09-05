@@ -28,9 +28,6 @@
     <component>
       <implementation-class>jetbrains.mps.java.core.sourceStubs.EmptyJavaSourceStubsFindUsages</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.java.workbench.extensions.JavaExtensionComponent</implementation-class>
-    </component>
   </application-components>
 
   <extensions defaultExtensionNs="com.intellij">

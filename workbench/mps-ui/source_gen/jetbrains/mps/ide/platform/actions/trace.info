@@ -87,7 +87,7 @@
   </root>
   <root nodeRef="r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)/1784947186835625271">
     <file name="PlatformActions.xml">
-      <unit id="1784947186835625271" at="1,0,41,13" name="jetbrains.mps.ide.platform.actions.PlatformActions" />
+      <unit id="1784947186835625271" at="1,0,30,13" name="jetbrains.mps.ide.platform.actions.PlatformActions" />
     </file>
   </root>
   <root nodeRef="r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)/227146524086541067">

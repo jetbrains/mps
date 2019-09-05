@@ -6,6 +6,10 @@ import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.dataFlow.pluginSolution.plugin.DFAActions_ActionGroup;
+import java.util.List;
+import jetbrains.mps.plugins.actions.BaseKeymapChanges;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 
 public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.baseLanguage.pluginSolution");
@@ -21,13 +25,33 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
   public void createGroups() {
     // actions w/o parameters 
     addAction(new CreateMethodDeclaration_Action());
+    addAction(new ExtractMethod_Action());
+    addAction(new InlineField_Action());
+    addAction(new InlineLocalVariable_Action());
+    addAction(new InlineMethod_Action());
+    addAction(new IntroduceConstant_Action());
+    addAction(new IntroduceField_Action());
+    addAction(new IntroduceVariable_Action());
+    addAction(new MakeFieldFinal_Action());
+    addAction(new MakeFieldStatic_Action());
+    addAction(new RenameMethod_Action());
+    addAction(new RenameVariable_Action());
+    addAction(new SafeDeleteConceptMethod_Action());
     addAction(new ShowNullDFA_Action());
     // groups 
     addGroup(new AnalyzersActions_ActionGroup(this));
     addGroup(new ShowAsIntentions_BL_ActionGroup(this));
+    addGroup(new TouchBarDefault_shift_ActionGroup(this));
   }
   public void adjustRegularGroups() {
+    insertGroupIntoAnother(TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.LABEL_ID_rename);
     insertGroupIntoAnother(ShowAsIntentions_BL_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.ActionsAsIntentions_ActionGroup", null);
     insertGroupIntoAnother(AnalyzersActions_ActionGroup.ID, DFAActions_ActionGroup.ID, null);
+  }
+  public List<BaseKeymapChanges> initKeymaps() {
+    List<BaseKeymapChanges> res = ListSequence.fromList(new ArrayList<BaseKeymapChanges>());
+    ListSequence.fromList(res).addElement(new Default_KeymapChanges());
+    ListSequence.fromList(res).addElement(new Mac_10_5_KeymapChanges());
+    return res;
   }
 }

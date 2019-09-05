@@ -29,7 +29,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.refactoring.participant.RefactoringUI;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
-import jetbrains.mps.ide.platform.actions.core.RefactoringProcessor;
+import jetbrains.mps.refactoring.participant.RefactoringProcessor;
 import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.List;

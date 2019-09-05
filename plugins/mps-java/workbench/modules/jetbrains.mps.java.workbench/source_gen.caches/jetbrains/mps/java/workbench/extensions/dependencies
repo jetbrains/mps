@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.java.workbench.extensions.JavaExtensionComponent">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.ide.MPSCoreComponents" />
-    <classNode dependClassName="jetbrains.mps.ide.platform.actions.core.ExtensionDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.language.ExtensionRegistry" />
-    <classNode extendsClassName="com.intellij.openapi.Disposable" />
-  </dependency>
   <dependency className="jetbrains.mps.java.workbench.extensions.JavaSourceStubsModelRootEntry">
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="java.awt.Color" />

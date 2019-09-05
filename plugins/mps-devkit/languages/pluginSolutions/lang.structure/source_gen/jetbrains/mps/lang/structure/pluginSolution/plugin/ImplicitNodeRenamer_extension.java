@@ -26,7 +26,7 @@ import jetbrains.mps.refactoring.participant.RefactoringSessionImpl;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import jetbrains.mps.ide.platform.actions.core.RefactoringProcessor;
+import jetbrains.mps.refactoring.participant.RefactoringProcessor;
 
 public class ImplicitNodeRenamer_extension extends Extension.Default<_FunctionTypes._return_P4_E0<? extends Boolean, ? super EditorContext, ? super SNode, ? super String, ? super String>> {
   public ImplicitNodeRenamer_extension() {

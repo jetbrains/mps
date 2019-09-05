@@ -36,7 +36,6 @@ import jetbrains.mps.util.Computable;
  * To perform the algorithm, use {@link jetbrains.mps.ide.actions.ModelCreationActionsBaseExecutor#execute() } method.
  * 
  * @see jetbrains.mps.ide.actions.NewModelActionExecutor default executor for 'new model' action
- * @see jetbrains.mps.ide.actions.MoveModelActionExecutor default executor for 'move model' action
  * @see jetbrains.mps.ide.actions.CloneModelActionExecutor default executor for 'clone model' action
  */
 public abstract class ModelCreationActionsBaseExecutor {

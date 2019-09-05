@@ -1479,6 +1479,8 @@
       <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.core/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.script/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.typesystem/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/jetbrains.mps.ide.refactoring/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/jetbrains.mps.ide.refactoring/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.core/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.script/classes_gen" />
@@ -1563,4 +1565,3 @@
     <orderEntry type="module" module-name="messages-for-structure" />
   </component>
 </module>
-

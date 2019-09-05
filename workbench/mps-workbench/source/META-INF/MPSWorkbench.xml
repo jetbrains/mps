@@ -16,9 +16,6 @@
       <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
     </component>
 
-    <component>
-      <implementation-class>jetbrains.mps.ide.actions.refactoring.MoveModelExtensionComponent</implementation-class>
-    </component>
   </application-components>
 
   <extensions defaultExtensionNs="com.intellij">

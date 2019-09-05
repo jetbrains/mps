@@ -2739,13 +2739,13 @@
       <node id="8821602715293312976" at="98,16,99,353" concept="4" />
       <node id="8821602715293312370" at="99,353,100,0" concept="12" />
       <node id="8821602715293195923" at="101,12,102,385" concept="4" />
-      <node id="7217668918196130217" at="106,39,107,60" concept="15" />
+      <node id="7217668918196130217" at="106,39,107,63" concept="15" />
       <node id="8599388812411716288" at="111,53,112,89" concept="10" />
       <node id="1473188155723310190" at="117,45,118,197" concept="10" />
-      <node id="4174378934471871589" at="126,46,127,60" concept="15" />
+      <node id="4174378934471871589" at="126,46,127,63" concept="15" />
       <node id="4174378934472005042" at="131,53,132,246" concept="10" />
       <node id="1473188155723324259" at="137,45,138,291" concept="10" />
-      <node id="4174378934472012721" at="146,43,147,60" concept="15" />
+      <node id="4174378934472012721" at="146,43,147,63" concept="15" />
       <node id="4174378934472012735" at="151,53,152,246" concept="10" />
       <node id="1473188155723337860" at="157,45,158,291" concept="10" />
       <node id="7217668918195649466" at="167,0,168,0" concept="13" trace="IStructureDeprecatable$6y" />
@@ -2792,9 +2792,9 @@
       <node id="7217668918196130223" at="109,34,122,9" concept="10" />
       <node id="4174378934472005033" at="129,34,142,9" concept="10" />
       <node id="4174378934472012726" at="149,34,162,9" concept="10" />
-      <node id="4174378934471915435" at="109,0,124,0" concept="0" trace="get#()Ljetbrains/mps/ide/platform/actions/core/MoveNodesAction;" />
-      <node id="4174378934472004555" at="129,0,144,0" concept="0" trace="get#()Ljetbrains/mps/ide/platform/actions/core/MoveNodesAction;" />
-      <node id="4174378934472012723" at="149,0,164,0" concept="0" trace="get#()Ljetbrains/mps/ide/platform/actions/core/MoveNodesAction;" />
+      <node id="4174378934471915435" at="109,0,124,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/plugin/MoveNodesAction;" />
+      <node id="4174378934472004555" at="129,0,144,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/plugin/MoveNodesAction;" />
+      <node id="4174378934472012723" at="149,0,164,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/plugin/MoveNodesAction;" />
       <node id="7217668918195679840" at="58,0,105,0" concept="8" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)V" />
       <scope id="8599388812411390934" at="43,27,44,18" />
       <scope id="8599388812411428080" at="47,77,48,19" />
@@ -2806,13 +2806,13 @@
       <scope id="6286765307939305244" at="91,46,92,22" />
       <scope id="6286765307939311491" at="93,14,94,15" />
       <scope id="6286765307939324034" at="101,12,102,385" />
-      <scope id="7217668918196130217" at="106,39,107,60" />
+      <scope id="7217668918196130217" at="106,39,107,63" />
       <scope id="8599388812411716287" at="111,53,112,89" />
       <scope id="1473188155723308085" at="117,45,118,197" />
-      <scope id="4174378934471871589" at="126,46,127,60" />
+      <scope id="4174378934471871589" at="126,46,127,63" />
       <scope id="4174378934472005041" at="131,53,132,246" />
       <scope id="1473188155723324258" at="137,45,138,291" />
-      <scope id="4174378934472012721" at="146,43,147,60" />
+      <scope id="4174378934472012721" at="146,43,147,63" />
       <scope id="4174378934472012734" at="151,53,152,246" />
       <scope id="1473188155723337859" at="157,45,158,291" />
       <scope id="7217668918197168363" at="61,57,63,13" />
@@ -2915,7 +2915,7 @@
   </root>
   <root nodeRef="r:cf512d15-78eb-402a-a0bd-f5eea680b5a8(jetbrains.mps.lang.structure.pluginSolution.plugin)/7217668918197762330">
     <file name="MoveConceptsAndDatatypes.java">
-      <node id="2733099144075638398" at="35,49,36,60" concept="15" />
+      <node id="2733099144075638398" at="35,49,36,63" concept="15" />
       <node id="2733099144075645855" at="38,34,39,44" concept="10" />
       <node id="3335543484793037610" at="42,0,43,0" concept="13" trace="NAME" />
       <node id="3335543484793043939" at="43,27,44,16" concept="10" />
@@ -2957,7 +2957,7 @@
       <node id="7217668918197762330" at="147,0,148,0" concept="13" trace="DataTypeDeclaration$KQ" />
       <node id="7217668918197762330" at="148,0,149,0" concept="13" trace="AbstractConceptDeclaration$UN" />
       <node id="2733099144075638398" at="35,0,38,0" concept="3" trace="MoveConceptsAndDatatypes_extension#()V" />
-      <node id="2733099144075638405" at="38,0,41,0" concept="0" trace="get#()Ljetbrains/mps/ide/platform/actions/core/MoveNodesAction;" />
+      <node id="2733099144075638405" at="38,0,41,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/plugin/MoveNodesAction;" />
       <node id="7217668918197775395" at="43,0,46,0" concept="8" trace="getName#()Ljava/lang/String;" />
       <node id="4174809750968882958" at="46,77,49,5" concept="7" />
       <node id="4323017570214097439" at="54,0,57,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -2990,7 +2990,7 @@
       <node id="651058060498929129" at="118,110,134,5" concept="7" />
       <node id="651058060498929187" at="117,0,138,0" concept="14" trace="chooseName#(Ljava/util/List;Ljava/util/List;)Ljava/lang/String;" />
       <node id="7217668918197775411" at="62,0,116,0" concept="8" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)V" />
-      <scope id="2733099144075638398" at="35,49,36,60" />
+      <scope id="2733099144075638398" at="35,49,36,63" />
       <scope id="2733099144075638409" at="38,34,39,44" />
       <scope id="7217668918197775399" at="43,27,44,16" />
       <scope id="4174809750968882960" at="47,72,48,19" />

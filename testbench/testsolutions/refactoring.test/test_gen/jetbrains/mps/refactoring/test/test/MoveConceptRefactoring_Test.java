@@ -15,7 +15,7 @@ import jetbrains.mps.lang.structure.pluginSolution.plugin.LanguageStructureMigra
 import jetbrains.mps.lang.migration.pluginSolution.plugin.MoveNodeRefactoringLogParticipant;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.ide.platform.actions.core.MoveNodesUtil;
+import jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.language.SProperty;
 import junit.framework.Assert;
