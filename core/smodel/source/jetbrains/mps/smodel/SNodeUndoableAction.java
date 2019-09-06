@@ -18,7 +18,7 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public abstract class SNodeUndoableAction {
+public abstract class SNodeUndoableAction implements UndoItem {
   private final SNode myAffectedNode;
 
   protected SNodeUndoableAction(SNode affectedNode) {
@@ -44,18 +44,6 @@ public abstract class SNodeUndoableAction {
    */
   public VFSChange getAssociatedVfsChange() {
     return VFSChange.NOT_CHANGED;
-  }
-
-  protected abstract void doUndo();
-
-  protected abstract void doRedo();
-
-  public final void undo() {
-    doUndo();
-  }
-
-  public final void redo() {
-    doRedo();
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
-class RemoveReferenceAtUndoableAction extends SNodeUndoableAction {
+final class RemoveReferenceAtUndoableAction extends SNodeUndoableAction {
   private final SReferenceLink myRole;
   private final SReference myReference;
 
@@ -30,12 +30,12 @@ class RemoveReferenceAtUndoableAction extends SNodeUndoableAction {
   }
 
   @Override
-  protected void doUndo() {
+  public void undo() {
     getAffectedNode().setReference(myRole, myReference);
   }
 
   @Override
-  protected void doRedo() {
+  public void redo() {
     getAffectedNode().setReference(myRole, null);
   }
 }

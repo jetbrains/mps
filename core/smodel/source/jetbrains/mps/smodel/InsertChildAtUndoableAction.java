@@ -29,12 +29,12 @@ final class InsertChildAtUndoableAction extends ChildUndoableAction {
   }
 
   @Override
-  protected void doUndo() {
+  public void undo() {
     getAffectedNode().removeChild(myChild);
   }
 
   @Override
-  protected void doRedo() {
+  public void redo() {
     getAffectedNode().insertChildBefore(myRole, myChild, myAnchor);
   }
 }

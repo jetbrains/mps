@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,13 @@ import com.intellij.openapi.command.undo.UndoManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.undo.UndoItem.RestoreVirtualFileInstance;
-import jetbrains.mps.ide.undo.UndoItem.UndoableActionWrapper;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction.VFSChange;
+import jetbrains.mps.smodel.UndoItem;
 import jetbrains.mps.smodel.undo.UndoContext;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -60,7 +59,7 @@ public class UndoActionsCollector {
 
   void addAction(SNodeUndoableAction action) {
     assert !myDisposed;
-    myActions.add(new UndoableActionWrapper(action));
+    myActions.add(action);
     myIsGlobal |= action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED;
 
     MPSNodeVirtualFile fileToUpdate = null;
