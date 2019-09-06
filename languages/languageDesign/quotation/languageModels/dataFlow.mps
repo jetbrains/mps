@@ -174,6 +174,14 @@
     <ref role="3_znuS" to="tp3r:4IP40Bi2$Et" resolve="NodeBuilder" />
     <node concept="3__wT9" id="RRzwLnBtkt" role="3_A6iZ">
       <node concept="3clFbS" id="RRzwLnBtku" role="2VODD2">
+        <node concept="3AgYrR" id="6fcdXHoprMy" role="3cqZAp">
+          <node concept="2OqwBi" id="6fcdXHopset" role="3Ah4Yx">
+            <node concept="3__QtB" id="6fcdXHoprZI" role="2Oq$k0" />
+            <node concept="3TrEf2" id="6fcdXHopsy1" role="2OqNvi">
+              <ref role="3Tt5mk" to="tp3r:2S6ZQ64UeST" resolve="modelToCreate" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="7r9L9Fo8wUS" role="3cqZAp">
           <node concept="3cpWsn" id="7r9L9Fo8wUT" role="3cpWs9">
             <property role="TrG5h" value="quotedNode" />

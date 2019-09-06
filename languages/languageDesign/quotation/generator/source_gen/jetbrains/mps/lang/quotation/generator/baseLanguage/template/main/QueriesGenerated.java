@@ -119,18 +119,15 @@ public class QueriesGenerated {
     return _context.createUniqueName(_context.getTemplateValue(), SNodeOperations.getContainingRoot(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return "modelToCreate";
-  }
-  public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     return "node" + ((Integer) _context.getVariable("cv:c"));
   }
-  public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     return "seq" + ((Integer) _context.getVariable("cv:c"));
   }
-  public static Object propertyMacro_GetValue_3_3(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
     return "p" + ((Integer) _context.getVariable("cv:c"));
   }
-  public static Object propertyMacro_GetValue_3_4(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_3_3(final PropertyMacroContext _context) {
     return _context.createUniqueName("create" + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), LINKS.concept$lMG$), PROPS.name$tAp1), _context.getNode());
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
@@ -239,6 +236,9 @@ public class QueriesGenerated {
     SNode modelToCreate = ((SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate_old$8JaZ) != null) ? SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate_old$8JaZ) : SLinkOperations.getTarget(SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate$MRab), LINKS.modelToCreate$GU4w));
     return _context.getOutputNodeByInputNodeAndMappingLabel(modelToCreate, "parametersFromExpressionsL");
   }
+  public static Object referenceMacro_GetReferent_4_1(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z), "parametersFromExpressionsL");
+  }
   public static Object referenceMacro_GetReferent_5_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
@@ -344,12 +344,21 @@ public class QueriesGenerated {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ) != null) || (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab) != null);
   }
   public static boolean ifMacro_Condition_3_1(final IfMacroContext _context) {
-    return false;
+    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z) != null);
   }
   public static boolean ifMacro_Condition_3_2(final IfMacroContext _context) {
+    return false;
+  }
+  public static boolean ifMacro_Condition_3_3(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ) != null) || (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab) != null);
   }
+  public static boolean ifMacro_Condition_3_4(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z) != null);
+  }
   public static boolean ifMacro_Condition_4_0(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate_old$8JaZ) != null) || (SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate$MRab) != null);
+  }
+  public static boolean ifMacro_Condition_4_1(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate_old$8JaZ) != null) || (SLinkOperations.getTarget(((Tuples._2<SNode, Integer>) _context.getVariable("var:root"))._0(), LINKS.modelToCreate$MRab) != null);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
@@ -411,13 +420,22 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.linkId$ZYnV);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.modelToCreate$GU4w);
   }
   public static SNode sourceNodeQuery_3_1(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z);
+  }
+  public static SNode sourceNodeQuery_3_2(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw);
+  }
+  public static SNode sourceNodeQuery_3_3(final SourceSubstituteMacroNodeContext _context) {
     if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ) != null) {
       return SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ);
     }
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.modelToCreate$GU4w);
+  }
+  public static SNode sourceNodeQuery_3_4(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z);
   }
   public static SNode sourceNodeQuery_4_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$lMG$);

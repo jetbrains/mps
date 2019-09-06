@@ -12,6 +12,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeBuilder_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab));
     SNode quotedNode = SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw);
     if (quotedNode != null) {
       for (SNode expr : NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(quotedNode)) {
@@ -21,6 +22,7 @@ public class NodeBuilder_DataFlow extends DataFlowBuilder {
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink modelToCreate$MRab = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x2e06ff6184e8ee39L, "modelToCreate");
     /*package*/ static final SContainmentLink quotedNode$8Jaw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9eL, "quotedNode");
   }
 }
