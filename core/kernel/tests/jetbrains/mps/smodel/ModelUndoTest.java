@@ -287,11 +287,14 @@ public class ModelUndoTest {
     freeFloatNode1.addChild(ourRole, r1c2);
     Assert.assertEquals(2, myUndo.actualUndoActionCount());
     freeFloatNode2.addChild(ourRole, freeFloatNode1);
-    // add FF to FF add undo action despite both being FF as adding r1c2 as child to FF1 records FF1 in UnregisteredNodes
-    final int legacyCodeInAction = 3;
-    Assert.assertEquals(legacyCodeInAction, myUndo.actualUndoActionCount());
+    // Legacy FFNodeOwner.startUndoTracking used to register both FF1 and FF2 in UnregisteredNodes
+    // therefore, number of undo actions increased. Now, with startUndoTracking() hack gone, there's
+    // no undo action for FF2.addChild(FF1), and we don't care to undo it. If we truly need to,
+    // would need to fix FFNodeOwner.performUndoableAction to add affectedNode (with ancestors, perhaps) to UnregisteredNodes.
+    // Though I hope to get rid of UnregisteredNodes and FFNodeOwner.performUndoableAction some day.
+    Assert.assertEquals(2, myUndo.actualUndoActionCount());
     mf.getRoot(2).addChild(ourRole, freeFloatNode2);
-    Assert.assertEquals(legacyCodeInAction+1, myUndo.actualUndoActionCount());
+    Assert.assertEquals(3, myUndo.actualUndoActionCount());
     emulateCommandFinish();
     //
     myModelAccess.enableRead();

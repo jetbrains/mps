@@ -793,8 +793,6 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     schild.myRoleInParent = role;
     children_insertBefore(((SNode) anchor), schild);
 
-    myOwner.startUndoTracking(this, schild);
-
     schild.attach(myOwner);
 
     myOwner.performUndoableAction(this, new InsertChildAtUndoableAction(this, anchor, role, child));

@@ -15,26 +15,22 @@
  */
 package jetbrains.mps.smodel;
 
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
-final class InsertChildAtUndoableAction extends ChildUndoableAction {
-  private final SNode myAnchor;
-  private final SContainmentLink myRole;
+/**
+ * Action that adds or removes child to/from another node
+ * @author Artem Tikhomirov
+ * @since 2019.3
+ */
+abstract class ChildUndoableAction extends SNodeUndoableAction {
+  protected final SNode myChild;
 
-  public InsertChildAtUndoableAction(SNode node, SNode anchor, SContainmentLink role, SNode child) {
-    super(node, child);
-    myAnchor = anchor;
-    myRole = role;
+  protected ChildUndoableAction(SNode parentNode, SNode childNode) {
+    super((parentNode));
+    myChild = childNode;
   }
 
-  @Override
-  protected void doUndo() {
-    getAffectedNode().removeChild(myChild);
-  }
-
-  @Override
-  protected void doRedo() {
-    getAffectedNode().insertChildBefore(myRole, myChild, myAnchor);
+  public final SNode getChild() {
+    return myChild;
   }
 }

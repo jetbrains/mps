@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,28 +36,8 @@ final class FreeFloatNodeOwner extends SNodeOwner {
   }
 
   @Override
-  public void startUndoTracking(SNode parent, SNode child) {
-    //if child is in unregistered nodes, while this node is a brand-new, free-floating node,
-    // add it too to track undo for it
-    UnregisteredNodes un = UnregisteredNodes.instance();
-    if (un.contains(child) && !un.contains(parent)) {
-      trackUndo(parent.getContainingRoot());
-    }
-  }
-
-  private void trackUndo(SNode root) {
-    for (SNode child : root.getChildren()) {
-      trackUndo(child);
-    }
-    final UnregisteredNodes un = UnregisteredNodes.instance();
-    if (!un.contains(root)) {
-      un.put(root);
-    }
-  }
-
-  @Override
   void performUndoableAction(org.jetbrains.mps.openapi.model.SNode node, SNodeUndoableAction action) {
-    if (UnregisteredNodes.instance().contains(node)) {
+    if (action instanceof ChildUndoableAction && UnregisteredNodes.instance().contains(((ChildUndoableAction) action).getChild())) {
       UndoHelper.getInstance().addUndoableAction(action);
     }
   }

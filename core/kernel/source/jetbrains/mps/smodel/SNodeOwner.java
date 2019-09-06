@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -90,16 +90,6 @@ abstract class SNodeOwner {
   }
 
   //
-
-  /**
-   * FIXME the method truly needs justification for existence. now it's merely a hack
-   * FIXME If it indeed required, perhaps symmetric call needed in removeChild? If not, explain.
-   * @param parent non-null, node being modified
-   * @param child non-null, node being added
-   */
-  void startUndoTracking(SNode parent, SNode child) {
-
-  }
 
   /**
    * Notify environment there's a change in the model that could be undone. It's up to owner's discretion whether
