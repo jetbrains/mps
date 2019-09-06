@@ -51,7 +51,7 @@ public class EncapsulateModelNodeId extends MigrationScriptBase {
         }
       }
       for (SNode lightQuotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilder$Gb, false))) {
-        if ((SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$MRab) != null) && (SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$MRab) == null)) {
+        if ((SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$8JaZ) != null) && (SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$MRab) == null)) {
           SLinkOperations.setNewChild(lightQuotation, LINKS.modelToCreate$MRab, null);
           SLinkOperations.setTarget(SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$MRab), LINKS.modelToCreate$GU4w, SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$8JaZ));
         }

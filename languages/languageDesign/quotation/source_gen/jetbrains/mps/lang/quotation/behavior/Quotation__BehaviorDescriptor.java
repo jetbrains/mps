@@ -21,9 +21,9 @@ import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class Quotation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
@@ -40,10 +40,11 @@ public final class Quotation__BehaviorDescriptor extends BaseBHDescriptor {
     return -1;
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.quotedNode$kInw))) {
-      if (SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestorsWhereConceptInList(child, new SAbstractConcept[]{CONCEPTS.AbstractAntiquotation$Tk, CONCEPTS.Quotation$UL}, true)).first(), CONCEPTS.AbstractAntiquotation$Tk)) {
-        return false;
-      }
+    if (!(ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.quotedNode$kInw)))) {
+      return false;
+    }
+    if (SNodeOperations.isInstanceOf(ListSequence.fromList(SNodeOperations.getNodeAncestorsWhereConceptInList(child, new SAbstractConcept[]{CONCEPTS.AbstractAntiquotation$Tk, CONCEPTS.Quotation$UL}, true)).first(), CONCEPTS.AbstractAntiquotation$Tk)) {
+      return false;
     }
     return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$2l, child));
   }
@@ -96,13 +97,13 @@ public final class Quotation__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink quotedNode$kInw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept AbstractAntiquotation$Tk = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, "jetbrains.mps.lang.quotation.structure.AbstractAntiquotation");
     /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
     /*package*/ static final SInterfaceConcept ISuppressErrors$2l = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink quotedNode$kInw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465aL, "quotedNode");
   }
 }
