@@ -40,7 +40,6 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
   private final MPSProject myProject;
   private final ModelFactoryService myModelFactories;
   private final boolean mySelectRoot;
-  private final ProjectTreeFindHelper myProjectTreeFinder;
 
   public ProjectPaneSelectInTarget(ProjectPane pp, String title, boolean selectRoot) {
     super(pp.getProject(), pp.getId(), 0, title);
@@ -48,7 +47,6 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
     myProject = pp.getMPSProject();
     myModelFactories = myProject.getComponent(ModelFactoryService.class);
     mySelectRoot = selectRoot;
-    myProjectTreeFinder = pp.createFindHelper();
   }
 
   @Override
@@ -111,7 +109,12 @@ public final class ProjectPaneSelectInTarget extends AbstractProjectViewSelectIn
       return null;
     }
     IFile moduleFile = fs.fromVirtualFile(virtualFile);
-    final ProjectModuleTreeNode moduleTreeNode = myProjectTreeFinder.findModuleTreeNode(moduleFile);
+
+    // ProjectTreeFindHelper can't be correctly initialized without a tree
+    if (myProjectPane.getTree() == null) {
+      return null;
+    }
+    final ProjectModuleTreeNode moduleTreeNode = myProjectPane.createFindHelper().findModuleTreeNode(moduleFile);
     // XXX in fact, no reason to complicate life and to use SModule to pass navigation destination, shall use tree node in doSelectIn right away
     return moduleTreeNode == null ? null : moduleTreeNode.getModule();
   }
