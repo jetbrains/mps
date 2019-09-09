@@ -9050,6 +9050,18 @@
             </node>
           </node>
           <node concept="3clFbS" id="2V3ml1v6o1d" role="2LFqv$">
+            <node concept="3clFbJ" id="5NawSsQ5giH" role="3cqZAp">
+              <node concept="3clFbS" id="5NawSsQ5giJ" role="3clFbx">
+                <node concept="3N13vt" id="5NawSsQ5gxS" role="3cqZAp" />
+              </node>
+              <node concept="2YIFZM" id="5NawSsQ5gwa" role="3clFbw">
+                <ref role="37wK5l" to="w1kc:~SModelStereotype.isDescriptorModel(org.jetbrains.mps.openapi.model.SModel)" resolve="isDescriptorModel" />
+                <ref role="1Pybhc" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
+                <node concept="37vLTw" id="5NawSsQ5gwO" role="37wK5m">
+                  <ref role="3cqZAo" node="2V3ml1v6o1Y" resolve="m" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="2V3ml1v6o1f" role="3cqZAp">
               <node concept="3cpWsn" id="2V3ml1v6o1e" role="3cpWs9">
                 <property role="3TUv4t" value="false" />

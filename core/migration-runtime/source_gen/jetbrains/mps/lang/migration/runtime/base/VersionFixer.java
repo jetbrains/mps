@@ -30,6 +30,7 @@ import java.util.LinkedHashSet;
 import java.util.Collection;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.apache.log4j.Level;
@@ -265,6 +266,9 @@ public class VersionFixer {
     // TODO [MM] get rid of this method, check on model load etc. 
     myModule.getRepository().getModelAccess().checkReadAccess();
     for (SModel m : myModule.getModels()) {
+      if (SModelStereotype.isDescriptorModel(m)) {
+        continue;
+      }
       SModelInternal modelInternal = (SModelInternal) m;
       for (SLanguage lang : CollectionSequence.fromCollection(modelInternal.importedLanguageIds())) {
         Integer currentVersion = langVersions.get(lang);
