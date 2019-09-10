@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,26 +16,28 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.library.ModuleFileTracker;
+import jetbrains.mps.library.ModuleFileTracker.Delta;
+import jetbrains.mps.library.ModulesMiner;
+import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.vfs.FileSystems;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.RedispatchListener;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.FileListener;
 import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
-import jetbrains.mps.vfs.FileSystems;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.RedispatchListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-
-import java.util.Map;
 
 /**
  * Listens for module descriptor paths in a project descriptor.
  * Files created with a path that did not exist at the moment project was last initialized, trigger project update.
  * Changes to descriptor files drop or reload respective project modules.
+ *
+ * Note, this class doesn't track changes to project descriptor file (the one with module descriptor paths, .mps/modules.xml).
  *
  * XXX In fact, quite similar to {@link jetbrains.mps.library.SLibrary}, just an own source for module paths, worth a refactoring.
  *     Besides, there's {@code ProjectModuleLoader} which is responsible for another SLibrary-similar part of functionality.
@@ -63,9 +65,18 @@ public final class ProjectModuleFileChangeListener implements ProjectModuleLoadi
     // removeModule0, below, grabs model write anyway, hence runWriteAction
     final SRepository repo = myMpsProject.getRepository();
     repo.getModelAccess().runWriteAction(() -> {
-      final Map<SModuleReference, IFile> mRefs2Remove = myProjectModulesAndFiles.getAffectedBy(event.getRemoved());
+      ModulesMiner mm = new ModulesMiner(myMpsProject.getPlatform());
+      // Project keeps list of files it loads modules from, we don't care about any new file created unless it's referenced in project descriptor, ignore new.
+//      event.getCreated().forEach(mm::collectModules);
+      event.getChanged().forEach(mm::collectModules);
+      // FIXME mm.collectModules have to be guarded with code that deals with failures to read module descriptor and asks VCS (if any) for a
+      //       merge conflict resolution. SModuleOperations#reloadFromDisk used to do it through SuspiciousModelIndex, which is not the thing I'd like to keep,
+      //       especially in a {@code SuspiciousModelHandler.getHandler().handleSuspiciousModule()} way  of AbstractModule#handleReadProblem()
+      final Delta moduleDelta = myProjectModulesAndFiles.buildDeltaFor(event, mm);
 
-      mRefs2Remove.keySet().forEach(mRef -> {
+      moduleDelta.deletedFiles().forEach(f -> f.removeListener(myRedispatchListener));
+
+      moduleDelta.gone().forEach((mRef, file) -> {
         ModulePath path = myMpsProject.getPath(mRef);
         if (path != null) {
           moduleNotFound(path);
@@ -74,16 +85,25 @@ public final class ProjectModuleFileChangeListener implements ProjectModuleLoadi
         if (resolved != null) {
           myMpsProject.removeModule0(resolved);
         }
+        // removeModule0, above, doesn't fire ProjectModuleLoadingListener.moduleRemoved, tell tracker there's no longer module in the file
+        myProjectModulesAndFiles.forget(file, mRef);
       });
-      mRefs2Remove.values().forEach(f -> f.removeListener(myRedispatchListener));
+      // FIXME shall I add new modules (delta.toLoad()) discovered from existing/tracked files? Previous version didn't care to do that, though that
+      //       seems to be wrong. Project descriptor may reference same file, but changed content may end up in a new module descriptor.
+      //       What should I do to add a module here? myMpsProject.addModule() or addModule0()?
 
-      final Map<SModuleReference, IFile> toReload = myProjectModulesAndFiles.getTrackedFor(event.getChanged());
-      toReload.keySet().forEach(mRef -> {
-        SModule module = mRef.resolve(repo);
-        if (module instanceof AbstractModule) {
-          SModuleOperations.reloadFromDisk((AbstractModule) module);
+      // reload those changed.
+      for (ModuleHandle mh : moduleDelta.changed()) {
+        final SModule module = mh.getDescriptor().getModuleReference().resolve(repo);
+        if (module == null) {
+          continue;
         }
-      });
+        if (module instanceof AbstractModule) {
+          // FIXME If MD comes from another file, need to let AM know about the change!
+          //       Perhaps, it's better just to unregister the module altogether and instantiate again?
+          ((AbstractModule) module).setModuleDescriptor(mh.getDescriptor(), false);
+        }
+      }
     });
   }
 

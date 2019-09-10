@@ -29,6 +29,7 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.SuspiciousModelHandler;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
@@ -214,6 +215,9 @@ public class SModuleOperations {
   }
 
   /**
+   * THERE ARE NO USES IN extensions/mbeddr, and the only use in MPS is from ConflictableModuleAdapter, the only source of which is this very method
+   * as the one and only client of handleSuspiciousModule() method.
+   *
    * @deprecated module provider (library, project, whatever) has to deal with module reload, this helper complicates matters more than resolves any.
    *             Once it's gone, AM.loadDescriptor is no longer needed, as well as MM.loadModuleHandle()
    *
@@ -257,7 +261,9 @@ public class SModuleOperations {
       }
     } catch (Exception e) {
       // ModuleReadException doesn't seem to get out from MM, therefore, handle any generic exception here
-      AbstractModule.handleReadProblem(module, e, false);
+      SuspiciousModelHandler.getHandler().handleSuspiciousModule(module, false);
+      LOG.error(e.getMessage());
+      e.printStackTrace();
     }
   }
 

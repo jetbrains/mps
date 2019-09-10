@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,14 @@
  */
 package jetbrains.mps.library;
 
-import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.library.ModuleFileTracker.Delta;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.RedispatchListener;
 import jetbrains.mps.vfs.refresh.FileListener;
@@ -39,8 +36,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +45,6 @@ import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Stream;
 
 /**
  * SLibrary tracks a path {@link #myFile} with modules inside.
@@ -127,58 +123,30 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     // Therefore, we use RedispatchListener and the fact FileProcessor adds up events per FSListener instance that comes through FSE.notify()
     // and expect this method to be invoked only once even if there are a lot of files of this SLibrary have been affected (added/removed/changed)
     myRepository.getModelAccess().runWriteAction(() -> {
-      // for removed files, take modules associated with these files
-      // Note, there could be a new file among added with a MD for existing toBeRemoved module (e.g. file rename/move).
-      final Map<SModuleReference, IFile> toRemoveCandidates = myFileTracker.getAffectedBy(event.getRemoved());
-      // We shall remove our listener for files we no longer care about. XXX what of myFile is among removed, is it fine to remove the listener?
-      toRemoveCandidates.values().forEach(f -> {
+      final Delta moduleDelta = myFileTracker.buildDeltaFor(event, collectFromCreatedAndChanged(event));
+      // We shall remove our listener for files we no longer care about. If myFile is among removed, do not remove the listener
+      for (IFile f : moduleDelta.deletedFiles()) {
         if (!myFile.equals(f)) {
           f.removeListener(myPostNotifyDispatch);
         }
-      });
-
-      // for changed files, take associated modules, these are going to be either changed or removed (in case respective
-      // module file no longer describes the same module
-      final Map<SModuleReference, IFile> trackedToChangeCandidates = myFileTracker.getTrackedFor(event.getChanged());
-      // for changed and added, collect module descriptors using MM
-      final ModulesMiner modulesMiner = collectFromCreatedAndChanged(event);
-      THashMap<SModuleReference, ModuleHandle> newlyDiscovered = new THashMap<>();
-      for (ModuleHandle mh : modulesMiner.getCollectedModules()) {
-        // XXX though it's not nice to assume no identical module id in different files
-        //     just too much work to handle this case right now
-        newlyDiscovered.put(mh.getDescriptor().getModuleReference(), mh);
       }
-      // intersect trackedToChangeCandidates and newly collected. These are 'changed' modules (XXX though what if its IFile aka AM.getDescriptorFile was changed?)
-      final List<SModuleReference> changedModules = CollectionUtil.intersect(trackedToChangeCandidates.keySet(), newlyDiscovered.keySet());
-      // newlyCollected subtract trackedToChangeCandidates are to be reported as 'New'
-      final List<SModuleReference> brandNew = CollectionUtil.subtract(newlyDiscovered.keySet(), trackedToChangeCandidates.keySet());
-      // toBeChanged subtract newlyCollected - those to be 'removed'. Here, it means file persists but module is gone
-      final List<SModuleReference> stale = CollectionUtil.subtract(trackedToChangeCandidates.keySet(), newlyDiscovered.keySet());
-      // newlyCollected intersect with toBeRemoved - as 'changed'?
-      final List<SModuleReference> movedModules = CollectionUtil.intersect(newlyDiscovered.keySet(), toRemoveCandidates.keySet());
-      // XXX when do I unregister and register again my FS listener?
 
-      // movedModules got representation in newlyDiscovered, no need to tell them removed
-      toRemoveCandidates.keySet().removeAll(movedModules);  // aka     movedModules.forEach(toRemoveCandidates::remove);
-      // modules from changed files that we not re-discovered are better to get abandoned.
-      // note, we don't remove FS listener for these files, due to
-      //   (a) there could be still other modules in the same file
-      //   (b) it's tricky to find out whether we no longer need to listen to its changes.
-      stale.forEach(mr -> toRemoveCandidates.put(mr, trackedToChangeCandidates.get(mr)));
+      final Map<SModuleReference, IFile> gone = moduleDelta.gone();
+
       // next code (with newHandles) is just for the sake of myHandles update, which is in use in a single place, in MPSIDEA Plugin, to populate
       // cached repo. FIXME please refactor and get rid of this
       ArrayList<ModuleHandle> newHandles = new ArrayList<>(myHandles.get().size());
-      if (toRemoveCandidates.isEmpty()) {
+      if (gone.isEmpty()) {
         newHandles.addAll(myHandles.get());
       } else {
-        final Set<SModuleReference> toRemoveRefs = toRemoveCandidates.keySet();
+        final Set<SModuleReference> toRemoveRefs = gone.keySet();
         for (ModuleHandle existingMH : myHandles.get()) {
           if (!toRemoveRefs.contains(existingMH.getDescriptor().getModuleReference())) {
             newHandles.add(existingMH);
           }
         }
       }
-      for (Entry<SModuleReference, IFile> entry : toRemoveCandidates.entrySet()) {
+      for (Entry<SModuleReference, IFile> entry : gone.entrySet()) {
         SModuleReference mRef = entry.getKey();
         final SModule module = mRef.resolve(myRepository);
         if (module == null) {
@@ -193,31 +161,24 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
         // myHandles are updated above
       }
       // first, install new modules, just in case any of the changes needs one
-      ArrayList<ModuleHandle> toLoad = new ArrayList<>(brandNew.size());
-      for (SModuleReference mr : brandNew) {
-        ModuleHandle moduleHandle = newlyDiscovered.get(mr);
-        assert moduleHandle != null; // brandNew is based on newlyDiscovered, can't be null
-        toLoad.add(moduleHandle);
-      }
+      Collection<ModuleHandle> toLoad = moduleDelta.toLoad();
       // XXX I don't like the fact we remove myPostNotifyDispatch in this method, but add it in another, perhaps, shall add listener here?
       // shall sort toLoad so that Languages come first, use approach of ModulesMiner.getCollectedModules(). Alternatively, could keep brandNew
       // and newlyDiscovered with the order from MM (use some ordered Map implementation)
       // FIXME need a better mechanism to find out MD kind than instanceof. E.g. DeployedDescriptor is the same for any module, once we
       //       drop source modules, we are likely to fail here
-      toLoad.sort(Comparator.comparingInt(v -> v.getDescriptor() instanceof LanguageDescriptor ? 0 : 1));
       instantiateAndActivateModules(toLoad);
       newHandles.addAll(toLoad);
       myHandles.set(newHandles);
       //
-      for (SModuleReference mr : changedModules) {
-        final SModule module = mr.resolve(myRepository);
+      for (ModuleHandle mh : moduleDelta.changed()) {
+        final SModule module = mh.getDescriptor().getModuleReference().resolve(myRepository);
         if (module == null) {
           continue;
         }
-        if (false == module instanceof AbstractModule) {
-          continue;
+        if (module instanceof AbstractModule) {
+          ((AbstractModule) module).setModuleDescriptor(mh.getDescriptor(), false);
         }
-        ((AbstractModule) module).setModuleDescriptor(newlyDiscovered.get(mr).getDescriptor(), false);
       }
     });
   }
@@ -248,7 +209,7 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     myHandles.set(moduleHandles);
   }
 
-  private void instantiateAndActivateModules(List<ModuleHandle> moduleHandles) {
+  private void instantiateAndActivateModules(Collection<ModuleHandle> moduleHandles) {
     ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(myRepository);
     List<SModule> loaded = new ArrayList<>(moduleHandles.size());
     Set<IFile> uniqueFiles = new THashSet<>();

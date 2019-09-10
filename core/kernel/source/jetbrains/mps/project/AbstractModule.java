@@ -726,12 +726,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
   }
 
-  public static void handleReadProblem(AbstractModule module, Exception e, boolean isInConflict) {
-    SuspiciousModelHandler.getHandler().handleSuspiciousModule(module, isInConflict);
-    LOG.error(e.getMessage());
-    e.printStackTrace();
-  }
-
   // unlike similar method in SModel, doesn't take SRepository now
   // according to present use cases, we iterate modules of a repository and update them,
   // hence it's superficial  to pass repository in here (although might add one for consistency)
