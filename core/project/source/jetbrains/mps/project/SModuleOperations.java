@@ -16,8 +16,6 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
-import jetbrains.mps.library.ModulesMiner;
-import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import jetbrains.mps.persistence.PersistenceRegistry;
@@ -25,11 +23,9 @@ import jetbrains.mps.project.facets.GenerationTargetFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.SModelOperations;
-import jetbrains.mps.smodel.SuspiciousModelHandler;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
@@ -51,8 +47,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class SModuleOperations {
-  private static final Logger LOG = LogManager.getLogger(SModuleOperations.class);
-
   /**
    * @deprecated use {@link jetbrains.mps.project.facets.GenerationTargetFacet#getOutputLocation(SModel)} or {@link JavaModuleFacet#getOutputRoot()}.
    *             Even {@code #getOutputRoot(SModel)} is much better as it (a) deals with IFile (b) hints it's root, not model-specific location
@@ -214,59 +208,6 @@ public class SModuleOperations {
     return timestamp != descriptorFile.lastModified();
   }
 
-  /**
-   * THERE ARE NO USES IN extensions/mbeddr, and the only use in MPS is from ConflictableModuleAdapter, the only source of which is this very method
-   * as the one and only client of handleSuspiciousModule() method.
-   *
-   * @deprecated module provider (library, project, whatever) has to deal with module reload, this helper complicates matters more than resolves any.
-   *             Once it's gone, AM.loadDescriptor is no longer needed, as well as MM.loadModuleHandle()
-   *
-   * Reads module from file and eventually redeploys it (when CLManager triggers refresh)
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static void reloadFromDisk(@NotNull AbstractModule module) {
-    if (module.getRepository() == null) {
-      throw new IllegalArgumentException("Module " + module + " is disposed");
-    }
-
-    module.getRepository().getModelAccess().checkWriteAccess();
-
-    try {
-      if (module instanceof Generator) {
-        // loadDescriptor == null for Generator
-        // FIXME shall support reload for generator modules (not necessarily with module.loadDescriptor() thought)
-        return;
-      }
-      final IFile descriptorFile = module.getDescriptorFile();
-      final ModuleDescriptor moduleDescriptor;
-      if (descriptorFile != null) {
-        // here lies hidden knowledge about what file is reported as 'descriptor file' of a module, whether it's DD or source MD
-        // when I get to fixing MM.loadModuleHandle(), shall make it clear. If I fail to remove this reloadFromDisk altogether,
-        // shall at least keep the knowledge about deployment/source MD file in a single place, perhaps by passing AM into MM instead of file.
-        final ModuleHandle mh = new ModulesMiner().loadModuleHandle(descriptorFile);
-        // FIXME in fact, first shall assert reference of a newly loaded module matches that of the one being reloaded.
-        moduleDescriptor = mh.getDescriptor();
-      } else {
-        // StubSolution and SolutionIdea didn't implement loadDescriptor() with re-read of MD file, instead, they've simply returned the actual one.
-        // StubSolution doesn't have file, therefore I surely get here. For SolutionIdea, there's IdeaDescriptorIOProvider that claims capability to parse
-        // .iml files, and there's descriptor file for SolutionIdea module, so we are unlikely to get here. However, it looks like IDEA-related part of
-        // DescriptorIOFacade part is in no use now and shall be abandoned anyway. With that, we could get here by MM failure to load module from the
-        // descriptor file. Meanwhile, just rely on MM.loadModuleHandle(), above, to deal with IDEA's .iml
-        moduleDescriptor = module.getModuleDescriptor();
-        // pass exactly same MD just fire reload/changed events (that's what used to happen when loadDescriptor() returned existing MD).
-      }
-      if (moduleDescriptor != null) {
-        module.setModuleDescriptor(moduleDescriptor, false);
-      }
-    } catch (Exception e) {
-      // ModuleReadException doesn't seem to get out from MM, therefore, handle any generic exception here
-      SuspiciousModelHandler.getHandler().handleSuspiciousModule(module, false);
-      LOG.error(e.getMessage());
-      e.printStackTrace();
-    }
-  }
-
   public static Project getProjectForModule(SModule module) {
     if (module == null) {
       return null;
@@ -286,33 +227,5 @@ public class SModuleOperations {
       }
     }
     return project;
-  }
-
-  // helpers
-  private static void checkContentPath(String path, SModule module, ModelRoot modelRoot) {
-    if (PersistenceRegistry.JAVA_CLASSES_ROOT.equals(modelRoot.getType())) {
-      return;
-    }
-
-    String sig = (containsFilesWithSuffix(new File(path), ".java") ? "j" : "") + (containsFilesWithSuffix(new File(path), ".class") ? "c" : "");
-    if (sig.length() == 2) {
-      sig = "j&c";
-    }
-    if (!sig.isEmpty()) {
-      System.out.printf("!%s at %s type in %s%n", sig, modelRoot.getType(), module.getModuleName());
-    }
-  }
-
-  private static boolean containsFilesWithSuffix(File path, String suffix) {
-    if (path.isFile()) {
-      return path.getName().endsWith(suffix);
-    } else if (path.isDirectory()) {
-      for (File child : path.listFiles()) {
-        if (containsFilesWithSuffix(child, suffix)) {
-          return true;
-        }
-      }
-    }
-    return false;
   }
 }

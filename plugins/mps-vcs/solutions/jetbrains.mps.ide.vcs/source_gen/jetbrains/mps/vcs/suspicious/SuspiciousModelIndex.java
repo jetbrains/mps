@@ -11,11 +11,11 @@ import com.intellij.openapi.vfs.VirtualFileManager;
 import jetbrains.mps.ide.MPSCoreComponents;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import java.util.concurrent.TimeUnit;
 import jetbrains.mps.smodel.SuspiciousModelHandler;
+import jetbrains.mps.project.AbstractModule;
 import java.util.List;
 import java.util.Map;
 import com.intellij.openapi.project.Project;
@@ -62,10 +62,6 @@ public class SuspiciousModelIndex implements ApplicationComponent {
     }
   }
 
-  public void addModule(AbstractModule abstractModule, boolean inConflict) {
-    myTaskQueue.addTask(new ConflictableModuleAdapter(abstractModule, inConflict));
-  }
-
   @NonNls
   @NotNull
   @Override
@@ -84,7 +80,7 @@ public class SuspiciousModelIndex implements ApplicationComponent {
       }
       @Override
       public void handleSuspiciousModule(AbstractModule module, boolean inConflict) {
-        addModule(module, inConflict);
+        // intentionally no-op as SuspiciousModelHandler is deprecated and this method is unused  
       }
     });
   }

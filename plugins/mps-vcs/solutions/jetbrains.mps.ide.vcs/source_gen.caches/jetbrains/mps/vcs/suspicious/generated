@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-16cqesgpkak5haycr7wqtwec0dzh7cq">
-  <files names="BaseTaskQueue.java:Conflictable.java:ConflictableModelAdapter.java:ConflictableModuleAdapter.java:PlatformActivityTracker.java:SuspiciousModelIndex.java" />
+<product version="3" modelHash="ba3ky05b49gbgyqdm6np85c1h3am3k">
+  <files names="BaseTaskQueue.java:Conflictable.java:ConflictableModelAdapter.java:PlatformActivityTracker.java:SuspiciousModelIndex.java" />
 </product>
 

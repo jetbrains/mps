@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,17 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 
 /**
+ * @deprecated Dubious approach to resolve issues when reading model/module files, intended for use in IDE. {@link #handleSuspiciousModule(AbstractModule, boolean)} is no-op
+ *             As nobody really knows intention behind this class and what's its added value, at MPS stand-up meeting on Nov 12, 2018 we've decided to drop it.
  * @author Evgeny Gerashchenko
  * @since 10/14/11
  */
+@Deprecated
+@ToRemove(version = 2019.3)
 public abstract class SuspiciousModelHandler {
   // TODO replace with extension point & interface
   public abstract void handleSuspiciousModel(SModel modelDescriptor, boolean isInConflict);

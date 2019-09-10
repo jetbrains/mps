@@ -343,12 +343,14 @@ public final class ModulesMiner {
    * Note, loading a file with language module not necessarily triggers loading of respective generators, only language source
    * module would pick generator modules up. Deployed language doesn't load generators.
    *
-   * Please do not use this method, it gonna fade away. With few modules coming from the same file, its API is not handy.
+   * @deprecated Please do not use this method, it gonna fade away. With few modules coming from the same file, its API is not handy.
    *
    * @param file descriptor file to parse for module information
    * @return handle for descriptor loaded from file
    */
   @NotNull
+  @Deprecated
+  @ToRemove(version = 2019.3)
   public ModuleHandle loadModuleHandle(@NotNull IFile file) {
     final ModuleHandle moduleHandle = new ModuleHandle(file, loadModuleDescriptor(file));
     fillOutcome(moduleHandle, !file.getPath().endsWith(SLASH_META_INF_MODULE_XML));
