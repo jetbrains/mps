@@ -15382,7 +15382,7 @@
         <property role="TrG5h" value="modules" />
         <node concept="2hMVRd" id="7$e6lgA3Bmr" role="1tU5fm">
           <node concept="3Tqbb2" id="7$e6lgA3Bms" role="2hN53Y">
-            <ref role="ehGHo" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
+            <ref role="ehGHo" to="kdzh:hS0KzPONfF" resolve="BuildMps_AbstractModule" />
           </node>
         </node>
       </node>
@@ -15401,7 +15401,7 @@
               <node concept="3cpWsn" id="7$e6lgA3Blf" role="3cpWs9">
                 <property role="TrG5h" value="moduleNode" />
                 <node concept="3Tqbb2" id="7$e6lgA3Blg" role="1tU5fm">
-                  <ref role="ehGHo" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
+                  <ref role="ehGHo" to="kdzh:hS0KzPONfF" resolve="BuildMps_AbstractModule" />
                 </node>
                 <node concept="1rXfSq" id="4hiugqyz9E2" role="33vP2m">
                   <ref role="37wK5l" node="7vf_vNz43x4" resolve="createModuleNode" />
@@ -15682,7 +15682,7 @@
         </node>
       </node>
       <node concept="3Tqbb2" id="7vf_vNz43xl" role="3clF45">
-        <ref role="ehGHo" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
+        <ref role="ehGHo" to="kdzh:hS0KzPONfF" resolve="BuildMps_AbstractModule" />
       </node>
       <node concept="2AHcQZ" id="7vf_vNz43xG" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />

@@ -19,6 +19,6 @@ public abstract class VariableDuplicatesProcessor extends DuplicatesProcessor<SN
   }
   @Override
   protected List<EditorMessage> createEditorMessages(SNode duplicate) {
-    return ListSequence.fromListAndArray(new ArrayList(), new DefaultEditorMessage(duplicate, Color.BLUE, null, this.myOwner));
+    return ListSequence.fromListAndArray(new ArrayList<EditorMessage>(), new DefaultEditorMessage(duplicate, Color.BLUE, null, this.myOwner));
   }
 }

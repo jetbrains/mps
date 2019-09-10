@@ -3434,11 +3434,11 @@
     <file name="VariableDuplicatesProcessor.java">
       <node id="4507335185602819715" at="16,0,17,0" concept="6" trace="myOwner" />
       <node id="4507335185602819711" at="17,61,18,19" concept="17" />
-      <node id="4507335185602819732" at="21,71,22,127" concept="12" />
+      <node id="4507335185602819732" at="21,71,22,142" concept="12" />
       <node id="4507335185602819707" at="17,0,20,0" concept="4" trace="VariableDuplicatesProcessor#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="4507335185602819725" at="20,0,24,0" concept="10" trace="createEditorMessages#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
       <scope id="4507335185602819710" at="17,61,18,19" />
-      <scope id="4507335185602819731" at="21,71,22,127" />
+      <scope id="4507335185602819731" at="21,71,22,142" />
       <scope id="4507335185602819707" at="17,0,20,0">
         <var name="context" id="4507335185602819713" />
       </scope>

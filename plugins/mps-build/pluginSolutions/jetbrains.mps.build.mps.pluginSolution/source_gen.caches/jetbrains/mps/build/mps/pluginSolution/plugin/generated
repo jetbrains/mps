@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-d1zfawu3spgk4ieel9o8xq812mlez68">
+<product version="3" modelHash="cu2fl8yymhnxikr4j386teor33dvbvb">
   <files names="AbstractBuildGenerator.java:AbstractStep.java:BuildGeneratorImpl.java:BuildGeneratorUtil.java:CheckBoxCellRenderrer.java:CheckBoxNamespaceNode.java:CheckBoxNode.java:CheckBoxTree.java:DependencyStep.java:GenerateBuildForProjectAction_Action.java:GenerateBuildWizard.java:IErrorHandler.java:ImportAllModulesFromFolder_Action.java:ImportModuleHelper.java:IntentionsEx_ActionGroup.java:LanguagesStep.java:ModelStep.java:ModuleData.java:ModulesListData.java:NamespaceData.java:NodeData.java:PluginSolution_ApplicationPlugin.java:ProjectPaneProjectAddition_ActionGroup.java:SolutionStep.java:TwoOptionsStep.java" />
 </product>
 
