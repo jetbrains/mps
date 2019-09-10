@@ -1019,6 +1019,11 @@
             <ref role="3bR37D" to="ffeo:1TaHNgiIbIZ" resolve="MPS.Editor" />
           </node>
         </node>
+        <node concept="1SiIV0" id="l1L199OSbM" role="3bR37C">
+          <node concept="3bR9La" id="l1L199OSbN" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:l1L199LeP5" resolve="jetbrains.mps.ide.refactoring" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="13uUGR" id="4rxYtJXJx$W" role="1l3spa">

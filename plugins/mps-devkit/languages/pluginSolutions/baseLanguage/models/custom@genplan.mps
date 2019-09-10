@@ -136,6 +136,10 @@
         <property role="2V$B1T" value="3ecd7c84-cde3-45de-886c-135ecc69b742" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.refactoring" />
       </node>
+      <node concept="2V$Bhx" id="l1L199OpuG" role="1t_9vn">
+        <property role="2V$B1T" value="982eb8df-2c96-4bd7-9963-11712ea622e5" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.resources" />
+      </node>
     </node>
     <node concept="NozSJ" id="2fM90PxfrMg" role="2VgMA7">
       <ref role="NozSM" to="7j7i:2fM90Pxfljd" resolve="BaseLanguageWithExtensions" />

@@ -25,7 +25,6 @@ import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoringParameters;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ExtractMethodRefactoring;
-import jetbrains.mps.java.platform.refactorings.ExtractMethodDialog;
 
 public class ExtractMethod_Action extends BaseAction {
   private static final Icon ICON = null;
