@@ -43,7 +43,7 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
           }
         }
         if ((SNodeOperations.getNextSibling(line) != null)) {
-          tgs.append("\n");
+          tgs.newLine();
           tgs.indent();
           tgs.append("// ");
         }
