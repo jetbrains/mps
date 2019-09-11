@@ -1351,6 +1351,24 @@
           <property role="3LZaj6" value="source" />
         </node>
       </node>
+      <node concept="398b2D" id="4X1d9kMORy9" role="398b2p">
+        <node concept="398BVA" id="4X1d9kMORya" role="398b2C">
+          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="4X1d9kMORyb" role="iGT6I">
+            <property role="2Ry0Am" value="workbench" />
+            <node concept="2Ry0Ak" id="4X1d9kMOR$D" role="2Ry0An">
+              <property role="2Ry0Am" value="mps-workbench" />
+              <node concept="2Ry0Ak" id="4X1d9kMORAH" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.ide.refactoring.platform" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="nFU4i" id="4X1d9kMORye" role="nFU4p">
+          <property role="nFU4j" value="source_gen" />
+          <property role="3LZaj6" value="source" />
+        </node>
+      </node>
       <node concept="398b2D" id="1FaKCGJSzFL" role="398b2p">
         <node concept="398BVA" id="6wK_PpNAEal" role="398b2C">
           <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
@@ -14343,6 +14361,11 @@
             <ref role="3bR37D" node="1qokWp1VAAr" resolve="jetbrains.mps.refactoring" />
           </node>
         </node>
+        <node concept="1SiIV0" id="4X1d9kMORoP" role="3bR37C">
+          <node concept="3bR9La" id="4X1d9kMORoQ" role="1SiIV1">
+            <ref role="3bR37D" node="4X1d9kMCbcv" resolve="jetbrains.mps.ide.refactoring.platform" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="7Kfy9QB6L9w" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -16951,6 +16974,7 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.ide.refactoring.platform" />
         <property role="3LESm3" value="98b3b6eb-9d60-4e29-9afb-762ac8948292" />
+        <property role="2GAjPV" value="true" />
         <node concept="398BVA" id="4X1d9kMCbrS" role="3LF7KH">
           <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
           <node concept="2Ry0Ak" id="4X1d9kMCbrT" role="iGT6I">

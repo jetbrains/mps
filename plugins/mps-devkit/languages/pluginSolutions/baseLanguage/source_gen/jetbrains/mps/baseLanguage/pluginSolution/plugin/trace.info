@@ -3937,7 +3937,7 @@
       <node id="4506911463502844964" at="34,61,34,107" concept="23" />
       <node id="3643409615774796551" at="40,73,40,119" concept="23" />
       <node id="3643409615774779859" at="46,5,46,47" concept="22" />
-      <node id="2733099144075638398" at="22,46,23,72" concept="17" />
+      <node id="2733099144075638398" at="22,46,23,71" concept="17" />
       <node id="2733099144075645855" at="25,34,26,41" concept="12" />
       <node id="7464946958060842118" at="30,27,31,37" concept="12" />
       <node id="4506911463502853884" at="33,76,34,61" concept="11" />
@@ -3959,7 +3959,7 @@
       <node id="225095413451945166" at="43,0,46,5" concept="9" />
       <node id="7464946958060839537" at="33,0,37,0" concept="10" trace="isApplicable#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)Z" />
       <node id="7464946958060839548" at="37,0,48,0" concept="10" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)V" />
-      <scope id="2733099144075638398" at="22,46,23,72" />
+      <scope id="2733099144075638398" at="22,46,23,71" />
       <scope id="2733099144075638409" at="25,34,26,41" />
       <scope id="7464946958060839536" at="30,27,31,37" />
       <scope id="225095413451945167" at="44,26,45,13" />
@@ -4431,7 +4431,7 @@
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/9126454250599937719">
     <file name="MoveStaticField.java">
       <node id="9126454250600059144" at="42,61,42,107" concept="23" />
-      <node id="9126454250599950216" at="30,40,31,72" concept="17" />
+      <node id="9126454250599950216" at="30,40,31,71" concept="17" />
       <node id="9126454250599950221" at="33,34,34,35" concept="12" />
       <node id="9126454250600058323" at="38,27,39,31" concept="12" />
       <node id="9126454250600059141" at="41,76,42,61" concept="11" />
@@ -4461,7 +4461,7 @@
       <node id="3464535278051984786" at="47,0,53,7" concept="11" />
       <node id="9088427053767152511" at="65,0,73,0" concept="10" trace="insertNode#(Lorg/jetbrains/mps/openapi/module/SRepository;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="9126454250600054885" at="45,0,60,0" concept="10" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)V" />
-      <scope id="9126454250599950216" at="30,40,31,72" />
+      <scope id="9126454250599950216" at="30,40,31,71" />
       <scope id="9126454250599950220" at="33,34,34,35" />
       <scope id="9126454250600054873" at="38,27,39,31" />
       <scope id="3464535278051984808" at="50,98,51,196" />
@@ -4512,7 +4512,7 @@
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/9126454250600098577">
     <file name="MoveStaticMethod.java">
       <node id="9126454250600099613" at="43,61,43,107" concept="23" />
-      <node id="9126454250600099586" at="30,41,31,72" concept="17" />
+      <node id="9126454250600099586" at="30,41,31,71" concept="17" />
       <node id="9126454250600099591" at="33,34,34,36" concept="12" />
       <node id="9126454250600099600" at="38,27,39,32" concept="12" />
       <node id="9126454250600099610" at="42,76,43,61" concept="11" />
@@ -4552,7 +4552,7 @@
       <node id="9088427053763560894" at="66,0,88,0" concept="10" trace="process#(Ljava/util/List;Ljava/util/Map;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
       <node id="9088427053769163634" at="59,0,88,82" concept="5" />
       <node id="9126454250600099636" at="47,0,90,0" concept="10" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)V" />
-      <scope id="9126454250600099586" at="30,41,31,72" />
+      <scope id="9126454250600099586" at="30,41,31,71" />
       <scope id="9126454250600099590" at="33,34,34,36" />
       <scope id="9126454250600099599" at="38,27,39,32" />
       <scope id="3464535278051991445" at="52,96,53,196" />

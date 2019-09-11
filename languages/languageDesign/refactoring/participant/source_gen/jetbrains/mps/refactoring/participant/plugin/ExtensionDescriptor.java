@@ -7,7 +7,7 @@ import jetbrains.mps.smodel.structure.ExtensionPoint;
 import java.util.Arrays;
 
 public class ExtensionDescriptor extends DefaultExtensionDescriptor {
-  private ExtensionPoint[] extensionPoints = new ExtensionPoint[]{new ExtensionPoint("jetbrains.mps.refactoring.participant.MoveModelParticipantEP"), new ExtensionPoint("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP"), new ExtensionPoint("jetbrains.mps.refactoring.participant.PersistentRefactoringParticipantsEP"), new ExtensionPoint("jetbrains.mps.refactoring.participant.RenameNodeParticipantEP")};
+  private ExtensionPoint[] extensionPoints = new ExtensionPoint[]{new ExtensionPoint("jetbrains.mps.refactoring.participant.MoveModelParticipantEP"), new ExtensionPoint("jetbrains.mps.refactoring.participant.MoveNodeParticipantEP"), new ExtensionPoint("jetbrains.mps.refactoring.participant.MoveNodesActionEP"), new ExtensionPoint("jetbrains.mps.refactoring.participant.PersistentRefactoringParticipantsEP"), new ExtensionPoint("jetbrains.mps.refactoring.participant.RenameNodeParticipantEP")};
   public ExtensionDescriptor() {
   }
   @Override

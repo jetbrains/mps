@@ -104,7 +104,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
   }
   public static class MovePropertyUp_extension extends Extension.Default<MoveNodesAction> {
     public MovePropertyUp_extension() {
-      super("jetbrains.mps.ide.refactoring.platform.MoveNodesActionEP");
+      super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
       return new MoveFeatureUp("Move Property Up", "property", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
@@ -124,7 +124,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
   }
   public static class MoveContainmentLinkUp_extension extends Extension.Default<MoveNodesAction> {
     public MoveContainmentLinkUp_extension() {
-      super("jetbrains.mps.ide.refactoring.platform.MoveNodesActionEP");
+      super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
       return new MoveFeatureUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
@@ -144,7 +144,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
   }
   public static class MoveRefrenceLinkUp_extension extends Extension.Default<MoveNodesAction> {
     public MoveRefrenceLinkUp_extension() {
-      super("jetbrains.mps.ide.refactoring.platform.MoveNodesActionEP");
+      super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
       return new MoveFeatureUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {

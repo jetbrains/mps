@@ -17,7 +17,7 @@ import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 public class MoveNodesActionHelper {
   private static final Logger LOG = LogManager.getLogger(MoveNodesActionHelper.class);
   public static MoveNodesAction getRefactoring(final MPSProject project, final List<SNode> nodesToMove) {
-    Iterable<MoveNodesAction> specialRefactorings = new ExtensionPoint<MoveNodesAction>("jetbrains.mps.ide.refactoring.platform.MoveNodesActionEP").getObjects();
+    Iterable<MoveNodesAction> specialRefactorings = new ExtensionPoint<MoveNodesAction>("jetbrains.mps.refactoring.participant.MoveNodesActionEP").getObjects();
     Iterable<MoveNodesAction> applicableRefactorings = Sequence.fromIterable(specialRefactorings).where(new IWhereFilter<MoveNodesAction>() {
       public boolean accept(MoveNodesAction it) {
         return it.isApplicable(project, nodesToMove);

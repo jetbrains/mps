@@ -254,9 +254,6 @@
       </concept>
     </language>
     <language id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension">
-      <concept id="3729007189729192406" name="jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration" flags="ng" index="vrV6u">
-        <child id="8029776554053057803" name="objectType" index="luc8K" />
-      </concept>
       <concept id="6626851894249711936" name="jetbrains.mps.lang.extension.structure.ExtensionPointExpression" flags="nn" index="2O5UvJ">
         <reference id="6626851894249712469" name="extensionPoint" index="2O5UnU" />
       </concept>
@@ -431,7 +428,7 @@
             </node>
             <node concept="2OqwBi" id="30kw7F05kWG" role="33vP2m">
               <node concept="2O5UvJ" id="30kw7F05kWH" role="2Oq$k0">
-                <ref role="2O5UnU" node="1F5g4zQqSPo" resolve="MoveNodesActionEP" />
+                <ref role="2O5UnU" to="4ugc:1F5g4zQqSPo" resolve="MoveNodesActionEP" />
               </node>
               <node concept="SfwO_" id="30kw7F05kWI" role="2OqNvi" />
             </node>
@@ -1287,12 +1284,6 @@
     </node>
     <node concept="3Tm1VV" id="1F5g4zQqVSS" role="1B3o_S" />
     <node concept="3uibUv" id="1F5g4zQqVTe" role="EKbjA">
-      <ref role="3uigEE" node="1F5g4zQqSPt" resolve="MoveNodesAction" />
-    </node>
-  </node>
-  <node concept="vrV6u" id="1F5g4zQqSPo">
-    <property role="TrG5h" value="MoveNodesActionEP" />
-    <node concept="3uibUv" id="1F5g4zQwWpf" role="luc8K">
       <ref role="3uigEE" node="1F5g4zQqSPt" resolve="MoveNodesAction" />
     </node>
   </node>

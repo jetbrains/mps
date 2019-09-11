@@ -9,6 +9,9 @@
       <sourceFolder url="file://$MODULE_DIR$/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
+    <content url="file://$MODULE_DIR$/../mps-workbench/jetbrains.mps.ide.refactoring.platform">
+      <sourceFolder url="file://$MODULE_DIR$/../mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="kernel" />

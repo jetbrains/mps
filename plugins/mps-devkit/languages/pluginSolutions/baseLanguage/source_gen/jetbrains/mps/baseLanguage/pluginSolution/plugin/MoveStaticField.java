@@ -28,7 +28,7 @@ public class MoveStaticField implements MoveNodesAction {
 
   public static class MoveStaticField_extension extends Extension.Default<MoveNodesAction> {
     public MoveStaticField_extension() {
-      super("jetbrains.mps.ide.refactoring.platform.MoveNodesActionEP");
+      super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
       return new MoveStaticField();

@@ -33,13 +33,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
     <classNode extendsClassName="jetbrains.mps.refactoring.participant.RefactoringUI" />
   </dependency>
-  <dependency className="jetbrains.mps.ide.refactoring.platform.plugin.ExtensionDescriptor">
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.Arrays" />
-    <classNode dependClassName="jetbrains.mps.smodel.structure.ExtensionPoint" />
-    <classNode extendsClassName="jetbrains.mps.smodel.structure.DefaultExtensionDescriptor" />
-  </dependency>
   <dependency className="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesAction">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.List" />

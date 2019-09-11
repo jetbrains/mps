@@ -20,7 +20,7 @@ public class ConvertAnonymousClass implements MoveNodesAction {
 
   public static class ConvertAnonymousClass_extension extends Extension.Default<MoveNodesAction> {
     public ConvertAnonymousClass_extension() {
-      super("jetbrains.mps.ide.refactoring.platform.MoveNodesActionEP");
+      super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
       return new ConvertAnonymousClass();

@@ -941,8 +941,6 @@
       <directory url="file://$PROJECT_DIR$/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide.refactoring/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide.refactoring/test_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.core/source_gen" includeSubdirectories="true" />

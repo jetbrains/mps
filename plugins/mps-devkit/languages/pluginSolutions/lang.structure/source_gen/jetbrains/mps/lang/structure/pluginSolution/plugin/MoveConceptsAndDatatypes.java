@@ -33,7 +33,7 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
 
   public static class MoveConceptsAndDatatypes_extension extends Extension.Default<MoveNodesAction> {
     public MoveConceptsAndDatatypes_extension() {
-      super("jetbrains.mps.ide.refactoring.platform.MoveNodesActionEP");
+      super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
       return new MoveConceptsAndDatatypes();

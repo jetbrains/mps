@@ -3731,7 +3731,7 @@
     <node concept="1lYeZD" id="2nHUN3yznpY" role="jymVt">
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="ConvertAnonymousClass_extension" />
-      <ref role="1lYe$Y" to="4gtq:1F5g4zQqSPo" resolve="MoveNodesActionEP" />
+      <ref role="1lYe$Y" to="4ugc:1F5g4zQqSPo" resolve="MoveNodesActionEP" />
       <node concept="3Tm1VV" id="2nHUN3yznpZ" role="1B3o_S" />
       <node concept="q3mfD" id="2nHUN3yznq5" role="jymVt">
         <property role="TrG5h" value="get" />
@@ -4037,7 +4037,7 @@
     <node concept="1lYeZD" id="7UBFs_LRQW2" role="jymVt">
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="MoveStaticMethod_extension" />
-      <ref role="1lYe$Y" to="4gtq:1F5g4zQqSPo" resolve="MoveNodesActionEP" />
+      <ref role="1lYe$Y" to="4ugc:1F5g4zQqSPo" resolve="MoveNodesActionEP" />
       <node concept="3Tm1VV" id="7UBFs_LRQW3" role="1B3o_S" />
       <node concept="q3mfD" id="7UBFs_LRQW4" role="jymVt">
         <property role="TrG5h" value="get" />
@@ -4639,7 +4639,7 @@
     <node concept="1lYeZD" id="7UBFs_LRiu8" role="jymVt">
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="MoveStaticField_extension" />
-      <ref role="1lYe$Y" to="4gtq:1F5g4zQqSPo" resolve="MoveNodesActionEP" />
+      <ref role="1lYe$Y" to="4ugc:1F5g4zQqSPo" resolve="MoveNodesActionEP" />
       <node concept="3Tm1VV" id="7UBFs_LRiu9" role="1B3o_S" />
       <node concept="q3mfD" id="7UBFs_LRiua" role="jymVt">
         <property role="TrG5h" value="get" />
