@@ -353,10 +353,10 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
 
   private static int getEncodedIntValue(SNode oldMember) {
     Object value = SPrimitiveTypes.INTEGER.fromString(SPropertyOperations.getString(oldMember, PROPS.internalValue$bx$m));
-    if (value != SType.NOT_A_VALUE) {
+    if (value != SType.NOT_A_VALUE && value != null) {
       return (Integer) value;
     }
-    return -1;
+    return 0;
   }
 
   private static boolean isValidIdentifier(String name) {
