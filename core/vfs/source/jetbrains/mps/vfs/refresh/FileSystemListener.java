@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,15 +30,5 @@ import org.jetbrains.annotations.Nullable;
 @Deprecated
 @ToRemove(version = 3.5)
 public interface FileSystemListener extends FileListener {
-  /**
-   * todo remove it, too complicated
-   * null means no deps
-   */
-  @ToRemove(version = 3.4)
-  @Deprecated
-  @Nullable default Iterable<FileSystemListener> getListenerDependencies() {
-    return null;
-  }
-
   @Nullable IFile getFileToListen();
 }

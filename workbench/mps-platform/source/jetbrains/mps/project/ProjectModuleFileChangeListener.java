@@ -61,7 +61,7 @@ public final class ProjectModuleFileChangeListener implements ProjectModuleLoadi
    * and there is no need in ProjectDescriptor filling the project with modules, since idea modules contribute mps modules via MPSFacet.
    * The MPSFacet is also responsible for disposing the corresponding SModule there thus we might get disposed modules in the plugin environment
    */
-  /*package*/ void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+  /*package*/ void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     // removeModule0, below, grabs model write anyway, hence runWriteAction
     final SRepository repo = myMpsProject.getRepository();
     repo.getModelAccess().runWriteAction(() -> {
@@ -142,6 +142,8 @@ public final class ProjectModuleFileChangeListener implements ProjectModuleLoadi
       // FIXME use FS from Project/FileBasedProject, rather than that of the module
       FileSystem fileSystem = ((AbstractModule) module).getFileSystem();
       final IFile file = fileSystem.getFile(modulePath.getPath());
+      // FIXME the moment we get more than one module for the same path (e.g. ProjectModuleLoader starts to dispatch events for generators)
+      //       we face multiple listeners issue here. addListener implementation allows 1 specific listener instance per file
       file.addListener(myRedispatchListener);
       myProjectModulesAndFiles.track(file, module);
     }

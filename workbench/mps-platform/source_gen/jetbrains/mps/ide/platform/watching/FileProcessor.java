@@ -5,13 +5,14 @@ package jetbrains.mps.ide.platform.watching;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import java.util.Map;
-import jetbrains.mps.vfs.refresh.FileSystemListener;
+import jetbrains.mps.vfs.refresh.FileEventProcessor;
 import java.util.HashMap;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.vfs.refresh.FileListener;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
@@ -23,6 +24,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
+import jetbrains.mps.vfs.refresh.FileSystemListener;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -37,8 +39,8 @@ import java.util.Arrays;
 /*package*/ class FileProcessor extends ReloadParticipant {
   private static final Logger LOG = LogManager.getLogger(FileProcessor.class);
   private final FileSystemListenersContainer myListenersContainer;
-  private final Map<FileSystemListener, ListenerData> myListener2Data = new HashMap<FileSystemListener, ListenerData>();
-  private final Queue<FileSystemListener> myPostNotify = QueueSequence.fromQueue(new LinkedList<FileSystemListener>());
+  private final Map<FileEventProcessor, ListenerData> myListener2Data = new HashMap<FileEventProcessor, ListenerData>();
+  private final Queue<FileEventProcessor> myPostNotify = QueueSequence.fromQueue(new LinkedList<FileEventProcessor>());
   private final IdeaFileSystem FS;
 
   /*package*/ FileProcessor(IdeaFileSystem fs) {
@@ -54,22 +56,21 @@ import java.util.Arrays;
     monitor.start("", myListener2Data.size() + 1);
     long updateStartTime = System.currentTimeMillis();
     try {
-      // sorted according to #getListenerDependencies 
-      Iterable<FileSystemListener> sortedListeners = sortedListeners();
-      for (FileSystemListener listener : Sequence.fromIterable(sortedListeners)) {
-        ListenerData data = MapSequence.fromMap(myListener2Data).get(listener);
+      Iterable<FileListener> fileListeners = listenersOnly();
+      for (FileListener listener : Sequence.fromIterable(fileListeners)) {
         if (!(myListenersContainer.contains(listener))) {
           monitor.advance(1);
           continue;
         }
 
+        ListenerData data = MapSequence.fromMap(myListener2Data).get(listener);
         long listenerUpdateStartTime = System.currentTimeMillis();
         listener.update(monitor.subTask(1, SubProgressKind.AS_COMMENT), data);
         printStat("update:" + listener, listenerUpdateStartTime);
         data.isNotified = true;
       }
       long postNotifyBeginTime = System.currentTimeMillis();
-      FileSystemListener listener;
+      FileEventProcessor listener;
       while ((listener = QueueSequence.fromQueue(myPostNotify).removeFirstElement()) != null) {
         ListenerData data = myListener2Data.get(listener);
         if (data.isNotified) {
@@ -85,7 +86,7 @@ import java.util.Arrays;
     }
   }
 
-  private void notify(FileSystemListener listener, ListenerData source) {
+  /*package*/ final void notify(FileEventProcessor listener, ListenerData source) {
     ListenerData data = createNewDataIfAbsent(listener);
     if (!(data.isNotified)) {
       data.added.addAll(source.added);
@@ -95,35 +96,14 @@ import java.util.Arrays;
     }
   }
 
-  private Iterable<FileSystemListener> sortedListeners() {
-    Set<FileSystemListener> result = new LinkedHashSet<FileSystemListener>(myListener2Data.size());
-    for (FileSystemListener l : SetSequence.fromSet(myListener2Data.keySet())) {
-      visit(l, result);
-    }
-    return result;
-  }
-
-  private void visit(FileSystemListener listener, Set<FileSystemListener> result) {
-    if (result.contains(listener)) {
-      return;
-    }
-    result.add(listener);
-    Iterable<FileSystemListener> dependencies = listener.getListenerDependencies();
-    if (dependencies == null) {
-      return;
-    }
-
-    boolean readd = false;
-    for (FileSystemListener dep : dependencies) {
-      if (myListener2Data.containsKey(dep) && !(result.contains(dep))) {
-        visit(dep, result);
-        readd = true;
+  private Iterable<FileListener> listenersOnly() {
+    Set<FileListener> result = new LinkedHashSet<FileListener>(myListener2Data.size());
+    for (FileEventProcessor l : SetSequence.fromSet(myListener2Data.keySet())) {
+      if (l instanceof FileListener) {
+        result.add((FileListener) l);
       }
     }
-    if (readd) {
-      result.remove(listener);
-      result.add(listener);
-    }
+    return result;
   }
 
   /*package*/ boolean accepts(String path) {
@@ -186,9 +166,9 @@ import java.util.Arrays;
     }).toListSequence();
   }
 
-  private ListenerData createNewDataIfAbsent(FileSystemListener listener) {
-    return myListener2Data.computeIfAbsent(listener, new Function<FileSystemListener, ListenerData>() {
-      public ListenerData apply(FileSystemListener it1) {
+  private ListenerData createNewDataIfAbsent(FileEventProcessor listener) {
+    return myListener2Data.computeIfAbsent(listener, new Function<FileEventProcessor, ListenerData>() {
+      public ListenerData apply(FileEventProcessor it1) {
         return new ListenerData();
       }
     });
@@ -262,7 +242,7 @@ import java.util.Arrays;
     }
 
     @Override
-    public void notify(FileSystemListener listener) {
+    public void notify(FileEventProcessor listener) {
       FileProcessor.this.notify(listener, this);
     }
 

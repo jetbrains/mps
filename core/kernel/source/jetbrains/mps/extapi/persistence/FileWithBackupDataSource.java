@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@ public class FileWithBackupDataSource extends FileDataSource {
   }
 
   @Override
-  public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+  public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     IFile mainFile = getFile();
     IFile backupFile = getBackupFile();
     boolean isChanged = false;
@@ -120,7 +120,7 @@ public class FileWithBackupDataSource extends FileDataSource {
     }
 
     @Override
-    public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+    public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
       event.notify(FileWithBackupDataSource.this);
     }
   }

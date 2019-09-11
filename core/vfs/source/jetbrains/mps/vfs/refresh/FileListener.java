@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,13 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
  *
  * Created by apyshkin on 6/23/16.
  */
-public interface FileListener {
+public interface FileListener extends FileEventProcessor {
   /**
    * listener gets here all the events
+   * The method is from {@link FileEventProcessor#update(ProgressMonitor, FileSystemEvent)}, kept here just in case there's any reference from a model
    */
-  void update(ProgressMonitor monitor, @NotNull FileSystemEvent event);
+  @Override
+  void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event);
 
   @NotNull
   default FileListeningPreferences listeningPreferences() {

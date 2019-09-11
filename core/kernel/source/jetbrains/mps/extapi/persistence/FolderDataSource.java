@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -219,7 +219,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   }
 
   @Override
-  public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+  public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     Set<String> affectedStreams = new HashSet<>();
     for (IFile file : event.getChanged()) {
       if (isIncluded(file)) {

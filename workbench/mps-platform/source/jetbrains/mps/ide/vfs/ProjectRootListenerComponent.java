@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -134,7 +134,7 @@ public final class ProjectRootListenerComponent implements ProjectComponent {
     }
 
     @NotNull
-    public IFile getFile() {
+    /*package*/ IFile getFile() {
       return myFileIListenTo;
     }
 
@@ -144,7 +144,7 @@ public final class ProjectRootListenerComponent implements ProjectComponent {
     }
 
     @Override
-    public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+    public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     }
   }
 }

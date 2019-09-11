@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,16 @@
 package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import jetbrains.mps.vfs.FileSystemExtPoint;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
+import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
+import jetbrains.mps.vfs.refresh.FileEventProcessor;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
-import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.path.Path;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
@@ -53,7 +54,7 @@ import java.util.stream.Collectors;
  * @author apyshkin
  * evgeny, 11/3/12
  */
-public class FolderSetDataSource extends DataSourceBase implements DataSource, FileSystemListener, FileSystemBasedDataSource {
+public class FolderSetDataSource extends DataSourceBase implements DataSource, FileEventProcessor, FileSystemBasedDataSource {
   private final ReadWriteLock myLock = new ReentrantReadWriteLock();
   private final List<DataSourceListener> myListeners = new ArrayList<>(4);
   private final Map<String, PathListener> myPaths = new LinkedHashMap<>(8);
@@ -210,11 +211,6 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
   }
 
   @Override
-  public IFile getFileToListen() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     fireChanged(monitor);
   }
@@ -259,9 +255,9 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
 
   private static class PathListener implements FileSystemListener {
     private final IFile myFile;
-    private final FileSystemListener myDelegate;
+    private final FileEventProcessor myDelegate;
 
-    private PathListener(@NotNull IFile path, FileSystemListener delegate) {
+    private PathListener(@NotNull IFile path, FileEventProcessor delegate) {
       myFile = path;
       myDelegate = delegate;
     }

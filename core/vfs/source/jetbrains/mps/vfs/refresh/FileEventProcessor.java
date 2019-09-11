@@ -15,29 +15,16 @@
  */
 package jetbrains.mps.vfs.refresh;
 
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Set;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 /**
- * FS event
- *
- * FIXME we merge all the fs events into one pile illegally
- * FIXME while sometimes we prefer to have a list of consequtive events
- *
- * Created by apyshkin on 6/23/16.
+ * Abstraction of a code capable to process {@link FileSystemEvent}.
+ * The idea is to keep this code separate from {@link FileListener} and to use it process aggregated and/or postponed notifications
+ * by means of {@link FileSystemEvent#notify(FileEventProcessor)}
+ * @author Artem Tikhomirov
+ * @since 2019.3
  */
-public interface FileSystemEvent {
-  Set<IFile> getCreated();
-
-  Set<IFile> getRemoved();
-
-  Set<IFile> getChanged();
-
-  /**
-   * Event re-dispatch mechanism, handy for cases when there's single place
-   * that handles changes in few otherwise individual files (e.g. model root and file data sources)
-   */
-  void notify(@NotNull FileEventProcessor anotherListener);
+public interface FileEventProcessor {
+  void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event);
 }

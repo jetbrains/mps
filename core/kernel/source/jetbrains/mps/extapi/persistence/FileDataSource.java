@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -176,7 +176,7 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   }
 
   @Override
-  public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+  public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     for (IFile file : event.getChanged()) {
       if (file.equals(myFile)) {
         fireChanged(monitor);

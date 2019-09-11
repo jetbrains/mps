@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,16 @@
  */
 package jetbrains.mps.extapi.persistence;
 
-import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.openapi.FileSystem;
+import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
+import jetbrains.mps.vfs.refresh.FileEventProcessor;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
 import org.jetbrains.annotations.NotNull;
@@ -60,7 +61,7 @@ import static jetbrains.mps.util.FileUtil.getUnixPath;
  * @author evgeny, 12/11/12
  * apyshkin, 15/12/16
  */
-public abstract class FileBasedModelRoot extends ModelRootBase implements FileSystemListener {
+public abstract class FileBasedModelRoot extends ModelRootBase implements FileEventProcessor {
   /**
    * @deprecated use {@link SourceRootKinds#SOURCES} instead
    */
@@ -361,12 +362,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileSy
   }
 
   @Override
-  public final IFile getFileToListen() {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+  public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
     if (!isRegistered()) {
       // XXX not sure there's any reason to update MR if it's not part of any accessible model structure
       return;
