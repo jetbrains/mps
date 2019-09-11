@@ -20,10 +20,9 @@ import jetbrains.mps.library.ModuleFileTracker.Delta;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.project.structure.project.ModulePath;
-import jetbrains.mps.vfs.FileSystems;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.RedispatchListener;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.FileListener;
 import jetbrains.mps.vfs.refresh.FileListeningPreferences;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
@@ -112,7 +111,7 @@ public final class ProjectModuleFileChangeListener implements ProjectModuleLoadi
    */
   private final FileListener myMissingFileListener = new FileListener() {
     @Override
-    public void update(ProgressMonitor monitor, @NotNull FileSystemEvent event) {
+    public void update(@NotNull ProgressMonitor monitor, @NotNull FileSystemEvent event) {
       for (IFile file : event.getCreated()) {
         file.removeListener(this);
       }
@@ -136,32 +135,38 @@ public final class ProjectModuleFileChangeListener implements ProjectModuleLoadi
     myRedispatchListener = new RedispatchListener(this::update, prefs);
   }
 
+  private IFileSystem getProjectFS() {
+    // FIXME I would prefer ModulePath to keep IFile instead of String, rather than assume project modules come from FS associated with the project
+    //       It's not completely wrong assumption, yet not perfect.
+    return myMpsProject.getFileSystem();
+  }
+
   @Override
   public void moduleLoaded(ModulePath modulePath, @NotNull SModule module) {
     if (module instanceof AbstractModule) {
-      // FIXME use FS from Project/FileBasedProject, rather than that of the module
-      FileSystem fileSystem = ((AbstractModule) module).getFileSystem();
-      final IFile file = fileSystem.getFile(modulePath.getPath());
-      // FIXME the moment we get more than one module for the same path (e.g. ProjectModuleLoader starts to dispatch events for generators)
-      //       we face multiple listeners issue here. addListener implementation allows 1 specific listener instance per file
-      file.addListener(myRedispatchListener);
+      final IFile file = getProjectFS().getFile(modulePath.getPath());
       myProjectModulesAndFiles.track(file, module);
+      // Shall account for more than one module for the same path (e.g. if/when ProjectModuleLoader dispatches events for generators)
+      //   IFile.addListener implementation now adds given listener only once, we have to be careful when removing a listener, though.
+      file.addListener(myRedispatchListener);
     }
   }
 
   @Override
   public void moduleRemoved(ModulePath modulePath, @NotNull SModule module) {
     if (module instanceof AbstractModule) {
-      FileSystem fileSystem = ((AbstractModule) module).getFileSystem();
-      final IFile file = fileSystem.getFile(modulePath.getPath());
-      file.removeListener(myRedispatchListener);
+      final IFile file = getProjectFS().getFile(modulePath.getPath());
       myProjectModulesAndFiles.forget(file, module);
+      if (!myProjectModulesAndFiles.isAnyModuleTrackedFor(file)) {
+        // if there are few modules in a file, removal of one of them shall not leave us here without notifications for others.
+        file.removeListener(myRedispatchListener);
+      }
     }
   }
 
   @Override
   public void moduleNotFound(@NotNull final ModulePath modulePath) {
-    FileSystems.getDefault().getFile(modulePath.getPath()).addListener(myMissingFileListener);
+    getProjectFS().getFile(modulePath.getPath()).addListener(myMissingFileListener);
   }
 
   @Override

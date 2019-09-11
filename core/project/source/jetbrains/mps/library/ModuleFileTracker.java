@@ -133,6 +133,15 @@ public final class ModuleFileTracker {
   }
 
 
+  /**
+   * @return tells {@code true} if there's any module associated with the file in this tracker.
+   */
+  public boolean isAnyModuleTrackedFor(@NotNull IFile file) {
+    final Set<SModuleReference> modules = myFile2Module.get(file);
+    return modules != null && !modules.isEmpty();
+  }
+
+
   // looks up tracked md files from supplied collection, and tells pairs <module, md file>
   public Map<SModuleReference, IFile> getTrackedFor(Collection<IFile> files) {
 //    files.stream().flatMap(f -> myFile2Module.getOrDefault(f, Collections.emptySet()).stream()).collect(Collectors.toSet());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -153,6 +153,7 @@ public interface IFile {
   @Nullable List<IFile> getChildren();
 
   /**
+   * Same listener added twice to the same file is ignored
    * @deprecated move to CachingFile
    */
   @ToRemove(version = 183)
@@ -160,6 +161,9 @@ public interface IFile {
     // nop
   }
 
+  /**
+   * It's safe to remove a listener that has never been attached to a file
+   */
   default void removeListener(@NotNull FileListener listener) {
     // nop
   }
