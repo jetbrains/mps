@@ -13,14 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.jps.persistence;
 
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
-import jetbrains.mps.extapi.persistence.SourceRoot;
-import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.idea.core.module.CachedModelData;
 import jetbrains.mps.idea.core.module.CachedModelData.Kind;
 import jetbrains.mps.idea.core.module.CachedModuleData;
@@ -33,26 +30,20 @@ import jetbrains.mps.persistence.FilePerRootModelFactory;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
-import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * evgeny, 12/11/12
@@ -152,9 +143,9 @@ public class CachedDefaultModelRoot extends ModelRootBase {
       } else if (mdata.getCacheKind() == CachedModelData.Kind.Regular) {
         result.add(DefaultModelPersistence.createFromHeader((SModelHeader) header, new FileDataSource(file)));
       } else if (mdata.getCacheKind() == Kind.RegularFilePerRoot) {
-        result.add(FilePerRootModelFactory.createFromHeader((SModelHeader) header, new FilePerRootDataSource(file, this)));
+        result.add(FilePerRootModelFactory.createFromHeader((SModelHeader) header, new FilePerRootDataSource(file)));
       } else {
-        FileDataSource source = new FileDataSource(file, this);
+        FileDataSource source = new FileDataSource(file);
         String fileName = file.getName();
         String extension = FileUtil.getExtension(fileName);
 

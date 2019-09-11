@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,12 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
-import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromURL;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
@@ -40,12 +37,6 @@ import java.util.Objects;
 public final class FilePerRootDataSource extends FolderDataSource {
   public static final String HEADER_FILE = MPSExtentions.DOT_MODEL_HEADER;
   public static final String ROOT_EXTENSION = MPSExtentions.MODEL_ROOT;
-
-  @ToRemove(version = 193)
-  @Deprecated
-  public FilePerRootDataSource(@NotNull IFile folder, ModelRoot root) {
-    super(folder);
-  }
 
   public FilePerRootDataSource(@NotNull IFile folder) {
     super(folder);

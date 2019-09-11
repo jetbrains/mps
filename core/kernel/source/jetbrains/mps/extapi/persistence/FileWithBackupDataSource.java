@@ -33,11 +33,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 public class FileWithBackupDataSource extends FileDataSource {
   private BackupFileListener myBackupFileListener;
 
-  @Deprecated
-  public FileWithBackupDataSource(@NotNull IFile file, ModelRoot modelRoot) {
-    super(file, modelRoot);
-  }
-
   public FileWithBackupDataSource(@NotNull IFile file) {
     super(file);
   }

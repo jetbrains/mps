@@ -18,16 +18,13 @@ package jetbrains.mps.extapi.persistence;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.NullDataSource.NullDataSourceType;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
@@ -57,22 +54,12 @@ public class FileDataSource extends DataSourceBase implements StreamDataSource, 
   private final Object LOCK = new Object();
   private List<DataSourceListener> myListeners = new ArrayList<>();
 
-  @NotNull private IFile myFile;
-
-  public FileDataSource(@NotNull IFile file) {
-    this(file, null);
-  }
+  private IFile myFile;
 
   /**
-   * FIXME remove modelRoot parameter
-   * @param modelRoot (optional) containing model root, which should be notified before the source during the update
-   *
-   * @deprecated use {@link DataSourceFactoryRuleService#getFactory} AND
-   *             {@link DataSourceFactoryFromName#create}
+   * Do not instantiate directly, use {@link DataSourceFactoryRuleService#getFactory} AND {@link DataSourceFactoryFromName#create}
    */
-  @ToRemove(version = 3.5)
-  @Deprecated
-  public FileDataSource(@NotNull IFile file, @Nullable ModelRoot modelRoot) {
+  public FileDataSource(@NotNull IFile file) {
     myFile = file;
   }
 
