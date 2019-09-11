@@ -19,8 +19,8 @@ import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodRefactoringUtil
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.ide.platform.refactoring.RenameMethodDialog;
 import jetbrains.mps.refactoring.participant.RefactoringProcessor;
-import jetbrains.mps.ide.refactoring.plugin.RenameRefactoringBody;
-import jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI;
+import jetbrains.mps.ide.refactoring.platform.plugin.RenameRefactoringBody;
+import jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;

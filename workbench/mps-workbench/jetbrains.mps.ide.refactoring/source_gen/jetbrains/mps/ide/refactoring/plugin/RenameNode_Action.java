@@ -22,6 +22,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import javax.swing.JOptionPane;
 import jetbrains.mps.ide.platform.refactoring.RenameDialog;
 import jetbrains.mps.refactoring.participant.RefactoringProcessor;
+import jetbrains.mps.ide.refactoring.platform.plugin.RenameRefactoringBody;
+import jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.language.ConceptRegistry;

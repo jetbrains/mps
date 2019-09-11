@@ -1024,6 +1024,11 @@
             <ref role="3bR37D" to="ffeo:l1L199LeP5" resolve="jetbrains.mps.ide.refactoring" />
           </node>
         </node>
+        <node concept="1SiIV0" id="4X1d9kMCEQO" role="3bR37C">
+          <node concept="3bR9La" id="4X1d9kMCEQP" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:4X1d9kMCbcv" resolve="jetbrains.mps.ide.refactoring.platform" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="13uUGR" id="4rxYtJXJx$W" role="1l3spa">

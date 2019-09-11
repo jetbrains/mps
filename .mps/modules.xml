@@ -600,6 +600,7 @@
       <modulePath path="$PROJECT_DIR$/workbench/mps-editor/jetbrains.mps.ide.editor.msd" folder="workbench.editor" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-platform/jetbrains.mps.ide.platform.msd" folder="workbench.platform" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-ui/jetbrains.mps.ide.ui.msd" folder="workbench.ui" />
+      <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" folder="workbench.refactoring" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide.refactoring/jetbrains.mps.ide.refactoring.msd" folder="workbench.refactoring" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide/jetbrains.mps.ide.msd" folder="workbench" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.msd" folder="core.baseLanguage.lightweightdsl" />
