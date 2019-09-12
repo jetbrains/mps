@@ -87,5 +87,6 @@
     <orderEntry type="module" module-name="constraints-runtime" />
     <orderEntry type="module" module-name="messages-api" />
     <orderEntry type="module" module-name="mps-httpsupport" />
+    <orderEntry type="module" module-name="mps-project-migrations" />
   </component>
 </module>
