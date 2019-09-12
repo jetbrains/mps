@@ -19,6 +19,8 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
+import java.util.Objects;
+
 /**
  * Adapts {@link FileListener} to {@link FileSystemListener}
  *
@@ -42,6 +44,20 @@ public final class FileListenerAdapter implements FileSystemListener {
   @Override
   public FileListeningPreferences listeningPreferences() {
     return myFileListener.listeningPreferences();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(myFile, myFileListener);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (!(obj instanceof FileListenerAdapter)) {
+      return false;
+    }
+    return Objects.equals(myFile, ((FileListenerAdapter) obj).getFileToListen()) &&
+           Objects.equals(myFileListener, ((FileListenerAdapter) obj).myFileListener);
   }
 
   @Override

@@ -27,6 +27,7 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -96,14 +97,17 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
   String createNewDirInProject() {
     String baseName = "dir";
     String curName = baseName;
-    boolean success = false;
     String result = null;
-    for (int i = 0; i < 100 && (result = createNewDirInProject(curName)) != null; ++i) {
-      curName = baseName + i;
-      success = true;
+    for (int i = 0; i < 2000 && result == null; ++i) {
+      result = createNewDirInProject(curName);
+      curName = baseName + "_" + i;
     }
-    if (!success) {
-      throw new IllegalStateException("Could not find available directory name in the project '" + myProject.getProjectFile().getAbsolutePath() + "'");
+    if (result == null) {
+      String[] files = myProject.getProjectFile().list();
+      for (String file : files) {
+        LogManager.getLogger(ModuleInProjectTest.class).error("list: " + file);
+      }
+      throw new IllegalStateException("Could not create an available directory '" + curName + "' in the project '" + myProject.getProjectFile().getAbsolutePath() + "'");
     }
     return result;
   }

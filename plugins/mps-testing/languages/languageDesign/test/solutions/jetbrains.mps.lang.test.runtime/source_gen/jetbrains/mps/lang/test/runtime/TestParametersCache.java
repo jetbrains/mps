@@ -53,9 +53,11 @@ public final class TestParametersCache implements TestRule {
   public Statement apply(final Statement statement, Description description) {
     return new Statement() {
       public void evaluate() throws Throwable {
+        LOG.info("Running test " + description.toString());
         statement.evaluate();
-        //  NOTE, with in-process execution, TestParametersCache instance kept in a static field would be re-used, hence clean shall 
-        // leave a state we can re-initialize in once again. 
+        LOG.info("Disposing the model");
+        //  NOTE, with in-process execution, TestParametersCache instance kept in a static field would be re-used, hence clean shall
+        // leave a state we can re-initialize in once again.
         clean();
       }
     };

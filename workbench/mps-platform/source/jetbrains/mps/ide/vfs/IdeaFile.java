@@ -67,8 +67,6 @@ public class IdeaFile implements IFile, CachingFile {
   private final static Logger LOG = LogManager.getLogger(IdeaFile.class);
   private final BaseIdeaFileSystem myFS;
 
-  private final Map<FileListener, FileListenerAdapter> myListenerLegacy2New = new HashMap<>();
-
   /*
    * remember the name used to create this instance, as it might be different from a name in fs on case-insensitive filesystem
    * always normalized
@@ -540,15 +538,11 @@ public class IdeaFile implements IFile, CachingFile {
       LOG.warn("There might be a problem when adding file listener for the files inside the archive: '" + getPath() + "'");
     }
     FileListenerAdapter listenerAdapter = new FileListenerAdapter(this, listener);
-    myListenerLegacy2New.put(listener, listenerAdapter);
     getFileSystem().addListener(listenerAdapter);
   }
 
   @Override
   public void removeListener(@NotNull FileListener listener) {
-    FileListenerAdapter fileListenerAdapter = myListenerLegacy2New.remove(listener);
-    if (fileListenerAdapter != null) {
-      getFileSystem().removeListener(fileListenerAdapter);
-    }
+    getFileSystem().removeListener(new FileListenerAdapter(this, listener));
   }
 }

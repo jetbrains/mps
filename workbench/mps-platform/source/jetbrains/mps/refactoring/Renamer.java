@@ -29,6 +29,7 @@ import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -57,9 +58,13 @@ public final class Renamer {
         project.removeModule(module);
 
         if (moduleFolder.getName().equals(oldModuleName)) {
-          moduleFolder.rename(newModuleName);
-          assert moduleFolder.getParent() != null;
-          moduleFolder = moduleFolder.getParent().findChild(newModuleName);
+          IFile newLocation = moduleFolder.getParent().findChild(newModuleName);
+          if (newLocation.exists()) {
+            LogManager.getLogger(Renamer.class).warn("The folder " + newLocation + " already exists in VFS, so the module folder will not be renamed");
+          } else {
+            moduleFolder.rename(newModuleName);
+            moduleFolder = newLocation;
+          }
         }
 
         ModulesMiner modulesMiner = new ModulesMiner();

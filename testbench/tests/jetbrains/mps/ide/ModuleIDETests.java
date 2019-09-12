@@ -29,8 +29,6 @@ import jetbrains.mps.project.structure.LanguageDescriptorModelProvider.LanguageM
 import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.TrivialModelDescriptor;
-import jetbrains.mps.testsuites.PlatformTestSuite;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
@@ -44,8 +42,6 @@ import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,11 +59,6 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * Also {@link StoreReloadManager#flushChangedProjectFileAlarm()} requires zero-level command
  */
-@RunWith(PlatformTestSuite.class)
-@Suite.SuiteClasses({
-//    jetbrains.mps.ide.ModuleIDETests1.class,
-    jetbrains.mps.ide.ModuleIDETests2.class,
-})
 public abstract class ModuleIDETests extends ModuleInProjectTest {
   private final boolean myModuleFolderEqualsToModuleName;
 
@@ -256,6 +247,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
       }
 
       // Module is reloaded after rename, so need to update reference
+      // FIXME THIS IS SOOO WRONG
       module = (AbstractModule) myProject.getRepository().getModule(moduleId);
       Assert.assertNotNull("Renamed module was not found in project repository by SModuleId", module);
 
@@ -457,8 +449,13 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
       } catch (DescriptorTargetFileAlreadyExistsException e) {
         throw new RuntimeException(e);
       }
-      Assert.assertEquals(lang.getModuleName(), newModuleName);
+
+      lang = (Language) myProject.getRepository().getModule(langRef.get().getModuleId());
+      // FIXME THIS IS SOOO WRONG
+      Assert.assertNotNull("Renamed module was not found in project repository by SModuleId", lang);
+      Assert.assertEquals(newModuleName, lang.getModuleName());
       Assert.assertTrue(myProject.getProjectModules().contains(lang));
+      langRef.set(lang);
     });
     invokeInCommand(() -> {
       saveProjectInTest();
