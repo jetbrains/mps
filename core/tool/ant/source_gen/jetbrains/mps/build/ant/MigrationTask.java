@@ -31,6 +31,7 @@ public class MigrationTask extends MpsLoadTask {
     // as long as headless IdeaApplication doesn't start in unittest mode. 
     myWhatToDo.addPlugin(new PluginData("modelchecker", "jetbrains.mps.ide.modelchecker"));
     myWhatToDo.addPlugin(new PluginData("migration", "jetbrains.mps.ide.migration.workbench"));
+    myWhatToDo.addPlugin(new PluginData("projectMigrations", "jetbrains.mps.ide.mpsmigration"));
   }
 
   public void setProject(String project) {

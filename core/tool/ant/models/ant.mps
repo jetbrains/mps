@@ -20,6 +20,7 @@
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
+    <import index="644x" ref="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -8374,6 +8375,27 @@
                   </node>
                   <node concept="Xl_RD" id="4OPNMy23ncL" role="37wK5m">
                     <property role="Xl_RC" value="jetbrains.mps.ide.migration.workbench" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="69JNUj8ey4b" role="3cqZAp">
+          <node concept="2OqwBi" id="69JNUj8e$xc" role="3clFbG">
+            <node concept="37vLTw" id="69JNUj8e$xb" role="2Oq$k0">
+              <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+            </node>
+            <node concept="liA8E" id="69JNUj8e$xd" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:r$A3E5tFQu" resolve="addPlugin" />
+              <node concept="2ShNRf" id="69JNUj8e$Ef" role="37wK5m">
+                <node concept="1pGfFk" id="69JNUj8e$Eq" role="2ShVmc">
+                  <ref role="37wK5l" to="asz6:4OPNMy23eT$" resolve="PluginData" />
+                  <node concept="Xl_RD" id="69JNUj8e$Er" role="37wK5m">
+                    <property role="Xl_RC" value="projectMigrations" />
+                  </node>
+                  <node concept="Xl_RD" id="69JNUj8e$Es" role="37wK5m">
+                    <property role="Xl_RC" value="jetbrains.mps.ide.mpsmigration" />
                   </node>
                 </node>
               </node>
