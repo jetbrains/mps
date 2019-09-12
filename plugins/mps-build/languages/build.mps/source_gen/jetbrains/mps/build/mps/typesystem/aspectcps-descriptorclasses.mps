@@ -17266,7 +17266,7 @@
               </node>
             </node>
             <node concept="Xl_RD" id="1BS" role="33vP2m">
-              <property role="Xl_RC" value="' is marked with 'doNotCompile=false',\n but its descriptor could not be found in the layout under the 'lib' folders of the plugin, where currently the IDEA plugin module sources together with its classes should reside" />
+              <property role="Xl_RC" value="' is marked with 'doNotCompile=true',\n but its descriptor could not be found in the layout under the 'lib' folders of the plugin, where currently the IDEA plugin module sources together with its classes should reside" />
               <node concept="cd27G" id="1BW" role="lGtFl">
                 <node concept="3u3nmq" id="1BX" role="cd27D">
                   <property role="3u3nmv" value="6170485468611171956" />
