@@ -1370,23 +1370,34 @@
           </node>
         </node>
         <node concept="3cpWs6" id="4asrSzSFl5S" role="3cqZAp">
-          <node concept="2OqwBi" id="4142FbgXEl9" role="3cqZAk">
-            <node concept="liA8E" id="4142FbgXElc" role="2OqNvi">
-              <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-              <node concept="Xl_RD" id="4asrSzSFl5U" role="37wK5m">
-                <property role="Xl_RC" value="mps-migration" />
+          <node concept="2OqwBi" id="24$ppaoQR8X" role="3cqZAk">
+            <node concept="2OqwBi" id="4142FbgXEl9" role="2Oq$k0">
+              <node concept="liA8E" id="4142FbgXElc" role="2OqNvi">
+                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                <node concept="Xl_RD" id="4asrSzSFl5U" role="37wK5m">
+                  <property role="Xl_RC" value="mps-migration" />
+                </node>
+                <node concept="Xl_RD" id="4asrSzSFl5V" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.ide.migration.workbench" />
+                </node>
               </node>
-              <node concept="Xl_RD" id="4asrSzSFl5V" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.ide.migration.workbench" />
+              <node concept="1rXfSq" id="4142FbgXCbQ" role="2Oq$k0">
+                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                <node concept="Xl_RD" id="4142FbgXDSz" role="37wK5m">
+                  <property role="Xl_RC" value="mps-modelchecker" />
+                </node>
+                <node concept="Xl_RD" id="4142FbgXDnC" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.ide.modelchecker" />
+                </node>
               </node>
             </node>
-            <node concept="1rXfSq" id="4142FbgXCbQ" role="2Oq$k0">
+            <node concept="liA8E" id="24$ppaoQSU_" role="2OqNvi">
               <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-              <node concept="Xl_RD" id="4142FbgXDSz" role="37wK5m">
-                <property role="Xl_RC" value="mps-modelchecker" />
+              <node concept="Xl_RD" id="69JNUj8e$Er" role="37wK5m">
+                <property role="Xl_RC" value="mps-project-migrations" />
               </node>
-              <node concept="Xl_RD" id="4142FbgXDnC" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.ide.modelchecker" />
+              <node concept="Xl_RD" id="69JNUj8e$Es" role="37wK5m">
+                <property role="Xl_RC" value="jetbrains.mps.ide.mpsmigration" />
               </node>
             </node>
           </node>
