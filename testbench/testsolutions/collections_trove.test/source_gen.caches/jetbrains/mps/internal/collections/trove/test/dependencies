@@ -1,36 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.internal.collections.trove.test.PrimList_Test">
-    <classNode dependClassName="gnu.trove.TByteArrayList" />
-    <classNode dependClassName="gnu.trove.TDoubleArrayList" />
-    <classNode dependClassName="gnu.trove.TFloatArrayList" />
-    <classNode dependClassName="gnu.trove.TIntArrayList" />
-    <classNode dependClassName="gnu.trove.TLongArrayList" />
-    <classNode dependClassName="gnu.trove.TShortArrayList" />
-    <classNode dependClassName="java.lang.Byte" />
-    <classNode dependClassName="java.lang.Double" />
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Float" />
-    <classNode dependClassName="java.lang.Integer" />
-    <classNode dependClassName="java.lang.InterruptedException" />
-    <classNode dependClassName="java.lang.Long" />
-    <classNode dependClassName="java.lang.Short" />
-    <classNode dependClassName="java.lang.System" />
-    <classNode dependClassName="java.lang.Thread" />
-    <classNode dependClassName="java.lang.management.ManagementFactory" />
-    <classNode dependClassName="java.lang.management.MemoryMXBean" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.trove.runtime.TByteArrayListDecorator" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.trove.runtime.TDoubleArrayListDecorator" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.trove.runtime.TFloatArrayListDecorator" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.trove.runtime.TIntArrayListDecorator" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.trove.runtime.TLongArrayListDecorator" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.trove.runtime.TShortArrayListDecorator" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="junit.framework.Assert" />
-    <classNode extendsClassName="junit.framework.TestCase" />
-  </dependency>
   <dependency className="jetbrains.mps.internal.collections.trove.test.PrimMap_Test">
     <classNode dependClassName="gnu.trove.TByteByteHashMap" />
     <classNode dependClassName="gnu.trove.TByteObjectHashMap" />
