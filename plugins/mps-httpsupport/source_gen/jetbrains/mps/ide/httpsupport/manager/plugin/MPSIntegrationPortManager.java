@@ -32,7 +32,7 @@ public class MPSIntegrationPortManager extends CustomPortServerManagerBase {
       ServerSocket socket;
       try {
         socket = new ServerSocket();
-        socket.setReuseAddress(true);
+        socket.setReuseAddress(false);
         socket.bind(new InetSocketAddress(port));
         socket.close();
 
@@ -55,7 +55,7 @@ public class MPSIntegrationPortManager extends CustomPortServerManagerBase {
 
   @Override
   public boolean isAvailableExternally() {
-    return true;
+    return false;
   }
 
   public static int getCurrentPort() {

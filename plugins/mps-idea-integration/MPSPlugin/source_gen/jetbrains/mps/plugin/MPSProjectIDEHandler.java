@@ -7,6 +7,7 @@ import com.intellij.openapi.components.ProjectComponent;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.execution.rmi.RemoteServer;
 import java.rmi.RemoteException;
 import jetbrains.mps.RuntimeFlags;
 import java.rmi.NoSuchObjectException;
@@ -72,6 +73,12 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   private static final Logger LOG_1373119566 = LogManager.getLogger(MPSProjectIDEHandler.class);
   private static final Logger LOG = LogManager.getLogger(MPSProjectIDEHandler.class);
   private Project myProject;
+
+  static {
+    // has to be called before instantiation of MPSProjectIDEHandler to make the instance available only at localhost 
+    RemoteServer.setupRMI();
+  }
+
   public MPSProjectIDEHandler(Project project) throws RemoteException {
     myProject = project;
   }
@@ -141,11 +148,11 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
         List<SModel> modelsByName = ListSequence.fromList(new ArrayList<SModel>());
 
         {
-          SearchScope scope_xnj2f8_e0a0a1a8 = CommandUtil.createScope(mpsProject);
-          final SearchScope scope_xnj2f8_e0a0a1a8_0 = new EditableFilteringScope(scope_xnj2f8_e0a0a1a8);
+          SearchScope scope_xnj2f8_e0a0a1a11 = CommandUtil.createScope(mpsProject);
+          final SearchScope scope_xnj2f8_e0a0a1a11_0 = new EditableFilteringScope(scope_xnj2f8_e0a0a1a11);
           QueryExecutionContext context = new QueryExecutionContext() {
             public SearchScope getDefaultSearchScope() {
-              return scope_xnj2f8_e0a0a1a8_0;
+              return scope_xnj2f8_e0a0a1a11_0;
             }
           };
           // we first look up in models with the given name (better chance to succeed), then in all other models 

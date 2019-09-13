@@ -69,6 +69,7 @@
     <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="p2by" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.rmi(MPS.IDEA/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -307,6 +308,9 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
+      <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
+        <child id="1221737317278" name="statementList" index="1Pe0a2" />
+      </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
@@ -989,6 +993,70 @@
       </node>
       <node concept="3Tm6S6" id="7vbFQ4bPX_Q" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="2nMnFSwIi6i" role="jymVt" />
+    <node concept="1Pe0a1" id="2nMnFSwInjy" role="jymVt">
+      <node concept="3clFbS" id="2nMnFSwInj$" role="1Pe0a2">
+        <node concept="3SKdUt" id="2nMnFSwIqI6" role="3cqZAp">
+          <node concept="1PaTwC" id="2nMnFSwIqOC" role="3ndbpf">
+            <node concept="3oM_SD" id="2nMnFSwIqI9" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqMh" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqMk" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqMo" role="1PaTwD">
+              <property role="3oM_SC" value="called" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqMt" role="1PaTwD">
+              <property role="3oM_SC" value="before" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqMz" role="1PaTwD">
+              <property role="3oM_SC" value="instantiation" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqME" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqMM" role="1PaTwD">
+              <property role="3oM_SC" value="MPSProjectIDEHandler" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqMV" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqN5" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqNg" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqNs" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqND" role="1PaTwD">
+              <property role="3oM_SC" value="available" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqNR" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqO6" role="1PaTwD">
+              <property role="3oM_SC" value="at" />
+            </node>
+            <node concept="3oM_SD" id="2nMnFSwIqOW" role="1PaTwD">
+              <property role="3oM_SC" value="localhost" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2nMnFSwItms" role="3cqZAp">
+          <node concept="2YIFZM" id="2nMnFSwItn0" role="3clFbG">
+            <ref role="37wK5l" to="p2by:~RemoteServer.setupRMI()" resolve="setupRMI" />
+            <ref role="1Pybhc" to="p2by:~RemoteServer" resolve="RemoteServer" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2nMnFSwIlnk" role="jymVt" />
     <node concept="3clFbW" id="7vbFQ4bPX_R" role="jymVt">
       <node concept="3Tm1VV" id="7vbFQ4bPX_S" role="1B3o_S" />
       <node concept="3cqZAl" id="7vbFQ4bPX_T" role="3clF45" />

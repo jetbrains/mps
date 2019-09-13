@@ -49,7 +49,7 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
 
   @Override
   public boolean isAvailableExternally() {
-    return true;
+    return false;
   }
 
   public static boolean isEnabled() {

@@ -115,6 +115,7 @@
     <classNode dependClassName="org.apache.log4j.LogManager" />
   </dependency>
   <dependency className="jetbrains.mps.plugin.MPSProjectIDEHandler">
+    <classNode dependClassName="com.intellij.execution.rmi.RemoteServer" />
     <classNode dependClassName="com.intellij.ide.impl.ProjectUtil" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.ui.MessageType" />

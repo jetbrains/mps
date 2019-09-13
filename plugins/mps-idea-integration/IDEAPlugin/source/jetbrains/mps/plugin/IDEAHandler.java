@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.plugin;
 
+import com.intellij.execution.rmi.RemoteServer;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +25,9 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class IDEAHandler extends UnicastRemoteObject implements ApplicationComponent, IIDEAHandler {
   static {
+    // has to be called before instantiation of IDEAHandler, MPSPluginImpl and ProjectHandler to make these instances available only at localhost
+    RemoteServer.setupRMI();
+
     RMIHandler.class.getClassLoader();
   }
 
