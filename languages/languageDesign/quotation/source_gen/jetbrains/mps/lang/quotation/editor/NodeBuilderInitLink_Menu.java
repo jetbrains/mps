@@ -31,9 +31,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -220,12 +218,9 @@ public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
     }
   }
   private static SNode createNodeBuilderExpression_5gak4t_a0a0e(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NodeBuilderExpression$Ub, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.expression$JCaZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
+    rootBuilder1.forChild(LINKS.expression$JCaZ).initNode(node0, CONCEPTS.Expression$TP, true);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

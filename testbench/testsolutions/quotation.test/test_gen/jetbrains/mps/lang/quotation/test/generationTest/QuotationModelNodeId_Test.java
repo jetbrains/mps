@@ -22,6 +22,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @MPSLaunch
 public class QuotationModelNodeId_Test extends BaseTransformationTest {
@@ -52,7 +53,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     public void test_lightQuotation_nodeId() throws Exception {
       SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
       SNodeId.Regular id = new SNodeId.Regular(239);
-      SNode node = createNullLiteral_fw7ydn_a0c0d8(model, id);
+      SNode node = createReturnStatement_fw7ydn_a0c0d8(model, id);
       SModelOperations.addRootNode(model, node);
       Assert.assertTrue(node.getNodeId().equals(id));
       TemporaryModels.getInstance().dispose(model);
@@ -67,20 +68,32 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     }
 
 
-    private static SNode createNullLiteral_fw7ydn_a0c0d8(SModel modelToCreate, org.jetbrains.mps.openapi.model.SNodeId nodeId) {
+    private static SNode createReturnStatement_fw7ydn_a0c0d8(SModel modelToCreate, org.jetbrains.mps.openapi.model.SNodeId nodeId) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.NullLiteral$q4, modelToCreate, nodeId).node();
+      SNode n1 = new SNodeBuilder(CONCEPTS.ReturnStatement$SF, modelToCreate, nodeId).node();
+      {
+        SNode n2 = new SNodeBuilder(CONCEPTS.NullLiteral$q4, modelToCreate, nodeId).node();
+        n1.addChild(LINKS.expression$EsbK, n2);
+      }
       return n1;
     }
     private static SNode _quotation_createNode_fw7ydn_a0c0e8(Object parameter_1, Object parameter_2) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_3 = null;
-      quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"), (SModel) parameter_1, (org.jetbrains.mps.openapi.model.SNodeId) parameter_2).node();
+      SNode quotedNode_4 = null;
+      quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement"), (SModel) parameter_1, (org.jetbrains.mps.openapi.model.SNodeId) parameter_2).node();
+      quotedNode_4 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral"), (SModel) parameter_1, (org.jetbrains.mps.openapi.model.SNodeId) parameter_2).node();
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_4);
       return quotedNode_3;
     }
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
     /*package*/ static final SConcept NullLiteral$q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
   }
 }

@@ -19,8 +19,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -88,12 +87,9 @@ public class WrapNullLiteral extends MigrationScriptBase {
   }
 
   private static SNode createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NodeBuilderExpression$Ub, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.expression$JCaZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
+    rootBuilder1.forChild(LINKS.expression$JCaZ).initNode(node0, CONCEPTS.Expression$TP, true);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

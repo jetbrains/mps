@@ -26,7 +26,7 @@ public class TemplateModelImpl extends TemplateModelBase implements TemplateMode
   public TemplateModelImpl(TemplateModule module) {
     super(module);
     mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_main(this));
-    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_NodeBuilder_value(), new Switch_NodeBuilder_child());
+    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_NodeBuilder_value(), new Switch_NodeBuilder_child(), new Switch_NodeBuilder_childInit());
     model = PersistenceFacade.getInstance().createModelReference("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)");
   }
   public String getLongName() {
@@ -57,9 +57,6 @@ public class TemplateModelImpl extends TemplateModelBase implements TemplateMode
     }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1006429225401295242"))) {
       return new Template_NodeBuilder_to_methodCall();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "429601079676709776"))) {
-      return new Template_reduce_NodeBuilderNode();
     }
     return null;
   }

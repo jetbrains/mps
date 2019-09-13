@@ -24,7 +24,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateReductionRule> rules;
   public Mapping_main(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1196351887556"), "main", model, true);
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1());
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
@@ -52,21 +52,9 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return tlist1;
     }
   }
-  /*package*/ static final class ReductionRule2 extends ReductionRuleBase {
-    public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "429601079676709774"), CONCEPTS.NodeBuilderNode$RN, false);
-    }
-    @Override
-    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-      final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_NodeBuilderNode().apply(environment, context);
-      return tlist1;
-    }
-  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
     /*package*/ static final SConcept NodeBuilder$Gb = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, "jetbrains.mps.lang.quotation.structure.NodeBuilder");
-    /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
   }
 }

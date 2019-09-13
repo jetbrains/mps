@@ -22,6 +22,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_NodeBuilderInitLinkValue;
   private ConceptPresentation props_NodeBuilderInitPart;
   private ConceptPresentation props_NodeBuilderInitProperty;
+  private ConceptPresentation props_NodeBuilderInitValueChild;
   private ConceptPresentation props_NodeBuilderList;
   private ConceptPresentation props_NodeBuilderNode;
   private ConceptPresentation props_NodeBuilderRef;
@@ -124,6 +125,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeBuilderInitProperty = cpb.create();
         }
         return props_NodeBuilderInitProperty;
+      case LanguageConceptSwitch.NodeBuilderInitValueChild:
+        if (props_NodeBuilderInitValueChild == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_NodeBuilderInitValueChild = cpb.create();
+        }
+        return props_NodeBuilderInitValueChild;
       case LanguageConceptSwitch.NodeBuilderList:
         if (props_NodeBuilderList == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

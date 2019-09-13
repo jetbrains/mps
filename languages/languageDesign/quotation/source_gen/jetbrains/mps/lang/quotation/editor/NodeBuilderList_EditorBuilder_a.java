@@ -101,7 +101,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return LINKS.nodes$$MVw;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.NodeBuilderInitLinkValue$_6;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -174,7 +174,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private static final class CONCEPTS {
     /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
     /*package*/ static final SConcept NodeBuilderExpression$Ub = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept NodeBuilderInitLinkValue$_6 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x16240b8e9e79db00L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLinkValue");
   }
 
   private static final class LINKS {

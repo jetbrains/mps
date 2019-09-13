@@ -391,48 +391,36 @@ public class QuotationConverter {
     return null;
   }
   private static SNode createNodeBuilderInitLink_aytayy_a0a0a4a7(SNode node0, Iterable<? extends SNode> seq0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NodeBuilderInitLink$Xj, null, null).node();
+    jetbrains.mps.smodel.builder.SNodeBuilder rootBuilder1 = new jetbrains.mps.smodel.builder.SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
     {
-      n1.setReferenceTarget(LINKS.link$ckAZ, node0);
-      SNode n2 = new SNodeBuilder(CONCEPTS.NodeBuilderList$lD, null, null).node();
+      jetbrains.mps.smodel.builder.SNodeBuilder n2 = rootBuilder1.forChild(LINKS.initValue$UJfh).init(CONCEPTS.NodeBuilderList$lD);
       for (SNode n : seq0) {
-        n2.addChild(LINKS.nodes$$MVw, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.Expression$TP)));
+        n2.forChild(LINKS.nodes$$MVw).initNodeList(seq0, CONCEPTS.NodeBuilderInitLinkValue$_6);
       }
-      n1.addChild(LINKS.initValue$UJfh, n2);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createNodeBuilderInitLink_aytayy_a0a0a5a7(SNode node0, SNode node1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NodeBuilderInitLink$Xj, null, null).node();
-    n1.setReferenceTarget(LINKS.link$ckAZ, node0);
-    if (node1 != null) {
-      n1.addChild(LINKS.initValue$UJfh, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.NodeBuilderInitLinkValue$_6)));
-    }
-    return n1;
+    jetbrains.mps.smodel.builder.SNodeBuilder rootBuilder1 = new jetbrains.mps.smodel.builder.SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
+    rootBuilder1.forChild(LINKS.initValue$UJfh).initNode(node1, CONCEPTS.NodeBuilderInitLinkValue$_6, true);
+    return rootBuilder1.getResult();
   }
   private static SNode createNodeBuilderInitLink_aytayy_a0a3a6a7(SNode node0, SNode node1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NodeBuilderInitLink$Xj, null, null).node();
+    jetbrains.mps.smodel.builder.SNodeBuilder rootBuilder1 = new jetbrains.mps.smodel.builder.SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
     {
-      n1.setReferenceTarget(LINKS.link$ckAZ, node0);
-      SNode n2 = new SNodeBuilder(CONCEPTS.NodeBuilderExpression$Ub, null, null).node();
-      if (node1 != null) {
-        n2.addChild(LINKS.expression$JCaZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.Expression$TP)));
-      }
-      n1.addChild(LINKS.initValue$UJfh, n2);
+      jetbrains.mps.smodel.builder.SNodeBuilder n2 = rootBuilder1.forChild(LINKS.initValue$UJfh).init(CONCEPTS.NodeBuilderExpression$Ub);
+      n2.forChild(LINKS.expression$JCaZ).initNode(node1, CONCEPTS.Expression$TP, true);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createNodeBuilderInitLink_aytayy_a0a0a0a1a0g0h(SNode node0, SNode node1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NodeBuilderInitLink$Xj, null, null).node();
-    n1.setReferenceTarget(LINKS.link$ckAZ, node0);
-    if (node1 != null) {
-      n1.addChild(LINKS.initValue$UJfh, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.NodeBuilderInitLinkValue$_6)));
-    }
-    return n1;
+    jetbrains.mps.smodel.builder.SNodeBuilder rootBuilder1 = new jetbrains.mps.smodel.builder.SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
+    rootBuilder1.forChild(LINKS.initValue$UJfh).initNode(node1, CONCEPTS.NodeBuilderInitLinkValue$_6, true);
+    return rootBuilder1.getResult();
   }
   private static <T> T as_aytayy_a0a0b2a0a2a0a5a6(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
@@ -474,7 +462,7 @@ public class QuotationConverter {
     /*package*/ static final SInterfaceConcept AbstractAntiquotation$Tk = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, "jetbrains.mps.lang.quotation.structure.AbstractAntiquotation");
     /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
     /*package*/ static final SConcept NodeBuilderList$lD = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, "jetbrains.mps.lang.quotation.structure.NodeBuilderList");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept NodeBuilderInitLinkValue$_6 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x16240b8e9e79db00L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLinkValue");
+    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

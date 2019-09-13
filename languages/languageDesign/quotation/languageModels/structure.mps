@@ -226,7 +226,7 @@
       <property role="20kJfa" value="nodes" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="8182547171709738803" />
-      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+      <ref role="20lvS9" node="1o$2SUuutG0" resolve="NodeBuilderInitLinkValue" />
     </node>
   </node>
   <node concept="1TIwiD" id="4IP40Bi2$Et">
@@ -308,6 +308,9 @@
       <property role="IQ2ns" value="8182547171709752112" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
+    <node concept="PrWs8" id="7vKHTLu5S_S" role="PzmwI">
+      <ref role="PrY4T" node="7vKHTLu5SzY" resolve="NodeBuilderInitValueChild" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4IP40Bi2$Ew">
     <property role="TrG5h" value="NodeBuilderNode" />
@@ -327,6 +330,9 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="5455284157993910961" />
       <ref role="20lvS9" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
+    </node>
+    <node concept="PrWs8" id="7vKHTLu5S$V" role="PzmwI">
+      <ref role="PrY4T" node="7vKHTLu5SzY" resolve="NodeBuilderInitValueChild" />
     </node>
     <node concept="PrWs8" id="4IP40Bi30Gx" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
@@ -464,6 +470,11 @@
       <property role="IQ2ns" value="3316618969910743152" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="7vKHTLu5SzY">
+    <property role="EcuMT" value="8642609567145363710" />
+    <property role="3GE5qa" value="builder" />
+    <property role="TrG5h" value="NodeBuilderInitValueChild" />
   </node>
 </model>
 
