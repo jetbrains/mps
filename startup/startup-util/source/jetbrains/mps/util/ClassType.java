@@ -34,7 +34,8 @@ public enum ClassType {
   IDEA("idea"),
   WORKBENCH("workbench"),
   PLUGINS("plugins"),
-  TEST("test");
+  TEST("test"),
+  TOOL_COMMON("tool-common");
 
   private String myTypeString;
 

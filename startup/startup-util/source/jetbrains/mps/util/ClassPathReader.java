@@ -62,7 +62,7 @@ public final class ClassPathReader {
         while (sc.hasNextLine()) {
           String line = sc.nextLine().trim();
           if (line.startsWith(":")) {
-            skipMode = myTypes != null && !myTypes.contains(line.substring(1));
+            skipMode = !myTypes.contains(line.substring(1));
             continue;
           }
 

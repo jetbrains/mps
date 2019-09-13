@@ -77,5 +77,5 @@ workbench/mps-workbench/jetbrains.mps.ide/classes
 :test
 core/tool/environment/classes
 testbench/classes
-:unassigned
+:tool-common
 core/tool/common/classes
