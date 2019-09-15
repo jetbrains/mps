@@ -69,10 +69,14 @@ public class LanguageAspectSupport {
     return result;
   }
 
+  //todo review usages, replace with non sorted where possible
   public static Collection<LanguageAspectDescriptor> collectAspects() {
-    Collection<LanguageAspectDescriptor> newAspects =
-        IterableUtil.asCollection(new ExtensionPoint<LanguageAspectDescriptor>("jetbrains.mps.lang.aspect.LanguageAspectsEP").getObjects());
-    return new InOrderSorter<>(newAspects).sort();
+    return new InOrderSorter<>(collectAspectsUnsorted()).sort();
+  }
+
+  @NotNull
+  private static Collection<LanguageAspectDescriptor> collectAspectsUnsorted() {
+    return IterableUtil.asCollection(new ExtensionPoint<LanguageAspectDescriptor>("jetbrains.mps.lang.aspect.LanguageAspectsEP").getObjects());
   }
 
   @Nullable
@@ -194,7 +198,7 @@ public class LanguageAspectSupport {
   @ToRemove(version = 3.3)
   //for internal use only
   public static LanguageAspectDescriptor getNewAspect(SModel model) {
-    for (LanguageAspectDescriptor d : collectAspects()) {
+    for (LanguageAspectDescriptor d : collectAspectsUnsorted()) {
       if (d.getAspectModels(model.getModule()).contains(model)) return d;
     }
     return null;
