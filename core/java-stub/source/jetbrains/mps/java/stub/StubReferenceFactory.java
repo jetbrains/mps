@@ -86,19 +86,6 @@ public final class StubReferenceFactory implements ReferenceFactory {
       return jetbrains.mps.smodel.SReference.create(role, source, null, targetNodeId, resolveInfo);
     }
 
-    // first, try to find match
-
-    for (VisibleModel vm : possibleModels) {
-      final SModelReference modelRef = vm.getModelReference();
-      if (myModelReference.equals(modelRef)) {
-        continue;
-      }
-      if (vm.isKnownRoot(targetTopClassifier)) {
-        addImport(modelRef);
-        return jetbrains.mps.smodel.SReference.create(role, source, modelRef, targetNodeId, resolveInfo);
-      }
-    }
-
     // ok, there are matching models, and none knows the node with targetNodeId
     if (possibleModels.size() == 1) {
       // only one possible model
@@ -107,6 +94,17 @@ public final class StubReferenceFactory implements ReferenceFactory {
 
       return jetbrains.mps.smodel.SReference.create(role, source, targetModel, targetNodeId, resolveInfo);
     } else {
+      for (VisibleModel vm : possibleModels) {
+        final SModelReference modelRef = vm.getModelReference();
+        if (myModelReference.equals(modelRef)) {
+          continue;
+        }
+        if (vm.isKnownRoot(targetTopClassifier)) {
+          addImport(modelRef);
+          return jetbrains.mps.smodel.SReference.create(role, source, modelRef, targetNodeId, resolveInfo);
+        }
+      }
+
       // XXX not quite sure if dynamic reference is reasonable here
       // anyway, this is the way it was
       for (VisibleModel m : possibleModels) {
@@ -177,6 +175,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
       myModel = model;
     }
 
+    //
     public boolean isKnownRoot(SNodeId nodeId) {
       if (myKnownRoots == null) {
         myKnownRoots = new HashSet<>();
