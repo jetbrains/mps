@@ -5,45 +5,48 @@ package jetbrains.mps.ide.dialogs.project.creation;
 import com.intellij.openapi.ui.DialogWrapper;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
-import javax.swing.JPanel;
+import com.intellij.ui.components.JBPanel;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
-import javax.swing.JTextField;
+import com.intellij.ui.components.JBTextField;
+import com.intellij.ui.components.JBCheckBox;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFileSystem;
 import java.awt.HeadlessException;
 import java.awt.GridLayout;
 import java.awt.Dimension;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.fileChooser.FileChooser;
+import com.intellij.ui.components.JBLabel;
+import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
-import com.intellij.openapi.vfs.LocalFileSystem;
+import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.vfs.IFile;
+import com.intellij.openapi.ui.ValidationInfo;
 import java.io.File;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.ArrayDeque;
+import java.util.Arrays;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import org.apache.log4j.Level;
-import com.intellij.openapi.util.Disposer;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.project.structure.modules.LanguageDescriptor;
+import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.library.ModulesMiner;
+import jetbrains.mps.lang.migration.runtime.base.VersionFixer;
 
 public class NewGeneratorDialog extends DialogWrapper {
   private static final Logger LOG = LogManager.getLogger(NewGeneratorDialog.class);
-  private final JPanel myContenetPane;
-  private TextFieldWithBrowseButton myTemplateModelsDir;
-  private JTextField myGeneratorName;
+  private final JBPanel myContentPane;
+  private TextFieldWithBrowseButton myModuleDir;
+  private JBTextField myGeneratorName;
+  private JBCheckBox myKeepInsideLanguage;
   private final Language mySourceLanguage;
   private Generator myResult;
   private final MPSProject myProject;
-  private final FileSystem myProjectFS;
+  private final IFileSystem myProjectFS;
 
   public NewGeneratorDialog(MPSProject project, Language sourceLanguage) throws HeadlessException {
     super(project.getProject());
@@ -52,118 +55,175 @@ public class NewGeneratorDialog extends DialogWrapper {
     mySourceLanguage = sourceLanguage;
     // I don't know what's proper mechanism to obtain FS for the project. Could use one from sourceLanguage's descriptor file 
     // but would prefer not to access module's descriptor file at all. 
-    myProjectFS = FileSystem.getInstance();
-    myContenetPane = new JPanel(new GridLayout(4, 1));
-    myContenetPane.setPreferredSize(new Dimension(600, 100));
+    myProjectFS = project.getFileSystem();
+    myContentPane = new JBPanel(new GridLayout(5, 1));
+    myContentPane.setPreferredSize(new Dimension(600, 100));
     initContentPane();
-
     init();
+    startTrackingValidation();
   }
+
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    return myContenetPane;
+    return myContentPane;
   }
   private void initContentPane() {
-    myContenetPane.add(new JLabel("Generator name"));
-    myGeneratorName = new JTextField();
-    myContenetPane.add(myGeneratorName);
-    myContenetPane.add(new JLabel("Templates root"));
+    myContentPane.add(new JBLabel("Generator alias"));
+    myGeneratorName = new JBTextField();
+    myGeneratorName.setText("BL");
+    myGeneratorName.setToolTipText("Hint: use target language name to suggest possible use of the new generator");
+    myContentPane.add(myGeneratorName);
+    myContentPane.add(new JBLabel("Module root"));
 
-    myTemplateModelsDir = new TextFieldWithBrowseButton();
-    myTemplateModelsDir.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        String oldPath = myTemplateModelsDir.getText();
+    myModuleDir = new TextFieldWithBrowseButton();
+    FileChooserDescriptor fd = FileChooserDescriptorFactory.createSingleFolderDescriptor().withDescription("Home for Generator module");
+    myModuleDir.addBrowseFolderListener(null, null, myProject.getProject(), fd);
+    Disposer.register(getDisposable(), myModuleDir);
 
-        VirtualFile result = FileChooser.chooseFile(FileChooserDescriptorFactory.createSingleFolderDescriptor(), myContenetPane, myProject.getProject(), LocalFileSystem.getInstance().findFileByPath(oldPath));
+    myContentPane.add(myModuleDir);
 
-        if (result != null) {
-          myTemplateModelsDir.setText(result.getPath());
-        }
-      }
-    });
+    myContentPane.add(myKeepInsideLanguage = new JBCheckBox("Keep generator module as part of its source language module"));
+    myKeepInsideLanguage.setSelected(true);
 
-    myContenetPane.add(myTemplateModelsDir);
     updateTemplateModelsDir();
   }
+
   private void updateTemplateModelsDir() {
     IFile moduleDir = mySourceLanguage.getModuleSourceDir();
     assert moduleDir != null;
-    String modelsDir = moduleDir.getPath() + File.separatorChar + "generator" + File.separatorChar + "template";
-    myTemplateModelsDir.setText(modelsDir);
+    // do not start with 'folder not empty' warning right away when adding a new generator for an existing language already owning a generator. 
+    String folderName = "generator";
+    int cnt = 1;
+    IFile newChild;
+    do {
+      newChild = moduleDir.findChild(folderName);
+      folderName = "generator" + cnt++;
+    } while (newChild.exists() && (!(newChild.isDirectory()) || !(newChild.getChildren().isEmpty())));
+    myModuleDir.setText(newChild.getPath());
   }
-  private boolean isValidName(String name) {
+
+  @Nullable
+  private ValidationInfo checkAlias(String name) {
     for (char c : name.toCharArray()) {
       if (!(Character.isLetterOrDigit(c)) && c != '_') {
-        return false;
+        return new ValidationInfo("Only letters, digits and '_' can be used in a generator's alias.");
       }
     }
-    return true;
+    return null;
   }
+
   public Generator getResult() {
     return myResult;
   }
+
+  @Nullable
+  private ValidationInfo checkModuleDir(@Nullable String filePath) {
+    if (filePath == null || filePath.length() == 0) {
+      return new ValidationInfo("No template models root");
+    }
+    File file = new File(filePath);
+    if (!(file.isAbsolute())) {
+      return new ValidationInfo("Path should be absolute");
+    }
+    if (!(file.exists())) {
+      return null;
+    }
+    if (file.isFile()) {
+      return new ValidationInfo("Path shall point to a folder");
+    }
+    ArrayDeque<File> q = new ArrayDeque<File>();
+    q.add(file);
+    do {
+      File f = q.removeFirst();
+      if (f.isFile()) {
+        // don't use component in VI, otherwise one needs to hover over the component to see the warning 
+        ValidationInfo vi = new ValidationInfo("Module folder is not empty").asWarning().withOKEnabled();
+        // warn but still allow create a module 
+        return vi;
+      }
+      // assert f.isDirectory == true 
+      // assert f.listFiles() != null 
+      q.addAll(Arrays.asList(f.listFiles()));
+    } while (!(q.isEmpty()));
+    return null;
+  }
+
+
+  @Nullable
+  @Override
+  protected ValidationInfo doValidate() {
+    // AFAIU, this method is invoked regularly on dedicated alarm 
+    ValidationInfo vi = checkAlias(myGeneratorName.getText());
+    if (vi != null) {
+      return vi;
+    }
+    vi = checkModuleDir(myModuleDir.getText());
+    return vi;
+  }
+
   @Override
   protected void doOKAction() {
-    String filePath = myTemplateModelsDir.getText();
-    if (filePath.length() == 0) {
-      setErrorText("No template models root");
-      return;
-    }
-
-    final IFile templateModelsPath = myProjectFS.getFile(filePath);
-    if (!(new File(filePath).isAbsolute())) {
-      setErrorText("Path should be absolute");
-      return;
-    }
+    // DialogWrapper invokes doValidate() prior to processing ok action 
+    String filePath = myModuleDir.getText();
     final String name = myGeneratorName.getText();
-    if (!(isValidName(name))) {
-      setErrorText("Only letters, digits and '_' can be used in a generator's alias.");
-      return;
-    }
-    dispose();
-    final Wrappers._T<Generator> newGenerator = new Wrappers._T<Generator>(null);
+    final IFile generatorModuleLocation = myProjectFS.getFile(filePath);
     NewModuleUtil.runModuleCreation(myProject, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
+        Generator newGenerator;
         try {
           // see MPS-18743 
           myProject.getRepository().saveAll();
           // XXX why saveAll is not part of NewModuleUtil.runModuleCreation? 
-          templateModelsPath.mkdirs();
-          // FIXME I know it's ugly to assume templateModelsPath always points to a descendant of generator module location, just don't want to deal with UI update 
-          //       right now, nor to introduce a hack to guess whether it's relative to mySourceLanguage.getModuleSourceDir() and how many separators are there. 
-          final GeneratorDescriptor generatorDescriptor = NewModuleUtil.createGeneratorDescriptor(Generator.generateGeneratorUID(mySourceLanguage), templateModelsPath.getParent(), templateModelsPath);
+          generatorModuleLocation.mkdirs();
+          final GeneratorDescriptor generatorDescriptor = NewModuleUtil.createGeneratorDescriptor(newGeneratorNamespace(), generatorModuleLocation, null);
           generatorDescriptor.setAlias(name);
-          newGenerator.value = createNewGenerator(mySourceLanguage, generatorDescriptor);
-          NewModuleUtil.createTemplateModelIfNoneYet(newGenerator.value);
+          newGenerator = createNewGenerator(generatorDescriptor, generatorModuleLocation);
+          NewModuleUtil.createTemplateModelIfNoneYet(newGenerator);
         } catch (Exception e) {
           // XXX again, why it's not common for any runModuleCreation? 
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Failed to create new generator module", e);
           }
-          newGenerator.value = null;
+          newGenerator = null;
         }
+        myResult = newGenerator;
       }
     });
-
-    myResult = newGenerator.value;
     super.doOKAction();
   }
 
-  @Override
-  protected void dispose() {
-    super.dispose();
-    Disposer.dispose(myTemplateModelsDir);
+  /*package*/ String newGeneratorNamespace() {
+    //  assumes model read for project models 
+    String namespace;
+    int cnt = mySourceLanguage.getGenerators().size();
+    // XXX in fact, need to be specific here whether I care about project modules or all available modules not to match namespace 
+    final ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(myProject);
+    do {
+      namespace = String.format("%s#%02d", mySourceLanguage.getModuleName(), cnt++);
+    } while (!(mrf.getModulesByName(namespace).isEmpty()));
+    return namespace;
   }
 
-  /*package*/ Generator createNewGenerator(final Language language, GeneratorDescriptor generatorDescriptor) {
-    final LanguageDescriptor languageDescriptor = language.getModuleDescriptor();
-    generatorDescriptor.setSourceLanguage(language.getModuleReference());
-    languageDescriptor.getGenerators().add(generatorDescriptor);
-    language.setModuleDescriptor(languageDescriptor);
-    language.save();
-
-    return new ModuleRepositoryFacade(myProject).getModule(generatorDescriptor.getModuleReference(), Generator.class);
+  /*package*/ Generator createNewGenerator(GeneratorDescriptor generatorDescriptor, IFile generatorModuleLocation) {
+    generatorDescriptor.setSourceLanguage(mySourceLanguage.getModuleReference());
+    final ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(myProject);
+    if (myKeepInsideLanguage.isSelected()) {
+      final LanguageDescriptor languageDescriptor = mySourceLanguage.getModuleDescriptor();
+      languageDescriptor.getGenerators().add(generatorDescriptor);
+      mySourceLanguage.setModuleDescriptor(languageDescriptor);
+      mySourceLanguage.save();
+      return repoFacade.getModule(generatorDescriptor.getModuleReference(), Generator.class);
+    } else {
+      IFile moduleFile = generatorModuleLocation.findChild(generatorDescriptor.getNamespace().replace("#", "") + MPSExtentions.DOT_GENERATOR);
+      // FIXME would be nice not to cast here 
+      Generator gm = (Generator) repoFacade.instantiateModule(new ModulesMiner.ModuleHandle(moduleFile, generatorDescriptor), myProject);
+      new VersionFixer(myProject, gm, false).updateImportVersions();
+      gm.save();
+      // FIXME why there's no mechanism to add module with path? 
+      //        besides, need to fix instantiate/register logic (addModule registers the module which has been already registered by MRF.instantiateModule) 
+      myProject.addModule(gm);
+      return gm;
+    }
   }
 }

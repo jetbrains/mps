@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ public class MPSExtentions {
   public static final String IDEAMODULE = "iml";
   public static final String LANGUAGE = "mpl";
   public static final String SOLUTION = "msd";
+  public static final String GENERATOR = "mpst";
   private static final String LIBRARY = "lib";
   public static final String DEVKIT = "devkit";
   public static final String MODEL = "mps";
@@ -34,13 +35,12 @@ public class MPSExtentions {
   public static final String PACKAGED_MODULE = "module.xml";
 
   public static final String MPS_ARCH = "jar";
-  @Deprecated
-  public static final String RUNTIME_ARCH = "runtime.jar";
 
   public static final String DOT = ".";
   public static final String DOT_MPS_PROJECT = DOT + MPS_PROJECT;
   public static final String DOT_LANGUAGE = DOT + LANGUAGE;
   public static final String DOT_SOLUTION = DOT + SOLUTION;
+  public static final String DOT_GENERATOR = DOT + GENERATOR;
   public static final String DOT_DEVKIT = DOT + DEVKIT;
   public static final String DOT_MODEL = DOT + MODEL;
   public static final String DOT_MODEL_ROOT = DOT + MODEL_ROOT;

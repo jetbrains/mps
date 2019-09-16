@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
-import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
@@ -68,7 +67,8 @@ public class Generator extends ReloadableModuleBase {
     super(sourceLanguage.getDescriptorFile());
     mySourceLanguage = sourceLanguage;
     mySourceLanguage0 = MetaAdapterFactory.getLanguage(sourceLanguage.getModuleReference());
-    initGeneratorDescriptor(generatorDescriptor);
+    myGeneratorDescriptor = generatorDescriptor;
+    setModuleReference(myGeneratorDescriptor.getModuleReference());
   }
 
   /**
@@ -79,7 +79,8 @@ public class Generator extends ReloadableModuleBase {
     super(descriptorFile);
     mySourceLanguage = langModuleToBeRemoved;
     mySourceLanguage0 = sourceLanguage;
-    initGeneratorDescriptor(generatorDescriptor);
+    myGeneratorDescriptor = generatorDescriptor;
+    setModuleReference(myGeneratorDescriptor.getModuleReference());
   }
 
   //models will be named like xxx.modelName, where xxx is a part of newName before sharp symbol
@@ -188,10 +189,6 @@ public class Generator extends ReloadableModuleBase {
     return sourceLanguage().getQualifiedName() + '/' + (name == null ? "<no name>" : name);
   }
 
-  public static String generateGeneratorUID(Language sourceLanguage) {
-    return sourceLanguage.getModuleName() + '#' + jetbrains.mps.smodel.SModel.generateUniqueId();
-  }
-
   public SLanguage sourceLanguage() {
     return mySourceLanguage0;
   }
@@ -263,25 +260,9 @@ public class Generator extends ReloadableModuleBase {
    *
    */
   final void updateGeneratorDescriptor(GeneratorDescriptor generatorDescriptor) {
-    initGeneratorDescriptor(generatorDescriptor);
-    reloadAfterDescriptorChange();
-  }
-
-  private void initGeneratorDescriptor(GeneratorDescriptor generatorDescriptor) {
     myGeneratorDescriptor = generatorDescriptor;
-
-    String uid = myGeneratorDescriptor.getNamespace();
-    if (uid == null) {
-      // FIXME is missing namespace/uuid a valid scenario? If yes, why no alias init then?
-      myGeneratorDescriptor.setNamespace(generateGeneratorUID(mySourceLanguage));
-    }
-
-    ModuleId uuid = myGeneratorDescriptor.getId();
-    if (uuid == null) {
-      uuid = ModuleId.regular();
-      myGeneratorDescriptor.setId(uuid);
-    }
     setModuleReference(myGeneratorDescriptor.getModuleReference());
+    reloadAfterDescriptorChange();
   }
 
   /**

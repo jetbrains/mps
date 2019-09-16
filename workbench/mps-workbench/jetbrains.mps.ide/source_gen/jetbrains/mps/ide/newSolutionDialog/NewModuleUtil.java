@@ -44,10 +44,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.LanguageAspect;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.project.ModuleId;
+import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.project.ModuleId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -119,11 +120,10 @@ public class NewModuleUtil {
     LanguageDescriptor languageDescriptor = createNewLanguageDescriptor(namespace, descriptorFile);
 
     IFile generatorLocation = descriptorFile.getParent().findChild("generator");
-    IFile templateModelsLocation = generatorLocation.findChild("template");
-    templateModelsLocation.mkdirs();
+    generatorLocation.mkdirs();
 
     //  it's the first and only generator in the language, no need to generate some unique long value 
-    final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + "#01", generatorLocation, templateModelsLocation);
+    final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + "#01", generatorLocation, null);
     generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
     languageDescriptor.getGenerators().add(generatorDescriptor);
 
@@ -249,7 +249,7 @@ public class NewModuleUtil {
   /**
    * Fill in new descriptor of Generator module with defaults.
    * This code is shared with NewGeneratorDialog. Please refactor this class, full of static, to something that 
-   * an ocassional OOP stroller would admire.
+   * an occasional OOP stroller would admire.
    * 
    * 
    * @param generatorModuleLocation base root for generator module. This method doesn't care if location exist, nor ensures its existence.
@@ -259,12 +259,19 @@ public class NewModuleUtil {
   public static GeneratorDescriptor createGeneratorDescriptor(String namespace, @NotNull IFile generatorModuleLocation, @Nullable IFile templateModelsLocation) {
     final GeneratorDescriptor generatorDescriptor = new GeneratorDescriptor();
     generatorDescriptor.setNamespace(namespace);
+    generatorDescriptor.setId(ModuleId.regular());
     // unlike other modules, in outburst of pure antagonism, namespace in generator used to mean alias. Now, it's the way it has to be. 
     generatorDescriptor.setAlias("main");
-    IFile modelsDir = (templateModelsLocation == null ? generatorModuleLocation.findChild("template") : templateModelsLocation);
-    // there used to be 2 approaches, contentRoot = moduleRoot + sourceRoot descendant, and the one with both pointing to the same location 
-    // no idea how to reason to pick one, go ahead and change if you're brave to prove. 
-    generatorDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(modelsDir));
+    ModelRootDescriptor modelRootDescriptor;
+    // there are 2 possible approaches, contentRoot = moduleRoot + sourceRoot descendant, and the one with both pointing to the same location 
+    if (templateModelsLocation == null) {
+      // I use distinct content and source roots here as it looks better in persistence (some values serialized in both tags compared to "." attribute of createSingleFolderDescroptor case 
+      modelRootDescriptor = DefaultModelRoot.createDescriptor(generatorModuleLocation, generatorModuleLocation.findChild("templates"));
+    } else {
+      // however, not to bother with templateModelsLocation relative to generatorModuleLocation, I stick to single folder as both content and source root 
+      modelRootDescriptor = DefaultModelRoot.createSingleFolderDescriptor(templateModelsLocation);
+    }
+    generatorDescriptor.getModelRootDescriptors().add(modelRootDescriptor);
     ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.findChild("source_gen").getPath());
     return generatorDescriptor;
   }
