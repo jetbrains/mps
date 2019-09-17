@@ -23,6 +23,7 @@ public class LocalVariableDeclarationStatement_Declaration_Actions {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         new CellAction_CommentOrUncommentNode(node).execute(editorContext);
+        editorContext.getEditorComponent().update();
       }
       @Override
       public boolean canExecute(EditorContext editorContext) {

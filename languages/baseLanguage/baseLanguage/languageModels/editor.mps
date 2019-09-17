@@ -31864,6 +31864,19 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="2GQ4hU_iFp$" role="3cqZAp">
+            <node concept="2OqwBi" id="2GQ4hU_n1j0" role="3clFbG">
+              <node concept="2OqwBi" id="2GQ4hU_iF_s" role="2Oq$k0">
+                <node concept="1Q80Hx" id="2GQ4hU_iFpy" role="2Oq$k0" />
+                <node concept="liA8E" id="2GQ4hU_iFKY" role="2OqNvi">
+                  <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2GQ4hU_n1uf" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorComponent.update()" resolve="update" />
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="jK8Ss" id="62tmCTO8MAb" role="jK8aL">
