@@ -21,7 +21,7 @@ public class QuotationUtil {
     return id.toString();
   }
   public static <K, V> ConcurrentMap<K, V> getBuilderMap(TemplateQueryContext genContext, SNode builder, String prefix) {
-    String key = "QUtil/" + prefix + "/" + builder.getNodeId();
+    String key = "QUtil/" + prefix + "/" + ((builder == null ? "global" : builder.getNodeId()));
     ConcurrentMap<K, V> map = (ConcurrentMap<K, V>) genContext.getTransientObject(key);
     if (map == null) {
       map = new ConcurrentHashMap<K, V>();

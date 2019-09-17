@@ -15,6 +15,7 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftBracketStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -28,8 +29,8 @@ import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.RightBracketStyleClass;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class NodeBuilderList_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -71,7 +72,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean _StyleParameter_QueryFunction_yzuegq_a0a0() {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
+    return ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.nodes$$MVw)).count() > 1 || ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
   }
   private EditorCell createRefNodeList_0() {
     AbstractCellListHandler handler = new nodesListHandler_yzuegq_b0(myNode, getEditorContext());
@@ -159,7 +160,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private boolean _StyleParameter_QueryFunction_yzuegq_a1b0() {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
+    return ListSequence.fromList(SLinkOperations.getChildren(getNode(), LINKS.nodes$$MVw)).count() > 1 || ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(getNode(), new SAbstractConcept[]{CONCEPTS.NodeBuilderNode$RN, CONCEPTS.NodeBuilderExpression$Ub}, false, new SAbstractConcept[]{})).count() > 1;
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "]");
@@ -171,13 +172,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
     /*package*/ static final SConcept NodeBuilderExpression$Ub = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
     /*package*/ static final SConcept NodeBuilderInitLinkValue$_6 = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x16240b8e9e79db00L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLinkValue");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
   }
 }

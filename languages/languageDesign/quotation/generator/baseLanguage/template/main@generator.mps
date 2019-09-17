@@ -8264,6 +8264,9 @@
                 <property role="TrG5h" value="_node_" />
                 <node concept="3uibUv" id="1vKiq7cqbtc" role="1tU5fm">
                   <ref role="3uigEE" to="6vmh:~SNodeBuilder" resolve="SNodeBuilder" />
+                  <node concept="1sPUBX" id="2g69lt1AY0N" role="lGtFl">
+                    <ref role="v9R2y" node="2g69lt1AUA8" resolve="NodeBuilderNode_ClassifierType" />
+                  </node>
                 </node>
                 <node concept="17Uvod" id="1vKiq7cqbtd" role="lGtFl">
                   <property role="2qtEX9" value="name" />
@@ -8896,6 +8899,44 @@
       <node concept="1lLz0L" id="7vKHTLu4s6i" role="1lHHLF">
         <property role="1lMjX7" value="h1lM37o/error" />
         <property role="1lLB17" value="Illegal child initializer in NodeBuilder" />
+      </node>
+    </node>
+  </node>
+  <node concept="jVnub" id="2g69lt1AUA8">
+    <property role="3GE5qa" value="container" />
+    <property role="TrG5h" value="NodeBuilderNode_ClassifierType" />
+    <node concept="3aamgX" id="2g69lt1AUA9" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="tp3r:7vKHTLu5SzY" resolve="NodeBuilderInitValueChild" />
+      <node concept="gft3U" id="2g69lt1AUAd" role="1lVwrX">
+        <node concept="3uibUv" id="2g69lt1AUAl" role="gfFT$">
+          <ref role="3uigEE" to="6vmh:~SNodeBuilder" resolve="SNodeBuilder" />
+        </node>
+      </node>
+      <node concept="30G5F_" id="2g69lt1B08a" role="30HLyM">
+        <node concept="3clFbS" id="2g69lt1B08b" role="2VODD2">
+          <node concept="3clFbF" id="2g69lt1B0c7" role="3cqZAp">
+            <node concept="2OqwBi" id="2g69lt1B0Lr" role="3clFbG">
+              <node concept="2OqwBi" id="2g69lt1B0oG" role="2Oq$k0">
+                <node concept="30H73N" id="2g69lt1B0c6" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="2g69lt1B0v$" role="2OqNvi">
+                  <node concept="1xMEDy" id="2g69lt1B0vA" role="1xVPHs">
+                    <node concept="chp4Y" id="2g69lt1B0xZ" role="ri$Ld">
+                      <ref role="cht4Q" to="tp3r:4IP40Bi2$Et" resolve="NodeBuilder" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3x8VRR" id="2g69lt1B10d" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="j$LIH" id="2g69lt1BjpR" role="jxRDz">
+      <node concept="1lLz0L" id="2g69lt1Bjqv" role="1lHHLF">
+        <property role="1lMjX7" value="h1lM37o/error" />
+        <property role="1lLB17" value="node builder used outside of supported container" />
       </node>
     </node>
   </node>

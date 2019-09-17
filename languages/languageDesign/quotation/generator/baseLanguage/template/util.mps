@@ -85,6 +85,9 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
@@ -104,6 +107,11 @@
       </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
+        <child id="1163668914799" name="condition" index="3K4Cdx" />
+        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
+        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -287,14 +295,27 @@
                   <property role="Xl_RC" value="/" />
                 </node>
               </node>
-              <node concept="2OqwBi" id="nQfYv_g$i5" role="3uHU7w">
-                <node concept="2JrnkZ" id="nQfYv_g$im" role="2Oq$k0">
-                  <node concept="37vLTw" id="2BHiRxghfX4" role="2JrQYb">
-                    <ref role="3cqZAo" node="6bGbH3SvRtP" resolve="builder" />
+              <node concept="1eOMI4" id="2g69lt1A9$E" role="3uHU7w">
+                <node concept="3K4zz7" id="2g69lt1A9as" role="1eOMHV">
+                  <node concept="Xl_RD" id="2g69lt1A9d0" role="3K4E3e">
+                    <property role="Xl_RC" value="global" />
                   </node>
-                </node>
-                <node concept="liA8E" id="nQfYv_g$iq" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                  <node concept="2OqwBi" id="nQfYv_g$i5" role="3K4GZi">
+                    <node concept="2JrnkZ" id="nQfYv_g$im" role="2Oq$k0">
+                      <node concept="37vLTw" id="2BHiRxghfX4" role="2JrQYb">
+                        <ref role="3cqZAo" node="6bGbH3SvRtP" resolve="builder" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="nQfYv_g$iq" role="2OqNvi">
+                      <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                    </node>
+                  </node>
+                  <node concept="3clFbC" id="2g69lt1A8LE" role="3K4Cdx">
+                    <node concept="10Nm6u" id="2g69lt1A94h" role="3uHU7w" />
+                    <node concept="37vLTw" id="2g69lt1A8D8" role="3uHU7B">
+                      <ref role="3cqZAo" node="6bGbH3SvRtP" resolve="builder" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
