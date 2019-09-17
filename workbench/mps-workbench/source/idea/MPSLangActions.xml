@@ -1305,8 +1305,9 @@
       <action id="ServiceView.JumpToServices" class="com.intellij.execution.services.JumpToServicesAction"
               text="Jump to Services" use-shortcut-of="ShowNavBar"/>
     </group>
+    <!-- Uncomment 'use-shortcut-of' when MPS-30908 is fixed -->
     <action id="ServiceView.ShowServices" class="com.intellij.execution.services.ShowServicesAction"
-            text="Show Services Tree" icon="AllIcons.Actions.ShowAsTree" use-shortcut-of="RunDashboard.ShowConfigurations"/>
+            text="Show Services Tree" icon="AllIcons.Actions.ShowAsTree"/> <!--use-shortcut-of="RunDashboard.ShowConfigurations"/>-->
     <group id="RunDashboard.GroupBy" popup="true" text="Configuration" class="com.intellij.ide.actions.NonEmptyActionGroup">
       <action id="RunDashboard.GroupByType" class="com.intellij.execution.dashboard.actions.GroupByConfigurationTypeAction"
               text="Type"/>
