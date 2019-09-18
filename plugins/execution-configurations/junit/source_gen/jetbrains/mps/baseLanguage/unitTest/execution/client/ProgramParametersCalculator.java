@@ -69,7 +69,7 @@ import org.apache.log4j.Level;
   }
 
   private String calcParamsWithoutMPSPlatformToStart() {
-    List<String> testsCommandLine = ListSequence.fromList(new ArrayList<String>(ListSequence.fromList(myTestsToRun.getTests()).count() * 2));
+    List<String> testsCommandLine = ListSequence.fromList(new ArrayList<String>());
     for (ITestNodeWrapper test : ListSequence.fromList(myTestsToRun.getTests())) {
       ListSequence.fromList(testsCommandLine).addElement((test.isTestCase() ? "-c" : "-m"));
       ListSequence.fromList(testsCommandLine).addElement(test.getFqName());

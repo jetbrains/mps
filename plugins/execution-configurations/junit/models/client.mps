@@ -238,7 +238,6 @@
       <concept id="1109283449304" name="jetbrains.mps.baseLanguage.structure.TypeVariableReference" flags="in" index="16syzq">
         <reference id="1109283546497" name="typeVariableDeclaration" index="16sUi3" />
       </concept>
-      <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -11248,6 +11247,18 @@
             <ref role="3cqZAo" node="40J2CKBsoFY" resolve="myNeedsMPS" />
           </node>
         </node>
+        <node concept="3clFbF" id="35ZcvJSce07" role="3cqZAp">
+          <node concept="2OqwBi" id="35ZcvJSce08" role="3clFbG">
+            <node concept="37vLTw" id="35ZcvJSce09" role="2Oq$k0">
+              <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+            </node>
+            <node concept="TSZUe" id="35ZcvJSce0a" role="2OqNvi">
+              <node concept="Xl_RD" id="35ZcvJSce0b" role="25WWJ7">
+                <property role="Xl_RC" value="-ea" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="37vLTG" id="40J2CKBskDs" role="3clF46">
         <property role="TrG5h" value="executorClass" />
@@ -14003,22 +14014,6 @@
             <node concept="2ShNRf" id="58KCQIw8CeE" role="33vP2m">
               <node concept="Tc6Ow" id="58KCQIw8CeF" role="2ShVmc">
                 <node concept="17QB3L" id="58KCQIw8CeG" role="HW$YZ" />
-                <node concept="17qRlL" id="58KCQIw8CeH" role="3lWHg$">
-                  <node concept="3cmrfG" id="58KCQIw8CeI" role="3uHU7w">
-                    <property role="3cmrfH" value="2" />
-                  </node>
-                  <node concept="2OqwBi" id="58KCQIw8CeJ" role="3uHU7B">
-                    <node concept="2OqwBi" id="58KCQIw8CeK" role="2Oq$k0">
-                      <node concept="37vLTw" id="58KCQIw8DH_" role="2Oq$k0">
-                        <ref role="3cqZAo" node="58KCQIw8mk3" resolve="myTestsToRun" />
-                      </node>
-                      <node concept="liA8E" id="58KCQIw8CeM" role="2OqNvi">
-                        <ref role="37wK5l" node="46IpDBc0Jzo" resolve="getTests" />
-                      </node>
-                    </node>
-                    <node concept="34oBXx" id="58KCQIw8CeN" role="2OqNvi" />
-                  </node>
-                </node>
               </node>
             </node>
           </node>

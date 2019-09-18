@@ -18,7 +18,7 @@ public final class Log4jInitializer {
     System.setProperty("log4j.defaultInitOverride", "true");
     Logger root = Logger.getRootLogger();
     if (!(root.getAllAppenders().hasMoreElements())) {
-      root.setLevel(Level.WARN);
+      root.setLevel(Level.INFO);
       root.addAppender(new ConsoleAppender(new PatternLayout(PatternLayout.DEFAULT_CONVERSION_PATTERN)));
     }
   }

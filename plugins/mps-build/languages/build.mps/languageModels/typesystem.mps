@@ -3734,7 +3734,7 @@
           <property role="TrG5h" value="msg" />
           <node concept="17QB3L" id="5mxXXtghPpL" role="1tU5fm" />
           <node concept="Xl_RD" id="5mxXXtghPpO" role="33vP2m">
-            <property role="Xl_RC" value="' is marked with 'doNotCompile=false',\n but its descriptor could not be found in the layout under the 'lib' folders of the plugin, where currently the IDEA plugin module sources together with its classes should reside" />
+            <property role="Xl_RC" value="' is marked with 'doNotCompile=true',\n but its descriptor could not be found in the layout under the 'lib' folders of the plugin, where currently the IDEA plugin module sources together with its classes should reside" />
           </node>
         </node>
       </node>

@@ -332,7 +332,7 @@
   
   <target name="makeDependents" />
   
-  <target name="module-tests" depends="assemble, test.constraints" />
+  <target name="module-tests" depends="assemble, test.feedback" />
   
   <target name="java.compile.messages.customization" depends="fetchDependencies">
     <mkdir dir="${basedir}/samples/messagesCustomization/languages/messages.customization/source_gen" />
@@ -458,7 +458,7 @@
     </copy>
   </target>
   
-  <target name="test.constraints" depends="assemble">
+  <target name="test.feedback" depends="assemble">
     <path id="mps.libraries.path">
       <pathelement location="${artifacts.mps}/languages/baseLanguage/closures.runtime.jar" />
       <pathelement location="${artifacts.mps}/languages/baseLanguage/collections.runtime.jar" />
@@ -621,7 +621,7 @@
       <sysproperty key="mps.test.modules" value="${mps.tests.path.string}" />
       
       
-      <test name="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0" outfile="TEST-jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0-constraints" />
+      <test name="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0" outfile="TEST-jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0-feedback" />
       <formatter type="xml" />
     </junit>
   </target>

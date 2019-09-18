@@ -566,7 +566,7 @@
       <node id="4051861013018346376" at="59,5,60,0" concept="11" />
       <node id="6170485468620352561" at="60,0,61,115" concept="10" />
       <node id="6170485468620396276" at="61,115,62,82" concept="10" />
-      <node id="6170485468611171954" at="62,82,63,238" concept="8" />
+      <node id="6170485468611171954" at="62,82,63,237" concept="8" />
       <node id="4051861013018411140" at="65,114,66,17" concept="2" />
       <node id="4051861013015736703" at="68,130,69,133" concept="8" />
       <node id="4051861013017265330" at="71,11,72,70" concept="8" />
@@ -613,7 +613,7 @@
       <node id="6170485468608137116" at="42,134,49,5" concept="5" />
       <node id="6170485468609411513" at="86,9,94,7" concept="5" />
       <node id="4051861013015827543" at="67,7,76,7" concept="6" />
-      <node id="4051861013014639147" at="63,238,77,5" concept="5" />
+      <node id="4051861013014639147" at="63,237,77,5" concept="5" />
       <node id="6170485468608443811" at="81,113,95,5" concept="5" />
       <node id="4051861013014639126" at="35,0,97,0" concept="7" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="4051861013014639126" at="33,79,33,79" />
@@ -665,7 +665,7 @@
         <var name="element" id="6170485468609411514" />
       </scope>
       <scope id="4051861013014639150" at="64,170,76,7" />
-      <scope id="4051861013014639147" at="63,238,77,5">
+      <scope id="4051861013014639147" at="63,237,77,5">
         <var name="layoutModule" id="4051861013014639148" />
       </scope>
       <scope id="6170485468608443811" at="81,113,95,5">

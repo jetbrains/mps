@@ -60,7 +60,7 @@ public class check_PackagingOfCompiledOutOfMPSModulesInPlugin_NonTypesystemRule 
 
     // the descriptor must be together with its classes (183) for the correct compilation of the dependent modules 
     // classes must be in the lib folder since IDEA loads classes only from there 
-    String msg = "' is marked with 'doNotCompile=false',\n but its descriptor could not be found in the layout under the 'lib' folders of the plugin, where currently the IDEA plugin module sources together with its classes should reside";
+    String msg = "' is marked with 'doNotCompile=true',\n but its descriptor could not be found in the layout under the 'lib' folders of the plugin, where currently the IDEA plugin module sources together with its classes should reside";
     for (SNode layoutModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(plugin, CONCEPTS.BuildMpsLayout_ModuleJars$mB, false, new SAbstractConcept[]{}))) {
       if (SetSequence.fromSet(fineModules).contains(SLinkOperations.getTarget(layoutModule, LINKS.module$5MWZ))) {
         continue;

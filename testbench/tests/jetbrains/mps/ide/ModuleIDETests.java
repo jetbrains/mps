@@ -24,14 +24,16 @@ import jetbrains.mps.project.DescriptorTargetFileAlreadyExistsException;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.structure.GenericDescriptorModelProvider;
+import jetbrains.mps.project.structure.LanguageDescriptorModelProvider.LanguageModelDescriptor;
 import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -57,7 +59,12 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * Also {@link StoreReloadManager#flushChangedProjectFileAlarm()} requires zero-level command
  */
-public class ModuleIDETests extends ModuleInProjectTest {
+public abstract class ModuleIDETests extends ModuleInProjectTest {
+  private final boolean myModuleFolderEqualsToModuleName;
+
+  public ModuleIDETests(boolean folderEqualsToModuleName) {
+    myModuleFolderEqualsToModuleName = folderEqualsToModuleName;
+  }
 
   private void checkGenerators(@NotNull Language language) {
     Collection<Generator> generators = language.getGenerators();
@@ -66,11 +73,16 @@ public class ModuleIDETests extends ModuleInProjectTest {
     generators.forEach(g -> Assert.assertFalse(myProject.getProjectModules().contains(g)));
   }
 
+  @NotNull
+  private String getNewDirInProject(@NotNull String name) {
+    return myModuleFolderEqualsToModuleName ? createNewDirInProject(name) : createNewDirInProject();
+  }
+
   @Test
   public void createSolution() {
     String solutionName = getNewModuleName();
     Reference<Solution> solutionRef = new Reference<>();
-    invokeInCommand(() -> solutionRef.set(NewModuleUtil.createSolution(solutionName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> solutionRef.set(NewModuleUtil.createSolution(solutionName, getNewDirInProject(solutionName), myProject)));
     invokeInCommand(() -> {
       Solution solution = solutionRef.get();
       Assert.assertNotNull(solution.getRepository());
@@ -83,7 +95,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
   public void createLanguage() {
     String langName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(langName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(langName, getNewDirInProject(langName), myProject)));
     invokeInCommand(() -> {
       Language language = langRef.get();
       Assert.assertNotNull(language.getRepository());
@@ -97,7 +109,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
   public void createDevkit() {
     String devkitName = getNewModuleName();
     Reference<DevKit> devkitRef = new Reference<>();
-    invokeInCommand(() -> devkitRef.set(NewModuleUtil.createDevKit(devkitName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> devkitRef.set(NewModuleUtil.createDevKit(devkitName, getNewDirInProject(devkitName), myProject)));
     invokeInCommand(() -> {
       DevKit devkit = devkitRef.get();
       Assert.assertNotNull(devkit.getRepository());
@@ -155,7 +167,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
           // Unexpected solution must not be renamed
           someUnexpectedSolution[0] = (Solution) myProject.getRepository().getModule(someUnexpectedSolution[0].getModuleId());
           Assert.assertNotNull(someUnexpectedSolution[0]);
-          Assert.assertTrue(!someUnexpectedSolution[0].getModuleName().contains(moduleName));
+          Assert.assertFalse(someUnexpectedSolution[0].getModuleName().contains(moduleName));
         });
   }
 
@@ -235,6 +247,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
       }
 
       // Module is reloaded after rename, so need to update reference
+      // FIXME THIS IS SOOO WRONG
       module = (AbstractModule) myProject.getRepository().getModule(moduleId);
       Assert.assertNotNull("Renamed module was not found in project repository by SModuleId", module);
 
@@ -252,7 +265,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
       Assert.assertNotNull(moduleDir);
       String moduleDirName = moduleDir.getName();
       Assert.assertNotNull(moduleDirName);
-      Assert.assertTrue(mustBeMoved == moduleDirName.equals(newModuleName));
+      Assert.assertEquals(mustBeMoved, moduleDirName.equals(newModuleName));
 
       // Check that model roots content folder is updated
       for (ModelRoot modelRoot : module.getModelRoots()) {
@@ -267,16 +280,18 @@ public class ModuleIDETests extends ModuleInProjectTest {
 
       final String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(module.getModuleDescriptor());
       if (generatorOutputPath != null) {
-        Assert.assertTrue(mustBeMoved == generatorOutputPath.contains(newModuleName));
+        Assert.assertEquals(mustBeMoved, generatorOutputPath.contains(newModuleName));
       }
 
       // Check models namespace is changed
       for (SModel model : module.getModels()) {
-        model.getName().getNamespace().equals(newModuleName);
+        if (!(model instanceof GenericDescriptorModelProvider.DescriptorModel || model instanceof LanguageModelDescriptor)) {
+          Assert.assertEquals(newModuleName, model.getName().getNamespace());
+        }
       }
 
       // Check model file name stays simple despite namespace change
-      final IFile modelsFolder = module.getModuleSourceDir().getChildren().stream().findFirst().filter(file -> file.getName().equals("models")).orElse(null);
+      final IFile modelsFolder = module.getModuleSourceDir().getChildren().stream().findFirst().filter(file -> "models".equals(file.getName())).orElse(null);
       // Some modules can exist without models folder - like Devkit
       if (modelsFolder != null && modelsFolder.getChildren() != null) {
         for (IFile file : modelsFolder.getChildren()) {
@@ -316,7 +331,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
   public void deleteModule() {
     String moduleName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       deleteModule(lang, false);
@@ -333,7 +348,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
   public void deleteModuleWithFiles() {
     String moduleName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       deleteModule(lang, true);
@@ -351,7 +366,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
     Reference<Language> langRef = new Reference<>();
     AtomicReference<String> newDirInProject = new AtomicReference<>();
     invokeInCommand(() -> {
-      newDirInProject.set(createNewDirInProject());
+      newDirInProject.set(getNewDirInProject(moduleName));
       langRef.set(NewModuleUtil.createLanguage(moduleName, newDirInProject.get(), myProject));
     });
     invokeInCommand(() -> {
@@ -372,7 +387,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
     Reference<Solution> slnRef = new Reference<>();
     AtomicReference<String> newDirInProject = new AtomicReference<>();
     invokeInCommand(() -> {
-      newDirInProject.set(createNewDirInProject());
+      newDirInProject.set(getNewDirInProject(moduleName));
       slnRef.set(NewModuleUtil.createSolution(moduleName, newDirInProject.get(), myProject));
     });
     invokeInCommand(() -> {
@@ -401,7 +416,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
     String moduleName = getNewModuleName();
     String newModuleName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       try {
@@ -424,7 +439,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
     String newModuleName = getNewModuleName();
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(oldModuleName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(oldModuleName, getNewDirInProject(oldModuleName), myProject)));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       saveProjectInTest();
@@ -434,8 +449,13 @@ public class ModuleIDETests extends ModuleInProjectTest {
       } catch (DescriptorTargetFileAlreadyExistsException e) {
         throw new RuntimeException(e);
       }
-      Assert.assertEquals(lang.getModuleName(), newModuleName);
+
+      lang = (Language) myProject.getRepository().getModule(langRef.get().getModuleId());
+      // FIXME THIS IS SOOO WRONG
+      Assert.assertNotNull("Renamed module was not found in project repository by SModuleId", lang);
+      Assert.assertEquals(newModuleName, lang.getModuleName());
       Assert.assertTrue(myProject.getProjectModules().contains(lang));
+      langRef.set(lang);
     });
     invokeInCommand(() -> {
       saveProjectInTest();
@@ -445,7 +465,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       List<SModule> projectModules = myProject.getProjectModules();
-      Assert.assertTrue(projectModules.size() == 1);
+      Assert.assertEquals(1, projectModules.size());
       Assert.assertNotEquals("The old language must have been unregistered", lang, projectModules.get(0));
       Assert.assertNull(lang.getRepository());
       lang = (Language) projectModules.get(0); // the module is changed when MPSProject#update is called (like in this case)
@@ -467,7 +487,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
     String moduleName = getNewModuleName();
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, createNewDirInProject(), myProject)));
+    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       saveProjectInTest();
@@ -484,7 +504,7 @@ public class ModuleIDETests extends ModuleInProjectTest {
 
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
-      Assert.assertTrue(myProject.getProjectModules().size() == 1);
+      Assert.assertEquals(1, myProject.getProjectModules().size());
       Assert.assertTrue(lang.getDescriptorFile().exists());
       lang = (Language) myProject.getProjectModules().get(0); // the module is changed when SMPSProject#update is called (like in this case)
       Assert.assertEquals(lang.getModuleName(), moduleName);

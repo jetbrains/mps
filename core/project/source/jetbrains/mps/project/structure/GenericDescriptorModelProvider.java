@@ -22,6 +22,7 @@ import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -109,7 +110,8 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
     return new jetbrains.mps.smodel.SModelReference(module.getModuleReference(), myDescriptorModelId, new SModelName(moduleName, SModelStereotype.DESCRIPTOR));
   }
 
-  static class DescriptorModel extends TrivialModelDescriptor /*implements GeneratableSModel*/ {
+  @Internal
+  public static class DescriptorModel extends TrivialModelDescriptor /*implements GeneratableSModel*/ {
     private final SModule myModule;
     private String myHash;
 

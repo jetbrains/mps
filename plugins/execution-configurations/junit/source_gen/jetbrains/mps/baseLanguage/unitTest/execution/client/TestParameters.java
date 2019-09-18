@@ -51,6 +51,7 @@ public final class TestParameters {
     if (myNeedsMPS) {
       ListSequence.fromList(myAdditionalJvmArgs).addElement("-DNO_FS_ROOTS_ACCESS_CHECK=true");
     }
+    ListSequence.fromList(myAdditionalJvmArgs).addElement("-ea");
   }
 
   public Class<?> getExecutorClass() {

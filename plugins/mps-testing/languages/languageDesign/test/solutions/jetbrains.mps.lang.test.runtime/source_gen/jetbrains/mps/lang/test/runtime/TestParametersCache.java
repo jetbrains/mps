@@ -50,9 +50,12 @@ public final class TestParametersCache implements TestRule {
   }
 
   @Override
-  public Statement apply(final Statement statement, Description description) {
+  public Statement apply(final Statement statement, final Description description) {
     return new Statement() {
       public void evaluate() throws Throwable {
+        if (LOG.isInfoEnabled()) {
+          LOG.info("Running the test " + description);
+        }
         statement.evaluate();
         //  NOTE, with in-process execution, TestParametersCache instance kept in a static field would be re-used, hence clean shall 
         // leave a state we can re-initialize in once again. 
@@ -93,6 +96,9 @@ public final class TestParametersCache implements TestRule {
     }
     myProject.getModelAccess().runWriteInEDT(new Runnable() {
       public void run() {
+        if (LOG.isInfoEnabled()) {
+          LOG.info("Disposing the temporary model");
+        }
         TemporaryModels.getInstance().dispose(myTransientModel);
         myTransientModel = null;
       }

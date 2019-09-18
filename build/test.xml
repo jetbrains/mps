@@ -154,6 +154,7 @@
       <property name="mps_home" value="${mps_build_home}"/>
     </ant>
     <ant antfile="build/tests/mpsConstraints.xml" inheritAll="true" useNativeBasedir="true">
+      <target name="build"/>
       <target name="check"/>
       <property name="mps_home" value="${mps_build_home}"/>
     </ant>
@@ -170,6 +171,11 @@
       <property name="mps_home" value="${mps_build_home}"/>
     </ant>
     <ant antfile="build/tests/mpsConsole.xml" inheritAll="true" useNativeBasedir="true">
+      <target name="build"/>
+      <target name="check"/>
+      <property name="mps_home" value="${mps_build_home}"/>
+    </ant>
+    <ant antfile="build/tests/mpsFeedback.xml" inheritAll="true" useNativeBasedir="true">
       <target name="build"/>
       <target name="check"/>
       <property name="mps_home" value="${mps_build_home}"/>

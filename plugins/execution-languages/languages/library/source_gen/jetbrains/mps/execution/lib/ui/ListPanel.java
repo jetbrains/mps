@@ -82,7 +82,7 @@ public abstract class ListPanel<T> extends JBPanel {
 
   protected abstract SNodeReference unwrap(T element);
 
-  protected abstract String getFqName(T element);
+  protected abstract String getPresentation(T element);
 
   protected abstract List<T> collectCandidates(ProgressMonitor progress);
 
@@ -153,7 +153,7 @@ public abstract class ListPanel<T> extends JBPanel {
 
     @Override
     public Object getElementAt(int p0) {
-      return getFqName(ListSequence.fromList(ListPanel.this.myValues).getElement(p0));
+      return getPresentation(ListSequence.fromList(ListPanel.this.myValues).getElement(p0));
     }
 
     @Override
@@ -236,13 +236,13 @@ public abstract class ListPanel<T> extends JBPanel {
       // and access to myListModel is mind-blowing. Need to find enough courage to refactor this mess. 
       for (Object value : ListPanel.this.myListComponent.getSelectedValuesList()) {
         for (final T node : ListPanel.this.myValues) {
-          final Wrappers._T<String> fqName = new Wrappers._T<String>();
+          final Wrappers._T<String> presentation = new Wrappers._T<String>();
           myMpsProject.getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              fqName.value = getFqName(node);
+              presentation.value = getPresentation(node);
             }
           });
-          if (fqName.value.equals(value)) {
+          if (presentation.value.equals(value)) {
             ListSequence.fromList(ListPanel.this.myValues).removeElement(node);
             break;
           }

@@ -18,7 +18,6 @@ package jetbrains.mps.testsuites;
 import jetbrains.mps.testbench.junit.runners.PushEnvironmentRunnerBuilder;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
-import jetbrains.mps.util.PathManager;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -48,7 +47,8 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.vfs.FSListeningTest.class,
     jetbrains.mps.generator.impl.plan.CheckpointModelTest.class,
     jetbrains.mps.workbench.ProjectOpenCloseTest.class,
-    jetbrains.mps.ide.ModuleIDETests.class,
+    jetbrains.mps.ide.ModuleIDETests1.class,
+    jetbrains.mps.ide.ModuleIDETests2.class,
     jetbrains.mps.ide.FSTests.class,
     jetbrains.mps.migration.MigrationsTest.class,
 })
@@ -59,7 +59,11 @@ public class PlatformTestSuite extends OutputWatchingTestSuite {
   static {
     // j.m.ide.test.merge tests need VCS plugin
     // MigrationsTest needs "migration" plugin
-    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(false).withVcsPlugin().withBuildPlugin().withMigrationPlugin();
+    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig()
+                                             .setCreatePluginClassLoaders(false)
+                                             .withVcsPlugin()
+                                             .withBuildPlugin()
+                                             .withMigrationPlugin();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();
   }

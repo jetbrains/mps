@@ -404,7 +404,7 @@
       <node id="6062668769034854248" at="33,0,34,0" concept="7" trace="myIsTestMethods" />
       <node id="1895567659271112922" at="37,47,38,50" concept="13" />
       <node id="1895567659271793774" at="42,61,43,36" concept="13" />
-      <node id="1895567659271112937" at="47,56,48,31" concept="13" />
+      <node id="1895567659271112937" at="47,62,48,31" concept="13" />
       <node id="2815126866103299461" at="52,86,53,75" concept="12" />
       <node id="7901631964424312409" at="54,29,55,70" concept="13" />
       <node id="1423104411234681944" at="56,5,57,56" concept="12" />
@@ -429,7 +429,7 @@
       <node id="1895567659271608114" at="80,0,83,0" concept="11" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;" />
       <node id="1895567659271608103" at="84,0,87,0" concept="11" trace="accept#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;)Z" />
       <node id="1895567659271793239" at="41,0,45,0" concept="11" trace="unwrap#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1895567659271112935" at="46,0,50,0" concept="11" trace="getFqName#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;)Ljava/lang/String;" />
+      <node id="1895567659271112935" at="46,0,50,0" concept="11" trace="getPresentation#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;)Ljava/lang/String;" />
       <node id="1895567659271608044" at="62,92,66,9" concept="9" />
       <node id="1895567659271112920" at="35,0,40,0" concept="11" trace="wrap#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;" />
       <node id="1706452255240088996" at="93,0,98,0" concept="3" trace="TestListPanel#(Lcom/intellij/openapi/project/Project;Z)V" />
@@ -442,7 +442,7 @@
       <node id="1895567659271608028" at="51,0,92,0" concept="11" trace="collectCandidates#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljava/util/List;" />
       <scope id="1895567659271112921" at="37,47,38,50" />
       <scope id="1895567659271793246" at="42,61,43,36" />
-      <scope id="1895567659271112936" at="47,56,48,31" />
+      <scope id="1895567659271112936" at="47,62,48,31" />
       <scope id="7901631964424268485" at="54,29,55,70" />
       <scope id="1895567659271608150" at="72,34,73,23" />
       <scope id="1895567659271608117" at="80,54,81,30" />

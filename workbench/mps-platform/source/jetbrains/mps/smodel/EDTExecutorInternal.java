@@ -39,6 +39,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -49,20 +50,28 @@ import static jetbrains.mps.smodel.EDTExecutor.MAX_SINGLE_EXECUTION_TIME_MS;
 /**
  * Manages the tasks queue; allowing concurrently to add new tasks and flushing the old ones.
  *
- * 1. Tasks might come from various threads, they are added to the *tasks queue* under the #myQueueLock.
+ * 1. Tasks might come from various threads, they are added to the *tasks queue*
  * 2. Every time the task is the first one in the queue the #flush is initiated.
  * 3. The flush procedure is executed asynchronously on the EDT (via the {@link TransactionGuard#submitTransactionLater(Disposable, Runnable)})
  * Property: The order of execution is equal to the order of tasks' scheduling
+ *
+ * fixme this is horrifying: who writes like this?? rewrite
  *
  * @author apyshkin
  */
 final class EDTExecutorInternal implements Disposable {
   private static final Logger LOG = LogManager.getLogger(EDTExecutorInternal.class);
   private static final String THREAD_GROUP_NAME = "MPS EDT Executor Thread";
+
   private final ScheduledExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor(createDaemonFactory());
-  private final Lock myQueueLock = new ReentrantLock();
-  private final Condition myQueueIsEmptyCondition = myQueueLock.newCondition();
-  private final AtomicInteger myTasksCount = new AtomicInteger();
+  private final AtomicBoolean myFlushIsScheduled = new AtomicBoolean();
+
+  private final AtomicInteger myTasks2RunCount = new AtomicInteger(); // debug info
+
+  // for #flushEvents method
+  private final CloseableLock myQueueIsEmptyLock = new CloseableLock(new ReentrantLock());
+  private final Condition myQueueWasEmptyCondition = myQueueIsEmptyLock.newCondition();
+
   private boolean myDisposed = false; // access only in EDT!
 
   private final com.intellij.openapi.util.Condition myExpiredCondition = o -> myDisposed;
@@ -73,7 +82,7 @@ final class EDTExecutorInternal implements Disposable {
   }
 
   /**
-   * elements are added only in the {@link EDTExecutor#scheduleTask(Task)} under the {@link #myQueueLock}.
+   * elements are added only in the {@link EDTExecutor#scheduleTask(Task)}
    * elements are removed in the EDT only in the {@link EDTExecutorInternal#tryToRunTopTask()}
    */
   private final Queue<Task> myTaskQueue = new ConcurrentLinkedQueue<>();
@@ -92,20 +101,26 @@ final class EDTExecutorInternal implements Disposable {
 
   void scheduleTask(Task task) {
     traceTheCaller();
-    try {
-      myQueueLock.lock();
-      boolean wakeUp = taskQueueIsEmpty(); // the first task after the queue has been emptied
-      boolean success = myTaskQueue.add(task);
-      if (!success) {
-        LOG.error("Failed to add a task into the queue " + task);
+    checkTheContract();
+    boolean success = myTaskQueue.add(task);
+    if (success) {
+      int tasksRemaining = myTasks2RunCount.incrementAndGet();
+      LOG.trace("total tasks in the queue " + tasksRemaining);
+    } else {
+      // impossible by the contract of ConcurrentLinkedQueue
+      LOG.error("Failed to add the task into the queue " + task);
+    }
+    if (myFlushIsScheduled.compareAndSet(false, true)) {
+      scheduleFlushInEDT();
+    }
+  }
+
+  private void checkTheContract() {
+    if (!myTaskQueue.isEmpty()) {
+      if (!myFlushIsScheduled.get()) {
+        LOG.error("Flush was not scheduled while the queue was not empty", new Throwable());
+        scheduleFlushInEDT();
       }
-      int size = myTasksCount.incrementAndGet();
-      LOG.trace("total tasks in the queue " + size);
-      if (wakeUp) {
-        signalTasksAppeared();
-      }
-    } finally {
-      myQueueLock.unlock();
     }
   }
 
@@ -115,15 +130,10 @@ final class EDTExecutorInternal implements Disposable {
     }
   }
 
-  private void signalTasksAppeared() {
-    flushQueueLaterInEDT();
-  }
-
   /**
    * flushing the whole queue in the edt asynchronously
    */
-  private void flushQueueLaterInEDT() {
-    assert !taskQueueIsEmpty() : "private method precondition is not satisfied";
+  private void scheduleFlushInEDT() {
     if (LOG.isTraceEnabled()) {
       LOG.trace("flushing the queue: the caller is " + ReflectionUtil.findCallerClass(9) + " : context transaction " +
                 TransactionGuard.getInstance().getContextTransaction());
@@ -150,6 +160,9 @@ final class EDTExecutorInternal implements Disposable {
 
   private void flushTasksQueue() {
     ThreadUtils.assertEDT();
+    if (myTaskQueue.isEmpty()) {
+      return;
+    }
 
     if (!myDisposed) {
       warnIfQueueIsTooLarge();
@@ -162,27 +175,29 @@ final class EDTExecutorInternal implements Disposable {
 
     if (timer != null) {
       try {
-        int queueSize = myTasksCount.get();
-        while (queueSize > 0) {
-          LOG.trace(String.format("flush %d tasks: %d ms left", queueSize, timer.getDelay(TimeUnit.MILLISECONDS)));
-          flushNTasks(timer, queueSize);
+        while (!myTaskQueue.isEmpty()) {
+          LOG.trace(String.format("flushing tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
+          flushNTasks(timer, myTasks2RunCount.get());
           if (timer.isDone()) {
             return;
           }
-          queueSize = myTasksCount.get();
         }
       } finally {
-        try {
-          myQueueLock.lock();
-          if (taskQueueIsEmpty()) {
-            signalNoTasksInTheQueue();
+        if (myTaskQueue.isEmpty()) {
+          myFlushIsScheduled.compareAndSet(true, false);
+          if (myTaskQueue.isEmpty()) { // double check since we could add tasks to the queue between previous statement and this one
+            try (CloseableLock ignored = myQueueIsEmptyLock.lock()) {
+              signalQueueWasEmpty();
+            }
           } else {
-            flushQueueLaterInEDT();
+            scheduleFlushInEDT();
           }
-        } finally {
-          myQueueLock.unlock();
+        } else {
+          scheduleFlushInEDT();
         }
       }
+    } else {
+      LOG.error("Timer is null, could not run tasks", new Throwable());
     }
   }
 
@@ -198,8 +213,7 @@ final class EDTExecutorInternal implements Disposable {
   @Nullable
   private ScheduledFuture<?> createTimeOutFuture() {
     if (!EXECUTOR_SERVICE.isShutdown()) {
-      return EXECUTOR_SERVICE.schedule(() -> {
-                                       },
+      return EXECUTOR_SERVICE.schedule(() -> {},
                                        MAX_SINGLE_EXECUTION_TIME_MS,
                                        TimeUnit.MILLISECONDS);
     } else {
@@ -208,7 +222,7 @@ final class EDTExecutorInternal implements Disposable {
   }
 
   private void warnIfQueueIsTooLarge() {
-    int queueSize = myTasksCount.get();
+    int queueSize = myTasks2RunCount.get();
     if (queueSize > EDTExecutor.QUEUE_MAX_EXPECTED_VALUE) {
       LOG.warn("Tasks queue size is " + queueSize + " which is above the expected");
     } else {
@@ -240,7 +254,7 @@ final class EDTExecutorInternal implements Disposable {
       if (taskPassed) {
         LOG.trace("removing the task");
         myTaskQueue.remove();
-        myTasksCount.decrementAndGet();
+        myTasks2RunCount.decrementAndGet();
       }
     }
     return taskPassed;
@@ -253,35 +267,31 @@ final class EDTExecutorInternal implements Disposable {
     waitForQueueToBeEmpty();
   }
 
-  private boolean taskQueueIsEmpty() {
-    return myTasksCount.get() == 0;
-  }
-
   /**
    * triggers the {@link #waitForQueueToBeEmpty()} method
    */
-  private void signalNoTasksInTheQueue() {
-    myQueueIsEmptyCondition.signalAll();
+  private void signalQueueWasEmpty() {
+    myQueueWasEmptyCondition.signalAll();
   }
 
   /**
    * A standard idiom: waiting for a condition to happen (here: wait until the tasks queue is empty)
-   * Triggered by {@link EDTExecutorInternal#signalNoTasksInTheQueue()}
+   * Triggered by {@link EDTExecutorInternal#signalQueueWasEmpty()}
    */
   private void waitForQueueToBeEmpty() {
-    try {
-      myQueueLock.lock();
-      while (!taskQueueIsEmpty()) {
+    if (myTaskQueue.isEmpty()) {
+      return;
+    }
+    try (CloseableLock ignored = myQueueIsEmptyLock.lock()) {
+      while (!myTaskQueue.isEmpty()) {
         try {
-          myQueueIsEmptyCondition.await();
+          myQueueWasEmptyCondition.await();
         } catch (InterruptedException ie) {
           LOG.warn("Interrupted while waiting for flush", ie);
           Thread.currentThread().interrupt();
           return;
         }
       }
-    } finally {
-      myQueueLock.unlock();
     }
   }
 
@@ -290,5 +300,31 @@ final class EDTExecutorInternal implements Disposable {
     assert ThreadUtils.isInEDT();
     myDisposed = true;
     new ExecutorServiceShutdownHelper(EXECUTOR_SERVICE).shutdownAndAwaitTermination(EDTExecutor.TERMINATION_TIMEOUT_MS);
+  }
+
+  private static final class CloseableLock implements AutoCloseable {
+    private final Lock myDelegate;
+
+    private CloseableLock(@NotNull Lock delegate) {
+      myDelegate = delegate;
+    }
+
+    public CloseableLock lock() {
+      myDelegate.lock();
+      return this;
+    }
+
+    public void unlock() {
+      myDelegate.unlock();
+    }
+
+    @Override
+    public void close() {
+      unlock();
+    }
+
+    public Condition newCondition() {
+      return myDelegate.newCondition();
+    }
   }
 }

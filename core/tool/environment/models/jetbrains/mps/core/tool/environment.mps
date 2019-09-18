@@ -5172,9 +5172,9 @@
                 </node>
                 <node concept="liA8E" id="1w4kk5b7kng" role="2OqNvi">
                   <ref role="37wK5l" to="q7tw:~Category.setLevel(org.apache.log4j.Level)" resolve="setLevel" />
-                  <node concept="10M0yZ" id="1w4kk5b7knh" role="37wK5m">
+                  <node concept="10M0yZ" id="5KK_Raglrz6" role="37wK5m">
+                    <ref role="3cqZAo" to="q7tw:~Level.INFO" resolve="INFO" />
                     <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-                    <ref role="3cqZAo" to="q7tw:~Level.WARN" resolve="WARN" />
                   </node>
                 </node>
               </node>
