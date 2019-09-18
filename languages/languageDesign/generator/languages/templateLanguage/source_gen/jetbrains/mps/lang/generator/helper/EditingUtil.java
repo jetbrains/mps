@@ -167,7 +167,7 @@ public final class EditingUtil {
       });
     }
     // re append all macros to make them go 'after' the <TF> 
-    ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).toListSequence().visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).addElement(it);
       }

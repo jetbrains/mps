@@ -248,6 +248,7 @@
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
+      <concept id="1151702311717" name="jetbrains.mps.baseLanguage.collections.structure.ToListOperation" flags="nn" index="ANE8D" />
       <concept id="1153943597977" name="jetbrains.mps.baseLanguage.collections.structure.ForEachStatement" flags="nn" index="2Gpval">
         <child id="1153944400369" name="variable" index="2Gsz3X" />
         <child id="1153944424730" name="inputSequence" index="2GsD0m" />
@@ -1802,15 +1803,18 @@
         </node>
         <node concept="3clFbF" id="hz3wQgN" role="3cqZAp">
           <node concept="2OqwBi" id="hz3wSBi" role="3clFbG">
-            <node concept="2OqwBi" id="hz3wQA4" role="2Oq$k0">
-              <node concept="3CFZ6_" id="2EuZkDRzImX" role="2OqNvi">
-                <node concept="3CFYIy" id="2EuZkDRzImY" role="3CFYIz">
-                  <ref role="3CFYIx" to="tpf8:fP7Vmt2" resolve="NodeMacro" />
+            <node concept="2OqwBi" id="53SOuJl2LhL" role="2Oq$k0">
+              <node concept="2OqwBi" id="hz3wQA4" role="2Oq$k0">
+                <node concept="3CFZ6_" id="2EuZkDRzImX" role="2OqNvi">
+                  <node concept="3CFYIy" id="2EuZkDRzImY" role="3CFYIz">
+                    <ref role="3CFYIx" to="tpf8:fP7Vmt2" resolve="NodeMacro" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="2BHiRxgl0LC" role="2Oq$k0">
+                  <ref role="3cqZAo" node="hz3pKu_" resolve="node" />
                 </node>
               </node>
-              <node concept="37vLTw" id="2BHiRxgl0LC" role="2Oq$k0">
-                <ref role="3cqZAo" node="hz3pKu_" resolve="node" />
-              </node>
+              <node concept="ANE8D" id="53SOuJl2NJq" role="2OqNvi" />
             </node>
             <node concept="2es0OD" id="hRzafhr" role="2OqNvi">
               <node concept="1bVj0M" id="hRzafhs" role="23t8la">
