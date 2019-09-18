@@ -43,6 +43,7 @@ import java.util.Set;
 /**
  * Look up models with same name among all visible models for a given module.
  * Has nothing to do with stubs except for the fact its only use is in java stub resolution mechanism.
+ *
  * @author Artem Tikhomirov
  */
 public final class StubReferenceFactory implements ReferenceFactory {
@@ -61,7 +62,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
 
   /**
    * @param module module we try to resolve references in, provides dependencies
-   * @param model model we try to resolve references in, ensures priority of local nodes over those from dependencies
+   * @param model  model we try to resolve references in, ensures priority of local nodes over those from dependencies
    */
   public StubReferenceFactory(@NotNull SModule module, @NotNull SModel model) {
     myModule = module;
@@ -85,19 +86,6 @@ public final class StubReferenceFactory implements ReferenceFactory {
       return jetbrains.mps.smodel.SReference.create(role, source, null, targetNodeId, resolveInfo);
     }
 
-    // first, try to find match
-
-    for (VisibleModel vm : possibleModels) {
-      final SModelReference modelRef = vm.getModelReference();
-      if (myModelReference.equals(modelRef)) {
-        continue;
-      }
-      if (vm.isKnownRoot(targetTopClassifier)) {
-        addImport(modelRef);
-        return jetbrains.mps.smodel.SReference.create(role, source, modelRef, targetNodeId, resolveInfo);
-      }
-    }
-
     // ok, there are matching models, and none knows the node with targetNodeId
     if (possibleModels.size() == 1) {
       // only one possible model
@@ -106,6 +94,17 @@ public final class StubReferenceFactory implements ReferenceFactory {
 
       return jetbrains.mps.smodel.SReference.create(role, source, targetModel, targetNodeId, resolveInfo);
     } else {
+      for (VisibleModel vm : possibleModels) {
+        final SModelReference modelRef = vm.getModelReference();
+        if (myModelReference.equals(modelRef)) {
+          continue;
+        }
+        if (vm.isKnownRoot(targetTopClassifier)) {
+          addImport(modelRef);
+          return jetbrains.mps.smodel.SReference.create(role, source, modelRef, targetNodeId, resolveInfo);
+        }
+      }
+
       // XXX not quite sure if dynamic reference is reasonable here
       // anyway, this is the way it was
       for (VisibleModel m : possibleModels) {
@@ -128,6 +127,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
   /**
    * FIXME use SModelId, once have switched to package id without module id (now need module reference to build stub ModuleId)
    * Also, shall use myModule.resolveInDependencies() then, to keep GMDM knowledge private to module implementation
+   *
    * @param modelName qualified name including stereotype (if any), not <code>null</code>
    * @return ordered collection, first come local matches, if any; never <code>null</code>
    */
@@ -169,17 +169,21 @@ public final class StubReferenceFactory implements ReferenceFactory {
    */
   private static class VisibleModel {
     private final SModel myModel;
-    private final Set<SNodeId> myKnownRoots;
+    private Set<SNodeId> myKnownRoots;
 
     public VisibleModel(SModel model) {
       myModel = model;
-      myKnownRoots = new HashSet<>();
-      for (SNode n : model.getRootNodes()) {
-        myKnownRoots.add(n.getNodeId());
-      }
     }
 
+    //
     public boolean isKnownRoot(SNodeId nodeId) {
+      if (myKnownRoots == null) {
+        myKnownRoots = new HashSet<>();
+        for (SNode n : myModel.getRootNodes()) {
+          myKnownRoots.add(n.getNodeId());
+        }
+      }
+
       return myKnownRoots.contains(nodeId);
     }
 
