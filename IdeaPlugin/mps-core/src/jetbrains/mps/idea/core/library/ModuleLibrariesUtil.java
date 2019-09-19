@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,9 +29,9 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.project.SolutionIdea;
+import jetbrains.mps.idea.core.project.StubSolutionIdea;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.StubSolution;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
@@ -76,7 +76,7 @@ public class ModuleLibrariesUtil {
   }
 
   private static boolean isSuitableModule(SModule module) {
-    return (module instanceof Solution) && !(module instanceof SolutionIdea) && !(module instanceof StubSolution);
+    return (module instanceof Solution) && !(module instanceof SolutionIdea) && !(module instanceof StubSolutionIdea);
   }
 
   @NotNull

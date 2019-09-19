@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.testbench;
 
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.SRepositoryExt;
-import jetbrains.mps.extapi.persistence.ModelFactoryRegistry;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.persistence.PersistenceUtil.InMemoryStreamDataSource;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
@@ -25,7 +24,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.StubSolution;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
@@ -34,6 +32,7 @@ import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.TestLanguage;
@@ -55,7 +54,6 @@ import org.junit.Assert;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.UUID;
 
 /**
@@ -72,10 +70,12 @@ public class TestModuleFactoryBase implements TestModuleFactory {
   private static int ourId = 0;
   private final Environment myEnvironment;
   private final SRepositoryExt myRepository;
+  private final ModuleInstanceFactory myModuleFactory;
 
   public TestModuleFactoryBase(Environment environment, @NotNull SRepositoryExt repository) {
     myEnvironment = environment;
     myRepository = repository;
+    myModuleFactory = new ModuleRepositoryFacade(repository);
   }
 
   private ModelAccess getModelAccess() {
@@ -108,24 +108,20 @@ public class TestModuleFactoryBase implements TestModuleFactory {
   }
 
   /**
-   * methods create modules and register it in the repository (assuming it is the only one)
+   * method creates a new module instance with some test defaults; the module is not attached to any repository
+   * FIXME this method is different from the rest in the same class as it doesn't register a module, and merely instantiates it.
+   *       Fix other methods and their usages
    */
   @NotNull
   @Override
   public Solution createSolution(@Nullable final IFile descriptorFile) {
-    final Solution[] solutions = new Solution[1];
-    getModelAccess().runWriteAction(new Runnable() {
-      @Override
-      public void run() {
-        SolutionDescriptor descriptor = new SolutionDescriptor();
-        String uuid = UUID.randomUUID().toString();
-        descriptor.setNamespace(TEST_PREFIX_SOLUTION + "_" + getNewId() + "_" + uuid);
-        descriptor.setId(ModuleId.fromString(uuid));
-        solutions[0] = StubSolution.newInstance(myRepository, descriptor, OWNER, descriptorFile);
-        populate(solutions[0]);
-      }
-    });
-    return solutions[0];
+    SolutionDescriptor descriptor = new SolutionDescriptor();
+    String uuid = UUID.randomUUID().toString();
+    descriptor.setNamespace(TEST_PREFIX_SOLUTION + "_" + getNewId() + "_" + uuid);
+    descriptor.setId(ModuleId.fromString(uuid));
+    final Solution solution = (Solution) myModuleFactory.instantiate(descriptor, descriptorFile);
+    populate(solution);
+    return solution;
   }
 
   @NotNull

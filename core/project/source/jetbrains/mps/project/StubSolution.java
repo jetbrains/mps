@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,29 +15,20 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @deprecated This class is of no value and is left for compile-time compatibility with actual mbeddr code
+ *             there are 2 uses in mbeddr (reference to the class itself, likely instanceof checks)
+ *             There are no uses in MPS (except for extends in StubSolutionIdea, which we need to drop once I check mbeddr uses)
+ */
+@Deprecated
+@ToRemove(version = 2019.3)
 public class StubSolution extends Solution {
   protected StubSolution(SolutionDescriptor descriptor, @Nullable IFile file) {
     super(descriptor, file);
   }
-
-  //this is for stubs framework & tests only. Can be later converted into subclass
-  public static Solution newInstance(SRepositoryExt repo, SolutionDescriptor descriptor, MPSModuleOwner moduleOwner) {
-    return newInstance(repo, descriptor, moduleOwner, null);
-  }
-
-  public static Solution newInstance(SRepositoryExt repo, SolutionDescriptor descriptor, MPSModuleOwner moduleOwner, @Nullable IFile descriptorFile) {
-    return register(repo, moduleOwner, new StubSolution(descriptor, descriptorFile));
-  }
-
-  // there's StubSolutionIdea that uses this method
-  protected static Solution register(SRepositoryExt repo, MPSModuleOwner moduleOwner, Solution solution) {
-    return repo.registerModule(solution, moduleOwner);
-  }
-
 }

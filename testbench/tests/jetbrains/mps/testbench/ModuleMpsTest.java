@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,10 +20,10 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import org.apache.log4j.LogManager;
@@ -92,21 +92,9 @@ public class ModuleMpsTest implements EnvironmentAware {
    * methods create modules and register it in the repository (assuming it is the only one)
    */
   public Solution createSolution() {
-    return myTestModuleFactory.createSolution(null);
-  }
-
-  public Language createLanguageWithGenerator() {
-    return myTestModuleFactory.createLanguageWithGenerator();
-  }
-
-  @NotNull
-  public LanguageDescriptor createLanguageDescriptor(final SModuleId id, final String name, SModuleReference... runtimes) {
-    return myTestModuleFactory.createLanguageDescriptor(id, name, runtimes);
-  }
-
-  @NotNull
-  public LanguageDescriptor createLanguageDescriptor(SModuleReference... runtimes) {
-    return myTestModuleFactory.createLanguageDescriptor(runtimes);
+    final Solution solution = myTestModuleFactory.createSolution(null);
+    final SRepositoryExt repo = getTestRepository();
+    return new ModelAccessHelper(repo).runWriteAction(() -> repo.registerModule(solution, TestModuleFactoryBase.OWNER));
   }
 
   public Language createLanguage() {

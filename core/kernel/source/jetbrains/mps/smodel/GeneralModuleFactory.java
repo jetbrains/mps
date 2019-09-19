@@ -32,6 +32,8 @@ import org.jetbrains.mps.openapi.module.SModule;
  * Default implementation of {@link ModuleInstanceFactory}.
  * IMPORTANT: At the moment, use {@link ModuleRepositoryFacade} as implementation of {@link ModuleInstanceFactory} in case there are
  * generators among your modules. Once Generator module no longer depends on its source Language module, this limitation would get lifted
+ * FIXME there are uses like {@code (Solution) new GeneralModuleFactory().instantiate(SolutionDescriptor)}. Perhaps, shall expose methods to instantiate
+ *       specific instance (we expose the knowledge through protected methods anyway)
  *
  * @author Artem Tikhomirov
  * @since 2019.3

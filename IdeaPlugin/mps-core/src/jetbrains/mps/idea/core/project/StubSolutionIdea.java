@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.project;
 
 import com.intellij.openapi.application.ApplicationManager;
@@ -242,6 +241,10 @@ public abstract class StubSolutionIdea extends StubSolution {
       deps.add(new SDependencyImpl(module, SDependencyScope.DEFAULT, false));
     }
     return deps;
+  }
+
+  private static Solution register(SRepositoryExt repo, MPSModuleOwner moduleOwner, Solution solution) {
+    return repo.registerModule(solution, moduleOwner);
   }
 
   private static class LibraryStubSolution extends StubSolutionIdea {

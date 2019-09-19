@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.StubSolution;
 import jetbrains.mps.project.structure.ProjectStructureModule;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
+import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.SModelId;
@@ -242,7 +242,8 @@ public class RepoListenerTest implements EnvironmentAware {
       SolutionDescriptor descriptor = new SolutionDescriptor();
       descriptor.setNamespace("Solution");
       descriptor.setId(ModuleId.regular());
-      return StubSolution.newInstance(myRepository, descriptor, myModuleOwner);
+      final Solution solution = (Solution) new GeneralModuleFactory().instantiate(descriptor, null);
+      return myRepository.registerModule(solution, myModuleOwner);
     }
 
     public Solution execute() {
