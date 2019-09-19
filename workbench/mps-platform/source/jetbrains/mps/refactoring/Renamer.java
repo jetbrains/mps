@@ -77,10 +77,8 @@ public final class Renamer {
         final Collection<ModuleHandle> collectedModules = modulesMiner.collectModules(moduleFile).getCollectedModules();
         for (ModuleHandle handle : collectedModules) {
           SModule sModule = repositoryFacade.instantiateModule(handle, project);
-          if (!(sModule instanceof Generator)) {
-            // Adding module back to project after reload
-            project.addModule(sModule);
-          }
+          // Adding module back to project after reload
+          project.addModule(sModule);
           if (sModule.getModuleName().equals(oldModuleName)) {
             module = (AbstractModule) sModule;
           }

@@ -59,6 +59,9 @@ public class ProjectOpenCloseTest implements EnvironmentAware {
     myTestModuleFactory = new TestModuleFactoryBase(myEnvironment, (SRepositoryExt) project.getRepository());
     IFile descriptorFile = FS.getFile(FileUtil.createTmpFile().getPath());
     SModule newModule = myTestModuleFactory.createSolution(descriptorFile);
+    // though addModule is capable to grab proper model write lock, have to keep this one outside as ProjectModuleLoader.fireModuleLoaded()
+    // ends up in WatchingFileSystemListenersContainer.addListener() -> WatchedRoots.addWatchRequest, where IDEA expects its own read lock (or EDT), neither
+    // holds true for the test run.
     project.getModelAccess().runWriteAction(() -> project.addModule(newModule));
     Assert.assertTrue(project.getProjectModules().contains(newModule));
     project.dispose();

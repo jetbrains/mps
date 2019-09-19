@@ -89,7 +89,7 @@ public class ProjectCreationTest implements EnvironmentAware {
       rv[i] = String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, Language.LANGUAGE_MODELS, languageNamespace + "." + aspects[i].getName(), MPSExtentions.MODEL);
     }
     rv[aspects.length] =
-        String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, "generator/template", "main@generator", MPSExtentions.MODEL);
+        String.format(PATH_IN_PROJECT, projectName, LANGUAGES_ROOT, languageNamespace, "generator/templates", "main@generator", MPSExtentions.MODEL);
     return Arrays.asList(rv);
   }
 

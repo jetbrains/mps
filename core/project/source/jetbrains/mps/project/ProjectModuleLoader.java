@@ -131,39 +131,36 @@ import java.util.regex.Matcher;
       }
     }
     int loadedModules = 0;
+    // at the moment, MRF is not capable to register a generator sooner that its language. To make sure no generator comes first,
+    // there's sorter in MM.
     ModuleRepositoryFacade repoFacade = new ModuleRepositoryFacade(myProject);
-    ArrayList<ModuleHandle> postponedGeneratorHandles = new ArrayList<>(pathsToLoad.size());
     // XXX This code resembles ProjectModulesFiller (ProjectStrategyBase). Do we need to keep them separate?
     for (ModuleHandle handle : modulesMiner.getCollectedModules()) {
-      if (handle.getDescriptor() instanceof GeneratorDescriptor) {
-        postponedGeneratorHandles.add(handle);
-        // There are distinct mined handles for generator modules, which Project implementation
-        // doesn't expect to see at the moment.
-        continue;
-      }
+      // I expect modulePath to be non null even for language-owned generators (they share same descriptor file)
       ModulePath modulePath = fileToPath.get(handle.getFile());
       if (handle.getDescriptor() != null) {
         SModule module = repoFacade.instantiateModule(handle, myProject);
         // it's quite tempting, indeed, to move project update (i.e. addModule) into listener ProjectModuleLoadingListener.moduleLoaded
         // just need to sort out ModuleLoader and Project relationship.
-        myProject.addModule0(modulePath, module);
+
+        final boolean langOwnedGenerator = handle.getDescriptor() instanceof GeneratorDescriptor && !((GeneratorDescriptor) handle.getDescriptor()).isStandaloneModule();
+        if (!langOwnedGenerator) {
+          // There are distinct handles mined for generator modules, Project implementation
+          // is ready to see only standalone generator modules. Note, Project.addModule() is capable to make the check itself
+          // while addModule0 we use here does not.
+          myProject.addModule0(modulePath, module);
+        }
         ++loadedModules;
         // XXX Here, in ProjectModuleLoadingListener/ModuleFileChangeListener, we track language files only, and rely on regular
         //     Language.reloadAfterDescriptorChange code to reflect changes in Generator modules
         fireModuleLoaded(modulePath, module);
+        // Note, historically we didn't do ++loadedModules, nor fireModuleLoaded for Generator modules, beware of the change
+        // if there's existing code that didnot account for generator modules
       } else {
         error(String.format("Can't load module from %s. Unknown file type.", handle.getFile().getPath()));
         fireModuleTypeIsUnknown(modulePath);
       }
     }
-    // at the moment, MRF is not capable to register a generator sooner that its language. To make sure no generator comes first,
-    // we postpone instantiation of all of them.
-    for (ModuleHandle generatorHandle : postponedGeneratorHandles) {
-      repoFacade.instantiateModule(generatorHandle, myProject);
-      // neither myProject.addModule() nor ++loadedModules, nor fireModuleLoaded were considered here as existing code never did it for generator modules
-      // XXX This, however, likely to change once generators become standalone modules.
-    }
-
     return loadedModules;
   }
 

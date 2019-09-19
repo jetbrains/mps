@@ -7,7 +7,6 @@ import jetbrains.mps.library.ModulesMiner;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.Generator;
 
 /**
  * Allows to fill an empty project with given modules at runtime
@@ -27,11 +26,8 @@ public final class ProjectModulesFiller {
       public void run() {
         for (ModulesMiner.ModuleHandle moduleHandle : myHandlesToLoad) {
           SModule module = rf.instantiateModule(moduleHandle, myProject);
-          if (module instanceof Generator) {
-            // With MM delivering GeneratorDescriptors and MRF capable of instantiating them, we can face Generator here 
-            // FIXME at the moment, Project is not ready to receive Generator as a module to add need to refactor it first. 
-            continue;
-          }
+          // With MM delivering GeneratorDescriptors and MRF capable of instantiating them, we can face Generator modules here, 
+          // both standalone and those owned by a language. Project has to deal with that. 
           myProject.addModule(module);
         }
       }

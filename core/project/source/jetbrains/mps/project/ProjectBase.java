@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -133,10 +133,20 @@ public abstract class ProjectBase extends Project {
     addRenameListener(module);
   }
 
+  /**
+   * Locks: at the moment, method grabs model write on the project repository one it registers module in there.
+   * It's up to client to grab model write on a project repo in case he needs to batch addition of multiple modules.
+   * The reason I decided to keep code to grab model write inside the method is that I plan to make module instantiation
+   * without registration mainstream (unlike what's currently happens in {@code MRF.instantiateModule()}, which instantiates and registers module
+   * right away, therefore clients usually possess model lock already).
+   */
   @Override
   public final void addModule(@NotNull SModule module) {
     IFile descriptorFile = getDescriptorFileChecked(module);
     if (descriptorFile != null) {
+      if (module instanceof Generator && !((Generator) module).getModuleDescriptor().isStandaloneModule()) {
+        return;
+      }
       ModulePath path = new ModulePath(descriptorFile.getPath(), null);
       addModule0(path, module);
       myProjectDescriptor.addModulePath(path);
@@ -159,6 +169,9 @@ public abstract class ProjectBase extends Project {
   @Override
   public final void removeModule(@NotNull SModule module) {
     if (!myModuleToPathMap.containsKey(module.getModuleReference())) {
+      if (module instanceof Generator && !((Generator) module).getModuleDescriptor().isStandaloneModule()) {
+        return;
+      }
       LOG.warn("Module has not been registered in the project: " + module);
       return;
     }
