@@ -18,15 +18,9 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
@@ -60,7 +54,7 @@ import java.util.stream.StreamSupport;
  * may cache values (e.g. model name to model instance) to answer subsequent queries faster, and may not reflect
  * changes made to a repository.
  */
-public final class ModuleRepositoryFacade implements CoreComponent {
+public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstanceFactory {
   private static final Logger LOG = LogManager.getLogger(ModuleRepositoryFacade.class);
   private static ModuleRepositoryFacade INSTANCE;
 
@@ -68,6 +62,14 @@ public final class ModuleRepositoryFacade implements CoreComponent {
   private final SRepository myRepo;
   // may be null. use only when extended method of SRepositoryExt are needed.
   private final SRepositoryExt myRepoExt;
+  private final ModuleInstanceFactory myModuleFactory = new GeneralModuleFactory() {
+    @NotNull
+    @Override
+    protected Generator newGeneratorInstance(@NotNull GeneratorDescriptor descriptor, @Nullable IFile descriptorFile) {
+      // while Generator module needs its source Language module, we have to use newGeneratorInstance method that has access to a repo
+      return ModuleRepositoryFacade.this.newGeneratorInstance(descriptor, descriptorFile);
+    }
+  };
 
   /**
    * @deprecated  This class shall cease to be CoreComponent and singleton. Instead, shall be
@@ -322,6 +324,12 @@ public final class ModuleRepositoryFacade implements CoreComponent {
    * Instantiate a new module according to description and register it with the facade's repository.
    * If there's module already (expected scenario), just updates its relation to another {@linkplain MPSModuleOwner module owner}
    *   (same module could get published with few owners)
+   *  XXX There's little reason to propagate ModuleHandle there (in fact, it's too much even here - why
+   *      do I care modules are instantiated with the help of ModulesMiner). Check TestLanguage for sample case.
+   *
+   * @deprecated method API is cumbersome, it does 2 things and demands MM knowledge. Prefer
+   *             {@link ModuleInstanceFactory#instantiate(ModuleDescriptor, IFile)} instead, and explicit repository registration.
+   *
    * @return instance of a module, either new one or existing from the facade's repository.
    * @throws IllegalArgumentException if handle describes unknown module kind.
    */
@@ -329,23 +337,18 @@ public final class ModuleRepositoryFacade implements CoreComponent {
   public SModule instantiateModule(@NotNull ModuleHandle handle, @NotNull MPSModuleOwner owner) {
     LOG.debug("Creating a module " + handle);
     ModuleDescriptor moduleDescriptor = handle.getDescriptor();
-    AbstractModule instance;
-    // XXX left distinct one-liner newXXXInstance methods as a hint for future API (e.g. protected; separate module factory and
-    //     registration, for use e.g. in tests). Besides, there's little reason to propagate ModuleHandle there (in fact, it's too much even here - why
-    //     do I care modules are instantiated with the help of ModulesMiner). Check TestLanguage for sample case.
-    if (moduleDescriptor instanceof LanguageDescriptor) {
-      instance = newLanguageInstance((LanguageDescriptor) moduleDescriptor, handle.getFile());
-    } else if (moduleDescriptor instanceof SolutionDescriptor) {
-      instance = newSolutionInstance((SolutionDescriptor) moduleDescriptor, handle.getFile());
-    } else if (moduleDescriptor instanceof DevkitDescriptor) {
-      instance = newDevKitInstance((DevkitDescriptor) moduleDescriptor, handle.getFile());
-    } else if (moduleDescriptor instanceof GeneratorDescriptor) {
-      instance = newGeneratorInstance((GeneratorDescriptor) moduleDescriptor, handle.getFile());
-    } else {
+    if (moduleDescriptor == null) {
       throw new IllegalArgumentException("Unknown module " + handle.getFile().getName());
     }
-    AbstractModule actualRepoModule = registerModule(instance, owner);
+    SModule instance = instantiate(moduleDescriptor, handle.getFile());
+    SModule actualRepoModule = registerModule(instance, owner);
     return actualRepoModule;
+  }
+
+  @NotNull
+  @Override
+  public SModule instantiate(@NotNull ModuleDescriptor moduleDescriptor, @Nullable IFile descriptorFile) {
+    return myModuleFactory.instantiate(moduleDescriptor, descriptorFile);
   }
 
   /**
@@ -357,24 +360,6 @@ public final class ModuleRepositoryFacade implements CoreComponent {
     // 2 uses in mbeddr.
     // need to introduce alternative with ModuleDescriptor only, not ModuleHandler/IFile
     return INSTANCE.instantiateModule(handle, owner);
-  }
-
-  @NotNull
-  private Language newLanguageInstance(@NotNull LanguageDescriptor descriptor, IFile descriptorFile) {
-    assert descriptor.getId() != null;
-    return new Language(descriptor, descriptorFile);
-  }
-
-  @NotNull
-  private Solution newSolutionInstance(@NotNull SolutionDescriptor descriptor, IFile descriptorFile) {
-    assert descriptor.getId() != null;
-    return new Solution(descriptor, descriptorFile);
-  }
-
-  @NotNull
-  private DevKit newDevKitInstance(@NotNull DevkitDescriptor descriptor, IFile descriptorFile) {
-    assert descriptor.getId() != null;
-    return new DevKit(descriptor, descriptorFile);
   }
 
   @NotNull
@@ -398,7 +383,7 @@ public final class ModuleRepositoryFacade implements CoreComponent {
     return new Generator(MetaAdapterFactory.getLanguage(descriptor.getSourceLanguage()), descriptor, descriptorFile, (Language) module);
   }
 
-  private <T extends AbstractModule> T registerModule(T module, MPSModuleOwner moduleOwner) {
+  private <T extends SModule> T registerModule(T module, MPSModuleOwner moduleOwner) {
     return myRepoExt.registerModule(module, moduleOwner);
   }
 }
