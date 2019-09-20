@@ -30,6 +30,7 @@
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
+      <concept id="1106270637846" name="jetbrains.mps.lang.editor.structure.CellLayout_Flow" flags="nn" index="2iR$Sn" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
       <concept id="1237308012275" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem" flags="ln" index="ljvvj" />
@@ -92,6 +93,7 @@
       <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
         <property id="1215007802031" name="value" index="3$6WeP" />
       </concept>
+      <concept id="1215007883204" name="jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem" flags="ln" index="3$7fVu" />
       <concept id="1215007897487" name="jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem" flags="ln" index="3$7jql" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <property id="1139852716018" name="noTargetText" index="1$x2rV" />
@@ -1415,6 +1417,86 @@
       <node concept="PMmxH" id="4OU1gA0w2Dh" role="3EZMnx">
         <ref role="PMmxG" to="tpco:5K$8XMPc9pW" resolve="ShortDescriptionEditorComponent" />
         <node concept="Vb9p2" id="4OU1gA0w2Di" role="3F10Kt" />
+      </node>
+      <node concept="3F0ifn" id="6hcx9Fg9F1d" role="3EZMnx">
+        <node concept="VPM3Z" id="6hcx9Fg9F2S" role="3F10Kt" />
+      </node>
+      <node concept="3EZMnI" id="6hcx9Fg9wbw" role="3EZMnx">
+        <node concept="2iRfu4" id="6hcx9Fg9wbx" role="2iSdaV" />
+        <node concept="3F0ifn" id="6hcx9Fg9w9S" role="3EZMnx">
+          <property role="3F0ifm" value="Tip:" />
+        </node>
+        <node concept="3EZMnI" id="6hcx9Fg9w5s" role="3EZMnx">
+          <node concept="2iRkQZ" id="6hcx9Fg9w5t" role="2iSdaV" />
+          <node concept="3EZMnI" id="6hcx9Fg8Abz" role="3EZMnx">
+            <node concept="2iR$Sn" id="6hcx9Fg8Ab$" role="2iSdaV" />
+            <node concept="3F0ifn" id="6hcx9Fg8Ab_" role="3EZMnx">
+              <property role="3F0ifm" value="Consider importing" />
+              <node concept="3$7fVu" id="6hcx9Fg8AbA" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="3$7jql" id="6hcx9Fg8AbB" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="Vb9p2" id="6hcx9Fg9jta" role="3F10Kt" />
+            </node>
+            <node concept="3F0ifn" id="6hcx9Fg8AbF" role="3EZMnx">
+              <property role="3F0ifm" value="jetbrains.mps.scopes.ListScope" />
+              <node concept="3$7fVu" id="6hcx9Fg8AbG" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="3$7jql" id="6hcx9Fg8AbH" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="Vb9p2" id="6hcx9Fg8Ae7" role="3F10Kt">
+                <property role="Vbekb" value="g1_kEg4/ITALIC" />
+              </node>
+            </node>
+            <node concept="3F0ifn" id="6hcx9Fg98zt" role="3EZMnx">
+              <property role="3F0ifm" value="with" />
+              <node concept="Vb9p2" id="6hcx9Fg9jto" role="3F10Kt" />
+            </node>
+            <node concept="3F0ifn" id="6hcx9Fg8AbI" role="3EZMnx">
+              <property role="3F0ifm" value="(Control + R)" />
+              <node concept="3$7fVu" id="6hcx9Fg8AbJ" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="3$7jql" id="6hcx9Fg8AbK" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="Vb9p2" id="6hcx9Fg98$O" role="3F10Kt">
+                <property role="Vbekb" value="g1_kEg4/ITALIC" />
+              </node>
+            </node>
+            <node concept="3F0ifn" id="6hcx9Fg8AbR" role="3EZMnx">
+              <property role="3F0ifm" value="and using" />
+              <node concept="3$7fVu" id="6hcx9Fg8AbS" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="3$7jql" id="6hcx9Fg8AbT" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="Vb9p2" id="6hcx9Fg9jtR" role="3F10Kt" />
+            </node>
+            <node concept="3F0ifn" id="6hcx9Fg8AbX" role="3EZMnx">
+              <property role="3F0ifm" value="ListScope.forNamedElements()" />
+              <node concept="3$7fVu" id="6hcx9Fg8AbY" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="3$7jql" id="6hcx9Fg8AbZ" role="3F10Kt">
+                <property role="3$6WeP" value="0.5" />
+              </node>
+              <node concept="Vb9p2" id="6hcx9Fg8Aeg" role="3F10Kt">
+                <property role="Vbekb" value="g1_kEg4/ITALIC" />
+              </node>
+            </node>
+            <node concept="Vb9p2" id="6hcx9Fg8Ae1" role="3F10Kt" />
+          </node>
+          <node concept="3F0ifn" id="6hcx9Fg9jwj" role="3EZMnx">
+            <property role="3F0ifm" value="in order to create a Scope object around your collection of nodes." />
+            <node concept="Vb9p2" id="6hcx9Fg9jxS" role="3F10Kt" />
+          </node>
+        </node>
       </node>
       <node concept="3F0ifn" id="4OU1gA0w2Dj" role="3EZMnx">
         <node concept="VPM3Z" id="4OU1gA0w2Dk" role="3F10Kt">
