@@ -28,6 +28,7 @@
   <dependency className="jetbrains.mps.project.io.DescriptorIOProvider">
     <classNode dependClassName="jetbrains.mps.project.io.DescriptorIO" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.DevkitDescriptor" />
+    <classNode dependClassName="jetbrains.mps.project.structure.modules.GeneratorDescriptor" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.LanguageDescriptor" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.SolutionDescriptor" />
   </dependency>
@@ -39,6 +40,7 @@
     <classNode dependClassName="jetbrains.mps.project.io.DescriptorIO" />
     <classNode dependClassName="jetbrains.mps.project.io.DescriptorIOException" />
     <classNode dependClassName="jetbrains.mps.project.persistence.DevkitDescriptorPersistence" />
+    <classNode dependClassName="jetbrains.mps.project.persistence.GeneratorDescriptorPersistence" />
     <classNode dependClassName="jetbrains.mps.project.persistence.LanguageDescriptorPersistence" />
     <classNode dependClassName="jetbrains.mps.project.persistence.ModuleDescriptorPersistence" />
     <classNode dependClassName="jetbrains.mps.project.persistence.ModuleReadException" />

@@ -31,6 +31,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.kernel.model.SModelUtil;
 import java.util.ArrayList;
+import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.ide.dialogs.project.creation.NewGeneratorDialog;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.SModuleOperations;
@@ -129,7 +130,11 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     });
 
     if (ListSequence.fromList(genList.value).isEmpty()) {
-      NewGeneratorDialog dialog = new NewGeneratorDialog(mpsProject, language.value);
+      String virtualFolder = null;
+      if (mpsProject instanceof StandaloneMPSProject) {
+        virtualFolder = ((StandaloneMPSProject) mpsProject).getFolderFor(language.value);
+      }
+      NewGeneratorDialog dialog = new NewGeneratorDialog(mpsProject, language.value, virtualFolder);
       dialog.show();
       Generator createdGenerator = dialog.getResult();
       if (createdGenerator == null) {

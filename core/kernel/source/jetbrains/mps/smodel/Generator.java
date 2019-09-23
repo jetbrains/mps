@@ -19,6 +19,8 @@ import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
 import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.project.io.DescriptorIO;
+import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -221,7 +223,19 @@ public class Generator extends ReloadableModuleBase {
   @Override
   public void save() {
     super.save();
-    mySourceLanguage.save();
+    if (getModuleDescriptor().isStandaloneModule() && getDescriptorFile() != null) {
+      if (getModuleDescriptor().getLoadException() != null){
+        return;
+      }
+      try {
+        DescriptorIO<GeneratorDescriptor> io = DescriptorIOFacade.getInstance().standardProvider().generatorDescriptorIO();
+        io.writeToFile(getModuleDescriptor(), getDescriptorFile());
+      } catch (Exception ex) {
+        Logger.getLogger(getClass()).error("Save failed", ex);
+      }
+    } else {
+      mySourceLanguage.save();
+    }
   }
 
   @Override

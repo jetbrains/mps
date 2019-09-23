@@ -10,11 +10,13 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.RuntimeFlags;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.ide.dialogs.project.creation.NewGeneratorDialog;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
@@ -32,7 +34,7 @@ public class NewGenerator_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((SModule) MapSequence.fromMap(_params).get("module")) != null && ((SModule) MapSequence.fromMap(_params).get("module")) instanceof Language && (RuntimeFlags.manyGeneratorsPerLanguage() || ((Language) ((SModule) MapSequence.fromMap(_params).get("module"))).getGenerators().isEmpty());
+    return ((SModule) MapSequence.fromMap(_params).get("module")) instanceof Language;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -57,18 +59,21 @@ public class NewGenerator_Action extends BaseAction {
         return false;
       }
     }
+    {
+      String p = event.getData(MPSDataKeys.NAMESPACE);
+      MapSequence.fromMap(_params).put("namespace", p);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NewGeneratorDialog[] dialog = new NewGeneratorDialog[1];
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        dialog[0] = new NewGeneratorDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ((Language) ((SModule) MapSequence.fromMap(_params).get("module"))));
+    NewGeneratorDialog dialog = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(new Computable<NewGeneratorDialog>() {
+      public NewGeneratorDialog compute() {
+        return new NewGeneratorDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), (Language) ((SModule) MapSequence.fromMap(_params).get("module")), ((String) MapSequence.fromMap(_params).get("namespace")));
       }
     });
-    dialog[0].show();
-    Generator result = dialog[0].getResult();
+    dialog.show();
+    Generator result = dialog.getResult();
     if (result != null) {
       ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).selectModule(result, false);
     }

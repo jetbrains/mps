@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,11 @@ public class GeneratorTreeNode extends ProjectModuleTreeNode implements Stereoty
   }
 
   public String calculateText() {
-    return "generator/" + getModule().getAlias();
+    final String qualifiedAlias = getModule().getAlias();
+    if (getModule().getModuleDescriptor().isStandaloneModule()) {
+      return qualifiedAlias;
+    }
+    return "generator/" + qualifiedAlias;
   }
 
   @Override

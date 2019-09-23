@@ -5,9 +5,14 @@ package jetbrains.mps.project.io;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 
+/**
+ * XXX does this class worth existence?
+ */
 public interface DescriptorIOProvider {
   DescriptorIO<SolutionDescriptor> solutionDescriptorIO();
   DescriptorIO<LanguageDescriptor> languageDescriptorIO();
   DescriptorIO<DevkitDescriptor> devkitDescriptorIO();
+  DescriptorIO<GeneratorDescriptor> generatorDescriptorIO();
 }

@@ -29,6 +29,8 @@ public class DescriptorIOFacade implements CoreComponent {
       return standardProvider.solutionDescriptorIO();
     } else if (path.endsWith(MPSExtentions.DOT_DEVKIT)) {
       return standardProvider.devkitDescriptorIO();
+    } else if (path.endsWith(MPSExtentions.DOT_GENERATOR)) {
+      return standardProvider.generatorDescriptorIO();
     }
     return null;
   }

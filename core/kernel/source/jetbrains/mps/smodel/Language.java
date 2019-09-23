@@ -265,12 +265,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     }
   }
 
-  // fixme: remove, use #setModuleDescriptor instead
-  @Deprecated
-  public void setLanguageDescriptor(@NotNull final LanguageDescriptor moduleDescriptor) {
-    setModuleDescriptor(moduleDescriptor);
-  }
-
   public int getLanguageVersion() {
     return getModuleDescriptor().getLanguageVersion();
   }

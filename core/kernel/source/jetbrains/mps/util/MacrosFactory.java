@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,8 +62,9 @@ public final class MacrosFactory implements MacroHelper.Source {
     return forProjectFile(f);
   }
 
+  @Nullable
   public static MacroHelper forModuleFile(IFile moduleFile) {
-    String[] extensions = new String[]{MPSExtentions.DOT_SOLUTION, MPSExtentions.DOT_LANGUAGE, MPSExtentions.DOT_IDEMODULE, MPSExtentions.PACKAGED_MODULE};
+    String[] extensions = new String[]{MPSExtentions.DOT_SOLUTION, MPSExtentions.DOT_LANGUAGE, MPSExtentions.DOT_IDEMODULE, MPSExtentions.PACKAGED_MODULE, MPSExtentions.DOT_GENERATOR};
     String name = moduleFile.getPath().toLowerCase();
     for (String ext : extensions) {
       if (name.endsWith(ext)) {
@@ -77,7 +78,8 @@ public final class MacrosFactory implements MacroHelper.Source {
   public static MacroHelper forModule(SModule module) {
     // XXX would be great to adapt/cast SModule to MacroHelper (or anything that could be source of macro values, so that we don't need to expose 'descriptorFile')
     if (module instanceof AbstractModule && ((AbstractModule) module).getDescriptorFile() != null) {
-      return forModuleFile(((AbstractModule) module).getDescriptorFile());
+      // no need to go through checks of  #forModuleFile(IFile) when we know for sure it is, indeed.
+      return new MacroHelperImpl(((AbstractModule) module).getDescriptorFile(), new ModuleMacros(PathMacros.getInstance()));
     }
     return getGlobal();
   }

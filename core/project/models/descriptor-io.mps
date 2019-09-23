@@ -31,6 +31,9 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
+      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -126,6 +129,7 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT" />
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
       <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
@@ -215,6 +219,7 @@
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -403,6 +408,32 @@
                 <node concept="10M0yZ" id="4vqd2Vc83Zt" role="37wK5m">
                   <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
                   <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_DEVKIT" resolve="DOT_DEVKIT" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3eNFk2" id="7JoHvF0sr2i" role="3eNLev">
+            <node concept="2OqwBi" id="7JoHvF0srKt" role="3eO9$A">
+              <node concept="37vLTw" id="7JoHvF0srwT" role="2Oq$k0">
+                <ref role="3cqZAo" node="4vqd2Vc83YQ" resolve="path" />
+              </node>
+              <node concept="liA8E" id="7JoHvF0srOy" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.endsWith(java.lang.String)" resolve="endsWith" />
+                <node concept="10M0yZ" id="7JoHvF0srVN" role="37wK5m">
+                  <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_GENERATOR" resolve="DOT_GENERATOR" />
+                  <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="7JoHvF0sr2k" role="3eOfB_">
+              <node concept="3cpWs6" id="7JoHvF0ss0c" role="3cqZAp">
+                <node concept="2OqwBi" id="7JoHvF0ssJe" role="3cqZAk">
+                  <node concept="37vLTw" id="7JoHvF0ssuk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5CqXQtXn4Y6" resolve="standardProvider" />
+                  </node>
+                  <node concept="liA8E" id="7JoHvF0t8G3" role="2OqNvi">
+                    <ref role="37wK5l" node="7JoHvF0sCuh" resolve="generatorDescriptorIO" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -856,6 +887,25 @@
       <node concept="3Tm1VV" id="uVnzTvU$hH" role="1B3o_S" />
       <node concept="3clFbS" id="uVnzTvU$hI" role="3clF47" />
     </node>
+    <node concept="3clFb_" id="7JoHvF0sCuh" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="generatorDescriptorIO" />
+      <node concept="3uibUv" id="7JoHvF0sCui" role="3clF45">
+        <ref role="3uigEE" node="uVnzTvTxr4" resolve="DescriptorIO" />
+        <node concept="3uibUv" id="7JoHvF0sCvI" role="11_B2D">
+          <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7JoHvF0sCuk" role="1B3o_S" />
+      <node concept="3clFbS" id="7JoHvF0sCul" role="3clF47" />
+    </node>
+    <node concept="3UR2Jj" id="7JoHvF0sCyb" role="lGtFl">
+      <node concept="TZ5HA" id="7JoHvF0sCyc" role="TZ5H$">
+        <node concept="1dT_AC" id="7JoHvF0sCyd" role="1dT_Ay">
+          <property role="1dT_AB" value="XXX does this class worth existence?" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="uVnzTvUvid">
     <property role="TrG5h" value="StandardDescriptorIOProvider" />
@@ -1005,6 +1055,29 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3tYsUK_sSSe" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7JoHvF0stpe" role="jymVt" />
+    <node concept="3clFb_" id="7JoHvF0suZ3" role="jymVt">
+      <property role="TrG5h" value="generatorDescriptorIO" />
+      <node concept="3uibUv" id="7JoHvF0swtg" role="3clF45">
+        <ref role="3uigEE" node="uVnzTvTxr4" resolve="DescriptorIO" />
+        <node concept="3uibUv" id="7JoHvF0sxiD" role="11_B2D">
+          <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7JoHvF0suZ6" role="3clF47">
+        <node concept="3clFbF" id="7JoHvF0sF2H" role="3cqZAp">
+          <node concept="2ShNRf" id="7JoHvF0sF2F" role="3clFbG">
+            <node concept="HV5vD" id="7JoHvF0sL_D" role="2ShVmc">
+              <ref role="HV5vE" node="7JoHvF0sIXQ" resolve="StandardDescriptorIOProvider.GeneratorDescriptorIO" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7JoHvF0svRX" role="1B3o_S" />
+      <node concept="2AHcQZ" id="7JoHvF0sEk1" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
@@ -2410,6 +2483,525 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="3tYsUK_sRRz" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7JoHvF0sHm_" role="jymVt" />
+    <node concept="312cEu" id="7JoHvF0sIXQ" role="jymVt">
+      <property role="2bfB8j" value="true" />
+      <property role="TrG5h" value="GeneratorDescriptorIO" />
+      <node concept="2tJIrI" id="7JoHvF0sLOR" role="jymVt" />
+      <node concept="3uibUv" id="7JoHvF0sKSn" role="EKbjA">
+        <ref role="3uigEE" node="uVnzTvTxr4" resolve="DescriptorIO" />
+        <node concept="3uibUv" id="7JoHvF0sLq7" role="11_B2D">
+          <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+        </node>
+      </node>
+      <node concept="3clFb_" id="7JoHvF0sMcI" role="jymVt">
+        <property role="TrG5h" value="readFromFile" />
+        <node concept="37vLTG" id="7JoHvF0sMcJ" role="3clF46">
+          <property role="TrG5h" value="file" />
+          <node concept="3uibUv" id="7JoHvF0sMcK" role="1tU5fm">
+            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="7JoHvF0sMcL" role="1B3o_S" />
+        <node concept="3uibUv" id="7JoHvF0sMcP" role="3clF45">
+          <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+        </node>
+        <node concept="3uibUv" id="7JoHvF0sMcO" role="Sfmx6">
+          <ref role="3uigEE" node="7S9zv5RY34K" resolve="DescriptorIOException" />
+        </node>
+        <node concept="3clFbS" id="7JoHvF0sMcQ" role="3clF47">
+          <node concept="3cpWs8" id="7JoHvF0sNzj" role="3cqZAp">
+            <node concept="3cpWsn" id="7JoHvF0sNzk" role="3cpWs9">
+              <property role="TrG5h" value="descriptor" />
+              <node concept="3uibUv" id="7JoHvF0sP2F" role="1tU5fm">
+                <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+              </node>
+            </node>
+          </node>
+          <node concept="SfApY" id="7JoHvF0sNzn" role="3cqZAp">
+            <node concept="3clFbS" id="7JoHvF0sNzo" role="SfCbr">
+              <node concept="3cpWs8" id="7JoHvF0sNzp" role="3cqZAp">
+                <node concept="3cpWsn" id="7JoHvF0sNzq" role="3cpWs9">
+                  <property role="TrG5h" value="macroHelper" />
+                  <node concept="3uibUv" id="7JoHvF0sNzr" role="1tU5fm">
+                    <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
+                  </node>
+                  <node concept="1rXfSq" id="7JoHvF0sNzs" role="33vP2m">
+                    <ref role="37wK5l" node="4B6g3jZDZLk" resolve="forModuleFile" />
+                    <node concept="37vLTw" id="7JoHvF0sNzt" role="37wK5m">
+                      <ref role="3cqZAo" node="7JoHvF0sMcJ" resolve="file" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs8" id="7JoHvF0sNzu" role="3cqZAp">
+                <node concept="3cpWsn" id="7JoHvF0sNzv" role="3cpWs9">
+                  <property role="TrG5h" value="document" />
+                  <node concept="3uibUv" id="7JoHvF0sNzw" role="1tU5fm">
+                    <ref role="3uigEE" to="mmaq:~Document" resolve="Document" />
+                  </node>
+                  <node concept="2YIFZM" id="7JoHvF0sNzx" role="33vP2m">
+                    <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
+                    <ref role="37wK5l" to="18ew:~JDOMUtil.loadDocument(jetbrains.mps.vfs.IFile)" resolve="loadDocument" />
+                    <node concept="37vLTw" id="7JoHvF0sNzy" role="37wK5m">
+                      <ref role="3cqZAo" node="7JoHvF0sMcJ" resolve="file" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs8" id="7JoHvF0sNzz" role="3cqZAp">
+                <node concept="3cpWsn" id="7JoHvF0sNz$" role="3cpWs9">
+                  <property role="TrG5h" value="languageElement" />
+                  <node concept="3uibUv" id="7JoHvF0sNz_" role="1tU5fm">
+                    <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
+                  </node>
+                  <node concept="2OqwBi" id="7JoHvF0sNzA" role="33vP2m">
+                    <node concept="37vLTw" id="7JoHvF0sNzB" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7JoHvF0sNzv" resolve="document" />
+                    </node>
+                    <node concept="liA8E" id="7JoHvF0sNzC" role="2OqNvi">
+                      <ref role="37wK5l" to="mmaq:~Document.getRootElement()" resolve="getRootElement" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="7JoHvF0sNzD" role="3cqZAp">
+                <node concept="37vLTI" id="7JoHvF0sNzE" role="3clFbG">
+                  <node concept="2OqwBi" id="7JoHvF0sNzF" role="37vLTx">
+                    <node concept="2ShNRf" id="7JoHvF0sNzG" role="2Oq$k0">
+                      <node concept="1pGfFk" id="7JoHvF0sNzH" role="2ShVmc">
+                        <ref role="37wK5l" to="gn4j:4F07P_yBOa2" resolve="GeneratorDescriptorPersistence" />
+                        <node concept="37vLTw" id="7JoHvF0sNzI" role="37wK5m">
+                          <ref role="3cqZAo" node="7JoHvF0sNzq" resolve="macroHelper" />
+                        </node>
+                        <node concept="3clFbT" id="7JoHvF0sYhM" role="37wK5m" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="7JoHvF0sNzJ" role="2OqNvi">
+                      <ref role="37wK5l" to="gn4j:33oJVYhhiyQ" resolve="load" />
+                      <node concept="37vLTw" id="7JoHvF0sNzK" role="37wK5m">
+                        <ref role="3cqZAo" node="7JoHvF0sNz$" resolve="languageElement" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="7JoHvF0sNzL" role="37vLTJ">
+                    <ref role="3cqZAo" node="7JoHvF0sNzk" resolve="descriptor" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="TDmWw" id="7JoHvF0sNzM" role="TEbGg">
+              <node concept="3cpWsn" id="7JoHvF0sNzN" role="TDEfY">
+                <property role="TrG5h" value="ex" />
+                <node concept="3uibUv" id="7JoHvF0sNzO" role="1tU5fm">
+                  <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7JoHvF0sNzP" role="TDEfX">
+                <node concept="3clFbF" id="7JoHvF0sNzQ" role="3cqZAp">
+                  <node concept="37vLTI" id="7JoHvF0sNzR" role="3clFbG">
+                    <node concept="2ShNRf" id="7JoHvF0sNzS" role="37vLTx">
+                      <node concept="1pGfFk" id="7JoHvF0sUdF" role="2ShVmc">
+                        <ref role="37wK5l" to="w0gx:~GeneratorDescriptor.&lt;init&gt;()" resolve="GeneratorDescriptor" />
+                      </node>
+                    </node>
+                    <node concept="37vLTw" id="7JoHvF0sNzU" role="37vLTJ">
+                      <ref role="3cqZAo" node="7JoHvF0sNzk" resolve="descriptor" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs8" id="7JoHvF0sNzV" role="3cqZAp">
+                  <node concept="3cpWsn" id="7JoHvF0sNzW" role="3cpWs9">
+                    <property role="TrG5h" value="mre" />
+                    <node concept="3uibUv" id="7JoHvF0sNzX" role="1tU5fm">
+                      <ref role="3uigEE" to="gn4j:2moQNDghiLg" resolve="ModuleReadException" />
+                    </node>
+                    <node concept="3K4zz7" id="7JoHvF0sNzY" role="33vP2m">
+                      <node concept="1eOMI4" id="7JoHvF0sNzZ" role="3K4E3e">
+                        <node concept="10QFUN" id="7JoHvF0sN$0" role="1eOMHV">
+                          <node concept="3uibUv" id="7JoHvF0sN$1" role="10QFUM">
+                            <ref role="3uigEE" to="gn4j:2moQNDghiLg" resolve="ModuleReadException" />
+                          </node>
+                          <node concept="37vLTw" id="7JoHvF0sN$2" role="10QFUP">
+                            <ref role="3cqZAo" node="7JoHvF0sNzN" resolve="ex" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2ShNRf" id="7JoHvF0sN$3" role="3K4GZi">
+                        <node concept="1pGfFk" id="7JoHvF0sN$4" role="2ShVmc">
+                          <ref role="37wK5l" to="gn4j:2moQNDghiSI" resolve="ModuleReadException" />
+                          <node concept="37vLTw" id="7JoHvF0sN$5" role="37wK5m">
+                            <ref role="3cqZAo" node="7JoHvF0sNzN" resolve="ex" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2ZW3vV" id="7JoHvF0sN$6" role="3K4Cdx">
+                        <node concept="3uibUv" id="7JoHvF0sN$7" role="2ZW6by">
+                          <ref role="3uigEE" to="gn4j:2moQNDghiLg" resolve="ModuleReadException" />
+                        </node>
+                        <node concept="37vLTw" id="7JoHvF0sN$8" role="2ZW6bz">
+                          <ref role="3cqZAo" node="7JoHvF0sNzN" resolve="ex" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="7JoHvF0sN$9" role="3cqZAp">
+                  <node concept="2YIFZM" id="7JoHvF0sN$a" role="3clFbG">
+                    <ref role="1Pybhc" to="gn4j:IMUMWuHQMY" resolve="ModuleDescriptorPersistence" />
+                    <ref role="37wK5l" to="gn4j:78tlMyQ1R1q" resolve="loadBrokenModule" />
+                    <node concept="37vLTw" id="7JoHvF0sN$b" role="37wK5m">
+                      <ref role="3cqZAo" node="7JoHvF0sNzk" resolve="descriptor" />
+                    </node>
+                    <node concept="37vLTw" id="7JoHvF0sN$c" role="37wK5m">
+                      <ref role="3cqZAo" node="7JoHvF0sMcJ" resolve="file" />
+                    </node>
+                    <node concept="37vLTw" id="7JoHvF0sN$d" role="37wK5m">
+                      <ref role="3cqZAo" node="7JoHvF0sNzW" resolve="mre" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="7JoHvF0sN$e" role="3cqZAp" />
+          <node concept="3clFbF" id="7JoHvF0sN$f" role="3cqZAp">
+            <node concept="2YIFZM" id="7JoHvF0sN$g" role="3clFbG">
+              <ref role="37wK5l" to="gn4j:2moQNDghoaL" resolve="setTimestamp" />
+              <ref role="1Pybhc" to="gn4j:IMUMWuHQMY" resolve="ModuleDescriptorPersistence" />
+              <node concept="37vLTw" id="7JoHvF0sN$h" role="37wK5m">
+                <ref role="3cqZAo" node="7JoHvF0sNzk" resolve="descriptor" />
+              </node>
+              <node concept="37vLTw" id="7JoHvF0sN$i" role="37wK5m">
+                <ref role="3cqZAo" node="7JoHvF0sMcJ" resolve="file" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="7JoHvF0sN$v" role="3cqZAp">
+            <node concept="37vLTw" id="7JoHvF0sN$w" role="3cqZAk">
+              <ref role="3cqZAo" node="7JoHvF0sNzk" resolve="descriptor" />
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7JoHvF0sMcR" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="7JoHvF0t1gu" role="jymVt" />
+      <node concept="3clFb_" id="7JoHvF0sMcS" role="jymVt">
+        <property role="TrG5h" value="writeToFile" />
+        <node concept="3cqZAl" id="7JoHvF0sMcT" role="3clF45" />
+        <node concept="3Tm1VV" id="7JoHvF0sMcU" role="1B3o_S" />
+        <node concept="37vLTG" id="7JoHvF0sMcW" role="3clF46">
+          <property role="TrG5h" value="d" />
+          <node concept="3uibUv" id="7JoHvF0sMd1" role="1tU5fm">
+            <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="7JoHvF0sMcY" role="3clF46">
+          <property role="TrG5h" value="file" />
+          <node concept="3uibUv" id="7JoHvF0sMcZ" role="1tU5fm">
+            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+          </node>
+        </node>
+        <node concept="3uibUv" id="7JoHvF0sMd0" role="Sfmx6">
+          <ref role="3uigEE" node="7S9zv5RY34K" resolve="DescriptorIOException" />
+        </node>
+        <node concept="3clFbS" id="7JoHvF0sMd2" role="3clF47">
+          <node concept="SfApY" id="7JoHvF0t23f" role="3cqZAp">
+            <node concept="3clFbS" id="7JoHvF0t23g" role="SfCbr">
+              <node concept="3cpWs8" id="7JoHvF0t23h" role="3cqZAp">
+                <node concept="3cpWsn" id="7JoHvF0t23i" role="3cpWs9">
+                  <property role="TrG5h" value="macroHelper" />
+                  <node concept="3uibUv" id="7JoHvF0t23j" role="1tU5fm">
+                    <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
+                  </node>
+                  <node concept="1rXfSq" id="7JoHvF0t23k" role="33vP2m">
+                    <ref role="37wK5l" node="4B6g3jZDZLk" resolve="forModuleFile" />
+                    <node concept="37vLTw" id="7JoHvF0t23l" role="37wK5m">
+                      <ref role="3cqZAo" node="7JoHvF0sMcY" resolve="file" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs8" id="7JoHvF0t23m" role="3cqZAp">
+                <node concept="3cpWsn" id="7JoHvF0t23n" role="3cpWs9">
+                  <property role="TrG5h" value="element" />
+                  <node concept="3uibUv" id="7JoHvF0t23o" role="1tU5fm">
+                    <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
+                  </node>
+                  <node concept="2OqwBi" id="7JoHvF0t23p" role="33vP2m">
+                    <node concept="2ShNRf" id="7JoHvF0t23q" role="2Oq$k0">
+                      <node concept="1pGfFk" id="7JoHvF0t23r" role="2ShVmc">
+                        <ref role="37wK5l" to="gn4j:4F07P_yBOa2" resolve="GeneratorDescriptorPersistence" />
+                        <node concept="37vLTw" id="7JoHvF0t23s" role="37wK5m">
+                          <ref role="3cqZAo" node="7JoHvF0t23i" resolve="macroHelper" />
+                        </node>
+                        <node concept="3clFbT" id="7JoHvF0t3le" role="37wK5m" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="7JoHvF0t23t" role="2OqNvi">
+                      <ref role="37wK5l" to="gn4j:33oJVYhhVpG" resolve="save" />
+                      <node concept="37vLTw" id="7JoHvF0t3$t" role="37wK5m">
+                        <ref role="3cqZAo" node="7JoHvF0sMcW" resolve="d" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs8" id="7JoHvF0t23v" role="3cqZAp">
+                <node concept="3cpWsn" id="7JoHvF0t23w" role="3cpWs9">
+                  <property role="TrG5h" value="doc" />
+                  <node concept="3uibUv" id="7JoHvF0t23x" role="1tU5fm">
+                    <ref role="3uigEE" to="mmaq:~Document" resolve="Document" />
+                  </node>
+                  <node concept="2ShNRf" id="7JoHvF0t23y" role="33vP2m">
+                    <node concept="1pGfFk" id="7JoHvF0t23z" role="2ShVmc">
+                      <ref role="37wK5l" to="mmaq:~Document.&lt;init&gt;(org.jdom.Element)" resolve="Document" />
+                      <node concept="37vLTw" id="7JoHvF0t23$" role="37wK5m">
+                        <ref role="3cqZAo" node="7JoHvF0t23n" resolve="element" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="7JoHvF0t23_" role="3cqZAp">
+                <node concept="2YIFZM" id="7JoHvF0t23A" role="3clFbG">
+                  <ref role="37wK5l" to="18ew:~JDOMUtil.writeDocument(org.jdom.Document,jetbrains.mps.vfs.IFile)" resolve="writeDocument" />
+                  <ref role="1Pybhc" to="18ew:~JDOMUtil" resolve="JDOMUtil" />
+                  <node concept="37vLTw" id="7JoHvF0t23B" role="37wK5m">
+                    <ref role="3cqZAo" node="7JoHvF0t23w" resolve="doc" />
+                  </node>
+                  <node concept="37vLTw" id="7JoHvF0t23C" role="37wK5m">
+                    <ref role="3cqZAo" node="7JoHvF0sMcY" resolve="file" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3SKdUt" id="7JoHvF0t23D" role="3cqZAp">
+                <node concept="1PaTwC" id="7JoHvF0t23E" role="3ndbpf">
+                  <node concept="3oM_SD" id="7JoHvF0t23F" role="1PaTwD">
+                    <property role="3oM_SC" value="XXX" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23G" role="1PaTwD">
+                    <property role="3oM_SC" value="is" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23H" role="1PaTwD">
+                    <property role="3oM_SC" value="it" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23I" role="1PaTwD">
+                    <property role="3oM_SC" value="always" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23J" role="1PaTwD">
+                    <property role="3oM_SC" value="a" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23K" role="1PaTwD">
+                    <property role="3oM_SC" value="need" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23L" role="1PaTwD">
+                    <property role="3oM_SC" value="to" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23M" role="1PaTwD">
+                    <property role="3oM_SC" value="refresh" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23N" role="1PaTwD">
+                    <property role="3oM_SC" value="timestamp" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23O" role="1PaTwD">
+                    <property role="3oM_SC" value="in" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23P" role="1PaTwD">
+                    <property role="3oM_SC" value="the" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23Q" role="1PaTwD">
+                    <property role="3oM_SC" value="descriptor?" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23R" role="1PaTwD">
+                    <property role="3oM_SC" value="What" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23S" role="1PaTwD">
+                    <property role="3oM_SC" value="if" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23T" role="1PaTwD">
+                    <property role="3oM_SC" value="serialize" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23U" role="1PaTwD">
+                    <property role="3oM_SC" value="it" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23V" role="1PaTwD">
+                    <property role="3oM_SC" value="into" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23W" role="1PaTwD">
+                    <property role="3oM_SC" value="a" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23X" role="1PaTwD">
+                    <property role="3oM_SC" value="copy" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t23Y" role="1PaTwD">
+                    <property role="3oM_SC" value="file" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3SKdUt" id="7JoHvF0t4p9" role="3cqZAp">
+                <node concept="1PaTwC" id="7JoHvF0t4pa" role="3ndbpf">
+                  <node concept="3oM_SD" id="7JoHvF0t4pc" role="1PaTwD">
+                    <property role="3oM_SC" value="even" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4xb" role="1PaTwD">
+                    <property role="3oM_SC" value="if" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4zN" role="1PaTwD">
+                    <property role="3oM_SC" value="yes," />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4zR" role="1PaTwD">
+                    <property role="3oM_SC" value="why" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4_a" role="1PaTwD">
+                    <property role="3oM_SC" value="it's" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4CU" role="1PaTwD">
+                    <property role="3oM_SC" value="not" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4Ef" role="1PaTwD">
+                    <property role="3oM_SC" value="part" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4F_" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4FI" role="1PaTwD">
+                    <property role="3oM_SC" value="external" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4H6" role="1PaTwD">
+                    <property role="3oM_SC" value="code," />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4Iv" role="1PaTwD">
+                    <property role="3oM_SC" value="shared" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4IF" role="1PaTwD">
+                    <property role="3oM_SC" value="for" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4IS" role="1PaTwD">
+                    <property role="3oM_SC" value="all" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4Kk" role="1PaTwD">
+                    <property role="3oM_SC" value="DescriptorIO" />
+                  </node>
+                  <node concept="3oM_SD" id="7JoHvF0t4Od" role="1PaTwD">
+                    <property role="3oM_SC" value="implementations?" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="7JoHvF0t23Z" role="3cqZAp">
+                <node concept="2YIFZM" id="7JoHvF0t240" role="3clFbG">
+                  <ref role="1Pybhc" to="gn4j:IMUMWuHQMY" resolve="ModuleDescriptorPersistence" />
+                  <ref role="37wK5l" to="gn4j:2moQNDghoaL" resolve="setTimestamp" />
+                  <node concept="37vLTw" id="7JoHvF0t3XP" role="37wK5m">
+                    <ref role="3cqZAo" node="7JoHvF0sMcW" resolve="d" />
+                  </node>
+                  <node concept="37vLTw" id="7JoHvF0t242" role="37wK5m">
+                    <ref role="3cqZAo" node="7JoHvF0sMcY" resolve="file" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="TDmWw" id="7JoHvF0t243" role="TEbGg">
+              <node concept="3cpWsn" id="7JoHvF0t244" role="TDEfY">
+                <property role="TrG5h" value="ex" />
+                <node concept="3uibUv" id="7JoHvF0t245" role="1tU5fm">
+                  <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="7JoHvF0t246" role="TDEfX">
+                <node concept="RRSsy" id="7JoHvF0t247" role="3cqZAp">
+                  <property role="RRSoG" value="gZ5fh_4/error" />
+                  <node concept="Xl_RD" id="7JoHvF0t248" role="RRSoy">
+                    <property role="Xl_RC" value="Failed to serialize language descriptor" />
+                  </node>
+                  <node concept="37vLTw" id="7JoHvF0t249" role="RRSow">
+                    <ref role="3cqZAo" node="7JoHvF0t244" resolve="ex" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7JoHvF0sMd3" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="7JoHvF0t1Fb" role="jymVt" />
+      <node concept="3clFb_" id="7JoHvF0sMd4" role="jymVt">
+        <property role="TrG5h" value="readFromXml" />
+        <node concept="37vLTG" id="7JoHvF0sMd5" role="3clF46">
+          <property role="TrG5h" value="element" />
+          <node concept="3uibUv" id="7JoHvF0sMd6" role="1tU5fm">
+            <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="7JoHvF0sMd7" role="3clF46">
+          <property role="TrG5h" value="anchorFile" />
+          <node concept="3uibUv" id="7JoHvF0sMd8" role="1tU5fm">
+            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="7JoHvF0sMd9" role="1B3o_S" />
+        <node concept="3uibUv" id="7JoHvF0sMdd" role="3clF45">
+          <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+        </node>
+        <node concept="3uibUv" id="7JoHvF0sMdc" role="Sfmx6">
+          <ref role="3uigEE" node="7S9zv5RY34K" resolve="DescriptorIOException" />
+        </node>
+        <node concept="3clFbS" id="7JoHvF0sMde" role="3clF47">
+          <node concept="YS8fn" id="7JoHvF0sN6V" role="3cqZAp">
+            <node concept="2ShNRf" id="7JoHvF0sN6W" role="YScLw">
+              <node concept="1pGfFk" id="7JoHvF0sN6X" role="2ShVmc">
+                <ref role="37wK5l" to="wyt6:~UnsupportedOperationException.&lt;init&gt;()" resolve="UnsupportedOperationException" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7JoHvF0sMdf" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="3clFb_" id="7JoHvF0sMdg" role="jymVt">
+        <property role="TrG5h" value="writeToXml" />
+        <node concept="3cqZAl" id="7JoHvF0sMdh" role="3clF45" />
+        <node concept="3Tm1VV" id="7JoHvF0sMdi" role="1B3o_S" />
+        <node concept="37vLTG" id="7JoHvF0sMdk" role="3clF46">
+          <property role="TrG5h" value="t" />
+          <node concept="3uibUv" id="7JoHvF0sMdr" role="1tU5fm">
+            <ref role="3uigEE" to="w0gx:~GeneratorDescriptor" resolve="GeneratorDescriptor" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="7JoHvF0sMdm" role="3clF46">
+          <property role="TrG5h" value="element" />
+          <node concept="3uibUv" id="7JoHvF0sMdn" role="1tU5fm">
+            <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="7JoHvF0sMdo" role="3clF46">
+          <property role="TrG5h" value="anchorFile" />
+          <node concept="3uibUv" id="7JoHvF0sMdp" role="1tU5fm">
+            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+          </node>
+        </node>
+        <node concept="3uibUv" id="7JoHvF0sMdq" role="Sfmx6">
+          <ref role="3uigEE" node="7S9zv5RY34K" resolve="DescriptorIOException" />
+        </node>
+        <node concept="3clFbS" id="7JoHvF0sMds" role="3clF47">
+          <node concept="YS8fn" id="7JoHvF0sNc9" role="3cqZAp">
+            <node concept="2ShNRf" id="7JoHvF0sNca" role="YScLw">
+              <node concept="1pGfFk" id="7JoHvF0sNcb" role="2ShVmc">
+                <ref role="37wK5l" to="wyt6:~UnsupportedOperationException.&lt;init&gt;()" resolve="UnsupportedOperationException" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7JoHvF0sMdt" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>

@@ -35,6 +35,7 @@ import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.StandaloneMPSProject;
+import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -83,7 +84,7 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
     setRootVisible(false);
     List<MPSTreeNode> moduleNodes = new ArrayList<>();
 
-    for (Class<? extends SModule> cl : new Class[]{Solution.class, Language.class, DevKit.class}) {
+    for (Class<? extends SModule> cl : new Class[]{Solution.class, Language.class, DevKit.class, Generator.class}) {
       for (SModule module : myProject.getProjectModules(cl)) {
         moduleNodes.add(ProjectModuleTreeNode.createFor(myProject, module, false));
       }

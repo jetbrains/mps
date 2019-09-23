@@ -8,6 +8,7 @@ import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.vfs.IFile;
 import org.jdom.Document;
 import jetbrains.mps.util.JDOMUtil;
@@ -17,9 +18,9 @@ import jetbrains.mps.project.persistence.ModuleReadException;
 import jetbrains.mps.project.persistence.ModuleDescriptorPersistence;
 import org.apache.log4j.Level;
 import jetbrains.mps.project.persistence.LanguageDescriptorPersistence;
-import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import java.io.IOException;
 import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
+import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
 
 /*package*/ class StandardDescriptorIOProvider implements DescriptorIOProvider {
   private static final Logger LOG = LogManager.getLogger(StandardDescriptorIOProvider.class);
@@ -47,6 +48,11 @@ import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
   @Override
   public DescriptorIO<DevkitDescriptor> devkitDescriptorIO() {
     return new DevkitDescriptorIO();
+  }
+
+  @Override
+  public DescriptorIO<GeneratorDescriptor> generatorDescriptorIO() {
+    return new GeneratorDescriptorIO();
   }
 
   /*package*/ MacroHelper forModuleFile(IFile file) {
@@ -202,6 +208,53 @@ import jetbrains.mps.project.persistence.DevkitDescriptorPersistence;
     }
     @Override
     public void writeToXml(DevkitDescriptor t, Element element, IFile anchorFile) {
+      throw new UnsupportedOperationException();
+    }
+  }
+
+  /*package*/ class GeneratorDescriptorIO implements DescriptorIO<GeneratorDescriptor> {
+
+    @Override
+    public GeneratorDescriptor readFromFile(IFile file) throws DescriptorIOException {
+      GeneratorDescriptor descriptor;
+      try {
+        MacroHelper macroHelper = forModuleFile(file);
+        Document document = JDOMUtil.loadDocument(file);
+        Element languageElement = document.getRootElement();
+        descriptor = new GeneratorDescriptorPersistence(macroHelper, false).load(languageElement);
+      } catch (Exception ex) {
+        descriptor = new GeneratorDescriptor();
+        ModuleReadException mre = (ex instanceof ModuleReadException ? ((ModuleReadException) ex) : new ModuleReadException(ex));
+        ModuleDescriptorPersistence.loadBrokenModule(descriptor, file, mre);
+      }
+
+      ModuleDescriptorPersistence.setTimestamp(descriptor, file);
+      return descriptor;
+    }
+
+    @Override
+    public void writeToFile(GeneratorDescriptor d, IFile file) throws DescriptorIOException {
+      try {
+        MacroHelper macroHelper = forModuleFile(file);
+        Element element = new GeneratorDescriptorPersistence(macroHelper, false).save(d);
+        Document doc = new Document(element);
+        JDOMUtil.writeDocument(doc, file);
+        // XXX is it always a need to refresh timestamp in the descriptor? What if serialize it into a copy file 
+        // even if yes, why it's not part of external code, shared for all DescriptorIO implementations? 
+        ModuleDescriptorPersistence.setTimestamp(d, file);
+      } catch (IOException ex) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("Failed to serialize language descriptor", ex);
+        }
+      }
+    }
+
+    @Override
+    public GeneratorDescriptor readFromXml(Element element, IFile anchorFile) throws DescriptorIOException {
+      throw new UnsupportedOperationException();
+    }
+    @Override
+    public void writeToXml(GeneratorDescriptor t, Element element, IFile anchorFile) throws DescriptorIOException {
       throw new UnsupportedOperationException();
     }
   }
