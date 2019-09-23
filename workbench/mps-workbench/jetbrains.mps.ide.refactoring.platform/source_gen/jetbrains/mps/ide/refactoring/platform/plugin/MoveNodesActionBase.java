@@ -5,17 +5,18 @@ package jetbrains.mps.ide.refactoring.platform.plugin;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
-import jetbrains.mps.ide.platform.refactoring.MoveNodesDialog;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Collection;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.platform.refactoring.MoveNodesDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -30,6 +31,31 @@ public class MoveNodesActionBase implements MoveNodesAction {
   public boolean isApplicable(MPSProject project, List<SNode> nodesToMove) {
     return MoveNodesUtil.areSiblings(nodesToMove, project.getRepository());
   }
+  public boolean tryToSetRole(SRepository repo, final List<SNode> nodesToMove, NodeLocation.NodeLocationChild selectedObject) {
+    SContainmentLink role;
+    Collection<SContainmentLink> containmentLinks;
+    containmentLinks = selectedObject.getNode().resolve(repo).getConcept().getContainmentLinks();
+    role = SNodeOperations.getContainingLink(ListSequence.fromList(nodesToMove).first());
+    if (role != null && CollectionSequence.fromCollection(containmentLinks).contains(role)) {
+      selectedObject.setRole(role);
+      return true;
+    }
+    Iterable<SContainmentLink> applicableLinks;
+    applicableLinks = CollectionSequence.fromCollection(containmentLinks).where(new IWhereFilter<SContainmentLink>() {
+      public boolean accept(final SContainmentLink link) {
+        return ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
+          public boolean accept(SNode node) {
+            return SNodeOperations.getConcept(node).isSubConceptOf(link.getTargetConcept());
+          }
+        });
+      }
+    });
+    if (Sequence.fromIterable(applicableLinks).count() == 1) {
+      selectedObject.setRole(Sequence.fromIterable(applicableLinks).first());
+      return true;
+    }
+    return false;
+  }
 
   public void execute(final MPSProject project, final List<SNode> nodesToMove) {
 
@@ -43,43 +69,16 @@ public class MoveNodesActionBase implements MoveNodesAction {
       public String getErrorMessage(NodeLocation selectedObject) {
         return "Choose model or node that can contain moving nodes";
       }
-      public boolean tryToSetRole(final NodeLocation.NodeLocationChild selectedObject) {
-        final Wrappers._T<SContainmentLink> role = new Wrappers._T<SContainmentLink>();
-        final Wrappers._T<Collection<SContainmentLink>> containmentLinks = new Wrappers._T<Collection<SContainmentLink>>();
-        project.getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            containmentLinks.value = selectedObject.getNode().resolve(project.getRepository()).getConcept().getContainmentLinks();
-            role.value = ListSequence.fromList(nodesToMove).first().getContainmentLink();
-          }
-        });
-        if (role.value != null && CollectionSequence.fromCollection(containmentLinks.value).contains(role.value)) {
-          selectedObject.setRole(role.value);
-          return true;
-        }
-        final Wrappers._T<Iterable<SContainmentLink>> applicableLinks = new Wrappers._T<Iterable<SContainmentLink>>();
-        project.getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            applicableLinks.value = CollectionSequence.fromCollection(containmentLinks.value).where(new IWhereFilter<SContainmentLink>() {
-              public boolean accept(final SContainmentLink link) {
-                return ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
-                  public boolean accept(SNode node) {
-                    return SNodeOperations.getConcept(node).isSubConceptOf(link.getTargetConcept());
-                  }
-                });
-              }
-            });
-          }
-        });
-        if (Sequence.fromIterable(applicableLinks.value).count() == 1) {
-          selectedObject.setRole(Sequence.fromIterable(applicableLinks.value).first());
-          return true;
-        }
-        return false;
-      }
       @Override
       public boolean check(final NodeLocation selectedObject, SModel model) {
         if (selectedObject instanceof NodeLocation.NodeLocationChild) {
-          return tryToSetRole((NodeLocation.NodeLocationChild) selectedObject);
+          final Wrappers._boolean roleIsDefined = new Wrappers._boolean();
+          project.getRepository().getModelAccess().runReadAction(new Runnable() {
+            public void run() {
+              roleIsDefined.value = tryToSetRole(project.getRepository(), nodesToMove, (NodeLocation.NodeLocationChild) selectedObject);
+            }
+          });
+          return roleIsDefined.value;
         } else if (selectedObject instanceof NodeLocation.NodeLocationRoot) {
           return new ModelAccessHelper(project.getRepository()).runReadAction(new Computable<Boolean>() {
             public Boolean compute() {

@@ -97,8 +97,8 @@
     <classNode dependClassName="jetbrains.mps.openapi.navigation.NavigationSupport" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelStereotype" />
-    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.builder.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
@@ -135,6 +135,7 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.ConvertAnonymousClass" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveClasses" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticMethod" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameImplementingMethodsParticipant" />
@@ -672,6 +673,24 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.DuplicatesProcessor" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveClasses">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.ide.platform.refactoring.NodeLocation" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.structure.Extension" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
+    <classNode extendsClassName="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesAction" />
+    <classNode extendsClassName="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -1004,14 +1023,13 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.MoveNodeRefactoringParticipant" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringParticipant" />
-    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.builder.SNodeBuilder" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.lang.core.pluginSolution.plugin.UpdateReferencesParticipantBase" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.StaticMethodRefactoringParticipant">

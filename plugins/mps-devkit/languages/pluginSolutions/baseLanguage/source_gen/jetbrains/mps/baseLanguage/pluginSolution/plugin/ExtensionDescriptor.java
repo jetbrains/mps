@@ -7,7 +7,7 @@ import jetbrains.mps.smodel.structure.Extension;
 import java.util.Arrays;
 
 public class ExtensionDescriptor extends DefaultExtensionDescriptor {
-  private Extension[] extensions = new Extension[]{new StaticFieldRefactoringParticipant.StaticFieldRefactoringParticipant_extension(), new StaticMethodRefactoringParticipant.StaticMethodRefactoringParticipant_extension(), new ConvertAnonymousClass.ConvertAnonymousClass_extension(), new MoveStaticMethod.MoveStaticMethod_extension(), new MoveStaticField.MoveStaticField_extension(), new RenameImplementingMethodsParticipant.RenameReferencesParticipant_extension()};
+  private Extension[] extensions = new Extension[]{new StaticFieldRefactoringParticipant.StaticFieldRefactoringParticipant_extension(), new StaticMethodRefactoringParticipant.StaticMethodRefactoringParticipant_extension(), new ConvertAnonymousClass.ConvertAnonymousClass_extension(), new MoveStaticMethod.MoveStaticMethod_extension(), new MoveStaticField.MoveStaticField_extension(), new MoveClasses.ConvertAnonymousClass_extension(), new RenameImplementingMethodsParticipant.RenameReferencesParticipant_extension()};
   public ExtensionDescriptor() {
   }
   @Override
