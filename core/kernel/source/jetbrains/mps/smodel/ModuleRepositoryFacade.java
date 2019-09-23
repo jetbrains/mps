@@ -352,17 +352,6 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
     return myModuleFactory.instantiate(moduleDescriptor, descriptorFile);
   }
 
-  /**
-   * @deprecated use instance counterpart {@link #instantiateModule(ModuleHandle, MPSModuleOwner)} instead.
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  public static SModule createModule(ModuleHandle handle, MPSModuleOwner owner) {
-    // 2 uses in mbeddr.
-    // need to introduce alternative with ModuleDescriptor only, not ModuleHandler/IFile
-    return INSTANCE.instantiateModule(handle, owner);
-  }
-
   @NotNull
   private Generator newGeneratorInstance(@NotNull GeneratorDescriptor descriptor, IFile descriptorFile) {
     SModule module = myRepo.getModule(descriptor.getSourceLanguage().getModuleId());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import com.intellij.openapi.util.Condition;
 import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.FilteringProcessor;
 import jetbrains.mps.extapi.module.SRepositoryExt;
-import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
@@ -33,18 +32,18 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.BootstrapLanguages;
+import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -100,6 +99,8 @@ public class TestMakeOnRealProject implements EnvironmentAware {
 
   @Before
   public void beforeTest() throws IOException {
+    // FIXME technically, don't need to be MPSModuleRepository, could be any repo that is capable to register modules. We don't check
+    //       class loading here, just presence of .class files, see #checkModuleCompiled()
     ourRepository = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
     ourModelAccess = ourRepository.getModelAccess();
     createTmpModules();
@@ -286,8 +287,8 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     solutionDescriptor.getDependencies().add(new Dependency(BootstrapLanguages.jdkRef(), true));
 
     runtimeSolutionDescriptorFile.createNewFile();
-    ModuleHandle handle = new ModuleHandle(runtimeSolutionDescriptorFile, solutionDescriptor);
-    Solution solution = (Solution) new ModuleRepositoryFacade(ourRepository).instantiateModule(handle, myModuleOwner);
+    Solution solution = (Solution) new GeneralModuleFactory().instantiate(solutionDescriptor, runtimeSolutionDescriptorFile);
+    ourRepository.registerModule(solution, myModuleOwner);
     solution.save();
     return solution;
   }
@@ -305,8 +306,9 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     IFile languageModels = descriptorFile.getParent().findChild(Language.LANGUAGE_MODELS);
     d.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(languageModels.getParent(), languageModels));
 
-    ModuleHandle handle = new ModuleHandle(descriptorFile, d);
-    Language language = (Language) new ModuleRepositoryFacade(ourRepository).instantiateModule(handle, myModuleOwner);
+    // XXX it's fine to use GeneralModuleFactory, not ModuleRepositoryFacade, as there are no generators to care about
+    Language language = (Language) new GeneralModuleFactory().instantiate(d, descriptorFile);
+    ourRepository.registerModule(language, myModuleOwner);
     language.save();
     return language;
   }
@@ -324,11 +326,11 @@ public class TestMakeOnRealProject implements EnvironmentAware {
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(descriptorFile.getParent()));
     
-    ModuleHandle handle = new ModuleHandle(descriptorFile, solutionDescriptor);
-    final Solution rv = (Solution) new ModuleRepositoryFacade(ourRepository).instantiateModule(handle, myModuleOwner);
+    final Solution rv = (Solution) new GeneralModuleFactory().instantiate(solutionDescriptor, descriptorFile);
+    ourRepository.registerModule(rv, myModuleOwner);
     rv.save();
     final SModel m1 = rv.getModelRoots().iterator().next().createModel("m1");
-    ((SModelInternal) m1).addLanguage(MetaAdapterFactory.getLanguage(myCreatedLanguage.getModuleReference()));
+    new ModelImports(m1).addUsedLanguage(MetaAdapterFactory.getLanguage(myCreatedLanguage.getModuleReference()));
     ((EditableSModel) m1).save();
     return rv;
   }

@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
@@ -128,8 +127,11 @@ public class NewModuleUtil {
     languageDescriptor.getGenerators().add(generatorDescriptor);
 
     ModuleRepositoryFacade projectRepoFacade = new ModuleRepositoryFacade(project);
-    Language language = (Language) projectRepoFacade.instantiateModule(new ModulesMiner.ModuleHandle(descriptorFile, languageDescriptor), project);
-    Generator generator = (Generator) projectRepoFacade.instantiateModule(new ModulesMiner.ModuleHandle(descriptorFile, generatorDescriptor), project);
+    Language language = (Language) projectRepoFacade.instantiate(languageDescriptor, descriptorFile);
+    project.addModule(language);
+    Generator generator = (Generator) projectRepoFacade.instantiate(generatorDescriptor, descriptorFile);
+    // though generator lives under the language, Project respects both nested and standalone generators now,  we have to do project.addModule(generator) to ensure it is properly registered with a repo 
+    project.addModule(generator);
 
     try {
       createMainLanguageAspects(language);
@@ -140,8 +142,6 @@ public class NewModuleUtil {
 
     createTemplateModelIfNoneYet(generator);
 
-    project.addModule(language);
-    // as long as generator lives under the language, and Project doesn't support standalone generators, no need for project.addModule(generator) 
     new VersionFixer(project, language, false).updateImportVersions();
     new VersionFixer(project, generator, false).updateImportVersions();
     language.save();
