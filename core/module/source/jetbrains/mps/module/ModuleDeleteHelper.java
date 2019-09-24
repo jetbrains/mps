@@ -106,6 +106,12 @@ public final class ModuleDeleteHelper {
       modules.forEach(this::collectModuleFilesToDelete);
     }
 
+    // get a copy of project modules in advance, justin case any of unascribedGenerators is top-level standalone generator
+    // facade.unregister() for such a module makes project state invalid, subsequent getProjectModules() fails to resolve the module and reports an error
+    // FIXME this whole piece of code needs thorough rewrite with respect to changed logic in Project's addModule/removeModule methods, namely who is
+    //       responsible to register/unregister modules now.
+    final List<SModule> projectModulesNoNestedGenerators = myProject.getProjectModules();
+
     ModuleRepositoryFacade facade = new ModuleRepositoryFacade(myProject.getRepository());
 
     /*
@@ -127,7 +133,6 @@ public final class ModuleDeleteHelper {
       facade.unregisterModule(g);
     }
 
-    final List<SModule> projectModulesNoNestedGenerators = myProject.getProjectModules();
     // owned generators are not "project modules", just report them to SRepository
     ownedGenerators.forEach(facade::unregisterModule);
     // while those in 'modules' might be part of the project and needs special treatment to get unregistered
