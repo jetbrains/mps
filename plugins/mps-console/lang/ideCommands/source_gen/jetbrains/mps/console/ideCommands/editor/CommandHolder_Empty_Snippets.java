@@ -26,8 +26,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -177,205 +176,165 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
   }
   private static SNode createBLExpression_vryvy0_a0a0a0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.BLExpression$iZ, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$HQe6).init(CONCEPTS.DotExpression$6a);
       {
-        SNode n3 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
+        SNodeBuilder n3 = n2.forChild(LINKS.operand$Lcrr).init(CONCEPTS.DotExpression$6a);
         {
-          SNode n4 = new SNodeBuilder(CONCEPTS.InstancesExpression$OR, null, null).node();
+          SNodeBuilder n4 = n3.forChild(LINKS.operand$Lcrr).init(CONCEPTS.InstancesExpression$OR);
           {
-            SNode n5 = new SNodeBuilder(CONCEPTS.RefConcept_Reference$GN, null, null).node();
-            n5.setReference(LINKS.conceptDeclaration$GmCT, SReference.create(LINKS.conceptDeclaration$GmCT, n5, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
-            n4.addChild(LINKS.conceptArg$NvOw, n5);
-            SNode n6 = new SNodeBuilder(CONCEPTS.QueryParameterList$wL, null, null).node();
-            {
-              SNode n7 = new SNodeBuilder(CONCEPTS.QueryParameterScope$rU, null, null).node();
-              {
-                SNode n8 = new SNodeBuilder(CONCEPTS.ProjectEditableScope$Jb, null, null).node();
-                n7.addChild(LINKS.value$M3Hb, n8);
-              }
-              n6.addChild(LINKS.parameter$o_k7, n7);
-            }
-            n4.addChild(LINKS.parameter$ew30, n6);
+            SNodeBuilder n5 = n4.forChild(LINKS.conceptArg$NvOw).init(CONCEPTS.RefConcept_Reference$GN);
+            n5.setReference(LINKS.conceptDeclaration$GmCT, new SNodePointer(facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
           }
-          n3.addChild(LINKS.operand$Lcrr, n4);
-          SNode n9 = new SNodeBuilder(CONCEPTS.WhereOperation$I$, null, null).node();
           {
-            SNode n10 = new SNodeBuilder(CONCEPTS.ClosureLiteral$zJ, null, null).node();
+            SNodeBuilder n6 = n4.forChild(LINKS.parameter$ew30).init(CONCEPTS.QueryParameterList$wL);
             {
-              n10.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
-              SNode n11 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
+              SNodeBuilder n7 = n6.forChild(LINKS.parameter$o_k7).init(CONCEPTS.QueryParameterScope$rU);
+              n7.forChild(LINKS.value$M3Hb).init(CONCEPTS.ProjectEditableScope$Jb);
+            }
+          }
+        }
+        {
+          SNodeBuilder n8 = n3.forChild(LINKS.operation$X4R8).init(CONCEPTS.WhereOperation$I$);
+          {
+            SNodeBuilder n9 = n8.forChild(LINKS.closure$aJtr).init(CONCEPTS.ClosureLiteral$zJ);
+            n9.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
+            {
+              SNodeBuilder n10 = n9.forChild(LINKS.body$DJEC).init(CONCEPTS.StatementList$TN);
               {
-                SNode n12 = new SNodeBuilder(CONCEPTS.SingleLineComment$jI, null, null).node();
+                SNodeBuilder n11 = n10.forChild(LINKS.statement$WHn8).init(CONCEPTS.SingleLineComment$jI);
                 {
-                  SNode n13 = new SNodeBuilder(CONCEPTS.Line$w3, null, null).node();
+                  SNodeBuilder n12 = n11.forChild(LINKS.text$BOhB).init(CONCEPTS.Line$w3);
                   {
-                    SNode n14 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                    n14.setProperty(PROPS.value$cK70, "TODO");
-                    n13.addChild(LINKS.elements$eRew, n14);
-                    SNode n15 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                    n15.setProperty(PROPS.value$cK70, "specify");
-                    n13.addChild(LINKS.elements$eRew, n15);
-                    SNode n16 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                    n16.setProperty(PROPS.value$cK70, "condition");
-                    n13.addChild(LINKS.elements$eRew, n16);
+                    SNodeBuilder n13 = n12.forChild(LINKS.elements$eRew).init(CONCEPTS.Word$AM);
+                    n13.setProperty(PROPS.value$cK70, "TODO");
+                    SNodeBuilder n14 = n13.forSibling().init(CONCEPTS.Word$AM);
+                    n14.setProperty(PROPS.value$cK70, "specify");
+                    SNodeBuilder n15 = n14.forSibling().init(CONCEPTS.Word$AM);
+                    n15.setProperty(PROPS.value$cK70, "condition");
                   }
-                  n12.addChild(LINKS.text$BOhB, n13);
                 }
-                n11.addChild(LINKS.statement$WHn8, n12);
-                SNode n17 = new SNodeBuilder(CONCEPTS.ExpressionStatement$nm, null, null).node();
+                SNodeBuilder n16 = n11.forSibling().init(CONCEPTS.ExpressionStatement$nm);
                 {
-                  SNode n18 = new SNodeBuilder(CONCEPTS.BooleanConstant$Ui, null, null).node();
-                  n18.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(true));
-                  n17.addChild(LINKS.expression$WIP0, n18);
+                  SNodeBuilder n17 = n16.forChild(LINKS.expression$WIP0).init(CONCEPTS.BooleanConstant$Ui);
+                  n17.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(true));
                 }
-                n11.addChild(LINKS.statement$WHn8, n17);
               }
-              n10.addChild(LINKS.body$DJEC, n11);
-              SNode n19 = new SNodeBuilder(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null).node();
-              {
-                n19.setProperty(PROPS.name$tAp1, "node");
-                SNode n20 = new SNodeBuilder(CONCEPTS.UndefinedType$1H, null, null).node();
-                n19.addChild(LINKS.type$pLrO, n20);
-              }
-              n10.addChild(LINKS.parameter$WRt7, n19);
             }
-            n9.addChild(LINKS.closure$aJtr, n10);
-          }
-          n3.addChild(LINKS.operation$X4R8, n9);
-        }
-        n2.addChild(LINKS.operand$Lcrr, n3);
-        SNode n21 = new SNodeBuilder(CONCEPTS.RefactorOperation$jt, null, null).node();
-        {
-          SNode n22 = new SNodeBuilder(CONCEPTS.ClosureLiteral$zJ, null, null).node();
-          {
-            n22.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
-            SNode n23 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
             {
-              SNode n24 = new SNodeBuilder(CONCEPTS.SingleLineComment$jI, null, null).node();
-              {
-                SNode n25 = new SNodeBuilder(CONCEPTS.Line$w3, null, null).node();
-                {
-                  SNode n26 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                  n26.setProperty(PROPS.value$cK70, "TODO");
-                  n25.addChild(LINKS.elements$eRew, n26);
-                  SNode n27 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                  n27.setProperty(PROPS.value$cK70, "specify");
-                  n25.addChild(LINKS.elements$eRew, n27);
-                  SNode n28 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                  n28.setProperty(PROPS.value$cK70, "action");
-                  n25.addChild(LINKS.elements$eRew, n28);
-                }
-                n24.addChild(LINKS.text$BOhB, n25);
-              }
-              n23.addChild(LINKS.statement$WHn8, n24);
+              SNodeBuilder n18 = n9.forChild(LINKS.parameter$WRt7).init(CONCEPTS.SmartClosureParameterDeclaration$Xx);
+              n18.setProperty(PROPS.name$tAp1, "node");
+              n18.forChild(LINKS.type$pLrO).init(CONCEPTS.UndefinedType$1H);
             }
-            n22.addChild(LINKS.body$DJEC, n23);
-            SNode n29 = new SNodeBuilder(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null).node();
-            {
-              n29.setProperty(PROPS.name$tAp1, "node");
-              SNode n30 = new SNodeBuilder(CONCEPTS.UndefinedType$1H, null, null).node();
-              n29.addChild(LINKS.type$pLrO, n30);
-            }
-            n22.addChild(LINKS.parameter$WRt7, n29);
           }
-          n21.addChild(LINKS.closure$aJtr, n22);
         }
-        n2.addChild(LINKS.operation$X4R8, n21);
       }
-      n1.addChild(LINKS.expression$HQe6, n2);
+      {
+        SNodeBuilder n19 = n2.forChild(LINKS.operation$X4R8).init(CONCEPTS.RefactorOperation$jt);
+        {
+          SNodeBuilder n20 = n19.forChild(LINKS.closure$aJtr).init(CONCEPTS.ClosureLiteral$zJ);
+          n20.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
+          {
+            SNodeBuilder n21 = n20.forChild(LINKS.body$DJEC).init(CONCEPTS.StatementList$TN);
+            {
+              SNodeBuilder n22 = n21.forChild(LINKS.statement$WHn8).init(CONCEPTS.SingleLineComment$jI);
+              {
+                SNodeBuilder n23 = n22.forChild(LINKS.text$BOhB).init(CONCEPTS.Line$w3);
+                {
+                  SNodeBuilder n24 = n23.forChild(LINKS.elements$eRew).init(CONCEPTS.Word$AM);
+                  n24.setProperty(PROPS.value$cK70, "TODO");
+                  SNodeBuilder n25 = n24.forSibling().init(CONCEPTS.Word$AM);
+                  n25.setProperty(PROPS.value$cK70, "specify");
+                  SNodeBuilder n26 = n25.forSibling().init(CONCEPTS.Word$AM);
+                  n26.setProperty(PROPS.value$cK70, "action");
+                }
+              }
+            }
+          }
+          {
+            SNodeBuilder n27 = n20.forChild(LINKS.parameter$WRt7).init(CONCEPTS.SmartClosureParameterDeclaration$Xx);
+            n27.setProperty(PROPS.name$tAp1, "node");
+            n27.forChild(LINKS.type$pLrO).init(CONCEPTS.UndefinedType$1H);
+          }
+        }
+      }
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createBLExpression_vryvy0_a0a0a1a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.BLExpression$iZ, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.ShowExpression$Es, null, null).node();
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$HQe6).init(CONCEPTS.ShowExpression$Es);
       {
-        SNode n3 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
+        SNodeBuilder n3 = n2.forChild(LINKS.object$DqiI).init(CONCEPTS.DotExpression$6a);
         {
-          SNode n4 = new SNodeBuilder(CONCEPTS.InstancesExpression$OR, null, null).node();
+          SNodeBuilder n4 = n3.forChild(LINKS.operand$Lcrr).init(CONCEPTS.InstancesExpression$OR);
           {
-            SNode n5 = new SNodeBuilder(CONCEPTS.RefConcept_Reference$GN, null, null).node();
-            n5.setReference(LINKS.conceptDeclaration$GmCT, SReference.create(LINKS.conceptDeclaration$GmCT, n5, facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
-            n4.addChild(LINKS.conceptArg$NvOw, n5);
-            SNode n6 = new SNodeBuilder(CONCEPTS.QueryParameterList$wL, null, null).node();
-            {
-              SNode n7 = new SNodeBuilder(CONCEPTS.QueryParameterScope$rU, null, null).node();
-              {
-                SNode n8 = new SNodeBuilder(CONCEPTS.ProjectEditableScope$Jb, null, null).node();
-                n7.addChild(LINKS.value$M3Hb, n8);
-              }
-              n6.addChild(LINKS.parameter$o_k7, n7);
-            }
-            n4.addChild(LINKS.parameter$ew30, n6);
+            SNodeBuilder n5 = n4.forChild(LINKS.conceptArg$NvOw).init(CONCEPTS.RefConcept_Reference$GN);
+            n5.setReference(LINKS.conceptDeclaration$GmCT, new SNodePointer(facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
           }
-          n3.addChild(LINKS.operand$Lcrr, n4);
-          SNode n9 = new SNodeBuilder(CONCEPTS.WhereOperation$I$, null, null).node();
           {
-            SNode n10 = new SNodeBuilder(CONCEPTS.ClosureLiteral$zJ, null, null).node();
+            SNodeBuilder n6 = n4.forChild(LINKS.parameter$ew30).init(CONCEPTS.QueryParameterList$wL);
             {
-              n10.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
-              SNode n11 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
-              {
-                SNode n12 = new SNodeBuilder(CONCEPTS.SingleLineComment$jI, null, null).node();
-                {
-                  SNode n13 = new SNodeBuilder(CONCEPTS.Line$w3, null, null).node();
-                  {
-                    SNode n14 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                    n14.setProperty(PROPS.value$cK70, "TODO");
-                    n13.addChild(LINKS.elements$eRew, n14);
-                    SNode n15 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                    n15.setProperty(PROPS.value$cK70, "specify");
-                    n13.addChild(LINKS.elements$eRew, n15);
-                    SNode n16 = new SNodeBuilder(CONCEPTS.Word$AM, null, null).node();
-                    n16.setProperty(PROPS.value$cK70, "condition");
-                    n13.addChild(LINKS.elements$eRew, n16);
-                  }
-                  n12.addChild(LINKS.text$BOhB, n13);
-                }
-                n11.addChild(LINKS.statement$WHn8, n12);
-              }
-              n10.addChild(LINKS.body$DJEC, n11);
-              SNode n17 = new SNodeBuilder(CONCEPTS.SmartClosureParameterDeclaration$Xx, null, null).node();
-              {
-                n17.setProperty(PROPS.name$tAp1, "node");
-                SNode n18 = new SNodeBuilder(CONCEPTS.UndefinedType$1H, null, null).node();
-                n17.addChild(LINKS.type$pLrO, n18);
-              }
-              n10.addChild(LINKS.parameter$WRt7, n17);
+              SNodeBuilder n7 = n6.forChild(LINKS.parameter$o_k7).init(CONCEPTS.QueryParameterScope$rU);
+              n7.forChild(LINKS.value$M3Hb).init(CONCEPTS.ProjectEditableScope$Jb);
             }
-            n9.addChild(LINKS.closure$aJtr, n10);
           }
-          n3.addChild(LINKS.operation$X4R8, n9);
         }
-        n2.addChild(LINKS.object$DqiI, n3);
+        {
+          SNodeBuilder n8 = n3.forChild(LINKS.operation$X4R8).init(CONCEPTS.WhereOperation$I$);
+          {
+            SNodeBuilder n9 = n8.forChild(LINKS.closure$aJtr).init(CONCEPTS.ClosureLiteral$zJ);
+            n9.setProperty(PROPS.forceMultiLine$sHyN, PROPS.forceMultiLine$sHyN.getType().toString(true));
+            {
+              SNodeBuilder n10 = n9.forChild(LINKS.body$DJEC).init(CONCEPTS.StatementList$TN);
+              {
+                SNodeBuilder n11 = n10.forChild(LINKS.statement$WHn8).init(CONCEPTS.SingleLineComment$jI);
+                {
+                  SNodeBuilder n12 = n11.forChild(LINKS.text$BOhB).init(CONCEPTS.Line$w3);
+                  {
+                    SNodeBuilder n13 = n12.forChild(LINKS.elements$eRew).init(CONCEPTS.Word$AM);
+                    n13.setProperty(PROPS.value$cK70, "TODO");
+                    SNodeBuilder n14 = n13.forSibling().init(CONCEPTS.Word$AM);
+                    n14.setProperty(PROPS.value$cK70, "specify");
+                    SNodeBuilder n15 = n14.forSibling().init(CONCEPTS.Word$AM);
+                    n15.setProperty(PROPS.value$cK70, "condition");
+                  }
+                }
+              }
+            }
+            {
+              SNodeBuilder n16 = n9.forChild(LINKS.parameter$WRt7).init(CONCEPTS.SmartClosureParameterDeclaration$Xx);
+              n16.setProperty(PROPS.name$tAp1, "node");
+              n16.forChild(LINKS.type$pLrO).init(CONCEPTS.UndefinedType$1H);
+            }
+          }
+        }
       }
-      n1.addChild(LINKS.expression$HQe6, n2);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink command$pL9$ = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
     /*package*/ static final SContainmentLink conceptArg$NvOw = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x6b643f33718aa10dL, 0x6b643f33718aa10eL, "conceptArg");
-    /*package*/ static final SReferenceLink conceptDeclaration$GmCT = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink value$M3Hb = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, 0x20c897bb39bb07a4L, "value");
-    /*package*/ static final SContainmentLink parameter$o_k7 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
-    /*package*/ static final SContainmentLink parameter$ew30 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
-    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
-    /*package*/ static final SContainmentLink closure$aJtr = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
-    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
     /*package*/ static final SContainmentLink expression$HQe6 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression");
+    /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink conceptDeclaration$GmCT = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink parameter$ew30 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
+    /*package*/ static final SContainmentLink parameter$o_k7 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
+    /*package*/ static final SContainmentLink value$M3Hb = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, 0x20c897bb39bb07a4L, "value");
+    /*package*/ static final SContainmentLink operation$X4R8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink closure$aJtr = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink expression$WIP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink parameter$WRt7 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SContainmentLink object$DqiI = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x75bb0160f191d79fL, 0x6979f0787b81e875L, "object");
   }
 

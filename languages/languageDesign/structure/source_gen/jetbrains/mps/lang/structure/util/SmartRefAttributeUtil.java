@@ -11,8 +11,7 @@ import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -77,10 +76,9 @@ public final class SmartRefAttributeUtil {
     return null;
   }
   private static SNode createSmartReferenceAttribute_9k4hui_a0a5a4(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.SmartReferenceAttribute$Lg, null, null).node();
-    n1.setReferenceTarget(LINKS.charactersticReference$hNpW, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SmartReferenceAttribute$Lg);
+    rootBuilder1.setReferenceTarget(LINKS.charactersticReference$hNpW, node0);
+    return rootBuilder1.getResult();
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;

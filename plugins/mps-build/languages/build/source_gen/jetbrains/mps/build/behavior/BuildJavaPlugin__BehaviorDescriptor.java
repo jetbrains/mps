@@ -30,8 +30,8 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -139,9 +139,9 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
   }
   private static SNode createBwfTaskLibraryDependency_bn484n_a0a0a0c() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.BwfTaskLibraryDependency$Kt, null, null).node();
-    n1.setReference(LINKS.target$LSxw, SReference.create(LINKS.target$LSxw, n1, facade.createModelReference("r:dc6ee11b-0a41-4208-a099-65b1a11fb3ff(jetbrains.mps.build.workflow.preset.java)"), facade.createNodeId("7306485738221408314")));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$Kt);
+    rootBuilder1.setReference(LINKS.target$LSxw, new SNodePointer(facade.createModelReference("r:dc6ee11b-0a41-4208-a099-65b1a11fb3ff(jetbrains.mps.build.workflow.preset.java)"), facade.createNodeId("7306485738221408314")));
+    return rootBuilder1.getResult();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

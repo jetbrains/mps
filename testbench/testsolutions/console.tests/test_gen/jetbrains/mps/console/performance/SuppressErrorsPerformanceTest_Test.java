@@ -29,8 +29,7 @@ import java.util.ArrayList;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -81,9 +80,8 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       return Duration.ofNanos(stopTime - startTime);
     }
     private static SNode createNodeResponseItem_wxn1w7_a0a0a2a6h() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.NodeResponseItem$jy, null, null).node();
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$jy);
+      return rootBuilder1.getResult();
     }
   }
 

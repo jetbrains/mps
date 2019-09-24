@@ -11,8 +11,8 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -47,43 +47,31 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
   }
   private static SNode createJoinType_sacma3_a1a0c0i0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.JoinType$9o, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
-      n2.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n2, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
-      n1.addChild(LINKS.argument$xIHX, n2);
-      SNode n3 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
-      n3.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
-      n1.addChild(LINKS.argument$xIHX, n3);
-      SNode n4 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
-      n4.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n4, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
-      n1.addChild(LINKS.argument$xIHX, n4);
-      SNode n5 = new SNodeBuilder(CONCEPTS.BooleanType$8G, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n5);
-      SNode n6 = new SNodeBuilder(CONCEPTS.IntegerType$Eo, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n6);
-      SNode n7 = new SNodeBuilder(CONCEPTS.FloatType$1B, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n7);
-      SNode n8 = new SNodeBuilder(CONCEPTS.DoubleType$4e, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n8);
-      SNode n9 = new SNodeBuilder(CONCEPTS.CharType$j4, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n9);
-      SNode n10 = new SNodeBuilder(CONCEPTS.ByteType$lE, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n10);
-      SNode n11 = new SNodeBuilder(CONCEPTS.LongType$Db, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n11);
-      SNode n12 = new SNodeBuilder(CONCEPTS.ShortType$YA, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n12);
-      SNode n13 = new SNodeBuilder(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n13);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.argument$xIHX).init(CONCEPTS.ClassifierType$IZ);
+      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
+      SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ClassifierType$IZ);
+      n3.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
+      SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.ClassifierType$IZ);
+      n4.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
+      SNodeBuilder n5 = n4.forSibling().init(CONCEPTS.BooleanType$8G);
+      SNodeBuilder n6 = n5.forSibling().init(CONCEPTS.IntegerType$Eo);
+      SNodeBuilder n7 = n6.forSibling().init(CONCEPTS.FloatType$1B);
+      SNodeBuilder n8 = n7.forSibling().init(CONCEPTS.DoubleType$4e);
+      SNodeBuilder n9 = n8.forSibling().init(CONCEPTS.CharType$j4);
+      SNodeBuilder n10 = n9.forSibling().init(CONCEPTS.ByteType$lE);
+      SNodeBuilder n11 = n10.forSibling().init(CONCEPTS.LongType$Db);
+      SNodeBuilder n12 = n11.forSibling().init(CONCEPTS.ShortType$YA);
+      SNodeBuilder n13 = n12.forSibling().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink argument$xIHX = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1129e737f02L, 0x1129e73a76aL, "argument");
+    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {

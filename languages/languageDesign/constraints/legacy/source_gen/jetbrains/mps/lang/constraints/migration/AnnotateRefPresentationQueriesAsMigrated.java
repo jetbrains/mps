@@ -39,8 +39,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -200,10 +199,9 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
   }
 
   private static SNode createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a0a6(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.RefPresentationMigratedProblem$Pu, null, null).node();
-    n1.setReferenceTarget(LINKS.editor$ZXL0, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefPresentationMigratedProblem$Pu);
+    rootBuilder1.setReferenceTarget(LINKS.editor$ZXL0, node0);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

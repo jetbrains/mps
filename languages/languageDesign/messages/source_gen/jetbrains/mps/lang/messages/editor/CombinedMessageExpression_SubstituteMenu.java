@@ -31,9 +31,7 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -134,12 +132,11 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
     }
   }
   private static SNode createCombinedMessageExpression_6s2f6n_a0a0b(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.CombinedMessageExpression$e_, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.part$x7tZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.MessageExpression$FF)));
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
+    {
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.part$x7tZ).initNode(node0, CONCEPTS.MessageExpression$FF, false);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

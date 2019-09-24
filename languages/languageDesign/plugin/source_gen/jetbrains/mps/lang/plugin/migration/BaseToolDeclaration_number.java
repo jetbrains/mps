@@ -20,8 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -91,10 +90,9 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
 
 
   private static SNode createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NumberToolShortcut$zP, null, null).node();
-    n1.setProperty(PROPS.number$5Dx6, PROPS.number$5Dx6.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$zP);
+    rootBuilder1.setProperty(PROPS.number$5Dx6, PROPS.number$5Dx6.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

@@ -61,8 +61,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -371,10 +370,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         return new EditorMenuDescriptorBase("generic group with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00000000-0000-4000-0000-011c89590384(jetbrains.mps.lang.test.editor)", "6626913010124512135"));
       }
       private static SNode createMigrationReference_w3rzlq_a0a0a0a0a2c0(SNode node0) {
-        PersistenceFacade facade = PersistenceFacade.getInstance();
-        SNode n1 = new SNodeBuilder(CONCEPTS.MigrationReference$BB, null, null).node();
-        n1.setReferenceTarget(LINKS.migration$RUsw, node0);
-        return n1;
+        SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MigrationReference$BB);
+        rootBuilder1.setReferenceTarget(LINKS.migration$RUsw, node0);
+        return rootBuilder1.getResult();
       }
     }
   }

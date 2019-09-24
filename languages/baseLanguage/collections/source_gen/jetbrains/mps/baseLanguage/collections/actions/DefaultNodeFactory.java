@@ -14,8 +14,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -42,10 +41,9 @@ public class DefaultNodeFactory {
       }
     }
     private static SNode createMultiForEachVariableReference_a0a0a0a0f0a0a0(SNode node0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.MultiForEachVariableReference$PW, null, null).node();
-      n1.setReferenceTarget(LINKS.variable$ptyX, node0);
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MultiForEachVariableReference$PW);
+      rootBuilder1.setReferenceTarget(LINKS.variable$ptyX, node0);
+      return rootBuilder1.getResult();
     }
   }
   public static class NodeFactory_8656797459614853042 implements NodeFactory {
@@ -67,10 +65,9 @@ public class DefaultNodeFactory {
       }
     }
     private static SNode createForEachVariableReference_a0a0a0a0e0a0a1(SNode node0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.ForEachVariableReference$q$, null, null).node();
-      n1.setReferenceTarget(LINKS.variable$ue0d, node0);
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ForEachVariableReference$q$);
+      rootBuilder1.setReferenceTarget(LINKS.variable$ue0d, node0);
+      return rootBuilder1.getResult();
     }
   }
 

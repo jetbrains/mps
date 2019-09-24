@@ -52,25 +52,24 @@
       <node id="1986963296983872657" at="119,106,120,63" concept="5" />
       <node id="1986963296983872657" at="120,63,121,30" concept="5" />
       <node id="1986963296983872657" at="121,30,122,30" concept="5" />
-      <node id="1986963296983872657" at="122,30,123,205" concept="1" />
-      <node id="1986963296983872657" at="123,205,124,187" concept="1" />
+      <node id="1986963296983872657" at="122,30,123,215" concept="1" />
+      <node id="1986963296983872657" at="123,215,124,187" concept="1" />
       <node id="1986963296983872657" at="125,5,126,52" concept="5" />
       <node id="1986963296983872657" at="127,33,128,203" concept="1" />
       <node id="1986963296983872657" at="130,5,131,24" concept="6" />
-      <node id="6807933448470767091" at="133,90,134,63" concept="5" />
-      <node id="6807933448470767091" at="134,63,135,82" concept="5" />
-      <node id="6807933448470767091" at="135,82,136,78" concept="1" />
-      <node id="6807933448470767091" at="136,78,137,78" concept="1" />
-      <node id="6807933448470767091" at="137,78,138,14" concept="6" />
-      <node id="1986963296982667681" at="142,0,143,0" concept="9" trace="OldComponent$sl" />
-      <node id="1986963296982667681" at="143,0,144,0" concept="9" trace="MigrationDataAnnotation$gb" />
-      <node id="1986963296982667681" at="144,0,145,0" concept="9" trace="DeclMigrationData$E1" />
-      <node id="1986963296982667681" at="148,0,149,0" concept="9" trace="member$b5zN" />
-      <node id="1986963296982667681" at="149,0,150,0" concept="9" trace="dataNode$wNKg" />
-      <node id="1986963296982667681" at="153,0,154,0" concept="9" trace="name$tAp1" />
-      <node id="1986963296982667681" at="154,0,155,0" concept="9" trace="createdByScript$1_lw" />
-      <node id="1986963296982667681" at="155,0,156,0" concept="9" trace="oldId$W$wZ" />
-      <node id="1986963296982667681" at="156,0,157,0" concept="9" trace="newId$W$xu" />
+      <node id="6807933448470767091" at="133,90,134,87" concept="5" />
+      <node id="6807933448470767091" at="134,87,135,88" concept="1" />
+      <node id="6807933448470767091" at="135,88,136,88" concept="1" />
+      <node id="6807933448470767091" at="136,88,137,36" concept="6" />
+      <node id="1986963296982667681" at="141,0,142,0" concept="9" trace="OldComponent$sl" />
+      <node id="1986963296982667681" at="142,0,143,0" concept="9" trace="MigrationDataAnnotation$gb" />
+      <node id="1986963296982667681" at="143,0,144,0" concept="9" trace="DeclMigrationData$E1" />
+      <node id="1986963296982667681" at="147,0,148,0" concept="9" trace="member$b5zN" />
+      <node id="1986963296982667681" at="148,0,149,0" concept="9" trace="dataNode$wNKg" />
+      <node id="1986963296982667681" at="152,0,153,0" concept="9" trace="name$tAp1" />
+      <node id="1986963296982667681" at="153,0,154,0" concept="9" trace="createdByScript$1_lw" />
+      <node id="1986963296982667681" at="154,0,155,0" concept="9" trace="oldId$W$wZ" />
+      <node id="1986963296982667681" at="155,0,156,0" concept="9" trace="newId$W$xu" />
       <node id="1986963296982667681" at="41,0,44,0" concept="4" trace="getCaption#()Ljava/lang/String;" />
       <node id="6807933448471958642" at="55,0,58,0" concept="4" trace="met#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="6807933448471856633" at="64,0,67,0" concept="4" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
@@ -87,8 +86,8 @@
       <node id="6807933448480517299" at="97,90,102,8" concept="5" />
       <node id="6807933448480523459" at="104,49,109,12" concept="6" />
       <node id="1986963296983872657" at="124,187,130,5" concept="0" />
+      <node id="6807933448470767091" at="133,0,139,0" concept="10" trace="createDeclMigrationData_i4ro0d_a0f0a0a5a3a5#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6807933448480523127" at="104,0,111,0" concept="4" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/migration/runtime/base/NotMigratedNode;" />
-      <node id="6807933448470767091" at="133,0,140,0" concept="10" trace="createDeclMigrationData_i4ro0d_a0f0a0a5a3a5#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1986963296983871141" at="74,0,83,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6807933448480530045" at="102,8,111,9" concept="6" />
       <node id="1986963296983827761" at="72,48,83,9" concept="1" />
@@ -128,20 +127,19 @@
       <scope id="1986963296983872657" at="125,5,129,7">
         <var name="nodes" id="1986963296983872657" />
       </scope>
+      <scope id="6807933448470767091" at="133,90,137,36">
+        <var name="rootBuilder1" id="6807933448470767091" />
+      </scope>
       <scope id="6807933448480523128" at="104,49,109,12" />
-      <scope id="6807933448470767091" at="133,90,138,14">
-        <var name="facade" id="6807933448470767091" />
-        <var name="n1" id="6807933448470767091" />
+      <scope id="6807933448470767091" at="133,0,139,0">
+        <var name="p0" id="6807933448470767091" />
+        <var name="p1" id="6807933448470767091" />
       </scope>
       <scope id="1986963296983871142" at="74,42,81,0">
         <var name="newNode" id="1986963296983871615" />
       </scope>
       <scope id="6807933448480523127" at="104,0,111,0">
         <var name="it" id="6807933448480523127" />
-      </scope>
-      <scope id="6807933448470767091" at="133,0,140,0">
-        <var name="p0" id="6807933448470767091" />
-        <var name="p1" id="6807933448470767091" />
       </scope>
       <scope id="1986963296983871141" at="74,0,83,0">
         <var name="oldNode" id="1986963296983871141" />
@@ -181,12 +179,12 @@
       <unit id="1986963296984118739" at="86,53,90,7" name="decl.migration.SampleDeclMigration$4" />
       <unit id="6807933448480517299" at="98,42,102,7" name="decl.migration.SampleDeclMigration$5" />
       <unit id="6807933448480525880" at="105,21,109,11" name="decl.migration.SampleDeclMigration$6$1" />
-      <unit id="1986963296982667681" at="147,0,151,0" name="decl.migration.SampleDeclMigration$LINKS" />
-      <unit id="1986963296982667681" at="141,0,146,0" name="decl.migration.SampleDeclMigration$CONCEPTS" />
-      <unit id="1986963296982667681" at="152,0,158,0" name="decl.migration.SampleDeclMigration$PROPS" />
+      <unit id="1986963296982667681" at="146,0,150,0" name="decl.migration.SampleDeclMigration$LINKS" />
+      <unit id="1986963296982667681" at="140,0,145,0" name="decl.migration.SampleDeclMigration$CONCEPTS" />
+      <unit id="1986963296982667681" at="151,0,157,0" name="decl.migration.SampleDeclMigration$PROPS" />
       <unit id="6807933448480523127" at="103,154,111,7" name="decl.migration.SampleDeclMigration$6" />
       <unit id="1986963296983871141" at="73,53,83,7" name="decl.migration.SampleDeclMigration$3" />
-      <unit id="1986963296982667681" at="39,0,159,0" name="decl.migration.SampleDeclMigration" />
+      <unit id="1986963296982667681" at="39,0,158,0" name="decl.migration.SampleDeclMigration" />
     </file>
   </root>
 </debug-info>

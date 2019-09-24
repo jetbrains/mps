@@ -9,8 +9,7 @@ import jetbrains.mps.lang.typesystem.runtime.OverloadedOperationsTypesProvider;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -47,19 +46,16 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode createDateType_3ist9o_a0a0a1() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.DateType$_S, null, null).node();
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
+      return rootBuilder1.getResult();
     }
     private static SNode createIntegerType_3ist9o_a0b0a1() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.IntegerType$Eo, null, null).node();
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
+      return rootBuilder1.getResult();
     }
     private static SNode createDateType_3ist9o_a0a1b() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.DateType$_S, null, null).node();
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
+      return rootBuilder1.getResult();
     }
   }
 

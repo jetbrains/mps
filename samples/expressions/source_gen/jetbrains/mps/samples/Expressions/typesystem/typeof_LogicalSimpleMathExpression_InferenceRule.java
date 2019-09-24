@@ -12,8 +12,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -47,9 +46,8 @@ public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractIn
     return false;
   }
   private static SNode createSimpleMathBooleanType_ngq3xd_a1a0c0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.SimpleMathBooleanType$9q, null, null).node();
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathBooleanType$9q);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

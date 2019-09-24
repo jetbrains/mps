@@ -7,9 +7,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -28,16 +26,12 @@ public final class SwitchExpressionPW_PasteWrapper_5 implements PasteWrapper {
     return createEnumSwitchCaseBody_StatementList_degi1_a0a0f(ListSequence.fromListAndArray(new ArrayList<SNode>(), sourceNode));
   }
   private static SNode createEnumSwitchCaseBody_StatementList_degi1_a0a0f(Iterable<? extends SNode> seq0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.EnumSwitchCaseBody_StatementList$Ze, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_StatementList$Ze);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
-      for (SNode n : seq0) {
-        n2.addChild(LINKS.statement$WHn8, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.Statement$ok)));
-      }
-      n1.addChild(LINKS.statementList$6WT0, n2);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statementList$6WT0).init(CONCEPTS.StatementList$TN);
+      n2.forChild(LINKS.statement$WHn8).initNodeList(seq0, CONCEPTS.Statement$ok);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {
@@ -48,7 +42,7 @@ public final class SwitchExpressionPW_PasteWrapper_5 implements PasteWrapper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     /*package*/ static final SContainmentLink statementList$6WT0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
+    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

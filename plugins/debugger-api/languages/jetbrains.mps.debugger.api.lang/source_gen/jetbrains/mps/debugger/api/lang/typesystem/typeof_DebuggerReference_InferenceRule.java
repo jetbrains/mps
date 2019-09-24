@@ -10,8 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -36,10 +35,9 @@ public class typeof_DebuggerReference_InferenceRule extends AbstractInferenceRul
     return false;
   }
   private static SNode createDebuggerType_uu2qih_a1a0c0a0b(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.DebuggerType$gI, null, null).node();
-    n1.setProperty(PROPS.name$d3D9, PROPS.name$d3D9.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
+    rootBuilder1.setProperty(PROPS.name$d3D9, PROPS.name$d3D9.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
 
   private static final class PROPS {

@@ -32,8 +32,7 @@ import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -141,25 +140,19 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
       ListSequence.fromList(SLinkOperations.getChildren(myRefactoringStep, LINKS.part$x6zr)).addElement(migrationPart);
     }
     private static SNode createPureMigrationScript_kz6lmo_a0d0d11(Object p0, Object p1) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.PureMigrationScript$YW, null, null).node();
-      n1.setProperty(PROPS.fromVersion$jLy0, PROPS.fromVersion$jLy0.getType().toString(p0));
-      n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p1));
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PureMigrationScript$YW);
+      rootBuilder1.setProperty(PROPS.fromVersion$jLy0, PROPS.fromVersion$jLy0.getType().toString(p0));
+      rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p1));
+      return rootBuilder1.getResult();
     }
     private static SNode createMoveNodeMigrationPart_kz6lmo_a0a0e11(SNode node0, SNode node1, SNode node2) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.MoveNodeMigrationPart$gB, null, null).node();
-      if (node0 != null) {
-        n1.addChild(LINKS.fromNode$JVN3, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.AbstractNodeReference$T6)));
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveNodeMigrationPart$gB);
+      rootBuilder1.forChild(LINKS.fromNode$JVN3).initNode(node0, CONCEPTS.AbstractNodeReference$T6, true);
+      rootBuilder1.forChild(LINKS.toNode$JVO1).initNode(node1, CONCEPTS.AbstractNodeReference$T6, true);
+      {
+        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.specialization$GqXw).initNode(node2, CONCEPTS.MoveNodeSpecialization$k2, false);
       }
-      if (node1 != null) {
-        n1.addChild(LINKS.toNode$JVO1, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.AbstractNodeReference$T6)));
-      }
-      if (node2 != null) {
-        n1.addChild(LINKS.specialization$GqXw, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node2, CONCEPTS.MoveNodeSpecialization$k2)));
-      }
-      return n1;
+      return rootBuilder1.getResult();
     }
   }
 

@@ -21,8 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -86,27 +85,20 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   }
 
   private static SNode createReviewMigration_old_5d7h7i_a0a0a0a0a0a6() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.ReviewMigration_old$E1, null, null).node();
-    n1.setProperty(PROPS.readableId$WLXq, "MigrateOldNodePointerExpressions");
-    n1.setProperty(PROPS.reasonShort$7yZv, "Couldn't migrate node with attributes");
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ReviewMigration_old$E1);
+    rootBuilder1.setProperty(PROPS.readableId$WLXq, "MigrateOldNodePointerExpressions");
+    rootBuilder1.setProperty(PROPS.reasonShort$7yZv, "Couldn't migrate node with attributes");
+    return rootBuilder1.getResult();
   }
   private static SNode createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NodePointerExpression$DS, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.ref$Xkjz, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
+    rootBuilder1.forChild(LINKS.ref$Xkjz).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
+    return rootBuilder1.getResult();
   }
   private static SNode createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.SemanticDowncastExpression$us, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.leftExpression$flIo, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$us);
+    rootBuilder1.forChild(LINKS.leftExpression$flIo).initNode(node0, CONCEPTS.Expression$TP, true);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

@@ -11,7 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -39,7 +39,7 @@ public class typeof_PropertyRefExpression_PropertyRefType_InferenceRule extends 
   private static SNode _quotation_createNode_lvapcr_a0a0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, "jetbrains.mps.lang.checkedName"), 0x78b4a5a6b846de35L, "PropertyPointerType"), null, null).node();
+    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, "jetbrains.mps.lang.checkedName"), 0x78b4a5a6b846de35L, "PropertyPointerType")).getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L, 0x2cda7ac1f2c80e2fL, "dataType"), (SNode) parameter_1);
     return quotedNode_2;
   }

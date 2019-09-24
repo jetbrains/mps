@@ -183,8 +183,8 @@
       <node id="2141245758541445224" at="39,30,40,17" concept="7" />
       <node id="2141245758541445236" at="42,65,43,63" concept="6" />
       <node id="2141245758541445236" at="43,63,44,30" concept="6" />
-      <node id="2141245758541445236" at="44,30,45,234" concept="2" />
-      <node id="2141245758541445236" at="45,234,46,479" concept="2" />
+      <node id="2141245758541445236" at="44,30,45,244" concept="2" />
+      <node id="2141245758541445236" at="45,244,46,479" concept="2" />
       <node id="2141245758541445236" at="46,479,47,24" concept="7" />
       <node id="2141245758541445224" at="51,0,52,0" concept="9" trace="objectType$NJyf" />
       <node id="2141245758541445224" at="52,0,53,0" concept="9" trace="descriptor$ZkDR" />
@@ -235,8 +235,8 @@
       <node id="3175313036448558253" at="39,80,40,63" concept="6" />
       <node id="3175313036448558253" at="40,63,41,30" concept="6" />
       <node id="3175313036448558253" at="41,30,42,30" concept="6" />
-      <node id="3175313036448558253" at="42,30,43,224" concept="2" />
-      <node id="3175313036448558253" at="43,224,44,469" concept="2" />
+      <node id="3175313036448558253" at="42,30,43,234" concept="2" />
+      <node id="3175313036448558253" at="43,234,44,469" concept="2" />
       <node id="3175313036448558253" at="44,469,45,39" concept="2" />
       <node id="3175313036448558253" at="46,31,47,201" concept="2" />
       <node id="3175313036448558253" at="48,5,49,24" concept="7" />
@@ -316,14 +316,14 @@
       <node id="3175313036448577254" at="64,30,65,17" concept="7" />
       <node id="3999125756866746589" at="67,85,68,63" concept="6" />
       <node id="3999125756866746589" at="68,63,69,30" concept="6" />
-      <node id="3999125756866746589" at="69,30,70,235" concept="2" />
-      <node id="3999125756866746589" at="70,235,71,213" concept="2" />
+      <node id="3999125756866746589" at="69,30,70,245" concept="2" />
+      <node id="3999125756866746589" at="70,245,71,213" concept="2" />
       <node id="3999125756866746589" at="71,213,72,24" concept="7" />
       <node id="3175313036448577269" at="74,93,75,63" concept="6" />
       <node id="3175313036448577269" at="75,63,76,30" concept="6" />
       <node id="3175313036448577269" at="76,30,77,30" concept="6" />
-      <node id="3175313036448577269" at="77,30,78,234" concept="2" />
-      <node id="3175313036448577269" at="78,234,79,39" concept="2" />
+      <node id="3175313036448577269" at="77,30,78,244" concept="2" />
+      <node id="3175313036448577269" at="78,244,79,39" concept="2" />
       <node id="3175313036448577269" at="80,31,81,203" concept="2" />
       <node id="3175313036448577269" at="82,5,83,24" concept="7" />
       <node id="3175313036448577254" at="87,0,88,0" concept="9" trace="ExtensionPointType$TB" />
@@ -416,57 +416,55 @@
       </scope>
     </file>
     <file name="typeof_ExtensionPointExpression_InferenceRule.java">
-      <node id="6626851894249791047" at="23,5,24,45" concept="6" />
-      <node id="6626851894249791047" at="24,45,25,205" concept="6" />
-      <node id="6626851894249791047" at="25,205,26,346" concept="2" />
-      <node id="6626851894249712466" at="29,50,30,48" concept="7" />
-      <node id="6626851894249712466" at="32,68,33,102" concept="7" />
-      <node id="6626851894249712466" at="35,30,36,17" concept="7" />
-      <node id="3999125756866684069" at="38,79,39,63" concept="6" />
-      <node id="3999125756866684069" at="39,63,40,83" concept="6" />
-      <node id="3999125756866684069" at="40,83,41,60" concept="2" />
-      <node id="3999125756866684069" at="41,60,42,14" concept="7" />
-      <node id="6626851894249712466" at="46,0,47,0" concept="9" trace="extensionPoint$xzwB" />
-      <node id="6626851894249712466" at="47,0,48,0" concept="9" trace="extensionPoint$Ohsw" />
-      <node id="6626851894249712466" at="51,0,52,0" concept="9" trace="ExtensionPointExpression$wC" />
-      <node id="6626851894249712466" at="52,0,53,0" concept="9" trace="ExtensionPointType$TB" />
-      <node id="6626851894249712466" at="20,0,22,0" concept="1" trace="typeof_ExtensionPointExpression_InferenceRule#()V" />
-      <node id="6626851894249712466" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6626851894249712466" at="32,0,35,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="6626851894249712466" at="35,0,38,0" concept="5" trace="overrides#()Z" />
-      <node id="6626851894249791047" at="22,116,27,5" concept="0" />
-      <node id="3999125756866684069" at="38,0,44,0" concept="10" trace="createExtensionPointType_x0hnp2_a1a0c0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6626851894249712466" at="22,0,29,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="6626851894249712466" at="20,58,20,58" />
-      <scope id="6626851894249712466" at="29,50,30,48" />
-      <scope id="6626851894249712466" at="32,68,33,102" />
-      <scope id="6626851894249712466" at="35,30,36,17" />
-      <scope id="6626851894249712466" at="20,0,22,0" />
-      <scope id="6626851894249791047" at="23,5,26,346">
+      <node id="6626851894249791047" at="22,5,23,45" concept="6" />
+      <node id="6626851894249791047" at="23,45,24,205" concept="6" />
+      <node id="6626851894249791047" at="24,205,25,346" concept="2" />
+      <node id="6626851894249712466" at="28,50,29,48" concept="7" />
+      <node id="6626851894249712466" at="31,68,32,102" concept="7" />
+      <node id="6626851894249712466" at="34,30,35,17" concept="7" />
+      <node id="3999125756866684069" at="37,79,38,88" concept="6" />
+      <node id="3999125756866684069" at="38,88,39,70" concept="2" />
+      <node id="3999125756866684069" at="39,70,40,36" concept="7" />
+      <node id="6626851894249712466" at="44,0,45,0" concept="9" trace="extensionPoint$xzwB" />
+      <node id="6626851894249712466" at="45,0,46,0" concept="9" trace="extensionPoint$Ohsw" />
+      <node id="6626851894249712466" at="49,0,50,0" concept="9" trace="ExtensionPointExpression$wC" />
+      <node id="6626851894249712466" at="50,0,51,0" concept="9" trace="ExtensionPointType$TB" />
+      <node id="6626851894249712466" at="19,0,21,0" concept="1" trace="typeof_ExtensionPointExpression_InferenceRule#()V" />
+      <node id="6626851894249712466" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6626851894249712466" at="31,0,34,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6626851894249712466" at="34,0,37,0" concept="5" trace="overrides#()Z" />
+      <node id="6626851894249791047" at="21,116,26,5" concept="0" />
+      <node id="3999125756866684069" at="37,0,42,0" concept="10" trace="createExtensionPointType_x0hnp2_a1a0c0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6626851894249712466" at="21,0,28,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="6626851894249712466" at="19,58,19,58" />
+      <scope id="6626851894249712466" at="28,50,29,48" />
+      <scope id="6626851894249712466" at="31,68,32,102" />
+      <scope id="6626851894249712466" at="34,30,35,17" />
+      <scope id="6626851894249712466" at="19,0,21,0" />
+      <scope id="6626851894249791047" at="22,5,25,346">
         <var name="_info_12389875345" id="6626851894249791047" />
         <var name="_nodeToCheck_1029348928467" id="6626851894249791047" />
       </scope>
-      <scope id="6626851894249712466" at="29,0,32,0" />
-      <scope id="6626851894249712466" at="32,0,35,0">
+      <scope id="6626851894249712466" at="28,0,31,0" />
+      <scope id="6626851894249712466" at="31,0,34,0">
         <var name="argument" id="6626851894249712466" />
       </scope>
-      <scope id="6626851894249712466" at="35,0,38,0" />
-      <scope id="3999125756866684069" at="38,79,42,14">
-        <var name="facade" id="3999125756866684069" />
-        <var name="n1" id="3999125756866684069" />
+      <scope id="6626851894249712466" at="34,0,37,0" />
+      <scope id="3999125756866684069" at="37,79,40,36">
+        <var name="rootBuilder1" id="3999125756866684069" />
       </scope>
-      <scope id="6626851894249712467" at="22,116,27,5" />
-      <scope id="3999125756866684069" at="38,0,44,0">
+      <scope id="6626851894249712467" at="21,116,26,5" />
+      <scope id="3999125756866684069" at="37,0,42,0">
         <var name="node0" id="3999125756866684069" />
       </scope>
-      <scope id="6626851894249712466" at="22,0,29,0">
+      <scope id="6626851894249712466" at="21,0,28,0">
         <var name="epe" id="6626851894249712466" />
         <var name="status" id="6626851894249712466" />
         <var name="typeCheckingContext" id="6626851894249712466" />
       </scope>
-      <unit id="6626851894249712466" at="45,0,49,0" name="jetbrains.mps.lang.extension.typesystem.typeof_ExtensionPointExpression_InferenceRule$LINKS" />
-      <unit id="6626851894249712466" at="50,0,54,0" name="jetbrains.mps.lang.extension.typesystem.typeof_ExtensionPointExpression_InferenceRule$CONCEPTS" />
-      <unit id="6626851894249712466" at="19,0,55,0" name="jetbrains.mps.lang.extension.typesystem.typeof_ExtensionPointExpression_InferenceRule" />
+      <unit id="6626851894249712466" at="43,0,47,0" name="jetbrains.mps.lang.extension.typesystem.typeof_ExtensionPointExpression_InferenceRule$LINKS" />
+      <unit id="6626851894249712466" at="48,0,52,0" name="jetbrains.mps.lang.extension.typesystem.typeof_ExtensionPointExpression_InferenceRule$CONCEPTS" />
+      <unit id="6626851894249712466" at="18,0,53,0" name="jetbrains.mps.lang.extension.typesystem.typeof_ExtensionPointExpression_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)/7036359038356115122">

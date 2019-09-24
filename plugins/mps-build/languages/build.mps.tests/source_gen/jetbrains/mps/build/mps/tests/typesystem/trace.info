@@ -102,43 +102,41 @@
   </root>
   <root nodeRef="r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)/2834134232276458561">
     <file name="includeIntoLayout_QuickFix.java">
-      <node id="2834134232276458561" at="20,39,21,135" concept="10" />
-      <node id="2834134232276459149" at="23,44,24,151" concept="7" />
-      <node id="2834134232276487698" at="26,35,27,311" concept="2" />
-      <node id="2834134232276538381" at="29,83,30,63" concept="6" />
-      <node id="2834134232276538381" at="30,63,31,90" concept="6" />
-      <node id="2834134232276538381" at="31,90,32,52" concept="2" />
-      <node id="2834134232276538381" at="32,52,33,14" concept="7" />
-      <node id="2834134232276458561" at="37,0,38,0" concept="8" trace="name$tAp1" />
-      <node id="2834134232276458561" at="41,0,42,0" concept="8" trace="layout$tpCz" />
-      <node id="2834134232276458561" at="42,0,43,0" concept="8" trace="children$aiMf" />
-      <node id="2834134232276458561" at="43,0,44,0" concept="8" trace="module$5MWZ" />
-      <node id="2834134232276458561" at="47,0,48,0" concept="8" trace="BuildMpsLayout_ModuleJars$mB" />
-      <node id="2834134232276458561" at="20,0,23,0" concept="1" trace="includeIntoLayout_QuickFix#()V" />
-      <node id="2834134232276458561" at="23,0,26,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="2834134232276458561" at="26,0,29,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2834134232276538381" at="29,0,35,0" concept="9" trace="createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="2834134232276458561" at="20,39,21,135" />
-      <scope id="2834134232276458598" at="23,44,24,151" />
-      <scope id="2834134232276458563" at="26,35,27,311" />
-      <scope id="2834134232276458561" at="20,0,23,0" />
-      <scope id="2834134232276458561" at="23,0,26,0">
+      <node id="2834134232276458561" at="19,39,20,135" concept="10" />
+      <node id="2834134232276459149" at="22,44,23,151" concept="7" />
+      <node id="2834134232276487698" at="25,35,26,311" concept="2" />
+      <node id="2834134232276538381" at="28,83,29,95" concept="6" />
+      <node id="2834134232276538381" at="29,95,30,62" concept="2" />
+      <node id="2834134232276538381" at="30,62,31,36" concept="7" />
+      <node id="2834134232276458561" at="35,0,36,0" concept="8" trace="name$tAp1" />
+      <node id="2834134232276458561" at="39,0,40,0" concept="8" trace="layout$tpCz" />
+      <node id="2834134232276458561" at="40,0,41,0" concept="8" trace="children$aiMf" />
+      <node id="2834134232276458561" at="41,0,42,0" concept="8" trace="module$5MWZ" />
+      <node id="2834134232276458561" at="45,0,46,0" concept="8" trace="BuildMpsLayout_ModuleJars$mB" />
+      <node id="2834134232276458561" at="19,0,22,0" concept="1" trace="includeIntoLayout_QuickFix#()V" />
+      <node id="2834134232276458561" at="22,0,25,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="2834134232276458561" at="25,0,28,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2834134232276538381" at="28,0,33,0" concept="9" trace="createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="2834134232276458561" at="19,39,20,135" />
+      <scope id="2834134232276458598" at="22,44,23,151" />
+      <scope id="2834134232276458563" at="25,35,26,311" />
+      <scope id="2834134232276458561" at="19,0,22,0" />
+      <scope id="2834134232276458561" at="22,0,25,0">
         <var name="node" id="2834134232276458561" />
       </scope>
-      <scope id="2834134232276458561" at="26,0,29,0">
+      <scope id="2834134232276458561" at="25,0,28,0">
         <var name="node" id="2834134232276458561" />
       </scope>
-      <scope id="2834134232276538381" at="29,83,33,14">
-        <var name="facade" id="2834134232276538381" />
-        <var name="n1" id="2834134232276538381" />
+      <scope id="2834134232276538381" at="28,83,31,36">
+        <var name="rootBuilder1" id="2834134232276538381" />
       </scope>
-      <scope id="2834134232276538381" at="29,0,35,0">
+      <scope id="2834134232276538381" at="28,0,33,0">
         <var name="node0" id="2834134232276538381" />
       </scope>
-      <unit id="2834134232276458561" at="36,0,39,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix$PROPS" />
-      <unit id="2834134232276458561" at="46,0,49,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix$CONCEPTS" />
-      <unit id="2834134232276458561" at="40,0,45,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix$LINKS" />
-      <unit id="2834134232276458561" at="19,0,50,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix" />
+      <unit id="2834134232276458561" at="34,0,37,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix$PROPS" />
+      <unit id="2834134232276458561" at="44,0,47,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix$CONCEPTS" />
+      <unit id="2834134232276458561" at="38,0,43,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix$LINKS" />
+      <unit id="2834134232276458561" at="18,0,48,0" name="jetbrains.mps.build.mps.tests.typesystem.includeIntoLayout_QuickFix" />
     </file>
   </root>
   <root nodeRef="r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)/3307067233294621118">

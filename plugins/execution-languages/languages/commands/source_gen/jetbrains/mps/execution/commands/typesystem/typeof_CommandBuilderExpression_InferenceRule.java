@@ -11,8 +11,7 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.execution.commands.behavior.ExecuteCommandPart__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,10 +36,9 @@ public class typeof_CommandBuilderExpression_InferenceRule extends AbstractInfer
     return false;
   }
   private static SNode createCommandProcessType_mdceom_a1a0c0a0b(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.CommandProcessType$Cb, null, null).node();
-    n1.setReferenceTarget(LINKS.commandDeclaration$shaw, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CommandProcessType$Cb);
+    rootBuilder1.setReferenceTarget(LINKS.commandDeclaration$shaw, node0);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

@@ -10,8 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,10 +34,9 @@ public class namedTupleDeclaration_ClassifierType_subtypeOf_namedTupleType_Subty
     return false;
   }
   private static SNode createNamedTupleType_hwsftp_a0a0a1(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NamedTupleType$$b, null, null).node();
-    n1.setReferenceTarget(LINKS.classifier$pQ_R, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NamedTupleType$$b);
+    rootBuilder1.setReferenceTarget(LINKS.classifier$pQ_R, node0);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

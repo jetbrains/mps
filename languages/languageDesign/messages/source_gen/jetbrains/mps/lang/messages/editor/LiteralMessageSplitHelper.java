@@ -18,8 +18,7 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -73,24 +72,19 @@ public final class LiteralMessageSplitHelper {
     }
   }
   private static SNode createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
-    n1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
-    n1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(Iterable<? extends SNode> seq0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.CombinedMessageExpression$e_, null, null).node();
-    for (SNode n : seq0) {
-      n1.addChild(LINKS.part$x7tZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.MessageExpression$FF)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
+    rootBuilder1.forChild(LINKS.part$x7tZ).initNodeList(seq0, CONCEPTS.MessageExpression$FF);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

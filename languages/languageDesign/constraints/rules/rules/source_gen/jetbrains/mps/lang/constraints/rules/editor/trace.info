@@ -1645,58 +1645,51 @@
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/6958325536051759252">
     <file name="HintDefsCustomEditorCell.java">
-      <node id="6958325536051768302" at="29,0,30,0" concept="3" trace="myMember" />
-      <node id="6958325536051797092" at="31,58,32,18" concept="13" />
-      <node id="6958325536051768688" at="32,18,33,22" concept="2" />
-      <node id="6958325536051760532" at="37,67,38,134" concept="7" />
-      <node id="6958325536051832968" at="38,134,39,75" concept="7" />
-      <node id="6958325536051760543" at="39,75,40,127" concept="7" />
-      <node id="6958325536052029874" at="40,127,41,65" concept="7" />
-      <node id="7024465757708486556" at="41,65,42,59" concept="7" />
-      <node id="7024465757708497273" at="42,59,43,193" concept="7" />
-      <node id="2554379189369009203" at="43,193,44,145" concept="7" />
-      <node id="2554379189369421503" at="44,145,45,89" concept="7" />
-      <node id="2716118816015785682" at="47,35,48,34" concept="2" />
-      <node id="2716118816015936784" at="48,34,49,83" concept="9" />
-      <node id="2554379189369427872" at="50,14,51,34" concept="2" />
-      <node id="6958325536051760555" at="53,5,54,38" concept="2" />
-      <node id="6958325536051760566" at="54,38,55,22" concept="8" />
-      <node id="6958325536052029876" at="57,92,58,63" concept="7" />
-      <node id="6958325536052029876" at="58,63,59,81" concept="7" />
-      <node id="6958325536052029876" at="60,26,61,124" concept="2" />
-      <node id="6958325536052029876" at="62,5,63,14" concept="8" />
-      <node id="6958325536051759252" at="67,0,68,0" concept="11" trace="EditorListOfDefs$7C" />
-      <node id="6958325536051759252" at="68,0,69,0" concept="11" trace="TypedDefReference$7f" />
-      <node id="6958325536051759252" at="72,0,73,0" concept="11" trace="defs$D2dt" />
-      <node id="2716118816015787360" at="50,12,52,7" concept="0" />
-      <node id="6958325536052029876" at="59,81,62,5" concept="4" />
-      <node id="6958325536051767167" at="31,0,35,0" concept="1" trace="HintDefsCustomEditorCell#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2716118816015750562" at="46,64,52,7" concept="5" />
-      <node id="2554379189369425240" at="45,89,53,5" concept="4" />
-      <node id="6958325536052029876" at="57,0,65,0" concept="12" trace="createEditorListOfDefs_igmisa_a0d0e#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6958325536051760526" at="36,0,57,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <scope id="2716118816015787361" at="50,14,51,34" />
-      <scope id="6958325536052029876" at="60,26,61,124" />
-      <scope id="6958325536051767171" at="31,58,33,22" />
-      <scope id="2716118816015750564" at="47,35,49,83" />
-      <scope id="6958325536052029876" at="59,81,62,5">
-        <var name="n" id="6958325536052029876" />
+      <node id="6958325536051768302" at="27,0,28,0" concept="3" trace="myMember" />
+      <node id="6958325536051797092" at="29,58,30,18" concept="13" />
+      <node id="6958325536051768688" at="30,18,31,22" concept="2" />
+      <node id="6958325536051760532" at="35,67,36,134" concept="7" />
+      <node id="6958325536051832968" at="36,134,37,75" concept="7" />
+      <node id="6958325536051760543" at="37,75,38,127" concept="7" />
+      <node id="6958325536052029874" at="38,127,39,65" concept="7" />
+      <node id="7024465757708486556" at="39,65,40,59" concept="7" />
+      <node id="7024465757708497273" at="40,59,41,193" concept="7" />
+      <node id="2554379189369009203" at="41,193,42,145" concept="7" />
+      <node id="2554379189369421503" at="42,145,43,89" concept="7" />
+      <node id="2716118816015785682" at="45,35,46,34" concept="2" />
+      <node id="2716118816015936784" at="46,34,47,83" concept="9" />
+      <node id="2554379189369427872" at="48,14,49,34" concept="2" />
+      <node id="6958325536051760555" at="51,5,52,38" concept="2" />
+      <node id="6958325536051760566" at="52,38,53,22" concept="8" />
+      <node id="6958325536052029876" at="55,92,56,86" concept="7" />
+      <node id="6958325536052029876" at="56,86,57,93" concept="2" />
+      <node id="6958325536052029876" at="57,93,58,36" concept="8" />
+      <node id="6958325536051759252" at="62,0,63,0" concept="11" trace="EditorListOfDefs$7C" />
+      <node id="6958325536051759252" at="63,0,64,0" concept="11" trace="TypedDefReference$7f" />
+      <node id="6958325536051759252" at="67,0,68,0" concept="11" trace="defs$D2dt" />
+      <node id="2716118816015787360" at="48,12,50,7" concept="0" />
+      <node id="6958325536051767167" at="29,0,33,0" concept="1" trace="HintDefsCustomEditorCell#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="6958325536052029876" at="55,0,60,0" concept="12" trace="createEditorListOfDefs_igmisa_a0d0e#(Ljava/lang/Iterable;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2716118816015750562" at="44,64,50,7" concept="5" />
+      <node id="2554379189369425240" at="43,89,51,5" concept="4" />
+      <node id="6958325536051760526" at="34,0,55,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="2716118816015787361" at="48,14,49,34" />
+      <scope id="6958325536051767171" at="29,58,31,22" />
+      <scope id="2716118816015750564" at="45,35,47,83" />
+      <scope id="6958325536052029876" at="55,92,58,36">
+        <var name="rootBuilder1" id="6958325536052029876" />
       </scope>
-      <scope id="6958325536051767167" at="31,0,35,0">
+      <scope id="6958325536051767167" at="29,0,33,0">
         <var name="member" id="6958325536051767341" />
       </scope>
-      <scope id="2554379189369425249" at="46,64,52,7" />
-      <scope id="6958325536052029876" at="57,92,63,14">
-        <var name="facade" id="6958325536052029876" />
-        <var name="n1" id="6958325536052029876" />
-      </scope>
-      <scope id="2554379189369425240" at="45,89,53,5">
-        <var name="cell" id="2554379189369425243" />
-      </scope>
-      <scope id="6958325536052029876" at="57,0,65,0">
+      <scope id="6958325536052029876" at="55,0,60,0">
         <var name="seq0" id="6958325536052029876" />
       </scope>
-      <scope id="6958325536051760531" at="37,67,55,22">
+      <scope id="2554379189369425249" at="44,64,50,7" />
+      <scope id="2554379189369425240" at="43,89,51,5">
+        <var name="cell" id="2554379189369425243" />
+      </scope>
+      <scope id="6958325536051760531" at="35,67,53,22">
         <var name="auxNode" id="6958325536052029875" />
         <var name="cellFactory" id="6958325536051760544" />
         <var name="collection" id="6958325536051760533" />
@@ -1706,12 +1699,12 @@
         <var name="newCell" id="2554379189369009204" />
         <var name="repository" id="7024465757708486557" />
       </scope>
-      <scope id="6958325536051760526" at="36,0,57,0">
+      <scope id="6958325536051760526" at="34,0,55,0">
         <var name="editorContext" id="6958325536051760529" />
       </scope>
-      <unit id="6958325536051759252" at="71,0,74,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell$LINKS" />
-      <unit id="6958325536051759252" at="66,0,70,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell$CONCEPTS" />
-      <unit id="6958325536051759252" at="28,0,75,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell" />
+      <unit id="6958325536051759252" at="66,0,69,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell$LINKS" />
+      <unit id="6958325536051759252" at="61,0,65,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell$CONCEPTS" />
+      <unit id="6958325536051759252" at="26,0,70,0" name="jetbrains.mps.lang.constraints.rules.editor.HintDefsCustomEditorCell" />
     </file>
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/7291380803376071611">

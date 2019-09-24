@@ -10,7 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -36,7 +36,7 @@ public class typeof_MoneyLiteral_InferenceRule extends AbstractInferenceRule_Run
   private static SNode _quotation_createNode_1il3t_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, "jetbrains.mps.baseLanguage.money"), 0x1144b05194dL, "MoneyType"), null, null).node();
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, "jetbrains.mps.baseLanguage.money"), 0x1144b05194dL, "MoneyType")).getResult();
     return quotedNode_1;
   }
 

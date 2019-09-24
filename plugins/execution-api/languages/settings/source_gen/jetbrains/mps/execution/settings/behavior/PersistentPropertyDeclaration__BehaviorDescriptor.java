@@ -22,8 +22,7 @@ import jetbrains.mps.execution.common.behavior.IGeneratedToClass__BehaviorDescri
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -154,9 +153,8 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
     return CONCEPT;
   }
   private static SNode createTemplatePersistentConfigurationType_ex141d_b0a0a0() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null).node();
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

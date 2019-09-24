@@ -13,62 +13,60 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)/5968606277575949799">
     <file name="SuppressErrorsPerformanceTest_Test.java">
-      <node id="5968606277575949799" at="44,47,45,25" concept="10" />
-      <node id="5968606277576107113" at="49,55,50,46" concept="1" />
-      <node id="5968606277575949799" at="55,52,56,19" concept="10" />
-      <node id="5968606277575949800" at="59,57,60,41" concept="1" />
-      <node id="5710903617882704842" at="60,41,61,85" concept="7" />
-      <node id="5710903617882099194" at="61,85,62,65" concept="5" />
-      <node id="5710903617881668542" at="62,65,63,66" concept="5" />
-      <node id="419990885052976725" at="63,66,64,147" concept="1" />
-      <node id="5710903617882125008" at="64,147,65,150" concept="1" />
-      <node id="5968606277576107105" at="69,63,70,72" concept="5" />
-      <node id="5968606277576107130" at="70,72,71,336" concept="1" />
-      <node id="5968606277576125452" at="72,43,73,384" concept="1" />
-      <node id="5968606277576192532" at="74,7,75,307" concept="5" />
-      <node id="5968606277576287362" at="75,307,76,80" concept="5" />
-      <node id="5968606277576301142" at="76,80,77,41" concept="5" />
-      <node id="5968606277576304295" at="77,41,78,272" concept="5" />
-      <node id="5968606277576155154" at="78,272,79,185" concept="1" />
-      <node id="5968606277576302851" at="79,185,80,40" concept="5" />
-      <node id="5968606277576533590" at="80,40,81,52" concept="6" />
-      <node id="5968606277576152429" at="83,68,84,65" concept="5" />
-      <node id="5968606277576152429" at="84,65,85,83" concept="5" />
-      <node id="5968606277576152429" at="85,83,86,16" concept="6" />
-      <node id="5968606277575949799" at="91,0,92,0" concept="8" trace="item$zh_g" />
-      <node id="5968606277575949799" at="95,0,96,0" concept="8" trace="NodeResponseItem$jy" />
-      <node id="5968606277575949799" at="39,0,41,0" concept="8" trace="ourParamCache" />
-      <node id="5968606277575949799" at="41,0,43,0" concept="2" trace="myWithCommandRule" />
-      <node id="5968606277575949799" at="44,0,47,0" concept="0" trace="SuppressErrorsPerformanceTest_Test#()V" />
-      <node id="5968606277575949799" at="55,0,58,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="5968606277576136068" at="71,336,74,7" concept="3" />
-      <node id="5968606277576107113" at="48,0,52,0" concept="4" trace="test_testPerformance#()V" />
-      <node id="5968606277576152429" at="83,0,88,0" concept="9" trace="createNodeResponseItem_wxn1w7_a0a0a2a6h#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="5968606277576107113" at="59,0,67,0" concept="4" trace="test_testPerformance#()V" />
-      <node id="5968606277576511408" at="69,0,83,0" concept="4" trace="measureSuppressPerformance#(I)Ljava/time/Duration;" />
-      <scope id="5968606277575949799" at="44,47,45,25" />
-      <scope id="5968606277576107113" at="49,55,50,46" />
-      <scope id="5968606277575949799" at="55,52,56,19" />
-      <scope id="5968606277576136070" at="72,43,73,384" />
-      <scope id="5968606277575949799" at="44,0,47,0" />
-      <scope id="5968606277575949799" at="55,0,58,0">
+      <node id="5968606277575949799" at="43,47,44,25" concept="10" />
+      <node id="5968606277576107113" at="48,55,49,46" concept="1" />
+      <node id="5968606277575949799" at="54,52,55,19" concept="10" />
+      <node id="5968606277575949800" at="58,57,59,41" concept="1" />
+      <node id="5710903617882704842" at="59,41,60,85" concept="7" />
+      <node id="5710903617882099194" at="60,85,61,65" concept="5" />
+      <node id="5710903617881668542" at="61,65,62,66" concept="5" />
+      <node id="419990885052976725" at="62,66,63,147" concept="1" />
+      <node id="5710903617882125008" at="63,147,64,150" concept="1" />
+      <node id="5968606277576107105" at="68,63,69,72" concept="5" />
+      <node id="5968606277576107130" at="69,72,70,336" concept="1" />
+      <node id="5968606277576125452" at="71,43,72,384" concept="1" />
+      <node id="5968606277576192532" at="73,7,74,307" concept="5" />
+      <node id="5968606277576287362" at="74,307,75,80" concept="5" />
+      <node id="5968606277576301142" at="75,80,76,41" concept="5" />
+      <node id="5968606277576304295" at="76,41,77,272" concept="5" />
+      <node id="5968606277576155154" at="77,272,78,185" concept="1" />
+      <node id="5968606277576302851" at="78,185,79,40" concept="5" />
+      <node id="5968606277576533590" at="79,40,80,52" concept="6" />
+      <node id="5968606277576152429" at="82,68,83,88" concept="5" />
+      <node id="5968606277576152429" at="83,88,84,38" concept="6" />
+      <node id="5968606277575949799" at="89,0,90,0" concept="8" trace="item$zh_g" />
+      <node id="5968606277575949799" at="93,0,94,0" concept="8" trace="NodeResponseItem$jy" />
+      <node id="5968606277575949799" at="38,0,40,0" concept="8" trace="ourParamCache" />
+      <node id="5968606277575949799" at="40,0,42,0" concept="2" trace="myWithCommandRule" />
+      <node id="5968606277575949799" at="43,0,46,0" concept="0" trace="SuppressErrorsPerformanceTest_Test#()V" />
+      <node id="5968606277575949799" at="54,0,57,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5968606277576136068" at="70,336,73,7" concept="3" />
+      <node id="5968606277576107113" at="47,0,51,0" concept="4" trace="test_testPerformance#()V" />
+      <node id="5968606277576152429" at="82,0,86,0" concept="9" trace="createNodeResponseItem_wxn1w7_a0a0a2a6h#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5968606277576107113" at="58,0,66,0" concept="4" trace="test_testPerformance#()V" />
+      <node id="5968606277576511408" at="68,0,82,0" concept="4" trace="measureSuppressPerformance#(I)Ljava/time/Duration;" />
+      <scope id="5968606277575949799" at="43,47,44,25" />
+      <scope id="5968606277576107113" at="48,55,49,46" />
+      <scope id="5968606277575949799" at="54,52,55,19" />
+      <scope id="5968606277576136070" at="71,43,72,384" />
+      <scope id="5968606277576152429" at="82,68,84,38">
+        <var name="rootBuilder1" id="5968606277576152429" />
+      </scope>
+      <scope id="5968606277575949799" at="43,0,46,0" />
+      <scope id="5968606277575949799" at="54,0,57,0">
         <var name="owner" id="5968606277575949799" />
       </scope>
-      <scope id="5968606277576136068" at="71,336,74,7">
+      <scope id="5968606277576136068" at="70,336,73,7">
         <var name="i" id="5968606277576136071" />
       </scope>
-      <scope id="5968606277576152429" at="83,68,86,16">
-        <var name="facade" id="5968606277576152429" />
-        <var name="n1" id="5968606277576152429" />
-      </scope>
-      <scope id="5968606277576107113" at="48,0,52,0" />
-      <scope id="5968606277576152429" at="83,0,88,0" />
-      <scope id="5968606277576107113" at="59,57,65,150">
+      <scope id="5968606277576107113" at="47,0,51,0" />
+      <scope id="5968606277576152429" at="82,0,86,0" />
+      <scope id="5968606277576107113" at="58,57,64,150">
         <var name="durationA" id="5710903617882099195" />
         <var name="durationB" id="5710903617881668543" />
       </scope>
-      <scope id="5968606277576107113" at="59,0,67,0" />
-      <scope id="5968606277576511408" at="69,63,81,52">
+      <scope id="5968606277576107113" at="58,0,66,0" />
+      <scope id="5968606277576511408" at="68,63,80,52">
         <var name="checker" id="5968606277576304296" />
         <var name="modelToCheck" id="5968606277576192533" />
         <var name="startTime" id="5968606277576301143" />
@@ -76,13 +74,13 @@
         <var name="structureChecker" id="5968606277576287363" />
         <var name="var5968606277576107105" id="5968606277576107105" />
       </scope>
-      <scope id="5968606277576511408" at="69,0,83,0">
+      <scope id="5968606277576511408" at="68,0,82,0">
         <var name="modelSize" id="5968606277576511530" />
       </scope>
-      <unit id="5968606277575949799" at="90,0,93,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test$LINKS" />
-      <unit id="5968606277575949799" at="94,0,97,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test$CONCEPTS" />
-      <unit id="5968606277575949799" at="53,0,89,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test$TestBody" />
-      <unit id="5968606277575949799" at="37,0,98,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test" />
+      <unit id="5968606277575949799" at="88,0,91,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test$LINKS" />
+      <unit id="5968606277575949799" at="92,0,95,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test$CONCEPTS" />
+      <unit id="5968606277575949799" at="52,0,87,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test$TestBody" />
+      <unit id="5968606277575949799" at="36,0,96,0" name="jetbrains.mps.console.performance.SuppressErrorsPerformanceTest_Test" />
     </file>
   </root>
 </debug-info>

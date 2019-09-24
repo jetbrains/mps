@@ -13,7 +13,7 @@ import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -55,7 +55,7 @@ public class check_ConceptC_NonTypesystemRule extends AbstractNonTypesystemRule_
   private static SNode _quotation_createNode_id212q_a0a0b0b0a0c() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, "testOverridingRule"), 0x7aa4e26e6874caa6L, "ConceptC"), null, null).node();
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, "testOverridingRule"), 0x7aa4e26e6874caa6L, "ConceptC")).getResult();
     quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, 0x7aa4e26e6874ca74L, "conceptAProp"), "sadfsdf");
     quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa6L, 0x7aa4e26e6874caa7L, "conceptCProp"), "applicableValueC");
     return quotedNode_1;

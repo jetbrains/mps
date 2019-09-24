@@ -30,7 +30,7 @@ import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -120,7 +120,7 @@ public class SampleDeclMigration extends MigrationScriptBase {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
-    quotedNode_3 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 0x6aff2c1049329d71L, "NewComponent"), null, null).node();
+    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, "decl"), 0x6aff2c1049329d71L, "NewComponent")).getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_3, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_2);
     {
       List<SNode> nodes = (List<SNode>) parameter_1;
@@ -131,11 +131,10 @@ public class SampleDeclMigration extends MigrationScriptBase {
     return quotedNode_3;
   }
   private static SNode createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(Object p0, Object p1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.DeclMigrationData$E1, null, null).node();
-    n1.setProperty(PROPS.oldId$W$wZ, PROPS.oldId$W$wZ.getType().toString(p0));
-    n1.setProperty(PROPS.newId$W$xu, PROPS.newId$W$xu.getType().toString(p1));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeclMigrationData$E1);
+    rootBuilder1.setProperty(PROPS.oldId$W$wZ, PROPS.oldId$W$wZ.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.newId$W$xu, PROPS.newId$W$xu.getType().toString(p1));
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

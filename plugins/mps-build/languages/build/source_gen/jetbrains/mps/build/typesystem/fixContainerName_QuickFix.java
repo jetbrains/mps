@@ -9,8 +9,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -35,10 +34,9 @@ public class fixContainerName_QuickFix extends QuickFix_Runtime {
     }
   }
   private static SNode createBuildTextStringPart_uzundk_a0a0a0c0c(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.BuildTextStringPart$xk, null, null).node();
-    n1.setProperty(PROPS.text$2p89, PROPS.text$2p89.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildTextStringPart$xk);
+    rootBuilder1.setProperty(PROPS.text$2p89, PROPS.text$2p89.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

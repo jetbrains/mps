@@ -143,43 +143,42 @@
       <node id="3570488090024099578" at="149,25,150,58" concept="2" />
       <node id="3570488090029882610" at="150,58,151,108" concept="2" />
       <node id="3570488090024099588" at="152,5,153,18" concept="8" />
-      <node id="8537257087267418002" at="156,85,157,63" concept="7" />
-      <node id="8537257087267418002" at="157,63,158,90" concept="7" />
-      <node id="8537257087267418002" at="158,90,159,52" concept="2" />
-      <node id="8537257087267418002" at="159,52,160,14" concept="8" />
-      <node id="3570488090024099581" at="162,81,163,63" concept="7" />
-      <node id="3570488090024099581" at="163,63,164,30" concept="7" />
+      <node id="8537257087267418002" at="156,85,157,95" concept="7" />
+      <node id="8537257087267418002" at="157,95,158,62" concept="2" />
+      <node id="8537257087267418002" at="158,62,159,36" concept="8" />
+      <node id="3570488090024099581" at="161,81,162,63" concept="7" />
+      <node id="3570488090024099581" at="162,63,163,30" concept="7" />
+      <node id="3570488090024099581" at="163,30,164,30" concept="7" />
       <node id="3570488090024099581" at="164,30,165,30" concept="7" />
-      <node id="3570488090024099581" at="165,30,166,30" concept="7" />
-      <node id="3570488090024099581" at="166,30,167,226" concept="2" />
-      <node id="3570488090024099581" at="167,226,168,226" concept="2" />
-      <node id="3570488090024099581" at="168,226,169,227" concept="2" />
-      <node id="3570488090024099581" at="169,227,170,197" concept="2" />
-      <node id="3570488090024099581" at="170,197,171,172" concept="2" />
-      <node id="3570488090024099581" at="171,172,172,180" concept="2" />
-      <node id="3570488090024099581" at="172,180,173,24" concept="8" />
-      <node id="3570488090022661665" at="177,0,178,0" concept="10" trace="BuildMps_IdeaPluginModule$ZA" />
-      <node id="3570488090022661665" at="178,0,179,0" concept="10" trace="BuildMps_IdeaPluginGroup$9v" />
-      <node id="3570488090022661665" at="179,0,180,0" concept="10" trace="BuildMps_IdeaPlugin$X0" />
-      <node id="3570488090022661665" at="180,0,181,0" concept="10" trace="BuildMpsLayout_ModuleJars$mB" />
-      <node id="3570488090022661665" at="181,0,182,0" concept="10" trace="BuildMps_Generator$ru" />
-      <node id="3570488090022661665" at="182,0,183,0" concept="10" trace="BuildProject$BF" />
-      <node id="3570488090022661665" at="183,0,184,0" concept="10" trace="BuildMpsLayout_Plugin$JV" />
-      <node id="3570488090022661665" at="184,0,185,0" concept="10" trace="BuildLayout_Folder$4a" />
-      <node id="3570488090022661665" at="188,0,189,0" concept="10" trace="customPackaging$STtn" />
-      <node id="3570488090022661665" at="189,0,190,0" concept="10" trace="name$tAp1" />
-      <node id="3570488090022661665" at="193,0,194,0" concept="10" trace="customPackaging$1o$U" />
-      <node id="3570488090022661665" at="194,0,195,0" concept="10" trace="content$uhXf" />
-      <node id="3570488090022661665" at="195,0,196,0" concept="10" trace="children$aiMf" />
-      <node id="3570488090022661665" at="196,0,197,0" concept="10" trace="module$5MWZ" />
-      <node id="3570488090022661665" at="197,0,198,0" concept="10" trace="layout$tpCz" />
-      <node id="3570488090022661665" at="198,0,199,0" concept="10" trace="packagingType$hucw" />
-      <node id="3570488090022661665" at="199,0,200,0" concept="10" trace="target$umH0" />
-      <node id="3570488090022661665" at="200,0,201,0" concept="10" trace="group$abww" />
-      <node id="3570488090022661665" at="201,0,202,0" concept="10" trace="modules$4DA0" />
-      <node id="3570488090022661665" at="202,0,203,0" concept="10" trace="target$7iJF" />
-      <node id="3570488090022661665" at="203,0,204,0" concept="10" trace="plugin$hRNK" />
-      <node id="3570488090022661665" at="204,0,205,0" concept="10" trace="containerName$Mzv5" />
+      <node id="3570488090024099581" at="165,30,166,236" concept="2" />
+      <node id="3570488090024099581" at="166,236,167,236" concept="2" />
+      <node id="3570488090024099581" at="167,236,168,237" concept="2" />
+      <node id="3570488090024099581" at="168,237,169,197" concept="2" />
+      <node id="3570488090024099581" at="169,197,170,172" concept="2" />
+      <node id="3570488090024099581" at="170,172,171,180" concept="2" />
+      <node id="3570488090024099581" at="171,180,172,24" concept="8" />
+      <node id="3570488090022661665" at="176,0,177,0" concept="10" trace="BuildMps_IdeaPluginModule$ZA" />
+      <node id="3570488090022661665" at="177,0,178,0" concept="10" trace="BuildMps_IdeaPluginGroup$9v" />
+      <node id="3570488090022661665" at="178,0,179,0" concept="10" trace="BuildMps_IdeaPlugin$X0" />
+      <node id="3570488090022661665" at="179,0,180,0" concept="10" trace="BuildMpsLayout_ModuleJars$mB" />
+      <node id="3570488090022661665" at="180,0,181,0" concept="10" trace="BuildMps_Generator$ru" />
+      <node id="3570488090022661665" at="181,0,182,0" concept="10" trace="BuildProject$BF" />
+      <node id="3570488090022661665" at="182,0,183,0" concept="10" trace="BuildMpsLayout_Plugin$JV" />
+      <node id="3570488090022661665" at="183,0,184,0" concept="10" trace="BuildLayout_Folder$4a" />
+      <node id="3570488090022661665" at="187,0,188,0" concept="10" trace="customPackaging$STtn" />
+      <node id="3570488090022661665" at="188,0,189,0" concept="10" trace="name$tAp1" />
+      <node id="3570488090022661665" at="192,0,193,0" concept="10" trace="customPackaging$1o$U" />
+      <node id="3570488090022661665" at="193,0,194,0" concept="10" trace="content$uhXf" />
+      <node id="3570488090022661665" at="194,0,195,0" concept="10" trace="children$aiMf" />
+      <node id="3570488090022661665" at="195,0,196,0" concept="10" trace="module$5MWZ" />
+      <node id="3570488090022661665" at="196,0,197,0" concept="10" trace="layout$tpCz" />
+      <node id="3570488090022661665" at="197,0,198,0" concept="10" trace="packagingType$hucw" />
+      <node id="3570488090022661665" at="198,0,199,0" concept="10" trace="target$umH0" />
+      <node id="3570488090022661665" at="199,0,200,0" concept="10" trace="group$abww" />
+      <node id="3570488090022661665" at="200,0,201,0" concept="10" trace="modules$4DA0" />
+      <node id="3570488090022661665" at="201,0,202,0" concept="10" trace="target$7iJF" />
+      <node id="3570488090022661665" at="202,0,203,0" concept="10" trace="plugin$hRNK" />
+      <node id="3570488090022661665" at="203,0,204,0" concept="10" trace="containerName$Mzv5" />
       <node id="3570488090026983109" at="68,18,70,13" concept="0" />
       <node id="3570488090022798821" at="77,16,79,11" concept="0" />
       <node id="3570488090027011868" at="83,14,85,9" concept="0" />
@@ -202,14 +201,14 @@
       <node id="8509107224083744134" at="116,96,121,31" concept="2" />
       <node id="3570488090026537275" at="135,161,140,5" concept="4" />
       <node id="3570488090024099553" at="143,72,148,7" concept="7" />
+      <node id="8537257087267418002" at="156,0,161,0" concept="11" trace="createBuildMpsLayout_ModuleJars_2skbva_a0a2a0a0#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8509107224047560903" at="121,31,127,11" concept="5" />
-      <node id="8537257087267418002" at="156,0,162,0" concept="11" trace="createBuildMpsLayout_ModuleJars_2skbva_a0a2a0a0#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3570488090024139384" at="94,89,101,7" concept="5" />
       <node id="3570488090026485834" at="134,0,142,0" concept="6" trace="createAutoPackaging#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3570488090024084084" at="92,78,103,5" concept="5" />
       <node id="3570488090024099595" at="143,0,155,0" concept="6" trace="findOrCreateFolder#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3570488090024084110" at="92,0,105,0" concept="6" trace="addModulePackaging#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="3570488090024099581" at="162,0,175,0" concept="11" trace="_quotation_createNode_2skbva_a0a0b0f#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="3570488090024099581" at="161,0,174,0" concept="11" trace="_quotation_createNode_2skbva_a0a0b0f#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3570488090022729888" at="64,114,79,11" concept="5" />
       <node id="3570488090024086536" at="114,9,129,9" concept="4" />
       <node id="3570488090022719203" at="63,84,80,9" concept="4" />
@@ -254,6 +253,9 @@
       <scope id="3570488090024099562" at="145,0,148,0">
         <var name="it" id="3570488090024099562" />
       </scope>
+      <scope id="8537257087267418002" at="156,85,159,36">
+        <var name="rootBuilder1" id="8537257087267418002" />
+      </scope>
       <scope id="3570488090022661665" at="43,0,47,0" />
       <scope id="3570488090022661665" at="47,0,51,0">
         <var name="m" id="3570488090022661665" />
@@ -264,10 +266,6 @@
       <scope id="8509107224047560905" at="122,78,126,13">
         <var name="groupFolder" id="3570488090024136644" />
       </scope>
-      <scope id="8537257087267418002" at="156,85,160,14">
-        <var name="facade" id="8537257087267418002" />
-        <var name="n1" id="8537257087267418002" />
-      </scope>
       <scope id="3570488090022729890" at="65,93,70,13" />
       <scope id="3570488090022796884" at="71,99,76,131">
         <var name="modulesAlreadyPackaged" id="3570488090026715130" />
@@ -275,11 +273,11 @@
       <scope id="3570488090026537275" at="135,161,140,5">
         <var name="layoutPluginNode" id="3570488090026537276" />
       </scope>
+      <scope id="8537257087267418002" at="156,0,161,0">
+        <var name="node0" id="8537257087267418002" />
+      </scope>
       <scope id="3570488090026485837" at="134,54,140,5">
         <var name="layoutOfTheProject" id="3570488090026661335" />
-      </scope>
-      <scope id="8537257087267418002" at="156,0,162,0">
-        <var name="node0" id="8537257087267418002" />
       </scope>
       <scope id="3570488090026485834" at="134,0,142,0">
         <var name="ideaPlugin" id="3570488090026526934" />
@@ -291,7 +289,7 @@
         <var name="folder" id="3570488090024099554" />
       </scope>
       <scope id="3570488090024084083" at="92,78,103,5" />
-      <scope id="3570488090024099581" at="162,81,173,24">
+      <scope id="3570488090024099581" at="161,81,172,24">
         <var name="facade" id="3570488090024099581" />
         <var name="quotedNode_2" id="3570488090024099581" />
         <var name="quotedNode_3" id="3570488090024099581" />
@@ -308,7 +306,7 @@
       <scope id="3570488090024086539" at="115,83,128,113">
         <var name="modulesToInsertIntoLayout" id="8509107224083695191" />
       </scope>
-      <scope id="3570488090024099581" at="162,0,175,0">
+      <scope id="3570488090024099581" at="161,0,174,0">
         <var name="parameter_1" id="3570488090024099581" />
       </scope>
       <scope id="3570488090022719206" at="64,114,79,11" />
@@ -354,10 +352,10 @@
       <unit id="3570488090024201938" at="95,50,99,7" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$2" />
       <unit id="8509107224071431086" at="117,213,121,11" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$3" />
       <unit id="3570488090024099562" at="144,175,148,5" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$4" />
-      <unit id="3570488090022661665" at="187,0,191,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$PROPS" />
-      <unit id="3570488090022661665" at="176,0,186,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$CONCEPTS" />
-      <unit id="3570488090022661665" at="192,0,206,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$LINKS" />
-      <unit id="3570488090022661665" at="37,0,207,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout" />
+      <unit id="3570488090022661665" at="186,0,190,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$PROPS" />
+      <unit id="3570488090022661665" at="175,0,185,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$CONCEPTS" />
+      <unit id="3570488090022661665" at="191,0,205,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout$LINKS" />
+      <unit id="3570488090022661665" at="37,0,206,0" name="jetbrains.mps.build.mps.migration.TransferCustomPackagingToLayout" />
     </file>
   </root>
   <root nodeRef="r:6b4c7cba-3f3c-4384-aa02-e68ac5ea8ee8(jetbrains.mps.build.mps.migration)/3764290790035333274">

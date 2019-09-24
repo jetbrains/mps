@@ -26,8 +26,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -102,27 +101,18 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
     }
   }
   private static SNode createReferenceMacro_nfdvwd_a0a0e0a(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.ReferenceMacro$nk, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ReferenceMacro$nk);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.ReferenceMacro_GetReferent$OO, null, null).node();
-      if (node0 != null) {
-        n2.addChild(LINKS.body$pTP2, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.StatementList$TN)));
-      }
-      n1.addChild(LINKS.referentFunction$ABIo, n2);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.referentFunction$ABIo).init(CONCEPTS.ReferenceMacro_GetReferent$OO);
+      n2.forChild(LINKS.body$pTP2).initNode(node0, CONCEPTS.StatementList$TN, true);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createDotExpression_nfdvwd_a0a5a0(SNode node0, SNode node1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.operand$Lcrr, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
-    }
-    if (node1 != null) {
-      n1.addChild(LINKS.operation$X4R8, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.IOperation$No)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
+    rootBuilder1.forChild(LINKS.operation$X4R8).initNode(node1, CONCEPTS.IOperation$No, true);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

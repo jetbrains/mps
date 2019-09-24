@@ -21,8 +21,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.editor.intentions.BaseNodeTransformer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -110,21 +109,17 @@ public class ConvertConstraintsToRulesAutomatically extends IntentionsFactory {
   }
   private static SNode createRulesBlock_dji8hx_a0a0b0f0h(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.RulesBlock$2N, null, null).node();
-    n1.setReference(LINKS.kind$ipQZ, SReference.create(LINKS.kind$ipQZ, n1, facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382583")));
-    for (SNode n : seq0) {
-      n1.addChild(LINKS.members$ipQw, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.RuleBlockMember$5H)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RulesBlock$2N);
+    rootBuilder1.setReference(LINKS.kind$ipQZ, new SNodePointer(facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382583")));
+    rootBuilder1.forChild(LINKS.members$ipQw).initNodeList(seq0, CONCEPTS.RuleBlockMember$5H);
+    return rootBuilder1.getResult();
   }
   private static SNode createRulesBlock_dji8hx_a0a0b0g0h(Iterable<? extends SNode> seq0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.RulesBlock$2N, null, null).node();
-    n1.setReference(LINKS.kind$ipQZ, SReference.create(LINKS.kind$ipQZ, n1, facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382590")));
-    for (SNode n : seq0) {
-      n1.addChild(LINKS.members$ipQw, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.RuleBlockMember$5H)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RulesBlock$2N);
+    rootBuilder1.setReference(LINKS.kind$ipQZ, new SNodePointer(facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382590")));
+    rootBuilder1.forChild(LINKS.members$ipQw).initNodeList(seq0, CONCEPTS.RuleBlockMember$5H);
+    return rootBuilder1.getResult();
   }
   private static <T> T as_dji8hx_a0a1a32(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

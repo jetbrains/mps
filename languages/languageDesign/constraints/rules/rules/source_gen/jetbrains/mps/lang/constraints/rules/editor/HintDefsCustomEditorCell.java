@@ -18,9 +18,7 @@ import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.traversal.CellTreeIterable;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -55,12 +53,9 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
     return collection;
   }
   private static SNode createEditorListOfDefs_igmisa_a0d0e(Iterable<? extends SNode> seq0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.EditorListOfDefs$7C, null, null).node();
-    for (SNode n : seq0) {
-      n1.addChild(LINKS.defs$D2dt, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.TypedDefReference$7f)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EditorListOfDefs$7C);
+    rootBuilder1.forChild(LINKS.defs$D2dt).initNodeList(seq0, CONCEPTS.TypedDefReference$7f);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

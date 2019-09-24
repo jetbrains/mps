@@ -45,8 +45,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.VariableValueQuery;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -342,10 +341,9 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0p(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.GeneratorInternal_String$cg, null, null).node();
-    n1.setProperty(PROPS.path$LlSY, PROPS.path$LlSY.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$cg);
+    rootBuilder1.setProperty(PROPS.path$LlSY, PROPS.path$LlSY.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

@@ -25,8 +25,7 @@ import jetbrains.mps.baseLanguage.lightweightdsl.intentions.ClassLikeInitHelper;
 import jetbrains.mps.ide.projectPane.NewRootNodeAction;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -111,10 +110,9 @@ public class NewClassLike_Action extends BaseAction {
     return object.getNodeId().toString();
   }
   private static SNode createDSLAnnotation_3skzbb_a0c0c0a(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.DSLAnnotation$dI, null, null).node();
-    n1.setReferenceTarget(LINKS.descriptor$Zoot, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DSLAnnotation$dI);
+    rootBuilder1.setReferenceTarget(LINKS.descriptor$Zoot, node0);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

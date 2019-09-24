@@ -23,8 +23,7 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -116,14 +115,11 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
     return CONCEPT;
   }
   private static SNode createMethodParameterInstance_e87i4c_a0a0(SNode node0, SNode node1, Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.MethodParameterInstance$yX, null, null).node();
-    n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    n1.setReferenceTarget(LINKS.decl$HZxr, node0);
-    if (node1 != null) {
-      n1.addChild(LINKS.type$pLrO, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.Type$IG)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MethodParameterInstance$yX);
+    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
+    rootBuilder1.setReferenceTarget(LINKS.decl$HZxr, node0);
+    rootBuilder1.forChild(LINKS.type$pLrO).initNode(node1, CONCEPTS.Type$IG, true);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

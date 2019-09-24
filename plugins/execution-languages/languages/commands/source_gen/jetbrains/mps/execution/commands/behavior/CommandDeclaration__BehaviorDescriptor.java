@@ -27,8 +27,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -188,10 +187,9 @@ public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescript
     return CONCEPT;
   }
   private static SNode createCommandType_5aznw1_a0a2(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.CommandType$8c, null, null).node();
-    n1.setReferenceTarget(LINKS.classifier$LHKW, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CommandType$8c);
+    rootBuilder1.setReferenceTarget(LINKS.classifier$LHKW, node0);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

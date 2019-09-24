@@ -30,9 +30,7 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -119,12 +117,9 @@ public class TestNode_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private static SNode createTestNode_e27ds2_a0a0a(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.TestNode$kc, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.nodeToCheck$Pz43, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.BaseConcept$Sz)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TestNode$kc);
+    rootBuilder1.forChild(LINKS.nodeToCheck$Pz43).initNode(node0, CONCEPTS.BaseConcept$Sz, true);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

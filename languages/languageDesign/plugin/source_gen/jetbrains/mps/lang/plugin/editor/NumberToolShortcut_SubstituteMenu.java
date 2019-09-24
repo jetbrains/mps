@@ -19,8 +19,7 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import java.util.regex.Pattern;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -127,10 +126,9 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private static SNode createNumberToolShortcut_33swfs_a0a0b(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.NumberToolShortcut$zP, null, null).node();
-    n1.setProperty(PROPS.number$5Dx6, PROPS.number$5Dx6.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$zP);
+    rootBuilder1.setProperty(PROPS.number$5Dx6, PROPS.number$5Dx6.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static final Pattern REGEXP_33swfs_a0a0a11c5 = Pattern.compile("\\d", 0);
 

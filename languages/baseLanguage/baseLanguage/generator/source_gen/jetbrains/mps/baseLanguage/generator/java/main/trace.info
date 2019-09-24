@@ -59,8 +59,8 @@
       <node id="3073231036165996123" at="256,15,257,61" concept="2" />
       <node id="3073231036165996164" at="292,63,293,63" concept="1" />
       <node id="3073231036165996164" at="293,63,294,30" concept="1" />
-      <node id="3073231036165996164" at="294,30,295,224" concept="0" />
-      <node id="3073231036165996164" at="295,224,296,436" concept="0" />
+      <node id="3073231036165996164" at="294,30,295,234" concept="0" />
+      <node id="3073231036165996164" at="295,234,296,436" concept="0" />
       <node id="3073231036165996164" at="296,436,297,24" concept="2" />
       <node id="1566704013439143567" at="49,0,52,0" concept="3" trace="rule_Condition_0_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="1224072736283" at="60,0,63,0" concept="3" trace="propertyMacro_GetValue_0_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

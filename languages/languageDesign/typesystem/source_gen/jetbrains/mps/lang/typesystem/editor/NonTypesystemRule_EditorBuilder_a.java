@@ -67,8 +67,7 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.typesystem.behavior.NonTypesystemRule__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -449,10 +448,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       return "choose";
     }
     private static SNode createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(SNode node0) {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.CheckingRuleReference$lK, null, null).node();
-      n1.setReferenceTarget(LINKS.declaration$jp80, node0);
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CheckingRuleReference$lK);
+      rootBuilder1.setReferenceTarget(LINKS.declaration$jp80, node0);
+      return rootBuilder1.getResult();
     }
   }
   private EditorCell createRefNodeList_0() {

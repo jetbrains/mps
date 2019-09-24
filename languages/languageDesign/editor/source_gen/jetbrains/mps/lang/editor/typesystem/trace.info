@@ -249,8 +249,8 @@
       <node id="1179766709016" at="38,30,39,17" concept="8" />
       <node id="1196869439750" at="41,83,42,63" concept="7" />
       <node id="1196869439750" at="42,63,43,30" concept="7" />
-      <node id="1196869439750" at="43,30,44,218" concept="3" />
-      <node id="1196869439750" at="44,218,45,196" concept="3" />
+      <node id="1196869439750" at="43,30,44,228" concept="3" />
+      <node id="1196869439750" at="44,228,45,196" concept="3" />
       <node id="1196869439750" at="45,196,46,24" concept="8" />
       <node id="1179766709016" at="50,0,51,0" concept="11" trace="CellKeyMapDeclaration$T9" />
       <node id="1179766709016" at="51,0,52,0" concept="11" trace="CellKeyMap_FunctionParm_selectedNode$4A" />
@@ -316,8 +316,8 @@
       <node id="1179766709059" at="42,30,43,17" concept="8" />
       <node id="1196869439772" at="45,83,46,63" concept="7" />
       <node id="1196869439772" at="46,63,47,30" concept="7" />
-      <node id="1196869439772" at="47,30,48,218" concept="3" />
-      <node id="1196869439772" at="48,218,49,196" concept="3" />
+      <node id="1196869439772" at="47,30,48,228" concept="3" />
+      <node id="1196869439772" at="48,228,49,196" concept="3" />
       <node id="1196869439772" at="49,196,50,24" concept="8" />
       <node id="1179766709059" at="54,0,55,0" concept="11" trace="CellActionMapDeclaration$Fh" />
       <node id="1179766709059" at="55,0,56,0" concept="11" trace="BaseEditorComponent$Sy" />
@@ -385,8 +385,8 @@
       <node id="1179766709108" at="37,30,38,17" concept="8" />
       <node id="1196869439778" at="40,83,41,63" concept="7" />
       <node id="1196869439778" at="41,63,42,30" concept="7" />
-      <node id="1196869439778" at="42,30,43,218" concept="3" />
-      <node id="1196869439778" at="43,218,44,196" concept="3" />
+      <node id="1196869439778" at="42,30,43,228" concept="3" />
+      <node id="1196869439778" at="43,228,44,196" concept="3" />
       <node id="1196869439778" at="44,196,45,24" concept="8" />
       <node id="1179766709108" at="49,0,50,0" concept="11" trace="AbstractComponent$Ng" />
       <node id="1179766709108" at="50,0,51,0" concept="11" trace="ConceptFunctionParameter_node$ob" />
@@ -457,13 +457,13 @@
       <node id="1179766709135" at="56,30,57,17" concept="8" />
       <node id="1196869439800" at="59,85,60,63" concept="7" />
       <node id="1196869439800" at="60,63,61,30" concept="7" />
-      <node id="1196869439800" at="61,30,62,218" concept="3" />
-      <node id="1196869439800" at="62,218,63,196" concept="3" />
+      <node id="1196869439800" at="61,30,62,228" concept="3" />
+      <node id="1196869439800" at="62,228,63,196" concept="3" />
       <node id="1196869439800" at="63,196,64,24" concept="8" />
       <node id="1196869439806" at="66,65,67,63" concept="7" />
       <node id="1196869439806" at="67,63,68,30" concept="7" />
-      <node id="1196869439806" at="68,30,69,218" concept="3" />
-      <node id="1196869439806" at="69,218,70,24" concept="8" />
+      <node id="1196869439806" at="68,30,69,228" concept="3" />
+      <node id="1196869439806" at="69,228,70,24" concept="8" />
       <node id="1179766709135" at="74,0,75,0" concept="11" trace="CellMenuPart_Abstract$vE" />
       <node id="1179766709135" at="75,0,76,0" concept="11" trace="LinkDeclaration$bA" />
       <node id="1179766709135" at="76,0,77,0" concept="11" trace="CellMenuPart_ReplaceChild_currentChild$Bk" />
@@ -550,8 +550,8 @@
       <node id="1179766709143" at="38,30,39,17" concept="8" />
       <node id="1196869439808" at="41,83,42,63" concept="7" />
       <node id="1196869439808" at="42,63,43,30" concept="7" />
-      <node id="1196869439808" at="43,30,44,218" concept="3" />
-      <node id="1196869439808" at="44,218,45,196" concept="3" />
+      <node id="1196869439808" at="43,30,44,228" concept="3" />
+      <node id="1196869439808" at="44,228,45,196" concept="3" />
       <node id="1196869439808" at="45,196,46,24" concept="8" />
       <node id="1179766709143" at="50,0,51,0" concept="11" trace="AbstractComponent$Ng" />
       <node id="1179766709143" at="51,0,52,0" concept="11" trace="CellMenuPart_Abstract_editedNode$AC" />
@@ -838,8 +838,8 @@
       <node id="1182235413427" at="40,30,41,17" concept="8" />
       <node id="1196869439829" at="43,85,44,63" concept="7" />
       <node id="1196869439829" at="44,63,45,30" concept="7" />
-      <node id="1196869439829" at="45,30,46,218" concept="3" />
-      <node id="1196869439829" at="46,218,47,196" concept="3" />
+      <node id="1196869439829" at="45,30,46,228" concept="3" />
+      <node id="1196869439829" at="46,228,47,196" concept="3" />
       <node id="1196869439829" at="47,196,48,24" concept="8" />
       <node id="1182235413427" at="52,0,53,0" concept="11" trace="CellModel_RefNodeList$IL" />
       <node id="1182235413427" at="53,0,54,0" concept="11" trace="ConceptFunctionParameter_childNode$Rc" />
@@ -906,8 +906,8 @@
       <node id="1189583357788" at="33,30,34,17" concept="8" />
       <node id="1196869439874" at="36,65,37,63" concept="7" />
       <node id="1196869439874" at="37,63,38,30" concept="7" />
-      <node id="1196869439874" at="38,30,39,222" concept="3" />
-      <node id="1196869439874" at="39,222,40,24" concept="8" />
+      <node id="1196869439874" at="38,30,39,232" concept="3" />
+      <node id="1196869439874" at="39,232,40,24" concept="8" />
       <node id="1189583357788" at="44,0,45,0" concept="11" trace="CellKeyMap_FunctionParm_selectedNodes$wR" />
       <node id="1189583357788" at="18,0,20,0" concept="1" trace="typeof_CellKeyMap_FunctionParm_selectedNodes_InferenceRule#()V" />
       <node id="1189583357788" at="27,0,30,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -963,8 +963,8 @@
       <node id="1201271578955" at="35,30,36,17" concept="8" />
       <node id="1201271592445" at="38,65,39,63" concept="7" />
       <node id="1201271592445" at="39,63,40,30" concept="7" />
-      <node id="1201271592445" at="40,30,41,220" concept="3" />
-      <node id="1201271592445" at="41,220,42,24" concept="8" />
+      <node id="1201271592445" at="40,30,41,230" concept="3" />
+      <node id="1201271592445" at="41,230,42,24" concept="8" />
       <node id="1201271578955" at="46,0,47,0" concept="11" trace="position$WxRk" />
       <node id="1201271578955" at="50,0,51,0" concept="11" trace="CaretPositionParameter$QK" />
       <node id="1201271578955" at="20,0,22,0" concept="1" trace="typeof_CaretPositionParameter_InferenceRule#()V" />
@@ -1085,8 +1085,8 @@
       <node id="1597643335227097389" at="41,30,42,17" concept="8" />
       <node id="1597643335227106094" at="44,85,45,63" concept="7" />
       <node id="1597643335227106094" at="45,63,46,30" concept="7" />
-      <node id="1597643335227106094" at="46,30,47,218" concept="3" />
-      <node id="1597643335227106094" at="47,218,48,196" concept="3" />
+      <node id="1597643335227106094" at="46,30,47,228" concept="3" />
+      <node id="1597643335227106094" at="47,228,48,196" concept="3" />
       <node id="1597643335227106094" at="48,196,49,24" concept="8" />
       <node id="1597643335227097389" at="53,0,54,0" concept="11" trace="IMenu$ym" />
       <node id="1597643335227097389" at="54,0,55,0" concept="11" trace="QueryFunctionParameter_TransformationMenu_node$H$" />
@@ -1199,8 +1199,8 @@
       <node id="1786743323643063304" at="33,30,34,17" concept="8" />
       <node id="1786743323643064821" at="36,65,37,63" concept="7" />
       <node id="1786743323643064821" at="37,63,38,30" concept="7" />
-      <node id="1786743323643064821" at="38,30,39,220" concept="3" />
-      <node id="1786743323643064821" at="39,220,40,24" concept="8" />
+      <node id="1786743323643064821" at="38,30,39,230" concept="3" />
+      <node id="1786743323643064821" at="39,230,40,24" concept="8" />
       <node id="1786743323643063304" at="44,0,45,0" concept="11" trace="SubstituteMenuItem_DescriptionText_Operation$bf" />
       <node id="1786743323643063304" at="18,0,20,0" concept="1" trace="typeof_SubstituteMenuItem_DescriptionText_Operation_InferenceRule#()V" />
       <node id="1786743323643063304" at="27,0,30,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1256,8 +1256,8 @@
       <node id="1786743323643064956" at="33,30,34,17" concept="8" />
       <node id="1786743323643064960" at="36,65,37,63" concept="7" />
       <node id="1786743323643064960" at="37,63,38,30" concept="7" />
-      <node id="1786743323643064960" at="38,30,39,220" concept="3" />
-      <node id="1786743323643064960" at="39,220,40,24" concept="8" />
+      <node id="1786743323643064960" at="38,30,39,230" concept="3" />
+      <node id="1786743323643064960" at="39,230,40,24" concept="8" />
       <node id="1786743323643064956" at="44,0,45,0" concept="11" trace="SubstituteMenuItem_MatchingText_Operation$9M" />
       <node id="1786743323643064956" at="18,0,20,0" concept="1" trace="typeof_SubstituteMenuItem_MatchingText_Operation_InferenceRule#()V" />
       <node id="1786743323643064956" at="27,0,30,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1313,8 +1313,8 @@
       <node id="1786743323643065316" at="33,30,34,17" concept="8" />
       <node id="1786743323643065320" at="36,65,37,63" concept="7" />
       <node id="1786743323643065320" at="37,63,38,30" concept="7" />
-      <node id="1786743323643065320" at="38,30,39,226" concept="3" />
-      <node id="1786743323643065320" at="39,226,40,24" concept="8" />
+      <node id="1786743323643065320" at="38,30,39,236" concept="3" />
+      <node id="1786743323643065320" at="39,236,40,24" concept="8" />
       <node id="1786743323643065316" at="44,0,45,0" concept="11" trace="SubstituteMenuItem_OutputConcept_Operation$mo" />
       <node id="1786743323643065316" at="18,0,20,0" concept="1" trace="typeof_SubstituteMenuItem_OutputConcept_Operation_InferenceRule#()V" />
       <node id="1786743323643065316" at="27,0,30,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1882,8 +1882,8 @@
       <node id="2893726635884012057" at="34,30,35,17" concept="8" />
       <node id="2893726635884024725" at="37,65,38,63" concept="7" />
       <node id="2893726635884024725" at="38,63,39,30" concept="7" />
-      <node id="2893726635884024725" at="39,30,40,224" concept="3" />
-      <node id="2893726635884024725" at="40,224,41,468" concept="3" />
+      <node id="2893726635884024725" at="39,30,40,234" concept="3" />
+      <node id="2893726635884024725" at="40,234,41,468" concept="3" />
       <node id="2893726635884024725" at="41,468,42,24" concept="8" />
       <node id="2893726635884012057" at="46,0,47,0" concept="11" trace="ConceptFunctionParameter_editorContext$k8" />
       <node id="2893726635884012057" at="19,0,21,0" concept="1" trace="typeof_ConceptFunctionParameter_editorContext_InferenceRule#()V" />
@@ -2219,8 +2219,8 @@
       <node id="334114027062738768" at="42,30,43,17" concept="8" />
       <node id="334114027062742395" at="45,65,46,63" concept="7" />
       <node id="334114027062742395" at="46,63,47,30" concept="7" />
-      <node id="334114027062742395" at="47,30,48,224" concept="3" />
-      <node id="334114027062742395" at="48,224,49,468" concept="3" />
+      <node id="334114027062742395" at="47,30,48,234" concept="3" />
+      <node id="334114027062742395" at="48,234,49,468" concept="3" />
       <node id="334114027062742395" at="49,468,50,24" concept="8" />
       <node id="334114027062738768" at="54,0,55,0" concept="11" trace="editorContext$vG7h" />
       <node id="334114027062738768" at="58,0,59,0" concept="11" trace="ApproveDelete_Operation$GV" />
@@ -2293,21 +2293,21 @@
       <node id="3604384757196115093" at="51,30,52,17" concept="8" />
       <node id="3604384757196128339" at="54,65,55,63" concept="7" />
       <node id="3604384757196128339" at="55,63,56,30" concept="7" />
-      <node id="3604384757196128339" at="56,30,57,224" concept="3" />
-      <node id="3604384757196128339" at="57,224,58,468" concept="3" />
+      <node id="3604384757196128339" at="56,30,57,234" concept="3" />
+      <node id="3604384757196128339" at="57,234,58,468" concept="3" />
       <node id="3604384757196128339" at="58,468,59,24" concept="8" />
       <node id="4461169032998054867" at="61,65,62,63" concept="7" />
       <node id="4461169032998054867" at="62,63,63,30" concept="7" />
-      <node id="4461169032998054867" at="63,30,64,220" concept="3" />
-      <node id="4461169032998054867" at="64,220,65,24" concept="8" />
+      <node id="4461169032998054867" at="63,30,64,230" concept="3" />
+      <node id="4461169032998054867" at="64,230,65,24" concept="8" />
       <node id="4461169032998055210" at="67,65,68,63" concept="7" />
       <node id="4461169032998055210" at="68,63,69,30" concept="7" />
-      <node id="4461169032998055210" at="69,30,70,220" concept="3" />
-      <node id="4461169032998055210" at="70,220,71,24" concept="8" />
+      <node id="4461169032998055210" at="69,30,70,230" concept="3" />
+      <node id="4461169032998055210" at="70,230,71,24" concept="8" />
       <node id="3883224472490224787" at="73,65,74,63" concept="7" />
       <node id="3883224472490224787" at="74,63,75,30" concept="7" />
-      <node id="3883224472490224787" at="75,30,76,217" concept="3" />
-      <node id="3883224472490224787" at="76,217,77,24" concept="8" />
+      <node id="3883224472490224787" at="75,30,76,227" concept="3" />
+      <node id="3883224472490224787" at="76,227,77,24" concept="8" />
       <node id="3604384757196115093" at="81,0,82,0" concept="11" trace="editorContext$uSDx" />
       <node id="3604384757196115093" at="82,0,83,0" concept="11" trace="selectionStart$otSS" />
       <node id="3604384757196115093" at="83,0,84,0" concept="11" trace="selectionEnd$5qN$" />
@@ -2577,8 +2577,8 @@
       <node id="4310268853341285075" at="42,30,43,17" concept="8" />
       <node id="4310268853341418989" at="45,85,46,63" concept="7" />
       <node id="4310268853341418989" at="46,63,47,30" concept="7" />
-      <node id="4310268853341418989" at="47,30,48,218" concept="3" />
-      <node id="4310268853341418989" at="48,218,49,196" concept="3" />
+      <node id="4310268853341418989" at="47,30,48,228" concept="3" />
+      <node id="4310268853341418989" at="48,228,49,196" concept="3" />
       <node id="4310268853341418989" at="49,196,50,24" concept="8" />
       <node id="4310268853341285075" at="54,0,55,0" concept="11" trace="QueryFunction_StyleParameter$MH" />
       <node id="4310268853341285075" at="55,0,56,0" concept="11" trace="ConceptFunctionParameter_nextNode$Y4" />
@@ -2646,8 +2646,8 @@
       <node id="4310268853341507745" at="42,30,43,17" concept="8" />
       <node id="4310268853341509543" at="45,85,46,63" concept="7" />
       <node id="4310268853341509543" at="46,63,47,30" concept="7" />
-      <node id="4310268853341509543" at="47,30,48,218" concept="3" />
-      <node id="4310268853341509543" at="48,218,49,196" concept="3" />
+      <node id="4310268853341509543" at="47,30,48,228" concept="3" />
+      <node id="4310268853341509543" at="48,228,49,196" concept="3" />
       <node id="4310268853341509543" at="49,196,50,24" concept="8" />
       <node id="4310268853341507745" at="54,0,55,0" concept="11" trace="QueryFunction_StyleParameter$MH" />
       <node id="4310268853341507745" at="55,0,56,0" concept="11" trace="ConceptFunctionParameter_prevNode$eT" />
@@ -2714,8 +2714,8 @@
       <node id="4510086454773585041" at="36,30,37,17" concept="8" />
       <node id="4510086454773591226" at="39,65,40,63" concept="7" />
       <node id="4510086454773591226" at="40,63,41,30" concept="7" />
-      <node id="4510086454773591226" at="41,30,42,218" concept="3" />
-      <node id="4510086454773591226" at="42,218,43,456" concept="3" />
+      <node id="4510086454773591226" at="41,30,42,228" concept="3" />
+      <node id="4510086454773591226" at="42,228,43,456" concept="3" />
       <node id="4510086454773591226" at="43,456,44,24" concept="8" />
       <node id="4510086454773585041" at="48,0,49,0" concept="11" trace="propertyDeclaration$FS0n" />
       <node id="4510086454773585041" at="52,0,53,0" concept="11" trace="PropertyExpressionCellSelector$Px" />
@@ -2904,8 +2904,8 @@
       <node id="4820515453820814937" at="33,30,34,17" concept="8" />
       <node id="4820515453820815748" at="36,65,37,63" concept="7" />
       <node id="4820515453820815748" at="37,63,38,30" concept="7" />
-      <node id="4820515453820815748" at="38,30,39,220" concept="3" />
-      <node id="4820515453820815748" at="39,220,40,24" concept="8" />
+      <node id="4820515453820815748" at="38,30,39,230" concept="3" />
+      <node id="4820515453820815748" at="39,230,40,24" concept="8" />
       <node id="4820515453820814937" at="44,0,45,0" concept="11" trace="ConceptEditorHintDeclarationReferenceExpression$l5" />
       <node id="4820515453820814937" at="18,0,20,0" concept="1" trace="typeof_ConceptEditorHintDeclarationReferenceExpression_InferenceRule#()V" />
       <node id="4820515453820814937" at="27,0,30,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -2961,8 +2961,8 @@
       <node id="491383275431663028" at="33,30,34,17" concept="8" />
       <node id="491383275431667547" at="36,65,37,63" concept="7" />
       <node id="491383275431667547" at="37,63,38,30" concept="7" />
-      <node id="491383275431667547" at="38,30,39,220" concept="3" />
-      <node id="491383275431667547" at="39,220,40,24" concept="8" />
+      <node id="491383275431667547" at="38,30,39,230" concept="3" />
+      <node id="491383275431667547" at="39,230,40,24" concept="8" />
       <node id="491383275431663028" at="44,0,45,0" concept="11" trace="FontFamilyLiteral$ZJ" />
       <node id="491383275431663028" at="18,0,20,0" concept="1" trace="typeof_FontFamilyExpression_InferenceRule#()V" />
       <node id="491383275431663028" at="27,0,30,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -3234,8 +3234,8 @@
       <node id="6029276237634420347" at="41,83,42,63" concept="7" />
       <node id="6029276237634420347" at="42,63,43,30" concept="7" />
       <node id="6029276237634420347" at="43,30,44,30" concept="7" />
-      <node id="6029276237634420347" at="44,30,45,224" concept="3" />
-      <node id="6029276237634420347" at="45,224,46,475" concept="3" />
+      <node id="6029276237634420347" at="44,30,45,234" concept="3" />
+      <node id="6029276237634420347" at="45,234,46,475" concept="3" />
       <node id="6029276237634420347" at="46,475,47,39" concept="3" />
       <node id="6029276237634420347" at="48,31,49,201" concept="3" />
       <node id="6029276237634420347" at="50,5,51,24" concept="8" />
@@ -3956,8 +3956,8 @@
       <node id="6918029743850825967" at="50,30,51,17" concept="8" />
       <node id="6918029743850840742" at="53,83,54,63" concept="7" />
       <node id="6918029743850840742" at="54,63,55,30" concept="7" />
-      <node id="6918029743850840742" at="55,30,56,218" concept="3" />
-      <node id="6918029743850840742" at="56,218,57,196" concept="3" />
+      <node id="6918029743850840742" at="55,30,56,228" concept="3" />
+      <node id="6918029743850840742" at="56,228,57,196" concept="3" />
       <node id="6918029743850840742" at="57,196,58,24" concept="8" />
       <node id="6918029743850825967" at="62,0,63,0" concept="11" trace="CellMenuPart_Abstract$vE" />
       <node id="6918029743850825967" at="63,0,64,0" concept="11" trace="CellModel_RefCell$VD" />
@@ -4033,8 +4033,8 @@
       <node id="1588042961790516329" at="49,5,50,16" concept="8" />
       <node id="6918029743850843046" at="52,83,53,63" concept="7" />
       <node id="6918029743850843046" at="53,63,54,30" concept="7" />
-      <node id="6918029743850843046" at="54,30,55,218" concept="3" />
-      <node id="6918029743850843046" at="55,218,56,196" concept="3" />
+      <node id="6918029743850843046" at="54,30,55,228" concept="3" />
+      <node id="6918029743850843046" at="55,228,56,196" concept="3" />
       <node id="6918029743850843046" at="56,196,57,24" concept="8" />
       <node id="6918029743850843009" at="61,0,62,0" concept="11" trace="IReferenceContextProvider$5_" />
       <node id="6918029743850843009" at="62,0,63,0" concept="11" trace="ConceptFunctionParameter_targetNode$XK" />
@@ -4220,8 +4220,8 @@
       <node id="7806530711847278495" at="46,30,47,17" concept="8" />
       <node id="7806530711847280142" at="49,67,50,63" concept="7" />
       <node id="7806530711847280142" at="50,63,51,30" concept="7" />
-      <node id="7806530711847280142" at="51,30,52,224" concept="3" />
-      <node id="7806530711847280142" at="52,224,53,435" concept="3" />
+      <node id="7806530711847280142" at="51,30,52,234" concept="3" />
+      <node id="7806530711847280142" at="52,234,53,435" concept="3" />
       <node id="7806530711847280142" at="53,435,54,24" concept="8" />
       <node id="7806530711847278495" at="58,0,59,0" concept="11" trace="ParametersInformationQuery$_B" />
       <node id="7806530711847278495" at="59,0,60,0" concept="11" trace="ConceptFunctionParameter_parameterObject$yI" />
@@ -4561,8 +4561,8 @@
       <node id="8546225179494124582" at="38,30,39,17" concept="8" />
       <node id="8546225179494125845" at="41,83,42,63" concept="7" />
       <node id="8546225179494125845" at="42,63,43,30" concept="7" />
-      <node id="8546225179494125845" at="43,30,44,218" concept="3" />
-      <node id="8546225179494125845" at="44,218,45,196" concept="3" />
+      <node id="8546225179494125845" at="43,30,44,228" concept="3" />
+      <node id="8546225179494125845" at="44,228,45,196" concept="3" />
       <node id="8546225179494125845" at="45,196,46,24" concept="8" />
       <node id="8546225179494124582" at="50,0,51,0" concept="11" trace="ParametersInformationQuery$_B" />
       <node id="8546225179494124582" at="51,0,52,0" concept="11" trace="ConceptFunctionParameter_selectedNode$IB" />

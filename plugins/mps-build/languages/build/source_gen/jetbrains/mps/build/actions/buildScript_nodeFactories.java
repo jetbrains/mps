@@ -10,8 +10,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -36,9 +35,8 @@ public class buildScript_nodeFactories {
       SLinkOperations.setTarget(newNode, LINKS.scriptsDir$57XF, createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a());
     }
     private static SNode createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a() {
-      PersistenceFacade facade = PersistenceFacade.getInstance();
-      SNode n1 = new SNodeBuilder(CONCEPTS.BuildSourceProjectRelativePath$VD, null, null).node();
-      return n1;
+      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildSourceProjectRelativePath$VD);
+      return rootBuilder1.getResult();
     }
   }
   public static class NodeFactory_7389400916848172015 implements NodeFactory {

@@ -17,8 +17,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -76,30 +75,24 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
     }
   }
   private static SNode createTypesystemQuickFix_wv8vj7_a0a0a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.TypesystemQuickFix$ii, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TypesystemQuickFix$ii);
+    rootBuilder1.setProperty(PROPS.name$tAp1, "fix_");
     {
-      n1.setProperty(PROPS.name$tAp1, "fix_");
-      SNode n2 = new SNodeBuilder(CONCEPTS.QuickFixExecuteBlock$MP, null, null).node();
-      {
-        SNode n3 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
-        n2.addChild(LINKS.body$pTP2, n3);
-      }
-      n1.addChild(LINKS.executeBlock$kCq9, n2);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.executeBlock$kCq9).init(CONCEPTS.QuickFixExecuteBlock$MP);
+      n2.forChild(LINKS.body$pTP2).init(CONCEPTS.StatementList$TN);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createTypesystemIntention_wv8vj7_a0c0a(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.TypesystemIntention$aE, null, null).node();
-    n1.setReferenceTarget(LINKS.quickFix$FQGK, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TypesystemIntention$aE);
+    rootBuilder1.setReferenceTarget(LINKS.quickFix$FQGK, node0);
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink helginsIntention$f1IL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention");
-    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
     /*package*/ static final SContainmentLink executeBlock$kCq9 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock");
+    /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
     /*package*/ static final SReferenceLink quickFix$FQGK = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
   }
 

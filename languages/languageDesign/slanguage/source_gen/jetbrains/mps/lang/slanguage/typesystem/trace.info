@@ -32,8 +32,8 @@
       <node id="2030416617761258183" at="33,30,34,17" concept="6" />
       <node id="2030416617761261149" at="36,65,37,63" concept="5" />
       <node id="2030416617761261149" at="37,63,38,30" concept="5" />
-      <node id="2030416617761261149" at="38,30,39,220" concept="2" />
-      <node id="2030416617761261149" at="39,220,40,24" concept="6" />
+      <node id="2030416617761261149" at="38,30,39,230" concept="2" />
+      <node id="2030416617761261149" at="39,230,40,24" concept="6" />
       <node id="2030416617761258183" at="44,0,45,0" concept="7" trace="Model_IsAspectOperation$iR" />
       <node id="2030416617761258183" at="18,0,20,0" concept="1" trace="typeof_Model_IsAspectOperation_InferenceRule#()V" />
       <node id="2030416617761258183" at="27,0,30,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -93,16 +93,16 @@
       <node id="2799321329875510983" at="42,65,43,63" concept="5" />
       <node id="2799321329875510983" at="43,63,44,30" concept="5" />
       <node id="2799321329875510983" at="44,30,45,30" concept="5" />
-      <node id="2799321329875510983" at="45,30,46,234" concept="2" />
-      <node id="2799321329875510983" at="46,234,47,219" concept="2" />
-      <node id="2799321329875510983" at="47,219,48,168" concept="2" />
+      <node id="2799321329875510983" at="45,30,46,244" concept="2" />
+      <node id="2799321329875510983" at="46,244,47,229" concept="2" />
+      <node id="2799321329875510983" at="47,229,48,168" concept="2" />
       <node id="2799321329875510983" at="48,168,49,24" concept="6" />
       <node id="1205842240171" at="51,65,52,63" concept="5" />
       <node id="1205842240171" at="52,63,53,30" concept="5" />
       <node id="1205842240171" at="53,30,54,30" concept="5" />
-      <node id="1205842240171" at="54,30,55,234" concept="2" />
-      <node id="1205842240171" at="55,234,56,219" concept="2" />
-      <node id="1205842240171" at="56,219,57,168" concept="2" />
+      <node id="1205842240171" at="54,30,55,244" concept="2" />
+      <node id="1205842240171" at="55,244,56,229" concept="2" />
+      <node id="1205842240171" at="56,229,57,168" concept="2" />
       <node id="1205842240171" at="57,168,58,24" concept="6" />
       <node id="5932042262275872849" at="62,0,63,0" concept="7" trace="OfAspectOperation$9s" />
       <node id="5932042262275872849" at="19,0,21,0" concept="1" trace="typeof_OfAspectOperation_InferenceRule#()V" />
@@ -175,12 +175,12 @@
       <node id="6171083915388333171" at="43,30,44,17" concept="6" />
       <node id="6171083915388336863" at="46,65,47,63" concept="5" />
       <node id="6171083915388336863" at="47,63,48,30" concept="5" />
-      <node id="6171083915388336863" at="48,30,49,219" concept="2" />
-      <node id="6171083915388336863" at="49,219,50,24" concept="6" />
+      <node id="6171083915388336863" at="48,30,49,229" concept="2" />
+      <node id="6171083915388336863" at="49,229,50,24" concept="6" />
       <node id="6171083915388337576" at="52,67,53,63" concept="5" />
       <node id="6171083915388337576" at="53,63,54,30" concept="5" />
-      <node id="6171083915388337576" at="54,30,55,224" concept="2" />
-      <node id="6171083915388337576" at="55,224,56,467" concept="2" />
+      <node id="6171083915388337576" at="54,30,55,234" concept="2" />
+      <node id="6171083915388337576" at="55,234,56,467" concept="2" />
       <node id="6171083915388337576" at="56,467,57,24" concept="6" />
       <node id="6171083915388333171" at="61,0,62,0" concept="7" trace="lang$SZ10" />
       <node id="6171083915388333171" at="65,0,66,0" concept="7" trace="AspectModelRefExpression$2Y" />

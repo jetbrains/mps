@@ -24,8 +24,7 @@ import org.jdom.Text;
 import org.jdom.EntityRef;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -231,102 +230,84 @@ public class XmlConverter {
     return file;
   }
   private static SNode createXmlAttribute_h7fa2c_a0a0a5a3(Iterable<? extends SNode> seq0, Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlAttribute$UQ, null, null).node();
-    n1.setProperty(PROPS.attrName$j_5Y, PROPS.attrName$j_5Y.getType().toString(p0));
-    for (SNode n : seq0) {
-      n1.addChild(LINKS.value$RZKQ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(n, CONCEPTS.XmlValuePart$Ad)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlAttribute$UQ);
+    rootBuilder1.setProperty(PROPS.attrName$j_5Y, PROPS.attrName$j_5Y.getType().toString(p0));
+    rootBuilder1.forChild(LINKS.value$RZKQ).initNodeList(seq0, CONCEPTS.XmlValuePart$Ad);
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlCommentLine_h7fa2c_a0a0a0a0c0a0a4(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlCommentLine$tE, null, null).node();
-    n1.setProperty(PROPS.text$U6F0, PROPS.text$U6F0.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCommentLine$tE);
+    rootBuilder1.setProperty(PROPS.text$U6F0, PROPS.text$U6F0.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlProcessingInstruction_h7fa2c_a0a1a1a0e(Object p0, Object p1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlProcessingInstruction$B0, null, null).node();
-    n1.setProperty(PROPS.target$ZWw0, PROPS.target$ZWw0.getType().toString(p0));
-    n1.setProperty(PROPS.rawData$ZWwv, PROPS.rawData$ZWwv.getType().toString(p1));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlProcessingInstruction$B0);
+    rootBuilder1.setProperty(PROPS.target$ZWw0, PROPS.target$ZWw0.getType().toString(p0));
+    rootBuilder1.setProperty(PROPS.rawData$ZWwv, PROPS.rawData$ZWwv.getType().toString(p1));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlCDATA_h7fa2c_a0a1a2a0e(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlCDATA$Dr, null, null).node();
-    n1.setProperty(PROPS.content$ENhU, PROPS.content$ENhU.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCDATA$Dr);
+    rootBuilder1.setProperty(PROPS.content$ENhU, PROPS.content$ENhU.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlEntityRef_h7fa2c_a0a1a4a0e(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlEntityRef$k8, null, null).node();
-    n1.setProperty(PROPS.entityName$nUu1, PROPS.entityName$nUu1.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
+    rootBuilder1.setProperty(PROPS.entityName$nUu1, PROPS.entityName$nUu1.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlText_h7fa2c_a0a0a0a1a3a1a5(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlText$ZE, null, null).node();
-    n1.setProperty(PROPS.value$Wjv0, PROPS.value$Wjv0.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
+    rootBuilder1.setProperty(PROPS.value$Wjv0, PROPS.value$Wjv0.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlCharRef_h7fa2c_a0a0a2a1a3a1a5(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlCharRef$xa, null, null).node();
-    n1.setProperty(PROPS.charCode$ocV0, PROPS.charCode$ocV0.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRef$xa);
+    rootBuilder1.setProperty(PROPS.charCode$ocV0, PROPS.charCode$ocV0.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlEntityRef_h7fa2c_a0a2a0c0b0d0b0f(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlEntityRef$k8, null, null).node();
-    n1.setProperty(PROPS.entityName$nUu1, PROPS.entityName$nUu1.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
+    rootBuilder1.setProperty(PROPS.entityName$nUu1, PROPS.entityName$nUu1.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlText_h7fa2c_a0a0a4a1a5(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlText$ZE, null, null).node();
-    n1.setProperty(PROPS.value$Wjv0, PROPS.value$Wjv0.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
+    rootBuilder1.setProperty(PROPS.value$Wjv0, PROPS.value$Wjv0.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlText_h7fa2c_a0a0a5a1a5() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlText$ZE, null, null).node();
-    n1.setProperty(PROPS.value$Wjv0, "");
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
+    rootBuilder1.setProperty(PROPS.value$Wjv0, "");
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlTextValue_h7fa2c_a0a0a0a1a3a6(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlTextValue$BE, null, null).node();
-    n1.setProperty(PROPS.text$$xPb, PROPS.text$$xPb.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
+    rootBuilder1.setProperty(PROPS.text$$xPb, PROPS.text$$xPb.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlCharRefValue_h7fa2c_a0a0a2a1a3a6(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlCharRefValue$_9, null, null).node();
-    n1.setProperty(PROPS.charCode$Hh3$, PROPS.charCode$Hh3$.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRefValue$_9);
+    rootBuilder1.setProperty(PROPS.charCode$Hh3$, PROPS.charCode$Hh3$.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlEntityRefValue_h7fa2c_a0a2a0c0b0d0g(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlEntityRefValue$MN, null, null).node();
-    n1.setProperty(PROPS.entityName$EMB8, PROPS.entityName$EMB8.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRefValue$MN);
+    rootBuilder1.setProperty(PROPS.entityName$EMB8, PROPS.entityName$EMB8.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlTextValue_h7fa2c_a0a0a4a6(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlTextValue$BE, null, null).node();
-    n1.setProperty(PROPS.text$$xPb, PROPS.text$$xPb.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
+    rootBuilder1.setProperty(PROPS.text$$xPb, PROPS.text$$xPb.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createXmlDocument_h7fa2c_a0a2a11(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.XmlDocument$RD, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlDocument$RD);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.XmlElement$Pm, null, null).node();
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.rootElement$3ntj).init(CONCEPTS.XmlElement$Pm);
       n2.setProperty(PROPS.tagName$U00C, PROPS.tagName$U00C.getType().toString(p0));
-      n1.addChild(LINKS.rootElement$3ntj, n2);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class PROPS {

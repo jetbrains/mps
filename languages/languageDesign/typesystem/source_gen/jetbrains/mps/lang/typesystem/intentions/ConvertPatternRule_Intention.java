@@ -17,8 +17,7 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -77,33 +76,26 @@ public final class ConvertPatternRule_Intention extends AbstractIntentionDescrip
     }
   }
   private static SNode createConceptReference_kdoxak_a0d0a(SNode node0, Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.ConceptReference$Je, null, null).node();
-    n1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    n1.setReferenceTarget(LINKS.concept$Q1Nr, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ConceptReference$Je);
+    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
+    rootBuilder1.setReferenceTarget(LINKS.concept$Q1Nr, node0);
+    return rootBuilder1.getResult();
   }
   private static SNode createStatementList_kdoxak_a0g0a(SNode node0, SNode node1, SNode node2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.StatementList$TN, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.MatchStatement$1G, null, null).node();
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statement$WHn8).init(CONCEPTS.MatchStatement$1G);
       {
-        SNode n3 = new SNodeBuilder(CONCEPTS.ApplicableNodeReference$VP, null, null).node();
+        SNodeBuilder n3 = n2.forChild(LINKS.expression$8_90).init(CONCEPTS.ApplicableNodeReference$VP);
         n3.setReferenceTarget(LINKS.applicableNode$z$o5, node0);
-        n2.addChild(LINKS.expression$8_90, n3);
-        SNode n4 = new SNodeBuilder(CONCEPTS.MatchStatementItem$EH, null, null).node();
-        if (node1 != null) {
-          n4.addChild(LINKS.condition$JZ3Z, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.ApplicableNodeCondition$sh)));
-        }
-        if (node2 != null) {
-          n4.addChild(LINKS.ifTrue$S5VZ, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node2, CONCEPTS.StatementList$TN)));
-        }
-        n2.addChild(LINKS.item$AXJR, n4);
       }
-      n1.addChild(LINKS.statement$WHn8, n2);
+      {
+        SNodeBuilder n4 = n2.forChild(LINKS.item$AXJR).init(CONCEPTS.MatchStatementItem$EH);
+        n4.forChild(LINKS.condition$JZ3Z).initNode(node1, CONCEPTS.ApplicableNodeCondition$sh, true);
+        n4.forChild(LINKS.ifTrue$S5VZ).initNode(node2, CONCEPTS.StatementList$TN, true);
+      }
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {
@@ -111,12 +103,12 @@ public final class ConvertPatternRule_Intention extends AbstractIntentionDescrip
     /*package*/ static final SContainmentLink pattern$ag0O = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
     /*package*/ static final SContainmentLink body$uYGk = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body");
     /*package*/ static final SReferenceLink concept$Q1Nr = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
-    /*package*/ static final SReferenceLink applicableNode$z$o5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
+    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     /*package*/ static final SContainmentLink expression$8_90 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x1122953623eL, "expression");
+    /*package*/ static final SReferenceLink applicableNode$z$o5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL, 0x1117e9f2a5aL, "applicableNode");
+    /*package*/ static final SContainmentLink item$AXJR = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x11229530b91L, "item");
     /*package*/ static final SContainmentLink condition$JZ3Z = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112295a8fecL, 0x112295ab642L, "condition");
     /*package*/ static final SContainmentLink ifTrue$S5VZ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112295a8fecL, 0x112295aee4aL, "ifTrue");
-    /*package*/ static final SContainmentLink item$AXJR = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1122952fb1dL, 0x11229530b91L, "item");
-    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {

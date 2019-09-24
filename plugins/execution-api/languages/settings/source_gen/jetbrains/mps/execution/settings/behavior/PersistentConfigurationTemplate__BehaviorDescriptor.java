@@ -17,8 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
@@ -82,10 +81,9 @@ public final class PersistentConfigurationTemplate__BehaviorDescriptor extends B
     return CONCEPT;
   }
   private static SNode createTemplatePersistentConfigurationType_3swbqk_a0a0(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null).node();
-    n1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

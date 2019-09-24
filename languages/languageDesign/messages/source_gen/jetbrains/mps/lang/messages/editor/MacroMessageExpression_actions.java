@@ -16,8 +16,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -121,22 +120,19 @@ public class MacroMessageExpression_actions {
     }
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0c0b0a0(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
-    n1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
-    n1.setProperty(PROPS.message$vnr0, "");
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    rootBuilder1.setProperty(PROPS.message$vnr0, "");
+    return rootBuilder1.getResult();
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0c() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.LiteralMessageExpression$Ga, null, null).node();
-    n1.setProperty(PROPS.message$vnr0, "");
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    rootBuilder1.setProperty(PROPS.message$vnr0, "");
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

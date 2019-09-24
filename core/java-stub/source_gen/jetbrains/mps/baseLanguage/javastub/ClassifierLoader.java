@@ -24,8 +24,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.io.InputStream;
 import jetbrains.mps.util.ReadUtil;
 import java.io.IOException;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -195,14 +194,12 @@ public class ClassifierLoader {
     return name.substring(0, name.indexOf('.'));
   }
   private static SNode createProtectedVisibility_eoyrbu_a0a0h0l0o() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.ProtectedVisibility$OD, null, null).node();
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ProtectedVisibility$OD);
+    return rootBuilder1.getResult();
   }
   private static SNode createPrivateVisibility_eoyrbu_a0a0a7a11a41() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.PrivateVisibility$Se, null, null).node();
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PrivateVisibility$Se);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

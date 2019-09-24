@@ -29,8 +29,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -89,9 +88,8 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
     return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.EditorOperationDeclaration$mT, true, false) != null);
   }
   private static SNode createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1a0a0a0d() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.TemplatePersistentConfigurationType$ht, null, null).node();
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    return rootBuilder1.getResult();
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "1227128029536565529");
   private static final SNodePointer breakingNode_lq9qwe_a0a0a0a0a1a0a0a0d = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "6836281137582823946");

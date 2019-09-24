@@ -35,8 +35,8 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -124,38 +124,30 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     RefactoringRuntime.replaceWithNewConcept(instance, newConcept);
   }
   private static SNode createDeprecatedNodeAnnotation_c4c66o_a0d0b(Object p0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.DeprecatedNodeAnnotation$I8, null, null).node();
-    n1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
+    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
+    return rootBuilder1.getResult();
   }
   private static SNode createInterfaceConceptReference_c4c66o_a0a0a0a0l0b(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.InterfaceConceptReference$Yh, null, null).node();
-    n1.setReferenceTarget(LINKS.intfc$fO5, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
+    rootBuilder1.setReferenceTarget(LINKS.intfc$fO5, node0);
+    return rootBuilder1.getResult();
   }
   private static SNode createMoveConcept_c4c66o_c0a71a1(SNode node0, SNode node1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.MoveConcept$Zi, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.sourceId$NVp5, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.ConceptId$5a)));
-    }
-    if (node1 != null) {
-      n1.addChild(LINKS.targetId$NVqy, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.ConceptId$5a)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveConcept$Zi);
+    rootBuilder1.forChild(LINKS.sourceId$NVp5).initNode(node0, CONCEPTS.ConceptId$5a, true);
+    rootBuilder1.forChild(LINKS.targetId$NVqy).initNode(node1, CONCEPTS.ConceptId$5a, true);
+    return rootBuilder1.getResult();
   }
   private static SNode createSubstituteMenu_Default_c4c66o_a0a0a0a1a2(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.SubstituteMenu_Default$hk, null, null).node();
-    n1.setReferenceTarget(LINKS.conceptDeclaration$acmt, node0);
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu_Default$hk);
+    rootBuilder1.setReferenceTarget(LINKS.conceptDeclaration$acmt, node0);
+    return rootBuilder1.getResult();
   }
   private static SNode _quotation_createNode_c4c66o_a0a2a2() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x88a6ffdb3b4f8c6L, "SubstituteMenuPart_Subconcepts"), null, null).node();
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x88a6ffdb3b4f8c6L, "SubstituteMenuPart_Subconcepts")).getResult();
     return quotedNode_1;
   }
 

@@ -119,9 +119,9 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.project.facets.JavaModuleOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.SReference" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.builder.SNodeBuilder" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.DebugInfo" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.TraceInfo" />
     <classNode dependClassName="jetbrains.mps.textgen.trace.TraceablePositionInfo" />

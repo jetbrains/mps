@@ -11,10 +11,11 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -51,30 +52,26 @@ public class typeof_NewProcessBuilderExperssion_InferenceRule extends AbstractIn
     return false;
   }
   private static SNode createProcessType_mm85y1_a1a0c0a0b() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.ProcessType$tB, null, null).node();
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
+    return rootBuilder1.getResult();
   }
   private static SNode _quotation_createNode_mm85y1_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"), null, null).node();
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
     return quotedNode_1;
   }
   private static SNode createJoinType_mm85y1_a1a0c0a0c0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.JoinType$9o, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.StringType$2b, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n2);
-      SNode n3 = new SNodeBuilder(CONCEPTS.ClassifierType$IZ, null, null).node();
-      n3.setReference(LINKS.classifier$pQ_R, SReference.create(LINKS.classifier$pQ_R, n3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
-      n1.addChild(LINKS.argument$xIHX, n3);
-      SNode n4 = new SNodeBuilder(CONCEPTS.ProcessBuilderCommandPartType$gI, null, null).node();
-      n1.addChild(LINKS.argument$xIHX, n4);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.argument$xIHX).init(CONCEPTS.StringType$2b);
+      SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ClassifierType$IZ);
+      n3.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
+      SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.ProcessBuilderCommandPartType$gI);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class LINKS {

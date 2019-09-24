@@ -14,7 +14,7 @@ import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -680,66 +680,44 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c89590300(jetbrains.mps.lang.smodel.scripts)/1693197062082143330");
   }
   private static SNode createDotExpression_y8o86o_a0c0a4(SNode node0, SNode node1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
     {
-      if (node0 != null) {
-        n1.addChild(LINKS.operand$Lcrr, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
-      }
-      SNode n2 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Link_SetTargetPointerOperation$59);
       {
-        SNode n3 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
-        if (node1 != null) {
-          n3.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.NodeIdentity$tk)));
-        }
-        n2.addChild(LINKS.linkTarget$ezbw, n3);
+        SNodeBuilder n3 = n2.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+        n3.forChild(LINKS.ref$ryyU).initNode(node1, CONCEPTS.NodeIdentity$tk, true);
       }
-      n1.addChild(LINKS.operation$X4R8, n2);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a5(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
-      if (node0 != null) {
-        n2.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
-      }
-      n1.addChild(LINKS.linkTarget$ezbw, n2);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+      n2.forChild(LINKS.ref$ryyU).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createDotExpression_y8o86o_a0c0a91(SNode node0, SNode node1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.DotExpression$6a, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
     {
-      if (node0 != null) {
-        n1.addChild(LINKS.operand$Lcrr, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.Expression$TP)));
-      }
-      SNode n2 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Link_SetTargetPointerOperation$59);
       {
-        SNode n3 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
-        if (node1 != null) {
-          n3.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node1, CONCEPTS.NodeIdentity$tk)));
-        }
-        n2.addChild(LINKS.linkTarget$ezbw, n3);
+        SNodeBuilder n3 = n2.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+        n3.forChild(LINKS.ref$ryyU).initNode(node1, CONCEPTS.NodeIdentity$tk, true);
       }
-      n1.addChild(LINKS.operation$X4R8, n2);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
   private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a02(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.Link_SetTargetPointerOperation$59, null, null).node();
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
     {
-      SNode n2 = new SNodeBuilder(CONCEPTS.NodePointerArg_Identity$5_, null, null).node();
-      if (node0 != null) {
-        n2.addChild(LINKS.ref$ryyU, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.NodeIdentity$tk)));
-      }
-      n1.addChild(LINKS.linkTarget$ezbw, n2);
+      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+      n2.forChild(LINKS.ref$ryyU).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
     }
-    return n1;
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {
@@ -767,8 +745,8 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
     /*package*/ static final SContainmentLink leftExpression$rxLZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
     /*package*/ static final SContainmentLink rightExpression$rxBl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
     /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink ref$ryyU = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
     /*package*/ static final SContainmentLink linkTarget$ezbw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0xd13da596bcfef4eL, 0xd13da596bcfef4fL, "linkTarget");
+    /*package*/ static final SContainmentLink ref$ryyU = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
   }
 
   private static final class PROPS {

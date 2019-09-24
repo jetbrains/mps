@@ -6,9 +6,7 @@ import jetbrains.mps.openapi.actions.descriptor.PasteWrapper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SNodeBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,12 +25,9 @@ public final class SwitchExpressionPW_PasteWrapper_6 implements PasteWrapper {
     return createBlockStatement_degi1_a0a0g(SLinkOperations.getTarget(sourceNode, LINKS.statementList$6WT0));
   }
   private static SNode createBlockStatement_degi1_a0a0g(SNode node0) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode n1 = new SNodeBuilder(CONCEPTS.BlockStatement$1i, null, null).node();
-    if (node0 != null) {
-      n1.addChild(LINKS.statements$uqR0, SNodeOperations.copyIfNecessary(SNodeOperations.cast(node0, CONCEPTS.StatementList$TN)));
-    }
-    return n1;
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BlockStatement$1i);
+    rootBuilder1.forChild(LINKS.statements$uqR0).initNode(node0, CONCEPTS.StatementList$TN, true);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {

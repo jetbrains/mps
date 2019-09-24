@@ -1983,8 +1983,8 @@
       <node id="658365993682020152" at="79,40,80,19" concept="8" />
       <node id="658365993682022006" at="82,60,83,63" concept="7" />
       <node id="658365993682022006" at="83,63,84,30" concept="7" />
-      <node id="658365993682022006" at="84,30,85,220" concept="2" />
-      <node id="658365993682022006" at="85,220,86,24" concept="8" />
+      <node id="658365993682022006" at="84,30,85,230" concept="2" />
+      <node id="658365993682022006" at="85,230,86,24" concept="8" />
       <node id="658365993682020152" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="658365993682020152" at="37,0,39,0" concept="1" trace="ReplaceBlock__BehaviorDescriptor#()V" />
       <node id="658365993682020152" at="33,0,36,0" concept="10" trace="getExpectedReturnType_idhEwIGRD#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

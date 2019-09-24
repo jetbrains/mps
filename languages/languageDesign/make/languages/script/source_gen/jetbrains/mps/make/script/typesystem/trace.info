@@ -38,12 +38,12 @@
       <node id="187226666892735701" at="44,30,45,17" concept="7" />
       <node id="187226666892740054" at="47,67,48,63" concept="6" />
       <node id="187226666892740054" at="48,63,49,30" concept="6" />
-      <node id="187226666892740054" at="49,30,50,220" concept="2" />
-      <node id="187226666892740054" at="50,220,51,24" concept="7" />
+      <node id="187226666892740054" at="49,30,50,230" concept="2" />
+      <node id="187226666892740054" at="50,230,51,24" concept="7" />
       <node id="1906791586424054409" at="53,67,54,63" concept="6" />
       <node id="1906791586424054409" at="54,63,55,30" concept="6" />
-      <node id="1906791586424054409" at="55,30,56,220" concept="2" />
-      <node id="1906791586424054409" at="56,220,57,24" concept="7" />
+      <node id="1906791586424054409" at="55,30,56,230" concept="2" />
+      <node id="1906791586424054409" at="56,230,57,24" concept="7" />
       <node id="187226666892735701" at="61,0,62,0" concept="9" trace="amount$7P2_" />
       <node id="187226666892735701" at="62,0,63,0" concept="9" trace="comment$q09q" />
       <node id="187226666892735701" at="66,0,67,0" concept="9" trace="AdvanceWorkStatement$CY" />
@@ -120,12 +120,12 @@
       <node id="187226666892740072" at="44,30,45,17" concept="7" />
       <node id="187226666892740078" at="47,66,48,63" concept="6" />
       <node id="187226666892740078" at="48,63,49,30" concept="6" />
-      <node id="187226666892740078" at="49,30,50,220" concept="2" />
-      <node id="187226666892740078" at="50,220,51,24" concept="7" />
+      <node id="187226666892740078" at="49,30,50,230" concept="2" />
+      <node id="187226666892740078" at="50,230,51,24" concept="7" />
       <node id="187226666892740091" at="53,66,54,63" concept="6" />
       <node id="187226666892740091" at="54,63,55,30" concept="6" />
-      <node id="187226666892740091" at="55,30,56,220" concept="2" />
-      <node id="187226666892740091" at="56,220,57,24" concept="7" />
+      <node id="187226666892740091" at="55,30,56,230" concept="2" />
+      <node id="187226666892740091" at="56,230,57,24" concept="7" />
       <node id="187226666892740072" at="61,0,62,0" concept="9" trace="expected$yDXF" />
       <node id="187226666892740072" at="62,0,63,0" concept="9" trace="ofTotal$yDYa" />
       <node id="187226666892740072" at="66,0,67,0" concept="9" trace="BeginWorkStatement$C0" />
@@ -199,8 +199,8 @@
       <node id="1977954644795311537" at="38,30,39,17" concept="7" />
       <node id="1977954644795311542" at="41,83,42,63" concept="6" />
       <node id="1977954644795311542" at="42,63,43,30" concept="6" />
-      <node id="1977954644795311542" at="43,30,44,223" concept="2" />
-      <node id="1977954644795311542" at="44,223,45,211" concept="2" />
+      <node id="1977954644795311542" at="43,30,44,233" concept="2" />
+      <node id="1977954644795311542" at="44,233,45,211" concept="2" />
       <node id="1977954644795311542" at="45,211,46,24" concept="7" />
       <node id="1977954644795311537" at="50,0,51,0" concept="9" trace="query$hcA9" />
       <node id="1977954644795311537" at="51,0,52,0" concept="9" trace="expected$qiXY" />
@@ -270,8 +270,8 @@
       <node id="2360002718792535571" at="42,51,43,179" concept="7" />
       <node id="8519118779653927515" at="45,65,46,63" concept="6" />
       <node id="8519118779653927515" at="46,63,47,30" concept="6" />
-      <node id="8519118779653927515" at="47,30,48,224" concept="2" />
-      <node id="8519118779653927515" at="48,224,49,458" concept="2" />
+      <node id="8519118779653927515" at="47,30,48,234" concept="2" />
+      <node id="8519118779653927515" at="48,234,49,458" concept="2" />
       <node id="8519118779653927515" at="49,458,50,24" concept="7" />
       <node id="2360002718792535571" at="54,0,55,0" concept="9" trace="ResourceType$uY" />
       <node id="2360002718792535571" at="19,0,21,0" concept="1" trace="ResourceType_comparableWith_IResource_ComparisonRule#()V" />
@@ -348,15 +348,15 @@
       <node id="4902420589244646146" at="50,65,51,63" concept="6" />
       <node id="4902420589244646146" at="51,63,52,30" concept="6" />
       <node id="4902420589244646146" at="52,30,53,30" concept="6" />
-      <node id="4902420589244646146" at="53,30,54,226" concept="2" />
-      <node id="4902420589244646146" at="54,226,55,224" concept="2" />
-      <node id="4902420589244646146" at="55,224,56,458" concept="2" />
+      <node id="4902420589244646146" at="53,30,54,236" concept="2" />
+      <node id="4902420589244646146" at="54,236,55,234" concept="2" />
+      <node id="4902420589244646146" at="55,234,56,458" concept="2" />
       <node id="4902420589244646146" at="56,458,57,181" concept="2" />
       <node id="4902420589244646146" at="57,181,58,24" concept="7" />
       <node id="4902420589244642801" at="60,64,61,63" concept="6" />
       <node id="4902420589244642801" at="61,63,62,30" concept="6" />
-      <node id="4902420589244642801" at="62,30,63,226" concept="2" />
-      <node id="4902420589244642801" at="63,226,64,24" concept="7" />
+      <node id="4902420589244642801" at="62,30,63,236" concept="2" />
+      <node id="4902420589244642801" at="63,236,64,24" concept="7" />
       <node id="2360002718792583537" at="68,0,69,0" concept="9" trace="classifierType$Fi0v" />
       <node id="2360002718792583537" at="69,0,70,0" concept="9" trace="classifier$pQ_R" />
       <node id="2360002718792583537" at="73,0,74,0" concept="9" trace="ResourceType$uY" />
@@ -429,12 +429,12 @@
       <node id="2360002718792622222" at="42,30,43,30" concept="6" />
       <node id="2360002718792622222" at="43,30,44,30" concept="6" />
       <node id="2360002718792622222" at="44,30,45,30" concept="6" />
-      <node id="2360002718792622222" at="45,30,46,221" concept="2" />
-      <node id="2360002718792622222" at="46,221,47,226" concept="2" />
-      <node id="2360002718792622222" at="47,226,48,165" concept="2" />
-      <node id="2360002718792622222" at="48,165,49,234" concept="2" />
-      <node id="2360002718792622222" at="49,234,50,226" concept="2" />
-      <node id="2360002718792622222" at="50,226,51,168" concept="2" />
+      <node id="2360002718792622222" at="45,30,46,231" concept="2" />
+      <node id="2360002718792622222" at="46,231,47,236" concept="2" />
+      <node id="2360002718792622222" at="47,236,48,165" concept="2" />
+      <node id="2360002718792622222" at="48,165,49,244" concept="2" />
+      <node id="2360002718792622222" at="49,244,50,236" concept="2" />
+      <node id="2360002718792622222" at="50,236,51,168" concept="2" />
       <node id="2360002718792622222" at="51,168,52,165" concept="2" />
       <node id="2360002718792622222" at="52,165,53,24" concept="7" />
       <node id="2360002718792622204" at="57,0,58,0" concept="9" trace="resource$xOtz" />
@@ -499,8 +499,8 @@
       <node id="3297237684108627666" at="33,30,34,17" concept="7" />
       <node id="3297237684108627679" at="36,65,37,63" concept="6" />
       <node id="3297237684108627679" at="37,63,38,30" concept="6" />
-      <node id="3297237684108627679" at="38,30,39,220" concept="2" />
-      <node id="3297237684108627679" at="39,220,40,24" concept="7" />
+      <node id="3297237684108627679" at="38,30,39,230" concept="2" />
+      <node id="3297237684108627679" at="39,230,40,24" concept="7" />
       <node id="3297237684108627666" at="44,0,45,0" concept="9" trace="AllWorkLeftExpression$m3" />
       <node id="3297237684108627666" at="18,0,20,0" concept="1" trace="typeof_AllWorkLeftExpression_InferenceRule#()V" />
       <node id="3297237684108627666" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -556,8 +556,8 @@
       <node id="4630580602658457580" at="60,59,61,36" concept="7" />
       <node id="4630580602658541835" at="63,63,64,63" concept="6" />
       <node id="4630580602658541835" at="64,63,65,30" concept="6" />
-      <node id="4630580602658541835" at="65,30,66,224" concept="2" />
-      <node id="4630580602658541835" at="66,224,67,458" concept="2" />
+      <node id="4630580602658541835" at="65,30,66,234" concept="2" />
+      <node id="4630580602658541835" at="66,234,67,458" concept="2" />
       <node id="4630580602658541835" at="67,458,68,24" concept="7" />
       <node id="4630580602658457580" at="72,0,73,0" concept="9" trace="classifier$pQ_R" />
       <node id="4630580602658457580" at="73,0,74,0" concept="9" trace="classifierType$Fi0v" />
@@ -669,13 +669,13 @@
       <node id="4902420589011877927" at="54,59,55,36" concept="7" />
       <node id="4902420589292726205" at="57,63,58,63" concept="6" />
       <node id="4902420589292726205" at="58,63,59,30" concept="6" />
-      <node id="4902420589292726205" at="59,30,60,224" concept="2" />
-      <node id="4902420589292726205" at="60,224,61,458" concept="2" />
+      <node id="4902420589292726205" at="59,30,60,234" concept="2" />
+      <node id="4902420589292726205" at="60,234,61,458" concept="2" />
       <node id="4902420589292726205" at="61,458,62,24" concept="7" />
       <node id="4902420589292726979" at="64,63,65,63" concept="6" />
       <node id="4902420589292726979" at="65,63,66,30" concept="6" />
-      <node id="4902420589292726979" at="66,30,67,224" concept="2" />
-      <node id="4902420589292726979" at="67,224,68,458" concept="2" />
+      <node id="4902420589292726979" at="66,30,67,234" concept="2" />
+      <node id="4902420589292726979" at="67,234,68,458" concept="2" />
       <node id="4902420589292726979" at="68,458,69,24" concept="7" />
       <node id="4902420589011877927" at="73,0,74,0" concept="9" trace="classifierType$Fi0v" />
       <node id="4902420589011877927" at="77,0,78,0" concept="9" trace="ResourceType$uY" />
@@ -773,8 +773,8 @@
       <node id="505095865854557931" at="37,30,38,17" concept="7" />
       <node id="505095865854557944" at="40,83,41,63" concept="6" />
       <node id="505095865854557944" at="41,63,42,30" concept="6" />
-      <node id="505095865854557944" at="42,30,43,223" concept="2" />
-      <node id="505095865854557944" at="43,223,44,211" concept="2" />
+      <node id="505095865854557944" at="42,30,43,233" concept="2" />
+      <node id="505095865854557944" at="43,233,44,211" concept="2" />
       <node id="505095865854557944" at="44,211,45,24" concept="7" />
       <node id="505095865854557931" at="49,0,50,0" concept="9" trace="option$wRmw" />
       <node id="505095865854557931" at="53,0,54,0" concept="9" trace="ExpectedOption$Ga" />
@@ -850,12 +850,12 @@
       <node id="6445309097630674038" at="38,39,39,16" concept="7" />
       <node id="6445309097630770933" at="41,60,42,63" concept="6" />
       <node id="6445309097630770933" at="42,63,43,30" concept="6" />
-      <node id="6445309097630770933" at="43,30,44,226" concept="2" />
-      <node id="6445309097630770933" at="44,226,45,24" concept="7" />
+      <node id="6445309097630770933" at="43,30,44,236" concept="2" />
+      <node id="6445309097630770933" at="44,236,45,24" concept="7" />
       <node id="8519118779653927514" at="47,65,48,63" concept="6" />
       <node id="8519118779653927514" at="48,63,49,30" concept="6" />
-      <node id="8519118779653927514" at="49,30,50,224" concept="2" />
-      <node id="8519118779653927514" at="50,224,51,458" concept="2" />
+      <node id="8519118779653927514" at="49,30,50,234" concept="2" />
+      <node id="8519118779653927514" at="50,234,51,458" concept="2" />
       <node id="8519118779653927514" at="51,458,52,24" concept="7" />
       <node id="6445309097630674038" at="19,0,21,0" concept="1" trace="supertypesOf_IResource_SubtypingRule#()V" />
       <node id="6445309097630674038" at="21,0,24,0" concept="5" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -919,8 +919,8 @@
       <node id="7044091413522286025" at="34,30,35,17" concept="7" />
       <node id="7044091413522287013" at="37,65,38,63" concept="6" />
       <node id="7044091413522287013" at="38,63,39,30" concept="6" />
-      <node id="7044091413522287013" at="39,30,40,224" concept="2" />
-      <node id="7044091413522287013" at="40,224,41,448" concept="2" />
+      <node id="7044091413522287013" at="39,30,40,234" concept="2" />
+      <node id="7044091413522287013" at="40,234,41,448" concept="2" />
       <node id="7044091413522287013" at="41,448,42,24" concept="7" />
       <node id="7044091413522286025" at="46,0,47,0" concept="9" trace="GetMakeSessionExpression$ET" />
       <node id="7044091413522286025" at="19,0,21,0" concept="1" trace="typeof_GetMakeSessionExpression_InferenceRule#()V" />
@@ -977,8 +977,8 @@
       <node id="8170824575195246249" at="34,30,35,17" concept="7" />
       <node id="8170824575195246262" at="37,65,38,63" concept="6" />
       <node id="8170824575195246262" at="38,63,39,30" concept="6" />
-      <node id="8170824575195246262" at="39,30,40,224" concept="2" />
-      <node id="8170824575195246262" at="40,224,41,458" concept="2" />
+      <node id="8170824575195246262" at="39,30,40,234" concept="2" />
+      <node id="8170824575195246262" at="40,234,41,458" concept="2" />
       <node id="8170824575195246262" at="41,458,42,24" concept="7" />
       <node id="8170824575195246249" at="46,0,47,0" concept="9" trace="PropertiesAccessorParameter$up" />
       <node id="8170824575195246249" at="19,0,21,0" concept="1" trace="typeof_PropertiesAccessorParameter_InferenceRule#()V" />
