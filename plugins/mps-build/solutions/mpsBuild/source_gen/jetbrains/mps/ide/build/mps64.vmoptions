@@ -10,6 +10,8 @@
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:-OmitStackTraceInFastThrow
 -Djdk.attach.allowAttachSelf
+-Dkotlinx.coroutines.debug=off
+-Djdk.module.illegalAccess.silent=true
 -Dawt.useSystemAAFontSettings=lcd
 -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
 -Dsun.tools.attach.tmp.only=true

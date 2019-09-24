@@ -28191,6 +28191,12 @@
     <node concept="26Ea6D" id="6KekG3Hebfm" role="2hID6k">
       <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf" />
     </node>
+    <node concept="26Ea6D" id="3Fszdtt6Zx9" role="2hID6k">
+      <property role="26Ea6C" value="-Dkotlinx.coroutines.debug=off" />
+    </node>
+    <node concept="26Ea6D" id="3Fszdtt6Zt4" role="2hID6k">
+      <property role="26Ea6C" value="-Djdk.module.illegalAccess.silent=true" />
+    </node>
     <node concept="26Ea6D" id="6KekG3HebgX" role="2hID6k">
       <property role="26Ea6C" value="-Dawt.useSystemAAFontSettings=lcd" />
     </node>
@@ -28306,6 +28312,12 @@
     </node>
     <node concept="26Ea6D" id="6KekG3Hebg9" role="26FZ21">
       <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf" />
+    </node>
+    <node concept="26Ea6D" id="3Fszdtt6Zyc" role="26FZ21">
+      <property role="26Ea6C" value="-Dkotlinx.coroutines.debug=off" />
+    </node>
+    <node concept="26Ea6D" id="3Fszdtt6Zu5" role="26FZ21">
+      <property role="26Ea6C" value="-Djdk.module.illegalAccess.silent=true" />
     </node>
     <node concept="26Ea6D" id="6KekG3HebhM" role="26FZ21">
       <property role="26Ea6C" value="-Dawt.useSystemAAFontSettings=lcd" />
