@@ -3393,6 +3393,7 @@
     <property role="TrG5h" value="StyleKeyPack" />
     <property role="3GE5qa" value="Stylesheet" />
     <property role="EcuMT" value="4151393920374910722" />
+    <property role="34LRSv" value="Style Key Pack" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="7mBovHg6Ada" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/styleKeyPack.png" />
@@ -3451,6 +3452,7 @@
     <property role="19KtqR" value="true" />
     <property role="TrG5h" value="ConceptEditorContextHints" />
     <property role="EcuMT" value="5944657839000868711" />
+    <property role="34LRSv" value="Context Hints" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4DKJNVBqp0k" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/editorContextHints.png" />
@@ -6249,7 +6251,7 @@
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="CompletionStyling" />
     <property role="3GE5qa" value="Menu.Completion" />
-    <property role="34LRSv" value="completion styling" />
+    <property role="34LRSv" value="Completion Styling" />
     <property role="EcuMT" value="7818019076292260194" />
     <ref role="1TJDcQ" to="tpee:fz12cDA" resolve="ClassConcept" />
     <node concept="1TJgyj" id="6iw7UxkrjtF" role="1TKVEi">

@@ -2734,7 +2734,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("specificator", 0x64a01fa8546d376bL).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e806541c9392c22L).optional(false).ordered(true).multiple(false).origin("7250830207897909099").done();
     b.aggregate("customizeFunction", 0xab9d570df29746bL).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df2577c8L).optional(false).ordered(true).multiple(false).origin("772883491827840107").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
-    b.alias("completion styling");
+    b.alias("Completion Styling");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConceptEditorContextHints() {
@@ -2746,6 +2746,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("hints", 0x527faacef4e379fbL).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL).optional(true).ordered(true).multiple(true).origin("5944657839000877563").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
+    b.alias("Context Hints");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConceptEditorDeclaration() {
@@ -5044,6 +5045,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c8959029e(jetbrains.mps.lang.editor.structure)/4151393920374910722");
     b.version(2);
     b.aggregate("styleKey", 0x399cb6c68aab4470L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x399cb6c68aa9aeaaL).optional(true).ordered(true).multiple(true).origin("4151393920375014512").done();
+    b.alias("Style Key Pack");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForStyleReference() {
