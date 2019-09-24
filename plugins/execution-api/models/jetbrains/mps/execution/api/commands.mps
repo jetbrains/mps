@@ -19,7 +19,6 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -934,131 +933,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="CsD5EJ3wCk" role="3cqZAp" />
-        <node concept="3SKdUt" id="CsD5EJ3s3B" role="3cqZAp">
-          <node concept="1PaTwC" id="CsD5EJ3s3C" role="3ndbpf">
-            <node concept="3oM_SD" id="CsD5EJ3uzE" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3uzG" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3uzJ" role="1PaTwD">
-              <property role="3oM_SC" value="a" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3uzN" role="1PaTwD">
-              <property role="3oM_SC" value="hack" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3uCO" role="1PaTwD">
-              <property role="3oM_SC" value="until" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3uHQ" role="1PaTwD">
-              <property role="3oM_SC" value="19.2.1." />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zoE" role="1PaTwD">
-              <property role="3oM_SC" value="It" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zs2" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zuD" role="1PaTwD">
-              <property role="3oM_SC" value="already" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zy3" role="1PaTwD">
-              <property role="3oM_SC" value="fixed" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3z$G" role="1PaTwD">
-              <property role="3oM_SC" value="(MPS-30562)," />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zQk" role="1PaTwD">
-              <property role="3oM_SC" value="but" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zSZ" role="1PaTwD">
-              <property role="3oM_SC" value="we" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zVF" role="1PaTwD">
-              <property role="3oM_SC" value="need" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3zYo" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$16" role="1PaTwD">
-              <property role="3oM_SC" value="wait" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$6j" role="1PaTwD">
-              <property role="3oM_SC" value="until" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$bx" role="1PaTwD">
-              <property role="3oM_SC" value="platform" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$B8" role="1PaTwD">
-              <property role="3oM_SC" value="update." />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$DU" role="1PaTwD">
-              <property role="3oM_SC" value="After" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$GH" role="1PaTwD">
-              <property role="3oM_SC" value="it," />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$Jx" role="1PaTwD">
-              <property role="3oM_SC" value="just" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$NE" role="1PaTwD">
-              <property role="3oM_SC" value="remove" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$SY" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3$VP" role="1PaTwD">
-              <property role="3oM_SC" value="line" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3_3D" role="1PaTwD">
-              <property role="3oM_SC" value="-" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3_eP" role="1PaTwD">
-              <property role="3oM_SC" value="everything" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3_hJ" role="1PaTwD">
-              <property role="3oM_SC" value="will" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3_lY" role="1PaTwD">
-              <property role="3oM_SC" value="continue" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3_tQ" role="1PaTwD">
-              <property role="3oM_SC" value="working" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3_wN" role="1PaTwD">
-              <property role="3oM_SC" value="through" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3_CH" role="1PaTwD">
-              <property role="3oM_SC" value="System" />
-            </node>
-            <node concept="3oM_SD" id="CsD5EJ3AoX" role="1PaTwD">
-              <property role="3oM_SC" value="Properties" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="CsD5EJ3jgh" role="3cqZAp">
-          <node concept="2OqwBi" id="CsD5EJ3n6I" role="3clFbG">
-            <node concept="2OqwBi" id="CsD5EJ3l4e" role="2Oq$k0">
-              <node concept="37vLTw" id="CsD5EJ3jgf" role="2Oq$k0">
-                <ref role="3cqZAo" node="3oW7HLfqDoB" resolve="builder" />
-              </node>
-              <node concept="liA8E" id="CsD5EJ3mXd" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~ProcessBuilder.environment()" resolve="environment" />
-              </node>
-            </node>
-            <node concept="liA8E" id="CsD5EJ3nJp" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
-              <node concept="Xl_RD" id="CsD5EJ3nVq" role="37wK5m">
-                <property role="Xl_RC" value="NO_FS_ROOTS_ACCESS_CHECK" />
-              </node>
-              <node concept="Xl_RD" id="CsD5EJ3ooQ" role="37wK5m">
-                <property role="Xl_RC" value="true" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="CsD5EJ3uPn" role="3cqZAp" />
         <node concept="SfApY" id="3oW7HLfqDoN" role="3cqZAp">
           <node concept="3clFbS" id="3oW7HLfqDoO" role="SfCbr">
             <node concept="3cpWs8" id="3oW7HLfqDoP" role="3cqZAp">

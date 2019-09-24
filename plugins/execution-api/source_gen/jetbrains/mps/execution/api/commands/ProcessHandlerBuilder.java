@@ -79,9 +79,6 @@ public class ProcessHandlerBuilder {
     ProcessBuilder builder = new ProcessBuilder(ListSequence.fromList(myCommandLine).toGenericArray(String.class));
     builder.directory(workingDirectory);
 
-    // this is a hack until 19.2.1. It is already fixed (MPS-30562), but we need to wait until platform update. After it, just remove this line - everything will continue working through System Properties 
-    builder.environment().put("NO_FS_ROOTS_ACCESS_CHECK", "true");
-
     try {
       Process process = builder.start();
       DefaultProcessHandler processHandler = new DefaultProcessHandler(process, ListSequence.fromList(myCommandLine).foldLeft("", new ILeftCombinator<String, String>() {
