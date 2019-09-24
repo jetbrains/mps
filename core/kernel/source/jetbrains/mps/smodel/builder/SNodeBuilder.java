@@ -139,9 +139,10 @@ public class SNodeBuilder implements AbstractNodeBuilder {
 
   @Override
   public SNodeBuilder forChild(SContainmentLink link) {
-    if (childrenInitialized.contains(link)) {
-      throw new IllegalStateException("double initialization");
-    }
+    // todo: perhaps should throw exception if the same link instantiated twice, it's quite inconvenient to read such code
+    //if (childrenInitialized.contains(link)) {
+    //  throw new IllegalStateException("double initialization");
+    //}
     childrenInitialized.add(link);
     return new ChildNodeBuilder(link, myNode, myModel, null);
   }
