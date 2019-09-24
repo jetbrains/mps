@@ -82,11 +82,17 @@ public class MigrateEnumProperties extends MigrationScriptBase {
 
 
   public static void updateProperty(SNode propertyDeclaration) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$fLUl), CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(propertyDeclaration), CONCEPTS.EnumPropertyMigrationInfo$Yg)) {
+      return;
+    }
+
+    SNode enumMigrationInfo = SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$fLUl)), CONCEPTS.EnumMigrationInfo$2L);
+
+    if ((enumMigrationInfo != null)) {
       SNode newPropertyDeclaration = SModelOperations.createNewNode(SNodeOperations.getModel(propertyDeclaration), null, CONCEPTS.PropertyDeclaration$c5);
       SPropertyOperations.assign(newPropertyDeclaration, PROPS.name$tAp1, SPropertyOperations.getString(propertyDeclaration, PROPS.name$tAp1));
       SPropertyOperations.assign(newPropertyDeclaration, PROPS.propertyId$cckp, SPropertyOperations.getString(propertyDeclaration, PROPS.propertyId$cckp));
-      SLinkOperations.setTarget(newPropertyDeclaration, LINKS.dataType$fLUl, SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(SLinkOperations.getTarget(propertyDeclaration, LINKS.dataType$fLUl))), CONCEPTS.EnumerationDeclaration$rG));
+      SLinkOperations.setTarget(newPropertyDeclaration, LINKS.dataType$fLUl, SNodeOperations.cast(SNodeOperations.getParent(enumMigrationInfo), CONCEPTS.EnumerationDeclaration$rG));
       SNodeOperations.replaceWithAnother(propertyDeclaration, newPropertyDeclaration);
       SLinkOperations.setTarget(AttributeOperations.createAndSetAttrbiute(newPropertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg), CONCEPTS.EnumPropertyMigrationInfo$Yg), LINKS.oldProperty$ft71, propertyDeclaration);
     }
@@ -96,6 +102,7 @@ public class MigrateEnumProperties extends MigrationScriptBase {
     /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
     /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$Ll = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
     /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SConcept EnumMigrationInfo$2L = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
     /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 
