@@ -66,11 +66,7 @@ public class ModelWriter9 implements IModelWriter {
 
   @Override
   public Document saveModel(SModel sourceModel) {
-    // sometimes we serialize detached models (e.g. in tests), no need to enforce actual resolveInfo in that case
-    // In fact, I doubt the need to ensure actual resolve info at all during serialization. If needed, could be explicit step prior to
-    // save or part of MMIP
-    final boolean attachedModel = sourceModel.getModelDescriptor() != null && sourceModel.getModelDescriptor().getRepository() != null;
-    myUseActualResolveInfo = !RuntimeFlags.isMergeDriverMode() && attachedModel;
+    setUseActualResolveInfo(sourceModel);
 
     myMetaInfo = new IdInfoRegistry();
     new IdInfoCollector(myMetaInfo, myMetaInfoProvider).fill(sourceModel.getRootNodes());
@@ -91,6 +87,14 @@ public class ModelWriter9 implements IModelWriter {
     }
 
     return new Document(rootElement);
+  }
+
+  private void setUseActualResolveInfo(SModel sourceModel) {
+    // sometimes we serialize detached models (e.g. in tests), no need to enforce actual resolveInfo in that case
+    // In fact, I doubt the need to ensure actual resolve info at all during serialization. If needed, could be explicit step prior to
+    // save or part of MMIP
+    final boolean attachedModel = sourceModel.getModelDescriptor() != null && sourceModel.getModelDescriptor().getRepository() != null;
+    myUseActualResolveInfo = !RuntimeFlags.isMergeDriverMode() && attachedModel;
   }
 
   private void saveModelProperties(SModel sourceModel, Element rootElement) {
@@ -297,6 +301,8 @@ public class ModelWriter9 implements IModelWriter {
 
   @Override
   public Map<String, Document> saveModelAsMultiStream(SModel sourceModel) {
+    setUseActualResolveInfo(sourceModel);
+
     myImportsHelper = new ImportsHelper(sourceModel.getReference()); // saveModelProperties->saveImports fills it
 
     // header

@@ -16,9 +16,9 @@ public class ASMAnnotation {
     myType = TypeUtil.fromDescriptor(node.desc);
     if (node.values != null) {
       myValues = new LinkedHashMap<String, Object>(node.values.size() / 2);
-      for (int i = 0; i < node.values.size() / 2; i += 2) {
-        Object key = node.values.get(i * 2);
-        Object value = ASMAnnotation.processValue(node.values.get(i * 2 + 1));
+      for (int i = 0; i < node.values.size(); i += 2) {
+        Object key = node.values.get(i);
+        Object value = ASMAnnotation.processValue(node.values.get(i + 1));
         myValues.put(key.toString(), value);
       }
     }

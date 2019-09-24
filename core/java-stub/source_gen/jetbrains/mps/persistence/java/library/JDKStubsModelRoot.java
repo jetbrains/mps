@@ -12,14 +12,17 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelId;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.MacroHelper;
+import java.util.ArrayList;
 
 /**
  * This is for faster implementing model roots that can handle J9 modules.
@@ -46,7 +49,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
   @NotNull
   @Override
   public Iterable<SModel> loadModels() {
-    List<SModel> result = ListSequence.fromList(new ArrayList<SModel>());
+    Map<SModelId, SModel> result = MapSequence.fromMap(new HashMap<SModelId, SModel>());
     // todo decide whether to use IdeaFS here 
     for (IFile file : ListSequence.fromList(myJrtPaths).select(new ISelector<QualifiedPath, IFile>() {
       public IFile select(QualifiedPath it) {
@@ -55,7 +58,7 @@ public class JDKStubsModelRoot extends ModelRootBase {
     })) {
       JavaClassStubsModelRoot.getModelDescriptors_(result, file, "", getModule(), myScopeControl, this);
     }
-    return result;
+    return MapSequence.fromMap(result).values();
   }
   @Override
   public String getPresentation() {

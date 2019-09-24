@@ -129,9 +129,6 @@ public class ModelOrNodeChooser extends ProjectViewPane implements ModelElementT
 
   // needs model read over project repo
   private boolean hasModelRoots(Module module) {
-    if (module == null) {
-      return false;
-    }
     MPSFacet mpsFacet = getFacetIfInitialized(module);
     if (mpsFacet == null) {
       return false;
@@ -140,7 +137,11 @@ public class ModelOrNodeChooser extends ProjectViewPane implements ModelElementT
     return mpsFacet.getSolution().getModelRoots().iterator().hasNext();
   }
 
-  public static MPSFacet getFacetIfInitialized(Module ideaModule) {
+  @Nullable
+  public static MPSFacet getFacetIfInitialized(@Nullable Module ideaModule) {
+    if (ideaModule == null) {
+      return null;
+    }
     MPSFacet mpsFacet = FacetManager.getInstance(ideaModule).getFacetByType(MPSFacetType.ID);
     if (mpsFacet != null && mpsFacet.wasInitialized()) {
       return mpsFacet;
