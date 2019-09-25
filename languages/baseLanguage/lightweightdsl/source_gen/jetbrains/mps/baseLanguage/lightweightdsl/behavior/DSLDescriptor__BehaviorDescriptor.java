@@ -21,6 +21,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.lang.reflect.Method;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -36,9 +38,10 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getPreferredConcept_id1_lSsE3TA5X = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getPreferredConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1_lSsE3TA5X").build();
   public static final SMethod<Void> initializeInstance_id2VRROcY8CaS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeInstance").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2VRROcY8CaS").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
   public static final SMethod<String> getGeneratedClassName_id2VRROcY7Vt6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2VRROcY7Vt6").build();
+  public static final SMethod<String> getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedQueriesQualifiedClassName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3UdX2XvIeC6").build();
   public static final SMethod<Iterable<SNode>> getClassLikeMembers_id2iCqkkxuhoj = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getClassLikeMembers").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iCqkkxuhoj").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPreferredConcept_id1_lSsE3TA5X, initializeInstance_id2VRROcY8CaS, getGeneratedClassName_id2VRROcY7Vt6, getClassLikeMembers_id2iCqkkxuhoj);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPreferredConcept_id1_lSsE3TA5X, initializeInstance_id2VRROcY8CaS, getGeneratedClassName_id2VRROcY7Vt6, getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6, getClassLikeMembers_id2iCqkkxuhoj);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -51,7 +54,8 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
       return;
     }
     try {
-      String className = SNodeOperations.getModel(__thisNode__).getModelName() + "." + DSLDescriptor__BehaviorDescriptor.getGeneratedClassName_id2VRROcY7Vt6.invoke(__thisNode__);
+      String className = DSLDescriptor__BehaviorDescriptor.getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6.invoke(__thisNode__);
+      // FIXME here's an assumption that implementation class has been generated in the same module as node<DSLDescriptor> 
       SModule classModule = __thisNode__.getModel().getModule();
       Method[] methods = ClassLoaderManager.getInstance().getClass(classModule, className).getMethods();
       for (Method m : methods) {
@@ -66,6 +70,15 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getGeneratedClassName_id2VRROcY7Vt6(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) + "_Queries";
+  }
+  /*package*/ static String getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6(@NotNull SNode __thisNode__) {
+    String modelQualifiedName;
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.implModel$pBbn) != null) {
+      modelQualifiedName = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.implModel$pBbn)).getName().getLongName();
+    } else {
+      modelQualifiedName = SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__));
+    }
+    return modelQualifiedName + '.' + DSLDescriptor__BehaviorDescriptor.getGeneratedClassName_id2VRROcY7Vt6.invoke(__thisNode__);
   }
   /*package*/ static Iterable<SNode> getClassLikeMembers_id2iCqkkxuhoj(@NotNull SNode __thisNode__) {
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
@@ -96,6 +109,8 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
       case 2:
         return (T) ((String) getGeneratedClassName_id2VRROcY7Vt6(node));
       case 3:
+        return (T) ((String) getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6(node));
+      case 4:
         return (T) ((Iterable<SNode>) getClassLikeMembers_id2iCqkkxuhoj(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -129,6 +144,7 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class LINKS {
     /*package*/ static final SReferenceLink preferredConcept$ybbQ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
     /*package*/ static final SContainmentLink initializer$7lug = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83eb220eL, "initializer");
+    /*package*/ static final SContainmentLink implModel$pBbn = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x3e8df42f5fb47812L, "implModel");
     /*package*/ static final SContainmentLink classLikeMember$UT6r = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x72b255a0447fe4c8L, "classLikeMember");
   }
 

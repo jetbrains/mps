@@ -8,11 +8,15 @@
     <import index="tp2c" ref="r:00000000-0000-4000-0000-011c89590338(jetbrains.mps.baseLanguage.closures.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
+    <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="6054523464626862044" name="jetbrains.mps.lang.structure.structure.AttributeInfo_IsMultiple" flags="ng" index="tn0Fv">
         <property id="6054523464626875854" name="value" index="tnX3d" />
       </concept>
@@ -114,6 +118,15 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="8264762413010642120" />
       <ref role="20lvS9" node="7aMlq14vYj7" resolve="DSLClassMember" />
+    </node>
+    <node concept="1TJgyj" id="3UdX2XvH7wi" role="1TKVEi">
+      <property role="IQ2ns" value="4507527286374037522" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="implModel" />
+      <ref role="20lvS9" to="dvox:7PoJpZpMbrj" resolve="ModelIdentity" />
+      <node concept="t5JxF" id="3UdX2XvH7wn" role="lGtFl">
+        <property role="t5JxN" value="Model that holds generated class for this descriptor" />
+      </node>
     </node>
     <node concept="PrWs8" id="1LJzqOWgoM3" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
@@ -439,6 +452,21 @@
     </node>
     <node concept="PrWs8" id="7DN9hucqeIE" role="PzmwI">
       <ref role="PrY4T" node="2WSWNq1TGnY" resolve="MemberModifier" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3UdX2XvI6gs">
+    <property role="EcuMT" value="4507527286374294556" />
+    <property role="TrG5h" value="ImplementationCode" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3UdX2XvI6gv" role="1TKVEi">
+      <property role="IQ2ns" value="4507527286374294559" />
+      <property role="20kJfa" value="descriptor" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="3geGFOI0X5w" resolve="DSLDescriptor" />
+    </node>
+    <node concept="PrWs8" id="3UdX2XvI6gt" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>

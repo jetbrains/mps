@@ -20,20 +20,21 @@ public final class LanguageConceptSwitch {
   public static final int DependentTypeInstance = 8;
   public static final int EmptyMemberDescriptor = 9;
   public static final int GenerateModifier = 10;
-  public static final int IntegerPropertyInstance = 11;
-  public static final int MemberInstance = 12;
-  public static final int MemberModifier = 13;
-  public static final int MemberPlaceholder = 14;
-  public static final int MethodDescriptor = 15;
-  public static final int MethodInstance = 16;
-  public static final int MethodParameterInstance = 17;
-  public static final int MultipleModifier = 18;
-  public static final int ParameterDescriptor = 19;
-  public static final int PlaceholderModifier = 20;
-  public static final int PropertyDescriptor = 21;
-  public static final int PropertyInstance = 22;
-  public static final int RequiredModifier = 23;
-  public static final int StringPropertyInstance = 24;
+  public static final int ImplementationCode = 11;
+  public static final int IntegerPropertyInstance = 12;
+  public static final int MemberInstance = 13;
+  public static final int MemberModifier = 14;
+  public static final int MemberPlaceholder = 15;
+  public static final int MethodDescriptor = 16;
+  public static final int MethodInstance = 17;
+  public static final int MethodParameterInstance = 18;
+  public static final int MultipleModifier = 19;
+  public static final int ParameterDescriptor = 20;
+  public static final int PlaceholderModifier = 21;
+  public static final int PropertyDescriptor = 22;
+  public static final int PropertyInstance = 23;
+  public static final int RequiredModifier = 24;
+  public static final int StringPropertyInstance = 25;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L);
@@ -48,6 +49,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x340eb2bd2e03d16bL, DependentTypeInstance);
     builder.put(0x50c63f9f4a0dea5fL, EmptyMemberDescriptor);
     builder.put(0x331be730bdf88d98L, GenerateModifier);
+    builder.put(0x3e8df42f5fb8641cL, ImplementationCode);
     builder.put(0x59e9926e84100ec5L, IntegerPropertyInstance);
     builder.put(0x59e9926e840d9179L, MemberInstance);
     builder.put(0x2f38f33681e6c5feL, MemberModifier);

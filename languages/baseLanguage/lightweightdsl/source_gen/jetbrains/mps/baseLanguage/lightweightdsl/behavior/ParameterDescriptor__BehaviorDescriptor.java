@@ -46,7 +46,7 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
   }
   /*package*/ static boolean isNeeded_id7GXvAHO1j1d(@NotNull SNode __thisNode__, SNode node) {
     try {
-      String className = SNodeOperations.getModel(__thisNode__).getModelName() + "." + DSLDescriptor__BehaviorDescriptor.getGeneratedClassName_id2VRROcY7Vt6.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLDescriptor$dS, false, false));
+      String className = DSLDescriptor__BehaviorDescriptor.getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLDescriptor$dS, false, false));
       SModule classModule = __thisNode__.getModel().getModule();
       Method[] methods = ClassLoaderManager.getInstance().getClass(classModule, className).getMethods();
       for (Method m : methods) {

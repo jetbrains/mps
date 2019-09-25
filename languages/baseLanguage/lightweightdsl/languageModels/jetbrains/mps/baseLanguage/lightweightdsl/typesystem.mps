@@ -16,6 +16,8 @@
     <import index="n1o" ref="r:74b3d011-b0fb-4dc0-ae17-fdfbde0e6086(jetbrains.mps.baseLanguage.lightweightdsl.util)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
+    <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -122,6 +124,7 @@
         <child id="1082485599094" name="ifFalseStatement" index="9aQIa" />
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
+        <child id="1206060520071" name="elsifClauses" index="3eNLev" />
       </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
@@ -141,6 +144,10 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1206060495898" name="jetbrains.mps.baseLanguage.structure.ElsifClause" flags="ng" index="3eNFk2">
+        <child id="1206060619838" name="condition" index="3eO9$A" />
+        <child id="1206060644605" name="statementList" index="3eOfB_" />
+      </concept>
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
@@ -297,6 +304,9 @@
       </concept>
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
+        <child id="1145404616321" name="leftExpression" index="2JrQYb" />
+      </concept>
       <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -3341,6 +3351,93 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="18kY7G" id="3UdX2XvIIqv">
+    <property role="TrG5h" value="check_ImplementationCode" />
+    <node concept="3clFbS" id="3UdX2XvIIqw" role="18ibNy">
+      <node concept="3clFbJ" id="3UdX2XvIJ8y" role="3cqZAp">
+        <node concept="3clFbS" id="3UdX2XvIJ8$" role="3clFbx">
+          <node concept="2MkqsV" id="3UdX2XvIJEZ" role="3cqZAp">
+            <node concept="Xl_RD" id="3UdX2XvIJNm" role="2MkJ7o">
+              <property role="Xl_RC" value="Referenced Descriptor shall specify this model as its implementation one" />
+            </node>
+            <node concept="1YBJjd" id="3UdX2XvIJFe" role="2OEOjV">
+              <ref role="1YBMHb" node="3UdX2XvIIqy" resolve="n" />
+            </node>
+          </node>
+        </node>
+        <node concept="2OqwBi" id="3UdX2XvIJlR" role="3clFbw">
+          <node concept="2OqwBi" id="3UdX2XvIIP$" role="2Oq$k0">
+            <node concept="2OqwBi" id="3UdX2XvIIyv" role="2Oq$k0">
+              <node concept="1YBJjd" id="3UdX2XvIIqD" role="2Oq$k0">
+                <ref role="1YBMHb" node="3UdX2XvIIqy" resolve="n" />
+              </node>
+              <node concept="3TrEf2" id="3UdX2XvIIEM" role="2OqNvi">
+                <ref role="3Tt5mk" to="oubp:3UdX2XvI6gv" resolve="descriptor" />
+              </node>
+            </node>
+            <node concept="3TrEf2" id="3UdX2XvIJ2T" role="2OqNvi">
+              <ref role="3Tt5mk" to="oubp:3UdX2XvH7wi" resolve="implModel" />
+            </node>
+          </node>
+          <node concept="3w_OXm" id="3UdX2XvIJEL" role="2OqNvi" />
+        </node>
+        <node concept="3eNFk2" id="3UdX2XvIK3Z" role="3eNLev">
+          <node concept="3fqX7Q" id="3UdX2XvILTB" role="3eO9$A">
+            <node concept="2OqwBi" id="3UdX2XvILTD" role="3fr31v">
+              <node concept="2OqwBi" id="3UdX2XvILTE" role="2Oq$k0">
+                <node concept="2JrnkZ" id="3UdX2XvILTF" role="2Oq$k0">
+                  <node concept="2OqwBi" id="3UdX2XvILTG" role="2JrQYb">
+                    <node concept="1YBJjd" id="3UdX2XvILTH" role="2Oq$k0">
+                      <ref role="1YBMHb" node="3UdX2XvIIqy" resolve="n" />
+                    </node>
+                    <node concept="I4A8Y" id="3UdX2XvILTI" role="2OqNvi" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="3UdX2XvILTJ" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
+                </node>
+              </node>
+              <node concept="liA8E" id="3UdX2XvILTK" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
+                <node concept="2OqwBi" id="3UdX2XvILTL" role="37wK5m">
+                  <node concept="2OqwBi" id="3UdX2XvILTM" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3UdX2XvILTN" role="2Oq$k0">
+                      <node concept="1YBJjd" id="3UdX2XvILTO" role="2Oq$k0">
+                        <ref role="1YBMHb" node="3UdX2XvIIqy" resolve="n" />
+                      </node>
+                      <node concept="3TrEf2" id="3UdX2XvILTP" role="2OqNvi">
+                        <ref role="3Tt5mk" to="oubp:3UdX2XvI6gv" resolve="descriptor" />
+                      </node>
+                    </node>
+                    <node concept="3TrEf2" id="3UdX2XvILTQ" role="2OqNvi">
+                      <ref role="3Tt5mk" to="oubp:3UdX2XvH7wi" resolve="implModel" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="3UdX2XvILTR" role="2OqNvi">
+                    <ref role="37wK5l" to="xlb7:1Bs_61$mvvu" resolve="toModelReference" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="3UdX2XvIK41" role="3eOfB_">
+            <node concept="2MkqsV" id="3UdX2XvIM1s" role="3cqZAp">
+              <node concept="Xl_RD" id="3UdX2XvIM1t" role="2MkJ7o">
+                <property role="Xl_RC" value="Referenced Descriptor specifies model other this one as its implementation" />
+              </node>
+              <node concept="1YBJjd" id="3UdX2XvIM1u" role="2OEOjV">
+                <ref role="1YBMHb" node="3UdX2XvIIqy" resolve="n" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3UdX2XvIIqy" role="1YuTPh">
+      <property role="TrG5h" value="n" />
+      <ref role="1YaFvo" to="oubp:3UdX2XvI6gs" resolve="ImplementationCode" />
     </node>
   </node>
 </model>

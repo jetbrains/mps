@@ -34,6 +34,9 @@
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
@@ -73,6 +76,7 @@
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
+      <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
@@ -174,6 +178,12 @@
         <property id="1238684351431" name="asCast" index="1BlNFB" />
       </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
+      <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
+        <reference id="1138056395725" name="property" index="3TsBF5" />
+      </concept>
+      <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
+        <reference id="1138056516764" name="link" index="3Tt5mk" />
+      </concept>
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
       </concept>
@@ -499,6 +509,37 @@
             <node concept="1mIQ4w" id="7DN9hucr2oX" role="2OqNvi">
               <node concept="chp4Y" id="7DN9hucr2_E" role="cj9EA">
                 <ref role="cht4Q" to="oubp:7aMlq14vVGL" resolve="PropertyDescriptor" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="3UdX2XvI6gW">
+    <ref role="1M2myG" to="oubp:3UdX2XvI6gs" resolve="ImplementationCode" />
+    <node concept="EnEH3" id="3UdX2XvI6gX" role="1MhHOB">
+      <ref role="EomxK" to="tpck:h0TrG11" resolve="name" />
+      <node concept="1LLf8_" id="3UdX2XvI6gZ" role="1LXaQT">
+        <node concept="3clFbS" id="3UdX2XvI6h0" role="2VODD2" />
+      </node>
+      <node concept="Eqf_E" id="3UdX2XvI6hl" role="EtsB7">
+        <node concept="3clFbS" id="3UdX2XvI6hm" role="2VODD2">
+          <node concept="3clFbF" id="3UdX2XvI6lW" role="3cqZAp">
+            <node concept="3cpWs3" id="3UdX2XvI8iZ" role="3clFbG">
+              <node concept="Xl_RD" id="3UdX2XvI8k0" role="3uHU7B">
+                <property role="Xl_RC" value="Implementation of " />
+              </node>
+              <node concept="2OqwBi" id="3UdX2XvI6Wh" role="3uHU7w">
+                <node concept="2OqwBi" id="3UdX2XvI6yi" role="2Oq$k0">
+                  <node concept="EsrRn" id="3UdX2XvI6lV" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="3UdX2XvI6J3" role="2OqNvi">
+                    <ref role="3Tt5mk" to="oubp:3UdX2XvI6gv" resolve="descriptor" />
+                  </node>
+                </node>
+                <node concept="3TrcHB" id="3UdX2XvI7e6" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                </node>
               </node>
             </node>
           </node>

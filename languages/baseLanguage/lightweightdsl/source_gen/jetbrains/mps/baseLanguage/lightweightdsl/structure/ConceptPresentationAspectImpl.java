@@ -20,6 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DependentTypeInstance;
   private ConceptPresentation props_EmptyMemberDescriptor;
   private ConceptPresentation props_GenerateModifier;
+  private ConceptPresentation props_ImplementationCode;
   private ConceptPresentation props_IntegerPropertyInstance;
   private ConceptPresentation props_MemberInstance;
   private ConceptPresentation props_MemberModifier;
@@ -116,6 +117,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GenerateModifier = cpb.create();
         }
         return props_GenerateModifier;
+      case LanguageConceptSwitch.ImplementationCode:
+        if (props_ImplementationCode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ImplementationCode = cpb.create();
+        }
+        return props_ImplementationCode;
       case LanguageConceptSwitch.IntegerPropertyInstance:
         if (props_IntegerPropertyInstance == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
