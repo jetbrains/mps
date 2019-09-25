@@ -54,7 +54,7 @@ public class check_ClassifierOverridingMethods_NonTypesystemRule extends Abstrac
         if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(overridingMethod, LINKS.returnType$WIkw), resolvedReturnType))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(overridingMethod, LINKS.returnType$WIkw), "The method's return type is incompatible with the base method ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2792291462223216211", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError((SLinkOperations.getTarget(overridingMethod, LINKS.returnType$WIkw) != null ? SLinkOperations.getTarget(overridingMethod, LINKS.returnType$WIkw) : overridingMethod), "The method's return type is incompatible with the base method ", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2792291462223216211", null, errorTarget);
           }
           break;
         }
