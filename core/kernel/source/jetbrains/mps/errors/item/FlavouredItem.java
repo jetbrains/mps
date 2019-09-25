@@ -54,6 +54,10 @@ import static jetbrains.mps.errors.item.NodeFlavouredItem.FLAVOUR_NODE;
  */
 public interface FlavouredItem {
 
+  /**
+   * @return a list of flavours that can identify the item so that if the same item appears again it will be identified as a reincarnation
+   * This method should be used instead of overriding {@link Object#equals} because it allows to construct multiple equivalence relations
+   */
   Set<ReportItemFlavour<?, ?>> getIdFlavours();
 
   abstract class ReportItemFlavour<I extends FlavouredItem, T> {

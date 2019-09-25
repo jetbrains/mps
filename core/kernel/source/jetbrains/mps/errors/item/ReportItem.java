@@ -18,6 +18,11 @@ package jetbrains.mps.errors.item;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItemBase.SimpleReportItemFlavour;
 
+/**
+ * A message reported from checker. Can have different flavours depending on the information contained by the message.
+ * E.g. if the message relates to some node, it should have {@link NodeReportItem#FLAVOUR_NODE} flavour.
+ * Some of the flavours provide information from fields/getters, some can provide information from other flavours.
+ */
 public interface ReportItem extends FlavouredItem {
   String getMessage();
 
