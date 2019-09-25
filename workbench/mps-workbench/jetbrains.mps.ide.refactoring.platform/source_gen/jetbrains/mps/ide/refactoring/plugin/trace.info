@@ -18,7 +18,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <root nodeRef="r:c23388fc-ded9-445e-8669-8dcbb1750447(jetbrains.mps.ide.refactoring.platform.plugin)/1519954259332631192">
+  <root>
+    <file name="ExtensionDescriptor.java">
+      <unit at="9,0,18,0" name="jetbrains.mps.ide.refactoring.plugin.ExtensionDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.plugin)/1519954259332631192">
     <file name="RenameRefactoringBody.java">
       <node id="1519954259332768461" at="20,0,21,0" concept="3" trace="myName" />
       <node id="1519954259332650086" at="21,0,22,0" concept="3" trace="myNode" />
@@ -75,11 +80,11 @@
       <scope id="3846646991041765946" at="45,0,53,0">
         <var name="initialState" id="3846646991041765947" />
       </scope>
-      <unit id="1519954259332631192" at="58,0,61,0" name="jetbrains.mps.ide.refactoring.platform.plugin.RenameRefactoringBody$PROPS" />
-      <unit id="1519954259332631192" at="19,0,62,0" name="jetbrains.mps.ide.refactoring.platform.plugin.RenameRefactoringBody" />
+      <unit id="1519954259332631192" at="58,0,61,0" name="jetbrains.mps.ide.refactoring.plugin.RenameRefactoringBody$PROPS" />
+      <unit id="1519954259332631192" at="19,0,62,0" name="jetbrains.mps.ide.refactoring.plugin.RenameRefactoringBody" />
     </file>
   </root>
-  <root nodeRef="r:c23388fc-ded9-445e-8669-8dcbb1750447(jetbrains.mps.ide.refactoring.platform.plugin)/1929018697514192221">
+  <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.plugin)/1929018697514192221">
     <file name="MoveNodesAction.java">
       <node id="1929018697515868174" at="10,0,11,0" concept="7" trace="getName#()Ljava/lang/String;" />
       <node id="1929018697514193672" at="11,0,12,0" concept="7" trace="isApplicable#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)Z" />
@@ -93,10 +98,10 @@
         <var name="project" id="1929018697514198573" />
         <var name="target" id="1929018697514198575" />
       </scope>
-      <unit id="1929018697514192221" at="9,0,14,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesAction" />
+      <unit id="1929018697514192221" at="9,0,14,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesAction" />
     </file>
   </root>
-  <root nodeRef="r:c23388fc-ded9-445e-8669-8dcbb1750447(jetbrains.mps.ide.refactoring.platform.plugin)/1929018697514204727">
+  <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.plugin)/1929018697514204727">
     <file name="MoveNodesActionBase.java">
       <node id="5863271989071947374" at="27,27,28,24" concept="9" />
       <node id="5863271989071947412" at="31,76,32,75" concept="9" />
@@ -209,17 +214,17 @@
         <var name="nodesToMove" id="5863271989071947505" />
         <var name="project" id="5863271989071947503" />
       </scope>
-      <unit id="8647218860633471932" at="46,58,50,9" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase$1$1" />
-      <unit id="5863271989071947515" at="63,63,67,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase$2" />
-      <unit id="2061937926033607974" at="76,69,80,11" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase$3$1" />
-      <unit id="8647218860633363897" at="85,64,89,15" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase$3$2$1" />
-      <unit id="8647218860633471926" at="44,84,52,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase$1" />
-      <unit id="8647218860633363891" at="83,82,91,11" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase$3$2" />
-      <unit id="5863271989071947536" at="68,104,96,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase$3" />
-      <unit id="1929018697514204727" at="25,0,105,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionBase" />
+      <unit id="8647218860633471932" at="46,58,50,9" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase$1$1" />
+      <unit id="5863271989071947515" at="63,63,67,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase$2" />
+      <unit id="2061937926033607974" at="76,69,80,11" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase$3$1" />
+      <unit id="8647218860633363897" at="85,64,89,15" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase$3$2$1" />
+      <unit id="8647218860633471926" at="44,84,52,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase$1" />
+      <unit id="8647218860633363891" at="83,82,91,11" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase$3$2" />
+      <unit id="5863271989071947536" at="68,104,96,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase$3" />
+      <unit id="1929018697514204727" at="25,0,105,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionBase" />
     </file>
   </root>
-  <root nodeRef="r:c23388fc-ded9-445e-8669-8dcbb1750447(jetbrains.mps.ide.refactoring.platform.plugin)/3464535278051738208">
+  <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.plugin)/3464535278051738208">
     <file name="MoveNodesActionHelper.java">
       <node id="3464535278051738208" at="18,0,19,0" concept="12" trace="LOG" />
       <node id="3464535278051741480" at="19,105,20,160" concept="8" />
@@ -228,8 +233,8 @@
       <node id="3464535278051741528" at="32,54,33,48" concept="9" />
       <node id="3464535278051741541" at="36,56,37,35" concept="9" />
       <node id="3464535278051741558" at="41,7,42,67" concept="9" />
-      <node id="3464535278051741494" at="22,0,25,0" concept="7" trace="accept#(Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;)Z" />
-      <node id="3464535278051741526" at="32,0,35,0" concept="7" trace="select#(Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;)Ljava/lang/String;" />
+      <node id="3464535278051741494" at="22,0,25,0" concept="7" trace="accept#(Ljetbrains/mps/ide/refactoring/plugin/MoveNodesAction;)Z" />
+      <node id="3464535278051741526" at="32,0,35,0" concept="7" trace="select#(Ljetbrains/mps/ide/refactoring/plugin/MoveNodesAction;)Ljava/lang/String;" />
       <node id="3464535278051741539" at="36,0,39,0" concept="7" trace="combine#(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
       <node id="3464535278051741487" at="20,160,25,7" concept="8" />
       <node id="3818729150937331103" at="30,44,39,14" concept="2" />
@@ -237,7 +242,7 @@
       <node id="3464535278051741518" at="28,12,41,7" concept="6" />
       <node id="3464535278051741516" at="28,10,43,5" concept="0" />
       <node id="3464535278051741508" at="25,7,43,5" concept="6" />
-      <node id="3464535278051741477" at="19,0,45,0" concept="13" trace="getRefactoring#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
+      <node id="3464535278051741477" at="19,0,45,0" concept="13" trace="getRefactoring#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)Ljetbrains/mps/ide/refactoring/plugin/MoveNodesAction;" />
       <scope id="3464535278051741495" at="22,49,23,53" />
       <scope id="3464535278051741509" at="26,66,27,39" />
       <scope id="3464535278051741527" at="32,54,33,48" />
@@ -263,13 +268,13 @@
         <var name="nodesToMove" id="3464535278051750199" />
         <var name="project" id="3464535278051748661" />
       </scope>
-      <unit id="3464535278051741494" at="21,108,25,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionHelper$1" />
-      <unit id="3464535278051741526" at="31,130,35,11" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionHelper$2" />
-      <unit id="3464535278051741539" at="35,30,39,11" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionHelper$3" />
-      <unit id="3464535278051738208" at="17,0,47,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionHelper" />
+      <unit id="3464535278051741494" at="21,108,25,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionHelper$1" />
+      <unit id="3464535278051741526" at="31,130,35,11" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionHelper$2" />
+      <unit id="3464535278051741539" at="35,30,39,11" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionHelper$3" />
+      <unit id="3464535278051738208" at="17,0,47,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesActionHelper" />
     </file>
   </root>
-  <root nodeRef="r:c23388fc-ded9-445e-8669-8dcbb1750447(jetbrains.mps.ide.refactoring.platform.plugin)/4661652150171662291">
+  <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.plugin)/4661652150171662291">
     <file name="MoveNodesUtil.java">
       <node id="5863271989071947423" at="42,55,43,19" concept="9" />
       <node id="5863271989071947428" at="44,5,45,61" concept="8" />
@@ -642,26 +647,26 @@
         <var name="refactoringName" id="4661652150171881989" />
         <var name="refactoringUI" id="2775476430793959622" />
       </scope>
-      <unit id="5863271989071947467" at="52,66,56,9" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$1$1" />
-      <unit id="6425285003181636346" at="111,146,115,13" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$3$1" />
-      <unit id="6425285003181388175" at="121,137,125,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$4" />
-      <unit id="4198123050694741410" at="160,109,164,21" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$5$1$1$1" />
-      <unit id="1473188155722778444" at="211,56,215,7" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$NodeCreatingProcessor$1" />
-      <unit id="1473188155723160868" at="243,56,247,7" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$ExistingTargetProcessor$1" />
-      <unit id="6425285003176682727" at="93,63,101,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$2" />
-      <unit id="4198123050694741390" at="157,75,166,17" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$5$1$1" />
-      <unit id="5863271989071947432" at="46,50,58,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$1" />
-      <unit id="4198123050694741384" at="155,225,168,13" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$5$1" />
-      <unit id="6425285003180952702" at="72,0,86,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$ListIndex" />
-      <unit id="8609501485360791147" at="188,0,202,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$NodeProcessor" />
-      <unit id="6425285003176682756" at="105,63,120,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$3" />
-      <unit id="6286765307939354001" at="203,0,234,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$NodeCreatingProcessor" />
-      <unit id="1473188155723160837" at="235,0,268,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$ExistingTargetProcessor" />
-      <unit id="3846646991041105025" at="128,74,184,5" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil$5" />
-      <unit id="4661652150171662291" at="38,0,271,0" name="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil" />
+      <unit id="5863271989071947467" at="52,66,56,9" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$1$1" />
+      <unit id="6425285003181636346" at="111,146,115,13" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$3$1" />
+      <unit id="6425285003181388175" at="121,137,125,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$4" />
+      <unit id="4198123050694741410" at="160,109,164,21" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$5$1$1$1" />
+      <unit id="1473188155722778444" at="211,56,215,7" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$NodeCreatingProcessor$1" />
+      <unit id="1473188155723160868" at="243,56,247,7" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$ExistingTargetProcessor$1" />
+      <unit id="6425285003176682727" at="93,63,101,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$2" />
+      <unit id="4198123050694741390" at="157,75,166,17" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$5$1$1" />
+      <unit id="5863271989071947432" at="46,50,58,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$1" />
+      <unit id="4198123050694741384" at="155,225,168,13" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$5$1" />
+      <unit id="6425285003180952702" at="72,0,86,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$ListIndex" />
+      <unit id="8609501485360791147" at="188,0,202,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$NodeProcessor" />
+      <unit id="6425285003176682756" at="105,63,120,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$3" />
+      <unit id="6286765307939354001" at="203,0,234,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$NodeCreatingProcessor" />
+      <unit id="1473188155723160837" at="235,0,268,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$ExistingTargetProcessor" />
+      <unit id="3846646991041105025" at="128,74,184,5" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil$5" />
+      <unit id="4661652150171662291" at="38,0,271,0" name="jetbrains.mps.ide.refactoring.plugin.MoveNodesUtil" />
     </file>
   </root>
-  <root nodeRef="r:c23388fc-ded9-445e-8669-8dcbb1750447(jetbrains.mps.ide.refactoring.platform.plugin)/5532289631192025701">
+  <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.plugin)/5532289631192025701">
     <file name="DefaultRefactoringUI.java">
       <node id="5532289631192025701" at="33,0,34,0" concept="12" trace="LOG" />
       <node id="5532289631192049893" at="34,0,35,0" concept="3" trace="myProject" />
@@ -792,17 +797,17 @@
         <var name="rerunTask" id="5532289631196572698" />
         <var name="searchResults" id="8821602715296346739" />
       </scope>
-      <unit id="1817798995038281877" at="50,129,54,5" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI$1" />
-      <unit id="3872874963722999881" at="58,67,62,5" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI$2" />
-      <unit id="1693697818229046379" at="102,11,106,5" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI$5" />
-      <unit id="5271515234663598684" at="106,26,114,5" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI$6" />
-      <unit id="5532289631195831699" at="68,82,80,9" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI$3$1" />
-      <unit id="4174809750969169902" at="87,73,102,5" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI$4" />
-      <unit id="2106197219109756080" at="65,42,82,5" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI$3" />
-      <unit id="5532289631192025701" at="32,0,117,0" name="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI" />
+      <unit id="1817798995038281877" at="50,129,54,5" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI$1" />
+      <unit id="3872874963722999881" at="58,67,62,5" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI$2" />
+      <unit id="1693697818229046379" at="102,11,106,5" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI$5" />
+      <unit id="5271515234663598684" at="106,26,114,5" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI$6" />
+      <unit id="5532289631195831699" at="68,82,80,9" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI$3$1" />
+      <unit id="4174809750969169902" at="87,73,102,5" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI$4" />
+      <unit id="2106197219109756080" at="65,42,82,5" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI$3" />
+      <unit id="5532289631192025701" at="32,0,117,0" name="jetbrains.mps.ide.refactoring.plugin.DefaultRefactoringUI" />
     </file>
   </root>
-  <root nodeRef="r:c23388fc-ded9-445e-8669-8dcbb1750447(jetbrains.mps.ide.refactoring.platform.plugin)/7321908258465164318">
+  <root nodeRef="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.plugin)/7321908258465164318">
     <file name="SelectOptionsDialog.java">
       <node id="7321908258465208601" at="20,0,21,0" concept="3" trace="myOptions" />
       <node id="3872874963722529201" at="21,0,22,0" concept="3" trace="myMessage" />
@@ -891,7 +896,7 @@
         <var name="panel" id="7321908258465295215" />
       </scope>
       <scope id="7321908258465168308" at="31,0,64,0" />
-      <unit id="7321908258465164318" at="18,0,81,0" name="jetbrains.mps.ide.refactoring.platform.plugin.SelectOptionsDialog" />
+      <unit id="7321908258465164318" at="18,0,81,0" name="jetbrains.mps.ide.refactoring.plugin.SelectOptionsDialog" />
     </file>
   </root>
 </debug-info>

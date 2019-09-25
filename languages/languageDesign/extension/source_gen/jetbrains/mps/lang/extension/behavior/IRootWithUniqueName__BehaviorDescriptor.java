@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -33,13 +32,7 @@ public final class IRootWithUniqueName__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getId_id3vRuGRRXlj(@NotNull SNode __thisNode__) {
-    SModule module = SNodeOperations.getModel(__thisNode__).getModule();
-    String moduleFqName = module.getModuleName();
-    int atIdx = moduleFqName.indexOf("@");
-    if (atIdx >= 0) {
-      moduleFqName = moduleFqName.substring(0, atIdx);
-    }
-    return moduleFqName + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return SNodeOperations.getModel(__thisNode__).getName().getLongName().replaceAll("\\.plugin$", "") + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
   }
 
   /*package*/ IRootWithUniqueName__BehaviorDescriptor() {

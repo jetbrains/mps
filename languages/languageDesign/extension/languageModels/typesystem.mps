@@ -768,94 +768,153 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="15xzdwHyd$N" role="3cqZAp">
-              <property role="TyiWK" value="true" />
-              <node concept="3clFbS" id="15xzdwHyrej" role="3clFbx">
-                <node concept="2MkqsV" id="15xzdwHyrHi" role="3cqZAp">
-                  <node concept="Xl_RD" id="15xzdwHyrHj" role="2MkJ7o">
-                    <property role="Xl_RC" value="Extensions in solutions are allowed only with solution kinds CORE, EDITOR, OTHER" />
-                  </node>
-                  <node concept="1YBJjd" id="15xzdwHyrHk" role="2OEOjV">
+            <node concept="3clFbJ" id="15xzdwHyZOt" role="3cqZAp">
+              <node concept="3clFbS" id="15xzdwHyZOv" role="3clFbx">
+                <node concept="a7r0C" id="15xzdwHz09C" role="3cqZAp">
+                  <node concept="1YBJjd" id="15xzdwHz0eY" role="2OEOjV">
                     <ref role="1YBMHb" node="15xzdwHynjW" resolve="extension" />
+                  </node>
+                  <node concept="Xl_RD" id="15xzdwHyQvt" role="a7wSD">
+                    <property role="Xl_RC" value="Extension will not be registered automatically. Solution is not compiled in MPS." />
                   </node>
                 </node>
               </node>
-              <node concept="9aQIb" id="15xzdwHyreh" role="9aQIa">
-                <node concept="3clFbS" id="15xzdwHyd$O" role="9aQI4">
-                  <node concept="3clFbJ" id="15xzdwHyZOt" role="3cqZAp">
-                    <node concept="3clFbS" id="15xzdwHyZOv" role="3clFbx">
-                      <node concept="a7r0C" id="15xzdwHz09C" role="3cqZAp">
-                        <node concept="1YBJjd" id="15xzdwHz0eY" role="2OEOjV">
-                          <ref role="1YBMHb" node="15xzdwHynjW" resolve="extension" />
+              <node concept="3fqX7Q" id="15xzdwHz07v" role="3clFbw">
+                <node concept="2EnYce" id="15xzdwHysGt" role="3fr31v">
+                  <node concept="2OqwBi" id="15xzdwHysGu" role="2Oq$k0">
+                    <node concept="37vLTw" id="15xzdwHysGv" role="2Oq$k0">
+                      <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
+                    </node>
+                    <node concept="liA8E" id="15xzdwHysGw" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c3:~AbstractModule.getFacet(java.lang.Class)" resolve="getFacet" />
+                      <node concept="3VsKOn" id="15xzdwHysGx" role="37wK5m">
+                        <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="15xzdwHysGy" role="2OqNvi">
+                    <ref role="37wK5l" to="b0pz:~JavaModuleFacet.isCompileInMps()" resolve="isCompileInMps" />
+                  </node>
+                </node>
+              </node>
+              <node concept="9aQIb" id="5ErAoTCrCmv" role="9aQIa">
+                <node concept="3clFbS" id="5ErAoTCrCmw" role="9aQI4">
+                  <node concept="3clFbJ" id="15xzdwHyd$N" role="3cqZAp">
+                    <property role="TyiWK" value="true" />
+                    <node concept="3clFbS" id="15xzdwHyrej" role="3clFbx">
+                      <node concept="2MkqsV" id="15xzdwHyrHi" role="3cqZAp">
+                        <node concept="Xl_RD" id="15xzdwHyrHj" role="2MkJ7o">
+                          <property role="Xl_RC" value="Extensions in solutions are allowed only with solution kinds CORE, EDITOR, OTHER" />
                         </node>
-                        <node concept="Xl_RD" id="15xzdwHyQvt" role="a7wSD">
-                          <property role="Xl_RC" value="Extension will not be registered automatically. Solution is not compiled in MPS." />
+                        <node concept="1YBJjd" id="15xzdwHyrHk" role="2OEOjV">
+                          <ref role="1YBMHb" node="15xzdwHynjW" resolve="extension" />
                         </node>
                       </node>
                     </node>
-                    <node concept="3fqX7Q" id="15xzdwHz07v" role="3clFbw">
-                      <node concept="2EnYce" id="15xzdwHysGt" role="3fr31v">
-                        <node concept="2OqwBi" id="15xzdwHysGu" role="2Oq$k0">
-                          <node concept="37vLTw" id="15xzdwHysGv" role="2Oq$k0">
+                    <node concept="1Wc70l" id="15xzdwHyrmA" role="3clFbw">
+                      <node concept="3y3z36" id="15xzdwHyrmT" role="3uHU7w">
+                        <node concept="2OqwBi" id="15xzdwHyrmQ" role="3uHU7B">
+                          <node concept="37vLTw" id="15xzdwHyrmR" role="2Oq$k0">
                             <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
                           </node>
-                          <node concept="liA8E" id="15xzdwHysGw" role="2OqNvi">
-                            <ref role="37wK5l" to="z1c3:~AbstractModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                            <node concept="3VsKOn" id="15xzdwHysGx" role="37wK5m">
-                              <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                          <node concept="liA8E" id="15xzdwHyrmS" role="2OqNvi">
+                            <ref role="37wK5l" to="z1c3:~Solution.getKind()" resolve="getKind" />
+                          </node>
+                        </node>
+                        <node concept="Rm8GO" id="15xzdwHyrmP" role="3uHU7w">
+                          <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_OTHER" resolve="PLUGIN_OTHER" />
+                          <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
+                        </node>
+                      </node>
+                      <node concept="1Wc70l" id="15xzdwHyrjv" role="3uHU7B">
+                        <node concept="3y3z36" id="15xzdwHyrjw" role="3uHU7B">
+                          <node concept="2OqwBi" id="15xzdwHyrjx" role="3uHU7B">
+                            <node concept="37vLTw" id="15xzdwHyrjy" role="2Oq$k0">
+                              <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
+                            </node>
+                            <node concept="liA8E" id="15xzdwHyrjz" role="2OqNvi">
+                              <ref role="37wK5l" to="z1c3:~Solution.getKind()" resolve="getKind" />
+                            </node>
+                          </node>
+                          <node concept="Rm8GO" id="15xzdwHyrj$" role="3uHU7w">
+                            <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
+                            <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_CORE" resolve="PLUGIN_CORE" />
+                          </node>
+                        </node>
+                        <node concept="3y3z36" id="15xzdwHyrj_" role="3uHU7w">
+                          <node concept="2OqwBi" id="15xzdwHyrjA" role="3uHU7B">
+                            <node concept="37vLTw" id="15xzdwHyrjB" role="2Oq$k0">
+                              <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
+                            </node>
+                            <node concept="liA8E" id="15xzdwHyrjC" role="2OqNvi">
+                              <ref role="37wK5l" to="z1c3:~Solution.getKind()" resolve="getKind" />
+                            </node>
+                          </node>
+                          <node concept="Rm8GO" id="15xzdwHyrjD" role="3uHU7w">
+                            <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
+                            <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_EDITOR" resolve="PLUGIN_EDITOR" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="9aQIb" id="5ErAoTCrCTC" role="9aQIa">
+                      <node concept="3clFbS" id="5ErAoTCrCTD" role="9aQI4">
+                        <node concept="3clFbJ" id="5ErAoTCrD5H" role="3cqZAp">
+                          <node concept="17QLQc" id="5ErAoTCrGLi" role="3clFbw">
+                            <node concept="2OqwBi" id="5ErAoTCrGdx" role="3uHU7B">
+                              <node concept="2OqwBi" id="5ErAoTCrFG4" role="2Oq$k0">
+                                <node concept="2JrnkZ" id="5ErAoTCrFu$" role="2Oq$k0">
+                                  <node concept="2OqwBi" id="5ErAoTCrDk8" role="2JrQYb">
+                                    <node concept="1YBJjd" id="5ErAoTCrDbm" role="2Oq$k0">
+                                      <ref role="1YBMHb" node="15xzdwHynjW" resolve="extension" />
+                                    </node>
+                                    <node concept="I4A8Y" id="5ErAoTCrDIU" role="2OqNvi" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="5ErAoTCrG6c" role="2OqNvi">
+                                  <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
+                                </node>
+                              </node>
+                              <node concept="liA8E" id="5ErAoTCymZN" role="2OqNvi">
+                                <ref role="37wK5l" to="mhbf:~SModelName.getLongName()" resolve="getLongName" />
+                              </node>
+                            </node>
+                            <node concept="3cpWs3" id="5ErAoTCrI0M" role="3uHU7w">
+                              <node concept="Xl_RD" id="5ErAoTCrIlC" role="3uHU7w">
+                                <property role="Xl_RC" value=".plugin" />
+                              </node>
+                              <node concept="2OqwBi" id="5ErAoTCrHvN" role="3uHU7B">
+                                <node concept="2OqwBi" id="5ErAoTCrH03" role="2Oq$k0">
+                                  <node concept="2JrnkZ" id="5ErAoTCrGRH" role="2Oq$k0">
+                                    <node concept="2OqwBi" id="5ErAoTCrGRI" role="2JrQYb">
+                                      <node concept="1YBJjd" id="5ErAoTCrGRJ" role="2Oq$k0">
+                                        <ref role="1YBMHb" node="15xzdwHynjW" resolve="extension" />
+                                      </node>
+                                      <node concept="I4A8Y" id="5ErAoTCrGRK" role="2OqNvi" />
+                                    </node>
+                                  </node>
+                                  <node concept="liA8E" id="5ErAoTCrHp0" role="2OqNvi">
+                                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="5ErAoTCrHHx" role="2OqNvi">
+                                  <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbS" id="5ErAoTCrD5J" role="3clFbx">
+                            <node concept="2MkqsV" id="5ErAoTCrIyq" role="3cqZAp">
+                              <node concept="Xl_RD" id="5ErAoTCrIyr" role="2MkJ7o">
+                                <property role="Xl_RC" value="Extensions in solutions are allowed only in model named $module_name$.plugin" />
+                              </node>
+                              <node concept="1YBJjd" id="5ErAoTCrIys" role="2OEOjV">
+                                <ref role="1YBMHb" node="15xzdwHynjW" resolve="extension" />
+                              </node>
                             </node>
                           </node>
                         </node>
-                        <node concept="liA8E" id="15xzdwHysGy" role="2OqNvi">
-                          <ref role="37wK5l" to="b0pz:~JavaModuleFacet.isCompileInMps()" resolve="isCompileInMps" />
-                        </node>
                       </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="1Wc70l" id="15xzdwHyrmA" role="3clFbw">
-                <node concept="3y3z36" id="15xzdwHyrmT" role="3uHU7w">
-                  <node concept="2OqwBi" id="15xzdwHyrmQ" role="3uHU7B">
-                    <node concept="37vLTw" id="15xzdwHyrmR" role="2Oq$k0">
-                      <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
-                    </node>
-                    <node concept="liA8E" id="15xzdwHyrmS" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~Solution.getKind()" resolve="getKind" />
-                    </node>
-                  </node>
-                  <node concept="Rm8GO" id="15xzdwHyrmP" role="3uHU7w">
-                    <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
-                    <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_OTHER" resolve="PLUGIN_OTHER" />
-                  </node>
-                </node>
-                <node concept="1Wc70l" id="15xzdwHyrjv" role="3uHU7B">
-                  <node concept="3y3z36" id="15xzdwHyrjw" role="3uHU7B">
-                    <node concept="2OqwBi" id="15xzdwHyrjx" role="3uHU7B">
-                      <node concept="37vLTw" id="15xzdwHyrjy" role="2Oq$k0">
-                        <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
-                      </node>
-                      <node concept="liA8E" id="15xzdwHyrjz" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c3:~Solution.getKind()" resolve="getKind" />
-                      </node>
-                    </node>
-                    <node concept="Rm8GO" id="15xzdwHyrj$" role="3uHU7w">
-                      <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_CORE" resolve="PLUGIN_CORE" />
-                      <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
-                    </node>
-                  </node>
-                  <node concept="3y3z36" id="15xzdwHyrj_" role="3uHU7w">
-                    <node concept="2OqwBi" id="15xzdwHyrjA" role="3uHU7B">
-                      <node concept="37vLTw" id="15xzdwHyrjB" role="2Oq$k0">
-                        <ref role="3cqZAo" node="15xzdwHyd$I" resolve="solution" />
-                      </node>
-                      <node concept="liA8E" id="15xzdwHyrjC" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c3:~Solution.getKind()" resolve="getKind" />
-                      </node>
-                    </node>
-                    <node concept="Rm8GO" id="15xzdwHyrjD" role="3uHU7w">
-                      <ref role="Rm8GQ" to="w0gx:~SolutionKind.PLUGIN_EDITOR" resolve="PLUGIN_EDITOR" />
-                      <ref role="1Px2BO" to="w0gx:~SolutionKind" resolve="SolutionKind" />
                     </node>
                   </node>
                 </node>

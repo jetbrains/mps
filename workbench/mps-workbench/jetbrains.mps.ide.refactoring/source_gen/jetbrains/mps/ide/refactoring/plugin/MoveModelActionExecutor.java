@@ -15,7 +15,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.refactoring.participant.RefactoringProcessor;
-import jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI;
+import jetbrains.mps.refactoring.participant.plugin.DefaultRefactoringUI;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.ide.IdeBundle;

@@ -20,6 +20,8 @@ import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.annotations.Immutable;
 
+import java.util.Objects;
+
 @Immutable
 public class ExtensionPoint<T> {
 
@@ -65,7 +67,7 @@ public class ExtensionPoint<T> {
   @Override
   public boolean equals(Object obj) {
     if (obj == null || obj.getClass() != ExtensionPoint.class) return false;
-    return EqualUtil.equals(((ExtensionPoint) obj).myId, myId);
+    return Objects.equals(((ExtensionPoint) obj).myId, myId);
   }
 
   @Override

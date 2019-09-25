@@ -2727,9 +2727,9 @@
       <node id="7217668918196130223" at="109,34,122,9" concept="10" />
       <node id="4174378934472005033" at="129,34,142,9" concept="10" />
       <node id="4174378934472012726" at="149,34,162,9" concept="10" />
-      <node id="4174378934471915435" at="109,0,124,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
-      <node id="4174378934472004555" at="129,0,144,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
-      <node id="4174378934472012723" at="149,0,164,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
+      <node id="4174378934471915435" at="109,0,124,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
+      <node id="4174378934472004555" at="129,0,144,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
+      <node id="4174378934472012723" at="149,0,164,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
       <node id="7217668918195679840" at="58,0,105,0" concept="8" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)V" />
       <scope id="8599388812411390934" at="43,27,44,18" />
       <scope id="8599388812411428080" at="47,77,48,19" />
@@ -2892,7 +2892,7 @@
       <node id="7217668918197762330" at="147,0,148,0" concept="13" trace="DataTypeDeclaration$KQ" />
       <node id="7217668918197762330" at="148,0,149,0" concept="13" trace="AbstractConceptDeclaration$UN" />
       <node id="2733099144075638398" at="35,0,38,0" concept="3" trace="MoveConceptsAndDatatypes_extension#()V" />
-      <node id="2733099144075638405" at="38,0,41,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
+      <node id="2733099144075638405" at="38,0,41,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
       <node id="7217668918197775395" at="43,0,46,0" concept="8" trace="getName#()Ljava/lang/String;" />
       <node id="4174809750968882958" at="46,77,49,5" concept="7" />
       <node id="4323017570214097439" at="54,0,57,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

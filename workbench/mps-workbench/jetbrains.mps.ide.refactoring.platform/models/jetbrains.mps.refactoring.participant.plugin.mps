@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.ide.refactoring.platform.plugin)">
+<model ref="r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)">
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
@@ -10,6 +10,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
@@ -254,6 +255,9 @@
       </concept>
     </language>
     <language id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension">
+      <concept id="3729007189729192406" name="jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration" flags="ng" index="vrV6u">
+        <child id="8029776554053057803" name="objectType" index="luc8K" />
+      </concept>
       <concept id="6626851894249711936" name="jetbrains.mps.lang.extension.structure.ExtensionPointExpression" flags="nn" index="2O5UvJ">
         <reference id="6626851894249712469" name="extensionPoint" index="2O5UnU" />
       </concept>
@@ -313,8 +317,18 @@
       <concept id="1228341669568" name="jetbrains.mps.lang.smodel.structure.Node_DetachOperation" flags="nn" index="3YRAZt" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
@@ -4971,6 +4985,32 @@
       <ref role="3uigEE" to="5nvm:2EZTs$tsIo8" resolve="RefactoringProcessor.RefactoringBody" />
       <node concept="3Tqbb2" id="1knX_y6nhI3" role="11_B2D" />
       <node concept="17QB3L" id="1knX_y6nhMo" role="11_B2D" />
+    </node>
+  </node>
+  <node concept="vrV6u" id="1F5g4zQqSPo">
+    <property role="TrG5h" value="MoveNodesActionEP" />
+    <node concept="1X3_iC" id="5ErAoTCv5L4" role="lGtFl">
+      <property role="3V$3am" value="objectType" />
+      <property role="3V$3ak" value="c0080a47-7e37-4558-bee9-9ae18e690549/3729007189729192406/8029776554053057803" />
+      <node concept="3SKdUt" id="5ErAoTCv5L_" role="8Wnug">
+        <node concept="1PaTwC" id="5ErAoTCv5LA" role="3ndbpf">
+          <node concept="3oM_SD" id="5ErAoTCv5LC" role="1PaTwD">
+            <property role="3oM_SC" value="todo:" />
+          </node>
+          <node concept="3oM_SD" id="5ErAoTCv5LH" role="1PaTwD">
+            <property role="3oM_SC" value="remove" />
+          </node>
+          <node concept="3oM_SD" id="5ErAoTCv5LK" role="1PaTwD">
+            <property role="3oM_SC" value="after" />
+          </node>
+          <node concept="3oM_SD" id="5ErAoTCv5LO" role="1PaTwD">
+            <property role="3oM_SC" value="2019.3" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3uibUv" id="5ErAoTCv5Lb" role="luc8K">
+      <ref role="3uigEE" node="1F5g4zQqSPt" resolve="MoveNodesAction" />
     </node>
   </node>
 </model>

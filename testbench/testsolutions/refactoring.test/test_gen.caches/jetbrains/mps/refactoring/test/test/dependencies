@@ -76,7 +76,6 @@
     <classNode dependClassName="jetbrains.mps.ide.editor.MPSFileNodeEditor" />
     <classNode dependClassName="jetbrains.mps.ide.migration.AntTaskExecutionUtil" />
     <classNode dependClassName="jetbrains.mps.ide.platform.refactoring.NodeLocation" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ITranslator2" />
@@ -104,6 +103,7 @@
     <classNode dependClassName="jetbrains.mps.project.validation.StructureChecker" />
     <classNode dependClassName="jetbrains.mps.project.validation.ValidationUtil" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringParticipant" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil" />
     <classNode dependClassName="jetbrains.mps.refactoring.test.test.HeadlessRefactoringUI" />
     <classNode dependClassName="jetbrains.mps.smodel.Language" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
@@ -147,7 +147,6 @@
     <classNode dependClassName="jetbrains.mps.errors.item.UnresolvedReferenceReportItem" />
     <classNode dependClassName="jetbrains.mps.ide.ThreadUtils" />
     <classNode dependClassName="jetbrains.mps.ide.platform.refactoring.NodeLocation" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -170,6 +169,7 @@
     <classNode dependClassName="jetbrains.mps.project.validation.StructureChecker" />
     <classNode dependClassName="jetbrains.mps.project.validation.ValidationUtil" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringParticipant" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil" />
     <classNode dependClassName="jetbrains.mps.refactoring.test.test.HeadlessRefactoringUI" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />

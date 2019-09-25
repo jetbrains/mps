@@ -41,7 +41,6 @@
     <classNode dependClassName="jetbrains.mps.ide.dialogs.project.creation.NewModelDialog" />
     <classNode dependClassName="jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings" />
     <classNode dependClassName="jetbrains.mps.ide.dialogs.project.creation.NewModelDialogSettings" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI" />
     <classNode dependClassName="jetbrains.mps.ide.refactoring.plugin.UpdateDependentModelsRefactoringParticipant" />
     <classNode dependClassName="jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.StereotypeProvider" />
@@ -54,6 +53,7 @@
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringParticipant" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringProcessor" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringSession" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.DefaultRefactoringUI" />
     <classNode dependClassName="jetbrains.mps.smodel.ModelAccessHelper" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelInternal" />
     <classNode dependClassName="jetbrains.mps.smodel.structure.ExtensionPoint" />
@@ -97,12 +97,12 @@
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="javax.swing.Icon" />
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesAction" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesActionHelper" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.MoveNodesAction" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.MoveNodesActionHelper" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
@@ -140,13 +140,13 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
     <classNode dependClassName="jetbrains.mps.ide.platform.refactoring.RenameDialog" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.DefaultRefactoringUI" />
-    <classNode dependClassName="jetbrains.mps.ide.refactoring.platform.plugin.RenameRefactoringBody" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringProcessor" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.DefaultRefactoringUI" />
+    <classNode dependClassName="jetbrains.mps.refactoring.participant.plugin.RenameRefactoringBody" />
     <classNode dependClassName="jetbrains.mps.refactoring.runtime.access.RefactoringAccess" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.language.ConceptRegistry" />

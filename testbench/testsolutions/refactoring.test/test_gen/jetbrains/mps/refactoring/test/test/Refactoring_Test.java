@@ -21,7 +21,7 @@ import jetbrains.mps.lang.structure.pluginSolution.plugin.MoveAspectsParticipant
 import jetbrains.mps.lang.structure.pluginSolution.plugin.UpdateLocalInstancesParticipant;
 import jetbrains.mps.lang.structure.pluginSolution.plugin.LanguageStructureMigrationParticipant;
 import jetbrains.mps.lang.migration.pluginSolution.plugin.MoveNodeRefactoringLogParticipant;
-import jetbrains.mps.ide.refactoring.platform.plugin.MoveNodesUtil;
+import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;

@@ -207,6 +207,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.extension", "IRootWithUniqueName", 0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L);
     b.interface_();
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x11618cd82d8974c5L);
     b.origin("r:2a0fe383-d602-4f5b-813c-e41afdbbb97e(jetbrains.mps.lang.extension.structure)/195736285282737522");
     b.version(2);
     return b.create();

@@ -3587,7 +3587,7 @@
       <node id="5834644128080987394" at="53,0,54,0" concept="15" trace="Classifier$hJ" />
       <node id="5834644128080987394" at="57,0,58,0" concept="15" trace="member$oYX5" />
       <node id="5834644128080987396" at="23,0,26,0" concept="4" trace="ConvertAnonymousClass_extension#()V" />
-      <node id="5834644128080987398" at="26,0,29,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
+      <node id="5834644128080987398" at="26,0,29,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
       <node id="5834644128080987408" at="31,0,34,0" concept="10" trace="getName#()Ljava/lang/String;" />
       <node id="5834644128081099261" at="36,0,39,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5834644128081208050" at="44,64,48,5" concept="9" />
@@ -4005,7 +4005,7 @@
       <node id="7464946958060829895" at="55,0,56,0" concept="15" trace="classifier$1y5e" />
       <node id="7464946958060829895" at="59,0,60,0" concept="15" trace="name$tAp1" />
       <node id="2733099144075638398" at="22,0,25,0" concept="4" trace="ConvertAnonymousClass_extension#()V" />
-      <node id="2733099144075638405" at="25,0,28,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
+      <node id="2733099144075638405" at="25,0,28,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
       <node id="7464946958060839532" at="30,0,33,0" concept="10" trace="getName#()Ljava/lang/String;" />
       <node id="225095413451945166" at="43,0,46,5" concept="9" />
       <node id="7464946958060839537" at="33,0,37,0" concept="10" trace="isApplicable#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)Z" />
@@ -4490,7 +4490,7 @@
       <node id="9126454250599937719" at="78,0,79,0" concept="15" trace="ClassifierMember$9F" />
       <node id="9126454250599937719" at="82,0,83,0" concept="15" trace="member$oYX5" />
       <node id="9126454250599950216" at="30,0,33,0" concept="4" trace="MoveStaticField_extension#()V" />
-      <node id="9126454250599950218" at="33,0,36,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
+      <node id="9126454250599950218" at="33,0,36,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
       <node id="9126454250600054869" at="38,0,41,0" concept="10" trace="getName#()Ljava/lang/String;" />
       <node id="9163025738079118225" at="53,7,56,5" concept="9" />
       <node id="9088427053767133079" at="62,0,65,0" concept="4" trace="NodeLocationClassifierMember#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -4577,7 +4577,7 @@
       <node id="9126454250600098577" at="93,0,94,0" concept="15" trace="Classifier$hJ" />
       <node id="9126454250600098577" at="94,0,95,0" concept="15" trace="ClassConcept$IY" />
       <node id="9126454250600099586" at="30,0,33,0" concept="4" trace="MoveStaticMethod_extension#()V" />
-      <node id="9126454250600099588" at="33,0,36,0" concept="0" trace="get#()Ljetbrains/mps/ide/refactoring/platform/plugin/MoveNodesAction;" />
+      <node id="9126454250600099588" at="33,0,36,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
       <node id="9126454250600099596" at="38,0,41,0" concept="10" trace="getName#()Ljava/lang/String;" />
       <node id="9126454250600111945" at="55,7,58,5" concept="9" />
       <node id="8656797459615208617" at="70,97,73,9" concept="8" />
