@@ -26,20 +26,13 @@
       <unit at="68,0,89,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocMethodParameterReference_SubstituteMenu$SMP_Subconcepts_7j3pri_b" />
       <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocMethodParameterReference_SubstituteMenu" />
     </file>
-    <file name="DocTypeParameterReference_SubstituteMenu.java">
-      <unit at="90,0,93,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$CONCEPTS" />
-      <unit at="94,0,97,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$LINKS" />
-      <unit at="49,0,68,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$SMP_ReferenceScope_jz6j6a_a" />
-      <unit at="68,0,89,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$SMP_Subconcepts_jz6j6a_b" />
-      <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu" />
-    </file>
     <file name="EditorAspectDescriptorImpl.java">
       <unit at="19,0,152,0" name="jetbrains.mps.baseLanguage.javadoc.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="PresentationProviders.java">
-      <unit at="45,0,48,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$CONCEPTS" />
-      <unit at="49,0,52,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$PROPS" />
-      <unit at="15,0,53,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders" />
+      <unit at="52,0,55,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$PROPS" />
+      <unit at="56,0,59,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$CONCEPTS" />
+      <unit at="15,0,60,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/1127420022337845466">
@@ -1753,15 +1746,15 @@
       <unit id="2217234381367188010" at="42,0,167,0" name="jetbrains.mps.baseLanguage.javadoc.editor.FieldDocReference_EditorBuilder_a" />
     </file>
     <file name="PresentationProviders.java">
-      <node id="1370556966541098644" at="19,89,20,265" concept="9" />
-      <node id="1370556966541098583" at="17,0,22,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1370556966541098583" at="16,0,23,0" concept="12" trace="PRESENTATION_mgmaof_a0a0a" />
-      <scope id="1370556966541098584" at="19,89,20,265" />
-      <scope id="1370556966541098583" at="17,0,22,0">
+      <node id="1370556966541098644" at="26,89,27,265" concept="9" />
+      <node id="1370556966541098583" at="24,0,29,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1370556966541098583" at="23,0,30,0" concept="12" trace="PRESENTATION_mgmaof_a0a0a" />
+      <scope id="1370556966541098584" at="26,89,27,265" />
+      <scope id="1370556966541098583" at="24,0,29,0">
         <var name="sourceNode" id="1370556966541098583" />
         <var name="targetNode" id="1370556966541098583" />
       </scope>
-      <unit id="1370556966541098583" at="16,84,22,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$1" />
+      <unit id="1370556966541098583" at="23,84,29,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$2" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/2217234381367190446">
@@ -2091,15 +2084,15 @@
       <unit id="2217234381367530197" at="42,0,165,0" name="jetbrains.mps.baseLanguage.javadoc.editor.MethodDocReference_EditorBuilder_a" />
     </file>
     <file name="PresentationProviders.java">
-      <node id="1370556966540459001" at="26,89,27,272" concept="9" />
-      <node id="1370556966540454764" at="24,0,29,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1370556966540454764" at="23,0,30,0" concept="12" trace="PRESENTATION_t5duq4_a0a0a" />
-      <scope id="1370556966540454765" at="26,89,27,272" />
-      <scope id="1370556966540454764" at="24,0,29,0">
+      <node id="1370556966540459001" at="33,89,34,272" concept="9" />
+      <node id="1370556966540454764" at="31,0,36,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1370556966540454764" at="30,0,37,0" concept="12" trace="PRESENTATION_t5duq4_a0a0a" />
+      <scope id="1370556966540454765" at="33,89,34,272" />
+      <scope id="1370556966540454764" at="31,0,36,0">
         <var name="sourceNode" id="1370556966540454764" />
         <var name="targetNode" id="1370556966540454764" />
       </scope>
-      <unit id="1370556966540454764" at="23,84,29,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$2" />
+      <unit id="1370556966540454764" at="30,84,36,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$3" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/2217234381367530214">
@@ -2259,15 +2252,15 @@
       <unit id="2217234381367530214" at="42,0,165,0" name="jetbrains.mps.baseLanguage.javadoc.editor.ClassifierDocReference_EditorBuilder_a" />
     </file>
     <file name="PresentationProviders.java">
-      <node id="1370556966541101069" at="33,89,34,122" concept="9" />
-      <node id="1370556966541101062" at="31,0,36,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1370556966541101062" at="30,0,37,0" concept="12" trace="PRESENTATION_yqqfxo_a0a0a" />
-      <scope id="1370556966541101063" at="33,89,34,122" />
-      <scope id="1370556966541101062" at="31,0,36,0">
+      <node id="1370556966541101069" at="40,89,41,122" concept="9" />
+      <node id="1370556966541101062" at="38,0,43,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1370556966541101062" at="37,0,44,0" concept="12" trace="PRESENTATION_yqqfxo_a0a0a" />
+      <scope id="1370556966541101063" at="40,89,41,122" />
+      <scope id="1370556966541101062" at="38,0,43,0">
         <var name="sourceNode" id="1370556966541101062" />
         <var name="targetNode" id="1370556966541101062" />
       </scope>
-      <unit id="1370556966541101062" at="30,84,36,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$3" />
+      <unit id="1370556966541101062" at="37,84,43,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$4" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/2217234381368368304">
@@ -3437,15 +3430,15 @@
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/4021391592913766809">
     <file name="PresentationProviders.java">
-      <node id="1370556966541096112" at="40,89,41,265" concept="9" />
-      <node id="1370556966541096033" at="38,0,43,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1370556966541096033" at="37,0,44,0" concept="12" trace="PRESENTATION_np8u6u_a0a0a" />
-      <scope id="1370556966541096034" at="40,89,41,265" />
-      <scope id="1370556966541096033" at="38,0,43,0">
+      <node id="1370556966541096112" at="47,89,48,265" concept="9" />
+      <node id="1370556966541096033" at="45,0,50,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1370556966541096033" at="44,0,51,0" concept="12" trace="PRESENTATION_np8u6u_a0a0a" />
+      <scope id="1370556966541096034" at="47,89,48,265" />
+      <scope id="1370556966541096033" at="45,0,50,0">
         <var name="sourceNode" id="1370556966541096033" />
         <var name="targetNode" id="1370556966541096033" />
       </scope>
-      <unit id="1370556966541096033" at="37,84,43,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$4" />
+      <unit id="1370556966541096033" at="44,84,50,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$5" />
     </file>
     <file name="StaticFieldDocReference_Editor.java">
       <node id="4021391592913766809" at="11,79,12,89" concept="9" />
@@ -6614,8 +6607,8 @@
       <node id="6832197706140518111" at="47,19,48,18" concept="2" />
       <node id="6832197706140518111" at="53,26,54,18" concept="9" />
       <node id="6832197706140518111" at="57,39,58,32" concept="9" />
-      <node id="6832197706140518111" at="61,43,62,118" concept="8" />
-      <node id="6832197706140518111" at="62,118,63,48" concept="2" />
+      <node id="6832197706140518111" at="61,43,62,122" concept="8" />
+      <node id="6832197706140518111" at="62,122,63,48" concept="2" />
       <node id="6832197706140518111" at="63,48,64,28" concept="2" />
       <node id="6832197706140518111" at="64,28,65,31" concept="2" />
       <node id="6832197706140518113" at="65,31,66,48" concept="2" />
@@ -6637,8 +6630,8 @@
       <node id="6832197706140518111" at="94,50,95,0" concept="11" />
       <node id="6832197706140518111" at="96,40,97,40" concept="2" />
       <node id="6832197706140518111" at="97,40,98,44" concept="2" />
-      <node id="6832197706140518111" at="99,5,100,180" concept="2" />
-      <node id="6832197706140518111" at="100,180,101,183" concept="8" />
+      <node id="6832197706140518111" at="99,5,100,296" concept="2" />
+      <node id="6832197706140518111" at="100,296,101,183" concept="8" />
       <node id="6832197706140518111" at="103,39,104,113" concept="9" />
       <node id="6832197706140518111" at="107,73,108,87" concept="8" />
       <node id="6832197706140518111" at="108,87,109,145" concept="9" />
@@ -6647,38 +6640,26 @@
       <node id="6832197706140518114" at="118,109,119,21" concept="14" />
       <node id="6832197706140518114" at="119,21,120,42" concept="2" />
       <node id="6832197706140518114" at="120,42,121,20" concept="2" />
-      <node id="6832197706140518114" at="124,41,125,32" concept="9" />
+      <node id="6832197706140518114" at="124,41,125,45" concept="9" />
       <node id="6832197706140518114" at="130,28,131,20" concept="9" />
-      <node id="6832197706140518116" at="134,43,135,41" concept="2" />
-      <node id="6832197706140518116" at="136,11,137,51" concept="8" />
-      <node id="6832197706140518116" at="137,51,138,78" concept="2" />
-      <node id="6832197706140518116" at="138,78,139,150" concept="8" />
-      <node id="6832197706140518116" at="139,150,140,47" concept="2" />
-      <node id="6832197706140518116" at="140,47,141,46" concept="2" />
-      <node id="6832197706140518116" at="141,46,142,38" concept="8" />
-      <node id="6832197706140518116" at="142,38,143,56" concept="2" />
-      <node id="6832197706140518116" at="143,56,144,44" concept="2" />
-      <node id="6832197706140518116" at="144,44,145,88" concept="2" />
-      <node id="6832197706140518116" at="145,88,146,35" concept="2" />
-      <node id="6832197706140518116" at="146,35,147,190" concept="8" />
-      <node id="6832197706140518116" at="149,43,150,120" concept="9" />
-      <node id="6832197706140518116" at="153,76,154,91" concept="8" />
-      <node id="6832197706140518116" at="154,91,155,147" concept="9" />
-      <node id="6832197706140518116" at="156,14,157,26" concept="9" />
-      <node id="6832197706140518116" at="158,17,159,42" concept="2" />
-      <node id="6832197706140518111" at="165,0,166,0" concept="12" trace="param$T$cs" />
-      <node id="6832197706140518111" at="166,0,167,0" concept="12" trace="typeVariableDeclaration$T$nD" />
-      <node id="6832197706140518111" at="170,0,171,0" concept="12" trace="TypeVariableDeclaration$Cc" />
-      <node id="6832197706140518111" at="171,0,172,0" concept="12" trace="LinkAttribute$7j" />
-      <node id="6832197706140518111" at="172,0,173,0" concept="12" trace="PropertyAttribute$jT" />
-      <node id="6832197706140518111" at="176,0,177,0" concept="12" trace="name$tAp1" />
+      <node id="9049866855250783645" at="134,56,135,169" concept="8" />
+      <node id="9049866855250783645" at="135,169,136,64" concept="2" />
+      <node id="9049866855250783645" at="136,64,137,36" concept="8" />
+      <node id="9049866855250783645" at="137,36,138,54" concept="2" />
+      <node id="9049866855250783645" at="138,54,139,42" concept="2" />
+      <node id="9049866855250783645" at="139,42,140,24" concept="9" />
+      <node id="6832197706140518111" at="148,71,149,61" concept="9" />
+      <node id="6832197706140518111" at="153,78,154,61" concept="9" />
+      <node id="6832197706140518111" at="159,0,160,0" concept="12" trace="param$T$cs" />
+      <node id="6832197706140518111" at="160,0,161,0" concept="12" trace="typeVariableDeclaration$T$nD" />
+      <node id="6832197706140518111" at="164,0,165,0" concept="12" trace="LinkAttribute$7j" />
       <node id="6832197706140518111" at="43,0,45,0" concept="3" trace="myNode" />
       <node id="6832197706140518114" at="114,0,116,0" concept="3" trace="myNode" />
+      <node id="6832197706140518111" at="144,0,146,0" concept="1" trace="DocTypeParameterReference_typeVariableDeclaration_cellMenu_9ukojg_a0a0#()V" />
       <node id="6832197706140518111" at="57,0,60,0" concept="7" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6832197706140518111" at="74,0,77,0" concept="7" trace="compute#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6832197706140518111" at="103,0,106,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6832197706140518114" at="124,0,127,0" concept="7" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="6832197706140518116" at="149,0,152,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6832197706140518111" at="46,0,50,0" concept="1" trace="DocTypeParameterReference_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6832197706140518111" at="95,0,99,5" concept="6" />
       <node id="6832197706140518111" at="51,0,56,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -6687,31 +6668,29 @@
       <node id="6832197706140518111" at="106,7,111,22" concept="6" />
       <node id="6832197706140518114" at="118,0,123,0" concept="1" trace="Inline_Builder0#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6832197706140518114" at="128,0,133,0" concept="7" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6832197706140518116" at="147,190,152,11" concept="8" />
-      <node id="6832197706140518116" at="152,11,157,26" concept="6" />
+      <node id="6832197706140518111" at="146,0,151,0" concept="7" trace="getMatchingTextProvider#()Ljetbrains/mps/smodel/action/IReferentPresentationProvider;" />
+      <node id="6832197706140518111" at="151,0,156,0" concept="7" trace="getVisibleMatchingTextProvider#()Ljetbrains/mps/smodel/action/IReferentPresentationProvider;" />
       <node id="6832197706140518111" at="83,0,90,0" concept="7" trace="createErrorCell#(Ljava/lang/String;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6832197706140518111" at="61,0,69,0" concept="7" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="9049866855250783645" at="134,0,142,0" concept="7" trace="createReferencePresentation_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6832197706140518111" at="72,0,83,0" concept="7" trace="createReferenceCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6832197706140518111" at="70,58,90,6" concept="8" />
-      <node id="6832197706140518116" at="135,41,160,7" concept="16" />
-      <node id="6832197706140518116" at="134,0,162,0" concept="7" trace="createProperty_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="6832197706140518111" at="69,0,113,0" concept="7" trace="createRefCell_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="6832197706140518111" at="144,85,144,85" />
       <scope id="6832197706140518111" at="53,26,54,18" />
       <scope id="6832197706140518111" at="57,39,58,32" />
       <scope id="6832197706140518111" at="74,39,75,95" />
       <scope id="6832197706140518111" at="103,39,104,113" />
-      <scope id="6832197706140518114" at="124,41,125,32" />
+      <scope id="6832197706140518114" at="124,41,125,45" />
       <scope id="6832197706140518114" at="130,28,131,20" />
-      <scope id="6832197706140518116" at="149,43,150,120" />
-      <scope id="6832197706140518116" at="158,17,159,42" />
+      <scope id="6832197706140518111" at="148,71,149,61" />
+      <scope id="6832197706140518111" at="153,78,154,61" />
       <scope id="6832197706140518111" at="46,105,48,18" />
       <scope id="6832197706140518111" at="96,40,98,44" />
       <scope id="6832197706140518111" at="107,73,109,145">
         <var name="manager" id="6832197706140518111" />
       </scope>
-      <scope id="6832197706140518116" at="153,76,155,147">
-        <var name="manager" id="6832197706140518116" />
-      </scope>
+      <scope id="6832197706140518111" at="144,0,146,0" />
       <scope id="6832197706140518111" at="57,0,60,0" />
       <scope id="6832197706140518111" at="74,0,77,0" />
       <scope id="6832197706140518111" at="103,0,106,0">
@@ -6719,9 +6698,6 @@
       </scope>
       <scope id="6832197706140518114" at="118,109,121,20" />
       <scope id="6832197706140518114" at="124,0,127,0" />
-      <scope id="6832197706140518116" at="149,0,152,0">
-        <var name="it" id="6832197706140518116" />
-      </scope>
       <scope id="6832197706140518111" at="46,0,50,0">
         <var name="context" id="6832197706140518111" />
         <var name="node" id="6832197706140518111" />
@@ -6736,28 +6712,26 @@
         <var name="referencingNode" id="6832197706140518114" />
       </scope>
       <scope id="6832197706140518114" at="128,0,133,0" />
+      <scope id="6832197706140518111" at="146,0,151,0" />
+      <scope id="6832197706140518111" at="151,0,156,0" />
       <scope id="6832197706140518111" at="61,43,67,22">
         <var name="editorCell" id="6832197706140518111" />
+      </scope>
+      <scope id="9049866855250783645" at="134,56,140,24">
+        <var name="editorCell" id="9049866855250783645" />
+        <var name="style" id="9049866855250783645" />
       </scope>
       <scope id="6832197706140518111" at="83,0,90,0">
         <var name="error" id="6832197706140518111" />
       </scope>
       <scope id="6832197706140518111" at="61,0,69,0" />
+      <scope id="9049866855250783645" at="134,0,142,0" />
       <scope id="6832197706140518111" at="72,72,81,20">
         <var name="cell" id="6832197706140518111" />
       </scope>
       <scope id="6832197706140518111" at="72,0,83,0">
         <var name="targetNode" id="6832197706140518111" />
       </scope>
-      <scope id="6832197706140518116" at="136,11,157,26">
-        <var name="currentPropertyAttributes" id="6832197706140518116" />
-        <var name="editorCell" id="6832197706140518116" />
-        <var name="property" id="6832197706140518116" />
-        <var name="propertyAttributes" id="6832197706140518116" />
-        <var name="style" id="6832197706140518116" />
-      </scope>
-      <scope id="6832197706140518116" at="134,43,160,7" />
-      <scope id="6832197706140518116" at="134,0,162,0" />
       <scope id="6832197706140518111" at="69,40,111,22">
         <var name="currentReferenceAttributes" id="6832197706140518111" />
         <var name="editorCell" id="6832197706140518111" />
@@ -6766,15 +6740,25 @@
         <var name="referenceLink" id="6832197706140518111" />
       </scope>
       <scope id="6832197706140518111" at="69,0,113,0" />
-      <unit id="6832197706140518111" at="175,0,178,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$PROPS" />
+      <unit id="6832197706140518111" at="163,0,166,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$CONCEPTS" />
       <unit id="6832197706140518111" at="73,74,77,9" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$1$1" />
       <unit id="6832197706140518111" at="102,102,106,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$2" />
-      <unit id="6832197706140518116" at="148,104,152,9" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$Inline_Builder0$1" />
-      <unit id="6832197706140518111" at="164,0,168,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$LINKS" />
-      <unit id="6832197706140518111" at="169,0,174,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$CONCEPTS" />
+      <unit id="6832197706140518111" at="158,0,162,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$LINKS" />
+      <unit id="6832197706140518111" at="143,0,157,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$DocTypeParameterReference_typeVariableDeclaration_cellMenu_9ukojg_a0a0" />
       <unit id="6832197706140518111" at="71,42,90,5" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$1" />
-      <unit id="6832197706140518114" at="113,0,163,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$Inline_Builder0" />
-      <unit id="6832197706140518111" at="42,0,179,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a" />
+      <unit id="6832197706140518114" at="113,0,143,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a$Inline_Builder0" />
+      <unit id="6832197706140518111" at="42,0,167,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_EditorBuilder_a" />
+    </file>
+    <file name="PresentationProviders.java">
+      <node id="9049866855250783951" at="19,89,20,84" concept="9" />
+      <node id="9049866855250783648" at="17,0,22,0" concept="7" trace="getPresentation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="9049866855250783648" at="16,0,23,0" concept="12" trace="PRESENTATION_9ukojg_a0a0a" />
+      <scope id="9049866855250783649" at="19,89,20,84" />
+      <scope id="9049866855250783648" at="17,0,22,0">
+        <var name="sourceNode" id="9049866855250783648" />
+        <var name="targetNode" id="9049866855250783648" />
+      </scope>
+      <unit id="9049866855250783648" at="16,84,22,3" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$1" />
     </file>
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/6832197706140518117">
@@ -9614,6 +9598,96 @@
       <unit id="8970989240999060766" at="154,0,157,0" name="jetbrains.mps.baseLanguage.javadoc.editor.InlineTagCommentLinePart_EditorBuilder_a$LINKS" />
       <unit id="8970989240999060766" at="89,0,140,0" name="jetbrains.mps.baseLanguage.javadoc.editor.InlineTagCommentLinePart_EditorBuilder_a$tagSingleRoleHandler_xnhqer_c0" />
       <unit id="8970989240999060766" at="28,0,158,0" name="jetbrains.mps.baseLanguage.javadoc.editor.InlineTagCommentLinePart_EditorBuilder_a" />
+    </file>
+  </root>
+  <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/9049866855250945543">
+    <file name="DocTypeParameterReference_SubstituteMenu.java">
+      <node id="9049866855250945543" at="29,118,30,140" concept="8" />
+      <node id="9049866855250945685" at="30,140,31,142" concept="2" />
+      <node id="9049866855250945543" at="31,142,32,18" concept="9" />
+      <node id="9049866855250945543" at="37,91,38,49" concept="2" />
+      <node id="9049866855250945543" at="38,49,39,265" concept="2" />
+      <node id="9049866855250945543" at="40,9,41,44" concept="9" />
+      <node id="9049866855250945543" at="42,15,43,50" concept="2" />
+      <node id="9049866855250945685" at="50,42,51,103" concept="10" />
+      <node id="9049866855250945685" at="51,103,52,88" concept="14" />
+      <node id="9049866855250945685" at="56,80,57,51" concept="2" />
+      <node id="9049866855250945685" at="57,51,58,245" concept="2" />
+      <node id="9049866855250945685" at="59,11,60,42" concept="9" />
+      <node id="9049866855250945685" at="61,17,62,52" concept="2" />
+      <node id="9049866855250945685" at="68,112,69,110" concept="9" />
+      <node id="9049866855250945685" at="72,0,73,0" concept="3" trace="_context" />
+      <node id="9049866855250945685" at="73,0,74,0" concept="3" trace="referencedNode" />
+      <node id="9049866855250945685" at="74,0,75,0" concept="3" trace="myTraceInfo" />
+      <node id="9049866855250945685" at="76,122,77,56" concept="14" />
+      <node id="9049866855250945685" at="77,56,78,27" concept="2" />
+      <node id="9049866855250945685" at="78,27,79,33" concept="2" />
+      <node id="9049866855250945685" at="79,33,80,66" concept="2" />
+      <node id="9049866855251088873" at="83,53,84,90" concept="9" />
+      <node id="9049866855250945685" at="87,60,88,40" concept="9" />
+      <node id="9049866855250945685" at="92,49,93,27" concept="9" />
+      <node id="9049866855250945543" at="99,0,100,0" concept="12" trace="DocTypeParameterReference$47" />
+      <node id="9049866855250945543" at="103,0,104,0" concept="12" trace="param$T$cs" />
+      <node id="9049866855250945543" at="107,0,108,0" concept="12" trace="name$tAp1" />
+      <node id="9049866855250945685" at="50,0,54,0" concept="1" trace="SMP_ReferenceScope_jz6j6a_a#()V" />
+      <node id="9049866855250945685" at="82,0,86,0" concept="7" trace="getMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="9049866855250945685" at="86,0,90,0" concept="7" trace="getVisibleMatchingText#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="9049866855250945685" at="91,0,95,0" concept="7" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
+      <node id="9049866855250945543" at="39,265,44,5" concept="16" />
+      <node id="9049866855250945685" at="58,245,63,7" concept="16" />
+      <node id="9049866855250945685" at="66,0,71,0" concept="7" trace="createItem#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/editor/menus/substitute/ReferenceScopeSubstituteMenuItem;" />
+      <node id="9049866855250945685" at="76,0,82,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SReferenceLink;)V" />
+      <node id="9049866855250945543" at="27,0,34,0" concept="7" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="9049866855250945543" at="35,0,46,0" concept="7" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <node id="9049866855250945685" at="54,0,65,0" concept="7" trace="createItems#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
+      <scope id="9049866855250945543" at="40,9,41,44" />
+      <scope id="9049866855250945543" at="42,15,43,50" />
+      <scope id="9049866855250945685" at="59,11,60,42" />
+      <scope id="9049866855250945685" at="61,17,62,52" />
+      <scope id="9049866855250945685" at="68,112,69,110" />
+      <scope id="9049866855251088570" at="83,53,84,90" />
+      <scope id="9049866855250945685" at="87,60,88,40" />
+      <scope id="9049866855250945685" at="92,49,93,27" />
+      <scope id="9049866855250945685" at="50,42,52,88" />
+      <scope id="9049866855250945543" at="29,118,32,18">
+        <var name="result" id="9049866855250945543" />
+      </scope>
+      <scope id="9049866855250945685" at="50,0,54,0" />
+      <scope id="9049866855250945685" at="76,122,80,66" />
+      <scope id="9049866855250945685" at="82,0,86,0">
+        <var name="pattern" id="9049866855250945685" />
+      </scope>
+      <scope id="9049866855250945685" at="86,0,90,0">
+        <var name="pattern" id="9049866855250945685" />
+      </scope>
+      <scope id="9049866855250945685" at="91,0,95,0" />
+      <scope id="9049866855250945685" at="66,0,71,0">
+        <var name="context" id="9049866855250945685" />
+        <var name="referencedNode" id="9049866855250945685" />
+      </scope>
+      <scope id="9049866855250945685" at="76,0,82,0">
+        <var name="concept" id="9049866855250945685" />
+        <var name="context" id="9049866855250945685" />
+        <var name="refNode" id="9049866855250945685" />
+        <var name="referenceLink" id="9049866855250945685" />
+      </scope>
+      <scope id="9049866855250945543" at="27,0,34,0">
+        <var name="_context" id="9049866855250945543" />
+      </scope>
+      <scope id="9049866855250945543" at="37,91,44,5" />
+      <scope id="9049866855250945685" at="56,80,63,7" />
+      <scope id="9049866855250945543" at="35,0,46,0">
+        <var name="context" id="9049866855250945543" />
+      </scope>
+      <scope id="9049866855250945685" at="54,0,65,0">
+        <var name="context" id="9049866855250945685" />
+      </scope>
+      <unit id="9049866855250945543" at="98,0,101,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$CONCEPTS" />
+      <unit id="9049866855250945543" at="102,0,105,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$LINKS" />
+      <unit id="9049866855250945543" at="106,0,109,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$PROPS" />
+      <unit id="9049866855250945685" at="71,0,96,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$SMP_ReferenceScope_jz6j6a_a$Item" />
+      <unit id="9049866855250945685" at="48,0,97,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu$SMP_ReferenceScope_jz6j6a_a" />
+      <unit id="9049866855250945543" at="26,0,110,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu" />
     </file>
   </root>
 </debug-info>
