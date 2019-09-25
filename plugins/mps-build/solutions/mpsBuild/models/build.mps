@@ -14363,6 +14363,7 @@
         </node>
         <node concept="1SiIV0" id="4X1d9kMORoP" role="3bR37C">
           <node concept="3bR9La" id="4X1d9kMORoQ" role="1SiIV1">
+            <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="4X1d9kMCbcv" resolve="jetbrains.mps.ide.refactoring.platform" />
           </node>
         </node>
