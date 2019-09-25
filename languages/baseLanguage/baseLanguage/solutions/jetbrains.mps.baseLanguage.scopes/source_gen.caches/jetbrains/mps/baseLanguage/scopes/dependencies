@@ -365,14 +365,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.scopes.RepositoryStateCacheUtils">
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
-    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.scopes.Scopes">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="jetbrains.mps.lang.scopes.runtime.HidingByNameScope" />

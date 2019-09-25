@@ -12103,6 +12103,11 @@
               <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
             </node>
           </node>
+          <node concept="1SiIV0" id="UA8EIkbntj" role="3bR37C">
+            <node concept="3bR9La" id="UA8EIkbntk" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6L0h" resolve="jetbrains.mps.baseLanguage.collections" />
+            </node>
+          </node>
         </node>
         <node concept="398BVA" id="6zkSwmUIjU$" role="3LF7KH">
           <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
