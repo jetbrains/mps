@@ -52,6 +52,7 @@ public final class TestParameters {
       ListSequence.fromList(myAdditionalJvmArgs).addElement("-DNO_FS_ROOTS_ACCESS_CHECK=true");
     }
     ListSequence.fromList(myAdditionalJvmArgs).addElement("-ea");
+    ListSequence.fromList(myAdditionalJvmArgs).addElement("-Djdk.module.illegalAccess.silent=true");
   }
 
   public Class<?> getExecutorClass() {
