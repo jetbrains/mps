@@ -112,8 +112,10 @@ public class GenerateConstructor_Action extends BaseAction {
                 return SNodeOperations.getPointer(it);
               }
             }).toGenericArray(SNodeReference.class);
-          } else {
+          } else if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$IY, "4_LVZ3pCvsd")))).count() == 1) {
             selectedConstructors.value = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superclass, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$IY, "4_LVZ3pCvsd")))).first())};
+          } else {
+            selectedConstructors.value = new SNodeReference[]{new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()")};
           }
         }
         if (needsShowConstructorsDialog.value) {
