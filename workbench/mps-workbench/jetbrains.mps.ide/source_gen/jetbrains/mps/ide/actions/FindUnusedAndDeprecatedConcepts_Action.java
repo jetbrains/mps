@@ -161,6 +161,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
   }
   /*package*/ void showUsagesViewForNodes(final List<SNodeReference> nodes, final Map<String, Object> _params) {
     IResultProvider provider = FindUtils.makeProvider(new BaseFinder() {
+      @NotNull
       @Override
       public SearchResults find(SearchQuery query, ProgressMonitor progress) {
         final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();

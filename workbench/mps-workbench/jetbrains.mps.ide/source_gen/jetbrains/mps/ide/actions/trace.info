@@ -9000,17 +9000,17 @@
       <node id="1050125497003211081" at="157,6,158,45" concept="6" />
       <node id="1050125497003209600" at="158,45,159,0" concept="15" />
       <node id="9054606037494888868" at="159,0,160,96" concept="6" />
-      <node id="9054606037494592275" at="165,78,166,111" concept="12" />
-      <node id="4006758004392427641" at="166,111,167,66" concept="12" />
-      <node id="4006758004392427786" at="169,50,170,36" concept="13" />
-      <node id="4006758004392427874" at="173,43,174,30" concept="13" />
-      <node id="4006758004392427655" at="176,13,177,89" concept="6" />
-      <node id="4006758004392427950" at="178,9,179,23" concept="13" />
-      <node id="1937421445114171758" at="182,38,183,32" concept="13" />
-      <node id="5542552559868803496" at="185,7,186,141" concept="12" />
-      <node id="5542552559868805012" at="186,141,187,150" concept="6" />
-      <node id="4006758004392312921" at="191,0,192,0" concept="16" trace="AbstractConceptDeclaration$UN" />
-      <node id="4006758004392312921" at="192,0,193,0" concept="16" trace="IDeprecatable$EE" />
+      <node id="9054606037494592275" at="166,78,167,111" concept="12" />
+      <node id="4006758004392427641" at="167,111,168,66" concept="12" />
+      <node id="4006758004392427786" at="170,50,171,36" concept="13" />
+      <node id="4006758004392427874" at="174,43,175,30" concept="13" />
+      <node id="4006758004392427655" at="177,13,178,89" concept="6" />
+      <node id="4006758004392427950" at="179,9,180,23" concept="13" />
+      <node id="1937421445114171758" at="183,38,184,32" concept="13" />
+      <node id="5542552559868803496" at="186,7,187,141" concept="12" />
+      <node id="5542552559868805012" at="187,141,188,150" concept="6" />
+      <node id="4006758004392312921" at="192,0,193,0" concept="16" trace="AbstractConceptDeclaration$UN" />
+      <node id="4006758004392312921" at="193,0,194,0" concept="16" trace="IDeprecatable$EE" />
       <node id="4006758004392312921" at="68,95,71,5" concept="10" />
       <node id="4006758004392312928" at="74,57,77,7" concept="10" />
       <node id="5938312768539927600" at="81,56,84,7" concept="10" />
@@ -9021,10 +9021,10 @@
       <node id="1050125497003819901" at="138,0,141,0" concept="11" trace="select#(Ljetbrains/mps/ide/findusages/model/SearchResult;)Ljava/lang/Object;" />
       <node id="1050125497003819922" at="143,0,146,0" concept="11" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1050125497003819938" at="147,0,150,0" concept="11" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="4006758004392427782" at="169,0,172,0" concept="11" trace="select#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="4006758004392427870" at="173,0,176,0" concept="11" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="4006758004392427782" at="170,0,173,0" concept="11" trace="select#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4006758004392427870" at="174,0,177,0" concept="11" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4006758004392312921" at="63,0,67,0" concept="11" trace="isDumbAware#()Z" />
-      <node id="1937421445114168384" at="181,0,185,0" concept="11" trace="getDescription#()Ljava/lang/String;" />
+      <node id="1937421445114168384" at="182,0,186,0" concept="11" trace="getDescription#()Ljava/lang/String;" />
       <node id="4006758004392312921" at="58,0,63,0" concept="3" trace="FindUnusedAndDeprecatedConcepts_Action#()V" />
       <node id="1050125497003819892" at="136,145,141,76" concept="12" />
       <node id="1050125497003819799" at="106,127,112,15" concept="9" />
@@ -9033,11 +9033,11 @@
       <node id="1050125497003819831" at="116,72,125,13" concept="9" />
       <node id="1050125497003819913" at="141,76,150,32" concept="12" />
       <node id="1050125497003819797" at="104,142,114,13" concept="9" />
-      <node id="4006758004392427750" at="167,66,178,9" concept="9" />
-      <node id="4006758004392427482" at="164,0,181,0" concept="11" trace="find#(Ljetbrains/mps/ide/findusages/model/SearchQuery;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
+      <node id="4006758004392427750" at="168,66,179,9" concept="9" />
+      <node id="4006758004392427482" at="164,0,182,0" concept="11" trace="find#(Ljetbrains/mps/ide/findusages/model/SearchQuery;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
       <node id="4006758004392312921" at="67,0,88,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="4006758004392427960" at="162,112,185,7" concept="12" />
-      <node id="9054606037494878019" at="162,0,189,0" concept="11" trace="showUsagesViewForNodes#(Ljava/util/List;Ljava/util/Map;)V" />
+      <node id="4006758004392427960" at="162,112,186,7" concept="12" />
+      <node id="9054606037494878019" at="162,0,190,0" concept="11" trace="showUsagesViewForNodes#(Ljava/util/List;Ljava/util/Map;)V" />
       <node id="1050125497003819750" at="99,0,154,0" concept="11" trace="compute#()Ljava/util/List;" />
       <node id="1050125497003819739" at="97,0,154,11" concept="12" />
       <node id="1050125497003254900" at="94,0,157,0" concept="11" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
@@ -9054,10 +9054,10 @@
       <scope id="1050125497003819902" at="138,61,139,38" />
       <scope id="1050125497003819923" at="143,52,144,219" />
       <scope id="1050125497003819939" at="147,54,148,54" />
-      <scope id="4006758004392427783" at="169,50,170,36" />
-      <scope id="4006758004392427871" at="173,43,174,30" />
-      <scope id="4006758004392427753" at="176,13,177,89" />
-      <scope id="1937421445114168396" at="182,38,183,32" />
+      <scope id="4006758004392427783" at="170,50,171,36" />
+      <scope id="4006758004392427871" at="174,43,175,30" />
+      <scope id="4006758004392427753" at="177,13,178,89" />
+      <scope id="1937421445114168396" at="183,38,184,32" />
       <scope id="4006758004392312921" at="58,51,61,40" />
       <scope id="1050125497003819835" at="118,116,121,15">
         <var name="c" id="1050125497003819844" />
@@ -9071,15 +9071,15 @@
       <scope id="1050125497003819938" at="147,0,150,0">
         <var name="it" id="1050125497003819938" />
       </scope>
-      <scope id="4006758004392427782" at="169,0,172,0">
+      <scope id="4006758004392427782" at="170,0,173,0">
         <var name="it" id="4006758004392427782" />
       </scope>
-      <scope id="4006758004392427870" at="173,0,176,0">
+      <scope id="4006758004392427870" at="174,0,177,0">
         <var name="it" id="4006758004392427870" />
       </scope>
       <scope id="4006758004392312921" at="63,0,67,0" />
       <scope id="1050125497003819800" at="107,51,111,32" />
-      <scope id="1937421445114168384" at="181,0,185,0" />
+      <scope id="1937421445114168384" at="182,0,186,0" />
       <scope id="4006758004392312921" at="58,0,63,0" />
       <scope id="4006758004392312927" at="72,5,77,7">
         <var name="p" id="4006758004392312927" />
@@ -9098,27 +9098,27 @@
       <scope id="1050125497003819797" at="104,142,114,13">
         <var name="module" id="1050125497003819816" />
       </scope>
-      <scope id="4006758004392427750" at="167,66,178,9">
+      <scope id="4006758004392427750" at="168,66,179,9">
         <var name="node" id="4006758004392427751" />
       </scope>
-      <scope id="4006758004392427489" at="165,78,179,23">
+      <scope id="4006758004392427489" at="166,78,180,23">
         <var name="repo" id="9054606037494592276" />
         <var name="results" id="4006758004392427642" />
       </scope>
-      <scope id="4006758004392427482" at="164,0,181,0">
+      <scope id="4006758004392312921" at="68,95,86,16" />
+      <scope id="4006758004392427482" at="164,0,182,0">
         <var name="progress" id="4006758004392427487" />
         <var name="query" id="4006758004392427485" />
       </scope>
-      <scope id="4006758004392312921" at="68,95,86,16" />
       <scope id="4006758004392312921" at="67,0,88,0">
         <var name="_params" id="4006758004392312921" />
         <var name="event" id="4006758004392312921" />
       </scope>
-      <scope id="9054606037494878021" at="162,112,187,150">
+      <scope id="9054606037494878021" at="162,112,188,150">
         <var name="opt" id="5542552559868803499" />
         <var name="provider" id="4006758004392427961" />
       </scope>
-      <scope id="9054606037494878019" at="162,0,189,0">
+      <scope id="9054606037494878019" at="162,0,190,0">
         <var name="_params" id="9054606037494878019" />
         <var name="nodes" id="8848477597120116247" />
       </scope>
@@ -9150,13 +9150,13 @@
       <unit id="1050125497003819901" at="137,116,141,13" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$1$1$1" />
       <unit id="1050125497003819922" at="142,83,146,13" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$1$1$2" />
       <unit id="1050125497003819938" at="146,26,150,13" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$1$1$3" />
-      <unit id="4006758004392427782" at="168,66,172,9" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$2$1" />
-      <unit id="4006758004392427870" at="172,21,176,9" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$2$2" />
-      <unit id="4006758004392312921" at="190,0,194,0" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$CONCEPTS" />
-      <unit id="4006758004392427480" at="163,58,185,5" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$2" />
+      <unit id="4006758004392427782" at="169,66,173,9" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$2$1" />
+      <unit id="4006758004392427870" at="173,21,177,9" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$2$2" />
+      <unit id="4006758004392312921" at="191,0,195,0" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$CONCEPTS" />
+      <unit id="4006758004392427480" at="163,58,186,5" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$2" />
       <unit id="1050125497003819750" at="98,160,154,9" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$1$1" />
       <unit id="1050125497003254894" at="93,27,157,5" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action$1" />
-      <unit id="4006758004392312921" at="55,0,195,0" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action" />
+      <unit id="4006758004392312921" at="55,0,196,0" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
       <node id="4006758004392312921" at="54,46,55,60" concept="6" />
