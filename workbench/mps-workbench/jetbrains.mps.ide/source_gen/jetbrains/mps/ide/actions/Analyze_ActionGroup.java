@@ -17,6 +17,6 @@ public class Analyze_ActionGroup extends GeneratedActionGroup {
     setPopup(false);
     Analyze_ActionGroup.this.addAction("jetbrains.mps.ide.actions.AnalyzeModuleDependencies_Action");
     Analyze_ActionGroup.this.addSeparator();
-    Analyze_ActionGroup.this.addAction("jetbrains.mps.ide.actions.AnalyzeStacktrace_Action");
+    Analyze_ActionGroup.this.addAction("Unscramble");
   }
 }

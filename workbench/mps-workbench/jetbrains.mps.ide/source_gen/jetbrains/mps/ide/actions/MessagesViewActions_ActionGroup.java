@@ -15,7 +15,7 @@ public class MessagesViewActions_ActionGroup extends GeneratedActionGroup {
     super("MessagesViewActions", ID, plugin);
     setIsInternal(false);
     setPopup(false);
-    MessagesViewActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.AnalyzeStacktrace_Action");
+    MessagesViewActions_ActionGroup.this.addAction("Unscramble");
     MessagesViewActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SubmitToTracker_Action");
   }
 }

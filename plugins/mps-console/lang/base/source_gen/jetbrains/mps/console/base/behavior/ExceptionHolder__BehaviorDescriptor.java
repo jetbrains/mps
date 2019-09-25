@@ -16,9 +16,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.awt.datatransfer.StringSelection;
-import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.actions.AnalyzeStacktraceDialog;
+import com.intellij.unscramble.AnalyzeStacktraceUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -36,13 +34,11 @@ public final class ExceptionHolder__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
+    // Need to use local variable to save trace for later call 
     final String stackTrace = SPropertyOperations.getString(__thisNode__, PROPS.stackTrace$KI0v);
     return new Runnable() {
       public void run() {
-        StringSelection contents = new StringSelection(stackTrace);
-        CopyPasteManagerEx.getInstanceEx().setContents(contents);
-        final AnalyzeStacktraceDialog dialog = new AnalyzeStacktraceDialog(project.getProject());
-        dialog.show();
+        AnalyzeStacktraceUtil.addConsole(project.getProject(), null, "<Stacktrace>", stackTrace);
       }
     };
   }
