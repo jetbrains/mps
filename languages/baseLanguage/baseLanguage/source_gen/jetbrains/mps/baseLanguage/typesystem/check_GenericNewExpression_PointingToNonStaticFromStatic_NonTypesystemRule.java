@@ -33,7 +33,7 @@ public class check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesys
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ)) {
       target.value = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$bk50);
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU)) {
-      target.value = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.Classifier$hJ);
+      target.value = SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.Classifier$hJ);
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.AnonymousClassCreator$N6)) {
       target.value = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNewExpression, LINKS.creator$itDQ), CONCEPTS.AnonymousClassCreator$N6), LINKS.cls$xt3G), LINKS.classifier$1y5e);
     } else {

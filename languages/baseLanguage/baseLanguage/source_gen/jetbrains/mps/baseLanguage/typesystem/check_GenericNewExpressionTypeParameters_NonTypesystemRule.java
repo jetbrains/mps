@@ -40,7 +40,7 @@ public class check_GenericNewExpressionTypeParameters_NonTypesystemRule extends 
     List<SNode> parameters;
 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU)) {
-      classifier = SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$$A7i)), CONCEPTS.Classifier$hJ);
+      classifier = SNodeOperations.as((SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.baseMethodDeclaration$$A7i))), CONCEPTS.Classifier$hJ);
       parameters = SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.ClassCreator$yU), LINKS.typeParameter$swNi);
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ)) {
       classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(genericNE, LINKS.creator$itDQ), CONCEPTS.DefaultClassCreator$sQ), LINKS.classifier$bk50);

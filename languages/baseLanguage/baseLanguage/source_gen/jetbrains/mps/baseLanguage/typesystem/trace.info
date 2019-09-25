@@ -31833,7 +31833,7 @@
     <file name="check_GenericNewExpression_PointingToNonStaticFromStatic_NonTypesystemRule.java">
       <node id="966837649712680974" at="31,133,32,63" concept="12" />
       <node id="966837649712681415" at="33,141,34,194" concept="6" />
-      <node id="966837649712707878" at="35,141,36,271" concept="6" />
+      <node id="966837649712707878" at="35,141,36,269" concept="6" />
       <node id="966837649712708330" at="37,150,38,239" concept="6" />
       <node id="966837649712687567" at="39,12,40,13" concept="13" />
       <node id="966837649712830995" at="42,31,43,13" concept="13" />
@@ -31871,7 +31871,7 @@
       <node id="966837649712508218" at="31,0,61,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="966837649712508218" at="29,87,29,87" />
       <scope id="966837649712532654" at="33,141,34,194" />
-      <scope id="966837649712683522" at="35,141,36,271" />
+      <scope id="966837649712683522" at="35,141,36,269" />
       <scope id="966837649712685169" at="37,150,38,239" />
       <scope id="966837649712687129" at="39,12,40,13" />
       <scope id="966837649712825731" at="42,31,43,13" />
