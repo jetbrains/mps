@@ -159,7 +159,6 @@
       <concept id="1203082903663" name="jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_AnActionEvent" flags="nn" index="tl45R" />
       <concept id="1203083511112" name="jetbrains.mps.lang.plugin.structure.ExecuteBlock" flags="in" index="tnohg" />
       <concept id="1203087890642" name="jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration" flags="ng" index="tC5Ba">
-        <property id="6368583333374291912" name="isPluginXmlGroup" index="3OnEW4" />
         <child id="1204991552650" name="modifier" index="2f5YQi" />
         <child id="1207145245948" name="contents" index="ftER_" />
       </concept>
@@ -5075,7 +5074,6 @@
   <node concept="tC5Ba" id="cvGLnZnRqZ">
     <property role="TrG5h" value="RefactoringAdditions" />
     <property role="3GE5qa" value="Groups" />
-    <property role="3OnEW4" value="true" />
     <node concept="ftmFs" id="cvGLnZnRr0" role="ftER_">
       <node concept="tCFHf" id="8qS5$ScYk" role="ftvYc">
         <ref role="tCJdB" node="8qS5$SbIZ" resolve="ExtractMethod" />

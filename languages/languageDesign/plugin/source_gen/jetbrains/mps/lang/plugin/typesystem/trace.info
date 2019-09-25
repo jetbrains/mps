@@ -12,7 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TypesystemDescriptor.java">
-      <unit at="10,0,170,0" name="jetbrains.mps.lang.plugin.typesystem.TypesystemDescriptor" />
+      <unit at="10,0,174,0" name="jetbrains.mps.lang.plugin.typesystem.TypesystemDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/1204472514721">
@@ -344,10 +344,10 @@
       <unit id="1207491155028" at="17,0,44,0" name="jetbrains.mps.lang.plugin.typesystem.Typeof_GroupType_IsSubtype_ActionGroup_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
-      <node id="1207491155028" at="160,5,161,103" concept="6" />
-      <node id="1207491155028" at="161,103,162,47" concept="3" />
-      <node id="1207491155028" at="159,5,163,5" concept="1" />
-      <scope id="1207491155028" at="160,5,162,47">
+      <node id="1207491155028" at="164,5,165,103" concept="6" />
+      <node id="1207491155028" at="165,103,166,47" concept="3" />
+      <node id="1207491155028" at="163,5,167,5" concept="1" />
+      <scope id="1207491155028" at="164,5,166,47">
         <var name="subtypingRule" id="1207491155028" />
       </scope>
     </file>
@@ -395,10 +395,10 @@
       <unit id="1208529625341" at="17,0,44,0" name="jetbrains.mps.lang.plugin.typesystem.Typeof_ToolType_Instanceof_BaseTool_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
-      <node id="1208529625341" at="164,5,165,100" concept="6" />
-      <node id="1208529625341" at="165,100,166,47" concept="3" />
-      <node id="1208529625341" at="163,5,167,5" concept="1" />
-      <scope id="1208529625341" at="164,5,166,47">
+      <node id="1208529625341" at="168,5,169,100" concept="6" />
+      <node id="1208529625341" at="169,100,170,47" concept="3" />
+      <node id="1208529625341" at="167,5,171,5" concept="1" />
+      <scope id="1208529625341" at="168,5,170,47">
         <var name="subtypingRule" id="1208529625341" />
       </scope>
     </file>
@@ -663,10 +663,10 @@
       <unit id="1215783797680" at="17,0,44,0" name="jetbrains.mps.lang.plugin.typesystem.Typeof_Action_SubtypingRule" />
     </file>
     <file name="TypesystemDescriptor.java">
-      <node id="1215783797680" at="156,5,157,78" concept="6" />
-      <node id="1215783797680" at="157,78,158,47" concept="3" />
-      <node id="1215783797680" at="155,5,159,5" concept="1" />
-      <scope id="1215783797680" at="156,5,158,47">
+      <node id="1215783797680" at="160,5,161,78" concept="6" />
+      <node id="1215783797680" at="161,78,162,47" concept="3" />
+      <node id="1215783797680" at="159,5,163,5" concept="1" />
+      <scope id="1215783797680" at="160,5,162,47">
         <var name="subtypingRule" id="1215783797680" />
       </scope>
     </file>
@@ -943,10 +943,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/1227032271475">
     <file name="TypesystemDescriptor.java">
-      <node id="1227032271475" at="152,5,153,98" concept="6" />
-      <node id="1227032271475" at="153,98,154,55" concept="3" />
-      <node id="1227032271475" at="151,5,155,5" concept="1" />
-      <scope id="1227032271475" at="152,5,154,55">
+      <node id="1227032271475" at="156,5,157,98" concept="6" />
+      <node id="1227032271475" at="157,98,158,55" concept="3" />
+      <node id="1227032271475" at="155,5,159,5" concept="1" />
+      <scope id="1227032271475" at="156,5,158,55">
         <var name="nonTypesystemRule" id="1227032271475" />
       </scope>
     </file>
@@ -991,6 +991,73 @@
       <unit id="1227032271475" at="48,0,51,0" name="jetbrains.mps.lang.plugin.typesystem.check_ParametersCount_NonTypesystemRule$CONCEPTS" />
       <unit id="1227032271475" at="42,0,47,0" name="jetbrains.mps.lang.plugin.typesystem.check_ParametersCount_NonTypesystemRule$LINKS" />
       <unit id="1227032271475" at="21,0,52,0" name="jetbrains.mps.lang.plugin.typesystem.check_ParametersCount_NonTypesystemRule" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/1252437031490516217">
+    <file name="TypesystemDescriptor.java">
+      <node id="1252437031490516217" at="136,5,137,105" concept="6" />
+      <node id="1252437031490516217" at="137,105,138,55" concept="3" />
+      <node id="1252437031490516217" at="135,5,139,5" concept="1" />
+      <scope id="1252437031490516217" at="136,5,138,55">
+        <var name="nonTypesystemRule" id="1252437031490516217" />
+      </scope>
+    </file>
+    <file name="check_ActionGroupDeclaration_NonTypesystemRule.java">
+      <node id="1252437031490476318" at="26,118,27,65" concept="6" />
+      <node id="2485806804457657652" at="28,40,29,13" concept="7" />
+      <node id="1252437031490476333" at="30,5,31,42" concept="6" />
+      <node id="1252437031490683496" at="33,7,34,66" concept="6" />
+      <node id="1252437031490683496" at="34,66,35,303" concept="6" />
+      <node id="1252437031490516217" at="39,50,40,46" concept="7" />
+      <node id="1252437031490516217" at="42,68,43,102" concept="7" />
+      <node id="1252437031490516217" at="45,30,46,17" concept="7" />
+      <node id="1252437031490538269" at="49,36,50,48" concept="7" />
+      <node id="1252437031490538269" at="51,5,52,17" concept="7" />
+      <node id="1252437031490516217" at="56,0,57,0" concept="8" trace="isPluginXmlGroup$btjj" />
+      <node id="1252437031490516217" at="60,0,61,0" concept="8" trace="ActionGroupDeclaration$YL" />
+      <node id="1252437031490516217" at="24,0,26,0" concept="2" trace="check_ActionGroupDeclaration_NonTypesystemRule#()V" />
+      <node id="1252437031490525607" at="27,65,30,5" concept="4" />
+      <node id="1252437031490516217" at="39,0,42,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1252437031490516217" at="42,0,45,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1252437031490516217" at="45,0,48,0" concept="5" trace="overrides#()Z" />
+      <node id="1252437031490538269" at="48,80,51,5" concept="4" />
+      <node id="1252437031490683496" at="32,141,36,7" concept="1" />
+      <node id="1252437031490682141" at="31,42,37,5" concept="4" />
+      <node id="1252437031490538269" at="48,0,54,0" concept="9" trace="check_77ohot_a0d0b#(Ljetbrains/mps/project/facets/JavaModuleFacet;)Z" />
+      <node id="1252437031490516217" at="26,0,39,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="1252437031490516217" at="24,59,24,59" />
+      <scope id="2485806804457657425" at="28,40,29,13" />
+      <scope id="1252437031490516217" at="39,50,40,46" />
+      <scope id="1252437031490516217" at="42,68,43,102" />
+      <scope id="1252437031490516217" at="45,30,46,17" />
+      <scope id="1252437031490538269" at="49,36,50,48" />
+      <scope id="1252437031490516217" at="24,0,26,0" />
+      <scope id="1252437031490683496" at="33,7,35,303">
+        <var name="_reporter_2309309498" id="1252437031490683496" />
+        <var name="errorTarget" id="1252437031490683496" />
+      </scope>
+      <scope id="1252437031490516217" at="39,0,42,0" />
+      <scope id="1252437031490516217" at="42,0,45,0">
+        <var name="argument" id="1252437031490516217" />
+      </scope>
+      <scope id="1252437031490516217" at="45,0,48,0" />
+      <scope id="1252437031490682143" at="32,141,36,7" />
+      <scope id="1252437031490538269" at="48,80,52,17" />
+      <scope id="1252437031490538269" at="48,0,54,0">
+        <var name="checkedDotOperand" id="1252437031490538269" />
+      </scope>
+      <scope id="1252437031490516218" at="26,118,37,5">
+        <var name="module" id="1252437031490476319" />
+        <var name="solution" id="1252437031490476334" />
+      </scope>
+      <scope id="1252437031490516217" at="26,0,39,0">
+        <var name="group" id="1252437031490516217" />
+        <var name="status" id="1252437031490516217" />
+        <var name="typeCheckingContext" id="1252437031490516217" />
+      </scope>
+      <unit id="1252437031490516217" at="55,0,58,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule$PROPS" />
+      <unit id="1252437031490516217" at="59,0,62,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule$CONCEPTS" />
+      <unit id="1252437031490516217" at="23,0,63,0" name="jetbrains.mps.lang.plugin.typesystem.check_ActionGroupDeclaration_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/1821622352985039164">
@@ -1044,10 +1111,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/2450897840534903557">
     <file name="TypesystemDescriptor.java">
-      <node id="2450897840534903557" at="148,5,149,99" concept="6" />
-      <node id="2450897840534903557" at="149,99,150,55" concept="3" />
-      <node id="2450897840534903557" at="147,5,151,5" concept="1" />
-      <scope id="2450897840534903557" at="148,5,150,55">
+      <node id="2450897840534903557" at="152,5,153,99" concept="6" />
+      <node id="2450897840534903557" at="153,99,154,55" concept="3" />
+      <node id="2450897840534903557" at="151,5,155,5" concept="1" />
+      <scope id="2450897840534903557" at="152,5,154,55">
         <var name="nonTypesystemRule" id="2450897840534903557" />
       </scope>
     </file>
@@ -1213,10 +1280,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/4197537290462825124">
     <file name="TypesystemDescriptor.java">
-      <node id="4197537290462825124" at="136,5,137,103" concept="6" />
-      <node id="4197537290462825124" at="137,103,138,55" concept="3" />
-      <node id="4197537290462825124" at="135,5,139,5" concept="1" />
-      <scope id="4197537290462825124" at="136,5,138,55">
+      <node id="4197537290462825124" at="140,5,141,103" concept="6" />
+      <node id="4197537290462825124" at="141,103,142,55" concept="3" />
+      <node id="4197537290462825124" at="139,5,143,5" concept="1" />
+      <scope id="4197537290462825124" at="140,5,142,55">
         <var name="nonTypesystemRule" id="4197537290462825124" />
       </scope>
     </file>
@@ -1410,10 +1477,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/5097592589863133337">
     <file name="TypesystemDescriptor.java">
-      <node id="5097592589863133337" at="144,5,145,105" concept="6" />
-      <node id="5097592589863133337" at="145,105,146,55" concept="3" />
-      <node id="5097592589863133337" at="143,5,147,5" concept="1" />
-      <scope id="5097592589863133337" at="144,5,146,55">
+      <node id="5097592589863133337" at="148,5,149,105" concept="6" />
+      <node id="5097592589863133337" at="149,105,150,55" concept="3" />
+      <node id="5097592589863133337" at="147,5,151,5" concept="1" />
+      <scope id="5097592589863133337" at="148,5,150,55">
         <var name="nonTypesystemRule" id="5097592589863133337" />
       </scope>
     </file>
@@ -2068,10 +2135,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)/7372377561348882254">
     <file name="TypesystemDescriptor.java">
-      <node id="7372377561348882254" at="140,5,141,103" concept="6" />
-      <node id="7372377561348882254" at="141,103,142,55" concept="3" />
-      <node id="7372377561348882254" at="139,5,143,5" concept="1" />
-      <scope id="7372377561348882254" at="140,5,142,55">
+      <node id="7372377561348882254" at="144,5,145,103" concept="6" />
+      <node id="7372377561348882254" at="145,103,146,55" concept="3" />
+      <node id="7372377561348882254" at="143,5,147,5" concept="1" />
+      <scope id="7372377561348882254" at="144,5,146,55">
         <var name="nonTypesystemRule" id="7372377561348882254" />
       </scope>
     </file>

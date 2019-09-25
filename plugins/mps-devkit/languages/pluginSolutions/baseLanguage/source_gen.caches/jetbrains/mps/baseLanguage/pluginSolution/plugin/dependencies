@@ -816,6 +816,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.Mac_10_5_KeymapChanges" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.MakeFieldFinal_Action" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.MakeFieldStatic_Action" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.RefactoringAdditions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameMethod_Action" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameVariable_Action" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.SafeDeleteConceptMethod_Action" />
@@ -848,6 +849,12 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="com.intellij.openapi.ui.DialogWrapper" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.RefactoringAdditions_ActionGroup">
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.workbench.action.ApplicationPlugin" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameImplementingMethodsParticipant">
     <classNode dependClassName="java.lang.Override" />

@@ -6,21 +6,22 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.awt.RelativePoint;
-import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Point;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import java.util.List;
@@ -50,6 +51,10 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     if (ShowSurroundWithIntentions_Action.this.getAnchorCell(_params) == null) {
+      return false;
+    }
+    EditorComponent component = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent();
+    if (ReadOnlyUtil.isCellsReadOnlyInEditor(component, Sequence.<EditorCell>singleton(component.findNodeCell(((SNode) MapSequence.fromMap(_params).get("selectedNode")))))) {
       return false;
     }
     return Sequence.fromIterable(ShowSurroundWithIntentions_Action.this.getAvailableIntentions(_params)).isNotEmpty();
@@ -106,11 +111,11 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
       return;
     }
 
-    RelativePoint relativePoint = new RelativePoint((EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent(), new Point(x, y));
+    RelativePoint relativePoint = new RelativePoint((jetbrains.mps.nodeEditor.EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent(), new Point(x, y));
     popup.value.show(relativePoint);
   }
   private EditorCell getAnchorCell(final Map<String, Object> _params) {
-    Selection selection = ((EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent()).getSelectionManager().getSelection();
+    Selection selection = ((jetbrains.mps.nodeEditor.EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent()).getSelectionManager().getSelection();
     if (selection == null) {
       return null;
     }
@@ -150,7 +155,7 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
     final IntentionsManager.QueryDescriptor query = new IntentionsManager.QueryDescriptor();
     query.setSurroundWith(true);
     query.setCurrentNodeOnly(true);
-    TypecheckingSession typecheckingSession = ((EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent()).getTypecheckingSession();
+    TypecheckingSession typecheckingSession = ((jetbrains.mps.nodeEditor.EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent()).getTypecheckingSession();
     if (typecheckingSession == null) {
       return null;
     }
