@@ -270,16 +270,18 @@ public interface IssueKindReportItem extends ReportItem {
   }
 
   SimpleReportItemFlavour<IssueKindReportItem, PathObject> PATH_OBJECT = new SimpleReportItemFlavour<>("FLAVOUR_PATH_OBJECT", IssueKindReportItem.class, reportItem -> {
+    PathObject result = null;
     if (FLAVOUR_NODE.canGet(reportItem)) {
-      return new NodePathObject(FLAVOUR_NODE.tryToGet(reportItem));
+      result = new NodePathObject(FLAVOUR_NODE.tryToGet(reportItem));
+    } else if (ModelFlavouredItem.FLAVOUR_MODEL.canGet(reportItem)) {
+      result = new ModelPathObject(ModelFlavouredItem.FLAVOUR_MODEL.tryToGet(reportItem));
+    } else if (ModuleFlavouredItem.FLAVOUR_MODULE.canGet(reportItem)) {
+      result = new ModulePathObject(ModuleFlavouredItem.FLAVOUR_MODULE.tryToGet(reportItem));
     }
-    if (ModelFlavouredItem.FLAVOUR_MODEL.canGet(reportItem)) {
-      return new ModelPathObject(ModelFlavouredItem.FLAVOUR_MODEL.tryToGet(reportItem));
+    if (result == null) {
+      throw new IllegalArgumentException("Report item has no path object: " + reportItem.getMessage() + " (" + reportItem.getClass() + ")");
     }
-    if (ModuleFlavouredItem.FLAVOUR_MODULE.canGet(reportItem)) {
-      return new ModulePathObject(ModuleFlavouredItem.FLAVOUR_MODULE.tryToGet(reportItem));
-    }
-    throw new IllegalArgumentException("Report item has no path object: " + reportItem + " (" + reportItem.getClass() + ")");
+    return result;
   });
 
 }
