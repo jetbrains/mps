@@ -86,7 +86,7 @@ public class RefactoringProcessor {
           List<? extends List<? extends RefactoringParticipant.Change<?, ?>>> participantChanges = participantState.getChanges();
           for (List<? extends RefactoringParticipant.Change<?, ?>> nodeChanges : ListSequence.fromList(participantChanges)) {
             for (RefactoringParticipant.Change<?, ?> change : ListSequence.fromList(nodeChanges)) {
-              searchResults.addAll(change.getSearchResults());
+              searchResults = searchResults.addSearchResults(change.getSearchResults());
             }
           }
         }

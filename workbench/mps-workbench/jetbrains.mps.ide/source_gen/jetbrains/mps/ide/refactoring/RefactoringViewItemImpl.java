@@ -15,6 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.model.SearchTask;
 import java.awt.BorderLayout;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole;
+import jetbrains.mps.ide.findusages.model.CategoryKind;
 import java.util.List;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -61,6 +63,7 @@ public abstract class RefactoringViewItemImpl implements RefactoringViewItem.Ref
     }
     myPanel = new JPanel(new BorderLayout());
     myUsagesView = new UsagesView(myProject, new ViewOptions());
+    myUsagesView.getTreeComponent().addPathComponent(PathItemRole.getCategoryRole(CategoryKind.DEFAULT_CATEGORY_KIND));
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
     if (searchTask != null) {
       UsagesView.RerunAction rerunAction = new UsagesView.RerunAction(myUsagesView, "Run search again");

@@ -34,10 +34,10 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import jetbrains.mps.refactoring.participant.NodeCopyTracker;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -131,39 +131,28 @@ public class MoveAspectsParticipant extends RefactoringParticipantBase<SNodeRefe
                 }
               }).toListSequence();
 
-              final SearchResults results = new SearchResults();
-              results.addAll(new SearchResults(SetSequence.fromSetAndArray(new HashSet<SNode>(), sourceConcept), ListSequence.fromListAndArray(new ArrayList<SearchResult<SNode>>(), new SearchResult<SNode>(aspect, "concept aspect"))));
-              ListSequence.fromList(childparticipantStates).select(new ISelector<Tuples._2<SNode, RecursiveParticipant.RecursiveParticipantApplied<?, ?, SNode, SNode>>, List<? extends RefactoringParticipant.Change<?, ?>>>() {
-                public List<? extends RefactoringParticipant.Change<?, ?>> select(Tuples._2<SNode, RecursiveParticipant.RecursiveParticipantApplied<?, ?, SNode, SNode>> it) {
-                  return (List<? extends RefactoringParticipant.Change<?, ?>>) ListSequence.fromList(it._1().getChanges()).first();
+              SearchResults results = new SearchResults();
+              results = results.addSearchResults(new SearchResults(SetSequence.fromSetAndArray(new HashSet<SNode>(), sourceConcept), ListSequence.fromListAndArray(new ArrayList<SearchResult<SNode>>(), new SearchResult<SNode>(aspect, "concept aspect"))));
+              for (Tuples._2<SNode, RecursiveParticipant.RecursiveParticipantApplied<?, ?, SNode, SNode>> childState : ListSequence.fromList(childparticipantStates)) {
+                for (RefactoringParticipant.Change<?, ?> subChange : ListSequence.fromList(ListSequence.fromList(childState._1().getChanges()).first())) {
+                  results = results.addSearchResults(subChange.getSearchResults());
                 }
-              }).visitAll(new IVisitor<List<? extends RefactoringParticipant.Change<?, ?>>>() {
-                public void visit(List<? extends RefactoringParticipant.Change<?, ?>> it) {
-                  ListSequence.fromList(it).select(new ISelector<RefactoringParticipant.Change<?, ?>, SearchResults>() {
-                    public SearchResults select(RefactoringParticipant.Change<?, ?> it1) {
-                      return it1.getSearchResults();
-                    }
-                  }).visitAll(new IVisitor<SearchResults>() {
-                    public void visit(SearchResults it1) {
-                      results.addAll(it1);
-                    }
-                  });
-                }
-              });
+              }
+              final SearchResults resultsFinal = results;
 
 
               // todo: do not keep nodes but only node references 
 
               RefactoringParticipant.Change<SNodeReference, SNodeReference> change = new MoveNodeRefactoringParticipant.ChangeBase<SNodeReference, SNodeReference>() {
                 public SearchResults getSearchResults() {
-                  return results;
+                  return resultsFinal;
                 }
                 public RefactoringParticipant.KeepOldNodes needsToPreserveOldNode() {
                   return RefactoringParticipant.KeepOldNodes.max(ListSequence.fromList(childparticipantStates).translate(new ITranslator2<Tuples._2<SNode, RecursiveParticipant.RecursiveParticipantApplied<?, ?, SNode, SNode>>, RefactoringParticipant.Change<?, ?>>() {
                     public Iterable<RefactoringParticipant.Change<?, ?>> translate(Tuples._2<SNode, RecursiveParticipant.RecursiveParticipantApplied<?, ?, SNode, SNode>> it) {
                       return ListSequence.fromList(ListSequence.fromList(it._1().getChanges()).first()).select(new ISelector<RefactoringParticipant.Change<?, ?>, RefactoringParticipant.Change<?, ?>>() {
-                        public RefactoringParticipant.Change<?, ?> select(RefactoringParticipant.Change<?, ?> it) {
-                          return (RefactoringParticipant.Change<?, ?>) it;
+                        public RefactoringParticipant.Change<?, ?> select(RefactoringParticipant.Change<?, ?> it1) {
+                          return (RefactoringParticipant.Change<?, ?>) it1;
                         }
                       });
                     }

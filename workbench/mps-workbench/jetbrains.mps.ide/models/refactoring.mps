@@ -52,6 +52,7 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="gsnq" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.dialogs.properties(MPS.Platform/)" />
+    <import index="jrv0" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.findusages.view.treeholder.treeview.path(MPS.Platform/)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
   </imports>
   <registry>
@@ -1338,6 +1339,29 @@
                   <node concept="1pGfFk" id="29N7xYwTFZ2" role="2ShVmc">
                     <ref role="37wK5l" to="dsdj:~ViewOptions.&lt;init&gt;()" resolve="ViewOptions" />
                   </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6Z2$cIIrDLm" role="3cqZAp">
+          <node concept="2OqwBi" id="6Z2$cIIrGqa" role="3clFbG">
+            <node concept="2OqwBi" id="6Z2$cIIrEKk" role="2Oq$k0">
+              <node concept="37vLTw" id="6Z2$cIIrDLk" role="2Oq$k0">
+                <ref role="3cqZAo" node="29N7xYwTFWS" resolve="myUsagesView" />
+              </node>
+              <node concept="liA8E" id="6Z2$cIIrFXA" role="2OqNvi">
+                <ref role="37wK5l" to="ngmm:~UsagesView.getTreeComponent()" resolve="getTreeComponent" />
+              </node>
+            </node>
+            <node concept="liA8E" id="6Z2$cIIrIgM" role="2OqNvi">
+              <ref role="37wK5l" to="ngmm:~UsagesTreeComponent.addPathComponent(jetbrains.mps.ide.findusages.view.treeholder.treeview.path.PathItemRole)" resolve="addPathComponent" />
+              <node concept="2YIFZM" id="6Z2$cIIrQE7" role="37wK5m">
+                <ref role="37wK5l" to="jrv0:~PathItemRole.getCategoryRole(jetbrains.mps.ide.findusages.model.CategoryKind)" resolve="getCategoryRole" />
+                <ref role="1Pybhc" to="jrv0:~PathItemRole" resolve="PathItemRole" />
+                <node concept="10M0yZ" id="6Z2$cIIrR1M" role="37wK5m">
+                  <ref role="3cqZAo" to="9erk:~CategoryKind.DEFAULT_CATEGORY_KIND" resolve="DEFAULT_CATEGORY_KIND" />
+                  <ref role="1PxDUh" to="9erk:~CategoryKind" resolve="CategoryKind" />
                 </node>
               </node>
             </node>
