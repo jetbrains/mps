@@ -86,7 +86,13 @@ public class IntelligentInputUtil {
     private void cacheSubstituteInfo() {
       // Todo this is the hack for the caching The actions are calculated in the read action and not in the command, so the RepositoryStateCacheUtils is used
       // Todo when redesigning SubstituteInfo and IntelligentInputUtil cache will be separated from getting the actions
-      myEditorContext.getRepository().getModelAccess().runReadAction(() -> mySubstituteInfo.getMatchingActions("", false));
+      TypeContextManager.getInstance().runTypeCheckingAction(
+          ((EditorComponent) myEditorContext.getEditorComponent()).getTypecheckingContextOwner(),
+          myEditorContext.getEditorComponent().getEditedNode(),
+          ctx -> {
+            myEditorContext.getRepository().getModelAccess().runReadAction(() -> mySubstituteInfo.getMatchingActions("", false));
+          }
+      );
     }
 
     private SubstituteInfo createSubstituteInfo(final SubstituteInfo substituteInfo) {
