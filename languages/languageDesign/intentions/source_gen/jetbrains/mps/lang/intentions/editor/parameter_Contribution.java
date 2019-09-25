@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class parameter_Contribution extends SubstituteMenuBase {
   public parameter_Contribution() {
@@ -52,7 +51,7 @@ public class parameter_Contribution extends SubstituteMenuBase {
       List<SConcept> parameters = ListSequence.fromList(new ArrayList<SConcept>());
       boolean inParInt = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ParameterizedIntentionDeclaration$68, false, false) != null;
       boolean notInApplicable = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.IsApplicableBlock$7$, false, false) == null;
-      boolean notInChildFilterBlock = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ChildFilterBlock$Zl, false, false) == null;
+      boolean notInChildFilterBlock = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ChildFilterFunction$E8, false, false) == null;
       if (inParInt && notInApplicable && notInChildFilterBlock) {
         ListSequence.fromList(parameters).addElement(CONCEPTS.IntentionParameter$Xf);
       }
@@ -92,6 +91,6 @@ public class parameter_Contribution extends SubstituteMenuBase {
     /*package*/ static final SConcept IntentionParameter$Xf = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120c8fd57fbL, "jetbrains.mps.lang.intentions.structure.IntentionParameter");
     /*package*/ static final SConcept ParameterizedIntentionDeclaration$68 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x120cd519c2dL, "jetbrains.mps.lang.intentions.structure.ParameterizedIntentionDeclaration");
     /*package*/ static final SConcept IsApplicableBlock$7$ = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82b10f5L, "jetbrains.mps.lang.intentions.structure.IsApplicableBlock");
-    /*package*/ static final SInterfaceConcept ChildFilterBlock$Zl = MetaAdapterFactory.getInterfaceConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c198L, "jetbrains.mps.lang.intentions.structure.ChildFilterBlock");
+    /*package*/ static final SConcept ChildFilterFunction$E8 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c1bbL, "jetbrains.mps.lang.intentions.structure.ChildFilterFunction");
   }
 }

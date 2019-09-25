@@ -143,11 +143,6 @@
       <ref role="20lvS9" node="i38Bcsp" resolve="QueryBlock" />
     </node>
   </node>
-  <node concept="PlHQZ" id="38RcvkhOs6o">
-    <property role="TrG5h" value="ChildFilterBlock" />
-    <property role="3GE5qa" value="traditional.childfilter" />
-    <property role="EcuMT" value="3618415754251190680" />
-  </node>
   <node concept="1TIwiD" id="38RcvkhOs6V">
     <property role="TrG5h" value="ChildFilterFunction" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
@@ -155,9 +150,6 @@
     <property role="34LRSv" value="child filter function" />
     <property role="EcuMT" value="3618415754251190715" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
-    <node concept="PrWs8" id="38RcvkhOs6W" role="PzmwI">
-      <ref role="PrY4T" node="38RcvkhOs6o" resolve="ChildFilterBlock" />
-    </node>
   </node>
   <node concept="1TIwiD" id="38RcvkhOstg">
     <property role="R4oN_" value="function parameter" />
@@ -206,7 +198,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="childFilterFunction" />
       <property role="IQ2ns" value="2522969319638093994" />
-      <ref role="20lvS9" node="38RcvkhOs6o" resolve="ChildFilterBlock" />
+      <ref role="20lvS9" node="38RcvkhOs6V" resolve="ChildFilterFunction" />
     </node>
     <node concept="1TJgyj" id="2c3oNEsfd2F" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />

@@ -10,7 +10,6 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_BaseIntentionDeclaration;
-  private ConceptPresentation props_ChildFilterBlock;
   private ConceptPresentation props_ChildFilterFunction;
   private ConceptPresentation props_ConceptFunctionParameter_childNode;
   private ConceptPresentation props_ConceptFunctionParameter_node;
@@ -42,12 +41,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BaseIntentionDeclaration = cpb.create();
         }
         return props_BaseIntentionDeclaration;
-      case LanguageConceptSwitch.ChildFilterBlock:
-        if (props_ChildFilterBlock == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_ChildFilterBlock = cpb.create();
-        }
-        return props_ChildFilterBlock;
       case LanguageConceptSwitch.ChildFilterFunction:
         if (props_ChildFilterFunction == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -103,7 +96,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_Intention == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a9b0v);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a8b0u);
           props_Intention = cpb.create();
         }
         return props_Intention;
@@ -111,7 +104,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_IntentionDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a01b0v);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a9b0u);
           props_IntentionDeclaration = cpb.create();
         }
         return props_IntentionDeclaration;
@@ -177,7 +170,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SurroundWithIntentionDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a91b0v);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a81b0u);
           props_SurroundWithIntentionDeclaration = cpb.create();
         }
         return props_SurroundWithIntentionDeclaration;

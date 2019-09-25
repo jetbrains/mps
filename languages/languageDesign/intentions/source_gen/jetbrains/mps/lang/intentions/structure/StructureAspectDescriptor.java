@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBaseIntentionDeclaration = createDescriptorForBaseIntentionDeclaration();
-  /*package*/ final ConceptDescriptor myConceptChildFilterBlock = createDescriptorForChildFilterBlock();
   /*package*/ final ConceptDescriptor myConceptChildFilterFunction = createDescriptorForChildFilterFunction();
   /*package*/ final ConceptDescriptor myConceptConceptFunctionParameter_childNode = createDescriptorForConceptFunctionParameter_childNode();
   /*package*/ final ConceptDescriptor myConceptConceptFunctionParameter_node = createDescriptorForConceptFunctionParameter_node();
@@ -52,7 +51,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBaseIntentionDeclaration, myConceptChildFilterBlock, myConceptChildFilterFunction, myConceptConceptFunctionParameter_childNode, myConceptConceptFunctionParameter_node, myConceptDescriptionBlock, myConceptErrorIntentionPriority, myConceptExecuteBlock, myConceptForConceptMethodParameter, myConceptIntention, myConceptIntentionDeclaration, myConceptIntentionParameter, myConceptIntentionPriority, myConceptIsApplicableBlock, myConceptParameter, myConceptParameterizedDescriptionBlock, myConceptParameterizedExecuteBlock, myConceptParameterizedIntentionDeclaration, myConceptQueryBlock, myConceptSurroundWithIntentionDeclaration);
+    return Arrays.asList(myConceptBaseIntentionDeclaration, myConceptChildFilterFunction, myConceptConceptFunctionParameter_childNode, myConceptConceptFunctionParameter_node, myConceptDescriptionBlock, myConceptErrorIntentionPriority, myConceptExecuteBlock, myConceptForConceptMethodParameter, myConceptIntention, myConceptIntentionDeclaration, myConceptIntentionParameter, myConceptIntentionPriority, myConceptIsApplicableBlock, myConceptParameter, myConceptParameterizedDescriptionBlock, myConceptParameterizedExecuteBlock, myConceptParameterizedIntentionDeclaration, myConceptQueryBlock, myConceptSurroundWithIntentionDeclaration);
   }
 
   @Override
@@ -61,8 +60,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.BaseIntentionDeclaration:
         return myConceptBaseIntentionDeclaration;
-      case LanguageConceptSwitch.ChildFilterBlock:
-        return myConceptChildFilterBlock;
       case LanguageConceptSwitch.ChildFilterFunction:
         return myConceptChildFilterFunction;
       case LanguageConceptSwitch.ConceptFunctionParameter_childNode:
@@ -126,24 +123,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("isAvailableInChildNodes", 0x2303633a9c3cc67aL).type(PrimitiveTypeId.BOOLEAN).origin("2522969319638091386").done();
     b.associate("forConcept", 0x2303633a9c3e6812L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("2522969319638198290").done();
     b.aggregate("descriptionFunction", 0x2303633a9c3cd0a9L).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b81bfaa7L).optional(false).ordered(true).multiple(false).origin("2522969319638093993").done();
-    b.aggregate("childFilterFunction", 0x2303633a9c3cd0aaL).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c198L).optional(true).ordered(true).multiple(false).origin("2522969319638093994").done();
+    b.aggregate("childFilterFunction", 0x2303633a9c3cd0aaL).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c1bbL).optional(true).ordered(true).multiple(false).origin("2522969319638093994").done();
     b.aggregate("isApplicableFunction", 0x2303633a9c3cd0abL).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82b10f5L).optional(true).ordered(true).multiple(false).origin("2522969319638093995").done();
     b.aggregate("executeFunction", 0x2303633a9c3e6813L).target(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x115b82d36d9L).optional(false).ordered(true).multiple(false).origin("2522969319638198291").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForChildFilterBlock() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.intentions", "ChildFilterBlock", 0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c198L);
-    b.interface_();
-    b.origin("r:00000000-0000-4000-0000-011c89590353(jetbrains.mps.lang.intentions.structure)/3618415754251190680");
-    b.version(2);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForChildFilterFunction() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.intentions", "ChildFilterFunction", 0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c1bbL);
     b.class_(false, false, false);
     b.super_("jetbrains.mps.baseLanguage.structure.ConceptFunction", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L);
-    b.parent(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x323731f511d1c198L);
     b.origin("r:00000000-0000-4000-0000-011c89590353(jetbrains.mps.lang.intentions.structure)/3618415754251190715");
     b.version(2);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
