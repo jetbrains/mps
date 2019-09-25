@@ -16,15 +16,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.resolve.ResolverComponent;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.errors.item.TargetModuleNotImportedReportItem;
 import jetbrains.mps.checkers.ModuleImportQuickFix;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UnresolvedReferencesChecker extends SpecificChecker {
   private final Project myProject;
@@ -47,9 +43,6 @@ public class UnresolvedReferencesChecker extends SpecificChecker {
       }
       // Check for unresolved references 
       for (final SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$nk, ref.getLink())) != null)) {
-          continue;
-        }
         if (jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref) == null) {
           ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, new Runnable() {
             public void run() {
@@ -76,9 +69,5 @@ public class UnresolvedReferencesChecker extends SpecificChecker {
   @Override
   public IssueKindReportItem.CheckerCategory getCategory() {
     return IssueKindReportItem.UNRESOLVED_REFERENCE;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept ReferenceMacro$nk = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
   }
 }
