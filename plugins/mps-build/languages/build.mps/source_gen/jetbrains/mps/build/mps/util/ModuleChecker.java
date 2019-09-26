@@ -48,7 +48,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.library.ModulesMiner;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -946,7 +946,8 @@ public final class ModuleChecker {
 
   private SModule getLoadedModule() {
     if (myLoadedModule == null) {
-      myLoadedModule = myRepository.instantiateModule(new ModulesMiner.ModuleHandle(myModuleDescriptorFile, myModuleDescriptor), new MPSModuleOwner() {
+      myLoadedModule = myRepository.instantiate(myModuleDescriptor, myModuleDescriptorFile);
+      ((SRepositoryExt) myRepository.getRepository()).registerModule(myLoadedModule, new MPSModuleOwner() {
         public boolean isHidden() {
           return true;
         }

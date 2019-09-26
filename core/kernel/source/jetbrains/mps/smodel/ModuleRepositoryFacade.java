@@ -335,6 +335,7 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
    * @throws IllegalArgumentException if handle describes unknown module kind.
    */
   @NotNull
+  @Deprecated
   public SModule instantiateModule(@NotNull ModuleHandle handle, @NotNull MPSModuleOwner owner) {
     LOG.debug("Creating a module " + handle);
     ModuleDescriptor moduleDescriptor = handle.getDescriptor();

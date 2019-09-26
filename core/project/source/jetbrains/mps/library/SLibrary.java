@@ -216,7 +216,7 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     Set<IFile> uniqueFiles = new THashSet<>();
     for (ModuleHandle moduleHandle : moduleHandles) {
       try {
-        SModule module = mrf.instantiateModule(moduleHandle, this);
+        SModule module = myRepository.registerModule(mrf.instantiate(moduleHandle.getDescriptor(), moduleHandle.getFile()), this);
         loaded.add(module);
         IFile file = moduleHandle.getFile();
         if (file.isInArchive()) {

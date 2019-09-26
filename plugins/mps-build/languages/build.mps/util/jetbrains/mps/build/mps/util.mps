@@ -26170,37 +26170,57 @@
                     <ref role="3cqZAo" node="1_93eakTQ8c" resolve="myRepository" />
                   </node>
                   <node concept="liA8E" id="1Unlav_5I8L" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~ModuleRepositoryFacade.instantiateModule(jetbrains.mps.library.ModulesMiner$ModuleHandle,jetbrains.mps.smodel.MPSModuleOwner)" resolve="instantiateModule" />
-                    <node concept="2ShNRf" id="1Unlav_5I8M" role="37wK5m">
-                      <node concept="1pGfFk" id="1Unlav_5I8N" role="2ShVmc">
-                        <ref role="37wK5l" to="32g5:~ModulesMiner$ModuleHandle.&lt;init&gt;(jetbrains.mps.vfs.IFile,jetbrains.mps.project.structure.modules.ModuleDescriptor)" resolve="ModulesMiner.ModuleHandle" />
-                        <node concept="37vLTw" id="1Unlav_5I8O" role="37wK5m">
-                          <ref role="3cqZAo" node="6m8wrPAU3po" resolve="myModuleDescriptorFile" />
-                        </node>
-                        <node concept="37vLTw" id="1Unlav_5I8P" role="37wK5m">
-                          <ref role="3cqZAo" node="6m8wrPAU3pl" resolve="myModuleDescriptor" />
-                        </node>
+                    <ref role="37wK5l" to="w1kc:~ModuleRepositoryFacade.instantiate(jetbrains.mps.project.structure.modules.ModuleDescriptor,jetbrains.mps.vfs.IFile)" resolve="instantiate" />
+                    <node concept="37vLTw" id="1Unlav_5I8P" role="37wK5m">
+                      <ref role="3cqZAo" node="6m8wrPAU3pl" resolve="myModuleDescriptor" />
+                    </node>
+                    <node concept="37vLTw" id="1Unlav_5I8O" role="37wK5m">
+                      <ref role="3cqZAo" node="6m8wrPAU3po" resolve="myModuleDescriptorFile" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="UA8EIkuy3U" role="3cqZAp">
+              <node concept="2OqwBi" id="UA8EIkuOot" role="3clFbG">
+                <node concept="1eOMI4" id="UA8EIku_sv" role="2Oq$k0">
+                  <node concept="10QFUN" id="UA8EIku_vH" role="1eOMHV">
+                    <node concept="3uibUv" id="UA8EIkuCeZ" role="10QFUM">
+                      <ref role="3uigEE" to="31cb:~SRepositoryExt" resolve="SRepositoryExt" />
+                    </node>
+                    <node concept="2OqwBi" id="UA8EIkuyoA" role="10QFUP">
+                      <node concept="37vLTw" id="UA8EIkuy3S" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1_93eakTQ8c" resolve="myRepository" />
+                      </node>
+                      <node concept="liA8E" id="UA8EIku_g6" role="2OqNvi">
+                        <ref role="37wK5l" to="w1kc:~ModuleRepositoryFacade.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
-                    <node concept="2ShNRf" id="1Unlav_5I8Q" role="37wK5m">
-                      <node concept="YeOm9" id="1Unlav_5I8R" role="2ShVmc">
-                        <node concept="1Y3b0j" id="1Unlav_5I8S" role="YeSDq">
-                          <property role="2bfB8j" value="true" />
-                          <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                          <ref role="1Y3XeK" to="w1kc:~MPSModuleOwner" resolve="MPSModuleOwner" />
-                          <node concept="3Tm1VV" id="1Unlav_5I8T" role="1B3o_S" />
-                          <node concept="3clFb_" id="1Unlav_5I8U" role="jymVt">
-                            <property role="1EzhhJ" value="false" />
-                            <property role="TrG5h" value="isHidden" />
-                            <property role="DiZV1" value="false" />
-                            <property role="od$2w" value="false" />
-                            <node concept="3Tm1VV" id="1Unlav_5I8V" role="1B3o_S" />
-                            <node concept="10P_77" id="1Unlav_5I8W" role="3clF45" />
-                            <node concept="3clFbS" id="1Unlav_5I8X" role="3clF47">
-                              <node concept="3clFbF" id="1Unlav_5I8Y" role="3cqZAp">
-                                <node concept="3clFbT" id="1Unlav_5I8Z" role="3clFbG">
-                                  <property role="3clFbU" value="true" />
-                                </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="UA8EIkuReB" role="2OqNvi">
+                  <ref role="37wK5l" to="31cb:~SRepositoryExt.registerModule(org.jetbrains.mps.openapi.module.SModule,jetbrains.mps.smodel.MPSModuleOwner)" resolve="registerModule" />
+                  <node concept="37vLTw" id="UA8EIkuRlN" role="37wK5m">
+                    <ref role="3cqZAo" node="1_93eakWpvN" resolve="myLoadedModule" />
+                  </node>
+                  <node concept="2ShNRf" id="1Unlav_5I8Q" role="37wK5m">
+                    <node concept="YeOm9" id="1Unlav_5I8R" role="2ShVmc">
+                      <node concept="1Y3b0j" id="1Unlav_5I8S" role="YeSDq">
+                        <property role="2bfB8j" value="true" />
+                        <ref role="1Y3XeK" to="w1kc:~MPSModuleOwner" resolve="MPSModuleOwner" />
+                        <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                        <node concept="3Tm1VV" id="1Unlav_5I8T" role="1B3o_S" />
+                        <node concept="3clFb_" id="1Unlav_5I8U" role="jymVt">
+                          <property role="1EzhhJ" value="false" />
+                          <property role="TrG5h" value="isHidden" />
+                          <property role="DiZV1" value="false" />
+                          <property role="od$2w" value="false" />
+                          <node concept="3Tm1VV" id="1Unlav_5I8V" role="1B3o_S" />
+                          <node concept="10P_77" id="1Unlav_5I8W" role="3clF45" />
+                          <node concept="3clFbS" id="1Unlav_5I8X" role="3clF47">
+                            <node concept="3clFbF" id="1Unlav_5I8Y" role="3cqZAp">
+                              <node concept="3clFbT" id="1Unlav_5I8Z" role="3clFbG">
+                                <property role="3clFbU" value="true" />
                               </node>
                             </node>
                           </node>
