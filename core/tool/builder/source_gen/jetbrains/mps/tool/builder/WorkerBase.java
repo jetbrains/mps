@@ -28,11 +28,15 @@ import jetbrains.mps.generator.GenerationFacade;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.LinkedHashSet;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.project.io.DescriptorIOFacade;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.library.ModulesMiner;
+import java.util.Collections;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import org.apache.log4j.Level;
 import java.io.StringWriter;
 import java.io.PrintWriter;
@@ -187,46 +191,40 @@ public abstract class WorkerBase {
     }
   }
   /**
-   * XXX Perhaps, would be better to pass Project here so that we populate Project explicitly, rather
-   * than collect some modules (under Project's MA lock!), but process them independently using ObjectsToProcess
-   */
-  protected Set<SModule> collectFromModuleFiles(SRepository repo) {
-    // XXX don't want to have ordering here but used to be that way in GenTestWorker and might be helpful 
-    // to reproduce errors/get predictable behavior. 
-    Set<SModule> modules = new LinkedHashSet<SModule>();
-    // FIXME GenTestWorker/GenTestTask still use module files as configuration argument (from Java code perspective, need to check actual tasks in scripts and generator thereof) 
-    for (File moduleFile : myWhatToDo.getModules()) {
-      processModuleFile(repo, moduleFile, modules);
-    }
-    return modules;
-  }
-  /**
    * Discovers module(s) from specified location of a module descriptor, loads and registers them in
    * global (JUST FOR NOW) repository with custom owner.
    * 
    * The method used to filter out read-only module and DevKit which is odd provided we have no idea what's the reason to load the module in the first place.
    * Now it's caller responsibility to deal with loaded modules and ignore those undesired as appropriate.
    * 
-   * @param moduleSourceDescriptorFile not null
-   * @param modules collection to populate, not null.
+   * @param moduleSourceDescriptorFiles not null
    */
-  protected void processModuleFile(SRepository repo, final File moduleSourceDescriptorFile, final Set<SModule> modules) {
-    // XXX need a way to figure which FS to use here. Techically, it should come from a project as we are going to 
-    // use these modules as part of the project. 
-    final FileSystem fs = FileSystem.getInstance();
-    IFile descriptorFile = fs.getFile(moduleSourceDescriptorFile.getPath());
+  protected Set<SModule> processModuleFiles(SRepository repo, final Collection<File> moduleSourceDescriptorFiles) {
+    Set<SModule> modules = new LinkedHashSet<SModule>();
+
+    // XXX need a way to figure which FS to use here. Technically, it should come from a project as we are going to 
+    // use these modules as part of the project. OTOH, we know these are local FS files. 
+    final IFileSystem fs = myEnvironment.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
     DescriptorIOFacade descriptorIOFacade = myEnvironment.getPlatform().findComponent(DescriptorIOFacade.class);
-    if (descriptorIOFacade.fromFileType(descriptorFile) == null) {
-      info(String.format("File %s doesn't point to module descriptor, ignored", moduleSourceDescriptorFile));
-      return;
+    final ModulesMiner mminer = new ModulesMiner(Collections.<IFile>emptySet(), descriptorIOFacade);
+    for (File df : CollectionSequence.fromCollection(moduleSourceDescriptorFiles)) {
+      IFile descriptorFile = fs.getFile(df.getPath());
+      if (descriptorIOFacade.fromFileType(descriptorFile) == null) {
+        info(String.format("File %s doesn't point to module descriptor, ignored", moduleSourceDescriptorFiles));
+        continue;
+      }
+      mminer.collectModules(descriptorFile);
     }
     ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(repo);
-    for (ModulesMiner.ModuleHandle moduleHandle : new ModulesMiner(myEnvironment.getPlatform()).collectModules(descriptorFile).getCollectedModules()) {
-      //  seems reasonable just to instantiate a module here and leave its registration to caller 
-      SModule module = mrf.instantiateModule(moduleHandle, myOwner);
+    final SRepositoryExt repoExt = ((SRepositoryExt) mrf.getRepository());
+    for (ModulesMiner.ModuleHandle mh : mminer.getCollectedModules()) {
+      // seems reasonable just to instantiate a module here and leave its registration to caller 
+      // however, at the moment, Generator modules need access to their source Language module, which they look up in the repository 
+      SModule module = repoExt.registerModule(mrf.instantiate(mh.getDescriptor(), mh.getFile()), myOwner);
       info("Loaded module " + module);
       modules.add(module);
     }
+    return modules;
   }
 
   private void log(String text, Level level) {

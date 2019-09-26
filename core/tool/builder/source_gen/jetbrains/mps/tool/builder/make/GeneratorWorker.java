@@ -10,8 +10,11 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.LinkedHashSet;
 import java.io.File;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.tool.builder.WorkerBase;
@@ -26,16 +29,19 @@ public class GeneratorWorker extends BaseGeneratorWorker {
     setGenerationProperties();
     boolean doneSomething = false;
 
-    final Project project = createDummyProject();
+    Project project = createDummyProject();
     final Set<SModule> allModules = new HashSet<SModule>();
     for (IMapping<List<String>, Boolean> chunk : MapSequence.fromMap(myWhatToDo.getChunks())) {
-      final List<String> modulePaths = chunk.key();
-      final Set<SModule> modules = new LinkedHashSet<SModule>();
-      project.getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-          for (String modulePath : modulePaths) {
-            processModuleFile(project.getRepository(), new File(modulePath), modules);
-          }
+      final List<File> modulePaths = new ArrayList<File>(chunk.key().size());
+      for (String modulePath : chunk.key()) {
+        modulePaths.add(new File(modulePath));
+      }
+      final SRepository repo = project.getRepository();
+      // FIXME modules in processModuleFiles are registered with some internal owner, while here we shall use project.addModule(SModule) instead to 
+      //        get module properly registered 
+      Set<SModule> modules = new ModelAccessHelper(repo).runWriteAction(new Computable<Set<SModule>>() {
+        public Set<SModule> compute() {
+          return processModuleFiles(repo, modulePaths);
         }
       });
       allModules.addAll(modules);

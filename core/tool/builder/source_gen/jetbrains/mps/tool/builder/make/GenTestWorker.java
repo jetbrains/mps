@@ -13,6 +13,7 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.Collection;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.make.script.IScript;
@@ -90,6 +91,17 @@ public class GenTestWorker extends BaseGeneratorWorker {
 
     myReporter.finishRun();
     showStatistic();
+  }
+
+  /**
+   * XXX Perhaps, would be better to pass Project here so that we populate Project explicitly, rather
+   * than collect some modules (under Project's MA lock!), but process them independently using ObjectsToProcess
+   */
+  /*package*/ Set<SModule> collectFromModuleFiles(SRepository repo) {
+    // XXX don't want to have ordering here but used to be that way in GenTestWorker and might be helpful 
+    // to reproduce errors/get predictable behavior. 
+    // FIXME GenTestWorker/GenTestTask still use module files as configuration argument (from Java code perspective, need to check actual tasks in scripts and generator thereof) 
+    return processModuleFiles(repo, myWhatToDo.getModules());
   }
 
 
