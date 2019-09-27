@@ -18,7 +18,6 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.actions.CopyNodeReference_Action", getShortcut("ctrl shift C"));
     addSimpleShortcut("jetbrains.mps.ide.actions.CopyNode_Action", getShortcut("ctrl C"));
     addSimpleShortcut("jetbrains.mps.ide.actions.CutNode_Action", getShortcut("ctrl X"));
-    addSimpleShortcut("jetbrains.mps.ide.actions.DeleteModels_Action", getShortcut(" DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.actions.DeleteModules_Action", getShortcut(" DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.actions.DeleteNode_Action", getShortcut(" DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.actions.DeletePropertyAction_Action", getShortcut(" DELETE"));
@@ -47,7 +46,6 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addSimpleShortcut("jetbrains.mps.ide.actions.RenameModule_Action", getShortcut("shift F6"));
     addSimpleShortcut("jetbrains.mps.ide.actions.RenamePackage_Action", getShortcut("shift F6"));
     addSimpleShortcut("jetbrains.mps.ide.actions.RenameVirtualFolder_Action", getShortcut("shift F6"));
-    addSimpleShortcut("jetbrains.mps.ide.actions.SafeDeleteModels_Action", getShortcut("alt DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.actions.SafeDelete_Action", getShortcut("alt DELETE"));
     addSimpleShortcut("jetbrains.mps.ide.actions.SetBookmarkNoNumber_Action", getShortcut(" F11"));
     addSimpleShortcut("jetbrains.mps.ide.actions.ShowBookmarksDialog_Action", getShortcut("shift F11"));
@@ -67,8 +65,9 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
     addComplexShortcut("jetbrains.mps.ide.actions.GoToNamedNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl alt shift N")));
     addComplexShortcut("jetbrains.mps.ide.actions.GoToRootNode_Action", new BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut(getShortcut("ctrl N")));
     // complex 
-    addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new GoToBookmark_ShortcutChange_qjewi8_bc());
-    addComplexShortcut("jetbrains.mps.ide.actions.SetBookmark_Action", new SetBookmark_ShortcutChange_qjewi8_cc());
+    addComplexShortcut("jetbrains.mps.ide.actions.DeleteModels_Action", new DeleteModels_ShortcutChange_qjewi8_g());
+    addComplexShortcut("jetbrains.mps.ide.actions.GoToBookmark_Action", new GoToBookmark_ShortcutChange_qjewi8_ac());
+    addComplexShortcut("jetbrains.mps.ide.actions.SetBookmark_Action", new SetBookmark_ShortcutChange_qjewi8_bc());
   }
   public String getScheme() {
     return "$default";
@@ -76,8 +75,21 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
   public static Shortcut getShortcut(String stroke) {
     return new KeyboardShortcut(KeyStroke.getKeyStroke(stroke), null);
   }
-  public class GoToBookmark_ShortcutChange_qjewi8_bc extends BaseKeymapChanges.ComplexShortcut {
-    public GoToBookmark_ShortcutChange_qjewi8_bc() {
+  public class DeleteModels_ShortcutChange_qjewi8_g extends BaseKeymapChanges.ComplexShortcut {
+    public DeleteModels_ShortcutChange_qjewi8_g() {
+    }
+    public List<Shortcut> getShortcutsFor(Object... objects) {
+      List<Shortcut> _result = new ArrayList<Shortcut>();
+      if (((Boolean) objects[0])) {
+        _result.add(new KeyboardShortcut(KeyStroke.getKeyStroke("alt DELETE"), null));
+      } else {
+        _result.add(new KeyboardShortcut(KeyStroke.getKeyStroke("DELETE"), null));
+      }
+      return _result;
+    }
+  }
+  public class GoToBookmark_ShortcutChange_qjewi8_ac extends BaseKeymapChanges.ComplexShortcut {
+    public GoToBookmark_ShortcutChange_qjewi8_ac() {
     }
     public List<Shortcut> getShortcutsFor(Object... objects) {
       List<Shortcut> _result = new ArrayList<Shortcut>();
@@ -85,8 +97,8 @@ public class Default_KeymapChanges extends BaseKeymapChanges {
       return _result;
     }
   }
-  public class SetBookmark_ShortcutChange_qjewi8_cc extends BaseKeymapChanges.ComplexShortcut {
-    public SetBookmark_ShortcutChange_qjewi8_cc() {
+  public class SetBookmark_ShortcutChange_qjewi8_bc extends BaseKeymapChanges.ComplexShortcut {
+    public SetBookmark_ShortcutChange_qjewi8_bc() {
     }
     public List<Shortcut> getShortcutsFor(Object... objects) {
       List<Shortcut> _result = new ArrayList<Shortcut>();

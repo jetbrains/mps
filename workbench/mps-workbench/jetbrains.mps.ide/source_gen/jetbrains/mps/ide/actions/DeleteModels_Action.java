@@ -13,14 +13,22 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.ide.refactoring.RefactoringSettings;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.workbench.dialogs.DeleteDialog;
+import jetbrains.mps.ide.refactoring.RefactoringSettings;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.ide.save.SaveRepositoryCommand;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
 
 public class DeleteModels_Action extends BaseAction {
   private static final Icon ICON = null;
 
-  public DeleteModels_Action() {
+  private boolean forceSafe;
+  public DeleteModels_Action(boolean forceSafe_par) {
     super("Delete Models", "", ICON);
+    this.forceSafe = forceSafe_par;
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -30,8 +38,12 @@ public class DeleteModels_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    event.getPresentation().setText((((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 1 ? IdeBundle.message("actions.model.delete.title") : IdeBundle.message("actions.model.delete.title.many")));
-    setEnabledState(event.getPresentation(), DeleteModelsAction.isApplicable(((List<SModel>) MapSequence.fromMap(_params).get("models"))));
+    if (DeleteModels_Action.this.forceSafe) {
+      event.getPresentation().setText((((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 1 ? IdeBundle.message("actions.model.delete.title.safe") : IdeBundle.message("actions.model.delete.title.safe.many")));
+    } else {
+      event.getPresentation().setText((((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 1 ? IdeBundle.message("actions.model.delete.title") : IdeBundle.message("actions.model.delete.title.many")));
+    }
+    setEnabledState(event.getPresentation(), DeleteModels_Action.this.isApplicable(_params));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -63,14 +75,48 @@ public class DeleteModels_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    boolean safeDelete = RefactoringSettings.getInstance().SAFE_DELETE;
-    DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption(IdeBundle.message("actions.model.delete.safedelete"), safeDelete, true);
-    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), IdeBundle.message("actions.model.delete.title.many"), IdeBundle.message("actions.model.delete.message"), safeOption);
-    dialog.show();
-    if (!(dialog.isOK())) {
-      return;
+    final Wrappers._boolean safeDelete = new Wrappers._boolean();
+    if (DeleteModels_Action.this.forceSafe) {
+      safeDelete.value = true;
+    } else {
+      DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption(IdeBundle.message("actions.model.delete.safedelete"), RefactoringSettings.getInstance().SAFE_DELETE, true);
+      DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), IdeBundle.message("actions.model.delete.title.many"), IdeBundle.message("actions.model.delete.message"), safeOption);
+      dialog.show();
+      if (!(dialog.isOK())) {
+        return;
+      }
+      RefactoringSettings.getInstance().SAFE_DELETE = safeOption.selected;
+      safeDelete.value = safeOption.selected;
     }
-    RefactoringSettings.getInstance().SAFE_DELETE = safeOption.selected;
-    DeleteModelsAction.executeAction(((List<SModel>) MapSequence.fromMap(_params).get("models")), safeOption.selected, ((SModule) MapSequence.fromMap(_params).get("contextModule")), ((MPSProject) MapSequence.fromMap(_params).get("project")));
+    final SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
+    repository.getModelAccess().executeCommandInEDT(new Runnable() {
+      public void run() {
+        // see MPS-18743 
+        new SaveRepositoryCommand(repository).execute();
+        for (SModel model : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
+          if (SModelStereotype.isStubModel(model) || SModelStereotype.isDescriptorModel(model)) {
+            continue;
+          }
+          DeleteModelHelper.deleteModel(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("contextModule")), model, safeDelete.value, true);
+        }
+      }
+    });
+  }
+  @NotNull
+  public String getActionId() {
+    StringBuilder res = new StringBuilder();
+    res.append(super.getActionId());
+    res.append("#");
+    res.append(((Object) this.forceSafe).toString());
+    res.append("!");
+    return res.toString();
+  }
+  public boolean isApplicable(final Map<String, Object> _params) {
+    for (SModel m : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
+      if (!(SModelStereotype.isStubModel(m)) && !(SModelStereotype.isDescriptorModel(m))) {
+        return true;
+      }
+    }
+    return false;
   }
 }

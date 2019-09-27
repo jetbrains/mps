@@ -51,8 +51,8 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
       ModelActions_ActionGroup.this.addAction(action);
     }
     ModelActions_ActionGroup.this.addSeparator();
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.DeleteModels_Action");
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SafeDeleteModels_Action");
+    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(false), PluginId.getId("jetbrains.mps.ide"), false);
+    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(true), PluginId.getId("jetbrains.mps.ide"), true);
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModel_Action");
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyModelName_Action");
     ModelActions_ActionGroup.this.addSeparator();

@@ -40,7 +40,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new CopyNode_Action());
     addAction(new CutNode_Action());
     addAction(new DeleteFavoritesList_Action());
-    addAction(new DeleteModels_Action());
     addAction(new DeleteModules_Action());
     addAction(new DeleteNode_Action());
     addAction(new DeletePropertyAction_Action());
@@ -91,7 +90,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new RenamePackage_Action());
     addAction(new RenameVirtualFolder_Action());
     addAction(new RevertMemoryChanges_Action());
-    addAction(new SafeDeleteModels_Action());
     addAction(new SafeDeleteModuleDependency_Action());
     addAction(new SafeDelete_Action());
     addAction(new SetBookmarkNoNumber_Action());
