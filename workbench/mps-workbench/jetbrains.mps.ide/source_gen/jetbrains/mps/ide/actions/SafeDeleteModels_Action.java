@@ -13,14 +13,12 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.ide.refactoring.RefactoringSettings;
-import jetbrains.mps.workbench.dialogs.DeleteDialog;
 
-public class DeleteModels_Action extends BaseAction {
+public class SafeDeleteModels_Action extends BaseAction {
   private static final Icon ICON = null;
 
-  public DeleteModels_Action() {
-    super("Delete Models", "", ICON);
+  public SafeDeleteModels_Action() {
+    super("Safe Delete Models", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
   }
@@ -30,7 +28,7 @@ public class DeleteModels_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    event.getPresentation().setText((((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 1 ? IdeBundle.message("actions.model.delete.title") : IdeBundle.message("actions.model.delete.title.many")));
+    event.getPresentation().setText((((List<SModel>) MapSequence.fromMap(_params).get("models")).size() == 1 ? IdeBundle.message("actions.model.delete.title.safe") : IdeBundle.message("actions.model.delete.title.safe.many")));
     setEnabledState(event.getPresentation(), DeleteModelsAction.isApplicable(((List<SModel>) MapSequence.fromMap(_params).get("models"))));
   }
   @Override
@@ -63,14 +61,6 @@ public class DeleteModels_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    boolean safeDelete = RefactoringSettings.getInstance().SAFE_DELETE;
-    DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption(IdeBundle.message("actions.model.delete.safedelete"), safeDelete, true);
-    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), IdeBundle.message("actions.model.delete.title.many"), IdeBundle.message("actions.model.delete.message"), safeOption);
-    dialog.show();
-    if (!(dialog.isOK())) {
-      return;
-    }
-    RefactoringSettings.getInstance().SAFE_DELETE = safeOption.selected;
-    DeleteModelsAction.executeAction(((List<SModel>) MapSequence.fromMap(_params).get("models")), safeOption.selected, ((SModule) MapSequence.fromMap(_params).get("contextModule")), ((MPSProject) MapSequence.fromMap(_params).get("project")));
+    DeleteModelsAction.executeAction(((List<SModel>) MapSequence.fromMap(_params).get("models")), true, ((SModule) MapSequence.fromMap(_params).get("contextModule")), ((MPSProject) MapSequence.fromMap(_params).get("project")));
   }
 }
