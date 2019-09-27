@@ -15,7 +15,11 @@
  */
 package jetbrains.mps.ide.projectPane.favorites;
 
+import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.components.State;
+import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.DefaultJDOMExternalizer;
 import com.intellij.openapi.util.InvalidDataException;
@@ -24,6 +28,7 @@ import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.ArrayUtil;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -36,7 +41,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class MPSFavoritesManager implements ProjectComponent, JDOMExternalizable {
+@State(
+    name = "FavoritesManager",
+    storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
+)
+public class MPSFavoritesManager implements ProjectComponent, PersistentStateComponent<Element> {
   private static final String ELEMENT_FAVORITES_LIST = "favorites_list";
   private static final String FAVORITES_ROOT = "favorite_root";
   private static final String ATTRIBUTE_NAME = "name";
@@ -130,52 +139,27 @@ public class MPSFavoritesManager implements ProjectComponent, JDOMExternalizable
     }
   }
 
+  @Nullable
   @Override
-  public void projectOpened() {
-
+  public Element getState() {
+    Element root = new Element("Favorites");
+    for (final String name : myName2FavoritesRoots.keySet()) {
+      Element list = new Element(ELEMENT_FAVORITES_LIST);
+      list.setAttribute(ATTRIBUTE_NAME, name);
+      writeRoots(list, myName2FavoritesRoots.get(name));
+      root.addContent(list);
+    }
+    return root;
   }
 
   @Override
-  public void projectClosed() {
-
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "MPSFavoritesManager";
-  }
-
-  @Override
-  public void initComponent() {
-
-  }
-
-  @Override
-  public void disposeComponent() {
-
-  }
-
-  @Override
-  public void readExternal(Element element) throws InvalidDataException {
+  public void loadState(@NotNull Element element) {
     myName2FavoritesRoots.clear();
     for (Object list : element.getChildren(ELEMENT_FAVORITES_LIST)) {
       final String name = ((Element) list).getAttributeValue(ATTRIBUTE_NAME);
       List<Object> roots = readRoots((Element) list, myProject);
       myName2FavoritesRoots.put(name, roots);
     }
-    DefaultJDOMExternalizer.readExternal(this, element);
-  }
-
-  @Override
-  public void writeExternal(Element element) throws WriteExternalException {
-    for (final String name : myName2FavoritesRoots.keySet()) {
-      Element list = new Element(ELEMENT_FAVORITES_LIST);
-      list.setAttribute(ATTRIBUTE_NAME, name);
-      writeRoots(list, myName2FavoritesRoots.get(name));
-      element.addContent(list);
-    }
-    DefaultJDOMExternalizer.writeExternal(this, element);
   }
 
   public String[] getFavoriteNames() {
