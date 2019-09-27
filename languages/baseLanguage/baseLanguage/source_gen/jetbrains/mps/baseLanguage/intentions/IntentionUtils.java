@@ -18,6 +18,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Iterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -104,7 +105,7 @@ public class IntentionUtils {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(diff._0()), CONCEPTS.ExpressionStatement$nm)) {
       return false;
     }
-    // todo: i don't think that this code is true 
+    // todo[Timur]: I don't think that this code is true 
     SContainmentLink l = diff._0().getContainmentLink();
     return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.TernaryOperatorExpression$HC), SNodeOperations.asSConcept(l.getTargetConcept()));
   }
@@ -115,7 +116,6 @@ public class IntentionUtils {
     }
     SAbstractConcept concept = SNodeOperations.getConcept(node1);
 
-    // todo: use ConceptRegistry/SConcept when it will possible 
     for (SProperty p : CollectionSequence.fromCollection(concept.getProperties())) {
       if (!(Objects.equals(node1.getProperty(p), node2.getProperty(p)))) {
         return MultiTuple.<SNode,SNode>from(node1, node2);
@@ -123,7 +123,17 @@ public class IntentionUtils {
     }
 
     for (SReferenceLink r : CollectionSequence.fromCollection(concept.getReferenceLinks())) {
-      if (node1.getReference(r).getTargetNode() != node2.getReference(r).getTargetNode()) {
+      SReference r1 = node1.getReference(r);
+      SReference r2 = node2.getReference(r);
+      if (r1 == null ^ r2 == null) {
+        return MultiTuple.<SNode,SNode>from(node1, node2);
+      }
+      if (r1 == null && r2 == null) {
+        continue;
+      }
+
+      // now both are not null 
+      if (r1.getTargetNode() != r2.getTargetNode()) {
         return MultiTuple.<SNode,SNode>from(node1, node2);
       }
     }
