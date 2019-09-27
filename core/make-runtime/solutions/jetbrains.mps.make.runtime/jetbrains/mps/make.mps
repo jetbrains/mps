@@ -3,8 +3,6 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
   </languages>
@@ -55,22 +53,8 @@
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
         <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
-      <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
-        <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
-      <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
-      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
-        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
-      <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
-        <child id="1164991057263" name="throwable" index="YScLw" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
@@ -82,6 +66,7 @@
         <property id="1240249534625" name="isVolatile" index="34CwA1" />
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
+        <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -121,10 +106,6 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
-      <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
-        <child id="1068580123160" name="condition" index="3clFbw" />
-        <child id="1068580123161" name="ifTrue" index="3clFbx" />
-      </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
@@ -144,7 +125,6 @@
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
       <concept id="1073063089578" name="jetbrains.mps.baseLanguage.structure.SuperMethodCall" flags="nn" index="3nyPlj" />
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -216,9 +196,6 @@
       </concept>
       <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
         <child id="3106559687488741665" name="line" index="2Xj1qM" />
-      </concept>
-      <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
-        <reference id="2217234381367530213" name="classifier" index="VXe09" />
       </concept>
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
@@ -456,162 +433,6 @@
         <node concept="3uibUv" id="7lTD6YZtjhY" role="1tU5fm">
           <ref role="3uigEE" node="7lTD6YZtjg2" resolve="IMakeNotificationListener" />
         </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6ZzUxXZRdek" role="jymVt" />
-    <node concept="312cEu" id="7yGn3z4MRqM" role="jymVt">
-      <property role="TrG5h" value="INSTANCE" />
-      <node concept="3Tm1VV" id="7yGn3z4MRqN" role="1B3o_S" />
-      <node concept="Wx3nA" id="5aPnf4q_xb4" role="jymVt">
-        <property role="TrG5h" value="Component" />
-        <node concept="3Tm6S6" id="5aPnf4q_xb5" role="1B3o_S" />
-        <node concept="3uibUv" id="5aPnf4q_xb7" role="1tU5fm">
-          <ref role="3uigEE" node="1NAY6bPd4nM" resolve="IMakeService" />
-        </node>
-      </node>
-      <node concept="3clFbW" id="7yGn3z4MRqO" role="jymVt">
-        <node concept="3cqZAl" id="7yGn3z4MRqP" role="3clF45" />
-        <node concept="3Tm6S6" id="7yGn3z4MRqV" role="1B3o_S" />
-        <node concept="3clFbS" id="7yGn3z4MRqR" role="3clF47" />
-      </node>
-      <node concept="2YIFZL" id="7yGn3z4MRr2" role="jymVt">
-        <property role="TrG5h" value="get" />
-        <node concept="3uibUv" id="7yGn3z4MRHO" role="3clF45">
-          <ref role="3uigEE" node="1NAY6bPd4nM" resolve="IMakeService" />
-        </node>
-        <node concept="3Tm1VV" id="7yGn3z4MRr4" role="1B3o_S" />
-        <node concept="3clFbS" id="7yGn3z4MRr5" role="3clF47">
-          <node concept="3clFbJ" id="5aPnf4q_xb9" role="3cqZAp">
-            <node concept="3clFbS" id="5aPnf4q_xba" role="3clFbx">
-              <node concept="YS8fn" id="2eO7$PQ2jei" role="3cqZAp">
-                <node concept="2ShNRf" id="2eO7$PQ2jek" role="YScLw">
-                  <node concept="1pGfFk" id="2eO7$PQ2jem" role="2ShVmc">
-                    <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                    <node concept="Xl_RD" id="2eO7$PQ2jen" role="37wK5m">
-                      <property role="Xl_RC" value="no make service component" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbC" id="5aPnf4q_xbe" role="3clFbw">
-              <node concept="10Nm6u" id="5aPnf4q_xbh" role="3uHU7w" />
-              <node concept="37vLTw" id="2BHiRxeooIF" role="3uHU7B">
-                <ref role="3cqZAo" node="5aPnf4q_xb4" resolve="Component" />
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="5aPnf4q_xbn" role="3cqZAp">
-            <node concept="37vLTw" id="2BHiRxeoq8H" role="3clFbG">
-              <ref role="3cqZAo" node="5aPnf4q_xb4" resolve="Component" />
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="IIVxgkLZmB" role="2AJF6D">
-          <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-          <node concept="2B6LJw" id="IIVxgkLZpj" role="2B76xF">
-            <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-            <node concept="3b6qkQ" id="IIVxgkLZBf" role="2B70Vg">
-              <property role="$nhwW" value="2018.1" />
-            </node>
-          </node>
-        </node>
-        <node concept="P$JXv" id="IIVxgkLZB$" role="lGtFl">
-          <node concept="TZ5HI" id="IIVxgkLZC2" role="3nqlJM">
-            <node concept="TZ5HA" id="IIVxgkLZC3" role="3HnX3l">
-              <node concept="1dT_AC" id="IIVxgkLZCX" role="1dT_Ay">
-                <property role="1dT_AB" value="the method will be removed after 2018.3 is out" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="IIVxgkLZC4" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        </node>
-      </node>
-      <node concept="2YIFZL" id="7q76xKYjgBM" role="jymVt">
-        <property role="TrG5h" value="set" />
-        <node concept="3cqZAl" id="7q76xKYjgBN" role="3clF45" />
-        <node concept="3Tm1VV" id="7q76xKYjgBO" role="1B3o_S" />
-        <node concept="3clFbS" id="7q76xKYjgBP" role="3clF47">
-          <node concept="3clFbF" id="7q76xKYjgBS" role="3cqZAp">
-            <node concept="37vLTI" id="7q76xKYjgBU" role="3clFbG">
-              <node concept="37vLTw" id="2BHiRxeooIP" role="37vLTJ">
-                <ref role="3cqZAo" node="5aPnf4q_xb4" resolve="Component" />
-              </node>
-              <node concept="37vLTw" id="2BHiRxgm83H" role="37vLTx">
-                <ref role="3cqZAo" node="7q76xKYjgBQ" resolve="service" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="37vLTG" id="7q76xKYjgBQ" role="3clF46">
-          <property role="TrG5h" value="service" />
-          <node concept="3uibUv" id="7q76xKYjgBR" role="1tU5fm">
-            <ref role="3uigEE" node="1NAY6bPd4nM" resolve="IMakeService" />
-          </node>
-        </node>
-      </node>
-      <node concept="2YIFZL" id="2eO7$PQ1ZfE" role="jymVt">
-        <property role="TrG5h" value="isSessionActive" />
-        <node concept="10P_77" id="2eO7$PQ2je5" role="3clF45" />
-        <node concept="3Tm1VV" id="2eO7$PQ1ZfG" role="1B3o_S" />
-        <node concept="3clFbS" id="2eO7$PQ1ZfH" role="3clF47">
-          <node concept="3clFbF" id="2eO7$PQ1ZfI" role="3cqZAp">
-            <node concept="1Wc70l" id="2eO7$PQ2je9" role="3clFbG">
-              <node concept="2YIFZM" id="mmOAtMHTPU" role="3uHU7B">
-                <ref role="1Pybhc" node="7yGn3z4MRqM" resolve="IMakeService.INSTANCE" />
-                <ref role="37wK5l" node="mmOAtMHTPM" resolve="hasMakeService" />
-              </node>
-              <node concept="2OqwBi" id="2eO7$PQ2jee" role="3uHU7w">
-                <node concept="37vLTw" id="2BHiRxeojXr" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5aPnf4q_xb4" resolve="Component" />
-                </node>
-                <node concept="liA8E" id="2eO7$PQ2jeg" role="2OqNvi">
-                  <ref role="37wK5l" node="7yGn3z4N64o" resolve="isSessionActive" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2YIFZL" id="mmOAtMHTPM" role="jymVt">
-        <property role="TrG5h" value="hasMakeService" />
-        <node concept="3Tm1VV" id="mmOAtMHTPN" role="1B3o_S" />
-        <node concept="10P_77" id="mmOAtMHTPO" role="3clF45" />
-        <node concept="3clFbS" id="mmOAtMHTPP" role="3clF47">
-          <node concept="3cpWs6" id="mmOAtMHTPQ" role="3cqZAp">
-            <node concept="3y3z36" id="mmOAtMHTPR" role="3cqZAk">
-              <node concept="37vLTw" id="2BHiRxeoflh" role="3uHU7B">
-                <ref role="3cqZAo" node="5aPnf4q_xb4" resolve="Component" />
-              </node>
-              <node concept="10Nm6u" id="mmOAtMHTPT" role="3uHU7w" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3UR2Jj" id="4QUA3SqtSoT" role="lGtFl">
-        <node concept="TZ5HI" id="4QUA3SqtSoU" role="3nqlJM">
-          <node concept="TZ5HA" id="4QUA3SqtSoV" role="3HnX3l">
-            <node concept="1dT_AC" id="4QUA3SqtSs0" role="1dT_Ay">
-              <property role="1dT_AB" value="global singleton is not a proper way to obtain active make facility of MPS platform. Instead, use " />
-            </node>
-            <node concept="1dT_AA" id="4QUA3SqtSs3" role="1dT_Ay">
-              <node concept="92FcH" id="4QUA3SqtSs9" role="qph3F">
-                <node concept="TZ5HA" id="4QUA3SqtSsb" role="2XjZqd" />
-                <node concept="VXe08" id="4QUA3SqtVVa" role="92FcQ">
-                  <ref role="VXe09" node="4QUA3Sqts3M" resolve="MakeServiceComponent" />
-                </node>
-              </node>
-            </node>
-            <node concept="1dT_AC" id="4QUA3SqtSs2" role="1dT_Ay">
-              <property role="1dT_AB" value="." />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="4QUA3SqtSoW" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
   </node>
@@ -1367,6 +1188,7 @@
   </node>
   <node concept="312cEu" id="4QUA3Sqts3M">
     <property role="TrG5h" value="MakeServiceComponent" />
+    <property role="1EXbeo" value="true" />
     <node concept="312cEg" id="4QUA3SqtBpB" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -1407,15 +1229,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4QUA3SqtS5W" role="3cqZAp">
-          <node concept="2YIFZM" id="4QUA3SqtS7I" role="3clFbG">
-            <ref role="37wK5l" node="7q76xKYjgBM" resolve="set" />
-            <ref role="1Pybhc" node="7yGn3z4MRqM" resolve="IMakeService.INSTANCE" />
-            <node concept="37vLTw" id="4QUA3SqtS8s" role="37wK5m">
-              <ref role="3cqZAo" node="4QUA3SqtAU7" resolve="makeService" />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="4QUA3SqtAU7" role="3clF46">
         <property role="TrG5h" value="makeService" />
@@ -1433,13 +1246,6 @@
       <node concept="3cqZAl" id="4QUA3SqtAZY" role="3clF45" />
       <node concept="3Tm1VV" id="4QUA3SqtAZZ" role="1B3o_S" />
       <node concept="3clFbS" id="4QUA3SqtB00" role="3clF47">
-        <node concept="3clFbF" id="4QUA3SqtS8V" role="3cqZAp">
-          <node concept="2YIFZM" id="4QUA3SqtS8W" role="3clFbG">
-            <ref role="37wK5l" node="7q76xKYjgBM" resolve="set" />
-            <ref role="1Pybhc" node="7yGn3z4MRqM" resolve="IMakeService.INSTANCE" />
-            <node concept="10Nm6u" id="4QUA3SqtSbX" role="37wK5m" />
-          </node>
-        </node>
         <node concept="3clFbF" id="4QUA3SqtQNm" role="3cqZAp">
           <node concept="37vLTI" id="4QUA3SqtQTo" role="3clFbG">
             <node concept="10Nm6u" id="4QUA3SqtQWA" role="37vLTx" />
@@ -1519,17 +1325,6 @@
       </node>
       <node concept="3Tm1VV" id="4QUA3SqtLoh" role="1B3o_S" />
       <node concept="3clFbS" id="4QUA3SqtLoi" role="3clF47">
-        <node concept="1gVbGN" id="4QUA3SqtQCm" role="3cqZAp">
-          <node concept="3clFbC" id="4QUA3SqtQIY" role="1gVkn0">
-            <node concept="37vLTw" id="4QUA3SqtQJY" role="3uHU7w">
-              <ref role="3cqZAo" node="4QUA3SqtBpB" resolve="myActiveMakeService" />
-            </node>
-            <node concept="2YIFZM" id="4QUA3SqtQEp" role="3uHU7B">
-              <ref role="37wK5l" node="7yGn3z4MRr2" resolve="get" />
-              <ref role="1Pybhc" node="7yGn3z4MRqM" resolve="IMakeService.INSTANCE" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="4QUA3SqtQ$s" role="3cqZAp">
           <node concept="37vLTw" id="4QUA3SqtQ$r" role="3clFbG">
             <ref role="3cqZAo" node="4QUA3SqtBpB" resolve="myActiveMakeService" />

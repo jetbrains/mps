@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
  *     listeners the moment active make service changes. No, there's no such scenario at the moment.
  * 
  */
-public class MakeServiceComponent implements CoreComponent {
+public final class MakeServiceComponent implements CoreComponent {
   private IMakeService myActiveMakeService;
 
   public MakeServiceComponent() {
@@ -23,11 +23,9 @@ public class MakeServiceComponent implements CoreComponent {
   public void install(@NotNull IMakeService makeService) {
     assert myActiveMakeService == null;
     myActiveMakeService = makeService;
-    IMakeService.INSTANCE.set(makeService);
   }
 
   public void uninstall(@NotNull IMakeService makeService) {
-    IMakeService.INSTANCE.set(null);
     myActiveMakeService = null;
   }
 
@@ -41,7 +39,6 @@ public class MakeServiceComponent implements CoreComponent {
   }
 
   public IMakeService get() {
-    assert IMakeService.INSTANCE.get() == myActiveMakeService;
     return myActiveMakeService;
   }
 

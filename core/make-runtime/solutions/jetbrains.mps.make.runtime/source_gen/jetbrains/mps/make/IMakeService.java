@@ -9,7 +9,6 @@ import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.util.annotation.ToRemove;
 
 public interface IMakeService {
   boolean openNewSession(MakeSession session);
@@ -21,37 +20,4 @@ public interface IMakeService {
   Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources, IScript script, IScriptController controller, @NotNull ProgressMonitor monitor);
   void addListener(IMakeNotificationListener listener);
   void removeListener(IMakeNotificationListener listener);
-
-  /**
-   * 
-   * @deprecated global singleton is not a proper way to obtain active make facility of MPS platform. Instead, use {@link jetbrains.mps.make.MakeServiceComponent }.
-   */
-  @Deprecated
-  class INSTANCE {
-    private static IMakeService Component;
-    @Deprecated
-    private INSTANCE() {
-    }
-    /**
-     * 
-     * @deprecated the method will be removed after 2018.3 is out
-     */
-    @ToRemove(version = 2018.1)
-    @Deprecated
-    public static IMakeService get() {
-      if (Component == null) {
-        throw new IllegalStateException("no make service component");
-      }
-      return Component;
-    }
-    public static void set(IMakeService service) {
-      Component = service;
-    }
-    public static boolean isSessionActive() {
-      return INSTANCE.hasMakeService() && Component.isSessionActive();
-    }
-    public static boolean hasMakeService() {
-      return Component != null;
-    }
-  }
 }
