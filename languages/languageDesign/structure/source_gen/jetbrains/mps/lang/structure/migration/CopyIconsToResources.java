@@ -16,15 +16,11 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -62,15 +58,6 @@ public class CopyIconsToResources extends MigrationScriptBase {
           String newPath = macros.shrinkPath(macros.expandPath(SPropertyOperations.getString(it, PROPS.iconPath$YYV1)));
           SPropertyOperations.assign(SLinkOperations.setNewChild(it, LINKS.icon$2CxW, CONCEPTS.FileIcon$ne), PROPS.file$xmj_, newPath);
           it.setProperty(PROPS.iconPath$YYV1, null);
-        }
-      });
-      Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
-        public boolean accept(SModel it) {
-          return LanguageAspect.STRUCTURE.is(it);
-        }
-      }).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          ((SModelInternal) it).addLanguage(MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources"));
         }
       });
     }
