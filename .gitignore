@@ -34,8 +34,7 @@ teamcity-info.xml
 *.class
 
 # Plugins related excludes:
-# * Platform bundled plugins
-# * Downloadable plugin libraries
+# Downloadable plugin libraries
 /plugins/debugger-api/lib
 /plugins/debugger-java/lib
 /plugins/mps-vcs/lib/
@@ -46,14 +45,19 @@ teamcity-info.xml
 /plugins/jetpad/lib
 /plugins/jetpad/lib/*.war
 /plugins/jetpad/lib/jetpadBuildNumber.txt
-/plugins/git4idea/lib
-/plugins/github
-/plugins/svn4idea/lib
 /plugins/mps-testing/lib
-/plugins/terminal
 /plugins/mps-migration/migration-platform/lib
-/plugins/coverage/lib
+# Platform bundled plugins
+# (in the same order as in the MPSProperties.groovy to simplify maintaining)
 /plugins/java
+/plugins/java-ide-customization
+/plugins/terminal
+/plugins/settings-repository
+/plugins/tasks
+/plugins/git4idea
+/plugins/svn4idea
+/plugins/github
+/plugins/vcs-changeReminder
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
 /lib/
