@@ -139,16 +139,6 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     project.getComponent(UsagesViewTool.class).findUsages(provider, query, options);
   }
 
-  /**
-   * @deprecated Use {@link #showUsages(com.intellij.openapi.project.Project, jetbrains.mps.ide.findusages.model.IResultProvider, jetbrains.mps.ide.findusages.model.SearchQuery, UsageToolOptions)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 3.3)
-  public void findUsages(IResultProvider provider, SearchQuery query, boolean isRerunnable, boolean showOne, boolean forceNewTab, String notFoundMsg) {
-    findUsages(provider, query,
-               new UsageToolOptions().allowRunAgain(isRerunnable).navigateIfSingle(!showOne).forceNewTab(forceNewTab).notFoundMessage(notFoundMsg));
-  }
-
   private void findUsages(IResultProvider provider, final SearchQuery query, final UsageToolOptions options) {
     final SearchTaskImpl searchTask = new SearchTaskImpl(ProjectHelper.fromIdeaProject(getProject()), provider, query);
     ThreadUtils.runInUIThreadNoWait(() -> new Backgroundable(getProject(), "Searching", true, PerformInBackgroundOption.DEAF) {
@@ -167,8 +157,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
   }
 
   public void show(SearchResults results, String notFoundMsg) {
-    ThreadUtils.assertEDT();
-    showResults(null, results, new UsageToolOptions().navigateIfSingle(false).forceNewTab(true).allowRunAgain(false).notFoundMessage(notFoundMsg), null);
+    show(results, notFoundMsg, null);
   }
 
   public void show(SearchResults results, String notFoundMsg, @Nullable INodeRepresentator representator) {
