@@ -5,7 +5,6 @@ package jetbrains.mps.ide.actions;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.findusages.view.optionseditor.FindUsagesOptions;
-import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.view.optionseditor.DefaultOptionsContainer;
 import jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent;
@@ -16,6 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.view.optionseditor.options.FindersOptions;
 import jetbrains.mps.ide.findusages.view.optionseditor.FindUsagesDialog;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
+import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.view.optionseditor.options.ViewOptions;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 
@@ -24,7 +24,6 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
   private final jetbrains.mps.project.Project myProject;
   private SNode myOperationNode;
   private FindUsagesOptions myUsageOptions;
-  private SearchQuery mySearchQuery;
 
   /*package*/ FindUsagesHelper(MPSProject project) {
     myIdeaProject = project.getProject();

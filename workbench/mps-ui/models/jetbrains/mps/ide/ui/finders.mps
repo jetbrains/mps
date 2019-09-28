@@ -96,7 +96,6 @@
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
-        <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
@@ -2815,9 +2814,6 @@
       <node concept="3Tm6S6" id="7jXYo5$Ydq9" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="7jXYo5$YfZ8" role="jymVt" />
-    <node concept="3uibUv" id="1Fz6CCofxQJ" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
-    </node>
     <node concept="3UR2Jj" id="5m8mBG1krYA" role="lGtFl">
       <node concept="TZ5HA" id="5m8mBG1krYB" role="TZ5H$">
         <node concept="1dT_AC" id="5m8mBG1krYC" role="1dT_Ay">
@@ -2825,8 +2821,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="7QgHDzyuZTF" role="EKbjA">
-      <ref role="3uigEE" to="k4i4:~IFinder" resolve="IFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_VIv" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="3_o1C0wGpM1">
@@ -3256,8 +3252,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCofC6b" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_Oq7" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="3_o1C0wGpQy">
@@ -3866,8 +3862,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCofp8w" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_xkW" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="5wOcmpULBDi">
@@ -4109,8 +4105,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCofnwi" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_ND2" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="ZVS8OJmVFq">
@@ -5030,11 +5026,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCofGLx" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
-    </node>
-    <node concept="3uibUv" id="2MPx6ZV5daN" role="EKbjA">
-      <ref role="3uigEE" to="k4i4:~IFinder" resolve="IFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_uVK" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="pogCqdRFxj">
@@ -5432,8 +5425,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCoeDvm" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_wEJ" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
 </model>

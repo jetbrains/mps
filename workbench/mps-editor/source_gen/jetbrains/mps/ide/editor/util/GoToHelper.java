@@ -4,7 +4,7 @@ package jetbrains.mps.ide.editor.util;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import com.intellij.ui.awt.RelativePoint;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -23,7 +23,7 @@ public final class GoToHelper {
   }
 
   @Deprecated
-  public static void showPopupAndSearchNodeInBackground(final SNode node, final MPSProject project, final CaptionFunction captionFun, final Finder finder, final RelativePoint point) {
+  public static void showPopupAndSearchNodeInBackground(final SNode node, final MPSProject project, final CaptionFunction captionFun, final IFinder finder, final RelativePoint point) {
     SearchQuery query = createNodeQuery(project.getRepository(), node, null);
     PopupSettingsBuilder settings = new PopupSettingsBuilder(project);
     settings.query(query).captionFun(captionFun).finders(finder).point(point);

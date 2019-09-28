@@ -8,11 +8,9 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
-/**
- * Use Finder instead
- */
-@Deprecated
 public interface IFinder {
+  String getDescription();
+
   /**
    * a straight-forward version of the search process: we ask, we wait, we get the results
    * // @deprecated

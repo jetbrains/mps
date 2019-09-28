@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
  * classes using it. It's very important to understand the difference). This class knows how to get back to genertated finder from
  * this identity string and is a finder proxy, per se.
  */
-public final class ReloadableFinder extends BaseFinder {
+public final class ReloadableFinder implements IFinder {
   private final String myFinderIdentity;
 
   public ReloadableFinder(@NotNull String finderClass) {
@@ -35,7 +35,7 @@ public final class ReloadableFinder extends BaseFinder {
   @Override
   public String getDescription() {
     IInterfacedFinder finder = getFinder();
-    return (finder == null ? super.getDescription() : finder.getDescription());
+    return (finder == null ? "<no finder>" : finder.getDescription());
   }
 
   @Override

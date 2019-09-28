@@ -84,7 +84,6 @@
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
-        <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
@@ -806,8 +805,8 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCofBaQ" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_rF$" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="6hha$XdHaZ8">
@@ -1542,11 +1541,8 @@
         <node concept="3clFbS" id="6hha$XdHb3c" role="3clF47" />
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCoewya" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
-    </node>
-    <node concept="3uibUv" id="3l3Dt6fEdDm" role="EKbjA">
-      <ref role="3uigEE" to="k4i4:~Finder" resolve="Finder" />
+    <node concept="3uibUv" id="4Cga4ZG_fTW" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="6hha$XdHb3A">
@@ -1623,8 +1619,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCofpIK" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_oJ9" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
   <node concept="312cEu" id="5gewV25wDe3">
@@ -2108,11 +2104,8 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="1Fz6CCofUnJ" role="1zkMxy">
-      <ref role="3uigEE" to="b2d5:1Fz6CCoeqzM" resolve="BaseFinder" />
-    </node>
-    <node concept="3uibUv" id="2MPx6ZV4QiC" role="EKbjA">
-      <ref role="3uigEE" to="k4i4:~IFinder" resolve="IFinder" />
+    <node concept="3uibUv" id="4Cga4ZG_$5E" role="EKbjA">
+      <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
     </node>
   </node>
 </model>

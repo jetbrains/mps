@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public interface IInterfacedFinder extends Finder {
+public interface IInterfacedFinder extends IFinder {
   /**
    * In fact, with FinderRegistry, the only client of this method would be GeneratedFinder itself, could be exposed from GF instead of this iface.
    */
@@ -15,7 +15,6 @@ public interface IInterfacedFinder extends Finder {
   boolean isApplicable(SNode node);
   boolean isVisible(SNode node);
   boolean isUsedByDefault(SNode node);
-  String getDescription();
   String getLongDescription();
   /**
    * Is there any meaningful value other than true or getDeclarationNode != null?

@@ -17,12 +17,10 @@ package jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes;
 
 import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder.FindCallback;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.ReloadableFinder;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
-import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.project.Project;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -49,12 +47,7 @@ public class FinderNode extends BaseLeaf {
   }
 
   public String getTaskName() {
-    if (myFinder instanceof Finder) {
-      return ((Finder) myFinder).getDescription();
-    } else {
-      LOG.warn("IFinder is deprecated and will be removed after 3.4. Please change " + myFinder.getClass().getName() + " accordingly");
-      return myFinder.getClass().getName();
-    }
+    return myFinder.getDescription();
   }
 
   @Override

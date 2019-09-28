@@ -70,6 +70,7 @@
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="p2by" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.rmi(MPS.IDEA/)" />
+    <import index="b2d5" ref="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -2822,8 +2823,8 @@
                       <ref role="37wK5l" to="5wna:6hha$XdHb04" resolve="AspectMethodsFinder" />
                     </node>
                   </node>
-                  <node concept="3uibUv" id="6ETkb2hbhew" role="3g7fb8">
-                    <ref role="3uigEE" to="k4i4:~Finder" resolve="Finder" />
+                  <node concept="3uibUv" id="7rEOvdELtBj" role="3g7fb8">
+                    <ref role="3uigEE" to="b2d5:7aWSXuXO6mS" resolve="IFinder" />
                   </node>
                 </node>
               </node>

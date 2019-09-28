@@ -53,7 +53,7 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.specific.AspectMethods
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -269,7 +269,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
     SearchScope scope = new GlobalScope(ProjectHelper.fromIdeaProject(myProject).getRepository());
     SearchQuery searchQuery = new SearchQuery(new AspectMethodsFinder.AspectMethodsHolder(namespace, name), scope);
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(false).forceNewTab(false).notFoundMessage("No usages for that method");
-    UsagesViewTool.showUsages(myProject, FindUtils.makeProvider(new Finder[]{new AspectMethodsFinder()}), searchQuery, opt);
+    UsagesViewTool.showUsages(myProject, FindUtils.makeProvider(new IFinder[]{new AspectMethodsFinder()}), searchQuery, opt);
   }
   @Override
   public void showClassUsages(final String fqName) throws RemoteException {

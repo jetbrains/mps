@@ -5,7 +5,7 @@ package jetbrains.mps.ide.editor.util;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import java.util.List;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import jetbrains.mps.ide.editor.util.renderer.BaseRenderer;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
 import com.intellij.ui.awt.RelativePoint;
@@ -27,7 +27,7 @@ import com.intellij.openapi.actionSystem.impl.ActionMenuItem;
 public final class PopupSettingsBuilder {
   /*package*/ final MPSProject myProject;
   /*package*/ SearchQuery query;
-  /*package*/ List<Finder> finders;
+  /*package*/ List<IFinder> finders;
   /*package*/ CaptionFunction captionFun;
   /*package*/ BaseRenderer<NodeNavigatable> renderer;
   /*package*/ RelativePoint point;
@@ -53,7 +53,7 @@ public final class PopupSettingsBuilder {
     return this;
   }
 
-  public PopupSettingsBuilder finders(@NotNull Finder... finders) {
+  public PopupSettingsBuilder finders(@NotNull IFinder... finders) {
     this.finders = Arrays.asList(finders);
     return this;
   }

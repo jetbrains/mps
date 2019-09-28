@@ -24,7 +24,7 @@ import java.util.Collections;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
-public abstract class GeneratedFinder extends BaseFinder implements IInterfacedFinder {
+public abstract class GeneratedFinder implements IInterfacedFinder {
   private static final Logger LOG = LogManager.getLogger(GeneratedFinder.class);
 
   public GeneratedFinder() {

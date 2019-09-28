@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.findUsages;
 
-import jetbrains.mps.ide.findusages.findalgorithm.finders.BaseFinder;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.SearchedObjects;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
 import org.jetbrains.annotations.NotNull;
@@ -33,10 +31,10 @@ import java.util.Collection;
  *
  * @author Artem Tikhomirov
  */
-public class CompositeFinder extends BaseFinder {
-  private final Finder myDelegate;
+public class CompositeFinder implements IFinder {
+  private final IFinder myDelegate;
 
-  public CompositeFinder(@NotNull Finder delegate) {
+  public CompositeFinder(@NotNull IFinder delegate) {
     myDelegate = delegate;
   }
 

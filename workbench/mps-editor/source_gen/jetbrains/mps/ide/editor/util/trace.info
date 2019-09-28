@@ -195,7 +195,7 @@
   </root>
   <root nodeRef="r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/2808756344206283880">
     <file name="GoToHelper.java">
-      <node id="6984321651749024391" at="26,183,27,77" concept="9" />
+      <node id="6984321651749024391" at="26,184,27,77" concept="9" />
       <node id="6984321651749033611" at="27,77,28,70" concept="9" />
       <node id="6984321651749040575" at="28,70,29,78" concept="4" />
       <node id="6984321651749032166" at="29,78,30,45" concept="4" />
@@ -210,7 +210,7 @@
       <node id="6984321651748832334" at="37,36,40,9" concept="7" />
       <node id="6984321651746749865" at="47,0,50,0" concept="13" trace="showPopupAndSearchNodeInBackground#(Ljetbrains/mps/ide/editor/util/PopupSettingsBuilder;)V" />
       <node id="7052698666283512428" at="51,0,55,0" concept="13" trace="showPopupAndSearchInBackground#(Ljetbrains/mps/ide/editor/util/PopupSettingsBuilder;)V" />
-      <node id="7052698666283512380" at="25,0,32,0" concept="13" trace="showPopupAndSearchNodeInBackground#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/ide/editor/util/CaptionFunction;Ljetbrains/mps/ide/findusages/findalgorithm/finders/Finder;Lcom/intellij/ui/awt/RelativePoint;)V" />
+      <node id="7052698666283512380" at="25,0,32,0" concept="13" trace="showPopupAndSearchNodeInBackground#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/ide/editor/util/CaptionFunction;Ljetbrains/mps/ide/findusages/findalgorithm/finders/IFinder;Lcom/intellij/ui/awt/RelativePoint;)V" />
       <node id="6984321651746749894" at="36,0,43,0" concept="8" trace="compute#()Ljetbrains/mps/ide/findusages/model/SearchQuery;" />
       <node id="6984321651746749885" at="34,58,43,28" concept="9" />
       <node id="6984321651748825912" at="33,0,46,0" concept="13" trace="createNodeQuery#(Lorg/jetbrains/mps/openapi/module/SRepository;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;)Ljetbrains/mps/ide/findusages/model/SearchQuery;" />
@@ -224,7 +224,7 @@
       <scope id="6984321651746749865" at="47,0,50,0">
         <var name="settings" id="6984321651748815674" />
       </scope>
-      <scope id="7052698666283512391" at="26,183,30,45">
+      <scope id="7052698666283512391" at="26,184,30,45">
         <var name="query" id="6984321651749024392" />
         <var name="settings" id="6984321651749033612" />
       </scope>
@@ -674,7 +674,7 @@
       <node id="6984321651749675199" at="47,66,48,37" concept="10" />
       <node id="6984321651749720838" at="51,85,52,84" concept="4" />
       <node id="6984321651749720848" at="52,84,53,16" concept="10" />
-      <node id="6984321651749087116" at="56,67,57,42" concept="4" />
+      <node id="6984321651749087116" at="56,68,57,42" concept="4" />
       <node id="6984321651749087122" at="57,42,58,16" concept="10" />
       <node id="5331014395469095444" at="61,89,62,29" concept="4" />
       <node id="5331014395469095451" at="62,29,63,16" concept="10" />
@@ -717,7 +717,7 @@
       <scope id="6984321651749716212" at="80,12,81,141" />
       <scope id="6984321651749086976" at="42,65,44,16" />
       <scope id="6984321651749720837" at="51,85,53,16" />
-      <scope id="6984321651749087115" at="56,67,58,16" />
+      <scope id="6984321651749087115" at="56,68,58,16" />
       <scope id="5331014395469095443" at="61,89,63,16" />
       <scope id="6984321651749233741" at="66,79,68,16" />
       <scope id="6984321651749234123" at="71,67,73,16" />
@@ -820,63 +820,63 @@
   </root>
   <root nodeRef="r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/7052698666283512227">
     <file name="BackgroundSearchTask.java">
-      <node id="7052698666283512230" at="19,0,20,0" concept="5" trace="myMPSProject" />
-      <node id="7052698666283512234" at="20,0,21,0" concept="5" trace="myQuery" />
-      <node id="7052698666283512238" at="21,0,22,0" concept="5" trace="myFinders" />
-      <node id="7052698666283512243" at="22,0,23,0" concept="5" trace="myCancelled" />
-      <node id="7052698666283559797" at="24,147,25,90" concept="14" />
-      <node id="7052698666283512264" at="25,90,26,27" concept="4" />
-      <node id="7052698666283512268" at="26,27,27,20" concept="4" />
-      <node id="7052698666283512272" at="27,20,28,24" concept="4" />
-      <node id="7052698666283512284" at="32,26,33,23" concept="4" />
-      <node id="7052698666283512292" at="36,32,37,23" concept="10" />
-      <node id="7052698666283512296" at="40,0,41,0" concept="8" trace="onUsageFound#(Ljetbrains/mps/ide/findusages/model/SearchResult;)V" />
-      <node id="7052698666283512335" at="49,69,50,59" concept="4" />
-      <node id="8398700892537573145" at="55,39,56,55" concept="10" />
-      <node id="7052698666283512343" at="58,10,59,98" concept="4" />
-      <node id="7052698666283512290" at="36,0,39,0" concept="8" trace="isCancelled#()Z" />
-      <node id="7052698666283512281" at="31,0,35,0" concept="8" trace="onCancel#()V" />
-      <node id="7052698666283512328" at="48,0,52,0" concept="8" trace="onUsageFound#(Ljetbrains/mps/ide/findusages/model/SearchResult;)V" />
-      <node id="8398700892537573137" at="54,0,58,0" concept="8" trace="isCanceled#()Z" />
-      <node id="7052698666283512248" at="24,0,30,0" concept="3" trace="BackgroundSearchTask#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/ide/findusages/model/SearchQuery;Ljava/util/List;Ljava/lang/String;)V" />
-      <node id="7052698666283512323" at="46,25,52,10" concept="9" />
-      <node id="8398700892537568540" at="52,10,58,10" concept="9" />
-      <node id="7052698666283512319" at="45,0,61,0" concept="8" trace="run#()V" />
-      <node id="7052698666283512310" at="43,63,61,7" concept="4" />
-      <node id="7052698666283512304" at="42,0,63,0" concept="8" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
-      <scope id="7052698666283512283" at="32,26,33,23" />
-      <scope id="7052698666283512291" at="36,32,37,23" />
-      <scope id="7052698666283512296" at="40,0,41,0">
+      <node id="7052698666283512230" at="18,0,19,0" concept="5" trace="myMPSProject" />
+      <node id="7052698666283512234" at="19,0,20,0" concept="5" trace="myQuery" />
+      <node id="7052698666283512238" at="20,0,21,0" concept="5" trace="myFinders" />
+      <node id="7052698666283512243" at="21,0,22,0" concept="5" trace="myCancelled" />
+      <node id="7052698666283559797" at="23,148,24,90" concept="14" />
+      <node id="7052698666283512264" at="24,90,25,27" concept="4" />
+      <node id="7052698666283512268" at="25,27,26,20" concept="4" />
+      <node id="7052698666283512272" at="26,20,27,24" concept="4" />
+      <node id="7052698666283512284" at="31,26,32,23" concept="4" />
+      <node id="7052698666283512292" at="35,32,36,23" concept="10" />
+      <node id="7052698666283512296" at="39,0,40,0" concept="8" trace="onUsageFound#(Ljetbrains/mps/ide/findusages/model/SearchResult;)V" />
+      <node id="7052698666283512335" at="48,69,49,59" concept="4" />
+      <node id="8398700892537573145" at="54,39,55,55" concept="10" />
+      <node id="7052698666283512343" at="57,10,58,98" concept="4" />
+      <node id="7052698666283512290" at="35,0,38,0" concept="8" trace="isCancelled#()Z" />
+      <node id="7052698666283512281" at="30,0,34,0" concept="8" trace="onCancel#()V" />
+      <node id="7052698666283512328" at="47,0,51,0" concept="8" trace="onUsageFound#(Ljetbrains/mps/ide/findusages/model/SearchResult;)V" />
+      <node id="8398700892537573137" at="53,0,57,0" concept="8" trace="isCanceled#()Z" />
+      <node id="7052698666283512248" at="23,0,29,0" concept="3" trace="BackgroundSearchTask#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/ide/findusages/model/SearchQuery;Ljava/util/List;Ljava/lang/String;)V" />
+      <node id="7052698666283512323" at="45,25,51,10" concept="9" />
+      <node id="8398700892537568540" at="51,10,57,10" concept="9" />
+      <node id="7052698666283512319" at="44,0,60,0" concept="8" trace="run#()V" />
+      <node id="7052698666283512310" at="42,63,60,7" concept="4" />
+      <node id="7052698666283512304" at="41,0,62,0" concept="8" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
+      <scope id="7052698666283512283" at="31,26,32,23" />
+      <scope id="7052698666283512291" at="35,32,36,23" />
+      <scope id="7052698666283512296" at="39,0,40,0">
         <var name="result" id="7052698666283512297" />
       </scope>
-      <scope id="7052698666283512334" at="49,69,50,59" />
-      <scope id="8398700892537573142" at="55,39,56,55" />
-      <scope id="7052698666283512290" at="36,0,39,0" />
-      <scope id="7052698666283512263" at="24,147,28,24" />
-      <scope id="7052698666283512281" at="31,0,35,0" />
-      <scope id="7052698666283512328" at="48,0,52,0">
+      <scope id="7052698666283512334" at="48,69,49,59" />
+      <scope id="8398700892537573142" at="54,39,55,55" />
+      <scope id="7052698666283512290" at="35,0,38,0" />
+      <scope id="7052698666283512263" at="23,148,27,24" />
+      <scope id="7052698666283512281" at="30,0,34,0" />
+      <scope id="7052698666283512328" at="47,0,51,0">
         <var name="result" id="7052698666283512330" />
       </scope>
-      <scope id="8398700892537573137" at="54,0,58,0" />
-      <scope id="7052698666283512248" at="24,0,30,0">
+      <scope id="8398700892537573137" at="53,0,57,0" />
+      <scope id="7052698666283512248" at="23,0,29,0">
         <var name="finders" id="7052698666283512256" />
         <var name="project" id="7052698666283512250" />
         <var name="query" id="7052698666283512253" />
         <var name="title" id="7052698666283512260" />
       </scope>
-      <scope id="7052698666283512321" at="46,25,59,98">
+      <scope id="7052698666283512321" at="45,25,58,98">
         <var name="callback" id="7052698666283512322" />
         <var name="monitor" id="8398700892537568541" />
       </scope>
-      <scope id="7052698666283512319" at="45,0,61,0" />
-      <scope id="7052698666283512309" at="43,63,61,7" />
-      <scope id="7052698666283512304" at="42,0,63,0">
+      <scope id="7052698666283512319" at="44,0,60,0" />
+      <scope id="7052698666283512309" at="42,63,60,7" />
+      <scope id="7052698666283512304" at="41,0,62,0">
         <var name="indicator" id="7052698666283512306" />
       </scope>
-      <unit id="7052698666283512327" at="47,44,52,9" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask$1$1" />
-      <unit id="8398700892537571892" at="53,45,58,9" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask$1$2" />
-      <unit id="7052698666283512318" at="44,68,61,5" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask$1" />
-      <unit id="7052698666283512227" at="18,0,64,0" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask" />
+      <unit id="7052698666283512327" at="46,44,51,9" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask$1$1" />
+      <unit id="8398700892537571892" at="52,45,57,9" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask$1$2" />
+      <unit id="7052698666283512318" at="43,68,60,5" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask$1" />
+      <unit id="7052698666283512227" at="17,0,63,0" name="jetbrains.mps.ide.editor.util.BackgroundSearchTask" />
     </file>
   </root>
   <root nodeRef="r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/7177783642780901061">

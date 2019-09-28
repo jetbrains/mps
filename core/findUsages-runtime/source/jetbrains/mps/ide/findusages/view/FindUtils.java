@@ -16,7 +16,6 @@
 package jetbrains.mps.ide.findusages.view;
 
 import jetbrains.mps.ide.findusages.FindersManager;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder.FindCallback;
@@ -126,7 +125,7 @@ public class FindUtils {
    * @param finderIdentity at the moment, we use finder implementation class fqn to identify it
    */
   public static IResultProvider makeProvider(@NotNull String... finderIdentity) {
-    ArrayList<Finder> finders = new ArrayList<>(finderIdentity.length);
+    ArrayList<IFinder> finders = new ArrayList<>(finderIdentity.length);
     for (String fi : finderIdentity) {
       IInterfacedFinder f = FindersManager.getInstance().getFinder(fi);
       if (f != null) {

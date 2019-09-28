@@ -6,22 +6,21 @@ import com.intellij.openapi.progress.Task;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import java.util.List;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.Finder;
+import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import com.intellij.openapi.progress.ProgressIndicator;
-import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 
 public abstract class BackgroundSearchTask extends Task.Backgroundable {
   private final MPSProject myMPSProject;
   private final SearchQuery myQuery;
-  private final List<Finder> myFinders;
+  private final List<IFinder> myFinders;
   private volatile boolean myCancelled = false;
 
-  /*package*/ BackgroundSearchTask(@NotNull MPSProject project, @NotNull SearchQuery query, @NotNull List<Finder> finders, @NotNull String title) {
+  /*package*/ BackgroundSearchTask(@NotNull MPSProject project, @NotNull SearchQuery query, @NotNull List<IFinder> finders, @NotNull String title) {
     super(project.getProject(), title, true, PerformInBackgroundOption.ALWAYS_BACKGROUND);
     myMPSProject = project;
     myQuery = query;
