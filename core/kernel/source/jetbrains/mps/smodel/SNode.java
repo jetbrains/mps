@@ -622,8 +622,6 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   public void setProperty(@NotNull final SProperty property, String propertyValue) {
     assertCanChange();
 
-    propertyValue = InternUtil.intern(propertyValue);
-
     int index = getPropertyIndex(property);
     final String oldValue = index == -1 ? null : (String) myProperties[index + 1];
     if (EqualUtil.equals(oldValue, propertyValue)) return;
