@@ -22,7 +22,7 @@
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
         <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
-      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
@@ -106,8 +106,8 @@
     <property role="TrG5h" value="NodeFactories" />
     <property role="34LRSv" value="Node Factories" />
     <property role="EcuMT" value="1158700664498" />
-    <node concept="PrWs8" id="h4SionT" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="6TyNL3imAnI" role="PzmwI">
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
     </node>
     <node concept="PrWs8" id="4$$3zrO4dgh" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
@@ -170,8 +170,8 @@
     <property role="34LRSv" value="Paste Wrappers" />
     <property role="EcuMT" value="1221135252814" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="PrWs8" id="hLhlxdW" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="6TyNL3imAnM" role="PzmwI">
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
     </node>
     <node concept="PrWs8" id="4$$3zrO4doT" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
@@ -351,8 +351,8 @@
       <property role="IQ2ns" value="5948027493682790175" />
       <ref role="20lvS9" node="5abCRRjch_6" resolve="CopyPreProcessor" />
     </node>
-    <node concept="PrWs8" id="5abCRRje3U3" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="6TyNL3imAnB" role="PzmwI">
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
     </node>
     <node concept="PrWs8" id="5abCRRje3VD" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />

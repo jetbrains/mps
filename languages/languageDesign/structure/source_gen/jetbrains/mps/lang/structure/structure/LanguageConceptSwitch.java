@@ -31,17 +31,18 @@ public final class LanguageConceptSwitch {
   public static final int ExperimentalAPINodeAttribute = 19;
   public static final int IConceptAspect = 20;
   public static final int IEnumeration = 21;
-  public static final int ILanguageElement = 22;
-  public static final int INamedLanguageElement = 23;
+  public static final int INamedAspect = 22;
+  public static final int INamedStructureElement = 23;
   public static final int IStructureDeprecatable = 24;
-  public static final int InterfaceConceptDeclaration = 25;
-  public static final int InterfaceConceptReference = 26;
-  public static final int LinkDeclaration = 27;
-  public static final int PrimitiveDataTypeDeclaration = 28;
-  public static final int PropertyDeclaration = 29;
-  public static final int RefPresentationTemplate = 30;
-  public static final int ReferenceLinkDeclartionScopeKind = 31;
-  public static final int SmartReferenceAttribute = 32;
+  public static final int IStructureElement = 25;
+  public static final int InterfaceConceptDeclaration = 26;
+  public static final int InterfaceConceptReference = 27;
+  public static final int LinkDeclaration = 28;
+  public static final int PrimitiveDataTypeDeclaration = 29;
+  public static final int PropertyDeclaration = 30;
+  public static final int RefPresentationTemplate = 31;
+  public static final int ReferenceLinkDeclartionScopeKind = 32;
+  public static final int SmartReferenceAttribute = 33;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc72da2b97cce4447L, 0x8389f407dc1158b7L);
@@ -67,9 +68,10 @@ public final class LanguageConceptSwitch {
     builder.put(0x5cd3594638ad845L, ExperimentalAPINodeAttribute);
     builder.put(0x24614259e94f0c84L, IConceptAspect);
     builder.put(0xeeb344f64a629e5L, IEnumeration);
-    builder.put(0x160b046db90b56deL, ILanguageElement);
-    builder.put(0x160b046db90a2b95L, INamedLanguageElement);
+    builder.put(0x6e62cf10d25a65e0L, INamedAspect);
+    builder.put(0x160b046db90a2b95L, INamedStructureElement);
     builder.put(0x11d2ea63881L, IStructureDeprecatable);
+    builder.put(0x160b046db90b56deL, IStructureElement);
     builder.put(0x1103556dcafL, InterfaceConceptDeclaration);
     builder.put(0x110356fc618L, InterfaceConceptReference);
     builder.put(0xf979bd086aL, LinkDeclaration);

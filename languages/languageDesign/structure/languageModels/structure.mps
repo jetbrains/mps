@@ -21,7 +21,7 @@
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
         <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
-      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
@@ -175,7 +175,7 @@
       <ref role="PrY4T" node="hOIDzy1" resolve="IStructureDeprecatable" />
     </node>
     <node concept="PrWs8" id="1ob16QT5sy7" role="PzmwI">
-      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedStructureElement" />
     </node>
     <node concept="PrWs8" id="6OtXG9KbAAy" role="PzmwI">
       <ref role="PrY4T" node="6OtXG9K2KUI" resolve="DocumentationObjective" />
@@ -199,7 +199,7 @@
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
     <node concept="PrWs8" id="1ob16QT4XKh" role="PzmwI">
-      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedStructureElement" />
     </node>
     <node concept="PrWs8" id="hOIDY1x" role="PzmwI">
       <ref role="PrY4T" node="hOIDzy1" resolve="IStructureDeprecatable" />
@@ -232,7 +232,7 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="PrWs8" id="1ob16QT37Kd" role="PzmwI">
-      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedStructureElement" />
     </node>
     <node concept="PrWs8" id="5GuVNMLxi4Q" role="PzmwI">
       <ref role="PrY4T" node="hOIDzy1" resolve="IStructureDeprecatable" />
@@ -350,7 +350,7 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="PrWs8" id="1ob16QT3ibT" role="PzmwI">
-      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedStructureElement" />
     </node>
     <node concept="PrWs8" id="50$LP2ztBbO" role="PzmwI">
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
@@ -663,9 +663,6 @@
       <property role="IQ2ns" value="1083172003582" />
       <ref role="20lvS9" node="fKM4N6M" resolve="EnumerationMemberDeclaration_Old" />
     </node>
-    <node concept="PrWs8" id="yuXZmMPAu4" role="PzmwI">
-      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
-    </node>
     <node concept="PrWs8" id="VFd4X$DAKZ" role="PzmwI">
       <ref role="PrY4T" node="VFd4X$DyB_" resolve="IEnumeration" />
     </node>
@@ -767,7 +764,7 @@
     <property role="34LRSv" value="member" />
     <property role="R5$K2" value="true" />
     <node concept="PrWs8" id="1ob16QT3iN4" role="PzmwI">
-      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedLanguageElement" />
+      <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedStructureElement" />
     </node>
     <node concept="1TJgyi" id="_jzzDSlxy8" role="1TKVEl">
       <property role="IQ2nx" value="672037151186491528" />
@@ -803,17 +800,17 @@
   </node>
   <node concept="PlHQZ" id="1ob16QT2yIl">
     <property role="EcuMT" value="1588368162880629653" />
-    <property role="TrG5h" value="INamedLanguageElement" />
+    <property role="TrG5h" value="INamedStructureElement" />
     <node concept="PrWs8" id="1ob16QT2yIm" role="PrDN$">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="PrWs8" id="1ob16QT2Prz" role="PrDN$">
-      <ref role="PrY4T" node="1ob16QT2Pru" resolve="ILanguageElement" />
+      <ref role="PrY4T" node="1ob16QT2Pru" resolve="IStructureElement" />
     </node>
   </node>
   <node concept="PlHQZ" id="1ob16QT2Pru">
     <property role="EcuMT" value="1588368162880706270" />
-    <property role="TrG5h" value="ILanguageElement" />
+    <property role="TrG5h" value="IStructureElement" />
   </node>
   <node concept="1TIwiD" id="1ob16QTis9A">
     <property role="EcuMT" value="1588368162884797030" />
@@ -1266,6 +1263,16 @@
     </node>
     <node concept="t5JxF" id="6WJr2NngPmT" role="lGtFl">
       <property role="t5JxN" value="Use this attribtue with those concept declarations which offer some non-stable or early-access functionality" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="6TyNL3imAnw">
+    <property role="EcuMT" value="7954147563045283296" />
+    <property role="TrG5h" value="INamedAspect" />
+    <node concept="PrWs8" id="6TyNL3imAB9" role="PrDN$">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="t5JxF" id="6TyNL3imB7E" role="lGtFl">
+      <property role="t5JxN" value="defines a naming policy that all language aspects are recommended to use. May include spaces and other symbols in future. A correct way to generate a unique valid class name from it is now genContext.name from (this.getValidClassName()). It's better to create a generator language feature for that." />
     </node>
   </node>
 </model>

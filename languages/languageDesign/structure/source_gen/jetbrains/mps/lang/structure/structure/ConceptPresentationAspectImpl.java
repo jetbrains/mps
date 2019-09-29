@@ -31,9 +31,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ExperimentalAPINodeAttribute;
   private ConceptPresentation props_IConceptAspect;
   private ConceptPresentation props_IEnumeration;
-  private ConceptPresentation props_ILanguageElement;
-  private ConceptPresentation props_INamedLanguageElement;
+  private ConceptPresentation props_INamedAspect;
+  private ConceptPresentation props_INamedStructureElement;
   private ConceptPresentation props_IStructureDeprecatable;
+  private ConceptPresentation props_IStructureElement;
   private ConceptPresentation props_InterfaceConceptDeclaration;
   private ConceptPresentation props_InterfaceConceptReference;
   private ConceptPresentation props_LinkDeclaration;
@@ -88,7 +89,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L);
           cpb.deprecateProperty(0x10e328118ddL, "iconPath");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a5b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a5b0jb);
           props_ConceptDeclaration = cpb.create();
         }
         return props_ConceptDeclaration;
@@ -96,7 +97,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ConstrainedDataTypeDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a6b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a6b0jb);
           props_ConstrainedDataTypeDeclaration = cpb.create();
         }
         return props_ConstrainedDataTypeDeclaration;
@@ -160,7 +161,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.deprecated(true);
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a51b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a51b0jb);
           props_EnumerationDataTypeDeclaration_Old = cpb.create();
         }
         return props_EnumerationDataTypeDeclaration_Old;
@@ -168,7 +169,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_EnumerationDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a61b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a61b0jb);
           props_EnumerationDeclaration = cpb.create();
         }
         return props_EnumerationDeclaration;
@@ -208,29 +209,35 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IEnumeration = cpb.create();
         }
         return props_IEnumeration;
-      case LanguageConceptSwitch.ILanguageElement:
-        if (props_ILanguageElement == null) {
+      case LanguageConceptSwitch.INamedAspect:
+        if (props_INamedAspect == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_ILanguageElement = cpb.create();
+          props_INamedAspect = cpb.create();
         }
-        return props_ILanguageElement;
-      case LanguageConceptSwitch.INamedLanguageElement:
-        if (props_INamedLanguageElement == null) {
+        return props_INamedAspect;
+      case LanguageConceptSwitch.INamedStructureElement:
+        if (props_INamedStructureElement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_INamedLanguageElement = cpb.create();
+          props_INamedStructureElement = cpb.create();
         }
-        return props_INamedLanguageElement;
+        return props_INamedStructureElement;
       case LanguageConceptSwitch.IStructureDeprecatable:
         if (props_IStructureDeprecatable == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_IStructureDeprecatable = cpb.create();
         }
         return props_IStructureDeprecatable;
+      case LanguageConceptSwitch.IStructureElement:
+        if (props_IStructureElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IStructureElement = cpb.create();
+        }
+        return props_IStructureElement;
       case LanguageConceptSwitch.InterfaceConceptDeclaration:
         if (props_InterfaceConceptDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a52b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a62b0jb);
           props_InterfaceConceptDeclaration = cpb.create();
         }
         return props_InterfaceConceptDeclaration;
@@ -245,7 +252,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_LinkDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a72b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a82b0jb);
           props_LinkDeclaration = cpb.create();
         }
         return props_LinkDeclaration;
@@ -253,7 +260,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PrimitiveDataTypeDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a82b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a92b0jb);
           props_PrimitiveDataTypeDeclaration = cpb.create();
         }
         return props_PrimitiveDataTypeDeclaration;
@@ -261,7 +268,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PropertyDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a92b0ib);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a03b0jb);
           props_PropertyDeclaration = cpb.create();
         }
         return props_PropertyDeclaration;

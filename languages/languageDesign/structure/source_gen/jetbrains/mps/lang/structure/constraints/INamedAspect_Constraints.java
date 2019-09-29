@@ -17,9 +17,9 @@ import java.util.regex.Pattern;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class INamedLanguageElement_Constraints extends BaseConstraintsDescriptor {
-  public INamedLanguageElement_Constraints() {
-    super(CONCEPTS.INamedLanguageElement$qQ);
+public class INamedAspect_Constraints extends BaseConstraintsDescriptor {
+  public INamedAspect_Constraints() {
+    super(CONCEPTS.INamedAspect$HH);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
@@ -30,7 +30,7 @@ public class INamedLanguageElement_Constraints extends BaseConstraintsDescriptor
     public boolean hasOwnValidator() {
       return true;
     }
-    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "1588368162880648188");
+    private static final SNodePointer validatePropertyBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "7954147563045284356");
     @Override
     public boolean validateValue(SNode node, Object propertyValue, CheckingNodeContext checkingNodeContext) {
       boolean result = staticValidateProperty(node, SPropertyOperations.castString(propertyValue));
@@ -40,7 +40,7 @@ public class INamedLanguageElement_Constraints extends BaseConstraintsDescriptor
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return REGEXP_v7wrhh_a0a0a4c.matcher(propertyValue).matches();
+      return REGEXP_3munj3_a0a0a4c.matcher(propertyValue).matches();
     }
   }
   @Override
@@ -49,10 +49,10 @@ public class INamedLanguageElement_Constraints extends BaseConstraintsDescriptor
     properties.put(PROPS.name$tAp1, new Name_Property(this));
     return properties;
   }
-  private static final Pattern REGEXP_v7wrhh_a0a0a4c = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
+  private static final Pattern REGEXP_3munj3_a0a0a4c = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedLanguageElement$qQ = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90a2b95L, "jetbrains.mps.lang.structure.structure.INamedLanguageElement");
+    /*package*/ static final SInterfaceConcept INamedAspect$HH = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L, "jetbrains.mps.lang.structure.structure.INamedAspect");
   }
 
   private static final class PROPS {

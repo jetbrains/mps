@@ -42,9 +42,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptExperimentalAPINodeAttribute = createDescriptorForExperimentalAPINodeAttribute();
   /*package*/ final ConceptDescriptor myConceptIConceptAspect = createDescriptorForIConceptAspect();
   /*package*/ final ConceptDescriptor myConceptIEnumeration = createDescriptorForIEnumeration();
-  /*package*/ final ConceptDescriptor myConceptILanguageElement = createDescriptorForILanguageElement();
-  /*package*/ final ConceptDescriptor myConceptINamedLanguageElement = createDescriptorForINamedLanguageElement();
+  /*package*/ final ConceptDescriptor myConceptINamedAspect = createDescriptorForINamedAspect();
+  /*package*/ final ConceptDescriptor myConceptINamedStructureElement = createDescriptorForINamedStructureElement();
   /*package*/ final ConceptDescriptor myConceptIStructureDeprecatable = createDescriptorForIStructureDeprecatable();
+  /*package*/ final ConceptDescriptor myConceptIStructureElement = createDescriptorForIStructureElement();
   /*package*/ final ConceptDescriptor myConceptInterfaceConceptDeclaration = createDescriptorForInterfaceConceptDeclaration();
   /*package*/ final ConceptDescriptor myConceptInterfaceConceptReference = createDescriptorForInterfaceConceptReference();
   /*package*/ final ConceptDescriptor myConceptLinkDeclaration = createDescriptorForLinkDeclaration();
@@ -78,7 +79,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclaration, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptILanguageElement, myConceptINamedLanguageElement, myConceptIStructureDeprecatable, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
+    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclaration, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptINamedAspect, myConceptINamedStructureElement, myConceptIStructureDeprecatable, myConceptIStructureElement, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
   }
 
   @Override
@@ -129,12 +130,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIConceptAspect;
       case LanguageConceptSwitch.IEnumeration:
         return myConceptIEnumeration;
-      case LanguageConceptSwitch.ILanguageElement:
-        return myConceptILanguageElement;
-      case LanguageConceptSwitch.INamedLanguageElement:
-        return myConceptINamedLanguageElement;
+      case LanguageConceptSwitch.INamedAspect:
+        return myConceptINamedAspect;
+      case LanguageConceptSwitch.INamedStructureElement:
+        return myConceptINamedStructureElement;
       case LanguageConceptSwitch.IStructureDeprecatable:
         return myConceptIStructureDeprecatable;
+      case LanguageConceptSwitch.IStructureElement:
+        return myConceptIStructureElement;
       case LanguageConceptSwitch.InterfaceConceptDeclaration:
         return myConceptInterfaceConceptDeclaration;
       case LanguageConceptSwitch.InterfaceConceptReference:
@@ -336,7 +339,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumerationDataTypeDeclaration_Old", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL);
     b.class_(false, false, true);
     b.super_("jetbrains.mps.lang.structure.structure.DataTypeDeclaration", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL);
-    b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a3afa8c0dL);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L);
     b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1082978164219");
     b.version(2);
@@ -413,15 +415,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForILanguageElement() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "ILanguageElement", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90b56deL);
+  private static ConceptDescriptor createDescriptorForINamedAspect() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "INamedAspect", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L);
     b.interface_();
-    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1588368162880706270");
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/7954147563045283296");
     b.version(2);
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForINamedLanguageElement() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "INamedLanguageElement", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90a2b95L);
+  private static ConceptDescriptor createDescriptorForINamedStructureElement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "INamedStructureElement", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90a2b95L);
     b.interface_();
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90b56deL);
@@ -434,6 +437,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL);
     b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1224848324737");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIStructureElement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "IStructureElement", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90b56deL);
+    b.interface_();
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/1588368162880706270");
     b.version(2);
     return b.create();
   }

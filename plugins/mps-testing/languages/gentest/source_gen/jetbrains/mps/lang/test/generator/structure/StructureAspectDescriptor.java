@@ -82,7 +82,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForGeneratorTest() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.test.generator", "GeneratorTest", 0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL);
     b.class_(false, false, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L);
     b.origin("r:fc8379f0-84d2-4927-817e-ae0057474174(jetbrains.mps.lang.test.generator.structure)/554465258093187774");
     b.version(2);
     b.property("description", 0x7b1db36ecf09c64L).type(PrimitiveTypeId.STRING).origin("554465258093190244").done();

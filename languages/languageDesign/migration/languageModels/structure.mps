@@ -420,8 +420,8 @@
       <property role="IQ2ns" value="7431903976166447091" />
       <ref role="20lvS9" node="2pO6eqPKF$2" resolve="PureMigrationPart" />
     </node>
-    <node concept="PrWs8" id="4uVwhQyPPvQ" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    <node concept="PrWs8" id="6TyNL3imAnV" role="PzmwI">
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
     </node>
     <node concept="PrWs8" id="4uVwhQyFcjr" role="PzmwI">
       <ref role="PrY4T" node="4uVwhQyFcjm" resolve="IMigrationUnit" />

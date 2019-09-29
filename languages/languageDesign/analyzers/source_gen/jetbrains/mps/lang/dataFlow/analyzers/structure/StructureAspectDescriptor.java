@@ -173,7 +173,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForAnalyzer() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow.analyzers", "Analyzer", 0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L);
     b.class_(false, false, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L);
     b.origin("r:8b09f5e2-b403-4747-aaa3-eac5acb1f753(jetbrains.mps.lang.dataFlow.analyzers.structure)/6618572076229093257");
     b.version(2);
     b.aggregate("initialFunction", 0x41dd50940e1dd4ddL).target(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4c8L).optional(false).ordered(true).multiple(false).origin("4746038179140588765").done();
@@ -493,7 +493,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForRule() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow.analyzers", "Rule", 0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L);
     b.class_(false, false, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L);
     b.origin("r:8b09f5e2-b403-4747-aaa3-eac5acb1f753(jetbrains.mps.lang.dataFlow.analyzers.structure)/430844094082168520");
     b.version(2);
     b.associate("analyzer", 0x3952cf7bd76e6440L).target(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L).optional(false).origin("4130591939054429248").done();

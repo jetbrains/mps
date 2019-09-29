@@ -6186,5 +6186,40 @@
       </node>
     </node>
   </node>
+  <node concept="13h7C7" id="6TyNL3imBqq">
+    <ref role="13h7C2" to="tpce:6TyNL3imAnw" resolve="INamedAspect" />
+    <node concept="13i0hz" id="6TyNL3imBq_" role="13h7CS">
+      <property role="13i0it" value="true" />
+      <property role="TrG5h" value="getValidClassName" />
+      <node concept="3Tm1VV" id="6TyNL3imBqA" role="1B3o_S" />
+      <node concept="3uibUv" id="6TyNL3imBtd" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="6TyNL3imBqC" role="3clF47">
+        <node concept="3clFbF" id="6TyNL3imXzs" role="3cqZAp">
+          <node concept="2YIFZM" id="6TyNL3imX$7" role="3clFbG">
+            <ref role="37wK5l" to="18ew:~NameUtil.toValidCamelIdentifier(java.lang.String)" resolve="toValidCamelIdentifier" />
+            <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+            <node concept="2OqwBi" id="6TyNL3imXIi" role="37wK5m">
+              <node concept="13iPFW" id="6TyNL3imX$q" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6TyNL3imXQr" role="2OqNvi">
+                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="6TyNL3inafR" role="lGtFl">
+        <node concept="TZ5HA" id="6TyNL3inafS" role="TZ5H$">
+          <node concept="1dT_AC" id="6TyNL3inafT" role="1dT_Ay">
+            <property role="1dT_AB" value="To make it unique, use genContext.name from" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="13hLZK" id="6TyNL3imBqr" role="13h7CW">
+      <node concept="3clFbS" id="6TyNL3imBqs" role="2VODD2" />
+    </node>
+  </node>
 </model>
 

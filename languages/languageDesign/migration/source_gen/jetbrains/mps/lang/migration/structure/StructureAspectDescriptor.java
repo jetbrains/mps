@@ -466,7 +466,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPureMigrationScript() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.migration", "PureMigrationScript", 0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL);
     b.class_(false, false, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L);
     b.parent(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x47bb811da2acc4d6L);
     b.origin("r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)/7431903976166443707");
     b.version(2);
