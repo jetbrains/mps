@@ -26,6 +26,9 @@ public class check_ClassifierDocReference_NonTypesystemRule extends AbstractNonT
   }
   public void applyRule(final SNode classifierDocReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode clazz = SLinkOperations.getTarget(classifierDocReference, LINKS.classifier$Qcaw);
+    if ((clazz == null)) {
+      return;
+    }
     if (!(VisibilityUtil.isVisible(classifierDocReference, SNodeOperations.as(clazz, CONCEPTS.IVisible$6G)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();

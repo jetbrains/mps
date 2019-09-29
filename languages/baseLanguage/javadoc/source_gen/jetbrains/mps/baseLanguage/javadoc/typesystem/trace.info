@@ -192,49 +192,52 @@
     </file>
     <file name="check_ClassifierDocReference_NonTypesystemRule.java">
       <node id="1370556966538863869" at="27,135,28,91" concept="5" />
-      <node id="1370556966538863877" at="30,7,31,66" concept="5" />
-      <node id="1370556966538863877" at="31,66,32,331" concept="5" />
-      <node id="1370556966538863778" at="36,50,37,46" concept="6" />
-      <node id="1370556966538863778" at="39,68,40,102" concept="6" />
-      <node id="1370556966538863778" at="42,30,43,17" concept="6" />
-      <node id="1370556966538863778" at="47,0,48,0" concept="7" trace="classifier$Qcaw" />
-      <node id="1370556966538863778" at="51,0,52,0" concept="7" trace="name$tAp1" />
-      <node id="1370556966538863778" at="55,0,56,0" concept="7" trace="IVisible$6G" />
-      <node id="1370556966538863778" at="56,0,57,0" concept="7" trace="ClassifierDocReference$Mb" />
+      <node id="8568892084424720959" at="29,26,30,13" concept="6" />
+      <node id="1370556966538863877" at="33,7,34,66" concept="5" />
+      <node id="1370556966538863877" at="34,66,35,331" concept="5" />
+      <node id="1370556966538863778" at="39,50,40,46" concept="6" />
+      <node id="1370556966538863778" at="42,68,43,102" concept="6" />
+      <node id="1370556966538863778" at="45,30,46,17" concept="6" />
+      <node id="1370556966538863778" at="50,0,51,0" concept="7" trace="classifier$Qcaw" />
+      <node id="1370556966538863778" at="54,0,55,0" concept="7" trace="name$tAp1" />
+      <node id="1370556966538863778" at="58,0,59,0" concept="7" trace="IVisible$6G" />
+      <node id="1370556966538863778" at="59,0,60,0" concept="7" trace="ClassifierDocReference$Mb" />
       <node id="1370556966538863778" at="25,0,27,0" concept="1" trace="check_ClassifierDocReference_NonTypesystemRule#()V" />
-      <node id="1370556966538863778" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1370556966538863778" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="1370556966538863778" at="42,0,45,0" concept="4" trace="overrides#()Z" />
-      <node id="1370556966538863877" at="29,111,33,7" concept="0" />
-      <node id="1370556966538863875" at="28,91,34,5" concept="3" />
-      <node id="1370556966538863778" at="27,0,36,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="8568892084424717527" at="28,91,31,5" concept="3" />
+      <node id="1370556966538863778" at="39,0,42,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1370556966538863778" at="42,0,45,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1370556966538863778" at="45,0,48,0" concept="4" trace="overrides#()Z" />
+      <node id="1370556966538863877" at="32,111,36,7" concept="0" />
+      <node id="1370556966538863875" at="31,5,37,5" concept="3" />
+      <node id="1370556966538863778" at="27,0,39,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="1370556966538863778" at="25,59,25,59" />
-      <scope id="1370556966538863778" at="36,50,37,46" />
-      <scope id="1370556966538863778" at="39,68,40,102" />
-      <scope id="1370556966538863778" at="42,30,43,17" />
+      <scope id="8568892084424717529" at="29,26,30,13" />
+      <scope id="1370556966538863778" at="39,50,40,46" />
+      <scope id="1370556966538863778" at="42,68,43,102" />
+      <scope id="1370556966538863778" at="45,30,46,17" />
       <scope id="1370556966538863778" at="25,0,27,0" />
-      <scope id="1370556966538863877" at="30,7,32,331">
+      <scope id="1370556966538863877" at="33,7,35,331">
         <var name="_reporter_2309309498" id="1370556966538863877" />
         <var name="errorTarget" id="1370556966538863877" />
       </scope>
-      <scope id="1370556966538863778" at="36,0,39,0" />
-      <scope id="1370556966538863778" at="39,0,42,0">
+      <scope id="1370556966538863778" at="39,0,42,0" />
+      <scope id="1370556966538863778" at="42,0,45,0">
         <var name="argument" id="1370556966538863778" />
       </scope>
-      <scope id="1370556966538863778" at="42,0,45,0" />
-      <scope id="1370556966538863876" at="29,111,33,7" />
-      <scope id="1370556966538863779" at="27,135,34,5">
+      <scope id="1370556966538863778" at="45,0,48,0" />
+      <scope id="1370556966538863876" at="32,111,36,7" />
+      <scope id="1370556966538863779" at="27,135,37,5">
         <var name="clazz" id="1370556966538863870" />
       </scope>
-      <scope id="1370556966538863778" at="27,0,36,0">
+      <scope id="1370556966538863778" at="27,0,39,0">
         <var name="classifierDocReference" id="1370556966538863778" />
         <var name="status" id="1370556966538863778" />
         <var name="typeCheckingContext" id="1370556966538863778" />
       </scope>
-      <unit id="1370556966538863778" at="46,0,49,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule$LINKS" />
-      <unit id="1370556966538863778" at="50,0,53,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule$PROPS" />
-      <unit id="1370556966538863778" at="54,0,58,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule$CONCEPTS" />
-      <unit id="1370556966538863778" at="24,0,59,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule" />
+      <unit id="1370556966538863778" at="49,0,52,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule$LINKS" />
+      <unit id="1370556966538863778" at="53,0,56,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule$PROPS" />
+      <unit id="1370556966538863778" at="57,0,61,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule$CONCEPTS" />
+      <unit id="1370556966538863778" at="24,0,62,0" name="jetbrains.mps.baseLanguage.javadoc.typesystem.check_ClassifierDocReference_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)/174203568773653589">
