@@ -25173,21 +25173,35 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="tb2bf9p1og" role="3cqZAp">
-          <node concept="1rXfSq" id="tb2bf9p1oh" role="3clFbG">
-            <ref role="37wK5l" node="1jKozQGDdTp" resolve="tryResolveRefs" />
-            <node concept="37vLTw" id="tb2bf9p1oi" role="37wK5m">
-              <ref role="3cqZAo" node="4Mnw6pL$EtT" resolve="myAttachedRoots" />
-            </node>
-            <node concept="Rm8GO" id="tb2bf9p1oj" role="37wK5m">
-              <ref role="Rm8GQ" node="4TtYrYGuWz5" resolve="CLASS" />
-              <ref role="1Px2BO" node="4TtYrYGuU_3" resolve="FeatureKind" />
-            </node>
-            <node concept="37vLTw" id="tb2bf9p1ok" role="37wK5m">
-              <ref role="3cqZAo" node="2Uk7YSyNAxX" resolve="resolveProgress" />
-            </node>
-            <node concept="37vLTw" id="FOYqCnu7pJ" role="37wK5m">
+        <node concept="3clFbF" id="6eUnLgLZ$4j" role="3cqZAp">
+          <node concept="2OqwBi" id="6eUnLgLZAgn" role="3clFbG">
+            <node concept="37vLTw" id="6eUnLgLZ$4h" role="2Oq$k0">
               <ref role="3cqZAo" node="FOYqCnpKyb" resolve="modelAccess" />
+            </node>
+            <node concept="liA8E" id="6eUnLgLZCzI" role="2OqNvi">
+              <ref role="37wK5l" node="FOYqCnnT8n" resolve="replaceReferences" />
+              <node concept="1bVj0M" id="6eUnLgLZHsu" role="37wK5m">
+                <node concept="3clFbS" id="6eUnLgLZHsv" role="1bW5cS">
+                  <node concept="3clFbF" id="tb2bf9p1og" role="3cqZAp">
+                    <node concept="1rXfSq" id="tb2bf9p1oh" role="3clFbG">
+                      <ref role="37wK5l" node="1jKozQGDdTp" resolve="tryResolveRefs" />
+                      <node concept="37vLTw" id="tb2bf9p1oi" role="37wK5m">
+                        <ref role="3cqZAo" node="4Mnw6pL$EtT" resolve="myAttachedRoots" />
+                      </node>
+                      <node concept="Rm8GO" id="tb2bf9p1oj" role="37wK5m">
+                        <ref role="1Px2BO" node="4TtYrYGuU_3" resolve="FeatureKind" />
+                        <ref role="Rm8GQ" node="4TtYrYGuWz5" resolve="CLASS" />
+                      </node>
+                      <node concept="37vLTw" id="tb2bf9p1ok" role="37wK5m">
+                        <ref role="3cqZAo" node="2Uk7YSyNAxX" resolve="resolveProgress" />
+                      </node>
+                      <node concept="37vLTw" id="FOYqCnu7pJ" role="37wK5m">
+                        <ref role="3cqZAo" node="FOYqCnpKyb" resolve="modelAccess" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>

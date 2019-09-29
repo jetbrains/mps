@@ -30,6 +30,7 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -212,18 +213,18 @@ public class JavaToMpsConverter {
       }
     });
 
-    IncrementalModelAccess modelAccess;
+    final Wrappers._T<IncrementalModelAccess> modelAccess = new Wrappers._T<IncrementalModelAccess>();
     if (myModelAccess.isCommandAction()) {
-      modelAccess = IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE;
+      modelAccess.value = IncrementalModelAccess.INSIDE_COMMAND_OR_UPDATE_MODE;
     } else if (myModel != null) {
       // import into single already existing model; use proper command for replacing nodes 
-      modelAccess = new IncrementalModelAccessWithCommand(myModelAccess, myModels, myMessageHandler);
+      modelAccess.value = new IncrementalModelAccessWithCommand(myModelAccess, myModels, myMessageHandler);
     } else {
-      modelAccess = new IncrementalModelAccessWithoutCommand(myModelAccess, myModels, myMessageHandler);
+      modelAccess.value = new IncrementalModelAccessWithoutCommand(myModelAccess, myModels, myMessageHandler);
     }
 
     // actually attach roots 
-    modelAccess.replaceNodes(new Runnable() {
+    modelAccess.value.replaceNodes(new Runnable() {
       public void run() {
         ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
           public void visit(SModel it) {
@@ -244,8 +245,12 @@ public class JavaToMpsConverter {
 
     myRootCount = myAttachedRoots.size();
 
-    ProgressMonitor resolveProgress = progress.subTask(30);
-    tryResolveRefs(myAttachedRoots, FeatureKind.CLASS, resolveProgress, modelAccess);
+    final ProgressMonitor resolveProgress = progress.subTask(30);
+    modelAccess.value.replaceReferences(new Runnable() {
+      public void run() {
+        tryResolveRefs(myAttachedRoots, FeatureKind.CLASS, resolveProgress, modelAccess.value);
+      }
+    });
 
     progress.done();
   }
