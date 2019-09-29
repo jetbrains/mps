@@ -10,7 +10,7 @@
     </file>
   </root>
   <root nodeRef="r:aeb1fd1a-9257-4e9f-be62-5ac0e9946487(jetbrains.mps.lang.feedback.problem.structural.actions)/7716791493892398446">
-    <file name="DefaultNodeFactory.java">
+    <file name="Default.java">
       <node id="7716791493892398464" at="17,91,18,199" concept="0" />
       <node id="693143365153573630" at="18,199,19,56" concept="2" />
       <node id="693143365153573636" at="19,56,20,176" concept="0" />
@@ -40,10 +40,10 @@
         <var name="newNode" id="2554379189374330335" />
         <var name="sampleNode" id="2554379189374330335" />
       </scope>
-      <unit id="7716791493892398446" at="33,0,36,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.DefaultNodeFactory$LINKS" />
-      <unit id="7716791493892398447" at="16,0,24,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.DefaultNodeFactory$NodeFactory_7716791493892398447" />
-      <unit id="2554379189374330335" at="24,0,32,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.DefaultNodeFactory$NodeFactory_2554379189374330335" />
-      <unit id="7716791493892398446" at="15,0,37,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.DefaultNodeFactory" />
+      <unit id="7716791493892398446" at="33,0,36,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.Default$LINKS" />
+      <unit id="7716791493892398447" at="16,0,24,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.Default$NodeFactory_7716791493892398447" />
+      <unit id="2554379189374330335" at="24,0,32,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.Default$NodeFactory_2554379189374330335" />
+      <unit id="7716791493892398446" at="15,0,37,0" name="jetbrains.mps.lang.feedback.problem.structural.actions.Default" />
     </file>
   </root>
 </debug-info>

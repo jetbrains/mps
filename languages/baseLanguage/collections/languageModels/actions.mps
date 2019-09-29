@@ -3963,6 +3963,7 @@
   </node>
   <node concept="37WguZ" id="7wz7QM0QeuL">
     <property role="3GE5qa" value="foreach" />
+    <property role="TrG5h" value="Default" />
     <node concept="37WvkG" id="7wz7QM0Q_UJ" role="37WGs$">
       <ref role="37XkoT" to="tp2q:7PXIfgo7YBM" resolve="MultiForEachStatement" />
       <node concept="37Y9Zx" id="7wz7QM0Q_UK" role="37ZfLb">

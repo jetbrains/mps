@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public class DefaultNodeFactory {
+public class Default {
   public static class NodeFactory_8018723092206046483 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SLinkOperations.setTarget(newNode, LINKS.context$Oi3m, SNodeFactoryOperations.createNewNode(CONCEPTS.Context$J, null));

@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class DefaultNodeFactory {
+public class Default {
   public static class NodeFactory_5258059200644005943 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.MacroMessageExpression$LH)) {

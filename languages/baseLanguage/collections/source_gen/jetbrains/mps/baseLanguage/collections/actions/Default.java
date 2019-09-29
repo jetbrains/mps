@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class DefaultNodeFactory {
+public class Default {
   public static class NodeFactory_8656797459614949039 implements NodeFactory {
     public void setup(final SNode newNode, final SNode sampleNode, SNode enclosingNode, SModel model) {
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.ForEachStatement$Dx)) {
@@ -35,12 +35,12 @@ public class DefaultNodeFactory {
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$_P5u)).first(), LINKS.variable$_Qfw)));
+            SNodeOperations.replaceWithAnother(it, createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.forEach$_P5u)).first(), LINKS.variable$_Qfw)));
           }
         });
       }
     }
-    private static SNode createMultiForEachVariableReference_a0a0a0a0f0a0a0(SNode node0) {
+    private static SNode createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MultiForEachVariableReference$PW);
       rootBuilder1.setReferenceTarget(LINKS.variable$ptyX, node0);
       return rootBuilder1.getResult();
@@ -59,12 +59,12 @@ public class DefaultNodeFactory {
           }
         }).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            SNodeOperations.replaceWithAnother(it, createForEachVariableReference_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$QE64)));
+            SNodeOperations.replaceWithAnother(it, createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SLinkOperations.getTarget(newNode, LINKS.variable$QE64)));
           }
         });
       }
     }
-    private static SNode createForEachVariableReference_a0a0a0a0e0a0a1(SNode node0) {
+    private static SNode createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SNode node0) {
       SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ForEachVariableReference$q$);
       rootBuilder1.setReferenceTarget(LINKS.variable$ue0d, node0);
       return rootBuilder1.getResult();

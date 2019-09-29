@@ -48,7 +48,7 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
         case 14:
           return Collections.<NodeFactory>singletonList(new closure_operations.NodeFactory_1522217801069421974());
         case 15:
-          return Collections.<NodeFactory>singletonList(new DefaultNodeFactory.NodeFactory_8656797459614853042());
+          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_8656797459614853042());
         case 16:
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862116());
         case 17:
@@ -70,7 +70,7 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
         case 25:
           return Collections.<NodeFactory>singletonList(new replace_sequence_type.NodeFactory_7246115176735618985());
         case 26:
-          return Collections.<NodeFactory>singletonList(new DefaultNodeFactory.NodeFactory_8656797459614949039());
+          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_8656797459614949039());
         case 27:
           return Collections.<NodeFactory>singletonList(new single_argument_operations.NodeFactory_7212626807240862122());
         case 28:

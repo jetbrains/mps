@@ -10,7 +10,7 @@
     </file>
   </root>
   <root nodeRef="r:ce8f16f4-24c5-47e8-b357-561bf11455c0(jetbrains.mps.lang.feedback.problem.scopes.actions)/1592627013225788521">
-    <file name="DefaultNodeFactory.java">
+    <file name="Default.java">
       <node id="7716791493892398464" at="17,91,18,193" concept="0" />
       <node id="1054866243096622789" at="18,193,19,56" concept="2" />
       <node id="1054866243096648198" at="19,56,20,172" concept="0" />
@@ -26,9 +26,9 @@
         <var name="newNode" id="1592627013225788522" />
         <var name="sampleNode" id="1592627013225788522" />
       </scope>
-      <unit id="1592627013225788521" at="25,0,28,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory$LINKS" />
-      <unit id="1592627013225788522" at="16,0,24,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory$NodeFactory_1592627013225788522" />
-      <unit id="1592627013225788521" at="15,0,29,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.DefaultNodeFactory" />
+      <unit id="1592627013225788521" at="25,0,28,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.Default$LINKS" />
+      <unit id="1592627013225788522" at="16,0,24,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.Default$NodeFactory_1592627013225788522" />
+      <unit id="1592627013225788521" at="15,0,29,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.Default" />
     </file>
   </root>
 </debug-info>

@@ -101,6 +101,7 @@
     </language>
   </registry>
   <node concept="37WguZ" id="1oq9tin0VhD">
+    <property role="TrG5h" value="Default" />
     <node concept="37WvkG" id="1oq9tin0VhE" role="37WGs$">
       <ref role="37XkoT" to="lk2x:1oq9tin0UZr" resolve="RefOutOfScopeProblem" />
       <node concept="37Y9Zx" id="1oq9tin0VhF" role="37ZfLb">

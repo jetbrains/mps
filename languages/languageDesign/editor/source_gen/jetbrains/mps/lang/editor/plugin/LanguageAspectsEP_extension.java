@@ -76,7 +76,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public String getHelpUrl() {
-        return HELP_URL;
+        return HELP_URL_ecu8yf_a0a8a0a0a1;
       }
 
 
@@ -106,5 +106,5 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
 
     };
   }
-  private static final String HELP_URL = URLFunction_ConfluenceDocUrl.getUrl() + "/Editor";
+  private static final String HELP_URL_ecu8yf_a0a8a0a0a1 = URLFunction_ConfluenceDocUrl.getUrl() + "/Editor";
 }

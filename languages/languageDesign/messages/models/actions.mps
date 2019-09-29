@@ -62,8 +62,14 @@
         <reference id="1138056516764" name="link" index="3Tt5mk" />
       </concept>
     </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
   </registry>
   <node concept="37WguZ" id="4zSofKen40Q">
+    <property role="TrG5h" value="Default" />
     <node concept="37WvkG" id="4zSofKen40R" role="37WGs$">
       <ref role="37XkoT" to="t9po:4zSofKeguiy" resolve="MacroMessageExpression" />
       <node concept="37Y9Zx" id="4zSofKen40S" role="37ZfLb">

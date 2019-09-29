@@ -7,7 +7,7 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.actions.CustomContainerDeclaration_make_public" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.actions.DefaultNodeFactory" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.actions.Default" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.actions.closure_operations" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.actions.creators" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.actions.replace_sequence_type" />
@@ -42,7 +42,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.collections.actions.DefaultNodeFactory">
+  <dependency className="jetbrains.mps.baseLanguage.collections.actions.Default">
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
