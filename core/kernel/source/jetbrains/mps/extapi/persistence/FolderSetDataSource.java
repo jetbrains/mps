@@ -62,10 +62,7 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
   public FolderSetDataSource() {
   }
 
-  /**
-   * @param modelRoot unused
-   */
-  public void addPath(@NotNull IFile path, ModelRoot modelRoot) {
+  public void addPath(@NotNull IFile path) {
     myLock.writeLock().lock();
     try {
 

@@ -3045,12 +3045,9 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="7aqpU4Hxuse" role="2OqNvi">
-                      <ref role="37wK5l" to="ends:~FolderSetDataSource.addPath(jetbrains.mps.vfs.IFile,org.jetbrains.mps.openapi.persistence.ModelRoot)" resolve="addPath" />
+                      <ref role="37wK5l" to="ends:~FolderSetDataSource.addPath(jetbrains.mps.vfs.IFile)" resolve="addPath" />
                       <node concept="37vLTw" id="7aqpU4Hxusf" role="37wK5m">
                         <ref role="3cqZAo" node="7aqpU4HxuoO" resolve="subdir" />
-                      </node>
-                      <node concept="37vLTw" id="EP2r_yX1s$" role="37wK5m">
-                        <ref role="3cqZAo" node="EP2r_yWS1i" resolve="mr" />
                       </node>
                     </node>
                   </node>

@@ -191,7 +191,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
           }
           MapSequence.fromMap(result).put(modelReference.getModelId(), smd);
         }
-        smd.getSource().addPath(subdir, mr);
+        smd.getSource().addPath(subdir);
       }
       getModelDescriptors_(result, subdir, pack, module, psc, mr);
     }

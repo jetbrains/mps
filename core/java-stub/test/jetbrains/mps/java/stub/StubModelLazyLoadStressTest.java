@@ -74,7 +74,7 @@ public class StubModelLazyLoadStressTest implements EnvironmentAware {
     FolderSetDataSource dataSource = new FolderSetDataSource();
     // any har with JavaClassStubModelDescriptor would do. Used to be java.util, which uses dedicated model root (JDKStubsModelRoot) since Java 11
     String path = PathUtil.toSystemIndependent(PathManager.getLibPath()) + "/trove4j.jar!/gnu/trove";
-    dataSource.addPath(JarIoFileSystem.getInstance().getFile(path), null);
+    dataSource.addPath(JarIoFileSystem.getInstance().getFile(path));
     JavaClassStubModelDescriptor model = new JavaClassStubModelDescriptor(modelRef, dataSource) {
       @Override
       protected void fireModelStateChanged(ModelLoadingState oldState, ModelLoadingState newState) {
