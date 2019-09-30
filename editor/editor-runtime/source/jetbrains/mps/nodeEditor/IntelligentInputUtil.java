@@ -49,14 +49,11 @@ public class IntelligentInputUtil {
   public static boolean processCell(final EditorCell_Label cell, final EditorContext editorContext, final String pattern,
                                     final CellSide side) {
     IntelligentCellProcessor intelligentCellProcessor = new IntelligentCellProcessor(cell, editorContext, side);
-    intelligentCellProcessor.cacheSubstituteInfo();
     return intelligentCellProcessor.processCell(pattern);
   }
 
   public static IntelligentCellProcessor getIntelligentCellProcessor(final EditorCell_Label cell, final EditorContext editorContext, final CellSide side) {
-    IntelligentCellProcessor intelligentCellProcessor = new IntelligentCellProcessor(cell, editorContext, side);
-    intelligentCellProcessor.cacheSubstituteInfo();
-    return intelligentCellProcessor;
+    return new IntelligentCellProcessor(cell, editorContext, side);
   }
 
   public static String trimLeft(String text) {
@@ -81,12 +78,6 @@ public class IntelligentInputUtil {
       mySide = side;
       mySubstituteInfo = createSubstituteInfo(cell.getSubstituteInfo());
 
-    }
-
-    private void cacheSubstituteInfo() {
-      // Todo this is the hack for the caching The actions are calculated in the read action and not in the command, so the RepositoryStateCacheUtils is used
-      // Todo when redesigning SubstituteInfo and IntelligentInputUtil cache will be separated from getting the actions
-      myEditorContext.getRepository().getModelAccess().runReadAction(() -> mySubstituteInfo.getMatchingActions("", false));
     }
 
     private SubstituteInfo createSubstituteInfo(final SubstituteInfo substituteInfo) {

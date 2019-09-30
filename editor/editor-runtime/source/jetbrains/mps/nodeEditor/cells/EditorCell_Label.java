@@ -31,6 +31,7 @@ import jetbrains.mps.nodeEditor.IntelligentInputUtil.IntelligentCellProcessor;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstitutePatternEditor;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
+import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -42,6 +43,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.UndoHelper;
 import jetbrains.mps.smodel.UndoRunnable;
+import jetbrains.mps.typesystem.inference.TypeContextManager;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
@@ -463,6 +465,17 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     ModelAccess modelAccess = getContext().getRepository().getModelAccess();
     String text = String.valueOf(keyEvent.getKeyChar());
     if (isEditable()) {
+      SubstituteInfo substituteInfo = getSubstituteInfo();
+      EditorComponent editorComponent = getContext().getEditorComponent();
+      if (substituteInfo != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
+        modelAccess.runReadAction(() -> TypeContextManager.getInstance()
+                                                          .runTypeCheckingAction(
+                                                              ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).getTypecheckingContextOwner(),
+                                                              editorComponent.getEditedNode(),
+                                                              context -> substituteInfo.buildActions()
+                                                          ));
+      }
+
       IntelligentCellProcessor cellProcessor = IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side);
       ModifyTextCommand keyTypedCommand =
           new ModifyTextCommand(text, allowErrors, side, getContext(), cellProcessor);

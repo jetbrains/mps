@@ -94,6 +94,11 @@ public abstract class NodeSubstituteInfoFilterDecorator implements SubstituteInf
   }
 
   @Override
+  public void buildActions() {
+    mySubstituteInfo.buildActions();
+  }
+
+  @Override
   public void invalidateActions() {
     mySubstituteInfo.invalidateActions();
     mySubstituteInfoCache.clear();
