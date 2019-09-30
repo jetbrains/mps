@@ -14,9 +14,6 @@
     <component>
       <implementation-class>com.intellij.internal.statistic.updater.StatisticsJobsScheduler</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.workbench.recent.RecentMPSProjectsManager</implementation-class>
-    </component>
   </application-components>
   <project-components>
     <component>
