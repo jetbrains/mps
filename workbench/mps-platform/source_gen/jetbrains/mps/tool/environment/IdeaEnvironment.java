@@ -190,7 +190,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
     // next line is shorthand for PlatformTestCase.doAutodetectPlatformPrefix() 
     System.setProperty(PlatformUtils.PLATFORM_PREFIX_KEY, PlatformUtils.IDEA_CE_PREFIX);
     // Prior 2019.3, there used to be  CommandLineApplication class that served as inspiration for the next lines 
-    ApplicationImpl rv = new ApplicationImpl(true, false, true, true, ApplicationManagerEx.IDEA_APPLICATION);
+    ApplicationImpl rv = new ApplicationImpl(true, false, true, true);
     rv.load(null);
     return rv;
   }
