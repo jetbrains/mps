@@ -65,6 +65,7 @@
       <root url="jar://$PROJECT_DIR$/lib/platform-core-ui.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer-annotations.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-serviceContainer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ui.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-ide-util-io.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ex.jar!/" />

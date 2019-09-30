@@ -138,6 +138,7 @@ public final class CommonPaths {
     addIfExists(result, "lib/platform-core-ui.jar");
     addIfExists(result, "lib/platform-objectSerializer.jar");
     addIfExists(result, "lib/platform-objectSerializer-annotations.jar");
+    addIfExists(result, "lib/platform-serviceContainer.jar");
     addIfExists(result, "lib/platform-util-ui.jar");
     addIfExists(result, "lib/configuration-store-impl.jar");
     addIfExists(result, "lib/platform-ide-util-io.jar");
