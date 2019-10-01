@@ -85,15 +85,6 @@ public final class ModulesMiner {
   private final DescriptorIOFacade myDescriptorIOFacade;
 
   /**
-   * @deprecated use {@link #ModulesMiner(Collection, DescriptorIOFacade)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.2)
-  public ModulesMiner() {
-    this(Collections.emptySet(), DescriptorIOFacade.getInstance());
-  }
-
-  /**
    * @param componentHost access to MPS configured components
    * @since 2018.2
    */
@@ -107,15 +98,6 @@ public final class ModulesMiner {
   public ModulesMiner(@NotNull Collection<IFile> excludes, DescriptorIOFacade descriptorsIO) {
     myExcludes.addAll(excludes);
     myDescriptorIOFacade = descriptorsIO;
-  }
-
-  /**
-   * @deprecated use {@link #ModulesMiner(Collection, DescriptorIOFacade)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.2)
-  public ModulesMiner(@NotNull Collection<IFile> excludes) {
-    this(excludes, DescriptorIOFacade.getInstance());
   }
 
   /**
