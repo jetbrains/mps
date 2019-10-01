@@ -134,7 +134,8 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     init(new SModelFileTracker.Plug(myRepositoryRegistry));
     init(new ModuleRepositoryFacade(myModuleRepository));
     myPathMacros = init(new PathMacros());
-    myLibraryInitializer = init(new LibraryInitializer(myModuleRepository));
+    init(myModuleDescriptorFacade = new DescriptorIOFacade());
+    myLibraryInitializer = init(new LibraryInitializer(myModuleRepository, myModuleDescriptorFacade));
     init(new GlobalScope(myModuleRepository));
 
     // XXX. Sort of hack. There are LanguageRegistry listeners that expect extensions loaded (LDMP accesses LanguageAspectEP).
@@ -152,8 +153,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
                                       new GenericDescriptorModelProvider()));
     init(new TypeRegistry());
     init(new ProjectStructureModule(myModuleRepository, myPersistenceFacade));
-
-    init(myModuleDescriptorFacade = new DescriptorIOFacade());
 
     init(new ResolverComponent());
     init(new ValidationSettings());

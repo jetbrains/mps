@@ -20,6 +20,7 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.library.contributor.RepositoryContributor;
+import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.FileRefresh;
@@ -48,6 +49,7 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
 
   private final SRepositoryExt myRepository;
   private final ModelAccess myModelAccess;
+  private final DescriptorIOFacade myModuleDescriptorIO;
   private final List<LibraryContributor> myContributors = new CopyOnWriteArrayList<>();
   private final Set<SLibrary> myLibraries = new LinkedHashSet<>();
 
@@ -67,9 +69,10 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
     });
   }
 
-  public LibraryInitializer(@NotNull SRepositoryExt repository) {
+  public LibraryInitializer(@NotNull SRepositoryExt repository, @NotNull DescriptorIOFacade moduleDescriptorIO) {
     myRepository = repository;
     myModelAccess = repository.getModelAccess();
+    myModuleDescriptorIO = moduleDescriptorIO;
   }
 
   /**
@@ -125,7 +128,7 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
       for (LibraryContributor contributor : contributors) {
         boolean hidden = contributor.hiddenLanguages();
         for (LibDescriptor pathDescriptor : contributor.getPaths()) {
-          SLibrary lib = new SLibrary(myRepository, pathDescriptor, hidden);
+          SLibrary lib = new SLibrary(myRepository, pathDescriptor, myModuleDescriptorIO, hidden);
           currentLibs.add(lib);
         }
       }

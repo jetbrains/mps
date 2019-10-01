@@ -21,6 +21,7 @@ import jetbrains.mps.library.ModuleFileTracker.Delta;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -38,6 +39,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -62,17 +64,19 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
                               .notifyOnParentRemoval()
                               .build();
 
-  @NotNull private final IFile myFile;
+  private final IFile myFile;
   private final SRepositoryExt myRepository;
   private final ClassLoader myPluginClassLoader;
+  private final DescriptorIOFacade myDescriptorIO;
   private final boolean myHidden;
   private final ModuleFileTracker myFileTracker;
   private final FileListener myPostNotifyDispatch;
 
-  public SLibrary(@NotNull SRepositoryExt repoToUpdate, LibDescriptor pathDescriptor, boolean hidden) {
+  SLibrary(@NotNull SRepositoryExt repoToUpdate, LibDescriptor pathDescriptor, DescriptorIOFacade descriptorIO, boolean hidden) {
     myRepository = repoToUpdate;
     myPluginClassLoader = pathDescriptor.getPluginClassLoader();
     myFile = pathDescriptor.getPath();
+    myDescriptorIO = descriptorIO;
     myHidden = hidden;
     // SLibrary listens to all file changes as it needs to react to create events as well as change/delete for existing modules.
     // ModuleFileTracker helps to keep record which module originates from what file
@@ -172,7 +176,7 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
   }
 
   private ModulesMiner createModuleMiner() {
-    return new ModulesMiner();
+    return new ModulesMiner(Collections.emptySet(), myDescriptorIO);
   }
 
   private void collectAndRegisterModules() {
