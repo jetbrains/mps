@@ -75,15 +75,9 @@
 
       <add-to-group group-id="EditorActions" anchor="last"/>
     </group>
-
-    &lt;!&ndash; File &ndash;&gt;
-
-    <action id="ReloadFromDisk" class="com.intellij.ide.actions.ReloadFromDiskAction">
-      &lt;!&ndash;
-      <add-to-group group-id="FileMenu" anchor="after" relative-to-action="Synchronize"/>
-      &ndash;&gt;
-    </action>
     -->
+
+    <!-- File -->
 
     <group id="NewProjectOrModuleGroup">
     </group>
@@ -92,15 +86,12 @@
       <separator/>
       <action id="ExportToHTML" class="com.intellij.codeEditor.printing.ExportToHTMLAction"/>
       <action id="Print" class="com.intellij.codeEditor.printing.PrintAction" icon="AllIcons.General.Print"/>
-      <!-- MPS patch
-      <reference ref="AddToFavorites"/>
-      -->
 
       <add-to-group group-id="FileMenu" anchor="after" relative-to-action="InvalidateCaches"/>
     </group>
 
     <!--
-        <reference ref="AddToFavorites">
+    <reference ref="AddToFavorites">
       <add-to-group group-id="FileMenu" anchor="after" relative-to-action="PrintExportGroup"/>
     </reference>
 
@@ -122,10 +113,6 @@
       <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="CopyPaths"/>
       <add-to-group group-id="EditorTabPopupMenu" anchor="after" relative-to-action="CopyPaths"/>
       <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Copy"/>
-    </action>
-
-    <action id="CopyTBXReference" class="com.intellij.ide.actions.CopyTBXReferenceAction" >
-      <add-to-group group-id="CutCopyPasteGroup" anchor="after" relative-to-action="CopyReference"/>
     </action>
 
     <action id="CopyAsRichText" class="com.intellij.openapi.editor.richcopy.CopyAsRichTextAction">
@@ -165,7 +152,6 @@
       <action id="SelectIn" class="com.intellij.ide.actions.SelectInAction"/>
       <!--
       <action id="ShowNavBar" class="com.intellij.ide.navigationToolbar.ShowNavBarAction"/>
-      <action id="GotoDeclarationOnly" class="com.intellij.codeInsight.navigation.actions.GotoDeclarationOnlyAction"/>
       <action id="GotoDeclaration" class="com.intellij.codeInsight.navigation.actions.GotoDeclarationAction"/>
       -->
       <!-- MPS Patch TODO remove after fix in OpenInEditorWithMouseAction constructor -->
@@ -270,7 +256,6 @@
     <!-- MPS Patch: we need this action for platform and text editor.
      But we don't want to show CodeCompletionGroup, because it always disabled
      (require Editor and PsiFile, see com.intellij.codeInsight.completion.actions.CodeCompletionGroup.update).
-     Action is also enabled only it text editor and can confuse users.
      Action is also enabled only it text editor and can confuse users.
      -->
     <action id="CodeCompletion" class="com.intellij.codeInsight.completion.actions.CodeCompletionAction"/>
@@ -386,7 +371,7 @@
       <action id="CopyElement" class="com.intellij.ide.actions.CopyElementAction"/>
       <action id="SafeDelete" class="com.intellij.refactoring.actions.SafeDeleteAction"/>
       <separator/>
-      <group id="IntroduceActionsGroup" popup="true" class="com.intellij.ide.actions.NonTrivialActionGroup">
+      <group id="IntroduceActionsGroup" popup="true" class="com.intellij.refactoring.actions.ExtractActionGroup">
         <action id="IntroduceVariable" class="com.intellij.refactoring.actions.IntroduceVariableAction"/>
         <action id="IntroduceConstant" class="com.intellij.refactoring.actions.IntroduceConstantAction"/>
         <action id="IntroduceField" class="com.intellij.refactoring.actions.IntroduceFieldAction"/>
@@ -849,13 +834,13 @@
     <group id="DebugMainMenu">
       <separator/>
       <action id="StepOver" class="com.intellij.xdebugger.impl.actions.StepOverAction" icon="AllIcons.Actions.TraceOver"/>
-      <action id="ForceStepOver" class="com.intellij.xdebugger.impl.actions.ForceStepOverAction" icon="AllIcons.Debugger.Actions.Force_step_over"/>
+      <action id="ForceStepOver" class="com.intellij.xdebugger.impl.actions.ForceStepOverAction" icon="PlatformDebuggerImplIcons.Actions.Force_step_over"/>
       <action id="StepInto" class="com.intellij.xdebugger.impl.actions.StepIntoAction" icon="AllIcons.Actions.TraceInto"/>
-      <action id="ForceStepInto" class="com.intellij.xdebugger.impl.actions.ForceStepIntoAction" icon="AllIcons.Debugger.Actions.Force_step_into"/>
+      <action id="ForceStepInto" class="com.intellij.xdebugger.impl.actions.ForceStepIntoAction" icon="PlatformDebuggerImplIcons.Actions.Force_step_into"/>
       <action id="SmartStepInto" class="com.intellij.xdebugger.impl.actions.SmartStepIntoAction" icon="AllIcons.Debugger.SmartStepInto"/>
       <action id="StepOut" class="com.intellij.xdebugger.impl.actions.StepOutAction" icon="AllIcons.Actions.StepOut"/>
       <action id="RunToCursor" class="com.intellij.xdebugger.impl.actions.RunToCursorAction" icon="AllIcons.Actions.RunToCursor"/>
-      <action id="ForceRunToCursor" class="com.intellij.xdebugger.impl.actions.ForceRunToCursorAction" icon="AllIcons.Debugger.Actions.Force_run_to_cursor"/>
+      <action id="ForceRunToCursor" class="com.intellij.xdebugger.impl.actions.ForceRunToCursorAction" icon="PlatformDebuggerImplIcons.Actions.Force_run_to_cursor"/>
       <action id="Pause" class="com.intellij.xdebugger.impl.actions.PauseAction" icon="AllIcons.Actions.Pause"/>
       <action id="Resume" class="com.intellij.xdebugger.impl.actions.ResumeAction" icon="AllIcons.Actions.Resume"/>
       <separator/>
@@ -1280,6 +1265,8 @@
                 text="Service Groups"/>
         <separator/>
       </group>
+      <group id="ServiceView.Filter" popup="true" text="Filter" icon="AllIcons.General.Filter"
+             class="com.intellij.ide.actions.NonEmptyActionGroup"/>
       <separator/>
       <action id="ServiceView.ShowInNewTab" class="com.intellij.execution.services.ShowInNewTabAction"
               text="Show in New Tab" icon="AllIcons.Actions.OpenNewTab"/>
@@ -1314,6 +1301,10 @@
       <action id="RunDashboard.GroupByStatus" class="com.intellij.execution.dashboard.actions.GroupByConfigurationStatusAction"
               text="Status"/>
       <add-to-group group-id="ServiceView.GroupBy"/>
+    </group>
+    <group id="RunDashboard.Filter" popup="true" text="Configuration Status"
+           class="com.intellij.execution.dashboard.actions.RunDashboardFilterActionGroup">
+      <add-to-group group-id="ServiceView.Filter"/>
     </group>
 
     <action id="RenameFile" class="com.intellij.refactoring.actions.RenameFileAction">
@@ -1441,7 +1432,7 @@
     </action>
     <group id="TodoMainGroup" text="TODO">
       <add-to-group group-id="Other.KeymapGroup"/>
-    <group id="TodoViewGroupByGroup" class="com.intellij.ide.todo.TodoPanel$GroupByActionGroup">
+      <group id="TodoViewGroupByGroup" class="com.intellij.ide.todo.TodoPanel$GroupByActionGroup" popup="true">
         <separator text="Group By"/>
         <action class="com.intellij.ide.todo.TodoPanel$MyShowModulesAction" id="TodoViewGroupByShowModules"/>
         <action class="com.intellij.ide.todo.TodoPanel$MyShowPackagesAction" id="TodoViewGroupByShowPackages"/>
