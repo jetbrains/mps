@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.jps.build;
 
 import com.intellij.openapi.util.io.FileUtil;
@@ -98,7 +97,7 @@ public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
 
   @Override
   public void buildStarted(final CompileContext context) {
-    genSourcesNotToClean = new HashSet<JpsModule>();
+    genSourcesNotToClean = new HashSet<>();
     context.addBuildListener(new BuildListener() {
       @Override
       public void filesGenerated(FileGeneratedEvent fileGeneratedEvent) {
@@ -109,6 +108,9 @@ public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
         refreshComponent.removed(fileDeletedEvent.getFilePaths());
       }
     });
+    if (MPSCompilerUtil.isExtraTracingMode()) {
+      context.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, String.format("build started %1$tM.%<tS.%<tL", System.currentTimeMillis())));
+    }
   }
 
   @Override
@@ -122,6 +124,9 @@ public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
       context.processMessage(new CustomBuilderMessage(MPSMakeConstants.BUILDER_ID, MPSCustomMessages.MSG_REFRESH, ""));
     }
     JpsMPSRepositoryFacade.getInstance().dispose();
+    if (MPSCompilerUtil.isExtraTracingMode()) {
+      context.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, String.format("build finished %1$tM.%<tS.%<tL", System.currentTimeMillis())));
+    }
   }
 
   @Override
@@ -245,6 +250,9 @@ public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
                         ModuleChunk moduleChunk,
                         DirtyFilesHolder<JavaSourceRootDescriptor, ModuleBuildTarget> dirtyFilesHolder,
                         final OutputConsumer outputConsumer) throws ProjectBuildException, IOException {
+    if (MPSCompilerUtil.isExtraTracingMode()) {
+      compileContext.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, String.format("  build chunk started %1$tM.%<tS.%<tL", System.currentTimeMillis())));
+    }
     ExitCode status = ExitCode.NOTHING_DONE;
     try {
       final Set<ModuleBuildTarget> targets = new HashSet<>();
@@ -291,6 +299,10 @@ public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
         return ExitCode.ABORT;
       }
 
+      if (MPSCompilerUtil.isExtraTracingMode()) {
+        compileContext.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, String.format("  MPS chunk started %1$tM.%<tS.%<tL", System.currentTimeMillis())));
+      }
+
       JpsMPSRepositoryFacade.getInstance().init(compileContext);
 
       final Map<SModel, ModuleBuildTarget> toMake = collectChangedModels(compileContext, dirtyFilesHolder);
@@ -313,6 +325,9 @@ public class MPSModuleLevelBuilder extends ModuleLevelBuilder {
       throw new ProjectBuildException(ex);
     }
 
+    if (MPSCompilerUtil.isExtraTracingMode()) {
+      compileContext.processMessage(new CompilerMessage(MPSMakeConstants.BUILDER_ID, Kind.INFO, String.format("  chunk finished %1$tM.%<tS.%<tL", System.currentTimeMillis())));
+    }
     return status;
   }
 
