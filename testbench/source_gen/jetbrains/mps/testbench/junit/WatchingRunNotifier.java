@@ -24,7 +24,8 @@ public class WatchingRunNotifier extends DelegatingRunNotifier {
   private static final Pattern EXECUTION_LIMIT_FAILED_PATTERN = Pattern.compile("(\\d)* ms execution limit failed for:[^,]*,(\\d*)(\\s)*");
   private static final Pattern WARN_PATTERN_MULTILINE = Pattern.compile("\\[([\\d\\s])*\\](\\s)*WARN.*:\\n[^\\[^\\s].*");
   private static final Pattern WARN_PATTERN = Pattern.compile("\\[([\\d\\s])*\\](\\s)*WARN.*");
-
+  private static final Pattern MPS_31017 = Pattern.compile(".*java\\.util\\.prefs\\.FileSystemPreferences.*");
+  private static final Pattern MPS_31017_2 = Pattern.compile("WARNING: Prefs file removed in background.*");
 
   private final Level myWatchLevel;
 
@@ -47,6 +48,8 @@ public class WatchingRunNotifier extends DelegatingRunNotifier {
   private List<Pattern> getPatternsToIgnore(boolean ignoreWarnings) {
     List<Pattern> result = new ArrayList<Pattern>();
     result.add(EXECUTION_LIMIT_FAILED_PATTERN);
+    result.add(MPS_31017);
+    result.add(MPS_31017_2);
     if (ignoreWarnings) {
       result.add(WARN_PATTERN_MULTILINE);
       result.add(WARN_PATTERN);
