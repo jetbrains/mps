@@ -181,6 +181,7 @@
       <!--TODO use license files from IDEA Community-->
       <patternset>
         <exclude name="license/*"/>
+        <exclude name="plugins/java-ide-customization/**"/>
         <!-- TODO: Exclude log.xml & mps.svg from platform-->
         <exclude name="bin/log.xml"/>
         <exclude name="bin/mps.svg"/>
@@ -195,6 +196,7 @@
     <unzip src="${basedir}/../plugins/java/lib/java-impl.jar" dest="${basedir}/../plugins/java/lib/java-impl/"/>
     <delete dir="${basedir}/../plugins/java/lib/java-impl/META-INF"/>
     <jar basedir="${basedir}/../plugins/java/lib/java-impl/" destfile="${basedir}/../lib/java-impl.jar"/>
+    <jar basedir="${basedir}/../plugins/java/lib/java-impl/" destfile="${basedir}/../plugins/java/lib/java-impl.jar"/>
     <delete dir="${basedir}/../plugins/java/lib/java-impl/"/>
 
     <!-- Set executable flag to binaries -->
