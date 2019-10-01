@@ -232,7 +232,7 @@ public class Utils {
     }
   }
 
-  public void compareBinAndSrcStubs(String binPath, String sourcePath) {
+  public void compareBinAndSrcStubs(IFile binPath, IFile sourcePath) {
     JavaSourceStubModelRoot src2 = new JavaSourceStubModelRoot();
 
     // just 2 distinct modules 
@@ -242,8 +242,8 @@ public class Utils {
     List<SModel> binModels = ListSequence.fromList(new ArrayList<SModel>());
     JavaClassStubsModelRoot binSRoot = new JavaClassStubsModelRoot();
     binSRoot.setModule((SModuleBase) mod1);
-    binSRoot.setContentRoot(binPath);
-    binSRoot.addFile(JavaClassStubsModelRoot.SOURCE_ROOTS, binPath);
+    binSRoot.setContentDirectory(binPath);
+    binSRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", binPath));
     Iterable<SModel> binStubModels = binSRoot.loadModels();
     for (SModel md : Sequence.fromIterable(binStubModels)) {
       SModel m = md;
@@ -266,8 +266,8 @@ public class Utils {
     List<SModel> srcModelsX = ListSequence.fromList(new ArrayList<SModel>());
 
     src2.setModule((SModuleBase) mod2);
-    src2.setContentRoot(sourcePath);
-    src2.addFile(JavaSourceStubModelRoot.SOURCE_ROOTS, sourcePath);
+    src2.setContentDirectory(sourcePath);
+    src2.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", sourcePath));
     srcModels = src2.loadModels();
 
     for (SModel m : Sequence.fromIterable(srcModels)) {

@@ -2,7 +2,6 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.ide.java.tests.madeUpCases.JavaToMps_Test">
     <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="jetbrains.mps.MPSLaunch" />
     <classNode dependClassName="jetbrains.mps.ide.java.tests.utility.Utils" />

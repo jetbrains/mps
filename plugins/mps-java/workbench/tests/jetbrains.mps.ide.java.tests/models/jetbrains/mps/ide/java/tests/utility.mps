@@ -31,7 +31,6 @@
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="6qgz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.model(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="y5e1" ref="r:4464540a-9650-433f-b716-ed95bbac5a69(jetbrains.mps.lang.test.matcher)" />
     <import index="ao3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.text(MPS.Core/)" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
@@ -2738,7 +2737,7 @@
               <ref role="3cqZAo" node="Tb4Psnn76O" resolve="binSRoot" />
             </node>
             <node concept="liA8E" id="Tb4Psnn770" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentRoot(java.lang.String)" resolve="setContentRoot" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentDirectory(jetbrains.mps.vfs.IFile)" resolve="setContentDirectory" />
               <node concept="37vLTw" id="Tb4Psnn771" role="37wK5m">
                 <ref role="3cqZAo" node="Tb4Psnn79j" resolve="binPath" />
               </node>
@@ -2751,13 +2750,21 @@
               <ref role="3cqZAo" node="Tb4Psnn76O" resolve="binSRoot" />
             </node>
             <node concept="liA8E" id="Tb4Psnn775" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.addFile(java.lang.String,java.lang.String)" resolve="addFile" />
-              <node concept="10M0yZ" id="Tb4Psnn776" role="37wK5m">
-                <ref role="1PxDUh" to="ft0j:5JsnGMj1qiW" resolve="JavaClassStubsModelRoot" />
-                <ref role="3cqZAo" to="ends:~FileBasedModelRoot.SOURCE_ROOTS" resolve="SOURCE_ROOTS" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.addSourceRoot(jetbrains.mps.extapi.persistence.SourceRootKind,jetbrains.mps.extapi.persistence.SourceRoot)" resolve="addSourceRoot" />
+              <node concept="Rm8GO" id="4c_IX9qBPGo" role="37wK5m">
+                <ref role="Rm8GQ" to="ends:~SourceRootKinds.SOURCES" resolve="SOURCES" />
+                <ref role="1Px2BO" to="ends:~SourceRootKinds" resolve="SourceRootKinds" />
               </node>
-              <node concept="37vLTw" id="Tb4Psnn777" role="37wK5m">
-                <ref role="3cqZAo" node="Tb4Psnn79j" resolve="binPath" />
+              <node concept="2ShNRf" id="4c_IX9qBPR$" role="37wK5m">
+                <node concept="1pGfFk" id="4c_IX9qBT0t" role="2ShVmc">
+                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(java.lang.String,jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
+                  <node concept="Xl_RD" id="4c_IX9qBTcL" role="37wK5m">
+                    <property role="Xl_RC" value="" />
+                  </node>
+                  <node concept="37vLTw" id="4c_IX9qBTsT" role="37wK5m">
+                    <ref role="3cqZAo" node="Tb4Psnn79j" resolve="binPath" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -2961,7 +2968,7 @@
         <node concept="3clFbF" id="Tb4Psnn78c" role="3cqZAp">
           <node concept="2OqwBi" id="Tb4Psnn78d" role="3clFbG">
             <node concept="liA8E" id="Tb4Psnn78e" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentRoot(java.lang.String)" resolve="setContentRoot" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentDirectory(jetbrains.mps.vfs.IFile)" resolve="setContentDirectory" />
               <node concept="37vLTw" id="Tb4Psnn78f" role="37wK5m">
                 <ref role="3cqZAo" node="Tb4Psnn79l" resolve="sourcePath" />
               </node>
@@ -2977,13 +2984,21 @@
               <ref role="3cqZAo" node="Tb4Psnn76s" resolve="src2" />
             </node>
             <node concept="liA8E" id="Tb4Psnn78k" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.addFile(java.lang.String,java.lang.String)" resolve="addFile" />
-              <node concept="10M0yZ" id="Tb4Psnn78l" role="37wK5m">
-                <ref role="1PxDUh" to="la4b:3PyP5yK7oru" resolve="JavaSourceStubModelRoot" />
-                <ref role="3cqZAo" to="ends:~FileBasedModelRoot.SOURCE_ROOTS" resolve="SOURCE_ROOTS" />
+              <ref role="37wK5l" to="ends:~FileBasedModelRoot.addSourceRoot(jetbrains.mps.extapi.persistence.SourceRootKind,jetbrains.mps.extapi.persistence.SourceRoot)" resolve="addSourceRoot" />
+              <node concept="Rm8GO" id="4c_IX9qBWrY" role="37wK5m">
+                <ref role="Rm8GQ" to="ends:~SourceRootKinds.SOURCES" resolve="SOURCES" />
+                <ref role="1Px2BO" to="ends:~SourceRootKinds" resolve="SourceRootKinds" />
               </node>
-              <node concept="37vLTw" id="Tb4Psnn78m" role="37wK5m">
-                <ref role="3cqZAo" node="Tb4Psnn79l" resolve="sourcePath" />
+              <node concept="2ShNRf" id="4c_IX9qBW$F" role="37wK5m">
+                <node concept="1pGfFk" id="4c_IX9qBYc4" role="2ShVmc">
+                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(java.lang.String,jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
+                  <node concept="Xl_RD" id="4c_IX9qBZ$L" role="37wK5m">
+                    <property role="Xl_RC" value="" />
+                  </node>
+                  <node concept="37vLTw" id="4c_IX9qBZTP" role="37wK5m">
+                    <ref role="3cqZAo" node="Tb4Psnn79l" resolve="sourcePath" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -3141,11 +3156,15 @@
       <node concept="3cqZAl" id="Tb4Psnn76o" role="3clF45" />
       <node concept="37vLTG" id="Tb4Psnn79j" role="3clF46">
         <property role="TrG5h" value="binPath" />
-        <node concept="17QB3L" id="Tb4Psnn79k" role="1tU5fm" />
+        <node concept="3uibUv" id="4c_IX9qBKaI" role="1tU5fm">
+          <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+        </node>
       </node>
       <node concept="37vLTG" id="Tb4Psnn79l" role="3clF46">
         <property role="TrG5h" value="sourcePath" />
-        <node concept="17QB3L" id="Tb4Psnn79m" role="1tU5fm" />
+        <node concept="3uibUv" id="4c_IX9qBMyy" role="1tU5fm">
+          <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+        </node>
       </node>
       <node concept="3Tm1VV" id="Tb4Psnn76p" role="1B3o_S" />
     </node>

@@ -134,8 +134,10 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      String guavaPath = this.testsLocation() + "realCodeBase/google-guava/";
-      new Utils(myProject.getRepository()).compareBinAndSrcStubs(guavaPath + "guava-12.0.1.jar", guavaPath + "src");
+      IFile guavaPath = this.testsLocation().findChild("realCodeBase").findChild("google-guava");
+      // FIXME there's google-guava.zip (since 2012, 4c3f4878 and 39d5fb7b), I have no idea how come this test passed prior to failure in my branch in 2019 due to PathFormatException from new FS 
+      //        Discussed with Daniil, according to him the test has never been completely functional. I leave it as is (it passes now, as it used to do for few years now), for a brave new person to get it fixed. 
+      new Utils(myProject.getRepository()).compareBinAndSrcStubs(guavaPath.findChild("guava-12.0.1.jar"), guavaPath.findChild("src"));
     }
 
 
