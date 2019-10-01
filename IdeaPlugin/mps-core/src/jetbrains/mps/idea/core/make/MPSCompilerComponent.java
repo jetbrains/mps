@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.make;
 
 import com.intellij.compiler.CompilerConfiguration;
@@ -34,6 +33,7 @@ import jetbrains.mps.idea.core.module.CachedRepositoryData;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.textgen.trace.TraceInfoCache;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
@@ -54,13 +54,13 @@ public class MPSCompilerComponent implements ProjectComponent {
   private final Project myProject;
   private final CompilerManager compilerManager;
   private final CompilerConfiguration compilerConfiguration;
-  private final LibraryInitializer myLibraryInitializer;
+  private final MPSCoreComponents myCoreComponents;
 
   public MPSCompilerComponent(Project project, CompilerManager compilerManager, CompilerConfiguration compilerConfiguration, MPSCoreComponents mpsCore) {
     myProject = project;
     this.compilerManager = compilerManager;
     this.compilerConfiguration = compilerConfiguration;
-    myLibraryInitializer = mpsCore.getLibraryInitializer();
+    myCoreComponents = mpsCore;
   }
 
   @Override
@@ -89,8 +89,9 @@ public class MPSCompilerComponent implements ProjectComponent {
       final File repositoryCache = new File(CompilerPaths.getCompilerSystemDirectory(myProject), "mps_repository.dat");
       final long start = System.nanoTime();
       final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-      mpsProject.getModelAccess().runReadAction(() -> {
-        CachedRepositoryData cachedRepositoryData = new MPSRepositoryUtil(context, mpsProject.getRepository()).buildData(myLibraryInitializer.getModuleHandles());
+      final MPSModuleRepository deploymentRepo = myCoreComponents.getPlatform().findComponent(MPSModuleRepository.class);
+      deploymentRepo.getModelAccess().runReadAction(() -> {
+        CachedRepositoryData cachedRepositoryData = new MPSRepositoryUtil(context).buildData(deploymentRepo.getModules(), mpsProject.getProjectModules());
         ModelOutputStream mos = null;
         try {
           mos = new ModelOutputStream(new FileOutputStream(repositoryCache));

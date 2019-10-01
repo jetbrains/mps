@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.make;
 
 import com.intellij.openapi.compiler.CompileContext;
@@ -34,22 +33,21 @@ import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,44 +57,57 @@ import java.util.Map;
  */
 public class MPSRepositoryUtil {
   private final CompileContext myCompileContext;
-  private final SRepository myRepository;
 
-  public MPSRepositoryUtil(CompileContext context, SRepository repository) {
+  public MPSRepositoryUtil(CompileContext context) {
     myCompileContext = context;
-    myRepository = repository;
   }
 
-  public CachedRepositoryData buildData(Collection<ModuleHandle> handles) {
-    List<CachedModuleData> modules = new ArrayList<CachedModuleData>();
-    for (ModuleHandle handle : handles) {
-      Map<String, List<CachedModelData>> modelsByKindAndPath = new HashMap<String, List<CachedModelData>>();
-      SModuleReference moduleReference = handle.getDescriptor().getModuleReference();
-      buildModule(modelsByKindAndPath, moduleReference);
-      modules.add(new CachedModuleData(handle, modelsByKindAndPath));
+  public CachedRepositoryData buildData(Iterable<SModule> modules, List<SModule> projectModules) {
+    List<CachedModuleData> rv = new ArrayList<>();
+    for (SModule module : modules) {
+      // Modules we develop with MPS-IDEA plugin do not take part in JPS build as 'deployed', only as sources,
+      // therefore, we have to exclude them even though they've got both descriptor file and MD
+      // FIXME here we assume it's the same instance registered both in project repository and in deployment MPSModuleRepository
+      //       Alternatively, shall rely on module reference matching (no chances to exclude proper module as we are not
+      //       going to 'bootstrap' with IDEA plugin, i.e. to develop any module that in part of existing plugin. At least, that's
+      //       the assumption here. We can not develop neither languages nor generators, the only chance is for solutions that are
+      //       dependencies of some languages from plugin distribution, which I doubt to face ever).
+      if (projectModules.contains(module)) {
+        continue;
+      }
+      if (false == module instanceof AbstractModule) {
+        continue;
+      }
+      final IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
+      final ModuleDescriptor moduleDescriptor = ((AbstractModule) module).getModuleDescriptor();
+      if (descriptorFile == null || moduleDescriptor == null) {
+        continue;
+      }
+      Map<String, List<CachedModelData>> modelsByKindAndPath = new HashMap<>();
+      buildModule(modelsByKindAndPath, module);
+      rv.add(new CachedModuleData(new ModuleHandle(descriptorFile, moduleDescriptor), modelsByKindAndPath));
     }
-    return new CachedRepositoryData(modules);
+    return new CachedRepositoryData(rv);
   }
 
-  private void buildModule(Map<String, List<CachedModelData>> modelsByKindAndPath, SModuleReference moduleReference) {
-    SModule module = moduleReference.resolve(myRepository);
-    if (module != null) {
-      for (ModelRoot root : module.getModelRoots()) {
-        if (root instanceof DefaultModelRoot) {
-          String signature = CachedRepositoryUtil.getSignature((DefaultModelRoot) root);
-          List<CachedModelData> models = buildModels((DefaultModelRoot) root);
+  private void buildModule(Map<String, List<CachedModelData>> modelsByKindAndPath, SModule module) {
+    for (ModelRoot root : module.getModelRoots()) {
+      if (root instanceof DefaultModelRoot) {
+        String signature = CachedRepositoryUtil.getSignature((DefaultModelRoot) root);
+        List<CachedModelData> models = buildModels((DefaultModelRoot) root);
+        modelsByKindAndPath.put(signature, models);
+      } else if (root instanceof JavaClassStubsModelRoot) {
+        List<CachedModelData> models = buildModels((JavaClassStubsModelRoot) root);
+        if (models != null) {
+          String signature = CachedRepositoryUtil.getSignature((JavaClassStubsModelRoot) root);
           modelsByKindAndPath.put(signature, models);
-        } else if (root instanceof JavaClassStubsModelRoot) {
-          List<CachedModelData> models = buildModels((JavaClassStubsModelRoot) root);
-          if (models != null) {
-            String signature = CachedRepositoryUtil.getSignature((JavaClassStubsModelRoot) root);
-            modelsByKindAndPath.put(signature, models);
-          }
         }
       }
-      if (module instanceof Language) {
-        for (Generator generator : ((Language) module).getGenerators()) {
-          buildModule(modelsByKindAndPath, generator.getModuleReference());
-        }
+    }
+    // FIXME drop this, generators are full-fledged modules
+    if (module instanceof Language) {
+      for (Generator generator : ((Language) module).getGenerators()) {
+        buildModule(modelsByKindAndPath, generator);
       }
     }
   }
