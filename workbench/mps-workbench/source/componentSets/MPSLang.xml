@@ -23,7 +23,7 @@
 
     <component>
       <interface-class>com.intellij.openapi.module.ModuleManager</interface-class>
-      <implementation-class>com.intellij.openapi.module.EmptyModuleManager</implementation-class>
+      <implementation-class>jetbrains.mps.MockModuleManager</implementation-class>
       <loadForDefaultProject/>
     </component>
     <!--
