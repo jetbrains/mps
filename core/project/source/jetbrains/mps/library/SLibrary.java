@@ -38,14 +38,12 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * SLibrary tracks a path {@link #myFile} with modules inside.
@@ -68,7 +66,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
   private final SRepositoryExt myRepository;
   private final ClassLoader myPluginClassLoader;
   private final boolean myHidden;
-  private final AtomicReference<List<ModuleHandle>> myHandles = new AtomicReference<>();
   private final ModuleFileTracker myFileTracker;
   private final FileListener myPostNotifyDispatch;
 
@@ -95,14 +92,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
   @Nullable
   public ClassLoader getPluginClassLoader() {
     return myPluginClassLoader;
-  }
-
-  List<ModuleHandle> getHandles() {
-    List<ModuleHandle> moduleHandles = myHandles.get();
-    if (moduleHandles == null) {
-      return Collections.emptyList();
-    }
-    return moduleHandles;
   }
 
   void attach() {
@@ -134,19 +123,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
 
       final Map<SModuleReference, IFile> gone = moduleDelta.gone();
 
-      // next code (with newHandles) is just for the sake of myHandles update, which is in use in a single place, in MPSIDEA Plugin, to populate
-      // cached repo. FIXME please refactor and get rid of this
-      ArrayList<ModuleHandle> newHandles = new ArrayList<>(myHandles.get().size());
-      if (gone.isEmpty()) {
-        newHandles.addAll(myHandles.get());
-      } else {
-        final Set<SModuleReference> toRemoveRefs = gone.keySet();
-        for (ModuleHandle existingMH : myHandles.get()) {
-          if (!toRemoveRefs.contains(existingMH.getDescriptor().getModuleReference())) {
-            newHandles.add(existingMH);
-          }
-        }
-      }
       for (Entry<SModuleReference, IFile> entry : gone.entrySet()) {
         SModuleReference mRef = entry.getKey();
         final SModule module = mRef.resolve(myRepository);
@@ -169,8 +145,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
       // FIXME need a better mechanism to find out MD kind than instanceof. E.g. DeployedDescriptor is the same for any module, once we
       //       drop source modules, we are likely to fail here
       instantiateAndActivateModules(toLoad);
-      newHandles.addAll(toLoad);
-      myHandles.set(newHandles);
       //
       for (ModuleHandle mh : moduleDelta.changed()) {
         final SModule module = mh.getDescriptor().getModuleReference().resolve(myRepository);
@@ -207,7 +181,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     // MM gives all modules, including those sharing descriptor file with their source language
     // we expect this sequence sorted, with LanguageDescriptors first, as MRF doesn't tolerate generators coming in front of their languages yet.
     instantiateAndActivateModules(moduleHandles);
-    myHandles.set(moduleHandles);
   }
 
   private void instantiateAndActivateModules(Collection<ModuleHandle> moduleHandles) {

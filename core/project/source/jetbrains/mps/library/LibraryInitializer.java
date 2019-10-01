@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@ import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.library.contributor.RepositoryContributor;
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.vfs.refresh.FileRefresh;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.refresh.FileRefresh;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -176,18 +176,6 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
   }
 
   //----------bootstrap modules
-
-  // used in plugin; TODO remove
-  @Deprecated
-  public List<ModulesMiner.ModuleHandle> getModuleHandles() {
-    myModelAccess.checkReadAccess();
-
-    List<ModulesMiner.ModuleHandle> result = new ArrayList<>();
-    for (SLibrary lib : myLibraries) {
-      result.addAll(lib.getHandles());
-    }
-    return result;
-  }
 
   /**
    * Please use one-step version to load modules from disk to MPS {@link #load(List)} or {@link #loadRefreshed(List)}
