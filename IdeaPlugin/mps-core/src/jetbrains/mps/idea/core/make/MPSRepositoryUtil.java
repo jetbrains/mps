@@ -36,8 +36,6 @@ import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
-import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -102,12 +100,6 @@ public class MPSRepositoryUtil {
           String signature = CachedRepositoryUtil.getSignature((JavaClassStubsModelRoot) root);
           modelsByKindAndPath.put(signature, models);
         }
-      }
-    }
-    // FIXME drop this, generators are full-fledged modules
-    if (module instanceof Language) {
-      for (Generator generator : ((Language) module).getGenerators()) {
-        buildModule(modelsByKindAndPath, generator);
       }
     }
   }

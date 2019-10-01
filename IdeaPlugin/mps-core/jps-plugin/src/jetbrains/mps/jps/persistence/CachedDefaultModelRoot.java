@@ -27,7 +27,6 @@ import jetbrains.mps.persistence.DefaultModelPersistence;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.FilePerRootModelFactory;
-import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
@@ -114,13 +113,7 @@ public class CachedDefaultModelRoot extends ModelRootBase {
   @NotNull
   @Override
   public Iterable<SModel> loadModels() {
-    SModuleReference module = null;
-    if (getModule() instanceof Generator) {
-      module = ((Generator) getModule()).sourceLanguage().getSourceModuleReference();
-    }
-    if (module == null) {
-      return myDelegate.loadModels();
-    }
+    SModuleReference module = getModule().getModuleReference();
 
     CachedModuleData moduleData = myCachedRepository.getModuleData(module);
     if (moduleData == null) {
