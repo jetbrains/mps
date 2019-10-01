@@ -20,7 +20,6 @@ import java.awt.GraphicsEnvironment;
 import com.intellij.idea.IdeaTestApplication;
 import com.intellij.util.PlatformUtils;
 import com.intellij.openapi.application.impl.ApplicationImpl;
-import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
