@@ -64,6 +64,9 @@
       <concept id="4510086454722552739" name="jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector" flags="ng" index="eBIwv">
         <reference id="4510086454740628767" name="propertyDeclaration" index="fyFUz" />
       </concept>
+      <concept id="3547227755871693971" name="jetbrains.mps.lang.editor.structure.PredefinedSelector" flags="ng" index="2B6iha">
+        <property id="2162403111523065396" name="cellId" index="1lyBwo" />
+      </concept>
       <concept id="4323500428136740385" name="jetbrains.mps.lang.editor.structure.CellIdReferenceSelector" flags="ng" index="2TlHUq">
         <reference id="4323500428136742952" name="id" index="2TlMyj" />
       </concept>
@@ -1337,13 +1340,15 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="hpy8rt5" role="3cqZAp">
-          <node concept="2OqwBi" id="hxBNAc4" role="3clFbG">
-            <node concept="1XNTG" id="htwuU6l" role="2Oq$k0" />
-            <node concept="liA8E" id="hxBNAc5" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
-              <node concept="37vLTw" id="3GM_nagTzHh" role="37wK5m">
-                <ref role="3cqZAo" node="hpy8rsX" resolve="annotationInstance" />
+        <node concept="3clFbF" id="1MJNSoB$f6s" role="3cqZAp">
+          <node concept="2OqwBi" id="1MJNSoB$fgV" role="3clFbG">
+            <node concept="37vLTw" id="1MJNSoB$f6q" role="2Oq$k0">
+              <ref role="3cqZAo" node="hpy8rsX" resolve="annotationInstance" />
+            </node>
+            <node concept="1OKiuA" id="1MJNSoB$fEq" role="2OqNvi">
+              <node concept="1XNTG" id="1MJNSoB$fJi" role="lBI5i" />
+              <node concept="2B6iha" id="1MJNSoB$ggB" role="lGT1i">
+                <property role="1lyBwo" value="59pBc0SIIVt/mostRelevant" />
               </node>
             </node>
           </node>

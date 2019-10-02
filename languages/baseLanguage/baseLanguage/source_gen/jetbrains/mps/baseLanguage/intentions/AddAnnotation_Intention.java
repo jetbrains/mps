@@ -16,6 +16,8 @@ import jetbrains.mps.baseLanguage.behavior.HasAnnotation__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -69,7 +71,7 @@ public final class AddAnnotation_Intention extends AbstractIntentionDescriptor i
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode annotationInstance = SNodeFactoryOperations.addNewChild(node, LINKS.annotation$oVP4, null);
-      editorContext.selectWRTFocusPolicy(annotationInstance);
+      SelectionUtil.selectCell(editorContext, annotationInstance, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
