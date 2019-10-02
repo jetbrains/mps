@@ -15,13 +15,12 @@
  */
 package jetbrains.mps.library.contributor;
 
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashSet;
+import java.io.File;
+import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -37,9 +36,7 @@ public final class WorkbenchLibraryContributor implements LibraryContributor {
 
   @Override
   public Set<LibDescriptor> getPaths() {
-    Set<LibDescriptor> res = new HashSet<>();
-    res.add(new LibDescriptor(myFs.getFile(PathUtil.toSystemIndependent(FileUtil.getCanonicalPath(PathManager.getWorkbenchPath()))), null));
-    return res;
+    return Collections.singleton(new LibDescriptor(myFs.getFile(new File(PathManager.getWorkbenchPath())), null));
   }
 
   @Override

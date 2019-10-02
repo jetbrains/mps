@@ -7,14 +7,12 @@ import java.util.Set;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import java.util.HashSet;
-import jetbrains.mps.vfs.util.PathUtil;
 import java.io.File;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import java.util.List;
@@ -27,9 +25,9 @@ public class FromDirWithModulesProjectStrategy extends ProjectStrategyBase {
 
   private static Set<IFile> createExcludesSet(IFileSystem localFS) {
     Set<IFile> excludesSet = new HashSet<IFile>();
-    String userDir = System.getProperty("user.dir");
+    File userDir = new File(System.getProperty("user.dir"));
     for (String exclude : EXCLUDES) {
-      excludesSet.add(localFS.getFile(PathUtil.toSystemIndependent(userDir + File.separator + exclude)));
+      excludesSet.add(localFS.getFile(new File(userDir, exclude)));
     }
     return excludesSet;
   }
@@ -48,7 +46,7 @@ public class FromDirWithModulesProjectStrategy extends ProjectStrategyBase {
   @Override
   public Project construct(@NotNull ComponentHost mpsPlatform, @NotNull Project emptyProject) {
     IFileSystem localFS = mpsPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
-    IFile projectRoot = localFS.getFile(PathUtil.toSystemIndependent(FileUtil.getCanonicalPath(new File(myModulesRootPath).getAbsolutePath())));
+    IFile projectRoot = localFS.getFile(new File(myModulesRootPath));
     Set<IFile> exclude = createExcludesSet(localFS);
     ModulesMiner mm = new ModulesMiner(exclude, mpsPlatform.findComponent(DescriptorIOFacade.class));
     Iterable<ModulesMiner.ModuleHandle> minedHandles = mm.collectModules(projectRoot).getCollectedModules();

@@ -15,12 +15,11 @@
  */
 package jetbrains.mps.library.contributor;
 
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -49,7 +48,7 @@ public final class BootstrapLibraryContributor implements LibraryContributor {
 
   @NotNull
   private LibDescriptor createLibDescriptor(String path) {
-    return new LibDescriptor(myFileSystem.getFile(PathUtil.toSystemIndependent(FileUtil.getCanonicalPath(path))));
+    return new LibDescriptor(myFileSystem.getFile(new File(path)));
   }
 
 

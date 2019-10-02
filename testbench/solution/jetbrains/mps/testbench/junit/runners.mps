@@ -37,9 +37,7 @@
     <import index="jw4c" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.internal.runners(JUnit/)" />
     <import index="456n" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.internal.builders(JUnit/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
-    <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
     <import index="keqv" ref="r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)" />
-    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1560,12 +1558,13 @@
                 </node>
                 <node concept="2OqwBi" id="5ICuv4ILaTD" role="33vP2m">
                   <node concept="liA8E" id="5ICuv4ILaTE" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                    <node concept="2YIFZM" id="25EyDezeN2R" role="37wK5m">
-                      <ref role="37wK5l" to="ifj7:~PathUtil.toSystemIndependent(java.lang.String)" resolve="toSystemIndependent" />
-                      <ref role="1Pybhc" to="ifj7:~PathUtil" resolve="PathUtil" />
-                      <node concept="2GrUjf" id="25EyDezeNmR" role="37wK5m">
-                        <ref role="2Gs0qQ" node="7fR23Zqm3Ek" resolve="modulePath" />
+                    <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                    <node concept="2ShNRf" id="1utgXgQ3Oam" role="37wK5m">
+                      <node concept="1pGfFk" id="1utgXgQ3OMf" role="2ShVmc">
+                        <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                        <node concept="2GrUjf" id="1utgXgQ3P3L" role="37wK5m">
+                          <ref role="2Gs0qQ" node="7fR23Zqm3Ek" resolve="modulePath" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -2063,14 +2062,21 @@
           <node concept="3cpWsn" id="3Pdq2ILxfoB" role="3cpWs9">
             <property role="3TUv4t" value="false" />
             <property role="TrG5h" value="userDir" />
-            <node concept="2YIFZM" id="3Pdq2ILxfpq" role="33vP2m">
-              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
-              <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-              <node concept="Xl_RD" id="3Pdq2ILxfoG" role="37wK5m">
-                <property role="Xl_RC" value="user.dir" />
+            <node concept="3uibUv" id="1utgXgQ3FC$" role="1tU5fm">
+              <ref role="3uigEE" to="guwi:~File" resolve="File" />
+            </node>
+            <node concept="2ShNRf" id="1utgXgQ3Gef" role="33vP2m">
+              <node concept="1pGfFk" id="1utgXgQ3Klz" role="2ShVmc">
+                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                <node concept="2YIFZM" id="3Pdq2ILxfpq" role="37wK5m">
+                  <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
+                  <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                  <node concept="Xl_RD" id="3Pdq2ILxfoG" role="37wK5m">
+                    <property role="Xl_RC" value="user.dir" />
+                  </node>
+                </node>
               </node>
             </node>
-            <node concept="17QB3L" id="2f56j2P8Uj8" role="1tU5fm" />
           </node>
         </node>
         <node concept="1DcWWT" id="3Pdq2ILxfoH" role="3cqZAp">
@@ -2092,21 +2098,14 @@
                       <ref role="3cqZAo" node="25EyDezes0H" resolve="localFS" />
                     </node>
                     <node concept="liA8E" id="3Pdq2ILxfoQ" role="2OqNvi">
-                      <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                      <node concept="2YIFZM" id="25EyDezeIQG" role="37wK5m">
-                        <ref role="37wK5l" to="ifj7:~PathUtil.toSystemIndependent(java.lang.String)" resolve="toSystemIndependent" />
-                        <ref role="1Pybhc" to="ifj7:~PathUtil" resolve="PathUtil" />
-                        <node concept="3cpWs3" id="3Pdq2ILxfoR" role="37wK5m">
-                          <node concept="3cpWs3" id="3Pdq2ILxfoS" role="3uHU7B">
-                            <node concept="10M0yZ" id="3Pdq2ILxfpy" role="3uHU7w">
-                              <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
-                              <ref role="1PxDUh" to="guwi:~File" resolve="File" />
-                            </node>
-                            <node concept="37vLTw" id="3Pdq2ILxfoT" role="3uHU7B">
-                              <ref role="3cqZAo" node="3Pdq2ILxfoB" resolve="userDir" />
-                            </node>
+                      <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                      <node concept="2ShNRf" id="1utgXgQ3M4n" role="37wK5m">
+                        <node concept="1pGfFk" id="1utgXgQ3MPU" role="2ShVmc">
+                          <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
+                          <node concept="37vLTw" id="1utgXgQ3MUg" role="37wK5m">
+                            <ref role="3cqZAo" node="3Pdq2ILxfoB" resolve="userDir" />
                           </node>
-                          <node concept="37vLTw" id="3Pdq2ILxfoX" role="3uHU7w">
+                          <node concept="37vLTw" id="1utgXgQ3NB$" role="37wK5m">
                             <ref role="3cqZAo" node="3Pdq2ILxfoY" resolve="exclude" />
                           </node>
                         </node>
@@ -2241,25 +2240,12 @@
             </node>
             <node concept="2OqwBi" id="2BGPXkEwCpW" role="33vP2m">
               <node concept="liA8E" id="2BGPXkEwCpY" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                <node concept="2YIFZM" id="25EyDeze_zj" role="37wK5m">
-                  <ref role="1Pybhc" to="ifj7:~PathUtil" resolve="PathUtil" />
-                  <ref role="37wK5l" to="ifj7:~PathUtil.toSystemIndependent(java.lang.String)" resolve="toSystemIndependent" />
-                  <node concept="2YIFZM" id="4c_IX9qBbiv" role="37wK5m">
-                    <ref role="37wK5l" to="18ew:~FileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
-                    <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                    <node concept="2OqwBi" id="4c_IX9qB18J" role="37wK5m">
-                      <node concept="2ShNRf" id="25EyDezeC2l" role="2Oq$k0">
-                        <node concept="1pGfFk" id="25EyDezeC2m" role="2ShVmc">
-                          <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                          <node concept="37vLTw" id="25EyDezeC2n" role="37wK5m">
-                            <ref role="3cqZAo" node="2BGPXkEvd6V" resolve="myModulesRootPath" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="4c_IX9qB7H8" role="2OqNvi">
-                        <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
-                      </node>
+                <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                <node concept="2ShNRf" id="25EyDezeC2l" role="37wK5m">
+                  <node concept="1pGfFk" id="25EyDezeC2m" role="2ShVmc">
+                    <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                    <node concept="37vLTw" id="25EyDezeC2n" role="37wK5m">
+                      <ref role="3cqZAo" node="2BGPXkEvd6V" resolve="myModulesRootPath" />
                     </node>
                   </node>
                 </node>

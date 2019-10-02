@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,9 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
-import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 
@@ -222,7 +222,7 @@ public class JarEntryFile implements IFile {
 
   @Override
   public IFile getBundleHome() {
-    return LocalIoFileSystem.getInstance().getFile(PathUtil.toSystemIndependent(myJarFile.getPath()));
+    return LocalIoFileSystem.getInstance().getFile(myJarFile);
   }
 
   @Override

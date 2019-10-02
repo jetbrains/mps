@@ -20,7 +20,6 @@
     <import index="gn4j" ref="r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)" />
     <import index="je6q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library.contributor(MPS.Core/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
-    <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
     <import index="6vti" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.iofs.file(MPS.Core/)" />
   </imports>
   <registry>
@@ -506,22 +505,9 @@
                 <ref role="37wK5l" to="6vti:~LocalIoFileSystem.getInstance()" resolve="getInstance" />
               </node>
               <node concept="liA8E" id="7LMB4CaTMcz" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                <node concept="2YIFZM" id="65VDEp95cGD" role="37wK5m">
-                  <ref role="1Pybhc" to="ifj7:~PathUtil" resolve="PathUtil" />
-                  <ref role="37wK5l" to="ifj7:~PathUtil.toSystemIndependent(java.lang.String)" resolve="toSystemIndependent" />
-                  <node concept="2YIFZM" id="706SzJ5YZqy" role="37wK5m">
-                    <ref role="37wK5l" to="18ew:~FileUtil.getCanonicalPath(java.lang.String)" resolve="getCanonicalPath" />
-                    <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                    <node concept="2OqwBi" id="7LMB4CaTNuT" role="37wK5m">
-                      <node concept="1rXfSq" id="7LMB4CaTN0$" role="2Oq$k0">
-                        <ref role="37wK5l" node="15VbAzMFx6R" resolve="getProjectFile" />
-                      </node>
-                      <node concept="liA8E" id="7LMB4CaTO9W" role="2OqNvi">
-                        <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
-                      </node>
-                    </node>
-                  </node>
+                <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                <node concept="1rXfSq" id="7LMB4CaTN0$" role="37wK5m">
+                  <ref role="37wK5l" node="15VbAzMFx6R" resolve="getProjectFile" />
                 </node>
               </node>
             </node>

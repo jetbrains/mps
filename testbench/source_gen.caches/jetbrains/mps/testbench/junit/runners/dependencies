@@ -25,11 +25,9 @@
     <classNode dependClassName="jetbrains.mps.library.ModulesMiner" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.project.io.DescriptorIOFacade" />
-    <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="jetbrains.mps.vfs.IFileSystem" />
     <classNode dependClassName="jetbrains.mps.vfs.VFSManager" />
-    <classNode dependClassName="jetbrains.mps.vfs.util.PathUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="jetbrains.mps.tool.environment.ProjectStrategyBase" />
@@ -46,7 +44,6 @@
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="jetbrains.mps.vfs.IFileSystem" />
     <classNode dependClassName="jetbrains.mps.vfs.VFSManager" />
-    <classNode dependClassName="jetbrains.mps.vfs.util.PathUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="jetbrains.mps.tool.environment.ProjectStrategyBase" />

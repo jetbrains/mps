@@ -20,7 +20,6 @@ import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.LanguageLibrary;
 import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -51,9 +50,8 @@ public final class PluginLibraryContributor implements LibraryContributor {
     if (plugin == null) {
       throw new IllegalStateException("Plugin could not be found: plugin=" + pluginId.getIdString());
     }
-    final String libraryPath = new File(plugin.getPath(), library.dir).getCanonicalPath();
-    // FIXME introduce IFileSystem.getFile(java.io.File)
-    return new LibDescriptor(myFileSystem.getFile(PathUtil.toSystemIndependent(libraryPath)), plugin.getPluginClassLoader());
+    final File libraryPath = new File(plugin.getPath(), library.dir);
+    return new LibDescriptor(myFileSystem.getFile(libraryPath), plugin.getPluginClassLoader());
   }
 
   @Override

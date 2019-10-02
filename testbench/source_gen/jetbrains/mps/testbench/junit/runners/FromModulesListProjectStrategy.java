@@ -12,7 +12,6 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.util.PathUtil;
 
 /**
  * todo: merge with "modules collected from dir", or specify here paths to msd/mpl files
@@ -37,7 +36,7 @@ public class FromModulesListProjectStrategy extends ProjectStrategyBase {
     IFileSystem localFS = mpsPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
     ModulesMiner mm = new ModulesMiner(mpsPlatform);
     for (String modulePath : modules) {
-      IFile fileByPath = localFS.getFile(PathUtil.toSystemIndependent(modulePath));
+      IFile fileByPath = localFS.getFile(new File(modulePath));
       mm.collectModules(fileByPath);
     }
     return loadProjectFromModuleHandles(emptyProject, mm.getCollectedModules());

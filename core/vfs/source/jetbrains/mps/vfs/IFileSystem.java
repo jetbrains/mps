@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,11 @@
  */
 package jetbrains.mps.vfs;
 
+import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
 
 public interface IFileSystem {
   char SEPARATOR_CHAR = '/';
@@ -23,6 +27,16 @@ public interface IFileSystem {
 
   @NotNull
   IFile getFile(@NotNull String path);
+
+  /**
+   * As long as {@link #getFile(String)} is very peculiar about path notation, and it's often hard to ensure proper path string comes from an external location,
+   * this method comes as a handy alternative that performs necessary path mangling to decrease failure rate of aforementioned {@code getFile()}.
+   * @return same as {@link #getFile(String)}
+   */
+  @NotNull
+  default IFile getFile(@NotNull File file) {
+    return getFile(PathUtil.toSystemIndependent(FileUtil.getCanonicalPath(file.getAbsolutePath())));
+  }
 
   boolean isFileIgnored(@NotNull String name);
 

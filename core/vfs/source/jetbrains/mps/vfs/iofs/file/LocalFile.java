@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 package jetbrains.mps.vfs.iofs.file;
 
 import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.vfs.FileSystem;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
@@ -82,7 +82,7 @@ class LocalFile implements IFile {
     if (parentFile == null) {
       return null;
     }
-    return myFileSystem.getFile(PathUtil.toSystemIndependent(parentFile.getPath()));
+    return myFileSystem.getFile(parentFile);
   }
 
   @Override
@@ -175,7 +175,7 @@ class LocalFile implements IFile {
 
     List<IFile> result = new ArrayList<>(files.length);
     for (File f : files) {
-      result.add(myFileSystem.getFile(PathUtil.toSystemIndependent(f.getPath())));
+      result.add(myFileSystem.getFile(f));
     }
     return result;
   }
