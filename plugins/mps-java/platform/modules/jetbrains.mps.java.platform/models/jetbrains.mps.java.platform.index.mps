@@ -2782,7 +2782,7 @@
                             <ref role="3cqZAo" node="3Cep5Ce5gRr" resolve="inputData" />
                           </node>
                           <node concept="liA8E" id="75eNxRwvLNy" role="2OqNvi">
-                            <ref role="37wK5l" to="8902:~FileContent.getFileName()" resolve="getFileName" />
+                            <ref role="37wK5l" to="8902:~IndexedFile.getFileName()" resolve="getFileName" />
                           </node>
                         </node>
                         <node concept="2OqwBi" id="75eNxRwvM2J" role="37wK5m">

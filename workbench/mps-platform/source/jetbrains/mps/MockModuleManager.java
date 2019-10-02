@@ -33,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -64,6 +65,8 @@ final class MockModuleManager extends ModuleManager {
 
   }
 
+  private boolean askedOnProjectOpening = false;
+
   @NotNull
   @Override
   public Module[] getModules() {
@@ -71,8 +74,16 @@ final class MockModuleManager extends ModuleManager {
         We don't use .iml files for modules (we have own .mps and .mpl file extensions)
         But IntelliJ Platform expect either modules in project or one module in project/.idea/project.iml
         As quick fix just return one MockModule so Platform will not try to find/create module under .idea (will fail any way)
+
+        HACK: And another dirty hack to avoid NPE in places like com.intellij.openapi.roots.impl.ProjectRootManagerImpl#getContentRoots - only return instance of MockModule on project start.
+
+        TODO: move to IntelliJ Platform modules system!
     */
-    return ProjectHelper.fromIdeaProject(myProject) != null ? new Module[]{new MockModule(myProject, myProject)} : new Module[0];
+    if (askedOnProjectOpening || ProjectHelper.fromIdeaProject(myProject) == null) {
+      return new Module[0];
+    }
+    askedOnProjectOpening = true;
+    return new Module[]{new MockModule(myProject, myProject)};
   }
 
   @Nullable
@@ -96,7 +107,7 @@ final class MockModuleManager extends ModuleManager {
   @NotNull
   @Override
   public List<Module> getModuleDependentModules(@NotNull Module module) {
-    return null;
+    return Collections.emptyList();
   }
 
   @Override
@@ -125,7 +136,7 @@ final class MockModuleManager extends ModuleManager {
   @Nullable
   @Override
   public String[] getModuleGroupPath(@NotNull Module module) {
-    return new String[0];
+    return null;
   }
 
   @Override
@@ -136,13 +147,13 @@ final class MockModuleManager extends ModuleManager {
   @NotNull
   @Override
   public Collection<ModuleDescription> getAllModuleDescriptions() {
-    return null;
+    return Collections.emptyList();
   }
 
   @NotNull
   @Override
   public Collection<UnloadedModuleDescription> getUnloadedModuleDescriptions() {
-    return null;
+    return Collections.emptyList();
   }
 
   @Nullable
