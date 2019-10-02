@@ -744,13 +744,13 @@
                               </node>
                               <node concept="2OqwBi" id="75eqTYkqhQZ" role="33vP2m">
                                 <node concept="2OqwBi" id="75eqTYkqhR0" role="2Oq$k0">
-                                  <node concept="2YIFZM" id="75eqTYkqhR1" role="2Oq$k0">
+                                  <node concept="2YIFZM" id="7H0x_FtPm3A" role="2Oq$k0">
+                                    <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
                                     <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-                                    <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
-                                    <node concept="2YIFZM" id="75eqTYkqlOF" role="37wK5m">
+                                    <node concept="2YIFZM" id="7H0x_FtPm3B" role="37wK5m">
                                       <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                                       <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
-                                      <node concept="37vLTw" id="1oo0A63IYPh" role="37wK5m">
+                                      <node concept="37vLTw" id="7H0x_FtPm3C" role="37wK5m">
                                         <ref role="3cqZAo" node="75eqTYkqe2J" resolve="MIGRATION_PLUGIN" />
                                       </node>
                                     </node>
@@ -940,9 +940,7 @@
         <property role="TrG5h" value="args" />
         <property role="3TUv4t" value="false" />
         <node concept="10Q1$e" id="1oo0A63FX94" role="1tU5fm">
-          <node concept="3uibUv" id="1oo0A63FX93" role="10Q1$1">
-            <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-          </node>
+          <node concept="17QB3L" id="7H0x_FtPmpE" role="10Q1$1" />
         </node>
       </node>
       <node concept="3clFbS" id="1oo0A63FX95" role="3clF47">

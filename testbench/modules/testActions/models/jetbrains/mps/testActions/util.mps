@@ -234,10 +234,10 @@
             <node concept="3uibUv" id="1YKWOow4fO8" role="1tU5fm">
               <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptor" resolve="IdeaPluginDescriptor" />
             </node>
-            <node concept="2YIFZM" id="3SXwVgLRE0p" role="33vP2m">
+            <node concept="2YIFZM" id="7H0x_FtPfiZ" role="33vP2m">
+              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
-              <node concept="37vLTw" id="3GM_nagTxf4" role="37wK5m">
+              <node concept="37vLTw" id="7H0x_FtPfj0" role="37wK5m">
                 <ref role="3cqZAo" node="3SXwVgLRG_s" resolve="pluginId" />
               </node>
             </node>
@@ -308,8 +308,8 @@
             <node concept="37vLTw" id="3GM_nagTBfD" role="2Oq$k0">
               <ref role="3cqZAo" node="1YKWOow4fO7" resolve="descriptor" />
             </node>
-            <node concept="liA8E" id="srfjDK2I2L" role="2OqNvi">
-              <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getAndClearActionDescriptionElements()" resolve="getAndClearActionDescriptionElements" />
+            <node concept="liA8E" id="7H0x_FtPnpJ" role="2OqNvi">
+              <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getActionDescriptionElements()" resolve="getActionDescriptionElements" />
             </node>
           </node>
         </node>
