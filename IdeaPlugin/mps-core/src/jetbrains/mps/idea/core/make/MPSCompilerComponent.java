@@ -30,12 +30,12 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.module.CachedRepositoryData;
-import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.textgen.trace.TraceInfoCache;
 import jetbrains.mps.util.io.ModelOutputStream;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.incremental.messages.BuildMessage.Kind;
 
@@ -105,7 +105,9 @@ public class MPSCompilerComponent implements ProjectComponent {
       });
       long result = (System.nanoTime() - start) / 1000000;
 
-      if (CompilerWorkspaceConfiguration.getInstance(myProject).COMPILER_PROCESS_ADDITIONAL_VM_OPTIONS.contains(MPSBundle.message("mps.compiler.component.debug.flag"))) {
+      @NonNls
+      final String debugFlag = "-Dmps.jps.debug=true";
+      if (CompilerWorkspaceConfiguration.getInstance(myProject).COMPILER_PROCESS_ADDITIONAL_VM_OPTIONS.contains(debugFlag)) {
         context.addMessage(CompilerMessageCategory.INFORMATION, String.format(MPSBundle.message("mps.compiler.component.message.cache.saved"), result), null, 0, 0);
       }
       return true;

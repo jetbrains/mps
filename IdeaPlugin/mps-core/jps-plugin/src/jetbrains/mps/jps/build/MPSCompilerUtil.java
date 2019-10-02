@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,11 +27,11 @@ import org.jetbrains.jps.incremental.messages.CompilerMessage;
 public class MPSCompilerUtil {
 
   public static boolean isTracingMode() {
-    return isExtraTracingMode() || "true".equals(System.getProperty("mps.jps.debug"));
+    return isExtraTracingMode() || Boolean.getBoolean("mps.jps.debug");
   }
 
   public static boolean isExtraTracingMode() {
-    return "true".equals(System.getProperty("mps.jps.debugExtra"));
+    return Boolean.getBoolean("mps.jps.debugExtra");
   }
 
   public static void debug(CompileContext context, String msg) {
