@@ -57,6 +57,18 @@
     <copy todir="${build.layout}/plugins/github">
       <fileset dir="${basedir}/plugins/github" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/vcs-changeReminder" />
+    <copy todir="${build.layout}/plugins/vcs-changeReminder">
+      <fileset dir="${basedir}/plugins/vcs-changeReminder" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/settings-repository" />
+    <copy todir="${build.layout}/plugins/settings-repository">
+      <fileset dir="${basedir}/plugins/settings-repository" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/tasks" />
+    <copy todir="${build.layout}/plugins/tasks">
+      <fileset dir="${basedir}/plugins/tasks" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/terminal" />
     <copy todir="${build.layout}/plugins/terminal">
       <fileset dir="${basedir}/plugins/terminal" />

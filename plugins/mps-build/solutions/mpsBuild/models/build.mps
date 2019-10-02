@@ -1503,6 +1503,11 @@
           <ref role="3yrxFb" node="7I6sQF_LwRj" />
         </node>
       </node>
+      <node concept="2GhqfE" id="6ek1CjkSDuv" role="nCB5Z">
+        <node concept="3yrxFa" id="6ek1CjkSDx9" role="3yrxIG">
+          <ref role="3yrxFb" node="6ek1Cjkmd9I" />
+        </node>
+      </node>
       <node concept="2GhqfE" id="7I6sQF_Lx4N" role="nCB5Z">
         <node concept="3yrxFa" id="7I6sQF_LxaO" role="3yrxIG">
           <ref role="3yrxFb" node="7I6sQF_LwTE" />
@@ -18828,6 +18833,13 @@
           </node>
         </node>
       </node>
+      <node concept="13uQ2_" id="6ek1Cjkmd9I" role="39821P">
+        <node concept="3_J27D" id="6ek1Cjkmd9K" role="13uQ07">
+          <node concept="3Mxwew" id="6ek1Cjkmdb2" role="3MwsjC">
+            <property role="3MwjfP" value="platform-serviceContainer.jar" />
+          </node>
+        </node>
+      </node>
       <node concept="13uQ2_" id="7I6sQF_LwTE" role="39821P">
         <node concept="3_J27D" id="7I6sQF_LwTG" role="13uQ07">
           <node concept="3Mxwew" id="7I6sQF_LwUS" role="3MwsjC">
@@ -30043,6 +30055,57 @@
         <node concept="3_J27D" id="1diLdO26H7F" role="Nbhlr">
           <node concept="3Mxwew" id="1diLdO26H7G" role="3MwsjC">
             <property role="3MwjfP" value="plugins" />
+          </node>
+        </node>
+        <node concept="398223" id="6ek1Cjkv_G4" role="39821P">
+          <node concept="3_J27D" id="6ek1Cjkv_G6" role="Nbhlr">
+            <node concept="3Mxwew" id="6ek1Cjkv_GI" role="3MwsjC">
+              <property role="3MwjfP" value="vcs-changeReminder" />
+            </node>
+          </node>
+          <node concept="2HvfSZ" id="6ek1Cjkv_Gw" role="39821P">
+            <node concept="55IIr" id="6ek1Cjkv_Gx" role="2HvfZ0">
+              <node concept="2Ry0Ak" id="6ek1Cjkv_GB" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="6ek1Cjkv_GG" role="2Ry0An">
+                  <property role="2Ry0Am" value="vcs-changeReminder" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="398223" id="6ek1Cjkv_Hf" role="39821P">
+          <node concept="3_J27D" id="6ek1Cjkv_Hh" role="Nbhlr">
+            <node concept="3Mxwew" id="6ek1Cjkv_I0" role="3MwsjC">
+              <property role="3MwjfP" value="settings-repository" />
+            </node>
+          </node>
+          <node concept="2HvfSZ" id="6ek1Cjkv_HM" role="39821P">
+            <node concept="55IIr" id="6ek1Cjkv_HN" role="2HvfZ0">
+              <node concept="2Ry0Ak" id="6ek1Cjkv_HT" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="6ek1Cjkv_HY" role="2Ry0An">
+                  <property role="2Ry0Am" value="settings-repository" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="398223" id="6ek1Cjkv_IM" role="39821P">
+          <node concept="3_J27D" id="6ek1Cjkv_IO" role="Nbhlr">
+            <node concept="3Mxwew" id="6ek1Cjkv_JE" role="3MwsjC">
+              <property role="3MwjfP" value="tasks" />
+            </node>
+          </node>
+          <node concept="2HvfSZ" id="6ek1Cjkv_Js" role="39821P">
+            <node concept="55IIr" id="6ek1Cjkv_Jt" role="2HvfZ0">
+              <node concept="2Ry0Ak" id="6ek1Cjkv_Jz" role="iGT6I">
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="6ek1Cjkv_JC" role="2Ry0An">
+                  <property role="2Ry0Am" value="tasks" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="398223" id="7NGz2TYsond" role="39821P">
