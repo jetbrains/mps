@@ -17,6 +17,7 @@ package jetbrains.mps.vfs.iofs.jar;
 
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -28,14 +29,13 @@ import java.io.File;
 public final class JarIoFileSystem implements IFileSystem {
   public static final String JAR_SEPARATOR = "!";
   private static final Logger LOG = LogManager.getLogger(JarIoFileSystem.class);
+  private final VFSManager myManager;
 
-  private static final JarIoFileSystem INSTANCE = new JarIoFileSystem();
-
-  private JarIoFileSystem() {
-  }
-
-  public static IFileSystem getInstance() {
-    return INSTANCE;
+  /**
+   * Clients shall not instantiate this class. Instead, use {@link jetbrains.mps.vfs.VFSManager#getFileSystem(String)}
+   */
+  public JarIoFileSystem(@NotNull VFSManager manager) {
+    myManager = manager;
   }
 
   @NotNull
@@ -72,5 +72,9 @@ public final class JarIoFileSystem implements IFileSystem {
   @Override
   public boolean isFileIgnored(@NotNull String name) {
     return false;
+  }
+
+  /*package*/ VFSManager getManager() {
+    return myManager;
   }
 }

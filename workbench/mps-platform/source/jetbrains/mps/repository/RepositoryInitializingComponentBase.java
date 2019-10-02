@@ -24,6 +24,7 @@ import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import jetbrains.mps.workbench.action.ApplicationPluginHolder;
 
@@ -60,10 +61,8 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
                                              PersistentFS filesystem //see MPS-22970
   ) {
     myLibraryInitializer = coreComponents.getLibraryInitializer();
-    // FIXME I'd prefer to use VFSManager.getFileSystem to obtrain FS instance, just have no idea how to make sure I get the one with java.io backend
-    //       perhaps, shall register dedicated key, "local-file", that is the same as "file" in pure MPS but different in IDEA environment (latter
-    //       refers to VirtualFile-backed IDEA FS)
-    myFS = PathManager.isFromSources() ? fs : LocalIoFileSystem.getInstance();
+    // FIXME why cons, not an abstract method invoked from initComponent() to populate contributors list?
+    myFS = PathManager.isFromSources() ? fs : coreComponents.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
   }
 
   protected final void addContributor(LibraryContributor c) {

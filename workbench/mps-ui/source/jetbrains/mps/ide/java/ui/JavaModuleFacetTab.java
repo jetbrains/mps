@@ -45,7 +45,6 @@ import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionKind;
-import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
@@ -62,6 +61,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -279,8 +279,8 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       // Need to handle only newly added libraries
       libraryPathsTable.removeAll(oldLibraries);
       for (String file : libraryPathsTable) {
-        final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addSourceRoot(LocalIoFileSystem.getInstance().getFile(file), modelRoots);
-        if (javaStubsModelRoot != null && !modelRoots.contains(javaStubsModelRoot)) {
+        final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addJavaStubModelRoot(new File(file), modelRoots);
+        if (javaStubsModelRoot != null) {
           modelRoots.add(javaStubsModelRoot);
         }
       }

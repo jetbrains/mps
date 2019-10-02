@@ -31,12 +31,10 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="tp68" ref="r:00000000-0000-4000-0000-011c895903ac(jetbrains.mps.baseLanguageInternal.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="1l1h" ref="r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)" />
     <import index="tqvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.tempmodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
     <import index="i9so" ref="r:9e5578e0-37f0-4c9b-a301-771bcb453678(jetbrains.mps.make.script)" />
     <import index="tpcq" ref="r:00000000-0000-4000-0000-011c89590286(jetbrains.mps.lang.core.plugin)" />
@@ -53,7 +51,7 @@
     <import index="6qgz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.model(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
-    <import index="amo1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.impl(MPS.Core/)" />
+    <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="gvpw" ref="r:23e91135-7369-4a41-8156-2843acab7aa3(jetbrains.mps.debugger.java.evaluation.behavior)" implicit="true" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
   </imports>
@@ -1424,22 +1422,6 @@
         </node>
       </node>
     </node>
-    <node concept="Wx3nA" id="4kSix$ymNst" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="4kSix$yn5nU" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-      <node concept="3Tm6S6" id="4kSix$ymJxB" role="1B3o_S" />
-      <node concept="2YIFZM" id="4kSix$yn4DF" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <node concept="3VsKOn" id="4kSix$yn4DG" role="37wK5m">
-          <ref role="3VsUkX" node="IYmOvntYf8" resolve="EvaluationModule" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="5$fHs$AwdsG" role="jymVt" />
     <node concept="312cEg" id="29Pb3oJp8Wm" role="jymVt">
       <property role="TrG5h" value="myDescriptor" />
       <property role="3TUv4t" value="true" />
@@ -1660,10 +1642,7 @@
             </node>
             <node concept="3SKdUt" id="jVJrchl1Wr" role="3cqZAp">
               <node concept="1PaTwC" id="ATZLwXoc$7" role="3ndbpf">
-                <node concept="3oM_SD" id="ATZLwXoc$8" role="1PaTwD">
-                  <property role="3oM_SC" value="XXX" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$9" role="1PaTwD">
+                <node concept="3oM_SD" id="JlXilglHrJ" role="1PaTwD">
                   <property role="3oM_SC" value="Here," />
                 </node>
                 <node concept="3oM_SD" id="ATZLwXoc$a" role="1PaTwD">
@@ -1673,7 +1652,7 @@
                   <property role="3oM_SC" value="use" />
                 </node>
                 <node concept="3oM_SD" id="ATZLwXoc$c" role="1PaTwD">
-                  <property role="3oM_SC" value="IFile" />
+                  <property role="3oM_SC" value="File" />
                 </node>
                 <node concept="3oM_SD" id="ATZLwXoc$d" role="1PaTwD">
                   <property role="3oM_SC" value="just" />
@@ -1720,23 +1699,7 @@
                 <node concept="3oM_SD" id="ATZLwXoc$r" role="1PaTwD">
                   <property role="3oM_SC" value="but" />
                 </node>
-              </node>
-            </node>
-            <node concept="3SKdUt" id="jVJrchl6Rd" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXoc$s" role="3ndbpf">
-                <node concept="3oM_SD" id="ATZLwXoc$t" role="1PaTwD">
-                  <property role="3oM_SC" value="" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$u" role="1PaTwD">
-                  <property role="3oM_SC" value="" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$v" role="1PaTwD">
-                  <property role="3oM_SC" value="" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$w" role="1PaTwD">
-                  <property role="3oM_SC" value="" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$x" role="1PaTwD">
+                <node concept="3oM_SD" id="JlXilglHyJ" role="1PaTwD">
                   <property role="3oM_SC" value="a" />
                 </node>
                 <node concept="3oM_SD" id="ATZLwXoc$y" role="1PaTwD">
@@ -1751,56 +1714,6 @@
                 <node concept="3oM_SD" id="ATZLwXoc$_" role="1PaTwD">
                   <property role="3oM_SC" value="parent/name." />
                 </node>
-                <node concept="3oM_SD" id="ATZLwXoc$A" role="1PaTwD">
-                  <property role="3oM_SC" value="It" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$B" role="1PaTwD">
-                  <property role="3oM_SC" value="could" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$C" role="1PaTwD">
-                  <property role="3oM_SC" value="be" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$D" role="1PaTwD">
-                  <property role="3oM_SC" value="java.io.File," />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$E" role="1PaTwD">
-                  <property role="3oM_SC" value="if" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$F" role="1PaTwD">
-                  <property role="3oM_SC" value="MRD.getJavaStubsModelRoot" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$G" role="1PaTwD">
-                  <property role="3oM_SC" value="pleases" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$H" role="1PaTwD">
-                  <property role="3oM_SC" value="to" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$I" role="1PaTwD">
-                  <property role="3oM_SC" value="support" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoc$J" role="1PaTwD">
-                  <property role="3oM_SC" value="one" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs8" id="jVJrchl5j3" role="3cqZAp">
-              <node concept="3cpWsn" id="jVJrchl5j4" role="3cpWs9">
-                <property role="TrG5h" value="file" />
-                <node concept="3uibUv" id="jVJrchl5iX" role="1tU5fm">
-                  <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-                </node>
-                <node concept="2OqwBi" id="jVJrchl5j5" role="33vP2m">
-                  <node concept="10M0yZ" id="jVJrchl5j6" role="2Oq$k0">
-                    <ref role="3cqZAo" to="amo1:~IoFileSystem.INSTANCE" resolve="INSTANCE" />
-                    <ref role="1PxDUh" to="amo1:~IoFileSystem" resolve="IoFileSystem" />
-                  </node>
-                  <node concept="liA8E" id="jVJrchl5j7" role="2OqNvi">
-                    <ref role="37wK5l" to="amo1:~IoFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                    <node concept="37vLTw" id="jVJrchl5j8" role="37wK5m">
-                      <ref role="3cqZAo" node="15fzu3GFzkk" resolve="path" />
-                    </node>
-                  </node>
-                </node>
               </node>
             </node>
             <node concept="3cpWs8" id="jVJrchkj8_" role="3cqZAp">
@@ -1809,17 +1722,22 @@
                 <node concept="3uibUv" id="jVJrchkj8r" role="1tU5fm">
                   <ref role="3uigEE" to="6qgz:~ModelRootDescriptor" resolve="ModelRootDescriptor" />
                 </node>
-                <node concept="2YIFZM" id="1XOecUCD9EL" role="33vP2m">
-                  <ref role="37wK5l" to="6qgz:~ModelRootDescriptor.addSourceRoot(jetbrains.mps.vfs.IFile,java.util.Collection)" resolve="addSourceRoot" />
+                <node concept="2YIFZM" id="JlXilglpXR" role="33vP2m">
                   <ref role="1Pybhc" to="6qgz:~ModelRootDescriptor" resolve="ModelRootDescriptor" />
-                  <node concept="37vLTw" id="1XOecUCD9EM" role="37wK5m">
-                    <ref role="3cqZAo" node="jVJrchl5j4" resolve="file" />
+                  <ref role="37wK5l" to="6qgz:~ModelRootDescriptor.addJavaStubModelRoot(java.io.File,java.util.Collection)" resolve="addJavaStubModelRoot" />
+                  <node concept="2ShNRf" id="JlXilglxme" role="37wK5m">
+                    <node concept="1pGfFk" id="JlXilglH9T" role="2ShVmc">
+                      <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                      <node concept="37vLTw" id="JlXilglHeD" role="37wK5m">
+                        <ref role="3cqZAo" node="15fzu3GFzkk" resolve="path" />
+                      </node>
+                    </node>
                   </node>
-                  <node concept="2OqwBi" id="1XOecUCD9EN" role="37wK5m">
-                    <node concept="37vLTw" id="1XOecUCD9EO" role="2Oq$k0">
+                  <node concept="2OqwBi" id="JlXilglpXT" role="37wK5m">
+                    <node concept="37vLTw" id="JlXilglpXU" role="2Oq$k0">
                       <ref role="3cqZAo" node="29Pb3oJp8Wm" resolve="myDescriptor" />
                     </node>
-                    <node concept="liA8E" id="1XOecUCD9EP" role="2OqNvi">
+                    <node concept="liA8E" id="JlXilglpXV" role="2OqNvi">
                       <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModelRootDescriptors()" resolve="getModelRootDescriptors" />
                     </node>
                   </node>

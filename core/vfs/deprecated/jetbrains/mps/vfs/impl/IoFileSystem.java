@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,20 +19,33 @@ import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.iofs.jar.JarIoFileSystem;
-import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * @deprecated access instance through VFSManager.getFileSystem()
+ */
 @Deprecated
 @ToRemove(version = 2019.1)
 public class IoFileSystem implements FileSystem {
   private static final Logger LOG = LogManager.getLogger(IoFileSystem.class);
 
-  public static final IoFileSystem INSTANCE = new IoFileSystem();
+  // afaik there are no direct uses in mbeddr, only by means of FileSystem.getInstance()
+  public static IoFileSystem INSTANCE;
 
-  private IoFileSystem() {
+  private final VFSManager myManager;
+
+  /**
+   * IMPLEMENTATION METHOD FOR MPS INTERNAL USE!
+   */
+  public static void newInstance(VFSManager vfsManager) {
+    INSTANCE = new IoFileSystem(vfsManager);
+  }
+
+  private IoFileSystem(VFSManager vfsManager) {
+    myManager = vfsManager;
   }
 
   @NotNull
@@ -47,9 +60,10 @@ public class IoFileSystem implements FileSystem {
       path += "/";
     }
     if (path.contains("!")) {
-      return JarIoFileSystem.getInstance().getFile(path);
+      // there's no explicit java.io-backed jar FS, but I don't care as this class is scheduled for doom anyway
+      return myManager.getFileSystem(VFSManager.JAR_FS).getFile(path);
     } else {
-      return LocalIoFileSystem.getInstance().getFile(path);
+      return myManager.getFileSystem(VFSManager.JAVA_IO_FILE_FS).getFile(path);
     }
   }
 

@@ -17,17 +17,16 @@ package jetbrains.mps.vfs.iofs.file;
 
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
 
 public final class LocalIoFileSystem implements IFileSystem {
-  private static final LocalIoFileSystem INSTANCE = new LocalIoFileSystem();
-
-  private LocalIoFileSystem() {
-  }
-
-  public static IFileSystem getInstance() {
-    return INSTANCE;
+  /**
+   * Clients shall not instantiate this class. Instead, use {@link jetbrains.mps.vfs.VFSManager#getFileSystem(String)}
+   */
+  public LocalIoFileSystem(@SuppressWarnings("unused") @NotNull VFSManager unused) {
+    // the only reason to pass non-null VFSManager instance here at the moment is to prevent arbitrary instantiation of the class
   }
 
   @NotNull

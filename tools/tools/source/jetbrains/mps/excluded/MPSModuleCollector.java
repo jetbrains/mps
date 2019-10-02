@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,9 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacroHelper;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,12 +44,12 @@ import java.util.List;
  */
 class MPSModuleCollector {
   private final List<DescriptorEntry> myResult;
-  private final FileSystem myFileSystem;
+  private final IFileSystem myFileSystem;
   private final DescriptorIOFacade myDescriptorIO;
 
   public MPSModuleCollector(Platform mpsPlatform) {
     myResult = new ArrayList<>(30);
-    myFileSystem = IoFileSystem.INSTANCE;
+    myFileSystem = mpsPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
     myDescriptorIO = mpsPlatform.findComponent(DescriptorIOFacade.class);
   }
 
@@ -71,7 +71,7 @@ class MPSModuleCollector {
         continue;
       }
 
-      final IFile moduleIFile = myFileSystem.getFile(child.getAbsolutePath());
+      final IFile moduleIFile = myFileSystem.getFile(child);
       if (!myDescriptorIO.isModuleDescriptorFile(moduleIFile)) {
         continue;
       }
@@ -120,8 +120,8 @@ class MPSModuleCollector {
         // currently same getGeneratorOutputPath used for all generators, so generatorSrcPath will be the same for
         // all generators in the language. Using only first one for now.
         for (GeneratorDescriptor generator : ld.getGenerators()) {
-          String generatorSrcPath = ProjectPathUtil.getGeneratorOutputPath(generator);
-          de.addSourcePath(getCanonicalPath(generatorSrcPath));
+          String generatorSrcPath = getCanonicalPath(ProjectPathUtil.getGeneratorOutputPath(generator));
+          de.addSourcePath(generatorSrcPath);
           // FIXME need a proper mechanism to discover classesGen folder of a module.
           // Next code comes from JavaModuleFacetImpl.getClassesGen(), would be great to reuse one rather than copy
           de.addClassGenPath(myFileSystem.getFile(generatorSrcPath).getParent().findChild(AbstractModule.CLASSES_GEN));

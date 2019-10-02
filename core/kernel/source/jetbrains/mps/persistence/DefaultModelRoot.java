@@ -42,6 +42,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModelCreationException;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
@@ -49,6 +50,7 @@ import org.jetbrains.mps.openapi.persistence.ModelLoadException;
 import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -458,6 +460,21 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     result.setContentDirectory(modelDir);
     result.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", modelDir));
     return result.toDescriptor();
+  }
+
+  /**
+   * Alternative to {@link #createSingleFolderDescriptor(IFile)} that doesn't require MPS VFS initialized before use (e.g. JPS tests, see
+   * {@code JpsTestModelsEnvironment})
+   * @since 2019.3
+   */
+  public static ModelRootDescriptor createSingleFolderDescriptor(@NotNull final File modelDir) {
+    // that's what #save(Memento) does, just without IFile
+    ModelRootDescriptor result = new ModelRootDescriptor();
+    final Memento memento = result.getMemento();
+    memento.put("type", PersistenceRegistry.DEFAULT_MODEL_ROOT);
+    memento.put(CONTENT_PATH, modelDir.getPath());
+    memento.createChild(SourceRootKinds.SOURCES.getName()).put(LOCATION, "");
+    return result;
   }
 
   static final class Defaults {

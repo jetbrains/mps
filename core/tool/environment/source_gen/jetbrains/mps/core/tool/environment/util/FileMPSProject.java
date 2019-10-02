@@ -11,8 +11,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import java.io.IOException;
 import org.apache.log4j.Level;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
@@ -33,7 +34,9 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   @NotNull
   private MacroHelper createMacroHelper() {
     // todo [MM] investigate why it fails when using just path (where those . and .. come from) 
-    return MacrosFactory.forProjectFile(LocalIoFileSystem.getInstance().getFile(getProjectFile()));
+    // XXX here uses to be LocalIoFileSystem.getInstance, therefore I stick to JAVA_IO_FILE_FS, not just FILE_FS, thoufh see no apparent reason to be that specific. 
+    IFileSystem fs = getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
+    return MacrosFactory.forProjectFile(fs.getFile(getProjectFile()));
   }
 
   @Override

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.java.stub;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import jetbrains.mps.project.AbstractModule;
@@ -25,7 +26,8 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.PathManager;
-import jetbrains.mps.vfs.iofs.jar.JarIoFileSystem;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -54,11 +56,14 @@ import java.util.concurrent.TimeUnit;
 public class StubModelLazyLoadStressTest implements EnvironmentAware {
   private static final boolean DEBUG = Boolean.FALSE.booleanValue();
 
+  private ComponentHost myPlatform;
+
   /**
-   * @param ignored bare MPS environment suffice
+   * @param env bare MPS environment suffice
    */
   @Override
-  public void setEnvironment(@NotNull Environment ignored) {
+  public void setEnvironment(@NotNull Environment env) {
+    myPlatform = env.getPlatform();
   }
 
   private static void trace(String message) {
@@ -74,7 +79,8 @@ public class StubModelLazyLoadStressTest implements EnvironmentAware {
     FolderSetDataSource dataSource = new FolderSetDataSource();
     // any har with JavaClassStubModelDescriptor would do. Used to be java.util, which uses dedicated model root (JDKStubsModelRoot) since Java 11
     String path = PathUtil.toSystemIndependent(PathManager.getLibPath()) + "/trove4j.jar!/gnu/trove";
-    dataSource.addPath(JarIoFileSystem.getInstance().getFile(path));
+    final IFileSystem jarFS = myPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.JAR_FS);
+    dataSource.addPath(jarFS.getFile(path));
     JavaClassStubModelDescriptor model = new JavaClassStubModelDescriptor(modelRef, dataSource) {
       @Override
       protected void fireModelStateChanged(ModelLoadingState oldState, ModelLoadingState newState) {

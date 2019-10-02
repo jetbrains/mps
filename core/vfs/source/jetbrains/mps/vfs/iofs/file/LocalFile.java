@@ -45,7 +45,6 @@ import java.util.List;
  */
 @Immutable
 class LocalFile implements IFile {
-  private final static IoFileSystem ourFS = IoFileSystem.INSTANCE;
   private IFileSystem myFileSystem;
   private String myPath;
   private File myFile;
@@ -67,7 +66,7 @@ class LocalFile implements IFile {
   @NotNull
   @Override
   public FileSystem getFileSystem() {
-    return ourFS;
+    return IoFileSystem.INSTANCE;
   }
 
   @NotNull

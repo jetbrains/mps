@@ -16,6 +16,7 @@
 package jetbrains.mps.vfs;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import jetbrains.mps.vfs.iofs.jar.JarIoFileSystem;
 import jetbrains.mps.vfs.iofs.jrt.JrtIoFileSystem;
@@ -31,6 +32,14 @@ import java.util.Map;
  * @since 2019.1
  */
 public class VFSManager implements CoreComponent {
+  /**
+   * Filesystem that always uses java.io.File as a backend, regardless of IDEA platform presence.
+   * Intended for use primarily for MPS own optimization purposes.
+   */
+  public static final String JAVA_IO_FILE_FS = "java.io.file";
+  /**
+   * General file support, could be backed up either by java.io or by IDEA's VirtualFile
+   */
   public static final String FILE_FS = "file";
   public static final String JAR_FS = "jar";
   public static final String JRT_FS = "jrt";
@@ -39,11 +48,21 @@ public class VFSManager implements CoreComponent {
 
   private final Map<String, IFileSystem> myFileSystems = new HashMap<>();
 
+  private LocalIoFileSystem myDefaultLocalFileFS;
+  private JarIoFileSystem myDefaultJarFS;
+  private JrtIoFileSystem myDefaultJrtFS;
+
   public VFSManager() {
   }
 
   @Override
   public void init() {
+    // provisional code to live as long as IoFileSystem is there. The idea is to provide access to VFSManager instance in locations where obtaining
+    // ComponentHost is troublesome at the moment.
+    IoFileSystem.newInstance(this);
+    myDefaultLocalFileFS = new LocalIoFileSystem(this);
+    myDefaultJarFS = new JarIoFileSystem(this);
+    myDefaultJrtFS = new JrtIoFileSystem(this);
   }
 
   @Override
@@ -55,6 +74,12 @@ public class VFSManager implements CoreComponent {
     if (myFileSystems.containsKey(fsId)) {
       LOG.error("File system is already registered for protocol " + fsId);
       return;
+    }
+    if (JAVA_IO_FILE_FS.equals(fsId)) {
+      // generally, our implementation should suffice, hence we discourage changes (we can not ensure the new one uses java.io, after all),
+      // though do not prevent it.
+      LOG.warn("Override java.io filesystem from " + fs);
+      // fall though
     }
 
     myFileSystems.put(fsId, fs);
@@ -78,12 +103,13 @@ public class VFSManager implements CoreComponent {
   public IFileSystem getFileSystem(@NotNull String fsId) {
     if (!myFileSystems.containsKey(fsId)) {
       switch (fsId) {
+        case JAVA_IO_FILE_FS:
         case FILE_FS:
-          return LocalIoFileSystem.getInstance();
+          return myDefaultLocalFileFS;
         case JAR_FS:
-          return JarIoFileSystem.getInstance();
+          return myDefaultJarFS;
         case JRT_FS:
-          return JrtIoFileSystem.getInstance();
+          return myDefaultJrtFS;
         default:
           LOG.error("File system not found for protocol " + fsId);
           return null;

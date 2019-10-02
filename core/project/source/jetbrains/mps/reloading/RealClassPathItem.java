@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.reloading;
 
 import jetbrains.mps.util.iterable.IterableEnumeration;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.impl.IoFileSystem;
 import org.apache.log4j.LogManager;
@@ -31,8 +30,6 @@ import java.util.List;
 
 public abstract class RealClassPathItem extends AbstractClassPathItem {
   private static Logger LOG = LogManager.getLogger(RealClassPathItem.class);
-
-  private static final FileSystem FS = IoFileSystem.INSTANCE;
 
   public abstract String getPath();
 
@@ -49,14 +46,14 @@ public abstract class RealClassPathItem extends AbstractClassPathItem {
 
   @NotNull
   public static RealClassPathItem create(@NotNull String path, @Nullable String caller) {
-    IFile file = FS.getFile(path);
+    IFile file = IoFileSystem.INSTANCE.getFile(path);
     String fPath = file.getPath();
     if (!file.exists()) {
       notifyNonExistentCP(caller, file, fPath);
       return new NonExistingClassPathItem(fPath);
     } else if (path.endsWith(".jar") || path.endsWith("!/")) {
       //todo the condition is error-prone and left as-was; it relies heavily on the fact that classpath roots for packaged modules are exactly module.jar!/
-      return new JarFileClassPathItem(FS, fPath);
+      return new JarFileClassPathItem(file.getFileSystem(), fPath);
     } else if (file.isDirectory()) {
       return new FileClassPathItem(fPath);
     } else if (file.isInArchive()) {

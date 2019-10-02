@@ -22,7 +22,6 @@ import jetbrains.mps.idea.core.facet.MPSConfigurationBean.State;
 import jetbrains.mps.jps.make.tests.MpsJpsBuildTestCase;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.model.module.JpsModule;
 
@@ -79,7 +78,7 @@ public class JpsTestModelsEnvironment extends JpsTestEnvironmentBase<JpsTestBean
   }
 
   private ModelRootDescriptor createModelRoot(String models) {
-    // XXX use of FileSystem.getInstance().getFile originates from DefaultModelRoot.setContentRoot impl.
-    return DefaultModelRoot.createSingleFolderDescriptor(jetbrains.mps.vfs.FileSystem.getInstance().getFile(models));
+    // Can not use any of MPS FileSystem as none of MPS components have been initialized at the moment
+    return DefaultModelRoot.createSingleFolderDescriptor(new File(models));
   }
 }

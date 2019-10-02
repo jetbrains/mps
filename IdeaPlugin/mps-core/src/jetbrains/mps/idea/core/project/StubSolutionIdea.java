@@ -41,7 +41,6 @@ import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.MacroHelper.MacroNoHelper;
-import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
@@ -52,7 +51,9 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -205,14 +206,19 @@ public abstract class StubSolutionIdea extends StubSolution {
 
   public static void addModelRoots(SolutionDescriptor solutionDescriptor, VirtualFile[] roots) {
     Set<String> seenPaths = new LinkedHashSet<String>();
-    for (ModelRootDescriptor d : solutionDescriptor.getModelRootDescriptors()) {
-      if (!PersistenceRegistry.JAVA_CLASSES_ROOT.equals(d.getType())) continue;
+    final Collection<ModelRootDescriptor> modelRoots = solutionDescriptor.getModelRootDescriptors();
+    for (ModelRootDescriptor d : modelRoots) {
+      if (!PersistenceRegistry.JAVA_CLASSES_ROOT.equals(d.getType())) {
+        continue;
+      }
       seenPaths.add(d.getMemento().get("path"));
     }
     for (VirtualFile f : roots) {
       String localPath = getLocalPath(f);
-      if (!seenPaths.add(localPath)) continue;
-      solutionDescriptor.getModelRootDescriptors().add(ModelRootDescriptor.addSourceRoot(FileSystem.getInstance().getFile(localPath)));
+      if (!seenPaths.add(localPath)) {
+        continue;
+      }
+      modelRoots.add(ModelRootDescriptor.addJavaStubModelRoot(new File(localPath), Collections.emptyList()));
     }
   }
 

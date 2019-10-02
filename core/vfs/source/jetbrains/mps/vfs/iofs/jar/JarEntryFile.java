@@ -23,7 +23,6 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
-import jetbrains.mps.vfs.iofs.file.LocalIoFileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +41,6 @@ import java.util.List;
 @Immutable
 //todo: currently, myEntryPath can be empty or like "a/b/c". Force it to have "/a/b/c" format and be non-empty (like in JRT file)
 public class JarEntryFile implements IFile {
-  private static final IoFileSystem FS_OLD = IoFileSystem.INSTANCE;
 
   private final AbstractJarFileData myJarFileData;
   private final File myJarFile;
@@ -65,7 +63,7 @@ public class JarEntryFile implements IFile {
   @NotNull
   @Override
   public FileSystem getFileSystem() {
-    return FS_OLD;
+    return IoFileSystem.INSTANCE;
   }
 
   @NotNull
@@ -222,7 +220,7 @@ public class JarEntryFile implements IFile {
 
   @Override
   public IFile getBundleHome() {
-    return LocalIoFileSystem.getInstance().getFile(myJarFile);
+    return myFileSystem.getManager().getFileSystem(VFSManager.JAVA_IO_FILE_FS).getFile(myJarFile);
   }
 
   @Override

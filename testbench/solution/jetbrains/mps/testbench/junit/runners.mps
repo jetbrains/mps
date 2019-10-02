@@ -27,7 +27,6 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="ab4o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.newvfs.impl(MPS.IDEA/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
-    <import index="amo1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.impl(MPS.Core/)" />
     <import index="cvlm" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.runner(JUnit/)" />
     <import index="7cms" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.runners.model(JUnit/)" />
     <import index="bbnd" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.runners(JUnit/)" />
@@ -5091,17 +5090,13 @@
                               <node concept="3cpWs8" id="6Jk_680Dg7o" role="3cqZAp">
                                 <node concept="3cpWsn" id="6Jk_680Dg7p" role="3cpWs9">
                                   <property role="TrG5h" value="file" />
-                                  <node concept="3uibUv" id="6Jk_680Dg7q" role="1tU5fm">
-                                    <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+                                  <node concept="3uibUv" id="NuqHlHumUz" role="1tU5fm">
+                                    <ref role="3uigEE" to="guwi:~File" resolve="File" />
                                   </node>
-                                  <node concept="2OqwBi" id="6Jk_680Dg7r" role="33vP2m">
-                                    <node concept="10M0yZ" id="6Jk_680Dg7s" role="2Oq$k0">
-                                      <ref role="3cqZAo" to="amo1:~IoFileSystem.INSTANCE" resolve="INSTANCE" />
-                                      <ref role="1PxDUh" to="amo1:~IoFileSystem" resolve="IoFileSystem" />
-                                    </node>
-                                    <node concept="liA8E" id="6Jk_680Dg7t" role="2OqNvi">
-                                      <ref role="37wK5l" to="amo1:~IoFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                                      <node concept="37vLTw" id="6Jk_680Dg7u" role="37wK5m">
+                                  <node concept="2ShNRf" id="NuqHlHufIS" role="33vP2m">
+                                    <node concept="1pGfFk" id="NuqHlHuiSH" role="2ShVmc">
+                                      <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                                      <node concept="37vLTw" id="NuqHlHujuS" role="37wK5m">
                                         <ref role="3cqZAo" node="6Jk_680Dg7l" resolve="module" />
                                       </node>
                                     </node>
@@ -5111,15 +5106,15 @@
                               <node concept="3cpWs8" id="6Jk_680Dg7v" role="3cqZAp">
                                 <node concept="3cpWsn" id="6Jk_680Dg7w" role="3cpWs9">
                                   <property role="TrG5h" value="parent" />
-                                  <node concept="3uibUv" id="6Jk_680Dg7x" role="1tU5fm">
-                                    <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+                                  <node concept="3uibUv" id="NuqHlHuo2L" role="1tU5fm">
+                                    <ref role="3uigEE" to="guwi:~File" resolve="File" />
                                   </node>
                                   <node concept="2OqwBi" id="6Jk_680Dg7y" role="33vP2m">
                                     <node concept="37vLTw" id="6Jk_680Dg7z" role="2Oq$k0">
                                       <ref role="3cqZAo" node="6Jk_680Dg7p" resolve="file" />
                                     </node>
-                                    <node concept="liA8E" id="6Jk_680Dg7$" role="2OqNvi">
-                                      <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
+                                    <node concept="liA8E" id="NuqHlHupFu" role="2OqNvi">
+                                      <ref role="37wK5l" to="guwi:~File.getParentFile()" resolve="getParentFile" />
                                     </node>
                                   </node>
                                 </node>
@@ -5143,7 +5138,7 @@
                                     <ref role="3cqZAo" node="6Jk_680Dg7w" resolve="parent" />
                                   </node>
                                   <node concept="liA8E" id="6Jk_680Dg7J" role="2OqNvi">
-                                    <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                                    <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
                                   </node>
                                 </node>
                               </node>

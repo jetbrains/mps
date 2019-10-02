@@ -5,8 +5,7 @@ package jetbrains.mps.testbench.junit.runners;
 import java.util.List;
 import java.util.Arrays;
 import java.util.function.Function;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import java.io.File;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
@@ -23,8 +22,8 @@ public class TestRootAccessInsight {
     List<String> moduleFolders = Arrays.stream(modules).map(new Function<String, String>() {
       @Override
       public String apply(String module) {
-        IFile file = IoFileSystem.INSTANCE.getFile(module);
-        IFile parent = file.getParent();
+        File file = new File(module);
+        File parent = file.getParentFile();
         if (parent == null) {
           return null;
         }

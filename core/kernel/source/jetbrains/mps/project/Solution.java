@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -212,7 +212,7 @@ public class Solution extends ReloadableModuleBase {
 
         if (!path.getFsId().equals(VFSManager.JRT_FS)){
           IFile pathFile = getFileSystem().getFile(path.getPath());
-          final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addSourceRoot(pathFile, modelRootDescriptors);
+          final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addJavaStubModelRoot(pathFile, modelRootDescriptors);
           if (javaStubsModelRoot != null) {
             modelRootDescriptors.add(javaStubsModelRoot);
             populateModelRoot(classType, javaStubsModelRoot.getMemento());

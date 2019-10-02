@@ -29,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -98,21 +99,36 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
     return (myType != null ? myType.hashCode() : 0) + 17 * myMemento.hashCode();
   }
 
-  public static ModelRootDescriptor addSourceRoot(IFile file) {
-    return addSourceRoot(file, Collections.emptyList());
+  public static ModelRootDescriptor addJavaStubModelRoot(IFile file) {
+    return addJavaStubModelRoot(file, Collections.emptyList());
   }
 
   /**
+   * Same as {@link #addJavaStubModelRoot(IFile, Collection)}, just takes {@code java.io.File} not to force clients to look up
+   * instance of {@code jetbrains.mps.vfs.IFileSystem}
+   */
+  public static ModelRootDescriptor addJavaStubModelRoot(File file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
+    String path = file.getParentFile().getAbsolutePath();
+    String name = file.getName();
+    return implAddRoot(path, name, modelRootDescriptors);
+  }
+
+  /**
+   * There only 1 use of the method, in Solution.updateBootstrapSolutionLibraries(), does that justify its existence?
    * @return {@code null} if one of supplied descriptors has been updated with the path, or new descriptor if none matched
    */
   @Nullable
-  public static ModelRootDescriptor addSourceRoot(IFile file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
-    String path = file.getParent().getPath();
+  public static ModelRootDescriptor addJavaStubModelRoot(IFile file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
+    final String path = file.getParent().getPath();
+    final String name = file.getName();
+    return implAddRoot(path, name, modelRootDescriptors);
+  }
 
+  private static ModelRootDescriptor implAddRoot(String path, String name, final Collection<ModelRootDescriptor> modelRootDescriptors) {
     for (ModelRootDescriptor descriptor : modelRootDescriptors) {
       if (descriptor.myMemento.get(FileBasedModelRoot.CONTENT_PATH).equals(path)) {
         Memento child = descriptor.myMemento.createChild(FileBasedModelRoot.SOURCE_ROOTS);
-        child.put(FileBasedModelRoot.LOCATION, file.getName());
+        child.put(FileBasedModelRoot.LOCATION, name);
         return null;
       }
     }
@@ -120,7 +136,7 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
     Memento m = new MementoImpl();
     m.put(FileBasedModelRoot.CONTENT_PATH, path);
     Memento child = m.createChild(FileBasedModelRoot.SOURCE_ROOTS);
-    child.put(FileBasedModelRoot.LOCATION, file.getName());
+    child.put(FileBasedModelRoot.LOCATION, name);
     return new ModelRootDescriptor(PersistenceRegistry.JAVA_CLASSES_ROOT, m);
   }
 
@@ -129,7 +145,7 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
   @Nullable
   //use addSourceRoot instead
   public static ModelRootDescriptor getJavaStubsModelRoot(IFile file, final Collection<ModelRootDescriptor> modelRootDescriptors) {
-    return addSourceRoot(file, modelRootDescriptors);
+    return addJavaStubModelRoot(file, modelRootDescriptors);
   }
 
   @Deprecated
@@ -137,6 +153,6 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
   @Nullable
   //use addSourceRoot instead
   public static ModelRootDescriptor getJavaStubsModelRoot(IFile file) {
-    return addSourceRoot(file);
+    return addJavaStubModelRoot(file);
   }
 }
