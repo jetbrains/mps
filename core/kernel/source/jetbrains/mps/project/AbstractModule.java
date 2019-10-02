@@ -402,15 +402,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     setChanged();
   }
 
-  /**
-   * @deprecated no-op, just drop any usage.
-   */
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  protected void updatePackagedDescriptor() {
-    LOG.warn("AbstractModule#updatePackagedDescriptor() is no op, stop using it", new Throwable());
-  }
-
 //----
 
   @Override

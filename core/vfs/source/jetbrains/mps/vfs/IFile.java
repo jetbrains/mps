@@ -97,6 +97,15 @@ public interface IFile {
   boolean isInArchive();
 
   /**
+   * Not sure if single use justifies existence of the method
+   * @return value of {@link IFileSystem#isFileIgnored(String)} for this file
+   * @since 2019.3
+   */
+  default boolean isIgnored() {
+    return getFS().isFileIgnored(getName());
+  }
+
+  /**
    * @deprecated use {@link #isArchive()} or {@link #isInArchive()}
    */
   @ToRemove(version = 3.4)

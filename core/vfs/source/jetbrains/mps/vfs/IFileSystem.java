@@ -62,6 +62,9 @@ public interface IFileSystem {
     }
   }
 
+  /**
+   * FIXME why not IFile.isIgnored()? Why shall I care what does 'name' here mean?
+   */
   boolean isFileIgnored(@NotNull String name);
 
   /**

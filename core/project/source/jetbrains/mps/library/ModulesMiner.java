@@ -66,6 +66,9 @@ import java.util.Set;
 /**
  * Detects modules in a folder.
  * Methods of this class are not thread-safe, do not share instances of this class between threads.
+ * At the moment, most of the public methods of this class make no distinction whether you care about source/deployment modules, if
+ * we need to handle scenario when only specific kind of MDs is of interest, a new processing model shall get introduced
+ * into MM (e.g. {@code MPSModuleCollector} could make use of a 'sourceMD-only' mode).
  *
  * NB: we will go inside the jar if it either has a 'modules' folder (with modules (!)) or has a module.xml file in the META-INF folder
  */
@@ -102,13 +105,14 @@ public final class ModulesMiner {
 
   /**
    * Updates {@link #getCollectedModules() outcome} and excludes, may be invoked several times.
+   * Recognizes both source and deployment module descriptor files; walks into folders to look modules up.
    * @param file folder or file (descriptor or jar) to look for modules at.
    * @return {@code this} for convenience (chained calls)
    */
   @NotNull
   public ModulesMiner collectModules(IFile file) {
     LOG.debug("Reading modules from " + file);
-    if (!needProcess(file)) {
+    if (shallIgnore(file)) {
       return this;
     }
     if (file.isDirectory()) {
@@ -117,7 +121,7 @@ public final class ModulesMiner {
       if (IFileUtil.isJarFile(file)) {
         readModuleDescriptorsFromJarFile(file);
       } else {
-        trySourceModuleDescriptorsFromFile(file);
+        tryLoadModuleDescriptor(file);
       }
     }
     return this;
@@ -131,8 +135,8 @@ public final class ModulesMiner {
     return Collections.unmodifiableList(rv);
   }
 
-  private boolean needProcess(IFile file) {
-    return !((FileSystem) file.getFileSystem()).isFileIgnored(file.getName()) && !myExcludes.contains(file);
+  private boolean shallIgnore(IFile file) {
+    return myExcludes.contains(file) || file.isIgnored();
   }
 
 
@@ -158,7 +162,7 @@ public final class ModulesMiner {
    */
   private void readModuleDescriptorsFromFolder(IFile folder) {
     assert folder.isDirectory();
-    if (!needProcess(folder)) {
+    if (shallIgnore(folder)) {
       // files and folders are collected prior to processing of descriptor excludes,
       // chances are we get here in a recursive call with a folder marked to exclude.
       return;
@@ -167,7 +171,7 @@ public final class ModulesMiner {
     ArrayList<IFile> files = new ArrayList<>();
     ArrayList<IFile> folders = new ArrayList<>();
     for (IFile f : folder.getChildren()) {
-      if (!needProcess(f)) {
+      if (shallIgnore(f)) {
         continue;
       }
       if (f.isDirectory()) {
@@ -288,7 +292,7 @@ public final class ModulesMiner {
         if (child.isDirectory()) {
           // perhaps, we could allow nested directories in tryReadModuleDescriptor, but at the moment
           // we expect 1 level of directories only (XXX what about mps/testbench/modules/aaa.test/languages - disjunction of RVs would help).
-          tryReadModuleDescriptor(bundleHome, child);
+          tryReadModuleDescriptorInModulesGroup(bundleHome, child);
           // XXX may collect folders without modules and dig into them, with e.g. readModuleDescriptorsFromFolder(), just need to pass bundleHome there
         }
         // expect no descriptors under modules/
@@ -302,7 +306,7 @@ public final class ModulesMiner {
    * Read descriptor for a module bundled under bundleHome/.../moduleHomeDir, if any.
    * @return {@code true} if module descriptor found under bundle home
    */
-  private boolean tryReadModuleDescriptor(IFile bundleHome, IFile moduleHomeDir) {
+  private boolean tryReadModuleDescriptorInModulesGroup(IFile bundleHome, IFile moduleHomeDir) {
     assert moduleHomeDir.isDirectory();
     for (IFile child : moduleHomeDir.getChildren()) {
       if (child.isDirectory()) {
@@ -326,7 +330,7 @@ public final class ModulesMiner {
    * module would pick generator modules up. Deployed language doesn't load generators.
    *
    * @deprecated Please do not use this method, it gonna fade away. With few modules coming from the same file, its API is not handy.
-   *             There's single use in mbeddr (mpsutil/spreferences)
+   *             With mps/2019.3 branch, there's no use in mbeddr (mpsutil/spreferences has been refactored)
    *
    * @param file descriptor file to parse for module information
    * @return handle for descriptor loaded from file
@@ -335,9 +339,16 @@ public final class ModulesMiner {
   @Deprecated
   @ToRemove(version = 2019.3)
   public ModuleHandle loadModuleHandle(@NotNull IFile file) {
-    final ModuleHandle moduleHandle = new ModuleHandle(file, loadModuleDescriptor(file));
-    fillOutcome(moduleHandle, !file.getPath().endsWith(SLASH_META_INF_MODULE_XML));
-    return moduleHandle;
+    ArrayList<ModuleHandle> pre = new ArrayList<>(myOutcome);
+    if (tryLoadModuleDescriptor(file)) {
+      ArrayList<ModuleHandle> post = new ArrayList<>(myOutcome);
+      if (post.size() > pre.size()) {
+        // take the first one added. Assumes myOutcome is a list, and the first one discovered is therefore the one added at pre.size() index
+        return post.get(pre.size());
+      }
+      // fall-through
+    }
+    return new ModuleHandle(file, null);
   }
 
   private void fillOutcome(ModuleHandle moduleHandle, boolean isSourceNotDeployment) {
@@ -353,14 +364,17 @@ public final class ModulesMiner {
   }
 
   /**
+   * Basically, this method is a switch to load either META-INF/module.xml or source-descriptor.[msd|mpl].
    * read a module file and update excludes set with output locations (classes, generated sources) of the module
-   * if file points to deployment descriptor, attempt to read descriptor of source module, associates DD with it and return it, or DD if no source
-   * module found.
+   * if file points to deployment descriptor, loads DD and descriptor of source module, if any.
+   * Updates excludes and outcome state of this miner.
+   * Expects file (not directory) as an input.
+   * XXX when {@link #loadModuleHandle(IFile)} gone, could get inlined into {@link #collectModules(IFile)}
+   *
+   * @return true if an attempt to read module has been made ({@code false} means no reason to expect any change in the state).
    */
-  @Nullable
-  private ModuleDescriptor loadModuleDescriptor(IFile file) {
+  private boolean tryLoadModuleDescriptor(IFile file) {
     String filePath = file.getPath();
-    ModuleDescriptor descriptor;
     if (filePath.endsWith(SLASH_META_INF_MODULE_XML)) {
       IFile moduleHome;
       if (file.isInArchive()) {
@@ -371,21 +385,15 @@ public final class ModulesMiner {
         // Instead, assume META-INF/module.xml is at the root of a module location (which if generally the case).
         moduleHome = file.getParent().getParent();
       }
-      // there are no excludes in deployment descriptor, but loadDD reads and returns MD from source module, if any.
-      // OTOH, file is the one under META-INF, and no chances to find neither source_gen nor test_gen relative to it
-      // (need one at lang-src.jar!/module/source.lang.mpl)
-      descriptor = loadDeploymentDescriptor(moduleHome, file);
+      return tryModuleFromDeploymentDescriptor(moduleHome, file);
     } else {
-      descriptor = loadSourceModuleDescriptor(file);
+      return trySourceModuleDescriptorsFromFile(file);
     }
-    if (descriptor != null) {
-      processExcludes(file, descriptor);
-    }
-    return descriptor;
   }
 
   private ModuleDescriptor loadSourceModuleDescriptor(IFile file) {
     try {
+      LOG.debug(String.format("Loading source MD from %s", file));
       DescriptorIO<? extends ModuleDescriptor> descriptorIO = myDescriptorIOFacade.fromFileType(file);
       return descriptorIO.readFromFile(file);
     } catch (DescriptorIOException t) {
@@ -405,6 +413,8 @@ public final class ModulesMiner {
    */
   private ModuleDescriptor loadDeploymentDescriptor(IFile moduleHome, IFile file) {
     try {
+      LOG.debug(String.format("Loading deployment MD from %s", file));
+      // XXX why not DeploymentDescriptorPersistence is part of DescriptorIOFacade?!
       DeploymentDescriptor deploymentDescriptor = new DeploymentDescriptorPersistence().load(file);
       ModuleDescriptor result = null;
       IFile sourceDescriptorFile = getSourceDescriptorFile(file, deploymentDescriptor);
@@ -571,6 +581,7 @@ public final class ModulesMiner {
             // XXX what it deploymentJar lives under <mps-home>/lib, do I care to build relative path? Perhaps, shall replace with distinct MRD then?
             final String jarRelativeToDeployedModule = FileBasedModelRoot.relativize(deploymentJarMatch.getPath(), moduleHomeDir);
             newMementoChild.put(FileBasedModelRoot.LOCATION, jarRelativeToDeployedModule);
+            LOG.debug(String.format("Java stub jar %s in module %s updated with location %s", pastModuleMacroSuffix, sourceModuleDescriptor.getNamespace(), jarRelativeToDeployedModule));
             update = true;
           } else {
             // just keep it as is, relative to deployment value of ${module}. If anything important, users may tell build project to copy

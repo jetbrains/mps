@@ -65,6 +65,8 @@ class MPSModuleCollector {
   }
 
   // FIXME this looks pretty much as ModulesMiner, except for some custom MacroHelper. Don't see a reason to keep duplicated module discovery code.
+  //       Perhaps, worth a dedicated 'sourceMD-only' model for ModulesMiner to address needs of this class (to my best knowledge, it doesn't care
+  //       to read deployment MD).
   private void collectMPSCompiledModulesInfoRecursively(File dir) {
     for (File child : dir.listFiles()) {
       if (child.isDirectory()) {
