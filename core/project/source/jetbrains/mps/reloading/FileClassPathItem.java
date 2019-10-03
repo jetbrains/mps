@@ -138,11 +138,6 @@ class FileClassPathItem extends RealClassPathItem {
     return result;
   }
 
-  @Override
-  public void accept(IClassPathItemVisitor visitor) {
-    visitor.visit(this);
-  }
-
   private File getModelDir(String namespace) {
     if (namespace == null) {
       namespace = "";

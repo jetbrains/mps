@@ -71,10 +71,6 @@ public final class FakeClassPathItem extends AbstractClassPathItem {
     return null;
   }
 
-  @Override
-  public void accept(IClassPathItemVisitor visitor) {
-  }
-
   @Nullable
   @Override
   public ClassBytes getClassBytes(String name) {

@@ -131,11 +131,6 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
     return result;
   }
 
-  @Override
-  public void accept(IClassPathItemVisitor visitor) {
-    visitor.visit(this);
-  }
-
   public String toString() {
     StringBuilder result = new StringBuilder("classpath {\n");
 

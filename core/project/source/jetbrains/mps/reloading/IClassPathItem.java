@@ -50,8 +50,6 @@ public interface IClassPathItem extends ClassBytesProvider {
 
   IClassPathItem optimize();
 
-  void accept(IClassPathItemVisitor visitor);
-
   @NotNull
   static IClassPathItem createClassPathItem(Collection<String> cp) {
     CompositeClassPathItem classPathItem = new CompositeClassPathItem();

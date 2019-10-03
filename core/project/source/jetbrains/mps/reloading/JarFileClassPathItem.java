@@ -163,11 +163,6 @@ public class JarFileClassPathItem extends RealClassPathItem {
     return result;
   }
 
-  @Override
-  public void accept(IClassPathItemVisitor visitor) {
-    visitor.visit(this);
-  }
-
   public String toString() {
     return "jar-cp: " + myFile;
   }

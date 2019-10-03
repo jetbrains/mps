@@ -56,11 +56,6 @@ class NonExistingClassPathItem extends RealClassPathItem {
     return result;
   }
 
-  @Override
-  public void accept(IClassPathItemVisitor visitor) {
-    //visitor.visit(this);
-  }
-
   public String toString() {
     return "non-existing-cp: " + myClassPath;
   }
