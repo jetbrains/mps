@@ -90,7 +90,7 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
 
 
   public void addListener(@NotNull FileSystemListener listener) {
-    myListenersContainer.addListener(listener);
+    ApplicationManager.getApplication().runReadAction(() -> {myListenersContainer.addListener(listener);});
   }
 
   @Override
