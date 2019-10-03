@@ -19,7 +19,6 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.command.UndoConfirmationPolicy;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.undo.WorkbenchUndoHandler;
 import jetbrains.mps.project.MPSProject;
@@ -45,10 +44,12 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   private final TryRunPlatformWriteHelper myPlatformWriteHelper;
   private final WorkbenchUndoHandler myUndoHandler;
   private final CancellableReadsManager myCancellableReads;
+  private final ModelAccess mySubstitutedModelAccess;
 
   public WorkbenchModelAccess() {
     // not allowing to substitute alien model accesses here
-    assert instance() instanceof DefaultModelAccess;
+    mySubstitutedModelAccess = instance();
+    assert mySubstitutedModelAccess instanceof DefaultModelAccess;
     setInstance(this);
     myUndoHandler = (WorkbenchUndoHandler) ApplicationManager.getApplication().getComponent(UndoHandler.class);
     myPlatformWriteHelper = new TryRunPlatformWriteHelper();
@@ -64,7 +65,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
 
   @Override
   public void dispose() {
-    setInstance(new DefaultModelAccess());
+    setInstance(mySubstitutedModelAccess);
   }
 
   @Override
