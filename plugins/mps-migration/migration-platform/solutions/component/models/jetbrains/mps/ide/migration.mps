@@ -6,7 +6,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="1a8554c4-eb84-43ba-8c34-6f0d90c6e75a" name="jetbrains.mps.lang.smodel.query" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
@@ -769,13 +769,26 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="7lByCvUxT1x" role="3cqZAp">
-          <node concept="37vLTI" id="7lByCvUxTci" role="3clFbG">
-            <node concept="37vLTw" id="7lByCvUxTjx" role="37vLTx">
-              <ref role="3cqZAo" node="7lByCvUxST5" resolve="props" />
-            </node>
-            <node concept="37vLTw" id="7lByCvUxT1v" role="37vLTJ">
+        <node concept="3clFbF" id="35TwGP_JNRQ" role="3cqZAp">
+          <node concept="37vLTI" id="35TwGP_JNRR" role="3clFbG">
+            <node concept="37vLTw" id="35TwGP_JNRS" role="37vLTJ">
               <ref role="3cqZAo" node="7lByCvUxRC$" resolve="myProperties" />
+            </node>
+            <node concept="10QFUN" id="35TwGP_JNRT" role="37vLTx">
+              <node concept="2OqwBi" id="35TwGP_JPw1" role="10QFUP">
+                <node concept="37vLTw" id="35TwGP_JPw0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3gptLqNJbqi" resolve="ideaProject" />
+                </node>
+                <node concept="liA8E" id="35TwGP_JPw2" role="2OqNvi">
+                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                  <node concept="3VsKOn" id="35TwGP_JPw3" role="37wK5m">
+                    <ref role="3VsUkX" to="bdll:~MigrationProperties" resolve="MigrationProperties" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3uibUv" id="35TwGP_JNRX" role="10QFUM">
+                <ref role="3uigEE" to="bdll:~ProjectMigrationProperties" resolve="ProjectMigrationProperties" />
+              </node>
             </node>
           </node>
         </node>
@@ -802,13 +815,22 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3ksDZ_I0kAf" role="3cqZAp">
-          <node concept="37vLTI" id="3ksDZ_I0loj" role="3clFbG">
-            <node concept="37vLTw" id="3ksDZ_I0m9l" role="37vLTx">
-              <ref role="3cqZAo" node="3ksDZ_HZRmg" resolve="reloadManager" />
-            </node>
-            <node concept="37vLTw" id="3ksDZ_I0kAd" role="37vLTJ">
+        <node concept="3clFbF" id="35TwGP_JSoY" role="3cqZAp">
+          <node concept="37vLTI" id="35TwGP_JSoZ" role="3clFbG">
+            <node concept="37vLTw" id="35TwGP_JSp0" role="37vLTJ">
               <ref role="3cqZAo" node="3ksDZ_I0fFv" resolve="myReloadManager" />
+            </node>
+            <node concept="2OqwBi" id="35TwGP_JSp1" role="37vLTx">
+              <node concept="2YIFZM" id="35TwGP_JTg6" role="2Oq$k0">
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              </node>
+              <node concept="liA8E" id="35TwGP_JSp3" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="35TwGP_JSp5" role="37wK5m">
+                  <ref role="3VsUkX" to="2eq1:491od_XJZeq" resolve="ReloadManager" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -832,22 +854,10 @@
           <ref role="3uigEE" node="5SsFeroaabl" resolve="MigrationRegistry" />
         </node>
       </node>
-      <node concept="37vLTG" id="7lByCvUxST5" role="3clF46">
-        <property role="TrG5h" value="props" />
-        <node concept="3uibUv" id="6bvoCJgbOyL" role="1tU5fm">
-          <ref role="3uigEE" to="bdll:~ProjectMigrationProperties" resolve="ProjectMigrationProperties" />
-        </node>
-      </node>
       <node concept="37vLTG" id="3ksDZ_HZQBr" role="3clF46">
         <property role="TrG5h" value="mpsCore" />
         <node concept="3uibUv" id="3ksDZ_HZRhY" role="1tU5fm">
           <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="3ksDZ_HZRmg" role="3clF46">
-        <property role="TrG5h" value="reloadManager" />
-        <node concept="3uibUv" id="3ksDZ_HZS0P" role="1tU5fm">
-          <ref role="3uigEE" to="2eq1:491od_XFyVl" resolve="ReloadManagerComponent" />
         </node>
       </node>
     </node>
@@ -7734,12 +7744,6 @@
           <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
-      <node concept="37vLTG" id="36$CdjYeaIZ" role="3clF46">
-        <property role="TrG5h" value="mpsProject" />
-        <node concept="3uibUv" id="36$CdjYeaJ0" role="1tU5fm">
-          <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
-        </node>
-      </node>
       <node concept="3cqZAl" id="36$CdjYe8uH" role="3clF45" />
       <node concept="3Tm1VV" id="36$CdjYe8uI" role="1B3o_S" />
       <node concept="3clFbS" id="36$CdjYe8uJ" role="3clF47">
@@ -7751,11 +7755,15 @@
         </node>
         <node concept="3clFbF" id="36$CdjYeagg" role="3cqZAp">
           <node concept="37vLTI" id="36$CdjYeagh" role="3clFbG">
-            <node concept="37vLTw" id="36$CdjYelgT" role="37vLTx">
-              <ref role="3cqZAo" node="36$CdjYeaIZ" resolve="mpsProject" />
-            </node>
             <node concept="37vLTw" id="36$CdjYer_l" role="37vLTJ">
               <ref role="3cqZAo" node="36$CdjYd4mG" resolve="myMpsProject" />
+            </node>
+            <node concept="2YIFZM" id="2zBI34Hmpjl" role="37vLTx">
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <node concept="37vLTw" id="2zBI34Hmpr2" role="37wK5m">
+                <ref role="3cqZAo" node="36$CdjYeaIX" resolve="project" />
+              </node>
             </node>
           </node>
         </node>

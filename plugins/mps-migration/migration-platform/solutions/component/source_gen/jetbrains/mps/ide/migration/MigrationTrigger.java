@@ -6,7 +6,6 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.components.AbstractProjectComponent;
-import jetbrains.mps.migration.global.MigrationProperties;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.project.MPSProject;
@@ -19,10 +18,10 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import com.intellij.notification.Notification;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
+import jetbrains.mps.migration.global.MigrationProperties;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.startup.StartupManager;
-import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.AbstractModule;
@@ -130,7 +129,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myMigrationRegistry = migrationManager;
     myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
-    myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);;
+    myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
   }
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {

@@ -1345,10 +1345,10 @@
       <node id="8474613039627891368" at="47,0,48,0" concept="7" trace="myBusListener" />
       <node id="4774203567239876036" at="48,0,49,0" concept="7" trace="myReloadManager" />
       <node id="3029672701256796686" at="49,0,50,0" concept="7" trace="myIdeaFileSystem" />
-      <node id="8474613039627891454" at="51,151,52,16" concept="6" />
+      <node id="8474613039627891454" at="51,113,52,16" concept="6" />
       <node id="8474613039627891458" at="52,16,53,46" concept="6" />
-      <node id="4774203567239876043" at="53,46,54,36" concept="6" />
-      <node id="3029672701256796690" at="54,36,55,38" concept="6" />
+      <node id="2947527002491258248" at="53,46,54,117" concept="6" />
+      <node id="3029672701256796690" at="54,117,55,38" concept="6" />
       <node id="8474613039627891475" at="61,36,62,32" concept="12" />
       <node id="8474613039627891526" at="66,31,67,35" concept="6" />
       <node id="8474613039627891532" at="67,35,68,74" concept="6" />
@@ -1392,7 +1392,7 @@
       <node id="8474613039627891349" at="37,0,41,0" concept="10" trace="beforeRefreshStart#(Z)V" />
       <node id="8474613039627891357" at="41,0,45,0" concept="10" trace="afterRefreshFinish#(Z)V" />
       <node id="3029672701256620389" at="99,7,104,51" concept="11" />
-      <node id="8474613039627891442" at="51,0,57,0" concept="3" trace="FSChangesWatcher#(Lcom/intellij/util/messages/MessageBus;Lcom/intellij/openapi/vfs/VirtualFileManager;Ljetbrains/mps/ide/platform/watching/ReloadManagerComponent;Ljetbrains/mps/ide/vfs/IdeaFileSystem;)V" />
+      <node id="8474613039627891442" at="51,0,57,0" concept="3" trace="FSChangesWatcher#(Lcom/intellij/util/messages/MessageBus;Lcom/intellij/openapi/vfs/VirtualFileManager;Ljetbrains/mps/ide/vfs/IdeaFileSystem;)V" />
       <node id="8474613039627891471" at="58,0,64,0" concept="10" trace="getComponentName#()Ljava/lang/String;" />
       <node id="8474613039627891479" at="65,0,71,0" concept="10" trace="initComponent#()V" />
       <node id="4774203567241490004" at="115,0,121,0" concept="10" trace="visit#(Lcom/intellij/openapi/vfs/newvfs/events/VFileEvent;)V" />
@@ -1438,7 +1438,7 @@
       <scope id="8474613039627891357" at="41,0,45,0">
         <var name="async" id="8474613039627891360" />
       </scope>
-      <scope id="8474613039627891453" at="51,151,55,38" />
+      <scope id="8474613039627891453" at="51,113,55,38" />
       <scope id="4774203567241490005" at="115,46,119,49" />
       <scope id="3914755648473566401" at="144,51,148,77">
         <var name="name" id="3914755648473568720" />
@@ -1447,7 +1447,6 @@
       <scope id="8474613039627891442" at="51,0,57,0">
         <var name="bus" id="8474613039627891447" />
         <var name="ideaFileSystem" id="3029672701256795595" />
-        <var name="reloadManager" id="4774203567239736914" />
         <var name="virtualFileManager" id="8474613039627891451" />
       </scope>
       <scope id="8474613039627891471" at="58,0,64,0" />

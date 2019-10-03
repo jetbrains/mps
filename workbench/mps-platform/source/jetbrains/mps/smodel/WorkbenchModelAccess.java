@@ -46,8 +46,8 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   private final WorkbenchUndoHandler myUndoHandler;
   private final CancellableReadsManager myCancellableReads;
 
-  public WorkbenchModelAccess(WorkbenchUndoHandler undoHandler) {
-    myUndoHandler = undoHandler;
+  public WorkbenchModelAccess() {
+    myUndoHandler = (WorkbenchUndoHandler) ApplicationManager.getApplication().getComponent(UndoHandler.class);
     myPlatformWriteHelper = new TryRunPlatformWriteHelper();
     myCancellableReads = new CancellableReadsManager();
     Disposer.register(this, myEDTExecutor);

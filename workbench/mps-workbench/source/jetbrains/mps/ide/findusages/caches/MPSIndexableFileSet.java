@@ -66,12 +66,11 @@ public class MPSIndexableFileSet extends AbstractProjectComponent implements Ind
 
   @SuppressWarnings("unused")
   public MPSIndexableFileSet(@NotNull final Project project,
-                             final ProjectRootManagerEx rootManager,
                              ProjectManager projectManager,
                              FileBasedIndex index,
                              StartupModuleMaker maker) {
     super(project);
-    myRootManager = rootManager;
+    myRootManager = ProjectRootManagerEx.getInstanceEx(project);
     myProjectManager = projectManager;
     myIndex = index;
     myIndexableRootCalculator = new IndexableRootCalculator(project);

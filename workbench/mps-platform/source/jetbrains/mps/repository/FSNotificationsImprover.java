@@ -42,7 +42,6 @@ public class FSNotificationsImprover implements ApplicationComponent {
                                  ApplicationPluginHolder registryManager,
                                  IdeaPluginFacetComponent ideaPluginFacetComponent,
                                  IdeaFileSystem fs,
-                                 PersistentFS filesystem, //see MPS-22970
                                  WatchedRoots watchedRoots
   ) {
     myWatchedRoots = watchedRoots;

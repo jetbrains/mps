@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.make;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
@@ -22,7 +23,9 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
@@ -52,11 +55,10 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker {
   private final MPSCoreComponents myComponents;
 
   @SuppressWarnings({"UnusedDeclaration"})
-  public StartupModuleMakerImpl(Project project, StandaloneMPSProject mpsProject, ProjectLibraryManager plm, ReloadManagerComponent reloadManager,
-      MPSCoreComponents components) {
+  public StartupModuleMakerImpl(Project project, ProjectLibraryManager plm, MPSCoreComponents components) {
     super(project);
-    myMPSProject = mpsProject;
-    myReloadManager = reloadManager;
+    myMPSProject = ProjectHelper.fromIdeaProject(project);
+    myReloadManager = (ReloadManagerComponent) ApplicationManager.getApplication().getComponent(ReloadManager.class);;
     myComponents = components;
   }
 

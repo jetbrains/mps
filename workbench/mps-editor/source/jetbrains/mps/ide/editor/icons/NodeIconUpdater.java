@@ -37,9 +37,9 @@ public class NodeIconUpdater implements ProjectComponent {
   private final FileEditorManagerEx myFileEditorManagerEx;
   private final VirtualFileListener myFileListener;
 
-  public NodeIconUpdater(Project project, FileEditorManagerEx fileEditorManager) {
+  public NodeIconUpdater(Project project) {
     myProject = project;
-    myFileEditorManagerEx = fileEditorManager;
+    myFileEditorManagerEx = FileEditorManagerEx.getInstanceEx(project);
     // TODO Would be more effective to be an ApplicationComponent and listen to bulk changes (BulkFileListener)
     // however, there's no way to find out MPSProject from MPSNodeVirtualFile at the moment, and without a project
     // can't access FileEditorManagerEx.
