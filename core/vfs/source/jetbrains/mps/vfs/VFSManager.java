@@ -37,6 +37,12 @@ public class VFSManager implements CoreComponent {
    * Intended for use primarily for MPS own optimization purposes.
    */
   public static final String JAVA_IO_FILE_FS = "java.io.file";
+
+  /**
+   * Provisional support to transition from legacy IoFileSystem that supports both file: and jar: access from the single impl to distinct FS.
+   * Remove once not in use.
+   */
+  public static final String JAVA_IO_JAR_FS = "java.io.jar";
   /**
    * General file support, could be backed up either by java.io or by IDEA's VirtualFile
    */
@@ -80,6 +86,9 @@ public class VFSManager implements CoreComponent {
       // though do not prevent it.
       LOG.warn("Override java.io filesystem from " + fs);
       // fall though
+    } else if (JAVA_IO_JAR_FS.equals(fsId)) {
+      // same as above
+      LOG.warn("Override java.io-backed jar filesystem from " + fs);
     }
 
     myFileSystems.put(fsId, fs);
@@ -106,6 +115,7 @@ public class VFSManager implements CoreComponent {
         case JAVA_IO_FILE_FS:
         case FILE_FS:
           return myDefaultLocalFileFS;
+        case JAVA_IO_JAR_FS:
         case JAR_FS:
           return myDefaultJarFS;
         case JRT_FS:

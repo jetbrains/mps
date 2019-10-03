@@ -60,8 +60,8 @@ public class IoFileSystem implements FileSystem {
       path += "/";
     }
     if (path.contains("!")) {
-      // there's no explicit java.io-backed jar FS, but I don't care as this class is scheduled for doom anyway
-      return myManager.getFileSystem(VFSManager.JAR_FS).getFile(path);
+      // this is the only place we care to get java.io-backed jar FS, which could become history once this class gone.
+      return myManager.getFileSystem(VFSManager.JAVA_IO_JAR_FS).getFile(path);
     } else {
       return myManager.getFileSystem(VFSManager.JAVA_IO_FILE_FS).getFile(path);
     }
