@@ -51,7 +51,7 @@ public abstract class AbstractFileTreeNode extends MPSTreeNode {
   }
 
   private void updatePresentationInternal() {
-    setColor(myProject.getComponent(VcsFileStatusProvider.class).getFileStatus(myFile).getColor());
+    setColor(VcsFileStatusProvider.getInstance(myProject.getProject()).getFileStatus(myFile).getColor());
   }
 
   public VirtualFile getFile() {
