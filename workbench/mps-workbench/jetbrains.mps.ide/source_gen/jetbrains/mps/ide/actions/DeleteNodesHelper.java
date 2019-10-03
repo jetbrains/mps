@@ -20,9 +20,9 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import java.util.Iterator;
 import org.apache.log4j.Level;
-import com.intellij.openapi.progress.ProgressManager;
-import com.intellij.openapi.progress.Task;
-import com.intellij.openapi.progress.ProgressIndicator;
+import jetbrains.mps.ide.findusages.model.SearchTask;
+import jetbrains.mps.ide.findusages.model.SearchResults;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Set;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -30,11 +30,14 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.progress.ProgressIndicator;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import jetbrains.mps.ide.platform.refactoring.RefactoringViewAction;
@@ -52,7 +55,7 @@ public class DeleteNodesHelper {
     myRepository = myProject.getRepository();
     myNodesToDelete = ListSequence.fromListWithValues(new ArrayList<SNode>(), nodes);
   }
-  public boolean hasOptions() {
+  public boolean hasAspectOption() {
     return ListSequence.fromList(myNodesToDelete).translate(new ITranslator2<SNode, RelationDescriptor>() {
       public Iterable<RelationDescriptor> translate(final SNode node) {
         List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(ProjectHelper.toIdeaProject(myProject), node);
@@ -128,9 +131,13 @@ public class DeleteNodesHelper {
       return;
     }
 
-    ProgressManager.getInstance().run(new Task.Modal(ideaProject, "Finding Usages", true) {
+    final SearchTask searchTask = new SearchTask() {
       @Override
-      public void run(@NotNull final ProgressIndicator pi) {
+      public boolean canExecute() {
+        return true;
+      }
+      @Override
+      public SearchResults execute(final ProgressMonitor pm) {
         final Set<SearchResult<SNode>> results = SetSequence.fromSet(new HashSet<SearchResult<SNode>>());
         myRepository.getModelAccess().runReadAction(new Runnable() {
           public void run() {
@@ -139,24 +146,24 @@ public class DeleteNodesHelper {
             ListSequence.fromList(myNodesToDelete).visitAll(new IVisitor<SNode>() {
               public void visit(SNode it) {
                 SearchResults<SNode> usages = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.core.findUsages.NodeAndDescendantsUsages_Finder");
-                SetSequence.fromSet(results).addSequence(ListSequence.fromList(usages.getSearchResults()));
+                SetSequence.fromSet(results).addSequence(ListSequence.fromList(usages.getSearchResults2()));
 
-                if (pi.isCanceled()) {
+                if (pm.isCanceled()) {
                   return;
                 }
 
                 if (SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$UN)) {
                   SearchResults<SNode> instances = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
-                  SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults()));
+                  SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults2()));
                 }
 
-                if (pi.isCanceled()) {
+                if (pm.isCanceled()) {
                   return;
                 }
               }
             });
 
-            if (pi.isCanceled()) {
+            if (pm.isCanceled()) {
               return;
             }
 
@@ -177,11 +184,17 @@ public class DeleteNodesHelper {
             }
           }
         });
+        return new SearchResults<SNode>(SetSequence.fromSetWithValues(new HashSet<SNode>(), myNodesToDelete), SetSequence.fromSet(results).toListSequence());
+      }
+    };
 
+    ProgressManager.getInstance().run(new Task.Modal(ideaProject, "Finding Usages", true) {
+      @Override
+      public void run(@NotNull ProgressIndicator pi) {
+        final SearchResults sr = searchTask.execute(new ProgressMonitorAdapter(pi));
         if (pi.isCanceled()) {
           return;
         }
-        final SearchResults sr = new SearchResults<SNode>(SetSequence.fromSetWithValues(new HashSet<SNode>(), myNodesToDelete), SetSequence.fromSet(results).toListSequence());
 
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
@@ -195,7 +208,7 @@ public class DeleteNodesHelper {
                 });
                 refactoringViewItem.close();
               }
-            }, sr, false, "Safe Delete");
+            }, null, sr, searchTask, "Safe Delete");
           }
         });
       }

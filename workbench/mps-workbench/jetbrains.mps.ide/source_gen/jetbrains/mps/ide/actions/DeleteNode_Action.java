@@ -89,21 +89,19 @@ public class DeleteNode_Action extends BaseAction {
     });
     final DeleteNodesHelper helper = new DeleteNodesHelper(affNodes.value, ((MPSProject) MapSequence.fromMap(_params).get("project")));
 
-    final Wrappers._boolean dialogNeeded = new Wrappers._boolean(false);
+    final Wrappers._boolean hasAspects = new Wrappers._boolean(false);
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        dialogNeeded.value = helper.hasOptions();
+        hasAspects.value = helper.hasAspectOption();
       }
     });
 
     DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption("Safe Delete", false, true);
     DeleteDialog.DeleteOption aspectsOption = new DeleteDialog.DeleteOption("Delete Aspects", true, true);
-    if (dialogNeeded.value) {
-      DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), "Delete Node", "Are you sure you want to delete selected node?", safeOption, aspectsOption);
-      dialog.show();
-      if (!(dialog.isOK())) {
-        return;
-      }
+    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), "Delete Node", "Are you sure you want to delete selected node?", (hasAspects.value ? new DeleteDialog.DeleteOption[]{safeOption, aspectsOption} : new DeleteDialog.DeleteOption[]{safeOption}));
+    dialog.show();
+    if (!(dialog.isOK())) {
+      return;
     }
     helper.deleteNodes(safeOption.selected, aspectsOption.selected, true);
   }
