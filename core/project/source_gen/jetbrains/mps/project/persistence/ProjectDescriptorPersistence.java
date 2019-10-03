@@ -15,14 +15,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.util.xml.XmlUtil;
 import jetbrains.mps.vfs.path.Path;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.vfs.IFile;
 import org.jdom.Document;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vfs.impl.IoFileSystem;
 
 public class ProjectDescriptorPersistence {
   private static final Logger LOG = LogManager.getLogger(ProjectDescriptorPersistence.class);
@@ -71,13 +66,7 @@ public class ProjectDescriptorPersistence {
       return descriptor;
     }
     ProjectDescriptor result_jnk9az_a3a71 = descriptor;
-    List<Element> moduleList = ListSequence.fromList(new ArrayList<Element>());
-    // AP : these are deprecated, aren't they? 
-    ListSequence.fromList(moduleList).addSequence(Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "projectSolutions"), "solutionPath")));
-    ListSequence.fromList(moduleList).addSequence(Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "projectLanguages"), "languagePath")));
-    ListSequence.fromList(moduleList).addSequence(Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, "projectDevkits"), "devkitPath")));
-    ListSequence.fromList(moduleList).addSequence(Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, PROJECT_MODULES_TAG), MODULE_PATH_TAG)));
-    for (Element moduleElement : ListSequence.fromList(moduleList)) {
+    for (Element moduleElement : Sequence.fromIterable(XmlUtil.children(XmlUtil.first(root, PROJECT_MODULES_TAG), MODULE_PATH_TAG))) {
       String path = myMacroHelper.expandPath(moduleElement.getAttributeValue(PATH_TAG));
       String virtualFolder = moduleElement.getAttributeValue(FOLDER_TAG);
       ModulePath modulePath = new ModulePath(path, virtualFolder);
@@ -89,7 +78,8 @@ public class ProjectDescriptorPersistence {
   @Nullable
   public Element loadProjectElement() {
     try {
-      IFile projectFile = findProjectFile(myBaseDir.getPath());
+      File projectFile = findProjectFile();
+      // XXX why findProjectFile throws exception when myBaseDir doesn't exist, but here we simply return null if the file there does not exist? 
       if (!(projectFile.exists())) {
         return null;
       }
@@ -106,15 +96,14 @@ public class ProjectDescriptorPersistence {
   }
 
   @NotNull
-  private static IFile findProjectFile(String path) {
-    IFile projectFile = IoFileSystem.INSTANCE.getFile(path);
+  private File findProjectFile() {
+    File projectFile = myBaseDir;
     if (!(projectFile.exists())) {
-      throw new IllegalArgumentException("Path " + path + " does not exist");
+      throw new IllegalArgumentException("Project path " + projectFile.getPath() + " does not exist");
     }
     if (projectFile.isDirectory()) {
-      projectFile = projectFile.findChild(MPS_DOT_FOLDER).findChild(MODULES_XML_LOCATION);
-    }
-    if (!(projectFile.getName().equals(MODULES_XML_LOCATION))) {
+      projectFile = new File(myBaseDir, MPS_DOT_FOLDER + File.separator + MODULES_XML_LOCATION);
+    } else if (!(projectFile.getName().equals(MODULES_XML_LOCATION))) {
       LOG.warn("Supposed to be the 'modules.xml' file: '" + projectFile + "'");
     }
     return projectFile;
