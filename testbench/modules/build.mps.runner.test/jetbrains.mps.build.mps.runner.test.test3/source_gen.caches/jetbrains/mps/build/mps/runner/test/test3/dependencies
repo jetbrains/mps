@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.build.mps.runner.test.test3.MainClass">
+    <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="jetbrains.mps.core.platform.Platform" />
     <classNode dependClassName="jetbrains.mps.ide.ThreadUtils" />
     <classNode dependClassName="jetbrains.mps.smodel.MPSModuleRepository" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
-    <classNode dependClassName="jetbrains.mps.vfs.impl.IoFileSystem" />
+    <classNode dependClassName="jetbrains.mps.vfs.IFileSystem" />
+    <classNode dependClassName="jetbrains.mps.vfs.VFSManager" />
   </dependency>
 </dependenciesRoot>
 

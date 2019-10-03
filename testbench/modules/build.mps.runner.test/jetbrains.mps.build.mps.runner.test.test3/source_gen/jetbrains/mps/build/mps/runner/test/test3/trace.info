@@ -3,32 +3,36 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:debded47-9400-43b4-8f2a-90969bae3c47(jetbrains.mps.build.mps.runner.test.test3)/138593292063249461">
     <file name="MainClass.java">
-      <node id="6452630887098599568" at="12,52,13,94" concept="2" />
-      <node id="138593292063072481" at="17,29,18,67" concept="2" />
-      <node id="5349964674704758804" at="18,67,19,35" concept="0" />
-      <node id="5349964674704758476" at="17,0,21,0" concept="1" trace="run#()V" />
-      <node id="5349964674704756950" at="15,25,21,11" concept="0" />
-      <node id="1912033194715198458" at="15,0,23,0" concept="1" trace="run#()V" />
-      <node id="1912033194715197745" at="13,94,23,7" concept="0" />
-      <node id="138593292063249494" at="12,0,25,0" concept="3" trace="mpsMain#(Ljetbrains/mps/core/platform/Platform;)V" />
-      <scope id="5349964674704758477" at="17,29,19,35">
+      <node id="6452630887098599568" at="14,52,15,94" concept="2" />
+      <node id="7951539184473520253" at="15,94,16,105" concept="2" />
+      <node id="9118873142173535975" at="20,29,21,72" concept="3" />
+      <node id="138593292063072481" at="21,72,22,58" concept="2" />
+      <node id="5349964674704758804" at="22,58,23,35" concept="0" />
+      <node id="5349964674704758476" at="20,0,25,0" concept="1" trace="run#()V" />
+      <node id="5349964674704756950" at="18,25,25,11" concept="0" />
+      <node id="1912033194715198458" at="18,0,27,0" concept="1" trace="run#()V" />
+      <node id="1912033194715197745" at="16,105,27,7" concept="0" />
+      <node id="138593292063249494" at="14,0,29,0" concept="4" trace="mpsMain#(Ljetbrains/mps/core/platform/Platform;)V" />
+      <scope id="5349964674704758477" at="20,29,23,35">
         <var name="okFile" id="138593292063072482" />
       </scope>
-      <scope id="5349964674704758476" at="17,0,21,0" />
-      <scope id="1912033194715198459" at="15,25,21,11" />
-      <scope id="1912033194715198458" at="15,0,23,0" />
-      <scope id="138593292063249500" at="12,52,23,7">
+      <scope id="5349964674704758476" at="20,0,25,0" />
+      <scope id="1912033194715198459" at="18,25,25,11" />
+      <scope id="1912033194715198458" at="18,0,27,0" />
+      <scope id="138593292063249500" at="14,52,27,7">
         <var name="coreRepo" id="6452630887098599569" />
+        <var name="fs" id="7951539184473520254" />
       </scope>
-      <scope id="138593292063249494" at="12,0,25,0">
+      <scope id="138593292063249494" at="14,0,29,0">
         <var name="mpsPlatform" id="6452630887098597834" />
       </scope>
-      <unit id="5349964674704758476" at="16,53,21,9" name="jetbrains.mps.build.mps.runner.test.test3.MainClass$1$1" />
-      <unit id="1912033194715198458" at="14,41,23,5" name="jetbrains.mps.build.mps.runner.test.test3.MainClass$1" />
-      <unit id="138593292063249461" at="11,0,26,0" name="jetbrains.mps.build.mps.runner.test.test3.MainClass" />
+      <unit id="5349964674704758476" at="19,53,25,9" name="jetbrains.mps.build.mps.runner.test.test3.MainClass$1$1" />
+      <unit id="1912033194715198458" at="17,41,27,5" name="jetbrains.mps.build.mps.runner.test.test3.MainClass$1" />
+      <unit id="138593292063249461" at="13,0,30,0" name="jetbrains.mps.build.mps.runner.test.test3.MainClass" />
     </file>
   </root>
 </debug-info>

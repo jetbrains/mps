@@ -4,18 +4,22 @@ package jetbrains.mps.build.mps.runner.test.test3;
 
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.impl.IoFileSystem;
+import java.io.File;
 
 public class MainClass {
   public static void mpsMain(Platform mpsPlatform) {
     final MPSModuleRepository coreRepo = mpsPlatform.findComponent(MPSModuleRepository.class);
+    final IFileSystem fs = mpsPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
     ThreadUtils.runInUIThreadAndWait(new Runnable() {
       public void run() {
         coreRepo.getModelAccess().runWriteAction(new Runnable() {
           public void run() {
-            IFile okFile = IoFileSystem.INSTANCE.getFile("ok.log");
+            // Note, IFileSystem.getFile(String) requires absolute path 
+            IFile okFile = fs.getFile(new File("ok.log"));
             okFile.createNewFile();
           }
         });

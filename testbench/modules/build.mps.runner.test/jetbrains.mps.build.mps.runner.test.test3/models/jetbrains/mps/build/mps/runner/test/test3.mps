@@ -9,9 +9,9 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
-    <import index="amo1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.impl(MPS.Core/)" />
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -20,6 +20,9 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
+        <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
@@ -63,6 +66,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
@@ -71,6 +75,9 @@
       </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
+      </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
@@ -85,6 +92,14 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
   </registry>
@@ -115,6 +130,35 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="6TpyG9s9bxX" role="3cqZAp">
+          <node concept="3cpWsn" id="6TpyG9s9bxY" role="3cpWs9">
+            <property role="TrG5h" value="fs" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="6TpyG9s9bwV" role="1tU5fm">
+              <ref role="3uigEE" to="3ju5:~IFileSystem" resolve="IFileSystem" />
+            </node>
+            <node concept="2OqwBi" id="6TpyG9s9bxZ" role="33vP2m">
+              <node concept="2OqwBi" id="6TpyG9s9by0" role="2Oq$k0">
+                <node concept="37vLTw" id="6TpyG9s9by1" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5AcmpEOes7a" resolve="mpsPlatform" />
+                </node>
+                <node concept="liA8E" id="6TpyG9s9by2" role="2OqNvi">
+                  <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                  <node concept="3VsKOn" id="6TpyG9s9by3" role="37wK5m">
+                    <ref role="3VsUkX" to="3ju5:~VFSManager" resolve="VFSManager" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="6TpyG9s9by4" role="2OqNvi">
+                <ref role="37wK5l" to="3ju5:~VFSManager.getFileSystem(java.lang.String)" resolve="getFileSystem" />
+                <node concept="10M0yZ" id="6TpyG9s9by5" role="37wK5m">
+                  <ref role="3cqZAo" to="3ju5:~VFSManager.FILE_FS" resolve="FILE_FS" />
+                  <ref role="1PxDUh" to="3ju5:~VFSManager" resolve="VFSManager" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1E8U0XDKj4L" role="3cqZAp">
           <node concept="2YIFZM" id="1E8U0XDKjey" role="3clFbG">
             <ref role="1Pybhc" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
@@ -135,6 +179,25 @@
                       <ref role="37wK5l" to="lui2:~ModelAccess.runWriteAction(java.lang.Runnable)" resolve="runWriteAction" />
                       <node concept="1bVj0M" id="4CYT8qWE_rc" role="37wK5m">
                         <node concept="3clFbS" id="4CYT8qWE_rd" role="1bW5cS">
+                          <node concept="3SKdUt" id="7UcJGWn6CVB" role="3cqZAp">
+                            <node concept="1PaTwC" id="7UcJGWn6CVC" role="3ndbpf">
+                              <node concept="3oM_SD" id="7UcJGWn6CVE" role="1PaTwD">
+                                <property role="3oM_SC" value="Note," />
+                              </node>
+                              <node concept="3oM_SD" id="7UcJGWn6DD1" role="1PaTwD">
+                                <property role="3oM_SC" value="IFileSystem.getFile(String)" />
+                              </node>
+                              <node concept="3oM_SD" id="7UcJGWn6Dk3" role="1PaTwD">
+                                <property role="3oM_SC" value="requires" />
+                              </node>
+                              <node concept="3oM_SD" id="7UcJGWn6Dnq" role="1PaTwD">
+                                <property role="3oM_SC" value="absolute" />
+                              </node>
+                              <node concept="3oM_SD" id="7UcJGWn6DqM" role="1PaTwD">
+                                <property role="3oM_SC" value="path" />
+                              </node>
+                            </node>
+                          </node>
                           <node concept="3cpWs8" id="7GotP_EY3x" role="3cqZAp">
                             <node concept="3cpWsn" id="7GotP_EY3y" role="3cpWs9">
                               <property role="TrG5h" value="okFile" />
@@ -142,14 +205,18 @@
                                 <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
                               </node>
                               <node concept="2OqwBi" id="6UQiGMPmHjl" role="33vP2m">
-                                <node concept="10M0yZ" id="6M4uy4nO4rd" role="2Oq$k0">
-                                  <ref role="3cqZAo" to="amo1:~IoFileSystem.INSTANCE" resolve="INSTANCE" />
-                                  <ref role="1PxDUh" to="amo1:~IoFileSystem" resolve="IoFileSystem" />
+                                <node concept="37vLTw" id="6TpyG9s9bKS" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="6TpyG9s9bxY" resolve="fs" />
                                 </node>
                                 <node concept="liA8E" id="6UQiGMPmHs$" role="2OqNvi">
-                                  <ref role="37wK5l" to="amo1:~IoFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                                  <node concept="Xl_RD" id="1E8U0XDKvjR" role="37wK5m">
-                                    <property role="Xl_RC" value="ok.log" />
+                                  <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                                  <node concept="2ShNRf" id="7UcJGWn6vPq" role="37wK5m">
+                                    <node concept="1pGfFk" id="7UcJGWn6C_k" role="2ShVmc">
+                                      <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                                      <node concept="Xl_RD" id="1E8U0XDKvjR" role="37wK5m">
+                                        <property role="Xl_RC" value="ok.log" />
+                                      </node>
+                                    </node>
                                   </node>
                                 </node>
                               </node>
