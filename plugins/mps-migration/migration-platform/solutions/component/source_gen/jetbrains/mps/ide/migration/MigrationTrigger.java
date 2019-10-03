@@ -6,6 +6,7 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.components.AbstractProjectComponent;
+import jetbrains.mps.migration.global.MigrationProperties;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.project.MPSProject;
@@ -123,13 +124,13 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private Notification myLastNotification = null;
   private Notification myLastDeployWarning = null;
 
-  public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, ProjectMigrationProperties props, MPSCoreComponents mpsCore, ReloadManagerComponent reloadManager) {
+  public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, MPSCoreComponents mpsCore) {
     super(ideaProject);
     myMpsProject = p;
     myMigrationRegistry = migrationManager;
-    myProperties = props;
+    myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
-    myReloadManager = reloadManager;
+    myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);;
   }
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {

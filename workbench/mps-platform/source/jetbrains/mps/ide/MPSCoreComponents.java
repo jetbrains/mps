@@ -16,6 +16,7 @@
 package jetbrains.mps.ide;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.vfs.newvfs.ManagingFS;
 import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
 import jetbrains.mps.classloading.ClassLoaderManager;
@@ -47,10 +48,10 @@ public class MPSCoreComponents implements Disposable {
   private MPSBaseLanguage myBaseLanguage;
   private Platform myPlatform;
 
-  public MPSCoreComponents(
-      ManagingFS fs,
-      ModelAccess access,
-      UndoHandler handler) {
+  public MPSCoreComponents() {
+    ManagingFS fs = ManagingFS.getInstance();
+    ModelAccess access = ApplicationManager.getApplication().getComponent(ModelAccess.class);
+    UndoHandler handler = ApplicationManager.getApplication().getComponent(UndoHandler.class);
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
     myBaseLanguage = new MPSBaseLanguage();
     myBaseLanguage.init();
