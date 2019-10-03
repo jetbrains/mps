@@ -16,7 +16,7 @@
 package jetbrains.mps.reloading;
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -51,9 +51,7 @@ class NonExistingClassPathItem extends RealClassPathItem {
 
   @Override
   public List<RealClassPathItem> flatten() {
-    List<RealClassPathItem> result = new ArrayList<>();
-    result.add(this);
-    return result;
+    return Collections.singletonList(this);
   }
 
   public String toString() {

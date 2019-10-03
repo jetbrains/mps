@@ -20,18 +20,18 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.ReadUtil;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,32 +47,55 @@ public class JarFileClassPathItem extends RealClassPathItem {
 
   //computed during init
   private boolean myIsInitialized = false;
-  private String myPrefix;
-  private File myFile;
+  private final String myPrefix;
+  private final File myFile;
 
   private final MyCache myCache = new MyCache();
   private final String myPath;
 
-  JarFileClassPathItem(FileSystem fileSystem, String path) {
+  JarFileClassPathItem(@NotNull File jarFile, @NotNull String path) {
+    myFile = jarFile;
     myPath = path;
-    if (path.endsWith("!/")) {
-      path = path.substring(0, path.length() - 2);
-    }
+    myPrefix = urlPrefix(jarFile);
+  }
+
+  /**
+   * CP for a jar nested inside another archive (.zip or .jar);
+   * @param jarFile outer archive
+   * @param entry identifies nested archive within outer, relative path
+   * @param path complete path of the inner archive, to report from {@link #getPath()}
+   * @throws FileNotFoundException in case entry is not
+   */
+  JarFileClassPathItem(@NotNull File jarFile, @NotNull String entry, @NotNull String path) throws FileNotFoundException {
+    myPath = path;
+    // null value is not expected to get through try-catch block, either not null extracted, or exception thrown
+    File nestedJar = null;
     try {
-      myFile = transformFile(fileSystem.getFile(path));
-      myPrefix = "jar:" + myFile.toURI().toURL() + "!/";
+      nestedJar = extractNestedJar(jarFile, entry);
+    } catch (FileNotFoundException ex) {
+      throw ex;
     } catch (IOException e) {
       LOG.error("invalid class path: " + path, e);
+      nestedJar = jarFile; // it's not perfect, still better than NPE down here.
+    }
+    myFile = nestedJar;
+    myPrefix = urlPrefix(nestedJar);
+  }
+
+  private static String urlPrefix(File file) {
+    try {
+      return "jar:" + file.toURI().toURL() + "!/";
+    } catch (MalformedURLException ex) {
+      // generally, shall never happen for URLs created for file URI
+      LOG.error("Failed to create URL for files nested inside " + file, ex);
+      // just use some bogus prefix, as long as we don't fail with exception (perhaps, RealClassPathItem shall deal with it, instead?)
+      return "jar:/" + file.getName()  + "!/";
     }
   }
 
   @Override
   public String getPath() {
     return myPath;
-  }
-
-  public String getAbsolutePath() {
-    return myFile.getAbsolutePath();
   }
 
   public File getFile() {
@@ -146,7 +169,9 @@ public class JarFileClassPathItem extends RealClassPathItem {
     ZipFile zf = null;
     try {
       zf = new ZipFile(myFile);
-      if (zf.getEntry(name) == null) return null;
+      if (zf.getEntry(name) == null) {
+        return null;
+      }
       return new URL(myPrefix + name);
     } catch (IOException e) {
       LOG.error(String.format("Failed to get resource '%s'", name), e);
@@ -207,29 +232,19 @@ public class JarFileClassPathItem extends RealClassPathItem {
     }
   }
 
-  private static File transformFile(IFile f) throws IOException {
-    if (!f.isInArchive()) {
-      return new File(f.getPath());
-    }
-
-    File tmpFile = File.createTempFile(f.getName(), "tmp");
+  @NotNull
+  private static File extractNestedJar(File archive, String entry) throws IOException {
+    File tmpFile = File.createTempFile(archive.getName(), null);
     tmpFile.deleteOnExit();
 
-    OutputStream os = null;
-    InputStream is = null;
-    try {
-      is = new BufferedInputStream(f.openInputStream());
-      os = new BufferedOutputStream(new FileOutputStream(tmpFile));
-      int result;
-      while ((result = is.read()) != -1) {
-        os.write(result);
+    try (ZipFile zipFile = new ZipFile(archive)) {
+      final ZipEntry e = zipFile.getEntry(entry);
+      if (e == null) {
+        throw new FileNotFoundException(String.format("No entry '%s' found in archive %s", entry, archive));
       }
-    } finally {
-      if (is != null) {
-        is.close();
-      }
-      if (os != null) {
-        os.close();
+      try (InputStream is = zipFile.getInputStream(e);
+           OutputStream os = new BufferedOutputStream(new FileOutputStream(tmpFile)))  {
+        is.transferTo(os);
       }
     }
 
@@ -248,26 +263,13 @@ public class JarFileClassPathItem extends RealClassPathItem {
       }
       return e;
     }
-    public Collection<String> getClassesSetFor(String pack) {
-      Entry e = getEntry(pack);
-      return e == null ? Collections.emptyList() : e.getClasses();
-    }
 
-    public boolean hasClass(String pack, String className) {
+    /*package*/  boolean hasClass(String pack, String className) {
       Entry e = getEntry(pack);
       return e != null && e.hasClass(className);
     }
 
-    public boolean hasPackage(String pack) {
-      return getEntry(pack) != null;
-    }
-
-    public Collection<String> getSubpackagesSetFor(String pack) {
-      Entry e = getEntry(pack);
-      return e == null ? Collections.emptyList() : e.getImmediateSubPackages(pack);
-    }
-
-    public void addClass(String pack, String className) {
+    /*package*/ void addClass(String pack, String className) {
       //namespace is never null;
       Entry e = myTopPackage;
       PackageNameIterator it = new PackageNameIterator(pack);
@@ -362,21 +364,6 @@ public class JarFileClassPathItem extends RealClassPathItem {
 
     public boolean hasClass(String className) {
       return myClassNames != null && myClassNames.contains(className);
-    }
-
-    public Collection<String> getImmediateSubPackages(String parent) {
-      if (mySubpackages == null) {
-        return Collections.emptyList();
-      }
-      ArrayList<String> rv = new ArrayList<>(mySubpackages.size());
-      for (Entry e : mySubpackages) {
-        if (parent == null || parent.isEmpty()) {
-          rv.add(e.myPackageName);
-        } else {
-          rv.add(parent + '.' + e.myPackageName);
-        }
-      }
-      return rv;
     }
 
     public Collection<String> getClasses() {
