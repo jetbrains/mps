@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.reloading;
 
-import jetbrains.mps.util.FlattenIterable;
 import jetbrains.mps.util.iterable.IterableEnumeration;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.net.URL;
@@ -46,22 +44,14 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
     return false;
   }
 
-  @Override
-  public boolean hasPackage(@NotNull String name) {
-    for (IClassPathItem item : myChildren) {
-      if (item.hasPackage(name)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   @Nullable
   @Override
   public ClassBytes getClassBytes(String name) {
     for (IClassPathItem item : myChildren) {
       ClassBytes result = item.getClassBytes(name);
-      if (result != null) return result;
+      if (result != null) {
+        return result;
+      }
     }
     return null;
   }
@@ -87,26 +77,6 @@ public class CompositeClassPathItem extends AbstractClassPathItem {
       }
     }
     return new IterableEnumeration<>(result);
-  }
-
-  @Override
-  public Iterable<String> getAvailableClasses(String namespace) {
-    FlattenIterable<String> result = new FlattenIterable<>();
-    for (IClassPathItem item : myChildren) {
-      //todo rewrite using mapping iterable
-      result.add(item.getAvailableClasses(namespace));
-    }
-    return result;
-  }
-
-  @Override
-  public Iterable<String> getSubpackages(String namespace) {
-    FlattenIterable<String> result = new FlattenIterable<>();
-    for (IClassPathItem item : myChildren) {
-      //todo rewrite using mapping iterable
-      result.add(item.getSubpackages(namespace));
-    }
-    return result;
   }
 
   public List<IClassPathItem> getChildren() {

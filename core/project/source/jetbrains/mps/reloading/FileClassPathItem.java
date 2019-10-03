@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,9 @@ package jetbrains.mps.reloading;
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.InternUtil;
-import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ReadUtil;
-import jetbrains.mps.util.containers.EmptyIterable;
-import org.jetbrains.mps.util.Condition;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,7 +29,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -43,16 +38,10 @@ import java.util.Set;
  */
 class FileClassPathItem extends RealClassPathItem {
   private final String myClassPath;
-  private final Map<String, Set<String>> mySubpackagesCache = new THashMap<>();
   private final Map<String, Set<String>> myAvailableClassesCache = new THashMap<>();
 
   FileClassPathItem(String classPath) {
     myClassPath = classPath;
-  }
-
-  @Deprecated
-  public String getClassPath() {
-    return getPath();
   }
 
   @Override
@@ -89,15 +78,9 @@ class FileClassPathItem extends RealClassPathItem {
 
     String path = myClassPath + File.separatorChar + NameUtil.pathFromNamespace(name) + MPSExtentions.DOT_CLASSFILE;
     try {
-      byte[] bytes = null;
-      InputStream inp = null;
-      try {
-        inp = new FileInputStream(path);
+      byte[] bytes;
+      try (InputStream inp = new FileInputStream(path)) {
         bytes = ReadUtil.read(inp);
-      } finally {
-        if (inp != null) {
-          inp.close();
-        }
       }
 
       return bytes == null ? null : new DefaultClassBytes(bytes, new File(path).toURI().toURL());
@@ -115,29 +98,6 @@ class FileClassPathItem extends RealClassPathItem {
     } catch (MalformedURLException e) {
       return null;
     }
-  }
-
-  @Override
-  public synchronized Iterable<String> getAvailableClasses(String namespace) {
-    if (!myAvailableClassesCache.containsKey(namespace)) {
-      buildCacheFor(namespace);
-    }
-
-    Set<String> start = myAvailableClassesCache.get(namespace);
-    if (start == null) return new EmptyIterable<>();
-    Condition<String> cond = className -> !JavaNameUtil.isAnonymous(className);
-    return new ConditionalIterable<>(start, cond);
-  }
-
-  @Override
-  public synchronized Iterable<String> getSubpackages(String namespace) {
-    if (!mySubpackagesCache.containsKey(namespace)) {
-      buildCacheFor(namespace);
-    }
-
-    Set<String> result = mySubpackagesCache.get(namespace);
-    if (result == null) return new EmptyIterable<>();
-    return Collections.unmodifiableSet(result);
   }
 
   private synchronized void buildCacheFor(String namespace) {
@@ -168,7 +128,6 @@ class FileClassPathItem extends RealClassPathItem {
       }
     }
 
-    mySubpackagesCache.put(namespace, subpacks);
     myAvailableClassesCache.put(namespace, classes);
   }
 
@@ -185,7 +144,9 @@ class FileClassPathItem extends RealClassPathItem {
   }
 
   private File getModelDir(String namespace) {
-    if (namespace == null) namespace = "";
+    if (namespace == null) {
+      namespace = "";
+    }
     return new File(myClassPath + File.separatorChar + NameUtil.pathFromNamespace(namespace));
   }
 

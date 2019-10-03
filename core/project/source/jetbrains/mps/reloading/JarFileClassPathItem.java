@@ -17,17 +17,13 @@ package jetbrains.mps.reloading;
 
 import gnu.trove.THashSet;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.InternUtil;
-import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.util.ReadUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.util.Condition;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -90,12 +86,6 @@ public class JarFileClassPathItem extends RealClassPathItem {
     String packageName = ix == -1 ? "" : qualifiedClassName.substring(0, ix);
     String className = qualifiedClassName.substring(ix + 1);
     return myCache.hasClass(packageName, className);
-  }
-
-  @Override
-  public boolean hasPackage(@NotNull String packageName) {
-    ensureInitialized();
-    return myCache.hasPackage(packageName);
   }
 
   @Override
@@ -164,20 +154,6 @@ public class JarFileClassPathItem extends RealClassPathItem {
     } finally {
       FileUtil.closeFileSafe(zf);
     }
-  }
-
-  @Override
-  public synchronized Iterable<String> getAvailableClasses(String namespace) {
-    ensureInitialized();
-    Collection<String> start = myCache.getClassesSetFor(namespace);
-    Condition<String> cond = className -> !JavaNameUtil.isAnonymous(className);
-    return new ConditionalIterable<>(start, cond);
-  }
-
-  @Override
-  public synchronized Iterable<String> getSubpackages(String namespace) {
-    ensureInitialized();
-    return myCache.getSubpackagesSetFor(namespace);
   }
 
   @Override

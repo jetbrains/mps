@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.reloading;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -48,16 +47,6 @@ class NonExistingClassPathItem extends RealClassPathItem {
   @Override
   public URL getResource(String name) {
     return null;
-  }
-
-  @Override
-  public Iterable<String> getAvailableClasses(String namespace) {
-    return Collections.emptyList();
-  }
-
-  @Override
-  public Iterable<String> getSubpackages(String namespace) {
-    return Collections.emptyList();
   }
 
   @Override

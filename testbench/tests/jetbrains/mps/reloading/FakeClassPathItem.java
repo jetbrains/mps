@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,6 @@
 package jetbrains.mps.reloading;
 
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.reloading.AbstractClassPathItem;
-import jetbrains.mps.reloading.IClassPathItemVisitor;
-import jetbrains.mps.reloading.RealClassPathItem;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ReadUtil;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A class path item containg only the given class
+ * A class path item containing only the given class
  *
  * @author apyshkin
  * @since 31/12/16
@@ -66,16 +63,6 @@ public final class FakeClassPathItem extends AbstractClassPathItem {
 
   @Override
   public Enumeration<URL> getResources(String name) {
-    return null;
-  }
-
-  @Override
-  public Iterable<String> getAvailableClasses(String namespace) {
-    return null;
-  }
-
-  @Override
-  public Iterable<String> getSubpackages(String namespace) {
     return null;
   }
 
