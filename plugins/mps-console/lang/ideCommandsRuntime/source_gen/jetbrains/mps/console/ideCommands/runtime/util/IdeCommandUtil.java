@@ -142,11 +142,11 @@ public class IdeCommandUtil {
               if (mf instanceof GenerationTargetFacet) {
                 GenerationTargetFacet genFacet = ((GenerationTargetFacet) mf);
 
-                genFacet.getOutputLocation(model).getChildren().forEach(deleteIfFile);
-                genFacet.getOutputCacheLocation(model).getChildren().forEach(deleteIfFile);
+                check_nf7729_a2a0a0a0a0c0a0a4(check_nf7729_a0c0a0a0a0a2a0a0e(genFacet.getOutputLocation(model)), deleteIfFile);
+                check_nf7729_a3a0a0a0a0c0a0a4(check_nf7729_a0d0a0a0a0a2a0a0e(genFacet.getOutputCacheLocation(model)), deleteIfFile);
               }
               if (mf instanceof JavaModuleFacet) {
-                ((JavaModuleFacet) mf).getClassesLocation(model).getChildren().forEach(deleteIfFile);
+                check_nf7729_a0a1a0a0a0c0a0a4(check_nf7729_a0a0b0a0a0a2a0a0e(((JavaModuleFacet) mf).getClassesLocation(model)), deleteIfFile);
               }
             }
           }
@@ -196,4 +196,40 @@ public class IdeCommandUtil {
     }));
   }
 
+  private static void check_nf7729_a2a0a0a0a0c0a0a4(List<IFile> checkedDotOperand, Consumer<IFile> deleteIfFile) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.forEach(deleteIfFile);
+    }
+
+  }
+  private static List<IFile> check_nf7729_a0c0a0a0a0a2a0a0e(IFile checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getChildren();
+    }
+    return null;
+  }
+  private static void check_nf7729_a3a0a0a0a0c0a0a4(List<IFile> checkedDotOperand, Consumer<IFile> deleteIfFile) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.forEach(deleteIfFile);
+    }
+
+  }
+  private static List<IFile> check_nf7729_a0d0a0a0a0a2a0a0e(IFile checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getChildren();
+    }
+    return null;
+  }
+  private static void check_nf7729_a0a1a0a0a0c0a0a4(List<IFile> checkedDotOperand, Consumer<IFile> deleteIfFile) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.forEach(deleteIfFile);
+    }
+
+  }
+  private static List<IFile> check_nf7729_a0a0b0a0a0a2a0a0e(IFile checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getChildren();
+    }
+    return null;
+  }
 }

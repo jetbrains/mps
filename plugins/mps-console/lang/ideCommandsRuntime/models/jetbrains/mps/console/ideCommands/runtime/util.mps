@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
+    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -195,6 +196,9 @@
         <child id="8974276187400348171" name="commandClosureLiteral" index="1QHqEI" />
       </concept>
       <concept id="8974276187400348181" name="jetbrains.mps.lang.access.structure.ExecuteLightweightCommandStatement" flags="nn" index="1QHqEK" />
+    </language>
+    <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
+      <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
@@ -1146,8 +1150,8 @@
                                 </node>
                                 <node concept="3clFbH" id="22JnV7jotkq" role="3cqZAp" />
                                 <node concept="3clFbF" id="22JnV7jr94v" role="3cqZAp">
-                                  <node concept="2OqwBi" id="22JnV7jr2hW" role="3clFbG">
-                                    <node concept="2OqwBi" id="3n2RuiR_Cuq" role="2Oq$k0">
+                                  <node concept="2EnYce" id="791RMwCPhwy" role="3clFbG">
+                                    <node concept="2EnYce" id="791RMwCPgfh" role="2Oq$k0">
                                       <node concept="2OqwBi" id="22JnV7jpUnl" role="2Oq$k0">
                                         <node concept="37vLTw" id="22JnV7jpUnm" role="2Oq$k0">
                                           <ref role="3cqZAo" node="22JnV7joCge" resolve="genFacet" />
@@ -1172,8 +1176,8 @@
                                   </node>
                                 </node>
                                 <node concept="3clFbF" id="22JnV7jr0qF" role="3cqZAp">
-                                  <node concept="2OqwBi" id="22JnV7jqVIf" role="3clFbG">
-                                    <node concept="2OqwBi" id="3n2RuiRA0xy" role="2Oq$k0">
+                                  <node concept="2EnYce" id="791RMwCPiYf" role="3clFbG">
+                                    <node concept="2EnYce" id="791RMwCPirW" role="2Oq$k0">
                                       <node concept="2OqwBi" id="22JnV7jpUUo" role="2Oq$k0">
                                         <node concept="37vLTw" id="22JnV7jpUUp" role="2Oq$k0">
                                           <ref role="3cqZAo" node="22JnV7joCge" resolve="genFacet" />
@@ -1210,8 +1214,8 @@
                             <node concept="3clFbJ" id="22JnV7jpA0e" role="3cqZAp">
                               <node concept="3clFbS" id="22JnV7jpA0g" role="3clFbx">
                                 <node concept="3clFbF" id="22JnV7jrg$e" role="3cqZAp">
-                                  <node concept="2OqwBi" id="22JnV7jrcxN" role="3clFbG">
-                                    <node concept="2OqwBi" id="22JnV7jpIt5" role="2Oq$k0">
+                                  <node concept="2EnYce" id="791RMwCPmgm" role="3clFbG">
+                                    <node concept="2EnYce" id="791RMwCPlHP" role="2Oq$k0">
                                       <node concept="2OqwBi" id="22JnV7jpIt6" role="2Oq$k0">
                                         <node concept="1eOMI4" id="22JnV7jpIt7" role="2Oq$k0">
                                           <node concept="10QFUN" id="22JnV7jpIt8" role="1eOMHV">
