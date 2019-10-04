@@ -15,14 +15,12 @@
  */
 package jetbrains.mps.ide.editor.icons;
 
-import com.intellij.openapi.components.AbstractProjectComponent;
+import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileAdapter;
 import com.intellij.openapi.vfs.VirtualFileEvent;
 import com.intellij.openapi.vfs.VirtualFileListener;
-import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFilePropertyEvent;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
@@ -35,18 +33,16 @@ import java.util.Arrays;
  *        need this distinct component? Does IDEA listen to file changes or it's indeed our responsibility to update editors on VF change?
  * XXX Why it's distinct from NodeFileIconProvider?
  */
-public class NodeIconUpdater extends AbstractProjectComponent {
+public class NodeIconUpdater implements ProjectComponent {
   private final FileEditorManagerEx myFileEditorManagerEx;
-  private final NodeVirtualFileSystem myNodeVFS = (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   private final VirtualFileListener myFileListener;
 
   public NodeIconUpdater(Project project, FileEditorManagerEx fileEditorManager) {
-    super(project);
     myFileEditorManagerEx = fileEditorManager;
     // TODO Would be more effective to be an ApplicationComponent and listen to bulk changes (BulkFileListener)
     // however, there's no way to find out MPSProject from MPSNodeVirtualFile at the moment, and without a project
     // can't access FileEditorManagerEx.
-    myFileListener = new VirtualFileAdapter() {
+    myFileListener = new VirtualFileListener() {
       @Override
       public void propertyChanged(@NotNull VirtualFilePropertyEvent event) {
         refresh(event.getFile());
@@ -66,12 +62,12 @@ public class NodeIconUpdater extends AbstractProjectComponent {
 
   @Override
   public void projectOpened() {
-    myNodeVFS.addVirtualFileListener(myFileListener);
+    NodeVirtualFileSystem.getInstance().addVirtualFileListener(myFileListener);
   }
 
   @Override
   public void projectClosed() {
-    myNodeVFS.removeVirtualFileListener(myFileListener);
+    NodeVirtualFileSystem.getInstance().removeVirtualFileListener(myFileListener);
   }
 
   void refresh(VirtualFile vf) {

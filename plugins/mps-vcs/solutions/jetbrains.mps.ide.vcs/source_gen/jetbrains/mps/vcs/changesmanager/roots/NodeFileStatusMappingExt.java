@@ -16,9 +16,11 @@ import org.apache.log4j.Level;
 
 public class NodeFileStatusMappingExt extends NodeFileStatusMapping {
   private static final Logger LOG = LogManager.getLogger(NodeFileStatusMappingExt.class);
+
   public NodeFileStatusMappingExt(MPSProject project, CurrentDifferenceRegistry registry) {
     super(project, registry);
   }
+
   @Override
   protected void statusChanged(FileStatusManager fsm, SNode currentNode) {
     super.statusChanged(fsm, currentNode);
@@ -32,7 +34,7 @@ public class NodeFileStatusMappingExt extends NodeFileStatusMapping {
         }
       }
       if (baseNode != null && baseNode != currentNode) {
-        fsm.fileStatusChanged(myNodeFileSystem.getFileFor(myMPSProject.getRepository(), baseNode));
+        fsm.fileStatusChanged(getNodeFileSystem().getFileFor(myProject.getRepository(), baseNode));
         break;
       }
     }

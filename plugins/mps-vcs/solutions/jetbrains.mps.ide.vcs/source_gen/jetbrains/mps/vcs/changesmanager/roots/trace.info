@@ -18,44 +18,44 @@
   <root nodeRef="r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)/2722286076674321023">
     <file name="NodeFileStatusMappingExt.java">
       <node id="2722286076674321023" at="18,0,19,0" concept="11" trace="LOG" />
-      <node id="2722286076674321044" at="19,91,20,29" concept="13" />
-      <node id="2722286076674321627" at="23,74,24,42" concept="3" />
-      <node id="2722286076674321287" at="25,128,26,28" concept="8" />
-      <node id="4445535104158704944" at="27,11,28,46" concept="3" />
-      <node id="4445535104158719067" at="30,44,31,51" concept="3" />
-      <node id="2722286076674321295" at="34,56,35,99" concept="3" />
-      <node id="2722286076674321303" at="35,99,36,14" concept="1" />
-      <node id="2722286076674321632" at="38,5,39,0" concept="10" />
-      <node id="2722286076674321025" at="19,0,22,0" concept="2" trace="NodeFileStatusMappingExt#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/vcs/changesmanager/CurrentDifferenceRegistry;)V" />
-      <node id="4445535104158719067" at="29,29,32,9" concept="6" />
-      <node id="2722286076674321293" at="33,7,37,7" concept="6" />
-      <node id="4445535104158710316" at="26,28,33,7" concept="14" />
-      <node id="2722286076674321285" at="24,42,38,5" concept="5" />
-      <node id="2722286076674321616" at="22,0,41,0" concept="7" trace="statusChanged#(Lcom/intellij/openapi/vcs/FileStatusManager;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="2722286076674321028" at="19,91,20,29" />
-      <scope id="4445535104158710318" at="27,11,28,46" />
-      <scope id="4445535104158719067" at="30,44,31,51" />
-      <scope id="2722286076674321294" at="34,56,36,14" />
-      <scope id="2722286076674321025" at="19,0,22,0">
+      <node id="2722286076674321044" at="20,91,21,29" concept="13" />
+      <node id="2722286076674321627" at="25,74,26,42" concept="3" />
+      <node id="2722286076674321287" at="27,128,28,28" concept="8" />
+      <node id="4445535104158704944" at="29,11,30,46" concept="3" />
+      <node id="4445535104158719067" at="32,44,33,51" concept="3" />
+      <node id="2722286076674321295" at="36,56,37,99" concept="3" />
+      <node id="2722286076674321303" at="37,99,38,14" concept="1" />
+      <node id="2722286076674321632" at="40,5,41,0" concept="10" />
+      <node id="2722286076674321025" at="20,0,23,0" concept="2" trace="NodeFileStatusMappingExt#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/vcs/changesmanager/CurrentDifferenceRegistry;)V" />
+      <node id="4445535104158719067" at="31,29,34,9" concept="6" />
+      <node id="2722286076674321293" at="35,7,39,7" concept="6" />
+      <node id="4445535104158710316" at="28,28,35,7" concept="14" />
+      <node id="2722286076674321285" at="26,42,40,5" concept="5" />
+      <node id="2722286076674321616" at="24,0,43,0" concept="7" trace="statusChanged#(Lcom/intellij/openapi/vcs/FileStatusManager;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="2722286076674321028" at="20,91,21,29" />
+      <scope id="4445535104158710318" at="29,11,30,46" />
+      <scope id="4445535104158719067" at="32,44,33,51" />
+      <scope id="2722286076674321294" at="36,56,38,14" />
+      <scope id="2722286076674321025" at="20,0,23,0">
         <var name="project" id="2722286076674321040" />
         <var name="registry" id="2722286076674321055" />
       </scope>
-      <scope id="4445535104158710319" at="29,0,32,9">
+      <scope id="4445535104158710319" at="31,0,34,9">
         <var name="t" id="4445535104158710321" />
       </scope>
-      <scope id="4445535104158710325" at="29,29,32,9" />
-      <scope id="2722286076674321286" at="25,128,37,7">
+      <scope id="4445535104158710325" at="31,29,34,9" />
+      <scope id="2722286076674321286" at="27,128,39,7">
         <var name="baseNode" id="2722286076674321263" />
       </scope>
-      <scope id="2722286076674321285" at="24,42,38,5">
+      <scope id="2722286076674321285" at="26,42,40,5">
         <var name="d" id="2722286076674321262" />
       </scope>
-      <scope id="2722286076674321625" at="23,74,39,0" />
-      <scope id="2722286076674321616" at="22,0,41,0">
+      <scope id="2722286076674321625" at="25,74,41,0" />
+      <scope id="2722286076674321616" at="24,0,43,0">
         <var name="currentNode" id="2722286076674321621" />
         <var name="fsm" id="2722286076674321619" />
       </scope>
-      <unit id="2722286076674321023" at="17,0,42,0" name="jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt" />
+      <unit id="2722286076674321023" at="17,0,44,0" name="jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt" />
     </file>
   </root>
   <root nodeRef="r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)/5332932484372864216">

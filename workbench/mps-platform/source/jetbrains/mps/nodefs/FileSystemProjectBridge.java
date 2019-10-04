@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.nodefs;
 
-import com.intellij.openapi.components.AbstractProjectComponent;
-import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 
@@ -26,21 +25,18 @@ import jetbrains.mps.project.Project;
  * @author Artem Tikhomirov
  * @since 3.4
  */
-public class FileSystemProjectBridge extends AbstractProjectComponent {
+public class FileSystemProjectBridge implements ProjectComponent {
 
   private final MPSProject myProject;
-  private final NodeVirtualFileSystem myFileSystem = (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   private RepositoryVirtualFiles myProjectVirtualFiles;
 
   public FileSystemProjectBridge(MPSProject mpsProject) {
-    super(mpsProject.getProject());
     myProject = mpsProject;
   }
 
   @Override
   public void projectOpened() {
-    super.projectOpened();
-    myProjectVirtualFiles = new RepositoryVirtualFiles(myFileSystem, myProject.getRepository());
+    myProjectVirtualFiles = new RepositoryVirtualFiles(NodeVirtualFileSystem.getInstance(), myProject.getRepository());
     myProjectVirtualFiles.register();
   }
 
@@ -51,6 +47,5 @@ public class FileSystemProjectBridge extends AbstractProjectComponent {
       myProjectVirtualFiles.clear();
       myProjectVirtualFiles = null;
     }
-    super.projectClosed();
   }
 }

@@ -17,11 +17,21 @@ package jetbrains.mps.nodefs;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.vfs.DeprecatedVirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileListener;
 import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.openapi.vfs.newvfs.BulkFileListener;
+import com.intellij.openapi.vfs.newvfs.VirtualFileFilteringListener;
+import com.intellij.openapi.vfs.newvfs.events.VFileDeleteEvent;
+import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
+import com.intellij.openapi.vfs.newvfs.events.VFilePropertyChangeEvent;
 import com.intellij.util.LocalTimeCounter;
+import com.intellij.util.containers.ContainerUtil;
+import com.intellij.util.messages.MessageBus;
+import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.SNodePointer;
@@ -43,6 +53,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -53,13 +64,15 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem implements Disposable {
+public final class NodeVirtualFileSystem extends VirtualFileSystem implements Disposable {
 
   public static NodeVirtualFileSystem getInstance() {
     return (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
   }
 
   public static final String PROTOCOL = "mps";
+
+  private final Map<VirtualFileListener, VirtualFileListener> myListenerWrappers = ContainerUtil.newConcurrentMap();
 
   /*
    * For transition period, left container of virtual files coming from MPSModuleRepository.getInstance(), and use it
@@ -68,19 +81,39 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
    * (or at least managed and not exposed to user code).
    */
   @ToRemove(version = 3.4)
-  private final RepositoryVirtualFiles myGlobalRepoFiles =
-      new RepositoryVirtualFiles(this,
-                                 ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository());
+  private final RepositoryVirtualFiles myGlobalRepoFiles;
 
   private final Object myRepoVFLock = new Object();
   // I don't expect this collection to grow significantly, hence just List
   private final List<RepositoryVirtualFiles> myPerRepositoryFiles = new CopyOnWriteArrayList<>();
   private final Map<RepositoryVirtualFiles, MyRepositoryListener> myFiles2ListenerMap = new HashMap<>();
-  private final SRepositoryContentAdapter myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
+  private final SRepositoryContentAdapter myRepositoryListener;
+  private final BulkFileListener myEventPublisher;
   private boolean myDisposed = false;
 
   public NodeVirtualFileSystem() {
+    final Platform mpsPlatform = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    myGlobalRepoFiles = new RepositoryVirtualFiles(this, mpsPlatform.findComponent(MPSModuleRepository.class));
+    myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
     new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach();
+    MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
+    myEventPublisher = messageBus.syncPublisher(VirtualFileManager.VFS_CHANGES);
+  }
+
+  @Override
+  public void addVirtualFileListener(@NotNull VirtualFileListener listener) {
+    // copied from NewVirtualFileSystem#addVirtualFileListener
+    VirtualFileListener wrapper = new VirtualFileFilteringListener(listener, this);
+    VirtualFileManager.getInstance().addVirtualFileListener(wrapper, this);
+    myListenerWrappers.put(listener, wrapper);
+  }
+
+  @Override
+  public void removeVirtualFileListener(@NotNull VirtualFileListener listener) {
+    VirtualFileListener wrapper = myListenerWrappers.remove(listener);
+    if (wrapper != null) {
+      VirtualFileManager.getInstance().removeVirtualFileListener(wrapper);
+    }
   }
 
   void register(@NotNull RepositoryVirtualFiles repoFiles) {
@@ -177,6 +210,45 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
   @Nullable
   public VirtualFile refreshAndFindFileByPath(@NotNull String path) {
     return null;
+  }
+
+  @Override
+  protected void deleteFile(Object requestor, @NotNull VirtualFile vFile) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected void moveFile(Object requestor, @NotNull VirtualFile vFile, @NotNull VirtualFile newParent) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected void renameFile(Object requestor, @NotNull VirtualFile vFile, @NotNull String newName) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @NotNull
+  @Override
+  protected VirtualFile createChildFile(Object requestor, @NotNull VirtualFile vDir, @NotNull String fileName) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @NotNull
+  @Override
+  protected VirtualFile createChildDirectory(Object requestor, @NotNull VirtualFile vDir, @NotNull String dirName) throws IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @NotNull
+  @Override
+  protected VirtualFile copyFile(Object requestor, @NotNull VirtualFile virtualFile, @NotNull VirtualFile newParent, @NotNull String copyName) throws
+                                                                                                                                               IOException {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public boolean isReadOnly() {
+    return true; // the value from DeprecatedVirtualFileSystem.isReadOnly()
   }
 
   private void updateModificationStamp(Collection<MPSNodeVirtualFile> files) {
@@ -427,21 +499,27 @@ public final class NodeVirtualFileSystem extends DeprecatedVirtualFileSystem imp
       // no reason to report changes for deleted.
       changedFiles.removeAll(deletedFiles);
 
+      ArrayList<VFileEvent> events = new ArrayList<>(deletedFiles.size() + changedFiles.size());
       for (MPSNodeVirtualFile deletedFile : deletedFiles) {
-        fireBeforeFileDeletion(this, deletedFile);
-        deletedFile.invalidate();
-        fireFileDeleted(this, deletedFile, deletedFile.getName(), null);
+        events.add(new VFileDeleteEvent(mySource, deletedFile, false));
       }
-
       for (MPSNodeVirtualFile changedFile : changedFiles) {
         String oldName = changedFile.getName();
         changedFile.updateFields();
         String newName = changedFile.getName();
         if (!oldName.equals(newName)) {
           // XXX this effectively reverts 0ec4b371f9acef4c82b644dfa3a295961b515efc, I wonder what's the reason not to send file rename events?
-          firePropertyChanged(this, changedFile, VirtualFile.PROP_NAME, oldName, newName);
+          events.add(new VFilePropertyChangeEvent(mySource, changedFile, VirtualFile.PROP_NAME, oldName, newName, false));
         }
       }
+      ApplicationManager.getApplication().assertWriteAccessAllowed(); // used to be in DeprecatedVirtualFileSystem.fireXXX methods
+      myEventPublisher.before(events);
+
+      for (MPSNodeVirtualFile deletedFile : deletedFiles) {
+        deletedFile.invalidate();
+      }
+
+      myEventPublisher.after(events);
     }
 
     private boolean hasPendingNotifications() {
