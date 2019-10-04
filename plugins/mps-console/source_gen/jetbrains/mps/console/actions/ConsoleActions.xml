@@ -1,5 +1,8 @@
 <components>
   <actions>
+    <action id="jetbrains.mps.console.actions.ConsoleExecute_Action" class="jetbrains.mps.console.actions.ConsoleExecute_Action">
+      <keyboard-shortcut first-keystroke="ctrl ENTER" keymap="$default" />
+    </action>
     <action id="jetbrains.mps.console.actions.ExecuteActionAttachedToCurrentNode_Action" class="jetbrains.mps.console.actions.ExecuteActionAttachedToCurrentNode_Action"></action>
     <action id="jetbrains.mps.console.actions.PasteOriginalNode_Action" class="jetbrains.mps.console.actions.PasteOriginalNode_Action"></action>
     <group id="jetbrains.mps.console.actions.ConsoleExecuteClosureEditorActions_ActionGroup">
@@ -9,6 +12,10 @@
     <group id="jetbrains.mps.console.actions.ConsolePasteActions_ActionGroup">
       <reference ref="jetbrains.mps.console.actions.PasteOriginalNode_Action" />
       <add-to-group group-id="EditorPopup_ActionGrouppaste" anchor="last" />
+    </group>
+    <group id="jetbrains.mps.console.actions.ConsoleTabActions_ActionGroup" text="Console" popup="true">
+      <reference ref="jetbrains.mps.console.actions.ConsoleExecute_Action" />
+      <add-to-group group-id="EditorPopup_ActionGroupgoto" anchor="last" />
     </group>
   </actions>
 </components>

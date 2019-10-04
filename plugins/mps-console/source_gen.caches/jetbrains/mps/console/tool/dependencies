@@ -41,6 +41,7 @@
     <classNode dependClassName="jetbrains.mps.console.tool.ConsoleStream" />
     <classNode dependClassName="jetbrains.mps.console.tool.ConsoleStreamImpl" />
     <classNode dependClassName="jetbrains.mps.console.tool.ConsoleTool" />
+    <classNode dependClassName="jetbrains.mps.console.tool.MPSConsoleDataKeys" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.commands.EditorCommand" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.selection.SelectionUtil" />
@@ -240,13 +241,13 @@
   </dependency>
   <dependency className="jetbrains.mps.console.tool.DialogConsoleTab">
     <classNode dependClassName="com.intellij.icons.AllIcons" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.ActionManager" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.DefaultActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="java.awt.event.KeyEvent" />
     <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
@@ -280,6 +281,11 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="com.intellij.openapi.actionSystem.DataProvider" />
     <classNode extendsClassName="jetbrains.mps.console.tool.BaseConsoleTab" />
+  </dependency>
+  <dependency className="jetbrains.mps.console.tool.MPSConsoleDataKeys">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.DataKey" />
+    <classNode dependClassName="jetbrains.mps.console.tool.BaseConsoleTab" />
+    <classNode extendsClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
   </dependency>
   <dependency className="jetbrains.mps.console.tool.OutputConsoleTab">
     <classNode dependClassName="com.intellij.icons.AllIcons" />

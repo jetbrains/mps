@@ -19,6 +19,8 @@
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" />
     <import index="3ahc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.cells(MPS.Editor/)" />
     <import index="k3nr" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)" />
+    <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
+    <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
@@ -28,19 +30,27 @@
       <concept id="1207145163717" name="jetbrains.mps.lang.plugin.structure.ElementListContents" flags="ng" index="ftmFs">
         <child id="1207145201301" name="reference" index="ftvYc" />
       </concept>
+      <concept id="1207318242772" name="jetbrains.mps.lang.plugin.structure.KeyMapKeystroke" flags="ng" index="pLAjd">
+        <property id="1207318242773" name="modifiers" index="pLAjc" />
+        <property id="1207318242774" name="keycode" index="pLAjf" />
+      </concept>
       <concept id="1203071646776" name="jetbrains.mps.lang.plugin.structure.ActionDeclaration" flags="ng" index="sE7Ow">
         <property id="1211298967294" name="outsideCommandExecution" index="72QZ$" />
         <property id="1205250923097" name="caption" index="2uzpH1" />
         <property id="997079742910640235" name="fillActionContext" index="1teQrl" />
+        <property id="1213273179528" name="description" index="1WHSii" />
         <child id="1203083196627" name="updateBlock" index="tmbBb" />
         <child id="1203083461638" name="executeFunction" index="tncku" />
         <child id="1217413222820" name="parameter" index="1NuT2Z" />
       </concept>
+      <concept id="1203082695294" name="jetbrains.mps.lang.plugin.structure.DoUpdateBlock" flags="in" index="tkhdA" />
       <concept id="1203082903663" name="jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_AnActionEvent" flags="nn" index="tl45R" />
       <concept id="1203083511112" name="jetbrains.mps.lang.plugin.structure.ExecuteBlock" flags="in" index="tnohg" />
       <concept id="1203087890642" name="jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration" flags="ng" index="tC5Ba">
         <property id="1204991940915" name="caption" index="2f7twF" />
+        <property id="1217005992861" name="isInvisibleWhenDisabled" index="1rdrE6" />
         <property id="6368583333374291912" name="isPluginXmlGroup" index="3OnEW4" />
+        <property id="1213283637680" name="isPopup" index="1XlLyE" />
         <child id="1204991552650" name="modifier" index="2f5YQi" />
         <child id="1207145245948" name="contents" index="ftER_" />
       </concept>
@@ -55,7 +65,11 @@
         <property id="1004145947012803941" name="outputPath" index="BHXKe" />
         <child id="3205778618063718748" name="actions" index="yhzZR" />
       </concept>
+      <concept id="331224023792855166" name="jetbrains.mps.lang.plugin.structure.KeymapRef" flags="ng" index="2zDLo0">
+        <reference id="331224023792855167" name="keymap" index="2zDLo1" />
+      </concept>
       <concept id="331224023792854814" name="jetbrains.mps.lang.plugin.structure.IdeaActionsDescriptor" flags="lg" index="2zDL_w">
+        <child id="331224023792855168" name="keymapsRef" index="2zDLrY" />
         <child id="331224023792854818" name="actionGroups" index="2zDL_s" />
       </concept>
       <concept id="331224023792854815" name="jetbrains.mps.lang.plugin.structure.ActionGroupRef" flags="ng" index="2zDL_x">
@@ -63,6 +77,16 @@
       </concept>
       <concept id="1205679047295" name="jetbrains.mps.lang.plugin.structure.ActionParameterDeclaration" flags="ig" index="2S4$dB" />
       <concept id="1205681243813" name="jetbrains.mps.lang.plugin.structure.IsApplicableBlock" flags="in" index="2ScWuX" />
+      <concept id="1562714432501166198" name="jetbrains.mps.lang.plugin.structure.SimpleShortcutChange" flags="lg" index="Zd509">
+        <child id="1562714432501166206" name="keystroke" index="Zd501" />
+      </concept>
+      <concept id="1562714432501166197" name="jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration" flags="ng" index="Zd50a">
+        <property id="8646726056720906098" name="isPluginXmlKeymap" index="Z2u3V" />
+        <child id="1562714432501166199" name="shortcutChange" index="Zd508" />
+      </concept>
+      <concept id="6193305307616715384" name="jetbrains.mps.lang.plugin.structure.ShortcutChange" flags="lg" index="1bYyw_">
+        <reference id="6193305307616734326" name="action" index="1bYAoF" />
+      </concept>
       <concept id="1206092561075" name="jetbrains.mps.lang.plugin.structure.ActionParameterReferenceOperation" flags="nn" index="3gHZIF" />
       <concept id="5538333046911348654" name="jetbrains.mps.lang.plugin.structure.RequiredCondition" flags="ng" index="1oajcY" />
       <concept id="1217252042208" name="jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration" flags="ng" index="1DS2jV">
@@ -103,6 +127,10 @@
         <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
+      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
+        <child id="1070534934091" name="type" index="10QFUM" />
+        <child id="1070534934092" name="expression" index="10QFUP" />
+      </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg">
         <property id="8606350594693632173" name="isTransient" index="eg7rD" />
         <property id="1240249534625" name="isVolatile" index="34CwA1" />
@@ -149,6 +177,9 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -206,6 +237,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -420,6 +454,12 @@
       </node>
       <node concept="2zDL_x" id="4ASMi_2eb6Y" role="2zDL_s">
         <ref role="2zDL_u" node="4c815Y25vly" resolve="ConsolePasteActions" />
+      </node>
+      <node concept="2zDL_x" id="4xpqvjWlSUP" role="2zDL_s">
+        <ref role="2zDL_u" node="4jCHWPgrzP$" resolve="ConsoleTabActions" />
+      </node>
+      <node concept="2zDLo0" id="76n_52h2Vx2" role="2zDLrY">
+        <ref role="2zDLo1" node="7nWAV$2o8vd" resolve="Console_Default" />
       </node>
     </node>
   </node>
@@ -662,6 +702,115 @@
     <node concept="tT9cl" id="4c815Y25vlD" role="2f5YQi">
       <ref role="tU$_T" to="ekwn:1xsN4xJX8VI" resolve="EditorPopup" />
       <ref role="2f8Tey" to="ekwn:1xsN4xJX8VP" resolve="paste" />
+    </node>
+  </node>
+  <node concept="sE7Ow" id="791RMwCQSU4">
+    <property role="TrG5h" value="ConsoleExecute" />
+    <property role="2uzpH1" value="Execute" />
+    <property role="1WHSii" value="Execute last command" />
+    <property role="3GE5qa" value="tool" />
+    <node concept="tnohg" id="791RMwCQSU5" role="tncku">
+      <node concept="3clFbS" id="791RMwCQSU6" role="2VODD2">
+        <node concept="3clFbF" id="7nWAV$2nYqW" role="3cqZAp">
+          <node concept="2OqwBi" id="7nWAV$2o6EK" role="3clFbG">
+            <node concept="1eOMI4" id="7nWAV$2o6wg" role="2Oq$k0">
+              <node concept="10QFUN" id="7nWAV$2o4LX" role="1eOMHV">
+                <node concept="2OqwBi" id="7nWAV$2o4LU" role="10QFUP">
+                  <node concept="2WthIp" id="7nWAV$2o4LV" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="7nWAV$2o4LW" role="2OqNvi">
+                    <ref role="2WH_rO" node="7nWAV$2nMU5" resolve="tab" />
+                  </node>
+                </node>
+                <node concept="3uibUv" id="7nWAV$2o4Sa" role="10QFUM">
+                  <ref role="3uigEE" to="qgo0:6ysF3v1jo8G" resolve="DialogConsoleTab" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="7nWAV$2o82T" role="2OqNvi">
+              <ref role="37wK5l" to="qgo0:3QmSL4dvrr" resolve="executeCurrentCommand" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="tkhdA" id="791RMwCRmXU" role="tmbBb">
+      <node concept="3clFbS" id="791RMwCRmXV" role="2VODD2">
+        <node concept="3clFbF" id="791RMwCRn75" role="3cqZAp">
+          <node concept="2OqwBi" id="791RMwCRnFe" role="3clFbG">
+            <node concept="2OqwBi" id="791RMwCRnj3" role="2Oq$k0">
+              <node concept="tl45R" id="791RMwCRn74" role="2Oq$k0" />
+              <node concept="liA8E" id="791RMwCRnyy" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+            </node>
+            <node concept="liA8E" id="791RMwCRnQB" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~Presentation.setIcon(javax.swing.Icon)" resolve="setIcon" />
+              <node concept="10M0yZ" id="61P5DKvVL64" role="37wK5m">
+                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
+                <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Execute" resolve="Execute" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7nWAV$2o48S" role="3cqZAp">
+          <node concept="2OqwBi" id="7nWAV$2o48T" role="3clFbG">
+            <node concept="2OqwBi" id="7nWAV$2o48U" role="2Oq$k0">
+              <node concept="tl45R" id="7nWAV$2o48V" role="2Oq$k0" />
+              <node concept="liA8E" id="7nWAV$2o48W" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7nWAV$2o4mO" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
+              <node concept="2ZW3vV" id="7nWAV$2o46S" role="37wK5m">
+                <node concept="3uibUv" id="7nWAV$2o46T" role="2ZW6by">
+                  <ref role="3uigEE" to="qgo0:6ysF3v1jo8G" resolve="DialogConsoleTab" />
+                </node>
+                <node concept="2OqwBi" id="7nWAV$2o46U" role="2ZW6bz">
+                  <node concept="2WthIp" id="7nWAV$2o46V" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="7nWAV$2o46W" role="2OqNvi">
+                    <ref role="2WH_rO" node="7nWAV$2nMU5" resolve="tab" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1DS2jV" id="7nWAV$2nMU5" role="1NuT2Z">
+      <property role="TrG5h" value="tab" />
+      <ref role="1DUlNI" to="qgo0:7nWAV$2m10H" resolve="CONSOLE_TAB" />
+      <node concept="1oajcY" id="7nWAV$2nMU6" role="1oa70y" />
+    </node>
+  </node>
+  <node concept="tC5Ba" id="4jCHWPgrzP$">
+    <property role="3GE5qa" value="tool" />
+    <property role="TrG5h" value="ConsoleTabActions" />
+    <property role="1XlLyE" value="true" />
+    <property role="2f7twF" value="Console" />
+    <property role="1rdrE6" value="true" />
+    <property role="3OnEW4" value="true" />
+    <node concept="tT9cl" id="5fvQoxlIYzz" role="2f5YQi">
+      <ref role="tU$_T" to="ekwn:1xsN4xJX8VI" resolve="EditorPopup" />
+      <ref role="2f8Tey" to="ekwn:1xsN4xJX8VT" resolve="goto" />
+    </node>
+    <node concept="ftmFs" id="4jCHWPgrzPC" role="ftER_">
+      <node concept="tCFHf" id="6QZWsVDxPlL" role="ftvYc">
+        <ref role="tCJdB" node="791RMwCQSU4" resolve="ConsoleExecute" />
+      </node>
+    </node>
+  </node>
+  <node concept="Zd50a" id="7nWAV$2o8vd">
+    <property role="3GE5qa" value="tool" />
+    <property role="TrG5h" value="Console_Default" />
+    <property role="Z2u3V" value="true" />
+    <node concept="Zd509" id="7nWAV$2o8vg" role="Zd508">
+      <ref role="1bYAoF" node="791RMwCQSU4" resolve="ConsoleExecute" />
+      <node concept="pLAjd" id="7nWAV$2o8vi" role="Zd501">
+        <property role="pLAjc" value="ctrl" />
+        <property role="pLAjf" value="VK_ENTER" />
+      </node>
     </node>
   </node>
 </model>

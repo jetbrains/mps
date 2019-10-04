@@ -9,18 +9,19 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import jetbrains.mps.workbench.action.BaseAction;
+import com.intellij.openapi.actionSystem.ActionManager;
 import java.awt.event.KeyEvent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.workbench.action.BaseAction;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.undo.DefaultCommand;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -63,7 +64,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
 
   protected void registerActions(DefaultActionGroup group) {
     super.registerActions(group);
-    group.add(registerKeyShortcut(new ExecuteAction(), KeyEvent.VK_ENTER));
+    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleExecute_Action")));
     group.add(registerKeyShortcut(new PrevCmdAction(), KeyEvent.VK_UP));
     group.add(registerKeyShortcut(new NextCmdAction(), KeyEvent.VK_DOWN));
     group.add(registerKeyShortcut(new ClearAction(), KeyEvent.VK_BACK_SPACE));
@@ -95,7 +96,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
   }
 
   private void setSelection() {
-    // here we call invokeLater() to be sheduled after invokeLater() from ConsoleStream.addResponse() 
+    // here we call invokeLater() to be scheduled after invokeLater() from ConsoleStream.addResponse() 
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       public void run() {
         getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -110,15 +111,6 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     });
   }
 
-  private class ExecuteAction extends BaseAction {
-    public ExecuteAction() {
-      super("Execute", "Execute last command", AllIcons.Actions.Execute);
-    }
-    @Override
-    protected void doExecute(AnActionEvent event, Map<String, Object> arg) {
-      executeCurrentCommand();
-    }
-  }
   public void executeCurrentCommand() {
     final Wrappers._boolean emptyCommand = new Wrappers._boolean();
     getProject().getRepository().getModelAccess().executeCommand(new Runnable() {

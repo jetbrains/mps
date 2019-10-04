@@ -90,7 +90,7 @@
   </root>
   <root nodeRef="r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/3257040239264853769">
     <file name="ConsoleActions.xml">
-      <unit id="3257040239264853769" at="1,0,14,13" name="jetbrains.mps.console.actions.ConsoleActions" />
+      <unit id="3257040239264853769" at="1,0,21,13" name="jetbrains.mps.console.actions.ConsoleActions" />
     </file>
   </root>
   <root nodeRef="r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/3257040239274145603">
@@ -210,6 +210,55 @@
       </scope>
       <unit id="4039438520029627531" at="77,117,81,5" name="jetbrains.mps.console.actions.PasteOriginalNode_Action$1" />
       <unit id="4830115408604521229" at="24,0,84,0" name="jetbrains.mps.console.actions.PasteOriginalNode_Action" />
+    </file>
+  </root>
+  <root nodeRef="r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/8233106957387140740">
+    <file name="ConsoleExecute_Action.java">
+      <node id="8233106957387140740" at="16,0,17,0" concept="8" trace="ICON" />
+      <node id="8233106957387140740" at="18,34,19,51" concept="10" />
+      <node id="8233106957387140740" at="19,51,20,35" concept="2" />
+      <node id="8233106957387140740" at="20,35,21,41" concept="2" />
+      <node id="8233106957387140740" at="24,32,25,16" concept="7" />
+      <node id="8233106957387264453" at="28,89,29,62" concept="2" />
+      <node id="8501841415479771704" at="29,62,30,114" concept="2" />
+      <node id="8233106957387140740" at="34,53,35,19" concept="7" />
+      <node id="8501841415479701125" at="37,5,38,71" concept="6" />
+      <node id="8501841415479701126" at="39,22,40,21" concept="7" />
+      <node id="8233106957387140740" at="42,5,43,16" concept="7" />
+      <node id="8501841415479748284" at="46,96,47,95" concept="2" />
+      <node id="8233106957387140740" at="33,95,36,5" concept="4" />
+      <node id="8501841415479701126" at="38,71,41,7" concept="4" />
+      <node id="8233106957387140740" at="23,0,27,0" concept="5" trace="isDumbAware#()Z" />
+      <node id="8233106957387140740" at="45,0,49,0" concept="5" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8233106957387140740" at="18,0,23,0" concept="1" trace="ConsoleExecute_Action#()V" />
+      <node id="8233106957387140740" at="27,0,32,0" concept="5" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8501841415479701125" at="36,5,42,5" concept="0" />
+      <node id="8233106957387140740" at="32,0,45,0" concept="5" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="8233106957387140740" at="24,32,25,16" />
+      <scope id="8233106957387140740" at="34,53,35,19" />
+      <scope id="8501841415479701126" at="39,22,40,21" />
+      <scope id="8233106957387140740" at="46,96,47,95" />
+      <scope id="8233106957387263867" at="28,89,30,114" />
+      <scope id="8233106957387140740" at="18,34,21,41" />
+      <scope id="8233106957387140740" at="23,0,27,0" />
+      <scope id="8501841415479701125" at="37,5,41,7">
+        <var name="p" id="8501841415479701125" />
+      </scope>
+      <scope id="8233106957387140740" at="45,0,49,0">
+        <var name="_params" id="8233106957387140740" />
+        <var name="event" id="8233106957387140740" />
+      </scope>
+      <scope id="8233106957387140740" at="18,0,23,0" />
+      <scope id="8233106957387140740" at="27,0,32,0">
+        <var name="_params" id="8233106957387140740" />
+        <var name="event" id="8233106957387140740" />
+      </scope>
+      <scope id="8233106957387140740" at="33,95,43,16" />
+      <scope id="8233106957387140740" at="32,0,45,0">
+        <var name="_params" id="8233106957387140740" />
+        <var name="event" id="8233106957387140740" />
+      </scope>
+      <unit id="8233106957387140740" at="15,0,50,0" name="jetbrains.mps.console.actions.ConsoleExecute_Action" />
     </file>
   </root>
 </debug-info>

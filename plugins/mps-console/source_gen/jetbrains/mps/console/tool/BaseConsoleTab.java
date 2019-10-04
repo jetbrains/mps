@@ -139,11 +139,14 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       @Nullable
       @Override
       public Object getData(@NonNls String key) {
+        if (MPSConsoleDataKeys.CONSOLE_TAB.is(key)) {
+          return BaseConsoleTab.this;
+        }
         if (PlatformDataKeys.FILE_EDITOR.is(key)) {
           return myFileEditor;
         }
         if (PlatformDataKeys.PASTE_PROVIDER.is(key)) {
-          PasteProvider parentPasteProvider = as_6q36mf_a0a0a1a0a0a0a0bb(super.getData(key), PasteProvider.class);
+          PasteProvider parentPasteProvider = as_6q36mf_a0a0a2a0a0a0a0bb(super.getData(key), PasteProvider.class);
           return (myTool.getPasteAsRef() ? new MyPasteProvider(parentPasteProvider) : parentPasteProvider);
         }
         return super.getData(key);
@@ -562,7 +565,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static <T> T as_6q36mf_a0a0a1a0a0a0a0bb(Object o, Class<T> type) {
+  private static <T> T as_6q36mf_a0a0a2a0a0a0a0bb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

@@ -85,6 +85,7 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="nlpl" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.commands(MPS.Editor/)" />
+    <import index="qq03" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
   </imports>
@@ -2970,22 +2971,13 @@
         </node>
         <node concept="3clFbF" id="6ysF3v1j_gs" role="3cqZAp">
           <node concept="2OqwBi" id="6ysF3v1j_gt" role="3clFbG">
-            <node concept="37vLTw" id="6ysF3v1j_gu" role="2Oq$k0">
+            <node concept="37vLTw" id="791RMwCWCHr" role="2Oq$k0">
               <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
             </node>
             <node concept="liA8E" id="6ysF3v1j_gv" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
-              <node concept="1rXfSq" id="6ysF3v1j_gw" role="37wK5m">
-                <ref role="37wK5l" node="6ysF3v1j_hE" resolve="registerKeyShortcut" />
-                <node concept="2ShNRf" id="6ysF3v1j_gx" role="37wK5m">
-                  <node concept="1pGfFk" id="6ysF3v1j_gy" role="2ShVmc">
-                    <ref role="37wK5l" node="6ysF3v1j_m8" resolve="DialogConsoleTab.ExecuteAction" />
-                  </node>
-                </node>
-                <node concept="10M0yZ" id="6ysF3v1j_gz" role="37wK5m">
-                  <ref role="3cqZAo" to="hyam:~KeyEvent.VK_ENTER" resolve="VK_ENTER" />
-                  <ref role="1PxDUh" to="hyam:~KeyEvent" resolve="KeyEvent" />
-                </node>
+              <node concept="3$FdUm" id="791RMwCWICy" role="37wK5m">
+                <ref role="3$FpRE" to="oh9p:791RMwCQSU4" resolve="ConsoleExecute" />
               </node>
             </node>
           </node>
@@ -3343,7 +3335,7 @@
               <property role="3oM_SC" value="be" />
             </node>
             <node concept="3oM_SD" id="ATZLwXogeV" role="1PaTwD">
-              <property role="3oM_SC" value="sheduled" />
+              <property role="3oM_SC" value="scheduled" />
             </node>
             <node concept="3oM_SD" id="ATZLwXogeW" role="1PaTwD">
               <property role="3oM_SC" value="after" />
@@ -3469,66 +3461,6 @@
       <node concept="3cqZAl" id="6ysF3v1j_m5" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="6ysF3v1j_m6" role="jymVt" />
-    <node concept="312cEu" id="6ysF3v1j_m7" role="jymVt">
-      <property role="TrG5h" value="ExecuteAction" />
-      <property role="2bfB8j" value="true" />
-      <node concept="3clFbW" id="6ysF3v1j_m8" role="jymVt">
-        <node concept="3clFbS" id="6ysF3v1j_m9" role="3clF47">
-          <node concept="XkiVB" id="6ysF3v1j_ma" role="3cqZAp">
-            <ref role="37wK5l" to="7bx7:~BaseAction.&lt;init&gt;(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="BaseAction" />
-            <node concept="Xl_RD" id="6ysF3v1j_mb" role="37wK5m">
-              <property role="Xl_RC" value="Execute" />
-            </node>
-            <node concept="Xl_RD" id="6ysF3v1j_mc" role="37wK5m">
-              <property role="Xl_RC" value="Execute last command" />
-            </node>
-            <node concept="10M0yZ" id="61P5DKvVL64" role="37wK5m">
-              <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-              <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Execute" resolve="Execute" />
-            </node>
-          </node>
-        </node>
-        <node concept="3Tm1VV" id="6ysF3v1j_mf" role="1B3o_S" />
-        <node concept="3cqZAl" id="6ysF3v1j_mg" role="3clF45" />
-      </node>
-      <node concept="3Tm6S6" id="6ysF3v1j_mh" role="1B3o_S" />
-      <node concept="3clFb_" id="6ysF3v1j_mi" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="doExecute" />
-        <property role="DiZV1" value="false" />
-        <node concept="3Tmbuc" id="6ysF3v1j_mj" role="1B3o_S" />
-        <node concept="3cqZAl" id="6ysF3v1j_mk" role="3clF45" />
-        <node concept="37vLTG" id="6ysF3v1j_ml" role="3clF46">
-          <property role="TrG5h" value="event" />
-          <node concept="3uibUv" id="6ysF3v1j_mm" role="1tU5fm">
-            <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
-          </node>
-        </node>
-        <node concept="37vLTG" id="6ysF3v1j_mn" role="3clF46">
-          <property role="TrG5h" value="arg" />
-          <node concept="3uibUv" id="6ysF3v1j_mo" role="1tU5fm">
-            <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
-            <node concept="17QB3L" id="3ZgZ1njMHRj" role="11_B2D" />
-            <node concept="3uibUv" id="6ysF3v1j_mq" role="11_B2D">
-              <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbS" id="6ysF3v1j_mr" role="3clF47">
-          <node concept="3clFbF" id="3QmSL4dzHq" role="3cqZAp">
-            <node concept="1rXfSq" id="3QmSL4dzHp" role="3clFbG">
-              <ref role="37wK5l" node="3QmSL4dvrr" resolve="executeCurrentCommand" />
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="6ysF3v1j_mv" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
-      </node>
-      <node concept="3uibUv" id="6ysF3v1j_mw" role="1zkMxy">
-        <ref role="3uigEE" to="7bx7:~BaseAction" resolve="BaseAction" />
-      </node>
-    </node>
     <node concept="3clFb_" id="3QmSL4dvrr" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="executeCurrentCommand" />
@@ -5101,6 +5033,27 @@
                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
                     </node>
                     <node concept="3clFbS" id="6ysF3v1j_cO" role="3clF47">
+                      <node concept="3clFbJ" id="7nWAV$2m$hv" role="3cqZAp">
+                        <node concept="3clFbS" id="7nWAV$2m$hw" role="3clFbx">
+                          <node concept="3cpWs6" id="7nWAV$2m$hx" role="3cqZAp">
+                            <node concept="Xjq3P" id="7nWAV$2n8d1" role="3cqZAk">
+                              <ref role="1HBi2w" node="4gO8Gruz$1J" resolve="BaseConsoleTab" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="7nWAV$2m$hz" role="3clFbw">
+                          <node concept="10M0yZ" id="7nWAV$2mY0L" role="2Oq$k0">
+                            <ref role="3cqZAo" node="7nWAV$2m10H" resolve="CONSOLE_TAB" />
+                            <ref role="1PxDUh" node="7nWAV$2lW2b" resolve="MPSConsoleDataKeys" />
+                          </node>
+                          <node concept="liA8E" id="7nWAV$2m$h_" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
+                            <node concept="37vLTw" id="7nWAV$2m$hA" role="37wK5m">
+                              <ref role="3cqZAo" node="6ysF3v1j_cK" resolve="key" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="3clFbJ" id="6ysF3v1j_cP" role="3cqZAp">
                         <node concept="3clFbS" id="6ysF3v1j_cQ" role="3clFbx">
                           <node concept="3cpWs6" id="6ysF3v1j_cR" role="3cqZAp">
@@ -10093,6 +10046,40 @@
     <node concept="3Tm1VV" id="44wmaesd86V" role="1B3o_S" />
     <node concept="3uibUv" id="44wmaesd872" role="EKbjA">
       <ref role="3uigEE" node="5WpmwkrQPPk" resolve="ConsoleStream" />
+    </node>
+  </node>
+  <node concept="312cEu" id="7nWAV$2lW2b">
+    <property role="TrG5h" value="MPSConsoleDataKeys" />
+    <node concept="Wx3nA" id="7nWAV$2m10H" role="jymVt">
+      <property role="TrG5h" value="CONSOLE_TAB" />
+      <property role="3TUv4t" value="true" />
+      <node concept="2AHcQZ" id="7nWAV$2m10I" role="2AJF6D">
+        <ref role="2AI5Lk" to="qq03:~MPSCommonDataKeys$Description" resolve="MPSCommonDataKeys.Description" />
+        <node concept="2B6LJw" id="7nWAV$2m10J" role="2B76xF">
+          <ref role="2B6OnR" to="qq03:~MPSCommonDataKeys$Description.description()" resolve="description" />
+          <node concept="Xl_RD" id="7nWAV$2m10K" role="2B70Vg">
+            <property role="Xl_RC" value="selected packages" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="7nWAV$2m10L" role="1tU5fm">
+        <ref role="3uigEE" to="qkt:~DataKey" resolve="DataKey" />
+        <node concept="3uibUv" id="7nWAV$2m10M" role="11_B2D">
+          <ref role="3uigEE" node="4gO8Gruz$1J" resolve="BaseConsoleTab" />
+        </node>
+      </node>
+      <node concept="2YIFZM" id="7nWAV$2m7ci" role="33vP2m">
+        <ref role="1Pybhc" to="qkt:~DataKey" resolve="DataKey" />
+        <ref role="37wK5l" to="qkt:~DataKey.create(java.lang.String)" resolve="create" />
+        <node concept="Xl_RD" id="7nWAV$2m7cj" role="37wK5m">
+          <property role="Xl_RC" value="MPS_ConsoleTab" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7nWAV$2m10P" role="1B3o_S" />
+    </node>
+    <node concept="3Tm1VV" id="7nWAV$2lW2c" role="1B3o_S" />
+    <node concept="3uibUv" id="7nWAV$2meaA" role="1zkMxy">
+      <ref role="3uigEE" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
     </node>
   </node>
 </model>
