@@ -88,7 +88,10 @@ public class Script implements IScript {
   }
   @Override
   public boolean isValid() {
-    return validated && ListSequence.fromList(errors).isEmpty();
+    if (!(validated)) {
+      validate();
+    }
+    return ListSequence.fromList(errors).isEmpty();
   }
   @Override
   public Iterable<IMessage> validationErrors() {

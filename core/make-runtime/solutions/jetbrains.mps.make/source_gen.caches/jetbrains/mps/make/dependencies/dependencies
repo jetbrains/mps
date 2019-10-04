@@ -79,6 +79,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Queue" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.generator.impl.plan.ModelContentUtil" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateModule" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
@@ -100,6 +101,7 @@
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
   </dependency>
 </dependenciesRoot>

@@ -350,7 +350,6 @@
         <child id="1197687026896" name="keyType" index="3rHrn6" />
         <child id="1197687035757" name="valueType" index="3rHtpV" />
       </concept>
-      <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
       <concept id="1240824834947" name="jetbrains.mps.baseLanguage.collections.structure.ValueAccessOperation" flags="nn" index="3AV6Ez" />
       <concept id="1240825616499" name="jetbrains.mps.baseLanguage.collections.structure.KeyAccessOperation" flags="nn" index="3AY5_j" />
@@ -3547,16 +3546,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1i9nLvh04tq" role="3cqZAp">
-          <node concept="2OqwBi" id="1i9nLvh04tr" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTtiC" role="2Oq$k0">
-              <ref role="3cqZAo" node="1i9nLvh04ta" resolve="sc" />
-            </node>
-            <node concept="liA8E" id="1i9nLvh04tt" role="2OqNvi">
-              <ref role="37wK5l" to="jqcx:5mqBoD3U40h" resolve="validate" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="1i9nLvh04tu" role="3cqZAp">
           <node concept="37vLTw" id="3GM_nagTB$I" role="3clFbG">
             <ref role="3cqZAo" node="1i9nLvh04ta" resolve="sc" />
@@ -3676,25 +3665,6 @@
                 </node>
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="4O1dS63QC44" role="3cqZAp">
-          <node concept="3clFbS" id="4O1dS63QC47" role="3clFbx">
-            <node concept="3clFbF" id="4O1dS63QD$9" role="3cqZAp">
-              <node concept="1rXfSq" id="4O1dS63QD$8" role="3clFbG">
-                <ref role="37wK5l" node="1i9nLvh04zY" resolve="error" />
-                <node concept="10Nm6u" id="4O1dS63QDCW" role="37wK5m" />
-                <node concept="Xl_RD" id="4O1dS63QDHG" role="37wK5m">
-                  <property role="Xl_RC" value="No make facets found, nothing to make. This may have been caused by a language module failed to load." />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="4O1dS63QCKR" role="3clFbw">
-            <node concept="37vLTw" id="4O1dS63QCpC" role="2Oq$k0">
-              <ref role="3cqZAo" node="6Lwhjun__gz" resolve="facets" />
-            </node>
-            <node concept="1v1jN8" id="4O1dS63QDmt" role="2OqNvi" />
           </node>
         </node>
         <node concept="3clFbF" id="ILfEQyDV7S" role="3cqZAp">

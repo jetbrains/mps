@@ -17,12 +17,12 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.resources.IResource;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.make.runtime.script.CompositeResult;
 import jetbrains.mps.internal.make.runtime.script.Script;
@@ -73,14 +73,15 @@ public class CoreMakeTask {
       final Wrappers._int idx = new Wrappers._int(0);
       myMakeSequence.iterate(new _FunctionTypes._return_P2_E0<Boolean, IScript, Iterable<IResource>>() {
         public Boolean invoke(IScript scr, Iterable<IResource> cl) {
-          if (!(scr.isValid())) {
-            String msg = myScrName + " not started: invalid make script";
-            myMessageHandler.handle(new Message(MessageKind.ERROR, CoreMakeTask.class, msg));
+          boolean isEmptySeq = Sequence.fromIterable(cl).isEmpty();
+          if (isEmptySeq || !(scr.isValid())) {
+            String msg = myScrName + ((isEmptySeq ? " not started: empty make sequence" : " not started: invalid make sequence"));
+            myMessageHandler.handle(new Message((isEmptySeq ? MessageKind.WARNING : MessageKind.ERROR), CoreMakeTask.class, msg));
             displayInfo(msg);
             for (IMessage err : scr.validationErrors()) {
               myMessageHandler.handle(err);
             }
-            CoreMakeTask.this.myResult = new IResult.FAILURE(null);
+            CoreMakeTask.this.myResult = (isEmptySeq ? new IResult.SUCCESS(null) : new IResult.FAILURE(null));
             return false;
           }
 

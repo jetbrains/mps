@@ -8,14 +8,16 @@ import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.make.resources.IResource;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.generator.impl.plan.ModelContentUtil;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ISequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Set;
@@ -39,14 +41,29 @@ public class ModulesClusterizer {
     myLanguageRegistry = mySession.getProject().getComponent(LanguageRegistry.class);
   }
 
-  public Iterable<Cluster> clusterize(Iterable<? extends IResource> res) {
-    final List<MResource> mres = Sequence.fromIterable(res).ofType(MResource.class).toListSequence();
+  public Iterable<Cluster> clusterize(Iterable<? extends IResource> input) {
+    List<Cluster> result = ListSequence.fromList(new ArrayList<Cluster>());
+    List<MResource> emptyInput = Sequence.fromIterable(input).ofType(MResource.class).where(new IWhereFilter<MResource>() {
+      public boolean accept(MResource it) {
+        return Sequence.fromIterable(it.models()).all(new IWhereFilter<SModel>() {
+          public boolean accept(SModel m) {
+            return ModelContentUtil.getUsedLanguages(m).isEmpty();
+          }
+        });
+      }
+    }).toListSequence();
+
+    final List<MResource> mres = Sequence.fromIterable(input).ofType(MResource.class).subtract(ListSequence.fromList(emptyInput)).toListSequence();
+    if (ListSequence.fromList(mres).isEmpty()) {
+      return result;
+    }
+
     Iterable<SModule> mods = ListSequence.fromList(mres).select(new ISelector<MResource, SModule>() {
       public SModule select(MResource r) {
         return r.module();
       }
     });
-    Iterable<IResource> rest = Sequence.fromIterable(((Iterable<IResource>) res)).subtract(ListSequence.fromList(mres));
+    Iterable<IResource> rest = Sequence.fromIterable(((Iterable<IResource>) input)).subtract(ListSequence.fromList(mres)).subtract(ListSequence.fromList(emptyInput));
     ModulesCluster clst = new ModulesCluster(myLanguageRegistry);
     // FIXME use ProgressMonitor as graph ordering may take some time 
     Iterable<? extends Iterable<SModule>> moduleBuildOrder = clst.buildOrder(mods);
@@ -60,7 +77,6 @@ public class ModulesClusterizer {
       }
     });
 
-    List<Cluster> result = ListSequence.fromList(new ArrayList<Cluster>());
     for (Iterable<MResource> s : mresBuildOrder) {
       ListSequence.fromList(result).addElement(new Cluster(s, allLanguagesToActivateFacets(s, clst), myLanguageRegistry));
     }

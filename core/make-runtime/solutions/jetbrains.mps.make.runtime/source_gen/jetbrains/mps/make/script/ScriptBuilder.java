@@ -89,7 +89,6 @@ public class ScriptBuilder {
       return new InvalidScript(errors);
     }
     Script sc = new Script(tr, finalTarget, startingTarget);
-    sc.validate();
     return sc;
   }
   private Map<IFacet.Name, IFacet> collectFacets() {
@@ -102,9 +101,6 @@ public class ScriptBuilder {
         String msg = "facet not found: " + fn;
         error(fn, msg);
       }
-    }
-    if (SetSequence.fromSet(facets).isEmpty()) {
-      error(null, "No make facets found, nothing to make. This may have been caused by a language module failed to load.");
     }
     return facetsView;
   }

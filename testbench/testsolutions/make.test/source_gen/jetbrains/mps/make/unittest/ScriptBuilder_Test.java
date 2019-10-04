@@ -86,7 +86,6 @@ public class ScriptBuilder_Test extends MockTestCase {
     Assert.assertNotNull(sc);
     Assert.assertFalse(sc.isValid());
     Assert.assertTrue(Sequence.fromIterable(sc.validationErrors()).count() == 1);
-    Assert.assertTrue(Sequence.fromIterable(sc.validationErrors()).first().toString().contains("nothing to make"));
     // Fake ScriptBuilder invocation, to satisfy mock expectations of setUp/tearDown 
     scb = new ScriptBuilder();
     scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {

@@ -33,8 +33,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.concurrent.ExecutionException;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
@@ -43,6 +41,8 @@ import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.ui.MessageType;
 import jetbrains.mps.make.script.IConfigMonitor;
 import jetbrains.mps.make.script.IJobMonitor;
 import jetbrains.mps.make.script.IPropertiesPool;
@@ -189,15 +189,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     IMessageHandler mh = this.getSession().getMessageHandler();
 
     if (Sequence.fromIterable(inputRes).isEmpty()) {
-      if (this.getSession().isCleanMake()) {
-        String msg = scrName + " aborted: nothing to do";
-        mh.handle(new Message(MessageKind.ERROR, msg));
-        this.displayInfo(msg);
-        return new FutureValue<IResult>(new IResult.FAILURE(null));
-      } else {
-        this.displayInfo("Everything is up to date");
-        return new FutureValue<IResult>(new IResult.SUCCESS(null));
-      }
+      this.displayInfo("Everything is up to date");
+      return new FutureValue<IResult>(new IResult.SUCCESS(null));
     }
 
     final MakeSession session = getSession();
@@ -273,6 +266,11 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     if (frame != null) {
       frame.getStatusBar().setInfo(info);
     }
+  }
+
+  private void displayBaloon(String text) {
+    ToolWindowManager.getInstance(ProjectHelper.toIdeaProject(this.getSession().getProject())).notifyByBalloon("Make", MessageType.WARNING, text);
+
   }
 
   private class Controller extends IScriptController.Stub {

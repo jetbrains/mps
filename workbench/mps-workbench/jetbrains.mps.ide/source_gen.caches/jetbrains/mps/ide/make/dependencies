@@ -104,7 +104,9 @@
     <classNode dependClassName="com.intellij.openapi.progress.ProgressManager" />
     <classNode dependClassName="com.intellij.openapi.project.DumbService" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.ui.MessageType" />
     <classNode dependClassName="com.intellij.openapi.wm.IdeFrame" />
+    <classNode dependClassName="com.intellij.openapi.wm.ToolWindowManager" />
     <classNode dependClassName="com.intellij.openapi.wm.WindowManager" />
     <classNode dependClassName="java.lang.IllegalStateException" />
     <classNode dependClassName="java.lang.InterruptedException" />
@@ -155,8 +157,6 @@
     <classNode dependClassName="jetbrains.mps.make.script.IScript" />
     <classNode dependClassName="jetbrains.mps.make.script.IScriptController" />
     <classNode dependClassName="jetbrains.mps.messages.IMessageHandler" />
-    <classNode dependClassName="jetbrains.mps.messages.Message" />
-    <classNode dependClassName="jetbrains.mps.messages.MessageKind" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
