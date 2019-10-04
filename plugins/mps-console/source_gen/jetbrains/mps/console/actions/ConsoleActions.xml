@@ -1,7 +1,16 @@
 <components>
   <actions>
+    <action id="jetbrains.mps.console.actions.ConsoleClear_Action" class="jetbrains.mps.console.actions.ConsoleClear_Action">
+      <keyboard-shortcut first-keystroke="ctrl BACK_SPACE" keymap="$default" />
+    </action>
     <action id="jetbrains.mps.console.actions.ConsoleExecute_Action" class="jetbrains.mps.console.actions.ConsoleExecute_Action">
       <keyboard-shortcut first-keystroke="ctrl ENTER" keymap="$default" />
+    </action>
+    <action id="jetbrains.mps.console.actions.ConsoleNext_Action" class="jetbrains.mps.console.actions.ConsoleNext_Action">
+      <keyboard-shortcut first-keystroke="ctrl DOWN" keymap="$default" />
+    </action>
+    <action id="jetbrains.mps.console.actions.ConsolePrev_Action" class="jetbrains.mps.console.actions.ConsolePrev_Action">
+      <keyboard-shortcut first-keystroke="ctrl UP" keymap="$default" />
     </action>
     <action id="jetbrains.mps.console.actions.ExecuteActionAttachedToCurrentNode_Action" class="jetbrains.mps.console.actions.ExecuteActionAttachedToCurrentNode_Action"></action>
     <action id="jetbrains.mps.console.actions.PasteOriginalNode_Action" class="jetbrains.mps.console.actions.PasteOriginalNode_Action"></action>
@@ -15,6 +24,9 @@
     </group>
     <group id="jetbrains.mps.console.actions.ConsoleTabActions_ActionGroup" text="Console" popup="true">
       <reference ref="jetbrains.mps.console.actions.ConsoleExecute_Action" />
+      <reference ref="jetbrains.mps.console.actions.ConsoleNext_Action" />
+      <reference ref="jetbrains.mps.console.actions.ConsolePrev_Action" />
+      <reference ref="jetbrains.mps.console.actions.ConsoleClear_Action" />
       <add-to-group group-id="EditorPopup_ActionGroupgoto" anchor="last" />
     </group>
   </actions>

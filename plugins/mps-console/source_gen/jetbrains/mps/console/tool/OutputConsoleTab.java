@@ -15,8 +15,7 @@ import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.IdeActions;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.icons.AllIcons;
+import com.intellij.ide.actions.CloseTabToolbarAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -52,10 +51,7 @@ public class OutputConsoleTab extends BaseConsoleTab {
     group.add(ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB));
   }
 
-  private class CloseAction extends AnAction {
-    public CloseAction() {
-      super("Close", "Close tab", AllIcons.Actions.Cancel);
-    }
+  private class CloseAction extends CloseTabToolbarAction {
     public void actionPerformed(AnActionEvent event) {
       getTool().closeTab(OutputConsoleTab.this);
     }

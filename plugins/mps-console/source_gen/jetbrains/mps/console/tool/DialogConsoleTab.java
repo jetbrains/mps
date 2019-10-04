@@ -11,7 +11,6 @@ import org.jdom.Element;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
-import java.awt.event.KeyEvent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.openapi.application.ApplicationManager;
@@ -19,10 +18,6 @@ import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.Map;
-import jetbrains.mps.smodel.undo.DefaultCommand;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -65,9 +60,9 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
   protected void registerActions(DefaultActionGroup group) {
     super.registerActions(group);
     group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleExecute_Action")));
-    group.add(registerKeyShortcut(new PrevCmdAction(), KeyEvent.VK_UP));
-    group.add(registerKeyShortcut(new NextCmdAction(), KeyEvent.VK_DOWN));
-    group.add(registerKeyShortcut(new ClearAction(), KeyEvent.VK_BACK_SPACE));
+    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsolePrev_Action")));
+    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleNext_Action")));
+    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleClear_Action")));
   }
 
   private SNode lastCmd() {
@@ -134,88 +129,67 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     });
   }
 
-  private class ClearAction extends BaseAction {
-    public ClearAction() {
-      super("Clear", "Clear console history", AllIcons.Actions.Clean);
-      setExecuteOutsideCommand(true);
-    }
-    protected void doExecute(AnActionEvent event, Map<String, Object> arg) {
-      // current command does not involve anything else 
-      getProject().getModelAccess().executeCommand(new DefaultCommand(getProject().getRepository()) {
-        public void run() {
-          SNode currentCommand = SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$);
-          loadHistory(null);
-          SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, currentCommand);
-          getEditorComponent().editNode(myRoot);
-          validateImports();
-        }
-      });
-      setSelection();
-    }
+  public void clear() {
+    SNode currentCommand = SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$);
+    loadHistory(null);
+    SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, currentCommand);
+    getEditorComponent().editNode(myRoot);
+    validateImports();
+    setSelection();
   }
 
-  private class PrevCmdAction extends BaseAction {
-    public PrevCmdAction() {
-      super("Prev", "Previous command", AllIcons.Actions.PreviousOccurence);
+  public void previousCommand() {
+    SNode lastCmd = lastCmd();
+    if ((lastCmd == null)) {
+      return;
     }
-    protected void doExecute(AnActionEvent event, Map<String, Object> arg) {
-      SNode lastCmd = lastCmd();
-      if ((lastCmd == null)) {
-        return;
-      }
 
-      SNode newCursor;
-      if (getCommandCursor() == null) {
-        newCursor = lastCmd;
-        SLinkOperations.setTarget(myRoot, LINKS.hiddenCommand$VDO5, SNodeOperations.copyNode(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX)));
-      } else {
-        newCursor = getPrevCmd(getCommandCursor());
-        if ((newCursor == null)) {
-          return;
-        }
-        SNode myCursorCommand = SLinkOperations.getTarget(getCommandCursor(), LINKS.command$pL9$);
-        SNode myCursorNew = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x9992dadc6de20a7L, "jetbrains.mps.console.base.structure.ModifiedCommandHistoryItem"));
-        SLinkOperations.setTarget(myCursorNew, LINKS.command$pL9$, myCursorCommand);
-        SLinkOperations.setTarget(myCursorNew, LINKS.modifiedCommand$pXxD, SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$));
-        SNodeOperations.replaceWithAnother(getCommandCursor(), myCursorNew);
-      }
+    SNode newCursor;
+    if (getCommandCursor() == null) {
+      newCursor = lastCmd;
+      SLinkOperations.setTarget(myRoot, LINKS.hiddenCommand$VDO5, SNodeOperations.copyNode(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX)));
+    } else {
+      newCursor = getPrevCmd(getCommandCursor());
       if ((newCursor == null)) {
         return;
       }
-      setCommandCursor(newCursor);
-      SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$4VSX, CONCEPTS.CommandHolder$6b);
-      SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$6b, SMethodTrimmedId.create("getCommandToEdit", null, "ApbqR6U7je")))));
-      setSelection();
-    }
-  }
-
-  private class NextCmdAction extends BaseAction {
-    public NextCmdAction() {
-      super("Next", "Next command", AllIcons.Actions.NextOccurence);
-    }
-    protected void doExecute(AnActionEvent event, Map<String, Object> arg) {
-      if ((getCommandCursor() == null)) {
-        return;
-      }
-      SNode newCursor = getNextCmd(getCommandCursor());
-
       SNode myCursorCommand = SLinkOperations.getTarget(getCommandCursor(), LINKS.command$pL9$);
       SNode myCursorNew = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x9992dadc6de20a7L, "jetbrains.mps.console.base.structure.ModifiedCommandHistoryItem"));
       SLinkOperations.setTarget(myCursorNew, LINKS.command$pL9$, myCursorCommand);
       SLinkOperations.setTarget(myCursorNew, LINKS.modifiedCommand$pXxD, SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$));
       SNodeOperations.replaceWithAnother(getCommandCursor(), myCursorNew);
-
-      SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$4VSX, CONCEPTS.CommandHolder$6b);
-      if (!((newCursor == null))) {
-        setCommandCursor(newCursor);
-        SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$6b, SMethodTrimmedId.create("getCommandToEdit", null, "ApbqR6U7je")))));
-      } else {
-        setCommandCursor(null);
-        SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.hiddenCommand$VDO5), LINKS.command$pL9$)));
-        SLinkOperations.setTarget(myRoot, LINKS.hiddenCommand$VDO5, null);
-      }
-      setSelection();
     }
+    if ((newCursor == null)) {
+      return;
+    }
+    setCommandCursor(newCursor);
+    SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$4VSX, CONCEPTS.CommandHolder$6b);
+    SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$6b, SMethodTrimmedId.create("getCommandToEdit", null, "ApbqR6U7je")))));
+    setSelection();
+  }
+
+  public void nextCommand() {
+    if ((getCommandCursor() == null)) {
+      return;
+    }
+    SNode newCursor = getNextCmd(getCommandCursor());
+
+    SNode myCursorCommand = SLinkOperations.getTarget(getCommandCursor(), LINKS.command$pL9$);
+    SNode myCursorNew = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x9992dadc6de20a7L, "jetbrains.mps.console.base.structure.ModifiedCommandHistoryItem"));
+    SLinkOperations.setTarget(myCursorNew, LINKS.command$pL9$, myCursorCommand);
+    SLinkOperations.setTarget(myCursorNew, LINKS.modifiedCommand$pXxD, SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$));
+    SNodeOperations.replaceWithAnother(getCommandCursor(), myCursorNew);
+
+    SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$4VSX, CONCEPTS.CommandHolder$6b);
+    if (!((newCursor == null))) {
+      setCommandCursor(newCursor);
+      SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$6b, SMethodTrimmedId.create("getCommandToEdit", null, "ApbqR6U7je")))));
+    } else {
+      setCommandCursor(null);
+      SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.hiddenCommand$VDO5), LINKS.command$pL9$)));
+      SLinkOperations.setTarget(myRoot, LINKS.hiddenCommand$VDO5, null);
+    }
+    setSelection();
   }
 
   protected void loadHistory(@Nullable final Element state) {

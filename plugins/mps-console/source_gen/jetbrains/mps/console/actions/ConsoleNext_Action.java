@@ -13,11 +13,11 @@ import jetbrains.mps.console.tool.MPSConsoleDataKeys;
 import jetbrains.mps.console.tool.DialogConsoleTab;
 import jetbrains.mps.console.tool.BaseConsoleTab;
 
-public class ConsoleExecute_Action extends BaseAction {
+public class ConsoleNext_Action extends BaseAction {
   private static final Icon ICON = null;
 
-  public ConsoleExecute_Action() {
-    super("Execute", "Execute last command", ICON);
+  public ConsoleNext_Action() {
+    super("Next", "Next command", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
@@ -27,7 +27,7 @@ public class ConsoleExecute_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    event.getPresentation().setIcon(AllIcons.Actions.Execute);
+    event.getPresentation().setIcon(AllIcons.Actions.NextOccurence);
     event.getPresentation().setEnabled(event.getData(MPSConsoleDataKeys.CONSOLE_TAB) instanceof DialogConsoleTab);
   }
   @Override
@@ -45,6 +45,6 @@ public class ConsoleExecute_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((DialogConsoleTab) event.getData(MPSConsoleDataKeys.CONSOLE_TAB)).executeCurrentCommand();
+    ((DialogConsoleTab) event.getData(MPSConsoleDataKeys.CONSOLE_TAB)).nextCommand();
   }
 }
