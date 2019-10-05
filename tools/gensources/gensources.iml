@@ -935,7 +935,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../samples/sampleJavaExtensions/solutions/ParallelForUtils/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/sampleJavaExtensions/solutions/SampleJavaExtensions.sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/sampleXML/languages/sampleXML/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../samples/sampleXML/languages/sampleXML/solutions/pluginSolution/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/sampleXML/languages/sampleXML/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/sampleXML/solutions/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/shapes/languages/jetbrains.mps.samples.Shapes/generator/source_gen" isTestSource="false" />
@@ -1113,7 +1112,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/sampleJavaExtensions/solutions/SampleJavaExtensions.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/sampleXML/languages/sampleXML/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/sampleXML/languages/sampleXML/generator/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/sampleXML/languages/sampleXML/solutions/pluginSolution/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/sampleXML/solutions/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/shapes/languages/jetbrains.mps.samples.Shapes/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/shapes/languages/jetbrains.mps.samples.Shapes/generator/classes_gen" />
@@ -1475,11 +1473,11 @@
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../workbench">
+      <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/jetbrains.mps.ide.refactoring/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.core/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.script/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.typesystem/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/jetbrains.mps.ide.refactoring/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/jetbrains.mps.ide.refactoring/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../workbench/mps-workbench/pluginSolutions/lang.core/classes_gen" />
@@ -1565,3 +1563,4 @@
     <orderEntry type="module" module-name="messages-for-structure" />
   </component>
 </module>
+

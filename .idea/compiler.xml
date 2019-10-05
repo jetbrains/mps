@@ -670,8 +670,6 @@
       <directory url="file://$PROJECT_DIR$/samples/sampleJavaExtensions/solutions/SampleJavaExtensions.sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/sampleJavaExtensions/solutions/SampleJavaExtensions.sandbox/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/sampleXML/languages/sampleXML/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/sampleXML/languages/sampleXML/solutions/pluginSolution/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/samples/sampleXML/languages/sampleXML/solutions/pluginSolution/test_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/sampleXML/languages/sampleXML/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/sampleXML/solutions/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/sampleXML/solutions/sandbox/test_gen" includeSubdirectories="true" />

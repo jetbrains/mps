@@ -462,7 +462,6 @@
       <modulePath path="$PROJECT_DIR$/samples/sampleJavaExtensions/solutions/ParallelForUtils/org.jetbrains.mps.samples.ParallelForUtils.msd" folder="samples.sampleJavaExtensions" />
       <modulePath path="$PROJECT_DIR$/samples/sampleJavaExtensions/solutions/SampleJavaExtensions.sandbox/org.jetbrains.mps.samples.SampleJavaExtensions.sandbox.msd" folder="samples.sampleJavaExtensions" />
       <modulePath path="$PROJECT_DIR$/samples/sampleXML/languages/sampleXML/jetbrains.mps.sampleXML.mpl" folder="samples" />
-      <modulePath path="$PROJECT_DIR$/samples/sampleXML/languages/sampleXML/solutions/pluginSolution/jetbrains.mps.sampleXML.pluginSolution.msd" folder="samples" />
       <modulePath path="$PROJECT_DIR$/samples/sampleXML/solutions/sandbox/sampleXML.sandbox.msd" folder="samples" />
       <modulePath path="$PROJECT_DIR$/samples/shapes/languages/jetbrains.mps.samples.Shapes/jetbrains.mps.samples.Shapes.mpl" folder="samples.shapes" />
       <modulePath path="$PROJECT_DIR$/samples/shapes/languages/jetbrains.mps.samples.Shapes/sandbox/jetbrains.mps.samples.Shapes.sandbox.msd" folder="samples.shapes" />
