@@ -153,14 +153,12 @@ public abstract class BaseAction extends AnAction {
       return;
     }
 
-
-    Map<String, Object> params = new THashMap<>();
-    getModelAccess(event).runReadAction(() -> collectActionData(event, params));
-
-    final Runnable r = new UndoRunnable.Base(getTemplatePresentation().getText(), null) {
+    final UndoRunnable r = new UndoRunnable.Base(getTemplatePresentation().getText(), null) {
       @Override
       public void run() {
         try {
+          Map<String, Object> params = new THashMap<>();
+          getModelAccess(event).runReadAction(() -> collectActionData(event, params));
           doExecute(event, params);
         } catch (RuntimeException ex) {
           final Logger log = LogManager.getLogger(getClass());
@@ -173,7 +171,7 @@ public abstract class BaseAction extends AnAction {
     getActionAccess().runWithAccess(event, r);
   }
 
-  protected final ModelAccess getModelAccess(AnActionEvent event) {
+  protected static ModelAccess getModelAccess(AnActionEvent event) {
     Project project = getEventProject(event);
     if (project != null && !project.isDisposed()) {
       return ProjectHelper.getModelAccess(project);
@@ -219,7 +217,7 @@ public abstract class BaseAction extends AnAction {
   }
 
   protected boolean collectActionData(AnActionEvent e, Map<String, Object> params) {
-    return true;
+    return getActionAccess().collectAccessData(e);
   }
 
   protected void doUpdate(AnActionEvent e, Map<String, Object> params) {
