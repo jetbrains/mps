@@ -29,10 +29,16 @@ import org.apache.log4j.Logger;
  * This interface is responsible for getting proper model access for the action.
  */
 public interface ActionAccess {
+
+  EmptyAccess NONE = new EmptyAccess();
+  CommandProjectAccess UNDO_PROJECT = new CommandProjectAccess();
+  CommandGlobalAccess UNDO_GLOBAL = new CommandGlobalAccess();
+  ReadProjectAccess READ_PROJECT = new ReadProjectAccess();
+
   /**
    * @param execute callback performing collectActionData() and execute()
    */
-  void runWithAccess(AnActionEvent event, UndoRunnable execute);
+  void runWithAccess(AnActionEvent event, Runnable execute);
 
   /**
    * @return whether the action is compatible with make (actually, means that it requires command)
@@ -49,7 +55,7 @@ public interface ActionAccess {
    */
   class EmptyAccess implements ActionAccess {
     @Override
-    public void runWithAccess(AnActionEvent event, UndoRunnable execute) {
+    public void runWithAccess(AnActionEvent event, Runnable execute) {
       execute.run();
     }
     @Override
@@ -64,8 +70,13 @@ public interface ActionAccess {
 
   class CommandProjectAccess implements ActionAccess {
     @Override
-    public void runWithAccess(AnActionEvent event, UndoRunnable execute) {
-      ProjectHelper.getModelAccess(event.getData(CommonDataKeys.PROJECT)).executeCommand(execute);
+    public void runWithAccess(AnActionEvent event, Runnable execute) {
+      ProjectHelper.getModelAccess(event.getData(CommonDataKeys.PROJECT)).executeCommand(new UndoRunnable.Base(event.getPresentation().getText(), null) {
+        @Override
+        public void run() {
+          execute.run();
+        }
+      });
     }
     @Override
     public boolean isMakeCompatible() {
@@ -82,11 +93,16 @@ public interface ActionAccess {
    */
   class CommandGlobalAccess implements ActionAccess {
     @Override
-    public void runWithAccess(AnActionEvent event, UndoRunnable execute) {
+    public void runWithAccess(AnActionEvent event, Runnable execute) {
       Project project = AnAction.getEventProject(event);
       if (project != null && !project.isDisposed()) {
         Logger.getLogger(ActionAccess.class).warn(String.format("Action %s needs a command but is enabled for executing without project.", getClass().getName()));
-        ProjectHelper.getModelAccess(project).executeCommand(execute);
+        ProjectHelper.getModelAccess(project).executeCommand(new UndoRunnable.Base(event.getPresentation().getText(), null) {
+          @Override
+          public void run() {
+            execute.run();
+          }
+        });
       } else {
         Logger.getLogger(ActionAccess.class).error(String.format("Action %s needs a command but is executed without project.", getClass().getName()));
         // Present implementation of openapi.ModelAccess in global repository doesn't support commands,
@@ -109,7 +125,7 @@ public interface ActionAccess {
    */
   class ReadProjectAccess implements ActionAccess {
     @Override
-    public void runWithAccess(AnActionEvent event, UndoRunnable execute) {
+    public void runWithAccess(AnActionEvent event, Runnable execute) {
       ProjectHelper.getModelAccess(event.getData(CommonDataKeys.PROJECT)).runReadAction(execute);
     }
     @Override

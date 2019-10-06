@@ -101,7 +101,7 @@ public abstract class BaseAction extends AnAction {
 
   protected ActionAccess getActionAccess() {
     if (myActionAccess == null) {
-      myActionAccess = myExecuteOutsideCommand ? new EmptyAccess() : myDisableOnNoProject ? new CommandProjectAccess() : new CommandGlobalAccess();
+      myActionAccess = myExecuteOutsideCommand ? ActionAccess.NONE : myDisableOnNoProject ? ActionAccess.UNDO_PROJECT : ActionAccess.UNDO_GLOBAL;
     }
     return myActionAccess;
   }
@@ -176,24 +176,19 @@ public abstract class BaseAction extends AnAction {
       return;
     }
 
-    // todo: move undoRunnable into ActionAccess
-    final UndoRunnable r = new UndoRunnable.Base(getTemplatePresentation().getText(), null) {
-      @Override
-      public void run() {
-        try {
-          Map<String, Object> params = new THashMap<>();
-          // read action here is redundant always except ActionAccess.EmptyAccess
-          getModelAccess(event).runReadAction(() -> collectActionData(event, params));
-          doExecute(event, params);
-        } catch (RuntimeException ex) {
-          final Logger log = LogManager.getLogger(getClass());
-          if (log.isEnabledFor(Level.ERROR)) {
-            log.error(String.format("User's action execute method failed. Action: %s. Class: %s", getName(), BaseAction.this.getClass().getName()), ex);
-          }
+    getActionAccess().runWithAccess(event, () -> {
+      try {
+        Map<String, Object> params = new THashMap<>();
+        // read action here is redundant always except ActionAccess.EmptyAccess
+        getModelAccess(event).runReadAction(() -> collectActionData(event, params));
+        doExecute(event, params);
+      } catch (RuntimeException ex) {
+        final Logger log = LogManager.getLogger(getClass());
+        if (log.isEnabledFor(Level.ERROR)) {
+          log.error(String.format("User's action execute method failed. Action: %s. Class: %s", event.getPresentation().getText(), BaseAction.this.getClass().getName()), ex);
         }
       }
-    };
-    getActionAccess().runWithAccess(event, r);
+    });
   }
 
   protected static ModelAccess getModelAccess(AnActionEvent event) {
