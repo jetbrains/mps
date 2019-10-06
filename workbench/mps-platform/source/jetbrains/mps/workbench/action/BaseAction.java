@@ -32,6 +32,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.smodel.UndoRunnable;
 import jetbrains.mps.workbench.ActionPlace;
+import jetbrains.mps.workbench.action.ActionAccess.CommandGlobalAccess;
 import jetbrains.mps.workbench.action.ActionAccess.CommandProjectAccess;
 import jetbrains.mps.workbench.action.ActionAccess.EmptyAccess;
 import org.apache.log4j.Level;
@@ -49,15 +50,9 @@ import java.util.Set;
 public abstract class BaseAction extends AnAction {
   private boolean myIsAlwaysVisible = true;
   private ActionAccess myActionAccess = null;
+  private boolean myExecuteOutsideCommand = false;
   private boolean myDisableOnNoProject = true;
   private Set<ActionPlace> myPlaces = null;
-
-  public ActionAccess getActionAccess() {
-    if (myActionAccess == null) {
-      myActionAccess = new CommandProjectAccess();
-    }
-    return myActionAccess;
-  }
 
   public BaseAction() {
     this(null, null, null);
@@ -72,16 +67,25 @@ public abstract class BaseAction extends AnAction {
     setEnabledInModalContext(true);
   }
 
-  public void setExecuteOutsideCommand(boolean executeOutsideCommand) {
-    myActionAccess = executeOutsideCommand ? new EmptyAccess() : new CommandProjectAccess();
-  }
-
   public void setIsAlwaysVisible(boolean isAlwaysVisible) {
     myIsAlwaysVisible = isAlwaysVisible;
   }
 
+  public void setExecuteOutsideCommand(boolean executeOutsideCommand) {
+    myExecuteOutsideCommand = executeOutsideCommand;
+    myActionAccess = null;
+  }
+
   public void setDisableOnNoProject(boolean disableOnNoProject) {
     myDisableOnNoProject = disableOnNoProject;
+    myActionAccess = null;
+  }
+
+  public ActionAccess getActionAccess() {
+    if (myActionAccess == null) {
+      myActionAccess = myExecuteOutsideCommand ? new EmptyAccess() : myDisableOnNoProject ? new CommandProjectAccess() : new CommandGlobalAccess();
+    }
+    return myActionAccess;
   }
 
   public boolean isApplicable(final AnActionEvent event, final Map<String, Object> _params) {
@@ -114,12 +118,12 @@ public abstract class BaseAction extends AnAction {
       }
     }
 
-    final Project eventProject = getEventProject(e);
-
-    if (myDisableOnNoProject && eventProject == null) {
+    if (!getActionAccess().collectAccessData(e)) {
       disable(e.getPresentation());
       return;
     }
+
+    final Project eventProject = getEventProject(e);
     if (eventProject != null && eventProject.isDisposed()) {
       // I feel it's IDEA's responsibility not to ask actions for update when project is disposed,
       // nevertheless, https://youtrack.jetbrains.com/issue/MPS-26399 suggests it doesn't care enough.
@@ -127,6 +131,7 @@ public abstract class BaseAction extends AnAction {
       return;
     }
 
+    // In fact, here might be no read required. Perhaps, ActionAccess should also responsible for this.
     getModelAccess(e).runReadAction(() -> {
       Map<String, Object> params = new THashMap<>();
       if (!collectActionData(e, params)) {

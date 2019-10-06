@@ -85,11 +85,10 @@ public interface ActionAccess {
     public void runWithAccess(AnActionEvent event, UndoRunnable execute) {
       Project project = AnAction.getEventProject(event);
       if (project != null && !project.isDisposed()) {
-        // XXX project != null shall become assert once we've found all actions that require command but run without project
+        Logger.getLogger(BaseAction.class).warn(String.format("Action %s needs a command but is enabled for executing without project.", getClass().getName()));
         ProjectHelper.getModelAccess(project).executeCommand(execute);
       } else {
         Logger.getLogger(BaseAction.class).error(String.format("Action %s needs a command but is executed without project.", getClass().getName()));
-        // it's odd to have an action that runs without a project, but still wants a command.
         // Present implementation of openapi.ModelAccess in global repository doesn't support commands,
         // thus we run it as a mere write action
         ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getModuleRepository().getModelAccess().runWriteAction(execute);
