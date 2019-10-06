@@ -687,7 +687,7 @@
       <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
     <node concept="PrWs8" id="6TyNL3imAnR" role="PzmwI">
-      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="INamedAspect" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPM" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/preferences.png" />
@@ -1854,6 +1854,11 @@
       <property role="IQ2nx" value="1211298967294" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
+    <node concept="1TJgyi" id="6u2MFnph2yz" role="1TKVEl">
+      <property role="IQ2nx" value="7458746815261976739" />
+      <property role="TrG5h" value="requiredAccess" />
+      <ref role="AX2Wp" node="6u2MFnph2wQ" resolve="ActionAccess" />
+    </node>
     <node concept="1TJgyi" id="RmlFTgVj1F" role="1TKVEl">
       <property role="TrG5h" value="fillActionContext" />
       <property role="IQ2nx" value="997079742910640235" />
@@ -2477,6 +2482,29 @@
       <property role="TrG5h" value="remove" />
       <property role="3tVfz5" value="6785623076777453162" />
       <ref role="2wpffI" node="5SFo3Mf0QpE" />
+    </node>
+  </node>
+  <node concept="25R3W" id="6u2MFnph2wQ">
+    <property role="3F6X1D" value="7458746815261976630" />
+    <property role="3GE5qa" value="Actions.Action" />
+    <property role="TrG5h" value="ActionAccess" />
+    <ref role="1H5jkz" node="6u2MFnph2wR" resolve="command" />
+    <node concept="25R33" id="6u2MFnph2wR" role="25R1y">
+      <property role="3tVfz5" value="7458746815261976631" />
+      <property role="TrG5h" value="command" />
+    </node>
+    <node concept="25R33" id="6u2MFnph2wS" role="25R1y">
+      <property role="3tVfz5" value="7458746815261976632" />
+      <property role="TrG5h" value="none" />
+    </node>
+    <node concept="25R33" id="6u2MFnph2yg" role="25R1y">
+      <property role="3tVfz5" value="7458746815261976720" />
+      <property role="TrG5h" value="read" />
+    </node>
+    <node concept="25R33" id="6u2MFnph2yk" role="25R1y">
+      <property role="3tVfz5" value="7458746815261976724" />
+      <property role="TrG5h" value="editorCommand" />
+      <property role="1L1pqM" value="editor command" />
     </node>
   </node>
 </model>

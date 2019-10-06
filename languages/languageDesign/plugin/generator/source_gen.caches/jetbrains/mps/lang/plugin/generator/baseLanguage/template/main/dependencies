@@ -68,6 +68,7 @@
     <classNode dependClassName="jetbrains.mps.lang.plugin.generator.util.KeymapUtil" />
     <classNode dependClassName="jetbrains.mps.lang.plugin.typesystem.MnemonicChecker" />
     <classNode dependClassName="jetbrains.mps.lang.resources.behavior.Icon__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.EnumerationLiteralsIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />

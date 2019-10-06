@@ -16,8 +16,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public class check_ActionDeclaration_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-  public check_ActionDeclaration_NonTypesystemRule() {
+public class check_ActionDeclaration_mnemonics_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
+  public check_ActionDeclaration_mnemonics_NonTypesystemRule() {
   }
   public void applyRule(final SNode a, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (isEmptyString(SPropertyOperations.getString(a, PROPS.mnemonic$X3ep))) {

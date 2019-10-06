@@ -143,6 +143,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptUpdateBlock = createDescriptorForUpdateBlock();
   /*package*/ final ConceptDescriptor myConceptUpdateGroupBlock = createDescriptorForUpdateGroupBlock();
   /*package*/ final ConceptDescriptor myConceptUpdateGroupFunction = createDescriptorForUpdateGroupFunction();
+  /*package*/ final EnumerationDescriptor myEnumerationActionAccess = new EnumerationDescriptor_ActionAccess();
   /*package*/ final EnumerationDescriptor myEnumerationKeyMapChange = new EnumerationDescriptor_KeyMapChange();
   /*package*/ final EnumerationDescriptor myEnumerationKeymap = new EnumerationDescriptor_Keymap();
   /*package*/ final EnumerationDescriptor myEnumerationToolPosition = new EnumerationDescriptor_ToolPosition();
@@ -428,7 +429,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationKeyMapChange, myEnumerationKeymap, myEnumerationToolPosition, myCSDatatypedigit, myCSDatatypemnemonic);
+    return Arrays.asList(myEnumerationActionAccess, myEnumerationKeyMapChange, myEnumerationKeymap, myEnumerationToolPosition, myCSDatatypedigit, myCSDatatypemnemonic);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -513,6 +514,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("mnemonic", 0x11b1742d216L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b7ee16efL)).origin("1215865999894").done();
     b.property("isAlwaysVisible", 0x1190fbf3301L).type(PrimitiveTypeId.BOOLEAN).origin("1207149998849").done();
     b.property("outsideCommandExecution", 0x11a070b6efeL).type(PrimitiveTypeId.BOOLEAN).origin("1211298967294").done();
+    b.property("requiredAccess", 0x6782cab5d94428a3L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L)).origin("7458746815261976739").done();
     b.property("fillActionContext", 0xdd656be50ed306bL).type(PrimitiveTypeId.BOOLEAN).origin("997079742910640235").done();
     b.aggregate("updateBlock", 0x1181d58b8d3L).target(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b8325461L).optional(true).ordered(true).multiple(false).origin("1203083196627").done();
     b.aggregate("icon", 0x7c92abce86abbd8fL).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c3774289eeeL).optional(true).ordered(true).multiple(false).origin("8976425910813834639").done();
