@@ -11681,7 +11681,7 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="qh1hBLa0hW" role="jymVt" />
+    <node concept="2tJIrI" id="4Ty7LDC$C5n" role="jymVt" />
     <node concept="3clFb_" id="2n7wcdLaARa" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="projectOpened" />
@@ -11707,7 +11707,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="qh1hBLa2AB" role="jymVt" />
+    <node concept="2tJIrI" id="4Ty7LDC$DbW" role="jymVt" />
     <node concept="3clFb_" id="2n7wcdLaARk" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="projectClosed" />
@@ -11733,7 +11733,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="qh1hBLa3$v" role="jymVt" />
+    <node concept="2tJIrI" id="4Ty7LDC$E1E" role="jymVt" />
     <node concept="3clFb_" id="2n7wcdLaARu" role="jymVt">
       <property role="TrG5h" value="statusChanged" />
       <node concept="3Tm6S6" id="2n7wcdLaARv" role="1B3o_S" />
@@ -11864,9 +11864,6 @@
             <node concept="liA8E" id="2n7wcdLaASf" role="2OqNvi">
               <ref role="37wK5l" to="jlcu:~FileStatusManager.fileStatusChanged(com.intellij.openapi.vfs.VirtualFile)" resolve="fileStatusChanged" />
               <node concept="2OqwBi" id="2n7wcdLaASg" role="37wK5m">
-                <node concept="1rXfSq" id="qh1hBLaQBy" role="2Oq$k0">
-                  <ref role="37wK5l" node="qh1hBLaspL" resolve="getNodeFileSystem" />
-                </node>
                 <node concept="liA8E" id="2n7wcdLaASi" role="2OqNvi">
                   <ref role="37wK5l" to="kip1:~NodeVirtualFileSystem.getFileFor(org.jetbrains.mps.openapi.module.SRepository,org.jetbrains.mps.openapi.model.SNode)" resolve="getFileFor" />
                   <node concept="2OqwBi" id="5IHtz9v0uwu" role="37wK5m">
@@ -11881,13 +11878,16 @@
                     <ref role="3cqZAo" node="2n7wcdLaAS9" resolve="node" />
                   </node>
                 </node>
+                <node concept="1rXfSq" id="qh1hBLaQBy" role="2Oq$k0">
+                  <ref role="37wK5l" node="qh1hBLaspL" resolve="getNodeFileSystem" />
+                </node>
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="qh1hBLa5CS" role="jymVt" />
+    <node concept="2tJIrI" id="4Ty7LDC$Fg1" role="jymVt" />
     <node concept="3clFb_" id="2n7wcdLaASk" role="jymVt">
       <property role="TrG5h" value="updateNodeStatus" />
       <node concept="37vLTG" id="2n7wcdLaASl" role="3clF46">
@@ -12411,7 +12411,7 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="qh1hBLa94q" role="jymVt" />
+    <node concept="2tJIrI" id="4Ty7LDC$HOU" role="jymVt" />
     <node concept="3clFb_" id="2n7wcdLaAV2" role="jymVt">
       <property role="TrG5h" value="getStatus" />
       <node concept="37vLTG" id="2n7wcdLaAV3" role="3clF46">
@@ -12887,6 +12887,7 @@
         <ref role="3uigEE" node="2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4Ty7LDC_bWK" role="jymVt" />
     <node concept="3clFbW" id="2n7wcdLaAXb" role="jymVt">
       <node concept="3cqZAl" id="2n7wcdLaAXc" role="3clF45" />
       <node concept="3Tm1VV" id="2n7wcdLaAXd" role="1B3o_S" />
@@ -12906,8 +12907,21 @@
             <node concept="37vLTw" id="2BHiRxeukHe" role="37vLTJ">
               <ref role="3cqZAo" node="2n7wcdLaAX6" resolve="myMapping" />
             </node>
-            <node concept="37vLTw" id="2BHiRxgmKen" role="37vLTx">
-              <ref role="3cqZAo" node="2n7wcdLaAXq" resolve="mapping" />
+            <node concept="2OqwBi" id="4Ty7LDC_b3e" role="37vLTx">
+              <node concept="2OqwBi" id="4Ty7LDC_adW" role="2Oq$k0">
+                <node concept="37vLTw" id="4Ty7LDC_9Bz" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2n7wcdLaAXn" resolve="project" />
+                </node>
+                <node concept="liA8E" id="4Ty7LDC_aM1" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
+                </node>
+              </node>
+              <node concept="liA8E" id="4Ty7LDC_bsB" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="4Ty7LDC_bD2" role="37wK5m">
+                  <ref role="3VsUkX" node="2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -12921,16 +12935,8 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
-      <node concept="37vLTG" id="2n7wcdLaAXq" role="3clF46">
-        <property role="TrG5h" value="mapping" />
-        <node concept="3uibUv" id="2n7wcdLaAXr" role="1tU5fm">
-          <ref role="3uigEE" node="2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
-        </node>
-        <node concept="2AHcQZ" id="2n7wcdLaAXs" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
     </node>
+    <node concept="2tJIrI" id="4Ty7LDC_dqB" role="jymVt" />
     <node concept="3clFb_" id="2n7wcdLaAXt" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getFileStatus" />
@@ -13144,6 +13150,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4Ty7LDC_ebZ" role="jymVt" />
     <node concept="3clFb_" id="2n7wcdLaAYe" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="refreshFileStatusFromDocument" />
@@ -13167,6 +13174,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4Ty7LDC_eso" role="jymVt" />
     <node concept="3clFb_" id="46_v$3HT6Ym" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getNotChangedDirectoryParentingStatus" />
