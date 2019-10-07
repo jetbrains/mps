@@ -9,7 +9,10 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 
 public interface IFinder {
-  String getDescription();
+  default String getDescription() {
+    // todo remove body. Was deprecated in 3.4, but still has one hand-written usage in mbeddr 
+    return getClass().getSimpleName();
+  }
 
   /**
    * a straight-forward version of the search process: we ask, we wait, we get the results
