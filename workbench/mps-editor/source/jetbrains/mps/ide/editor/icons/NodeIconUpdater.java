@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,10 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileEvent;
 import com.intellij.openapi.vfs.VirtualFileListener;
 import com.intellij.openapi.vfs.VirtualFilePropertyEvent;
-import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import com.intellij.openapi.vfs.impl.BulkVirtualFileListenerAdapter;
+import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
 
 /**
  * FIXME: MPSNodesVirtualFileSystem listens to node deletion and rename, why doesn't it send out file changed events as well, why do we
@@ -34,10 +33,12 @@ import java.util.Arrays;
  * XXX Why it's distinct from NodeFileIconProvider?
  */
 public class NodeIconUpdater implements ProjectComponent {
+  private final Project myProject;
   private final FileEditorManagerEx myFileEditorManagerEx;
   private final VirtualFileListener myFileListener;
 
   public NodeIconUpdater(Project project, FileEditorManagerEx fileEditorManager) {
+    myProject = project;
     myFileEditorManagerEx = fileEditorManager;
     // TODO Would be more effective to be an ApplicationComponent and listen to bulk changes (BulkFileListener)
     // however, there's no way to find out MPSProject from MPSNodeVirtualFile at the moment, and without a project
@@ -54,28 +55,27 @@ public class NodeIconUpdater implements ProjectComponent {
       }
 
       @Override
-      public void fileDeleted(@NotNull VirtualFileEvent event) {
-        refresh(event.getFile());
+      public void beforeFileDeletion(@NotNull VirtualFileEvent event) {
+        myFileEditorManagerEx.closeFile(event.getFile());
       }
     };
   }
 
   @Override
   public void projectOpened() {
-    NodeVirtualFileSystem.getInstance().addVirtualFileListener(myFileListener);
+    final MessageBusConnection conn = myProject.getMessageBus().connect(myProject);
+    conn.subscribe(NodeVirtualFileSystem.NODE_FS_CHANGES, new BulkVirtualFileListenerAdapter(myFileListener));
   }
 
   @Override
   public void projectClosed() {
-    NodeVirtualFileSystem.getInstance().removeVirtualFileListener(myFileListener);
+//    NodeVirtualFileSystem.getInstance().removeVirtualFileListener(myFileListener);
   }
 
   void refresh(VirtualFile vf) {
-    if (false == vf instanceof MPSNodeVirtualFile) {
-      return;
-    }
-    if (Arrays.asList(myFileEditorManagerEx.getOpenFiles()).contains(vf)) {
-      myFileEditorManagerEx.updateFilePresentation(vf);
-    }
+//    if (false == vf instanceof MPSNodeVirtualFile) {
+//      return;
+//    }
+    myFileEditorManagerEx.updateFilePresentation(vf);
   }
 }

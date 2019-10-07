@@ -22,13 +22,12 @@ import com.intellij.openapi.vfs.VirtualFileListener;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.newvfs.BulkFileListener;
-import com.intellij.openapi.vfs.newvfs.VirtualFileFilteringListener;
 import com.intellij.openapi.vfs.newvfs.events.VFileDeleteEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFilePropertyChangeEvent;
 import com.intellij.util.LocalTimeCounter;
-import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBus;
+import com.intellij.util.messages.Topic;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -65,6 +64,23 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class NodeVirtualFileSystem extends VirtualFileSystem implements Disposable {
+  /**
+   * Custom notification topic for events from this FS. We use it instead of VirtualFileManager.VFS_CHANGES to deal with
+   * {@link com.intellij.openapi.command.impl.FileUndoProvider} invalidating undo actions for any beforeFileDeleted event from an FS which is not
+   * backed up by LocalHistory (see {@code FileUndoProvider#beforeFileDeletion()} and {@code FileUndoProvider#shouldProcess()}.
+   *
+   * The drawback of custom dispatch is that IDEA in general would not know about changes in this FS, however, this was the case anyway when
+   * the class has been DeprecatedVirtualFileSystem subclass (which did send out VirtualFileListener events for listeners that we explicitly added to the FS ,
+   * but did not publish anything to VFS_CHANGES topic)
+   * The benefit is that our solution is independent from IDEA.
+   *
+   * Alternative approaches are:
+   *   - get IDEA LocalHistory/FileUndoProvider fixed (discussion pending; LocalHistory may re-dispatch events to dependent
+   *     FileUndoProvider only in case it knows the file - FUP would require this anyway in shouldProcess()).
+   *   - do not dispatch beforeFileDeleted (utilize the fact FUP#fileDeleted does nothing for events like the one we send out).
+   *     This approach is quite fragile, though facilitates this class to behave mostly like a regular VFS.
+   */
+  public static final Topic<BulkFileListener> NODE_FS_CHANGES = new Topic<>("MPS Node VFS changes", BulkFileListener.class);
 
   public static NodeVirtualFileSystem getInstance() {
     return (NodeVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(NodeVirtualFileSystem.PROTOCOL);
@@ -76,7 +92,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
 
   private static final String PROTOCOL = "mps";
 
-  private final Map<VirtualFileListener, VirtualFileListener> myListenerWrappers = ContainerUtil.newConcurrentMap();
+//  private final Map<VirtualFileListener, VirtualFileListener> myListenerWrappers = ContainerUtil.newConcurrentMap();
 
   /*
    * For transition period, left container of virtual files coming from MPSModuleRepository.getInstance(), and use it
@@ -101,23 +117,32 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
     myRepositoryListener = new MyRepositoryListener(myGlobalRepoFiles);
     new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach();
     MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
-    myEventPublisher = messageBus.syncPublisher(VirtualFileManager.VFS_CHANGES);
+    myEventPublisher = messageBus.syncPublisher(NODE_FS_CHANGES);
   }
 
+  /**
+   * no-op - as long as we dispatch events using {@linkplain #NODE_FS_CHANGES custom notification topic}, we explicitly
+   * do not support listeners added this way - they likely assume VFS_CHANGES notifications. Besides, use of
+   * BulkFileListener for {@linkplain #NODE_FS_CHANGES our notification topic} is provisional to minimize changes in case we revert back to
+   * {@link VirtualFileManager#VFS_CHANGES}. If we stick to custom notifications, we likely use custom listener interface.
+   */
   @Override
   public void addVirtualFileListener(@NotNull VirtualFileListener listener) {
     // copied from NewVirtualFileSystem#addVirtualFileListener
-    VirtualFileListener wrapper = new VirtualFileFilteringListener(listener, this);
-    VirtualFileManager.getInstance().addVirtualFileListener(wrapper, this);
-    myListenerWrappers.put(listener, wrapper);
+//    VirtualFileListener wrapper = new VirtualFileFilteringListener(listener, this);
+//    VirtualFileManager.getInstance().addVirtualFileListener(wrapper, this);
+//    myListenerWrappers.put(listener, wrapper);
   }
 
+  /**
+   * no-op, see {@link #addVirtualFileListener(VirtualFileListener)} for details
+   */
   @Override
   public void removeVirtualFileListener(@NotNull VirtualFileListener listener) {
-    VirtualFileListener wrapper = myListenerWrappers.remove(listener);
-    if (wrapper != null) {
-      VirtualFileManager.getInstance().removeVirtualFileListener(wrapper);
-    }
+//    VirtualFileListener wrapper = myListenerWrappers.remove(listener);
+//    if (wrapper != null) {
+//      VirtualFileManager.getInstance().removeVirtualFileListener(wrapper);
+//    }
   }
 
   void register(@NotNull RepositoryVirtualFiles repoFiles) {
