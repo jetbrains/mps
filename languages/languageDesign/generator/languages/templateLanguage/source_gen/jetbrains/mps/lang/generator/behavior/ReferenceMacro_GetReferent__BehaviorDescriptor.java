@@ -65,7 +65,13 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
     // todo rewrite using S-entities 
     String linkRole = LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(refMacro).getName();
     // here we are still looking at language sources because there is no information about specialized links in compiled language 
-    return SNodeOperations.cast(ConceptAndSuperConceptsCache.getInstance(SNodeOperations.getConceptDeclaration(attributedNode)).getMostSpecificLinkDeclarationByRole(linkRole), CONCEPTS.LinkDeclaration$bA);
+    ConceptAndSuperConceptsCache cache = ConceptAndSuperConceptsCache.getInstance(SNodeOperations.getConceptDeclaration(attributedNode));
+    if (cache == null) {
+      // no idea how come we face null for conceptNode here, yet we do, see MPS-31006. 
+      // attributedNode could not be null, hence it's conceptNode that wasn't found. 
+      return null;
+    }
+    return SNodeOperations.cast(cache.getMostSpecificLinkDeclarationByRole(linkRole), CONCEPTS.LinkDeclaration$bA);
   }
   /*package*/ static SNode fromRefReductionRule_id2I_OWQO_d$v(@NotNull SNode __thisNode__, SNode reductionRule) {
     return SLinkOperations.getTarget(reductionRule, LINKS.link$Qix9);
