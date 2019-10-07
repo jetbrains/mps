@@ -4,6 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.project.Project;
@@ -18,7 +19,7 @@ public class ShowTodoViewer_Action extends BaseAction {
   public ShowTodoViewer_Action() {
     super("Todo...", "", ICON);
     this.setIsAlwaysVisible(true);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

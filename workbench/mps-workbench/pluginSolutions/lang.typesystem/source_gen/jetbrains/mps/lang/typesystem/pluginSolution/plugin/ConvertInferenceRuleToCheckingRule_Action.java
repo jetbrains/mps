@@ -4,6 +4,7 @@ package jetbrains.mps.lang.typesystem.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -29,7 +30,7 @@ public class ConvertInferenceRuleToCheckingRule_Action extends BaseAction {
   public ConvertInferenceRuleToCheckingRule_Action() {
     super("Convert to Checking Rule", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

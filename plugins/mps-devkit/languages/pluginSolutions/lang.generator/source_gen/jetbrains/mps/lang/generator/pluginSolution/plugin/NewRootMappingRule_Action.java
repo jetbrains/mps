@@ -4,6 +4,7 @@ package jetbrains.mps.lang.generator.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -36,7 +37,7 @@ public class NewRootMappingRule_Action extends BaseAction {
   public NewRootMappingRule_Action() {
     super("Create Root Mapping Rule", "Creates new 'root mapping rule' for a root template (unless such rule already exists)", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

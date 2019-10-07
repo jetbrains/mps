@@ -4,6 +4,7 @@ package jetbrains.mps.ide.httpsupport.nodeaccess.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -28,7 +29,7 @@ public class NodeReferenceURL_Action extends BaseAction {
   public NodeReferenceURL_Action() {
     super("Copy Node Reference as URL", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

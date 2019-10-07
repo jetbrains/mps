@@ -5,6 +5,7 @@ package jetbrains.mps.vcs.platform.actions;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.icons.AllIcons;
+import jetbrains.mps.ide.editor.EditorActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
@@ -20,7 +21,7 @@ public class RollbackChanges_Action extends BaseAction {
   public RollbackChanges_Action() {
     super("Rollback", "", ICON);
     this.setIsAlwaysVisible(true);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
   }
   @Override
   public boolean isDumbAware() {

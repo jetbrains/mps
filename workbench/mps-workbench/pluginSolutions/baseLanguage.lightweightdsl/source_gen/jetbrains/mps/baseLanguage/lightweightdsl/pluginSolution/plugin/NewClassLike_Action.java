@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.plugin;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class NewClassLike_Action extends BaseAction {
     super("New <something>", "", ICON);
     this.descr = descr_par;
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

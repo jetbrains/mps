@@ -4,6 +4,7 @@ package jetbrains.mps.java.platform.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.ide.editor.EditorActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -33,7 +34,7 @@ public class GenerateMainMethod_Action extends BaseAction {
   public GenerateMainMethod_Action() {
     super("main(Strings[] args)", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
   }
   @Override
   public boolean isDumbAware() {

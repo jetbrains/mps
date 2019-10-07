@@ -4,6 +4,7 @@ package jetbrains.mps.ide.editor.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -12,7 +13,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 
 public class SelectLocalHome_Action extends BaseAction {
@@ -21,7 +21,7 @@ public class SelectLocalHome_Action extends BaseAction {
   public SelectLocalHome_Action() {
     super("Move Caret to Previous Word with Selection", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
   }
   @Override
   public boolean isDumbAware() {
@@ -54,13 +54,6 @@ public class SelectLocalHome_Action extends BaseAction {
       }
       MapSequence.fromMap(_params).put("editorComponent", editorComponent);
       if (editorComponent == null) {
-        return false;
-      }
-    }
-    {
-      EditorContext p = event.getData(MPSEditorDataKeys.EDITOR_CONTEXT);
-      MapSequence.fromMap(_params).put("editorContext", p);
-      if (p == null) {
         return false;
       }
     }

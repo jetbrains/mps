@@ -4,6 +4,7 @@ package jetbrains.mps.lang.typesystem.devkit.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -28,7 +29,7 @@ public class ShowRulesWhichAffectNodeType_Action extends BaseAction {
   public ShowRulesWhichAffectNodeType_Action() {
     super("Show Rules Which Affect Node's Type", "", ICON);
     this.setIsAlwaysVisible(true);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

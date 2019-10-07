@@ -4,6 +4,7 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
@@ -23,7 +24,7 @@ public class SetPluginIdToCompileInIdeaModules_Action extends BaseAction {
   public SetPluginIdToCompileInIdeaModules_Action() {
     super("Set pluginId to compile in IDEA modules", "Update module facet to reflect actual plugin id of classloader the module has been loaded with.", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

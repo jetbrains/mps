@@ -4,6 +4,7 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -39,7 +40,7 @@ public class NewRuntimeModule_Action extends BaseAction {
   public NewRuntimeModule_Action() {
     super("Add Runtime Module", "Introduce a dependency to language's runtime code", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

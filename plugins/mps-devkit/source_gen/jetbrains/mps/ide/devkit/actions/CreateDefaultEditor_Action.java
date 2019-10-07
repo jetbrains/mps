@@ -4,6 +4,7 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.ide.editor.EditorActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -37,7 +38,7 @@ public class CreateDefaultEditor_Action extends BaseAction {
   public CreateDefaultEditor_Action() {
     super("Generate Default Editor (Expression-like)", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
   }
   @Override
   public boolean isDumbAware() {

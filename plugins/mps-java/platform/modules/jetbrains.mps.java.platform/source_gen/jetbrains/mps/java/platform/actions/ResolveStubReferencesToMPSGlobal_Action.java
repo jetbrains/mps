@@ -4,6 +4,7 @@ package jetbrains.mps.java.platform.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
@@ -19,7 +20,7 @@ public class ResolveStubReferencesToMPSGlobal_Action extends BaseAction {
   public ResolveStubReferencesToMPSGlobal_Action() {
     super("Resolve Stub References to MPS Code in the Whole Project", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

@@ -17,101 +17,101 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
   <root nodeRef="r:c4d60913-c4ac-4da1-b5c2-2281d3022e80(jetbrains.mps.lang.typesystem.pluginSolution.plugin)/1699587386715537784">
     <file name="ConvertInferenceRuleToCheckingRule_Action.java">
-      <node id="1699587386715537784" at="27,0,28,0" concept="11" trace="ICON" />
-      <node id="1699587386715537784" at="29,54,30,48" concept="13" />
-      <node id="1699587386715537784" at="30,48,31,35" concept="2" />
-      <node id="1699587386715537784" at="31,35,32,41" concept="2" />
-      <node id="1699587386715537784" at="35,32,36,16" concept="8" />
-      <node id="1195491701530" at="39,87,40,462" concept="8" />
-      <node id="1699587386715537784" at="43,89,44,85" concept="2" />
-      <node id="1699587386715537784" at="48,53,49,19" concept="8" />
-      <node id="1699587386715546279" at="51,5,52,57" concept="7" />
-      <node id="1699587386715546279" at="53,93,54,20" concept="2" />
-      <node id="1699587386715546281" at="56,25,57,21" concept="8" />
-      <node id="1699587386715548283" at="60,5,61,66" concept="7" />
-      <node id="1699587386715548284" at="62,22,63,21" concept="8" />
-      <node id="1699587386715537784" at="65,5,66,16" concept="8" />
-      <node id="1195491745931" at="69,96,70,173" concept="7" />
-      <node id="1195491895679" at="70,173,71,162" concept="2" />
-      <node id="1195491933492" at="71,162,72,151" concept="2" />
-      <node id="1195492037009" at="72,151,73,175" concept="2" />
-      <node id="1195493218172" at="73,175,74,195" concept="2" />
-      <node id="1195493336061" at="76,185,77,159" concept="2" />
-      <node id="1195492055823" at="79,5,80,70" concept="2" />
-      <node id="1071422968910417425" at="80,70,81,123" concept="2" />
-      <node id="1699587386715537784" at="85,0,86,0" concept="11" trace="AbstractEquationStatement$sp" />
-      <node id="1699587386715537784" at="86,0,87,0" concept="11" trace="TypeVarDeclaration$kX" />
-      <node id="1699587386715537784" at="87,0,88,0" concept="11" trace="TypeVarReference$Zu" />
-      <node id="1699587386715537784" at="88,0,89,0" concept="11" trace="TypeOfExpression$_5" />
-      <node id="1699587386715537784" at="89,0,90,0" concept="11" trace="WhenConcreteStatement$JZ" />
-      <node id="1699587386715537784" at="90,0,91,0" concept="11" trace="InferenceRule$Ad" />
-      <node id="1699587386715537784" at="91,0,92,0" concept="11" trace="NonTypesystemRule$cw" />
-      <node id="1699587386715537784" at="92,0,93,0" concept="11" trace="ApplicableNodeReference$VP" />
-      <node id="1699587386715537784" at="96,0,97,0" concept="11" trace="overridesFun$fE4F" />
-      <node id="1699587386715537784" at="97,0,98,0" concept="11" trace="body$uYGk" />
-      <node id="1699587386715537784" at="98,0,99,0" concept="11" trace="applicableNode$lCke" />
-      <node id="1699587386715537784" at="99,0,100,0" concept="11" trace="applicableNode$z$o5" />
-      <node id="1699587386715537784" at="103,0,104,0" concept="11" trace="overrides$fn$d" />
-      <node id="1699587386715537784" at="104,0,105,0" concept="11" trace="name$tAp1" />
-      <node id="1699587386715537784" at="47,95,50,5" concept="5" />
-      <node id="1699587386715546279" at="52,57,55,7" concept="5" />
-      <node id="1699587386715546281" at="55,7,58,7" concept="5" />
-      <node id="1699587386715548284" at="61,66,64,7" concept="5" />
-      <node id="1195493308935" at="75,211,78,7" concept="5" />
-      <node id="1699587386715537784" at="34,0,38,0" concept="6" trace="isDumbAware#()Z" />
-      <node id="1699587386715537784" at="38,0,42,0" concept="6" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="1699587386715537784" at="42,0,46,0" concept="6" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="1699587386715537784" at="29,0,34,0" concept="1" trace="ConvertInferenceRuleToCheckingRule_Action#()V" />
-      <node id="1195493283730" at="74,195,79,5" concept="4" />
-      <node id="1699587386715548283" at="59,5,65,5" concept="0" />
-      <node id="1699587386715546279" at="50,5,59,5" concept="0" />
-      <node id="1699587386715537784" at="68,0,83,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="1699587386715537784" at="46,0,68,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="1699587386715537784" at="35,32,36,16" />
-      <scope id="1699587386715548323" at="39,87,40,462" />
-      <scope id="1699587386715537784" at="43,89,44,85" />
-      <scope id="1699587386715537784" at="48,53,49,19" />
-      <scope id="1699587386715546279" at="53,93,54,20" />
-      <scope id="1699587386715546281" at="56,25,57,21" />
-      <scope id="1699587386715548284" at="62,22,63,21" />
-      <scope id="1195493308936" at="76,185,77,159" />
-      <scope id="1699587386715537784" at="29,54,32,41" />
-      <scope id="1195493283731" at="75,211,78,7" />
-      <scope id="1699587386715537784" at="34,0,38,0" />
-      <scope id="1699587386715537784" at="38,0,42,0">
+      <node id="1699587386715537784" at="28,0,29,0" concept="11" trace="ICON" />
+      <node id="1699587386715537784" at="30,54,31,48" concept="13" />
+      <node id="1699587386715537784" at="31,48,32,35" concept="2" />
+      <node id="1699587386715537784" at="32,35,33,52" concept="2" />
+      <node id="1699587386715537784" at="36,32,37,16" concept="8" />
+      <node id="1195491701530" at="40,87,41,462" concept="8" />
+      <node id="1699587386715537784" at="44,89,45,85" concept="2" />
+      <node id="1699587386715537784" at="49,53,50,19" concept="8" />
+      <node id="1699587386715546279" at="52,5,53,57" concept="7" />
+      <node id="1699587386715546279" at="54,93,55,20" concept="2" />
+      <node id="1699587386715546281" at="57,25,58,21" concept="8" />
+      <node id="1699587386715548283" at="61,5,62,66" concept="7" />
+      <node id="1699587386715548284" at="63,22,64,21" concept="8" />
+      <node id="1699587386715537784" at="66,5,67,16" concept="8" />
+      <node id="1195491745931" at="70,96,71,173" concept="7" />
+      <node id="1195491895679" at="71,173,72,162" concept="2" />
+      <node id="1195491933492" at="72,162,73,151" concept="2" />
+      <node id="1195492037009" at="73,151,74,175" concept="2" />
+      <node id="1195493218172" at="74,175,75,195" concept="2" />
+      <node id="1195493336061" at="77,185,78,159" concept="2" />
+      <node id="1195492055823" at="80,5,81,70" concept="2" />
+      <node id="1071422968910417425" at="81,70,82,123" concept="2" />
+      <node id="1699587386715537784" at="86,0,87,0" concept="11" trace="AbstractEquationStatement$sp" />
+      <node id="1699587386715537784" at="87,0,88,0" concept="11" trace="TypeVarDeclaration$kX" />
+      <node id="1699587386715537784" at="88,0,89,0" concept="11" trace="TypeVarReference$Zu" />
+      <node id="1699587386715537784" at="89,0,90,0" concept="11" trace="TypeOfExpression$_5" />
+      <node id="1699587386715537784" at="90,0,91,0" concept="11" trace="WhenConcreteStatement$JZ" />
+      <node id="1699587386715537784" at="91,0,92,0" concept="11" trace="InferenceRule$Ad" />
+      <node id="1699587386715537784" at="92,0,93,0" concept="11" trace="NonTypesystemRule$cw" />
+      <node id="1699587386715537784" at="93,0,94,0" concept="11" trace="ApplicableNodeReference$VP" />
+      <node id="1699587386715537784" at="97,0,98,0" concept="11" trace="overridesFun$fE4F" />
+      <node id="1699587386715537784" at="98,0,99,0" concept="11" trace="body$uYGk" />
+      <node id="1699587386715537784" at="99,0,100,0" concept="11" trace="applicableNode$lCke" />
+      <node id="1699587386715537784" at="100,0,101,0" concept="11" trace="applicableNode$z$o5" />
+      <node id="1699587386715537784" at="104,0,105,0" concept="11" trace="overrides$fn$d" />
+      <node id="1699587386715537784" at="105,0,106,0" concept="11" trace="name$tAp1" />
+      <node id="1699587386715537784" at="48,95,51,5" concept="5" />
+      <node id="1699587386715546279" at="53,57,56,7" concept="5" />
+      <node id="1699587386715546281" at="56,7,59,7" concept="5" />
+      <node id="1699587386715548284" at="62,66,65,7" concept="5" />
+      <node id="1195493308935" at="76,211,79,7" concept="5" />
+      <node id="1699587386715537784" at="35,0,39,0" concept="6" trace="isDumbAware#()Z" />
+      <node id="1699587386715537784" at="39,0,43,0" concept="6" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="1699587386715537784" at="43,0,47,0" concept="6" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="1699587386715537784" at="30,0,35,0" concept="1" trace="ConvertInferenceRuleToCheckingRule_Action#()V" />
+      <node id="1195493283730" at="75,195,80,5" concept="4" />
+      <node id="1699587386715548283" at="60,5,66,5" concept="0" />
+      <node id="1699587386715546279" at="51,5,60,5" concept="0" />
+      <node id="1699587386715537784" at="69,0,84,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="1699587386715537784" at="47,0,69,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="1699587386715537784" at="36,32,37,16" />
+      <scope id="1699587386715548323" at="40,87,41,462" />
+      <scope id="1699587386715537784" at="44,89,45,85" />
+      <scope id="1699587386715537784" at="49,53,50,19" />
+      <scope id="1699587386715546279" at="54,93,55,20" />
+      <scope id="1699587386715546281" at="57,25,58,21" />
+      <scope id="1699587386715548284" at="63,22,64,21" />
+      <scope id="1195493308936" at="77,185,78,159" />
+      <scope id="1699587386715537784" at="30,54,33,52" />
+      <scope id="1195493283731" at="76,211,79,7" />
+      <scope id="1699587386715537784" at="35,0,39,0" />
+      <scope id="1699587386715537784" at="39,0,43,0">
         <var name="_params" id="1699587386715537784" />
         <var name="event" id="1699587386715537784" />
       </scope>
-      <scope id="1699587386715537784" at="42,0,46,0">
+      <scope id="1699587386715537784" at="43,0,47,0">
         <var name="_params" id="1699587386715537784" />
         <var name="event" id="1699587386715537784" />
       </scope>
-      <scope id="1699587386715548283" at="60,5,64,7">
+      <scope id="1699587386715548283" at="61,5,65,7">
         <var name="p" id="1699587386715548283" />
       </scope>
-      <scope id="1699587386715537784" at="29,0,34,0" />
-      <scope id="1195493283730" at="74,195,79,5">
+      <scope id="1699587386715537784" at="30,0,35,0" />
+      <scope id="1195493283730" at="75,195,80,5">
         <var name="applicableNodeReference" id="1195493283734" />
       </scope>
-      <scope id="1699587386715546279" at="51,5,58,7">
+      <scope id="1699587386715546279" at="52,5,59,7">
         <var name="node" id="1699587386715546279" />
       </scope>
-      <scope id="1699587386715537784" at="69,96,81,123">
+      <scope id="1699587386715537784" at="70,96,82,123">
         <var name="nonTypesystemRule" id="1195491745932" />
       </scope>
-      <scope id="1699587386715537784" at="68,0,83,0">
+      <scope id="1699587386715537784" at="69,0,84,0">
         <var name="_params" id="1699587386715537784" />
         <var name="event" id="1699587386715537784" />
       </scope>
-      <scope id="1699587386715537784" at="47,95,66,16" />
-      <scope id="1699587386715537784" at="46,0,68,0">
+      <scope id="1699587386715537784" at="48,95,67,16" />
+      <scope id="1699587386715537784" at="47,0,69,0">
         <var name="_params" id="1699587386715537784" />
         <var name="event" id="1699587386715537784" />
       </scope>
-      <unit id="1699587386715537784" at="102,0,106,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action$PROPS" />
-      <unit id="1699587386715537784" at="95,0,101,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action$LINKS" />
-      <unit id="1699587386715537784" at="84,0,94,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action$CONCEPTS" />
-      <unit id="1699587386715537784" at="26,0,107,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action" />
+      <unit id="1699587386715537784" at="103,0,107,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action$PROPS" />
+      <unit id="1699587386715537784" at="96,0,102,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action$LINKS" />
+      <unit id="1699587386715537784" at="85,0,95,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action$CONCEPTS" />
+      <unit id="1699587386715537784" at="27,0,108,0" name="jetbrains.mps.lang.typesystem.pluginSolution.plugin.ConvertInferenceRuleToCheckingRule_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="1699587386715537784" at="26,30,27,63" concept="2" />

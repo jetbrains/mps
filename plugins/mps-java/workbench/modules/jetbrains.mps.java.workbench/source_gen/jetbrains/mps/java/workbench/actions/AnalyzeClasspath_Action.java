@@ -4,6 +4,7 @@ package jetbrains.mps.java.workbench.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -19,7 +20,7 @@ public class AnalyzeClasspath_Action extends BaseAction {
   public AnalyzeClasspath_Action() {
     super("Analyze Classpath", "", ICON);
     this.setIsAlwaysVisible(true);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

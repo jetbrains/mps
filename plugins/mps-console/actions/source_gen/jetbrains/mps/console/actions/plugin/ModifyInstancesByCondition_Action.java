@@ -4,6 +4,7 @@ package jetbrains.mps.console.actions.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.project.Project;
@@ -31,7 +32,7 @@ public class ModifyInstancesByCondition_Action extends BaseAction {
   public ModifyInstancesByCondition_Action() {
     super("Modify Instances by Condition", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

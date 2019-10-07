@@ -5,6 +5,7 @@ package jetbrains.mps.ide.devkit.actions;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.icons.AllIcons;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -30,7 +31,7 @@ public class FindLanguageConceptsUsages_Action extends BaseAction {
   public FindLanguageConceptsUsages_Action() {
     super("Find Concepts Usages", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

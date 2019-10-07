@@ -4,6 +4,7 @@ package jetbrains.mps.java.platform.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.ide.editor.EditorActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
@@ -14,8 +15,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.java.platform.util.JavaPaster;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.java.core.newparser.FeatureKind;
@@ -28,7 +27,7 @@ public class PasteAsJavaMethods_Action extends BaseAction {
   public PasteAsJavaMethods_Action() {
     super("Paste as Java Class Content", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
   }
   @Override
   public boolean isDumbAware() {
@@ -54,16 +53,6 @@ public class PasteAsJavaMethods_Action extends BaseAction {
       SNode p = event.getData(MPSCommonDataKeys.NODE);
       MapSequence.fromMap(_params).put("anchorNode", p);
       if (p == null) {
-        return false;
-      }
-    }
-    {
-      SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-      MapSequence.fromMap(_params).put("model", p);
-      if (p == null) {
-        return false;
-      }
-      if (!(p instanceof EditableSModel) || p.isReadOnly()) {
         return false;
       }
     }

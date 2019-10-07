@@ -4,6 +4,7 @@ package jetbrains.mps.debugger.api.ui.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -14,7 +15,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.icons.AllIcons;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 
 public class ToggleBreakpoint_Action extends BaseAction {
@@ -23,7 +23,7 @@ public class ToggleBreakpoint_Action extends BaseAction {
   public ToggleBreakpoint_Action() {
     super("Toggle Breakpoint", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
   }
   @Override
   public boolean isDumbAware() {
@@ -47,16 +47,6 @@ public class ToggleBreakpoint_Action extends BaseAction {
       EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
       MapSequence.fromMap(_params).put("selectedCell", p);
       if (p == null) {
-        return false;
-      }
-    }
-    {
-      EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
-      if (editorComponent != null && editorComponent.isInvalid()) {
-        editorComponent = null;
-      }
-      MapSequence.fromMap(_params).put("editorComponent", editorComponent);
-      if (editorComponent == null) {
         return false;
       }
     }

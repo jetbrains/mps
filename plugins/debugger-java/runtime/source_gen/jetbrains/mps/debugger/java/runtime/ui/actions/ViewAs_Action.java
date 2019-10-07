@@ -5,6 +5,7 @@ package jetbrains.mps.debugger.java.runtime.ui.actions;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
+import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -26,7 +27,7 @@ public class ViewAs_Action extends BaseAction {
     super("View With Factory", "", ICON);
     this.factory = factory_par;
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

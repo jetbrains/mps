@@ -4,6 +4,7 @@ package jetbrains.mps.ide.editor.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.ide.editor.EditorActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -28,7 +29,7 @@ public class CopyThisDown_Action extends BaseAction {
   public CopyThisDown_Action() {
     super("Duplicate Node", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(EditorActionAccess.UNDO_EDITOR);
   }
   @Override
   public boolean isDumbAware() {

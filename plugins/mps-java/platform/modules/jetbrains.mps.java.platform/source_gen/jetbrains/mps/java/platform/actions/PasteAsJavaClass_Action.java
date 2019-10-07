@@ -4,6 +4,7 @@ package jetbrains.mps.java.platform.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -21,7 +22,7 @@ public class PasteAsJavaClass_Action extends BaseAction {
   public PasteAsJavaClass_Action() {
     super("Paste as Java Class", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

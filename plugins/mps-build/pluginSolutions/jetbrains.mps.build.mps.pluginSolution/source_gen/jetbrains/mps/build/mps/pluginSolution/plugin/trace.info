@@ -4375,52 +4375,52 @@
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469659497">
     <file name="GenerateBuildForProjectAction_Action.java">
-      <node id="8722937377469659497" at="18,0,19,0" concept="14" trace="ICON" />
-      <node id="8722937377469659497" at="20,49,21,38" concept="16" />
-      <node id="8722937377469659497" at="21,38,22,35" concept="4" />
-      <node id="8722937377469659497" at="22,35,23,41" concept="4" />
-      <node id="8722937377469659497" at="26,32,27,16" concept="11" />
-      <node id="8722937377469659497" at="31,53,32,19" concept="11" />
-      <node id="8722937377469659498" at="34,5,35,66" concept="10" />
-      <node id="8722937377469659498" at="35,66,36,53" concept="4" />
-      <node id="8722937377469659499" at="37,22,38,21" concept="11" />
-      <node id="8722937377469659497" at="40,5,41,16" concept="11" />
-      <node id="8722937377469659505" at="44,96,45,229" concept="10" />
-      <node id="8722937377469659538" at="48,25,49,22" concept="4" />
-      <node id="8722937377469659497" at="30,95,33,5" concept="8" />
-      <node id="8722937377469659499" at="36,53,39,7" concept="8" />
-      <node id="8722937377469659497" at="25,0,29,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="8722937377469659534" at="47,0,51,0" concept="9" trace="run#()V" />
-      <node id="8722937377469659497" at="20,0,25,0" concept="2" trace="GenerateBuildForProjectAction_Action#()V" />
-      <node id="8722937377469659526" at="45,229,51,32" concept="4" />
-      <node id="8722937377469659498" at="33,5,40,5" concept="1" />
-      <node id="8722937377469659497" at="43,0,53,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="8722937377469659497" at="29,0,43,0" concept="9" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="8722937377469659497" at="26,32,27,16" />
-      <scope id="8722937377469659497" at="31,53,32,19" />
-      <scope id="8722937377469659499" at="37,22,38,21" />
-      <scope id="8722937377469659537" at="48,25,49,22" />
-      <scope id="8722937377469659497" at="20,49,23,41" />
-      <scope id="8722937377469659497" at="25,0,29,0" />
-      <scope id="8722937377469659534" at="47,0,51,0" />
-      <scope id="8722937377469659497" at="20,0,25,0" />
-      <scope id="8722937377469659498" at="34,5,39,7">
+      <node id="8722937377469659497" at="19,0,20,0" concept="14" trace="ICON" />
+      <node id="8722937377469659497" at="21,49,22,38" concept="16" />
+      <node id="8722937377469659497" at="22,38,23,35" concept="4" />
+      <node id="8722937377469659497" at="23,35,24,52" concept="4" />
+      <node id="8722937377469659497" at="27,32,28,16" concept="11" />
+      <node id="8722937377469659497" at="32,53,33,19" concept="11" />
+      <node id="8722937377469659498" at="35,5,36,66" concept="10" />
+      <node id="8722937377469659498" at="36,66,37,53" concept="4" />
+      <node id="8722937377469659499" at="38,22,39,21" concept="11" />
+      <node id="8722937377469659497" at="41,5,42,16" concept="11" />
+      <node id="8722937377469659505" at="45,96,46,229" concept="10" />
+      <node id="8722937377469659538" at="49,25,50,22" concept="4" />
+      <node id="8722937377469659497" at="31,95,34,5" concept="8" />
+      <node id="8722937377469659499" at="37,53,40,7" concept="8" />
+      <node id="8722937377469659497" at="26,0,30,0" concept="9" trace="isDumbAware#()Z" />
+      <node id="8722937377469659534" at="48,0,52,0" concept="9" trace="run#()V" />
+      <node id="8722937377469659497" at="21,0,26,0" concept="2" trace="GenerateBuildForProjectAction_Action#()V" />
+      <node id="8722937377469659526" at="46,229,52,32" concept="4" />
+      <node id="8722937377469659498" at="34,5,41,5" concept="1" />
+      <node id="8722937377469659497" at="44,0,54,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8722937377469659497" at="30,0,44,0" concept="9" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="8722937377469659497" at="27,32,28,16" />
+      <scope id="8722937377469659497" at="32,53,33,19" />
+      <scope id="8722937377469659499" at="38,22,39,21" />
+      <scope id="8722937377469659537" at="49,25,50,22" />
+      <scope id="8722937377469659497" at="21,49,24,52" />
+      <scope id="8722937377469659497" at="26,0,30,0" />
+      <scope id="8722937377469659534" at="48,0,52,0" />
+      <scope id="8722937377469659497" at="21,0,26,0" />
+      <scope id="8722937377469659498" at="35,5,40,7">
         <var name="p" id="8722937377469659498" />
       </scope>
-      <scope id="8722937377469659497" at="44,96,51,32">
+      <scope id="8722937377469659497" at="45,96,52,32">
         <var name="wizard" id="8722937377469659506" />
       </scope>
-      <scope id="8722937377469659497" at="43,0,53,0">
+      <scope id="8722937377469659497" at="44,0,54,0">
         <var name="_params" id="8722937377469659497" />
         <var name="event" id="8722937377469659497" />
       </scope>
-      <scope id="8722937377469659497" at="30,95,41,16" />
-      <scope id="8722937377469659497" at="29,0,43,0">
+      <scope id="8722937377469659497" at="31,95,42,16" />
+      <scope id="8722937377469659497" at="30,0,44,0">
         <var name="_params" id="8722937377469659497" />
         <var name="event" id="8722937377469659497" />
       </scope>
-      <unit id="8722937377469659532" at="46,56,51,5" name="jetbrains.mps.build.mps.pluginSolution.plugin.GenerateBuildForProjectAction_Action$1" />
-      <unit id="8722937377469659497" at="17,0,54,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.GenerateBuildForProjectAction_Action" />
+      <unit id="8722937377469659532" at="47,56,52,5" name="jetbrains.mps.build.mps.pluginSolution.plugin.GenerateBuildForProjectAction_Action$1" />
+      <unit id="8722937377469659497" at="18,0,55,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.GenerateBuildForProjectAction_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="8722937377469659497" at="22,30,23,58" concept="4" />

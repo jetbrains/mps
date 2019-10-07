@@ -4,6 +4,7 @@ package jetbrains.mps.vcs.platform.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.vcs.annotate.AnnotationHelper;
@@ -19,7 +20,7 @@ public class Annotate_Action extends BaseAction {
   public Annotate_Action() {
     super("Annotate", "", ICON);
     this.setIsAlwaysVisible(true);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

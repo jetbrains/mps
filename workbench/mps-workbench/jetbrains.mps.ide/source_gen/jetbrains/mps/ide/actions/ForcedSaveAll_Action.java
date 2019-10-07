@@ -6,6 +6,7 @@ import jetbrains.mps.workbench.action.BaseAction;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
@@ -31,7 +32,7 @@ public class ForcedSaveAll_Action extends BaseAction {
   public ForcedSaveAll_Action() {
     super("Re-save all models from project", "Re-save all models even if model was not changed", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

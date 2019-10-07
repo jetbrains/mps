@@ -4,6 +4,7 @@ package jetbrains.mps.lang.dataFlow.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -23,7 +24,7 @@ public class PrintReachingDefinintionsInformation_Action extends BaseAction {
   public PrintReachingDefinintionsInformation_Action() {
     super("Print DFA Reaching Definitions Information", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

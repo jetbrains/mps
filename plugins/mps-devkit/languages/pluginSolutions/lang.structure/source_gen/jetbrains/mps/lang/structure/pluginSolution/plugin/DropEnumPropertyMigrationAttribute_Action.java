@@ -5,6 +5,7 @@ package jetbrains.mps.lang.structure.pluginSolution.plugin;
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -23,7 +24,7 @@ public class DropEnumPropertyMigrationAttribute_Action extends BaseAction {
   public DropEnumPropertyMigrationAttribute_Action() {
     super("Drop Enum Property Migration's Attribute", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

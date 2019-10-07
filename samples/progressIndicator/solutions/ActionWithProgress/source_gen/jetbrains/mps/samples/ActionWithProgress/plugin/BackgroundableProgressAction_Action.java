@@ -4,6 +4,7 @@ package jetbrains.mps.samples.ActionWithProgress.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.project.Project;
@@ -25,7 +26,7 @@ public class BackgroundableProgressAction_Action extends BaseAction {
   public BackgroundableProgressAction_Action() {
     super("BackgroundableProgressAction", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
   @Override
   public boolean isDumbAware() {

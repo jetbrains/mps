@@ -4,6 +4,7 @@ package jetbrains.mps.lang.typesystem.devkit.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -27,7 +28,7 @@ public class HighlightSuppressor_Action extends BaseAction {
   public HighlightSuppressor_Action() {
     super("Show Suppressor Node", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(false);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
   }
   @Override
   public boolean isDumbAware() {
