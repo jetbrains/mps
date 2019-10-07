@@ -50,14 +50,13 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   // WorkbenchModelAccess is provisional argument. Now it provides implementation of executeCommand method
   // with respect to shared model lock object from its smodel.ModelAccess superclass. Once each MA has own
   // model lock object and executeCommand* implementations, we won't need this WMA parameter
-  public MPSProject(@NotNull com.intellij.openapi.project.Project project, ProjectRootListenerComponent unused, MPSCoreComponents mpsCore,
-                    IdeaFileSystem ideaFS, WorkbenchModelAccess wma) {
+  public MPSProject(@NotNull com.intellij.openapi.project.Project project, ProjectRootListenerComponent unused, MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
     super(new ProjectDescriptor(project.getName()), mpsCore.getPlatform(), false);
     myProject = project;
     myProjectFileSystem = ideaFS;
     final MPSModuleRepository extRepo = mpsCore.getPlatform().findComponent(MPSModuleRepository.class);
     final SRepositoryRegistry registry = mpsCore.getPlatform().findComponent(SRepositoryRegistry.class);
-    final ModelAccess projectMA = wma.createForProject(MPSProject.this);
+    final ModelAccess projectMA = ((WorkbenchModelAccess) ApplicationManager.getApplication().getComponent(ModelAccess.class)).createForProject(MPSProject.this);
     final ProjectRepository repo = new ProjectRepository(this, extRepo, registry, projectMA);
     repo.init();
     initRepository(repo);
