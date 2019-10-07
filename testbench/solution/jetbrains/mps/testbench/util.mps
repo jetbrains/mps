@@ -823,6 +823,27 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbH" id="4Ty7LDC$bGW" role="3cqZAp" />
+          <node concept="3SKdUt" id="4Ty7LDC$ffk" role="3cqZAp">
+            <node concept="1PaTwC" id="4Ty7LDC$ffl" role="3ndbpf">
+              <node concept="3oM_SD" id="4Ty7LDC$ffn" role="1PaTwD">
+                <property role="3oM_SC" value="jetbrains.mps.plugins.PluginLoaderRegistry.UpdatingTask" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="4Ty7LDC$crr" role="3cqZAp">
+            <node concept="2OqwBi" id="4Ty7LDC$crs" role="3clFbG">
+              <node concept="37vLTw" id="4Ty7LDC$crt" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="4Ty7LDC$cru" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="4Ty7LDC$crv" role="37wK5m">
+                  <property role="Xl_RC" value="|(Reloading MPS Plugins)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3SKdUt" id="3m4z3Ef7ao6" role="3cqZAp">
             <node concept="1PaTwC" id="3m4z3Ef7ao7" role="3ndbpf">
               <node concept="3oM_SD" id="3m4z3Ef7ao8" role="1PaTwD">

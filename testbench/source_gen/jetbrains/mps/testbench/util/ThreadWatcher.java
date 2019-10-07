@@ -80,6 +80,9 @@ public class ThreadWatcher implements Output {
 
       // com.intellij.util.io.storage.RefCountingStorage 
       builder.append("|(RefCountingStorage.*)");
+
+      // jetbrains.mps.plugins.PluginLoaderRegistry.UpdatingTask 
+      builder.append("|(Reloading MPS Plugins)");
       // -------------------------------- 
 
 
