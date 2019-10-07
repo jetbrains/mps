@@ -76,10 +76,10 @@ public class ModelDifferenceViewer implements DataProvider {
     project.getRepository().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         if (!(myNewRegistered)) {
-          DiffModelUtil.renameModelAndRegister(newModel, "new");
+          DiffModelUtil.renameModelAndRegister(newModel, "new", true);
         }
         if (!(myOldRegistered)) {
-          DiffModelUtil.renameModelAndRegister(oldModel, "old");
+          DiffModelUtil.renameModelAndRegister(oldModel, "old", true);
         }
       }
     });

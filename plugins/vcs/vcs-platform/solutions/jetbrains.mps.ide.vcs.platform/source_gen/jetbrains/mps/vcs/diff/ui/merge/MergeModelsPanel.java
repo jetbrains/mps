@@ -110,10 +110,10 @@ public class MergeModelsPanel extends JPanel {
     });
     myProjectRepository.getModelAccess().runWriteAction(new Runnable() {
       public void run() {
-        DiffModelUtil.renameModelAndRegister(myMergeSession.getBaseModel(), "base");
-        DiffModelUtil.renameModelAndRegister(myMergeSession.getMyModel(), "mine");
-        DiffModelUtil.renameModelAndRegister(myMergeSession.getRepositoryModel(), "repo");
-        DiffModelUtil.renameModelAndRegister(myMergeSession.getResultModel(), "result");
+        DiffModelUtil.renameModelAndRegister(myMergeSession.getBaseModel(), "base", true);
+        DiffModelUtil.renameModelAndRegister(myMergeSession.getMyModel(), "mine", true);
+        DiffModelUtil.renameModelAndRegister(myMergeSession.getRepositoryModel(), "repo", true);
+        DiffModelUtil.renameModelAndRegister(myMergeSession.getResultModel(), "result", true);
       }
     });
     if (ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
