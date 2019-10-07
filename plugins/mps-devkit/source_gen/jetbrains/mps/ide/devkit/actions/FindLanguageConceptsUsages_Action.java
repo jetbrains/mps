@@ -14,10 +14,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.view.FindUtils;
@@ -68,7 +65,7 @@ public class FindLanguageConceptsUsages_Action extends BaseAction {
       }
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
       }
@@ -77,10 +74,9 @@ public class FindLanguageConceptsUsages_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SearchScope scope = GlobalScope.getInstance();
-    final SearchQuery query = new SearchQuery(event.getData(MPSCommonDataKeys.MODULE), scope);
+    final SearchQuery query = new SearchQuery(event.getData(MPSCommonDataKeys.MODULE), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
     final IResultProvider provider = FindUtils.makeProvider(new LanguageConceptsUsagesFinder());
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(true).forceNewTab(false).navigateIfSingle(false).notFoundMessage("There are no usages of language's concepts");
-    UsagesViewTool.showUsages(event.getData(CommonDataKeys.PROJECT), provider, query, opt);
+    UsagesViewTool.showUsages(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), provider, query, opt);
   }
 }

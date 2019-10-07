@@ -17,9 +17,9 @@ import jetbrains.mps.scope.ConditionalScope;
 import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.project.GlobalScope;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.workbench.choose.NavigationTargetScopeIterable;
 import com.intellij.ide.util.gotoByName.ChooseByNamePopup;
 import jetbrains.mps.workbench.goTo.ui.MpsPopupFactory;
@@ -67,9 +67,12 @@ public class GoToRootNode_Action extends BaseAction {
         return !(SModelStereotype.isStubModel(m));
       }
     });
-    final SearchScope globalScope = GlobalScope.getInstance();
 
     final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
+    // XXX I suppose the moment we get to project own repo, ProjectScope.getModels/getModules would result in *project* modules only,  
+    //      while project repository would give access to modules from dependant repositories as well 
+    final SearchScope globalScope = new GlobalScope(repo);
+
     gotoData.setScope(new NavigationTargetScopeIterable(localScope, repo), new NavigationTargetScopeIterable(globalScope, repo));
 
     final ChooseByNamePopup popup = MpsPopupFactory.createNodePopup(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject(), gotoData, GoToRootNode_Action.this.savedText, GoToRootNode_Action.this);

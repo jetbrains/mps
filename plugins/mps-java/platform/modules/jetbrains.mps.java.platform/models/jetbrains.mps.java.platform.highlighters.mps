@@ -1201,9 +1201,18 @@
                 <node concept="37vLTw" id="2BHiRxglBu7" role="37wK5m">
                   <ref role="3cqZAo" node="7k6J8c3tims" resolve="container" />
                 </node>
-                <node concept="2YIFZM" id="7k6J8c3timE" role="37wK5m">
-                  <ref role="1Pybhc" to="z1c3:~GlobalScope" resolve="GlobalScope" />
-                  <ref role="37wK5l" to="z1c3:~GlobalScope.getInstance()" resolve="getInstance" />
+                <node concept="2ShNRf" id="4y5Xi4pDjPV" role="37wK5m">
+                  <node concept="1pGfFk" id="4y5Xi4pDId6" role="2ShVmc">
+                    <ref role="37wK5l" to="z1c3:~GlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="GlobalScope" />
+                    <node concept="2OqwBi" id="4y5Xi4pDMbu" role="37wK5m">
+                      <node concept="37vLTw" id="4y5Xi4pDI$7" role="2Oq$k0">
+                        <ref role="3cqZAo" node="13$TqNLKC7t" resolve="myProject" />
+                      </node>
+                      <node concept="liA8E" id="4y5Xi4pDRlT" role="2OqNvi">
+                        <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -1616,7 +1625,7 @@
                   <ref role="37wK5l" to="wyt6:~StringBuffer.append(java.lang.String)" resolve="append" />
                   <node concept="3K4zz7" id="7k6J8c3tipq" role="37wK5m">
                     <node concept="Xl_RD" id="7k6J8c3tipt" role="3K4E3e">
-                      <property role="Xl_RC" value="overriden" />
+                      <property role="Xl_RC" value="overridden" />
                     </node>
                     <node concept="Xl_RD" id="7k6J8c3tips" role="3K4GZi">
                       <property role="Xl_RC" value="implemented" />

@@ -52,15 +52,15 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   public SNode doExecute(final SModule m) {
     SNode data = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x29e124551692debaL, "jetbrains.mps.lang.editor.structure.SmartRefMigrationData"));
 
+    SCAs = extractSCAs(m);
     {
-      SearchScope scope_b3phj_c0e = CommandUtil.createScope(m);
-      final SearchScope scope_b3phj_c0e_0 = new EditableFilteringScope(scope_b3phj_c0e);
+      SearchScope scope_b3phj_d0e = CommandUtil.createScope(m);
+      final SearchScope scope_b3phj_d0e_0 = new EditableFilteringScope(scope_b3phj_d0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_b3phj_c0e_0;
+          return scope_b3phj_d0e_0;
         }
       };
-      SCAs = extractSCAs(m);
 
       Collection<SNode> conceptNodes = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptDeclaration$qU, false);
 
@@ -109,7 +109,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
           if ((menu != null)) {
             SModelOperations.addRootNode(editorModel, menu);
 
-            ListSequence.fromList(SLinkOperations.getChildren(data, LINKS.entities$fdG0)).addElement(createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a4a2a6(conceptNode, menu));
+            ListSequence.fromList(SLinkOperations.getChildren(data, LINKS.entities$fdG0)).addElement(createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a3a3a6(conceptNode, menu));
           }
         }
       }
@@ -135,7 +135,8 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
   }
 
   private static Collection<SNode> extractSCAs(SModule currentModule) {
-    Iterable<SModule> dependentModules = DependentModulesUtil.count(ListSequence.fromListAndArray(new ArrayList<SModule>(), currentModule));
+    DependentModulesUtil dmu = new DependentModulesUtil(currentModule.getRepository());
+    Iterable<SModule> dependentModules = dmu.count(ListSequence.fromListAndArray(new ArrayList<SModule>(), currentModule));
     return CommandUtil.instances(new ModulesScope(dependentModules), CONCEPTS.SubstituteMenuPart_AddConcept$UH, true);
   }
 
@@ -162,7 +163,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
     return menu;
   }
 
-  private static SNode createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a4a2a6(SNode node0, SNode node1) {
+  private static SNode createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a3a3a6(SNode node0, SNode node1) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SmartRefMigrationDataEntity$RK);
     rootBuilder1.setReferenceTarget(LINKS.conceptNode$fdeu, node0);
     rootBuilder1.setReferenceTarget(LINKS.generatedMenu$fdfV, node1);

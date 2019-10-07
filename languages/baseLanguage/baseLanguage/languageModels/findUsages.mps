@@ -18,9 +18,6 @@
     <import index="89o2" ref="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="5h2r" ref="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)" />
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="tped" ref="r:00000000-0000-4000-0000-011c895902c9(jetbrains.mps.baseLanguage.scripts)" />
-    <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="lgib" ref="r:3d049421-2cf2-4818-944e-c4d825789632(jetbrains.mps.lang.core.findUsages)" />
   </imports>
@@ -268,7 +265,6 @@
       <concept id="1206197741569" name="jetbrains.mps.lang.findUsages.structure.ExecuteFinderExpression" flags="nn" index="3mZe$p">
         <reference id="1206197741576" name="finder" index="3mZe$g" />
         <child id="1206197741572" name="queryNode" index="3mZe$s" />
-        <child id="1206197741573" name="queryScope" index="3mZe$t" />
         <child id="8441762775553277663" name="monitor" index="3JOdhr" />
       </concept>
       <concept id="1206461221942" name="jetbrains.mps.lang.findUsages.structure.CategorizeBlock" flags="in" index="3AGkOI" />
@@ -3812,10 +3808,6 @@
             <node concept="3mZe$p" id="hGQK3Hc" role="33vP2m">
               <ref role="3mZe$g" node="hy9zzqV" resolve="BaseMethod" />
               <node concept="39LhUk" id="hGQK3Hd" role="3mZe$s" />
-              <node concept="2YIFZM" id="hGQK3He" role="3mZe$t">
-                <ref role="37wK5l" to="z1c3:~GlobalScope.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="z1c3:~GlobalScope" resolve="GlobalScope" />
-              </node>
             </node>
           </node>
         </node>
@@ -3858,10 +3850,6 @@
             <node concept="3mZe$p" id="hGQO6Jo" role="33vP2m">
               <ref role="3mZe$g" node="hy9zzqV" resolve="BaseMethod" />
               <node concept="39LhUk" id="hGQO6Jp" role="3mZe$s" />
-              <node concept="2YIFZM" id="hGQO6Jq" role="3mZe$t">
-                <ref role="37wK5l" to="z1c3:~GlobalScope.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="z1c3:~GlobalScope" resolve="GlobalScope" />
-              </node>
             </node>
           </node>
         </node>

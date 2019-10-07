@@ -7,10 +7,9 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.project.GlobalScope;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
+import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Set;
 import java.util.Collections;
@@ -25,7 +24,6 @@ public class NodeByConceptChooser extends NodeChooser {
   private SAbstractConcept myTargetConcept;
   @Nullable
   private _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> myAcceptor;
-  private final SearchScope myScope;
 
   public NodeByConceptChooser() {
     this(CONCEPTS.BaseConcept$Sz, null);
@@ -36,7 +34,6 @@ public class NodeByConceptChooser extends NodeChooser {
 
     myTargetConcept = conceptFqName;
     myAcceptor = acceptor;
-    myScope = GlobalScope.getInstance();
   }
 
   public SAbstractConcept getTargetConcept() {
@@ -56,8 +53,8 @@ public class NodeByConceptChooser extends NodeChooser {
   }
 
   @Override
-  protected List<SNode> findToChooseFromOnInit(FindUsagesFacade manager, ProgressMonitor monitor) {
-    Set<SNode> instances = manager.findInstances(myScope, Collections.singleton(myTargetConcept), false, monitor);
+  protected List<SNode> findToChooseFromOnInit(FindUsagesFacade manager, SearchScope scope, ProgressMonitor monitor) {
+    Set<SNode> instances = manager.findInstances(scope, Collections.singleton(myTargetConcept), false, monitor);
     if (this.myAcceptor == null) {
       return ListSequence.fromListWithValues(new ArrayList<SNode>(), instances);
     } else {

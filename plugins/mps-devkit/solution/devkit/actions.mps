@@ -6980,18 +6980,6 @@
     <property role="2uzpH1" value="Find Concepts Usages" />
     <node concept="tnohg" id="5r64_$Qz1mM" role="tncku">
       <node concept="3clFbS" id="5r64_$Qz1mN" role="2VODD2">
-        <node concept="3cpWs8" id="5r64_$Qz1nc" role="3cqZAp">
-          <node concept="3cpWsn" id="5r64_$Qz1nd" role="3cpWs9">
-            <property role="TrG5h" value="scope" />
-            <node concept="3uibUv" id="5pEE0rE7pVl" role="1tU5fm">
-              <ref role="3uigEE" to="lui2:~SearchScope" resolve="SearchScope" />
-            </node>
-            <node concept="2YIFZM" id="6d$5VVBcSnN" role="33vP2m">
-              <ref role="1Pybhc" to="z1c3:~GlobalScope" resolve="GlobalScope" />
-              <ref role="37wK5l" to="z1c3:~GlobalScope.getInstance()" resolve="getInstance" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="5r64_$Qz1mO" role="3cqZAp">
           <node concept="3cpWsn" id="5r64_$Qz1mP" role="3cpWs9">
             <property role="TrG5h" value="query" />
@@ -7005,8 +6993,16 @@
                     <ref role="2WH_rO" node="5r64_$Qz1oB" resolve="module" />
                   </node>
                 </node>
-                <node concept="37vLTw" id="3GM_nagT_d3" role="37wK5m">
-                  <ref role="3cqZAo" node="5r64_$Qz1nd" resolve="scope" />
+                <node concept="2OqwBi" id="4y5Xi4pEKSO" role="37wK5m">
+                  <node concept="2OqwBi" id="4y5Xi4pEKbP" role="2Oq$k0">
+                    <node concept="2WthIp" id="4y5Xi4pEKbS" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="4y5Xi4pEKbU" role="2OqNvi">
+                      <ref role="2WH_rO" node="4y5Xi4pEF96" resolve="mpsProject" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="4y5Xi4pELzM" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getScope()" resolve="getScope" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -7082,10 +7078,15 @@
           <node concept="2YIFZM" id="4NF6yZZSCVS" role="3clFbG">
             <ref role="1Pybhc" to="ngmn:~UsagesViewTool" resolve="UsagesViewTool" />
             <ref role="37wK5l" to="ngmn:~UsagesViewTool.showUsages(com.intellij.openapi.project.Project,jetbrains.mps.ide.findusages.model.IResultProvider,jetbrains.mps.ide.findusages.model.SearchQuery,jetbrains.mps.ide.findusages.view.UsageToolOptions)" resolve="showUsages" />
-            <node concept="2OqwBi" id="4NF6yZZSDTs" role="37wK5m">
-              <node concept="2WthIp" id="4NF6yZZSDTv" role="2Oq$k0" />
-              <node concept="1DTwFV" id="4NF6yZZSDTx" role="2OqNvi">
-                <ref role="2WH_rO" node="4NF6yZZSDpk" resolve="ideaProject" />
+            <node concept="2OqwBi" id="4y5Xi4pEHgz" role="37wK5m">
+              <node concept="2OqwBi" id="4NF6yZZSDTs" role="2Oq$k0">
+                <node concept="2WthIp" id="4NF6yZZSDTv" role="2Oq$k0" />
+                <node concept="1DTwFV" id="4y5Xi4pEGAR" role="2OqNvi">
+                  <ref role="2WH_rO" node="4y5Xi4pEF96" resolve="mpsProject" />
+                </node>
+              </node>
+              <node concept="liA8E" id="4y5Xi4pEHVS" role="2OqNvi">
+                <ref role="37wK5l" to="z1c5:~MPSProject.getProject()" resolve="getProject" />
               </node>
             </node>
             <node concept="37vLTw" id="4NF6yZZSDVK" role="37wK5m">
@@ -7218,10 +7219,10 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODULE" resolve="MODULE" />
       <node concept="1oajcY" id="5r64_$Qz1oC" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="4NF6yZZSDpk" role="1NuT2Z">
-      <property role="TrG5h" value="ideaProject" />
-      <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
-      <node concept="1oajcY" id="4NF6yZZSDpl" role="1oa70y" />
+    <node concept="1DS2jV" id="4y5Xi4pEF96" role="1NuT2Z">
+      <property role="TrG5h" value="mpsProject" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+      <node concept="1oajcY" id="4y5Xi4pEF97" role="1oa70y" />
     </node>
     <node concept="1QGGSu" id="6XsdSphQSXV" role="3Uehp1">
       <node concept="10M0yZ" id="6XsdSphR51d" role="3xaMm5">

@@ -27,6 +27,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -55,7 +56,7 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
           public void run(@NotNull final ProgressIndicator indicator) {
             mpsProject.getModelAccess().runReadAction(new Runnable() {
               public void run() {
-                toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, new ProgressMonitorAdapter(indicator))).select(new ISelector<SNode, SNodeReference>() {
+                toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, mpsProject.getScope(), new ProgressMonitorAdapter(indicator))).select(new ISelector<SNode, SNodeReference>() {
                   public SNodeReference select(SNode it) {
                     return SNodeOperations.getPointer(it);
                   }
@@ -83,7 +84,7 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
     setEditable(false);
   }
 
-  protected abstract List<SNode> findToChooseFromOnInit(FindUsagesFacade manager, ProgressMonitor monitor);
+  protected abstract List<SNode> findToChooseFromOnInit(FindUsagesFacade manager, SearchScope scope, ProgressMonitor monitor);
 
   @Nullable
   public SNodeReference getNode() {

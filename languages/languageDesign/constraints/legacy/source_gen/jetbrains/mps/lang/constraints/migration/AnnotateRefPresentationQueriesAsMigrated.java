@@ -5,6 +5,7 @@ package jetbrains.mps.lang.constraints.migration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.lang.editor.migration.DependentModulesUtil;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
 import jetbrains.mps.project.EditableFilteringScope;
@@ -19,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.editor.migration.DependentModulesUtil;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -58,12 +58,13 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
     return null;
   }
   public void doExecute(final SModule m) {
+    final DependentModulesUtil dmu = new DependentModulesUtil(m.getRepository());
     {
-      SearchScope scope_lpnriw_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_lpnriw_a0e_0 = new EditableFilteringScope(scope_lpnriw_a0e);
+      SearchScope scope_lpnriw_b0e = CommandUtil.createScope(m);
+      final SearchScope scope_lpnriw_b0e_0 = new EditableFilteringScope(scope_lpnriw_b0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_lpnriw_a0e_0;
+          return scope_lpnriw_b0e_0;
         }
       };
       Collection<SNode> conceptConstraints = CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$St, false);
@@ -78,7 +79,7 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
         }
       }
 
-      editorComponents = extractEditorComponents(DependentModulesUtil.count(SetSequence.fromSet(engagedConcepts).select(new ISelector<SNode, SModule>() {
+      editorComponents = extractEditorComponents(dmu.count(SetSequence.fromSet(engagedConcepts).select(new ISelector<SNode, SModule>() {
         public SModule select(SNode it) {
           return SNodeOperations.getModel(it).getModule();
         }
@@ -91,7 +92,7 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
             AttributeOperations.setAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$N3), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, "jetbrains.mps.lang.constraints.structure.RefPresentationMigrated")));
             Iterable<SNode> superEditorComponents = findSuperEditorComponentsUsingReference(SLinkOperations.getTarget(conceptConstraint, LINKS.concept$rRWx), SLinkOperations.getTarget(refConstraint, LINKS.applicableLink$Hkrz));
             for (SNode editorComponent : Sequence.fromIterable(superEditorComponents)) {
-              ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$N3)), LINKS.problems$o$Ki)).addElement(createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a0a6(editorComponent));
+              ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$N3)), LINKS.problems$o$Ki)).addElement(createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(editorComponent));
             }
           }
         }
@@ -198,7 +199,7 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
     });
   }
 
-  private static SNode createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a0a6(SNode node0) {
+  private static SNode createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefPresentationMigratedProblem$Pu);
     rootBuilder1.setReferenceTarget(LINKS.editor$ZXL0, node0);
     return rootBuilder1.getResult();

@@ -12,7 +12,6 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.List;
 import jetbrains.mps.ide.findusages.view.FindUtils;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import org.jetbrains.annotations.Nullable;
@@ -48,7 +47,7 @@ public class BaseMethodUsages_Finder extends GeneratedFinder {
   protected void doFind0(@NotNull SNode node, SearchScope scope, IFinder.FindCallback callback, ProgressMonitor monitor) {
     monitor.start(getDescription(), 2);
     try {
-      List<SNode> baseMethods = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder", node, GlobalScope.getInstance(), monitor.subTask(1));
+      List<SNode> baseMethods = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder", node, scope, monitor.subTask(1));
       for (SNode method : ListSequence.fromList(baseMethods)) {
         for (SNode usage : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.AllMethodUsages_Finder", method, scope, monitor.subTask(1)))) {
           callback.onUsageFound(createSingleResult(usage));
@@ -61,7 +60,7 @@ public class BaseMethodUsages_Finder extends GeneratedFinder {
 
   @Override
   public void getSearchedNodes(SNode node, SearchScope scope, List<SNode> _results) {
-    List<SNode> baseMethods = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder", node, GlobalScope.getInstance(), new EmptyProgressMonitor());
+    List<SNode> baseMethods = FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.BaseMethod_Finder", node, scope, new EmptyProgressMonitor());
     ListSequence.fromList(baseMethods).addElement(node);
     for (SNode method : ListSequence.fromList(baseMethods)) {
       ListSequence.fromList(_results).addElement(method);

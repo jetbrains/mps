@@ -48,7 +48,6 @@ import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
@@ -175,7 +174,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
             return it != null;
           }
         })) {
-          results.getSearchResults().add(new SearchResult<SNode>(node, "Uncategorized"));
+          results.addSearchResult(new SearchResult<SNode>(node, "Uncategorized"));
         }
         return results;
       }
@@ -185,7 +184,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
       }
     });
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(false).forceNewTab(false).notFoundMessage("Nothing");
-    UsagesViewTool.showUsages(((Project) MapSequence.fromMap(_params).get("ideaProject")), provider, new SearchQuery(GlobalScope.getInstance()), opt);
+    UsagesViewTool.showUsages(((Project) MapSequence.fromMap(_params).get("ideaProject")), provider, new SearchQuery(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope()), opt);
   }
 
   private static final class CONCEPTS {

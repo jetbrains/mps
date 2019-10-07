@@ -28,8 +28,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.StringTokenizer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.project.AbstractModule;
+import org.apache.log4j.Logger;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Tokens__BehaviorDescriptor;
@@ -288,11 +289,20 @@ public class ClassifierResolveUtils {
       return null;
     }
 
-    AbstractModule module = (AbstractModule) contextNodeModel.getModule();
-    // XXX why do we use module scope, not ModelPlusImportedScope available in ClassifiersScope?! 
-    SearchScope moduleScope = (module == null ? GlobalScope.getInstance() : module.getScope());
-    final List<SModel> moduleScopeModels = ListSequence.fromListWithValues(new ArrayList<SModel>(), moduleScope.getModels());
-    ModelsByName modelsByName = new ModelsByName(moduleScopeModels);
+    final SearchScope scope;
+    contextNodeModel.getRepository();
+    if (contextNodeModel.getModule() instanceof AbstractModule) {
+      // XXX why do we use module scope, not ModelPlusImportedScope available in ClassifiersScope?! 
+      scope = ((AbstractModule) contextNodeModel.getModule()).getScope();
+    } else {
+      if (contextNodeModel.getRepository() == null) {
+        Logger.getLogger(ClassifierResolveUtils.class).error("need a context to resolve anything within a model");
+        return null;
+      }
+      scope = new GlobalScope(contextNodeModel.getRepository());
+    }
+    final List<SModel> scopeModels = ListSequence.fromListWithValues(new ArrayList<SModel>(), scope.getModels());
+    ModelsByName modelsByName = new ModelsByName(scopeModels);
     final String javaStubStereotype = SModelStereotype.getStubStereotypeForId(LanguageID.JAVA);
 
     // walk through single-type imports 
@@ -333,7 +343,7 @@ public class ClassifierResolveUtils {
 
     // intentionally not moduleScope.resolve(JavaPackageNameStub.asModuleReference) as we are looking for specific model in 
     // a specific module, and module scope might contain a lot of models and could be ineffective in resolve by walking all of them. 
-    SModule jdkModule = moduleScope.resolve(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"));
+    SModule jdkModule = scope.resolve(PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)"));
     SModel javaLangModel = (jdkModule == null ? null : jdkModule.getModel(new JavaPackageNameStub("java.lang").asModelId()));
     if (javaLangModel != null) {
       ListSequence.fromList(javaImportedThings).addElement(javaLangModel);

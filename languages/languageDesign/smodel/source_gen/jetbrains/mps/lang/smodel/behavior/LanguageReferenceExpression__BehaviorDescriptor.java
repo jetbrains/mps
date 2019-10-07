@@ -16,14 +16,11 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.ScopeOperations;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class LanguageReferenceExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3dc174aL, "jetbrains.mps.lang.smodel.structure.LanguageReferenceExpression");
@@ -37,9 +34,7 @@ public final class LanguageReferenceExpression__BehaviorDescriptor extends BaseB
 
   @NotNull
   /*package*/ static List<SModule> getVisibleModules_id3wj3sjzSgF$(@NotNull SNode __thisNode__) {
-    List<SModule> result = ListSequence.fromList(new ArrayList<SModule>());
-    ListSequence.fromList(result).addSequence(Sequence.fromIterable(ScopeOperations.getModules(GlobalScope.getInstance(), Language.class)));
-    return result;
+    return ListSequence.fromList(ModuleReferenceExpression__BehaviorDescriptor.getVisibleModules_id3wj3sjzSgF$.invokeSuper(__thisNode__, CONCEPTS.LanguageReferenceExpression$xv)).ofType(Language.class).ofType(SModule.class).toListSequence();
   }
 
   /*package*/ LanguageReferenceExpression__BehaviorDescriptor() {
@@ -86,5 +81,9 @@ public final class LanguageReferenceExpression__BehaviorDescriptor extends BaseB
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept LanguageReferenceExpression$xv = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3dc174aL, "jetbrains.mps.lang.smodel.structure.LanguageReferenceExpression");
   }
 }

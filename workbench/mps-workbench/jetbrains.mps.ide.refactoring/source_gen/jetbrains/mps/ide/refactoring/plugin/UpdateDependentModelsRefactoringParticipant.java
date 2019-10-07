@@ -85,7 +85,7 @@ public class UpdateDependentModelsRefactoringParticipant extends RefactoringPart
     final Wrappers._T<SModel> sourceModel = new Wrappers._T<SModel>();
     repository.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        usages.value = FindUsagesFacade.getInstance().findModelUsages(GlobalScope.getInstance(), Collections.singleton(initialState), progressMonitor.subTask(1));
+        usages.value = FindUsagesFacade.getInstance().findModelUsages(new GlobalScope(repository), Collections.singleton(initialState), progressMonitor.subTask(1));
         sourceModel.value = initialState.resolve(repository);
       }
     });

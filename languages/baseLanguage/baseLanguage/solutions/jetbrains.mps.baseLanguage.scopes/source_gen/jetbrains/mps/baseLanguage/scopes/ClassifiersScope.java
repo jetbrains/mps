@@ -88,7 +88,7 @@ public class ClassifiersScope extends FilteringScope {
     return cached;
   }
 
-  private SNode resolveImpl(SModel contextModel, @Nullable SNode contextClassifier, String refText) {
+  private SNode resolveImpl(@NotNull SModel contextModel, @Nullable SNode contextClassifier, @NotNull String refText) {
     // hack for [model]node construction, remove it 
     if (refText.indexOf('[') == 0) {
       return ClassifierResolveUtils.resolveSpecialSyntax(refText, contextModel);

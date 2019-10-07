@@ -125,7 +125,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   }
 
   private void collectOverriddenMethods(SNode container, Set<EditorMessage> messages) {
-    List<SNode> derivedClassifiers = ClassifierSuccessors.getInstance().getDerivedClassifiers(container, GlobalScope.getInstance());
+    List<SNode> derivedClassifiers = ClassifierSuccessors.getInstance().getDerivedClassifiers(container, new GlobalScope(myProject.getRepository()));
     if (ListSequence.fromList(derivedClassifiers).isEmpty()) {
       return;
     }
@@ -166,7 +166,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       }
       boolean overriden = !(((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
       StringBuffer tooltip = new StringBuffer("Is ");
-      tooltip.append((overriden ? "overriden" : "implemented"));
+      tooltip.append((overriden ? "overridden" : "implemented"));
       tooltip.append(" in");
       int messageCounter = 0;
       for (Iterator<SNode> it = SetSequence.fromSet(MapSequence.fromMap(overridenToOverridingMethodsMap).get(overridenMethod)).iterator(); it.hasNext();) {

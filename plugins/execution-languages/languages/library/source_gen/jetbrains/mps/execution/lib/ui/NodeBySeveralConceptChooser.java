@@ -7,12 +7,11 @@ import java.util.List;
 import jetbrains.mps.execution.lib.NodesDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.project.GlobalScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
+import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -27,7 +26,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class NodeBySeveralConceptChooser extends NodeChooser {
   @NotNull
   private final List<NodesDescriptor> myTargetConcepts = ListSequence.fromList(new ArrayList<NodesDescriptor>());
-  private final SearchScope myScope;
 
   public NodeBySeveralConceptChooser(NodesDescriptor... targets) {
     this(Sequence.fromIterable(Sequence.fromArray(targets)).toListSequence());
@@ -39,17 +37,15 @@ public class NodeBySeveralConceptChooser extends NodeChooser {
         return new NodesDescriptor((it.concept() == null ? CONCEPTS.BaseConcept$Sz : it.concept()), it.filter());
       }
     }));
-
-    myScope = GlobalScope.getInstance();
   }
 
   @Override
-  protected List<SNode> findToChooseFromOnInit(final FindUsagesFacade manager, final ProgressMonitor monitor) {
+  protected List<SNode> findToChooseFromOnInit(final FindUsagesFacade manager, final SearchScope scope, final ProgressMonitor monitor) {
     return (List<SNode>) (ListSequence.fromList(myTargetConcepts).translate(new ITranslator2<NodesDescriptor, SNode>() {
       public Iterable<SNode> translate(NodesDescriptor it) {
         SAbstractConcept targetConcept = it.concept();
         final _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> function = it.filter();
-        Set<SNode> instances = manager.findInstances(myScope, Collections.singleton(targetConcept), false, monitor.subTask(10));
+        Set<SNode> instances = manager.findInstances(scope, Collections.singleton(targetConcept), false, monitor.subTask(10));
         if (function == null) {
           return instances;
         } else {

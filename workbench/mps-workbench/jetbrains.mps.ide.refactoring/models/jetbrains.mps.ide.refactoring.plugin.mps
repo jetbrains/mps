@@ -2157,9 +2157,13 @@
                     </node>
                     <node concept="liA8E" id="2ziiPwwFgpP" role="2OqNvi">
                       <ref role="37wK5l" to="lui2:~FindUsagesFacade.findModelUsages(org.jetbrains.mps.openapi.module.SearchScope,java.util.Set,org.jetbrains.mps.openapi.util.ProgressMonitor)" resolve="findModelUsages" />
-                      <node concept="2YIFZM" id="2ziiPwwFgpQ" role="37wK5m">
-                        <ref role="1Pybhc" to="z1c3:~GlobalScope" resolve="GlobalScope" />
-                        <ref role="37wK5l" to="z1c3:~GlobalScope.getInstance()" resolve="getInstance" />
+                      <node concept="2ShNRf" id="4y5Xi4pMQcw" role="37wK5m">
+                        <node concept="1pGfFk" id="4y5Xi4pMRWS" role="2ShVmc">
+                          <ref role="37wK5l" to="z1c3:~GlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="GlobalScope" />
+                          <node concept="37vLTw" id="4y5Xi4pMSvD" role="37wK5m">
+                            <ref role="3cqZAo" node="2ziiPwwEPeL" resolve="repository" />
+                          </node>
+                        </node>
                       </node>
                       <node concept="2YIFZM" id="2ziiPwwFgpR" role="37wK5m">
                         <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
