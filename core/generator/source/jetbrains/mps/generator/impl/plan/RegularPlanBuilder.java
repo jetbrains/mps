@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -150,33 +151,63 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     // FIXME quite ineffective way to deal with LanguageRuntime.getGenerators producing new instance of TemplateModule each time asked.
     // XXX with no interpreted generators instantiated from LR.getGenerators, can get rid of this code.
     availableAsExt.removeIf(tm -> explicitlyMentioned.stream().anyMatch(m -> m.getModuleReference().equals(tm.getModuleReference())));
-    class S {
+    class S implements Comparable<S> {
       public final TemplateModule generator;
-      public final Collection<SModuleReference> directlyExtendedGenerators;
+      private final Collection<TemplateModule> directlyExtendedGenerators;
+      private final Collection<S> transitiveExtendedGenerators = new ArrayList<>();
       public S(TemplateModule g) {
         generator = g;
-        // XXX use SModuleReference here as a workaround to deal with !TemplateModuleX.equals(TemplateModuleX) if obtained with distinct calls to LR.getGenerators()
-        directlyExtendedGenerators = g.getExtendedGenerators().stream().map(TemplateModule::getModuleReference).collect(Collectors.toList());
+        directlyExtendedGenerators = generator.getExtendedGenerators();
+      }
+
+      void prepare(HashMap<TemplateModule, S> allModules) {
+        for (TemplateModule tm : directlyExtendedGenerators) {
+          final S s = allModules.get(tm);
+          if (s != null) {
+            transitiveExtendedGenerators.add(s);
+          }
+        }
+      }
+
+      Collection<SModuleReference> directlyExtendedGenerators() {
+        return directlyExtendedGenerators.stream().map(GeneratorRuntime::getModuleReference).collect(Collectors.toList());
+      }
+
+      boolean dependsFrom(final S other) {
+        // Have to be transitive, given C -> B -> A, shall answer A < B, B < C, and A < C
+        //    not to face issues like https://youtrack.jetbrains.com/issue/MPS-27394
+        return directlyExtendedGenerators.contains(other.generator) || transitiveExtendedGenerators.stream().anyMatch(e -> e.dependsFrom(other));
+      }
+
+      @Override
+      public int compareTo(@NotNull S o) {
+        if (o == this) {
+          return 0;
+        }
+        // this needs o, then o < this
+        if (dependsFrom(o)) {
+          return -1;
+        }
+        // if o needs this, then o > this
+        if (o.dependsFrom(this)) {
+          return 1;
+        }
+        // otherwise, we don't care
+        return 0;
       }
     }
     S[] topoOrder = new S[availableAsExt.size()]; // it's partial topo ordering, just for extended generators mentioned directly
     int i = 0;
+    HashMap<TemplateModule, S> m = new HashMap<>();
     for (TemplateModule extCandidate : availableAsExt) {
-      topoOrder[i++] = new S(extCandidate);
+      final S s = new S(extCandidate);
+      topoOrder[i++] = s;
+      m.put(extCandidate, s);
     }
-    // FIXME Comparator violates transitive constraint: given C -> B -> A, it answers A < B and B < C, but tells A == C
-    //       see https://youtrack.jetbrains.com/issue/MPS-27394
-    Arrays.sort(topoOrder, (o1, o2) -> {
-      // o2 needs o1, then o1 < o2
-      if (o2.directlyExtendedGenerators.contains(o1.generator.getModuleReference())) {
-        return -1;
-      }
-      // o1 needs o2, then o1 > o2
-      if (o1.directlyExtendedGenerators.contains(o2.generator.getModuleReference())) {
-        return 1;
-      }
-      return 0;
-    });
+    for (S s : topoOrder) {
+      s.prepare(m);
+    }
+    Arrays.sort(topoOrder);
     // It's intentional (though not necessarily right) that we look into generators extended directly only, not transitive closure.
     // The idea is that given C extends B extends A, and A.withExtensions and C among availableExt and no B whatsoever, I don't want C to show up.
     //
@@ -205,8 +236,9 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
      * For E: G, F
      */
     for (S s : topoOrder) {
+      Collection<SModuleReference> directlyExtendedGenerators = s.directlyExtendedGenerators();
       for (StepEntry se : mySteps) {
-        se.registerIfIntersects(s.directlyExtendedGenerators, s.generator);
+        se.registerIfIntersects(directlyExtendedGenerators, s.generator);
       }
     }
     ArrayList<Step> steps = new ArrayList<>(mySteps.size());
