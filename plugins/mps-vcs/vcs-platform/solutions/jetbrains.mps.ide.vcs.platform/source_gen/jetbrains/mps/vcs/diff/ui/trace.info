@@ -791,8 +791,8 @@
       <node id="6410246949269566116" at="72,61,73,61" concept="4" />
       <node id="6410246949269566121" at="73,61,74,71" concept="4" />
       <node id="6410246949269699090" at="74,71,75,58" concept="12" />
-      <node id="6410246949269566157" at="78,33,79,64" concept="4" />
-      <node id="6410246949269566165" at="81,33,82,64" concept="4" />
+      <node id="6410246949269566157" at="78,33,79,70" concept="4" />
+      <node id="6410246949269566165" at="81,33,82,70" concept="4" />
       <node id="6410246949269566210" at="87,25,88,80" concept="4" />
       <node id="6410246949269566220" at="92,25,93,101" concept="10" />
       <node id="6410246949269566227" at="93,101,94,96" concept="10" />
@@ -964,8 +964,8 @@
       <node id="6410246949269566955" at="277,0,311,7" concept="8" />
       <node id="6410246949269566945" at="274,0,314,0" concept="9" trace="getRootActions#()Ljava/lang/Iterable;" />
       <node id="6410246949269566090" at="70,0,126,0" concept="2" trace="ModelDifferenceViewer#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNodeId;Z)V" />
-      <scope id="6410246949269566156" at="78,33,79,64" />
-      <scope id="6410246949269566164" at="81,33,82,64" />
+      <scope id="6410246949269566156" at="78,33,79,70" />
+      <scope id="6410246949269566164" at="81,33,82,70" />
       <scope id="6410246949269566204" at="87,25,88,80" />
       <scope id="456758165253807090" at="111,27,112,31" />
       <scope id="6410246949269759370" at="114,12,115,29" />

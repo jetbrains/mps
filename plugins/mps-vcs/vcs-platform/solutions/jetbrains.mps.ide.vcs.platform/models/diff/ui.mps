@@ -6447,13 +6447,16 @@
                 <node concept="3clFbS" id="5zPLqcHJBbc" role="3clFbx">
                   <node concept="3clFbF" id="5zPLqcHJBbd" role="3cqZAp">
                     <node concept="2YIFZM" id="5zPLqcHJBbe" role="3clFbG">
-                      <ref role="37wK5l" to="hdhb:2v$NtEHjiFm" resolve="renameModelAndRegister" />
                       <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
+                      <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
                       <node concept="37vLTw" id="5zPLqcHJBbf" role="37wK5m">
                         <ref role="3cqZAo" node="5zPLqcHJBaf" resolve="newModel" />
                       </node>
                       <node concept="Xl_RD" id="5zPLqcHJBbg" role="37wK5m">
                         <property role="Xl_RC" value="new" />
+                      </node>
+                      <node concept="3clFbT" id="6CqwT3OILEZ" role="37wK5m">
+                        <property role="3clFbU" value="true" />
                       </node>
                     </node>
                   </node>
@@ -6470,13 +6473,16 @@
                 <node concept="3clFbS" id="5zPLqcHJBbk" role="3clFbx">
                   <node concept="3clFbF" id="5zPLqcHJBbl" role="3cqZAp">
                     <node concept="2YIFZM" id="5zPLqcHJBbm" role="3clFbG">
-                      <ref role="37wK5l" to="hdhb:2v$NtEHjiFm" resolve="renameModelAndRegister" />
                       <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
+                      <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
                       <node concept="37vLTw" id="5zPLqcHJBbn" role="37wK5m">
                         <ref role="3cqZAo" node="5zPLqcHJBad" resolve="oldModel" />
                       </node>
                       <node concept="Xl_RD" id="5zPLqcHJBbo" role="37wK5m">
                         <property role="Xl_RC" value="old" />
+                      </node>
+                      <node concept="3clFbT" id="6CqwT3OINqs" role="37wK5m">
+                        <property role="3clFbU" value="true" />
                       </node>
                     </node>
                   </node>
