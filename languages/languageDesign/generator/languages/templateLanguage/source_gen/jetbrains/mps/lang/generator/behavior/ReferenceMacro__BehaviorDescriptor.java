@@ -17,6 +17,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
+import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.errors.item.NodeFeatureReportItem;
 import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
@@ -40,8 +41,8 @@ public final class ReferenceMacro__BehaviorDescriptor extends BaseBHDescriptor {
     return node == SNodeOperations.getParent(__thisNode__);
   }
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, NodeReportItem reportItem) {
-    if (Objects.equals(reportItem.getNode(), SNodeOperations.getPointer(SNodeOperations.getParent(__thisNode__))) && LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(__thisNode__) != null && Objects.equals(NodeFeatureReportItem.FLAVOUR_NODE_FEATURE.tryToGet(reportItem), LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(__thisNode__))) {
-      return true;
+    if (Objects.equals(reportItem.getIssueKind().getChecker(), IssueKindReportItem.REFERENCE_SCOPES) || Objects.equals(reportItem.getIssueKind().getChecker(), IssueKindReportItem.UNRESOLVED_REFERENCE)) {
+      return Objects.equals(reportItem.getNode(), SNodeOperations.getPointer(SNodeOperations.getParent(__thisNode__))) && LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(__thisNode__) != null && Objects.equals(NodeFeatureReportItem.FLAVOUR_NODE_FEATURE.tryToGet(reportItem), LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(__thisNode__));
     }
     return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$2l, reportItem));
   }
