@@ -100,7 +100,7 @@ public class ShowRootHistory_Action extends BaseAction {
     VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf), VcsBackgroundableActions.HISTORY_FOR_SELECTION, new Consumer<VcsHistorySession>() {
       public void consume(VcsHistorySession s) {
         if (s != null) {
-          RootHistoryDialog dlg = new RootHistoryDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), vf, activeVCS.getVcsHistoryProvider(), s);
+          RootHistoryDialog dlg = new RootHistoryDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), vf, activeVCS, s);
           dlg.setTitle(modelName.getLongName() + '/' + rootName.value);
           dlg.show(Collections.singleton(toShow.value));
         }

@@ -12309,6 +12309,13 @@
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
+    <node concept="312cEg" id="3bEtkqd6gDd" role="jymVt">
+      <property role="TrG5h" value="myActiveVcs" />
+      <node concept="3Tm6S6" id="3bEtkqd6gDe" role="1B3o_S" />
+      <node concept="3uibUv" id="3bEtkqd6pBb" role="1tU5fm">
+        <ref role="3uigEE" to="jlcu:~AbstractVcs" resolve="AbstractVcs" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="2cnBllva$$7" role="jymVt" />
     <node concept="Wx3nA" id="2cnBllvaFEA" role="jymVt">
       <property role="TrG5h" value="DIFF_SPLITTER_PROPORTION" />
@@ -12543,6 +12550,33 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="3bEtkqd6t8$" role="3cqZAp">
+          <node concept="37vLTI" id="3bEtkqd6xMC" role="3clFbG">
+            <node concept="37vLTw" id="3bEtkqd6zEx" role="37vLTx">
+              <ref role="3cqZAo" node="2cnBllv76Ip" resolve="vcs" />
+            </node>
+            <node concept="37vLTw" id="3bEtkqd6t8y" role="37vLTJ">
+              <ref role="3cqZAo" node="3bEtkqd6gDd" resolve="myActiveVcs" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3bEtkqd5JL0" role="3cqZAp">
+          <node concept="3cpWsn" id="3bEtkqd5JL3" role="3cpWs9">
+            <property role="TrG5h" value="vcsHistoryProvider" />
+            <node concept="3uibUv" id="3bEtkqd5JL5" role="1tU5fm">
+              <ref role="3uigEE" to="yah0:~VcsHistoryProvider" resolve="VcsHistoryProvider" />
+            </node>
+            <node concept="2OqwBi" id="3bEtkqd5OAX" role="33vP2m">
+              <node concept="37vLTw" id="3bEtkqd5OsG" role="2Oq$k0">
+                <ref role="3cqZAo" node="2cnBllv76Ip" resolve="vcs" />
+              </node>
+              <node concept="liA8E" id="3bEtkqd5OSA" role="2OqNvi">
+                <ref role="37wK5l" to="jlcu:~AbstractVcs.getVcsHistoryProvider()" resolve="getVcsHistoryProvider" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3bEtkqd5HOa" role="3cqZAp" />
         <node concept="3SKdUt" id="2cnBllv8k_9" role="3cqZAp">
           <node concept="1PaTwC" id="2cnBllv8k_a" role="3ndbpf">
             <node concept="3oM_SD" id="2cnBllv8lgV" role="1PaTwD">
@@ -12565,8 +12599,8 @@
               <ref role="1Pybhc" to="9w4s:~ObjectUtils" resolve="ObjectUtils" />
               <ref role="37wK5l" to="9w4s:~ObjectUtils.notNull(java.lang.Object,java.lang.Object)" resolve="notNull" />
               <node concept="2OqwBi" id="2cnBllvgxlo" role="37wK5m">
-                <node concept="37vLTw" id="2cnBllvgxln" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2cnBllv76Ip" resolve="vcsHistoryProvider" />
+                <node concept="37vLTw" id="3bEtkqd5V0q" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3bEtkqd5JL3" resolve="vcsHistoryProvider" />
                 </node>
                 <node concept="liA8E" id="2cnBllvgxlp" role="2OqNvi">
                   <ref role="37wK5l" to="yah0:~VcsHistoryProvider.getHelpId()" resolve="getHelpId" />
@@ -12674,8 +12708,8 @@
               <ref role="3uigEE" to="yah0:~VcsDependentHistoryComponents" resolve="VcsDependentHistoryComponents" />
             </node>
             <node concept="2OqwBi" id="2cnBllv7EN2" role="33vP2m">
-              <node concept="37vLTw" id="2cnBllv7EN1" role="2Oq$k0">
-                <ref role="3cqZAo" node="2cnBllv76Ip" resolve="vcsHistoryProvider" />
+              <node concept="37vLTw" id="3bEtkqd5Vs7" role="2Oq$k0">
+                <ref role="3cqZAo" node="3bEtkqd5JL3" resolve="vcsHistoryProvider" />
               </node>
               <node concept="liA8E" id="2cnBllv7EN3" role="2OqNvi">
                 <ref role="37wK5l" to="yah0:~VcsHistoryProvider.getUICustomization(com.intellij.openapi.vcs.history.VcsHistorySession,javax.swing.JComponent)" resolve="getUICustomization" />
@@ -13462,9 +13496,9 @@
         </node>
       </node>
       <node concept="37vLTG" id="2cnBllv76Ip" role="3clF46">
-        <property role="TrG5h" value="vcsHistoryProvider" />
-        <node concept="3uibUv" id="2cnBllv7744" role="1tU5fm">
-          <ref role="3uigEE" to="yah0:~VcsHistoryProvider" resolve="VcsHistoryProvider" />
+        <property role="TrG5h" value="vcs" />
+        <node concept="3uibUv" id="3bEtkqd5N6U" role="1tU5fm">
+          <ref role="3uigEE" to="jlcu:~AbstractVcs" resolve="AbstractVcs" />
         </node>
       </node>
       <node concept="37vLTG" id="5$O_bu7tV5Y" role="3clF46">
@@ -14968,6 +15002,32 @@
               <node concept="3cpWs6" id="2cnBllvclNS" role="3cqZAp">
                 <node concept="37vLTw" id="2cnBllvfOcH" role="3cqZAk">
                   <ref role="3cqZAo" node="F8s4TbSzCJ" resolve="myActualFile" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3eNFk2" id="3bEtkqd4SfB" role="3eNLev">
+            <node concept="3clFbS" id="3bEtkqd4SfD" role="3eOfB_">
+              <node concept="3cpWs6" id="3bEtkqd6$OT" role="3cqZAp">
+                <node concept="2OqwBi" id="2wGZ0f$_mGo" role="3cqZAk">
+                  <node concept="37vLTw" id="3bEtkqd6_yc" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3bEtkqd6gDd" resolve="myActiveVcs" />
+                  </node>
+                  <node concept="liA8E" id="2wGZ0f$_vFW" role="2OqNvi">
+                    <ref role="37wK5l" to="jlcu:~AbstractVcs.getKeyInstanceMethod()" resolve="getKeyInstanceMethod" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="3bEtkqd50Qv" role="3eO9$A">
+              <node concept="10M0yZ" id="3bEtkqd51bM" role="2Oq$k0">
+                <ref role="3cqZAo" to="jlcu:~VcsDataKeys.VCS" resolve="VCS" />
+                <ref role="1PxDUh" to="jlcu:~VcsDataKeys" resolve="VcsDataKeys" />
+              </node>
+              <node concept="liA8E" id="3bEtkqd50Qx" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
+                <node concept="37vLTw" id="3bEtkqd50Qy" role="37wK5m">
+                  <ref role="3cqZAo" node="2cnBllvclNB" resolve="dataId" />
                 </node>
               </node>
             </node>

@@ -3530,13 +3530,8 @@
                             <node concept="37vLTw" id="gkhJ4LtMBY" role="37wK5m">
                               <ref role="3cqZAo" node="XakewlOZIJ" resolve="vf" />
                             </node>
-                            <node concept="2OqwBi" id="gkhJ4LtMBZ" role="37wK5m">
-                              <node concept="37vLTw" id="gkhJ4LtMC0" role="2Oq$k0">
-                                <ref role="3cqZAo" node="F8s4TbMciP" resolve="activeVCS" />
-                              </node>
-                              <node concept="liA8E" id="gkhJ4LtMC1" role="2OqNvi">
-                                <ref role="37wK5l" to="jlcu:~AbstractVcs.getVcsHistoryProvider()" resolve="getVcsHistoryProvider" />
-                              </node>
+                            <node concept="37vLTw" id="gkhJ4LtMC0" role="37wK5m">
+                              <ref role="3cqZAo" node="F8s4TbMciP" resolve="activeVCS" />
                             </node>
                             <node concept="37vLTw" id="gkhJ4LtMC2" role="37wK5m">
                               <ref role="3cqZAo" node="F8s4TbMloq" resolve="s" />

@@ -8,6 +8,7 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.diff.DiffRequestPanel;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vcs.AbstractVcs;
 import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ import com.intellij.util.ui.AnimatedIcon;
 import com.intellij.util.ui.AsyncProcessIcon;
 import javax.swing.JEditorPane;
 import com.intellij.util.ui.update.MergingUpdateQueue;
-import com.intellij.openapi.vcs.history.VcsHistoryProvider;
 import com.intellij.openapi.vcs.history.VcsHistorySession;
+import com.intellij.openapi.vcs.history.VcsHistoryProvider;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.JBDimension;
@@ -89,6 +90,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   private SNodeId myRoot;
   private final VirtualFile myActualFile;
   private final String myHelpId;
+  private AbstractVcs myActiveVcs;
 
   private static final float DIFF_SPLITTER_PROPORTION = 0.5f;
   private static final float COMMENTS_SPLITTER_PROPORTION = 0.8f;
@@ -111,11 +113,14 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   private boolean myIsDuringUpdate = false;
 
 
-  public RootHistoryDialog(MPSProject project, VirtualFile actualFile, VcsHistoryProvider vcsHistoryProvider, VcsHistorySession session) {
+  public RootHistoryDialog(MPSProject project, VirtualFile actualFile, AbstractVcs vcs, VcsHistorySession session) {
     super(project.getProject(), "MPS.RootHistoryDialog", false);
     // no idea why VcsSelectionHistoryDialog uses isDialog == false 
     myMPSProject = project;
     myActualFile = actualFile;
+    myActiveVcs = vcs;
+    VcsHistoryProvider vcsHistoryProvider = vcs.getVcsHistoryProvider();
+
     // copied from VcsSelectionHistoryDialog 
     myHelpId = ObjectUtils.notNull(vcsHistoryProvider.getHelpId(), "reference.dialogs.vcs.selection.history");
     myComments = new JEditorPane(UIUtil.HTML_MIME, "");
@@ -317,6 +322,8 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       return myMPSProject.getProject();
     } else if (MPSCommonDataKeys.MPS_PROJECT.is(dataId)) {
       return myMPSProject;
+    } else if (VcsDataKeys.VCS.is(dataId)) {
+      return myActiveVcs.getKeyInstanceMethod();
     } else
     if (VcsDataKeys.VCS_VIRTUAL_FILE.is(dataId)) {
       return myActualFile;

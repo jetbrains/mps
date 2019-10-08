@@ -187,6 +187,7 @@
     <classNode dependClassName="com.intellij.openapi.ui.Splitter" />
     <classNode dependClassName="com.intellij.openapi.util.Conditions" />
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
+    <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcs" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsActions" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsBundle" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsDataKeys" />
