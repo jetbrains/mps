@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -71,7 +72,7 @@ public abstract class RefNodeListHandler extends AbstractCellListHandler {
   @Override
   public SNode createNodeToInsert(EditorContext editorContext) {
     SAbstractConcept childConcept = getChildSConcept();
-    SAbstractConcept defaultConcreteConcept = ConceptRegistry.getInstance().getConstraintsDescriptor(childConcept).getDefaultConcreteConcept();
+    SConcept defaultConcreteConcept = ConceptRegistry.getInstance().getConstraintsDescriptor(childConcept).getDefaultConcreteConcept();
     if (defaultConcreteConcept != null) {
       childConcept = defaultConcreteConcept;
     }

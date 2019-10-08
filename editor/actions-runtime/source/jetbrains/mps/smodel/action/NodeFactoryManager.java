@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,11 @@ import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.smodel.CopyUtil;
-import jetbrains.mps.smodel.SModelUtil_new;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -95,7 +92,7 @@ public class NodeFactoryManager {
       if (!newNode.getChildren(linkDeclaration).iterator().hasNext()) {
         if (visitedNonOptionalChildConcepts.add(targetConcept)) {
           try {
-            SAbstractConcept defaultConcreteConcept = ConceptRegistry.getInstance().getConstraintsDescriptor(targetConcept).getDefaultConcreteConcept();
+            SConcept defaultConcreteConcept = ConceptRegistry.getInstance().getConstraintsDescriptor(targetConcept).getDefaultConcreteConcept();
             SNode childNode = createNode(defaultConcreteConcept == null ? targetConcept : defaultConcreteConcept, sampleNode, enclosingNode, model, visitedNonOptionalChildConcepts);
             newNode.addChild(linkDeclaration, childNode);
           } finally {

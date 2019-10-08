@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -240,9 +241,9 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return null;
   }
 
-  public SAbstractConcept getDefaultConcreteConcept() {
-    // FIXME once 2018.3 is out, with templates that generate override for the method with SConcept, change signature of this method
-    // and the one in ConstraintsDescriptor to return SConcept
-    return myConcept;
+  @Nullable
+  @Override
+  public SConcept getDefaultConcreteConcept() {
+    return null; // unspecified
   }
 }

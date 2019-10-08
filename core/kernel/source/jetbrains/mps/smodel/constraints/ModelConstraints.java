@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
-import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
 import jetbrains.mps.scope.Scope;
@@ -46,9 +45,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.List;
-import java.util.Optional;
-
-import static jetbrains.mps.smodel.constraints.ConstraintsCanBeFacade.checkPerConceptRulesOfKind;
 
 /**
  * API for model constraints
@@ -201,9 +197,11 @@ public class ModelConstraints {
     if (!concept.isValid()) {
       return MetaAdapterByDeclaration.asInstanceConcept(concept);
     }
-    SAbstractConcept cc = ConceptRegistryUtil.getConstraintsDescriptor(concept).getDefaultConcreteConcept();
-    // FIXME see ConstraintsDescriptor#getDefaultConcreteConcept() which shall return SConcept right away
-    return MetaAdapterByDeclaration.asInstanceConcept(cc);
+    SConcept cc = ConceptRegistryUtil.getConstraintsDescriptor(concept).getDefaultConcreteConcept();
+    if (cc != null) {
+      return cc;
+    }
+    return MetaAdapterByDeclaration.asInstanceConcept(concept);
   }
 
   // properties part
