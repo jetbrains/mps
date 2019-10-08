@@ -35,7 +35,6 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -174,14 +173,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     private EditorCell createReadOnlyModelAccessor_0() {
-      EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor() {
+      EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
         public String getText() {
           return String.format("%s:%s", SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.AbstractConceptDeclaration$UN), PROPS.name$tAp1), SPropertyOperations.getString(myNode, PROPS.role$r_O$));
-        }
-        public void setText(String s) {
-        }
-        public boolean isValidText(String s) {
-          return EqualUtil.equals(s, getText());
         }
       }, myNode);
       editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
