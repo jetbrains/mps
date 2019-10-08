@@ -15,7 +15,6 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import java.util.Map;
@@ -50,7 +49,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_8geshg_a0a0a0a0a0a0a0a3;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.ConceptDeclaration$qU);
           }
         };
@@ -88,7 +87,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_8geshg_a0a0a0a0a1a0a0a0f;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             // don't allow cycling 
             return Scopes.forConceptDeclarationExtends(_context.getReferenceNode(), _context.getContextNode());
           }

@@ -56,7 +56,7 @@ public class FinishWorkStatement_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_tiy6xt_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.JobDefinition$Uq, false, false), LINKS.body$pTP2), CONCEPTS.BeginWorkStatement$C0, false, new SAbstractConcept[]{}));
           }
         };

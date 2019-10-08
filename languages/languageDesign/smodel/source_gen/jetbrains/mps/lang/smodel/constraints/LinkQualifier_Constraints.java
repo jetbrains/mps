@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
@@ -46,7 +45,7 @@ public class LinkQualifier_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_f3nklf_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode leftNodeConcept = SNodeOperation__BehaviorDescriptor.getLeftNodeConcept_idhEwJdFJ.invoke(SNodeOperations.asSConcept(CONCEPTS.SNodeOperation$o6), SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.DotExpression$6a, true, false));
             return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(leftNodeConcept)).union(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(leftNodeConcept))));
           }

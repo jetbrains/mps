@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -52,7 +51,7 @@ public class IStyle_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_56bmov_a0a0a0a0a0a0a0a2;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             AbstractModule contextModule = (AbstractModule) SNodeOperations.getModel(_context.getContextNode()).getModule();
 
             Set<Language> contextLanguages = SetSequence.fromSet(new HashSet<Language>());

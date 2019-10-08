@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -53,7 +52,7 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_ow8wt3_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
             SNode editorType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(instance), CONCEPTS.SettingsEditorType$Bn);
             if ((editorType == null) || (SLinkOperations.getTarget(editorType, LINKS.configuration$2u$w) == null)) {

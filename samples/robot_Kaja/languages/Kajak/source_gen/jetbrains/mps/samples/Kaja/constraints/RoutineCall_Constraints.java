@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.scope.SimpleRoleScope;
@@ -51,7 +50,7 @@ public class RoutineCall_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_b5nlto_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             final CompositeScope scope = new CompositeScope(SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$1X, true, false), LINKS.definitions$4DKU), SimpleRoleScope.forNamedElements(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Library$IO, true, false), LINKS.definitions$krA0), ListScope.forNamedElements(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$1X, true, false), LINKS.body$1RNV), LINKS.commands$o94w)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return SNodeOperations.isInstanceOf(it, CONCEPTS.RoutineDefinition$2l);

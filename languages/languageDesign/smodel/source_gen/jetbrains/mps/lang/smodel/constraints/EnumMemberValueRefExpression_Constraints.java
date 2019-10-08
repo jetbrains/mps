@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -48,7 +47,7 @@ public class EnumMemberValueRefExpression_Constraints extends BaseConstraintsDes
             return breakingNode_ju2p9y_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode enumMemberValueRef = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EnumMemberValueRefExpression$Pc, true, false);
             return new SimpleScope(SLinkOperations.getChildren(SLinkOperations.getTarget(enumMemberValueRef, LINKS.enum$WTtj), LINKS.member$_cRv)) {
               @Nullable

@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -50,7 +49,7 @@ public class Transition_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_mgdfdy_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Iterable<SNode> allEventsInPath = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.Stateful$8, true)).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode it) {
                 return SLinkOperations.getChildren(it, LINKS.availableTriggers$AtTV);
@@ -79,7 +78,7 @@ public class Transition_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_mgdfdy_a0a0a0a0a1a0a0b0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.State$J2);
             return (scope == null ? new EmptyScope() : scope);
           }

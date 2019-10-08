@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -71,7 +70,7 @@ public class EvaluatorsSuperMethodCall_Constraints extends BaseConstraintsDescri
             return breakingNode_cyzmhi_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode thisNode = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EvaluatorConcept$g2, false, false), LINKS.thisNode$Gl5y);
             SNode classifier = SLinkOperations.getTarget(DebuggedType__BehaviorDescriptor.getHighClassifierType_id3WhGjgvCHCA.invoke(SLinkOperations.getTarget(thisNode, LINKS.debuggedType$qJ$3)), LINKS.classifier$pQ_R);
             SNode enclosingClass = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY);

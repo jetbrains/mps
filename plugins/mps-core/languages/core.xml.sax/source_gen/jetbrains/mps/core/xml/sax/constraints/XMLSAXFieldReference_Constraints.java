@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -46,7 +45,7 @@ public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor 
             return breakingNode_ar46fh_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode n = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.XMLSAXParser$Sn, true, false);
             if ((n != null)) {
               return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.fields$YAg8)).concat(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.parameters$YA4w))));

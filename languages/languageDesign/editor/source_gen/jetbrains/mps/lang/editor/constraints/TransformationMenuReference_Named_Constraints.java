@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
@@ -40,7 +39,7 @@ public class TransformationMenuReference_Named_Constraints extends BaseConstrain
             return breakingNode_bj2kbe_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), _context.getLinkTargetConcept());
             if (scope == null) {
               return MenuScopes.getNamedMenus(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.TransformationMenu_Named$1E);

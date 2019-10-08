@@ -56,7 +56,7 @@ public class ClassifierType_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_1zr1bt_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             // TEMP doing it not through ScopeProvider for now 
             boolean resolvingSuperClass = SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.superclass$_pqe) || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.extendedInterface$rbvY);
             Scope scope = ClassifierScopes.getVisibleClassifiersScope(_context.getContextNode(), !(resolvingSuperClass));

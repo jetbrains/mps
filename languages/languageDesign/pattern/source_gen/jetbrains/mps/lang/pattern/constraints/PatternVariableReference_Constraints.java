@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -69,7 +68,7 @@ public class PatternVariableReference_Constraints extends BaseConstraintsDescrip
             return breakingNode_fw8caj_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             for (SNode declaration : SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.PatternExpression$Lc, false, false), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{})) {
               if (SPropertyOperations.getString(declaration, PROPS.name$tAp1) != null) {

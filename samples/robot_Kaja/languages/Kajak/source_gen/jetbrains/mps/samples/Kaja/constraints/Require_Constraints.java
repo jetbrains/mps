@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -69,7 +68,7 @@ public class Require_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_iz8172_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             final Iterable<SNode> libraries = ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Library$IO)).where(new IWhereFilter<SNode>() {
               public boolean accept(final SNode library) {
                 return ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Script$1X, true, false), CONCEPTS.Require$oh, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {

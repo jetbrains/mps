@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -48,7 +47,7 @@ public class ForeignParametersExpression_Constraints extends BaseConstraintsDesc
             return breakingNode_3lfdwm_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode td = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TargetDeclaration$7n, false, false);
             SNode fd = SNodeOperations.cast(SNodeOperations.getParent(td), CONCEPTS.FacetDeclaration$al);
             return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(fd, LINKS.targetDeclaration$DCGr)).where(new IWhereFilter<SNode>() {

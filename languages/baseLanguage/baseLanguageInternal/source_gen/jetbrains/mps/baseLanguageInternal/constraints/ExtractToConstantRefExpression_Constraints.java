@@ -54,7 +54,7 @@ public class ExtractToConstantRefExpression_Constraints extends BaseConstraintsD
             return breakingNode_o7daap_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.ExtractToConstantExpression$kt, false, new SAbstractConcept[]{}));
           }
         };

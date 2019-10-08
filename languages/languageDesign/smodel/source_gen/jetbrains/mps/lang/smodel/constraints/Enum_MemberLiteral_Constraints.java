@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -45,7 +44,7 @@ public class Enum_MemberLiteral_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_s0o7vr_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode parentNode = ((SNodeOperations.getParent(_context.getReferenceNode()) != null) ? SNodeOperations.getParent(_context.getReferenceNode()) : _context.getContextNode());
             SNode enumm = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr), CONCEPTS.EnumerationIdRefExpression$E1), LINKS.enumDeclaration$7yJw);
             return ListScope.forNamedElements(SLinkOperations.getChildren(enumm, LINKS.members$qYq2));

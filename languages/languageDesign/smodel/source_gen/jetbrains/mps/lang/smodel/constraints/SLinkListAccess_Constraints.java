@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
@@ -49,7 +48,7 @@ public class SLinkListAccess_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_968d2b_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             // links with cardinality 0..n or 1..n 
             SNode dotOperandConcept = SNodeOperation__BehaviorDescriptor.getLeftNodeConcept_idhEwJdFJ.invoke(SNodeOperations.asSConcept(CONCEPTS.SNodeOperation$o6), SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a));
             List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(dotOperandConcept);

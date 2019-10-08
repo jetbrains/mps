@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -48,7 +47,7 @@ public class CustomMapCreator_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_rduypo_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode expr = SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.Expression$TP);
             return ListScope.forResolvableElements(((expr != null) ? CustomContainersUtil.containerDeclarations(SNodeOperations.getModel(expr), TypeDerivable__BehaviorDescriptor.deriveType_idhEwIVPz.invoke(SNodeOperations.as(SNodeOperations.getParent(expr), CONCEPTS.TypeDerivable$dQ), expr)) : Sequence.fromIterable(Collections.<SNode>emptyList())));
           }

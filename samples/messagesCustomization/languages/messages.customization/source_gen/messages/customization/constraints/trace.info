@@ -115,94 +115,93 @@
   </root>
   <root nodeRef="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)/8918166317255507146">
     <file name="TestConcept_Constraints.java">
-      <node id="8918166317255507146" at="36,36,37,35" concept="8" />
-      <node id="3071492597344701391" at="41,59,42,40" concept="8" />
-      <node id="3071492597344701391" at="45,38,46,18" concept="5" />
-      <node id="3071492597344701391" at="48,0,49,0" concept="6" trace="validatePropertyBreakingPoint" />
-      <node id="3071492597344701391" at="50,109,51,100" concept="4" />
-      <node id="3071492597344701391" at="52,53,53,75" concept="1" />
-      <node id="3071492597344701391" at="54,7,55,20" concept="5" />
-      <node id="3071492597344701657" at="57,82,58,54" concept="5" />
-      <node id="8918166317255507146" at="62,84,63,119" concept="4" />
-      <node id="3071492597344701391" at="63,119,64,61" concept="1" />
-      <node id="8918166317255507146" at="64,61,65,22" concept="5" />
-      <node id="8918166317255507155" at="71,44,72,20" concept="5" />
-      <node id="8918166317255507155" at="79,63,80,57" concept="5" />
-      <node id="8918166317255516804" at="83,122,84,78" concept="4" />
-      <node id="8918166317255517087" at="84,78,85,103" concept="1" />
-      <node id="8918166317255507270" at="85,103,86,72" concept="5" />
-      <node id="8918166317255507146" at="90,6,91,131" concept="4" />
-      <node id="8918166317255507155" at="91,131,92,42" concept="1" />
-      <node id="8918166317255507146" at="92,42,93,22" concept="5" />
-      <node id="8918166317255507146" at="95,0,96,0" concept="6" trace="breakingNode_72100m_a0a0a0a0a1a0a0a0e" />
-      <node id="8918166317255507146" at="98,0,99,0" concept="6" trace="TestConcept$83" />
-      <node id="8918166317255507146" at="102,0,103,0" concept="6" trace="prop$PGpb" />
-      <node id="8918166317255507146" at="106,0,107,0" concept="6" trace="link$1Bcs" />
-      <node id="8918166317255507146" at="36,0,39,0" concept="0" trace="TestConcept_Constraints#()V" />
-      <node id="3071492597344701391" at="41,0,44,0" concept="0" trace="Prop_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="3071492597344701391" at="51,100,54,7" concept="2" />
-      <node id="3071492597344701391" at="57,0,60,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
-      <node id="3071492597344701391" at="44,0,48,0" concept="3" trace="hasOwnValidator#()Z" />
-      <node id="8918166317255507155" at="70,0,74,0" concept="3" trace="hasOwnScopeProvider#()Z" />
-      <node id="8918166317255507155" at="78,0,82,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="8918166317255507146" at="61,0,67,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
-      <node id="8918166317255507155" at="82,0,88,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="3071492597344701391" at="49,0,57,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
-      <node id="8918166317255507155" at="76,56,88,10" concept="5" />
-      <node id="8918166317255507155" at="74,0,90,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="8918166317255507155" at="68,90,90,6" concept="4" />
-      <node id="8918166317255507146" at="67,0,95,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="8918166317255507146" at="36,36,37,35" />
-      <scope id="3071492597344701391" at="41,59,42,40" />
-      <scope id="3071492597344701391" at="45,38,46,18" />
-      <scope id="3071492597344701391" at="52,53,53,75" />
-      <scope id="3071492597344701405" at="57,82,58,54" />
-      <scope id="8918166317255507155" at="71,44,72,20" />
-      <scope id="8918166317255507155" at="79,63,80,57" />
-      <scope id="8918166317255507146" at="36,0,39,0" />
-      <scope id="3071492597344701391" at="41,0,44,0">
+      <node id="8918166317255507146" at="35,36,36,35" concept="8" />
+      <node id="3071492597344701391" at="40,59,41,40" concept="8" />
+      <node id="3071492597344701391" at="44,38,45,18" concept="5" />
+      <node id="3071492597344701391" at="47,0,48,0" concept="6" trace="validatePropertyBreakingPoint" />
+      <node id="3071492597344701391" at="49,109,50,100" concept="4" />
+      <node id="3071492597344701391" at="51,53,52,75" concept="1" />
+      <node id="3071492597344701391" at="53,7,54,20" concept="5" />
+      <node id="3071492597344701657" at="56,82,57,54" concept="5" />
+      <node id="8918166317255507146" at="61,84,62,119" concept="4" />
+      <node id="3071492597344701391" at="62,119,63,61" concept="1" />
+      <node id="8918166317255507146" at="63,61,64,22" concept="5" />
+      <node id="8918166317255507155" at="70,44,71,20" concept="5" />
+      <node id="8918166317255507155" at="78,63,79,57" concept="5" />
+      <node id="8918166317255516804" at="82,80,83,78" concept="4" />
+      <node id="8918166317255517087" at="83,78,84,103" concept="1" />
+      <node id="8918166317255507270" at="84,103,85,72" concept="5" />
+      <node id="8918166317255507146" at="89,6,90,131" concept="4" />
+      <node id="8918166317255507155" at="90,131,91,42" concept="1" />
+      <node id="8918166317255507146" at="91,42,92,22" concept="5" />
+      <node id="8918166317255507146" at="94,0,95,0" concept="6" trace="breakingNode_72100m_a0a0a0a0a1a0a0a0e" />
+      <node id="8918166317255507146" at="97,0,98,0" concept="6" trace="TestConcept$83" />
+      <node id="8918166317255507146" at="101,0,102,0" concept="6" trace="prop$PGpb" />
+      <node id="8918166317255507146" at="105,0,106,0" concept="6" trace="link$1Bcs" />
+      <node id="8918166317255507146" at="35,0,38,0" concept="0" trace="TestConcept_Constraints#()V" />
+      <node id="3071492597344701391" at="40,0,43,0" concept="0" trace="Prop_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
+      <node id="3071492597344701391" at="50,100,53,7" concept="2" />
+      <node id="3071492597344701391" at="56,0,59,0" concept="7" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;I)Z" />
+      <node id="3071492597344701391" at="43,0,47,0" concept="3" trace="hasOwnValidator#()Z" />
+      <node id="8918166317255507155" at="69,0,73,0" concept="3" trace="hasOwnScopeProvider#()Z" />
+      <node id="8918166317255507155" at="77,0,81,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="8918166317255507146" at="60,0,66,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
+      <node id="8918166317255507155" at="81,0,87,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="3071492597344701391" at="48,0,56,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
+      <node id="8918166317255507155" at="75,56,87,10" concept="5" />
+      <node id="8918166317255507155" at="73,0,89,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="8918166317255507155" at="67,90,89,6" concept="4" />
+      <node id="8918166317255507146" at="66,0,94,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="8918166317255507146" at="35,36,36,35" />
+      <scope id="3071492597344701391" at="40,59,41,40" />
+      <scope id="3071492597344701391" at="44,38,45,18" />
+      <scope id="3071492597344701391" at="51,53,52,75" />
+      <scope id="3071492597344701405" at="56,82,57,54" />
+      <scope id="8918166317255507155" at="70,44,71,20" />
+      <scope id="8918166317255507155" at="78,63,79,57" />
+      <scope id="8918166317255507146" at="35,0,38,0" />
+      <scope id="3071492597344701391" at="40,0,43,0">
         <var name="container" id="3071492597344701391" />
       </scope>
-      <scope id="3071492597344701391" at="57,0,60,0">
+      <scope id="3071492597344701391" at="56,0,59,0">
         <var name="node" id="3071492597344701391" />
         <var name="propertyValue" id="3071492597344701391" />
       </scope>
-      <scope id="8918166317255507146" at="62,84,65,22">
+      <scope id="8918166317255507146" at="61,84,64,22">
         <var name="properties" id="8918166317255507146" />
       </scope>
-      <scope id="8918166317255507155" at="83,122,86,72">
+      <scope id="8918166317255507155" at="82,80,85,72">
         <var name="seq" id="8918166317255516805" />
       </scope>
-      <scope id="3071492597344701391" at="44,0,48,0" />
-      <scope id="8918166317255507155" at="70,0,74,0" />
-      <scope id="8918166317255507155" at="78,0,82,0" />
-      <scope id="3071492597344701391" at="50,109,55,20">
+      <scope id="3071492597344701391" at="43,0,47,0" />
+      <scope id="8918166317255507155" at="69,0,73,0" />
+      <scope id="8918166317255507155" at="77,0,81,0" />
+      <scope id="3071492597344701391" at="49,109,54,20">
         <var name="result" id="3071492597344701391" />
       </scope>
-      <scope id="8918166317255507146" at="61,0,67,0" />
-      <scope id="8918166317255507155" at="82,0,88,0">
+      <scope id="8918166317255507146" at="60,0,66,0" />
+      <scope id="8918166317255507155" at="81,0,87,0">
         <var name="_context" id="8918166317255507155" />
-        <var name="operationContext" id="8918166317255507155" />
       </scope>
-      <scope id="3071492597344701391" at="49,0,57,0">
+      <scope id="3071492597344701391" at="48,0,56,0">
         <var name="checkingNodeContext" id="3071492597344701391" />
         <var name="node" id="3071492597344701391" />
         <var name="propertyValue" id="3071492597344701391" />
       </scope>
-      <scope id="8918166317255507155" at="76,56,88,10" />
-      <scope id="8918166317255507155" at="74,0,90,0" />
-      <scope id="8918166317255507146" at="68,90,93,22">
+      <scope id="8918166317255507155" at="75,56,87,10" />
+      <scope id="8918166317255507155" at="73,0,89,0" />
+      <scope id="8918166317255507146" at="67,90,92,22">
         <var name="d0" id="8918166317255507155" />
         <var name="references" id="8918166317255507146" />
       </scope>
-      <scope id="8918166317255507146" at="67,0,95,0" />
-      <unit id="8918166317255507146" at="97,0,100,0" name="messages.customization.constraints.TestConcept_Constraints$CONCEPTS" />
-      <unit id="8918166317255507146" at="101,0,104,0" name="messages.customization.constraints.TestConcept_Constraints$PROPS" />
-      <unit id="8918166317255507146" at="105,0,108,0" name="messages.customization.constraints.TestConcept_Constraints$LINKS" />
-      <unit id="8918166317255507155" at="77,19,88,9" name="messages.customization.constraints.TestConcept_Constraints$1$1" />
-      <unit id="3071492597344701391" at="40,0,61,0" name="messages.customization.constraints.TestConcept_Constraints$Prop_Property" />
-      <unit id="8918166317255507155" at="69,48,90,5" name="messages.customization.constraints.TestConcept_Constraints$1" />
-      <unit id="8918166317255507146" at="35,0,109,0" name="messages.customization.constraints.TestConcept_Constraints" />
+      <scope id="8918166317255507146" at="66,0,94,0" />
+      <unit id="8918166317255507146" at="96,0,99,0" name="messages.customization.constraints.TestConcept_Constraints$CONCEPTS" />
+      <unit id="8918166317255507146" at="100,0,103,0" name="messages.customization.constraints.TestConcept_Constraints$PROPS" />
+      <unit id="8918166317255507146" at="104,0,107,0" name="messages.customization.constraints.TestConcept_Constraints$LINKS" />
+      <unit id="8918166317255507155" at="76,19,87,9" name="messages.customization.constraints.TestConcept_Constraints$1$1" />
+      <unit id="3071492597344701391" at="39,0,60,0" name="messages.customization.constraints.TestConcept_Constraints$Prop_Property" />
+      <unit id="8918166317255507155" at="68,48,89,5" name="messages.customization.constraints.TestConcept_Constraints$1" />
+      <unit id="8918166317255507146" at="34,0,108,0" name="messages.customization.constraints.TestConcept_Constraints" />
     </file>
   </root>
 </debug-info>

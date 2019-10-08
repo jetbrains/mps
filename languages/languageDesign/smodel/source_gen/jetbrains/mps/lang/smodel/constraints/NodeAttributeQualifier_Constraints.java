@@ -52,7 +52,7 @@ public class NodeAttributeQualifier_Constraints extends BaseConstraintsDescripto
             return breakingNode_40vqv7_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(AttributeDesignTimeOperations.getApplicableAttributes(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.AttributeAccess$w9), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748")));
           }
         };

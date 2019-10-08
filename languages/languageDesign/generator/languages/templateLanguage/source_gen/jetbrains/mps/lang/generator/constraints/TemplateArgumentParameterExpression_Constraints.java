@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
@@ -47,7 +46,7 @@ public class TemplateArgumentParameterExpression_Constraints extends BaseConstra
             return breakingNode_teh60w_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.IParameterizedTemplate$qA)) {
               return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.IParameterizedTemplate$qA), LINKS.parameter$AB01));
             }

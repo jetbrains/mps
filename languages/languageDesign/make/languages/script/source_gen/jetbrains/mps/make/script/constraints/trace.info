@@ -223,7 +223,7 @@
       <node id="682890046602395484" at="47,44,48,24" concept="5" />
       <node id="682890046602572854" at="51,128,52,99" concept="5" />
       <node id="682890046602395484" at="55,63,56,57" concept="5" />
-      <node id="6836281137582794568" at="59,122,60,297" concept="5" />
+      <node id="6836281137582794568" at="59,80,60,297" concept="5" />
       <node id="682890046602395483" at="64,6,65,131" concept="4" />
       <node id="682890046602395484" at="65,131,66,42" concept="1" />
       <node id="682890046602395483" at="66,42,67,22" concept="5" />
@@ -239,7 +239,7 @@
       <node id="682890046602395484" at="46,0,50,0" concept="3" trace="hasPresentation#()Z" />
       <node id="682890046602395484" at="50,0,54,0" concept="3" trace="getPresentation#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferencePresentationContext;)Ljava/lang/String;" />
       <node id="682890046602395484" at="54,0,58,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="682890046602395484" at="58,0,62,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="682890046602395484" at="58,0,62,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
       <node id="682890046602395484" at="44,56,62,10" concept="5" />
       <node id="682890046602395484" at="42,0,64,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="682890046602395484" at="36,90,64,6" concept="4" />
@@ -249,7 +249,7 @@
       <scope id="682890046602395484" at="47,44,48,24" />
       <scope id="682890046602572853" at="51,128,52,99" />
       <scope id="682890046602395484" at="55,63,56,57" />
-      <scope id="682890046602395484" at="59,122,60,297" />
+      <scope id="682890046602395484" at="59,80,60,297" />
       <scope id="682890046602395483" at="31,0,34,0" />
       <scope id="682890046602395484" at="38,0,42,0" />
       <scope id="682890046602395484" at="46,0,50,0" />
@@ -260,7 +260,6 @@
       <scope id="682890046602395484" at="54,0,58,0" />
       <scope id="682890046602395484" at="58,0,62,0">
         <var name="_context" id="682890046602395484" />
-        <var name="operationContext" id="682890046602395484" />
       </scope>
       <scope id="682890046602395484" at="44,56,62,10" />
       <scope id="682890046602395484" at="42,0,64,0" />
@@ -284,7 +283,7 @@
       <node id="682890046602397408" at="47,44,48,24" concept="5" />
       <node id="682890046602572864" at="51,128,52,99" concept="5" />
       <node id="682890046602397408" at="55,63,56,57" concept="5" />
-      <node id="6836281137582794405" at="59,122,60,297" concept="5" />
+      <node id="6836281137582794405" at="59,80,60,297" concept="5" />
       <node id="682890046602397406" at="64,6,65,131" concept="4" />
       <node id="682890046602397408" at="65,131,66,42" concept="1" />
       <node id="682890046602397406" at="66,42,67,22" concept="5" />
@@ -300,7 +299,7 @@
       <node id="682890046602397408" at="46,0,50,0" concept="3" trace="hasPresentation#()Z" />
       <node id="682890046602397408" at="50,0,54,0" concept="3" trace="getPresentation#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferencePresentationContext;)Ljava/lang/String;" />
       <node id="682890046602397408" at="54,0,58,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="682890046602397408" at="58,0,62,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="682890046602397408" at="58,0,62,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
       <node id="682890046602397408" at="44,56,62,10" concept="5" />
       <node id="682890046602397408" at="42,0,64,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="682890046602397408" at="36,90,64,6" concept="4" />
@@ -310,7 +309,7 @@
       <scope id="682890046602397408" at="47,44,48,24" />
       <scope id="682890046602572863" at="51,128,52,99" />
       <scope id="682890046602397408" at="55,63,56,57" />
-      <scope id="682890046602397408" at="59,122,60,297" />
+      <scope id="682890046602397408" at="59,80,60,297" />
       <scope id="682890046602397406" at="31,0,34,0" />
       <scope id="682890046602397408" at="38,0,42,0" />
       <scope id="682890046602397408" at="46,0,50,0" />
@@ -321,7 +320,6 @@
       <scope id="682890046602397408" at="54,0,58,0" />
       <scope id="682890046602397408" at="58,0,62,0">
         <var name="_context" id="682890046602397408" />
-        <var name="operationContext" id="682890046602397408" />
       </scope>
       <scope id="682890046602397408" at="44,56,62,10" />
       <scope id="682890046602397408" at="42,0,64,0" />

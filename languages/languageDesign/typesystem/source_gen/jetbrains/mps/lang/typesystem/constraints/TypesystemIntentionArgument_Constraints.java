@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -48,7 +47,7 @@ public class TypesystemIntentionArgument_Constraints extends BaseConstraintsDesc
             return breakingNode_8vu3gr_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> nodes = new ArrayList<SNode>();
             SNode helginsIntention = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TypesystemIntention$aE, true, false);
             if (helginsIntention != null) {

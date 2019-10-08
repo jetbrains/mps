@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -49,7 +48,7 @@ public class SimpleBuilderDeclaration_Constraints extends BaseConstraintsDescrip
             return breakingNode_idnwk4_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             SNode container = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SimpleBuilders$hl, true, false);
             for (SNode builders : SimpleBuilders__BehaviorDescriptor.getAncestors_id5oOCLRAZ01U.invoke(container)) {

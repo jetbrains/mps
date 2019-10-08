@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -70,7 +69,7 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_lq9qwe_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(ListSequence.fromList(PersistentConfiguration__BehaviorDescriptor.getContextPersistentProperties_idO$iR4J$g22.invoke(SNodeOperations.asSConcept(CONCEPTS.PersistentConfiguration$fY), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(it, LINKS.type$pLrO), createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1a0a0a0d());

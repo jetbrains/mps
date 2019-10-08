@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -51,7 +50,7 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
             return breakingNode_184bjp_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode contents = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ModificationStatement$vQ), LINKS.modifiedGroup$KYqN), LINKS.contents$qi3t);
             if (SNodeOperations.isInstanceOf(contents, CONCEPTS.ElementListContents$QC)) {
               return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(contents, CONCEPTS.ElementListContents$QC), LINKS.reference$mcPJ)).where(new IWhereFilter<SNode>() {
@@ -79,7 +78,7 @@ public class ModificationStatement_Constraints extends BaseConstraintsDescriptor
             return breakingNode_184bjp_a0a0a0a0a1a0a0b0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> actionGroupDeclarations = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ActionGroupDeclaration$YL);
             SNode groupDeclaration = SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.ActionGroupDeclaration$YL, false, false);
             List<SNode> thisGroupChildGroups = ((List<SNode>) ListSequence.fromList(SNodeOperations.getNodeDescendants(groupDeclaration, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {

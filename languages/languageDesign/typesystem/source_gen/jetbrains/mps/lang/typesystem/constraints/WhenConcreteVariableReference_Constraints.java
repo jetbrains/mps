@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -48,7 +47,7 @@ public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDe
             return breakingNode_acirdv_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> whenConcreteStatements = SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.WhenConcreteStatement$JZ, false);
             List<SNode> declarations = new ArrayList<SNode>();
             for (SNode whenConcreteStatement : whenConcreteStatements) {

@@ -24,7 +24,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import java.util.ArrayList;
@@ -138,7 +137,7 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_nfyhm3_a0a0a0a0a1a0a0a0g;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             // links declared in hierarchy of enclosing concept. 
             if (_context.getReferenceNode() == null) {
               return null;

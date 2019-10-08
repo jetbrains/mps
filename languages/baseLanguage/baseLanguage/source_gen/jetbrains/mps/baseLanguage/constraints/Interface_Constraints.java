@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeParent;
@@ -43,7 +42,7 @@ public class Interface_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_y7fug_a0a0a0a0a0a0a0a2;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ClassifierScopes.getVisibleInterfacesScope(_context.getContextNode());
           }
         };

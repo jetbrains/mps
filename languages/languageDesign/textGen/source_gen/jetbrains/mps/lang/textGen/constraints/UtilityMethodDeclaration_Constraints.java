@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -43,7 +42,7 @@ public class UtilityMethodDeclaration_Constraints extends BaseConstraintsDescrip
             return breakingNode_o7w1nm_a0a0a0a0a0a0a0a2;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> methods = new ArrayList<SNode>();
             SNode textGen = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.LanguageTextGenDeclaration$8b, false, false);
             if (textGen != null) {

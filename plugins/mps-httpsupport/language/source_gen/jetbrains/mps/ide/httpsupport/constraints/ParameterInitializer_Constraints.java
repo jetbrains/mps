@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -68,7 +67,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
             return breakingNode_9zeh4o_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode bilder = (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.RequestURLBuilderExpression$JC) ? SNodeOperations.as(_context.getContextNode(), CONCEPTS.RequestURLBuilderExpression$JC) : SNodeOperations.as(SNodeOperations.getParent(_context.getContextNode()), CONCEPTS.RequestURLBuilderExpression$JC));
 
             return new FilteringScope(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(bilder, LINKS.requestHandler$Zk4n), CONCEPTS.QueryParameter$k9, null)) {

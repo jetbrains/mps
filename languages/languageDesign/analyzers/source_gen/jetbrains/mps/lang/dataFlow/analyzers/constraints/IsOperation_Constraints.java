@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -67,7 +66,7 @@ public class IsOperation_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_ejw1sa_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode analyzer = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Analyzer$Q4, false, false);
             return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.instruction$3MTk)).concat(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SLinkOperations.getChildren(analyzer, LINKS.usedContainers$rsJ_), LINKS.containter$lqfw), LINKS.instruction$EplU))));
           }

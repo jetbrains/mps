@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -49,7 +48,7 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
             return breakingNode_dv0ljq_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type 
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
             SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {

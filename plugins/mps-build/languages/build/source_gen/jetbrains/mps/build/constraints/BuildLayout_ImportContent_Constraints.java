@@ -67,7 +67,7 @@ public class BuildLayout_ImportContent_Constraints extends BaseConstraintsDescri
             return breakingNode_cl5pbm_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode contextProject = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BuildProject$BF, true, false);
             if ((contextProject != null)) {
               return new FilteringScope(ScopeUtil.getVisibleArtifactsScope(contextProject, true)) {

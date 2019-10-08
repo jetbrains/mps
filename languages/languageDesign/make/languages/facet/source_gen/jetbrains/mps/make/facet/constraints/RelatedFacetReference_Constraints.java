@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -46,7 +45,7 @@ public class RelatedFacetReference_Constraints extends BaseConstraintsDescriptor
             return breakingNode_9mk1l7_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(Sequence.fromIterable(new FacetsScope(_context.getContextNode()).getAvailableElements(null)).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 return SNodeOperations.cast(it, CONCEPTS.FacetDeclaration$al);

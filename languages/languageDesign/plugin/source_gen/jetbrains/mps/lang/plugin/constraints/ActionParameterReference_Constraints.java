@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -65,7 +64,7 @@ public class ActionParameterReference_Constraints extends BaseConstraintsDescrip
             return breakingNode_ikwodz_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode sc = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ParameterizedShortcutChange$V3, true, false);
             return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(sc, LINKS.action$f4CQ), LINKS.constructionParameter$ikfq));
           }

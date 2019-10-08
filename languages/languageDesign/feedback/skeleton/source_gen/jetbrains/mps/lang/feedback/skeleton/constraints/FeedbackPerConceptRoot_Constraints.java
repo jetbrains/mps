@@ -24,7 +24,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -89,7 +88,7 @@ public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescripto
             return breakingNode_pwu0qc_a0a0a0a0a1a0a0a0e;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(_context.getContextNode())) {
               Iterable<SNode> seq = Sequence.<SNode>singleton(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(_context.getContextNode()).getRepository()));
               return ListScope.forNamedElements(seq);

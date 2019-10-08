@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -73,7 +72,7 @@ public class ConstantValue_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_r7ripe_a0a0a0a0a1a0a0a0e;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.StaticFieldDeclaration$R5)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return (SLinkOperations.getTarget(it, LINKS.initializer$KgD) != null) && SPropertyOperations.getBoolean(it, PROPS.isFinal$hIht);

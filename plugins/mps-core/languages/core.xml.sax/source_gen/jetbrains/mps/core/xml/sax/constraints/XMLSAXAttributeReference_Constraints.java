@@ -79,7 +79,7 @@ public class XMLSAXAttributeReference_Constraints extends BaseConstraintsDescrip
             return breakingNode_4osf4s_a0a2a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.XMLSAXAttributeRule$K1);
             return (scope == null ? new EmptyScope() : scope);
           }

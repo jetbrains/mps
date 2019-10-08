@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -84,7 +83,7 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
             return breakingNode_3lmvlt_a0a0a0a0a1a0a0a0e;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode args = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CustomConstructor$$1, false, false), LINKS.arguments$tz7x);
             if (SNodeOperations.isInstanceOf(args, CONCEPTS.ListArgumentsClause$21)) {
               List<SNode> result = new ArrayList<SNode>();

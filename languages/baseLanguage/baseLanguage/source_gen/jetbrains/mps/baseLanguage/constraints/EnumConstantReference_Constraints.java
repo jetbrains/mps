@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -45,7 +44,7 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
             return breakingNode_xpgkri_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             if (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO) && (SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$9jPZ) != null)) {
               return new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$9jPZ)));
             } else {

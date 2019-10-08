@@ -81,7 +81,7 @@ public class ResourceClassifierType_Constraints extends BaseConstraintsDescripto
             return breakingNode_ymgo28_a0a2a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(Sequence.fromIterable(SNodeOperations.ofConcept(ClassifierScopes.getVisibleClassifiersScope((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), false).getAvailableElements(null), CONCEPTS.Classifier$hJ)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(it, SLinkOperations.getTarget(_quotation_createNode_ymgo28_a0a0a0a0a0a0a3a0a0a1a0a0a0d(), LINKS.classifier$pQ_R)) || Sequence.fromIterable((SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(it, CONCEPTS.NamedTupleDeclaration$51), LINKS.implements$IXMi), LINKS.classifier$pQ_R))).any(new IWhereFilter<SNode>() {

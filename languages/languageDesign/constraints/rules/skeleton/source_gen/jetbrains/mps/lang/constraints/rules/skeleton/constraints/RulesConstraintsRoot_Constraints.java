@@ -24,7 +24,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Language;
@@ -99,7 +98,7 @@ public class RulesConstraintsRoot_Constraints extends BaseConstraintsDescriptor 
             return breakingNode_t9lq58_a0a0a0a0a1a0a0a0f;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SModel structure = check_t9lq58_a0a0b0a0a0b0a0a0a5(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
             if (structure == null) {
               return new EmptyScope();

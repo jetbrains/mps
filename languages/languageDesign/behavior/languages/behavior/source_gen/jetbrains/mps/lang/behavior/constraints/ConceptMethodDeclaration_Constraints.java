@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
@@ -72,7 +71,7 @@ public class ConceptMethodDeclaration_Constraints extends BaseConstraintsDescrip
             return breakingNode_sgoqec_a0a0a0a0a4a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode concept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ConceptBehavior$8P, true, false), LINKS.concept$v6ns);
             List<SNode> methods = AbstractConceptDeclaration__BehaviorDescriptor.getVirtualConceptMethods_idhEwILHM.invoke(concept);
             return ListScope.forResolvableElements(ListSequence.fromList(methods).where(new IWhereFilter<SNode>() {

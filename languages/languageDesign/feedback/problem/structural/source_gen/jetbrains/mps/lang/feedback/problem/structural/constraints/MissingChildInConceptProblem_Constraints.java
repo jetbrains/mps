@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
@@ -45,7 +44,7 @@ public class MissingChildInConceptProblem_Constraints extends BaseConstraintsDes
             return breakingNode_3ysgg4_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode concrete = SPointerOperations.resolveNode(new SNodePointer("r:63ce0387-25e9-4762-bec1-dac3eb032399(jetbrains.mps.lang.feedback.problem.structural.feedback)", "2554379189374330908"), SNodeOperations.getModel(_context.getContextNode()).getRepository());
             return ListScope.forResolvableElements(Sequence.<SNode>singleton(concrete));
           }

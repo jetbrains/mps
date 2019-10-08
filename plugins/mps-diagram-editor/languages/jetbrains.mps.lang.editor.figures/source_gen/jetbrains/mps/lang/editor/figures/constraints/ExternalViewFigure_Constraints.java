@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
@@ -67,7 +66,7 @@ public class ExternalViewFigure_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_8qo5s5_a0a0a0a0a1a0a0a0e;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return new ExternalViewClassifierScope(SNodeOperations.getModel(_context.getContextNode()));
           }
         };

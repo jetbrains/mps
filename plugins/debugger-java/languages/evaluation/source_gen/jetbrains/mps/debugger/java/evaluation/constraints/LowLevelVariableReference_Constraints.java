@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -49,7 +48,7 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
             return breakingNode_8w715n_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode evaluator = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EvaluatorConcept$g2, false, false);
             if (SPropertyOperations.getBoolean(evaluator, PROPS.isShowContext$IspU)) {
               return ListScope.forResolvableElements(SLinkOperations.getChildren(evaluator, LINKS.variables$IsnY));

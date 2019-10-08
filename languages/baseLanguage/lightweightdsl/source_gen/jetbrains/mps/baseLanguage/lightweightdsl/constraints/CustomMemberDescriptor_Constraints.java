@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.structure.constraints.Scopes;
@@ -81,7 +80,7 @@ public class CustomMemberDescriptor_Constraints extends BaseConstraintsDescripto
             return breakingNode_9ubvx4_a0a0a0a0a1a0a0a0e;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return new FilteringScope(Scopes.forConcepts(_context.getContextNode(), CONCEPTS.INamedConcept$nV)) {
               @Override
               public boolean isExcluded(SNode node) {

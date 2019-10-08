@@ -55,7 +55,7 @@ public class BuildLayout_FilesOf_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_jcryfz_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildSource_FilesetProjectPart$Od);
             return (scope == null ? new EmptyScope() : scope);
           }

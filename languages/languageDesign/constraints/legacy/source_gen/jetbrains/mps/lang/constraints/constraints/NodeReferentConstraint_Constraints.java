@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.constraints.behavior.NodeReferentConstraint__BehaviorDescriptor;
@@ -46,7 +45,7 @@ public class NodeReferentConstraint_Constraints extends BaseConstraintsDescripto
             return breakingNode_hkfysg_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             // links declared in specified concept 
             SNode applicableConcept = NodeReferentConstraint__BehaviorDescriptor.getApplicableConcept_idhEwIMWq.invoke(_context.getReferenceNode());
             if (applicableConcept == null) {

@@ -55,7 +55,7 @@ public class ClassifierClassExpression_Constraints extends BaseConstraintsDescri
             return breakingNode_w155fn_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ClassifierScopes.getWithClassExpressionClassifiers(_context.getContextNode());
           }
         };

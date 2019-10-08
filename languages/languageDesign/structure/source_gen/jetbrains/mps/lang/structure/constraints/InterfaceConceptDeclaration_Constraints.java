@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -38,7 +37,7 @@ public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDesc
             return breakingNode_vsd8pt_a0a0a0a0a0a0a0a2;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.InterfaceConceptDeclaration$MT);
           }
         };

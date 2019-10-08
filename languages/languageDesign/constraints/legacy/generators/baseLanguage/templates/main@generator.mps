@@ -3997,13 +3997,6 @@
           <property role="1EzhhJ" value="false" />
           <property role="TrG5h" value="createScope" />
           <property role="DiZV1" value="false" />
-          <node concept="37vLTG" id="59r$iG97NUJ" role="3clF46">
-            <property role="TrG5h" value="operationContext" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="59r$iG97NUK" role="1tU5fm">
-              <ref role="3uigEE" to="w1kc:~IOperationContext" resolve="IOperationContext" />
-            </node>
-          </node>
           <node concept="37vLTG" id="59r$iG97NUL" role="3clF46">
             <property role="TrG5h" value="_context" />
             <property role="3TUv4t" value="true" />

@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -46,7 +45,7 @@ public class OrPatternVariableReference_Constraints extends BaseConstraintsDescr
             return breakingNode_8aolto_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode orPattern = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.OrPattern$zL, false, false);
             return ListScope.forResolvableElements(check_8aolto_a0b0b0a0a0b0a0a0a2(orPattern));
           }

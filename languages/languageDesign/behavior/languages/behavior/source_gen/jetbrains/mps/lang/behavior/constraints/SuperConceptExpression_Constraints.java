@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -68,7 +67,7 @@ public class SuperConceptExpression_Constraints extends BaseConstraintsDescripto
             return breakingNode_elg54e_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             SNode abstractConceptDeclaration = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.ConceptBehavior$8P, false, false), LINKS.concept$v6ns);
             if (SNodeOperations.isInstanceOf(abstractConceptDeclaration, CONCEPTS.ConceptDeclaration$qU)) {

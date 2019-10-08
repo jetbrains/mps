@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -46,7 +45,7 @@ public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstr
             return breakingNode_q09jue_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode group = (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.BuildMps_IdeaPluginGroup$9v) ? SNodeOperations.cast(_context.getContextNode(), CONCEPTS.BuildMps_IdeaPluginGroup$9v) : SNodeOperations.as(SNodeOperations.getParent(_context.getContextNode()), CONCEPTS.BuildMps_IdeaPluginGroup$9v));
             if ((group == null)) {
               return new EmptyScope();

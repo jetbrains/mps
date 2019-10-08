@@ -59,7 +59,7 @@ public class DefaultClassCreator_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_puti1i_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.NestedNewExpression$79, true, false) == null)) {
               return ClassifierScopes.getVisibleClassifiersWithDefaultConstructors(_context.getContextNode());
             }

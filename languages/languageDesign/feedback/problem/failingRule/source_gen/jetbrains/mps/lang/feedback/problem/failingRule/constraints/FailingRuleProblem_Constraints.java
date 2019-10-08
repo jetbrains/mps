@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -68,7 +67,7 @@ public class FailingRuleProblem_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_9cv73f_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((_context.getContextNode() != null)) {
               SNode containingRoot = SNodeOperations.getContainingRoot(_context.getContextNode());
               final SNode concept = (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.FeedbackPerConceptRoot$oJ) ? SLinkOperations.getTarget(SNodeOperations.cast(containingRoot, CONCEPTS.FeedbackPerConceptRoot$oJ), LINKS.concept$KXj8) : null);

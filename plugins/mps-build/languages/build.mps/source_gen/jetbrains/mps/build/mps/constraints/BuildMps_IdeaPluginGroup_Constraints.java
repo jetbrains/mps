@@ -60,7 +60,7 @@ public class BuildMps_IdeaPluginGroup_Constraints extends BaseConstraintsDescrip
             return breakingNode_h6r07b_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMps_Group$iO);
             return (scope == null ? new EmptyScope() : scope);
           }

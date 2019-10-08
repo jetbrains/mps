@@ -103,7 +103,7 @@ public class AnonymousClass_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_vrtrpd_a0a2a0a0a1a0a0a0e;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             // false is essential here: not include parent hierarchy into the scope (will lead to infinite rescursion) 
             if ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.NestedNewExpression$79, true, false) == null)) {
               return ClassifierScopes.getVisibleClassifiersScope(_context.getContextNode(), false);

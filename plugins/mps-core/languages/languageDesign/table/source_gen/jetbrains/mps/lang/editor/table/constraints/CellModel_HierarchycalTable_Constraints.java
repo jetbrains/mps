@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -48,7 +47,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
             return breakingNode_6tiwsq_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(CellModel_HierarchycalTable__BehaviorDescriptor.getContainingConceptDeclaration_id5p3TFWLvETA.invoke(_context.getReferenceNode()))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it));
@@ -72,7 +71,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
             return breakingNode_6tiwsq_a0a0a0a0a1a0a0b0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(CellModel_HierarchycalTable__BehaviorDescriptor.getContainingConceptDeclaration_id5p3TFWLvETA.invoke(_context.getReferenceNode()))).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(it));
@@ -96,7 +95,7 @@ public class CellModel_HierarchycalTable_Constraints extends BaseConstraintsDesc
             return breakingNode_6tiwsq_a0a0a0a0a1a0a0c0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.rowsLinkDeclaration$_g$9) == null)) {
               return null;
             }

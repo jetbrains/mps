@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -45,7 +44,7 @@ public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDe
             return breakingNode_xefsui_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode container = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseExtensionMethodContainer$b0, false, false);
             return ListScope.forResolvableElements(SLinkOperations.getChildren(container, LINKS.staticFields$ULMW));
           }

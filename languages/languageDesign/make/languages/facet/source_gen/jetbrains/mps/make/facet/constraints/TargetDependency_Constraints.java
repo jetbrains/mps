@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.make.facet.behavior.FacetDeclaration__BehaviorDescriptor;
@@ -47,7 +46,7 @@ public class TargetDependency_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_hpg3kp_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Iterable<SNode> relatedFacets = FacetDeclaration__BehaviorDescriptor.allRelated_id7fB872uckWE.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.FacetDeclaration$al, false, false));
             return ListScope.forResolvableElements(Sequence.fromIterable(relatedFacets).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode it) {

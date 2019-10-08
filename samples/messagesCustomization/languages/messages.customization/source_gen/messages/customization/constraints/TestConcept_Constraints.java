@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -80,7 +79,7 @@ public class TestConcept_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_72100m_a0a0a0a0a1a0a0a0e;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SModel> seq = ListSequence.fromList(new ArrayList<SModel>());
             ListSequence.fromList(seq).addElement(SNodeOperations.getModel(_context.getContextNode()));
             return new ModelsScope(seq, false, CONCEPTS.TestConcept$83);

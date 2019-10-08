@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -44,7 +43,7 @@ public class ValueReference_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_r7tp2g_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode plan = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Plan$nk, true, false);
             return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(plan, null, false, new SAbstractConcept[]{}));
           }

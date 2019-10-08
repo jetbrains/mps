@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -54,7 +53,7 @@ public class AttributeStyleClassItem_Constraints extends BaseConstraintsDescript
             return breakingNode_ydnl2u_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SModel> models = ListSequence.fromList(new ArrayList<SModel>());
             ListSequence.fromList(models).addElement(SNodeOperations.getModel(_context.getContextNode()));
             ListSequence.fromList(models).addSequence(ListSequence.fromList(SModelOperations.allImportedModels(SNodeOperations.getModel(_context.getContextNode()))));

@@ -24,7 +24,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -102,7 +101,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_guz8cy_a0a0a0a0a1a0a0a0f;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             if (!(SModuleOperations.isAspect(SNodeOperations.getModel(_context.getContextNode()), "constraints"))) {
               return new EmptyScope();
             }
@@ -131,7 +130,7 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_guz8cy_a0a0a0a0a1a0a0b0f;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode conceptNode = SLinkOperations.getTarget(SNodeOperations.as(_context.getReferenceNode(), CONCEPTS.ConceptConstraints$St), LINKS.concept$rRWx);
             return new FilteringScope(Scopes.forLanguageConcepts(conceptNode, CONCEPTS.ConceptDeclaration$qU)) {
               @Override

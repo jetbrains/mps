@@ -16,7 +16,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -67,7 +66,7 @@ public class TemplateParameterReference_Constraints extends BaseConstraintsDescr
             return breakingNode_hn11y1_a0a0a0a0a1a0a0a0d;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode template = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.PersistentConfigurationTemplate$Kt, false, false);
             if ((template == null)) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));

@@ -52,7 +52,7 @@ public class BuildSourceMacroRelativePath_Constraints extends BaseConstraintsDes
             return breakingNode_6szw9x_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMacro$RE);
             return (scope == null ? new EmptyScope() : scope);
           }

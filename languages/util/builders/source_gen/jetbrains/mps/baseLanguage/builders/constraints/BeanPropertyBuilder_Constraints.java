@@ -65,7 +65,7 @@ public class BeanPropertyBuilder_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_uhv5x2_a0a2a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
             SNode contextBuilder = Builder__BehaviorDescriptor.getContextBuilder_id67LR$5LPv$c.invoke(SNodeOperations.asSConcept(CONCEPTS.Builder$C$), enclosingNode);
             SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(Builder__BehaviorDescriptor.getResultType_id67LR$5LQPoF.invoke(contextBuilder), CONCEPTS.ClassifierType$IZ);

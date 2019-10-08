@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -52,7 +51,7 @@ public class TransformationMenuPart_IncludeSubstituteMenu_Constraints extends Ba
             return breakingNode_bx0s7e_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$lF, true, false);
             SNode concept = IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(menu);
             Iterable<SNode> links = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept)).where(new IWhereFilter<SNode>() {

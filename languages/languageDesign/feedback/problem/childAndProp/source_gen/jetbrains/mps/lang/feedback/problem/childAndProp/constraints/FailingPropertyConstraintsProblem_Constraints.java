@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
@@ -46,7 +45,7 @@ public class FailingPropertyConstraintsProblem_Constraints extends BaseConstrain
             return breakingNode_nfg5l8_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode concrete = SPointerOperations.resolveNode(new SNodePointer("r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)", "24399255755876627"), SNodeOperations.getModel(_context.getContextNode()).getRepository());
             return ListScope.forResolvableElements(Sequence.<SNode>singleton(concrete));
           }
@@ -67,7 +66,7 @@ public class FailingPropertyConstraintsProblem_Constraints extends BaseConstrain
             return breakingNode_nfg5l8_a0a0a0a0a1a0a0b0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.PropertyDeclaration$c5);
           }
         };

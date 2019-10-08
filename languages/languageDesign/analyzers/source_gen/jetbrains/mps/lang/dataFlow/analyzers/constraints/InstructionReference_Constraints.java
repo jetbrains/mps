@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -49,7 +48,7 @@ public class InstructionReference_Constraints extends BaseConstraintsDescriptor 
             return breakingNode_yymroq_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             SNode analyzer = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Rule$Wr, false, false), LINKS.analyzer$KED9);
             ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(analyzer, LINKS.instruction$3MTk)).concat(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SLinkOperations.getChildren(analyzer, LINKS.usedContainers$rsJ_), LINKS.containter$lqfw), LINKS.instruction$EplU))));

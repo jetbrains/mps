@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.baseLanguageInternal.behavior.ExtractStaticMethod_CallExpression__BehaviorDescriptor;
@@ -43,7 +42,7 @@ public class ExtractStaticMethod_CallExpression_Constraints extends BaseConstrai
             return breakingNode_v4p7j2_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(ExtractStaticMethod_CallExpression__BehaviorDescriptor.getMethods_id55buE1DVoKQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ExtractStaticMethod_CallExpression$Wu), _context.getContextNode()));
           }
         };

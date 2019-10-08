@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -50,7 +49,7 @@ public class ExtractStaticInnerClassCreator_Constraints extends BaseConstraintsD
             return breakingNode_4gp7p5_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> res = new ArrayList<SNode>();
             SNode context = _context.getContextNode();
             for (SNode n : SNodeOperations.getNodeAncestors(context, CONCEPTS.ExtractStaticInnerClassExpression$2p, false)) {

@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -43,7 +42,7 @@ public class BuildMpsLayout_ModuleJars_Constraints extends BaseConstraintsDescri
             return breakingNode_9ulpon_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope outer = Scope.getScope(Scope.parent(_context.getContextNode()), _context.getContextNode(), CONCEPTS.BuildMps_AbstractModule$fB);
             return (outer == null ? null : new FilteringScope(outer) {
               @Override

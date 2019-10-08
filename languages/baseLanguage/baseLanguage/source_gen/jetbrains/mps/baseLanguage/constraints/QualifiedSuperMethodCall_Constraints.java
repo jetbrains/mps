@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -55,7 +54,7 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
             return breakingNode_4xi9kq_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> ancestors = SNodeOperations.getNodeAncestors(_context.getReferenceNode(), CONCEPTS.Classifier$hJ, false);
             List<SNode> result = new ArrayList<SNode>();
             for (SNode clazz : ancestors) {
@@ -85,7 +84,7 @@ public class QualifiedSuperMethodCall_Constraints extends BaseConstraintsDescrip
             return breakingNode_4xi9kq_a0a0a0a0a1a0a0b0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode superClassifier = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.classifier$$cg$);
             if (superClassifier == null) {
               return new EmptyScope();

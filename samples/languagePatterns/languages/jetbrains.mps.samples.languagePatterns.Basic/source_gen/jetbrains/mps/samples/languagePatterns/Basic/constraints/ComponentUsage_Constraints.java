@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -49,7 +48,7 @@ public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_4swebx_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             Iterable<SNode> unusedComponents = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Component$HX)).where(new IWhereFilter<SNode>() {
               public boolean accept(final SNode b) {
                 return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ComponentUsage$e0)).where(new IWhereFilter<SNode>() {

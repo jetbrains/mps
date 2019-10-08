@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -48,7 +47,7 @@ public class TargetDeclaration_Constraints extends BaseConstraintsDescriptor {
             return breakingNode_5z7oj4_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             return ListScope.forResolvableElements(Sequence.fromIterable(FacetDeclaration__BehaviorDescriptor.allExtends_id6O0kUTrsU9c.invoke(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.FacetDeclaration$al))).skip(1).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode fd) {
                 return SLinkOperations.getChildren(fd, LINKS.targetDeclaration$DCGr);

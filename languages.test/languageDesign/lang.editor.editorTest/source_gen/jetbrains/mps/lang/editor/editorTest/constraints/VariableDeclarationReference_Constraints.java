@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -46,7 +45,7 @@ public class VariableDeclarationReference_Constraints extends BaseConstraintsDes
             return breakingNode_98f22q_a0a0a0a0a1a0a0a0c;
           }
           @Override
-          public Scope createScope(final IOperationContext operationContext, final ReferenceConstraintsContext _context) {
+          public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
             for (SNode block : SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.TestBlockList$U1, true)) {
               for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(block))) {
