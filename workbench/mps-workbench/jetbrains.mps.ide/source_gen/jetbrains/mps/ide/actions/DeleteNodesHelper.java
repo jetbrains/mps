@@ -16,7 +16,7 @@ import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.smodel.UndoRunnable;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import java.util.Iterator;
 import org.apache.log4j.Level;
@@ -71,8 +71,10 @@ public class DeleteNodesHelper {
     assert !(myRepository.getModelAccess().canRead()) : "can lead to deadlock";
 
     final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(myProject);
-    final _FunctionTypes._void_P0_E0 performer = new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
+    final Runnable modelCommand = new UndoRunnable.Base("Delete Nodes", null) {
+
+      @Override
+      public void run() {
         ProjectPane projectPane = ProjectPane.getInstance(ideaProject);
 
         for (Iterator<SNode> iterator = myNodesToDelete.iterator(); iterator.hasNext();) {
@@ -123,11 +125,7 @@ public class DeleteNodesHelper {
     });
 
     if (!(safe)) {
-      myRepository.getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          performer.invoke();
-        }
-      });
+      myRepository.getModelAccess().executeCommand(modelCommand);
       return;
     }
 
@@ -201,11 +199,7 @@ public class DeleteNodesHelper {
             RefactoringAccessEx.getInstance().showRefactoringView(ideaProject, new RefactoringViewAction() {
               @Override
               public void performAction(RefactoringViewItem refactoringViewItem) {
-                myRepository.getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    performer.invoke();
-                  }
-                });
+                myRepository.getModelAccess().executeCommand(modelCommand);
                 refactoringViewItem.close();
               }
             }, null, sr, searchTask, "Safe Delete");
