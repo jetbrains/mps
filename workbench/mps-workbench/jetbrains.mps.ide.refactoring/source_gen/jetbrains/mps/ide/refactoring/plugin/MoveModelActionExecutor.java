@@ -26,11 +26,11 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
-import jetbrains.mps.smodel.SModelInternal;
 import java.util.Collection;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.workbench.actions.model.DeleteModelHelper;
 import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
 
@@ -130,11 +130,12 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
         return;
       }
 
-      if (myNewModel instanceof SModelInternal && myNewModel.getModule() instanceof AbstractModule) {
+      if (myNewModel.getModule() instanceof AbstractModule) {
+        Collection<SModule> oldModuleDependencies = new GlobalModuleDependenciesManager(myOriginalModel.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE);
         Collection<SModule> exisingModuleDependencies = new GlobalModuleDependenciesManager(myNewModel.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE);
-        for (SModelReference dependency : CollectionSequence.fromCollection(((SModelInternal) myNewModel).getModelImports())) {
+        for (SModelReference dependency : SetSequence.fromSet(new ModelDependencyScanner().crossModelReferences(true).usedLanguages(false).usedConcepts(false).walk(myNewModel).getCrossModelReferences())) {
           SModule depModule = dependency.resolve(myProject.getRepository()).getModule();
-          if (!(exisingModuleDependencies.contains(depModule))) {
+          if (!(exisingModuleDependencies.contains(depModule)) && oldModuleDependencies.contains(depModule)) {
             ((AbstractModule) myNewModel.getModule()).addDependency(depModule.getModuleReference(), false);
           }
         }
