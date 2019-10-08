@@ -217,6 +217,73 @@
       <unit id="2309416876630286921" at="28,0,104,0" name="jetbrains.mps.lang.constraints.migration.MigrateEnumPropertyUsages" />
     </file>
   </root>
+  <root nodeRef="r:749f16ef-f594-4d61-8683-63fbf8fdef8a(jetbrains.mps.lang.constraints.migration)/4778844877409295552">
+    <file name="DropMigratedRefPresentationQueries.java">
+      <node id="4778844877409295552" at="25,0,26,0" concept="4" trace="description" />
+      <node id="4778844877409295552" at="26,30,27,23" concept="9" />
+      <node id="4778844877409295552" at="30,33,31,16" concept="9" />
+      <node id="4778844877409295552" at="33,41,34,17" concept="3" />
+      <node id="4778844877409295552" at="34,17,35,16" concept="9" />
+      <node id="4778844877409316008" at="38,5,39,64" concept="8" />
+      <node id="4778844877409316008" at="39,64,40,90" concept="8" />
+      <node id="4778844877409316008" at="42,52,43,36" concept="9" />
+      <node id="4778844877409329730" at="45,8,46,146" concept="8" />
+      <node id="4778844877409371626" at="48,79,49,19" concept="2" />
+      <node id="4778844877409372956" at="50,9,51,191" concept="8" />
+      <node id="4778844877409398185" at="52,128,53,93" concept="3" />
+      <node id="4778844877409295552" at="58,51,59,151" concept="9" />
+      <node id="4778844877409295552" at="63,0,64,0" concept="12" trace="ConceptConstraints$St" />
+      <node id="4778844877409295552" at="64,0,65,0" concept="12" trace="RefPresentationMigrated$N3" />
+      <node id="4778844877409295552" at="68,0,69,0" concept="12" trace="presentation$9PzF" />
+      <node id="4778844877409295552" at="69,0,70,0" concept="12" trace="problems$o$Ki" />
+      <node id="4778844877409295552" at="70,0,71,0" concept="12" trace="referent$4reg" />
+      <node id="4778844877409295552" at="26,0,29,0" concept="7" trace="getCaption#()Ljava/lang/String;" />
+      <node id="4778844877409316008" at="42,0,45,0" concept="7" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="4778844877409339407" at="47,116,50,9" concept="6" />
+      <node id="4778844877409373380" at="51,191,54,9" concept="6" />
+      <node id="4778844877409295552" at="58,0,61,0" concept="7" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="4778844877409295552" at="29,0,33,0" concept="7" trace="isRerunnable#()Z" />
+      <node id="4778844877409295552" at="33,0,37,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4778844877409316008" at="40,90,45,8" concept="8" />
+      <node id="4778844877409331579" at="46,146,55,7" concept="5" />
+      <node id="4778844877409316008" at="37,42,56,5" concept="0" />
+      <node id="4778844877409295552" at="37,0,58,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="4778844877409295552" at="26,30,27,23" />
+      <scope id="4778844877409295552" at="30,33,31,16" />
+      <scope id="4778844877409316008" at="42,52,43,36" />
+      <scope id="4778844877409339409" at="48,79,49,19" />
+      <scope id="4778844877409373382" at="52,128,53,93" />
+      <scope id="4778844877409295552" at="58,51,59,151" />
+      <scope id="4778844877409295552" at="33,41,35,16" />
+      <scope id="4778844877409295552" at="26,0,29,0" />
+      <scope id="4778844877409316008" at="42,0,45,0" />
+      <scope id="4778844877409295552" at="58,0,61,0" />
+      <scope id="4778844877409295552" at="29,0,33,0" />
+      <scope id="4778844877409295552" at="33,0,37,0">
+        <var name="m" id="4778844877409295552" />
+      </scope>
+      <scope id="4778844877409331588" at="47,116,54,9">
+        <var name="migrated" id="4778844877409372957" />
+      </scope>
+      <scope id="4778844877409331579" at="46,146,55,7">
+        <var name="rc" id="4778844877409331582" />
+      </scope>
+      <scope id="4778844877409316008" at="38,5,55,7">
+        <var name="conceptConstraints" id="4778844877409329731" />
+        <var name="context" id="4778844877409316008" />
+        <var name="scope_yimnkw_a0e" id="4778844877409316008" />
+        <var name="scope_yimnkw_a0e_0" id="4778844877409316008" />
+      </scope>
+      <scope id="4778844877409295552" at="37,42,56,5" />
+      <scope id="4778844877409295552" at="37,0,58,0">
+        <var name="m" id="4778844877409295552" />
+      </scope>
+      <unit id="4778844877409316008" at="41,42,45,7" name="jetbrains.mps.lang.constraints.migration.DropMigratedRefPresentationQueries$1" />
+      <unit id="4778844877409295552" at="62,0,66,0" name="jetbrains.mps.lang.constraints.migration.DropMigratedRefPresentationQueries$CONCEPTS" />
+      <unit id="4778844877409295552" at="67,0,72,0" name="jetbrains.mps.lang.constraints.migration.DropMigratedRefPresentationQueries$LINKS" />
+      <unit id="4778844877409295552" at="24,0,73,0" name="jetbrains.mps.lang.constraints.migration.DropMigratedRefPresentationQueries" />
+    </file>
+  </root>
   <root nodeRef="r:749f16ef-f594-4d61-8683-63fbf8fdef8a(jetbrains.mps.lang.constraints.migration)/6358186717179175665">
     <file name="AnnotateRefPresentationQueriesAsMigrated.java">
       <node id="6358186717179175665" at="48,0,49,0" concept="4" trace="description" />
