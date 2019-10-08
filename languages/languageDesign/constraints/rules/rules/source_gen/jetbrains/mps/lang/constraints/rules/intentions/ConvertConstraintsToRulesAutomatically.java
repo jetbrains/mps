@@ -62,7 +62,7 @@ public class ConvertConstraintsToRulesAutomatically extends IntentionsFactory {
 
 
   public boolean isAvailableInChild(SNode node, SNode node1, EditorContext context) {
-    return true;
+    return false;
   }
 
   public boolean isApplicable(SNode node, EditorContext editorContext) {

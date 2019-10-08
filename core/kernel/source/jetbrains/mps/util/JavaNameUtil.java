@@ -26,20 +26,17 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-/**
- * User: Dmitriev.
- * Date: Jan 13, 2004
- */
 public final class JavaNameUtil {
+  public static final Pattern VALID_ID_PATTERN = Pattern.compile("[a-zA-Z$[_]][a-zA-Z0-9$[_]]*");
   private static final Pattern DIGITS = Pattern.compile("\\d+");
   private static Set<String> JAVA_KEYWORDS = new HashSet<>();
 
   static {
     JAVA_KEYWORDS.addAll(Arrays.asList(
-      "abstract", "continue", "for", "new", "switch", "assert", "default", "if", "package", "synchronized", "boolean", "do", "goto", "private",
-      "this", "break", "double", "implements", "protected", "throw", "byte", "else", "import", "public", "throws", "case", "enum", "instanceof",
-      "return", "transient", "catch", "extends", "int", "short", "try", "char", "final", "interface", "static", "void", "class", "finally", "long",
-      "strictfp", "volatile", "const", "float", "native", "super", "while", "true", "false", "null"));
+        "abstract", "continue", "for", "new", "switch", "assert", "default", "if", "package", "synchronized", "boolean", "do", "goto", "private",
+        "this", "break", "double", "implements", "protected", "throw", "byte", "else", "import", "public", "throws", "case", "enum", "instanceof",
+        "return", "transient", "catch", "extends", "int", "short", "try", "char", "final", "interface", "static", "void", "class", "finally", "long",
+        "strictfp", "volatile", "const", "float", "native", "super", "while", "true", "false", "null"));
   }
 
   private JavaNameUtil() {
@@ -61,10 +58,14 @@ public final class JavaNameUtil {
   }
 
   public static boolean isAnonymous(String className) {
-    if (!isInnerClass(className)) return false;
+    if (!isInnerClass(className)) {
+      return false;
+    }
 
     for (String part : className.split("\\$")) {
-      if (DIGITS.matcher(part).matches()) return true;
+      if (DIGITS.matcher(part).matches()) {
+        return true;
+      }
     }
     return false;
   }

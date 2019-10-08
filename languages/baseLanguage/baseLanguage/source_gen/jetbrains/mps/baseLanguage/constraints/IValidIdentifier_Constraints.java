@@ -40,7 +40,7 @@ public class IValidIdentifier_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return propertyValue.matches("[a-zA-Z$[_]][a-zA-Z0-9$[_]]*") && !(JavaNameUtil.isJavaReserved(propertyValue));
+      return JavaNameUtil.VALID_ID_PATTERN.matcher(propertyValue).matches() && !(JavaNameUtil.isJavaReserved(propertyValue));
     }
   }
   @Override
