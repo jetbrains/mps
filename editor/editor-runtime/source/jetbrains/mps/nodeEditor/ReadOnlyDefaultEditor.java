@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.util.EqualUtil;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -66,16 +65,9 @@ public class ReadOnlyDefaultEditor extends AbstractDefaultEditor {
 
   @Override
   protected void addPropertyCell(final SProperty property) {
-    EditorCell_Property cell = new EditorCell_Property(getEditorContext(), new ModelAccessor() {
+    EditorCell_Property cell = new EditorCell_Property(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
         return getNode().getProperty(property);
-      }
-
-      public void setText(String s) {
-      }
-
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
       }
     }, getNode());
     cell.setEditable(false);

@@ -18377,8 +18377,8 @@
                 <node concept="2ShNRf" id="hPHqW$I" role="37wK5m">
                   <node concept="YeOm9" id="hPHrG$p" role="2ShVmc">
                     <node concept="1Y3b0j" id="hPHrG$q" role="YeSDq">
-                      <ref role="1Y3XeK" to="g51k:~ModelAccessor" resolve="ModelAccessor" />
-                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                      <ref role="1Y3XeK" to="g51k:~ModelAccessor$ReadOnly" resolve="ModelAccessor.ReadOnly" />
+                      <ref role="37wK5l" to="g51k:~ModelAccessor$ReadOnly.&lt;init&gt;()" resolve="ModelAccessor.ReadOnly" />
                       <node concept="3Tm1VV" id="hPHrG$r" role="1B3o_S" />
                       <node concept="3clFb_" id="hPHrG$s" role="jymVt">
                         <property role="1EzhhJ" value="false" />
@@ -18435,41 +18435,6 @@
                           </node>
                         </node>
                         <node concept="3Tm1VV" id="hPHrG$t" role="1B3o_S" />
-                      </node>
-                      <node concept="3clFb_" id="hPHrG$w" role="jymVt">
-                        <property role="1EzhhJ" value="false" />
-                        <property role="TrG5h" value="setText" />
-                        <node concept="3Tm1VV" id="hPHrG$x" role="1B3o_S" />
-                        <node concept="3cqZAl" id="hPHrG$y" role="3clF45" />
-                        <node concept="37vLTG" id="hPHrG$z" role="3clF46">
-                          <property role="TrG5h" value="s" />
-                          <node concept="17QB3L" id="18nccIwC3YD" role="1tU5fm" />
-                        </node>
-                        <node concept="3clFbS" id="hPHrG$_" role="3clF47" />
-                      </node>
-                      <node concept="3clFb_" id="hPHrG$A" role="jymVt">
-                        <property role="1EzhhJ" value="false" />
-                        <property role="TrG5h" value="isValidText" />
-                        <node concept="10P_77" id="hPHrG$C" role="3clF45" />
-                        <node concept="37vLTG" id="hPHrG$D" role="3clF46">
-                          <property role="TrG5h" value="s" />
-                          <node concept="17QB3L" id="18nccIwC3Yb" role="1tU5fm" />
-                        </node>
-                        <node concept="3clFbS" id="hPHrG$F" role="3clF47">
-                          <node concept="3clFbF" id="hRy8mAR" role="3cqZAp">
-                            <node concept="2YIFZM" id="hRy8pJc" role="3clFbG">
-                              <ref role="1Pybhc" to="18ew:~EqualUtil" resolve="EqualUtil" />
-                              <ref role="37wK5l" to="18ew:~EqualUtil.equals(java.lang.Object,java.lang.Object)" resolve="equals" />
-                              <node concept="37vLTw" id="2BHiRxgm9YT" role="37wK5m">
-                                <ref role="3cqZAo" node="hPHrG$D" resolve="s" />
-                              </node>
-                              <node concept="1rXfSq" id="4hiugqyzhuC" role="37wK5m">
-                                <ref role="37wK5l" node="hPHrG$s" resolve="getText" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3Tm1VV" id="hPHrG$B" role="1B3o_S" />
                       </node>
                     </node>
                   </node>

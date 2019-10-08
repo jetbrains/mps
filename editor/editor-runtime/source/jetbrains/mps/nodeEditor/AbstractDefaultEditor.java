@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -307,20 +307,13 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
   }
 
   protected EditorCell createReferentEditorCell(EditorContext editorContext, SReferenceLink link, final SNode targetNode) {
-    EditorCell_Property result = new EditorCell_Property(editorContext, new ModelAccessor() {
+    EditorCell_Property result = new EditorCell_Property(editorContext, new ModelAccessor.ReadOnly() {
       public String getText() {
         String name = targetNode.getName();
         if (name != null) {
           return name;
         }
         return targetNode.getPresentation();
-      }
-
-      public void setText(String s) {
-      }
-
-      public boolean isValidText(String s) {
-        return EqualUtil.equals(s, getText());
       }
     }, targetNode);
     result.setSRole(link);
