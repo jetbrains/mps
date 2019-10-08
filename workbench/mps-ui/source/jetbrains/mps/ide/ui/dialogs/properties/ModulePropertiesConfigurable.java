@@ -108,7 +108,6 @@ import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ConditionalIterable;
-import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
@@ -465,7 +464,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       if (myLanguageVersion != null) {
         try {
           int newLanguageVersion = ((Integer) myLanguageVersion.getValue());
-          if (!EqualUtil.equals(newLanguageVersion, getLanguageVersion())) {
+          if (!Objects.equals(newLanguageVersion, getLanguageVersion())) {
             return true;
           }
         } catch (NumberFormatException e) {
@@ -475,7 +474,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       if (myModuleVersion != null) {
         try {
           int newModuleVersion = ((Integer) myModuleVersion.getValue());
-          if (!EqualUtil.equals(newModuleVersion, getModuleVersion())) {
+          if (!Objects.equals(newModuleVersion, getModuleVersion())) {
             return true;
           }
         } catch (NumberFormatException e) {
@@ -598,6 +597,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     @Override
     protected TableCellRenderer getTableCellRender() {
       final ModuleTableCellRender mtcr = new ModuleTableCellRender(myModuleRepository);
+      mtcr.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
       final ScanModuleDependencyTask scanTask = new ScanModuleDependencyTask(myModule);
       //scanTask.whenChanged(myDependTableModel::fireTableDataChanged);
       Runnable whenDone = () -> {
@@ -614,7 +614,6 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             return isExtendsDep && !scanTask.getExtendsSet().contains(moduleImport.getModuleReference());
           }, DependencyCellState.SUPERFLUOUS_EXTENDS);
         }
-        mtcr.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
         mtcr.addCellState(
             moduleImport -> !scanTask.getGenerationTargets().contains(moduleImport.getModuleReference()) && !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
             DependencyCellState.UNUSED);
