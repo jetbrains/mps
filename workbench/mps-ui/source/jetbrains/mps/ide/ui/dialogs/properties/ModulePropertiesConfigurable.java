@@ -128,6 +128,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.ui.Modifiable;
 import org.jetbrains.mps.openapi.ui.persistence.Tab;
+import org.jetbrains.mps.util.Condition;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -558,7 +559,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     protected AnActionButtonRunnable getAnActionButtonRunnable() {
       return anActionButton -> {
         final boolean isDevkit = myModule instanceof DevKit;
-        Iterable<SModule> selectionSet = getProjectModules();
+        Iterable<SModule> selectionSet = new ConditionalIterable<>(getProjectModules(), object -> object != myModule);
         if (isDevkit) {
           selectionSet = new ConditionalIterable<>(selectionSet, new VisibleModuleCondition());
         }

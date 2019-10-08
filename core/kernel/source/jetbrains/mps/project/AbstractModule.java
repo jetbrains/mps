@@ -354,6 +354,9 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     if (descriptor == null) {
       return null;
     }
+    if (this.getModuleReference().equals(moduleRef)) {
+      return null;
+    }
     for (Dependency dep : descriptor.getDependencies()) {
       if (!Objects.equals(dep.getModuleRef(), moduleRef)) {
         continue;

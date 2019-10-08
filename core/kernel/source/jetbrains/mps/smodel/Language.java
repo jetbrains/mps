@@ -88,7 +88,9 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
   }
 
   public void addExtendedLanguage(@NotNull SModuleReference langRef) {
-    if (myLanguageDescriptor.getExtendedLanguages().contains(langRef)) return;
+    if (this.getModuleReference().equals(langRef) || myLanguageDescriptor.getExtendedLanguages().contains(langRef)) {
+      return;
+    }
     LanguageDescriptor moduleDescriptor = getModuleDescriptor();
     moduleDescriptor.getExtendedLanguages().add(langRef);
 
