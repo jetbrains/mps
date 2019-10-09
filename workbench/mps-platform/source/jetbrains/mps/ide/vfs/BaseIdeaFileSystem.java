@@ -88,6 +88,11 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
     return new IdeaFile(this, path);
   }
 
+  @Nullable
+  @Override
+  public IFile findExistingFile(@NotNull String path) {
+    return IFileSystem.super.findExistingFile(path);
+  }
 
   public void addListener(@NotNull FileSystemListener listener) {
     myListenersContainer.addListener(listener);
@@ -106,6 +111,7 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
   public boolean isFileIgnored(@NotNull String name) {
     return FileTypeManager.getInstance().isFileIgnored(name);
   }
+
 
   public void scheduleUpdateForWrittenFiles(Iterable<IFile> writtenFiles) {
     final List<IFile> newFiles = new ArrayList<>();

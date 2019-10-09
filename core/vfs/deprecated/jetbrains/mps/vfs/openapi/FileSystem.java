@@ -16,11 +16,16 @@
 package jetbrains.mps.vfs.openapi;
 
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 @Deprecated
 public interface FileSystem {
   @Deprecated
   @NotNull
   IFile getFile(@NotNull String path);
+
+  @Deprecated
+  IFile findExistingFile(@NotNull String path);
 }

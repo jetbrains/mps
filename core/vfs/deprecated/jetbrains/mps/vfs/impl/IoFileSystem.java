@@ -20,6 +20,7 @@ import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -64,6 +65,16 @@ public class IoFileSystem implements FileSystem {
       return myManager.getFileSystem(VFSManager.JAVA_IO_JAR_FS).getFile(path);
     } else {
       return myManager.getFileSystem(VFSManager.JAVA_IO_FILE_FS).getFile(path);
+    }
+  }
+
+  @Override
+  public IFile findExistingFile(@NotNull String path) {
+    try {
+      IFile f = getFile(path);
+      return f.exists() ? f : null;
+    } catch (PathFormatException e) {
+      return null;
     }
   }
 
