@@ -36,7 +36,7 @@ import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.vcs.VcsConfiguration;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
-import jetbrains.mps.vcs.changesmanager.roots.NodeFileStatusMappingExt;
+import jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -196,7 +196,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   }
 
   protected void checkRootStatuses(final RootStatusItem... statuses) {
-    final NodeFileStatusMappingExt fsm = myIdeaProject.getComponent(NodeFileStatusMappingExt.class);
+    final NodeFileStatusMapping fsm = myIdeaProject.getComponent(NodeFileStatusMapping.class);
     final SModel model = myDiff.getModelDescriptor();
     // query for first time 
     ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
