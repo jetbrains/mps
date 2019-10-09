@@ -1,5 +1,5 @@
 /*
-* Copyright 2003-2018 JetBrains s.r.o.
+* Copyright 2003-2019 JetBrains s.r.o.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
-import jetbrains.mps.util.containers.MultiMap;
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.ElementNameAndAttributeQualifier;
 import org.custommonkey.xmlunit.XMLAssert;
@@ -40,8 +39,9 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -63,7 +63,7 @@ public class GenSourcesAndCompilerXmlGenerationTest {
   }
 
   @Test
-  public void testGenSourcesIml() throws JDOMException, IOException {
+  public void testGenSourcesIml() throws Exception {
     String previousGenSources = FileUtil.read(GeneratorsRunner.GEN_SOURCES_IML);
     GeneratorsRunner.generateGenSourcesIml(ourPlatform);
     checkHasSameContent(FileUtil.read(GeneratorsRunner.GEN_SOURCES_IML), previousGenSources);
@@ -78,40 +78,21 @@ public class GenSourcesAndCompilerXmlGenerationTest {
     XMLAssert.assertXMLEqual("Regenerate compiler.xml. Run GeneratorsRunner run configuration.", diff, true);
   }
 
-  public static List<String> getImls(File modulesFiles) throws JDOMException, IOException {
-    Document doc = JDOMUtil.loadDocument(modulesFiles);
-    Element moduleManager = Utils.getComponentWithName(doc, "ProjectModuleManager");
-    Element modules = moduleManager.getChild("modules");
-    List<String> result = new ArrayList<>();
-    for (Element module : modules.getChildren("module")) {
-      String imlFormattedRoot = module.getAttributeValue("fileurl");
-      String imlPath = new File(imlFormattedRoot.replace("file://$PROJECT_DIR$", modulesFiles.getParentFile().getParent())).getCanonicalPath();
-      result.add(imlPath);
-    }
-    return result;
-  }
-
   @Test
-  public void testEveryImlFileIsIncludedInProject() throws JDOMException, IOException {
-    File root = new File(".");
-    File projectFile = new File("./.idea/modules.xml");
-    List<String> imlsInProject = getImls(projectFile);
-    List<File> imlsOnDisk = Utils.withExtension(".iml", Utils.files(root));
+  public void testEveryImlFileIsIncludedInProject() throws Exception {
+    File root = Utils.root();
+    final IDEAProject ideaProject = new IDEAProject(root);
+    List<File> imlsInProject = ideaProject.modulesFromProjectDescriptor().stream().map(IDEAModule::moduleFile).collect(Collectors.toList());
+    List<File> imlsOnDisk = ideaProject.discoverAllModules().stream().map(IDEAModule::moduleFile).collect(Collectors.toList());
     List<String> notIncluded = new ArrayList<>();
     for (File iml : imlsOnDisk) {
       if (isUnder(iml.getCanonicalPath(), "/IdeaPlugin/")) {
         continue;
       }
-      if (isUnder(iml.getCanonicalPath(), "/MPSPlugin/")) {
-        continue;
-      }
       if (isUnder(iml.getCanonicalPath(), "/mps-platform/")) {
         continue;
       }
-      if (isUnder(iml.getCanonicalPath(), "/tools/deepcompare/")) {
-        continue;
-      }
-      if (!imlsInProject.contains(iml.getCanonicalPath())) {
+      if (!imlsInProject.contains(iml)) {
         notIncluded.add(iml.getCanonicalPath());
       }
     }
@@ -119,19 +100,27 @@ public class GenSourcesAndCompilerXmlGenerationTest {
   }
 
   @Test
-  public void testEveryJavaFileIsCompiledInMPSOrInSourceFolder() throws JDOMException, IOException {
+  public void testEveryJavaFileIsCompiledInMPSOrInSourceFolder() throws Exception {
     File root = new File(".");
-    MultiMap<String, String> sources = GensourcesModuleFile.getSourceFolders(root);
+    final IDEAProject ideaProject = new IDEAProject(root);
+    // XXX here used to be GensourcesModuleFile.getSourceFolders(root) call that didn't ignore source roots from gensources.iml
+    //     However, I don't see a reason to include these, as generally there are source roots of MPS modules anyway, which get collected
+    //     here explicitly with the help of MPSModuleCollector
+    HashSet<String> allSources = new HashSet<>();
+    for (IDEAModule m : ideaProject.discoverAllModulesExceptGensources()) {
+      for (File sr : m.sources()) {
+        allSources.add(sr.getCanonicalPath());
+      }
+    }
+
     MPSModuleCollector moduleCollector = new MPSModuleCollector(ourPlatform);
     moduleCollector.collect(root);
     Collection<DescriptorEntry> mpsModules = moduleCollector.getOutcome();
-
-    Set<String> allSources = new HashSet<>();
-    allSources.addAll(sources.values());
     mpsModules.stream().flatMap(de -> de.getSourcePaths().stream()).forEach(allSources::add);
 
     outer:
-    for (File jFile : Utils.withExtension(".java", Utils.files(root))) {
+    for (Iterator<File> it = Utils.files(root, f-> f.getName().endsWith(".java")).iterator(); it.hasNext(); ) {
+      File jFile = it.next();
       String cp = jFile.getCanonicalPath();
       //if (cp.contains("sandbox")) continue;
       for (String sourcePath : allSources) {
@@ -152,16 +141,47 @@ public class GenSourcesAndCompilerXmlGenerationTest {
       // Test material of IdeaPlugin
       if (isUnder(cp, "/IdeaPlugin/tests/")) continue;
 
-      Assert.assertFalse("Java file " + cp + " is neither included in any MPS module, nor in any Idea source root", true);
+      Assert.fail("Java file " + cp + " is neither included in any MPS module, nor in any Idea source root");
     }
   }
 
+  /**
+   * Make sure MPS core modules don't accidentally get dependency to a platform/ide/UI code
+   */
+  @Test
+  public void testCoreModuleDependenciesSelfContained() throws Exception {
+    final IDEAProject ideaProject = new IDEAProject(Utils.root());
+    final Collection<IDEAModule> coreModules = ideaProject.discoverCoreModules();
+    System.out.println(coreModules.size());
+    final List<String> allNames = coreModules.stream().map(IDEAModule::moduleName).collect(Collectors.toList());
+    final HashSet<String> names = new HashSet<>(allNames);
+    Assert.assertEquals("Module name clash", names.size(), allNames.size());
+    // few well-known modules not under core/ that are legitimate dependencies
+    names.add("closures-runtime");
+    names.add("tuples-runtime");
+    names.add("collections-runtime");
+    // j.m.references.Reference is in use from [kernel]SPropertyOperations
+    names.add("baseLanguage-runtime"); // this one I'd like get rid of
+    // ClassPathReader, ClasssType, SystemInfo from [startup-util] are in use from [kernel].
+    // No idea why the module is not under core/
+    names.add("startup-util");
+    for (IDEAModule m : coreModules) {
+      if (names.containsAll(m.compileDependencies())) {
+        continue;
+      }
+      HashSet<String> extra = new HashSet<>(m.compileDependencies());
+      extra.removeAll(names);
+      Assert.fail(String.format("Core module [%s] has dependencies outside of core/:\n\t%s\n", m.moduleName(), extra.toString()));
+    }
+  }
+
+  // FIXME pass File here
   private boolean isUnder(String child, String parent) throws IOException {
     String parentPath = new File(".").getCanonicalPath() + parent.replace("/", File.separator);
     return child.startsWith(parentPath);
   }
 
-  private void checkHasSameContent(String real, String exp) throws IOException, JDOMException {
+  private void checkHasSameContent(String real, String exp) throws Exception {
     Element realManager = getManagerElement(real);
     Element expManager = getManagerElement(exp);
 
@@ -187,12 +207,12 @@ public class GenSourcesAndCompilerXmlGenerationTest {
     }
   }
 
-  private void checkSamePathsUnder(Element rRoot, Element eRoot) throws JDOMException, IOException {
+  private void checkSamePathsUnder(Element rRoot, Element eRoot) throws Exception {
     checkHasSamePathsUnderTag(rRoot, eRoot, GensourcesModuleFile.SOURCE_FOLDER);
     //checkHasSamePathsUnderTag(rRoot, eRoot, Generators.EXCLUDE_FOLDER);
   }
 
-  private void checkHasSamePathsUnderTag(Element rRoot, Element eRoot, String tag) throws JDOMException, IOException {
+  private void checkHasSamePathsUnderTag(Element rRoot, Element eRoot, String tag) throws Exception {
     List<Element> realPaths = rRoot.getChildren(tag);
     List<Element> expPaths = eRoot.getChildren(tag);
 
@@ -217,7 +237,7 @@ public class GenSourcesAndCompilerXmlGenerationTest {
     return Utils.getComponentWithName(doc, GensourcesModuleFile.MODULE_ROOT_MANAGER);
   }
 
-  private void showGensources(String diff) throws JDOMException, IOException {
+  private void showGensources(String diff) throws Exception {
     String previousGenSources = FileUtil.read(GeneratorsRunner.GEN_SOURCES_IML);
     GeneratorsRunner.generateGenSourcesIml(ourPlatform);
     Assert.assertEquals(diff, FileUtil.read(GeneratorsRunner.GEN_SOURCES_IML), previousGenSources);

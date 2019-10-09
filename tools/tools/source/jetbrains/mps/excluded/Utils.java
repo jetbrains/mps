@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,13 @@ import org.jdom.Document;
 import org.jdom.Element;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.FileFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.function.BiPredicate;
+import java.util.stream.Stream;
 
 public class Utils {
   private static final String COMPONENT = "component";
@@ -84,30 +89,15 @@ public class Utils {
     return new File(".");
   }
 
-  public static List<File> files(File root) {
-    List<File> result = new ArrayList<>();
-    collectFiles(root, result);
-    return result;
-  }
-
-  private static void collectFiles(File file, List<File> result) {
-    if (file.isFile()) {
-      result.add(file);
-    } else {
-      for (File inner : file.listFiles()) {
-        collectFiles(inner, result);
+  public static Stream<File> files(final File root, final FileFilter predicate) throws IOException {
+    BiPredicate<Path, BasicFileAttributes> p = new BiPredicate<Path, BasicFileAttributes>() {
+      @Override
+      public boolean test(Path path, BasicFileAttributes attr) {
+        // don't want to do toFile twice, filter by predicate after map(toFile)
+        return attr.isRegularFile();
       }
-    }
-  }
-
-  public static List<File> withExtension(String ext, List<File> files) {
-    List<File> result = new ArrayList<>();
-    for (File file : files) {
-      if (file.getName().endsWith(ext)) {
-        result.add(file);
-      }
-    }
-    return result;
+    };
+    return Files.find(root.toPath(), Integer.MAX_VALUE, p).map(Path::toFile).filter(predicate::accept);
   }
 
   static class MyMacroHelper implements MacroHelper {
