@@ -164,12 +164,6 @@
   </target>
 
   <target name="cleanLibs">
-    <delete>
-      <!-- TODO: remove jps-build-test-139.1117.1.jar file & this exclusion -->
-      <fileset dir="${base_dir}/IdeaPlugin/mps-core/lib">
-        <exclude name="jps/**"/>
-      </fileset>
-    </delete>
     <!-- TODO: create separate root for resources copied from the 'main' MPS -->
     <delete dir="${base_dir}/IdeaPlugin/mps-core/resources/messages"/>
     <delete dir="${base_dir}/IdeaPlugin/mps-core/languages"/>
@@ -398,7 +392,7 @@
         <pathelement path="${jps.classpath}"/>
         <!-- enumerating additional jard for testing -->
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-core/lib/jps">
-          <include name="jps-build-test-139.1117.1.jar"/>
+          <include name="jps-build-test.jar"/>
           <include name="mps-jps-plugin-tests.jar"/>
         </fileset>
         <pathelement path="${java.class.path}"/>

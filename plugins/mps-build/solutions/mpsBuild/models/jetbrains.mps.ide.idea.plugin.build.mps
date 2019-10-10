@@ -1123,18 +1123,12 @@
         <node concept="2HycW7" id="4gzZMp9tuPH" role="25yagT">
           <node concept="398BVA" id="4gzZMp9tuPN" role="25ysHA">
             <ref role="398BVh" node="63lu3g6BW1R" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="4gzZMp9tuPO" role="iGT6I">
-              <property role="2Ry0Am" value="IdeaPlugin" />
-              <node concept="2Ry0Ak" id="4gzZMp9tuPP" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-core" />
-                <node concept="2Ry0Ak" id="4gzZMp9tuPQ" role="2Ry0An">
-                  <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="4gzZMp9tuPR" role="2Ry0An">
-                    <property role="2Ry0Am" value="jps" />
-                    <node concept="2Ry0Ak" id="4gzZMp9tuPS" role="2Ry0An">
-                      <property role="2Ry0Am" value="jps-build-test-139.1117.1.jar" />
-                    </node>
-                  </node>
+            <node concept="2Ry0Ak" id="4gzZMp9tuPQ" role="iGT6I">
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="4gzZMp9tuPR" role="2Ry0An">
+                <property role="2Ry0Am" value="jps" />
+                <node concept="2Ry0Ak" id="4gzZMp9tuPS" role="2Ry0An">
+                  <property role="2Ry0Am" value="jps-build-test.jar" />
                 </node>
               </node>
             </node>
@@ -1337,18 +1331,12 @@
             <node concept="28jJK3" id="6S2ZmsBiFQB" role="39821P">
               <node concept="398BVA" id="6S2ZmsBiFQF" role="28jJRO">
                 <ref role="398BVh" node="63lu3g6BW1R" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="6S2ZmsBiFQL" role="iGT6I">
-                  <property role="2Ry0Am" value="IdeaPlugin" />
-                  <node concept="2Ry0Ak" id="6S2ZmsBiFQQ" role="2Ry0An">
-                    <property role="2Ry0Am" value="mps-core" />
-                    <node concept="2Ry0Ak" id="6S2ZmsBiFQT" role="2Ry0An">
-                      <property role="2Ry0Am" value="lib" />
-                      <node concept="2Ry0Ak" id="6S2ZmsBiFQY" role="2Ry0An">
-                        <property role="2Ry0Am" value="jps" />
-                        <node concept="2Ry0Ak" id="6S2ZmsBiFR3" role="2Ry0An">
-                          <property role="2Ry0Am" value="jps-build-test-139.1117.1.jar" />
-                        </node>
-                      </node>
+                <node concept="2Ry0Ak" id="6S2ZmsBiFQT" role="iGT6I">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="6S2ZmsBiFQY" role="2Ry0An">
+                    <property role="2Ry0Am" value="jps" />
+                    <node concept="2Ry0Ak" id="6S2ZmsBiFR3" role="2Ry0An">
+                      <property role="2Ry0Am" value="jps-build-test.jar" />
                     </node>
                   </node>
                 </node>

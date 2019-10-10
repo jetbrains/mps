@@ -41,7 +41,7 @@
   </path>
   
   <path id="path.java.library.idea-jps-tests">
-    <fileset file="${mps_home}/IdeaPlugin/mps-core/lib/jps/jps-build-test-139.1117.1.jar" />
+    <fileset file="${mps_home}/lib/jps/jps-build-test.jar" />
   </path>
   
   <path id="path.java.library.idea-devkit-jps">
@@ -93,7 +93,7 @@
     </jar>
     <mkdir dir="${build.layout}/mps-core/lib/jps" />
     <copy todir="${build.layout}/mps-core/lib/jps">
-      <fileset file="${mps_home}/IdeaPlugin/mps-core/lib/jps/jps-build-test-139.1117.1.jar" />
+      <fileset file="${mps_home}/lib/jps/jps-build-test.jar" />
     </copy>
     <jar destfile="${build.layout}/mps-core/lib/jps/mps-jps-plugin-tests.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-jps-plugin-tests" />
