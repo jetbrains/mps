@@ -7838,7 +7838,7 @@
           <property role="Xl_RC" value="xstream-1.4.11.1.jar" />
         </node>
         <node concept="Xl_RD" id="6gjr9XnnBRe" role="37wK5m">
-          <property role="Xl_RC" value="guava-25.1-jre.jar" />
+          <property role="Xl_RC" value="guava-27.1-jre.jar" />
         </node>
         <node concept="Xl_RD" id="3R9KYLtnFc7" role="37wK5m">
           <property role="Xl_RC" value="jdom.jar" />

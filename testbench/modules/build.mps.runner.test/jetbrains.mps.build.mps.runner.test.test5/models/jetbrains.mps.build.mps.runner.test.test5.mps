@@ -107,13 +107,13 @@
             <node concept="3uibUv" id="2R_g56b_TVz" role="1tU5fm">
               <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptor" resolve="IdeaPluginDescriptor" />
             </node>
-            <node concept="2YIFZM" id="2R_g56b_TVB" role="33vP2m">
-              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
+            <node concept="2YIFZM" id="7H0x_FtPj0x" role="33vP2m">
+              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-              <node concept="2YIFZM" id="2R_g56b_TVC" role="37wK5m">
+              <node concept="2YIFZM" id="7H0x_FtPj0y" role="37wK5m">
                 <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                 <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
-                <node concept="Xl_RD" id="2R_g56b_TVD" role="37wK5m">
+                <node concept="Xl_RD" id="7H0x_FtPj0z" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.console" />
                 </node>
               </node>

@@ -14773,6 +14773,7 @@
         <fileset file="${artifacts.IDEA}/lib/platform-core-ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-objectSerializer.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-objectSerializer-annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/platform-serviceContainer.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-util-ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/configuration-store-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />

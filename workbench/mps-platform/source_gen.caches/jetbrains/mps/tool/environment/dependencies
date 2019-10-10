@@ -7,7 +7,6 @@
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
     <classNode dependClassName="com.intellij.openapi.application.PathManager" />
-    <classNode dependClassName="com.intellij.openapi.application.ex.ApplicationManagerEx" />
     <classNode dependClassName="com.intellij.openapi.application.impl.ApplicationImpl" />
     <classNode dependClassName="com.intellij.openapi.project.DumbService" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />

@@ -1495,12 +1495,6 @@
           <ref role="3uigEE" to="jlff:~VirtualFileManager" resolve="VirtualFileManager" />
         </node>
       </node>
-      <node concept="37vLTG" id="491od_Zeh65" role="3clF46">
-        <property role="TrG5h" value="reloadManager" />
-        <node concept="3uibUv" id="491od_Zei$w" role="1tU5fm">
-          <ref role="3uigEE" to="2eq1:491od_XFyVl" resolve="ReloadManagerComponent" />
-        </node>
-      </node>
       <node concept="37vLTG" id="1ob_8dNRDeD" role="3clF46">
         <property role="TrG5h" value="mpsCore" />
         <node concept="3uibUv" id="1ob_8dNRKzk" role="1tU5fm">
@@ -1518,13 +1512,27 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="491od_Zev0W" role="3cqZAp">
-          <node concept="37vLTI" id="491od_Zev0X" role="3clFbG">
-            <node concept="37vLTw" id="485yxDrptby" role="37vLTJ">
+        <node concept="3clFbF" id="2zBI34HnywS" role="3cqZAp">
+          <node concept="37vLTI" id="2zBI34HnywT" role="3clFbG">
+            <node concept="37vLTw" id="2zBI34HnywU" role="37vLTJ">
               <ref role="3cqZAo" node="491od_Zev0P" resolve="myReloadManager" />
             </node>
-            <node concept="37vLTw" id="491od_Zev11" role="37vLTx">
-              <ref role="3cqZAo" node="491od_Zeh65" resolve="reloadManager" />
+            <node concept="10QFUN" id="2zBI34HnywV" role="37vLTx">
+              <node concept="2OqwBi" id="2zBI34HnywW" role="10QFUP">
+                <node concept="2YIFZM" id="2zBI34Hn$r9" role="2Oq$k0">
+                  <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                </node>
+                <node concept="liA8E" id="2zBI34HnywY" role="2OqNvi">
+                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                  <node concept="3VsKOn" id="2zBI34Hnyx0" role="37wK5m">
+                    <ref role="3VsUkX" to="2eq1:491od_XJZeq" resolve="ReloadManager" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3uibUv" id="2zBI34Hnyx1" role="10QFUM">
+                <ref role="3uigEE" to="2eq1:491od_XFyVl" resolve="ReloadManagerComponent" />
+              </node>
             </node>
           </node>
         </node>
@@ -1539,8 +1547,8 @@
                 <node concept="37vLTw" id="485yxDrpIJv" role="37wK5m">
                   <ref role="3cqZAo" node="3zgutK7osxg" resolve="vfManager" />
                 </node>
-                <node concept="37vLTw" id="485yxDrpIQt" role="37wK5m">
-                  <ref role="3cqZAo" node="491od_Zeh65" resolve="reloadManager" />
+                <node concept="37vLTw" id="2zBI34Hn_QG" role="37wK5m">
+                  <ref role="3cqZAo" node="491od_Zev0P" resolve="myReloadManager" />
                 </node>
               </node>
             </node>

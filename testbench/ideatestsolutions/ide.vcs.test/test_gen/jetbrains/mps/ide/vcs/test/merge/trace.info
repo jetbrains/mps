@@ -100,8 +100,8 @@
       <node id="8885850892996076147" at="192,60,193,0" concept="12" />
       <node id="8885850892996076148" at="193,0,194,27" concept="3" />
       <node id="8885850892996076152" at="194,27,195,39" concept="3" />
-      <node id="3619977242337324756" at="198,70,199,100" concept="9" />
-      <node id="5876208808348386466" at="199,100,200,53" concept="9" />
+      <node id="3619977242337324756" at="198,70,199,94" concept="9" />
+      <node id="5876208808348386466" at="199,94,200,53" concept="9" />
       <node id="3619977242337326292" at="200,53,201,28" concept="11" />
       <node id="2034046503361581268" at="205,38,206,29" concept="3" />
       <node id="3619977242337326295" at="210,7,211,34" concept="11" />
@@ -1482,178 +1482,178 @@
   </root>
   <root nodeRef="r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/5876208808348878676">
     <file name="ChangesManagerTestWaitHelper.java">
-      <node id="3907542737155282312" at="21,0,22,0" concept="4" trace="myWaitCompleted" />
-      <node id="4346819404427339021" at="22,0,23,0" concept="4" trace="myWaitLock" />
-      <node id="5876208808349119088" at="24,0,25,0" concept="4" trace="myProject" />
-      <node id="599918025274818281" at="26,0,27,0" concept="4" trace="myAfterReloadTask" />
-      <node id="5876208808349393216" at="27,0,28,0" concept="4" trace="myReloadListener" />
-      <node id="8274493178031283103" at="28,0,29,0" concept="4" trace="myReloadManager" />
-      <node id="5876208808349576036" at="30,79,31,18" concept="3" />
-      <node id="8274493178031283107" at="31,18,32,36" concept="3" />
-      <node id="4774203567242666188" at="32,36,33,61" concept="3" />
-      <node id="5876208808349393066" at="36,25,37,59" concept="3" />
-      <node id="5876208808349579117" at="40,118,41,75" concept="9" />
-      <node id="5630313885110715198" at="41,75,42,87" concept="11" />
-      <node id="5630313885110700148" at="42,87,43,31" concept="9" />
-      <node id="5364815602089924300" at="45,25,46,95" concept="9" />
-      <node id="5364815602089924326" at="49,60,50,59" concept="3" />
-      <node id="4885112185264939078" at="50,59,51,82" concept="11" />
-      <node id="4885112185264939073" at="52,19,53,34" concept="3" />
-      <node id="4885112185264939189" at="54,48,55,36" concept="3" />
-      <node id="5364815602089924281" at="56,15,57,30" concept="3" />
-      <node id="5364815602089924311" at="63,45,64,34" concept="3" />
-      <node id="5364815602089924321" at="67,65,68,34" concept="3" />
-      <node id="5364815602089922533" at="70,10,71,50" concept="3" />
-      <node id="5364815602089923589" at="71,50,72,68" concept="3" />
-      <node id="5364815602089923595" at="72,68,73,74" concept="3" />
-      <node id="5364815602089924297" at="73,74,74,30" concept="3" />
-      <node id="6730825638915524106" at="81,23,82,107" concept="9" />
-      <node id="6730825638915524115" at="83,35,84,24" concept="3" />
-      <node id="6730825638915527707" at="85,14,86,35" concept="3" />
-      <node id="3907542737155282394" at="92,25,93,116" concept="3" />
-      <node id="4900138389771445924" at="98,39,99,56" concept="3" />
-      <node id="6885634754756481759" at="108,31,109,29" concept="0" />
-      <node id="3907542737155282331" at="109,29,110,30" concept="3" />
-      <node id="3907542737155282338" at="110,30,111,27" concept="3" />
-      <node id="5630313885110290169" at="114,15,115,37" concept="3" />
-      <node id="9203452967900248369" at="116,44,117,32" concept="3" />
-      <node id="9203452967900526764" at="119,37,120,43" concept="11" />
-      <node id="9203452967900243058" at="120,43,121,37" concept="3" />
-      <node id="9203452967900372413" at="121,37,122,88" concept="3" />
-      <node id="3907542737155282355" at="128,15,129,30" concept="3" />
-      <node id="3907542737155282363" at="130,44,131,32" concept="3" />
-      <node id="6885634754756483496" at="139,31,140,32" concept="0" />
-      <node id="3907542737155282376" at="140,32,141,29" concept="3" />
-      <node id="3907542737155282380" at="141,29,142,26" concept="3" />
-      <node id="599918025274818322" at="154,27,155,48" concept="3" />
-      <node id="599918025274818328" at="160,36,161,30" concept="3" />
-      <node id="599918025274818328" at="162,5,163,0" concept="12" />
-      <node id="6730825638915524120" at="85,12,87,7" concept="1" />
-      <node id="599918025274823004" at="147,0,149,0" concept="2" trace="MyReloadListener#()V" />
-      <node id="5876208808349392485" at="36,0,39,0" concept="8" trace="dispose#()V" />
-      <node id="3907542737155282392" at="92,0,95,0" concept="8" trace="run#()V" />
-      <node id="599918025274815300" at="98,0,101,0" concept="8" trace="waitForReloadFinished#()V" />
-      <node id="599918025274822349" at="149,0,152,0" concept="8" trace="reloadStarted#()V" />
-      <node id="599918025274818363" at="153,34,156,7" concept="16" />
-      <node id="599918025274818328" at="159,72,162,5" concept="7" />
-      <node id="5364815602089924307" at="62,0,66,0" concept="8" trace="fileStatusesChanged#()V" />
-      <node id="5364815602089924314" at="66,0,70,0" concept="8" trace="fileStatusChanged#(Lcom/intellij/openapi/vfs/VirtualFile;)V" />
-      <node id="5876208808349119977" at="30,0,35,0" concept="2" trace="ChangesManagerTestWaitHelper#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/ide/platform/watching/ReloadManager;)V" />
-      <node id="4885112185264939080" at="51,82,56,15" concept="18" />
-      <node id="6730825638915524113" at="82,107,87,7" concept="7" />
-      <node id="3907542737155282386" at="90,37,95,11" concept="3" />
-      <node id="9203452967900238149" at="118,21,123,13" concept="7" />
-      <node id="3907542737155282353" at="127,36,132,11" concept="18" />
-      <node id="3907542737155282373" at="138,32,143,5" concept="16" />
-      <node id="599918025274822353" at="152,0,158,0" concept="8" trace="reloadFinished#()V" />
-      <node id="599918025274818328" at="159,0,165,0" concept="14" trace="check_6valm7_a0a0a2y#(Ljava/lang/Runnable;)V" />
-      <node id="1187100870427681208" at="90,0,97,0" concept="8" trace="waitForDiffRegistry#()V" />
-      <node id="3907542737155282346" at="126,14,133,9" concept="20" />
-      <node id="3907542737155282368" at="138,0,145,0" concept="8" trace="waitCompleted#()V" />
-      <node id="5630313885110295128" at="126,12,134,7" concept="1" />
-      <node id="6730825638915523878" at="80,0,89,0" concept="8" trace="run#()V" />
-      <node id="5364815602089924279" at="48,32,58,13" concept="7" />
-      <node id="5364815602089924335" at="60,10,70,10" concept="3" />
-      <node id="7983016169829830792" at="113,36,124,11" concept="19" />
-      <node id="5364815602089924277" at="48,0,60,0" concept="8" trace="invoke#()V" />
-      <node id="7983016169829828396" at="112,24,125,9" concept="20" />
-      <node id="5364815602089924273" at="46,95,60,10" concept="9" />
-      <node id="5630313885110282509" at="111,27,134,7" concept="7" />
-      <node id="5364815602089922593" at="107,71,135,5" concept="16" />
-      <node id="3907542737155282320" at="107,0,137,0" concept="8" trace="waitForSomething#(Ljava/lang/Runnable;I)V" />
-      <node id="5364815602089922589" at="45,0,76,0" concept="8" trace="run#()V" />
-      <node id="5364815602089922587" at="43,31,76,24" concept="3" />
-      <node id="5364815602089922108" at="40,0,78,0" concept="8" trace="waitForFileStatusChange#(Lcom/intellij/openapi/vfs/VirtualFile;Lcom/intellij/openapi/vcs/FileStatus;)V" />
-      <scope id="599918025274823005" at="147,31,147,31" />
-      <scope id="599918025274822352" at="150,33,150,33" />
-      <scope id="5876208808349392488" at="36,25,37,59" />
-      <scope id="4885112185264939081" at="52,19,53,34" />
-      <scope id="4885112185264939082" at="54,0,55,36">
+      <node id="3907542737155282312" at="22,0,23,0" concept="4" trace="myWaitCompleted" />
+      <node id="4346819404427339021" at="23,0,24,0" concept="4" trace="myWaitLock" />
+      <node id="5876208808349119088" at="25,0,26,0" concept="4" trace="myProject" />
+      <node id="599918025274818281" at="27,0,28,0" concept="4" trace="myAfterReloadTask" />
+      <node id="5876208808349393216" at="28,0,29,0" concept="4" trace="myReloadListener" />
+      <node id="8274493178031283103" at="29,0,30,0" concept="4" trace="myReloadManager" />
+      <node id="5876208808349576036" at="31,79,32,18" concept="3" />
+      <node id="8274493178031283107" at="32,18,33,36" concept="3" />
+      <node id="4774203567242666188" at="33,36,34,61" concept="3" />
+      <node id="5876208808349393066" at="37,25,38,59" concept="3" />
+      <node id="5876208808349579117" at="41,118,42,75" concept="9" />
+      <node id="5630313885110715198" at="42,75,43,87" concept="11" />
+      <node id="5630313885110700148" at="43,87,44,31" concept="9" />
+      <node id="5364815602089924300" at="46,25,47,95" concept="9" />
+      <node id="5364815602089924326" at="50,60,51,59" concept="3" />
+      <node id="4885112185264939078" at="51,59,52,82" concept="11" />
+      <node id="4885112185264939073" at="53,19,54,34" concept="3" />
+      <node id="4885112185264939189" at="55,48,56,36" concept="3" />
+      <node id="5364815602089924281" at="57,15,58,30" concept="3" />
+      <node id="5364815602089924311" at="64,45,65,34" concept="3" />
+      <node id="5364815602089924321" at="68,65,69,34" concept="3" />
+      <node id="5364815602089922533" at="71,10,72,50" concept="3" />
+      <node id="5364815602089923589" at="72,50,73,68" concept="3" />
+      <node id="5364815602089923595" at="73,68,74,74" concept="3" />
+      <node id="5364815602089924297" at="74,74,75,30" concept="3" />
+      <node id="6730825638915524106" at="82,23,83,107" concept="9" />
+      <node id="6730825638915524115" at="84,35,85,24" concept="3" />
+      <node id="6730825638915527707" at="86,14,87,35" concept="3" />
+      <node id="3907542737155282394" at="93,25,94,116" concept="3" />
+      <node id="5380585592869732419" at="99,39,100,82" concept="3" />
+      <node id="6885634754756481759" at="109,31,110,29" concept="0" />
+      <node id="3907542737155282331" at="110,29,111,30" concept="3" />
+      <node id="3907542737155282338" at="111,30,112,27" concept="3" />
+      <node id="5630313885110290169" at="115,15,116,37" concept="3" />
+      <node id="9203452967900248369" at="117,44,118,32" concept="3" />
+      <node id="9203452967900526764" at="120,37,121,43" concept="11" />
+      <node id="9203452967900243058" at="121,43,122,37" concept="3" />
+      <node id="9203452967900372413" at="122,37,123,88" concept="3" />
+      <node id="3907542737155282355" at="129,15,130,30" concept="3" />
+      <node id="3907542737155282363" at="131,44,132,32" concept="3" />
+      <node id="6885634754756483496" at="140,31,141,32" concept="0" />
+      <node id="3907542737155282376" at="141,32,142,29" concept="3" />
+      <node id="3907542737155282380" at="142,29,143,26" concept="3" />
+      <node id="599918025274818322" at="155,27,156,48" concept="3" />
+      <node id="599918025274818328" at="161,36,162,30" concept="3" />
+      <node id="599918025274818328" at="163,5,164,0" concept="12" />
+      <node id="6730825638915524120" at="86,12,88,7" concept="1" />
+      <node id="599918025274823004" at="148,0,150,0" concept="2" trace="MyReloadListener#()V" />
+      <node id="5876208808349392485" at="37,0,40,0" concept="8" trace="dispose#()V" />
+      <node id="3907542737155282392" at="93,0,96,0" concept="8" trace="run#()V" />
+      <node id="599918025274815300" at="99,0,102,0" concept="8" trace="waitForReloadFinished#()V" />
+      <node id="599918025274822349" at="150,0,153,0" concept="8" trace="reloadStarted#()V" />
+      <node id="599918025274818363" at="154,34,157,7" concept="16" />
+      <node id="599918025274818328" at="160,72,163,5" concept="7" />
+      <node id="5364815602089924307" at="63,0,67,0" concept="8" trace="fileStatusesChanged#()V" />
+      <node id="5364815602089924314" at="67,0,71,0" concept="8" trace="fileStatusChanged#(Lcom/intellij/openapi/vfs/VirtualFile;)V" />
+      <node id="5876208808349119977" at="31,0,36,0" concept="2" trace="ChangesManagerTestWaitHelper#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/ide/platform/watching/ReloadManager;)V" />
+      <node id="4885112185264939080" at="52,82,57,15" concept="18" />
+      <node id="6730825638915524113" at="83,107,88,7" concept="7" />
+      <node id="3907542737155282386" at="91,37,96,11" concept="3" />
+      <node id="9203452967900238149" at="119,21,124,13" concept="7" />
+      <node id="3907542737155282353" at="128,36,133,11" concept="18" />
+      <node id="3907542737155282373" at="139,32,144,5" concept="16" />
+      <node id="599918025274822353" at="153,0,159,0" concept="8" trace="reloadFinished#()V" />
+      <node id="599918025274818328" at="160,0,166,0" concept="14" trace="check_6valm7_a0a0a2y#(Ljava/lang/Runnable;)V" />
+      <node id="1187100870427681208" at="91,0,98,0" concept="8" trace="waitForDiffRegistry#()V" />
+      <node id="3907542737155282346" at="127,14,134,9" concept="20" />
+      <node id="3907542737155282368" at="139,0,146,0" concept="8" trace="waitCompleted#()V" />
+      <node id="5630313885110295128" at="127,12,135,7" concept="1" />
+      <node id="6730825638915523878" at="81,0,90,0" concept="8" trace="run#()V" />
+      <node id="5364815602089924279" at="49,32,59,13" concept="7" />
+      <node id="5364815602089924335" at="61,10,71,10" concept="3" />
+      <node id="7983016169829830792" at="114,36,125,11" concept="19" />
+      <node id="5364815602089924277" at="49,0,61,0" concept="8" trace="invoke#()V" />
+      <node id="7983016169829828396" at="113,24,126,9" concept="20" />
+      <node id="5364815602089924273" at="47,95,61,10" concept="9" />
+      <node id="5630313885110282509" at="112,27,135,7" concept="7" />
+      <node id="5364815602089922593" at="108,71,136,5" concept="16" />
+      <node id="3907542737155282320" at="108,0,138,0" concept="8" trace="waitForSomething#(Ljava/lang/Runnable;I)V" />
+      <node id="5364815602089922589" at="46,0,77,0" concept="8" trace="run#()V" />
+      <node id="5364815602089922587" at="44,31,77,24" concept="3" />
+      <node id="5364815602089922108" at="41,0,79,0" concept="8" trace="waitForFileStatusChange#(Lcom/intellij/openapi/vfs/VirtualFile;Lcom/intellij/openapi/vcs/FileStatus;)V" />
+      <scope id="599918025274823005" at="148,31,148,31" />
+      <scope id="599918025274822352" at="151,33,151,33" />
+      <scope id="5876208808349392488" at="37,25,38,59" />
+      <scope id="4885112185264939081" at="53,19,54,34" />
+      <scope id="4885112185264939082" at="55,0,56,36">
         <var name="e" id="4885112185264939083" />
       </scope>
-      <scope id="4885112185264939085" at="54,48,55,36" />
-      <scope id="5364815602089924310" at="63,45,64,34" />
-      <scope id="5364815602089924320" at="67,65,68,34" />
-      <scope id="6730825638915524114" at="83,35,84,24" />
-      <scope id="6730825638915524121" at="85,14,86,35" />
-      <scope id="3907542737155282393" at="92,25,93,116" />
-      <scope id="599918025274815303" at="98,39,99,56" />
-      <scope id="9203452967900247421" at="114,15,115,37" />
-      <scope id="9203452967900247416" at="116,0,117,32">
+      <scope id="4885112185264939085" at="55,48,56,36" />
+      <scope id="5364815602089924310" at="64,45,65,34" />
+      <scope id="5364815602089924320" at="68,65,69,34" />
+      <scope id="6730825638915524114" at="84,35,85,24" />
+      <scope id="6730825638915524121" at="86,14,87,35" />
+      <scope id="3907542737155282393" at="93,25,94,116" />
+      <scope id="599918025274815303" at="99,39,100,82" />
+      <scope id="9203452967900247421" at="115,15,116,37" />
+      <scope id="9203452967900247416" at="117,0,118,32">
         <var name="e" id="9203452967900247418" />
       </scope>
-      <scope id="9203452967900247417" at="116,44,117,32" />
-      <scope id="3907542737155282354" at="128,15,129,30" />
-      <scope id="3907542737155282359" at="130,0,131,32">
+      <scope id="9203452967900247417" at="117,44,118,32" />
+      <scope id="3907542737155282354" at="129,15,130,30" />
+      <scope id="3907542737155282359" at="131,0,132,32">
         <var name="e" id="3907542737155282360" />
       </scope>
-      <scope id="3907542737155282362" at="130,44,131,32" />
-      <scope id="599918025274818365" at="154,27,155,48" />
-      <scope id="599918025274818328" at="160,36,161,30" />
-      <scope id="599918025274823004" at="147,0,149,0" />
-      <scope id="5876208808349119981" at="30,79,33,61" />
-      <scope id="5876208808349392485" at="36,0,39,0" />
-      <scope id="3907542737155282392" at="92,0,95,0" />
-      <scope id="599918025274815300" at="98,0,101,0" />
-      <scope id="9203452967900238151" at="119,37,122,88" />
-      <scope id="3907542737155282375" at="139,31,142,26" />
-      <scope id="599918025274822349" at="149,0,152,0" />
-      <scope id="599918025274822356" at="153,34,156,7" />
-      <scope id="5364815602089924307" at="62,0,66,0" />
-      <scope id="5364815602089924314" at="66,0,70,0">
+      <scope id="3907542737155282362" at="131,44,132,32" />
+      <scope id="599918025274818365" at="155,27,156,48" />
+      <scope id="599918025274818328" at="161,36,162,30" />
+      <scope id="599918025274823004" at="148,0,150,0" />
+      <scope id="5876208808349119981" at="31,79,34,61" />
+      <scope id="5876208808349392485" at="37,0,40,0" />
+      <scope id="3907542737155282392" at="93,0,96,0" />
+      <scope id="599918025274815300" at="99,0,102,0" />
+      <scope id="9203452967900238151" at="120,37,123,88" />
+      <scope id="3907542737155282375" at="140,31,143,26" />
+      <scope id="599918025274822349" at="150,0,153,0" />
+      <scope id="599918025274822356" at="154,34,157,7" />
+      <scope id="5364815602089924307" at="63,0,67,0" />
+      <scope id="5364815602089924314" at="67,0,71,0">
         <var name="f" id="5364815602089924317" />
       </scope>
-      <scope id="599918025274818328" at="159,72,163,0" />
-      <scope id="5876208808349119977" at="30,0,35,0">
+      <scope id="599918025274818328" at="160,72,164,0" />
+      <scope id="5876208808349119977" at="31,0,36,0">
         <var name="p" id="5876208808349119984" />
         <var name="reloadManager" id="8274493178031277985" />
       </scope>
-      <scope id="1187100870427681211" at="90,37,95,11" />
-      <scope id="7983016169829830795" at="118,21,123,13" />
-      <scope id="3907542737155282349" at="127,36,132,11" />
-      <scope id="3907542737155282371" at="138,32,143,5" />
-      <scope id="6730825638915523882" at="81,23,87,7">
+      <scope id="1187100870427681211" at="91,37,96,11" />
+      <scope id="7983016169829830795" at="119,21,124,13" />
+      <scope id="3907542737155282349" at="128,36,133,11" />
+      <scope id="3907542737155282371" at="139,32,144,5" />
+      <scope id="6730825638915523882" at="82,23,88,7">
         <var name="commandQueue" id="6730825638915524107" />
       </scope>
-      <scope id="599918025274822353" at="152,0,158,0" />
-      <scope id="599918025274818328" at="159,0,165,0">
+      <scope id="599918025274822353" at="153,0,159,0" />
+      <scope id="599918025274818328" at="160,0,166,0">
         <var name="checkedDotOperand" id="599918025274818328" />
       </scope>
-      <scope id="1187100870427681208" at="90,0,97,0" />
-      <scope id="5630313885110295129" at="126,14,133,9" />
-      <scope id="3907542737155282368" at="138,0,145,0" />
-      <scope id="5364815602089924280" at="49,60,57,30" />
-      <scope id="6730825638915523878" at="80,0,89,0" />
-      <scope id="5364815602089924278" at="48,32,58,13" />
-      <scope id="7983016169829828398" at="113,36,124,11" />
-      <scope id="5364815602089924277" at="48,0,60,0" />
-      <scope id="5630313885110282511" at="112,24,125,9" />
-      <scope id="5364815602089922595" at="108,31,134,7" />
-      <scope id="3907542737155282323" at="107,71,135,5" />
-      <scope id="5364815602089922590" at="45,25,74,30">
+      <scope id="1187100870427681208" at="91,0,98,0" />
+      <scope id="5630313885110295129" at="127,14,134,9" />
+      <scope id="3907542737155282368" at="139,0,146,0" />
+      <scope id="5364815602089924280" at="50,60,58,30" />
+      <scope id="6730825638915523878" at="81,0,90,0" />
+      <scope id="5364815602089924278" at="49,32,59,13" />
+      <scope id="7983016169829828398" at="114,36,125,11" />
+      <scope id="5364815602089924277" at="49,0,61,0" />
+      <scope id="5630313885110282511" at="113,24,126,9" />
+      <scope id="5364815602089922595" at="109,31,135,7" />
+      <scope id="3907542737155282323" at="108,71,136,5" />
+      <scope id="5364815602089922590" at="46,25,75,30">
         <var name="listener" id="5364815602089924301" />
         <var name="stopIfNeeded" id="5364815602089924274" />
       </scope>
-      <scope id="3907542737155282320" at="107,0,137,0">
+      <scope id="3907542737155282320" at="108,0,138,0">
         <var name="timeout" id="5630313885110183561" />
         <var name="waitScheduling" id="3907542737155282329" />
       </scope>
-      <scope id="5364815602089922589" at="45,0,76,0" />
-      <scope id="5364815602089922111" at="40,118,76,24">
+      <scope id="5364815602089922589" at="46,0,77,0" />
+      <scope id="5364815602089922111" at="41,118,77,24">
         <var name="fsUpdateTimeout" id="5630313885110700149" />
         <var name="fsm" id="5876208808349579118" />
       </scope>
-      <scope id="5364815602089922108" at="40,0,78,0">
+      <scope id="5364815602089922108" at="41,0,79,0">
         <var name="expectedFileStatus" id="5364815602089923626" />
         <var name="file" id="5364815602089922117" />
       </scope>
-      <unit id="3907542737155282392" at="91,25,95,5" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$2" />
-      <unit id="5364815602089924305" at="61,29,70,9" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$1$2" />
-      <unit id="6730825638915521206" at="79,0,90,0" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$WaitForChangesManagerTask" />
-      <unit id="5364815602089924277" at="47,60,60,9" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$1$1" />
-      <unit id="599918025274823000" at="146,0,159,0" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$MyReloadListener" />
-      <unit id="5364815602089922589" at="44,25,76,5" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$1" />
-      <unit id="5876208808348878676" at="20,0,166,0" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper" />
+      <unit id="3907542737155282392" at="92,25,96,5" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$2" />
+      <unit id="5364815602089924305" at="62,29,71,9" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$1$2" />
+      <unit id="6730825638915521206" at="80,0,91,0" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$WaitForChangesManagerTask" />
+      <unit id="5364815602089924277" at="48,60,61,9" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$1$1" />
+      <unit id="599918025274823000" at="147,0,160,0" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$MyReloadListener" />
+      <unit id="5364815602089922589" at="45,25,77,5" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper$1" />
+      <unit id="5876208808348878676" at="21,0,167,0" name="jetbrains.mps.ide.vcs.test.merge.ChangesManagerTestWaitHelper" />
     </file>
   </root>
   <root nodeRef="r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/7314351270975463225">

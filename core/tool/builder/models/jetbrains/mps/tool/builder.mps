@@ -1180,6 +1180,25 @@
                 <ref role="37wK5l" node="KL8Aqlj5np" resolve="work" />
               </node>
             </node>
+            <node concept="3clFbF" id="2KCY0UALr0W" role="3cqZAp">
+              <node concept="2OqwBi" id="2KCY0UALspm" role="3clFbG">
+                <node concept="37vLTw" id="2KCY0UALspl" role="2Oq$k0">
+                  <ref role="3cqZAo" node="KL8Aqlj5lM" resolve="myEnvironment" />
+                </node>
+                <node concept="liA8E" id="2KCY0UALspn" role="2OqNvi">
+                  <ref role="37wK5l" to="79ha:3eUNqOk4fPx" resolve="flushAllEvents" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2KCY0UALr0Y" role="3cqZAp">
+              <node concept="2YIFZM" id="2KCY0UALssp" role="3clFbG">
+                <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
+                <ref role="37wK5l" to="wyt6:~Thread.sleep(long)" resolve="sleep" />
+                <node concept="3cmrfG" id="2KCY0UALssq" role="37wK5m">
+                  <property role="3cmrfH" value="10000" />
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="5AcmpEOaLb7" role="3cqZAp">
               <node concept="1rXfSq" id="5AcmpEOaLb5" role="3clFbG">
                 <ref role="37wK5l" node="KL8Aqlj5oc" resolve="dispose" />

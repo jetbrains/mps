@@ -101,7 +101,8 @@ public class SamplesExtractor implements ApplicationComponent, PersistentStateCo
       // If build number looks like "11.snapshot", we consider it developers build and do not to extract samples.
       return MyState.DEFAULT;
     }
-    return buildNumber.getBuildNumber();
+    // Only second part of build number for ex: 193.123.456 -> 123
+    return buildNumber.getComponents()[1];
   }
 
   private void updateSamplesLocation() {

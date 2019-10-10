@@ -6802,7 +6802,7 @@
                       <ref role="3cqZAo" node="2s2BsXxOyGk" resolve="inputData" />
                     </node>
                     <node concept="liA8E" id="1Cy0bg9ZWwV" role="2OqNvi">
-                      <ref role="37wK5l" to="8902:~FileContent.getFileName()" resolve="getFileName" />
+                      <ref role="37wK5l" to="8902:~IndexedFile.getFileName()" resolve="getFileName" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="1Cy0bg9ZVGV" role="3uHU7w">

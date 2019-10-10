@@ -1778,7 +1778,7 @@
             </node>
             <node concept="2ShNRf" id="7SykjgYWlY3" role="33vP2m">
               <node concept="1pGfFk" id="7SykjgYWlY4" role="2ShVmc">
-                <ref role="37wK5l" to="3fye:~ApplicationImpl.&lt;init&gt;(boolean,boolean,boolean,boolean,java.lang.String)" resolve="ApplicationImpl" />
+                <ref role="37wK5l" to="3fye:~ApplicationImpl.&lt;init&gt;(boolean,boolean,boolean,boolean)" resolve="ApplicationImpl" />
                 <node concept="3clFbT" id="7SykjgYWlY5" role="37wK5m">
                   <property role="3clFbU" value="true" />
                 </node>
@@ -1788,10 +1788,6 @@
                 </node>
                 <node concept="3clFbT" id="7SykjgYWlY8" role="37wK5m">
                   <property role="3clFbU" value="true" />
-                </node>
-                <node concept="10M0yZ" id="7SykjgYWlY9" role="37wK5m">
-                  <ref role="3cqZAo" to="f061:~ApplicationManagerEx.IDEA_APPLICATION" resolve="IDEA_APPLICATION" />
-                  <ref role="1PxDUh" to="f061:~ApplicationManagerEx" resolve="ApplicationManagerEx" />
                 </node>
               </node>
             </node>
@@ -3492,7 +3488,7 @@
                 <ref role="37wK5l" node="78Cs0exs$sJ" resolve="getStartupManager" />
               </node>
               <node concept="liA8E" id="78Cs0exs$ss" role="2OqNvi">
-                <ref role="37wK5l" to="zymn:~StartupManagerEx.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
+                <ref role="37wK5l" to="v27p:~StartupManager.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
               </node>
             </node>
             <node concept="3clFbS" id="78Cs0exs$su" role="3clFbx">
@@ -3586,7 +3582,7 @@
                 <ref role="3cqZAo" node="78Cs0exsUjI" resolve="startupManager" />
               </node>
               <node concept="liA8E" id="78Cs0exs$sV" role="2OqNvi">
-                <ref role="37wK5l" to="zymn:~StartupManagerEx.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
+                <ref role="37wK5l" to="v27p:~StartupManager.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
               </node>
             </node>
             <node concept="3clFbS" id="78Cs0exs$sX" role="3clFbx">
@@ -3642,7 +3638,7 @@
                 <ref role="3cqZAo" node="78Cs0exsUjI" resolve="startupManager" />
               </node>
               <node concept="liA8E" id="78Cs0exs$ts" role="2OqNvi">
-                <ref role="37wK5l" to="zymn:~StartupManagerEx.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
+                <ref role="37wK5l" to="v27p:~StartupManager.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
               </node>
             </node>
           </node>
@@ -3710,7 +3706,7 @@
                                       <ref role="3cqZAo" node="5T2Kc8XfN82" resolve="startupManager" />
                                     </node>
                                     <node concept="liA8E" id="5T2Kc8XfLWd" role="2OqNvi">
-                                      <ref role="37wK5l" to="zymn:~StartupManagerEx.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
+                                      <ref role="37wK5l" to="v27p:~StartupManager.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
                                     </node>
                                   </node>
                                 </node>
@@ -3730,7 +3726,7 @@
                   <ref role="3cqZAo" node="5T2Kc8XfN82" resolve="startupManager" />
                 </node>
                 <node concept="liA8E" id="5T2Kc8XfIKu" role="2OqNvi">
-                  <ref role="37wK5l" to="zymn:~StartupManagerEx.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
+                  <ref role="37wK5l" to="v27p:~StartupManager.postStartupActivityPassed()" resolve="postStartupActivityPassed" />
                 </node>
               </node>
             </node>

@@ -2404,9 +2404,7 @@
           <node concept="3cpWsn" id="19ElvrpZnoe" role="3cpWs9">
             <property role="TrG5h" value="fsep" />
             <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="19ElvrpZnob" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            </node>
+            <node concept="17QB3L" id="6ek1CjliK0C" role="1tU5fm" />
             <node concept="10M0yZ" id="19ElvrpZnof" role="33vP2m">
               <ref role="1PxDUh" to="guwi:~File" resolve="File" />
               <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
@@ -2894,7 +2892,7 @@
             </node>
             <node concept="2YIFZM" id="5drFrG61MpR" role="33vP2m">
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
+              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
               <node concept="2YIFZM" id="5drFrG61MpS" role="37wK5m">
                 <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                 <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />

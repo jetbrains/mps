@@ -19,12 +19,10 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="epdg" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.rollback(MPS.IDEA/)" />
-    <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
-    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="5fzo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.def(MPS.Core/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="bfxj" ref="r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)" />
@@ -44,8 +42,6 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="1037" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes(MPS.IDEA/)" />
-    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
-    <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="d94j" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.workbench.actions.model(MPS.Workbench/)" />
     <import index="jlcu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs(MPS.IDEA/)" />
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
@@ -62,7 +58,6 @@
     <import index="vybg" ref="r:21cf9f47-5464-40f2-9509-d94ba20bfe82(simpleModel)" />
     <import index="1k94" ref="r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)" />
     <import index="l8al" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.commands(jetbrains.mps.ide.vcs.platform/)" />
-    <import index="m13h" ref="r:21243d57-0512-4c07-bcfd-21ee53d2aeb3(jetbrains.mps.vcs.changesmanager.roots)" />
     <import index="3ebz" ref="r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)" />
     <import index="bqeu" ref="r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)" />
     <import index="sxph" ref="r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)" />
@@ -1985,8 +1980,8 @@
         <node concept="3cpWs8" id="38WJxXowUVk" role="3cqZAp">
           <node concept="3cpWsn" id="38WJxXowUVl" role="3cpWs9">
             <property role="TrG5h" value="fsm" />
-            <node concept="3uibUv" id="4CruXks$9Cu" role="1tU5fm">
-              <ref role="3uigEE" to="m13h:2n7wcdLayDZ" resolve="NodeFileStatusMappingExt" />
+            <node concept="3uibUv" id="1InONUsXYrm" role="1tU5fm">
+              <ref role="3uigEE" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
             </node>
             <node concept="2OqwBi" id="38WJxXowUVn" role="33vP2m">
               <node concept="37vLTw" id="2BHiRxeuRQE" role="2Oq$k0">
@@ -1995,7 +1990,7 @@
               <node concept="liA8E" id="38WJxXowUVp" role="2OqNvi">
                 <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="38WJxXowUVq" role="37wK5m">
-                  <ref role="3VsUkX" to="m13h:2n7wcdLayDZ" resolve="NodeFileStatusMappingExt" />
+                  <ref role="3VsUkX" to="lcr:2n7wcdLaAPM" resolve="NodeFileStatusMapping" />
                 </node>
               </node>
             </node>
@@ -12073,20 +12068,21 @@
       <node concept="3Tm1VV" id="56cvcsnFHfB" role="1B3o_S" />
       <node concept="3cqZAl" id="xjl$fQQZd6" role="3clF45" />
       <node concept="3clFbS" id="xjl$fQQZd7" role="3clF47">
-        <node concept="3clFbF" id="4g0Mut8_eq$" role="3cqZAp">
-          <node concept="2OqwBi" id="4g0Mut8_mMN" role="3clFbG">
-            <node concept="2OqwBi" id="4g0Mut8_eOo" role="2Oq$k0">
-              <node concept="37vLTw" id="4g0Mut8_eqz" role="2Oq$k0">
-                <ref role="3cqZAo" node="56cvcsnEV9K" resolve="myProject" />
+        <node concept="3clFbF" id="4EFFxri_s13" role="3cqZAp">
+          <node concept="2OqwBi" id="4EFFxri_t2r" role="3clFbG">
+            <node concept="2OqwBi" id="4EFFxri_srB" role="2Oq$k0">
+              <node concept="2YIFZM" id="4EFFxri_s6s" role="2Oq$k0">
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
               </node>
-              <node concept="liA8E" id="4g0Mut8_mqA" role="2OqNvi">
+              <node concept="liA8E" id="4EFFxri_sH_" role="2OqNvi">
                 <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="4g0Mut8_mCf" role="37wK5m">
                   <ref role="3VsUkX" to="2eq1:491od_XJZeq" resolve="ReloadManager" />
                 </node>
               </node>
             </node>
-            <node concept="liA8E" id="4g0Mut8_vyH" role="2OqNvi">
+            <node concept="liA8E" id="4EFFxri_tcE" role="2OqNvi">
               <ref role="37wK5l" to="2eq1:4SUKy4FU8kE" resolve="flush" />
             </node>
           </node>

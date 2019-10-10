@@ -306,7 +306,7 @@
       <sysproperty key="idea.plugins.path" value="${test.platform.sandbox.dir}/plugins"/>
       <sysproperty key="idea.log.path" value="${test.platform.sandbox.dir}/log"/>
       <sysproperty key="idea.home.path" value="${base_dir}/IdeaPlugin/idea_home"/>
-      <sysproperty key="idea.load.plugins.id" value="jetbrains.mps.core,jetbrains.mps.testing,jetbrains.mps.idea.java"/>
+      <sysproperty key="idea.load.plugins.id" value="jetbrains.mps.core,jetbrains.mps.testing,jetbrains.mps.idea.java,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <classpath>
@@ -346,7 +346,7 @@
       <sysproperty key="idea.plugins.path" value="${test.platform.sandbox.dir}/plugins"/>
       <sysproperty key="idea.log.path" value="${test.platform.sandbox.dir}/log"/>
       <sysproperty key="idea.home.path" value="${base_dir}/IdeaPlugin/idea_home"/>
-      <sysproperty key="idea.load.plugins.id" value="jetbrains.mps.core"/>
+      <sysproperty key="idea.load.plugins.id" value="jetbrains.mps.core,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <!-- TODO: remove property after investigation and fix MPS-25217 -->
@@ -423,7 +423,7 @@
       <sysproperty key="idea.log.path" value="${test.platform.sandbox.dir}/log"/>
       <sysproperty key="idea.home.path" value="${base_dir}/IdeaPlugin/idea_home"/>
       <sysproperty key="idea.load.plugins.id"
-                   value="jetbrains.mps.core,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests"/>
+                   value="jetbrains.mps.core,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <!-- TODO: remove property after investigation and fix MPS-25217 -->

@@ -13,7 +13,6 @@
       <library name="idea-startup">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../lib/util.jar!/" />
-          <root url="jar://$MODULE_DIR$/../lib/boot.jar!/" />
           <root url="jar://$MODULE_DIR$/../lib/bootstrap.jar!/" />
           <root url="jar://$MODULE_DIR$/../lib/trove4j.jar!/" />
         </CLASSES>

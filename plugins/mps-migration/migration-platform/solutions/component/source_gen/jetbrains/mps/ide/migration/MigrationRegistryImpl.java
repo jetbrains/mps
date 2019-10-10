@@ -5,6 +5,7 @@ package jetbrains.mps.ide.migration;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.migration.global.ProjectMigration;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.Collection;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
@@ -24,7 +25,6 @@ import jetbrains.mps.migration.global.ProjectMigrationWithOptions;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
@@ -35,9 +35,9 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
   private Project myMpsProject;
   private ProjectMigration lastProjectMigration = null;
 
-  public MigrationRegistryImpl(com.intellij.openapi.project.Project project, Project mpsProject) {
+  public MigrationRegistryImpl(com.intellij.openapi.project.Project project) {
     super(project);
-    myMpsProject = mpsProject;
+    myMpsProject = ProjectHelper.fromIdeaProject(project);
   }
 
   @Override

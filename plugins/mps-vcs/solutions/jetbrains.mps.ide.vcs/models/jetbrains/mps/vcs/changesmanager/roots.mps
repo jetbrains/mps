@@ -21,6 +21,7 @@
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="kip1" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.nodefs(MPS.Platform/)" />
     <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
+    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -551,9 +552,6 @@
                     <node concept="liA8E" id="2n7wcdLayIi" role="2OqNvi">
                       <ref role="37wK5l" to="jlcu:~FileStatusManager.fileStatusChanged(com.intellij.openapi.vfs.VirtualFile)" resolve="fileStatusChanged" />
                       <node concept="2OqwBi" id="2n7wcdLayIj" role="37wK5m">
-                        <node concept="1rXfSq" id="qh1hBLbppV" role="2Oq$k0">
-                          <ref role="37wK5l" to="lcr:qh1hBLaspL" resolve="getNodeFileSystem" />
-                        </node>
                         <node concept="liA8E" id="2n7wcdLayIl" role="2OqNvi">
                           <ref role="37wK5l" to="kip1:~NodeVirtualFileSystem.getFileFor(org.jetbrains.mps.openapi.module.SRepository,org.jetbrains.mps.openapi.model.SNode)" resolve="getFileFor" />
                           <node concept="2OqwBi" id="5IHtz9v0_5X" role="37wK5m">
@@ -567,6 +565,9 @@
                           <node concept="37vLTw" id="5IHtz9v0A2t" role="37wK5m">
                             <ref role="3cqZAo" node="2n7wcdLayHJ" resolve="baseNode" />
                           </node>
+                        </node>
+                        <node concept="1rXfSq" id="qh1hBLbppV" role="2Oq$k0">
+                          <ref role="37wK5l" to="lcr:qh1hBLaspL" resolve="getNodeFileSystem" />
                         </node>
                       </node>
                     </node>
@@ -595,13 +596,18 @@
           <node concept="2OqwBi" id="2n7wcdLayIv" role="2GsD0m">
             <node concept="2OqwBi" id="2n7wcdLayIw" role="2Oq$k0">
               <node concept="liA8E" id="2n7wcdLayIy" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                 <node concept="3VsKOn" id="2n7wcdLayIz" role="37wK5m">
                   <ref role="3VsUkX" to="xj2j:~ProjectPluginManager" resolve="ProjectPluginManager" />
                 </node>
               </node>
-              <node concept="37vLTw" id="qh1hBLbpG7" role="2Oq$k0">
-                <ref role="3cqZAo" to="lcr:5A04Co8KyHu" resolve="myProject" />
+              <node concept="2OqwBi" id="3kLufn9Jln$" role="2Oq$k0">
+                <node concept="37vLTw" id="qh1hBLbpG7" role="2Oq$k0">
+                  <ref role="3cqZAo" to="lcr:5A04Co8KyHu" resolve="myProject" />
+                </node>
+                <node concept="liA8E" id="3kLufn9JlTm" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
+                </node>
               </node>
             </node>
             <node concept="liA8E" id="2n7wcdLayI$" role="2OqNvi">

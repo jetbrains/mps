@@ -15,6 +15,7 @@ import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import com.intellij.openapi.vcs.changes.ChangeListManagerImpl;
 import jetbrains.mps.vcs.changesmanager.SimpleCommandQueue;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 
 public class ChangesManagerTestWaitHelper {
@@ -96,7 +97,7 @@ public class ChangesManagerTestWaitHelper {
   }
 
   public void waitForReloadFinished() {
-    myProject.getComponent(ReloadManager.class).flush();
+    ApplicationManager.getApplication().getComponent(ReloadManager.class).flush();
   }
 
   /**

@@ -9,6 +9,8 @@ import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.platform.watching.FSChangesWatcher;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import jetbrains.mps.ide.MPSCoreComponents;
+import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.ide.platform.watching.ReloadManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.NonNls;
@@ -36,7 +38,6 @@ import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import java.util.ArrayList;
 import com.intellij.openapi.vcs.AbstractVcsHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
@@ -49,10 +50,10 @@ public class SuspiciousModelIndex implements ApplicationComponent {
   private ReloadManagerComponent myReloadManager;
   private Platform myMPSPlatform;
 
-  public SuspiciousModelIndex(ProjectManager manager, FSChangesWatcher watcher, VirtualFileManager vfManager, ReloadManagerComponent reloadManager, MPSCoreComponents mpsCore) {
+  public SuspiciousModelIndex(ProjectManager manager, FSChangesWatcher watcher, VirtualFileManager vfManager, MPSCoreComponents mpsCore) {
     myProjectManager = manager;
-    myReloadManager = reloadManager;
-    myPlatformWatcher = new PlatformActivityTracker(manager, vfManager, reloadManager);
+    myReloadManager = (ReloadManagerComponent) ApplicationManager.getApplication().getComponent(ReloadManager.class);
+    myPlatformWatcher = new PlatformActivityTracker(manager, vfManager, myReloadManager);
     myMPSPlatform = mpsCore.getPlatform();
   }
 

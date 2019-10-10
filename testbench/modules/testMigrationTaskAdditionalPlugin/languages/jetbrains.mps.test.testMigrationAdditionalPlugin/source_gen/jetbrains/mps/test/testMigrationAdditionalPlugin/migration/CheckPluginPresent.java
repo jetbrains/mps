@@ -15,8 +15,9 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CheckPluginPresent extends MigrationScriptBase {
+  private final String description = "CheckPluginPresent";
   public String getCaption() {
-    return "CheckPluginPresent";
+    return description;
   }
   @Override
   public boolean isRerunnable() {

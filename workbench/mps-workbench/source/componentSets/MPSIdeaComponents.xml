@@ -3,55 +3,41 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://www.w3.org/2001/XInclude
    http://www.w3.org/2001/XInclude.xsd">
-
-  <application-components>
-    <component>
-      <implementation-class>com.intellij.openapi.components.impl.ServiceManagerImpl</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.openapi.util.registry.RegistryState</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.internal.statistic.updater.StatisticsJobsScheduler</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.workbench.recent.RecentMPSProjectsManager</implementation-class>
-    </component>
-  </application-components>
   <project-components>
     <component>
-      <implementation-class>com.intellij.openapi.components.impl.ServiceManagerImpl</implementation-class>
+      <implementation-class>com.intellij.profile.codeInspection.ProjectInspectionProfileManager</implementation-class>
       <loadForDefaultProject/>
+    </component>
+    <component>
+      <!-- TODO: check if can be removed -->
+      <implementation-class>com.intellij.openapi.vcs.impl.ModuleVcsDetector</implementation-class>
     </component>
   </project-components>
 
   <xi:include href="/componentSets/Platform.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/componentSets/UICore.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/componentSets/Editor.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/componentSets/VCS.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/componentSets/MPSLang.xml" xpointer="xpointer(/components/*)"/>
   <xi:include href="/componentSets/MPSProjectView.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="/componentSets/Editor.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <!--
-  <xi:include href="/componentSets/ExternalSystemComponents.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="Compiler.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  -->
-  <xi:include href="/componentSets/Execution.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/componentSets/VCS.xml" xpointer="xpointer(/idea-plugin/*)"/>
-
-  <project-components>
-    <component>
-      <implementation-class>com.intellij.openapi.vcs.impl.ModuleVcsDetector</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>com.intellij.profile.codeInspection.ProjectInspectionProfileManager</implementation-class>
-      <loadForDefaultProject/>
-    </component>
-  </project-components>
 
   <applicationListeners>
     <listener class="com.intellij.util.gist.GistManagerImpl$MyBulkFileListener" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
-    <listener class="com.intellij.ide.RecentProjectsManagerBase$MyAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
-    <listener class="com.intellij.ide.RecentProjectsManagerBase$MyProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    <listener class="com.intellij.ide.RecentProjectsManagerBase$MyAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener" activeInHeadlessMode="false"/>
+    <listener class="com.intellij.ide.RecentProjectsManagerBase$MyProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener" activeInHeadlessMode="false"/>
+    <listener class="com.intellij.openapi.wm.impl.WindowDressing" topic="com.intellij.openapi.project.ProjectManagerListener" activeInHeadlessMode="false"/>
+    <listener class="com.intellij.openapi.editor.impl.EditorLastActionTracker$MyAnActionListener" topic="com.intellij.openapi.actionSystem.ex.AnActionListener"/>
+    <listener class="com.intellij.diagnostic.IdeaFreezeReporter" topic="com.intellij.diagnostic.IdePerformanceListener" activeInTestMode="false" activeInHeadlessMode="false"/>
+
+    <listener class="com.intellij.notification.impl.NotificationsManagerImpl$MyNotificationListener" topic="com.intellij.notification.Notifications"/>
+    <listener class="com.intellij.notification.EventLog$MyNotificationListener" topic="com.intellij.notification.Notifications"/>
+    <listener class="com.intellij.notification.impl.NotificationsConfigurationImpl$MyNotificationListener" topic="com.intellij.notification.Notifications"/>
   </applicationListeners>
+  <!-- MPS has its own BookmarkManager -->
+  <!--
+  <projectListeners>
+    <listener class="com.intellij.ide.bookmarks.BookmarkManager$BookmarkManagerPsiDocumentManagerListener" topic="com.intellij.psi.PsiDocumentListener" activeInTestMode="false"/>
+  </projectListeners>
+  -->
 
 </components>

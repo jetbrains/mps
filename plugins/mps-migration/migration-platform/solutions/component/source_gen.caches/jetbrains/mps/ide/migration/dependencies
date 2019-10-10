@@ -284,7 +284,6 @@
     <classNode dependClassName="jetbrains.mps.ide.migration.wizard.MigrationWizard" />
     <classNode dependClassName="jetbrains.mps.ide.platform.watching.ReloadListener" />
     <classNode dependClassName="jetbrains.mps.ide.platform.watching.ReloadManager" />
-    <classNode dependClassName="jetbrains.mps.ide.platform.watching.ReloadManagerComponent" />
     <classNode dependClassName="jetbrains.mps.ide.vfs.VirtualFileUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
@@ -298,6 +297,7 @@
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil" />
     <classNode dependClassName="jetbrains.mps.migration.global.MigrationOptions" />
     <classNode dependClassName="jetbrains.mps.migration.global.MigrationProblemHandler" />
+    <classNode dependClassName="jetbrains.mps.migration.global.MigrationProperties" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigration" />
     <classNode dependClassName="jetbrains.mps.migration.global.ProjectMigrationProperties" />
     <classNode dependClassName="jetbrains.mps.openapi.navigation.ProjectPaneNavigator" />

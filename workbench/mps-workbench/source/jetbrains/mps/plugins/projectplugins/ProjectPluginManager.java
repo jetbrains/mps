@@ -27,6 +27,7 @@ import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.ide.editor.NodeEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import jetbrains.mps.ide.make.StartupModuleMaker;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseTool;
 import jetbrains.mps.nodeEditor.highlighter.EditorsHelper;
 import jetbrains.mps.plugins.BasePluginManager;
@@ -66,11 +67,11 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
   private final jetbrains.mps.project.Project myMpsProject;
   private final FileEditorManager myManager;
 
-  public ProjectPluginManager(@NotNull Project project, jetbrains.mps.project.Project mpsProject, PluginLoaderRegistry pluginLoaderRegistry,
+  public ProjectPluginManager(@NotNull Project project, PluginLoaderRegistry pluginLoaderRegistry,
                               @SuppressWarnings("unused") StartupModuleMaker moduleMaker, FileEditorManager manager) {
     super(pluginLoaderRegistry);
     myProject = project;
-    myMpsProject = mpsProject;
+    myMpsProject = ProjectHelper.fromIdeaProject(project);
     myManager = manager;
   }
 

@@ -123,6 +123,8 @@ public abstract class WorkerBase {
       Logger.getRootLogger().setLevel(myWhatToDo.getLogLevel());
       myEnvironment = createEnvironment();
       work();
+      myEnvironment.flushAllEvents();
+      Thread.sleep(10000);
       dispose();
       System.exit(0);
     } catch (Throwable e) {

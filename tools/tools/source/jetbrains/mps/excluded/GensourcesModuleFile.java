@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@ import org.jdom.JDOMException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -66,24 +66,19 @@ class GensourcesModuleFile {
     myRootManagerElement = new Element(MODULE_ROOT_MANAGER);
   }
 
-  public void prepare() throws JDOMException, IOException {
-    collectSourcesOfRegularModules();
+  public void prepare() throws Exception {
+    collectSourcesOfRegularModules(new IDEAProject(Utils.root()).discoverAllModulesExceptGensources());
   }
 
-  private void collectSourcesOfRegularModules() throws JDOMException, IOException {
+  private void collectSourcesOfRegularModules(Collection<IDEAModule> ideaModules) throws IOException {
     Set<String> modelRoots = new HashSet<>();
     Set<String> sourcesIncluded = new HashSet<>();
-    for (File imlFile : Utils.withExtension(".iml", Utils.files(new File(".")))) {
-      if (imlFile.getCanonicalPath().equals(myGensourcesIml.getCanonicalPath())) continue;
-      Document doc = JDOMUtil.loadDocument(imlFile);
-      Element rootManager = Utils.getComponentWithName(doc, MODULE_ROOT_MANAGER);
-      for (Element cRoot : rootManager.getChildren(CONTENT)) {
-        String imlFormattedRoot = cRoot.getAttributeValue(URL);
-        modelRoots.add(new File(imlFormattedRoot.replace("file://$MODULE_DIR$", imlFile.getParent())).getCanonicalPath());
-        for (Element sFolder : cRoot.getChildren(SOURCE_FOLDER)) {
-          String imlFormattedSourceRoot = sFolder.getAttributeValue(URL);
-          sourcesIncluded.add(new File(imlFormattedSourceRoot.replace("file://$MODULE_DIR$", imlFile.getParent())).getCanonicalPath());
-        }
+    for (IDEAModule m : ideaModules) {
+      for (File imlContentRoot : m.contentRoots()) {
+        modelRoots.add(imlContentRoot.getCanonicalPath());
+      }
+      for (File imlSourceRoot : m.sources()) {
+        sourcesIncluded.add(imlSourceRoot.getCanonicalPath());
       }
     }
     myRegularModuleSources = sourcesIncluded;
@@ -228,22 +223,6 @@ class GensourcesModuleFile {
       excludeFolder.setAttribute(URL, PATH_START_MODULE + Utils.getRelativeProjectPath(cGen));
       contentRoot.addContent(excludeFolder);
     }
-  }
-
-  public static MultiMap<String, String> getSourceFolders(File root) throws JDOMException, IOException {
-    MultiMap<String, String> sourcesIncluded = new MultiMap<>();
-    for (File imlFile : Utils.withExtension(".iml", Utils.files(root))) {
-      Document doc = JDOMUtil.loadDocument(imlFile);
-      Element rootManager = Utils.getComponentWithName(doc, MODULE_ROOT_MANAGER);
-      for (Element cRoot : rootManager.getChildren(CONTENT)) {
-        for (Element sFolder : cRoot.getChildren(SOURCE_FOLDER)) {
-          String imlFormattedRoot = sFolder.getAttributeValue(URL);
-          String sourcePath = new File(imlFormattedRoot.replace("file://$MODULE_DIR$", imlFile.getParent())).getCanonicalPath();
-          sourcesIncluded.putValue(imlFile.getCanonicalPath(), sourcePath);
-        }
-      }
-    }
-    return sourcesIncluded;
   }
 
   private static boolean intersects(Set<String> existingRoots, String parent) {

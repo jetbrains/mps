@@ -1,5 +1,5 @@
 /*
-* Copyright 2003-2018 JetBrains s.r.o.
+* Copyright 2003-2019 JetBrains s.r.o.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
 package jetbrains.mps.excluded;
 
 import jetbrains.mps.core.platform.Platform;
@@ -31,7 +30,7 @@ public class GeneratorsRunner {
   public static final File GEN_SOURCES_IML = new File("tools" + File.separatorChar + "gensources" + File.separatorChar + "gensources.iml");
   public static final File COMPILER_XML_FILE = new File(".idea" + File.separatorChar + "compiler.xml");
 
-  public static void generateGenSourcesIml(Platform mpsPlatform) throws JDOMException, IOException {
+  public static void generateGenSourcesIml(Platform mpsPlatform) throws Exception {
     final GensourcesModuleFile f = new GensourcesModuleFile(mpsPlatform, GEN_SOURCES_IML);
     System.out.println("Analyzing MPS modules...");
     f.prepare();
@@ -52,7 +51,7 @@ public class GeneratorsRunner {
     System.out.println("Done.");
   }
 
-  public static void main(String[] args) throws JDOMException, IOException {
+  public static void main(String[] args) throws Exception {
     assertNull(PersistenceFacade.getInstance());
     Platform platform = PlatformFactory.initPlatform(PlatformOptionsBuilder.PERSISTENCE);
 

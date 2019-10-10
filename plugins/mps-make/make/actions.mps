@@ -9289,7 +9289,7 @@
             <node concept="3clFbF" id="1tPM9NIM0ot" role="3cqZAp">
               <node concept="2OqwBi" id="1tPM9NIM0ou" role="3clFbG">
                 <node concept="liA8E" id="1tPM9NIM0ow" role="2OqNvi">
-                  <ref role="37wK5l" to="fnpx:~NotificationsAdapter.register(java.lang.String,com.intellij.notification.NotificationDisplayType,boolean)" resolve="register" />
+                  <ref role="37wK5l" to="fnpx:~Notifications.register(java.lang.String,com.intellij.notification.NotificationDisplayType,boolean)" resolve="register" />
                   <node concept="37vLTw" id="2BHiRxeoiW3" role="37wK5m">
                     <ref role="3cqZAo" node="6za2oG6XsvV" resolve="ID" />
                   </node>

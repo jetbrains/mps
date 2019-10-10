@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.diagnostic;
 
-import com.intellij.idea.IdeaApplication;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.ApplicationComponent;

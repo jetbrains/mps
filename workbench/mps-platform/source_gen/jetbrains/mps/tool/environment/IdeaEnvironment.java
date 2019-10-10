@@ -20,7 +20,6 @@ import java.awt.GraphicsEnvironment;
 import com.intellij.idea.IdeaTestApplication;
 import com.intellij.util.PlatformUtils;
 import com.intellij.openapi.application.impl.ApplicationImpl;
-import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
@@ -190,7 +189,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
     // next line is shorthand for PlatformTestCase.doAutodetectPlatformPrefix() 
     System.setProperty(PlatformUtils.PLATFORM_PREFIX_KEY, PlatformUtils.IDEA_CE_PREFIX);
     // Prior 2019.3, there used to be  CommandLineApplication class that served as inspiration for the next lines 
-    ApplicationImpl rv = new ApplicationImpl(true, false, true, true, ApplicationManagerEx.IDEA_APPLICATION);
+    ApplicationImpl rv = new ApplicationImpl(true, false, true, true);
     rv.load(null);
     return rv;
   }

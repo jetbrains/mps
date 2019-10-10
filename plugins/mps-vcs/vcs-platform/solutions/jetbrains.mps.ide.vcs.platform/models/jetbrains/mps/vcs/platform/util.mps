@@ -315,7 +315,7 @@
             </node>
             <node concept="2YIFZM" id="60S3DtlPd$v" role="33vP2m">
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-              <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
+              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
               <node concept="2YIFZM" id="60S3DtlPd$w" role="37wK5m">
                 <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                 <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />

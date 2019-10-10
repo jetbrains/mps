@@ -28,7 +28,7 @@ import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
 import jetbrains.mps.generator.GenerationTrace;
-import jetbrains.mps.ide.generator.TransientModelsComponent;
+import jetbrains.mps.generator.TransientModelsProvider;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.tools.BaseProjectTool;
 import jetbrains.mps.ide.tools.CloseAction;
@@ -57,13 +57,13 @@ public class GenerationTracerViewTool extends BaseProjectTool {
 
   private List<GenerationTracerView> myTracerViews = new ArrayList<>();
   private ContentManagerAdapter myContentListener;
-  private final TransientModelsComponent myTransientModelsOwner;
+  private final TransientModelsProvider myTransientModelsOwner;
   private boolean myAutoscroll;
 
 
-  public GenerationTracerViewTool(Project project, TransientModelsComponent transientModels) {
+  public GenerationTracerViewTool(Project project) {
     super(project, "Generation Tracer", null, IdeIcons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, false, true);
-    myTransientModelsOwner = transientModels;
+    myTransientModelsOwner = project.getComponent(TransientModelsProvider.class);
     myNoTabsComponent = new NoTabsComponent(this);
   }
 

@@ -11,9 +11,9 @@ import com.intellij.openapi.vfs.VirtualFileManagerListener;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.openapi.vfs.newvfs.BulkFileListener;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.application.ApplicationManager;
 import java.util.List;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.openapi.application.Application;
@@ -48,10 +48,10 @@ public class FSChangesWatcher implements ApplicationComponent {
   private final ReloadManagerComponent myReloadManager;
   private final IdeaFileSystem myIdeaFileSystem;
 
-  public FSChangesWatcher(MessageBus bus, VirtualFileManager virtualFileManager, ReloadManagerComponent reloadManager, IdeaFileSystem ideaFileSystem) {
+  public FSChangesWatcher(MessageBus bus, VirtualFileManager virtualFileManager, IdeaFileSystem ideaFileSystem) {
     myBus = bus;
     myVirtualFileManager = virtualFileManager;
-    myReloadManager = reloadManager;
+    myReloadManager = (ReloadManagerComponent) ApplicationManager.getApplication().getComponent(ReloadManager.class);
     myIdeaFileSystem = ideaFileSystem;
   }
 

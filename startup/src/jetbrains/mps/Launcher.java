@@ -15,23 +15,17 @@
  */
 package jetbrains.mps;
 
-import com.intellij.ide.Bootstrap;
+import com.intellij.idea.Main;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.util.SystemInfo;
 import jetbrains.mps.util.ClassPathReader;
-import jetbrains.mps.util.ClassType;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Launcher {
   public static void main(String[] args) throws Exception {
-    LinkedHashMap<String, Long> startupTimings = new LinkedHashMap<>();
-    startupTimings.put("startup begin", System.nanoTime());
-
     String mpsInternal = System.getProperty("mps.internal");
     System.setProperty("idea.is.internal", mpsInternal != null ? mpsInternal : "false");
 
@@ -44,7 +38,7 @@ public class Launcher {
       }
     }
     System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
-    Bootstrap.main(args, "jetbrains.mps.MPSMainImpl", "start", startupTimings);
+    Main.main(args);
   }
 
   private static String getFsNotifierDir() {
@@ -65,7 +59,7 @@ public class Launcher {
     } else if (SystemInfo.isMac) {
       return "fsnotifier";
     } else if (SystemInfo.isLinux) {
-      return SystemInfo.isAMD64 ? "fsnotifier64" : "fsnotifier";
+      return SystemInfo.is64Bit ? "fsnotifier64" : "fsnotifier";
     }
 
     return null;
@@ -83,7 +77,7 @@ public class Launcher {
   private static List<String> getAdditionalMPSClasspath() {
     List<String> result = new ArrayList<>();
     // we're probably running from the sources, let's add the class dirs to the classpath
-    Class<Bootstrap> clazz = Bootstrap.class;
+    Class<Main> clazz = Main.class;
     String self = PathManager.getResourceRoot(clazz, "/" + clazz.getName().replace('.', '/') + ".class");
     assert self != null;
     File selfRoot = new File(self).getAbsoluteFile();

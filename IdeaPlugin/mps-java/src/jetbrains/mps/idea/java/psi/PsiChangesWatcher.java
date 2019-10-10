@@ -15,21 +15,27 @@
  */
 package jetbrains.mps.idea.java.psi;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.*;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiManager;
+import com.intellij.psi.PsiTreeChangeAdapter;
+import com.intellij.psi.PsiTreeChangeEvent;
+import com.intellij.psi.PsiTreeChangeListener;
 import com.intellij.refactoring.rename.inplace.InplaceRefactoring;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.platform.watching.ReloadAction;
-import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
+import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.idea.java.psi.JavaPsiListener.PsiEvent;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiNodeBase;
+import jetbrains.mps.idea.java.psi.JavaPsiListener.PsiEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * danilla 11/12/12
@@ -53,11 +59,11 @@ public class PsiChangesWatcher implements ProjectComponent {
   private MessageBusConnection connection;
   private PsiTreeChangeListener myOwnPsiListener = new OwnPsiListener();
 
-  private ReloadManagerComponent myReloadManager;
+  private ReloadManager myReloadManager;
 
-  PsiChangesWatcher(Project p, ReloadManagerComponent reloadManager) {
+  PsiChangesWatcher(Project p) {
     myProject = p;
-    myReloadManager = reloadManager;
+    myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
   }
 
   @Override

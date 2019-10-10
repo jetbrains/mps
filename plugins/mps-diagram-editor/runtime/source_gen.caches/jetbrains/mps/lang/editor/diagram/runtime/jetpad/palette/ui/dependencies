@@ -6,7 +6,6 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnAction" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.DefaultActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ToggleAction" />
-    <classNode dependClassName="com.intellij.openapi.keymap.ex.KeymapManagerEx" />
     <classNode dependClassName="com.intellij.uiDesigner.core.GridConstraints" />
     <classNode dependClassName="com.intellij.uiDesigner.core.GridLayoutManager" />
     <classNode dependClassName="javax.swing.JComponent" />
@@ -23,7 +22,6 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.Presentation" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ex.ActionButtonLook" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.impl.ActionButton" />
-    <classNode dependClassName="com.intellij.openapi.keymap.ex.KeymapManagerEx" />
     <classNode dependClassName="java.awt.Dimension" />
     <classNode dependClassName="java.awt.event.MouseEvent" />
     <classNode dependClassName="java.lang.Override" />

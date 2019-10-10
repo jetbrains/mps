@@ -12,7 +12,6 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.palette.openapi.PaletteE
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.keymap.ex.KeymapManagerEx;
 import javax.swing.JComponent;
 
 public class DiagramPalette extends JPanel {
@@ -20,43 +19,49 @@ public class DiagramPalette extends JPanel {
 
   private DiagramCell myDiagramCell;
   private ToggleAction mySelectedToggleAction;
+
   public DiagramPalette(DiagramCell diagramCell) {
     super(new GridLayoutManager(1, 1));
     myDiagramCell = diagramCell;
   }
+
   public DiagramCell getDiagramCell() {
     return myDiagramCell;
   }
+
   protected void unselectActionWhichWasSelected(AnAction actionWhisIsSelected) {
     if (actionWhisIsSelected instanceof ToggleAction) {
       if (mySelectedToggleAction != actionWhisIsSelected) {
-        check_1eehpg_a0a0a0a6(mySelectedToggleAction);
+        check_1eehpg_a0a0a0a9(mySelectedToggleAction);
         mySelectedToggleAction = ((ToggleAction) actionWhisIsSelected);
       }
     } else {
       unselectActionWhichWasSelected();
     }
   }
+
   protected void unselectActionWhichWasSelected() {
-    check_1eehpg_a0a7(mySelectedToggleAction);
+    check_1eehpg_a0a11(mySelectedToggleAction);
     mySelectedToggleAction = null;
   }
+
   protected void addPaletteElement(PaletteElement element) {
     myMainActionGroup.add(PaletteElementFactory.createPaletteElementAdapter(this, element));
   }
+
   protected void createPalette() {
     GridConstraints gridConstraints = new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTH, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null);
-    ActionToolbar myToolbar = new DiagramPaletteActionToolbar(ActionPlaces.UNKNOWN, myMainActionGroup, false, KeymapManagerEx.getInstanceEx());
+    ActionToolbar myToolbar = new DiagramPaletteActionToolbar(ActionPlaces.UNKNOWN, myMainActionGroup, false);
     JComponent actionPanel = myToolbar.getComponent();
     add(actionPanel, gridConstraints);
   }
-  private static void check_1eehpg_a0a0a0a6(ToggleAction checkedDotOperand) {
+  private static void check_1eehpg_a0a0a0a9(ToggleAction checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setSelected(null, false);
     }
 
   }
-  private static void check_1eehpg_a0a7(ToggleAction checkedDotOperand) {
+  private static void check_1eehpg_a0a11(ToggleAction checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.setSelected(null, false);
     }

@@ -5,8 +5,8 @@
   <module value="com.intellij.modules.vcs"/>
   <!--
   <module value="com.intellij.modules.xdebugger"/>
-  <module value="com.intellij.modules.xml"/>
   -->
+  <module value="com.intellij.modules.xml"/>
   <module value="com.intellij.modules.externalSystem"/>
 
   <xi:include href="/componentSets/MPSIdeaComponents.xml" xpointer="xpointer(/components/*)"/>
@@ -411,9 +411,7 @@
         <xi:fallback/>
   </xi:include>
   -->
-  <!-- Use only one extension from  ImagesPlugin.xml and one appServ from XmlPlugin.xml-->
   <extensions defaultExtensionNs="com.intellij">
-    <fileTypeFactory implementation="org.intellij.images.fileTypes.impl.ImageFileTypeManagerImpl" />
     <!-- Copy paste from XmlPlugin.xml-->
     <applicationService serviceInterface="com.intellij.ide.browsers.BrowserLauncher" serviceImplementation="com.intellij.ide.browsers.BrowserLauncherImpl"/>
     <applicationService serviceImplementation="com.intellij.ide.browsers.WebBrowserManager"/>

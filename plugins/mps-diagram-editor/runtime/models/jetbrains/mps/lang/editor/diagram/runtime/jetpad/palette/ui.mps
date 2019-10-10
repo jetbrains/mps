@@ -1481,6 +1481,7 @@
         <ref role="3uigEE" to="qkt:~ToggleAction" resolve="ToggleAction" />
       </node>
     </node>
+    <node concept="2tJIrI" id="73bN9cWcpZ9" role="jymVt" />
     <node concept="3clFbW" id="38g0FihPg39" role="jymVt">
       <node concept="3cqZAl" id="38g0FihPg3a" role="3clF45" />
       <node concept="3Tm1VV" id="38g0FihPg3b" role="1B3o_S" />
@@ -1517,6 +1518,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="73bN9cWcqtd" role="jymVt" />
     <node concept="3clFb_" id="38g0FihPg3r" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDiagramCell" />
@@ -1534,6 +1536,7 @@
         <ref role="3uigEE" to="8jsd:7efWZtHWeDk" resolve="DiagramCell" />
       </node>
     </node>
+    <node concept="2tJIrI" id="73bN9cWcpx6" role="jymVt" />
     <node concept="3clFb_" id="38g0FihPg3y" role="jymVt">
       <property role="TrG5h" value="unselectActionWhichWasSelected" />
       <node concept="3cqZAl" id="38g0FihPg3z" role="3clF45" />
@@ -1611,6 +1614,7 @@
       </node>
       <node concept="3Tmbuc" id="38g0FihYnAt" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="73bN9cWcpqa" role="jymVt" />
     <node concept="3clFb_" id="38g0FihPg43" role="jymVt">
       <property role="TrG5h" value="unselectActionWhichWasSelected" />
       <node concept="3cqZAl" id="38g0FihPg44" role="3clF45" />
@@ -1640,6 +1644,7 @@
       </node>
       <node concept="3Tmbuc" id="38g0FihYn21" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="73bN9cWcoZU" role="jymVt" />
     <node concept="3clFb_" id="38g0FihPg4t" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="addPaletteElement" />
@@ -1674,6 +1679,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="73bN9cWcozO" role="jymVt" />
     <node concept="3clFb_" id="38g0FihPg4E" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="createPalette" />
@@ -1741,10 +1747,6 @@
                   <ref role="3cqZAo" node="38g0FihPg2X" resolve="myMainActionGroup" />
                 </node>
                 <node concept="3clFbT" id="38g0FihPg53" role="37wK5m" />
-                <node concept="2YIFZM" id="38g0FihPg56" role="37wK5m">
-                  <ref role="37wK5l" to="yecc:~KeymapManagerEx.getInstanceEx()" resolve="getInstanceEx" />
-                  <ref role="1Pybhc" to="yecc:~KeymapManagerEx" resolve="KeymapManagerEx" />
-                </node>
               </node>
             </node>
           </node>
@@ -1787,6 +1789,7 @@
   </node>
   <node concept="312cEu" id="38g0FihPg5o">
     <property role="TrG5h" value="DiagramPaletteActionToolbar" />
+    <node concept="2tJIrI" id="73bN9cWchlf" role="jymVt" />
     <node concept="3clFbW" id="38g0FihPg5p" role="jymVt">
       <property role="TrG5h" value="ActionToolbarImpl" />
       <node concept="3cqZAl" id="38g0FihPg5q" role="3clF45" />
@@ -1808,15 +1811,9 @@
         <property role="TrG5h" value="horizontal" />
         <node concept="10P_77" id="38g0FihPg5y" role="1tU5fm" />
       </node>
-      <node concept="37vLTG" id="38g0FihPg5B" role="3clF46">
-        <property role="TrG5h" value="keymapManager" />
-        <node concept="3uibUv" id="38g0FihPg5C" role="1tU5fm">
-          <ref role="3uigEE" to="yecc:~KeymapManagerEx" resolve="KeymapManagerEx" />
-        </node>
-      </node>
       <node concept="3clFbS" id="38g0FihPg5D" role="3clF47">
         <node concept="XkiVB" id="38g0FihPg5E" role="3cqZAp">
-          <ref role="37wK5l" to="xcyp:~ActionToolbarImpl.&lt;init&gt;(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean,com.intellij.openapi.keymap.ex.KeymapManagerEx)" resolve="ActionToolbarImpl" />
+          <ref role="37wK5l" to="xcyp:~ActionToolbarImpl.&lt;init&gt;(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="ActionToolbarImpl" />
           <node concept="37vLTw" id="38g0FihPg5F" role="37wK5m">
             <ref role="3cqZAo" node="38g0FihPg5s" resolve="place" />
           </node>
@@ -1825,9 +1822,6 @@
           </node>
           <node concept="37vLTw" id="38g0FihPg5H" role="37wK5m">
             <ref role="3cqZAo" node="38g0FihPg5x" resolve="horizontal" />
-          </node>
-          <node concept="37vLTw" id="38g0FihPg5K" role="37wK5m">
-            <ref role="3cqZAo" node="38g0FihPg5B" resolve="keymapManager" />
           </node>
         </node>
       </node>
@@ -1855,9 +1849,7 @@
       </node>
       <node concept="37vLTG" id="38g0FihPg5T" role="3clF46">
         <property role="TrG5h" value="place" />
-        <node concept="3uibUv" id="38g0FihPg5U" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-        </node>
+        <node concept="17QB3L" id="73bN9cWco8B" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="38g0FihPg5V" role="3clF46">
         <property role="TrG5h" value="presentation" />

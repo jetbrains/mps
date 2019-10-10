@@ -6359,7 +6359,7 @@
                       <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptorImpl" resolve="IdeaPluginDescriptorImpl" />
                     </node>
                     <node concept="2YIFZM" id="7hv8wmR1AUh" role="10QFUP">
-                      <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
+                      <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
                       <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
                       <node concept="37vLTw" id="3GM_nagTvJO" role="37wK5m">
                         <ref role="3cqZAo" node="7hv8wmR1ATO" resolve="apiPlugin" />
@@ -6387,8 +6387,8 @@
                       <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptorImpl" resolve="IdeaPluginDescriptorImpl" />
                     </node>
                     <node concept="2YIFZM" id="7hv8wmR1AUs" role="10QFUP">
+                      <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
                       <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-                      <ref role="37wK5l" to="ctgy:~PluginManager.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
                       <node concept="37vLTw" id="3GM_nagTs6D" role="37wK5m">
                         <ref role="3cqZAo" node="7hv8wmR1ATV" resolve="javaPlugin" />
                       </node>

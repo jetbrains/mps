@@ -29,7 +29,6 @@ import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.smodel.WorkbenchModelAccess;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
@@ -70,8 +69,8 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   @SuppressWarnings("UnusedParameters")
   public StandaloneMPSProject(final Project project, ProjectLibraryManager projectLibraryManager, ProjectRootListenerComponent unused,
-                              MPSCoreComponents mpsCore, IdeaFileSystem ideaFS, WorkbenchModelAccess modelAccess) {
-    super(project, unused, mpsCore, ideaFS, modelAccess);
+                              MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
+    super(project, unused, mpsCore, ideaFS);
     myManager = mpsCore.getPlatform().findComponent(VFSManager.class);
   }
 

@@ -20,10 +20,12 @@ import com.intellij.util.ThreeState;
 public class NodeFileStatusProvider implements FileStatusProvider {
   private MPSProject myProject;
   private NodeFileStatusMapping myMapping;
-  public NodeFileStatusProvider(@NotNull MPSProject project, @NotNull NodeFileStatusMapping mapping) {
+
+  public NodeFileStatusProvider(@NotNull MPSProject project) {
     myProject = project;
-    myMapping = mapping;
+    myMapping = project.getProject().getComponent(NodeFileStatusMapping.class);
   }
+
   @Override
   public FileStatus getFileStatus(VirtualFile file) {
     if (!(file instanceof MPSNodeVirtualFile)) {
@@ -39,7 +41,7 @@ public class NodeFileStatusProvider implements FileStatusProvider {
       public FileStatus compute() {
         SNode root = MPSEditorUtil.getCurrentEditedNode(myProject.getProject(), nodeFile);
         if (root == null) {
-          root = check_8p3pkg_a0a0b0a0a0a0f0d(nodeFile.getNode());
+          root = check_8p3pkg_a0a0b0a0a0a0f0f(nodeFile.getNode());
         }
         if (root == null || !(SNodeUtil.isAccessible(root, myProject.getRepository()))) {
           return null;
@@ -48,14 +50,16 @@ public class NodeFileStatusProvider implements FileStatusProvider {
       }
     });
   }
+
   @Override
   public void refreshFileStatusFromDocument(VirtualFile file, Document document) {
   }
+
   @Override
   public ThreeState getNotChangedDirectoryParentingStatus(VirtualFile file) {
     return ThreeState.NO;
   }
-  private static SNode check_8p3pkg_a0a0b0a0a0a0f0d(SNode checkedDotOperand) {
+  private static SNode check_8p3pkg_a0a0b0a0a0a0f0f(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getContainingRoot();
     }
