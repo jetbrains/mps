@@ -6,6 +6,8 @@ import jetbrains.mps.util.annotation.ToRemove;
 
 /**
  * Needed for compatibility (a class in CodeRules extends this one)
+ * 
+ * @deprecated 
  */
 @Deprecated
 @ToRemove(version = 2019.3)

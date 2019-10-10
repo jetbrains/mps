@@ -222,10 +222,14 @@
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -2461,22 +2465,24 @@
       <ref role="2AI5Lk" to="lhc4:~Immutable" resolve="Immutable" />
     </node>
   </node>
-  <node concept="312cEu" id="7XXCsc0W7Tl">
+  <node concept="312cEu" id="1Fz6CCoeqzM">
     <property role="TrG5h" value="BaseFinder" />
-    <property role="2bfB8j" value="true" />
     <property role="1sVAO0" value="true" />
-    <node concept="3Tm1VV" id="7XXCsc0W7Tm" role="1B3o_S" />
-    <node concept="3uibUv" id="7XXCsc0WdmF" role="EKbjA">
+    <node concept="3Tm1VV" id="1Fz6CCoeqzN" role="1B3o_S" />
+    <node concept="3uibUv" id="2361KXam2Yu" role="EKbjA">
       <ref role="3uigEE" node="7aWSXuXO6mS" resolve="IFinder" />
     </node>
-    <node concept="3UR2Jj" id="7XXCsc0WduF" role="lGtFl">
-      <node concept="TZ5HA" id="7XXCsc0WdV9" role="TZ5H$">
-        <node concept="1dT_AC" id="7XXCsc0WdVa" role="1dT_Ay">
+    <node concept="3UR2Jj" id="2361KXam33M" role="lGtFl">
+      <node concept="TZ5HA" id="2361KXam33N" role="TZ5H$">
+        <node concept="1dT_AC" id="2361KXam33O" role="1dT_Ay">
           <property role="1dT_AB" value="Needed for compatibility (a class in CodeRules extends this one)" />
         </node>
       </node>
+      <node concept="TZ5HI" id="2361KXam34E" role="3nqlJM">
+        <node concept="TZ5HA" id="2361KXam34F" role="3HnX3l" />
+      </node>
     </node>
-    <node concept="2AHcQZ" id="7XXCsc0WduI" role="2AJF6D">
+    <node concept="2AHcQZ" id="2361KXam34G" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
     <node concept="2AHcQZ" id="7XXCsc0Wdv7" role="2AJF6D">
