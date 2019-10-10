@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
+  <dependency className="jetbrains.mps.ide.findusages.findalgorithm.finders.BaseFinder">
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
+    <classNode extendsClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder" />
+  </dependency>
   <dependency className="jetbrains.mps.ide.findusages.findalgorithm.finders.CollectingCallback">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.ArrayList" />

@@ -2461,5 +2461,33 @@
       <ref role="2AI5Lk" to="lhc4:~Immutable" resolve="Immutable" />
     </node>
   </node>
+  <node concept="312cEu" id="7XXCsc0W7Tl">
+    <property role="TrG5h" value="BaseFinder" />
+    <property role="2bfB8j" value="true" />
+    <property role="1sVAO0" value="true" />
+    <node concept="3Tm1VV" id="7XXCsc0W7Tm" role="1B3o_S" />
+    <node concept="3uibUv" id="7XXCsc0WdmF" role="EKbjA">
+      <ref role="3uigEE" node="7aWSXuXO6mS" resolve="IFinder" />
+    </node>
+    <node concept="3UR2Jj" id="7XXCsc0WduF" role="lGtFl">
+      <node concept="TZ5HA" id="7XXCsc0WdV9" role="TZ5H$">
+        <node concept="1dT_AC" id="7XXCsc0WdVa" role="1dT_Ay">
+          <property role="1dT_AB" value="Needed for compatibility (a class in CodeRules extends this one)" />
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="7XXCsc0WduI" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="2AHcQZ" id="7XXCsc0Wdv7" role="2AJF6D">
+      <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
+      <node concept="2B6LJw" id="7XXCsc0WdOQ" role="2B76xF">
+        <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
+        <node concept="3b6qkQ" id="7XXCsc0WdUt" role="2B70Vg">
+          <property role="$nhwW" value="2019.3" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

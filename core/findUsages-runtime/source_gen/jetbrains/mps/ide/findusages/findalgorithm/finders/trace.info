@@ -346,5 +346,10 @@
       <unit id="8267733531687413176" at="11,0,47,0" name="jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder" />
     </file>
   </root>
+  <root nodeRef="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)/9186676673812135509">
+    <file name="BaseFinder.java">
+      <unit id="9186676673812135509" at="10,0,14,0" name="jetbrains.mps.ide.findusages.findalgorithm.finders.BaseFinder" />
+    </file>
+  </root>
 </debug-info>
 
