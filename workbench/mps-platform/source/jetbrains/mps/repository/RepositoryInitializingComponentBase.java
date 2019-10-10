@@ -16,6 +16,8 @@
 package jetbrains.mps.repository;
 
 import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.vfs.newvfs.ManagingFS;
 import com.intellij.openapi.vfs.newvfs.persistent.PersistentFS;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -57,8 +59,7 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
                                              MPSCoreComponents coreComponents,
                                              ApplicationPluginHolder registryManager,
                                              IdeaPluginFacetComponent ideaPluginFacetComponent,
-                                             IdeaFileSystem fs,
-                                             PersistentFS filesystem //see MPS-22970
+                                             IdeaFileSystem fs
   ) {
     myLibraryInitializer = coreComponents.getLibraryInitializer();
     // FIXME why cons, not an abstract method invoked from initComponent() to populate contributors list?

@@ -29,10 +29,9 @@ public final class RepositoryInPluginInitializer extends RepositoryInitializingC
                                        MPSCoreComponents coreComponents,
                                        ApplicationPluginHolder registryManager,
                                        IdeaPluginFacetComponent ideaPluginFacetComponent,
-                                       IdeaFileSystem fs,
-                                       PersistentFS filesystem //see MPS-22970
+                                       IdeaFileSystem fs
   ) {
-    super(improver, coreComponents, registryManager, ideaPluginFacetComponent, fs, filesystem);
+    super(improver, coreComponents, registryManager, ideaPluginFacetComponent, fs);
     addContributor(new PluginLibraryContributor(getFS()));
   }
 }

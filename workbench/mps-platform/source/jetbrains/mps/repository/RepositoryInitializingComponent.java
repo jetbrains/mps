@@ -31,7 +31,7 @@ public final class RepositoryInitializingComponent extends RepositoryInitializin
                                          IdeaPluginFacetComponent ideaPluginFacetComponent,
                                          IdeaFileSystem fs
   ) {
-    super(improver, coreComponents, registryManager, ideaPluginFacetComponent, fs, PersistentFS.getInstance());
+    super(improver, coreComponents, registryManager, ideaPluginFacetComponent, fs);
     addContributor(new BootstrapLibraryContributor(getFS()));
     addContributor(new WorkbenchLibraryContributor(getFS())); // needed only on sources
     addContributor(new PluginLibraryContributor(getFS()));
