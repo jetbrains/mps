@@ -6,6 +6,7 @@
     <classNode dependClassName="java.awt.Cursor" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.CellFinderUtil" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Label" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorComponent" />
@@ -16,6 +17,7 @@
   <dependency className="jetbrains.mps.debugger.core.breakpoints.BreakpointPainterEx">
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.core.CurrentLinePositionComponentEx" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.AdditionalPainter" />
@@ -34,6 +36,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.RuntimeFlags" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.core.breakpoints.BreakpointIconRenderrerEx" />
     <classNode dependClassName="jetbrains.mps.debugger.core.breakpoints.BreakpointPainterEx" />
     <classNode dependClassName="jetbrains.mps.ide.editor.util.EditorComponentUtil" />

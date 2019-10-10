@@ -5,6 +5,7 @@
     <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="java.util.Locale" />
     <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.eclipse.jdt.core.compiler.CategorizedProblem" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.CompilationResult" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.DefaultErrorHandlingPolicies" />
@@ -23,6 +24,7 @@
   </dependency>
   <dependency className="org.eclipse.jdt.internal.core.util.CommentRecorderParser">
     <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.CompilationUnitDeclaration" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.classfmt.ClassFileConstants" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.impl.CompilerOptions" />
@@ -33,6 +35,7 @@
     <classNode extendsClassName="org.eclipse.jdt.internal.compiler.parser.Parser" />
   </dependency>
   <dependency className="org.eclipse.jdt.internal.core.util.RecordedParsingInformation">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.eclipse.jdt.core.compiler.CategorizedProblem" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.CompilationResult" />
   </dependency>

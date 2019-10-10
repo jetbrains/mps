@@ -16,367 +16,367 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)/1657638272963062314">
     <file name="ToolTipData.java">
-      <node id="1657638272963062322" at="11,0,12,0" concept="3" trace="myText" />
-      <node id="1975624945529243613" at="12,0,13,0" concept="3" trace="myComponent" />
-      <node id="1657638272963062326" at="13,40,14,18" concept="2" />
-      <node id="1975624945529244899" at="16,43,17,28" concept="2" />
-      <node id="1657638272963062343" at="19,32,20,18" concept="7" />
-      <node id="1975624945529320813" at="23,30,24,25" concept="7" />
-      <node id="1975624945529346147" at="25,12,26,39" concept="6" />
-      <node id="1975624945529346113" at="26,39,27,30" concept="2" />
-      <node id="1975624945529346120" at="27,30,28,27" concept="2" />
-      <node id="1975624945529346129" at="28,27,29,42" concept="2" />
-      <node id="4878424605393323603" at="29,42,30,50" concept="2" />
-      <node id="1975624945529346139" at="30,50,31,51" concept="2" />
-      <node id="1975624945529346170" at="31,51,32,18" concept="7" />
-      <node id="1657638272963062316" at="13,0,16,0" concept="1" trace="ToolTipData#(Ljava/lang/String;)V" />
-      <node id="1975624945529244892" at="16,0,19,0" concept="1" trace="ToolTipData#(Ljava/awt/Component;)V" />
-      <node id="1657638272963062338" at="19,0,22,0" concept="5" trace="getText#()Ljava/lang/String;" />
-      <node id="1975624945529320819" at="25,10,33,5" concept="0" />
-      <node id="1975624945529320802" at="22,40,33,5" concept="4" />
-      <node id="1975624945529320792" at="22,0,35,0" concept="5" trace="getComponent#()Ljava/awt/Component;" />
-      <scope id="1657638272963062319" at="13,40,14,18" />
-      <scope id="1975624945529244895" at="16,43,17,28" />
-      <scope id="1657638272963062341" at="19,32,20,18" />
-      <scope id="1975624945529320803" at="23,30,24,25" />
-      <scope id="1657638272963062316" at="13,0,16,0">
+      <node id="1657638272963062322" at="13,0,14,0" concept="3" trace="myText" />
+      <node id="1975624945529243613" at="14,0,15,0" concept="3" trace="myComponent" />
+      <node id="1657638272963062326" at="15,40,16,18" concept="2" />
+      <node id="1975624945529244899" at="18,43,19,28" concept="2" />
+      <node id="1657638272963062343" at="21,32,22,18" concept="7" />
+      <node id="1975624945529320813" at="25,30,26,25" concept="7" />
+      <node id="1975624945529346147" at="27,12,28,39" concept="6" />
+      <node id="1975624945529346113" at="28,39,29,30" concept="2" />
+      <node id="1975624945529346120" at="29,30,30,27" concept="2" />
+      <node id="1975624945529346129" at="30,27,31,42" concept="2" />
+      <node id="4878424605393323603" at="31,42,32,50" concept="2" />
+      <node id="1975624945529346139" at="32,50,33,51" concept="2" />
+      <node id="1975624945529346170" at="33,51,34,18" concept="7" />
+      <node id="1657638272963062316" at="15,0,18,0" concept="1" trace="ToolTipData#(Ljava/lang/String;)V" />
+      <node id="1975624945529244892" at="18,0,21,0" concept="1" trace="ToolTipData#(Ljava/awt/Component;)V" />
+      <node id="1657638272963062338" at="21,0,24,0" concept="5" trace="getText#()Ljava/lang/String;" />
+      <node id="1975624945529320819" at="27,10,35,5" concept="0" />
+      <node id="1975624945529320802" at="24,40,35,5" concept="4" />
+      <node id="1975624945529320792" at="24,0,37,0" concept="5" trace="getComponent#()Ljava/awt/Component;" />
+      <scope id="1657638272963062319" at="15,40,16,18" />
+      <scope id="1975624945529244895" at="18,43,19,28" />
+      <scope id="1657638272963062341" at="21,32,22,18" />
+      <scope id="1975624945529320803" at="25,30,26,25" />
+      <scope id="1657638272963062316" at="15,0,18,0">
         <var name="text" id="1657638272963062320" />
       </scope>
-      <scope id="1975624945529244892" at="16,0,19,0">
+      <scope id="1975624945529244892" at="18,0,21,0">
         <var name="component" id="1975624945529244897" />
       </scope>
-      <scope id="1657638272963062338" at="19,0,22,0" />
-      <scope id="1975624945529320820" at="25,12,32,18">
+      <scope id="1657638272963062338" at="21,0,24,0" />
+      <scope id="1975624945529320820" at="27,12,34,18">
         <var name="text" id="1975624945529346148" />
       </scope>
-      <scope id="1975624945529320795" at="22,40,33,5" />
-      <scope id="1975624945529320792" at="22,0,35,0" />
-      <unit id="1657638272963062314" at="10,0,36,0" name="jetbrains.mps.ide.tooltips.ToolTipData" />
+      <scope id="1975624945529320795" at="24,40,35,5" />
+      <scope id="1975624945529320792" at="24,0,37,0" />
+      <unit id="1657638272963062314" at="11,0,38,0" name="jetbrains.mps.ide.tooltips.ToolTipData" />
     </file>
   </root>
   <root nodeRef="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)/1657638272963439183">
     <file name="MPSToolTipManager.java">
-      <node id="7530108077312637991" at="26,43,27,51" concept="2" />
-      <node id="1142165476403803448" at="30,0,31,0" concept="3" trace="myRightAlignedMouseListener" />
-      <node id="3100043705483489792" at="31,0,32,0" concept="3" trace="myToolTip" />
-      <node id="6281853519869699210" at="32,0,33,0" concept="3" trace="myIdeTooltip" />
-      <node id="2977221198762530052" at="33,0,34,0" concept="3" trace="myText" />
-      <node id="1657638272963439209" at="39,36,40,31" concept="7" />
-      <node id="6543815770065574162" at="48,54,49,48" concept="2" />
-      <node id="7530108077312638000" at="49,48,50,54" concept="2" />
-      <node id="6596378777519000493" at="52,56,53,51" concept="2" />
-      <node id="6596378777519002540" at="53,51,54,57" concept="2" />
-      <node id="1142165476403803427" at="56,66,57,63" concept="2" />
-      <node id="1142165476403803435" at="57,63,58,69" concept="2" />
-      <node id="6596378777519002561" at="60,68,61,66" concept="2" />
-      <node id="6596378777519002572" at="61,66,62,72" concept="2" />
-      <node id="1142165476403803492" at="68,50,69,57" concept="2" />
-      <node id="1142165476403803465" at="72,5,73,39" concept="7" />
-      <node id="3564103493663181523" at="75,66,76,39" concept="6" />
-      <node id="3564103493663181543" at="77,72,78,13" concept="7" />
-      <node id="6543815770065605909" at="79,5,80,42" concept="6" />
-      <node id="78827631726060868" at="80,42,81,54" concept="6" />
-      <node id="5931142688898142084" at="82,24,83,31" concept="2" />
-      <node id="6543815770065588426" at="84,5,85,74" concept="6" />
-      <node id="5943684961278747682" at="86,44,87,55" concept="2" />
-      <node id="5943684961278747714" at="88,12,89,20" concept="2" />
-      <node id="6462432499626688553" at="93,43,94,40" concept="2" />
-      <node id="6462432499626689789" at="95,5,96,29" concept="7" />
-      <node id="1142165476403807392" at="98,80,99,47" concept="2" />
-      <node id="1228803144333909138" at="103,64,104,15" concept="7" />
-      <node id="1228803144333909146" at="105,7,106,20" concept="2" />
-      <node id="1228803144333909155" at="107,5,108,42" concept="2" />
-      <node id="1228803144333909162" at="108,42,109,48" concept="6" />
-      <node id="1228803144333909169" at="109,48,110,58" concept="2" />
-      <node id="1228803144333909173" at="110,58,111,39" concept="2" />
-      <node id="1142165476403807417" at="113,75,114,47" concept="2" />
-      <node id="8917462567969266692" at="117,23,118,13" concept="7" />
-      <node id="7105003223552462274" at="120,30,121,70" concept="2" />
-      <node id="2977221198762589348" at="123,39,124,13" concept="7" />
-      <node id="2977221198762589350" at="125,5,126,18" concept="2" />
-      <node id="8917462567969353820" at="126,18,127,36" concept="6" />
-      <node id="6281853519869717704" at="127,36,128,27" concept="2" />
-      <node id="3467421744644281267" at="131,59,132,97" concept="8" />
-      <node id="3467421744644281269" at="132,97,133,88" concept="8" />
-      <node id="3467421744644281263" at="134,58,135,23" concept="7" />
-      <node id="6281853519869763028" at="136,9,137,49" concept="7" />
-      <node id="8917462567969266672" at="139,6,140,61" concept="2" />
-      <node id="5943684961278747702" at="143,28,144,23" concept="2" />
-      <node id="5943684961278747708" at="144,23,145,23" concept="2" />
-      <node id="6281853519869763043" at="147,31,148,26" concept="2" />
-      <node id="6281853519869763051" at="148,26,149,26" concept="2" />
-      <node id="2977221198762589357" at="150,5,151,18" concept="2" />
-      <node id="1657638272963450899" at="153,49,154,140" concept="7" />
-      <node id="1657638272963439185" at="34,0,36,0" concept="1" trace="MPSToolTipManager#()V" />
-      <node id="5943684961278746336" at="88,10,90,5" concept="0" />
-      <node id="1657638272963439200" at="42,0,45,0" concept="5" trace="disposeComponent#()V" />
-      <node id="1657638272963439204" at="45,0,48,0" concept="5" trace="initComponent#()V" />
-      <node id="3564103493663142590" at="76,39,79,5" concept="4" />
-      <node id="5931142688898142071" at="81,54,84,5" concept="4" />
-      <node id="6462432499626687731" at="92,57,95,5" concept="13" />
-      <node id="1142165476403807379" at="98,0,101,0" concept="5" trace="showToolTip#(Ljetbrains/mps/ide/tooltips/ToolTipData;Ljavax/swing/JComponent;Ljava/awt/Point;)V" />
-      <node id="1228803144333909136" at="102,28,105,7" concept="4" />
-      <node id="1142165476403807404" at="113,0,116,0" concept="5" trace="showToolTip#(Ljava/lang/String;Ljavax/swing/JComponent;Ljava/awt/Point;)V" />
-      <node id="8917462567969266682" at="116,98,119,5" concept="4" />
-      <node id="7105003223552462263" at="119,5,122,5" concept="4" />
-      <node id="2977221198762589339" at="122,5,125,5" concept="4" />
-      <node id="3467421744644281239" at="133,88,136,9" concept="4" />
-      <node id="1657638272963439215" at="153,0,156,0" concept="11" trace="getInstance#()Ljetbrains/mps/ide/tooltips/MPSToolTipManager;" />
-      <node id="7530108077312637985" at="25,0,29,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="1657638272963450913" at="48,0,52,0" concept="5" trace="registerComponent#(Ljava/awt/Component;)V" />
-      <node id="6596378777518990186" at="52,0,56,0" concept="5" trace="unregisterComponent#(Ljava/awt/Component;)V" />
-      <node id="1142165476403803419" at="56,0,60,0" concept="5" trace="registerComponentRightAligned#(Ljava/awt/Component;)V" />
-      <node id="6596378777519002553" at="60,0,64,0" concept="5" trace="unregisterComponentRightAligned#(Ljava/awt/Component;)V" />
-      <node id="1142165476403803482" at="67,0,71,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="5943684961278747695" at="142,29,146,5" concept="4" />
-      <node id="6281853519869763034" at="146,5,150,5" concept="4" />
-      <node id="5943684961278746292" at="85,74,90,5" concept="4" />
-      <node id="7530108077312637934" at="24,0,30,0" concept="3" trace="myMouseListener" />
-      <node id="1657638272963439194" at="36,0,42,0" concept="5" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="1142165476403803470" at="65,46,71,8" concept="2" />
-      <node id="6462432499626686448" at="92,0,98,0" concept="5" trace="getContainingFrame#(Ljava/awt/Component;)Ljava/awt/Frame;" />
-      <node id="1228803144333909134" at="101,103,107,5" concept="4" />
-      <node id="1142165476403803454" at="64,55,72,5" concept="4" />
-      <node id="6281853519869763015" at="130,0,139,0" concept="5" trace="canAutohideOn#(Lcom/intellij/ide/TooltipEvent;)Z" />
-      <node id="1142165476403803442" at="64,0,75,0" concept="5" trace="getRightAlignedMouseListener#()Ljava/awt/event/MouseAdapter;" />
-      <node id="6281853519869717693" at="128,27,139,6" concept="2" />
-      <node id="5943684961278747691" at="142,0,153,0" concept="5" trace="hideToolTip#()V" />
-      <node id="1228803144333909124" at="101,0,113,0" concept="5" trace="showToolTip#(Ljetbrains/mps/ide/tooltips/ToolTipData;Ljavax/swing/JComponent;Ljava/awt/Point;Z)V" />
-      <node id="6543815770065587500" at="75,0,92,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;Z)V" />
-      <node id="78827631726060875" at="116,0,142,0" concept="5" trace="showToolTip#(Ljava/lang/String;Ljavax/swing/JComponent;Ljava/awt/Point;Z)V" />
-      <scope id="1657638272963439188" at="34,30,34,30" />
-      <scope id="1657638272963439203" at="43,34,43,34" />
-      <scope id="1657638272963439207" at="46,31,46,31" />
-      <scope id="7530108077312637990" at="26,43,27,51" />
-      <scope id="1657638272963439199" at="39,36,40,31" />
-      <scope id="1142165476403803487" at="68,50,69,57" />
-      <scope id="3564103493663142591" at="77,72,78,13" />
-      <scope id="5931142688898142072" at="82,24,83,31" />
-      <scope id="5943684961278746296" at="86,44,87,55" />
-      <scope id="5943684961278746337" at="88,12,89,20" />
-      <scope id="6462432499626687733" at="93,43,94,40" />
-      <scope id="1142165476403807382" at="98,80,99,47" />
-      <scope id="1228803144333909137" at="103,64,104,15" />
-      <scope id="1142165476403807407" at="113,75,114,47" />
-      <scope id="8917462567969266683" at="117,23,118,13" />
-      <scope id="7105003223552462264" at="120,30,121,70" />
-      <scope id="2977221198762589340" at="123,39,124,13" />
-      <scope id="3467421744644281240" at="134,58,135,23" />
-      <scope id="1657638272963439218" at="153,49,154,140" />
-      <scope id="1657638272963439185" at="34,0,36,0" />
-      <scope id="1657638272963450909" at="48,54,50,54" />
-      <scope id="6596378777518990189" at="52,56,54,57" />
-      <scope id="1142165476403803422" at="56,66,58,69" />
-      <scope id="6596378777519002556" at="60,68,62,72" />
-      <scope id="5943684961278747701" at="143,28,145,23" />
-      <scope id="6281853519869763035" at="147,31,149,26" />
-      <scope id="1657638272963439200" at="42,0,45,0" />
-      <scope id="1657638272963439204" at="45,0,48,0" />
-      <scope id="1142165476403807379" at="98,0,101,0">
+      <node id="7530108077312637991" at="28,43,29,51" concept="2" />
+      <node id="1142165476403803448" at="32,0,33,0" concept="3" trace="myRightAlignedMouseListener" />
+      <node id="3100043705483489792" at="33,0,34,0" concept="3" trace="myToolTip" />
+      <node id="6281853519869699210" at="34,0,35,0" concept="3" trace="myIdeTooltip" />
+      <node id="2977221198762530052" at="35,0,36,0" concept="3" trace="myText" />
+      <node id="1657638272963439209" at="41,36,42,31" concept="7" />
+      <node id="6543815770065574162" at="50,54,51,48" concept="2" />
+      <node id="7530108077312638000" at="51,48,52,54" concept="2" />
+      <node id="6596378777519000493" at="54,56,55,51" concept="2" />
+      <node id="6596378777519002540" at="55,51,56,57" concept="2" />
+      <node id="1142165476403803427" at="58,66,59,63" concept="2" />
+      <node id="1142165476403803435" at="59,63,60,69" concept="2" />
+      <node id="6596378777519002561" at="62,68,63,66" concept="2" />
+      <node id="6596378777519002572" at="63,66,64,72" concept="2" />
+      <node id="1142165476403803492" at="70,50,71,57" concept="2" />
+      <node id="1142165476403803465" at="74,5,75,39" concept="7" />
+      <node id="3564103493663181523" at="77,66,78,39" concept="6" />
+      <node id="3564103493663181543" at="79,72,80,13" concept="7" />
+      <node id="6543815770065605909" at="81,5,82,42" concept="6" />
+      <node id="78827631726060868" at="82,42,83,54" concept="6" />
+      <node id="5931142688898142084" at="84,24,85,31" concept="2" />
+      <node id="6543815770065588426" at="86,5,87,74" concept="6" />
+      <node id="5943684961278747682" at="88,44,89,55" concept="2" />
+      <node id="5943684961278747714" at="90,12,91,20" concept="2" />
+      <node id="6462432499626688553" at="95,43,96,40" concept="2" />
+      <node id="6462432499626689789" at="97,5,98,29" concept="7" />
+      <node id="1142165476403807392" at="100,80,101,47" concept="2" />
+      <node id="1228803144333909138" at="105,64,106,15" concept="7" />
+      <node id="1228803144333909146" at="107,7,108,20" concept="2" />
+      <node id="1228803144333909155" at="109,5,110,42" concept="2" />
+      <node id="1228803144333909162" at="110,42,111,48" concept="6" />
+      <node id="1228803144333909169" at="111,48,112,58" concept="2" />
+      <node id="1228803144333909173" at="112,58,113,39" concept="2" />
+      <node id="1142165476403807417" at="115,75,116,47" concept="2" />
+      <node id="8917462567969266692" at="119,23,120,13" concept="7" />
+      <node id="7105003223552462274" at="122,30,123,70" concept="2" />
+      <node id="2977221198762589348" at="125,39,126,13" concept="7" />
+      <node id="2977221198762589350" at="127,5,128,18" concept="2" />
+      <node id="8917462567969353820" at="128,18,129,36" concept="6" />
+      <node id="6281853519869717704" at="129,36,130,27" concept="2" />
+      <node id="3467421744644281267" at="133,59,134,97" concept="8" />
+      <node id="3467421744644281269" at="134,97,135,88" concept="8" />
+      <node id="3467421744644281263" at="136,58,137,23" concept="7" />
+      <node id="6281853519869763028" at="138,9,139,49" concept="7" />
+      <node id="8917462567969266672" at="141,6,142,61" concept="2" />
+      <node id="5943684961278747702" at="145,28,146,23" concept="2" />
+      <node id="5943684961278747708" at="146,23,147,23" concept="2" />
+      <node id="6281853519869763043" at="149,31,150,26" concept="2" />
+      <node id="6281853519869763051" at="150,26,151,26" concept="2" />
+      <node id="2977221198762589357" at="152,5,153,18" concept="2" />
+      <node id="1657638272963450899" at="155,49,156,140" concept="7" />
+      <node id="1657638272963439185" at="36,0,38,0" concept="1" trace="MPSToolTipManager#()V" />
+      <node id="5943684961278746336" at="90,10,92,5" concept="0" />
+      <node id="1657638272963439200" at="44,0,47,0" concept="5" trace="disposeComponent#()V" />
+      <node id="1657638272963439204" at="47,0,50,0" concept="5" trace="initComponent#()V" />
+      <node id="3564103493663142590" at="78,39,81,5" concept="4" />
+      <node id="5931142688898142071" at="83,54,86,5" concept="4" />
+      <node id="6462432499626687731" at="94,57,97,5" concept="13" />
+      <node id="1142165476403807379" at="100,0,103,0" concept="5" trace="showToolTip#(Ljetbrains/mps/ide/tooltips/ToolTipData;Ljavax/swing/JComponent;Ljava/awt/Point;)V" />
+      <node id="1228803144333909136" at="104,28,107,7" concept="4" />
+      <node id="1142165476403807404" at="115,0,118,0" concept="5" trace="showToolTip#(Ljava/lang/String;Ljavax/swing/JComponent;Ljava/awt/Point;)V" />
+      <node id="8917462567969266682" at="118,98,121,5" concept="4" />
+      <node id="7105003223552462263" at="121,5,124,5" concept="4" />
+      <node id="2977221198762589339" at="124,5,127,5" concept="4" />
+      <node id="3467421744644281239" at="135,88,138,9" concept="4" />
+      <node id="1657638272963439215" at="155,0,158,0" concept="11" trace="getInstance#()Ljetbrains/mps/ide/tooltips/MPSToolTipManager;" />
+      <node id="7530108077312637985" at="27,0,31,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="1657638272963450913" at="50,0,54,0" concept="5" trace="registerComponent#(Ljava/awt/Component;)V" />
+      <node id="6596378777518990186" at="54,0,58,0" concept="5" trace="unregisterComponent#(Ljava/awt/Component;)V" />
+      <node id="1142165476403803419" at="58,0,62,0" concept="5" trace="registerComponentRightAligned#(Ljava/awt/Component;)V" />
+      <node id="6596378777519002553" at="62,0,66,0" concept="5" trace="unregisterComponentRightAligned#(Ljava/awt/Component;)V" />
+      <node id="1142165476403803482" at="69,0,73,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="5943684961278747695" at="144,29,148,5" concept="4" />
+      <node id="6281853519869763034" at="148,5,152,5" concept="4" />
+      <node id="5943684961278746292" at="87,74,92,5" concept="4" />
+      <node id="7530108077312637934" at="26,0,32,0" concept="3" trace="myMouseListener" />
+      <node id="1657638272963439194" at="38,0,44,0" concept="5" trace="getComponentName#()Ljava/lang/String;" />
+      <node id="1142165476403803470" at="67,46,73,8" concept="2" />
+      <node id="6462432499626686448" at="94,0,100,0" concept="5" trace="getContainingFrame#(Ljava/awt/Component;)Ljava/awt/Frame;" />
+      <node id="1228803144333909134" at="103,103,109,5" concept="4" />
+      <node id="1142165476403803454" at="66,55,74,5" concept="4" />
+      <node id="6281853519869763015" at="132,0,141,0" concept="5" trace="canAutohideOn#(Lcom/intellij/ide/TooltipEvent;)Z" />
+      <node id="1142165476403803442" at="66,0,77,0" concept="5" trace="getRightAlignedMouseListener#()Ljava/awt/event/MouseAdapter;" />
+      <node id="6281853519869717693" at="130,27,141,6" concept="2" />
+      <node id="5943684961278747691" at="144,0,155,0" concept="5" trace="hideToolTip#()V" />
+      <node id="1228803144333909124" at="103,0,115,0" concept="5" trace="showToolTip#(Ljetbrains/mps/ide/tooltips/ToolTipData;Ljavax/swing/JComponent;Ljava/awt/Point;Z)V" />
+      <node id="6543815770065587500" at="77,0,94,0" concept="5" trace="mouseMoved#(Ljava/awt/event/MouseEvent;Z)V" />
+      <node id="78827631726060875" at="118,0,144,0" concept="5" trace="showToolTip#(Ljava/lang/String;Ljavax/swing/JComponent;Ljava/awt/Point;Z)V" />
+      <scope id="1657638272963439188" at="36,30,36,30" />
+      <scope id="1657638272963439203" at="45,34,45,34" />
+      <scope id="1657638272963439207" at="48,31,48,31" />
+      <scope id="7530108077312637990" at="28,43,29,51" />
+      <scope id="1657638272963439199" at="41,36,42,31" />
+      <scope id="1142165476403803487" at="70,50,71,57" />
+      <scope id="3564103493663142591" at="79,72,80,13" />
+      <scope id="5931142688898142072" at="84,24,85,31" />
+      <scope id="5943684961278746296" at="88,44,89,55" />
+      <scope id="5943684961278746337" at="90,12,91,20" />
+      <scope id="6462432499626687733" at="95,43,96,40" />
+      <scope id="1142165476403807382" at="100,80,101,47" />
+      <scope id="1228803144333909137" at="105,64,106,15" />
+      <scope id="1142165476403807407" at="115,75,116,47" />
+      <scope id="8917462567969266683" at="119,23,120,13" />
+      <scope id="7105003223552462264" at="122,30,123,70" />
+      <scope id="2977221198762589340" at="125,39,126,13" />
+      <scope id="3467421744644281240" at="136,58,137,23" />
+      <scope id="1657638272963439218" at="155,49,156,140" />
+      <scope id="1657638272963439185" at="36,0,38,0" />
+      <scope id="1657638272963450909" at="50,54,52,54" />
+      <scope id="6596378777518990189" at="54,56,56,57" />
+      <scope id="1142165476403803422" at="58,66,60,69" />
+      <scope id="6596378777519002556" at="62,68,64,72" />
+      <scope id="5943684961278747701" at="145,28,147,23" />
+      <scope id="6281853519869763035" at="149,31,151,26" />
+      <scope id="1657638272963439200" at="44,0,47,0" />
+      <scope id="1657638272963439204" at="47,0,50,0" />
+      <scope id="1142165476403807379" at="100,0,103,0">
         <var name="component" id="1142165476403807386" />
         <var name="data" id="1142165476403807384" />
         <var name="point" id="1142165476403807388" />
       </scope>
-      <scope id="1142165476403807404" at="113,0,116,0">
+      <scope id="1142165476403807404" at="115,0,118,0">
         <var name="component" id="1142165476403807411" />
         <var name="point" id="1142165476403807413" />
         <var name="text" id="1142165476403807409" />
       </scope>
-      <scope id="1657638272963439215" at="153,0,156,0" />
-      <scope id="7530108077312637985" at="25,0,29,0">
+      <scope id="1657638272963439215" at="155,0,158,0" />
+      <scope id="7530108077312637985" at="27,0,31,0">
         <var name="p0" id="7530108077312637988" />
       </scope>
-      <scope id="1657638272963450913" at="48,0,52,0">
+      <scope id="1657638272963450913" at="50,0,54,0">
         <var name="component" id="1657638272963450911" />
       </scope>
-      <scope id="6596378777518990186" at="52,0,56,0">
+      <scope id="6596378777518990186" at="54,0,58,0">
         <var name="component" id="6596378777518990191" />
       </scope>
-      <scope id="1142165476403803419" at="56,0,60,0">
+      <scope id="1142165476403803419" at="58,0,62,0">
         <var name="component" id="1142165476403803424" />
       </scope>
-      <scope id="6596378777519002553" at="60,0,64,0">
+      <scope id="6596378777519002553" at="62,0,66,0">
         <var name="component" id="6596378777519002558" />
       </scope>
-      <scope id="1142165476403803482" at="67,0,71,0">
+      <scope id="1142165476403803482" at="69,0,73,0">
         <var name="event" id="1142165476403803485" />
       </scope>
-      <scope id="6462432499626686451" at="92,57,96,29" />
-      <scope id="1228803144333909135" at="102,28,106,20" />
-      <scope id="1657638272963439194" at="36,0,42,0" />
-      <scope id="1142165476403803456" at="65,46,71,8" />
-      <scope id="6462432499626686448" at="92,0,98,0">
+      <scope id="6462432499626686451" at="94,57,98,29" />
+      <scope id="1228803144333909135" at="104,28,108,20" />
+      <scope id="1657638272963439194" at="38,0,44,0" />
+      <scope id="1142165476403803456" at="67,46,73,8" />
+      <scope id="6462432499626686448" at="94,0,100,0">
         <var name="component" id="6462432499626687729" />
       </scope>
-      <scope id="6281853519869763022" at="131,59,137,49" />
-      <scope id="1142165476403803445" at="64,55,73,39" />
-      <scope id="6281853519869763015" at="130,0,139,0">
+      <scope id="6281853519869763022" at="133,59,139,49" />
+      <scope id="1142165476403803445" at="66,55,75,39" />
+      <scope id="6281853519869763015" at="132,0,141,0">
         <var name="event" id="6281853519869763018" />
       </scope>
-      <scope id="5943684961278747694" at="142,29,151,18" />
-      <scope id="1228803144333909133" at="101,103,111,39">
+      <scope id="5943684961278747694" at="144,29,153,18" />
+      <scope id="1228803144333909133" at="103,103,113,39">
         <var name="frame" id="1228803144333909163" />
       </scope>
-      <scope id="1142165476403803442" at="64,0,75,0" />
-      <scope id="5943684961278747691" at="142,0,153,0" />
-      <scope id="1228803144333909124" at="101,0,113,0">
+      <scope id="1142165476403803442" at="66,0,77,0" />
+      <scope id="5943684961278747691" at="144,0,155,0" />
+      <scope id="1228803144333909124" at="103,0,115,0">
         <var name="component" id="1228803144333909129" />
         <var name="data" id="1228803144333909127" />
         <var name="point" id="1228803144333909131" />
         <var name="rightAligned" id="1142165476403803520" />
       </scope>
-      <scope id="6543815770065587503" at="75,66,90,5">
+      <scope id="6543815770065587503" at="77,66,92,5">
         <var name="c" id="3564103493663181524" />
         <var name="component" id="6543815770065605910" />
         <var name="point" id="78827631726060869" />
         <var name="text" id="6543815770065588427" />
       </scope>
-      <scope id="6543815770065587500" at="75,0,92,0">
+      <scope id="6543815770065587500" at="77,0,94,0">
         <var name="event" id="6543815770065587506" />
         <var name="rightAlined" id="1142165476403803507" />
       </scope>
-      <scope id="78827631726060884" at="116,98,140,61">
+      <scope id="78827631726060884" at="118,98,142,61">
         <var name="label" id="8917462567969353821" />
       </scope>
-      <scope id="78827631726060875" at="116,0,142,0">
+      <scope id="78827631726060875" at="118,0,144,0">
         <var name="component" id="78827631726060880" />
         <var name="point" id="78827631726060882" />
         <var name="rightAligned" id="1142165476403803523" />
         <var name="text" id="78827631726060878" />
       </scope>
-      <unit id="7530108077312637939" at="24,45,29,3" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$1" />
-      <unit id="1142165476403803480" at="66,40,71,7" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$2" />
-      <unit id="6281853519869761381" at="129,23,139,5" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$3" />
-      <unit id="1657638272963439183" at="23,0,157,0" name="jetbrains.mps.ide.tooltips.MPSToolTipManager" />
+      <unit id="7530108077312637939" at="26,45,31,3" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$1" />
+      <unit id="1142165476403803480" at="68,40,73,7" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$2" />
+      <unit id="6281853519869761381" at="131,23,141,5" name="jetbrains.mps.ide.tooltips.MPSToolTipManager$3" />
+      <unit id="1657638272963439183" at="24,0,159,0" name="jetbrains.mps.ide.tooltips.MPSToolTipManager" />
     </file>
   </root>
   <root nodeRef="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)/3564103493663133593">
     <file name="TooltipComponent.java">
-      <node id="3564103493663133595" at="8,0,9,0" concept="5" trace="getMPSTooltipText#(Ljava/awt/event/MouseEvent;)Ljava/lang/String;" />
-      <scope id="3564103493663133595" at="8,0,9,0">
+      <node id="3564103493663133595" at="10,0,11,0" concept="5" trace="getMPSTooltipText#(Ljava/awt/event/MouseEvent;)Ljava/lang/String;" />
+      <scope id="3564103493663133595" at="10,0,11,0">
         <var name="mouseEvent" id="3564103493663142587" />
       </scope>
-      <unit id="3564103493663133593" at="7,0,10,0" name="jetbrains.mps.ide.tooltips.TooltipComponent" />
+      <unit id="3564103493663133593" at="8,0,12,0" name="jetbrains.mps.ide.tooltips.TooltipComponent" />
     </file>
   </root>
   <root nodeRef="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)/5522183980949036968">
     <file name="ToolTip.java">
-      <node id="5522183980949036991" at="27,0,28,0" concept="10" trace="BACKGROUND_COLOR" />
-      <node id="3574086217692683255" at="28,0,29,0" concept="10" trace="X_OFFSET" />
-      <node id="3574086217692683259" at="29,0,30,0" concept="10" trace="Y_OFFSET" />
-      <node id="6160742249368370030" at="30,0,31,0" concept="3" trace="myDialog" />
-      <node id="2913460188527323530" at="31,0,32,0" concept="3" trace="myHintInformation" />
-      <node id="1142165476403803539" at="32,0,33,0" concept="3" trace="myRigthAligned" />
-      <node id="1142165476403803543" at="33,45,34,34" concept="2" />
-      <node id="2913460188527323534" at="36,83,37,40" concept="2" />
-      <node id="3574086217692683264" at="37,40,38,104" concept="2" />
-      <node id="6160742249368370033" at="38,104,39,78" concept="2" />
-      <node id="1657638272963423033" at="39,78,40,30" concept="2" />
-      <node id="7988039361770506444" at="43,27,44,25" concept="2" />
-      <node id="7988039361770506450" at="44,25,45,22" concept="2" />
-      <node id="8917462567969353837" at="49,36,50,18" concept="7" />
-      <node id="2913460188527323527" at="51,5,52,39" concept="7" />
-      <node id="5522183980949036987" at="55,0,56,0" concept="3" trace="myPrevFocusOwner" />
-      <node id="5522183980949037023" at="58,44,59,18" concept="2" />
-      <node id="5522183980949037050" at="59,18,60,0" concept="9" />
-      <node id="5522183980949037045" at="65,47,66,18" concept="2" />
-      <node id="1657638272963061122" at="71,43,72,18" concept="2" />
-      <node id="1841229352184927592" at="75,102,76,19" concept="12" />
-      <node id="1657638272963248464" at="76,19,77,47" concept="2" />
-      <node id="1657638272963248477" at="77,47,78,0" concept="9" />
-      <node id="1657638272963248493" at="78,0,79,37" concept="2" />
-      <node id="1657638272963248498" at="79,37,80,0" concept="9" />
-      <node id="1657638272963252369" at="80,0,81,94" concept="6" />
-      <node id="1657638272963252722" at="81,94,82,56" concept="2" />
-      <node id="1657638272963252734" at="82,56,83,22" concept="2" />
-      <node id="1657638272963252739" at="83,22,84,0" concept="9" />
-      <node id="1657638272963252741" at="84,0,85,13" concept="2" />
-      <node id="1142165476403798634" at="86,25,87,58" concept="2" />
-      <node id="1142165476403798658" at="88,7,89,64" concept="6" />
-      <node id="1142165476403798777" at="90,58,91,67" concept="2" />
-      <node id="1142165476403798800" at="93,60,94,69" concept="2" />
-      <node id="2276782707497817261" at="95,7,96,28" concept="2" />
-      <node id="1657638272963062302" at="96,28,97,21" concept="2" />
-      <node id="8287697530462525582" at="100,37,101,64" concept="2" />
-      <node id="8287697530462525591" at="101,64,102,64" concept="2" />
-      <node id="8287697530462525600" at="102,64,103,60" concept="2" />
-      <node id="1657638272963062222" at="104,7,105,22" concept="2" />
-      <node id="8287697530462527655" at="109,37,110,67" concept="2" />
-      <node id="8287697530462527664" at="110,67,111,67" concept="2" />
-      <node id="8287697530462527673" at="111,67,112,63" concept="2" />
-      <node id="1657638272963062299" at="113,7,114,22" concept="2" />
-      <node id="5522183980949036970" at="33,0,36,0" concept="1" trace="ToolTip#(Z)V" />
-      <node id="8917462567969353828" at="48,32,51,5" concept="4" />
-      <node id="1142165476403798629" at="85,13,88,7" concept="4" />
-      <node id="1142165476403798664" at="89,64,92,7" concept="4" />
-      <node id="1142165476403798699" at="92,7,95,7" concept="4" />
-      <node id="7988039361770506433" at="42,27,46,5" concept="4" />
-      <node id="5522183980949037038" at="64,0,68,0" concept="5" trace="mousePressed#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="1657638272963061115" at="70,0,74,0" concept="5" trace="keyPressed#(Ljava/awt/event/KeyEvent;)V" />
-      <node id="5522183980949037016" at="57,0,62,0" concept="5" trace="focusLost#(Ljava/awt/event/FocusEvent;)V" />
-      <node id="8287697530462525571" at="99,33,104,7" concept="4" />
-      <node id="8287697530462525611" at="108,27,113,7" concept="4" />
-      <node id="1657638272963421745" at="36,0,42,0" concept="5" trace="show#(Ljava/awt/Frame;Ljava/awt/Point;Ljetbrains/mps/ide/tooltips/ToolTipData;)V" />
-      <node id="6160742249368370026" at="42,0,48,0" concept="5" trace="hide#()V" />
-      <node id="2913460188527323522" at="48,0,54,0" concept="5" trace="getText#()Ljava/lang/String;" />
-      <node id="5522183980949037027" at="63,0,69,0" concept="3" trace="myOwnerMouseListener" />
-      <node id="1657638272963033126" at="69,0,75,0" concept="3" trace="myOwnerKeyListener" />
-      <node id="5522183980949037006" at="56,0,63,0" concept="3" trace="myOwnerFocusListener" />
-      <node id="1657638272963062217" at="99,0,107,0" concept="5" trace="addListeners#()V" />
-      <node id="1657638272963062268" at="107,0,116,0" concept="5" trace="dispose#()V" />
-      <node id="5522183980949036978" at="75,0,99,0" concept="1" trace="MyDialog#(Ljava/awt/Frame;Ljava/awt/Point;ZLjetbrains/mps/ide/tooltips/ToolTipData;)V" />
-      <scope id="5522183980949036973" at="33,45,34,34" />
-      <scope id="8917462567969353829" at="49,36,50,18" />
-      <scope id="5522183980949037043" at="65,47,66,18" />
-      <scope id="1657638272963061120" at="71,43,72,18" />
-      <scope id="1142165476403798630" at="86,25,87,58" />
-      <scope id="1142165476403798665" at="90,58,91,67" />
-      <scope id="1142165476403798700" at="93,60,94,69" />
-      <scope id="7988039361770506434" at="43,27,45,22" />
-      <scope id="5522183980949037021" at="58,44,60,0" />
-      <scope id="5522183980949036970" at="33,0,36,0">
+      <node id="5522183980949036991" at="29,0,30,0" concept="10" trace="BACKGROUND_COLOR" />
+      <node id="3574086217692683255" at="30,0,31,0" concept="10" trace="X_OFFSET" />
+      <node id="3574086217692683259" at="31,0,32,0" concept="10" trace="Y_OFFSET" />
+      <node id="6160742249368370030" at="32,0,33,0" concept="3" trace="myDialog" />
+      <node id="2913460188527323530" at="33,0,34,0" concept="3" trace="myHintInformation" />
+      <node id="1142165476403803539" at="34,0,35,0" concept="3" trace="myRigthAligned" />
+      <node id="1142165476403803543" at="35,45,36,34" concept="2" />
+      <node id="2913460188527323534" at="38,83,39,40" concept="2" />
+      <node id="3574086217692683264" at="39,40,40,104" concept="2" />
+      <node id="6160742249368370033" at="40,104,41,78" concept="2" />
+      <node id="1657638272963423033" at="41,78,42,30" concept="2" />
+      <node id="7988039361770506444" at="45,27,46,25" concept="2" />
+      <node id="7988039361770506450" at="46,25,47,22" concept="2" />
+      <node id="8917462567969353837" at="51,36,52,18" concept="7" />
+      <node id="2913460188527323527" at="53,5,54,39" concept="7" />
+      <node id="5522183980949036987" at="57,0,58,0" concept="3" trace="myPrevFocusOwner" />
+      <node id="5522183980949037023" at="60,44,61,18" concept="2" />
+      <node id="5522183980949037050" at="61,18,62,0" concept="9" />
+      <node id="5522183980949037045" at="67,47,68,18" concept="2" />
+      <node id="1657638272963061122" at="73,43,74,18" concept="2" />
+      <node id="1841229352184927592" at="77,102,78,19" concept="12" />
+      <node id="1657638272963248464" at="78,19,79,47" concept="2" />
+      <node id="1657638272963248477" at="79,47,80,0" concept="9" />
+      <node id="1657638272963248493" at="80,0,81,37" concept="2" />
+      <node id="1657638272963248498" at="81,37,82,0" concept="9" />
+      <node id="1657638272963252369" at="82,0,83,94" concept="6" />
+      <node id="1657638272963252722" at="83,94,84,56" concept="2" />
+      <node id="1657638272963252734" at="84,56,85,22" concept="2" />
+      <node id="1657638272963252739" at="85,22,86,0" concept="9" />
+      <node id="1657638272963252741" at="86,0,87,13" concept="2" />
+      <node id="1142165476403798634" at="88,25,89,58" concept="2" />
+      <node id="1142165476403798658" at="90,7,91,64" concept="6" />
+      <node id="1142165476403798777" at="92,58,93,67" concept="2" />
+      <node id="1142165476403798800" at="95,60,96,69" concept="2" />
+      <node id="2276782707497817261" at="97,7,98,28" concept="2" />
+      <node id="1657638272963062302" at="98,28,99,21" concept="2" />
+      <node id="8287697530462525582" at="102,37,103,64" concept="2" />
+      <node id="8287697530462525591" at="103,64,104,64" concept="2" />
+      <node id="8287697530462525600" at="104,64,105,60" concept="2" />
+      <node id="1657638272963062222" at="106,7,107,22" concept="2" />
+      <node id="8287697530462527655" at="111,37,112,67" concept="2" />
+      <node id="8287697530462527664" at="112,67,113,67" concept="2" />
+      <node id="8287697530462527673" at="113,67,114,63" concept="2" />
+      <node id="1657638272963062299" at="115,7,116,22" concept="2" />
+      <node id="5522183980949036970" at="35,0,38,0" concept="1" trace="ToolTip#(Z)V" />
+      <node id="8917462567969353828" at="50,32,53,5" concept="4" />
+      <node id="1142165476403798629" at="87,13,90,7" concept="4" />
+      <node id="1142165476403798664" at="91,64,94,7" concept="4" />
+      <node id="1142165476403798699" at="94,7,97,7" concept="4" />
+      <node id="7988039361770506433" at="44,27,48,5" concept="4" />
+      <node id="5522183980949037038" at="66,0,70,0" concept="5" trace="mousePressed#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="1657638272963061115" at="72,0,76,0" concept="5" trace="keyPressed#(Ljava/awt/event/KeyEvent;)V" />
+      <node id="5522183980949037016" at="59,0,64,0" concept="5" trace="focusLost#(Ljava/awt/event/FocusEvent;)V" />
+      <node id="8287697530462525571" at="101,33,106,7" concept="4" />
+      <node id="8287697530462525611" at="110,27,115,7" concept="4" />
+      <node id="1657638272963421745" at="38,0,44,0" concept="5" trace="show#(Ljava/awt/Frame;Ljava/awt/Point;Ljetbrains/mps/ide/tooltips/ToolTipData;)V" />
+      <node id="6160742249368370026" at="44,0,50,0" concept="5" trace="hide#()V" />
+      <node id="2913460188527323522" at="50,0,56,0" concept="5" trace="getText#()Ljava/lang/String;" />
+      <node id="5522183980949037027" at="65,0,71,0" concept="3" trace="myOwnerMouseListener" />
+      <node id="1657638272963033126" at="71,0,77,0" concept="3" trace="myOwnerKeyListener" />
+      <node id="5522183980949037006" at="58,0,65,0" concept="3" trace="myOwnerFocusListener" />
+      <node id="1657638272963062217" at="101,0,109,0" concept="5" trace="addListeners#()V" />
+      <node id="1657638272963062268" at="109,0,118,0" concept="5" trace="dispose#()V" />
+      <node id="5522183980949036978" at="77,0,101,0" concept="1" trace="MyDialog#(Ljava/awt/Frame;Ljava/awt/Point;ZLjetbrains/mps/ide/tooltips/ToolTipData;)V" />
+      <scope id="5522183980949036973" at="35,45,36,34" />
+      <scope id="8917462567969353829" at="51,36,52,18" />
+      <scope id="5522183980949037043" at="67,47,68,18" />
+      <scope id="1657638272963061120" at="73,43,74,18" />
+      <scope id="1142165476403798630" at="88,25,89,58" />
+      <scope id="1142165476403798665" at="92,58,93,67" />
+      <scope id="1142165476403798700" at="95,60,96,69" />
+      <scope id="7988039361770506434" at="45,27,47,22" />
+      <scope id="5522183980949037021" at="60,44,62,0" />
+      <scope id="5522183980949036970" at="35,0,38,0">
         <var name="rightAligned" id="1142165476403803536" />
       </scope>
-      <scope id="8287697530462525572" at="100,37,103,60" />
-      <scope id="8287697530462525612" at="109,37,112,63" />
-      <scope id="1657638272963421748" at="36,83,40,30" />
-      <scope id="6160742249368370029" at="42,27,46,5" />
-      <scope id="2913460188527323525" at="48,32,52,39" />
-      <scope id="5522183980949037038" at="64,0,68,0">
+      <scope id="8287697530462525572" at="102,37,105,60" />
+      <scope id="8287697530462525612" at="111,37,114,63" />
+      <scope id="1657638272963421748" at="38,83,42,30" />
+      <scope id="6160742249368370029" at="44,27,48,5" />
+      <scope id="2913460188527323525" at="50,32,54,39" />
+      <scope id="5522183980949037038" at="66,0,70,0">
         <var name="p0" id="5522183980949037041" />
       </scope>
-      <scope id="1657638272963061115" at="70,0,74,0">
+      <scope id="1657638272963061115" at="72,0,76,0">
         <var name="p0" id="1657638272963061118" />
       </scope>
-      <scope id="5522183980949037016" at="57,0,62,0">
+      <scope id="5522183980949037016" at="59,0,64,0">
         <var name="p0" id="5522183980949037019" />
       </scope>
-      <scope id="1657638272963421745" at="36,0,42,0">
+      <scope id="1657638272963421745" at="38,0,44,0">
         <var name="hintInformation" id="1657638272963423029" />
         <var name="location" id="1657638272963423026" />
         <var name="owner" id="1657638272963423024" />
       </scope>
-      <scope id="6160742249368370026" at="42,0,48,0" />
-      <scope id="2913460188527323522" at="48,0,54,0" />
-      <scope id="1657638272963062220" at="99,33,105,22" />
-      <scope id="1657638272963062271" at="108,27,114,22" />
-      <scope id="1657638272963062217" at="99,0,107,0" />
-      <scope id="1657638272963062268" at="107,0,116,0" />
-      <scope id="5522183980949036981" at="75,102,97,21">
+      <scope id="6160742249368370026" at="44,0,50,0" />
+      <scope id="2913460188527323522" at="50,0,56,0" />
+      <scope id="1657638272963062220" at="101,33,107,22" />
+      <scope id="1657638272963062271" at="110,27,116,22" />
+      <scope id="1657638272963062217" at="101,0,109,0" />
+      <scope id="1657638272963062268" at="109,0,118,0" />
+      <scope id="5522183980949036981" at="77,102,99,21">
         <var name="rect" id="1142165476403798659" />
         <var name="scrollPane" id="1657638272963252370" />
       </scope>
-      <scope id="5522183980949036978" at="75,0,99,0">
+      <scope id="5522183980949036978" at="77,0,101,0">
         <var name="location" id="1657638272963062309" />
         <var name="owner" id="1657638272963062307" />
         <var name="rightAligned" id="2625933072718665279" />
         <var name="toolTipData" id="1657638272963062312" />
       </scope>
-      <unit id="5522183980949037036" at="63,53,68,5" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog$2" />
-      <unit id="1657638272963061113" at="69,49,74,5" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog$3" />
-      <unit id="5522183980949037014" at="56,53,62,5" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog$1" />
-      <unit id="5522183980949036976" at="54,0,117,0" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog" />
-      <unit id="5522183980949036968" at="26,0,118,0" name="jetbrains.mps.ide.tooltips.ToolTip" />
+      <unit id="5522183980949037036" at="65,53,70,5" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog$2" />
+      <unit id="1657638272963061113" at="71,49,76,5" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog$3" />
+      <unit id="5522183980949037014" at="58,53,64,5" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog$1" />
+      <unit id="5522183980949036976" at="56,0,119,0" name="jetbrains.mps.ide.tooltips.ToolTip$MyDialog" />
+      <unit id="5522183980949036968" at="27,0,120,0" name="jetbrains.mps.ide.tooltips.ToolTip" />
     </file>
   </root>
 </debug-info>

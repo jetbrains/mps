@@ -13,6 +13,7 @@
     <classNode dependClassName="com.intellij.psi.search.GlobalSearchScope" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -20,6 +21,7 @@
   <dependency className="jetbrains.mps.ide.common.LayoutUtil">
     <classNode dependClassName="java.awt.GridBagConstraints" />
     <classNode dependClassName="java.awt.Insets" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
 </dependenciesRoot>
 

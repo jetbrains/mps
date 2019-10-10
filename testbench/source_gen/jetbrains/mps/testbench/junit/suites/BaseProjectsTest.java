@@ -4,6 +4,7 @@ package jetbrains.mps.testbench.junit.suites;
 
 import org.junit.runner.RunWith;
 import jetbrains.mps.testbench.junit.runners.TeamCityParameterizedRunner;
+import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.project.Project;
 import org.junit.runners.Parameterized;
@@ -20,6 +21,7 @@ import java.io.File;
 import org.junit.After;
 
 @RunWith(value = TeamCityParameterizedRunner.class)
+@GeneratedClass(node = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/7308922687953975578", model = "r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)")
 public class BaseProjectsTest {
   private static IdeaEnvironment ourEnv;
 

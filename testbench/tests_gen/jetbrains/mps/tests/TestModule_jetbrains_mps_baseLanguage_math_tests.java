@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.baseLanguage.math.tests.IntervalTest"}, tests = {"simpleInterval,leftNotIncluded,rightNotIncluded,leftInfinity,rightInfinity,integerIterationAllIncluded,integerIterationLeftNotIncluded,integerIterationRightNotIncluded,oneElementIntervalIteration,endBeforStart,minusInfinityIncluded,plusInfinityIncluded,emptyInterval,iterationFromInfinity"})
 @ModuleSymbolicSuite.ModuleReference("9cc656d8-ed07-4493-9531-69f1c9c308c5(jetbrains.mps.baseLanguage.math.tests)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/2712670354707941338", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_baseLanguage_math_tests {
   public TestModule_jetbrains_mps_baseLanguage_math_tests() {
   }

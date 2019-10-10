@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.testActions.test.ActionsTest_Test"}, tests = {"test_checkRoots"})
 @ModuleSymbolicSuite.ModuleReference("ae6cedf1-e261-45d9-972d-e8cfbc5e7f52(jetbrains.mps.testActions)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/3611349286777542940", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_testActions {
   public TestModule_jetbrains_mps_testActions() {
   }

@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.traceInfo.test.TraceInfoTest"}, tests = {"precondition,ifTest,forTest,blockStatementTest,foreachTest,generatedForeachTest,internalClassTest"})
 @ModuleSymbolicSuite.ModuleReference("415bc577-86ca-46a6-b873-4670fd19e169(jetbrains.mps.traceInfo.test)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/2712670354707844815", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_traceInfo_test {
   public TestModule_jetbrains_mps_traceInfo_test() {
   }

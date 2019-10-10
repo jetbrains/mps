@@ -14,6 +14,7 @@
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode dependClassName="javax.swing.JTable" />
     <classNode dependClassName="javax.swing.border.EmptyBorder" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.mappingpriorities.RuleType" />
     <classNode extendsClassName="javax.swing.table.DefaultTableCellRenderer" />
   </dependency>

@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.debugger.api.ui.tool.DebuggerToolContent">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.api.ui.tool.DebuggerToolContentBuilder">
     <classNode dependClassName="com.intellij.execution.ExecutionResult" />
@@ -33,6 +34,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="javax.swing.JComponent" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debug.api.AbstractDebugSession" />
     <classNode dependClassName="jetbrains.mps.debug.api.DebugSessionManagerComponent" />
     <classNode dependClassName="jetbrains.mps.debugger.api.ui.tool.DebuggerToolPanel" />
@@ -74,6 +76,7 @@
     <classNode dependClassName="javax.swing.ListSelectionModel" />
     <classNode dependClassName="javax.swing.event.ListSelectionEvent" />
     <classNode dependClassName="javax.swing.event.ListSelectionListener" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debug.api.AbstractDebugSession" />
     <classNode dependClassName="jetbrains.mps.debug.api.AbstractUiState" />
     <classNode dependClassName="jetbrains.mps.debug.api.SessionChangeAdapter" />

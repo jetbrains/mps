@@ -2,11 +2,13 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.resourceBundles.IconResourceBundle">
     <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="jetbrains.mps.resourceBundles.PluginResourceBundle" />
   </dependency>
   <dependency className="jetbrains.mps.resourceBundles.PluginResourceBundle">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
 </dependenciesRoot>
 

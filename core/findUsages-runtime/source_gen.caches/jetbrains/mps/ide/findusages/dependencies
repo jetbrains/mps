@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <dependency className="jetbrains.mps.ide.findusages.BaseFindUsagesDescriptor">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.FindUsageAspectDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.ide.findusages.CantLoadSomethingException">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="java.lang.Exception" />
   </dependency>
   <dependency className="jetbrains.mps.ide.findusages.CantSaveSomethingException">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="java.lang.Exception" />
   </dependency>
   <dependency className="jetbrains.mps.ide.findusages.FindersManager">
@@ -30,6 +33,7 @@
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="java.util.function.Consumer" />
     <classNode dependClassName="java.util.function.Function" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ITranslator2" />
@@ -54,6 +58,7 @@
     <classNode extendsClassName="jetbrains.mps.smodel.language.LanguageRegistryListener" />
   </dependency>
   <dependency className="jetbrains.mps.ide.findusages.IExternalizeable">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.CantLoadSomethingException" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.CantSaveSomethingException" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
@@ -62,6 +67,7 @@
   <dependency className="jetbrains.mps.ide.findusages.MPSFindUsages">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.components.CoreComponent" />
     <classNode dependClassName="jetbrains.mps.findUsages.FindUsagesManager" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.FindersManager" />

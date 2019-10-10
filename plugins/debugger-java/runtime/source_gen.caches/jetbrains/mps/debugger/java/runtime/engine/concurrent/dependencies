@@ -2,10 +2,13 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.debugger.java.runtime.engine.concurrent.Commands">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.engine.concurrent.IManagerCommand" />
   </dependency>
-  <dependency className="jetbrains.mps.debugger.java.runtime.engine.concurrent.IManagerCommand" />
+  <dependency className="jetbrains.mps.debugger.java.runtime.engine.concurrent.IManagerCommand">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+  </dependency>
   <dependency className="jetbrains.mps.debugger.java.runtime.engine.concurrent.ManagerThread">
     <classNode dependClassName="java.lang.InterruptedException" />
     <classNode dependClassName="java.lang.Override" />
@@ -16,6 +19,7 @@
     <classNode dependClassName="java.util.concurrent.BlockingQueue" />
     <classNode dependClassName="java.util.concurrent.CountDownLatch" />
     <classNode dependClassName="java.util.concurrent.LinkedBlockingQueue" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.engine.concurrent.Commands" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.engine.concurrent.IManagerCommand" />

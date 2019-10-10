@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.baseLanguage.methodDispatch.test.tests.DispatchTypeCheckingErrors_Test"}, tests = {"test_ErrorMessagesCheck3813896760029621933,test_NodeErrorCheck3813896760029624351,test_NodeErrorCheck3813896760029586546,test_ErrorMessagesCheck3813896760029627239,test_NodeErrorCheck3813896760029637821,test_ErrorMessagesCheck3813896760029629781"})
 @ModuleSymbolicSuite.ModuleReference("0528d773-6535-46f8-89a2-16a3751e6ab5(jetbrains.mps.baseLanguage.doubleDispatch.test)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/7261441936922900508", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_baseLanguage_doubleDispatch_test {
   public TestModule_jetbrains_mps_baseLanguage_doubleDispatch_test() {
   }

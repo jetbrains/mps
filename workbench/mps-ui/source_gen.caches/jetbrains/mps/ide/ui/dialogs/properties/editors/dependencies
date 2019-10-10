@@ -4,6 +4,7 @@
     <classNode dependClassName="java.awt.event.KeyEvent" />
     <classNode dependClassName="java.awt.event.KeyListener" />
     <classNode dependClassName="javax.swing.JComboBox" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.ui.dialogs.properties.renderers.RuleTypeRenderer" />
     <classNode dependClassName="jetbrains.mps.project.structure.modules.mappingpriorities.RuleType" />
     <classNode extendsClassName="javax.swing.DefaultCellEditor" />

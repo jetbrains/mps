@@ -5,6 +5,7 @@ package jetbrains.mps.console.tool;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
+import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
 import com.intellij.openapi.components.PersistentStateComponent;
 import java.util.List;
@@ -33,6 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @State(name = "ConsoleHistory", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
+@GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/1488452273262903215", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStateComponent<ConsoleTool.MyState> {
 
   private MyState loadedState;

@@ -5,6 +5,7 @@
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.NumberFormatException" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
   </dependency>
   <dependency className="jetbrains.mps.tool.common.JDOMUtil">
@@ -26,6 +27,7 @@
     <classNode dependClassName="java.lang.StringBuilder" />
     <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="java.nio.charset.Charset" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jdom.Document" />
@@ -42,10 +44,12 @@
   <dependency className="jetbrains.mps.tool.common.JavaCompilerProperties">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
   </dependency>
   <dependency className="jetbrains.mps.tool.common.MpsRunnerProperties">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
   </dependency>
   <dependency className="jetbrains.mps.tool.common.PathManager">
@@ -62,6 +66,7 @@
     <classNode dependClassName="java.nio.charset.Charset" />
     <classNode dependClassName="java.util.Properties" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.core.tool.environment.common.FileUtil" />
     <classNode dependClassName="jetbrains.mps.core.tool.environment.common.StringUtil" />
     <classNode dependClassName="jetbrains.mps.core.tool.environment.common.SystemInfo" />
@@ -73,11 +78,13 @@
   </dependency>
   <dependency className="jetbrains.mps.tool.common.PluginData">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
   <dependency className="jetbrains.mps.tool.common.RepositoryDescriptor">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
   <dependency className="jetbrains.mps.tool.common.Script">
     <classNode dependClassName="java.io.File" />
@@ -94,6 +101,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.JDOMUtil" />
     <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.RepositoryDescriptor" />
@@ -113,6 +121,7 @@
     <classNode dependClassName="java.util.LinkedHashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.RepositoryDescriptor" />
     <classNode dependClassName="org.apache.log4j.Level" />
@@ -120,6 +129,7 @@
   </dependency>
   <dependency className="jetbrains.mps.tool.common.ScriptProperties">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
 </dependenciesRoot>
 

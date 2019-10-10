@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.lang.typesystem.dependencies.CheckingMethod" />
+  <dependency className="jetbrains.mps.lang.typesystem.dependencies.CheckingMethod">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.typesystem.dependencies.DependenciesCollector">
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -8,6 +10,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
@@ -26,6 +29,8 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode dependClassName="org.jetbrains.mps.util.Condition" />
   </dependency>
-  <dependency className="jetbrains.mps.lang.typesystem.dependencies.InferenceMethod" />
+  <dependency className="jetbrains.mps.lang.typesystem.dependencies.InferenceMethod">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+  </dependency>
 </dependenciesRoot>
 

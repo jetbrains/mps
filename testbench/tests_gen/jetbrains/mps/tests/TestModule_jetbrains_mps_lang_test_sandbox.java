@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.lang.test.sandbox.Test_Test"}, tests = {"test_testError,test_hasType,test_hasError,test_hasTypeInSet,test_ErrorMessagesCheck2501421320959199196,test_NodeTypeCheck6594325605663849546,test_ErrorMessagesCheck2501421320959199214,test_NodeErrorCheck6594325605663849637,test_ErrorMessagesCheck2501421320959199232,test_NodeTypeSetCheck6594325605663852576,test_ErrorMessagesCheck2501421320959199250"})
 @ModuleSymbolicSuite.ModuleReference("ab46529e-de2c-48b6-80f0-9ec2d78b7df3(jetbrains.mps.lang.test.sandbox)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/4246614868164057743", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_lang_test_sandbox {
   public TestModule_jetbrains_mps_lang_test_sandbox() {
   }

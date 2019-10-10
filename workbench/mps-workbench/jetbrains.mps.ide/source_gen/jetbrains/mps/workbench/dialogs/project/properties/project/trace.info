@@ -16,443 +16,443 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <root nodeRef="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933580312">
     <file name="ProjectProperties.java">
-      <node id="3201642974933580343" at="15,0,16,0" concept="2" trace="myModule" />
-      <node id="3201642974933580392" at="18,40,19,50" concept="7" />
-      <node id="8376559132768614201" at="21,37,22,74" concept="6" />
-      <node id="8376559132768617245" at="23,17,24,19" concept="1" />
-      <node id="8376559132768621114" at="25,5,26,24" concept="1" />
-      <node id="8376559132768625391" at="26,24,27,14" concept="7" />
-      <node id="8376559132768629207" at="29,40,30,74" concept="6" />
-      <node id="8376559132768631556" at="31,17,32,16" concept="7" />
-      <node id="8376559132768645789" at="33,5,34,24" concept="1" />
-      <node id="8376559132768635237" at="34,24,35,14" concept="7" />
-      <node id="3201642974933580420" at="37,62,38,57" concept="6" />
-      <node id="3201642974933580430" at="38,57,39,53" concept="1" />
-      <node id="8376559132768607746" at="39,53,40,45" concept="1" />
-      <node id="3201642974933580498" at="40,45,41,34" concept="7" />
-      <node id="8376559132768528869" at="43,54,44,73" concept="6" />
-      <node id="3201642974933580534" at="44,73,45,21" concept="1" />
-      <node id="3201642974933580540" at="45,21,46,56" concept="1" />
-      <node id="8376559132768610555" at="46,56,47,60" concept="8" />
-      <node id="8376559132768593753" at="47,60,48,54" concept="1" />
-      <node id="8376559132768534040" at="50,52,51,83" concept="6" />
-      <node id="3201642974933580606" at="52,38,53,44" concept="1" />
-      <node id="4543209876460383299" at="54,5,55,0" concept="9" />
-      <node id="3201642974933580676" at="55,0,56,52" concept="1" />
-      <node id="3782225299376147097" at="59,51,60,88" concept="7" />
-      <node id="3782225299376147126" at="64,21,65,17" concept="7" />
-      <node id="3782225299376147128" at="66,7,67,41" concept="6" />
-      <node id="3782225299376147133" at="67,41,68,41" concept="6" />
-      <node id="3782225299376147138" at="68,41,69,40" concept="7" />
-      <node id="3782225299376149988" at="74,54,75,65" concept="6" />
-      <node id="3782225299376150000" at="76,24,77,22" concept="7" />
-      <node id="3782225299376150005" at="78,7,79,45" concept="7" />
-      <node id="3201642974933580365" at="16,0,18,0" concept="0" trace="ProjectProperties#()V" />
-      <node id="3201642974933580387" at="18,0,21,0" concept="5" trace="getModules#()Ljava/util/List;" />
-      <node id="8376559132768615030" at="22,74,25,5" concept="4" />
-      <node id="8376559132768629771" at="30,74,33,5" concept="4" />
-      <node id="3201642974933580599" at="51,83,54,5" concept="3" />
-      <node id="3782225299376147091" at="59,0,62,0" concept="5" trace="getPathString#(Ljetbrains/mps/project/structure/project/ModulePath;)Ljava/lang/String;" />
-      <node id="3782225299376147121" at="63,54,66,7" concept="4" />
-      <node id="3782225299376149998" at="75,65,78,7" concept="4" />
-      <node id="3201642974933580414" at="37,0,43,0" concept="5" trace="isSame#(Ljetbrains/mps/project/structure/project/ProjectDescriptor;)Z" />
-      <node id="3201642974933580503" at="43,0,50,0" concept="5" trace="loadFrom#(Ljetbrains/mps/project/StandaloneMPSProject;)V" />
-      <node id="8376559132768553029" at="21,0,29,0" concept="5" trace="add#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
-      <node id="8376559132768556509" at="29,0,37,0" concept="5" trace="remove#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
-      <node id="3201642974933580585" at="50,0,58,0" concept="5" trace="saveTo#(Ljetbrains/mps/project/StandaloneMPSProject;)V" />
-      <node id="3782225299376149980" at="73,0,81,0" concept="5" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
-      <node id="3782225299376147113" at="62,0,71,0" concept="5" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
-      <node id="3782225299376149970" at="72,0,82,0" concept="2" trace="PATH_VALID_COMPARATOR" />
-      <node id="3782225299376147081" at="58,0,72,0" concept="2" trace="PATH_COMPARATOR" />
-      <scope id="3201642974933580367" at="16,30,16,30" />
-      <scope id="3201642974933580391" at="18,40,19,50" />
-      <scope id="8376559132768615032" at="23,17,24,19" />
-      <scope id="8376559132768629773" at="31,17,32,16" />
-      <scope id="3201642974933580605" at="52,38,53,44" />
-      <scope id="3782225299376147096" at="59,51,60,88" />
-      <scope id="3782225299376147125" at="64,21,65,17" />
-      <scope id="3782225299376149999" at="76,24,77,22" />
-      <scope id="3201642974933580365" at="16,0,18,0" />
-      <scope id="3201642974933580387" at="18,0,21,0" />
-      <scope id="3201642974933580599" at="51,83,54,5">
+      <node id="3201642974933580343" at="17,0,18,0" concept="2" trace="myModule" />
+      <node id="3201642974933580392" at="20,40,21,50" concept="7" />
+      <node id="8376559132768614201" at="23,37,24,74" concept="6" />
+      <node id="8376559132768617245" at="25,17,26,19" concept="1" />
+      <node id="8376559132768621114" at="27,5,28,24" concept="1" />
+      <node id="8376559132768625391" at="28,24,29,14" concept="7" />
+      <node id="8376559132768629207" at="31,40,32,74" concept="6" />
+      <node id="8376559132768631556" at="33,17,34,16" concept="7" />
+      <node id="8376559132768645789" at="35,5,36,24" concept="1" />
+      <node id="8376559132768635237" at="36,24,37,14" concept="7" />
+      <node id="3201642974933580420" at="39,62,40,57" concept="6" />
+      <node id="3201642974933580430" at="40,57,41,53" concept="1" />
+      <node id="8376559132768607746" at="41,53,42,45" concept="1" />
+      <node id="3201642974933580498" at="42,45,43,34" concept="7" />
+      <node id="8376559132768528869" at="45,54,46,73" concept="6" />
+      <node id="3201642974933580534" at="46,73,47,21" concept="1" />
+      <node id="3201642974933580540" at="47,21,48,56" concept="1" />
+      <node id="8376559132768610555" at="48,56,49,60" concept="8" />
+      <node id="8376559132768593753" at="49,60,50,54" concept="1" />
+      <node id="8376559132768534040" at="52,52,53,83" concept="6" />
+      <node id="3201642974933580606" at="54,38,55,44" concept="1" />
+      <node id="4543209876460383299" at="56,5,57,0" concept="9" />
+      <node id="3201642974933580676" at="57,0,58,52" concept="1" />
+      <node id="3782225299376147097" at="61,51,62,88" concept="7" />
+      <node id="3782225299376147126" at="66,21,67,17" concept="7" />
+      <node id="3782225299376147128" at="68,7,69,41" concept="6" />
+      <node id="3782225299376147133" at="69,41,70,41" concept="6" />
+      <node id="3782225299376147138" at="70,41,71,40" concept="7" />
+      <node id="3782225299376149988" at="76,54,77,65" concept="6" />
+      <node id="3782225299376150000" at="78,24,79,22" concept="7" />
+      <node id="3782225299376150005" at="80,7,81,45" concept="7" />
+      <node id="3201642974933580365" at="18,0,20,0" concept="0" trace="ProjectProperties#()V" />
+      <node id="3201642974933580387" at="20,0,23,0" concept="5" trace="getModules#()Ljava/util/List;" />
+      <node id="8376559132768615030" at="24,74,27,5" concept="4" />
+      <node id="8376559132768629771" at="32,74,35,5" concept="4" />
+      <node id="3201642974933580599" at="53,83,56,5" concept="3" />
+      <node id="3782225299376147091" at="61,0,64,0" concept="5" trace="getPathString#(Ljetbrains/mps/project/structure/project/ModulePath;)Ljava/lang/String;" />
+      <node id="3782225299376147121" at="65,54,68,7" concept="4" />
+      <node id="3782225299376149998" at="77,65,80,7" concept="4" />
+      <node id="3201642974933580414" at="39,0,45,0" concept="5" trace="isSame#(Ljetbrains/mps/project/structure/project/ProjectDescriptor;)Z" />
+      <node id="3201642974933580503" at="45,0,52,0" concept="5" trace="loadFrom#(Ljetbrains/mps/project/StandaloneMPSProject;)V" />
+      <node id="8376559132768553029" at="23,0,31,0" concept="5" trace="add#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
+      <node id="8376559132768556509" at="31,0,39,0" concept="5" trace="remove#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
+      <node id="3201642974933580585" at="52,0,60,0" concept="5" trace="saveTo#(Ljetbrains/mps/project/StandaloneMPSProject;)V" />
+      <node id="3782225299376149980" at="75,0,83,0" concept="5" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
+      <node id="3782225299376147113" at="64,0,73,0" concept="5" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
+      <node id="3782225299376149970" at="74,0,84,0" concept="2" trace="PATH_VALID_COMPARATOR" />
+      <node id="3782225299376147081" at="60,0,74,0" concept="2" trace="PATH_COMPARATOR" />
+      <scope id="3201642974933580367" at="18,30,18,30" />
+      <scope id="3201642974933580391" at="20,40,21,50" />
+      <scope id="8376559132768615032" at="25,17,26,19" />
+      <scope id="8376559132768629773" at="33,17,34,16" />
+      <scope id="3201642974933580605" at="54,38,55,44" />
+      <scope id="3782225299376147096" at="61,51,62,88" />
+      <scope id="3782225299376147125" at="66,21,67,17" />
+      <scope id="3782225299376149999" at="78,24,79,22" />
+      <scope id="3201642974933580365" at="18,0,20,0" />
+      <scope id="3201642974933580387" at="20,0,23,0" />
+      <scope id="3201642974933580599" at="53,83,56,5">
         <var name="path" id="3201642974933580603" />
       </scope>
-      <scope id="3782225299376147091" at="59,0,62,0">
+      <scope id="3782225299376147091" at="61,0,64,0">
         <var name="path" id="3782225299376147094" />
       </scope>
-      <scope id="3201642974933580419" at="37,62,41,34">
+      <scope id="3201642974933580419" at="39,62,43,34">
         <var name="paths" id="3201642974933580421" />
       </scope>
-      <scope id="3201642974933580508" at="43,54,48,54">
+      <scope id="3201642974933580508" at="45,54,50,54">
         <var name="projectDescriptor" id="8376559132768528870" />
       </scope>
-      <scope id="3782225299376149987" at="74,54,79,45">
+      <scope id="3782225299376149987" at="76,54,81,45">
         <var name="result" id="3782225299376149989" />
       </scope>
-      <scope id="8376559132768553032" at="21,37,27,14">
+      <scope id="8376559132768553032" at="23,37,29,14">
         <var name="ix" id="8376559132768614202" />
       </scope>
-      <scope id="8376559132768556513" at="29,40,35,14">
+      <scope id="8376559132768556513" at="31,40,37,14">
         <var name="ix" id="8376559132768629208" />
       </scope>
-      <scope id="3201642974933580414" at="37,0,43,0">
+      <scope id="3201642974933580414" at="39,0,45,0">
         <var name="projectDescriptor" id="3201642974933580417" />
       </scope>
-      <scope id="3201642974933580590" at="50,52,56,52">
+      <scope id="3201642974933580590" at="52,52,58,52">
         <var name="projectDescriptor" id="8376559132768534041" />
       </scope>
-      <scope id="3782225299376147120" at="63,54,69,40">
+      <scope id="3782225299376147120" at="65,54,71,40">
         <var name="string1" id="3782225299376147129" />
         <var name="string2" id="3782225299376147134" />
       </scope>
-      <scope id="3201642974933580503" at="43,0,50,0">
+      <scope id="3201642974933580503" at="45,0,52,0">
         <var name="project" id="3201642974933580506" />
       </scope>
-      <scope id="8376559132768553029" at="21,0,29,0">
+      <scope id="8376559132768553029" at="23,0,31,0">
         <var name="p" id="8376559132768554270" />
       </scope>
-      <scope id="8376559132768556509" at="29,0,37,0">
+      <scope id="8376559132768556509" at="31,0,39,0">
         <var name="p" id="8376559132768560703" />
       </scope>
-      <scope id="3201642974933580585" at="50,0,58,0">
+      <scope id="3201642974933580585" at="52,0,60,0">
         <var name="project" id="3201642974933580588" />
       </scope>
-      <scope id="3782225299376149980" at="73,0,81,0">
+      <scope id="3782225299376149980" at="75,0,83,0">
         <var name="o1" id="3782225299376149983" />
         <var name="o2" id="3782225299376149985" />
       </scope>
-      <scope id="3782225299376147113" at="62,0,71,0">
+      <scope id="3782225299376147113" at="64,0,73,0">
         <var name="o1" id="3782225299376147116" />
         <var name="o2" id="3782225299376147118" />
       </scope>
-      <unit id="3782225299376149978" at="72,66,81,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$2" />
-      <unit id="3782225299376147089" at="58,61,71,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$1" />
-      <unit id="3201642974933580312" at="14,0,84,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties" />
+      <unit id="3782225299376149978" at="74,66,83,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$2" />
+      <unit id="3782225299376147089" at="60,61,73,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$1" />
+      <unit id="3201642974933580312" at="15,0,86,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties" />
     </file>
   </root>
   <root nodeRef="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933583134">
     <file name="ProjectPropertiesComponent.java">
-      <node id="3201642974933583142" at="44,0,45,0" concept="2" trace="myProject" />
-      <node id="3658760989814245018" at="45,0,46,0" concept="2" trace="myProperties" />
-      <node id="5961779779213121736" at="47,0,48,0" concept="2" trace="myModulesList" />
-      <node id="2505864428223727576" at="48,0,49,0" concept="2" trace="myExtraPanels" />
-      <node id="855177489841729729" at="56,92,57,112" concept="13" />
-      <node id="3658760989816929412" at="60,105,61,16" concept="12" />
-      <node id="3658760989812040342" at="61,16,62,78" concept="1" />
-      <node id="3658760989812040346" at="62,78,63,32" concept="1" />
-      <node id="3658760989816600061" at="63,32,64,37" concept="1" />
-      <node id="3658760989812040360" at="64,37,65,11" concept="1" />
-      <node id="3658760989812223389" at="68,54,69,76" concept="13" />
-      <node id="3658760989812686687" at="73,15,74,280" concept="7" />
-      <node id="6271177843025151613" at="75,5,76,241" concept="7" />
-      <node id="5623586376694234643" at="79,49,80,65" concept="1" />
-      <node id="3658760989813524004" at="80,65,81,0" concept="9" />
-      <node id="3658760989813524005" at="81,0,82,54" concept="1" />
-      <node id="286857080906764224" at="82,54,83,45" concept="1" />
-      <node id="3658760989813524011" at="83,45,84,72" concept="1" />
-      <node id="8090411030406324168" at="84,72,85,0" concept="9" />
-      <node id="8090411030406931524" at="87,52,88,36" concept="7" />
-      <node id="3658760989813524016" at="90,7,91,0" concept="9" />
-      <node id="3658760989813524017" at="91,0,92,81" concept="6" />
-      <node id="3459682589052515872" at="97,0,98,0" concept="2" trace="EXTENTIONS" />
-      <node id="3459682589052597461" at="98,56,99,102" concept="8" />
-      <node id="3459682589052640699" at="101,48,102,64" concept="7" />
-      <node id="3459682589052412157" at="106,11,107,154" concept="6" />
-      <node id="3459682589052282433" at="107,154,108,0" concept="9" />
-      <node id="1560298786499497495" at="109,27,110,17" concept="7" />
-      <node id="172421188331061184" at="111,9,112,0" concept="9" />
-      <node id="3658760989813524062" at="112,0,113,63" concept="6" />
-      <node id="3658760989813524124" at="115,51,116,52" concept="1" />
-      <node id="3658760989813524130" at="116,52,117,19" concept="7" />
-      <node id="393464970995998648" at="119,9,120,98" concept="1" />
-      <node id="4312380589314397749" at="124,46,125,61" concept="6" />
-      <node id="3658760989813524038" at="125,61,126,97" concept="1" />
-      <node id="393464970995683967" at="127,48,128,142" concept="1" />
-      <node id="393464970995683945" at="129,9,130,0" concept="9" />
-      <node id="3658760989813524145" at="132,30,133,56" concept="1" />
-      <node id="3658760989813524153" at="133,56,134,0" concept="9" />
-      <node id="3658760989813524154" at="134,0,135,43" concept="6" />
-      <node id="3658760989813524160" at="135,43,136,75" concept="1" />
-      <node id="3658760989813524167" at="136,75,137,17" concept="7" />
-      <node id="2460510381554796741" at="140,57,141,25" concept="7" />
-      <node id="3658760989813324222" at="146,22,147,44" concept="6" />
-      <node id="3658760989813324236" at="147,44,148,21" concept="6" />
-      <node id="3658760989813339820" at="148,21,149,55" concept="1" />
-      <node id="3658760989813324249" at="149,55,150,31" concept="1" />
-      <node id="5961779779213341890" at="150,31,151,0" concept="9" />
-      <node id="3658760989813324254" at="151,0,152,79" concept="1" />
-      <node id="3658760989813324278" at="153,84,154,81" concept="1" />
-      <node id="855177489843010680" at="161,62,162,39" concept="7" />
-      <node id="3201642974933583295" at="171,25,172,39" concept="1" />
-      <node id="2505864428223727627" at="175,76,176,17" concept="1" />
-      <node id="3201642974933583272" at="180,23,181,37" concept="1" />
-      <node id="2505864428223727639" at="182,76,183,17" concept="1" />
-      <node id="3658760989813806462" at="194,26,195,46" concept="7" />
-      <node id="3658760989813806474" at="199,43,200,46" concept="7" />
-      <node id="3658760989813806486" at="203,40,204,39" concept="7" />
-      <node id="3658760989813806501" at="207,41,208,37" concept="6" />
-      <node id="3658760989813806510" at="208,37,209,36" concept="1" />
-      <node id="393464970995770478" at="209,36,210,15" concept="7" />
-      <node id="3658760989813806521" at="213,45,214,40" concept="6" />
-      <node id="3658760989813806537" at="214,40,215,38" concept="1" />
-      <node id="3658760989813806451" at="190,0,192,0" concept="0" trace="PathsListModel#()V" />
-      <node id="3201642974933583153" at="68,0,71,0" concept="0" trace="ProjectPropertiesComponent#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="3658760989812686685" at="72,67,75,5" concept="4" />
-      <node id="8090411030406921955" at="87,0,90,0" concept="5" trace="convert#(Ljetbrains/mps/project/structure/project/ModulePath;)Ljava/lang/String;" />
-      <node id="3459682589052634844" at="101,0,104,0" concept="5" trace="accept#(Ljava/lang/String;)Z" />
-      <node id="1560298786499497490" at="108,0,111,9" concept="4" />
-      <node id="393464970995683965" at="126,97,129,9" concept="4" />
-      <node id="2460510381554796737" at="140,0,143,0" concept="5" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
-      <node id="3658760989813324272" at="152,79,155,5" concept="3" />
-      <node id="855177489842950226" at="161,0,164,0" concept="5" trace="test#(Ljetbrains/mps/workbench/dialogs/project/properties/project/ProjectPrefsExtraPanel;)Z" />
-      <node id="2505864428223727622" at="174,7,177,5" concept="3" />
-      <node id="2505864428223727635" at="181,37,184,5" concept="3" />
-      <node id="3658760989813806481" at="203,0,206,0" concept="5" trace="getPaths#()Ljava/util/List;" />
-      <node id="3658760989813524118" at="114,85,118,11" concept="4" />
-      <node id="3201642974933583252" at="170,0,174,0" concept="5" trace="run#()V" />
-      <node id="3658760989813806458" at="193,0,197,0" concept="5" trace="getSize#()I" />
-      <node id="3658760989813806468" at="198,0,202,0" concept="5" trace="getElementAt#(I)Ljetbrains/mps/project/structure/project/ModulePath;" />
-      <node id="3658760989813806517" at="213,0,217,0" concept="5" trace="removePath#(Ljetbrains/mps/project/structure/project/ModulePath;)V" />
-      <node id="3658760989812040340" at="54,0,59,0" concept="0" trace="ProjectPropertiesComponent#(Lcom/intellij/openapi/project/Project;[Ljetbrains/mps/workbench/dialogs/project/properties/project/ProjectPrefsExtraPanel;)V" />
-      <node id="8090411030406355095" at="85,0,90,7" concept="1" />
-      <node id="3459682589052616999" at="99,102,104,15" concept="7" />
-      <node id="3201642974933583229" at="159,31,164,7" concept="7" />
-      <node id="3658760989813806490" at="207,0,212,0" concept="5" trace="addPath#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
-      <node id="2783053129204875476" at="72,0,78,0" concept="11" trace="getGridConstraints#(IZ)Ljava/lang/Object;" />
-      <node id="3658760989813524108" at="113,63,119,9" concept="3" />
-      <node id="3201642974933583245" at="168,23,174,7" concept="1" />
-      <node id="3201642974933583256" at="180,0,186,0" concept="5" trace="reset#()V" />
-      <node id="855177489841457136" at="60,0,67,0" concept="0" trace="ProjectPropertiesComponent#(Lcom/intellij/openapi/project/Project;Ljava/util/List;)V" />
-      <node id="3459682589052141547" at="98,0,106,0" concept="5" trace="value#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
-      <node id="3201642974933583225" at="158,0,166,0" concept="5" trace="isModified#()Z" />
-      <node id="3658760989813524032" at="123,0,132,0" concept="5" trace="run#(Lcom/intellij/ui/AnActionButton;)V" />
-      <node id="3459682589051964361" at="95,46,106,11" concept="6" />
-      <node id="3201642974933583205" at="145,0,157,0" concept="5" trace="init#()V" />
-      <node id="3201642974933583241" at="167,0,179,0" concept="5" trace="apply#()V" />
-      <node id="3658760989813524056" at="94,0,122,0" concept="5" trace="run#(Lcom/intellij/ui/AnActionButton;)V" />
-      <node id="3658760989813524022" at="92,81,132,30" concept="1" />
-      <node id="3658760989813523993" at="79,0,139,0" concept="5" trace="createProjectModulesList#()Ljavax/swing/JComponent;" />
-      <scope id="3658760989813806453" at="190,29,190,29" />
-      <scope id="3658760989812040341" at="56,92,57,112" />
-      <scope id="3201642974933583157" at="68,54,69,76" />
-      <scope id="3658760989812686686" at="73,15,74,280" />
-      <scope id="8090411030406921957" at="87,52,88,36" />
-      <scope id="3459682589052634845" at="101,48,102,64" />
-      <scope id="1560298786499497494" at="109,27,110,17" />
-      <scope id="393464970995683966" at="127,48,128,142" />
-      <scope id="2460510381554796740" at="140,57,141,25" />
-      <scope id="3658760989813324277" at="153,84,154,81" />
-      <scope id="855177489842950227" at="161,62,162,39" />
-      <scope id="3201642974933583294" at="171,25,172,39" />
-      <scope id="2505864428223727625" at="175,76,176,17" />
-      <scope id="2505864428223727638" at="182,76,183,17" />
-      <scope id="3658760989813806461" at="194,26,195,46" />
-      <scope id="3658760989813806473" at="199,43,200,46" />
-      <scope id="3658760989813806485" at="203,40,204,39" />
-      <scope id="3658760989813524123" at="115,51,117,19" />
-      <scope id="3658760989813806451" at="190,0,192,0" />
-      <scope id="3658760989813806520" at="213,45,215,38">
+      <node id="3201642974933583142" at="46,0,47,0" concept="2" trace="myProject" />
+      <node id="3658760989814245018" at="47,0,48,0" concept="2" trace="myProperties" />
+      <node id="5961779779213121736" at="49,0,50,0" concept="2" trace="myModulesList" />
+      <node id="2505864428223727576" at="50,0,51,0" concept="2" trace="myExtraPanels" />
+      <node id="855177489841729729" at="58,92,59,112" concept="13" />
+      <node id="3658760989816929412" at="62,105,63,16" concept="12" />
+      <node id="3658760989812040342" at="63,16,64,78" concept="1" />
+      <node id="3658760989812040346" at="64,78,65,32" concept="1" />
+      <node id="3658760989816600061" at="65,32,66,37" concept="1" />
+      <node id="3658760989812040360" at="66,37,67,11" concept="1" />
+      <node id="3658760989812223389" at="70,54,71,76" concept="13" />
+      <node id="3658760989812686687" at="75,15,76,280" concept="7" />
+      <node id="6271177843025151613" at="77,5,78,241" concept="7" />
+      <node id="5623586376694234643" at="81,49,82,65" concept="1" />
+      <node id="3658760989813524004" at="82,65,83,0" concept="9" />
+      <node id="3658760989813524005" at="83,0,84,54" concept="1" />
+      <node id="286857080906764224" at="84,54,85,45" concept="1" />
+      <node id="3658760989813524011" at="85,45,86,72" concept="1" />
+      <node id="8090411030406324168" at="86,72,87,0" concept="9" />
+      <node id="8090411030406931524" at="89,52,90,36" concept="7" />
+      <node id="3658760989813524016" at="92,7,93,0" concept="9" />
+      <node id="3658760989813524017" at="93,0,94,81" concept="6" />
+      <node id="3459682589052515872" at="99,0,100,0" concept="2" trace="EXTENTIONS" />
+      <node id="3459682589052597461" at="100,56,101,102" concept="8" />
+      <node id="3459682589052640699" at="103,48,104,64" concept="7" />
+      <node id="3459682589052412157" at="108,11,109,154" concept="6" />
+      <node id="3459682589052282433" at="109,154,110,0" concept="9" />
+      <node id="1560298786499497495" at="111,27,112,17" concept="7" />
+      <node id="172421188331061184" at="113,9,114,0" concept="9" />
+      <node id="3658760989813524062" at="114,0,115,63" concept="6" />
+      <node id="3658760989813524124" at="117,51,118,52" concept="1" />
+      <node id="3658760989813524130" at="118,52,119,19" concept="7" />
+      <node id="393464970995998648" at="121,9,122,98" concept="1" />
+      <node id="4312380589314397749" at="126,46,127,61" concept="6" />
+      <node id="3658760989813524038" at="127,61,128,97" concept="1" />
+      <node id="393464970995683967" at="129,48,130,142" concept="1" />
+      <node id="393464970995683945" at="131,9,132,0" concept="9" />
+      <node id="3658760989813524145" at="134,30,135,56" concept="1" />
+      <node id="3658760989813524153" at="135,56,136,0" concept="9" />
+      <node id="3658760989813524154" at="136,0,137,43" concept="6" />
+      <node id="3658760989813524160" at="137,43,138,75" concept="1" />
+      <node id="3658760989813524167" at="138,75,139,17" concept="7" />
+      <node id="2460510381554796741" at="142,57,143,25" concept="7" />
+      <node id="3658760989813324222" at="148,22,149,44" concept="6" />
+      <node id="3658760989813324236" at="149,44,150,21" concept="6" />
+      <node id="3658760989813339820" at="150,21,151,55" concept="1" />
+      <node id="3658760989813324249" at="151,55,152,31" concept="1" />
+      <node id="5961779779213341890" at="152,31,153,0" concept="9" />
+      <node id="3658760989813324254" at="153,0,154,79" concept="1" />
+      <node id="3658760989813324278" at="155,84,156,81" concept="1" />
+      <node id="855177489843010680" at="163,62,164,39" concept="7" />
+      <node id="3201642974933583295" at="173,25,174,39" concept="1" />
+      <node id="2505864428223727627" at="177,76,178,17" concept="1" />
+      <node id="3201642974933583272" at="182,23,183,37" concept="1" />
+      <node id="2505864428223727639" at="184,76,185,17" concept="1" />
+      <node id="3658760989813806462" at="196,26,197,46" concept="7" />
+      <node id="3658760989813806474" at="201,43,202,46" concept="7" />
+      <node id="3658760989813806486" at="205,40,206,39" concept="7" />
+      <node id="3658760989813806501" at="209,41,210,37" concept="6" />
+      <node id="3658760989813806510" at="210,37,211,36" concept="1" />
+      <node id="393464970995770478" at="211,36,212,15" concept="7" />
+      <node id="3658760989813806521" at="215,45,216,40" concept="6" />
+      <node id="3658760989813806537" at="216,40,217,38" concept="1" />
+      <node id="3658760989813806451" at="192,0,194,0" concept="0" trace="PathsListModel#()V" />
+      <node id="3201642974933583153" at="70,0,73,0" concept="0" trace="ProjectPropertiesComponent#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="3658760989812686685" at="74,67,77,5" concept="4" />
+      <node id="8090411030406921955" at="89,0,92,0" concept="5" trace="convert#(Ljetbrains/mps/project/structure/project/ModulePath;)Ljava/lang/String;" />
+      <node id="3459682589052634844" at="103,0,106,0" concept="5" trace="accept#(Ljava/lang/String;)Z" />
+      <node id="1560298786499497490" at="110,0,113,9" concept="4" />
+      <node id="393464970995683965" at="128,97,131,9" concept="4" />
+      <node id="2460510381554796737" at="142,0,145,0" concept="5" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
+      <node id="3658760989813324272" at="154,79,157,5" concept="3" />
+      <node id="855177489842950226" at="163,0,166,0" concept="5" trace="test#(Ljetbrains/mps/workbench/dialogs/project/properties/project/ProjectPrefsExtraPanel;)Z" />
+      <node id="2505864428223727622" at="176,7,179,5" concept="3" />
+      <node id="2505864428223727635" at="183,37,186,5" concept="3" />
+      <node id="3658760989813806481" at="205,0,208,0" concept="5" trace="getPaths#()Ljava/util/List;" />
+      <node id="3658760989813524118" at="116,85,120,11" concept="4" />
+      <node id="3201642974933583252" at="172,0,176,0" concept="5" trace="run#()V" />
+      <node id="3658760989813806458" at="195,0,199,0" concept="5" trace="getSize#()I" />
+      <node id="3658760989813806468" at="200,0,204,0" concept="5" trace="getElementAt#(I)Ljetbrains/mps/project/structure/project/ModulePath;" />
+      <node id="3658760989813806517" at="215,0,219,0" concept="5" trace="removePath#(Ljetbrains/mps/project/structure/project/ModulePath;)V" />
+      <node id="3658760989812040340" at="56,0,61,0" concept="0" trace="ProjectPropertiesComponent#(Lcom/intellij/openapi/project/Project;[Ljetbrains/mps/workbench/dialogs/project/properties/project/ProjectPrefsExtraPanel;)V" />
+      <node id="8090411030406355095" at="87,0,92,7" concept="1" />
+      <node id="3459682589052616999" at="101,102,106,15" concept="7" />
+      <node id="3201642974933583229" at="161,31,166,7" concept="7" />
+      <node id="3658760989813806490" at="209,0,214,0" concept="5" trace="addPath#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
+      <node id="2783053129204875476" at="74,0,80,0" concept="11" trace="getGridConstraints#(IZ)Ljava/lang/Object;" />
+      <node id="3658760989813524108" at="115,63,121,9" concept="3" />
+      <node id="3201642974933583245" at="170,23,176,7" concept="1" />
+      <node id="3201642974933583256" at="182,0,188,0" concept="5" trace="reset#()V" />
+      <node id="855177489841457136" at="62,0,69,0" concept="0" trace="ProjectPropertiesComponent#(Lcom/intellij/openapi/project/Project;Ljava/util/List;)V" />
+      <node id="3459682589052141547" at="100,0,108,0" concept="5" trace="value#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
+      <node id="3201642974933583225" at="160,0,168,0" concept="5" trace="isModified#()Z" />
+      <node id="3658760989813524032" at="125,0,134,0" concept="5" trace="run#(Lcom/intellij/ui/AnActionButton;)V" />
+      <node id="3459682589051964361" at="97,46,108,11" concept="6" />
+      <node id="3201642974933583205" at="147,0,159,0" concept="5" trace="init#()V" />
+      <node id="3201642974933583241" at="169,0,181,0" concept="5" trace="apply#()V" />
+      <node id="3658760989813524056" at="96,0,124,0" concept="5" trace="run#(Lcom/intellij/ui/AnActionButton;)V" />
+      <node id="3658760989813524022" at="94,81,134,30" concept="1" />
+      <node id="3658760989813523993" at="81,0,141,0" concept="5" trace="createProjectModulesList#()Ljavax/swing/JComponent;" />
+      <scope id="3658760989813806453" at="192,29,192,29" />
+      <scope id="3658760989812040341" at="58,92,59,112" />
+      <scope id="3201642974933583157" at="70,54,71,76" />
+      <scope id="3658760989812686686" at="75,15,76,280" />
+      <scope id="8090411030406921957" at="89,52,90,36" />
+      <scope id="3459682589052634845" at="103,48,104,64" />
+      <scope id="1560298786499497494" at="111,27,112,17" />
+      <scope id="393464970995683966" at="129,48,130,142" />
+      <scope id="2460510381554796740" at="142,57,143,25" />
+      <scope id="3658760989813324277" at="155,84,156,81" />
+      <scope id="855177489842950227" at="163,62,164,39" />
+      <scope id="3201642974933583294" at="173,25,174,39" />
+      <scope id="2505864428223727625" at="177,76,178,17" />
+      <scope id="2505864428223727638" at="184,76,185,17" />
+      <scope id="3658760989813806461" at="196,26,197,46" />
+      <scope id="3658760989813806473" at="201,43,202,46" />
+      <scope id="3658760989813806485" at="205,40,206,39" />
+      <scope id="3658760989813524123" at="117,51,119,19" />
+      <scope id="3658760989813806451" at="192,0,194,0" />
+      <scope id="3658760989813806520" at="215,45,217,38">
         <var name="i" id="3658760989813806522" />
       </scope>
-      <scope id="3201642974933583153" at="68,0,71,0">
+      <scope id="3201642974933583153" at="70,0,73,0">
         <var name="project" id="3201642974933583155" />
       </scope>
-      <scope id="8090411030406921955" at="87,0,90,0">
+      <scope id="8090411030406921955" at="89,0,92,0">
         <var name="modulePath" id="8090411030406921955" />
       </scope>
-      <scope id="3459682589052634844" at="101,0,104,0">
+      <scope id="3459682589052634844" at="103,0,106,0">
         <var name="it" id="3459682589052634844" />
       </scope>
-      <scope id="2460510381554796737" at="140,0,143,0" />
-      <scope id="3658760989813324272" at="152,79,155,5">
+      <scope id="2460510381554796737" at="142,0,145,0" />
+      <scope id="3658760989813324272" at="154,79,157,5">
         <var name="extraPanel" id="3658760989813324276" />
       </scope>
-      <scope id="855177489842950226" at="161,0,164,0">
+      <scope id="855177489842950226" at="163,0,166,0">
         <var name="extraPanel" id="855177489842950226" />
       </scope>
-      <scope id="2505864428223727622" at="174,7,177,5">
+      <scope id="2505864428223727622" at="176,7,179,5">
         <var name="ep" id="2505864428223727623" />
       </scope>
-      <scope id="2505864428223727635" at="181,37,184,5">
+      <scope id="2505864428223727635" at="183,37,186,5">
         <var name="ep" id="2505864428223727636" />
       </scope>
-      <scope id="3658760989813806481" at="203,0,206,0" />
-      <scope id="3658760989813806493" at="207,41,210,15">
+      <scope id="3658760989813806481" at="205,0,208,0" />
+      <scope id="3658760989813806493" at="209,41,212,15">
         <var name="i" id="3658760989813806502" />
       </scope>
-      <scope id="3658760989812686682" at="72,67,76,241" />
-      <scope id="3658760989813524117" at="114,85,118,11" />
-      <scope id="3201642974933583252" at="170,0,174,0" />
-      <scope id="3201642974933583259" at="180,23,184,5" />
-      <scope id="3658760989813806458" at="193,0,197,0" />
-      <scope id="3658760989813806468" at="198,0,202,0">
+      <scope id="3658760989812686682" at="74,67,78,241" />
+      <scope id="3658760989813524117" at="116,85,120,11" />
+      <scope id="3201642974933583252" at="172,0,176,0" />
+      <scope id="3201642974933583259" at="182,23,186,5" />
+      <scope id="3658760989813806458" at="195,0,199,0" />
+      <scope id="3658760989813806468" at="200,0,204,0">
         <var name="i" id="3658760989813806471" />
       </scope>
-      <scope id="3658760989813806517" at="213,0,217,0">
+      <scope id="3658760989813806517" at="215,0,219,0">
         <var name="path" id="3658760989813806542" />
       </scope>
-      <scope id="3658760989812040340" at="54,0,59,0">
+      <scope id="3658760989812040340" at="56,0,61,0">
         <var name="extraPanels" id="3658760989812187636" />
         <var name="project" id="3658760989812040362" />
       </scope>
-      <scope id="855177489841457140" at="60,105,65,11" />
-      <scope id="3201642974933583228" at="159,31,164,7" />
-      <scope id="3658760989813806490" at="207,0,212,0">
+      <scope id="855177489841457140" at="62,105,67,11" />
+      <scope id="3201642974933583228" at="161,31,166,7" />
+      <scope id="3658760989813806490" at="209,0,214,0">
         <var name="path" id="3658760989813806515" />
       </scope>
-      <scope id="2783053129204875476" at="72,0,78,0">
+      <scope id="2783053129204875476" at="74,0,80,0">
         <var name="fill" id="3658760989812686728" />
         <var name="row" id="3658760989812686726" />
       </scope>
-      <scope id="3459682589052141553" at="98,56,104,15" />
-      <scope id="3658760989813524108" at="113,63,119,9">
+      <scope id="3459682589052141553" at="100,56,106,15" />
+      <scope id="3658760989813524108" at="115,63,121,9">
         <var name="p" id="3658760989813524131" />
       </scope>
-      <scope id="3658760989813524037" at="124,46,130,0">
+      <scope id="3658760989813524037" at="126,46,132,0">
         <var name="selectedIndex" id="4312380589314397750" />
       </scope>
-      <scope id="3201642974933583256" at="180,0,186,0" />
-      <scope id="855177489841457136" at="60,0,67,0">
+      <scope id="3201642974933583256" at="182,0,188,0" />
+      <scope id="855177489841457136" at="62,0,69,0">
         <var name="extraPanels" id="855177489841457161" />
         <var name="project" id="855177489841457148" />
       </scope>
-      <scope id="3459682589052141547" at="98,0,106,0">
+      <scope id="3459682589052141547" at="100,0,108,0">
         <var name="file" id="3459682589052141551" />
       </scope>
-      <scope id="3201642974933583225" at="158,0,166,0" />
-      <scope id="3658760989813524032" at="123,0,132,0">
+      <scope id="3201642974933583225" at="160,0,168,0" />
+      <scope id="3658760989813524032" at="125,0,134,0">
         <var name="button" id="3658760989813524035" />
       </scope>
-      <scope id="3201642974933583208" at="146,22,155,5">
+      <scope id="3201642974933583208" at="148,22,157,5">
         <var name="rowCount" id="3658760989813324223" />
         <var name="rowIndex" id="3658760989813324237" />
       </scope>
-      <scope id="3201642974933583244" at="168,23,177,5" />
-      <scope id="3201642974933583205" at="145,0,157,0" />
-      <scope id="3201642974933583241" at="167,0,179,0" />
-      <scope id="3658760989813524061" at="95,46,120,98">
+      <scope id="3201642974933583244" at="170,23,179,5" />
+      <scope id="3201642974933583205" at="147,0,159,0" />
+      <scope id="3201642974933583241" at="169,0,181,0" />
+      <scope id="3658760989813524061" at="97,46,122,98">
         <var name="descriptor" id="3459682589051964362" />
         <var name="file" id="3459682589052412158" />
         <var name="path" id="3658760989813524063" />
       </scope>
-      <scope id="3658760989813524056" at="94,0,122,0">
+      <scope id="3658760989813524056" at="96,0,124,0">
         <var name="button" id="3658760989813524059" />
       </scope>
-      <scope id="3658760989813523996" at="79,49,137,17">
+      <scope id="3658760989813523996" at="81,49,139,17">
         <var name="decorator" id="3658760989813524018" />
         <var name="panel" id="3658760989813524155" />
       </scope>
-      <scope id="3658760989813523993" at="79,0,139,0" />
-      <unit id="8090411030406921955" at="86,73,90,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$1" />
-      <unit id="3459682589052634844" at="100,81,104,13" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$3$1$1" />
-      <unit id="855177489842950226" at="160,107,164,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$4" />
-      <unit id="3201642974933583251" at="169,50,174,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$5" />
-      <unit id="3459682589052141545" at="96,126,106,9" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$3$1" />
-      <unit id="3658760989813524030" at="122,27,132,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$2" />
-      <unit id="3658760989813524054" at="93,31,122,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$3" />
-      <unit id="3658760989813806450" at="189,0,218,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$PathsListModel" />
-      <unit id="3201642974933583134" at="43,0,219,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent" />
+      <scope id="3658760989813523993" at="81,0,141,0" />
+      <unit id="8090411030406921955" at="88,73,92,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$1" />
+      <unit id="3459682589052634844" at="102,81,106,13" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$3$1$1" />
+      <unit id="855177489842950226" at="162,107,166,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$4" />
+      <unit id="3201642974933583251" at="171,50,176,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$5" />
+      <unit id="3459682589052141545" at="98,126,108,9" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$3$1" />
+      <unit id="3658760989813524030" at="124,27,134,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$2" />
+      <unit id="3658760989813524054" at="95,31,124,5" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$3" />
+      <unit id="3658760989813806450" at="191,0,220,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent$PathsListModel" />
+      <unit id="3201642974933583134" at="44,0,221,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesComponent" />
     </file>
   </root>
   <root nodeRef="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933586123">
     <file name="ProjectPropertiesPrefsPage.java">
-      <node id="3201642974933586128" at="12,0,13,0" concept="2" trace="myProject" />
-      <node id="3201642974933586131" at="13,0,14,0" concept="2" trace="myComponent" />
-      <node id="3201642974933586139" at="14,54,15,24" concept="1" />
-      <node id="8552995245741541781" at="19,34,20,31" concept="7" />
-      <node id="3201642974933586164" at="23,32,24,31" concept="7" />
-      <node id="3201642974933586170" at="27,39,28,60" concept="1" />
-      <node id="3201642974933586180" at="28,60,29,23" concept="7" />
-      <node id="3201642974933586188" at="32,31,33,36" concept="7" />
-      <node id="3201642974933586198" at="36,53,37,24" concept="1" />
-      <node id="3201642974933586209" at="40,23,41,24" concept="1" />
-      <node id="3201642974933586219" at="44,36,45,23" concept="1" />
-      <node id="3201642974933586252" at="48,25,49,40" concept="7" />
-      <node id="3201642974933586260" at="52,47,53,16" concept="7" />
-      <node id="3201642974933586134" at="14,0,17,0" concept="0" trace="ProjectPropertiesPrefsPage#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="3201642974933586160" at="22,0,26,0" concept="5" trace="getHelpTopic#()Ljava/lang/String;" />
-      <node id="3201642974933586184" at="31,0,35,0" concept="5" trace="isModified#()Z" />
-      <node id="3201642974933586194" at="35,0,39,0" concept="5" trace="apply#()V" />
-      <node id="3201642974933586205" at="39,0,43,0" concept="5" trace="reset#()V" />
-      <node id="3201642974933586215" at="43,0,47,0" concept="5" trace="disposeUIResources#()V" />
-      <node id="3201642974933586248" at="47,0,51,0" concept="5" trace="getId#()Ljava/lang/String;" />
-      <node id="3201642974933586254" at="51,0,55,0" concept="5" trace="enableSearch#(Ljava/lang/String;)Ljava/lang/Runnable;" />
-      <node id="3201642974933586145" at="17,0,22,0" concept="5" trace="getDisplayName#()Ljava/lang/String;" />
-      <node id="3201642974933586166" at="26,0,31,0" concept="5" trace="createComponent#()Ljavax/swing/JComponent;" />
-      <scope id="3201642974933586138" at="14,54,15,24" />
-      <scope id="3201642974933586148" at="19,34,20,31" />
-      <scope id="3201642974933586163" at="23,32,24,31" />
-      <scope id="3201642974933586187" at="32,31,33,36" />
-      <scope id="3201642974933586197" at="36,53,37,24" />
-      <scope id="3201642974933586208" at="40,23,41,24" />
-      <scope id="3201642974933586218" at="44,36,45,23" />
-      <scope id="3201642974933586251" at="48,25,49,40" />
-      <scope id="3201642974933586259" at="52,47,53,16" />
-      <scope id="3201642974933586169" at="27,39,29,23" />
-      <scope id="3201642974933586134" at="14,0,17,0">
+      <node id="3201642974933586128" at="14,0,15,0" concept="2" trace="myProject" />
+      <node id="3201642974933586131" at="15,0,16,0" concept="2" trace="myComponent" />
+      <node id="3201642974933586139" at="16,54,17,24" concept="1" />
+      <node id="8552995245741541781" at="21,34,22,31" concept="7" />
+      <node id="3201642974933586164" at="25,32,26,31" concept="7" />
+      <node id="3201642974933586170" at="29,39,30,60" concept="1" />
+      <node id="3201642974933586180" at="30,60,31,23" concept="7" />
+      <node id="3201642974933586188" at="34,31,35,36" concept="7" />
+      <node id="3201642974933586198" at="38,53,39,24" concept="1" />
+      <node id="3201642974933586209" at="42,23,43,24" concept="1" />
+      <node id="3201642974933586219" at="46,36,47,23" concept="1" />
+      <node id="3201642974933586252" at="50,25,51,40" concept="7" />
+      <node id="3201642974933586260" at="54,47,55,16" concept="7" />
+      <node id="3201642974933586134" at="16,0,19,0" concept="0" trace="ProjectPropertiesPrefsPage#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="3201642974933586160" at="24,0,28,0" concept="5" trace="getHelpTopic#()Ljava/lang/String;" />
+      <node id="3201642974933586184" at="33,0,37,0" concept="5" trace="isModified#()Z" />
+      <node id="3201642974933586194" at="37,0,41,0" concept="5" trace="apply#()V" />
+      <node id="3201642974933586205" at="41,0,45,0" concept="5" trace="reset#()V" />
+      <node id="3201642974933586215" at="45,0,49,0" concept="5" trace="disposeUIResources#()V" />
+      <node id="3201642974933586248" at="49,0,53,0" concept="5" trace="getId#()Ljava/lang/String;" />
+      <node id="3201642974933586254" at="53,0,57,0" concept="5" trace="enableSearch#(Ljava/lang/String;)Ljava/lang/Runnable;" />
+      <node id="3201642974933586145" at="19,0,24,0" concept="5" trace="getDisplayName#()Ljava/lang/String;" />
+      <node id="3201642974933586166" at="28,0,33,0" concept="5" trace="createComponent#()Ljavax/swing/JComponent;" />
+      <scope id="3201642974933586138" at="16,54,17,24" />
+      <scope id="3201642974933586148" at="21,34,22,31" />
+      <scope id="3201642974933586163" at="25,32,26,31" />
+      <scope id="3201642974933586187" at="34,31,35,36" />
+      <scope id="3201642974933586197" at="38,53,39,24" />
+      <scope id="3201642974933586208" at="42,23,43,24" />
+      <scope id="3201642974933586218" at="46,36,47,23" />
+      <scope id="3201642974933586251" at="50,25,51,40" />
+      <scope id="3201642974933586259" at="54,47,55,16" />
+      <scope id="3201642974933586169" at="29,39,31,23" />
+      <scope id="3201642974933586134" at="16,0,19,0">
         <var name="project" id="3201642974933586136" />
       </scope>
-      <scope id="3201642974933586160" at="22,0,26,0" />
-      <scope id="3201642974933586184" at="31,0,35,0" />
-      <scope id="3201642974933586194" at="35,0,39,0" />
-      <scope id="3201642974933586205" at="39,0,43,0" />
-      <scope id="3201642974933586215" at="43,0,47,0" />
-      <scope id="3201642974933586248" at="47,0,51,0" />
-      <scope id="3201642974933586254" at="51,0,55,0">
+      <scope id="3201642974933586160" at="24,0,28,0" />
+      <scope id="3201642974933586184" at="33,0,37,0" />
+      <scope id="3201642974933586194" at="37,0,41,0" />
+      <scope id="3201642974933586205" at="41,0,45,0" />
+      <scope id="3201642974933586215" at="45,0,49,0" />
+      <scope id="3201642974933586248" at="49,0,53,0" />
+      <scope id="3201642974933586254" at="53,0,57,0">
         <var name="option" id="3201642974933586257" />
       </scope>
-      <scope id="3201642974933586145" at="17,0,22,0" />
-      <scope id="3201642974933586166" at="26,0,31,0" />
-      <unit id="3201642974933586123" at="11,0,56,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesPrefsPage" />
+      <scope id="3201642974933586145" at="19,0,24,0" />
+      <scope id="3201642974933586166" at="28,0,33,0" />
+      <unit id="3201642974933586123" at="12,0,58,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesPrefsPage" />
     </file>
   </root>
   <root nodeRef="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933587319">
     <file name="ProjectPropertiesDialog.java">
-      <node id="3658760989817083417" at="11,0,12,0" concept="2" trace="myPropertiesComponent" />
-      <node id="5833516341015530823" at="13,57,14,19" concept="12" />
-      <node id="3658760989817117197" at="14,19,15,109" concept="1" />
-      <node id="5833516341015538919" at="15,109,16,32" concept="1" />
-      <node id="5833516341016255252" at="16,32,17,29" concept="1" />
-      <node id="855177489841284941" at="17,29,18,29" concept="1" />
-      <node id="3658760989817408357" at="18,29,19,0" concept="9" />
-      <node id="3035742212966606188" at="19,0,20,11" concept="1" />
-      <node id="855177489841288951" at="24,41,25,33" concept="7" />
-      <node id="855177489841292014" at="29,52,30,64" concept="7" />
-      <node id="4544941100109305525" at="34,45,35,46" concept="7" />
-      <node id="3658760989817319202" at="39,31,40,34" concept="1" />
-      <node id="5833516341016250967" at="40,34,41,23" concept="1" />
-      <node id="5833516341015550145" at="23,0,27,0" concept="5" trace="createCenterPanel#()Ljavax/swing/JComponent;" />
-      <node id="855177489841290652" at="28,0,32,0" concept="5" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
-      <node id="4544941100109296665" at="33,0,37,0" concept="5" trace="getDimensionServiceKey#()Ljava/lang/String;" />
-      <node id="5833516341016250960" at="38,0,43,0" concept="5" trace="doOKAction#()V" />
-      <node id="3201642974933587366" at="13,0,22,0" concept="0" trace="ProjectPropertiesDialog#(Lcom/intellij/openapi/project/Project;)V" />
-      <scope id="5833516341015550150" at="24,41,25,33" />
-      <scope id="855177489841290657" at="29,52,30,64" />
-      <scope id="4544941100109296671" at="34,45,35,46" />
-      <scope id="5833516341016250964" at="39,31,41,23" />
-      <scope id="5833516341015550145" at="23,0,27,0" />
-      <scope id="855177489841290652" at="28,0,32,0" />
-      <scope id="4544941100109296665" at="33,0,37,0" />
-      <scope id="5833516341016250960" at="38,0,43,0" />
-      <scope id="3201642974933587372" at="13,57,20,11" />
-      <scope id="3201642974933587366" at="13,0,22,0">
+      <node id="3658760989817083417" at="13,0,14,0" concept="2" trace="myPropertiesComponent" />
+      <node id="5833516341015530823" at="15,57,16,19" concept="12" />
+      <node id="3658760989817117197" at="16,19,17,109" concept="1" />
+      <node id="5833516341015538919" at="17,109,18,32" concept="1" />
+      <node id="5833516341016255252" at="18,32,19,29" concept="1" />
+      <node id="855177489841284941" at="19,29,20,29" concept="1" />
+      <node id="3658760989817408357" at="20,29,21,0" concept="9" />
+      <node id="3035742212966606188" at="21,0,22,11" concept="1" />
+      <node id="855177489841288951" at="26,41,27,33" concept="7" />
+      <node id="855177489841292014" at="31,52,32,64" concept="7" />
+      <node id="4544941100109305525" at="36,45,37,46" concept="7" />
+      <node id="3658760989817319202" at="41,31,42,34" concept="1" />
+      <node id="5833516341016250967" at="42,34,43,23" concept="1" />
+      <node id="5833516341015550145" at="25,0,29,0" concept="5" trace="createCenterPanel#()Ljavax/swing/JComponent;" />
+      <node id="855177489841290652" at="30,0,34,0" concept="5" trace="getPreferredFocusedComponent#()Ljavax/swing/JComponent;" />
+      <node id="4544941100109296665" at="35,0,39,0" concept="5" trace="getDimensionServiceKey#()Ljava/lang/String;" />
+      <node id="5833516341016250960" at="40,0,45,0" concept="5" trace="doOKAction#()V" />
+      <node id="3201642974933587366" at="15,0,24,0" concept="0" trace="ProjectPropertiesDialog#(Lcom/intellij/openapi/project/Project;)V" />
+      <scope id="5833516341015550150" at="26,41,27,33" />
+      <scope id="855177489841290657" at="31,52,32,64" />
+      <scope id="4544941100109296671" at="36,45,37,46" />
+      <scope id="5833516341016250964" at="41,31,43,23" />
+      <scope id="5833516341015550145" at="25,0,29,0" />
+      <scope id="855177489841290652" at="30,0,34,0" />
+      <scope id="4544941100109296665" at="35,0,39,0" />
+      <scope id="5833516341016250960" at="40,0,45,0" />
+      <scope id="3201642974933587372" at="15,57,22,11" />
+      <scope id="3201642974933587366" at="15,0,24,0">
         <var name="project" id="3201642974933587368" />
       </scope>
-      <unit id="3201642974933587319" at="10,0,44,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesDialog" />
+      <unit id="3201642974933587319" at="11,0,46,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPropertiesDialog" />
     </file>
   </root>
   <root nodeRef="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/7767836446863523822">
     <file name="ProjectPrefsExtraPanel.java">
-      <node id="7767836446863523839" at="9,0,10,0" concept="10" trace="EP_NAME" />
-      <node id="7767836446863523823" at="10,0,11,0" concept="5" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="7767836446863523827" at="11,0,12,0" concept="5" trace="isModified#()Z" />
-      <node id="7767836446863523831" at="12,0,13,0" concept="5" trace="apply#()V" />
-      <node id="7767836446863523835" at="13,0,14,0" concept="5" trace="reset#()V" />
-      <scope id="7767836446863523823" at="10,0,11,0" />
-      <scope id="7767836446863523827" at="11,0,12,0" />
-      <scope id="7767836446863523831" at="12,0,13,0" />
-      <scope id="7767836446863523835" at="13,0,14,0" />
-      <unit id="7767836446863523822" at="8,0,15,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsExtraPanel" />
+      <node id="7767836446863523839" at="11,0,12,0" concept="10" trace="EP_NAME" />
+      <node id="7767836446863523823" at="12,0,13,0" concept="5" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="7767836446863523827" at="13,0,14,0" concept="5" trace="isModified#()Z" />
+      <node id="7767836446863523831" at="14,0,15,0" concept="5" trace="apply#()V" />
+      <node id="7767836446863523835" at="15,0,16,0" concept="5" trace="reset#()V" />
+      <scope id="7767836446863523823" at="12,0,13,0" />
+      <scope id="7767836446863523827" at="13,0,14,0" />
+      <scope id="7767836446863523831" at="14,0,15,0" />
+      <scope id="7767836446863523835" at="15,0,16,0" />
+      <unit id="7767836446863523822" at="9,0,17,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsExtraPanel" />
     </file>
   </root>
 </debug-info>

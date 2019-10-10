@@ -2,11 +2,13 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.refactoring.runtime.RefactoringAspect">
     <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.refactoring.framework.IRefactoring" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
   </dependency>
   <dependency className="jetbrains.mps.refactoring.runtime.RefactoringAspectBase">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="jetbrains.mps.refactoring.runtime.RefactoringAspect" />
   </dependency>
 </dependenciesRoot>

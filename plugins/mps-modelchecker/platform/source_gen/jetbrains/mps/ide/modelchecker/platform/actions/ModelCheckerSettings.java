@@ -4,6 +4,7 @@ package jetbrains.mps.ide.modelchecker.platform.actions;
 
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NonNls;
@@ -21,6 +22,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 
 @State(name = "ModelCheckerSettings", storages = @Storage(value = "modelCheckerSettings.xml")
 )
+@GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793464912", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerSettings implements PersistentStateComponent<ModelCheckerSettings.MyState>, ApplicationComponent {
   private MyState myState = new MyState();
 

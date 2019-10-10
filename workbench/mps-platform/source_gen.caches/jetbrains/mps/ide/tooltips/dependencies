@@ -16,6 +16,7 @@
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="javax.swing.JLabel" />
     <classNode dependClassName="javax.swing.SwingUtilities" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.ToolTip" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.ToolTipData" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.TooltipComponent" />
@@ -47,6 +48,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="javax.swing.JScrollPane" />
     <classNode dependClassName="javax.swing.border.LineBorder" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.ToolTipData" />
     <classNode dependClassName="jetbrains.mps.util.WindowsUtil" />
   </dependency>
@@ -56,11 +58,13 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="javax.swing.JTextArea" />
     <classNode dependClassName="javax.swing.border.EmptyBorder" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.tooltips.ToolTip" />
   </dependency>
   <dependency className="jetbrains.mps.ide.tooltips.TooltipComponent">
     <classNode dependClassName="java.awt.event.MouseEvent" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
 </dependenciesRoot>
 

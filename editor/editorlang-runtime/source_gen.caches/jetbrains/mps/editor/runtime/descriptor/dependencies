@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
@@ -12,6 +13,7 @@
     <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment" />
   </dependency>
   <dependency className="jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCellFactory" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.update.UpdateSession" />

@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.baseLanguage.closures.test.ClosureDataFlow_Test", "jetbrains.mps.baseLanguage.closures.test.ClosureLiteralDataFlow_Test"}, tests = {"test_ClosureDataFlow,test_ErrorMessagesCheck2501421320959199348", "test_ClosureLiteralDataFlow,test_ErrorMessagesCheck2501421320959199366"})
 @ModuleSymbolicSuite.ModuleReference("fa54094d-fc7a-4393-885f-13866cecf3f3(jetbrains.mps.baseLanguage.closures.unittest)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/2712670354707832478", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_baseLanguage_closures_unittest {
   public TestModule_jetbrains_mps_baseLanguage_closures_unittest() {
   }

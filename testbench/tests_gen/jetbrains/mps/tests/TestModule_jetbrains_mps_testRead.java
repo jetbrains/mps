@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.testRead.SNodeReadTest.SNodeReadAccess_Test"}, tests = {"test_checkContract,test_addChild,test_getChildren,test_getProperty,test_getReference,test_getReferenceTarget,test_getUserObject,test_hasProperty,test_insertChildBefore,test_putUserObject,test_removeChild,test_setProperty,test_setReference,test_setReferenceTarget,test_parameterLessMethods"})
 @ModuleSymbolicSuite.ModuleReference("3d09e340-55d4-4ddc-8195-a92c0c5cf603(jetbrains.mps.testRead)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/4195712261513837590", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_testRead {
   public TestModule_jetbrains_mps_testRead() {
   }

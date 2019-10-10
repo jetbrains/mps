@@ -12,153 +12,153 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <root nodeRef="r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)/2891782949125146377">
     <file name="Requestor.java">
-      <unit id="2891782949125146377" at="6,0,8,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.Requestor" />
+      <unit id="2891782949125146377" at="7,0,10,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.Requestor" />
     </file>
   </root>
   <root nodeRef="r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)/2891782949125170507">
     <file name="ClassPrepareRequestor.java">
-      <node id="2891782949125170510" at="9,0,10,0" concept="4" trace="processClassPrepare#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;Lcom/sun/jdi/ReferenceType;)V" />
-      <scope id="2891782949125170510" at="9,0,10,0">
+      <node id="2891782949125170510" at="11,0,12,0" concept="4" trace="processClassPrepare#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;Lcom/sun/jdi/ReferenceType;)V" />
+      <scope id="2891782949125170510" at="11,0,12,0">
         <var name="classType" id="2891782949125170515" />
         <var name="debugProcess" id="2891782949125170513" />
       </scope>
-      <unit id="2891782949125170507" at="8,0,11,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.ClassPrepareRequestor" />
+      <unit id="2891782949125170507" at="9,0,13,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.ClassPrepareRequestor" />
     </file>
   </root>
   <root nodeRef="r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)/2891782949125205202">
     <file name="LocatableEventRequestor.java">
-      <node id="2891782949125205205" at="9,0,10,0" concept="4" trace="isRequestHitByEvent#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventContext;Lcom/sun/jdi/event/LocatableEvent;)Z" />
-      <node id="2891782949125205213" at="10,0,11,0" concept="4" trace="getSuspendPolicy#()I" />
-      <scope id="2891782949125205205" at="9,0,10,0">
+      <node id="2891782949125205205" at="11,0,12,0" concept="4" trace="isRequestHitByEvent#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventContext;Lcom/sun/jdi/event/LocatableEvent;)Z" />
+      <node id="2891782949125205213" at="12,0,13,0" concept="4" trace="getSuspendPolicy#()I" />
+      <scope id="2891782949125205205" at="11,0,12,0">
         <var name="context" id="6676843613964926332" />
         <var name="event" id="2891782949125205210" />
       </scope>
-      <scope id="2891782949125205213" at="10,0,11,0" />
-      <unit id="2891782949125205202" at="8,0,12,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.LocatableEventRequestor" />
+      <scope id="2891782949125205213" at="12,0,13,0" />
+      <unit id="2891782949125205202" at="9,0,14,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.LocatableEventRequestor" />
     </file>
   </root>
   <root nodeRef="r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)/6460341978864598530">
     <file name="IRequestManager.java">
-      <unit id="6460341978864598530" at="6,0,8,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.IRequestManager" />
+      <unit id="6460341978864598530" at="7,0,10,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.IRequestManager" />
     </file>
   </root>
   <root nodeRef="r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)/6460341978864599228">
     <file name="StepRequestor.java">
-      <node id="6460341978864599231" at="18,0,19,0" concept="8" trace="STOP" />
-      <node id="6460341978864599235" at="19,0,20,0" concept="8" trace="LOG" />
-      <node id="6460341978864599240" at="20,0,21,0" concept="2" trace="myStepType" />
-      <node id="6460341978864599243" at="21,0,22,0" concept="2" trace="myDeclaringType" />
-      <node id="6460341978864599246" at="22,0,23,0" concept="2" trace="myLineNumber" />
-      <node id="6460341978864599249" at="23,0,24,0" concept="2" trace="myFrameCount" />
-      <node id="6460341978864599252" at="24,0,25,0" concept="2" trace="mySourceName" />
-      <node id="6460341978864599255" at="25,0,26,0" concept="2" trace="myFramesSelector" />
-      <node id="6460341978864599268" at="26,104,27,26" concept="1" />
-      <node id="6460341978864599272" at="27,26,28,38" concept="1" />
-      <node id="6460341978864599307" at="30,27,31,43" concept="1" />
-      <node id="6460341978864599313" at="31,43,32,43" concept="5" />
-      <node id="6460341978864599325" at="33,28,34,68" concept="1" />
-      <node id="6460341978864599335" at="34,68,35,55" concept="1" />
-      <node id="6460341978864599343" at="35,55,36,55" concept="1" />
-      <node id="6460341978864599279" at="39,50,40,25" concept="1" />
-      <node id="6460341978864599288" at="41,44,42,25" concept="1" />
-      <node id="6460341978864599146" at="45,40,46,44" concept="5" />
-      <node id="6460341978864599640" at="47,25,48,31" concept="6" />
-      <node id="6460341978864599697" at="51,37,52,33" concept="6" />
-      <node id="6460341978864599547" at="53,7,54,41" concept="5" />
-      <node id="6460341978864599771" at="54,41,55,37" concept="6" />
-      <node id="6460341978864599767" at="56,50,57,31" concept="6" />
-      <node id="6460341978864599629" at="61,85,62,24" concept="6" />
-      <node id="6460341978864599638" at="63,5,64,16" concept="6" />
-      <node id="6460341978864599381" at="66,84,67,124" concept="7" />
-      <node id="6460341978864599403" at="68,85,69,26" concept="5" />
-      <node id="6460341978864599408" at="69,26,70,43" concept="5" />
-      <node id="6460341978864599414" at="70,43,71,29" concept="5" />
-      <node id="6460341978864599438" at="72,11,73,41" concept="1" />
-      <node id="6460341978864599444" at="73,41,74,43" concept="1" />
-      <node id="6460341978864599421" at="75,52,76,27" concept="1" />
-      <node id="6460341978864599430" at="77,46,78,27" concept="1" />
-      <node id="6460341978864599450" at="79,7,80,61" concept="7" />
-      <node id="6460341978864599452" at="80,61,81,85" concept="7" />
-      <node id="6460341978864599474" at="82,148,83,26" concept="6" />
-      <node id="6460341978864599476" at="84,7,85,83" concept="5" />
-      <node id="6460341978864599487" at="85,83,86,59" concept="7" />
-      <node id="6460341978864599508" at="87,183,88,26" concept="6" />
-      <node id="6460341978864599510" at="90,5,91,16" concept="6" />
-      <node id="6460341978864599653" at="46,44,49,5" concept="3" />
-      <node id="6460341978864599669" at="50,9,53,7" concept="3" />
-      <node id="6460341978864599627" at="60,33,63,5" concept="3" />
-      <node id="6460341978864599454" at="81,85,84,7" concept="3" />
-      <node id="6460341978864599489" at="86,59,89,7" concept="3" />
-      <node id="6460341978864599320" at="32,43,37,9" concept="3" />
-      <node id="6460341978864599623" at="60,0,66,0" concept="4" trace="defaultStepType#()I" />
-      <node id="6460341978864599418" at="71,29,79,7" concept="9" />
-      <node id="6460341978864599302" at="29,9,38,7" concept="3" />
-      <node id="6460341978864599759" at="49,5,58,5" concept="9" />
-      <node id="6460341978864599276" at="28,38,43,5" concept="9" />
-      <node id="6460341978864599518" at="45,0,60,0" concept="4" trace="nextStep#(Lcom/sun/jdi/event/StepEvent;)I" />
-      <node id="6460341978864599258" at="26,0,45,0" concept="0" trace="StepRequestor#(Lcom/sun/jdi/ThreadReference;ILjetbrains/mps/debug/api/IDebuggableFramesSelector;)V" />
-      <node id="6460341978864599383" at="67,124,90,5" concept="3" />
-      <node id="6460341978864599373" at="66,0,93,0" concept="4" trace="nextStep#(Lcom/sun/jdi/ThreadReference;Lcom/sun/jdi/StackFrame;)I" />
-      <scope id="6460341978864599277" at="39,0,40,25">
+      <node id="6460341978864599231" at="20,0,21,0" concept="8" trace="STOP" />
+      <node id="6460341978864599235" at="21,0,22,0" concept="8" trace="LOG" />
+      <node id="6460341978864599240" at="22,0,23,0" concept="2" trace="myStepType" />
+      <node id="6460341978864599243" at="23,0,24,0" concept="2" trace="myDeclaringType" />
+      <node id="6460341978864599246" at="24,0,25,0" concept="2" trace="myLineNumber" />
+      <node id="6460341978864599249" at="25,0,26,0" concept="2" trace="myFrameCount" />
+      <node id="6460341978864599252" at="26,0,27,0" concept="2" trace="mySourceName" />
+      <node id="6460341978864599255" at="27,0,28,0" concept="2" trace="myFramesSelector" />
+      <node id="6460341978864599268" at="28,104,29,26" concept="1" />
+      <node id="6460341978864599272" at="29,26,30,38" concept="1" />
+      <node id="6460341978864599307" at="32,27,33,43" concept="1" />
+      <node id="6460341978864599313" at="33,43,34,43" concept="5" />
+      <node id="6460341978864599325" at="35,28,36,68" concept="1" />
+      <node id="6460341978864599335" at="36,68,37,55" concept="1" />
+      <node id="6460341978864599343" at="37,55,38,55" concept="1" />
+      <node id="6460341978864599279" at="41,50,42,25" concept="1" />
+      <node id="6460341978864599288" at="43,44,44,25" concept="1" />
+      <node id="6460341978864599146" at="47,40,48,44" concept="5" />
+      <node id="6460341978864599640" at="49,25,50,31" concept="6" />
+      <node id="6460341978864599697" at="53,37,54,33" concept="6" />
+      <node id="6460341978864599547" at="55,7,56,41" concept="5" />
+      <node id="6460341978864599771" at="56,41,57,37" concept="6" />
+      <node id="6460341978864599767" at="58,50,59,31" concept="6" />
+      <node id="6460341978864599629" at="63,85,64,24" concept="6" />
+      <node id="6460341978864599638" at="65,5,66,16" concept="6" />
+      <node id="6460341978864599381" at="68,84,69,124" concept="7" />
+      <node id="6460341978864599403" at="70,85,71,26" concept="5" />
+      <node id="6460341978864599408" at="71,26,72,43" concept="5" />
+      <node id="6460341978864599414" at="72,43,73,29" concept="5" />
+      <node id="6460341978864599438" at="74,11,75,41" concept="1" />
+      <node id="6460341978864599444" at="75,41,76,43" concept="1" />
+      <node id="6460341978864599421" at="77,52,78,27" concept="1" />
+      <node id="6460341978864599430" at="79,46,80,27" concept="1" />
+      <node id="6460341978864599450" at="81,7,82,61" concept="7" />
+      <node id="6460341978864599452" at="82,61,83,85" concept="7" />
+      <node id="6460341978864599474" at="84,148,85,26" concept="6" />
+      <node id="6460341978864599476" at="86,7,87,83" concept="5" />
+      <node id="6460341978864599487" at="87,83,88,59" concept="7" />
+      <node id="6460341978864599508" at="89,183,90,26" concept="6" />
+      <node id="6460341978864599510" at="92,5,93,16" concept="6" />
+      <node id="6460341978864599653" at="48,44,51,5" concept="3" />
+      <node id="6460341978864599669" at="52,9,55,7" concept="3" />
+      <node id="6460341978864599627" at="62,33,65,5" concept="3" />
+      <node id="6460341978864599454" at="83,85,86,7" concept="3" />
+      <node id="6460341978864599489" at="88,59,91,7" concept="3" />
+      <node id="6460341978864599320" at="34,43,39,9" concept="3" />
+      <node id="6460341978864599623" at="62,0,68,0" concept="4" trace="defaultStepType#()I" />
+      <node id="6460341978864599418" at="73,29,81,7" concept="9" />
+      <node id="6460341978864599302" at="31,9,40,7" concept="3" />
+      <node id="6460341978864599759" at="51,5,60,5" concept="9" />
+      <node id="6460341978864599276" at="30,38,45,5" concept="9" />
+      <node id="6460341978864599518" at="47,0,62,0" concept="4" trace="nextStep#(Lcom/sun/jdi/event/StepEvent;)I" />
+      <node id="6460341978864599258" at="28,0,47,0" concept="0" trace="StepRequestor#(Lcom/sun/jdi/ThreadReference;ILjetbrains/mps/debug/api/IDebuggableFramesSelector;)V" />
+      <node id="6460341978864599383" at="69,124,92,5" concept="3" />
+      <node id="6460341978864599373" at="68,0,95,0" concept="4" trace="nextStep#(Lcom/sun/jdi/ThreadReference;Lcom/sun/jdi/StackFrame;)I" />
+      <scope id="6460341978864599277" at="41,0,42,25">
         <var name="e" id="6460341978864599284" />
       </scope>
-      <scope id="6460341978864599278" at="39,50,40,25" />
-      <scope id="6460341978864599286" at="41,0,42,25">
+      <scope id="6460341978864599278" at="41,50,42,25" />
+      <scope id="6460341978864599286" at="43,0,44,25">
         <var name="e" id="6460341978864599293" />
       </scope>
-      <scope id="6460341978864599287" at="41,44,42,25" />
-      <scope id="6460341978864599654" at="47,25,48,31" />
-      <scope id="6460341978864599670" at="51,37,52,33" />
-      <scope id="6460341978864599762" at="56,0,57,31">
+      <scope id="6460341978864599287" at="43,44,44,25" />
+      <scope id="6460341978864599654" at="49,25,50,31" />
+      <scope id="6460341978864599670" at="53,37,54,33" />
+      <scope id="6460341978864599762" at="58,0,59,31">
         <var name="e" id="6460341978864599763" />
       </scope>
-      <scope id="6460341978864599765" at="56,50,57,31" />
-      <scope id="6460341978864599628" at="61,85,62,24" />
-      <scope id="6460341978864599419" at="75,0,76,27">
+      <scope id="6460341978864599765" at="58,50,59,31" />
+      <scope id="6460341978864599628" at="63,85,64,24" />
+      <scope id="6460341978864599419" at="77,0,78,27">
         <var name="e" id="6460341978864599426" />
       </scope>
-      <scope id="6460341978864599420" at="75,52,76,27" />
-      <scope id="6460341978864599428" at="77,0,78,27">
+      <scope id="6460341978864599420" at="77,52,78,27" />
+      <scope id="6460341978864599428" at="79,0,80,27">
         <var name="e" id="6460341978864599435" />
       </scope>
-      <scope id="6460341978864599429" at="77,46,78,27" />
-      <scope id="6460341978864599473" at="82,148,83,26" />
-      <scope id="6460341978864599507" at="87,183,88,26" />
-      <scope id="6460341978864599437" at="72,11,74,43" />
-      <scope id="6460341978864599324" at="33,28,36,55" />
-      <scope id="6460341978864599626" at="60,33,64,16" />
-      <scope id="6460341978864599760" at="50,9,55,37">
+      <scope id="6460341978864599429" at="79,46,80,27" />
+      <scope id="6460341978864599473" at="84,148,85,26" />
+      <scope id="6460341978864599507" at="89,183,90,26" />
+      <scope id="6460341978864599437" at="74,11,76,43" />
+      <scope id="6460341978864599324" at="35,28,38,55" />
+      <scope id="6460341978864599626" at="62,33,66,16" />
+      <scope id="6460341978864599760" at="52,9,57,37">
         <var name="frame" id="6460341978864599548" />
       </scope>
-      <scope id="6460341978864599623" at="60,0,66,0" />
-      <scope id="6460341978864599306" at="30,27,37,9">
+      <scope id="6460341978864599623" at="62,0,68,0" />
+      <scope id="6460341978864599306" at="32,27,39,9">
         <var name="frame" id="6460341978864599314" />
       </scope>
-      <scope id="6460341978864599295" at="29,9,38,7" />
-      <scope id="6460341978864599521" at="45,40,58,5">
+      <scope id="6460341978864599295" at="31,9,40,7" />
+      <scope id="6460341978864599521" at="47,40,60,5">
         <var name="thread" id="6460341978864599147" />
       </scope>
-      <scope id="6460341978864599518" at="45,0,60,0">
+      <scope id="6460341978864599518" at="47,0,62,0">
         <var name="event" id="6460341978864599538" />
       </scope>
-      <scope id="6460341978864599267" at="26,104,43,5" />
-      <scope id="6460341978864599258" at="26,0,45,0">
+      <scope id="6460341978864599267" at="28,104,45,5" />
+      <scope id="6460341978864599258" at="28,0,47,0">
         <var name="framesSelector" id="6460341978864599265" />
         <var name="stepType" id="6460341978864599263" />
         <var name="thread" id="6460341978864599261" />
       </scope>
-      <scope id="6460341978864599391" at="68,85,89,7">
+      <scope id="6460341978864599391" at="70,85,91,7">
         <var name="filesEqual" id="6460341978864599477" />
         <var name="frameCount" id="6460341978864599404" />
         <var name="location" id="6460341978864599409" />
         <var name="sourceName" id="6460341978864599415" />
       </scope>
-      <scope id="6460341978864599380" at="66,84,91,16" />
-      <scope id="6460341978864599373" at="66,0,93,0">
+      <scope id="6460341978864599380" at="68,84,93,16" />
+      <scope id="6460341978864599373" at="68,0,95,0">
         <var name="frame" id="6460341978864599378" />
         <var name="thread" id="6460341978864599376" />
       </scope>
-      <unit id="6460341978864599228" at="17,0,94,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.StepRequestor" />
+      <unit id="6460341978864599228" at="18,0,96,0" name="jetbrains.mps.debugger.java.runtime.engine.requests.StepRequestor" />
     </file>
   </root>
 </debug-info>

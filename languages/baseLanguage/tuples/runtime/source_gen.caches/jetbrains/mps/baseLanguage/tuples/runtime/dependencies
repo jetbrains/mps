@@ -9,8 +9,11 @@
     <classNode dependClassName="java.lang.SuppressWarnings" />
     <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
+  <dependency className="jetbrains.mps.baseLanguage.tuples.runtime.Tuples">
+    <classNode dependClassName="javax.annotation.processing.Generated" />
+  </dependency>
 </dependenciesRoot>
 

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.lang.test.util.RunStateEnum" />
+  <dependency className="jetbrains.mps.lang.test.util.RunStateEnum">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.test.util.TestInProcessRunState">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.concurrent.atomic.AtomicReference" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.lang.test.util.RunStateEnum" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />

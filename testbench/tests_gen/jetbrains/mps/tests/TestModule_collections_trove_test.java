@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.internal.collections.trove.test.PrimSet_Test", "jetbrains.mps.internal.collections.trove.test.PrimMap_Test"}, tests = {"test_byteSet,test_doubleSet,test_floatSet,test_intSet,test_longSet,test_shortSet,test_dummy", "test_byteByte,test_byteObject,test_doubleDouble,test_floatFloat,test_intInt,test_longLong,test_shortShort,test_dummy"})
 @ModuleSymbolicSuite.ModuleReference("fb186431-2788-490b-9e84-c2b84ef0ca77(collections_trove.test)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/2712670354707832508", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_collections_trove_test {
   public TestModule_collections_trove_test() {
   }

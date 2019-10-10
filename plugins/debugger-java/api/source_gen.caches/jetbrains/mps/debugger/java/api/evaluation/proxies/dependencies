@@ -2,11 +2,13 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.debugger.java.api.evaluation.proxies.IArrayValueProxy">
     <classNode dependClassName="com.sun.jdi.Value" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.EvaluationException" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.java.api.evaluation.proxies.INullValueProxy">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IArrayValueProxy" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IObjectValueProxy" />
   </dependency>
@@ -14,6 +16,7 @@
     <classNode dependClassName="com.sun.jdi.ThreadReference" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.EvaluationException" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.InvalidEvaluatedExpressionException" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -23,12 +26,14 @@
     <classNode dependClassName="com.sun.jdi.Value" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.java.api.evaluation.proxies.IterableArrayProxy">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.UnsupportedOperationException" />
     <classNode dependClassName="java.util.Iterator" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IArrayValueProxy" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy" />
     <classNode extendsClassName="java.lang.Iterable" />
@@ -38,6 +43,7 @@
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Iterator" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.EvaluationException" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.EvaluationRuntimeException" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IObjectValueProxy" />
@@ -50,6 +56,7 @@
     <classNode dependClassName="com.sun.jdi.VirtualMachine" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -58,11 +65,13 @@
     <classNode dependClassName="com.sun.jdi.PrimitiveValue" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.INullValueProxy" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.ValueProxy" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.java.api.evaluation.proxies.ProxyEqualsUtil">
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.INullValueProxy" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy" />
   </dependency>
@@ -70,6 +79,7 @@
     <classNode dependClassName="com.sun.jdi.Value" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.MirrorUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -79,6 +89,7 @@
     <classNode dependClassName="com.sun.jdi.Value" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy" />
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.evaluation.proxies.ValueProxy" />

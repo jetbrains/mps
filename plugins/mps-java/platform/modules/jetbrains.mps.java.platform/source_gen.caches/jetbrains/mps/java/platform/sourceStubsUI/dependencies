@@ -11,6 +11,7 @@
     <classNode dependClassName="javax.swing.AbstractAction" />
     <classNode dependClassName="javax.swing.JButton" />
     <classNode dependClassName="javax.swing.JComponent" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
@@ -19,6 +20,7 @@
   </dependency>
   <dependency className="jetbrains.mps.java.platform.sourceStubsUI.JavaSourceStubModelRootSettingsProvider">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.persistence.ModelRootSettingsEditor" />
     <classNode dependClassName="jetbrains.mps.java.platform.sourceStubsUI.JavaSourceStubModelRootSettingsEditor" />
     <classNode extendsClassName="jetbrains.mps.ide.persistence.ModelRootSettingsEditorProvider" />

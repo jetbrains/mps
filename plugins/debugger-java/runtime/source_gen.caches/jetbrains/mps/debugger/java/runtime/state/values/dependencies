@@ -8,6 +8,7 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.debug.api.programState.IWatchable" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.state.watchables.JavaWatchpointValueWatchable" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.ui.Icons" />

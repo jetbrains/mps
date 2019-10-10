@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.lang.extension.tests.testExtension.Extension_Test"}, tests = {"test_testObject,test_testLazyObject,test_extensionPointExpression"})
 @ModuleSymbolicSuite.ModuleReference("bdcad511-2c95-4b17-90fb-99b248f018cc(jetbrains.mps.lang.extension.tests)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/2622946712629076727", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_lang_extension_tests {
   public TestModule_jetbrains_mps_lang_extension_tests() {
   }

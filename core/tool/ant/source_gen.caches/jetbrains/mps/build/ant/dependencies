@@ -2,10 +2,12 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.build.ant.AllModulesDataType">
     <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.Arg">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="org.apache.tools.ant.ProjectComponent" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.CustomMPSLoadTask">
@@ -15,6 +17,7 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.build.ant.MpsLoadTask" />
   </dependency>
@@ -24,6 +27,7 @@
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.apache.tools.ant.types.FileSet" />
     <classNode dependClassName="org.apache.tools.ant.types.resources.FileResource" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
@@ -35,6 +39,7 @@
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.build.ant.Arg" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
@@ -51,6 +56,7 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.apache.tools.ant.BuildException" />
     <classNode dependClassName="org.apache.tools.ant.Project" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -58,6 +64,7 @@
   <dependency className="jetbrains.mps.build.ant.Macro">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.MigrationTask">
@@ -70,6 +77,7 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.Properties" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.RepositoryDescriptor" />
     <classNode dependClassName="org.apache.tools.ant.BuildException" />
     <classNode extendsClassName="jetbrains.mps.build.ant.MpsLoadTask" />
@@ -77,15 +85,18 @@
   <dependency className="jetbrains.mps.build.ant.ModuleDataType">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.ModuleJarDataType">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.ModulesDataType">
     <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.MpsLoadTask">
@@ -122,6 +133,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Scanner" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.build.ant.Arg" />
     <classNode dependClassName="jetbrains.mps.build.ant.ExcludeNested" />
     <classNode dependClassName="jetbrains.mps.build.ant.JvmArgs" />
@@ -152,6 +164,7 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Thread" />
     <classNode dependClassName="java.util.Scanner" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.apache.tools.ant.Project" />
     <classNode dependClassName="org.apache.tools.ant.Task" />
     <classNode extendsClassName="org.apache.tools.ant.taskdefs.ExecuteStreamHandler" />
@@ -159,11 +172,13 @@
   <dependency className="jetbrains.mps.build.ant.Plugin">
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode extendsClassName="org.apache.tools.ant.types.DataType" />
   </dependency>
   <dependency className="jetbrains.mps.build.ant.RepositoryDataType">
     <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.build.ant.AllModulesDataType" />
     <classNode dependClassName="jetbrains.mps.build.ant.ModuleDataType" />
     <classNode dependClassName="jetbrains.mps.build.ant.ModulesDataType" />

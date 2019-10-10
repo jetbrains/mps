@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.smodel.runtime.FindUsageAspectDescriptor">
     <classNode dependClassName="java.lang.IllegalArgumentException" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.IInterfacedFinder" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.FinderRegistry" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
@@ -9,6 +10,7 @@
   <dependency className="jetbrains.mps.smodel.runtime.FinderRegistry">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.UnsupportedOperationException" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
   </dependency>

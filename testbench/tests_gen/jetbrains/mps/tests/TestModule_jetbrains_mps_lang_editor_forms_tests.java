@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.lang.editor.forms.test.TextCheckbox_CLICK_Toggles_Test", "jetbrains.mps.lang.editor.forms.test.TextCheckbox_SPACE_KeepsSelection_Test", "jetbrains.mps.lang.editor.forms.test.TextCheckbox_SPACE_Toggles_Test", "jetbrains.mps.lang.editor.forms.test.PlatformCheckbox_SPACE_InImage_Toggles_Test", "jetbrains.mps.lang.editor.forms.test.PlatformCheckbox_SPACE_InLabel_Toggles_Test"}, tests = {"test_TextCheckbox_CLICK_Toggles", "test_TextCheckbox_SPACE_KeepsSelection", "test_TextCheckbox_SPACE_Toggles", "test_PlatformCheckbox_SPACE_InImage_Toggles", "test_PlatformCheckbox_SPACE_InLabel_Toggles"})
 @ModuleSymbolicSuite.ModuleReference("cfb148cb-f798-4362-89a2-56938bf6c92f(jetbrains.mps.lang.editor.forms.tests)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/181872584167155579", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_lang_editor_forms_tests {
   public TestModule_jetbrains_mps_lang_editor_forms_tests() {
   }

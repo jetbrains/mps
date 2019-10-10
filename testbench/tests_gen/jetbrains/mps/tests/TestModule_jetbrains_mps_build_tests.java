@@ -4,10 +4,12 @@ package jetbrains.mps.tests;
 
 import jetbrains.mps.testbench.junit.runners.ModuleSymbolicSuite;
 import org.junit.runner.RunWith;
+import jetbrains.mps.annotations.GeneratedClass;
 
 @ModuleSymbolicSuite.ModuleClassSymbols(classes = {"jetbrains.mps.build.tests.MacroTest_Test", "jetbrains.mps.build.tests.TestTemporalPaths_Test", "jetbrains.mps.build.tests.TestRelativePathHelper_Test"}, tests = {"test_normalScope,test_onlySeePreviouslyDeclaredMacro,test_doNotSeeItsefl,test_doNotSeeImported,test_seeImportedVariableInScope,test_doNotSeeForwardVariabletInScope,test_seeBackwardVariableInScope", "test_topLevelJar,test_topLevelFolder,test_topInternalFolder,test_jarInFolder,test_folderInJar,test_duplicatedNames", "test_testRelPaths,test_nonExistentPath"})
 @ModuleSymbolicSuite.ModuleReference("39742b07-848c-43a7-be0a-845055dd3333(jetbrains.mps.build.tests)")
 @RunWith(ModuleSymbolicSuite.class)
+@GeneratedClass(node = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)/2684968190509519315", model = "r:a549252a-5f7e-4e74-9e76-a86827f191ff(jetbrains.mps.tests)")
 public class TestModule_jetbrains_mps_build_tests {
   public TestModule_jetbrains_mps_build_tests() {
   }

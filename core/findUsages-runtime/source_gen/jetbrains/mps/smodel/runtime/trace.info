@@ -4,34 +4,34 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <root nodeRef="r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)/8568892084424436722">
     <file name="FinderRegistry.java">
-      <node id="8568892084424436735" at="33,74,34,113" concept="1" />
-      <node id="8568892084424436738" at="43,0,44,0" concept="0" trace="add#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;ILjava/lang/String;)V" />
-      <node id="8568892084424436724" at="33,0,36,0" concept="0" trace="add#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;I)V" />
-      <scope id="8568892084424436732" at="33,74,34,113" />
-      <scope id="8568892084424436738" at="43,0,44,0">
+      <node id="8568892084424436735" at="35,74,36,113" concept="1" />
+      <node id="8568892084424436738" at="45,0,46,0" concept="0" trace="add#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;ILjava/lang/String;)V" />
+      <node id="8568892084424436724" at="35,0,38,0" concept="0" trace="add#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;I)V" />
+      <scope id="8568892084424436732" at="35,74,36,113" />
+      <scope id="8568892084424436738" at="45,0,46,0">
         <var name="concept" id="8568892084424436740" />
         <var name="identityToken" id="8568892084424436743" />
         <var name="mangledName" id="8568892084424436745" />
       </scope>
-      <scope id="8568892084424436724" at="33,0,36,0">
+      <scope id="8568892084424436724" at="35,0,38,0">
         <var name="concept" id="8568892084424436727" />
         <var name="identityToken" id="8568892084424436730" />
       </scope>
-      <unit id="8568892084424436722" at="13,0,45,0" name="jetbrains.mps.smodel.runtime.FinderRegistry" />
+      <unit id="8568892084424436722" at="14,0,47,0" name="jetbrains.mps.smodel.runtime.FinderRegistry" />
     </file>
   </root>
   <root nodeRef="r:478541e9-a70f-4455-91cd-49e76de44a51(jetbrains.mps.smodel.runtime)/8568892084424438907">
     <file name="FindUsageAspectDescriptor.java">
-      <node id="8568892084424438917" at="25,0,26,0" concept="0" trace="instantiate#(I)Ljetbrains/mps/ide/findusages/findalgorithm/finders/IInterfacedFinder;" />
-      <node id="8568892084424438910" at="15,0,17,0" concept="0" trace="init#(Ljetbrains/mps/smodel/runtime/FinderRegistry;)V" />
-      <scope id="8568892084424438915" at="15,46,15,46" />
-      <scope id="8568892084424438917" at="25,0,26,0">
+      <node id="8568892084424438917" at="27,0,28,0" concept="0" trace="instantiate#(I)Ljetbrains/mps/ide/findusages/findalgorithm/finders/IInterfacedFinder;" />
+      <node id="8568892084424438910" at="17,0,19,0" concept="0" trace="init#(Ljetbrains/mps/smodel/runtime/FinderRegistry;)V" />
+      <scope id="8568892084424438915" at="17,46,17,46" />
+      <scope id="8568892084424438917" at="27,0,28,0">
         <var name="token" id="8568892084424438919" />
       </scope>
-      <scope id="8568892084424438910" at="15,0,17,0">
+      <scope id="8568892084424438910" at="17,0,19,0">
         <var name="registry" id="8568892084424438913" />
       </scope>
-      <unit id="8568892084424438907" at="14,0,27,0" name="jetbrains.mps.smodel.runtime.FindUsageAspectDescriptor" />
+      <unit id="8568892084424438907" at="15,0,29,0" name="jetbrains.mps.smodel.runtime.FindUsageAspectDescriptor" />
     </file>
   </root>
 </debug-info>

@@ -6,18 +6,18 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:d864a11b-e866-4f4e-9918-3263949314ec(jetbrains.mps.actions.runtime.impl)/3183807064450207102">
     <file name="ActionsUtil.java">
-      <node id="3183807064450235849" at="13,55,14,65" concept="1" />
-      <node id="3183807064450207102" at="18,0,19,0" concept="2" trace="IType$LR" />
-      <node id="3183807064450207104" at="11,0,13,0" concept="0" trace="ActionsUtil#()V" />
-      <node id="3183807064450233781" at="13,0,16,0" concept="3" trace="isInstanceOfIType#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <scope id="3183807064450207107" at="11,25,11,25" />
-      <scope id="3183807064450233784" at="13,55,14,65" />
-      <scope id="3183807064450207104" at="11,0,13,0" />
-      <scope id="3183807064450233781" at="13,0,16,0">
+      <node id="3183807064450235849" at="15,55,16,65" concept="1" />
+      <node id="3183807064450207102" at="20,0,21,0" concept="2" trace="IType$LR" />
+      <node id="3183807064450207104" at="13,0,15,0" concept="0" trace="ActionsUtil#()V" />
+      <node id="3183807064450233781" at="15,0,18,0" concept="3" trace="isInstanceOfIType#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="3183807064450207107" at="13,25,13,25" />
+      <scope id="3183807064450233784" at="15,55,16,65" />
+      <scope id="3183807064450207104" at="13,0,15,0" />
+      <scope id="3183807064450233781" at="15,0,18,0">
         <var name="node" id="3183807064450233785" />
       </scope>
-      <unit id="3183807064450207102" at="17,0,20,0" name="jetbrains.mps.actions.runtime.impl.ActionsUtil$CONCEPTS" />
-      <unit id="3183807064450207102" at="10,0,21,0" name="jetbrains.mps.actions.runtime.impl.ActionsUtil" />
+      <unit id="3183807064450207102" at="19,0,22,0" name="jetbrains.mps.actions.runtime.impl.ActionsUtil$CONCEPTS" />
+      <unit id="3183807064450207102" at="11,0,23,0" name="jetbrains.mps.actions.runtime.impl.ActionsUtil" />
     </file>
   </root>
 </debug-info>

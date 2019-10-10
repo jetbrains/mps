@@ -5,6 +5,7 @@ package jetbrains.mps.vcs;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
+import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.project.Project;
@@ -16,6 +17,7 @@ import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 
 @State(name = "MPSVcsConfiguration", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
+@GeneratedClass(node = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/3613324658897713212", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
 public class MPSVcsProjectConfiguration extends AbstractProjectComponent implements PersistentStateComponent<MPSVcsProjectConfiguration.MyState> {
   private MyState myState = new MyState();
   protected MPSVcsProjectConfiguration(Project project) {

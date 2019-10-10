@@ -18,6 +18,7 @@
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="javax.swing.JList" />
     <classNode dependClassName="javax.swing.TransferHandler" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
   </dependency>
 </dependenciesRoot>

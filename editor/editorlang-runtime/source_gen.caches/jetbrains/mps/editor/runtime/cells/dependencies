@@ -3,6 +3,7 @@
   <dependency className="jetbrains.mps.editor.runtime.cells.BigCellUtil">
     <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.Queue" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.QueueSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations" />

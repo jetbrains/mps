@@ -9,6 +9,7 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.spi.LoggingEvent" />
     <classNode dependClassName="org.apache.log4j.varia.LevelRangeFilter" />
@@ -26,11 +27,13 @@
     <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.regex.Pattern" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="java.io.PrintStream" />
     <classNode extendsClassName="jetbrains.mps.testbench.util.Output" />
   </dependency>
   <dependency className="jetbrains.mps.testbench.util.Output">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
   <dependency className="jetbrains.mps.testbench.util.ThreadWatcher">
     <classNode dependClassName="gnu.trove.TLongObjectHashMap" />
@@ -44,6 +47,7 @@
     <classNode dependClassName="java.lang.management.ThreadInfo" />
     <classNode dependClassName="java.lang.management.ThreadMXBean" />
     <classNode dependClassName="java.util.regex.Pattern" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode extendsClassName="jetbrains.mps.testbench.util.Output" />
   </dependency>
 </dependenciesRoot>

@@ -4,6 +4,7 @@ package jetbrains.mps.testbench;
 
 import org.junit.runner.RunWith;
 import jetbrains.mps.testbench.junit.runners.TeamCityParameterizedRunner;
+import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.tool.environment.MpsEnvironment;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -25,6 +26,7 @@ import jetbrains.mps.internal.collections.runtime.IterableUtils;
  * todo: extract common part from ProjectTest and BaseCheckModulesTest
  */
 @RunWith(TeamCityParameterizedRunner.class)
+@GeneratedClass(node = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)/9170334376388144449", model = "r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)")
 public class ProjectTest {
   private static Project ourContextProject;
   private static MpsEnvironment ourEnvironment;

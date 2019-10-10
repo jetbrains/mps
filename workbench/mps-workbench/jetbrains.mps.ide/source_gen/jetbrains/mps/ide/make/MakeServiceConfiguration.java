@@ -5,6 +5,7 @@ package jetbrains.mps.ide.make;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
+import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.components.ServiceManager;
@@ -14,6 +15,7 @@ import com.intellij.openapi.progress.PerformInBackgroundOption;
 
 @State(name = "mpsMakeService", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
+@GeneratedClass(node = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/3361535663822413166", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
 public final class MakeServiceConfiguration implements PersistentStateComponent<MakeServiceConfiguration> {
   private boolean myMakeInBackground = false;
   public static MakeServiceConfiguration getInstance(Project project) {

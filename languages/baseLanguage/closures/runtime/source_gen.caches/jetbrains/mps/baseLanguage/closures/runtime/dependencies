@@ -2,14 +2,20 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass">
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="javax.annotation.processing.Generated" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.closures.runtime.DelayedException">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />
+    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="java.lang.RuntimeException" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.closures.runtime.Nothing" />
-  <dependency className="jetbrains.mps.baseLanguage.closures.runtime.Outcome" />
+  <dependency className="jetbrains.mps.baseLanguage.closures.runtime.Nothing">
+    <classNode dependClassName="javax.annotation.processing.Generated" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.closures.runtime.Outcome">
+    <classNode dependClassName="javax.annotation.processing.Generated" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.closures.runtime.Result">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Byte" />
@@ -23,19 +29,24 @@
     <classNode dependClassName="java.lang.Short" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.SuppressWarnings" />
+    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Outcome" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+  <dependency className="jetbrains.mps.baseLanguage.closures.runtime.Wrappers">
+    <classNode dependClassName="javax.annotation.processing.Generated" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator">
     <classNode dependClassName="java.lang.IllegalStateException" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.UnsupportedOperationException" />
     <classNode dependClassName="java.util.NoSuchElementException" />
+    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.DelayedException" />
     <classNode extendsClassName="java.util.Iterator" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes">
     <classNode dependClassName="java.lang.Throwable" />
+    <classNode dependClassName="javax.annotation.processing.Generated" />
   </dependency>
 </dependenciesRoot>
 
