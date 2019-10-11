@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -142,8 +142,11 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
     return outputRoot == null ? null : FileGenerationUtil.getDefaultOutputDir(model.getReference(), FileGenerationUtil.getCachesDir(outputRoot));
   }
 
-  // for "compilation" task
-  // contains classes folder if isCompileInMPS == false && folder exists
+  /**
+   * for "compilation" task of the module facet is attached to, i.e. dependencies needed to compile code of this module, if any
+   * Not every module has own code, a module may serve as a holder of a classpath only (in that case, #getClassPath() would be identical to #getLibraryClassPath()0
+   * FIXME why Set and why String? Collection and IFile!
+   */
   Set<String> getLibraryClassPath();
 
   // for "run" task, classpath == classes folder + library class path

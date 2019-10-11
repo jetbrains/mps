@@ -560,7 +560,8 @@ public class ValidationUtil {
       }
     }
 
-    if (descriptor.getSourcePaths() != null && !module.isPackaged()) {
+    final boolean packagedModule = module.isPackaged();
+    if (descriptor.getSourcePaths() != null && !packagedModule) {
       for (String sourcePath : descriptor.getSourcePaths()) {
         IFile file = module.getFileSystem().getFile(sourcePath);
         if (!file.exists()) {
@@ -572,6 +573,11 @@ public class ValidationUtil {
     }
     if (descriptor.getJavaLibs() != null) {
       for (String path : descriptor.getJavaLibs()) {
+        if (packagedModule && !path.endsWith(".jar")) {
+          // FIXME provisional hack to deal with recently added {module}/classes in .msd to get rid of another JMFI hack.
+          //       These paths are valid for source modules, and make no sense for deployed.
+          continue;
+        }
         IFile file = module.getFileSystem().getFile(path);
         if (!file.exists()) {
           String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;

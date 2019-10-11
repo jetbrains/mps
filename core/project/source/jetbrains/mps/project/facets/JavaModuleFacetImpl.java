@@ -18,7 +18,6 @@ package jetbrains.mps.project.facets;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ProjectPathUtil;
-import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.vfs.IFile;
@@ -100,23 +99,9 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       //     and source module is always present, enjoy.
       libraryClassPath.addAll(moduleDescriptor.getJavaLibs());
     }
-
-    // add classes folder for modules compiled outside MPS
-    if (getModule() instanceof Solution && !isCompileInMps() && !getModule().isPackaged()) {
-      // for packaged modules, we can't tell if classes deployed with it shall go into libraryCP or into #getClassPath(). Now they
-      // go into latter, as there's (a) no uses for #getLibraryClassPath; (b) there's no need to compile deployed modules, hence no
-      // reason to have its external classes available in libraries.
-      // todo: remove this logic?
-      String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(getModule().getModuleDescriptor());
-      IFile classes = null;
-      if (generatorOutputPath != null) {
-        // same 'sibling to sources_gen/' logic is in ModulesMiner. Location of a module as IFile would be much more handy.
-        classes = getModule().getFileSystem().getFile(generatorOutputPath).getParent().findChild(AbstractModule.CLASSES);
-      }
-      if (classes != null && classes.exists()) {
-        libraryClassPath.add(getClassPath(classes));
-      }
-    }
+    // for packaged modules, we can't tell if classes deployed with it shall go into libraryCP or into #getClassPath(). Now they
+    // go into latter, as there's (a) no uses for #getLibraryClassPath; (b) there's no need to compile deployed modules, hence no
+    // reason to have its external classes available in libraries.
     return libraryClassPath;
   }
 

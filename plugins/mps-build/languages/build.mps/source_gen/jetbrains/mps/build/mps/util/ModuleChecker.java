@@ -819,6 +819,9 @@ public final class ModuleChecker {
             ListSequence.fromList(previous).removeElement(extr);
           }
         }
+      } else if (path.endsWith("/classes")) {
+        // just ignore for now. To remove a hack in JavaModuleFacetImpl.getLibraryClassPath, i'd like to specify classes location explicitly with java libs. 
+        // the plan is to support general FS locations here, likely with another BM_ModuleDependency that is capable to reference 'java module' 
       } else {
         report("only jar stub libraries are supported, found: " + path);
       }
