@@ -5,8 +5,10 @@ package jetbrains.mps.baseLanguage.typesystem;
 import jetbrains.mps.lang.typesystem.runtime.AbstractInequationReplacementRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Objects;
+import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
@@ -29,6 +31,12 @@ public class ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRu
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
     // this rule exists to help reduce exhaustive search, so it should apply when no other rules do 
+
+    if (Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R))) && SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R) != SLinkOperations.getTarget(supertype, LINKS.classifier$pQ_R)) {
+      // not applicable if it is the same classifier 
+      // (see classifierTypeWithSameClassifier rule) 
+      return false;
+    }
 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.classifier$pQ_R), CONCEPTS.Interface$Kp) && SLinkOperations.hasPointer(supertype, LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
       // not applicable to interface subtype-of Object (always true) 
