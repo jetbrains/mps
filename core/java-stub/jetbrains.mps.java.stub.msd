@@ -9,6 +9,9 @@
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
+  <stubModelEntries>
+    <stubModelEntry path="${module}/classes" />
+  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)</dependency>
