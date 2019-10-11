@@ -136,6 +136,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1171903607971" name="jetbrains.mps.baseLanguage.structure.WildCardType" flags="in" index="3qTvmN" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
         <child id="1109201940907" name="parameter" index="11_B2D" />
@@ -590,10 +591,21 @@
               <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
               <node concept="3uibUv" id="2yCvSeNKOd5" role="11_B2D">
                 <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
+                <node concept="3qTvmN" id="e1yJTyH$h_" role="11_B2D" />
+                <node concept="3qTvmN" id="e1yJTyH_Le" role="11_B2D" />
               </node>
             </node>
             <node concept="2OqwBi" id="2yCvSeNKOd6" role="33vP2m">
-              <node concept="4DuUT" id="2yCvSeNKOd7" role="2Oq$k0" />
+              <node concept="1eOMI4" id="e1yJTyHvVw" role="2Oq$k0">
+                <node concept="10QFUN" id="e1yJTyHvVv" role="1eOMHV">
+                  <node concept="4DuUT" id="e1yJTyHvVu" role="10QFUP" />
+                  <node concept="3uibUv" id="e1yJTyHwCe" role="10QFUM">
+                    <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
+                    <node concept="3qTvmN" id="e1yJTyHxRe" role="11_B2D" />
+                    <node concept="3qTvmN" id="e1yJTyHyzl" role="11_B2D" />
+                  </node>
+                </node>
+              </node>
               <node concept="liA8E" id="2yCvSeNKOd8" role="2OqNvi">
                 <ref role="37wK5l" to="33ny:~Map.entrySet()" resolve="entrySet" />
               </node>

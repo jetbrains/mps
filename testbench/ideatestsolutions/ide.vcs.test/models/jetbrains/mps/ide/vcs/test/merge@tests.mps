@@ -5748,10 +5748,15 @@
           <node concept="3cpWs3" id="7iTTs2Ugx5d" role="3uHU7B">
             <node concept="2OqwBi" id="7iTTs2UhMUC" role="3uHU7w">
               <node concept="2OqwBi" id="GHFifnTicQ" role="2Oq$k0">
-                <node concept="1eOMI4" id="GHFifnTkZw" role="2Oq$k0">
+                <node concept="1eOMI4" id="e1yJTyHPXn" role="2Oq$k0">
                   <node concept="10QFUN" id="GHFifnTkZx" role="1eOMHV">
-                    <node concept="35c_gC" id="GHFifnTkZv" role="10QFUP">
-                      <ref role="35c_gD" to="tpee:fz12cDC" resolve="FieldDeclaration" />
+                    <node concept="10QFUN" id="e1yJTyHOq0" role="10QFUP">
+                      <node concept="35c_gC" id="e1yJTyHOpZ" role="10QFUP">
+                        <ref role="35c_gD" to="tpee:fz12cDC" resolve="FieldDeclaration" />
+                      </node>
+                      <node concept="3uibUv" id="e1yJTyHVsZ" role="10QFUM">
+                        <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
+                      </node>
                     </node>
                     <node concept="3uibUv" id="GHFifnTn7s" role="10QFUM">
                       <ref role="3uigEE" to="vxxo:~SConceptAdapterById" resolve="SConceptAdapterById" />

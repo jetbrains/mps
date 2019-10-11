@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import java.util.regex.Pattern;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.tool.environment.Environment;
 import java.io.File;
 import jetbrains.mps.util.FileUtil;
@@ -49,7 +50,6 @@ import com.intellij.openapi.vfs.newvfs.RefreshSession;
 import com.intellij.openapi.vfs.newvfs.RefreshQueue;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import java.io.IOException;
-import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -60,7 +60,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
  */
 @GeneratedClass(node = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)/7314351270975463225", model = "r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)")
 public class DiskMemoryConflictsTest implements EnvironmentAware {
-  private static Pattern FIELD_DECLARATION_CONCEPT_ENTRY_MATCHING_PATTERN = Pattern.compile("\\s*<concept id=\"" + ((SConceptAdapterById) CONCEPTS.FieldDeclaration$Ps).getId().getIdValue() + "\"([^\\/]+)/>");
+  private static Pattern FIELD_DECLARATION_CONCEPT_ENTRY_MATCHING_PATTERN = Pattern.compile("\\s*<concept id=\"" + ((SConceptAdapterById) (SConcept) CONCEPTS.FieldDeclaration$Ps).getId().getIdValue() + "\"([^\\/]+)/>");
   private static Pattern CONCEPT_INDEX_MATCHING_PATTERN = Pattern.compile(".*index=\"([^/]+)\".*");
   private static Pattern PROPERTY_VALUE_MATCHING_PATTERN = Pattern.compile(".*<property.*value=\"([^\"]+)\".*");
 

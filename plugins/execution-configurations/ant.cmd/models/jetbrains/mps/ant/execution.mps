@@ -290,7 +290,6 @@
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
-      <concept id="1151702311717" name="jetbrains.mps.baseLanguage.collections.structure.ToListOperation" flags="nn" index="ANE8D" />
       <concept id="1153943597977" name="jetbrains.mps.baseLanguage.collections.structure.ForEachStatement" flags="nn" index="2Gpval">
         <child id="1153944400369" name="variable" index="2Gsz3X" />
         <child id="1153944424730" name="inputSequence" index="2GsD0m" />
@@ -301,6 +300,7 @@
       </concept>
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
+        <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
@@ -801,20 +801,22 @@
                     </node>
                   </node>
                   <node concept="1tenjt" id="j$XAJDK0CY" role="1r8FgC">
-                    <node concept="2OqwBi" id="j$XAJDK0CZ" role="1tenjv">
-                      <node concept="2OqwBi" id="j$XAJDK0D0" role="2Oq$k0">
-                        <node concept="2WthIp" id="j$XAJDK0D1" role="2Oq$k0" />
-                        <node concept="2XshWL" id="j$XAJDK0D2" role="2OqNvi">
-                          <ref role="2WH_rO" node="j$XAJDK0EQ" resolve="getMacroValues" />
-                          <node concept="2LYoG9" id="7JA3O4XTby2" role="2XxRq1">
-                            <ref role="2LYoGb" node="7JA3O4XSBBa" resolve="macroToDefine" />
-                          </node>
-                          <node concept="2LYoG9" id="5O_sWVJ6jdw" role="2XxRq1">
-                            <ref role="2LYoGb" node="j$XAJDK0Dy" resolve="options" />
+                    <node concept="2ShNRf" id="e1yJTyGxaV" role="1tenjv">
+                      <node concept="Tc6Ow" id="e1yJTyGxKe" role="2ShVmc">
+                        <node concept="2dOA70" id="e1yJTyGyuD" role="HW$YZ" />
+                        <node concept="2OqwBi" id="j$XAJDK0D0" role="I$8f6">
+                          <node concept="2WthIp" id="j$XAJDK0D1" role="2Oq$k0" />
+                          <node concept="2XshWL" id="j$XAJDK0D2" role="2OqNvi">
+                            <ref role="2WH_rO" node="j$XAJDK0EQ" resolve="getMacroValues" />
+                            <node concept="2LYoG9" id="7JA3O4XTby2" role="2XxRq1">
+                              <ref role="2LYoGb" node="7JA3O4XSBBa" resolve="macroToDefine" />
+                            </node>
+                            <node concept="2LYoG9" id="5O_sWVJ6jdw" role="2XxRq1">
+                              <ref role="2LYoGb" node="j$XAJDK0Dy" resolve="options" />
+                            </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="ANE8D" id="j$XAJDK0D3" role="2OqNvi" />
                     </node>
                   </node>
                   <node concept="1eOMI4" id="j$XAJDK0D4" role="1r8FgC">

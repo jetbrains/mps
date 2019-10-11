@@ -202,7 +202,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     }
     if ((containingProject != null)) {
       final Wrappers._T<SNode> definedMacro = new Wrappers._T<SNode>();
-      if (ListSequence.fromList(SLinkOperations.getChildren(containingProject, LINKS.macros$tpFt)).contains(child)) {
+      if (Sequence.fromIterable(((Iterable<SNode>) SLinkOperations.getChildren(containingProject, LINKS.macros$tpFt))).contains(child)) {
         definedMacro.value = SNodeOperations.cast(child, CONCEPTS.BuildMacro$RE);
       } else {
         definedMacro.value = ListSequence.fromList(SLinkOperations.getChildren(containingProject, LINKS.macros$tpFt)).findFirst(new IWhereFilter<SNode>() {

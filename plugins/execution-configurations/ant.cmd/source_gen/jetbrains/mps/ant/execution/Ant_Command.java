@@ -13,16 +13,16 @@ import jetbrains.mps.execution.api.commands.ListCommandPart;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.execution.api.commands.PropertyCommandPart;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.execution.api.commands.CommandPart;
 import jetbrains.mps.execution.api.commands.KeyValueCommandPart;
 import java.io.File;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.util.ClassType;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.execution.api.commands.CommandPart;
 import com.intellij.openapi.application.PathMacros;
 import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vfs.IFile;
@@ -95,7 +95,7 @@ public class Ant_Command {
     if ((jdkHome == null || jdkHome.length() == 0)) {
       throw new ExecutionException("Could not find valid java home.");
     }
-    return new Java_Command().setProject_Project(myProject_Project).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), new PropertyCommandPart("java.home", jdkHome), new PropertyCommandPart("ant.home", myAntLocation_String), new ListCommandPart(Sequence.fromIterable(Ant_Command.getMacroValues(myMacroToDefine_ListString, myOptions_String)).toListSequence()), (((myOptions_String != null && myOptions_String.length() > 0) ? myOptions_String + " " : "")), new KeyValueCommandPart("-" + "f", new File(antFilePath)), (((myTargetName_String == null || myTargetName_String.length() == 0) ? "" : " " + myTargetName_String)))), "org.apache.tools.ant.launch.Launcher", Ant_Command.getAntClassPath(myAntLocation_String));
+    return new Java_Command().setProject_Project(myProject_Project).createProcess(new ListCommandPart(ListSequence.fromListAndArray(new ArrayList(), new PropertyCommandPart("java.home", jdkHome), new PropertyCommandPart("ant.home", myAntLocation_String), new ListCommandPart(ListSequence.fromListWithValues(new ArrayList<CommandPart>(), Ant_Command.getMacroValues(myMacroToDefine_ListString, myOptions_String))), (((myOptions_String != null && myOptions_String.length() > 0) ? myOptions_String + " " : "")), new KeyValueCommandPart("-" + "f", new File(antFilePath)), (((myTargetName_String == null || myTargetName_String.length() == 0) ? "" : " " + myTargetName_String)))), "org.apache.tools.ant.launch.Launcher", Ant_Command.getAntClassPath(myAntLocation_String));
   }
 
 

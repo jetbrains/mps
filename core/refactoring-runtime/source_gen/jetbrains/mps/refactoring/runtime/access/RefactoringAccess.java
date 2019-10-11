@@ -51,7 +51,7 @@ public abstract class RefactoringAccess {
       // FIXME ORLY?! cast of an argument? CCE in case caller made a mistake? 
       targetList = (List) target;
     } else {
-      targetList = Arrays.asList(target);
+      targetList = Arrays.<Object>asList(target);
     }
 
     boolean disabled = (targetList.isEmpty() || RefactoringUtil.getApplicability(refactoring, targetList).lessThan(RefactoringUtil.Applicability.APPLICABLE));

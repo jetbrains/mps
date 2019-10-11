@@ -461,7 +461,7 @@
       <node id="2929731761237869364" at="61,0,62,113" concept="8" />
       <node id="2929731761237869370" at="62,113,63,201" concept="2" />
       <node id="2929731761237869377" at="63,201,64,0" concept="11" />
-      <node id="2929731761237869378" at="64,0,65,130" concept="8" />
+      <node id="2929731761237869378" at="64,0,65,152" concept="8" />
       <node id="2929731761237869389" at="66,135,67,206" concept="2" />
       <node id="2929731761237869397" at="68,7,69,0" concept="11" />
       <node id="2929731761237869398" at="69,0,70,20" concept="9" />
@@ -472,7 +472,7 @@
       <node id="2929731761237869354" at="36,9,39,9" concept="6" />
       <node id="2929731761237869354" at="49,0,52,0" concept="1" trace="MapWrapper#(Ljetbrains/mps/debugger/java/api/evaluation/proxies/IValueProxy;Lcom/sun/jdi/ThreadReference;)V" />
       <node id="2929731761237869354" at="54,0,57,0" concept="7" trace="invoke#()Ljava/util/List;" />
-      <node id="2929731761237869385" at="65,130,68,7" concept="5" />
+      <node id="2929731761237869385" at="65,152,68,7" concept="5" />
       <node id="2929731761237869354" at="44,0,48,0" concept="7" trace="getWrappedType#()Ljava/lang/String;" />
       <node id="2929731761237869354" at="74,0,78,0" concept="7" trace="getName#()Ljava/lang/String;" />
       <node id="2929731761237869354" at="52,60,57,55" concept="9" />
@@ -500,7 +500,7 @@
         <var name="value" id="2929731761237869354" />
       </scope>
       <scope id="2929731761237869354" at="54,0,57,0" />
-      <scope id="2929731761237869385" at="65,130,68,7">
+      <scope id="2929731761237869385" at="65,152,68,7">
         <var name="entry" id="2929731761237869386" />
       </scope>
       <scope id="2929731761237869354" at="44,0,48,0" />

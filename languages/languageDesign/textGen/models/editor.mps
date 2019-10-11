@@ -263,10 +263,6 @@
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -374,21 +370,23 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
         <child id="1151688676805" name="elementType" index="_ZDj9" />
       </concept>
-      <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
-        <child id="1151689745422" name="elementType" index="A3Ik2" />
-      </concept>
-      <concept id="1151702311717" name="jetbrains.mps.baseLanguage.collections.structure.ToListOperation" flags="nn" index="ANE8D" />
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
+        <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
@@ -563,25 +561,24 @@
               <node concept="1ou48o" id="5IIwIl73EGs" role="OY2wv">
                 <node concept="3GJtP1" id="5IIwIl73EGt" role="1ou48n">
                   <node concept="3clFbS" id="5IIwIl73EGu" role="2VODD2">
-                    <node concept="3clFbF" id="2fKiB6PjtBh" role="3cqZAp">
-                      <node concept="2OqwBi" id="2fKiB6PjtBu" role="3clFbG">
-                        <node concept="1eOMI4" id="2fKiB6PjtBi" role="2Oq$k0">
-                          <node concept="10QFUN" id="2fKiB6PjtBk" role="1eOMHV">
-                            <node concept="A3Dl8" id="2fKiB6PjtBm" role="10QFUM">
-                              <node concept="17QB3L" id="2fKiB6PjtBo" role="A3Ik2" />
+                    <node concept="3clFbF" id="e1yJTyI$o_" role="3cqZAp">
+                      <node concept="15s5l7" id="e1yJTyI$LL" role="lGtFl">
+                        <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type java.util.Set&lt;String&gt; is not a subtype of sequence&lt;string&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)/8991952304890041665,r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)/1240918480296]&quot;;" />
+                        <property role="huDt6" value="Error: type java.util.Set&lt;String&gt; is not a subtype of sequence&lt;string&gt;" />
+                      </node>
+                      <node concept="2ShNRf" id="e1yJTyIpgg" role="3clFbG">
+                        <node concept="Tc6Ow" id="e1yJTyIpgh" role="2ShVmc">
+                          <node concept="17QB3L" id="e1yJTyIruu" role="HW$YZ" />
+                          <node concept="2OqwBi" id="e1yJTyIpgj" role="I$8f6">
+                            <node concept="2YIFZM" id="e1yJTyIpgk" role="2Oq$k0">
+                              <ref role="37wK5l" to="7x5y:~Charset.availableCharsets()" resolve="availableCharsets" />
+                              <ref role="1Pybhc" to="7x5y:~Charset" resolve="Charset" />
                             </node>
-                            <node concept="2OqwBi" id="2fKiB6PjtBp" role="10QFUP">
-                              <node concept="2YIFZM" id="2fKiB6PjtBq" role="2Oq$k0">
-                                <ref role="37wK5l" to="7x5y:~Charset.availableCharsets()" resolve="availableCharsets" />
-                                <ref role="1Pybhc" to="7x5y:~Charset" resolve="Charset" />
-                              </node>
-                              <node concept="liA8E" id="2fKiB6PjtBr" role="2OqNvi">
-                                <ref role="37wK5l" to="33ny:~SortedMap.keySet()" resolve="keySet" />
-                              </node>
+                            <node concept="liA8E" id="e1yJTyIyjv" role="2OqNvi">
+                              <ref role="37wK5l" to="33ny:~SortedMap.keySet()" resolve="keySet" />
                             </node>
                           </node>
                         </node>
-                        <node concept="ANE8D" id="2fKiB6PjtBy" role="2OqNvi" />
                       </node>
                     </node>
                   </node>

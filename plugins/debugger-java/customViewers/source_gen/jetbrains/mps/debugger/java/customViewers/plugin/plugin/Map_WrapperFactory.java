@@ -62,7 +62,7 @@ public class Map_WrapperFactory extends ValueWrapperFactory {
       PrimitiveValueProxy size = ((PrimitiveValueProxy) value.invokeMethod("size", "()I", getThreadReference()));
       result.add(new jetbrains.mps.debugger.java.customViewers.plugin.plugin.Collections.MyWatchable_size(CustomViewersManager.getInstance().fromJdi(size.getJDIValue(), getThreadReference()), "size"));
 
-      IObjectValueProxy entries = ((IObjectValueProxy) value.invokeMethod("entrySet", "()Ljava/util/Set;", getThreadReference()));
+      IObjectValueProxy entries = ((IObjectValueProxy) ((IObjectValueProxy) value).invokeMethod("entrySet", "()Ljava/util/Set;", getThreadReference()));
       for (IObjectValueProxy entry : EvaluationUtils.getInstance().<IObjectValueProxy>toIterableProxy(entries, getThreadReference())) {
         result.add(new jetbrains.mps.debugger.java.customViewers.plugin.plugin.Collections.MyWatchable_entry(CustomViewersManager.getInstance().fromJdi(entry.getJDIValue(), getThreadReference()), "entry"));
       }

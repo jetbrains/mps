@@ -168,8 +168,15 @@
       <concept id="7077360340906447917" name="jetbrains.mps.make.script.structure.ResultStatement" flags="nn" index="3D7k6m" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -260,6 +267,10 @@
         <node concept="bFUmx" id="1HN6OkgRjIw" role="bFwIG">
           <node concept="3clFbS" id="1HN6OkgRjIx" role="2VODD2">
             <node concept="3KaCP$" id="1HN6OkgRjIy" role="3cqZAp">
+              <node concept="15s5l7" id="e1yJTyIAMg" role="lGtFl">
+                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: Argument of switch should be enum of primitive&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/3306910260423168223]&quot;;" />
+                <property role="huDt6" value="Error: Argument of switch should be enum of primitive" />
+              </node>
               <node concept="3KbdKl" id="1HN6OkgRjIz" role="3KbHQx">
                 <node concept="2aLE6L" id="1HN6OkgRjI$" role="3Kbmr1">
                   <ref role="2aLE6K" node="s2twedLA4w" resolve="ABORT" />

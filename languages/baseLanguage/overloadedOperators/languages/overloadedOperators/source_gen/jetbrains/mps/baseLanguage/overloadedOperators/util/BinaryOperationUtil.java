@@ -63,7 +63,7 @@ public class BinaryOperationUtil {
       return false;
     }
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operator, LINKS.operator$xSLv), CONCEPTS.BinaryOperationReference$Q7)) {
-      if (SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(operator, LINKS.operator$xSLv), CONCEPTS.BinaryOperationReference$Q7), LINKS.binaryOperation$3bcw)))) {
+      if (SNodeOperations.isInstanceOf(node, SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(operator, LINKS.operator$xSLv), CONCEPTS.BinaryOperationReference$Q7), LINKS.binaryOperation$3bcw))))) {
         return true;
       }
     } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operator, LINKS.operator$xSLv), CONCEPTS.CustomOperator$an) && SNodeOperations.isInstanceOf(node, CONCEPTS.CustomOperatorUsage$2Y)) {

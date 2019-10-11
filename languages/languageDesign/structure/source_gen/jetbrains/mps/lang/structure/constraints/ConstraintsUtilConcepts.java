@@ -56,7 +56,7 @@ public class ConstraintsUtilConcepts {
       }
     }).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {
-        return SModuleOperations.isAspect(it, "structure");
+        return SModuleOperations.isAspect(((SModel) it), "structure");
       }
     })).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {

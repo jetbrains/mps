@@ -53,7 +53,7 @@ public class TestVariableReference_Constraints extends BaseConstraintsDescriptor
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> variables = SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.PatternTest$8m, false, false), CONCEPTS.PatternVariableDeclaration$Ma, false, new SAbstractConcept[]{});
             List<SNode> result = new ArrayList<SNode>();
-            Set<String> names = new HashSet();
+            Set<String> names = new HashSet<String>();
             for (SNode var : variables) {
               if (!(names.contains(SPropertyOperations.getString(var, PROPS.name$tAp1)))) {
                 ListSequence.fromList(result).addElement(var);
