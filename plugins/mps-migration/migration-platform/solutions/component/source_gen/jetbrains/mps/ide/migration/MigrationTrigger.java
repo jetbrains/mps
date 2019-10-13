@@ -13,13 +13,13 @@ import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.migration.global.ProjectMigrationProperties;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import com.intellij.notification.Notification;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.migration.global.MigrationProperties;
 import com.intellij.openapi.application.ApplicationManager;
+import java.util.function.Consumer;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.startup.StartupManager;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -77,11 +77,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.migration.global.ProjectMigration;
 
 /**
@@ -117,11 +112,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
 
   private final AtomicReference<PostponedState> myPostponedState = new AtomicReference<PostponedState>();
-  private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
 
-  private final MigrationBlock.BlockCause myNotDeployedBlockCause = new MigrationBlock.BlockCause("some languages are not deployed");
   private Notification myLastNotification = null;
-  private Notification myLastDeployWarning = null;
+  private DeployWarning myDeployWarn;
 
   public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, MPSCoreComponents mpsCore) {
     super(ideaProject);
@@ -130,10 +123,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
     myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
+    myDeployWarn = new DeployWarning(ideaProject, p, myLanguageRegistry);
   }
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {
-    myRebuildHandler = rebuildHandler;
+    myDeployWarn.setRebuildHandler(rebuildHandler);
   }
 
   public MigrationBlock getMigrationBlock() {
@@ -157,7 +151,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
             myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
               public void run() {
-                checkNotDeployedLanguages();
+                myDeployWarn.checkNotDeployedLanguages(myMigrationBlock);
               }
             });
             checkMigrationNeeded();
@@ -248,7 +242,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
-    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
+    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(DeployWarning.NOT_DEPLOYED))) {
       return;
     }
 
@@ -268,7 +262,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
-    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause))) {
+    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(DeployWarning.NOT_DEPLOYED))) {
       return;
     }
 
@@ -294,8 +288,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       if (forceAssistant) {
         String cause = (myMigrationBlock.getMigrationForbiddenMessage() == null ? "" : " as " + myMigrationBlock.getMigrationForbiddenMessage());
         Messages.showMessageDialog(myProject, "The migration can not be run" + cause + ".\n" + "Migration assistant will not be started.", "Migration can't start", null);
-      } else if (!(myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(myNotDeployedBlockCause)))) {
-        notifyDeployWarn();
+      } else if (!(myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(DeployWarning.NOT_DEPLOYED)))) {
+        myDeployWarn.notifyDeployWarn();
       }
       return;
     }
@@ -604,10 +598,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private class MyLangDeployListener implements LanguageRegistryListener {
-
     @Override
     public void afterLanguagesLoaded(Iterable<LanguageRuntime> loaded) {
-      checkNotDeployedLanguages();
+      myDeployWarn.checkNotDeployedLanguages(myMigrationBlock);
       checkMigrationNeededOnLanguageReload(Sequence.fromIterable(loaded).select(new ISelector<LanguageRuntime, SLanguage>() {
         public SLanguage select(LanguageRuntime it) {
           return it.getIdentity();
@@ -620,107 +613,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       // languages are still loaded when this notification comes, no way we can notice any change here, therefore we don't 
       // check for changed conditions, e.g. with checkNotDeployedLanguages() 
     }
-  }
-
-  /*package*/ void checkNotDeployedLanguages() {
-    Set<SLanguage> problems = getNotDeployedUsedLanguages();
-    if (SetSequence.fromSet(problems).isEmpty()) {
-      myMigrationBlock.ensureUnblocked(myNotDeployedBlockCause);
-    } else {
-      myMigrationBlock.ensureBlocked(myNotDeployedBlockCause);
-
-    }
-  }
-  public void notifyDeployWarn() {
-    Set<SLanguage> problems = getNotDeployedUsedLanguages();
-
-    if (myLastDeployWarning != null && myLastDeployWarning.getBalloon() != null) {
-      // migrations already blocked, warning is showing 
-      return;
-    }
-
-    // expire old, show new to get the balloon again 
-    if (myLastDeployWarning != null && !((myLastDeployWarning.isExpired()))) {
-      myLastDeployWarning.expire();
-    }
-
-    myLastDeployWarning = createDeployWarn(problems);
-    Notifications.Bus.notify(myLastDeployWarning, myProject);
-  }
-  private Notification createDeployWarn(final Set<SLanguage> problems) {
-    final int treshold = 20;
-    Iterable<SLanguage> sortedProblems = SetSequence.fromSet(problems).sort(new ISelector<SLanguage, String>() {
-      public String select(SLanguage it) {
-        return NameUtil.compactNamespace(it.getQualifiedName());
-      }
-    }, true);
-
-    StringBuilder sb = new StringBuilder();
-    sb.append("Some languages used in project are not deployed. Can't check migrations applicability.<br><br>");
-    sb.append("Not deployed languages");
-    if (Sequence.fromIterable(sortedProblems).count() > treshold) {
-      sb.append(" (first " + treshold + " shown)");
-    }
-    sb.append(":");
-    sb.append("<p>");
-
-    final String space = "&nbsp;";
-    final String gotoPrefix = "goto_";
-    for (SLanguage langProblem : Sequence.fromIterable(sortedProblems).take(treshold)) {
-      sb.append(space + space + "-");
-      boolean absent = langProblem.getSourceModule() == null;
-      String langName = NameUtil.compactNamespace(langProblem.getQualifiedName());
-      if (absent) {
-        sb.append(langName);
-      } else {
-        sb.append("<a href=\"").append(gotoPrefix).append(langProblem.getSourceModuleReference().toString()).append("\">");
-        sb.append(langName);
-        sb.append("</a>");
-      }
-      sb.append(" (" + ((absent ? "absent" : "dependency problem")) + ")");
-      sb.append("<br>");
-    }
-
-    if (myRebuildHandler != null) {
-      sb.append("<br><p><a href=\"rebuild\">Rebuild and deploy listed languages</a></p>");
-    }
-
-    return new Notification("Migration", "Migration suspended", sb.toString(), NotificationType.WARNING, new NotificationListener() {
-      @Override
-      public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
-        if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
-          return;
-        }
-        if ("rebuild".equals(e.getDescription())) {
-          myRebuildHandler.accept(SetSequence.fromSet(problems).select(new ISelector<SLanguage, SModuleReference>() {
-            public SModuleReference select(SLanguage it) {
-              return it.getSourceModuleReference();
-            }
-          }).where(new NotNullWhereFilter<SModuleReference>()));
-        }
-        if (e.getDescription().startsWith(gotoPrefix)) {
-          String ref = e.getDescription().substring(gotoPrefix.length());
-          SModuleReference module = ModuleReference.parseReference(ref);
-          new ProjectPaneNavigator(myMpsProject).shallFocus(true).select(module);
-        }
-      }
-    });
-  }
-
-  private Set<SLanguage> getNotDeployedUsedLanguages() {
-    Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
-    final Set<SLanguage> allUsedLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SLanguage>() {
-      public Iterable<SLanguage> translate(SModule it) {
-        return it.getUsedLanguages();
-      }
-    }));
-    // remove deployed languages (i.e. known to LanguageRegistry) from the set 
-    myLanguageRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
-      public void accept(LanguageRuntime lr) {
-        SetSequence.fromSet(allUsedLanguages).removeElement(lr.getIdentity());
-      }
-    });
-    return allUsedLanguages;
   }
 
   public static class PostponedState {
