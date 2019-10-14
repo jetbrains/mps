@@ -1331,6 +1331,38 @@
           <ref role="A1WHt" node="1wEcoXjJz45" resolve="add_reexport_BuildMps_ModuleDependencyOnJavaModule" />
         </node>
       </node>
+      <node concept="3EZMnI" id="6mTG60y24$_" role="3EZMnx">
+        <node concept="VPM3Z" id="6mTG60y24$B" role="3F10Kt" />
+        <node concept="3F0ifn" id="6mTG60y4BXD" role="3EZMnx">
+          <property role="3F0ifm" value="provides classes of " />
+        </node>
+        <node concept="3F1sOY" id="6mTG60y26WU" role="3EZMnx">
+          <ref role="1NtTu8" to="kdzh:6mTG60y20x2" resolve="javaLibLocation" />
+        </node>
+        <node concept="2iRfu4" id="6mTG60y24$E" role="2iSdaV" />
+        <node concept="pkWqt" id="6mTG60y24_t" role="pqm2j">
+          <node concept="3clFbS" id="6mTG60y24_u" role="2VODD2">
+            <node concept="3clFbF" id="6mTG60y24_R" role="3cqZAp">
+              <node concept="2OqwBi" id="6mTG60y25m6" role="3clFbG">
+                <node concept="2OqwBi" id="6mTG60y25Zu" role="2Oq$k0">
+                  <node concept="pncrf" id="6mTG60y24_Q" role="2Oq$k0" />
+                  <node concept="Bykcj" id="6mTG60y26p9" role="2OqNvi">
+                    <node concept="1aIX9F" id="6mTG60y26pb" role="1xVPHs">
+                      <node concept="26LbJo" id="6mTG60y26w9" role="1aIX9E">
+                        <ref role="26LbJp" to="kdzh:6mTG60y20x2" resolve="javaLibLocation" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3GX2aA" id="6mTG60y26Lq" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3F0ifn" id="6mTG60y4C2L" role="3EZMnx">
+          <property role="3F0ifm" value="  " />
+        </node>
+      </node>
       <node concept="3F0ifn" id="2L4pT56h8Kt" role="3EZMnx">
         <property role="3F0ifm" value="(reexport)" />
         <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />

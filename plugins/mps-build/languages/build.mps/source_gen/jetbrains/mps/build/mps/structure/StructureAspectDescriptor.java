@@ -780,6 +780,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("reexport", 0x2c4467914643e8fcL).type(PrimitiveTypeId.BOOLEAN).origin("3189788309731928316").done();
     b.associate("module", 0x2c4467914643e8fdL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L).optional(false).origin("3189788309731928317").done();
+    b.aggregate("javaLibLocation", 0x65b9b06022080842L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("7330083795456493634").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBuildMps_ModuleDependencyOnModule() {

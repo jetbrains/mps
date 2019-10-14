@@ -21,7 +21,7 @@
         <property id="672037151186491528" name="presentation" index="1L1pqM" />
         <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
-      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
@@ -280,6 +280,15 @@
     <property role="3GE5qa" value="Project.Deps" />
     <property role="EcuMT" value="3189788309731928315" />
     <ref role="1TJDcQ" node="4zCbl23d1MR" resolve="BuildMps_ModuleDependency" />
+    <node concept="1TJgyj" id="6mTG60y20x2" role="1TKVEi">
+      <property role="IQ2ns" value="7330083795456493634" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="javaLibLocation" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+      <node concept="t5JxF" id="6mTG60y20x5" role="lGtFl">
+        <property role="t5JxN" value="denotes Java library location from ModuleDescriptor this dependency covers" />
+      </node>
+    </node>
     <node concept="1TJgyi" id="2L4pT56gYzW" role="1TKVEl">
       <property role="TrG5h" value="reexport" />
       <property role="IQ2nx" value="3189788309731928316" />

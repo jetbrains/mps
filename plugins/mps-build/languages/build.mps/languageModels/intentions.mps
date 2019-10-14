@@ -74,7 +74,9 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT" />
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
@@ -151,7 +153,9 @@
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
-      <concept id="1138757581985" name="jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation" flags="nn" index="zfrQC" />
+      <concept id="1138757581985" name="jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation" flags="nn" index="zfrQC">
+        <reference id="1139880128956" name="concept" index="1A9B2P" />
+      </concept>
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
@@ -186,6 +190,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -913,6 +920,67 @@
               </node>
               <node concept="10Nm6u" id="47hmiPOKjlR" role="3uHU7w" />
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="2S6QgY" id="6mTG60y20xy">
+    <property role="3GE5qa" value="" />
+    <property role="TrG5h" value="CoverJavaLibLocation" />
+    <ref role="2ZfgGC" to="kdzh:2L4pT56gYzV" resolve="BuildMps_ModuleDependencyOnJavaModule" />
+    <node concept="2S6ZIM" id="6mTG60y20xz" role="2ZfVej">
+      <node concept="3clFbS" id="6mTG60y20x$" role="2VODD2">
+        <node concept="3clFbF" id="6mTG60y20As" role="3cqZAp">
+          <node concept="Xl_RD" id="6mTG60y20Ar" role="3clFbG">
+            <property role="Xl_RC" value="Specify Java Library location covered" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="6mTG60y20x_" role="2ZfgGD">
+      <node concept="3clFbS" id="6mTG60y20xA" role="2VODD2">
+        <node concept="3clFbF" id="6mTG60y22ig" role="3cqZAp">
+          <node concept="2OqwBi" id="6mTG60y22Os" role="3clFbG">
+            <node concept="2OqwBi" id="6mTG60y22oq" role="2Oq$k0">
+              <node concept="2Sf5sV" id="6mTG60y22if" role="2Oq$k0" />
+              <node concept="3TrEf2" id="6mTG60y22Dx" role="2OqNvi">
+                <ref role="3Tt5mk" to="kdzh:6mTG60y20x2" resolve="javaLibLocation" />
+              </node>
+            </node>
+            <node concept="zfrQC" id="6mTG60y22PB" role="2OqNvi">
+              <ref role="1A9B2P" to="3ior:4Kip2_918YM" resolve="BuildSourceProjectRelativePath" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6mTG60y23nE" role="3cqZAp">
+          <node concept="2OqwBi" id="6mTG60y242r" role="3clFbG">
+            <node concept="2OqwBi" id="6mTG60y23uH" role="2Oq$k0">
+              <node concept="2Sf5sV" id="6mTG60y23nC" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6mTG60y23Bm" role="2OqNvi">
+                <ref role="3TsBF5" to="kdzh:2L4pT56gYzW" resolve="reexport" />
+              </node>
+            </node>
+            <node concept="tyxLq" id="6mTG60y24pG" role="2OqNvi">
+              <node concept="3clFbT" id="6mTG60y24rH" role="tz02z">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2SaL7w" id="6mTG60y20K5" role="2ZfVeh">
+      <node concept="3clFbS" id="6mTG60y20K6" role="2VODD2">
+        <node concept="3clFbF" id="6mTG60y20VP" role="3cqZAp">
+          <node concept="2OqwBi" id="6mTG60y21yt" role="3clFbG">
+            <node concept="2OqwBi" id="6mTG60y217x" role="2Oq$k0">
+              <node concept="2Sf5sV" id="6mTG60y20VO" role="2Oq$k0" />
+              <node concept="3TrEf2" id="6mTG60y21g8" role="2OqNvi">
+                <ref role="3Tt5mk" to="kdzh:6mTG60y20x2" resolve="javaLibLocation" />
+              </node>
+            </node>
+            <node concept="3w_OXm" id="6mTG60y21WK" role="2OqNvi" />
           </node>
         </node>
       </node>
