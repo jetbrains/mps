@@ -9,7 +9,6 @@ import com.intellij.openapi.components.AbstractProjectComponent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.migration.global.ProjectMigrationProperties;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import java.util.concurrent.atomic.AtomicReference;
@@ -57,7 +56,6 @@ import com.intellij.util.WaitForProgressToShow;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
-import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 
@@ -81,7 +79,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private final ReloadManager myReloadManager;
   private final LanguageRegistry myLanguageRegistry;
 
-  private final MigrationOptions myOptions = new MigrationOptions();
   private final ProjectMigrationProperties myProperties;
 
   private final SilentModuleVersionUpdater myVersionUpdater;
@@ -351,7 +348,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
    * @return whether migration was postponed
    */
   private boolean runMigration(boolean update, boolean migrate) {
-    MyMigrationSession session = new MyMigrationSession(update, migrate);
+    MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, myMigrationRegistry, update, migrate);
     final MigrationWizard wizard = new MigrationWizard(myProject, session);
     boolean finished = wizard.showAndGet();
     final MigrationError errors = session.getError();
@@ -432,43 +429,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     }
   }
 
-  private class MyMigrationSession extends MigrationSession.MigrationSessionBase {
-    private MigrationCheckerImpl myChecker;
-    private MigrationExecutorImpl myExecutor;
-    private Set<MigrationSession.MigrationStepKind> mySteps;
-
-    public MyMigrationSession(boolean resave, boolean migrate) {
-      this.myChecker = new MigrationCheckerImpl(myMpsProject, getMigrationRegistry());
-      this.myExecutor = new MigrationExecutorImpl(myMpsProject);
-      this.mySteps = SetSequence.fromSet(new HashSet<MigrationSession.MigrationStepKind>());
-      if (resave) {
-        getRequiredSteps().add(MigrationSession.MigrationStepKind.RESAVE);
-      }
-      if (migrate) {
-        getRequiredSteps().add(MigrationSession.MigrationStepKind.MIGRATE);
-      }
-    }
-    @Override
-    public jetbrains.mps.project.Project getProject() {
-      return myMpsProject;
-    }
-    @Override
-    public MigrationRegistry getMigrationRegistry() {
-      return myMigrationRegistry;
-    }
-    @Override
-    public MigrationOptions getOptions() {
-      return myOptions;
-    }
-    @Override
-    public MigrationChecker getChecker() {
-      return this.myChecker;
-    }
-    @Override
-    public MigrationExecutor getExecutor() {
-      return this.myExecutor;
-    }
-  }
 
   private class MyLangDeployListener implements LanguageRegistryListener {
     @Override
