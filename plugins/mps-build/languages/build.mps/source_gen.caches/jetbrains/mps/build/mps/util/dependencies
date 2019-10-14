@@ -105,6 +105,7 @@
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMps_Generator__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.PathConverter" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.VisibleModules" />

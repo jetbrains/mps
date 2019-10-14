@@ -47,6 +47,7 @@ import java.util.LinkedHashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
+import jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.smodel.MPSModuleOwner;
@@ -784,18 +785,17 @@ public final class ModuleChecker {
 
     // java stubs: jars 
     for (String path : myModuleDescriptor.getJavaLibs()) {
-      final SNode p = convertPath(path);
+      SNode p = convertPath(path);
       if (p == null) {
         continue;
       }
 
       if (path.endsWith(".jar")) {
+        final String relPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p);
         if (type.doCheck) {
-          final String relPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p);
-          if (!(ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$Pit_)).any(new IWhereFilter<SNode>() {
+          if (!(Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyJar$qY)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              SNode dep = (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK) ? SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$6b80) : it);
-              return SNodeOperations.isInstanceOf(dep, CONCEPTS.BuildMps_ModuleDependencyJar$qY) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(dep, CONCEPTS.BuildMps_ModuleDependencyJar$qY), LINKS.path$PN10)), relPath);
+              return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$PN10)), relPath);
             }
           }))) {
             report("jar stub library should be extracted into build script: " + relPath);
@@ -805,7 +805,7 @@ public final class ModuleChecker {
         if (type.doPartialImport) {
           SNode extr = ListSequence.fromList(previous).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$6b80), CONCEPTS.BuildMps_ModuleDependencyJar$qY) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$6b80), CONCEPTS.BuildMps_ModuleDependencyJar$qY), LINKS.path$PN10)), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p));
+              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.dependency$6b80), CONCEPTS.BuildMps_ModuleDependencyJar$qY) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(it, LINKS.dependency$6b80), CONCEPTS.BuildMps_ModuleDependencyJar$qY), LINKS.path$PN10)), relPath);
             }
           });
 
@@ -897,12 +897,7 @@ public final class ModuleChecker {
 
   private static Set<SNode> unwrapExtractedDeps(SNode module) {
     // unwrap extracted dependencies into true dependencies, find dependencies from modules 
-    Iterable<SNode> moduleExtractedDependencies = SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.dependencies$Pit_), CONCEPTS.BuildMps_ExtractedModuleDependency$LK);
-    Set<SNode> moduleDependencies = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(moduleDependencies).addSequence(ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$Pit_)));
-    SetSequence.fromSet(moduleDependencies).removeSequence(Sequence.fromIterable(moduleExtractedDependencies));
-    SetSequence.fromSet(moduleDependencies).addSequence(Sequence.fromIterable(SLinkOperations.collect(moduleExtractedDependencies, LINKS.dependency$6b80)));
-    return SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.collect(SNodeOperations.ofConcept(moduleDependencies, CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$gbmo));
+    return SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.collect(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnModule$_g), LINKS.module$gbmo));
   }
 
   private void optimizeDeps() {

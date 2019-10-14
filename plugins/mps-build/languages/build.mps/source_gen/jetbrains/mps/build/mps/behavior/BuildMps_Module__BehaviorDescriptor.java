@@ -10,33 +10,34 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.build.util.VisibleArtifacts;
 import jetbrains.mps.build.util.RequiredDependenciesBuilder;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.util.JavaExportUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
 
   public static final SMethod<Boolean> isCompilable_id6tOCIA6_7jg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompilable").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6tOCIA6_7jg").build();
+  public static final SMethod<Iterable<SNode>> getDependenciesUnwrapped_id3QtfwKhgryb = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getDependenciesUnwrapped").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3QtfwKhgryb").build();
   public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("57YmpYyL8F1").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
   /*package*/ static final SMethod<Boolean> addJarPath_id3WZD5LHqnU8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("addJarPath").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqnU8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
   /*package*/ static final SMethod<Iterable<SNode>> getJarDeps_id3WZD5LHqufx = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getJarDeps").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqufx").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -45,13 +46,20 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static final SMethod<Boolean> fetchMPSDeps_id3WZD5LHqVGt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("fetchMPSDeps").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqVGt").build(SMethodBuilder.createJavaParameter(MPSModulesClosure.class, ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
   /*package*/ static final SMethod<Boolean> fetchMPSDep_id3WZD5LHqWXL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("fetchMPSDep").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3WZD5LHqWXL").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompilable_id6tOCIA6_7jg, fetchDependencies_id57YmpYyL8F1, addJarPath_id3WZD5LHqnU8, getJarDeps_id3WZD5LHqufx, areLocatedInTheSameRoot_id3ZROizBPX9c, fetchJavaDeps_id3WZD5LHqUHY, fetchMPSDeps_id3WZD5LHqVGt, fetchMPSDep_id3WZD5LHqWXL);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompilable_id6tOCIA6_7jg, getDependenciesUnwrapped_id3QtfwKhgryb, fetchDependencies_id57YmpYyL8F1, addJarPath_id3WZD5LHqnU8, getJarDeps_id3WZD5LHqufx, areLocatedInTheSameRoot_id3ZROizBPX9c, fetchJavaDeps_id3WZD5LHqUHY, fetchMPSDeps_id3WZD5LHqVGt, fetchMPSDep_id3WZD5LHqWXL);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static boolean isCompilable_id6tOCIA6_7jg(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.doNotCompile$13Sd) == false;
+  }
+  /*package*/ static Iterable<SNode> getDependenciesUnwrapped_id3QtfwKhgryb(@NotNull SNode __thisNode__) {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$Pit_)).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK) ? SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.BuildMps_ExtractedModuleDependency$LK), LINKS.dependency$6b80) : it);
+      }
+    });
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesClosure closure = new MPSModulesClosure(__thisNode__, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
@@ -175,13 +183,15 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
       case 0:
         return (T) ((Boolean) isCompilable_id6tOCIA6_7jg(node));
       case 1:
+        return (T) ((Iterable<SNode>) getDependenciesUnwrapped_id3QtfwKhgryb(node));
+      case 2:
         fetchDependencies_id57YmpYyL8F1(node, (VisibleArtifacts) parameters[0], (RequiredDependenciesBuilder) parameters[1]);
         return null;
-      case 5:
-        return (T) ((Boolean) fetchJavaDeps_id3WZD5LHqUHY(node, (MPSModulesClosure) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
       case 6:
-        return (T) ((Boolean) fetchMPSDeps_id3WZD5LHqVGt(node, (MPSModulesClosure) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
+        return (T) ((Boolean) fetchJavaDeps_id3WZD5LHqUHY(node, (MPSModulesClosure) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
       case 7:
+        return (T) ((Boolean) fetchMPSDeps_id3WZD5LHqVGt(node, (MPSModulesClosure) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
+      case 8:
         return (T) ((Boolean) fetchMPSDep_id3WZD5LHqWXL(node, (SNode) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -195,11 +205,11 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 2:
-        return (T) ((Boolean) addJarPath_id3WZD5LHqnU8(concept, (SNode) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
       case 3:
-        return (T) ((Iterable<SNode>) getJarDeps_id3WZD5LHqufx(concept, (SNode) parameters[0]));
+        return (T) ((Boolean) addJarPath_id3WZD5LHqnU8(concept, (SNode) parameters[0], (VisibleArtifacts) parameters[1], (RequiredDependenciesBuilder) parameters[2]));
       case 4:
+        return (T) ((Iterable<SNode>) getJarDeps_id3WZD5LHqufx(concept, (SNode) parameters[0]));
+      case 5:
         return (T) ((Boolean) areLocatedInTheSameRoot_id3ZROizBPX9c(concept, (SNode) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -225,21 +235,21 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
     /*package*/ static final SProperty doNotCompile$13Sd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SConcept BuildLayout_AbstractCopy$lT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
-    /*package*/ static final SConcept BuildInputSingleFile$yn = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
-    /*package*/ static final SConcept BuildMps_ExtractedModuleDependency$LK = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, "jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency");
-    /*package*/ static final SConcept BuildMps_ModuleDependencyJar$qY = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyJar");
-  }
-
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
-    /*package*/ static final SContainmentLink path$6h5X = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
     /*package*/ static final SContainmentLink dependencies$Pit_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341cb8L, "dependencies");
     /*package*/ static final SContainmentLink dependency$6b80 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
+    /*package*/ static final SContainmentLink fileset$K4_c = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, 0x48d5d03db92339baL, "fileset");
+    /*package*/ static final SContainmentLink path$6h5X = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
     /*package*/ static final SContainmentLink customLocation$KZIG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x26d578f4b6e3757fL, "customLocation");
     /*package*/ static final SReferenceLink jar$jJDw = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
     /*package*/ static final SContainmentLink path$PN10 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildMps_ExtractedModuleDependency$LK = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, "jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency");
+    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildLayout_AbstractCopy$lT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a394d9b91L, "jetbrains.mps.build.structure.BuildLayout_AbstractCopy");
+    /*package*/ static final SConcept BuildInputSingleFile$yn = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
+    /*package*/ static final SConcept BuildMps_ModuleDependencyJar$qY = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyJar");
   }
 }
