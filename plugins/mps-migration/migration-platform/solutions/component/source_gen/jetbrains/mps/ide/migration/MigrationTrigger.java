@@ -233,6 +233,23 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     });
   }
 
+  private void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
+    // if a new language is added to a repo, all modules in project using it 
+    // should be checked for whether their migration is needed 
+    final Set<SModule> modules2Check = SetSequence.fromSet(new HashSet<SModule>());
+    Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)).visitAll(new IVisitor<SModule>() {
+      public void visit(SModule it) {
+        Set<SLanguage> used = new HashSet<SLanguage>(it.getUsedLanguages());
+        used.retainAll(addedLanguages);
+        if (!(used.isEmpty())) {
+          SetSequence.fromSet(modules2Check).addElement(it);
+        }
+      }
+    });
+
+    checkMigrationNeededOnModuleChange(modules2Check);
+  }
+
   private void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
     if (myMigrationBlock.isMigrationForbiddenWithout(DeployWarning.NOT_DEPLOYED)) {
       return;
@@ -251,28 +268,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       current = current.substract(saved);
     }
     return current.hasSomethingToApply();
-  }
-
-  private void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
-    if (myMigrationBlock.isMigrationForbiddenWithout(DeployWarning.NOT_DEPLOYED)) {
-      return;
-    }
-
-    // if a new language is added to a repo, all modules in project using it 
-    // should be checked for whether their migration is needed 
-    final Set<SModule> modules2Check = SetSequence.fromSet(new HashSet<SModule>());
-    Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)).visitAll(new IVisitor<SModule>() {
-      public void visit(SModule it) {
-        Set<SLanguage> used = new HashSet<SLanguage>(it.getUsedLanguages());
-        used.retainAll(addedLanguages);
-        if (!(used.isEmpty())) {
-          SetSequence.fromSet(modules2Check).addElement(it);
-        }
-      }
-    });
-    if (isMigrationRequired(modules2Check)) {
-      scheduleMigration(false);
-    }
   }
 
   public synchronized void scheduleMigration(final boolean forceAssistant) {

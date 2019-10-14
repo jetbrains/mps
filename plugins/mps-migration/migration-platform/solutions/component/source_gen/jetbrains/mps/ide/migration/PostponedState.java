@@ -5,6 +5,8 @@ package jetbrains.mps.ide.migration;
 import java.util.Collection;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.migration.global.CleanupProjectMigration;
 import org.jetbrains.mps.openapi.module.SModule;
 
 /*package*/ class PostponedState {
@@ -22,6 +24,14 @@ import org.jetbrains.mps.openapi.module.SModule;
 
   public boolean hasVersionUpdate() {
     return versionUpdate;
+  }
+
+  public boolean hasCleanupMigrations() {
+    return CollectionSequence.fromCollection(projectMigrations).any(new IWhereFilter<ProjectMigration>() {
+      public boolean accept(ProjectMigration it) {
+        return it instanceof CleanupProjectMigration;
+      }
+    });
   }
 
   public PostponedState substract(PostponedState state) {
