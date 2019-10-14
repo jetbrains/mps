@@ -11,7 +11,6 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.build.util.Context;
-import jetbrains.mps.build.util.MacroHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
@@ -26,11 +25,10 @@ public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<String> getLocalPath_id4Kip2_918Y$ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocalPath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Kip2_918Y$").build(SMethodBuilder.createJavaParameter(Context.class, ""));
   public static final SMethod<String> getRelativePath_id4Kip2_918YF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getRelativePath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4Kip2_918YF").build();
   public static final SMethod<String> getAntPath_id7ro1ZztyOh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAntPath").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7ro1ZztyOh5").build(SMethodBuilder.createJavaParameter(Context.class, ""));
-  public static final SMethod<String> getLastSegment_id1bWeed$oUb5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLastSegment").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1bWeed$oUb5").build(SMethodBuilder.createJavaParameter(MacroHelper.class, ""));
   public static final SMethod<String> getLastSegment_id5dwDdJ8yckN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLastSegment").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5dwDdJ8yckN").build();
   public static final SMethod<SNode> getParent_id7wpYgMyTXsR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParent").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7wpYgMyTXsR").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalPath_id4Kip2_918Y$, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getLastSegment_id1bWeed$oUb5, getLastSegment_id5dwDdJ8yckN, getParent_id7wpYgMyTXsR);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalPath_id4Kip2_918Y$, getRelativePath_id4Kip2_918YF, getAntPath_id7ro1ZztyOh5, getLastSegment_id5dwDdJ8yckN, getParent_id7wpYgMyTXsR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -44,11 +42,6 @@ public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static String getAntPath_id7ro1ZztyOh5(@NotNull SNode __thisNode__, Context context) {
     return ((String) BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(__thisNode__));
-  }
-  @Deprecated
-  /*package*/ static String getLastSegment_id1bWeed$oUb5(@NotNull SNode __thisNode__, MacroHelper helper) {
-    // There're a lot of uses with null argument, and the only implementation present ignores MacroHelper althogether 
-    return ((String) BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(__thisNode__));
   }
   /*package*/ static String getLastSegment_id5dwDdJ8yckN(@NotNull SNode __thisNode__) {
     // FIXME pay attention to uses of the method. Its uses may expect certain layout. E.g. its uses with 'module descriptor of' (BuildMpsLayout_ModuleJars) suggest 
@@ -81,10 +74,8 @@ public final class BuildSourcePath__BehaviorDescriptor extends BaseBHDescriptor 
       case 2:
         return (T) ((String) getAntPath_id7ro1ZztyOh5(node, (Context) parameters[0]));
       case 3:
-        return (T) ((String) getLastSegment_id1bWeed$oUb5(node, (MacroHelper) parameters[0]));
-      case 4:
         return (T) ((String) getLastSegment_id5dwDdJ8yckN(node));
-      case 5:
+      case 4:
         return (T) ((SNode) getParent_id7wpYgMyTXsR(node));
       default:
         throw new BHMethodNotFoundException(this, method);

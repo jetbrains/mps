@@ -14,7 +14,6 @@
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="o3n2" ref="r:26eadcf0-f275-4e90-be37-e4432772a74d(jetbrains.mps.build.util)" />
-    <import index="iuxj" ref="r:64db3a92-5968-4a73-b456-34504a2d97a6(jetbrains.mps.core.xml.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="8xvf" ref="r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -25,7 +24,6 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="2ogt" ref="r:dc6ee11b-0a41-4208-a099-65b1a11fb3ff(jetbrains.mps.build.workflow.preset.java)" />
-    <import index="arit" ref="r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
@@ -268,26 +266,12 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
-      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
-        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
-      </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -2329,100 +2313,6 @@
             <property role="1dT_AB" value="Differs from relative path for paths inside archives." />
           </node>
         </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="1bWeed$oUb5" role="13h7CS">
-      <property role="TrG5h" value="getLastSegment" />
-      <property role="13i0it" value="true" />
-      <node concept="3Tm1VV" id="1bWeed$oUb6" role="1B3o_S" />
-      <node concept="17QB3L" id="1bWeed$oUb9" role="3clF45" />
-      <node concept="3clFbS" id="1bWeed$oUb8" role="3clF47">
-        <node concept="3SKdUt" id="5dwDdJ8yoiV" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo3pQ" role="3ndbpf">
-            <node concept="3oM_SD" id="ATZLwXo3pR" role="1PaTwD">
-              <property role="3oM_SC" value="There're" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pS" role="1PaTwD">
-              <property role="3oM_SC" value="a" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pT" role="1PaTwD">
-              <property role="3oM_SC" value="lot" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pU" role="1PaTwD">
-              <property role="3oM_SC" value="of" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pV" role="1PaTwD">
-              <property role="3oM_SC" value="uses" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pW" role="1PaTwD">
-              <property role="3oM_SC" value="with" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pX" role="1PaTwD">
-              <property role="3oM_SC" value="null" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pY" role="1PaTwD">
-              <property role="3oM_SC" value="argument," />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3pZ" role="1PaTwD">
-              <property role="3oM_SC" value="and" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3q0" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3q1" role="1PaTwD">
-              <property role="3oM_SC" value="only" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3q2" role="1PaTwD">
-              <property role="3oM_SC" value="implementation" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3q3" role="1PaTwD">
-              <property role="3oM_SC" value="present" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3q4" role="1PaTwD">
-              <property role="3oM_SC" value="ignores" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3q5" role="1PaTwD">
-              <property role="3oM_SC" value="MacroHelper" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXo3q6" role="1PaTwD">
-              <property role="3oM_SC" value="althogether" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5dwDdJ8yohq" role="3cqZAp">
-          <node concept="BsUDl" id="5dwDdJ8yohn" role="3clFbG">
-            <ref role="37wK5l" node="5dwDdJ8yckN" resolve="getLastSegment" />
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="1bWeed$oUba" role="3clF46">
-        <property role="TrG5h" value="helper" />
-        <node concept="3uibUv" id="1bWeed$oUbb" role="1tU5fm">
-          <ref role="3uigEE" to="o3n2:5FtnUVJR86u" resolve="MacroHelper" />
-        </node>
-      </node>
-      <node concept="P$JXv" id="5dwDdJ8yco9" role="lGtFl">
-        <node concept="TZ5HI" id="5dwDdJ8ycoa" role="3nqlJM">
-          <node concept="TZ5HA" id="5dwDdJ8ycob" role="3HnX3l">
-            <node concept="1dT_AC" id="5dwDdJ8ycoz" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
-            </node>
-            <node concept="1dT_AA" id="5dwDdJ8ycoA" role="1dT_Ay">
-              <node concept="92FcH" id="5dwDdJ8ycoG" role="qph3F">
-                <node concept="TZ5HA" id="5dwDdJ8ycoI" role="2XjZqd" />
-                <node concept="VXe0Z" id="5dwDdJ8yjyd" role="92FcQ">
-                  <ref role="VXe0S" node="5dwDdJ8yckN" resolve="getLastSegment" />
-                </node>
-              </node>
-            </node>
-            <node concept="1dT_AC" id="5dwDdJ8yco_" role="1dT_Ay">
-              <property role="1dT_AB" value=" instead. Even though last segment of a path could be a macro, it's not apparent if there's any reason to pass MacroHelper in here." />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="5dwDdJ8ycoc" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="13i0hz" id="5dwDdJ8yckN" role="13h7CS">
