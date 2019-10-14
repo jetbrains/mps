@@ -6,7 +6,8 @@ import java.util.Set;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Arrays;
 
 /*package*/ class MigrationBlock {
   private MigrationTrigger myMigrationTrigger;
@@ -22,18 +23,22 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
   public MigrationBlock(MigrationTrigger migrationTrigger) {
     this.myMigrationTrigger = migrationTrigger;
   }
+
   public void ensureBlocked(BlockCause cause) {
     SetSequence.fromSet(myBlocks).addElement(cause);
   }
+
   public void ensureUnblocked(BlockCause cause) {
     BlockCause contained = SetSequence.fromSet(myBlocks).removeElement(cause);
     if (contained != null && SetSequence.fromSet(myBlocks).isEmpty()) {
       myMigrationTrigger.checkMigrationNeeded();
     }
   }
+
   public void blockMigrationsCheck(BlockCause cause) {
     SetSequence.fromSet(myBlocks).addElement(cause);
   }
+
   public void unblockMigrationsCheck(BlockCause cause) {
     BlockCause contained = SetSequence.fromSet(myBlocks).removeElement(cause);
     assert contained != null : "Non-paired block-unblock method usage. Cause: '" + cause.message + "'";
@@ -41,12 +46,15 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
       myMigrationTrigger.checkMigrationNeeded();
     }
   }
+
   public boolean isMigrationForbidden() {
     return SetSequence.fromSet(myBlocks).isNotEmpty();
   }
-  public boolean isMigrationForbiddenExcept(Iterable<BlockCause> exceptions) {
-    return SetSequence.fromSet(myBlocks).subtract(Sequence.fromIterable(exceptions)).isNotEmpty();
+
+  public boolean isMigrationForbiddenWithout(BlockCause... exceptions) {
+    return SetSequence.fromSet(myBlocks).subtract(ListSequence.fromList(Arrays.asList(exceptions))).isNotEmpty();
   }
+
   public String getMigrationForbiddenMessage() {
     return (SetSequence.fromSet(myBlocks).isEmpty() ? null : SetSequence.fromSet(myBlocks).last().message);
   }

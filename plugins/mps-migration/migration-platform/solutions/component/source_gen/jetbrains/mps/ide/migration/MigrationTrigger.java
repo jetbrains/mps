@@ -35,9 +35,9 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
@@ -234,7 +234,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
-    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(DeployWarning.NOT_DEPLOYED))) {
+    if (myMigrationBlock.isMigrationForbiddenWithout(DeployWarning.NOT_DEPLOYED)) {
       return;
     }
 
@@ -254,7 +254,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private void checkMigrationNeededOnLanguageReload(final List<SLanguage> addedLanguages) {
-    if (myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(DeployWarning.NOT_DEPLOYED))) {
+    if (myMigrationBlock.isMigrationForbiddenWithout(DeployWarning.NOT_DEPLOYED)) {
       return;
     }
 
@@ -279,7 +279,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     if (myMigrationBlock.isMigrationForbidden()) {
       if (forceAssistant) {
         myNotifications.showCantStart(myMigrationBlock.getMigrationForbiddenMessage());
-      } else if (!(myMigrationBlock.isMigrationForbiddenExcept(Sequence.<MigrationBlock.BlockCause>singleton(DeployWarning.NOT_DEPLOYED)))) {
+      } else if (!(myMigrationBlock.isMigrationForbiddenWithout(DeployWarning.NOT_DEPLOYED))) {
         myDeployWarn.notifyDeployWarn();
       }
       return;
@@ -428,7 +428,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       checkMigrationNeeded();
     }
   }
-
 
   private class MyLangDeployListener implements LanguageRegistryListener {
     @Override

@@ -75,6 +75,9 @@
         <child id="1224071154656" name="expression" index="0kSFX" />
       </concept>
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
+      <concept id="1219920932475" name="jetbrains.mps.baseLanguage.structure.VariableArityType" flags="in" index="8X2XB">
+        <child id="1219921048460" name="componentType" index="8Xvag" />
+      </concept>
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -1901,17 +1904,10 @@
               <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
             </node>
             <node concept="liA8E" id="4yMSDz977nx" role="2OqNvi">
-              <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenExcept" />
-              <node concept="2ShNRf" id="4yMSDz977sO" role="37wK5m">
-                <node concept="2HTt$P" id="4yMSDz97eB3" role="2ShVmc">
-                  <node concept="3uibUv" id="4yMSDz97eDE" role="2HTBi0">
-                    <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
-                  </node>
-                  <node concept="10M0yZ" id="2i74bFCg$6k" role="2HTEbv">
-                    <ref role="3cqZAo" node="2i74bFCgfkY" resolve="NOT_DEPLOYED" />
-                    <ref role="1PxDUh" node="2i74bFCd7B9" resolve="DeployWarning" />
-                  </node>
-                </node>
+              <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenWithout" />
+              <node concept="10M0yZ" id="2i74bFCg$6k" role="37wK5m">
+                <ref role="1PxDUh" node="2i74bFCd7B9" resolve="DeployWarning" />
+                <ref role="3cqZAo" node="2i74bFCgfkY" resolve="NOT_DEPLOYED" />
               </node>
             </node>
           </node>
@@ -2074,17 +2070,10 @@
               <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
             </node>
             <node concept="liA8E" id="4yMSDz97ibf" role="2OqNvi">
-              <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenExcept" />
-              <node concept="2ShNRf" id="4yMSDz97ibg" role="37wK5m">
-                <node concept="2HTt$P" id="4yMSDz97ibh" role="2ShVmc">
-                  <node concept="3uibUv" id="4yMSDz97ibi" role="2HTBi0">
-                    <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
-                  </node>
-                  <node concept="10M0yZ" id="2i74bFCg$mr" role="2HTEbv">
-                    <ref role="3cqZAo" node="2i74bFCgfkY" resolve="NOT_DEPLOYED" />
-                    <ref role="1PxDUh" node="2i74bFCd7B9" resolve="DeployWarning" />
-                  </node>
-                </node>
+              <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenWithout" />
+              <node concept="10M0yZ" id="53d0N_Llrz0" role="37wK5m">
+                <ref role="1PxDUh" node="2i74bFCd7B9" resolve="DeployWarning" />
+                <ref role="3cqZAo" node="2i74bFCgfkY" resolve="NOT_DEPLOYED" />
               </node>
             </node>
           </node>
@@ -2362,17 +2351,10 @@
                       <ref role="3cqZAo" node="41MBYoJhFZT" resolve="myMigrationBlock" />
                     </node>
                     <node concept="liA8E" id="6vaxFBe528B" role="2OqNvi">
-                      <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenExcept" />
-                      <node concept="2ShNRf" id="6vaxFBe528C" role="37wK5m">
-                        <node concept="2HTt$P" id="6vaxFBe528D" role="2ShVmc">
-                          <node concept="3uibUv" id="6vaxFBe528E" role="2HTBi0">
-                            <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
-                          </node>
-                          <node concept="10M0yZ" id="2i74bFCg$Bi" role="2HTEbv">
-                            <ref role="3cqZAo" node="2i74bFCgfkY" resolve="NOT_DEPLOYED" />
-                            <ref role="1PxDUh" node="2i74bFCd7B9" resolve="DeployWarning" />
-                          </node>
-                        </node>
+                      <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenWithout" />
+                      <node concept="10M0yZ" id="53d0N_LlrI6" role="37wK5m">
+                        <ref role="1PxDUh" node="2i74bFCd7B9" resolve="DeployWarning" />
+                        <ref role="3cqZAo" node="2i74bFCgfkY" resolve="NOT_DEPLOYED" />
                       </node>
                     </node>
                   </node>
@@ -3424,7 +3406,6 @@
         <node concept="3cqZAl" id="2Om_nYXqlau" role="3clF45" />
       </node>
     </node>
-    <node concept="2tJIrI" id="2Om_nYXqiRa" role="jymVt" />
     <node concept="3UR2Jj" id="3gptLqNJJLQ" role="lGtFl">
       <node concept="TZ5HA" id="3gptLqNJJLR" role="TZ5H$">
         <node concept="1dT_AC" id="3gptLqNJJLS" role="1dT_Ay">
@@ -11457,6 +11438,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="53d0N_Lmm0o" role="jymVt" />
     <node concept="3clFb_" id="4yMSDz94YHQ" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="ensureBlocked" />
@@ -11485,6 +11467,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="53d0N_Lmnxb" role="jymVt" />
     <node concept="3clFb_" id="4yMSDz957f$" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="ensureUnblocked" />
@@ -11547,6 +11530,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="53d0N_LmpHi" role="jymVt" />
     <node concept="3clFb_" id="7RkTcA9EKKP" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="blockMigrationsCheck" />
@@ -11575,6 +11559,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="53d0N_Lmrsu" role="jymVt" />
     <node concept="3clFb_" id="7RkTcA9EM7H" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="unblockMigrationsCheck" />
@@ -11656,6 +11641,7 @@
       <node concept="3Tm1VV" id="7RkTcA9EM7J" role="1B3o_S" />
       <node concept="3cqZAl" id="7RkTcA9EM7K" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="53d0N_LmtbF" role="jymVt" />
     <node concept="3clFb_" id="41MBYoJqCoC" role="jymVt">
       <property role="TrG5h" value="isMigrationForbidden" />
       <node concept="10P_77" id="41MBYoJqCoD" role="3clF45" />
@@ -11671,8 +11657,9 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="53d0N_Lmv99" role="jymVt" />
     <node concept="3clFb_" id="4yMSDz96KrI" role="jymVt">
-      <property role="TrG5h" value="isMigrationForbiddenExcept" />
+      <property role="TrG5h" value="isMigrationForbiddenWithout" />
       <node concept="10P_77" id="4yMSDz96KrJ" role="3clF45" />
       <node concept="3Tm1VV" id="4yMSDz96KrK" role="1B3o_S" />
       <node concept="3clFbS" id="4yMSDz96KrL" role="3clF47">
@@ -11683,8 +11670,12 @@
                 <ref role="3cqZAo" node="41MBYoJsn8J" resolve="myBlocks" />
               </node>
               <node concept="66VNe" id="4yMSDz96WYz" role="2OqNvi">
-                <node concept="37vLTw" id="4yMSDz96X2X" role="576Qk">
-                  <ref role="3cqZAo" node="4yMSDz96RxH" resolve="exceptions" />
+                <node concept="2YIFZM" id="53d0N_Llo14" role="576Qk">
+                  <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+                  <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
+                  <node concept="37vLTw" id="53d0N_Llo8q" role="37wK5m">
+                    <ref role="3cqZAo" node="4yMSDz96RxH" resolve="exceptions" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -11694,13 +11685,14 @@
       </node>
       <node concept="37vLTG" id="4yMSDz96RxH" role="3clF46">
         <property role="TrG5h" value="exceptions" />
-        <node concept="A3Dl8" id="4yMSDz96RxF" role="1tU5fm">
-          <node concept="3uibUv" id="4yMSDz96Wkp" role="A3Ik2">
+        <node concept="8X2XB" id="53d0N_LlnyV" role="1tU5fm">
+          <node concept="3uibUv" id="4yMSDz96Wkp" role="8Xvag">
             <ref role="3uigEE" node="41MBYoJs0T0" resolve="MigrationBlock.BlockCause" />
           </node>
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="53d0N_LmwFa" role="jymVt" />
     <node concept="3clFb_" id="41MBYoJqCoK" role="jymVt">
       <property role="TrG5h" value="getMigrationForbiddenMessage" />
       <node concept="3uibUv" id="41MBYoJqCoL" role="3clF45">
