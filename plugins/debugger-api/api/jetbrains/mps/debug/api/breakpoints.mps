@@ -1790,9 +1790,6 @@
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
     <node concept="3Tm1VV" id="3SnNvqCaK4e" role="1B3o_S" />
-    <node concept="3uibUv" id="3SnNvqCaK4f" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
-    </node>
     <node concept="312cEg" id="3SnNvqCaK4g" role="jymVt">
       <property role="TrG5h" value="myKindToProvider" />
       <property role="34CwA1" value="false" />
@@ -1845,55 +1842,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFbW" id="3SnNvqCaK4y" role="jymVt">
-      <node concept="3Tm1VV" id="3SnNvqCaK4z" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCaK4$" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaK4_" role="3clF47" />
-    </node>
-    <node concept="3clFb_" id="3SnNvqCaK4J" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaK4K" role="1B3o_S" />
-      <node concept="3uibUv" id="3SnNvqCaK4L" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-      <node concept="3clFbS" id="3SnNvqCaK4M" role="3clF47">
-        <node concept="3cpWs6" id="3SnNvqCaK4N" role="3cqZAp">
-          <node concept="Xl_RD" id="3SnNvqCaK4O" role="3cqZAk">
-            <property role="Xl_RC" value="Breakpoint Providers Manager Component" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3SnNvqCaK4P" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3SnNvqCaK4Q" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCaK4R" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaK4S" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCaK4T" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaK4U" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCaK4V" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCaK4W" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaK4X" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCaK4Y" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaK4Z" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCaK50" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="4BWNBR4vNsI" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaK51" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="registerProvider" />
@@ -2040,6 +1989,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vNpB" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaK5I" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="unregisterProvider" />
@@ -2244,6 +2194,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vNvQ" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaK6T" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getProvider" />
@@ -2278,6 +2229,7 @@
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vNmx" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaK75" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getKind" />
@@ -2312,6 +2264,7 @@
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vNjs" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaK7h" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getAllKinds" />
@@ -2336,6 +2289,8 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vNdl" role="jymVt" />
+    <node concept="2tJIrI" id="4BWNBR4vNgo" role="jymVt" />
     <node concept="2YIFZL" id="3SnNvqCaK4A" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <property role="DiZV1" value="false" />

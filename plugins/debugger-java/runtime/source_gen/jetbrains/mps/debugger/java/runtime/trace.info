@@ -11,48 +11,45 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)/4352118152439837554">
     <file name="JavaDebugger.java">
-      <node id="4352118152439837558" at="21,0,22,0" concept="2" trace="myJavaBreakpointsProvider" />
-      <node id="4352118152439837571" at="22,99,23,57" concept="8" />
+      <node id="4352118152439837558" at="19,0,20,0" concept="2" trace="myJavaBreakpointsProvider" />
+      <node id="4352118152439837571" at="21,25,22,18" concept="8" />
       <node id="4352118152439837582" at="27,90,28,34" concept="7" />
-      <node id="4352118152439837592" at="32,56,33,37" concept="7" />
-      <node id="4352118152439837600" at="37,36,38,35" concept="7" />
-      <node id="4352118152439837610" at="41,31,42,17" concept="1" />
-      <node id="4352118152439837612" at="42,17,43,37" concept="1" />
-      <node id="4352118152439837621" at="43,37,44,32" concept="1" />
-      <node id="4352118152439837626" at="44,32,45,37" concept="1" />
-      <node id="4352118152439837636" at="48,34,49,44" concept="1" />
-      <node id="6816881974348609325" at="49,44,50,53" concept="6" />
-      <node id="4352118152439837640" at="51,29,52,27" concept="1" />
-      <node id="4352118152439837648" at="53,5,54,40" concept="1" />
-      <node id="4352118152439837652" at="54,40,55,20" concept="1" />
-      <node id="4352118152439837563" at="22,0,25,0" concept="0" trace="JavaDebugger#(Ljetbrains/mps/debug/api/Debuggers;Ljetbrains/mps/debug/api/breakpoints/BreakpointProvidersManager;)V" />
-      <node id="6816881974348639549" at="50,53,53,5" concept="4" />
+      <node id="4352118152439837592" at="33,56,34,37" concept="7" />
+      <node id="4352118152439837600" at="39,36,40,35" concept="7" />
+      <node id="4352118152439837610" at="44,31,45,17" concept="1" />
+      <node id="4352118152439837612" at="45,17,46,37" concept="1" />
+      <node id="4352118152439837621" at="46,37,47,32" concept="1" />
+      <node id="4352118152439837626" at="47,32,48,37" concept="1" />
+      <node id="4352118152439837636" at="52,34,53,44" concept="1" />
+      <node id="6816881974348609325" at="53,44,54,53" concept="6" />
+      <node id="4352118152439837640" at="55,29,56,27" concept="1" />
+      <node id="4352118152439837648" at="57,5,58,40" concept="1" />
+      <node id="4352118152439837652" at="58,40,59,20" concept="1" />
+      <node id="4352118152439837563" at="21,0,24,0" concept="0" trace="JavaDebugger#()V" />
+      <node id="6816881974348639549" at="54,53,57,5" concept="4" />
       <node id="4352118152439837575" at="25,0,30,0" concept="5" trace="createDebugSessionCreator#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/debug/api/AbstractDebugSessionCreator;" />
-      <node id="4352118152439837588" at="30,0,35,0" concept="5" trace="getBreakpointsProvider#()Ljetbrains/mps/debug/api/breakpoints/IBreakpointsProvider;" />
-      <node id="4352118152439837596" at="35,0,40,0" concept="5" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="4352118152439837606" at="40,0,47,0" concept="5" trace="initComponent#()V" />
-      <node id="4352118152439837632" at="47,0,57,0" concept="5" trace="disposeComponent#()V" />
-      <scope id="4352118152439837570" at="22,99,23,57" />
+      <node id="4352118152439837588" at="31,0,36,0" concept="5" trace="getBreakpointsProvider#()Ljetbrains/mps/debug/api/breakpoints/IBreakpointsProvider;" />
+      <node id="4352118152439837596" at="37,0,42,0" concept="5" trace="getComponentName#()Ljava/lang/String;" />
+      <node id="4352118152439837606" at="43,0,50,0" concept="5" trace="initComponent#()V" />
+      <node id="4352118152439837632" at="51,0,61,0" concept="5" trace="disposeComponent#()V" />
+      <scope id="4352118152439837570" at="21,25,22,18" />
       <scope id="4352118152439837581" at="27,90,28,34" />
-      <scope id="4352118152439837591" at="32,56,33,37" />
-      <scope id="4352118152439837599" at="37,36,38,35" />
-      <scope id="6816881974348639551" at="51,29,52,27" />
-      <scope id="4352118152439837563" at="22,0,25,0">
-        <var name="breakpointsProviderManager" id="4352118152439837568" />
-        <var name="debuggers" id="4352118152439837566" />
-      </scope>
-      <scope id="4352118152439837609" at="41,31,45,37" />
+      <scope id="4352118152439837591" at="33,56,34,37" />
+      <scope id="4352118152439837599" at="39,36,40,35" />
+      <scope id="6816881974348639551" at="55,29,56,27" />
+      <scope id="4352118152439837563" at="21,0,24,0" />
+      <scope id="4352118152439837609" at="44,31,48,37" />
       <scope id="4352118152439837575" at="25,0,30,0">
         <var name="project" id="4352118152439837578" />
       </scope>
-      <scope id="4352118152439837588" at="30,0,35,0" />
-      <scope id="4352118152439837596" at="35,0,40,0" />
-      <scope id="4352118152439837606" at="40,0,47,0" />
-      <scope id="4352118152439837635" at="48,34,55,20">
+      <scope id="4352118152439837588" at="31,0,36,0" />
+      <scope id="4352118152439837596" at="37,0,42,0" />
+      <scope id="4352118152439837606" at="43,0,50,0" />
+      <scope id="4352118152439837635" at="52,34,59,20">
         <var name="mirrorUtil" id="6816881974348609326" />
       </scope>
-      <scope id="4352118152439837632" at="47,0,57,0" />
-      <unit id="4352118152439837554" at="20,0,58,0" name="jetbrains.mps.debugger.java.runtime.JavaDebugger" />
+      <scope id="4352118152439837632" at="51,0,61,0" />
+      <unit id="4352118152439837554" at="18,0,62,0" name="jetbrains.mps.debugger.java.runtime.JavaDebugger" />
     </file>
   </root>
   <root nodeRef="r:171d7488-7735-44dd-8049-f905d8fca4b0(jetbrains.mps.debugger.java.runtime)/7048882195103614171">

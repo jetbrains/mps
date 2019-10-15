@@ -392,9 +392,6 @@
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
     <node concept="3Tm1VV" id="3SnNvqCaJc9" role="1B3o_S" />
-    <node concept="3uibUv" id="3oTAX9lRJHF" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
-    </node>
     <node concept="Wx3nA" id="3SnNvqCaJcb" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
@@ -430,55 +427,13 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3Mp_9OyL2_U" role="jymVt" />
     <node concept="3clFbW" id="3SnNvqCaJcn" role="jymVt">
       <node concept="3Tm1VV" id="3SnNvqCaJco" role="1B3o_S" />
       <node concept="3cqZAl" id="3SnNvqCaJcp" role="3clF45" />
       <node concept="3clFbS" id="3SnNvqCaJcq" role="3clF47" />
     </node>
-    <node concept="3clFb_" id="3SnNvqCaJcr" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaJcs" role="1B3o_S" />
-      <node concept="3uibUv" id="3SnNvqCaJct" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-      <node concept="3clFbS" id="3SnNvqCaJcu" role="3clF47">
-        <node concept="3cpWs6" id="3SnNvqCaJcv" role="3cqZAp">
-          <node concept="Xl_RD" id="3SnNvqCaJcw" role="3cqZAk">
-            <property role="Xl_RC" value="Debuggers" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3SnNvqCaJcx" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3SnNvqCaJcy" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCaJcz" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaJc$" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCaJc_" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaJcA" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCaJcB" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCaJcC" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaJcD" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCaJcE" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaJcF" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCaJcG" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="3Mp_9OyL2Cg" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJcH" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="registerDebugger" />
@@ -518,6 +473,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3Mp_9OyL2EB" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJcW" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="unRegisterDebugger" />
@@ -606,6 +562,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3Mp_9OyL2GZ" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJdv" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDebuggers" />
@@ -662,6 +619,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3Mp_9OyL2Jo" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJdO" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDebuggerByName" />
@@ -728,6 +686,7 @@
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3Mp_9OyL2LM" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJed" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getDebuggerByNameSafe" />
@@ -800,6 +759,8 @@
         <ref role="3uigEE" node="3SnNvqCaJHs" resolve="DebuggerNotPresentException" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3Mp_9OyL2Od" role="jymVt" />
+    <node concept="2tJIrI" id="3Mp_9OyL2QD" role="jymVt" />
     <node concept="2YIFZL" id="3SnNvqCaJeC" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <property role="DiZV1" value="false" />
@@ -3811,6 +3772,7 @@
       </node>
       <node concept="3Tm6S6" id="3SnNvqCaJBG" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vYcw" role="jymVt" />
     <node concept="3clFbW" id="3SnNvqCaJBH" role="jymVt">
       <node concept="3Tm1VV" id="3SnNvqCaJBI" role="1B3o_S" />
       <node concept="3cqZAl" id="3SnNvqCaJBJ" role="3clF45" />
@@ -3820,26 +3782,6 @@
         <node concept="17QB3L" id="7SlC3HX76L9" role="1tU5fm" />
         <node concept="2AHcQZ" id="7SlC3HX76L8" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="3SnNvqCaJBM" role="3clF46">
-        <property role="TrG5h" value="debuggers" />
-        <property role="3TUv4t" value="false" />
-        <node concept="3uibUv" id="3SnNvqCaJBN" role="1tU5fm">
-          <ref role="3uigEE" node="3SnNvqCaJc8" resolve="Debuggers" />
-        </node>
-        <node concept="2AHcQZ" id="7SlC3HX76La" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="3SnNvqCaJBO" role="3clF46">
-        <property role="TrG5h" value="breakpointsProviderManager" />
-        <property role="3TUv4t" value="false" />
-        <node concept="3uibUv" id="3SnNvqCaJBP" role="1tU5fm">
-          <ref role="3uigEE" to="rw00:3SnNvqCaK4d" resolve="BreakpointProvidersManager" />
-        </node>
-        <node concept="2AHcQZ" id="7SlC3HX76Lb" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
       <node concept="3clFbS" id="3SnNvqCaJBQ" role="3clF47">
@@ -3853,28 +3795,31 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3SnNvqCaJBV" role="3cqZAp">
-          <node concept="37vLTI" id="3SnNvqCaJBW" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuTry" role="37vLTJ">
-              <ref role="3cqZAo" node="3SnNvqCaJB_" resolve="myDebuggers" />
+        <node concept="3clFbF" id="4BWNBR4vDTb" role="3cqZAp">
+          <node concept="37vLTI" id="4BWNBR4vE5s" role="3clFbG">
+            <node concept="2YIFZM" id="4BWNBR4vEcs" role="37vLTx">
+              <ref role="37wK5l" node="3SnNvqCaJeC" resolve="getInstance" />
+              <ref role="1Pybhc" node="3SnNvqCaJc8" resolve="Debuggers" />
             </node>
-            <node concept="37vLTw" id="2BHiRxgm8cp" role="37vLTx">
-              <ref role="3cqZAo" node="3SnNvqCaJBM" resolve="debuggers" />
+            <node concept="37vLTw" id="4BWNBR4vDT9" role="37vLTJ">
+              <ref role="3cqZAo" node="3SnNvqCaJB_" resolve="myDebuggers" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3SnNvqCaJBZ" role="3cqZAp">
-          <node concept="37vLTI" id="3SnNvqCaJC0" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuqRx" role="37vLTJ">
-              <ref role="3cqZAo" node="3SnNvqCaJBy" resolve="myBreakpointsProviderManager" />
+        <node concept="3clFbF" id="4BWNBR4vNUp" role="3cqZAp">
+          <node concept="37vLTI" id="4BWNBR4vO5m" role="3clFbG">
+            <node concept="2YIFZM" id="4BWNBR4vOah" role="37vLTx">
+              <ref role="37wK5l" to="rw00:3SnNvqCaK4A" resolve="getInstance" />
+              <ref role="1Pybhc" to="rw00:3SnNvqCaK4d" resolve="BreakpointProvidersManager" />
             </node>
-            <node concept="37vLTw" id="2BHiRxglOr_" role="37vLTx">
-              <ref role="3cqZAo" node="3SnNvqCaJBO" resolve="breakpointsProviderManager" />
+            <node concept="37vLTw" id="4BWNBR4vNUn" role="37vLTJ">
+              <ref role="3cqZAo" node="3SnNvqCaJBy" resolve="myBreakpointsProviderManager" />
             </node>
           </node>
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vYeC" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJC3" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="init" />
@@ -3918,6 +3863,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vYgL" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJCl" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="dispose" />
@@ -3951,6 +3897,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vYiV" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJCz" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getName" />
@@ -3971,6 +3918,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4BWNBR4vYl6" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCaJCF" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="createBreakpoint" />
