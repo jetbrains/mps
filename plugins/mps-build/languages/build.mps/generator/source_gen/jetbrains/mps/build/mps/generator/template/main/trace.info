@@ -287,7 +287,7 @@
       <scope id="2540145662854694642" at="1370,0,1384,0">
         <var name="_context" id="2540145662854694642" />
       </scope>
-      <unit id="2033967228288523077" at="1378,49,1382,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$32" />
+      <unit id="2033967228288523077" at="1378,49,1382,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$31" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/185021013914641150">
@@ -1216,36 +1216,36 @@
       <scope id="5970181360963001549" at="1795,0,1828,0">
         <var name="_context" id="5970181360963001549" />
       </scope>
-      <unit id="7795397664372773546" at="601,167,605,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$4" />
-      <unit id="1787667533297288933" at="989,127,993,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$5" />
-      <unit id="5002485985634208506" at="997,120,1001,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$6" />
-      <unit id="4101476690154933501" at="1011,163,1015,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$7" />
-      <unit id="978600701690073047" at="1419,122,1423,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$34" />
-      <unit id="5970181360960843992" at="1438,120,1442,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$36" />
-      <unit id="6033050450523075625" at="1442,23,1446,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$37" />
-      <unit id="5002485985642072390" at="1449,111,1453,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$38" />
-      <unit id="3239569521490197901" at="1456,122,1460,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$39" />
-      <unit id="1374711517443095552" at="1466,122,1470,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$40" />
-      <unit id="1374711517443116342" at="1470,17,1474,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$41" />
-      <unit id="1374711517443137337" at="1474,16,1478,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$42" />
-      <unit id="5002485985642145975" at="1481,111,1485,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$43" />
-      <unit id="7354447573577595468" at="1488,163,1492,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$44" />
-      <unit id="7354447573577595478" at="1492,21,1496,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$45" />
-      <unit id="7354447573577627073" at="1500,166,1504,9" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$46$1" />
-      <unit id="7354447573577628495" at="1509,165,1513,9" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$47$1" />
-      <unit id="3340252814672973600" at="1700,108,1704,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$52" />
-      <unit id="3340252814673340902" at="1716,108,1720,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$53" />
-      <unit id="3340252814673341061" at="1732,108,1736,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$54" />
-      <unit id="2402740824034672788" at="1759,178,1763,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$55" />
-      <unit id="6354776497085480769" at="1789,58,1793,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$56" />
-      <unit id="5970181360960256005" at="1799,63,1803,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$61" />
-      <unit id="5970181360960287736" at="1803,111,1807,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$60" />
-      <unit id="5970181360960411044" at="1808,115,1812,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$57" />
-      <unit id="7391870795497191282" at="1812,23,1816,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$58" />
-      <unit id="4662909768656958463" at="1818,63,1822,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$59" />
-      <unit id="8845345751178284864" at="1429,119,1435,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$35" />
-      <unit id="7354447573577627065" at="1498,99,1506,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$46" />
-      <unit id="7354447573577628487" at="1507,103,1515,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$47" />
+      <unit id="7795397664372773546" at="601,167,605,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$3" />
+      <unit id="1787667533297288933" at="989,127,993,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$4" />
+      <unit id="5002485985634208506" at="997,120,1001,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$5" />
+      <unit id="4101476690154933501" at="1011,163,1015,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$6" />
+      <unit id="978600701690073047" at="1419,122,1423,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$33" />
+      <unit id="5970181360960843992" at="1438,120,1442,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$35" />
+      <unit id="6033050450523075625" at="1442,23,1446,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$36" />
+      <unit id="5002485985642072390" at="1449,111,1453,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$37" />
+      <unit id="3239569521490197901" at="1456,122,1460,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$38" />
+      <unit id="1374711517443095552" at="1466,122,1470,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$39" />
+      <unit id="1374711517443116342" at="1470,17,1474,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$40" />
+      <unit id="1374711517443137337" at="1474,16,1478,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$41" />
+      <unit id="5002485985642145975" at="1481,111,1485,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$42" />
+      <unit id="7354447573577595468" at="1488,163,1492,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$43" />
+      <unit id="7354447573577595478" at="1492,21,1496,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$44" />
+      <unit id="7354447573577627073" at="1500,166,1504,9" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$45$1" />
+      <unit id="7354447573577628495" at="1509,165,1513,9" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$46$1" />
+      <unit id="3340252814672973600" at="1700,108,1704,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$51" />
+      <unit id="3340252814673340902" at="1716,108,1720,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$52" />
+      <unit id="3340252814673341061" at="1732,108,1736,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$53" />
+      <unit id="2402740824034672788" at="1759,178,1763,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$54" />
+      <unit id="6354776497085480769" at="1789,58,1793,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$55" />
+      <unit id="5970181360960256005" at="1799,63,1803,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$60" />
+      <unit id="5970181360960287736" at="1803,111,1807,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$59" />
+      <unit id="5970181360960411044" at="1808,115,1812,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$56" />
+      <unit id="7391870795497191282" at="1812,23,1816,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$57" />
+      <unit id="4662909768656958463" at="1818,63,1822,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$58" />
+      <unit id="8845345751178284864" at="1429,119,1435,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$34" />
+      <unit id="7354447573577627065" at="1498,99,1506,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$45" />
+      <unit id="7354447573577628487" at="1507,103,1515,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$46" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/2105528055260559263">
@@ -1360,7 +1360,7 @@
       <scope id="8654221991637263183" at="1347,0,1361,0">
         <var name="_context" id="8654221991637263183" />
       </scope>
-      <unit id="2033967228288414314" at="1355,52,1359,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$31" />
+      <unit id="2033967228288414314" at="1355,52,1359,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$30" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/3189788309732033980">
@@ -2136,29 +2136,29 @@
       <scope id="4743026300739052426" at="209,0,239,0">
         <var name="_context" id="4743026300739052426" />
       </scope>
-      <unit id="4356762679305801267" at="215,192,219,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$2" />
-      <unit id="4356762679305801280" at="219,18,223,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$3" />
-      <unit id="4267986820121150744" at="1184,123,1188,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$11" />
-      <unit id="4267986820121169055" at="1188,16,1192,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$12" />
-      <unit id="5211621695190625722" at="1202,83,1206,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$13" />
-      <unit id="4421917191016394869" at="1216,253,1220,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$16" />
-      <unit id="4421917191016394882" at="1220,16,1224,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$17" />
-      <unit id="4421917191016427034" at="1225,211,1229,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$14" />
-      <unit id="4421917191016427002" at="1229,20,1233,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$15" />
-      <unit id="4421917191016427182" at="1239,126,1243,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$20" />
-      <unit id="4421917191016427195" at="1243,16,1247,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$21" />
-      <unit id="7259033139236375652" at="1248,237,1252,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$18" />
-      <unit id="4421917191016427153" at="1252,63,1256,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$19" />
-      <unit id="202934866058978648" at="1268,125,1272,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$25" />
-      <unit id="202934866058978583" at="1273,237,1277,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$23" />
-      <unit id="202934866058978599" at="1277,63,1281,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$24" />
-      <unit id="4743026300738934516" at="1298,121,1302,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$27" />
-      <unit id="1362762974883028555" at="1305,127,1309,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$28" />
-      <unit id="1362762974883936117" at="1315,118,1319,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$29" />
-      <unit id="5471664489000781079" at="1330,63,1334,9" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$30$1" />
-      <unit id="4421917191016860790" at="1258,63,1264,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$22" />
-      <unit id="202934866058978663" at="1283,63,1289,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$26" />
-      <unit id="5471664488998054841" at="1327,117,1336,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$30" />
+      <unit id="4356762679305801267" at="215,192,219,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$1" />
+      <unit id="4356762679305801280" at="219,18,223,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$2" />
+      <unit id="4267986820121150744" at="1184,123,1188,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$10" />
+      <unit id="4267986820121169055" at="1188,16,1192,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$11" />
+      <unit id="5211621695190625722" at="1202,83,1206,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$12" />
+      <unit id="4421917191016394869" at="1216,253,1220,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$15" />
+      <unit id="4421917191016394882" at="1220,16,1224,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$16" />
+      <unit id="4421917191016427034" at="1225,211,1229,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$13" />
+      <unit id="4421917191016427002" at="1229,20,1233,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$14" />
+      <unit id="4421917191016427182" at="1239,126,1243,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$19" />
+      <unit id="4421917191016427195" at="1243,16,1247,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$20" />
+      <unit id="7259033139236375652" at="1248,237,1252,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$17" />
+      <unit id="4421917191016427153" at="1252,63,1256,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$18" />
+      <unit id="202934866058978648" at="1268,125,1272,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$24" />
+      <unit id="202934866058978583" at="1273,237,1277,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$22" />
+      <unit id="202934866058978599" at="1277,63,1281,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$23" />
+      <unit id="4743026300738934516" at="1298,121,1302,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$26" />
+      <unit id="1362762974883028555" at="1305,127,1309,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$27" />
+      <unit id="1362762974883936117" at="1315,118,1319,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$28" />
+      <unit id="5471664489000781079" at="1330,63,1334,9" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$29$1" />
+      <unit id="4421917191016860790" at="1258,63,1264,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$21" />
+      <unit id="202934866058978663" at="1283,63,1289,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$25" />
+      <unit id="5471664488998054841" at="1327,117,1336,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$29" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/3189788309732145594">
@@ -2236,8 +2236,8 @@
       <scope id="3189788309732145595" at="1563,0,1608,0">
         <var name="_context" id="3189788309732145595" />
       </scope>
-      <unit id="7141285424006883300" at="1589,145,1593,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$51" />
-      <unit id="7141285424006686468" at="1566,64,1583,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$50" />
+      <unit id="7141285424006883300" at="1589,145,1593,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$50" />
+      <unit id="7141285424006686468" at="1566,64,1583,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$49" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/3389822811994116526">
@@ -2302,7 +2302,7 @@
       <scope id="3570488090022006376" at="1522,0,1529,0">
         <var name="_context" id="3570488090022006376" />
       </scope>
-      <unit id="3570488090022006398" at="1523,157,1527,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$48" />
+      <unit id="3570488090022006398" at="1523,157,1527,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$47" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/4912951749633259918">
@@ -2631,9 +2631,9 @@
       <scope id="7300774466309442729" at="1027,0,1038,0">
         <var name="_context" id="7300774466309442729" />
       </scope>
-      <unit id="7001357232192393806" at="1021,110,1025,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$8" />
-      <unit id="4274875986684496883" at="1028,110,1032,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$10" />
-      <unit id="4274875986684874650" at="1032,109,1036,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$9" />
+      <unit id="7001357232192393806" at="1021,110,1025,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$7" />
+      <unit id="4274875986684496883" at="1028,110,1032,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$9" />
+      <unit id="4274875986684874650" at="1032,109,1036,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$8" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/6592112598314985825">
@@ -2771,7 +2771,7 @@
       <scope id="6592112598314985296" at="1408,0,1415,0">
         <var name="_context" id="6592112598314985296" />
       </scope>
-      <unit id="6592112598314985384" at="1409,164,1413,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$33" />
+      <unit id="6592112598314985384" at="1409,164,1413,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$32" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/6818892319993308452">
@@ -3006,7 +3006,11 @@
     <file name="QueriesGenerated.java">
       <node id="7753763219110297695" at="118,83,119,122" concept="7" />
       <node id="6136186284559325825" at="120,136,121,139" concept="5" />
-      <node id="1238980147630210658" at="123,41,124,95" concept="6" />
+      <node id="5413931468219452601" at="121,139,122,160" concept="7" />
+      <node id="5413931468219490127" at="122,160,123,150" concept="7" />
+      <node id="5413931468219492681" at="123,150,124,153" concept="7" />
+      <node id="5413931468219497402" at="124,153,125,47" concept="7" />
+      <node id="6136186284559331947" at="125,47,126,239" concept="6" />
       <node id="6136186284559370743" at="127,5,128,17" concept="6" />
       <node id="6136186284559412659" at="130,83,131,135" concept="6" />
       <node id="7753544965996882287" at="133,83,134,138" concept="6" />
@@ -3114,7 +3118,6 @@
       <node id="3747750384908360402" at="3222,3,3223,54" concept="1" />
       <node id="3747750384908360402" at="3241,15,3242,53" concept="1" />
       <node id="3747750384908360402" at="3242,53,3243,17" concept="6" />
-      <node id="1238980147630210654" at="123,0,126,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6136186284559394576" at="130,0,133,0" concept="9" trace="rule_Condition_7_1#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="7753544965996882285" at="133,0,136,0" concept="9" trace="rule_Condition_7_2#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="3570488090011334547" at="136,0,139,0" concept="9" trace="rule_Condition_7_3#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
@@ -3147,12 +3150,10 @@
       <node id="6673387549253815203" at="1402,0,1405,0" concept="9" trace="sourceNodesQuery_7_5#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodesContext;)Ljava/lang/Iterable;" />
       <node id="3747750384908360402" at="1554,0,1557,0" concept="9" trace="mapSrcMacro_post_7_0#(Ljetbrains/mps/generator/template/MapSrcMacroPostProcContext;)V" />
       <node id="8509107224059835439" at="1689,0,1692,0" concept="9" trace="varMacro_Value_7_0#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />
-      <node id="6136186284559331947" at="121,139,126,9" concept="6" />
       <node id="8509107224059803167" at="840,0,846,0" concept="9" trace="ifMacro_Condition_7_5#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
       <node id="1241280061045074208" at="1071,0,1077,0" concept="9" trace="sourceNodeQuery_7_2#(Ljetbrains/mps/generator/template/SourceSubstituteMacroNodeContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6136186284559309049" at="119,122,127,5" concept="3" />
       <node id="1238980147630114160" at="118,0,130,0" concept="9" trace="rule_Condition_7_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
-      <scope id="1238980147630210655" at="123,41,124,95" />
       <scope id="6136186284559394577" at="130,83,131,135" />
       <scope id="7753544965996882286" at="133,83,134,138" />
       <scope id="3570488090011334548" at="136,83,137,141" />
@@ -3219,9 +3220,6 @@
       <scope id="6136186284559414533" at="3208,16,3209,65" />
       <scope id="1241280061046504134" at="3210,16,3211,65" />
       <scope id="3747750384908360402" at="3241,15,3243,17" />
-      <scope id="1238980147630210654" at="123,0,126,0">
-        <var name="it" id="1238980147630210654" />
-      </scope>
       <scope id="6136186284559394576" at="130,0,133,0">
         <var name="_context" id="6136186284559394576" />
       </scope>
@@ -3317,7 +3315,7 @@
       </scope>
       <scope id="8509107224059803168" at="840,78,844,162" />
       <scope id="1241280061045074209" at="1071,92,1075,120" />
-      <scope id="6136186284559309051" at="120,136,126,9">
+      <scope id="6136186284559309051" at="120,136,126,239">
         <var name="solution" id="6136186284559325826" />
       </scope>
       <scope id="8509107224059803167" at="840,0,846,0">
@@ -3330,7 +3328,6 @@
       <scope id="1238980147630114160" at="118,0,130,0">
         <var name="_context" id="1238980147630114160" />
       </scope>
-      <unit id="1238980147630210654" at="122,176,126,7" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$1" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/7753544965996882348">
@@ -4311,7 +4308,7 @@
       <scope id="8065469100328125740" at="1547,0,1554,0">
         <var name="_context" id="8065469100328125740" />
       </scope>
-      <unit id="8065469100328125750" at="1548,157,1552,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$49" />
+      <unit id="8065469100328125750" at="1548,157,1552,5" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$48" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/8252715012761547072">
