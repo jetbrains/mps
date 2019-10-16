@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import com.intellij.openapi.vcs.impl.projectlevelman.AllVcses;
-import jetbrains.mps.smodel.LanguageAspect;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.NotificationListener;
 import org.jetbrains.annotations.NotNull;
@@ -70,7 +69,7 @@ public class MergeDriverNotification {
             return AllVcses.getInstance(myProject).getByName(vn).getDisplayName();
           }
         }), "and");
-        String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"" + LanguageAspect.CONFLUENCE_BASE + "Version+Control\">More info</a>).<p><a href=\"install\">Update</a></p>";
+        String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\"" + ">More info</a>).<p><a href=\"install\">Update</a></p>";
         myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
           @Override
           public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {

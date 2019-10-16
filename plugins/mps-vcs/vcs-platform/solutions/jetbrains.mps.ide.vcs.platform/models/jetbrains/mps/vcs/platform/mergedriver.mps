@@ -6265,25 +6265,19 @@
                     <node concept="17QB3L" id="63ZcAL22ctM" role="1tU5fm" />
                     <node concept="3cpWs3" id="3fU80iE1zWk" role="33vP2m">
                       <node concept="Xl_RD" id="3fU80iE1xd8" role="3uHU7w">
-                        <property role="Xl_RC" value="Version+Control\&quot;&gt;More info&lt;/a&gt;).&lt;p&gt;&lt;a href=\&quot;install\&quot;&gt;Update&lt;/a&gt;&lt;/p&gt;" />
+                        <property role="Xl_RC" value="&gt;More info&lt;/a&gt;).&lt;p&gt;&lt;a href=\&quot;install\&quot;&gt;Update&lt;/a&gt;&lt;/p&gt;" />
                       </node>
-                      <node concept="3cpWs3" id="3fU80iE1ukt" role="3uHU7B">
-                        <node concept="3cpWs3" id="14CscpcLAjN" role="3uHU7B">
-                          <node concept="3cpWs3" id="14CscpcLA7y" role="3uHU7B">
-                            <node concept="Xl_RD" id="14CscpcLA7C" role="3uHU7B">
-                              <property role="Xl_RC" value="&lt;p&gt;This project uses " />
-                            </node>
-                            <node concept="37vLTw" id="14CscpcLATB" role="3uHU7w">
-                              <ref role="3cqZAo" node="63ZcAL22ckp" resolve="whichVcses" />
-                            </node>
+                      <node concept="3cpWs3" id="14CscpcLAjN" role="3uHU7B">
+                        <node concept="3cpWs3" id="14CscpcLA7y" role="3uHU7B">
+                          <node concept="Xl_RD" id="14CscpcLA7C" role="3uHU7B">
+                            <property role="Xl_RC" value="&lt;p&gt;This project uses " />
                           </node>
-                          <node concept="Xl_RD" id="14CscpcLAjV" role="3uHU7w">
-                            <property role="Xl_RC" value=". For better integration with MPS, it is necessary to update VCS settings (&lt;a href=\&quot;" />
+                          <node concept="37vLTw" id="14CscpcLATB" role="3uHU7w">
+                            <ref role="3cqZAo" node="63ZcAL22ckp" resolve="whichVcses" />
                           </node>
                         </node>
-                        <node concept="10M0yZ" id="3fU80iE1WfY" role="3uHU7w">
-                          <ref role="1PxDUh" to="w1kc:~LanguageAspect" resolve="LanguageAspect" />
-                          <ref role="3cqZAo" to="w1kc:~LanguageAspect.CONFLUENCE_BASE" resolve="CONFLUENCE_BASE" />
+                        <node concept="Xl_RD" id="14CscpcLAjV" role="3uHU7w">
+                          <property role="Xl_RC" value=". For better integration with MPS, it is necessary to update VCS settings (&lt;a href=\&quot;https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\&quot;" />
                         </node>
                       </node>
                     </node>
