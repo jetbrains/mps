@@ -261,7 +261,7 @@
       <property role="1iqoE4" value="${module}/icons/constrainedTD.png" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ4_8g" role="bvy1s">
-      <property role="1sEMCp" value="/structure.html" />
+      <property role="1sEMCp" value="structure.html" />
       <ref role="1fZFei" to="tpcc:46nPloez0vX" resolve="ConfluenceDocUrl" />
     </node>
   </node>
@@ -303,7 +303,7 @@
       <property role="1iqoE4" value="${module}/icons/primitiveTD.png" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ4_9g" role="bvy1s">
-      <property role="1sEMCp" value="/structure.html" />
+      <property role="1sEMCp" value="structure.html" />
       <ref role="1fZFei" to="tpcc:46nPloez0vX" resolve="ConfluenceDocUrl" />
     </node>
   </node>
@@ -415,7 +415,7 @@
       <property role="1iqoE4" value="${module}/icons/interfaceStructure.png" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ4_9d" role="bvy1s">
-      <property role="1sEMCp" value="/structure.html" />
+      <property role="1sEMCp" value="structure.html" />
       <ref role="1fZFei" to="tpcc:46nPloez0vX" resolve="ConfluenceDocUrl" />
     </node>
   </node>
@@ -748,7 +748,7 @@
       <property role="1iqoE4" value="${module}/icons/structure.png" />
     </node>
     <node concept="1sEMCm" id="11Atn_WK8fg" role="bvy1s">
-      <property role="1sEMCp" value="/structure.html" />
+      <property role="1sEMCp" value="structure.html" />
       <ref role="1fZFei" to="tpcc:46nPloez0vX" resolve="ConfluenceDocUrl" />
     </node>
   </node>
@@ -779,7 +779,7 @@
       <property role="1iqoE4" value="${module}/icons/enum.png" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ4_8k" role="bvy1s">
-      <property role="1sEMCp" value="/structure.html" />
+      <property role="1sEMCp" value="structure.html" />
       <ref role="1fZFei" to="tpcc:46nPloez0vX" resolve="ConfluenceDocUrl" />
     </node>
   </node>

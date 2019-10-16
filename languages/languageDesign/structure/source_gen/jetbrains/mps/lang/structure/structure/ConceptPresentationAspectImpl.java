@@ -301,9 +301,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a3a0a5b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "/structure.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a6b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "/structure.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a61b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "/structure.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a62b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "/structure.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a92b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "/structure.html";
+  private static final String HELP_URL_lpa09p_a0a3a0a5b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "structure.html";
+  private static final String HELP_URL_lpa09p_a0a2a0a6b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "structure.html";
+  private static final String HELP_URL_lpa09p_a0a2a0a61b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "structure.html";
+  private static final String HELP_URL_lpa09p_a0a2a0a62b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "structure.html";
+  private static final String HELP_URL_lpa09p_a0a2a0a92b0jb = URLFunction_ConfluenceDocUrl.getUrl() + "structure.html";
 }
