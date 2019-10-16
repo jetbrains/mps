@@ -1052,17 +1052,26 @@
           <language id="l:698a8d22-a104-47a0-ba8d-10e3ec237f13:jetbrains.mps.build.workflow" />
           <language id="l:479c7a8c-02f9-43b5-9139-d910cb22f298:jetbrains.mps.core.xml" />
         </uses>
-        <sources jar="." descriptor="jetbrains.mps.ide.build.msd" />
+        <sources jar="jetbrains.mps.ide.build-src.jar" descriptor="jetbrains.mps.ide.build.msd" />
       </module>
     </echoxml>
+    <jar destfile="${build.layout}/mps-build/languages/build/jetbrains.mps.ide.build.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-build/solutions/mpsBuild" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/mps-build/solutions/mpsBuild/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.build.jar" />
+    </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-solutions-mpsBuild-models">
       <fileset dir="${mps_home}/plugins/mps-build/solutions/mpsBuild/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-build/languages/build/jetbrains.mps.ide.build.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-build/languages/build/jetbrains.mps.ide.build-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-build/solutions/mpsBuild/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
       <zipfileset file="${mps_home}/plugins/mps-build/solutions/mpsBuild/jetbrains.mps.ide.build.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/plugins/mps-build/solutions/mpsBuild" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-solutions-mpsBuild-models" prefix="module/models" />
-      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.build.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.workflow.preset.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.build.workflow.preset.jar/META-INF" />

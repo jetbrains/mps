@@ -52,15 +52,13 @@
         <library jar="../../lib/test-1.0.0-jvm6.jar" />
         <library jar="../../lib/values-1.0.0-jvm6.jar" />
         <library jar="../../lib/view-1.0.0-jvm6.jar" />
-        <sources jar="jetbrains.jetpad-src.jar" descriptor="jetbrains.jetpad.msd" />
+        <sources jar="." descriptor="jetbrains.jetpad.msd" />
       </module>
     </echoxml>
     <jar destfile="${build.layout}/jetpad/languages/jetpad/jetbrains.jetpad.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/jetpad/solutions/jetbrains.jetpad" includes="icons/**, resources/**" />
-      <fileset dir="${build.tmp}/default/jetbrains.jetpad.jar" />
-    </jar>
-    <jar destfile="${build.layout}/jetpad/languages/jetpad/jetbrains.jetpad-src.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/plugins/jetpad/solutions/jetbrains.jetpad/jetbrains.jetpad.msd" prefix="module" />
+      <zipfileset dir="${mps_home}/plugins/jetpad/solutions/jetbrains.jetpad" includes="icons/**, resources/**" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.jetpad.jar" />
     </jar>
     <mkdir dir="${build.layout}/jetpad/lib" />
     <copy todir="${build.layout}/jetpad/lib">

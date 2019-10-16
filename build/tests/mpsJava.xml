@@ -124,21 +124,30 @@
           <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
         </dependencies>
         <uses />
-        <sources jar="." descriptor="jetbrains.mps.ide.java.testMaterial.msd" />
+        <sources jar="jetbrains.mps.ide.java.testMaterial-src.jar" descriptor="jetbrains.mps.ide.java.testMaterial.msd" />
       </module>
     </echoxml>
+    <jar destfile="${build.layout}/jetbrains.mps.ide.java.testMaterial.jar" duplicate="preserve">
+      <fileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/resources/testData" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.java.testMaterial.jar" />
+    </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-java-workbench-tests-jetbrains.mps.ide.java.testMaterial-java">
       <fileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/java" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-java-workbench-tests-jetbrains.mps.ide.java.testMaterial-jetbrains">
       <fileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/jetbrains" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/jetbrains.mps.ide.java.testMaterial.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/jetbrains.mps.ide.java.testMaterial-src.jar" duplicate="preserve">
+      <fileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/resources/testData">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
       <zipfileset file="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/jetbrains.mps.ide.java.testMaterial.msd" prefix="module" />
-      <zipfileset dir="${basedir}/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-java-workbench-tests-jetbrains.mps.ide.java.testMaterial-java" prefix="module/java" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-java-workbench-tests-jetbrains.mps.ide.java.testMaterial-jetbrains" prefix="module/jetbrains" />
-      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.java.testMaterial.jar" />
     </jar>
     <echo file="${build.layout}/build.properties">mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
