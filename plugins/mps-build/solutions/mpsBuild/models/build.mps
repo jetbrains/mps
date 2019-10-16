@@ -3129,9 +3129,22 @@
             <ref role="L2wRA" node="7Kfy9QB6KZM" resolve="closures.runtime" />
             <node concept="3yLZsm" id="6IJvZDkJCAX" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-closures.jar" />
-              <node concept="55IIr" id="6IJvZDkJCBG" role="3yLZsn">
-                <node concept="2Ry0Ak" id="6IJvZDkJCCr" role="iGT6I">
-                  <property role="2Ry0Am" value="mps-closures.jar" />
+              <node concept="398BVA" id="4Gy9vLLl2Q7" role="3yLZsn">
+                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4Gy9vLLl2VM" role="iGT6I">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLl2VR" role="2Ry0An">
+                    <property role="2Ry0Am" value="baseLanguage" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLl2VW" role="2Ry0An">
+                      <property role="2Ry0Am" value="closures" />
+                      <node concept="2Ry0Ak" id="4Gy9vLLl2W1" role="2Ry0An">
+                        <property role="2Ry0Am" value="runtime" />
+                        <node concept="2Ry0Ak" id="4Gy9vLLl2W6" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -3140,9 +3153,22 @@
             <ref role="L2wRA" node="7Kfy9QB6L0C" resolve="collections.runtime" />
             <node concept="3yLZsm" id="6IJvZDkJCLR" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-collections.jar" />
-              <node concept="55IIr" id="6IJvZDkJCMA" role="3yLZsn">
-                <node concept="2Ry0Ak" id="6IJvZDkJCNl" role="iGT6I">
-                  <property role="2Ry0Am" value="mps-collections.jar" />
+              <node concept="398BVA" id="4Gy9vLLl2Wa" role="3yLZsn">
+                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4Gy9vLLl2Wb" role="iGT6I">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLl2Wc" role="2Ry0An">
+                    <property role="2Ry0Am" value="baseLanguage" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLl2Wd" role="2Ry0An">
+                      <property role="2Ry0Am" value="collections" />
+                      <node concept="2Ry0Ak" id="4Gy9vLLl2We" role="2Ry0An">
+                        <property role="2Ry0Am" value="runtime" />
+                        <node concept="2Ry0Ak" id="4Gy9vLLl2Wf" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -3151,9 +3177,22 @@
             <ref role="L2wRA" node="7Kfy9QB6L2N" resolve="jetbrains.mps.baseLanguage.tuples.runtime" />
             <node concept="3yLZsm" id="6IJvZDkJCU5" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-tuples.jar" />
-              <node concept="55IIr" id="6IJvZDkJCUO" role="3yLZsn">
-                <node concept="2Ry0Ak" id="6IJvZDkJCVz" role="iGT6I">
-                  <property role="2Ry0Am" value="mps-tuples.jar" />
+              <node concept="398BVA" id="4Gy9vLLv7w7" role="3yLZsn">
+                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4Gy9vLLv7w8" role="iGT6I">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLv7w9" role="2Ry0An">
+                    <property role="2Ry0Am" value="baseLanguage" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLv7wa" role="2Ry0An">
+                      <property role="2Ry0Am" value="tuples" />
+                      <node concept="2Ry0Ak" id="4Gy9vLLv7wb" role="2Ry0An">
+                        <property role="2Ry0Am" value="runtime" />
+                        <node concept="2Ry0Ak" id="4Gy9vLLv7wc" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -3162,9 +3201,22 @@
             <ref role="L2wRA" node="1dsbP8r1gfD" resolve="jetbrains.mps.baseLanguage.references.runtime" />
             <node concept="3yLZsm" id="6IJvZDkJCZB" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-references.jar" />
-              <node concept="55IIr" id="6IJvZDkJCZF" role="3yLZsn">
-                <node concept="2Ry0Ak" id="6IJvZDkJCZJ" role="iGT6I">
-                  <property role="2Ry0Am" value="mps-references.jar" />
+              <node concept="398BVA" id="4Gy9vLLv8OS" role="3yLZsn">
+                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4Gy9vLLv8OT" role="iGT6I">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLv8OU" role="2Ry0An">
+                    <property role="2Ry0Am" value="baseLanguage" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLv8OV" role="2Ry0An">
+                      <property role="2Ry0Am" value="references" />
+                      <node concept="2Ry0Ak" id="4Gy9vLLv8OW" role="2Ry0An">
+                        <property role="2Ry0Am" value="runtime" />
+                        <node concept="2Ry0Ak" id="4Gy9vLLv8OX" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -3847,14 +3899,26 @@
             </node>
           </node>
         </node>
-        <node concept="1BurEX" id="6IJvZDkENhN" role="3bR37C">
-          <node concept="55IIr" id="6IJvZDkEON9" role="1BurEY">
-            <node concept="2Ry0Ak" id="6IJvZDkGGID" role="iGT6I">
-              <property role="2Ry0Am" value="mps-closures.jar" />
+        <node concept="1E1SXE" id="4Gy9vLLl0ob" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="6S1jmf0xEsq" resolve="mps-closures" />
+          <node concept="398BVA" id="4Gy9vLLl0zw" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4Gy9vLLl0Ol" role="iGT6I">
+              <property role="2Ry0Am" value="languages" />
+              <node concept="2Ry0Ak" id="4Gy9vLLl0Z$" role="2Ry0An">
+                <property role="2Ry0Am" value="baseLanguage" />
+                <node concept="2Ry0Ak" id="4Gy9vLLl0ZB" role="2Ry0An">
+                  <property role="2Ry0Am" value="closures" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLl1gr" role="2Ry0An">
+                    <property role="2Ry0Am" value="runtime" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLl1m3" role="2Ry0An">
+                      <property role="2Ry0Am" value="classes" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
-          </node>
-          <node concept="3yrxFa" id="6IJvZDkEOMr" role="2gdwQb">
-            <ref role="3yrxFb" node="6S1jmf0xEsy" resolve="mps-closures.jar" />
           </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgruCy" role="3bR37C">
@@ -3886,14 +3950,26 @@
             </node>
           </node>
         </node>
-        <node concept="1BurEX" id="6IJvZDkEONR" role="3bR37C">
-          <node concept="55IIr" id="6IJvZDkEONS" role="1BurEY">
-            <node concept="2Ry0Ak" id="6IJvZDkGGMI" role="iGT6I">
-              <property role="2Ry0Am" value="mps-collections.jar" />
+        <node concept="1E1SXE" id="4Gy9vLLl1GI" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="6S1jmf0xEsA" resolve="mps-collections" />
+          <node concept="398BVA" id="4Gy9vLLl1S7" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4Gy9vLLl28W" role="iGT6I">
+              <property role="2Ry0Am" value="languages" />
+              <node concept="2Ry0Ak" id="4Gy9vLLl2eA" role="2Ry0An">
+                <property role="2Ry0Am" value="baseLanguage" />
+                <node concept="2Ry0Ak" id="4Gy9vLLl2pP" role="2Ry0An">
+                  <property role="2Ry0Am" value="collections" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLl2vv" role="2Ry0An">
+                    <property role="2Ry0Am" value="runtime" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLl2_7" role="2Ry0An">
+                      <property role="2Ry0Am" value="classes" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
-          </node>
-          <node concept="3yrxFa" id="6IJvZDkEOOI" role="2gdwQb">
-            <ref role="3yrxFb" node="6IJvZDkytfN" resolve="mps-collections.jar" />
           </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgruql" role="3bR37C">
@@ -3957,14 +4033,26 @@
             </node>
           </node>
         </node>
-        <node concept="1BurEX" id="6IJvZDkEOQM" role="3bR37C">
-          <node concept="55IIr" id="6IJvZDkEOQN" role="1BurEY">
-            <node concept="2Ry0Ak" id="6IJvZDkGGOM" role="iGT6I">
-              <property role="2Ry0Am" value="mps-tuples.jar" />
+        <node concept="1E1SXE" id="4Gy9vLLv6sr" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="6S1jmf0xDGC" resolve="mps-tuples" />
+          <node concept="398BVA" id="4Gy9vLLv6BM" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4Gy9vLLv6SB" role="iGT6I">
+              <property role="2Ry0Am" value="languages" />
+              <node concept="2Ry0Ak" id="4Gy9vLLv6Yh" role="2Ry0An">
+                <property role="2Ry0Am" value="baseLanguage" />
+                <node concept="2Ry0Ak" id="4Gy9vLLv73T" role="2Ry0An">
+                  <property role="2Ry0Am" value="tuples" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLv7f8" role="2Ry0An">
+                    <property role="2Ry0Am" value="runtime" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLv7kM" role="2Ry0An">
+                      <property role="2Ry0Am" value="classes" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
-          </node>
-          <node concept="3yrxFa" id="6IJvZDkEOR_" role="2gdwQb">
-            <ref role="3yrxFb" node="6S1jmf0xDGX" resolve="mps-tuples.jar" />
           </node>
         </node>
         <node concept="1SiIV0" id="1dsbP8r1tF9" role="3bR37C">
@@ -3996,14 +4084,26 @@
             </node>
           </node>
         </node>
-        <node concept="1BurEX" id="6IJvZDkEOSj" role="3bR37C">
-          <node concept="55IIr" id="6IJvZDkEOSk" role="1BurEY">
-            <node concept="2Ry0Ak" id="6IJvZDkGGRx" role="iGT6I">
-              <property role="2Ry0Am" value="mps-references.jar" />
+        <node concept="1E1SXE" id="4Gy9vLLv7F_" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="1dsbP8r1mZ9" resolve="mps-references" />
+          <node concept="398BVA" id="4Gy9vLLv7QW" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4Gy9vLLv82c" role="iGT6I">
+              <property role="2Ry0Am" value="languages" />
+              <node concept="2Ry0Ak" id="4Gy9vLLv8dr" role="2Ry0An">
+                <property role="2Ry0Am" value="baseLanguage" />
+                <node concept="2Ry0Ak" id="4Gy9vLLv8oE" role="2Ry0An">
+                  <property role="2Ry0Am" value="references" />
+                  <node concept="2Ry0Ak" id="4Gy9vLLv8uk" role="2Ry0An">
+                    <property role="2Ry0Am" value="runtime" />
+                    <node concept="2Ry0Ak" id="4Gy9vLLv8Dz" role="2Ry0An">
+                      <property role="2Ry0Am" value="classes" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
-          </node>
-          <node concept="3yrxFa" id="6IJvZDkEOT6" role="2gdwQb">
-            <ref role="3yrxFb" node="6IJvZDkykoo" resolve="mps-references.jar" />
           </node>
         </node>
         <node concept="1SiIV0" id="3K3j30x22Nv" role="3bR37C">

@@ -15265,6 +15265,7 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -15272,7 +15273,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
@@ -15372,13 +15372,13 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15441,6 +15441,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -15449,8 +15451,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15514,6 +15514,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -15521,8 +15523,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15586,6 +15586,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -15594,8 +15596,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15658,6 +15658,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -15665,8 +15667,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15737,6 +15737,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -15745,8 +15747,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15809,6 +15809,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -15816,8 +15818,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15888,6 +15888,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -15896,8 +15898,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -15960,6 +15960,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -15967,8 +15969,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16104,6 +16104,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16111,8 +16113,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16177,6 +16177,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16184,8 +16186,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16249,6 +16249,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -16257,8 +16259,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16321,6 +16321,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16328,8 +16330,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16394,6 +16394,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -16402,8 +16404,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16469,6 +16469,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16476,8 +16478,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16541,6 +16541,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16548,8 +16550,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16611,6 +16611,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16618,8 +16620,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16681,6 +16681,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16688,8 +16690,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16754,6 +16754,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16761,8 +16763,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16829,6 +16829,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -16837,8 +16839,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -16905,6 +16905,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16912,8 +16914,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17036,6 +17036,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17043,8 +17045,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17110,6 +17110,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17117,8 +17119,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17182,6 +17182,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -17190,8 +17192,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17254,6 +17254,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17261,8 +17263,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17328,6 +17328,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17335,8 +17337,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17398,6 +17398,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17405,8 +17407,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17470,6 +17470,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -17478,8 +17480,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17543,6 +17543,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17550,8 +17552,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17636,6 +17636,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17643,8 +17645,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17704,6 +17704,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -17712,8 +17714,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17779,6 +17779,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17786,8 +17788,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17851,6 +17851,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -17859,8 +17861,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -17928,6 +17928,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -17935,8 +17937,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -18003,6 +18003,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -18010,8 +18012,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -18077,6 +18077,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -18084,8 +18086,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -18449,6 +18449,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -18456,8 +18458,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -18523,6 +18523,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -18530,8 +18532,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -18598,6 +18598,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -18605,8 +18607,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -18743,6 +18743,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -18750,8 +18752,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -18898,6 +18898,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -18905,8 +18907,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19054,6 +19054,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -19061,8 +19063,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19358,6 +19358,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -19365,8 +19367,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19436,6 +19436,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -19443,8 +19445,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19513,6 +19513,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -19520,8 +19522,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19596,13 +19596,13 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19680,6 +19680,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -19687,8 +19689,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19825,6 +19825,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -19832,8 +19834,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19898,13 +19898,13 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -19976,6 +19976,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -19983,8 +19985,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20049,6 +20049,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -20057,8 +20059,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20118,13 +20118,13 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20198,6 +20198,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -20206,8 +20208,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20278,6 +20278,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -20286,8 +20288,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20474,6 +20474,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -20481,8 +20483,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20544,6 +20544,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -20551,8 +20553,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20626,6 +20626,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -20633,8 +20635,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20696,6 +20696,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -20703,8 +20705,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20772,6 +20772,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -20779,8 +20781,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20842,6 +20842,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -20849,8 +20851,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20923,6 +20923,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -20930,8 +20932,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -20998,6 +20998,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21005,8 +21007,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21071,6 +21071,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21078,8 +21080,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21154,6 +21154,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21161,8 +21163,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21234,6 +21234,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21241,8 +21243,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21314,6 +21314,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21321,8 +21323,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21396,6 +21396,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21403,8 +21405,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21476,6 +21476,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21483,8 +21485,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21553,6 +21553,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -21561,8 +21563,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21624,6 +21624,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -21632,8 +21634,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21705,6 +21705,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -21713,8 +21715,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21777,6 +21777,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21784,8 +21786,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21863,6 +21863,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21870,8 +21872,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -21937,6 +21937,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -21944,8 +21946,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22010,6 +22010,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22017,8 +22019,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22095,6 +22095,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22102,8 +22104,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22247,6 +22247,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22254,8 +22256,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22327,6 +22327,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22334,8 +22336,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22401,6 +22401,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -22409,8 +22411,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22473,6 +22473,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22480,8 +22482,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22551,6 +22551,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22558,8 +22560,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22634,6 +22634,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22641,8 +22643,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22714,6 +22714,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22721,8 +22723,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22787,6 +22787,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22794,8 +22796,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22860,6 +22860,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22867,8 +22869,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -22930,6 +22930,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -22937,8 +22939,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23025,6 +23025,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -23033,8 +23035,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23097,6 +23097,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23104,8 +23106,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23171,6 +23171,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23178,8 +23180,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23245,6 +23245,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23252,8 +23254,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23319,6 +23319,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23326,8 +23328,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23389,6 +23389,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23396,8 +23398,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23475,6 +23475,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23482,8 +23484,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23554,6 +23554,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23561,8 +23563,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23624,6 +23624,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23631,8 +23633,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23701,6 +23701,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -23709,8 +23711,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23773,6 +23773,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23780,8 +23782,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23846,6 +23846,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -23854,8 +23856,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -23918,6 +23918,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -23925,8 +23927,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24003,6 +24003,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -24011,8 +24013,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24075,6 +24075,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24082,8 +24084,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24155,6 +24155,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -24163,8 +24165,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24228,6 +24228,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24235,8 +24237,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24311,6 +24311,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24318,8 +24320,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24381,6 +24381,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24388,8 +24390,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24455,6 +24455,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -24463,8 +24465,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24531,6 +24531,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24538,8 +24540,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24605,6 +24605,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24612,8 +24614,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24675,6 +24675,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24682,8 +24684,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24823,6 +24823,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -24831,8 +24833,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24895,6 +24895,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -24902,8 +24904,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -24973,6 +24973,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -24981,8 +24983,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25045,6 +25045,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25052,8 +25054,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25191,6 +25191,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25198,8 +25200,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25261,6 +25261,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25268,8 +25270,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25337,6 +25337,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25344,8 +25346,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25407,6 +25407,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25414,8 +25416,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25480,6 +25480,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -25488,8 +25490,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25552,6 +25552,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25559,8 +25561,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25631,6 +25631,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -25639,8 +25641,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25718,6 +25718,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25725,8 +25727,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25798,6 +25798,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25805,8 +25807,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25869,6 +25869,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -25876,8 +25878,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -25947,6 +25947,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -25955,8 +25957,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26019,6 +26019,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26026,8 +26028,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26168,6 +26168,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -26176,8 +26178,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26240,6 +26240,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26247,8 +26249,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26323,6 +26323,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26330,8 +26332,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26404,6 +26404,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26411,8 +26413,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26481,6 +26481,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26488,8 +26490,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26548,6 +26548,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -26556,8 +26558,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26620,6 +26620,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26627,8 +26629,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26835,6 +26835,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26842,8 +26844,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -26909,6 +26909,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -26916,8 +26918,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -27049,13 +27049,13 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -27132,6 +27132,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -27139,8 +27141,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -27213,13 +27213,13 @@
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-logging.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -27293,6 +27293,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -27300,8 +27302,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -27374,6 +27374,8 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -27382,8 +27384,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -27453,6 +27453,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -27460,8 +27462,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
@@ -27529,6 +27529,8 @@
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/idea-platform" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -27536,8 +27538,6 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-tuples.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
