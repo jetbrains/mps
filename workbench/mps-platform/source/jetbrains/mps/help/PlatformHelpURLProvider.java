@@ -25,7 +25,14 @@ public class PlatformHelpURLProvider implements ApplicationComponent {
     HelpURLProvider.setInstance(new HelpURLProvider() {
       @Override
       public String getURL() {
-        return "https://www.jetbrains.com/help/mps/" + ApplicationInfo.getInstance().getMajorVersion() + "." + ApplicationInfo.getInstance().getMinorVersion();
+        // TODO: revert to simple major + minor version after MPS-26466 is fixed, this is a duplicate of DocumentationHelper
+        final int dotIndex = ApplicationInfo.getInstance().getMinorVersion().indexOf('.');
+        final String minorVersion = dotIndex < 0 ?
+                                    ApplicationInfo.getInstance().getMinorVersion() :
+                                    ApplicationInfo.getInstance().getMinorVersion().substring(0, dotIndex);
+        return String.format("https://www.jetbrains.com/help/mps/%s.%s/",
+                             ApplicationInfo.getInstance().getMajorVersion(),
+                             minorVersion);
       }
     });
   }
