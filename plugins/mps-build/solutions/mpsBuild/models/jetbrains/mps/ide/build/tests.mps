@@ -71,6 +71,9 @@
         <reference id="7181125477683417255" name="layout" index="13uUGO" />
         <child id="7181125477683417254" name="artifacts" index="13uUGP" />
       </concept>
+      <concept id="9184644532456496017" name="jetbrains.mps.build.structure.BuildLayout_AbstractCopy" flags="ng" index="16eZ8r">
+        <child id="5248329904287857082" name="fileset" index="3LXIA7" />
+      </concept>
       <concept id="7389400916848050074" name="jetbrains.mps.build.structure.BuildLayout_Jar" flags="ng" index="3981dx" />
       <concept id="7389400916848050060" name="jetbrains.mps.build.structure.BuildLayout_NamedContainer" flags="ng" index="3981dR">
         <child id="4380385936562148502" name="containerName" index="Nbhlr" />
@@ -101,6 +104,10 @@
         <child id="7389400916848037006" name="children" index="39821P" />
       </concept>
       <concept id="841011766566059607" name="jetbrains.mps.build.structure.BuildStringNotEmpty" flags="ng" index="3_J27D" />
+      <concept id="5248329904288051100" name="jetbrains.mps.build.structure.BuildFileIncludeSelector" flags="ng" index="3LWZYx">
+        <property id="5248329904288051101" name="pattern" index="3LWZYw" />
+      </concept>
+      <concept id="5248329904287857081" name="jetbrains.mps.build.structure.BuildLayout_Copy" flags="ng" index="3LXIA4" />
       <concept id="5248329904287794596" name="jetbrains.mps.build.structure.BuildInputFiles" flags="ng" index="3LXTmp">
         <child id="5248329904287794598" name="dir" index="3LXTmr" />
         <child id="5248329904287794679" name="selectors" index="3LXTna" />
@@ -153,8 +160,10 @@
       </concept>
       <concept id="1265949165890536423" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars" flags="ng" index="L2wRC">
         <property id="7918752904810477378" name="stripImplementation" index="2IHNyd" />
+        <property id="3335207478148060173" name="customContent" index="3PtdQa" />
         <reference id="1265949165890536425" name="module" index="L2wRA" />
         <child id="4356762679305730677" name="jarLocations" index="3yL2VB" />
+        <child id="3335207478148060176" name="sourceJar" index="3PtdQn" />
       </concept>
       <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
       <concept id="2105528055260548241" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_FolderWithSources" flags="ng" index="1bldCd" />
@@ -208,6 +217,7 @@
         <property id="322010710375892619" name="uuid" index="3LESm3" />
         <child id="322010710375956261" name="path" index="3LF7KH" />
       </concept>
+      <concept id="3335207478148059730" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJarContent" flags="ng" index="3PtdJl" />
       <concept id="7259033139236285166" name="jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency" flags="nn" index="1SiIV0">
         <child id="7259033139236285167" name="dependency" index="1SiIV1" />
       </concept>
@@ -3391,7 +3401,41 @@
         <ref role="L2wRA" node="yja7V_1TlS" resolve="jetbrains.mps.ide.java.tests" />
       </node>
       <node concept="L2wRC" id="4LMS1PLaUog" role="39821P">
+        <property role="3PtdQa" value="true" />
         <ref role="L2wRA" node="4LMS1PLaRBc" resolve="jetbrains.mps.ide.java.testMaterial" />
+        <node concept="3PtdJl" id="3EvxwykF4_y" role="3PtdQn">
+          <node concept="398223" id="3EvxwykF4_$" role="39821P">
+            <node concept="3_J27D" id="3EvxwykF4__" role="Nbhlr">
+              <node concept="3Mxwew" id="3EvxwykF4_C" role="3MwsjC">
+                <property role="3MwjfP" value="module" />
+              </node>
+            </node>
+            <node concept="3LXIA4" id="2d0qgmCd0rC" role="39821P">
+              <node concept="3LXTmp" id="2d0qgmCd0rD" role="3LXIA7">
+                <node concept="55IIr" id="EpEP7hk8Sy" role="3LXTmr">
+                  <node concept="2Ry0Ak" id="3EvxwykF4ZG" role="iGT6I">
+                    <property role="2Ry0Am" value="plugins" />
+                    <node concept="2Ry0Ak" id="3EvxwykF4ZL" role="2Ry0An">
+                      <property role="2Ry0Am" value="mps-java" />
+                      <node concept="2Ry0Ak" id="3EvxwykF4ZQ" role="2Ry0An">
+                        <property role="2Ry0Am" value="workbench" />
+                        <node concept="2Ry0Ak" id="3EvxwykF4ZV" role="2Ry0An">
+                          <property role="2Ry0Am" value="tests" />
+                          <node concept="2Ry0Ak" id="3EvxwykF500" role="2Ry0An">
+                            <property role="2Ry0Am" value="jetbrains.mps.ide.java.testMaterial" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3LWZYx" id="3EvxwykHSOt" role="3LXTna">
+                  <property role="3LWZYw" value="resources/" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="10PD9b" id="yja7V_1Mze" role="10PD9s" />

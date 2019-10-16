@@ -143,6 +143,9 @@ public class JavaToMps_Test extends BaseTransformationTest {
 
     public IFile testsLocation() {
       SModule testMaterial = PersistenceFacade.getInstance().createModuleReference("49166c31-952a-46f6-8970-ea45964379d0(jetbrains.mps.ide.java.testMaterial)").resolve(myProject.getRepository());
+      // FIXME resurrected getOutputPath 
+      //        beware, there's custom src jar packaging to make sure {module}/resources/testData output path is available under -src.jar/module/, where getOutputPath() resolves to 
+      //        Could utilize the fact there's BuildMps_ModuleResources root that points to resources/ and copies required resource files to binary distribution jar 
       return ((AbstractModule) testMaterial).getOutputPath();
     }
   }
