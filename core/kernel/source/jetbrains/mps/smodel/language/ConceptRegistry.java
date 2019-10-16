@@ -69,8 +69,10 @@ public class ConceptRegistry implements CoreComponent, LanguageRegistryListener 
 
   /**
    * it will be dropped along with #getInstance
+   * @deprecated there's no need to access BehaviorRegistry class through ConceptRegistry.
    */
   @NotNull
+  @Deprecated(since = "2019.3", forRemoval = true)
   public BehaviorRegistry getBehaviorRegistry() {
     return myBehaviorRegistry;
   }

@@ -57,6 +57,7 @@ public final class SMethodBuilder<T> {
     return this;
   }
 
+  // FIXME a lot of modifiers are the same (e.g. public virtual), can re-use instances, no reason to keep a lot of duplicates
   public SMethodBuilder<T> modifiers(@NotNull SModifiersImpl modifiers) {
     myModifiers = modifiers;
     return this;
@@ -72,16 +73,10 @@ public final class SMethodBuilder<T> {
     return this;
   }
 
+  @Deprecated(since = "2019.3", forRemoval = true)
   public SMethodBuilder<T> registry(@NotNull BehaviorRegistry registry) {
     myRegistry = registry;
     return this;
-  }
-
-  public int a() {
-    return 1;
-  }
-  public <T1> T1 foo(T1 t) {
-    return (T1) ((Integer) a());
   }
 
   public static SParameter createVarArgPrm(Class<?> aClass, String name) {
