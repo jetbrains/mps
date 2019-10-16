@@ -1606,7 +1606,7 @@
                       <ref role="3cqZAo" to="w1kc:~LanguageAspect.CONFLUENCE_BASE" resolve="CONFLUENCE_BASE" />
                     </node>
                     <node concept="Xl_RD" id="3qqTSRHLte$" role="3uHU7w">
-                      <property role="Xl_RC" value="Generator#Generator-aboutgenerator" />
+                      <property role="Xl_RC" value="mps-generator.html" />
                     </node>
                   </node>
                 </node>
