@@ -6,10 +6,10 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import jetbrains.mps.smodel.ModelsEventsCollector;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.event.SModelEventVisitor;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import java.util.List;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -32,13 +32,11 @@ import org.jetbrains.mps.openapi.model.SModel;
   private SRepositoryListener myRepoListener = new MyRepositoryContentListener();
   private ModelsEventsCollector myModelListener;
   private _FunctionTypes._return_P0_E0<? extends Boolean> myIsUnderReload;
-  private _FunctionTypes._void_P1_E0<? super SModule> myUpdater;
   private SModelEventVisitor myVisitor = new MyModelEventsVisitor();
 
-  public SilentModuleVersionUpdater(MPSProject mpsProject, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderReload, _FunctionTypes._void_P1_E0<? super SModule> updater) {
+  public SilentModuleVersionUpdater(MPSProject mpsProject, _FunctionTypes._return_P0_E0<? extends Boolean> isUnderReload) {
     this.myMpsProject = mpsProject;
     myIsUnderReload = isUnderReload;
-    myUpdater = updater;
   }
 
   public void attach() {
@@ -49,13 +47,14 @@ import org.jetbrains.mps.openapi.model.SModel;
     new RepoListenerRegistrar(myMpsProject.getRepository(), myRepoListener).detach();
   }
 
-  protected abstract void checkMigrationNeeded(List<SModule> toUpdate);
+  protected abstract void runMigrationsIfNeeded(List<SModule> modules);
+  protected abstract void updateImportVersionsIfNeeded(SModule module);
 
   private void updateSingleModuleDescriptorSilently(SModule module) {
     if (!(isProjectMigrateableModule(module))) {
       return;
     }
-    myUpdater.invoke(module);
+    updateImportVersionsIfNeeded(module);
   }
 
   private boolean isProjectMigrateableModule(@NotNull SModule module) {
@@ -88,7 +87,7 @@ import org.jetbrains.mps.openapi.model.SModel;
           updateSingleModuleDescriptorSilently(m);
         }
       }
-      checkMigrationNeeded(toUpdate);
+      runMigrationsIfNeeded(toUpdate);
     }
   }
 

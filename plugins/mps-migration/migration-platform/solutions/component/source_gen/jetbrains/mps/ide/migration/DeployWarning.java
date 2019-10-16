@@ -25,12 +25,15 @@ import com.intellij.notification.NotificationType;
 import com.intellij.notification.NotificationListener;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.event.HyperlinkEvent;
+import com.intellij.openapi.ui.popup.Balloon;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 
-/*package*/ class DeployWarning {
+/*package*/ abstract class DeployWarning {
   public static final MigrationBlock.BlockCause NOT_DEPLOYED = new MigrationBlock.BlockCause("some languages are not deployed");
-  public static final String GOTO_PREFIX = "goto_";
+  private static final String REF_GOTO_PREFIX = "goto_";
+  private static final String REF_REBUILD = "rebuild";
+  private static final String REF_RUN_MIGRATION = "run_migration";
 
   private Consumer<Iterable<SModuleReference>> myRebuildHandler = null;
   private MigrationSuspendedNotification myLastDeployWarning = null;
@@ -115,7 +118,7 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
       if (absent) {
         sb.append(langName);
       } else {
-        sb.append("<a href=\"").append(GOTO_PREFIX).append(langProblem.getSourceModuleReference().toString()).append("\">");
+        sb.append("<a href=\"").append(REF_GOTO_PREFIX).append(langProblem.getSourceModuleReference().toString()).append("\">");
         sb.append(langName);
         sb.append("</a>");
       }
@@ -124,7 +127,11 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
     }
 
     if (myRebuildHandler != null) {
-      sb.append("<br><p><a href=\"rebuild\">Rebuild and deploy listed languages</a></p>");
+      sb.append("<br><p><a href=\"" + REF_REBUILD + "\">Rebuild and deploy listed languages</a></p>");
+    }
+
+    if (hasCleanups) {
+      sb.append("<br><p>There are some cleanup migrations to execute, which might fix the problem. <a href=\"" + REF_RUN_MIGRATION + "\">Run migration</a></p>");
     }
 
     return new MigrationSuspendedNotification(sb.toString(), hasCleanups, SetSequence.fromSet(problems).select(new ISelector<SLanguage, SModuleReference>() {
@@ -134,20 +141,28 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
     }).where(new NotNullWhereFilter<SModuleReference>()));
   }
 
+  public abstract void runAssistant();
+
   private class MigrationSuspendedNotification extends Notification {
     /*package*/ boolean myHasCleanups;
     public MigrationSuspendedNotification(String title, boolean hasCleanups, final Iterable<SModuleReference> problemModules) {
-      super("Migration", "Migration suspended", title, NotificationType.WARNING, new NotificationListener() {
+      super("Migration", "Migration suspended", title, NotificationType.WARNING);
+      setListener(new NotificationListener() {
         @Override
         public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
           if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
             return;
           }
-          if ("rebuild".equals(e.getDescription())) {
+          if (REF_REBUILD.equals(e.getDescription())) {
             myRebuildHandler.accept(problemModules);
-          }
-          if (e.getDescription().startsWith(GOTO_PREFIX)) {
-            String ref = e.getDescription().substring(GOTO_PREFIX.length());
+          } else if (REF_RUN_MIGRATION.equals(e.getDescription())) {
+            Balloon balloon = MigrationSuspendedNotification.this.getBalloon();
+            if (balloon != null) {
+              balloon.hide();
+            }
+            runAssistant();
+          } else if (e.getDescription().startsWith(REF_GOTO_PREFIX)) {
+            String ref = e.getDescription().substring(REF_GOTO_PREFIX.length());
             SModuleReference module = ModuleReference.parseReference(ref);
             new ProjectPaneNavigator(myMpsProject).shallFocus(true).select(module);
           }

@@ -17,8 +17,8 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.migration.global.MigrationProperties;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
+import org.jetbrains.mps.openapi.module.SModule;
 import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.RuntimeFlags;
@@ -104,25 +104,32 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
     myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
-    myDeployWarn = new DeployWarning(ideaProject, p, myLanguageRegistry);
+    myDeployWarn = new DeployWarning(ideaProject, p, myLanguageRegistry) {
+      @Override
+      public void runAssistant() {
+        scheduleMigration(true);
+      }
+    };
     myNotifications = new MigrationNotifications(myProject);
     this.myVersionUpdater = new SilentModuleVersionUpdater(myMpsProject, new _FunctionTypes._return_P0_E0<Boolean>() {
       public Boolean invoke() {
         return myReloadListener.isIsUnderReload();
       }
-    }, new _FunctionTypes._void_P1_E0<SModule>() {
-      public void invoke(SModule m) {
-        myMigrationRegistry.doUpdateImportVersions(m);
-      }
     }) {
       @Override
-      protected void checkMigrationNeeded(List<SModule> toUpdate) {
+      protected void runMigrationsIfNeeded(List<SModule> toUpdate) {
         checkMigrationNeededOnModuleChange(toUpdate);
+      }
+
+      @Override
+      protected void updateImportVersionsIfNeeded(SModule module) {
+        myMigrationRegistry.doUpdateImportVersions(module);
       }
     };
   }
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {
+    // todo replace with a normal component dependency 
     myDeployWarn.setRebuildHandler(rebuildHandler);
   }
 
