@@ -24,6 +24,6 @@ public class ShowUserGuideAction extends ShowSiteAction {
   }
 
   protected String getSiteURL() {
-    return DocumentationHelper.getConfluenceBase() + "mps-user-s-guide.html";
+    return DocumentationHelper.getHelpCenterBase() + "mps-user-s-guide.html";
   }
 }

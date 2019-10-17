@@ -18,7 +18,7 @@ package jetbrains.mps.workbench;
 import com.intellij.openapi.application.ApplicationInfo;
 
 public final class DocumentationHelper {
-  public static String getConfluenceBase() {
+  public static String getHelpCenterBase() {
     // TODO: revert to simple major + minor version after MPS-26466 is fixed
     final int dotIndex = ApplicationInfo.getInstance().getMinorVersion().indexOf('.');
     final String minorVersion = dotIndex < 0 ?

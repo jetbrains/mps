@@ -21,7 +21,6 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NewLanguageSettings;
 import jetbrains.mps.lang.migration.runtime.base.VersionFixer;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
@@ -57,7 +56,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @Override
   public String getDescription() {
     return "In MPS, you create new languages and then use them to write code " +
-           "in solutions. An <a href=\"" + DocumentationHelper.getConfluenceBase() +
+           "in solutions. An <a href=\"" + DocumentationHelper.getHelpCenterBase() +
            "MPS+project+structure#MPSprojectstructure-languages\">MPS language</a> describes the syntax, editor, generator and other aspects of the " +
            "new language.";
   }

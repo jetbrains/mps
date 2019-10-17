@@ -20,7 +20,6 @@ import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NewSolutionSettings;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -52,7 +51,7 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @Override
   public String getDescription() {
     return "Solutions are used to store code written in MPS languages. " +
-           "Each <a href=\"" + DocumentationHelper.getConfluenceBase() + "MPS+project+structure#MPSprojectstructure-solutions\">MPS solution</a> " +
+           "Each <a href=\"" + DocumentationHelper.getHelpCenterBase() + "MPS+project+structure#MPSprojectstructure-solutions\">MPS solution</a> " +
            "is a set of models with a name.";
   }
 
