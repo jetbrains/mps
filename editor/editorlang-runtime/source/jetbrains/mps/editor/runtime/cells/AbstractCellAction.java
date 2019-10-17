@@ -23,9 +23,10 @@ import jetbrains.mps.openapi.editor.cells.CellAction;
  * Date: 2/12/13
  */
 public abstract class AbstractCellAction implements CellAction {
-  private boolean myExecuteInCommand = true;
+  private boolean myExecuteInCommand;
 
-  public AbstractCellAction() {
+  protected AbstractCellAction() {
+    this(true);
   }
 
   protected AbstractCellAction(boolean executeInCommand) {
@@ -46,4 +47,11 @@ public abstract class AbstractCellAction implements CellAction {
   public boolean canExecute(EditorContext context) {
     return true;
   }
+
+  public static abstract class SelectionCellAction extends AbstractCellAction {
+    public SelectionCellAction() {
+      super(false);
+    }
+  }
+
 }

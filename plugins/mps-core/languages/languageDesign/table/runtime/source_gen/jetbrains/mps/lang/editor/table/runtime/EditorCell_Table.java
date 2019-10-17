@@ -301,6 +301,7 @@ public class EditorCell_Table extends EditorCell_Collection {
     private int myColumnNumber;
     private CellAction myExistingAction;
     public SelectColumnAction(int columnNumber, CellAction existingAction) {
+      super(false);
       myColumnNumber = columnNumber;
       myExistingAction = existingAction;
     }

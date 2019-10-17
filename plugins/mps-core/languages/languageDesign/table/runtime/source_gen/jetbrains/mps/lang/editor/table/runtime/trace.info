@@ -364,13 +364,14 @@
       <node id="4057456417884478779" at="297,59,298,98" concept="11" />
       <node id="9150287053027696909" at="301,0,302,0" concept="5" trace="myColumnNumber" />
       <node id="9150287053027696925" at="302,0,303,0" concept="5" trace="myExistingAction" />
-      <node id="9150287053027696913" at="303,76,304,36" concept="4" />
-      <node id="9150287053027696929" at="304,36,305,40" concept="4" />
-      <node id="9150287053027696948" at="309,77,310,42" concept="4" />
-      <node id="9150287053027696965" at="310,42,311,15" concept="11" />
-      <node id="9150287053027696885" at="312,7,313,139" concept="10" />
-      <node id="9150287053027696891" at="313,139,314,120" concept="10" />
-      <node id="9150287053027696899" at="314,120,315,69" concept="4" />
+      <node id="6315050883295763243" at="303,76,304,19" concept="16" />
+      <node id="9150287053027696913" at="304,19,305,36" concept="4" />
+      <node id="9150287053027696929" at="305,36,306,40" concept="4" />
+      <node id="9150287053027696948" at="310,77,311,42" concept="4" />
+      <node id="9150287053027696965" at="311,42,312,15" concept="11" />
+      <node id="9150287053027696885" at="313,7,314,139" concept="10" />
+      <node id="9150287053027696891" at="314,139,315,120" concept="10" />
+      <node id="9150287053027696899" at="315,120,316,69" concept="4" />
       <node id="6515532108595898038" at="179,14,181,9" concept="1" />
       <node id="5676661828149549569" at="253,10,255,5" concept="1" />
       <node id="3216977149571365783" at="127,79,130,11" concept="8" />
@@ -394,13 +395,13 @@
       <node id="4049837364749640145" at="246,0,250,0" concept="9" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="899362601591216911" at="267,0,271,0" concept="9" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="6610030841081075378" at="284,0,288,0" concept="9" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
-      <node id="9150287053027696872" at="303,0,307,0" concept="2" trace="SelectColumnAction#(ILjetbrains/mps/openapi/editor/cells/CellAction;)V" />
-      <node id="9150287053027696937" at="308,48,312,7" concept="8" />
+      <node id="9150287053027696937" at="309,48,313,7" concept="8" />
       <node id="4992257971070065772" at="145,0,150,0" concept="9" trace="getBottomInset#()I" />
       <node id="6515532108595898026" at="176,32,181,9" concept="8" />
       <node id="5676661828149535752" at="250,6,255,5" concept="8" />
       <node id="899362601591216838" at="260,0,265,0" concept="9" trace="createEmptyRowCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="4057456417884478684" at="295,0,300,0" concept="15" trace="createTable#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/editor/table/runtime/TableModel;Ljava/lang/String;)Ljetbrains/mps/nodeEditor/cells/EditorCell_Collection;" />
+      <node id="9150287053027696872" at="303,0,308,0" concept="2" trace="SelectColumnAction#(ILjetbrains/mps/openapi/editor/cells/CellAction;)V" />
       <node id="7541022036347910989" at="63,0,69,0" concept="9" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="792303165832177537" at="91,125,97,15" concept="4" />
       <node id="792303165832192268" at="97,15,103,15" concept="4" />
@@ -420,7 +421,7 @@
       <node id="2390677225378626357" at="206,81,215,5" concept="6" />
       <node id="899362601591216895" at="265,0,275,0" concept="9" trace="installEmptyRowCellActions#(Ljetbrains/mps/openapi/editor/cells/EditorCell;I)V" />
       <node id="6610030841081056405" at="282,0,292,0" concept="9" trace="installEmptyTableCellActions#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="9150287053027696877" at="307,0,317,0" concept="9" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="9150287053027696877" at="308,0,318,0" concept="9" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="6610030841081008755" at="45,37,56,5" concept="8" />
       <node id="6515532108595897995" at="169,21,182,7" concept="6" />
       <node id="2390677225378626205" at="203,0,218,0" concept="9" trace="getColumnCells#(I)Ljava/util/List;" />
@@ -462,8 +463,7 @@
       <scope id="4992257971070065775" at="146,31,148,13" />
       <scope id="6515532108595897973" at="165,38,167,91" />
       <scope id="6515532108595898016" at="172,24,174,19" />
-      <scope id="9150287053027696875" at="303,76,305,40" />
-      <scope id="9150287053027696938" at="309,77,311,15" />
+      <scope id="9150287053027696938" at="310,77,312,15" />
       <scope id="7541022036347910994" at="64,58,67,126">
         <var name="editorComponent" id="7541022036347910999" />
       </scope>
@@ -481,6 +481,7 @@
         <var name="columnCount" id="2524830101155322144" />
       </scope>
       <scope id="4057456417884478687" at="295,137,298,98" />
+      <scope id="9150287053027696875" at="303,76,306,40" />
       <scope id="792303165832177546" at="93,0,97,0">
         <var name="editorContext" id="792303165832177547" />
       </scope>
@@ -514,10 +515,6 @@
       <scope id="6610030841081075378" at="284,0,288,0">
         <var name="editorContext" id="6610030841081075381" />
       </scope>
-      <scope id="9150287053027696872" at="303,0,307,0">
-        <var name="columnNumber" id="9150287053027696907" />
-        <var name="existingAction" id="9150287053027696921" />
-      </scope>
       <scope id="4992257971070065772" at="145,0,150,0" />
       <scope id="899362601591216838" at="260,0,265,0" />
       <scope id="6610030841081056426" at="275,44,280,21">
@@ -528,6 +525,10 @@
         <var name="model" id="4057456417884532529" />
         <var name="node" id="4057456417884532521" />
         <var name="uniquePrefix" id="3216977149571362758" />
+      </scope>
+      <scope id="9150287053027696872" at="303,0,308,0">
+        <var name="columnNumber" id="9150287053027696907" />
+        <var name="existingAction" id="9150287053027696921" />
       </scope>
       <scope id="7541022036347910989" at="63,0,69,0">
         <var name="editorContext" id="7541022036347910992" />
@@ -542,7 +543,7 @@
         <var name="nextRow" id="2390677225378645199" />
       </scope>
       <scope id="6610030841081056423" at="275,0,282,0" />
-      <scope id="9150287053027696882" at="308,48,315,69">
+      <scope id="9150287053027696882" at="309,48,316,69">
         <var name="editorComponent" id="9150287053027696886" />
         <var name="selection" id="9150287053027696892" />
       </scope>
@@ -572,7 +573,7 @@
       <scope id="6610030841081056405" at="282,0,292,0">
         <var name="emptyCell" id="6610030841081056410" />
       </scope>
-      <scope id="9150287053027696877" at="307,0,317,0">
+      <scope id="9150287053027696877" at="308,0,318,0">
         <var name="context" id="9150287053027696880" />
       </scope>
       <scope id="6515532108595898005" at="170,162,181,9">
@@ -659,8 +660,8 @@
       <unit id="899362601591216909" at="266,43,271,5" name="jetbrains.mps.lang.editor.table.runtime.EditorCell_Table$11" />
       <unit id="6610030841081075376" at="283,42,288,5" name="jetbrains.mps.lang.editor.table.runtime.EditorCell_Table$12" />
       <unit id="7541022036347910987" at="62,39,69,7" name="jetbrains.mps.lang.editor.table.runtime.EditorCell_Table$1" />
-      <unit id="9150287053027696870" at="300,0,318,0" name="jetbrains.mps.lang.editor.table.runtime.EditorCell_Table$SelectColumnAction" />
-      <unit id="3031432740458708321" at="32,0,319,0" name="jetbrains.mps.lang.editor.table.runtime.EditorCell_Table" />
+      <unit id="9150287053027696870" at="300,0,319,0" name="jetbrains.mps.lang.editor.table.runtime.EditorCell_Table$SelectColumnAction" />
+      <unit id="3031432740458708321" at="32,0,320,0" name="jetbrains.mps.lang.editor.table.runtime.EditorCell_Table" />
     </file>
   </root>
   <root nodeRef="r:b60215f1-3d3e-41cc-8321-723ef8eb59dd(jetbrains.mps.lang.editor.table.runtime)/4490468428501048480">

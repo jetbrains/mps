@@ -24,6 +24,10 @@ import jetbrains.mps.openapi.editor.EditorContext;
 public class EmptyCellAction extends AbstractCellAction {
   private static EmptyCellAction ourInstance;
 
+  protected EmptyCellAction() {
+    super(false);
+  }
+
   public static EmptyCellAction getInstance() {
     if (ourInstance == null) {
       ourInstance = new EmptyCellAction();
