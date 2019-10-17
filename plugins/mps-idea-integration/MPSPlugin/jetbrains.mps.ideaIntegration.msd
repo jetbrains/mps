@@ -13,7 +13,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/../classes" />
+    <stubModelEntry path="${mps_home}/plugins/mps-idea-integration/classes" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
