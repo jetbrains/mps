@@ -8,13 +8,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -26,9 +26,9 @@ public class check_ContributionIsNotInConceptLanguage_NonTypesystemRule extends 
     if ((applicableConcept == null)) {
       return;
     }
-    SNode conceptModule = check_vbn2nq_a0c0b(SNodeOperations.getModel(applicableConcept));
-    SNode contributionModule = check_vbn2nq_a0d0b(SNodeOperations.getModel(contribution));
-    if ((conceptModule != null) && conceptModule == contributionModule) {
+    SModule conceptModule = check_vbn2nq_a0c0b(SNodeOperations.getModel(applicableConcept));
+    SModule contributionModule = check_vbn2nq_a0d0b(SNodeOperations.getModel(contribution));
+    if (conceptModule != null && conceptModule == contributionModule) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(contribution, "Contribution to a menu must be defined in a different language from the menu being contributed to", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8721449194275282278", null, errorTarget);
@@ -44,15 +44,15 @@ public class check_ContributionIsNotInConceptLanguage_NonTypesystemRule extends 
   public boolean overrides() {
     return false;
   }
-  private static SNode check_vbn2nq_a0c0b(SModel checkedDotOperand) {
+  private static SModule check_vbn2nq_a0c0b(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SModelOperations.getModuleStub(checkedDotOperand);
+      return checkedDotOperand.getModule();
     }
     return null;
   }
-  private static SNode check_vbn2nq_a0d0b(SModel checkedDotOperand) {
+  private static SModule check_vbn2nq_a0d0b(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SModelOperations.getModuleStub(checkedDotOperand);
+      return checkedDotOperand.getModule();
     }
     return null;
   }

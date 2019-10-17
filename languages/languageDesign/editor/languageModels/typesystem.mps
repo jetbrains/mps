@@ -324,7 +324,6 @@
         <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
-      <concept id="6995935425733782641" name="jetbrains.mps.lang.smodel.structure.Model_GetModule" flags="nn" index="13u695" />
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
@@ -5479,34 +5478,42 @@
       <node concept="3cpWs8" id="7$8NXlZpjx7" role="3cqZAp">
         <node concept="3cpWsn" id="7$8NXlZpjx8" role="3cpWs9">
           <property role="TrG5h" value="conceptModule" />
-          <node concept="3Tqbb2" id="7$8NXlZpjx0" role="1tU5fm">
-            <ref role="ehGHo" to="hypd:5xDtKQA7vSu" resolve="Module" />
-          </node>
           <node concept="2EnYce" id="7$8NXlZpjI9" role="33vP2m">
-            <node concept="2OqwBi" id="7$8NXlZpjxa" role="2Oq$k0">
-              <node concept="37vLTw" id="7$8NXlZpjxb" role="2Oq$k0">
-                <ref role="3cqZAo" node="7$8NXlZpevL" resolve="applicableConcept" />
+            <node concept="2JrnkZ" id="5uz$l7toFmL" role="2Oq$k0">
+              <node concept="2OqwBi" id="7$8NXlZpjxa" role="2JrQYb">
+                <node concept="37vLTw" id="7$8NXlZpjxb" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7$8NXlZpevL" resolve="applicableConcept" />
+                </node>
+                <node concept="I4A8Y" id="7$8NXlZpjxc" role="2OqNvi" />
               </node>
-              <node concept="I4A8Y" id="7$8NXlZpjxc" role="2OqNvi" />
             </node>
-            <node concept="13u695" id="7$8NXlZpjxd" role="2OqNvi" />
+            <node concept="liA8E" id="5uz$l7toFHC" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+            </node>
+          </node>
+          <node concept="3uibUv" id="5uz$l7toFZn" role="1tU5fm">
+            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
           </node>
         </node>
       </node>
       <node concept="3cpWs8" id="7$8NXlZpk3L" role="3cqZAp">
         <node concept="3cpWsn" id="7$8NXlZpk3M" role="3cpWs9">
           <property role="TrG5h" value="contributionModule" />
-          <node concept="3Tqbb2" id="7$8NXlZpk3H" role="1tU5fm">
-            <ref role="ehGHo" to="hypd:5xDtKQA7vSu" resolve="Module" />
-          </node>
           <node concept="2EnYce" id="7$8NXlZpko3" role="33vP2m">
-            <node concept="2OqwBi" id="7$8NXlZpk3O" role="2Oq$k0">
-              <node concept="1YBJjd" id="7$8NXlZpk3P" role="2Oq$k0">
-                <ref role="1YBMHb" node="7$8NXlZpe8u" resolve="contribution" />
+            <node concept="2JrnkZ" id="5uz$l7toFXu" role="2Oq$k0">
+              <node concept="2OqwBi" id="7$8NXlZpk3O" role="2JrQYb">
+                <node concept="1YBJjd" id="7$8NXlZpk3P" role="2Oq$k0">
+                  <ref role="1YBMHb" node="7$8NXlZpe8u" resolve="contribution" />
+                </node>
+                <node concept="I4A8Y" id="7$8NXlZpk3Q" role="2OqNvi" />
               </node>
-              <node concept="I4A8Y" id="7$8NXlZpk3Q" role="2OqNvi" />
             </node>
-            <node concept="13u695" id="7$8NXlZpk3R" role="2OqNvi" />
+            <node concept="liA8E" id="5uz$l7toGdU" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+            </node>
+          </node>
+          <node concept="3uibUv" id="5uz$l7toGfN" role="1tU5fm">
+            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
           </node>
         </node>
       </node>
@@ -5522,11 +5529,11 @@
           </node>
         </node>
         <node concept="1Wc70l" id="7$8NXlZpkKx" role="3clFbw">
-          <node concept="2OqwBi" id="7$8NXlZpl6L" role="3uHU7B">
-            <node concept="37vLTw" id="7$8NXlZpkRY" role="2Oq$k0">
+          <node concept="3y3z36" id="5uz$l7toGNU" role="3uHU7B">
+            <node concept="10Nm6u" id="5uz$l7toGOE" role="3uHU7w" />
+            <node concept="37vLTw" id="7$8NXlZpkRY" role="3uHU7B">
               <ref role="3cqZAo" node="7$8NXlZpjx8" resolve="conceptModule" />
             </node>
-            <node concept="3x8VRR" id="7$8NXlZpmbA" role="2OqNvi" />
           </node>
           <node concept="3clFbC" id="7$8NXlZpfEf" role="3uHU7w">
             <node concept="37vLTw" id="7$8NXlZpk3S" role="3uHU7w">
