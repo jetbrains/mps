@@ -47,5 +47,10 @@
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
   </node>
+  <node concept="1TIwiD" id="2e3ANUBpdXU">
+    <property role="EcuMT" value="2559059706675257210" />
+    <property role="TrG5h" value="NoChildInObligatoryRoleProblem" />
+    <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
+  </node>
 </model>
 

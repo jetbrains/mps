@@ -11,6 +11,9 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765956807" name="final" index="R5$K2" />
@@ -35,6 +38,9 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -80,6 +86,9 @@
     </node>
     <node concept="PrWs8" id="2zJEoOoN2IK" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+    <node concept="t5JxF" id="2e3ANUBpdXV" role="lGtFl">
+      <property role="t5JxN" value="This problem has a reference to the kind. Actually, we meet here the same issue we face in concept function: how to properly define the context of the function type (specific concept function concept). I would like to have a set of parameters for each problem concept fixed. Still I chose not to add it into behavior (smth like static virtual method returning the correct node&lt;ProblemKind&gt;, but to place it directly into AST. I want user to be able to navigate to the set of context variables. Probably, it might be another kind of reference (meta-reference) in AST, but I leave these ontological ideas not implemented here" />
     </node>
   </node>
 </model>
