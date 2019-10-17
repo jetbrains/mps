@@ -6034,6 +6034,180 @@
       <unit id="2010440180771532928" at="14,0,69,0" name="jetbrains.mps.ide.actions.EditGivenNode_Action" />
     </file>
   </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2060615461620710085">
+    <file name="EmulateMakeSession_Action.java">
+      <node id="2060615461620710085" at="20,0,21,0" concept="16" trace="ICON" />
+      <node id="2060615461621429354" at="22,0,23,0" concept="7" trace="mockSession" />
+      <node id="2060615461620710085" at="23,77,24,44" concept="18" />
+      <node id="2060615461620710085" at="24,44,25,39" concept="6" />
+      <node id="2060615461620710085" at="25,39,26,34" concept="6" />
+      <node id="2060615461620710085" at="26,34,27,44" concept="6" />
+      <node id="2060615461620710085" at="30,32,31,16" concept="13" />
+      <node id="2060615461621488771" at="35,80,36,48" concept="6" />
+      <node id="2060615461621489765" at="36,48,37,13" concept="13" />
+      <node id="2060615461621474150" at="39,64,40,68" concept="6" />
+      <node id="2060615461621482614" at="41,12,42,125" concept="6" />
+      <node id="2060615461621478369" at="42,125,43,62" concept="6" />
+      <node id="2060615461620710085" at="48,53,49,19" concept="13" />
+      <node id="2060615461621537402" at="51,5,52,66" concept="12" />
+      <node id="2060615461621537403" at="53,22,54,21" concept="13" />
+      <node id="2060615461620710085" at="56,5,57,16" concept="13" />
+      <node id="2060615461621427830" at="60,96,61,102" concept="12" />
+      <node id="2060615461621494916" at="62,64,63,137" concept="6" />
+      <node id="2060615461621066813" at="64,12,65,139" concept="6" />
+      <node id="2060615461620710085" at="69,31,70,44" concept="12" />
+      <node id="2060615461620710085" at="70,44,71,36" concept="6" />
+      <node id="2060615461620710085" at="71,36,72,20" concept="6" />
+      <node id="2060615461620710085" at="72,20,73,78" concept="6" />
+      <node id="2060615461620710085" at="73,78,74,20" concept="6" />
+      <node id="2060615461620710085" at="74,20,75,26" concept="13" />
+      <node id="2060615461621058726" at="77,74,78,129" concept="13" />
+      <node id="2060615461621431679" at="80,74,81,14" concept="13" />
+      <node id="2060615461621070653" at="84,36,85,37" concept="13" />
+      <node id="2060615461621070653" at="86,5,87,16" concept="13" />
+      <node id="2060615461621056962" at="90,36,91,73" concept="13" />
+      <node id="2060615461621056962" at="92,5,93,16" concept="13" />
+      <node id="2060615461621056963" at="96,36,97,45" concept="13" />
+      <node id="2060615461621056963" at="98,5,99,16" concept="13" />
+      <node id="2060615461621056964" at="102,36,103,69" concept="13" />
+      <node id="2060615461621056964" at="104,5,105,16" concept="13" />
+      <node id="2060615461621494502" at="64,10,66,5" concept="1" />
+      <node id="2060615461621478249" at="41,10,44,5" concept="1" />
+      <node id="2060615461620710085" at="47,95,50,5" concept="10" />
+      <node id="2060615461621537403" at="52,66,55,7" concept="10" />
+      <node id="2060615461621010990" at="77,0,80,0" concept="11" trace="getMakeServiceComponent#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Ljetbrains/mps/make/IMakeService;" />
+      <node id="2060615461620710085" at="80,0,83,0" concept="17" trace="mockSession_State#(Ljetbrains/mps/ide/actions/MockMakeSessionProvider;)Ljava/lang/String;" />
+      <node id="2060615461621070653" at="83,89,86,5" concept="10" />
+      <node id="2060615461621056962" at="89,86,92,5" concept="10" />
+      <node id="2060615461621056963" at="95,84,98,5" concept="10" />
+      <node id="2060615461621056964" at="101,88,104,5" concept="10" />
+      <node id="2060615461620710085" at="29,0,33,0" concept="11" trace="isDumbAware#()Z" />
+      <node id="2060615461621487967" at="34,89,38,5" concept="10" />
+      <node id="2060615461621490645" at="61,102,66,5" concept="10" />
+      <node id="2060615461620710085" at="23,0,29,0" concept="3" trace="EmulateMakeSession_Action#(Ljetbrains/mps/ide/actions/MockMakeSessionProvider;)V" />
+      <node id="2060615461621470645" at="38,5,44,5" concept="10" />
+      <node id="2060615461621537402" at="50,5,56,5" concept="1" />
+      <node id="2060615461621070653" at="83,0,89,0" concept="17" trace="check_r0pals_a0a9#(Ljetbrains/mps/make/MakeServiceComponent;)Ljetbrains/mps/make/IMakeService;" />
+      <node id="2060615461621056962" at="89,0,95,0" concept="17" trace="check_r0pals_a0a0j#(Ljetbrains/mps/core/platform/Platform;)Ljetbrains/mps/make/MakeServiceComponent;" />
+      <node id="2060615461621056963" at="95,0,101,0" concept="17" trace="check_r0pals_a0a0a9#(Ljetbrains/mps/ide/MPSCoreComponents;)Ljetbrains/mps/core/platform/Platform;" />
+      <node id="2060615461621056964" at="101,0,107,0" concept="17" trace="check_r0pals_a0a0a0j#(Lcom/intellij/openapi/application/Application;)Ljetbrains/mps/ide/MPSCoreComponents;" />
+      <node id="2060615461620710085" at="59,0,68,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="2060615461620710085" at="68,0,77,0" concept="11" trace="getActionId#()Ljava/lang/String;" />
+      <node id="2060615461620710085" at="33,0,46,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="2060615461620710085" at="46,0,59,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="2060615461620710085" at="30,32,31,16" />
+      <scope id="2060615461621470647" at="39,64,40,68" />
+      <scope id="2060615461620710085" at="48,53,49,19" />
+      <scope id="2060615461621537403" at="53,22,54,21" />
+      <scope id="2060615461621490647" at="62,64,63,137" />
+      <scope id="2060615461621494503" at="64,12,65,139" />
+      <scope id="2060615461621010992" at="77,74,78,129" />
+      <scope id="2060615461621430779" at="80,74,81,14" />
+      <scope id="2060615461621070653" at="84,36,85,37" />
+      <scope id="2060615461621056962" at="90,36,91,73" />
+      <scope id="2060615461621056963" at="96,36,97,45" />
+      <scope id="2060615461621056964" at="102,36,103,69" />
+      <scope id="2060615461621487969" at="35,80,37,13" />
+      <scope id="2060615461621478250" at="41,12,43,62" />
+      <scope id="2060615461621010990" at="77,0,80,0">
+        <var name="event" id="2060615461621010990" />
+      </scope>
+      <scope id="2060615461620710085" at="80,0,83,0">
+        <var name="object" id="2060615461620710085" />
+      </scope>
+      <scope id="2060615461620710085" at="23,77,27,44" />
+      <scope id="2060615461620710085" at="29,0,33,0" />
+      <scope id="2060615461621537402" at="51,5,55,7">
+        <var name="p" id="2060615461621537402" />
+      </scope>
+      <scope id="2060615461621070653" at="83,89,87,16" />
+      <scope id="2060615461621056962" at="89,86,93,16" />
+      <scope id="2060615461621056963" at="95,84,99,16" />
+      <scope id="2060615461621056964" at="101,88,105,16" />
+      <scope id="2060615461620710085" at="23,0,29,0">
+        <var name="mockSession_par" id="2060615461620710085" />
+      </scope>
+      <scope id="2060615461620710085" at="60,96,66,5">
+        <var name="makeServiceComponent" id="2060615461621427831" />
+      </scope>
+      <scope id="2060615461620710085" at="69,31,75,26">
+        <var name="res" id="2060615461620710085" />
+      </scope>
+      <scope id="2060615461621070653" at="83,0,89,0">
+        <var name="checkedDotOperand" id="2060615461621070653" />
+      </scope>
+      <scope id="2060615461621056962" at="89,0,95,0">
+        <var name="checkedDotOperand" id="2060615461621056962" />
+      </scope>
+      <scope id="2060615461621056963" at="95,0,101,0">
+        <var name="checkedDotOperand" id="2060615461621056963" />
+      </scope>
+      <scope id="2060615461621056964" at="101,0,107,0">
+        <var name="checkedDotOperand" id="2060615461621056964" />
+      </scope>
+      <scope id="2060615461620710085" at="59,0,68,0">
+        <var name="_params" id="2060615461620710085" />
+        <var name="event" id="2060615461620710085" />
+      </scope>
+      <scope id="2060615461620710085" at="68,0,77,0" />
+      <scope id="2060615461621467108" at="34,89,44,5" />
+      <scope id="2060615461620710085" at="47,95,57,16" />
+      <scope id="2060615461620710085" at="33,0,46,0">
+        <var name="_params" id="2060615461620710085" />
+        <var name="event" id="2060615461620710085" />
+      </scope>
+      <scope id="2060615461620710085" at="46,0,59,0">
+        <var name="_params" id="2060615461620710085" />
+        <var name="event" id="2060615461620710085" />
+      </scope>
+      <unit id="2060615461620710085" at="19,0,108,0" name="jetbrains.mps.ide.actions.EmulateMakeSession_Action" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2060615461621434047">
+    <file name="MockMakeSessionProvider.java">
+      <node id="2776737884285476195" at="17,35,18,160" concept="6" />
+      <node id="2060615461621434306" at="25,60,26,83" concept="18" />
+      <node id="2060615461621449551" at="29,0,30,0" concept="7" trace="myActive" />
+      <node id="2060615461621516568" at="30,56,31,47" concept="6" />
+      <node id="2776737884285225495" at="31,47,32,76" concept="6" />
+      <node id="3570758234031958993" at="32,76,33,20" concept="13" />
+      <node id="2060615461621525039" at="35,56,36,38" concept="12" />
+      <node id="3570758234031965853" at="36,38,37,79" concept="6" />
+      <node id="2060615461621521386" at="37,79,38,20" concept="6" />
+      <node id="2060615461621524920" at="38,20,39,18" concept="13" />
+      <node id="2060615461621539084" at="41,29,42,28" concept="13" />
+      <node id="2776737884285469631" at="21,0,24,0" concept="11" trace="actionFinished#()V" />
+      <node id="2060615461621434300" at="25,0,28,0" concept="3" trace="MockMakeSession#(Ljetbrains/mps/project/MPSProject;)V" />
+      <node id="2060615461621539076" at="41,0,44,0" concept="11" trace="isActive#()Z" />
+      <node id="2776737884285469623" at="16,0,20,0" concept="11" trace="actionStarted#()V" />
+      <node id="2060615461621514819" at="30,0,35,0" concept="11" trace="create#(Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/ide/actions/MockMakeSessionProvider/MockMakeSession;" />
+      <node id="2060615461621521382" at="35,0,41,0" concept="11" trace="remove#(Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/ide/actions/MockMakeSessionProvider/MockMakeSession;" />
+      <node id="3570758234031944791" at="15,0,25,0" concept="7" trace="myListener" />
+      <scope id="2776737884285469635" at="22,36,22,36" />
+      <scope id="2776737884285469627" at="17,35,18,160" />
+      <scope id="2060615461621434304" at="25,60,26,83" />
+      <scope id="2060615461621539079" at="41,29,42,28" />
+      <scope id="2776737884285469631" at="21,0,24,0" />
+      <scope id="2060615461621434300" at="25,0,28,0">
+        <var name="mpsProject" id="2060615461621434307" />
+      </scope>
+      <scope id="2060615461621514823" at="30,56,33,20" />
+      <scope id="2060615461621539076" at="41,0,44,0" />
+      <scope id="2776737884285469623" at="16,0,20,0" />
+      <scope id="2060615461621521385" at="35,56,39,18">
+        <var name="result" id="2060615461621525040" />
+      </scope>
+      <scope id="2060615461621514819" at="30,0,35,0">
+        <var name="mpsProject" id="2060615461621520297" />
+      </scope>
+      <scope id="2060615461621521382" at="35,0,41,0">
+        <var name="mpsProject" id="3570758234031968454" />
+      </scope>
+      <unit id="2776737884285469617" at="15,54,24,5" name="jetbrains.mps.ide.actions.MockMakeSessionProvider$MockMakeSession$1" />
+      <unit id="2060615461621509993" at="14,0,29,0" name="jetbrains.mps.ide.actions.MockMakeSessionProvider$MockMakeSession" />
+      <unit id="2060615461621434047" at="13,0,45,0" name="jetbrains.mps.ide.actions.MockMakeSessionProvider" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2214103008221911161">
     <file name="FindModelUsages_ActionGroup.java">
       <node id="2214103008221911161" at="10,0,11,0" concept="16" trace="ID" />
@@ -7320,24 +7494,25 @@
       <node id="2899596005954254200" at="215,124,216,75" concept="6" />
     </file>
     <file name="ToolsInternal_ActionGroup.java">
-      <node id="2899596005954254197" at="10,0,11,0" concept="16" trace="ID" />
-      <node id="2899596005954254197" at="12,72,13,34" concept="18" />
-      <node id="2899596005954254197" at="13,34,14,24" concept="6" />
-      <node id="2899596005954254197" at="14,24,15,20" concept="6" />
-      <node id="4192682328059866586" at="15,20,16,50" concept="6" />
-      <node id="2533953941693899097" at="16,50,17,95" concept="6" />
-      <node id="3490942814116715563" at="17,95,18,108" concept="6" />
-      <node id="2533953941693899099" at="18,108,19,50" concept="6" />
-      <node id="4998818250317603960" at="19,50,20,114" concept="6" />
-      <node id="8671835029167076507" at="20,114,21,100" concept="6" />
-      <node id="5891226107409302137" at="21,100,22,113" concept="6" />
-      <node id="7892193783544722784" at="22,113,23,113" concept="6" />
-      <node id="2899596005954254197" at="12,0,25,0" concept="3" trace="ToolsInternal_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="2899596005954254197" at="12,72,23,113" />
-      <scope id="2899596005954254197" at="12,0,25,0">
+      <node id="2899596005954254197" at="11,0,12,0" concept="16" trace="ID" />
+      <node id="2899596005954254197" at="13,72,14,34" concept="18" />
+      <node id="2899596005954254197" at="14,34,15,24" concept="6" />
+      <node id="2899596005954254197" at="15,24,16,20" concept="6" />
+      <node id="2060615461621544253" at="16,20,17,188" concept="6" />
+      <node id="4192682328059866586" at="17,188,18,50" concept="6" />
+      <node id="2533953941693899097" at="18,50,19,95" concept="6" />
+      <node id="3490942814116715563" at="19,95,20,108" concept="6" />
+      <node id="2533953941693899099" at="20,108,21,50" concept="6" />
+      <node id="4998818250317603960" at="21,50,22,114" concept="6" />
+      <node id="8671835029167076507" at="22,114,23,100" concept="6" />
+      <node id="5891226107409302137" at="23,100,24,113" concept="6" />
+      <node id="7892193783544722784" at="24,113,25,113" concept="6" />
+      <node id="2899596005954254197" at="13,0,27,0" concept="3" trace="ToolsInternal_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="2899596005954254197" at="13,72,25,113" />
+      <scope id="2899596005954254197" at="13,0,27,0">
         <var name="plugin" id="2899596005954254197" />
       </scope>
-      <unit id="2899596005954254197" at="9,0,26,0" name="jetbrains.mps.ide.actions.ToolsInternal_ActionGroup" />
+      <unit id="2899596005954254197" at="10,0,28,0" name="jetbrains.mps.ide.actions.ToolsInternal_ActionGroup" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3090090913825241429">
