@@ -8209,14 +8209,27 @@
                 <node concept="3IZrLx" id="6Za9Xhmf3sk" role="3IZSJc">
                   <node concept="3clFbS" id="6Za9Xhmf3sl" role="2VODD2">
                     <node concept="3clFbF" id="6Za9Xhmf3sm" role="3cqZAp">
-                      <node concept="3y3z36" id="6Za9Xhmf3sW" role="3clFbG">
-                        <node concept="2OqwBi" id="6Za9Xhmf3sA" role="3uHU7B">
-                          <node concept="1iwH7S" id="6Za9Xhmf3sn" role="2Oq$k0" />
-                          <node concept="1psM6Z" id="25JZ4W_7JGG" role="2OqNvi">
-                            <ref role="1psM6Y" node="25JZ4W_7JGC" resolve="javaOpts" />
+                      <node concept="1Wc70l" id="1tPp68ojB0l" role="3clFbG">
+                        <node concept="2OqwBi" id="1tPp68ojCGW" role="3uHU7w">
+                          <node concept="2OqwBi" id="1tPp68ojCk5" role="2Oq$k0">
+                            <node concept="1iwH7S" id="1tPp68ojBU6" role="2Oq$k0" />
+                            <node concept="1psM6Z" id="1tPp68ojCtN" role="2OqNvi">
+                              <ref role="1psM6Y" node="25JZ4W_7JGC" resolve="javaOpts" />
+                            </node>
+                          </node>
+                          <node concept="3TrcHB" id="1tPp68ojDgY" role="2OqNvi">
+                            <ref role="3TsBF5" to="3ior:NvWe6DpNB6" resolve="copyResources" />
                           </node>
                         </node>
-                        <node concept="10Nm6u" id="6Za9Xhmf3sZ" role="3uHU7w" />
+                        <node concept="3y3z36" id="6Za9Xhmf3sW" role="3uHU7B">
+                          <node concept="2OqwBi" id="6Za9Xhmf3sA" role="3uHU7B">
+                            <node concept="1iwH7S" id="6Za9Xhmf3sn" role="2Oq$k0" />
+                            <node concept="1psM6Z" id="25JZ4W_7JGG" role="2OqNvi">
+                              <ref role="1psM6Y" node="25JZ4W_7JGC" resolve="javaOpts" />
+                            </node>
+                          </node>
+                          <node concept="10Nm6u" id="6Za9Xhmf3sZ" role="3uHU7w" />
+                        </node>
                       </node>
                     </node>
                   </node>

@@ -18,7 +18,7 @@
       <unit at="1926,0,1945,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$RRC" />
       <unit at="3189,0,3220,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$ISCC" />
       <unit at="1977,0,2012,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$WRQ" />
-      <unit at="3658,0,3696,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$PROPS" />
+      <unit at="3658,0,3697,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$PROPS" />
       <unit at="3450,0,3491,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$CAQ" />
       <unit at="3616,0,3657,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$CONCEPTS" />
       <unit at="3371,0,3424,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$VVQ" />
@@ -28,7 +28,7 @@
       <unit at="2207,0,2340,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$SNsQ" />
       <unit at="2990,0,3167,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$IfMC" />
       <unit at="2529,0,2895,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated$PVQ" />
-      <unit at="105,0,3697,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated" />
+      <unit at="105,0,3698,0" name="jetbrains.mps.build.generator.template.main.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:fdebfc98-bbd7-4c50-8a8d-eda16da9406e(jetbrains.mps.build.generator.template.main@generator)/1117643560963351146">
@@ -1063,7 +1063,7 @@
       <node id="5610619299013114824" at="1159,79,1160,321" concept="6" />
       <node id="6520682027041189792" at="1162,79,1163,208" concept="6" />
       <node id="8055294676438891196" at="1165,79,1166,150" concept="6" />
-      <node id="8055294676438890262" at="1168,79,1169,66" concept="6" />
+      <node id="8055294676438890262" at="1168,79,1169,174" concept="6" />
       <node id="6837653846148441986" at="1171,79,1172,320" concept="6" />
       <node id="6837653846148442016" at="1174,79,1175,321" concept="6" />
       <node id="5248329904288175559" at="1270,92,1271,77" concept="6" />
@@ -2254,7 +2254,7 @@
       <scope id="5610619299013114823" at="1159,79,1160,321" />
       <scope id="6520682027041189780" at="1162,79,1163,208" />
       <scope id="8055294676438891195" at="1165,79,1166,150" />
-      <scope id="8055294676438890261" at="1168,79,1169,66" />
+      <scope id="8055294676438890261" at="1168,79,1169,174" />
       <scope id="6837653846148441985" at="1171,79,1172,320" />
       <scope id="6837653846148442015" at="1174,79,1175,321" />
       <scope id="5248329904288175558" at="1270,92,1271,77" />
