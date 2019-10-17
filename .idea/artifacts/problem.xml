@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="problem">
-    <output-path>$PROJECT_DIR$/core/aspects/feedback/classes</output-path>
-    <root id="archive" name="problem.jar">
-      <element id="module-output" name="problem" />
-    </root>
-  </artifact>
-</component>

@@ -1,7 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ParallelGeneration" type="JUnit" factoryName="JUnit">
     <module name="testbench" />
-    <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     <option name="PACKAGE_NAME" value="jetbrains.mps.testbench" />
     <option name="MAIN_CLASS_NAME" value="jetbrains.mps.testbench.ProjectTest" />
     <option name="METHOD_NAME" value="" />
@@ -20,15 +19,7 @@
     <ConfigurationWrapper RunnerId="Run" />
     <method v="2">
       <option name="Make" enabled="true" />
-      <option name="BuildArtifacts" enabled="true">
-        <artifact name="context" />
-        <artifact name="feedback-api" />
-        <artifact name="messages-api" />
-        <artifact name="messages-for-legacy-constraints" />
-        <artifact name="messages-for-rules" />
-        <artifact name="messages-for-structure" />
-        <artifact name="problem" />
-      </option>
+      <option name="BuildArtifacts" enabled="true" />
       <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
     </method>
   </configuration>

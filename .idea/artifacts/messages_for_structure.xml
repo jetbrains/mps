@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="messages-for-structure">
-    <output-path>$PROJECT_DIR$/core/aspects/feedback/classes</output-path>
-    <root id="archive" name="messages-for-structure.jar">
-      <element id="module-output" name="messages-for-structure" />
-    </root>
-  </artifact>
-</component>

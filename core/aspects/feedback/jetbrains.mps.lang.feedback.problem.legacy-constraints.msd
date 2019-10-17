@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.lang.feedback.problem.legacy-constraints" uuid="aaaaf3e2-decf-4e97-bf80-9109eab759ee" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}/classes/messages-for-legacy-constraints.jar!/" type="java_classes">
+    <modelRoot contentPath="${module}/messages-for-legacy-constraints/classes" type="java_classes">
       <sourceRoot location="." />
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
@@ -13,7 +13,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/classes/messages-for-legacy-constraints.jar" />
+    <stubModelEntry path="${module}/messages-for-legacy-constraints/classes" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

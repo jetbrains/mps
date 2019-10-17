@@ -22,7 +22,7 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3071492597344792659">
     <file name="mpsFeedback.xml">
-      <unit id="3071492597344792659" at="1,0,632,10" name="jetbrains.mps.ide.build.tests.mpsFeedback" />
+      <unit id="3071492597344792659" at="1,0,636,10" name="jetbrains.mps.ide.build.tests.mpsFeedback" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3197190366568000187">

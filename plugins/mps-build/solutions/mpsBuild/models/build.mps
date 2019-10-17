@@ -952,6 +952,161 @@
         <ref role="nCB5Y" node="47JXWa7IVSW" resolve="pattern-runtime" />
       </node>
     </node>
+    <node concept="398b33" id="5RhptgddDxG" role="3989C9">
+      <property role="TrG5h" value="feedback-api" />
+      <node concept="2GAZfH" id="5RhptgddDxH" role="398b2p">
+        <node concept="TIC1d" id="5RhptgddDxI" role="2GAZfG">
+          <node concept="398BVA" id="5RhptgddDxJ" role="TIC6M">
+            <ref role="398BVh" node="16Vg0jOco3V" />
+            <node concept="2Ry0Ak" id="5RhptgddDxK" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="5RhptgddDxL" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SHPhCCYnNC" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SHPhCCYnNF" role="2Ry0An">
+                    <property role="2Ry0Am" value="feedback-api" />
+                    <node concept="2Ry0Ak" id="SHPhCCYnNI" role="2Ry0An">
+                      <property role="2Ry0Am" value="source" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="nCB5N" id="5RhptgddDxP" role="nCB5Z">
+        <ref role="nCB5Y" node="5Lo0z0qFWkX" />
+      </node>
+      <node concept="nCB5N" id="5RhptgddDxQ" role="nCB5Z">
+        <ref role="nCB5Y" node="1s0vtrwURQP" />
+      </node>
+      <node concept="nCB5N" id="5RhptgddDxR" role="nCB5Z">
+        <ref role="nCB5Y" node="1FaKCGJSzEy" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYoh5" role="nCB5Z">
+        <ref role="nCB5Y" node="5StVQ8qcIGg" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYohh" role="nCB5Z">
+        <property role="1Sh$E4" value="true" />
+        <ref role="nCB5Y" node="SHPhCCYob1" />
+      </node>
+    </node>
+    <node concept="398b33" id="SHPhCCYnUi" role="3989C9">
+      <property role="TrG5h" value="messages-api" />
+      <node concept="2GAZfH" id="SHPhCCYnUj" role="398b2p">
+        <node concept="TIC1d" id="SHPhCCYnUk" role="2GAZfG">
+          <node concept="398BVA" id="SHPhCCYnUl" role="TIC6M">
+            <ref role="398BVh" node="16Vg0jOco3V" />
+            <node concept="2Ry0Ak" id="SHPhCCYnUm" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SHPhCCYnUn" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SHPhCCYnUo" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SHPhCCYnUp" role="2Ry0An">
+                    <property role="2Ry0Am" value="messages-api" />
+                    <node concept="2Ry0Ak" id="SHPhCCYnUq" role="2Ry0An">
+                      <property role="2Ry0Am" value="source" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="nCB5N" id="SHPhCCYnUr" role="nCB5Z">
+        <ref role="nCB5Y" node="5Lo0z0qFWkX" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYnUs" role="nCB5Z">
+        <ref role="nCB5Y" node="5StVQ8qcIGg" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYnUt" role="nCB5Z">
+        <ref role="nCB5Y" node="5RhptgddDxG" resolve="feedback-api" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYohG" role="nCB5Z">
+        <ref role="nCB5Y" node="SHPhCCYob1" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYoi6" role="nCB5Z">
+        <ref role="nCB5Y" node="3vjn6$4rsZc" />
+      </node>
+    </node>
+    <node concept="398b33" id="SHPhCCYnZA" role="3989C9">
+      <property role="TrG5h" value="messages-for-rules" />
+      <node concept="2GAZfH" id="SHPhCCYnZB" role="398b2p">
+        <node concept="TIC1d" id="SHPhCCYnZC" role="2GAZfG">
+          <node concept="398BVA" id="SHPhCCYo5c" role="TIC6M">
+            <ref role="398BVh" node="16Vg0jOco3V" />
+            <node concept="2Ry0Ak" id="SHPhCCYo5d" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SHPhCCYo5e" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SHPhCCYo5f" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SHPhCCYo5g" role="2Ry0An">
+                    <property role="2Ry0Am" value="messages-for-rules" />
+                    <node concept="2Ry0Ak" id="SHPhCCYogV" role="2Ry0An">
+                      <property role="2Ry0Am" value="source" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="nCB5N" id="SHPhCCYovg" role="nCB5Z">
+        <ref role="nCB5Y" node="1s0vtrwURQP" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYnZJ" role="nCB5Z">
+        <ref role="nCB5Y" node="SHPhCCYob1" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYnZK" role="nCB5Z">
+        <ref role="nCB5Y" node="5Lo0z0qFWkX" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYoir" role="nCB5Z">
+        <ref role="nCB5Y" node="SHPhCCYooj" />
+      </node>
+    </node>
+    <node concept="398b33" id="SHPhCCYo5m" role="3989C9">
+      <property role="TrG5h" value="messages-for-structure" />
+      <node concept="2GAZfH" id="SHPhCCYo5n" role="398b2p">
+        <node concept="TIC1d" id="SHPhCCYo5o" role="2GAZfG">
+          <node concept="398BVA" id="SHPhCCYo5p" role="TIC6M">
+            <ref role="398BVh" node="16Vg0jOco3V" />
+            <node concept="2Ry0Ak" id="SHPhCCYo5q" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SHPhCCYo5r" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SHPhCCYo5s" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SHPhCCYo5t" role="2Ry0An">
+                    <property role="2Ry0Am" value="messages-for-structure" />
+                    <node concept="2Ry0Ak" id="SHPhCCYogS" role="2Ry0An">
+                      <property role="2Ry0Am" value="source" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="nCB5N" id="SHPhCCYovm" role="nCB5Z">
+        <ref role="nCB5Y" node="1s0vtrwURQP" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYovn" role="nCB5Z">
+        <ref role="nCB5Y" node="SHPhCCYob1" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYovo" role="nCB5Z">
+        <ref role="nCB5Y" node="5Lo0z0qFWkX" />
+      </node>
+      <node concept="nCB5N" id="SHPhCCYovp" role="nCB5Z">
+        <ref role="nCB5Y" node="5RhptgddDKp" />
+      </node>
+    </node>
     <node concept="398b33" id="6UWbfHq6Ys7" role="3989C9">
       <property role="TrG5h" value="mps-project-check" />
       <node concept="nCB5N" id="6UWbfHq6ZPV" role="nCB5Z">
@@ -970,10 +1125,10 @@
         <ref role="nCB5Y" node="5RhptgddDxG" resolve="feedback-api" />
       </node>
       <node concept="nCB5N" id="SHPhCCYGQl" role="nCB5Z">
-        <ref role="nCB5Y" node="5RhptgddDKp" resolve="context" />
+        <ref role="nCB5Y" node="5RhptgddDKp" resolve="feeback-context" />
       </node>
       <node concept="nCB5N" id="SHPhCCYGUz" role="nCB5Z">
-        <ref role="nCB5Y" node="SHPhCCYob1" resolve="problem" />
+        <ref role="nCB5Y" node="SHPhCCYob1" resolve="feedback-problem" />
       </node>
       <node concept="nCB5N" id="SHPhCCYGWO" role="nCB5Z">
         <ref role="nCB5Y" node="SHPhCCYnUi" resolve="messages-api" />
@@ -986,6 +1141,12 @@
       </node>
       <node concept="nCB5N" id="SHPhCCYH35" role="nCB5Z">
         <ref role="nCB5Y" node="SHPhCCYo5m" resolve="messages-for-structure" />
+      </node>
+      <node concept="nCB5N" id="4lexA4iV5ca" role="nCB5Z">
+        <ref role="nCB5Y" node="SHPhCCYnZA" resolve="messages-for-rules" />
+      </node>
+      <node concept="nCB5N" id="4lexA4iV5nw" role="nCB5Z">
+        <ref role="nCB5Y" node="SHPhCCYuJN" resolve="messages-for-legacy-constraints" />
       </node>
       <node concept="398b2D" id="6UWbfHq6ZHf" role="398b2p">
         <node concept="398BVA" id="6UWbfHq6ZHY" role="398b2C">
@@ -1001,12 +1162,6 @@
           <property role="3LZaj6" value="source" />
           <property role="nFU4j" value="source" />
         </node>
-      </node>
-      <node concept="nCB5N" id="4lexA4iV5ca" role="nCB5Z">
-        <ref role="nCB5Y" node="SHPhCCYnZA" resolve="messages-for-rules" />
-      </node>
-      <node concept="nCB5N" id="4lexA4iV5nw" role="nCB5Z">
-        <ref role="nCB5Y" node="SHPhCCYuJN" resolve="messages-for-legacy-constraints" />
       </node>
     </node>
     <node concept="398b33" id="6g0vjebAkhc" role="3989C9">
@@ -1726,6 +1881,9 @@
       <node concept="nCB5N" id="5vs0A7T1Xe2" role="nCB5Z">
         <ref role="nCB5Y" node="4_qKb05xiaz" resolve="aux-runtimes" />
       </node>
+      <node concept="nCB5N" id="4lexA4iV4JS" role="nCB5Z">
+        <ref role="nCB5Y" node="6UWbfHq6Ys7" resolve="mps-project-check" />
+      </node>
       <node concept="398b2D" id="16Vg0jOdbWa" role="398b2p">
         <node concept="nFU4i" id="16Vg0jOdbWf" role="nFU4p">
           <property role="nFU4j" value="editor-runtime/source" />
@@ -1783,9 +1941,6 @@
       </node>
       <node concept="3_7P_l" id="WgHS__ALjQ" role="3_45bX">
         <ref role="3_7fsG" node="WgHS__ALjN" />
-      </node>
-      <node concept="nCB5N" id="4lexA4iV4JS" role="nCB5Z">
-        <ref role="nCB5Y" node="6UWbfHq6Ys7" resolve="mps-project-check" />
       </node>
     </node>
     <node concept="398b33" id="1tWbYFNh9Av" role="3989C9">
@@ -1917,20 +2072,8 @@
         <node concept="3_I8Xc" id="3naTEl9MoZY" role="39821P">
           <ref role="3_I8Xa" node="SHPhCCYH7i" resolve="mps-problem.jar" />
         </node>
-        <node concept="3_I8Xc" id="4EJ5T3otIzS" role="39821P">
-          <ref role="3_I8Xa" node="4EJ5T3otIw5" resolve="mps-feedback-api.jar" />
-        </node>
-        <node concept="3_I8Xc" id="3naTEl9Mp5x" role="39821P">
-          <ref role="3_I8Xa" node="SHPhCCYHdU" resolve="mps-messages-api.jar" />
-        </node>
         <node concept="3_I8Xc" id="4EJ5T3oKlhr" role="39821P">
           <ref role="3_I8Xa" node="4EJ5T3oKl2Y" resolve="mps-messages-for-legacy-constraints.jar" />
-        </node>
-        <node concept="3_I8Xc" id="4EJ5T3oKll2" role="39821P">
-          <ref role="3_I8Xa" node="4EJ5T3oKl4R" resolve="mps-messages-for-rules.jar" />
-        </node>
-        <node concept="3_I8Xc" id="4EJ5T3oKlmF" role="39821P">
-          <ref role="3_I8Xa" node="4EJ5T3oKl6R" resolve="mps-messages-for-structure.jar" />
         </node>
         <node concept="3_I8Xc" id="3fmo8W2LOq2" role="39821P">
           <ref role="3_I8Xa" node="3fmo8W2LOl8" resolve="mps-persistence.jar" />
@@ -1988,6 +2131,46 @@
             <node concept="3Mxwew" id="IFRVVI696G" role="3MwsjC">
               <property role="3MwjfP" value="mps-core.jar" />
             </node>
+          </node>
+        </node>
+        <node concept="3981dx" id="SHPhCCYHdU" role="39821P">
+          <node concept="Saw0i" id="SHPhCCYHfC" role="39821P">
+            <ref role="Saw0g" node="SHPhCCYnUi" resolve="messages-api" />
+          </node>
+          <node concept="3_J27D" id="SHPhCCYHdW" role="Nbhlr">
+            <node concept="3Mxwew" id="SHPhCCYHf$" role="3MwsjC">
+              <property role="3MwjfP" value="mps-messages-api.jar" />
+            </node>
+          </node>
+        </node>
+        <node concept="3981dx" id="4EJ5T3oKl4R" role="39821P">
+          <node concept="Saw0i" id="4EJ5T3oKl4U" role="39821P">
+            <ref role="Saw0g" node="SHPhCCYnZA" />
+          </node>
+          <node concept="3_J27D" id="4EJ5T3oKl4W" role="Nbhlr">
+            <node concept="3Mxwew" id="4EJ5T3oKl4X" role="3MwsjC">
+              <property role="3MwjfP" value="mps-messages-for-rules.jar" />
+            </node>
+          </node>
+        </node>
+        <node concept="3981dx" id="4EJ5T3oKl6R" role="39821P">
+          <node concept="Saw0i" id="4EJ5T3oKl6V" role="39821P">
+            <ref role="Saw0g" node="SHPhCCYo5m" />
+          </node>
+          <node concept="3_J27D" id="4EJ5T3oKl6W" role="Nbhlr">
+            <node concept="3Mxwew" id="4EJ5T3oKl6X" role="3MwsjC">
+              <property role="3MwjfP" value="mps-messages-for-structure.jar" />
+            </node>
+          </node>
+        </node>
+        <node concept="3981dx" id="4EJ5T3otIw5" role="39821P">
+          <node concept="3_J27D" id="4EJ5T3otIw7" role="Nbhlr">
+            <node concept="3Mxwew" id="4EJ5T3otIw8" role="3MwsjC">
+              <property role="3MwjfP" value="mps-feedback-api.jar" />
+            </node>
+          </node>
+          <node concept="Saw0i" id="4EJ5T3otIw9" role="39821P">
+            <ref role="Saw0g" node="5RhptgddDxG" resolve="feedback-api" />
           </node>
         </node>
         <node concept="3981dx" id="LYSlkhF6kY" role="39821P">
@@ -2568,10 +2751,10 @@
                     <property role="2Ry0Am" value="aspects" />
                     <node concept="2Ry0Ak" id="3ost_8TyZHW" role="2Ry0An">
                       <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="3ost_8TyZI1" role="2Ry0An">
-                        <property role="2Ry0Am" value="classes" />
-                        <node concept="2Ry0Ak" id="3ost_8TyZI6" role="2Ry0An">
-                          <property role="2Ry0Am" value="messages-api.jar" />
+                      <node concept="2Ry0Ak" id="SaxjPBkkpR" role="2Ry0An">
+                        <property role="2Ry0Am" value="messages-api" />
+                        <node concept="2Ry0Ak" id="SaxjPBkkpS" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
                         </node>
                       </node>
                     </node>
@@ -2592,10 +2775,10 @@
                     <property role="2Ry0Am" value="aspects" />
                     <node concept="2Ry0Ak" id="3ost_8Tz0gh" role="2Ry0An">
                       <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="3ost_8Tz0gi" role="2Ry0An">
-                        <property role="2Ry0Am" value="classes" />
-                        <node concept="2Ry0Ak" id="3ost_8Tz0gj" role="2Ry0An">
-                          <property role="2Ry0Am" value="context.jar" />
+                      <node concept="2Ry0Ak" id="SaxjPBkkKi" role="2Ry0An">
+                        <property role="2Ry0Am" value="context" />
+                        <node concept="2Ry0Ak" id="SaxjPBkkKj" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
                         </node>
                       </node>
                     </node>
@@ -2616,10 +2799,10 @@
                     <property role="2Ry0Am" value="aspects" />
                     <node concept="2Ry0Ak" id="3ost_8T_TjU" role="2Ry0An">
                       <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="3ost_8T_TjV" role="2Ry0An">
-                        <property role="2Ry0Am" value="classes" />
-                        <node concept="2Ry0Ak" id="3ost_8T_TjW" role="2Ry0An">
-                          <property role="2Ry0Am" value="feedback-api.jar" />
+                      <node concept="2Ry0Ak" id="SaxjPBkkVz" role="2Ry0An">
+                        <property role="2Ry0Am" value="feedback-api" />
+                        <node concept="2Ry0Ak" id="SaxjPBkkV$" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
                         </node>
                       </node>
                     </node>
@@ -2640,10 +2823,10 @@
                     <property role="2Ry0Am" value="aspects" />
                     <node concept="2Ry0Ak" id="3ost_8T_Tu3" role="2Ry0An">
                       <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="3ost_8T_Tu4" role="2Ry0An">
-                        <property role="2Ry0Am" value="classes" />
-                        <node concept="2Ry0Ak" id="3ost_8T_TSK" role="2Ry0An">
-                          <property role="2Ry0Am" value="messages-for-legacy-constraints.jar" />
+                      <node concept="2Ry0Ak" id="SaxjPBklt8" role="2Ry0An">
+                        <property role="2Ry0Am" value="messages-for-legacy-constraints" />
+                        <node concept="2Ry0Ak" id="SaxjPBklt9" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
                         </node>
                       </node>
                     </node>
@@ -2664,10 +2847,10 @@
                     <property role="2Ry0Am" value="aspects" />
                     <node concept="2Ry0Ak" id="3ost_8T_Twg" role="2Ry0An">
                       <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="3ost_8T_Twh" role="2Ry0An">
-                        <property role="2Ry0Am" value="classes" />
-                        <node concept="2Ry0Ak" id="3ost_8T_TOK" role="2Ry0An">
-                          <property role="2Ry0Am" value="messages-for-rules.jar" />
+                      <node concept="2Ry0Ak" id="SaxjPBklNx" role="2Ry0An">
+                        <property role="2Ry0Am" value="messages-for-rules" />
+                        <node concept="2Ry0Ak" id="SaxjPBklNy" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
                         </node>
                       </node>
                     </node>
@@ -2688,10 +2871,10 @@
                     <property role="2Ry0Am" value="aspects" />
                     <node concept="2Ry0Ak" id="3ost_8T_Tyt" role="2Ry0An">
                       <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="3ost_8T_Tyu" role="2Ry0An">
-                        <property role="2Ry0Am" value="classes" />
-                        <node concept="2Ry0Ak" id="3ost_8T_TKK" role="2Ry0An">
-                          <property role="2Ry0Am" value="messages-for-structure.jar" />
+                      <node concept="2Ry0Ak" id="SaxjPBkm4l" role="2Ry0An">
+                        <property role="2Ry0Am" value="messages-for-structure" />
+                        <node concept="2Ry0Ak" id="SaxjPBkm4m" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
                         </node>
                       </node>
                     </node>
@@ -2712,10 +2895,10 @@
                     <property role="2Ry0Am" value="aspects" />
                     <node concept="2Ry0Ak" id="3ost_8T_TAD" role="2Ry0An">
                       <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="3ost_8T_TAE" role="2Ry0An">
-                        <property role="2Ry0Am" value="classes" />
-                        <node concept="2Ry0Ak" id="3ost_8T_TCM" role="2Ry0An">
-                          <property role="2Ry0Am" value="problem.jar" />
+                      <node concept="2Ry0Ak" id="SaxjPBkmf$" role="2Ry0An">
+                        <property role="2Ry0Am" value="problem" />
+                        <node concept="2Ry0Ak" id="SaxjPBkmf_" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
                         </node>
                       </node>
                     </node>
@@ -8834,28 +9017,25 @@
             <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6AgsdgT8VYV" role="3bR37C">
-          <node concept="1BurEX" id="6AgsdgT8VYW" role="1SiIV1">
-            <node concept="398BVA" id="6AgsdgT8VYJ" role="1BurEY">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="6AgsdgT8VYK" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="6AgsdgT8VYL" role="2Ry0An">
-                  <property role="2Ry0Am" value="aspects" />
-                  <node concept="2Ry0Ak" id="6AgsdgT8VYM" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback" />
-                    <node concept="2Ry0Ak" id="6AgsdgT8VYN" role="2Ry0An">
+        <node concept="1E1SXE" id="SaxjPBkdjv" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="5RhptgddDKp" resolve="feeback-context" />
+          <node concept="398BVA" id="SaxjPBkduX" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="SaxjPBkd$A" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SaxjPBkdEg" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SaxjPBkdEl" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SaxjPBkdP$" role="2Ry0An">
+                    <property role="2Ry0Am" value="context" />
+                    <node concept="2Ry0Ak" id="SaxjPBkebX" role="2Ry0An">
                       <property role="2Ry0Am" value="classes" />
-                      <node concept="2Ry0Ak" id="6AgsdgT8VYO" role="2Ry0An">
-                        <property role="2Ry0Am" value="context.jar" />
-                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="3yrxFa" id="UzCO9oXM2z" role="2gdwQb">
-              <ref role="3yrxFb" node="SHPhCCYHaw" resolve="mps-context.jar" />
             </node>
           </node>
         </node>
@@ -8904,28 +9084,25 @@
             <ref role="3bR37D" node="3qkjbZn8bgc" resolve="jetbrains.mps.lang.feedback.api" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6AgsdgT8VYH" role="3bR37C">
-          <node concept="1BurEX" id="6AgsdgT8VYI" role="1SiIV1">
-            <node concept="398BVA" id="6AgsdgT8VYx" role="1BurEY">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="6AgsdgT8VYy" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="6AgsdgT8VYz" role="2Ry0An">
-                  <property role="2Ry0Am" value="aspects" />
-                  <node concept="2Ry0Ak" id="6AgsdgT8VY$" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback" />
-                    <node concept="2Ry0Ak" id="6AgsdgT8VY_" role="2Ry0An">
+        <node concept="1E1SXE" id="SaxjPBkete" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="SHPhCCYnUi" resolve="messages-api" />
+          <node concept="398BVA" id="SaxjPBkeCI" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="SaxjPBkeCM" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SaxjPBkeTA" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SaxjPBkf4P" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SaxjPBkfg4" role="2Ry0An">
+                    <property role="2Ry0Am" value="messages-api" />
+                    <node concept="2Ry0Ak" id="SaxjPBkfg7" role="2Ry0An">
                       <property role="2Ry0Am" value="classes" />
-                      <node concept="2Ry0Ak" id="6AgsdgT8VYA" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-api.jar" />
-                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="3yrxFa" id="UzCO9p6Xu$" role="2gdwQb">
-              <ref role="3yrxFb" node="SHPhCCYHdU" resolve="mps-messages-api.jar" />
             </node>
           </node>
         </node>
@@ -8965,28 +9142,25 @@
             <ref role="3bR37D" node="3qkjbZn8eBg" resolve="jetbrains.mps.lang.feedback.problem" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6AgsdgT8VZ9" role="3bR37C">
-          <node concept="1BurEX" id="6AgsdgT8VZa" role="1SiIV1">
-            <node concept="398BVA" id="6AgsdgT8VYX" role="1BurEY">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="6AgsdgT8VYY" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="6AgsdgT8VYZ" role="2Ry0An">
-                  <property role="2Ry0Am" value="aspects" />
-                  <node concept="2Ry0Ak" id="6AgsdgT8VZ0" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback" />
-                    <node concept="2Ry0Ak" id="6AgsdgT8VZ1" role="2Ry0An">
+        <node concept="1E1SXE" id="SaxjPBkfMT" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="SHPhCCYuJN" resolve="messages-for-legacy-constraints" />
+          <node concept="398BVA" id="SaxjPBkfYn" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="SaxjPBkfYo" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SaxjPBkfYp" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SaxjPBkfYq" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SaxjPBkgkR" role="2Ry0An">
+                    <property role="2Ry0Am" value="messages-for-legacy-constraints" />
+                    <node concept="2Ry0Ak" id="SaxjPBkgqv" role="2Ry0An">
                       <property role="2Ry0Am" value="classes" />
-                      <node concept="2Ry0Ak" id="6AgsdgT8VZ2" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-for-legacy-constraints.jar" />
-                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="3yrxFa" id="4EJ5T3oKlbl" role="2gdwQb">
-              <ref role="3yrxFb" node="4EJ5T3oKl2Y" resolve="mps-messages-for-legacy-constraints.jar" />
             </node>
           </node>
         </node>
@@ -9041,28 +9215,25 @@
             <ref role="3bR37D" node="3qkjbZn8eBg" resolve="jetbrains.mps.lang.feedback.problem" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6AgsdgT8VZn" role="3bR37C">
-          <node concept="1BurEX" id="6AgsdgT8VZo" role="1SiIV1">
-            <node concept="398BVA" id="6AgsdgT8VZb" role="1BurEY">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="6AgsdgT8VZc" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="6AgsdgT8VZd" role="2Ry0An">
-                  <property role="2Ry0Am" value="aspects" />
-                  <node concept="2Ry0Ak" id="6AgsdgT8VZe" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback" />
-                    <node concept="2Ry0Ak" id="6AgsdgT8VZf" role="2Ry0An">
+        <node concept="1E1SXE" id="SaxjPBkgLn" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="SHPhCCYnZA" resolve="messages-for-rules" />
+          <node concept="398BVA" id="SaxjPBkgWT" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="SaxjPBkgWU" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SaxjPBkgWV" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SaxjPBkgWW" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SaxjPBkh8f" role="2Ry0An">
+                    <property role="2Ry0Am" value="messages-for-rules" />
+                    <node concept="2Ry0Ak" id="SaxjPBkhdR" role="2Ry0An">
                       <property role="2Ry0Am" value="classes" />
-                      <node concept="2Ry0Ak" id="6AgsdgT8VZg" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-for-rules.jar" />
-                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="3yrxFa" id="4EJ5T3oKldn" role="2gdwQb">
-              <ref role="3yrxFb" node="4EJ5T3oKl4R" resolve="mps-messages-for-rules.jar" />
             </node>
           </node>
         </node>
@@ -9115,28 +9286,25 @@
             <ref role="3bR37D" node="3qkjbZn8eBg" resolve="jetbrains.mps.lang.feedback.problem" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6AgsdgT8VZ_" role="3bR37C">
-          <node concept="1BurEX" id="6AgsdgT8VZA" role="1SiIV1">
-            <node concept="398BVA" id="6AgsdgT8VZp" role="1BurEY">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="6AgsdgT8VZq" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="6AgsdgT8VZr" role="2Ry0An">
-                  <property role="2Ry0Am" value="aspects" />
-                  <node concept="2Ry0Ak" id="6AgsdgT8VZs" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback" />
-                    <node concept="2Ry0Ak" id="6AgsdgT8VZt" role="2Ry0An">
+        <node concept="1E1SXE" id="SaxjPBkh$N" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="SHPhCCYo5m" resolve="messages-for-structure" />
+          <node concept="398BVA" id="SaxjPBkhEK" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="SaxjPBkhEL" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SaxjPBkhEM" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SaxjPBkhEN" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SaxjPBki1g" role="2Ry0An">
+                    <property role="2Ry0Am" value="messages-for-structure" />
+                    <node concept="2Ry0Ak" id="SaxjPBki1j" role="2Ry0An">
                       <property role="2Ry0Am" value="classes" />
-                      <node concept="2Ry0Ak" id="6AgsdgT8VZu" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-for-structure.jar" />
-                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="3yrxFa" id="4EJ5T3oKlfp" role="2gdwQb">
-              <ref role="3yrxFb" node="4EJ5T3oKl6R" resolve="mps-messages-for-structure.jar" />
             </node>
           </node>
         </node>
@@ -9185,28 +9353,25 @@
             <ref role="3bR37D" node="3qkjbZn8c2m" resolve="jetbrains.mps.lang.feedback.context" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6AgsdgT8VZN" role="3bR37C">
-          <node concept="1BurEX" id="6AgsdgT8VZO" role="1SiIV1">
-            <node concept="398BVA" id="6AgsdgT8VZB" role="1BurEY">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="6AgsdgT8VZC" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="6AgsdgT8VZD" role="2Ry0An">
-                  <property role="2Ry0Am" value="aspects" />
-                  <node concept="2Ry0Ak" id="6AgsdgT8VZE" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback" />
-                    <node concept="2Ry0Ak" id="6AgsdgT8VZF" role="2Ry0An">
+        <node concept="1E1SXE" id="SaxjPBkiod" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="SHPhCCYob1" resolve="feedback-problem" />
+          <node concept="398BVA" id="SaxjPBkiu8" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="SaxjPBkiu9" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SaxjPBkiua" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SaxjPBkiub" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SaxjPBkj03" role="2Ry0An">
+                    <property role="2Ry0Am" value="problem" />
+                    <node concept="2Ry0Ak" id="SaxjPBkjAt" role="2Ry0An">
                       <property role="2Ry0Am" value="classes" />
-                      <node concept="2Ry0Ak" id="6AgsdgT8VZG" role="2Ry0An">
-                        <property role="2Ry0Am" value="problem.jar" />
-                      </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="3yrxFa" id="UzCO9p6XQG" role="2gdwQb">
-              <ref role="3yrxFb" node="SHPhCCYH7i" resolve="mps-problem.jar" />
             </node>
           </node>
         </node>
@@ -9832,6 +9997,11 @@
             <ref role="1Busuk" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
           </node>
         </node>
+        <node concept="1SiIV0" id="5IDsNGnF702" role="3bR37C">
+          <node concept="3bR9La" id="5IDsNGnF703" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+          </node>
+        </node>
         <node concept="1yeLz9" id="3qkjbZn896b" role="1TViLv">
           <property role="TrG5h" value="jetbrains.mps.lang.feedback.skeleton#01" />
           <property role="3LESm3" value="62fcd10d-df37-46ef-8e09-110ae66d31ed" />
@@ -9873,11 +10043,6 @@
         </node>
         <node concept="1E0d5M" id="3qkjbZn8g1N" role="1E1XAP">
           <ref role="1E0d5P" node="3qkjbZn8bgc" resolve="jetbrains.mps.lang.feedback.api" />
-        </node>
-        <node concept="1SiIV0" id="5IDsNGnF702" role="3bR37C">
-          <node concept="3bR9La" id="5IDsNGnF703" role="1SiIV1">
-            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
-          </node>
         </node>
       </node>
       <node concept="1E1JtA" id="3qkjbZn8bgc" role="2G$12L">
@@ -9924,35 +10089,32 @@
             <ref role="3bR37D" node="3qkjbZn8c2m" resolve="jetbrains.mps.lang.feedback.context" />
           </node>
         </node>
-        <node concept="1SiIV0" id="6AgsdgT8VYv" role="3bR37C">
-          <node concept="1BurEX" id="6AgsdgT8VYw" role="1SiIV1">
-            <node concept="398BVA" id="6AgsdgT8VYj" role="1BurEY">
-              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="6AgsdgT8VYk" role="iGT6I">
-                <property role="2Ry0Am" value="core" />
-                <node concept="2Ry0Ak" id="6AgsdgT8VYl" role="2Ry0An">
-                  <property role="2Ry0Am" value="aspects" />
-                  <node concept="2Ry0Ak" id="6AgsdgT8VYm" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback" />
-                    <node concept="2Ry0Ak" id="6AgsdgT8VYn" role="2Ry0An">
+        <node concept="1SiIV0" id="SHPhCCYVd5" role="3bR37C">
+          <node concept="3bR9La" id="SHPhCCYVd6" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="3qkjbZn8eBg" resolve="jetbrains.mps.lang.feedback.problem" />
+          </node>
+        </node>
+        <node concept="1E1SXE" id="SaxjPBkjLY" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="5RhptgddDxG" resolve="feedback-api" />
+          <node concept="398BVA" id="SaxjPBkjXw" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="SaxjPBkjXx" role="iGT6I">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="SaxjPBkjXy" role="2Ry0An">
+                <property role="2Ry0Am" value="aspects" />
+                <node concept="2Ry0Ak" id="SaxjPBkjXz" role="2Ry0An">
+                  <property role="2Ry0Am" value="feedback" />
+                  <node concept="2Ry0Ak" id="SaxjPBkjX$" role="2Ry0An">
+                    <property role="2Ry0Am" value="feedback-api" />
+                    <node concept="2Ry0Ak" id="SaxjPBkjX_" role="2Ry0An">
                       <property role="2Ry0Am" value="classes" />
-                      <node concept="2Ry0Ak" id="UzCO9pkZzb" role="2Ry0An">
-                        <property role="2Ry0Am" value="feedback-api.jar" />
-                      </node>
                     </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3yrxFa" id="4EJ5T3otIDt" role="2gdwQb">
-              <ref role="3yrxFb" node="4EJ5T3otIw5" resolve="mps-feedback-api.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1SiIV0" id="SHPhCCYVd5" role="3bR37C">
-          <node concept="3bR9La" id="SHPhCCYVd6" role="1SiIV1">
-            <property role="3bR36h" value="true" />
-            <ref role="3bR37D" node="3qkjbZn8eBg" resolve="jetbrains.mps.lang.feedback.problem" />
           </node>
         </node>
       </node>
@@ -38812,7 +38974,7 @@
       </node>
       <node concept="nCB5N" id="SHPhCCYouA" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
-        <ref role="nCB5Y" node="5RhptgddDKp" resolve="context" />
+        <ref role="nCB5Y" node="5RhptgddDKp" resolve="feeback-context" />
       </node>
       <node concept="nCB5N" id="SHPhCCYouF" role="nCB5Z">
         <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
@@ -38825,7 +38987,7 @@
       </node>
     </node>
     <node concept="398b33" id="5RhptgddDKp" role="3989C9">
-      <property role="TrG5h" value="context" />
+      <property role="TrG5h" value="feeback-context" />
       <node concept="2GAZfH" id="5RhptgddDKq" role="398b2p">
         <node concept="TIC1d" id="5RhptgddDKr" role="2GAZfG">
           <node concept="398BVA" id="5RhptgddDKs" role="TIC6M">
@@ -38857,95 +39019,14 @@
         <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
       </node>
     </node>
-    <node concept="398b33" id="5RhptgddDxG" role="3989C9">
-      <property role="TrG5h" value="feedback-api" />
-      <node concept="2GAZfH" id="5RhptgddDxH" role="398b2p">
-        <node concept="TIC1d" id="5RhptgddDxI" role="2GAZfG">
-          <node concept="398BVA" id="5RhptgddDxJ" role="TIC6M">
-            <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
-            <node concept="2Ry0Ak" id="5RhptgddDxK" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="5RhptgddDxL" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SHPhCCYnNC" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SHPhCCYnNF" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback-api" />
-                    <node concept="2Ry0Ak" id="SHPhCCYnNI" role="2Ry0An">
-                      <property role="2Ry0Am" value="source" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="nCB5N" id="5RhptgddDxP" role="nCB5Z">
-        <ref role="nCB5Y" node="5Lo0z0qFWkX" resolve="mps-openapi" />
-      </node>
-      <node concept="nCB5N" id="5RhptgddDxQ" role="nCB5Z">
-        <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
-      </node>
-      <node concept="nCB5N" id="5RhptgddDxR" role="nCB5Z">
-        <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYoh5" role="nCB5Z">
-        <ref role="nCB5Y" node="5StVQ8qcIGg" resolve="mps-core-components" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYohh" role="nCB5Z">
-        <property role="1Sh$E4" value="true" />
-        <ref role="nCB5Y" node="SHPhCCYob1" resolve="problem" />
-      </node>
-    </node>
-    <node concept="398b33" id="SHPhCCYnUi" role="3989C9">
-      <property role="TrG5h" value="messages-api" />
-      <node concept="2GAZfH" id="SHPhCCYnUj" role="398b2p">
-        <node concept="TIC1d" id="SHPhCCYnUk" role="2GAZfG">
-          <node concept="398BVA" id="SHPhCCYnUl" role="TIC6M">
-            <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
-            <node concept="2Ry0Ak" id="SHPhCCYnUm" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SHPhCCYnUn" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SHPhCCYnUo" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SHPhCCYnUp" role="2Ry0An">
-                    <property role="2Ry0Am" value="messages-api" />
-                    <node concept="2Ry0Ak" id="SHPhCCYnUq" role="2Ry0An">
-                      <property role="2Ry0Am" value="source" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="nCB5N" id="SHPhCCYnUr" role="nCB5Z">
-        <ref role="nCB5Y" node="5Lo0z0qFWkX" resolve="mps-openapi" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYnUs" role="nCB5Z">
-        <ref role="nCB5Y" node="5StVQ8qcIGg" resolve="mps-core-components" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYnUt" role="nCB5Z">
-        <ref role="nCB5Y" node="5RhptgddDxG" resolve="feedback-api" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYohG" role="nCB5Z">
-        <ref role="nCB5Y" node="SHPhCCYob1" resolve="problem" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYoi6" role="nCB5Z">
-        <ref role="nCB5Y" node="3vjn6$4rsZc" resolve="util-core" />
-      </node>
-    </node>
     <node concept="398b33" id="SHPhCCYuJN" role="3989C9">
       <property role="TrG5h" value="messages-for-legacy-constraints" />
       <node concept="nCB5N" id="6e4RFSGTKuP" role="nCB5Z">
-        <ref role="nCB5Y" node="5RhptgddDKp" resolve="context" />
+        <ref role="nCB5Y" node="5RhptgddDKp" resolve="feeback-context" />
       </node>
       <node concept="nCB5N" id="6e4RFSGTM4s" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
-        <ref role="nCB5Y" node="SHPhCCYob1" resolve="problem" />
+        <ref role="nCB5Y" node="SHPhCCYob1" resolve="feedback-problem" />
       </node>
       <node concept="nCB5N" id="SHPhCCYoii" role="nCB5Z">
         <ref role="nCB5Y" node="5Lo0z0qFWkX" resolve="mps-openapi" />
@@ -38973,82 +39054,8 @@
         </node>
       </node>
     </node>
-    <node concept="398b33" id="SHPhCCYnZA" role="3989C9">
-      <property role="TrG5h" value="messages-for-rules" />
-      <node concept="2GAZfH" id="SHPhCCYnZB" role="398b2p">
-        <node concept="TIC1d" id="SHPhCCYnZC" role="2GAZfG">
-          <node concept="398BVA" id="SHPhCCYo5c" role="TIC6M">
-            <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
-            <node concept="2Ry0Ak" id="SHPhCCYo5d" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SHPhCCYo5e" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SHPhCCYo5f" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SHPhCCYo5g" role="2Ry0An">
-                    <property role="2Ry0Am" value="messages-for-rules" />
-                    <node concept="2Ry0Ak" id="SHPhCCYogV" role="2Ry0An">
-                      <property role="2Ry0Am" value="source" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="nCB5N" id="SHPhCCYovg" role="nCB5Z">
-        <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYnZJ" role="nCB5Z">
-        <ref role="nCB5Y" node="SHPhCCYob1" resolve="problem" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYnZK" role="nCB5Z">
-        <ref role="nCB5Y" node="5Lo0z0qFWkX" resolve="mps-openapi" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYoir" role="nCB5Z">
-        <ref role="nCB5Y" node="SHPhCCYooj" resolve="constraints-runtime" />
-      </node>
-    </node>
-    <node concept="398b33" id="SHPhCCYo5m" role="3989C9">
-      <property role="TrG5h" value="messages-for-structure" />
-      <node concept="2GAZfH" id="SHPhCCYo5n" role="398b2p">
-        <node concept="TIC1d" id="SHPhCCYo5o" role="2GAZfG">
-          <node concept="398BVA" id="SHPhCCYo5p" role="TIC6M">
-            <ref role="398BVh" node="6IJvZDkyhr7" resolve="projectHome" />
-            <node concept="2Ry0Ak" id="SHPhCCYo5q" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SHPhCCYo5r" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SHPhCCYo5s" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SHPhCCYo5t" role="2Ry0An">
-                    <property role="2Ry0Am" value="messages-for-structure" />
-                    <node concept="2Ry0Ak" id="SHPhCCYogS" role="2Ry0An">
-                      <property role="2Ry0Am" value="source" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="nCB5N" id="SHPhCCYovm" role="nCB5Z">
-        <ref role="nCB5Y" node="1s0vtrwURQP" resolve="mps-annotations" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYovn" role="nCB5Z">
-        <ref role="nCB5Y" node="SHPhCCYob1" resolve="problem" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYovo" role="nCB5Z">
-        <ref role="nCB5Y" node="5Lo0z0qFWkX" resolve="mps-openapi" />
-      </node>
-      <node concept="nCB5N" id="SHPhCCYovp" role="nCB5Z">
-        <ref role="nCB5Y" node="5RhptgddDKp" resolve="context" />
-      </node>
-    </node>
     <node concept="398b33" id="SHPhCCYob1" role="3989C9">
-      <property role="TrG5h" value="problem" />
+      <property role="TrG5h" value="feedback-problem" />
       <node concept="2GAZfH" id="SHPhCCYob2" role="398b2p">
         <node concept="TIC1d" id="SHPhCCYob3" role="2GAZfG">
           <node concept="398BVA" id="SHPhCCYob4" role="TIC6M">
@@ -39073,7 +39080,7 @@
       </node>
       <node concept="nCB5N" id="SHPhCCYob9" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
-        <ref role="nCB5Y" node="5RhptgddDKp" resolve="context" />
+        <ref role="nCB5Y" node="5RhptgddDKp" resolve="feeback-context" />
       </node>
       <node concept="nCB5N" id="SHPhCCYoba" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
@@ -39467,17 +39474,7 @@
           </node>
         </node>
         <node concept="Saw0i" id="SHPhCCYHc9" role="39821P">
-          <ref role="Saw0g" node="5RhptgddDKp" resolve="context" />
-        </node>
-      </node>
-      <node concept="3981dx" id="SHPhCCYHdU" role="39821P">
-        <node concept="Saw0i" id="SHPhCCYHfC" role="39821P">
-          <ref role="Saw0g" node="SHPhCCYnUi" resolve="messages-api" />
-        </node>
-        <node concept="3_J27D" id="SHPhCCYHdW" role="Nbhlr">
-          <node concept="3Mxwew" id="SHPhCCYHf$" role="3MwsjC">
-            <property role="3MwjfP" value="mps-messages-api.jar" />
-          </node>
+          <ref role="Saw0g" node="5RhptgddDKp" resolve="feeback-context" />
         </node>
       </node>
       <node concept="3981dx" id="4EJ5T3oKl2Y" role="39821P">
@@ -39490,44 +39487,14 @@
           </node>
         </node>
       </node>
-      <node concept="3981dx" id="4EJ5T3oKl4R" role="39821P">
-        <node concept="Saw0i" id="4EJ5T3oKl4U" role="39821P">
-          <ref role="Saw0g" node="SHPhCCYnZA" resolve="messages-for-rules" />
-        </node>
-        <node concept="3_J27D" id="4EJ5T3oKl4W" role="Nbhlr">
-          <node concept="3Mxwew" id="4EJ5T3oKl4X" role="3MwsjC">
-            <property role="3MwjfP" value="mps-messages-for-rules.jar" />
-          </node>
-        </node>
-      </node>
-      <node concept="3981dx" id="4EJ5T3oKl6R" role="39821P">
-        <node concept="Saw0i" id="4EJ5T3oKl6V" role="39821P">
-          <ref role="Saw0g" node="SHPhCCYo5m" resolve="messages-for-structure" />
-        </node>
-        <node concept="3_J27D" id="4EJ5T3oKl6W" role="Nbhlr">
-          <node concept="3Mxwew" id="4EJ5T3oKl6X" role="3MwsjC">
-            <property role="3MwjfP" value="mps-messages-for-structure.jar" />
-          </node>
-        </node>
-      </node>
       <node concept="3981dx" id="SHPhCCYH7i" role="39821P">
         <node concept="Saw0i" id="SHPhCCYHhX" role="39821P">
-          <ref role="Saw0g" node="SHPhCCYob1" resolve="problem" />
+          <ref role="Saw0g" node="SHPhCCYob1" resolve="feedback-problem" />
         </node>
         <node concept="3_J27D" id="SHPhCCYH7j" role="Nbhlr">
           <node concept="3Mxwew" id="SHPhCCYH7k" role="3MwsjC">
             <property role="3MwjfP" value="mps-problem.jar" />
           </node>
-        </node>
-      </node>
-      <node concept="3981dx" id="4EJ5T3otIw5" role="39821P">
-        <node concept="3_J27D" id="4EJ5T3otIw7" role="Nbhlr">
-          <node concept="3Mxwew" id="4EJ5T3otIw8" role="3MwsjC">
-            <property role="3MwjfP" value="mps-feedback-api.jar" />
-          </node>
-        </node>
-        <node concept="Saw0i" id="4EJ5T3otIw9" role="39821P">
-          <ref role="Saw0g" node="5RhptgddDxG" resolve="feedback-api" />
         </node>
       </node>
       <node concept="3981dx" id="wKi8DpgB$b" role="39821P">

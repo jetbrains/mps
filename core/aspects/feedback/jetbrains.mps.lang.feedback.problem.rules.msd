@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.lang.feedback.problem.rules" uuid="0a98f3e2-decf-4e97-bf80-9109eccc59bb" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}/classes/messages-for-rules.jar!/" type="java_classes">
+    <modelRoot contentPath="${module}/messages-for-rules/classes" type="java_classes">
       <sourceRoot location="." />
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
@@ -13,7 +13,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/classes/messages-for-rules.jar" />
+    <stubModelEntry path="${module}/messages-for-rules/classes" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

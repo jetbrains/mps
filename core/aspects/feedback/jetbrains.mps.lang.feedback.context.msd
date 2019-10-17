@@ -2,7 +2,7 @@
 <solution name="jetbrains.mps.lang.feedback.context" uuid="9e98f4e2-decf-4e97-bf80-9109e8b759aa" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}/classes/context.jar!/" type="java_classes">
+    <modelRoot contentPath="${module}/context/classes" type="java_classes">
       <sourceRoot location="." />
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
@@ -13,7 +13,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/classes/context.jar" />
+    <stubModelEntry path="${module}/context/classes" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
