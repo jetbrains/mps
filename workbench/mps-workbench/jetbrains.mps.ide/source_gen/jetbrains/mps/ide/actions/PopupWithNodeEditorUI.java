@@ -10,9 +10,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JPanel;
 import java.util.List;
 import com.intellij.openapi.ui.ComboBox;
+import javax.swing.JLabel;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import javax.swing.JLabel;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.ui.popup.JBPopup;
 import java.util.ArrayList;
@@ -43,6 +43,7 @@ import com.intellij.ui.JBColor;
 import java.awt.Color;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.mps.openapi.model.SNode;
+import javax.swing.border.CompoundBorder;
 import javax.swing.JComponent;
 import javax.swing.Icon;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -72,6 +73,13 @@ public final class PopupWithNodeEditorUI implements Disposable {
   private final List<ImplementationNode> myImplNodes;
   @NotNull
   private final ComboBox<ImplementationNode> myNodeChooser;
+  /**
+   * When only one option is available, hide a myNodeChooser and show only a label with the node presentation.
+   * 
+   * Only one of myLabel and myNodeChooser should be visible.
+   */
+  @NotNull
+  private final JLabel myLabel;
   @NotNull
   private final Project myProject;
   @NotNull
@@ -87,6 +95,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
     myPanel = new JPanel();
     myImplNodes = new ArrayList<ImplementationNode>();
     myNodeChooser = new ComboBox<ImplementationNode>(new CollectionComboBoxModel<ImplementationNode>(myImplNodes, null));
+    myLabel = new JLabel();
     myProject = project;
     myUIEditorComponent = new NodeEditorComponent(project.getRepository(), new EditorConfigurationBuilder().showLeftHighlighter(false).readOnly(true));
 
@@ -114,6 +123,9 @@ public final class PopupWithNodeEditorUI implements Disposable {
     gc.fill = GridBagConstraints.HORIZONTAL;
     gc.weightx = 1;
     toolbarPanel.add(myNodeChooser, gc);
+
+    myLabel.setVisible(false);
+    toolbarPanel.add(myLabel, gc);
 
     gc.fill = GridBagConstraints.NONE;
     gc.weightx = 0;
@@ -196,8 +208,14 @@ public final class PopupWithNodeEditorUI implements Disposable {
     }
     if (myImplNodes.size() == 1) {
       myCountLabel.setVisible(false);
+      myNodeChooser.setVisible(false);
+      ImplementationNode node = myImplNodes.get(0);
+      myLabel.setIcon(node.myNodeIcon);
+      myLabel.setForeground(StyleRegistry.getInstance().getEditorForeground());
+      myLabel.setText(node.myNodePresentation);
+      myLabel.setBorder(new CompoundBorder(IdeBorderFactory.createRoundedBorder(), JBUI.Borders.empty(0, 5, 2, 5)));
+      myLabel.setVisible(true);
     }
-
     updateControls();
   }
 

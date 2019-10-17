@@ -2799,6 +2799,7 @@
     <classNode dependClassName="javax.swing.JList" />
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode dependClassName="javax.swing.KeyStroke" />
+    <classNode dependClassName="javax.swing.border.CompoundBorder" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.icons.GlobalIconManager" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
