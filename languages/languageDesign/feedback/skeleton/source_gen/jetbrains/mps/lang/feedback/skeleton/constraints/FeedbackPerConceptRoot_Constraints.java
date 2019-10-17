@@ -30,11 +30,10 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.ListScope;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.scope.EmptyScope;
-import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.scope.ModelPlusImportedScope;
+import jetbrains.mps.lang.structure.constraints.Scopes;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescriptor {
@@ -93,12 +92,11 @@ public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescripto
               Iterable<SNode> seq = Sequence.<SNode>singleton(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"), SNodeOperations.getModel(_context.getContextNode()).getRepository()));
               return ListScope.forNamedElements(seq);
             }
-            SModel structure = check_pwu0qc_a0b0b0a0a0b0a0a0a4(Language.getLanguageForLanguageAspect(SNodeOperations.getModel(_context.getContextNode())));
-            if (structure == null) {
-              return new EmptyScope();
+            SConcept acd = CONCEPTS.AbstractConceptDeclaration$UN;
+            if (!(SNodeOperations.getModel(_context.getContextNode()).getModule() instanceof Language)) {
+              return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, acd);
             }
-
-            return new NamedElementsScope(SModelOperations.roots(structure, CONCEPTS.AbstractConceptDeclaration$UN));
+            return Scopes.forConceptsInSameLanguage(SNodeOperations.getModel(_context.getContextNode()), acd);
           }
         };
       }
@@ -106,12 +104,6 @@ public class FeedbackPerConceptRoot_Constraints extends BaseConstraintsDescripto
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
     references.put(d0.getReference(), d0);
     return references;
-  }
-  private static SModel check_pwu0qc_a0b0b0a0a0b0a0a0a4(Language checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getStructureModelDescriptor();
-    }
-    return null;
   }
   private static final SNodePointer breakingNode_pwu0qc_a0a0a0a0a1a0a0a0e = new SNodePointer("r:99749b65-b7fc-4566-b6a7-ca55328bd881(jetbrains.mps.lang.feedback.skeleton.constraints)", "6836281137582781546");
 

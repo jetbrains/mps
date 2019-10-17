@@ -17,7 +17,7 @@ public final class LanguageConceptSwitch {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7127d40929f043e8L, 0x917ff016ea288944L);
     builder.put(0x2372fa56cc4ea3f4L, MissingChildInConceptProblem);
     builder.put(0x4f7007d340049b31L, MissingPropertyInConceptProblem);
-    builder.put(0x4f7007d340049b31L, MissingRefInConceptProblem);
+    builder.put(0x16c287efa3fb8a38L, MissingRefInConceptProblem);
     myIndex = builder.seal();
   }
 

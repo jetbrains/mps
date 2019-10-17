@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.lang.feedback.problem.structural.actions.ActionAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
-import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.lang.feedback.problem.structural.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
@@ -56,9 +55,6 @@ public class Language extends LanguageRuntime {
     }
     if (aspectClass == BehaviorAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.lang.feedback.problem.structural.behavior.BehaviorAspectDescriptor());
-    }
-    if (aspectClass == ConstraintsAspectDescriptor.class) {
-      return aspectClass.cast(new jetbrains.mps.lang.feedback.problem.structural.constraints.ConstraintsAspectDescriptor());
     }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());

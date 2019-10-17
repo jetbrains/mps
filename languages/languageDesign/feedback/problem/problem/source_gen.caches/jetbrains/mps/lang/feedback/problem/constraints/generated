@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cxkqspnnsjo1zwx1nnix6jpoeiovykl">
-  <files names="ConstraintsAspectDescriptor.java:ProblemKind_Constraints.java" />
+<product version="3" modelHash="eg1jtq034sb6xkq4c4g9mardxj5vdwo">
+  <files names="ConstraintsAspectDescriptor.java:ProblemKind_Constraints.java:ProblemPointsToKindRoot_Constraints.java" />
 </product>
 

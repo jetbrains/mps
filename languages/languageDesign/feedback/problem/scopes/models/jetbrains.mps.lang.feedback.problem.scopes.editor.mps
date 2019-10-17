@@ -7,8 +7,8 @@
   </languages>
   <imports>
     <import index="lk2x" ref="r:bc41db58-2589-400b-8121-4dd19c77316b(jetbrains.mps.lang.feedback.problem.scopes.structure)" implicit="true" />
-    <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="sis7" ref="r:ff619a2b-8fe7-4627-a515-9b4874d6fc53(jetbrains.mps.lang.feedback.problem.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -16,6 +16,8 @@
         <child id="1078153129734" name="inspectedCellModel" index="6VMZX" />
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
+      <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
+      <concept id="1237308012275" name="jetbrains.mps.lang.editor.structure.IndentLayoutNewLineStyleClassItem" flags="ln" index="ljvvj" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
@@ -23,6 +25,9 @@
         <property id="1186403713874" name="color" index="Vb096" />
       </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
+      <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
+        <property id="1186414551515" name="flag" index="VOm3f" />
+      </concept>
       <concept id="1186414860679" name="jetbrains.mps.lang.editor.structure.EditableStyleClassItem" flags="ln" index="VPxyj" />
       <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
         <child id="1088186146602" name="editorComponent" index="1sWHZn" />
@@ -51,19 +56,6 @@
   </registry>
   <node concept="24kQdi" id="1oq9tin0VgH">
     <ref role="1XX52x" to="lk2x:1oq9tin0UZr" resolve="RefOutOfScopeProblem" />
-    <node concept="3EZMnI" id="6GnzfDReZxy" role="6VMZX">
-      <node concept="1iCGBv" id="6GnzfDReZxD" role="3EZMnx">
-        <ref role="1NtTu8" to="sis7:6GnzfDRfssV" resolve="kind" />
-        <node concept="1sVBvm" id="6GnzfDReZxF" role="1sWHZn">
-          <node concept="3F0A7n" id="6GnzfDReZyp" role="2wV5jI">
-            <property role="1Intyy" value="true" />
-            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-            <node concept="VPxyj" id="224Bjf9uxT0" role="3F10Kt" />
-          </node>
-        </node>
-      </node>
-      <node concept="2iRfu4" id="6GnzfDReZx_" role="2iSdaV" />
-    </node>
     <node concept="3EZMnI" id="5sUTrySNjU1" role="2wV5jI">
       <node concept="2iRfu4" id="5sUTrySNjU2" role="2iSdaV" />
       <node concept="3F0ifn" id="1oq9tin1$Ge" role="3EZMnx">
@@ -88,6 +80,25 @@
       <node concept="3F0ifn" id="1oq9tin1$Gu" role="3EZMnx">
         <property role="3F0ifm" value="is out of scope" />
       </node>
+    </node>
+    <node concept="3EZMnI" id="2dMY_rcjEfX" role="6VMZX">
+      <node concept="3F0ifn" id="7_GILwdCvSP" role="3EZMnx">
+        <property role="3F0ifm" value="kind" />
+      </node>
+      <node concept="1iCGBv" id="2dMY_rcjEfY" role="3EZMnx">
+        <ref role="1NtTu8" to="sis7:6GnzfDRfssV" resolve="kind" />
+        <node concept="1sVBvm" id="2dMY_rcjEfZ" role="1sWHZn">
+          <node concept="3F0A7n" id="2dMY_rcjEg0" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+            <node concept="VPxyj" id="7_GILwdCvTG" role="3F10Kt" />
+          </node>
+        </node>
+        <node concept="ljvvj" id="7_GILwdCvSZ" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="7_GILwdCvT1" role="2iSdaV" />
     </node>
   </node>
 </model>

@@ -14,15 +14,17 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.structure.constraints.ConstraintsUtilConcepts;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.scope.ModelPlusImportedScope;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.structure.constraints.FullyQualifiedNamedElementsScope;
 import java.util.HashMap;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class FailingPropertyConstraintsProblem_Constraints extends BaseConstraintsDescriptor {
   public FailingPropertyConstraintsProblem_Constraints() {
@@ -31,7 +33,7 @@ public class FailingPropertyConstraintsProblem_Constraints extends BaseConstrain
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.kind$Wl20, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$K$mE, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -46,47 +48,31 @@ public class FailingPropertyConstraintsProblem_Constraints extends BaseConstrain
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode concrete = SPointerOperations.resolveNode(new SNodePointer("r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)", "24399255755876627"), SNodeOperations.getModel(_context.getContextNode()).getRepository());
-            return ListScope.forResolvableElements(Sequence.<SNode>singleton(concrete));
-          }
-        };
-      }
-    };
-    BaseReferenceConstraintsDescriptor d1 = new BaseReferenceConstraintsDescriptor(LINKS.property$K$mE, this) {
-      @Override
-      public boolean hasOwnScopeProvider() {
-        return true;
-      }
-      @Nullable
-      @Override
-      public ReferenceScopeProvider getScopeProvider() {
-        return new BaseScopeProvider() {
-          @Override
-          public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_nfg5l8_a0a0a0a0a1a0a0b0c;
-          }
-          @Override
-          public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), false, CONCEPTS.PropertyDeclaration$c5);
+            Iterable<SNode> conceptDeclarationsInSameLanguage = ConstraintsUtilConcepts.getConceptsInSameLanguage(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.AbstractConceptDeclaration$UN);
+            Iterable<SNode> propDeclarations = Sequence.fromIterable(conceptDeclarationsInSameLanguage).translate(new ITranslator2<SNode, SNode>() {
+              public Iterable<SNode> translate(SNode it) {
+                return SLinkOperations.getChildren(SNodeOperations.cast(it, CONCEPTS.AbstractConceptDeclaration$UN), LINKS.propertyDeclaration$lL73);
+              }
+            });
+            Scope scope = new FullyQualifiedNamedElementsScope(propDeclarations);
+            return scope;
           }
         };
       }
     };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
     references.put(d0.getReference(), d0);
-    references.put(d1.getReference(), d1);
     return references;
   }
-  private static final SNodePointer breakingNode_nfg5l8_a0a0a0a0a1a0a0a0c = new SNodePointer("r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5(jetbrains.mps.lang.feedback.problem.childAndProp.constraints)", "7716791493892404456");
-  private static final SNodePointer breakingNode_nfg5l8_a0a0a0a0a1a0a0b0c = new SNodePointer("r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5(jetbrains.mps.lang.feedback.problem.childAndProp.constraints)", "24399255755754851");
+  private static final SNodePointer breakingNode_nfg5l8_a0a0a0a0a1a0a0a0c = new SNodePointer("r:5fb5395d-4f7b-4fac-941f-f4bc11c7dac5(jetbrains.mps.lang.feedback.problem.childAndProp.constraints)", "24399255755754851");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept FailingPropertyConstraintsProblem$oG = MetaAdapterFactory.getConcept(0xcddf55b3117e46ecL, 0x837cff50eb7b89b0L, 0x56aefe6c18a706L, "jetbrains.mps.lang.feedback.problem.childAndProp.structure.FailingPropertyConstraintsProblem");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$Wl20 = MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind");
     /*package*/ static final SReferenceLink property$K$mE = MetaAdapterFactory.getReferenceLink(0xcddf55b3117e46ecL, 0x837cff50eb7b89b0L, 0x56aefe6c18a706L, 0x56aefe6c18edb7L, "property");
+    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
   }
 }

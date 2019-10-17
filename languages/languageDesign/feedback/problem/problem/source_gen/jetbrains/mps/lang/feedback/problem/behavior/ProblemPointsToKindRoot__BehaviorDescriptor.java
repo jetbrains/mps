@@ -15,11 +15,23 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import com.intellij.openapi.ui.Messages;
+import java.util.Objects;
+import jetbrains.mps.scope.ModelsScope;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -34,6 +46,27 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ProblemKind$14)) {
+      SNode node = __thisNode__;
+      SModel model = (SNodeOperations.asNode(SNodeOperations.getConcept(node))).getModel();
+      if (model == null) {
+        return null;
+      }
+      SModule lang = model.getModule();
+      if (false == lang instanceof Language) {
+        return null;
+      }
+      LanguageAspectDescriptor feedbackAspect = LanguageAspectSupport.getAspectDescriptorById("feedback");
+      if (feedbackAspect == null) {
+        Messages.showErrorDialog("Feedback aspect is not found", "Aspect Not Deployed");
+        return null;
+      }
+      SModel feedbackModel = Objects.requireNonNull(feedbackAspect).getAspectModels(lang).stream().findAny().orElse(null);
+      if (feedbackModel == null) {
+        return null;
+      }
+      return new ModelsScope(Sequence.<SModel>singleton(feedbackModel), true, kind);
+    }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.kind$Wl20), LINKS.context$sc53), kind, child);
   }
 
@@ -81,6 +114,10 @@ public final class ProblemPointsToKindRoot__BehaviorDescriptor extends BaseBHDes
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ProblemKind$14 = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, "jetbrains.mps.lang.feedback.problem.structure.ProblemKind");
   }
 
   private static final class LINKS {

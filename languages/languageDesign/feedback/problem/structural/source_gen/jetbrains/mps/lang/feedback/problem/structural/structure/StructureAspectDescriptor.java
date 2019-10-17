@@ -76,7 +76,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMissingRefInConceptProblem() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MissingRefInConceptProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x4f7007d340049b31L);
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "MissingRefInConceptProblem", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x16c287efa3fb8a38L);
     b.class_(true, false, false);
     b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/1640022677634386488");
