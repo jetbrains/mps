@@ -65,7 +65,7 @@ public class HelpHelper {
       assert url != null : "should have checked that helpForAspectIsAvailable==true";
       BrowserUtil.browse(url);
     } else {
-      BrowserUtil.browse(LanguageAspect.CONFLUENCE_BASE + "mps-generator.html");
+      BrowserUtil.browse(LanguageAspect.HELP_CENTER_BASE + "mps-generator.html");
     }
   }
   public static void showHelpForRoot(SNode node) {

@@ -38,16 +38,16 @@ import java.util.stream.Stream;
 
 public enum LanguageAspect {
   //mostly migrated
-  STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "structure.html"),
+  STRUCTURE("structure", BootstrapLanguages.structureLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "structure.html"),
 
   //mostly migrated
-  EDITOR("editor", BootstrapLanguages.editorLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "editor.html  "),
+  EDITOR("editor", BootstrapLanguages.editorLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "editor.html  "),
 
   //mostly migrated
-  ACTIONS("actions", BootstrapLanguages.actionsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "editor-actions.html"),
+  ACTIONS("actions", BootstrapLanguages.actionsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "editor-actions.html"),
 
   //mostly migrated
-  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "constraints.html") {
+  CONSTRAINTS("constraints", BootstrapLanguages.constraintsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "constraints.html") {
     @Override
     public Collection<SLanguage> getMainLanguages() {
       Collection<SLanguage> mainLanguages = new ArrayList<>();
@@ -63,25 +63,25 @@ public enum LanguageAspect {
   },
 
   //mostly migrated
-  BEHAVIOR("behavior", BootstrapLanguages.behaviorLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "behavior.html"),
+  BEHAVIOR("behavior", BootstrapLanguages.behaviorLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "behavior.html"),
 
   //mostly migrated
-  TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "typesystem.html"),
+  TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "typesystem.html"),
 
   //mostly migrated
-  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "refactoring.html"),
+  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "refactoring.html"),
 
   //mostly migrated
-  SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "scripts.html"),
+  SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "scripts.html"),
 
   //mostly migrated
-  INTENTIONS("intentions", BootstrapLanguages.intentionsLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "intentions.html"),
+  INTENTIONS("intentions", BootstrapLanguages.intentionsLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "intentions.html"),
 
   //mostly migrated
-  FIND_USAGES("findUsages", BootstrapLanguages.findUsagesLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "find-usages.html"),
+  FIND_USAGES("findUsages", BootstrapLanguages.findUsagesLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "find-usages.html"),
 
   //migrated, uncomment when migration is finished [compatibility] and deprecate this class
-  PLUGIN("plugin", null, LanguageAspect.CONFLUENCE_BASE + "plugin.html") {
+  PLUGIN("plugin", null, LanguageAspect.HELP_CENTER_BASE + "plugin.html") {
     @Override
     public Collection<SLanguage> getMainLanguages() {
       ArrayList<SLanguage> result = new ArrayList<>();
@@ -92,19 +92,19 @@ public enum LanguageAspect {
   },
 
   //mostly migrated
-  DATA_FLOW("dataFlow", BootstrapLanguages.dataFlowLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "data-flow.html"),
+  DATA_FLOW("dataFlow", BootstrapLanguages.dataFlowLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "data-flow.html"),
 
   //mostly migrated
-  TEST("test", BootstrapLanguages.testLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "testing-languages.html"),
+  TEST("test", BootstrapLanguages.testLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "testing-languages.html"),
 
   //mostly migrated
-  TEXT_GEN("textGen", BootstrapLanguages.textGenLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "textGen.html"),
+  TEXT_GEN("textGen", BootstrapLanguages.textGenLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "textGen.html"),
 
   //mostly migrated
-  MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.CONFLUENCE_BASE + "migrations.html");
+  MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "migrations.html");
 
   //TODO must be changed for each major/minor version release
-  public static final String CONFLUENCE_BASE = "https://www.jetbrains.com/help/mps/2019.3/";
+  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2019.3/";
 
   private String myName;
   private final SModuleReference myMainLang;

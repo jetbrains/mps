@@ -1601,9 +1601,9 @@
                   <ref role="37wK5l" to="ddhc:~BrowserUtil.browse(java.lang.String)" resolve="browse" />
                   <ref role="1Pybhc" to="ddhc:~BrowserUtil" resolve="BrowserUtil" />
                   <node concept="3cpWs3" id="3qqTSRHLtey" role="37wK5m">
-                    <node concept="10M0yZ" id="3qqTSRHLtez" role="3uHU7B">
+                    <node concept="10M0yZ" id="5BIW21Nzm3j" role="3uHU7B">
+                      <ref role="3cqZAo" to="w1kc:~LanguageAspect.HELP_CENTER_BASE" resolve="HELP_CENTER_BASE" />
                       <ref role="1PxDUh" to="w1kc:~LanguageAspect" resolve="LanguageAspect" />
-                      <ref role="3cqZAo" to="w1kc:~LanguageAspect.CONFLUENCE_BASE" resolve="CONFLUENCE_BASE" />
                     </node>
                     <node concept="Xl_RD" id="3qqTSRHLte$" role="3uHU7w">
                       <property role="Xl_RC" value="mps-generator.html" />
