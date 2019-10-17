@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
-import jetbrains.mps.editor.runtime.cells.AbstractCellAction.SelectionCellAction;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -887,7 +886,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     myCanBeSynchronized = canBeSynchronized;
   }
 
-  private class SelectFirstChild extends SelectionCellAction {
+  private class SelectFirstChild extends AbstractCellAction {
     @Override
     public boolean canExecute(EditorContext context) {
       return EditorCell_Collection.this.isSelected() && CellFinderUtil.findFirstSelectableLeaf(EditorCell_Collection.this) != null;
@@ -901,7 +900,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
     }
   }
 
-  private class SelectLastChild extends SelectionCellAction {
+  private class SelectLastChild extends AbstractCellAction {
     @Override
     public boolean canExecute(EditorContext context) {
       return EditorCell_Collection.this.isSelected() && CellFinderUtil.findLastSelectableLeaf(EditorCell_Collection.this) != null;

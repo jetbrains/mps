@@ -49,10 +49,6 @@ import java.util.Set;
 public class CellAction_CopyNode extends AbstractCellAction {
   private static final Logger LOG = LogManager.getLogger(CellAction_CopyNode.class);
 
-  public CellAction_CopyNode() {
-    super(false);
-  }
-
   @Override
   public boolean canExecute(EditorContext context) {
     return context.getEditorComponent().getSelectionManager().getSelection() != null;

@@ -18,7 +18,6 @@ package jetbrains.mps.nodeEditor.cells;
 import com.intellij.openapi.command.CommandProcessor;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
-import jetbrains.mps.editor.runtime.cells.AbstractCellAction.SelectionCellAction;
 import jetbrains.mps.editor.runtime.cells.CaretState;
 import jetbrains.mps.editor.runtime.commands.EditorComputable;
 import jetbrains.mps.editor.runtime.style.Padding;
@@ -769,7 +768,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     return getCellId() + "_" + String.valueOf(getSNodeId());
   }
 
-  private class MoveLeft extends SelectionCellAction {
+  private class MoveLeft extends AbstractCellAction {
     private boolean myWithSelection;
 
     private MoveLeft(boolean withSelection) {
@@ -789,7 +788,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     }
   }
 
-  private class MoveRight extends SelectionCellAction {
+  private class MoveRight extends AbstractCellAction {
     private boolean myWithSelection;
 
     private MoveRight(boolean withSelection) {
@@ -809,7 +808,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     }
   }
 
-  private class SelectHome extends SelectionCellAction {
+  private class SelectHome extends AbstractCellAction {
     @Override
     public boolean canExecute(EditorContext context) {
       return isCaretPositionAllowed(0);
@@ -823,7 +822,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     }
   }
 
-  private class SelectEnd extends SelectionCellAction {
+  private class SelectEnd extends AbstractCellAction {
     @Override
     public boolean canExecute(EditorContext context) {
       return isCaretPositionAllowed(getText().length());
@@ -838,10 +837,6 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   private class CopyLabelText extends AbstractCellAction {
-    CopyLabelText() {
-      super(false);
-    }
-
     @Override
     public boolean canExecute(EditorContext context) {
       SelectionManager selectionManager = context.getEditorComponent().getSelectionManager();
@@ -864,7 +859,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     }
   }
 
-  private class LocalHome extends SelectionCellAction {
+  private class LocalHome extends AbstractCellAction {
     private boolean mySelect;
 
     private LocalHome(boolean select) {
@@ -883,7 +878,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   }
 
-  private class LocalEnd extends SelectionCellAction {
+  private class LocalEnd extends AbstractCellAction {
     private boolean mySelect;
 
     private LocalEnd(boolean select) {
@@ -901,7 +896,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     }
   }
 
-  private class ClearSelection extends SelectionCellAction {
+  private class ClearSelection extends AbstractCellAction {
 
     @Override
     public boolean canExecute(EditorContext context) {
