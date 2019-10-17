@@ -256,6 +256,13 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
 
     myCancellableReads.cancel();
 
+    if (canRead() && !canWrite()) {
+      // This check is to avoid deadlocks like in https://youtrack.jetbrains.com/issue/MPS-31083
+      // XXX !canWrite() here is to limit check to outer runReadAction(). However, not sure whether it's ok to start a command when we are inside a
+      //     runWriteAction() (i.e. canWrite() == true), perhaps, it's not ok as well.
+      throw new IllegalModelAccessException("deadlock prevention: can not elevate model read to a command");
+    }
+
     if (isInsideCommand()) {
       // no apparent reason to go long way and to notify IDEA's CommandProcessor.
       // Besides, and it's IMPORTANT, wrapTopCommandRunnable() and UndoContextSetup expect runnable to be the top command
