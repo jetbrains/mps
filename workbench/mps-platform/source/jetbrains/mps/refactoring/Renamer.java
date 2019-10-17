@@ -17,6 +17,7 @@ package jetbrains.mps.refactoring;
 
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.project.AbstractModule;
@@ -183,6 +184,32 @@ public final class Renamer {
 
     subModules.sort(Comparator.comparingInt(moduleToCompare -> moduleToCompare.getModuleSourceDir().getPath().length()));
     return subModules;
+  }
+
+  /**
+   * If folder and module name are different, folder will not be renamed, so no need to check submodules.
+   * @return whether submodules should be suggested for rename
+   */
+  @Internal
+  public static boolean needToRenameSubmodules(final AbstractModule module) {
+    return module.getModuleName() != null && module.getModuleName().equals(module.getModuleSourceDir().getName());
+  }
+
+  @Internal
+  @NotNull
+  public static String getSubmodulesInfoHtml(SRepository repository, AbstractModule moduleToRename) {
+    final StringBuilder builder = new StringBuilder();
+    builder.append("<ul>");
+    for (AbstractModule subModule : getSubModules(repository, moduleToRename)) {
+      builder.append("<li>");
+      builder.append(subModule.getModuleName());
+      if (subModule.getModuleName().contains(moduleToRename.getModuleName())) {
+        builder.append(" (will be renamed)");
+      }
+      builder.append("</li>");
+    }
+    builder.append("</ul>");
+    return "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</html></p>";
   }
 
   public static void renameModel(@NotNull EditableSModel model, String newName) {

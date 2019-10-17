@@ -95,32 +95,15 @@ public class RenameModuleDialog extends RenameDialog {
    * Have to update info panel after initialization in {@link jetbrains.mps.ide.refactoring.RenameModuleDialog#createCenterPanel() }, because last one happens in super constructor before {@link jetbrains.mps.ide.refactoring.RenameModuleDialog#myModule } is set.
    */
   private void updateCentralPanel() {
-    // If folder and module name are different, folder will not be renamed, so no need to check submodules 
-    if (myModule.getModuleName() != null && myModule.getModuleName().equals(myModule.getModuleSourceDir().getName())) {
-      mySubModules = Renamer.getSubModules(myProject.getRepository(), myModule);
-    } else {
+    if (!(Renamer.needToRenameSubmodules(myModule))) {
       mySubModules = Collections.emptyList();
-    }
-
-    if (mySubModules.isEmpty()) {
       return;
     }
+    mySubModules = Renamer.getSubModules(myProject.getRepository(), myModule);
 
-    final StringBuilder builder = new StringBuilder();
-    builder.append("<ul>");
-    for (AbstractModule subModule : mySubModules) {
-      builder.append("<li>");
-      builder.append(subModule.getModuleName());
-      if (subModule.getModuleName().contains(myModule.getModuleName())) {
-        builder.append(" (will be renamed)");
-      }
-      builder.append("</li>");
+    if (!(mySubModules.isEmpty())) {
+      JLabel label = new JBLabel(Renamer.getSubmodulesInfoHtml(myProject.getRepository(), myModule), UIUtil.getInformationIcon(), JBLabel.LEFT);
+      myOptionsPanel.add(label);
     }
-    builder.append("</ul>");
-
-
-    final String info = "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</html></p>";
-    JLabel label = new JBLabel(info, UIUtil.getInformationIcon(), JBLabel.LEFT);
-    myOptionsPanel.add(label);
   }
 }
