@@ -150,6 +150,10 @@
         <property role="2V$B1T" value="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" />
         <property role="2V$B1Q" value="jetbrains.mps.lang.slanguage" />
       </node>
+      <node concept="2V$Bhx" id="2e3ANUBoe73" role="1t_9vn">
+        <property role="2V$B1T" value="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" />
+        <property role="2V$B1Q" value="jetbrains.mps.lang.scopes" />
+      </node>
     </node>
     <node concept="NozSJ" id="3ZKqOfpDwxT" role="2VgMA7">
       <ref role="NozSM" to="7j7i:2fM90Pxfljd" resolve="BaseLanguageWithExtensions" />

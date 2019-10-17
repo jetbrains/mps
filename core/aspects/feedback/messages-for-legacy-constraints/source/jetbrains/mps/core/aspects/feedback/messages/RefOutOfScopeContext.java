@@ -61,4 +61,9 @@ public final class RefOutOfScopeContext implements Context {
   public SReferenceLink getLink() {
     return myReference.getLink();
   }
+
+  @Nullable
+  public SNode getTarget() {
+    return myReference.getTargetNode();
+  }
 }
