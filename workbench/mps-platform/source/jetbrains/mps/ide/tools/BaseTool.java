@@ -231,7 +231,7 @@ public abstract class BaseTool {
         Keymap keymap = KeymapManager.getInstance().getKeymap(keymapItem.getKey());
         if (keymap == null) {
           LOG.warn("Keymap " + keymapItem.getKey() + " cannot be found");
-          return;
+          continue;
         }
         keymaps.add(keymap);
       }
