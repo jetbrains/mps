@@ -92,15 +92,15 @@ public class MigrationTask {
     }
 
     if (checkAndIncStage(1)) {
-      List<ScriptApplied> missingMigrations = findMissingMigrations(myMonitor.subTask(5));
-      if (ListSequence.fromList(missingMigrations).isNotEmpty()) {
-        throw new MigrationsMissingError(missingMigrations);
+      if (!((runCleanupMigrations(myMonitor.subTask(10))))) {
+        throw new MigrationExceptionError();
       }
     }
 
     if (checkAndIncStage(2)) {
-      if (!((runCleanupMigrations(myMonitor.subTask(10))))) {
-        throw new MigrationExceptionError();
+      List<ScriptApplied> missingMigrations = findMissingMigrations(myMonitor.subTask(5));
+      if (ListSequence.fromList(missingMigrations).isNotEmpty()) {
+        throw new MigrationsMissingError(missingMigrations);
       }
     }
 

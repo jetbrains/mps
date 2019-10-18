@@ -7236,6 +7236,46 @@
           </node>
         </node>
         <node concept="3clFbH" id="6c5JlXW7pSv" role="3cqZAp" />
+        <node concept="3clFbJ" id="6dkZ8D0Gmhf" role="3cqZAp">
+          <node concept="3clFbS" id="6dkZ8D0Gmhh" role="3clFbx">
+            <node concept="3clFbJ" id="78xBDbK80im" role="3cqZAp">
+              <node concept="3clFbS" id="78xBDbK80io" role="3clFbx">
+                <node concept="YS8fn" id="5cfG2XjDlha" role="3cqZAp">
+                  <node concept="2ShNRf" id="3c6oXHAr5SH" role="YScLw">
+                    <node concept="1pGfFk" id="3c6oXHAr5Jp" role="2ShVmc">
+                      <ref role="37wK5l" node="2htE_P_OBzE" resolve="MigrationExceptionError" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="78xBDbK80Oc" role="3clFbw">
+                <node concept="1eOMI4" id="78xBDbK80Oe" role="3fr31v">
+                  <node concept="1rXfSq" id="PobQbO9Fh7" role="1eOMHV">
+                    <ref role="37wK5l" node="4hH4xQoI2KA" resolve="runCleanupMigrations" />
+                    <node concept="2OqwBi" id="PobQbO9Fh8" role="37wK5m">
+                      <node concept="37vLTw" id="6dkZ8D0HyEz" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6dkZ8D0H4WB" resolve="myMonitor" />
+                      </node>
+                      <node concept="liA8E" id="PobQbO9Fha" role="2OqNvi">
+                        <ref role="37wK5l" to="mk90:~ProgressMonitorBase.subTask(int)" resolve="subTask" />
+                        <node concept="3cmrfG" id="PobQbO9Fhb" role="37wK5m">
+                          <property role="3cmrfH" value="10" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1rXfSq" id="cQNMA1Iwmb" role="3clFbw">
+            <ref role="37wK5l" node="cQNMA1I5CZ" resolve="checkAndIncStage" />
+            <node concept="3cmrfG" id="5rjS8B$$noc" role="37wK5m">
+              <property role="3cmrfH" value="1" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="5rjS8B$$kcr" role="3cqZAp" />
         <node concept="3clFbJ" id="cQNMA1HX0$" role="3cqZAp">
           <node concept="3clFbS" id="cQNMA1HX0_" role="3clFbx">
             <node concept="3cpWs8" id="cQNMA1HX0F" role="3cqZAp">
@@ -7285,47 +7325,7 @@
           </node>
           <node concept="1rXfSq" id="cQNMA1IvuO" role="3clFbw">
             <ref role="37wK5l" node="cQNMA1I5CZ" resolve="checkAndIncStage" />
-            <node concept="3cmrfG" id="cQNMA1Iwb3" role="37wK5m">
-              <property role="3cmrfH" value="1" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="6dkZ8D0FY5H" role="3cqZAp" />
-        <node concept="3clFbJ" id="6dkZ8D0Gmhf" role="3cqZAp">
-          <node concept="3clFbS" id="6dkZ8D0Gmhh" role="3clFbx">
-            <node concept="3clFbJ" id="78xBDbK80im" role="3cqZAp">
-              <node concept="3clFbS" id="78xBDbK80io" role="3clFbx">
-                <node concept="YS8fn" id="5cfG2XjDlha" role="3cqZAp">
-                  <node concept="2ShNRf" id="3c6oXHAr5SH" role="YScLw">
-                    <node concept="1pGfFk" id="3c6oXHAr5Jp" role="2ShVmc">
-                      <ref role="37wK5l" node="2htE_P_OBzE" resolve="MigrationExceptionError" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3fqX7Q" id="78xBDbK80Oc" role="3clFbw">
-                <node concept="1eOMI4" id="78xBDbK80Oe" role="3fr31v">
-                  <node concept="1rXfSq" id="PobQbO9Fh7" role="1eOMHV">
-                    <ref role="37wK5l" node="4hH4xQoI2KA" resolve="runCleanupMigrations" />
-                    <node concept="2OqwBi" id="PobQbO9Fh8" role="37wK5m">
-                      <node concept="37vLTw" id="6dkZ8D0HyEz" role="2Oq$k0">
-                        <ref role="3cqZAo" node="6dkZ8D0H4WB" resolve="myMonitor" />
-                      </node>
-                      <node concept="liA8E" id="PobQbO9Fha" role="2OqNvi">
-                        <ref role="37wK5l" to="mk90:~ProgressMonitorBase.subTask(int)" resolve="subTask" />
-                        <node concept="3cmrfG" id="PobQbO9Fhb" role="37wK5m">
-                          <property role="3cmrfH" value="10" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="1rXfSq" id="cQNMA1Iwmb" role="3clFbw">
-            <ref role="37wK5l" node="cQNMA1I5CZ" resolve="checkAndIncStage" />
-            <node concept="3cmrfG" id="cQNMA1Ix2n" role="37wK5m">
+            <node concept="3cmrfG" id="5rjS8B$$nuD" role="37wK5m">
               <property role="3cmrfH" value="2" />
             </node>
           </node>
