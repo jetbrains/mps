@@ -23,11 +23,16 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.DialogWrapper;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.EmptyRunnable;
+import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.ui.AnActionButtonRunnable;
 import com.intellij.ui.CheckboxTree;
 import com.intellij.ui.CheckboxTreeBase.CheckPolicy;
@@ -43,11 +48,13 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import com.intellij.util.WaitForProgressToShow;
 import com.intellij.util.ui.AbstractTableCellEditor;
 import com.intellij.util.ui.AnimatedIcon;
 import com.intellij.util.ui.AsyncProcessIcon;
 import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.findUsages.CompositeFinder;
@@ -84,6 +91,7 @@ import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModuleUsagesFinder;
 import jetbrains.mps.lang.migration.runtime.base.VersionFixer;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.DescriptorTargetFileAlreadyExistsException;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleInstanceCondition;
@@ -100,6 +108,7 @@ import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_E
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefSet;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
 import jetbrains.mps.project.structure.modules.mappingpriorities.RuleType;
+import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
@@ -112,6 +121,7 @@ import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -128,7 +138,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.ui.Modifiable;
 import org.jetbrains.mps.openapi.ui.persistence.Tab;
-import org.jetbrains.mps.util.Condition;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -239,8 +248,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     if (myModule instanceof Language) {
       for (Generator generator : ((Language) myModule).getOwnedGenerators()) {
-        VersionFixer fixer = new VersionFixer(myProject, generator, true);
-        if (!fixer.areDepsSatisfied()) continue; //can't update module versions for a module with broken dep
+        VersionFixer fixer = new VersionFixer(myMPSProject, generator, true);
+        if (!fixer.areDepsSatisfied()) {
+          continue; //can't update module versions for a module with broken dep
+        }
         fixer.updateImportVersions();
       }
     }
@@ -264,7 +275,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   private FindUsagesScope getModuleAndOwnedModelsScope() {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction((Computable<FindUsagesScope>) () -> {
+    return new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction((Computable<FindUsagesScope>) () -> {
       final ModulesScope rv = new ModulesScope(myModule);
       rv.resolveRespectsAllVisible(true);
       return rv;
@@ -327,7 +338,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myModuleDependenciesTab.init(); // init to avoid myModuleDependenciesTab.getTabComponent() == null
         return myModuleDependenciesTab.getTabComponent();
       } else {
-        myEntriesEditor = new ModelRootContentEntriesEditor(myModuleDescriptor, myProject);
+        myEntriesEditor = new ModelRootContentEntriesEditor(myModuleDescriptor, myMPSProject);
         Disposer.register(getDisposable(), myEntriesEditor);
         return myEntriesEditor.getComponent();
       }
@@ -412,7 +423,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       } else if (myModule instanceof DevKit) {
         // XXX
         myPlanPickScope = new DevkitVisibleScope(myModuleRepository, (DevKit) myModule);
-        myPlanPanel = new GenPlanPickPanel(myProject, myPlanPickScope, "Generation plan for models using this devkit");
+        myPlanPanel = new GenPlanPickPanel(myMPSProject, myPlanPickScope, "Generation plan for models using this devkit");
         myPlanPanel.setPlanModel(((DevkitDescriptor) myModuleDescriptor).getAssociatedGenPlan());
         return myPlanPanel;
       } else if (myModule instanceof Generator && myModuleDescriptor instanceof GeneratorDescriptor) {
@@ -488,8 +499,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     public void apply() {
+      String renameTo = null;
       if (super.isModified()) {
-        myModuleDescriptor.setNamespace(myTextFieldName.getText());
+        renameTo = myTextFieldName.getText();
       }
       if (myModuleDescriptor instanceof DevkitDescriptor) {
         myModuleDependenciesTab.apply();
@@ -521,6 +533,32 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         }
         myEntriesEditor.apply();
       }
+      if (renameTo != null) {
+        String finalRenameTo = renameTo;
+        ApplicationManager.getApplication().invokeLater(() -> {
+          String renameTitle = RefactoringBundle.message("rename.title");
+          int dialogResult = Messages.showOkCancelDialog(myMPSProject.getProject(), Renamer.getSubmodulesInfoHtml(myMPSProject.getRepository(), myModule),
+                                                         renameTitle, renameTitle, Messages.CANCEL_BUTTON, UIUtil.getInformationIcon());
+          if (Messages.OK == dialogResult) {
+            ProgressManager.getInstance().run(new Task.Modal(myMPSProject.getProject(), "Renaming...", false) {
+              @Override
+              public void run(@NotNull ProgressIndicator indicator) {
+                WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
+                  myMPSProject.getModelAccess().executeCommand(() -> {
+                    try {
+                      Renamer.renameModuleWithSubModules(myModule, finalRenameTo, Renamer.getSubModules(myMPSProject.getRepository(), myModule), ModulePropertiesConfigurable.this.myMPSProject);
+                    } catch (DescriptorTargetFileAlreadyExistsException e) {
+                      LogManager.getLogger(MPSPropertiesConfigurable.class).error(e);
+                    }
+                  });
+                });
+              }
+            });
+          } else {
+            myTextFieldName.setText(myModule.getModuleName());
+          }
+        });
+      }
     }
   }
 
@@ -530,7 +568,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     public void init() {
       super.init();
       final GridConstraints gc = new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false);
+                                                     GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false);
       getTabComponent().add(myDependenciesSpinner, gc);
     }
 
@@ -545,7 +583,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     protected DependTableModel getDependTableModel() {
-      final ModuleDependTableModel rv = new ModuleDependTableModel(myProject.getRepository(), myModuleDescriptor);
+      final ModuleDependTableModel rv = new ModuleDependTableModel(myMPSProject.getRepository(), myModuleDescriptor);
       rv.init();
       return rv;
     }
@@ -564,15 +602,15 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           selectionSet = new ConditionalIterable<>(selectionSet, new VisibleModuleCondition());
         }
         ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(selectionSet));
-        myProject.getModelAccess().runReadAction(c);
+        myMPSProject.getModelAccess().runReadAction(c);
         final String dialogTitle = isDevkit ? "Choose DevKit contents" : "Choose modules";
-        final List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myProject, dialogTitle, c.getResult());
+        final List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, dialogTitle, c.getResult());
         if (list.isEmpty()) {
           return;
         }
-        myProject.getModelAccess().runReadAction(() -> {
+        myMPSProject.getModelAccess().runReadAction(() -> {
           for (SModuleReference moduleReference : list) {
-            final SModule module = moduleReference.resolve(myProject.getRepository());
+            final SModule module = moduleReference.resolve(myMPSProject.getRepository());
             final Dependency dep;
             if (isDevkit) {
               dep = new Dependency(moduleReference, SDependencyScope.EXTENDS);
@@ -616,7 +654,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           }, DependencyCellState.SUPERFLUOUS_EXTENDS);
         }
         mtcr.addCellState(
-            moduleImport -> !scanTask.getGenerationTargets().contains(moduleImport.getModuleReference()) && !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
+            moduleImport -> !scanTask.getGenerationTargets().contains(moduleImport.getModuleReference()) &&
+                            !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
             DependencyCellState.UNUSED);
         myDependTableModel.fireTableDataChanged();
         myDependenciesSpinner.suspend();
@@ -745,8 +784,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         Iterable<SModule> modules = new ConditionalIterable<>(getProjectModules(), new ModuleInstanceCondition(Solution.class));
         modules = new ConditionalIterable<>(modules, new VisibleModuleCondition());
         ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(modules));
-        myProject.getModelAccess().runReadAction(c);
-        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myProject, "Choose solutions", c.getResult());
+        myMPSProject.getModelAccess().runReadAction(c);
+        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, "Choose solutions", c.getResult());
         for (SModuleReference reference : list) {
           myRuntimeTableModel.addItem(reference);
         }
@@ -783,11 +822,11 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       myAccessoriesModelsTableModel.init();
       accessoriesTable.setModel(myAccessoriesModelsTableModel);
 
-      accessoriesTable.setDefaultRenderer(SModelReference.class, new ModelTableCellRender(myProject.getRepository()));
+      accessoriesTable.setDefaultRenderer(SModelReference.class, new ModelTableCellRender(myMPSProject.getRepository()));
 
       ToolbarDecorator decoratorForAccessories = ToolbarDecorator.createDecorator(accessoriesTable);
       decoratorForAccessories.setAddAction(anActionButton -> {
-        List<SModelReference> list = new ModelChooser(myProject).compute();
+        List<SModelReference> list = new ModelChooser(myMPSProject).compute();
         for (SModelReference reference : list) {
           myAccessoriesModelsTableModel.addItem(reference);
         }
@@ -971,9 +1010,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     protected UsedLangsTableModel getUsedLangsTableModel() {
-      final List<SLanguage> usedLanguages = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(
+      final List<SLanguage> usedLanguages = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(
           (Computable<List<SLanguage>>) () -> new ArrayList<>(myModule.getUsedLanguages()));
-      final UsedLangsTableModel rv = new UsedLangsTableModel(myProject.getRepository());
+      final UsedLangsTableModel rv = new UsedLangsTableModel(myMPSProject.getRepository());
       usedLanguages.sort(new ToStringComparator());
       rv.init(usedLanguages, Collections.emptySet());
       return rv;
@@ -1079,7 +1118,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             checkboxTree = myMappingConf2TreeMap.get(mapping);
           } else {
             GeneratorPrioritiesTree generatorPrioritiesTree =
-                new GeneratorPrioritiesTree(myProject.getRepository(), myGenerator, mapping, column == 0, myDepGenerators.getGenerators());
+                new GeneratorPrioritiesTree(myMPSProject.getRepository(), myGenerator, mapping, column == 0, myDepGenerators.getGenerators());
 
             CheckedTreeNode rootNode = (CheckedTreeNode) generatorPrioritiesTree.getTree().getModel().getRoot();
             rootNode = column == 0 ? (CheckedTreeNode) rootNode.getFirstChild() : rootNode;
@@ -1111,7 +1150,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         }
 
         private boolean allChildrenChecked(CheckedTreeNode node) {
-          List<CheckedTreeNode> children = (List)Collections.list(node.children());
+          List<CheckedTreeNode> children = (List) Collections.list(node.children());
           boolean allChildrenChecked = true;
           for (CheckedTreeNode child : children) {
             if (!allChildrenChecked(child) || !child.isChecked()) {
@@ -1152,9 +1191,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           if (value instanceof MappingConfig_AbstractRef) {
             MappingConfig_AbstractRef mapping = (MappingConfig_AbstractRef) value;
 
-            myCurrentTree = new GeneratorPrioritiesTree(myProject.getRepository(), myGenerator, mapping, column == 0, myDepGenerators.getGenerators());
+            myCurrentTree = new GeneratorPrioritiesTree(myMPSProject.getRepository(), myGenerator, mapping, column == 0, myDepGenerators.getGenerators());
 
-            final DialogWrapper dialogWrapper = new DialogWrapper(ProjectHelper.toIdeaProject(myProject)) {
+            final DialogWrapper dialogWrapper = new DialogWrapper(ProjectHelper.toIdeaProject(myMPSProject)) {
               {
                 setModal(true);
                 super.init();
@@ -1401,9 +1440,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         existingFacetTypes.put(moduleFacet.getFacetType(), moduleFacet);
       }
 
-      final FacetsRegistry facetsRegistry = myProject.getComponent(FacetsRegistry.class);
+      final FacetsRegistry facetsRegistry = myMPSProject.getComponent(FacetsRegistry.class);
 
-      Set<String> applicableFacetTypes = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(
+      Set<String> applicableFacetTypes = new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(
           () -> facetsRegistry.getApplicableFacetTypes(myModule.getUsedLanguages()));
 
       for (String facetType : facetsRegistry.getFacetTypes()) {
@@ -1423,7 +1462,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         facetPresentation = applicableFacetTypes.contains(facetType)
                             ? String.format(fmt, facetPresentation) : facetPresentation;
         FacetCheckBox checkBox = existingFacetTypes.containsKey(facetType)
-                                 ? new FacetCheckBox(AddFacetsTab.this, existingFacetInstance, myFacetTabsPersistence.getFacetTab(existingFacetInstance), facetPresentation)
+                                 ? new FacetCheckBox(AddFacetsTab.this, existingFacetInstance, myFacetTabsPersistence.getFacetTab(existingFacetInstance),
+                                                     facetPresentation)
                                  : new FacetCheckBox(AddFacetsTab.this, facetType, facetPresentation);
 
         myCheckBoxes.add(checkBox);
@@ -1514,7 +1554,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       }
       if (myCheckBox.isSelected()) {
         if (myFacet == null) {
-          final FacetsRegistry facetRegistry = myProject.getComponent(FacetsRegistry.class);
+          final FacetsRegistry facetRegistry = myMPSProject.getComponent(FacetsRegistry.class);
           myFacet = facetRegistry.getFacetFactory(myFacetType).create();
           if (myFacet instanceof ModuleFacetBase) {
             // XXX why do we need to set module here, and why do we ignore return value?

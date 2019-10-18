@@ -57,7 +57,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel
 import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel.ValidImportCondition;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
@@ -96,11 +96,11 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   private final Disposable myDisposable = Disposer.newDisposable(MPSPropertiesConfigurable.class.getName());
   private final TabbedPaneWrapper myTabbedPaneWrapper = new TabbedPaneWrapper(myDisposable);
   private List<Tab> myTabs = new ArrayList<>();
-  protected final Project myProject;
+  protected final MPSProject myMPSProject;
   private DialogWrapper myParentForCallBack = null;
 
-  public MPSPropertiesConfigurable(Project project) {
-    myProject = project;
+  public MPSPropertiesConfigurable(MPSProject mpsProject) {
+    myMPSProject = mpsProject;
   }
 
   public final void setParentForCallBack(DialogWrapper parentForCallBack) {
@@ -229,8 +229,8 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   public void apply() {
     ThreadUtils.assertEDT();
     //see MPS-18743
-    new SaveRepositoryCommand(myProject.getRepository()).execute();
-    myProject.getModelAccess().executeCommand(() -> {
+    new SaveRepositoryCommand(myMPSProject.getRepository()).execute();
+    myMPSProject.getModelAccess().executeCommand(() -> {
       for (Tab tab : myTabs) {
         tab.apply();
       }
@@ -276,13 +276,13 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     // wrap into Iterable to ensure lazy construction of module sequence.
     // getModules operation requires read access, but I don't see a reason to
     // move creation of conditional sequence into a read runnable.
-    return () -> myProject.getRepository().getModules().iterator();
+    return () -> myMPSProject.getRepository().getModules().iterator();
   }
 
   // keep usage view options common to properties page in a single place
   /*package*/ void showUsageImpl(SearchQuery query, IResultProvider provider) {
     final UsageToolOptions uvOpt = new UsageToolOptions().allowRunAgain(true).forceNewTab(true).navigateIfSingle(false).transientView(true);
-    UsagesViewTool.showUsages(ProjectHelper.toIdeaProject(myProject), provider, query, uvOpt);
+    UsagesViewTool.showUsages(ProjectHelper.toIdeaProject(myMPSProject), provider, query, uvOpt);
   }
 
 
@@ -480,9 +480,9 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     protected abstract UsedLangsTableModel getUsedLangsTableModel();
 
     protected TableCellRenderer getTableCellRender() {
-      SRepository contextRepo = myProject.getRepository();
+      SRepository contextRepo = myMPSProject.getRepository();
       LanguageTableCellRenderer tcr = new LanguageTableCellRenderer(contextRepo);
-      tcr.addCellState(NotCondition.negate(new ValidImportCondition(myProject)), DependencyCellState.NOT_AVAILABLE);
+      tcr.addCellState(NotCondition.negate(new ValidImportCondition(myMPSProject)), DependencyCellState.NOT_AVAILABLE);
       return tcr;
     }
 
@@ -531,7 +531,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
     protected final List<SLanguage> getSelectedLanguages() {
       final List<SLanguage> languages = new LinkedList<>();
-      myProject.getModelAccess().runReadAction(() -> {
+      myMPSProject.getModelAccess().runReadAction(() -> {
         for (int i : myUsedLangsTable.getSelectedRows()) {
           Object value = myUsedLangsTableModel.getValueAt(i, UsedLangsTableModel.ITEM_COLUMN);
           if (value instanceof Import) {
@@ -539,7 +539,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
             if (entry.myLanguage != null) {
               languages.add(entry.myLanguage);
             } else {
-              final SModule devkit = entry.myDevKit.resolve(myProject.getRepository());
+              final SModule devkit = entry.myDevKit.resolve(myMPSProject.getRepository());
               if (devkit instanceof DevKit) {
                 languages.addAll(IterableUtil.asCollection(((DevKit) devkit).getAllExportedLanguageIds()));
               }
