@@ -43,7 +43,8 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.UndoHelper;
 import jetbrains.mps.smodel.UndoRunnable;
-import jetbrains.mps.typesystem.inference.TypeContextManager;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.util.EqualUtil;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
@@ -468,12 +469,13 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       SubstituteInfo substituteInfo = getSubstituteInfo();
       EditorComponent editorComponent = getContext().getEditorComponent();
       if (substituteInfo != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
-        modelAccess.runReadAction(() -> TypeContextManager.getInstance()
-                                                          .runTypeCheckingAction(
-                                                              ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).getTypecheckingContextOwner(),
-                                                              editorComponent.getEditedNode(),
-                                                              context -> substituteInfo.buildActions()
-                                                          ));
+        TypecheckingSession typecheckingSession = ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).getTypecheckingSession();
+        if (typecheckingSession != null) {
+          modelAccess.runReadAction(() ->
+                                        TypecheckingFacade.getFromContext()
+                                                          .runWithSession(typecheckingSession,
+                                                                          (session) -> substituteInfo.buildActions()));
+        }
       }
 
       IntelligentCellProcessor cellProcessor = IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side);
