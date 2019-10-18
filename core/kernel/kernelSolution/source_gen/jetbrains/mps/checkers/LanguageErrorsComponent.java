@@ -17,9 +17,9 @@ import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.Cancellable;
 import java.util.Map;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -128,21 +128,14 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     if (dependency == null) {
       return;
     }
-    addDependencyMapping(myCurrentNode, dependency);
     addModelListener(SNodeOperations.getModel(dependency));
-  }
-
-  private void addDependencyMapping(@NotNull SNode node, @NotNull SNode dependency) {
-    myDependenciesToNodesAndViceVersa.addLink(node, dependency);
-  }
-  private Set<SNode> removeDependencyFromMapping(@NotNull SNode dependency) {
-    // removing dependency node from any mappings together with all checked nodes 
-    // depending on this dependency node 
-    Set<SNode> nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), myDependenciesToNodesAndViceVersa.getByFirst(dependency));
-    for (SNode node : SetSequence.fromSet(nodes)) {
-      myDependenciesToNodesAndViceVersa.clearSecond(node);
+    if (dependency == myCurrentNode) {
+      return;
     }
-    return nodes;
+    // ManyToManyMap employed here keeps bi-directional mapping, so that we establish myCurrentNode->dependency and dependency->myCurrentNode relation here 
+    // Keep in mind the mappings is not symmetrical, i.e. checkedNodeA -> depX, checkedNodeB -> depX, checkedNodeC -> depX in ManyToManyMap.F2S, and depX -> {A, B, C} in ManyToManyMap.S2F 
+    // Note, it's *dependency*ToNodes, therefore, dependency comes first. 
+    myDependenciesToNodesAndViceVersa.addLink(dependency, myCurrentNode);
   }
 
   /*package*/ Set<SNode> getDependenciesToInvalidate(SModel model, SRepository repo) {
@@ -176,21 +169,26 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     if (SetSequence.fromSet(myDependenciesToInvalidate).isEmpty()) {
       return;
     }
-    for (SNode toInvalidate : myDependenciesToInvalidate) {
-      invalidateDependency(toInvalidate);
-    }
+    invalidateDependencies(myDependenciesToInvalidate);
     SetSequence.fromSet(myDependenciesToInvalidate).clear();
   }
-  private void invalidateDependency(SNode dependency) {
-    Set<SNode> checkedNodes = removeDependencyFromMapping(dependency);
-    if (checkedNodes != null) {
-      for (SNode node : checkedNodes) {
-        // avoid searching for _already_removed_ node later in check() 
-        if (SNodeOperations.getModel(node) != null) {
-          SetSequence.fromSet(myInvalidNodes).addElement(node);
-        }
-        myNodesToErrors.remove(node);
+
+  private void invalidateDependencies(Set<SNode> dependencies) {
+    // removing dependency node from any mappings together with all checked nodes 
+    // depending on this dependency node 
+    // Note, have to collect checked nodes for all dependencies first, and clearSecond only once all dependencies are processed 
+    Set<SNode> checkedNodes = SetSequence.fromSet(new HashSet<SNode>());
+    for (SNode dep : dependencies) {
+      // here, we query by dependency, utilizing the fact the map is in fact bi-directional, the moment we recorded checked node->its dependency, we've also recorded dependency->checked node 
+      SetSequence.fromSet(checkedNodes).addSequence(SetSequence.fromSet(myDependenciesToNodesAndViceVersa.getByFirst(dep)));
+    }
+    for (SNode node : checkedNodes) {
+      // avoid searching for _already_removed_ node later in check() 
+      if (SNodeOperations.getModel(node) != null) {
+        SetSequence.fromSet(myInvalidNodes).addElement(node);
       }
+      myNodesToErrors.remove(node);
+      myDependenciesToNodesAndViceVersa.clearSecond(node);
     }
   }
 
@@ -399,9 +397,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     @Override
     public void modelDetached(SModel model, SRepository repository) {
       if (myModel != model) {
-        for (SNode dependencyToInvalidate : getDependenciesToInvalidate(model, repository)) {
-          invalidateDependency(dependencyToInvalidate);
-        }
+        invalidateDependencies(getDependenciesToInvalidate(model, repository));
       }
       removeModelListeners(model);
       SetSequence.fromSet(myListenedModels).removeElement(model);
