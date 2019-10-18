@@ -62,7 +62,7 @@ public class StubClassifierCorrespondenceHelper {
   }
 
   public List<SNode> findStubClassifiers(SNode nodeClassifier) {
-    JavaModuleFacet javaFacet = SNodeOperations.getModel(nodeClassifier).getModule().getFacet(JavaModuleFacet.class);
+    JavaModuleFacet javaFacet = check_79n3t7_a0a0f(check_79n3t7_a0a0a5(SNodeOperations.getModel(nodeClassifier)));
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     if (javaFacet == null || javaFacet.isCompileInMps()) {
       return result;
@@ -186,6 +186,18 @@ public class StubClassifierCorrespondenceHelper {
     }
   }
 
+  private static JavaModuleFacet check_79n3t7_a0a0f(SModule checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getFacet(JavaModuleFacet.class);
+    }
+    return null;
+  }
+  private static SModule check_79n3t7_a0a0a5(SModel checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getModule();
+    }
+    return null;
+  }
   private static SModule check_79n3t7_a0d0f(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();

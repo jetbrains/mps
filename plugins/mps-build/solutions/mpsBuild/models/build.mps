@@ -8536,6 +8536,11 @@
             <ref role="1Busuk" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
           </node>
         </node>
+        <node concept="1SiIV0" id="3XX3WAauRa" role="3bR37C">
+          <node concept="3bR9La" id="3XX3WAauRb" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbIZ" resolve="MPS.Editor" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2G$12M" id="SHPhCCYR3o" role="3989C9">

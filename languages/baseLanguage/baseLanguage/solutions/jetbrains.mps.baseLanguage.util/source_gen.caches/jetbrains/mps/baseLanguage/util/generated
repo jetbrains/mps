@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-efdpsc0thhi8fdpn1a4us7zaebuer9q">
+<product version="3" modelHash="-8bofl6hed1uhzramus9st8tr0czwbb7">
   <files names="CodeStyleSettings.java:CodeStyleSettingsRegistry.java:IdentifierConstraintsUtil.java:OverridingMethodsCalculator.java:ReflectionUtil.java:StubClassifierCorrespondenceHelper.java" />
 </product>
 

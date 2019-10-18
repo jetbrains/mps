@@ -727,8 +727,8 @@
     <file name="StubClassifierCorrespondenceHelper.java">
       <node id="2240253528190797116" at="58,0,59,0" concept="4" trace="myModuleCorrespondence" />
       <node id="2240253528190823250" at="60,92,61,50" concept="3" />
-      <node id="4951864726847994638" at="64,64,65,117" concept="8" />
-      <node id="1998793329763586629" at="65,117,66,71" concept="8" />
+      <node id="4951864726847994638" at="64,64,65,114" concept="8" />
+      <node id="1998793329763586629" at="65,114,66,71" concept="8" />
       <node id="4951864726848002268" at="67,58,68,20" concept="9" />
       <node id="2240253528190864351" at="69,5,70,85" concept="8" />
       <node id="2240253528190866601" at="71,28,72,18" concept="9" />
@@ -774,21 +774,25 @@
       <node id="4951864726848154281" at="178,132,179,127" concept="3" />
       <node id="4951864726848117521" at="182,9,183,48" concept="3" />
       <node id="4951864726848172045" at="184,7,185,74" concept="9" />
-      <node id="2240253528190864353" at="190,36,191,43" concept="9" />
-      <node id="2240253528190864353" at="192,5,193,16" concept="9" />
-      <node id="8407616557622799587" at="196,36,197,43" concept="9" />
-      <node id="8407616557622799587" at="198,5,199,16" concept="9" />
-      <node id="8407616557622800975" at="202,36,203,43" concept="9" />
-      <node id="8407616557622800975" at="204,5,205,16" concept="9" />
-      <node id="8733037826900131627" at="209,0,210,0" concept="12" trace="INamedConcept$nV" />
-      <node id="8733037826900131627" at="210,0,211,0" concept="12" trace="Classifier$hJ" />
-      <node id="8733037826900131627" at="211,0,212,0" concept="12" trace="StringLiteral$4G" />
-      <node id="8733037826900131627" at="215,0,216,0" concept="12" trace="annotation$oVP4" />
-      <node id="8733037826900131627" at="216,0,217,0" concept="12" trace="annotation$zNxu" />
-      <node id="8733037826900131627" at="217,0,218,0" concept="12" trace="value$EXfF" />
-      <node id="8733037826900131627" at="218,0,219,0" concept="12" trace="key$y5Ln" />
-      <node id="8733037826900131627" at="219,0,220,0" concept="12" trace="value$Bis" />
-      <node id="8733037826900131627" at="223,0,224,0" concept="12" trace="value$kiE0" />
+      <node id="71481721171451284" at="190,36,191,63" concept="9" />
+      <node id="71481721171451284" at="192,5,193,16" concept="9" />
+      <node id="71481721171450655" at="196,36,197,43" concept="9" />
+      <node id="71481721171450655" at="198,5,199,16" concept="9" />
+      <node id="2240253528190864353" at="202,36,203,43" concept="9" />
+      <node id="2240253528190864353" at="204,5,205,16" concept="9" />
+      <node id="8407616557622799587" at="208,36,209,43" concept="9" />
+      <node id="8407616557622799587" at="210,5,211,16" concept="9" />
+      <node id="8407616557622800975" at="214,36,215,43" concept="9" />
+      <node id="8407616557622800975" at="216,5,217,16" concept="9" />
+      <node id="8733037826900131627" at="221,0,222,0" concept="12" trace="INamedConcept$nV" />
+      <node id="8733037826900131627" at="222,0,223,0" concept="12" trace="Classifier$hJ" />
+      <node id="8733037826900131627" at="223,0,224,0" concept="12" trace="StringLiteral$4G" />
+      <node id="8733037826900131627" at="227,0,228,0" concept="12" trace="annotation$oVP4" />
+      <node id="8733037826900131627" at="228,0,229,0" concept="12" trace="annotation$zNxu" />
+      <node id="8733037826900131627" at="229,0,230,0" concept="12" trace="value$EXfF" />
+      <node id="8733037826900131627" at="230,0,231,0" concept="12" trace="key$y5Ln" />
+      <node id="8733037826900131627" at="231,0,232,0" concept="12" trace="value$Bis" />
+      <node id="8733037826900131627" at="235,0,236,0" concept="12" trace="value$kiE0" />
       <node id="4860663896739412409" at="135,10,137,5" concept="0" />
       <node id="2240253528190823242" at="60,0,63,0" concept="1" trace="StubClassifierCorrespondenceHelper#(Ljetbrains/mps/baseLanguage/util/StubClassifierCorrespondenceHelper/StubModuleCorrespondence;)V" />
       <node id="4951864726847950467" at="66,71,69,5" concept="6" />
@@ -808,16 +812,20 @@
       <node id="4951864726848202281" at="163,0,166,0" concept="7" trace="select#(Ljetbrains/mps/util/ClassType;)Lorg/jetbrains/mps/openapi/module/SModuleReference;" />
       <node id="4951864726848126588" at="174,85,177,13" concept="6" />
       <node id="4951864726848144853" at="177,13,180,13" concept="6" />
-      <node id="2240253528190864353" at="189,71,192,5" concept="6" />
-      <node id="8407616557622799587" at="195,77,198,5" concept="6" />
-      <node id="8407616557622800975" at="201,80,204,5" concept="6" />
+      <node id="71481721171451284" at="189,80,192,5" concept="6" />
+      <node id="71481721171450655" at="195,72,198,5" concept="6" />
+      <node id="2240253528190864353" at="201,71,204,5" concept="6" />
+      <node id="8407616557622799587" at="207,77,210,5" concept="6" />
+      <node id="8407616557622800975" at="213,80,216,5" concept="6" />
       <node id="7468377204996283845" at="98,48,103,17" concept="9" />
       <node id="5203766242652327617" at="104,5,109,15" concept="8" />
       <node id="5203766242652421614" at="112,5,117,80" concept="8" />
       <node id="8733037826900868155" at="152,72,157,26" concept="8" />
-      <node id="2240253528190864353" at="189,0,195,0" concept="13" trace="check_79n3t7_a0d0f#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <node id="8407616557622799587" at="195,0,201,0" concept="13" trace="check_79n3t7_a0a0a0a0a1a7#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
-      <node id="8407616557622800975" at="201,0,207,0" concept="13" trace="check_79n3t7_a0a0a0a0a0a0d0h#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
+      <node id="71481721171451284" at="189,0,195,0" concept="13" trace="check_79n3t7_a0a0f#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljetbrains/mps/project/facets/JavaModuleFacet;" />
+      <node id="71481721171450655" at="195,0,201,0" concept="13" trace="check_79n3t7_a0a0a5#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="2240253528190864353" at="201,0,207,0" concept="13" trace="check_79n3t7_a0d0f#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="8407616557622799587" at="207,0,213,0" concept="13" trace="check_79n3t7_a0a0a0a0a1a7#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
+      <node id="8407616557622800975" at="213,0,219,0" concept="13" trace="check_79n3t7_a0a0a0a0a0a0d0h#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
       <node id="4554287425297775807" at="129,5,137,5" concept="6" />
       <node id="4951864726848112108" at="173,79,181,11" concept="5" />
       <node id="7468377204996266717" at="95,63,104,5" concept="6" />
@@ -852,9 +860,11 @@
       <scope id="4951864726848202282" at="163,61,164,68" />
       <scope id="4951864726848126590" at="175,97,176,133" />
       <scope id="4951864726848144855" at="178,132,179,127" />
-      <scope id="2240253528190864353" at="190,36,191,43" />
-      <scope id="8407616557622799587" at="196,36,197,43" />
-      <scope id="8407616557622800975" at="202,36,203,43" />
+      <scope id="71481721171451284" at="190,36,191,63" />
+      <scope id="71481721171450655" at="196,36,197,43" />
+      <scope id="2240253528190864353" at="202,36,203,43" />
+      <scope id="8407616557622799587" at="208,36,209,43" />
+      <scope id="8407616557622800975" at="214,36,215,43" />
       <scope id="2240253528190823242" at="60,0,63,0">
         <var name="moduleCorrespondence" id="2240253528190823249" />
       </scope>
@@ -879,17 +889,25 @@
       <scope id="4554287425297775808" at="130,77,134,7">
         <var name="node" id="4554287425298196839" />
       </scope>
-      <scope id="2240253528190864353" at="189,71,193,16" />
-      <scope id="8407616557622799587" at="195,77,199,16" />
-      <scope id="8407616557622800975" at="201,80,205,16" />
+      <scope id="71481721171451284" at="189,80,193,16" />
+      <scope id="71481721171450655" at="195,72,199,16" />
+      <scope id="2240253528190864353" at="201,71,205,16" />
+      <scope id="8407616557622799587" at="207,77,211,16" />
+      <scope id="8407616557622800975" at="213,80,217,16" />
       <scope id="4951864726848112114" at="174,85,180,13" />
-      <scope id="2240253528190864353" at="189,0,195,0">
+      <scope id="71481721171451284" at="189,0,195,0">
+        <var name="checkedDotOperand" id="71481721171451284" />
+      </scope>
+      <scope id="71481721171450655" at="195,0,201,0">
+        <var name="checkedDotOperand" id="71481721171450655" />
+      </scope>
+      <scope id="2240253528190864353" at="201,0,207,0">
         <var name="checkedDotOperand" id="2240253528190864353" />
       </scope>
-      <scope id="8407616557622799587" at="195,0,201,0">
+      <scope id="8407616557622799587" at="207,0,213,0">
         <var name="checkedDotOperand" id="8407616557622799587" />
       </scope>
-      <scope id="8407616557622800975" at="201,0,207,0">
+      <scope id="8407616557622800975" at="213,0,219,0">
         <var name="checkedDotOperand" id="8407616557622800975" />
       </scope>
       <scope id="7468377204996266719" at="96,60,103,17">
@@ -957,17 +975,17 @@
         <var name="nodeClassifier" id="2240253528190849801" />
       </scope>
       <unit id="8733037826900155239" at="141,0,144,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$StubModuleCorrespondence" />
-      <unit id="8733037826900131627" at="222,0,225,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$PROPS" />
+      <unit id="8733037826900131627" at="234,0,237,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$PROPS" />
       <unit id="7468377204996369029" at="99,148,103,7" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$1" />
       <unit id="5203766242652327625" at="105,132,109,5" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$2" />
       <unit id="5203766242652421626" at="113,202,117,5" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$3" />
       <unit id="8733037826900868160" at="153,93,157,7" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$StubModuleCorrespondenceImpl$1" />
       <unit id="4951864726848202273" at="158,63,162,7" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$StubModuleCorrespondenceImpl$2" />
       <unit id="4951864726848202281" at="162,20,166,7" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$StubModuleCorrespondenceImpl$3" />
-      <unit id="8733037826900131627" at="208,0,213,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$CONCEPTS" />
-      <unit id="8733037826900131627" at="214,0,221,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$LINKS" />
+      <unit id="8733037826900131627" at="220,0,225,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$CONCEPTS" />
+      <unit id="8733037826900131627" at="226,0,233,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$LINKS" />
       <unit id="8733037826900155530" at="145,0,188,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper$StubModuleCorrespondenceImpl" />
-      <unit id="8733037826900131627" at="55,0,226,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper" />
+      <unit id="8733037826900131627" at="55,0,238,0" name="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper" />
     </file>
   </root>
 </debug-info>
