@@ -73,7 +73,7 @@ public abstract class BaseTool {
   }
 
   public BaseTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon, ToolWindowAnchor anchor, boolean sideTool,
-      boolean canCloseContent) {
+                  boolean canCloseContent) {
     myAnchor = anchor;
     mySideTool = sideTool;
     myShortcutsByKeymap = shortcutsByKeymap;
@@ -229,11 +229,9 @@ public abstract class BaseTool {
       List<Keymap> keymaps = new ArrayList<>(myShortcutsByKeymap.size());
       for (Entry<String, KeyStroke> keymapItem : myShortcutsByKeymap.entrySet()) {
         Keymap keymap = KeymapManager.getInstance().getKeymap(keymapItem.getKey());
-        if (keymap == null) {
-          LOG.warn("Keymap " + keymapItem.getKey() + " cannot be found");
-          continue;
+        if (keymap != null) {
+          keymaps.add(keymap);
         }
-        keymaps.add(keymap);
       }
       // keymaps topsort here is needed because we need to remove inherited shortcuts if they are overwritten
       Collections.sort(keymaps, (o1, o2) -> {

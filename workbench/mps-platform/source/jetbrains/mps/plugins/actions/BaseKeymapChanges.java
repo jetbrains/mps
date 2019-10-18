@@ -185,10 +185,6 @@ public abstract class BaseKeymapChanges {
   private Keymap getKeymap() {
     if (myKeymap == null) {
       myKeymap = KeymapManager.getInstance().getKeymap(getScheme());
-      if (myKeymap == null) {
-        LOG.error("keymap " + getScheme() + " is not found");
-        return null;
-      }
     }
     return myKeymap;
   }
