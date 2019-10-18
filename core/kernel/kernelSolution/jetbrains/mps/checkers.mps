@@ -2524,8 +2524,8 @@
                   <node concept="YeOm9" id="6qi2OtU3ucq" role="2ShVmc">
                     <node concept="1Y3b0j" id="6qi2OtU3ucr" role="YeSDq">
                       <property role="2bfB8j" value="true" />
-                      <ref role="1Y3XeK" to="w1kc:~AbstractNodesReadListener" resolve="AbstractNodesReadListener" />
                       <ref role="37wK5l" to="w1kc:~AbstractNodesReadListener.&lt;init&gt;()" resolve="AbstractNodesReadListener" />
+                      <ref role="1Y3XeK" to="w1kc:~AbstractNodesReadListener" resolve="AbstractNodesReadListener" />
                       <node concept="3Tm1VV" id="6qi2OtU3ucs" role="1B3o_S" />
                       <node concept="3clFb_" id="6qi2OtU3uct" role="jymVt">
                         <property role="1EzhhJ" value="false" />
@@ -9136,6 +9136,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5eCBMNyuKw9" role="jymVt" />
     <node concept="3clFb_" id="6qi2OtU3tXw" role="jymVt">
       <property role="TrG5h" value="checkNodeInEditor" />
       <node concept="3cqZAl" id="6qi2OtU3tXx" role="3clF45" />
@@ -9268,6 +9269,9 @@
               <node concept="3SKdUq" id="4c0sGnTe8JW" role="3SKWNk">
                 <property role="3SKdUp" value="do we need all these additional dependencies? mb. it's better to use .runcheckingAction() instead?" />
               </node>
+              <node concept="3SKdUq" id="5eCBMNyv8js" role="3SKWNk">
+                <property role="3SKdUp" value="The reason not to use runCheckingAction is memory consumption, see https://youtrack.jetbrains.com/issue/MPS-19776, commit 88c5a52d" />
+              </node>
             </node>
             <node concept="3clFbF" id="6qi2OtU3tYr" role="3cqZAp">
               <node concept="2OqwBi" id="6qi2OtU3tYs" role="3clFbG">
@@ -9282,47 +9286,20 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="4tqoTzTH8SW" role="3cqZAp">
-              <node concept="2OqwBi" id="4tqoTzTH8SX" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxgm$7e" role="2Oq$k0">
+            <node concept="3clFbF" id="5eCBMNyv9sU" role="3cqZAp">
+              <node concept="2OqwBi" id="5eCBMNyv9J3" role="3clFbG">
+                <node concept="37vLTw" id="5eCBMNyv9sS" role="2Oq$k0">
                   <ref role="3cqZAo" node="6qi2OtU3tX_" resolve="errorsCollector" />
                 </node>
-                <node concept="liA8E" id="4tqoTzTH8SZ" role="2OqNvi">
+                <node concept="liA8E" id="5eCBMNyv9Up" role="2OqNvi">
                   <ref role="37wK5l" node="1EmyK$ne97l" resolve="addDependency" />
-                  <node concept="2OqwBi" id="4tqoTzTH8T1" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxgheFc" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6qi2OtU3tXz" resolve="node" />
+                  <node concept="2OqwBi" id="5eCBMNyvain" role="37wK5m">
+                    <node concept="37vLTw" id="5eCBMNyvaaP" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6qi2OtU3tY4" resolve="target" />
                     </node>
-                    <node concept="1mfA1w" id="4tqoTzTH8T5" role="2OqNvi" />
+                    <node concept="1mfA1w" id="5eCBMNyvb9J" role="2OqNvi" />
                   </node>
                 </node>
-              </node>
-            </node>
-            <node concept="1DcWWT" id="4tqoTzTH8J4" role="3cqZAp">
-              <node concept="3clFbS" id="4tqoTzTH8J5" role="2LFqv$">
-                <node concept="3clFbF" id="4tqoTzTH8J9" role="3cqZAp">
-                  <node concept="2OqwBi" id="60wM9d8BEHT" role="3clFbG">
-                    <node concept="37vLTw" id="2BHiRxgmrAS" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6qi2OtU3tX_" resolve="errorsCollector" />
-                    </node>
-                    <node concept="liA8E" id="60wM9d8BEHX" role="2OqNvi">
-                      <ref role="37wK5l" node="1EmyK$ne97l" resolve="addDependency" />
-                      <node concept="37vLTw" id="3GM_nagTzRc" role="37wK5m">
-                        <ref role="3cqZAo" node="4tqoTzTH8J7" resolve="c" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3cpWsn" id="4tqoTzTH8J7" role="1Duv9x">
-                <property role="TrG5h" value="c" />
-                <node concept="3Tqbb2" id="4tqoTzTH8Jb" role="1tU5fm" />
-              </node>
-              <node concept="2OqwBi" id="4tqoTzTH8Gc" role="1DdaDG">
-                <node concept="37vLTw" id="2BHiRxglB$8" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6qi2OtU3tXz" resolve="node" />
-                </node>
-                <node concept="32TBzR" id="4tqoTzTH8Ja" role="2OqNvi" />
               </node>
             </node>
             <node concept="3cpWs8" id="2vtmMTaAWv_" role="3cqZAp">

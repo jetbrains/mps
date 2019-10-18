@@ -39,6 +39,7 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
   public IChecker.AbstractNodeChecker.ErrorSkipCondition skipCondition() {
     return AbstractNodeCheckerInEditor.SKIP_CONSTRAINTS_CONDITION;
   }
+
   @Override
   public void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
     if (node == null || SNodeOperations.getModel(node) == null) {
@@ -55,12 +56,9 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
         continue;
       }
       // don't check unresolved and broken references, they should already have an error message 
-      // do we need all these additional dependencies? mb. it's better to use .runcheckingAction() instead? 
+      // do we need all these additional dependencies? mb. it's better to use .runcheckingAction() instead? The reason not to use runCheckingAction is memory consumption, see https://youtrack.jetbrains.com/issue/MPS-19776, commit 88c5a52d 
       errorsCollector.addDependency(target);
-      errorsCollector.addDependency(SNodeOperations.getParent(node));
-      for (SNode c : SNodeOperations.getChildren(node)) {
-        errorsCollector.addDependency(c);
-      }
+      errorsCollector.addDependency(SNodeOperations.getParent(target));
       ReferenceDescriptor refDescriptor = ModelConstraints.getReferenceDescriptor(ref);
       Scope refScope = refDescriptor.getScope();
       if (refScope instanceof ErrorScope) {
