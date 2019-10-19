@@ -6,7 +6,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.SuppressWarnings" />
     <classNode dependClassName="java.util.Iterator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
@@ -26,7 +25,6 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.ListIterator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ArrayUtils" />
@@ -47,7 +45,6 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.AbstractCollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ArrayUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IMapping" />
@@ -64,7 +61,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.UnsupportedOperationException" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
@@ -83,7 +79,6 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.StringBuilder" />
     <classNode dependClassName="java.util.Comparator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IEnumerator" />
@@ -115,7 +110,6 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.Iterator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ArrayUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
@@ -141,7 +135,6 @@
     <classNode dependClassName="java.lang.UnsupportedOperationException" />
     <classNode dependClassName="java.lang.reflect.Array" />
     <classNode dependClassName="java.util.Iterator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.impl.NullSequence" />
@@ -151,14 +144,12 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.SuppressWarnings" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ClassUtils">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.CollectionSequence">
     <classNode dependClassName="java.lang.Iterable" />
@@ -167,7 +158,6 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.AbstractSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
@@ -185,11 +175,9 @@
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="java.util.SortedMap" />
     <classNode dependClassName="java.util.SortedSet" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.CompoundComparator">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="java.util.Comparator" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.DequeSequence">
@@ -204,7 +192,6 @@
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
@@ -216,7 +203,6 @@
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ICollectionSequence">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode extendsClassName="java.util.Collection" />
@@ -224,7 +210,6 @@
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IDequeSequence">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
@@ -232,26 +217,21 @@
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.IQueueSequence" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IEnumerable">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IEnumerator" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IEnumerator">
     <classNode dependClassName="java.util.Iterator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ILeftCombinator">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ILinkedList">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="java.util.Deque" />
     <classNode extendsClassName="java.util.List" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ILinkedListSequence">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.util.Queue" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
@@ -261,7 +241,6 @@
   <dependency className="jetbrains.mps.internal.collections.runtime.IListSequence">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.references.Reference" />
@@ -270,7 +249,6 @@
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IMapSequence">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IMapping" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISetSequence" />
     <classNode dependClassName="jetbrains.mps.references.Reference" />
@@ -279,11 +257,9 @@
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IMapping">
     <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IQueueSequence">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
@@ -291,11 +267,9 @@
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.ICollectionSequence" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IRightCombinator">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ISelector">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ISequence">
@@ -304,7 +278,6 @@
     <classNode dependClassName="java.lang.Comparable" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.util.Comparator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IListSequence" />
@@ -313,51 +286,42 @@
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ISequenceClosure">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ISequenceIterableAdapter">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Iterator" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="java.lang.Iterable" />
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ISetSequence">
     <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
     <classNode extendsClassName="java.util.Set" />
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.ICollectionSequence" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ISortedMapSequence">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="java.util.SortedMap" />
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.IMapSequence" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ISortedSetSequence">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
     <classNode extendsClassName="java.util.SortedSet" />
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.ISetSequence" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ITranslator">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.ITranslator2">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IVisitor">
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IWhereFilter">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.IterableUtils">
@@ -367,7 +331,6 @@
     <classNode dependClassName="java.lang.StringBuilder" />
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.NoSuchElementException" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
@@ -386,7 +349,6 @@
     <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Queue" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IListSequence" />
@@ -406,7 +368,6 @@
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.impl.NullListSequence" />
@@ -419,7 +380,6 @@
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.SuppressWarnings" />
     <classNode dependClassName="java.util.HashMap" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IMapping" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.impl.NullMapSequence" />
@@ -430,7 +390,6 @@
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.NotNullWhereFilter">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.QueueSequence">
@@ -439,7 +398,6 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.LinkedList" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.impl.NullQueueSequence" />
     <classNode extendsClassName="java.io.Serializable" />
@@ -452,7 +410,6 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.SuppressWarnings" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode extendsClassName="java.util.Comparator" />
@@ -465,7 +422,6 @@
     <classNode dependClassName="java.lang.SuppressWarnings" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collections" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.AdapterClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.impl.BasicSequence" />
@@ -483,7 +439,6 @@
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.impl.NullSetSequence" />
     <classNode extendsClassName="java.io.Serializable" />
@@ -497,7 +452,6 @@
     <classNode dependClassName="java.lang.SuppressWarnings" />
     <classNode dependClassName="java.util.Comparator" />
     <classNode dependClassName="java.util.TreeMap" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IMapping" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
@@ -516,7 +470,6 @@
     <classNode dependClassName="java.util.Comparator" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.TreeSet" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISetSequence" />
@@ -529,7 +482,6 @@
   </dependency>
   <dependency className="jetbrains.mps.internal.collections.runtime.StopIteratingException">
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="javax.annotation.processing.Generated" />
     <classNode extendsClassName="jetbrains.mps.baseLanguage.closures.runtime.DelayedException" />
   </dependency>
 </dependenciesRoot>
