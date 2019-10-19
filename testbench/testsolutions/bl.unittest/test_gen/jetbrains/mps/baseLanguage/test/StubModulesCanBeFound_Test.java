@@ -11,6 +11,7 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
+import java.util.Objects;
 import jetbrains.mps.project.GlobalScope;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
@@ -36,7 +37,6 @@ import jetbrains.mps.project.Solution;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper;
-import java.util.Objects;
 import junit.framework.Assert;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -64,7 +64,12 @@ public class StubModulesCanBeFound_Test extends BaseTransformationTest {
     }
 
     public void test_test() throws Exception {
-      this.testStubModules(GlobalScope.getInstance());
+      if (Objects.equals(myProject.getName(), "MPS")) {
+        // running from sources 
+        this.testStubModules(myProject.getScope());
+      } else {
+        this.testStubModules(new GlobalScope(myProject.getRepository()));
+      }
     }
 
 
@@ -135,7 +140,7 @@ public class StubModulesCanBeFound_Test extends BaseTransformationTest {
             message.append("\n");
           }
         }
-        Assert.assertTrue(message.toString(), message.length() == 0);
+        Assert.assertTrue(Sequence.fromIterable(modulesWithDuplicated).count() + message.toString(), message.length() == 0);
       }
     }
   }

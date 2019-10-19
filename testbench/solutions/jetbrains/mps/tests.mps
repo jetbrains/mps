@@ -834,6 +834,9 @@
     <node concept="lpD6D" id="rutuztYHvQ" role="lpD6w">
       <ref role="lpD7u" to="tpej:rutuztX2OS" resolve="TestMigrateCommentLines" />
     </node>
+    <node concept="lpD6D" id="3XX3WAnhXe" role="lpD6w">
+      <ref role="lpD7u" to="tpej:4bFTWqF7U3E" resolve="StubModulesCanBeFound" />
+    </node>
   </node>
   <node concept="lpD6F" id="3FJ0r$qNTEf">
     <node concept="2R4zua" id="3FJ0r$qNTEg" role="2R4z3u">
