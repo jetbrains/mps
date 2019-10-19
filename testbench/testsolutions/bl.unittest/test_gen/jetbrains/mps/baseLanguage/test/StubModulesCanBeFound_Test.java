@@ -86,6 +86,18 @@ public class StubModulesCanBeFound_Test extends BaseTransformationTest {
       ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("800fdb6c-d671-43d1-9741-bf12aebf219c(jetbrains.mps.editing.runtime)"));
       ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("a47a7608-84cc-4f1d-800f-301c16bc1595(typesystemIntegration)"));
       ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("02f6bdf3-0540-48d1-8551-1d3619454f47(jetbrains.mps.baseLanguage.tuples.shared)"));
+      if (Objects.equals(myProject.getName(), "MPS")) {
+        // running from sources 
+      } else {
+        ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("c7d01124-66d5-486d-8b50-7fdccb60b839(jetbrains.mps.baseLanguage.util)"));
+        ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)"));
+        ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)"));
+        ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)"));
+        ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("34e84b8f-afa8-4364-abcd-a279fddddbe7(jetbrains.mps.editor.runtime)"));
+        ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("2e24a298-44d1-4697-baec-5c424fed3a3b(jetbrains.mps.editorlang.runtime)"));
+        ListSequence.fromList(result).addElement(PersistenceFacade.getInstance().createModuleReference("a0c108f0-1637-416e-a249-3effbaa4c998(jetbrains.mps.baseLanguage.search)"));
+      }
+
       return result;
     }
     public void testStubModules(SearchScope scope) {
