@@ -13,7 +13,23 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="13,0,33,0" name="jetbrains.mps.console.base.constraints.ConstraintsAspectDescriptor" />
+      <unit at="13,0,35,0" name="jetbrains.mps.console.base.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)/4144226654069499358">
+    <file name="Command_Constraints.java">
+      <node id="4144226654069499358" at="10,32,11,31" concept="10" />
+      <node id="4144226654069499358" at="15,47,16,33" concept="6" />
+      <node id="4144226654069499358" at="20,0,21,0" concept="8" trace="Command$sT" />
+      <node id="4144226654069499358" at="21,0,22,0" concept="8" trace="BLCommand$ib" />
+      <node id="4144226654069499358" at="10,0,13,0" concept="1" trace="Command_Constraints#()V" />
+      <node id="4144226654069499358" at="14,0,18,0" concept="4" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
+      <scope id="4144226654069499358" at="10,32,11,31" />
+      <scope id="4144226654069499358" at="15,47,16,33" />
+      <scope id="4144226654069499358" at="10,0,13,0" />
+      <scope id="4144226654069499358" at="14,0,18,0" />
+      <unit id="4144226654069499358" at="19,0,23,0" name="jetbrains.mps.console.base.constraints.Command_Constraints$CONCEPTS" />
+      <unit id="4144226654069499358" at="9,0,24,0" name="jetbrains.mps.console.base.constraints.Command_Constraints" />
     </file>
   </root>
   <root nodeRef="r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)/5286186381820932750">

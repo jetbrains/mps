@@ -133,6 +133,7 @@
       <concept id="5564765827938091039" name="jetbrains.mps.lang.constraints.structure.ConstraintFunction_ReferentSearchScope_Scope" flags="ig" index="3dgokm" />
       <concept id="1213093968558" name="jetbrains.mps.lang.constraints.structure.ConceptConstraints" flags="ng" index="1M2fIO">
         <reference id="1213093996982" name="concept" index="1M2myG" />
+        <reference id="1213106917431" name="defaultConcreteConcept" index="1MND4H" />
         <child id="6702802731807532730" name="canBeAncestor" index="9SGkC" />
         <child id="6702802731807737306" name="canBeChild" index="9Vyp8" />
         <child id="1213098023997" name="property" index="1MhHOB" />
@@ -464,6 +465,11 @@
         </node>
       </node>
     </node>
+  </node>
+  <node concept="1M2fIO" id="3A3g2Xgxanu">
+    <property role="3GE5qa" value="command" />
+    <ref role="1M2myG" to="eynw:5WvH$QO98uv" resolve="Command" />
+    <ref role="1MND4H" to="eynw:4Jke6BA4ffD" resolve="BLCommand" />
   </node>
 </model>
 

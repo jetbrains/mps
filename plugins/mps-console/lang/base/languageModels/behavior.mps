@@ -1305,7 +1305,6 @@
     <property role="3GE5qa" value="command" />
     <ref role="13h7C2" to="eynw:5WvH$QO98uv" resolve="Command" />
     <node concept="13i0hz" id="5WvH$QO9bva" role="13h7CS">
-      <property role="13i0iv" value="true" />
       <property role="13i0it" value="true" />
       <property role="TrG5h" value="execute" />
       <node concept="3cqZAl" id="5WvH$QO9bvb" role="3clF45" />
