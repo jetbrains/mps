@@ -27,6 +27,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
@@ -190,6 +191,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
    * XXX is it possible that module comes here not attached to a repo?
    */
   private final SRepository myModuleRepository;
+  private final Project myIdeaProject;
   private final List<FacetCheckBox> myCheckBoxes = new ArrayList<>();
   private final FacetTabsPersistence myFacetTabsPersistence;
   private final AnimatedIcon myDependenciesSpinner = new AsyncProcessIcon(getClass().getSimpleName());
@@ -197,6 +199,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   // We are tightly coupled with IDEA IDE here, no reason to be shy about project kind.
   public ModulePropertiesConfigurable(SModule module, MPSProject project) {
     super(project);
+    myIdeaProject = project.getProject();
     // XXX for whatever reason, it looks like we are not inside read although passing SModule here (e.g. ModuleProperties_Action doesn't bother to get one). Why?
     //     Same for ModelPropertiesConfigurable, btw.
     //     For scenario when module comes not from the project's repo, use of module.getRepository looks odd as we lock project repo
@@ -537,10 +540,10 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         String finalRenameTo = renameTo;
         ApplicationManager.getApplication().invokeLater(() -> {
           String renameTitle = RefactoringBundle.message("rename.title");
-          int dialogResult = Messages.showOkCancelDialog(myMPSProject.getProject(), Renamer.getSubmodulesInfoHtml(myMPSProject.getRepository(), myModule),
+          int dialogResult = Messages.showOkCancelDialog(myIdeaProject, Renamer.getSubmodulesInfoHtml(myMPSProject.getRepository(), myModule),
                                                          renameTitle, renameTitle, Messages.CANCEL_BUTTON, UIUtil.getInformationIcon());
           if (Messages.OK == dialogResult) {
-            ProgressManager.getInstance().run(new Task.Modal(myMPSProject.getProject(), "Renaming...", false) {
+            ProgressManager.getInstance().run(new Task.Modal(myIdeaProject, "Renaming...", false) {
               @Override
               public void run(@NotNull ProgressIndicator indicator) {
                 WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {

@@ -57,7 +57,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel
 import jetbrains.mps.ide.ui.dialogs.properties.tables.models.UsedLangsTableModel.ValidImportCondition;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
@@ -96,11 +96,11 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   private final Disposable myDisposable = Disposer.newDisposable(MPSPropertiesConfigurable.class.getName());
   private final TabbedPaneWrapper myTabbedPaneWrapper = new TabbedPaneWrapper(myDisposable);
   private List<Tab> myTabs = new ArrayList<>();
-  protected final MPSProject myMPSProject;
+  protected final Project myMPSProject;
   private DialogWrapper myParentForCallBack = null;
 
-  public MPSPropertiesConfigurable(MPSProject mpsProject) {
-    myMPSProject = mpsProject;
+  public MPSPropertiesConfigurable(Project project) {
+    myMPSProject = project;
   }
 
   public final void setParentForCallBack(DialogWrapper parentForCallBack) {

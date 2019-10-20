@@ -56,8 +56,8 @@ import jetbrains.mps.ide.ui.finders.LanguageUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleInstanceCondition;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.project.VisibleModuleCondition;
 import jetbrains.mps.project.dependency.VisibilityUtil;
 import jetbrains.mps.scope.ConditionalScope;
@@ -107,11 +107,11 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
   private SModel myModelDescriptor;
   private boolean myInPlugin = false;
 
-  public ModelPropertiesConfigurable(SModel modelDescriptor, MPSProject project) {
+  public ModelPropertiesConfigurable(SModel modelDescriptor, Project project) {
     this(modelDescriptor, project, false);
   }
 
-  public ModelPropertiesConfigurable(final SModel modelDescriptor, MPSProject project, boolean inPlugin) {
+  public ModelPropertiesConfigurable(final SModel modelDescriptor, Project project, boolean inPlugin) {
     super(project);
     myModelDescriptor = modelDescriptor;
     // readAction here is a hack, rather action shall do read. Alas, there are few places to get fixed, can't do it right now.

@@ -6664,7 +6664,7 @@
             </node>
             <node concept="2ShNRf" id="1kPkRp81JoQ" role="33vP2m">
               <node concept="1pGfFk" id="1kPkRp81JoR" role="2ShVmc">
-                <ref role="37wK5l" to="gsnq:~ModelPropertiesConfigurable.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,jetbrains.mps.project.MPSProject)" resolve="ModelPropertiesConfigurable" />
+                <ref role="37wK5l" to="gsnq:~ModelPropertiesConfigurable.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,jetbrains.mps.project.Project)" resolve="ModelPropertiesConfigurable" />
                 <node concept="2OqwBi" id="1kPkRp81JoS" role="37wK5m">
                   <node concept="2WthIp" id="1kPkRp81JoT" role="2Oq$k0" />
                   <node concept="1DTwFV" id="1kPkRp81Jpr" role="2OqNvi">
@@ -47900,7 +47900,7 @@
             </node>
             <node concept="2ShNRf" id="695k0NOD_Us" role="33vP2m">
               <node concept="1pGfFk" id="695k0NOD_Ut" role="2ShVmc">
-                <ref role="37wK5l" to="gsnq:~ModelPropertiesConfigurable.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,jetbrains.mps.project.MPSProject)" resolve="ModelPropertiesConfigurable" />
+                <ref role="37wK5l" to="gsnq:~ModelPropertiesConfigurable.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,jetbrains.mps.project.Project)" resolve="ModelPropertiesConfigurable" />
                 <node concept="37vLTw" id="695k0NOD_UI" role="37wK5m">
                   <ref role="3cqZAo" node="695k0NOD_UG" resolve="model" />
                 </node>
