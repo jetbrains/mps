@@ -11,10 +11,10 @@
     <import index="3ior" ref="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" />
     <import index="kdzh" ref="r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="7f1d" ref="r:7bb3f1f1-7557-4f02-8802-5f9a48253a88(jetbrains.mps.build.mps.tests.behavior)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="2txq" ref="r:2c8fa2a8-11a0-4729-bd56-47f702d30278(jetbrains.mps.build.mps.behavior)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="7f1d" ref="r:7bb3f1f1-7557-4f02-8802-5f9a48253a88(jetbrains.mps.build.mps.tests.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -171,6 +171,9 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
+        <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
+      </concept>
       <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
         <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
       </concept>
@@ -207,6 +210,9 @@
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
+      </concept>
+      <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
+        <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
       <concept id="1153943597977" name="jetbrains.mps.baseLanguage.collections.structure.ForEachStatement" flags="nn" index="2Gpval">
         <child id="1153944400369" name="variable" index="2Gsz3X" />
@@ -656,6 +662,97 @@
     <node concept="1YaCAy" id="2R_4228R1BE" role="1YuTPh">
       <property role="TrG5h" value="testModules" />
       <ref role="1YaFvo" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="7BTZ519LZAC">
+    <property role="TrG5h" value="check_BuildMpsLayout_TestModuleGroupHasTestSources" />
+    <property role="3GE5qa" value="Project.Testing" />
+    <node concept="3clFbS" id="7BTZ519LZAD" role="18ibNy">
+      <node concept="3cpWs8" id="7BTZ519M0Um" role="3cqZAp">
+        <node concept="3cpWsn" id="7BTZ519M0Un" role="3cpWs9">
+          <property role="TrG5h" value="modules" />
+          <node concept="A3Dl8" id="7BTZ519M0U0" role="1tU5fm">
+            <node concept="3Tqbb2" id="7BTZ519M0U3" role="A3Ik2">
+              <ref role="ehGHo" to="kdzh:hS0KzPONfF" resolve="BuildMps_AbstractModule" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="7BTZ519M0Uo" role="33vP2m">
+            <node concept="1YBJjd" id="7BTZ519M0Up" role="2Oq$k0">
+              <ref role="1YBMHb" node="7BTZ519LZAF" resolve="testGroup" />
+            </node>
+            <node concept="2qgKlT" id="7BTZ519M0Uq" role="2OqNvi">
+              <ref role="37wK5l" to="7f1d:3X9rC2XzJij" resolve="getModules" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2Gpval" id="7BTZ519M1os" role="3cqZAp">
+        <node concept="2GrKxI" id="7BTZ519M1ou" role="2Gsz3X">
+          <property role="TrG5h" value="solution" />
+        </node>
+        <node concept="2OqwBi" id="7BTZ519M21L" role="2GsD0m">
+          <node concept="37vLTw" id="7BTZ519M1qb" role="2Oq$k0">
+            <ref role="3cqZAo" node="7BTZ519M0Un" resolve="modules" />
+          </node>
+          <node concept="v3k3i" id="7BTZ519M29W" role="2OqNvi">
+            <node concept="chp4Y" id="7BTZ519M2ap" role="v3oSu">
+              <ref role="cht4Q" to="kdzh:2L4pT56gD3R" resolve="BuildMps_Solution" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="7BTZ519M1oy" role="2LFqv$">
+          <node concept="3clFbJ" id="7BTZ519LZAP" role="3cqZAp">
+            <node concept="3clFbS" id="7BTZ519LZAQ" role="3clFbx">
+              <node concept="a7r0C" id="7BTZ519M2Bk" role="3cqZAp">
+                <node concept="3cpWs3" id="7BTZ519M3v8" role="a7wSD">
+                  <node concept="Xl_RD" id="7BTZ519M3y3" role="3uHU7w">
+                    <property role="Xl_RC" value="' sources do not include tests" />
+                  </node>
+                  <node concept="3cpWs3" id="7BTZ519M315" role="3uHU7B">
+                    <node concept="Xl_RD" id="7BTZ519M2Bm" role="3uHU7B">
+                      <property role="Xl_RC" value="The solution '" />
+                    </node>
+                    <node concept="2OqwBi" id="7BTZ519M3i_" role="3uHU7w">
+                      <node concept="2GrUjf" id="7BTZ519M33_" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="7BTZ519M1ou" resolve="solution" />
+                      </node>
+                      <node concept="3TrcHB" id="7BTZ519M3n4" role="2OqNvi">
+                        <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="1YBJjd" id="7BTZ519M2Bn" role="2OEOjV">
+                  <ref role="1YBMHb" node="7BTZ519LZAF" resolve="testGroup" />
+                </node>
+                <node concept="3Cnw8n" id="7BTZ519M2Bo" role="2OEOjU">
+                  <ref role="QpYPw" node="2tkRx60B0_r" resolve="addTestSources" />
+                  <node concept="3CnSsL" id="7BTZ519M2Bp" role="3Coj4f">
+                    <ref role="QkamJ" node="2tkRx60B0BP" resolve="solution" />
+                    <node concept="2GrUjf" id="7BTZ519M2H$" role="3CoRuB">
+                      <ref role="2Gs0qQ" node="7BTZ519M1ou" resolve="solution" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="7BTZ519LZAX" role="3clFbw">
+              <node concept="2OqwBi" id="7BTZ519LZAY" role="3fr31v">
+                <node concept="2GrUjf" id="7BTZ519M1xR" role="2Oq$k0">
+                  <ref role="2Gs0qQ" node="7BTZ519M1ou" resolve="solution" />
+                </node>
+                <node concept="2qgKlT" id="7BTZ519M2AY" role="2OqNvi">
+                  <ref role="37wK5l" to="2txq:6ogfLD6evrW" resolve="hasTestsSources" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="7BTZ519LZAF" role="1YuTPh">
+      <property role="TrG5h" value="testGroup" />
+      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
     </node>
   </node>
 </model>
