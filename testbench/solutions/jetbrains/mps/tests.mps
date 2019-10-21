@@ -56,6 +56,12 @@
     <import index="34tp" ref="r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)" />
     <import index="tk9j" ref="r:afa6200c-5e34-4244-b141-d3f095bc906f(jetbrains.mps.checkers.test@tests)" />
     <import index="yutu" ref="r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)" />
+    <import index="aqpq" ref="r:e06bc54c-7664-410e-a4fb-83dad5b94926(jetbrains.mps.build.mps.tests@tests)" />
+    <import index="k93c" ref="r:ac4e0a5b-1a20-4b0d-81c0-8da38271aafd(jetbrains.mps.smodel.test.editor@tests)" />
+    <import index="iv6z" ref="r:bc85d852-c08e-46f7-acf3-cb8c5bc02a42(jetbrains.mps.smodel.test.generation@tests)" />
+    <import index="j86x" ref="r:686ee360-aa95-429c-8923-576d8ce88ea8(jetbrains.mps.internalCollections.test.runtime)" />
+    <import index="ered" ref="r:3b93a80b-8267-4154-a2f6-29cf728da0a5(jetbrains.mps.internalCollections.test.types)" />
+    <import index="gjue" ref="r:44f67fb3-9f2f-48cf-be4d-4c511452435b(jetbrains.mps.make.editorTest@tests)" />
   </imports>
   <registry>
     <language id="d3c5a46f-b8c2-47db-ad0a-30b8f19c2055" name="jetbrains.mps.testbench.suite">
@@ -122,6 +128,15 @@
     </node>
     <node concept="lpD6B" id="2m_lP2P5XUt" role="lpD6w">
       <ref role="2R4JvD" to="tp67:hwnN2wq" resolve="Child_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyvJ" role="lpD6w">
+      <ref role="lpD7u" to="tp67:4Lr1IetTiIT" resolve="MPS14653_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyvK" role="lpD6w">
+      <ref role="lpD7u" to="tp67:UrV0dH50Uv" resolve="MPS14656_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyvL" role="lpD6w">
+      <ref role="lpD7u" to="tp67:7wQMeepgP3H" resolve="MPS_18030_Test" />
     </node>
   </node>
   <node concept="lpD6F" id="2m_lP2P5XUu">
@@ -321,6 +336,18 @@
     <node concept="lpD6D" id="4ot0ThrB$cU" role="lpD6w">
       <ref role="lpD7u" to="34tp:18g32Aioz8T" resolve="TypeCheckingErrors" />
     </node>
+    <node concept="lpD6D" id="7Uu6u4Dyy8n" role="lpD6w">
+      <ref role="lpD7u" to="tp81:5eYa31PuMp_" resolve="Collection_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyy8o" role="lpD6w">
+      <ref role="lpD7u" to="tp81:3z6$y19caZm" resolve="MultiForeachTest_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyy9L" role="lpD6w">
+      <ref role="lpD7u" to="j86x:24JFuV9aomN" resolve="Generics_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyyay" role="lpD6w">
+      <ref role="lpD7u" to="ered:5NS7ww3zaxl" resolve="GenericCollections" />
+    </node>
   </node>
   <node concept="lpD6F" id="2m_lP2P5XVP">
     <node concept="2R4zua" id="3oTAX9lT7cw" role="2R4z3u">
@@ -366,6 +393,30 @@
     </node>
     <node concept="lpD6D" id="2m_lP2P61EG" role="lpD6w">
       <ref role="lpD7u" to="ua7m:_iTMAGGHPU" resolve="Generator_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyIX" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$oYu" resolve="TypeFailureInConfigDefinition" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyIY" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$oYi" resolve="TypeFailureInJobDefinition" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyIZ" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$pC4" resolve="TypeReturnInConfigDefinition" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyJ0" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$pCp" resolve="TypeReturnInConfigDefinitionInQuotation" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyJ1" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$oZy" resolve="TypeReturnInJobDefinition" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyJ2" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$qMr" resolve="TypeReturnInJobDefinitionInQuotation" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyJ3" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$lMu" resolve="TypeSuccessInConfigDefinition" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyJ4" role="lpD6w">
+      <ref role="lpD7u" to="gjue:2QfPYUE$oYC" resolve="TypeSuccessInJobDefinition" />
     </node>
   </node>
   <node concept="lpD6F" id="2m_lP2P61EH">
@@ -427,6 +478,51 @@
     <node concept="lpD6D" id="7KUdrkEJoZV" role="lpD6w">
       <ref role="lpD7u" to="62xu:4K12N3pNt7K" resolve="MigratePopularConceptAndNodeCasts_Test" />
     </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFa" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1zpC" resolve="ModelIdentityCompletion_IsOperation" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFb" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1n6x" resolve="ModelIdentityCompletion_NodePtr" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFc" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1JlQ" resolve="ModelIdentityCompletion_SetPtrOperation" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFd" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1Se_" resolve="ModelIdentityCompletion_ModelPtr" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFe" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1UNe" resolve="NamedNodeReferenceEditor_CompleteRoot" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFf" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1UPd" resolve="NamedNodeReferenceEditor_CompleteChild_Direct" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFg" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1VwH" resolve="NamedNodeReferenceEditor_CompleteChild_Descendant" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFh" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1Wdc" resolve="NamedNodeReferenceEditor_CompleteNested" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFi" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w1Xd8" resolve="NamedNodeReferenceEditor_DeleteChild" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFj" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w28Wn" resolve="NamedNodeReferenceEditor_DeleteChildWithChild" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFk" role="lpD6w">
+      <ref role="lpD7u" to="k93c:5dMpO2w290b" resolve="NamedNodeReferenceEditor_DeleteChildOfChild" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxFF" role="lpD6w">
+      <ref role="lpD7u" to="iv6z:1CQDqZTEmKB" resolve="YieldSNodeTest_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxGi" role="lpD6w">
+      <ref role="lpD7u" to="e7z4:5z_317UWhJq" resolve="Collections" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxGj" role="lpD6w">
+      <ref role="lpD7u" to="e7z4:19rKoRTOZOB" resolve="EnumerationDatatypes" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyxGk" role="lpD6w">
+      <ref role="lpD7u" to="e7z4:tJEuhpR5Iw" resolve="NodePointers" />
+    </node>
   </node>
   <node concept="lpD6F" id="2m_lP2P61F4">
     <node concept="2R4zua" id="2m_lP2P61F5" role="2R4z3u">
@@ -435,6 +531,9 @@
     </node>
     <node concept="lpD6D" id="2m_lP2P61F6" role="lpD6w">
       <ref role="lpD7u" to="f6tg:1_U3nV3$Q3U" resolve="InsertPrevSiblingOperation_Focus" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyKP" role="lpD6w">
+      <ref role="lpD7u" to="f6tg:NIgnipPihl" resolve="SModelExpressionsDataFlow" />
     </node>
   </node>
   <node concept="lpD6F" id="2m_lP2P6ovq">
@@ -464,6 +563,12 @@
     <node concept="lpD6D" id="137k_lUCWod" role="lpD6w">
       <ref role="lpD7u" to="ijii:3SQT4$Ss_VC" resolve="ExtendedNamedTuples_Test" />
     </node>
+    <node concept="lpD6D" id="7Uu6u4Dyysm" role="lpD6w">
+      <ref role="lpD7u" to="ijii:2kTEJfb8JzA" resolve="MPS14511_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyysn" role="lpD6w">
+      <ref role="lpD7u" to="ijii:6K16W71AH69" resolve="MPS15234_Test" />
+    </node>
   </node>
   <node concept="lpD6F" id="7rtbErhut2N">
     <node concept="2R4zua" id="7rtbErhut2P" role="2R4z3u">
@@ -481,6 +586,12 @@
     </node>
     <node concept="lpD6D" id="59r$iG98d4O" role="lpD6w">
       <ref role="lpD7u" to="saz5:59r$iG981x5" resolve="refScopesInInputLang" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyHH" role="lpD6w">
+      <ref role="lpD7u" to="saz5:3egmy8ee_XK" resolve="refScopeInInputLang_paramConflict" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyyHI" role="lpD6w">
+      <ref role="lpD7u" to="saz5:3egmy8eeCwX" resolve="refScopeInInputLang_superMeth" />
     </node>
   </node>
   <node concept="lpD6F" id="2hA_2dv2ebR">
@@ -520,6 +631,12 @@
     </node>
     <node concept="lpD6D" id="6uoRODjVunL" role="lpD6w">
       <ref role="lpD7u" to="msle:4E0MfgIpEW6" resolve="TestRelativePathHelper_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyxsa" role="lpD6w">
+      <ref role="lpD7u" to="aqpq:6MogiNnQtO8" resolve="ModuleClosure_Old_Test" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyxsb" role="lpD6w">
+      <ref role="lpD7u" to="aqpq:59e5wazyprN" resolve="MPSModuleClosureTest_Test" />
     </node>
   </node>
   <node concept="lpD6F" id="3FJ0r$qO2Hu">
@@ -749,6 +866,39 @@
     <node concept="lpD6D" id="3XX3WAnhXe" role="lpD6w">
       <ref role="lpD7u" to="tpej:4bFTWqF7U3E" resolve="StubModulesCanBeFound" />
     </node>
+    <node concept="lpD6D" id="7Uu6u4Dyytg" role="lpD6w">
+      <ref role="lpD7u" to="tpej:76vi5dEFwt_" resolve="WildCardsInTheClassDefinition" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyytm" role="lpD6w">
+      <ref role="lpD7u" to="tpej:76vi5dEOrTC" resolve="WildCardsInAnonymousClassCreators" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyyt_" role="lpD6w">
+      <ref role="lpD7u" to="tpej:x4PZ8MQSAD" resolve="WildCardTypeIsAValidSubstituteForBoundedParameter" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyytH" role="lpD6w">
+      <ref role="lpD7u" to="tpej:11Uz4VUmRyg" resolve="InitializerRequiredForFieldsInInterface" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyytU" role="lpD6w">
+      <ref role="lpD7u" to="tpej:bYZA5Eylc7" resolve="UnusedLocalVariableDeclaration" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyytV" role="lpD6w">
+      <ref role="lpD7u" to="tpej:6SFvP$mT8e8" resolve="PackageProtectedField" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyytW" role="lpD6w">
+      <ref role="lpD7u" to="tpej:6SFvP$mSZCD" resolve="PrivateMethod" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyytX" role="lpD6w">
+      <ref role="lpD7u" to="tpej:6SFvP$mT1Zy" resolve="PackageProtectedMethod" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4DyytZ" role="lpD6w">
+      <ref role="lpD7u" to="tpej:3rj45ZVC6eI" resolve="MethodInheritanceChecks" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyyu0" role="lpD6w">
+      <ref role="lpD7u" to="tpej:2ChE0k8eOTt" resolve="DuplicatesInClassifierChecks" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyyu2" role="lpD6w">
+      <ref role="lpD7u" to="tpej:3de6X9F50sS" resolve="StubClassifiers" />
+    </node>
   </node>
   <node concept="lpD6F" id="3CUax9Ji7Km">
     <node concept="2R4zua" id="3CUax9Ji7Kq" role="2R4z3u">
@@ -778,6 +928,9 @@
     </node>
     <node concept="lpD6D" id="4fy9ApAcQaa" role="lpD6w">
       <ref role="lpD7u" to="ya75:65lbGMlf28I" resolve="PlatformCheckbox_SPACE_InLabel_Toggles" />
+    </node>
+    <node concept="lpD6D" id="7Uu6u4Dyyx_" role="lpD6w">
+      <ref role="lpD7u" to="ya75:65lbGMleZam" resolve="PlatformCheckbox_CLICK_Toggles" />
     </node>
   </node>
 </model>
