@@ -19,6 +19,7 @@
     <dependency reexport="false">3600cb0a-44dd-4a5b-9968-22924406419e(jetbrains.mps.build.mps.tests)</dependency>
     <dependency reexport="false">0cf935df-4699-4e9c-a132-fa109541cba3(jetbrains.mps.build.mps)</dependency>
     <dependency reexport="false">79f9d103-4ff6-4def-9c1a-27070f9ba255(jetbrains.mps.testbench.make)</dependency>
+    <dependency reexport="false">e9000334-f5e2-4a2f-a0fc-9afd1d31e048(jetbrains.mps.testbench)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="9" />
@@ -33,7 +34,6 @@
     <language slang="l:ef7bf5ac-d06c-4342-b11d-e42104eb9343:jetbrains.mps.lang.plugin.standalone" version="0" />
     <language slang="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" version="4" />
     <language slang="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" version="17" />
-    <language slang="l:1a8554c4-eb84-43ba-8c34-6f0d90c6e75a:jetbrains.mps.lang.smodel.query" version="3" />
     <language slang="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" version="0" />
   </languageVersions>
   <dependencyVersions>
@@ -60,6 +60,7 @@
     <module reference="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" version="0" />
     <module reference="20351dc3-a2df-46f5-b667-fc9adab1f1c9(jetbrains.mps.make)" version="0" />
     <module reference="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" version="0" />
+    <module reference="e9000334-f5e2-4a2f-a0fc-9afd1d31e048(jetbrains.mps.testbench)" version="0" />
     <module reference="79f9d103-4ff6-4def-9c1a-27070f9ba255(jetbrains.mps.testbench.make)" version="0" />
     <module reference="d3c5a46f-b8c2-47db-ad0a-30b8f19c2055(jetbrains.mps.testbench.suite)" version="0" />
     <module reference="83cfb903-49b6-409e-bb20-fc9a6367069b(jetbrains.mps.testbench.suite.pluginSolution)" version="0" />

@@ -500,6 +500,125 @@
       <unit id="7308922687953975578" at="23,0,82,0" name="jetbrains.mps.testbench.junit.suites.BaseProjectsTest" />
     </file>
   </root>
+  <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9123758349955610119">
+    <file name="TestsDeployedTest.java">
+      <node id="9123758349956125106" at="41,0,42,0" concept="12" trace="ourEnvironment" />
+      <node id="9123758349956129498" at="42,0,43,0" concept="12" trace="ourProject" />
+      <node id="9123758349955708686" at="45,95,46,75" concept="3" />
+      <node id="9123758349955708692" at="46,75,47,26" concept="3" />
+      <node id="9123758349955708696" at="47,26,48,65" concept="8" />
+      <node id="9123758349955708701" at="48,65,49,56" concept="3" />
+      <node id="9123758349955718132" at="53,43,54,44" concept="3" />
+      <node id="9123758349955718137" at="54,44,55,29" concept="3" />
+      <node id="9123758349955718141" at="55,29,56,26" concept="3" />
+      <node id="6293984074587094396" at="60,28,61,18" concept="9" />
+      <node id="6293984074586947809" at="63,51,64,18" concept="9" />
+      <node id="6293984074586905763" at="66,46,67,18" concept="9" />
+      <node id="6293984074586877893" at="68,5,69,63" concept="8" />
+      <node id="6293984074586989460" at="70,53,71,18" concept="9" />
+      <node id="6293984074586594960" at="73,204,74,18" concept="9" />
+      <node id="6293984074586598365" at="75,5,76,17" concept="9" />
+      <node id="6293984074587056019" at="80,183,81,18" concept="9" />
+      <node id="6293984074587067820" at="83,181,84,18" concept="9" />
+      <node id="6293984074587070594" at="86,168,87,18" concept="9" />
+      <node id="6293984074587063189" at="88,5,89,17" concept="9" />
+      <node id="8921182888217772560" at="93,0,94,0" concept="4" trace="myModule" />
+      <node id="8921182888217772911" at="94,40,95,29" concept="3" />
+      <node id="8921182888217775321" at="99,43,100,51" concept="9" />
+      <node id="9123758349955755295" at="107,25,108,332" concept="8" />
+      <node id="9123758349955969745" at="108,332,109,337" concept="8" />
+      <node id="9123758349955991503" at="111,41,112,147" concept="9" />
+      <node id="6293984074586644653" at="116,43,117,63" concept="9" />
+      <node id="9123758349956028096" at="120,65,121,54" concept="8" />
+      <node id="9123758349956029288" at="121,54,122,164" concept="3" />
+      <node id="9123758349956043784" at="123,77,124,149" concept="3" />
+      <node id="9123758349956009475" at="125,11,126,42" concept="3" />
+      <node id="9123758349955610119" at="133,0,134,0" concept="12" trace="ITestRef$Qb" />
+      <node id="6293984074587090502" at="59,43,62,5" concept="6" />
+      <node id="6293984074586947807" at="62,5,65,5" concept="6" />
+      <node id="6293984074586897881" at="65,5,68,5" concept="6" />
+      <node id="6293984074586978985" at="69,63,72,5" concept="6" />
+      <node id="6293984074586502485" at="72,5,75,5" concept="6" />
+      <node id="6293984074587056017" at="79,43,82,5" concept="6" />
+      <node id="6293984074587067818" at="82,5,85,5" concept="6" />
+      <node id="6293984074587070592" at="85,5,88,5" concept="6" />
+      <node id="8921182888217772903" at="94,0,97,0" concept="1" trace="ModuleScope#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="9123758349955991501" at="111,0,114,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6293984074586640064" at="116,0,119,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="9123758349956034383" at="122,164,125,11" concept="5" />
+      <node id="8921182888217774068" at="97,0,102,0" concept="7" trace="getModules#()Ljava/lang/Iterable;" />
+      <node id="9123758349955991491" at="109,337,114,39" concept="8" />
+      <node id="9123758349956613865" at="114,39,119,28" concept="8" />
+      <node id="9123758349956139322" at="52,0,58,0" concept="13" trace="disposeEnvironment#()V" />
+      <node id="9123758349956133777" at="44,0,51,0" concept="13" trace="initEnvironment#()V" />
+      <node id="9123758349956017547" at="119,28,127,9" concept="6" />
+      <node id="6293984074587004226" at="79,0,91,0" concept="7" trace="isIdeaTest#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="6293984074586496009" at="59,0,78,0" concept="7" trace="isExcluded#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="9123758349956511339" at="107,0,129,0" concept="7" trace="run#()V" />
+      <node id="9123758349956511337" at="105,37,129,7" concept="3" />
+      <node id="9123758349955740305" at="104,0,131,0" concept="7" trace="everyTestIsDeployed#()V" />
+      <scope id="6293984074587090504" at="60,28,61,18" />
+      <scope id="6293984074586947808" at="63,51,64,18" />
+      <scope id="6293984074586897883" at="66,46,67,18" />
+      <scope id="6293984074586978987" at="70,53,71,18" />
+      <scope id="6293984074586502487" at="73,204,74,18" />
+      <scope id="6293984074587056018" at="80,183,81,18" />
+      <scope id="6293984074587067819" at="83,181,84,18" />
+      <scope id="6293984074587070593" at="86,168,87,18" />
+      <scope id="8921182888217772907" at="94,40,95,29" />
+      <scope id="8921182888217774076" at="99,43,100,51" />
+      <scope id="9123758349955991502" at="111,41,112,147" />
+      <scope id="6293984074586640065" at="116,43,117,63" />
+      <scope id="9123758349956034389" at="123,77,124,149" />
+      <scope id="9123758349955718131" at="53,43,56,26" />
+      <scope id="8921182888217772903" at="94,0,97,0">
+        <var name="module" id="8921182888217772910" />
+      </scope>
+      <scope id="9123758349955991501" at="111,0,114,0">
+        <var name="it" id="9123758349955991501" />
+      </scope>
+      <scope id="6293984074586640064" at="116,0,119,0">
+        <var name="it" id="6293984074586640064" />
+      </scope>
+      <scope id="9123758349956034383" at="122,164,125,11">
+        <var name="forgottenTest" id="9123758349956034385" />
+      </scope>
+      <scope id="9123758349955708685" at="45,95,49,56">
+        <var name="strategy" id="9123758349955708697" />
+      </scope>
+      <scope id="8921182888217774068" at="97,0,102,0" />
+      <scope id="9123758349956139322" at="52,0,58,0" />
+      <scope id="9123758349956017549" at="120,65,126,42">
+        <var name="message" id="9123758349956028097" />
+      </scope>
+      <scope id="9123758349956133777" at="44,0,51,0" />
+      <scope id="6293984074587004228" at="79,43,89,17" />
+      <scope id="6293984074587004226" at="79,0,91,0">
+        <var name="model" id="6293984074587004284" />
+      </scope>
+      <scope id="6293984074586496013" at="59,43,76,17">
+        <var name="module" id="6293984074586877894" />
+      </scope>
+      <scope id="6293984074586496009" at="59,0,78,0">
+        <var name="model" id="6293984074586500105" />
+      </scope>
+      <scope id="9123758349956511341" at="107,25,127,9">
+        <var name="allTests" id="9123758349955991492" />
+        <var name="forgottenTests" id="9123758349956613866" />
+        <var name="includedInBuildTests" id="9123758349955755296" />
+        <var name="includedInSuiteTests" id="9123758349955969746" />
+      </scope>
+      <scope id="9123758349956511339" at="107,0,129,0" />
+      <scope id="9123758349955740309" at="105,37,129,7" />
+      <scope id="9123758349955740305" at="104,0,131,0" />
+      <unit id="9123758349955610119" at="132,0,135,0" name="jetbrains.mps.testbench.junit.suites.TestsDeployedTest$CONCEPTS" />
+      <unit id="9123758349955991501" at="110,118,114,9" name="jetbrains.mps.testbench.junit.suites.TestsDeployedTest$1$1" />
+      <unit id="6293984074586640064" at="115,187,119,9" name="jetbrains.mps.testbench.junit.suites.TestsDeployedTest$1$2" />
+      <unit id="8921182888217765914" at="92,0,103,0" name="jetbrains.mps.testbench.junit.suites.TestsDeployedTest$ModuleScope" />
+      <unit id="9123758349956511339" at="106,66,129,5" name="jetbrains.mps.testbench.junit.suites.TestsDeployedTest$1" />
+      <unit id="9123758349955610119" at="39,0,136,0" name="jetbrains.mps.testbench.junit.suites.TestsDeployedTest" />
+    </file>
+  </root>
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9170334376386357053">
     <file name="BaseCheckModulesTest.java">
       <node id="6452630887101440498" at="29,0,30,0" concept="12" trace="ourEnvironment" />
