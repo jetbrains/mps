@@ -1,14 +1,4 @@
 <components>
-  <application-components>
-    <component>
-      <implementation-class>com.intellij.tools.ToolManager</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.preview.ImageOrColorPreviewManager</implementation-class>
-      <headless-implementation-class/>
-    </component>
-  </application-components>
-
   <project-components>
     <component>
       <interface-class>com.intellij.openapi.roots.ProjectRootManager</interface-class>
@@ -17,7 +7,6 @@
     </component>
 
     <component>
-      <interface-class>com.intellij.psi.impl.file.impl.PsiVFSListener</interface-class>
       <implementation-class>com.intellij.psi.impl.file.impl.PsiVFSListener</implementation-class>
     </component>
 
@@ -40,11 +29,6 @@
 
     <component>
       <implementation-class>com.intellij.execution.impl.ProjectRunConfigurationInitializer</implementation-class>
-    </component>
-
-    <component>
-      <interface-class>com.intellij.codeInsight.folding.CodeFoldingManager</interface-class>
-      <implementation-class>com.intellij.codeInsight.folding.impl.CodeFoldingManagerImpl</implementation-class>
     </component>
 
     <component>
@@ -80,66 +64,9 @@
     <component>
       <implementation-class>com.intellij.codeInsight.daemon.impl.DaemonListeners</implementation-class>
       <option name="workspace" value="true"/>
-      &lt;!&ndash;<loadForDefaultProject/>&ndash;&gt;
     </component>
     -->
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.EditorTracker</implementation-class>
-      <loadForDefaultProject/>
-    </component>
-    <!--
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.GeneralHighlightingPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.ChameleonSyntaxHighlightingPass$Factory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.InjectedGeneralHighlightingPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.LineMarkersPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.ShowIntentionsPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.IdentifierHighlighterPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.refactoring.changeSignature.inplace.ChangeSignaturePassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.CodeFoldingPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.focusMode.FocusModePassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.hints.ParameterHintsPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.IndentsPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.InjectedCodeFoldingPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.LocalInspectionsPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.WholeFileLocalInspectionsPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.ExternalToolPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.WolfPassFactory</implementation-class>
-    </component>
-    <component>
-      <implementation-class>com.intellij.codeInsight.daemon.impl.ShowAutoImportPassFactory</implementation-class>
-    </component>
-    -->
+
     <component>
       <implementation-class>com.intellij.util.indexing.FileBasedIndexProjectHandler</implementation-class>
     </component>
@@ -177,7 +104,6 @@
       <implementation-class>com.intellij.ide.GeneratedSourceFileChangeTrackerImpl</implementation-class>
     </component>
     -->
-
   </project-components>
 
   <!--
@@ -186,11 +112,6 @@
       <interface-class>com.intellij.openapi.roots.ModuleRootManager</interface-class>
       <implementation-class>com.intellij.openapi.roots.impl.ModuleRootManagerComponent</implementation-class>
     </component>
-
-    <component>
-      <implementation-class>com.intellij.openapi.components.impl.ModuleServiceManagerImpl</implementation-class>
-    </component>
-
     <component>
       <interface-class>com.intellij.facet.FacetManager</interface-class>
       <implementation-class>com.intellij.facet.FacetManagerImpl</implementation-class>

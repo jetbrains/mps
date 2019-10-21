@@ -144,10 +144,10 @@
 
     <applicationService serviceInterface="com.intellij.codeInsight.folding.CodeFoldingSettings"
                         serviceImplementation="com.intellij.codeInsight.folding.CodeFoldingSettingsImpl"/>
+    -->
     <postStartupActivity implementation="com.intellij.codeInsight.folding.impl.FoldingHintPostStartupActivity"/>
     <projectService serviceInterface="com.intellij.codeInsight.folding.CodeFoldingManager"
-                    serviceImplementation="com.intellij.codeInsight.folding.impl.CodeFoldingManagerImpl"/>
-    -->
+    serviceImplementation="com.intellij.codeInsight.folding.impl.CodeFoldingManagerImpl"/>
 
     <applicationService serviceInterface="com.intellij.psi.statistics.StatisticsManager"
                         serviceImplementation="com.intellij.psi.statistics.impl.StatisticsManagerImpl"/>
@@ -1426,9 +1426,9 @@
                     serviceImplementation="com.intellij.codeInsight.daemon.impl.IntentionsUIImpl"/>
     <joinLinesHandler implementation="com.intellij.codeInsight.editorActions.CommentJoinLinesHandler" order="last"/>
 
-    <!--
     <editorFactoryListener implementation="com.intellij.codeInsight.daemon.impl.EditorTracker$MyAppLevelEditorFactoryListener"/>
 
+    <!--
     <projectService serviceInterface="com.intellij.codeInsight.daemon.impl.HectorComponentFactory"
                     serviceImplementation="com.intellij.codeInsight.daemon.impl.HectorComponentFactoryImpl"/>
     -->
