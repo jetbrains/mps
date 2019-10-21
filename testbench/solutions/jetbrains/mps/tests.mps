@@ -56,7 +56,6 @@
     <import index="34tp" ref="r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)" />
     <import index="tk9j" ref="r:afa6200c-5e34-4244-b141-d3f095bc906f(jetbrains.mps.checkers.test@tests)" />
     <import index="yutu" ref="r:1cc42aa8-6d2d-49a0-9b1f-2e5f92988fc5(jetbrains.mps.lang.quotation.test.generationTest@tests)" />
-    <import index="j5ir" ref="r:b4fd80fc-7d6c-4c99-be6d-090ae8779bdc(jetbrains.mps.ide.vcs.test.merge@tests)" implicit="true" />
   </imports>
   <registry>
     <language id="d3c5a46f-b8c2-47db-ad0a-30b8f19c2055" name="jetbrains.mps.testbench.suite">
@@ -448,27 +447,6 @@
       <ref role="lpD7v" to="kyp0:1rCh22xi5tE" resolve="IntervalTest" />
     </node>
   </node>
-  <node concept="lpD6F" id="2m_lP2P6ovx">
-    <node concept="2R4zua" id="2m_lP2P6ovy" role="2R4z3u">
-      <property role="2R4zu8" value="19cb79b5-ebc3-43ce-9f4c-d4bdce7013ab" />
-      <property role="2R4zub" value="jetbrains.mps.baseLanguage.regexp.unittest" />
-    </node>
-    <node concept="lpD6D" id="2m_lP2P6ovz" role="lpD6w">
-      <ref role="lpD7u" to="982r:5TufrXwGqWp" resolve="Statements_Test" />
-    </node>
-    <node concept="lpD6D" id="2m_lP2P6ov$" role="lpD6w">
-      <ref role="lpD7u" to="982r:1b8uQvZBwrt" resolve="Escaping_Test" />
-    </node>
-    <node concept="lpD6D" id="2m_lP2P6ov_" role="lpD6w">
-      <ref role="lpD7u" to="982r:5kfJOUWntxL" resolve="Replace_Test" />
-    </node>
-    <node concept="lpD6D" id="2m_lP2P6ovB" role="lpD6w">
-      <ref role="lpD7u" to="982r:5kfJOUWs0Nq" resolve="Match_Test" />
-    </node>
-    <node concept="lpD6D" id="2m_lP2P6ovC" role="lpD6w">
-      <ref role="lpD7u" to="982r:3iI_KKpaaEu" resolve="PerlReplace_Test" />
-    </node>
-  </node>
   <node concept="lpD6F" id="137k_lUCWo8">
     <node concept="2R4zua" id="137k_lUCWo9" role="2R4z3u">
       <property role="2R4zu8" value="993e3b08-9f44-43cf-b983-e474ac66855b" />
@@ -487,21 +465,6 @@
       <ref role="lpD7u" to="ijii:3SQT4$Ss_VC" resolve="ExtendedNamedTuples_Test" />
     </node>
   </node>
-  <node concept="lpD6F" id="2Cs4Z9pUKNa">
-    <node concept="2R4zua" id="2Cs4Z9pUKNb" role="2R4z3u">
-      <property role="2R4zu8" value="444220d9-055e-44dd-a551-ed91c97d5067" />
-      <property role="2R4zub" value="jetbrains.mps.baseLanguage.unitTest.sandbox" />
-    </node>
-    <node concept="lpD6D" id="2Cs4Z9pUKNc" role="lpD6w">
-      <ref role="lpD7u" to="mbhy:3bGuHn8PMbB" resolve="Test_Test" />
-    </node>
-    <node concept="lpD6B" id="2Cs4Z9pUKNd" role="lpD6w">
-      <ref role="2R4JvD" to="mbhy:3bGuHn8PMqx" resolve="Test3" />
-    </node>
-    <node concept="lpD6A" id="2Cs4Z9pUKNe" role="lpD6w">
-      <ref role="lpD7v" to="mbhy:3LkRnt2ZcnR" resolve="Test4" />
-    </node>
-  </node>
   <node concept="lpD6F" id="7rtbErhut2N">
     <node concept="2R4zua" id="7rtbErhut2P" role="2R4z3u">
       <property role="2R4zu8" value="dc080be0-da6e-4885-aed0-7d999c120619" />
@@ -509,12 +472,6 @@
     </node>
     <node concept="lpD6D" id="7rtbErhuv0O" role="lpD6w">
       <ref role="lpD7u" to="mql5:5nqBR0sq2wt" resolve="TestWeaving" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="1lpoP8izoxV">
-    <node concept="2R4zua" id="6bfDvj8ckfx" role="2R4z3u">
-      <property role="2R4zu8" value="7b15492d-a198-43e2-91e3-4a7e9116ce2b" />
-      <property role="2R4zub" value="jetbrains.mps.execution.impl.tests" />
     </node>
   </node>
   <node concept="lpD6F" id="59r$iG98b_i">
@@ -563,51 +520,6 @@
     </node>
     <node concept="lpD6D" id="6uoRODjVunL" role="lpD6w">
       <ref role="lpD7u" to="msle:4E0MfgIpEW6" resolve="TestRelativePathHelper_Test" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="3FJ0r$qNTEm">
-    <node concept="2R4zua" id="3FJ0r$qNTEn" role="2R4z3u">
-      <property role="2R4zu8" value="6cbb1052-4510-427f-926c-3476bfd7e801" />
-      <property role="2R4zub" value="jetbrains.mps.execution.impl.tests.sandbox" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="38u5KFAf5$s">
-    <node concept="lpD6D" id="38u5KFAfsME" role="lpD6w">
-      <ref role="lpD7u" to="b9cx:2LwxHZFoyXH" resolve="ActionsTest" />
-    </node>
-    <node concept="2R4zua" id="38u5KFAf5$w" role="2R4z3u">
-      <property role="2R4zu8" value="ae6cedf1-e261-45d9-972d-e8cfbc5e7f52" />
-      <property role="2R4zub" value="jetbrains.mps.testActions" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="3FJ0r$qNTEv">
-    <node concept="2R4zua" id="3FJ0r$qNTEw" role="2R4z3u">
-      <property role="2R4zu8" value="45571709-5529-4a2c-94c9-5b0e2469ad35" />
-      <property role="2R4zub" value="jetbrains.mps.samples.agreement.framework" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTEx" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw88s" resolve="DoubleRangeTester" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTEy" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw8md" resolve="SingleTemporalCollectionTester" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTEz" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw8rv" resolve="MoneyTester" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTE$" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw8J7" resolve="MfDateTester" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTE_" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw934" resolve="DateRangeTester" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTEA" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw9se" resolve="QuantityTester" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTEB" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw9tJ" resolve="BitemporalCollectionTester" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTEC" role="lpD6w">
-      <ref role="2R4JvD" to="fw8r:5E$kzZSw9_K" resolve="BitemporalCollectionSuperclassTester" />
     </node>
   </node>
   <node concept="lpD6F" id="3FJ0r$qO2Hu">
@@ -838,15 +750,6 @@
       <ref role="lpD7u" to="tpej:4bFTWqF7U3E" resolve="StubModulesCanBeFound" />
     </node>
   </node>
-  <node concept="lpD6F" id="3FJ0r$qNTEf">
-    <node concept="2R4zua" id="3FJ0r$qNTEg" role="2R4z3u">
-      <property role="2R4zu8" value="ab46529e-de2c-48b6-80f0-9ec2d78b7df3" />
-      <property role="2R4zub" value="jetbrains.mps.lang.test.sandbox" />
-    </node>
-    <node concept="lpD6D" id="3FJ0r$qNTEh" role="lpD6w">
-      <ref role="lpD7u" to="89qz:5I3K3cUQjDy" resolve="Test" />
-    </node>
-  </node>
   <node concept="lpD6F" id="3CUax9Ji7Km">
     <node concept="2R4zua" id="3CUax9Ji7Kq" role="2R4z3u">
       <property role="2R4zu8" value="3d09e340-55d4-4ddc-8195-a92c0c5cf603" />
@@ -854,228 +757,6 @@
     </node>
     <node concept="lpD6D" id="3CUax9Ji9st" role="lpD6w">
       <ref role="lpD7u" to="tild:74rRLD2O9sw" resolve="SNodeReadAccess" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="3FJ0r$qNTED">
-    <node concept="2R4zua" id="3FJ0r$qNTEE" role="2R4z3u">
-      <property role="2R4zu8" value="086f6299-eca0-43c4-bbca-fab3f95963aa" />
-      <property role="2R4zub" value="jetbrains.mps.samples.secretCompartment.runtime" />
-    </node>
-    <node concept="lpD6B" id="3FJ0r$qNTEF" role="lpD6w">
-      <ref role="2R4JvD" to="g7jn:5XNkAKP6$Dc" resolve="Test" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="2APfdwaEuw2">
-    <node concept="2R4zua" id="2APfdwaEuJm" role="2R4z3u">
-      <property role="2R4zub" value="jetbrains.mps.lang.editor.diagram.tests" />
-      <property role="2R4zu8" value="779ae18b-ee98-406e-94fd-dec40c78b92f" />
-    </node>
-    <node concept="lpD6D" id="26W_FNue1s0" role="lpD6w">
-      <ref role="lpD7u" to="ule5:7QioPsXqP1" resolve="BlockDecoratorTest" />
-    </node>
-    <node concept="lpD6D" id="26W_FNue1sB" role="lpD6w">
-      <ref role="lpD7u" to="ule5:4ASN5_IPjf" resolve="BlockHasNoDecoratorTest" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyC7" role="lpD6w">
-      <ref role="lpD7u" to="ule5:HEilRNwN9u" resolve="ChangeNodeName" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyCc" role="lpD6w">
-      <ref role="lpD7u" to="ule5:xym1v5PSsN" resolve="CreateDiagramNode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyCj" role="lpD6w">
-      <ref role="lpD7u" to="ule5:7CaZq42XwZY" resolve="CreateDiagramNodeWithPosition" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyCs" role="lpD6w">
-      <ref role="lpD7u" to="ule5:4N$3GFO45T7" resolve="CreateLink" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyCB" role="lpD6w">
-      <ref role="lpD7u" to="ule5:4N$3GFO45T7" resolve="CreateLink" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyCO" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1YuI9hFt8_X" resolve="CreatePort" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyD3" role="lpD6w">
-      <ref role="lpD7u" to="ule5:4lIfGX7KILB" resolve="DeleteDiagramNode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyDk" role="lpD6w">
-      <ref role="lpD7u" to="ule5:HEilRNlXaI" resolve="DeleteLink" />
-    </node>
-    <node concept="lpD6D" id="26W_FNue1tf" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1qYuH22Er6g" resolve="LinkDecoratorTest" />
-    </node>
-    <node concept="lpD6D" id="26W_FNue1tS" role="lpD6w">
-      <ref role="lpD7u" to="ule5:4ASN5_J39n" resolve="LinkHasNoDecoratorTest" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyDB" role="lpD6w">
-      <ref role="lpD7u" to="ule5:71pvad5k4pK" resolve="MoveNode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyDW" role="lpD6w">
-      <ref role="lpD7u" to="ule5:4N$3GFO0r2J" resolve="NegativeResizeNode_bottom_central" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyEj" role="lpD6w">
-      <ref role="lpD7u" to="ule5:4N$3GFO0wZx" resolve="NegativeResizeNode_bottom_right" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyEG" role="lpD6w">
-      <ref role="lpD7u" to="ule5:TbyhuYMqei" resolve="NegativeResizeNode_right_central" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyF7" role="lpD6w">
-      <ref role="lpD7u" to="ule5:3n001qjfp9I" resolve="NoResizeNode_bottom_right" />
-    </node>
-    <node concept="lpD6D" id="26W_FNue1fq" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1mC2_8Q2bQ7" resolve="PortDecoratorTest" />
-    </node>
-    <node concept="lpD6D" id="26W_FNue1rq" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1mC2_8Q3T7m" resolve="PortHasNoDecoratorTest" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyF$" role="lpD6w">
-      <ref role="lpD7u" to="ule5:TbyhuYM6ml" resolve="ResizeNode_bottom_centeral" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyG3" role="lpD6w">
-      <ref role="lpD7u" to="ule5:TbyhuYM6en" resolve="ResizeNode_bottom_left" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyG$" role="lpD6w">
-      <ref role="lpD7u" to="ule5:TbyhuYM6pQ" resolve="ResizeNode_bottom_right" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyH7" role="lpD6w">
-      <ref role="lpD7u" to="ule5:3n001qjii1R" resolve="ResizeNode_left_central" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyHG" role="lpD6w">
-      <ref role="lpD7u" to="ule5:7CaZq435HH$" resolve="ResizeNode_top_centeral" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyIj" role="lpD6w">
-      <ref role="lpD7u" to="ule5:6A9ZMbYh4O5" resolve="ResizeNode_top_left" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyIW" role="lpD6w">
-      <ref role="lpD7u" to="ule5:3n001qjbgL_" resolve="ResizeNode_top_right" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyJB" role="lpD6w">
-      <ref role="lpD7u" to="ule5:71pvad5iP0$" resolve="SelectAnotherNode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyKk" role="lpD6w">
-      <ref role="lpD7u" to="ule5:6YormRhUhLo" resolve="SelectAnotherNodeFromCode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyL3" role="lpD6w">
-      <ref role="lpD7u" to="ule5:3R$VxqOs8ZZ" resolve="SelectDiagram" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyLO" role="lpD6w">
-      <ref role="lpD7u" to="ule5:3R$VxqOs9lZ" resolve="SelectDiagramFromNode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyMB" role="lpD6w">
-      <ref role="lpD7u" to="ule5:IjmD_G9tfo" resolve="SelectDiagramNode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyNs" role="lpD6w">
-      <ref role="lpD7u" to="ule5:HEilRNvEG9" resolve="SelectLink" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyOj" role="lpD6w">
-      <ref role="lpD7u" to="ule5:71pvad5jc1C" resolve="SelectNodeOuter" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyPc" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1YuI9hFl$XI" resolve="SelectPort" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyR2" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1YuI9hFmI2i" resolve="SelectPortQuery" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyRZ" role="lpD6w">
-      <ref role="lpD7u" to="ule5:3R$VxqOrE8w" resolve="ShowCompletionOnTheDiagram" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEySY" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1YuI9hFw2Vj" resolve="StopShowCompletionOnTheDiagram" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyTZ" role="lpD6w">
-      <ref role="lpD7u" to="ule5:TbyhuYPS1_" resolve="ToZeroSize_ResizeNode_bottom_right" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyV2" role="lpD6w">
-      <ref role="lpD7u" to="ule5:7CaZq42ZJjq" resolve="UnSelectDiagramNode" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyW7" role="lpD6w">
-      <ref role="lpD7u" to="ule5:HEilRNwlXX" resolve="UnSelectLink" />
-    </node>
-    <node concept="lpD6D" id="2APfdwaEyXe" role="lpD6w">
-      <ref role="lpD7u" to="ule5:1YuI9hFsrko" resolve="UnSelectPort" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="6j5OJw7qvws">
-    <node concept="2R4zua" id="6j5OJw7qvwt" role="2R4z3u">
-      <property role="2R4zub" value="jetbrains.mps.baseLanguage.doubleDispatch.test" />
-      <property role="2R4zu8" value="0528d773-6535-46f8-89a2-16a3751e6ab5" />
-    </node>
-    <node concept="lpD6D" id="6j5OJw7qvwu" role="lpD6w">
-      <ref role="lpD7u" to="tizr:3jHFIlR$QVU" resolve="DispatchTypeCheckingErrors" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="6j5OJw7qvVb">
-    <node concept="2R4zua" id="6j5OJw7qvVc" role="2R4z3u">
-      <property role="2R4zub" value="jetbrains.mps.baseLanguageInternal.test" />
-      <property role="2R4zu8" value="4831e627-794e-416a-983a-50889cae21f8" />
-    </node>
-    <node concept="lpD6D" id="6j5OJw7qvVd" role="lpD6w">
-      <ref role="lpD7u" to="5vzk:17MuFa5l7VW" resolve="InternalClassifier" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="6j5OJw7t4LV">
-    <node concept="2R4zua" id="6j5OJw7t4LW" role="2R4z3u">
-      <property role="2R4zub" value="jetbrains.mps.samples.xmlPersistence" />
-      <property role="2R4zu8" value="761394b7-dc42-4fe5-adc7-1d9ff2aa76e6" />
-    </node>
-    <node concept="lpD6A" id="6j5OJw7t4LX" role="lpD6w">
-      <ref role="lpD7v" to="9sj4:6otXYHBjQ0N" resolve="XmlConverterTest" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="7Psq8BycRoy">
-    <node concept="lpD6A" id="3P7Hp8k5FC_" role="lpD6w">
-      <ref role="lpD7v" to="j5ir:6m1MVDkUPWT" resolve="DiskMemoryConflictsTest" />
-    </node>
-    <node concept="2R4zua" id="7Psq8BycRtk" role="2R4z3u">
-      <property role="2R4zub" value="jetbrains.mps.ide.vcs.test" />
-      <property role="2R4zu8" value="9dc77d7d-3b66-403c-b568-37677f157448" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="4$ezt8YQUyf">
-    <node concept="lpD6D" id="4$ezt8YRb0E" role="lpD6w">
-      <ref role="lpD7u" to="s223:4$ezt8YY4JG" resolve="AddNotTest" />
-    </node>
-    <node concept="lpD6D" id="4$ezt8YY5OP" role="lpD6w">
-      <ref role="lpD7u" to="s223:4$ezt8YY52Z" resolve="CommentLineTest" />
-    </node>
-    <node concept="lpD6D" id="4qUvNA8WaDH" role="lpD6w">
-      <ref role="lpD7u" to="s223:79svzH7ZZLt" resolve="DuplicitRoutineNameTest" />
-    </node>
-    <node concept="lpD6D" id="4$ezt8YY5OT" role="lpD6w">
-      <ref role="lpD7u" to="s223:4$ezt8YY5xB" resolve="ElseTest" />
-    </node>
-    <node concept="lpD6D" id="4$ezt8YY5OY" role="lpD6w">
-      <ref role="lpD7u" to="s223:4$ezt8YY4XF" resolve="EnterIfTest" />
-    </node>
-    <node concept="lpD6D" id="4$ezt8YY5z1" role="lpD6w">
-      <ref role="lpD7u" to="s223:1NKy5CJqeSF" resolve="LeftTransformTest" />
-    </node>
-    <node concept="lpD6D" id="4$ezt8YY5P4" role="lpD6w">
-      <ref role="lpD7u" to="s223:4$ezt8YXKSh" resolve="RemoveNotTest" />
-    </node>
-    <node concept="lpD6D" id="4$ezt8YY7H8" role="lpD6w">
-      <ref role="lpD7u" to="s223:4$ezt8YY7EK" resolve="RepetitionTest" />
-    </node>
-    <node concept="2R4zua" id="4$ezt8YR0Bz" role="2R4z3u">
-      <property role="2R4zub" value="jetbrains.mps.build.stripping.tests" />
-      <property role="2R4zu8" value="c9bc8834-ad52-4c80-83d0-64827cf13fae" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="7ez5JvPiiEK">
-    <node concept="2R4zua" id="7ez5JvPiiGM" role="2R4z3u">
-      <property role="2R4zub" value="analyzers.test" />
-      <property role="2R4zu8" value="f9665e4e-baa4-42c6-b97d-c49dfa9f7381" />
-    </node>
-    <node concept="lpD6D" id="7ez5JvPiiGO" role="lpD6w">
-      <ref role="lpD7u" to="ma4t:7ez5JvPib_b" resolve="TestAnalyzerWithConstructorParameters" />
-    </node>
-    <node concept="lpD6D" id="1PSwCEWmZrN" role="lpD6w">
-      <ref role="lpD7u" to="ma4t:1eGlc3_m1cS" resolve="ExtendingNullableAnalyzer" />
-    </node>
-    <node concept="lpD6D" id="68XlVg3YZdc" role="lpD6w">
-      <ref role="lpD7u" to="ma4t:2$3McZ0WOH3" resolve="TestAnalyzerWithModeSpecified" />
-    </node>
-    <node concept="lpD6D" id="68XlVg3YZdl" role="lpD6w">
-      <ref role="lpD7u" to="ma4t:2$3McZ0VScA" resolve="TestProgramWithModeSpecified" />
     </node>
   </node>
   <node concept="lpD6F" id="a692rlEAtV">
@@ -1097,51 +778,6 @@
     </node>
     <node concept="lpD6D" id="4fy9ApAcQaa" role="lpD6w">
       <ref role="lpD7u" to="ya75:65lbGMlf28I" resolve="PlatformCheckbox_SPACE_InLabel_Toggles" />
-    </node>
-  </node>
-  <node concept="lpD6F" id="6dQuMDPab2j">
-    <node concept="2R4zua" id="6dQuMDPab2l" role="2R4z3u">
-      <property role="2R4zub" value="jetbrains.mps.lang.quotation.test" />
-      <property role="2R4zu8" value="f0c7dabe-a007-49ff-965e-4f6c6b0d78ab" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab2n" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDP9KwI" resolve="Test_CreateAntiquotation_Intention" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab2s" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDPa7OT" resolve="Test_CreateAntiquotation_Key" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab2z" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDP9PXL" resolve="Test_CreateListAntiquotation_Intention" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab2G" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDPa80T" resolve="Test_CreateListAntiquotation_Key" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab2R" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDP9QSD" resolve="Test_CreatePropertyAntiquotation_Intention" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab34" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDPa6fh" resolve="Test_CreatePropertyAntiquotation_Key" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab3j" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDPa4K$" resolve="Test_CreateReferenceAntiquotation_Intention" />
-    </node>
-    <node concept="lpD6D" id="6dQuMDPab3$" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6dQuMDPa6_7" resolve="Test_CreateReferenceAntiquotation_Key" />
-    </node>
-    <node concept="lpD6D" id="29gobADrLOU" role="lpD6w">
-      <ref role="lpD7u" to="tk9j:5TUCQr3cQ2o" resolve="SuppressErrorsTest" />
-    </node>
-    <node concept="lpD6D" id="29gobADrLPg" role="lpD6w">
-      <ref role="lpD7u" to="mpm6:6nbww93UGaw" resolve="Test_QuotationDetachNodes_Test" />
-    </node>
-    <node concept="lpD6D" id="29gobADrLPv" role="lpD6w">
-      <ref role="lpD7u" to="yutu:2ZO5wSvEFpN" resolve="QuotationConverterTest" />
-    </node>
-    <node concept="lpD6D" id="29gobADrLPw" role="lpD6w">
-      <ref role="lpD7u" to="yutu:2ZO5wSvGkY7" resolve="QuotationConverterPreservesSemantics" />
-    </node>
-    <node concept="lpD6D" id="gLrprVOLA3" role="lpD6w">
-      <ref role="lpD7u" to="yutu:29gobADrNp5" resolve="LightQuotationFinal" />
     </node>
   </node>
 </model>
