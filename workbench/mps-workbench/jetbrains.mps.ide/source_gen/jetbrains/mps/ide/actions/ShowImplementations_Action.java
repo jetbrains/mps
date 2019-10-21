@@ -7,11 +7,9 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -25,10 +23,10 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7397015581138491059", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowImplementations_Action extends BaseAction {
@@ -45,7 +43,7 @@ public class ShowImplementations_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Interface$Kp) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Classifier$hJ);
+    return ShowImplementations_Action.this.isInterface(_params) || ShowImplementations_Action.this.isClass(_params) || ShowImplementations_Action.this.isMethodDeclaration(_params);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -107,13 +105,13 @@ public class ShowImplementations_Action extends BaseAction {
     ListSequence.fromList(nodes).addElement(((SNode) MapSequence.fromMap(_params).get("node")));
     SearchResults<SNode> results;
     SearchScope scope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("project")));
-    if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Interface$Kp)) {
+    if (ShowImplementations_Action.this.isInterface(_params)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder");
-    } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l)) {
+    } else if (ShowImplementations_Action.this.isClass(_params)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder");
-    } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Interface$Kp)) {
+    } else if (ShowImplementations_Action.this.isMethodDeclaration(_params) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Interface$Kp)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder");
-    } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Classifier$hJ)) {
+    } else if (ShowImplementations_Action.this.isMethodDeclaration(_params)) {
       results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) MapSequence.fromMap(_params).get("node")), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
     } else {
       return nodes;
@@ -126,15 +124,20 @@ public class ShowImplementations_Action extends BaseAction {
     }
     return nodes;
   }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+  private boolean isInterface(final Map<String, Object> _params) {
+    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Interface$Kp);
+  }
+  private boolean isClass(final Map<String, Object> _params) {
+    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassConcept$IY);
+  }
+  private boolean isMethodDeclaration(final Map<String, Object> _params) {
+    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.Classifier$hJ);
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$gY5l = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }
