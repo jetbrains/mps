@@ -17,6 +17,14 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Generator;
+import org.jetbrains.mps.openapi.module.SDependency;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -31,7 +39,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
     if (SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$$U27) == null) {
       return;
     }
-    // allow to modify/extend switches that accept exactly same parameters only, not superset therof. 
+    // allow to modify/extend switches that accept exactly same parameters only, not superset thereof. 
     // the reason is sub-switch may be invoked directly, while the rules of its parent would expect more parameters than there're actually 
     SNode modified = SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$$U27);
     if (ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$AB01)).count() != ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$AB01)).count()) {
@@ -68,6 +76,30 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
+        }
+      }
+    }
+    if (SNodeOperations.getModel(modified) != SNodeOperations.getModel(templateSwitch)) {
+      final SModuleReference generatorDependency = SNodeOperations.getModel(modified).getModule().getModuleReference();
+      SModule module = SNodeOperations.getModel(templateSwitch).getModule();
+      if (module instanceof Generator && !(generatorDependency.equals(module.getModuleReference()))) {
+        Iterable<SDependency> declaredDependencies = module.getDeclaredDependencies();
+        if (!(Sequence.fromIterable(declaredDependencies).any(new IWhereFilter<SDependency>() {
+          public boolean accept(SDependency it) {
+            return generatorDependency.equals(it.getTargetModule()) && SDependencyScope.EXTENDS.equals(it.getScope());
+          }
+        }))) {
+          String m = "Missing extends dependency to generator %s for extended switch %s";
+          {
+            final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.modifiedSwitch$$U27);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, String.format(m, generatorDependency.getModuleName(), SPropertyOperations.getString(modified, PROPS.name$tAp1)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6216030778770432994", null, errorTarget);
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixExtendsGenerator_QuickFix", false);
+              intentionProvider.putArgument("extendingGenerator", (Generator) module);
+              intentionProvider.putArgument("extendedGenerator", generatorDependency);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
           }
         }
       }
