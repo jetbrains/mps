@@ -57,6 +57,7 @@ import org.junit.runners.model.RunnerBuilder;
 @Deprecated
 @RunWith(ModuleTestSuite.class)
 @Suite.SuiteClasses({
+                        // this list should be kept in sync with the list in module j.m.testbench.make
                         TestModule_closures_test.class,
                         TestModule_collections_trove_test.class,
                         TestModule_collections_unittest.class,

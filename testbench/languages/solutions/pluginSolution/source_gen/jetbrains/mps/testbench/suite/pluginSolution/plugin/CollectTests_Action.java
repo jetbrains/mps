@@ -37,7 +37,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.testbench.suite.behavior.IModuleRef__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.testbench.suite.behavior.ITestRef__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.AbstractModule;
@@ -49,7 +48,6 @@ import com.intellij.openapi.wm.WindowManager;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public class CollectTests_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -171,22 +169,17 @@ public class CollectTests_Action extends BaseAction {
                         return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$cQ0V)).equals(module.value.getModuleReference());
                       }
                     });
-                    if (suite == null) {
-                      suite = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite"));
-                      SNode sref = SLinkOperations.setNewChild(suite, LINKS.moduleRef$cQ0V, CONCEPTS.SolutionRef$S_);
-                      SModuleReference mref = module.value.getModuleReference();
-                      SPropertyOperations.assign(sref, PROPS.moduleFQName$uMtw, mref.getModuleName());
-                      SPropertyOperations.assign(sref, PROPS.moduleID$uMCa, mref.getModuleId().toString());
-                    }
-                    for (final SNode tref : tests) {
-                      if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$fEbz)).any(new IWhereFilter<SNode>() {
-                        public boolean accept(SNode it) {
-                          return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
+                    if (suite != null) {
+                      for (final SNode tref : tests) {
+                        if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$fEbz)).any(new IWhereFilter<SNode>() {
+                          public boolean accept(SNode it) {
+                            return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
+                          }
+                        }))) {
+                          ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$fEbz)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$Qb));
+                          ((SModelInternal) model).addModelImport(smodel.getReference());
+                          ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
                         }
-                      }))) {
-                        ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$fEbz)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$Qb));
-                        ((SModelInternal) model).addModelImport(smodel.getReference());
-                        ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
                       }
                     }
                   }
@@ -218,17 +211,11 @@ public class CollectTests_Action extends BaseAction {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ModuleSuite$D_ = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
-    /*package*/ static final SConcept SolutionRef$S_ = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef");
     /*package*/ static final SInterfaceConcept ITestRef$Qb = MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink moduleRef$cQ0V = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
     /*package*/ static final SContainmentLink testRef$fEbz = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty moduleFQName$uMtw = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbddL, "moduleFQName");
-    /*package*/ static final SProperty moduleID$uMCa = MetaAdapterFactory.getProperty(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, 0x11c3fc56a6d1cbdeL, "moduleID");
   }
 }
