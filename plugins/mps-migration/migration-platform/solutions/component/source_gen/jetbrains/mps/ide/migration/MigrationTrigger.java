@@ -313,73 +313,74 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         // as we use ui, postpone to EDT 
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
-            ProgressManager.getInstance().run(new Task.Modal(myProject, "Synchronizing Files...", false) {
-              public void run(@NotNull ProgressIndicator pi) {
-                pi.setIndeterminate(true);
-                myReloadManager.flush();
-                syncRefresh();
-              }
-            });
-            final Wrappers._T<PostponedState> newState = new Wrappers._T<PostponedState>();
-            myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-              public void run() {
-                Iterable<SModule> modules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
-                newState.value = PostponedState.current(myMigrationRegistry, modules);
-              }
-            });
-
-            if (myPostponedState.get() == null || force) {
-              boolean hasSomethingToApply = newState.value.hasSomethingToApply();
-              if (hasSomethingToApply) {
-                final Tuples._2<MigrationResult, MigrationError> result = runMigration(newState.value.hasVersionUpdate(), newState.value.hasMigrations());
-                if (result._0() == MigrationResult.POSTPONED) {
-                  myPostponedState.set(newState.value);
-                } else if (result._0() == MigrationResult.FINISHED_WITH_ERRORS) {
-                  ProgressManager.getInstance().run(new Task.Modal(myProject, "Collecting Errors", false) {
-                    public void run(@NotNull final ProgressIndicator progressIndicator) {
-                      myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-                        public void run() {
-                          Iterable<IssueKindReportItem> problems = result._1().getProblems(progressIndicator);
-                          myProject.getComponent(MigrationProblemHandler.class).showProblems(Sequence.fromIterable(problems).toListSequence());
-                        }
-                      });
-                    }
-                  });
-                  myPostponedState.set(newState.value);
-                  myNotifications.showRequired(new _FunctionTypes._void_P0_E0() {
-                    public void invoke() {
-                      myPostponedState.set(null);
-                      scheduleMigration(true);
-                    }
-                  });
-                  cleanup();
-                } else if (result._0() == MigrationResult.FINISHED) {
-                  myPostponedState.set(null);
-                  cleanup();
-                } else {
-                  throw new IllegalStateException("Unknown result: " + result);
-                }
-              } else if (force) {
-                myNotifications.showNotRequired();
-              }
-            } else {
-              if (!(myNotifications.showRequired(new _FunctionTypes._void_P0_E0() {
-                public void invoke() {
-                  myPostponedState.set(null);
-                  scheduleMigration(true);
-                }
-              }))) {
-                return;
-              }
-
-              myPostponedState.accumulateAndGet(newState.value, new BinaryOperator<PostponedState>() {
-                @Override
-                public PostponedState apply(PostponedState current, PostponedState additional) {
-                  return (current == null ? null : current.add(additional));
+            try {
+              ProgressManager.getInstance().run(new Task.Modal(myProject, "Synchronizing Files...", false) {
+                public void run(@NotNull ProgressIndicator pi) {
+                  pi.setIndeterminate(true);
+                  myReloadManager.flush();
+                  syncRefresh();
                 }
               });
+              final Wrappers._T<PostponedState> newState = new Wrappers._T<PostponedState>();
+              myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
+                public void run() {
+                  Iterable<SModule> modules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
+                  newState.value = PostponedState.current(myMigrationRegistry, modules);
+                }
+              });
+
+              if (myPostponedState.get() == null || force) {
+                boolean hasSomethingToApply = newState.value.hasSomethingToApply();
+                if (hasSomethingToApply) {
+                  final Tuples._2<MigrationResult, MigrationError> result = runMigration(newState.value.hasVersionUpdate(), newState.value.hasMigrations());
+                  if (result._0() == MigrationResult.POSTPONED) {
+                    myPostponedState.set(newState.value);
+                  } else if (result._0() == MigrationResult.FINISHED_WITH_ERRORS) {
+                    ProgressManager.getInstance().run(new Task.Modal(myProject, "Collecting Errors", false) {
+                      public void run(@NotNull final ProgressIndicator progressIndicator) {
+                        myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
+                          public void run() {
+                            Iterable<IssueKindReportItem> problems = result._1().getProblems(progressIndicator);
+                            myProject.getComponent(MigrationProblemHandler.class).showProblems(Sequence.fromIterable(problems).toListSequence());
+                          }
+                        });
+                      }
+                    });
+                    myPostponedState.set(newState.value);
+                    myNotifications.showRequired(new _FunctionTypes._void_P0_E0() {
+                      public void invoke() {
+                        myPostponedState.set(null);
+                        scheduleMigration(true);
+                      }
+                    });
+                    cleanup();
+                  } else if (result._0() == MigrationResult.FINISHED) {
+                    myPostponedState.set(null);
+                    cleanup();
+                  } else {
+                    throw new IllegalStateException("Unknown result: " + result);
+                  }
+                } else if (force) {
+                  myNotifications.showNotRequired();
+                }
+              } else {
+                if (myNotifications.showRequired(new _FunctionTypes._void_P0_E0() {
+                  public void invoke() {
+                    myPostponedState.set(null);
+                    scheduleMigration(true);
+                  }
+                })) {
+                  myPostponedState.accumulateAndGet(newState.value, new BinaryOperator<PostponedState>() {
+                    @Override
+                    public PostponedState apply(PostponedState current, PostponedState additional) {
+                      return (current == null ? null : current.add(additional));
+                    }
+                  });
+                }
+              }
+            } finally {
+              myMigrationBlock.unblockMigrationsCheck(scheduledBlockCause);
             }
-            myMigrationBlock.unblockMigrationsCheck(scheduledBlockCause);
           }
         }, ModalityState.NON_MODAL);
       }
