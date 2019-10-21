@@ -98,8 +98,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
   private final AtomicReference<PostponedState> myPostponedState = new AtomicReference<PostponedState>();
 
-  private DeployWarning myDeployWarn;
-  private MigrationNotifications myNotifications;
+  private MigrationNotificationsSupport myNotifications;
 
   public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, MPSCoreComponents mpsCore) {
     super(ideaProject);
@@ -108,13 +107,13 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
     myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
-    myDeployWarn = new DeployWarning(ideaProject, p, myLanguageRegistry) {
+    myNotifications = new MigrationNotificationsSupport(ideaProject, p, myLanguageRegistry) {
       @Override
       public void runAssistant() {
+        myPostponedState.set(null);
         scheduleMigration(true);
       }
     };
-    myNotifications = new MigrationNotifications(myProject);
     this.myVersionUpdater = new SilentModuleVersionUpdater(myMpsProject, new _FunctionTypes._return_P0_E0<Boolean>() {
       public Boolean invoke() {
         return myReloadListener.isIsUnderReload();
@@ -134,7 +133,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   public void setRebuildHandler(Consumer<Iterable<SModuleReference>> rebuildHandler) {
     // todo replace with a normal component dependency 
-    myDeployWarn.setRebuildHandler(rebuildHandler);
+    myNotifications.setRebuildHandler(rebuildHandler);
   }
 
   public MigrationBlock getMigrationBlock() {
@@ -158,7 +157,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
             myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
               public void run() {
-                myDeployWarn.checkNotDeployedLanguages(myMigrationBlock);
+                checkNotDeployedLanguages();
               }
             });
             checkMigrationNeeded();
@@ -266,13 +265,13 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   }
 
   private void checkMigrationNeededOnModuleChange(Iterable<SModule> modules) {
-    if (myMigrationBlock.isMigrationForbiddenWithout(DeployWarning.NOT_DEPLOYED)) {
+    if (myMigrationBlock.isMigrationForbiddenWithout(MigrationNotificationsSupport.NOT_DEPLOYED)) {
       return;
     }
 
     if (myMigrationBlock.isMigrationForbidden()) {
       // the "not deployed" languages case 
-      myDeployWarn.notifyDeployWarn(CollectionSequence.fromCollection(myMigrationRegistry.getProjectMigrations()).any(new IWhereFilter<ProjectMigration>() {
+      myNotifications.showDeployWarn(CollectionSequence.fromCollection(myMigrationRegistry.getProjectMigrations()).any(new IWhereFilter<ProjectMigration>() {
         public boolean accept(ProjectMigration it) {
           return it instanceof CleanupProjectMigration;
         }
@@ -299,7 +298,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
    * @param force means the user explicitly invoked migration
    */
   public synchronized void scheduleMigration(final boolean force) {
-    if (force && myMigrationBlock.isMigrationForbiddenWithout(DeployWarning.NOT_DEPLOYED)) {
+    if (force && myMigrationBlock.isMigrationForbiddenWithout(MigrationNotificationsSupport.NOT_DEPLOYED)) {
       myNotifications.showCantStart(myMigrationBlock.getMigrationForbiddenMessage());
       return;
     }
@@ -355,12 +354,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                       }
                     });
                     myPostponedState.set(newState.value);
-                    myNotifications.showRequired(new _FunctionTypes._void_P0_E0() {
-                      public void invoke() {
-                        myPostponedState.set(null);
-                        scheduleMigration(true);
-                      }
-                    });
+                    myNotifications.showRequired();
                     cleanup();
                   } else if (result._0() == MigrationResult.FINISHED) {
                     myPostponedState.set(null);
@@ -372,12 +366,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                   myNotifications.showNotRequired();
                 }
               } else {
-                if (myNotifications.showRequired(new _FunctionTypes._void_P0_E0() {
-                  public void invoke() {
-                    myPostponedState.set(null);
-                    scheduleMigration(true);
-                  }
-                })) {
+                if (myNotifications.showRequired()) {
                   myPostponedState.accumulateAndGet(newState.value, new BinaryOperator<PostponedState>() {
                     @Override
                     public PostponedState apply(PostponedState current, PostponedState additional) {
@@ -448,6 +437,15 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     });
   }
 
+  private void checkNotDeployedLanguages() {
+    Set<SLanguage> problems = myNotifications.getNotDeployedUsedLanguages();
+    if (SetSequence.fromSet(problems).isEmpty()) {
+      myMigrationBlock.ensureUnblocked(MigrationNotificationsSupport.NOT_DEPLOYED);
+    } else {
+      myMigrationBlock.ensureBlocked(MigrationNotificationsSupport.NOT_DEPLOYED);
+    }
+  }
+
   private class MyReloadListener implements ReloadListener {
     private boolean myUnderReload = false;
     @Override
@@ -473,7 +471,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private class MyLangDeployListener implements LanguageRegistryListener {
     @Override
     public void afterLanguagesLoaded(Iterable<LanguageRuntime> loaded) {
-      myDeployWarn.checkNotDeployedLanguages(myMigrationBlock);
+      checkNotDeployedLanguages();
       checkMigrationNeededOnLanguageReload(Sequence.fromIterable(loaded).select(new ISelector<LanguageRuntime, SLanguage>() {
         public SLanguage select(LanguageRuntime it) {
           return it.getIdentity();
