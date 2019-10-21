@@ -52,8 +52,8 @@ import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.ide.migration.wizard.MigrationError;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.migration.global.MigrationProblemHandler;
-import java.util.function.BinaryOperator;
 import com.intellij.openapi.application.ModalityState;
+import java.util.function.BinaryOperator;
 import jetbrains.mps.ide.migration.wizard.MigrationWizard;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -340,8 +340,16 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                       public void run(@NotNull final ProgressIndicator progressIndicator) {
                         myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
                           public void run() {
-                            Iterable<IssueKindReportItem> problems = result._1().getProblems(progressIndicator);
-                            myProject.getComponent(MigrationProblemHandler.class).showProblems(Sequence.fromIterable(problems).toListSequence());
+                            final Iterable<IssueKindReportItem> problems = result._1().getProblems(progressIndicator);
+                            ApplicationManager.getApplication().invokeLater(new Runnable() {
+                              public void run() {
+                                myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
+                                  public void run() {
+                                    myProject.getComponent(MigrationProblemHandler.class).showProblems(Sequence.fromIterable(problems).toListSequence());
+                                  }
+                                });
+                              }
+                            }, ModalityState.NON_MODAL);
                           }
                         });
                       }
@@ -403,9 +411,9 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       // user has postponed migration 
       state = MigrationResult.POSTPONED;
     } else if (errors != null) {
-      state = MigrationResult.FINISHED;
-    } else {
       state = MigrationResult.FINISHED_WITH_ERRORS;
+    } else {
+      state = MigrationResult.FINISHED;
     }
 
     return MultiTuple.<MigrationResult,MigrationError>from(state, errors);

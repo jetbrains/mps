@@ -2852,26 +2852,60 @@
                                                                         </node>
                                                                       </node>
                                                                     </node>
-                                                                    <node concept="3clFbF" id="3_S1WmRLfef" role="3cqZAp">
-                                                                      <node concept="2OqwBi" id="3_S1WmRLivw" role="3clFbG">
-                                                                        <node concept="2OqwBi" id="3_S1WmRLfXF" role="2Oq$k0">
-                                                                          <node concept="37vLTw" id="3_S1WmRLfed" role="2Oq$k0">
-                                                                            <ref role="3cqZAo" to="xygl:~Task.myProject" resolve="myProject" />
-                                                                          </node>
-                                                                          <node concept="liA8E" id="3_S1WmRLgYy" role="2OqNvi">
-                                                                            <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                                                                            <node concept="3VsKOn" id="3_S1WmRLhV$" role="37wK5m">
-                                                                              <ref role="3VsUkX" to="bdll:~MigrationProblemHandler" resolve="MigrationProblemHandler" />
-                                                                            </node>
-                                                                          </node>
+                                                                    <node concept="3clFbF" id="4SkhJ$VlzSl" role="3cqZAp">
+                                                                      <node concept="2OqwBi" id="4SkhJ$Vl$_x" role="3clFbG">
+                                                                        <node concept="2YIFZM" id="4SkhJ$Vl$6B" role="2Oq$k0">
+                                                                          <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                                                                          <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
                                                                         </node>
-                                                                        <node concept="liA8E" id="3_S1WmRLjrv" role="2OqNvi">
-                                                                          <ref role="37wK5l" to="bdll:~MigrationProblemHandler.showProblems(java.util.Collection)" resolve="showProblems" />
-                                                                          <node concept="2OqwBi" id="3wDJmuvF$kn" role="37wK5m">
-                                                                            <node concept="37vLTw" id="3wDJmuvFyb6" role="2Oq$k0">
-                                                                              <ref role="3cqZAo" node="3wDJmuvFxm6" resolve="problems" />
+                                                                        <node concept="liA8E" id="4SkhJ$Vl$Z9" role="2OqNvi">
+                                                                          <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable,com.intellij.openapi.application.ModalityState)" resolve="invokeLater" />
+                                                                          <node concept="1bVj0M" id="4SkhJ$VlAkl" role="37wK5m">
+                                                                            <property role="3yWfEV" value="true" />
+                                                                            <node concept="3clFbS" id="4SkhJ$VlAkn" role="1bW5cS">
+                                                                              <node concept="1QHqEK" id="4SkhJ$VlAU5" role="3cqZAp">
+                                                                                <node concept="1QHqEC" id="4SkhJ$VlAU6" role="1QHqEI">
+                                                                                  <node concept="3clFbS" id="4SkhJ$VlAU7" role="1bW5cS">
+                                                                                    <node concept="3clFbF" id="3_S1WmRLfef" role="3cqZAp">
+                                                                                      <node concept="2OqwBi" id="3_S1WmRLivw" role="3clFbG">
+                                                                                        <node concept="2OqwBi" id="3_S1WmRLfXF" role="2Oq$k0">
+                                                                                          <node concept="37vLTw" id="3_S1WmRLfed" role="2Oq$k0">
+                                                                                            <ref role="3cqZAo" to="xygl:~Task.myProject" resolve="myProject" />
+                                                                                          </node>
+                                                                                          <node concept="liA8E" id="3_S1WmRLgYy" role="2OqNvi">
+                                                                                            <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                                                                                            <node concept="3VsKOn" id="3_S1WmRLhV$" role="37wK5m">
+                                                                                              <ref role="3VsUkX" to="bdll:~MigrationProblemHandler" resolve="MigrationProblemHandler" />
+                                                                                            </node>
+                                                                                          </node>
+                                                                                        </node>
+                                                                                        <node concept="liA8E" id="3_S1WmRLjrv" role="2OqNvi">
+                                                                                          <ref role="37wK5l" to="bdll:~MigrationProblemHandler.showProblems(java.util.Collection)" resolve="showProblems" />
+                                                                                          <node concept="2OqwBi" id="3wDJmuvF$kn" role="37wK5m">
+                                                                                            <node concept="37vLTw" id="3wDJmuvFyb6" role="2Oq$k0">
+                                                                                              <ref role="3cqZAo" node="3wDJmuvFxm6" resolve="problems" />
+                                                                                            </node>
+                                                                                            <node concept="ANE8D" id="3wDJmuvF$Jg" role="2OqNvi" />
+                                                                                          </node>
+                                                                                        </node>
+                                                                                      </node>
+                                                                                    </node>
+                                                                                  </node>
+                                                                                </node>
+                                                                                <node concept="2OqwBi" id="4SkhJ$VlD7I" role="ukAjM">
+                                                                                  <node concept="37vLTw" id="4SkhJ$VlBCI" role="2Oq$k0">
+                                                                                    <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
+                                                                                  </node>
+                                                                                  <node concept="liA8E" id="4SkhJ$VlE6l" role="2OqNvi">
+                                                                                    <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                                                                                  </node>
+                                                                                </node>
+                                                                              </node>
                                                                             </node>
-                                                                            <node concept="ANE8D" id="3wDJmuvF$Jg" role="2OqNvi" />
+                                                                          </node>
+                                                                          <node concept="10M0yZ" id="4SkhJ$Vl_M$" role="37wK5m">
+                                                                            <ref role="3cqZAo" to="bd8o:~ModalityState.NON_MODAL" resolve="NON_MODAL" />
+                                                                            <ref role="1PxDUh" to="bd8o:~ModalityState" resolve="ModalityState" />
                                                                           </node>
                                                                         </node>
                                                                       </node>
@@ -3378,8 +3412,8 @@
                   <node concept="37vLTw" id="3wDJmuvNgKO" role="37vLTJ">
                     <ref role="3cqZAo" node="3wDJmuvMRo0" resolve="state" />
                   </node>
-                  <node concept="Rm8GO" id="3wDJmuvL$Sh" role="37vLTx">
-                    <ref role="Rm8GQ" node="3wDJmuvD32e" resolve="FINISHED" />
+                  <node concept="Rm8GO" id="zidqNnsfGi" role="37vLTx">
+                    <ref role="Rm8GQ" node="3wDJmuvCZOF" resolve="FINISHED_WITH_ERRORS" />
                     <ref role="1Px2BO" node="3wDJmuvCRkQ" resolve="MigrationTrigger.MigrationResult" />
                   </node>
                 </node>
@@ -3399,8 +3433,8 @@
                   <node concept="37vLTw" id="3wDJmuvNsK3" role="37vLTJ">
                     <ref role="3cqZAo" node="3wDJmuvMRo0" resolve="state" />
                   </node>
-                  <node concept="Rm8GO" id="3wDJmuvNtEl" role="37vLTx">
-                    <ref role="Rm8GQ" node="3wDJmuvCZOF" resolve="FINISHED_WITH_ERRORS" />
+                  <node concept="Rm8GO" id="zidqNnshzV" role="37vLTx">
+                    <ref role="Rm8GQ" node="3wDJmuvD32e" resolve="FINISHED" />
                     <ref role="1Px2BO" node="3wDJmuvCRkQ" resolve="MigrationTrigger.MigrationResult" />
                   </node>
                 </node>
