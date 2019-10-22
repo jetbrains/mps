@@ -86,6 +86,10 @@ public class Command {
   private final HttpClient myHttpClient;
   private final String myAuthorizationToken;
 
+  /**
+   * use {@link Command#Command(String)} with authorization token as parameter
+   */
+  @Deprecated
   public Command() {
     this(null);
   }
@@ -113,11 +117,13 @@ public class Command {
 
   /**
    * Logs into YouTrack with provided credentials
+   *   no need to call if authorization by token is used
    *
    * @param query with user credentials
    * @return server response if authentication with provided credentials succeeded
    * @throws IOException can be thrown by {@link HttpClient#executeMethod(HttpMethod)}
    */
+  @Deprecated
   public Response login(Query query) throws IOException {
     PostMethod postMethod = getPostMethod(YOUTRACK_BASE_URL + LOGIN);
     postMethod.addParameter(LOGIN_PARAM_NAME, query.getUser());
