@@ -468,6 +468,12 @@
         <ref role="v9R2y" node="htP$e5X" resolve="reduce_ResultStatement" />
       </node>
     </node>
+    <node concept="3aamgX" id="7Lsaw92xCra" role="3acgRq">
+      <ref role="30HIoZ" to="tp3b:7Lsaw92x$Ij" resolve="ResultStatement2" />
+      <node concept="j$656" id="7Lsaw92xEO9" role="1lVwrX">
+        <ref role="v9R2y" node="7Lsaw92xDsZ" resolve="reduce_ResultStatement2" />
+      </node>
+    </node>
     <node concept="3aamgX" id="hz_VmGL" role="3acgRq">
       <ref role="30HIoZ" to="tp3b:hzmZew1" resolve="ExecuteFinderExpression" />
       <node concept="j$656" id="hz_Vp3r" role="1lVwrX">
@@ -2853,6 +2859,68 @@
         <node concept="3clFbS" id="5Xky2$hqhj5" role="3clF47">
           <node concept="3clFbF" id="5Xky2$hqhj6" role="3cqZAp">
             <node concept="10Nm6u" id="5Xky2$hqhj7" role="3clFbG" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="13MO4I" id="7Lsaw92xDsZ">
+    <property role="TrG5h" value="reduce_ResultStatement2" />
+    <ref role="3gUMe" to="tp3b:7Lsaw92x$Ij" resolve="ResultStatement2" />
+    <node concept="312cEu" id="7Lsaw92xDt0" role="13RCb5">
+      <property role="TrG5h" value="GeneratedClass" />
+      <property role="1sVAO0" value="true" />
+      <node concept="3uibUv" id="7Lsaw92xDt1" role="1zkMxy">
+        <ref role="3uigEE" to="k4i4:~GeneratedFinder" resolve="GeneratedFinder" />
+      </node>
+      <node concept="3Tm1VV" id="7Lsaw92xDt2" role="1B3o_S" />
+      <node concept="3clFb_" id="7Lsaw92xDt3" role="jymVt">
+        <property role="TrG5h" value="doFind" />
+        <node concept="3Tmbuc" id="7Lsaw92xDt4" role="1B3o_S" />
+        <node concept="3cqZAl" id="7Lsaw92xDt5" role="3clF45" />
+        <node concept="3clFbS" id="7Lsaw92xDt6" role="3clF47">
+          <node concept="3clFbF" id="7Lsaw92xDt7" role="3cqZAp">
+            <node concept="2OqwBi" id="7Lsaw92xDt8" role="3clFbG">
+              <node concept="37vLTw" id="7Lsaw92xDt9" role="2Oq$k0">
+                <ref role="3cqZAo" node="7Lsaw92xDtn" resolve="callback" />
+              </node>
+              <node concept="liA8E" id="7Lsaw92xDta" role="2OqNvi">
+                <ref role="37wK5l" to="k4i4:~IFinder$FindCallback.onUsageFound(jetbrains.mps.ide.findusages.model.SearchResult)" resolve="onUsageFound" />
+                <node concept="10Nm6u" id="7Lsaw92xDtc" role="37wK5m">
+                  <node concept="29HgVG" id="7Lsaw92xDtd" role="lGtFl">
+                    <node concept="3NFfHV" id="7Lsaw92xDte" role="3NFExx">
+                      <node concept="3clFbS" id="7Lsaw92xDtf" role="2VODD2">
+                        <node concept="3clFbF" id="7Lsaw92xDtg" role="3cqZAp">
+                          <node concept="2OqwBi" id="7Lsaw92xDth" role="3clFbG">
+                            <node concept="30H73N" id="7Lsaw92xDti" role="2Oq$k0" />
+                            <node concept="3TrEf2" id="7Lsaw92xDWo" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tp3b:7Lsaw92x$Ik" resolve="result" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="raruj" id="7Lsaw92xDtk" role="lGtFl" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="7Lsaw92xDtl" role="3clF46">
+          <property role="TrG5h" value="node" />
+          <node concept="3Tqbb2" id="7Lsaw92xDtm" role="1tU5fm" />
+        </node>
+        <node concept="37vLTG" id="7Lsaw92xDtn" role="3clF46">
+          <property role="TrG5h" value="callback" />
+          <node concept="3uibUv" id="7Lsaw92xDto" role="1tU5fm">
+            <ref role="3uigEE" to="k4i4:~IFinder$FindCallback" resolve="IFinder.FindCallback" />
+          </node>
+        </node>
+        <node concept="37vLTG" id="7Lsaw92xDtp" role="3clF46">
+          <property role="TrG5h" value="monitor" />
+          <node concept="3uibUv" id="7Lsaw92xDtq" role="1tU5fm">
+            <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
           </node>
         </node>
       </node>

@@ -76,6 +76,7 @@
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
+      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
@@ -230,6 +231,29 @@
                 <ref role="cht4Q" to="tp3b:5Xky2$hpEQB" resolve="OnEachNodeFoundByExpression" />
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="7Lsaw92x$Nm">
+    <property role="3GE5qa" value="Statements" />
+    <ref role="1M2myG" to="tp3b:7Lsaw92x$Ij" resolve="ResultStatement2" />
+    <node concept="9S07l" id="7Lsaw92x$Np" role="9Vyp8">
+      <node concept="3clFbS" id="7Lsaw92x$Nq" role="2VODD2">
+        <node concept="3clFbF" id="7Lsaw92x$NN" role="3cqZAp">
+          <node concept="2OqwBi" id="7Lsaw92x_s8" role="3clFbG">
+            <node concept="2OqwBi" id="7Lsaw92x$ZJ" role="2Oq$k0">
+              <node concept="nLn13" id="7Lsaw92x$NM" role="2Oq$k0" />
+              <node concept="2Xjw5R" id="7Lsaw92x_9z" role="2OqNvi">
+                <node concept="1xMEDy" id="7Lsaw92x_9_" role="1xVPHs">
+                  <node concept="chp4Y" id="7Lsaw92x_dv" role="ri$Ld">
+                    <ref role="cht4Q" to="tp3b:hqPqlE8" resolve="FindBlock" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3x8VRR" id="7Lsaw92x_GP" role="2OqNvi" />
           </node>
         </node>
       </node>

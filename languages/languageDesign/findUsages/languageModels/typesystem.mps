@@ -712,5 +712,42 @@
       </node>
     </node>
   </node>
+  <node concept="1YbPZF" id="7Lsaw92xAKY">
+    <property role="TrG5h" value="typeof_ResultStatement2" />
+    <property role="3GE5qa" value="Statements" />
+    <node concept="3clFbS" id="7Lsaw92xAKZ" role="18ibNy">
+      <node concept="1ZobV4" id="7Lsaw92xALb" role="3cqZAp">
+        <node concept="mw_s8" id="7Lsaw92xALl" role="1ZfhK$">
+          <node concept="1Z2H0r" id="7Lsaw92xALh" role="mwGJk">
+            <node concept="2OqwBi" id="7Lsaw92xAY0" role="1Z2MuG">
+              <node concept="1YBJjd" id="7Lsaw92xALA" role="2Oq$k0">
+                <ref role="1YBMHb" node="7Lsaw92xAL1" resolve="stmt" />
+              </node>
+              <node concept="3TrEf2" id="7Lsaw92xBaX" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp3b:7Lsaw92x$Ik" resolve="result" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="7Lsaw92xBe1" role="1ZfhKB">
+          <node concept="2pJPEk" id="7Lsaw92xBdX" role="mwGJk">
+            <node concept="2pJPED" id="7Lsaw92xBec" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
+              <node concept="2pIpSj" id="7Lsaw92xBeR" role="2pJxcM">
+                <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
+                <node concept="36bGnv" id="7Lsaw92xBf4" role="28nt2d">
+                  <ref role="36bGnp" to="g4jo:J2bOg02GHT" resolve="SearchResult" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="7Lsaw92xAL1" role="1YuTPh">
+      <property role="TrG5h" value="stmt" />
+      <ref role="1YaFvo" to="tp3b:7Lsaw92x$Ij" resolve="ResultStatement2" />
+    </node>
+  </node>
 </model>
 

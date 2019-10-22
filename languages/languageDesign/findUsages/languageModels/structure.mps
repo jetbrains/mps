@@ -23,6 +23,9 @@
       </concept>
     </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
@@ -58,6 +61,7 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -436,6 +440,24 @@
     <property role="R5$K2" value="true" />
     <property role="R5$K7" value="false" />
     <ref role="1TJDcQ" to="tpee:fz7vLUk" resolve="ParameterDeclaration" />
+  </node>
+  <node concept="1TIwiD" id="7Lsaw92x$Ij">
+    <property role="EcuMT" value="8961083547754843027" />
+    <property role="3GE5qa" value="Statements" />
+    <property role="TrG5h" value="ResultStatement2" />
+    <property role="34LRSv" value="add raw result" />
+    <property role="R4oN_" value="Register SearchObject result" />
+    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <node concept="1TJgyj" id="7Lsaw92x$Ik" role="1TKVEi">
+      <property role="IQ2ns" value="8961083547754843028" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="result" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="t5JxF" id="7Lsaw92xFDp" role="lGtFl">
+      <property role="t5JxN" value="Alternative to regular `add result &lt;node&gt;` which allows use of SearchResult directly" />
+    </node>
   </node>
 </model>
 

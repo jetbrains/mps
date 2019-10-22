@@ -28,7 +28,8 @@ public final class LanguageConceptSwitch {
   public static final int OnEachFoundNodeCallback = 16;
   public static final int OnEachNodeFoundByExpression = 17;
   public static final int ResultStatement = 18;
-  public static final int SearchedNodesBlock = 19;
+  public static final int ResultStatement2 = 19;
+  public static final int SearchedNodesBlock = 20;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x64d34fcdad024e73L, 0xaff8a581124c2e30L);
@@ -51,6 +52,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x112b337a16caa96eL, OnEachFoundNodeCallback);
     builder.put(0x5f5488291166ada7L, OnEachNodeFoundByExpression);
     builder.put(0x1177404a3f4L, ResultStatement);
+    builder.put(0x7c5c2a0242864b93L, ResultStatement2);
     builder.put(0x118e6b5cc19L, SearchedNodesBlock);
     myIndex = builder.seal();
   }

@@ -240,6 +240,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_8_4(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.queryScope$VTOZ);
   }
+  public static SNode sourceNodeQuery_9_0(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.result$3$_0);
+  }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.finder$MwHD);
   }
@@ -343,6 +346,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("6073404374158397394", new SNQ(i++));
     snqMethods.put("6869265041614459289", new SNQ(i++));
     snqMethods.put("6869265041614456038", new SNQ(i++));
+    snqMethods.put("8961083547754862414", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -401,6 +405,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_8_3(ctx);
         case 19:
           return QueriesGenerated.sourceNodeQuery_8_4(ctx);
+        case 20:
+          return QueriesGenerated.sourceNodeQuery_9_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -692,6 +698,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink queryNode$UgwD = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x118d6fce801L, 0x118d6fce804L, "queryNode");
     /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
     /*package*/ static final SContainmentLink queryNode$VTOw = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x5f5488291166ada7L, 0x5f5488291166ada8L, "queryNode");
+    /*package*/ static final SContainmentLink result$3$_0 = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x7c5c2a0242864b93L, 0x7c5c2a0242864b94L, "result");
     /*package*/ static final SContainmentLink finder$MwHD = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1bd5a514384e1959L, 0x711c6afd1909d279L, "finder");
     /*package*/ static final SContainmentLink finder$N620 = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x585a05e7f40a28d1L, 0x585a05e7f40a28d2L, "finder");
     /*package*/ static final SContainmentLink finders$mMCT = MetaAdapterFactory.getContainmentLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x5f5488291166ada7L, 0x5f54882911688990L, "finders");

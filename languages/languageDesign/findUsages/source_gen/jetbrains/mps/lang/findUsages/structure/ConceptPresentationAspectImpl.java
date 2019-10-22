@@ -29,6 +29,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_OnEachFoundNodeCallback;
   private ConceptPresentation props_OnEachNodeFoundByExpression;
   private ConceptPresentation props_ResultStatement;
+  private ConceptPresentation props_ResultStatement2;
   private ConceptPresentation props_SearchedNodesBlock;
 
   @Override
@@ -89,8 +90,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_FinderDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a7b0v);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0v);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a7b0w);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0w);
           props_FinderDeclaration = cpb.create();
         }
         return props_FinderDeclaration;
@@ -172,6 +173,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ResultStatement = cpb.create();
         }
         return props_ResultStatement;
+      case LanguageConceptSwitch.ResultStatement2:
+        if (props_ResultStatement2 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("Register SearchObject result");
+          cpb.rawPresentation("add raw result");
+          props_ResultStatement2 = cpb.create();
+        }
+        return props_ResultStatement2;
       case LanguageConceptSwitch.SearchedNodesBlock:
         if (props_SearchedNodesBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -182,5 +191,5 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a7b0v = URLFunction_HelpCenterDocUrl.getUrl() + "find-usages.html";
+  private static final String HELP_URL_lpa09p_a0a2a0a7b0w = URLFunction_HelpCenterDocUrl.getUrl() + "find-usages.html";
 }
