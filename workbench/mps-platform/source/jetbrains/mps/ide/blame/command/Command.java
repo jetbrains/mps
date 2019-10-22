@@ -61,6 +61,7 @@ public class Command {
   private static final String PROJECT = "MPS";
   private static final String EXCEPTION = "Auto-reported Exception";
 
+  private static final String AUTHORIZATION_HEADER = "Authorization";
   private static final String LOGIN_PARAM_NAME = "login";
   private static final String PASSWORD_PARAM_NAME = "password";
   private static final String PROJECT_PARAM_NAME = "project";
@@ -83,8 +84,14 @@ public class Command {
   private static final int DEFAULT_TIMEOUT = 5000;
 
   private final HttpClient myHttpClient;
+  private final String myAuthorizationToken;
 
   public Command() {
+    this(null);
+  }
+
+  public Command(@Nullable String authorizationToken) {
+    myAuthorizationToken = authorizationToken;
     myHttpClient = new HttpClient();
     setTimeouts(DEFAULT_TIMEOUT);
   }
@@ -115,6 +122,7 @@ public class Command {
     PostMethod postMethod = getPostMethod(YOUTRACK_BASE_URL + LOGIN);
     postMethod.addParameter(LOGIN_PARAM_NAME, query.getUser());
     postMethod.addParameter(PASSWORD_PARAM_NAME, query.getPassword());
+    addTokenIfSupplied(postMethod);
     myHttpClient.executeMethod(postMethod);
 
     int statusCode = postMethod.getStatusCode();
@@ -150,6 +158,7 @@ public class Command {
     if (hidden) {
       postMethod.addParameter(PERMITTED_GROUP_PARAM_NAME, MPS_GROUP_NAME);
     }
+    addTokenIfSupplied(postMethod);
     if (files.length != 0) {
       List<Part> parts = new ArrayList<>();
       for (NameValuePair nameValuePair : postMethod.getParameters()) {
@@ -253,6 +262,7 @@ public class Command {
   private Response modifyIssueField(@NotNull String issueId, @NotNull String commandString, @NotNull String field, @NotNull String value) throws IOException {
     PostMethod postMethod = getPostMethod(YOUTRACK_BASE_URL + String.format(ISSUE_COMMAND_FORMAT, issueId));
     postMethod.addParameter(commandString, String.format("%s %s", field, value));
+    addTokenIfSupplied(postMethod);
     myHttpClient.executeMethod(postMethod);
 
     int statusCode = postMethod.getStatusCode();
@@ -276,6 +286,7 @@ public class Command {
   @NotNull
   public Response listVersions() throws IOException {
     GetMethod p = new GetMethod(YOUTRACK_BASE_URL + LIST_VERSIONS);
+    addTokenIfSupplied(p);
     myHttpClient.executeMethod(p);
 
     int statusCode = p.getStatusCode();
@@ -320,6 +331,7 @@ public class Command {
     users2counts.forEach((s, i) -> sb.append(String.format(fmt, s)));
     String text = String.format("<?xml version='1.0' encoding='UTF-8' standalone='yes'?>\n<queries>\n%s</queries>", sb);
     postMethod.setRequestEntity(new StringRequestEntity(text, "text/xml", "UTF-8"));
+    addTokenIfSupplied(postMethod);
     myHttpClient.executeMethod(postMethod);
 
     int statusCode = postMethod.getStatusCode();
@@ -345,6 +357,12 @@ public class Command {
       return response;
     } else {
       return new Response(RESPONSE_FAILED, responseString, false, null);
+    }
+  }
+
+  private void addTokenIfSupplied(HttpMethod method) {
+    if (myAuthorizationToken != null) {
+      method.addRequestHeader(AUTHORIZATION_HEADER, "Bearer " + myAuthorizationToken);
     }
   }
 

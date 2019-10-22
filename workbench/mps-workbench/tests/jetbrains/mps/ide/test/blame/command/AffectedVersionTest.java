@@ -50,18 +50,21 @@ public class AffectedVersionTest implements EnvironmentAware {
 
     String login = System.getProperty("mps.youtrack.login");
     String password = System.getProperty("mps.youtrack.password");
+    String token = System.getProperty("mps.youtrack.token");
 
-    if (login == null || password == null) {
+    if (token == null && (login == null || password == null)) {
       fail("No YouTrack credentials were given for the test");
     }
 
-    Command c = new Command();
+    Command c = new Command(token);
 
-    Response r = c.login(new Query(login, password));
-    assertTrue("Was not able to login", r.isSuccess());
+    if (token == null) {  // we have to log in if we have no token
+      Response r = c.login(new Query(login, password));
+      assertTrue("Was not able to login", r.isSuccess());
+    }
 
     //check that version is in versions
-    r = c.listVersions();
+    Response r = c.listVersions();
     if (!r.isSuccess()) {
       fail("Failed to retrieve list of versions from server");
     }
