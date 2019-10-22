@@ -19,9 +19,6 @@
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="5rc7" ref="r:2f48a1e0-29c6-465b-b158-4cba88c0e4a6(jetbrains.mps.testbench.suite.behavior)" />
-    <import index="tpe3" ref="r:00000000-0000-4000-0000-011c895902d7(jetbrains.mps.baseLanguage.unitTest.structure)" />
-    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
     <import index="qq03" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)" />
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
@@ -32,10 +29,8 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
-    <import index="rjhg" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)" />
-    <import index="u132" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)" />
     <import index="ap4t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator(MPS.Core/)" />
-    <import index="xydq" ref="r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)" />
+    <import index="lkt1" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench.testcollector(Testbench/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
   </imports>
   <registry>
@@ -610,11 +605,11 @@
                               <node concept="2OqwBi" id="1ouvi_zDuD" role="37vLTx">
                                 <node concept="2ShNRf" id="1ouvi_zDuE" role="2Oq$k0">
                                   <node concept="1pGfFk" id="1ouvi_zDuF" role="2ShVmc">
-                                    <ref role="37wK5l" to="xydq:4KDfkUwMpjw" resolve="TestCollector" />
+                                    <ref role="37wK5l" to="lkt1:~TestCollector.&lt;init&gt;()" resolve="TestCollector" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="1ouvi_zDuG" role="2OqNvi">
-                                  <ref role="37wK5l" to="xydq:4KDfkUwMpiN" resolve="collectTests" />
+                                  <ref role="37wK5l" to="lkt1:~TestCollector.collectTests(org.jetbrains.mps.openapi.model.SModel,java.util.List)" resolve="collectTests" />
                                   <node concept="37vLTw" id="1ouvi_zDuH" role="37wK5m">
                                     <ref role="3cqZAo" node="4KDfkUwMp9r" resolve="smodel" />
                                   </node>
