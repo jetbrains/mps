@@ -17,7 +17,6 @@ package jetbrains.mps.ide.test.blame.command;
 
 import com.intellij.openapi.application.ApplicationInfo;
 import jetbrains.mps.ide.blame.command.Command;
-import jetbrains.mps.ide.blame.perform.Query;
 import jetbrains.mps.ide.blame.perform.Response;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
@@ -48,20 +47,15 @@ public class AffectedVersionTest implements EnvironmentAware {
       fail("Can't get current application version");
     }
 
-    String login = System.getProperty("mps.youtrack.login");
-    String password = System.getProperty("mps.youtrack.password");
-
-    if (login == null || password == null) {
+    String token = System.getProperty("mps.youtrack.token");
+    if (token == null) {
       fail("No YouTrack credentials were given for the test");
     }
 
-    Command c = new Command();
-
-    Response r = c.login(new Query(login, password));
-    assertTrue("Was not able to login", r.isSuccess());
+    Command c = new Command(token);
 
     //check that version is in versions
-    r = c.listVersions();
+    Response r = c.listVersions();
     if (!r.isSuccess()) {
       fail("Failed to retrieve list of versions from server");
     }
