@@ -321,6 +321,7 @@
       <concept id="2005690715325995359" name="jetbrains.mps.lang.findUsages.structure.FinderReference" flags="ng" index="zAVLb">
         <reference id="7222148688691763792" name="finder" index="2$JaeB" />
       </concept>
+      <concept id="1197044488852" name="jetbrains.mps.lang.findUsages.structure.IsApplicableBlock" flags="in" index="2PqlI2" />
       <concept id="1197044488845" name="jetbrains.mps.lang.findUsages.structure.FinderDeclaration" flags="ig" index="2PqlIr">
         <property id="1202838325511" name="longDescription" index="eK4wv" />
         <property id="1197385993272" name="description" index="39L4OI" />
@@ -340,6 +341,7 @@
         <reference id="1218978181697" name="forConcept" index="3gKJdq" />
         <child id="1218978125367" name="categorizeBlock" index="3gKxsG" />
         <child id="1218978125365" name="findFunction" index="3gKxsI" />
+        <child id="1218978125364" name="isApplicableFunction" index="3gKxsJ" />
       </concept>
       <concept id="1206197741569" name="jetbrains.mps.lang.findUsages.structure.ExecuteFinderExpression" flags="nn" index="3mZe$p">
         <reference id="1206197741576" name="finder" index="3mZe$g" />
@@ -677,6 +679,30 @@
         <node concept="3clFbF" id="hzAOtcl" role="3cqZAp">
           <node concept="Xl_RD" id="hzAOtgK" role="3clFbG">
             <property role="Xl_RC" value="Concept Instances" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2PqlI2" id="2NfDgTadjlQ" role="3gKxsJ">
+      <node concept="3clFbS" id="2NfDgTadjlR" role="2VODD2">
+        <node concept="3clFbF" id="2NfDgTadjSO" role="3cqZAp">
+          <node concept="2ZW3vV" id="2NfDgTadk0_" role="3clFbG">
+            <node concept="3uibUv" id="2NfDgTadkhg" role="2ZW6by">
+              <ref role="3uigEE" to="w1kc:~Language" resolve="Language" />
+            </node>
+            <node concept="2EnYce" id="2NfDgTadjSQ" role="2ZW6bz">
+              <node concept="2EnYce" id="2NfDgTadjSR" role="2Oq$k0">
+                <node concept="2JrnkZ" id="2NfDgTadjSS" role="2Oq$k0">
+                  <node concept="39LhUk" id="2NfDgTadjST" role="2JrQYb" />
+                </node>
+                <node concept="liA8E" id="2NfDgTadjSU" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2NfDgTadjSV" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+              </node>
+            </node>
           </node>
         </node>
       </node>

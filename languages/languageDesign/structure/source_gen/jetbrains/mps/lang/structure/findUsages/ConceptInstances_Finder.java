@@ -6,8 +6,9 @@ import jetbrains.mps.ide.findusages.findalgorithm.finders.GeneratedFinder;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.Language;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -16,7 +17,6 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.Language;
 import org.apache.log4j.Level;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -44,6 +44,10 @@ public class ConceptInstances_Finder extends GeneratedFinder {
   @Override
   public SAbstractConcept getSConcept() {
     return CONCEPTS.AbstractConceptDeclaration$UN;
+  }
+  @Override
+  public boolean isApplicable(SNode node) {
+    return check_mbibnv_a0a0a(check_mbibnv_a0a0a0(node)) instanceof Language;
   }
 
   @Override
@@ -87,6 +91,18 @@ public class ConceptInstances_Finder extends GeneratedFinder {
   @Override
   public SNodeReference getDeclarationNode() {
     return buildNodePointer(FindUsagesDescriptor.DECLARING_MODEL, "1197632773078");
+  }
+  private static SModule check_mbibnv_a0a0a(SModel checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getModule();
+    }
+    return null;
+  }
+  private static SModel check_mbibnv_a0a0a0(SNode checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getModel();
+    }
+    return null;
   }
   private static SModule check_mbibnv_a0g0b0a(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
