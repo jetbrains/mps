@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import static org.junit.Assert.fail;
+
 /**
  * @author Artem Tikhomirov
  */
@@ -48,20 +50,21 @@ public class YouTrackStatsTest {
 
   @Test
   public void countUnresolvedIssues() throws IOException {
-    Command c = new Command();
-    Response result = c.login(Query.getAnonymousQuery());
-    if (!result.isSuccess()) {
-      return;
+    String token = System.getProperty("mps.youtrack.token");
+    if (token == null) {
+      fail("No YouTrack credentials were given for the test");
     }
+
+    Command c = new Command(token);
     HashMap<String, Integer> map = new HashMap<>();
     HashMap<String, Integer> outcome = new HashMap<>();
     Arrays.stream(users).forEach(s -> map.put(s, null));
     // expect few attempts to get complete outcome,
     // see youtrack documentation (link at #countUnresolvedIssues)
     for (int i = 0; i < 3 && !map.isEmpty(); i++) {
-      result = c.countUnresolvedIssues(map);
+      Response result = c.countUnresolvedIssues(map);
       if (!result.isSuccess()) {
-        Assert.fail(result.getResponseString());
+        fail(result.getResponseString());
       }
       for (Iterator<Entry<String, Integer>> it = map.entrySet().iterator(); it.hasNext(); ) {
         Entry<String, Integer> next = it.next();
