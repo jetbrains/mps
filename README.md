@@ -26,7 +26,7 @@ Building MPS from sources
     2. *Main menu -> File -> Project Structure* opens the Project Structure dialog
     3. Under *Platform Settings -> SDK*, add a new JDK named "JB JDK 11"
 4. Rebuild the project from the _Build_ menu (it will take quite a while the first time)
-5. Run the _MPSLauncher_ run configuration in the _Run_ menu
+5. Run the _MPS -> Run_ run configuration in the _Run_ menu
 6. Once MPS starts, open the _MPS_ project (point MPS to the root folder of what you've cloned)
 
 Download
