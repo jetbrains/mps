@@ -19,34 +19,32 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspectRegistry;
 import jetbrains.mps.core.aspects.feedback.messages.RefOutOfScopeContext;
 import jetbrains.mps.core.aspects.feedback.messages.RefOutOfScopeProblem;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.errors.item.NodeReportItem;
-import jetbrains.mps.errors.item.IssueKindReportItem;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.resolve.ReferenceResolverUtils;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.constraints.ReferenceDescriptor;
-import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.scope.Scope;
-import jetbrains.mps.scope.ErrorScope;
-import jetbrains.mps.errors.item.LanguageErrorItem;
-import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.errors.item.OutOfScopeReferenceReportItem;
 import jetbrains.mps.errors.item.EditorQuickFix;
+import jetbrains.mps.errors.item.FlavouredItem;
+import jetbrains.mps.errors.item.IssueKindReportItem;
+import jetbrains.mps.errors.item.LanguageErrorItem;
 import jetbrains.mps.errors.item.NodeFeatureFlavouredItem;
+import jetbrains.mps.errors.item.NodeReportItem;
+import jetbrains.mps.errors.item.OutOfScopeReferenceReportItem;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.resolve.ReferenceResolverUtils;
 import jetbrains.mps.resolve.ResolverComponent;
+import jetbrains.mps.scope.ErrorScope;
+import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.constraints.ModelConstraints;
+import jetbrains.mps.smodel.constraints.ReferenceDescriptor;
+import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SReference;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jetbrains.mps.errors.item.FlavouredItem;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
-import org.jetbrains.mps.openapi.language.SConceptFeature;
 
 public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
   private final ComponentHost myHost;
@@ -71,26 +69,23 @@ public class RefScopeChecker extends AbstractNodeCheckerInEditor implements IChe
 
   @Override
   public void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
-    if (node == null || SNodeOperations.getModel(node) == null) {
+    if (node == null || node.getModel() == null) {
       return;
     }
-    SModule module = SNodeOperations.getModel(node).getModule();
+    SModule module = node.getModel().getModule();
     if (module == null) {
       return;
     }
-    boolean executeImmediately = ReferenceResolverUtils.canExecuteImmediately(SNodeOperations.getModel(node), repository);
-    for (SReference ref : SNodeOperations.getReferences(node)) {
-      SNode target = SLinkOperations.getTargetNode(ref);
+    boolean executeImmediately = ReferenceResolverUtils.canExecuteImmediately(node.getModel(), repository);
+    for (SReference ref : node.getReferences()) {
+      SNode target = ref.getTargetNode();
       if (target == null) {
         continue;
       }
       // don't check unresolved and broken references, they should already have an error message 
-      // do we need all these additional dependencies? mb. it's better to use .runcheckingAction() instead? 
+      // do we need all these additional dependencies? mb. it's better to use .runcheckingAction() instead?
+      // The reason not to use runCheckingAction is memory consumption, see https://youtrack.jetbrains.com/issue/MPS-19776, commit 88c5a52d
       errorsCollector.addDependency(target);
-      errorsCollector.addDependency(SNodeOperations.getParent(node));
-      for (SNode child : SNodeOperations.getChildren(node)) {
-        errorsCollector.addDependency(child);
-      }
       ReferenceDescriptor refDescriptor = ModelConstraints.getReferenceDescriptor(ref);
       Scope refScope = refDescriptor.getScope();
       if (refScope instanceof ErrorScope) {
