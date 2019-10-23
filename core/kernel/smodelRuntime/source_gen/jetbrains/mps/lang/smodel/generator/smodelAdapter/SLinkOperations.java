@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.util.SNodeOperations;
+import java.util.Iterator;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -20,18 +20,15 @@ import java.util.List;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 /**
- * 
- * @deprecated 
+ * Runtime for various operations generally from smodel language
  */
-@Deprecated
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527286349", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
-public class SLinkOperations {
-  @Deprecated
-  public SLinkOperations() {
+public final class SLinkOperations {
+  private SLinkOperations() {
   }
   public static SNode findLinkDeclaration(SReferenceLink link) {
     if (link == null) {
@@ -49,7 +46,11 @@ public class SLinkOperations {
     if (node == null) {
       return null;
     }
-    return SNodeOperations.getChild(node, role);
+    Iterator<? extends SNode> children = node.getChildren(role).iterator();
+    if (children.hasNext()) {
+      return children.next();
+    }
+    return null;
   }
   public static SNode getTarget(SNode node, SReferenceLink role) {
     if (node == null) {
@@ -126,7 +127,7 @@ public class SLinkOperations {
     if (node != null && role != null) {
       return new MutableChildrenList(node, role);
     }
-    return jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.EMPTY_LIST;
+    return SNodeOperations.EMPTY_LIST;
   }
 
   public static SNode addNewChild(SNode node, SContainmentLink role, @Nullable SAbstractConcept childConcept) {
@@ -171,7 +172,7 @@ public class SLinkOperations {
   }
   public static List<SNode> removeAllChildren(SNode parent, SContainmentLink role) {
     if (parent == null) {
-      return jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.EMPTY_LIST;
+      return SNodeOperations.EMPTY_LIST;
     }
     Iterable<? extends SNode> children = parent.getChildren(role);
     for (SNode child : children) {
@@ -183,7 +184,7 @@ public class SLinkOperations {
     if (reference == null) {
       return null;
     }
-    return reference.getLink().getDeclarationNode();
+    return findLinkDeclaration(reference.getLink());
   }
   public static SNode getTargetNode(org.jetbrains.mps.openapi.model.SReference reference) {
     if (reference == null) {
@@ -195,7 +196,7 @@ public class SLinkOperations {
     if (reference == null) {
       return null;
     }
-    return reference.getRole();
+    return reference.getLink().getName();
   }
   public static SReferenceLink getRefLink(org.jetbrains.mps.openapi.model.SReference reference) {
     if (reference == null) {
@@ -219,11 +220,7 @@ public class SLinkOperations {
       public SNode select(SNode it) {
         return getTarget(it, l);
       }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != null;
-      }
-    });
+    }).where(new NotNullWhereFilter<SNode>());
   }
 
   /**
@@ -236,11 +233,7 @@ public class SLinkOperations {
       public SNode select(SNode it) {
         return getTarget(it, l);
       }
-    }).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return it != null;
-      }
-    });
+    }).where(new NotNullWhereFilter<SNode>());
   }
 
   /**
