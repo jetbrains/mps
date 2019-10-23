@@ -31,6 +31,7 @@ import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.util.PathUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -124,7 +125,7 @@ class MPSModuleCollector {
           de.addSourcePath(generatorSrcPath);
           // FIXME need a proper mechanism to discover classesGen folder of a module.
           // Next code comes from JavaModuleFacetImpl.getClassesGen(), would be great to reuse one rather than copy
-          de.addClassGenPath(myFileSystem.getFile(generatorSrcPath).getParent().findChild(AbstractModule.CLASSES_GEN));
+          de.addClassGenPath(myFileSystem.getFile(PathUtil.toSystemIndependent(generatorSrcPath)).getParent().findChild(AbstractModule.CLASSES_GEN));
         }
       }
     }
