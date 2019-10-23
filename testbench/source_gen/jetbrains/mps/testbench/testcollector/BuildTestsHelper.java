@@ -20,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.smodel.SModelStereotype;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,8 +30,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @GeneratedClass(node = "r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)/7763823021516159816", model = "r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)")
 public class BuildTestsHelper {
   public static List<SNode> findIncludedInBuildTests(SearchScope testsScope, SearchScope buildScope) {
-    final Wrappers._T<List<SModuleReference>> buildTestModules = new Wrappers._T<List<SModuleReference>>();
-    final Wrappers._T<List<SModuleReference>> buildTestModulesOnlySources = new Wrappers._T<List<SModuleReference>>();
+    final Wrappers._T<List<SModuleReference>> buildTestModulesWithTests = new Wrappers._T<List<SModuleReference>>();
+    final Wrappers._T<List<SModuleReference>> buildTestModulesWithSources = new Wrappers._T<List<SModuleReference>>();
     Iterable<SNode> buildSolutions = SNodeOperations.ofConcept(Sequence.fromIterable(((Iterable<SModel>) buildScope.getModels())).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
         return SModelOperations.nodes(((SModel) it), CONCEPTS.BuildMpsLayout_TestModules$Rz);
@@ -44,7 +45,7 @@ public class BuildTestsHelper {
         return ((Iterable<SNode>) (Iterable<SNode>) BHReflection.invoke0(it, CONCEPTS.BuildMpsLayout_TestModules_Content$3E, SMethodTrimmedId.create("getModules", null, "3X9rC2XzJij")));
       }
     }), CONCEPTS.BuildMps_Solution$qJ);
-    buildTestModules.value = Sequence.fromIterable(buildSolutions).where(new IWhereFilter<SNode>() {
+    buildTestModulesWithTests.value = Sequence.fromIterable(buildSolutions).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BuildMps_Solution$qJ, SMethodTrimmedId.create("hasTestsSources", CONCEPTS.BuildMps_Solution$qJ, "6ogfLD6evrW")));
       }
@@ -53,9 +54,9 @@ public class BuildTestsHelper {
         return ModuleReference.parseReference(((String) BHReflection.invoke0(it, CONCEPTS.BuildMps_AbstractModule$fB, SMethodTrimmedId.create("getModuleReference", CONCEPTS.BuildMps_AbstractModule$fB, "41K1b4v5ZCB"))));
       }
     }).toListSequence();
-    buildTestModulesOnlySources.value = Sequence.fromIterable(buildSolutions).where(new IWhereFilter<SNode>() {
+    buildTestModulesWithSources.value = Sequence.fromIterable(buildSolutions).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BuildMps_Solution$qJ, SMethodTrimmedId.create("hasTestsSources", CONCEPTS.BuildMps_Solution$qJ, "6ogfLD6evrW"))));
+        return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BuildMps_Solution$qJ, SMethodTrimmedId.create("hasSources", CONCEPTS.BuildMps_Solution$qJ, "6ogfLD6hwDf")));
       }
     }).select(new ISelector<SNode, SModuleReference>() {
       public SModuleReference select(SNode it) {
@@ -64,7 +65,7 @@ public class BuildTestsHelper {
     }).toListSequence();
     return ListSequence.fromList(collectTests(testsScope)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode testRef) {
-        return ListSequence.fromList(buildTestModules.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$Qb, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")))).getModule().getModuleReference()) || !(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$Qb, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")))).getName().hasStereotype()) && ListSequence.fromList(buildTestModulesOnlySources.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$Qb, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")))).getModule().getModuleReference());
+        return (SModelStereotype.isTestModel(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$Qb, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR"))))) ? ListSequence.fromList(buildTestModulesWithTests.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$Qb, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")))).getModule().getModuleReference()) : ListSequence.fromList(buildTestModulesWithSources.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$Qb, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")))).getModule().getModuleReference()));
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
