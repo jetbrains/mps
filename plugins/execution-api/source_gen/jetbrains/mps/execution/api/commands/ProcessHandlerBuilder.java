@@ -13,6 +13,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
+import java.util.Collection;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
@@ -44,12 +46,14 @@ public class ProcessHandlerBuilder {
     }
     return this;
   }
+
   public ProcessHandlerBuilder append(@Nullable File file) {
     if (file != null) {
       ListSequence.fromList(myCommandLine).addElement(file.getAbsolutePath());
     }
     return this;
   }
+
   public ProcessHandlerBuilder append(String... command) {
     for (String commandPart : Sequence.fromArray(command)) {
       if (!((commandPart == null || commandPart.length() == 0))) {
@@ -59,21 +63,53 @@ public class ProcessHandlerBuilder {
     }
     return this;
   }
+
   public ProcessHandlerBuilder append(@NotNull List<String> command) {
     for (String commandPart : command) {
       append(commandPart);
     }
     return this;
   }
+
   public ProcessHandlerBuilder append(@Nullable CommandPart commandPart) {
     if (commandPart != null) {
       ListSequence.fromList(myCommandLine).addSequence(ListSequence.fromList(commandPart.getCommandList()));
     }
     return this;
   }
+
+  public ProcessHandlerBuilder cmdline(@NotNull Object... cmdlineElements) {
+    for (Object c : cmdlineElements) {
+      if (c instanceof CommandPart) {
+        append((CommandPart) c);
+        continue;
+      }
+      if (c instanceof String) {
+        append((String) c);
+        continue;
+      }
+      if (c instanceof File) {
+        append((File) c);
+        continue;
+      }
+      if (c instanceof Collection) {
+        // if anyone passes collection of whatever else but string, has to bear with consequences  
+        append(CollectionSequence.fromCollection(((Collection<String>) c)).toListSequence());
+        continue;
+      }
+      // tolerate null, what would be the benefit of failing with exception in that case? 
+      if (c == null) {
+        continue;
+      }
+      throw new IllegalArgumentException(String.format("Unsupported command-line element %s:%s", c.getClass(), c.toString()));
+    }
+    return this;
+  }
+
   public ProcessHandler build() throws ExecutionException {
     return build(new File(System.getProperty("user.dir")));
   }
+
   public ProcessHandler build(@NotNull File workingDirectory) throws ExecutionException {
     if (!(workingDirectory.exists())) {
       throw new ExecutionException("Working directory " + workingDirectory + " does not exist.");
