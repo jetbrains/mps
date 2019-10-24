@@ -80,7 +80,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild.Template_weave_InputNode_A">
@@ -105,7 +104,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
 </dependenciesRoot>

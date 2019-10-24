@@ -4,7 +4,6 @@ package jetbrains.mps.lang.descriptor.generator.template.main;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
-import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -36,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @Generated
-public class Template_Language extends TemplateDeclarationBase implements TemplateDeclaration {
+public class Template_Language extends TemplateDeclarationBase {
 
   public Template_Language() {
   }

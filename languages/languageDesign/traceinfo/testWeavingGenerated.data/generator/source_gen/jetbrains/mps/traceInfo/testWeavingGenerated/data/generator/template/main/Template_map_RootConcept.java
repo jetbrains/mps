@@ -4,7 +4,6 @@ package jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.mai
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
-import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -22,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.SNodePointer;
 
 @Generated
-public class Template_map_RootConcept extends TemplateDeclarationBase implements TemplateDeclaration {
+public class Template_map_RootConcept extends TemplateDeclarationBase {
 
   public Template_map_RootConcept() {
   }

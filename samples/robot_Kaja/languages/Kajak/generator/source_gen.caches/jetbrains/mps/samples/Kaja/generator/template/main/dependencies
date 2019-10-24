@@ -212,7 +212,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_CommandList">
@@ -234,7 +233,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_CommentLine">
@@ -256,7 +254,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_Drop">
@@ -281,7 +278,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_East">
@@ -304,7 +300,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_Heading">
@@ -328,7 +323,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_IfStatement">
@@ -351,7 +345,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_IsFull">
@@ -374,7 +367,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_IsMark">
@@ -397,7 +389,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_IsWall">
@@ -420,7 +411,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_LeftTurn">
@@ -443,7 +433,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_Looking">
@@ -468,7 +457,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_North">
@@ -491,7 +479,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_Not">
@@ -514,7 +501,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_Pick">
@@ -539,7 +525,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_Repeat">
@@ -566,7 +551,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_RoutineCall">
@@ -590,7 +574,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_RoutineDefinition">
@@ -616,7 +599,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_South">
@@ -639,7 +621,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_Step">
@@ -664,7 +645,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_TraceMessage">
@@ -692,7 +672,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_West">
@@ -715,7 +694,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.samples.Kaja.generator.template.main.Template_reduce_While">
@@ -738,7 +716,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
 </dependenciesRoot>

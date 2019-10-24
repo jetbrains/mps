@@ -206,7 +206,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_aaaaa">
@@ -227,7 +226,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_convertMult">
@@ -251,7 +249,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_gen_static_method">
@@ -277,7 +274,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_process42">
@@ -306,7 +302,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_processStatement">
@@ -335,7 +330,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_weave_Statement">
@@ -360,7 +354,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
   <dependency className="jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main.Template_weave_StmtToCons">
@@ -382,7 +375,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeAccessUtil" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
-    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclaration2" />
     <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateDeclarationBase" />
   </dependency>
 </dependenciesRoot>

@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.generator.baseLanguage.template.main;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
-import jetbrains.mps.generator.runtime.TemplateDeclaration2;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.FragmentResult;
@@ -28,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @Generated
-public class Template_reduce_ModuleReferenceFromString extends TemplateDeclarationBase implements TemplateDeclaration2 {
+public class Template_reduce_ModuleReferenceFromString extends TemplateDeclarationBase {
 
   public Template_reduce_ModuleReferenceFromString() {
   }

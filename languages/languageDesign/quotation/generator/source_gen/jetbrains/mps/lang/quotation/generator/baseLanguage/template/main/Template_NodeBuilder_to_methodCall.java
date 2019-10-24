@@ -4,7 +4,6 @@ package jetbrains.mps.lang.quotation.generator.baseLanguage.template.main;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
-import jetbrains.mps.generator.runtime.TemplateDeclaration2;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.FragmentResult;
@@ -38,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @Generated
-public class Template_NodeBuilder_to_methodCall extends TemplateDeclarationBase implements TemplateDeclaration2 {
+public class Template_NodeBuilder_to_methodCall extends TemplateDeclarationBase {
 
   public Template_NodeBuilder_to_methodCall() {
   }

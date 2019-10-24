@@ -4,7 +4,6 @@ package jetbrains.mps.samples.Kaja.generator.template.main;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
-import jetbrains.mps.generator.runtime.TemplateDeclaration2;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.FragmentResult;
@@ -21,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @Generated
-public class Template_reduce_CommandList extends TemplateDeclarationBase implements TemplateDeclaration2 {
+public class Template_reduce_CommandList extends TemplateDeclarationBase {
 
   public Template_reduce_CommandList() {
   }

@@ -4,7 +4,6 @@ package jetbrains.mps.transformation.test.inputLang.generator.outputLang.templat
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
-import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -23,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.SNodePointer;
 
 @Generated
-public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase implements TemplateDeclaration {
+public class Template_OutputRoot_by_MappingRule extends TemplateDeclarationBase {
 
   public Template_OutputRoot_by_MappingRule() {
   }

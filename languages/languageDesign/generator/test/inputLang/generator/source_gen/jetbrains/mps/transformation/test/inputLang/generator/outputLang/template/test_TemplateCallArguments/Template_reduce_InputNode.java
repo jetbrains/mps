@@ -4,7 +4,6 @@ package jetbrains.mps.transformation.test.inputLang.generator.outputLang.templat
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.runtime.TemplateDeclarationBase;
-import jetbrains.mps.generator.runtime.TemplateDeclaration2;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.FragmentResult;
@@ -25,7 +24,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @Generated
-public class Template_reduce_InputNode extends TemplateDeclarationBase implements TemplateDeclaration2 {
+public class Template_reduce_InputNode extends TemplateDeclarationBase {
 
   public Template_reduce_InputNode() {
   }
