@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,10 @@
  */
 package jetbrains.mps.generator.runtime;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
@@ -31,4 +32,9 @@ public interface TemplateDeclaration extends TemplateDeclarationWeavingAware2 {
   // XXX seems to be non-null return value, need to double-check
   Collection<SNode> apply(@NotNull TemplateExecutionEnvironment environment,
                           @NotNull TemplateContext context) throws GenerationException;
+
+  @Nullable
+  default String[] getParameterNames() {
+    return null;
+  }
 }

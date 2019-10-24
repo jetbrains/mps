@@ -17,12 +17,10 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.impl.RoleValidation.RoleValidator;
 import jetbrains.mps.generator.impl.RoleValidation.Status;
-import jetbrains.mps.generator.impl.interpreted.TemplateCall;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateDeclaration;
-import jetbrains.mps.generator.runtime.TemplateDeclaration2;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -91,24 +89,6 @@ public final class NodeWeaveSupport implements NodeWeaveFacility {
       }
     }
     contextParentNode.insertChildBefore(childRole, outputNodeToWeave, anchor);
-  }
-
-  @Override
-  public Collection<SNode> weaveTemplate(@NotNull SNodeReference templateDeclaration, Object... args) throws GenerationException {
-    // XXX we get here only when a pre-2018.3 generated template invokes a cross-generator template (which I doubt ever was a case)
-    //     here, it can face new TD (expects args in TC) and legacy TD that does not (arguments are injected as cons args)
-    TemplateDeclaration templateDeclarationInstance = myEnv.findTemplate(TemplateIdentity.fromPointer(templateDeclaration, null), myTemplateNode);
-    // templateDeclarationInstance either comes from TemplateModel2 and expects arguments in TC, or from an old generated TM.loadTemplate()
-    // that populates arguments through TD cons. If it's a former, get TC ready.
-    if (templateDeclarationInstance instanceof TemplateDeclaration2) {
-      TemplateCall callSite = new TemplateCall(((TemplateDeclaration2) templateDeclarationInstance).getParameterNames(), args);
-      if (callSite.argumentsMismatch()) {
-        myGenerator.getLogger().error(templateDeclaration, "number of arguments doesn't match template", GeneratorUtil.describeInput(myTemplateContext));
-        // fall-though
-      }
-      myTemplateContext = callSite.prepareCallContext(myTemplateContext);
-    }
-    return templateDeclarationInstance.weave(myWeaveContext, this);
   }
 
   @Override

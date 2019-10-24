@@ -57,6 +57,8 @@ public class TemplateCall {
   public TemplateCall(@NotNull SNode templateCall) {
     final List<SNode> args = RuleUtil.getTemplateCall_Arguments(templateCall);
     myArguments = toExpressionRuntime(args);
+    // XXX seems reasonable to pass TemplateDeclaration here and ask it for getParameterNames, rather than follow reference to a target template node
+    //     technically, the reference could point to a changed model of otherwise compiled generator.
     final SNode template = RuleUtil.getTemplateCall_Template(templateCall);
     String[] paramNames = RuleUtil.getTemplateDeclarationParameterNames(template);
     myParameters = paramNames == null ? new String[0] : paramNames;

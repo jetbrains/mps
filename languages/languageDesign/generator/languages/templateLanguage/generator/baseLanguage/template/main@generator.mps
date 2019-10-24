@@ -8857,9 +8857,6 @@
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="4gyOCG_K8$l" role="EKbjA">
-        <ref role="3uigEE" to="r99j:~TemplateDeclaration2" resolve="TemplateDeclaration2" />
-      </node>
     </node>
   </node>
   <node concept="13MO4I" id="4AiZljCBpIq">
@@ -13124,9 +13121,6 @@
     <node concept="3Tm1VV" id="DuCPMUlIjS" role="1B3o_S" />
     <node concept="n94m4" id="DuCPMUlIjX" role="lGtFl">
       <ref role="n9lRv" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    </node>
-    <node concept="3uibUv" id="DuCPMUlIjY" role="EKbjA">
-      <ref role="3uigEE" to="r99j:~TemplateDeclaration" resolve="TemplateDeclaration" />
     </node>
     <node concept="17Uvod" id="DuCPMUlNK_" role="lGtFl">
       <property role="2qtEX9" value="name" />

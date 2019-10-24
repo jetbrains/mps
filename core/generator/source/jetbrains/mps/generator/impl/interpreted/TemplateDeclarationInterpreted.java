@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ import java.util.Collections;
 /**
  * Evgeny Gryaznov, 12/13/10
  */
-public final class TemplateDeclarationInterpreted extends TemplateDeclarationBase implements TemplateDeclaration2 {
+public final class TemplateDeclarationInterpreted extends TemplateDeclarationBase {
   private final SNode myTemplateNode;
   private final SNodePointer myNodeRef;
   private final String[] myParameterNames;

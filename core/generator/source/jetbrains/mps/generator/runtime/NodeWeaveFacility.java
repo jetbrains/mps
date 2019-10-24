@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -60,17 +59,6 @@ public interface NodeWeaveFacility {
    * @throws GenerationFailureException
    */
   void weaveNode(@NotNull SContainmentLink childRole, @NotNull SNode outputNodeToWeave) throws GenerationFailureException;
-
-  /**
-   * weave template from another generator
-   * Method intended for use from generated generators
-   * @return FIXME contract shall be identical to {@link TemplateDeclarationWeavingAware2#weave(WeaveContext, NodeWeaveFacility)}
-   * @deprecated use {@link TemplateExecutionEnvironment#findTemplate(TemplateDeclarationKey, SNodeReference)} and subsequent
-   * {@link TemplateDeclarationWeavingAware2#weave(WeaveContext, NodeWeaveFacility)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  Collection<SNode> weaveTemplate(@NotNull SNodeReference templateDeclaration, Object... args) throws GenerationException;
 
   /**
    * weave template from the same generated generator

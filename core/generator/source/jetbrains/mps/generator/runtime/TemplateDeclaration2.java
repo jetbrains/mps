@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,14 +21,11 @@ import org.jetbrains.annotations.Nullable;
 /**
  * MIGRATION INTERFACE
  * To cease existence once 2018.3 is out and all generated templates don't need arguments at construction time but expect them through TC in apply()
+ * FIXME drop once 2019.3 is out, there's code generated with MPS 2019.2 that explicitly implements this interface
  *
  * @author Artem Tikhomirov
  * @since 2018.3
  */
 @ToRemove(version = 2018.3)
 public interface TemplateDeclaration2 extends TemplateDeclaration {
-  @Nullable
-  default String[] getParameterNames() {
-    return null;
-  }
 }

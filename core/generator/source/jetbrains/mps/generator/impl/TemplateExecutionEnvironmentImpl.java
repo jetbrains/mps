@@ -31,7 +31,6 @@ import jetbrains.mps.generator.runtime.NodeWeaveFacility.WeaveContext;
 import jetbrains.mps.generator.runtime.ReferenceResolver;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.TemplateDeclaration;
-import jetbrains.mps.generator.runtime.TemplateDeclaration2;
 import jetbrains.mps.generator.runtime.TemplateDeclarationKey;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.TemplateModel;
@@ -242,15 +241,13 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     //           mangle TC with names and values
     //     (b) invoked template declaration is old (means cross-compiled-generator template call) and expects args at construction time, changes TC itself
     TemplateDeclaration templateDeclarationInstance = findTemplate(TemplateIdentity.fromPointer(templateDeclaration, null), templateNode);
-    if (templateDeclarationInstance instanceof TemplateDeclaration2) {
-      TemplateCall callSite = new TemplateCall(((TemplateDeclaration2) templateDeclarationInstance).getParameterNames(), arguments);
-      if (callSite.argumentsMismatch()) {
-        getLogger().error(templateDeclaration, "number of arguments doesn't match template", GeneratorUtil.describeInput(context));
-        // fall-though, as it's the way it was in TemplateDeclarationInterpreted
-      }
-      // context may keep a mapping label (e.g. from outer $INCLUDE$ label template)
-      context = callSite.prepareCallContext(context);
+    TemplateCall callSite = new TemplateCall(templateDeclarationInstance.getParameterNames(), arguments);
+    if (callSite.argumentsMismatch()) {
+      getLogger().error(templateDeclaration, "number of arguments doesn't match template", GeneratorUtil.describeInput(context));
+      // fall-though, as it's the way it was in TemplateDeclarationInterpreted
     }
+    // context may keep a mapping label (e.g. from outer $INCLUDE$ label template)
+    context = callSite.prepareCallContext(context);
     return templateDeclarationInstance.apply(this, context);
   }
 
