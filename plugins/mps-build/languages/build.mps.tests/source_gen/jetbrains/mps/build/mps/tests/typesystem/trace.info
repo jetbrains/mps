@@ -27,11 +27,11 @@
     </file>
     <file name="check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule.java">
       <node id="2834134232276429423" at="24,123,25,78" concept="6" />
-      <node id="2834134232276236148" at="27,7,28,66" concept="6" />
-      <node id="2834134232276236148" at="28,66,29,265" concept="6" />
-      <node id="2834134232276430966" at="30,9,31,151" concept="6" />
-      <node id="2834134232276432040" at="31,151,32,62" concept="2" />
-      <node id="2834134232276430966" at="32,62,33,71" concept="2" />
+      <node id="6848995665557112570" at="27,7,28,66" concept="6" />
+      <node id="6848995665557112570" at="28,66,29,263" concept="6" />
+      <node id="6848995665557112574" at="30,9,31,151" concept="6" />
+      <node id="6848995665557112575" at="31,151,32,62" concept="2" />
+      <node id="6848995665557112574" at="32,62,33,71" concept="2" />
       <node id="2834134232274843385" at="38,50,39,49" concept="7" />
       <node id="2834134232274843385" at="41,68,42,102" concept="7" />
       <node id="2834134232274843385" at="44,30,45,17" concept="7" />
@@ -41,8 +41,8 @@
       <node id="2834134232274843385" at="38,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2834134232274843385" at="41,0,44,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="2834134232274843385" at="44,0,47,0" concept="5" trace="overrides#()Z" />
-      <node id="2834134232276430966" at="29,265,34,9" concept="0" />
-      <node id="2834134232276236148" at="26,108,35,7" concept="0" />
+      <node id="6848995665557112574" at="29,263,34,9" concept="0" />
+      <node id="6848995665557112570" at="26,108,35,7" concept="0" />
       <node id="2834134232276231913" at="25,78,36,5" concept="4" />
       <node id="2834134232274843385" at="24,0,38,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="2834134232274843385" at="22,76,22,76" />
@@ -50,17 +50,17 @@
       <scope id="2834134232274843385" at="41,68,42,102" />
       <scope id="2834134232274843385" at="44,30,45,17" />
       <scope id="2834134232274843385" at="22,0,24,0" />
-      <scope id="2834134232276430966" at="30,9,33,71">
-        <var name="intentionProvider" id="2834134232276430966" />
+      <scope id="6848995665557112574" at="30,9,33,71">
+        <var name="intentionProvider" id="6848995665557112574" />
       </scope>
       <scope id="2834134232274843385" at="38,0,41,0" />
       <scope id="2834134232274843385" at="41,0,44,0">
         <var name="argument" id="2834134232274843385" />
       </scope>
       <scope id="2834134232274843385" at="44,0,47,0" />
-      <scope id="2834134232276236148" at="27,7,34,9">
-        <var name="_reporter_2309309498" id="2834134232276236148" />
-        <var name="errorTarget" id="2834134232276236148" />
+      <scope id="6848995665557112570" at="27,7,34,9">
+        <var name="_reporter_2309309498" id="6848995665557112570" />
+        <var name="errorTarget" id="6848995665557112570" />
       </scope>
       <scope id="2834134232276231915" at="26,108,35,7" />
       <scope id="2834134232274843386" at="24,123,36,5">

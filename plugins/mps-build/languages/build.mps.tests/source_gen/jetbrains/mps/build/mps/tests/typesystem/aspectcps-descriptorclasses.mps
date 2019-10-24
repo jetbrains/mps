@@ -1955,12 +1955,12 @@
                         </node>
                       </node>
                       <node concept="liA8E" id="ac" role="2OqNvi">
-                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.reportTypeError(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget)" resolve="reportTypeError" />
+                        <ref role="37wK5l" to="u78q:~TypeCheckingContext.reportWarning(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.lang.String,jetbrains.mps.errors.QuickFixProvider,jetbrains.mps.errors.messageTargets.MessageTarget)" resolve="reportWarning" />
                         <node concept="37vLTw" id="ae" role="37wK5m">
                           <ref role="3cqZAo" node="9e" resolve="testmodule" />
                           <node concept="cd27G" id="ak" role="lGtFl">
                             <node concept="3u3nmq" id="al" role="cd27D">
-                              <property role="3u3nmv" value="2834134232276237161" />
+                              <property role="3u3nmv" value="6848995665557112573" />
                             </node>
                           </node>
                         </node>
@@ -1968,7 +1968,7 @@
                           <property role="Xl_RC" value="The solution sources do not include tests" />
                           <node concept="cd27G" id="am" role="lGtFl">
                             <node concept="3u3nmq" id="an" role="cd27D">
-                              <property role="3u3nmv" value="2834134232276236160" />
+                              <property role="3u3nmv" value="6848995665557112572" />
                             </node>
                           </node>
                         </node>
@@ -1976,7 +1976,7 @@
                           <property role="Xl_RC" value="r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)" />
                         </node>
                         <node concept="Xl_RD" id="ah" role="37wK5m">
-                          <property role="Xl_RC" value="2834134232276236148" />
+                          <property role="Xl_RC" value="6848995665557112570" />
                         </node>
                         <node concept="10Nm6u" id="ai" role="37wK5m" />
                         <node concept="37vLTw" id="aj" role="37wK5m">
@@ -2019,7 +2019,7 @@
                             <ref role="3cqZAo" node="9C" resolve="solution" />
                             <node concept="cd27G" id="aB" role="lGtFl">
                               <node concept="3u3nmq" id="aC" role="cd27D">
-                                <property role="3u3nmv" value="2834134232276432053" />
+                                <property role="3u3nmv" value="6848995665557112576" />
                               </node>
                             </node>
                           </node>
@@ -2043,12 +2043,12 @@
                 </node>
               </node>
               <node concept="6wLe0" id="9Z" role="lGtFl">
-                <property role="6wLej" value="2834134232276236148" />
+                <property role="6wLej" value="6848995665557112570" />
                 <property role="6wLeW" value="r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)" />
               </node>
               <node concept="cd27G" id="a0" role="lGtFl">
                 <node concept="3u3nmq" id="aH" role="cd27D">
-                  <property role="3u3nmv" value="2834134232276236148" />
+                  <property role="3u3nmv" value="6848995665557112570" />
                 </node>
               </node>
             </node>
