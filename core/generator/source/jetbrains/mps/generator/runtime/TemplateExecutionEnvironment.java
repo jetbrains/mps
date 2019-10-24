@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,10 @@ import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.IGeneratorLogger;
 import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.TemplateGenerator;
-import jetbrains.mps.generator.impl.TemplateIdentity;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.runtime.NodeWeaveFacility.WeaveContext;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.QueryExecutionContext;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,7 +32,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.Collection;
 import java.util.List;
@@ -125,6 +121,8 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
   /**
    * Retrieve reusable runtime instance that represents TemplateDeclaration. Clients may keep an instance for subsequent reuse during the
    * same transformation session.
+   * This is low-level mechanism for sophisticated use, generated templates (unless they keep instances obtained this way) shall resort to other methods to
+   * invoke templates, namely {@link #callSite(TemplateDeclarationKey,SNodeReference)} or {@link #prepareWeave(WeaveContext, SNodeReference)}
    * @param templateDeclaration identifies template to load
    * @param callSite identifies location where invocation happens
    * @return never {@code null}, non necessarily exact generated class, might be a decorator that traces uses or reports errors.
@@ -132,6 +130,28 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    */
   @NotNull
   TemplateDeclaration findTemplate(@NotNull TemplateDeclarationKey templateDeclaration, @NotNull SNodeReference callSite);
+
+  /**
+   * Intended for use from generated code when invoking compiled templates from the same model/module (those we can instantiate directly)
+   * @param templateDeclaration instance of template to invoke, generally compiled as part of the same template model
+   * @param callSite identifies location where invocation happens
+   * @return an instance that identifies invocation of a given template at particular template location
+   * @since 2019.3
+   */
+  @NotNull
+  TemplateCallSite callSite(@NotNull TemplateDeclaration templateDeclaration, @NotNull SNodeReference callSite);
+
+  /**
+   * To invoke templates from another generator. Though given compile-time dependencies between modules, we can instantiate their classes,
+   * not all generators are 'compiled' as of this writing, and it's just not possible, let alone  it's safe to use an identity key to refer to them.
+   * Perhaps, one day, with GPs for template models in place and all template models generated/compiled, we can reference classes directly in all cases.
+   * @param templateIdentityKey identity of a template declaration
+   * @param callSite identifies location where invocation happens
+   * @return an instance that identifies invocation of a given template at particular template location
+   * @since 2019.3
+   */
+  @NotNull
+  TemplateCallSite callSite(@NotNull TemplateDeclarationKey templateIdentityKey, @NotNull SNodeReference callSite);
 
   /**
    * Intended for use from generated templates to obtain key for {@link #findTemplate(TemplateDeclarationKey, SNodeReference)}
@@ -166,8 +186,10 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
   void postProcess(@NotNull NodePostProcessor postProcessor);
 
   /**
+   * FIXME to get replaced with appropriate method in {@link TemplateCallSite}, whether it would be weave(contextNode, TC) or whatever else
+   *
    * @param context knows where to put weaved nodes (parent/context and anchor function)
-   * @param templateNode call site for the weave (for target template to apply, see {@link NodeWeaveFacility#weaveTemplate(SNodeReference, Object...)}
+   * @param templateNode call site for the weave (for target template to apply, see {@code NodeWeaveFacility#weaveTemplate(SNodeReference, Object...)}
    * @return utility capable of node weaving with respect to the given context
    * @since 3.3
    */
