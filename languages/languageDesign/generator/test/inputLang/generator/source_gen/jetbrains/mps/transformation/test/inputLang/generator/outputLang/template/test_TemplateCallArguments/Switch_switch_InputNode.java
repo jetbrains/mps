@@ -49,7 +49,7 @@ public class Switch_switch_InputNode extends TemplateSwitchBase implements Templ
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       TemplateContext context1 = context.withVariable("text", ((String) QueriesGenerated.templateArgumentQuery_3_1(new TemplateArgumentContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "207553032706677823")))));
-      Collection<SNode> tlist1 = new Template_produce_OutputNode().apply(environment, context1);
+      Collection<SNode> tlist1 = environment.callSite(new Template_produce_OutputNode(), new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948578756")).apply(context1);
       return tlist1;
     }
   }
@@ -66,7 +66,7 @@ public class Switch_switch_InputNode extends TemplateSwitchBase implements Templ
       Collection<SNode> tlist2 = null;
       TemplateContext context2;
       context2 = context1.withVariable("text", ((String) context1.getVariable("var:xxx")));
-      tlist2 = new Template_produce_OutputNode().apply(environment, context2);
+      tlist2 = environment.callSite(new Template_produce_OutputNode(), new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948583809")).apply(context2);
       tlist1 = tlist2;
       return tlist1;
     }
@@ -81,7 +81,7 @@ public class Switch_switch_InputNode extends TemplateSwitchBase implements Templ
       Collection<SNode> tlist1 = null;
       TemplateContext context1;
       context1 = context.withVariable("text", ((String) QueriesGenerated.templateArgumentQuery_3_0(new TemplateArgumentContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948608740")))));
-      tlist1 = new Template_produce_OutputNode().apply(environment, context1);
+      tlist1 = environment.callSite(new Template_produce_OutputNode(), new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948584788")).apply(context1);
       return tlist1;
     }
   }

@@ -29,7 +29,7 @@ public class Template_GDClass extends TemplateDeclarationBase {
     TemplateContext context1;
     context1 = context.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
-      tlist1 = new Template_GeneratorRuntime().apply(environment, context1);
+      tlist1 = environment.callSite(new Template_GeneratorRuntime(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639693915")).apply(context1);
     }
     return tlist1;
   }

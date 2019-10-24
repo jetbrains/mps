@@ -58,7 +58,7 @@ public class Switch_switch_ConceptIdentity_SConcept extends TemplateSwitchBase i
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ConceptId_SInterfaceConcept().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ConceptId_SInterfaceConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935072884")).apply(context);
       return tlist1;
     }
   }
@@ -69,7 +69,7 @@ public class Switch_switch_ConceptIdentity_SConcept extends TemplateSwitchBase i
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ConceptId_SConcept().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ConceptId_SConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349544065")).apply(context);
       return tlist1;
     }
   }

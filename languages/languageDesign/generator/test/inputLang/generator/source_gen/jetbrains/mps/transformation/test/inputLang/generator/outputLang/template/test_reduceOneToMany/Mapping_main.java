@@ -52,7 +52,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_InputNode_A().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_InputNode_A(), new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414100169")).apply(context);
       return tlist1;
     }
   }
@@ -67,7 +67,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_OutputRoot().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_OutputRoot(), new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414086885")).apply(context);
       return result;
     }
   }

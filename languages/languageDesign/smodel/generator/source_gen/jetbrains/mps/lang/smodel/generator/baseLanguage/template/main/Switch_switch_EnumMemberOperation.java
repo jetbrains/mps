@@ -265,7 +265,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
           TemplateContext context2;
           context2 = context1.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
-            tlist4 = new Template_reduce_EnumMember2Id().apply(environment, context2);
+            tlist4 = environment.callSite(new Template_reduce_EnumMember2Id(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144794804654544672")).apply(context2);
           }
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);

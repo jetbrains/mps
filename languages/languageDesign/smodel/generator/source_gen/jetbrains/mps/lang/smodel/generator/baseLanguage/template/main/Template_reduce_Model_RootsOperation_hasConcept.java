@@ -57,7 +57,7 @@ public class Template_reduce_Model_RootsOperation_hasConcept extends TemplateDec
         TemplateContext context2;
         context2 = context1.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
-          tlist4 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+          tlist4 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145295")).apply(context2);
         }
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);

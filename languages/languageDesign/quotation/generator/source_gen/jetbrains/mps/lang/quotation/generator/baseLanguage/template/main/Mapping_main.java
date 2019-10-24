@@ -37,7 +37,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_Quotation_to_staticMethodCall().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_Quotation_to_staticMethodCall(), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "6911370362348428578")).apply(context);
       return tlist1;
     }
   }
@@ -48,7 +48,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_NodeBuilder_to_methodCall().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_NodeBuilder_to_methodCall(), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1006429225401295799")).apply(context);
       return tlist1;
     }
   }

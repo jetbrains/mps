@@ -69,7 +69,7 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
   protected FragmentResult applyPart2(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    tlist1 = new Template_reduce_InputNode_A_included().apply(environment, context);
+    tlist1 = environment.callSite(new Template_reduce_InputNode_A_included(), new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "633481135935144635")).apply(context);
     FragmentResult rv = listFragment(0, tlist1);
     return rv;
   }

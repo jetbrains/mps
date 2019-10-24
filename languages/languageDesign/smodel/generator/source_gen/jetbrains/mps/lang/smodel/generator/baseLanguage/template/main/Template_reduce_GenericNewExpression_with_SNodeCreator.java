@@ -51,7 +51,7 @@ public class Template_reduce_GenericNewExpression_with_SNodeCreator extends Temp
         TemplateContext context2;
         context2 = context1.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
-          tlist2 = new Template_reduce_ConceptDeclaration2SConcept().apply(environment, context2);
+          tlist2 = environment.callSite(new Template_reduce_ConceptDeclaration2SConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145302")).apply(context2);
         }
         for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
           tnode1.addChild(myAggregationLinks[0], child3);

@@ -57,7 +57,7 @@ public class Template_reduce_IsRoleOperation extends TemplateDeclarationBase {
         TemplateContext context2;
         context2 = context1.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
-          tlist4 = new Template_reduce_LinkDeclaration_SLink().apply(environment, context2);
+          tlist4 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145286")).apply(context2);
         }
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);

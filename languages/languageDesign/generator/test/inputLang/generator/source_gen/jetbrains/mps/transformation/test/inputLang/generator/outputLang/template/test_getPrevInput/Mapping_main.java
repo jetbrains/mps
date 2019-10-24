@@ -42,7 +42,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_OutputRoot_1().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_OutputRoot_1(), new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202255161953")).apply(context);
       environment.registerLabel(context.getInput(), result, "ROOT INPUT");
       return result;
     }
@@ -58,7 +58,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_OutputRoot_2().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_OutputRoot_2(), new SNodePointer("r:00000000-0000-4000-0000-011c895905f7(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_getPrevInput@generator)", "1202338801828")).apply(context);
       environment.registerLabel(context.getInput(), result, "ROOT INPUT");
       return result;
     }

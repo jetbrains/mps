@@ -77,7 +77,7 @@ public class Template_reduce_Model_CreateNewNode extends TemplateDeclarationBase
         TemplateContext context2;
         context2 = context1.subContext(null, callInputNode8);
         if (callInputNode8 != null) {
-          tlist8 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+          tlist8 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145285")).apply(context2);
         }
         for (SNode child9 : TemplateUtil.asNotNull(tlist8)) {
           tnode1.addChild(myAggregationLinks[0], child9);

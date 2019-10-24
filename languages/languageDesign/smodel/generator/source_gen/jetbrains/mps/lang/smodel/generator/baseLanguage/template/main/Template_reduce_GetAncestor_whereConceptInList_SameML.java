@@ -86,7 +86,7 @@ public class Template_reduce_GetAncestor_whereConceptInList_SameML extends Templ
                   TemplateContext context5;
                   context5 = context4.subContext(null, callInputNode8);
                   if (callInputNode8 != null) {
-                    tlist8 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context5);
+                    tlist8 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145315")).apply(context5);
                   }
                   if (tlist8 != null) {
                     tlist7.addAll(tlist8);

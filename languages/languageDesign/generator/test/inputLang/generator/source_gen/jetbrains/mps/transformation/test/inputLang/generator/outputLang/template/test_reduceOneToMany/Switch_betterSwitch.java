@@ -55,7 +55,7 @@ public class Switch_betterSwitch extends TemplateSwitchBase implements TemplateS
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_InputNode_A().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_InputNode_A(), new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "8371596541809066883")).apply(context);
       return tlist1;
     }
   }

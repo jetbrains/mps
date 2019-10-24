@@ -346,7 +346,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                 TemplateContext context20;
                                 context20 = context19.subContext(null, callInputNode40);
                                 if (callInputNode40 != null) {
-                                  tlist40 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557186", "reduce_PropertyId_SProperty"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144937")).apply(environment, context20);
+                                  tlist40 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557186", "reduce_PropertyId_SProperty"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144937")).apply(context20);
                                 }
                                 for (SNode child41 : TemplateUtil.asNotNull(tlist40)) {
                                   tnode39.addChild(myAggregationLinks[5], child41);
@@ -431,7 +431,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                               TemplateContext context25;
                               context25 = context23.subContext(null, callInputNode50);
                               if (callInputNode50 != null) {
-                                tlist50 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557186", "reduce_PropertyId_SProperty"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1121515640445174687")).apply(environment, context25);
+                                tlist50 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557186", "reduce_PropertyId_SProperty"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1121515640445174687")).apply(context25);
                               }
                               for (SNode child51 : TemplateUtil.asNotNull(tlist50)) {
                                 tnode47.addChild(myAggregationLinks[5], child51);
@@ -508,7 +508,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                               TemplateContext context29;
                               context29 = context27.subContext(null, callInputNode59);
                               if (callInputNode59 != null) {
-                                tlist59 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557186", "reduce_PropertyId_SProperty"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144938")).apply(environment, context29);
+                                tlist59 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557186", "reduce_PropertyId_SProperty"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144938")).apply(context29);
                               }
                               for (SNode child60 : TemplateUtil.asNotNull(tlist59)) {
                                 tnode56.addChild(myAggregationLinks[5], child60);
@@ -615,7 +615,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                 TemplateContext context36;
                                 context36 = context35.subContext(null, callInputNode72);
                                 if (callInputNode72 != null) {
-                                  tlist72 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032418697", "reduce_ReferenceLinkId_SReferenceLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144939")).apply(environment, context36);
+                                  tlist72 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032418697", "reduce_ReferenceLinkId_SReferenceLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144939")).apply(context36);
                                 }
                                 for (SNode child73 : TemplateUtil.asNotNull(tlist72)) {
                                   tnode71.addChild(myAggregationLinks[5], child73);
@@ -634,7 +634,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                     TemplateContext context38;
                                     context38 = context37.subContext(null, callInputNode75);
                                     if (callInputNode75 != null) {
-                                      tlist75 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032418697", "reduce_ReferenceLinkId_SReferenceLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144940")).apply(environment, context38);
+                                      tlist75 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032418697", "reduce_ReferenceLinkId_SReferenceLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144940")).apply(context38);
                                     }
                                     for (SNode child76 : TemplateUtil.asNotNull(tlist75)) {
                                       tnode74.addChild(myAggregationLinks[5], child76);
@@ -810,7 +810,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                             TemplateContext context48;
                             context48 = context46.subContext(null, callInputNode93);
                             if (callInputNode93 != null) {
-                              tlist93 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032418697", "reduce_ReferenceLinkId_SReferenceLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144941")).apply(environment, context48);
+                              tlist93 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032418697", "reduce_ReferenceLinkId_SReferenceLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144941")).apply(context48);
                             }
                             for (SNode child94 : TemplateUtil.asNotNull(tlist93)) {
                               tnode90.addChild(myAggregationLinks[5], child94);
@@ -877,7 +877,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                       TemplateContext context51 = context50.subContext();
                       {
                         Collection<SNode> tlist101 = null;
-                        tlist101 = new Template_QuotedNode_to_statementList().apply(environment, context51);
+                        tlist101 = environment.callSite(new Template_QuotedNode_to_statementList(), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "767161977424665326")).apply(context51);
                         for (SNode child102 : TemplateUtil.asNotNull(tlist101)) {
                           tnode100.addChild(myAggregationLinks[13], child102);
                         }
@@ -929,7 +929,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                 TemplateContext context55;
                                 context55 = context54.subContext(null, callInputNode109);
                                 if (callInputNode109 != null) {
-                                  tlist109 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486185", "reduce_ContainmentLinkId_SContainmentLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144942")).apply(environment, context55);
+                                  tlist109 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486185", "reduce_ContainmentLinkId_SContainmentLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144942")).apply(context55);
                                 }
                                 for (SNode child110 : TemplateUtil.asNotNull(tlist109)) {
                                   tnode108.addChild(myAggregationLinks[5], child110);
@@ -1131,7 +1131,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                         TemplateContext context67;
                                         context67 = context66.subContext(null, callInputNode133);
                                         if (callInputNode133 != null) {
-                                          tlist133 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486185", "reduce_ContainmentLinkId_SContainmentLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144943")).apply(environment, context67);
+                                          tlist133 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486185", "reduce_ContainmentLinkId_SContainmentLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144943")).apply(context67);
                                         }
                                         for (SNode child134 : TemplateUtil.asNotNull(tlist133)) {
                                           tnode132.addChild(myAggregationLinks[5], child134);
@@ -1346,7 +1346,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                         TemplateContext context80;
                                         context80 = context79.subContext(null, callInputNode158);
                                         if (callInputNode158 != null) {
-                                          tlist158 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486185", "reduce_ContainmentLinkId_SContainmentLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144944")).apply(environment, context80);
+                                          tlist158 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032486185", "reduce_ContainmentLinkId_SContainmentLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144944")).apply(context80);
                                         }
                                         for (SNode child159 : TemplateUtil.asNotNull(tlist158)) {
                                           tnode157.addChild(myAggregationLinks[5], child159);

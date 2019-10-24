@@ -147,7 +147,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                         TemplateContext context6;
                         context6 = context5.subContext(null, callInputNode11);
                         if (callInputNode11 != null) {
-                          tlist11 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6506750610319222074", "reduce_LinkDeclaration_SLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143532161")).apply(environment, context6);
+                          tlist11 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6506750610319222074", "reduce_LinkDeclaration_SLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143532161")).apply(context6);
                         }
                         for (SNode child12 : TemplateUtil.asNotNull(tlist11)) {
                           tnode10.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child12);
@@ -269,7 +269,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                             TemplateContext context8;
                             context8 = context7.subContext(null, callInputNode13);
                             if (callInputNode13 != null) {
-                              tlist13 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6506750610319222074", "reduce_LinkDeclaration_SLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144955")).apply(environment, context8);
+                              tlist13 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6506750610319222074", "reduce_LinkDeclaration_SLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144955")).apply(context8);
                             }
                             for (SNode child14 : TemplateUtil.asNotNull(tlist13)) {
                               tnode12.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child14);

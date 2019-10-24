@@ -88,7 +88,7 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
               }
               {
                 Collection<SNode> tlist6 = null;
-                tlist6 = new Template_reduce_ConceptMethodCallReflective().apply(environment, context2);
+                tlist6 = environment.callSite(new Template_reduce_ConceptMethodCallReflective(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6417869169768657677")).apply(context2);
                 for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
                   tnode3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression"), child7);
                 }
@@ -103,7 +103,7 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
       } else {
-        Collection<SNode> tlist8 = new Template_reduce_ConceptMethodCallReflective().apply(environment, context);
+        Collection<SNode> tlist8 = environment.callSite(new Template_reduce_ConceptMethodCallReflective(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5616724231236702767")).apply(context);
         tlist1 = tlist8;
       }
       return tlist1;
@@ -116,7 +116,7 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ConceptMethodCall().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ConceptMethodCall(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4279359955659263872")).apply(context);
       return tlist1;
     }
   }

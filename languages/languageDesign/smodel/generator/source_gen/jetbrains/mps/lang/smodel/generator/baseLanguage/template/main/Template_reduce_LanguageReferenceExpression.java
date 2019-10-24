@@ -56,7 +56,7 @@ public class Template_reduce_LanguageReferenceExpression extends TemplateDeclara
           TemplateContext context2 = context1.subContext();
           {
             Collection<SNode> tlist4 = null;
-            tlist4 = new Template_reduce_ModuleReferenceFromString().apply(environment, context2);
+            tlist4 = environment.callSite(new Template_reduce_ModuleReferenceFromString(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5802093636975103885")).apply(context2);
             for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
               tnode3.addChild(myAggregationLinks[1], child5);
             }

@@ -46,7 +46,7 @@ public class Template_reduce_ConceptMethodCallReflectiveWithSuper extends Templa
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist4 = null;
-              tlist4 = new Template_reduce_reflectiveInvokeSuper().apply(environment, context2);
+              tlist4 = environment.callSite(new Template_reduce_reflectiveInvokeSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145336")).apply(context2);
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode3.addChild(myAggregationLinks[0], child5);
               }
@@ -70,7 +70,7 @@ public class Template_reduce_ConceptMethodCallReflectiveWithSuper extends Templa
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
-      Collection<SNode> tlist8 = new Template_reduce_reflectiveInvokeSuper().apply(environment, context);
+      Collection<SNode> tlist8 = environment.callSite(new Template_reduce_reflectiveInvokeSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4656749346205509009")).apply(context);
       tlist1 = tlist8;
     }
     FragmentResult rv = listFragment(3, tlist1);

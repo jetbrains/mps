@@ -54,7 +54,7 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ConceptSwitch().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ConceptSwitch(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945925519")).apply(context);
       return tlist1;
     }
   }

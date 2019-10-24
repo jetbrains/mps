@@ -76,7 +76,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             TemplateContext context3;
             context3 = context2.subContext(null, callInputNode7);
             if (callInputNode7 != null) {
-              tlist7 = new Template_reduce_PropertyDeclaration_SProperty().apply(environment, context3);
+              tlist7 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145280")).apply(context3);
             }
             for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
               tnode4.addChild(myAggregationLinks[1], child8);
@@ -114,7 +114,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             TemplateContext context5;
             context5 = context4.subContext(null, callInputNode12);
             if (callInputNode12 != null) {
-              tlist12 = new Template_reduce_PropertyDeclaration_SProperty().apply(environment, context5);
+              tlist12 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012871007")).apply(context5);
             }
             for (SNode child13 : TemplateUtil.asNotNull(tlist12)) {
               tnode9.addChild(myAggregationLinks[1], child13);
@@ -152,7 +152,7 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
             TemplateContext context7;
             context7 = context6.subContext(null, callInputNode17);
             if (callInputNode17 != null) {
-              tlist17 = new Template_reduce_PropertyDeclaration_SProperty().apply(environment, context7);
+              tlist17 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012874889")).apply(context7);
             }
             for (SNode child18 : TemplateUtil.asNotNull(tlist17)) {
               tnode14.addChild(myAggregationLinks[1], child18);

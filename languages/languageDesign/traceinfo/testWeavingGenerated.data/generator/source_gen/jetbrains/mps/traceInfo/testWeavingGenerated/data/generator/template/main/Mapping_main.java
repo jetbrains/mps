@@ -59,7 +59,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_map_RootConcept().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_map_RootConcept(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008486853")).apply(context);
       environment.registerLabel(context.getInput(), result, "map_RootConcept");
       return result;
     }

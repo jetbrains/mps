@@ -60,7 +60,7 @@ public class Template_reduce_Property_SetOperation_Enum extends TemplateDeclarat
         TemplateContext context2;
         context2 = context1.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
-          tlist4 = new Template_reduce_PropertyDeclaration_SProperty().apply(environment, context2);
+          tlist4 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711153849")).apply(context2);
         }
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);
@@ -73,7 +73,7 @@ public class Template_reduce_Property_SetOperation_Enum extends TemplateDeclarat
         TemplateContext context3;
         context3 = context1.subContext(null, callInputNode6);
         if (callInputNode6 != null) {
-          tlist6 = new Template_reduce_EnumMember2Id().apply(environment, context3);
+          tlist6 = environment.callSite(new Template_reduce_EnumMember2Id(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8540066610856020057")).apply(context3);
         }
         for (SNode child7 : TemplateUtil.asNotNull(tlist6)) {
           tnode1.addChild(myAggregationLinks[0], child7);

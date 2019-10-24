@@ -257,7 +257,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
             TemplateContext context2;
             context2 = context1.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
-              tlist5 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+              tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145271")).apply(context2);
             }
             tlist4 = tlist5;
           } else {
@@ -326,7 +326,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
             TemplateContext context2;
             context2 = context1.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
-              tlist5 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+              tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145272")).apply(context2);
             }
             tlist4 = tlist5;
           } else {
@@ -412,7 +412,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
             TemplateContext context2;
             context2 = context1.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
-              tlist5 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+              tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145274")).apply(context2);
             }
             tlist4 = tlist5;
           } else {
@@ -477,7 +477,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
             TemplateContext context2;
             context2 = context1.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
-              tlist5 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+              tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145275")).apply(context2);
             }
             tlist4 = tlist5;
           } else {
@@ -611,7 +611,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       TemplateContext context1 = context.withVariable("concept", ((SNode) QueriesGenerated.templateArgumentQuery_0_0(new TemplateArgumentContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5091528797226430546")))));
-      Collection<SNode> tlist1 = new Template_reduce_GenericNewExpression_with_SNodeCreator().apply(environment, context1);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_GenericNewExpression_with_SNodeCreator(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1181946248110")).apply(context1);
       return tlist1;
     }
   }
@@ -631,7 +631,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
           TemplateContext context2;
           context2 = context1.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
-            tlist2 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+            tlist2 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6898071015833051028")).apply(context2);
           }
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand"), child3);
@@ -666,7 +666,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         TemplateContext context1;
         context1 = context.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
-          tlist2 = new Template_reduce_ConceptDeclaration_Bootstrap_SAbstractConcept().apply(environment, context1);
+          tlist2 = environment.callSite(new Template_reduce_ConceptDeclaration_Bootstrap_SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285847308")).apply(context1);
         }
         tlist1 = tlist2;
       } else {
@@ -675,7 +675,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         TemplateContext context2;
         context2 = context.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
-          tlist3 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+          tlist3 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285850010")).apply(context2);
         }
         tlist1 = tlist3;
       }
@@ -694,7 +694,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_EnumerationDeclaration_SEnumeration().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_EnumerationDeclaration_SEnumeration(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2591525195860697566")).apply(context1);
       }
       return tlist1;
     }
@@ -789,7 +789,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_NodeIdentity_SNodeReference().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222312634")).apply(context1);
       }
       return tlist1;
     }
@@ -812,7 +812,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
           TemplateContext context2;
           context2 = context1.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
-            tlist2 = new Template_reduce_LinkDeclaration_SLink().apply(environment, context2);
+            tlist2 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145276")).apply(context2);
           }
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);
@@ -838,7 +838,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         TemplateContext context1;
         context1 = context.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
-          tlist2 = new Template_reduce_LinkDeclaration_Bootstrap_SLink().apply(environment, context1);
+          tlist2 = environment.callSite(new Template_reduce_LinkDeclaration_Bootstrap_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285665843")).apply(context1);
         }
         tlist1 = tlist2;
       } else {
@@ -847,7 +847,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         TemplateContext context2;
         context2 = context.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
-          tlist3 = new Template_reduce_LinkDeclaration_SLink().apply(environment, context2);
+          tlist3 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285667019")).apply(context2);
         }
         tlist1 = tlist3;
       }
@@ -868,7 +868,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         TemplateContext context1;
         context1 = context.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
-          tlist2 = new Template_reduce_PropertyDeclaration_Bootstrap_SProperty().apply(environment, context1);
+          tlist2 = environment.callSite(new Template_reduce_PropertyDeclaration_Bootstrap_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285571240")).apply(context1);
         }
         tlist1 = tlist2;
       } else {
@@ -877,7 +877,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         TemplateContext context2;
         context2 = context.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
-          tlist3 = new Template_reduce_PropertyDeclaration_SProperty().apply(environment, context2);
+          tlist3 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285600822")).apply(context2);
         }
         tlist1 = tlist3;
       }
@@ -1020,7 +1020,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_IfInstanceOfStatement().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_IfInstanceOfStatement(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1883223317721112267")).apply(context);
       return tlist1;
     }
   }
@@ -1056,7 +1056,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ModuleReferenceExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ModuleReferenceExpression(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6171083915388345417")).apply(context);
       return tlist1;
     }
   }
@@ -1067,7 +1067,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_LanguageReferenceExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_LanguageReferenceExpression(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4040588429969069957")).apply(context);
       return tlist1;
     }
   }
@@ -1240,7 +1240,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_LanguageRefExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_LanguageRefExpression(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4497478346159792592")).apply(context);
       return tlist1;
     }
   }
@@ -1251,7 +1251,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ModuleRefExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ModuleRefExpression(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499343303730")).apply(context);
       return tlist1;
     }
   }
@@ -1262,7 +1262,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ModelPointerExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ModelPointerExpression(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1863527487546157044")).apply(context);
       return tlist1;
     }
   }

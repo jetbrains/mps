@@ -56,7 +56,7 @@ public class Switch_switch_ModuleIdentity_SModuleReference extends TemplateSwitc
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ModulePointer_SModuleReference().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ModulePointer_SModuleReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1678062499342619982")).apply(context);
       return tlist1;
     }
   }

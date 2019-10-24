@@ -266,7 +266,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       final TemplateContext context = templateContext.subContext(pattern);
       TemplateContext context1 = context.withVariable("left", ((SNode) context.getPatternVariable("patternVar_yy")));
       context1 = context1.withVariable("right", ((SNode) context.getPatternVariable("patternVar_right")));
-      Collection<SNode> tlist1 = new Template_convertMult().apply(environment, context1);
+      Collection<SNode> tlist1 = environment.callSite(new Template_convertMult(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992617111")).apply(context1);
       return tlist1;
     }
   }
@@ -399,7 +399,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       context1 = context1.withVariable("expr", ((SNode) context.getPatternVariable("patternVar_myExpr")));
       context1 = context1.withVariable("i", 12);
       context1 = context1.withVariable("b", true);
-      Collection<SNode> tlist1 = new Template_processStatement().apply(environment, context1);
+      Collection<SNode> tlist1 = environment.callSite(new Template_processStatement(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288695079")).apply(context1);
       return tlist1;
     }
   }
@@ -481,7 +481,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       final TemplateExecutionEnvironment environment = templateContext.getEnvironment();
       final TemplateContext context = templateContext.subContext(pattern);
       TemplateContext context1 = context.withVariable("node", ((SNode) context.getPatternVariable("patternVar_ref")));
-      Collection<SNode> tlist1 = new Template_process42().apply(environment, context1);
+      Collection<SNode> tlist1 = environment.callSite(new Template_process42(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "5857536350883032714")).apply(context1);
       return tlist1;
     }
   }
@@ -517,7 +517,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
               Collection<SNode> tlist4 = null;
               TemplateContext context3;
               context3 = context2.withVariable("node", ((SNode) context2.getPatternVariable("patternVar_ref")));
-              tlist4 = new Template_process42().apply(environment, context3);
+              tlist4 = environment.callSite(new Template_process42(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "6509983489805214623")).apply(context3);
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression"), child5);
               }
@@ -571,7 +571,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_RootCustom().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_RootCustom(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412767")).apply(context);
       environment.registerLabel(context.getInput(), result, "rootcustom");
       return result;
     }

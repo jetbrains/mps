@@ -40,7 +40,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_SPropertyAccess().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_SPropertyAccess(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088848932")).apply(context);
       return tlist1;
     }
   }
@@ -56,7 +56,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_EnumerationMemberDeclaration_nameLiteral().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_EnumerationMemberDeclaration_nameLiteral(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088913806")).apply(context1);
       }
       return tlist1;
     }
@@ -72,7 +72,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_Property_SetOperation_Enum().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_Property_SetOperation_Enum(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711203330")).apply(context);
       return tlist1;
     }
   }
@@ -83,7 +83,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_Property_SetOperation().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_Property_SetOperation(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088849778")).apply(context);
       return tlist1;
     }
   }
@@ -94,7 +94,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_Property_RemoveOperation().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_Property_RemoveOperation(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421088918576")).apply(context);
       return tlist1;
     }
   }
@@ -105,7 +105,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_Property_HasValue_Simple().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_Property_HasValue_Simple(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1170384806713")).apply(context);
       return tlist1;
     }
   }
@@ -116,7 +116,7 @@ public class Mapping_mc_property_operations extends MapConfigBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_Property_HasValue_Enum().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_Property_HasValue_Enum(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1170384806714")).apply(context);
       return tlist1;
     }
   }

@@ -86,7 +86,7 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                   TemplateContext context5;
                   context5 = context4.subContext(null, callInputNode8);
                   if (callInputNode8 != null) {
-                    tlist8 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context5);
+                    tlist8 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145298")).apply(context5);
                   }
                   if (tlist8 != null) {
                     tlist7.addAll(tlist8);
@@ -146,7 +146,7 @@ public class Template_reduce_GetDescendants_whereConceptInList extends TemplateD
                   TemplateContext context9;
                   context9 = context8.subContext(null, callInputNode15);
                   if (callInputNode15 != null) {
-                    tlist15 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context9);
+                    tlist15 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145299")).apply(context9);
                   }
                   if (tlist15 != null) {
                     tlist14.addAll(tlist15);

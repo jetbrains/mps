@@ -64,7 +64,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           TemplateContext context2;
           context2 = context1.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
-            tlist4 = new Template_reduce_LinkDeclaration_SLink().apply(environment, context2);
+            tlist4 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145281")).apply(context2);
           }
           for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child5);
@@ -135,7 +135,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             TemplateContext context2;
             context2 = context1.subContext(null, callInputNode8);
             if (callInputNode8 != null) {
-              tlist8 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context2);
+              tlist8 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145282")).apply(context2);
             }
             tlist7 = tlist8;
           } else {
@@ -411,7 +411,7 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           TemplateContext context2;
           context2 = context1.subContext(null, callInputNode7);
           if (callInputNode7 != null) {
-            tlist7 = new Template_reduce_NodeIdentity_SNodeReference().apply(environment, context2);
+            tlist7 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532846779")).apply(context2);
           }
           for (SNode child8 : TemplateUtil.asNotNull(tlist7)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child8);

@@ -46,7 +46,7 @@ public class Switch_switch_InputNode_A extends TemplateSwitchBase implements Tem
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_InputNode_A_switch().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_InputNode_A_switch(), new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "1892993302480311962")).apply(context);
       return tlist1;
     }
   }

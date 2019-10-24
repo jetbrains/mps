@@ -173,7 +173,7 @@ public class Mapping_mc_enum_operations extends MapConfigBase implements Templat
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_EnumSwitchExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_EnumSwitchExpression(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2453008993630217998")).apply(context);
       return tlist1;
     }
   }

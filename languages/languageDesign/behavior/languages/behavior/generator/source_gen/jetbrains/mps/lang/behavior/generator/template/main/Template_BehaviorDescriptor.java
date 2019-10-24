@@ -1344,7 +1344,7 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                                                 TemplateContext context70 = context69.subContext();
                                                 {
                                                   Collection<SNode> tlist159 = null;
-                                                  tlist159 = new Template_reduce_MethodInvocation().apply(environment, context70);
+                                                  tlist159 = environment.callSite(new Template_reduce_MethodInvocation(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4547736967711224779")).apply(context70);
                                                   for (SNode child160 : TemplateUtil.asNotNull(tlist159)) {
                                                     tnode158.addChild(myAggregationLinks[27], child160);
                                                   }
@@ -1392,7 +1392,7 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                                     TemplateContext context71 = context66.subContext();
                                     {
                                       Collection<SNode> tlist165 = null;
-                                      tlist165 = new Template_reduce_MethodInvocation().apply(environment, context71);
+                                      tlist165 = environment.callSite(new Template_reduce_MethodInvocation(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4547736967710643505")).apply(context71);
                                       for (SNode child166 : TemplateUtil.asNotNull(tlist165)) {
                                         tnode164.addChild(myAggregationLinks[18], child166);
                                       }
@@ -1894,7 +1894,7 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                                                 TemplateContext context101 = context100.subContext();
                                                 {
                                                   Collection<SNode> tlist226 = null;
-                                                  tlist226 = new Template_reduce_MethodInvocation().apply(environment, context101);
+                                                  tlist226 = environment.callSite(new Template_reduce_MethodInvocation(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4547736967710992679")).apply(context101);
                                                   for (SNode child227 : TemplateUtil.asNotNull(tlist226)) {
                                                     tnode225.addChild(myAggregationLinks[27], child227);
                                                   }
@@ -1942,7 +1942,7 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                                     TemplateContext context102 = context97.subContext();
                                     {
                                       Collection<SNode> tlist232 = null;
-                                      tlist232 = new Template_reduce_MethodInvocation().apply(environment, context102);
+                                      tlist232 = environment.callSite(new Template_reduce_MethodInvocation(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4547736967711027188")).apply(context102);
                                       for (SNode child233 : TemplateUtil.asNotNull(tlist232)) {
                                         tnode231.addChild(myAggregationLinks[18], child233);
                                       }

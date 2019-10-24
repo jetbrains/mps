@@ -81,7 +81,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_out_class().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_out_class(), new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150078117")).apply(context);
       return result;
     }
   }

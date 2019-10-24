@@ -52,7 +52,7 @@ public class Switch_switch_AssociationIdentity_SReferenceLink extends TemplateSw
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ReferenceLinkId_SReferenceLink().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ReferenceLinkId_SReferenceLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032459014")).apply(context);
       return tlist1;
     }
   }

@@ -52,7 +52,7 @@ public class Switch_switch_AggregationIdentity_SContainmentLink extends Template
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ContainmentLinkId_SContainmentLink().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ContainmentLinkId_SContainmentLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032516403")).apply(context);
       return tlist1;
     }
   }

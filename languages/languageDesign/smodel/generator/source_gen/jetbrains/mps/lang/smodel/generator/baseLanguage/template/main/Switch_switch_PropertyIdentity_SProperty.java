@@ -52,7 +52,7 @@ public class Switch_switch_PropertyIdentity_SProperty extends TemplateSwitchBase
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_PropertyId_SProperty().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_PropertyId_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6911370362349557188")).apply(context);
       return tlist1;
     }
   }

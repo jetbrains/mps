@@ -122,7 +122,7 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                     Collection<SNode> tlist13 = null;
                     TemplateContext context7;
                     context7 = context6.withVariable("eid", ((SDataTypeId) QueriesGenerated.templateArgumentQuery_139_0(new TemplateArgumentContext(context6, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388465620")))));
-                    tlist13 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590293(jetbrains.mps.lang.structure.generator_new.baseLanguage@generator)", "4267113346160354197", "include_ElementIdTriade"), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388465619")).apply(environment, context7);
+                    tlist13 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590293(jetbrains.mps.lang.structure.generator_new.baseLanguage@generator)", "4267113346160354197", "include_ElementIdTriade"), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388465619")).apply(context7);
                     for (SNode child14 : TemplateUtil.asNotNull(tlist13)) {
                       tnode12.addChild(myAggregationLinks[3], child14);
                     }

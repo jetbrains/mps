@@ -356,7 +356,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_GDClass().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_GDClass(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639681036")).apply(context);
       return result;
     }
   }
@@ -371,7 +371,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_InterpretedGeneratorRuntimeDescriptor().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_InterpretedGeneratorRuntimeDescriptor(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152715707458")).apply(context);
       return result;
     }
   }
@@ -381,7 +381,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
     }
     public Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationException {
       DefaultTemplateContext context = new DefaultTemplateContext(environment, null, null);
-      Collection<SNode> result = new Template_generator_descriptor().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_generator_descriptor(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8780540425167303917")).apply(context);
       return result;
     }
   }

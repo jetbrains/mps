@@ -69,7 +69,7 @@ public class Switch_switch_ILinkAccessQualifier_toSLink extends TemplateSwitchBa
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_LinkDeclaration_SLink().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145323")).apply(context1);
       }
       return tlist1;
     }

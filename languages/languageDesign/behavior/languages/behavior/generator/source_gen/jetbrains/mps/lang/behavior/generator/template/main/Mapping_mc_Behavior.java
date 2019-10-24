@@ -55,7 +55,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ThisNodeExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ThisNodeExpression(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370952")).apply(context);
       return tlist1;
     }
   }
@@ -66,7 +66,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_ThisConceptExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ThisConceptExpression(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1703835097132700357")).apply(context);
       return tlist1;
     }
   }
@@ -77,7 +77,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_SuperNodeExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_SuperNodeExpression(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370954")).apply(context);
       return tlist1;
     }
   }
@@ -88,7 +88,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_SuperConceptExpression().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_SuperConceptExpression(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7613853987897922621")).apply(context);
       return tlist1;
     }
   }
@@ -99,7 +99,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = new Template_reduce_LocalBehaviorMethodCallWithCast().apply(environment, context);
+      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_LocalBehaviorMethodCallWithCast(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037270108")).apply(context);
       return tlist1;
     }
   }
@@ -110,7 +110,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_BehaviorDescriptor().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_BehaviorDescriptor(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1225195370955")).apply(context);
       return result;
     }
   }
@@ -124,7 +124,7 @@ public class Mapping_mc_Behavior extends MapConfigBase implements TemplateMappin
     }
     public Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationException {
       DefaultTemplateContext context = new DefaultTemplateContext(environment, null, null);
-      Collection<SNode> result = new Template_BehaviorAspectDescriptor().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_BehaviorAspectDescriptor(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4881419546810727151")).apply(context);
       return result;
     }
   }

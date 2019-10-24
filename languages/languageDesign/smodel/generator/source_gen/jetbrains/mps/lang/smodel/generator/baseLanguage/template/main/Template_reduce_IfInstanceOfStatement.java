@@ -111,7 +111,7 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                     TemplateContext context7;
                     context7 = context6.subContext(null, callInputNode11);
                     if (callInputNode11 != null) {
-                      tlist11 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context7);
+                      tlist11 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145316")).apply(context7);
                     }
                     for (SNode child12 : TemplateUtil.asNotNull(tlist11)) {
                       tnode9.addChild(myAggregationLinks[4], child12);

@@ -177,7 +177,7 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
           TemplateContext context2;
           context2 = context1.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
-            tlist2 = environment.findTemplate(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6506750610319308637", "reduce_ConceptDeclaration2SAbstractConcept"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145033367")).apply(environment, context2);
+            tlist2 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6506750610319308637", "reduce_ConceptDeclaration2SAbstractConcept"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145033367")).apply(context2);
           }
           for (SNode child3 : TemplateUtil.asNotNull(tlist2)) {
             tnode1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument"), child3);

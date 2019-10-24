@@ -51,7 +51,7 @@ public class Template_reduce_invoke extends TemplateDeclarationBase {
           TemplateContext context2 = context1.subContext();
           {
             Collection<SNode> tlist3 = null;
-            tlist3 = new Template_NodeOrConceptCommon().apply(environment, context2);
+            tlist3 = environment.callSite(new Template_NodeOrConceptCommon(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145333")).apply(context2);
             for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
               tnode2.addChild(myAggregationLinks[0], child4);
             }
@@ -61,7 +61,7 @@ public class Template_reduce_invoke extends TemplateDeclarationBase {
             Collection<SNode> tlist5 = null;
             TemplateContext context3;
             context3 = context2.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_109_0(new TemplateArgumentContext(context2, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3866789353799066937")))));
-            tlist5 = new Template_reduce_Parameters().apply(environment, context3);
+            tlist5 = environment.callSite(new Template_reduce_Parameters(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3866789353799066936")).apply(context3);
             for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
               tnode2.addChild(myAggregationLinks[0], child6);
             }

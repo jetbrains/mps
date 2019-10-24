@@ -52,7 +52,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_Language().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_Language(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8780540425167303786")).apply(context);
       return result;
     }
   }
@@ -62,7 +62,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
     }
     public Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationException {
       DefaultTemplateContext context = new DefaultTemplateContext(environment, null, null);
-      Collection<SNode> result = new Template_language_descriptor().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_language_descriptor(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3919235298192674546")).apply(context);
       return result;
     }
   }

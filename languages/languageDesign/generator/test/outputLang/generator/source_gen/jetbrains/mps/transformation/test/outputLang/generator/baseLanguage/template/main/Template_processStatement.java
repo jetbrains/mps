@@ -209,7 +209,7 @@ public class Template_processStatement extends TemplateDeclarationBase {
     Collection<SNode> tlist1 = null;
     TemplateContext context1;
     context1 = context.withVariable("nnnn", ((SNode) context.getVariable("expr")));
-    tlist1 = new Template_aaaaa().apply(environment, context1);
+    tlist1 = environment.callSite(new Template_aaaaa(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "5005282049926092705")).apply(context1);
     FragmentResult rv = listFragment(2, tlist1);
     return rv;
   }

@@ -56,7 +56,7 @@ public class Template_reduce_GetAncestors_noConceptsList extends TemplateDeclara
       }
       {
         Collection<SNode> tlist4 = null;
-        tlist4 = new Template_reduce_OperationParamConcept().apply(environment, context1);
+        tlist4 = environment.callSite(new Template_reduce_OperationParamConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653966788")).apply(context1);
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);
         }

@@ -189,7 +189,7 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                   TemplateContext context8;
                   context8 = context7.subContext(null, callInputNode14);
                   if (callInputNode14 != null) {
-                    tlist14 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context8);
+                    tlist14 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145332")).apply(context8);
                   }
                   for (SNode child15 : TemplateUtil.asNotNull(tlist14)) {
                     tnode12.addChild(myAggregationLinks[9], child15);

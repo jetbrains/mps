@@ -51,7 +51,7 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
         }
         {
           Collection<SNode> tlist5 = null;
-          tlist5 = new Template_reduce_invoke().apply(environment, context1);
+          tlist5 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145331")).apply(context1);
           for (SNode child6 : TemplateUtil.asNotNull(tlist5)) {
             tnode2.addChild(myAggregationLinks[1], child6);
           }
@@ -61,7 +61,7 @@ public class Template_reduce_ConceptMethodCallCommon extends TemplateDeclaration
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
-      Collection<SNode> tlist7 = new Template_reduce_invoke().apply(environment, context);
+      Collection<SNode> tlist7 = environment.callSite(new Template_reduce_invoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4656749346204521957")).apply(context);
       tlist1 = tlist7;
     }
     FragmentResult rv = listFragment(2, tlist1);

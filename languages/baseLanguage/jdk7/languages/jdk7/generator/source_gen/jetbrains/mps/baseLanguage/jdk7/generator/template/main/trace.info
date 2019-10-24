@@ -34,8 +34,8 @@
       <node id="400642802550418959" at="30,64,31,17" concept="9" />
       <node id="400642802550418980" at="34,29,35,203" concept="13" />
       <node id="400642802550418980" at="38,103,39,80" concept="8" />
-      <node id="400642802550418980" at="39,80,40,99" concept="8" />
-      <node id="400642802550418980" at="40,99,41,20" concept="9" />
+      <node id="400642802550418980" at="39,80,40,257" concept="8" />
+      <node id="400642802550418980" at="40,257,41,20" concept="9" />
       <node id="400642802550418959" at="46,0,47,0" concept="11" trace="StringSwitchStatement$x7" />
       <node id="400642802550418980" at="34,0,37,0" concept="1" trace="ReductionRule0#()V" />
       <node id="400642802550418959" at="25,0,29,0" concept="1" trace="Mapping_main#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />

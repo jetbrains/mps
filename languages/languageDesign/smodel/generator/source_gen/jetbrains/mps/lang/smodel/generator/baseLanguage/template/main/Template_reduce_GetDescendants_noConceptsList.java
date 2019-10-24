@@ -58,7 +58,7 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
       }
       {
         Collection<SNode> tlist4 = null;
-        tlist4 = new Template_reduce_OperationParamConcept().apply(environment, context1);
+        tlist4 = environment.callSite(new Template_reduce_OperationParamConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333654102594")).apply(context1);
         for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
           tnode1.addChild(myAggregationLinks[0], child5);
         }
@@ -103,7 +103,7 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
                   TemplateContext context5;
                   context5 = context4.subContext(null, callInputNode11);
                   if (callInputNode11 != null) {
-                    tlist11 = new Template_reduce_ConceptDeclaration2SAbstractConcept().apply(environment, context5);
+                    tlist11 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145294")).apply(context5);
                   }
                   if (tlist11 != null) {
                     tlist10.addAll(tlist11);

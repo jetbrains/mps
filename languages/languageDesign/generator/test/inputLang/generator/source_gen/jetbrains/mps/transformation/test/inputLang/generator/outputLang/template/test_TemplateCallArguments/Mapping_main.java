@@ -57,7 +57,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       context1 = context.withVariable("text", "a");
       context1 = context1.withVariable("value", ((Integer) QueriesGenerated.templateArgumentQuery_0_0(new TemplateArgumentContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948465982")))));
       context1 = context1.withVariable("element", ((SNode) QueriesGenerated.templateArgumentQuery_0_1(new TemplateArgumentContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948483009")))));
-      tlist1 = new Template_reduce_InputNode().apply(environment, context1);
+      tlist1 = environment.callSite(new Template_reduce_InputNode(), new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948461480")).apply(context1);
       return tlist1;
     }
   }
@@ -68,7 +68,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = new Template_MyOutputRoot2().apply(environment, context);
+      Collection<SNode> result = environment.callSite(new Template_MyOutputRoot2(), new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948355377")).apply(context);
       return result;
     }
   }

@@ -42,7 +42,7 @@ public class Template_reduce_ConceptMethodCallReflectiveCommon extends TemplateD
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist3 = null;
-          tlist3 = new Template_reduce_reflectiveInvoke().apply(environment, context1);
+          tlist3 = environment.callSite(new Template_reduce_reflectiveInvoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145327")).apply(context1);
           for (SNode child4 : TemplateUtil.asNotNull(tlist3)) {
             tnode2.addChild(myAggregationLinks[0], child4);
           }
@@ -62,7 +62,7 @@ public class Template_reduce_ConceptMethodCallReflectiveCommon extends TemplateD
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
       Collection<SNode> tlist7 = null;
-      tlist7 = new Template_reduce_reflectiveInvoke().apply(environment, context);
+      tlist7 = environment.callSite(new Template_reduce_reflectiveInvoke(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145328")).apply(context);
       tlist1 = tlist7;
     }
     FragmentResult rv = listFragment(2, tlist1);

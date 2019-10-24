@@ -41,7 +41,7 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
     TemplateContext context1;
     context1 = context.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
-      tlist1 = new Template_reduce_ConceptMethodCallReflectiveCommon().apply(environment, context1);
+      tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveCommon(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525798710")).apply(context1);
     }
     return tlist1;
   }
@@ -59,7 +59,7 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_ConceptMethodCallReflectiveWithThis().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithThis(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525798689")).apply(context1);
       }
       return tlist1;
     }
@@ -76,7 +76,7 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_ConceptMethodCallReflectiveWithThis().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithThis(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080382650")).apply(context1);
       }
       return tlist1;
     }
@@ -93,7 +93,7 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_ConceptMethodCallReflectiveWithSuper().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525910579")).apply(context1);
       }
       return tlist1;
     }
@@ -110,7 +110,7 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       TemplateContext context1;
       context1 = context.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
-        tlist1 = new Template_reduce_ConceptMethodCallReflectiveWithSuper().apply(environment, context1);
+        tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080383215")).apply(context1);
       }
       return tlist1;
     }

@@ -100,7 +100,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase {
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist4 = null;
-              tlist4 = new Template_reduce_ConceptSwitch_SubconceptCases().apply(environment, context2);
+              tlist4 = environment.callSite(new Template_reduce_ConceptSwitch_SubconceptCases(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "75056552358361277")).apply(context2);
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode3.addChild(myAggregationLinks[3], child5);
               }
@@ -145,7 +145,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase {
                       tlist11 = environment.copyNodes(copyListInput11, copySrcListMacro_j8e1z8_b0a0a1a1a1a1a2a4a3a2a1a2a7, "tpl/r:00000000-0000-4000-0000-011c89590303/8098116031887261567", context5);
                       tlist10 = tlist11;
                     } else {
-                      Collection<SNode> tlist12 = new Template_reduce_ConceptCaseBody_Hack1().apply(environment, context5);
+                      Collection<SNode> tlist12 = environment.callSite(new Template_reduce_ConceptCaseBody_Hack1(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8098116031887346394")).apply(context5);
                       tlist10 = tlist12;
                     }
                     for (SNode child13 : TemplateUtil.asNotNull(tlist10)) {
@@ -215,7 +215,7 @@ public class Template_reduce_ConceptSwitch extends TemplateDeclarationBase {
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
-      Collection<SNode> tlist19 = new Template_reduce_ConceptSwitch_SubconceptCases().apply(environment, context);
+      Collection<SNode> tlist19 = environment.callSite(new Template_reduce_ConceptSwitch_SubconceptCases(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "75056552358394524")).apply(context);
       tlist1 = tlist19;
     }
     FragmentResult rv = listFragment(3, tlist1);

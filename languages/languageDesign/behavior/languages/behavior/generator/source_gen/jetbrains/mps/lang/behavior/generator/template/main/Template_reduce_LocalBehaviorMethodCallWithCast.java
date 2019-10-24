@@ -46,7 +46,7 @@ public class Template_reduce_LocalBehaviorMethodCallWithCast extends TemplateDec
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist4 = null;
-              tlist4 = new Template_reduce_LocalBehaviorMethodCall().apply(environment, context2);
+              tlist4 = environment.callSite(new Template_reduce_LocalBehaviorMethodCall(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037154337")).apply(context2);
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode3.addChild(myAggregationLinks[0], child5);
               }
@@ -71,7 +71,7 @@ public class Template_reduce_LocalBehaviorMethodCallWithCast extends TemplateDec
       tlist1 = TemplateUtil.singletonList(tnode2);
     } else {
       Collection<SNode> tlist8 = null;
-      tlist8 = new Template_reduce_LocalBehaviorMethodCall().apply(environment, context);
+      tlist8 = environment.callSite(new Template_reduce_LocalBehaviorMethodCall(), new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4598718932037205949")).apply(context);
       tlist1 = tlist8;
     }
     FragmentResult rv = listFragment(3, tlist1);
