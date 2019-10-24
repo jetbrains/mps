@@ -39,11 +39,12 @@ public final class LanguageConceptSwitch {
   public static final int GenerationContextOp_ShowWarningMessage = 27;
   public static final int GenerationContextOp_StepObjectAccess = 28;
   public static final int GenerationContextOp_TransientObjectAccess = 29;
-  public static final int GenerationContextOp_UserObjectAccessBase = 30;
-  public static final int GenerationContextOp_VarRef = 31;
-  public static final int GenerationContextOp_VarRef2 = 32;
-  public static final int GenerationContextType = 33;
-  public static final int TemplateFunctionParameter_generationContext = 34;
+  public static final int GenerationContextOp_UniqueValidId = 30;
+  public static final int GenerationContextOp_UserObjectAccessBase = 31;
+  public static final int GenerationContextOp_VarRef = 32;
+  public static final int GenerationContextOp_VarRef2 = 33;
+  public static final int GenerationContextType = 34;
+  public static final int TemplateFunctionParameter_generationContext = 35;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xd7706f639be2479cL, 0xa3daae92af1e64d5L);
@@ -77,6 +78,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x11b94ab4014L, GenerationContextOp_ShowWarningMessage);
     builder.put(0x11b9023d290L, GenerationContextOp_StepObjectAccess);
     builder.put(0x11b90242983L, GenerationContextOp_TransientObjectAccess);
+    builder.put(0x2ccfa50e4a3632e5L, GenerationContextOp_UniqueValidId);
     builder.put(0x11b8fe60348L, GenerationContextOp_UserObjectAccessBase);
     builder.put(0x25c655ce6e80fdd8L, GenerationContextOp_VarRef);
     builder.put(0xe8e73f957fd5246L, GenerationContextOp_VarRef2);

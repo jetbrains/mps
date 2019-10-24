@@ -352,6 +352,12 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_0_67(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.nodes$YVfo);
   }
+  public static SNode sourceNodeQuery_0_68(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+  }
+  public static SNode sourceNodeQuery_0_69(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.node$RMRO);
+  }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
     int i = 0;
@@ -455,6 +461,8 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("5615708520037052724", new SNQ(i++));
     snqMethods.put("5615708520037058480", new SNQ(i++));
     snqMethods.put("2537089342344768473", new SNQ(i++));
+    snqMethods.put("3228980938641241356", new SNQ(i++));
+    snqMethods.put("3228980938641241369", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -609,6 +617,10 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_0_66(ctx);
         case 67:
           return QueriesGenerated.sourceNodeQuery_0_67(ctx);
+        case 68:
+          return QueriesGenerated.sourceNodeQuery_0_68(ctx);
+        case 69:
+          return QueriesGenerated.sourceNodeQuery_0_69(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -821,6 +833,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink inputNode$jbc$ = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7b6eL, "inputNode");
     /*package*/ static final SContainmentLink outputNode$jbr_ = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7b78L, "outputNode");
     /*package*/ static final SContainmentLink nodes$YVfo = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x23358d5095e2d082L, 0x23358d5095e3172fL, "nodes");
+    /*package*/ static final SContainmentLink node$RMRO = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x2ccfa50e4a3632e5L, 0x23358d5095e3172fL, "node");
   }
 
   private static final class CONCEPTS {

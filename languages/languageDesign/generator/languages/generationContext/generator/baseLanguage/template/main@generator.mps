@@ -3146,6 +3146,65 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="2NfDgTadCqY" role="3acgRq">
+      <ref role="30HIoZ" to="tpf3:2NfDgTadzb_" resolve="GenerationContextOp_UniqueValidId" />
+      <node concept="1Koe21" id="2NfDgTadL2N" role="1lVwrX">
+        <node concept="3clFbF" id="2NfDgTadMlS" role="1Koe22">
+          <node concept="2OqwBi" id="2NfDgTadZk6" role="3clFbG">
+            <node concept="1eOMI4" id="2NfDgTadZk7" role="2Oq$k0">
+              <node concept="10QFUN" id="2NfDgTadZk8" role="1eOMHV">
+                <node concept="10Nm6u" id="2NfDgTadZk9" role="10QFUP" />
+                <node concept="3uibUv" id="2NfDgTadZka" role="10QFUM">
+                  <ref role="3uigEE" to="q1l7:~TemplateQueryContext" resolve="TemplateQueryContext" />
+                </node>
+              </node>
+              <node concept="29HgVG" id="2NfDgTadZkb" role="lGtFl">
+                <node concept="3NFfHV" id="2NfDgTadZkc" role="3NFExx">
+                  <node concept="3clFbS" id="2NfDgTadZkd" role="2VODD2">
+                    <node concept="3clFbF" id="2NfDgTadZke" role="3cqZAp">
+                      <node concept="2OqwBi" id="2NfDgTadZkf" role="3clFbG">
+                        <node concept="1PxgMI" id="2NfDgTadZkg" role="2Oq$k0">
+                          <node concept="2OqwBi" id="2NfDgTadZkh" role="1m5AlR">
+                            <node concept="30H73N" id="2NfDgTadZki" role="2Oq$k0" />
+                            <node concept="1mfA1w" id="2NfDgTadZkj" role="2OqNvi" />
+                          </node>
+                          <node concept="chp4Y" id="2NfDgTadZkk" role="3oSUPX">
+                            <ref role="cht4Q" to="tpee:hqOqwz4" resolve="DotExpression" />
+                          </node>
+                        </node>
+                        <node concept="3TrEf2" id="2NfDgTadZkl" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tpee:hqOq$gm" resolve="operand" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="2NfDgTadZkm" role="2OqNvi">
+              <ref role="37wK5l" to="q1l7:~TemplateQueryContext.createUniqueValidId(org.jetbrains.mps.openapi.model.SNode)" resolve="createUniqueValidId" />
+              <node concept="10Nm6u" id="2NfDgTadZkn" role="37wK5m">
+                <node concept="29HgVG" id="2NfDgTadZko" role="lGtFl">
+                  <node concept="3NFfHV" id="2NfDgTadZkp" role="3NFExx">
+                    <node concept="3clFbS" id="2NfDgTadZkq" role="2VODD2">
+                      <node concept="3clFbF" id="2NfDgTadZkr" role="3cqZAp">
+                        <node concept="2OqwBi" id="2NfDgTadZks" role="3clFbG">
+                          <node concept="30H73N" id="2NfDgTadZkt" role="2Oq$k0" />
+                          <node concept="3TrEf2" id="2NfDgTadZNs" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpf3:2NfDgTadzbA" resolve="node" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="raruj" id="2NfDgTae03Z" role="lGtFl" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

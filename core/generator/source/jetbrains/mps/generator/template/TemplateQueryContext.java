@@ -18,6 +18,7 @@ package jetbrains.mps.generator.template;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -177,6 +178,11 @@ public class TemplateQueryContext {
    */
   public String createIndexedName(String baseName, SNode contextNode, boolean noIndexForFirst) {
     return myGenerator.getGeneratorSessionContext().createIndexedName(baseName, contextNode, noIndexForFirst);
+  }
+
+  public String createUniqueValidId(SNode node) {
+    String name = node.getName();
+    return myGenerator.getGeneratorSessionContext().createIndexedName(NameUtil.toValidCamelIdentifier(name == null ? "_" : name), null, true);
   }
 
   // user objects

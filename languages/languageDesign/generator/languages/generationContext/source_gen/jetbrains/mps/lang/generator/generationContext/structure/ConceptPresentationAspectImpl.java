@@ -39,6 +39,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GenerationContextOp_ShowWarningMessage;
   private ConceptPresentation props_GenerationContextOp_StepObjectAccess;
   private ConceptPresentation props_GenerationContextOp_TransientObjectAccess;
+  private ConceptPresentation props_GenerationContextOp_UniqueValidId;
   private ConceptPresentation props_GenerationContextOp_UserObjectAccessBase;
   private ConceptPresentation props_GenerationContextOp_VarRef;
   private ConceptPresentation props_GenerationContextOp_VarRef2;
@@ -279,6 +280,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GenerationContextOp_TransientObjectAccess = cpb.create();
         }
         return props_GenerationContextOp_TransientObjectAccess;
+      case LanguageConceptSwitch.GenerationContextOp_UniqueValidId:
+        if (props_GenerationContextOp_UniqueValidId == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("unique valid identifier by INamedConcept, close to its name");
+          cpb.rawPresentation("unique valid identifier");
+          props_GenerationContextOp_UniqueValidId = cpb.create();
+        }
+        return props_GenerationContextOp_UniqueValidId;
       case LanguageConceptSwitch.GenerationContextOp_UserObjectAccessBase:
         if (props_GenerationContextOp_UserObjectAccessBase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
