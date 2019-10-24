@@ -45,23 +45,23 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959040c(jetbrains.mps.samples.agreementLanguage.generator.baseLanguage@generator)/1112304135028">
     <file name="QueriesGenerated.java">
-      <node id="1197662895388" at="113,88,114,132" concept="7" />
-      <node id="1197662908533" at="114,132,115,38" concept="8" />
+      <node id="1197662895388" at="113,88,114,129" concept="7" />
+      <node id="1197662908533" at="114,129,115,38" concept="8" />
       <node id="1197663021554" at="117,88,118,101" concept="8" />
       <node id="1197663249007" at="120,88,121,78" concept="8" />
-      <node id="1197663496152" at="123,88,124,315" concept="7" />
-      <node id="1197663500812" at="124,315,125,65" concept="8" />
-      <node id="1197663758929" at="127,88,128,153" concept="7" />
-      <node id="1197663797942" at="128,153,129,108" concept="8" />
+      <node id="1197663496152" at="123,88,124,165" concept="7" />
+      <node id="1197663500812" at="124,165,125,65" concept="8" />
+      <node id="1197663758929" at="127,88,128,103" concept="7" />
+      <node id="1197663797942" at="128,103,129,108" concept="8" />
       <node id="1197663167392" at="131,88,132,88" concept="8" />
-      <node id="1197659940653" at="164,93,165,318" concept="7" />
-      <node id="1197659983913" at="165,318,166,72" concept="7" />
+      <node id="1197659940653" at="164,93,165,168" concept="7" />
+      <node id="1197659983913" at="165,168,166,72" concept="7" />
       <node id="1197660085893" at="167,91,168,112" concept="8" />
       <node id="1197660227591" at="170,84,171,112" concept="8" />
       <node id="1197660289401" at="173,82,174,112" concept="8" />
       <node id="1197660343851" at="175,5,176,16" concept="8" />
-      <node id="1197661270683" at="178,93,179,201" concept="7" />
-      <node id="1197661270690" at="179,201,180,83" concept="7" />
+      <node id="1197661270683" at="178,93,179,151" concept="7" />
+      <node id="1197661270690" at="179,151,180,83" concept="7" />
       <node id="1197661270698" at="181,91,182,109" concept="8" />
       <node id="1197661270710" at="184,88,185,109" concept="8" />
       <node id="1197661270722" at="187,84,188,109" concept="8" />
