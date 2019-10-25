@@ -56,7 +56,6 @@ public class TrivialModelDescriptor extends SModelBase {
 
   @Override
   protected void doUnload() {
-    super.doUnload();
-    myModelData = null;
+
   }
 }

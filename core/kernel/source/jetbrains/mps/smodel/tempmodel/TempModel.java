@@ -93,4 +93,9 @@ class TempModel extends EditableModelDescriptor implements EditableSModel {
     SModelId id = SModelId.generate();
     return PersistenceFacade.getInstance().createModelReference(moduleReference, id, modelName);
   }
+
+  @Override
+  public void unload() {
+
+  }
 }
