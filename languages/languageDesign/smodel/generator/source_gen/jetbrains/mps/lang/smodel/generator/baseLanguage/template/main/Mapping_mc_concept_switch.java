@@ -21,8 +21,7 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import jetbrains.mps.generator.impl.WeaveContextImpl;
+import jetbrains.mps.generator.runtime.TemplateCallSite;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -73,9 +72,8 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
     }
     @Override
     public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      NodeWeaveFacility.WeaveContext weaveContext = new WeaveContextImpl(outputContextNode, context, WeavingRule0.this);
-      Collection<SNode> tlist1 = environment.prepareWeave(weaveContext, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945759568")).weaveTemplate(new Template_weave_ConceptSwitchMap());
-      return tlist1 != null && !(tlist1.isEmpty());
+      final TemplateCallSite callSite = environment.callSite(new Template_weave_ConceptSwitchMap(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945759568"));
+      return callSite.weave(context, outputContextNode, WeavingRule0.this);
     }
   }
 

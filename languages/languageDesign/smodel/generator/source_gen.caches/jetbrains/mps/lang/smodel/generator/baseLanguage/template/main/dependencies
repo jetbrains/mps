@@ -118,11 +118,10 @@
   <dependency className="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.generator.impl.WeaveContextImpl" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.Generated" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.GenerationException" />
-    <classNode dependClassName="jetbrains.mps.generator.runtime.NodeWeaveFacility" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.ReductionRuleBase" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateCallSite" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateContext" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateExecutionEnvironment" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateModel" />

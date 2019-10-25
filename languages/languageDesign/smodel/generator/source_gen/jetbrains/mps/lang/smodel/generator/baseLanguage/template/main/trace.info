@@ -13858,80 +13858,78 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)/1717381292179408189">
     <file name="Mapping_mc_concept_switch.java">
-      <node id="1717381292179408189" at="31,0,32,0" concept="4" trace="rules" />
-      <node id="1717381292179408189" at="32,0,33,0" concept="4" trace="weavings" />
-      <node id="1717381292179408189" at="33,66,34,202" concept="14" />
-      <node id="1717381292179408189" at="34,202,35,83" concept="3" />
-      <node id="1717381292179408189" at="35,83,36,82" concept="3" />
-      <node id="1717381292179408189" at="39,70,40,99" concept="9" />
-      <node id="1717381292179408189" at="43,64,44,17" concept="9" />
-      <node id="1717381292179408189" at="47,60,48,20" concept="9" />
-      <node id="6039268229364247704" at="51,29,52,212" concept="14" />
-      <node id="6039268229364247704" at="55,103,56,80" concept="8" />
-      <node id="6039268229364247704" at="56,80,57,263" concept="8" />
-      <node id="6039268229364247704" at="57,263,58,20" concept="9" />
-      <node id="7723526804945740913" at="62,27,63,212" concept="14" />
-      <node id="7723526804945740913" at="66,94,67,105" concept="9" />
-      <node id="7723526804945740913" at="71,100,72,115" concept="9" />
-      <node id="7723526804945740913" at="75,163,76,120" concept="8" />
-      <node id="7723526804945740913" at="76,120,77,282" concept="8" />
-      <node id="7723526804945740913" at="77,282,78,51" concept="9" />
-      <node id="1717381292179408189" at="83,0,84,0" concept="12" trace="ConceptSwitchStatement$9V" />
-      <node id="6039268229364247704" at="51,0,54,0" concept="1" trace="ReductionRule0#()V" />
-      <node id="7723526804945740913" at="62,0,65,0" concept="1" trace="WeavingRule0#()V" />
-      <node id="1717381292179408189" at="38,0,42,0" concept="7" trace="isApplicable#(Ljetbrains/mps/generator/template/ITemplateGenerator;)Z" />
-      <node id="1717381292179408189" at="42,0,46,0" concept="7" trace="getReductionRules#()Ljava/util/Collection;" />
-      <node id="1717381292179408189" at="46,0,50,0" concept="7" trace="getWeavingRules#()Ljava/util/Collection;" />
-      <node id="7723526804945740913" at="65,0,69,0" concept="7" trace="isApplicable#(Ljetbrains/mps/generator/runtime/TemplateContext;)Z" />
-      <node id="1717381292179408189" at="33,0,38,0" concept="1" trace="Mapping_mc_concept_switch#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />
-      <node id="7723526804945740913" at="69,0,74,0" concept="7" trace="getContextNode#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6039268229364247704" at="54,0,60,0" concept="7" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
-      <node id="7723526804945740913" at="74,0,80,0" concept="7" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <scope id="1717381292179408189" at="39,70,40,99" />
-      <scope id="1717381292179408189" at="43,64,44,17" />
-      <scope id="1717381292179408189" at="47,60,48,20" />
-      <scope id="6039268229364247704" at="51,29,52,212" />
-      <scope id="7723526804945740913" at="62,27,63,212" />
-      <scope id="7723526804945740913" at="66,94,67,105" />
-      <scope id="7723526804945740913" at="71,100,72,115" />
-      <scope id="1717381292179408189" at="33,66,36,82" />
-      <scope id="6039268229364247704" at="51,0,54,0" />
-      <scope id="6039268229364247704" at="55,103,58,20">
+      <node id="1717381292179408189" at="30,0,31,0" concept="4" trace="rules" />
+      <node id="1717381292179408189" at="31,0,32,0" concept="4" trace="weavings" />
+      <node id="1717381292179408189" at="32,66,33,202" concept="14" />
+      <node id="1717381292179408189" at="33,202,34,83" concept="3" />
+      <node id="1717381292179408189" at="34,83,35,82" concept="3" />
+      <node id="1717381292179408189" at="38,70,39,99" concept="9" />
+      <node id="1717381292179408189" at="42,64,43,17" concept="9" />
+      <node id="1717381292179408189" at="46,60,47,20" concept="9" />
+      <node id="6039268229364247704" at="50,29,51,212" concept="14" />
+      <node id="6039268229364247704" at="54,103,55,80" concept="8" />
+      <node id="6039268229364247704" at="55,80,56,263" concept="8" />
+      <node id="6039268229364247704" at="56,263,57,20" concept="9" />
+      <node id="7723526804945740913" at="61,27,62,212" concept="14" />
+      <node id="7723526804945740913" at="65,94,66,105" concept="9" />
+      <node id="7723526804945740913" at="70,100,71,115" concept="9" />
+      <node id="7723526804945740913" at="74,163,75,257" concept="8" />
+      <node id="7723526804945740913" at="75,257,76,75" concept="9" />
+      <node id="1717381292179408189" at="81,0,82,0" concept="12" trace="ConceptSwitchStatement$9V" />
+      <node id="6039268229364247704" at="50,0,53,0" concept="1" trace="ReductionRule0#()V" />
+      <node id="7723526804945740913" at="61,0,64,0" concept="1" trace="WeavingRule0#()V" />
+      <node id="1717381292179408189" at="37,0,41,0" concept="7" trace="isApplicable#(Ljetbrains/mps/generator/template/ITemplateGenerator;)Z" />
+      <node id="1717381292179408189" at="41,0,45,0" concept="7" trace="getReductionRules#()Ljava/util/Collection;" />
+      <node id="1717381292179408189" at="45,0,49,0" concept="7" trace="getWeavingRules#()Ljava/util/Collection;" />
+      <node id="7723526804945740913" at="64,0,68,0" concept="7" trace="isApplicable#(Ljetbrains/mps/generator/runtime/TemplateContext;)Z" />
+      <node id="1717381292179408189" at="32,0,37,0" concept="1" trace="Mapping_mc_concept_switch#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />
+      <node id="7723526804945740913" at="68,0,73,0" concept="7" trace="getContextNode#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7723526804945740913" at="73,0,78,0" concept="7" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateExecutionEnvironment;Ljetbrains/mps/generator/runtime/TemplateContext;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6039268229364247704" at="53,0,59,0" concept="7" trace="apply#(Ljetbrains/mps/generator/runtime/TemplateContext;)Ljava/util/Collection;" />
+      <scope id="1717381292179408189" at="38,70,39,99" />
+      <scope id="1717381292179408189" at="42,64,43,17" />
+      <scope id="1717381292179408189" at="46,60,47,20" />
+      <scope id="6039268229364247704" at="50,29,51,212" />
+      <scope id="7723526804945740913" at="61,27,62,212" />
+      <scope id="7723526804945740913" at="65,94,66,105" />
+      <scope id="7723526804945740913" at="70,100,71,115" />
+      <scope id="7723526804945740913" at="74,163,76,75">
+        <var name="callSite" id="7723526804945740913" />
+      </scope>
+      <scope id="1717381292179408189" at="32,66,35,82" />
+      <scope id="6039268229364247704" at="50,0,53,0" />
+      <scope id="6039268229364247704" at="54,103,57,20">
         <var name="environment" id="6039268229364247704" />
         <var name="tlist1" id="6039268229364247704" />
       </scope>
-      <scope id="7723526804945740913" at="62,0,65,0" />
-      <scope id="7723526804945740913" at="75,163,78,51">
-        <var name="tlist1" id="7723526804945740913" />
-        <var name="weaveContext" id="7723526804945740913" />
-      </scope>
-      <scope id="1717381292179408189" at="38,0,42,0">
+      <scope id="7723526804945740913" at="61,0,64,0" />
+      <scope id="1717381292179408189" at="37,0,41,0">
         <var name="generator" id="1717381292179408189" />
       </scope>
-      <scope id="1717381292179408189" at="42,0,46,0" />
-      <scope id="1717381292179408189" at="46,0,50,0" />
-      <scope id="7723526804945740913" at="65,0,69,0">
+      <scope id="1717381292179408189" at="41,0,45,0" />
+      <scope id="1717381292179408189" at="45,0,49,0" />
+      <scope id="7723526804945740913" at="64,0,68,0">
         <var name="context" id="7723526804945740913" />
       </scope>
-      <scope id="1717381292179408189" at="33,0,38,0">
+      <scope id="1717381292179408189" at="32,0,37,0">
         <var name="model" id="1717381292179408189" />
       </scope>
-      <scope id="7723526804945740913" at="69,0,74,0">
+      <scope id="7723526804945740913" at="68,0,73,0">
         <var name="context" id="7723526804945740913" />
         <var name="environment" id="7723526804945740913" />
       </scope>
-      <scope id="6039268229364247704" at="54,0,60,0">
-        <var name="context" id="6039268229364247704" />
-      </scope>
-      <scope id="7723526804945740913" at="74,0,80,0">
+      <scope id="7723526804945740913" at="73,0,78,0">
         <var name="context" id="7723526804945740913" />
         <var name="environment" id="7723526804945740913" />
         <var name="outputContextNode" id="7723526804945740913" />
       </scope>
-      <unit id="1717381292179408189" at="82,0,85,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch$CONCEPTS" />
-      <unit id="6039268229364247704" at="50,0,61,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch$ReductionRule0" />
-      <unit id="7723526804945740913" at="61,0,81,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch$WeavingRule0" />
-      <unit id="1717381292179408189" at="29,0,86,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch" />
+      <scope id="6039268229364247704" at="53,0,59,0">
+        <var name="context" id="6039268229364247704" />
+      </scope>
+      <unit id="1717381292179408189" at="80,0,83,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch$CONCEPTS" />
+      <unit id="6039268229364247704" at="49,0,60,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch$ReductionRule0" />
+      <unit id="7723526804945740913" at="60,0,79,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch$WeavingRule0" />
+      <unit id="1717381292179408189" at="28,0,84,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_concept_switch" />
     </file>
     <file name="QueriesGenerated.java">
       <node id="75056552358654277" at="231,84,232,152" concept="9" />

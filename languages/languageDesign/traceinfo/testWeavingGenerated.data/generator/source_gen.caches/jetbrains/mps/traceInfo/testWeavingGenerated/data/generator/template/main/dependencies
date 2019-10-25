@@ -3,15 +3,12 @@
   <dependency className="jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main.Mapping_main">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.generator.impl.WeaveContextImpl" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.DropRootRuleBase" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.Generated" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.GenerationException" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.MapRootRuleBase" />
-    <classNode dependClassName="jetbrains.mps.generator.runtime.NodeWeaveFacility" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateCallSite" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateContext" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateDropRootRule" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateExecutionEnvironment" />

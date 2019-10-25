@@ -20,8 +20,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import jetbrains.mps.generator.impl.WeaveContextImpl;
+import jetbrains.mps.generator.runtime.TemplateCallSite;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -72,9 +71,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      NodeWeaveFacility.WeaveContext weaveContext = new WeaveContextImpl(outputContextNode, context, WeavingRule0.this);
-      Collection<SNode> tlist1 = environment.prepareWeave(weaveContext, new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738992786")).weaveTemplate(new Template_weave_InputNode_A());
-      return tlist1 != null && !(tlist1.isEmpty());
+      final TemplateCallSite callSite = environment.callSite(new Template_weave_InputNode_A(), new SNodePointer("r:00000000-0000-4000-0000-011c895905fa(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_weaveManyToSingularChild@generator)", "1218738992786"));
+      return callSite.weave(context, outputContextNode, WeavingRule0.this);
     }
   }
 

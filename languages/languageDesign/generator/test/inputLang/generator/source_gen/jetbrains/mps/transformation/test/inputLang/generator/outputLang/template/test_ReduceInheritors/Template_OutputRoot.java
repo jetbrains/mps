@@ -16,8 +16,8 @@ import jetbrains.mps.generator.template.InsertMacroContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import jetbrains.mps.generator.impl.WeaveContextImpl;
+import jetbrains.mps.generator.runtime.TemplateCallSite;
+import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.generator.impl.GeneratorUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -55,16 +55,16 @@ public class Template_OutputRoot extends TemplateDeclarationBase {
           final SNodeReference weaveMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c895905f9(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ReduceInheritors@generator)", "8417539822878722923");
           if (tlist2.size() == 1) {
             final SNode outputContextNode = tlist2.iterator().next();
-            final Iterable<SNode> weaveList3 = QueriesGenerated.sourceNodesQuery_1_0(new SourceSubstituteMacroNodesContext(context1, weaveMacroRef));
-            for (SNode itnode3 : weaveList3) {
-              if (itnode3 == null) {
+            final Iterable<SNode> weaveList = QueriesGenerated.sourceNodesQuery_1_0(new SourceSubstituteMacroNodesContext(context1, weaveMacroRef));
+            final TemplateCallSite callSite = environment.callSite(new Template_weave_InputRoot(), weaveMacroRef);
+            final WeavingWithAnchor weaveAnchor = null;
+            for (SNode itnode : weaveList) {
+              if (itnode == null) {
                 continue;
               }
-              TemplateContext weaveTemplateContext = context1.subContext(itnode3);
-              NodeWeaveFacility.WeaveContext weaveContextVar3 = new WeaveContextImpl(outputContextNode, weaveTemplateContext, null);
-              environment.prepareWeave(weaveContextVar3, new SNodePointer("r:00000000-0000-4000-0000-011c895905f9(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ReduceInheritors@generator)", "8417539822878722923")).weaveTemplate(new Template_weave_InputRoot());
+              TemplateContext weaveTemplateContext = context1.subContext(itnode);
+              callSite.weave(weaveTemplateContext, outputContextNode, weaveAnchor);
             }
-
           } else if (tlist2.size() > 1) {
             environment.getLogger().error(weaveMacroRef, "cannot apply $WEAVE$ to a list of nodes", GeneratorUtil.describeInput(context1));
           }

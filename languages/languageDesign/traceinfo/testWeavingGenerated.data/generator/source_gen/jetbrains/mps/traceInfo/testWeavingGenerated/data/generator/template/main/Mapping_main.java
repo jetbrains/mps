@@ -21,11 +21,8 @@ import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.DropRootRuleBase;
 import jetbrains.mps.generator.runtime.WeaveRuleBase;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
-import java.util.List;
-import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.generator.runtime.NodeWeaveFacility;
-import jetbrains.mps.generator.impl.WeaveContextImpl;
+import jetbrains.mps.generator.runtime.TemplateCallSite;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -80,20 +77,19 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      final List<SNode> tlist1 = new ArrayList<SNode>();
-      Iterable<SNode> weaveEachList1 = QueriesGenerated.sourceNodesQuery_0_0(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008490341")));
-      for (SNode itnode : weaveEachList1) {
+      Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_0(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008490341")));
+      final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeave(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008490341"));
+      boolean result = false;
+      for (SNode itnode : weaveEachList) {
         if (itnode == null) {
           continue;
         }
         TemplateContext innerContext = context.subContext(itnode);
-        NodeWeaveFacility.WeaveContext weaveContext = new WeaveContextImpl(outputContextNode, innerContext, WeavingRule0.this);
-        Collection<SNode> innerResult = environment.prepareWeave(weaveContext, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008490341")).weaveTemplate(new Template_weave_ChildConceptWeave());
-        if (innerResult != null) {
-          tlist1.addAll(innerResult);
+        if (callSite.weave(innerContext, outputContextNode, WeavingRule0.this)) {
+          result = true;
         }
       }
-      return tlist1 != null && !(tlist1.isEmpty());
+      return result;
     }
   }
   /*package*/ static final class WeavingRule1 extends WeaveRuleBase implements TemplateWeavingRule {
@@ -107,20 +103,19 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      final List<SNode> tlist1 = new ArrayList<SNode>();
-      Iterable<SNode> weaveEachList1 = QueriesGenerated.sourceNodesQuery_0_1(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522531")));
-      for (SNode itnode : weaveEachList1) {
+      Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_1(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522531")));
+      final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeave(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522531"));
+      boolean result = false;
+      for (SNode itnode : weaveEachList) {
         if (itnode == null) {
           continue;
         }
         TemplateContext innerContext = context.subContext(itnode);
-        NodeWeaveFacility.WeaveContext weaveContext = new WeaveContextImpl(outputContextNode, innerContext, WeavingRule1.this);
-        Collection<SNode> innerResult = environment.prepareWeave(weaveContext, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008522531")).weaveTemplate(new Template_weave_ChildConceptWeave());
-        if (innerResult != null) {
-          tlist1.addAll(innerResult);
+        if (callSite.weave(innerContext, outputContextNode, WeavingRule1.this)) {
+          result = true;
         }
       }
-      return tlist1 != null && !(tlist1.isEmpty());
+      return result;
     }
   }
   /*package*/ static final class WeavingRule2 extends WeaveRuleBase implements TemplateWeavingRule {
@@ -134,20 +129,19 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      final List<SNode> tlist1 = new ArrayList<SNode>();
-      Iterable<SNode> weaveEachList1 = QueriesGenerated.sourceNodesQuery_0_2(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533376")));
-      for (SNode itnode : weaveEachList1) {
+      Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_2(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533376")));
+      final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeaveMany(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533376"));
+      boolean result = false;
+      for (SNode itnode : weaveEachList) {
         if (itnode == null) {
           continue;
         }
         TemplateContext innerContext = context.subContext(itnode);
-        NodeWeaveFacility.WeaveContext weaveContext = new WeaveContextImpl(outputContextNode, innerContext, WeavingRule2.this);
-        Collection<SNode> innerResult = environment.prepareWeave(weaveContext, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533376")).weaveTemplate(new Template_weave_ChildConceptWeaveMany());
-        if (innerResult != null) {
-          tlist1.addAll(innerResult);
+        if (callSite.weave(innerContext, outputContextNode, WeavingRule2.this)) {
+          result = true;
         }
       }
-      return tlist1 != null && !(tlist1.isEmpty());
+      return result;
     }
   }
   /*package*/ static final class WeavingRule3 extends WeaveRuleBase implements TemplateWeavingRule {
@@ -161,20 +155,19 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      final List<SNode> tlist1 = new ArrayList<SNode>();
-      Iterable<SNode> weaveEachList1 = QueriesGenerated.sourceNodesQuery_0_3(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533361")));
-      for (SNode itnode : weaveEachList1) {
+      Iterable<SNode> weaveEachList = QueriesGenerated.sourceNodesQuery_0_3(new SourceSubstituteMacroNodesContext(context, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533361")));
+      final TemplateCallSite callSite = environment.callSite(new Template_weave_ChildConceptWeaveMany(), new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533361"));
+      boolean result = false;
+      for (SNode itnode : weaveEachList) {
         if (itnode == null) {
           continue;
         }
         TemplateContext innerContext = context.subContext(itnode);
-        NodeWeaveFacility.WeaveContext weaveContext = new WeaveContextImpl(outputContextNode, innerContext, WeavingRule3.this);
-        Collection<SNode> innerResult = environment.prepareWeave(weaveContext, new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533361")).weaveTemplate(new Template_weave_ChildConceptWeaveMany());
-        if (innerResult != null) {
-          tlist1.addAll(innerResult);
+        if (callSite.weave(innerContext, outputContextNode, WeavingRule3.this)) {
+          result = true;
         }
       }
-      return tlist1 != null && !(tlist1.isEmpty());
+      return result;
     }
   }
 
