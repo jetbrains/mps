@@ -23,7 +23,7 @@ public class check_WeaveEach_RuleConsequence_NonTypesystemRule extends AbstractN
   public check_WeaveEach_RuleConsequence_NonTypesystemRule() {
   }
   public void applyRule(final SNode weaveEach, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode template = ((SLinkOperations.getTarget(weaveEach, LINKS.template$5EOg) == null) ? SLinkOperations.getTarget(SLinkOperations.getTarget(weaveEach, LINKS.templateCall$RjMM), LINKS.template$yiTA) : SLinkOperations.getTarget(weaveEach, LINKS.template$5EOg));
+    SNode template = SLinkOperations.getTarget(SLinkOperations.getTarget(weaveEach, LINKS.templateCall$RjMM), LINKS.template$yiTA);
     if ((template == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -58,7 +58,6 @@ public class check_WeaveEach_RuleConsequence_NonTypesystemRule extends AbstractN
   private static final class LINKS {
     /*package*/ static final SContainmentLink templateCall$RjMM = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall");
     /*package*/ static final SReferenceLink template$yiTA = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
-    /*package*/ static final SReferenceLink template$5EOg = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fcbaec2L, "template");
     /*package*/ static final SReferenceLink applicableConcept$r_1F = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
     /*package*/ static final SContainmentLink sourceNodesQuery$U4wn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fccff43L, "sourceNodesQuery");
     /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");

@@ -821,8 +821,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_VarMacro_ValueQuery;
       case LanguageConceptSwitch.WeaveEach_RuleConsequence:
         if (props_WeaveEach_RuleConsequence == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L);
-          cpb.deprecateAssociation(0x1104fcbaec2L, "template");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("<weave each>");
           props_WeaveEach_RuleConsequence = cpb.create();
         }

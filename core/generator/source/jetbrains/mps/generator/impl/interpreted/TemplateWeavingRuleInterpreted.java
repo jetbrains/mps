@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,6 @@ import java.util.Collection;
  * Evgeny Gryaznov, Nov 30, 2010
  */
 public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements TemplateWeavingRule {
-
   private final SNode myRuleNode;
   private final Consequence myConsequence;
   private final SNode myTemplate;
@@ -71,10 +70,9 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
         myConsequence = new TemplateDeclarationConsequence(consequenceNode);
         myTemplate = RuleUtil.getTemplateCall_Template(consequenceNode);
       } else if (RuleUtil.concept_WeaveEach_RuleConsequence.equals(consequenceConcept)) {
-        SNode legacyTemplateDecl = RuleUtil.getWeaveEach_Template(consequenceNode);
         SNode templateCall = RuleUtil.getWeaveEach_TemplateCall(consequenceNode);
         myConsequence = new ForeachConsequence(consequenceNode, templateCall);
-        myTemplate = templateCall != null ? RuleUtil.getTemplateCall_Template(templateCall) : legacyTemplateDecl;
+        myTemplate = RuleUtil.getTemplateCall_Template(templateCall);
       } else {
         myConsequence = new InvalidConsequence("weaving rule: unsupported rule myConsequence", GeneratorUtil.describe(consequenceNode, "rule myConsequence"));
         myTemplate = null;

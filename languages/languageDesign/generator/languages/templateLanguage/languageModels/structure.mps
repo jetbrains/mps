@@ -926,15 +926,6 @@
     <property role="34LRSv" value="&lt;weave each&gt;" />
     <property role="EcuMT" value="1169569792945" />
     <ref role="1TJDcQ" node="h0jzcLb" resolve="RuleConsequence" />
-    <node concept="1TJgyj" id="h1fMUV2" role="1TKVEi">
-      <property role="20kJfa" value="template" />
-      <property role="IQ2ns" value="1169569853122" />
-      <ref role="20lvS9" node="fT3MO7g" resolve="TemplateDeclaration" />
-      <node concept="asaX9" id="6JoULz$jqnD" role="lGtFl">
-        <property role="YLQ7P" value="Replaced with templateCall" />
-        <property role="YLPcu" value="2018.3" />
-      </node>
-    </node>
     <node concept="1TJgyj" id="h1fNfX3" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="sourceNodesQuery" />
@@ -946,10 +937,8 @@
       <property role="IQ2ns" value="7771219649169827299" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="templateCall" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="6JoULz$jqfj" resolve="TemplateCall" />
-      <node concept="t5JxF" id="6JoULz$jqnB" role="lGtFl">
-        <property role="t5JxN" value="FIXME change to [1] once template:TD reference gone" />
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h1lLz4x">

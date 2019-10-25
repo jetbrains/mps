@@ -2,7 +2,6 @@
 <model ref="r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)">
   <persistence version="9" />
   <languages>
-    <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
@@ -4967,40 +4966,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="2w1_mCSM4Xp" role="jymVt" />
-    <node concept="2YIFZL" id="6b_0Q3U$34V" role="jymVt">
-      <property role="TrG5h" value="getWeaveEach_Template" />
-      <node concept="P$JXv" id="1ABN$xHWqRf" role="lGtFl">
-        <node concept="TZ5HI" id="1ABN$xHWqRg" role="3nqlJM">
-          <node concept="TZ5HA" id="1ABN$xHWqRh" role="3HnX3l" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="1ABN$xHWqRi" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="3Tqbb2" id="6b_0Q3U$34W" role="3clF45">
-        <ref role="ehGHo" to="tpf8:fT3MO7g" resolve="TemplateDeclaration" />
-      </node>
-      <node concept="3Tm1VV" id="6b_0Q3U$34X" role="1B3o_S" />
-      <node concept="3clFbS" id="6b_0Q3U$34Y" role="3clF47">
-        <node concept="3clFbF" id="6b_0Q3U$34Z" role="3cqZAp">
-          <node concept="2OqwBi" id="6b_0Q3U$350" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxgm_g7" role="2Oq$k0">
-              <ref role="3cqZAo" node="6b_0Q3U$353" resolve="weaveEach" />
-            </node>
-            <node concept="3TrEf2" id="6b_0Q3U$355" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpf8:h1fMUV2" resolve="template" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="6b_0Q3U$353" role="3clF46">
-        <property role="TrG5h" value="weaveEach" />
-        <node concept="3Tqbb2" id="6b_0Q3U$354" role="1tU5fm">
-          <ref role="ehGHo" to="tpf8:h1fMGeL" resolve="WeaveEach_RuleConsequence" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="2w1_mCSLPcm" role="jymVt" />
     <node concept="2YIFZL" id="1ABN$xHWrU$" role="jymVt">
       <property role="TrG5h" value="getWeaveEach_TemplateCall" />
       <node concept="3Tqbb2" id="1ABN$xHWrU_" role="3clF45">
@@ -5026,7 +4991,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="2w1_mCSLQuz" role="jymVt" />
     <node concept="2tJIrI" id="1ABN$xHWrjf" role="jymVt" />
     <node concept="2YIFZL" id="6b_0Q3U$34F" role="jymVt">
       <property role="TrG5h" value="getWeaveEach_SourceNodesQuery" />

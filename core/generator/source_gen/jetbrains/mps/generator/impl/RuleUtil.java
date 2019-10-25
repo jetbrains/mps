@@ -353,19 +353,9 @@ public final class RuleUtil {
     return SLinkOperations.getTarget(ruleConsequence, LINKS.defaultConsequence$kqRz);
   }
 
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  public static SNode getWeaveEach_Template(SNode weaveEach) {
-    return SLinkOperations.getTarget(weaveEach, LINKS.template$5EOg);
-  }
-
   public static SNode getWeaveEach_TemplateCall(SNode weaveEach) {
     return SLinkOperations.getTarget(weaveEach, LINKS.templateCall$RjMM);
   }
-
 
   public static SNode getWeaveEach_SourceNodesQuery(SNode weaveEach) {
     return SLinkOperations.getTarget(weaveEach, LINKS.sourceNodesQuery$U4wn);
@@ -533,7 +523,6 @@ public final class RuleUtil {
     /*package*/ static final SContainmentLink conditionFunction$4FSy = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L, 0x11645011ba5L, "conditionFunction");
     /*package*/ static final SContainmentLink caseConsequence$88kD = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fdbf49L, 0x11645018abcL, "caseConsequence");
     /*package*/ static final SContainmentLink defaultConsequence$kqRz = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, 0x11644fb7f64L, "defaultConsequence");
-    /*package*/ static final SReferenceLink template$5EOg = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fcbaec2L, "template");
     /*package*/ static final SContainmentLink templateCall$RjMM = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall");
     /*package*/ static final SContainmentLink sourceNodesQuery$U4wn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fccff43L, "sourceNodesQuery");
     /*package*/ static final SContainmentLink contentNode$UkrJ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");

@@ -1429,9 +1429,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("jetbrains.mps.lang.generator.structure.RuleConsequence", 0xb401a68083254110L, 0x8fd384331ff25befL, 0x110138ccc4bL);
     b.origin("r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1169569792945");
     b.version(2);
-    b.associate("template", 0x1104fcbaec2L).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L).optional(true).origin("1169569853122").done();
     b.aggregate("sourceNodesQuery", 0x1104fccff43L).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef5bd603L).optional(false).ordered(true).multiple(false).origin("1169569939267").done();
-    b.aggregate("templateCall", 0x6bd8eb18e44da5e3L).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6bd8eb18e44da3d3L).optional(true).ordered(true).multiple(false).origin("7771219649169827299").done();
+    b.aggregate("templateCall", 0x6bd8eb18e44da5e3L).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0x6bd8eb18e44da3d3L).optional(false).ordered(true).multiple(false).origin("7771219649169827299").done();
     b.kind(ConceptKind.IMPLEMENTATION, StaticScope.GLOBAL);
     b.alias("<weave each>");
     return b.create();

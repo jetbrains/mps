@@ -1160,7 +1160,7 @@
       </scope>
     </file>
     <file name="check_WeaveEach_RuleConsequence_NonTypesystemRule.java">
-      <node id="546192990993046839" at="25,122,26,263" concept="11" />
+      <node id="546192990993046839" at="25,122,26,131" concept="11" />
       <node id="546192990993044375" at="28,7,29,66" concept="11" />
       <node id="546192990993044375" at="29,66,30,232" concept="11" />
       <node id="546192990993046874" at="32,12,33,165" concept="11" />
@@ -1175,13 +1175,12 @@
       <node id="1226664040798" at="54,30,55,17" concept="12" />
       <node id="1226664040798" at="59,0,60,0" concept="15" trace="templateCall$RjMM" />
       <node id="1226664040798" at="60,0,61,0" concept="15" trace="template$yiTA" />
-      <node id="1226664040798" at="61,0,62,0" concept="15" trace="template$5EOg" />
-      <node id="1226664040798" at="62,0,63,0" concept="15" trace="applicableConcept$r_1F" />
-      <node id="1226664040798" at="63,0,64,0" concept="15" trace="sourceNodesQuery$U4wn" />
-      <node id="1226664040798" at="64,0,65,0" concept="15" trace="concept$HWFQ" />
-      <node id="1226664040798" at="68,0,69,0" concept="15" trace="TemplateDeclaration$q0" />
-      <node id="1226664040798" at="69,0,70,0" concept="15" trace="SNodeType$gn" />
-      <node id="1226664040798" at="70,0,71,0" concept="15" trace="WeaveEach_RuleConsequence$M2" />
+      <node id="1226664040798" at="61,0,62,0" concept="15" trace="applicableConcept$r_1F" />
+      <node id="1226664040798" at="62,0,63,0" concept="15" trace="sourceNodesQuery$U4wn" />
+      <node id="1226664040798" at="63,0,64,0" concept="15" trace="concept$HWFQ" />
+      <node id="1226664040798" at="67,0,68,0" concept="15" trace="TemplateDeclaration$q0" />
+      <node id="1226664040798" at="68,0,69,0" concept="15" trace="SNodeType$gn" />
+      <node id="1226664040798" at="69,0,70,0" concept="15" trace="WeaveEach_RuleConsequence$M2" />
       <node id="1226664040798" at="23,0,25,0" concept="3" trace="check_WeaveEach_RuleConsequence_NonTypesystemRule#()V" />
       <node id="546192990993046882" at="33,165,36,7" concept="9" />
       <node id="1226664040798" at="48,0,51,0" concept="10" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1191,7 +1190,7 @@
       <node id="546192990993046908" at="40,143,44,9" concept="1" />
       <node id="546192990993046906" at="39,121,45,7" concept="9" />
       <node id="546192990993046868" at="32,10,46,5" concept="1" />
-      <node id="546192990993044373" at="26,263,46,5" concept="9" />
+      <node id="546192990993044373" at="26,131,46,5" concept="9" />
       <node id="1226664040798" at="25,0,48,0" concept="10" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="1226664040798" at="23,62,23,62" />
       <scope id="546192990993046883" at="34,46,35,15" />
@@ -1228,9 +1227,9 @@
         <var name="typeCheckingContext" id="1226664040798" />
         <var name="weaveEach" id="1226664040798" />
       </scope>
-      <unit id="1226664040798" at="67,0,72,0" name="jetbrains.mps.lang.generator.typesystem.check_WeaveEach_RuleConsequence_NonTypesystemRule$CONCEPTS" />
-      <unit id="1226664040798" at="58,0,66,0" name="jetbrains.mps.lang.generator.typesystem.check_WeaveEach_RuleConsequence_NonTypesystemRule$LINKS" />
-      <unit id="1226664040798" at="22,0,73,0" name="jetbrains.mps.lang.generator.typesystem.check_WeaveEach_RuleConsequence_NonTypesystemRule" />
+      <unit id="1226664040798" at="66,0,71,0" name="jetbrains.mps.lang.generator.typesystem.check_WeaveEach_RuleConsequence_NonTypesystemRule$CONCEPTS" />
+      <unit id="1226664040798" at="58,0,65,0" name="jetbrains.mps.lang.generator.typesystem.check_WeaveEach_RuleConsequence_NonTypesystemRule$LINKS" />
+      <unit id="1226664040798" at="22,0,72,0" name="jetbrains.mps.lang.generator.typesystem.check_WeaveEach_RuleConsequence_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)/1241017459780">

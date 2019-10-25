@@ -19,11 +19,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
@@ -43,7 +44,7 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.templateCall$RjMM) == null) && (SLinkOperations.getTarget(node, LINKS.template$5EOg) == null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Weaving_MappingRule$Iv);
+    return (SLinkOperations.getTarget(node, LINKS.templateCall$RjMM) == null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Weaving_MappingRule$Iv);
   }
   @Override
   public boolean isSurroundWith() {
@@ -90,7 +91,7 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
       //  make reference 
       SLinkOperations.setNewChild(node, LINKS.templateCall$RjMM, null);
       SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.templateCall$RjMM), LINKS.template$yiTA, t);
-      SelectionUtil.selectCell(editorContext, node, "templateName");
+      SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(node, LINKS.templateCall$RjMM), SelectionManager.FIRST_EDITABLE_CELL);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -106,7 +107,6 @@ public final class NewTemplateInWeaveEach_Intention extends AbstractIntentionDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$5EOg = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fcbaec2L, "template");
     /*package*/ static final SContainmentLink templateCall$RjMM = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall");
     /*package*/ static final SReferenceLink applicableConcept$ljwo = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
     /*package*/ static final SReferenceLink applicableConcept$r_1F = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0x1100343ad9eL, "applicableConcept");
