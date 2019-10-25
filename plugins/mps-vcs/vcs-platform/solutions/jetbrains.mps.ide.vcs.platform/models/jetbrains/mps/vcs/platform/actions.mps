@@ -301,9 +301,6 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
         <property id="1200397540847" name="charConstant" index="1XhdNS" />
       </concept>
@@ -1778,19 +1775,15 @@
         <node concept="3cpWs8" id="78RbNhWi9P8" role="3cqZAp">
           <node concept="3cpWsn" id="78RbNhWi9P9" role="3cpWs9">
             <property role="TrG5h" value="statusProvider" />
-            <node concept="2OqwBi" id="78RbNhWi9Pb" role="33vP2m">
-              <node concept="liA8E" id="78RbNhWi9Pd" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="78RbNhWi9Pe" role="37wK5m">
-                  <ref role="3VsUkX" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
-                </node>
-              </node>
-              <node concept="37vLTw" id="2BHiRxgmb_i" role="2Oq$k0">
-                <ref role="3cqZAo" node="78RbNhWi9Pk" resolve="project" />
-              </node>
-            </node>
             <node concept="3uibUv" id="78RbNhWi9Pa" role="1tU5fm">
               <ref role="3uigEE" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
+            </node>
+            <node concept="2YIFZM" id="2QHLnxr027G" role="33vP2m">
+              <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
+              <node concept="37vLTw" id="2QHLnxr02or" role="37wK5m">
+                <ref role="3cqZAo" node="78RbNhWi9Pk" resolve="project" />
+              </node>
             </node>
           </node>
         </node>

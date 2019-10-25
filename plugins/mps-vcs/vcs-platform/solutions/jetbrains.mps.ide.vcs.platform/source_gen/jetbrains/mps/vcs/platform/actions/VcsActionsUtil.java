@@ -188,7 +188,7 @@ __switch__:
       return Sequence.fromIterable(Collections.<VirtualFile>emptyList());
     }
     IFile moduleDir = descriptorFile.getParent();
-    VcsFileStatusProvider statusProvider = project.getComponent(VcsFileStatusProvider.class);
+    VcsFileStatusProvider statusProvider = VcsFileStatusProvider.getInstance(project);
     VirtualFile virtualFile = VirtualFileUtils.getVirtualFile(moduleDir);
     if (virtualFile == null) {
       return Sequence.fromIterable(Collections.<VirtualFile>emptyList());

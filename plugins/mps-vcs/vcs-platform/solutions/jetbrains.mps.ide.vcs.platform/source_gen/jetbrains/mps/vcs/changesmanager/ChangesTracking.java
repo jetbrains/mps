@@ -450,7 +450,7 @@ public class ChangesTracking {
         // model file can be affected also 
         SetSequence.fromSet(affectedFiles).addElement(ds.getFile(FilePerRootDataSource.HEADER_FILE));
       }
-      VcsFileStatusProvider provider = myProject.getComponent(VcsFileStatusProvider.class);
+      VcsFileStatusProvider provider = VcsFileStatusProvider.getInstance(myProject);
       for (IFile iFile : SetSequence.fromSet(affectedFiles)) {
         VirtualFile vFile = VirtualFileUtils.getVirtualFile(iFile);
         if (vFile != null) {

@@ -8910,15 +8910,11 @@
               <node concept="3uibUv" id="19wAVa0k_qg" role="1tU5fm">
                 <ref role="3uigEE" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
               </node>
-              <node concept="2OqwBi" id="19wAVa0k_qk" role="33vP2m">
-                <node concept="37vLTw" id="19wAVa0k_ql" role="2Oq$k0">
+              <node concept="2YIFZM" id="2QHLnxr1pHr" role="33vP2m">
+                <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                <ref role="1Pybhc" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
+                <node concept="37vLTw" id="2QHLnxr1pSj" role="37wK5m">
                   <ref role="3cqZAo" node="2JwSLRbzlnZ" resolve="myProject" />
-                </node>
-                <node concept="liA8E" id="19wAVa0k_qm" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="19wAVa0k_qn" role="37wK5m">
-                    <ref role="3VsUkX" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
-                  </node>
                 </node>
               </node>
             </node>
