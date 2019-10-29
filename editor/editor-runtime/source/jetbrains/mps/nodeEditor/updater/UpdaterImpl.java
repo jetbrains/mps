@@ -168,7 +168,7 @@ public class UpdaterImpl implements Updater {
 
   @Override
   public boolean setInitialEditorHints(@Nullable String[] hints) {
-    assert !myDisposed;
+    assert !myDisposed : "editor is already disposed";
     boolean changed = !Arrays.equals(myInitialHints, hints);
     myInitialHints = hints;
     return changed;
