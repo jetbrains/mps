@@ -33,13 +33,8 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -54,7 +49,6 @@ public class SModelRepository {
   private final Object myModelsLock = new Object();
   private final List<SModel> myAllModels = new ArrayList<>();
   private final Map<SModelId, SModel> myIdToModelDescriptorMap = new ConcurrentHashMap<>();
-  private final HashMap<SModelId, Set<SModel>> myIdToModelsMap = new HashMap<>();
 
   /*
    * SModelRepository used to be global repo listener. With ProjectRepository exposing all modules visible from a project?
@@ -75,14 +69,6 @@ public class SModelRepository {
   @ToRemove(version = 3.3)
   public static SModelRepository getInstance() {
     LOG.error("SModelRepository.getInstance() has been deprecated since MPS 3.3 (4 years ago!) and will be removed in MPS 2019.3. Please refactor your code!");
-    return INSTANCE;
-  }
-
-  /**
-   * SModelRepository shall become a helper component that is attached to a regular (project) repository.
-   * This method is likely to be moved somewhere during ongoing refactoring of the class.
-   */
-  public static SModelRepository getInstance(SRepository repository) {
     return INSTANCE;
   }
 
@@ -138,10 +124,6 @@ public class SModelRepository {
     return value;
   }
 
-  public Collection<SModel> findModels(SModelId id) {
-    Set<SModel> result = myIdToModelsMap.get(id);
-    return result == null ? Collections.emptySet() : Collections.unmodifiableCollection(result);
-  }
 
   // XXX there are uses in mbeddr
   @Deprecated
@@ -220,31 +202,16 @@ public class SModelRepository {
         myIdToModelDescriptorMap.put(modelId, model);
       }
       synchronized (myModelsLock) {
-        myIdToModelsMap.compute(modelId, (id, modelSet) -> {
-          if (modelSet == null) {
-            return new HashSet<>(Collections.singleton(model));
-          } else {
-            HashSet<SModel> result = new HashSet<>(modelSet);
-            result.add(model);
-            return result;
-          }
-        });
         myAllModels.add(model);
       }
     }
 
     @Override
     protected void stopListening(SModel model) {
-      SModelId modelId = model.getModelId();
       synchronized (myModelsLock) {
         myAllModels.remove(model);
-        myIdToModelsMap.compute(modelId, (id, modelSet) -> {
-          HashSet<SModel> result = new HashSet<>(modelSet);
-          result.remove(model);
-          return result.isEmpty() ? null : result;
-        });
       }
-      myIdToModelDescriptorMap.remove(modelId);
+      myIdToModelDescriptorMap.remove(model.getModelId());
     }
   }
 }

@@ -10,15 +10,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.util.JavaNameUtil;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.smodel.SModelRepository;
+import jetbrains.mps.util.ClassType;
+import jetbrains.mps.smodel.BootstrapLanguages;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
@@ -28,6 +28,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.SModelStereotype;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -45,7 +47,8 @@ public class StubClassifierCorrespondenceHelper {
       return result;
     }
     SModule mpsModule = check_79n3t7_a0d0b(SNodeOperations.getModel(nodeClassifier));
-    if (mpsModule == null) {
+    SRepository repository = check_79n3t7_a0e0b(mpsModule);
+    if (repository == null) {
       return null;
     }
     String fqName = ((String) BHReflection.invoke0(nodeClassifier, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
@@ -54,8 +57,8 @@ public class StubClassifierCorrespondenceHelper {
     SModelId stubModelId = new JavaPackageNameStub(JavaNameUtil.packageName(SNodeOperations.getModel(nodeClassifier))).asModelId();
     SNodeId nodeId = new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + nestedShortName);
 
-    for (SModel stubModel : CollectionSequence.fromCollection(SModelRepository.getInstance(mpsModule.getRepository()).findModels(stubModelId))) {
-      SNode stubClass = stubModel.getNode(nodeId);
+    for (ClassType classType : ClassType.values()) {
+      SNode stubClass = check_79n3t7_a0a0m0b(check_79n3t7_a0a0a21a1(check_79n3t7_a0a0a0m0b(BootstrapLanguages.bootstrapSolutionRef(classType), repository), stubModelId), nodeId);
       if (stubClass != null) {
         ListSequence.fromList(result).addElement(SNodeOperations.cast(stubClass, CONCEPTS.Classifier$hJ));
       }
@@ -124,6 +127,30 @@ public class StubClassifierCorrespondenceHelper {
   private static SModule check_79n3t7_a0d0b(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
+    }
+    return null;
+  }
+  private static SRepository check_79n3t7_a0e0b(SModule checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getRepository();
+    }
+    return null;
+  }
+  private static SNode check_79n3t7_a0a0m0b(SModel checkedDotOperand, SNodeId nodeId) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getNode(nodeId);
+    }
+    return null;
+  }
+  private static SModel check_79n3t7_a0a0a21a1(SModule checkedDotOperand, SModelId stubModelId) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getModel(stubModelId);
+    }
+    return null;
+  }
+  private static SModule check_79n3t7_a0a0a0m0b(SModuleReference checkedDotOperand, SRepository repository) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.resolve(repository);
     }
     return null;
   }
