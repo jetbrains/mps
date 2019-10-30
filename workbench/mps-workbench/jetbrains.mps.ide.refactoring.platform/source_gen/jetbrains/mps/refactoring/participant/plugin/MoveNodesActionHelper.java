@@ -8,8 +8,11 @@ import org.apache.log4j.LogManager;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.structure.ExtensionPoint;
+import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.structure.ExtensionPoint;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.apache.log4j.Level;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -19,18 +22,23 @@ import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 public class MoveNodesActionHelper {
   private static final Logger LOG = LogManager.getLogger(MoveNodesActionHelper.class);
   public static MoveNodesAction getRefactoring(final MPSProject project, final List<SNode> nodesToMove) {
-    Iterable<MoveNodesAction> specialRefactorings = new ExtensionPoint<MoveNodesAction>("jetbrains.mps.refactoring.participant.MoveNodesActionEP").getObjects();
-    Iterable<MoveNodesAction> applicableRefactorings = Sequence.fromIterable(specialRefactorings).where(new IWhereFilter<MoveNodesAction>() {
-      public boolean accept(MoveNodesAction it) {
-        return it.isApplicable(project, nodesToMove);
+    final Collection<MoveNodesAction> specialRefactorings = Sequence.fromIterable(new ExtensionPoint<MoveNodesAction>("jetbrains.mps.refactoring.participant.MoveNodesActionEP").getObjects()).toListSequence();
+    final Wrappers._T<Collection<MoveNodesAction>> applicableRefactorings = new Wrappers._T<Collection<MoveNodesAction>>();
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        applicableRefactorings.value = CollectionSequence.fromCollection(specialRefactorings).where(new IWhereFilter<MoveNodesAction>() {
+          public boolean accept(MoveNodesAction it) {
+            return it.isApplicable(project, nodesToMove);
+          }
+        }).toListSequence();
       }
     });
-    if (Sequence.fromIterable(applicableRefactorings).isEmpty()) {
+    if (CollectionSequence.fromCollection(applicableRefactorings.value).isEmpty()) {
       return new MoveNodesActionBase();
     } else {
-      if (Sequence.fromIterable(applicableRefactorings).count() > 1) {
+      if (CollectionSequence.fromCollection(applicableRefactorings.value).count() > 1) {
         if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("More than one MoveNodes refactoring applicable: " + Sequence.fromIterable(applicableRefactorings).select(new ISelector<MoveNodesAction, String>() {
+          LOG.error("More than one MoveNodes refactoring applicable: " + CollectionSequence.fromCollection(applicableRefactorings.value).select(new ISelector<MoveNodesAction, String>() {
             public String select(MoveNodesAction it) {
               return "\"" + it.getName() + "\"";
             }
@@ -41,8 +49,7 @@ public class MoveNodesActionHelper {
           }));
         }
       }
-      return Sequence.fromIterable(applicableRefactorings).first();
+      return CollectionSequence.fromCollection(applicableRefactorings.value).first();
     }
   }
-
 }

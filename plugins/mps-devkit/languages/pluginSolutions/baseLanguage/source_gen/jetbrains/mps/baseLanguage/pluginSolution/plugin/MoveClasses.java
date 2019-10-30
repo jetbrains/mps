@@ -13,9 +13,9 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction {
 
@@ -34,7 +34,7 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   public boolean isApplicable(MPSProject project, List<SNode> nodes) {
     return super.isApplicable(project, nodes) && ListSequence.fromList(nodes).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ) && (SNodeOperations.getParent(it) == null || SNodeOperations.hasRole(it, LINKS.member$oYX5));
       }
     });
   }
@@ -49,11 +49,11 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
     return super.tryToSetRole(repo, nodesToMove, selectedObject);
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-  }
-
   private static final class LINKS {
     /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

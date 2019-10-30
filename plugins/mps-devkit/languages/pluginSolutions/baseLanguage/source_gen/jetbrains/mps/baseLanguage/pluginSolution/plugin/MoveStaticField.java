@@ -8,8 +8,8 @@ import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.platform.refactoring.MoveNodeDialog;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
@@ -39,7 +39,12 @@ public class MoveStaticField implements MoveNodesAction {
     return "Move Static Field";
   }
   public boolean isApplicable(MPSProject project, final List<SNode> nodes) {
-    final Wrappers._boolean result = new Wrappers._boolean();/* error: statement w/o textGen:read action */
+    final Wrappers._boolean result = new Wrappers._boolean();
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.StaticFieldDeclaration$R5);
+      }
+    });
     return result.value;
   }
   public void execute(MPSProject project, List<SNode> nodes) {
