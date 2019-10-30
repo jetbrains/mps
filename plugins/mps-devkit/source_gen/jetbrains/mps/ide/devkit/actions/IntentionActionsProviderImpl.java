@@ -29,7 +29,7 @@ public class IntentionActionsProviderImpl implements IntentionActionsProvider {
   public AnAction[] getIntentionActions(@NotNull final IntentionExecutable intention) {
     Icon icon = new IntentionIconProvider(intention.getDescriptor().getKind()).getIcon();
 
-    AnAction[] actions = {new BaseAction("Go to Intention Declaration", "Go to declaration of this intention", icon) {
+    BaseAction go2IntentionDecl = new BaseAction("Go to Intention Declaration", "Go to declaration of this intention", icon) {
       @Override
       protected void doExecute(AnActionEvent e, Map<String, Object> params) {
         final MPSProject mpsProject = e.getData(MPSCommonDataKeys.MPS_PROJECT);
@@ -53,7 +53,9 @@ public class IntentionActionsProviderImpl implements IntentionActionsProvider {
       protected void doUpdate(AnActionEvent e, Map<String, Object> params) {
         setEnabledState(e.getPresentation(), intention.getDescriptor().getIntentionNodeReference() != null);
       }
-    }, new BaseAction("Disable This Intention", "Disables this intention type", icon) {
+    };
+
+    BaseAction disableIntention = new BaseAction("Disable This Intention", "Disables this intention type", icon) {
       @Override
       protected void doExecute(AnActionEvent e, Map<String, Object> params) {
         IntentionsManager.getInstance().disableIntention(intention.getDescriptor().getPersistentStateKey());
@@ -62,8 +64,8 @@ public class IntentionActionsProviderImpl implements IntentionActionsProvider {
       protected void doUpdate(AnActionEvent e, Map<String, Object> params) {
         setEnabledState(e.getPresentation(), !(intention.getDescriptor() instanceof QuickFixAdapter));
       }
-    }};
+    };
 
-    return actions;
+    return new AnAction[]{go2IntentionDecl, disableIntention};
   }
 }
