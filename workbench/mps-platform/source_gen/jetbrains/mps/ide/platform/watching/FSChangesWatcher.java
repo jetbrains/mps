@@ -24,6 +24,7 @@ import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import java.util.function.Supplier;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.newvfs.events.VFileContentChangeEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileCreateEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileDeleteEvent;
@@ -126,6 +127,10 @@ public class FSChangesWatcher implements ApplicationComponent {
     }
 
     private void processAfterEvent(VFileEvent event, FileProcessor processor) {
+      if (!((event.getFileSystem() instanceof LocalFileSystem))) {
+        return;
+      }
+
       String path = event.getPath();
       if (LOG.isDebugEnabled()) {
         LOG.debug("Process after event for " + path);

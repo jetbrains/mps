@@ -1981,6 +1981,29 @@
           </node>
         </node>
         <node concept="3clFbS" id="7mrRUyVUv8R" role="3clF47">
+          <node concept="3clFbJ" id="5XXyTQaNnBv" role="3cqZAp">
+            <node concept="3fqX7Q" id="5XXyTQaNnBw" role="3clFbw">
+              <node concept="1eOMI4" id="5XXyTQaNnB$" role="3fr31v">
+                <node concept="2ZW3vV" id="5XXyTQaNnBz" role="1eOMHV">
+                  <node concept="2OqwBi" id="5XXyTQaNohD" role="2ZW6bz">
+                    <node concept="37vLTw" id="5XXyTQaNohC" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7mrRUyVUv8N" resolve="event" />
+                    </node>
+                    <node concept="liA8E" id="5XXyTQaNohE" role="2OqNvi">
+                      <ref role="37wK5l" to="p3o1:~VFileEvent.getFileSystem()" resolve="getFileSystem" />
+                    </node>
+                  </node>
+                  <node concept="3uibUv" id="5XXyTQaNnBy" role="2ZW6by">
+                    <ref role="3uigEE" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="5XXyTQaNnBA" role="3clFbx">
+              <node concept="3cpWs6" id="5XXyTQaNnBB" role="3cqZAp" />
+            </node>
+          </node>
+          <node concept="3clFbH" id="5XXyTQaNbVk" role="3cqZAp" />
           <node concept="3cpWs8" id="7QxwFodac0H" role="3cqZAp">
             <node concept="3cpWsn" id="7QxwFodac0I" role="3cpWs9">
               <property role="TrG5h" value="path" />

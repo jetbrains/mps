@@ -8,6 +8,7 @@
   <dependency className="jetbrains.mps.ide.platform.watching.FSChangesWatcher">
     <classNode dependClassName="com.intellij.openapi.application.Application" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
+    <classNode dependClassName="com.intellij.openapi.vfs.LocalFileSystem" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileManager" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileManagerListener" />
     <classNode dependClassName="com.intellij.openapi.vfs.newvfs.BulkFileListener" />
