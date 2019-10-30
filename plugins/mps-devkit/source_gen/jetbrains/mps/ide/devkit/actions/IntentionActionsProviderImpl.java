@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
-import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.intentions.IntentionsManager;
 import jetbrains.mps.intentions.QuickFixAdapter;
 
@@ -31,9 +30,6 @@ public class IntentionActionsProviderImpl implements IntentionActionsProvider {
     Icon icon = new IntentionIconProvider(intention.getDescriptor().getKind()).getIcon();
 
     AnAction[] actions = {new BaseAction("Go to Intention Declaration", "Go to declaration of this intention", icon) {
-      {
-        setIsAlwaysVisible(true);
-      }
       @Override
       protected void doExecute(AnActionEvent e, Map<String, Object> params) {
         final MPSProject mpsProject = e.getData(MPSCommonDataKeys.MPS_PROJECT);
@@ -49,8 +45,7 @@ public class IntentionActionsProviderImpl implements IntentionActionsProvider {
         }))) {
           Messages.showErrorDialog(mpsProject.getProject(), String.format("Could not find declaration for %s intention (%s)", intention.getClass().getSimpleName(), intention.getClass().getName()), "Intention Declaration");
         } else {
-          new EditorNavigator(mpsProject).shallFocus(true).shallSelect(true).open(nodeRef);
-          new ProjectPaneNavigator(mpsProject).select(nodeRef);
+          new EditorNavigator(mpsProject).shallFocus(true).shallSelect(false).open(nodeRef);
         }
       }
 

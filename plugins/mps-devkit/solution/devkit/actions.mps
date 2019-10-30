@@ -498,9 +498,6 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
-      <concept id="1206629501431" name="jetbrains.mps.baseLanguage.structure.InstanceInitializer" flags="lg" index="3KIgzJ">
-        <child id="1206629521979" name="statementList" index="3KIlGz" />
-      </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
@@ -12738,18 +12735,6 @@
                     <property role="1EXbeo" value="false" />
                     <ref role="1Y3XeK" to="7bx7:~BaseAction" resolve="BaseAction" />
                     <ref role="37wK5l" to="7bx7:~BaseAction.&lt;init&gt;(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="BaseAction" />
-                    <node concept="3KIgzJ" id="Hjn6ojkYze" role="jymVt">
-                      <node concept="3clFbS" id="Hjn6ojkYzg" role="3KIlGz">
-                        <node concept="3clFbF" id="Hjn6ojkZJR" role="3cqZAp">
-                          <node concept="1rXfSq" id="Hjn6ojkZJQ" role="3clFbG">
-                            <ref role="37wK5l" to="7bx7:~BaseAction.setIsAlwaysVisible(boolean)" resolve="setIsAlwaysVisible" />
-                            <node concept="3clFbT" id="Hjn6ojl07D" role="37wK5m">
-                              <property role="3clFbU" value="true" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="Xl_RD" id="5Szoie_pmOB" role="37wK5m">
                       <property role="Xl_RC" value="Go to Intention Declaration" />
                     </node>
@@ -12976,32 +12961,12 @@
                                     </node>
                                     <node concept="liA8E" id="Hjn6ojluEo" role="2OqNvi">
                                       <ref role="37wK5l" to="kz9k:~EditorNavigator.shallSelect(boolean)" resolve="shallSelect" />
-                                      <node concept="3clFbT" id="Hjn6ojlvc2" role="37wK5m">
-                                        <property role="3clFbU" value="true" />
-                                      </node>
+                                      <node concept="3clFbT" id="3KYRtFUBnXe" role="37wK5m" />
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="Hjn6ojlwvA" role="2OqNvi">
                                     <ref role="37wK5l" to="kz9k:~EditorNavigator.open(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="open" />
                                     <node concept="37vLTw" id="Hjn6ojlx2g" role="37wK5m">
-                                      <ref role="3cqZAo" node="5Szoie_o8Zz" resolve="nodeRef" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3clFbF" id="Hjn6ojlO1C" role="3cqZAp">
-                                <node concept="2OqwBi" id="Hjn6ojlR9j" role="3clFbG">
-                                  <node concept="2ShNRf" id="Hjn6ojlO1$" role="2Oq$k0">
-                                    <node concept="1pGfFk" id="Hjn6ojlQt8" role="2ShVmc">
-                                      <ref role="37wK5l" to="kz9k:~ProjectPaneNavigator.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="ProjectPaneNavigator" />
-                                      <node concept="37vLTw" id="Hjn6ojlR0j" role="37wK5m">
-                                        <ref role="3cqZAo" node="5Szoie_p25U" resolve="mpsProject" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="liA8E" id="Hjn6ojlRnF" role="2OqNvi">
-                                    <ref role="37wK5l" to="kz9k:~ProjectPaneNavigator.select(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="select" />
-                                    <node concept="37vLTw" id="Hjn6ojlS2Q" role="37wK5m">
                                       <ref role="3cqZAo" node="5Szoie_o8Zz" resolve="nodeRef" />
                                     </node>
                                   </node>
@@ -13032,9 +12997,7 @@
                         <property role="TrG5h" value="params" />
                         <node concept="3uibUv" id="Hjn6ojkTqh" role="1tU5fm">
                           <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
-                          <node concept="3uibUv" id="Hjn6ojkTqi" role="11_B2D">
-                            <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                          </node>
+                          <node concept="17QB3L" id="14XOHTGUxsW" role="11_B2D" />
                           <node concept="3uibUv" id="Hjn6ojkTqj" role="11_B2D">
                             <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                           </node>
@@ -13158,9 +13121,7 @@
                         <property role="TrG5h" value="params" />
                         <node concept="3uibUv" id="6vl29OrxHtD" role="1tU5fm">
                           <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
-                          <node concept="3uibUv" id="6vl29OrxHtE" role="11_B2D">
-                            <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                          </node>
+                          <node concept="17QB3L" id="14XOHTGUxTE" role="11_B2D" />
                           <node concept="3uibUv" id="6vl29OrxHtF" role="11_B2D">
                             <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                           </node>
