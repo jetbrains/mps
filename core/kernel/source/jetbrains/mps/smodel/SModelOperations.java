@@ -131,6 +131,7 @@ public class SModelOperations {
   @ToRemove(version = 2018.3)
   @NotNull
   public static Set<SLanguage> getAllLanguageImports(@NotNull SModel model) {
+    // there are ~10 uses in mbeddr
     return new HashSet<>(new ModelDependenciesManager(model).getAllImportedLanguagesIds());
   }
 

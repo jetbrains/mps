@@ -18,11 +18,9 @@ package jetbrains.mps.project.dependency;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.event.SModelDevKitEvent;
-import jetbrains.mps.smodel.event.SModelLanguageEvent;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -45,9 +43,8 @@ import java.util.Set;
  * <p>
  * Build (and optionally maintain) set of all languages, imported directly and indirectly.
  * The manager represents snapshot of all imported languages and doesn't update in unless {@link #invalidate() invalidated}.
- * With {@link #trackModelChanges()} it tracks changes in the designated model and updates own state appropriately.
  * With {@link #trackRepositoryChanges(org.jetbrains.mps.openapi.module.SRepository)}, changes to repository
- * would invalidate the manager.
+ * would invalidate the manager. Note, however, changes in model imports are not reflected that way
  * <p>Generally, there are two distinct patterns in using this manager, "lifecycle" and "snapshot":</p>
  * <pre>
  *   ModelDependenciesManager mdm = new ModelDependenciesManager(model).trackModelChanges().trackRepositoryChanges(repo);
@@ -66,13 +63,15 @@ import java.util.Set;
  *   mdm.dispose();
  * </pre>
  * <p/>
+ * @deprecated no reason to keep, at least repository watching part (could end up quite ineffective, see MPS-29623)
  * FIXME perhaps, worth moving to subpackage of j.m.smodel, as it's pure model functionality, unrelated to project
  */
+@Deprecated
+@ToRemove(version = 2019.3)
 public class ModelDependenciesManager {
   private SModel myModel;
 
   private MyModuleWatcher myModuleWatcher;
-  private MySModelWatcher myModelWatcher;
 
   private volatile Collection<SLanguage> myCachedDeps;
 
@@ -100,10 +99,6 @@ public class ModelDependenciesManager {
   }
 
   public void dispose() {
-    if (myModelWatcher != null) {
-      myModelWatcher.dispose();
-      myModelWatcher = null;
-    }
     if (myModuleWatcher != null) {
       myModuleWatcher.dispose();
       myModuleWatcher = null;
@@ -168,18 +163,6 @@ public class ModelDependenciesManager {
   }
 
   /**
-   * Attach a listener to the model to track dependencies added through SModelInternal
-   *
-   * @return <code>this</code> for convenience
-   */
-  public ModelDependenciesManager trackModelChanges() {
-    if (myModelWatcher == null) {
-      myModelWatcher = new MySModelWatcher(this);
-    }
-    return this;
-  }
-
-  /**
    * Attach a listener to given repository to reflect changes in model's dependencies
    *
    * @return <code>this</code> for convenience
@@ -192,50 +175,6 @@ public class ModelDependenciesManager {
     return this;
   }
 
-  private static class MySModelWatcher extends SModelAdapter {
-
-    private final ModelDependenciesManager myDepManager;
-    private SModel mySModelDescriptor;
-
-    private MySModelWatcher(ModelDependenciesManager mdm) {
-      myDepManager = mdm;
-      mySModelDescriptor = mdm.getModel();
-      registerSelf();
-    }
-
-    @Override
-    public void devkitAdded(SModelDevKitEvent event) {
-      myDepManager.invalidate();
-    }
-
-    @Override
-    public void devkitRemoved(SModelDevKitEvent event) {
-      myDepManager.invalidate();
-    }
-
-    @Override
-    public void languageAdded(SModelLanguageEvent event) {
-      myDepManager.invalidate();
-    }
-
-    @Override
-    public void languageRemoved(SModelLanguageEvent event) {
-      myDepManager.invalidate();
-    }
-
-    public void dispose() {
-      unregisterSelf();
-      this.mySModelDescriptor = null;
-    }
-
-    private void registerSelf() {
-      ((SModelInternal) mySModelDescriptor).addModelListener(this);
-    }
-
-    private void unregisterSelf() {
-      ((SModelInternal) mySModelDescriptor).removeModelListener(this);
-    }
-  }
 
   private static class MyModuleWatcher extends SRepositoryContentAdapter {
 
