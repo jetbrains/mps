@@ -15,9 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.SModelData;
-import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.persistence.xml.XMLPersistence;
 import jetbrains.mps.persistence.xml.XMLPersistence.Indexer;
@@ -45,7 +43,6 @@ import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.io.ByteArrayInputStream;
@@ -53,9 +50,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * ModelPersistence handles all XML persistence versions supported by current MPS installation.
@@ -270,21 +265,6 @@ public class ModelPersistence {
       throw new IllegalArgumentException(String.format("Persistence has no writer. Version %d", persistenceVersion));
     }
     return writer.saveModel(model);
-  }
-
-  public static Map<String, String> calculateHashes(String content) throws ModelReadException {
-    SModelHeader header = loadDescriptor(new InputSource(new StringReader(content)));
-    IModelPersistence mp = getPersistence(header.getPersistenceVersion());
-    Map<String, String> result;
-    if (mp != null) {
-      IHashProvider hashProvider = mp.getHashProvider();
-      result = hashProvider.getRootHashes(content);
-      result.put(GeneratableSModel.FILE, hashProvider.getHash(content));
-    } else {
-      result = new HashMap<>();
-      result.put(GeneratableSModel.FILE, ModelDigestUtil.hashText(content));
-    }
-    return result;
   }
 
   @NotNull

@@ -15,9 +15,11 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
@@ -282,8 +284,8 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
 
   public static Map<String, String> getDigestMap(Reader input) {
     try {
-      return ModelPersistence.calculateHashes(FileUtil.read(input));
-    } catch (ModelReadException e) {
+      return Collections.singletonMap(GeneratableSModel.FILE, ModelDigestUtil.hashText(input));
+    } catch (IOException | IllegalStateException ex) {
       return null;
     }
   }

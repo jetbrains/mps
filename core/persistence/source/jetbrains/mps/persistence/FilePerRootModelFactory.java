@@ -55,10 +55,8 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 /**
  * evgeny, 6/3/13
@@ -195,9 +193,8 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
                          PreinstalledDataSourceTypes.MODEL_ROOT);
   }
 
-  public static Map<String, String> getModelHashes(@NotNull MultiStreamDataSource source) {
+  /*package*/ static String getModelHash(@NotNull MultiStreamDataSource source) {
     BigInteger fileHash = BigInteger.ZERO;
-    Map<String, String> result = new HashMap<>();
     for (String streamName : source.getAvailableStreams()) {
       Map<String, String> generationHashes = null;
       if (source instanceof FolderDataSource) {
@@ -213,20 +210,9 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
       }
 
       String streamHash = generationHashes.get(GeneratableSModel.FILE);
-      if (streamName.equals(FilePerRootDataSource.HEADER_FILE)) {
-        result.put(GeneratableSModel.HEADER, streamHash);
-      } else {
-        // copy root keys
-        for (Entry<String, String> entry : generationHashes.entrySet()) {
-          String key = entry.getKey();
-          if (GeneratableSModel.FILE.equals(key) || GeneratableSModel.HEADER.equals(key)) continue;
-          result.put(entry.getKey(), entry.getValue());
-        }
-      }
       fileHash = fileHash.xor(new BigInteger(streamHash, Character.MAX_RADIX));
     }
-    result.put(GeneratableSModel.FILE, fileHash.toString(Character.MAX_RADIX));
-    return result;
+    return fileHash.toString(Character.MAX_RADIX);
   }
 
   @Override
@@ -252,13 +238,9 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
 
     @Override
     public String getModelHash() {
-      Map<String, String> genHashes = FilePerRootModelFactory.getModelHashes(getSource0());
-      if (genHashes == null) {
-        // I/O problem, hash is not available
-        return null;
-      }
-
-      return genHashes.get(GeneratableSModel.FILE);
+      // XXX unlike super.getModelHash(), doesn't consult DigestProvider, is it ok?
+      //     What's performance gain in using IDEA indexing for model hashes?
+      return FilePerRootModelFactory.getModelHash(getSource0());
     }
 
     @NotNull

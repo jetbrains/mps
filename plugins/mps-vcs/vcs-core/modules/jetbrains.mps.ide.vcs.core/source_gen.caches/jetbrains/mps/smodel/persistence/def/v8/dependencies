@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.smodel.persistence.def.v8.HashProvider8">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.HashMap" />
-    <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.extapi.model.GeneratableSModel" />
-    <classNode dependClassName="jetbrains.mps.generator.ModelDigestUtil" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.def.XmlFastScanner" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.def.v8.ModelPersistence8" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode extendsClassName="jetbrains.mps.smodel.persistence.def.IHashProvider" />
-  </dependency>
   <dependency className="jetbrains.mps.smodel.persistence.def.v8.LineToContentMapReader8Handler">
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -41,7 +27,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.loading.ModelLoadingState" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.IHashProvider" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.IModelWriter" />
-    <classNode dependClassName="jetbrains.mps.smodel.persistence.def.v8.HashProvider8" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.v8.LineToContentMapReader8Handler" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.v8.ModelReader8Handler" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.lines.LineContent" />

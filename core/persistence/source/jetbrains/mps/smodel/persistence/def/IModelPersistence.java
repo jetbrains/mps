@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +35,14 @@ public interface IModelPersistence {
    */
   IModelWriter getModelWriter(@Nullable SModelHeader header);
 
-  IHashProvider getHashProvider();
+  /**
+   * @deprecated not in use, no reason to implement
+   */
+  @Deprecated
+  @ToRemove(version = 2019.3)
+  default IHashProvider getHashProvider() {
+    return null;
+  }
 
   XMLSAXHandler<ModelLoadResult> getModelReaderHandler(ModelLoadingState state, SModelHeader header);
 

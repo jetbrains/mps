@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,19 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
+import jetbrains.mps.util.annotation.ToRemove;
+
 import java.util.Map;
 
+/**
+ * @deprecated with no use of #getRootHashes(), different hashing implementations are of no value
+ */
+@Deprecated
+@ToRemove(version = 2019.3)
 public abstract class IHashProvider {
   public abstract String getHash(String content);
 
-  public abstract Map<String, String> getRootHashes(String content);
-
-  protected static String extractId(String tag) {
-    if (tag == null) return null;
-
-    String idString = " id=\"";
-    int index = tag.lastIndexOf(idString);
-    if (index < 0) return null;
-
-    int offset = index + idString.length();
-    index = offset;
-    while (index < tag.length() && Character.isDigit(tag.codePointAt(index))) {
-      index++;
-    }
-    if (index < tag.length() && tag.charAt(index) == '"') return tag.substring(offset, index);
-
+  public Map<String, String> getRootHashes(String content) {
     return null;
   }
 }

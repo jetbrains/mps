@@ -18,9 +18,6 @@ package jetbrains.mps.extapi.model;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SModel;
 
-import java.util.Collections;
-import java.util.Map;
-
 /**
  * evgeny, 2/14/13
  */
@@ -55,18 +52,6 @@ public interface GeneratableSModel extends SModel {
   void setGenerateIntoModelFolder(boolean value);
 
   String getModelHash();
-
-  /**
-   * @deprecated bogus, finally unused api
-   *  rootId => root hash
-   *  HEADER => header hash
-   *  FILE => model hash
-   */
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  default Map<String, String> getGenerationHashes() {
-    return Collections.emptyMap();
-  };
 
   void setDoNotGenerate(boolean value);
 

@@ -27,7 +27,7 @@ public class ModelPersistence8 implements IModelPersistence {
   }
   @Override
   public IHashProvider getHashProvider() {
-    return new HashProvider8();
+    return null;
   }
   @Override
   public XMLSAXHandler<ModelLoadResult> getModelReaderHandler(ModelLoadingState state, SModelHeader header) {
