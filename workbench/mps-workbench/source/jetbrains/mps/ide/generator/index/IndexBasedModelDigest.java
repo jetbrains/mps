@@ -55,9 +55,6 @@ public class IndexBasedModelDigest implements ApplicationComponent {
     ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(ModelDigestIndex.NAME));
     // binary model persistence (.mpb files)
     ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(BinaryModelDigestIndex.NAME));
-    // language module files (.mpl files)
-    // XXX I don't see uses of ModelDigestHelper that could pass .mpl file
-    ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(LanguageModelDigestIndex.NAME));
   }
 
 
