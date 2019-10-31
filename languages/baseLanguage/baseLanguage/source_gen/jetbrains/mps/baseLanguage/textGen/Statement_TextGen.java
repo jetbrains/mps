@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
@@ -17,7 +18,9 @@ public class Statement_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
-    if (SNodeOperations.getConcept(ctx.getPrimaryInput()) != CONCEPTS.Statement$ok) {
+    if (!(Objects.equals(SNodeOperations.getConcept(ctx.getPrimaryInput()), CONCEPTS.Statement$ok))) {
+      tgs.reportError("statement without textGen:");
+      tgs.newLine();
       tgs.append("/* error: statement w/o textGen:");
       tgs.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(ctx.getPrimaryInput()));
       tgs.append(" */");

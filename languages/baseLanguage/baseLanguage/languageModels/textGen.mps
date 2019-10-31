@@ -128,6 +128,7 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
+      <concept id="1225271221393" name="jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression" flags="nn" index="17QLQc" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
       <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
@@ -9388,7 +9389,13 @@
       <node concept="3clFbS" id="2Xh8b$ioa$P" role="2VODD2">
         <node concept="3clFbJ" id="2Xh8b$ioe04" role="3cqZAp">
           <node concept="3clFbS" id="2Xh8b$ioe05" role="3clFbx">
+            <node concept="1ZvZ2y" id="4Hos4IofbLw" role="3cqZAp">
+              <node concept="Xl_RD" id="4Hos4IofdP0" role="v0bCk">
+                <property role="Xl_RC" value="statement without textGen:" />
+              </node>
+            </node>
             <node concept="lc7rE" id="2Xh8b$ioe0o" role="3cqZAp">
+              <node concept="l8MVK" id="4Hos4Iof_DJ" role="lcghm" />
               <node concept="la8eA" id="2Xh8b$ioe8C" role="lcghm">
                 <property role="lacIc" value="/* error: statement w/o textGen:" />
               </node>
@@ -9407,13 +9414,13 @@
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="2Xh8b$ioe0h" role="3clFbw">
-            <node concept="35c_gC" id="1hnCKJ4WaX1" role="3uHU7w">
-              <ref role="35c_gD" to="tpee:fzclF8l" resolve="Statement" />
-            </node>
+          <node concept="17QLQc" id="4Hos4IocBs7" role="3clFbw">
             <node concept="2OqwBi" id="2Xh8b$ioe09" role="3uHU7B">
               <node concept="117lpO" id="2Xh8b$ioe08" role="2Oq$k0" />
               <node concept="2yIwOk" id="1hnCKJ4W9mx" role="2OqNvi" />
+            </node>
+            <node concept="35c_gC" id="1hnCKJ4WaX1" role="3uHU7w">
+              <ref role="35c_gD" to="tpee:fzclF8l" resolve="Statement" />
             </node>
           </node>
           <node concept="9aQIb" id="2Xh8b$ioe8$" role="9aQIa">

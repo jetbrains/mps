@@ -1315,6 +1315,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.Statement_TextGen">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor" />
