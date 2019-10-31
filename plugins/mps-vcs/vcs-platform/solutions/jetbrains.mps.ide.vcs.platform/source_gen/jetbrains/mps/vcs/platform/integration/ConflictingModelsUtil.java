@@ -45,9 +45,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.persistence.PersistenceUtil;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.ide.ThreadUtils;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.util.FileUtil;
-import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import java.io.IOException;
+import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 
@@ -179,7 +180,7 @@ public class ConflictingModelsUtil {
     public void run(@NotNull ProgressIndicator indicator) {
       final ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
       monitor.start("Resolving...", ListSequence.fromList(myConflictedModelFiles).count());
-      final ModelAccess ma = ProjectHelper.getModelAccess(myProject);
+      ModelAccess ma = ProjectHelper.getModelAccess(myProject);
       try {
         for (final VirtualFile file : ListSequence.fromList(myConflictedModelFiles)) {
           monitor.step(file.getCanonicalPath());
@@ -274,15 +275,14 @@ public class ConflictingModelsUtil {
           });
 
           if (resultContent.value != null) {
+            final Wrappers._boolean isWritten = new Wrappers._boolean(false);
             ThreadUtils.runInUIThreadAndWait(new Runnable() {
               public void run() {
-                ma.runWriteAction(new Runnable() {
+                ApplicationManager.getApplication().runWriteAction(new Runnable() {
                   public void run() {
                     try {
                       file.setBinaryContent(resultContent.value.getBytes(FileUtil.DEFAULT_CHARSET));
-                      check_2bxr1q_a1a0a0a0a0a0a0u0a0d0m6(mySession, file);
-                      VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
-                      ListSequence.fromList(myResolvedModelFiles).addElement(file);
+                      isWritten.value = true;
                     } catch (IOException e) {
                       if (LOG.isEnabledFor(Level.ERROR)) {
                         LOG.error("Cannot save merge result into " + file.getPath(), e);
@@ -290,9 +290,13 @@ public class ConflictingModelsUtil {
                     }
                   }
                 });
-
               }
             });
+            if (isWritten.value) {
+              check_2bxr1q_a0a2a02a0a3a21g(mySession, file);
+              VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
+              ListSequence.fromList(myResolvedModelFiles).addElement(file);
+            }
           }
 
           monitor.advance(1);
@@ -304,7 +308,7 @@ public class ConflictingModelsUtil {
         monitor.done();
       }
     }
-    private static void check_2bxr1q_a1a0a0a0a0a0a0u0a0d0m6(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
+    private static void check_2bxr1q_a0a2a02a0a3a21g(com.intellij.openapi.vcs.merge.MergeSession checkedDotOperand, VirtualFile file) {
       if (null != checkedDotOperand) {
         checkedDotOperand.conflictResolvedForFile(file, com.intellij.openapi.vcs.merge.MergeSession.Resolution.Merged);
       }
