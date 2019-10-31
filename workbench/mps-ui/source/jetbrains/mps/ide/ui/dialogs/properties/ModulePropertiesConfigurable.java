@@ -122,6 +122,7 @@ import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -388,7 +389,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         FieldPanel genOutPath = new FieldPanel(myGenOut, null, null, listener, EmptyRunnable.getInstance());
         FileChooserFactory.getInstance().installFileCompletion(genOutPath.getTextField(), outputPathsChooserDescriptor, true, null);
 
-        genOutPath.setText(getGenOutPath());
+        genOutPath.setText(PathUtil.toSystemDependent(getGenOutPath()));
         panel.add(genOutPath,
                   new GridConstraints(row++, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
                                       GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -472,7 +473,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       if (!(myModule instanceof DevKit) && myEntriesEditor.isModified()) {
         return true;
       }
-      if (myGenOut != null && !(myGenOut.getText().equals(getGenOutPath()))) {
+      if (myGenOut != null && !(getGenOutPath().equals(PathUtil.toSystemIndependent(myGenOut.getText())))) {
         return true;
       }
 
@@ -511,9 +512,12 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         ((DevkitDescriptor) myModuleDescriptor).setAssociatedPlan(myPlanPanel.getPlanModel());
         myPlanPickScope.reset();
       } else {
-        if (myGenOut != null && !(myGenOut.getText().equals(getGenOutPath()))) {
-          // here we imply getGenOutPath uses ProjectPathUtil.getGeneratorOutputPath
-          ProjectPathUtil.setGeneratorOutputPath(myModuleDescriptor, myGenOut.getText());
+        if (myGenOut != null ){
+          String genOut = PathUtil.toSystemIndependent(myGenOut.getText());
+          if(!genOut.equals(getGenOutPath())) {
+            // here we imply getGenOutPath uses ProjectPathUtil.getGeneratorOutputPath
+            ProjectPathUtil.setGeneratorOutputPath(myModuleDescriptor, genOut);
+          }
         }
         if (myLanguageVersion != null) {
           try {
