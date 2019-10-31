@@ -393,81 +393,72 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   /**
-   * PROVISIONAL API, DO NOT USE
-   * Find respective runtime presentation of generator module
-   * FIXME shall decide whether need standalone GeneratorRegistry to supply GeneratorRuntimes
-   * FIXME or access to GeneratorRuntime through LanguageRegistry is enough.
-   * @deprecated use {@link #getGenerator(SModuleReference)} as it's {@link SModuleReference} that is generator identity.
-   */
-  @Nullable
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public GeneratorRuntime getGenerator(Generator generator) {
-    return getGenerator(generator.getModuleReference());
-  }
-
-  /**
    *
    * @param generatorIdentity we use {@link SModuleReference} to identify generator, not to introduce a dedicated {@code SGenerator} similar to {@link SLanguage}
    */
   @Nullable
   public GeneratorRuntime getGenerator(@NotNull SModuleReference generatorIdentity) {
-    // XXX Likely, shall guard with myRuntimeInstanceAccess once onLoad/onUnload guards generator modules
-    return myGeneratorsWithCompiledRuntime.get(generatorIdentity);
+    try {
+      myRuntimeInstanceAccess.readLock().lock();
+      return myGeneratorsWithCompiledRuntime.get(generatorIdentity);
+    } finally {
+      myRuntimeInstanceAccess.readLock().unlock();
+    }
   }
-
 
   // ClassLoaderManager/DeployListener part
   @Override
-  public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
-    monitor.start("Solution Runtime", 5);
-    ArrayList<ModuleRuntime> modulesToUnload = new ArrayList<>();
-    for (Solution s : CollectionUtil.filter(Solution.class, unloadedModules)) {
-      // get, not remove as we notify all first, and only then remove them.
-      final ModuleRuntime moduleRuntime = myModuleRuntime.get(s.getModuleReference());
-      if (moduleRuntime == null) {
-        continue;
-      }
-      modulesToUnload.add(moduleRuntime);
-    }
-    ModuleRuntimeContext rtc = () -> null;
-    for (ModuleRuntime rt : modulesToUnload) {
-      rt.deactivate(rtc);
-    }
-    myModuleRuntime.values().removeAll(modulesToUnload);
-    monitor.advance(1);
-
-    monitor.step("Generator Runtime");
-    for (Generator generator : collectGeneratorModules(unloadedModules)) {
-      GeneratorRuntime generatorRuntime = myGeneratorsWithCompiledRuntime.remove(generator.getModuleReference());
-      if (generatorRuntime == null) {
-        // fine, we do not track GR other than generated
-        // XXX Perhaps, with generator module RT for each generator, shall issue a warning like a language does, below
-        continue;
-      }
-      LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
-      srcLangRuntime.unregister(generatorRuntime);
-    }
-    monitor.advance(1);
-
-    monitor.step("Language Runtime");
-    Set<LanguageRuntime> languagesToUnload = new HashSet<>();
-    for (Language language : collectLanguageModules(unloadedModules)) {
-      SLanguageId sl = MetaIdByDeclaration.getLanguageId(language);
-      if (!myLanguagesById.containsKey(sl)) {
-        LOG.warn("No language with id " + sl + " to unload");
-      } else {
-        languagesToUnload.add(myLanguagesById.get(sl));
-      }
-    }
-    monitor.advance(1);
-
-    monitor.step("Language Registry Listeners");
-    notifyUnload(languagesToUnload);
-    monitor.advance(1);
-
+  public void onUnloaded(@NotNull Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
     try {
       myRuntimeInstanceAccess.writeLock().lock();
+      monitor.start("Solution Runtime", 5);
+      ArrayList<ModuleRuntime> modulesToUnload = new ArrayList<>();
+      for (Solution s : CollectionUtil.filter(Solution.class, unloadedModules)) {
+        // get, not remove as we notify all first, and only then remove them.
+        final ModuleRuntime moduleRuntime = myModuleRuntime.get(s.getModuleReference());
+        if (moduleRuntime == null) {
+          continue;
+        }
+        modulesToUnload.add(moduleRuntime);
+      }
+      ModuleRuntimeContext rtc = () -> null;
+      for (ModuleRuntime rt : modulesToUnload) {
+        rt.deactivate(rtc);
+      }
+      myModuleRuntime.values().removeAll(modulesToUnload);
+      monitor.advance(1);
+
+      monitor.step("Generator Runtime");
+      for (Generator generator : collectGeneratorModules(unloadedModules)) {
+        GeneratorRuntime generatorRuntime = myGeneratorsWithCompiledRuntime.remove(generator.getModuleReference());
+        if (generatorRuntime == null) {
+          // fine, we do not track GR other than generated
+          // XXX Perhaps, with generator module RT for each generator, shall issue a warning like a language does, below
+          continue;
+        }
+        // let runtime know we don't need its services any more, but do it the moment it's still in complete state.
+        generatorRuntime.deactivate();
+        LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
+        srcLangRuntime.unregister(generatorRuntime);
+      }
+      monitor.advance(1);
+
+      monitor.step("Language Runtime");
+      Set<LanguageRuntime> languagesToUnload = new HashSet<>();
+      for (Language language : collectLanguageModules(unloadedModules)) {
+        SLanguageId sl = MetaIdByDeclaration.getLanguageId(language);
+        if (!myLanguagesById.containsKey(sl)) {
+          LOG.warn("No language with id " + sl + " to unload");
+        } else {
+          languagesToUnload.add(myLanguagesById.get(sl));
+        }
+      }
+      monitor.advance(1);
+
+      monitor.step("Language Registry Listeners");
+      notifyUnload(languagesToUnload);
+      monitor.advance(1);
+
       for (LanguageRuntime languageRuntime : languagesToUnload) {
         myLanguagesById.remove(languageRuntime.getId());
       }
@@ -479,11 +470,10 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   @Override
-  public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
+  public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
     monitor.start("Language Runtime", 5);
     Set<LanguageRuntime> loadedRuntimes = new LinkedHashSet<>();
     try {
-      // FIXME why myRuntimeInstanceAccess doesn't guard instatiation of other module runtime classes?!
       myRuntimeInstanceAccess.writeLock().lock();
       for (Language language : collectLanguageModules(loadedModules)) {
         try {
@@ -504,48 +494,48 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         }
       }
       reinitialize();
+      monitor.advance(1);
+
+      monitor.step("Generator Runtime");
+      for (Generator generator : collectGeneratorModules(loadedModules)) {
+        GeneratorRuntime generatorRuntime = createRuntime(generator);
+        if (generatorRuntime == null) {
+          // either interpreted or no generator at all, let generated LanguageRuntime#getGenerators() decide
+          continue;
+        }
+        GeneratorRuntime old = myGeneratorsWithCompiledRuntime.put(generatorRuntime.getModuleReference(), generatorRuntime);
+        if (old != null) {
+          LOG.warn(String.format("There is already generator runtime for module '%s'", old.getModuleReference()));
+        }
+        LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
+        srcLangRuntime.register(generatorRuntime);
+      }
+      monitor.advance(1);
+
+      monitor.step("Solution Runtime");
+      ArrayList<ModuleRuntime> loadedRuntime2 = new ArrayList<>();
+      for (Solution s : CollectionUtil.filter(Solution.class, loadedModules)) {
+        ModuleRuntime moduleRuntime = createRuntime(s);
+        if (moduleRuntime == null) {
+          continue;
+        }
+        ModuleRuntime old = myModuleRuntime.put(moduleRuntime.getSourceModule(), moduleRuntime);
+        if (old != null) {
+          LOG.warn(String.format("There's already runtime instance for module '%s'", old.getSourceModule()));
+        }
+        loadedRuntime2.add(moduleRuntime);
+      }
+      monitor.advance(1);
+
+      monitor.step("Activators...");
+      ModuleRuntimeContext rtc = () -> null;
+      for (ModuleRuntime rt : loadedRuntime2) {
+        rt.activate(rtc);
+      }
+      monitor.advance(1);
     } finally {
       myRuntimeInstanceAccess.writeLock().unlock();
     }
-    monitor.advance(1);
-
-    monitor.step("Generator Runtime");
-    for (Generator generator : collectGeneratorModules(loadedModules)) {
-      GeneratorRuntime generatorRuntime = createRuntime(generator);
-      if (generatorRuntime == null) {
-        // either interpreted or no generator at all, let generated LanguageRuntime#getGenerators() decide
-        continue;
-      }
-      GeneratorRuntime old = myGeneratorsWithCompiledRuntime.put(generatorRuntime.getModuleReference(), generatorRuntime);
-      if (old != null) {
-        LOG.warn(String.format("There is already generator runtime for module '%s'", old.getModuleReference()));
-      }
-      LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
-      srcLangRuntime.register(generatorRuntime);
-    }
-    monitor.advance(1);
-
-    monitor.step("Solution Runtime");
-    ArrayList<ModuleRuntime> loadedRuntime2 = new ArrayList<>();
-    for (Solution s : CollectionUtil.filter(Solution.class, loadedModules)) {
-      ModuleRuntime moduleRuntime = createRuntime(s);
-      if (moduleRuntime == null) {
-        continue;
-      }
-      ModuleRuntime old = myModuleRuntime.put(moduleRuntime.getSourceModule(), moduleRuntime);
-      if (old != null) {
-        LOG.warn(String.format("There's already runtime instance for module '%s'", old.getSourceModule()));
-      }
-      loadedRuntime2.add(moduleRuntime);
-    }
-    monitor.advance(1);
-
-    monitor.step("Activators...");
-    ModuleRuntimeContext rtc = () -> null;
-    for (ModuleRuntime rt : loadedRuntime2) {
-      rt.activate(rtc);
-    }
-    monitor.advance(1);
 
     monitor.step("Language Registry Listeners");
     // XXX perhaps, shall grab read lock of myRuntimeInstanceAccess? Or it's enough to assume we would never get into onLoaded again while we are not

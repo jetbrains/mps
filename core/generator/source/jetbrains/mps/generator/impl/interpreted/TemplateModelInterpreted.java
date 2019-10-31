@@ -75,16 +75,10 @@ public class TemplateModelInterpreted extends TemplateModelBase {
    * 'public' just to give access from TemplateModuleInterpreted2
    */
   public boolean isStale() {
-    if (myModel == null || myModelTimestamp == -1 || myModelTimestamp != myModel.getSource().getTimestamp()) {
+    if (myModel == null || myModelTimestamp == -1) {
       return true;
     }
-    //this is a temporary hack to fix MPS-31186
-    for (TemplateMappingConfiguration tmc: myMappings){
-      if (tmc.getMappingNode().getModelReference() == null){
-        return true;
-      }
-    }
-    return false;
+    return myModelTimestamp != myModel.getSource().getTimestamp();
   }
 
   @Override

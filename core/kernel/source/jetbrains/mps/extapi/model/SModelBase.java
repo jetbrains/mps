@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.smodel.event.ModelListenerDispatch;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -138,6 +137,13 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
       setLoadingState(ModelLoadingState.NOT_LOADED);
     }
     clearListeners();
+  }
+
+  @Override
+  protected void clearListeners() {
+    super.clearListeners();
+    myModelEventDispatch.clearListeners();
+    myNodeEventDispatch.clearListeners();
   }
 
   @Override

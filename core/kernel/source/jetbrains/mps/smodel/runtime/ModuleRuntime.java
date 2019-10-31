@@ -53,9 +53,9 @@ public final class ModuleRuntime {
     return myModuleClassLoader;
   }
 
-   public void activate(ModuleRuntimeContext context) {
+  public void activate(ModuleRuntimeContext context) {
     // no-op at the moment, shall take generated activator class (or even few, perhaps?), instantiate and exectute it inside try {} catch (Throwable)
-   }
+  }
 
   public void deactivate(ModuleRuntimeContext context) {
 

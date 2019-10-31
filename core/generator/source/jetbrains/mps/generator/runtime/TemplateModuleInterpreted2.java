@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,14 +21,19 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
+import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -46,6 +51,7 @@ import java.util.stream.Collectors;
 public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
   private final Generator myGenerator;
   private Collection<TemplateModelInterpreted> myModels;
+  private WatchModelChanges myModelWatchDog;
 
   protected TemplateModuleInterpreted2(LanguageRegistry registry, LanguageRuntime sourceLanguage, Generator generatorModule) {
     super(registry, sourceLanguage);
@@ -65,8 +71,13 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
       }
       TemplateModels tm = new TemplateModels();
       fillTemplateModels(tm);
+      if (myModelWatchDog != null) {
+        myModelWatchDog.watchIsEnded();
+      }
+      myModelWatchDog = new WatchModelChanges();
       myModels = tm.myModels.entrySet().stream().map(e -> {
         SModel templateModel = myGenerator.getModel(e.getKey());
+        myModelWatchDog.watch(templateModel);
         return new TemplateModelInterpreted(this, templateModel, e.getValue());
       }).collect(Collectors.toList());
     }
@@ -77,10 +88,14 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
     if (myModels == null) {
       return false;
     }
+    if (myModelWatchDog != null && myModelWatchDog.alarmed()) {
+      return false;
+    }
     synchronized (this) {
       for (TemplateModelInterpreted tm : myModels) {
         if (tm.isStale()) {
           myModels = null;
+          // watchdog model listener would get cleaned once modelsUpToDate returns false
           return false;
         }
       }
@@ -109,6 +124,14 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
     return myGenerator.getAlias();
   }
 
+  @Override
+  public void deactivate() {
+    if (myModelWatchDog != null) {
+      myModelWatchDog.watchIsEnded();
+      myModelWatchDog = null;
+    }
+  }
+
   public static final class TemplateModels {
     /*package*/ LinkedHashMap<SModelId, Class<? extends GeneratorQueryProvider>> myModels = new LinkedHashMap<>();
 
@@ -126,6 +149,56 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
         throw new IllegalArgumentException();
       }
       myModels.put(PersistenceFacade.getInstance().createModelId(templateModelId), queryProviderClass);
+    }
+  }
+
+  // not thread-safe
+  private static class WatchModelChanges extends SModelListenerBase {
+    private final Set<SModel> myTrackedModels = new HashSet<>();
+    private boolean myGotASignal = false;
+
+    /*package*/ boolean alarmed() {
+      return myGotASignal;
+    }
+
+    /*package*/ void watch(@Nullable SModel m) {
+      if (myTrackedModels.add(m)) {
+        m.addModelListener(this);
+      }
+    }
+
+    // "and now his watch is ended"
+    /*package*/ void watchIsEnded() {
+      for (SModel m : myTrackedModels) {
+        m.removeModelListener(this);
+      }
+      myTrackedModels.clear();
+    }
+
+    private void panic() {
+      // it's enough to react to any first event that could make SModel's nodes invalid, no need to listen to any further notifications
+      watchIsEnded();
+      myGotASignal = true;
+    }
+
+    @Override
+    public void modelLoaded(SModel model, boolean partially) {
+      panic();
+    }
+
+    @Override
+    public void modelReplaced(SModel model) {
+      panic();
+    }
+
+    @Override
+    public void modelUnloaded(SModel model) {
+      panic();
+    }
+
+    @Override
+    public void modelDetached(SModel model, SRepository repository) {
+      panic();
     }
   }
 }

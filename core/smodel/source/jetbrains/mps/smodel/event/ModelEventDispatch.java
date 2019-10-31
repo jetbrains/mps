@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -154,6 +154,14 @@ public final class ModelEventDispatch {
     for (SNodeChangeListener l : myChangeListeners) {
       l.nodeRemoved(event);
     }
+  }
+
+  /**
+   * To prevent instance retaining, release any reference to user-supplied code when model is discarded.
+   */
+  public void clearListeners() {
+    myAccessListeners.clear();
+    myChangeListeners.clear();
   }
 
   // instead of EditableSModelBase attaching a change listener to itself to update its 'changed' state,

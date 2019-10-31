@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,10 +57,6 @@ public abstract class TemplateModuleBase implements TemplateModule {
   @NotNull
   @Override
   public LanguageRuntime getSourceLanguage() {
-    if (mySourceLanguage == null) {
-      // TODO drop this check ince single arg cons gone.
-      throw new IllegalStateException("Subclasses that use TemplateModuleBase(LanguageRegistry) cons instead of TemplateModuleBase(LanguageRegistry, LanguageRuntime) one, shall override this method");
-    }
     return mySourceLanguage;
   }
 
