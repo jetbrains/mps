@@ -15,23 +15,22 @@
  */
 package jetbrains.mps.ide.generator.index;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.EverythingGlobalScope;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.ID;
+import com.intellij.util.indexing.SingleEntryFileBasedIndexExtension;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.persistence.ModelDigestHelper.DigestProvider;
-import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * Index-backed DigestProvider to answer model's hash value quickly.
@@ -40,8 +39,7 @@ import java.util.Map;
  * PersistenceFacility/LazyLoadFacility.getModelHash) and could easily drift away.
  * Again, here would be great to have indexing built on top of model layer, rather then vfs layer
  */
-public class IndexBasedModelDigest implements ApplicationComponent {
-  private static final Logger LOG = LogManager.getLogger(IndexBasedModelDigest.class);
+public class IndexBasedModelDigest implements BaseComponent {
 
   @Override
   @NotNull
@@ -57,20 +55,15 @@ public class IndexBasedModelDigest implements ApplicationComponent {
     ModelDigestHelper.getInstance().addDigestProvider(new BaseModelDigestProvider(BinaryModelDigestIndex.NAME));
   }
 
-
-  @Override
-  public void disposeComponent() {
-  }
-
   private static class BaseModelDigestProvider implements DigestProvider {
-    private ID<Integer, Map<String, String>> myName;
+    private final ID<Integer, String> myIndexName;
 
-    private BaseModelDigestProvider(ID<Integer, Map<String, String>> name) {
-      myName = name;
+    private BaseModelDigestProvider(ID<Integer, String> name) {
+      myIndexName = name;
     }
 
     @Override
-    public Map<String, String> getGenerationHashes(@NotNull IFile iFile) {
+    public String getGenerationHash(@NotNull IFile iFile) {
       try {
         if (!(iFile instanceof IdeaFile)) {
           return null;
@@ -80,20 +73,16 @@ public class IndexBasedModelDigest implements ApplicationComponent {
           return null;
         }
 
-        final Reference<Map<String, String>> valueArray = new Reference<>(null);
-        FileBasedIndex.getInstance().processValues(myName, FileBasedIndex.getFileId(file), file,
-                                                   (file1, values) -> {
-                                                     valueArray.set(values);
-                                                     return true;
-                                                   }, new EverythingGlobalScope());
-        return valueArray.get();
-      } catch (IndexNotReadyException e) {
+        // proper use of getFileKey, override-only is rather for class itself
+        @SuppressWarnings("OverrideOnly")
+        final int fileKey = SingleEntryFileBasedIndexExtension.getFileKey(file);
+        final List<String> values = FileBasedIndex.getInstance().getValues(myIndexName, fileKey, new EverythingGlobalScope());
+        return values.isEmpty() ? null : values.get(0);
+      } catch (IndexNotReadyException | ProcessCanceledException e) {
         // generally, it's bad to get here (we'd rather check for dumb mode prior accessing the index
         // however, there's nothing bad in returning null here as it's merely an indication of no cached
         // hash value, and we can calculate it again, if needed. Hence, debug log level looks fine.
-        LOG.debug(e.getClass().getName(), e);
-      } catch (ProcessCanceledException e) {
-        LOG.warn(e.getMessage());
+        LogManager.getLogger(IndexBasedModelDigest.class).debug(e.getClass().getName(), e);
       }
       return null;
     }

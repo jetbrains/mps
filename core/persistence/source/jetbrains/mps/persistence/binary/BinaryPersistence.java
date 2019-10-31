@@ -126,48 +126,6 @@ public final class BinaryPersistence {
     }
   }
 
-  public static Map<String, String> getDigestMap(jetbrains.mps.smodel.SModel model, @Nullable MetaModelInfoProvider mmiProvider) {
-    Map<String, String> result = new LinkedHashMap<>();
-    IdInfoRegistry meta = null;
-    DigestBuilderOutputStream os = ModelDigestUtil.createDigestBuilderOutputStream();
-    try {
-      BinaryPersistence bp = new BinaryPersistence(mmiProvider == null ? new RegularMetaModelInfo() : mmiProvider, model);
-      ModelOutputStream mos = new ModelOutputStream(os);
-      meta = bp.saveModelProperties(mos);
-      mos.flush();
-    } catch (IOException ignored) {
-      assert false;
-      /* should never happen */
-    }
-    result.put(GeneratableSModel.HEADER, os.getResult());
-
-    assert meta != null;
-    // In fact, would be better to translate index attribute of any XXXInfo element into
-    // a value not related to meta-element position in the registry. Otherwise, almost any change
-    // in a model (e.g. addition of a new root or new property value) might affect all other root hashes
-    // as the index of meta-model elements might change. However, as long as our binary models are not exposed
-    // for user editing, we don't care.
-
-    for (SNode node : model.getRootNodes()) {
-      os = ModelDigestUtil.createDigestBuilderOutputStream();
-      try {
-        ModelOutputStream mos = new ModelOutputStream(os);
-        new NodesWriter(model.getReference(), mos, meta).writeNode(node);
-        mos.flush();
-      } catch (IOException ignored) {
-        assert false;
-        /* should never happen */
-      }
-      SNodeId nodeId = node.getNodeId();
-      if (nodeId != null) {
-        result.put(nodeId.toString(), os.getResult());
-      }
-    }
-
-    return result;
-  }
-
-
   private static final int HEADER_START   = 0x91ABABA9;
   private static final int STREAM_ID_V1   = 0x00000300;
   private static final int STREAM_ID_V2   = 0x00000400;

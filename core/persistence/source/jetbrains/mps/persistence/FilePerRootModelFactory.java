@@ -15,11 +15,11 @@
  */
 package jetbrains.mps.persistence;
 
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
@@ -196,20 +196,22 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
   /*package*/ static String getModelHash(@NotNull MultiStreamDataSource source) {
     BigInteger fileHash = BigInteger.ZERO;
     for (String streamName : source.getAvailableStreams()) {
-      Map<String, String> generationHashes = null;
+      String streamHash = null;
       if (source instanceof FolderDataSource) {
         IFile file = ((FolderDataSource) source).getFile(streamName);
-        generationHashes = file == null ? null : ModelDigestHelper.getInstance().getGenerationHashes(file);
+        streamHash = file == null ? null : ModelDigestHelper.getInstance().getGenerationHash(file);
       }
-      if (generationHashes == null) {
-        generationHashes = DefaultModelPersistence.getDigestMap(source, streamName);
-        if (generationHashes == null) {
+      if (streamHash == null) {
+        try (InputStreamReader r = new InputStreamReader(source.openInputStream(streamName))) {
+          streamHash = ModelDigestUtil.hashText(r);
+        } catch (IOException ex) {
+          // ignore, that's what DefaultModelPersistence.getDigestMap used to do
+        }
+        if (streamHash == null) {
           // no hash for stream
           return null;
         }
       }
-
-      String streamHash = generationHashes.get(GeneratableSModel.FILE);
       fileHash = fileHash.xor(new BigInteger(streamHash, Character.MAX_RADIX));
     }
     return fileHash.toString(Character.MAX_RADIX);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,23 +16,18 @@
 package jetbrains.mps.ide.generator.index;
 
 import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.FileBasedIndex.InputFilter;
+import com.intellij.util.indexing.FileContent;
 import com.intellij.util.indexing.ID;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
-import jetbrains.mps.persistence.DefaultModelPersistence;
-import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.generator.ModelDigestUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStreamReader;
-import java.util.Map;
-
 public class ModelDigestIndex extends BaseModelDigestIndex {
-  public static final ID<Integer, Map<String, String>> NAME = ID.create("ModelDigest");
+  public static final ID<Integer, String> NAME = ID.create("ModelDigest2");
 
   public ModelDigestIndex() {
-    super(NAME, 7);
+    super(NAME, 1);
   }
 
   @NotNull
@@ -47,7 +42,7 @@ public class ModelDigestIndex extends BaseModelDigestIndex {
   }
 
   @Override
-  protected Map<String, String> calculateDigest(byte[] content) {
-    return DefaultModelPersistence.getDigestMap(new InputStreamReader(new ByteArrayInputStream(content), FileUtil.DEFAULT_CHARSET));
+  protected String calculateDigest(@NotNull FileContent content) {
+    return ModelDigestUtil.hashText(content.getContentAsText().toString());
   }
 }

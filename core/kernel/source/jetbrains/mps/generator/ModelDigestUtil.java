@@ -65,6 +65,18 @@ public class ModelDigestUtil {
   }
 
   @NotNull
+  public static String hashBytes(@NotNull byte[] data) {
+    try {
+      MessageDigest digest = getSHA();
+      digest.update(data);
+      byte[] res = digest.digest();
+      return new BigInteger(res).toString(Character.MAX_RADIX);
+    } catch (NoSuchAlgorithmException e) {
+      throw new IllegalStateException(e);
+    }
+  }
+
+  @NotNull
   public static String hashBytes(InputStream stream) throws IOException {
     try {
       MessageDigest digest = getSHA();

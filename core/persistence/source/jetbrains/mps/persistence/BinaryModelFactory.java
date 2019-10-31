@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.persistence;
 
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
-import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.persistence.MetaModelInfoProvider.MetaInfoLoadingOption;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
 import jetbrains.mps.persistence.MetaModelInfoProvider.StuffedMetaModelInfo;
@@ -163,20 +161,6 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory 
   @Override
   public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException {
     return BinaryPersistence.getModelData(input);
-  }
-
-  public static Map<String, String> getDigestMap(@NotNull StreamDataSource source) {
-    try {
-      SModelHeader binaryModelHeader = BinaryPersistence.readHeader(source);
-      binaryModelHeader.setMetaInfoProvider(new StuffedMetaModelInfo(new RegularMetaModelInfo()));
-      final ModelLoadResult loadedModel = BinaryPersistence.readModel(binaryModelHeader, source, false);
-      Map<String, String> result = BinaryPersistence.getDigestMap(loadedModel.getModel(), binaryModelHeader.getMetaInfoProvider());
-      result.put(GeneratableSModel.FILE, ModelDigestUtil.hashBytes(source.openInputStream()));
-      return result;
-    } catch (ModelReadException | IOException ignored) {
-      /* ignore */
-    }
-    return null;
   }
 
   /**

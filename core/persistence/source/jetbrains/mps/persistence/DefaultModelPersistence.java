@@ -33,6 +33,7 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -256,6 +257,11 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     return Collections.singletonList(PreinstalledDataSourceTypes.MPS);
   }
 
+  /**
+   * @deprecated unused, no reason to keep
+   */
+  @Deprecated
+  @ToRemove(version = 2019.3)
   public static Map<String, String> getDigestMap(@NotNull MultiStreamDataSource source, String streamName) {
     InputStream is = null;
     try {
@@ -269,6 +275,11 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     return null;
   }
 
+  /**
+   * @deprecated unused, no reason to keep
+   */
+  @Deprecated
+  @ToRemove(version = 2019.3)
   public static Map<String, String> getDigestMap(@NotNull StreamDataSource source) {
     InputStream is = null;
     try {
@@ -282,6 +293,11 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     return null;
   }
 
+  /**
+   * @deprecated unused, no reason to keep
+   */
+  @Deprecated
+  @ToRemove(version = 2019.3)
   public static Map<String, String> getDigestMap(Reader input) {
     try {
       return Collections.singletonMap(GeneratableSModel.FILE, ModelDigestUtil.hashText(input));
