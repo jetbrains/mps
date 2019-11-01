@@ -9286,11 +9286,16 @@
             </node>
             <node concept="2ShNRf" id="42hl10VHa$R" role="37vLTx">
               <node concept="1pGfFk" id="42hl10VHa$S" role="2ShVmc">
-                <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;(java.lang.String)" resolve="JLabel" />
-                <node concept="37vLTw" id="2BHiRxghgdo" role="37wK5m">
-                  <ref role="3cqZAo" node="42hl10VHazg" resolve="contentTitle" />
-                </node>
+                <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;()" resolve="JLabel" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2Kuykw7ygl5" role="3cqZAp">
+          <node concept="1rXfSq" id="2Kuykw7ygkZ" role="3clFbG">
+            <ref role="37wK5l" node="3WnQdVJwrdp" resolve="setTitle" />
+            <node concept="37vLTw" id="2Kuykw7yhTk" role="37wK5m">
+              <ref role="3cqZAo" node="42hl10VHazg" resolve="contentTitle" />
             </node>
           </node>
         </node>
@@ -9382,8 +9387,19 @@
             </node>
             <node concept="liA8E" id="3WnQdVJwxrJ" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JLabel.setText(java.lang.String)" resolve="setText" />
-              <node concept="37vLTw" id="3WnQdVJwxMm" role="37wK5m">
-                <ref role="3cqZAo" node="3WnQdVJwtPZ" resolve="title" />
+              <node concept="3K4zz7" id="2Kuykw7u7XQ" role="37wK5m">
+                <node concept="Xl_RD" id="2Kuykw7u8i5" role="3K4E3e">
+                  <property role="Xl_RC" value=" " />
+                </node>
+                <node concept="37vLTw" id="2Kuykw7u8AL" role="3K4GZi">
+                  <ref role="3cqZAo" node="3WnQdVJwtPZ" resolve="title" />
+                </node>
+                <node concept="2OqwBi" id="2Kuykw7u5dp" role="3K4Cdx">
+                  <node concept="37vLTw" id="3WnQdVJwxMm" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3WnQdVJwtPZ" resolve="title" />
+                  </node>
+                  <node concept="17RlXB" id="2Kuykw7u5MO" role="2OqNvi" />
+                </node>
               </node>
             </node>
           </node>
