@@ -493,16 +493,20 @@ public class Matrix<T> {
   }
   public Matrix(Matrix m1, Matrix m2, MatrixOperation action, MatrixScalarOperations oper) {
     this.myOperations = oper;
+    if (m1 == null && m2 == null) {
+      throw new IllegalArgumentException();
+    }
     if (m1 == null || m2 == null) {
-      if (m1 == null && m2 == null) {
-        throw new IllegalArgumentException();
-      }
       Matrix r = (m1 == null ? m2 : m1);
-      myRows = r.myRows;
-      myColumns = r.myColumns;
-      myCarrier = new Object[myRows][myColumns];
-      for (int i = 0; i < myRows; i++) {
-        System.arraycopy(r.myCarrier[i], 0, myCarrier[i], 0, myColumns);
+      if (r != null) {
+        myRows = r.myRows;
+        myColumns = r.myColumns;
+        myCarrier = new Object[myRows][myColumns];
+        for (int i = 0; i < myRows; i++) {
+          System.arraycopy(r.myCarrier[i], 0, myCarrier[i], 0, myColumns);
+        }
+      } else {
+        // dataflow reports false positives without the if statement 
       }
       return;
     }
