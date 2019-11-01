@@ -260,55 +260,67 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590302(jetbrains.mps.lang.smodel.generator.baseLanguage.util)/651058060500868337">
     <file name="EnumSwitchQuieries.java">
-      <node id="651058060500878431" at="13,52,14,38" concept="8" />
-      <node id="651058060500878436" at="14,38,15,240" concept="9" />
-      <node id="651058060500881498" at="18,48,19,38" concept="8" />
-      <node id="651058060500881503" at="19,38,20,231" concept="9" />
-      <node id="651058060500887558" at="23,52,24,38" concept="8" />
-      <node id="651058060500888180" at="24,38,25,85" concept="9" />
-      <node id="651058060500890148" at="28,56,29,38" concept="8" />
-      <node id="651058060500890153" at="29,38,30,89" concept="9" />
-      <node id="651058060500879137" at="33,46,34,124" concept="9" />
-      <node id="651058060500868337" at="38,0,39,0" concept="11" trace="ExpressionStatement$nm" />
-      <node id="651058060500868337" at="39,0,40,0" concept="11" trace="ReturnStatement$SF" />
-      <node id="651058060500868337" at="40,0,41,0" concept="11" trace="AssignmentExpression$rS" />
-      <node id="651058060500868337" at="41,0,42,0" concept="11" trace="LocalVariableDeclaration$Bf" />
-      <node id="651058060500868337" at="42,0,43,0" concept="11" trace="EnumSwitchExpression$R0" />
-      <node id="651058060500879130" at="33,0,36,0" concept="12" trace="enclosing#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="651058060500878428" at="13,0,17,0" concept="12" trace="isInExpression#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="651058060500881496" at="18,0,22,0" concept="12" trace="isInReturn#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="651058060500886788" at="23,0,27,0" concept="12" trace="isInAssignment#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="651058060500890144" at="28,0,32,0" concept="12" trace="isInVarDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <scope id="651058060500879136" at="33,46,34,124" />
-      <scope id="651058060500878430" at="13,52,15,240">
+      <node id="651058060500878431" at="16,52,17,38" concept="8" />
+      <node id="651058060500878436" at="17,38,18,240" concept="9" />
+      <node id="651058060500881498" at="21,48,22,38" concept="8" />
+      <node id="651058060500881503" at="22,38,23,231" concept="9" />
+      <node id="651058060500887558" at="26,52,27,38" concept="8" />
+      <node id="651058060500888180" at="27,38,28,85" concept="9" />
+      <node id="651058060500890148" at="31,56,32,38" concept="8" />
+      <node id="651058060500890153" at="32,38,33,89" concept="9" />
+      <node id="651058060500879137" at="36,46,37,124" concept="9" />
+      <node id="7152267121072537633" at="40,58,41,157" concept="8" />
+      <node id="7152267121072535229" at="41,157,42,165" concept="9" />
+      <node id="651058060500868337" at="46,0,47,0" concept="11" trace="ExpressionStatement$nm" />
+      <node id="651058060500868337" at="47,0,48,0" concept="11" trace="ReturnStatement$SF" />
+      <node id="651058060500868337" at="48,0,49,0" concept="11" trace="AssignmentExpression$rS" />
+      <node id="651058060500868337" at="49,0,50,0" concept="11" trace="LocalVariableDeclaration$Bf" />
+      <node id="651058060500868337" at="50,0,51,0" concept="11" trace="EnumSwitchExpression$R0" />
+      <node id="651058060500868337" at="51,0,52,0" concept="11" trace="ThrowStatement$yK" />
+      <node id="651058060500868337" at="55,0,56,0" concept="11" trace="statementList$6WT0" />
+      <node id="651058060500879130" at="36,0,39,0" concept="12" trace="enclosing#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="651058060500878428" at="16,0,20,0" concept="12" trace="isInExpression#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="651058060500881496" at="21,0,25,0" concept="12" trace="isInReturn#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="651058060500886788" at="26,0,30,0" concept="12" trace="isInAssignment#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="651058060500890144" at="31,0,35,0" concept="12" trace="isInVarDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7152267121072533363" at="40,0,44,0" concept="12" trace="controlflowPreserved#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="651058060500879136" at="36,46,37,124" />
+      <scope id="651058060500878430" at="16,52,18,240">
         <var name="enclosing" id="651058060500878432" />
       </scope>
-      <scope id="651058060500881497" at="18,48,20,231">
+      <scope id="651058060500881497" at="21,48,23,231">
         <var name="enclosing" id="651058060500881499" />
       </scope>
-      <scope id="651058060500886791" at="23,52,25,85">
+      <scope id="651058060500886791" at="26,52,28,85">
         <var name="enclosing" id="651058060500887559" />
       </scope>
-      <scope id="651058060500890147" at="28,56,30,89">
+      <scope id="651058060500890147" at="31,56,33,89">
         <var name="enclosing" id="651058060500890149" />
       </scope>
-      <scope id="651058060500879130" at="33,0,36,0">
+      <scope id="7152267121072533366" at="40,58,42,165">
+        <var name="lastStatement" id="7152267121072537634" />
+      </scope>
+      <scope id="651058060500879130" at="36,0,39,0">
         <var name="body" id="651058060500879134" />
       </scope>
-      <scope id="651058060500878428" at="13,0,17,0">
+      <scope id="651058060500878428" at="16,0,20,0">
         <var name="body" id="651058060500878450" />
       </scope>
-      <scope id="651058060500881496" at="18,0,22,0">
+      <scope id="651058060500881496" at="21,0,25,0">
         <var name="body" id="651058060500881516" />
       </scope>
-      <scope id="651058060500886788" at="23,0,27,0">
+      <scope id="651058060500886788" at="26,0,30,0">
         <var name="body" id="651058060500887503" />
       </scope>
-      <scope id="651058060500890144" at="28,0,32,0">
+      <scope id="651058060500890144" at="31,0,35,0">
         <var name="body" id="651058060500890145" />
       </scope>
-      <unit id="651058060500868337" at="37,0,44,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries$CONCEPTS" />
-      <unit id="651058060500868337" at="11,0,45,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries" />
+      <scope id="7152267121072533363" at="40,0,44,0">
+        <var name="body" id="7152267121072533737" />
+      </scope>
+      <unit id="651058060500868337" at="54,0,57,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries$LINKS" />
+      <unit id="651058060500868337" at="45,0,53,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries$CONCEPTS" />
+      <unit id="651058060500868337" at="14,0,58,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590302(jetbrains.mps.lang.smodel.generator.baseLanguage.util)/8673913621388594827">

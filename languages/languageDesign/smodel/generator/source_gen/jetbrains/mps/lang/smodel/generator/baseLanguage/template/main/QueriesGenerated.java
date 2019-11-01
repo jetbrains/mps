@@ -1163,16 +1163,16 @@ public class QueriesGenerated {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.conceptArgument$63TI) != null);
   }
   public static boolean ifMacro_Condition_48_0(final IfMacroContext _context) {
-    return EnumSwitchQuieries.isInAssignment(_context.getNode());
+    return EnumSwitchQuieries.controlflowPreserved(_context.getNode()) && EnumSwitchQuieries.isInAssignment(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_1(final IfMacroContext _context) {
-    return EnumSwitchQuieries.isInVarDeclaration(_context.getNode());
+    return EnumSwitchQuieries.controlflowPreserved(_context.getNode()) && EnumSwitchQuieries.isInVarDeclaration(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_2(final IfMacroContext _context) {
-    return !(EnumSwitchQuieries.isInReturn(_context.getNode()));
+    return EnumSwitchQuieries.controlflowPreserved(_context.getNode()) && !(EnumSwitchQuieries.isInReturn(_context.getNode()));
   }
   public static boolean ifMacro_Condition_48_3(final IfMacroContext _context) {
-    return EnumSwitchQuieries.isInReturn(_context.getNode());
+    return EnumSwitchQuieries.controlflowPreserved(_context.getNode()) && EnumSwitchQuieries.isInReturn(_context.getNode());
   }
   public static boolean ifMacro_Condition_48_4(final IfMacroContext _context) {
     return EnumSwitchQuieries.isInExpression(_context.getNode());
@@ -2477,8 +2477,9 @@ public class QueriesGenerated {
   }
   public static Iterable<SNode> sourceNodesQuery_48_0(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0), LINKS.statement$WHn8);
-    if (!(EnumSwitchQuieries.isInExpression(_context.getNode()))) {
-      return ListSequence.fromList(statements).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0)))));
+    SNode lastStatement = StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$6WT0));
+    if (!(EnumSwitchQuieries.isInExpression(_context.getNode())) && SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ExpressionStatement$nm)) {
+      return ListSequence.fromList(statements).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(lastStatement)));
     }
     return statements;
   }
