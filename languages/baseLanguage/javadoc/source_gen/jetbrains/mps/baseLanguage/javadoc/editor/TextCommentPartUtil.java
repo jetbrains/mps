@@ -99,7 +99,7 @@ public class TextCommentPartUtil {
       editorContext.selectWRTFocusPolicy(codeSnippet);
       return;
     }
-    index = newText.indexOf("<");
+    index = newText.indexOf("<>");
     if (index != -1) {
       final int finalIndex = index;
       final Reference<SNode> htmlElement = new Reference();

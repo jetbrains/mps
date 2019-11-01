@@ -5936,7 +5936,7 @@
       <node id="677166607849590147" at="97,88,98,68" concept="2" />
       <node id="7903528363752368353" at="98,68,99,54" concept="2" />
       <node id="677166607849581607" at="99,54,100,13" concept="9" />
-      <node id="677166607849591060" at="101,5,102,33" concept="2" />
+      <node id="677166607849591060" at="101,5,102,34" concept="2" />
       <node id="7940826783909611054" at="103,22,104,35" concept="8" />
       <node id="7940826783909547867" at="104,35,105,59" concept="8" />
       <node id="7903528363752368743" at="107,36,108,76" concept="2" />
@@ -6007,7 +6007,7 @@
       <node id="677166607849581574" at="93,34,101,5" concept="6" />
       <node id="6352952732699553546" at="105,59,113,9" concept="2" />
       <node id="2668265993332135206" at="118,0,128,0" concept="13" trace="divideLineBetweenCaret#(Lorg/jetbrains/mps/openapi/model/SNode;IILjava/lang/String;)V" />
-      <node id="677166607849581635" at="102,33,116,5" concept="6" />
+      <node id="677166607849581635" at="102,34,116,5" concept="6" />
       <node id="677166607848012429" at="128,0,149,0" concept="13" trace="divideLineBetweenCaretAndInsertNewLine#(Lorg/jetbrains/mps/openapi/model/SNode;IILjava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7427066632718606688" at="32,23,73,7" concept="16" />
       <node id="7200144718239477182" at="26,107,82,5" concept="6" />

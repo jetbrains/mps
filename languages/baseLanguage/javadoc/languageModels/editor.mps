@@ -3048,7 +3048,7 @@
               <node concept="liA8E" id="__LR4ECp4p" role="2OqNvi">
                 <ref role="37wK5l" to="wyt6:~String.indexOf(java.lang.String)" resolve="indexOf" />
                 <node concept="Xl_RD" id="__LR4ECp4q" role="37wK5m">
-                  <property role="Xl_RC" value="&lt;" />
+                  <property role="Xl_RC" value="&lt;&gt;" />
                 </node>
               </node>
             </node>
