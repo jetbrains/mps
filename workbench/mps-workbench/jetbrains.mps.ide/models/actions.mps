@@ -198,6 +198,8 @@
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="al1t" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diagnostic(MPS.IDEA/)" />
+    <import index="8bnf" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.favoritesTreeView.actions(MPS.IDEA/)" />
+    <import index="rcv5" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util.treeView(MPS.IDEA/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
@@ -1022,13 +1024,46 @@
         <property role="TrG5h" value="make" />
       </node>
       <node concept="2a7GMi" id="4pH6NAGIHxF" role="ftvYc" />
-      <node concept="tCFHf" id="4NbzjXXKQBm" role="ftvYc">
-        <ref role="tCJdB" node="4NbzjXXKNE8" resolve="PasteNode" />
+      <node concept="tCFHf" id="hGnMFMX" role="ftvYc">
+        <ref role="tCJdB" node="hGnLICq" resolve="CloneModel" />
+      </node>
+      <node concept="tCFHf" id="hZikBtS" role="ftvYc">
+        <ref role="tCJdB" node="hZijjTd" resolve="CopyModelName" />
       </node>
       <node concept="10WQ6h" id="2vs9_ygEfaF" role="ftvYc">
         <property role="TrG5h" value="paste" />
       </node>
+      <node concept="tCFHf" id="4NbzjXXKQBm" role="ftvYc">
+        <ref role="tCJdB" node="4NbzjXXKNE8" resolve="PasteNode" />
+      </node>
       <node concept="2a7GMi" id="hyabVYZ" role="ftvYc" />
+      <node concept="10WQ6h" id="Ymhd0bfr94" role="ftvYc">
+        <property role="TrG5h" value="modelUsages" />
+      </node>
+      <node concept="tCFHf" id="4VblCrNX9TK" role="ftvYc">
+        <ref role="tCJdB" to="9oh:222i7iS8zo1" resolve="AnalyzeDependencies" />
+      </node>
+      <node concept="10WQ6h" id="1gEYwydCqUZ" role="ftvYc">
+        <property role="TrG5h" value="check" />
+      </node>
+      <node concept="2a7GMi" id="6I71fHozd1X" role="ftvYc" />
+      <node concept="10WQ6h" id="hMfehyW" role="ftvYc">
+        <property role="TrG5h" value="refactoring" />
+      </node>
+      <node concept="2a7GMi" id="hyac0eA" role="ftvYc" />
+      <node concept="10WQ6h" id="2tmN3ZB4Vsm" role="ftvYc">
+        <property role="TrG5h" value="favorites" />
+      </node>
+      <node concept="2a7GMi" id="hyac280" role="ftvYc" />
+      <node concept="tCFHf" id="hZstm8v" role="ftvYc">
+        <ref role="tCJdB" node="hZs6NFo" resolve="OptimizeModelImports" />
+      </node>
+      <node concept="tCFHf" id="hGnoTz2" role="ftvYc">
+        <ref role="tCJdB" node="hGnoi8Q" resolve="FixModuleImports" />
+      </node>
+      <node concept="tCFHf" id="38LNA6Kd9E2" role="ftvYc">
+        <ref role="tCJdB" node="38LNA6KbjqB" resolve="ConvertToFilePerRootPersistence" />
+      </node>
       <node concept="tCFHf" id="36tV70ZqvAV" role="ftvYc">
         <ref role="tCJdB" node="36tV70Zqv$M" resolve="DeleteModels" />
         <node concept="3clFbT" id="7l8SZlcTrfs" role="2J__8u" />
@@ -1039,37 +1074,11 @@
           <property role="3clFbU" value="true" />
         </node>
       </node>
-      <node concept="tCFHf" id="hGnMFMX" role="ftvYc">
-        <ref role="tCJdB" node="hGnLICq" resolve="CloneModel" />
-      </node>
-      <node concept="tCFHf" id="hZikBtS" role="ftvYc">
-        <ref role="tCJdB" node="hZijjTd" resolve="CopyModelName" />
-      </node>
-      <node concept="2a7GMi" id="5huoLqnzIL_" role="ftvYc" />
-      <node concept="tCFHf" id="hZstm8v" role="ftvYc">
-        <ref role="tCJdB" node="hZs6NFo" resolve="OptimizeModelImports" />
-      </node>
-      <node concept="tCFHf" id="hGnoTz2" role="ftvYc">
-        <ref role="tCJdB" node="hGnoi8Q" resolve="FixModuleImports" />
-      </node>
-      <node concept="tCFHf" id="38LNA6Kd9E2" role="ftvYc">
-        <ref role="tCJdB" node="38LNA6KbjqB" resolve="ConvertToFilePerRootPersistence" />
-      </node>
-      <node concept="2a7GMi" id="hyac0eA" role="ftvYc" />
-      <node concept="tCFHf" id="4VblCrNX9TK" role="ftvYc">
-        <ref role="tCJdB" to="9oh:222i7iS8zo1" resolve="AnalyzeDependencies" />
-      </node>
       <node concept="2a7GMi" id="4VblCrNX9TI" role="ftvYc" />
-      <node concept="10WQ6h" id="1gEYwydCqUZ" role="ftvYc">
-        <property role="TrG5h" value="check" />
+      <node concept="10WQ6h" id="5WjfCaA2my1" role="ftvYc">
+        <property role="TrG5h" value="run" />
       </node>
-      <node concept="10WQ6h" id="Ymhd0bfr94" role="ftvYc">
-        <property role="TrG5h" value="modelUsages" />
-      </node>
-      <node concept="10WQ6h" id="hMfehyW" role="ftvYc">
-        <property role="TrG5h" value="refactoring" />
-      </node>
-      <node concept="2a7GMi" id="hyac280" role="ftvYc" />
+      <node concept="2a7GMi" id="5WjfCaA2mvN" role="ftvYc" />
       <node concept="tCFHf" id="cQiGNPbKJ" role="ftvYc">
         <ref role="tCJdB" node="hGAswG7" resolve="RevertMemoryChanges" />
       </node>
@@ -1087,13 +1096,6 @@
         <property role="TrG5h" value="scripts" />
       </node>
       <node concept="2a7GMi" id="4pH6NAGIG89" role="ftvYc" />
-      <node concept="10WQ6h" id="5WjfCaA2my1" role="ftvYc">
-        <property role="TrG5h" value="run" />
-      </node>
-      <node concept="2a7GMi" id="5WjfCaA2mvN" role="ftvYc" />
-      <node concept="10WQ6h" id="2tmN3ZB4Vsm" role="ftvYc">
-        <property role="TrG5h" value="favorites" />
-      </node>
       <node concept="10WQ6h" id="2blMBvV$tE0" role="ftvYc">
         <property role="TrG5h" value="showHelp" />
       </node>
@@ -1101,7 +1103,6 @@
       <node concept="tCFHf" id="hYoRn0d" role="ftvYc">
         <ref role="tCJdB" node="hYoPViv" resolve="ModelProperties" />
       </node>
-      <node concept="2a7GMi" id="4iEnX$wf3FE" role="ftvYc" />
     </node>
   </node>
   <node concept="tC5Ba" id="hyf4HGL">
@@ -23362,35 +23363,51 @@
         <ref role="tCJdB" node="hGoorIk" resolve="ExpandNode" />
       </node>
       <node concept="2a7GMi" id="hyaamKe" role="ftvYc" />
-      <node concept="tCFHf" id="4npc6Q0ooZg" role="ftvYc">
-        <ref role="tCJdB" node="4npc6Q0ooI4" resolve="CopyNode" />
-      </node>
-      <node concept="tCFHf" id="4NbzjXXKQBo" role="ftvYc">
-        <ref role="tCJdB" node="4NbzjXXKNE8" resolve="PasteNode" />
-      </node>
       <node concept="tCFHf" id="4npc6Q0o$r1" role="ftvYc">
         <ref role="tCJdB" node="4npc6Q0oxS9" resolve="CutNode" />
       </node>
-      <node concept="tCFHf" id="NhBpYUS3BS" role="ftvYc">
-        <ref role="tCJdB" node="4npc6Q0okO0" resolve="CopyNodeReference" />
+      <node concept="tCFHf" id="4npc6Q0ooZg" role="ftvYc">
+        <ref role="tCJdB" node="4npc6Q0ooI4" resolve="CopyNode" />
       </node>
       <node concept="tCFHf" id="NhBpYUS3BT" role="ftvYc">
         <ref role="tCJdB" node="hZimaku" resolve="CopyNodeName" />
       </node>
+      <node concept="tCFHf" id="NhBpYUS3BS" role="ftvYc">
+        <ref role="tCJdB" node="4npc6Q0okO0" resolve="CopyNodeReference" />
+      </node>
+      <node concept="tCFHf" id="NhBpYUS3BV" role="ftvYc">
+        <ref role="tCJdB" node="hGnMLrO" resolve="CloneRoot" />
+      </node>
       <node concept="10WQ6h" id="4h0_rmDolOA" role="ftvYc">
         <property role="TrG5h" value="copy" />
       </node>
+      <node concept="tCFHf" id="4NbzjXXKQBo" role="ftvYc">
+        <ref role="tCJdB" node="4NbzjXXKNE8" resolve="PasteNode" />
+      </node>
       <node concept="2a7GMi" id="hyaauj2" role="ftvYc" />
+      <node concept="10WQ6h" id="i0XZ3WH" role="ftvYc">
+        <property role="TrG5h" value="find" />
+      </node>
+      <node concept="2a7GMi" id="6I71fHozdgY" role="ftvYc" />
+      <node concept="10WQ6h" id="7_fhVTAtu0_" role="ftvYc">
+        <property role="TrG5h" value="refactoring" />
+      </node>
+      <node concept="2a7GMi" id="6I71fHozdi8" role="ftvYc" />
+      <node concept="10WQ6h" id="2tmN3ZB4Vsy" role="ftvYc">
+        <property role="TrG5h" value="favorites" />
+      </node>
+      <node concept="2a7GMi" id="6xSeqtv67Qy" role="ftvYc" />
       <node concept="tCFHf" id="hSQ1Oiz" role="ftvYc">
         <ref role="tCJdB" node="hSPYZl3" resolve="DeleteNode" />
       </node>
       <node concept="tCFHf" id="5YCKioiEqBr" role="ftvYc">
         <ref role="tCJdB" node="7BBQIYkR4kU" resolve="SafeDelete" />
       </node>
-      <node concept="tCFHf" id="NhBpYUS3BV" role="ftvYc">
-        <ref role="tCJdB" node="hGnMLrO" resolve="CloneRoot" />
-      </node>
       <node concept="2a7GMi" id="hyaawIB" role="ftvYc" />
+      <node concept="10WQ6h" id="14z8V6nEs7K" role="ftvYc">
+        <property role="TrG5h" value="debug" />
+      </node>
+      <node concept="2a7GMi" id="h$Nc2rf" role="ftvYc" />
       <node concept="10WQ6h" id="1wPwVvaJhFD" role="ftvYc">
         <property role="TrG5h" value="gotoConceptAspects" />
       </node>
@@ -23398,17 +23415,6 @@
         <property role="TrG5h" value="showIn" />
       </node>
       <node concept="2a7GMi" id="hC2YcUF" role="ftvYc" />
-      <node concept="10WQ6h" id="14z8V6nEs7K" role="ftvYc">
-        <property role="TrG5h" value="debug" />
-      </node>
-      <node concept="2a7GMi" id="hyaaA_2" role="ftvYc" />
-      <node concept="10WQ6h" id="i0XZ3WH" role="ftvYc">
-        <property role="TrG5h" value="find" />
-      </node>
-      <node concept="10WQ6h" id="7_fhVTAtu0_" role="ftvYc">
-        <property role="TrG5h" value="refactoring" />
-      </node>
-      <node concept="2a7GMi" id="h$Nc2rf" role="ftvYc" />
       <node concept="tCFHf" id="hGAqPeT" role="ftvYc">
         <ref role="tCJdB" node="hGApL1E" resolve="ShowConceptInHierarchy" />
       </node>
@@ -23425,11 +23431,6 @@
       <node concept="tCFHf" id="hGpJCEM" role="ftvYc">
         <ref role="tCJdB" node="hGpJkjv" resolve="ShowErrorMessage" />
       </node>
-      <node concept="2a7GMi" id="2tmN3ZB4Vsz" role="ftvYc" />
-      <node concept="10WQ6h" id="2tmN3ZB4Vsy" role="ftvYc">
-        <property role="TrG5h" value="favorites" />
-      </node>
-      <node concept="2a7GMi" id="6xSeqtv67Qy" role="ftvYc" />
     </node>
   </node>
   <node concept="tC5Ba" id="1o6QtM0cvqW">
@@ -23483,6 +23484,10 @@
         <property role="TrG5h" value="make" />
       </node>
       <node concept="2a7GMi" id="miYJQAr2Un" role="ftvYc" />
+      <node concept="tCFHf" id="miYJQAr2Uw" role="ftvYc">
+        <ref role="tCJdB" node="hZikFSU" resolve="CopyModuleName" />
+      </node>
+      <node concept="2a7GMi" id="4NOAcpcU2C$" role="ftvYc" />
       <node concept="10WQ6h" id="miYJQAr2Uo" role="ftvYc">
         <property role="TrG5h" value="check" />
       </node>
@@ -23492,6 +23497,14 @@
       <node concept="10WQ6h" id="6XVANXZCfqC" role="ftvYc">
         <property role="TrG5h" value="analyze" />
       </node>
+      <node concept="2a7GMi" id="4NOAcpcU7GA" role="ftvYc" />
+      <node concept="10WQ6h" id="miYJQAr2UA" role="ftvYc">
+        <property role="TrG5h" value="refactoring" />
+      </node>
+      <node concept="2a7GMi" id="miYJQArh7m" role="ftvYc" />
+      <node concept="10WQ6h" id="miYJQArh7n" role="ftvYc">
+        <property role="TrG5h" value="favorites" />
+      </node>
       <node concept="2a7GMi" id="miYJQAr2Us" role="ftvYc" />
       <node concept="tCFHf" id="miYJQAr2Uv" role="ftvYc">
         <ref role="tCJdB" node="i3M_Wbp" resolve="DeleteModules" />
@@ -23499,15 +23512,9 @@
       <node concept="10WQ6h" id="393mFP2CRRf" role="ftvYc">
         <property role="TrG5h" value="delete" />
       </node>
-      <node concept="tCFHf" id="miYJQAr2Uw" role="ftvYc">
-        <ref role="tCJdB" node="hZikFSU" resolve="CopyModuleName" />
-      </node>
       <node concept="2a7GMi" id="miYJQAr2Uz" role="ftvYc" />
       <node concept="tCFHf" id="miYJQAr2U_" role="ftvYc">
         <ref role="tCJdB" node="hGASdEV" resolve="SetVirtualFolder" />
-      </node>
-      <node concept="10WQ6h" id="miYJQAr2UA" role="ftvYc">
-        <property role="TrG5h" value="refactoring" />
       </node>
       <node concept="2a7GMi" id="miYJQArlcX" role="ftvYc" />
       <node concept="10WQ6h" id="miYJQArlcZ" role="ftvYc">
@@ -23516,10 +23523,6 @@
       <node concept="2a7GMi" id="miYJQArlcV" role="ftvYc" />
       <node concept="10WQ6h" id="miYJQArh7l" role="ftvYc">
         <property role="TrG5h" value="compileJava" />
-      </node>
-      <node concept="2a7GMi" id="miYJQArh7m" role="ftvYc" />
-      <node concept="10WQ6h" id="miYJQArh7n" role="ftvYc">
-        <property role="TrG5h" value="favorites" />
       </node>
       <node concept="2a7GMi" id="miYJQArh7o" role="ftvYc" />
       <node concept="10WQ6h" id="3Brw6sIetwM" role="ftvYc">
@@ -23535,7 +23538,6 @@
       <node concept="10WQ6h" id="AEy2bFamiF" role="ftvYc">
         <property role="TrG5h" value="run" />
       </node>
-      <node concept="2a7GMi" id="AEy2bFamiH" role="ftvYc" />
     </node>
     <node concept="tT9cl" id="miYJQArh7j" role="2f5YQi">
       <ref role="tU$_T" node="hyf4Jd1" resolve="SolutionActions" />

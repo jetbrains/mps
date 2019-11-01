@@ -16,15 +16,15 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
   public static final String LABEL_ID_newActions = ID + "newActions";
   public static final String LABEL_ID_make = ID + "make";
   public static final String LABEL_ID_paste = ID + "paste";
-  public static final String LABEL_ID_check = ID + "check";
   public static final String LABEL_ID_modelUsages = ID + "modelUsages";
+  public static final String LABEL_ID_check = ID + "check";
   public static final String LABEL_ID_refactoring = ID + "refactoring";
+  public static final String LABEL_ID_favorites = ID + "favorites";
+  public static final String LABEL_ID_run = ID + "run";
   public static final String LABEL_ID_mpsvcs = ID + "mpsvcs";
   public static final String LABEL_ID_idealocalhistory = ID + "idealocalhistory";
   public static final String LABEL_ID_ideavcs = ID + "ideavcs";
   public static final String LABEL_ID_scripts = ID + "scripts";
-  public static final String LABEL_ID_run = ID + "run";
-  public static final String LABEL_ID_favorites = ID + "favorites";
   public static final String LABEL_ID_showHelp = ID + "showHelp";
 
   public ModelActions_ActionGroup(@Nullable ApplicationPlugin plugin) {
@@ -45,39 +45,52 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
       ModelActions_ActionGroup.this.addAction(action);
     }
     ModelActions_ActionGroup.this.addSeparator();
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.PasteNode_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModel_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyModelName_Action");
     {
       LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_paste);
       ActionManagerEx manager = ActionManagerEx.getInstanceEx();
       manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
       ModelActions_ActionGroup.this.addAction(action);
     }
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.PasteNode_Action");
     ModelActions_ActionGroup.this.addSeparator();
-    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(false), PluginId.getId("jetbrains.mps.ide"), false);
-    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(true), PluginId.getId("jetbrains.mps.ide"), true);
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CloneModel_Action");
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyModelName_Action");
-    ModelActions_ActionGroup.this.addSeparator();
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeModelImports_Action");
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FixModuleImports_Action");
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToFilePerRootPersistence_Action");
-    ModelActions_ActionGroup.this.addSeparator();
-    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action");
-    ModelActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_check);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ModelActions_ActionGroup.this.addAction(action);
-    }
     {
       LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_modelUsages);
       ActionManagerEx manager = ActionManagerEx.getInstanceEx();
       manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
       ModelActions_ActionGroup.this.addAction(action);
     }
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.platform.actions.AnalyzeDependencies_Action");
+    {
+      LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_check);
+      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
+      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
+      ModelActions_ActionGroup.this.addAction(action);
+    }
+    ModelActions_ActionGroup.this.addSeparator();
     {
       LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_refactoring);
+      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
+      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
+      ModelActions_ActionGroup.this.addAction(action);
+    }
+    ModelActions_ActionGroup.this.addSeparator();
+    {
+      LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_favorites);
+      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
+      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
+      ModelActions_ActionGroup.this.addAction(action);
+    }
+    ModelActions_ActionGroup.this.addSeparator();
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.OptimizeModelImports_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FixModuleImports_Action");
+    ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToFilePerRootPersistence_Action");
+    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(false), PluginId.getId("jetbrains.mps.ide"), false);
+    ModelActions_ActionGroup.this.addParameterizedAction(new DeleteModels_Action(true), PluginId.getId("jetbrains.mps.ide"), true);
+    ModelActions_ActionGroup.this.addSeparator();
+    {
+      LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_run);
       ActionManagerEx manager = ActionManagerEx.getInstanceEx();
       manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
       ModelActions_ActionGroup.this.addAction(action);
@@ -111,19 +124,6 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
     }
     ModelActions_ActionGroup.this.addSeparator();
     {
-      LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_run);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ModelActions_ActionGroup.this.addAction(action);
-    }
-    ModelActions_ActionGroup.this.addSeparator();
-    {
-      LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_favorites);
-      ActionManagerEx manager = ActionManagerEx.getInstanceEx();
-      manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
-      ModelActions_ActionGroup.this.addAction(action);
-    }
-    {
       LabelledAnchor action = new LabelledAnchor(ModelActions_ActionGroup.LABEL_ID_showHelp);
       ActionManagerEx manager = ActionManagerEx.getInstanceEx();
       manager.registerAction(action.getId(), action, PluginId.getId("jetbrains.mps.ide"));
@@ -131,6 +131,5 @@ public class ModelActions_ActionGroup extends GeneratedActionGroup {
     }
     ModelActions_ActionGroup.this.addSeparator();
     ModelActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ModelProperties_Action");
-    ModelActions_ActionGroup.this.addSeparator();
   }
 }
