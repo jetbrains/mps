@@ -16,7 +16,8 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 
 @GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/8484262519286281120", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 public class ConceptAndSuperConceptsScope extends Scope {
-  private SNode myTopConcept;
+  private final SNode myTopConcept;
+
   public ConceptAndSuperConceptsScope(@Nullable SNode topConcept) {
     myTopConcept = topConcept;
   }

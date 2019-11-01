@@ -31,6 +31,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
       return;
     }
     SNode concept = SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
+    // here we imply findPropertyDeclarations uses specific order to discover declared properties in a concept's hierarchy, namely from superconcepts first, with properties of leaf concepts coming last 
     SNode propInConcept = AbstractConceptDeclaration__BehaviorDescriptor.findPropertyDeclaration_idhK3S4A1.invoke(concept, SPropertyOperations.getString(prop, PROPS.name$tAp1));
     if (prop != propInConcept) {
       {

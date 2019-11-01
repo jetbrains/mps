@@ -5,8 +5,6 @@ package jetbrains.mps.smodel.search;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.cache.AbstractCache;
 import jetbrains.mps.cache.KeyProducer;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.cache.CachesManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +22,7 @@ import java.util.List;
 @GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/8484262519286299121", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 public class ConceptAndSuperConceptsCache extends AbstractCache {
   private static final KeyProducer keyProducer = new KeyProducer();
-  private static final Logger LOG = LogManager.getLogger(ConceptAndSuperConceptsCache.class);
+
   private static final CachesManager.CacheCreator<SNode> CREATOR = new CachesManager.CacheCreator<SNode>() {
     @Override
     public AbstractCache create(Object key, SNode element) {
@@ -32,7 +30,8 @@ public class ConceptAndSuperConceptsCache extends AbstractCache {
     }
   };
   @NotNull
-  private SNode myTopConcept;
+  private final SNode myTopConcept;
+
   @Deprecated
   protected ConceptAndSuperConceptsCache(Object key, SNode topConcept) {
     super(key);

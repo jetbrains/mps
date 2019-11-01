@@ -6,8 +6,8 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.BootstrapAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -20,8 +20,6 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.kernel.model.SModelUtil;
@@ -30,14 +28,13 @@ import jetbrains.mps.kernel.model.SModelUtil;
 public final class SNodeUtil {
   public static final SProperty property_AbstractConcept_Id = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
   public static final SProperty property_AbstractConcept_LangId = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
-  public static final SProperty property_Concept_Rootable = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
   public static final SProperty property_Property_Id = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
   public static final SProperty property_Link_Id = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
   public static final SProperty property_DataType_Id = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
   public static final SProperty property_DataType_LangId = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044404L, "languageId");
 
-  public static final SAbstractConcept concept_PropertyAttribute = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-  public static final SAbstractConcept concept_LinkAttribute = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+  public static final SAbstractConcept concept_PropertyAttribute = BootstrapAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+  public static final SAbstractConcept concept_LinkAttribute = BootstrapAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
 
 
   /**
@@ -62,10 +59,6 @@ public final class SNodeUtil {
   public static final SConcept concept_InstanceMethodDeclaration = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   public static final SConcept concept_StaticMethodDeclaration = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
   public static final SConcept concept_ConstructorDeclaration = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-  /**
-   * todo: returnType is needed for hack in ValidationUtil, remove this hack
-   */
-  public static final SContainmentLink link_ConstructorDeclaration_returnType = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
 
   public static final SInterfaceConcept concept_IResolveInfo = BootstrapAdapterFactory.getInterface(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
   public static final SInterfaceConcept concept_INamedConcept = BootstrapAdapterFactory.getInterface(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
@@ -82,25 +75,8 @@ public final class SNodeUtil {
   public static final SConcept concept_RuntimeTypeVariable = BootstrapAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
   public static final SConcept concept_RuntimeHoleType = BootstrapAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e68800741L, "jetbrains.mps.lang.typesystem.structure.RuntimeHoleType");
 
-  public static final SReferenceLink link_ConceptDeclaration_extends = BootstrapAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-  public static final SContainmentLink link_ConceptDeclaration_implements = BootstrapAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-  public static final SContainmentLink link_InterfaceConceptDeclaration_extends = BootstrapAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-  public static final SProperty property_ConceptDeclaration_staticScope = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x4b014033eedc8a48L, "staticScope");
-
-  public static final SContainmentLink link_AbstractConceptDeclaration_linkDeclaration = BootstrapAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-  public static final SContainmentLink link_AbstractConceptDeclaration_propertyDeclaration = BootstrapAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-  public static final SProperty property_AbstractConceptDeclaration_abstract = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-  public static final SProperty property_AbstractConceptDeclaration_helpURL = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x2237c3bc85b3755cL, "oldHelpURL");
-  public static final SProperty property_AbstractConceptDeclaration_final = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
-  public static final SProperty property_AbstractConceptDeclaration_conceptAlias = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-  public static final SProperty property_AbstractConceptDeclaration_conceptShortDescription = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription");
-
-  public static final SReferenceLink link_InterfaceConceptReference_intfc = BootstrapAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-
   public static final SProperty property_INamedConcept_name = BootstrapAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   public static final SProperty property_LinkDeclaration_role = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-  public static final SProperty property_LinkDeclaration_unordered = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x213ed46fe94fc232L, "unordered");
-  public static final SProperty property_LinkDeclaration_metaClass = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   @Deprecated
   @ToRemove(version = 2019.3)
   public static final SProperty property_LinkDeclaration_sourceCardinality = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
@@ -141,56 +117,14 @@ public final class SNodeUtil {
     }
     return SNodeOperations.getConcept(node).equals(CONCEPTS.ConceptDeclaration$qU);
   }
-  public static boolean isInstanceOfInterfaceConceptDeclaration(SNode node) {
-    if (node == null) {
-      return false;
-    }
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.InterfaceConceptDeclaration$MT);
-  }
-  public static boolean isInstanceOfAbstractConceptDeclaration(SNode node) {
-    if (node == null) {
-      return false;
-    }
-    SAbstractConcept c = SNodeOperations.getConcept(node);
-    return c.equals(CONCEPTS.ConceptDeclaration$qU) || c.equals(CONCEPTS.InterfaceConceptDeclaration$MT) || c.equals(CONCEPTS.AbstractConceptDeclaration$UN);
-  }
-  public static SNode getConceptDeclaration_Extends(SNode concept) {
-    return SLinkOperations.getTarget(concept, LINKS.extends$LQV3);
-  }
   public static SContainmentLink getChildLink(SNode attribute) {
     return ((SContainmentLink) (SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf")));
   }
   public static SProperty getProperty(SNode attribute) {
     return ((SProperty) (SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$jT), CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$jT, "1avfQ4BBzOo")));
   }
-  public static Iterable<SNode> getConceptDeclaration_Implements(SNode concept) {
-    return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.implements$oQDh)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.intfc$fO5);
-      }
-    });
-  }
-  public static Iterable<SNode> getConceptDeclaration_ImplementsReferenceNodes(SNode concept) {
-    return SLinkOperations.getChildren(concept, LINKS.implements$oQDh);
-  }
-  public static Iterable<SNode> getConcept_LinkDeclarations(SNode concept) {
-    return SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$);
-  }
   public static SNode getLinkTarget(SNode link) {
     return SLinkOperations.getTarget(link, LINKS.target$egp8);
-  }
-  public static Iterable<SNode> getConcept_PropertyDeclarations(SNode concept) {
-    return SLinkOperations.getChildren(concept, LINKS.propertyDeclaration$lL73);
-  }
-  public static Iterable<SNode> getInterfaceConceptDeclaration_Extends(SNode concept) {
-    return ListSequence.fromList(SLinkOperations.getChildren(concept, LINKS.extends$3Y1p)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.intfc$fO5);
-      }
-    });
-  }
-  public static Iterable<SNode> getInterfaceConceptDeclaration_ExtendsReferenceNodes(SNode concept) {
-    return SLinkOperations.getChildren(concept, LINKS.extends$3Y1p);
   }
   public static String getNodeShortDescription(SNode node) {
     return SPropertyOperations.getString(node, PROPS.shortDescription$w2Xj);
@@ -203,39 +137,6 @@ public final class SNodeUtil {
   }
   public static String getResolveInfo(SNode node) {
     return SPropertyOperations.getString(node, PROPS.resolveInfo$eeN8);
-  }
-  public static boolean isInstanceOfLinkDeclaration(SNode node) {
-    if (node == null) {
-      return false;
-    }
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.LinkDeclaration$bA);
-  }
-  public static boolean isInstanceOfPropertyDeclaration(SNode node) {
-    if (node == null) {
-      return false;
-    }
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.PropertyDeclaration$c5);
-  }
-  public static SNode getPropertyDeclaration_DataType(SNode decl) {
-    return SLinkOperations.getTarget(decl, LINKS.dataType$fLUl);
-  }
-  public static boolean isInstanceOfPrimitiveDataTypeDeclaration(SNode node) {
-    if (node == null) {
-      return false;
-    }
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.PrimitiveDataTypeDeclaration$id);
-  }
-  public static boolean isInstanceOfEnumerationDataTypeDeclaration(SNode node) {
-    if (node == null) {
-      return false;
-    }
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll);
-  }
-  public static boolean isInstanceOfConstrainedStringDataTypeDeclaration(SNode node) {
-    if (node == null) {
-      return false;
-    }
-    return SNodeOperations.getConcept(node).equals(CONCEPTS.ConstrainedDataTypeDeclaration$Mu);
   }
 
   public static boolean getLinkDeclaration_IsReference(SNode link) {
@@ -304,28 +205,14 @@ public final class SNodeUtil {
     /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
     /*package*/ static final SInterfaceConcept IDontSubstituteByDefault$kG = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x19796fa16a19888bL, "jetbrains.mps.lang.core.structure.IDontSubstituteByDefault");
     /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
     /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
     /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
-    /*package*/ static final SConcept PrimitiveDataTypeDeclaration$id = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");
-    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$Ll = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
-    /*package*/ static final SConcept ConstrainedDataTypeDeclaration$Mu = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, "jetbrains.mps.lang.structure.structure.ConstrainedDataTypeDeclaration");
     /*package*/ static final SConcept SideTransformInfo$l0 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo");
     /*package*/ static final SConcept LinkAttribute$7j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
     /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
-    /*package*/ static final SReferenceLink dataType$fLUl = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 
   private static final class PROPS {

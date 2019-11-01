@@ -8,20 +8,27 @@ import jetbrains.mps.cache.DataSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
-import java.util.LinkedHashSet;
-import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.event.SModelChildEvent;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import java.util.Map;
 import java.util.List;
 import java.util.Collections;
 import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.HashMap;
 import java.util.Arrays;
 import jetbrains.mps.util.FlattenIterable;
-import jetbrains.mps.kernel.model.SModelUtil;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)/8484262519286305935", model = "r:22db907b-8239-4180-8797-e91cea0b9573(jetbrains.mps.smodel.search)")
 /*package*/ class Datasets {
@@ -45,40 +52,6 @@ import jetbrains.mps.kernel.model.SModelUtil;
   };
   /*package*/ Datasets() {
   }
-  private static void collectImplementedAndExtended(@NotNull SNode top, Set<SNode> result) {
-    Set<SNode> frontier = new LinkedHashSet<SNode>();
-    Set<SNode> newFrontier = new LinkedHashSet<SNode>();
-    frontier.add(top);
-    result.add(top);
-    while (!(frontier.isEmpty())) {
-      // AbstractConceptDeclaration 
-      for (SNode cd : frontier) {
-        if (SNodeUtil.isInstanceOfInterfaceConceptDeclaration(cd)) {
-          for (SNode interfaceDeclaration : SNodeUtil.getInterfaceConceptDeclaration_Extends(cd)) {
-            if (interfaceDeclaration != null && !(result.contains(interfaceDeclaration))) {
-              newFrontier.add(interfaceDeclaration);
-              result.add(interfaceDeclaration);
-            }
-          }
-        } else
-        if (SNodeUtil.isInstanceOfConceptDeclaration(cd)) {
-          SNode anExtends = SNodeUtil.getConceptDeclaration_Extends(cd);
-          if (anExtends != null && !(result.contains(anExtends))) {
-            newFrontier.add(anExtends);
-            result.add(anExtends);
-          }
-          for (SNode interfaceDeclaration : SNodeUtil.getConceptDeclaration_Implements(cd)) {
-            if (interfaceDeclaration != null && !(result.contains(interfaceDeclaration))) {
-              newFrontier.add(interfaceDeclaration);
-              result.add(interfaceDeclaration);
-            }
-          }
-        }
-      }
-      frontier = newFrontier;
-      newFrontier = new LinkedHashSet<SNode>();
-    }
-  }
   /*package*/ static class ConceptsDataSet extends DataSet {
     public static final String ID = "CONCEPTS_DATASET";
     @NotNull
@@ -98,36 +71,57 @@ import jetbrains.mps.kernel.model.SModelUtil;
     }
     @Override
     protected void init() {
-      Set<SNode> result = new LinkedHashSet<SNode>();
-      Datasets.collectImplementedAndExtended(myTopConcept, result);
-      result.add(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
-      myConcepts = result.toArray(new SNode[result.size()]);
       //  depends on concepts and implemented interface references 
-      myDependsOnNodes = new HashSet<SNode>(myConcepts.length * 2);
-      for (SNode concept : myConcepts) {
-        myDependsOnNodes.add(concept);
-        if (SNodeUtil.isInstanceOfInterfaceConceptDeclaration(concept)) {
-          for (SNode n : SNodeUtil.getInterfaceConceptDeclaration_ExtendsReferenceNodes(concept)) {
-            if (n == null) {
-              continue;
+      myDependsOnNodes = new HashSet<SNode>();
+      Set<SNode> result = new LinkedHashSet<SNode>();
+      Set<SNode> frontier = new LinkedHashSet<SNode>();
+      Set<SNode> newFrontier = new LinkedHashSet<SNode>();
+      frontier.add(myTopConcept);
+      result.add(myTopConcept);
+      while (!(frontier.isEmpty())) {
+        // AbstractConceptDeclaration 
+        for (SNode cd : frontier) {
+          SConcept cdConcept = SNodeOperations.getConcept(cd);
+          if (CONCEPTS.InterfaceConceptDeclaration$MT.equals(cdConcept)) {
+            for (SNode interfaceDeclaration : SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p), LINKS.intfc$fO5)) {
+              if (interfaceDeclaration != null && !(result.contains(interfaceDeclaration))) {
+                newFrontier.add(interfaceDeclaration);
+                result.add(interfaceDeclaration);
+              }
             }
-            myDependsOnNodes.add(n);
-          }
-        } else
-        if (SNodeUtil.isInstanceOfConceptDeclaration(concept)) {
-          for (SNode n : SNodeUtil.getConceptDeclaration_ImplementsReferenceNodes(concept)) {
-            if (n == null) {
-              continue;
+            for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p)).where(new NotNullWhereFilter<SNode>())) {
+              myDependsOnNodes.add(n);
             }
-            myDependsOnNodes.add(n);
+          } else
+          if (CONCEPTS.ConceptDeclaration$qU.equals(cdConcept)) {
+            SNode anExtends = SLinkOperations.getTarget(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$LQV3);
+            if (anExtends != null && !(result.contains(anExtends))) {
+              newFrontier.add(anExtends);
+              result.add(anExtends);
+            }
+            for (SNode interfaceDeclaration : SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$oQDh), LINKS.intfc$fO5)) {
+              if (interfaceDeclaration != null && !(result.contains(interfaceDeclaration))) {
+                newFrontier.add(interfaceDeclaration);
+                result.add(interfaceDeclaration);
+              }
+            }
+            for (SNode n : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cd, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$oQDh)).where(new NotNullWhereFilter<SNode>())) {
+              myDependsOnNodes.add(n);
+            }
           }
         }
+        frontier = newFrontier;
+        newFrontier = new LinkedHashSet<SNode>();
       }
+      result.add(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"));
+      myConcepts = result.toArray(new SNode[result.size()]);
+      myDependsOnNodes.addAll(result);
     }
     @Override
     public void childAdded(SModelChildEvent event) {
       //  event handling 
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
+      SNode parent = event.getParent();
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
         //  don't process adding of smth. to concept unless it is extended/implemented interface-concept 
         if (isExtendsImplementsRole(event)) {
           super.childAdded(event);
@@ -136,7 +130,9 @@ import jetbrains.mps.kernel.model.SModelUtil;
     }
     @Override
     public void childRemoved(SModelChildEvent event) {
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
+      SNode parent = event.getParent();
+
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
         //  don't process removing of smth. from concept unless it is extended/implemented interface-concept 
         if (isExtendsImplementsRole(event)) {
           super.childRemoved(event);
@@ -144,8 +140,8 @@ import jetbrains.mps.kernel.model.SModelUtil;
       }
     }
     private boolean isExtendsImplementsRole(SModelChildEvent event) {
-      String role = event.getChildRole();
-      return SNodeUtil.link_ConceptDeclaration_implements.getRoleName().equals(role) || SNodeUtil.link_ConceptDeclaration_extends.getRoleName().equals(role);
+      SContainmentLink aggregationLink = event.getAggregationLink();
+      return LINKS.implements$oQDh.equals(aggregationLink) || LINKS.extends$3Y1p.equals(aggregationLink);
     }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
@@ -177,10 +173,9 @@ import jetbrains.mps.kernel.model.SModelUtil;
       SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
       //  iterate bottom-up 
       for (int i = concepts.length - 1; i >= 0; i--) {
-        Iterable<SNode> props = SNodeUtil.getConcept_PropertyDeclarations(concepts[i]);
-        for (SNode prop : props) {
+        for (SNode prop : SLinkOperations.getChildren(concepts[i], LINKS.propertyDeclaration$lL73)) {
           allProperties.add(prop);
-          String name = prop.getName();
+          String name = SPropertyOperations.getString(prop, PROPS.name$tAp1);
           if (name == null) {
             continue;
           }
@@ -208,7 +203,8 @@ import jetbrains.mps.kernel.model.SModelUtil;
     @Override
     public void childAdded(SModelChildEvent event) {
       // ------event handling 
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
+      SNode parent = event.getParent();
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
         //  don't process adding of smth. to concept unless it is property-declaration 
         if (isPropertyDeclarationRole(event)) {
           super.childAdded(event);
@@ -217,7 +213,8 @@ import jetbrains.mps.kernel.model.SModelUtil;
     }
     @Override
     public void childRemoved(SModelChildEvent event) {
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
+      SNode parent = event.getParent();
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
         //  don't process removing of smth. from concept unless it is property-declaration 
         if (isPropertyDeclarationRole(event)) {
           super.childRemoved(event);
@@ -225,13 +222,12 @@ import jetbrains.mps.kernel.model.SModelUtil;
       }
     }
     private boolean isPropertyDeclarationRole(SModelChildEvent event) {
-      String role = event.getChildRole();
-      return SNodeUtil.link_AbstractConceptDeclaration_propertyDeclaration.getRoleName().equals(role);
+      return LINKS.propertyDeclaration$lL73.equals(event.getAggregationLink());
     }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is property name 
-      if (SNodeUtil.isInstanceOfPropertyDeclaration(event.getNode())) {
+      if (CONCEPTS.PropertyDeclaration$c5.equals(event.getNode().getConcept())) {
         super.propertyChanged(event);
       }
     }
@@ -275,10 +271,10 @@ import jetbrains.mps.kernel.model.SModelUtil;
       SNode[] concepts = ((ConceptAndSuperConceptsCache) getOwnerCache()).getConcepts();
       FlattenIterable<SNode> allLinks = new FlattenIterable<SNode>(new ArrayList<Iterable<SNode>>(concepts.length));
       for (SNode concept : concepts) {
-        Iterable<SNode> list = SNodeUtil.getConcept_LinkDeclarations((SNode) concept);
+        Iterable<SNode> list = SLinkOperations.getChildren(concept, LINKS.linkDeclaration$lL6$);
         allLinks.add(list);
         for (SNode link : list) {
-          String role1 = SModelUtil.getLinkDeclarationRole(link);
+          String role1 = SPropertyOperations.getString(link, PROPS.role$r_O$);
           if (role1 == null) {
             continue;
           }
@@ -293,7 +289,7 @@ import jetbrains.mps.kernel.model.SModelUtil;
       }
       Map<SNode, SNode> specializedLinks = new HashMap<SNode, SNode>();
       for (SNode link : allLinks) {
-        SNode specializedLink = SModelUtil.getLinkDeclarationSpecializedLink(link);
+        SNode specializedLink = SLinkOperations.getTarget(link, LINKS.specializedLink$3uH0);
         if (specializedLink != null) {
           specializedLinks.put(specializedLink, link);
         }
@@ -327,7 +323,8 @@ import jetbrains.mps.kernel.model.SModelUtil;
     @Override
     public void childAdded(SModelChildEvent event) {
       //  event handling 
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
+      SNode parent = event.getParent();
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
         //  don't process adding of smth. to concept unless it is link-declaration 
         if (isLinkDeclarationRole(event)) {
           super.childAdded(event);
@@ -336,7 +333,8 @@ import jetbrains.mps.kernel.model.SModelUtil;
     }
     @Override
     public void childRemoved(SModelChildEvent event) {
-      if (SNodeUtil.isInstanceOfAbstractConceptDeclaration(event.getParent())) {
+      SNode parent = event.getParent();
+      if (parent != null && SNodeOperations.isInstanceOf(parent, CONCEPTS.AbstractConceptDeclaration$UN)) {
         //  don't process removing of smth. from concept unless it is link-declaration 
         if (isLinkDeclarationRole(event)) {
           super.childRemoved(event);
@@ -344,13 +342,12 @@ import jetbrains.mps.kernel.model.SModelUtil;
       }
     }
     private boolean isLinkDeclarationRole(SModelChildEvent event) {
-      String role = event.getChildRole();
-      return SNodeUtil.link_AbstractConceptDeclaration_linkDeclaration.getRoleName().equals(role);
+      return LINKS.linkDeclaration$lL6$.equals(event.getAggregationLink());
     }
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       //  don't process unless it is link's role 
-      if (!(SNodeUtil.property_LinkDeclaration_role.getName().equals(event.getPropertyName())) || !(SNodeUtil.isInstanceOfLinkDeclaration(event.getNode()))) {
+      if (!(PROPS.role$r_O$.equals(event.getProperty()))) {
         return;
       }
       String oldRole = event.getOldPropertyValue();
@@ -371,5 +368,27 @@ import jetbrains.mps.kernel.model.SModelUtil;
         myLinkByRole.put(newRole, event.getNode());
       }
     }
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink extends$LQV3 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$oQDh = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$3Y1p = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SReferenceLink specializedLink$3uH0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }
