@@ -374,7 +374,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         return ((HighlightNodeAndFeature) update).isSameHighlighter(TreeHighlighter.this);
       }
       if (update instanceof UpdatePresentation) {
-        ((UpdatePresentation) update).isSameHighlighter(TreeHighlighter.this);
+        return ((UpdatePresentation) update).isSameHighlighter(TreeHighlighter.this);
       }
       return false;
     }
