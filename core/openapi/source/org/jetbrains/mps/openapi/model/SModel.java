@@ -132,8 +132,10 @@ public interface SModel {
   Iterable<Problem> getProblems();
 
   /**
-   * When owning a write action lock, this method will discard the in-memory representation of the model.
-   * A modified model is first saved into the storage so that the changes are preserved.
+   * Tries to reduce memory footprint. The implementation might be no-op for certain subclasses.
+   * The invariant is: after accessing model that was previously unloaded, the model should be observed as before unloading
+   * to some extent. E.g. EditableSModel should appear the same to the user after unload/access operations performed.
+   * Requires write action, this method may discard the in-memory representation of the model.
    */
   void unload();
 

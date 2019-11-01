@@ -298,9 +298,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
     final ModelLoadingState oldState = getLoadingState();
     doUnload();
     ModelLoadingState newState = getLoadingState();
-    if (oldState != newState){
-      fireModelStateChanged(oldState, newState);
-    }
+    fireModelStateChanged(oldState, newState);
   }
 
   /**

@@ -54,8 +54,9 @@ public class TrivialModelDescriptor extends SModelBase {
     return myModelData;
   }
 
+  //no-op since currently we don't know how to load this type of model after unloading
   @Override
-  protected void doUnload() {
+  public void unload() {
 
   }
 }
