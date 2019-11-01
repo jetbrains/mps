@@ -41,7 +41,7 @@ public class TreeHighlighterFactory implements ProjectComponent {
   public void highlightTreeIfNeeded(MPSTree tree) {
     TreeHighlighter highlighter = null;
     if (tree instanceof ProjectTree) {
-      highlighter = instantiateHighlighter(tree, new ProjectTreeFeatureExtractor());
+      highlighter = instantiateHighlighter(tree, new ProjectTreeFeatureExtractor(), true);
     } else if (tree instanceof UsagesTree) {
       highlighter = instantiateHighlighter(tree, new UsagesTreeFeatureExtractor());
     } else if (tree instanceof AbstractHierarchyTree) {
@@ -57,5 +57,12 @@ public class TreeHighlighterFactory implements ProjectComponent {
    */
   public TreeHighlighter instantiateHighlighter(MPSTree tree, TreeNodeFeatureExtractor featureExtractor) {
     return new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, featureExtractor, false, myQueue);
+  }
+
+  /**
+   * Alternative to {@link jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory#instantiateHighlighter(MPSTree, TreeNodeFeatureExtractor) } with some bogus boolean argument I'd like to get rid of
+   */
+  public TreeHighlighter instantiateHighlighter(MPSTree tree, TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal) {
+    return new TreeHighlighter(myRegistry, myFeatureForestMapSupport, tree, featureExtractor, removeNodesOnModelDisposal, myQueue);
   }
 }

@@ -78,20 +78,14 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   private final Update myHighlightAllFeaturesUpdate = new HighlightAll();
 
   /**
-   * 
-   * @deprecated use the one with shared queue, TreeHighligherFactory#instantiateHighlighter() gives proper instance
+   * use TreeHighlighterFactory to instantiate
    */
-  @Deprecated
-  public TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal) {
-    this(registry, featureForestMapSupport, tree, featureExtractor, removeNodesOnModelDisposal, new MergingUpdateQueue("TreeHighlighter LEGACY queue", 500, true, null));
-    myQueue.setPassThrough(true);
-  }
-
-  public TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal, @NotNull MergingUpdateQueue queue) {
+  /*package*/ TreeHighlighter(@NotNull CurrentDifferenceRegistry registry, @NotNull FeatureForestMapSupport featureForestMapSupport, @NotNull MPSTree tree, @NotNull TreeNodeFeatureExtractor featureExtractor, boolean removeNodesOnModelDisposal, @NotNull MergingUpdateQueue queue) {
     myRegistry = registry;
     myMap = featureForestMapSupport.getMap();
     myTree = tree;
     myFeatureExtractor = featureExtractor;
+    // XXX what does this mean? 
     if (removeNodesOnModelDisposal) {
       myGlobalModelListener = new MyModelDisposeListener();
     }
