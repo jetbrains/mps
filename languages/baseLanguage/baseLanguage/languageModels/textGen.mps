@@ -14779,5 +14779,51 @@
       <ref role="3uigEE" to="vmu8:79YVnsaObnu" resolve="RootDependencies.Source" />
     </node>
   </node>
+  <node concept="WtQ9Q" id="127awsVXCg4">
+    <property role="3GE5qa" value="primitive" />
+    <ref role="WuzLi" to="tpee:127awsVX$ka" resolve="BinaryIntegerLiteral" />
+    <node concept="11bSqf" id="127awsVXCg5" role="11c4hB">
+      <node concept="3clFbS" id="127awsVXCg6" role="2VODD2">
+        <node concept="lc7rE" id="127awsVXCgO" role="3cqZAp">
+          <node concept="l9hG8" id="127awsVXCgP" role="lcghm">
+            <node concept="3cpWs3" id="127awsVXCgQ" role="lb14g">
+              <node concept="2OqwBi" id="127awsVXCgR" role="3uHU7w">
+                <node concept="117lpO" id="127awsVXCgS" role="2Oq$k0" />
+                <node concept="3TrcHB" id="127awsVXCgT" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpee:127awsVX$kb" resolve="value" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="127awsVXCgU" role="3uHU7B">
+                <property role="Xl_RC" value="0b" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="WtQ9Q" id="U1YUeQjdSc">
+    <property role="3GE5qa" value="primitive" />
+    <ref role="WuzLi" to="tpee:U1YUeQjazS" resolve="OctalIntegerLiteral" />
+    <node concept="11bSqf" id="U1YUeQjdSd" role="11c4hB">
+      <node concept="3clFbS" id="U1YUeQjdSe" role="2VODD2">
+        <node concept="lc7rE" id="U1YUeQje1a" role="3cqZAp">
+          <node concept="l9hG8" id="U1YUeQje1b" role="lcghm">
+            <node concept="3cpWs3" id="U1YUeQje1c" role="lb14g">
+              <node concept="2OqwBi" id="U1YUeQje1d" role="3uHU7w">
+                <node concept="117lpO" id="U1YUeQje1e" role="2Oq$k0" />
+                <node concept="3TrcHB" id="U1YUeQje1f" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpee:U1YUeQjazT" resolve="value" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="U1YUeQje1g" role="3uHU7B">
+                <property role="Xl_RC" value="0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

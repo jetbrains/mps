@@ -66,6 +66,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new AssertStatement_TextGen();
       case LanguageConceptSwitch.BaseAssignmentExpression:
         return new BaseAssignmentExpression_TextGen();
+      case LanguageConceptSwitch.BinaryIntegerLiteral:
+        return new BinaryIntegerLiteral_TextGen();
       case LanguageConceptSwitch.BitwiseAndExpression:
         return new BitwiseAndExpression_TextGen();
       case LanguageConceptSwitch.BitwiseNotExpression:
@@ -204,6 +206,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new NotExpression_TextGen();
       case LanguageConceptSwitch.NullLiteral:
         return new NullLiteral_TextGen();
+      case LanguageConceptSwitch.OctalIntegerLiteral:
+        return new OctalIntegerLiteral_TextGen();
       case LanguageConceptSwitch.OrExpression:
         return new OrExpression_TextGen();
       case LanguageConceptSwitch.ParameterDeclaration:

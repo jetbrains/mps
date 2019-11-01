@@ -65584,5 +65584,61 @@
       <node concept="3eGOoe" id="3EngrbvTbUf" role="1Qtc8$" />
     </node>
   </node>
+  <node concept="24kQdi" id="127awsVXCFN">
+    <property role="3GE5qa" value="primitive" />
+    <ref role="1XX52x" to="tpee:127awsVX$ka" resolve="BinaryIntegerLiteral" />
+    <node concept="3EZMnI" id="127awsVXCFV" role="2wV5jI">
+      <node concept="3F0ifn" id="127awsVXCFW" role="3EZMnx">
+        <property role="3F0ifm" value="0b" />
+        <node concept="Vb9p2" id="127awsVXCFX" role="3F10Kt">
+          <property role="Vbekb" value="PLAIN" />
+        </node>
+        <node concept="11LMrY" id="127awsVXCFY" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="VechU" id="127awsVXCFZ" role="3F10Kt">
+          <property role="Vb096" value="blue" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="127awsVXCG0" role="3EZMnx">
+        <ref role="1NtTu8" to="tpee:127awsVX$kb" resolve="value" />
+        <node concept="2UZ17K" id="127awsVXCG1" role="3F10Kt">
+          <property role="2UZ17L" value="punctuation" />
+        </node>
+        <node concept="VechU" id="127awsVXCG2" role="3F10Kt">
+          <property role="Vb096" value="blue" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="127awsVXCG3" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="U1YUeQjazV">
+    <property role="3GE5qa" value="primitive" />
+    <ref role="1XX52x" to="tpee:U1YUeQjazS" resolve="OctalIntegerLiteral" />
+    <node concept="3EZMnI" id="U1YUeQjazX" role="2wV5jI">
+      <node concept="3F0ifn" id="U1YUeQjazY" role="3EZMnx">
+        <property role="3F0ifm" value="0c" />
+        <node concept="Vb9p2" id="U1YUeQjazZ" role="3F10Kt">
+          <property role="Vbekb" value="PLAIN" />
+        </node>
+        <node concept="11LMrY" id="U1YUeQja$0" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="VechU" id="U1YUeQja$1" role="3F10Kt">
+          <property role="Vb096" value="blue" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="U1YUeQja$2" role="3EZMnx">
+        <ref role="1NtTu8" to="tpee:U1YUeQjazT" resolve="value" />
+        <node concept="2UZ17K" id="U1YUeQja$3" role="3F10Kt">
+          <property role="2UZ17L" value="punctuation" />
+        </node>
+        <node concept="VechU" id="U1YUeQja$4" role="3F10Kt">
+          <property role="Vb096" value="blue" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="U1YUeQja$5" role="2iSdaV" />
+    </node>
+  </node>
 </model>
 

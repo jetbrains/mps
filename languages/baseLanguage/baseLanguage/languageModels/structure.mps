@@ -20,7 +20,7 @@
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
-      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
@@ -3865,6 +3865,7 @@
     <property role="3GE5qa" value="primitive" />
     <property role="34LRSv" value="0x" />
     <property role="EcuMT" value="1179360813171" />
+    <property role="R4oN_" value="hexadecimal integer literal" />
     <ref role="1TJDcQ" node="hanubx6" resolve="IntegerLiteral" />
     <node concept="1TJgyi" id="hanoCGW" role="1TKVEl">
       <property role="TrG5h" value="value" />
@@ -4526,6 +4527,44 @@
       <property role="3tVfz5" value="1225271514377" />
       <ref role="2wpffI" node="hP7RTk9" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="127awsVX$ka">
+    <property role="TrG5h" value="BinaryIntegerLiteral" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="primitive" />
+    <property role="34LRSv" value="0b" />
+    <property role="EcuMT" value="1190966837021918474" />
+    <property role="R4oN_" value="binary integer literal" />
+    <ref role="1TJDcQ" node="hanubx6" resolve="IntegerLiteral" />
+    <node concept="1TJgyi" id="127awsVX$kb" role="1TKVEl">
+      <property role="TrG5h" value="value" />
+      <property role="IQ2nx" value="1179360856892" />
+      <ref role="AX2Wp" node="6bA$I9q25JZ" resolve="_BinNumberValue" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="U1YUeQjazS">
+    <property role="TrG5h" value="OctalIntegerLiteral" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="primitive" />
+    <property role="34LRSv" value="0c" />
+    <property role="EcuMT" value="1045393269083384056" />
+    <property role="R4oN_" value="octal integer literal" />
+    <ref role="1TJDcQ" node="hanubx6" resolve="IntegerLiteral" />
+    <node concept="1TJgyi" id="U1YUeQjazT" role="1TKVEl">
+      <property role="TrG5h" value="value" />
+      <property role="IQ2nx" value="1179360856892" />
+      <ref role="AX2Wp" node="6bA$I9q25Bx" resolve="_OctNumberValue" />
+    </node>
+  </node>
+  <node concept="Az7Fb" id="6bA$I9q25Bx">
+    <property role="3F6X1D" value="7126544961231149537" />
+    <property role="TrG5h" value="_OctNumberValue" />
+    <property role="FLfZY" value="[0-7]+" />
+  </node>
+  <node concept="Az7Fb" id="6bA$I9q25JZ">
+    <property role="3F6X1D" value="7126544961231150079" />
+    <property role="TrG5h" value="_BinNumberValue" />
+    <property role="FLfZY" value="[0|1]+" />
   </node>
 </model>
 

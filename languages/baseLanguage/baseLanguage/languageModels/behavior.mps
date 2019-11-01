@@ -74172,5 +74172,119 @@
     </node>
     <node concept="3Tm1VV" id="3rj45ZUuWEr" role="1B3o_S" />
   </node>
+  <node concept="13h7C7" id="127awsVX$Pe">
+    <property role="3GE5qa" value="primitive" />
+    <ref role="13h7C2" to="tpee:127awsVX$ka" resolve="BinaryIntegerLiteral" />
+    <node concept="13hLZK" id="127awsVX$Pf" role="13h7CW">
+      <node concept="3clFbS" id="127awsVX$Pg" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="127awsVX$PO" role="13h7CS">
+      <property role="TrG5h" value="getCompileTimeConstantValue" />
+      <ref role="13i0hy" node="i1LP2xI" resolve="getCompileTimeConstantValue" />
+      <node concept="3Tm1VV" id="127awsVX$PR" role="1B3o_S" />
+      <node concept="3clFbS" id="127awsVX$PW" role="3clF47">
+        <node concept="SfApY" id="127awsVX$V$" role="3cqZAp">
+          <node concept="3clFbS" id="127awsVX$V_" role="SfCbr">
+            <node concept="3cpWs6" id="127awsVX$VA" role="3cqZAp">
+              <node concept="2YIFZM" id="127awsVX$VB" role="3cqZAk">
+                <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
+                <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String,int)" resolve="parseInt" />
+                <node concept="2OqwBi" id="127awsVX$VC" role="37wK5m">
+                  <node concept="13iPFW" id="127awsVX$VD" role="2Oq$k0" />
+                  <node concept="3TrcHB" id="127awsVX$VE" role="2OqNvi">
+                    <ref role="3TsBF5" to="tpee:127awsVX$kb" resolve="value" />
+                  </node>
+                </node>
+                <node concept="3cmrfG" id="127awsVX$VF" role="37wK5m">
+                  <property role="3cmrfH" value="2" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="TDmWw" id="127awsVX$VG" role="TEbGg">
+            <node concept="3clFbS" id="127awsVX$VH" role="TDEfX">
+              <node concept="3cpWs6" id="127awsVX$VI" role="3cqZAp">
+                <node concept="3cmrfG" id="127awsVX$VJ" role="3cqZAk">
+                  <property role="3cmrfH" value="0" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWsn" id="127awsVX$VK" role="TDEfY">
+              <property role="TrG5h" value="num" />
+              <node concept="3uibUv" id="127awsVX$VL" role="1tU5fm">
+                <ref role="3uigEE" to="wyt6:~NumberFormatException" resolve="NumberFormatException" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="127awsVX$PX" role="3clF46">
+        <property role="TrG5h" value="module" />
+        <node concept="3uibUv" id="127awsVX$PY" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="127awsVX$PZ" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+      </node>
+    </node>
+  </node>
+  <node concept="13h7C7" id="U1YUeQja$E">
+    <property role="3GE5qa" value="primitive" />
+    <ref role="13h7C2" to="tpee:U1YUeQjazS" resolve="OctalIntegerLiteral" />
+    <node concept="13hLZK" id="U1YUeQja$F" role="13h7CW">
+      <node concept="3clFbS" id="U1YUeQja$G" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="U1YUeQjaJx" role="13h7CS">
+      <property role="TrG5h" value="getCompileTimeConstantValue" />
+      <ref role="13i0hy" node="i1LP2xI" resolve="getCompileTimeConstantValue" />
+      <node concept="3Tm1VV" id="U1YUeQjaJ$" role="1B3o_S" />
+      <node concept="3clFbS" id="U1YUeQjaJD" role="3clF47">
+        <node concept="SfApY" id="U1YUeQjaPL" role="3cqZAp">
+          <node concept="3clFbS" id="U1YUeQjaPM" role="SfCbr">
+            <node concept="3cpWs6" id="U1YUeQjaPN" role="3cqZAp">
+              <node concept="2YIFZM" id="U1YUeQjaPO" role="3cqZAk">
+                <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
+                <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String,int)" resolve="parseInt" />
+                <node concept="2OqwBi" id="U1YUeQjaPP" role="37wK5m">
+                  <node concept="13iPFW" id="U1YUeQjaPQ" role="2Oq$k0" />
+                  <node concept="3TrcHB" id="U1YUeQjaPR" role="2OqNvi">
+                    <ref role="3TsBF5" to="tpee:U1YUeQjazT" resolve="value" />
+                  </node>
+                </node>
+                <node concept="3cmrfG" id="U1YUeQjdJW" role="37wK5m">
+                  <property role="3cmrfH" value="8" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="TDmWw" id="U1YUeQjaPT" role="TEbGg">
+            <node concept="3clFbS" id="U1YUeQjaPU" role="TDEfX">
+              <node concept="3cpWs6" id="U1YUeQjaPV" role="3cqZAp">
+                <node concept="3cmrfG" id="U1YUeQjaPW" role="3cqZAk">
+                  <property role="3cmrfH" value="0" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWsn" id="U1YUeQjaPX" role="TDEfY">
+              <property role="TrG5h" value="num" />
+              <node concept="3uibUv" id="U1YUeQjaPY" role="1tU5fm">
+                <ref role="3uigEE" to="wyt6:~NumberFormatException" resolve="NumberFormatException" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="U1YUeQjaJE" role="3clF46">
+        <property role="TrG5h" value="module" />
+        <node concept="3uibUv" id="U1YUeQjaJF" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="U1YUeQjaJG" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+      </node>
+    </node>
+  </node>
 </model>
 

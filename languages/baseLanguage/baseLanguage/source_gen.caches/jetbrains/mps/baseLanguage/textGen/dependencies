@@ -268,6 +268,15 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SReference" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.textGen.BinaryIntegerLiteral_TextGen">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
+    <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.BitwiseAndExpression_TextGen">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -1110,6 +1119,15 @@
     <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
     <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.textGen.OctalIntegerLiteral_TextGen">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
+    <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.OrExpression_TextGen">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -1509,6 +1527,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.AssertStatement_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseAssignmentExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BinaryIntegerLiteral_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BitwiseAndExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BitwiseNotExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BitwiseOrExpression_TextGen" />
@@ -1578,6 +1597,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.NotEqualsExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.NotExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.NullLiteral_TextGen" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.OctalIntegerLiteral_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.OrExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.ParameterDeclaration_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.ParenthesizedExpression_TextGen" />
