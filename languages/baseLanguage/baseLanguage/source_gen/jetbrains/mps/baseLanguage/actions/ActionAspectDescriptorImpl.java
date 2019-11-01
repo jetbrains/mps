@@ -29,56 +29,62 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
         case 3:
           return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1231770721117());
         case 4:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1158797366354());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_141880770457554690());
         case 5:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1225896127900());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1158797366354());
         case 6:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1205764418295());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1225896127900());
         case 7:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1213605907036());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1205764418295());
         case 8:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1178291598889());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1213605907036());
         case 9:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_3450034536571911403());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1178291598889());
         case 10:
-          return Collections.<NodeFactory>singletonList(new FieldConversions.NodeFactory_3207672282897664378());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_3450034536571911403());
         case 11:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1188991552884());
+          return Collections.<NodeFactory>singletonList(new FieldConversions.NodeFactory_3207672282897664378());
         case 12:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1188991457470());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1188991552884());
         case 13:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1187945171249());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1188991457470());
         case 14:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1178272045313());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1187945171249());
         case 15:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_2580416627845395972());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_141880770457524215());
         case 16:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_8355037393041908808());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1178272045313());
         case 17:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_3073231036166227544());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_2580416627845395972());
         case 18:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1704216628350805216());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_8355037393041908808());
         case 19:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1159218040860());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_3073231036166227544());
         case 20:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1158857529258());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1704216628350805216());
         case 21:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_434283027167909682());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1159218040860());
         case 22:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_434283027167909705());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_141880770457552783());
         case 23:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1158938591701());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1158857529258());
         case 24:
-          return Collections.<NodeFactory>singletonList(new SingleLineComment_factories.NodeFactory_4123120730936387298());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_434283027167909682());
         case 25:
-          return Arrays.asList(new NodeFactory[]{new BL_node_factories.NodeFactory_1178291730239(), new FieldConversions.NodeFactory_3207672282897614589()});
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_434283027167909705());
         case 26:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_2509912883396146006());
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1158938591701());
         case 27:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1183997671100());
+          return Collections.<NodeFactory>singletonList(new SingleLineComment_factories.NodeFactory_4123120730936387298());
         case 28:
-          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1183997675651());
+          return Arrays.asList(new NodeFactory[]{new BL_node_factories.NodeFactory_1178291730239(), new FieldConversions.NodeFactory_3207672282897614589()});
         case 29:
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_2509912883396146006());
+        case 30:
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1183997671100());
+        case 31:
+          return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_1183997675651());
+        case 32:
           return Collections.<NodeFactory>singletonList(new BL_node_factories.NodeFactory_3450034536571911384());
         default:
       }
@@ -98,5 +104,5 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<PasteWrapper> getPasteWrappers() {
     return Arrays.asList(new PasteWrapper[]{new wrappers_PasteWrapper_0(), new wrappers_PasteWrapper_1(), new wrappers_PasteWrapper_2(), new wrappers_PasteWrapper_3(), new wrappers_PasteWrapper_4(), new wrappers_PasteWrapper_5(), new wrappers_PasteWrapper_6(), new wrappers_PasteWrapper_7(), new wrappers_PasteWrapper_8(), new wrappers_PasteWrapper_9(), new wrappers_PasteWrapper_10(), new wrappers_PasteWrapper_11(), new wrappers_PasteWrapper_12(), new wrappers_PasteWrapper_13(), new wrappers_PasteWrapper_14(), new wrappers_PasteWrapper_15(), new wrappers_PasteWrapper_16(), new wrappers_PasteWrapper_17()});
   }
-  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractForStatement", "AdditionalForLoopVariable", "AnnotationMethodDeclaration", "BaseAssignmentExpression", "BinaryOperation", "BitwiseNotExpression", "BlockStatement", "ClassConcept", "ConstructorDeclaration", "DoWhileStatement", "FieldDeclaration", "ForStatement", "ForeachStatement", "GenericNewExpression", "IfStatement", "ImplicitAnnotationInstanceValue", "InstanceMethodDeclaration", "Interface", "LocalVariableDeclaration", "NotExpression", "ParenthesizedExpression", "PrefixDecrementExpression", "PrefixIncrementExpression", "ReturnStatement", "SingleLineComment", "StaticFieldDeclaration", "StaticMethodDeclaration", "TryCatchStatement", "TryStatement", "WhileStatement"};
+  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractForStatement", "AdditionalForLoopVariable", "AnnotationMethodDeclaration", "BaseAssignmentExpression", "BinaryIntegerLiteral", "BinaryOperation", "BitwiseNotExpression", "BlockStatement", "ClassConcept", "ConstructorDeclaration", "DoWhileStatement", "FieldDeclaration", "ForStatement", "ForeachStatement", "GenericNewExpression", "HexIntegerLiteral", "IfStatement", "ImplicitAnnotationInstanceValue", "InstanceMethodDeclaration", "Interface", "LocalVariableDeclaration", "NotExpression", "OctalIntegerLiteral", "ParenthesizedExpression", "PrefixDecrementExpression", "PrefixIncrementExpression", "ReturnStatement", "SingleLineComment", "StaticFieldDeclaration", "StaticMethodDeclaration", "TryCatchStatement", "TryStatement", "WhileStatement"};
 }

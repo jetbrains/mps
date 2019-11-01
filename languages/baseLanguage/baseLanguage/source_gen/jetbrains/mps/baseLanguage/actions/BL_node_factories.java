@@ -345,6 +345,54 @@ public class BL_node_factories {
       }
     }
   }
+  public static class NodeFactory_141880770457524215 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.OctalIntegerLiteral$gs)) {
+          SPropertyOperations.assign(newNode, PROPS.value$9TU, SPropertyOperations.getString(other, PROPS.value$6mzz));
+        }
+      }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.BinaryIntegerLiteral$tr)) {
+          SPropertyOperations.assign(newNode, PROPS.value$9TU, SPropertyOperations.getString(other, PROPS.value$Uj74));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_141880770457552783 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.HexIntegerLiteral$5_)) {
+          SPropertyOperations.assign(newNode, PROPS.value$6mzz, SPropertyOperations.getString(other, PROPS.value$9TU));
+        }
+      }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.BinaryIntegerLiteral$tr)) {
+          SPropertyOperations.assign(newNode, PROPS.value$6mzz, SPropertyOperations.getString(other, PROPS.value$Uj74));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_141880770457554690 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.OctalIntegerLiteral$gs)) {
+          SPropertyOperations.assign(newNode, PROPS.value$Uj74, SPropertyOperations.getString(other, PROPS.value$6mzz));
+        }
+      }
+      {
+        final SNode other = sampleNode;
+        if (SNodeOperations.isInstanceOf(other, CONCEPTS.HexIntegerLiteral$5_)) {
+          SPropertyOperations.assign(newNode, PROPS.value$Uj74, SPropertyOperations.getString(other, PROPS.value$9TU));
+        }
+      }
+    }
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
@@ -370,6 +418,9 @@ public class BL_node_factories {
     /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
     /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
     /*package*/ static final SConcept AdditionalForLoopVariable$KW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
+    /*package*/ static final SConcept OctalIntegerLiteral$gs = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe81fba3b64ca8f8L, "jetbrains.mps.baseLanguage.structure.OctalIntegerLiteral");
+    /*package*/ static final SConcept BinaryIntegerLiteral$tr = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, "jetbrains.mps.baseLanguage.structure.BinaryIntegerLiteral");
+    /*package*/ static final SConcept HexIntegerLiteral$5_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, "jetbrains.mps.baseLanguage.structure.HexIntegerLiteral");
   }
 
   private static final class PROPS {
@@ -379,6 +430,9 @@ public class BL_node_factories {
     /*package*/ static final SProperty isSynchronized$PMx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
     /*package*/ static final SProperty isNative$LADB = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
     /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty value$9TU = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty value$6mzz = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe81fba3b64ca8f8L, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty value$Uj74 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, 0x11297628b3cL, "value");
   }
 
   private static final class LINKS {
