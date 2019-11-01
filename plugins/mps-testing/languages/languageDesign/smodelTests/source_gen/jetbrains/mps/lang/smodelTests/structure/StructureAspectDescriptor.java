@@ -28,6 +28,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptReferenceContainerSubConcept = createDescriptorForReferenceContainerSubConcept();
   /*package*/ final ConceptDescriptor myConceptRoot = createDescriptorForRoot();
   /*package*/ final ConceptDescriptor myConceptTestEnum_Container = createDescriptorForTestEnum_Container();
+  /*package*/ final EnumerationDescriptor myEnumerationTestEnum_Switch = new EnumerationDescriptor_TestEnum_Switch();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_WODefault = new EnumerationDescriptor_TestEnum_WODefault();
   /*package*/ final EnumerationDescriptor myEnumerationTestEnum_WithDefault = new EnumerationDescriptor_TestEnum_WithDefault();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -84,7 +85,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList(myEnumerationTestEnum_WODefault, myEnumerationTestEnum_WithDefault);
+    return Arrays.asList(myEnumerationTestEnum_Switch, myEnumerationTestEnum_WODefault, myEnumerationTestEnum_WithDefault);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
