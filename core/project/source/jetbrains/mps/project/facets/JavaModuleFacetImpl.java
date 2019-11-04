@@ -64,9 +64,6 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Override
   public boolean isCompileInMps() {
     AbstractModule module = getModule();
-    if (module instanceof Generator) {
-      return true;
-    }
     ModuleDescriptor descriptor = module.getModuleDescriptor();
     return descriptor != null && descriptor.getCompileInMPS();
   }
