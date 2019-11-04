@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -203,13 +203,16 @@ public abstract class ModelRootBase implements ModelRoot {
       SModel oldModel = module.getModel(model.getModelId());
       if (oldModel == model) {
         //do nothing
-      } else if (oldModel != null && oldModel.getModelRoot() != model.getModelRoot()) {
-        LOG.warn("Trying to load model `" + model + "' which is already loaded by another model root");
+      } else if (oldModel != null && model.getModelRoot() != null && oldModel.getModelRoot() != model.getModelRoot()) {
+        // XXX not sure comment on loadModels() to return existing model, if possible, is reasonable. Perhaps, shall strive to have its
+        //     semantics clear 'load'/extract, rather than vague "try to re-use". OTOH, what about scenarios like class stubs from r/o jars, why bother
+        //     reloading them? Still, the logic not to reload could be kept separate from 'extract' one.
+        LOG.warn(String.format("Trying to load model `%s' which is already loaded by another model root", model));
       } else if (loaded.contains(model.getModelId())) {
-        LOG.warn("loadModels() returned model `" + model + "' twice");
+        LOG.warn(String.format("loadModels() returned model `%s' twice", model));
       } else {
         if (oldModel != null) {
-          LOG.warn("loadModels() loaded model `" + model + "' which id is already present.");
+          LOG.warn(String.format("loadModels() loaded model `%s' which id is already present.", model));
           unregisterModel(oldModel);
         }
         registerModel(model);
