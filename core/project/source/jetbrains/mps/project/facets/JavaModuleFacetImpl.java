@@ -180,34 +180,36 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Override
   public void load(Memento memento) {
     super.load(memento);
-    FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getModule().getFileSystem();
-    boolean hasClassesGenSerialized = false;
-    for (Memento m : memento.getChildren(CLASSES_KEY)) {
-      if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
-        hasClassesGenSerialized = true;
-        final String v = m.get(PATH_KEY);
-        myGeneratedClassesLocation = v == null ? null : fs.getFile(v);
-        break;
+    if (isAtDeployedModule()) {
+      // XXX generally, deployed modules shall have different JMF implementation; for the time being we share the one and
+      //     have to respect deployed module scenario here by ignoring classes_gen, even if explicitly specified in source MD
+      myGeneratedClassesLocation = null;
+    } else {
+      FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getModule().getFileSystem();
+      boolean hasClassesGenSerialized = false;
+      for (Memento m : memento.getChildren(CLASSES_KEY)) {
+        if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
+          hasClassesGenSerialized = true;
+          final String v = m.get(PATH_KEY);
+          myGeneratedClassesLocation = v == null ? null : fs.getFile(v);
+          break;
+        }
       }
-    }
-    if (!hasClassesGenSerialized) {
-      myGeneratedClassesLocation = legacyClassesGenLocation(fs);
+      if (!hasClassesGenSerialized) {
+        myGeneratedClassesLocation = legacyClassesGenLocation(fs);
+      }
     }
   }
 
   // fallback for legacy module descriptors that don't keep the setting
   private IFile legacyClassesGenLocation(FileSystem fs) {
-    if (getModule().isPackaged()) {
+    if (isAtDeployedModule()) {
+      // generally, shall never get here, there's guard outside of this method that handles deployed scenario
       return null;
     }
     ModuleDescriptor moduleDescriptor = getModule().getModuleDescriptor();
     if (moduleDescriptor == null) {
       // this facet implementation doesn't know how to handle modules not based on ModuleDescriptor
-      return null;
-    }
-    if (moduleDescriptor.getDeploymentDescriptor() != null) {
-      // in fact, this is what isPackaged() shall check (according to its javadoc), but at the moment it cares about
-      // module source dir not being in archive, which is not exactly the same, hence extra check here.
       return null;
     }
     if (!moduleDescriptor.getCompileInMPS()) {
@@ -223,5 +225,16 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
     // XXX would adore IFile from ModuleDescriptor, not String.
     return fs.getFile(sourceGenPath).getParent().findChild(AbstractModule.CLASSES_GEN);
+  }
+
+
+  private boolean isAtDeployedModule() {
+    if (getModule().isPackaged()) {
+      return true;
+    }
+    // in fact, this is what isPackaged() shall check (according to its javadoc), but at the moment it cares about
+    // module source dir not being in archive, which is not exactly the same, hence extra check here.
+    ModuleDescriptor moduleDescriptor = getModule().getModuleDescriptor();
+    return moduleDescriptor != null && moduleDescriptor.getDeploymentDescriptor() != null;
   }
 }

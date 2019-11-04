@@ -449,6 +449,8 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
    * Need to ensure classloading could deal with modules without Java facet, then can drop these mandatory facets altogether
    */
   protected void collectMandatoryFacetTypes(Set<String> types) {
+    // FIXME once MPS with explicit 'java' facet (introduced in 2019.3) settles down, can remove this code. Make sure newly created
+    //       modules get java facet persisted (NewModuleUtil doesn't care to set proper facet descriptors into newly constructed MD)
     types.add(JavaModuleFacet.FACET_TYPE);
   }
 
