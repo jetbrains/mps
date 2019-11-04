@@ -17,7 +17,6 @@ package jetbrains.mps.smodel.builder;
 
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SReference;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -31,13 +30,12 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 /**
  * Runtime support for jetbrains.mps.lang.quotations
  */
-public class SNodeBuilder implements AbstractNodeBuilder {
+public class SNodeBuilder {
 
   private SModel myModel;
   private SNodeId myNodeIdHint;
@@ -83,7 +81,6 @@ public class SNodeBuilder implements AbstractNodeBuilder {
 
   protected SNode myNode;
 
-  @Override
   public SNodeBuilder init(SConcept c) {
     initNode(createNode(c), null, false);
     return this;
@@ -130,19 +127,16 @@ public class SNodeBuilder implements AbstractNodeBuilder {
     }
   }
 
-  @Override
   public void setProperty(SProperty property, String value) {
     myNode.setProperty(property, value);
   }
 
-  @Override
   public void setReference(SReferenceLink link, @Nullable SNodeReference value) {
     if (value != null) {
       myNode.setReference(link, SReference.create(link, myNode, value, null));
     }
   }
 
-  @Override
   public void setReferenceTarget(SReferenceLink link, @Nullable SNode target) {
     if (target != null) {
       // cannot set via node pointer because there might be cases with immature references
@@ -153,7 +147,6 @@ public class SNodeBuilder implements AbstractNodeBuilder {
   private Set<SContainmentLink> childrenInitialized = new HashSet<>();
   private boolean siblingInitialized = false;
 
-  @Override
   public SNodeBuilder forChild(SContainmentLink link) {
     // todo: perhaps should throw exception if the same link instantiated twice, it's quite inconvenient to read such code
     //if (childrenInitialized.contains(link)) {
@@ -163,7 +156,6 @@ public class SNodeBuilder implements AbstractNodeBuilder {
     return new ChildNodeBuilder(link, myNode, myModel, null);
   }
 
-  @Override
   public SNodeBuilder forSibling() {
     if (siblingInitialized) {
       throw new IllegalStateException("double initialization");

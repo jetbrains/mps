@@ -445,10 +445,6 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
-        <property id="8575328350543493365" name="message" index="huDt6" />
-        <property id="2423417345669755629" name="filter" index="1eyWvh" />
-      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
@@ -6382,8 +6378,8 @@
             <node concept="3cpWs8" id="4nmoJNOVTX" role="3cqZAp">
               <node concept="3cpWsn" id="nQfYv_giIo" role="3cpWs9">
                 <property role="TrG5h" value="builder" />
-                <node concept="3uibUv" id="4nmoJNOXkx" role="1tU5fm">
-                  <ref role="3uigEE" to="6vmh:~AbstractNodeBuilder" resolve="AbstractNodeBuilder" />
+                <node concept="3uibUv" id="1BrFuK3Ccuu" role="1tU5fm">
+                  <ref role="3uigEE" to="6vmh:~SNodeBuilder" resolve="SNodeBuilder" />
                 </node>
                 <node concept="2ShNRf" id="7f9nSP4_uah" role="33vP2m">
                   <node concept="1pGfFk" id="7f9nSP4_uUT" role="2ShVmc">
@@ -6420,7 +6416,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4ZyFrBZxZDG" role="2OqNvi">
-                  <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
+                  <ref role="37wK5l" to="6vmh:~SNodeBuilder.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
                   <node concept="10Nm6u" id="4ZyFrBZxZDH" role="37wK5m">
                     <node concept="5jKBG" id="za$VMvkOfN" role="lGtFl">
                       <ref role="v9R2y" to="tp27:5DcBNiM88Ty" resolve="reduce_PropertyDeclaration_SProperty" />
@@ -6575,7 +6571,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4IuFl2KU9ui" role="2OqNvi">
-              <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
+              <ref role="37wK5l" to="6vmh:~SNodeBuilder.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
               <node concept="10Nm6u" id="4IuFl2KU9uj" role="37wK5m">
                 <node concept="5jKBG" id="za$VMvkOfO" role="lGtFl">
                   <ref role="v9R2y" to="tp27:5DcBNiM88Ty" resolve="reduce_PropertyDeclaration_SProperty" />
@@ -6668,7 +6664,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4IuFl2KU32n" role="2OqNvi">
-              <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
+              <ref role="37wK5l" to="6vmh:~SNodeBuilder.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
               <node concept="10Nm6u" id="4IuFl2KU32o" role="37wK5m">
                 <node concept="5jKBG" id="za$VMvkOfP" role="lGtFl">
                   <ref role="v9R2y" to="tp27:5DcBNiM88Ty" resolve="reduce_PropertyDeclaration_SProperty" />
@@ -6772,7 +6768,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4ZyFrBZyqka" role="2OqNvi">
-              <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setReference" />
+              <ref role="37wK5l" to="6vmh:~SNodeBuilder.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setReference" />
               <node concept="10Nm6u" id="4ZyFrBZyqkb" role="37wK5m">
                 <node concept="5jKBG" id="za$VMvkOfQ" role="lGtFl">
                   <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
@@ -7057,7 +7053,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4ZyFrBZzcyO" role="2OqNvi">
-                  <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
+                  <ref role="37wK5l" to="6vmh:~SNodeBuilder.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                   <node concept="10Nm6u" id="4ZyFrBZzcyP" role="37wK5m">
                     <node concept="5jKBG" id="za$VMvkOfS" role="lGtFl">
                       <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
@@ -7382,7 +7378,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3n$5ZhDelwQ" role="2OqNvi">
-                  <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
+                  <ref role="37wK5l" to="6vmh:~SNodeBuilder.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                   <node concept="10Nm6u" id="3n$5ZhDelwR" role="37wK5m">
                     <node concept="5jKBG" id="3n$5ZhDelwS" role="lGtFl">
                       <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
@@ -8263,8 +8259,8 @@
             <node concept="3cpWs8" id="7vKHTLtYTpA" role="3cqZAp">
               <node concept="3cpWsn" id="7vKHTLtYTpB" role="3cpWs9">
                 <property role="TrG5h" value="_node_" />
-                <node concept="3uibUv" id="4nmoJNO_uI" role="1tU5fm">
-                  <ref role="3uigEE" to="6vmh:~AbstractNodeBuilder" resolve="AbstractNodeBuilder" />
+                <node concept="3uibUv" id="1BrFuK3C7Mt" role="1tU5fm">
+                  <ref role="3uigEE" to="6vmh:~SNodeBuilder" resolve="SNodeBuilder" />
                 </node>
                 <node concept="2ShNRf" id="7vKHTLu65pO" role="33vP2m">
                   <node concept="1pGfFk" id="7vKHTLu65pN" role="2ShVmc">
@@ -8276,7 +8272,7 @@
             <node concept="3clFbF" id="7vKHTLu4Lwq" role="3cqZAp">
               <node concept="2OqwBi" id="7vKHTLu4Lwr" role="3clFbG">
                 <node concept="liA8E" id="7vKHTLu4Lwt" role="2OqNvi">
-                  <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.init(org.jetbrains.mps.openapi.language.SConcept)" resolve="init" />
+                  <ref role="37wK5l" to="6vmh:~SNodeBuilder.init(org.jetbrains.mps.openapi.language.SConcept)" resolve="init" />
                   <node concept="10Nm6u" id="7vKHTLu4Lwu" role="37wK5m" />
                   <node concept="1sPUBX" id="7vKHTLu4Lwv" role="lGtFl">
                     <ref role="v9R2y" node="7vKHTLu4rZM" resolve="NodeBuilder_childInit" />
@@ -8329,7 +8325,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="7vKHTLtYTpZ" role="2OqNvi">
-                    <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.forChild(org.jetbrains.mps.openapi.language.SContainmentLink)" resolve="forChild" />
+                    <ref role="37wK5l" to="6vmh:~SNodeBuilder.forChild(org.jetbrains.mps.openapi.language.SContainmentLink)" resolve="forChild" />
                     <node concept="10Nm6u" id="7vKHTLtYTq0" role="37wK5m">
                       <node concept="5jKBG" id="7vKHTLtYTq1" role="lGtFl">
                         <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
@@ -8373,16 +8369,8 @@
                         </node>
                       </node>
                       <node concept="gft3U" id="7vKHTLtZbbJ" role="UU_$l">
-                        <node concept="15s5l7" id="7vKHTLtZbJf" role="lGtFl">
-                          <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;constraints (cannot be child)&quot;;FLAVOUR_MESSAGE=&quot;Node 'forSibling():SNodeBuilder' cannot be child of node '&lt;in-line template&gt;'&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/1227128029536558606]&quot;;" />
-                          <property role="huDt6" value="Node 'forSibling():SNodeBuilder' cannot be child of node '&lt;in-line template&gt;'" />
-                        </node>
-                        <node concept="15s5l7" id="7vKHTLtZbgZ" role="lGtFl">
-                          <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;The reference  forSibling():SNodeBuilder (baseMethodDeclaration) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;baseMethodDeclaration&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/6836281137582643899]&quot;;" />
-                          <property role="huDt6" value="The reference  forSibling():SNodeBuilder (baseMethodDeclaration) is out of search scope" />
-                        </node>
                         <node concept="liA8E" id="4nmoJNRnuL" role="gfFT$">
-                          <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.forSibling()" resolve="forSibling" />
+                          <ref role="37wK5l" to="6vmh:~SNodeBuilder.forSibling()" resolve="forSibling" />
                         </node>
                       </node>
                     </node>
@@ -8435,7 +8423,7 @@
               <node concept="3cpWsn" id="1vKiq7cqbtb" role="3cpWs9">
                 <property role="TrG5h" value="_node_" />
                 <node concept="3uibUv" id="1vKiq7cqbtc" role="1tU5fm">
-                  <ref role="3uigEE" to="6vmh:~AbstractNodeBuilder" resolve="AbstractNodeBuilder" />
+                  <ref role="3uigEE" to="6vmh:~SNodeBuilder" resolve="SNodeBuilder" />
                   <node concept="1sPUBX" id="2g69lt1AY0N" role="lGtFl">
                     <ref role="v9R2y" node="2g69lt1AUA8" resolve="NodeBuilderNode_ClassifierType" />
                   </node>
@@ -8492,7 +8480,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="4ZyFrBZAfpl" role="2OqNvi">
-                      <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.forChild(org.jetbrains.mps.openapi.language.SContainmentLink)" resolve="forChild" />
+                      <ref role="37wK5l" to="6vmh:~SNodeBuilder.forChild(org.jetbrains.mps.openapi.language.SContainmentLink)" resolve="forChild" />
                       <node concept="10Nm6u" id="4ZyFrBZAfpm" role="37wK5m">
                         <node concept="5jKBG" id="za$VMvkOfV" role="lGtFl">
                           <ref role="v9R2y" to="tp27:5DcBNiM8ykU" resolve="reduce_LinkDeclaration_SLink" />
@@ -8536,23 +8524,15 @@
                           </node>
                         </node>
                         <node concept="gft3U" id="7vKHTLtZcF$" role="UU_$l">
-                          <node concept="15s5l7" id="7vKHTLtZcF_" role="lGtFl">
-                            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;constraints (cannot be child)&quot;;FLAVOUR_MESSAGE=&quot;Node 'forSibling():SNodeBuilder' cannot be child of node '&lt;in-line template&gt;'&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/1227128029536558606]&quot;;" />
-                            <property role="huDt6" value="Node 'forSibling():SNodeBuilder' cannot be child of node '&lt;in-line template&gt;'" />
-                          </node>
-                          <node concept="15s5l7" id="7vKHTLtZcFA" role="lGtFl">
-                            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;The reference  forSibling():SNodeBuilder (baseMethodDeclaration) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;baseMethodDeclaration&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/6836281137582643899]&quot;;" />
-                            <property role="huDt6" value="The reference  forSibling():SNodeBuilder (baseMethodDeclaration) is out of search scope" />
-                          </node>
                           <node concept="liA8E" id="4nmoJNRofo" role="gfFT$">
-                            <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.forSibling()" resolve="forSibling" />
+                            <ref role="37wK5l" to="6vmh:~SNodeBuilder.forSibling()" resolve="forSibling" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="7vKHTLu6vTN" role="2OqNvi">
-                    <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.init(org.jetbrains.mps.openapi.language.SConcept)" resolve="init" />
+                    <ref role="37wK5l" to="6vmh:~SNodeBuilder.init(org.jetbrains.mps.openapi.language.SConcept)" resolve="init" />
                     <node concept="10Nm6u" id="7vKHTLu6w5H" role="37wK5m" />
                     <node concept="1sPUBX" id="7vKHTLu6wj2" role="lGtFl">
                       <ref role="v9R2y" node="7vKHTLu4rZM" resolve="NodeBuilder_childInit" />
@@ -9036,8 +9016,8 @@
             <node concept="3cpWs8" id="4nmoJNOAqX" role="3cqZAp">
               <node concept="3cpWsn" id="4nmoJNOAqY" role="3cpWs9">
                 <property role="TrG5h" value="builder" />
-                <node concept="3uibUv" id="4nmoJNOAws" role="1tU5fm">
-                  <ref role="3uigEE" to="6vmh:~AbstractNodeBuilder" resolve="AbstractNodeBuilder" />
+                <node concept="3uibUv" id="1BrFuK3C8$V" role="1tU5fm">
+                  <ref role="3uigEE" to="6vmh:~SNodeBuilder" resolve="SNodeBuilder" />
                 </node>
                 <node concept="2ShNRf" id="4nmoJNOAqZ" role="33vP2m">
                   <node concept="1pGfFk" id="4nmoJNOAr0" role="2ShVmc">
@@ -9049,7 +9029,7 @@
             <node concept="3clFbF" id="7vKHTLu4BU8" role="3cqZAp">
               <node concept="2OqwBi" id="7vKHTLu4BU9" role="3clFbG">
                 <node concept="liA8E" id="7vKHTLu4BUl" role="2OqNvi">
-                  <ref role="37wK5l" to="6vmh:~AbstractNodeBuilder.init(org.jetbrains.mps.openapi.language.SConcept)" resolve="init" />
+                  <ref role="37wK5l" to="6vmh:~SNodeBuilder.init(org.jetbrains.mps.openapi.language.SConcept)" resolve="init" />
                   <node concept="10Nm6u" id="7vKHTLu4BUm" role="37wK5m">
                     <node concept="5jKBG" id="7vKHTLu4BUn" role="lGtFl">
                       <ref role="v9R2y" to="tp27:5DcBNiM8Rtt" resolve="reduce_ConceptDeclaration2SAbstractConcept" />
