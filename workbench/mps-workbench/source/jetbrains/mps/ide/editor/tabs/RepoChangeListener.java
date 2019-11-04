@@ -18,10 +18,9 @@ package jetbrains.mps.ide.editor.tabs;
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.ide.editorTabs.tabfactory.TabsComponent;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -95,7 +94,7 @@ class RepoChangeListener extends SRepositoryContentAdapter implements ProjectCom
   @Override
   public void modelAdded(SModule module, SModel model) {
     super.modelAdded(module, model);
-    if (myProject.getProjectModules().contains(module)) {
+    if (((StandaloneMPSProject) myProject).getProjectModulesWithGenerators().contains(module)) {
       model.getRootNodes().forEach(sNode -> myChangedRoots.add(sNode.getReference()));
     }
   }
@@ -103,21 +102,21 @@ class RepoChangeListener extends SRepositoryContentAdapter implements ProjectCom
   @Override
   public void beforeModelRemoved(SModule module, SModel model) {
     super.beforeModelRemoved(module, model);
-    if (myProject.getProjectModules().contains(module)) {
+    if (((StandaloneMPSProject) myProject).getProjectModulesWithGenerators().contains(module)) {
       model.getRootNodes().forEach(sNode -> myChangedRoots.add(sNode.getReference()));
     }
   }
 
   @Override
   public void nodeAdded(@NotNull SNodeAddEvent event) {
-    if (event.isRoot() && myProject.getProjectModules().contains(event.getModel().getModule())) {
+    if (event.isRoot() && ((StandaloneMPSProject) myProject).getProjectModulesWithGenerators().contains(event.getModel().getModule())) {
       myChangedRoots.add(event.getChild().getReference());
     }
   }
 
   @Override
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
-    if (event.isRoot() && myProject.getProjectModules().contains(event.getModel().getModule())) {
+    if (event.isRoot() && ((StandaloneMPSProject) myProject).getProjectModulesWithGenerators().contains(event.getModel().getModule())) {
       myChangedRoots.add(new SNodePointer(event.getModel().getReference(), event.getChild().getNodeId()));
     }
   }
