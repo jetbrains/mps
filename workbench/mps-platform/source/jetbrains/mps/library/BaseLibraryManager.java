@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.library;
 
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.library.BaseLibraryManager.LibraryState;
@@ -36,7 +37,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Matcher;
 
-public abstract class BaseLibraryManager implements PersistentStateComponent<LibraryState>, LibraryContributor {
+public abstract class BaseLibraryManager implements BaseComponent, PersistentStateComponent<LibraryState>, LibraryContributor {
   private final LibraryInitializer myLibraryInitializer;
 
   public BaseLibraryManager(MPSCoreComponents components) {
@@ -48,10 +49,12 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
     return false;
   }
 
+  @Override
   public void initComponent() {
     myLibraryInitializer.load(Collections.singletonList(this));
   }
 
+  @Override
   public void disposeComponent() {
     myLibraryInitializer.unload(Collections.singletonList(this));
   }
