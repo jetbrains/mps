@@ -5133,7 +5133,7 @@
         </node>
         <node concept="2OqwBi" id="VFd4X$twZG" role="2GsD0m">
           <node concept="1YBJjd" id="VFd4X$twLX" role="2Oq$k0">
-            <ref role="1YBMHb" node="VFd4X$twIQ" resolve="enumerationDeclartaion" />
+            <ref role="1YBMHb" node="VFd4X$twIQ" resolve="enumerationDeclaration" />
           </node>
           <node concept="3Tsc0h" id="VFd4X$txgG" role="2OqNvi">
             <ref role="3TtcxE" to="tpce:2TR3acGo7N1" resolve="members" />
@@ -5421,7 +5421,7 @@
       </node>
     </node>
     <node concept="1YaCAy" id="VFd4X$twIQ" role="1YuTPh">
-      <property role="TrG5h" value="enumerationDeclartaion" />
+      <property role="TrG5h" value="enumerationDeclaration" />
       <ref role="1YaFvo" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
     </node>
   </node>

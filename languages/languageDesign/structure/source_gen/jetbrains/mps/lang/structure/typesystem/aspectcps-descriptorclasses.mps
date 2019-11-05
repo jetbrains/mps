@@ -17914,7 +17914,7 @@
       </node>
       <node concept="37vLTG" id="1F$" role="3clF46">
         <property role="3TUv4t" value="true" />
-        <property role="TrG5h" value="enumerationDeclartaion" />
+        <property role="TrG5h" value="enumerationDeclaration" />
         <node concept="3Tqbb2" id="1FG" role="1tU5fm">
           <node concept="cd27G" id="1FI" role="lGtFl">
             <node concept="3u3nmq" id="1FJ" role="cd27D">
@@ -18116,7 +18116,7 @@
           </node>
           <node concept="2OqwBi" id="1GU" role="2GsD0m">
             <node concept="37vLTw" id="1GZ" role="2Oq$k0">
-              <ref role="3cqZAo" node="1F$" resolve="enumerationDeclartaion" />
+              <ref role="3cqZAo" node="1F$" resolve="enumerationDeclaration" />
               <node concept="cd27G" id="1H2" role="lGtFl">
                 <node concept="3u3nmq" id="1H3" role="cd27D">
                   <property role="3u3nmv" value="1075010451650514045" />

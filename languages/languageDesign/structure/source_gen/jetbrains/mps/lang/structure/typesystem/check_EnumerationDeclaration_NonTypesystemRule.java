@@ -27,11 +27,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_EnumerationDeclaration_NonTypesystemRule() {
   }
-  public void applyRule(final SNode enumerationDeclartaion, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+  public void applyRule(final SNode enumerationDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     MultiMap<String, SNode> names = new MultiMap<String, SNode>();
     MultiMap<String, SNode> prensetations = new MultiMap<String, SNode>();
 
-    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumerationDeclartaion, LINKS.members$qYq2))) {
+    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumerationDeclaration, LINKS.members$qYq2))) {
       if (isEmptyString(SPropertyOperations.getString(member, PROPS.name$tAp1))) {
         // already red due to name constraint 
       } else {
