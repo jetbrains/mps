@@ -1369,10 +1369,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       hideMessageToolTip();
     }
 
-    if (myTypecheckingSessionHandle != null) {
-      myTypecheckingSessionHandle.release();
-      myTypecheckingSessionHandle = null;
-    }
     myHighlightManager.dispose();
 
     detachListeners();
@@ -1380,6 +1376,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     // TODO: add assertion here
     myAutoValidator.dispose();
     myUpdater.dispose();
+
+    if (myTypecheckingSessionHandle != null) {
+      myTypecheckingSessionHandle.release();
+      myTypecheckingSessionHandle = null;
+    }
 
     if (hasUI()) {
       myLeftHighlighter.dispose();
