@@ -275,15 +275,15 @@
             <node concept="3uibUv" id="24OxoGwU3JK" role="1tU5fm">
               <ref role="3uigEE" to="cjdg:~RunContentDescriptor" resolve="RunContentDescriptor" />
             </node>
-            <node concept="2OqwBi" id="24OxoGwU3JL" role="33vP2m">
-              <node concept="10M0yZ" id="24OxoGwU3JM" role="2Oq$k0">
-                <ref role="1PxDUh" to="cjdg:~RunContentManager" resolve="RunContentManager" />
-                <ref role="3cqZAo" to="cjdg:~RunContentManager.RUN_CONTENT_DESCRIPTOR" resolve="RUN_CONTENT_DESCRIPTOR" />
+            <node concept="2OqwBi" id="43U_o2NISyG" role="33vP2m">
+              <node concept="37vLTw" id="43U_o2NISpl" role="2Oq$k0">
+                <ref role="3cqZAo" node="24OxoGwU3JF" resolve="dataContext" />
               </node>
-              <node concept="liA8E" id="24OxoGwU3JN" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DataKey.getData(com.intellij.openapi.actionSystem.DataContext)" resolve="getData" />
-                <node concept="37vLTw" id="2BHiRxgmP7g" role="37wK5m">
-                  <ref role="3cqZAo" node="24OxoGwU3JF" resolve="dataContext" />
+              <node concept="liA8E" id="43U_o2NISHp" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~DataContext.getData(com.intellij.openapi.actionSystem.DataKey)" resolve="getData" />
+                <node concept="10M0yZ" id="43U_o2NISZI" role="37wK5m">
+                  <ref role="3cqZAo" to="qkt:~LangDataKeys.RUN_CONTENT_DESCRIPTOR" resolve="RUN_CONTENT_DESCRIPTOR" />
+                  <ref role="1PxDUh" to="qkt:~LangDataKeys" resolve="LangDataKeys" />
                 </node>
               </node>
             </node>
@@ -474,11 +474,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="5N5J$YBiDYJ" role="2OqNvi">
-                    <ref role="37wK5l" to="cjdg:~RunContentManager.getSelectedContent(com.intellij.execution.Executor)" resolve="getSelectedContent" />
-                    <node concept="2YIFZM" id="5N5J$YBiDYK" role="37wK5m">
-                      <ref role="1Pybhc" to="9mrk:~DefaultDebugExecutor" resolve="DefaultDebugExecutor" />
-                      <ref role="37wK5l" to="9mrk:~DefaultDebugExecutor.getDebugExecutorInstance()" resolve="getDebugExecutorInstance" />
-                    </node>
+                    <ref role="37wK5l" to="cjdg:~RunContentManager.getSelectedContent()" resolve="getSelectedContent" />
                   </node>
                 </node>
               </node>
