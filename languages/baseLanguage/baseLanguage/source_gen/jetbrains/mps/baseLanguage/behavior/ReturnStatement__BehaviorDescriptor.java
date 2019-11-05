@@ -72,8 +72,8 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static SNode getReturnJumpTarget_idhSV4OYy(@NotNull SNode __thisNode__) {
     SNode container = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IStatementListContainer$4L, false, false);
-    if ((boolean) IStatementListContainer__BehaviorDescriptor.isExecuteSynchronous_idhTIpcC8.invoke(container)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(container, CONCEPTS.ClosureLiteral$zJ), LINKS.body$DJEC);
+    if ((boolean) IStatementListContainer__BehaviorDescriptor.isExecuteSynchronous_idhTIpcC8.invoke(container) && (boolean) IStatementListContainer__BehaviorDescriptor.isClosure_id2P5W1FWMZPJ.invoke(container)) {
+      return IStatementListContainer__BehaviorDescriptor.getStatementList_id28aPEVv_31A.invoke(container);
     }
     return null;
   }
@@ -144,7 +144,6 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
     /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
     /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 
@@ -152,6 +151,5 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
     /*package*/ static final SContainmentLink finallyBody$LPze = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
     /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     /*package*/ static final SContainmentLink expression$EsbK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
   }
 }

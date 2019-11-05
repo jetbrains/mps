@@ -20,7 +20,7 @@
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
     <import index="tp27" ref="r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
+    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1856,6 +1856,69 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="$91tH8jOss" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="6d1XgPyeYO4" role="jymVt" />
+    <node concept="2YIFZL" id="6d1XgPyeYXN" role="jymVt">
+      <property role="TrG5h" value="controlflowPreserved" />
+      <node concept="3clFbS" id="6d1XgPyeYXQ" role="3clF47">
+        <node concept="3cpWs8" id="6d1XgPyf00x" role="3cqZAp">
+          <node concept="3cpWsn" id="6d1XgPyf00y" role="3cpWs9">
+            <property role="TrG5h" value="lastStatement" />
+            <node concept="3Tqbb2" id="6d1XgPyeZV4" role="1tU5fm">
+              <ref role="ehGHo" to="tpee:fzclF8l" resolve="Statement" />
+            </node>
+            <node concept="2OqwBi" id="6d1XgPyf00z" role="33vP2m">
+              <node concept="2OqwBi" id="6d1XgPyf61g" role="2Oq$k0">
+                <node concept="37vLTw" id="6d1XgPyf00$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6d1XgPyeZ3D" resolve="body" />
+                </node>
+                <node concept="3TrEf2" id="6d1XgPyf657" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tp25:28aPEVv7XNa" resolve="statementList" />
+                </node>
+              </node>
+              <node concept="2qgKlT" id="6d1XgPyf00_" role="2OqNvi">
+                <ref role="37wK5l" to="tpek:28aPEVv8l7T" resolve="getLastStatement" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6d1XgPyeZqX" role="3cqZAp">
+          <node concept="1Wc70l" id="6d1XgPyf1zY" role="3clFbG">
+            <node concept="3fqX7Q" id="6d1XgPyf1UR" role="3uHU7B">
+              <node concept="2OqwBi" id="6d1XgPyf1UT" role="3fr31v">
+                <node concept="37vLTw" id="6d1XgPyf1UU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6d1XgPyf00y" resolve="lastStatement" />
+                </node>
+                <node concept="1mIQ4w" id="6d1XgPyf1UV" role="2OqNvi">
+                  <node concept="chp4Y" id="6d1XgPyf1UW" role="cj9EA">
+                    <ref role="cht4Q" to="tpee:gWYS8bo" resolve="ThrowStatement" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="6d1XgPyf1Mb" role="3uHU7w">
+              <node concept="2OqwBi" id="6d1XgPyf1Md" role="3fr31v">
+                <node concept="37vLTw" id="6d1XgPyf1Me" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6d1XgPyf00y" resolve="lastStatement" />
+                </node>
+                <node concept="1mIQ4w" id="6d1XgPyf1Mf" role="2OqNvi">
+                  <node concept="chp4Y" id="6d1XgPyf1Mg" role="cj9EA">
+                    <ref role="cht4Q" to="tpee:fzcpWvY" resolve="ReturnStatement" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6d1XgPyf4av" role="1B3o_S" />
+      <node concept="10P_77" id="6d1XgPyeZ2f" role="3clF45" />
+      <node concept="37vLTG" id="6d1XgPyeZ3D" role="3clF46">
+        <property role="TrG5h" value="body" />
+        <node concept="3Tqbb2" id="6d1XgPyeZ3C" role="1tU5fm">
+          <ref role="ehGHo" to="tp25:28aPEVv7XN9" resolve="EnumSwitchCaseBody_StatementList" />
+        </node>
+      </node>
     </node>
     <node concept="3Tm1VV" id="$91tH8jLNM" role="1B3o_S" />
   </node>

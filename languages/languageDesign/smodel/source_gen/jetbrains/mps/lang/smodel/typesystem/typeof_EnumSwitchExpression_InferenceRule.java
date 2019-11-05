@@ -11,6 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.behavior.EnumSwitchExpression__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -34,15 +35,32 @@ public class typeof_EnumSwitchExpression_InferenceRule extends AbstractInference
           final SNode caseBodyType = typeCheckingContext.typeOf(caseBody, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619359210", true);
           typeCheckingContext.whenConcrete(caseBodyType, new Runnable() {
             public void run() {
-              {
-                SNode _nodeToCheck_1029348928467 = enumSwitchExpression;
-                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619360074", 0, null);
-                typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619360077", true), (SNode) typeCheckingContext.getExpandedNode(caseBodyType), false, true, _info_12389875345);
+              if (!(TypecheckingFacade.getFromContext().isStrongSubtype(typeCheckingContext.getExpandedNode(caseBodyType), _quotation_createNode_ihb29k_b0a0a0a0a1a0b0a0a0c0b()))) {
+                {
+                  SNode _nodeToCheck_1029348928467 = enumSwitchExpression;
+                  EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619360074", 0, null);
+                  typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619360077", true), (SNode) typeCheckingContext.getExpandedNode(caseBodyType), false, true, _info_12389875345);
+                }
               }
             }
           }, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2453008993619359115", false, false);
         }
       }
+      {
+        final SNode otherwiseBodyType = typeCheckingContext.typeOf(SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$i6_e), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1384403318426406148", true);
+        typeCheckingContext.whenConcrete(otherwiseBodyType, new Runnable() {
+          public void run() {
+            if (!(TypecheckingFacade.getFromContext().isStrongSubtype(typeCheckingContext.getExpandedNode(otherwiseBodyType), _quotation_createNode_ihb29k_b0a0a0a0a1a0b0b0c0b()))) {
+              {
+                SNode _nodeToCheck_1029348928467 = enumSwitchExpression;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1384403318426406139", 0, null);
+                typeCheckingContext.createGreaterThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1384403318426406141", true), (SNode) typeCheckingContext.getExpandedNode(otherwiseBodyType), false, true, _info_12389875345);
+              }
+            }
+          }
+        }, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1384403318426406135", false, false);
+      }
+
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -60,11 +78,24 @@ public class typeof_EnumSwitchExpression_InferenceRule extends AbstractInference
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x120bfe51421L, "SEnumerationMemberType")).getResult();
     return quotedNode_1;
   }
+  private static SNode _quotation_createNode_ihb29k_b0a0a0a0a1a0b0a0a0c0b() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType")).getResult();
+    return quotedNode_1;
+  }
+  private static SNode _quotation_createNode_ihb29k_b0a0a0a0a1a0b0b0c0b() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType")).getResult();
+    return quotedNode_1;
+  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink enumExpression$4kEb = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf1d75e0L, "enumExpression");
     /*package*/ static final SContainmentLink cases$L5D5 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf1fd3b7L, "cases");
     /*package*/ static final SContainmentLink body$UK79 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75e3L, 0x220ad6aedf1fdc5aL, "body");
+    /*package*/ static final SContainmentLink otherwiseBody$i6_e = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, 0x220ad6aedf8d9b4eL, "otherwiseBody");
   }
 
   private static final class CONCEPTS {

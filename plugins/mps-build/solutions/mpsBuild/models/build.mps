@@ -15010,9 +15010,9 @@
         </node>
       </node>
       <node concept="1E1JtD" id="7Kfy9QB6L9O" role="2G$12L">
-        <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.smodel" />
         <property role="3LESm3" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />
+        <property role="BnDLt" value="true" />
         <node concept="3rtmxn" id="EpEP7iihMZ" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iihN0" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iihN1" role="3LXTna">
@@ -15093,6 +15093,11 @@
           <node concept="1SiIV0" id="32xT3mnoAjU" role="3bR37C">
             <node concept="3bR9La" id="32xT3mnoAjV" role="1SiIV1">
               <ref role="3bR37D" node="7YI57w6K0so" resolve="jetbrains.mps.lang.structure#1170324972255" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="7Cn$CP3qV79" role="3bR37C">
+            <node concept="3bR9La" id="7Cn$CP3qV7a" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
             </node>
           </node>
         </node>
