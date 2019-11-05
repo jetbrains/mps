@@ -5,6 +5,10 @@
 
   <application-components>
     <component>
+      <implementation-class>jetbrains.mps.ide.MPSCoreComponents</implementation-class>
+    </component>
+
+    <component>
       <implementation-class>jetbrains.mps.help.PlatformHelpURLProvider</implementation-class>
     </component>
 

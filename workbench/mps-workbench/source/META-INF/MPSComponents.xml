@@ -39,9 +39,6 @@
       <implementation-class>jetbrains.mps.ide.project.facets.IdeaPluginModuleFacetImplComponent</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.MPSCoreComponents</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.icons.GlobalIconManager</implementation-class>
     </component>
     <component>
