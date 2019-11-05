@@ -98,10 +98,10 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
   @Override
   public final void unload() {
     if (isChanged()) {
+      if (needsReloading()) {
+        return;
+      }
       save();
-    }
-    if (needsReloading()) {
-      throw new IllegalStateException("cannot unload model in a conflicting state");
     }
     super.unload();
   }
@@ -124,7 +124,7 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
   }
 
   @SuppressWarnings("WeakerAccess")
-  /*package*/ void doReloadFromDiskSafe() {
+    /*package*/ void doReloadFromDiskSafe() {
     final SRepository repo = getRepository();
     if (repo == null) {
       // detached model, why would anyone care to receive notifications from detached model or to keep it up-to-date?
