@@ -135,16 +135,17 @@ public final class CommonPaths {
     addIfExists(result, "lib/openapi.jar");
     addIfExists(result, "lib/platform.jar");
     addIfExists(result, "lib/platform-api.jar");
-    addIfExists(result, "lib/platform-impl.jar");
     addIfExists(result, "lib/platform-concurrency.jar");
     addIfExists(result, "lib/platform-core-ui.jar");
+    addIfExists(result, "lib/platform-diagnostic.jar");
+    addIfExists(result, "lib/platform-ide-util-io.jar");
+    addIfExists(result, "lib/platform-impl.jar");
     addIfExists(result, "lib/platform-objectSerializer.jar");
     addIfExists(result, "lib/platform-objectSerializer-annotations.jar");
     addIfExists(result, "lib/platform-serviceContainer.jar");
     addIfExists(result, "lib/platform-util-ui.jar");
-    addIfExists(result, "lib/configuration-store-impl.jar");
-    addIfExists(result, "lib/platform-ide-util-io.jar");
     addIfExists(result, "lib/platform-util-ex.jar");
+    addIfExists(result, "lib/configuration-store-impl.jar");
     addIfExists(result, "lib/intellij-dvcs.jar");
     addIfExists(result, "lib/intellij-xml.jar");
     addIfExists(result, "lib/spellchecker.jar");
@@ -155,6 +156,8 @@ public final class CommonPaths {
 
   private static void addIdeaJars(Collection<QualifiedPath> result) {
     addRepackedIdeaJars(result);
+    addIfExists(result, "lib/bcpkix-jdk15on-1.64.jar");
+    addIfExists(result, "lib/bcprov-jdk15on-1.64.jar");
     addIfExists(result, "lib/netty-buffer-4.1.41.Final.jar");
     addIfExists(result, "lib/netty-codec-4.1.41.Final.jar");
     addIfExists(result, "lib/netty-codec-http-4.1.41.Final.jar");

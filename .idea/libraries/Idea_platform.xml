@@ -59,15 +59,16 @@
       <root url="jar://$PROJECT_DIR$/lib/batik-transcoder-1.12.0-8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/batik-util-1.12.0-8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/batik-xml-1.12.0-8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/platform-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-concurrency.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-core-ui.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-diagnostic.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-ide-util-io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-objectSerializer-annotations.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-serviceContainer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ui.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/platform-ide-util-io.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ex.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spellchecker.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/images.jar!/" />
@@ -98,6 +99,8 @@
       <root url="jar://$PROJECT_DIR$/lib/java-compatibility-1.0.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcpkix-jdk15on-1.64.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk15on-1.64.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

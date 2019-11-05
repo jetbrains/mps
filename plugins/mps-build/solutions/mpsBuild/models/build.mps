@@ -1642,14 +1642,6 @@
           <ref role="3yrxFb" node="6tmggXOEpRR" />
         </node>
       </node>
-      <node concept="2GhqfE" id="6tmggXOEsrL" role="nCB5Z">
-        <node concept="3yrxFa" id="6tmggXOEsWa" role="3yrxIG">
-          <ref role="3yrxFb" node="6tmggXOEpTK" />
-        </node>
-      </node>
-      <node concept="3_7P_l" id="WgHS__ALjP" role="3_45bX">
-        <ref role="3_7fsG" node="WgHS__ALjN" />
-      </node>
       <node concept="2GhqfE" id="7I6sQF_Lx2F" role="nCB5Z">
         <node concept="3yrxFa" id="7I6sQF_Lx6G" role="3yrxIG">
           <ref role="3yrxFb" node="7I6sQF_LwKM" />
@@ -1659,6 +1651,14 @@
         <node concept="3yrxFa" id="7I6sQF_Lx7q" role="3yrxIG">
           <ref role="3yrxFb" node="7I6sQF_LwMR" />
         </node>
+      </node>
+      <node concept="2GhqfE" id="6tmggXOEsrL" role="nCB5Z">
+        <node concept="3yrxFa" id="6tmggXOEsWa" role="3yrxIG">
+          <ref role="3yrxFb" node="6tmggXOEpTK" />
+        </node>
+      </node>
+      <node concept="3_7P_l" id="WgHS__ALjP" role="3_45bX">
+        <ref role="3_7fsG" node="WgHS__ALjN" />
       </node>
       <node concept="2GhqfE" id="7I6sQF_Lx4i" role="nCB5Z">
         <node concept="3yrxFa" id="7I6sQF_Lx88" role="3yrxIG">
@@ -19337,13 +19337,6 @@
           </node>
         </node>
       </node>
-      <node concept="13uQ2_" id="6tmggXOEpTK" role="39821P">
-        <node concept="3_J27D" id="6tmggXOEpTM" role="13uQ07">
-          <node concept="3Mxwew" id="6tmggXOEpUJ" role="3MwsjC">
-            <property role="3MwjfP" value="platform-impl.jar" />
-          </node>
-        </node>
-      </node>
       <node concept="13uQ2_" id="7I6sQF_LwKM" role="39821P">
         <node concept="3_J27D" id="7I6sQF_LwKO" role="13uQ07">
           <node concept="3Mxwew" id="7I6sQF_LwLO" role="3MwsjC">
@@ -19355,6 +19348,27 @@
         <node concept="3_J27D" id="7I6sQF_LwMT" role="13uQ07">
           <node concept="3Mxwew" id="7I6sQF_LwNW" role="3MwsjC">
             <property role="3MwjfP" value="platform-core-ui.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="3GvOoyXRT5E" role="39821P">
+        <node concept="3_J27D" id="3GvOoyXRT5G" role="13uQ07">
+          <node concept="3Mxwew" id="3GvOoyXRT71" role="3MwsjC">
+            <property role="3MwjfP" value="platform-diagnostic.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="3GvOoyXRT8p" role="39821P">
+        <node concept="3_J27D" id="3GvOoyXRT8r" role="13uQ07">
+          <node concept="3Mxwew" id="3GvOoyXRT9N" role="3MwsjC">
+            <property role="3MwjfP" value="platform-ide-util-io.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="6tmggXOEpTK" role="39821P">
+        <node concept="3_J27D" id="6tmggXOEpTM" role="13uQ07">
+          <node concept="3Mxwew" id="6tmggXOEpUJ" role="3MwsjC">
+            <property role="3MwjfP" value="platform-impl.jar" />
           </node>
         </node>
       </node>
@@ -19383,6 +19397,13 @@
         <node concept="3_J27D" id="7I6sQF_LwTG" role="13uQ07">
           <node concept="3Mxwew" id="7I6sQF_LwUS" role="3MwsjC">
             <property role="3MwjfP" value="platform-util-ui.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="3GvOoyXRT9T" role="39821P">
+        <node concept="3_J27D" id="3GvOoyXRT9U" role="13uQ07">
+          <node concept="3Mxwew" id="3GvOoyXRT9V" role="3MwsjC">
+            <property role="3MwjfP" value="platform-util-ex.jar" />
           </node>
         </node>
       </node>

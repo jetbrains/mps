@@ -15040,9 +15040,9 @@
         <fileset file="${artifacts.IDEA}/lib/idea.jar" />
         <fileset file="${artifacts.IDEA}/lib/openapi.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-api.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-concurrency.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-core-ui.jar" />
+        <fileset file="${artifacts.IDEA}/lib/platform-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-objectSerializer.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-objectSerializer-annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-serviceContainer.jar" />
