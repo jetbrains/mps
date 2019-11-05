@@ -4566,5 +4566,17 @@
     <property role="TrG5h" value="_BinNumberValue" />
     <property role="FLfZY" value="[0|1]+" />
   </node>
+  <node concept="1TIwiD" id="5KMblwQ9nms">
+    <property role="TrG5h" value="StubInitializer" />
+    <property role="34LRSv" value="stub statement list" />
+    <property role="EcuMT" value="6643422257213699484" />
+    <ref role="1TJDcQ" node="fz3vP1J" resolve="Expression" />
+    <node concept="PrWs8" id="5KMblwQ9nmt" role="PzmwI">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX3" resolve="ISuppressErrors" />
+    </node>
+    <node concept="PrWs8" id="5KMblwQ9nmu" role="PzmwI">
+      <ref role="PrY4T" to="tpck:8AYOKVCAP5" resolve="IStubForAnotherConcept" />
+    </node>
+  </node>
 </model>
 
