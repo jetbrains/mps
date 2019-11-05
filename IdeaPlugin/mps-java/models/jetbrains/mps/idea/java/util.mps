@@ -158,8 +158,8 @@
                   <ref role="37wK5l" to="mhbf:~SNode.getModel():org.jetbrains.mps.openapi.model.SModel" resolve="getModel" />
                 </node>
               </node>
-              <node concept="liA8E" id="6bVNYk3kYLt" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getReference():org.jetbrains.mps.openapi.model.SModelReference" resolve="getReference" />
+              <node concept="liA8E" id="6E4ZhNRvop7" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SModel.getName()" resolve="getName" />
               </node>
             </node>
             <node concept="37vLTw" id="6bVNYk3kZjS" role="37wK5m">
@@ -314,13 +314,8 @@
             <property role="TrG5h" value="pkgName" />
             <node concept="17QB3L" id="4LX6xf1WaBN" role="1tU5fm" />
             <node concept="2OqwBi" id="3XJV3pMYpeI" role="33vP2m">
-              <node concept="2OqwBi" id="3XJV3pMYoRK" role="2Oq$k0">
-                <node concept="37vLTw" id="6bVNYk3kYPF" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6bVNYk3kXXG" resolve="modelReference" />
-                </node>
-                <node concept="liA8E" id="3XJV3pMYp3h" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModelReference.getName():org.jetbrains.mps.openapi.model.SModelName" resolve="getName" />
-                </node>
+              <node concept="37vLTw" id="6bVNYk3kYPF" role="2Oq$k0">
+                <ref role="3cqZAo" node="6bVNYk3kXXG" resolve="modelName" />
               </node>
               <node concept="liA8E" id="3XJV3pMYps6" role="2OqNvi">
                 <ref role="37wK5l" to="mhbf:~SModelName.getLongName():java.lang.String" resolve="getLongName" />
@@ -358,9 +353,9 @@
       <node concept="3Tm1VV" id="67yURBzQ4eL" role="1B3o_S" />
       <node concept="17QB3L" id="67yURBzQ4f1" role="3clF45" />
       <node concept="37vLTG" id="6bVNYk3kXXG" role="3clF46">
-        <property role="TrG5h" value="modelReference" />
-        <node concept="3uibUv" id="6bVNYk3kY9F" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SModelReference" resolve="SModelReference" />
+        <property role="TrG5h" value="modelName" />
+        <node concept="3uibUv" id="6E4ZhNRvnNQ" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SModelName" resolve="SModelName" />
         </node>
       </node>
       <node concept="37vLTG" id="67yURBzQ4wN" role="3clF46">
