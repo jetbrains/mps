@@ -49,7 +49,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
 
     final Project ideaProject = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject();
     if (ProjectLevelVcsManager.getInstance(ideaProject).getVcsFor(virtualFile) != null) {
-      FileStatus fileStatus = ideaProject.getComponent(VcsFileStatusProvider.class).getFileStatus(virtualFile);
+      FileStatus fileStatus = VcsFileStatusProvider.getInstance(ideaProject).getFileStatus(virtualFile);
       return FileStatus.ADDED != fileStatus && FileStatus.UNKNOWN != fileStatus;
     }
     return false;

@@ -34,7 +34,6 @@
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
     <import index="cyi7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.ui(MPS.IDEA/)" />
     <import index="j86o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.impl(MPS.IDEA/)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="3fkn" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileChooser(MPS.IDEA/)" />
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
@@ -2372,21 +2371,17 @@
                   <ref role="3uigEE" to="jlcu:~FileStatus" resolve="FileStatus" />
                 </node>
                 <node concept="2OqwBi" id="6ySnuJfjmnu" role="33vP2m">
-                  <node concept="2OqwBi" id="6ySnuJfjmnv" role="2Oq$k0">
-                    <node concept="liA8E" id="6ySnuJfjmnz" role="2OqNvi">
-                      <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                      <node concept="3VsKOn" id="6ySnuJfjmn$" role="37wK5m">
-                        <ref role="3VsUkX" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="523_aD7YZxl" role="2Oq$k0">
-                      <ref role="3cqZAo" node="523_aD7YVkZ" resolve="ideaProject" />
-                    </node>
-                  </node>
                   <node concept="liA8E" id="6ySnuJfjmn_" role="2OqNvi">
                     <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getFileStatus(com.intellij.openapi.vfs.VirtualFile)" resolve="getFileStatus" />
                     <node concept="37vLTw" id="523_aD7Z0go" role="37wK5m">
                       <ref role="3cqZAo" node="523_aD7YAjr" resolve="virtualFile" />
+                    </node>
+                  </node>
+                  <node concept="2YIFZM" id="6xz27f4huAt" role="2Oq$k0">
+                    <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                    <ref role="1Pybhc" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
+                    <node concept="37vLTw" id="6xz27f4huJg" role="37wK5m">
+                      <ref role="3cqZAo" node="523_aD7YVkZ" resolve="ideaProject" />
                     </node>
                   </node>
                 </node>
