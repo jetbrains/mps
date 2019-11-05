@@ -20,10 +20,12 @@ import jetbrains.mps.smodel.loading.PartialModelUpdateFacility;
 import jetbrains.mps.smodel.ModelLoadResult;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.Set;
-import java.util.Collections;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import java.util.Collections;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 
@@ -121,7 +123,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
   }
 
   private Set<SLanguage> getLanguagesToImport() {
-    return Collections.singleton(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"));
+    return SetSequence.fromSetAndArray(new HashSet<SLanguage>(), MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), MetaAdapterFactory.getLanguage(0xf280165065d5424eL, 0xbb1b463a8781b786L, "jetbrains.mps.baseLanguage.javadoc"));
   }
 
   @Override
@@ -131,7 +133,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
 
   @Override
   public List<SModuleReference> importedDevkits() {
-    return Collections.emptyList();
+    return Collections.<SModuleReference>emptyList();
   }
 
   @Override
