@@ -1079,7 +1079,7 @@
           <ref role="1NtTu8" to="tpc2:2gbCHScr0HI" resolve="contextHints" />
           <node concept="2iRfu4" id="2gbCHSczkzP" role="2czzBx" />
           <node concept="3F0ifn" id="3Nez1fUhV4U" role="2czzBI">
-            <property role="3F0ifm" value="&lt;default&gt;" />
+            <property role="ilYzB" value="&lt;default&gt;" />
             <ref role="34QXea" node="3Nez1fVxdLf" resolve="ConceptEditor_DefaultContextHintLabel" />
             <node concept="VechU" id="3Nez1fVluPu" role="3F10Kt">
               <property role="Vb096" value="fLJRk5_/gray" />
@@ -1789,6 +1789,7 @@
         <node concept="3EZMnI" id="2nZuqX0H6vB" role="3EZMnx">
           <node concept="3F0ifn" id="2nZuqX0H6vM" role="3EZMnx">
             <property role="3F0ifm" value="overrides:" />
+            <node concept="VPM3Z" id="23C0l7wMCR1" role="3F10Kt" />
           </node>
           <node concept="3EZMnI" id="2nZuqX0H6B6" role="3EZMnx">
             <node concept="3XFhqQ" id="xLfwuvnLUf" role="3EZMnx" />
@@ -1819,6 +1820,7 @@
         <node concept="3EZMnI" id="6nWbOYo64zI" role="3EZMnx">
           <node concept="3F0ifn" id="6nWbOYo64zJ" role="3EZMnx">
             <property role="3F0ifm" value="applicable in context:" />
+            <node concept="VPM3Z" id="23C0l7wMCU3" role="3F10Kt" />
           </node>
           <node concept="3EZMnI" id="6nWbOYo64zK" role="3EZMnx">
             <node concept="3XFhqQ" id="6nWbOYo64zL" role="3EZMnx" />
@@ -1831,7 +1833,7 @@
                 <node concept="Vb9p2" id="6nWbOYo6aS_" role="3F10Kt" />
               </node>
               <node concept="3F0ifn" id="6nWbOYo6i57" role="2czzBI">
-                <property role="3F0ifm" value="&lt;default&gt;" />
+                <property role="ilYzB" value="&lt;default&gt;" />
                 <ref role="34QXea" node="6nWbOYo6aXk" resolve="EditorComponent_DefaultContextHintLabel" />
                 <node concept="VechU" id="6nWbOYo6j9W" role="3F10Kt">
                   <property role="Vb096" value="fLJRk5_/gray" />
@@ -1875,6 +1877,7 @@
         <node concept="3EZMnI" id="fGTPXmK" role="3EZMnx">
           <node concept="3F0ifn" id="fGTPXmL" role="3EZMnx">
             <property role="3F0ifm" value="applicable concept:" />
+            <node concept="VPM3Z" id="23C0l7wMCX5" role="3F10Kt" />
           </node>
           <node concept="3EZMnI" id="fGTPXmM" role="3EZMnx">
             <node concept="3XFhqQ" id="xLfwuvtbnA" role="3EZMnx" />
@@ -1920,6 +1923,7 @@
           </node>
           <node concept="3F0ifn" id="fGTPXmT" role="3EZMnx">
             <property role="3F0ifm" value="component cell layout:" />
+            <node concept="VPM3Z" id="23C0l7wMCY7" role="3F10Kt" />
           </node>
           <node concept="3EZMnI" id="fGTPXmU" role="3EZMnx">
             <node concept="3XFhqQ" id="xLfwuvtbnP" role="3EZMnx" />

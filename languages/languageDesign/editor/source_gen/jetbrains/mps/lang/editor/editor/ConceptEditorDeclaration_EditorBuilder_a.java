@@ -174,14 +174,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createConstant_0() {
-      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<default>");
+      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_cth9w3_a0a0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
       style.set(StyleAttributes.DEFAULT_CARET_POSITION, CaretPosition.FIRST);
       editorCell.getStyle().putAll(style);
       editorCell.addKeyMap(new ConceptEditor_DefaultContextHintLabel());
-      editorCell.setDefaultText("");
+      editorCell.setDefaultText("<default>");
       return editorCell;
     }
   }
