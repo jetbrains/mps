@@ -20,7 +20,6 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.FileTypeRegistry;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.SingleRootFileViewProvider;
 import com.intellij.psi.impl.PsiFileFactoryImpl;
@@ -28,9 +27,15 @@ import com.intellij.psi.impl.source.PsiPlainTextFileImpl;
 import com.intellij.testFramework.LightVirtualFile;
 import com.intellij.util.LocalTimeCounter;
 import com.intellij.util.text.CharSequenceSubSequence;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * @deprecated use {@link PsiFileFactoryImpl} instead
+ */
+@ToRemove(version = 2019.3)
+@Deprecated
 public class EmptyPsiFileFactory extends PsiFileFactoryImpl {
   private final PsiManager myManager;
 
@@ -42,7 +47,7 @@ public class EmptyPsiFileFactory extends PsiFileFactoryImpl {
   @Override
   @NotNull
   public PsiFile createFileFromText(@NotNull String name, @NotNull FileType fileType, @NotNull CharSequence text,
-                    long modificationStamp, final boolean physical) {
+                                    long modificationStamp, final boolean physical) {
     return createFileFromText(name, fileType, text, modificationStamp, physical, true);
   }
 
@@ -53,47 +58,47 @@ public class EmptyPsiFileFactory extends PsiFileFactoryImpl {
 
   @Override
   public PsiFile createFileFromText(@NotNull String name, @NotNull Language language, @NotNull CharSequence text, boolean physical,
-                    final boolean markAsCopy) {
+                                    final boolean markAsCopy) {
     return null;
   }
 
   @Override
   public PsiFile createFileFromText(@NotNull String name,
-                    @NotNull Language language,
-                    @NotNull CharSequence text,
-                    boolean physical,
-                    boolean markAsCopy,
-                    boolean noSizeLimit) {
+                                    @NotNull Language language,
+                                    @NotNull CharSequence text,
+                                    boolean physical,
+                                    boolean markAsCopy,
+                                    boolean noSizeLimit) {
     return null;
   }
 
   @Override
   public PsiFile createFileFromText(@NotNull String name, @NotNull Language language, @NotNull CharSequence text, boolean eventSystemEnabled,
-      boolean markAsCopy, boolean noSizeLimit, @Nullable VirtualFile original) {
+                                    boolean markAsCopy, boolean noSizeLimit, @Nullable VirtualFile original) {
     return null;
   }
 
   @Override
   @NotNull
   public PsiFile createFileFromText(@NotNull String name,
-                    @NotNull FileType fileType,
-                    @NotNull CharSequence text,
-                    long modificationStamp,
-                    final boolean physical,
-                    boolean markAsCopy) {
+                                    @NotNull FileType fileType,
+                                    @NotNull CharSequence text,
+                                    long modificationStamp,
+                                    final boolean physical,
+                                    boolean markAsCopy) {
     final LightVirtualFile virtualFile = new LightVirtualFile(name, fileType, text, modificationStamp);
     final SingleRootFileViewProvider singleRootFileViewProvider =
-      new SingleRootFileViewProvider(myManager, virtualFile, physical);
+        new SingleRootFileViewProvider(myManager, virtualFile, physical);
     return new PsiPlainTextFileImpl(singleRootFileViewProvider);
   }
 
 
   @NotNull
   public PsiFile createFileFromText(@NotNull String name,
-                    @NotNull FileType fileType, final Language language, @NotNull Language targetLanguage, @NotNull CharSequence text,
-                    long modificationStamp,
-                    final boolean physical,
-                    boolean markAsCopy) {
+                                    @NotNull FileType fileType, final Language language, @NotNull Language targetLanguage, @NotNull CharSequence text,
+                                    long modificationStamp,
+                                    final boolean physical,
+                                    boolean markAsCopy) {
     return createFileFromText(name, fileType, text, modificationStamp, physical, markAsCopy);
   }
 

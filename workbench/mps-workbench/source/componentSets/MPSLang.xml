@@ -177,13 +177,12 @@
     <component>
       <implementation-class>com.intellij.codeInsight.navigation.CtrlMouseHandler</implementation-class>
     </component>
+    -->
 
     <component>
-      <interface-class>com.intellij.pom.wrappers.PsiEventWrapperAspect</interface-class>
-      <implementation-class>com.intellij.pom.wrappers.PsiEventWrapperAspect</implementation-class>
-      <loadForDefaultProject/>
-    </component>
-    -->
+    <implementation-class>com.intellij.pom.wrappers.PsiEventWrapperAspect</implementation-class>
+    <loadForDefaultProject/>
+  </component>
 
     <component>
       <interface-class>com.intellij.openapi.roots.impl.PushedFilePropertiesUpdater</interface-class>
