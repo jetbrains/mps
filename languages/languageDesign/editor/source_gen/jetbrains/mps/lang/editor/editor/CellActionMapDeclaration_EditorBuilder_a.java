@@ -101,8 +101,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createCollection_3());
     editorCell.addEditorCell(createConstant_5());
     editorCell.addEditorCell(createConstant_6());
-    editorCell.addEditorCell(createConstant_7());
-    editorCell.addEditorCell(createRefNodeList_1());
+    editorCell.addEditorCell(createCollection_4());
     return editorCell;
   }
   private EditorCell createCollection_1() {
@@ -197,9 +196,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "applicable concept:");
     editorCell.setCellId("Constant_dnk0aj_a2a");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.SELECTABLE, false);
-    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -302,6 +298,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "imported actions:");
     editorCell.setCellId("Constant_dnk0aj_e0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -380,6 +379,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createConstant_5() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_dnk0aj_g0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -392,27 +394,29 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_7() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
-    editorCell.setCellId("Constant_dnk0aj_i0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.SELECTABLE, false);
-    editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
+  private EditorCell createCollection_4() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
+    editorCell.setCellId("Collection_dnk0aj_i0");
+    editorCell.addEditorCell(createIndentCell_1());
+    editorCell.addEditorCell(createRefNodeList_1());
+    return editorCell;
+  }
+  private EditorCell createIndentCell_1() {
+    EditorCell_Indent editorCell = new EditorCell_Indent(getEditorContext(), myNode);
     return editorCell;
   }
   private EditorCell createRefNodeList_1() {
-    AbstractCellListHandler handler = new itemListHandler_dnk0aj_j0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new itemListHandler_dnk0aj_b8a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
     editorCell.setCellId("refNodeList_item");
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class itemListHandler_dnk0aj_j0 extends RefNodeListHandler {
+  private static class itemListHandler_dnk0aj_b8a extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public itemListHandler_dnk0aj_j0(SNode ownerNode, EditorContext context) {
+    public itemListHandler_dnk0aj_b8a(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -435,7 +439,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(itemListHandler_dnk0aj_j0.this.getNode(), LINKS.item$VI8u));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(itemListHandler_dnk0aj_b8a.this.getNode(), LINKS.item$VI8u));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
