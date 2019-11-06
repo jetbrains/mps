@@ -21,6 +21,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 public interface NodeLocation {
   boolean canInsert(SRepository repository, SNode nodeToMove);
   void insertNode(SRepository repository, SNode nodeToMove);
+  boolean isRoot();
   class NodeLocationChild implements NodeLocation {
     private SNodeReference parent;
     private SContainmentLink role;
@@ -34,6 +35,9 @@ public interface NodeLocation {
     public void setRole(SContainmentLink role) {
       this.role = role;
     }
+    public boolean isRoot() {
+      return false;
+    }
     public SNodeReference getNode() {
       return parent;
     }
@@ -42,31 +46,26 @@ public interface NodeLocation {
     }
     public boolean canInsert(SRepository repository, SNode nodeToMove) {
       SNode node = parent.resolve(repository);
-      return role != null && node != null && !(node.getModel().isReadOnly()) && node.getConcept().getContainmentLinks().contains(role) && SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeToMove)), SNodeOperations.asSConcept(role.getTargetConcept()));
+      return role != null && node != null && node.getModel() != null && !(node.getModel().isReadOnly()) && node.getConcept().getContainmentLinks().contains(role) && SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeToMove)), SNodeOperations.asSConcept(role.getTargetConcept()));
     }
     public void insertNode(SRepository repository, SNode nodeToMove) {
-      SNode oldParent = nodeToMove.getParent();
-      if (oldParent != null) {
-        oldParent.removeChild(nodeToMove);
-      }
       parent.resolve(repository).addChild(role, nodeToMove);
     }
   }
   class NodeLocationRoot implements NodeLocation {
-    private SModelReference model;
+    private SModelReference myModel;
     public NodeLocationRoot(SModel model) {
-      this.model = model.getReference();
+      this.myModel = model.getReference();
     }
     public boolean canInsert(SRepository repository, SNode nodeToMove) {
-      SModel modelResolved = model.resolve(repository);
+      SModel modelResolved = myModel.resolve(repository);
       return modelResolved != null && !(modelResolved.isReadOnly()) && ((SConcept) SNodeOperations.getConcept(nodeToMove)).isRootable();
     }
+    public boolean isRoot() {
+      return true;
+    }
     public void insertNode(SRepository repository, SNode nodeToMove) {
-      SModel oldModel = nodeToMove.getModel();
-      if (oldModel != null) {
-        oldModel.removeRootNode(nodeToMove);
-      }
-      model.resolve(repository).addRootNode(nodeToMove);
+      myModel.resolve(repository).addRootNode(nodeToMove);
     }
   }
   class NodeLocationRootWithAspectModelCreation implements NodeLocation {
@@ -80,12 +79,11 @@ public interface NodeLocation {
       SModule languageResolved = myLanguage.resolve(repository);
       return languageResolved instanceof Language && !(((Language) languageResolved).isReadOnly()) && ((SConcept) SNodeOperations.getConcept(nodeToMove)).isRootable();
     }
+    public boolean isRoot() {
+      return true;
+    }
     public void insertNode(SRepository repository, SNode nodeToMove) {
       SModel model = myAspect.getOrCreate(((Language) myLanguage.resolve(repository)));
-      SModel oldModel = nodeToMove.getModel();
-      if (oldModel != null) {
-        oldModel.removeRootNode(nodeToMove);
-      }
       model.addRootNode(nodeToMove);
     }
   }

@@ -11,11 +11,20 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
+import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
+import java.util.Map;
+import jetbrains.mps.refactoring.participant.RefactoringParticipant;
+import jetbrains.mps.refactoring.participant.RefactoringSession;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.refactoring.participant.NodeCopyTracker;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction {
 
@@ -40,6 +49,36 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   }
 
   @Override
+  public void execute(final MPSProject project, final List<SNode> nodesToMove) {
+    final NodeLocation newLocation = askLocation(project, nodesToMove);
+    if (newLocation == null) {
+      return;
+    }
+
+    MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation, project) {
+      @Override
+      public void process(List<SNode> nodeRoots, Map<SNode, RefactoringParticipant.KeepOldNodes> ifKeepOldNodes, RefactoringSession refactoringSession) {
+        Map<SNode, String> packageNames = MapSequence.fromMap(new HashMap<SNode, String>());
+        for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
+          MapSequence.fromMap(packageNames).put(oldNode, SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ), PROPS.packageName$3uUR));
+        }
+        super.process(nodeRoots, ifKeepOldNodes, refactoringSession);
+        NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
+        for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
+          SNode newNode = SNodeOperations.cast(MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode), CONCEPTS.Classifier$hJ);
+          if (myNodeLocation.isRoot()) {
+            if (myNodeLocation.isRoot() && SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ)) {
+              SPropertyOperations.assign(newNode, PROPS.packageName$3uUR, MapSequence.fromMap(packageNames).get(oldNode));
+            }
+          }
+        }
+
+      }
+    };
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), processor).withValues(nodesToMove));
+  }
+
+  @Override
   public boolean tryToSetRole(SRepository repo, List<SNode> nodesToMove, NodeLocation.NodeLocationChild selectedObject) {
     SNode selectedNode = selectedObject.getNode().resolve(repo);
     if (SNodeOperations.getContainingLink(ListSequence.fromList(nodesToMove).first()) == null && SNodeOperations.isInstanceOf(selectedNode, CONCEPTS.Classifier$hJ)) {
@@ -55,5 +94,9 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty packageName$3uUR = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
   }
 }

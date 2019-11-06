@@ -15,13 +15,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.platform.refactoring.MoveNodesDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
 
 @GeneratedClass(node = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)/1929018697514204727", model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
 public class MoveNodesActionBase implements MoveNodesAction {
@@ -60,14 +60,22 @@ public class MoveNodesActionBase implements MoveNodesAction {
   }
 
   public void execute(final MPSProject project, final List<SNode> nodesToMove) {
+    final NodeLocation newLocation = askLocation(project, nodesToMove);
+    if (newLocation == null) {
+      return;
+    }
 
+    MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation, project);
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), processor).withValues(nodesToMove));
+  }
+  public NodeLocation askLocation(final MPSProject project, final List<SNode> nodesToMove) {
     final Wrappers._T<SModel> currentModel = new Wrappers._T<SModel>();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         currentModel.value = SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first());
       }
     });
-    final NodeLocation newLocation = MoveNodesDialog.getSelectedObject(project, currentModel.value, new MoveNodesDialog.ModelFilter() {
+    return MoveNodesDialog.getSelectedObject(project, currentModel.value, new MoveNodesDialog.ModelFilter() {
       public String getErrorMessage(NodeLocation selectedObject) {
         return "Choose model or node that can contain moving nodes";
       }
@@ -96,11 +104,5 @@ public class MoveNodesActionBase implements MoveNodesAction {
         }
       }
     });
-    if (newLocation == null) {
-      return;
-    }
-
-    MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation, project);
-    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), processor).withValues(nodesToMove));
   }
 }
