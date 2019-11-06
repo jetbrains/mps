@@ -277,9 +277,13 @@
       <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -1800,6 +1804,12 @@
               <ref role="3cqZAo" to="1m72:~StoragePathMacros.WORKSPACE_FILE" resolve="WORKSPACE_FILE" />
             </node>
           </node>
+          <node concept="2B6LJw" id="4YlBsowRR_s" role="2B76xF">
+            <ref role="2B6OnR" to="1m72:~Storage.deprecated()" resolve="deprecated" />
+            <node concept="3clFbT" id="4YlBsowS013" role="2B70Vg">
+              <property role="3clFbU" value="true" />
+            </node>
+          </node>
         </node>
       </node>
     </node>
@@ -2085,6 +2095,14 @@
         </node>
       </node>
     </node>
+    <node concept="2AHcQZ" id="4YlBsowS02J" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="3UR2Jj" id="4YlBsowS02G" role="lGtFl">
+      <node concept="TZ5HI" id="4YlBsowS02H" role="3nqlJM">
+        <node concept="TZ5HA" id="4YlBsowS02I" role="3HnX3l" />
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="7KPXEkRfHNd">
     <property role="TrG5h" value="VcsGeneratedFilesPanel" />
@@ -2346,6 +2364,14 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2AHcQZ" id="4YlBsowS2p0" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
+    <node concept="3UR2Jj" id="4YlBsowS2oX" role="lGtFl">
+      <node concept="TZ5HI" id="4YlBsowS2oY" role="3nqlJM">
+        <node concept="TZ5HA" id="4YlBsowS2oZ" role="3HnX3l" />
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="7cEItjJECz1">
     <property role="TrG5h" value="MergeDriverPackerImpl" />
@@ -2404,11 +2430,11 @@
           <node concept="3cpWsn" id="19ElvrpZnoe" role="3cpWs9">
             <property role="TrG5h" value="fsep" />
             <property role="3TUv4t" value="true" />
-            <node concept="17QB3L" id="6ek1CjliK0C" role="1tU5fm" />
             <node concept="10M0yZ" id="19ElvrpZnof" role="33vP2m">
               <ref role="1PxDUh" to="guwi:~File" resolve="File" />
               <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
             </node>
+            <node concept="17QB3L" id="6ek1CjliK0C" role="1tU5fm" />
           </node>
         </node>
         <node concept="3SKdUt" id="1K3lKVMZfVd" role="3cqZAp">

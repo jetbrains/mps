@@ -76,9 +76,6 @@
       <implementation-class>jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.vcs.MPSVcsProjectConfiguration</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.vcs.integration.GeneratedFileConflictResolving</implementation-class>
     </component>
   </project-components>
@@ -107,8 +104,6 @@
     <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectCheckoutListener"/>
     <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectDirCheckoutListener"/>
     <checkinHandlerFactory implementation="jetbrains.mps.vcs.platform.integration.OptimizeImportsCheckinHandler$OptimizeImportsCheckinHandlerFactory"/>
-    <directoryIndexExcludePolicy implementation="jetbrains.mps.vcs.integration.GeneratedFilesExcludePolicy"/>
-    <mps.projectPrefsPanel implementation="jetbrains.mps.vcs.VcsGeneratedFilesPanel"/>
     <mps.editorWarningsProvider implementation="jetbrains.mps.vcs.platform.integration.ConflictingModelsWarnings"/>
 
     <projectService serviceInterface="com.intellij.openapi.vcs.AbstractVcsHelper"
@@ -119,5 +114,11 @@
 
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <mps.PluginComponentContributor application="jetbrains.mps.vcs.plugin.Vcs_ApplicationPlugin" />
+
+    <obsoleteStorage file="$WORKSPACE_FILE$" isProjectLevel="true">
+      <components>
+        <component>MPSVcsConfiguration</component>
+      </components>
+    </obsoleteStorage>
   </extensions>
 </idea-plugin>

@@ -17,11 +17,17 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 
+/**
+ *
+ * @deprecated
+ */
+@Deprecated
 @GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/4093906047203397429", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class GeneratedFilesExcludePolicy extends BaseDirectoryIndexExcludePolicy {
   private final MPSProject myMPSProject;
   private final MPSVcsProjectConfiguration myProjectConfig;
 
+  @Deprecated
   protected GeneratedFilesExcludePolicy(@NotNull Project project, @NotNull MPSProject mpsProject, MPSVcsProjectConfiguration config) {
     super(project);
     myMPSProject = mpsProject;
