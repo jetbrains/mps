@@ -15,34 +15,8 @@
       <implementation-class>jetbrains.mps.ide.vfs.WatchingFileSystemListenersContainer</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.vfs.JrtIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.JarIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.LocalIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.IdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <interface-class>org.jetbrains.mps.openapi.module.ModelAccess</interface-class>
-      <implementation-class>jetbrains.mps.smodel.WorkbenchModelAccess</implementation-class>
-    </component>
-    <component>
-      <interface-class>jetbrains.mps.smodel.UndoHandler</interface-class>
-      <implementation-class>jetbrains.mps.ide.undo.WorkbenchUndoHandler</implementation-class>
-    </component>
-    <component>
       <interface-class>jetbrains.mps.repository.IdeaPluginFacetComponent</interface-class>
       <implementation-class>jetbrains.mps.ide.project.facets.IdeaPluginModuleFacetImplComponent</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.icons.GlobalIconManager</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.persistence.PersistenceComponent</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.ide.generator.TransientSwapOwnerComponent</implementation-class>
@@ -53,9 +27,6 @@
     <component>
       <interface-class>jetbrains.mps.ide.platform.watching.ReloadManager</interface-class>
       <implementation-class>jetbrains.mps.ide.platform.watching.ReloadManagerComponent</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.platform.watching.WatchedRoots</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.watching.WatchedRootsUpdater</implementation-class>

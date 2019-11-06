@@ -32,32 +32,6 @@
       <implementation-class>jetbrains.mps.ide.platform.watching.FileSystemListenersContainer</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.vfs.JrtIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.JarIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.LocalIdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.IdeaFileSystem</implementation-class>
-    </component>
-    <component>
-      <interface-class>org.jetbrains.mps.openapi.module.ModelAccess</interface-class>
-      <implementation-class>jetbrains.mps.smodel.WorkbenchModelAccess</implementation-class>
-    </component>
-    <component>
-      <interface-class>jetbrains.mps.smodel.UndoHandler</interface-class>
-      <implementation-class>jetbrains.mps.ide.undo.WorkbenchUndoHandler</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.MPSCoreComponents</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.persistence.PersistenceComponent</implementation-class>
-    </component>
-    <component>
       <interface-class>jetbrains.mps.make.IMakeService</interface-class>
       <implementation-class>jetbrains.mps.idea.core.make.NoMakeService</implementation-class>
     </component>
@@ -74,6 +48,7 @@
       <implementation-class>jetbrains.mps.idea.core.project.stubs.MPSGlobalLibImporter</implementation-class>
     </component>
     <component>
+      <!-- FIXME same in MPSComponents.xml -->
       <interface-class>jetbrains.mps.ide.platform.watching.ReloadManager</interface-class>
       <implementation-class>jetbrains.mps.ide.platform.watching.ReloadManagerComponent</implementation-class>
     </component>
@@ -99,19 +74,14 @@
       <implementation-class>jetbrains.mps.repository.DummyIdeaPluginFacetComponent</implementation-class>
     </component>
     <component>
+      <!-- FIXME same in MPSWorkbench.xml -->
       <implementation-class>jetbrains.mps.repository.FSNotificationsImprover</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.repository.RepositoryInPluginInitializer</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.platform.watching.WatchedRoots</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.idea.core.project.PluginsPathMacroCrutch</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.icons.GlobalIconManager</implementation-class>
     </component>
   </application-components>
 
