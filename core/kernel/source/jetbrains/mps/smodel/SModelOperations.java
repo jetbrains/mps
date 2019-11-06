@@ -102,10 +102,7 @@ public class SModelOperations {
    * @param concept concept (with sub-concepts) to look up
    * @return empty collection if model is <code>null</code> or no concept instances found.
    */
-  public static List<SNode> getNodes(SModel model, @NotNull SAbstractConcept concept) {
-    if (model == null) {
-      return Collections.emptyList();
-    }
+  public static List<SNode> getNodes(@NotNull SModel model, @NotNull SAbstractConcept concept) {
     return FastNodeFinderManager.get(model).getNodes(concept, true);
   }
 
@@ -165,6 +162,4 @@ public class SModelOperations {
   public static List<SModelReference> getImportedModelUIDs(@NotNull SModel sModel) {
     return new ArrayList<>(new ModelImports(sModel).getImportedModels());
   }
-
-  //-----------------------------------------------------
 }

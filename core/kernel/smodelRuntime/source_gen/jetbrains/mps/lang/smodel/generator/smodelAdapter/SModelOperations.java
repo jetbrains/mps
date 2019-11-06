@@ -35,6 +35,7 @@ public final class SModelOperations {
     if (model == null) {
       return Collections.emptyList();
     }
+
     List<SNode> list = new ArrayList<SNode>();
     Iterable<SNode> iterable = model.getRootNodes();
     if (concept != null) {
@@ -63,7 +64,7 @@ public final class SModelOperations {
     return allNodesIncludingImported(model, false, concept);
   }
 
-  private static List<SNode> allNodesIncludingImported(SModel sModel, boolean roots, @Nullable SAbstractConcept concept) {
+  private static List<SNode> allNodesIncludingImported(@NotNull SModel sModel, boolean roots, @Nullable SAbstractConcept concept) {
     List<SModel> modelsList = new ArrayList<SModel>();
     modelsList.add(sModel);
     List<SModel> modelDescriptors = jetbrains.mps.smodel.SModelOperations.allImportedModels(sModel);
@@ -87,6 +88,7 @@ public final class SModelOperations {
     if (model == null) {
       return new ArrayList<SNode>();
     }
+
     if (concept != null) {
       return jetbrains.mps.smodel.SModelOperations.getNodes(model, concept);
     }
@@ -135,17 +137,14 @@ public final class SModelOperations {
   }
 
   public static String getModelName(SModel model) {
-    if (model == null) {
-      return null;
-    }
-    return model.getName().getLongName();
+    return (model == null ? null : model.getName().getLongName());
   }
 
   public static SNode getModuleStub(SModel model) {
     SModule module = model.getModule();
     // FIXME  we have to reference javastub classes, as we don't want j.m.runtime solution to depend from j.m.project 
     // FIXME     though the true defect is that Model_GetModule operation (which uses this rt code) lives in lang.smodel that doesn't 
-    // FIXME     expose j.m.project as its runtime. Likely, shall move Model_GetModule operation to a distinct language with j.m.project as RT 
+    // FIXME     expose j.m.project as its runtime. Likely, shall move Model_GetModule operation to a distinct language with j.m.project a\s RT 
     // FIXME     or to specify j.m.project as lang.smodel's RT. This method has to get moved into respective solution regardless. 
     // I don't want to create blank model so provide the original one as a node factory. As long as PSB doesn't change it, it's all the same. 
     // XXX the only defect with stateless approach is that each query gets a new instance, therefore n1.model.module != n1.model.module 
@@ -157,9 +156,6 @@ public final class SModelOperations {
   }
 
   public static SModelReference getPointer(SModel model) {
-    if (model == null) {
-      return null;
-    }
-    return model.getReference();
+    return (model == null ? null : model.getReference());
   }
 }
