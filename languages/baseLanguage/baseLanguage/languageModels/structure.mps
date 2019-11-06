@@ -20,7 +20,7 @@
         <property id="1421157252384165432" name="memberId" index="3tVfz5" />
         <reference id="899069222106091871" name="oldMember" index="2wpffI" />
       </concept>
-      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclartaion" flags="ng" index="25R3W">
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
@@ -1212,6 +1212,9 @@
       <property role="IQ2nx" value="2791683072064593257" />
       <property role="TrG5h" value="packageName" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="6jrMpxM_Mz0" role="lGtFl">
+        <property role="t5JxN" value="makes sense only for root nodes" />
+      </node>
     </node>
     <node concept="1TJgyi" id="hNAfOGV" role="1TKVEl">
       <property role="TrG5h" value="isDeprecated" />

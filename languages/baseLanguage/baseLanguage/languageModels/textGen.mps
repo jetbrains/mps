@@ -387,6 +387,7 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
+      <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171315804604" name="jetbrains.mps.lang.smodel.structure.Model_RootsOperation" flags="nn" index="2RRcyG">
         <reference id="1171315804605" name="concept" index="2RRcyH" />
       </concept>
@@ -1245,10 +1246,19 @@
           </node>
           <node concept="2OqwBi" id="2qY3fqbZziG" role="3clFbw">
             <node concept="2OqwBi" id="2qY3fqbZxSn" role="2Oq$k0">
-              <node concept="37vLTw" id="2qY3fqbZx$Z" role="2Oq$k0">
-                <ref role="3cqZAo" node="hXZAY1h" resolve="cls" />
+              <node concept="1PxgMI" id="7i7ttYSUTiy" role="2Oq$k0">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="7i7ttYSUTjs" role="3oSUPX">
+                  <ref role="cht4Q" to="tpee:g7pOWCK" resolve="Classifier" />
+                </node>
+                <node concept="2OqwBi" id="7i7ttYSUSe2" role="1m5AlR">
+                  <node concept="37vLTw" id="2qY3fqbZx$Z" role="2Oq$k0">
+                    <ref role="3cqZAo" node="hXZAY1h" resolve="cls" />
+                  </node>
+                  <node concept="2Rxl7S" id="7i7ttYSUSDR" role="2OqNvi" />
+                </node>
               </node>
-              <node concept="3TrcHB" id="2qY3fqbZyl0" role="2OqNvi">
+              <node concept="3TrcHB" id="7i7ttYSUTof" role="2OqNvi">
                 <ref role="3TsBF5" to="tpee:2qY3fqbSpPD" resolve="packageName" />
               </node>
             </node>

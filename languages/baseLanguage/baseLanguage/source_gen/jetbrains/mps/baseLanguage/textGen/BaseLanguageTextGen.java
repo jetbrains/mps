@@ -271,7 +271,7 @@ public abstract class BaseLanguageTextGen {
   }
   protected static String getPackageName(SNode cls, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (isNotEmptyString(SPropertyOperations.getString(cls, PROPS.packageName$3uUR))) {
+    if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(cls), CONCEPTS.Classifier$hJ), PROPS.packageName$3uUR))) {
       return SPropertyOperations.getString(cls, PROPS.packageName$3uUR);
     }
     return SModelOperations.getModelName(SNodeOperations.getModel(cls));
