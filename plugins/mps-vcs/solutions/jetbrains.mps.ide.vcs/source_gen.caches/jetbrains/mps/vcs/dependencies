@@ -47,23 +47,6 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
   </dependency>
-  <dependency className="jetbrains.mps.vcs.MPSVcsProjectConfiguration">
-    <classNode dependClassName="com.intellij.ProjectTopics" />
-    <classNode dependClassName="com.intellij.openapi.components.State" />
-    <classNode dependClassName="com.intellij.openapi.components.Storage" />
-    <classNode dependClassName="com.intellij.openapi.components.StoragePathMacros" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.roots.ModuleRootListener" />
-    <classNode dependClassName="com.intellij.openapi.roots.impl.ModuleRootEventImpl" />
-    <classNode dependClassName="com.intellij.openapi.vcs.changes.VcsDirtyScopeManager" />
-    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFileManager" />
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.Runnable" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode extendsClassName="com.intellij.openapi.components.AbstractProjectComponent" />
-    <classNode extendsClassName="com.intellij.openapi.components.PersistentStateComponent" />
-  </dependency>
   <dependency className="jetbrains.mps.vcs.MergeDriverPackerImpl">
     <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptor" />
     <classNode dependClassName="com.intellij.ide.plugins.PluginManager" />
@@ -119,19 +102,6 @@
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jdom.JDOMException" />
-  </dependency>
-  <dependency className="jetbrains.mps.vcs.VcsGeneratedFilesPanel">
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.ui.IdeBorderFactory" />
-    <classNode dependClassName="java.awt.BorderLayout" />
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="javax.swing.JCheckBox" />
-    <classNode dependClassName="javax.swing.JComponent" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.vcs.MPSVcsProjectConfiguration" />
-    <classNode extendsClassName="javax.swing.JPanel" />
-    <classNode extendsClassName="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsExtraPanel" />
   </dependency>
 </dependenciesRoot>
 
