@@ -143,6 +143,7 @@
     <classNode extendsClassName="jetbrains.mps.refactoring.participant.RefactoringSession" />
   </dependency>
   <dependency className="jetbrains.mps.refactoring.participant.RefactoringUI">
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.List" />
@@ -152,6 +153,7 @@
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchTask" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringParticipant" />
     <classNode dependClassName="jetbrains.mps.refactoring.participant.RefactoringSession" />
+    <classNode dependClassName="jetbrains.mps.util.annotation.ToRemove" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
   </dependency>
   <dependency className="jetbrains.mps.refactoring.participant.RenameNodeRefactoringParticipant">

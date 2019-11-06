@@ -92,16 +92,16 @@
       <node id="1109674566565057918" at="24,38,25,15" concept="4" />
       <node id="1109674566565064756" at="27,89,28,44" concept="4" />
       <node id="1109674566565541455" at="30,119,31,78" concept="10" />
-      <node id="7201972523307563030" at="33,171,34,30" concept="4" />
+      <node id="7201972523307563030" at="33,147,34,30" concept="4" />
       <node id="1109674566563254856" at="24,0,27,0" concept="8" trace="prepare#(Ljava/lang/Runnable;)V" />
       <node id="1109674566563254864" at="27,0,30,0" concept="8" trace="runSearch#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
       <node id="1109674566563254874" at="30,0,33,0" concept="8" trace="selectParticipants#(Ljava/util/List;)Ljava/util/List;" />
-      <node id="1109674566563254884" at="33,0,36,0" concept="8" trace="showRefactoringView#(Ljava/lang/Runnable;Ljava/lang/String;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
+      <node id="1109674566563254884" at="33,0,36,0" concept="8" trace="showRefactoringView#(Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
       <node id="1109674566565460655" at="20,0,24,0" concept="2" trace="EmptyRefactoringUI#(Ljava/util/List;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
       <scope id="1109674566563254863" at="24,38,25,15" />
       <scope id="1109674566563254873" at="27,89,28,44" />
       <scope id="1109674566563254883" at="30,119,31,78" />
-      <scope id="1109674566563254897" at="33,171,34,30" />
+      <scope id="1109674566563254897" at="33,147,34,30" />
       <scope id="1109674566565460659" at="20,139,22,30" />
       <scope id="1109674566563254856" at="24,0,27,0">
         <var name="task" id="1109674566563254860" />
@@ -113,7 +113,6 @@
         <var name="availableOptions" id="1109674566563254877" />
       </scope>
       <scope id="1109674566563254884" at="33,0,36,0">
-        <var name="refactoringName" id="1109674566563254890" />
         <var name="refactoringSession" id="3358842831932278713" />
         <var name="searchResults" id="8821602715299247963" />
         <var name="searchTask" id="1109674566563254892" />

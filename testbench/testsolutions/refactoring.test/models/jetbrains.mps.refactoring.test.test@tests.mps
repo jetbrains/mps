@@ -2661,10 +2661,6 @@
           <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
         </node>
       </node>
-      <node concept="37vLTG" id="5$JdMWP8FNq" role="3clF46">
-        <property role="TrG5h" value="refactoringName" />
-        <node concept="17QB3L" id="5$JdMWP8FNr" role="1tU5fm" />
-      </node>
       <node concept="37vLTG" id="5$JdMWP8FNs" role="3clF46">
         <property role="TrG5h" value="searchResults" />
         <node concept="3uibUv" id="5$JdMWP8FNt" role="1tU5fm">
@@ -2896,10 +2892,6 @@
             <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
           </node>
         </node>
-        <node concept="37vLTG" id="3o7jGk0FiMw" role="3clF46">
-          <property role="TrG5h" value="refactoringName" />
-          <node concept="17QB3L" id="3o7jGk0FiMx" role="1tU5fm" />
-        </node>
         <node concept="37vLTG" id="3o7jGk0FiMy" role="3clF46">
           <property role="TrG5h" value="searchResults" />
           <node concept="3uibUv" id="3o7jGk0FiMz" role="1tU5fm">
@@ -3045,10 +3037,6 @@
           <node concept="3uibUv" id="3o7jGk0HA7D" role="1tU5fm">
             <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
           </node>
-        </node>
-        <node concept="37vLTG" id="3o7jGk0HA7E" role="3clF46">
-          <property role="TrG5h" value="refactoringName" />
-          <node concept="17QB3L" id="3o7jGk0HA7F" role="1tU5fm" />
         </node>
         <node concept="37vLTG" id="3o7jGk0HA7G" role="3clF46">
           <property role="TrG5h" value="searchResults" />

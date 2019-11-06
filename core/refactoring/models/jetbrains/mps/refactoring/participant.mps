@@ -10,6 +10,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
+    <use id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8" version="0" />
   </languages>
   <imports>
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
@@ -21,6 +22,7 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
+    <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -43,6 +45,9 @@
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
+      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ng" index="2frcj7">
+        <child id="2323553266850475953" name="modifiers" index="2frcjj" />
+      </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
@@ -51,9 +56,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
         <reference id="2820489544401957798" name="classifier" index="HV5vE" />
@@ -148,6 +158,9 @@
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
+      </concept>
+      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
+        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -272,6 +285,9 @@
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
+    </language>
+    <language id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8">
+      <concept id="4678410916365116210" name="jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier" flags="ng" index="2JFqV2" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
@@ -4116,7 +4132,25 @@
       <property role="TrG5h" value="showRefactoringView" />
       <node concept="3cqZAl" id="4N6D1IQ2KrQ" role="3clF45" />
       <node concept="3Tm1VV" id="4N6D1IQ2KrR" role="1B3o_S" />
-      <node concept="3clFbS" id="4N6D1IQ2KrS" role="3clF47" />
+      <node concept="3clFbS" id="4N6D1IQ2KrS" role="3clF47">
+        <node concept="3clFbF" id="7i7ttYT2kfi" role="3cqZAp">
+          <node concept="1rXfSq" id="7i7ttYT2kfh" role="3clFbG">
+            <ref role="37wK5l" node="7i7ttYT2jvc" resolve="showRefactoringView" />
+            <node concept="37vLTw" id="7i7ttYT2kj9" role="37wK5m">
+              <ref role="3cqZAo" node="4N6D1IQ3eWc" resolve="task" />
+            </node>
+            <node concept="37vLTw" id="7i7ttYT2kog" role="37wK5m">
+              <ref role="3cqZAo" node="7DGCeT2R8ms" resolve="searchResults" />
+            </node>
+            <node concept="37vLTw" id="7i7ttYT2kKd" role="37wK5m">
+              <ref role="3cqZAo" node="4N6D1IQ3eWg" resolve="searchTask" />
+            </node>
+            <node concept="37vLTw" id="7i7ttYT2kBm" role="37wK5m">
+              <ref role="3cqZAo" node="2Ut0s9XG1xo" resolve="session" />
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="37vLTG" id="4N6D1IQ3eWc" role="3clF46">
         <property role="TrG5h" value="task" />
         <property role="3TUv4t" value="true" />
@@ -4146,6 +4180,73 @@
           <ref role="3uigEE" node="3KqYwoBJ0xf" resolve="RefactoringSession" />
         </node>
       </node>
+      <node concept="2AHcQZ" id="7i7ttYT2jEM" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
+      <node concept="2AHcQZ" id="7i7ttYT2jIY" role="2AJF6D">
+        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
+        <node concept="2B6LJw" id="7i7ttYT2jML" role="2B76xF">
+          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
+          <node concept="3b6qkQ" id="7i7ttYT2jWh" role="2B70Vg">
+            <property role="$nhwW" value="2019.3" />
+          </node>
+        </node>
+      </node>
+      <node concept="2JFqV2" id="7i7ttYT2kdv" role="2frcjj" />
+    </node>
+    <node concept="3clFb_" id="7i7ttYT2jvc" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="showRefactoringView" />
+      <node concept="3cqZAl" id="7i7ttYT2jvd" role="3clF45" />
+      <node concept="3Tm1VV" id="7i7ttYT2jve" role="1B3o_S" />
+      <node concept="3clFbS" id="7i7ttYT2jvf" role="3clF47">
+        <node concept="3clFbF" id="7i7ttYT2kTw" role="3cqZAp">
+          <node concept="1rXfSq" id="7i7ttYT2kTx" role="3clFbG">
+            <ref role="37wK5l" node="4N6D1IQ2KrP" resolve="showRefactoringView" />
+            <node concept="37vLTw" id="7i7ttYT2kTy" role="37wK5m">
+              <ref role="3cqZAo" node="7i7ttYT2jvg" resolve="task" />
+            </node>
+            <node concept="Xl_RD" id="7i7ttYT2l0y" role="37wK5m">
+              <property role="Xl_RC" value="Refactoring" />
+            </node>
+            <node concept="37vLTw" id="7i7ttYT2kTz" role="37wK5m">
+              <ref role="3cqZAo" node="7i7ttYT2jvk" resolve="searchResults" />
+            </node>
+            <node concept="37vLTw" id="7i7ttYT2kT$" role="37wK5m">
+              <ref role="3cqZAo" node="7i7ttYT2jvm" resolve="searchTask" />
+            </node>
+            <node concept="37vLTw" id="7i7ttYT2kT_" role="37wK5m">
+              <ref role="3cqZAo" node="7i7ttYT2jvo" resolve="session" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="7i7ttYT2jvg" role="3clF46">
+        <property role="TrG5h" value="task" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3uibUv" id="7i7ttYT2jvh" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="7i7ttYT2jvk" role="3clF46">
+        <property role="TrG5h" value="searchResults" />
+        <node concept="3uibUv" id="7i7ttYT2jvl" role="1tU5fm">
+          <ref role="3uigEE" to="g4jo:J2bOg02HbG" resolve="SearchResults" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="7i7ttYT2jvm" role="3clF46">
+        <property role="TrG5h" value="searchTask" />
+        <node concept="3uibUv" id="7i7ttYT2jvn" role="1tU5fm">
+          <ref role="3uigEE" to="g4jo:7DGCeT2Ukgb" resolve="SearchTask" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="7i7ttYT2jvo" role="3clF46">
+        <property role="TrG5h" value="session" />
+        <node concept="3uibUv" id="7i7ttYT2jvp" role="1tU5fm">
+          <ref role="3uigEE" node="3KqYwoBJ0xf" resolve="RefactoringSession" />
+        </node>
+      </node>
+      <node concept="2JFqV2" id="7i7ttYT2kQ9" role="2frcjj" />
     </node>
     <node concept="3Tm1VV" id="4N6D1IPLd8s" role="1B3o_S" />
   </node>
@@ -4850,14 +4951,6 @@
                 <ref role="37wK5l" to="z1c3:~Project.getScope()" resolve="getScope" />
               </node>
             </node>
-            <node concept="2OqwBi" id="3ly2gVliwS9" role="37wK5m">
-              <node concept="37vLTw" id="3ly2gVliwoi" role="2Oq$k0">
-                <ref role="3cqZAo" node="3ly2gVliqCP" resolve="refactoringBody" />
-              </node>
-              <node concept="liA8E" id="3ly2gVlixjZ" role="2OqNvi">
-                <ref role="37wK5l" node="2EZTs$ts_ce" resolve="getRefactoringName" />
-              </node>
-            </node>
             <node concept="2OqwBi" id="3ly2gVliyeP" role="37wK5m">
               <node concept="37vLTw" id="3ly2gVlixJE" role="2Oq$k0">
                 <ref role="3cqZAo" node="3ly2gVliqCP" resolve="refactoringBody" />
@@ -5441,7 +5534,7 @@
               <ref role="3cqZAo" node="76O06llVMdf" resolve="refactoringUI" />
             </node>
             <node concept="liA8E" id="4N6D1IQ2T_R" role="2OqNvi">
-              <ref role="37wK5l" node="4N6D1IQ2KrP" resolve="showRefactoringView" />
+              <ref role="37wK5l" node="7i7ttYT2jvc" resolve="showRefactoringView" />
               <node concept="1bVj0M" id="4N6D1IQ2TU0" role="37wK5m">
                 <node concept="3clFbS" id="4N6D1IQ2TU1" role="1bW5cS">
                   <node concept="3clFbJ" id="23EHyRfrsRD" role="3cqZAp">
@@ -5587,9 +5680,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="37vLTw" id="4N6D1IQ3rox" role="37wK5m">
-                <ref role="3cqZAo" node="3mZdOaobtOd" resolve="refactoringName" />
-              </node>
               <node concept="37vLTw" id="2FW2ExVm0hs" role="37wK5m">
                 <ref role="3cqZAo" node="2FW2ExVkOd6" resolve="searchResults" />
               </node>
@@ -5633,10 +5723,6 @@
         <node concept="3uibUv" id="4N6D1IQ3tZa" role="1tU5fm">
           <ref role="3uigEE" to="lui2:~SearchScope" resolve="SearchScope" />
         </node>
-      </node>
-      <node concept="37vLTG" id="3mZdOaobtOd" role="3clF46">
-        <property role="TrG5h" value="refactoringName" />
-        <node concept="17QB3L" id="3mZdOaobvHX" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="76O06llVMdh" role="3clF46">
         <property role="TrG5h" value="participants" />

@@ -6272,10 +6272,6 @@
           <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
         </node>
       </node>
-      <node concept="37vLTG" id="XAmMekit9E" role="3clF46">
-        <property role="TrG5h" value="refactoringName" />
-        <node concept="17QB3L" id="XAmMekit9F" role="1tU5fm" />
-      </node>
       <node concept="37vLTG" id="7DGCeT327tr" role="3clF46">
         <property role="TrG5h" value="searchResults" />
         <node concept="3uibUv" id="7DGCeT328Rx" role="1tU5fm">

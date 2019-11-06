@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchTask;
 
@@ -14,5 +15,12 @@ public interface RefactoringUI {
   void prepare(Runnable task);
   List<RefactoringParticipant.Option> selectParticipants(List<RefactoringParticipant.Option> options);
   void runSearch(final _FunctionTypes._void_P1_E0<? super ProgressMonitor> task);
-  void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session);
+  @Deprecated
+  @ToRemove(version = 2019.3)
+  default void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
+    showRefactoringView(task, searchResults, searchTask, session);
+  }
+  default void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
+    showRefactoringView(task, "Refactoring", searchResults, searchTask, session);
+  }
 }

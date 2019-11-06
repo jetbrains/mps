@@ -49,7 +49,7 @@ public class ImplicitNodeRenamer_extension extends Extension.Default<_FunctionTy
               public List<RefactoringParticipant.Option> selectParticipants(List<RefactoringParticipant.Option> options) {
                 return options;
               }
-              public void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
+              public void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
                 task.run();
               }
             };

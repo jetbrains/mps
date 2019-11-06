@@ -76,7 +76,7 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
   protected SModel showDialog(final SModule module) {
     MoveModelRefactoringBody refactoringBody = new MoveModelRefactoringBody(module);
 
-    RefactoringProcessor.performRefactoringInProject(myProject, new DefaultRefactoringUI(myProject), refactoringBody);
+    RefactoringProcessor.performRefactoringInProject(myProject, new DefaultRefactoringUI(myProject, refactoringBody.getRefactoringName()), refactoringBody);
 
     return refactoringBody.getNewModel();
   }

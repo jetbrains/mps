@@ -11658,10 +11658,6 @@
                                         <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
                                       </node>
                                     </node>
-                                    <node concept="37vLTG" id="41U5zKUXUd0" role="3clF46">
-                                      <property role="TrG5h" value="refactoringName" />
-                                      <node concept="17QB3L" id="41U5zKUXUd1" role="1tU5fm" />
-                                    </node>
                                     <node concept="37vLTG" id="41U5zKUXUd2" role="3clF46">
                                       <property role="TrG5h" value="searchResults" />
                                       <node concept="3uibUv" id="41U5zKUXUd3" role="1tU5fm">

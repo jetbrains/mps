@@ -79,7 +79,7 @@ public class MoveNodesUtil {
   }
 
   public static void moveTo(final MPSProject project, final String refactoringName, final Map<NodeProcessor, List<SNode>> processorToMoveRoots) {
-    moveTo(project, refactoringName, processorToMoveRoots, new DefaultRefactoringUI(project));
+    moveTo(project, refactoringName, processorToMoveRoots, new DefaultRefactoringUI(project, refactoringName));
   }
 
   public static void moveTo(final Project project, final String refactoringName, final Map<NodeProcessor, List<SNode>> processorToMoveRoots, RefactoringUI refactoringUI) {

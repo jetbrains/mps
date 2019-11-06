@@ -1164,9 +1164,17 @@
             </node>
             <node concept="2ShNRf" id="3QWQ9jDPLNB" role="37wK5m">
               <node concept="1pGfFk" id="3QWQ9jDPLNC" role="2ShVmc">
-                <ref role="37wK5l" to="lfzw:7DGCeT2Qm8R" resolve="DefaultRefactoringUI" />
+                <ref role="37wK5l" to="lfzw:7i7ttYT1Jur" resolve="DefaultRefactoringUI" />
                 <node concept="37vLTw" id="3QWQ9jDS6ZV" role="37wK5m">
                   <ref role="3cqZAo" to="tprs:695k0NOvCtd" resolve="myProject" />
+                </node>
+                <node concept="2OqwBi" id="7i7ttYT4xk1" role="37wK5m">
+                  <node concept="37vLTw" id="7i7ttYT4wOi" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3QWQ9jDPLK9" resolve="refactoringBody" />
+                  </node>
+                  <node concept="liA8E" id="7i7ttYT4xWs" role="2OqNvi">
+                    <ref role="37wK5l" node="3QWQ9jDQQhu" resolve="getRefactoringName" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -3386,12 +3394,15 @@
             </node>
             <node concept="2ShNRf" id="2q4uhJk587C" role="37wK5m">
               <node concept="1pGfFk" id="2q4uhJk58MM" role="2ShVmc">
-                <ref role="37wK5l" to="lfzw:7DGCeT2Qm8R" resolve="DefaultRefactoringUI" />
+                <ref role="37wK5l" to="lfzw:7i7ttYT1Jur" resolve="DefaultRefactoringUI" />
                 <node concept="2OqwBi" id="2q4uhJk58Sk" role="37wK5m">
                   <node concept="2WthIp" id="2q4uhJk58Sn" role="2Oq$k0" />
                   <node concept="1DTwFV" id="2q4uhJk58Sp" role="2OqNvi">
                     <ref role="2WH_rO" node="7BBQIYkR45Y" resolve="project" />
                   </node>
+                </node>
+                <node concept="Xl_RD" id="7i7ttYT4vg0" role="37wK5m">
+                  <property role="Xl_RC" value="Rename Node" />
                 </node>
               </node>
             </node>

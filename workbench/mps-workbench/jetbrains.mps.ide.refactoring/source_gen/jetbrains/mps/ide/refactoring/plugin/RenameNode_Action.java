@@ -119,7 +119,7 @@ public class RenameNode_Action extends BaseAction {
       return;
     }
     RefactoringProcessor.RefactoringBody refactoringBody = new RenameRefactoringBody("Rename node", ((SNode) MapSequence.fromMap(_params).get("target")), newName, ((MPSProject) MapSequence.fromMap(_params).get("project")));
-    RefactoringProcessor.performRefactoringInProject(((MPSProject) MapSequence.fromMap(_params).get("project")), new DefaultRefactoringUI(((MPSProject) MapSequence.fromMap(_params).get("project"))), refactoringBody);
+    RefactoringProcessor.performRefactoringInProject(((MPSProject) MapSequence.fromMap(_params).get("project")), new DefaultRefactoringUI(((MPSProject) MapSequence.fromMap(_params).get("project")), "Rename Node"), refactoringBody);
   }
   private boolean canBeRenamed(final Map<String, Object> _params) {
     // we won't rename nodes, for which there is getter without setter 

@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import java.util.Map;
@@ -20,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.refactoring.participant.NodeCopyTracker;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -50,12 +52,27 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
 
   @Override
   public void execute(final MPSProject project, final List<SNode> nodesToMove) {
-    final NodeLocation newLocation = askLocation(project, nodesToMove);
-    if (newLocation == null) {
+    final Wrappers._T<NodeLocation> newLocation = new Wrappers._T<NodeLocation>();
+    final Wrappers._boolean isMember = new Wrappers._boolean();
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$oYX5);
+      }
+    });
+    if (isMember.value) {
+      project.getRepository().getModelAccess().runReadAction(new Runnable() {
+        public void run() {
+          newLocation.value = new NodeLocation.NodeLocationRoot(SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first()));
+        }
+      });
+    } else {
+      newLocation.value = askLocation(project, nodesToMove);
+    }
+    if (newLocation.value == null) {
       return;
     }
 
-    MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation, project) {
+    MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation.value, project) {
       @Override
       public void process(List<SNode> nodeRoots, Map<SNode, RefactoringParticipant.KeepOldNodes> ifKeepOldNodes, RefactoringSession refactoringSession) {
         Map<SNode, String> packageNames = MapSequence.fromMap(new HashMap<SNode, String>());
@@ -69,6 +86,9 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
           if (myNodeLocation.isRoot()) {
             if (myNodeLocation.isRoot() && SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ)) {
               SPropertyOperations.assign(newNode, PROPS.packageName$3uUR, MapSequence.fromMap(packageNames).get(oldNode));
+              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newNode, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+                SLinkOperations.setTarget(newNode, LINKS.visibility$2GiC, null);
+              }
             }
           }
         }
@@ -90,10 +110,12 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 
   private static final class PROPS {

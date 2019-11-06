@@ -30,7 +30,7 @@ public class EmptyRefactoringUI implements RefactoringUI {
   public List<RefactoringParticipant.Option> selectParticipants(List<RefactoringParticipant.Option> availableOptions) {
     return (mySelectedOptions == null ? availableOptions : mySelectedOptions);
   }
-  public void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession refactoringSession) {
+  public void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession refactoringSession) {
     myTaskRunner.invoke(task);
   }
 }

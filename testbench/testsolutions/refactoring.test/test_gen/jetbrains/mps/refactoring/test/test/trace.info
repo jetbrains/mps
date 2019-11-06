@@ -744,7 +744,7 @@
       <node id="6426415869175449408" at="31,38,32,15" concept="2" />
       <node id="3893167010912588717" at="35,110,36,24" concept="8" />
       <node id="4198123050698139903" at="39,89,40,44" concept="2" />
-      <node id="6426415869175481261" at="43,160,44,15" concept="2" />
+      <node id="6426415869175481261" at="43,136,44,15" concept="2" />
       <node id="3893167010912540955" at="48,72,49,21" concept="12" />
       <node id="3893167010912067546" at="53,88,54,139" concept="2" />
       <node id="3893167010912147990" at="56,83,57,144" concept="2" />
@@ -752,13 +752,13 @@
       <node id="3794080752246346641" at="59,0,60,32" concept="9" />
       <node id="3893167010912135826" at="60,32,61,18" concept="8" />
       <node id="3893167010912657837" at="64,91,65,20" concept="9" />
-      <node id="3893167010911854049" at="68,162,69,52" concept="9" />
+      <node id="3893167010911854049" at="68,138,69,52" concept="9" />
       <node id="3893167010913171145" at="74,0,75,0" concept="3" trace="myExpectedResults" />
       <node id="3893167010913285461" at="75,0,76,0" concept="3" trace="mySearchedNodes" />
       <node id="3893167010913174052" at="76,134,77,21" concept="12" />
       <node id="3893167010913174061" at="77,21,78,95" concept="2" />
       <node id="3893167010913566606" at="78,95,79,91" concept="2" />
-      <node id="3893167010913412557" at="82,162,83,78" concept="7" />
+      <node id="3893167010913412557" at="82,138,83,78" concept="7" />
       <node id="3893167010913189907" at="84,67,85,150" concept="2" />
       <node id="3893167010913189922" at="87,62,88,155" concept="2" />
       <node id="3019966385349379796" at="89,7,90,75" concept="7" />
@@ -779,23 +779,23 @@
       <node id="6426415869175446712" at="30,0,34,0" concept="6" trace="prepare#(Ljava/lang/Runnable;)V" />
       <node id="3893167010912582613" at="34,0,38,0" concept="6" trace="selectParticipants#(Ljava/util/List;)Ljava/util/List;" />
       <node id="6426415869175446720" at="38,0,42,0" concept="6" trace="runSearch#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
-      <node id="6426415869175446740" at="42,0,46,0" concept="6" trace="showRefactoringView#(Ljava/lang/Runnable;Ljava/lang/String;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
+      <node id="6426415869175446740" at="42,0,46,0" concept="6" trace="showRefactoringView#(Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
       <node id="3893167010912651857" at="63,0,67,0" concept="6" trace="runSearch#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
-      <node id="3893167010911956123" at="67,0,71,0" concept="6" trace="showRefactoringView#(Ljava/lang/Runnable;Ljava/lang/String;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
+      <node id="3893167010911956123" at="67,0,71,0" concept="6" trace="showRefactoringView#(Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
       <node id="3893167010913174046" at="76,0,81,0" concept="1" trace="SearchResultsChecker#(Ljava/util/List;Ljava/util/List;Ljava/util/List;)V" />
       <node id="3893167010911945376" at="51,0,63,0" concept="6" trace="selectParticipants#(Ljava/util/List;)Ljava/util/List;" />
-      <node id="3893167010912559589" at="81,0,99,0" concept="6" trace="showRefactoringView#(Ljava/lang/Runnable;Ljava/lang/String;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
+      <node id="3893167010912559589" at="81,0,99,0" concept="6" trace="showRefactoringView#(Ljava/lang/Runnable;Ljetbrains/mps/ide/findusages/model/SearchResults;Ljetbrains/mps/ide/findusages/model/SearchTask;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
       <scope id="3893167010912527629" at="24,77,25,24" />
       <scope id="3893167010912523829" at="27,59,28,21" />
       <scope id="6426415869175446718" at="31,38,32,15" />
       <scope id="3893167010912582621" at="35,110,36,24" />
       <scope id="6426415869175446728" at="39,89,40,44" />
-      <scope id="6426415869175446754" at="43,160,44,15" />
+      <scope id="6426415869175446754" at="43,136,44,15" />
       <scope id="3893167010911883917" at="48,72,49,21" />
       <scope id="3893167010911989730" at="53,88,54,139" />
       <scope id="3893167010912147989" at="56,83,57,144" />
       <scope id="3893167010912651872" at="64,91,65,20" />
-      <scope id="3893167010911956142" at="68,162,69,52" />
+      <scope id="3893167010911956142" at="68,138,69,52" />
       <scope id="3893167010913189906" at="84,67,85,150" />
       <scope id="3893167010913189921" at="87,62,88,155" />
       <scope id="3893167010913633766" at="91,63,92,126" />
@@ -840,7 +840,6 @@
         <var name="task" id="6426415869175446724" />
       </scope>
       <scope id="6426415869175446740" at="42,0,46,0">
-        <var name="refactoringName" id="6426415869175446746" />
         <var name="searchResults" id="6426415869175446748" />
         <var name="searchTask" id="6426415869175446750" />
         <var name="session" id="6426415869175446752" />
@@ -850,7 +849,6 @@
         <var name="task" id="3893167010912651860" />
       </scope>
       <scope id="3893167010911956123" at="67,0,71,0">
-        <var name="refactoringName" id="3893167010911956128" />
         <var name="searchResults" id="3893167010911956130" />
         <var name="searchTask" id="3893167010911956132" />
         <var name="session" id="3893167010911956134" />
@@ -865,12 +863,11 @@
       <scope id="3893167010911945376" at="51,0,63,0">
         <var name="options" id="3893167010911945379" />
       </scope>
-      <scope id="3893167010912559603" at="82,162,97,52">
+      <scope id="3893167010912559603" at="82,138,97,52">
         <var name="searchedObjects" id="3019966385349379797" />
         <var name="shownResults" id="3893167010913412558" />
       </scope>
       <scope id="3893167010912559589" at="81,0,99,0">
-        <var name="refactoringName" id="3893167010912559594" />
         <var name="searchResults" id="3893167010912559596" />
         <var name="searchTask" id="3893167010912559598" />
         <var name="session" id="3893167010912559600" />

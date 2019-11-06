@@ -40,7 +40,7 @@ public class HeadlessRefactoringUI implements RefactoringUI {
     task.invoke(new EmptyProgressMonitor());
   }
   @Override
-  public void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
+  public void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
     task.run();
   }
 
@@ -65,7 +65,7 @@ public class HeadlessRefactoringUI implements RefactoringUI {
       // do nothing 
     }
     @Override
-    public void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
+    public void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
       // do nothing, no need to perform refactoring 
     }
   }
@@ -79,7 +79,7 @@ public class HeadlessRefactoringUI implements RefactoringUI {
       mySearchedNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), searchedNodes);
     }
     @Override
-    public void showRefactoringView(final Runnable task, String refactoringName, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
+    public void showRefactoringView(final Runnable task, SearchResults searchResults, SearchTask searchTask, RefactoringSession session) {
       Set<SNode> shownResults = (Set<SNode>) searchResults.getResultObjects();
       for (SNode result : SetSequence.fromSet(myExpectedResults)) {
         Assert.assertTrue("SearchResult " + idString(result) + " is expected but was not shown.", SetSequence.fromSet(shownResults).contains(result));

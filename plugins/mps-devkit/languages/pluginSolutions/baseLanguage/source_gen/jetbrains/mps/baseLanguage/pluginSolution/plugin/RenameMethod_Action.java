@@ -89,7 +89,7 @@ public class RenameMethod_Action extends BaseAction {
     }
 
     RefactoringProcessor.RefactoringBody refactoringBody = new RenameRefactoringBody("Rename method", methodDeclaration.value, newName, ((MPSProject) MapSequence.fromMap(_params).get("project")));
-    RefactoringProcessor.performRefactoringInProject(((MPSProject) MapSequence.fromMap(_params).get("project")), new DefaultRefactoringUI(((MPSProject) MapSequence.fromMap(_params).get("project"))), refactoringBody);
+    RefactoringProcessor.performRefactoringInProject(((MPSProject) MapSequence.fromMap(_params).get("project")), new DefaultRefactoringUI(((MPSProject) MapSequence.fromMap(_params).get("project")), "Rename Method"), refactoringBody);
   }
 
   private static final class CONCEPTS {
