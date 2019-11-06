@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,9 @@
  */
 package jetbrains.mps.workbench.languagesFs;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.vfs.DeprecatedVirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -26,13 +25,14 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
-import java.io.IOException;
 import java.util.WeakHashMap;
 
-public class MPSLanguagesVirtualFileSystem extends DeprecatedVirtualFileSystem implements ApplicationComponent {
+public class MPSLanguagesVirtualFileSystem extends DeprecatedVirtualFileSystem {
+
+  private static final String PROTOCOL = "mpslang";
 
   public static MPSLanguagesVirtualFileSystem getInstance() {
-    return ApplicationManager.getApplication().getComponent(MPSLanguagesVirtualFileSystem.class);
+    return (MPSLanguagesVirtualFileSystem) VirtualFileManager.getInstance().getFileSystem(PROTOCOL);
   }
 
   private WeakHashMap<SModuleReference, MPSLanguageVirtualFile> myVirtualFiles = new WeakHashMap<>();
@@ -50,26 +50,11 @@ public class MPSLanguagesVirtualFileSystem extends DeprecatedVirtualFileSystem i
     return vf;
   }
 
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Languages File System";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
   @NotNull
   @Override
   @NonNls
   public String getProtocol() {
-    return "mpslang";
+    return PROTOCOL;
   }
 
   @Override
