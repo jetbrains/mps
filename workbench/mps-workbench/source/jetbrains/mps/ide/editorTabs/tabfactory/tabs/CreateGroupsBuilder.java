@@ -21,6 +21,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.relations.RelationComparator;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -34,7 +35,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
@@ -71,7 +71,7 @@ public class CreateGroupsBuilder {
         List<SNode> nodes;
         try {
           nodes = d.getNodes(myBaseNode.resolve(myProject.getRepository()));
-        } catch (Throwable t){
+        } catch (Throwable t) {
           LOG.error("Exception in extension: ", t);
           continue;
         }
@@ -132,40 +132,43 @@ public class CreateGroupsBuilder {
     private final RelationDescriptor myDescriptor;
 
     public CreateAction(SConcept concept, RelationDescriptor descriptor) {
-      //todo pass concepts instead of nodes
-      super(getActionText(concept), "Create aspect", GlobalIconManager.getInstance().getIconFor(concept)
-      );
+      super(getActionText(concept), "Create aspect", GlobalIconManager.getInstance().getIconFor(concept));
       myConcept = concept;
       myDescriptor = descriptor;
     }
 
 
     @Override
-    public void actionPerformed(AnActionEvent e) {
-      // FIXME bloody sh!t, two commands depending on boolean; package name set with a separate command - ORLY?
-      final SNode[] created = new SNode[1];
-
-      final Runnable r1 = () -> {
-        SNode node = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> myBaseNode.resolve(myProject.getRepository()));
-        created[0] = myDescriptor.createAspect(node, myConcept);
-      };
-
-      final Runnable r2 = () -> {
-        String mainPack = SNodeAccessUtil.getProperty(myBaseNode.resolve(myProject.getRepository()), SNodeUtil.property_BaseConcept_virtualPackage);
-        // TODO: remove this code. Virtual package is specified inside ConceptAspectsHelper class
-        SNodeAccessUtil.setProperty(created[0], SNodeUtil.property_BaseConcept_virtualPackage, mainPack);
-        myCallback.changeNode(created[0].getReference());
-      };
-
+    public void actionPerformed(@NotNull AnActionEvent e) {
+      final SNode[] res = new SNode[1];
       if (myDescriptor.commandOnCreate()) {
-        myProject.getModelAccess().executeCommand(r1);
+        myProject.getModelAccess().executeCommand(() -> {
+          SNode cNode = myBaseNode.resolve(myProject.getRepository());
+          res[0] = myDescriptor.createAspect(cNode, myConcept);
+          if (res[0] != null) {
+            setPackage(res[0], cNode);
+            myCallback.changeNode(res[0].getReference());
+          }
+        });
       } else {
-        r1.run();
+        SNode cNODE = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> myBaseNode.resolve(myProject.getRepository()));
+        res[0] = myDescriptor.createAspect(cNODE, myConcept);
+        myProject.getModelAccess().executeCommand(() -> {
+          SNode conceptNode = myBaseNode.resolve(myProject.getRepository());
+          if (res[0] == null || conceptNode == null) {
+            return;
+          }
+          setPackage(res[0], conceptNode);
+          myCallback.changeNode(res[0].getReference());
+        });
       }
-      if (created[0] == null) {
-        return;
+    }
+
+    private void setPackage(SNode res, SNode conceptNode) {
+      String conceptPackage = SPropertyOperations.getString(conceptNode, SNodeUtil.property_BaseConcept_virtualPackage);
+      if (conceptPackage != null) {
+        SPropertyOperations.assign(res, SNodeUtil.property_BaseConcept_virtualPackage, conceptPackage);
       }
-      myProject.getModelAccess().executeCommand(r2);
     }
   }
 }
