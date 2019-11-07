@@ -206,7 +206,6 @@
     <chmod file="${basedir}/../build/resources/mps" perm="755"/>
 
     <chmod file="${basedir}/../bin/linux/fsnotifier" perm="755"/>
-    <chmod file="${basedir}/../bin/linux/fsnotifier-arm" perm="755"/>
     <chmod file="${basedir}/../bin/linux/fsnotifier64" perm="755"/>
     <chmod file="${basedir}/../bin/linux/printenv.py" perm="755"/>
     <chmod file="${basedir}/../bin/linux/restart.py" perm="755"/>
