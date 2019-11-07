@@ -9,6 +9,7 @@
     <use id="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" name="jetbrains.mps.lang.scopes" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -148,6 +149,9 @@
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
       </concept>
+    </language>
+    <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
+      <concept id="5979988948250981289" name="jetbrains.mps.lang.actions.structure.SNodeCreatorAndInitializer" flags="nn" index="2fJWfE" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179168000618" name="jetbrains.mps.lang.smodel.structure.Node_GetIndexInParentOperation" flags="nn" index="2bSWHS" />
@@ -652,8 +656,8 @@
               <ref role="ehGHo" to="tpdg:hLhlz9g" resolve="PasteWrapper" />
             </node>
             <node concept="2ShNRf" id="5r_35Ihc8UL" role="33vP2m">
-              <node concept="3zrR0B" id="5r_35Ihc8UM" role="2ShVmc">
-                <node concept="3Tqbb2" id="5r_35Ihc8UN" role="3zrR0E">
+              <node concept="2fJWfE" id="4NE36LgwrmF" role="2ShVmc">
+                <node concept="3Tqbb2" id="4NE36LgwrmH" role="3zrR0E">
                   <ref role="ehGHo" to="tpdg:hLhlz9g" resolve="PasteWrapper" />
                 </node>
               </node>
