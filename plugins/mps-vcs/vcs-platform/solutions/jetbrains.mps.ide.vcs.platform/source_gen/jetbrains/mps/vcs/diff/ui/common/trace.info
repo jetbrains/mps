@@ -1804,30 +1804,30 @@
       <node id="4330388937158578035" at="86,18,87,33" concept="6" />
       <node id="2034046503361611097" at="99,27,100,114" concept="12" />
       <node id="4609968354342335016" at="101,36,102,62" concept="12" />
-      <node id="773149130705597768" at="103,80,104,99" concept="12" />
-      <node id="5873737967978375869" at="104,99,105,75" concept="12" />
-      <node id="8821815005794529308" at="105,75,106,151" concept="12" />
-      <node id="2034046503361611113" at="106,151,107,39" concept="6" />
-      <node id="4652592318748338979" at="115,0,116,0" concept="7" trace="myDiffEditor" />
-      <node id="4652592318748339022" at="116,61,117,32" concept="6" />
-      <node id="4652592318748338993" at="121,36,122,15" concept="13" />
-      <node id="4652592318748338994" at="123,7,124,37" concept="6" />
-      <node id="4652592318748339004" at="126,45,127,56" concept="6" />
-      <node id="4652592318748339014" at="129,9,130,38" concept="6" />
-      <node id="4609968354342328025" at="135,90,136,20" concept="13" />
-      <node id="4609968354342323175" at="141,44,142,47" concept="13" />
-      <node id="4330388937158577881" at="147,36,148,42" concept="13" />
-      <node id="4330388937158577881" at="149,5,150,16" concept="13" />
-      <node id="4330388937158577907" at="153,36,154,42" concept="13" />
-      <node id="4330388937158577907" at="155,5,156,16" concept="13" />
-      <node id="2034046503361611100" at="159,36,160,43" concept="13" />
-      <node id="2034046503361611100" at="161,5,162,16" concept="13" />
-      <node id="2034046503361611101" at="165,36,166,42" concept="13" />
-      <node id="2034046503361611101" at="167,5,168,16" concept="13" />
-      <node id="8821815005794535639" at="171,36,172,47" concept="13" />
-      <node id="8821815005794535639" at="173,5,174,16" concept="13" />
-      <node id="8821815005794535640" at="177,36,178,42" concept="13" />
-      <node id="8821815005794535640" at="179,5,180,16" concept="13" />
+      <node id="773149130705597768" at="104,63,105,101" concept="12" />
+      <node id="5873737967978375869" at="105,101,106,77" concept="12" />
+      <node id="8821815005794529308" at="106,77,107,157" concept="12" />
+      <node id="2034046503361611113" at="107,157,108,41" concept="6" />
+      <node id="4652592318748338979" at="117,0,118,0" concept="7" trace="myDiffEditor" />
+      <node id="4652592318748339022" at="118,61,119,32" concept="6" />
+      <node id="4652592318748338993" at="123,36,124,15" concept="13" />
+      <node id="4652592318748338994" at="125,7,126,37" concept="6" />
+      <node id="4652592318748339004" at="128,45,129,56" concept="6" />
+      <node id="4652592318748339014" at="131,9,132,38" concept="6" />
+      <node id="4609968354342328025" at="137,90,138,20" concept="13" />
+      <node id="4609968354342323175" at="143,44,144,47" concept="13" />
+      <node id="4330388937158577881" at="149,36,150,42" concept="13" />
+      <node id="4330388937158577881" at="151,5,152,16" concept="13" />
+      <node id="4330388937158577907" at="155,36,156,42" concept="13" />
+      <node id="4330388937158577907" at="157,5,158,16" concept="13" />
+      <node id="2034046503361611100" at="161,36,162,43" concept="13" />
+      <node id="2034046503361611100" at="163,5,164,16" concept="13" />
+      <node id="2034046503361611101" at="167,36,168,42" concept="13" />
+      <node id="2034046503361611101" at="169,5,170,16" concept="13" />
+      <node id="8821815005794535639" at="173,36,174,47" concept="13" />
+      <node id="8821815005794535639" at="175,5,176,16" concept="13" />
+      <node id="8821815005794535640" at="179,36,180,42" concept="13" />
+      <node id="8821815005794535640" at="181,5,182,16" concept="13" />
       <node id="4652592318748339076" at="32,0,34,0" concept="3" trace="DiffEditorsGroup#()V" />
       <node id="4330388937158578033" at="86,16,88,11" concept="1" />
       <node id="4652592318748338974" at="94,0,96,0" concept="3" trace="MyCellSelectionListener#()V" />
@@ -1835,36 +1835,37 @@
       <node id="4330388937158577877" at="51,55,54,9" concept="10" />
       <node id="4330388937158577912" at="55,81,58,9" concept="10" />
       <node id="5003555804320515821" at="79,0,82,11" concept="10" />
-      <node id="4652592318748339018" at="116,0,119,0" concept="3" trace="MyViewportChangeListener#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)V" />
-      <node id="4652592318748338990" at="120,49,123,7" concept="10" />
-      <node id="4652592318748339002" at="126,0,129,0" concept="11" trace="visit#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)V" />
-      <node id="4609968354342322383" at="141,0,144,0" concept="11" trace="accept#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)Z" />
-      <node id="4330388937158577881" at="146,80,149,5" concept="10" />
-      <node id="4330388937158577907" at="152,74,155,5" concept="10" />
-      <node id="2034046503361611100" at="158,76,161,5" concept="10" />
-      <node id="2034046503361611101" at="164,80,167,5" concept="10" />
-      <node id="8821815005794535639" at="170,96,173,5" concept="10" />
-      <node id="8821815005794535640" at="176,81,179,5" concept="10" />
-      <node id="4609968354342328023" at="134,0,138,0" concept="11" trace="mapID#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
+      <node id="4652592318748339018" at="118,0,121,0" concept="3" trace="MyViewportChangeListener#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)V" />
+      <node id="4652592318748338990" at="122,49,125,7" concept="10" />
+      <node id="4652592318748339002" at="128,0,131,0" concept="11" trace="visit#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)V" />
+      <node id="4609968354342322383" at="143,0,146,0" concept="11" trace="accept#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)Z" />
+      <node id="4330388937158577881" at="148,80,151,5" concept="10" />
+      <node id="4330388937158577907" at="154,74,157,5" concept="10" />
+      <node id="2034046503361611100" at="160,76,163,5" concept="10" />
+      <node id="2034046503361611101" at="166,80,169,5" concept="10" />
+      <node id="8821815005794535639" at="172,98,175,5" concept="10" />
+      <node id="8821815005794535640" at="178,83,181,5" concept="10" />
+      <node id="4609968354342328023" at="136,0,140,0" concept="11" trace="mapID#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
       <node id="4652592318748339028" at="34,0,39,0" concept="11" trace="add#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;)V" />
       <node id="4330388937158578032" at="83,98,88,11" concept="10" />
-      <node id="4652592318748338998" at="124,37,129,9" concept="6" />
-      <node id="4609968354342319026" at="139,98,144,7" concept="13" />
-      <node id="2034046503361611109" at="102,62,108,13" concept="9" />
-      <node id="4330388937158577881" at="146,0,152,0" concept="17" trace="check_s6qw4f_a0a0c0a0a6a5#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="4330388937158577907" at="152,0,158,0" concept="17" trace="check_s6qw4f_a0d0a0a6a5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <node id="2034046503361611100" at="158,0,164,0" concept="17" trace="check_s6qw4f_a0a0a0a0a1g#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
-      <node id="2034046503361611101" at="164,0,170,0" concept="17" trace="check_s6qw4f_a0a0a0a0a0b6#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8821815005794535639" at="170,0,176,0" concept="17" trace="check_s6qw4f_a0a2a1a1a0a0a0b6#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNodeId;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8821815005794535640" at="176,0,182,0" concept="17" trace="check_s6qw4f_a0a0c0b0b0a0a0a1g#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="4652592318748338998" at="126,37,131,9" concept="6" />
+      <node id="4609968354342319026" at="141,98,146,7" concept="13" />
+      <node id="4700201286004046149" at="103,80,109,15" concept="10" />
+      <node id="4330388937158577881" at="148,0,154,0" concept="17" trace="check_s6qw4f_a0a0c0a0a6a5#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4330388937158577907" at="154,0,160,0" concept="17" trace="check_s6qw4f_a0d0a0a6a5#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="2034046503361611100" at="160,0,166,0" concept="17" trace="check_s6qw4f_a0a0a0a0a1g#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
+      <node id="2034046503361611101" at="166,0,172,0" concept="17" trace="check_s6qw4f_a0a0a0a0a0b6#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8821815005794535639" at="172,0,178,0" concept="17" trace="check_s6qw4f_a0a2a0a1a1a0a0a0b6#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNodeId;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8821815005794535640" at="178,0,184,0" concept="17" trace="check_s6qw4f_a0a0c0a0b0b0a0a0a1g#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SModel;" />
       <node id="4330388937158577967" at="67,72,74,13" concept="10" />
-      <node id="4609968354342313140" at="139,0,146,0" concept="11" trace="getDiffEditor#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;" />
-      <node id="2034046503361611107" at="100,114,109,11" concept="10" />
-      <node id="2034046503361611095" at="99,0,111,0" concept="11" trace="run#()V" />
+      <node id="4609968354342313140" at="141,0,148,0" concept="11" trace="getDiffEditor#(Ljetbrains/mps/openapi/editor/EditorComponent;)Ljetbrains/mps/vcs/diff/ui/common/DiffEditor;" />
+      <node id="2034046503361611109" at="102,62,110,13" concept="9" />
+      <node id="2034046503361611107" at="100,114,111,11" concept="10" />
       <node id="4330388937158577938" at="62,69,75,11" concept="10" />
-      <node id="4652592318748338984" at="119,0,132,0" concept="11" trace="stateChanged#(Ljavax/swing/event/ChangeEvent;)V" />
-      <node id="2034046503361611091" at="97,139,111,9" concept="6" />
-      <node id="4652592318748338927" at="96,0,113,0" concept="11" trace="selectionChangedTo#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljetbrains/mps/openapi/editor/selection/SingularSelection;)V" />
+      <node id="4652592318748338984" at="121,0,134,0" concept="11" trace="stateChanged#(Ljavax/swing/event/ChangeEvent;)V" />
+      <node id="2034046503361611095" at="99,0,113,0" concept="11" trace="run#()V" />
+      <node id="2034046503361611091" at="97,139,113,9" concept="6" />
+      <node id="4652592318748338927" at="96,0,115,0" concept="11" trace="selectionChangedTo#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljetbrains/mps/openapi/editor/selection/SingularSelection;)V" />
       <node id="4330388937158577919" at="59,0,89,9" concept="21" />
       <node id="4330388937158577859" at="49,0,91,0" concept="11" trace="run#()V" />
       <node id="4330388937158577855" at="47,72,91,7" concept="6" />
@@ -1877,45 +1878,45 @@
       <scope id="5003555804320515823" at="80,47,81,19" />
       <scope id="4330388937158578041" at="84,27,85,172" />
       <scope id="4330388937158578034" at="86,18,87,33" />
-      <scope id="4652592318748339021" at="116,61,117,32" />
-      <scope id="4652592318748338992" at="121,36,122,15" />
-      <scope id="4652592318748339003" at="126,45,127,56" />
-      <scope id="4609968354342328024" at="135,90,136,20" />
-      <scope id="4609968354342322384" at="141,44,142,47" />
-      <scope id="4330388937158577881" at="147,36,148,42" />
-      <scope id="4330388937158577907" at="153,36,154,42" />
-      <scope id="2034046503361611100" at="159,36,160,43" />
-      <scope id="2034046503361611101" at="165,36,166,42" />
-      <scope id="8821815005794535639" at="171,36,172,47" />
-      <scope id="8821815005794535640" at="177,36,178,42" />
+      <scope id="4652592318748339021" at="118,61,119,32" />
+      <scope id="4652592318748338992" at="123,36,124,15" />
+      <scope id="4652592318748339003" at="128,45,129,56" />
+      <scope id="4609968354342328024" at="137,90,138,20" />
+      <scope id="4609968354342322384" at="143,44,144,47" />
+      <scope id="4330388937158577881" at="149,36,150,42" />
+      <scope id="4330388937158577907" at="155,36,156,42" />
+      <scope id="2034046503361611100" at="161,36,162,43" />
+      <scope id="2034046503361611101" at="167,36,168,42" />
+      <scope id="8821815005794535639" at="173,36,174,47" />
+      <scope id="8821815005794535640" at="179,36,180,42" />
       <scope id="4652592318748339076" at="32,0,34,0" />
       <scope id="4652592318748338974" at="94,0,96,0" />
       <scope id="4652592318748339031" at="34,42,37,105" />
-      <scope id="4652592318748339018" at="116,0,119,0">
+      <scope id="4652592318748339018" at="118,0,121,0">
         <var name="diffEditor" id="4652592318748339026" />
       </scope>
-      <scope id="4652592318748339002" at="126,0,129,0">
+      <scope id="4652592318748339002" at="128,0,131,0">
         <var name="other" id="4652592318748339002" />
       </scope>
-      <scope id="4609968354342322383" at="141,0,144,0">
+      <scope id="4609968354342322383" at="143,0,146,0">
         <var name="it" id="4609968354342322383" />
       </scope>
-      <scope id="2034046503361611112" at="103,80,107,39">
+      <scope id="4700201286004046151" at="104,63,108,41">
         <var name="mainEditor" id="773149130705597769" />
         <var name="node" id="8821815005794529311" />
         <var name="nodeId" id="5873737967978375870" />
       </scope>
-      <scope id="4609968354342328023" at="134,0,138,0">
+      <scope id="4609968354342328023" at="136,0,140,0">
         <var name="myEditor" id="4609968354342328029" />
         <var name="myNodeId" id="4609968354342328031" />
         <var name="otherEditor" id="4609968354342328033" />
       </scope>
-      <scope id="4330388937158577881" at="146,80,150,16" />
-      <scope id="4330388937158577907" at="152,74,156,16" />
-      <scope id="2034046503361611100" at="158,76,162,16" />
-      <scope id="2034046503361611101" at="164,80,168,16" />
-      <scope id="8821815005794535639" at="170,96,174,16" />
-      <scope id="8821815005794535640" at="176,81,180,16" />
+      <scope id="4330388937158577881" at="148,80,152,16" />
+      <scope id="4330388937158577907" at="154,74,158,16" />
+      <scope id="2034046503361611100" at="160,76,164,16" />
+      <scope id="2034046503361611101" at="166,80,170,16" />
+      <scope id="8821815005794535639" at="172,98,176,16" />
+      <scope id="8821815005794535640" at="178,83,182,16" />
       <scope id="4652592318748339028" at="34,0,39,0">
         <var name="diffEditor" id="4652592318748339057" />
       </scope>
@@ -1924,51 +1925,52 @@
         <var name="newY" id="4330388937158577994" />
         <var name="viewRect" id="4330388937158577970" />
       </scope>
-      <scope id="4609968354342313143" at="139,98,144,7" />
-      <scope id="2034046503361611109" at="102,62,108,13">
-        <var name="diffEditor" id="2034046503361611110" />
-      </scope>
-      <scope id="4330388937158577881" at="146,0,152,0">
+      <scope id="4609968354342313143" at="141,98,146,7" />
+      <scope id="2034046503361611112" at="103,80,109,15" />
+      <scope id="4330388937158577881" at="148,0,154,0">
         <var name="checkedDotOperand" id="4330388937158577881" />
       </scope>
-      <scope id="4330388937158577907" at="152,0,158,0">
+      <scope id="4330388937158577907" at="154,0,160,0">
         <var name="checkedDotOperand" id="4330388937158577907" />
       </scope>
-      <scope id="2034046503361611100" at="158,0,164,0">
+      <scope id="2034046503361611100" at="160,0,166,0">
         <var name="checkedDotOperand" id="2034046503361611100" />
       </scope>
-      <scope id="2034046503361611101" at="164,0,170,0">
+      <scope id="2034046503361611101" at="166,0,172,0">
         <var name="checkedDotOperand" id="2034046503361611101" />
       </scope>
-      <scope id="8821815005794535639" at="170,0,176,0">
+      <scope id="8821815005794535639" at="172,0,178,0">
         <var name="checkedDotOperand" id="8821815005794535639" />
         <var name="nodeId" id="8821815005794535646" />
       </scope>
-      <scope id="8821815005794535640" at="176,0,182,0">
+      <scope id="8821815005794535640" at="178,0,184,0">
         <var name="checkedDotOperand" id="8821815005794535640" />
       </scope>
-      <scope id="2034046503361611108" at="101,36,108,13">
-        <var name="diffEditor0" id="4609968354342335017" />
-      </scope>
-      <scope id="4609968354342313140" at="139,0,146,0">
+      <scope id="4609968354342313140" at="141,0,148,0">
         <var name="component" id="4609968354342315873" />
       </scope>
-      <scope id="2034046503361611096" at="99,27,109,11">
-        <var name="selectionId" id="2034046503361611098" />
+      <scope id="2034046503361611109" at="102,62,110,13">
+        <var name="diffEditor" id="2034046503361611110" />
       </scope>
-      <scope id="4652592318748338989" at="120,49,130,38" />
+      <scope id="2034046503361611108" at="101,36,110,13">
+        <var name="diffEditor0" id="4609968354342335017" />
+      </scope>
+      <scope id="4652592318748338989" at="122,49,132,38" />
       <scope id="4330388937158577939" at="63,33,74,13">
         <var name="newRelativePos" id="4330388937158577941" />
         <var name="nodeId" id="3907095232363685478" />
         <var name="otherCell" id="4330388937158577949" />
         <var name="position" id="4330388937158577960" />
       </scope>
-      <scope id="2034046503361611095" at="99,0,111,0" />
-      <scope id="4652592318748338984" at="119,0,132,0">
+      <scope id="2034046503361611096" at="99,27,111,11">
+        <var name="selectionId" id="2034046503361611098" />
+      </scope>
+      <scope id="4652592318748338984" at="121,0,134,0">
         <var name="event" id="4652592318748338987" />
       </scope>
-      <scope id="4652592318748338934" at="97,139,111,9" />
-      <scope id="4652592318748338927" at="96,0,113,0">
+      <scope id="2034046503361611095" at="99,0,113,0" />
+      <scope id="4652592318748338934" at="97,139,113,9" />
+      <scope id="4652592318748338927" at="96,0,115,0">
         <var name="component" id="4652592318748338930" />
         <var name="newSelection" id="4652592318748338932" />
       </scope>
@@ -1994,13 +1996,13 @@
         <var name="otherDiffEditor" id="4609968354342350560" />
         <var name="thisDiffEditor" id="4609968354342347005" />
       </scope>
-      <unit id="4652592318748339002" at="125,56,129,7" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyViewportChangeListener$1" />
-      <unit id="4609968354342322383" at="140,62,144,5" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$2" />
-      <unit id="2034046503361611095" at="98,86,111,7" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyCellSelectionListener$1" />
-      <unit id="4652592318748338978" at="114,0,133,0" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyViewportChangeListener" />
-      <unit id="4652592318748338926" at="93,0,114,0" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyCellSelectionListener" />
+      <unit id="4652592318748339002" at="127,56,131,7" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyViewportChangeListener$1" />
+      <unit id="4609968354342322383" at="142,62,146,5" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$2" />
+      <unit id="2034046503361611095" at="98,86,113,7" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyCellSelectionListener$1" />
+      <unit id="4652592318748338978" at="116,0,135,0" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyViewportChangeListener" />
+      <unit id="4652592318748338926" at="93,0,116,0" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$MyCellSelectionListener" />
       <unit id="4330388937158577859" at="48,50,91,5" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup$1" />
-      <unit id="4652592318748338723" at="28,0,183,0" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup" />
+      <unit id="4652592318748338723" at="28,0,185,0" name="jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup" />
     </file>
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748339080">

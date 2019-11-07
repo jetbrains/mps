@@ -101,10 +101,12 @@ public class DiffEditorsGroup {
           if (selectionId != null) {
             DiffEditor diffEditor0 = getDiffEditor(component);
             for (DiffEditor diffEditor : ListSequence.fromList(myDiffEditors)) {
-              jetbrains.mps.openapi.editor.EditorComponent mainEditor = diffEditor.getMainEditor();
-              SNodeId nodeId = mapID(diffEditor0, selectionId, diffEditor);
-              SNode node = (nodeId != null ? check_s6qw4f_a0a2a1a1a0a0a0b6(check_s6qw4f_a0a0c0b0b0a0a0a1g(mainEditor.getEditedNode()), nodeId) : null);
-              diffEditor.inspect(node);
+              if (!(diffEditor.getMainEditor().isDisposed())) {
+                jetbrains.mps.openapi.editor.EditorComponent mainEditor = diffEditor.getMainEditor();
+                SNodeId nodeId = mapID(diffEditor0, selectionId, diffEditor);
+                SNode node = (nodeId != null ? check_s6qw4f_a0a2a0a1a1a0a0a0b6(check_s6qw4f_a0a0c0a0b0b0a0a0a1g(mainEditor.getEditedNode()), nodeId) : null);
+                diffEditor.inspect(node);
+              }
             }
           }
         }
@@ -167,13 +169,13 @@ public class DiffEditorsGroup {
     }
     return null;
   }
-  private static SNode check_s6qw4f_a0a2a1a1a0a0a0b6(SModel checkedDotOperand, SNodeId nodeId) {
+  private static SNode check_s6qw4f_a0a2a0a1a1a0a0a0b6(SModel checkedDotOperand, SNodeId nodeId) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNode(nodeId);
     }
     return null;
   }
-  private static SModel check_s6qw4f_a0a0c0b0b0a0a0a1g(SNode checkedDotOperand) {
+  private static SModel check_s6qw4f_a0a0c0a0b0b0a0a0a1g(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModel();
     }
