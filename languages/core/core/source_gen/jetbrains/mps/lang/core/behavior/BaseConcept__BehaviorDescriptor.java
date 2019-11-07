@@ -18,7 +18,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
+import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.runtime.NodePresentationProviders;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -50,7 +52,11 @@ public final class BaseConcept__BehaviorDescriptor extends BaseBHDescriptor {
     return Collections.emptyList();
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return ConceptRegistry.getInstance().getConceptProperties(SNodeOperations.getConcept(__thisNode__)).getPresentationFor(__thisNode__);
+    ConceptPresentation props = ConceptRegistry.getInstance().getConceptProperties(SNodeOperations.getConcept(__thisNode__));
+    if (props != null) {
+      return props.getPresentationFor(__thisNode__);
+    }
+    return NodePresentationProviders.BY_NAME.getPresentation(__thisNode__);
   }
   /*package*/ static String getDetailedPresentation_id22G2W3WJ92t(@NotNull SNode __thisNode__) {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(__thisNode__);
