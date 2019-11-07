@@ -2007,7 +2007,7 @@
     </node>
     <node concept="1TJgyj" id="hgV6056" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="styleClass" />
+      <property role="20kJfa" value="styles" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1186402402630" />
       <ref role="20lvS9" node="7zL4upEo6oo" resolve="IStyleSheetItem" />

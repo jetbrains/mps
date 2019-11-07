@@ -7232,7 +7232,7 @@
         </node>
       </node>
       <node concept="3F2HdR" id="3AsHGqdnHBg" role="3EZMnx">
-        <ref role="1NtTu8" to="tpc2:hgV6056" resolve="styleClass" />
+        <ref role="1NtTu8" to="tpc2:hgV6056" resolve="styles" />
         <node concept="lj46D" id="3AsHGqdnJhz" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
@@ -7241,7 +7241,6 @@
         </node>
         <node concept="l2Vlx" id="3AsHGqdnJh_" role="2czzBx" />
         <node concept="3F0ifn" id="3AsHGqe0Mz_" role="2czzBI">
-          <property role="3F0ifm" value="No styles" />
           <ref role="1k5W1q" to="tpen:hshO_Yc" resolve="Comment" />
         </node>
       </node>
@@ -10007,6 +10006,7 @@
           <node concept="ljvvj" id="75Z472Z0xUz" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
+          <node concept="VPM3Z" id="7W$v8cT$RbF" role="3F10Kt" />
         </node>
         <node concept="3F0ifn" id="3DkLjCDOMpE" role="3EZMnx">
           <property role="3F0ifm" value="applicable concept =" />
@@ -10032,6 +10032,7 @@
           <node concept="ljvvj" id="3DkLjCDOMpJ" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
+          <node concept="VPM3Z" id="7W$v8cT$ReJ" role="3F10Kt" />
         </node>
         <node concept="3F0ifn" id="47XGxT8wF9V" role="3EZMnx">
           <property role="3F0ifm" value="applicable parameters list" />
@@ -10049,6 +10050,7 @@
           <node concept="ljvvj" id="47XGxT8zo3L" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
+          <node concept="VPM3Z" id="7W$v8cT$RgM" role="3F10Kt" />
         </node>
         <node concept="3F0ifn" id="47XGxT8wF9Y" role="3EZMnx">
           <property role="3F0ifm" value="parameters presentation" />
@@ -10066,6 +10068,7 @@
           <node concept="ljvvj" id="47XGxT8zo3O" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
+          <node concept="VPM3Z" id="7W$v8cT$RhP" role="3F10Kt" />
         </node>
         <node concept="3F0ifn" id="47XGxT8wFa1" role="3EZMnx">
           <property role="3F0ifm" value="is current" />
@@ -10083,12 +10086,13 @@
           <node concept="ljvvj" id="1adq1zzRD8M" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
+          <node concept="VPM3Z" id="7W$v8cT$RjS" role="3F10Kt" />
         </node>
         <node concept="3F2HdR" id="1adq1zzSpEH" role="3EZMnx">
           <ref role="1NtTu8" to="tpc2:1adq1zzSpEz" resolve="methodDeclaration" />
           <node concept="l2Vlx" id="1adq1zzSpEI" role="2czzBx" />
           <node concept="3F0ifn" id="1adq1zzSpEM" role="2czzBI">
-            <property role="3F0ifm" value="no methods" />
+            <property role="ilYzB" value="&lt;&lt;no methods&gt;&gt;" />
             <node concept="VechU" id="1adq1zzSpEQ" role="3F10Kt">
               <property role="Vb096" value="fLJRk5_/gray" />
             </node>
@@ -10997,17 +11001,15 @@
         <node concept="lj46D" id="59ZEGVP3eyz" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="3F0ifn" id="59ZEGVP3ey$" role="3EZMnx">
-          <property role="3F0ifm" value="hints" />
-        </node>
         <node concept="3F0ifn" id="59ZEGVP3ey_" role="3EZMnx">
-          <property role="3F0ifm" value=":" />
+          <property role="3F0ifm" value="hints:" />
           <node concept="11L4FC" id="59ZEGVP3eyA" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
           <node concept="ljvvj" id="59ZEGVP3eyB" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
+          <node concept="VPM3Z" id="7W$v8cT$QoA" role="3F10Kt" />
         </node>
         <node concept="3F2HdR" id="59ZEGVP3eyC" role="3EZMnx">
           <ref role="1NtTu8" to="tpc2:59ZEGVOSRBV" resolve="hints" />
@@ -26654,8 +26656,8 @@
     <property role="3GE5qa" value="Menu.Completion" />
     <ref role="1XX52x" to="tpc2:6LZbIQxCb5y" resolve="CompletionStyling" />
     <node concept="3EZMnI" id="6LZbIQxCZXx" role="2wV5jI">
-      <node concept="PMmxH" id="19KoS0Gbu5G" role="3EZMnx">
-        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      <node concept="3F0ifn" id="7W$v8cT$Nzx" role="3EZMnx">
+        <property role="3F0ifm" value="completion styling" />
       </node>
       <node concept="3F0A7n" id="6LZbIQxCZXI" role="3EZMnx">
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
@@ -26682,7 +26684,7 @@
           <ref role="1NtTu8" to="tpee:4EqhHTp4Mw3" resolve="member" />
           <node concept="3F0ifn" id="53WsQmnjCxk" role="2czzBI">
             <property role="3F0ifm" value="" />
-            <property role="ilYzB" value="no additional members" />
+            <property role="ilYzB" value="&lt;&lt;no additional members&gt;&gt;" />
             <node concept="VPxyj" id="53WsQmnjCy9" role="3F10Kt">
               <property role="VOm3f" value="true" />
             </node>

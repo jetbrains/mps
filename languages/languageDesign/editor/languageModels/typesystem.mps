@@ -3421,7 +3421,7 @@
                 </node>
               </node>
               <node concept="13MTOL" id="2Jr$Le9JaGp" role="2OqNvi">
-                <ref role="13MTZf" to="tpc2:hgV6056" resolve="styleClass" />
+                <ref role="13MTZf" to="tpc2:hgV6056" resolve="styles" />
               </node>
             </node>
             <node concept="v3k3i" id="2Jr$Le9Jdj$" role="2OqNvi">
