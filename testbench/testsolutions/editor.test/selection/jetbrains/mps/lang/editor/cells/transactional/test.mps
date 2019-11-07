@@ -27,7 +27,6 @@
         <property id="1229194968596" name="caretPosition" index="LIFWa" />
         <property id="1229194968595" name="cellId" index="LIFWd" />
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
-        <property id="1229432188737" name="isLastPosition" index="ZRATv" />
       </concept>
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
@@ -423,12 +422,12 @@
         <property role="TrG5h" value="Samtmpstrple" />
         <property role="EcuMT" value="2786154196593923926" />
         <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-        <node concept="LIFWc" id="2qEq7FDstzL" role="lGtFl">
-          <property role="ZRATv" value="true" />
+        <node concept="LIFWc" id="7W$v8cT$JN7" role="lGtFl">
+          <property role="LIFWa" value="0" />
           <property role="OXtK3" value="true" />
           <property role="p6zMq" value="0" />
           <property role="p6zMs" value="0" />
-          <property role="LIFWd" value="Constant_ueqr71_a1b4a0" />
+          <property role="LIFWd" value="Constant_ueqr71_a1e0a" />
         </node>
       </node>
     </node>
@@ -505,12 +504,12 @@
         <property role="TrG5h" value="Sam123ple" />
         <property role="EcuMT" value="2786154196593934308" />
         <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-        <node concept="LIFWc" id="2qEq7FDswh5" role="lGtFl">
-          <property role="ZRATv" value="true" />
+        <node concept="LIFWc" id="7W$v8cT$Kwf" role="lGtFl">
+          <property role="LIFWa" value="0" />
           <property role="OXtK3" value="true" />
           <property role="p6zMq" value="0" />
           <property role="p6zMs" value="0" />
-          <property role="LIFWd" value="Constant_ueqr71_a1b4a0" />
+          <property role="LIFWd" value="Constant_ueqr71_a1e0a" />
         </node>
       </node>
     </node>
