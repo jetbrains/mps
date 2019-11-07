@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,6 +75,7 @@ public class GenerationPartitioner {
     myConflicts = new PriorityConflicts(generators);
     mySolver = new PartitioningSolver(myConflicts);
 
+    // XXX in fact, has to be very cautious keeping TemplateModule/TemplateModel instances, as they might get changed in case of interpreted templates
     myModulesMap = new HashMap<>(myGenerators.size());
     myModelMap = new HashMap<>();
     for (TemplateModule module : myGenerators) {
@@ -88,10 +89,8 @@ public class GenerationPartitioner {
 
   public List<List<TemplateMappingConfiguration>> createMappingSets() {
     ArrayList<TemplateMappingConfiguration> allMappingConfigurations = new ArrayList<>();
-    for (TemplateModule generator : myGenerators) {
-      for (TemplateModel model : generator.getModels()) {
-        allMappingConfigurations.addAll(model.getConfigurations());
-      }
+    for (TemplateModel model : myModelMap.values()) {
+      allMappingConfigurations.addAll(model.getConfigurations());
     }
 
     mySolver.prepare(allMappingConfigurations);

@@ -77,6 +77,8 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
       myModelWatchDog = new WatchModelChanges();
       myModels = tm.myModels.entrySet().stream().map(e -> {
         SModel templateModel = myGenerator.getModel(e.getKey());
+        // XXX need to account for the fact TMI cons reads templateModel and therefore might trigger modelLoaded event.
+        //     perhaps, shall construct TMI first, then watch().
         myModelWatchDog.watch(templateModel);
         return new TemplateModelInterpreted(this, templateModel, e.getValue());
       }).collect(Collectors.toList());
@@ -183,7 +185,8 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
 
     @Override
     public void modelLoaded(SModel model, boolean partially) {
-      panic();
+      // intentionally don't consider it as indication of a change, if getModels() has been invoked for non-loaded SModels, we would get modelLoaded()
+      // the moment TemplateModelInterpreted starts model walking to find out MCs
     }
 
     @Override
