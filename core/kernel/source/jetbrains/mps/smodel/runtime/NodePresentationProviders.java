@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.presentation.ReferenceConceptUtil;
 import jetbrains.mps.util.StringUtil;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -39,7 +40,10 @@ public final class NodePresentationProviders {
 
   public static final NodePresentationProvider BY_NAME = node -> {
     String name = SNodeAccessUtil.getProperty(node, SNodeUtil.property_INamedConcept_name);
-    return StringUtil.isEmpty(name) ? "<no name>[" + node.getConcept().getName() + "]" : name;
+    if (!StringUtil.isEmpty(name)) {
+      return name;
+    }
+    return "<no name>[" + getConceptPresentation(node) + "]";
   };
 
   public static NodePresentationProvider byReference(SReferenceLink link, String prefix, String suffix) {
@@ -53,7 +57,7 @@ public final class NodePresentationProviders {
       if (referent == null) {
         refPresentation = "<no " + link.getName() + ">";
       } else if (referent == node) {
-        refPresentation = referent.getConcept().getName();
+        refPresentation = getConceptPresentation(referent);
       } else {
         refPresentation = NodePresentationUtil.presentation(referent, node);
       }
@@ -67,7 +71,7 @@ public final class NodePresentationProviders {
       if (name != null) {
         return name;
       }
-      return "<no name>[" + node.getConcept().getName() + "]";
+      return "<no name>[" + getConceptPresentation(node) + "]";
     }
 
     String smartRefPresentation = ReferenceConceptUtil.getPresentation(node);
@@ -75,11 +79,18 @@ public final class NodePresentationProviders {
       return smartRefPresentation;
     }
 
-    String conceptAlias = node.getConcept().getConceptAlias();
-    if (!StringUtil.isEmpty(conceptAlias)) {
-      return conceptAlias;
-    }
-
-    return node.getConcept().getName();
+    return getConceptPresentation(node);
   };
+
+  @NotNull
+  private static String getConceptPresentation(SNode node) {
+    String pres = null;
+    if (node.getConcept().isValid()) {
+      pres = node.getConcept().getConceptAlias();
+    }
+    if (pres == null || pres.isEmpty()) {
+      pres = node.getConcept().getName();
+    }
+    return pres;
+  }
 }
