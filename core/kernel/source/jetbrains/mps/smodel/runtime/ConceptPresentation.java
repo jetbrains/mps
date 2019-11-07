@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.runtime;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
@@ -33,18 +32,7 @@ public final class ConceptPresentation {
   private final Collection<SConceptFeature> myDeprecatedFeatures; // could be null
   private final NodePresentationProvider myNodePresentationProvider;
 
-  @ToRemove(version = 192)
-  @Deprecated
-  /*package*/ ConceptPresentation(String helpUrl,
-                                  String shortDescription,
-                                  IconResource icon,
-                                  boolean deprecated,
-                                  Collection<SConceptFeature> deprecatedFeatures,
-                                  NodePresentationProvider presentationProvider) {
-    this(helpUrl, shortDescription, icon, deprecated, false, deprecatedFeatures, presentationProvider);
-  }
-
-  /*package*/ ConceptPresentation(String helpUrl,
+  ConceptPresentation(String helpUrl,
                                   String shortDescription,
                                   IconResource icon,
                                   boolean deprecated,
