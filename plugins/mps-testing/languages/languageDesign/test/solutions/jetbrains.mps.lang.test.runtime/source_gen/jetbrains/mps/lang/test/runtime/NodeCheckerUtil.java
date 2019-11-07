@@ -5,9 +5,12 @@ package jetbrains.mps.lang.test.runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import junit.framework.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
+import java.util.Collection;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -20,13 +23,11 @@ import jetbrains.mps.checkers.RefScopeChecker;
 import jetbrains.mps.checkers.TargetConceptChecker;
 import jetbrains.mps.project.validation.StructureChecker;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
-import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.checkers.ModelCheckerBuilder;
 import org.jetbrains.mps.openapi.util.Consumer;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.errors.item.NodeFlavouredItem;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -41,11 +42,14 @@ public class NodeCheckerUtil {
     Assert.assertTrue(String.format("node '%s' doesn't have type '%s'!", nodeWithIdToString(node), nodeWithIdToString(type2)), new NodesMatcher(type1, type2).diff().isEmpty());
   }
 
+  @Nullable
   public static SNode getRuleNodeFromReporter(NodeReportItem reporter, SRepository ruleRepository) {
-    if (RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter).isEmpty() || ruleRepository == null) {
+    Collection<RuleIdFlavouredItem.TypesystemRuleId> brokenRules = RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter);
+    if (brokenRules.isEmpty() || ruleRepository == null) {
       return null;
     }
-    return RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reporter).iterator().next().getSourceNode().resolve(ruleRepository);
+    SNodeReference sourceNode = brokenRules.iterator().next().getSourceNode();
+    return sourceNode.resolve(ruleRepository);
   }
 
   public static List<IChecker<?, ? extends IssueKindReportItem>> getStandardCheckers() {

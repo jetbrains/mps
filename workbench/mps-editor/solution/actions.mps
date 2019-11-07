@@ -396,6 +396,7 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
+      <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="1350122676458893092" name="text" index="3ndbpf" />
@@ -16468,6 +16469,17 @@
                                     <node concept="liA8E" id="6Ia7CJh0wVe" role="2OqNvi">
                                       <ref role="37wK5l" to="d6hs:~RuleIdFlavouredItem$TypesystemRuleId.getSourceNode()" resolve="getSourceNode" />
                                     </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3clFbJ" id="4e9qXDUXJzM" role="3cqZAp">
+                                <node concept="3clFbS" id="4e9qXDUXJzO" role="3clFbx">
+                                  <node concept="3N13vt" id="4e9qXDUXOVA" role="3cqZAp" />
+                                </node>
+                                <node concept="3clFbC" id="4e9qXDUXMb8" role="3clFbw">
+                                  <node concept="10Nm6u" id="4e9qXDUXMbw" role="3uHU7w" />
+                                  <node concept="37vLTw" id="4e9qXDUXKIj" role="3uHU7B">
+                                    <ref role="3cqZAo" node="6Ia7CJh0wV9" resolve="ruleRef" />
                                   </node>
                                 </node>
                               </node>

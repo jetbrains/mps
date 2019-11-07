@@ -135,6 +135,9 @@ public class ShowSuppressedErrors_Action extends BaseAction {
             if (ListSequence.fromList(rules).isNotEmpty() && message != null) {
               for (RuleIdFlavouredItem.TypesystemRuleId rule : ListSequence.fromList(rules)) {
                 SNodeReference ruleRef = rule.getSourceNode();
+                if (ruleRef == null) {
+                  continue;
+                }
                 SNode ruleRoot = ruleRef.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()).getContainingRoot();
                 Icon ruleRootIcon = GlobalIconManager.getInstance().getIconFor(ruleRoot);
                 NodeNavigatable ruleNavigatable = new NodeNavigatable(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ruleRef);
