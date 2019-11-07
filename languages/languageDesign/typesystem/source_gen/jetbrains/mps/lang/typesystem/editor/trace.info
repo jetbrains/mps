@@ -8728,15 +8728,14 @@
       <node id="1188813217750" at="378,94,379,47" concept="2" />
       <node id="1188813217750" at="379,47,380,34" concept="7" />
       <node id="1188813217750" at="380,34,381,83" concept="2" />
-      <node id="5542255950777633012" at="381,83,382,49" concept="2" />
-      <node id="1188813217750" at="382,49,383,40" concept="2" />
-      <node id="1188813217750" at="383,40,384,34" concept="2" />
-      <node id="1188813217750" at="384,34,385,22" concept="8" />
-      <node id="1188813215375" at="389,0,390,0" concept="11" trace="name$tAp1" />
-      <node id="1188813215375" at="390,0,391,0" concept="11" trace="isWeak$jbH8" />
-      <node id="1188813215375" at="394,0,395,0" concept="11" trace="PropertyAttribute$jT" />
-      <node id="1188813215375" at="398,0,399,0" concept="11" trace="applicableNode$lCke" />
-      <node id="1188813215375" at="399,0,400,0" concept="11" trace="body$tq5r" />
+      <node id="1188813217750" at="381,83,382,40" concept="2" />
+      <node id="1188813217750" at="382,40,383,34" concept="2" />
+      <node id="1188813217750" at="383,34,384,22" concept="8" />
+      <node id="1188813215375" at="388,0,389,0" concept="11" trace="name$tAp1" />
+      <node id="1188813215375" at="389,0,390,0" concept="11" trace="isWeak$jbH8" />
+      <node id="1188813215375" at="393,0,394,0" concept="11" trace="PropertyAttribute$jT" />
+      <node id="1188813215375" at="397,0,398,0" concept="11" trace="applicableNode$lCke" />
+      <node id="1188813215375" at="398,0,399,0" concept="11" trace="body$tq5r" />
       <node id="1188813215375" at="45,0,47,0" concept="3" trace="myNode" />
       <node id="1188813215375" at="231,0,233,0" concept="3" trace="myNode" />
       <node id="1188813215375" at="318,0,320,0" concept="3" trace="myNode" />
@@ -8779,10 +8778,10 @@
       <node id="5542255950777650938" at="290,0,299,0" concept="6" trace="createConstant_7#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1188813215375" at="353,104,362,7" concept="15" />
       <node id="5542255950777638722" at="368,0,377,0" concept="6" trace="createConstant_8#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1188813217750" at="377,0,386,0" concept="6" trace="createConstant_9#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1188813215375" at="63,0,73,0" concept="6" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1188813215375" at="124,0,134,0" concept="6" trace="createCollection_2#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1188813215375" at="299,0,309,0" concept="6" trace="createCollection_6#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1188813217750" at="377,0,387,0" concept="6" trace="createConstant_9#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1188813215375" at="152,0,163,0" concept="6" trace="createCollection_4#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1188813215375" at="200,0,211,0" concept="6" trace="createCollection_5#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1188813215375" at="138,0,152,0" concept="6" trace="createCollection_3#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -8918,6 +8917,10 @@
         <var name="editorCell" id="5542255950777638722" />
         <var name="style" id="5542255950777638722" />
       </scope>
+      <scope id="1188813217750" at="377,41,384,22">
+        <var name="editorCell" id="1188813217750" />
+        <var name="style" id="1188813217750" />
+      </scope>
       <scope id="1188813215375" at="63,43,71,22">
         <var name="editorCell" id="1188813215375" />
       </scope>
@@ -8940,10 +8943,6 @@
         <var name="editorCell" id="1188813215375" />
         <var name="isEmpty" id="1188813215375" />
       </scope>
-      <scope id="1188813217750" at="377,41,385,22">
-        <var name="editorCell" id="1188813217750" />
-        <var name="style" id="1188813217750" />
-      </scope>
       <scope id="1188813217739" at="81,0,90,0" />
       <scope id="5542255950777649841" at="115,0,124,0" />
       <scope id="1188813215375" at="152,43,161,22">
@@ -8958,10 +8957,10 @@
       <scope id="5542255950777638708" at="281,0,290,0" />
       <scope id="5542255950777650938" at="290,0,299,0" />
       <scope id="5542255950777638722" at="368,0,377,0" />
+      <scope id="1188813217750" at="377,0,386,0" />
       <scope id="1188813215375" at="63,0,73,0" />
       <scope id="1188813215375" at="124,0,134,0" />
       <scope id="1188813215375" at="299,0,309,0" />
-      <scope id="1188813217750" at="377,0,387,0" />
       <scope id="1188813215375" at="152,0,163,0" />
       <scope id="1188813215375" at="200,0,211,0" />
       <scope id="1188813215375" at="264,44,275,7" />
@@ -8989,14 +8988,14 @@
       <scope id="5542255950777638698" at="175,41,198,5" />
       <scope id="1188813217740" at="90,0,115,0" />
       <scope id="5542255950777638698" at="175,0,200,0" />
-      <unit id="1188813215375" at="393,0,396,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$CONCEPTS" />
+      <unit id="1188813215375" at="392,0,395,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$CONCEPTS" />
       <unit id="1188813217740" at="101,102,105,7" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$1" />
       <unit id="5542255950777638698" at="186,102,190,7" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$2" />
-      <unit id="1188813215375" at="388,0,392,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$PROPS" />
-      <unit id="1188813215375" at="397,0,401,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$LINKS" />
+      <unit id="1188813215375" at="387,0,391,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$PROPS" />
+      <unit id="1188813215375" at="396,0,400,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$LINKS" />
       <unit id="1188813215375" at="230,0,281,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$applicableNodeSingleRoleHandler_c2v57n_c1b1a" />
       <unit id="1188813215375" at="317,0,368,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a$bodySingleRoleHandler_c2v57n_b4b1a" />
-      <unit id="1188813215375" at="44,0,402,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a" />
+      <unit id="1188813215375" at="44,0,401,0" name="jetbrains.mps.lang.typesystem.editor.ComparisonRule_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/1193663082499">

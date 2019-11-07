@@ -639,6 +639,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_ueqr71_h1c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -1149,6 +1150,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createConstant_24() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_ueqr71_d0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
