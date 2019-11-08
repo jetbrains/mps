@@ -225,7 +225,7 @@ public class ClassifierUpdater {
       if (field.isStatic()) {
         continue;
       }
-      if (field.isCompilerGenerated()) {
+      if (field.isSynthetic()) {
         continue;
       }
       SNode decl = _quotation_createNode_ol94f8_a0d0a0v(null, ASMNodeId.createId(myParsedClass, field), createVisibility(field), getTypeByASMType(field.getGenericType(), null, cls), field.getName());
@@ -248,7 +248,7 @@ public class ClassifierUpdater {
       if (!(field.isStatic())) {
         continue;
       }
-      if (field.isCompilerGenerated()) {
+      if (field.isSynthetic()) {
         continue;
       }
       if (field.isEnumConstant()) {

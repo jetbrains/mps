@@ -151,7 +151,7 @@ public class ClassifierCacher {
       if (field.isStatic()) {
         continue;
       }
-      if (field.isCompilerGenerated()) {
+      if (field.isSynthetic()) {
         continue;
       }
       instance(CONCEPTS.FieldDeclaration$Ps);
@@ -167,7 +167,7 @@ public class ClassifierCacher {
       if (!(field.isStatic())) {
         continue;
       }
-      if (field.isCompilerGenerated()) {
+      if (field.isSynthetic()) {
         continue;
       }
       if (field.isEnumConstant()) {

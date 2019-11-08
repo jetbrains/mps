@@ -3518,25 +3518,30 @@
       </node>
     </node>
     <node concept="3clFb_" id="6hYzBiUOuTN" role="jymVt">
-      <property role="TrG5h" value="isCompilerGenerated" />
+      <property role="TrG5h" value="isSynthetic" />
       <node concept="3Tm1VV" id="6hYzBiUOuTO" role="1B3o_S" />
       <node concept="10P_77" id="6hYzBiUOuTP" role="3clF45" />
       <node concept="3clFbS" id="6hYzBiUOuTQ" role="3clF47">
-        <node concept="3cpWs6" id="6hYzBiUOuTR" role="3cqZAp">
-          <node concept="2OqwBi" id="6hYzBiUOuTS" role="3cqZAk">
-            <node concept="2OqwBi" id="6hYzBiUOuTT" role="2Oq$k0">
-              <node concept="2OwXpG" id="6hYzBiUOuTU" role="2OqNvi">
-                <ref role="2Oxat5" to="dd86:~FieldNode.name" resolve="name" />
-              </node>
-              <node concept="37vLTw" id="2BHiRxeuyIs" role="2Oq$k0">
-                <ref role="3cqZAo" node="6hYzBiUOuQb" resolve="myField" />
+        <node concept="3cpWs6" id="3NQd03fFfru" role="3cqZAp">
+          <node concept="3y3z36" id="3NQd03fFfrv" role="3cqZAk">
+            <node concept="1eOMI4" id="3NQd03fFfrw" role="3uHU7B">
+              <node concept="pVHWs" id="3NQd03fFfrx" role="1eOMHV">
+                <node concept="10M0yZ" id="3NQd03fFgpi" role="3uHU7B">
+                  <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_SYNTHETIC" resolve="ACC_SYNTHETIC" />
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                </node>
+                <node concept="2OqwBi" id="3NQd03fFfrz" role="3uHU7w">
+                  <node concept="2OwXpG" id="3NQd03fFfr$" role="2OqNvi">
+                    <ref role="2Oxat5" to="dd86:~FieldNode.access" resolve="access" />
+                  </node>
+                  <node concept="37vLTw" id="3NQd03fFfr_" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6hYzBiUOuQb" resolve="myField" />
+                  </node>
+                </node>
               </node>
             </node>
-            <node concept="liA8E" id="6hYzBiUOuTY" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-              <node concept="Xl_RD" id="6hYzBiUOuTZ" role="37wK5m">
-                <property role="Xl_RC" value="$assertionsDisabled" />
-              </node>
+            <node concept="3cmrfG" id="3NQd03fFfrA" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
             </node>
           </node>
         </node>

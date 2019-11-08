@@ -59,8 +59,8 @@ public class ASMField {
   public boolean isEnumConstant() {
     return (Opcodes.ACC_ENUM & myField.access) != 0;
   }
-  public boolean isCompilerGenerated() {
-    return myField.name.equals("$assertionsDisabled");
+  public boolean isSynthetic() {
+    return (Opcodes.ACC_SYNTHETIC & myField.access) != 0;
   }
   public boolean hasValue() {
     return null != myField.value;
