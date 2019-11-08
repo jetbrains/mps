@@ -131,7 +131,7 @@
         <reference id="1164914727930" name="replacementConcept" index="Ul1FP" />
       </concept>
       <concept id="1186402211651" name="jetbrains.mps.lang.editor.structure.StyleSheet" flags="ng" index="V5hpn">
-        <child id="1186402402630" name="styleClass" index="V601i" />
+        <child id="1186402402630" name="styles" index="V601i" />
       </concept>
       <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
         <property id="1186403713874" name="color" index="Vb096" />
@@ -3789,6 +3789,7 @@
       </node>
       <node concept="3F0ifn" id="hGQiURw" role="3EZMnx">
         <property role="3F0ifm" value="arguments:" />
+        <node concept="VPM3Z" id="3NQd03fBgvI" role="3F10Kt" />
       </node>
       <node concept="3F2HdR" id="hGQiURx" role="3EZMnx">
         <ref role="1NtTu8" to="tpd4:hGQ6I9Y" resolve="quickFixArgument" />
@@ -3801,6 +3802,7 @@
       </node>
       <node concept="3F0ifn" id="718BIU4uFIF" role="3EZMnx">
         <property role="3F0ifm" value="fields:" />
+        <node concept="VPM3Z" id="3NQd03fBgzK" role="3F10Kt" />
       </node>
       <node concept="3F2HdR" id="718BIU4uFIC" role="3EZMnx">
         <ref role="1NtTu8" to="tpd4:718BIU4uEJv" resolve="quickFixField" />
@@ -4026,6 +4028,7 @@
     <node concept="3EZMnI" id="hS7hDJy" role="2wV5jI">
       <node concept="3F0ifn" id="hS7hEGB" role="3EZMnx">
         <property role="3F0ifm" value="is applicable:" />
+        <node concept="VPM3Z" id="3NQd03fBhaH" role="3F10Kt" />
       </node>
       <node concept="3F1sOY" id="hS7hIGN" role="3EZMnx">
         <ref role="1NtTu8" to="tpd4:hS7geeZ" resolve="applicableBlock" />
@@ -4035,6 +4038,7 @@
       </node>
       <node concept="3F0ifn" id="hS7hSMY" role="3EZMnx">
         <property role="3F0ifm" value="convertor:" />
+        <node concept="VPM3Z" id="3NQd03fBheJ" role="3F10Kt" />
       </node>
       <node concept="3F1sOY" id="hS7hX02" role="3EZMnx">
         <ref role="1NtTu8" to="tpd4:hS7gd8n" resolve="convertBlock" />
@@ -4051,7 +4055,7 @@
     <ref role="1XX52x" to="tpd4:hS7i7Vs" resolve="VariableConvertersContainer" />
     <node concept="3EZMnI" id="hS7iJoe" role="2wV5jI">
       <node concept="3F0ifn" id="hS7iJZW" role="3EZMnx">
-        <property role="3F0ifm" value="Variable Converters:" />
+        <property role="3F0ifm" value="variable converters" />
       </node>
       <node concept="3F0ifn" id="hS7iNyb" role="3EZMnx">
         <property role="3F0ifm" value="" />

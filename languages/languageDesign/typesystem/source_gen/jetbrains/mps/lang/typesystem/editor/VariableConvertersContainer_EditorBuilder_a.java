@@ -56,7 +56,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "Variable Converters:");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "variable converters");
     editorCell.setCellId("Constant_hoc63h_a0");
     editorCell.setDefaultText("");
     return editorCell;
