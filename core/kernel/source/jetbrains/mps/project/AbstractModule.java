@@ -289,7 +289,10 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     if (isReadOnly()) {
       LOG.warn("Changing read-only module " + this);
     }
-    myChanged = true;
+    if (!myChanged) {
+      myChanged = true;
+      fireChanged();
+    }
   }
 
   @Override
