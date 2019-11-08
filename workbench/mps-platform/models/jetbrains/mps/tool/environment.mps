@@ -213,6 +213,7 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
+      <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
         <child id="1221737317278" name="statementList" index="1Pe0a2" />
       </concept>
@@ -1034,6 +1035,90 @@
                     </node>
                   </node>
                   <node concept="3clFbS" id="sjigSAxAsz" role="2LFqv$">
+                    <node concept="3SKdUt" id="p1QPGogrVT" role="3cqZAp">
+                      <node concept="1PaTwC" id="p1QPGogrVU" role="3ndbpf">
+                        <node concept="3oM_SD" id="p1QPGogrVX" role="1PaTwD">
+                          <property role="3oM_SC" value="Ignore" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrVY" role="1PaTwD">
+                          <property role="3oM_SC" value="'Git4Idea'" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrVZ" role="1PaTwD">
+                          <property role="3oM_SC" value="&amp;" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrW0" role="1PaTwD">
+                          <property role="3oM_SC" value="'SVN4Idea'" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrW1" role="1PaTwD">
+                          <property role="3oM_SC" value="plugins" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3SKdUt" id="p1QPGogrW2" role="3cqZAp">
+                      <node concept="1PaTwC" id="p1QPGogrW3" role="3ndbpf">
+                        <node concept="3oM_SD" id="p1QPGogrW6" role="1PaTwD">
+                          <property role="3oM_SC" value="They" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrW7" role="1PaTwD">
+                          <property role="3oM_SC" value="load" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrW8" role="1PaTwD">
+                          <property role="3oM_SC" value="from" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrW9" role="1PaTwD">
+                          <property role="3oM_SC" value="classpath" />
+                        </node>
+                        <node concept="3oM_SD" id="p1QPGogrWa" role="1PaTwD">
+                          <property role="3oM_SC" value="in:" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3SKdUt" id="p1QPGogrWb" role="3cqZAp">
+                      <node concept="1PaTwC" id="p1QPGogrWc" role="3ndbpf">
+                        <node concept="3oM_SD" id="p1QPGogrWf" role="1PaTwD">
+                          <property role="3oM_SC" value="PluginManagerCore#computePlatformPluginUrlAndCollectPluginUrls" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbJ" id="p1QPGogrVG" role="3cqZAp">
+                      <node concept="22lmx$" id="p1QPGogrVH" role="3clFbw">
+                        <node concept="2OqwBi" id="p1QPGogrVI" role="3uHU7B">
+                          <node concept="2OqwBi" id="p1QPGogs7e" role="2Oq$k0">
+                            <node concept="37vLTw" id="p1QPGogs7d" role="2Oq$k0">
+                              <ref role="3cqZAo" node="sjigSAxAsx" resolve="pluginFolder" />
+                            </node>
+                            <node concept="liA8E" id="p1QPGogs7f" role="2OqNvi">
+                              <ref role="37wK5l" to="guwi:~File.getName()" resolve="getName" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="p1QPGogrVK" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+                            <node concept="Xl_RD" id="p1QPGogrVL" role="37wK5m">
+                              <property role="Xl_RC" value="git4idea" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="p1QPGogrVM" role="3uHU7w">
+                          <node concept="2OqwBi" id="p1QPGogs3a" role="2Oq$k0">
+                            <node concept="37vLTw" id="p1QPGogs39" role="2Oq$k0">
+                              <ref role="3cqZAo" node="sjigSAxAsx" resolve="pluginFolder" />
+                            </node>
+                            <node concept="liA8E" id="p1QPGogs3b" role="2OqNvi">
+                              <ref role="37wK5l" to="guwi:~File.getName()" resolve="getName" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="p1QPGogrVO" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
+                            <node concept="Xl_RD" id="p1QPGogrVP" role="37wK5m">
+                              <property role="Xl_RC" value="svn4idea" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="p1QPGogrVR" role="3clFbx">
+                        <node concept="3N13vt" id="p1QPGogrVS" role="3cqZAp" />
+                      </node>
+                    </node>
                     <node concept="3clFbF" id="sjigSAxAsK" role="3cqZAp">
                       <node concept="2OqwBi" id="sjigSAxAsL" role="3clFbG">
                         <node concept="liA8E" id="sjigSAxAsN" role="2OqNvi">

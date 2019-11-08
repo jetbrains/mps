@@ -119,6 +119,12 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
       File pluginDir = new File(PathManager.getPreInstalledPluginsPath());
       if (pluginDir.exists()) {
         for (File pluginFolder : pluginDir.listFiles()) {
+          // Ignore 'Git4Idea' & 'SVN4Idea' plugins 
+          // They load from classpath in: 
+          // PluginManagerCore#computePlatformPluginUrlAndCollectPluginUrls 
+          if (pluginFolder.getName().contains("git4idea") || pluginFolder.getName().contains("svn4idea")) {
+            continue;
+          }
           pluginPathResult.add(pluginFolder.getPath());
         }
       }
