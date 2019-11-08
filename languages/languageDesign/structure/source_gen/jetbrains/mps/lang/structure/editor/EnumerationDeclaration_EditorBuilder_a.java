@@ -129,6 +129,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_l6kv98_b0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -147,6 +150,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_l6kv98_a2a");
     Style style = new StyleImpl();
     new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -232,6 +236,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_l6kv98_e0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
   }

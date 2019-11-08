@@ -222,6 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_p9c0o3_c3a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -326,6 +327,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_p9c0o3_f3a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -402,6 +404,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_p9c0o3_i3a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -478,6 +481,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_p9c0o3_l3a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -554,6 +558,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_p9c0o3_o3a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+    style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -616,13 +621,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     private EditorCell createConstant_12() {
-      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "no methods");
+      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_p9c0o3_a51d0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
-      editorCell.setDefaultText("");
+      editorCell.setDefaultText("<<no methods>>");
       return editorCell;
     }
   }

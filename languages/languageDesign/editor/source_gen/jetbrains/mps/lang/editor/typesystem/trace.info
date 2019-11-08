@@ -4492,7 +4492,7 @@
       <node id="8307535009119131279" at="51,30,52,17" concept="8" />
       <node id="8307535009119131279" at="56,0,57,0" concept="11" trace="defaultValue$fHfJ" />
       <node id="8307535009119131279" at="57,0,58,0" concept="11" trace="valueType$A7Sx" />
-      <node id="8307535009119131279" at="58,0,59,0" concept="11" trace="styleClass$FMi4" />
+      <node id="8307535009119131279" at="58,0,59,0" concept="11" trace="styles$FMi4" />
       <node id="8307535009119131279" at="62,0,63,0" concept="11" trace="PrimitiveType$5" />
       <node id="8307535009119131279" at="63,0,64,0" concept="11" trace="StyleSheet$GD" />
       <node id="8307535009119131279" at="64,0,65,0" concept="11" trace="StyleAttributeDeclaration$8S" />
@@ -4536,7 +4536,7 @@
         <var name="typeCheckingContext" id="8307535009119131279" />
       </scope>
       <unit id="8307535009119131279" at="67,0,70,0" name="jetbrains.mps.lang.editor.typesystem.check_StyleAttributeDeclaration_NonTypesystemRule$PROPS" />
-      <unit id="3160281275655055053" at="36,245,40,5" name="jetbrains.mps.lang.editor.typesystem.check_StyleAttributeDeclaration_NonTypesystemRule$1" />
+      <unit id="3160281275655055053" at="36,241,40,5" name="jetbrains.mps.lang.editor.typesystem.check_StyleAttributeDeclaration_NonTypesystemRule$1" />
       <unit id="8307535009119131279" at="55,0,60,0" name="jetbrains.mps.lang.editor.typesystem.check_StyleAttributeDeclaration_NonTypesystemRule$LINKS" />
       <unit id="8307535009119131279" at="61,0,66,0" name="jetbrains.mps.lang.editor.typesystem.check_StyleAttributeDeclaration_NonTypesystemRule$CONCEPTS" />
       <unit id="8307535009119131279" at="26,0,71,0" name="jetbrains.mps.lang.editor.typesystem.check_StyleAttributeDeclaration_NonTypesystemRule" />

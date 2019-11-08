@@ -33,7 +33,7 @@ public class check_StyleAttributeDeclaration_NonTypesystemRule extends AbstractN
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(declaration, "Attribute of primitive type should have default value", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8307535009119141639", null, errorTarget);
       }
     }
-    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(declaration), CONCEPTS.StyleSheet$GD), LINKS.styleClass$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).all(new IWhereFilter<SNode>() {
+    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(declaration), CONCEPTS.StyleSheet$GD), LINKS.styles$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), SPropertyOperations.getString(declaration, PROPS.name$tAp1))) || it == declaration;
       }
@@ -55,7 +55,7 @@ public class check_StyleAttributeDeclaration_NonTypesystemRule extends AbstractN
   private static final class LINKS {
     /*package*/ static final SContainmentLink defaultValue$fHfJ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
     /*package*/ static final SContainmentLink valueType$A7Sx = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
-    /*package*/ static final SContainmentLink styleClass$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styleClass");
+    /*package*/ static final SContainmentLink styles$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
   }
 
   private static final class CONCEPTS {

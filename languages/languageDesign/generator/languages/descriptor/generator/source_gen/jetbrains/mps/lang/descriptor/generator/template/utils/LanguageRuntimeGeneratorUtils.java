@@ -50,7 +50,7 @@ public class LanguageRuntimeGeneratorUtils {
     List<SNode> roots = SModelOperations.roots(((SModel) editorModel), CONCEPTS.StyleSheet$GD);
     return ListSequence.fromList(roots).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.styleClass$FMi4)).any(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.styles$FMi4)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return SNodeOperations.isInstanceOf(it, CONCEPTS.StyleAttributeDeclaration$8S);
           }
@@ -70,6 +70,6 @@ public class LanguageRuntimeGeneratorUtils {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink styleClass$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styleClass");
+    /*package*/ static final SContainmentLink styles$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
   }
 }

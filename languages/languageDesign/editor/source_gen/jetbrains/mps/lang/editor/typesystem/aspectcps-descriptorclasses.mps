@@ -34179,7 +34179,7 @@
                     </node>
                   </node>
                   <node concept="13MTOL" id="3c$" role="2OqNvi">
-                    <ref role="13MTZf" to="tpc2:hgV6056" resolve="styleClass" />
+                    <ref role="13MTZf" to="tpc2:hgV6056" resolve="styles" />
                     <node concept="cd27G" id="3cO" role="lGtFl">
                       <node concept="3u3nmq" id="3cP" role="cd27D">
                         <property role="3u3nmv" value="3160281275655039769" />

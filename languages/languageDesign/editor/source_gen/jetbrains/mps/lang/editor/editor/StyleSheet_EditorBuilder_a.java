@@ -122,9 +122,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new styleClassListHandler_9d9hlb_d0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new stylesListHandler_9d9hlb_d0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
-    editorCell.setCellId("refNodeList_styleClass");
+    editorCell.setCellId("refNodeList_styles");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
     style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
@@ -132,11 +132,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class styleClassListHandler_9d9hlb_d0 extends RefNodeListHandler {
+  private static class stylesListHandler_9d9hlb_d0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public styleClassListHandler_9d9hlb_d0(SNode ownerNode, EditorContext context) {
+    public stylesListHandler_9d9hlb_d0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -146,7 +146,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.styleClass$FMi4;
+      return LINKS.styles$FMi4;
     }
     public SAbstractConcept getChildSConcept() {
       return CONCEPTS.IStyleSheetItem$Hj;
@@ -159,7 +159,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(styleClassListHandler_9d9hlb_d0.this.getNode(), LINKS.styleClass$FMi4));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(stylesListHandler_9d9hlb_d0.this.getNode(), LINKS.styles$FMi4));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -183,7 +183,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       }
     }
     private EditorCell createConstant_2() {
-      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "No styles");
+      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_9d9hlb_a3a");
       Style style = new StyleImpl();
       new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
@@ -213,6 +213,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink styleClass$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styleClass");
+    /*package*/ static final SContainmentLink styles$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
   }
 }

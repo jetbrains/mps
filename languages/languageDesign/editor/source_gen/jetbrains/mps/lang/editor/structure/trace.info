@@ -3618,8 +3618,8 @@
       <node id="1186402211651" at="5061,33,5062,71" concept="1" />
       <node id="1186402211651" at="5062,71,5063,106" concept="1" />
       <node id="1186402211651" at="5063,106,5064,17" concept="1" />
-      <node id="1186402402630" at="5064,17,5065,191" concept="1" />
-      <node id="1186402211651" at="5065,191,5066,26" concept="1" />
+      <node id="1186402402630" at="5064,17,5065,187" concept="1" />
+      <node id="1186402211651" at="5065,187,5066,26" concept="1" />
       <node id="1186402211651" at="5066,26,5067,22" concept="6" />
       <node id="1186402211651" at="5059,0,5069,0" concept="8" trace="createDescriptorForStyleSheet#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1186402211651" at="1245,44,1246,35" />

@@ -9,6 +9,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
@@ -23,7 +24,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -71,15 +71,17 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     editorCell.setCellId("Collection_wi6oz1_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    editorCell.addEditorCell(createComponent_0());
-    editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createConstant_0());
+    editorCell.addEditorCell(createProperty_0());
+    editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createCollection_1());
     return editorCell;
   }
-  private EditorCell createComponent_0() {
-    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
+  private EditorCell createConstant_0() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "completion styling");
+    editorCell.setCellId("Constant_wi6oz1_a0");
+    editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createProperty_0() {
@@ -107,7 +109,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       getCellFactory().popCellContext();
     }
   }
-  private EditorCell createConstant_0() {
+  private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "for actions");
     editorCell.setCellId("Constant_wi6oz1_c0");
     editorCell.setDefaultText("");
@@ -181,11 +183,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
     editorCell.setCellId("Collection_wi6oz1_a4a");
-    editorCell.addEditorCell(createConstant_1());
+    editorCell.addEditorCell(createConstant_2());
     editorCell.addEditorCell(createRefNode_1());
     return editorCell;
   }
-  private EditorCell createConstant_1() {
+  private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "customize");
     editorCell.setCellId("Constant_wi6oz1_a0e0");
     editorCell.setDefaultText("");
@@ -296,7 +298,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(memberListHandler_wi6oz1_b4a.this.getNode(), LINKS.member$oYX5));
       try {
         EditorCell emptyCell = null;
-        emptyCell = createConstant_2();
+        emptyCell = createConstant_3();
         installElementCellActions(null, emptyCell, true);
         setCellContext(emptyCell);
         return emptyCell;
@@ -316,13 +318,13 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         }
       }
     }
-    private EditorCell createConstant_2() {
+    private EditorCell createConstant_3() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_wi6oz1_a1e0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
-      editorCell.setDefaultText("no additional members");
+      editorCell.setDefaultText("<<no additional members>>");
       return editorCell;
     }
   }
