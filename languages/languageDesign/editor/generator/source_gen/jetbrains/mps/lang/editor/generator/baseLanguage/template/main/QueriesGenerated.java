@@ -1992,7 +1992,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptEditorContextHints$aY), LINKS.hints$rpI4)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_72_7(final IfMacroContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$GD), LINKS.styleClass$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$GD), LINKS.styles$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_72_8(final IfMacroContext _context) {
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:menusAndContributionsForConcept"))).count() == 1;
@@ -2019,7 +2019,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptEditorContextHints$aY), LINKS.hints$rpI4)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_72_16(final IfMacroContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$GD), LINKS.styleClass$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).isNotEmpty();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$GD), LINKS.styles$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_73_0(final IfMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.renderingCondition$P9Ly) != null;
@@ -3292,10 +3292,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.menuDescriptor$6S7z), LINKS.cellMenuPart$eVUY);
   }
   public static Iterable<SNode> sourceNodesQuery_44_0(final SourceSubstituteMacroNodesContext _context) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.styleClass$FMi4), CONCEPTS.StyleClass$qa);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.styles$FMi4), CONCEPTS.StyleClass$qa);
   }
   public static Iterable<SNode> sourceNodesQuery_44_1(final SourceSubstituteMacroNodesContext _context) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.styleClass$FMi4), CONCEPTS.StyleClass$qa);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.styles$FMi4), CONCEPTS.StyleClass$qa);
   }
   public static Iterable<SNode> sourceNodesQuery_44_2(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.styleItem$$mEY);
@@ -3394,7 +3394,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }, true);
   }
   public static Iterable<SNode> sourceNodesQuery_72_5(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$GD), LINKS.styleClass$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).sort(new ISelector<SNode, String>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(_context.getInputModel(), CONCEPTS.StyleSheet$GD), LINKS.styles$FMi4), CONCEPTS.StyleAttributeDeclaration$8S)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, PROPS.name$tAp1);
       }
@@ -7732,7 +7732,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink createFunction$Hzra = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f53a0aafeL, 0x10f53a0ab00L, "createFunction");
     /*package*/ static final SContainmentLink transformationMenu$RFLg = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x3a52dff8e5ebd740L, "transformationMenu");
     /*package*/ static final SContainmentLink hints$rpI4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, 0x527faacef4e379fbL, "hints");
-    /*package*/ static final SContainmentLink styleClass$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styleClass");
+    /*package*/ static final SContainmentLink styles$FMi4 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
     /*package*/ static final SContainmentLink nodeFactory$dOI7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x11204946ab7L, "nodeFactory");
     /*package*/ static final SContainmentLink separatorTextQuery$ttHL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0xce215999c843265L, "separatorTextQuery");
     /*package*/ static final SContainmentLink filter$Y4af = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, 0x1134299ee53L, "filter");
