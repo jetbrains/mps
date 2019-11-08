@@ -828,6 +828,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("supertypeNode", 0x117c567f086L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e29d976L).optional(false).ordered(true).multiple(false).origin("1201607798918").done();
     b.aggregate("isApplicableClause", 0x31d99a115038e5edL).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x31d99a115038e5e8L).optional(true).ordered(true).multiple(false).origin("3592071576955708909").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
+    b.alias("Inequation Replacement Rule");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInferenceRule() {
@@ -1100,7 +1101,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1236165709895");
     b.version(2);
     b.aggregate("rule", 0x11fd1380ea2L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70bfdafbb2c9449bL).optional(true).ordered(true).multiple(true).origin("1236165725858").done();
-    b.alias("Overloaded Operations Rules Container");
+    b.alias("Overloaded Operations Rules");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForOverloadedOpTypeRule_OneTypeSpecified() {
@@ -1529,7 +1530,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1228482838236");
     b.version(2);
     b.aggregate("converterItem", 0x11e0749bd06L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e073a595aL).optional(true).ordered(true).multiple(true).origin("1228482919686").done();
-    b.alias("Variable Converters Container");
+    b.alias("Variable Converters");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForWarningStatement() {

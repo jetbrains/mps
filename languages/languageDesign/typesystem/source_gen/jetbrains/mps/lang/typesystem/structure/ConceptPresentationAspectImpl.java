@@ -916,7 +916,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.VariableConvertersContainer:
         if (props_VariableConvertersContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("Variable Converters Container");
+          cpb.rawPresentation("Variable Converters");
           cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a901b0me);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a901b0me);
           props_VariableConvertersContainer = cpb.create();

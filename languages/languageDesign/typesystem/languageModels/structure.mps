@@ -972,6 +972,7 @@
     <property role="TrG5h" value="InequationReplacementRule" />
     <property role="3GE5qa" value="definition.rule.subtyping" />
     <property role="EcuMT" value="1201607707634" />
+    <property role="34LRSv" value="Inequation Replacement Rule" />
     <ref role="1TJDcQ" node="h6sgdYK" resolve="AbstractSubtypingRule" />
     <node concept="1TJgyj" id="hv5pZ26" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -1488,7 +1489,7 @@
     <property role="19KtqR" value="true" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="VariableConvertersContainer" />
-    <property role="34LRSv" value="Variable Converters Container" />
+    <property role="34LRSv" value="Variable Converters" />
     <property role="3GE5qa" value="definition.rule.varconvert" />
     <property role="EcuMT" value="1228482838236" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
@@ -1657,7 +1658,7 @@
     <property role="19KtqR" value="true" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="OverloadedOpRulesContainer" />
-    <property role="34LRSv" value="Overloaded Operations Rules Container" />
+    <property role="34LRSv" value="Overloaded Operations Rules" />
     <property role="3GE5qa" value="definition.rule.overload" />
     <property role="EcuMT" value="1236165709895" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
