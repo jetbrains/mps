@@ -238,12 +238,6 @@ public class Solution extends ReloadableModuleBase {
   }
 
   @Override
-  protected void collectMandatoryFacetTypes(Set<String> types) {
-    super.collectMandatoryFacetTypes(types);
-    types.add(TestsFacet.FACET_TYPE);
-  }
-
-  @Override
   public boolean canLoadClasses() {
     // TODO mps facet from this [like IDEA plugin facet]
     return getKind() != SolutionKind.NONE || getFacet(CustomClassLoadingFacet.class) != null;

@@ -444,12 +444,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     return null;
   }
 
-  @Override
-  protected void collectMandatoryFacetTypes(Set<String> types) {
-    super.collectMandatoryFacetTypes(types);
-    types.add(TestsFacet.FACET_TYPE);
-  }
-
   // TODO
 //  @Nullable
 //  @Override

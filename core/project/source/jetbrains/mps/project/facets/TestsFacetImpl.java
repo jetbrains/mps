@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,8 @@ package jetbrains.mps.project.facets;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -48,8 +47,12 @@ public class TestsFacetImpl extends ModuleFacetBase implements TestsFacet {
 
   @Nullable
   public static IFile getTestsOutputPath(ModuleDescriptor descriptor, @NotNull IFile moduleDescriptorFile) {
-    if (descriptor instanceof LanguageDescriptor || descriptor instanceof SolutionDescriptor) {
+    if (descriptor.getModuleFacetDescriptors().stream().map(ModuleFacetDescriptor::getType).anyMatch(FACET_TYPE::equals)) {
       // XXX tests facet shall record value in the descriptor and use it instead of hardcoded value
+      // For the time being, although we started to persist the facet itself, I decided not to expose this setting, as there's no UI to modify it
+      // and I don't want to deal with that right now. Once I/you get to that point, persist it like <sources generated="true" path="${module}/test_gen"/>
+      // to resemble structure of Java facet. Though, indeed, could be just getSourcesPath attribute as well (don't forget you need 'path' name/suffix for
+      // descriptor persistence to kick in).
       return moduleDescriptorFile.getParent().findChild("test_gen");
     } else {
       return null;

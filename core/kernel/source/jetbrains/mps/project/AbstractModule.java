@@ -340,23 +340,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       newDescriptors.addAll(descriptors);
       moduleDescriptor.getModelRootDescriptors().clear();
       moduleDescriptor.getModelRootDescriptors().addAll(newDescriptors);
-      //
-      // make sure Java facet settings get serialized. This facet was not reflected in persistence, instead, was contributed to by #collectMandatoryFacetTypes
-      // I'd like to change this to explicitly keep actual facets in MD, therefore ensure java facet is written the moment module is saved.
-      // Alternatively, could have added project migration to add 'java' module facet into MD, just don't want to deal with project migrations - I can remove
-      // this code in future MPS versions
-      final JavaModuleFacet jmf = getFacet(JavaModuleFacet.class);
-      if (jmf != null) {
-        boolean persistedDescriptor = false;
-        for (ModuleFacetDescriptor fd : moduleDescriptor.getModuleFacetDescriptors()) {
-          if (jmf.getFacetType().equals(fd.getType())) {
-            persistedDescriptor = true;
-          }
-        }
-        if (!persistedDescriptor) {
-          moduleDescriptor.addFacetDescriptor(jmf);
-        }
-      }
     }
     myChanged = false;
   }
