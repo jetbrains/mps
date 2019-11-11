@@ -72,7 +72,7 @@ public abstract class DataMPSFixtureTestCase extends AbstractMPSFixtureTestCase 
   }
 
   private void copyResource(String resName, String fromPath, IFile targetFile) throws IOException {
-    IFile sourceFile = targetFile.getFileSystem().getFile(PathManager.getPluginsPath() + fromPath);
+    IFile sourceFile = targetFile.getFS().getFile(PathManager.getPluginsPath() + fromPath);
     if (sourceFile.exists()) {
       copyContent(sourceFile.openInputStream(), targetFile.openOutputStream());
     } else {
