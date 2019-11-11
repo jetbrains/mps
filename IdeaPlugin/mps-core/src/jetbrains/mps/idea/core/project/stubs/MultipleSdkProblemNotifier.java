@@ -18,15 +18,14 @@ package jetbrains.mps.idea.core.project.stubs;
 
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
-import com.intellij.notification.Notifications;
-import com.intellij.openapi.application.ApplicationAdapter;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.ApplicationListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
-import jetbrains.mps.idea.core.project.stubs.DifferentSdkException;
-import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
+import com.intellij.openapi.util.Disposer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -39,7 +38,7 @@ import java.util.Set;
  */
 public class MultipleSdkProblemNotifier implements ProjectComponent {
   private final Project myProject;
-  private Data myDataToReport;
+  private Data myDataToReport = new Data();
   private Map<Module, String> myBadJdks = new HashMap<>();
 
   public MultipleSdkProblemNotifier(Project project) {
@@ -69,48 +68,45 @@ public class MultipleSdkProblemNotifier implements ProjectComponent {
   }
 
   public void reportSdkProblem(Module unluckyModule, DifferentSdkException exc) {
-    ApplicationManager.getApplication().assertWriteAccessAllowed();
+    myDataToReport.unluckyModules.put(unluckyModule, exc.getRequestedSdk());
+    myDataToReport.sdkInUse = exc.getCurrentSdk();
 
-    if (myDataToReport == null) {
-      myDataToReport = new Data();
-
-      ApplicationManager.getApplication().addApplicationListener(new ApplicationAdapter() {
-        @Override
-        public void afterWriteActionFinished(@NotNull Object action) {
+    final Disposable disposable = Disposer.newDisposable("SDK problem notification");
+    ApplicationManager.getApplication().addApplicationListener(new ApplicationListener() {
+      @Override
+      public void afterWriteActionFinished(@NotNull Object action) {
+        if (!myDataToReport.unluckyModules.isEmpty()) {
           myDataToReport.luckyModules.addAll(ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).getModules());
 
           new Notification("MPS facet",
-            "Multiple SDKs currently not supported in MPS plugin",
-            myDataToReport.createMessage(),
-            NotificationType.WARNING).notify(myProject);
+                           "Multiple SDKs currently not supported in MPS plugin",
+                           myDataToReport.createMessage(),
+                           NotificationType.WARNING).notify(myProject);
 
-          myDataToReport = null;
-          ApplicationManager.getApplication().removeApplicationListener(this);
+          myDataToReport.unluckyModules.clear();
+          myDataToReport.luckyModules.clear();
+          myDataToReport.sdkInUse = null;
         }
-      });
-    }
-
-    myDataToReport.unluckyModules.put(unluckyModule, exc.getRequestedSdk());
-    myDataToReport.sdkInUse = exc.getCurrentSdk();
+        disposable.dispose();
+      }
+    }, disposable);
   }
 
   public void reportIncorrectJDK(Module module, String versionString) {
-    ApplicationManager.getApplication().assertWriteAccessAllowed();
-
     myBadJdks.put(module, versionString);
 
-    ApplicationManager.getApplication().addApplicationListener(new ApplicationAdapter() {
+    final Disposable disposable = Disposer.newDisposable("Incorrect JDK notification");
+    ApplicationManager.getApplication().addApplicationListener(new ApplicationListener() {
       @Override
       public void afterWriteActionFinished(@NotNull Object action) {
-        if (myBadJdks.isEmpty()){
-          return;
+        if (!myBadJdks.isEmpty()) {
+          String title = "Modules with MPS facet only support JDK 11 and later";
+          new Notification("MPS facet", title, getBadJdksMessage(myBadJdks), NotificationType.WARNING).notify(myProject);
+          myBadJdks.clear();
         }
-        String title = "Modules with MPS facet only support JDK 11 and later";
-        new Notification("MPS facet", title, getBadJdksMessage(myBadJdks), NotificationType.WARNING).notify(myProject);
-        myBadJdks.clear();
-        ApplicationManager.getApplication().removeApplicationListener(this);
+        disposable.dispose();
       }
-    });
+    }, disposable);
   }
 
   private String getBadJdksMessage(Map<Module, String> badJdks) {
