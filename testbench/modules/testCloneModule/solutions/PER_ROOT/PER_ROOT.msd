@@ -6,6 +6,11 @@
     </modelRoot>
     <modelRoot contentPath="${module}/source_gen/PER_ROOT" type="java_source_stubs" />
   </models>
+  <facets>
+    <facet type="java">
+      <classes generated="true" path="${module}/classes_gen" />
+    </facet>
+  </facets>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

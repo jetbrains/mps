@@ -5,6 +5,11 @@
       <sourceRoot location="models" />
     </modelRoot>
   </models>
+  <facets>
+    <facet type="java">
+      <classes generated="true" path="${module}/classes_gen" />
+    </facet>
+  </facets>
   <accessoryModels>
     <model modelUID="r:aa217b70-4a8f-4766-a0c6-11cbab70f915(TestLanguage_ACCESORIES.accesory_model)" />
   </accessoryModels>

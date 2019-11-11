@@ -9,6 +9,11 @@
       <sourceRoot location="test.jar" />
     </modelRoot>
   </models>
+  <facets>
+    <facet type="java">
+      <classes generated="true" path="${module}/classes_gen" />
+    </facet>
+  </facets>
   <stubModelEntries>
     <stubModelEntry path="${mps_home}/testbench/modules/testCompilation/lib/test.jar" />
   </stubModelEntries>
