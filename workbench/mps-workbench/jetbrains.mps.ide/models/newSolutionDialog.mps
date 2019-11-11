@@ -33,6 +33,7 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="6f4m" ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)" />
     <import index="6qgz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.model(MPS.Core/)" />
+    <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -3045,6 +3046,35 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="39hYxrtzHa1" role="3cqZAp">
+          <node concept="2OqwBi" id="39hYxrtzHa2" role="3clFbG">
+            <node concept="2OqwBi" id="39hYxrtzHa3" role="2Oq$k0">
+              <node concept="37vLTw" id="39hYxrtzI9b" role="2Oq$k0">
+                <ref role="3cqZAo" node="eb0uW_hMJ1" resolve="generatorDescriptor" />
+              </node>
+              <node concept="liA8E" id="39hYxrtzHa5" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModuleFacetDescriptors()" resolve="getModuleFacetDescriptors" />
+              </node>
+            </node>
+            <node concept="liA8E" id="39hYxrtzHa6" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Collection.add(java.lang.Object)" resolve="add" />
+              <node concept="2ShNRf" id="39hYxrtzHa7" role="37wK5m">
+                <node concept="1pGfFk" id="39hYxrtzHa8" role="2ShVmc">
+                  <ref role="37wK5l" to="w0gx:~ModuleFacetDescriptor.&lt;init&gt;(java.lang.String,org.jetbrains.mps.openapi.persistence.Memento)" resolve="ModuleFacetDescriptor" />
+                  <node concept="10M0yZ" id="39hYxrtzHa9" role="37wK5m">
+                    <ref role="3cqZAo" to="b0pz:~JavaModuleFacet.FACET_TYPE" resolve="FACET_TYPE" />
+                    <ref role="1PxDUh" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                  </node>
+                  <node concept="2ShNRf" id="39hYxrtzHaa" role="37wK5m">
+                    <node concept="1pGfFk" id="39hYxrtzHab" role="2ShVmc">
+                      <ref role="37wK5l" to="pa15:~MementoImpl.&lt;init&gt;()" resolve="MementoImpl" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="eb0uW_pTdK" role="3cqZAp">
           <node concept="2YIFZM" id="eb0uW_pTsT" role="3clFbG">
             <ref role="37wK5l" to="z1c3:~ProjectPathUtil.setGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor,java.lang.String)" resolve="setGeneratorOutputPath" />
@@ -3444,6 +3474,35 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="39hYxrtzz24" role="3cqZAp">
+          <node concept="2OqwBi" id="39hYxrtz_PV" role="3clFbG">
+            <node concept="2OqwBi" id="39hYxrtz$2c" role="2Oq$k0">
+              <node concept="37vLTw" id="39hYxrtzz22" role="2Oq$k0">
+                <ref role="3cqZAo" node="1Yd98ZZnqGf" resolve="descriptor" />
+              </node>
+              <node concept="liA8E" id="39hYxrtz_xi" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModuleFacetDescriptors()" resolve="getModuleFacetDescriptors" />
+              </node>
+            </node>
+            <node concept="liA8E" id="39hYxrtzB44" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Collection.add(java.lang.Object)" resolve="add" />
+              <node concept="2ShNRf" id="39hYxrtzBe9" role="37wK5m">
+                <node concept="1pGfFk" id="39hYxrtzDJt" role="2ShVmc">
+                  <ref role="37wK5l" to="w0gx:~ModuleFacetDescriptor.&lt;init&gt;(java.lang.String,org.jetbrains.mps.openapi.persistence.Memento)" resolve="ModuleFacetDescriptor" />
+                  <node concept="10M0yZ" id="39hYxrtzEeO" role="37wK5m">
+                    <ref role="3cqZAo" to="b0pz:~JavaModuleFacet.FACET_TYPE" resolve="FACET_TYPE" />
+                    <ref role="1PxDUh" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                  </node>
+                  <node concept="2ShNRf" id="39hYxrtzEkh" role="37wK5m">
+                    <node concept="1pGfFk" id="39hYxrtzET4" role="2ShVmc">
+                      <ref role="37wK5l" to="pa15:~MementoImpl.&lt;init&gt;()" resolve="MementoImpl" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="eb0uW_pWjc" role="3cqZAp">
           <node concept="2YIFZM" id="eb0uW_pWz7" role="3clFbG">
             <ref role="37wK5l" to="z1c3:~ProjectPathUtil.setGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor,java.lang.String)" resolve="setGeneratorOutputPath" />
@@ -3627,6 +3686,35 @@
                 </node>
                 <node concept="37vLTw" id="2yLU_lnbiJH" role="37wK5m">
                   <ref role="3cqZAo" node="1Yd98ZZnqIg" resolve="languageModels" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="39hYxrtzF0W" role="3cqZAp">
+          <node concept="2OqwBi" id="39hYxrtzF0X" role="3clFbG">
+            <node concept="2OqwBi" id="39hYxrtzF0Y" role="2Oq$k0">
+              <node concept="37vLTw" id="39hYxrtzGZ_" role="2Oq$k0">
+                <ref role="3cqZAo" node="1Yd98ZZnqI1" resolve="languageDescriptor" />
+              </node>
+              <node concept="liA8E" id="39hYxrtzF10" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModuleFacetDescriptors()" resolve="getModuleFacetDescriptors" />
+              </node>
+            </node>
+            <node concept="liA8E" id="39hYxrtzF11" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Collection.add(java.lang.Object)" resolve="add" />
+              <node concept="2ShNRf" id="39hYxrtzF12" role="37wK5m">
+                <node concept="1pGfFk" id="39hYxrtzF13" role="2ShVmc">
+                  <ref role="37wK5l" to="w0gx:~ModuleFacetDescriptor.&lt;init&gt;(java.lang.String,org.jetbrains.mps.openapi.persistence.Memento)" resolve="ModuleFacetDescriptor" />
+                  <node concept="10M0yZ" id="39hYxrtzF14" role="37wK5m">
+                    <ref role="3cqZAo" to="b0pz:~JavaModuleFacet.FACET_TYPE" resolve="FACET_TYPE" />
+                    <ref role="1PxDUh" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                  </node>
+                  <node concept="2ShNRf" id="39hYxrtzF15" role="37wK5m">
+                    <node concept="1pGfFk" id="39hYxrtzF16" role="2ShVmc">
+                      <ref role="37wK5l" to="pa15:~MementoImpl.&lt;init&gt;()" resolve="MementoImpl" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

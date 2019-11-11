@@ -48,6 +48,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.persistence.DefaultModelRoot;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.vfs.FileSystem;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -273,6 +276,7 @@ public class NewModuleUtil {
       modelRootDescriptor = DefaultModelRoot.createSingleFolderDescriptor(templateModelsLocation);
     }
     generatorDescriptor.getModelRootDescriptors().add(modelRootDescriptor);
+    generatorDescriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
     ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.findChild("source_gen").getPath());
     return generatorDescriptor;
   }
@@ -296,6 +300,7 @@ public class NewModuleUtil {
     }
 
     descriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(modelsDir.getParent(), modelsDir));
+    descriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
     ProjectPathUtil.setGeneratorOutputPath(descriptor, moduleLocation.findChild("source_gen").getPath());
     return descriptor;
   }
@@ -310,6 +315,7 @@ public class NewModuleUtil {
       throw new IllegalStateException("Trying to create a language in an existing language's directory " + languageModels);
     }
     languageDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(languageModels.getParent(), languageModels));
+    languageDescriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
     ProjectPathUtil.setGeneratorOutputPath(languageDescriptor, moduleLocation.findChild("source_gen").getPath());
     return languageDescriptor;
   }
