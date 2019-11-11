@@ -281,8 +281,6 @@
       <fileset dir="${base_dir}/IdeaPlugin/tests/blProject"/>
     </copy>
 
-    <mkdir dir="${ideaPath}/java/mockJDK-1.7/jre/lib"/>
-
     <junit fork="true"
            dir="."
            haltonfailure="false"
