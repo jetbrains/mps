@@ -11,6 +11,7 @@
     <facet type="java">
       <classes generated="true" />
     </facet>
+    <facet type="tests" />
   </facets>
   <sourcePath />
   <dependencies>
