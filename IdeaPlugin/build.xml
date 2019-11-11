@@ -290,6 +290,7 @@
       <jvmarg value="-Xss1024k"/>
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
+      <jvmarg value="-Didea.log.perf.stats=false"/>
       <formatter type="xml"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
@@ -330,6 +331,7 @@
       <jvmarg value="-Xss1024k"/>
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
+      <jvmarg value="-Didea.log.perf.stats=false"/>
       <formatter type="xml"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
@@ -367,6 +369,7 @@
       <jvmarg value="-Xss1024k"/>
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
+      <jvmarg value="-Didea.log.perf.stats=false"/>
       <formatter type="xml"/>
       <sysproperty key="jdk.home.path" value="${jdkPath}"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
@@ -406,6 +409,7 @@
       <jvmarg value="-Xss1024k"/>
       <jvmarg value="-Xmx1024m"/>
       <jvmarg value="${junit.debug.arg}"/>
+      <jvmarg value="-Didea.log.perf.stats=false"/>
       <formatter type="xml"/>
       <sysproperty key="idea.platform.prefix" value="Idea"/>
       <sysproperty key="idea.config.path" value="${test.platform.sandbox.dir}/config"/>
