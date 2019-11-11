@@ -18,7 +18,6 @@ public class ToolsInternal_ActionGroup extends GeneratedActionGroup {
     setPopup(false);
     ToolsInternal_ActionGroup.this.addParameterizedAction(new EmulateMakeSession_Action(new MockMakeSessionProvider()), PluginId.getId("jetbrains.mps.ide"), new MockMakeSessionProvider());
     ToolsInternal_ActionGroup.this.addSeparator();
-    ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ForcedSaveAll_Action");
     ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ConvertToBinaryPersistence_Action");
     ToolsInternal_ActionGroup.this.addSeparator();
     ToolsInternal_ActionGroup.this.addAction("jetbrains.mps.ide.actions.FindRootableConceptsWithoutIcons_Action");

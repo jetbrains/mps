@@ -23237,9 +23237,6 @@
         </node>
       </node>
       <node concept="2a7GMi" id="3CJp_Ok4eRq" role="ftvYc" />
-      <node concept="tCFHf" id="2cEqqWVRq5p" role="ftvYc">
-        <ref role="tCJdB" node="2cEqqWVQVCm" resolve="ForcedSaveAll" />
-      </node>
       <node concept="tCFHf" id="31MkvTuChKF" role="ftvYc">
         <ref role="tCJdB" node="63zBYr2_jo0" resolve="ConvertToBinaryPersistence" />
       </node>
@@ -23290,7 +23287,7 @@
         <ref role="tCJdB" node="4npc6Q0okO0" resolve="CopyNodeReference" />
       </node>
       <node concept="tCFHf" id="NhBpYUS3BV" role="ftvYc">
-        <ref role="tCJdB" node="hGnMLrO" />
+        <ref role="tCJdB" node="hGnMLrO" resolve="CloneRoot" />
       </node>
       <node concept="10WQ6h" id="4h0_rmDolOA" role="ftvYc">
         <property role="TrG5h" value="copy" />
@@ -23399,7 +23396,7 @@
       </node>
       <node concept="2a7GMi" id="miYJQAr2Un" role="ftvYc" />
       <node concept="tCFHf" id="miYJQAr2Uw" role="ftvYc">
-        <ref role="tCJdB" node="hZikFSU" />
+        <ref role="tCJdB" node="hZikFSU" resolve="CopyModuleName" />
       </node>
       <node concept="2a7GMi" id="4NOAcpcU2C$" role="ftvYc" />
       <node concept="10WQ6h" id="miYJQAr2Uo" role="ftvYc">
@@ -35886,11 +35883,11 @@
     </node>
   </node>
   <node concept="sE7Ow" id="2cEqqWVQVCm">
-    <property role="1WHSii" value="Re-save all models even if model was not changed" />
     <property role="TrG5h" value="ForcedSaveAll" />
-    <property role="2uzpH1" value="Re-save all models from project" />
+    <property role="2uzpH1" value="Resave Everything" />
     <property role="3GE5qa" value="Menu.FileView.Actions" />
     <property role="1teQrl" value="true" />
+    <property role="1WHSii" value="Updates all models' and modules' files" />
     <node concept="1DS2jV" id="6HwFPBykFA" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
