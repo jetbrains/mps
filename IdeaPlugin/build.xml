@@ -133,7 +133,6 @@
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/idea_home" failonerror="false" overwrite="true">
       <file file="${ideaPath}/build.txt"/>
-      <file file="${ideaPath}/Resources/build.txt"/>
     </copy>
   </target>
 
