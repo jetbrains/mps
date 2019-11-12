@@ -20,12 +20,9 @@
   <description>Enables and manages model unloading process, logs related stats</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
 
-  <application-components>
+  <project-components>
     <component>
       <implementation-class>jetbrains.mps.ide.memManagement.MemManager</implementation-class>
     </component>
-  </application-components>
-
-  <extensions defaultExtensionNs="com.intellij">
-  </extensions>
+  </project-components>
 </idea-plugin>

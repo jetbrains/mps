@@ -15,8 +15,126 @@
  */
 package jetbrains.mps.ide.memManagement;
 
-import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.wm.IdeFrame;
+import com.intellij.openapi.wm.StatusBarWidget;
+import com.intellij.openapi.wm.ex.StatusBarEx;
+import com.intellij.openapi.wm.ex.WindowManagerEx;
+import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
+import com.intellij.util.Alarm;
+import com.intellij.util.Alarm.ThreadToUse;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.MPSProject;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
-public class MemManager implements BaseComponent {
+import java.awt.event.ActionListener;
+import java.util.function.Consumer;
 
+import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
+
+public class MemManager implements ProjectComponent {
+  private static final Logger LOG = LogManager.getLogger(MemManager.class);
+  public static final int DELAY = 5;
+
+  private Project myProject;
+  private MemoryUsagePanel myMemUsagePanel = null;
+  private ActionListener myActionListener = e -> {
+    cleanup();
+  };
+  private Alarm myAlarm;
+
+  public MemManager(Project project) {
+    myProject = project;
+    myAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
+  }
+
+  @Override
+  public void projectOpened() {
+    IdeFrame frame = WindowManagerEx.getInstanceEx().findFrameHelper(myProject);
+    if (frame == null) {
+      return;
+    }
+    StatusBarEx sb = (StatusBarEx) frame.getStatusBar();
+    if (sb == null) {
+      return;
+    }
+    StatusBarWidget widget = sb.getWidget(MemoryUsagePanel.WIDGET_ID);
+    if (!(widget instanceof MemoryUsagePanel)) {
+      return;
+    }
+
+    myMemUsagePanel = (MemoryUsagePanel) widget;
+    myMemUsagePanel.addActionListener(myActionListener);
+  }
+
+  @Override
+  public void projectClosed() {
+    if (myMemUsagePanel != null) {
+      myMemUsagePanel.removeActionListener(myActionListener);
+    }
+  }
+
+  private void cleanup() {
+    long usedMemBefore = getUsedMem();
+    long modelsBefore = countModels(true);
+    long timeBefore = System.currentTimeMillis();
+    unloadModels();
+    long timeAfterUnloading = System.currentTimeMillis();
+    System.gc();
+    long timeAfter = System.currentTimeMillis();
+    long usedMemAfter = getUsedMem();
+    long modelsAfter = countModels(true);
+    LOG.info(String.format("Models unloaded: %d; Unloading time: %.2fs; GC time: %.2fs; Memory freed: %dmb ",
+                           modelsBefore - modelsAfter, (1.0 * timeAfterUnloading - timeBefore) / 1000, (1.0 * timeAfter - timeAfterUnloading) / 1000,
+                           usedMemBefore - usedMemAfter));
+
+    //let's see what happens not so long after
+    myAlarm.addRequest(() -> {
+      long modelsLongAfter = countModels(true);
+      long modelsTotal = countModels(false);
+      LOG.info(String.format("[%ss]: Models reloaded: %d of total %d", DELAY, modelsLongAfter - modelsAfter, modelsTotal));
+    }, DELAY * 1000);
+  }
+
+  @NotNull
+  private SRepository getRepo() {
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    return mpsProject.getRepository();
+  }
+
+  private long countModels(boolean loadedOnly) {
+    final int[] res = {0};
+    forEachModel(getRepo(), m -> {
+      if (!loadedOnly || m.isLoaded()) {
+        res[0]++;
+      }
+    });
+    return res[0];
+  }
+
+  private void unloadModels() {
+    forEachModel(getRepo(), SModel::unload);
+  }
+
+  private void forEachModel(SRepository repo, Consumer<SModel> consumer) {
+    repo.getModelAccess().runWriteAction(() -> {
+      for (SModule module : repo.getModules()) {
+        for (SModel model : module.getModels()) {
+          consumer.accept(model);
+        }
+      }
+    });
+  }
+
+  private long getUsedMem() {
+    Runtime rt = Runtime.getRuntime();
+    long allocatedMem = rt.totalMemory() / MEGABYTE;
+    return allocatedMem - rt.freeMemory() / MEGABYTE;
+  }
 }

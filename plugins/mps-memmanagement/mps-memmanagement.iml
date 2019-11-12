@@ -10,5 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Idea-platform" level="project" />
+    <orderEntry type="module" module-name="logging" />
+    <orderEntry type="module" module-name="mps-platform" />
   </component>
 </module>
