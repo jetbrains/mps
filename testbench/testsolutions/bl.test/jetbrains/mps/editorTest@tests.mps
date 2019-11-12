@@ -734,7 +734,7 @@
       <concept id="5633355289409839142" name="jetbrains.mps.lang.editor.editorTest.structure.NonEmptyProperty" flags="ng" index="2SYHbJ">
         <property id="5633355289409839143" name="value" index="2SYHbI" />
       </concept>
-      <concept id="4965160547087302660" name="jetbrains.mps.lang.editor.editorTest.structure.NotEditableVaraileReference" flags="ng" index="112SGM">
+      <concept id="4965160547087302660" name="jetbrains.mps.lang.editor.editorTest.structure.NotEditableVarableReference" flags="ng" index="112SGM">
         <reference id="4965160547087302661" name="variableDeclaration" index="112SGN" />
       </concept>
       <concept id="7658393498702771296" name="jetbrains.mps.lang.editor.editorTest.structure.ReferenceAnnotataion" flags="ng" index="327I0J" />

@@ -1349,7 +1349,7 @@
                   <ref role="3cqZAo" node="2esXIF0VX32" resolve="field" />
                 </node>
                 <node concept="liA8E" id="2esXIF0VX3m" role="2OqNvi">
-                  <ref role="37wK5l" to="45y3:6hYzBiUOuTN" resolve="isCompilerGenerated" />
+                  <ref role="37wK5l" to="45y3:6hYzBiUOuTN" resolve="isSynthetic" />
                 </node>
               </node>
               <node concept="3clFbS" id="2esXIF0VX3n" role="3clFbx">
@@ -1463,7 +1463,7 @@
                   <ref role="3cqZAo" node="2esXIF0VX4G" resolve="field" />
                 </node>
                 <node concept="liA8E" id="2esXIF0VX51" role="2OqNvi">
-                  <ref role="37wK5l" to="45y3:6hYzBiUOuTN" resolve="isCompilerGenerated" />
+                  <ref role="37wK5l" to="45y3:6hYzBiUOuTN" resolve="isSynthetic" />
                 </node>
               </node>
               <node concept="3clFbS" id="2esXIF0VX52" role="3clFbx">

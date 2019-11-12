@@ -427,7 +427,7 @@
                           <ref role="3cqZAo" node="6798YLJ2huy" resolve="it" />
                         </node>
                         <node concept="3Tsc0h" id="6798YLJ297f" role="2OqNvi">
-                          <ref role="3TtcxE" to="tpc2:hgV6056" resolve="styleClass" />
+                          <ref role="3TtcxE" to="tpc2:hgV6056" resolve="styles" />
                         </node>
                       </node>
                       <node concept="2HwmR7" id="6798YLJ2lfX" role="2OqNvi">

@@ -54,7 +54,7 @@
     <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="6TyNL3imAnF" role="PzmwI">
-      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="INamedAspect" />
     </node>
     <node concept="1TJgyi" id="uLQNrGW9L$" role="1TKVEl">
       <property role="IQ2nx" value="554465258093190244" />

@@ -393,7 +393,7 @@
   </node>
   <node concept="1h_SRR" id="5VED60U2Mgt">
     <property role="TrG5h" value="RuleBlockActions" />
-    <ref role="1h_SK9" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+    <ref role="1h_SK9" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
     <node concept="1hA7zw" id="5VED60U2Mgu" role="1h_SK8">
       <property role="1hAc7j" value="13S4mXuSN7V/insert_action_id" />
       <node concept="1hAIg9" id="5VED60U2Mgv" role="1hA7z_">

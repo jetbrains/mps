@@ -72,7 +72,7 @@
         <reference id="1078939183255" name="editorComponent" index="PMmxG" />
       </concept>
       <concept id="1186402211651" name="jetbrains.mps.lang.editor.structure.StyleSheet" flags="ng" index="V5hpn">
-        <child id="1186402402630" name="styleClass" index="V601i" />
+        <child id="1186402402630" name="styles" index="V601i" />
       </concept>
       <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
         <property id="1186403713874" name="color" index="Vb096" />
@@ -861,7 +861,7 @@
             <node concept="3cpWsn" id="3ZKqOfprd85" role="3cpWs9">
               <property role="TrG5h" value="block" />
               <node concept="3Tqbb2" id="3ZKqOfprd7T" role="1tU5fm">
-                <ref role="ehGHo" to="mqj2:1BFxp3HHhta" resolve="RuleBlock" />
+                <ref role="ehGHo" to="mqj2:1BFxp3HHhta" resolve="RulesBlock" />
               </node>
               <node concept="2OqwBi" id="3ZKqOfprkD8" role="33vP2m">
                 <node concept="0IXxy" id="3ZKqOfprk_1" role="2Oq$k0" />

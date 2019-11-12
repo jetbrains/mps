@@ -56,7 +56,7 @@
   <node concept="bUwia" id="5sUTrySMJqW">
     <property role="TrG5h" value="main" />
     <node concept="3aamgX" id="1mFJTG6KPp" role="3acgRq">
-      <ref role="30HIoZ" to="sis7:1mFJTG6JRZ" resolve="ProblemKindRoot" />
+      <ref role="30HIoZ" to="sis7:1mFJTG6JRZ" resolve="ProblemKind" />
       <node concept="b5Tf3" id="1mFJTG6KPu" role="1lVwrX" />
     </node>
   </node>

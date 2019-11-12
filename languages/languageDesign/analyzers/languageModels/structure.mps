@@ -84,7 +84,7 @@
       <ref role="20lvS9" node="47tk9ge7tj9" resolve="AnalyzerFunFunction" />
     </node>
     <node concept="PrWs8" id="6TyNL3imAnx" role="PzmwI">
-      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="INamedAspect" />
     </node>
     <node concept="1TJgyj" id="7XrupC0KJIo" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -280,7 +280,7 @@
       <ref role="20lvS9" to="tp41:6UdHCtZMvVk" resolve="IBuilderMode" />
     </node>
     <node concept="PrWs8" id="6TyNL3imAnZ" role="PzmwI">
-      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="IAspectNamingPolicy" />
+      <ref role="PrY4T" to="tpce:6TyNL3imAnw" resolve="INamedAspect" />
     </node>
   </node>
   <node concept="1TIwiD" id="nUEAIXm3Ew">

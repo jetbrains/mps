@@ -13847,7 +13847,7 @@
               <node concept="2OqwBi" id="7zL4upETvJ4" role="3clFbG">
                 <node concept="2OqwBi" id="1cQomrsp2tL" role="2Oq$k0">
                   <node concept="3Tsc0h" id="1cQomrsphSH" role="2OqNvi">
-                    <ref role="3TtcxE" to="tpc2:hgV6056" resolve="styleClass" />
+                    <ref role="3TtcxE" to="tpc2:hgV6056" resolve="styles" />
                   </node>
                   <node concept="30H73N" id="1cQomrsp2tP" role="2Oq$k0" />
                 </node>
@@ -14004,7 +14004,7 @@
               <node concept="2OqwBi" id="3sdr6u9aw9F" role="3clFbG">
                 <node concept="2OqwBi" id="3sdr6u9aw9G" role="2Oq$k0">
                   <node concept="3Tsc0h" id="3sdr6u9aw9H" role="2OqNvi">
-                    <ref role="3TtcxE" to="tpc2:hgV6056" resolve="styleClass" />
+                    <ref role="3TtcxE" to="tpc2:hgV6056" resolve="styles" />
                   </node>
                   <node concept="30H73N" id="3sdr6u9aw9I" role="2Oq$k0" />
                 </node>
@@ -24239,7 +24239,7 @@
                             </node>
                           </node>
                           <node concept="13MTOL" id="7zL4upF1SJE" role="2OqNvi">
-                            <ref role="13MTZf" to="tpc2:hgV6056" resolve="styleClass" />
+                            <ref role="13MTZf" to="tpc2:hgV6056" resolve="styles" />
                           </node>
                         </node>
                         <node concept="v3k3i" id="7zL4upF1WFL" role="2OqNvi">
@@ -24315,7 +24315,7 @@
                       </node>
                     </node>
                     <node concept="13MTOL" id="6$vu$RnXSaS" role="2OqNvi">
-                      <ref role="13MTZf" to="tpc2:hgV6056" resolve="styleClass" />
+                      <ref role="13MTZf" to="tpc2:hgV6056" resolve="styles" />
                     </node>
                   </node>
                   <node concept="v3k3i" id="6$vu$RnXVrf" role="2OqNvi">
@@ -26266,7 +26266,7 @@
                       </node>
                     </node>
                     <node concept="13MTOL" id="5$O_i97G5cK" role="2OqNvi">
-                      <ref role="13MTZf" to="tpc2:hgV6056" resolve="styleClass" />
+                      <ref role="13MTZf" to="tpc2:hgV6056" resolve="styles" />
                     </node>
                   </node>
                   <node concept="v3k3i" id="5$O_i97G5cL" role="2OqNvi">

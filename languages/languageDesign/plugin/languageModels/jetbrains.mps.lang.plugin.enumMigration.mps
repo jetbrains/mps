@@ -162,7 +162,7 @@
             </node>
             <node concept="3X5Udd" id="3Ftr4R6BFp$" role="3X5gkp">
               <node concept="21nZrQ" id="3Ftr4R6BFp_" role="3X5Uda">
-                <ref role="21nZrZ" to="tp4k:3Ftr4R6BFpj" resolve="Mac_OS_X_10_5_" />
+                <ref role="21nZrZ" to="tp4k:3Ftr4R6BFpj" resolve="Mac_OS_X_Plus" />
               </node>
               <node concept="3X5gDF" id="3Ftr4R6BFpA" role="3X5gFO">
                 <node concept="Xl_RD" id="3Ftr4R6BFps" role="3X5gDC">
@@ -296,7 +296,7 @@
                     <ref role="1XH99l" to="tp4k:3Ftr4R6BFpg" resolve="Keymap" />
                   </node>
                   <node concept="2ViDtV" id="3Ftr4R6BFqf" role="2OqNvi">
-                    <ref role="2ViDtZ" to="tp4k:3Ftr4R6BFpj" resolve="Mac_OS_X_10_5_" />
+                    <ref role="2ViDtZ" to="tp4k:3Ftr4R6BFpj" resolve="Mac_OS_X_Plus" />
                   </node>
                 </node>
               </node>
