@@ -12,7 +12,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.ide.refactoring.MoveUpDialog;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -29,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesAction {
+public class MoveConceptMemberUp extends AbstractLanguageMove implements MoveNodesAction {
   private String myName;
   private String myKind;
   private _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> myApplicableToConceptFeature;
   private _FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super SNode> myNeedToMerge;
-  public MoveFeatureUp(String name, String kind, _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> applicableToConceptFeature, _FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super SNode> needToMerge) {
+  public MoveConceptMemberUp(String name, String kind, _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> applicableToConceptFeature, _FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super SNode> needToMerge) {
     myName = name;
     myKind = kind;
     myApplicableToConceptFeature = applicableToConceptFeature;
@@ -107,7 +106,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
       super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
-      return new MoveFeatureUp("Move Property Up", "property", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      return new MoveConceptMemberUp("Move Property Up", "property", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
           return SNodeOperations.hasRole(conceptFeature, LINKS.propertyDeclaration$lL73);
         }
@@ -127,7 +126,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
       super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
-      return new MoveFeatureUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      return new MoveConceptMemberUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
           return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$lL6$) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
         }
@@ -147,7 +146,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
       super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
-      return new MoveFeatureUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      return new MoveConceptMemberUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
           return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$lL6$) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b8L);
         }
