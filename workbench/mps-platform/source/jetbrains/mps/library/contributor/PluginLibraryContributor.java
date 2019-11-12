@@ -18,6 +18,7 @@ package jetbrains.mps.library.contributor;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
+import com.intellij.openapi.util.io.FileUtil;
 import jetbrains.mps.LanguageLibrary;
 import jetbrains.mps.vfs.IFileSystem;
 import org.apache.log4j.LogManager;
@@ -50,7 +51,14 @@ public final class PluginLibraryContributor implements LibraryContributor {
     if (plugin == null) {
       throw new IllegalStateException("Plugin could not be found: plugin=" + pluginId.getIdString());
     }
-    final File libraryPath = new File(plugin.getPath(), library.dir);
+    File pluginPath = plugin.getPath();
+    // Path can point to jar file
+    // In this case path to languages must be constructed from plugin folder
+    if (FileUtil.isJarOrZip(pluginPath) && "lib".equals(pluginPath.getParentFile().getName())) {
+      // jar should be in plugin/lib folder
+      pluginPath = pluginPath.getParentFile().getParentFile();
+    }
+    final File libraryPath = new File(pluginPath, library.dir);
     return new LibDescriptor(myFileSystem.getFile(libraryPath), plugin.getPluginClassLoader());
   }
 
