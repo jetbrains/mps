@@ -72,13 +72,19 @@ final class BehaviorChecker {
     }
   }
 
-  static <T> void checkConcept(@NotNull SMethod<T> method) {
-
-  }
-
   static void checkForConcept(@NotNull SAbstractConcept mustBeSubConcept, @NotNull SAbstractConcept superConcept) {
+    checkConceptIsValid(mustBeSubConcept);
+    checkConceptIsValid(superConcept);
     if (!mustBeSubConcept.isSubConceptOf(superConcept)) {
       throw new IllegalArgumentException("Illegal parameter : " + mustBeSubConcept + " is not a subconcept of " + superConcept);
+    }
+  }
+
+  private static void checkConceptIsValid(@NotNull SAbstractConcept someConcept) {
+    if (!someConcept.isValid()) {
+      throw new IllegalArgumentException(String.format("The concept %s is not valid, probably the language %s is not deployed",
+                                                       someConcept,
+                                                       someConcept.getLanguage().getQualifiedName()));
     }
   }
 
