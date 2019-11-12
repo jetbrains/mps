@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import javax.swing.AbstractAction;
 import com.intellij.refactoring.RefactoringBundle;
 import java.awt.event.ActionEvent;
@@ -31,6 +32,10 @@ public abstract class RefactoringDialog extends DialogWrapper {
     List<Action> actions = ListSequence.fromList(new ArrayList<Action>());
     ListSequence.fromList(actions).addElement(getRefactorAction());
     ListSequence.fromList(actions).addElement(getCancelAction());
+    Action[] superActions = super.createActions();
+    if (Sequence.fromIterable(Sequence.fromArray(superActions)).contains(getHelpAction())) {
+      ListSequence.fromList(actions).addElement(getHelpAction());
+    }
     return ListSequence.fromList(actions).toGenericArray(Action.class);
   }
   @Override

@@ -339,7 +339,9 @@
       </concept>
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
+      <concept id="1240325842691" name="jetbrains.mps.baseLanguage.collections.structure.AsSequenceOperation" flags="nn" index="39bAoz" />
       <concept id="1184963466173" name="jetbrains.mps.baseLanguage.collections.structure.ToArrayOperation" flags="nn" index="3_kTaI" />
+      <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
     </language>
   </registry>
   <node concept="312cEu" id="1TclyuNTOmp">
@@ -1652,6 +1654,48 @@
             <node concept="TSZUe" id="1t_LRy89k4$" role="2OqNvi">
               <node concept="1rXfSq" id="4hiugqyz5Ig" role="25WWJ7">
                 <ref role="37wK5l" to="jkm4:~DialogWrapper.getCancelAction()" resolve="getCancelAction" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3u6nf1jlchQ" role="3cqZAp">
+          <node concept="3cpWsn" id="3u6nf1jlchR" role="3cpWs9">
+            <property role="TrG5h" value="superActions" />
+            <node concept="10Q1$e" id="3u6nf1jlcev" role="1tU5fm">
+              <node concept="3uibUv" id="3u6nf1jlcey" role="10Q1$1">
+                <ref role="3uigEE" to="dxuu:~Action" resolve="Action" />
+              </node>
+            </node>
+            <node concept="3nyPlj" id="3u6nf1jlchS" role="33vP2m">
+              <ref role="37wK5l" to="jkm4:~DialogWrapper.createActions()" resolve="createActions" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3u6nf1jlbMI" role="3cqZAp">
+          <node concept="3clFbS" id="3u6nf1jlbMK" role="3clFbx">
+            <node concept="3clFbF" id="3u6nf1jleX9" role="3cqZAp">
+              <node concept="2OqwBi" id="3u6nf1jleXb" role="3clFbG">
+                <node concept="37vLTw" id="3u6nf1jleXc" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1t_LRy89k4m" resolve="actions" />
+                </node>
+                <node concept="TSZUe" id="3u6nf1jleXd" role="2OqNvi">
+                  <node concept="1rXfSq" id="3u6nf1jlf4w" role="25WWJ7">
+                    <ref role="37wK5l" to="jkm4:~DialogWrapper.getHelpAction()" resolve="getHelpAction" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3u6nf1jleji" role="3clFbw">
+            <node concept="2OqwBi" id="3u6nf1jldin" role="2Oq$k0">
+              <node concept="37vLTw" id="3u6nf1jlchT" role="2Oq$k0">
+                <ref role="3cqZAo" node="3u6nf1jlchR" resolve="superActions" />
+              </node>
+              <node concept="39bAoz" id="3u6nf1jle4Z" role="2OqNvi" />
+            </node>
+            <node concept="3JPx81" id="3u6nf1jlewY" role="2OqNvi">
+              <node concept="1rXfSq" id="3u6nf1jlexJ" role="25WWJ7">
+                <ref role="37wK5l" to="jkm4:~DialogWrapper.getHelpAction()" resolve="getHelpAction" />
               </node>
             </node>
           </node>
