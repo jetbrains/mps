@@ -33,8 +33,10 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getStereotype_id_GDk1qZ1fV = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getStereotype").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZ1fV").build();
   public static final SMethod<String> getLongName_id_GDk1qZ1tf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLongName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZ1tf").build();
   public static final SMethod<String> getSimpleName_id_GDk1qZ1ND = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("_GDk1qZ1ND").build();
+  public static final SMethod<SModelName> getNameObject_id2bm9xT0zK3P = new SMethodBuilder<SModelName>(new SJavaCompoundTypeImpl(SModelName.class)).name("getNameObject").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2bm9xT0zK3P").build();
+  public static final SMethod<Void> updateValue_id2bm9xT0zPoJ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("updateValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2bm9xT0zPoJ").build(SMethodBuilder.createJavaParameter(SModelName.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id_GDk1qZ6bz, create_id_GDk1qZdiH, getNamespace_id_GDk1qYZiR, getStereotype_id_GDk1qZ1fV, getLongName_id_GDk1qZ1tf, getSimpleName_id_GDk1qZ1ND);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id_GDk1qZ6bz, create_id_GDk1qZdiH, getNamespace_id_GDk1qYZiR, getStereotype_id_GDk1qZ1fV, getLongName_id_GDk1qZ1tf, getSimpleName_id_GDk1qZ1ND, getNameObject_id2bm9xT0zK3P, updateValue_id2bm9xT0zPoJ);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -61,6 +63,13 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getSimpleName_id_GDk1qZ1ND(@NotNull SNode __thisNode__) {
     return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$givw)).getSimpleName();
   }
+  /*package*/ static SModelName getNameObject_id2bm9xT0zK3P(@NotNull SNode __thisNode__) {
+    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$givw));
+  }
+  /*package*/ static void updateValue_id2bm9xT0zPoJ(@NotNull SNode __thisNode__, SModelName modelName) {
+    // I don't expect to get null value here, if null comes, it's better to fail right away, rather than unexpectedly on later getNamespace()  
+    SPropertyOperations.assign(__thisNode__, PROPS.value$givw, modelName.getValue());
+  }
 
   /*package*/ ModelName__BehaviorDescriptor() {
   }
@@ -85,6 +94,11 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((String) getLongName_id_GDk1qZ1tf(node));
       case 5:
         return (T) ((String) getSimpleName_id_GDk1qZ1ND(node));
+      case 6:
+        return (T) ((SModelName) getNameObject_id2bm9xT0zK3P(node));
+      case 7:
+        updateValue_id2bm9xT0zPoJ(node, (SModelName) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
