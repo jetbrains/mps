@@ -3,7 +3,7 @@
   <property name="build.dir" location="build" />
   <property name="build.tmp" location="${build.dir}/tmp/xmlPersistencePlugin" />
   <property name="build.layout" location="${build.dir}/artifacts/xmlPersistencePlugin" />
-  <property name="mps_dist" location="${basedir}/../../build/artifacts/mps" />
+  <property name="mps_dist" location="${basedir}/../../work/MPS 2019.3 EAP" />
   <property name="idea_home" location="${mps_dist}" />
   <property name="artifacts.mps" location="${mps_dist}" />
   <property name="artifacts.IDEA" location="${idea_home}" />
@@ -68,7 +68,6 @@
     <jar destfile="${build.tmp}/default/MPS-sample-persistence.zip/mps-sample-persistence/lib/jetbrains.mps.samples.xmlPersistence.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.xmlPersistence" />
       <fileset dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence" includes="icons/**, resources/**" />
-      <fileset dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/testdata" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.xmlPersistence.jar" />
     </jar>
@@ -77,12 +76,6 @@
     </copyModels>
     <jar destfile="${build.tmp}/default/MPS-sample-persistence.zip/mps-sample-persistence/lib/jetbrains.mps.samples.xmlPersistence-src.jar" duplicate="preserve">
       <fileset dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/source_gen">
-        <exclude name="**/trace.info" />
-        <exclude name="**/exports" />
-        <exclude name="**/checkpoints" />
-        <exclude name="**/*.mps" />
-      </fileset>
-      <fileset dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/testdata">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
@@ -265,13 +258,11 @@
   <target name="makeDependents" />
   
   <target name="java.compile.jetbrains.mps.samples.xmlPersistence" depends="fetchDependencies">
-    <mkdir dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/testdata" />
     <mkdir dir="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.samples.xmlPersistence" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.samples.xmlPersistence" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/testdata" />
         <path location="${basedir}/languages/jetbrains.mps.samples.xmlPersistence/source_gen" />
       </src>
       <classpath>

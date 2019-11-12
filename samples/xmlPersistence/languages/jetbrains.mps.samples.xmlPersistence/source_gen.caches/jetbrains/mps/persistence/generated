@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-51rk2smbtini4od5sz9k96flky0r6lm">
-  <files names="XmlModelPersistence.java" />
+<product version="3" modelHash="3rca1phwtqk2i35ghl8nl84pfkifb35">
+  <files names="XmlModelPersistence.java:XmlPersistenceModelDescriptor.java" />
 </product>
 
