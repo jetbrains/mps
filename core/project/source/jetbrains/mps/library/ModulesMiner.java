@@ -551,7 +551,7 @@ public final class ModulesMiner {
               newMementoChild.put(FileBasedModelRoot.LOCATION, ".");
             }
             update = true;
-          } else if ((deploymentJarMatch = deploymentJars.stream().filter(f -> pastModuleMacroSuffix.endsWith(f.getName())).findFirst().orElse(null)) != null) {
+          } else if ((deploymentJarMatch = deploymentJars.stream().filter(f -> pastModuleMacroSuffix.endsWith(Path.UNIX_SEPARATOR + f.getName())).findFirst().orElse(null)) != null) {
             // IOW, if there's a deployment jar with a name that matches location we are looking at. "Matches" here is intentionally 'name only' here, as
             // we may face odd/inconsistent source/deployment layout and file references:
             // e.g. for collections.trove.msd:
