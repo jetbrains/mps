@@ -12,19 +12,28 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SModule;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.ProgressIndicator;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
-import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.smodel.Generator;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.apache.log4j.Level;
+import com.intellij.openapi.application.ModalityState;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2533953941693774358", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ForcedSaveAll_Action extends BaseAction {
@@ -32,9 +41,9 @@ public class ForcedSaveAll_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ForcedSaveAll_Action() {
-    super("Resave Everything", "Updates all models' and modules' files", ICON);
+    super("Force Save All", "Updates all models' and modules' files", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.NONE);
   }
   @Override
   public boolean isDumbAware() {
@@ -47,6 +56,13 @@ public class ForcedSaveAll_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      MapSequence.fromMap(_params).put("mpsProject", p);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
+      Project p = event.getData(CommonDataKeys.PROJECT);
       MapSequence.fromMap(_params).put("project", p);
       if (p == null) {
         return false;
@@ -56,42 +72,84 @@ public class ForcedSaveAll_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    Iterable<SModule> modules = (Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("project")).getProjectModulesWithGenerators();
-    List<EditableSModel> allModels = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule it) {
-        return it.getModels();
-      }
-    }).ofType(EditableSModel.class).where(new IWhereFilter<EditableSModel>() {
-      public boolean accept(EditableSModel it) {
-        return !(SModelStereotype.isStubModel(it));
-      }
-    }).toListSequence();
+    ProgressManager.getInstance().runProcessWithProgressSynchronously(new Runnable() {
+      public void run() {
+        ProgressIndicator pi = ProgressManager.getInstance().getProgressIndicator();
+        pi.setIndeterminate(false);
 
-    for (AbstractModule module : Sequence.fromIterable(modules).ofType(AbstractModule.class)) {
-      module.updateExternalReferences();
-      if (!(module instanceof Generator)) {
-        // generators are saved as part of owning Language's save, no need to do it twice 
-        module.save();
-      }
-    }
+        final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
+        final Wrappers._T<List<SModuleReference>> moduleRefs = new Wrappers._T<List<SModuleReference>>();
+        repo.getModelAccess().runReadAction(new Runnable() {
+          public void run() {
+            moduleRefs.value = Sequence.fromIterable((Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModulesWithGenerators()).ofType(AbstractModule.class).select(new ISelector<AbstractModule, SModuleReference>() {
+              public SModuleReference select(AbstractModule it) {
+                return it.getModuleReference();
+              }
+            }).toListSequence();
+          }
+        });
 
-    for (EditableSModel model : ListSequence.fromList(allModels)) {
-      if (model.isReadOnly()) {
-        continue;
-      }
-      try {
-        // ensure model is loaded 
-        model.load();
-        //  and force to save model 
-        model.setChanged(true);
-        if (model.isChanged()) {
-          model.save();
+        int saving = 1;
+        for (final SModuleReference moduleRef : ListSequence.fromList(moduleRefs.value)) {
+          pi.setFraction(1.0 * saving / ListSequence.fromList(moduleRefs.value).count());
+          repo.getModelAccess().runReadAction(new Runnable() {
+            public void run() {
+              AbstractModule module = (AbstractModule) moduleRef.resolve(repo);
+              if (module == null) {
+                return;
+              }
+              ProgressManager.progress2("Saving: " + module.getModuleName());
+            }
+          });
+          ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+            public void run() {
+              repo.getModelAccess().runWriteAction(new Runnable() {
+                public void run() {
+                  AbstractModule module = (AbstractModule) moduleRef.resolve(repo);
+                  if (module == null) {
+                    return;
+                  }
+
+                  // save module 
+                  module.updateExternalReferences();
+                  if (!(moduleRef instanceof Generator)) {
+                    // generators are saved as part of owning Language's save, no need to do it twice 
+                    module.save();
+                  }
+
+                  // save its models 
+                  for (EditableSModel model : Sequence.fromIterable(((Iterable<SModel>) module.getModels())).ofType(EditableSModel.class).where(new IWhereFilter<EditableSModel>() {
+                    public boolean accept(EditableSModel it) {
+                      return !(SModelStereotype.isStubModel(it));
+                    }
+                  })) {
+                    if (model.isReadOnly()) {
+                      continue;
+                    }
+                    try {
+                      // ensure model is loaded 
+                      model.load();
+                      //  and force to save model 
+                      model.setChanged(true);
+                      if (model.isChanged()) {
+                        model.save();
+                      }
+                    } catch (Exception ex) {
+                      if (LOG.isEnabledFor(Level.ERROR)) {
+                        LOG.error("Error re-saving model " + model.getName(), ex);
+                      }
+                    }
+                  }
+                }
+              });
+            }
+          }, ModalityState.defaultModalityState());
+          saving++;
         }
-      } catch (Exception ex) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("Error re-saving model " + model.getName(), ex);
-        }
       }
-    }
+    }, "Saving...", false, ((Project) MapSequence.fromMap(_params).get("project")));
+  }
+  private Iterable<SModule> getModules(final Map<String, Object> _params) {
+    return (Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModulesWithGenerators();
   }
 }
