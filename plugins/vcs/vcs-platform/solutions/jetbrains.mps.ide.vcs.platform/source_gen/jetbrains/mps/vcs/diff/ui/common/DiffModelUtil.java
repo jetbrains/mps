@@ -40,7 +40,7 @@ public class DiffModelUtil {
     // if fixReferences == true => set links to hanged static references back to the original model (that is most probably in the repository) 
     // this can help in per root persistence when only one root is in the model : reference to the other root will point to the repository model 
     if (version != null) {
-      renameModel(model, version);
+      renameModel(model, version, fixReferences);
     }
     TempModuleOptions mo = TempModuleOptions.nonReloadableModule();
     MapSequence.fromMap(myRegisteredModels).put(model, mo);

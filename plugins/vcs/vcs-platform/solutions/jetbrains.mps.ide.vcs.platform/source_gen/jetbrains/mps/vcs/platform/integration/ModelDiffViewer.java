@@ -31,6 +31,7 @@ import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.SModelFileTracker;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
@@ -175,7 +176,8 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     // first read model from file and get root id 
     SModel model = readModel(content, type);
     // there should be no more than one root in the model from this file 
-    SNodeId rootId = ListSequence.fromList(SModelOperations.roots(model, null)).first().getNodeId();
+    SNode node = ListSequence.fromList(SModelOperations.roots(model, null)).first();
+    SNodeId rootId = ((node == null) ? null : node.getNodeId());
 
     // try to find the model in the repository 
     if (content instanceof FileContent) {

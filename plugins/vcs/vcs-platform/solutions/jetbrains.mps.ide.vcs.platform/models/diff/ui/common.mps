@@ -13239,12 +13239,15 @@
           <node concept="3clFbS" id="6Or00DtWQak" role="3clFbx">
             <node concept="3clFbF" id="6Or00DtWQal" role="3cqZAp">
               <node concept="1rXfSq" id="6Or00DtWQam" role="3clFbG">
-                <ref role="37wK5l" node="2VVi9_kc0zu" resolve="renameModel" />
+                <ref role="37wK5l" node="6Or00DtWVkc" resolve="renameModel" />
                 <node concept="37vLTw" id="6Or00DtWQan" role="37wK5m">
                   <ref role="3cqZAo" node="6Or00DtWQa7" resolve="model" />
                 </node>
                 <node concept="37vLTw" id="6Or00DtWQao" role="37wK5m">
                   <ref role="3cqZAo" node="6Or00DtWQa9" resolve="version" />
+                </node>
+                <node concept="37vLTw" id="60GcGRQO5sJ" role="37wK5m">
+                  <ref role="3cqZAo" node="6Or00DtWRDr" resolve="fixReferences" />
                 </node>
               </node>
             </node>

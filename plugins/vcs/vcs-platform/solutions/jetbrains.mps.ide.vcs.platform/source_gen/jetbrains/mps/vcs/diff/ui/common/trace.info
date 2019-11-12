@@ -2470,7 +2470,7 @@
       <node id="7861877619031242430" at="35,60,36,50" concept="6" />
       <node id="7861877619031237260" at="39,98,40,142" concept="14" />
       <node id="7861877619031249324" at="40,142,41,145" concept="14" />
-      <node id="7861877619031237269" at="42,26,43,34" concept="6" />
+      <node id="7861877619031237269" at="42,26,43,49" concept="6" />
       <node id="7861877619031237273" at="44,5,45,67" concept="12" />
       <node id="7861877619031237277" at="45,67,46,59" concept="6" />
       <node id="7861877619031237283" at="46,59,47,57" concept="12" />
@@ -2536,7 +2536,7 @@
       <node id="2761975718098140431" at="100,71,113,5" concept="9" />
       <node id="7861877619031281106" at="76,0,91,0" concept="17" trace="resetMissedReferences#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModelReference;Lorg/jetbrains/mps/openapi/model/SModelReference;)V" />
       <node id="2761975718096579060" at="97,0,115,0" concept="17" trace="fixModelReferences#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModelReference;)V" />
-      <scope id="7861877619031237268" at="42,26,43,34" />
+      <scope id="7861877619031237268" at="42,26,43,49" />
       <scope id="2874648801263408280" at="56,30,57,54" />
       <scope id="3385379368278690017" at="62,64,63,39" />
       <scope id="7861877619031274559" at="71,24,72,58" />
