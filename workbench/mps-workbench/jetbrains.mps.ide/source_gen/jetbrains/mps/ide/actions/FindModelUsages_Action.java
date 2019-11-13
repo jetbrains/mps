@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.view.FindUtils;
@@ -57,7 +56,7 @@ public class FindModelUsages_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SearchScope scope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
+    SearchScope scope = ((MPSProject) MapSequence.fromMap(_params).get("project")).getScope();
     final SearchQuery query = new SearchQuery(((SModel) MapSequence.fromMap(_params).get("model")).getReference(), scope);
     final IResultProvider provider = FindUtils.makeProvider(new ModelImportsUsagesFinder());
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(true).navigateIfSingle(false).forceNewTab(false).notFoundMessage("Model has no usages");

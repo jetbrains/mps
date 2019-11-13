@@ -14364,20 +14364,15 @@
                 <node concept="37vLTw" id="6gJrPYfVXeC" role="37wK5m">
                   <ref role="3cqZAo" node="6gJrPYfVXev" resolve="module" />
                 </node>
-                <node concept="2ShNRf" id="5z503QbJGkl" role="37wK5m">
-                  <node concept="1pGfFk" id="5z503QbJHSo" role="2ShVmc">
-                    <ref role="37wK5l" to="z1c3:~GlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="GlobalScope" />
-                    <node concept="2OqwBi" id="5z503QbJK0s" role="37wK5m">
-                      <node concept="2OqwBi" id="5z503QbJJjx" role="2Oq$k0">
-                        <node concept="2WthIp" id="5z503QbJJj$" role="2Oq$k0" />
-                        <node concept="1DTwFV" id="5z503QbJJjA" role="2OqNvi">
-                          <ref role="2WH_rO" node="5z503QbJJ1H" resolve="project" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="5z503QbJKHG" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
-                      </node>
+                <node concept="2OqwBi" id="5z503QbJK0s" role="37wK5m">
+                  <node concept="2OqwBi" id="5z503QbJJjx" role="2Oq$k0">
+                    <node concept="2WthIp" id="5z503QbJJj$" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="5z503QbJJjA" role="2OqNvi">
+                      <ref role="2WH_rO" node="5z503QbJJ1H" resolve="project" />
                     </node>
+                  </node>
+                  <node concept="liA8E" id="sgkgByf5sO" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getScope()" resolve="getScope" />
                   </node>
                 </node>
               </node>

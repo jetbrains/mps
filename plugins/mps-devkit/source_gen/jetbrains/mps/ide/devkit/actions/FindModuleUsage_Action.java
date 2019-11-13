@@ -13,7 +13,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.ide.findusages.view.FindUtils;
@@ -57,7 +56,7 @@ public class FindModuleUsage_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final SModule module = event.getData(MPSCommonDataKeys.MODULE);
-    final SearchQuery query = new SearchQuery(module, new GlobalScope(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository()));
+    final SearchQuery query = new SearchQuery(module, event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
     final IResultProvider provider;
     if (module instanceof Language) {
       // Given language context module, we are not certain whether intention is to look up module uses or its uses as a language, hence include both 
