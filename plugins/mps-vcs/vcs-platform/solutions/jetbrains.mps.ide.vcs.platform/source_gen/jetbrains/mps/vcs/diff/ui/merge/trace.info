@@ -158,15 +158,13 @@
       <node id="2657001694096389625" at="290,23,291,15" concept="9" />
       <node id="2657001694096389632" at="293,34,294,34" concept="3" />
       <node id="2657001694096389636" at="295,7,296,27" concept="3" />
-      <node id="2657001694096389642" at="297,33,298,31" concept="3" />
-      <node id="2657001694096389649" at="299,7,300,26" concept="3" />
-      <node id="2657001694096389655" at="301,35,302,33" concept="3" />
-      <node id="2657001694096389662" at="303,7,304,28" concept="3" />
-      <node id="2657001694096389668" at="305,39,306,37" concept="3" />
-      <node id="2657001694096389675" at="307,7,308,32" concept="3" />
-      <node id="2657001694096389685" at="310,50,311,22" concept="3" />
-      <node id="2657001694096389691" at="313,9,314,56" concept="3" />
-      <node id="2657001694096389695" at="314,56,315,24" concept="3" />
+      <node id="8806494601448258437" at="296,27,297,35" concept="3" />
+      <node id="3797119805952565488" at="297,35,298,26" concept="3" />
+      <node id="3797119805952570516" at="298,26,299,28" concept="3" />
+      <node id="3797119805952576680" at="299,28,300,32" concept="3" />
+      <node id="2657001694096389685" at="302,50,303,22" concept="3" />
+      <node id="2657001694096389691" at="305,9,306,56" concept="3" />
+      <node id="2657001694096389695" at="306,56,307,24" concept="3" />
       <node id="2657001694096389213" at="224,12,226,7" concept="1" />
       <node id="2657001694096388646" at="83,0,86,0" concept="7" trace="isChangeConflicted#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Z" />
       <node id="2657001694096388733" at="101,0,104,0" concept="7" trace="run#()V" />
@@ -190,10 +188,7 @@
       <node id="2657001694096389607" at="284,0,287,0" concept="7" trace="restoreState#()V" />
       <node id="2657001694096389623" at="289,25,292,7" concept="6" />
       <node id="2657001694096389627" at="292,7,295,7" concept="6" />
-      <node id="2657001694096389640" at="296,27,299,7" concept="6" />
-      <node id="2657001694096389653" at="300,26,303,7" concept="6" />
-      <node id="2657001694096389666" at="304,28,307,7" concept="6" />
-      <node id="2657001694096389683" at="310,0,313,0" concept="7" trace="visit#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditorSeparator;)V" />
+      <node id="2657001694096389683" at="302,0,305,0" concept="7" trace="visit#(Ljetbrains/mps/vcs/diff/ui/common/DiffEditorSeparator;)V" />
       <node id="1973725742812731870" at="141,0,145,0" concept="7" trace="registerShortcuts#(Ljavax/swing/JComponent;)V" />
       <node id="1973725742812934966" at="145,0,149,0" concept="7" trace="unregisterShortcuts#(Ljavax/swing/JComponent;)V" />
       <node id="2657001694096388644" at="81,0,86,6" concept="3" />
@@ -204,7 +199,7 @@
       <node id="2657001694096389167" at="214,0,219,24" concept="8" />
       <node id="2657001694096389200" at="221,84,226,7" concept="6" />
       <node id="2657001694096389222" at="227,5,232,7" concept="3" />
-      <node id="2657001694096389679" at="308,32,313,9" concept="3" />
+      <node id="2657001694096389679" at="300,32,305,9" concept="3" />
       <node id="2657001694096389402" at="258,5,264,5" concept="6" />
       <node id="2657001694096388727" at="99,0,106,0" concept="7" trace="someChangesInvalidated#()V" />
       <node id="2657001694096389110" at="195,0,202,5" concept="6" />
@@ -219,9 +214,9 @@
       <node id="2657001694096389375" at="254,0,267,0" concept="7" trace="getRootNodeId#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/model/SNodeId;" />
       <node id="4481873561817272787" at="121,0,138,0" concept="7" trace="createActionGroup#(Ljava/lang/String;)V" />
       <node id="2657001694096389089" at="188,0,208,0" concept="7" trace="rehighlight#()V" />
-      <node id="2657001694096389620" at="288,25,316,5" concept="15" />
+      <node id="2657001694096389620" at="288,25,308,5" concept="15" />
+      <node id="2657001694096389616" at="288,0,310,0" concept="7" trace="dispose#()V" />
       <node id="2657001694096389150" at="208,0,238,0" concept="7" trace="highlightAllChanges#()V" />
-      <node id="2657001694096389616" at="288,0,318,0" concept="7" trace="dispose#()V" />
       <node id="2657001694096388630" at="75,0,121,0" concept="2" trace="MergeRootsPane#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/vcs/diff/merge/MergeSession;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljava/lang/String;[Ljava/lang/String;)V" />
       <scope id="2657001694096388647" at="83,57,84,88" />
       <scope id="2657001694096388734" at="101,29,102,26" />
@@ -247,10 +242,7 @@
       <scope id="2657001694096389610" at="284,30,285,50" />
       <scope id="2657001694096389624" at="290,23,291,15" />
       <scope id="2657001694096389631" at="293,34,294,34" />
-      <scope id="2657001694096389641" at="297,33,298,31" />
-      <scope id="2657001694096389654" at="301,35,302,33" />
-      <scope id="2657001694096389667" at="305,39,306,37" />
-      <scope id="2657001694096389684" at="310,50,311,22" />
+      <scope id="2657001694096389684" at="302,50,303,22" />
       <scope id="1973725742812731873" at="141,55,143,110" />
       <scope id="1973725742812934969" at="145,57,147,68" />
       <scope id="2657001694096388646" at="83,0,86,0">
@@ -290,7 +282,7 @@
       </scope>
       <scope id="2657001694096389602" at="281,0,284,0" />
       <scope id="2657001694096389607" at="284,0,287,0" />
-      <scope id="2657001694096389683" at="310,0,313,0">
+      <scope id="2657001694096389683" at="302,0,305,0">
         <var name="s" id="2657001694096389683" />
       </scope>
       <scope id="1973725742812731870" at="141,0,145,0">
@@ -360,14 +352,14 @@
         <var name="rootName" id="4481873561817353580" />
       </scope>
       <scope id="2657001694096389092" at="188,29,206,26" />
+      <scope id="2657001694096389622" at="289,25,307,24" />
       <scope id="2657001694096389089" at="188,0,208,0" />
-      <scope id="2657001694096389622" at="289,25,315,24" />
+      <scope id="2657001694096389619" at="288,25,308,5" />
+      <scope id="2657001694096389616" at="288,0,310,0" />
       <scope id="2657001694096389153" at="208,38,236,57">
         <var name="changesForRoot" id="2657001694096389168" />
       </scope>
-      <scope id="2657001694096389619" at="288,25,316,5" />
       <scope id="2657001694096389150" at="208,0,238,0" />
-      <scope id="2657001694096389616" at="288,0,318,0" />
       <scope id="2657001694096388635" at="75,119,119,39">
         <var name="modelAccess" id="7759992172530066586" />
       </scope>
@@ -384,10 +376,10 @@
       <unit id="2657001694096389158" at="209,61,213,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane$5" />
       <unit id="2657001694096389178" at="215,115,219,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane$6" />
       <unit id="2657001694096389226" at="228,61,232,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane$7" />
-      <unit id="2657001694096389683" at="309,61,313,7" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane$8" />
+      <unit id="2657001694096389683" at="301,61,305,7" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane$8" />
       <unit id="3256036129446440138" at="129,26,136,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane$3" />
       <unit id="2657001694096388727" at="98,51,106,5" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane$2" />
-      <unit id="2657001694096388534" at="46,0,319,0" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane" />
+      <unit id="2657001694096388534" at="46,0,311,0" name="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane" />
     </file>
   </root>
   <root nodeRef="r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/2657001694103488033">

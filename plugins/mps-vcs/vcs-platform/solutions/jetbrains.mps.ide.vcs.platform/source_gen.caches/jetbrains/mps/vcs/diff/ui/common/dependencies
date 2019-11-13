@@ -308,6 +308,7 @@
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="javax.swing.JViewport" />
     <classNode dependClassName="javax.swing.event.ChangeEvent" />
     <classNode dependClassName="javax.swing.event.ChangeListener" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />

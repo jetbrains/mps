@@ -136,6 +136,9 @@ public class ModelDifferenceViewer implements DataProvider {
 
   public void dispose() {
     syncMetadataChanges();
+    if (myTree != null) {
+      myTree.dispose();
+    }
     myProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
       public void run() {
         MetadataUtil.dispose(myMetadataChangeSet.getOldModel());

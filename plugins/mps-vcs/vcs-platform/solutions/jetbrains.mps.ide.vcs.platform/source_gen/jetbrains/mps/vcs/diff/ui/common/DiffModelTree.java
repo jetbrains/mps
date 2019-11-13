@@ -94,6 +94,11 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     });
   }
 
+  public void dispose() {
+    // Workaround for MPS-31166 and similar issues where tree cell is about to be repainted but the model is already disposed 
+    setCellRenderer(null);
+  }
+
   protected TreeNode rebuild() {
     ModelTreeNode modelNode = new ModelTreeNode();
     myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new IWhereFilter<SNodeId>() {
@@ -144,7 +149,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     // todo: find path by rootId 
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
-      RootTreeNode node = as_5x0uld_a0a0a2a9(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
+      RootTreeNode node = as_5x0uld_a0a0a2a11(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
       if (node != null && Objects.equals(node.getRootId(), rootId)) {
         path = getPathForRow(i);
         break;
@@ -206,7 +211,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     return ListSequence.fromList(myRootNodes).getElement(index).myRootId;
   }
   public String getNameForRoot(@Nullable SNodeId nodeId) {
-    return check_5x0uld_a0a62(findRootNode(nodeId), this);
+    return check_5x0uld_a0a82(findRootNode(nodeId), this);
   }
   @Nullable
   @Override
@@ -358,7 +363,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       myTextStyle = textStyle;
     }
   }
-  private static String check_5x0uld_a0a62(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
+  private static String check_5x0uld_a0a82(RootTreeNode checkedDotOperand, DiffModelTree checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getPresentation();
     }
@@ -367,7 +372,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_5x0uld_a0a0a2a9(Object o, Class<T> type) {
+  private static <T> T as_5x0uld_a0a0a2a11(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

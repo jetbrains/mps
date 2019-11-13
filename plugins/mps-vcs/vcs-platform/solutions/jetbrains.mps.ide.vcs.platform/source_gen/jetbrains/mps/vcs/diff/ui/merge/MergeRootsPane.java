@@ -294,17 +294,9 @@ public class MergeRootsPane {
         myActionGroup.removeAll();
       }
       myActionGroup = null;
-      if (myMineEditor != null) {
-        myMineEditor.dispose();
-      }
+      myDiffEditorsGroup.dispose();
       myMineEditor = null;
-      if (myResultEditor != null) {
-        myResultEditor.dispose();
-      }
       myResultEditor = null;
-      if (myRepositoryEditor != null) {
-        myRepositoryEditor.dispose();
-      }
       myRepositoryEditor = null;
       ListSequence.fromList(myEdtiorSeparators).visitAll(new IVisitor<DiffEditorSeparator>() {
         public void visit(DiffEditorSeparator s) {
