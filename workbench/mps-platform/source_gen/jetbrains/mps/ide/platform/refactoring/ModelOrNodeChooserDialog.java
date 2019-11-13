@@ -28,7 +28,7 @@ public abstract class ModelOrNodeChooserDialog extends RefactoringDialog {
   }
   @Override
   protected String getHelpId() {
-    return "dialog.moveNodes";
+    return "dialog.refactoring.moveNodes";
   }
 
   protected static class Filter {

@@ -3830,7 +3830,7 @@
       <node concept="3clFbS" id="5r7NrS5qflc" role="3clF47">
         <node concept="3clFbF" id="5r7NrS5qfld" role="3cqZAp">
           <node concept="Xl_RD" id="5r7NrS5qfle" role="3clFbG">
-            <property role="Xl_RC" value="dialog.moveNodes" />
+            <property role="Xl_RC" value="dialog.refactoring.moveNodes" />
           </node>
         </node>
       </node>

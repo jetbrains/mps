@@ -27,6 +27,6 @@ public class MoveModelDialog extends ChooserRefactoringDialog<SModuleReference> 
   }
   @Override
   protected String getHelpId() {
-    return "dialog.moveModel";
+    return "dialog.refactoring.moveModel";
   }
 }

@@ -49,7 +49,7 @@ public class MoveConceptDialog extends ChooserRefactoringDialog<SModelReference>
   }
   @Override
   protected String getHelpId() {
-    return "dialog.moveConcept";
+    return "dialog.refactoring.moveConcept";
   }
 
 }

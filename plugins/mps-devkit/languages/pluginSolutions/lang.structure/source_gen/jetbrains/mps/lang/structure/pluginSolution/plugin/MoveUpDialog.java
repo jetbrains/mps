@@ -86,7 +86,7 @@ public class MoveUpDialog extends RefactoringDialog {
   @Nullable
   @Override
   protected String getHelpId() {
-    return "dialog.moveConceptMemberUp";
+    return "dialog.refactoring.moveConceptMemberUp";
   }
   public static SNode getConcept(@NotNull MPSProject project, SNode target, String conceptMemberKind, String sourceConcept, boolean notDeployed) {
     MoveUpDialog dialog = new MoveUpDialog(project, target, conceptMemberKind, sourceConcept, notDeployed);

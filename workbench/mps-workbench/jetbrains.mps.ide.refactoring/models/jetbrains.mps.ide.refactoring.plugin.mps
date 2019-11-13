@@ -3663,7 +3663,7 @@
       <node concept="3clFbS" id="6buumz55t25" role="3clF47">
         <node concept="3cpWs6" id="6buumz55u$i" role="3cqZAp">
           <node concept="Xl_RD" id="6buumz55vj$" role="3cqZAk">
-            <property role="Xl_RC" value="dialog.moveModel" />
+            <property role="Xl_RC" value="dialog.refactoring.moveModel" />
           </node>
         </node>
       </node>

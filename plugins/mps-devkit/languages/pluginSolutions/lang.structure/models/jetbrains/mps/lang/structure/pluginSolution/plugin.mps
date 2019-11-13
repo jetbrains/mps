@@ -15226,7 +15226,7 @@
       <node concept="3clFbS" id="6buumz55t25" role="3clF47">
         <node concept="3cpWs6" id="6buumz55u$i" role="3cqZAp">
           <node concept="Xl_RD" id="6buumz55vj$" role="3cqZAk">
-            <property role="Xl_RC" value="dialog.moveConcept" />
+            <property role="Xl_RC" value="dialog.refactoring.moveConcept" />
           </node>
         </node>
       </node>
@@ -15806,7 +15806,7 @@
       <node concept="3clFbS" id="3u6nf1jlvDf" role="3clF47">
         <node concept="3cpWs6" id="3u6nf1jlzTD" role="3cqZAp">
           <node concept="Xl_RD" id="3u6nf1jl$KG" role="3cqZAk">
-            <property role="Xl_RC" value="dialog.moveConceptMemberUp" />
+            <property role="Xl_RC" value="dialog.refactoring.moveConceptMemberUp" />
           </node>
         </node>
       </node>

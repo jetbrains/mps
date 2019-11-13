@@ -4800,7 +4800,7 @@
       <node concept="3clFbS" id="4_ns_JESo9H" role="3clF47">
         <node concept="3cpWs6" id="4_ns_JESq5g" role="3cqZAp">
           <node concept="Xl_RD" id="4_ns_JESr3r" role="3cqZAk">
-            <property role="Xl_RC" value="dialog.selectParticipants" />
+            <property role="Xl_RC" value="dialog.refactoring.selectParticipants" />
           </node>
         </node>
       </node>

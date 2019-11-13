@@ -80,6 +80,6 @@ public class SelectOptionsDialog extends RefactoringDialog {
   }
   @Override
   protected String getHelpId() {
-    return "dialog.selectParticipants";
+    return "dialog.refactoring.selectParticipants";
   }
 }
