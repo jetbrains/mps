@@ -18,6 +18,7 @@ import jetbrains.mps.nodeEditor.cells.ModelAccessor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
+import jetbrains.mps.lang.quotation.behavior.Antiquotation__BehaviorDescriptor;
 
 /*package*/ class Antiquotation_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -104,9 +105,8 @@ import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
   private EditorCell createReadOnlyModelAccessor_1() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        SNode parent = SNodeOperations.getParent(myNode);
-        if ((parent != null)) {
-          return parent.getRoleInParent();
+        if (Antiquotation__BehaviorDescriptor.getAttributedLink_id5e7X3XC_mgR.invoke(myNode) != null) {
+          return Antiquotation__BehaviorDescriptor.getAttributedLink_id5e7X3XC_mgR.invoke(myNode).getName();
         } else {
           return "";
         }
