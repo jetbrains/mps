@@ -383,7 +383,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
   @ToRemove(version = 3.6)
   @Deprecated
   public ModelRootDescriptor toDescriptor() {
-    ModelRootDescriptor result = new ModelRootDescriptor();
+    ModelRootDescriptor result = new ModelRootDescriptor(getType());
     save(result.getMemento());
     return result;
   }
@@ -469,7 +469,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
    */
   public static ModelRootDescriptor createSingleFolderDescriptor(@NotNull final File modelDir) {
     // that's what #save(Memento) does, just without IFile
-    ModelRootDescriptor result = new ModelRootDescriptor();
+    ModelRootDescriptor result = new ModelRootDescriptor(PersistenceRegistry.DEFAULT_MODEL_ROOT);
     final Memento memento = result.getMemento();
     memento.put("type", PersistenceRegistry.DEFAULT_MODEL_ROOT);
     memento.put(CONTENT_PATH, modelDir.getPath());

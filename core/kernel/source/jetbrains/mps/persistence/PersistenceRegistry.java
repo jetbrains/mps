@@ -66,7 +66,6 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
   private static final Logger LOG = LogManager.getLogger(PersistenceRegistry.class);
 
   public static final String DEFAULT_MODEL_ROOT = "default";
-  public static final String OBSOLETE_MODEL_ROOT = "obsolete";
   public static final String JAVA_CLASSES_ROOT = "java_classes";
   public static final String JDK_CLASSES_ROOT = "jdk";
 

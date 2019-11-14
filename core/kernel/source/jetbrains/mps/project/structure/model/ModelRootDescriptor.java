@@ -40,8 +40,8 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
   private final String myType;
   private final Memento myMemento;
 
-  public ModelRootDescriptor() {
-    myType = null;
+  public ModelRootDescriptor(String type) {
+    myType = type;
     myMemento = new MementoImpl();
   }
 
@@ -51,9 +51,6 @@ public final class ModelRootDescriptor implements Copyable<ModelRootDescriptor> 
   }
 
   public String getType() {
-    if (myType == null) {
-      return getMemento().getChild("manager") != null ? PersistenceRegistry.OBSOLETE_MODEL_ROOT : PersistenceRegistry.DEFAULT_MODEL_ROOT;
-    }
     return myType;
   }
 
