@@ -310,6 +310,7 @@
     </echoxml>
     <jar destfile="${build.layout}/testLangWithRT-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/testLangWithRT#01" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testLangWithRT-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testlangs-test.lang.with.RT-generator-template">

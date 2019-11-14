@@ -554,6 +554,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/workbench/jetbrains.mps.lang.plugin.standalone-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.plugin.standalone#481983775135098857" />
+      <fileset dir="${mps_home}/languages/languageDesign/plugin-standalone/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.plugin.standalone-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-plugin-standalone-generator-template">
@@ -666,7 +667,6 @@
     </copyModels>
     <jar destfile="${build.layout}/languages/workbench/jetbrains.mps.ide.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide/jetbrains.mps.ide.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-workbench-jetbrains.mps.ide-models" prefix="module/models" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.jar" />
     </jar>

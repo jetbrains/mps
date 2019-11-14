@@ -61,7 +61,6 @@
     <jar destfile="${build.layout}/mps-console/lib/mps-console.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/consoleTool" />
       <zipfileset file="${plugin_home}/jetbrains.mps.console.msd" prefix="modules/jetbrains.mps.console" />
-      <zipfileset dir="${plugin_home}" includes="icons/**, resources/**" prefix="modules/jetbrains.mps.console" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/models" prefix="modules/jetbrains.mps.console/models" />
     </jar>
     <mkdir dir="${build.layout}/mps-console/lang" />
@@ -204,6 +203,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.base-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.console.base#5336086527852717844" />
+      <fileset dir="${plugin_home}/lang/base/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.base-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-base-generator-template">
@@ -316,6 +316,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.scripts-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.console.scripts#1734392475490224704" />
+      <fileset dir="${plugin_home}/lang/scripts/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.scripts-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-scripts-generator-template">
@@ -608,6 +609,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.ideCommands-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.console.ideCommands#7935955022005272663" />
+      <fileset dir="${plugin_home}/lang/ideCommands/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.ideCommands-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-generator-template">
@@ -800,6 +802,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.internalCommands-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.console.internalCommands#8483375838963160298" />
+      <fileset dir="${plugin_home}/lang/internalCommands/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.internalCommands-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-internalCommands-generator-template">

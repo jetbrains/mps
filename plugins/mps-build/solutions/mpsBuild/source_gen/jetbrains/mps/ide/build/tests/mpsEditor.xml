@@ -738,6 +738,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/jetbrains.mps.lang.editor.editorTest.extension-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension#01" />
+      <fileset dir="${basedir}/languages.test/languageDesign/lang.editor.editorTest.extension/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.editor.editorTest.extension-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages.test-languageDesign-lang.editor.editorTest.extension-generator-template">

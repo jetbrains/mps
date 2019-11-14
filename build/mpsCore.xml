@@ -203,6 +203,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-core/languages/languageDesign/jetbrains.mps.lang.editor.table-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.table#4677325677876405344" />
+      <fileset dir="${mps_home}/plugins/mps-core/languages/languageDesign/table/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.editor.table-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-core-languages-languageDesign-table-generator-template">
@@ -382,6 +383,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-core/languages/languageDesign/jetbrains.mps.lang.editor.forms-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.forms#6176463657922286645" />
+      <fileset dir="${mps_home}/plugins/mps-core/languages/languageDesign/forms/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.editor.forms-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-core-languages-languageDesign-forms-generator-template">

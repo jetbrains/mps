@@ -160,7 +160,6 @@
     <mkdir dir="${build.layout}/languages" />
     <jar destfile="${build.layout}/languages/mps-stubs.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/languages/core/stub/diffutils/diffutils.msd" prefix="modules/DiffUtils" />
-      <zipfileset dir="${mps_home}/languages/core/stub/diffutils" includes="icons/**, resources/**" prefix="modules/DiffUtils" />
       <zipfileset file="${mps_home}/languages/core/stub/hamcrest/hamcrest.msd" prefix="modules/Hamcrest" />
       <zipfileset file="${mps_home}/languages/core/stub/junit/junit.msd" prefix="modules/JUnit" />
       <zipfileset file="${mps_home}/languages/core/stub/Ant/Ant.msd" prefix="modules/Ant" />
@@ -509,6 +508,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/make/jetbrains.mps.make.facet-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.make.facet#5086995156117116954" />
+      <fileset dir="${mps_home}/languages/languageDesign/make/languages/facet/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.make.facet-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-make-languages-facet-generator-template">
@@ -665,6 +665,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/make/jetbrains.mps.make.script-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.make.script#4629164904928166564" />
+      <fileset dir="${mps_home}/languages/languageDesign/make/languages/script/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.make.script-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-make-languages-script-generator-template">
@@ -859,7 +860,6 @@
     </copyModels>
     <jar destfile="${build.layout}/languages/make/jetbrains.mps.make.runtime.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.runtime/jetbrains.mps.make.runtime.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.runtime" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-make-runtime-solutions-jetbrains.mps.make.runtime-jetbrains" prefix="module/jetbrains" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.make.runtime.jar" />
     </jar>
@@ -900,7 +900,6 @@
     </copyModels>
     <jar destfile="${build.layout}/languages/make/jetbrains.mps.make.facets.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets/jetbrains.mps.make.facets.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make.facets" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-make-runtime-solutions-jetbrains.mps.make.facets-models" prefix="module/models" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.make.facets.jar" />
     </jar>
@@ -938,7 +937,6 @@
     </copyModels>
     <jar destfile="${build.layout}/languages/make/jetbrains.mps.make.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make/jetbrains.mps.make.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/core/make-runtime/solutions/jetbrains.mps.make" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-make-runtime-solutions-jetbrains.mps.make-jetbrains" prefix="module/jetbrains" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.make.jar" />
     </jar>
@@ -973,7 +971,6 @@
     </copyModels>
     <jar destfile="${build.layout}/languages/make/jetbrains.mps.smodel.resources.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/core/resources/jetbrains.mps.smodel.resources.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/core/resources" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-resources-jetbrains" prefix="module/jetbrains" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.smodel.resources.jar" />
     </jar>
@@ -1607,6 +1604,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/xml/jetbrains.mps.core.xml.sax-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.core.xml.sax#2264311582634171386" />
+      <fileset dir="${mps_home}/plugins/mps-core/languages/core.xml.sax/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.core.xml.sax-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-core-languages-core.xml.sax-generator-template">
@@ -2877,6 +2875,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.access-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.access#8974276187400410207" />
+      <fileset dir="${mps_home}/languages/languageDesign/access/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.access-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-access-generator-template">
@@ -3034,6 +3033,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.actions-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.actions#1154466409006" />
+      <fileset dir="${mps_home}/languages/languageDesign/actions/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.actions-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-actions-generators-baseLanguage-templates">
@@ -3172,6 +3172,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.checkedName-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.checkedName#4844813484172930521" />
+      <fileset dir="${mps_home}/languages/languageDesign/checkedName/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.checkedName-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-checkedName-generator-template">
@@ -3293,6 +3294,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.context-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.context#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/context/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.context-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-context-generator-template">
@@ -3418,6 +3420,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.context.defs-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.context.defs#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/context.defs/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.context.defs-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-context.defs-generator-template">
@@ -3562,6 +3565,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.skeleton-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.skeleton#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/skeleton/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.skeleton-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-skeleton-generator-template">
@@ -3709,6 +3713,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.problem.childAndProp-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.childAndProp#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/problem/childAndProp/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.problem.childAndProp-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-problem-childAndProp-generator-template">
@@ -3840,6 +3845,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.problem.failingRule-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.failingRule#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/problem/failingRule/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.problem.failingRule-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-problem-failingRule-generator-template">
@@ -3988,6 +3994,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.problem.scopes-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.scopes#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/problem/scopes/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.problem.scopes-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-problem-scopes-generator-template">
@@ -4136,6 +4143,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.problem.structural-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.structural#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/problem/structural/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.problem.structural-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-problem-structural-generator-template">
@@ -4258,6 +4266,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.problem-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/problem/problem/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.problem-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-problem-problem-generator-template">
@@ -4394,6 +4403,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.messages-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.messages#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/messages/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.messages-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-messages-generator-template">
@@ -4514,6 +4524,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/feedback/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-feedback-feedback-generator-template">
@@ -4639,6 +4650,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.messages-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.messages#8657450212265151934" />
+      <fileset dir="${mps_home}/languages/languageDesign/messages/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.messages-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-messages-generator-template">
@@ -4805,6 +4817,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.constraints-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints#1147476727047" />
+      <fileset dir="${mps_home}/languages/languageDesign/constraints/legacy/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.constraints-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-constraints-legacy-generators-baseLanguage-templates">
@@ -4958,6 +4971,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.constraints.rules-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/constraints/rules/rules/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.constraints.rules-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-constraints-rules-rules-generator-template">
@@ -5088,6 +5102,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.constraints.rules.kinds-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.kinds#1867733327984468203" />
+      <fileset dir="${mps_home}/languages/languageDesign/constraints/rules/kinds/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.constraints.rules.kinds-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-constraints-rules-kinds-generator-template">
@@ -5234,6 +5249,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.constraints.rules.skeleton-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.skeleton#1867733327984464082" />
+      <fileset dir="${mps_home}/languages/languageDesign/constraints/rules/skeleton/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.constraints.rules.skeleton-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-constraints-rules-skeleton-generator-template">
@@ -5379,6 +5395,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.rulesAndMessages-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.rulesAndMessages#01" />
+      <fileset dir="${mps_home}/languages/languageDesign/messages/rules/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.rulesAndMessages-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-messages-rules-generator-template">
@@ -5598,6 +5615,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.core-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.core#9100558062448742579" />
+      <fileset dir="${mps_home}/languages/core/core/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.core-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-core-core-generator-template">
@@ -5750,6 +5768,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.dataFlow-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.dataFlow#1206455293228" />
+      <fileset dir="${mps_home}/languages/languageDesign/dataFlow/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.dataFlow-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-dataFlow-generator-baseLanguage-template">
@@ -5900,6 +5919,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.dataFlow.analyzers-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054" />
+      <fileset dir="${mps_home}/languages/languageDesign/analyzers/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.dataFlow.analyzers-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-analyzers-generator-template">
@@ -6026,6 +6046,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.descriptor-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.descriptor#9020561928507175817" />
+      <fileset dir="${mps_home}/languages/languageDesign/generator/languages/descriptor/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.descriptor-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-languages-descriptor-generator-template">
@@ -6220,6 +6241,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.behavior-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.behavior#1225195312923" />
+      <fileset dir="${mps_home}/languages/languageDesign/behavior/languages/behavior/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.behavior-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-behavior-languages-behavior-generator-template">
@@ -6406,6 +6428,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.editor-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.editor#1129914002149" />
+      <fileset dir="${mps_home}/languages/languageDesign/editor/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.editor-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-editor-generators-baseLanguage-templates">
@@ -6535,6 +6558,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.editor.imageGen-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.imageGen#3245637733310290135" />
+      <fileset dir="${mps_home}/languages/languageDesign/jetbrains.mps.lang.editor.imageGen/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.editor.imageGen-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-jetbrains.mps.lang.editor.imageGen-generator-template">
@@ -6668,6 +6692,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.editor.menus.extras-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.extras#2926686622729974589" />
+      <fileset dir="${mps_home}/languages/languageDesign/editor.menus.extras/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.editor.menus.extras-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-editor.menus.extras-generator-template">
@@ -6846,6 +6871,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.extension-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.extension#3729007189729193566" />
+      <fileset dir="${mps_home}/languages/languageDesign/extension/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.extension-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-extension-generator-template">
@@ -6991,6 +7017,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.findUsages-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.findUsages#1197044805809" />
+      <fileset dir="${mps_home}/languages/languageDesign/findUsages/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.findUsages-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-findUsages-generator-baseLanguage-template">
@@ -7170,6 +7197,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.generator-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.generator#1167163152317" />
+      <fileset dir="${mps_home}/languages/languageDesign/generator/languages/templateLanguage/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.generator-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-languages-templateLanguage-generator-baseLanguage-template">
@@ -7311,6 +7339,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.generator.generationContext-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.generator.generationContext#1216862161405" />
+      <fileset dir="${mps_home}/languages/languageDesign/generator/languages/generationContext/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.generator.generationContext-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-languages-generationContext-generator-baseLanguage-template">
@@ -7448,6 +7477,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.generator.generationParameters-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.generator.generationParameters#650531548512001931" />
+      <fileset dir="${mps_home}/languages/languageDesign/generator/languages/generationParameters/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.generator.generationParameters-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-languages-generationParameters-generator">
@@ -7688,6 +7718,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.intentions-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.intentions#1192798684353" />
+      <fileset dir="${mps_home}/languages/languageDesign/intentions/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.intentions-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-intentions-generator-baseLanguage-template">
@@ -7828,6 +7859,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.baseLanguage.lightweightdsl-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.lightweightdsl#3751132065236752909" />
+      <fileset dir="${mps_home}/languages/baseLanguage/lightweightdsl/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.lightweightdsl-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-lightweightdsl-generator-template">
@@ -8001,6 +8033,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.migration-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.migration#3735414794051522719" />
+      <fileset dir="${mps_home}/languages/languageDesign/migration/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.migration-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-migration-generator-template">
@@ -8157,6 +8190,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.aspect-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.aspect#3274906159125927726" />
+      <fileset dir="${mps_home}/languages/languageDesign/customAspect/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.aspect-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-customAspect-generator-template">
@@ -8295,6 +8329,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.util.order-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.util.order#174635545557533742" />
+      <fileset dir="${mps_home}/languages/languageDesign/util/jetbrains.mps.lang.util.order/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.util.order-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-util-jetbrains.mps.lang.util.order-generator-template">
@@ -8467,6 +8502,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.pattern-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.pattern#1174810948060" />
+      <fileset dir="${mps_home}/languages/languageDesign/pattern/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.pattern-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-pattern-generator-baseLanguage-template">
@@ -8689,6 +8725,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.quotation-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.quotation#1196351859310" />
+      <fileset dir="${mps_home}/languages/languageDesign/quotation/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.quotation-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-quotation-generator-baseLanguage-template">
@@ -8871,6 +8908,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.plugin-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.plugin#1203080439937" />
+      <fileset dir="${mps_home}/languages/languageDesign/plugin/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.plugin-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-plugin-generator-baseLanguage-template">
@@ -9022,6 +9060,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.resources-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.resources#8974276187400288250" />
+      <fileset dir="${mps_home}/languages/languageDesign/resources/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.resources-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-resources-generator-template">
@@ -9160,6 +9199,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.refactoring-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.refactoring#1189697379687" />
+      <fileset dir="${mps_home}/languages/languageDesign/refactoring/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.refactoring-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-refactoring-generator-baseLanguage-template">
@@ -9357,6 +9397,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.scopes-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.scopes#8077936094962908999" />
+      <fileset dir="${mps_home}/languages/languageDesign/scopes/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.scopes-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-scopes-generator-template">
@@ -9556,6 +9597,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.script-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.script#1172274134493" />
+      <fileset dir="${mps_home}/languages/languageDesign/script/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.script-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-script-generator-baseLanguage-template">
@@ -9677,6 +9719,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.sharedConcepts-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.sharedConcepts#1161623873951" />
+      <fileset dir="${mps_home}/languages/languageDesign/sharedConcepts/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.sharedConcepts-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-sharedConcepts-generators-baseLanguage-templates">
@@ -9846,6 +9889,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.smodel-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.smodel#1139186730696" />
+      <fileset dir="${mps_home}/languages/languageDesign/smodel/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.smodel-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-smodel-generator-baseLanguage">
@@ -10065,6 +10109,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.slanguage-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.slanguage#8149169565821881093" />
+      <fileset dir="${mps_home}/languages/languageDesign/slanguage/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.slanguage-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-slanguage-generator-template">
@@ -10244,6 +10289,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.structure-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.structure#1170324972255" />
+      <fileset dir="${mps_home}/languages/languageDesign/structure/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.structure-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-structure-generator_new">
@@ -10397,6 +10443,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.textGen-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.textGen#1233678176149" />
+      <fileset dir="${mps_home}/languages/languageDesign/textGen/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.textGen-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-textGen-generator-models">
@@ -10646,6 +10693,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.typesystem-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.typesystem#1174411220599" />
+      <fileset dir="${mps_home}/languages/languageDesign/typesystem/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.typesystem-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-typesystem-generator-baseLanguage-template">
@@ -10708,7 +10756,6 @@
     </copyModels>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.typesystemEngine.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/core/typesystemEngine/solutions/jetbrains.mps.typesystemEngine/jetbrains.mps.typesystemEngine.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/core/typesystemEngine/solutions/jetbrains.mps.typesystemEngine" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-typesystemEngine-solutions-jetbrains.mps.typesystemEngine" prefix="module/" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.typesystemEngine.jar" />
     </jar>
@@ -10833,6 +10880,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.smodel.query-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query#5336086527852811409" />
+      <fileset dir="${mps_home}/languages/languageDesign/smodel.query/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.smodel.query-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-smodel.query-generator-template">
@@ -11015,6 +11063,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage#1129914002933" />
+      <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-baseLanguage-generator-java-templates">
@@ -11207,6 +11256,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.builders-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.builders#7057666463730688471" />
+      <fileset dir="${mps_home}/languages/util/builders/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.builders-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-builders-generator-template">
@@ -11337,6 +11387,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.checkedDots-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.checkedDots#4549711462050000009" />
+      <fileset dir="${mps_home}/languages/baseLanguage/checkDot/languages/checkedDots/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.checkedDots-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-checkDot-languages-checkedDots-generator-template">
@@ -11469,6 +11520,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.classifiers-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.classifiers#1205839057922" />
+      <fileset dir="${mps_home}/languages/baseLanguage/classifiers/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.classifiers-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-classifiers-generator-baseLanguage-template">
@@ -11627,6 +11679,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.closures-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.closures#1199623535494" />
+      <fileset dir="${mps_home}/languages/baseLanguage/closures/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.closures-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-closures-generator-baseLanguage-template">
@@ -11787,6 +11840,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.collections-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections#1151699677197" />
+      <fileset dir="${mps_home}/languages/baseLanguage/collections/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.collections-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-collections-generators-baseLanguage-templates">
@@ -11906,6 +11960,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.constructors-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.constructors#4413962600136203329" />
+      <fileset dir="${mps_home}/languages/baseLanguage/constructors/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.constructors-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-constructors-generator-template">
@@ -12032,6 +12087,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.extensionMethods-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146" />
+      <fileset dir="${mps_home}/languages/util/extensionMethod/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.extensionMethods-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-extensionMethod-generator-template">
@@ -12234,6 +12290,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.jdk7-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.jdk7#616711547384942258" />
+      <fileset dir="${mps_home}/languages/baseLanguage/jdk7/languages/jdk7/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.jdk7-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-jdk7-languages-jdk7-generator-template">
@@ -12436,6 +12493,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.logging#1167240554582" />
+      <fileset dir="${mps_home}/languages/baseLanguage/logging/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.logging-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-logging-generators-baseLanguage-templates">
@@ -12603,6 +12661,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.overloadedOperators-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.overloadedOperators#6677452554239623057" />
+      <fileset dir="${mps_home}/languages/baseLanguage/overloadedOperators/languages/overloadedOperators/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.overloadedOperators-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-overloadedOperators-languages-overloadedOperators-generator-template">
@@ -12741,6 +12800,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.regexp-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.regexp#1174510748147" />
+      <fileset dir="${mps_home}/languages/util/regexp/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.regexp-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-regexp-generator-baseLanguage-template">
@@ -12980,6 +13040,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.tuples-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.tuples#1238919486295" />
+      <fileset dir="${mps_home}/languages/baseLanguage/tuples/languages/tuples/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.tuples-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-tuples-languages-tuples-generator-template">
@@ -13105,6 +13166,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.varVariable-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.varVariable#8067700594454597207" />
+      <fileset dir="${mps_home}/languages/baseLanguage/varVariable/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.varVariable-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-varVariable-generator-template">
@@ -13222,6 +13284,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.doubleDispatch-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.doubleDispatch#4496691318496554192" />
+      <fileset dir="${mps_home}/languages/baseLanguage/doubleDispatch/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.doubleDispatch-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-doubleDispatch-generator-template">
@@ -13356,6 +13419,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguageInternal-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguageInternal#1238251529692" />
+      <fileset dir="${mps_home}/languages/baseLanguage/baseLanguageInternal/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguageInternal-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-baseLanguageInternal-generator-template">
@@ -13689,7 +13753,6 @@
     </copyModels>
     <jar destfile="${build.layout}/languages/tools/jetbrains.mps.tool.ant.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/core/tool/ant/jetbrains.mps.tool.ant.msd" prefix="module" />
-      <zipfileset dir="${mps_home}/core/tool/ant" includes="icons/**, resources/**" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-tool-ant-models" prefix="module/models" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.tool.ant.jar" />
     </jar>

@@ -71,7 +71,6 @@
     <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/lib/UtilSolution.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/UtilSolution" />
       <zipfileset file="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/UtilSolution.msd" prefix="modules/UtilSolution" />
-      <zipfileset dir="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution" includes="icons/**, resources/**" prefix="modules/UtilSolution" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-UtilSolution-models" prefix="modules/UtilSolution/models" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-TestBehaviorReflective-models">
@@ -80,7 +79,6 @@
     <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/lib/TestBehaviorReflective.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/TestBehaviorReflective" />
       <zipfileset file="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/TestBehaviorReflective.msd" prefix="modules/TestBehaviorReflective" />
-      <zipfileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective" includes="icons/**, resources/**" prefix="modules/TestBehaviorReflective" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-TestBehaviorReflective-models" prefix="modules/TestBehaviorReflective/models" />
     </jar>
     <mkdir dir="${build.layout}/behavior-tests/test.behavior.plugin/languages" />

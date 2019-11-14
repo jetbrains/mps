@@ -308,6 +308,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/constraints.rules.test-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/constraints.rules.test#1839194279618937625" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/constraints.rules.test-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testConstraints-languages-constraints.rules.test-generator-template">

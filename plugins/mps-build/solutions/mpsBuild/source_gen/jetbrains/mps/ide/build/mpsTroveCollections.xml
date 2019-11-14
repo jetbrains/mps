@@ -147,6 +147,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-trove/languages/jetbrains.mps.baseLanguage.collections.trove-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.collections.trove#5499565529811308574" />
+      <fileset dir="${mps_home}/languages/baseLanguage/collections/languages/trove/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.collections.trove-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-collections-languages-trove-generator-template">

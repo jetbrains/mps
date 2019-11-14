@@ -211,6 +211,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-vcs/languages/jetbrains.mps.vcs.mergehints-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints#1277106018273766025" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/languages/mergehints/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-languages-mergehints-generator-template">

@@ -326,6 +326,7 @@
     </echoxml>
     <jar destfile="${build.layout}/jetbrains.mps.baseLanguage.testRefs.testLang-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.testRefs.testLang#01" />
+      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.testRefs.testLang-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-jetbrains.mps.baseLanguage.testRefs.testLang-generator-template">

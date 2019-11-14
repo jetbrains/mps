@@ -210,6 +210,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" />
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-generator-template">

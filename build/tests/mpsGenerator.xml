@@ -301,6 +301,7 @@
     </echoxml>
     <jar destfile="${build.layout}/traceMacro/jetbrains.mps.traceInfo.testWeavingGenerated.data-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.traceInfo.testWeavingGenerated.data#6186432342008486849" />
+      <fileset dir="${basedir}/languages/languageDesign/traceinfo/testWeavingGenerated.data/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.traceInfo.testWeavingGenerated.data-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-traceinfo-testWeavingGenerated.data-generator-template">
@@ -417,6 +418,7 @@
     </echoxml>
     <jar destfile="${build.layout}/traceMacro/jetbrains.mps.traceInfo.testWeavingInterpreted.data-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.traceInfo.testWeavingInterpreted.data#2819311507031176971" />
+      <fileset dir="${basedir}/languages/languageDesign/traceinfo/testWeavingInterpreted.data/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.traceInfo.testWeavingInterpreted.data-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-traceinfo-testWeavingInterpreted.data-generator-template">
@@ -534,6 +536,7 @@
     </echoxml>
     <jar destfile="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.entity-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.generator.test.crossmodel.entity#5533782486491461718" />
+      <fileset dir="${basedir}/languages/languageDesign/generator/test/entity/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.generator.test.crossmodel.entity-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-test-entity-generator-template">
@@ -644,6 +647,7 @@
     </echoxml>
     <jar destfile="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.property-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.generator.test.crossmodel.property#5533782486491461721" />
+      <fileset dir="${basedir}/languages/languageDesign/generator/test/property/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.generator.test.crossmodel.property-generator.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.generator.test.crossmodel.property-1-generator.jar" />
@@ -688,6 +692,7 @@
     </echoxml>
     <jar destfile="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.property-1-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.generator.test.crossmodel.property#g2" />
+      <fileset dir="${basedir}/languages/languageDesign/generator/test/property/gen2/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.generator.test.crossmodel.property-1-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-test-property-gen2-models">

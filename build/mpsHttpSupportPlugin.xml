@@ -59,7 +59,6 @@
     <jar destfile="${build.layout}/mps-httpsupport/lib/httpsupport.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/http-support" />
       <zipfileset file="${plugin_home}/jetbrains.mps.ide.httpsupport.manager.msd" prefix="modules/jetbrains.mps.ide.httpsupport.manager" />
-      <zipfileset dir="${plugin_home}" includes="icons/**, resources/**" prefix="modules/jetbrains.mps.ide.httpsupport.manager" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/models" prefix="modules/jetbrains.mps.ide.httpsupport.manager/models" />
     </jar>
     <mkdir dir="${build.layout}/mps-httpsupport/languages" />
@@ -190,6 +189,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-httpsupport/languages/jetbrains.mps.ide.httpsupport-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport#4517832885627178591" />
+      <fileset dir="${plugin_home}/language/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.httpsupport-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/language-generator-template">

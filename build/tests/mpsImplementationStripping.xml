@@ -159,6 +159,7 @@
     </echoxml>
     <jar destfile="${build.layout}/tests/jetbrains.mps.samples.Kaja-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.Kaja#3265739055509559144" />
+      <fileset dir="${basedir}/samples/robot_Kaja/languages/Kajak/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.Kaja-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/samples-robot_Kaja-languages-Kajak-generator-template" stripImplementation="true">
