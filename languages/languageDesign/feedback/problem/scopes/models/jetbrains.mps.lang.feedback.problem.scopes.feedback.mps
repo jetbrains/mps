@@ -12,6 +12,7 @@
     <use id="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" name="jetbrains.mps.lang.context" version="0" />
     <use id="feec32f9-bc8f-4da8-8efd-7f3f9dd4101b" name="jetbrains.mps.lang.feedback.problem.scopes" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <devkit ref="0845ddb4-34c2-4a32-b2ae-270bffc5b430(jetbrains.mps.devkit.aspect.feedback)" />
   </languages>
   <imports>
@@ -37,7 +38,7 @@
       </concept>
     </language>
     <language id="033598a4-76a9-47e1-ac89-a300c0fceab8" name="jetbrains.mps.lang.feedback.problem">
-      <concept id="24399255755750911" name="jetbrains.mps.lang.feedback.problem.structure.ProblemKindRoot" flags="ng" index="1Gj5c1">
+      <concept id="24399255755750911" name="jetbrains.mps.lang.feedback.problem.structure.ProblemKind" flags="ng" index="1Gj5c1">
         <child id="24399255755751437" name="context" index="1GjqVN" />
       </concept>
     </language>
@@ -46,6 +47,9 @@
         <child id="8018723092206206171" name="conceptParameter" index="2Sp0rL" />
         <child id="7291380803376071326" name="defs" index="3QpnaF" />
       </concept>
+    </language>
+    <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
@@ -69,6 +73,10 @@
         <node concept="3uibUv" id="1oq9tin0Yhz" role="3RXm0y">
           <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
         </node>
+      </node>
+      <node concept="3RXm0x" id="6nwF2qiOttE" role="3QpnaF">
+        <property role="TrG5h" value="targetNode" />
+        <node concept="3Tqbb2" id="6nwF2qiOttP" role="3RXm0y" />
       </node>
       <node concept="3RXm0x" id="5vZLfeXlpEL" role="3QpnaF">
         <property role="TrG5h" value="link" />
