@@ -22631,7 +22631,7 @@
         <node concept="398223" id="1nJh0raW9OJ" role="39821P">
           <node concept="28jJK3" id="35zoHQHRZ3q" role="39821P">
             <node concept="398BVA" id="1nJh0raW9OM" role="28jJRO">
-              <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
+              <ref role="398BVh" node="5yMuYWFN8P8" />
               <node concept="2Ry0Ak" id="1nJh0raW9ON" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="1nJh0raW9OO" role="2Ry0An">
@@ -25229,28 +25229,6 @@
         <property role="TrG5h" value="JDK-tools" />
         <property role="3LESm3" value="b387285c-3448-452c-b3bb-a3f8de8eaf08" />
         <property role="2GAjPV" value="true" />
-        <node concept="3rtmxn" id="EpEP7iihLD" role="3bR31x">
-          <node concept="3LXTmp" id="EpEP7iihLE" role="3rtmxm">
-            <node concept="3qWCbU" id="EpEP7iihLF" role="3LXTna">
-              <property role="3qWCbO" value="icons/**, resources/**" />
-            </node>
-            <node concept="398BVA" id="EpEP7iihLG" role="3LXTmr">
-              <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="EpEP7iihLH" role="iGT6I">
-                <property role="2Ry0Am" value="languages" />
-                <node concept="2Ry0Ak" id="EpEP7iihLI" role="2Ry0An">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="EpEP7iihLJ" role="2Ry0An">
-                    <property role="2Ry0Am" value="stub" />
-                    <node concept="2Ry0Ak" id="EpEP7iihLK" role="2Ry0An">
-                      <property role="2Ry0Am" value="JDK-tools" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="398BVA" id="3405ypXZiuZ" role="3LF7KH">
           <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
           <node concept="2Ry0Ak" id="3405ypXZiv7" role="iGT6I">
@@ -33470,28 +33448,6 @@
         <property role="TrG5h" value="jetbrains.jetpad" />
         <property role="3LESm3" value="67b3c41d-58b3-4756-b971-30bf8a9d63e6" />
         <property role="2GAjPV" value="true" />
-        <node concept="3rtmxn" id="EpEP7iiihs" role="3bR31x">
-          <node concept="3LXTmp" id="EpEP7iiiht" role="3rtmxm">
-            <node concept="3qWCbU" id="EpEP7iiihu" role="3LXTna">
-              <property role="3qWCbO" value="icons/**, resources/**" />
-            </node>
-            <node concept="398BVA" id="EpEP7iiihv" role="3LXTmr">
-              <ref role="398BVh" node="25y4WSoTpUY" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="EpEP7iiihw" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="EpEP7iiihx" role="2Ry0An">
-                  <property role="2Ry0Am" value="jetpad" />
-                  <node concept="2Ry0Ak" id="EpEP7iiihy" role="2Ry0An">
-                    <property role="2Ry0Am" value="solutions" />
-                    <node concept="2Ry0Ak" id="EpEP7iiihz" role="2Ry0An">
-                      <property role="2Ry0Am" value="jetbrains.jetpad" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="398BVA" id="25y4WSoTpS0" role="3LF7KH">
           <ref role="398BVh" node="25y4WSoTpUY" resolve="mps_home" />
           <node concept="2Ry0Ak" id="25y4WSoTpS1" role="iGT6I">
@@ -36202,7 +36158,7 @@
               </node>
             </node>
             <node concept="398BVA" id="1CY6j2K5DBw" role="28jJRO">
-              <ref role="398BVh" node="77ZqjhZbMDY" resolve="mps_home" />
+              <ref role="398BVh" node="77ZqjhZbMDY" />
               <node concept="2Ry0Ak" id="1CY6j2K5DBx" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="1CY6j2K5DBy" role="2Ry0An">

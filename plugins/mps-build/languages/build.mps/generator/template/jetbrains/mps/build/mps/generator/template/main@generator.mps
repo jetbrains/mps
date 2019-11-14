@@ -1947,13 +1947,13 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3yrxFa" id="4RsV8qJGWim" role="3yrxIG">
-                  <ref role="3yrxFb" node="5WMFzVNuUbm" />
+                <node concept="3yrxFa" id="6hX_UKecaLM" role="3yrxIG">
+                  <ref role="3yrxFb" node="1tWbYFNhyL0" resolve="aaa.jar" />
                 </node>
               </node>
               <node concept="2GhqfE" id="bgY2XVZacP" role="nCB5Z">
                 <node concept="3yrxFa" id="bgY2XVZacX" role="3yrxIG">
-                  <ref role="3yrxFb" node="5WMFzVNuUbm" />
+                  <ref role="3yrxFb" node="1tWbYFNhyL0" resolve="aaa.jar" />
                   <node concept="1ZhdrF" id="bgY2XVZacY" role="lGtFl">
                     <property role="2qtEX8" value="jar" />
                     <property role="P3scX" value="798100da-4f0a-421a-b991-71f8c50ce5d2/5610619299014309452/5610619299014309453" />
@@ -7947,8 +7947,8 @@
             </node>
           </node>
         </node>
-        <node concept="3yrxFa" id="4RsV8qJGWio" role="3yrxIG">
-          <ref role="3yrxFb" node="5WMFzVNuUbm" />
+        <node concept="3yrxFa" id="6hX_UKeexAY" role="3yrxIG">
+          <ref role="3yrxFb" node="1tWbYFNhyL0" resolve="aaa.jar" />
         </node>
       </node>
     </node>
@@ -8489,6 +8489,39 @@
                         </node>
                       </node>
                     </node>
+                  </node>
+                </node>
+                <node concept="3LXIA4" id="3qXpVwI6Wox" role="39821P">
+                  <node concept="3LXTmp" id="3qXpVwI6Woy" role="3LXIA7">
+                    <node concept="55IIr" id="3qXpVwI6Woz" role="3LXTmr" />
+                  </node>
+                  <node concept="1WS0z7" id="3qXpVwI6Wo$" role="lGtFl">
+                    <node concept="3JmXsc" id="3qXpVwI6Wo_" role="3Jn$fo">
+                      <node concept="3clFbS" id="3qXpVwI6WoA" role="2VODD2">
+                        <node concept="3clFbF" id="3qXpVwI6WoB" role="3cqZAp">
+                          <node concept="2OqwBi" id="3qXpVwI6WoC" role="3clFbG">
+                            <node concept="3Tsc0h" id="3qXpVwI6Ykc" role="2OqNvi">
+                              <ref role="3TtcxE" to="kdzh:4zCbl23d1OL" resolve="sources" />
+                            </node>
+                            <node concept="1PxgMI" id="3qXpVwI6XKX" role="2Oq$k0">
+                              <property role="1BlNFB" value="true" />
+                              <node concept="chp4Y" id="3qXpVwI6XR7" role="3oSUPX">
+                                <ref role="cht4Q" to="kdzh:2L4pT56gD3R" resolve="BuildMps_Solution" />
+                              </node>
+                              <node concept="2OqwBi" id="3qXpVwI6WWy" role="1m5AlR">
+                                <node concept="30H73N" id="3qXpVwI6WoE" role="2Oq$k0" />
+                                <node concept="3TrEf2" id="3qXpVwI6X7c" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="kdzh:16hzwWwASfD" resolve="module" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="1sPUBX" id="3qXpVwI6WoF" role="lGtFl">
+                    <ref role="v9R2y" node="EpEP7hjGk8" resolve="switch_ModuleSourcesToDeployedLocation" />
                   </node>
                 </node>
                 <node concept="398223" id="14LJu4Zggo5" role="39821P">

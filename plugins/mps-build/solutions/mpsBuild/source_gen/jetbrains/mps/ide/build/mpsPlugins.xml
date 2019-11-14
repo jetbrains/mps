@@ -340,7 +340,7 @@
       <fileset dir="${mps_home}/plugins/mps-modelchecker/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
-
+  
   <target name="java.compile.mps-memmanagement" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-memmanagement/source" />
     <mkdir dir="${build.tmp}/java/out/mps-memmanagement" />
@@ -386,7 +386,7 @@
       <fileset dir="${mps_home}/plugins/mps-memmanagement/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
-
+  
   <target name="java.compile.mps-samples" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-samples/sources" />
     <mkdir dir="${build.tmp}/java/out/mps-samples" />
