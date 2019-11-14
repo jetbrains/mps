@@ -149,8 +149,12 @@
         <node concept="3Tqbb2" id="6X8eyFnbN$e" role="3RXm0y" />
       </node>
       <node concept="3RXm0x" id="6X8eyFnbNzJ" role="3QpnaF">
-        <property role="TrG5h" value="childNode" />
+        <property role="TrG5h" value="descendantNode" />
         <node concept="3Tqbb2" id="6X8eyFnbNzK" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="6nwF2qiOlKP" role="3QpnaF">
+        <property role="TrG5h" value="descendantConcept" />
+        <node concept="3bZ5Sz" id="6nwF2qiOlKY" role="3RXm0y" />
       </node>
       <node concept="3RXm0x" id="6X8eyFnbNzN" role="3QpnaF">
         <property role="TrG5h" value="link" />
