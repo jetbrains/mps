@@ -160,6 +160,7 @@
     </echoxml>
     <jar destfile="${build.layout}/notesOrganizer/languages/notesOrganizer/jetbrains.mps.samples.notesOrganizer-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.samples.notesOrganizer#8908453262579799816" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.notesOrganizer/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.samples.notesOrganizer-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.samples.notesOrganizer-generator-template">

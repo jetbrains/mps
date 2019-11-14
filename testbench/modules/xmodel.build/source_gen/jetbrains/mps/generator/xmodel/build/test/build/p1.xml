@@ -115,6 +115,7 @@
     </echoxml>
     <jar destfile="${build.layout}/jetbrains.mps.generator.test.xmodel.lang1-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.generator.test.xmodel.lang1#7618674748894117488" />
+      <fileset dir="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.generator.test.xmodel.lang1-generator.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-project.xmodel.test1-xmodel.lang1-generator-template">
