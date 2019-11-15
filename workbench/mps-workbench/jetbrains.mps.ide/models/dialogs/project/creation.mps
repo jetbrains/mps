@@ -6199,21 +6199,41 @@
           </node>
         </node>
         <node concept="3clFbJ" id="1pyYjDPRa17" role="3cqZAp">
-          <node concept="3y3z36" id="1pyYjDPRa18" role="3clFbw">
-            <node concept="37vLTw" id="2BHiRxgmKrC" role="3uHU7B">
-              <ref role="3cqZAo" node="695k0NO_Mjb" resolve="stereotype" />
+          <node concept="1Wc70l" id="5e7X3XCENKq" role="3clFbw">
+            <node concept="37vLTw" id="5e7X3XCET_C" role="3uHU7w">
+              <ref role="3cqZAo" node="695k0NO_Mjd" resolve="isStrictStereotype" />
             </node>
-            <node concept="10Nm6u" id="1pyYjDPRa1a" role="3uHU7w" />
+            <node concept="1Wc70l" id="5e7X3XCEFCd" role="3uHU7B">
+              <node concept="3y3z36" id="1pyYjDPRa18" role="3uHU7B">
+                <node concept="37vLTw" id="2BHiRxgmKrC" role="3uHU7B">
+                  <ref role="3cqZAo" node="695k0NO_Mjb" resolve="stereotype" />
+                </node>
+                <node concept="10Nm6u" id="1pyYjDPRa1a" role="3uHU7w" />
+              </node>
+              <node concept="3fqX7Q" id="5e7X3XCEMXi" role="3uHU7w">
+                <node concept="2OqwBi" id="5e7X3XCEMXk" role="3fr31v">
+                  <node concept="37vLTw" id="5e7X3XCEMXl" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6BEHsuXjPto" resolve="stereotypes" />
+                  </node>
+                  <node concept="liA8E" id="5e7X3XCEMXm" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.contains(java.lang.Object)" resolve="contains" />
+                    <node concept="37vLTw" id="5e7X3XCEMXn" role="37wK5m">
+                      <ref role="3cqZAo" node="695k0NO_Mjb" resolve="stereotype" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="3clFbS" id="1pyYjDPRa1b" role="3clFbx">
-            <node concept="3clFbF" id="1pyYjDPRa1c" role="3cqZAp">
-              <node concept="2OqwBi" id="1pyYjDPRa1d" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeucTD" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1pyYjDPRa0d" resolve="myModelStereotype" />
+            <node concept="3clFbF" id="5e7X3XCEVzo" role="3cqZAp">
+              <node concept="2OqwBi" id="5e7X3XCEVWj" role="3clFbG">
+                <node concept="37vLTw" id="5e7X3XCEVzn" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6BEHsuXjPto" resolve="stereotypes" />
                 </node>
-                <node concept="liA8E" id="1pyYjDPRa1f" role="2OqNvi">
-                  <ref role="37wK5l" to="dxuu:~JComboBox.setSelectedItem(java.lang.Object)" resolve="setSelectedItem" />
-                  <node concept="37vLTw" id="2BHiRxghf3C" role="37wK5m">
+                <node concept="liA8E" id="5e7X3XCEWvE" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
+                  <node concept="37vLTw" id="5e7X3XCEXb6" role="37wK5m">
                     <ref role="3cqZAo" node="695k0NO_Mjb" resolve="stereotype" />
                   </node>
                 </node>
@@ -6271,6 +6291,42 @@
                     <node concept="37vLTw" id="6BEHsuXlm1m" role="2Oq$k0">
                       <ref role="3cqZAo" node="6BEHsuXjPto" resolve="stereotypes" />
                     </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="5e7X3XCEyQw" role="3cqZAp">
+          <node concept="3y3z36" id="5e7X3XCEyQx" role="3clFbw">
+            <node concept="37vLTw" id="5e7X3XCEyQy" role="3uHU7B">
+              <ref role="3cqZAo" node="695k0NO_Mjb" resolve="stereotype" />
+            </node>
+            <node concept="10Nm6u" id="5e7X3XCEyQz" role="3uHU7w" />
+          </node>
+          <node concept="3clFbS" id="5e7X3XCEyQ$" role="3clFbx">
+            <node concept="3clFbF" id="5e7X3XCEyQ_" role="3cqZAp">
+              <node concept="2OqwBi" id="5e7X3XCEyQA" role="3clFbG">
+                <node concept="37vLTw" id="5e7X3XCEyQB" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1pyYjDPRa0d" resolve="myModelStereotype" />
+                </node>
+                <node concept="liA8E" id="5e7X3XCEyQC" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JComboBox.setSelectedItem(java.lang.Object)" resolve="setSelectedItem" />
+                  <node concept="37vLTw" id="5e7X3XCEyQD" role="37wK5m">
+                    <ref role="3cqZAo" node="695k0NO_Mjb" resolve="stereotype" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5e7X3XCEXZC" role="3cqZAp">
+              <node concept="2OqwBi" id="5e7X3XCEYHX" role="3clFbG">
+                <node concept="37vLTw" id="5e7X3XCEXZA" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7aLmy0jFxx0" resolve="atSign" />
+                </node>
+                <node concept="liA8E" id="5e7X3XCEYYi" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JLabel.setText(java.lang.String)" resolve="setText" />
+                  <node concept="Xl_RD" id="5e7X3XCEZgP" role="37wK5m">
+                    <property role="Xl_RC" value="@" />
                   </node>
                 </node>
               </node>

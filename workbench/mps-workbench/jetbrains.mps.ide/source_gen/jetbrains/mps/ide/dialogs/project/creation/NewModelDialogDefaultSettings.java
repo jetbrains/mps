@@ -129,11 +129,15 @@ public class NewModelDialogDefaultSettings implements NewModelDialogSettings {
     if (!(myModule instanceof Generator)) {
       stereotypes.remove(SModelStereotype.GENERATOR);
     }
-    if (stereotype != null) {
-      myModelStereotype.setSelectedItem(stereotype);
+    if (stereotype != null && !(stereotypes.contains(stereotype)) && isStrictStereotype) {
+      stereotypes.add(stereotype);
     }
     myModelStereotype.setEditable(!(isStrictStereotype));
     myModelStereotype.setModel(new DefaultComboBoxModel<String>(stereotypes.toArray(new String[stereotypes.size()])));
+    if (stereotype != null) {
+      myModelStereotype.setSelectedItem(stereotype);
+      atSign.setText("@");
+    }
     myModelStereotype.addKeyListener(new KeyAdapter() {
       @Override
       public void keyReleased(KeyEvent event) {
