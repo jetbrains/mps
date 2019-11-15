@@ -101,7 +101,8 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
   @Override
   public void conflictDetected(SModel model) {
     EditableSModel m = (EditableSModel) model;
-    assert m.isChanged() && m.needsReloading();
+    // XXX here used to be m.isChanged assert as well, which I don't quite see a reason for - one may want to force save a non-changed model when there's a modified disk presentation  
+    assert m.needsReloading();
 
     resolveDiskMemoryConflict(m);
   }

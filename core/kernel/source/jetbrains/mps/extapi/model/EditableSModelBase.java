@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -169,8 +169,8 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
       return;
     }
 
-    //we must be in command since model save might change model by adding model/language imports
-    //if (!mySModel.isLoading()) LOG.assertInCommand();
+    // NOTE, it's ok if we get here in !isChanged state, it's up to caller to decide whether he'd like to save this model irrespective of any
+    //    changes (i.e. to force save). There's isChanged() for those that care to save modified models only
 
     LOG.debug("Saving model " + getName().getLongName());
 
@@ -217,6 +217,7 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
                                                                                              newModelName);
     fireBeforeModelRenamed(newModelReference);
     changeModelReference(newModelReference);
+    setChanged(true);
 
     try {
       if (changeFile) {
