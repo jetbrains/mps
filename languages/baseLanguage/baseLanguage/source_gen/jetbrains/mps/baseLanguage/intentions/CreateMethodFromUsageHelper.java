@@ -72,7 +72,6 @@ public class CreateMethodFromUsageHelper {
     }
     return this.getContextClassifier(myNode);
   }
-
   public boolean doRun(boolean dryRun) {
     final SNode cls = getMethodClassifier();
     if ((cls == null)) {
@@ -112,7 +111,7 @@ public class CreateMethodFromUsageHelper {
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           method.value = createDecl(cls, sameClassifier, methodName, getInferredType(SNodeOperations.getParent(myNode)));
-          return SNodeOperations.replaceWithAnother(myNode, createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0n(method.value));
+          return SNodeOperations.replaceWithAnother(myNode, createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0m(method.value));
         }
       }));
     } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.Expression$TP)) {
@@ -120,23 +119,23 @@ public class CreateMethodFromUsageHelper {
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           method.value = createDecl(cls, sameClassifier, methodName, getInferredType(myNode));
-          return SNodeOperations.replaceWithAnother(myNode, createLocalMethodCall_tok9no_a0a1a0a0b0a32a31(method.value));
+          return SNodeOperations.replaceWithAnother(myNode, createLocalMethodCall_tok9no_a0a1a0a0b0a32a21(method.value));
         }
       }));
     } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.Statement$ok)) {
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
-          method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0b32a31());
-          return SNodeOperations.replaceWithAnother(myNode, createExpressionStatement_tok9no_a0a1a0a0b0b32a31(method.value));
+          method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0b32a21());
+          return SNodeOperations.replaceWithAnother(myNode, createExpressionStatement_tok9no_a0a1a0a0b0b32a21(method.value));
         }
       }));
     } else if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(myNode)), CONCEPTS.StatementList$TN)) {
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
-          method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0c32a31());
-          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.StatementList$TN), LINKS.statement$WHn8)).addElement(createExpressionStatement_tok9no_a0a1a0a0b0c32a31(method.value));
+          method.value = createDecl(cls, sameClassifier, methodName, createVoidType_tok9no_d0a0a0a0b0c32a21());
+          return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.StatementList$TN), LINKS.statement$WHn8)).addElement(createExpressionStatement_tok9no_a0a1a0a0b0c32a21(method.value));
         }
       }));
     }
@@ -156,6 +155,7 @@ public class CreateMethodFromUsageHelper {
     });
     return true;
   }
+
 
   private SNode getContextClassifier(SNode node) {
     return SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$hJ, false, false);
@@ -209,21 +209,21 @@ public class CreateMethodFromUsageHelper {
 
     public abstract void exec(_FunctionTypes._void_P0_E0 r);
   }
-  private static SNode createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0n(SNode node0) {
+  private static SNode createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0m(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InstanceMethodCallOperation$1G);
     rootBuilder1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
     return rootBuilder1.getResult();
   }
-  private static SNode createLocalMethodCall_tok9no_a0a1a0a0b0a32a31(SNode node0) {
+  private static SNode createLocalMethodCall_tok9no_a0a1a0a0b0a32a21(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LocalMethodCall$77);
     rootBuilder1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
     return rootBuilder1.getResult();
   }
-  private static SNode createVoidType_tok9no_d0a0a0a0b0b32a31() {
+  private static SNode createVoidType_tok9no_d0a0a0a0b0b32a21() {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
     return rootBuilder1.getResult();
   }
-  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0b32a31(SNode node0) {
+  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0b32a21(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
     {
       SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$WIP0).init(CONCEPTS.LocalMethodCall$77);
@@ -231,11 +231,11 @@ public class CreateMethodFromUsageHelper {
     }
     return rootBuilder1.getResult();
   }
-  private static SNode createVoidType_tok9no_d0a0a0a0b0c32a31() {
+  private static SNode createVoidType_tok9no_d0a0a0a0b0c32a21() {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
     return rootBuilder1.getResult();
   }
-  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0c32a31(SNode node0) {
+  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0c32a21(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
     {
       SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$WIP0).init(CONCEPTS.LocalMethodCall$77);
