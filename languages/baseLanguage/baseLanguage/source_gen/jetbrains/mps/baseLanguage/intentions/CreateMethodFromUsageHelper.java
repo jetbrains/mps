@@ -16,10 +16,10 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.Editor;
+import jetbrains.mps.openapi.navigation.NavigationSupport;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -146,10 +146,10 @@ public class CreateMethodFromUsageHelper {
     ex.exec(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
         if (sameClassifier) {
+          SelectionUtil.selectCell(myEditorContext, method.value, SelectionManager.FIRST_EDITABLE_CELL);
+        } else {
           Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), cls, true, false);
           editor.getEditorContext().selectWRTFocusPolicy(method.value);
-        } else {
-          SelectionUtil.selectCell(myEditorContext, method.value, SelectionManager.FIRST_EDITABLE_CELL);
         }
       }
     });
