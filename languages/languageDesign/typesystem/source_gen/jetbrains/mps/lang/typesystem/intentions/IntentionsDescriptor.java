@@ -60,6 +60,20 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[0] = new ConvertPatternRule_Intention();
         }
         break;
+      case 4:
+        if (true) {
+          // concept 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new CreateQFixFromUsageInREStmt_Intention();
+        }
+        break;
+      case 5:
+        if (true) {
+          // concept 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new CreateQFixFromUsageInTSIntention_Intention();
+        }
+        break;
       default:
     }
     myCached.put(concept, intentions);
@@ -69,13 +83,15 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[5];
+    IntentionFactory[] rv = new IntentionFactory[7];
     rv[0] = new CreateTypesystemIntention_Intention();
     rv[1] = new FlipInequality_Intention();
     rv[2] = new MakeInequalityCheckOnly_Intention();
     rv[3] = new ConvertPatternRule_Intention();
     rv[4] = new AddMessageAnnotation_Intention();
+    rv[5] = new CreateQFixFromUsageInREStmt_Intention();
+    rv[6] = new CreateQFixFromUsageInTSIntention_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b251a62aL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL)).seal();
 }
