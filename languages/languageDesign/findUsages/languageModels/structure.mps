@@ -82,6 +82,7 @@
     <property role="19KtqR" value="true" />
     <property role="TrG5h" value="FinderDeclaration" />
     <property role="EcuMT" value="1197044488845" />
+    <property role="34LRSv" value="Finder" />
     <ref role="1TJDcQ" node="hJgKnWi" resolve="AbstractFinderDeclaration" />
     <node concept="1TJgyi" id="hr9L4KS" role="1TKVEl">
       <property role="TrG5h" value="description" />

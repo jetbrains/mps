@@ -298,6 +298,7 @@
     <property role="R5$K2" value="true" />
     <property role="TrG5h" value="PrimitiveDataTypeDeclaration" />
     <property role="EcuMT" value="1083243159079" />
+    <property role="34LRSv" value="Primitive Datatype" />
     <ref role="1TJDcQ" node="fKAxPRU" resolve="DataTypeDeclaration" />
     <node concept="1QGGSu" id="4Q8sAA5iJRL" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/primitiveTD.png" />

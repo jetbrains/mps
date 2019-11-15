@@ -73,6 +73,7 @@
     <property role="TrG5h" value="ConceptTextGenDeclaration" />
     <property role="3GE5qa" value="root" />
     <property role="EcuMT" value="1233670071145" />
+    <property role="34LRSv" value="Concept Text Gen" />
     <ref role="1TJDcQ" node="hXwW6D9" resolve="AbstractTextGenDeclaration" />
     <node concept="1TJgyj" id="6VAHsmHnR9T" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />

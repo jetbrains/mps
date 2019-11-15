@@ -212,6 +212,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("isVisibleBlock", 0x11b36e6cbecL).target(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x11b36e60151L).optional(true).ordered(true).multiple(false).origin("1216396839916").done();
     b.aggregate("isUsedByDefault", 0x1660f4e8320e447L).target(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x1660f4e85a04a8fL).optional(true).ordered(true).multiple(false).origin("100784871544251463").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
+    b.alias("Finder");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForFinderReference() {

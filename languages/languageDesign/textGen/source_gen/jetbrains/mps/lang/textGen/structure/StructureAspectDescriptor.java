@@ -257,6 +257,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("layout", 0x2bad879ac8f27decL).target(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x2bad879ac8f27dc9L).optional(true).ordered(true).multiple(false).origin("3147320813467893228").done();
     b.aggregate("contextObjects", 0x1dfcc3c672ea7620L).target(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1dfcc3c672ea762cL).optional(true).ordered(true).multiple(true).origin("2160817178329904672").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
+    b.alias("Concept Text Gen");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConstantStringAppendPart() {
