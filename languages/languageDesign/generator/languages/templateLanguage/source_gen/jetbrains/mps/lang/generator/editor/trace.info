@@ -109,6 +109,9 @@
       <unit at="68,0,89,0" name="jetbrains.mps.lang.generator.editor.TemplateSwitchReference_SubstituteMenu$SMP_Subconcepts_ncgjod_b" />
       <unit at="26,0,98,0" name="jetbrains.mps.lang.generator.editor.TemplateSwitchReference_SubstituteMenu" />
     </file>
+    <file name="_name_.java">
+      <unit at="6,0,8,0" name="jetbrains.mps.lang.generator.editor._name_" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/1048903277984176274">
     <file name="VarMacro2_Editor.java">
@@ -8775,8 +8778,8 @@
       <node id="1167088003562" at="272,39,273,95" concept="9" />
       <node id="1167088003562" at="275,48,276,60" concept="3" />
       <node id="1167088003562" at="276,60,277,48" concept="3" />
-      <node id="1167088003562" at="277,48,278,43" concept="3" />
-      <node id="1167088003562" at="278,43,279,20" concept="9" />
+      <node id="1167088003562" at="277,48,278,54" concept="3" />
+      <node id="1167088003562" at="278,54,279,20" concept="9" />
       <node id="1167088003562" at="281,6,282,0" concept="11" />
       <node id="1167088003562" at="282,0,283,46" concept="3" />
       <node id="1167088003562" at="283,46,284,50" concept="8" />

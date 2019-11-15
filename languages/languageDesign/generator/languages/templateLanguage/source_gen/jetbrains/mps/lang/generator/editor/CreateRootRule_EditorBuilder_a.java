@@ -275,7 +275,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         }, targetNode, LINKS.templateNode$RXGY);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
-        installDeleteActions_notnull(cell);
+        installDeleteActions_nullable_reference(cell);
         return cell;
       }
     };

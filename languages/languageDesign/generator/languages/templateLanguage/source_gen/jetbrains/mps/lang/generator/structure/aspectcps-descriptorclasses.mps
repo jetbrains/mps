@@ -19945,7 +19945,9 @@
                 </node>
                 <node concept="liA8E" id="1Ps" role="2OqNvi">
                   <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2$AssociationLinkBuilder.optional(boolean)" resolve="optional" />
-                  <node concept="3clFbT" id="1PA" role="37wK5m" />
+                  <node concept="3clFbT" id="1PA" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
                 </node>
               </node>
               <node concept="liA8E" id="1Pq" role="2OqNvi">

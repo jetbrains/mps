@@ -609,7 +609,6 @@
     </node>
     <node concept="1TJgyj" id="gYVPold" role="1TKVEi">
       <property role="20kJfa" value="templateNode" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1167087469901" />
       <ref role="20lvS9" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>

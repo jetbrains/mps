@@ -454,7 +454,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x12509ddfaa7c0557L);
     b.origin("r:00000000-0000-4000-0000-011c895902e8(jetbrains.mps.lang.generator.structure)/1167087469898");
     b.version(2);
-    b.associate("templateNode", 0x10fbbd5854dL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L).optional(false).origin("1167087469901").done();
+    b.associate("templateNode", 0x10fbbd5854dL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L).optional(true).origin("1167087469901").done();
     b.associate("label", 0x1179c9e8cacL).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L).optional(true).origin("1200923511980").done();
     b.aggregate("conditionFunction", 0x10fbbd5854cL).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd643c6L).optional(true).ordered(true).multiple(false).origin("1167087469900").done();
     b.kind(ConceptKind.IMPLEMENTATION, StaticScope.GLOBAL);
