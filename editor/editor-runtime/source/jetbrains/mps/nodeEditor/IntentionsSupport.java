@@ -75,7 +75,6 @@ import java.util.concurrent.atomic.AtomicReference;
 public class IntentionsSupport {
   private static final long INTENTION_SHOW_DELAY = 1000;
 
-  private AbstractAction myShowIntentionsAction;
   private final Point myLightBulbLocation = new Point();
   private final LightBulbMenu myLightBulb;
 
@@ -96,13 +95,13 @@ public class IntentionsSupport {
 
     myEditor.getViewport().addChangeListener(e -> adjustLightBulbLocation());
 
-    myShowIntentionsAction = new AbstractAction() {
+    AbstractAction showIntentionsAction = new AbstractAction() {
       @Override
       public void actionPerformed(ActionEvent e) {
         getModelAccess().runReadAction(() -> checkAndShowMenu());
       }
     };
-    myEditor.registerKeyboardAction(myShowIntentionsAction, KeyStroke.getKeyStroke("alt ENTER"), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    myEditor.registerKeyboardAction(showIntentionsAction, KeyStroke.getKeyStroke("alt ENTER"), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
     final FocusAdapter focusListener = new FocusAdapter() {
       @Override
