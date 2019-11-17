@@ -1229,7 +1229,7 @@
       <node id="8130203123065979039" at="34,35,35,31" concept="8" />
       <node id="8130203123065979039" at="39,53,40,19" concept="8" />
       <node id="8130203123065979039" at="41,5,42,16" concept="8" />
-      <node id="8130203123066029813" at="44,91,45,69" concept="8" />
+      <node id="8130203123066029813" at="44,91,45,131" concept="8" />
       <node id="8130203123065979039" at="48,35,49,17" concept="8" />
       <node id="8130203123065979039" at="52,37,53,105" concept="2" />
       <node id="8130203123065979039" at="54,5,55,30" concept="8" />
@@ -1262,9 +1262,9 @@
       <node id="8130203123066050777" at="96,173,97,173" concept="2" />
       <node id="8130203123066050777" at="97,173,98,24" concept="8" />
       <node id="8130203123066392745" at="100,52,101,44" concept="8" />
-      <node id="8130203123065979039" at="105,0,106,0" concept="11" trace="rootable$vg$g" />
-      <node id="8130203123065979039" at="106,0,107,0" concept="11" trace="name$tAp1" />
-      <node id="8130203123065979039" at="110,0,111,0" concept="11" trace="icon$2CxW" />
+      <node id="8130203123065979039" at="105,0,106,0" concept="11" trace="icon$2CxW" />
+      <node id="8130203123065979039" at="109,0,110,0" concept="11" trace="rootable$vg$g" />
+      <node id="8130203123065979039" at="110,0,111,0" concept="11" trace="name$tAp1" />
       <node id="8130203123065979039" at="58,0,60,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="8130203123065979039" at="30,0,33,0" concept="1" trace="CreateConceptIcon_Intention#()V" />
       <node id="8130203123065979039" at="38,84,41,5" concept="5" />
@@ -1283,7 +1283,7 @@
       <scope id="8130203123065979039" at="30,40,31,153" />
       <scope id="8130203123065979039" at="34,35,35,31" />
       <scope id="8130203123065979039" at="39,53,40,19" />
-      <scope id="8130203123066029353" at="44,91,45,69" />
+      <scope id="8130203123066029353" at="44,91,45,131" />
       <scope id="8130203123065979039" at="48,35,49,17" />
       <scope id="8130203123065979039" at="52,37,53,105" />
       <scope id="8130203123065979041" at="61,87,62,27" />
@@ -1337,8 +1337,8 @@
         <var name="parameter_3" id="8130203123066050777" />
         <var name="parameter_4" id="8130203123066050777" />
       </scope>
-      <unit id="8130203123065979039" at="109,0,112,0" name="jetbrains.mps.lang.structure.intentions.CreateConceptIcon_Intention$LINKS" />
-      <unit id="8130203123065979039" at="104,0,108,0" name="jetbrains.mps.lang.structure.intentions.CreateConceptIcon_Intention$PROPS" />
+      <unit id="8130203123065979039" at="104,0,107,0" name="jetbrains.mps.lang.structure.intentions.CreateConceptIcon_Intention$LINKS" />
+      <unit id="8130203123065979039" at="108,0,112,0" name="jetbrains.mps.lang.structure.intentions.CreateConceptIcon_Intention$PROPS" />
       <unit id="8130203123065979039" at="57,0,74,0" name="jetbrains.mps.lang.structure.intentions.CreateConceptIcon_Intention$IntentionImplementation" />
       <unit id="8130203123065979039" at="28,0,113,0" name="jetbrains.mps.lang.structure.intentions.CreateConceptIcon_Intention" />
     </file>
