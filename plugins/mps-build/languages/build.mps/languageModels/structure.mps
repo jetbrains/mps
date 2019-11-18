@@ -351,12 +351,28 @@
         <property role="t5JxN" value="name of the folder models get deployed to, usually the same as last segment of original path" />
       </node>
     </node>
-    <node concept="1TJgyj" id="3HwLahs6lLi" role="1TKVEi">
+    <node concept="1TJgyi" id="73GUf$tPojA" role="1TKVEl">
+      <property role="IQ2nx" value="8137134783396676838" />
+      <property role="TrG5h" value="extracted" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="73GUf$tPojE" role="lGtFl">
+        <property role="t5JxN" value="true indicates the root has been extracted automatically and values can get updated during project re-load process" />
+      </node>
+    </node>
+    <node concept="1TJgyi" id="73GUf$tQg_C" role="1TKVEl">
+      <property role="IQ2nx" value="8137134783396907368" />
+      <property role="TrG5h" value="convert2binary" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="73GUf$tQg_I" role="lGtFl">
+        <property role="t5JxN" value="true indicates model files have to be piped though a convertor that re-saves them into binary persistence, if possible" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="73GUf$tPojz" role="1TKVEi">
+      <property role="IQ2ns" value="8137134783396676835" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="folder" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="4278635856200817746" />
-      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <property role="20kJfa" value="location" />
+      <ref role="20lvS9" to="3ior:4zlO3QT8$m$" resolve="BuildInputFiles" />
     </node>
   </node>
   <node concept="1TIwiD" id="3HwLahs6nSp">

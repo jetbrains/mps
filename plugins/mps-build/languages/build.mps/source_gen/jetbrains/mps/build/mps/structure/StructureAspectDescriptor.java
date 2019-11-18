@@ -819,7 +819,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/4278635856200817744");
     b.version(2);
     b.property("deployFolderName", 0x281831b8d7259819L).type(PrimitiveTypeId.STRING).origin("2889113830911481881").done();
-    b.aggregate("folder", 0x3b60c4a45c195c52L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(false).ordered(true).multiple(false).origin("4278635856200817746").done();
+    b.property("extracted", 0x70ece8f91dd584e6L).type(PrimitiveTypeId.BOOLEAN).origin("8137134783396676838").done();
+    b.property("convert2binary", 0x70ece8f91dd90968L).type(PrimitiveTypeId.BOOLEAN).origin("8137134783396907368").done();
+    b.aggregate("location", 0x70ece8f91dd584e3L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L).optional(false).ordered(true).multiple(true).origin("8137134783396676835").done();
     b.alias("model root");
     return b.create();
   }

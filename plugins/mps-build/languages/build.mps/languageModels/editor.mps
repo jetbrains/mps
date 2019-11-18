@@ -1512,20 +1512,58 @@
         <property role="3F0ifm" value="model root" />
         <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
       </node>
-      <node concept="3F1sOY" id="3HwLahs6lLr" role="3EZMnx">
-        <ref role="1NtTu8" to="kdzh:3HwLahs6lLi" resolve="folder" />
-      </node>
-    </node>
-    <node concept="3EZMnI" id="2wocrzndpA3" role="6VMZX">
-      <node concept="2iRfu4" id="2wocrzndpA4" role="2iSdaV" />
-      <node concept="3F0ifn" id="2wocrzndpAc" role="3EZMnx">
-        <property role="3F0ifm" value="deployed into folder:" />
-        <node concept="VPM3Z" id="2wocrzndqqb" role="3F10Kt">
-          <property role="VOm3f" value="false" />
+      <node concept="3F2HdR" id="73GUf$tPojK" role="3EZMnx">
+        <ref role="1NtTu8" to="kdzh:73GUf$tPojz" resolve="location" />
+        <node concept="l2Vlx" id="73GUf$tPojM" role="2czzBx" />
+        <node concept="pVoyu" id="73GUf$tPojW" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="73GUf$tPojY" role="3F10Kt">
+          <property role="VOm3f" value="true" />
         </node>
       </node>
-      <node concept="3F0A7n" id="2wocrzndpA0" role="3EZMnx">
-        <ref role="1NtTu8" to="kdzh:2wocrzn9pwp" resolve="deployFolderName" />
+    </node>
+    <node concept="3EZMnI" id="73GUf$tPviy" role="6VMZX">
+      <node concept="2iRkQZ" id="73GUf$tPviz" role="2iSdaV" />
+      <node concept="3EZMnI" id="2wocrzndpA3" role="3EZMnx">
+        <node concept="2iRfu4" id="2wocrzndpA4" role="2iSdaV" />
+        <node concept="3F0ifn" id="2wocrzndpAc" role="3EZMnx">
+          <property role="3F0ifm" value="deployed into folder:" />
+          <node concept="VPM3Z" id="2wocrzndqqb" role="3F10Kt">
+            <property role="VOm3f" value="false" />
+          </node>
+        </node>
+        <node concept="3F0A7n" id="2wocrzndpA0" role="3EZMnx">
+          <ref role="1NtTu8" to="kdzh:2wocrzn9pwp" resolve="deployFolderName" />
+        </node>
+      </node>
+      <node concept="3EZMnI" id="73GUf$tPvj5" role="3EZMnx">
+        <node concept="VPM3Z" id="73GUf$tPvj7" role="3F10Kt" />
+        <node concept="3F0ifn" id="73GUf$tPvj9" role="3EZMnx">
+          <property role="3F0ifm" value="auto-extracted:" />
+        </node>
+        <node concept="2iRfu4" id="73GUf$tPvja" role="2iSdaV" />
+        <node concept="3F0A7n" id="73GUf$tPvjs" role="3EZMnx">
+          <ref role="1NtTu8" to="kdzh:73GUf$tPojA" resolve="extracted" />
+        </node>
+        <node concept="3F0ifn" id="73GUf$tPvjI" role="3EZMnx">
+          <property role="3F0ifm" value="keep true to update on project re-load" />
+          <ref role="1k5W1q" to="o2va:7UAfeVQSDww" resolve="comment" />
+        </node>
+      </node>
+      <node concept="3EZMnI" id="73GUf$tQg_K" role="3EZMnx">
+        <node concept="VPM3Z" id="73GUf$tQg_L" role="3F10Kt" />
+        <node concept="3F0ifn" id="73GUf$tQg_M" role="3EZMnx">
+          <property role="3F0ifm" value="re-save as binary:" />
+        </node>
+        <node concept="2iRfu4" id="73GUf$tQg_N" role="2iSdaV" />
+        <node concept="3F0A7n" id="73GUf$tQg_O" role="3EZMnx">
+          <ref role="1NtTu8" to="kdzh:73GUf$tQg_C" resolve="convert2binary" />
+        </node>
+        <node concept="3F0ifn" id="73GUf$tQg_P" role="3EZMnx">
+          <property role="3F0ifm" value="true to re-save source models in binary persistence during deployment" />
+          <ref role="1k5W1q" to="o2va:7UAfeVQSDww" resolve="comment" />
+        </node>
       </node>
     </node>
   </node>
