@@ -948,6 +948,15 @@
     <property role="R4oN_" value="check for unknown typesystem error" />
     <property role="EcuMT" value="428590876651279930" />
     <ref role="1TJDcQ" node="4CT6QR8TxBp" resolve="NodeTypeSystemRuleCheckOperation" />
+    <node concept="1TJgyj" id="426cbTMe2uN" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="equationRef" />
+      <property role="IQ2ns" value="4649457259824818099" />
+      <ref role="20lvS9" node="426cbTMdZVv" resolve="TypesystemEquationReference" />
+    </node>
+    <node concept="PrWs8" id="426cbTMe0db" role="PzmwI">
+      <ref role="PrY4T" node="2wBFdLy7HeG" resolve="IReferenceAttachable" />
+    </node>
   </node>
   <node concept="PlHQZ" id="7scb9XIYnWK">
     <property role="3GE5qa" value="nodeOperation" />
@@ -964,6 +973,9 @@
     <property role="R4oN_" value="check for unknown typesystem warning" />
     <property role="EcuMT" value="8578280453509464010" />
     <ref role="1TJDcQ" node="4CT6QR8TxBp" resolve="NodeTypeSystemRuleCheckOperation" />
+    <node concept="asaX9" id="426cbTMe0dd" role="lGtFl">
+      <property role="YLQ7P" value="for typesystem equations use NodeTypeSystemErrorCheckOperation, for ordinary warnings use NodeWarningCheckOperation" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4CT6QR8TxBp">
     <property role="3GE5qa" value="nodeOperation" />
@@ -1480,6 +1492,20 @@
   <node concept="PlHQZ" id="143xXLdhW$X">
     <property role="EcuMT" value="1225972903834011965" />
     <property role="TrG5h" value="ITestAnnotationsContainer" />
+  </node>
+  <node concept="1TIwiD" id="426cbTMdZVv">
+    <property role="TrG5h" value="TypesystemEquationReference" />
+    <property role="EcuMT" value="4649457259824807647" />
+    <node concept="1TJgyj" id="426cbTMdZVw" role="1TKVEi">
+      <property role="20kJfa" value="declaration" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="4649457259824807648" />
+      <ref role="20ksaX" node="7eBNsYUkvtl" resolve="declaration" />
+      <ref role="20lvS9" to="tpd4:h5Zf1ZU" resolve="AbstractEquationStatement" />
+    </node>
+    <node concept="PrWs8" id="426cbTMdZVx" role="PzmwI">
+      <ref role="PrY4T" node="6EW1JnOFUIt" resolve="IRuleReference" />
+    </node>
   </node>
 </model>
 

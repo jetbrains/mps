@@ -14,13 +14,42 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.test.editor.transformationTest_StyleSheet.NodeOperationStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
+import jetbrains.mps.lang.editor.cellProviders.AggregationCellContext;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
+import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
+import java.util.List;
+import jetbrains.mps.smodel.IOperationContext;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Set;
+import jetbrains.mps.findUsages.FindUsagesManager;
+import java.util.Collections;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.typesystem.behavior.MessageStatement__BehaviorDescriptor;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.lang.test.editor.transformationTest_StyleSheet.TestLabelStyleClass;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -29,7 +58,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 /*package*/ class NodeTypeSystemErrorCheckOperation_EditorBuilder_a extends AbstractEditorBuilder {
@@ -57,6 +86,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createComponent_0());
+    editorCell.addEditorCell(createRefNode_0());
     if (SNodeAccessUtil.hasProperty(myNode, PROPS.name$tAp1)) {
       editorCell.addEditorCell(createNonEmptyProperty_0());
     }
@@ -70,6 +100,98 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.getStyle().putAll(style);
     Annotation_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
+  }
+  private EditorCell createRefNode_0() {
+    SingleRoleCellProvider provider = new equationRefSingleRoleHandler_v8czwo_b0(myNode, LINKS.equationRef$J98c, getEditorContext());
+    return provider.createCell();
+  }
+  private static class equationRefSingleRoleHandler_v8czwo_b0 extends SingleRoleCellProvider {
+    @NotNull
+    private SNode myNode;
+
+    public equationRefSingleRoleHandler_v8czwo_b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      super(containmentLink, context);
+      myNode = ownerNode;
+    }
+
+    @Override
+    @NotNull
+    public SNode getNode() {
+      return myNode;
+    }
+
+    protected EditorCell createChildCell(SNode child) {
+      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.equationRef$J98c, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.equationRef$J98c, child));
+      installCellInfo(child, editorCell, false);
+      return editorCell;
+    }
+
+
+
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
+      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.equationRef$J98c, CONCEPTS.TypesystemEquationReference$JO), new SubstituteInfoPartExt[]{new equationRefSingleRoleHandler_v8czwo_b0.NodeTypeSystemErrorCheckOperation_generic_cellMenu_v8czwo_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+      }
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.equationRef$J98c);
+      }
+    }
+    @Override
+    protected EditorCell createEmptyCell() {
+      getCellFactory().pushCellContext();
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.equationRef$J98c));
+      try {
+        EditorCell editorCell = super.createEmptyCell();
+        editorCell.setCellId("empty_equationRef");
+        installCellInfo(null, editorCell, true);
+        setCellContext(editorCell);
+        return editorCell;
+      } finally {
+        getCellFactory().popCellContext();
+      }
+    }
+    protected String getNoTargetText() {
+      return "<no equationRef>";
+    }
+    public static class NodeTypeSystemErrorCheckOperation_generic_cellMenu_v8czwo_a0b0 extends AbstractCellMenuPart_Generic_Group {
+      public NodeTypeSystemErrorCheckOperation_generic_cellMenu_v8czwo_a0b0() {
+      }
+
+      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+        SAbstractConcept concept = CONCEPTS.AbstractEquationStatement$sp;
+        AbstractModule module = ((AbstractModule) SNodeOperations.getModel(node).getModule());
+        Set<SNode> errorInstances = FindUsagesManager.getInstance().findInstances(module.getScope(), Collections.singleton(concept), true, new EmptyProgressMonitor());
+        return SetSequence.fromSet(errorInstances).toListSequence().select(new ISelector<SNode, SNode>() {
+          public SNode select(SNode it) {
+            return SNodeOperations.cast(it, CONCEPTS.AbstractEquationStatement$sp);
+          }
+        }).toListSequence();
+      }
+      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+        this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+      }
+      public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+        SLinkOperations.setTarget(node, LINKS.equationRef$J98c, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL, "jetbrains.mps.lang.test.structure.TypesystemEquationReference")));
+        SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.equationRef$J98c), LINKS.declaration$tW8o, parameterObject);
+      }
+      public boolean isReferentPresentation() {
+        return false;
+      }
+      public String getMatchingText(Object parameterObject) {
+        return this.getMatchingText_internal((SNode) parameterObject);
+      }
+      public String getMatchingText_internal(SNode parameterObject) {
+        SNode errorStatement = parameterObject;
+        return MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(errorStatement);
+      }
+
+      @Override
+      protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
+        return new EditorMenuDescriptorBase("generic group with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00000000-0000-4000-0000-011c89590384(jetbrains.mps.lang.test.editor)", "4649457259824928540"));
+      }
+    }
   }
   private EditorCell createNonEmptyProperty_0() {
     getCellFactory().pushCellContext();
@@ -104,7 +226,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink equationRef$J98c = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5f2a921acc5d63aL, 0x408630be723827b3L, "equationRef");
+    /*package*/ static final SReferenceLink declaration$tW8o = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+  }
+
   private static final class CONCEPTS {
+    /*package*/ static final SConcept TypesystemEquationReference$JO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL, "jetbrains.mps.lang.test.structure.TypesystemEquationReference");
+    /*package*/ static final SConcept AbstractEquationStatement$sp = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
     /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

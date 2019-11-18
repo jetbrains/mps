@@ -12,22 +12,32 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5f2a921acc5d63aL, "jetbrains.mps.lang.test.structure.NodeTypeSystemErrorCheckOperation");
 
   public static final SMethod<CheckExpectedMessageAction> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageAction>(new SJavaCompoundTypeImpl(CheckExpectedMessageAction.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
+  public static final SMethod<Boolean> canAttachReference_id2wBFdLy7HtS = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canAttachReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2wBFdLy7HtS").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> attachReference_id2wBFdLy8qmn = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("attachReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2wBFdLy8qmn").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getReference_id7eBNsYUkslm = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7eBNsYUkslm").build();
+  public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2wBFdLy8qmt").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(checkAction_id7jfLc8W17Cr, getDefaultName_id7scb9XJdmH2);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(checkAction_id7jfLc8W17Cr, getDefaultName_id7scb9XJdmH2, canAttachReference_id2wBFdLy7HtS, attachReference_id2wBFdLy8qmn, getReference_id7eBNsYUkslm, getReferencedRuleNode_id2wBFdLy8qmt);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -37,6 +47,20 @@ public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeTypeSystemCheck";
+  }
+  /*package*/ static boolean canAttachReference_id2wBFdLy7HtS(@NotNull SNode __thisNode__, @NotNull SNode reference) {
+    return SNodeOperations.isInstanceOf(reference, CONCEPTS.AbstractEquationStatement$sp);
+  }
+  /*package*/ static void attachReference_id2wBFdLy8qmn(@NotNull SNode __thisNode__, @NotNull SNode reference) {
+    assert ((boolean) IReferenceAttachable__BehaviorDescriptor.canAttachReference_id2wBFdLy7HtS.invoke(__thisNode__, reference));
+    SLinkOperations.setTarget(__thisNode__, LINKS.equationRef$J98c, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL, "jetbrains.mps.lang.test.structure.TypesystemEquationReference")));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(__thisNode__, LINKS.equationRef$J98c), LINKS.declaration$tW8o, SNodeOperations.cast(reference, CONCEPTS.AbstractEquationStatement$sp));
+  }
+  /*package*/ static SNode getReference_id7eBNsYUkslm(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.equationRef$J98c);
+  }
+  /*package*/ static SNode getReferencedRuleNode_id2wBFdLy8qmt(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(IReferenceAttachable__BehaviorDescriptor.getReference_id7eBNsYUkslm.invoke(__thisNode__), LINKS.declaration$tW8o);
   }
 
   /*package*/ NodeTypeSystemErrorCheckOperation__BehaviorDescriptor() {
@@ -58,6 +82,15 @@ public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends
         return (T) ((CheckExpectedMessageAction) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0]));
       case 1:
         return (T) ((String) getDefaultName_id7scb9XJdmH2(node));
+      case 2:
+        return (T) ((Boolean) canAttachReference_id2wBFdLy7HtS(node, (SNode) parameters[0]));
+      case 3:
+        attachReference_id2wBFdLy8qmn(node, (SNode) parameters[0]);
+        return null;
+      case 4:
+        return (T) ((SNode) getReference_id7eBNsYUkslm(node));
+      case 5:
+        return (T) ((SNode) getReferencedRuleNode_id2wBFdLy8qmt(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -85,5 +118,14 @@ public final class NodeTypeSystemErrorCheckOperation__BehaviorDescriptor extends
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept AbstractEquationStatement$sp = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink equationRef$J98c = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5f2a921acc5d63aL, 0x408630be723827b3L, "equationRef");
+    /*package*/ static final SReferenceLink declaration$tW8o = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
   }
 }
