@@ -34,6 +34,7 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import java.util.Map;
@@ -57,6 +58,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.smodel.ModelImports;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -72,7 +74,7 @@ public final class ModuleChecker {
   private final IMessageHandler myReporter;
   /**
    * To access certain module properties (like used languages and devkits), we need to load modules temporarily.
-   * The field is not in use and may stay null unless CheckType.doFullImport == true
+   * The field is not in use and may stay null unless CheckType.doFullImport  or doPartialImport is true
    */
   private final ModuleRepositoryFacade myRepository;
   private SModule myLoadedModule;
@@ -596,41 +598,71 @@ public final class ModuleChecker {
       SPropertyOperations.assign(module, PROPS.doNotCompile$13Sd, doNotCompile);
     }
 
-    if (type.doFullImport) {
-      final BuildModuleFacade buildModuleFacade = new BuildModuleFacade(module);
+    final BuildModuleFacade buildModuleFacade = new BuildModuleFacade(module);
+    if (type.doPartialImport || type.doFullImport) {
+
+      List<SNode> prevRoots = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.sources$Pqd_), CONCEPTS.BuildMps_ModuleModelRoot$hQ)).toListSequence();
+
       // see comment next to makeRelative use, below, regarding hardcoded parent location knowledge 
       // XXX instead of myModuleDescriptoFile, could use module.path.getLocalPath() 
       RelativePathHelper moduleRelativePathHelper = new RelativePathHelper(myModuleDescriptorFile.getParent().getPath());
-      // getLoadedModule(), below, needs myRepository which is available in doFullImport only 
+      // getLoadedModule(), below, needs myRepository which is available in doFullImport || doPartialImport 
       SModule loadedModule = getLoadedModule();
-      if (loadedModule == null) {
-        return;
-      }
-      for (ModelRoot mr : loadedModule.getModelRoots()) {
-        // XXX it's not clear why we do not copy model roots other than default here. 
-        if (!(mr instanceof DefaultModelRoot)) {
-          continue;
-        }
-        for (SourceRoot sr : ((DefaultModelRoot) mr).getSourceRoots(SourceRootKinds.SOURCES)) {
-          String path = sr.getAbsolutePath().getPath();
-          SNode p = convertPath(path);
-          if (p == null) {
+      if (loadedModule != null) {
+        for (ModelRoot mr : loadedModule.getModelRoots()) {
+          // XXX it's not clear why we do not copy model roots other than default here. 
+          if (!(mr instanceof DefaultModelRoot)) {
             continue;
           }
-
-          String deployName;
-          try {
-            // We used to imply model roots reside under a parent folder of a module descriptor file (in contentOf_BuildMpsLayout_ModuleSources). 
-            // Now, we just extracted the logic here and make the name of the deployment folder explicit. 
-            // FIXME in fact, we shall reference these names inside generated/copied module descriptors and stop implying they match names in the original descriptor source 
-            deployName = moduleRelativePathHelper.makeRelative(path);
-          } catch (RelativePathHelper.PathException ex) {
-            report(String.format("Failed to make model root path %s relative to module %s, using default folder name for deployment", sr, moduleRelativePathHelper.getBasePath()), ex);
-            deployName = "models";
+          // XXX here I assume ModuleModelRoot represent DefaultModelRoot and are arranged in module.sources in exactly the same order they are reported by SModule.getModelRoots 
+          // When ModuleModelRoot marked as 'extracted', I assume I can overwrite its paths here as I see fit. If it's not 'extracted', just keep it as is (assume user has modified it according to custom needs). 
+          // XXX I'm aware this approach likely to break the moment one introduces new model roots, just can't craft an utter solution at the moment. 
+          SNode prev = (ListSequence.fromList(prevRoots).isEmpty() ? null : ListSequence.fromList(prevRoots).removeElementAt(0));
+          if (prev != null && !(SPropertyOperations.getBoolean(prev, PROPS.extracted$A3zL))) {
+            continue;
           }
-          buildModuleFacade.addModelSources(p, deployName);
+          String deployName = null;
+          for (SourceRoot sr : ((DefaultModelRoot) mr).getSourceRoots(SourceRootKinds.SOURCES)) {
+            String path = sr.getAbsolutePath().getPath();
+            SNode p = convertPath(path);
+            if (p == null) {
+              continue;
+            }
+
+            if (deployName == null) {
+              try {
+                // We used to imply model roots reside under a parent folder of a module descriptor file (in contentOf_BuildMpsLayout_ModuleSources). 
+                // Now, we just extracted the logic here and make the name of the deployment folder explicit. 
+                // FIXME in fact, we shall reference these names inside generated/copied module descriptors and stop implying they match names in the original descriptor source 
+                deployName = moduleRelativePathHelper.makeRelative(path);
+              } catch (RelativePathHelper.PathException ex) {
+                report(String.format("Failed to make model root path %s relative to module %s, using default folder name for deployment", sr, moduleRelativePathHelper.getBasePath()), ex);
+                deployName = "models";
+              }
+              buildModuleFacade.withModelRoot(prev, deployName);
+            }
+            buildModuleFacade.addSourcesToCurrentModelRoot(p);
+          }
+          if (deployName != null) {
+            // well, in fact it's not necessary, as any next model root get deployName = null and withModelRoot() eventually that precedes any addModelSource; still helps to get the idea 
+            buildModuleFacade.popModelRoot();
+          }
         }
+        // if any 'auto-extracted' model root left in the module, remove it 
+        // intentionally kept inside laodedModule != null not to delete user data in case we have no idea what's the module we are trying to deal with 
+        ListSequence.fromList(prevRoots).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return SPropertyOperations.getBoolean(it, PROPS.extracted$A3zL);
+          }
+        }).visitAll(new IVisitor<SNode>() {
+          public void visit(SNode it) {
+            SNodeOperations.deleteNode(it);
+          }
+        });
       }
+    }
+
+    if (type.doFullImport) {
       for (String path : myModuleDescriptor.getSourcePaths()) {
         SNode p = convertPath(path);
         buildModuleFacade.addJavaSources(p, false);
@@ -1047,27 +1079,51 @@ public final class ModuleChecker {
   }
 
   /**
-   * Some auxiliary methods to augment BuildMps_Module instances (to hide the burden if necesseay structure creation)
+   * Some auxiliary methods to augment BuildMps_Module instances (to hide the burden of necessary structure creation)
    */
   private static class BuildModuleFacade {
     private final SNode myModule;
+    private SNode myCurrentModelRoot;
 
     public BuildModuleFacade(SNode module) {
       myModule = module;
     }
 
-    private BuildModuleFacade addModelSources(SNode p, String deployName) {
-      SNode mroot = SModelOperations.createNewNode(SNodeOperations.getModel(myModule), null, CONCEPTS.BuildMps_ModuleModelRoot$hQ);
-      SNode loc = SLinkOperations.addNewChild(mroot, LINKS.location$A3yk, null);
-      SLinkOperations.setTarget(loc, LINKS.dir$6hmv, p);
+    /*package*/ void withModelRoot(@Nullable SNode mr, String deployName) {
+      if (mr == null) {
+        myCurrentModelRoot = SModelOperations.createNewNode(SNodeOperations.getModel(myModule), null, CONCEPTS.BuildMps_ModuleModelRoot$hQ);
+        ListSequence.fromList(SLinkOperations.getChildren(myModule, LINKS.sources$Pqd_)).addElement(myCurrentModelRoot);
+      } else {
+        myCurrentModelRoot = mr;
+      }
+      SPropertyOperations.assign(myCurrentModelRoot, PROPS.deployFolderName$f6uS, deployName);
+    }
+
+    /*package*/ void popModelRoot() {
+      myCurrentModelRoot = null;
+    }
+
+    /*package*/ BuildModuleFacade addSourcesToCurrentModelRoot(final SNode p) {
+      SNode mroot = myCurrentModelRoot;
+      SNode loc = ListSequence.fromList(SLinkOperations.getChildren(mroot, LINKS.location$A3yk)).findFirst(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.dir$6hmv)).equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p));
+        }
+      });
+      if (loc == null) {
+        loc = SLinkOperations.addNewChild(mroot, LINKS.location$A3yk, null);
+        SLinkOperations.setTarget(loc, LINKS.dir$6hmv, p);
+      }
+      // Note, we don't update selectors (unless completely missing), expect that user could change pattern for an 'extracted' root (that's exactly scenario of MPS-30707) 
+      if (ListSequence.fromList(SLinkOperations.getChildren(loc, LINKS.selectors$6oar)).isNotEmpty()) {
+        return this;
+      }
       // use BuildFileIncludesSelector to mimic what contentOf_BuildMpsLayout_ModuleSources used to have 
       SNode selector = SLinkOperations.addNewChild(loc, LINKS.selectors$6oar, CONCEPTS.BuildFileIncludesSelector$LC);
       // FIXME pattern value is just a tribute to template value we used to have, fix it with explicit commit 
       SPropertyOperations.assign(selector, PROPS.pattern$Odcv, "**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model");
       SPropertyOperations.assign(mroot, PROPS.convert2binary$pdH4, true);
       SPropertyOperations.assign(mroot, PROPS.extracted$A3zL, true);
-      SPropertyOperations.assign(mroot, PROPS.deployFolderName$f6uS, deployName);
-      ListSequence.fromList(SLinkOperations.getChildren(myModule, LINKS.sources$Pqd_)).addElement(mroot);
       return this;
     }
 
@@ -1109,11 +1165,11 @@ public final class ModuleChecker {
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty uuid$XKnR = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
     /*package*/ static final SProperty doNotCompile$13Sd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
+    /*package*/ static final SProperty extracted$A3zL = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e6L, "extracted");
     /*package*/ static final SProperty reexport$gb$r = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
+    /*package*/ static final SProperty deployFolderName$f6uS = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x281831b8d7259819L, "deployFolderName");
     /*package*/ static final SProperty pattern$Odcv = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern");
     /*package*/ static final SProperty convert2binary$pdH4 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd90968L, "convert2binary");
-    /*package*/ static final SProperty extracted$A3zL = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e6L, "extracted");
-    /*package*/ static final SProperty deployFolderName$f6uS = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x281831b8d7259819L, "deployFolderName");
     /*package*/ static final SProperty isGenerated$YjFt = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x52da585100dba65aL, "isGenerated");
     /*package*/ static final SProperty isGenerated$hta9 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, 0x66103f1a46523841L, "isGenerated");
   }
@@ -1134,9 +1190,9 @@ public final class ModuleChecker {
     /*package*/ static final SConcept BuildMps_ModuleDependencyUseLanguage$2l = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnDevKit$C4 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnDevKit");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnModule$_g = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule");
+    /*package*/ static final SConcept BuildMps_ModuleModelRoot$hQ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleModelRoot");
     /*package*/ static final SConcept BuildMps_ModuleDependencyJar$qY = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyJar");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnJavaModule$mo = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnJavaModule");
-    /*package*/ static final SConcept BuildMps_ModuleModelRoot$hQ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleModelRoot");
     /*package*/ static final SConcept BuildFileIncludesSelector$LC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, "jetbrains.mps.build.structure.BuildFileIncludesSelector");
     /*package*/ static final SConcept BuildMps_ModuleJavaSource$lI = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleJavaSource");
     /*package*/ static final SConcept BuildInputSingleFolder$9a = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, "jetbrains.mps.build.structure.BuildInputSingleFolder");
@@ -1160,13 +1216,13 @@ public final class ModuleChecker {
     /*package*/ static final SContainmentLink dependency$6b80 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
     /*package*/ static final SReferenceLink module$gbmo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
     /*package*/ static final SReferenceLink sourceLanguage$vc9u = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
+    /*package*/ static final SContainmentLink sources$Pqd_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
     /*package*/ static final SContainmentLink path$PN10 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, 0x3b60c4a45c197e1aL, "path");
     /*package*/ static final SContainmentLink javaLibLocation$VgPH = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
     /*package*/ static final SContainmentLink generator$zMtG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
     /*package*/ static final SContainmentLink location$A3yk = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e3L, "location");
     /*package*/ static final SContainmentLink dir$6hmv = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
     /*package*/ static final SContainmentLink selectors$6oar = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors");
-    /*package*/ static final SContainmentLink sources$Pqd_ = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
     /*package*/ static final SContainmentLink folder$99Dv = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
     /*package*/ static final SContainmentLink path$OoV0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path");
     /*package*/ static final SContainmentLink folder$zA3L = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, 0x21286cd3b0f28a50L, "folder");

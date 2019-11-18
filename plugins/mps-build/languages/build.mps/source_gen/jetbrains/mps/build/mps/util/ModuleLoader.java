@@ -62,7 +62,7 @@ public final class ModuleLoader {
    * To access certain module properties (like used languages and devkits), we need to load modules temporarily.
    * As long as generator modules could not be loaded without their source language module already present in the repository, we need to share repository
    * between language's ModuleChecker and that of its generators.
-   * The field is not initialized unless full import is requested (CheckType.doFullImport == true)
+   * The field is not initialized unless import (either full or partial) is requested (CheckType.doFullImport == true || CheckType.doPartialImport == true)
    */
   private ModuleRepositoryFacade myRepository = null;
 
@@ -91,7 +91,7 @@ public final class ModuleLoader {
 
   public void checkAllModules(final ModuleChecker.CheckType type) {
     Iterable<SNode> parts = SLinkOperations.getChildren(myBuildProject, LINKS.parts$tgxg);
-    if (type.doFullImport) {
+    if (type.doFullImport || type.doPartialImport) {
       Repo r = new Repo(new ModelAccessNoLimit());
       myRepository = new ModuleRepositoryFacade(r);
     }
