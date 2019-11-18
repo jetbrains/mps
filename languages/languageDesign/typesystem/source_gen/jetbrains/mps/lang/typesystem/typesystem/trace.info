@@ -757,7 +757,7 @@
       <node id="1196436873791" at="55,30,56,228" concept="3" />
       <node id="1196436873791" at="56,228,57,24" concept="8" />
       <node id="1185805331842" at="61,0,62,0" concept="10" trace="errorString$q8qL" />
-      <node id="1185805331842" at="62,0,63,0" concept="10" trace="nodeToReport$f1Ii" />
+      <node id="1185805331842" at="62,0,63,0" concept="10" trace="nodeToReport$r7g8" />
       <node id="1185805331842" at="66,0,67,0" concept="10" trace="ReportErrorStatement$db" />
       <node id="1185805331842" at="20,0,22,0" concept="2" trace="typeOf_ReportErrorStatement_InferenceRule#()V" />
       <node id="1185805331842" at="38,0,41,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1885,7 +1885,7 @@
       <node id="1207055636659" at="51,30,52,228" concept="3" />
       <node id="1207055636659" at="52,228,53,24" concept="8" />
       <node id="1207055628316" at="57,0,58,0" concept="10" trace="warningText$PGng" />
-      <node id="1207055628316" at="58,0,59,0" concept="10" trace="nodeToReport$f1Ii" />
+      <node id="1207055628316" at="58,0,59,0" concept="10" trace="nodeToReport$r7g8" />
       <node id="1207055628316" at="62,0,63,0" concept="10" trace="WarningStatement$15" />
       <node id="1207055628316" at="20,0,22,0" concept="2" trace="typeof_WarningStatement_InferenceRule#()V" />
       <node id="1207055628316" at="34,0,37,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -2299,7 +2299,7 @@
       <node id="1224760393564" at="51,30,52,228" concept="3" />
       <node id="1224760393564" at="52,228,53,24" concept="8" />
       <node id="1224760391346" at="57,0,58,0" concept="10" trace="infoText$9zy1" />
-      <node id="1224760391346" at="58,0,59,0" concept="10" trace="nodeToReport$f1Ii" />
+      <node id="1224760391346" at="58,0,59,0" concept="10" trace="nodeToReport$r7g8" />
       <node id="1224760391346" at="62,0,63,0" concept="10" trace="InfoStatement$Gf" />
       <node id="1224760391346" at="20,0,22,0" concept="2" trace="typeof_InfoStatement_InferenceRule#()V" />
       <node id="1224760391346" at="34,0,37,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -3495,15 +3495,15 @@
       </scope>
     </file>
     <file name="check_MessageStatement_QuickFix_NonTypesystemRule.java">
-      <node id="4258793651770372647" at="26,129,27,104" concept="7" />
+      <node id="4258793651770372647" at="26,136,27,111" concept="7" />
       <node id="4258793651770372659" at="31,11,32,70" concept="7" />
       <node id="4258793651770372659" at="32,70,33,284" concept="7" />
-      <node id="4258793651770372643" at="39,50,40,40" concept="8" />
+      <node id="4258793651770372643" at="39,50,40,47" concept="8" />
       <node id="4258793651770372643" at="42,68,43,102" concept="8" />
       <node id="4258793651770372643" at="45,30,46,17" concept="8" />
-      <node id="4258793651770372643" at="50,0,51,0" concept="10" trace="helginsIntention$f1IL" />
+      <node id="4258793651770372643" at="50,0,51,0" concept="10" trace="helginsIntention$u2WC" />
       <node id="4258793651770372643" at="54,0,55,0" concept="10" trace="applyImmediately$fto8" />
-      <node id="4258793651770372643" at="58,0,59,0" concept="10" trace="MessageStatement$Ql" />
+      <node id="4258793651770372643" at="58,0,59,0" concept="10" trace="AbstractReportStatement$Qn" />
       <node id="4258793651770372643" at="24,0,26,0" concept="2" trace="check_MessageStatement_QuickFix_NonTypesystemRule#()V" />
       <node id="4258793651770372643" at="39,0,42,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4258793651770372643" at="42,0,45,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -3511,10 +3511,10 @@
       <node id="4258793651770372659" at="30,85,34,11" concept="0" />
       <node id="4258793651770372657" at="29,42,35,9" concept="5" />
       <node id="4258793651770372655" at="28,56,36,7" concept="4" />
-      <node id="4258793651770372653" at="27,104,37,5" concept="5" />
+      <node id="4258793651770372653" at="27,111,37,5" concept="5" />
       <node id="4258793651770372643" at="26,0,39,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="4258793651770372643" at="24,62,24,62" />
-      <scope id="4258793651770372643" at="39,50,40,40" />
+      <scope id="4258793651770372643" at="39,50,40,47" />
       <scope id="4258793651770372643" at="42,68,43,102" />
       <scope id="4258793651770372643" at="45,30,46,17" />
       <scope id="4258793651770372643" at="24,0,26,0" />
@@ -3533,11 +3533,11 @@
       <scope id="4258793651770372655" at="28,56,36,7">
         <var name="intention" id="4258793651770372665" />
       </scope>
-      <scope id="4258793651770372644" at="26,129,37,5">
+      <scope id="4258793651770372644" at="26,136,37,5">
         <var name="intentions" id="4258793651770372648" />
       </scope>
       <scope id="4258793651770372643" at="26,0,39,0">
-        <var name="messageStatement" id="4258793651770372643" />
+        <var name="abstractReportStatement" id="4258793651770372643" />
         <var name="status" id="4258793651770372643" />
         <var name="typeCheckingContext" id="4258793651770372643" />
       </scope>

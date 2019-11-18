@@ -42,12 +42,18 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 1:
         if (true) {
           // concept 
-          intentions = new IntentionFactory[2];
+          intentions = new IntentionFactory[1];
           intentions[0] = new CreateTypesystemIntention_Intention();
-          intentions[1] = new AddMessageAnnotation_Intention();
         }
         break;
       case 2:
+        if (true) {
+          // concept 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new AddMessageAnnotation_Intention();
+        }
+        break;
+      case 3:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
@@ -71,5 +77,5 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[4] = new AddMessageAnnotation_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL)).seal();
 }

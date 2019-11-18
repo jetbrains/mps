@@ -207,7 +207,7 @@
     <property role="2ZfUl0" value="true" />
     <property role="TrG5h" value="CreateTypesystemIntention" />
     <property role="3GE5qa" value="definition.statement" />
-    <ref role="2ZfgGC" to="tpd4:hQOEHw2" resolve="MessageStatement" />
+    <ref role="2ZfgGC" to="tpd4:3qzTJpCN_Dp" resolve="AbstractReportStatement" />
     <node concept="2S6ZIM" id="2Rjnwer$k2u" role="2ZfVej">
       <node concept="3clFbS" id="2Rjnwer$k2v" role="2VODD2">
         <node concept="3clFbF" id="2Rjnwer$mBV" role="3cqZAp">
@@ -290,8 +290,8 @@
           <node concept="2OqwBi" id="2Rjnwer$mCp" role="3clFbG">
             <node concept="2OqwBi" id="2Rjnwer$mCk" role="2Oq$k0">
               <node concept="2Sf5sV" id="2Rjnwer$mCj" role="2Oq$k0" />
-              <node concept="3Tsc0h" id="23iYu8Ex5pc" role="2OqNvi">
-                <ref role="3TtcxE" to="tpd4:hQOEOnB" resolve="helginsIntention" />
+              <node concept="3Tsc0h" id="3qzTJpCWnf1" role="2OqNvi">
+                <ref role="3TtcxE" to="tpd4:3qzTJpCN_Kl" resolve="helginsIntention" />
               </node>
             </node>
             <node concept="TSZUe" id="23iYu8Ex5pd" role="2OqNvi">
@@ -309,8 +309,8 @@
           <node concept="2OqwBi" id="23iYu8Ex5p0" role="3cqZAk">
             <node concept="2OqwBi" id="2Rjnwer$mBK" role="2Oq$k0">
               <node concept="2Sf5sV" id="2Rjnwer$mBL" role="2Oq$k0" />
-              <node concept="3Tsc0h" id="23iYu8Ex5p7" role="2OqNvi">
-                <ref role="3TtcxE" to="tpd4:hQOEOnB" resolve="helginsIntention" />
+              <node concept="3Tsc0h" id="3qzTJpCWndw" role="2OqNvi">
+                <ref role="3TtcxE" to="tpd4:3qzTJpCN_Kl" resolve="helginsIntention" />
               </node>
             </node>
             <node concept="1v1jN8" id="23iYu8Ex5p8" role="2OqNvi" />

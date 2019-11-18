@@ -14,24 +14,24 @@ public class AssertStatement_DataFlow extends DataFlowBuilder {
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$JLhr));
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:00000000-0000-4000-0000-011c895902af(jetbrains.mps.lang.typesystem.dataFlow)/1207236212211");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.errorString$q8qL));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.nodeToReport$f1Ii));
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.messageTarget$$qsg) != null)) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.messageTarget$$qsg));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.nodeToReport$r7g8));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.messageTarget$uhYA) != null)) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.messageTarget$uhYA));
     }
-    for (SNode intention : SLinkOperations.getChildren(_context.getNode(), LINKS.helginsIntention$f1IL)) {
+    for (SNode intention : SLinkOperations.getChildren(_context.getNode(), LINKS.helginsIntention$u2WC)) {
       _context.getBuilder().build((SNode) intention);
     }
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.foreignMessageSource$hDjo) != null)) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.foreignMessageSource$hDjo));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.foreignMessageSource$ux13) != null)) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.foreignMessageSource$ux13));
     }
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink condition$JLhr = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b24c0cd8L, 0x111b2518fb4L, "condition");
     /*package*/ static final SContainmentLink errorString$q8qL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b251a62aL, 0x111b252f0c9L, "errorString");
-    /*package*/ static final SContainmentLink nodeToReport$f1Ii = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e6L, "nodeToReport");
-    /*package*/ static final SContainmentLink messageTarget$$qsg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4abc990L, "messageTarget");
-    /*package*/ static final SContainmentLink helginsIntention$f1IL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention");
-    /*package*/ static final SContainmentLink foreignMessageSource$hDjo = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x37a16b7744c2e061L, "foreignMessageSource");
+    /*package*/ static final SContainmentLink nodeToReport$r7g8 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
+    /*package*/ static final SContainmentLink messageTarget$uhYA = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5cf3L, "messageTarget");
+    /*package*/ static final SContainmentLink helginsIntention$u2WC = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
+    /*package*/ static final SContainmentLink foreignMessageSource$ux13 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5dd2L, "foreignMessageSource");
   }
 }

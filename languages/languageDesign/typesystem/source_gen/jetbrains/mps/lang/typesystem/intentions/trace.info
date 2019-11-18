@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,76,0" name="jetbrains.mps.lang.typesystem.intentions.IntentionsDescriptor" />
+      <unit at="18,0,82,0" name="jetbrains.mps.lang.typesystem.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)/252830181482184053">
@@ -157,8 +157,8 @@
       <unit id="252830181482184053" at="27,0,128,0" name="jetbrains.mps.lang.typesystem.intentions.ConvertPatternRule_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="252830181482184053" at="53,47,54,61" concept="2" />
-      <node id="252830181482184053" at="69,52,70,47" concept="2" />
+      <node id="252830181482184053" at="59,47,60,61" concept="2" />
+      <node id="252830181482184053" at="75,52,76,47" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)/3302086321380606109">
@@ -188,7 +188,7 @@
       <node id="1376814389956364849" at="86,76,87,89" concept="6" />
       <node id="1376814389956364849" at="87,89,88,64" concept="2" />
       <node id="1376814389956364849" at="88,64,89,36" concept="7" />
-      <node id="3302086321380606109" at="93,0,94,0" concept="9" trace="helginsIntention$f1IL" />
+      <node id="3302086321380606109" at="93,0,94,0" concept="9" trace="helginsIntention$u2WC" />
       <node id="3302086321380606109" at="94,0,95,0" concept="9" trace="executeBlock$kCq9" />
       <node id="3302086321380606109" at="95,0,96,0" concept="9" trace="body$pTP2" />
       <node id="3302086321380606109" at="96,0,97,0" concept="9" trace="quickFix$FQGK" />
@@ -273,7 +273,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="3302086321380606109" at="45,47,46,68" concept="2" />
-      <node id="3302086321380606109" at="66,52,67,54" concept="2" />
+      <node id="3302086321380606109" at="72,52,73,54" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)/6840209722389643031">
@@ -382,13 +382,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="6840209722389643031" at="37,47,38,57" concept="2" />
-      <node id="6840209722389643031" at="67,54,68,43" concept="2" />
+      <node id="6840209722389643031" at="73,54,74,43" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)/6840209722389750234">
     <file name="IntentionsDescriptor.java">
       <node id="6840209722389750234" at="38,57,39,66" concept="2" />
-      <node id="6840209722389750234" at="68,43,69,52" concept="2" />
+      <node id="6840209722389750234" at="74,43,75,52" concept="2" />
     </file>
     <file name="MakeInequalityCheckOnly_Intention.java">
       <node id="6840209722389750234" at="21,0,22,0" concept="3" trace="myCachedExecutable" />
@@ -523,8 +523,8 @@
       <unit id="9057440207251474622" at="24,0,75,0" name="jetbrains.mps.lang.typesystem.intentions.AddMessageAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="9057440207251474622" at="46,68,47,63" concept="2" />
-      <node id="9057440207251474622" at="70,47,71,49" concept="2" />
+      <node id="9057440207251474622" at="52,47,53,63" concept="2" />
+      <node id="9057440207251474622" at="76,47,77,49" concept="2" />
     </file>
   </root>
 </debug-info>

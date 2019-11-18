@@ -41,7 +41,7 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$f1IL)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$u2WC)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -67,7 +67,7 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
       SNode quickFixCall = createTypesystemIntention_wv8vj7_a0c0a(quickFixNode);
 
       SModelOperations.addRootNode(SNodeOperations.getModel(node), quickFixNode);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$f1IL)).addElement(quickFixCall);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$u2WC)).addElement(quickFixCall);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -90,7 +90,7 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helginsIntention$f1IL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention");
+    /*package*/ static final SContainmentLink helginsIntention$u2WC = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
     /*package*/ static final SContainmentLink executeBlock$kCq9 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, 0x11b361a1836L, "executeBlock");
     /*package*/ static final SContainmentLink body$pTP2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
     /*package*/ static final SReferenceLink quickFix$FQGK = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");

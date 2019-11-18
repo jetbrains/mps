@@ -448,6 +448,7 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo" />
@@ -471,8 +472,10 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo" />
@@ -1644,10 +1647,12 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.OperatorStyleClass" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
     <classNode dependClassName="jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.BasicCellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
@@ -1680,8 +1685,10 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo" />
@@ -3457,6 +3464,7 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
     <classNode dependClassName="jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.BasicCellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
@@ -3489,8 +3497,10 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo" />
@@ -4349,10 +4359,12 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.OperatorStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.SemicolonStyleClass" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
     <classNode dependClassName="jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept" />
     <classNode dependClassName="jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.BasicCellContext" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.CellContext" />
@@ -4385,8 +4397,10 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler" />
     <classNode dependClassName="jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo" />
