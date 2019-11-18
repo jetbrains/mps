@@ -64,6 +64,10 @@ public class CreateConceptFromUsageHelper {
       return false;
     }
 
+    if (!(cell.isErrorState())) {
+      return false;
+    }
+
     final String conceptName = getConceptName();
     if ((conceptName == null || conceptName.length() == 0)) {
       return false;
@@ -99,7 +103,7 @@ public class CreateConceptFromUsageHelper {
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$oQDh)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b61a11(intfc));
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$qU), LINKS.implements$oQDh)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(intfc));
           return createdConcept.value = intfc;
         }
       }));
@@ -118,7 +122,7 @@ public class CreateConceptFromUsageHelper {
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode intfc = createConceptInterface(conceptName);
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d61a11(intfc));
+          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptDeclaration$MT), LINKS.extends$3Y1p)).addElement(createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(intfc));
           return createdConcept.value = intfc;
         }
       }));
@@ -163,12 +167,12 @@ public class CreateConceptFromUsageHelper {
 
     public abstract void exec(_FunctionTypes._void_P0_E0 r);
   }
-  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0b61a11(SNode node0) {
+  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
     rootBuilder1.setReferenceTarget(LINKS.intfc$fO5, node0);
     return rootBuilder1.getResult();
   }
-  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0d61a11(SNode node0) {
+  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
     rootBuilder1.setReferenceTarget(LINKS.intfc$fO5, node0);
     return rootBuilder1.getResult();

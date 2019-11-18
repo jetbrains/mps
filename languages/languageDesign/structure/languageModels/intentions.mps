@@ -1996,6 +1996,24 @@
           </node>
         </node>
         <node concept="3clFbH" id="6_mTUEdwakf" role="3cqZAp" />
+        <node concept="3clFbJ" id="2_Mgx8rx4ez" role="3cqZAp">
+          <node concept="3clFbS" id="2_Mgx8rx4e_" role="3clFbx">
+            <node concept="3cpWs6" id="2_Mgx8rx7r_" role="3cqZAp">
+              <node concept="3clFbT" id="2_Mgx8rx8dA" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="2_Mgx8rx54W" role="3clFbw">
+            <node concept="2OqwBi" id="2_Mgx8rx67Q" role="3fr31v">
+              <node concept="37vLTw" id="2_Mgx8rx67R" role="2Oq$k0">
+                <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
+              </node>
+              <node concept="liA8E" id="2_Mgx8rx67S" role="2OqNvi">
+                <ref role="37wK5l" to="f4zo:~EditorCell.isErrorState()" resolve="isErrorState" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="2_Mgx8rxaPJ" role="3cqZAp" />
         <node concept="3cpWs8" id="6_mTUEdwakg" role="3cqZAp">
           <node concept="3cpWsn" id="6_mTUEdwakh" role="3cpWs9">
             <property role="TrG5h" value="conceptName" />
