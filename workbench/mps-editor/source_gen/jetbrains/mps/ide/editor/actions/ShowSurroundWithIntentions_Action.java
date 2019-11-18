@@ -12,12 +12,13 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import java.util.List;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -25,7 +26,6 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.awt.RelativePoint;
 import java.awt.Point;
 import jetbrains.mps.openapi.editor.selection.Selection;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.util.Pair;
@@ -56,7 +56,7 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
       return false;
     }
     EditorComponent component = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent();
-    if (ReadOnlyUtil.isCellsReadOnlyInEditor(component, Sequence.<EditorCell>singleton(component.findNodeCell(((SNode) MapSequence.fromMap(_params).get("selectedNode")))))) {
+    if (ReadOnlyUtil.isSelectionReadOnlyInEditor(component)) {
       return false;
     }
     return Sequence.fromIterable(ShowSurroundWithIntentions_Action.this.getAvailableIntentions(_params)).isNotEmpty();
@@ -85,9 +85,12 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
       }
     }
     {
-      SNode p = event.getData(MPSCommonDataKeys.NODE);
-      MapSequence.fromMap(_params).put("selectedNode", p);
+      List<SNode> p = event.getData(MPSCommonDataKeys.NODES);
+      MapSequence.fromMap(_params).put("selectedNodes", p);
       if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
         return false;
       }
     }
@@ -165,7 +168,7 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
     return TypecheckingFacade.getFromContext().computeWithSession(typecheckingSession, new Supplier<Iterable<Pair<IntentionExecutable, SNode>>>() {
       @Override
       public Iterable<Pair<IntentionExecutable, SNode>> get() {
-        return IntentionsManager.getInstance().getAvailableIntentions(query, ((SNode) MapSequence.fromMap(_params).get("selectedNode")), ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));
+        return IntentionsManager.getInstance().getAvailableIntentions(query, ((List<SNode>) MapSequence.fromMap(_params).get("selectedNodes")).get(0), ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));
       }
     });
   }

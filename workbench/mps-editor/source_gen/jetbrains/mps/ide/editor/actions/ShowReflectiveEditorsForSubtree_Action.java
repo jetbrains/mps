@@ -44,6 +44,9 @@ public class ShowReflectiveEditorsForSubtree_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p.isEmpty()) {
+        return false;
+      }
     }
     {
       EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);

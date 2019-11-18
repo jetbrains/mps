@@ -91,6 +91,9 @@ public class SetNodePackage_Action extends BaseAction {
       if (nodes == null) {
         return false;
       }
+      if (nodes.isEmpty()) {
+        return false;
+      }
 
     }
     {

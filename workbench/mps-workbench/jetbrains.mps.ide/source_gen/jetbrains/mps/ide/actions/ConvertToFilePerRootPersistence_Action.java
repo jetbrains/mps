@@ -81,6 +81,9 @@ public class ConvertToFilePerRootPersistence_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p.isEmpty()) {
+        return false;
+      }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);

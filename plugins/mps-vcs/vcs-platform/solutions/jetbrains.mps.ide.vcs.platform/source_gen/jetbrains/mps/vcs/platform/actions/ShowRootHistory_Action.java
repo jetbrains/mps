@@ -74,6 +74,9 @@ public class ShowRootHistory_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p.isEmpty()) {
+        return false;
+      }
     }
     {
       SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);

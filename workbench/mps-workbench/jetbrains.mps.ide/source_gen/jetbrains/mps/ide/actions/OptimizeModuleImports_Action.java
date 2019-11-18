@@ -52,6 +52,9 @@ public class OptimizeModuleImports_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p.isEmpty()) {
+        return false;
+      }
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);

@@ -9,11 +9,11 @@ import jetbrains.mps.ide.editor.EditorActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
@@ -40,7 +40,7 @@ public class CopyThisDown_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     Iterable<EditorCell> seq;
-    return ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).isNotEmpty() && EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).select(new ISelector<SNode, EditorCell>() {
+    return EditorActionUtils.isWriteActionEnabled(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("inputNodes"))).select(new ISelector<SNode, EditorCell>() {
       public EditorCell select(SNode it) {
         return (EditorCell) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(it);
       }
@@ -73,6 +73,9 @@ public class CopyThisDown_Action extends BaseAction {
         MapSequence.fromMap(_params).put("inputNodes", ListSequence.fromListWithValues(new ArrayList<SNode>(), nodes));
       }
       if (nodes == null) {
+        return false;
+      }
+      if (nodes.isEmpty()) {
         return false;
       }
 

@@ -69,6 +69,9 @@ public class MoveNodes_Action extends BaseAction {
       if (nodes == null) {
         return false;
       }
+      if (nodes.isEmpty()) {
+        return false;
+      }
 
     }
     {

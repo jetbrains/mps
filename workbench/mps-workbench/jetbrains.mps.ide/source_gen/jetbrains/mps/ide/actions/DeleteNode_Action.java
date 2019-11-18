@@ -74,6 +74,9 @@ public class DeleteNode_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p.isEmpty()) {
+        return false;
+      }
     }
     {
       List<Pair<SModel, String>> p = event.getData(MPSDataKeys.VIRTUAL_PACKAGES);

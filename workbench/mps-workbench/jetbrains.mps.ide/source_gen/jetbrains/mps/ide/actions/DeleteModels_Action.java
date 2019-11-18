@@ -72,6 +72,9 @@ public class DeleteModels_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p.isEmpty()) {
+        return false;
+      }
     }
     return true;
   }
