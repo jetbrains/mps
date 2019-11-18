@@ -82,9 +82,9 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     }
 
     SNode oldId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"));
-    ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(oldId, MetaAdapterByDeclaration.getConcept(from));
+    ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"));
-    ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(newId, MetaAdapterByDeclaration.getConcept(to));
+    ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(newId, to);
     migrationBuilder.addPart(from, to, createMoveConcept_c4c66o_c0a71a1(oldId, newId));
   }
   private void addEmptySubstituteMenu(SModel editorModel, final SNode from) {

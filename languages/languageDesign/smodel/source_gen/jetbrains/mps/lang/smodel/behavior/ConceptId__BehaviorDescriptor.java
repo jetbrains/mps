@@ -10,17 +10,19 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
-import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -33,10 +35,11 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
 
   public static final SMethod<SAbstractConcept> getConcept_id5ZE7FBYYOpv = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl(SAbstractConcept.class)).name("getConcept").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBYYOpv").build();
+  public static final SMethod<Void> setConcept_id5e7X3XCIPOJ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e7X3XCIPOJ").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> setConcept_id5ZE7FBYYR6j = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setConcept").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBYYR6j").build(SMethodBuilder.createJavaParameter(SAbstractConcept.class, ""));
   public static final SMethod<Long> getIdValue_id5ZE7FBZ0whU = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5ZE7FBZ0whU").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id5ZE7FBYYOpv, setConcept_id5ZE7FBYYR6j, getIdValue_id5ZE7FBZ0whU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getConcept_id5ZE7FBYYOpv, setConcept_id5e7X3XCIPOJ, setConcept_id5ZE7FBYYR6j, getIdValue_id5ZE7FBZ0whU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -53,6 +56,15 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
     } else {
       return MetaAdapterFactory.getConcept(lang, cid, cn);
     }
+  }
+  /*package*/ static void setConcept_id5e7X3XCIPOJ(@NotNull SNode __thisNode__, @NotNull SNode concept) {
+    SConceptId cid = MetaIdByDeclaration.getConceptId(concept);
+    SNode lang = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.LanguageId$Tn);
+    LanguageIdentity__BehaviorDescriptor.setLanguage_id5e7X3XCKW4J.invoke(lang, (Language) SNodeOperations.getModel(concept).getModule());
+    SLinkOperations.setTarget(__thisNode__, LINKS.languageIdentity$fqVY, lang);
+    SPropertyOperations.assign(__thisNode__, PROPS.conceptName$iWsq, SPropertyOperations.getString(concept, PROPS.name$tAp1));
+    SPropertyOperations.assign(__thisNode__, PROPS.isInterface$40ZV, SNodeOperations.isInstanceOf(concept, CONCEPTS.InterfaceConceptDeclaration$MT));
+    SPropertyOperations.assign(__thisNode__, PROPS.conceptId$fqWW, Long.toString(cid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static void setConcept_id5ZE7FBYYR6j(@NotNull SNode __thisNode__, @NotNull SAbstractConcept concept) {
     SConceptId cid = MetaIdHelper.getConcept(concept);
@@ -85,9 +97,12 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((SAbstractConcept) getConcept_id5ZE7FBYYOpv(node));
       case 1:
-        setConcept_id5ZE7FBYYR6j(node, (SAbstractConcept) parameters[0]);
+        setConcept_id5e7X3XCIPOJ(node, (SNode) parameters[0]);
         return null;
       case 2:
+        setConcept_id5ZE7FBYYR6j(node, (SAbstractConcept) parameters[0]);
+        return null;
+      case 3:
         return (T) ((Long) getIdValue_id5ZE7FBZ0whU(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -125,10 +140,12 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class PROPS {
     /*package*/ static final SProperty conceptName$iWsq = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb73d7L, "conceptName");
     /*package*/ static final SProperty isInterface$40ZV = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb9fecL, "isInterface");
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty conceptId$fqWW = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb6fecL, "conceptId");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LanguageId$Tn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 }

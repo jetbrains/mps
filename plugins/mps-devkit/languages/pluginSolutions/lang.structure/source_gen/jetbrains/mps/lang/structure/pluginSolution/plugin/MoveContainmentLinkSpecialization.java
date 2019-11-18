@@ -62,9 +62,9 @@ public class MoveContainmentLinkSpecialization extends StructureSpecializationBa
     SPropertyOperations.assign(to, PROPS.linkId$ccI3, ConceptIdHelper.generateLinkId(targetConcept, to) + "");
 
     SNode oldId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId"));
-    ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(oldId, MetaAdapterByDeclaration.getContainmentLink(from));
+    ContainmentLinkId__BehaviorDescriptor.setLink_id5e7X3XCLq_K.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId"));
-    ContainmentLinkId__BehaviorDescriptor.setLink_id7jb4LXp8VsD.invoke(newId, MetaAdapterByDeclaration.getContainmentLink(to));
+    ContainmentLinkId__BehaviorDescriptor.setLink_id5e7X3XCLq_K.invoke(newId, to);
     migrationBuilder.addPart(from, to, createMoveContainmentLink_mzlq6b_c0a21a1(oldId, newId));
   }
   public Collection<SNode> findInstances(SContainmentLink oldLink, SearchScope searchScope) {

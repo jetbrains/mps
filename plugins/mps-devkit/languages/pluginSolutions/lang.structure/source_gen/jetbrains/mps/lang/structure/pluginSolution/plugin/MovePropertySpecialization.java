@@ -53,9 +53,9 @@ public class MovePropertySpecialization extends StructureSpecializationBase<SPro
     SPropertyOperations.assign(to, PROPS.propertyId$cckp, ConceptIdHelper.generatePropertyId(targetConcept, to) + "");
 
     SNode oldId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"));
-    PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(oldId, MetaAdapterByDeclaration.getProperty(from));
+    PropertyId__BehaviorDescriptor.setProperty_id5e7X3XCIM6B.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"));
-    PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(newId, MetaAdapterByDeclaration.getProperty(to));
+    PropertyId__BehaviorDescriptor.setProperty_id5e7X3XCIM6B.invoke(newId, to);
     migrationBuilder.addPart(from, to, createMoveProperty_fubpxk_c0a11a1(oldId, newId));
   }
   public Collection<SNode> findInstances(SProperty oldProperty, SearchScope searchScope) {

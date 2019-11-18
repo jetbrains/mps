@@ -57,9 +57,9 @@ public class MoveReferenceLinkSpecialization extends StructureSpecializationBase
     SPropertyOperations.assign(to, PROPS.linkId$ccI3, ConceptIdHelper.generateLinkId(targetConcept, to) + "");
 
     SNode oldId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId"));
-    ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(oldId, MetaAdapterByDeclaration.getReferenceLink(from));
+    ReferenceLinkId__BehaviorDescriptor.setReference_id5e7X3XCLvlR.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId"));
-    ReferenceLinkId__BehaviorDescriptor.setReference_id7jb4LXp9a6q.invoke(newId, MetaAdapterByDeclaration.getReferenceLink(to));
+    ReferenceLinkId__BehaviorDescriptor.setReference_id5e7X3XCLvlR.invoke(newId, to);
     migrationBuilder.addPart(from, to, createMoveReferenceLink_w90w7j_c0a21a1(oldId, newId));
   }
   public Collection<SNode> findInstances(SReferenceLink oldLink, SearchScope searchScope) {

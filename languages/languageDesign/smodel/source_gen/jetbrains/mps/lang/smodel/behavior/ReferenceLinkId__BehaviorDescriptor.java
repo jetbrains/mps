@@ -11,16 +11,18 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
-import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -32,10 +34,11 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId");
 
   public static final SMethod<SReferenceLink> getReference_id7jb4LXp9a7o = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a7o").build();
+  public static final SMethod<Void> setReference_id5e7X3XCLvlR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e7X3XCLvlR").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> setReference_id7jb4LXp9a6q = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setReference").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a6q").build(SMethodBuilder.createJavaParameter(SReferenceLink.class, ""));
   public static final SMethod<Long> getIdValue_id7jb4LXp9a7d = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp9a7d").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id7jb4LXp9a7o, setReference_id7jb4LXp9a6q, getIdValue_id7jb4LXp9a7d);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getReference_id7jb4LXp9a7o, setReference_id5e7X3XCLvlR, setReference_id7jb4LXp9a6q, getIdValue_id7jb4LXp9a7d);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -48,6 +51,17 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
     }
     long rid = ((long) ReferenceLinkId__BehaviorDescriptor.getIdValue_id7jb4LXp9a7d.invoke(__thisNode__));
     return MetaAdapterFactory.getReferenceLink(rc, rid, rn);
+  }
+  /*package*/ static void setReference_id5e7X3XCLvlR(@NotNull SNode __thisNode__, @NotNull SNode ref) {
+    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(ref, PROPS.metaClass$tHD7), 0xfc6f4e95b8L))) {
+      throw new IllegalArgumentException();
+    }
+    SReferenceLinkId rid = MetaIdByDeclaration.getRefRoleId(ref);
+    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$5a);
+    ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(cid, SNodeOperations.cast(SNodeOperations.getParent(ref), CONCEPTS.AbstractConceptDeclaration$UN));
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$n5U0, cid);
+    SPropertyOperations.assign(__thisNode__, PROPS.referenceName$n5UY, SPropertyOperations.getString(ref, PROPS.role$r_O$));
+    SPropertyOperations.assign(__thisNode__, PROPS.referenceId$n5Uv, Long.toString(rid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static void setReference_id7jb4LXp9a6q(@NotNull SNode __thisNode__, @NotNull SReferenceLink ref) {
     SReferenceLinkId rid = MetaIdHelper.getAssociation(ref);
@@ -79,9 +93,12 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
       case 0:
         return (T) ((SReferenceLink) getReference_id7jb4LXp9a7o(node));
       case 1:
-        setReference_id7jb4LXp9a6q(node, (SReferenceLink) parameters[0]);
+        setReference_id5e7X3XCLvlR(node, (SNode) parameters[0]);
         return null;
       case 2:
+        setReference_id7jb4LXp9a6q(node, (SReferenceLink) parameters[0]);
+        return null;
+      case 3:
         return (T) ((Long) getIdValue_id7jb4LXp9a7d(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -118,10 +135,13 @@ public final class ReferenceLinkId__BehaviorDescriptor extends BaseBHDescriptor 
 
   private static final class PROPS {
     /*package*/ static final SProperty referenceName$n5UY = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, 0x74cb131f5923b6efL, "referenceName");
+    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
     /*package*/ static final SProperty referenceId$n5Uv = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, 0x74cb131f5923b6eeL, "referenceId");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptId$5a = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }
