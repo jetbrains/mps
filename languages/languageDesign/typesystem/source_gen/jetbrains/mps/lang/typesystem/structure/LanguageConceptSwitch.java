@@ -113,18 +113,19 @@ public final class LanguageConceptSwitch {
   public static final int TypeOfExpression = 101;
   public static final int TypeVarDeclaration = 102;
   public static final int TypeVarReference = 103;
-  public static final int TypesystemIntention = 104;
-  public static final int TypesystemIntentionArgument = 105;
-  public static final int TypesystemQuickFix = 106;
-  public static final int VariableConverterItem = 107;
-  public static final int VariableConverterItem_ApplicableBlock = 108;
-  public static final int VariableConverterItem_ConvertBlock = 109;
-  public static final int VariableConvertersContainer = 110;
-  public static final int WarningStatement = 111;
-  public static final int WarningStatementAnnotation = 112;
-  public static final int WhenConcreteStatement = 113;
-  public static final int WhenConcreteVariableDeclaration = 114;
-  public static final int WhenConcreteVariableReference = 115;
+  public static final int TypesystemEquationStatementAnnotation = 104;
+  public static final int TypesystemIntention = 105;
+  public static final int TypesystemIntentionArgument = 106;
+  public static final int TypesystemQuickFix = 107;
+  public static final int VariableConverterItem = 108;
+  public static final int VariableConverterItem_ApplicableBlock = 109;
+  public static final int VariableConverterItem_ConvertBlock = 110;
+  public static final int VariableConvertersContainer = 111;
+  public static final int WarningStatement = 112;
+  public static final int WarningStatementAnnotation = 113;
+  public static final int WhenConcreteStatement = 114;
+  public static final int WhenConcreteVariableDeclaration = 115;
+  public static final int WhenConcreteVariableReference = 116;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L);
@@ -232,6 +233,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x1117f0ad10aL, TypeOfExpression);
     builder.put(0x1117f85df7bL, TypeVarDeclaration);
     builder.put(0x1117f90b04cL, TypeVarReference);
+    builder.put(0x408630be72364360L, TypesystemEquationStatementAnnotation);
     builder.put(0x119e85e030eL, TypesystemIntention);
     builder.put(0x119e85f8628L, TypesystemIntentionArgument);
     builder.put(0x11b36163865L, TypesystemQuickFix);

@@ -301,6 +301,9 @@
       <property role="IQ2ns" value="1216204483513" />
       <ref role="20lvS9" node="hBCnwce" resolve="TypesystemIntention" />
     </node>
+    <node concept="PrWs8" id="426cbTMdqE2" role="PzmwI">
+      <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
+    </node>
   </node>
   <node concept="1TIwiD" id="h5ZobZl">
     <property role="R5$K7" value="false" />
@@ -2235,6 +2238,17 @@
     </node>
     <node concept="PrWs8" id="3qzTJpCVcjK" role="PzmwI">
       <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="426cbTMd$dw">
+    <property role="TrG5h" value="TypesystemEquationStatementAnnotation" />
+    <property role="3GE5qa" value="definition.annotation" />
+    <property role="EcuMT" value="4649457259824694112" />
+    <ref role="1TJDcQ" node="2IKZA8EBF1S" resolve="MessageStatementAnnotation" />
+    <node concept="M6xJ_" id="426cbTMd$dx" role="lGtFl">
+      <node concept="trNpa" id="426cbTMd$dz" role="EQaZv">
+        <ref role="trN6q" node="h5Zf1ZU" resolve="AbstractEquationStatement" />
+      </node>
     </node>
   </node>
 </model>
