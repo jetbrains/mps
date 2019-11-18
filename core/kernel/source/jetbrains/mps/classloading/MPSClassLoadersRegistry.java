@@ -206,11 +206,11 @@ class MPSClassLoadersRegistry {
     }
 
     DisposeSession createSession(@NotNull Set<ReloadableModule> modulesToUnload) {
-      List<ModuleClassLoader> classLoaders =
-          modulesToUnload.stream()
-                         .map(myRegistry::doGetModuleClassLoader)
-                         .filter(Objects::nonNull)
-                         .collect(Collectors.toList());
+      List<ModuleClassLoader> classLoaders = modulesToUnload.stream()
+                                                            .map(myRegistry::doGetModuleClassLoader)
+                                                            .filter(Objects::nonNull)
+                                                            .collect(Collectors.toList());
+
       return new DisposeSession(modulesToUnload, classLoaders);
     }
 

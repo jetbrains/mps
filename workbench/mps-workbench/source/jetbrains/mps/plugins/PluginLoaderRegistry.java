@@ -24,6 +24,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.WaitForProgressToShow;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
@@ -355,6 +356,15 @@ public class PluginLoaderRegistry implements Disposable {
     runTask(task);
   }
 
+  private void unloadIdeaIconsGlobalCache(Set<ReloadableModule> modules) {
+    for (ReloadableModule module : modules) {
+//       some people might use the latter to load icons, who knows
+      IconLoader.detachClassLoader(module.getClassLoader0());
+      IconLoader.detachClassLoader(module.getClassLoader());
+    }
+    IconLoader.clearCache();
+  }
+
   private void reschedule() {
     Application application = ApplicationManager.getApplication();
     application.invokeLater(this::update, ModalityState.NON_MODAL, application.getDisposed());
@@ -372,28 +382,28 @@ public class PluginLoaderRegistry implements Disposable {
    */
   private class UpdatingTask extends Task.Modal {
     @NotNull
-    private final Delta<PluginLoader> loadersDelta;
+    private final Delta<PluginLoader> myLoadersDelta;
     @NotNull
-    private final Delta<PluginContributor> contributorsDelta;
+    private final Delta<PluginContributor> myContributorsDelta;
     @NotNull
     private final Runnable myPostRunnable;
 
     UpdatingTask(Project project, @NotNull Delta<PluginLoader> loadersDelta, @NotNull Delta<PluginContributor> contributorsDelta, @NotNull Runnable postRunnable) {
       super(project, "Reloading MPS Plugins", false);
-      this.loadersDelta = loadersDelta;
-      this.contributorsDelta = contributorsDelta;
+      myLoadersDelta = loadersDelta;
+      myContributorsDelta = contributorsDelta;
       myPostRunnable = postRunnable;
     }
 
     @Override
     public void run(@NotNull ProgressIndicator indicator) {
-      if (loadersDelta.isEmpty() && contributorsDelta.isEmpty()) {
+      if (myLoadersDelta.isEmpty() && myContributorsDelta.isEmpty()) {
         LOG.debug("Nothing to do in update");
         return;
       }
       ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
       try {
-        LOG.info("Running Update Task : loaders " + loadersDelta + "; contributors : " + contributorsDelta + "; " + Thread.currentThread());
+        LOG.info("Running Update Task : loaders " + myLoadersDelta + "; contributors : " + myContributorsDelta + "; " + Thread.currentThread());
         indicator.pushState();
         monitor.start("Reloading MPS Plugins", 5);
         WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> doUpdate(monitor), indicator.getModalityState());
@@ -420,7 +430,7 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     private void addContributors(ProgressMonitor monitor) {
-      Set<PluginContributor> contributorsToAdd = new LinkedHashSet<>(contributorsDelta.toLoad);
+      Set<PluginContributor> contributorsToAdd = new LinkedHashSet<>(myContributorsDelta.toLoad);
       contributorsToAdd.removeAll(myCurrentContributors);
       LOG.debug("Loading " + contributorsToAdd.size() + " new contributors to " + myCurrentLoaders.size() + " current loaders");
       loadContributors(contributorsToAdd, myCurrentLoaders, monitor.subTask(1));
@@ -436,7 +446,7 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     private void addLoaders(ProgressMonitor monitor) {
-      Set<PluginLoader> loadersToAdd = loadersDelta.toLoad;
+      Set<PluginLoader> loadersToAdd = myLoadersDelta.toLoad;
       loadersToAdd.removeAll(myCurrentLoaders);
       LOG.debug("Loading " + myCurrentContributors.size() + " current contributors to new " + loadersToAdd.size() + " loaders");
       loadContributors(myCurrentContributors, loadersToAdd, monitor.subTask(1));
@@ -444,7 +454,7 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     private void removeContributors(ProgressMonitor monitor) {
-      Set<PluginContributor> contributorsToRemove = contributorsDelta.toUnload;
+      Set<PluginContributor> contributorsToRemove = myContributorsDelta.toUnload;
       contributorsToRemove.retainAll(myCurrentContributors); // just a precaution
       LOG.debug("Unloading " + contributorsToRemove.size() + " contributors from " + myCurrentLoaders.size() + " current loaders");
       unloadContributors(contributorsToRemove, myCurrentLoaders, monitor.subTask(1));
@@ -452,7 +462,7 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     private void removeLoaders(ProgressMonitor monitor) {
-      Set<PluginLoader> loadersToRemove = loadersDelta.toUnload;
+      Set<PluginLoader> loadersToRemove = myLoadersDelta.toUnload;
       loadersToRemove.retainAll(myCurrentLoaders); // just a precaution
       LOG.debug("Unloading " + myCurrentContributors.size() + " current contributors from " + loadersToRemove.size() + " loaders");
       unloadContributors(myCurrentContributors, loadersToRemove, monitor.subTask(1));
@@ -503,6 +513,7 @@ public class PluginLoaderRegistry implements Disposable {
     @Override
     public void onUnloaded(@NotNull ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
       Set<ReloadableModule> unloadedModules = callback.acquire(PluginLoaderRegistry.this);
+      unloadIdeaIconsGlobalCache(unloadedModules);
       myAccumulation.onUnload(unloadedModules);
       // hack for run configurations because of IDEA stupid API; @see RunConfigurationsStateManager
       myAccumulation.schedulePostRunnable(() ->

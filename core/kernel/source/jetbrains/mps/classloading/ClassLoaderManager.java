@@ -43,6 +43,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import static java.lang.ClassLoader.getSystemClassLoader;
 import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress.LOADED;
 import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress.UNLOADED;
 
@@ -126,8 +127,7 @@ public class ClassLoaderManager implements CoreComponent {
 
   private static ClassLoaderManager INSTANCE;
 
-  @TestOnly
-  static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader(ClassLoaderManager.class.getClassLoader()) {
+  static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader(getSystemClassLoader()) {
     @Override
     public boolean isReloadableClassLoader() {
       return false;
