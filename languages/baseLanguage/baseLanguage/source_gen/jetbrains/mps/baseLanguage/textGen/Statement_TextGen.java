@@ -21,6 +21,7 @@ public class Statement_TextGen extends TextGenDescriptorBase {
     if (!(Objects.equals(SNodeOperations.getConcept(ctx.getPrimaryInput()), CONCEPTS.Statement$ok))) {
       tgs.reportError("statement without textGen:");
       tgs.newLine();
+      tgs.indent();
       tgs.append("/* error: statement w/o textGen:");
       tgs.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(ctx.getPrimaryInput()));
       tgs.append(" */");
