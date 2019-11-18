@@ -47,6 +47,11 @@ public final class RefOutOfScopeContext implements Context {
     return myNode;
   }
 
+  @Nullable
+  public SNode getTargetNode() {
+    return myReference.getTargetNode();
+  }
+
   @NotNull
   public SAbstractConcept getConcept() {
     return myConcept;

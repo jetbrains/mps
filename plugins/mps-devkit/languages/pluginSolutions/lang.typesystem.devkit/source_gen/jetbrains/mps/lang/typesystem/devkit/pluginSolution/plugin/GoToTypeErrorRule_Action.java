@@ -10,15 +10,14 @@ import java.util.Map;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.List;
+import java.util.Collection;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 public class GoToTypeErrorRule_Action extends BaseAction {
@@ -39,8 +38,8 @@ public class GoToTypeErrorRule_Action extends BaseAction {
     if (mostRelevantReportItem == null) {
       return false;
     }
-    List<RuleIdFlavouredItem.TypesystemRuleId> navigationData = ListSequence.fromListWithValues(new ArrayList<RuleIdFlavouredItem.TypesystemRuleId>(), RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(mostRelevantReportItem));
-    return ListSequence.fromList(navigationData).count() == 1;
+    Collection<RuleIdFlavouredItem.TypesystemRuleId> brokenRules = RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(mostRelevantReportItem);
+    return brokenRules.size() == 1 && brokenRules.iterator().next().getSourceNode() != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -73,7 +72,9 @@ public class GoToTypeErrorRule_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ReportItem mostRelevantReportItem = new GoToTypeErrorHelper(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))).getMostRelevantReportItem();
-    List<RuleIdFlavouredItem.TypesystemRuleId> navigationData = ListSequence.fromListWithValues(new ArrayList<RuleIdFlavouredItem.TypesystemRuleId>(), TypesystemReportItemAdapter.FLAVOUR_RULE_ID.getCollection(mostRelevantReportItem));
-    new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallSelect(true).open(ListSequence.fromList(navigationData).first().getSourceNode());
+    Collection<RuleIdFlavouredItem.TypesystemRuleId> collection = TypesystemReportItemAdapter.FLAVOUR_RULE_ID.getCollection(mostRelevantReportItem);
+    assert collection.iterator().hasNext();
+    @NotNull SNodeReference ruleSourceNode = collection.iterator().next().getSourceNode();
+    new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallSelect(true).open(ruleSourceNode);
   }
 }

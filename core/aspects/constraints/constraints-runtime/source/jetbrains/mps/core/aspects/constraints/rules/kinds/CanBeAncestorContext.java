@@ -71,6 +71,7 @@ public final class CanBeAncestorContext implements Context {
     return myLink;
   }
 
+  @NotNull
   public SAbstractConcept getDescendantConcept() {
     return myDescendantConcept;
   }

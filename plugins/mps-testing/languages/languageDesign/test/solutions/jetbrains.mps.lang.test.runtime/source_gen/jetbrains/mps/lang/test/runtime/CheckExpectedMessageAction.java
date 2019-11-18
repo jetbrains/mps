@@ -83,7 +83,7 @@ public abstract class CheckExpectedMessageAction implements Runnable {
     @Override
     public boolean isMessageExpected(NodeReportItem errorReport) {
       SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(errorReport, myRuleRepository);
-      return super.isMessageExpected(errorReport) && Objects.equals(errorReport.getNode(), SNodeOperations.getPointer(myNodeToCheck)) && new NodeRuleReference(ruleNode).getType() == RuleType.TYPESYSTEM;
+      return super.isMessageExpected(errorReport) && Objects.equals(errorReport.getNode(), SNodeOperations.getPointer(myNodeToCheck)) && (ruleNode != null && new NodeRuleReference(ruleNode).getType() == RuleType.TYPESYSTEM);
     }
   }
 

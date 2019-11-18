@@ -17,7 +17,6 @@ package jetbrains.mps.errors.item;
 
 import jetbrains.mps.errors.item.ReportItemBase.MultipleReportItemFlavour;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 

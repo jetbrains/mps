@@ -56,7 +56,7 @@ import java.util.concurrent.ConcurrentMap;
  */
 public final class ModuleClassLoader extends MPSModuleClassLoader {
   private static final Logger LOG = LogManager.getLogger(ModuleClassLoader.class);
-  private static final ClassLoader BOOTSTRAP_CLASSLOADER = Object.class.getClassLoader();
+  private static final ClassLoader SYSTEM_CLASSLOADER = getSystemClassLoader();
 
 
   private final ModuleClassLoaderSupport mySupport;
@@ -116,12 +116,12 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   private Class<?> loadClass(String fqName, boolean resolve, boolean onlyFromSelf) throws ClassNotFoundException {
     checkNotDisposed();
 
+    if (fqName.startsWith("java.")) {
+      return Class.forName(fqName, false, SYSTEM_CLASSLOADER);
+    }
+
     Class<?> aClass = getClassFromCache(fqName);
     if (aClass != null) return aClass;
-
-    if (fqName.startsWith("java.")) {
-      return Class.forName(fqName, false, BOOTSTRAP_CLASSLOADER);
-    }
 
     aClass = loadFromSelf(fqName);
     if (aClass != null) {

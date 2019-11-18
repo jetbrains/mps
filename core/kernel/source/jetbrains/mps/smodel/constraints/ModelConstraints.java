@@ -79,7 +79,7 @@ public class ModelConstraints {
 
     SNode currentNode = parentNode.getParent();
     while (currentNode != null) {
-      ConstraintContext_CanBeAncestor context = new ConstraintContext_CanBeAncestor(parentNode, childConcept, parentNode, containmentLink);
+      ConstraintContext_CanBeAncestor context = new ConstraintContext_CanBeAncestor(currentNode, childConcept, parentNode, containmentLink);
       ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(currentNode.getConcept());
 
       if (!descriptor.canBeAncestor(context, checkingNodeContext)) {
