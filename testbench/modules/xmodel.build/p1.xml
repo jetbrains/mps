@@ -118,11 +118,11 @@
       <fileset dir="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.generator.test.xmodel.lang1-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-project.xmodel.test1-xmodel.lang1-generator-template">
-      <fileset dir="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-project.xmodel.test1-xmodel.lang1-models">
       <fileset dir="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-project.xmodel.test1-xmodel.lang1-generator-template">
+      <fileset dir="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/jetbrains.mps.generator.test.xmodel.lang1-src.jar" duplicate="preserve">
       <fileset dir="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/generator/source_gen">
@@ -138,8 +138,8 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${basedir}/languages/languageDesign/generator/project.xmodel.test1/xmodel.lang1/jetbrains.mps.generator.test.xmodel.lang1.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-project.xmodel.test1-xmodel.lang1-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-project.xmodel.test1-xmodel.lang1-models" prefix="module/models" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-generator-project.xmodel.test1-xmodel.lang1-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.generator.xmodel.test.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.generator.xmodel.test.jar/META-INF" />

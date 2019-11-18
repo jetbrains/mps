@@ -329,11 +329,11 @@
       <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.testRefs.testLang-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-jetbrains.mps.baseLanguage.testRefs.testLang-generator-template">
-      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-jetbrains.mps.baseLanguage.testRefs.testLang-models">
       <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-jetbrains.mps.baseLanguage.testRefs.testLang-generator-template">
+      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/jetbrains.mps.baseLanguage.testRefs.testLang-src.jar" duplicate="preserve">
       <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/source_gen">
@@ -349,8 +349,8 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/jetbrains.mps.baseLanguage.testRefs.testLang.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-jetbrains.mps.baseLanguage.testRefs.testLang-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-jetbrains.mps.baseLanguage.testRefs.testLang-models" prefix="module/models" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-jetbrains.mps.baseLanguage.testRefs.testLang-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguageInternal.test.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguageInternal.test.jar/META-INF" />

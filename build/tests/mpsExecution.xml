@@ -113,16 +113,16 @@
       <fileset dir="${basedir}/testbench/testsolutions/execution-test/tests" includes="icons/**, resources/**" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.execution.impl.tests.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-execution-test-tests-jetbrains">
-      <fileset dir="${basedir}/testbench/testsolutions/execution-test/tests/jetbrains" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-execution-test-tests-models">
       <fileset dir="${basedir}/testbench/testsolutions/execution-test/tests/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-execution-test-tests-jetbrains">
+      <fileset dir="${basedir}/testbench/testsolutions/execution-test/tests/jetbrains" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
     <jar destfile="${build.layout}/jetbrains.mps.execution.impl.tests-src.jar" duplicate="preserve">
       <zipfileset file="${basedir}/testbench/testsolutions/execution-test/tests/jetbrains.mps.execution.impl.tests.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-execution-test-tests-jetbrains" prefix="module/jetbrains" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-execution-test-tests-models" prefix="module/models" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-execution-test-tests-jetbrains" prefix="module/jetbrains" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.execution.impl.tests.sandbox.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.execution.impl.tests.sandbox.jar/META-INF" />
@@ -313,11 +313,11 @@
       <fileset dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/testLangWithRT-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testlangs-test.lang.with.RT-generator-template">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testlangs-test.lang.with.RT-models">
       <fileset dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testlangs-test.lang.with.RT-generator-template">
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/testLangWithRT-src.jar" duplicate="preserve">
       <fileset dir="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/generator/source_gen">
@@ -333,8 +333,8 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${basedir}/testbench/testsolutions/testlangs/test.lang.with.RT/testLangWithRT.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testlangs-test.lang.with.RT-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testlangs-test.lang.with.RT-models" prefix="module/models" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-testsolutions-testlangs-test.lang.with.RT-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/testLangWithRT.runtime.jar" />
     <mkdir dir="${build.tmp}/default/testLangWithRT.runtime.jar/META-INF" />

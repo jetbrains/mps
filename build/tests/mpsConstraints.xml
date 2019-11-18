@@ -311,11 +311,11 @@
       <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/constraints.rules.test-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testConstraints-languages-constraints.rules.test-generator-template">
-      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testConstraints-languages-constraints.rules.test-models">
       <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testConstraints-languages-constraints.rules.test-generator-template">
+      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/constraints.rules.test-src.jar" duplicate="preserve">
       <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/source_gen">
@@ -331,8 +331,8 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/constraints.rules.test.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testConstraints-languages-constraints.rules.test-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testConstraints-languages-constraints.rules.test-models" prefix="module/models" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testConstraints-languages-constraints.rules.test-generator-template" prefix="module/generator/template" />
     </jar>
     <echo file="${build.layout}/build.properties">mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>

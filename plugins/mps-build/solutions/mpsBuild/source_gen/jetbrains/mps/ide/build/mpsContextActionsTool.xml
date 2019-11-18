@@ -213,11 +213,11 @@
       <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-generator-template">
-      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-models">
       <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/models" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-generator-template">
+      <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-context-actions/languages/mps-context-actions-tool/jetbrains.mps.editor.contextActionsTool.lang.menus-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen">
@@ -233,8 +233,8 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${mps_home}/plugins/mps-context-actions/modules/lang.menus/jetbrains.mps.editor.contextActionsTool.lang.menus.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-models" prefix="module/models" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-context-actions-modules-lang.menus-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.jar/META-INF" />

@@ -206,14 +206,14 @@
       <fileset dir="${plugin_home}/lang/base/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.base-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-base-generator-template">
-      <fileset dir="${plugin_home}/lang/base/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-base-languageModels">
+      <fileset dir="${plugin_home}/lang/base/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-base-languageAccessories">
       <fileset dir="${plugin_home}/lang/base/languageAccessories" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-base-languageModels">
-      <fileset dir="${plugin_home}/lang/base/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-base-generator-template">
+      <fileset dir="${plugin_home}/lang/base/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.base-src.jar" duplicate="preserve">
       <fileset dir="${plugin_home}/lang/base/generator/source_gen">
@@ -229,9 +229,9 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${plugin_home}/lang/base/jetbrains.mps.console.base.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-generator-template" prefix="module/generator/template" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-languageAccessories" prefix="module/languageAccessories" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-languageModels" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-languageAccessories" prefix="module/languageAccessories" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-base-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.scripts.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.scripts.jar/META-INF" />
@@ -319,11 +319,11 @@
       <fileset dir="${plugin_home}/lang/scripts/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.scripts-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-scripts-generator-template">
-      <fileset dir="${plugin_home}/lang/scripts/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-scripts-languageModels">
       <fileset dir="${plugin_home}/lang/scripts/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-scripts-generator-template">
+      <fileset dir="${plugin_home}/lang/scripts/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.scripts-src.jar" duplicate="preserve">
       <fileset dir="${plugin_home}/lang/scripts/generator/source_gen">
@@ -339,8 +339,8 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${plugin_home}/lang/scripts/jetbrains.mps.console.scripts.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-scripts-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-scripts-languageModels" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-scripts-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.scripts.runtime.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.scripts.runtime.jar/META-INF" />
@@ -612,14 +612,14 @@
       <fileset dir="${plugin_home}/lang/ideCommands/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.ideCommands-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-generator-template">
-      <fileset dir="${plugin_home}/lang/ideCommands/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageModels">
+      <fileset dir="${plugin_home}/lang/ideCommands/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageAccessories">
       <fileset dir="${plugin_home}/lang/ideCommands/languageAccessories" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageModels">
-      <fileset dir="${plugin_home}/lang/ideCommands/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-generator-template">
+      <fileset dir="${plugin_home}/lang/ideCommands/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.ideCommands-src.jar" duplicate="preserve">
       <fileset dir="${plugin_home}/lang/ideCommands/generator/source_gen">
@@ -635,9 +635,9 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${plugin_home}/lang/ideCommands/jetbrains.mps.console.ideCommands.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-generator-template" prefix="module/generator/template" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageAccessories" prefix="module/languageAccessories" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageModels" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-languageAccessories" prefix="module/languageAccessories" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-ideCommands-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.ideCommands.runtime.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.ideCommands.runtime.jar/META-INF" />
@@ -805,11 +805,11 @@
       <fileset dir="${plugin_home}/lang/internalCommands/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.console.internalCommands-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-internalCommands-generator-template">
-      <fileset dir="${plugin_home}/lang/internalCommands/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
-    </copyModels>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-internalCommands-languageModels">
       <fileset dir="${plugin_home}/lang/internalCommands/languageModels" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
+    </copyModels>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/lang-internalCommands-generator-template">
+      <fileset dir="${plugin_home}/lang/internalCommands/generator/template" includes="**/*.mps, **/*.metadata, **/*.history, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-console/lang/jetbrains.mps.console.internalCommands-src.jar" duplicate="preserve">
       <fileset dir="${plugin_home}/lang/internalCommands/generator/source_gen">
@@ -825,8 +825,8 @@
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${plugin_home}/lang/internalCommands/jetbrains.mps.console.internalCommands.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-internalCommands-generator-template" prefix="module/generator/template" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-internalCommands-languageModels" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/lang-internalCommands-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.internalCommands.runtime.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.console.internalCommands.runtime.jar/META-INF" />
