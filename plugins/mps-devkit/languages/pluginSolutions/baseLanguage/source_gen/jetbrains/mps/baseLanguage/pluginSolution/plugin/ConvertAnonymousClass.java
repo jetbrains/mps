@@ -8,9 +8,12 @@ import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.ide.platform.refactoring.StringChooserDialog;
+import jetbrains.mps.baseLanguage.util.plugin.refactorings.ConvertAnonymousRefactoring;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -31,19 +34,34 @@ public class ConvertAnonymousClass implements MoveNodesAction {
     return "Convert Anonymous Class";
   }
   public boolean isApplicable(MPSProject project, final List<SNode> nodes) {
-    final Wrappers._boolean result = new Wrappers._boolean();/* error: statement w/o textGen:read action */
+    final Wrappers._boolean result = new Wrappers._boolean();
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$aF) && (SNodeOperations.getNodeAncestor(ListSequence.fromList(nodes).first(), CONCEPTS.Classifier$hJ, false, false) != null);
+      }
+    });
     return result.value;
   }
   public void execute(final MPSProject project, List<SNode> nodes) {
     final SNode target = SNodeOperations.cast(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$aF);
 
-    final Wrappers._T<String> classifierName = new Wrappers._T<String>();/* error: statement w/o textGen:read action */
+    final Wrappers._T<String> classifierName = new Wrappers._T<String>();
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        classifierName.value = SPropertyOperations.getString(SLinkOperations.getTarget(target, LINKS.classifier$1y5e), PROPS.name$tAp1);
+      }
+    });
 
     final String newName = StringChooserDialog.getString(project.getProject(), "Convert Anonymous Class", "Class Name", "My" + classifierName.value, true);
 
     if (newName == null) {
       return;
-    }/* error: statement w/o textGen:command */
+    }
+    project.getRepository().getModelAccess().executeCommand(new Runnable() {
+      public void run() {
+        new ConvertAnonymousRefactoring(target, newName).doRefactor();
+      }
+    });
   }
 
   private static final class CONCEPTS {

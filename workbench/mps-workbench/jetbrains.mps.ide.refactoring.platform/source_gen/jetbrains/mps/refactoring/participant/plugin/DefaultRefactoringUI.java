@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
@@ -35,12 +36,20 @@ public class DefaultRefactoringUI implements RefactoringUI {
   private static final Logger LOG = LogManager.getLogger(DefaultRefactoringUI.class);
   protected Project myProject;
   protected SRepository myRepository;
-  public DefaultRefactoringUI(Project project, SRepository repository) {
+  protected String myRefactoringName;
+  public DefaultRefactoringUI(Project project, SRepository repository, String refactoringName) {
     myRepository = repository;
     myProject = project;
+    myRefactoringName = refactoringName;
   }
+  @Deprecated
+  @ToRemove(version = 2019.3)
   public DefaultRefactoringUI(MPSProject mpsProject) {
-    this(mpsProject.getProject(), mpsProject.getRepository());
+    myRepository = mpsProject.getRepository();
+    myProject = mpsProject.getProject();
+  }
+  public DefaultRefactoringUI(MPSProject mpsProject, String refactoringName) {
+    this(mpsProject.getProject(), mpsProject.getRepository(), refactoringName);
   }
   public void prepare(Runnable task) {
     myRepository.getModelAccess().runReadAction(task);
@@ -53,7 +62,7 @@ public class DefaultRefactoringUI implements RefactoringUI {
       public String select(RefactoringParticipant.Option it) {
         return it.getDescription();
       }
-    }).toListSequence(), "Select Participants", "Select how to update usages:");
+    }).toListSequence(), ((myRefactoringName == null ? "" : myRefactoringName + ": ")) + ": Select Participants", "Select how to update usages:");
     if (selectedOptionIndices == null) {
       return null;
     }
@@ -84,7 +93,7 @@ public class DefaultRefactoringUI implements RefactoringUI {
     });
   }
 
-  public void showRefactoringView(final Runnable performRefactoringTask, String refactoringName, SearchResults searchResults, final SearchTask rerunTask, RefactoringSession refactoringSession) {
+  public void showRefactoringView(final Runnable performRefactoringTask, SearchResults searchResults, final SearchTask rerunTask, RefactoringSession refactoringSession) {
     final UsagesModelTracker usagesModelTracker = new UsagesModelTracker(myRepository);
     RefactoringAccessEx.getInstance().showRefactoringView(myProject, new RefactoringViewAction() {
       public void performAction(RefactoringViewItem refactoringViewItem) {
@@ -113,6 +122,6 @@ public class DefaultRefactoringUI implements RefactoringUI {
         usagesModelTracker.reset();
         return rerunTask.execute(progressMonitor);
       }
-    }, refactoringName);
+    }, (myRefactoringName == null ? "Refactoring" : myRefactoringName));
   }
 }

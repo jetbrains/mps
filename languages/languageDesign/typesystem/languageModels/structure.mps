@@ -2,6 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)">
   <persistence version="9" />
   <languages>
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -300,6 +301,9 @@
       <property role="IQ2ns" value="1216204483513" />
       <ref role="20lvS9" node="hBCnwce" resolve="TypesystemIntention" />
     </node>
+    <node concept="PrWs8" id="426cbTMdqE2" role="PzmwI">
+      <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
+    </node>
   </node>
   <node concept="1TIwiD" id="h5ZobZl">
     <property role="R5$K7" value="false" />
@@ -363,6 +367,9 @@
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1174666276259" />
       <ref role="20lvS9" node="h5ZxtXV" resolve="TypeVarDeclaration" />
+    </node>
+    <node concept="PrWs8" id="426cbTMjgiJ" role="PzmwI">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX3" resolve="ISuppressErrors" />
     </node>
   </node>
   <node concept="1TIwiD" id="h6iOg0Q">
@@ -477,16 +484,13 @@
     <property role="3GE5qa" value="definition.statement" />
     <property role="EcuMT" value="1175517767210" />
     <property role="R4oN_" value="report typesystem error" />
-    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <ref role="1TJDcQ" node="3qzTJpCN_Dp" resolve="AbstractReportStatement" />
     <node concept="1TJgyj" id="h6MkJ39" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="errorString" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1175517851849" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="PrWs8" id="hQOF9eC" role="PzmwI">
-      <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
     </node>
   </node>
   <node concept="1TIwiD" id="h6QUAIr">
@@ -1045,16 +1049,13 @@
     <property role="3GE5qa" value="definition.statement" />
     <property role="EcuMT" value="1207055528241" />
     <property role="R4oN_" value="report typesystem warning" />
-    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <ref role="1TJDcQ" node="3qzTJpCN_Dp" resolve="AbstractReportStatement" />
     <node concept="1TJgyj" id="h$a7wWK" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="warningText" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1207055552304" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="PrWs8" id="hQOF7FN" role="PzmwI">
-      <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
     </node>
   </node>
   <node concept="1TIwiD" id="hBCnwce">
@@ -1333,16 +1334,13 @@
     <property role="3GE5qa" value="definition.statement" />
     <property role="EcuMT" value="1224760201579" />
     <property role="R4oN_" value="report typesystem info" />
-    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <ref role="1TJDcQ" node="3qzTJpCN_Dp" resolve="AbstractReportStatement" />
     <node concept="1TJgyj" id="hODpwdE" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="infoText" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1224760230762" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
-    </node>
-    <node concept="PrWs8" id="hQOF4UJ" role="PzmwI">
-      <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
     </node>
   </node>
   <node concept="1TIwiD" id="hQOD_u3">
@@ -1383,29 +1381,40 @@
     <property role="EcuMT" value="1227096774658" />
     <node concept="1TJgyj" id="hQOEOnA" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="nodeToReport" />
-      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="20kJfa" value="nodeToReport_old" />
       <property role="IQ2ns" value="1227096802790" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+      <node concept="asaX9" id="3qzTJpCN_Dv" role="lGtFl">
+        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.typesystem.structure.AbstractReportStatement&quot;" />
+      </node>
     </node>
     <node concept="1TJgyj" id="hQOEOnB" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="helginsIntention" />
-      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="20kJfa" value="helginsIntention_old" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="IQ2ns" value="1227096802791" />
       <ref role="20lvS9" node="hBCnwce" resolve="TypesystemIntention" />
+      <node concept="asaX9" id="3qzTJpCN_Kn" role="lGtFl">
+        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.typesystem.structure.AbstractReportStatement&quot;" />
+      </node>
     </node>
     <node concept="1TJgyj" id="hQOEWAg" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="messageTarget" />
+      <property role="20kJfa" value="messageTarget_old" />
       <property role="IQ2ns" value="1227096836496" />
       <ref role="20lvS9" node="hQOD_u3" resolve="MessageTarget" />
+      <node concept="asaX9" id="3qzTJpCN_NP" role="lGtFl">
+        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.typesystem.structure.AbstractReportStatement&quot;" />
+      </node>
     </node>
     <node concept="1TJgyj" id="3uxqRt4KI1x" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="foreignMessageSource" />
+      <property role="20kJfa" value="foreignMessageSource_old" />
       <property role="IQ2ns" value="4008603303335354465" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+      <node concept="asaX9" id="3qzTJpCN_Rk" role="lGtFl">
+        <property role="YLQ7P" value="The link was moved to concept &quot;jetbrains.mps.lang.typesystem.structure.AbstractReportStatement&quot;" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="hQPiL1F">
@@ -2198,6 +2207,53 @@
       <property role="20kJfa" value="declaration" />
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" node="hp8kY3U" resolve="NonTypesystemRule" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="426cbTMd$dw">
+    <property role="TrG5h" value="TypesystemEquationStatementAnnotation" />
+    <property role="3GE5qa" value="definition.annotation" />
+    <property role="EcuMT" value="4649457259824694112" />
+    <ref role="1TJDcQ" node="2IKZA8EBF1S" resolve="MessageStatementAnnotation" />
+    <node concept="M6xJ_" id="426cbTMd$dx" role="lGtFl">
+      <node concept="trNpa" id="426cbTMd$dz" role="EQaZv">
+        <ref role="trN6q" node="h5Zf1ZU" resolve="AbstractEquationStatement" />
+      </node>
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3qzTJpCN_Dp">
+    <property role="EcuMT" value="3937244445246642777" />
+    <property role="3GE5qa" value="definition.statement" />
+    <property role="TrG5h" value="AbstractReportStatement" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <node concept="1TJgyj" id="3qzTJpCN_Dt" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="nodeToReport" />
+      <property role="IQ2ns" value="3937244445246642781" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="1TJgyj" id="3qzTJpCN_Kl" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="helginsIntention" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="3937244445246643221" />
+      <ref role="20lvS9" node="hBCnwce" resolve="TypesystemIntention" />
+    </node>
+    <node concept="1TJgyj" id="3qzTJpCN_NN" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="messageTarget" />
+      <property role="IQ2ns" value="3937244445246643443" />
+      <ref role="20lvS9" node="hQOD_u3" resolve="MessageTarget" />
+    </node>
+    <node concept="1TJgyj" id="3qzTJpCN_Ri" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="foreignMessageSource" />
+      <property role="IQ2ns" value="3937244445246643666" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="3qzTJpCVcjK" role="PzmwI">
+      <ref role="PrY4T" node="hQOEHw2" resolve="MessageStatement" />
     </node>
   </node>
 </model>

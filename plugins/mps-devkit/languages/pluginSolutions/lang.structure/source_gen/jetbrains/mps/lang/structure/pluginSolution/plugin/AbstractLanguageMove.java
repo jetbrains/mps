@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public abstract class AbstractLanguageMove implements MoveNodesAction {
-  public boolean checkDeployed(MPSProject project, final SNode concept) {
+  public boolean checkDeployed(MPSProject project, final SNode concept, boolean silent) {
     final Wrappers._T<SAbstractConcept> deployedConcept = new Wrappers._T<SAbstractConcept>();
     final Wrappers._T<String> conceptName = new Wrappers._T<String>();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -24,7 +24,9 @@ public abstract class AbstractLanguageMove implements MoveNodesAction {
       }
     });
     if (!(deployedConcept.value.isValid())) {
-      Messages.showWarningDialog(project.getProject(), "Concept '" + conceptName.value + "' is not deployed.\nRefactoring will be continued without migrating instances.", "Not Deployed");
+      if (!(silent)) {
+        Messages.showWarningDialog(project.getProject(), "Concept '" + conceptName.value + "' is not deployed.\nRefactoring will be continued without migrating instances.", "Not Deployed");
+      }
       return false;
     }
     return true;

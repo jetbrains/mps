@@ -12,7 +12,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.ide.refactoring.MoveUpDialog;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -21,20 +21,19 @@ import jetbrains.mps.smodel.structure.Extension;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesAction {
+public class MoveConceptMemberUp extends AbstractLanguageMove implements MoveNodesAction {
   private String myName;
   private String myKind;
   private _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> myApplicableToConceptFeature;
   private _FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super SNode> myNeedToMerge;
-  public MoveFeatureUp(String name, String kind, _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> applicableToConceptFeature, _FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super SNode> needToMerge) {
+  public MoveConceptMemberUp(String name, String kind, _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> applicableToConceptFeature, _FunctionTypes._return_P2_E0<? extends SNode, ? super SNode, ? super SNode> needToMerge) {
     myName = name;
     myKind = kind;
     myApplicableToConceptFeature = applicableToConceptFeature;
@@ -64,14 +63,15 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
     }
 
     final SNode feature = SNodeOperations.cast(ListSequence.fromList(nodesToMove).first(), CONCEPTS.IStructureDeprecatable$6y);
-    final Wrappers._T<SNode> sourceConcept = new Wrappers._T<SNode>();
+    final Wrappers._T<String> sourceConcept = new Wrappers._T<String>();
+    final Wrappers._boolean notDeployed = new Wrappers._boolean();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        sourceConcept.value = SNodeOperations.as(SNodeOperations.getParent(feature), CONCEPTS.AbstractConceptDeclaration$UN);
+        sourceConcept.value = SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getParent(feature), CONCEPTS.AbstractConceptDeclaration$UN), PROPS.name$tAp1);
+        notDeployed.value = !(checkDeployed(project, SNodeOperations.as(SNodeOperations.getParent(feature), CONCEPTS.AbstractConceptDeclaration$UN), true));
       }
     });
-    checkDeployed(project, sourceConcept.value);
-    final SNode targetConcept = MoveUpDialog.getConcept(project, feature, featureKind);
+    final SNode targetConcept = MoveUpDialog.getConcept(project, feature, featureKind, sourceConcept.value, notDeployed.value);
     if (targetConcept == null) {
       return;
     }
@@ -107,7 +107,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
       super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
-      return new MoveFeatureUp("Move Property Up", "property", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      return new MoveConceptMemberUp("Move Property Up", "property", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
           return SNodeOperations.hasRole(conceptFeature, LINKS.propertyDeclaration$lL73);
         }
@@ -127,7 +127,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
       super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
-      return new MoveFeatureUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      return new MoveConceptMemberUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
           return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$lL6$) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b9L);
         }
@@ -147,7 +147,7 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
       super("jetbrains.mps.refactoring.participant.MoveNodesActionEP");
     }
     public MoveNodesAction get() {
-      return new MoveFeatureUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+      return new MoveConceptMemberUp("Move Link Up", "link", new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode conceptFeature) {
           return SNodeOperations.hasRole(conceptFeature, LINKS.linkDeclaration$lL6$) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(conceptFeature, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b8L);
         }
@@ -170,14 +170,14 @@ public class MoveFeatureUp extends AbstractLanguageMove implements MoveNodesActi
     /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
   }
 
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-  }
-
   private static final class PROPS {
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
     /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink propertyDeclaration$lL73 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$lL6$ = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 }

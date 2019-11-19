@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Dimension;
 import com.intellij.openapi.util.Disposer;
@@ -31,7 +30,6 @@ public class MoveNodesDialog extends ModelOrNodeChooserDialog {
       super.doRefactoringAction();
     }
   }
-  @Nullable
   @Override
   protected JComponent createCenterPanel() {
     myChooser = RefactoringAccessEx.getInstance().createTargetChooser(myProject.getProject(), myModel);
@@ -43,7 +41,6 @@ public class MoveNodesDialog extends ModelOrNodeChooserDialog {
   public void setFilter(ModelFilter filter) {
     myFilter = filter;
   }
-  @Nullable
   @NonNls
   @Override
   protected String getDimensionServiceKey() {

@@ -23,6 +23,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAbstractEquationStatement = createDescriptorForAbstractEquationStatement();
   /*package*/ final ConceptDescriptor myConceptAbstractInequationStatement = createDescriptorForAbstractInequationStatement();
   /*package*/ final ConceptDescriptor myConceptAbstractOverloadedOpsTypeRule = createDescriptorForAbstractOverloadedOpsTypeRule();
+  /*package*/ final ConceptDescriptor myConceptAbstractReportStatement = createDescriptorForAbstractReportStatement();
   /*package*/ final ConceptDescriptor myConceptAbstractRule = createDescriptorForAbstractRule();
   /*package*/ final ConceptDescriptor myConceptAbstractSubtypingRule = createDescriptorForAbstractSubtypingRule();
   /*package*/ final ConceptDescriptor myConceptAddDependencyStatement = createDescriptorForAddDependencyStatement();
@@ -121,6 +122,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptTypeOfExpression = createDescriptorForTypeOfExpression();
   /*package*/ final ConceptDescriptor myConceptTypeVarDeclaration = createDescriptorForTypeVarDeclaration();
   /*package*/ final ConceptDescriptor myConceptTypeVarReference = createDescriptorForTypeVarReference();
+  /*package*/ final ConceptDescriptor myConceptTypesystemEquationStatementAnnotation = createDescriptorForTypesystemEquationStatementAnnotation();
   /*package*/ final ConceptDescriptor myConceptTypesystemIntention = createDescriptorForTypesystemIntention();
   /*package*/ final ConceptDescriptor myConceptTypesystemIntentionArgument = createDescriptorForTypesystemIntentionArgument();
   /*package*/ final ConceptDescriptor myConceptTypesystemQuickFix = createDescriptorForTypesystemQuickFix();
@@ -155,7 +157,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractCheckingRule, myConceptAbstractComparableStatement, myConceptAbstractEquationStatement, myConceptAbstractInequationStatement, myConceptAbstractOverloadedOpsTypeRule, myConceptAbstractRule, myConceptAbstractSubtypingRule, myConceptAddDependencyStatement, myConceptApplicableNodeCondition, myConceptApplicableNodeReference, myConceptAssertStatement, myConceptAttributedNodeExpression, myConceptCheckingRuleReference, myConceptCoerceExpression, myConceptCoerceStatement, myConceptCoerceStrongExpression, myConceptComparisonRule, myConceptConceptFunctionParameter_ContextNode, myConceptConceptFunctionParameter_EditorContext, myConceptConceptFunctionParameter_Role, myConceptConceptFunctionParameter_Selection, myConceptConceptFunctionParameter_isAggregation, myConceptConceptFunctionParameter_node, myConceptConceptFunctionParameter_var, myConceptConceptReference, myConceptCreateComparableEquationStatement, myConceptCreateComparableEquationStatementStrong, myConceptCreateEquationStatement, myConceptCreateGreaterThanInequationStatement, myConceptCreateLessThanInequationStatement, myConceptCreateStrongGreaterThanInequationStatement, myConceptCreateStrongLessThanInequationStatement, myConceptDefaultGroupReference, myConceptErrorInfoExpression, myConceptGetOperationType, myConceptIRuleWithOneNode, myConceptIRuleWithTwoNodes, myConceptImmediateSupertypesExpression, myConceptInequationReference, myConceptInequationReplacementRule, myConceptInferenceRule, myConceptInfoStatement, myConceptInfoStatementAnnotation, myConceptIsApplicableConceptFunction, myConceptIsReplacementRuleApplicable_ConceptFunction, myConceptIsStrongSubtypeExpression, myConceptIsSubtypeExpression, myConceptJoinContainer, myConceptJoinType, myConceptLeftOperandType_parameter, myConceptLinkPatternVariableReference, myConceptMatchStatement, myConceptMatchStatementItem, myConceptMeetContainer, myConceptMeetType, myConceptMessageStatement, myConceptMessageStatementAnnotation, myConceptMessageTarget, myConceptNode_InferTypeOperation, myConceptNode_TypeOperation, myConceptNonTypesystemRule, myConceptNormalTypeClause, myConceptOperation_parameter, myConceptOrStatement, myConceptOriginalNodeId, myConceptOverloadedOpIsApplicableFunction, myConceptOverloadedOpRulesContainer, myConceptOverloadedOpTypeRule_OneTypeSpecified, myConceptOverloadedOperatorTypeFunction, myConceptOverloadedOperatorTypeRule, myConceptOverridesConceptFunction, myConceptPatternCondition, myConceptPatternVariableReference, myConceptPrintToTrace, myConceptProcessed, myConceptPropertyMessageTarget, myConceptPropertyNameTarget, myConceptPropertyPatternVariableReference, myConceptQuickFixArgument, myConceptQuickFixArgumentReference, myConceptQuickFixDescriptionBlock, myConceptQuickFixExecuteBlock, myConceptQuickFixField, myConceptQuickFixFieldReference, myConceptQuickFixSetSelectionBlock, myConceptReferenceMessageTarget, myConceptReferenceRoleTarget, myConceptReportErrorStatement, myConceptReportErrorStatementAnnotation, myConceptRightOperandType_parameter, myConceptRuntimeErrorType, myConceptRuntimeHoleType, myConceptRuntimeListVariable, myConceptRuntimeTypeVariable, myConceptSelectionType, myConceptSubstituteTypeRule, myConceptSubtypingRule, myConceptSupersedeConceptFunction, myConceptTypeCheckerAccessExpression, myConceptTypeClause, myConceptTypeOfExpression, myConceptTypeVarDeclaration, myConceptTypeVarReference, myConceptTypesystemIntention, myConceptTypesystemIntentionArgument, myConceptTypesystemQuickFix, myConceptVariableConverterItem, myConceptVariableConverterItem_ApplicableBlock, myConceptVariableConverterItem_ConvertBlock, myConceptVariableConvertersContainer, myConceptWarningStatement, myConceptWarningStatementAnnotation, myConceptWhenConcreteStatement, myConceptWhenConcreteVariableDeclaration, myConceptWhenConcreteVariableReference);
+    return Arrays.asList(myConceptAbstractCheckingRule, myConceptAbstractComparableStatement, myConceptAbstractEquationStatement, myConceptAbstractInequationStatement, myConceptAbstractOverloadedOpsTypeRule, myConceptAbstractReportStatement, myConceptAbstractRule, myConceptAbstractSubtypingRule, myConceptAddDependencyStatement, myConceptApplicableNodeCondition, myConceptApplicableNodeReference, myConceptAssertStatement, myConceptAttributedNodeExpression, myConceptCheckingRuleReference, myConceptCoerceExpression, myConceptCoerceStatement, myConceptCoerceStrongExpression, myConceptComparisonRule, myConceptConceptFunctionParameter_ContextNode, myConceptConceptFunctionParameter_EditorContext, myConceptConceptFunctionParameter_Role, myConceptConceptFunctionParameter_Selection, myConceptConceptFunctionParameter_isAggregation, myConceptConceptFunctionParameter_node, myConceptConceptFunctionParameter_var, myConceptConceptReference, myConceptCreateComparableEquationStatement, myConceptCreateComparableEquationStatementStrong, myConceptCreateEquationStatement, myConceptCreateGreaterThanInequationStatement, myConceptCreateLessThanInequationStatement, myConceptCreateStrongGreaterThanInequationStatement, myConceptCreateStrongLessThanInequationStatement, myConceptDefaultGroupReference, myConceptErrorInfoExpression, myConceptGetOperationType, myConceptIRuleWithOneNode, myConceptIRuleWithTwoNodes, myConceptImmediateSupertypesExpression, myConceptInequationReference, myConceptInequationReplacementRule, myConceptInferenceRule, myConceptInfoStatement, myConceptInfoStatementAnnotation, myConceptIsApplicableConceptFunction, myConceptIsReplacementRuleApplicable_ConceptFunction, myConceptIsStrongSubtypeExpression, myConceptIsSubtypeExpression, myConceptJoinContainer, myConceptJoinType, myConceptLeftOperandType_parameter, myConceptLinkPatternVariableReference, myConceptMatchStatement, myConceptMatchStatementItem, myConceptMeetContainer, myConceptMeetType, myConceptMessageStatement, myConceptMessageStatementAnnotation, myConceptMessageTarget, myConceptNode_InferTypeOperation, myConceptNode_TypeOperation, myConceptNonTypesystemRule, myConceptNormalTypeClause, myConceptOperation_parameter, myConceptOrStatement, myConceptOriginalNodeId, myConceptOverloadedOpIsApplicableFunction, myConceptOverloadedOpRulesContainer, myConceptOverloadedOpTypeRule_OneTypeSpecified, myConceptOverloadedOperatorTypeFunction, myConceptOverloadedOperatorTypeRule, myConceptOverridesConceptFunction, myConceptPatternCondition, myConceptPatternVariableReference, myConceptPrintToTrace, myConceptProcessed, myConceptPropertyMessageTarget, myConceptPropertyNameTarget, myConceptPropertyPatternVariableReference, myConceptQuickFixArgument, myConceptQuickFixArgumentReference, myConceptQuickFixDescriptionBlock, myConceptQuickFixExecuteBlock, myConceptQuickFixField, myConceptQuickFixFieldReference, myConceptQuickFixSetSelectionBlock, myConceptReferenceMessageTarget, myConceptReferenceRoleTarget, myConceptReportErrorStatement, myConceptReportErrorStatementAnnotation, myConceptRightOperandType_parameter, myConceptRuntimeErrorType, myConceptRuntimeHoleType, myConceptRuntimeListVariable, myConceptRuntimeTypeVariable, myConceptSelectionType, myConceptSubstituteTypeRule, myConceptSubtypingRule, myConceptSupersedeConceptFunction, myConceptTypeCheckerAccessExpression, myConceptTypeClause, myConceptTypeOfExpression, myConceptTypeVarDeclaration, myConceptTypeVarReference, myConceptTypesystemEquationStatementAnnotation, myConceptTypesystemIntention, myConceptTypesystemIntentionArgument, myConceptTypesystemQuickFix, myConceptVariableConverterItem, myConceptVariableConverterItem_ApplicableBlock, myConceptVariableConverterItem_ConvertBlock, myConceptVariableConvertersContainer, myConceptWarningStatement, myConceptWarningStatementAnnotation, myConceptWhenConcreteStatement, myConceptWhenConcreteVariableDeclaration, myConceptWhenConcreteVariableReference);
   }
 
   @Override
@@ -172,6 +174,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptAbstractInequationStatement;
       case LanguageConceptSwitch.AbstractOverloadedOpsTypeRule:
         return myConceptAbstractOverloadedOpsTypeRule;
+      case LanguageConceptSwitch.AbstractReportStatement:
+        return myConceptAbstractReportStatement;
       case LanguageConceptSwitch.AbstractRule:
         return myConceptAbstractRule;
       case LanguageConceptSwitch.AbstractSubtypingRule:
@@ -368,6 +372,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptTypeVarDeclaration;
       case LanguageConceptSwitch.TypeVarReference:
         return myConceptTypeVarReference;
+      case LanguageConceptSwitch.TypesystemEquationStatementAnnotation:
+        return myConceptTypesystemEquationStatementAnnotation;
       case LanguageConceptSwitch.TypesystemIntention:
         return myConceptTypesystemIntention;
       case LanguageConceptSwitch.TypesystemIntentionArgument:
@@ -433,6 +439,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "AbstractEquationStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL);
     b.class_(false, true, false);
     b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1174660718586");
     b.version(2);
     b.property("checkOnly", 0x118e0a511a0L).type(PrimitiveTypeId.BOOLEAN).origin("1206359757216").done();
@@ -469,6 +476,19 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("operationConcept", 0x70bfdafbb2c9449dL).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10cd05c601dL).optional(false).ordered(true).multiple(true).origin("8124453027370845341").done();
     b.aggregate("function", 0x70bfdafbb2c9449fL).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fcc4bffaeL).optional(false).ordered(true).multiple(false).origin("8124453027370845343").done();
     b.aggregate("isApplicable", 0x5529dae323134a31L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x5529dae3231347deL).optional(true).ordered(true).multiple(false).origin("6136676636349909553").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForAbstractReportStatement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "AbstractReportStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L);
+    b.class_(false, true, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L);
+    b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/3937244445246642777");
+    b.version(2);
+    b.aggregate("nodeToReport", 0x36a3e6f668ce5a5dL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("3937244445246642781").done();
+    b.aggregate("helginsIntention", 0x36a3e6f668ce5c15L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL).optional(true).ordered(true).multiple(true).origin("3937244445246643221").done();
+    b.aggregate("messageTarget", 0x36a3e6f668ce5cf3L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a65783L).optional(true).ordered(true).multiple(false).origin("3937244445246643443").done();
+    b.aggregate("foreignMessageSource", 0x36a3e6f668ce5dd2L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("3937244445246643666").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForAbstractRule() {
@@ -848,8 +868,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForInfoStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "InfoStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11d2965916bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
-    b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L);
+    b.super_("jetbrains.mps.lang.typesystem.structure.AbstractReportStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1224760201579");
     b.version(2);
     b.aggregate("infoText", 0x11d2966036aL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1224760230762").done();
@@ -992,10 +1011,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1227096774658");
     b.version(2);
-    b.aggregate("nodeToReport", 0x11db4ab45e6L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1227096802790").done();
-    b.aggregate("helginsIntention", 0x11db4ab45e7L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL).optional(true).ordered(true).multiple(true).origin("1227096802791").done();
-    b.aggregate("messageTarget", 0x11db4abc990L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a65783L).optional(true).ordered(true).multiple(false).origin("1227096836496").done();
-    b.aggregate("foreignMessageSource", 0x37a16b7744c2e061L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("4008603303335354465").done();
+    b.aggregate("nodeToReport_old", 0x11db4ab45e6L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1227096802790").done();
+    b.aggregate("helginsIntention_old", 0x11db4ab45e7L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL).optional(true).ordered(true).multiple(true).origin("1227096802791").done();
+    b.aggregate("messageTarget_old", 0x11db4abc990L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a65783L).optional(true).ordered(true).multiple(false).origin("1227096836496").done();
+    b.aggregate("foreignMessageSource_old", 0x37a16b7744c2e061L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("4008603303335354465").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMessageStatementAnnotation() {
@@ -1306,8 +1325,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForReportErrorStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "ReportErrorStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111b251a62aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
-    b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L);
+    b.super_("jetbrains.mps.lang.typesystem.structure.AbstractReportStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1175517767210");
     b.version(2);
     b.aggregate("errorString", 0x111b252f0c9L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1175517851849").done();
@@ -1458,10 +1476,19 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "TypeVarReference", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL);
     b.class_(false, false, false);
     b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1174666260556");
     b.version(2);
     b.associate("typeVarDeclaration", 0x1117f90eda3L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f85df7bL).optional(false).origin("1174666276259").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTypesystemEquationStatementAnnotation() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "TypesystemEquationStatementAnnotation", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x408630be72364360L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.typesystem.structure.MessageStatementAnnotation", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2bb0fe622a9eb078L);
+    b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/4649457259824694112");
+    b.version(2);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTypesystemIntention() {
@@ -1536,8 +1563,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForWarningStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.typesystem", "WarningStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1190a1db131L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
-    b.parent(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L);
+    b.super_("jetbrains.mps.lang.typesystem.structure.AbstractReportStatement", 0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L);
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1207055528241");
     b.version(2);
     b.aggregate("warningText", 0x1190a1e0f30L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1207055552304").done();

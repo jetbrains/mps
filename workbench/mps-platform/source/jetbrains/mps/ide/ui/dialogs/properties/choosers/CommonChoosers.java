@@ -45,7 +45,7 @@ public class CommonChoosers {
     data.derivePrompts("model").setCheckBoxName(null).setScope(models, nonProjectModels);
     final boolean extraScope = nonProjectModels != null && !nonProjectModels.isEmpty();
     ChooserDialog<SModelReference> dialog = new ChooserDialog<>(project, data, extraScope, true);
-    dialog.setTitle("Choose model");
+    dialog.setTitle("Choose Model");
     dialog.show();
     return dialog.getResult();
   }
@@ -56,7 +56,7 @@ public class CommonChoosers {
     data.derivePrompts("model").setCheckBoxName(null).setScope(models, null);
     // XXX perhaps, as an alternative, shall take project parameter only and build a set of models myself?
     ChooserDialog<SModelReference> dialog = new ChooserDialog<>(ProjectHelper.toIdeaProject(mpsProject), data, false, false);
-    dialog.setTitle(title == null ? "Choose model" : title);
+    dialog.setTitle(title == null ? "Choose Model" : title);
     dialog.show();
     final List<SModelReference> result = dialog.getResult();
     return result.isEmpty() ? null : result.get(0);
@@ -67,7 +67,7 @@ public class CommonChoosers {
     ChooseByNameData<SModuleReference> data = new ChooseByNameData<>(new ModulesPresentation(mpsProject.getRepository()));
     data.derivePrompts("module").setCheckBoxName(null).setScope(modules, null);
     ChooserDialog<SModuleReference> dialog = new ChooserDialog<>(ProjectHelper.toIdeaProject(mpsProject), data, false, false);
-    dialog.setTitle(title == null ? "Choose module" : title);
+    dialog.setTitle(title == null ? "Choose Module" : title);
     dialog.show();
     List<SModuleReference> result = dialog.getResult();
     return result.isEmpty() ? null : result.get(0);
@@ -79,7 +79,7 @@ public class CommonChoosers {
     ChooseByNameData<SModuleReference> data = new ChooseByNameData<>(new ModulesPresentation(mpsProject.getRepository()));
     data.derivePrompts("module").setCheckBoxName(null).setScope(modules, null);
     ChooserDialog<SModuleReference> dialog = new ChooserDialog<>(ProjectHelper.toIdeaProject(mpsProject), data, false, true);
-    dialog.setTitle(title == null ? "Choose module" : title);
+    dialog.setTitle(title == null ? "Choose Module" : title);
     dialog.show();
     return dialog.getResult();
   }
@@ -92,7 +92,7 @@ public class CommonChoosers {
     ChooseByNameData<SLanguage> data = new ChooseByNameData<>(new LanguagesPresentation());
     data.derivePrompts("language").setCheckBoxName(null).setScope(languages, null);
     ChooserDialog<SLanguage> dialog = new ChooserDialog<>(ProjectHelper.toIdeaProject(mpsProject), data, false, true);
-    dialog.setTitle(title == null ? "Choose languages" : title);
+    dialog.setTitle(title == null ? "Choose Languages" : title);
     dialog.show();
     return dialog.getResult();
   }

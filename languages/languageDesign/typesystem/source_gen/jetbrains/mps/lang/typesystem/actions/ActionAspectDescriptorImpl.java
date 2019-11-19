@@ -20,13 +20,13 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
         case 0:
           return Collections.<NodeFactory>singletonList(new _AbstractEquationStatement_factory.NodeFactory_1174664649250());
         case 1:
-          return Collections.<NodeFactory>singletonList(new _AbstractEquationStatement_factory.NodeFactory_1178879020940());
-        case 2:
-          return Collections.<NodeFactory>singletonList(new MessageFactories.NodeFactory_1005490780642154321());
-        case 3:
-          return Collections.<NodeFactory>singletonList(new _AbstractEquationStatement_factory.NodeFactory_1177408248539());
-        case 4:
           return Collections.<NodeFactory>singletonList(new MessageFactories.NodeFactory_1005490780641997347());
+        case 2:
+          return Collections.<NodeFactory>singletonList(new _AbstractEquationStatement_factory.NodeFactory_1178879020940());
+        case 3:
+          return Collections.<NodeFactory>singletonList(new MessageFactories.NodeFactory_1005490780642154321());
+        case 4:
+          return Collections.<NodeFactory>singletonList(new _AbstractEquationStatement_factory.NodeFactory_1177408248539());
         case 5:
           return Collections.<NodeFactory>singletonList(new MessageFactories.NodeFactory_1005490780642123875());
         case 6:
@@ -39,5 +39,5 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
     return Collections.<NodeFactory>emptyList();
   }
 
-  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractEquationStatement", "CoerceExpression", "InfoStatement", "IsSubtypeExpression", "MessageStatement", "ReportErrorStatement", "TypeOfExpression", "WarningStatement"};
+  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractEquationStatement", "AbstractReportStatement", "CoerceExpression", "InfoStatement", "IsSubtypeExpression", "ReportErrorStatement", "TypeOfExpression", "WarningStatement"};
 }

@@ -8,6 +8,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.ThreadUtils;
+import javax.swing.JComponent;
 import javax.swing.tree.TreePath;
 import jetbrains.mps.ide.hierarchy.AbstractHierarchyTree;
 import jetbrains.mps.ide.platform.refactoring.ConceptAncestorsProvider;
@@ -37,6 +38,10 @@ public class NodeHierarchyChooser extends JBScrollPane {
         NodeHierarchyChooser.this.myTree.rebuildNow();
       }
     });
+  }
+
+  public JComponent getPreferredFocusedComponent() {
+    return myTree;
   }
 
   public Object getSelectedObject() {

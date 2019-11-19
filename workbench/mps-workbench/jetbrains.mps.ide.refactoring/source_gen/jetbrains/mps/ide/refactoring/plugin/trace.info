@@ -257,184 +257,214 @@
       <unit id="3201523885428189419" at="9,0,20,0" name="jetbrains.mps.ide.refactoring.plugin.TouchBarDefault_shift_move_ActionGroup" />
     </file>
   </root>
+  <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/3237050918235387019">
+    <file name="MoveModelDialog.java">
+      <node id="5284818426851376380" at="14,108,15,62" concept="14" />
+      <node id="5284818426851283307" at="17,67,18,142" concept="8" />
+      <node id="5284818426851121851" at="18,142,19,68" concept="3" />
+      <node id="5284818426851121860" at="19,68,20,96" concept="3" />
+      <node id="5284818426851293314" at="20,96,21,18" concept="9" />
+      <node id="4507335185602817723" at="25,45,26,32" concept="9" />
+      <node id="7124265151436810514" at="29,32,30,42" concept="9" />
+      <node id="6253192823645564985" at="14,0,17,0" concept="2" trace="MoveModelDialog#(Ljetbrains/mps/project/MPSProject;Ljava/lang/String;Ljava/lang/Iterable;)V" />
+      <node id="7124265151436804223" at="28,0,32,0" concept="7" trace="getHelpId#()Ljava/lang/String;" />
+      <node id="4507335185602817717" at="23,0,28,0" concept="7" trace="getDimensionServiceKey#()Ljava/lang/String;" />
+      <node id="5284818426851253399" at="17,0,23,0" concept="7" trace="createChooseData#()Ljetbrains/mps/workbench/choose/ChooseByNameData;" />
+      <scope id="6253192823645564989" at="14,108,15,62" />
+      <scope id="4507335185602817722" at="25,45,26,32" />
+      <scope id="7124265151436804229" at="29,32,30,42" />
+      <scope id="6253192823645564985" at="14,0,17,0">
+        <var name="modules" id="909541774322468653" />
+        <var name="mpsProject" id="6253192823645564992" />
+        <var name="title" id="7124265151437105436" />
+      </scope>
+      <scope id="5284818426851253403" at="17,67,21,18">
+        <var name="result" id="5284818426851283308" />
+      </scope>
+      <scope id="7124265151436804223" at="28,0,32,0" />
+      <scope id="4507335185602817717" at="23,0,28,0" />
+      <scope id="5284818426851253399" at="17,0,23,0" />
+      <unit id="3237050918235387019" at="13,0,33,0" name="jetbrains.mps.ide.refactoring.plugin.MoveModelDialog" />
+    </file>
+  </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/4448668666024728349">
     <file name="MoveModelActionExecutor.java">
-      <node id="4448668666025045983" at="39,0,40,0" concept="4" trace="myDialogSettingsFactory" />
-      <node id="4448668666025060619" at="40,0,41,0" concept="4" trace="myOriginalModel" />
-      <node id="4448668666025060817" at="42,76,43,83" concept="15" />
-      <node id="4448668666025060836" at="46,130,47,19" concept="14" />
-      <node id="4448668666025060839" at="47,19,48,36" concept="3" />
-      <node id="4448668666025060843" at="48,36,49,52" concept="3" />
-      <node id="4448668666025121378" at="53,42,54,100" concept="8" />
-      <node id="4448668666025121391" at="57,99,58,81" concept="3" />
-      <node id="4448668666025121416" at="61,7,62,109" concept="8" />
-      <node id="4448668666025121427" at="63,33,64,18" concept="9" />
-      <node id="4448668666025120882" at="65,5,66,0" concept="11" />
-      <node id="4448668666025113744" at="68,32,69,65" concept="9" />
-      <node id="4448668666025155592" at="76,53,77,84" concept="8" />
-      <node id="4448668666025816101" at="77,84,78,0" concept="11" />
-      <node id="4448668666025155810" at="78,0,79,118" concept="3" />
-      <node id="4448668666025805086" at="79,118,80,0" concept="11" />
-      <node id="4448668666025808448" at="80,0,81,41" concept="9" />
-      <node id="4448668666025062210" at="85,104,86,122" concept="9" />
-      <node id="4448668666025062223" at="89,62,90,49" concept="9" />
-      <node id="4448668666025062242" at="93,78,94,76" concept="9" />
-      <node id="4141424609793694411" at="97,36,98,57" concept="9" />
-      <node id="4448668666025472068" at="102,0,103,0" concept="4" trace="myParticipants" />
-      <node id="4448668666025662734" at="103,0,104,0" concept="4" trace="myModule" />
-      <node id="4448668666025436282" at="104,0,105,0" concept="4" trace="myNewModel" />
-      <node id="4448668666025676229" at="106,53,107,24" concept="3" />
-      <node id="4448668666025466328" at="110,40,111,24" concept="9" />
-      <node id="4448668666025484608" at="114,107,115,28" concept="9" />
-      <node id="4448668666025436277" at="118,45,119,85" concept="9" />
-      <node id="4448668666025436290" at="122,38,123,124" concept="8" />
-      <node id="4448668666025436299" at="123,124,124,20" concept="3" />
-      <node id="4448668666025436303" at="124,20,125,106" concept="3" />
-      <node id="4448668666025436334" at="129,31,130,15" concept="9" />
-      <node id="4448668666025436338" at="131,7,132,0" concept="11" />
-      <node id="7208221877951487735" at="133,61,134,177" concept="8" />
-      <node id="4448668666025436341" at="134,177,135,176" concept="8" />
-      <node id="4448668666025436356" at="136,205,137,88" concept="8" />
-      <node id="4448668666025436371" at="138,110,139,107" concept="3" />
-      <node id="4448668666025436404" at="142,7,143,134" concept="3" />
-      <node id="4448668666025436411" at="143,134,144,83" concept="3" />
-      <node id="4448668666025436428" at="147,57,148,24" concept="9" />
-      <node id="4448668666025436434" at="151,29,152,20" concept="10" />
-      <node id="4448668666025611775" at="155,41,156,24" concept="9" />
-      <node id="4448668666025436306" at="160,36,161,61" concept="9" />
-      <node id="4448668666025436306" at="162,5,163,16" concept="9" />
-      <node id="4448668666025436307" at="166,36,167,63" concept="9" />
-      <node id="4448668666025436307" at="168,5,169,16" concept="9" />
-      <node id="4448668666025060807" at="42,0,45,0" concept="2" trace="MoveModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="4448668666025121388" at="56,25,59,9" concept="5" />
-      <node id="4448668666025121425" at="62,109,65,5" concept="6" />
-      <node id="4448668666025113742" at="68,0,71,0" concept="7" trace="compute#()Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <node id="4448668666025062208" at="85,0,88,0" concept="13" trace="getDefaultSettingsFactoryForMoved#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
-      <node id="4448668666025062221" at="89,0,92,0" concept="13" trace="getNameForMoved#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
-      <node id="4448668666025062240" at="93,0,96,0" concept="13" trace="getStereotypeForMoved#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/ui/tree/module/StereotypeProvider;" />
-      <node id="4141424609793686151" at="97,0,100,0" concept="13" trace="getTitle#()Ljava/lang/String;" />
-      <node id="4448668666025676221" at="106,0,109,0" concept="2" trace="MoveModelRefactoringBody#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="4448668666025436254" at="110,0,113,0" concept="7" trace="getRefactoringName#()Ljava/lang/String;" />
-      <node id="4448668666025436260" at="114,0,117,0" concept="7" trace="getAllAvailableParticipants#()Ljava/lang/Iterable;" />
-      <node id="4448668666025436272" at="118,0,121,0" concept="7" trace="findInitialStates#()Ljava/util/List;" />
-      <node id="4448668666025436332" at="128,176,131,7" concept="6" />
-      <node id="4448668666025436369" at="137,88,140,11" concept="6" />
-      <node id="4448668666025436422" at="147,0,150,0" concept="7" trace="getFinalStateFor#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <node id="4448668666025436430" at="151,0,154,0" concept="7" trace="doCleanup#()V" />
-      <node id="4448668666025583245" at="155,0,158,0" concept="7" trace="getNewModel#()Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
-      <node id="4448668666025436306" at="159,91,162,5" concept="6" />
-      <node id="4448668666025436307" at="165,119,168,5" concept="6" />
-      <node id="4448668666025060824" at="46,0,51,0" concept="2" trace="MoveModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;)V" />
-      <node id="4448668666025121386" at="56,0,61,0" concept="7" trace="run#()V" />
-      <node id="4448668666025113739" at="66,0,71,7" concept="9" />
-      <node id="4448668666025436286" at="122,0,127,0" concept="7" trace="prepareRefactoring#()V" />
-      <node id="4448668666025436353" at="135,176,141,9" concept="5" />
-      <node id="4448668666025436306" at="159,0,165,0" concept="13" trace="check_lf1t34_a0c0m22#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
-      <node id="4448668666025436307" at="165,0,171,0" concept="13" trace="check_lf1t34_a0a2a21w#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;" />
-      <node id="4448668666025121385" at="54,100,61,7" concept="3" />
-      <node id="4448668666025152019" at="75,0,83,0" concept="7" trace="showDialog#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <node id="4448668666025436339" at="132,0,142,7" concept="6" />
-      <node id="4448668666025436317" at="128,0,146,0" concept="7" trace="doRefactor#(Ljava/lang/Iterable;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
-      <node id="4448668666025113735" at="52,0,73,0" concept="7" trace="selectModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <scope id="4448668666025060816" at="42,76,43,83" />
-      <scope id="4448668666025121390" at="57,99,58,81" />
-      <scope id="4448668666025121426" at="63,33,64,18" />
-      <scope id="4448668666025113743" at="68,32,69,65" />
-      <scope id="4448668666025062209" at="85,104,86,122" />
-      <scope id="4448668666025062222" at="89,62,90,49" />
-      <scope id="4448668666025062241" at="93,78,94,76" />
-      <scope id="4141424609793686154" at="97,36,98,57" />
-      <scope id="4448668666025676225" at="106,53,107,24" />
-      <scope id="4448668666025436257" at="110,40,111,24" />
-      <scope id="4448668666025436269" at="114,107,115,28" />
-      <scope id="4448668666025436276" at="118,45,119,85" />
-      <scope id="4448668666025436333" at="129,31,130,15" />
-      <scope id="4448668666025436370" at="138,110,139,107" />
-      <scope id="4448668666025436427" at="147,57,148,24" />
-      <scope id="4448668666025436433" at="151,29,152,20" />
-      <scope id="4448668666025583248" at="155,41,156,24" />
-      <scope id="4448668666025436306" at="160,36,161,61" />
-      <scope id="4448668666025436307" at="166,36,167,63" />
-      <scope id="4448668666025060807" at="42,0,45,0">
+      <node id="4448668666025045983" at="38,0,39,0" concept="4" trace="myDialogSettingsFactory" />
+      <node id="4448668666025060619" at="39,0,40,0" concept="4" trace="myOriginalModel" />
+      <node id="4448668666025060817" at="41,76,42,83" concept="15" />
+      <node id="4448668666025060836" at="45,130,46,19" concept="14" />
+      <node id="4448668666025060839" at="46,19,47,36" concept="3" />
+      <node id="4448668666025060843" at="47,36,48,52" concept="3" />
+      <node id="4448668666025121378" at="52,42,53,100" concept="8" />
+      <node id="4448668666025121391" at="56,99,57,81" concept="3" />
+      <node id="4448668666025121416" at="60,7,61,117" concept="8" />
+      <node id="4448668666025121427" at="62,33,63,18" concept="9" />
+      <node id="4448668666025120882" at="64,5,65,0" concept="11" />
+      <node id="4448668666025113744" at="67,32,68,65" concept="9" />
+      <node id="4448668666025155592" at="75,53,76,84" concept="8" />
+      <node id="4448668666025816101" at="76,84,77,0" concept="11" />
+      <node id="4448668666025155810" at="77,0,78,156" concept="3" />
+      <node id="4448668666025805086" at="78,156,79,0" concept="11" />
+      <node id="4448668666025808448" at="79,0,80,41" concept="9" />
+      <node id="4448668666025062210" at="84,104,85,122" concept="9" />
+      <node id="4448668666025062223" at="88,62,89,49" concept="9" />
+      <node id="4448668666025062242" at="92,78,93,76" concept="9" />
+      <node id="4141424609793694411" at="96,36,97,57" concept="9" />
+      <node id="4448668666025472068" at="101,0,102,0" concept="4" trace="myParticipants" />
+      <node id="4448668666025662734" at="102,0,103,0" concept="4" trace="myModule" />
+      <node id="4448668666025436282" at="103,0,104,0" concept="4" trace="myNewModel" />
+      <node id="4448668666025676229" at="105,53,106,24" concept="3" />
+      <node id="4448668666025466328" at="109,40,110,24" concept="9" />
+      <node id="4448668666025484608" at="113,107,114,28" concept="9" />
+      <node id="4448668666025436277" at="117,45,118,85" concept="9" />
+      <node id="4448668666025436290" at="121,38,122,124" concept="8" />
+      <node id="4448668666025436299" at="122,124,123,20" concept="3" />
+      <node id="4448668666025436303" at="123,20,124,106" concept="3" />
+      <node id="4448668666025436334" at="128,31,129,15" concept="9" />
+      <node id="4448668666025436338" at="130,7,131,0" concept="11" />
+      <node id="7208221877951487735" at="132,61,133,177" concept="8" />
+      <node id="4448668666025436341" at="133,177,134,176" concept="8" />
+      <node id="4448668666025436356" at="135,205,136,88" concept="8" />
+      <node id="4448668666025436371" at="137,110,138,107" concept="3" />
+      <node id="4448668666025436404" at="141,7,142,134" concept="3" />
+      <node id="4448668666025436411" at="142,134,143,83" concept="3" />
+      <node id="4448668666025436428" at="146,57,147,24" concept="9" />
+      <node id="4448668666025436434" at="150,29,151,20" concept="10" />
+      <node id="4448668666025611775" at="154,41,155,24" concept="9" />
+      <node id="4448668666025436306" at="159,36,160,61" concept="9" />
+      <node id="4448668666025436306" at="161,5,162,16" concept="9" />
+      <node id="4448668666025436307" at="165,36,166,63" concept="9" />
+      <node id="4448668666025436307" at="167,5,168,16" concept="9" />
+      <node id="4448668666025060807" at="41,0,44,0" concept="2" trace="MoveModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="4448668666025121388" at="55,25,58,9" concept="5" />
+      <node id="4448668666025121425" at="61,117,64,5" concept="6" />
+      <node id="4448668666025113742" at="67,0,70,0" concept="7" trace="compute#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="4448668666025062208" at="84,0,87,0" concept="13" trace="getDefaultSettingsFactoryForMoved#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
+      <node id="4448668666025062221" at="88,0,91,0" concept="13" trace="getNameForMoved#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
+      <node id="4448668666025062240" at="92,0,95,0" concept="13" trace="getStereotypeForMoved#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/ui/tree/module/StereotypeProvider;" />
+      <node id="4141424609793686151" at="96,0,99,0" concept="13" trace="getTitle#()Ljava/lang/String;" />
+      <node id="4448668666025676221" at="105,0,108,0" concept="2" trace="MoveModelRefactoringBody#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="4448668666025436254" at="109,0,112,0" concept="7" trace="getRefactoringName#()Ljava/lang/String;" />
+      <node id="4448668666025436260" at="113,0,116,0" concept="7" trace="getAllAvailableParticipants#()Ljava/lang/Iterable;" />
+      <node id="4448668666025436272" at="117,0,120,0" concept="7" trace="findInitialStates#()Ljava/util/List;" />
+      <node id="4448668666025436332" at="127,176,130,7" concept="6" />
+      <node id="4448668666025436369" at="136,88,139,11" concept="6" />
+      <node id="4448668666025436422" at="146,0,149,0" concept="7" trace="getFinalStateFor#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="4448668666025436430" at="150,0,153,0" concept="7" trace="doCleanup#()V" />
+      <node id="4448668666025583245" at="154,0,157,0" concept="7" trace="getNewModel#()Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
+      <node id="4448668666025436306" at="158,91,161,5" concept="6" />
+      <node id="4448668666025436307" at="164,119,167,5" concept="6" />
+      <node id="4448668666025060824" at="45,0,50,0" concept="2" trace="MoveModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;)V" />
+      <node id="4448668666025121386" at="55,0,60,0" concept="7" trace="run#()V" />
+      <node id="4448668666025113739" at="65,0,70,7" concept="9" />
+      <node id="4448668666025436286" at="121,0,126,0" concept="7" trace="prepareRefactoring#()V" />
+      <node id="4448668666025436353" at="134,176,140,9" concept="5" />
+      <node id="4448668666025436306" at="158,0,164,0" concept="13" trace="check_lf1t34_a0c0m22#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
+      <node id="4448668666025436307" at="164,0,170,0" concept="13" trace="check_lf1t34_a0a2a21w#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;" />
+      <node id="4448668666025121385" at="53,100,60,7" concept="3" />
+      <node id="4448668666025152019" at="74,0,82,0" concept="7" trace="showDialog#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="4448668666025436339" at="131,0,141,7" concept="6" />
+      <node id="4448668666025436317" at="127,0,145,0" concept="7" trace="doRefactor#(Ljava/lang/Iterable;Ljetbrains/mps/refactoring/participant/RefactoringSession;)V" />
+      <node id="4448668666025113735" at="51,0,72,0" concept="7" trace="selectModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <scope id="4448668666025060816" at="41,76,42,83" />
+      <scope id="4448668666025121390" at="56,99,57,81" />
+      <scope id="4448668666025121426" at="62,33,63,18" />
+      <scope id="4448668666025113743" at="67,32,68,65" />
+      <scope id="4448668666025062209" at="84,104,85,122" />
+      <scope id="4448668666025062222" at="88,62,89,49" />
+      <scope id="4448668666025062241" at="92,78,93,76" />
+      <scope id="4141424609793686154" at="96,36,97,57" />
+      <scope id="4448668666025676225" at="105,53,106,24" />
+      <scope id="4448668666025436257" at="109,40,110,24" />
+      <scope id="4448668666025436269" at="113,107,114,28" />
+      <scope id="4448668666025436276" at="117,45,118,85" />
+      <scope id="4448668666025436333" at="128,31,129,15" />
+      <scope id="4448668666025436370" at="137,110,138,107" />
+      <scope id="4448668666025436427" at="146,57,147,24" />
+      <scope id="4448668666025436433" at="150,29,151,20" />
+      <scope id="4448668666025583248" at="154,41,155,24" />
+      <scope id="4448668666025436306" at="159,36,160,61" />
+      <scope id="4448668666025436307" at="165,36,166,63" />
+      <scope id="4448668666025060807" at="41,0,44,0">
         <var name="originalModel" id="4448668666025060812" />
         <var name="project" id="4448668666025060810" />
       </scope>
-      <scope id="4448668666025060835" at="46,130,49,52" />
-      <scope id="4448668666025121387" at="56,25,59,9" />
-      <scope id="4448668666025121388" at="56,25,59,9">
+      <scope id="4448668666025060835" at="45,130,48,52" />
+      <scope id="4448668666025121387" at="55,25,58,9" />
+      <scope id="4448668666025121388" at="55,25,58,9">
         <var name="module" id="4448668666025121389" />
       </scope>
-      <scope id="4448668666025113742" at="68,0,71,0" />
-      <scope id="4448668666025062208" at="85,0,88,0">
+      <scope id="4448668666025113742" at="67,0,70,0" />
+      <scope id="4448668666025062208" at="84,0,87,0">
         <var name="originalModel" id="4448668666025062218" />
       </scope>
-      <scope id="4448668666025062221" at="89,0,92,0">
+      <scope id="4448668666025062221" at="88,0,91,0">
         <var name="originalModel" id="4448668666025062237" />
       </scope>
-      <scope id="4448668666025062240" at="93,0,96,0">
+      <scope id="4448668666025062240" at="92,0,95,0">
         <var name="model" id="4448668666025062268" />
       </scope>
-      <scope id="4141424609793686151" at="97,0,100,0" />
-      <scope id="4448668666025676221" at="106,0,109,0">
+      <scope id="4141424609793686151" at="96,0,99,0" />
+      <scope id="4448668666025676221" at="105,0,108,0">
         <var name="module" id="4448668666025676228" />
       </scope>
-      <scope id="4448668666025436254" at="110,0,113,0" />
-      <scope id="4448668666025436260" at="114,0,117,0" />
-      <scope id="4448668666025436272" at="118,0,121,0" />
-      <scope id="4448668666025436289" at="122,38,125,106">
+      <scope id="4448668666025436254" at="109,0,112,0" />
+      <scope id="4448668666025436260" at="113,0,116,0" />
+      <scope id="4448668666025436272" at="117,0,120,0" />
+      <scope id="4448668666025436289" at="121,38,124,106">
         <var name="dialog" id="4448668666025436291" />
       </scope>
-      <scope id="4448668666025436422" at="147,0,150,0">
+      <scope id="4448668666025436422" at="146,0,149,0">
         <var name="initialState" id="4448668666025436423" />
       </scope>
-      <scope id="4448668666025436430" at="151,0,154,0" />
-      <scope id="4448668666025583245" at="155,0,158,0" />
-      <scope id="4448668666025436355" at="136,205,140,11">
+      <scope id="4448668666025436430" at="150,0,153,0" />
+      <scope id="4448668666025583245" at="154,0,157,0" />
+      <scope id="4448668666025436355" at="135,205,139,11">
         <var name="depModule" id="4448668666025436357" />
       </scope>
-      <scope id="4448668666025436306" at="159,91,163,16" />
-      <scope id="4448668666025436307" at="165,119,169,16" />
-      <scope id="4448668666025060824" at="46,0,51,0">
+      <scope id="4448668666025436306" at="158,91,162,16" />
+      <scope id="4448668666025436307" at="164,119,168,16" />
+      <scope id="4448668666025060824" at="45,0,50,0">
         <var name="dialogSettingsFactory" id="4448668666025060831" />
         <var name="originalModel" id="4448668666025060829" />
         <var name="project" id="4448668666025060827" />
       </scope>
-      <scope id="4448668666025121386" at="56,0,61,0" />
-      <scope id="4448668666025152028" at="76,53,81,41">
+      <scope id="4448668666025121386" at="55,0,60,0" />
+      <scope id="4448668666025152028" at="75,53,80,41">
         <var name="refactoringBody" id="4448668666025155593" />
       </scope>
-      <scope id="4448668666025436286" at="122,0,127,0" />
-      <scope id="4448668666025436353" at="135,176,141,9">
+      <scope id="4448668666025436286" at="121,0,126,0" />
+      <scope id="4448668666025436353" at="134,176,140,9">
         <var name="dependency" id="4448668666025436354" />
       </scope>
-      <scope id="4448668666025436306" at="159,0,165,0">
+      <scope id="4448668666025436306" at="158,0,164,0">
         <var name="checkedDotOperand" id="4448668666025436306" />
       </scope>
-      <scope id="4448668666025436307" at="165,0,171,0">
+      <scope id="4448668666025436307" at="164,0,170,0">
         <var name="checkedDotOperand" id="4448668666025436307" />
         <var name="myOriginalModel" id="4448668666025513055" />
       </scope>
-      <scope id="4448668666025152019" at="75,0,83,0">
+      <scope id="4448668666025152019" at="74,0,82,0">
         <var name="module" id="4448668666025152020" />
       </scope>
-      <scope id="4448668666025436340" at="133,61,141,9">
+      <scope id="4448668666025436340" at="132,61,140,9">
         <var name="exisingModuleDependencies" id="4448668666025436342" />
         <var name="oldModuleDependencies" id="7208221877951487736" />
       </scope>
-      <scope id="4448668666025436331" at="128,176,144,83" />
-      <scope id="4448668666025113738" at="53,42,71,7">
+      <scope id="4448668666025436331" at="127,176,143,83" />
+      <scope id="4448668666025113738" at="52,42,70,7">
         <var name="modules" id="4448668666025121379" />
         <var name="selectedModule" id="4448668666025121417" />
       </scope>
-      <scope id="4448668666025436317" at="128,0,146,0">
+      <scope id="4448668666025436317" at="127,0,145,0">
         <var name="participantStates" id="4448668666025436318" />
         <var name="refactoringSession" id="4448668666025436327" />
       </scope>
-      <scope id="4448668666025113735" at="52,0,73,0" />
-      <unit id="4448668666025113742" at="67,79,71,5" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor$2" />
-      <unit id="4448668666025121386" at="55,65,61,5" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor$1" />
-      <unit id="4448668666025419157" at="101,0,159,0" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor$MoveModelRefactoringBody" />
-      <unit id="4448668666024728349" at="37,0,172,0" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor" />
+      <scope id="4448668666025113735" at="51,0,72,0" />
+      <unit id="4448668666025113742" at="66,79,70,5" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor$2" />
+      <unit id="4448668666025121386" at="54,65,60,5" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor$1" />
+      <unit id="4448668666025419157" at="100,0,158,0" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor$MoveModelRefactoringBody" />
+      <unit id="4448668666024728349" at="36,0,171,0" name="jetbrains.mps.ide.refactoring.plugin.MoveModelActionExecutor" />
     </file>
   </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/8047970061511569310">
@@ -706,7 +736,7 @@
       <node id="78629976131121304" at="116,51,117,0" concept="11" />
       <node id="8784230320738943405" at="118,26,119,13" concept="9" />
       <node id="3846646991041474831" at="120,5,121,223" concept="8" />
-      <node id="8193174057328069111" at="121,223,122,216" concept="3" />
+      <node id="8193174057328069111" at="121,223,122,231" concept="3" />
       <node id="8784230320738948502" at="124,67,125,71" concept="10" />
       <node id="2546796854245076454" at="125,71,126,112" concept="8" />
       <node id="885736485116251747" at="126,112,127,95" concept="8" />
@@ -804,7 +834,7 @@
         <var name="_params" id="8784230320738943353" />
         <var name="event" id="8784230320738943353" />
       </scope>
-      <scope id="8784230320738943353" at="90,96,122,216">
+      <scope id="8784230320738943353" at="90,96,122,231">
         <var name="canBeRenamed" id="8139782154295720537" />
         <var name="dialog" id="78629976131102603" />
         <var name="newName" id="78629976131102628" />

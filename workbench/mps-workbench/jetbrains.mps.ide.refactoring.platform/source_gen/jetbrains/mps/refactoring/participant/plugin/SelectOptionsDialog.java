@@ -78,5 +78,8 @@ public class SelectOptionsDialog extends RefactoringDialog {
     dialog.show();
     return dialog.mySelected;
   }
-
+  @Override
+  protected String getHelpId() {
+    return "dialog.refactoring.selectParticipants";
+  }
 }

@@ -11,7 +11,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.refactoring.participant.RefactoringProcessor;
@@ -59,7 +58,7 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
         }
       }
     });
-    final SModuleReference selectedModule = CommonChoosers.showModuleChooser(myProject, getTitle(), modules);
+    final SModuleReference selectedModule = new MoveModelDialog(myProject, getTitle(), modules).showAndGetSelected();
     if (selectedModule == null) {
       return null;
     }
@@ -76,7 +75,7 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
   protected SModel showDialog(final SModule module) {
     MoveModelRefactoringBody refactoringBody = new MoveModelRefactoringBody(module);
 
-    RefactoringProcessor.performRefactoringInProject(myProject, new DefaultRefactoringUI(myProject), refactoringBody);
+    RefactoringProcessor.performRefactoringInProject(myProject, new DefaultRefactoringUI(myProject, refactoringBody.getRefactoringName()), refactoringBody);
 
     return refactoringBody.getNewModel();
   }

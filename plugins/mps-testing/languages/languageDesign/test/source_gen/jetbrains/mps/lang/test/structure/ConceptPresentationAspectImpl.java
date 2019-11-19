@@ -85,6 +85,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_TestNodeAnnotation;
   private ConceptPresentation props_TestNodeReference;
   private ConceptPresentation props_TypeKeyStatement;
+  private ConceptPresentation props_TypesystemEquationReference;
   private ConceptPresentation props_UnknownRuleReference;
   private ConceptPresentation props_UntypedExpression;
   private ConceptPresentation props_VariableAlive;
@@ -225,8 +226,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x11e314b78e4L, "nodeToEdit");
           cpb.deprecateAggregation(0x11e314bf3d3L, "result");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a4a0a81b0dd);
-          cpb.icon(IconContainer.RESOURCE_a0a5a0a81b0dd);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a4a0a81b0ed);
+          cpb.icon(IconContainer.RESOURCE_a0a5a0a81b0ed);
           props_EditorTestCase = cpb.create();
         }
         return props_EditorTestCase;
@@ -344,8 +345,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L);
           cpb.deprecateAssociation(0x4c010b30d9be54a3L, "migration_old");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a53b0dd);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a53b0dd);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a53b0ed);
+          cpb.icon(IconContainer.RESOURCE_a0a4a0a53b0ed);
           props_MigrationTestCase = cpb.create();
         }
         return props_MigrationTestCase;
@@ -478,6 +479,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.NodeTypeSystemWarningCheckOperation:
         if (props_NodeTypeSystemWarningCheckOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("check for unknown typesystem warning");
           cpb.presentationByName();
           props_NodeTypeSystemWarningCheckOperation = cpb.create();
@@ -516,8 +518,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NodesTestCase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a95b0dd);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a95b0dd);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a95b0ed);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a95b0ed);
           props_NodesTestCase = cpb.create();
         }
         return props_NodesTestCase;
@@ -594,7 +596,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TestInfo == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("TestInfo");
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a07b0dd);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a07b0ed);
           props_TestInfo = cpb.create();
         }
         return props_TestInfo;
@@ -626,6 +628,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TypeKeyStatement = cpb.create();
         }
         return props_TypeKeyStatement;
+      case LanguageConceptSwitch.TypesystemEquationReference:
+        if (props_TypesystemEquationReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration", "", "");
+          props_TypesystemEquationReference = cpb.create();
+        }
+        return props_TypesystemEquationReference;
       case LanguageConceptSwitch.UnknownRuleReference:
         if (props_UnknownRuleReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -666,8 +675,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a4a0a81b0dd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#editortests";
-  private static final String HELP_URL_lpa09p_a0a3a0a53b0dd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#migrationtests";
-  private static final String HELP_URL_lpa09p_a0a2a0a95b0dd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#nodetests";
-  private static final String HELP_URL_lpa09p_a0a2a0a07b0dd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#testinfo";
+  private static final String HELP_URL_lpa09p_a0a4a0a81b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#editortests";
+  private static final String HELP_URL_lpa09p_a0a3a0a53b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#migrationtests";
+  private static final String HELP_URL_lpa09p_a0a2a0a95b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#nodetests";
+  private static final String HELP_URL_lpa09p_a0a2a0a07b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#testinfo";
 }

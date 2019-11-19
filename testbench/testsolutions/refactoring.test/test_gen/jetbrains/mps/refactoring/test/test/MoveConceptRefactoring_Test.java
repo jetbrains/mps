@@ -170,9 +170,9 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     });
   }
   public void test_moveConceptWithNotDeployedConcepts() throws Exception {
-    // here we test that option 'Update local partitipants' and 'Write migration' are not shown if language is not deployed 
+    // here we test that option 'Update local partitipants' is not shown if language is not deployed 
     // cleaning class files to make test behavior determinate: 
-    // local execution might have .class filess copied from project 
+    // local execution might have .class files copied from project 
     // on the buildserver there are no .class files 
     runCommand(new Runnable() {
       public void run() {
@@ -200,10 +200,10 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
     ListSequence.fromList(expectedOptions).addElement(UpdateModelImports.OPTION);
     ListSequence.fromList(expectedOptions).addElement(UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
 
-    // 'Handle Subconcepts' is meaningless here, need to rewrite options UI to make checkboxes coherent 
     ListSequence.fromList(expectedOptions).addElement(WriteSubconceptMigrationParticipant.OPTION);
     ListSequence.fromList(expectedOptions).addElement(MoveAspectsParticipant.OPTION);
 
+    ListSequence.fromList(expectedOptions).addElement(LanguageStructureMigrationParticipant.OPTION);
     ListSequence.fromList(expectedOptions).addElement(MoveNodeRefactoringLogParticipant.OPTION);
 
     runCommand(new Runnable() {

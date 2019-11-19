@@ -26,6 +26,10 @@ public abstract class ModelOrNodeChooserDialog extends RefactoringDialog {
   public JComponent getPreferredFocusedComponent() {
     return myChooser.getPreferredFocusedComponent();
   }
+  @Override
+  protected String getHelpId() {
+    return "dialog.refactoring.moveNodes";
+  }
 
   protected static class Filter {
     private String errorMessage;

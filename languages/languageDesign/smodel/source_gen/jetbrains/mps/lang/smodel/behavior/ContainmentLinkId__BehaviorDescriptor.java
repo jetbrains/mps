@@ -11,16 +11,18 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
-import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,10 +33,11 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId");
 
   public static final SMethod<SContainmentLink> getLink_id7jb4LXp8VrU = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getLink").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp8VrU").build();
+  public static final SMethod<Void> setLink_id5e7X3XCLq_K = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLink").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e7X3XCLq_K").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> setLink_id7jb4LXp8VsD = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLink").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp8VsD").build(SMethodBuilder.createJavaParameter(SContainmentLink.class, ""));
   public static final SMethod<Long> getIdValue_id7jb4LXp8Vts = new SMethodBuilder<Long>(new SJavaCompoundTypeImpl(Long.TYPE)).name("getIdValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jb4LXp8Vts").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLink_id7jb4LXp8VrU, setLink_id7jb4LXp8VsD, getIdValue_id7jb4LXp8Vts);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLink_id7jb4LXp8VrU, setLink_id5e7X3XCLq_K, setLink_id7jb4LXp8VsD, getIdValue_id7jb4LXp8Vts);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -47,6 +50,17 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
     }
     long lid = ((long) ContainmentLinkId__BehaviorDescriptor.getIdValue_id7jb4LXp8Vts.invoke(__thisNode__));
     return MetaAdapterFactory.getContainmentLink(lc, lid, ln);
+  }
+  /*package*/ static void setLink_id5e7X3XCLq_K(@NotNull SNode __thisNode__, @NotNull SNode link) {
+    if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(link, PROPS.metaClass$tHD7), 0xfc6f4e95b9L))) {
+      throw new IllegalArgumentException();
+    }
+    SContainmentLinkId lid = MetaIdByDeclaration.getLinkId(link);
+    SNode cid = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.ConceptId$5a);
+    ConceptId__BehaviorDescriptor.setConcept_id5e7X3XCIPOJ.invoke(cid, SNodeOperations.cast(SNodeOperations.getParent(link), CONCEPTS.AbstractConceptDeclaration$UN));
+    SLinkOperations.setTarget(__thisNode__, LINKS.conceptIdentity$n5Rw, cid);
+    SPropertyOperations.assign(__thisNode__, PROPS.linkName$n5Su, SPropertyOperations.getString(link, PROPS.role$r_O$));
+    SPropertyOperations.assign(__thisNode__, PROPS.linkId$n5RZ, Long.toString(lid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static void setLink_id7jb4LXp8VsD(@NotNull SNode __thisNode__, @NotNull SContainmentLink link) {
     SContainmentLinkId lid = MetaIdHelper.getAggregation(link);
@@ -78,9 +92,12 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
       case 0:
         return (T) ((SContainmentLink) getLink_id7jb4LXp8VrU(node));
       case 1:
-        setLink_id7jb4LXp8VsD(node, (SContainmentLink) parameters[0]);
+        setLink_id5e7X3XCLq_K(node, (SNode) parameters[0]);
         return null;
       case 2:
+        setLink_id7jb4LXp8VsD(node, (SContainmentLink) parameters[0]);
+        return null;
+      case 3:
         return (T) ((Long) getIdValue_id7jb4LXp8Vts(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -117,10 +134,13 @@ public final class ContainmentLinkId__BehaviorDescriptor extends BaseBHDescripto
 
   private static final class PROPS {
     /*package*/ static final SProperty linkName$n5Su = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6eaL, "linkName");
+    /*package*/ static final SProperty metaClass$tHD7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$r_O$ = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
     /*package*/ static final SProperty linkId$n5RZ = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, 0x74cb131f5923b6e9L, "linkId");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptId$5a = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

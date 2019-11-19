@@ -11,11 +11,22 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
+import java.util.Map;
+import jetbrains.mps.refactoring.participant.RefactoringParticipant;
+import jetbrains.mps.refactoring.participant.RefactoringSession;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.refactoring.participant.NodeCopyTracker;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction {
 
@@ -34,9 +45,57 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   public boolean isApplicable(MPSProject project, List<SNode> nodes) {
     return super.isApplicable(project, nodes) && ListSequence.fromList(nodes).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ) && (SNodeOperations.getParent(it) == null || SNodeOperations.hasRole(it, LINKS.member$oYX5));
       }
     });
+  }
+
+  @Override
+  public void execute(final MPSProject project, final List<SNode> nodesToMove) {
+    final Wrappers._T<NodeLocation> newLocation = new Wrappers._T<NodeLocation>();
+    final Wrappers._boolean isMember = new Wrappers._boolean();
+    project.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$oYX5);
+      }
+    });
+    if (isMember.value) {
+      project.getRepository().getModelAccess().runReadAction(new Runnable() {
+        public void run() {
+          newLocation.value = new NodeLocation.NodeLocationRoot(SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first()));
+        }
+      });
+    } else {
+      newLocation.value = askLocation(project, nodesToMove);
+    }
+    if (newLocation.value == null) {
+      return;
+    }
+
+    MoveNodesUtil.NodeProcessor processor = new MoveNodesUtil.NodeCreatingProcessor(newLocation.value, project) {
+      @Override
+      public void process(List<SNode> nodeRoots, Map<SNode, RefactoringParticipant.KeepOldNodes> ifKeepOldNodes, RefactoringSession refactoringSession) {
+        Map<SNode, String> packageNames = MapSequence.fromMap(new HashMap<SNode, String>());
+        for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
+          MapSequence.fromMap(packageNames).put(oldNode, SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ), PROPS.packageName$3uUR));
+        }
+        super.process(nodeRoots, ifKeepOldNodes, refactoringSession);
+        NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
+        for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
+          SNode newNode = SNodeOperations.cast(MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode), CONCEPTS.Classifier$hJ);
+          if (myNodeLocation.isRoot()) {
+            if (myNodeLocation.isRoot() && SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(oldNode), CONCEPTS.Classifier$hJ)) {
+              SPropertyOperations.assign(newNode, PROPS.packageName$3uUR, MapSequence.fromMap(packageNames).get(oldNode));
+              if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(newNode, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+                SLinkOperations.setTarget(newNode, LINKS.visibility$2GiC, null);
+              }
+            }
+          }
+        }
+
+      }
+    };
+    MoveNodesUtil.moveTo(project, getName(), MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), processor).withValues(nodesToMove));
   }
 
   @Override
@@ -49,11 +108,17 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
     return super.tryToSetRole(repo, nodesToMove, selectedObject);
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-  }
-
   private static final class LINKS {
     /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty packageName$3uUR = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x26be0cf68be19d69L, "packageName");
   }
 }

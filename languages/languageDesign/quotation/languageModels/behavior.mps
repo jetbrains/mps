@@ -159,6 +159,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="7504436213544206332" name="jetbrains.mps.lang.smodel.structure.Node_ContainingLinkOperation" flags="nn" index="2NL2c5" />
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
@@ -173,6 +174,7 @@
       <concept id="1154546950173" name="jetbrains.mps.lang.smodel.structure.ConceptReference" flags="ng" index="3gn64h">
         <reference id="1154546997487" name="concept" index="3gnhBz" />
       </concept>
+      <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
@@ -586,6 +588,24 @@
   <node concept="13h7C7" id="1653mnvB5Ya">
     <property role="3GE5qa" value="quotation" />
     <ref role="13h7C2" to="tp3r:hqc44po" resolve="Antiquotation" />
+    <node concept="13i0hz" id="5e7X3XC_mgR" role="13h7CS">
+      <property role="TrG5h" value="getAttributedLink" />
+      <node concept="3Tm1VV" id="5e7X3XC_mgS" role="1B3o_S" />
+      <node concept="3uibUv" id="5e7X3XC_mtv" role="3clF45">
+        <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
+      </node>
+      <node concept="3clFbS" id="5e7X3XC_mgU" role="3clF47">
+        <node concept="3clFbF" id="5e7X3XC_mMh" role="3cqZAp">
+          <node concept="2OqwBi" id="5e7X3XC_n_7" role="3clFbG">
+            <node concept="2OqwBi" id="5e7X3XC_mZd" role="2Oq$k0">
+              <node concept="13iPFW" id="5e7X3XC_mMg" role="2Oq$k0" />
+              <node concept="1mfA1w" id="5e7X3XC_ndc" role="2OqNvi" />
+            </node>
+            <node concept="2NL2c5" id="5e7X3XC_nF9" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="13hLZK" id="1653mnvB5Yb" role="13h7CW">
       <node concept="3clFbS" id="1653mnvB5Yc" role="2VODD2" />
     </node>

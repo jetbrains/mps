@@ -10,7 +10,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import java.util.List;
+import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -41,18 +44,18 @@ public class MovePropertySpecialization extends StructureSpecializationBase<SPro
     }
     return MultiTuple.<SProperty,SNodeReference>from(deployedProperty, SNodeOperations.getPointer(movingNode));
   }
-  public void confirm(Tuples._2<SProperty, SNodeReference> initialState, Tuples._2<SProperty, SNodeReference> finalState, SRepository repository, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder) {
-    SNode from = SNodeOperations.cast(initialState._1().resolve(repository), CONCEPTS.PropertyDeclaration$c5);
-    SNode to = SNodeOperations.cast(finalState._1().resolve(repository), CONCEPTS.PropertyDeclaration$c5);
+  public void confirm(List<RefactoringParticipant.Option> selectedOptions, SNodeReference initialState, SNodeReference finalState, SRepository repository, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder, boolean updateModuleDependencies) {
+    SNode from = SNodeOperations.cast(SPointerOperations.resolveNode(initialState, repository), CONCEPTS.PropertyDeclaration$c5);
+    SNode to = SNodeOperations.cast(SPointerOperations.resolveNode(finalState, repository), CONCEPTS.PropertyDeclaration$c5);
     SNode targetConcept = SNodeOperations.cast(SNodeOperations.getParent(to), CONCEPTS.AbstractConceptDeclaration$UN);
     SPropertyOperations.plusAssignStringProp(from, PROPS.name$tAp1, "_old");
     AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8), createDeprecatedNodeAnnotation_fubpxk_a0e0b("The property was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
     SPropertyOperations.assign(to, PROPS.propertyId$cckp, ConceptIdHelper.generatePropertyId(targetConcept, to) + "");
 
     SNode oldId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"));
-    PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(oldId, MetaAdapterByDeclaration.getProperty(from));
+    PropertyId__BehaviorDescriptor.setProperty_id5e7X3XCIM6B.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"));
-    PropertyId__BehaviorDescriptor.setProperty_id5ZE7FBYZ2jW.invoke(newId, MetaAdapterByDeclaration.getProperty(to));
+    PropertyId__BehaviorDescriptor.setProperty_id5e7X3XCIM6B.invoke(newId, to);
     migrationBuilder.addPart(from, to, createMoveProperty_fubpxk_c0a11a1(oldId, newId));
   }
   public Collection<SNode> findInstances(SProperty oldProperty, SearchScope searchScope) {

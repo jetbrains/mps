@@ -84,11 +84,12 @@ public final class LanguageConceptSwitch {
   public static final int TestNodeAnnotation = 72;
   public static final int TestNodeReference = 73;
   public static final int TypeKeyStatement = 74;
-  public static final int UnknownRuleReference = 75;
-  public static final int UntypedExpression = 76;
-  public static final int VariableAlive = 77;
-  public static final int VariableInitialized = 78;
-  public static final int WarningStatementReference = 79;
+  public static final int TypesystemEquationReference = 75;
+  public static final int UnknownRuleReference = 76;
+  public static final int UntypedExpression = 77;
+  public static final int VariableAlive = 78;
+  public static final int VariableInitialized = 79;
+  public static final int WarningStatementReference = 80;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL);
@@ -167,6 +168,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x119e1c6609cL, TestNodeAnnotation);
     builder.put(0x119e1d33213L, TestNodeReference);
     builder.put(0x11db9c07f43L, TypeKeyStatement);
+    builder.put(0x408630be7237fedfL, TypesystemEquationReference);
     builder.put(0x6abc06f5f4af0d67L, UnknownRuleReference);
     builder.put(0x706cdc8a9fd69324L, UntypedExpression);
     builder.put(0x11b086b4872L, VariableAlive);

@@ -64,7 +64,6 @@ public class MoveNodeDialog extends ModelOrNodeChooserDialog {
     Disposer.register(getDisposable(), myChooser);
     return centerPanel;
   }
-  @Nullable
   @NonNls
   @Override
   protected String getDimensionServiceKey() {

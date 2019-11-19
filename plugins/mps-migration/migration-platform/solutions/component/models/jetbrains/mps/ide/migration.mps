@@ -834,7 +834,7 @@
                       <node concept="3clFbF" id="53d0N_Lhvk_" role="3cqZAp">
                         <node concept="2OqwBi" id="53d0N_LhvkA" role="3clFbG">
                           <node concept="37vLTw" id="53d0N_LhvkB" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7IPdE2Fi3AV" resolve="myPostponedState" />
+                            <ref role="3cqZAo" node="7IPdE2Fi3AV" />
                           </node>
                           <node concept="liA8E" id="53d0N_LhvkC" role="2OqNvi">
                             <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
@@ -2176,8 +2176,8 @@
             <node concept="liA8E" id="4yMSDz977nx" role="2OqNvi">
               <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenWithout" />
               <node concept="10M0yZ" id="2i74bFCg$6k" role="37wK5m">
-                <ref role="1PxDUh" node="2i74bFCd7B9" resolve="MigrationNotificationsSupport" />
                 <ref role="3cqZAo" node="2i74bFCgfkY" resolve="NOT_DEPLOYED" />
+                <ref role="1PxDUh" node="2i74bFCd7B9" resolve="MigrationNotificationsSupport" />
               </node>
             </node>
           </node>
@@ -2396,9 +2396,6 @@
           <node concept="3clFbS" id="1yfCl2RAV87" role="3clFbx">
             <node concept="3clFbF" id="53d0N_LhBIx" role="3cqZAp">
               <node concept="2OqwBi" id="53d0N_LhCgA" role="3clFbG">
-                <node concept="37vLTw" id="1dKE89$OHze" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2i74bFCeL7q" resolve="myNotifications" />
-                </node>
                 <node concept="liA8E" id="53d0N_LhCO$" role="2OqNvi">
                   <ref role="37wK5l" node="53d0N_Lh_W6" resolve="showCantStart" />
                   <node concept="2OqwBi" id="53d0N_LhCPw" role="37wK5m">
@@ -2409,6 +2406,9 @@
                       <ref role="37wK5l" node="41MBYoJqCoK" resolve="getMigrationForbiddenMessage" />
                     </node>
                   </node>
+                </node>
+                <node concept="37vLTw" id="1dKE89$OHze" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2i74bFCeL7q" resolve="myNotifications" />
                 </node>
               </node>
             </node>
@@ -2821,13 +2821,13 @@
                                                                               <property role="3cmrfH" value="1" />
                                                                             </node>
                                                                             <node concept="37vLTw" id="3wDJmuvKOdQ" role="1LFl5Q">
-                                                                              <ref role="3cqZAo" node="3wDJmuvEDNg" resolve="result" />
+                                                                              <ref role="3cqZAo" node="3wDJmuvEDNg" />
                                                                             </node>
                                                                           </node>
                                                                           <node concept="liA8E" id="3wDJmuvFxm9" role="2OqNvi">
                                                                             <ref role="37wK5l" to="o8ag:2htE_P_MrCw" resolve="getProblems" />
                                                                             <node concept="37vLTw" id="3wDJmuvFxma" role="37wK5m">
-                                                                              <ref role="3cqZAo" node="1548xle07dm" resolve="progressIndicator" />
+                                                                              <ref role="3cqZAo" node="1548xle07dm" />
                                                                             </node>
                                                                           </node>
                                                                         </node>
@@ -2864,7 +2864,7 @@
                                                                                           <ref role="37wK5l" to="bdll:~MigrationProblemHandler.showProblems(java.util.Collection)" resolve="showProblems" />
                                                                                           <node concept="2OqwBi" id="3wDJmuvF$kn" role="37wK5m">
                                                                                             <node concept="37vLTw" id="3wDJmuvFyb6" role="2Oq$k0">
-                                                                                              <ref role="3cqZAo" node="3wDJmuvFxm6" resolve="problems" />
+                                                                                              <ref role="3cqZAo" node="3wDJmuvFxm6" />
                                                                                             </node>
                                                                                             <node concept="ANE8D" id="3wDJmuvF$Jg" role="2OqNvi" />
                                                                                           </node>
@@ -2875,7 +2875,7 @@
                                                                                 </node>
                                                                                 <node concept="2OqwBi" id="4SkhJ$VlD7I" role="ukAjM">
                                                                                   <node concept="37vLTw" id="4SkhJ$VlBCI" role="2Oq$k0">
-                                                                                    <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
+                                                                                    <ref role="3cqZAo" node="1AzqgyAfbh5" />
                                                                                   </node>
                                                                                   <node concept="liA8E" id="4SkhJ$VlE6l" role="2OqNvi">
                                                                                     <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
@@ -2895,7 +2895,7 @@
                                                                 </node>
                                                                 <node concept="2OqwBi" id="1548xle07dA" role="ukAjM">
                                                                   <node concept="37vLTw" id="1548xle07dB" role="2Oq$k0">
-                                                                    <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
+                                                                    <ref role="3cqZAo" node="1AzqgyAfbh5" />
                                                                   </node>
                                                                   <node concept="liA8E" id="1548xle07dC" role="2OqNvi">
                                                                     <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
@@ -3205,14 +3205,6 @@
         <node concept="10P_77" id="cQNMA1EKOf" role="1tU5fm" />
       </node>
       <node concept="3Tm6S6" id="1548xle07dZ" role="1B3o_S" />
-      <node concept="1LlUBW" id="3wDJmuvIN2A" role="3clF45">
-        <node concept="3uibUv" id="3wDJmuvITHc" role="1Lm7xW">
-          <ref role="3uigEE" node="3wDJmuvCRkQ" resolve="MigrationTrigger.MigrationResult" />
-        </node>
-        <node concept="3uibUv" id="3wDJmuvJ1AH" role="1Lm7xW">
-          <ref role="3uigEE" to="o8ag:2htE_P_MmBs" resolve="MigrationError" />
-        </node>
-      </node>
       <node concept="3clFbS" id="1548xle07bY" role="3clF47">
         <node concept="3cpWs8" id="1548xle3A9n" role="3cqZAp">
           <node concept="3cpWsn" id="1548xle3A9o" role="3cpWs9">
@@ -3387,6 +3379,14 @@
               <ref role="3cqZAo" node="1548xle3FWI" resolve="errors" />
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="1LlUBW" id="3wDJmuvIN2A" role="3clF45">
+        <node concept="3uibUv" id="3wDJmuvITHc" role="1Lm7xW">
+          <ref role="3uigEE" node="3wDJmuvCRkQ" resolve="MigrationTrigger.MigrationResult" />
+        </node>
+        <node concept="3uibUv" id="3wDJmuvJ1AH" role="1Lm7xW">
+          <ref role="3uigEE" to="o8ag:2htE_P_MmBs" resolve="MigrationError" />
         </node>
       </node>
     </node>
@@ -11422,7 +11422,6 @@
                 </node>
               </node>
             </node>
-            <node concept="10Nm6u" id="XAmMejBSN0" role="37wK5m" />
             <node concept="1eOMI4" id="XAmMeko_l9" role="37wK5m">
               <node concept="10QFUN" id="XAmMeko_la" role="1eOMHV">
                 <node concept="2ShNRf" id="XAmMeko_l1" role="10QFUP">
@@ -12256,7 +12255,7 @@
             <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
             <ref role="37wK5l" to="jkm4:~Messages.showMessageDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showMessageDialog" />
             <node concept="37vLTw" id="1dKE89$NrBg" role="37wK5m">
-              <ref role="3cqZAo" node="2i74bFCfaq1" resolve="myIdeaProject" />
+              <ref role="3cqZAo" node="2i74bFCfaq1" />
             </node>
             <node concept="3cpWs3" id="1yfCl2RB610" role="37wK5m">
               <node concept="Xl_RD" id="1yfCl2RB611" role="3uHU7w">
@@ -12274,13 +12273,13 @@
                           <property role="Xl_RC" value=" as " />
                         </node>
                         <node concept="37vLTw" id="53d0N_LhH5p" role="3uHU7w">
-                          <ref role="3cqZAo" node="53d0N_LhARG" resolve="cause" />
+                          <ref role="3cqZAo" node="53d0N_LhARG" />
                         </node>
                       </node>
                       <node concept="3clFbC" id="53d0N_LhH5q" role="3K4Cdx">
                         <node concept="10Nm6u" id="53d0N_LhH5r" role="3uHU7w" />
                         <node concept="37vLTw" id="53d0N_LhH5s" role="3uHU7B">
-                          <ref role="3cqZAo" node="53d0N_LhARG" resolve="cause" />
+                          <ref role="3cqZAo" node="53d0N_LhARG" />
                         </node>
                       </node>
                     </node>
@@ -12319,7 +12318,7 @@
             <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
             <ref role="37wK5l" to="jkm4:~Messages.showMessageDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showMessageDialog" />
             <node concept="37vLTw" id="1dKE89$NrRi" role="37wK5m">
-              <ref role="3cqZAo" node="2i74bFCfaq1" resolve="myIdeaProject" />
+              <ref role="3cqZAo" node="2i74bFCfaq1" />
             </node>
             <node concept="3cpWs3" id="53d0N_LgvLe" role="37wK5m">
               <node concept="Xl_RD" id="53d0N_LgvLf" role="3uHU7w">
@@ -12353,7 +12352,7 @@
             <node concept="3fqX7Q" id="53d0N_LgwIT" role="3uHU7w">
               <node concept="2OqwBi" id="53d0N_LgwIU" role="3fr31v">
                 <node concept="37vLTw" id="53d0N_LgwIV" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6lEzp8ArlVb" resolve="myLastNotification" />
+                  <ref role="3cqZAo" node="6lEzp8ArlVb" />
                 </node>
                 <node concept="liA8E" id="53d0N_LgwIW" role="2OqNvi">
                   <ref role="37wK5l" to="fnpx:~Notification.isExpired()" resolve="isExpired" />
@@ -12362,7 +12361,7 @@
             </node>
             <node concept="3y3z36" id="53d0N_LgwIX" role="3uHU7B">
               <node concept="37vLTw" id="53d0N_LgwIY" role="3uHU7B">
-                <ref role="3cqZAo" node="6lEzp8ArlVb" resolve="myLastNotification" />
+                <ref role="3cqZAo" node="6lEzp8ArlVb" />
               </node>
               <node concept="10Nm6u" id="53d0N_LgwIZ" role="3uHU7w" />
             </node>
@@ -12371,14 +12370,14 @@
         <node concept="3clFbF" id="53d0N_LgwR2" role="3cqZAp">
           <node concept="37vLTI" id="53d0N_Lgxc8" role="3clFbG">
             <node concept="37vLTw" id="53d0N_LgwR0" role="37vLTJ">
-              <ref role="3cqZAo" node="6lEzp8ArlVb" resolve="myLastNotification" />
+              <ref role="3cqZAo" node="6lEzp8ArlVb" />
             </node>
             <node concept="2ShNRf" id="53d0N_LgtM1" role="37vLTx">
               <node concept="1pGfFk" id="53d0N_LgtM2" role="2ShVmc">
                 <ref role="37wK5l" to="fnpx:~Notification.&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,com.intellij.notification.NotificationType,com.intellij.notification.NotificationListener)" resolve="Notification" />
                 <node concept="2OqwBi" id="1dKE89$Mrtt" role="37wK5m">
                   <node concept="37vLTw" id="1dKE89$Mrhd" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1dKE89$MqNL" resolve="NOTIFICATION_GROUP" />
+                    <ref role="3cqZAo" node="1dKE89$MqNL" />
                   </node>
                   <node concept="liA8E" id="1dKE89$MrE1" role="2OqNvi">
                     <ref role="37wK5l" to="fnpx:~NotificationGroup.getDisplayId()" resolve="getDisplayId" />
@@ -12393,7 +12392,7 @@
                       <property role="Xl_RC" value="&lt;p&gt;This project requires migration.&lt;/p&gt;&lt;p&gt;&lt;a href=\&quot;" />
                     </node>
                     <node concept="37vLTw" id="1dKE89$NZzK" role="3uHU7w">
-                      <ref role="3cqZAo" node="5qnBhKy3SQP" resolve="REF_RUN_MIGRATION" />
+                      <ref role="3cqZAo" node="5qnBhKy3SQP" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="1dKE89$NYUv" role="3uHU7w">
@@ -12443,7 +12442,7 @@
                             <node concept="3y3z36" id="53d0N_LgtMo" role="3clFbw">
                               <node concept="2OqwBi" id="53d0N_LgtMp" role="3uHU7B">
                                 <node concept="37vLTw" id="53d0N_LgtMq" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="53d0N_LgtMh" resolve="e" />
+                                  <ref role="3cqZAo" node="53d0N_LgtMh" />
                                 </node>
                                 <node concept="liA8E" id="53d0N_LgtMr" role="2OqNvi">
                                   <ref role="37wK5l" to="gsia:~HyperlinkEvent.getEventType()" resolve="getEventType" />
@@ -12459,7 +12458,7 @@
                             <node concept="3clFbS" id="53d0N_LgtMu" role="3clFbx">
                               <node concept="3clFbF" id="1dKE89$NYD8" role="3cqZAp">
                                 <node concept="1rXfSq" id="1dKE89$NYD4" role="3clFbG">
-                                  <ref role="37wK5l" node="5qnBhKy517Q" resolve="runAssistant" />
+                                  <ref role="37wK5l" node="5qnBhKy517Q" />
                                 </node>
                               </node>
                             </node>
@@ -12468,7 +12467,7 @@
                                 <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
                                 <node concept="2OqwBi" id="53d0N_LgtM_" role="37wK5m">
                                   <node concept="37vLTw" id="53d0N_LgtMA" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="53d0N_LgtMh" resolve="e" />
+                                    <ref role="3cqZAo" node="53d0N_LgtMh" />
                                   </node>
                                   <node concept="liA8E" id="53d0N_LgtMB" role="2OqNvi">
                                     <ref role="37wK5l" to="gsia:~HyperlinkEvent.getDescription()" resolve="getDescription" />
@@ -12476,14 +12475,14 @@
                                 </node>
                               </node>
                               <node concept="37vLTw" id="1dKE89$NZYW" role="2Oq$k0">
-                                <ref role="3cqZAo" node="5qnBhKy3SQP" resolve="REF_RUN_MIGRATION" />
+                                <ref role="3cqZAo" node="5qnBhKy3SQP" />
                               </node>
                             </node>
                           </node>
                           <node concept="3clFbF" id="53d0N_LgtMC" role="3cqZAp">
                             <node concept="2OqwBi" id="53d0N_LgtMD" role="3clFbG">
                               <node concept="37vLTw" id="53d0N_LgtME" role="2Oq$k0">
-                                <ref role="3cqZAo" node="53d0N_LgtMe" resolve="notification" />
+                                <ref role="3cqZAo" node="53d0N_LgtMe" />
                               </node>
                               <node concept="liA8E" id="53d0N_LgtMF" role="2OqNvi">
                                 <ref role="37wK5l" to="fnpx:~Notification.expire()" resolve="expire" />
@@ -12507,10 +12506,10 @@
             <ref role="1Pybhc" to="fnpx:~Notifications$Bus" resolve="Notifications.Bus" />
             <ref role="37wK5l" to="fnpx:~Notifications$Bus.notify(com.intellij.notification.Notification,com.intellij.openapi.project.Project)" resolve="notify" />
             <node concept="37vLTw" id="53d0N_LgtMJ" role="37wK5m">
-              <ref role="3cqZAo" node="6lEzp8ArlVb" resolve="myLastNotification" />
+              <ref role="3cqZAo" node="6lEzp8ArlVb" />
             </node>
             <node concept="37vLTw" id="1dKE89$Ns70" role="37wK5m">
-              <ref role="3cqZAo" node="2i74bFCfaq1" resolve="myIdeaProject" />
+              <ref role="3cqZAo" node="2i74bFCfaq1" />
             </node>
           </node>
         </node>
@@ -12538,7 +12537,7 @@
               </node>
             </node>
             <node concept="1rXfSq" id="4yMSDz98buL" role="33vP2m">
-              <ref role="37wK5l" node="3SyvI1qyQDr" resolve="getNotDeployedUsedLanguages" />
+              <ref role="37wK5l" node="3SyvI1qyQDr" />
             </node>
           </node>
         </node>
@@ -12587,28 +12586,28 @@
           <node concept="1Wc70l" id="5qnBhKy37jO" role="3clFbw">
             <node concept="3clFbC" id="5qnBhKy3bl2" role="3uHU7w">
               <node concept="37vLTw" id="5qnBhKy3bE1" role="3uHU7w">
-                <ref role="3cqZAo" node="5qnBhKy13XC" resolve="hasCleanups" />
+                <ref role="3cqZAo" node="5qnBhKy13XC" />
               </node>
               <node concept="2OqwBi" id="5qnBhKy37Iy" role="3uHU7B">
                 <node concept="37vLTw" id="5qnBhKy37xu" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                  <ref role="3cqZAo" node="6Va2kqwsNph" />
                 </node>
                 <node concept="2OwXpG" id="5qnBhKy3aUz" role="2OqNvi">
-                  <ref role="2Oxat5" node="5qnBhKy2CKE" resolve="myHasCleanups" />
+                  <ref role="2Oxat5" node="5qnBhKy2CKE" />
                 </node>
               </node>
             </node>
             <node concept="1Wc70l" id="6Va2kqwuaNH" role="3uHU7B">
               <node concept="3y3z36" id="6Va2kqwuazH" role="3uHU7B">
                 <node concept="37vLTw" id="6Va2kqwuagx" role="3uHU7B">
-                  <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                  <ref role="3cqZAo" node="6Va2kqwsNph" />
                 </node>
                 <node concept="10Nm6u" id="6Va2kqwuaKw" role="3uHU7w" />
               </node>
               <node concept="3y3z36" id="6Va2kqwtTId" role="3uHU7w">
                 <node concept="2OqwBi" id="6Va2kqwtT37" role="3uHU7B">
                   <node concept="37vLTw" id="6Va2kqwtSKh" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                    <ref role="3cqZAo" node="6Va2kqwsNph" />
                   </node>
                   <node concept="liA8E" id="6Va2kqwtTnX" role="2OqNvi">
                     <ref role="37wK5l" to="fnpx:~Notification.getBalloon()" resolve="getBalloon" />
@@ -12656,7 +12655,7 @@
             <node concept="3clFbF" id="6Va2kqwtLOm" role="3cqZAp">
               <node concept="2OqwBi" id="6Va2kqwtM5S" role="3clFbG">
                 <node concept="37vLTw" id="6Va2kqwtLOk" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                  <ref role="3cqZAo" node="6Va2kqwsNph" />
                 </node>
                 <node concept="liA8E" id="6Va2kqwtMqG" role="2OqNvi">
                   <ref role="37wK5l" to="fnpx:~Notification.expire()" resolve="expire" />
@@ -12669,7 +12668,7 @@
               <node concept="1eOMI4" id="6Va2kqwtUmD" role="3fr31v">
                 <node concept="2OqwBi" id="6Va2kqwtUVZ" role="1eOMHV">
                   <node concept="37vLTw" id="6Va2kqwtUCr" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                    <ref role="3cqZAo" node="6Va2kqwsNph" />
                   </node>
                   <node concept="liA8E" id="6Va2kqwtVip" role="2OqNvi">
                     <ref role="37wK5l" to="fnpx:~Notification.isExpired()" resolve="isExpired" />
@@ -12679,7 +12678,7 @@
             </node>
             <node concept="3y3z36" id="4yMSDz95AZt" role="3uHU7B">
               <node concept="37vLTw" id="6Va2kqwsWqg" role="3uHU7B">
-                <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+                <ref role="3cqZAo" node="6Va2kqwsNph" />
               </node>
               <node concept="10Nm6u" id="6Va2kqwsWK7" role="3uHU7w" />
             </node>
@@ -12689,16 +12688,16 @@
         <node concept="3clFbF" id="6Va2kqwttga" role="3cqZAp">
           <node concept="37vLTI" id="6Va2kqwtt$M" role="3clFbG">
             <node concept="1rXfSq" id="6Va2kqwttEE" role="37vLTx">
-              <ref role="37wK5l" node="6Va2kqwtmvr" resolve="createDeployWarn" />
+              <ref role="37wK5l" node="6Va2kqwtmvr" />
               <node concept="37vLTw" id="4yMSDz98evH" role="37wK5m">
-                <ref role="3cqZAo" node="4yMSDz98buI" resolve="problems" />
+                <ref role="3cqZAo" node="4yMSDz98buI" />
               </node>
               <node concept="37vLTw" id="5qnBhKy2myi" role="37wK5m">
-                <ref role="3cqZAo" node="5qnBhKy13XC" resolve="hasCleanups" />
+                <ref role="3cqZAo" node="5qnBhKy13XC" />
               </node>
             </node>
             <node concept="37vLTw" id="6Va2kqwttg8" role="37vLTJ">
-              <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+              <ref role="3cqZAo" node="6Va2kqwsNph" />
             </node>
           </node>
         </node>
@@ -12707,10 +12706,10 @@
             <ref role="1Pybhc" to="fnpx:~Notifications$Bus" resolve="Notifications.Bus" />
             <ref role="37wK5l" to="fnpx:~Notifications$Bus.notify(com.intellij.notification.Notification,com.intellij.openapi.project.Project)" resolve="notify" />
             <node concept="37vLTw" id="6Va2kqwuyFA" role="37wK5m">
-              <ref role="3cqZAo" node="6Va2kqwsNph" resolve="myLastDeployWarning" />
+              <ref role="3cqZAo" node="6Va2kqwsNph" />
             </node>
             <node concept="37vLTw" id="2i74bFCfIWc" role="37wK5m">
-              <ref role="3cqZAo" node="2i74bFCfaq1" resolve="myIdeaProject" />
+              <ref role="3cqZAo" node="2i74bFCfaq1" />
             </node>
           </node>
         </node>

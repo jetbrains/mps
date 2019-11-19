@@ -13,15 +13,14 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import com.intellij.openapi.ui.Messages;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -65,41 +64,30 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
 
     String name = chooseName(conceptsToMove, datatypesToMove);
 
-    ListSequence.fromList(conceptsToMove).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        checkDeployed(project, it);
-      }
-    });
+    final Wrappers._T<List<SModelReference>> structureModels = new Wrappers._T<List<SModelReference>>();
     final Wrappers._boolean hasGenerator = new Wrappers._boolean(false);
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
+    final Wrappers._boolean notDeployed = new Wrappers._boolean();
+    project.getRepository().getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<List<SModelReference>>() {
+      public List<SModelReference> invoke() {
+        notDeployed.value = ListSequence.fromList(conceptsToMove).any(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return !(checkDeployed(project, it, true));
+          }
+        });
         hasGenerator.value = ListSequence.fromList(conceptsToMove).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode node) {
             return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.findGeneratorFragments_id5zMz2aJEI4B.invoke(node)).isNotEmpty();
           }
         });
-      }
-    });
-    if (hasGenerator.value) {
-      Messages.showWarningDialog(project.getProject(), "Generator fragments will not be moved.", name);
-    }
-
-    final Wrappers._T<List<SModelReference>> structureModels = new Wrappers._T<List<SModelReference>>();
-    project.getRepository().getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<List<SModelReference>>() {
-      public List<SModelReference> invoke() {
         Iterable<SModule> modules = project.getProjectModules();
         return structureModels.value = Sequence.fromIterable(modules).ofType(Language.class).select(new ISelector<Language, SModelReference>() {
           public SModelReference select(Language it) {
-            return check_xd29i2_a0a0a0a0a1a0l0f(it.getStructureModelDescriptor());
+            return check_xd29i2_a0a0a0a0a3a0i0f(SModuleOperations.getAspect(it, "structure"));
           }
-        }).where(new IWhereFilter<SModelReference>() {
-          public boolean accept(SModelReference it) {
-            return it != null;
-          }
-        }).toListSequence();
+        }).where(new NotNullWhereFilter<SModelReference>()).toListSequence();
       }
     }));
-    final SModelReference targetModelRef = CommonChoosers.showModelChooser(project, name, structureModels.value);
+    final SModelReference targetModelRef = new MoveConceptDialog(project, name, structureModels.value, hasGenerator.value, notDeployed.value).showAndGetSelected();
     if (targetModelRef == null) {
       return;
     }
@@ -113,7 +101,6 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
 
     MoveNodesUtil.moveTo(project, name, MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel.value), project)).withValues(nodesToMove));
   }
-
   private static String chooseName(final List<SNode> conceptsToMove, final List<SNode> datatypesToMove) {
     int size = ListSequence.fromList(conceptsToMove).count() + ListSequence.fromList(datatypesToMove).count();
     if (size > 1) {
@@ -136,7 +123,7 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
     return null;
   }
 
-  private static SModelReference check_xd29i2_a0a0a0a0a1a0l0f(SModel checkedDotOperand) {
+  private static SModelReference check_xd29i2_a0a0a0a0a3a0i0f(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getReference();
     }

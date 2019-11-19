@@ -41,8 +41,8 @@
     <classNode dependClassName="jetbrains.mps.ide.dialogs.project.creation.NewModelDialog" />
     <classNode dependClassName="jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings" />
     <classNode dependClassName="jetbrains.mps.ide.dialogs.project.creation.NewModelDialogSettings" />
+    <classNode dependClassName="jetbrains.mps.ide.refactoring.plugin.MoveModelDialog" />
     <classNode dependClassName="jetbrains.mps.ide.refactoring.plugin.UpdateDependentModelsRefactoringParticipant" />
-    <classNode dependClassName="jetbrains.mps.ide.ui.dialogs.properties.choosers.CommonChoosers" />
     <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.StereotypeProvider" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
@@ -65,6 +65,18 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
     <classNode extendsClassName="jetbrains.mps.ide.actions.ModelCreationActionsBaseExecutor" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.refactoring.plugin.MoveModelDialog">
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.workbench.choose.ChooseByNameData" />
+    <classNode dependClassName="jetbrains.mps.workbench.choose.ModulesPresentation" />
+    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModuleReference" />
+    <classNode extendsClassName="jetbrains.mps.ide.platform.refactoring.ChooserRefactoringDialog" />
   </dependency>
   <dependency className="jetbrains.mps.ide.refactoring.plugin.MoveModel_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />

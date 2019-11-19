@@ -200,6 +200,7 @@
       <concept id="6911370362349121511" name="jetbrains.mps.lang.smodel.structure.ConceptId" flags="nn" index="2x4n5u">
         <property id="6911370362349122519" name="conceptName" index="2x4mPI" />
         <property id="6911370362349121516" name="conceptId" index="2x4n5l" />
+        <property id="6911370362349133804" name="isInterface" index="2x4o5l" />
         <child id="6911370362349121514" name="languageIdentity" index="2x4n5j" />
       </concept>
       <concept id="8415841354032330471" name="jetbrains.mps.lang.smodel.structure.ContainmentLinkId" flags="ng" index="HUanS">
@@ -1266,6 +1267,150 @@
             <property role="2x4mPI" value="InferenceRule" />
             <property role="2x4n5l" value="ezmg6cxm" />
             <node concept="2V$Bhx" id="nrLqCrA3sX" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="Z5qvL" id="3qzTJpCN_Du">
+    <property role="Z5qvQ" value="4" />
+    <property role="TrG5h" value="Migrate_MoveLinkUp_4" />
+    <node concept="Z4OXk" id="3qzTJpCN_NZ" role="Z5rET">
+      <node concept="Z4PCV" id="3qzTJpCNCJp" role="Z5P1v">
+        <ref role="Z4Ptq" to="tpd4:hQOEWAg" resolve="messageTarget_old" />
+      </node>
+      <node concept="Z4PCV" id="3qzTJpCNCJh" role="Z5P1t">
+        <ref role="Z4Ptq" to="tpd4:3qzTJpCN_NN" resolve="messageTarget" />
+      </node>
+      <node concept="7a1rN" id="3qzTJpCN_NW" role="7agGg">
+        <node concept="HUanS" id="3qzTJpCN_NQ" role="HTpAE">
+          <property role="HUanP" value="messageTarget_old" />
+          <property role="HUanQ" value="fnpxrus0" />
+          <node concept="2x4n5u" id="3qzTJpCN_NR" role="HUanR">
+            <property role="2x4mPI" value="MessageStatement" />
+            <property role="2x4o5l" value="true" />
+            <property role="2x4n5l" value="fnpxqj2a" />
+            <node concept="2V$Bhx" id="3qzTJpCN_NS" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+        <node concept="HUanS" id="3qzTJpCN_NT" role="HTpAD">
+          <property role="HUanP" value="messageTarget" />
+          <property role="HUanQ" value="twvoo84srnqr" />
+          <node concept="2x4n5u" id="3qzTJpCN_NU" role="HUanR">
+            <property role="2x4mPI" value="AbstractReportStatement" />
+            <property role="2x4n5l" value="twvoo84srn89" />
+            <node concept="2V$Bhx" id="3qzTJpCN_NV" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="Z4OXk" id="3qzTJpCN_DD" role="Z5rET">
+      <node concept="Z4PCV" id="3qzTJpCNCJ9" role="Z5P1v">
+        <ref role="Z4Ptq" to="tpd4:hQOEOnA" resolve="nodeToReport_old" />
+      </node>
+      <node concept="Z4PCV" id="3qzTJpCNCJf" role="Z5P1t">
+        <ref role="Z4Ptq" to="tpd4:3qzTJpCN_Dt" resolve="nodeToReport" />
+      </node>
+      <node concept="7a1rN" id="3qzTJpCN_DA" role="7agGg">
+        <node concept="HUanS" id="3qzTJpCN_Dw" role="HTpAE">
+          <property role="HUanP" value="nodeToReport_old" />
+          <property role="HUanQ" value="fnpxr4rq" />
+          <node concept="2x4n5u" id="3qzTJpCN_Dx" role="HUanR">
+            <property role="2x4mPI" value="MessageStatement" />
+            <property role="2x4o5l" value="true" />
+            <property role="2x4n5l" value="fnpxqj2a" />
+            <node concept="2V$Bhx" id="3qzTJpCN_Dy" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+        <node concept="HUanS" id="3qzTJpCN_Dz" role="HTpAD">
+          <property role="HUanP" value="nodeToReport" />
+          <property role="HUanQ" value="twvoo84srn8d" />
+          <node concept="2x4n5u" id="3qzTJpCN_D$" role="HUanR">
+            <property role="2x4mPI" value="AbstractReportStatement" />
+            <property role="2x4n5l" value="twvoo84srn89" />
+            <node concept="2V$Bhx" id="3qzTJpCN_D_" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="Z4OXk" id="3qzTJpCN_Kx" role="Z5rET">
+      <node concept="Z4PCV" id="3qzTJpCNCJb" role="Z5P1v">
+        <ref role="Z4Ptq" to="tpd4:hQOEOnB" resolve="helginsIntention_old" />
+      </node>
+      <node concept="Z4PCV" id="3qzTJpCNCJj" role="Z5P1t">
+        <ref role="Z4Ptq" to="tpd4:3qzTJpCN_Kl" resolve="helginsIntention" />
+      </node>
+      <node concept="7a1rN" id="3qzTJpCN_Ku" role="7agGg">
+        <node concept="HUanS" id="3qzTJpCN_Ko" role="HTpAE">
+          <property role="HUanP" value="helginsIntention_old" />
+          <property role="HUanQ" value="fnpxr4rr" />
+          <node concept="2x4n5u" id="3qzTJpCN_Kp" role="HUanR">
+            <property role="2x4mPI" value="MessageStatement" />
+            <property role="2x4o5l" value="true" />
+            <property role="2x4n5l" value="fnpxqj2a" />
+            <node concept="2V$Bhx" id="3qzTJpCN_Kq" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+        <node concept="HUanS" id="3qzTJpCN_Kr" role="HTpAD">
+          <property role="HUanP" value="helginsIntention" />
+          <property role="HUanQ" value="twvoo84srnkl" />
+          <node concept="2x4n5u" id="3qzTJpCN_Ks" role="HUanR">
+            <property role="2x4mPI" value="AbstractReportStatement" />
+            <property role="2x4n5l" value="twvoo84srn89" />
+            <node concept="2V$Bhx" id="3qzTJpCN_Kt" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="Z4OXk" id="3qzTJpCN_Ru" role="Z5rET">
+      <node concept="Z4PCV" id="3qzTJpCNCJd" role="Z5P1v">
+        <ref role="Z4Ptq" to="tpd4:3uxqRt4KI1x" resolve="foreignMessageSource_old" />
+      </node>
+      <node concept="Z4PCV" id="3qzTJpCNCJl" role="Z5P1t">
+        <ref role="Z4Ptq" to="tpd4:3qzTJpCN_Ri" resolve="foreignMessageSource" />
+      </node>
+      <node concept="7a1rN" id="3qzTJpCN_Rr" role="7agGg">
+        <node concept="HUanS" id="3qzTJpCN_Rl" role="HTpAE">
+          <property role="HUanP" value="foreignMessageSource_old" />
+          <property role="HUanQ" value="ugeb9yzbo3tt" />
+          <node concept="2x4n5u" id="3qzTJpCN_Rm" role="HUanR">
+            <property role="2x4mPI" value="MessageStatement" />
+            <property role="2x4o5l" value="true" />
+            <property role="2x4n5l" value="fnpxqj2a" />
+            <node concept="2V$Bhx" id="3qzTJpCN_Rn" role="2x4n5j">
+              <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
+              <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
+            </node>
+          </node>
+        </node>
+        <node concept="HUanS" id="3qzTJpCN_Ro" role="HTpAD">
+          <property role="HUanP" value="foreignMessageSource" />
+          <property role="HUanQ" value="twvoo84srnwy" />
+          <node concept="2x4n5u" id="3qzTJpCN_Rp" role="HUanR">
+            <property role="2x4mPI" value="AbstractReportStatement" />
+            <property role="2x4n5l" value="twvoo84srn89" />
+            <node concept="2V$Bhx" id="3qzTJpCN_Rq" role="2x4n5j">
               <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />
               <property role="2V$B1Q" value="jetbrains.mps.lang.typesystem" />
             </node>

@@ -47,7 +47,7 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
     return implementationNode;
   }
 
-  private SNodePointer implementationNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)", "8417162567090278052");
+  private SNodePointer implementationNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)", "6019047980178870899");
 
 
   private boolean isApplicableHelper(SNode node, EditorContext editorContext) {
@@ -56,7 +56,11 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
 
 
   public boolean isAvailableInChild(SNode node, SNode node1, EditorContext context) {
-    return true;
+    if (isApplicable(node, null)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public boolean isApplicable(SNode node, EditorContext editorContext) {

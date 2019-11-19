@@ -56,6 +56,8 @@
     <import index="5rc7" ref="r:2f48a1e0-29c6-465b-b158-4cba88c0e4a6(jetbrains.mps.testbench.suite.behavior)" />
     <import index="xydq" ref="r:3574087b-0c7b-4264-955a-ea1a8cd2504b(jetbrains.mps.testbench.testcollector)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
+    <import index="9xw8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:io.netty.handler.codec.http(MPS.IDEA/)" />
+    <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
@@ -4905,6 +4907,52 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3cpWs8" id="5e7X3XD00W3" role="3cqZAp">
+                      <node concept="3cpWsn" id="5e7X3XD00W2" role="3cpWs9">
+                        <property role="TrG5h" value="encoder" />
+                        <node concept="3uibUv" id="5e7X3XD03xS" role="1tU5fm">
+                          <ref role="3uigEE" to="9xw8:~QueryStringEncoder" resolve="QueryStringEncoder" />
+                        </node>
+                        <node concept="2ShNRf" id="5e7X3XD03Nu" role="33vP2m">
+                          <node concept="1pGfFk" id="5e7X3XD03NG" role="2ShVmc">
+                            <ref role="37wK5l" to="9xw8:~QueryStringEncoder.&lt;init&gt;(java.lang.String)" resolve="QueryStringEncoder" />
+                            <node concept="Xl_RD" id="5e7X3XD03NH" role="37wK5m">
+                              <property role="Xl_RC" value="http://127.0.0.1:63320/node" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbF" id="5e7X3XD00W7" role="3cqZAp">
+                      <node concept="2OqwBi" id="5e7X3XD01Gu" role="3clFbG">
+                        <node concept="37vLTw" id="5e7X3XD01Gt" role="2Oq$k0">
+                          <ref role="3cqZAo" node="5e7X3XD00W2" resolve="encoder" />
+                        </node>
+                        <node concept="liA8E" id="5e7X3XD01Gv" role="2OqNvi">
+                          <ref role="37wK5l" to="9xw8:~QueryStringEncoder.addParam(java.lang.String,java.lang.String)" resolve="addParam" />
+                          <node concept="Xl_RD" id="5e7X3XD01Gw" role="37wK5m">
+                            <property role="Xl_RC" value="ref" />
+                          </node>
+                          <node concept="2OqwBi" id="5e7X3XD01Gx" role="37wK5m">
+                            <node concept="liA8E" id="5e7X3XD01Gz" role="2OqNvi">
+                              <ref role="37wK5l" to="dush:~PersistenceFacade.asString(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="asString" />
+                              <node concept="2OqwBi" id="5e7X3XD01G$" role="37wK5m">
+                                <node concept="37vLTw" id="5e7X3XD01G_" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="u6B29mDYy9" resolve="node" />
+                                </node>
+                                <node concept="liA8E" id="5e7X3XD01GA" role="2OqNvi">
+                                  <ref role="37wK5l" to="mhbf:~SNode.getReference()" resolve="getReference" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="2YIFZM" id="5e7X3XD04Zd" role="2Oq$k0">
+                              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
+                              <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3clFbF" id="2$EeqAz24$I" role="3cqZAp">
                       <node concept="2OqwBi" id="2$EeqAz24$J" role="3clFbG">
                         <node concept="37vLTw" id="2$EeqAz24$K" role="2Oq$k0">
@@ -4971,8 +5019,13 @@
                                 <property role="Xl_RC" value=" node: " />
                               </node>
                             </node>
-                            <node concept="37vLTw" id="u6B29mEcpz" role="3uHU7w">
-                              <ref role="3cqZAo" node="u6B29mDYy9" resolve="node" />
+                            <node concept="2OqwBi" id="5e7X3XD080V" role="3uHU7w">
+                              <node concept="37vLTw" id="5e7X3XD07Et" role="2Oq$k0">
+                                <ref role="3cqZAo" node="5e7X3XD00W2" resolve="encoder" />
+                              </node>
+                              <node concept="liA8E" id="5e7X3XD08oo" role="2OqNvi">
+                                <ref role="37wK5l" to="9xw8:~QueryStringEncoder.toString()" resolve="toString" />
+                              </node>
                             </node>
                           </node>
                         </node>

@@ -187,6 +187,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.FoundErrorOperation:
         if (props_FoundErrorOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("textgen error");
           cpb.rawPresentation("found error");
           props_FoundErrorOperation = cpb.create();
         }

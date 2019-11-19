@@ -11,6 +11,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.smodel.Language;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -18,6 +19,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -28,8 +30,9 @@ public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<SLanguage> getLanguage_id34EJa6aIcyj = new SMethodBuilder<SLanguage>(new SJavaCompoundTypeImpl(SLanguage.class)).name("getLanguage").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("34EJa6aIcyj").build();
   public static final SMethod<Void> setLanguage_id34EJa6aIcyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("34EJa6aIcyw").build(SMethodBuilder.createJavaParameter(SLanguage.class, ""));
+  public static final SMethod<Void> setLanguage_id5e7X3XCKW4J = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5e7X3XCKW4J").build(SMethodBuilder.createJavaParameter(Language.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw, setLanguage_id5e7X3XCKW4J);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -40,6 +43,10 @@ public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static void setLanguage_id34EJa6aIcyw(@NotNull SNode __thisNode__, SLanguage language) {
     SPropertyOperations.assign(__thisNode__, PROPS.languageId$OX7u, MetaIdHelper.getLanguage(language).serialize());
     SPropertyOperations.assign(__thisNode__, PROPS.namespace$OX6Z, language.getQualifiedName());
+  }
+  /*package*/ static void setLanguage_id5e7X3XCKW4J(@NotNull SNode __thisNode__, Language language) {
+    SPropertyOperations.assign(__thisNode__, PROPS.languageId$OX7u, MetaIdByDeclaration.getLanguageId(language).serialize());
+    SPropertyOperations.assign(__thisNode__, PROPS.namespace$OX6Z, language.getModuleName());
   }
 
   /*package*/ LanguageId__BehaviorDescriptor() {
@@ -61,6 +68,9 @@ public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((SLanguage) getLanguage_id34EJa6aIcyj(node));
       case 1:
         setLanguage_id34EJa6aIcyw(node, (SLanguage) parameters[0]);
+        return null;
+      case 2:
+        setLanguage_id5e7X3XCKW4J(node, (Language) parameters[0]);
         return null;
       default:
         throw new BHMethodNotFoundException(this, method);

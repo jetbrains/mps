@@ -1212,6 +1212,9 @@
       <property role="IQ2nx" value="2791683072064593257" />
       <property role="TrG5h" value="packageName" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="6jrMpxM_Mz0" role="lGtFl">
+        <property role="t5JxN" value="makes sense only for root nodes" />
+      </node>
     </node>
     <node concept="1TJgyi" id="hNAfOGV" role="1TKVEl">
       <property role="TrG5h" value="isDeprecated" />

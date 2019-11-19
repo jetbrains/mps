@@ -12,15 +12,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.project.Project;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.refactoring.participant.RefactoringUI;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -35,6 +34,9 @@ import jetbrains.mps.refactoring.participant.NodeCopyTracker;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)/4661652150171662291", model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
 public class MoveNodesUtil {
@@ -61,16 +63,6 @@ public class MoveNodesUtil {
     return result.value;
   }
 
-  @NotNull
-  public static SNode resolveNode(SNodeReference nodeReference, Project project) {
-    // todo: unused method 
-    SNode node = nodeReference.resolve(project.getRepository());
-    if (node == null) {
-      throw new IllegalArgumentException("Node " + nodeReference + " doesn't exist in current project.");
-    }
-    return node;
-  }
-
   public static class ListIndex<T> {
     private Map<T, Integer> myIndices = MapSequence.fromMap(new HashMap<T, Integer>());
     public ListIndex(List<T> patternList) {
@@ -87,7 +79,7 @@ public class MoveNodesUtil {
   }
 
   public static void moveTo(final MPSProject project, final String refactoringName, final Map<NodeProcessor, List<SNode>> processorToMoveRoots) {
-    moveTo(project, refactoringName, processorToMoveRoots, new DefaultRefactoringUI(project));
+    moveTo(project, refactoringName, processorToMoveRoots, new DefaultRefactoringUI(project, refactoringName));
   }
 
   public static void moveTo(final Project project, final String refactoringName, final Map<NodeProcessor, List<SNode>> processorToMoveRoots, RefactoringUI refactoringUI) {
@@ -226,10 +218,14 @@ public class MoveNodesUtil {
       NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
       copyMap.copyAndTrack(nodeRoots);
       for (SNode oldNode : ListSequence.fromList(nodeRoots)) {
+        SNode newNode = MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode);
+        if (myNodeLocation.isRoot()) {
+          SPropertyOperations.assign(newNode, PROPS.virtualPackage$j19t, SPropertyOperations.getString(SNodeOperations.getContainingRoot(oldNode), PROPS.virtualPackage$j19t));
+        }
         if (MapSequence.fromMap(ifKeepOldNodes).get(oldNode) == RefactoringParticipant.KeepOldNodes.REMOVE) {
           SNodeOperations.deleteNode(oldNode);
         }
-        myNodeLocation.insertNode(myProject.getRepository(), MapSequence.fromMap(copyMap.getCopyMap()).get(oldNode));
+        myNodeLocation.insertNode(myProject.getRepository(), newNode);
       }
     }
   }
@@ -269,4 +265,7 @@ public class MoveNodesUtil {
   }
 
 
+  private static final class PROPS {
+    /*package*/ static final SProperty virtualPackage$j19t = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+  }
 }

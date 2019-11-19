@@ -137,6 +137,9 @@
       <property role="TrG5h" value="virtualPackage" />
       <property role="IQ2nx" value="1193676396447" />
       <ref role="AX2Wp" node="fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="4Hos4IotMaX" role="lGtFl">
+        <property role="t5JxN" value="makes sense only for root nodes" />
+      </node>
     </node>
   </node>
   <node concept="PlHQZ" id="h0TrEE$">

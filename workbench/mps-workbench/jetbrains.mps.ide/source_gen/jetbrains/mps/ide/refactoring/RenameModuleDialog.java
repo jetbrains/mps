@@ -20,6 +20,7 @@ import jetbrains.mps.project.DescriptorTargetFileAlreadyExistsException;
 import org.apache.log4j.Level;
 import javax.swing.JComponent;
 import com.intellij.ui.components.JBPanel;
+import java.awt.FlowLayout;
 import java.util.Collections;
 import javax.swing.JLabel;
 import com.intellij.ui.components.JBLabel;
@@ -86,7 +87,7 @@ public class RenameModuleDialog extends RenameDialog {
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    myOptionsPanel = new JBPanel();
+    myOptionsPanel = new JBPanel(new FlowLayout(FlowLayout.LEFT));
     return myOptionsPanel;
   }
 

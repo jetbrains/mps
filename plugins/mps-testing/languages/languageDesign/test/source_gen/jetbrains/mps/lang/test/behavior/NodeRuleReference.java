@@ -7,7 +7,6 @@ import jetbrains.mps.lang.typesystem.typesystem.RulesUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class NodeRuleReference {
   private SNode ruleNode;
@@ -37,7 +36,7 @@ public class NodeRuleReference {
   }
 
   public boolean isReportStatement() {
-    return SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.MessageStatement$Ql);
+    return SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.AbstractReportStatement$Qn);
   }
 
   private boolean isMessageStatement() {
@@ -46,6 +45,6 @@ public class NodeRuleReference {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptConstraints$St = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
-    /*package*/ static final SInterfaceConcept MessageStatement$Ql = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
+    /*package*/ static final SConcept AbstractReportStatement$Qn = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
   }
 }

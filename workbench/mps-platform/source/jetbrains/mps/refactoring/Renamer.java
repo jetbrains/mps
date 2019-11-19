@@ -209,7 +209,7 @@ public final class Renamer {
       builder.append("</li>");
     }
     builder.append("</ul>");
-    return "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</html></p>";
+    return "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</p></html>";
   }
 
   public static void renameModel(@NotNull EditableSModel model, String newName) {

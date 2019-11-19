@@ -106,7 +106,7 @@ public class RefactoringProcessor {
   public static <IP, FP> void performRefactoringInProject(Project project, RefactoringUI refactoringUI, final RefactoringBody<IP, FP> refactoringBody) {
     final RefactoringSessionImpl refactoringSession = new RefactoringSessionImpl(refactoringBody.getRefactoringName());
     final List<IP> initialStates = refactoringBody.findInitialStates();
-    performRefactoring(new RefactoringParticipant.CollectingParticipantStateFactory<IP, FP>(), refactoringUI, refactoringSession, project.getRepository(), project.getScope(), refactoringBody.getRefactoringName(), refactoringBody.getAllAvailableParticipants(), initialStates, new _FunctionTypes._void_P0_E0() {
+    performRefactoring(new RefactoringParticipant.CollectingParticipantStateFactory<IP, FP>(), refactoringUI, refactoringSession, project.getRepository(), project.getScope(), refactoringBody.getAllAvailableParticipants(), initialStates, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
         refactoringBody.prepareRefactoring();
       }
@@ -170,7 +170,7 @@ public class RefactoringProcessor {
    * Update usages during refactoring.
    * For calling from both 'during refactoring' and migration context.
    */
-  public static <IP, FP, IS, FS> void performRefactoring(final RefactoringParticipant.ParticipantStateFactory<IP, FP, IS, FS> factory, RefactoringUI refactoringUI, final RefactoringSession refactoringSession, final SRepository repository, SearchScope scope, String refactoringName, Iterable<? extends RefactoringParticipant<?, ?, IP, FP>> participants, final List<IS> initialStates, final _FunctionTypes._void_P0_E0 prepareRefactoring, final _FunctionTypes._return_P1_E0<? extends Map<IS, FS>, ? super Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, IS, FS>>> doRefactor, @Nullable final _FunctionTypes._void_P0_E0 doCleanup) {
+  public static <IP, FP, IS, FS> void performRefactoring(final RefactoringParticipant.ParticipantStateFactory<IP, FP, IS, FS> factory, RefactoringUI refactoringUI, final RefactoringSession refactoringSession, final SRepository repository, SearchScope scope, Iterable<? extends RefactoringParticipant<?, ?, IP, FP>> participants, final List<IS> initialStates, final _FunctionTypes._void_P0_E0 prepareRefactoring, final _FunctionTypes._return_P1_E0<? extends Map<IS, FS>, ? super Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, IS, FS>>> doRefactor, @Nullable final _FunctionTypes._void_P0_E0 doCleanup) {
 
 
     final Tuples._2<List<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, IS, FS>>, SearchTask> participantChanges = askParticipantChanges(factory, refactoringUI, repository, scope, participants, initialStates);
@@ -211,7 +211,7 @@ public class RefactoringProcessor {
           }
         });
       }
-    }, refactoringName, searchResults.value, participantChanges._1(), refactoringSession);
+    }, searchResults.value, participantChanges._1(), refactoringSession);
   }
 
 }

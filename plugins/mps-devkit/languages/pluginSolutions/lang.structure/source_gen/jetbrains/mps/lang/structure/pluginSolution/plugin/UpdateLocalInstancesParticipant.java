@@ -69,7 +69,7 @@ public class UpdateLocalInstancesParticipant<I, F> extends RefactoringParticipan
   }
 
   public MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> getDataCollector() {
-    return myStructureSpecialization;
+    return myStructureSpecialization.getLocalInstancesDataCollector();
   }
 
   public List<RefactoringParticipant.Option> getAvailableOptions(Tuples._2<I, SNodeReference> initialState, SRepository repository) {

@@ -18,13 +18,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_MessageStatement_QuickFix_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_MessageStatement_QuickFix_NonTypesystemRule() {
   }
-  public void applyRule(final SNode messageStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> intentions = SLinkOperations.getChildren(messageStatement, LINKS.helginsIntention$f1IL);
+  public void applyRule(final SNode abstractReportStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    List<SNode> intentions = SLinkOperations.getChildren(abstractReportStatement, LINKS.helginsIntention$u2WC);
     if (ListSequence.fromList(intentions).count() > 1) {
       for (SNode intention : intentions) {
         if (SPropertyOperations.getBoolean(intention, PROPS.applyImmediately$fto8)) {
@@ -37,7 +37,7 @@ public class check_MessageStatement_QuickFix_NonTypesystemRule extends AbstractN
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MessageStatement$Ql;
+    return CONCEPTS.AbstractReportStatement$Qn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,7 +47,7 @@ public class check_MessageStatement_QuickFix_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helginsIntention$f1IL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention");
+    /*package*/ static final SContainmentLink helginsIntention$u2WC = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
   }
 
   private static final class PROPS {
@@ -55,6 +55,6 @@ public class check_MessageStatement_QuickFix_NonTypesystemRule extends AbstractN
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept MessageStatement$Ql = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
+    /*package*/ static final SConcept AbstractReportStatement$Qn = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
   }
 }
