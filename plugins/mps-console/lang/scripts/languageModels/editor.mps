@@ -10,6 +10,7 @@
     <import index="z2sp" ref="r:e712f353-5c3c-4288-adce-87c956a52ffb(jetbrains.mps.console.scripts.structure)" />
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="tpen" ref="r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)" />
+    <import index="tp2q" ref="r:00000000-0000-4000-0000-011c8959032e(jetbrains.mps.baseLanguage.collections.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
@@ -121,6 +122,14 @@
         <child id="1176543950311" name="supertypeExpression" index="3JuZjQ" />
       </concept>
       <concept id="1176544042499" name="jetbrains.mps.lang.typesystem.structure.Node_TypeOperation" flags="nn" index="3JvlWi" />
+      <concept id="1178870617262" name="jetbrains.mps.lang.typesystem.structure.CoerceExpression" flags="nn" index="1UaxmW">
+        <child id="1178870894644" name="pattern" index="1Ub_4A" />
+        <child id="1178870894645" name="nodeToCoerce" index="1Ub_4B" />
+      </concept>
+      <concept id="1178871491133" name="jetbrains.mps.lang.typesystem.structure.CoerceStrongExpression" flags="nn" index="1UdQGJ" />
+      <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
+        <reference id="1174642800329" name="concept" index="1YaFvo" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -134,7 +143,9 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
-      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
+      <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
+        <reference id="1138405853777" name="concept" index="ehGHo" />
+      </concept>
       <concept id="1138056143562" name="jetbrains.mps.lang.smodel.structure.SLinkAccess" flags="nn" index="3TrEf2">
         <reference id="1138056516764" name="link" index="3Tt5mk" />
       </concept>
@@ -142,11 +153,6 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-    </language>
-    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
-        <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
     </language>
   </registry>
@@ -236,6 +242,26 @@
                   </node>
                 </node>
               </node>
+              <node concept="3cpWs8" id="2FXdWdhGLCI" role="3cqZAp">
+                <node concept="3cpWsn" id="2FXdWdhGLCJ" role="3cpWs9">
+                  <property role="TrG5h" value="sequenceType" />
+                  <node concept="3Tqbb2" id="2FXdWdhGLtk" role="1tU5fm">
+                    <ref role="ehGHo" to="tp2q:gKA3Dh4" resolve="SequenceType" />
+                  </node>
+                  <node concept="1UdQGJ" id="2FXdWdhGLCK" role="33vP2m">
+                    <node concept="1YaCAy" id="2FXdWdhGLCL" role="1Ub_4A">
+                      <property role="TrG5h" value="sequenceType" />
+                      <ref role="1YaFvo" to="tp2q:gKA3Dh4" resolve="SequenceType" />
+                    </node>
+                    <node concept="2OqwBi" id="2FXdWdhGLCM" role="1Ub_4B">
+                      <node concept="37vLTw" id="2FXdWdhGLCN" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1EV$wAslt9O" resolve="operand" />
+                      </node>
+                      <node concept="3JvlWi" id="2FXdWdhGLCO" role="2OqNvi" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbJ" id="1EV$wAslvys" role="3cqZAp">
                 <node concept="3clFbS" id="1EV$wAslvyv" role="3clFbx">
                   <node concept="3cpWs6" id="1EV$wAslAvO" role="3cqZAp">
@@ -246,15 +272,15 @@
                 </node>
                 <node concept="3JuTUA" id="1EV$wAsl_aG" role="3clFbw">
                   <node concept="2c44tf" id="1EV$wAsl_FQ" role="3JuZjQ">
-                    <node concept="A3Dl8" id="1EV$wAsl_WS" role="2c44tc">
-                      <node concept="3Tqbb2" id="1EV$wAslAen" role="A3Ik2" />
-                    </node>
+                    <node concept="3Tqbb2" id="1EV$wAslAen" role="2c44tc" />
                   </node>
-                  <node concept="2OqwBi" id="1EV$wAslw8b" role="3JuY14">
-                    <node concept="37vLTw" id="1EV$wAslvMP" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1EV$wAslt9O" resolve="operand" />
+                  <node concept="2OqwBi" id="2FXdWdhGM5R" role="3JuY14">
+                    <node concept="37vLTw" id="2FXdWdhGLQ9" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2FXdWdhGLCJ" resolve="sequenceType" />
                     </node>
-                    <node concept="3JvlWi" id="1EV$wAsl$DK" role="2OqNvi" />
+                    <node concept="3TrEf2" id="2FXdWdhGMlD" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tp2q:gKA3Ige" resolve="elementType" />
+                    </node>
                   </node>
                 </node>
               </node>

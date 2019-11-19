@@ -193,7 +193,7 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
   }
 
   public List<SNodeReference> getIncludedResultNodes() {
-    final Stream<NodeNodeData> nodes = myTree.streamResults(NodeNodeData.class, validAndIncluded());
+    final Stream<NodeNodeData> nodes = myTree.streamResults(NodeNodeData.class, validAndIncluded().and(BaseNodeData::isResultNode));
     return nodes.map(NodeNodeData::getNodePointer).collect(Collectors.toList());
   }
 
