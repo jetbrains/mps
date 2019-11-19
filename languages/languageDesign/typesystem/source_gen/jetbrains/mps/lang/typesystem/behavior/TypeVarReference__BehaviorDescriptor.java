@@ -46,7 +46,7 @@ public final class TypeVarReference__BehaviorDescriptor extends BaseBHDescriptor
     Collection<RuleIdFlavouredItem.TypesystemRuleId> rules = RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(reportItem);
     List<SNodeReference> suppressesRules = ListSequence.fromList(new ArrayList<SNodeReference>());
     ListSequence.fromList(suppressesRules).addElement(new SNodePointer("r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "6019047980178724615"));
-    ListSequence.fromList(suppressesRules).addElement(new SNodePointer("r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "1196863846268"));
+    ListSequence.fromList(suppressesRules).addElement(new SNodePointer("r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)", "4649457259827193981"));
     return CollectionSequence.fromCollection(rules).intersect(ListSequence.fromList(suppressesRules).select(new ISelector<SNodeReference, RuleIdFlavouredItem.TypesystemRuleId>() {
       public RuleIdFlavouredItem.TypesystemRuleId select(SNodeReference it) {
         return new RuleIdFlavouredItem.TypesystemRuleId(it);

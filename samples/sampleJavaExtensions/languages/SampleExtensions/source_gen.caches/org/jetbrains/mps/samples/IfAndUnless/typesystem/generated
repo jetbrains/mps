@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5nzns7wz5x5tzgiyfku05x5wp960kig">
+<product version="3" modelHash="a3kvetz6t0gr5n93kaoo7sndbks7tne">
   <files names="Remove_empty_unless_block_QuickFix.java:TypesystemDescriptor.java:check_UnlessStatement_NonTypesystemRule.java:typeof_MyIfStatement_InferenceRule.java:typeof_UnlessStatement_InferenceRule.java" />
 </product>
 

@@ -548,7 +548,7 @@
       <node id="4649457259826235262" at="45,5,46,123" concept="8" />
       <node id="4649457259826210365" at="46,123,47,98" concept="8" />
       <node id="4649457259826185726" at="47,98,48,178" concept="3" />
-      <node id="4649457259827149426" at="48,178,49,172" concept="3" />
+      <node id="4649457259827149426" at="48,178,49,178" concept="3" />
       <node id="4649457259827152154" at="51,77,52,60" concept="9" />
       <node id="1213877483508" at="61,114,62,21" concept="3" />
       <node id="1213877483508" at="66,114,67,49" concept="8" />
@@ -568,7 +568,7 @@
       <node id="1213877483508" at="81,49,84,5" concept="6" />
       <node id="1213877483508" at="60,0,64,0" concept="7" trace="initNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SConstructor;[Ljava/lang/Object;)V" />
       <node id="1213877483508" at="84,5,88,5" concept="12" />
-      <node id="4649457259827152144" at="49,172,54,21" concept="9" />
+      <node id="4649457259827152144" at="49,178,54,21" concept="9" />
       <node id="1213877483508" at="91,0,96,0" concept="7" trace="getDeclaredMethods#()Ljava/util/List;" />
       <node id="1213877483508" at="97,0,102,0" concept="7" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1213877483508" at="70,5,76,5" concept="12" />
