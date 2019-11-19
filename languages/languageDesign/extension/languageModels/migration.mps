@@ -247,6 +247,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="90746344-04fd-4286-97d5-b46ae6a81709" name="jetbrains.mps.lang.migration">
       <concept id="3116305438947623353" name="jetbrains.mps.lang.migration.structure.MoveProperty" flags="ng" index="7a1rK" />
@@ -488,6 +492,10 @@
         </node>
         <node concept="3clFbH" id="6oJSkzEc3G$" role="3cqZAp" />
         <node concept="3SqFnK" id="6oJSkzEa5NI" role="3cqZAp">
+          <node concept="15s5l7" id="2FXdWdhFJgX" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;ExtensionFieldDeclaration&gt; is not a subtype of node&lt;VariableDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+            <property role="huDt6" value="Error: type node&lt;ExtensionFieldDeclaration&gt; is not a subtype of node&lt;VariableDeclaration&gt;" />
+          </node>
           <node concept="2DMOqp" id="6oJSkzEa5NK" role="3SqFnn">
             <node concept="2c44tf" id="1o1nOn5ur4K" role="HM535">
               <node concept="20Xmnt" id="6oJSkzEa5QM" role="2c44tc">

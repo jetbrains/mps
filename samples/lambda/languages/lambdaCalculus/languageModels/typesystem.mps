@@ -191,6 +191,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
@@ -386,6 +390,10 @@
             </node>
           </node>
           <node concept="3clFbF" id="64smzoiSaCY" role="3cqZAp">
+            <node concept="15s5l7" id="2FXdWdhFVJv" role="lGtFl">
+              <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;LambdaType&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/6019047980178724615]&quot;;" />
+              <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;LambdaType&gt;" />
+            </node>
             <node concept="37vLTI" id="64smzoiSaCZ" role="3clFbG">
               <node concept="37vLTw" id="3GM_nagTwBV" role="37vLTJ">
                 <ref role="3cqZAo" node="yQfYEsMG5h" resolve="result" />
@@ -674,6 +682,10 @@
             </node>
           </node>
           <node concept="3clFbF" id="dHK7eIENHW" role="3cqZAp">
+            <node concept="15s5l7" id="2FXdWdhFVO5" role="lGtFl">
+              <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;LambdaType&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/6019047980178724615]&quot;;" />
+              <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;LambdaType&gt;" />
+            </node>
             <node concept="37vLTI" id="dHK7eIENHX" role="3clFbG">
               <node concept="37vLTw" id="3GM_nagTr$E" role="37vLTJ">
                 <ref role="3cqZAo" node="dHK7eIENHq" resolve="result" />
