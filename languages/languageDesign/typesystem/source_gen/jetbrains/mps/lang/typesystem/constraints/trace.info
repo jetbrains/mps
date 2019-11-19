@@ -959,7 +959,7 @@
       <node id="1227101201949" at="47,63,48,57" concept="9" />
       <node id="6836281137582807661" at="51,80,52,146" concept="8" />
       <node id="6836281137582807672" at="53,43,54,108" concept="9" />
-      <node id="6836281137582807679" at="55,13,56,145" concept="8" />
+      <node id="6836281137582807679" at="55,13,56,352" concept="8" />
       <node id="6836281137582807687" at="57,13,58,138" concept="8" />
       <node id="6836281137582807691" at="59,64,60,224" concept="9" />
       <node id="6836281137582807698" at="61,22,62,110" concept="9" />
@@ -971,15 +971,16 @@
       <node id="1227101197786" at="77,0,78,0" concept="11" trace="AbstractReportStatement$Qn" />
       <node id="1227101197786" at="78,0,79,0" concept="11" trace="SNodeType$gn" />
       <node id="1227101197786" at="82,0,83,0" concept="11" trace="linkDeclaration$s0AQ" />
-      <node id="1227101197786" at="83,0,84,0" concept="11" trace="nodeToReport$r7g8" />
-      <node id="1227101197786" at="84,0,85,0" concept="11" trace="concept$HWFQ" />
+      <node id="1227101197786" at="83,0,84,0" concept="11" trace="nodeToReport_old$f1Ii" />
+      <node id="1227101197786" at="84,0,85,0" concept="11" trace="nodeToReport$r7g8" />
+      <node id="1227101197786" at="85,0,86,0" concept="11" trace="concept$HWFQ" />
       <node id="6836281137582807687" at="61,20,63,15" concept="0" />
       <node id="1227101197786" at="31,0,34,0" concept="2" trace="ReferenceMessageTarget_Constraints#()V" />
       <node id="6836281137582807670" at="52,146,55,13" concept="6" />
       <node id="1227101201949" at="38,0,42,0" concept="7" trace="hasOwnScopeProvider#()Z" />
       <node id="1227101201949" at="46,0,50,0" concept="7" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="6836281137582807687" at="58,138,63,15" concept="6" />
-      <node id="6836281137582807687" at="56,145,64,13" concept="0" />
+      <node id="6836281137582807687" at="56,352,64,13" concept="0" />
       <node id="1227101201949" at="50,0,66,0" concept="7" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
       <node id="1227101201949" at="44,56,66,10" concept="9" />
       <node id="1227101201949" at="42,0,68,0" concept="7" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
@@ -1012,10 +1013,10 @@
       </scope>
       <scope id="1227101197786" at="35,0,73,0" />
       <unit id="1227101197786" at="75,0,80,0" name="jetbrains.mps.lang.typesystem.constraints.ReferenceMessageTarget_Constraints$CONCEPTS" />
-      <unit id="1227101197786" at="81,0,86,0" name="jetbrains.mps.lang.typesystem.constraints.ReferenceMessageTarget_Constraints$LINKS" />
+      <unit id="1227101197786" at="81,0,87,0" name="jetbrains.mps.lang.typesystem.constraints.ReferenceMessageTarget_Constraints$LINKS" />
       <unit id="1227101201949" at="45,19,66,9" name="jetbrains.mps.lang.typesystem.constraints.ReferenceMessageTarget_Constraints$1$1" />
       <unit id="1227101201949" at="37,48,68,5" name="jetbrains.mps.lang.typesystem.constraints.ReferenceMessageTarget_Constraints$1" />
-      <unit id="1227101197786" at="30,0,87,0" name="jetbrains.mps.lang.typesystem.constraints.ReferenceMessageTarget_Constraints" />
+      <unit id="1227101197786" at="30,0,88,0" name="jetbrains.mps.lang.typesystem.constraints.ReferenceMessageTarget_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)/1229172087075579624">

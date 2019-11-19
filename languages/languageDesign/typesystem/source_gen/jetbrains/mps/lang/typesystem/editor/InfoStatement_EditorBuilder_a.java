@@ -64,12 +64,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createConstant_1());
-    editorCell.addEditorCell(createRefNode_1());
+    if (nodeCondition_x0qgth_a3a()) {
+      editorCell.addEditorCell(createRefNode_1());
+    }
     if (nodeCondition_x0qgth_a4a()) {
       editorCell.addEditorCell(createRefNode_2());
     }
     editorCell.addEditorCell(createConstant_2());
     return editorCell;
+  }
+  private boolean nodeCondition_x0qgth_a3a() {
+    return SLinkOperations.getTarget(myNode, LINKS.nodeToReport$r7g8) != null || SLinkOperations.getTarget(myNode, LINKS.nodeToReport_old$f1Ii) == null;
   }
   private boolean nodeCondition_x0qgth_a4a() {
     return (SLinkOperations.getTarget(myNode, LINKS.nodeToReport_old$f1Ii) != null);
@@ -292,8 +297,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink nodeToReport_old$f1Ii = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e6L, "nodeToReport_old");
-    /*package*/ static final SContainmentLink infoText$9zy1 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11d2965916bL, 0x11d2966036aL, "infoText");
     /*package*/ static final SContainmentLink nodeToReport$r7g8 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
+    /*package*/ static final SContainmentLink infoText$9zy1 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11d2965916bL, 0x11d2966036aL, "infoText");
   }
 
   private static final class CONCEPTS {

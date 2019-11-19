@@ -18,8 +18,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
@@ -53,7 +53,7 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
             if (messageStatement == null) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
-            SNode nodetype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$r7g8));
+            SNode nodetype = (SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$f1Ii) != null ? TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport_old$f1Ii)) : TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(messageStatement, LINKS.nodeToReport$r7g8)));
             {
               SNode coercedNode_h95xiq_d0b0a0a0b0a0a0a2 = TypecheckingFacade.getFromContext().coerceType(nodetype, CONCEPTS.SNodeType$gn);
               if (coercedNode_h95xiq_d0b0a0a0b0a0a0a2 != null) {
@@ -80,6 +80,7 @@ public class ReferenceMessageTarget_Constraints extends BaseConstraintsDescripto
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink linkDeclaration$s0AQ = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a87c94L, 0x11db4a8e070L, "linkDeclaration");
+    /*package*/ static final SContainmentLink nodeToReport_old$f1Ii = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e6L, "nodeToReport_old");
     /*package*/ static final SContainmentLink nodeToReport$r7g8 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5a5dL, "nodeToReport");
     /*package*/ static final SReferenceLink concept$HWFQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }

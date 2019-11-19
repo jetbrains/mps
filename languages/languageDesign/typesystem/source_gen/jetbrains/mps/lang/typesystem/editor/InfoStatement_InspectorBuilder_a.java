@@ -55,29 +55,44 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createRefNode_0());
+    if (nodeCondition_x0qgth_a1a()) {
+      editorCell.addEditorCell(createRefNode_0());
+    }
     if (nodeCondition_x0qgth_a2a()) {
       editorCell.addEditorCell(createRefNode_1());
     }
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createConstant_2());
-    editorCell.addEditorCell(createRefNodeList_0());
+    if (nodeCondition_x0qgth_a5a()) {
+      editorCell.addEditorCell(createRefNodeList_0());
+    }
     if (nodeCondition_x0qgth_a6a()) {
       editorCell.addEditorCell(createRefNodeList_1());
     }
     editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createConstant_4());
-    editorCell.addEditorCell(createRefNode_2());
+    if (nodeCondition_x0qgth_a9a()) {
+      editorCell.addEditorCell(createRefNode_2());
+    }
     if (nodeCondition_x0qgth_a01a()) {
       editorCell.addEditorCell(createRefNode_3());
     }
     return editorCell;
   }
+  private boolean nodeCondition_x0qgth_a1a() {
+    return SLinkOperations.getTarget(myNode, LINKS.messageTarget$uhYA) != null || SLinkOperations.getTarget(myNode, LINKS.messageTarget_old$$qsg) == null;
+  }
   private boolean nodeCondition_x0qgth_a2a() {
     return (SLinkOperations.getTarget(myNode, LINKS.messageTarget_old$$qsg) != null);
   }
+  private boolean nodeCondition_x0qgth_a5a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.helginsIntention$u2WC)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.helginsIntention_old$f1IL)).isEmpty();
+  }
   private boolean nodeCondition_x0qgth_a6a() {
     return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.helginsIntention_old$f1IL)).isNotEmpty();
+  }
+  private boolean nodeCondition_x0qgth_a9a() {
+    return SLinkOperations.getTarget(myNode, LINKS.foreignMessageSource$ux13) != null || SLinkOperations.getTarget(myNode, LINKS.foreignMessageSource_old$hDjo) == null;
   }
   private boolean nodeCondition_x0qgth_a01a() {
     return (SLinkOperations.getTarget(myNode, LINKS.foreignMessageSource_old$hDjo) != null);
@@ -489,10 +504,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink messageTarget_old$$qsg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4abc990L, "messageTarget_old");
-    /*package*/ static final SContainmentLink helginsIntention_old$f1IL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention_old");
-    /*package*/ static final SContainmentLink foreignMessageSource_old$hDjo = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x37a16b7744c2e061L, "foreignMessageSource_old");
     /*package*/ static final SContainmentLink messageTarget$uhYA = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5cf3L, "messageTarget");
+    /*package*/ static final SContainmentLink helginsIntention_old$f1IL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x11db4ab45e7L, "helginsIntention_old");
     /*package*/ static final SContainmentLink helginsIntention$u2WC = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
+    /*package*/ static final SContainmentLink foreignMessageSource_old$hDjo = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, 0x37a16b7744c2e061L, "foreignMessageSource_old");
     /*package*/ static final SContainmentLink foreignMessageSource$ux13 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5dd2L, "foreignMessageSource");
   }
 
