@@ -32,7 +32,7 @@ public class TestCreateGreaterThanInequationStatement_Test extends BaseTransform
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4981802504972074647", "4981802504972074657");
+      initEditorComponent("3097693430729852811", "3097693430729852815");
       typeString("x:>=:");
 
     }

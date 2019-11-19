@@ -13,12 +13,12 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.typesystem.typesystem.RulesUtil;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class MessageStatement_Constraints extends BaseConstraintsDescriptor {
-  public MessageStatement_Constraints() {
-    super(CONCEPTS.MessageStatement$Ql);
+public class AbstractEquationStatement_Constraints extends BaseConstraintsDescriptor {
+  public AbstractEquationStatement_Constraints() {
+    super(CONCEPTS.AbstractEquationStatement$sp);
   }
 
   @Override
@@ -37,11 +37,11 @@ public class MessageStatement_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return RulesUtil.withinCheckingItem(parentNode);
+    return RulesUtil.withinInferenceItem(parentNode);
   }
-  private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "1227128029536563821");
+  private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "3097693430729551391");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept MessageStatement$Ql = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
+    /*package*/ static final SConcept AbstractEquationStatement$sp = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
   }
 }

@@ -2565,7 +2565,7 @@
   </node>
   <node concept="1M2fIO" id="N2YCLhcy4R">
     <property role="3GE5qa" value="definition.statement" />
-    <ref role="1M2myG" to="tpd4:hQOEHw2" resolve="MessageStatement" />
+    <ref role="1M2myG" to="tpd4:3qzTJpCN_Dp" resolve="AbstractReportStatement" />
     <node concept="9S07l" id="147CB3QsV9H" role="9Vyp8">
       <node concept="3clFbS" id="147CB3QsV9I" role="2VODD2">
         <node concept="3clFbF" id="147CB3QsV9J" role="3cqZAp">
@@ -3348,6 +3348,21 @@
       <ref role="1N5Vy1" to="tpd4:21kJG8H0nwJ" resolve="declaration" />
       <node concept="1dDu$B" id="21kJG8HhwTj" role="1N6uqs">
         <ref role="1dDu$A" to="tpd4:hp8kY3U" resolve="NonTypesystemRule" />
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="2FXdWdhGySu">
+    <property role="3GE5qa" value="definition.statement" />
+    <ref role="1M2myG" to="tpd4:h5Zf1ZU" resolve="AbstractEquationStatement" />
+    <node concept="9S07l" id="2FXdWdhGySv" role="9Vyp8">
+      <node concept="3clFbS" id="2FXdWdhGySw" role="2VODD2">
+        <node concept="3clFbF" id="2FXdWdhGySx" role="3cqZAp">
+          <node concept="2YIFZM" id="2FXdWdhGyXg" role="3clFbG">
+            <ref role="37wK5l" to="tpd9:hq1J4IC" resolve="withinInferenceItem" />
+            <ref role="1Pybhc" to="tpd9:hgVo$$B" resolve="RulesUtil" />
+            <node concept="nLn13" id="2FXdWdhGyXh" role="37wK5m" />
+          </node>
+        </node>
       </node>
     </node>
   </node>

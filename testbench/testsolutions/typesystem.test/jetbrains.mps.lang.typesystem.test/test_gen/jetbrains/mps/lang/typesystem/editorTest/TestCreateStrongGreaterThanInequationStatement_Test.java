@@ -32,7 +32,7 @@ public class TestCreateStrongGreaterThanInequationStatement_Test extends BaseTra
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4981802504972075224", "4981802504972075234");
+      initEditorComponent("3097693430729852827", "3097693430729852831");
       typeString("x:>>=:");
 
     }

@@ -32,7 +32,7 @@ public class TestCreateStrongLessThanInequationStatement_Test extends BaseTransf
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4981802504972075014", "4981802504972075024");
+      initEditorComponent("3097693430729852835", "3097693430729852839");
       typeString("x:<<=:");
 
     }

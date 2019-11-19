@@ -32,7 +32,7 @@ public class TestCreateComparableEquationStatement_Test extends BaseTransformati
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4981802504972003522", "4981802504972012155");
+      initEditorComponent("3097693430729852787", "3097693430729852791");
       typeString("x:~:");
     }
   }

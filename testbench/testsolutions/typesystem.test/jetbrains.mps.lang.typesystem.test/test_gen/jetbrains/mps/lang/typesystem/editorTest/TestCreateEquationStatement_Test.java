@@ -32,7 +32,7 @@ public class TestCreateEquationStatement_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4981802504972074173", "4981802504972074183");
+      initEditorComponent("3097693430729852803", "3097693430729852807");
       typeString("x:==:");
 
     }
