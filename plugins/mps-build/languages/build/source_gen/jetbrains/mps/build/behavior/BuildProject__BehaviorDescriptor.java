@@ -34,12 +34,12 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -156,17 +156,9 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Scope getScope_id52_Geb4QFgX(@NotNull SNode __thisNode__, SAbstractConcept kind, SContainmentLink role, int index) {
     return ((Scope) BuildProject__BehaviorDescriptor.getScope_id13YBgBBRT49.invoke(__thisNode__, kind, role));
   }
-  /*package*/ static Iterable<SNode> getVisibleProjects_id13YBgBBRSOL(@NotNull final SNode __thisNode__, boolean directDependenciesOnly) {
+  /*package*/ static Iterable<SNode> getVisibleProjects_id13YBgBBRSOL(@NotNull SNode __thisNode__, boolean directDependenciesOnly) {
     if (directDependenciesOnly) {
-      return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$tpR5)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildProjectDependency$Ug) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x) != __thisNode__;
-        }
-      }).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x);
-        }
-      });
+      return SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x);
     } else {
       LinkedHashSet<SNode> result = new LinkedHashSet<SNode>();
       BuildProject__BehaviorDescriptor.collectVisibleProjects_id13YBgBBRSXj.invoke(__thisNode__, result, __thisNode__);
@@ -223,13 +215,9 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
 
     List<Scope> scopes = ListSequence.fromList(new ArrayList<Scope>());
     ListSequence.fromList(scopes).addElement(rootScope);
-    ListSequence.fromList(scopes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$tpR5)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildProjectDependency$Ug);
-      }
-    }).select(new ISelector<SNode, Scope>() {
+    ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x)).select(new ISelector<SNode, Scope>() {
       public Scope select(SNode it) {
-        return (Scope) BuildProject__BehaviorDescriptor.getBuildMacroScope_id3h9a8EwPwcy.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.BuildProjectDependency$Ug), LINKS.script$mz1x), child, visited);
+        return (Scope) BuildProject__BehaviorDescriptor.getBuildMacroScope_id3h9a8EwPwcy.invoke(it, child, visited);
       }
     }));
     ListSequence.fromList(scopes).addSequence(Sequence.fromIterable(ScopeUtil.imported(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$tpR5)).where(new IWhereFilter<SNode>() {
