@@ -63,10 +63,10 @@
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
         <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
         <module reference="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" version="0" />
-        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" version="0" />
         <module reference="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" version="0" />
         <module reference="db2a46c2-ebec-4b6c-b6c2-f9b55b9b6f8a(jetbrains.mps.lang.feedback.problem.failingRule)" version="0" />
         <module reference="841e41b5-5fea-4054-934b-e3646d3aff45(jetbrains.mps.lang.feedback.problem.failingRule#01)" version="0" />
+        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" version="0" />
         <module reference="0a98f3e2-decf-4e97-bf80-9109eccc59bb(jetbrains.mps.lang.feedback.problem.rules)" version="0" />
         <module reference="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" version="0" />
       </dependencyVersions>

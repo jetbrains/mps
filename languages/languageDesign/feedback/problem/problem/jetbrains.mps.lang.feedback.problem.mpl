@@ -50,8 +50,8 @@
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
         <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
         <module reference="033598a4-76a9-47e1-ac89-a300c0fceab8(jetbrains.mps.lang.feedback.problem)" version="0" />
-        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" version="0" />
         <module reference="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" version="0" />
+        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" version="0" />
       </dependencyVersions>
       <mapping-priorities />
     </generator>
@@ -112,7 +112,7 @@
     <module reference="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" version="0" />
   </dependencyVersions>
   <runtime>
-    <dependency reexport="false">3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)</dependency>
+    <dependency reexport="false">3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)</dependency>
   </runtime>
   <extendedLanguages />
 </language>

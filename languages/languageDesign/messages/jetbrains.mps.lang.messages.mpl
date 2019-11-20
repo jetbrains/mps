@@ -61,7 +61,7 @@
         <module reference="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" version="0" />
         <module reference="9e9ef4e2-decf-4e97-bf80-9109e8b759bb(jetbrains.mps.lang.feedback.api)" version="0" />
         <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
-        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" version="0" />
+        <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" version="0" />
         <module reference="ad93155d-79b2-4759-b10c-55123e763903(jetbrains.mps.lang.messages)" version="1" />
         <module reference="8e484114-7304-41f8-aab2-91a523e078fe(jetbrains.mps.lang.messages#8657450212265151934)" version="0" />
         <module reference="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" version="0" />

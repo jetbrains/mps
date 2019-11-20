@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.lang.feedback.problem" uuid="3f98f4e2-decf-4e97-bf80-9109e8b759ab" moduleVersion="0" compileInMPS="false">
+<solution name="jetbrains.mps.lang.feedback.problem.rt" uuid="3f98f4e2-decf-4e97-bf80-9109e8b759ab" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}/problem/classes" type="java_classes">
@@ -36,7 +36,7 @@
     <module reference="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" version="0" />
     <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
     <module reference="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" version="0" />
-    <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem)" version="0" />
+    <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" version="0" />
   </dependencyVersions>
 </solution>
 

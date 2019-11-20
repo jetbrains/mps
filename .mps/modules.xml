@@ -8,7 +8,7 @@
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.api.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.context.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.legacy-constraints.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.msd" folder="core.aspects.feedback" />
+      <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.rt.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.rules.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.structure.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.feedback" />
