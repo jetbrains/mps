@@ -445,8 +445,15 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     if (isDisposed()) {
       return;
     }
+
     ToolWindowManager windowManager = ToolWindowManager.getInstance(getProject());
     ToolWindow projectViewToolWindow = windowManager.getToolWindow(ToolWindowId.PROJECT_VIEW);
+    final Runnable wrapper = () -> {
+      if (postActivate != null) {
+        postActivate.run();
+      }
+    };
+
     //In unit test mode projectViewToolWindow == null
     // besides, https://youtrack.jetbrains.com/issue/MPS-24516 suggests tool window may be missing even in non-test mode (in plugin?)
     if (!ApplicationManager.getApplication().isUnitTestMode() && projectViewToolWindow != null) {
@@ -454,16 +461,13 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
         projectViewToolWindow.activate(() -> {
           if (isDisposed()) {
             return;
-          }
-          // I'm not quite sure next changeView is essential (what does toolWindow.activate() does then?),
+          }// I'm not quite sure next changeView is essential (what does toolWindow.activate() does then?),
           // but since there's no documentation what to expect, leave it the way it used to be in PaneActivator.
           getProjectView().changeView(getId());
-          if (postActivate != null) {
-            postActivate.run();
-          }
+          wrapper.run();
         }, true);
       } else {
-        postActivate.run();
+        wrapper.run();
       }
     }
   }
