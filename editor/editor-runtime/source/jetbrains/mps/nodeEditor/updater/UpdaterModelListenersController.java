@@ -122,6 +122,7 @@ class UpdaterModelListenersController {
       new RepoListenerRegistrar(myUpdater.getEditorContext().getRepository(), myRepositoryListener).detach();
     }
     if (myModelListener != null) {
+      myModelListener.clearCollectedEvents();
       myModelListener.dispose();
     }
   }
