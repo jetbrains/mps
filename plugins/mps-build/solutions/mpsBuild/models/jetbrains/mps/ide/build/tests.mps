@@ -11640,6 +11640,11 @@
           </node>
         </node>
       </node>
+      <node concept="1SiIV0" id="2FXdWdi6uNM" role="3bR37C">
+        <node concept="3bR9La" id="2FXdWdi6uNN" role="1SiIV1">
+          <ref role="3bR37D" to="ffeo:7Kfy9QB6Lh7" resolve="jetbrains.mps.typesystemEngine" />
+        </node>
+      </node>
     </node>
     <node concept="22LTRH" id="1Ue8MQkfJm6" role="1hWBAP">
       <property role="TrG5h" value="typeSystem" />
