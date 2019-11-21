@@ -18,7 +18,6 @@ import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
@@ -86,10 +85,7 @@ public class BaseIconManager {
       return IdeIcons.UNKNOWN_ICON;
     }
 
-    Icon mainIcon = null;
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ConceptDeclaration$qU)) {
-      mainIcon = getIconFromConstraints(node);
-    }
+    Icon mainIcon = getIconFromConstraints(node);
     if (mainIcon == null) {
       mainIcon = getIconFor(SNodeOperations.getConcept(node));
     }
@@ -225,7 +221,6 @@ public class BaseIconManager {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }
