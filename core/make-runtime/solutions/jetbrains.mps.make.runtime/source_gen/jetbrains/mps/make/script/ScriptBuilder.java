@@ -15,8 +15,8 @@ import jetbrains.mps.internal.make.runtime.script.ValidationError;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Map;
 import jetbrains.mps.internal.make.runtime.script.InvalidScript;
+import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.make.runtime.script.TargetRange;
@@ -72,6 +72,13 @@ public class ScriptBuilder {
     return this;
   }
   public IScript toScript() {
+    if (SetSequence.fromSet(facets).isEmpty()) {
+      // well, in fact this could be legitimate scenario, when there are no facets for a set of models/modules and the set could be ignored  
+      // however, at the moment, with lang.core as a super-language of any other and make facets it provides by default, empty script is likely an error 
+      // we do handle 'no used languages' case (MPS-26995) in ModulesClusterizer at the moment. 
+      error("No facets requested for the script, nothing to make");
+      return new InvalidScript(errors);
+    }
     Map<IFacet.Name, IFacet> facetsView = collectFacets();
     if (ListSequence.fromList(errors).isNotEmpty()) {
       return new InvalidScript(errors);
@@ -101,7 +108,7 @@ public class ScriptBuilder {
         MapSequence.fromMap(facetsView).put(fn, fct);
       } else {
         String msg = "facet not found: " + fn;
-        error(fn, msg);
+        error(msg);
       }
     }
     return facetsView;
@@ -119,7 +126,7 @@ public class ScriptBuilder {
     }
     for (ITarget.Name tn : SetSequence.fromSet(requestedTargets)) {
       if (!(tr.hasTarget(tn))) {
-        error(tn, "target not found: " + tn);
+        error("target not found: " + tn);
       }
     }
     if (ListSequence.fromList(errors).isNotEmpty()) {
@@ -168,13 +175,13 @@ public class ScriptBuilder {
       }
     };
     for (List<IFacet.Name> cyc : ListSequence.fromList(ga.findCycles())) {
-      error(null, "found cycle: " + cyc);
+      error("found cycle: " + cyc);
     }
     return ga.topologicalSort();
   }
-  private void error(Object o, String message) {
+  private void error(String message) {
     LOG.debug(message);
-    ListSequence.fromList(this.errors).addElement(new ValidationError(o, message));
+    ListSequence.fromList(this.errors).addElement(new ValidationError(this, message));
   }
   private class FacetRefs {
     /*package*/ List<IFacet> extended = ListSequence.fromList(new ArrayList<IFacet>());
@@ -202,8 +209,8 @@ public class ScriptBuilder {
         ListSequence.fromList(destination).addElement(f);
       } else {
         if (required) {
-          String msg = "not found required facet: " + requestee;
-          error(requestor.getName(), msg);
+          String msg = String.format("facet %s requested by %s not found", requestee, requestor.getName());
+          error(msg);
         } else {
           LOG.debug("not found optional facet: " + requestee + " for facet " + requestor.getName());
         }

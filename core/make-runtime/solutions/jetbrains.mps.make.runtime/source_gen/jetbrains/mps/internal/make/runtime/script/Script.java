@@ -68,20 +68,20 @@ public class Script implements IScript {
   public void validate() {
     ListSequence.fromList(errors).clear();
     if (startingTarget != null && !(targetRange.hasTarget(startingTarget))) {
-      error(startingTarget, "unknown starting target: " + startingTarget);
+      error("unknown starting target: " + startingTarget);
     }
     if (!(targetRange.hasTarget(finalTarget))) {
-      error(finalTarget, "unknown final target: " + finalTarget);
+      error("unknown final target: " + finalTarget);
     }
     if (targetRange.hasCycles()) {
-      error(this, "cycle(s) detected: " + targetRange.cycles());
+      error("cycle(s) detected: " + targetRange.cycles());
     }
     if (startingTarget != null && !(Sequence.fromIterable(targetRange.targetAndSortedPrecursors(finalTarget)).select(new ISelector<ITarget, ITarget.Name>() {
       public ITarget.Name select(ITarget t) {
         return t.getName();
       }
     }).contains(startingTarget))) {
-      error(this, "invalid starting target: " + startingTarget);
+      error("invalid starting target: " + startingTarget);
     }
     validated = true;
   }
@@ -126,9 +126,9 @@ public class Script implements IScript {
   public String toString() {
     return "Script<" + finalTarget + ">";
   }
-  private void error(Object o, String message) {
+  private void error(String message) {
     LOG.debug(message);
-    ListSequence.fromList(this.errors).addElement(new ValidationError(o, message));
+    ListSequence.fromList(this.errors).addElement(new ValidationError(this, message));
   }
   @Override
   public IResult execute(IScriptController controller, Iterable<? extends IResource> scriptInput, ProgressMonitor monitor) {
