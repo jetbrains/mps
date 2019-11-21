@@ -443,6 +443,7 @@
       <modulePath path="$PROJECT_DIR$/samples/notesOrganizer/solutions/jetbrains.mps.samples.notesOrganizer.build/jetbrains.mps.samples.notesOrganizer.build.msd" folder="samples.notesOrganizer" />
       <modulePath path="$PROJECT_DIR$/samples/progressIndicator/solutions/ActionWithProgress/ActionWithProgress.msd" folder="samples.progressIndicator" />
       <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/jetbrains.mps.samples.PropertyDefinition.mpl" folder="samples.propertyPersistence" />
+      <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/sandbox/jetbrains.mps.samples.PropertyDefinition.sandbox.msd" folder="samples.propertyPersistence" />
       <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.build/jetbrains.mps.samples.propertyPersistence.build.msd" folder="samples.propertyPersistence" />
       <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/jetbrains.mps.samples.propertyPersistence.ideaPlugin.msd" folder="samples.propertyPersistence" />
       <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistenceDef/jetbrains.mps.samples.propertyPersistenceDef.msd" folder="samples.propertyPersistence" />

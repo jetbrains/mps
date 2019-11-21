@@ -21,7 +21,7 @@
     </language>
   </registry>
   <node concept="2qJigo" id="4Q7oJrneB69">
-    <property role="TrG5h" value="Connfig" />
+    <property role="TrG5h" value="Config" />
     <node concept="2qJig7" id="4Q7oJrneB6a" role="2qJin6">
       <property role="TrG5h" value="address" />
       <property role="2qJig2" value="127.0.0.1" />
