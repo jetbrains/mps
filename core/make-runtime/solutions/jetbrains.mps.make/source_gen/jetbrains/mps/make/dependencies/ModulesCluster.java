@@ -30,8 +30,9 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.generator.impl.plan.ModelContentUtil;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Collections;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.LinkedList;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
@@ -197,53 +198,53 @@ __switch__:
         // affect transitive dependencies, and it's unlikely what I need here. It's seems better to collect more than to get unpleasant compile errors due 
         // to improper make order. 
         modExt.add(sourceLang);
+        // XXX though it looks suspicious that we require source language module to build a generator, the reason to have it there 
+        //     is likely the need to satisfy module load dependency (not the need to have language available the moment generator module is being generated/textgen'ed) 
       }
-      // XXX though it looks suspicious that we require source language module to build a generator, the reason to have it there 
-      //     is likely the need to satisfy module load dependency (not the need to have language available the moment generator module is being generated/textgen'ed) 
       moduleUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
       for (SModel m : generator.getModels()) {
         SetSequence.fromSet(moduleUsedLanguages).addSequence(CollectionSequence.fromCollection(ModelContentUtil.getUsedLanguages(m)));
       }
     } else {
       moduleUsedLanguages = mod.getUsedLanguages();
-      // XXX ModelContentUtil adds auto-imported and engaged on generation lagnuages as well, shall I use it here, too? 
+      // XXX ModelContentUtil adds auto-imported and engaged on generation languages as well, shall I use it here, too? 
       //     I didn't add them as previous version relied on SModule.getUsedLanguages() collection, which does not include engaged nor auto-imports, and is working for years 
-
     }
-    Set<SLanguage> allUsedLanguages = new SLanguageHierarchy(myLanguageRegistry, moduleUsedLanguages).getExtended();
 
-    // now that SLanguageHierarchy.getExtended() shall overconfidently ignore used languages that have not been yet deployed, 
-    // we have to add them here manually. MPS-30639 
-    SetSequence.fromSet(allUsedLanguages).addSequence(SetSequence.fromSet(moduleUsedLanguages).where(new IWhereFilter<SLanguage>() {
-      public boolean accept(SLanguage it) {
-        return myLanguageRegistry.getLanguage(it) == null;
+    while (SetSequence.fromSet(moduleUsedLanguages).isNotEmpty()) {
+      SLanguage language = SetSequence.fromSet(moduleUsedLanguages).first();
+      SetSequence.fromSet(moduleUsedLanguages).removeElement(language);
+      if (SetSequence.fromSet(rv.usedLanguages).contains(language)) {
+        continue;
       }
-    }));
-    SetSequence.fromSet(rv.usedLanguages).addSequence(SetSequence.fromSet(allUsedLanguages));
-
-    // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators... 
-    // Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged, 
-    // and we mak RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first 
-    for (Language l : SetSequence.fromSet(allUsedLanguages).where(new IWhereFilter<SLanguage>() {
-      public boolean accept(SLanguage it) {
-        return MapSequence.fromMap(languageModules).containsKey(it);
-      }
-    }).select(new ISelector<SLanguage, Language>() {
-      public Language select(SLanguage it) {
-        return as_7qjyo9_a0a0a0a0a0s0o(MapSequence.fromMap(languageModules).get(it).getModule(), Language.class);
-      }
-    })) {
-      //  there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call 
-      SetSequence.fromSet(reqs).addElement(l.getModuleReference());
-      for (Generator g : CollectionSequence.fromCollection(l.getGenerators())) {
-        if (MapSequence.fromMap(myDepsGraph).containsKey(g.getModuleReference())) {
-          SetSequence.fromSet(reqs).addElement(g.getModuleReference());
-        } else {
-          // we aren't going to cluserize required generator, but perhaps we do some of its dependencies 
-          modExt.add(g);
+      SetSequence.fromSet(rv.usedLanguages).addElement(language);
+      if (MapSequence.fromMap(languageModules).containsKey(language)) {
+        // module uses a language which is part of the make sequence 
+        Language lm = as_7qjyo9_a0a1a4a01a41(MapSequence.fromMap(languageModules).get(language).getModule(), Language.class);
+        // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators... 
+        // Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged, 
+        // and we make RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first 
+        // there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call 
+        SetSequence.fromSet(reqs).addElement(lm.getModuleReference());
+        for (Generator g : CollectionSequence.fromCollection(lm.getGenerators())) {
+          if (MapSequence.fromMap(myDepsGraph).containsKey(g.getModuleReference())) {
+            SetSequence.fromSet(reqs).addElement(g.getModuleReference());
+          } else {
+            // we aren't going to clusterize required generator, but perhaps we do some of its dependencies 
+            modExt.add(g);
+          }
         }
+        for (SModuleReference ext : lm.getExtendedLanguageRefs()) {
+          SetSequence.fromSet(moduleUsedLanguages).addElement(MetaAdapterFactory.getLanguage(ext));
+        }
+      } else {
+        // module uses a language which is not part of the make sequence, yet those it extends may 
+        Set<SLanguage> extended = new SLanguageHierarchy(myLanguageRegistry, Collections.singleton(language)).getExtended();
+        extended.removeAll(rv.usedLanguages);
+        SetSequence.fromSet(moduleUsedLanguages).addSequence(SetSequence.fromSet(extended));
       }
     }
+
     // XXX in fact, don't need to build complete set of dependencies, more effective is to follow one by one to see if it's vertex in the graph or it's known not to give any new dependency 
     GlobalModuleDependenciesManager depman = new GlobalModuleDependenciesManager(modExt);
     Set<SModule> reqmods = SetSequence.fromSet(new HashSet<SModule>());
@@ -303,7 +304,7 @@ __switch__:
       return MapSequence.fromMap(myDepsGraph).keySet();
     }
   }
-  private static <T> T as_7qjyo9_a0a0a0a0a0s0o(Object o, Class<T> type) {
+  private static <T> T as_7qjyo9_a0a1a4a01a41(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }
