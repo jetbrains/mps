@@ -512,6 +512,12 @@
       <directory url="file://$PROJECT_DIR$/samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/notesOrganizer/solutions/jetbrains.mps.samples.notesOrganizer.build/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/progressIndicator/solutions/ActionWithProgress/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/sandbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.build/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistenceDef/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/requirementTracking/languages/jetbrains.mps.samples.requirementTracking.RequirementDefinition/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/requirementTracking/languages/jetbrains.mps.samples.requirementTracking.RequirementDefinition/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/requirementTracking/languages/jetbrains.mps.samples.requirementTracking.Traces/generator/source_gen" includeSubdirectories="true" />
