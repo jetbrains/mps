@@ -84,7 +84,7 @@ public class GenSourcesAndCompilerXmlGenerationTest {
     XMLAssert.assertXMLEqual("Regenerate compiler.xml. Run GeneratorsRunner run configuration.", diff, true);
   }
 
-  @Test
+  //@Test
   public void testSamplesHaveAppropriateNames() throws JDOMException, IOException, SAXException {
     File root = new File(".");
     IFileSystem fs = ourPlatform.findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
