@@ -442,6 +442,10 @@
       <modulePath path="$PROJECT_DIR$/samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/sandbox/jetbrains.mps.samples.notesOrganizer.sandbox.msd" folder="samples.notesOrganizer" />
       <modulePath path="$PROJECT_DIR$/samples/notesOrganizer/solutions/jetbrains.mps.samples.notesOrganizer.build/jetbrains.mps.samples.notesOrganizer.build.msd" folder="samples.notesOrganizer" />
       <modulePath path="$PROJECT_DIR$/samples/progressIndicator/solutions/ActionWithProgress/ActionWithProgress.msd" folder="samples.progressIndicator" />
+      <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/jetbrains.mps.samples.PropertyDefinition.mpl" folder="samples.propertyPersistence" />
+      <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.build/jetbrains.mps.samples.propertyPersistence.build.msd" folder="samples.propertyPersistence" />
+      <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/jetbrains.mps.samples.propertyPersistence.ideaPlugin.msd" folder="samples.propertyPersistence" />
+      <modulePath path="$PROJECT_DIR$/samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistenceDef/jetbrains.mps.samples.propertyPersistenceDef.msd" folder="samples.propertyPersistence" />
       <modulePath path="$PROJECT_DIR$/samples/requirementTracking/languages/jetbrains.mps.samples.requirementTracking.RequirementDefinition/jetbrains.mps.samples.requirementTracking.RequirementDefinition.mpl" folder="samples.requirementTracking" />
       <modulePath path="$PROJECT_DIR$/samples/requirementTracking/languages/jetbrains.mps.samples.requirementTracking.Traces/jetbrains.mps.samples.requirementTracking.Traces.mpl" folder="samples.requirementTracking" />
       <modulePath path="$PROJECT_DIR$/samples/requirementTracking/solutions/jetbrains.mps.samples.ProjectCode/jetbrains.mps.samples.ProjectCode.msd" folder="samples.requirementTracking" />
