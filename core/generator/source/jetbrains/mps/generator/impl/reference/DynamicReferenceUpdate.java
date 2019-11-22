@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,11 +48,12 @@ public final class DynamicReferenceUpdate {
     if (myGenerator.getGeneratorSessionContext().getGenerationOptions().useDynamicReferences()) {
       return;
     }
+    final boolean shallWarn = myGenerator.getGeneratorSessionContext().getGenerationOptions().warnDynamicToStaticFailed();
     for (SReference dr : myRefs) {
       final SNode srcNode = dr.getSourceNode();
       String resolveInfo = dr instanceof jetbrains.mps.smodel.SReference ? ((jetbrains.mps.smodel.SReference) dr).getResolveInfo() : null;
       if (srcNode == null) {
-        myGenerator.getLogger().warning(String.format("Attempt to replace dynamic reference '%s' with static counterpart failed: no source node; resolveInfo=%s. Dynamic reference is left intact.", dr.getLink().getRoleName(), resolveInfo));
+        myGenerator.getLogger().warning(String.format("Attempt to replace dynamic reference '%s' with static counterpart failed: no source node; resolveInfo=%s. Dynamic reference is left intact.", dr.getLink().getName(), resolveInfo));
         continue;
       }
       if (srcNode.getModel() == null) {
@@ -62,7 +63,9 @@ public final class DynamicReferenceUpdate {
       }
       SNode target = jetbrains.mps.smodel.SReference.getTargetNodeSilently(dr);
       if (target == null) {
-        myGenerator.getLogger().warning(srcNode.getReference(), String.format("Failed to replace dynamic reference '%s' with static counterpart: no target; resolveInfo=%s. Dynamic reference is left intact.", dr.getLink().getRoleName(), resolveInfo));
+        if (shallWarn) {
+          myGenerator.getLogger().warning(srcNode.getReference(), String.format("Failed to replace dynamic reference '%s' with static counterpart: no target; resolveInfo=%s. Dynamic reference is left intact.", dr.getLink().getName(), resolveInfo));
+        }
         continue;
       }
       final jetbrains.mps.smodel.SReference sr = jetbrains.mps.smodel.SReference.create(dr.getLink(), dr.getSourceNode(), target);

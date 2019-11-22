@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,13 +49,14 @@ public class GenerationOptions {
   private final boolean myShowWarnings;
   private final boolean myKeepModelsWithWarnings;
   private final boolean myShowBadChildWarning;
+  private final boolean myWarnDynamicToStatic;
   private final int myNumberOfModelsToKeep;
 
   private GenerationOptions(boolean strictMode, boolean saveTransientModels, boolean useInplaceTransformations,
                             boolean generateInParallel, int numberOfThreads, int tracingMode, boolean showInfo,
                             boolean showWarnings, boolean keepModelsWithWarnings, int numberOfModelsToKeep,
                             boolean useDynamicRefs,
-                            GenerationParametersProvider parametersProvider, boolean showBadChildWarning,
+                            GenerationParametersProvider parametersProvider, boolean showBadChildWarning, boolean warnDynamicToStatic,
                             Map<SModel, ModelGenerationPlan> customPlans) {
     mySaveTransientModels = saveTransientModels;
     myActiveInplaceTransform = useInplaceTransformations;
@@ -69,6 +70,7 @@ public class GenerationOptions {
     myKeepModelsWithWarnings = keepModelsWithWarnings;
     myParametersProvider = parametersProvider;
     myShowBadChildWarning = showBadChildWarning;
+    myWarnDynamicToStatic = warnDynamicToStatic;
     myCustomPlans = customPlans;
     myUseDynamicRefs = useDynamicRefs;
   }
@@ -113,6 +115,10 @@ public class GenerationOptions {
     return myShowBadChildWarning;
   }
 
+  public boolean warnDynamicToStaticFailed() {
+    return myWarnDynamicToStatic;
+  }
+
   public int getNumberOfModelsToKeep() {
     return myNumberOfModelsToKeep;
   }
@@ -136,7 +142,8 @@ public class GenerationOptions {
       useInplaceTransformations(settings.useInplaceTransformations()).
       generateInParallel(settings.isParallelGenerator(), settings.getNumberOfParallelThreads()).
       reporting(settings.isShowInfo(), settings.isShowWarnings(), settings.isKeepModelsWithWarnings(), settings.getNumberOfModelsToKeep()).
-      showBadChildWarning(settings.isShowBadChildWarning()).
+      showBadChildWarning(settings.isShowWarnings() && settings.isShowBadChildWarning()).
+      warnDynamicToStatic(settings.isShowWarnings() && settings.warnDynamicToStaticReference()).
       useDynamicReferences(!settings.createStaticReferences());
   }
 
@@ -166,6 +173,7 @@ public class GenerationOptions {
     private boolean myShowWarnings = true;
     private boolean myKeepModelsWithWarnings = true;
     private boolean myShowBadChildWarning = true;
+    private boolean myWarnDynamicToStatic = false;
     private int myNumberOfModelsToKeep = 16;
 
     private GenerationParametersProvider myParametersProvider = null;
@@ -180,7 +188,7 @@ public class GenerationOptions {
       return new GenerationOptions(myStrictMode, mySaveTransientModels, myUseInplace,
         myGenerateInParallel, myNumberOfThreads, myTracingMode, myShowInfo, myShowWarnings,
         myKeepModelsWithWarnings, myNumberOfModelsToKeep, myUseDynamicRefs,
-        myParametersProvider, myShowBadChildWarning,
+        myParametersProvider, myShowBadChildWarning, myWarnDynamicToStatic,
         myCustomPlans);
     }
 
@@ -204,17 +212,17 @@ public class GenerationOptions {
       return this;
     }
 
+    public OptionsBuilder warnDynamicToStatic(boolean enabled) {
+      myWarnDynamicToStatic = enabled;
+      return this;
+    }
+
     public OptionsBuilder useInplaceTransformations(boolean use) {
       myUseInplace = use;
       return this;
     }
 
-    public OptionsBuilder rebuildAll(boolean rebuildAll) {
-      Logger.getLogger(getClass()).warn(".GenerationOptions.OptionsBuilder.rebuildAll() is no-op and deprecated, stop using it!");
-      return this;
-    }
-
-     public OptionsBuilder generateInParallel(boolean generateInParallel, int numberOfThreads) {
+    public OptionsBuilder generateInParallel(boolean generateInParallel, int numberOfThreads) {
       myGenerateInParallel = generateInParallel;
       myNumberOfThreads = numberOfThreads;
       return this;

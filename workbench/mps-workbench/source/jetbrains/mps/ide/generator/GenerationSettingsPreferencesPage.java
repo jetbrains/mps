@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,7 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   private JCheckBox myShowWarnings = new JCheckBox("Show warnings");
   private JCheckBox myKeepModelsWithWarnings = new JCheckBox("Keep transient models with warnings");
   private JCheckBox myShowBadChildWarnings = new JCheckBox("Warn when child cannot be placed into role");
+  private JCheckBox myWarnDynamicToStatic = new JCheckBox("Warn static reference could not replace dynamic");
   private JCheckBox myLimitNumberOfModels = new JCheckBox("Maximum number of transient models to keep:");
   private JFormattedTextField myNumberOfModelsToKeep = new JFormattedTextField(new RangeDecimalFormatter(0, 1000));
 
@@ -150,6 +151,7 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     optionsPanel.add(myInplaceTransform, c);
 
     optionsPanel.add(myAvoidDynamicRefs, c);
+    myAvoidDynamicRefs.addChangeListener((event) -> myWarnDynamicToStatic.setEnabled(myShowWarnings.isSelected() && myAvoidDynamicRefs.isSelected()));
 
     myButtonState.track(mySaveTransientModelsCheckBox, myCheckModelsBeforeGenerationCheckBox, myStrictMode, myInplaceTransform);
     myButtonState.track(myAvoidDynamicRefs);
@@ -201,11 +203,13 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     c.insets.left = 16;
     panel.add(myKeepModelsWithWarnings, c);
     panel.add(myShowBadChildWarnings, c);
-    myButtonState.track(myShowInfo, myShowWarnings, myKeepModelsWithWarnings, myShowBadChildWarnings);
+    panel.add(myWarnDynamicToStatic, c);
+    myButtonState.track(myShowInfo, myShowWarnings, myKeepModelsWithWarnings, myShowBadChildWarnings, myWarnDynamicToStatic);
 
     final ChangeListener listener = e -> {
       myKeepModelsWithWarnings.setEnabled(myShowWarnings.isSelected());
       myShowBadChildWarnings.setEnabled(myShowWarnings.isSelected());
+      myWarnDynamicToStatic.setEnabled(myShowWarnings.isSelected() && myAvoidDynamicRefs.isSelected());
     };
     myShowWarnings.addChangeListener(listener);
 
@@ -277,6 +281,7 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     myGenerationSettings.setShowWarnings(myShowWarnings.isSelected());
     myGenerationSettings.setKeepModelsWithWarnings(myKeepModelsWithWarnings.isSelected());
     myGenerationSettings.setShowBadChildWarning(myShowBadChildWarnings.isSelected());
+    myGenerationSettings.warnDynamicToStaticReference(myWarnDynamicToStatic.isSelected());
     myGenerationSettings.setNumberOfModelsToKeep(getNumberOfModelsToKeep());
     myGenerationSettings.enableInplaceTransformations(myInplaceTransform.isSelected());
     myGenerationSettings.setCreateStaticReferences(myAvoidDynamicRefs.isSelected());
@@ -330,6 +335,8 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     myKeepModelsWithWarnings.setSelected(myGenerationSettings.isKeepModelsWithWarnings());
     myShowBadChildWarnings.setEnabled(myGenerationSettings.isShowWarnings());
     myShowBadChildWarnings.setSelected(myGenerationSettings.isShowBadChildWarning());
+    myWarnDynamicToStatic.setEnabled(myGenerationSettings.isShowWarnings() && myGenerationSettings.createStaticReferences());
+    myWarnDynamicToStatic.setSelected(myGenerationSettings.warnDynamicToStaticReference());
     myNumberOfModelsToKeep.setEditable(myGenerationSettings.getNumberOfModelsToKeep() != -1);
     myNumberOfModelsToKeep.setValue(myGenerationSettings.getNumberOfModelsToKeep() == -1 ? 16 : myGenerationSettings.getNumberOfModelsToKeep());
     myLimitNumberOfModels.setSelected(myGenerationSettings.getNumberOfModelsToKeep() != -1);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,9 @@ public class DefaultModifiableGenerationSettings implements IModifiableGeneratio
   private boolean myShowBadChildWarning = true;
   private boolean myActiveInplaceTransform = true;
   private boolean myCreateStaticRefs = true;
+  // I feel it's ok to keep 'false' as default even though createStaticRefs is 'true', as it doesn't make sense to
+  // annoy users with warnings unless they willing to do something about that. And it's only LD that could possibly do anything about that
+  private boolean myWarnDynamicToStatic = false;
   private GenTraceSettings myTraceSettings = new GenTraceSettings();
   private final List<Listener> myListeners = new ArrayList<>(4);
 
@@ -173,6 +176,20 @@ public class DefaultModifiableGenerationSettings implements IModifiableGeneratio
   public void setKeepModelsWithWarnings(boolean keepModelsWithWarnings) {
     boolean changed = myKeepModelsWithWarnings != keepModelsWithWarnings;
     myKeepModelsWithWarnings = keepModelsWithWarnings;
+    if (changed) {
+      notifyChanged();
+    }
+  }
+
+  @Override
+  public boolean warnDynamicToStaticReference() {
+    return myWarnDynamicToStatic;
+  }
+
+  @Override
+  public void warnDynamicToStaticReference(boolean enabled) {
+    boolean changed = myWarnDynamicToStatic != enabled;
+    myWarnDynamicToStatic = enabled;
     if (changed) {
       notifyChanged();
     }
