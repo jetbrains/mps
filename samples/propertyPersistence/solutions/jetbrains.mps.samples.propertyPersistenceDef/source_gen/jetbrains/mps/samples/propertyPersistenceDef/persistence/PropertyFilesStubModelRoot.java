@@ -58,6 +58,8 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
 
   @Override
   public void load(Memento memento) {
+    // This method documents how to leverage mementos. Since the parent class already handles setting up the content directory 
+    // and source roots, this method could in fact be deleted from this class. 
     super.load(memento);
     if (memento.get(PATH_KEY) == null) {
       return;

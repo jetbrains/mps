@@ -74,7 +74,7 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
     return modelData;
   }
 
-  public void processStreams(Iterable<String> names, SModelData into) throws ModelLoadException {
+  private void processStreams(Iterable<String> names, SModelData into) throws ModelLoadException {
     SContainmentLink containmentOfProperties = LINKS.properties$F1qm;
     for (String fileName : names) {
       Set<SNode> oldNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), MapSequence.fromMap(myRootsPerFile).get(fileName));
