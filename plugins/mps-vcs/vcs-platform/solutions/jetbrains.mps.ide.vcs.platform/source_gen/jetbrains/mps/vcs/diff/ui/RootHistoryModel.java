@@ -92,6 +92,13 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
           // FIXME report the exception in UI 
         }
       }
+      if (prevContentRange != null && !(prevContentRange.isEmpty())) {
+        // last revision we've checked has some content that corresponds to node (e.g. node introduced in the very first revision of the file) 
+        // XXX perhaps, shall do it for any prevRevision != null just to get revision with no node (aka 'base') to give diff in any case (think of a single revision file with the node) 
+        synchronized (myFilteredRevisions) {
+          myFilteredRevisions.add(prevRevision);
+        }
+      }
     } catch (ProcessCanceledException ex) {
       // Though this exception is not manifested, chances are ProgressManager.checkCanceled() call somewhere deep down the call stack may cause it, 
       // just ignore the exception and stop annotating. 

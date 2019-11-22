@@ -10,6 +10,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="lcr" ref="r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)" />
@@ -6969,6 +6970,116 @@
               </node>
             </node>
             <node concept="3clFbS" id="13$TqNLIgwp" role="3eOfB_">
+              <node concept="3SKdUt" id="686vahz9ir9" role="3cqZAp">
+                <node concept="1PaTwC" id="686vahz9ira" role="3ndbpf">
+                  <node concept="3oM_SD" id="686vahz9iDD" role="1PaTwD">
+                    <property role="3oM_SC" value="FIXME" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QzG" role="1PaTwD">
+                    <property role="3oM_SC" value="other" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QzJ" role="1PaTwD">
+                    <property role="3oM_SC" value="uses" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QzN" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QzS" role="1PaTwD">
+                    <property role="3oM_SC" value="FilePerRootDataSource.getFile" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8Q$A" role="1PaTwD">
+                    <property role="3oM_SC" value="suggest" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8Q$X" role="1PaTwD">
+                    <property role="3oM_SC" value="we" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8Q_d" role="1PaTwD">
+                    <property role="3oM_SC" value="shall" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8Q_A" role="1PaTwD">
+                    <property role="3oM_SC" value="use" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QAJ" role="1PaTwD">
+                    <property role="3oM_SC" value="approach" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QB2" role="1PaTwD">
+                    <property role="3oM_SC" value="similar" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QBm" role="1PaTwD">
+                    <property role="3oM_SC" value="to" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8QBF" role="1PaTwD">
+                    <property role="3oM_SC" value="FilePerRootFormatUtil.getStreamNames" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8R2x" role="1PaTwD">
+                    <property role="3oM_SC" value="instead" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8R30" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8R3o" role="1PaTwD">
+                    <property role="3oM_SC" value="assumption" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8R3L" role="1PaTwD">
+                    <property role="3oM_SC" value="of" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8R4M" role="1PaTwD">
+                    <property role="3oM_SC" value="root.name" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8R5d" role="1PaTwD">
+                    <property role="3oM_SC" value="+" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz8R5x" role="1PaTwD">
+                    <property role="3oM_SC" value="'.mpsr'" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3SKdUt" id="686vahz9j1l" role="3cqZAp">
+                <node concept="1PaTwC" id="686vahz9j1m" role="3ndbpf">
+                  <node concept="3oM_SD" id="686vahz9j1o" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jdG" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jdJ" role="1PaTwD">
+                    <property role="3oM_SC" value="" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jdN" role="1PaTwD">
+                    <property role="3oM_SC" value="better" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jgc" role="1PaTwD">
+                    <property role="3oM_SC" value="yet," />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jjg" role="1PaTwD">
+                    <property role="3oM_SC" value="there" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jjn" role="1PaTwD">
+                    <property role="3oM_SC" value="should" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jjv" role="1PaTwD">
+                    <property role="3oM_SC" value="be" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jjC" role="1PaTwD">
+                    <property role="3oM_SC" value="FilePerRootDataSource.getFile(node&lt;&gt;" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jym" role="1PaTwD">
+                    <property role="3oM_SC" value="rootNode)" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9j_v" role="1PaTwD">
+                    <property role="3oM_SC" value="that" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9j_F" role="1PaTwD">
+                    <property role="3oM_SC" value="hides" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jE0" role="1PaTwD">
+                    <property role="3oM_SC" value="relevant" />
+                  </node>
+                  <node concept="3oM_SD" id="686vahz9jFo" role="1PaTwD">
+                    <property role="3oM_SC" value="logic" />
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbF" id="13$TqNLIgwq" role="3cqZAp">
                 <node concept="37vLTI" id="13$TqNLIgwr" role="3clFbG">
                   <node concept="37vLTw" id="13$TqNLIgws" role="37vLTJ">

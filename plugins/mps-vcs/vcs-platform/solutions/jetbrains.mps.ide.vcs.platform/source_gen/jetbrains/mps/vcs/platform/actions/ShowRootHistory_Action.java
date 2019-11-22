@@ -16,8 +16,8 @@ import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import com.intellij.openapi.vcs.history.VcsCachingHistory;
 import com.intellij.vcsUtil.VcsUtil;
@@ -29,6 +29,9 @@ import java.util.Collections;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.persistence.FilePerRootDataSource;
+import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
+import jetbrains.mps.vfs.IFile;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/6427926084137613936", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ShowRootHistory_Action extends BaseAction {
@@ -88,24 +91,25 @@ public class ShowRootHistory_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final VirtualFile vf = ShowRootHistory_Action.this.fileFromModel(event);
+    final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
     final SModelName modelName = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName();
-    final AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf);
     final Wrappers._T<String> rootName = new Wrappers._T<String>();
     final Wrappers._T<SNodeId> toShow = new Wrappers._T<SNodeId>();
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
       public void run() {
+        vf.value = ShowRootHistory_Action.this.fileFromModel(event);
         SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
         rootName.value = containingRoot.getName();
         toShow.value = containingRoot.getNodeId();
       }
     });
+    final AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
     // see RootHistoryDialog.show for explanation why I resort to roots. The reason I do it here, not in show(), as I don't want to care about model read access there (it's likely in background). 
     // copied from IDEA's SelectedBlockHistoryAction 
-    VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf), VcsBackgroundableActions.HISTORY_FOR_SELECTION, new Consumer<VcsHistorySession>() {
+    VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf.value), VcsBackgroundableActions.HISTORY_FOR_SELECTION, new Consumer<VcsHistorySession>() {
       public void consume(VcsHistorySession s) {
         if (s != null) {
-          RootHistoryDialog dlg = new RootHistoryDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), vf, activeVCS, s);
+          RootHistoryDialog dlg = new RootHistoryDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), vf.value, activeVCS, s);
           dlg.setTitle(modelName.getLongName() + '/' + rootName.value);
           dlg.show(Collections.singleton(toShow.value));
         }
@@ -116,6 +120,17 @@ public class ShowRootHistory_Action extends BaseAction {
     DataSource ds = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getSource();
     if (ds instanceof FileDataSource) {
       return VirtualFileUtils.getProjectVirtualFile(((FileDataSource) ds).getFile());
+    }
+    if (ds instanceof FilePerRootDataSource) {
+      SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
+      Map<SNodeId, String> streamNames = FilePerRootFormatUtil.getStreamNames(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getRootNodes());
+      String rootStream = streamNames.get(containingRoot.getNodeId());
+      if (rootStream == null) {
+        return null;
+      } else {
+        IFile file = ((FilePerRootDataSource) ds).getFile(rootStream);
+        return VirtualFileUtils.getProjectVirtualFile(file);
+      }
     }
     return null;
   }

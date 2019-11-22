@@ -75,10 +75,10 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.openapi.util.Conditions;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.diff.contents.EmptyContent;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
 import jetbrains.mps.project.MPSExtentions;
-import com.intellij.diff.contents.EmptyContent;
 import jetbrains.mps.vcs.platform.integration.ModelDiffContent;
 import com.intellij.openapi.util.Disposer;
 
@@ -270,8 +270,8 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
 
     DiffContent content1 = createDiffContent(revIndex1);
     DiffContent content2 = createDiffContent(revIndex2);
-    String title1 = myRevisions.get(revIndex1).getRevisionNumber().asString();
-    String title2 = myRevisions.get(revIndex2).getRevisionNumber().asString();
+    String title1 = (revIndex1 < count ? myRevisions.get(revIndex1).getRevisionNumber().asString() : null);
+    String title2 = (revIndex2 < count ? myRevisions.get(revIndex2).getRevisionNumber().asString() : null);
     if (content1 != null && content2 != null) {
       SimpleDiffRequest rq = new SimpleDiffRequest(null, content1, content2, title1, title2);
       ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRoot);
@@ -359,6 +359,9 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
 
   @Nullable
   private DiffContent createDiffContent(int revIndex) {
+    if (revIndex == myRevisions.size()) {
+      return new EmptyContent();
+    }
     VcsFileRevision rev = myRevisions.get(revIndex);
     SModel loaded;
     try {

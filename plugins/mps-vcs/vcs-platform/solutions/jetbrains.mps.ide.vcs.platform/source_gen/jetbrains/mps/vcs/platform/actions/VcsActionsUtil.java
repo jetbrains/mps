@@ -62,11 +62,13 @@ public final class VcsActionsUtil {
 
   @Nullable
   public VirtualFile detectVirtualFile() {
+    // XXX detectVirtualFile is invoked outisde of model read, how come node.getModel doesn't fail? 
     DataSource source = myNode.getModel().getSource();
     IFile iFile;
     if (source instanceof FileDataSource) {
       iFile = ((FileDataSource) source).getFile();
     } else if (source instanceof FilePerRootDataSource) {
+      // FIXME other uses of FilePerRootDataSource.getFile suggest we shall use approach similar to FilePerRootFormatUtil.getStreamNames instead of assumption of root.name + '.mpsr' 
       iFile = ((FilePerRootDataSource) source).getFile(myContainingRootName + '.' + MPSExtentions.MODEL_ROOT);
     } else {
       return null;

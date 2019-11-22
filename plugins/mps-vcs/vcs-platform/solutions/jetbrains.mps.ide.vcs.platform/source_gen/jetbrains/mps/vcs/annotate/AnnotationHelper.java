@@ -88,6 +88,8 @@ public class AnnotationHelper {
     if (source instanceof FileDataSource) {
       iFile = ((FileDataSource) source).getFile();
     } else if (source instanceof FilePerRootDataSource) {
+      // FIXME other uses of FilePerRootDataSource.getFile suggest we shall use approach similar to FilePerRootFormatUtil.getStreamNames instead of assumption of root.name + '.mpsr' 
+      //    better yet, there should be FilePerRootDataSource.getFile(node<> rootNode) that hides relevant logic 
       iFile = ((FilePerRootDataSource) source).getFile(root.getName() + "." + FilePerRootDataSource.ROOT_EXTENSION);
     } else {
       return false;
