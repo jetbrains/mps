@@ -43,7 +43,7 @@ public class MPSFavoriteModelProvider extends FavoriteNodeProvider {
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<SModel> models = MPSDataKeys.MODELS.getData(context);
 
-    if (null == models) {
+    if (models == null) {
       return result;
     }
 

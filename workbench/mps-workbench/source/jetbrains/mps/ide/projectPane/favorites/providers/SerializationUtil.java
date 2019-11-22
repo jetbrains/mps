@@ -25,7 +25,7 @@ class SerializationUtil {
   }
 
   static synchronized SerializationUtil getInstance() {
-    if (null == instance) {
+    if (instance == null) {
       return instance = new SerializationUtil();
     }
     return instance;
@@ -42,7 +42,7 @@ class SerializationUtil {
   String assemble(@NotNull String[] params) {
     StringBuilder result = new StringBuilder();
     for (String param : params) {
-      if (null == param) {
+      if (param == null) {
         result.append("0");
       } else {
         result.append(param.length());

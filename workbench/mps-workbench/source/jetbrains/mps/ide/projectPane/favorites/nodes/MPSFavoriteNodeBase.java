@@ -47,7 +47,7 @@ abstract class MPSFavoriteNodeBase<T> extends ProjectViewNode<T> {
 
   @Override
   public void navigate(boolean requestFocus) {
-    if (null == myNavigationTarget) {
+    if (myNavigationTarget == null) {
       return;
     }
     MPSProject project = ProjectHelper.fromIdeaProject(getProject());

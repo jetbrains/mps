@@ -51,7 +51,7 @@ public class MPSFavoriteReferenceProvider extends FavoriteNodeProvider {
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<TreeNode> references = MPSCommonDataKeys.TREE_NODES.getData(context);
 
-    if (null == references) {
+    if (references == null) {
       return result;
     }
 
@@ -127,7 +127,7 @@ public class MPSFavoriteReferenceProvider extends FavoriteNodeProvider {
   @Nullable
   @Override
   public Object[] createPathFromUrl(Project project, String url, String moduleName) {
-    if (DumbService.isDumb(project) || null == url) {
+    if (DumbService.isDumb(project) || url == null) {
       return null;
     }
     String[] params = SerializationUtil.getInstance().disassemble(url);

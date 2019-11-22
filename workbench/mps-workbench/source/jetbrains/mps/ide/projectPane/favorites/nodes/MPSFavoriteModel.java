@@ -43,7 +43,7 @@ public class MPSFavoriteModel extends MPSFavoriteNodeBase<SModelReference> {
 
   @Override
   public void navigate(boolean requestFocus) {
-    if (null == mySModelReference) {
+    if (mySModelReference == null) {
       return;
     }
     new ProjectPaneNavigator(ProjectHelper.fromIdeaProject(getProject())).shallFocus(true).select(mySModelReference);

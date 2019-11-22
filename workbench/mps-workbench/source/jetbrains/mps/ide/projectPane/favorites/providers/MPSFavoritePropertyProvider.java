@@ -44,7 +44,7 @@ public class MPSFavoritePropertyProvider extends FavoriteNodeProvider {
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<TreeNode> properties = MPSCommonDataKeys.TREE_NODES.getData(context);
 
-    if (null == properties) {
+    if (properties == null) {
       return result;
     }
 

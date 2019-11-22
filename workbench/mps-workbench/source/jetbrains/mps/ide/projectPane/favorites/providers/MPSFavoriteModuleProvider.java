@@ -43,7 +43,7 @@ public class MPSFavoriteModuleProvider extends FavoriteNodeProvider {
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<SModule> modules = MPSDataKeys.MODULES.getData(context);
 
-    if (null == modules) {
+    if (modules == null) {
       return result;
     }
 

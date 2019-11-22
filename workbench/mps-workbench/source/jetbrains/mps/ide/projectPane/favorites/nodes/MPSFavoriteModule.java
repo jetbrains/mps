@@ -42,7 +42,7 @@ public class MPSFavoriteModule extends MPSFavoriteNodeBase<SModuleReference> {
 
   @Override
   public void navigate(boolean requestFocus) {
-    if (null == mySModuleReference) {
+    if (mySModuleReference == null) {
       return;
     }
     new ProjectPaneNavigator(ProjectHelper.fromIdeaProject(getProject())).shallFocus(true).select(mySModuleReference);
