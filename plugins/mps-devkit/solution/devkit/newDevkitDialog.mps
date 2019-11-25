@@ -185,9 +185,6 @@
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
     <node concept="3Tm1VV" id="5qUkmeYCtfy" role="1B3o_S" />
-    <node concept="3uibUv" id="5qUkmeYCtfz" role="1zkMxy">
-      <ref role="3uigEE" to="jkm4:~DialogWrapper" resolve="DialogWrapper" />
-    </node>
     <node concept="312cEg" id="5qUkmeYCtf$" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -280,22 +277,6 @@
             <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
             <node concept="Xl_RD" id="5qUkmeYCtfV" role="37wK5m">
               <property role="Xl_RC" value="New Devkit" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7iZR6YlWmSS" role="3cqZAp">
-          <node concept="1rXfSq" id="7iZR6YlWmST" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonText(java.lang.String)" resolve="setOKButtonText" />
-            <node concept="Xl_RD" id="7iZR6YlWmSU" role="37wK5m">
-              <property role="Xl_RC" value="&amp;OK" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7iZR6YlWmSV" role="3cqZAp">
-          <node concept="1rXfSq" id="7iZR6YlWmSW" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setCancelButtonText(java.lang.String)" resolve="setCancelButtonText" />
-            <node concept="Xl_RD" id="7iZR6YlWmSX" role="37wK5m">
-              <property role="Xl_RC" value="Ca&amp;ncel" />
             </node>
           </node>
         </node>
@@ -598,7 +579,7 @@
                   <ref role="3cqZAo" node="1JGcfS3E0Jp" resolve="myDevkitLocation" />
                 </node>
                 <node concept="Xl_RD" id="7iZR6YlPWOW" role="37wK5m">
-                  <property role="Xl_RC" value="Choose Devkit Location Folder" />
+                  <property role="Xl_RC" value="Choose Devkit File Parent Directory" />
                 </node>
                 <node concept="Xl_RD" id="7iZR6YlPWOX" role="37wK5m" />
                 <node concept="37vLTw" id="7iZR6YlPWOY" role="37wK5m">
@@ -618,7 +599,7 @@
                   <ref role="3cqZAo" node="1JGcfS3E0Jp" resolve="myDevkitLocation" />
                 </node>
                 <node concept="Xl_RD" id="7iZR6YlPWP4" role="37wK5m">
-                  <property role="Xl_RC" value="Devkit location:" />
+                  <property role="Xl_RC" value="Devkit file location:" />
                 </node>
                 <node concept="10Nm6u" id="7iZR6YlPWP5" role="37wK5m" />
                 <node concept="37vLTw" id="7iZR6YlPWP6" role="37wK5m">
@@ -1030,6 +1011,9 @@
       </node>
       <node concept="3Tm6S6" id="9$$2x2klYT" role="1B3o_S" />
       <node concept="17QB3L" id="9$$2x2kmLg" role="3clF45" />
+    </node>
+    <node concept="3uibUv" id="5qUkmeYCtfz" role="1zkMxy">
+      <ref role="3uigEE" to="jkm4:~DialogWrapper" resolve="DialogWrapper" />
     </node>
   </node>
 </model>

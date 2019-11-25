@@ -73,7 +73,7 @@ public abstract class AbstractModuleCreationSettings extends JPanel {
     });
     final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
     InsertPathAction.addTo(myModuleLocation, descriptor);
-    BrowseFilesListener listener = new BrowseFilesListener(myModuleLocation, "Choose Module Location Folder", "", descriptor);
+    BrowseFilesListener listener = new BrowseFilesListener(myModuleLocation, "Choose Module File Parent Directory", "", descriptor);
     FieldPanel fieldPanel = new FieldPanel(myModuleLocation, null, null, listener, EmptyRunnable.getInstance());
     FileChooserFactory.getInstance().installFileCompletion(fieldPanel.getTextField(), descriptor, false, null);
     this.add(fieldPanel, 3, 0.0, JBUI.insetsBottom(5));

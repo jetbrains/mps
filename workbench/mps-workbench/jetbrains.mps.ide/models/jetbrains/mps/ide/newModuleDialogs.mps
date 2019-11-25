@@ -2521,22 +2521,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="7iZR6YlWmSS" role="3cqZAp">
-          <node concept="1rXfSq" id="7iZR6YlWmST" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonText(java.lang.String)" resolve="setOKButtonText" />
-            <node concept="Xl_RD" id="7iZR6YlWmSU" role="37wK5m">
-              <property role="Xl_RC" value="&amp;OK" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7iZR6YlWmSV" role="3cqZAp">
-          <node concept="1rXfSq" id="7iZR6YlWmSW" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setCancelButtonText(java.lang.String)" resolve="setCancelButtonText" />
-            <node concept="Xl_RD" id="7iZR6YlWmSX" role="37wK5m">
-              <property role="Xl_RC" value="Ca&amp;ncel" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbH" id="2UnPMOMmAR$" role="3cqZAp" />
         <node concept="3clFbF" id="2UnPMOMlAu9" role="3cqZAp">
           <node concept="37vLTI" id="2UnPMOMlAua" role="3clFbG">

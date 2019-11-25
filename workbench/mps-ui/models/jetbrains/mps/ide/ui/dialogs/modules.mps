@@ -214,7 +214,7 @@
             <property role="Xl_RC" value="Solution name:" />
           </node>
           <node concept="Xl_RD" id="4785PwA7zyV" role="37wK5m">
-            <property role="Xl_RC" value="Solution location:" />
+            <property role="Xl_RC" value="Solution file location:" />
           </node>
         </node>
         <node concept="3clFbH" id="3rnI4tGsVzK" role="3cqZAp" />
@@ -342,7 +342,7 @@
             <property role="Xl_RC" value="Language name:" />
           </node>
           <node concept="Xl_RD" id="4785PwA7wXl" role="37wK5m">
-            <property role="Xl_RC" value="Language location:" />
+            <property role="Xl_RC" value="Language file location:" />
           </node>
         </node>
         <node concept="3clFbH" id="7iZR6YlPVjr" role="3cqZAp" />
@@ -1220,7 +1220,7 @@
                   <ref role="3cqZAo" node="g46k2sbMT2" resolve="myModuleLocation" />
                 </node>
                 <node concept="Xl_RD" id="4YP8cog1Uey" role="37wK5m">
-                  <property role="Xl_RC" value="Choose Module Location Folder" />
+                  <property role="Xl_RC" value="Choose Module File Parent Directory" />
                 </node>
                 <node concept="Xl_RD" id="g46k2sbZ62" role="37wK5m" />
                 <node concept="37vLTw" id="g46k2sbZ63" role="37wK5m">

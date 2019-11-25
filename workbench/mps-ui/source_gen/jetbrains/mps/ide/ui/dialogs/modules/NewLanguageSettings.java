@@ -17,7 +17,7 @@ public class NewLanguageSettings extends AbstractModuleCreationSettings {
   }
 
   public NewLanguageSettings(String projectPath) {
-    super(projectPath, "Language name:", "Language location:");
+    super(projectPath, "Language name:", "Language file location:");
 
     myRuntimeSolution = new JCheckBox("Create Runtime Solution");
     this.add(myRuntimeSolution, 4, 0.0);

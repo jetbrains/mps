@@ -13,7 +13,7 @@ public class NewSolutionSettings extends AbstractModuleCreationSettings {
   }
 
   public NewSolutionSettings(String projectPath) {
-    super(projectPath, "Solution name:", "Solution location:");
+    super(projectPath, "Solution name:", "Solution file location:");
 
     this.setPreferredSize(new Dimension(400, 100));
     reset();

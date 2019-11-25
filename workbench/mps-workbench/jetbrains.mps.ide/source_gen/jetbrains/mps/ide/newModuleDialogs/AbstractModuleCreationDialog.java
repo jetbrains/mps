@@ -25,8 +25,6 @@ public abstract class AbstractModuleCreationDialog<R extends AbstractModule> ext
 
   public AbstractModuleCreationDialog(MPSProject project, @Nullable String virtualFolder) {
     super(project.getProject());
-    setOKButtonText("&OK");
-    setCancelButtonText("Ca&ncel");
 
     myProject = project;
     myVirtualFolder = virtualFolder;

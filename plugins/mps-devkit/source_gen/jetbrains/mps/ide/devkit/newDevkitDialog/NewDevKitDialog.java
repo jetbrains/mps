@@ -43,8 +43,6 @@ public class NewDevKitDialog extends DialogWrapper {
   public NewDevKitDialog(Project project) {
     super(project);
     setTitle("New Devkit");
-    setOKButtonText("&OK");
-    setCancelButtonText("Ca&ncel");
 
     myProject = ProjectHelper.fromIdeaProject(project);
     createMainComponent();
@@ -83,8 +81,8 @@ public class NewDevKitDialog extends DialogWrapper {
 
     final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
     InsertPathAction.addTo(myDevkitLocation, descriptor);
-    BrowseFilesListener listener = new BrowseFilesListener(myDevkitLocation, "Choose Devkit Location Folder", "", descriptor);
-    FieldPanel fieldPanel = new FieldPanel(myDevkitLocation, "Devkit location:", null, listener, EmptyRunnable.getInstance());
+    BrowseFilesListener listener = new BrowseFilesListener(myDevkitLocation, "Choose Devkit File Parent Directory", "", descriptor);
+    FieldPanel fieldPanel = new FieldPanel(myDevkitLocation, "Devkit file location:", null, listener, EmptyRunnable.getInstance());
     FileChooserFactory.getInstance().installFileCompletion(fieldPanel.getTextField(), descriptor, false, myProject.getProject());
     myContentPane.add(fieldPanel);
 
