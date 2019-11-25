@@ -4,7 +4,6 @@ package jetbrains.mps.ide.ui.dialogs.modules;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JCheckBox;
-import java.awt.Dimension;
 
 @GeneratedClass(node = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)/8412685000764658714", model = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)")
 public class NewLanguageSettings extends AbstractModuleCreationSettings {
@@ -24,9 +23,6 @@ public class NewLanguageSettings extends AbstractModuleCreationSettings {
 
     mySandboxSolution = new JCheckBox("Create Sandbox Solution");
     this.add(mySandboxSolution, 5, 0.0);
-
-    this.setPreferredSize(new Dimension(400, 100));
-    reset();
   }
 
   public boolean isRuntimeSolutionNeeded() {
@@ -54,7 +50,6 @@ public class NewLanguageSettings extends AbstractModuleCreationSettings {
   protected String getDefaultModulePath() {
     return getModuleRootPath("languages");
   }
-
 
   @Override
   public void reset() {

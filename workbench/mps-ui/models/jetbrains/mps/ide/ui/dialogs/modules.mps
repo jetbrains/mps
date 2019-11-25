@@ -16,8 +16,8 @@
     <import index="r791" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.text(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
+    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -217,31 +217,6 @@
             <property role="Xl_RC" value="Solution file location:" />
           </node>
         </node>
-        <node concept="3clFbH" id="3rnI4tGsVzK" role="3cqZAp" />
-        <node concept="3clFbF" id="Ecfd3cVbK6" role="3cqZAp">
-          <node concept="2OqwBi" id="Ecfd3cVdUN" role="3clFbG">
-            <node concept="Xjq3P" id="3sOM1a0Vn8C" role="2Oq$k0" />
-            <node concept="liA8E" id="Ecfd3cVkUq" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JComponent.setPreferredSize(java.awt.Dimension)" resolve="setPreferredSize" />
-              <node concept="2ShNRf" id="Ecfd3cVlI4" role="37wK5m">
-                <node concept="1pGfFk" id="Ecfd3cVnb_" role="2ShVmc">
-                  <ref role="37wK5l" to="z60i:~Dimension.&lt;init&gt;(int,int)" resolve="Dimension" />
-                  <node concept="3cmrfG" id="Ecfd3cVoZo" role="37wK5m">
-                    <property role="3cmrfH" value="400" />
-                  </node>
-                  <node concept="3cmrfG" id="Ecfd3cVsbW" role="37wK5m">
-                    <property role="3cmrfH" value="100" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1CfITPj2OJy" role="3cqZAp">
-          <node concept="1rXfSq" id="1CfITPj2OJw" role="3clFbG">
-            <ref role="37wK5l" node="g46k2sd8t3" resolve="reset" />
-          </node>
-        </node>
       </node>
       <node concept="3Tm1VV" id="3sOM1a0Rz1n" role="1B3o_S" />
       <node concept="37vLTG" id="3sOM1a0XOZB" role="3clF46">
@@ -411,38 +386,13 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="7iZR6YlPWPq" role="3cqZAp" />
-        <node concept="3clFbF" id="7iZR6YlPWPr" role="3cqZAp">
-          <node concept="2OqwBi" id="7iZR6YlPWPs" role="3clFbG">
-            <node concept="Xjq3P" id="7iZR6YlPWPt" role="2Oq$k0" />
-            <node concept="liA8E" id="7iZR6YlPWPu" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JComponent.setPreferredSize(java.awt.Dimension)" resolve="setPreferredSize" />
-              <node concept="2ShNRf" id="7iZR6YlPWPv" role="37wK5m">
-                <node concept="1pGfFk" id="7iZR6YlPWPw" role="2ShVmc">
-                  <ref role="37wK5l" to="z60i:~Dimension.&lt;init&gt;(int,int)" resolve="Dimension" />
-                  <node concept="3cmrfG" id="7iZR6YlPWPx" role="37wK5m">
-                    <property role="3cmrfH" value="400" />
-                  </node>
-                  <node concept="3cmrfG" id="7iZR6YlPWPy" role="37wK5m">
-                    <property role="3cmrfH" value="100" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1CfITPj1Si_" role="3cqZAp">
-          <node concept="1rXfSq" id="1CfITPj1Siz" role="3clFbG">
-            <ref role="37wK5l" node="3Mv1_yS7RZE" resolve="reset" />
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="7iZR6YlPUBO" role="3clF46">
         <property role="TrG5h" value="projectPath" />
         <node concept="17QB3L" id="7iZR6YlPUBN" role="1tU5fm" />
       </node>
     </node>
-    <node concept="2tJIrI" id="g46k2seIKs" role="jymVt" />
+    <node concept="2tJIrI" id="2Q6$B6yBdUy" role="jymVt" />
     <node concept="3clFb_" id="g46k2seNx3" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="isRuntimeSolutionNeeded" />
@@ -584,7 +534,6 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="3Mv1_yS7RDn" role="jymVt" />
     <node concept="2tJIrI" id="3Mv1_yS7RFk" role="jymVt" />
     <node concept="3clFb_" id="3Mv1_yS7RZE" role="jymVt">
       <property role="TrG5h" value="reset" />
@@ -668,31 +617,6 @@
             <node concept="37vLTw" id="3rnI4tGsAIA" role="37vLTx">
               <ref role="3cqZAo" node="3rnI4tGsAIu" resolve="moduleOriginal" />
             </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="67eMucIEvpa" role="3cqZAp" />
-        <node concept="3clFbF" id="2RhVBj9yZPA" role="3cqZAp">
-          <node concept="2OqwBi" id="2RhVBj9yZPB" role="3clFbG">
-            <node concept="Xjq3P" id="2RhVBj9yZPC" role="2Oq$k0" />
-            <node concept="liA8E" id="2RhVBj9yZPD" role="2OqNvi">
-              <ref role="37wK5l" to="dxuu:~JComponent.setPreferredSize(java.awt.Dimension)" resolve="setPreferredSize" />
-              <node concept="2ShNRf" id="2RhVBj9yZPE" role="37wK5m">
-                <node concept="1pGfFk" id="2RhVBj9yZPF" role="2ShVmc">
-                  <ref role="37wK5l" to="z60i:~Dimension.&lt;init&gt;(int,int)" resolve="Dimension" />
-                  <node concept="3cmrfG" id="2RhVBj9yZPG" role="37wK5m">
-                    <property role="3cmrfH" value="400" />
-                  </node>
-                  <node concept="3cmrfG" id="2RhVBj9yZPH" role="37wK5m">
-                    <property role="3cmrfH" value="100" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3rnI4tGsNMb" role="3cqZAp">
-          <node concept="1rXfSq" id="3rnI4tGsNMc" role="3clFbG">
-            <ref role="37wK5l" node="g46k2sd8t3" resolve="reset" />
           </node>
         </node>
       </node>
@@ -1307,8 +1231,10 @@
       <node concept="3Tmbuc" id="g46k2sbOl5" role="1B3o_S" />
       <node concept="37vLTG" id="g46k2sbOQ1" role="3clF46">
         <property role="TrG5h" value="projectPath" />
-        <property role="3TUv4t" value="true" />
         <node concept="17QB3L" id="g46k2sbOQ0" role="1tU5fm" />
+        <node concept="2AHcQZ" id="2Q6$B6yBxW7" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
       </node>
       <node concept="37vLTG" id="g46k2sbR1F" role="3clF46">
         <property role="TrG5h" value="moduleNameLabel" />

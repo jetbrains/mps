@@ -4,7 +4,6 @@ package jetbrains.mps.ide.ui.dialogs.modules;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.AbstractModule;
-import java.awt.Dimension;
 import java.io.File;
 
 @GeneratedClass(node = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)/3951829814942483652", model = "r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)")
@@ -14,9 +13,6 @@ public class CloneModuleSettings extends AbstractModuleCreationSettings {
   public CloneModuleSettings(String projectPath, AbstractModule moduleOriginal) {
     super(projectPath, "Cloned Module name:", "Clone Module to:");
     myModuleOriginal = moduleOriginal;
-
-    this.setPreferredSize(new Dimension(400, 100));
-    reset();
   }
 
   @Override

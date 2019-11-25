@@ -6100,7 +6100,7 @@
         </node>
         <node concept="3cpWs8" id="hSQov3z" role="3cqZAp">
           <node concept="3cpWsn" id="hSQov3$" role="3cpWs9">
-            <property role="TrG5h" value="s" />
+            <property role="TrG5h" value="solution" />
             <node concept="3uibUv" id="hSQov3_" role="1tU5fm">
               <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
             </node>
@@ -6121,7 +6121,7 @@
           <node concept="3clFbC" id="hSQozEX" role="3clFbw">
             <node concept="10Nm6u" id="hSQozPv" role="3uHU7w" />
             <node concept="37vLTw" id="3GM_nagTrbh" role="3uHU7B">
-              <ref role="3cqZAo" node="hSQov3$" resolve="s" />
+              <ref role="3cqZAo" node="hSQov3$" resolve="solution" />
             </node>
           </node>
         </node>
@@ -6160,10 +6160,15 @@
             <node concept="2YIFZM" id="iygc9itMcW" role="33vP2m">
               <ref role="1Pybhc" to="rvbb:~ProjectPane" resolve="ProjectPane" />
               <ref role="37wK5l" to="rvbb:~ProjectPane.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-              <node concept="2OqwBi" id="iygc9itMd2" role="37wK5m">
-                <node concept="2WthIp" id="iygc9itMd3" role="2Oq$k0" />
-                <node concept="1DTwFV" id="iygc9itMd4" role="2OqNvi">
-                  <ref role="2WH_rO" node="hSQo24h" resolve="ideaProject" />
+              <node concept="2OqwBi" id="7o065EtxiBU" role="37wK5m">
+                <node concept="2OqwBi" id="iygc9itMd2" role="2Oq$k0">
+                  <node concept="2WthIp" id="iygc9itMd3" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="7o065EtxhYp" role="2OqNvi">
+                    <ref role="2WH_rO" node="hSQo0Cc" resolve="project" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="7o065Etxjuf" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                 </node>
               </node>
             </node>
@@ -6174,7 +6179,7 @@
             <node concept="liA8E" id="hSQp2YW" role="2OqNvi">
               <ref role="37wK5l" to="rvbb:~ProjectPane.selectModule(org.jetbrains.mps.openapi.module.SModule,boolean)" resolve="selectModule" />
               <node concept="37vLTw" id="3GM_nagTyOm" role="37wK5m">
-                <ref role="3cqZAo" node="hSQov3$" resolve="s" />
+                <ref role="3cqZAo" node="hSQov3$" resolve="solution" />
               </node>
               <node concept="3clFbT" id="1j$2RGej7q0" role="37wK5m">
                 <property role="3clFbU" value="false" />
@@ -6191,11 +6196,6 @@
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="7HZe2EwZDkt" role="1oa70y" />
-    </node>
-    <node concept="1DS2jV" id="hSQo24h" role="1NuT2Z">
-      <property role="TrG5h" value="ideaProject" />
-      <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
-      <node concept="1oajcY" id="7HZe2EwZDlE" role="1oa70y" />
     </node>
     <node concept="1DS2jV" id="7LEQOWrr$rH" role="1NuT2Z">
       <property role="TrG5h" value="namespace" />

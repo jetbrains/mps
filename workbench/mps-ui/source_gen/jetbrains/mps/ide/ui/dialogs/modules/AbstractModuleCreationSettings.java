@@ -5,6 +5,7 @@ package jetbrains.mps.ide.ui.dialogs.modules;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import org.jetbrains.annotations.Nullable;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import com.intellij.ui.DocumentAdapter;
@@ -36,7 +37,7 @@ public abstract class AbstractModuleCreationSettings extends JPanel {
 
   protected String myProjectPath;
 
-  protected AbstractModuleCreationSettings(final String projectPath, String moduleNameLabel, String moduleLocationLabel) {
+  protected AbstractModuleCreationSettings(@Nullable String projectPath, String moduleNameLabel, String moduleLocationLabel) {
     super(new GridBagLayout());
 
     myProjectPath = projectPath;

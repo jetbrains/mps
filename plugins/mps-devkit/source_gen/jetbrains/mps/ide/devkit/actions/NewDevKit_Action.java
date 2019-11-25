@@ -15,7 +15,6 @@ import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.devkit.newDevkitDialog.NewDevKitDialog;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/5883033498657845915", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
@@ -51,19 +50,14 @@ public class NewDevKit_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    NewDevKitDialog dialog = new NewDevKitDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject());
+    NewDevKitDialog dialog = new NewDevKitDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), ((String) MapSequence.fromMap(_params).get("namespace")));
     dialog.show();
-    final DevKit devkit = dialog.getResult();
+    DevKit devkit = dialog.getModule();
     if (devkit == null) {
       return;
     }
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        ((StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"))).setFolderFor(devkit, (((String) MapSequence.fromMap(_params).get("namespace")) == null ? "" : ((String) MapSequence.fromMap(_params).get("namespace"))));
-      }
-    });
+
     ProjectPane projectPane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project")));
-    projectPane.rebuildTree();
     projectPane.selectModule(devkit, false);
   }
 }

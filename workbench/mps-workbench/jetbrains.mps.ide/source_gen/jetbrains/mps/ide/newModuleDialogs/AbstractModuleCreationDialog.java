@@ -75,6 +75,7 @@ public abstract class AbstractModuleCreationDialog<R extends AbstractModule> ext
   public JComponent createCenterPanel() {
     if (mySettings == null) {
       mySettings = createSettingsInstance();
+      mySettings.reset();
       mySettings.setListener(new AbstractModuleCreationSettings.ModuleCreationSettingsListener() {
         @Override
         public void changed() {

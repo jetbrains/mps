@@ -10,8 +10,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.newModuleDialogs.NewSolutionDialog;
@@ -44,13 +42,6 @@ public class NewSolution_Action extends BaseAction {
       }
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("ideaProject", p);
-      if (p == null) {
-        return false;
-      }
-    }
-    {
       String p = event.getData(MPSDataKeys.NAMESPACE);
       MapSequence.fromMap(_params).put("namespace", p);
     }
@@ -60,13 +51,13 @@ public class NewSolution_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     NewSolutionDialog dialog = new NewSolutionDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), ((String) MapSequence.fromMap(_params).get("namespace")));
     dialog.show();
-    Solution s = dialog.getModule();
-    if (s == null) {
+    Solution solution = dialog.getModule();
+    if (solution == null) {
       return;
     }
 
     // TODO: Sync ProjectPane.rebuildTree() with NewSolution, CloneModule actions 
-    ProjectPane projectPane = ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject")));
-    projectPane.selectModule(s, false);
+    ProjectPane projectPane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject());
+    projectPane.selectModule(solution, false);
   }
 }
