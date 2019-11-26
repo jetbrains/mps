@@ -100,7 +100,7 @@ public class StaticMethodDeclarationPsvmTemplate extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        return "psvm";
+        return (pattern.startsWith("p") ? "psvm" : "main");
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
