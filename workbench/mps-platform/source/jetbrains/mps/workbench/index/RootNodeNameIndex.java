@@ -18,6 +18,7 @@ package jetbrains.mps.workbench.index;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.progress.ProcessCanceledException;
+import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -150,7 +151,7 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
       int fileId = RootNodeNameIndex.getFileKey(modelFile);
       ConcreteFilesGlobalSearchScope fileScope = new ConcreteFilesGlobalSearchScope(Collections.singleton(modelFile));
       descriptors = FileBasedIndex.getInstance().getValues(RootNodeNameIndex.NAME, fileId, fileScope);
-    } catch (ProcessCanceledException ex) {
+    } catch (ProcessCanceledException | IndexNotReadyException ex) {
       // ignore, fall-through
     }
     if (descriptors.isEmpty()) {
