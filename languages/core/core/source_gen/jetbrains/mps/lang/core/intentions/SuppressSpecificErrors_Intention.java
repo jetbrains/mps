@@ -85,7 +85,6 @@ public final class SuppressSpecificErrors_Intention extends AbstractIntentionDes
       SNode annotation = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.SuppressErrorsAnnotation$gJ, null));
       SPropertyOperations.assign(annotation, PROPS.filter$UuSh, myParameter.toPredicate(myParameter.getIdFlavours()).serialize());
       SPropertyOperations.assign(annotation, PROPS.message$PX4b, myParameter.getMessage());
-      editorContext.getEditorComponent().getUpdater().setInitialEditorHints(new String[]{"jetbrains.mps.lang.core.editor.SuppressedHints.ShowSuppressedErrors"});
     }
     @Override
     public IntentionDescriptor getDescriptor() {

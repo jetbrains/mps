@@ -23,16 +23,10 @@
     <import index="g51k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.cells(MPS.Editor/)" />
     <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
-    <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
     <language id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts">
       <concept id="1194033889146" name="jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_editorContext" flags="nn" index="1XNTG" />
-    </language>
-    <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
-      <concept id="4820515453818318288" name="jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReferenceExpression" flags="ng" index="2pYGij">
-        <reference id="4820515453818318891" name="hint" index="2pYH_C" />
-      </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
@@ -108,10 +102,6 @@
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
-      </concept>
-      <concept id="1154542696413" name="jetbrains.mps.baseLanguage.structure.ArrayCreatorWithInitializer" flags="nn" index="3g6Rrh">
-        <child id="1154542793668" name="componentType" index="3g7fb8" />
-        <child id="1154542803372" name="initValue" index="3g7hyw" />
       </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
@@ -880,32 +870,6 @@
               </node>
               <node concept="3TrcHB" id="7s1FVdAyYwn" role="2OqNvi">
                 <ref role="3TsBF5" to="tpck:7s1FVdAuNzP" resolve="message" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7s1FVdAC$5L" role="3cqZAp">
-          <node concept="2OqwBi" id="7s1FVdABwfI" role="3clFbG">
-            <node concept="2OqwBi" id="7s1FVdACa17" role="2Oq$k0">
-              <node concept="2OqwBi" id="7s1FVdABwfJ" role="2Oq$k0">
-                <node concept="1XNTG" id="7s1FVdABwfK" role="2Oq$k0" />
-                <node concept="liA8E" id="7s1FVdAC9QQ" role="2OqNvi">
-                  <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
-                </node>
-              </node>
-              <node concept="liA8E" id="7s1FVdACjgh" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorComponent.getUpdater()" resolve="getUpdater" />
-              </node>
-            </node>
-            <node concept="liA8E" id="7s1FVdACjtx" role="2OqNvi">
-              <ref role="37wK5l" to="22ra:~Updater.setInitialEditorHints(java.lang.String[])" resolve="setInitialEditorHints" />
-              <node concept="2ShNRf" id="7s1FVdAClHY" role="37wK5m">
-                <node concept="3g6Rrh" id="7s1FVdACyih" role="2ShVmc">
-                  <node concept="17QB3L" id="7s1FVdAClVp" role="3g7fb8" />
-                  <node concept="2pYGij" id="7s1FVdACA3D" role="3g7hyw">
-                    <ref role="2pYH_C" to="tpco:6lWnjhKuesq" resolve="ShowSuppressedErrors" />
-                  </node>
-                </node>
               </node>
             </node>
           </node>
