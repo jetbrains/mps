@@ -3356,46 +3356,58 @@
   </root>
   <root nodeRef="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/6893431717880288043">
     <file name="DoNotSuppressErrors_Action.java">
-      <node id="6893431717880288043" at="23,0,24,0" concept="13" trace="ICON" />
-      <node id="6893431717880288043" at="25,39,26,45" concept="15" />
-      <node id="6893431717880288043" at="26,45,27,35" concept="4" />
-      <node id="6893431717880288043" at="27,35,28,52" concept="4" />
-      <node id="6893431717880288043" at="31,32,32,16" concept="10" />
-      <node id="6893431717880288043" at="36,53,37,19" concept="10" />
-      <node id="6893431717880288044" at="39,5,40,54" concept="9" />
-      <node id="6893431717880288044" at="40,54,41,50" concept="4" />
-      <node id="5272353921214662140" at="42,22,43,21" concept="10" />
-      <node id="6893431717880288043" at="45,5,46,16" concept="10" />
-      <node id="6893431717880288047" at="49,96,50,212" concept="4" />
-      <node id="6893431717880288043" at="54,0,55,0" concept="13" trace="SuppressErrorsAnnotation$gJ" />
-      <node id="6893431717880288043" at="35,95,38,5" concept="7" />
-      <node id="5272353921214662140" at="41,50,44,7" concept="7" />
-      <node id="6893431717880288043" at="30,0,34,0" concept="8" trace="isDumbAware#()Z" />
-      <node id="6893431717880288043" at="48,0,52,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="6893431717880288043" at="25,0,30,0" concept="2" trace="DoNotSuppressErrors_Action#()V" />
-      <node id="6893431717880288044" at="38,5,45,5" concept="1" />
-      <node id="6893431717880288043" at="34,0,48,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="6893431717880288043" at="31,32,32,16" />
-      <scope id="6893431717880288043" at="36,53,37,19" />
-      <scope id="5272353921214662140" at="42,22,43,21" />
-      <scope id="6893431717880288043" at="49,96,50,212" />
-      <scope id="6893431717880288043" at="25,39,28,52" />
-      <scope id="6893431717880288043" at="30,0,34,0" />
-      <scope id="6893431717880288043" at="48,0,52,0">
+      <node id="6893431717880288043" at="25,0,26,0" concept="13" trace="ICON" />
+      <node id="6893431717880288043" at="27,39,28,45" concept="15" />
+      <node id="6893431717880288043" at="28,45,29,35" concept="4" />
+      <node id="6893431717880288043" at="29,35,30,52" concept="4" />
+      <node id="6893431717880288043" at="33,32,34,16" concept="10" />
+      <node id="6893431717880288043" at="38,53,39,19" concept="10" />
+      <node id="6893431717880288044" at="41,5,42,54" concept="9" />
+      <node id="6893431717880288044" at="42,54,43,50" concept="4" />
+      <node id="5272353921214662140" at="44,22,45,21" concept="10" />
+      <node id="3200220852365472489" at="48,5,49,56" concept="9" />
+      <node id="3200220852365472489" at="49,56,50,51" concept="4" />
+      <node id="3200220852365852366" at="51,61,52,21" concept="10" />
+      <node id="3200220852365485565" at="54,22,55,21" concept="10" />
+      <node id="6893431717880288043" at="57,5,58,16" concept="10" />
+      <node id="6893431717880288047" at="61,96,62,212" concept="4" />
+      <node id="6893431717880288043" at="66,0,67,0" concept="13" trace="SuppressErrorsAnnotation$gJ" />
+      <node id="6893431717880288043" at="37,95,40,5" concept="7" />
+      <node id="5272353921214662140" at="43,50,46,7" concept="7" />
+      <node id="3200220852365852366" at="50,51,53,7" concept="7" />
+      <node id="3200220852365485565" at="53,7,56,7" concept="7" />
+      <node id="6893431717880288043" at="32,0,36,0" concept="8" trace="isDumbAware#()Z" />
+      <node id="6893431717880288043" at="60,0,64,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="6893431717880288043" at="27,0,32,0" concept="2" trace="DoNotSuppressErrors_Action#()V" />
+      <node id="6893431717880288044" at="40,5,47,5" concept="1" />
+      <node id="3200220852365472489" at="47,5,57,5" concept="1" />
+      <node id="6893431717880288043" at="36,0,60,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="6893431717880288043" at="33,32,34,16" />
+      <scope id="6893431717880288043" at="38,53,39,19" />
+      <scope id="5272353921214662140" at="44,22,45,21" />
+      <scope id="3200220852365852366" at="51,61,52,21" />
+      <scope id="3200220852365485565" at="54,22,55,21" />
+      <scope id="6893431717880288043" at="61,96,62,212" />
+      <scope id="6893431717880288043" at="27,39,30,52" />
+      <scope id="6893431717880288043" at="32,0,36,0" />
+      <scope id="6893431717880288043" at="60,0,64,0">
         <var name="_params" id="6893431717880288043" />
         <var name="event" id="6893431717880288043" />
       </scope>
-      <scope id="6893431717880288043" at="25,0,30,0" />
-      <scope id="6893431717880288044" at="39,5,44,7">
+      <scope id="6893431717880288043" at="27,0,32,0" />
+      <scope id="6893431717880288044" at="41,5,46,7">
         <var name="p" id="6893431717880288044" />
       </scope>
-      <scope id="6893431717880288043" at="35,95,46,16" />
-      <scope id="6893431717880288043" at="34,0,48,0">
+      <scope id="3200220852365472489" at="48,5,56,7">
+        <var name="p" id="3200220852365472489" />
+      </scope>
+      <scope id="6893431717880288043" at="37,95,58,16" />
+      <scope id="6893431717880288043" at="36,0,60,0">
         <var name="_params" id="6893431717880288043" />
         <var name="event" id="6893431717880288043" />
       </scope>
-      <unit id="6893431717880288043" at="53,0,56,0" name="jetbrains.mps.ide.editor.actions.DoNotSuppressErrors_Action$CONCEPTS" />
-      <unit id="6893431717880288043" at="21,0,57,0" name="jetbrains.mps.ide.editor.actions.DoNotSuppressErrors_Action" />
+      <unit id="6893431717880288043" at="65,0,68,0" name="jetbrains.mps.ide.editor.actions.DoNotSuppressErrors_Action$CONCEPTS" />
+      <unit id="6893431717880288043" at="23,0,69,0" name="jetbrains.mps.ide.editor.actions.DoNotSuppressErrors_Action" />
     </file>
   </root>
   <root nodeRef="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/693268764742355428">

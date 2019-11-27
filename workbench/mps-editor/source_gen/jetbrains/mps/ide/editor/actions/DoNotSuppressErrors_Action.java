@@ -11,6 +11,8 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
@@ -39,6 +41,16 @@ public class DoNotSuppressErrors_Action extends BaseAction {
     {
       SNode p = event.getData(MPSCommonDataKeys.NODE);
       MapSequence.fromMap(_params).put("node", p);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
+      SModel p = event.getData(MPSCommonDataKeys.MODEL);
+      MapSequence.fromMap(_params).put("model", p);
+      if (!(p instanceof EditableSModel) || p.isReadOnly()) {
+        return false;
+      }
       if (p == null) {
         return false;
       }
