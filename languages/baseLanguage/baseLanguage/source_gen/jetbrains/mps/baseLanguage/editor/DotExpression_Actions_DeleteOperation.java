@@ -5,9 +5,11 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -28,8 +30,12 @@ public class DotExpression_Actions_DeleteOperation {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$X4R8))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$Nk))) {
-          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.operand$Lcrr));
+        if ((SLinkOperations.getTarget(node, LINKS.operation$X4R8) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$X4R8))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$Nk))) {
+          SNode operand = SLinkOperations.getTarget(node, LINKS.operand$Lcrr);
+          SNodeOperations.replaceWithAnother(node, operand);
+          if ((operand != null)) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, operand, SelectionManager.LAST_CELL, -1);
+          }
         } else {
           if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.operation$X4R8))) {
             return;
