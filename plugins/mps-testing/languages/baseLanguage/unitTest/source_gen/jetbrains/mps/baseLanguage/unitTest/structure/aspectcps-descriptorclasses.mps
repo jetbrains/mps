@@ -1089,7 +1089,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="5D" role="37wK5m">
                           <node concept="1QGGSu" id="5E" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/testClass.png" />
+                            <property role="1iqoE4" value="${module}/icons/testClass.svg" />
                             <node concept="cd27G" id="5F" role="lGtFl">
                               <node concept="3u3nmq" id="5G" role="cd27D">
                                 <property role="3u3nmv" value="5586841135286517165" />

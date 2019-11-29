@@ -106,7 +106,7 @@
       <ref role="AX2Wp" to="tpee:fKFJPy9" resolve="_Identifier_String" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQH" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/testClass.png" />
+      <property role="1iqoE4" value="${module}/icons/testClass.svg" />
     </node>
   </node>
   <node concept="1TIwiD" id="h3s_got">
