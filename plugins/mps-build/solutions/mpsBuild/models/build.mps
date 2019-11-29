@@ -6019,6 +6019,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="6QEVIHG7q5Z" role="3bR37C">
+          <node concept="3bR9La" id="6QEVIHG7q60" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6L1S" resolve="jetbrains.mps.baseLanguage.javadoc" />
+          </node>
+        </node>
         <node concept="1E1SXE" id="29nTRW1kOYZ" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
@@ -28652,7 +28657,7 @@
         <node concept="398223" id="1nJh0raW9OJ" role="39821P">
           <node concept="28jJK3" id="35zoHQHRZ3q" role="39821P">
             <node concept="398BVA" id="1nJh0raW9OM" role="28jJRO">
-              <ref role="398BVh" node="5yMuYWFN8P8" />
+              <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
               <node concept="2Ry0Ak" id="1nJh0raW9ON" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="1nJh0raW9OO" role="2Ry0An">
@@ -45087,7 +45092,7 @@
               </node>
             </node>
             <node concept="398BVA" id="1CY6j2K5DBw" role="28jJRO">
-              <ref role="398BVh" node="77ZqjhZbMDY" />
+              <ref role="398BVh" node="77ZqjhZbMDY" resolve="mps_home" />
               <node concept="2Ry0Ak" id="1CY6j2K5DBx" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="1CY6j2K5DBy" role="2Ry0An">
@@ -47842,6 +47847,16 @@
         </node>
       </node>
     </node>
+    <node concept="PiPfp" id="6QEVIHGB4z1" role="3989C9">
+      <property role="TrG5h" value="ecj" />
+      <node concept="25yagZ" id="6QEVIHGB4Cu" role="PiKyV">
+        <node concept="3yqu4x" id="6QEVIHGB4Cs" role="25yagT">
+          <node concept="3yrxFa" id="6QEVIHGB4Cy" role="3yqu4I">
+            <ref role="3yrxFb" node="5w9VucA$Mg7" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="398b33" id="1s0vtrwURQP" role="3989C9">
       <property role="TrG5h" value="mps-annotations" />
       <node concept="2sjeV3" id="1s0vtrwZiZY" role="nCB5Z">
@@ -48651,6 +48666,9 @@
       </node>
       <node concept="2sjeV3" id="4PRDOPWO8_D" role="nCB5Z">
         <ref role="2sjeV2" node="1s0vtrx9SbK" resolve="asm-all" />
+      </node>
+      <node concept="2sjeV3" id="6QEVIHGB2Bc" role="nCB5Z">
+        <ref role="2sjeV2" node="6QEVIHGB4z1" resolve="ecj" />
       </node>
       <node concept="2GAZfH" id="3dkXFAFl0SO" role="398b2p">
         <node concept="TIC1d" id="3dkXFAFl0SM" role="2GAZfG">

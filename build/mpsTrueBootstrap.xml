@@ -34,6 +34,10 @@
     <fileset file="${artifacts.IDEA}/lib/asm-all-7.0.1.jar" />
   </path>
   
+  <path id="path.java.library.ecj">
+    <fileset file="${artifacts.IDEA}/lib/ecj-4.10.jar" />
+  </path>
+  
   <target name="assemble" depends="classes">
     <mkdir dir="${build.layout}" />
     <jar destfile="${build.layout}/mps-annotations.jar" duplicate="preserve">
@@ -640,6 +644,7 @@
         <path refid="path.java.library.jdom-lib" />
         <path refid="path.java.library.trove4j" />
         <path refid="path.java.library.asm-all" />
+        <path refid="path.java.library.ecj" />
       </classpath>
     </javac>
   </target>
