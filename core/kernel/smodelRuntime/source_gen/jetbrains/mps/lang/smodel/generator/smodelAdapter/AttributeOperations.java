@@ -102,16 +102,6 @@ public class AttributeOperations {
     descriptor.update(value);
     return value;
   }
-  private static SNode insertAttribute(SNode node, SNode anchor, IAttributeDescriptor descriptor, SNode value) {
-    // shall insert value *after* anchor 
-    if (anchor == null || !(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ)).contains(anchor))) {
-      addAttribute(node, descriptor, value);
-    } else {
-      SNodeOperations.insertNextSiblingChild(anchor, value);
-    }
-    descriptor.update(value);
-    return value;
-  }
   private static void deleteAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
     List<SNode> list = new ArrayList<SNode>();
     ListSequence.fromList(list).addSequence(Sequence.fromIterable(getAttributes(node, descriptor)));
