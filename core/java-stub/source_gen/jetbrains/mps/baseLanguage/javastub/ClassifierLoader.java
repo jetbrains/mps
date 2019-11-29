@@ -21,6 +21,7 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.java.stub.ReferenceFactory;
+import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.io.InputStream;
 import jetbrains.mps.util.ReadUtil;
@@ -156,15 +157,16 @@ public class ClassifierLoader {
     return rv;
   }
 
-  public void updateClassifier(SNode classifier, ReferenceFactory refFactory) {
+  public void updateClassifier(SNode classifier, ReferenceFactory refFactory, Function<ASMClass, Documentation> docSupplier) {
     assert myClassReader != null;
     ASMClass ac = new ASMClass(myClassReader, true);
-    new ClassifierUpdater(ac, mySkipPrivate, refFactory).update(classifier);
+    Documentation doc = docSupplier.apply(ac);
+    new ClassifierUpdater(ac, mySkipPrivate, refFactory, doc).update(classifier);
     for (ClassifierLoader innerLoader : getInnerClassifiers(ac)) {
       SNode inner = innerLoader.createClassifier();
       if (inner != null) {
         ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.member$oYX5)).addElement(inner);
-        innerLoader.updateClassifier(inner, refFactory);
+        innerLoader.updateClassifier(inner, refFactory, docSupplier);
       }
     }
   }

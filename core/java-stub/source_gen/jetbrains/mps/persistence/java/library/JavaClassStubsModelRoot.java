@@ -6,10 +6,17 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import jetbrains.mps.java.stub.PackageScopeControl;
+import java.util.function.Function;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
+import jetbrains.mps.baseLanguage.javastub.Documentation;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import java.io.File;
+import jetbrains.mps.baseLanguage.javastub.SingleZipWithJavaSources;
+import java.io.IOException;
+import org.apache.log4j.Logger;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -39,6 +46,7 @@ import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 @GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/6619269785060746428", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JavaClassStubsModelRoot extends FileBasedModelRoot implements CopyableModelRoot<JavaClassStubsModelRoot> {
   private PackageScopeControl myPackageScope;
+  private Function<ASMClass, Documentation> myDocSupplier;
 
   @Override
   public String getType() {
@@ -59,6 +67,25 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
     if (packScope != null) {
       myPackageScope = new PackageScopeControl();
       myPackageScope.load(packScope);
+    }
+    Memento srcSpec = memento.getChild("Sources");
+    if (srcSpec != null) {
+      String srcZip = srcSpec.get("zip");
+      if (srcZip != null) {
+        // don't want to bother with MementoWithFS and/or where to take FileSystem from to use IFile, stick to java.io 
+        File zipFile = new File(srcZip);
+        if (zipFile.isFile()) {
+          // TODO what's wrong with this field is that there's no way to drop the cache, if any 
+          //      Perhaps, shall instantiate the supplier only when model is loaded and discard afterwards, 
+          //      which would duplicate code to open zip but at least won't keep the file or parsed classes in memory 
+          try {
+            myDocSupplier = new SingleZipWithJavaSources(zipFile);
+          } catch (IOException ex) {
+            // it's ok, keep null for doc supplier, no documentation 
+            Logger.getLogger(JavaClassStubsModelRoot.class).info(ex.getMessage());
+          }
+        }
+      }
     }
   }
 
@@ -110,6 +137,14 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
         getModelDescriptors(result, it, "", getModule());
       }
     });
+
+    if (myDocSupplier != null) {
+      for (SModel m : MapSequence.fromMap(result).values()) {
+        if (m instanceof JavaClassStubModelDescriptor) {
+          ((JavaClassStubModelDescriptor) m).setDocumentationSupplier(myDocSupplier);
+        }
+      }
+    }
 
     return MapSequence.fromMap(result).values();
   }

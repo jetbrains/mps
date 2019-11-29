@@ -30,6 +30,7 @@ public final class RuntimeFlags {
   private static Boolean ourUseInterpretedLanguages = null;
   private static boolean ourMergeDriverMode = false;
   private static Boolean ourCastException = null;
+  private static Boolean ourEnableStubSources = null;
 
   private RuntimeFlags() {
   }
@@ -102,5 +103,12 @@ public final class RuntimeFlags {
       ourCastException = !Boolean.getBoolean("mps.disableNodeCastExceptions");
     }
     return ourCastException;
+  }
+
+  public static boolean enableStubSources() {
+    if (ourEnableStubSources == null) {
+      ourEnableStubSources = Boolean.getBoolean("mps.enableStubSources");
+    }
+    return ourEnableStubSources;
   }
 }

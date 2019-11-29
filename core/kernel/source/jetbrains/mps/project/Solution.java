@@ -15,12 +15,12 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.io.DescriptorIO;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -31,6 +31,7 @@ import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.util.ClassType;
 import jetbrains.mps.util.MacroHelper.MacroNoHelper;
+import jetbrains.mps.util.PathManager;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.QualifiedPath;
@@ -46,7 +47,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Solution extends ReloadableModuleBase {
   private SolutionDescriptor mySolutionDescriptor;
@@ -83,6 +83,11 @@ public class Solution extends ReloadableModuleBase {
   }
 
   private static void populateModelRoot(ClassType classType, Memento m) {
+    if (RuntimeFlags.enableStubSources() && (classType == ClassType.CORE || classType == ClassType.OPENAPI)) {
+      // use hardcoded path I know to be part of MPS distribution
+      // alternatively, may let LD specify path to src.zip from e.g. system variable. In perfect world, it would be a project/IDE setting
+      m.createChild("Sources").put("zip", PathManager.getLibPath() + "/MPS-src.zip");
+    }
     PackageScopeControl psc = getPackageScopeControl(classType);
     if (psc == null) {
       return;

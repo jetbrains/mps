@@ -14,6 +14,8 @@ import jetbrains.mps.extapi.model.SModelData;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SModel;
+import java.util.function.Function;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import jetbrains.mps.java.stub.StubReferenceFactory;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -56,14 +58,14 @@ public final class ASMModelLoader {
     }
   }
 
-  public Collection<SModelReference> completeModel(SModel partialModel, SModelData completeModelData) {
+  public Collection<SModelReference> completeModel(SModel partialModel, SModelData completeModelData, Function<ASMClass, Documentation> docSupplier) {
     try {
       StubReferenceFactory refFactory = new StubReferenceFactory(myModule, partialModel);
       for (IFile classfile : getTopClassFiles()) {
         ClassifierLoader rootLoader = new ClassifierLoader(classfile, myOnlyPublic, mySkipPrivate);
         SNode c = rootLoader.createClassifier();
         if (c != null) {
-          rootLoader.updateClassifier(c, refFactory);
+          rootLoader.updateClassifier(c, refFactory, docSupplier);
           completeModelData.addRootNode(c);
         }
       }

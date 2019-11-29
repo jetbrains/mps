@@ -5,6 +5,9 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.RegularModelDescriptor;
 import jetbrains.mps.extapi.persistence.ModelSourceChangeTracker;
+import java.util.function.Function;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
+import jetbrains.mps.baseLanguage.javastub.Documentation;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import org.jetbrains.annotations.NotNull;
@@ -39,6 +42,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
    * XXX would be nice to check update mode in LazySNode and not to demand enforceFullLoad() in this case
    */
   private boolean myIsLoadInProgress;
+  private Function<ASMClass, Documentation> myDocSupplier;
 
   public JavaClassStubModelDescriptor(SModelReference modelReference, FolderSetDataSource source) {
     super(modelReference, source);
@@ -59,6 +63,10 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
 
   /*package*/ void setSkipPrivate(boolean skipPrivateMembers) {
     mySkipPrivate = skipPrivateMembers;
+  }
+
+  /*package*/ void setDocumentationSupplier(Function<ASMClass, Documentation> docSupplier) {
+    myDocSupplier = docSupplier;
   }
 
   @NotNull
@@ -93,7 +101,16 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
         ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
         loader.skipPrivateMembers(mySkipPrivate);
         SModel completeModelData = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
-        Collection<SModelReference> imports = loader.completeModel(this, completeModelData);
+        Function<ASMClass, Documentation> docSupplier = myDocSupplier;
+        if (docSupplier == null) {
+          docSupplier = new Function<ASMClass, Documentation>() {
+            @Override
+            public Documentation apply(ASMClass p0) {
+              return null;
+            }
+          };
+        }
+        Collection<SModelReference> imports = loader.completeModel(this, completeModelData, docSupplier);
         completeModelData.enterUpdateMode();
         mi.enterUpdateMode();
         new PartialModelUpdateFacility(mi, completeModelData, this).update();
