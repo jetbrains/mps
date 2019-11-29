@@ -19,6 +19,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.IdeFrame;
@@ -147,13 +148,18 @@ public abstract class BaseAction extends AnAction {
 
     // In fact, here might be no read required. Perhaps, ActionAccess should also responsible for this.
     getModelAccess(e).runReadAction(() -> {
-      Map<String, Object> params = new THashMap<>();
-      if (!collectActionData(e, params)) {
+      try {
+        Map<String, Object> params = new THashMap<>();
+        if (!collectActionData(e, params)) {
+          disable(e.getPresentation());
+          return;
+        }
+        doUpdate(e, params);
+      } catch (ProcessCanceledException ex) {
+        // though PCE states we shall not catch it, I don't see how to let it go without alerting ModelAccess code that doesn't like exceptions
+        // thrown inside a model action
         disable(e.getPresentation());
         return;
-      }
-      try {
-        doUpdate(e, params);
       } catch (RuntimeException ex) {
         final Logger log = LogManager.getLogger(getClass());
         if (log.isEnabledFor(Level.ERROR)) {
