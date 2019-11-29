@@ -59,7 +59,7 @@ public class MigrateCastExpression extends MigrationScriptBase {
           // concept_old was completely removed 
           if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$N8Tv) == null)) {
             SReference conceptRef = SNodeOperations.getReference(it, LINKS.concept$NIQI);
-            SLinkOperations.setTarget(it, LINKS.conceptArgument$N8Tv, _quotation_createNode_r15y35_a0b0c0a0a0a0a6(SLinkOperations.getTargetNode(conceptRef)));
+            SLinkOperations.setTarget(it, LINKS.conceptArgument$N8Tv, _quotation_createNode_r15y35_a0b0c0a0a0a0a6((SNode) SLinkOperations.getTargetNode(conceptRef)));
             moveLinkAttributes(it, conceptRef.getLink(), SLinkOperations.getTarget(it, LINKS.conceptArgument$N8Tv), LINKS.conceptDeclaration$GmCT);
           }
           SLinkOperations.setTarget(it, LINKS.concept$NIQI, null);

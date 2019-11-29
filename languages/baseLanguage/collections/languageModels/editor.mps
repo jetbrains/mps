@@ -140,6 +140,7 @@
       </concept>
       <concept id="1186414860679" name="jetbrains.mps.lang.editor.structure.EditableStyleClassItem" flags="ln" index="VPxyj" />
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
+      <concept id="1186414949600" name="jetbrains.mps.lang.editor.structure.AutoDeletableStyleClassItem" flags="ln" index="VPRnO" />
       <concept id="1630016958697718209" name="jetbrains.mps.lang.editor.structure.IMenuReference_Default" flags="ng" index="2Z_bC8">
         <reference id="1630016958698373342" name="concept" index="2ZyFGn" />
       </concept>
@@ -2702,6 +2703,9 @@
         </node>
       </node>
       <node concept="VPxyj" id="2wdLO7KhY9$" role="3F10Kt">
+        <property role="VOm3f" value="true" />
+      </node>
+      <node concept="VPRnO" id="1xuy7V1R0s0" role="3F10Kt">
         <property role="VOm3f" value="true" />
       </node>
     </node>

@@ -40,10 +40,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenuBase {
-  public EnumReferenceInEnumSwitchCase_Completion() {
-    super(true);
-  }
+public class EnumMemberReference_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
@@ -54,7 +51,7 @@ public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenu
   @Override
   public List<TransformationMenuItem> createMenuItems(@NotNull TransformationMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("contribution to the " + "default transformation menu for " + "EnumMemberReference", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "6456024106305473255")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default transformation menu for " + "EnumMemberReference", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "3200220852388052010")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -67,12 +64,12 @@ public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenu
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Group_snd94j_a0());
+      result.add(new TMP_Group_5klijv_a0());
     }
     return result;
   }
 
-  public class TMP_Group_snd94j_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  public class TMP_Group_5klijv_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode enumSwitchCase;
     private SNode enumSwitchExpression;
     @Override
@@ -107,12 +104,12 @@ public class EnumReferenceInEnumSwitchCase_Completion extends TransformationMenu
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_5klijv_a0.TMP_Action_5klijv_a0a());
     }
-    private class TMP_Action_snd94j_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    private class TMP_Action_5klijv_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a.Item item = new TMP_Group_snd94j_a0.TMP_Action_snd94j_a0a.Item(context);
+        TMP_Group_5klijv_a0.TMP_Action_5klijv_a0a.Item item = new TMP_Group_5klijv_a0.TMP_Action_5klijv_a0a.Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

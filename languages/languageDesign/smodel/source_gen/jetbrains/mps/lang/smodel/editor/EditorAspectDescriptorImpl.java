@@ -407,7 +407,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 2:
         return Collections.<TransformationMenu>singletonList(new BootstrapAwareMetaObject_TransformationMenu());
       case 3:
-        return Collections.<TransformationMenu>singletonList(new EnumReferenceInEnumSwitchCase_Completion());
+        return Collections.<TransformationMenu>singletonList(new EnumMemberReference_TransformationMenu());
       case 4:
         return Collections.<TransformationMenu>singletonList(new expression_Contribution());
       case 5:

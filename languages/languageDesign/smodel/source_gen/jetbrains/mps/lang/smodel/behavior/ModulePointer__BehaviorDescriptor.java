@@ -26,16 +26,16 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
 
-  public static final SMethod<SModuleReference> getModuleReference_idnJmxU5cSSU = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("getModuleReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("nJmxU5cSSU").build();
+  public static final SMethod<SModuleReference> toModuleReference_id1Bs_61$mqDd = new SMethodBuilder<SModuleReference>(new SJavaCompoundTypeImpl(SModuleReference.class)).name("toModuleReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1Bs_61$mqDd").build();
   public static final SMethod<Void> setModuleReference_idnJmxU5cSTj = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setModuleReference").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("nJmxU5cSTj").build(SMethodBuilder.createJavaParameter(SModuleReference.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getModuleReference_idnJmxU5cSSU, setModuleReference_idnJmxU5cSTj);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(toModuleReference_id1Bs_61$mqDd, setModuleReference_idnJmxU5cSTj);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   @Nullable
-  /*package*/ static SModuleReference getModuleReference_idnJmxU5cSSU(@NotNull SNode __thisNode__) {
+  /*package*/ static SModuleReference toModuleReference_id1Bs_61$mqDd(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getString(__thisNode__, PROPS.moduleId$jb6o) == null) {
       return null;
     }
@@ -69,7 +69,7 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((SModuleReference) getModuleReference_idnJmxU5cSSU(node));
+        return (T) ((SModuleReference) toModuleReference_id1Bs_61$mqDd(node));
       case 1:
         setModuleReference_idnJmxU5cSTj(node, (SModuleReference) parameters[0]);
         return null;

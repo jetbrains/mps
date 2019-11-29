@@ -11,17 +11,19 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,9 +36,10 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x47bb2de70d00ff8cL, "jetbrains.mps.lang.smodel.structure.OperationParm_LinkQualifier");
 
   public static final SMethod<SNode> getOperation_id52QkhOxfj6w = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperation").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52QkhOxfj6w").build();
+  public static final SMethod<SEnumerationLiteral> getLinkMetaclass_id2LDtYz_plxI = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getLinkMetaclass").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2LDtYz_plxI").build();
   public static final SMethod<Iterable<SNode>> getLinkAccessScope_id2xk$X1Ld2Yi = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getLinkAccessScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2xk$X1Ld2Yi").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperation_id52QkhOxfj6w, getLinkAccessScope_id2xk$X1Ld2Yi);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperation_id52QkhOxfj6w, getLinkMetaclass_id2LDtYz_plxI, getLinkAccessScope_id2xk$X1Ld2Yi);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -44,11 +47,13 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
   /*package*/ static SNode getOperation_id52QkhOxfj6w(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.SNodeOperation$o6);
   }
-  /*package*/ static Iterable<SNode> getLinkAccessScope_id2xk$X1Ld2Yi(@NotNull SNode __thisNode__) {
-    final boolean acceptAggregations = SNodeOperations.isInstanceOf(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__), CONCEPTS.Node_GetChildrenOperation$Az);
+  /*package*/ static SEnumerationLiteral getLinkMetaclass_id2LDtYz_plxI(@NotNull SNode __thisNode__) {
+    return (SNodeOperations.isInstanceOf(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__), CONCEPTS.Node_GetChildrenOperation$Az) ? SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b9L, "aggregation") : SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass"), 0xfc6f4e95b8L, "reference"));
+  }
+  /*package*/ static Iterable<SNode> getLinkAccessScope_id2xk$X1Ld2Yi(@NotNull final SNode __thisNode__) {
     return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(OperationParm_LinkQualifier__BehaviorDescriptor.getOperation_id52QkhOxfj6w.invoke(__thisNode__))), CONCEPTS.SNodeType$gn), LINKS.concept$HWFQ))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (acceptAggregations ? SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b9L) : SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), 0xfc6f4e95b8L));
+        return Objects.equals(SPropertyOperations.getEnum(it, PROPS.metaClass$tHD7), OperationParm_LinkQualifier__BehaviorDescriptor.getLinkMetaclass_id2LDtYz_plxI.invoke(__thisNode__));
       }
     });
   }
@@ -71,6 +76,8 @@ public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseB
       case 0:
         return (T) ((SNode) getOperation_id52QkhOxfj6w(node));
       case 1:
+        return (T) ((SEnumerationLiteral) getLinkMetaclass_id2LDtYz_plxI(node));
+      case 2:
         return (T) ((Iterable<SNode>) getLinkAccessScope_id2xk$X1Ld2Yi(node));
       default:
         throw new BHMethodNotFoundException(this, method);
