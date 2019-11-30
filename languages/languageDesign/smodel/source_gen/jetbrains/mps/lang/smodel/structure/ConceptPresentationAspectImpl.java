@@ -1024,7 +1024,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Node_ContainingLinkOperation:
         if (props_Node_ContainingLinkOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("link");
+          cpb.rawPresentation("containingLink");
           props_Node_ContainingLinkOperation = cpb.create();
         }
         return props_Node_ContainingLinkOperation;
@@ -1109,7 +1109,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Node_GetContainingRootOperation:
         if (props_Node_GetContainingRootOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("containing root");
+          cpb.rawPresentation("containingRoot");
           props_Node_GetContainingRootOperation = cpb.create();
         }
         return props_Node_GetContainingRootOperation;

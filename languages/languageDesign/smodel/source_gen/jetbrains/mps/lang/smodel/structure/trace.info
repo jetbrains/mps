@@ -1604,8 +1604,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="1171310072040" at="133,0,134,0" concept="1" trace="props_Node_GetContainingRootOperation" />
       <node id="1171310072040" at="1110,60,1111,76" concept="3" />
-      <node id="1171310072040" at="1111,76,1112,49" concept="0" />
-      <node id="1171310072040" at="1112,49,1113,63" concept="0" />
+      <node id="1171310072040" at="1111,76,1112,48" concept="0" />
+      <node id="1171310072040" at="1112,48,1113,63" concept="0" />
       <node id="1171310072040" at="1114,9,1115,53" concept="4" />
       <node id="1171310072040" at="1109,65,1114,9" concept="2" />
       <scope id="1171310072040" at="1110,60,1113,63">
@@ -1626,8 +1626,8 @@
       <node id="1171310072040" at="1851,125,1852,106" concept="0" />
       <node id="1171310072040" at="1852,106,1853,17" concept="0" />
       <node id="1171310072040" at="1853,17,1854,49" concept="0" />
-      <node id="1171310072040" at="1854,49,1855,31" concept="0" />
-      <node id="1171310072040" at="1855,31,1856,22" concept="4" />
+      <node id="1171310072040" at="1854,49,1855,30" concept="0" />
+      <node id="1171310072040" at="1855,30,1856,22" concept="4" />
       <node id="1171310072040" at="1848,0,1858,0" concept="6" trace="createDescriptorForNode_GetContainingRootOperation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="1171310072040" at="490,65,491,56" />
       <scope id="1171310072040" at="1848,89,1856,22">
@@ -6844,8 +6844,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="7504436213544206332" at="122,0,123,0" concept="1" trace="props_Node_ContainingLinkOperation" />
       <node id="7504436213544206332" at="1025,57,1026,76" concept="3" />
-      <node id="7504436213544206332" at="1026,76,1027,38" concept="0" />
-      <node id="7504436213544206332" at="1027,38,1028,60" concept="0" />
+      <node id="7504436213544206332" at="1026,76,1027,48" concept="0" />
+      <node id="7504436213544206332" at="1027,48,1028,60" concept="0" />
       <node id="7504436213544206332" at="1029,9,1030,50" concept="4" />
       <node id="7504436213544206332" at="1024,62,1029,9" concept="2" />
       <scope id="7504436213544206332" at="1025,57,1028,60">
@@ -6866,8 +6866,8 @@
       <node id="7504436213544206332" at="1742,125,1743,112" concept="0" />
       <node id="7504436213544206332" at="1743,112,1744,17" concept="0" />
       <node id="7504436213544206332" at="1744,17,1745,49" concept="0" />
-      <node id="7504436213544206332" at="1745,49,1746,20" concept="0" />
-      <node id="7504436213544206332" at="1746,20,1747,22" concept="4" />
+      <node id="7504436213544206332" at="1745,49,1746,30" concept="0" />
+      <node id="7504436213544206332" at="1746,30,1747,22" concept="4" />
       <node id="7504436213544206332" at="1739,0,1749,0" concept="6" trace="createDescriptorForNode_ContainingLinkOperation#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="7504436213544206332" at="468,62,469,53" />
       <scope id="7504436213544206332" at="1739,86,1747,22">

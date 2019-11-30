@@ -11345,7 +11345,7 @@
                       <node concept="liA8E" id="14g" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="14h" role="37wK5m">
-                          <property role="Xl_RC" value="link" />
+                          <property role="Xl_RC" value="containingLink" />
                           <node concept="cd27G" id="14j" role="lGtFl">
                             <node concept="3u3nmq" id="14k" role="cd27D">
                               <property role="3u3nmv" value="7504436213544206332" />
@@ -12289,7 +12289,7 @@
                       <node concept="liA8E" id="1a0" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="1a1" role="37wK5m">
-                          <property role="Xl_RC" value="containing root" />
+                          <property role="Xl_RC" value="containingRoot" />
                           <node concept="cd27G" id="1a3" role="lGtFl">
                             <node concept="3u3nmq" id="1a4" role="cd27D">
                               <property role="3u3nmv" value="1171310072040" />
@@ -49654,7 +49654,7 @@
             <node concept="liA8E" id="4_h" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="4_i" role="37wK5m">
-                <property role="Xl_RC" value="link" />
+                <property role="Xl_RC" value="containingLink" />
               </node>
             </node>
           </node>
@@ -51198,7 +51198,7 @@
             <node concept="liA8E" id="4Ii" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="4Ij" role="37wK5m">
-                <property role="Xl_RC" value="containing root" />
+                <property role="Xl_RC" value="containingRoot" />
               </node>
             </node>
           </node>

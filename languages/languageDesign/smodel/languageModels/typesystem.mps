@@ -3567,98 +3567,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3SKdUt" id="45eRmv01No8" role="3cqZAp">
-              <node concept="1PaTwC" id="24uceTRVFp2" role="3ndbpf">
-                <node concept="3oM_SD" id="24uceTRVFp3" role="1PaTwD">
-                  <property role="3oM_SC" value="TODO" />
-                </node>
-                <node concept="3oM_SD" id="24uceTRVFp4" role="1PaTwD">
-                  <property role="3oM_SC" value="remove" />
-                </node>
-                <node concept="3oM_SD" id="24uceTRVFp5" role="1PaTwD">
-                  <property role="3oM_SC" value="these" />
-                </node>
-                <node concept="3oM_SD" id="24uceTRVFp6" role="1PaTwD">
-                  <property role="3oM_SC" value="clauses" />
-                </node>
-                <node concept="3oM_SD" id="24uceTRVFp7" role="1PaTwD">
-                  <property role="3oM_SC" value="after" />
-                </node>
-                <node concept="3oM_SD" id="24uceTRVFp8" role="1PaTwD">
-                  <property role="3oM_SC" value="2019.1" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="45eRmv01Odj" role="3cqZAp">
-              <node concept="3clFbS" id="45eRmv01Odl" role="3clFbx">
-                <node concept="3clFbF" id="45eRmv0227w" role="3cqZAp">
-                  <node concept="37vLTI" id="45eRmv022zI" role="3clFbG">
-                    <node concept="3clFbT" id="45eRmv022Hf" role="37vLTx">
-                      <property role="3clFbU" value="true" />
-                    </node>
-                    <node concept="37vLTw" id="45eRmv0227u" role="37vLTJ">
-                      <ref role="3cqZAo" node="hgB6VWD" resolve="isGood" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="1Wc70l" id="45eRmv0202f" role="3clFbw">
-                <node concept="2OqwBi" id="45eRmv01PPM" role="3uHU7B">
-                  <node concept="37vLTw" id="45eRmv01PCc" role="2Oq$k0">
-                    <ref role="3cqZAo" node="45eRmv01C$r" resolve="datatype" />
-                  </node>
-                  <node concept="2qgKlT" id="45eRmv01XNd" role="2OqNvi">
-                    <ref role="37wK5l" to="tpcn:hKtF$7L" resolve="isSimple" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="45eRmv021lg" role="3uHU7w">
-                  <node concept="2OqwBi" id="45eRmv020qZ" role="2Oq$k0">
-                    <node concept="37vLTw" id="45eRmv020hf" role="2Oq$k0">
-                      <ref role="3cqZAo" node="h9nIkZ3" resolve="op" />
-                    </node>
-                    <node concept="2yIwOk" id="45eRmv02131" role="2OqNvi" />
-                  </node>
-                  <node concept="2qgKlT" id="45eRmv021WA" role="2OqNvi">
-                    <ref role="37wK5l" to="tpeu:1653mnvAgrO" resolve="applicableToSimpleProperty" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="45eRmv022Xt" role="3cqZAp">
-              <node concept="3clFbS" id="45eRmv022Xv" role="3clFbx">
-                <node concept="3clFbF" id="45eRmv02aqF" role="3cqZAp">
-                  <node concept="37vLTI" id="45eRmv02bom" role="3clFbG">
-                    <node concept="3clFbT" id="45eRmv02bue" role="37vLTx">
-                      <property role="3clFbU" value="true" />
-                    </node>
-                    <node concept="37vLTw" id="45eRmv02aqD" role="37vLTJ">
-                      <ref role="3cqZAo" node="hgB6VWD" resolve="isGood" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="1Wc70l" id="45eRmv02844" role="3clFbw">
-                <node concept="2OqwBi" id="45eRmv028VW" role="3uHU7w">
-                  <node concept="2OqwBi" id="45eRmv028nP" role="2Oq$k0">
-                    <node concept="37vLTw" id="45eRmv028e5" role="2Oq$k0">
-                      <ref role="3cqZAo" node="h9nIkZ3" resolve="op" />
-                    </node>
-                    <node concept="2yIwOk" id="45eRmv028DH" role="2OqNvi" />
-                  </node>
-                  <node concept="2qgKlT" id="45eRmv02afL" role="2OqNvi">
-                    <ref role="37wK5l" to="tpeu:1653mnvAguj" resolve="applicableToEnumProperty" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="45eRmv023l_" role="3uHU7B">
-                  <node concept="37vLTw" id="45eRmv0239J" role="2Oq$k0">
-                    <ref role="3cqZAo" node="45eRmv01C$r" resolve="datatype" />
-                  </node>
-                  <node concept="2qgKlT" id="45eRmv025H4" role="2OqNvi">
-                    <ref role="37wK5l" to="tpcn:hKtFDel" resolve="isEnum" />
-                  </node>
-                </node>
-              </node>
-            </node>
           </node>
           <node concept="3y3z36" id="45eRmv01Jbg" role="3clFbw">
             <node concept="37vLTw" id="45eRmv01HWW" role="3uHU7B">
@@ -4437,6 +4345,10 @@
               <node concept="3clFbS" id="3rsv3DMkCET" role="3clFbx">
                 <node concept="1ZobV4" id="3rsv3DMkEY_" role="3cqZAp">
                   <property role="3wDh2S" value="false" />
+                  <node concept="15s5l7" id="2LDtYz_p0cO" role="lGtFl">
+                    <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+                    <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;" />
+                  </node>
                   <node concept="mw_s8" id="3rsv3DMkEYD" role="1ZfhK$">
                     <node concept="2c44tf" id="3rsv3DMkEYE" role="mwGJk">
                       <node concept="3Tqbb2" id="3rsv3DMkEYG" role="2c44tc">
@@ -4458,10 +4370,6 @@
                   <node concept="37vLTw" id="3rsv3DMkEYJ" role="1ZmcU8">
                     <ref role="3cqZAo" node="h_etfVl" resolve="op" />
                   </node>
-                  <node concept="15s5l7" id="2LDtYz_p0cO" role="lGtFl">
-                    <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
-                    <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;" />
-                  </node>
                 </node>
               </node>
               <node concept="2OqwBi" id="3rsv3DMkDju" role="3clFbw">
@@ -4478,6 +4386,10 @@
                 <node concept="3clFbS" id="3rsv3DMkDLp" role="3eOfB_">
                   <node concept="1ZobV4" id="3rsv3DMkFiE" role="3cqZAp">
                     <property role="3wDh2S" value="false" />
+                    <node concept="15s5l7" id="2LDtYz_p0d0" role="lGtFl">
+                      <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
+                      <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;" />
+                    </node>
                     <node concept="mw_s8" id="3rsv3DMkFiF" role="1ZfhK$">
                       <node concept="2c44tf" id="3rsv3DMkFiG" role="mwGJk">
                         <node concept="2I9FWS" id="hRRa$6q" role="2c44tc">
@@ -4498,10 +4410,6 @@
                     </node>
                     <node concept="37vLTw" id="3rsv3DMkFiN" role="1ZmcU8">
                       <ref role="3cqZAo" node="h_etfVl" resolve="op" />
-                    </node>
-                    <node concept="15s5l7" id="2LDtYz_p0d0" role="lGtFl">
-                      <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/4649457259827193981]&quot;;" />
-                      <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;AbstractConceptDeclaration&gt;" />
                     </node>
                   </node>
                 </node>
@@ -4666,6 +4574,10 @@
               </node>
             </node>
             <node concept="3clFbJ" id="hPRimeO" role="9aQIa">
+              <node concept="15s5l7" id="2LDtYz_p0ee" role="lGtFl">
+                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;AbstractConceptDeclaration&gt; is not comparable with node&lt;RuntimeTypeVariable&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)/4101496941862450650]&quot;;" />
+                <property role="huDt6" value="Error: type node&lt;AbstractConceptDeclaration&gt; is not comparable with node&lt;RuntimeTypeVariable&gt;" />
+              </node>
               <node concept="3clFbS" id="hPRimeP" role="3clFbx">
                 <node concept="3clFbJ" id="hPRimeQ" role="3cqZAp">
                   <node concept="3clFbS" id="hPRimeR" role="3clFbx">
@@ -4828,10 +4740,6 @@
                     </node>
                   </node>
                 </node>
-              </node>
-              <node concept="15s5l7" id="2LDtYz_p0ee" role="lGtFl">
-                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;AbstractConceptDeclaration&gt; is not comparable with node&lt;RuntimeTypeVariable&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)/4101496941862450650]&quot;;" />
-                <property role="huDt6" value="Error: type node&lt;AbstractConceptDeclaration&gt; is not comparable with node&lt;RuntimeTypeVariable&gt;" />
               </node>
             </node>
           </node>

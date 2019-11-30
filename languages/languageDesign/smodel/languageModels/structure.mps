@@ -734,7 +734,7 @@
     <property role="TrG5h" value="Node_GetContainingRootOperation" />
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.node" />
-    <property role="34LRSv" value="containing root" />
+    <property role="34LRSv" value="containingRoot" />
     <property role="EcuMT" value="1171310072040" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
@@ -2639,7 +2639,7 @@
     <property role="TrG5h" value="Node_ContainingLinkOperation" />
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.node" />
-    <property role="34LRSv" value="link" />
+    <property role="34LRSv" value="containingLink" />
     <property role="EcuMT" value="7504436213544206332" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>

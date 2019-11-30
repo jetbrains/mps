@@ -1743,7 +1743,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)/7504436213544206332");
     b.version(2);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
-    b.alias("link");
+    b.alias("containingLink");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNode_CopyOperation() {
@@ -1852,7 +1852,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)/1171310072040");
     b.version(2);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
-    b.alias("containing root");
+    b.alias("containingRoot");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNode_GetDescendantsOperation() {
