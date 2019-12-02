@@ -88,7 +88,7 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
             SNode node = nodeReportItem.getNode().resolve(repository);
             if (node == null) {
               if (LOG.isEnabledFor(Level.ERROR)) {
-                LOG.error("node cannot be resolved in repository: " + nodeReportItem.getNode(), new Throwable());
+                LOG.error("node cannot be resolved in repository: " + nodeReportItem.getNode() + ", error: " + nodeReportItem.toPredicate(nodeReportItem.getIdFlavours()).serialize(), new Throwable());
               }
               continue;
             }
