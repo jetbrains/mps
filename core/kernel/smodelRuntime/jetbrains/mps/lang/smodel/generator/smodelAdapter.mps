@@ -147,7 +147,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
+      <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
+        <child id="1214996921760" name="bound" index="3ztrMU" />
+      </concept>
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
         <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
       </concept>
@@ -11900,6 +11902,9 @@
     </node>
     <node concept="2YIFZL" id="1xLGIeL0C9g" role="jymVt">
       <property role="TrG5h" value="castConcept" />
+      <node concept="3uibUv" id="5zRhFwzOWIm" role="3clF45">
+        <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+      </node>
       <node concept="3clFbS" id="1xLGIeL0C9h" role="3clF47">
         <node concept="3clFbJ" id="1xLGIeL0C9i" role="3cqZAp">
           <node concept="3clFbS" id="1xLGIeL0C9j" role="3clFbx">
@@ -12012,9 +12017,6 @@
         <node concept="3uibUv" id="1xLGIeL0Ca7" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
         </node>
-      </node>
-      <node concept="3uibUv" id="5zRhFwzOWIm" role="3clF45">
-        <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
       </node>
     </node>
     <node concept="2YIFZL" id="5IkW5anFeAs" role="jymVt">
@@ -12179,14 +12181,11 @@
       </node>
       <node concept="37vLTG" id="5MFgGQnkRVF" role="3clF46">
         <property role="TrG5h" value="concept" />
-        <node concept="3uibUv" id="Det6sRbgdb" role="1tU5fm">
-          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+        <node concept="16syzq" id="5zRhFwzZKo_" role="1tU5fm">
+          <ref role="16sUi3" node="5zRhFwzZJf0" resolve="T" />
         </node>
       </node>
       <node concept="3Tm1VV" id="5MFgGQnkRVH" role="1B3o_S" />
-      <node concept="3uibUv" id="Det6sRbgaM" role="3clF45">
-        <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
-      </node>
       <node concept="2AHcQZ" id="1h7nat$XYqO" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
@@ -12195,6 +12194,15 @@
           <node concept="1dT_AC" id="1h7nat$XZ7n" role="1dT_Ay">
             <property role="1dT_AB" value="this method is used where both concept and declaration should be acceptable" />
           </node>
+        </node>
+      </node>
+      <node concept="16syzq" id="5zRhFwzZJQs" role="3clF45">
+        <ref role="16sUi3" node="5zRhFwzZJf0" resolve="T" />
+      </node>
+      <node concept="16euLQ" id="5zRhFwzZJf0" role="16eVyc">
+        <property role="TrG5h" value="T" />
+        <node concept="3uibUv" id="5zRhFwzZJt8" role="3ztrMU">
+          <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
         </node>
       </node>
     </node>

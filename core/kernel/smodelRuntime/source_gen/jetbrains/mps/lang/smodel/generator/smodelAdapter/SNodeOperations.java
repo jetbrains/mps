@@ -617,7 +617,7 @@ public class SNodeOperations {
    * this method is used where both concept and declaration should be acceptable
    */
   @Deprecated
-  public static SAbstractConcept asSConcept(SAbstractConcept concept) {
+  public static <T extends SAbstractConcept> T asSConcept(T concept) {
     return concept;
   }
   public static SConcept asInstanceConcept(SAbstractConcept concept) {
