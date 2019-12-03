@@ -25,4 +25,8 @@
       <implementation-class>jetbrains.mps.ide.memManagement.MemManager</implementation-class>
     </component>
   </project-components>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <registryKey key="ide.memory.cleanup.interval" defaultValue="-1" description="Unload all models each N minutes" restartRequired="true"/>
+  </extensions>
 </idea-plugin>

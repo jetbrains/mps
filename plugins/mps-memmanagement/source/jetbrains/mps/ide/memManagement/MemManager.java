@@ -17,6 +17,8 @@ package jetbrains.mps.ide.memManagement;
 
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.registry.Registry;
+import com.intellij.openapi.util.registry.RegistryValue;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.ex.StatusBarEx;
@@ -39,8 +41,8 @@ import java.util.function.Consumer;
 import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
 
 public class MemManager implements ProjectComponent {
-  private static final Logger LOG = LogManager.getLogger(MemManager.class);
   public static final int DELAY = 5;
+  private static final Logger LOG = LogManager.getLogger(MemManager.class);
   private static final int DELAY2 = DELAY * 2;
 
   private Project myProject;
@@ -48,11 +50,14 @@ public class MemManager implements ProjectComponent {
   private ActionListener myActionListener = e -> {
     cleanup();
   };
+
+  private Alarm myCleanupAlarm;
   private Alarm myAlarm;
 
   public MemManager(Project project) {
     myProject = project;
     myAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
+    myCleanupAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
   }
 
   @Override
@@ -72,6 +77,12 @@ public class MemManager implements ProjectComponent {
 
     myMemUsagePanel = (MemoryUsagePanel) widget;
     myMemUsagePanel.addActionListener(myActionListener);
+
+    RegistryValue interval = Registry.get("ide.memory.cleanup.interval");
+    double minutes = interval.asDouble();
+    if (minutes > 0) {
+      new MyRepeatingCleanup(Math.round(minutes * 60 * 1000)).run();
+    }
   }
 
   @Override
@@ -145,5 +156,20 @@ public class MemManager implements ProjectComponent {
     Runtime rt = Runtime.getRuntime();
     long allocatedMem = rt.totalMemory() / MEGABYTE;
     return allocatedMem - rt.freeMemory() / MEGABYTE;
+  }
+
+  private class MyRepeatingCleanup implements Runnable {
+    private final long myDelayMillis;
+
+    public MyRepeatingCleanup(long delayMillis) {
+      myDelayMillis = delayMillis;
+    }
+
+    @Override
+    public void run() {
+      MemManager.this.cleanup();
+      myCleanupAlarm.cancelAllRequests();
+      myCleanupAlarm.addRequest(MyRepeatingCleanup.this, myDelayMillis);
+    }
   }
 }
