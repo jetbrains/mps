@@ -80,17 +80,22 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
   private void addModules(List<? extends ReloadableModuleBase> modules) {
     modules.sort(MODULE_COMPARATOR);
     myModulesWatcher.addModules(modules);
+    // fixme decouple! the handler must only change the state (valid/invalid to load) it must not do any reloading
+    //  it will be possible when we generate classpath and do not have to grab the read lock when calculating the dependencies
+    //  then we will be able to return the up-to-date classloader without
     myManager.preLoadModules(modules, new EmptyProgressMonitor());
   }
 
   private void updateModules(List<? extends ReloadableModuleBase> modules) {
     List<SModule> modulesToReload = new ArrayList<>(modules);
     modulesToReload.sort(MODULE_COMPARATOR);
+    // fixme
     myManager.doReloadModules(modulesToReload, new EmptyProgressMonitor());
   }
 
   private void removeModules(List<SModuleReference> modules) {
     modules.sort(MODULE_COMPARATOR);
+    // fixme this is wrong but otherwise we will never unload them
     myManager.unloadModules(modules, new EmptyProgressMonitor());
     myModulesWatcher.removeModules(modules);
   }
@@ -103,12 +108,13 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
       event.accept(visitor);
     }
 
+    // fixme we should move rather to the accurate events processing instead of calculating status for each module
     List<SModuleReference> modulesToUnload = visitor.getModulesToUnload();
     List<ReloadableModuleBase> modulesToUpdate = visitor.getModulesToUpdate();
     List<ReloadableModuleBase> modulesToLoad = visitor.getModulesToLoad();
-    if (modulesToUnload.size() > 0) removeModules(modulesToUnload);
-    if (modulesToLoad.size() > 0) addModules(modulesToLoad);
-    if (modulesToUpdate.size() > 0) updateModules(modulesToUpdate);
+    if (!modulesToUnload.isEmpty()) removeModules(modulesToUnload);
+    if (!modulesToLoad.isEmpty()) addModules(modulesToLoad);
+    if (!modulesToUpdate.isEmpty()) updateModules(modulesToUpdate);
   }
 
   public void pause() {

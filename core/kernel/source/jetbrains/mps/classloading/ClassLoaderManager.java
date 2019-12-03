@@ -42,6 +42,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
 import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress.LOADED;
@@ -118,8 +119,44 @@ import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress
  * FIXME the module dependecy tracking must be isolated from the class loading logic
  *
  * TODO the workflow between ModuleEventsHandler, ClassLoaderManager and ModulesWatcher is too complicated and impossible to perceive, it needs to be done over again
- * TODO As for 23.01.19 the refactoring is planned for the 192 version, where the reloadable modules will be equipped with persisted cp.
- * TODO Effectively it will remove all the repository locks from cl and will simplify it a lot since there wil be no performance problem anymore
+ * TODO As for 23.01.19 the refactoring is planned for the 202 version, where the reloadable modules will be equipped with persisted cp.
+ *
+ *  THE PLAN for the future
+ *  updates (#reload, #unload, #load):
+ *
+ *  The dependency graph is updated at the special moments under some lock (now it is updated upon request and in the end of each write action)
+ *  This operation is assumed not to happen too often.
+ *
+ *  Each module has a loaded/unloaded status and that one is updated only upon request (explicit invocation of #reload) and requests a write* action.
+ *   (write* is the lock guarding the module classes, write is the lock guarding the modules/models repository (where we do not need any classes)).
+ *  We have generations of classloaders, each classloader remembers his generation token, also it has disposed/not-disposed state.
+ *
+ *  Each module has an API-available state (deployed/not-deployed), it is possible to deploy/undeploy the module directly, but it can fail due to reasons which are passed
+ *   to the caller.
+ *
+ *  queries:
+ *
+ *  The graph with deps is queried when needed by CLM and by external clients. It must be done under the same lock as above.
+ *
+ *  Each module has an API-available state (valid/not-valid). The lock is the same as with the graph.
+ *
+ *  Since there is no easy way to track all the instances of the given class,
+ *   #getClassLoader now gets the second parameter of ReloadTracker which is essentially the listener which is invoked on #reloads (like {@link DeployListener}
+ *   and is obliged to recreate all the instances of dynamic classes he has hard references too (for example, stores them in the map).
+ *   When the client decides that he does not need the old ModuleClassLoader to exist, he invokes callback#release (if the client's workflow is asynchronous)
+ *
+ *  In order to guarantee for a piece of code to be executed on the same generation of ModuleClassLoaders (which is not always the case, I believe),
+ *   the client has to take read* lock.
+ *
+ *  Each ModuleClassLoader will depend only on ModuleClassLoaders from the same generation (currently that is not true).
+ *
+ *  From each generation token it will be possible to extract information about the specific #reload operation that happenned.
+ *
+ *  We catch ClassCastExceptions somewhere to dump every detail we have on two different ModuleClassLoaders which clashed
+ *  Also we catch any problems from extensions and switch them off like IJ does.
+ *
+ *
+ * @author apyshkin
  */
 @SuppressWarnings("unchecked")
 public class ClassLoaderManager implements CoreComponent {
@@ -134,7 +171,11 @@ public class ClassLoaderManager implements CoreComponent {
     }
   };
 
-  private final Object myLoadingModulesLock = new Object();
+  /**
+   * guards any loading/unloading operations
+   * first write/read repo lock must be taken and then this one
+   */
+  private final ReentrantLock myLoadingModulesLock = new ReentrantLock();
 
   /**
    * @deprecated use {@link jetbrains.mps.components.ComponentHost#findComponent(Class) ComponentHost#findComponent(ClassLoaderManager.class)} instead
@@ -269,7 +310,8 @@ public class ClassLoaderManager implements CoreComponent {
     }
 
     if (myRepository.getModelAccess().canWrite()) {
-      // fixme awful solution
+      // fixme awful solution, unpredictable return value;
+      //  however we need this in the during long writes where we want to see the update without explicit  #reload invocation
       refresh();
     }
 
@@ -295,17 +337,16 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   /**
-   * Flushes all delayed notifications to keep up with the module repository state
+   * Flushes all delayed notifications to keep up the graph in {@link ModulesWatcher} with the module repository state
    * @see ModuleEventsHandler
    * @return if refresh actually happened
    */
   private boolean refresh() {
-    checkWriteAccess();
+    checkReadAccess();
     return myRepositoryListener.refresh();
   }
 
   /**
-   * @lazy
    * @param modules are modules which are about to load. The notifications for {@link DeployListener} are sent here.
    * The actual load happens in {@link #doLoadModules} on a method call of {@link #getClassLoader}.
    *
@@ -439,9 +480,6 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * Use this method to invalidate modules (namely, recreate their class loaders)
    * There are also useful {@link #reloadModules(Iterable)} and {@link #reloadModule(SModule)}.
-   *
-   * TODO: add listening to class files updating and remove explicit call from ModuleMaker and the others
-   * FIXME: remove TempModule: it should not be processed by CLManager. It maintains only repository modules!
    */
   public void reloadModules(Iterable<? extends SModule> modules, @NotNull ProgressMonitor monitor) {
     checkWriteAccess();
@@ -508,15 +546,19 @@ public class ClassLoaderManager implements CoreComponent {
   /**
    * Note: usually reloading only the "dirty" modules is enough.
    * Please take a look at {@link #reloadModule} and {@link #reloadModules} methods.
-   * @deprecated
    * @see #reloadModules(Iterable, org.jetbrains.mps.openapi.util.ProgressMonitor)
    */
+  @Internal
   public void reloadAll(@NotNull ProgressMonitor monitor) {
     reloadModules(myRepository.getModules(), monitor);
   }
 
   private void checkWriteAccess() {
     myRepository.getModelAccess().checkWriteAccess();
+  }
+
+  private void checkReadAccess() {
+    myRepository.getModelAccess().checkReadAccess();
   }
 
   @NotNull

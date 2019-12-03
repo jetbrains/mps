@@ -77,7 +77,7 @@ public class ClassLoadingBroadCaster {
     try {
       monitor.start("Broadcasting Unload Events", 2 * myDeployListeners.size());
       DisposeSession session = myDisposer.createSession(modulesToUnload, mySessionsAlive::remove);
-      if (mySessionsAlive.size() > MAX_SESSIONS_ALIVE) {
+      if (mySessionsAlive.size() > MAX_SESSIONS_ALIVE) { // note that if we do 100 reloads during a single write action we might get a 100 sessions
         LOG.error("Possible leaking classes : currently there are " + mySessionsAlive.size() + " sessions alive");
       }
       mySessionsAlive.add(session);
