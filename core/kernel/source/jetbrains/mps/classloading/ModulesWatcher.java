@@ -163,16 +163,16 @@ public class ModulesWatcher {
           }
         }
       }
-      String message = invalidModules.size() + " modules are marked as invalid roots for class loading out of " + getAllModules().size() +
-                       " modules [totally in the repository]:";
-      if (invalidModules.isEmpty()) {
-        LOG.info(message);
-      } else {
+      if (!invalidModules.isEmpty()) {
+        String message = invalidModules.size() + " modules are marked as invalid roots for class loading out of " + getAllModules().size() +
+                         " modules [totally in the repository]:";
         LOG.warn(message);
+        print(invalidModules, LOG::warn);
       }
-      print(invalidModules, LOG::warn);
-      LOG.info("Totally " + allInvalidModules.size() + " modules are marked invalid for class loading:");
-      print(allInvalidModules, LOG::info);
+      if (!allInvalidModules.isEmpty()) {
+        LOG.info("Totally " + allInvalidModules.size() + " modules are marked invalid for class loading:");
+        print(allInvalidModules, LOG::info);
+      }
 
       checkStatusMapCorrectness();
     }
