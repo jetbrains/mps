@@ -77,7 +77,7 @@ public class ModelConstraints {
                                       @Nullable SContainmentLink containmentLink,
                                       @Nullable CheckingNodeContext checkingNodeContext) {
 
-    SNode currentNode = parentNode.getParent();
+    SNode currentNode = parentNode;
     while (currentNode != null) {
       ConstraintContext_CanBeAncestor context = new ConstraintContext_CanBeAncestor(currentNode, childConcept, parentNode, containmentLink);
       ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(currentNode.getConcept());
