@@ -5,9 +5,7 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.RegularModelDescriptor;
 import jetbrains.mps.extapi.persistence.ModelSourceChangeTracker;
-import java.util.function.Function;
-import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
-import jetbrains.mps.baseLanguage.javastub.Documentation;
+import jetbrains.mps.baseLanguage.javastub.JavadocSupplier;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import org.jetbrains.annotations.NotNull;
@@ -18,6 +16,9 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.baseLanguage.javastub.ASMModelLoader;
 import jetbrains.mps.smodel.nodeidmap.MigratingJavaStubRefsNodeIdMap;
+import java.util.function.Function;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
+import jetbrains.mps.baseLanguage.javastub.Documentation;
 import java.util.Collection;
 import jetbrains.mps.smodel.loading.PartialModelUpdateFacility;
 import jetbrains.mps.smodel.ModelLoadResult;
@@ -42,7 +43,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
    * XXX would be nice to check update mode in LazySNode and not to demand enforceFullLoad() in this case
    */
   private boolean myIsLoadInProgress;
-  private Function<ASMClass, Documentation> myDocSupplier;
+  private JavadocSupplier myDocSupplier;
 
   public JavaClassStubModelDescriptor(SModelReference modelReference, FolderSetDataSource source) {
     super(modelReference, source);
@@ -65,7 +66,7 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
     mySkipPrivate = skipPrivateMembers;
   }
 
-  /*package*/ void setDocumentationSupplier(Function<ASMClass, Documentation> docSupplier) {
+  /*package*/ void setDocumentationSupplier(JavadocSupplier docSupplier) {
     myDocSupplier = docSupplier;
   }
 
@@ -101,8 +102,11 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
         ASMModelLoader loader = new ASMModelLoader(getModule(), getSource().getAffectedFiles());
         loader.skipPrivateMembers(mySkipPrivate);
         SModel completeModelData = new SModel(getReference(), new MigratingJavaStubRefsNodeIdMap());
-        Function<ASMClass, Documentation> docSupplier = myDocSupplier;
-        if (docSupplier == null) {
+        Function<ASMClass, Documentation> docSupplier;
+        if (myDocSupplier != null) {
+          myDocSupplier.acquire();
+          docSupplier = myDocSupplier;
+        } else {
           docSupplier = new Function<ASMClass, Documentation>() {
             @Override
             public Documentation apply(ASMClass p0) {
@@ -119,6 +123,9 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
         }
         completeModelData.leaveUpdateMode();
         mi.leaveUpdateMode();
+        if (myDocSupplier != null) {
+          myDocSupplier.release();
+        }
         setLoadingState(ModelLoadingState.FULLY_LOADED);
         myIsLoadInProgress = false;
       }

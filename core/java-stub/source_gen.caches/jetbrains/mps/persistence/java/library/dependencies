@@ -57,6 +57,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.ASMModelLoader" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.Documentation" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.JavadocSupplier" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMClass" />
     <classNode dependClassName="jetbrains.mps.extapi.module.SModuleBase" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.FolderSetDataSource" />
@@ -88,7 +89,6 @@
   </dependency>
   <dependency className="jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot">
     <classNode dependClassName="java.io.File" />
-    <classNode dependClassName="java.io.IOException" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -98,11 +98,9 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="java.util.function.Function" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.Documentation" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.JavadocSupplier" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.SingleZipWithJavaSources" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMClass" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.CopyNotSupportedException" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.FolderSetDataSource" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
@@ -121,7 +119,6 @@
     <classNode dependClassName="jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="jetbrains.mps.vfs.path.Path" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
