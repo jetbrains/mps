@@ -4,6 +4,7 @@ package jetbrains.mps.execution.impl.configurations;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.ProjectComponent;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.plugins.PluginReloadingListener;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
@@ -96,28 +97,24 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
   }
 
   private void disposeRunContentDescriptors() {
+    ThreadUtils.assertEDT(); // we need this
     final List<RunContentDescriptor> descriptors = collectDescriptorsToDispose();
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        for (RunContentDescriptor descriptor : ListSequence.fromList(descriptors)) {
-          Content attachedContent = descriptor.getAttachedContent();
-          if (attachedContent == null) {
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Attached content of descriptor " + descriptor.getDisplayName() + " is null.");
-            }
-          } else
-          if (attachedContent.getManager() == null) {
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Manager of attached content of descriptor " + descriptor.getDisplayName() + " is null.");
-            }
-          } else {
-            attachedContent.getManager().removeAllContents(true);
-          }
+    for (RunContentDescriptor descriptor : ListSequence.fromList(descriptors)) {
+      Content attachedContent = descriptor.getAttachedContent();
+      if (attachedContent == null) {
+        if (LOG.isEnabledFor(Level.WARN)) {
+          LOG.warn("Attached content of descriptor " + descriptor.getDisplayName() + " is null.");
         }
+      } else
+      if (attachedContent.getManager() == null) {
+        if (LOG.isEnabledFor(Level.WARN)) {
+          LOG.warn("Manager of attached content of descriptor " + descriptor.getDisplayName() + " is null.");
+        }
+      } else {
+        attachedContent.getManager().removeAllContents(true);
       }
-    }, ModalityState.NON_MODAL);
+    }
   }
 
   private void clearAllRunConfigurations() {
