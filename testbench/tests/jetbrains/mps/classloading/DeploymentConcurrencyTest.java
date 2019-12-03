@@ -16,6 +16,7 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.smodel.ExecutorServiceShutdownHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
@@ -37,7 +38,7 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
   private final static Logger LOG = LogManager.getLogger(DeploymentConcurrencyTest.class);
 
   private final static int nThreads = 10;
-  private final static long TIME_OUT_MS = 10000;
+  private final static long TIME_OUT_MS = 20000;
   private Environment myEnvironment;
 
   @Override
@@ -50,19 +51,19 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     ExecutorService pool = Executors.newFixedThreadPool(nThreads);
     Collection<Callable<Object>> taskList = new ArrayList<>(nThreads);
     MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
-    pool.execute(() -> {
-      for (int i = 0; i < nThreads; ++i) {
-        repo.getModelAccess().runWriteAction(() ->
-            ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor()));
+    taskList.add(() -> {
+      for (int i = 0; i < 10000; ++i) {
+        repo.getModelAccess().runWriteAction(() -> getCLM().reloadAll(new EmptyProgressMonitor()));
       }
+      return null;
     });
-    for (int i = 0; i < nThreads; ++i) {
+    for (int i = 1; i < nThreads; ++i) {
       taskList.add(() -> {
-        for (int j = 0; j < nThreads; ++j) {
+        for (int j = 0; j < 1000; ++j) {
           LOG.info("Requesting classloader for modules");
           repo.getModelAccess().runReadAction(() -> {
             for (SModule module : repo.getModules()) {
-              ClassLoaderManager.getInstance().getClassLoader(module);
+              getCLM().getClassLoader(module);
             }
           });
         }
@@ -71,10 +72,15 @@ public class DeploymentConcurrencyTest implements EnvironmentAware {
     }
     try {
       pool.invokeAll(taskList, TIME_OUT_MS, TimeUnit.MILLISECONDS);
-      pool.shutdownNow();
+      new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(10);
     } catch (InterruptedException e) {
       e.printStackTrace();
       Assert.fail();
     }
+  }
+
+  @NotNull
+  private ClassLoaderManager getCLM() {
+    return myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
   }
 }
