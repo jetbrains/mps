@@ -78,10 +78,9 @@ public class MemManager implements ProjectComponent {
     myMemUsagePanel = (MemoryUsagePanel) widget;
     myMemUsagePanel.addActionListener(myActionListener);
 
-    RegistryValue interval = Registry.get("ide.memory.cleanup.interval");
-    double minutes = interval.asDouble();
-    if (minutes > 0) {
-      new MyRepeatingCleanup(Math.round(minutes * 60 * 1000)).run();
+    int sec = Registry.intValue("ide.memory.cleanup.interval");
+    if (sec > 0) {
+      new MyRepeatingCleanup(Math.round(sec * 1000)).run();
     }
   }
 
