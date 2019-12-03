@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,23 @@
  */
 package org.jetbrains.mps.openapi.persistence;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
- * Receives notifications about external changes to the data source.
- * When more detailed notifications are needed consider implementing one of the subinterfaces as well.
+ * @author apyshkin
+ * @since 2019-11-28
  */
-public interface DataSourceListener {
-  void changed(DataSource source);
+public final class DataSourceNotSupportedProblem implements MFProblem {
+  @NotNull private final DataSource mySource;
+
+  public DataSourceNotSupportedProblem(@NotNull DataSource source) {
+    mySource = source;
+  }
+
+
+  @NotNull
+  @Override
+  public String getDescription() {
+    return String.format("The data source '%s' is not supported", mySource);
+  }
 }

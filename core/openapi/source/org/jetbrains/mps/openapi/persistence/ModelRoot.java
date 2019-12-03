@@ -92,7 +92,7 @@ public interface ModelRoot {
   /**
    * @return whether a model with a name {@code modelName} can be created under this model root.
    *
-   * @deprecated we have a {@link DataSourceFactory#create} + {@link ModelFactory#create(DataSource, SModelName, ModelLoadingOption...)}
+   * @deprecated we have a {@code DataSourceFactory#create} + {@link ModelFactory#create(DataSource, SModelName, ModelLoadingOption...)}
    *                to create a new model (from a new data source) having just a model name and a model root.
    *                this method gives out an insufficient API -- it kind of implies that a model root has the only way
    *                to create a model given a name, however obviously it is not true in a current MPS setup.
