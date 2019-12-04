@@ -85,7 +85,7 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
       //       AFAIU, constructor node id is ClassShortName.<init>, see ASMNodeId.createId 
       PersistenceFacade pf = PersistenceFacade.getInstance();
       String constructorId = pf.asString(targetId);
-      String classId = constructorId.substring(0, constructorId.indexOf('.'));
+      String classId = (constructorId.indexOf('.') != -1 ? constructorId.substring(0, constructorId.indexOf('.')) : constructorId);
       SNode resolved = new SNodePointer(targetModel, pf.createNodeId(classId)).resolve(SNodeOperations.getModel(__thisNode__).getRepository());
       classConcept = SNodeOperations.as(resolved, CONCEPTS.ClassConcept$IY);
     }
