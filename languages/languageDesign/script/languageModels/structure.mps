@@ -97,7 +97,7 @@
     <property role="19KtqR" value="true" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="MigrationScript" />
-    <property role="34LRSv" value="Language Migration Script" />
+    <property role="34LRSv" value="Enhancement Script" />
     <property role="EcuMT" value="1177457067821" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="h8_YvH9" role="1TKVEi">

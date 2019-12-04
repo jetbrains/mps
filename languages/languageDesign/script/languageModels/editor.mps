@@ -132,8 +132,49 @@
     <ref role="1XX52x" to="tp33:h8_UgsH" resolve="MigrationScript" />
     <node concept="3EZMnI" id="h8A61bU" role="2wV5jI">
       <node concept="3EZMnI" id="h8A629e" role="3EZMnx">
-        <node concept="3F0A7n" id="4AbjR7I21kb" role="3EZMnx">
-          <ref role="1NtTu8" to="tp33:3Ftr4R6BH8m" resolve="type" />
+        <node concept="3F0ifn" id="1iZftJwwxzB" role="3EZMnx">
+          <property role="3F0ifm" value="enhancement" />
+          <node concept="pkWqt" id="1iZftJwwxNi" role="pqm2j">
+            <node concept="3clFbS" id="1iZftJwwxNj" role="2VODD2">
+              <node concept="3clFbF" id="1iZftJwwxSI" role="3cqZAp">
+                <node concept="2OqwBi" id="1iZftJwwy$z" role="3clFbG">
+                  <node concept="2OqwBi" id="1iZftJwwy7K" role="2Oq$k0">
+                    <node concept="pncrf" id="1iZftJwwxSH" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="1iZftJwwym5" role="2OqNvi">
+                      <ref role="3TsBF5" to="tp33:3Ftr4R6BH8m" resolve="type" />
+                    </node>
+                  </node>
+                  <node concept="21noJN" id="1iZftJwwyGZ" role="2OqNvi">
+                    <node concept="21nZrQ" id="1iZftJwwyTR" role="21noJM">
+                      <ref role="21nZrZ" to="tp33:3Ftr4R6BFuV" resolve="enhancement" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3F0ifn" id="1iZftJwwz98" role="3EZMnx">
+          <property role="3F0ifm" value="migration" />
+          <node concept="pkWqt" id="1iZftJwwzl6" role="pqm2j">
+            <node concept="3clFbS" id="1iZftJwwzl7" role="2VODD2">
+              <node concept="3clFbF" id="1iZftJwwzmZ" role="3cqZAp">
+                <node concept="2OqwBi" id="1iZftJwwzNa" role="3clFbG">
+                  <node concept="2OqwBi" id="1iZftJwwzx7" role="2Oq$k0">
+                    <node concept="pncrf" id="1iZftJwwzmY" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="1iZftJwwzBx" role="2OqNvi">
+                      <ref role="3TsBF5" to="tp33:3Ftr4R6BH8m" resolve="type" />
+                    </node>
+                  </node>
+                  <node concept="21noJN" id="1iZftJwwzZk" role="2OqNvi">
+                    <node concept="21nZrQ" id="1iZftJww$65" role="21noJM">
+                      <ref role="21nZrZ" to="tp33:3Ftr4R6BFuW" resolve="migration" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="3F0ifn" id="h8A6TMy" role="3EZMnx">
           <property role="3F0ifm" value="script" />
@@ -590,6 +631,9 @@
   </node>
   <node concept="3p36aQ" id="1wEcoXjJm4q">
     <ref role="aqKnT" to="tp33:h8_YI7L" resolve="MigrationScriptPart_node" />
+  </node>
+  <node concept="3p36aQ" id="1iZftJwwOxP">
+    <ref role="aqKnT" to="tp33:2ggmC1WtFoY" resolve="WhitespaceMigrationScriptPart" />
   </node>
 </model>
 

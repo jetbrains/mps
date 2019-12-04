@@ -209,7 +209,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("toBuild", 0x498b4f71ee081155L).type(PrimitiveTypeId.STRING).origin("5299416737274925397").done();
     b.aggregate("part", 0x11225f9fb49L).target(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x60bdd7da75343e05L).optional(true).ordered(true).multiple(true).origin("1177458178889").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
-    b.alias("Language Migration Script");
+    b.alias("Enhancement Script");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMigrationScriptPart() {
