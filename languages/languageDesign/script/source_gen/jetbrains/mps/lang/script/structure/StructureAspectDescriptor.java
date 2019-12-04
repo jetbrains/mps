@@ -192,7 +192,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("factoryMethod", 0x24105a807c757c2fL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L).optional(false).ordered(true).multiple(false).origin("2598676492883164207").done();
     b.kind(ConceptKind.IMPLEMENTATION, StaticScope.GLOBAL);
-    b.alias("factory migration script part");
+    b.alias("factory enhancement script part");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMigrationScript() {

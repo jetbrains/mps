@@ -90,7 +90,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.FactoryMigrationScriptPart:
         if (props_FactoryMigrationScriptPart == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("factory migration script part");
+          cpb.rawPresentation("factory enhancement script part");
           props_FactoryMigrationScriptPart = cpb.create();
         }
         return props_FactoryMigrationScriptPart;

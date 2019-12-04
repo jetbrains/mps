@@ -1121,7 +1121,7 @@
                       <node concept="liA8E" id="5C" role="2OqNvi">
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.rawPresentation(java.lang.String)" resolve="rawPresentation" />
                         <node concept="Xl_RD" id="5D" role="37wK5m">
-                          <property role="Xl_RC" value="factory migration script part" />
+                          <property role="Xl_RC" value="factory enhancement script part" />
                           <node concept="cd27G" id="5F" role="lGtFl">
                             <node concept="3u3nmq" id="5G" role="cd27D">
                               <property role="3u3nmv" value="2598676492883164205" />
@@ -5829,7 +5829,7 @@
             <node concept="liA8E" id="xz" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="x$" role="37wK5m">
-                <property role="Xl_RC" value="factory migration script part" />
+                <property role="Xl_RC" value="factory enhancement script part" />
               </node>
             </node>
           </node>

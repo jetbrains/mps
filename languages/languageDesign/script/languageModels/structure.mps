@@ -227,7 +227,7 @@
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="FactoryMigrationScriptPart" />
-    <property role="34LRSv" value="factory migration script part" />
+    <property role="34LRSv" value="factory enhancement script part" />
     <property role="EcuMT" value="2598676492883164205" />
     <ref role="1TJDcQ" node="62XPXDPd3S5" resolve="MigrationScriptPart" />
     <node concept="1TJgyj" id="2ggmC1WtnKJ" role="1TKVEi">
