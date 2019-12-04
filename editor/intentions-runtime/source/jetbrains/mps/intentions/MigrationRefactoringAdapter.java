@@ -87,7 +87,7 @@ public class MigrationRefactoringAdapter extends OldBaseIntentionFactory {
 
     @Override
     public String getDescription(SNode node, EditorContext editorContext) {
-      return "Migration: " + NameUtil.multiWordCapitalize(myRefactoring.getName());
+      return "Enhancement: " + NameUtil.multiWordCapitalize(myRefactoring.getName());
     }
 
     @Override
