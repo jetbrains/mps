@@ -324,8 +324,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.BaseToolDeclaration:
         if (props_BaseToolDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL);
+          cpb.deprecateProperty(0x5adc7622e710cf2dL, "number");
           cpb.deprecateProperty(0x5adc7622e710cf6eL, "icon");
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a62b0ue);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a62b0ue);
           props_BaseToolDeclaration = cpb.create();
         }
         return props_BaseToolDeclaration;
