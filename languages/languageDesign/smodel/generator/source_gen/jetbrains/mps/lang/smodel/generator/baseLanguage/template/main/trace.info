@@ -1888,7 +1888,7 @@
       <unit id="1139186732963" at="37,0,1369,0" name="jetbrains.mps.lang.smodel.generator.baseLanguage.template.main.Mapping_mc_main" />
     </file>
     <file name="QueriesGenerated.java">
-      <node id="2370854051934960082" at="93,83,94,149" concept="9" />
+      <node id="5977160840741484288" at="93,83,94,137" concept="9" />
       <node id="4487960964134033683" at="96,83,97,158" concept="9" />
       <node id="4487960964134043305" at="99,83,100,149" concept="9" />
       <node id="1238684679553" at="102,83,103,190" concept="9" />
@@ -2056,7 +2056,7 @@
       <node id="6410670351274315862" at="981,159,998,7" concept="0" />
       <node id="6410670351274315858" at="979,93,999,5" concept="0" />
       <node id="6410670351274256095" at="979,0,1002,0" concept="13" trace="referenceMacro_GetReferent_0_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
-      <scope id="2370854051934960013" at="93,83,94,149" />
+      <scope id="2370854051934960013" at="93,83,94,137" />
       <scope id="4487960964134021906" at="96,83,97,158" />
       <scope id="4487960964134042111" at="99,83,100,149" />
       <scope id="1238684679552" at="102,83,103,190" />

@@ -569,7 +569,6 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.ReferenceLinkId__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.SNodeTypeCastExpression__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.baseLanguage.util.AbstractConceptUtil" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.baseLanguage.util.ConceptMethodSuperCall" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.baseLanguage.util.EnumSwitchQuieries" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.baseLanguage.util.QueriesUtil" />
@@ -580,6 +579,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.typesystem.RulesUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.util.AbstractConceptUtil" />
     <classNode dependClassName="jetbrains.mps.lang.structure.behavior.AttributeDesignTimeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor" />

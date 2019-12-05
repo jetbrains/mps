@@ -7,7 +7,7 @@ import jetbrains.mps.lang.typesystem.runtime.ISubtypingRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.util.AbstractConceptUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -21,7 +21,7 @@ public class supertypesOf_SConceptType_SubtypingRule extends SubtypingRule_Runti
   public supertypesOf_SConceptType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode conceptType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$l1qw), CONCEPTS.ConceptDeclaration$qU)) {
+    if (AbstractConceptUtil.hasSurelyNoInterfacesBeneath(SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$l1qw))) {
       return _quotation_createNode_a135mu_a0a0a1();
     } else {
       return _quotation_createNode_a135mu_a0a0a0b();
@@ -56,7 +56,6 @@ public class supertypesOf_SConceptType_SubtypingRule extends SubtypingRule_Runti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept SConceptType$nF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
   }
 }

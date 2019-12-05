@@ -8,7 +8,7 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
@@ -41,7 +41,7 @@ public final class ReplaceWithConcreteSubconcept_Intention extends AbstractInten
     if (!(MacroIntentionsUtil.isInGeneratorModel(node))) {
       return false;
     }
-    SConcept selectedNodeConcept = SNodeOperations.getConcept(node);
+    SAbstractConcept selectedNodeConcept = SNodeOperations.getConcept(node);
     return selectedNodeConcept.isAbstract();
   }
   @Override
@@ -50,24 +50,24 @@ public final class ReplaceWithConcreteSubconcept_Intention extends AbstractInten
   }
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
-    List<SConcept> paramList = parameter(node, context);
+    List<SAbstractConcept> paramList = parameter(node, context);
     if (paramList != null) {
-      for (SConcept param : paramList) {
+      for (SAbstractConcept param : paramList) {
         ListSequence.fromList(list).addElement(new IntentionImplementation(param));
       }
     }
     return list;
   }
-  private List<SConcept> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(SNodeOperations.getConcept(node), SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
-      public boolean accept(SConcept it) {
+  private List<SAbstractConcept> parameter(final SNode node, final EditorContext editorContext) {
+    return ListSequence.fromList(SConceptOperations.getAllSubConcepts(SNodeOperations.getConcept(node), SNodeOperations.getModel(node))).where(new IWhereFilter<SAbstractConcept>() {
+      public boolean accept(SAbstractConcept it) {
         return !(it.isAbstract());
       }
     }).toListSequence();
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
-    private SConcept myParameter;
-    public IntentionImplementation(SConcept parameter) {
+    private SAbstractConcept myParameter;
+    public IntentionImplementation(SAbstractConcept parameter) {
       myParameter = parameter;
     }
     @Override

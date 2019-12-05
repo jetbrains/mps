@@ -12315,75 +12315,88 @@
     <file name="supertypesOf_SConceptType_SConceptType_SubtypingRule.java">
       <node id="6677504323281699325" at="27,121,28,69" concept="7" />
       <node id="6677504323281699331" at="28,69,29,82" concept="7" />
-      <node id="6677504323281699339" at="30,88,31,133" concept="7" />
+      <node id="6677504323281699339" at="30,26,31,133" concept="7" />
       <node id="6677504323281699350" at="32,71,33,102" concept="2" />
       <node id="6677504323281699358" at="34,7,35,86" concept="2" />
-      <node id="6677504323281699368" at="36,5,37,16" concept="8" />
-      <node id="6677504323281699323" at="39,50,40,36" concept="8" />
-      <node id="6677504323281699323" at="42,68,43,102" concept="8" />
-      <node id="6677504323281699323" at="45,27,46,17" concept="8" />
-      <node id="6677504323281699354" at="48,84,49,63" concept="7" />
-      <node id="6677504323281699354" at="49,63,50,30" concept="7" />
-      <node id="6677504323281699354" at="50,30,51,236" concept="2" />
-      <node id="6677504323281699354" at="51,236,52,216" concept="2" />
-      <node id="6677504323281699354" at="52,216,53,24" concept="8" />
-      <node id="6677504323281699362" at="55,64,56,63" concept="7" />
-      <node id="6677504323281699362" at="56,63,57,30" concept="7" />
-      <node id="6677504323281699362" at="57,30,58,236" concept="2" />
-      <node id="6677504323281699362" at="58,236,59,24" concept="8" />
-      <node id="6677504323281699323" at="63,0,64,0" concept="11" trace="conceptDeclaraton$l1qw" />
-      <node id="6677504323281699323" at="67,0,68,0" concept="11" trace="AbstractConceptDeclaration$UN" />
-      <node id="6677504323281699323" at="68,0,69,0" concept="11" trace="SConceptType$nF" />
+      <node id="5977160840741292888" at="36,12,37,87" concept="2" />
+      <node id="6677504323281699368" at="38,5,39,16" concept="8" />
+      <node id="6677504323281699323" at="41,50,42,36" concept="8" />
+      <node id="6677504323281699323" at="44,68,45,102" concept="8" />
+      <node id="6677504323281699323" at="47,27,48,17" concept="8" />
+      <node id="6677504323281699354" at="50,84,51,63" concept="7" />
+      <node id="6677504323281699354" at="51,63,52,30" concept="7" />
+      <node id="6677504323281699354" at="52,30,53,236" concept="2" />
+      <node id="6677504323281699354" at="53,236,54,216" concept="2" />
+      <node id="6677504323281699354" at="54,216,55,24" concept="8" />
+      <node id="6677504323281699362" at="57,64,58,63" concept="7" />
+      <node id="6677504323281699362" at="58,63,59,30" concept="7" />
+      <node id="6677504323281699362" at="59,30,60,236" concept="2" />
+      <node id="6677504323281699362" at="60,236,61,24" concept="8" />
+      <node id="5977160840741292892" at="63,65,64,63" concept="7" />
+      <node id="5977160840741292892" at="64,63,65,30" concept="7" />
+      <node id="5977160840741292892" at="65,30,66,236" concept="2" />
+      <node id="5977160840741292892" at="66,236,67,491" concept="2" />
+      <node id="5977160840741292892" at="67,491,68,24" concept="8" />
+      <node id="6677504323281699323" at="72,0,73,0" concept="11" trace="conceptDeclaraton$l1qw" />
+      <node id="6677504323281699323" at="76,0,77,0" concept="11" trace="SConceptType$nF" />
       <node id="6677504323281699323" at="25,0,27,0" concept="1" trace="supertypesOf_SConceptType_SConceptType_SubtypingRule#()V" />
+      <node id="5977160840741292702" at="36,10,38,5" concept="0" />
       <node id="6677504323281699346" at="31,133,34,7" concept="4" />
-      <node id="6677504323281699323" at="39,0,42,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6677504323281699323" at="42,0,45,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="6677504323281699323" at="45,0,48,0" concept="6" trace="isWeak#()Z" />
-      <node id="6677504323281699362" at="55,0,61,0" concept="12" trace="_quotation_createNode_31iysk_a0a2a2a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6677504323281699337" at="29,82,36,5" concept="5" />
-      <node id="6677504323281699354" at="48,0,55,0" concept="12" trace="_quotation_createNode_31iysk_a0a0a1a2a1#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6677504323281699323" at="27,0,39,0" concept="6" trace="getSubOrSuperTypes#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljava/util/List;" />
+      <node id="6677504323281699323" at="41,0,44,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6677504323281699323" at="44,0,47,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6677504323281699323" at="47,0,50,0" concept="6" trace="isWeak#()Z" />
+      <node id="6677504323281699362" at="57,0,63,0" concept="12" trace="_quotation_createNode_31iysk_a0a2a2a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6677504323281699354" at="50,0,57,0" concept="12" trace="_quotation_createNode_31iysk_a0a0a1a2a1#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5977160840741292892" at="63,0,70,0" concept="12" trace="_quotation_createNode_31iysk_a0a0a0c0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6677504323281699337" at="29,82,38,5" concept="5" />
+      <node id="6677504323281699323" at="27,0,41,0" concept="6" trace="getSubOrSuperTypes#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Ljava/util/List;" />
       <scope id="6677504323281699323" at="25,65,25,65" />
       <scope id="6677504323281699349" at="32,71,33,102" />
-      <scope id="6677504323281699323" at="39,50,40,36" />
-      <scope id="6677504323281699323" at="42,68,43,102" />
-      <scope id="6677504323281699323" at="45,27,46,17" />
+      <scope id="5977160840741292703" at="36,12,37,87" />
+      <scope id="6677504323281699323" at="41,50,42,36" />
+      <scope id="6677504323281699323" at="44,68,45,102" />
+      <scope id="6677504323281699323" at="47,27,48,17" />
       <scope id="6677504323281699323" at="25,0,27,0" />
       <scope id="6677504323281699346" at="31,133,34,7">
         <var name="superConcept" id="6677504323281699347" />
       </scope>
-      <scope id="6677504323281699323" at="39,0,42,0" />
-      <scope id="6677504323281699323" at="42,0,45,0">
+      <scope id="6677504323281699323" at="41,0,44,0" />
+      <scope id="6677504323281699323" at="44,0,47,0">
         <var name="argument" id="6677504323281699323" />
       </scope>
-      <scope id="6677504323281699323" at="45,0,48,0" />
-      <scope id="6677504323281699362" at="55,64,59,24">
+      <scope id="6677504323281699323" at="47,0,50,0" />
+      <scope id="6677504323281699362" at="57,64,61,24">
         <var name="facade" id="6677504323281699362" />
         <var name="quotedNode_1" id="6677504323281699362" />
       </scope>
-      <scope id="6677504323281699338" at="30,88,35,86">
+      <scope id="6677504323281699338" at="30,26,35,86">
         <var name="superConcepts" id="6677504323281699340" />
       </scope>
-      <scope id="6677504323281699354" at="48,84,53,24">
+      <scope id="6677504323281699354" at="50,84,55,24">
         <var name="facade" id="6677504323281699354" />
         <var name="quotedNode_2" id="6677504323281699354" />
       </scope>
-      <scope id="6677504323281699362" at="55,0,61,0" />
-      <scope id="6677504323281699354" at="48,0,55,0">
+      <scope id="5977160840741292892" at="63,65,68,24">
+        <var name="facade" id="5977160840741292892" />
+        <var name="quotedNode_1" id="5977160840741292892" />
+      </scope>
+      <scope id="6677504323281699362" at="57,0,63,0" />
+      <scope id="6677504323281699354" at="50,0,57,0">
         <var name="parameter_1" id="6677504323281699354" />
       </scope>
-      <scope id="6677504323281699324" at="27,121,37,16">
+      <scope id="5977160840741292892" at="63,0,70,0" />
+      <scope id="6677504323281699324" at="27,121,39,16">
         <var name="concept" id="6677504323281699332" />
         <var name="list" id="6677504323281699326" />
       </scope>
-      <scope id="6677504323281699323" at="27,0,39,0">
+      <scope id="6677504323281699323" at="27,0,41,0">
         <var name="status" id="6677504323281699323" />
         <var name="type" id="6677504323281699323" />
         <var name="typeCheckingContext" id="6677504323281699323" />
       </scope>
-      <unit id="6677504323281699323" at="62,0,65,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SConceptType_SubtypingRule$LINKS" />
-      <unit id="6677504323281699323" at="66,0,70,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SConceptType_SubtypingRule$CONCEPTS" />
-      <unit id="6677504323281699323" at="24,0,71,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SConceptType_SubtypingRule" />
+      <unit id="6677504323281699323" at="71,0,74,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SConceptType_SubtypingRule$LINKS" />
+      <unit id="6677504323281699323" at="75,0,78,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SConceptType_SubtypingRule$CONCEPTS" />
+      <unit id="6677504323281699323" at="24,0,79,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SConceptType_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)/6677504323281705989">
@@ -12396,7 +12409,7 @@
       </scope>
     </file>
     <file name="supertypesOf_SConceptType_SubtypingRule.java">
-      <node id="81088748285775230" at="24,141,25,51" concept="8" />
+      <node id="81088748285775230" at="24,129,25,51" concept="8" />
       <node id="4830577553300652713" at="26,12,27,52" concept="8" />
       <node id="6677504323281705989" at="30,50,31,36" concept="8" />
       <node id="6677504323281705989" at="33,68,34,102" concept="8" />
@@ -12412,8 +12425,7 @@
       <node id="4830577553300652865" at="49,234,50,478" concept="2" />
       <node id="4830577553300652865" at="50,478,51,24" concept="8" />
       <node id="6677504323281705989" at="55,0,56,0" concept="11" trace="conceptDeclaraton$l1qw" />
-      <node id="6677504323281705989" at="59,0,60,0" concept="11" trace="ConceptDeclaration$qU" />
-      <node id="6677504323281705989" at="60,0,61,0" concept="11" trace="SConceptType$nF" />
+      <node id="6677504323281705989" at="59,0,60,0" concept="11" trace="SConceptType$nF" />
       <node id="6677504323281705989" at="21,0,23,0" concept="1" trace="supertypesOf_SConceptType_SubtypingRule#()V" />
       <node id="4830577553300652289" at="26,10,28,5" concept="0" />
       <node id="6677504323281705989" at="30,0,33,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -12424,7 +12436,7 @@
       <node id="81088748285775632" at="39,0,46,0" concept="12" trace="_quotation_createNode_a135mu_a0a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4830577553300652865" at="46,0,53,0" concept="12" trace="_quotation_createNode_a135mu_a0a0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="6677504323281705989" at="21,52,21,52" />
-      <scope id="81088748285752968" at="24,141,25,51" />
+      <scope id="81088748285752968" at="24,129,25,51" />
       <scope id="4830577553300652290" at="26,12,27,52" />
       <scope id="6677504323281705989" at="30,50,31,36" />
       <scope id="6677504323281705989" at="33,68,34,102" />
@@ -12452,8 +12464,8 @@
       <scope id="81088748285775632" at="39,0,46,0" />
       <scope id="4830577553300652865" at="46,0,53,0" />
       <unit id="6677504323281705989" at="54,0,57,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SubtypingRule$LINKS" />
-      <unit id="6677504323281705989" at="58,0,62,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SubtypingRule$CONCEPTS" />
-      <unit id="6677504323281705989" at="20,0,63,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SubtypingRule" />
+      <unit id="6677504323281705989" at="58,0,61,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SubtypingRule$CONCEPTS" />
+      <unit id="6677504323281705989" at="20,0,62,0" name="jetbrains.mps.lang.smodel.typesystem.supertypesOf_SConceptType_SubtypingRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)/6857306964584681169">

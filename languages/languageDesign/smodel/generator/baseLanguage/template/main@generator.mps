@@ -45,6 +45,7 @@
     <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="tpcf" ref="r:00000000-0000-4000-0000-011c89590293(jetbrains.mps.lang.structure.generator_new.baseLanguage@generator)" />
+    <import index="bok1" ref="r:7e967a7c-8f21-4c1f-a331-9afa31a24388(jetbrains.mps.lang.smodel.util)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
   </imports>
@@ -649,17 +650,14 @@
       </node>
       <node concept="30G5F_" id="23AXNbFSfAc" role="30HLyM">
         <node concept="3clFbS" id="23AXNbFSfAd" role="2VODD2">
-          <node concept="3clFbF" id="23AXNbFSfBi" role="3cqZAp">
-            <node concept="2OqwBi" id="23AXNbFSg0T" role="3clFbG">
-              <node concept="2OqwBi" id="23AXNbFSfFh" role="2Oq$k0">
-                <node concept="30H73N" id="23AXNbFSfBh" role="2Oq$k0" />
-                <node concept="3TrEf2" id="23AXNbFSfRh" role="2OqNvi">
+          <node concept="3clFbF" id="5bN91R5Lns0" role="3cqZAp">
+            <node concept="2YIFZM" id="5bN91R5NzhG" role="3clFbG">
+              <ref role="37wK5l" to="bok1:5zRhFwzPfKC" resolve="hasSurelyNoInterfacesBeneath" />
+              <ref role="1Pybhc" to="bok1:5zRhFwzPfJC" resolve="AbstractConceptUtil" />
+              <node concept="2OqwBi" id="5bN91R5LnWD" role="37wK5m">
+                <node concept="30H73N" id="5bN91R5LnEe" role="2Oq$k0" />
+                <node concept="3TrEf2" id="5bN91R5Logw" role="2OqNvi">
                   <ref role="3Tt5mk" to="tp25:5MFgGQnlLNJ" resolve="conceptDeclaraton" />
-                </node>
-              </node>
-              <node concept="1mIQ4w" id="23AXNbFSgfM" role="2OqNvi">
-                <node concept="chp4Y" id="23AXNbFSgif" role="cj9EA">
-                  <ref role="cht4Q" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
                 </node>
               </node>
             </node>
@@ -1239,9 +1237,9 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="2YIFZM" id="5zRhFwzPkE3" role="3clFbw">
-                          <ref role="37wK5l" to="tp26:5zRhFwzPfKC" resolve="hasSurelyNoInterfacesBeneath" />
-                          <ref role="1Pybhc" to="tp26:5zRhFwzPfJC" resolve="AbstractConceptUtil" />
+                        <node concept="2YIFZM" id="5bN91R5NzhH" role="3clFbw">
+                          <ref role="37wK5l" to="bok1:5zRhFwzPfKC" resolve="hasSurelyNoInterfacesBeneath" />
+                          <ref role="1Pybhc" to="bok1:5zRhFwzPfJC" resolve="AbstractConceptUtil" />
                           <node concept="37vLTw" id="5zRhFwzPkE4" role="37wK5m">
                             <ref role="3cqZAo" node="5zRhFwzPkD6" resolve="targetConcept" />
                           </node>
@@ -5360,9 +5358,9 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="2YIFZM" id="5zRhFwzPk5w" role="3clFbw">
-                          <ref role="37wK5l" to="tp26:5zRhFwzPfKC" resolve="hasSurelyNoInterfacesBeneath" />
-                          <ref role="1Pybhc" to="tp26:5zRhFwzPfJC" resolve="AbstractConceptUtil" />
+                        <node concept="2YIFZM" id="5bN91R5NzhI" role="3clFbw">
+                          <ref role="37wK5l" to="bok1:5zRhFwzPfKC" resolve="hasSurelyNoInterfacesBeneath" />
+                          <ref role="1Pybhc" to="bok1:5zRhFwzPfJC" resolve="AbstractConceptUtil" />
                           <node concept="37vLTw" id="5zRhFwzPkcd" role="37wK5m">
                             <ref role="3cqZAo" node="19B7r38Z86" resolve="targetConcept" />
                           </node>

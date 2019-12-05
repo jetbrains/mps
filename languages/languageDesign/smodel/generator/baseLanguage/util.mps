@@ -1922,48 +1922,5 @@
     </node>
     <node concept="3Tm1VV" id="$91tH8jLNM" role="1B3o_S" />
   </node>
-  <node concept="312cEu" id="5zRhFwzPfJC">
-    <property role="TrG5h" value="AbstractConceptUtil" />
-    <node concept="2YIFZL" id="5zRhFwzPfKC" role="jymVt">
-      <property role="TrG5h" value="hasSurelyNoInterfacesBeneath" />
-      <node concept="37vLTG" id="5zRhFwzPfT2" role="3clF46">
-        <property role="TrG5h" value="conceptTreeRoot" />
-        <node concept="3Tqbb2" id="5zRhFwzPgL_" role="1tU5fm">
-          <ref role="ehGHo" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-        </node>
-      </node>
-      <node concept="10P_77" id="5zRhFwzPjBi" role="3clF45" />
-      <node concept="3Tm1VV" id="5zRhFwzPfKF" role="1B3o_S" />
-      <node concept="3clFbS" id="5zRhFwzPfKG" role="3clF47">
-        <node concept="3clFbF" id="5zRhFwzPhK6" role="3cqZAp">
-          <node concept="1Wc70l" id="5zRhFwzPirM" role="3clFbG">
-            <node concept="3fqX7Q" id="5zRhFwzPjuJ" role="3uHU7w">
-              <node concept="2OqwBi" id="5zRhFwzPjuL" role="3fr31v">
-                <node concept="37vLTw" id="5zRhFwzPjuM" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5zRhFwzPfT2" resolve="conceptTreeRoot" />
-                </node>
-                <node concept="1QLmlb" id="5zRhFwzPjuN" role="2OqNvi">
-                  <node concept="ZC_QK" id="5zRhFwzPjuO" role="1QLmnL">
-                    <ref role="2aWVGs" to="tpck:gw2VY9q" resolve="BaseConcept" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="2OqwBi" id="19B7r38Z8I" role="3uHU7B">
-              <node concept="37vLTw" id="5zRhFwzPhSs" role="2Oq$k0">
-                <ref role="3cqZAo" node="5zRhFwzPfT2" resolve="conceptTreeRoot" />
-              </node>
-              <node concept="1mIQ4w" id="19B7r38Z8K" role="2OqNvi">
-                <node concept="chp4Y" id="19B7r38Z8L" role="cj9EA">
-                  <ref role="cht4Q" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3Tm1VV" id="5zRhFwzPfJD" role="1B3o_S" />
-  </node>
 </model>
 
