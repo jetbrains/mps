@@ -71,7 +71,7 @@ public class RenameModuleDialog extends RenameDialog {
     myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
         final String newModuleName = getCurrentValue();
-        new Renamer().renameModuleWithSubModules(myModule, newModuleName, mySubModules, myProject);
+        Renamer.renameModuleWithSubModules(myModule, newModuleName, myProject);
         RenameModuleDialog.super.doRefactoringAction();
       }
     });
@@ -94,10 +94,10 @@ public class RenameModuleDialog extends RenameDialog {
       mySubModules = Collections.emptyList();
       return;
     }
-    mySubModules = Renamer.getSubModules(myProject.getRepository(), myModule);
+    mySubModules = new Renamer(myProject).getSubModules(myModule);
 
     if (!(mySubModules.isEmpty())) {
-      JLabel label = new JBLabel(Renamer.getSubmodulesInfoHtml(myProject.getRepository(), myModule), UIUtil.getInformationIcon(), JBLabel.LEFT);
+      JLabel label = new JBLabel(Renamer.getSubmodulesInfoHtml(myProject, myModule), UIUtil.getInformationIcon(), JBLabel.LEFT);
       myOptionsPanel.add(label);
     }
   }

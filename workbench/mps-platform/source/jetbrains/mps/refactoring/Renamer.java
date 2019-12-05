@@ -28,11 +28,9 @@ import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleInstanceFactory;
@@ -63,7 +61,6 @@ import java.util.stream.Collectors;
 import static jetbrains.mps.project.MPSExtentions.DOT;
 
 /**
- * TODO Split into module/model related entities
  * Write is required, obviously
  *
  * @author viktor, apyshkin
@@ -72,13 +69,15 @@ public final class Renamer {
   private static final Logger LOG = LogManager.getLogger(Renamer.class);
 
   private final IMessageHandler myHandler;
+  private final Project myProject;
 
-  public Renamer() {
-    this(new LogHandler(LOG));
+  public Renamer(@NotNull Project project) {
+    this(project, new LogHandler(LOG));
   }
 
-  public Renamer(@NotNull IMessageHandler handler) {
+  public Renamer(@NotNull Project project, @NotNull IMessageHandler handler) {
     myHandler = handler;
+    myProject = project;
   }
 
   private void handleMSG(@NotNull IMessage message) {
@@ -177,26 +176,11 @@ public final class Renamer {
 //    }
   }
 
-  /**
-   * @deprecated use the one with return type
-   */
-  @Deprecated
-  @NotNull
-  public void renameModule(@NotNull AbstractModule module,
-                           @NotNull String newModuleName,
-                           @NotNull Project project) {
-    RenameProblem problem = renameModule(module, newModuleName, Collections.emptyList(), project);
-    if (problem == RenameProblem.CRITICAL) {
-      throw new IllegalStateException("Critical problem on rename");
-    }
-  }
-
   @NotNull
   public RenameProblem renameModule(@NotNull AbstractModule module,
-                                    @NotNull String newModuleName,
-                                    @Mutable @NotNull List<AbstractModule> subModules,
-                                    @NotNull Project project) {
-    project.getRepository().getModelAccess().checkWriteAccess();
+                                    @NotNull String newModuleName) {
+    myProject.getRepository().getModelAccess().checkWriteAccess();
+    @Mutable List<AbstractModule> subModules = getSubModules(module);
     module.save();
     for (AbstractModule submodule : subModules) {
       submodule.save();
@@ -209,9 +193,9 @@ public final class Renamer {
     }
 
     if (checkDescriptorFileExists(module)) {
-      project.removeModule(module);
+      myProject.removeModule(module);
       for (AbstractModule subModule : subModules) {
-        project.removeModule(subModule);
+        myProject.removeModule(subModule);
       }
 
       if (checkNewDescriptorFileIsAvailable(module, newModuleName)) {
@@ -236,7 +220,7 @@ public final class Renamer {
 
       assert (moduleFolder != null);
 
-      List<AbstractModule> moduleAndSubModules = rereadModuleFolderBackToProject(project, moduleFolder);
+      List<AbstractModule> moduleAndSubModules = rereadModuleFolderBackToProject(moduleFolder);
       Optional<AbstractModule> optionalModule = moduleAndSubModules.stream()
                                                                    .filter((AbstractModule it) -> oldModuleName.equals(it.getModuleName()))
                                                                    .findAny();
@@ -269,8 +253,8 @@ public final class Renamer {
 
     // TODO fireModuleRenamed(oldRef); (that is needed for the project to update the module path in its descriptor
 
-    updateModelAndModuleReferences(project.getRepository());
-    project.getRepository().saveAll();
+    updateModelAndModuleReferences(myProject.getRepository());
+    myProject.getRepository().saveAll();
 
     return success ? RenameProblem.NO_PROBLEM
                    : RenameProblem.NON_CRITICAL;
@@ -278,9 +262,7 @@ public final class Renamer {
 
   // TODO-TODO-DO
   public void renameModuleWithBackup(@NotNull AbstractModule module,
-                                     @NotNull String newModuleName,
-                                     @NotNull List<AbstractModule> subModules,
-                                     @NotNull Project project) {
+                                     @NotNull String newModuleName) {
 //    doBackup(module, subModules, project);
 //    if (!renameModule(module, newModuleName, subModules, project)) {
 //      handleMSG(new Message(MessageKind.INFORMATION, "The rename was unsuccessful, reverting the changes..."));
@@ -306,20 +288,19 @@ public final class Renamer {
   }
 
   @NotNull
-  private List<AbstractModule> rereadModuleFolderBackToProject(@NotNull Project project, @NotNull IFile moduleFolder) {
-    ModulesMiner modulesMiner = new ModulesMiner(Collections.emptySet(), project.getComponent(DescriptorIOFacade.class));
+  private List<AbstractModule> rereadModuleFolderBackToProject(@NotNull IFile moduleFolder) {
+    ModulesMiner modulesMiner = new ModulesMiner(Collections.emptySet(), myProject.getComponent(DescriptorIOFacade.class));
 
     final Collection<ModuleHandle> collectedModules = modulesMiner.collectModules(moduleFolder)
                                                                   .getCollectedModules();
 
     // see GeneralModuleFactory javadoc for reasons we use MRF as a factory.
-    ModuleInstanceFactory moduleFactory = new ModuleRepositoryFacade(project);
+    ModuleInstanceFactory moduleFactory = new ModuleRepositoryFacade(myProject);
     List<AbstractModule> result = new ArrayList<>();
     for (ModuleHandle handle : collectedModules) {
       assert handle.getDescriptor() != null : "mm.collectModules() doesn't produce handles with null MD";
       AbstractModule module = (AbstractModule) moduleFactory.instantiate(handle.getDescriptor(), handle.getFile());
-      // Adding module back to project after reload
-      project.addModule(module);
+      myProject.addModule(module);
       result.add(module);
     }
     return result;
@@ -386,32 +367,33 @@ public final class Renamer {
    *
    * @param module        to rename, containing folder also will be renamed if matches module name
    * @param newModuleName to be renamed to
-   * @param subModules    list of modules, which folder is situated under module folder and so need to be updated if module folder is renamed
    */
   @Internal
   @Deprecated
-  public void renameModuleWithSubModules(@NotNull AbstractModule module,
-                                         @NotNull String newModuleName,
-                                         @NotNull List<AbstractModule> subModules,
-                                         @NotNull Project project) {
-    renameModule(module, newModuleName, subModules, project);
+  public static void renameModuleWithSubModules(@NotNull AbstractModule module,
+                                                @NotNull String newModuleName,
+                                                @NotNull Project project) {
+    renameModule(module, newModuleName, project);
   }
 
   /**
    * Search list of given repository modules for ones,
    * whose module folder is situated under given module folder
    *
-   * @param repository used to get list of search modules and acquire read lock
    * @param module which folder will be checked for submodules
    * @return list of submodules under given module
    */
   @Internal
   @NotNull
-  public static List<AbstractModule> getSubModules(final SRepository repository, final AbstractModule module) {
+  public List<AbstractModule> getSubModules(@NotNull AbstractModule module) {
     // Expect maximum of two submodules for language: sandbox and runtime.
     // There is no way to create other submodules from MPS UI, so other cases are rare.
     final List<AbstractModule> subModules = new ArrayList<>();
 
+    SRepository repository = myProject.getRepository();
+    if (!needToRenameSubmodules(module)) {
+      return Collections.emptyList();
+    }
     repository.getModelAccess().runReadAction(() -> {
       for (SModule repositoryModule : repository.getModules()) {
         if (!(repositoryModule instanceof AbstractModule)) {
@@ -440,25 +422,8 @@ public final class Renamer {
    * @return whether submodules should be suggested for rename
    */
   @Internal
-  public static boolean needToRenameSubmodules(@NotNull final AbstractModule module) {
+  public static boolean needToRenameSubmodules(@NotNull AbstractModule module) {
     return module.getModuleName() != null && module.getModuleName().equals(module.getModuleSourceDir().getName());
-  }
-
-  @Internal
-  @NotNull
-  public static String getSubmodulesInfoHtml(@NotNull SRepository repository, @NotNull final AbstractModule moduleToRename) {
-    final StringBuilder builder = new StringBuilder();
-    builder.append("<ul>");
-    for (AbstractModule subModule : getSubModules(repository, moduleToRename)) {
-      builder.append("<li>");
-      builder.append(subModule.getModuleName());
-      if (subModule.getModuleName().contains(moduleToRename.getModuleName())) {
-        builder.append(" (will be renamed)");
-      }
-      builder.append("</li>");
-    }
-    builder.append("</ul>");
-    return "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</p></html>";
   }
 
   public static void updateModelAndModuleReferences(@NotNull SRepository repo) {
@@ -506,5 +471,20 @@ public final class Renamer {
     CRITICAL,
     NON_CRITICAL,
     NO_PROBLEM;
+
+  }
+
+  /**
+   * @deprecated use the one with return type
+   */
+  @Deprecated
+  @NotNull
+  public static void renameModule(@NotNull AbstractModule module,
+                                  @NotNull String newModuleName,
+                                  @NotNull Project project) {
+    RenameProblem problem = new Renamer(project).renameModule(module, newModuleName);
+    if (problem == RenameProblem.CRITICAL) {
+      throw new IllegalStateException("Critical problem on rename");
+    }
   }
 }

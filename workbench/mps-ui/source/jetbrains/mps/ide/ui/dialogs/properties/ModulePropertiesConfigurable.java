@@ -60,6 +60,7 @@ import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.findUsages.CompositeFinder;
 import jetbrains.mps.icons.MPSIcons.General;
+import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
@@ -543,7 +544,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         String finalRenameTo = renameTo;
         ApplicationManager.getApplication().invokeLater(() -> {
           String renameTitle = RefactoringBundle.message("rename.title");
-          int dialogResult = Messages.showOkCancelDialog(myIdeaProject, Renamer.getSubmodulesInfoHtml(myMPSProject.getRepository(), myModule),
+          int dialogResult = Messages.showOkCancelDialog(myIdeaProject, getSubmodulesInfoHtml(myMPSProject, myModule),
                                                          renameTitle, renameTitle, Messages.CANCEL_BUTTON, UIUtil.getInformationIcon());
           if (Messages.OK == dialogResult) {
             ProgressManager.getInstance().run(new Task.Modal(myIdeaProject, "Renaming...", false) {
@@ -551,10 +552,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
               public void run(@NotNull ProgressIndicator indicator) {
                 WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
                   myMPSProject.getModelAccess().executeCommand(() -> {
-                    new Renamer().renameModuleWithSubModules(myModule,
-                                                             finalRenameTo,
-                                                             Renamer.getSubModules(myMPSProject.getRepository(), myModule),
-                                                             ModulePropertiesConfigurable.this.myMPSProject);
+                    new Renamer(myMPSProject).renameModule(myModule, finalRenameTo);
+
                   });
                 });
               }
@@ -566,6 +565,22 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       }
     }
   }
+
+  private static String getSubmodulesInfoHtml(@NotNull jetbrains.mps.project.Project project, @NotNull AbstractModule moduleToRename) {
+    final StringBuilder builder = new StringBuilder();
+    builder.append("<ul>");
+    for (AbstractModule subModule : new Renamer(project).getSubModules(moduleToRename)) {
+      builder.append("<li>");
+      builder.append(subModule.getModuleName());
+      if (subModule.getModuleName().contains(moduleToRename.getModuleName())) {
+        builder.append(" (will be renamed)");
+      }
+      builder.append("</li>");
+    }
+    builder.append("</ul>");
+    return "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</p></html>";
+  }
+
 
   public class ModuleDependenciesTab extends DependenciesTab {
 

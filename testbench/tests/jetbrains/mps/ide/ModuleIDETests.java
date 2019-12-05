@@ -45,7 +45,6 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -234,13 +233,13 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     invokeInCommand(() -> moduleReference.set(moduleSupplier.get(moduleName)));
     invokeInCommand(() -> {
       AbstractModule module = moduleReference.get();
-      final Collection<AbstractModule> subModules = Renamer.getSubModules(myProject.getRepository(), module);
+      final Collection<AbstractModule> subModules = new Renamer(myProject).getSubModules(module);
 
       // If module name is not equals to folder name, that folder should not be renamed
       boolean mustBeMoved = module.getModuleName().equals(module.getModuleSourceDir().getName());
       final SModuleId moduleId = module.getModuleId();
 
-      new Renamer().renameModuleWithSubModules(module, newModuleName, new ArrayList<>(subModules), myProject);
+      new Renamer(myProject).renameModule(module, newModuleName);
 
       Assert.assertNull(module.getRepository());
       module = (AbstractModule) myProject.getRepository().getModule(moduleId);
@@ -416,7 +415,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
-      new Renamer().renameModule(lang, newModuleName, myProject);
+      new Renamer(myProject).renameModule(lang, newModuleName);
       deleteModule(lang, deleteFiles);
       CachingFile descriptorFile = (CachingFile) lang.getDescriptorFile();
       Assert.assertNotNull(descriptorFile);
@@ -437,10 +436,9 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
       @NotNull Language lang = langRef.get();
       saveProjectInTest();
       projectBackup.doBackup();
-      new Renamer().renameModule(lang, newModuleName, myProject);
+      new Renamer(myProject).renameModule(lang, newModuleName);
 
       lang = (Language) myProject.getRepository().getModule(langRef.get().getModuleId());
-      // FIXME THIS IS SOOO WRONG
       Assert.assertNotNull("Renamed module was not found in project repository by SModuleId", lang);
       Assert.assertEquals(newModuleName, lang.getModuleName());
       Assert.assertTrue(myProject.getProjectModules().contains(lang));
