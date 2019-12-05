@@ -1661,8 +1661,8 @@
       <node id="7111916581652590745" at="159,134,160,198" concept="3" />
       <node id="7111916581652590756" at="160,198,161,128" concept="3" />
       <node id="7111916581652590763" at="161,128,162,84" concept="11" />
-      <node id="7111916581652590765" at="162,84,163,181" concept="9" />
-      <node id="7111916581652590779" at="163,181,164,75" concept="9" />
+      <node id="7111916581652590765" at="162,84,163,243" concept="9" />
+      <node id="7111916581652590779" at="163,243,164,75" concept="9" />
       <node id="7111916581652590787" at="164,75,165,106" concept="9" />
       <node id="7111916581652590793" at="165,106,166,166" concept="3" />
       <node id="7111916581652590801" at="166,166,167,73" concept="9" />
@@ -2096,7 +2096,7 @@
       <node id="7111916581652590753" at="683,234,684,150" concept="3" />
       <node id="7111916581652590753" at="684,150,685,165" concept="3" />
       <node id="7111916581652590753" at="685,165,686,24" concept="10" />
-      <node id="7111916581652590773" at="688,67,689,63" concept="9" />
+      <node id="7111916581652590773" at="688,68,689,63" concept="9" />
       <node id="7111916581652590773" at="689,63,690,30" concept="9" />
       <node id="7111916581652590773" at="690,30,691,30" concept="9" />
       <node id="7111916581652590773" at="691,30,692,30" concept="9" />
@@ -2588,21 +2588,22 @@
       <node id="7111916581652590289" at="1287,0,1288,0" concept="13" trace="PrimitiveType$5" />
       <node id="7111916581652590289" at="1288,0,1289,0" concept="13" trace="ArrayType$Yv" />
       <node id="7111916581652590289" at="1289,0,1290,0" concept="13" trace="ClassifierType$IZ" />
-      <node id="7111916581652590289" at="1290,0,1291,0" concept="13" trace="LongType$Db" />
-      <node id="7111916581652590289" at="1291,0,1292,0" concept="13" trace="ShortType$YA" />
-      <node id="7111916581652590289" at="1292,0,1293,0" concept="13" trace="ByteType$lE" />
-      <node id="7111916581652590289" at="1293,0,1294,0" concept="13" trace="CharType$j4" />
-      <node id="7111916581652590289" at="1294,0,1295,0" concept="13" trace="IntegerType$Eo" />
-      <node id="7111916581652590289" at="1295,0,1296,0" concept="13" trace="StringType$2b" />
-      <node id="7111916581652590289" at="1299,0,1300,0" concept="13" trace="returnType$WIkw" />
-      <node id="7111916581652590289" at="1300,0,1301,0" concept="13" trace="body$WIlu" />
-      <node id="7111916581652590289" at="1301,0,1302,0" concept="13" trace="statement$WHn8" />
-      <node id="7111916581652590289" at="1302,0,1303,0" concept="13" trace="localVariableDeclaration$O0D0" />
-      <node id="7111916581652590289" at="1303,0,1304,0" concept="13" trace="variableDeclaration$2ky6" />
-      <node id="7111916581652590289" at="1304,0,1305,0" concept="13" trace="fieldDeclaration$mLBy" />
-      <node id="7111916581652590289" at="1305,0,1306,0" concept="13" trace="type$pLrO" />
-      <node id="7111916581652590289" at="1306,0,1307,0" concept="13" trace="member$oYX5" />
-      <node id="7111916581652590289" at="1310,0,1311,0" concept="13" trace="name$tAp1" />
+      <node id="7111916581652590289" at="1290,0,1291,0" concept="13" trace="InstanceMethodDeclaration$An" />
+      <node id="7111916581652590289" at="1291,0,1292,0" concept="13" trace="LongType$Db" />
+      <node id="7111916581652590289" at="1292,0,1293,0" concept="13" trace="ShortType$YA" />
+      <node id="7111916581652590289" at="1293,0,1294,0" concept="13" trace="ByteType$lE" />
+      <node id="7111916581652590289" at="1294,0,1295,0" concept="13" trace="CharType$j4" />
+      <node id="7111916581652590289" at="1295,0,1296,0" concept="13" trace="IntegerType$Eo" />
+      <node id="7111916581652590289" at="1296,0,1297,0" concept="13" trace="StringType$2b" />
+      <node id="7111916581652590289" at="1300,0,1301,0" concept="13" trace="returnType$WIkw" />
+      <node id="7111916581652590289" at="1301,0,1302,0" concept="13" trace="body$WIlu" />
+      <node id="7111916581652590289" at="1302,0,1303,0" concept="13" trace="statement$WHn8" />
+      <node id="7111916581652590289" at="1303,0,1304,0" concept="13" trace="localVariableDeclaration$O0D0" />
+      <node id="7111916581652590289" at="1304,0,1305,0" concept="13" trace="variableDeclaration$2ky6" />
+      <node id="7111916581652590289" at="1305,0,1306,0" concept="13" trace="fieldDeclaration$mLBy" />
+      <node id="7111916581652590289" at="1306,0,1307,0" concept="13" trace="type$pLrO" />
+      <node id="7111916581652590289" at="1307,0,1308,0" concept="13" trace="member$oYX5" />
+      <node id="7111916581652590289" at="1311,0,1312,0" concept="13" trace="name$tAp1" />
       <node id="7111916581652590561" at="147,18,149,13" concept="0" />
       <node id="7111916581652590676" at="154,16,156,11" concept="0" />
       <node id="7111916581652591209" at="200,16,202,11" concept="0" />
@@ -2701,7 +2702,7 @@
       <node id="7111916581652590879" at="738,0,753,0" concept="14" trace="_quotation_createNode_x9xljz_a0d0z0a21a0#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7111916581652590782" at="708,0,725,0" concept="14" trace="_quotation_createNode_x9xljz_a0r0a21a0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7111916581652590885" at="182,90,202,11" concept="7" />
-      <node id="7111916581652590773" at="688,0,708,0" concept="14" trace="_quotation_createNode_x9xljz_a0a0q0a21a0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7111916581652590773" at="688,0,708,0" concept="14" trace="_quotation_createNode_x9xljz_a0a0a61a0m0a#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7111916581652590468" at="135,0,158,9" concept="6" />
       <node id="7111916581652590858" at="177,176,204,9" concept="6" />
       <node id="7111916581652591033" at="940,0,967,0" concept="14" trace="_quotation_createNode_x9xljz_a0a0e0z0a21a0#(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -2894,7 +2895,7 @@
         <var name="parameter_1" id="7111916581652590879" />
       </scope>
       <scope id="7111916581652590782" at="708,0,725,0" />
-      <scope id="7111916581652590773" at="688,67,706,24">
+      <scope id="7111916581652590773" at="688,68,706,24">
         <var name="facade" id="7111916581652590773" />
         <var name="quotedNode_1" id="7111916581652590773" />
         <var name="quotedNode_2" id="7111916581652590773" />
@@ -3346,15 +3347,15 @@
         <var name="parameter_3" id="7111916581652590384" />
         <var name="parameter_4" id="7111916581652590384" />
       </scope>
-      <unit id="7111916581652590289" at="1309,0,1312,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$PROPS" />
+      <unit id="7111916581652590289" at="1310,0,1313,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$PROPS" />
       <unit id="7111916581652591299" at="58,198,62,5" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$1" />
       <unit id="7111916581652590317" at="105,220,109,9" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$2$1" />
       <unit id="7111916581652590838" at="170,206,174,9" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$3$1" />
       <unit id="3617925577257533960" at="102,44,111,5" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$2" />
-      <unit id="7111916581652590289" at="1298,0,1308,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$LINKS" />
-      <unit id="7111916581652590289" at="1276,0,1297,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$CONCEPTS" />
+      <unit id="7111916581652590289" at="1299,0,1309,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$LINKS" />
+      <unit id="7111916581652590289" at="1276,0,1298,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$CONCEPTS" />
       <unit id="3617925577257604959" at="121,45,208,5" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action$3" />
-      <unit id="7111916581652590289" at="42,0,1313,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action" />
+      <unit id="7111916581652590289" at="42,0,1314,0" name="jetbrains.mps.java.platform.actions.GenerateEqualsAndHashCode_Action" />
     </file>
   </root>
   <root nodeRef="r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/7111916581652591322">
