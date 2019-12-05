@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.ui.popup.JBPopup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.ui.popup.ComponentPopupBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.util.Computable;
@@ -22,8 +23,8 @@ public abstract class PopupWithNodeEditor {
   protected final PopupWithNodeEditorUI myUI;
   protected final JBPopup myPopup;
 
-  public PopupWithNodeEditor(@NotNull final Project project) {
-    myUI = new PopupWithNodeEditorUI(project);
+  public PopupWithNodeEditor(@NotNull final Project project, @NotNull final EditorComponent editorComponent) {
+    myUI = new PopupWithNodeEditorUI(project, editorComponent);
     final ComponentPopupBuilder pb = JBPopupFactory.getInstance().createComponentPopupBuilder(myUI.getPanel(), myUI.getPreferredFocusableComponent()).setRequestFocus(true).setMovable(true).setResizable(true).setCancelCallback(new Computable<Boolean>() {
       public Boolean compute() {
         myUI.dispose();

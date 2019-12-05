@@ -17670,6 +17670,19 @@
               <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
               <node concept="1bVj0M" id="706B9ZFvPKX" role="37wK5m">
                 <node concept="3clFbS" id="706B9ZFvPKY" role="1bW5cS">
+                  <node concept="3clFbF" id="2PJbQK9$WUh" role="3cqZAp">
+                    <node concept="2OqwBi" id="2PJbQK9$XTx" role="3clFbG">
+                      <node concept="2OqwBi" id="2PJbQK9$WUb" role="2Oq$k0">
+                        <node concept="2WthIp" id="2PJbQK9$WUe" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="2PJbQK9$WUg" role="2OqNvi">
+                          <ref role="2WH_rO" node="3zdPyHKBfcm" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="4sU0LYlsTSW" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.deactivateSubstituteChooser()" resolve="deactivateSubstituteChooser" />
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3clFbF" id="odQdBSgYb1" role="3cqZAp">
                     <node concept="2OqwBi" id="odQdBSh2et" role="3clFbG">
                       <node concept="2OqwBi" id="odQdBSh1LW" role="2Oq$k0">

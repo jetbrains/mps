@@ -20,7 +20,7 @@ public final class SimplePopupWithNodeEditor extends PopupWithNodeEditor {
   private final List<SNode> myNodes;
 
   public SimplePopupWithNodeEditor(final Project project, final EditorComponent editorComponent, final List<SNode> nodes) {
-    super(project);
+    super(project, editorComponent);
     myEditorComponent = editorComponent;
     myNodes = nodes;
   }

@@ -2772,6 +2772,7 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.actions.PopupWithNodeEditorUI" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
   </dependency>

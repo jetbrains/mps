@@ -39859,6 +39859,17 @@
         <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
+    <node concept="312cEg" id="3Y0R6T3LzWX" role="jymVt">
+      <property role="TrG5h" value="myMainEditorComponent" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3Y0R6T3LzWY" role="1B3o_S" />
+      <node concept="3uibUv" id="3Y0R6T3LzWZ" role="1tU5fm">
+        <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
+      </node>
+      <node concept="2AHcQZ" id="3Y0R6T3LzX0" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+    </node>
     <node concept="312cEg" id="_dGddVVXv0" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -39927,6 +39938,16 @@
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
+      <node concept="37vLTG" id="3Y0R6T3Lu56" role="3clF46">
+        <property role="3TUv4t" value="true" />
+        <property role="TrG5h" value="editorComponent" />
+        <node concept="3uibUv" id="3Y0R6T3Lu57" role="1tU5fm">
+          <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
+        </node>
+        <node concept="2AHcQZ" id="3Y0R6T3Lu58" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
       <node concept="3clFbS" id="_dGddVVXvJ" role="3clF47">
         <node concept="3clFbF" id="4NbgY6Ja0GZ" role="3cqZAp">
           <node concept="37vLTI" id="4NbgY6Ja3bL" role="3clFbG">
@@ -39937,6 +39958,16 @@
             </node>
             <node concept="37vLTw" id="4NbgY6Ja0GX" role="37vLTJ">
               <ref role="3cqZAo" node="4NbgY6J9U0L" resolve="myPanel" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3Y0R6T3LHgr" role="3cqZAp">
+          <node concept="37vLTI" id="3Y0R6T3LIST" role="3clFbG">
+            <node concept="37vLTw" id="3Y0R6T3LJIX" role="37vLTx">
+              <ref role="3cqZAo" node="3Y0R6T3Lu56" resolve="editorComponent" />
+            </node>
+            <node concept="37vLTw" id="3Y0R6T3LHgp" role="37vLTJ">
+              <ref role="3cqZAo" node="3Y0R6T3LzWX" resolve="myMainEditorComponent" />
             </node>
           </node>
         </node>
@@ -42268,7 +42299,7 @@
       <node concept="312cEg" id="_dGddVVXtw" role="jymVt">
         <property role="34CwA1" value="false" />
         <property role="eg7rD" value="false" />
-        <property role="TrG5h" value="myClosePopup" />
+        <property role="TrG5h" value="myFocusEditor" />
         <property role="3TUv4t" value="true" />
         <node concept="10P_77" id="_dGddVVXty" role="1tU5fm" />
         <node concept="3Tm6S6" id="_dGddVVXtz" role="1B3o_S" />
@@ -42291,7 +42322,7 @@
           </node>
         </node>
         <node concept="37vLTG" id="_dGddVVXtE" role="3clF46">
-          <property role="TrG5h" value="closePopup" />
+          <property role="TrG5h" value="focusEditor" />
           <property role="3TUv4t" value="false" />
           <node concept="10P_77" id="_dGddVVXtF" role="1tU5fm" />
         </node>
@@ -42309,10 +42340,10 @@
           <node concept="3clFbF" id="_dGddVVXtH" role="3cqZAp">
             <node concept="37vLTI" id="_dGddVVXtI" role="3clFbG">
               <node concept="37vLTw" id="_dGddVVXtJ" role="37vLTJ">
-                <ref role="3cqZAo" node="_dGddVVXtw" resolve="myClosePopup" />
+                <ref role="3cqZAo" node="_dGddVVXtw" resolve="myFocusEditor" />
               </node>
               <node concept="37vLTw" id="_dGddVVXtK" role="37vLTx">
-                <ref role="3cqZAo" node="_dGddVVXtE" resolve="closePopup" />
+                <ref role="3cqZAo" node="_dGddVVXtE" resolve="focusEditor" />
               </node>
             </node>
           </node>
@@ -42399,6 +42430,16 @@
               <node concept="3cpWs6" id="_dGddVVXux" role="3cqZAp" />
             </node>
           </node>
+          <node concept="3clFbF" id="3Y0R6T3LLzX" role="3cqZAp">
+            <node concept="2OqwBi" id="3Y0R6T3LMC_" role="3clFbG">
+              <node concept="37vLTw" id="3Y0R6T3LLzV" role="2Oq$k0">
+                <ref role="3cqZAo" node="3Y0R6T3LzWX" resolve="myMainEditorComponent" />
+              </node>
+              <node concept="liA8E" id="3Y0R6T3LNCb" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.deactivateSubstituteChooser()" resolve="deactivateSubstituteChooser" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="6ETkb2hkD0p" role="3cqZAp">
             <node concept="2OqwBi" id="6ETkb2hmt1n" role="3clFbG">
               <node concept="2OqwBi" id="6ETkb2hmbqq" role="2Oq$k0">
@@ -42413,8 +42454,8 @@
                   </node>
                   <node concept="liA8E" id="6ETkb2hlx1z" role="2OqNvi">
                     <ref role="37wK5l" to="kz9k:~EditorNavigator.shallFocus(boolean)" resolve="shallFocus" />
-                    <node concept="3clFbT" id="6ETkb2hl_8O" role="37wK5m">
-                      <property role="3clFbU" value="true" />
+                    <node concept="37vLTw" id="2PJbQK9yglb" role="37wK5m">
+                      <ref role="3cqZAo" node="_dGddVVXtw" resolve="myFocusEditor" />
                     </node>
                   </node>
                 </node>
@@ -42433,7 +42474,14 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbH" id="3Y0R6T3Lg4k" role="3cqZAp" />
           <node concept="3clFbJ" id="_dGddVVXuL" role="3cqZAp">
+            <node concept="3y3z36" id="XnzHzqNI1Z" role="3clFbw">
+              <node concept="10Nm6u" id="XnzHzqNIc1" role="3uHU7w" />
+              <node concept="37vLTw" id="XnzHzqNHAP" role="3uHU7B">
+                <ref role="3cqZAo" node="XnzHzqNlyA" resolve="myPopup" />
+              </node>
+            </node>
             <node concept="3clFbS" id="_dGddVVXuO" role="3clFbx">
               <node concept="3clFbF" id="_dGddVVXuP" role="3cqZAp">
                 <node concept="2OqwBi" id="_dGddVVY4T" role="3clFbG">
@@ -42444,17 +42492,6 @@
                     <ref role="37wK5l" to="gspm:~JBPopup.cancel()" resolve="cancel" />
                   </node>
                 </node>
-              </node>
-            </node>
-            <node concept="1Wc70l" id="XnzHzqNH0d" role="3clFbw">
-              <node concept="3y3z36" id="XnzHzqNI1Z" role="3uHU7w">
-                <node concept="10Nm6u" id="XnzHzqNIc1" role="3uHU7w" />
-                <node concept="37vLTw" id="XnzHzqNHAP" role="3uHU7B">
-                  <ref role="3cqZAo" node="XnzHzqNlyA" resolve="myPopup" />
-                </node>
-              </node>
-              <node concept="37vLTw" id="_dGddVVXuM" role="3uHU7B">
-                <ref role="3cqZAo" node="_dGddVVXtw" resolve="myClosePopup" />
               </node>
             </node>
           </node>
@@ -48030,6 +48067,14 @@
                       <ref role="2WH_rO" node="7fqcWlSvSE_" resolve="project" />
                     </node>
                   </node>
+                  <node concept="2OqwBi" id="3Y0R6T3LQ0L" role="37wK5m">
+                    <node concept="2WthIp" id="3Y0R6T3LQ0O" role="2Oq$k0">
+                      <ref role="32nkFo" node="7fqcWlSvSEo" resolve="ShowDefinitionInMenu" />
+                    </node>
+                    <node concept="1DTwFV" id="3Y0R6T3LQ0Q" role="2OqNvi">
+                      <ref role="2WH_rO" node="7fqcWlSvSED" resolve="editorComponent" />
+                    </node>
+                  </node>
                   <node concept="3clFb_" id="34ri4nwIv8P" role="jymVt">
                     <property role="TrG5h" value="show" />
                     <node concept="3cqZAl" id="34ri4nwIv8R" role="3clF45" />
@@ -48331,6 +48376,9 @@
                 <node concept="37vLTw" id="7gHwnfnNayz" role="37wK5m">
                   <ref role="3cqZAo" node="7gHwnfnNa8B" resolve="project" />
                 </node>
+                <node concept="37vLTw" id="3Y0R6T3Losu" role="37wK5m">
+                  <ref role="3cqZAo" node="3Y0R6T3LnXy" resolve="editorComponent" />
+                </node>
               </node>
             </node>
             <node concept="37vLTw" id="1bIGuo1MrmT" role="37vLTJ">
@@ -48510,7 +48558,18 @@
           <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
         </node>
       </node>
+      <node concept="37vLTG" id="3Y0R6T3LnXy" role="3clF46">
+        <property role="3TUv4t" value="true" />
+        <property role="TrG5h" value="editorComponent" />
+        <node concept="3uibUv" id="3Y0R6T3LnXz" role="1tU5fm">
+          <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
+        </node>
+        <node concept="2AHcQZ" id="3Y0R6T3Lokw" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="XnzHzqL2a4" role="jymVt" />
     <node concept="3Tm1VV" id="1XLGCL93YR3" role="1B3o_S" />
     <node concept="3UR2Jj" id="72_t$m1L5fI" role="lGtFl">
       <node concept="TZ5HA" id="72_t$m1L5fJ" role="TZ5H$">
@@ -48524,7 +48583,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="XnzHzqL2a4" role="jymVt" />
     <node concept="3clFb_" id="34ri4nwI6se" role="jymVt">
       <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="show" />
@@ -48582,6 +48640,9 @@
           <ref role="37wK5l" node="XnzHzqKt8w" resolve="PopupWithNodeEditor" />
           <node concept="37vLTw" id="7gHwnfnNdaF" role="37wK5m">
             <ref role="3cqZAo" node="7gHwnfnNcrO" resolve="project" />
+          </node>
+          <node concept="37vLTw" id="3Y0R6T3Lnoz" role="37wK5m">
+            <ref role="3cqZAo" node="7ZQf$xk2Xwv" resolve="editorComponent" />
           </node>
         </node>
         <node concept="3clFbF" id="1bIGuo1M0tX" role="3cqZAp">
