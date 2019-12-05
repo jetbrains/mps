@@ -158,7 +158,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$WIlu), LINKS.statement$WHn8)).addElement(_quotation_createNode_x9xljz_a0a31a0m0a());
         ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$oYX5)).addElement(equalsDeclaration);
         // Method equals() is generated, now hashCode method body generation begins 
-        SNode hashCodeDeclaration = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$oYX5)).addElement(_quotation_createNode_x9xljz_a0a0q0a21a0());
+        SNode hashCodeDeclaration = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$oYX5)).addElement(_quotation_createNode_x9xljz_a0a0a61a0m0a()), CONCEPTS.InstanceMethodDeclaration$An);
         SNode resultDeclaration = _quotation_createNode_x9xljz_a0r0a21a0();
         SNode resultReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$sQ, null);
         SLinkOperations.setTarget(resultReference, LINKS.variableDeclaration$2ky6, SLinkOperations.getTarget(resultDeclaration, LINKS.localVariableDeclaration$O0D0));
@@ -683,7 +683,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x9xljz_a0a0q0a21a0() {
+  private static SNode _quotation_createNode_x9xljz_a0a0a61a0m0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -1285,6 +1285,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
     /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
     /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
     /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept LongType$Db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f3L, "jetbrains.mps.baseLanguage.structure.LongType");
     /*package*/ static final SConcept ShortType$YA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
     /*package*/ static final SConcept ByteType$lE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d5b617L, "jetbrains.mps.baseLanguage.structure.ByteType");
