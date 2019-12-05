@@ -334,6 +334,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                   final Tuples._2<MigrationResult, MigrationError> result = runMigration(newState.value.hasVersionUpdate(), newState.value.hasMigrations());
                   if (result._0() == MigrationResult.POSTPONED) {
                     myPostponedState.set(newState.value);
+                    myNotifications.showRequired();
                   } else if (result._0() == MigrationResult.FINISHED_WITH_ERRORS) {
                     ProgressManager.getInstance().run(new Task.Modal(myProject, "Collecting Errors", false) {
                       public void run(@NotNull final ProgressIndicator progressIndicator) {
