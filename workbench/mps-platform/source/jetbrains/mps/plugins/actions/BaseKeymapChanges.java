@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * The basic logic is to replace the default shortcuts with MPS provided during #init, and to revert the changes on #dispose
@@ -60,15 +61,15 @@ public abstract class BaseKeymapChanges {
     }
 
     for (ComplexShortcut cs : complexShortcuts) {
-      for (Shortcut s : cs.getShortcutsFor(params)) {
-        addShortcutToKeymap(longId, keymap, s);
+      for (ShortcutWrapper wrapper : cs.getShortcutWrappersFor(params)) {
+        addShortcutToKeymap(longId, keymap, wrapper.myShortcut, wrapper.myRemove, wrapper.myReplaceAll);
 
         Set<Shortcut> added = myAddedComplexShortcuts.get(longId);
         if (added == null) {
           added = new THashSet<>();
           myAddedComplexShortcuts.put(longId, added);
         }
-        added.add(s);
+        added.add(wrapper.myShortcut);
       }
     }
   }
@@ -191,17 +192,29 @@ public abstract class BaseKeymapChanges {
 
   protected static abstract class ComplexShortcut {
     public abstract List<Shortcut> getShortcutsFor(Object... params);
+    List<ShortcutWrapper> getShortcutWrappersFor(Object... params) {
+      return this.getShortcutsFor(params).stream().map(ShortcutWrapper::new).collect(Collectors.toList());
+    }
 
-    public static class ParameterizedSimpleShortcut extends ComplexShortcut {
-      private final List<Shortcut> myShortcut;
+    public static final class ParameterizedSimpleShortcut extends ComplexShortcut {
+      private final List<ShortcutWrapper> myShortcutWrappers;
 
-      public ParameterizedSimpleShortcut(Shortcut... shortcut) {
-        myShortcut = Arrays.asList(shortcut);
+      public ParameterizedSimpleShortcut(Shortcut... shortcuts) {
+        myShortcutWrappers = Arrays.stream(shortcuts).map(ShortcutWrapper::new).collect(Collectors.toList());
+      }
+
+      public ParameterizedSimpleShortcut(ShortcutWrapper... shortcutWrappers) {
+        myShortcutWrappers = Arrays.asList(shortcutWrappers);
       }
 
       @Override
       public List<Shortcut> getShortcutsFor(Object... params) {
-        return myShortcut;
+        return myShortcutWrappers.stream().map(wrapper -> wrapper.myShortcut).collect(Collectors.toList());
+      }
+
+      @Override
+      List<ShortcutWrapper> getShortcutWrappersFor(Object... params) {
+        return myShortcutWrappers;
       }
     }
   }
