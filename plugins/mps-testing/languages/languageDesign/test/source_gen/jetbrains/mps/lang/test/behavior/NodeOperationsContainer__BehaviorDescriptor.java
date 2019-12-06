@@ -20,11 +20,14 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
@@ -54,6 +57,9 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
         IReferenceAttachable__BehaviorDescriptor.attachReference_id2wBFdLy8qmn.invoke(node, reference);
       }
     }
+    // only local 
+    SLinkOperations.setTarget(newNode, LINKS.expectedMessage$gXqz, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, "jetbrains.mps.lang.test.structure.ExpectedMessageContainer")));
+    SPropertyOperations.assign(SLinkOperations.getTarget(newNode, LINKS.expectedMessage$gXqz), PROPS.text$lGWw, reporter.getMessage());
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeOperations$HdFm)).addElement(newNode);
   }
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull final SNode __thisNode__, final NodeReportItem reportItem) {
@@ -118,10 +124,15 @@ public final class NodeOperationsContainer__BehaviorDescriptor extends BaseBHDes
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink nodeOperations$HdFm = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, 0x11b07abae7cL, "nodeOperations");
+    /*package*/ static final SContainmentLink expectedMessage$gXqz = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractNodeRuleCheckOperation$Z8 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, "jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation");
     /*package*/ static final SInterfaceConcept IReferenceAttachable$C$ = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2827acdc621ed3acL, "jetbrains.mps.lang.test.structure.IReferenceAttachable");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty text$lGWw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
   }
 }

@@ -38,7 +38,7 @@ import java.awt.Window;
  * In other words: avoid using this class!
  */
 @Singleton
-final class CurrentProjectAccessUtil {
+public final class CurrentProjectAccessUtil {
   private CurrentProjectAccessUtil() {
   }
 
@@ -63,7 +63,7 @@ final class CurrentProjectAccessUtil {
   }
 
   @Nullable
-  static MPSProject getMPSProjectFromUI() {
+  public static MPSProject getMPSProjectFromUI() {
     Project ideaProject = getProjectFromUI();
     return ideaProject != null ? ProjectHelper.fromIdeaProject(ideaProject) : null;
   }

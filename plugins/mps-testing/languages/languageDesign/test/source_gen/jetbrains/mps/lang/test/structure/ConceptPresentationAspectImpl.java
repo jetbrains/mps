@@ -29,6 +29,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_EditorComponentExpression;
   private ConceptPresentation props_EditorOperation;
   private ConceptPresentation props_EditorTestCase;
+  private ConceptPresentation props_ExpectedMessageContainer;
   private ConceptPresentation props_ExpressionContainer;
   private ConceptPresentation props_ICheckForExpectedRule;
   private ConceptPresentation props_INodesTestMethod;
@@ -226,11 +227,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x11e314b78e4L, "nodeToEdit");
           cpb.deprecateAggregation(0x11e314bf3d3L, "result");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a4a0a81b0ed);
-          cpb.icon(IconContainer.RESOURCE_a0a5a0a81b0ed);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a4a0a81b0fd);
+          cpb.icon(IconContainer.RESOURCE_a0a5a0a81b0fd);
           props_EditorTestCase = cpb.create();
         }
         return props_EditorTestCase;
+      case LanguageConceptSwitch.ExpectedMessageContainer:
+        if (props_ExpectedMessageContainer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ExpectedMessageContainer");
+          props_ExpectedMessageContainer = cpb.create();
+        }
+        return props_ExpectedMessageContainer;
       case LanguageConceptSwitch.ExpressionContainer:
         if (props_ExpressionContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -345,8 +353,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L);
           cpb.deprecateAssociation(0x4c010b30d9be54a3L, "migration_old");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a53b0ed);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a53b0ed);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a63b0fd);
+          cpb.icon(IconContainer.RESOURCE_a0a4a0a63b0fd);
           props_MigrationTestCase = cpb.create();
         }
         return props_MigrationTestCase;
@@ -518,8 +526,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NodesTestCase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a95b0ed);
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a95b0ed);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a06b0fd);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a06b0fd);
           props_NodesTestCase = cpb.create();
         }
         return props_NodesTestCase;
@@ -596,7 +604,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TestInfo == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("TestInfo");
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a07b0ed);
+          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a17b0fd);
           props_TestInfo = cpb.create();
         }
         return props_TestInfo;
@@ -675,8 +683,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a4a0a81b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#editortests";
-  private static final String HELP_URL_lpa09p_a0a3a0a53b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#migrationtests";
-  private static final String HELP_URL_lpa09p_a0a2a0a95b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#nodetests";
-  private static final String HELP_URL_lpa09p_a0a2a0a07b0ed = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#testinfo";
+  private static final String HELP_URL_lpa09p_a0a4a0a81b0fd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#editortests";
+  private static final String HELP_URL_lpa09p_a0a3a0a63b0fd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#migrationtests";
+  private static final String HELP_URL_lpa09p_a0a2a0a06b0fd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#nodetests";
+  private static final String HELP_URL_lpa09p_a0a2a0a17b0fd = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#testinfo";
 }

@@ -10,7 +10,7 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
@@ -19,19 +19,23 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfbbbf1ec9L, "jetbrains.mps.lang.test.structure.AbstractNodeWarningCheckOperation");
 
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
-  public static final SMethod<CheckExpectedMessageAction> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageAction>(new SJavaCompoundTypeImpl(CheckExpectedMessageAction.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
   public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PROTECTED)).concept(CONCEPT).id("2wBFdLy8qmt").build();
+  /*package*/ static final SMethod<String> getExpectedMsgText_id3q9wAW4tuHA = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMsgText").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3q9wAW4tuHA").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getReferencedRuleNode_id2wBFdLy8qmt);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultName_id7scb9XJdmH2, checkAction_id7jfLc8W17Cr, getReferencedRuleNode_id2wBFdLy8qmt, getExpectedMsgText_id3q9wAW4tuHA);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -45,8 +49,9 @@ public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends
     }
     return "Node" + warningName + "Check";
   }
-  /*package*/ static CheckExpectedMessageAction checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository) {
-    CheckExpectedMessageAction action = (IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__) == null ? new CheckExpectedMessageAction.CheckAnyMessageAction(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, ruleRepository) : new CheckExpectedMessageAction.CheckExpectedRuleMessageAction(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__)), ruleRepository));
+  /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository) {
+    SNode annotatedNode = INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__);
+    CheckExpectedMessageRunnable action = (IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__) == null ? new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(annotatedNode, MessageStatus.WARNING, AbstractNodeWarningCheckOperation__BehaviorDescriptor.getExpectedMsgText_id3q9wAW4tuHA.invoke(__thisNode__), ruleRepository, null) : new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(annotatedNode, MessageStatus.WARNING, SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__)), AbstractNodeWarningCheckOperation__BehaviorDescriptor.getExpectedMsgText_id3q9wAW4tuHA.invoke(__thisNode__), ruleRepository, null));
     return action;
   }
   /*package*/ static SNode getReferencedRuleNode_id2wBFdLy8qmt(@NotNull SNode __thisNode__) {
@@ -54,6 +59,9 @@ public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends
       return null;
     }
     return SLinkOperations.getTarget(IReferenceAttachable__BehaviorDescriptor.getReference_id7eBNsYUkslm.invoke(__thisNode__), LINKS.declaration$tW8o);
+  }
+  /*package*/ static String getExpectedMsgText_id3q9wAW4tuHA(@NotNull SNode __thisNode__) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$gXqz), PROPS.text$lGWw);
   }
 
   /*package*/ AbstractNodeWarningCheckOperation__BehaviorDescriptor() {
@@ -74,9 +82,11 @@ public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends
       case 0:
         return (T) ((String) getDefaultName_id7scb9XJdmH2(node));
       case 1:
-        return (T) ((CheckExpectedMessageAction) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0]));
+        return (T) ((CheckExpectedMessageRunnable) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0]));
       case 2:
         return (T) ((SNode) getReferencedRuleNode_id2wBFdLy8qmt(node));
+      case 3:
+        return (T) ((String) getExpectedMsgText_id3q9wAW4tuHA(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -108,5 +118,10 @@ public final class AbstractNodeWarningCheckOperation__BehaviorDescriptor extends
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink declaration$tW8o = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+    /*package*/ static final SContainmentLink expectedMessage$gXqz = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty text$lGWw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
   }
 }

@@ -371,6 +371,10 @@
     <property role="TrG5h" value="NodesTestCase" />
     <property role="EcuMT" value="1216913645126" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1sEMCm" id="2bBdqPb0rlw" role="bvy1s">
+      <property role="1sEMCp" value="testing-languages.html#nodetests" />
+      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
     <node concept="1TJgyj" id="hHSKRN6" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="nodesToCheck" />
@@ -420,10 +424,6 @@
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSw" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/nodesTest.png" />
-    </node>
-    <node concept="1sEMCm" id="2bBdqPb0rlw" role="bvy1s">
-      <property role="1sEMCp" value="testing-languages.html#nodetests" />
-      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
   <node concept="1TIwiD" id="hHlHkQ8">
@@ -582,6 +582,10 @@
     <property role="3GE5qa" value="editor" />
     <property role="EcuMT" value="1229187653856" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1sEMCm" id="2bBdqPb0rlt" role="bvy1s">
+      <property role="1sEMCp" value="testing-languages.html#editortests" />
+      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
     <node concept="1TJgyi" id="1CyoCb$wKhC" role="1TKVEl">
       <property role="TrG5h" value="description" />
       <property role="IQ2nx" value="1883175908513350760" />
@@ -652,10 +656,6 @@
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSv" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/nodesTest.png" />
-    </node>
-    <node concept="1sEMCm" id="2bBdqPb0rlt" role="bvy1s">
-      <property role="1sEMCp" value="testing-languages.html#editortests" />
-      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
   <node concept="1TIwiD" id="hSLIFSi">
@@ -785,6 +785,10 @@
     <property role="TrG5h" value="TestInfo" />
     <property role="EcuMT" value="5097124989038916362" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1sEMCm" id="2bBdqPb0rlB" role="bvy1s">
+      <property role="1sEMCp" value="testing-languages.html#testinfo" />
+      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
     <node concept="1TJgyi" id="4qWC2JVrBcb" role="1TKVEl">
       <property role="TrG5h" value="projectPath" />
       <property role="IQ2nx" value="5097124989038916363" />
@@ -794,10 +798,6 @@
       <property role="TrG5h" value="reOpenProject" />
       <property role="IQ2nx" value="1031873601093404121" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="1sEMCm" id="2bBdqPb0rlB" role="bvy1s">
-      <property role="1sEMCp" value="testing-languages.html#testinfo" />
-      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
   <node concept="1TIwiD" id="65clA3cMU1F">
@@ -1046,6 +1046,12 @@
     <property role="R5$K2" value="false" />
     <property role="EcuMT" value="7835233914439520906" />
     <ref role="1TJDcQ" node="hG7unSw" resolve="NodeCheckOperation" />
+    <node concept="1TJgyj" id="Bszh9w5Xnr" role="1TKVEi">
+      <property role="IQ2ns" value="710597951278798299" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="expectedMessage" />
+      <ref role="20lvS9" node="Bszh9w5Xms" resolve="ExpectedMessageContainer" />
+    </node>
     <node concept="PrWs8" id="6MWlVHUgHab" role="PzmwI">
       <ref role="PrY4T" node="7scb9XIYnWK" resolve="ICheckForExpectedRule" />
     </node>
@@ -1280,6 +1286,10 @@
     <property role="EcuMT" value="5476670926298696679" />
     <property role="3GE5qa" value="migration" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1sEMCm" id="2bBdqPb0rl$" role="bvy1s">
+      <property role="1sEMCp" value="testing-languages.html#migrationtests" />
+      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
     <node concept="1TJgyj" id="4K12N3pJ_iz" role="1TKVEi">
       <property role="IQ2ns" value="5476670926298698915" />
       <property role="20kJfa" value="migration_old" />
@@ -1330,10 +1340,6 @@
     </node>
     <node concept="1QGGSu" id="4K12N3pJ$JJ" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/nodesTest.png" />
-    </node>
-    <node concept="1sEMCm" id="2bBdqPb0rl$" role="bvy1s">
-      <property role="1sEMCp" value="testing-languages.html#migrationtests" />
-      <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
   <node concept="1TIwiD" id="2154_0wV2x7">
@@ -1505,6 +1511,16 @@
     </node>
     <node concept="PrWs8" id="426cbTMdZVx" role="PzmwI">
       <ref role="PrY4T" node="6EW1JnOFUIt" resolve="IRuleReference" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="Bszh9w5Xms">
+    <property role="EcuMT" value="710597951278798236" />
+    <property role="TrG5h" value="ExpectedMessageContainer" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="Bszh9w5Xmt" role="1TKVEl">
+      <property role="IQ2nx" value="710597951278798237" />
+      <property role="TrG5h" value="text" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
 </model>

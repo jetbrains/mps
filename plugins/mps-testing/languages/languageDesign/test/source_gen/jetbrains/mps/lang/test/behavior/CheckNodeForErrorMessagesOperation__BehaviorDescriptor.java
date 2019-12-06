@@ -11,20 +11,21 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.test.runtime.CheckErrorMessagesAction;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -32,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, "jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation");
 
-  public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
   public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("77$odk0vlBj").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""));
@@ -43,10 +44,10 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
     SPropertyOperations.assign(__thisNode__, PROPS.includeSelf$1l1v, true);
   }
 
-  /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, final SNode node) {
-    new CheckErrorMessagesAction(node, SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq)).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v)).exclude(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AbstractNodeRuleCheckOperation$Z8, false, new SAbstractConcept[]{})).select(new ISelector<SNode, CheckExpectedMessageAction>() {
-      public CheckExpectedMessageAction select(final SNode excludeAnnotation) {
-        return (CheckExpectedMessageAction) AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(excludeAnnotation, SNodeOperations.getModel(node).getRepository());
+  /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, final SNode node, @Nullable ComponentHost host) {
+    new CheckErrorMessagesRunnable(node, SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v)).exclude(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AbstractNodeRuleCheckOperation$Z8, false, new SAbstractConcept[]{})).select(new ISelector<SNode, CheckExpectedMessageRunnable>() {
+      public CheckExpectedMessageRunnable select(final SNode excludeAnnotation) {
+        return (CheckExpectedMessageRunnable) AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(excludeAnnotation, SNodeOperations.getModel(node).getRepository());
       }
     }).toListSequence()).run();
   }
@@ -57,7 +58,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
     return ((String) ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(__thisNode__));
   }
   /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository) {
-    CheckErrorMessagesAction checkErrorsAction = new CheckErrorMessagesAction(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq)).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v));
+    CheckErrorMessagesRunnable checkErrorsAction = new CheckErrorMessagesRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq), null).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v));
     return checkErrorsAction.isReportItemAllowed(reportItem);
   }
 
@@ -77,7 +78,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
     }
     switch (methodIndex) {
       case 0:
-        perform_id1kgh5YabdhC(node, (SNode) parameters[0]);
+        perform_id1kgh5YabdhC(node, (SNode) parameters[0], (ComponentHost) parameters[1]);
         return null;
       case 1:
         return (T) ((String) getDefaultName_id7scb9XJdmH2(node));

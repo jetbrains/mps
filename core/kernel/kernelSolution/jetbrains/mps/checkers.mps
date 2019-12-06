@@ -33,6 +33,7 @@
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -4414,6 +4415,15 @@
   <node concept="312cEu" id="6qi2OtU3tVa">
     <property role="TrG5h" value="TargetConceptChecker" />
     <property role="3GE5qa" value="node" />
+    <node concept="312cEg" id="3q9wAW4rfBC" role="jymVt">
+      <property role="TrG5h" value="myHost" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3q9wAW4rfib" role="1B3o_S" />
+      <node concept="3uibUv" id="3q9wAW4rfsz" role="1tU5fm">
+        <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3q9wAW4rfLS" role="jymVt" />
     <node concept="3Tm1VV" id="6qi2OtU3tVb" role="1B3o_S" />
     <node concept="3uibUv" id="6qi2OtU3tVg" role="1zkMxy">
       <ref role="3uigEE" node="6qi2OtU3u$c" resolve="AbstractNodeCheckerInEditor" />
@@ -4421,8 +4431,44 @@
     <node concept="3clFbW" id="6qi2OtU3tVc" role="jymVt">
       <node concept="3cqZAl" id="6qi2OtU3tVd" role="3clF45" />
       <node concept="3Tm1VV" id="6qi2OtU3tVe" role="1B3o_S" />
-      <node concept="3clFbS" id="6qi2OtU3tVf" role="3clF47" />
+      <node concept="3clFbS" id="6qi2OtU3tVf" role="3clF47">
+        <node concept="3clFbF" id="3q9wAW4rfWV" role="3cqZAp">
+          <node concept="37vLTI" id="3q9wAW4rgfI" role="3clFbG">
+            <node concept="10Nm6u" id="3q9wAW4rgh3" role="37vLTx" />
+            <node concept="37vLTw" id="3q9wAW4rfWU" role="37vLTJ">
+              <ref role="3cqZAo" node="3q9wAW4rfBC" resolve="myHost" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="3q9wAW4rcpU" role="jymVt" />
+    <node concept="3clFbW" id="3q9wAW4renu" role="jymVt">
+      <node concept="3cqZAl" id="3q9wAW4reny" role="3clF45" />
+      <node concept="3Tm1VV" id="3q9wAW4renz" role="1B3o_S" />
+      <node concept="3clFbS" id="3q9wAW4ren$" role="3clF47">
+        <node concept="3clFbF" id="3q9wAW4rgqh" role="3cqZAp">
+          <node concept="37vLTI" id="3q9wAW4rg$l" role="3clFbG">
+            <node concept="37vLTw" id="3q9wAW4rg_E" role="37vLTx">
+              <ref role="3cqZAo" node="3q9wAW4rey7" resolve="host" />
+            </node>
+            <node concept="37vLTw" id="3q9wAW4rgqg" role="37vLTJ">
+              <ref role="3cqZAo" node="3q9wAW4rfBC" resolve="myHost" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="3q9wAW4rey7" role="3clF46">
+        <property role="TrG5h" value="host" />
+        <node concept="3uibUv" id="3q9wAW4rey6" role="1tU5fm">
+          <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
+        </node>
+        <node concept="2AHcQZ" id="3q9wAW4reK6" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3q9wAW4rczV" role="jymVt" />
     <node concept="3clFb_" id="dTvp$YV4U7" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="2aFKle" value="false" />
@@ -4443,6 +4489,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3q9wAW4rcfT" role="jymVt" />
     <node concept="3clFb_" id="320sejm6TZH" role="jymVt">
       <property role="TrG5h" value="skipCondition" />
       <property role="1EzhhJ" value="false" />
@@ -4462,6 +4509,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3q9wAW4rcfU" role="jymVt" />
     <node concept="3clFb_" id="6qi2OtU3tVh" role="jymVt">
       <property role="TrG5h" value="checkNodeInEditor" />
       <node concept="3cqZAl" id="6qi2OtU3tVi" role="3clF45" />

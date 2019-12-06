@@ -48,13 +48,13 @@
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" implicit="true" />
     <import index="tpeu" ref="r:00000000-0000-4000-0000-011c895902fa(jetbrains.mps.lang.smodel.behavior)" implicit="true" />
     <import index="tpe3" ref="r:00000000-0000-4000-0000-011c895902d7(jetbrains.mps.baseLanguage.unitTest.structure)" implicit="true" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
     <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" implicit="true" />
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -111,6 +111,10 @@
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
         <child id="1070534760952" name="componentType" index="10Q1$1" />
+      </concept>
+      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
+        <child id="1070534934091" name="type" index="10QFUM" />
+        <child id="1070534934092" name="expression" index="10QFUP" />
       </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg">
         <property id="8606350594693632173" name="isTransient" index="eg7rD" />
@@ -172,6 +176,9 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1154542696413" name="jetbrains.mps.baseLanguage.structure.ArrayCreatorWithInitializer" flags="nn" index="3g6Rrh">
         <child id="1154542793668" name="componentType" index="3g7fb8" />
         <child id="1154542803372" name="initValue" index="3g7hyw" />
@@ -629,9 +636,10 @@
                 </node>
               </node>
             </node>
+            <node concept="10Nm6u" id="3q9wAW4t4BI" role="37wK5m" />
             <node concept="2ShNRf" id="7OB8Y3vWP1S" role="37wK5m">
               <node concept="1pGfFk" id="7OB8Y3vWRO4" role="2ShVmc">
-                <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageAction.CheckExpectedRuleMessageAction" />
+                <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable" />
                 <node concept="10Nm6u" id="7OB8Y3vWS1T" role="37wK5m" />
                 <node concept="10Nm6u" id="7OB8Y3vWS6$" role="37wK5m" />
                 <node concept="10Nm6u" id="7OB8Y3vWSbo" role="37wK5m" />
@@ -5023,7 +5031,7 @@
                 <node concept="2OqwBi" id="62XJ9UeMacG" role="3clFbG">
                   <node concept="2ShNRf" id="62XJ9UeLZT9" role="2Oq$k0">
                     <node concept="1pGfFk" id="62XJ9UeLZTa" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageAction.CheckExpectedRuleMessageAction" />
+                      <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable" />
                       <node concept="10Nm6u" id="7OB8Y3vVqTx" role="37wK5m" />
                       <node concept="10Nm6u" id="7OB8Y3vVr2s" role="37wK5m" />
                       <node concept="10Nm6u" id="7OB8Y3vVr6J" role="37wK5m" />
@@ -5098,6 +5106,7 @@
             </node>
             <node concept="3Tm1VV" id="62XJ9UeO8sI" role="1B3o_S" />
           </node>
+          <node concept="2tJIrI" id="3q9wAW4p38h" role="jymVt" />
           <node concept="3uibUv" id="62XJ9UeO8sJ" role="1zkMxy">
             <ref role="3uigEE" to="tp6m:hLFfHcX" resolve="BaseTestBody" />
           </node>
@@ -5119,7 +5128,7 @@
                     <node concept="2OqwBi" id="62XJ9UeOvc5" role="2Oq$k0">
                       <node concept="2ShNRf" id="62XJ9UeO8sU" role="2Oq$k0">
                         <node concept="1pGfFk" id="62XJ9UeO8sV" role="2ShVmc">
-                          <ref role="37wK5l" to="tp6m:6MWlVHU2Nwl" resolve="CheckErrorMessagesAction" />
+                          <ref role="37wK5l" to="tp6m:6MWlVHU2Nwl" resolve="CheckErrorMessagesRunnable" />
                           <node concept="37vLTw" id="62XJ9UeO8sW" role="37wK5m">
                             <ref role="3cqZAo" node="62XJ9UeO8sP" resolve="nodeToCheck" />
                           </node>
@@ -5159,6 +5168,21 @@
                               </node>
                             </node>
                           </node>
+                          <node concept="2OqwBi" id="3q9wAW4p6SX" role="37wK5m">
+                            <node concept="1eOMI4" id="3q9wAW4p6tt" role="2Oq$k0">
+                              <node concept="10QFUN" id="3q9wAW4p4J5" role="1eOMHV">
+                                <node concept="3uibUv" id="3q9wAW4p5sB" role="10QFUM">
+                                  <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                                </node>
+                                <node concept="37vLTw" id="3q9wAW4p2vE" role="10QFUP">
+                                  <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="3q9wAW4p8Ql" role="2OqNvi">
+                              <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                            </node>
+                          </node>
                         </node>
                       </node>
                       <node concept="liA8E" id="62XJ9UeOwkz" role="2OqNvi">
@@ -5189,11 +5213,11 @@
                       <node concept="2ShNRf" id="7OB8Y3vXkNV" role="37wK5m">
                         <node concept="Tc6Ow" id="7OB8Y3vXmsB" role="2ShVmc">
                           <node concept="3uibUv" id="7OB8Y3vXn6_" role="HW$YZ">
-                            <ref role="3uigEE" to="tp6m:62XJ9UeKEVr" resolve="CheckExpectedMessageAction" />
+                            <ref role="3uigEE" to="tp6m:62XJ9UeKEVr" resolve="CheckExpectedMessageRunnable" />
                           </node>
                           <node concept="2ShNRf" id="7OB8Y3vXwEm" role="HW$Y0">
                             <node concept="1pGfFk" id="7OB8Y3vXwEn" role="2ShVmc">
-                              <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageAction.CheckExpectedRuleMessageAction" />
+                              <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable" />
                               <node concept="10Nm6u" id="7OB8Y3vXwEo" role="37wK5m" />
                               <node concept="10Nm6u" id="7OB8Y3vXwEp" role="37wK5m" />
                               <node concept="10Nm6u" id="7OB8Y3vXwEq" role="37wK5m" />
@@ -6065,6 +6089,21 @@
                 <node concept="37vLTw" id="62XJ9UeJ1ag" role="37wK5m">
                   <ref role="3cqZAo" node="62XJ9UeJ0KT" resolve="nodeToCheck" />
                 </node>
+                <node concept="2OqwBi" id="3q9wAW4tpY9" role="37wK5m">
+                  <node concept="1eOMI4" id="3q9wAW4tpYa" role="2Oq$k0">
+                    <node concept="10QFUN" id="3q9wAW4tpYb" role="1eOMHV">
+                      <node concept="3uibUv" id="3q9wAW4tpYc" role="10QFUM">
+                        <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                      </node>
+                      <node concept="37vLTw" id="3q9wAW4tpYd" role="10QFUP">
+                        <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3q9wAW4tpYe" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="raruj" id="62XJ9UeJ1iN" role="lGtFl" />
@@ -6118,7 +6157,7 @@
                 <node concept="2OqwBi" id="7OB8Y3vUNjM" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3vUqLc" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3vUqLd" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageAction.CheckExpectedRuleMessageAction" />
+                      <ref role="37wK5l" to="tp6m:Bszh9vWh3Z" resolve="CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3vUqLe" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3vUqL7" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3w0Ljk" role="lGtFl">
@@ -6341,12 +6380,51 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="2OqwBi" id="7OB8Y3vUqMR" role="37wK5m">
-                        <node concept="37vLTw" id="7OB8Y3vUqMS" role="2Oq$k0">
+                      <node concept="Xl_RD" id="2rhqjUtxfcb" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="2rhqjUtxh5T" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="2rhqjUtxh5U" role="3zH0cK">
+                            <node concept="3clFbS" id="2rhqjUtxh5V" role="2VODD2">
+                              <node concept="3clFbF" id="2rhqjUtxbLP" role="3cqZAp">
+                                <node concept="2OqwBi" id="2rhqjUtxd9w" role="3clFbG">
+                                  <node concept="2OqwBi" id="2rhqjUtxc18" role="2Oq$k0">
+                                    <node concept="30H73N" id="2rhqjUtxbLO" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="2rhqjUtxcxj" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="2rhqjUtxdml" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4qPgv" role="37wK5m">
+                        <node concept="37vLTw" id="3q9wAW4qOGZ" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
-                        <node concept="liA8E" id="7OB8Y3vUqMT" role="2OqNvi">
+                        <node concept="liA8E" id="3q9wAW4qPPJ" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4qJCL" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4qKYV" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4qLmB" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4qM0M" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4qJ1_" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4qMwk" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -6421,7 +6499,7 @@
                 <node concept="2OqwBi" id="7OB8Y3wiaZo" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3wiaZp" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3wiaZq" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:7OB8Y3whYkZ" resolve="CheckExpectedMessageAction.CheckAnyMessageAction" />
+                      <ref role="37wK5l" to="tp6m:7OB8Y3whYkZ" resolve="CheckExpectedMessageRunnable.CheckAnyMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3wiaZr" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3wiaZk" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3wiaZs" role="lGtFl">
@@ -6443,12 +6521,51 @@
                         <ref role="Rm8GQ" to="2gg1:~MessageStatus.ERROR" resolve="ERROR" />
                         <ref role="1Px2BO" to="2gg1:~MessageStatus" resolve="MessageStatus" />
                       </node>
+                      <node concept="Xl_RD" id="3q9wAW4tbm_" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="3q9wAW4tbmA" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="3q9wAW4tbmB" role="3zH0cK">
+                            <node concept="3clFbS" id="3q9wAW4tbmC" role="2VODD2">
+                              <node concept="3clFbF" id="3q9wAW4tbmD" role="3cqZAp">
+                                <node concept="2OqwBi" id="3q9wAW4tbmE" role="3clFbG">
+                                  <node concept="2OqwBi" id="3q9wAW4tbmF" role="2Oq$k0">
+                                    <node concept="30H73N" id="3q9wAW4tbmG" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="3q9wAW4tbmH" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="3q9wAW4tbmI" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="7OB8Y3wib1b" role="37wK5m">
                         <node concept="37vLTw" id="7OB8Y3wib1c" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="7OB8Y3wib1d" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4tci2" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4tci3" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4tci4" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4tci5" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4tci6" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4tci7" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -6523,7 +6640,7 @@
                 <node concept="2OqwBi" id="7OB8Y3vUqNi" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3vUqNj" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3vUqNk" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageAction.CheckExpectedRuleMessageAction" />
+                      <ref role="37wK5l" to="tp6m:Bszh9vWh3Z" resolve="CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3w0QJf" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3vUqNe" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3w0QJg" role="lGtFl">
@@ -6746,12 +6863,51 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="Xl_RD" id="3q9wAW4qTfW" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="3q9wAW4qTfX" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="3q9wAW4qTfY" role="3zH0cK">
+                            <node concept="3clFbS" id="3q9wAW4qTfZ" role="2VODD2">
+                              <node concept="3clFbF" id="3q9wAW4qTg0" role="3cqZAp">
+                                <node concept="2OqwBi" id="3q9wAW4qTg1" role="3clFbG">
+                                  <node concept="2OqwBi" id="3q9wAW4qTg2" role="2Oq$k0">
+                                    <node concept="30H73N" id="3q9wAW4qTg3" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="3q9wAW4qTg4" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="3q9wAW4qTg5" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="7OB8Y3vUqOY" role="37wK5m">
                         <node concept="37vLTw" id="7OB8Y3vUqOZ" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="7OB8Y3vUqP0" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4qSuL" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4qSuM" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4qSuN" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4qSuO" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4qSuP" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4qSuQ" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -6826,7 +6982,7 @@
                 <node concept="2OqwBi" id="7OB8Y3wiiva" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3wiivb" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3wiivc" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:7OB8Y3whYkZ" resolve="CheckExpectedMessageAction.CheckAnyMessageAction" />
+                      <ref role="37wK5l" to="tp6m:7OB8Y3whYkZ" resolve="CheckExpectedMessageRunnable.CheckAnyMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3wiivd" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3wiiv6" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3wiive" role="lGtFl">
@@ -6848,12 +7004,51 @@
                         <ref role="Rm8GQ" to="2gg1:~MessageStatus.WARNING" resolve="WARNING" />
                         <ref role="1Px2BO" to="2gg1:~MessageStatus" resolve="MessageStatus" />
                       </node>
+                      <node concept="Xl_RD" id="3q9wAW4r0WF" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="3q9wAW4r0WG" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="3q9wAW4r0WH" role="3zH0cK">
+                            <node concept="3clFbS" id="3q9wAW4r0WI" role="2VODD2">
+                              <node concept="3clFbF" id="3q9wAW4r0WJ" role="3cqZAp">
+                                <node concept="2OqwBi" id="3q9wAW4r0WK" role="3clFbG">
+                                  <node concept="2OqwBi" id="3q9wAW4r0WL" role="2Oq$k0">
+                                    <node concept="30H73N" id="3q9wAW4r0WM" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="3q9wAW4r0WN" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="3q9wAW4r0WO" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="7OB8Y3wiiwX" role="37wK5m">
                         <node concept="37vLTw" id="7OB8Y3wiiwY" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="7OB8Y3wiiwZ" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4r0HG" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4r0HH" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4r0HI" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4r0HJ" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4r0HK" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4r0HL" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -6928,7 +7123,7 @@
                 <node concept="2OqwBi" id="7OB8Y3vUqPp" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3vUqPq" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3vUqPr" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:62XJ9UeL27H" resolve="CheckExpectedMessageAction.CheckExpectedRuleMessageAction" />
+                      <ref role="37wK5l" to="tp6m:Bszh9vWh3Z" resolve="CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3w0Rnk" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3vUqPl" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3w0Rnl" role="lGtFl">
@@ -7151,12 +7346,51 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="Xl_RD" id="3q9wAW4qUJl" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="3q9wAW4qUJm" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="3q9wAW4qUJn" role="3zH0cK">
+                            <node concept="3clFbS" id="3q9wAW4qUJo" role="2VODD2">
+                              <node concept="3clFbF" id="3q9wAW4qUJp" role="3cqZAp">
+                                <node concept="2OqwBi" id="3q9wAW4qUJq" role="3clFbG">
+                                  <node concept="2OqwBi" id="3q9wAW4qUJr" role="2Oq$k0">
+                                    <node concept="30H73N" id="3q9wAW4qUJs" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="3q9wAW4qUJt" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="3q9wAW4qUJu" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="7OB8Y3vUqR5" role="37wK5m">
                         <node concept="37vLTw" id="7OB8Y3vUqR6" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="7OB8Y3vUqR7" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4qVo8" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4qVo9" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4qVoa" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4qVob" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4qVoc" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4qVod" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -7231,7 +7465,7 @@
                 <node concept="2OqwBi" id="7OB8Y3wippc" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3wippd" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3wippe" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:7OB8Y3whYkZ" resolve="CheckExpectedMessageAction.CheckAnyMessageAction" />
+                      <ref role="37wK5l" to="tp6m:7OB8Y3whYkZ" resolve="CheckExpectedMessageRunnable.CheckAnyMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3wippf" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3wipp8" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3wippg" role="lGtFl">
@@ -7253,12 +7487,51 @@
                         <ref role="1Px2BO" to="2gg1:~MessageStatus" resolve="MessageStatus" />
                         <ref role="Rm8GQ" to="2gg1:~MessageStatus.OK" resolve="OK" />
                       </node>
+                      <node concept="Xl_RD" id="3q9wAW4tdv6" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="3q9wAW4tdv7" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="3q9wAW4tdv8" role="3zH0cK">
+                            <node concept="3clFbS" id="3q9wAW4tdv9" role="2VODD2">
+                              <node concept="3clFbF" id="3q9wAW4tdva" role="3cqZAp">
+                                <node concept="2OqwBi" id="3q9wAW4tdvb" role="3clFbG">
+                                  <node concept="2OqwBi" id="3q9wAW4tdvc" role="2Oq$k0">
+                                    <node concept="30H73N" id="3q9wAW4tdvd" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="3q9wAW4tdve" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="3q9wAW4tdvf" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="7OB8Y3wipqZ" role="37wK5m">
                         <node concept="37vLTw" id="7OB8Y3wipr0" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="7OB8Y3wipr1" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4tcxU" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4tcxV" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4tcxW" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4tcxX" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4tcxY" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4tcxZ" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -7333,7 +7606,7 @@
                 <node concept="2OqwBi" id="7OB8Y3vUqRw" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3vUqRx" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3vUqRy" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:62XJ9UeL2Jq" resolve="CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction" />
+                      <ref role="37wK5l" to="tp6m:62XJ9UeL2Jq" resolve="CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3w0RSp" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3vUqRs" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3w0RSq" role="lGtFl">
@@ -7355,12 +7628,51 @@
                         <ref role="Rm8GQ" to="2gg1:~MessageStatus.ERROR" resolve="ERROR" />
                         <ref role="1Px2BO" to="2gg1:~MessageStatus" resolve="MessageStatus" />
                       </node>
+                      <node concept="Xl_RD" id="3q9wAW4te9q" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="3q9wAW4te9r" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="3q9wAW4te9s" role="3zH0cK">
+                            <node concept="3clFbS" id="3q9wAW4te9t" role="2VODD2">
+                              <node concept="3clFbF" id="3q9wAW4te9u" role="3cqZAp">
+                                <node concept="2OqwBi" id="3q9wAW4te9v" role="3clFbG">
+                                  <node concept="2OqwBi" id="3q9wAW4te9w" role="2Oq$k0">
+                                    <node concept="30H73N" id="3q9wAW4te9x" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="3q9wAW4te9y" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="3q9wAW4te9z" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="7OB8Y3vUqR_" role="37wK5m">
                         <node concept="37vLTw" id="7OB8Y3vUqRA" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="7OB8Y3vUqRB" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4td9b" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4td9c" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4td9d" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4td9e" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4td9f" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4td9g" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -7420,7 +7732,7 @@
                 <node concept="2OqwBi" id="7OB8Y3vUqS0" role="3clFbG">
                   <node concept="2ShNRf" id="7OB8Y3vUqS1" role="2Oq$k0">
                     <node concept="1pGfFk" id="7OB8Y3vUqS2" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:62XJ9UeL2Jq" resolve="CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction" />
+                      <ref role="37wK5l" to="tp6m:62XJ9UeL2Jq" resolve="CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable" />
                       <node concept="37vLTw" id="7OB8Y3w0S7t" role="37wK5m">
                         <ref role="3cqZAo" node="7OB8Y3vUqRW" resolve="nodeToCheck" />
                         <node concept="29HgVG" id="7OB8Y3w0S7u" role="lGtFl">
@@ -7442,12 +7754,51 @@
                         <ref role="Rm8GQ" to="2gg1:~MessageStatus.WARNING" resolve="WARNING" />
                         <ref role="1Px2BO" to="2gg1:~MessageStatus" resolve="MessageStatus" />
                       </node>
+                      <node concept="Xl_RD" id="3q9wAW4tsLc" role="37wK5m">
+                        <property role="Xl_RC" value="expected message" />
+                        <node concept="17Uvod" id="3q9wAW4tsLd" role="lGtFl">
+                          <property role="2qtEX9" value="value" />
+                          <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                          <node concept="3zFVjK" id="3q9wAW4tsLe" role="3zH0cK">
+                            <node concept="3clFbS" id="3q9wAW4tsLf" role="2VODD2">
+                              <node concept="3clFbF" id="3q9wAW4tsLg" role="3cqZAp">
+                                <node concept="2OqwBi" id="3q9wAW4tsLh" role="3clFbG">
+                                  <node concept="2OqwBi" id="3q9wAW4tsLi" role="2Oq$k0">
+                                    <node concept="30H73N" id="3q9wAW4tsLj" role="2Oq$k0" />
+                                    <node concept="3TrEf2" id="3q9wAW4tsLk" role="2OqNvi">
+                                      <ref role="3Tt5mk" to="tp5g:Bszh9w5Xnr" resolve="expectedMessage" />
+                                    </node>
+                                  </node>
+                                  <node concept="3TrcHB" id="3q9wAW4tsLl" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tp5g:Bszh9w5Xmt" resolve="text" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="2OqwBi" id="7OB8Y3vUqS5" role="37wK5m">
                         <node concept="37vLTw" id="7OB8Y3vUqS6" role="2Oq$k0">
                           <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="7OB8Y3vUqS7" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="3q9wAW4tqVU" role="37wK5m">
+                        <node concept="1eOMI4" id="3q9wAW4tqVV" role="2Oq$k0">
+                          <node concept="10QFUN" id="3q9wAW4tqVW" role="1eOMHV">
+                            <node concept="3uibUv" id="3q9wAW4tqVX" role="10QFUM">
+                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
+                            </node>
+                            <node concept="37vLTw" id="3q9wAW4tqVY" role="10QFUP">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="3q9wAW4tqVZ" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>

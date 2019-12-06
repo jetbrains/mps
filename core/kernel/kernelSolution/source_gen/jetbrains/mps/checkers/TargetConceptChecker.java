@@ -5,6 +5,8 @@ package jetbrains.mps.checkers;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.item.NodeReportItem;
+import jetbrains.mps.components.ComponentHost;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -19,16 +21,26 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/7390982340086718154", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class TargetConceptChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
+  private final ComponentHost myHost;
+
   public TargetConceptChecker() {
+    myHost = null;
   }
+
+  public TargetConceptChecker(@Nullable ComponentHost host) {
+    myHost = host;
+  }
+
   @Override
   public IssueKindReportItem.CheckerCategory getCategory() {
     return IssueKindReportItem.TARGET_CONCEPTS;
   }
+
   @Override
   public IChecker.AbstractNodeChecker.ErrorSkipCondition skipCondition() {
     return AbstractNodeCheckerInEditor.SKIP_CONSTRAINTS_CONDITION;
   }
+
   @Override
   public void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
     for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {

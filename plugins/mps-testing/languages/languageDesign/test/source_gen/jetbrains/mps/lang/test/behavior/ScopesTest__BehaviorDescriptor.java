@@ -12,6 +12,7 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.components.ComponentHost;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -22,11 +23,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.test.runtime.CheckScopesAction;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -42,7 +43,7 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2RMg39tmiFh").build();
   public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGBohAB").build();
   public static final SMethod<SNode> getAnnotatedNode_id38gbJV0XvZR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAnnotatedNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("38gbJV0XvZR").build();
-  public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCheckingReference_id4IvydoGvimX, isSimple_id4IvydoGvpbr, isApplicable_id4IvydoGviup, getTestCase_idhGBgWVd, isMpsStartRequired_id2RMg39tmiFh, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, perform_id1kgh5YabdhC);
 
@@ -84,7 +85,7 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getAnnotatedNode_id38gbJV0XvZR(@NotNull SNode __thisNode__) {
     return SNodeOperations.getParent(__thisNode__);
   }
-  /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node) {
+  /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node, @Nullable ComponentHost host) {
     SReference checkingReference = ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(__thisNode__);
     new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$B16t)).select(new ISelector<SNode, SNodeReference>() {
       public SNodeReference select(SNode it) {
@@ -119,7 +120,7 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
       case 6:
         return (T) ((SNode) getAnnotatedNode_id38gbJV0XvZR(node));
       case 7:
-        perform_id1kgh5YabdhC(node, (SNode) parameters[0]);
+        perform_id1kgh5YabdhC(node, (SNode) parameters[0], (ComponentHost) parameters[1]);
         return null;
       default:
         throw new BHMethodNotFoundException(this, method);

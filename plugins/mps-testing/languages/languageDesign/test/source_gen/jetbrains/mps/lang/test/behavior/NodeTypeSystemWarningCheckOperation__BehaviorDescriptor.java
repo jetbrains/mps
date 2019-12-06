@@ -6,7 +6,7 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
-import jetbrains.mps.lang.test.runtime.CheckExpectedMessageAction;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
@@ -17,23 +17,31 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x770c2c9f6f1bbfcaL, "jetbrains.mps.lang.test.structure.NodeTypeSystemWarningCheckOperation");
 
-  public static final SMethod<CheckExpectedMessageAction> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageAction>(new SJavaCompoundTypeImpl(CheckExpectedMessageAction.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  /*package*/ static final SMethod<String> getExpectedMessageText_id3q9wAW4tyBj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMessageText").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3q9wAW4tyBj").build();
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(checkAction_id7jfLc8W17Cr, getDefaultName_id7scb9XJdmH2);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(checkAction_id7jfLc8W17Cr, getExpectedMessageText_id3q9wAW4tyBj, getDefaultName_id7scb9XJdmH2);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static CheckExpectedMessageAction checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository) {
-    return new CheckExpectedMessageAction.CheckExpectedTypesystemMessageAction(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, ruleRepository);
+  /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository) {
+    return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, NodeTypeSystemWarningCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tyBj.invoke(__thisNode__), ruleRepository, null);
+  }
+  /*package*/ static String getExpectedMessageText_id3q9wAW4tyBj(@NotNull SNode __thisNode__) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$gXqz), PROPS.text$lGWw);
   }
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeTypeSystemWarningCheck";
@@ -55,8 +63,10 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((CheckExpectedMessageAction) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0]));
+        return (T) ((CheckExpectedMessageRunnable) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0]));
       case 1:
+        return (T) ((String) getExpectedMessageText_id3q9wAW4tyBj(node));
+      case 2:
         return (T) ((String) getDefaultName_id7scb9XJdmH2(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -85,5 +95,13 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink expectedMessage$gXqz = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty text$lGWw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
   }
 }

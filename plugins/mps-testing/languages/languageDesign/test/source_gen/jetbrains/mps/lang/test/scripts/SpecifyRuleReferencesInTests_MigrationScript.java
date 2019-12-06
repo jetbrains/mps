@@ -6,6 +6,8 @@ import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -30,11 +32,11 @@ public final class SpecifyRuleReferencesInTests_MigrationScript extends BaseMigr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (SpecifyUtil.getOperationsContainer(node) != null);
+        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$UO)) != null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SpecifyUtil.fillContainerWithRuleMessages(node);
+        new SpecifyRuleMessagesHelper(node, null).fillContainerWithRuleMessages();
       }
       @Override
       public boolean isShowAsIntention() {
@@ -51,5 +53,6 @@ public final class SpecifyRuleReferencesInTests_MigrationScript extends BaseMigr
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept NodeOperationsContainer$UO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
   }
 }

@@ -14,6 +14,8 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
@@ -33,7 +35,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class NodeCheckerUtil {
-
   public static String nodeWithIdToString(final SNode node) {
     return node + " [" + node.getNodeId() + "]";
   }
@@ -52,23 +53,23 @@ public class NodeCheckerUtil {
     return sourceNode.resolve(ruleRepository);
   }
 
-  public static List<IChecker<?, ? extends IssueKindReportItem>> getStandardCheckers() {
+  public static List<IChecker<?, ? extends IssueKindReportItem>> getStandardCheckers(@Nullable ComponentHost host) {
     List<IChecker<?, ? extends IssueKindReportItem>> result = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
     ListSequence.fromList(result).addElement(new TypesystemChecker());
     ListSequence.fromList(result).addElement(new NonTypesystemChecker());
-    ListSequence.fromList(result).addElement(new ConstraintsChecker(null));
-    ListSequence.fromList(result).addElement(new RefScopeChecker());
-    ListSequence.fromList(result).addElement(new TargetConceptChecker());
-    ListSequence.fromList(result).addElement(new StructureChecker());
+    ListSequence.fromList(result).addElement(new ConstraintsChecker(host));
+    ListSequence.fromList(result).addElement(new RefScopeChecker(host));
+    ListSequence.fromList(result).addElement(new TargetConceptChecker(host));
+    ListSequence.fromList(result).addElement(new StructureChecker(host));
     ListSequence.fromList(result).addElement(new SuppressErrorsChecker());
     return result;
   }
 
-  public static Collection<NodeReportItem> checkForNodeMessages(final SNode node) {
+  public static Collection<NodeReportItem> checkForNodeMessages(final SNode node, @Nullable ComponentHost host) {
     SModel model = SNodeOperations.getModel(node);
     final SRepository repository = SNodeOperations.getModel(node).getRepository();
     final CollectConsumer<NodeReportItem> resultConsumer = new CollectConsumer<NodeReportItem>();
-    new ModelCheckerBuilder(false).createChecker(getStandardCheckers()).check(ModelCheckerBuilder.ItemsToCheck.forSingleModel(model), repository, new Consumer<IssueKindReportItem>() {
+    new ModelCheckerBuilder(false).createChecker(getStandardCheckers(host)).check(ModelCheckerBuilder.ItemsToCheck.forSingleModel(model), repository, new Consumer<IssueKindReportItem>() {
       public void consume(IssueKindReportItem reportItem) {
         SNodeReference reportedNode = NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem);
         if (reportedNode != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(((SNode) reportedNode.resolve(repository)), null, true)).contains(node)) {
@@ -82,9 +83,8 @@ public class NodeCheckerUtil {
   /**
    * works with node from original model
    */
-  @Deprecated
-  public static void checkNodeForErrorMessages(final SNode node, final boolean allowErrors, final boolean allowWarnings, boolean includeSelf, CheckExpectedMessageAction... excluded) {
-    Runnable checkErrorsAction = new CheckErrorMessagesAction(node, allowWarnings, allowErrors).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toListSequence());
+  public static void checkNodeForErrorMessages(SNode node, boolean allowErrors, boolean allowWarnings, boolean includeSelf, @Nullable ComponentHost host, CheckExpectedMessageRunnable... excluded) {
+    Runnable checkErrorsAction = new CheckErrorMessagesRunnable(node, allowWarnings, allowErrors, host).includeSelf(includeSelf).exclude(Sequence.fromIterable(Sequence.fromArray(excluded)).toListSequence());
     checkErrorsAction.run();
   }
 

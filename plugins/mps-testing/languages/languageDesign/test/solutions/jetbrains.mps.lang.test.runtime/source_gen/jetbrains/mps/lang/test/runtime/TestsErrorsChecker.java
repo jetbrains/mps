@@ -5,6 +5,8 @@ package jetbrains.mps.lang.test.runtime;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +27,6 @@ import jetbrains.mps.checkers.TargetConceptChecker;
 import jetbrains.mps.project.validation.StructureChecker;
 import jetbrains.mps.checkers.ErrorReportHelper;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -34,9 +35,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * @deprecated needs to be united with the common model checking logic. Here we have the second cache of the same things.
  */
 @Deprecated
-public class TestsErrorsChecker {
+public final class TestsErrorsChecker {
   private static final Logger LOG = LogManager.getLogger(TestsErrorsChecker.class);
   private final SNode myRoot;
+  @Nullable
+  private final ComponentHost myHost;
 
   /**
    * contains cached warnings and errors for the current root
@@ -45,8 +48,14 @@ public class TestsErrorsChecker {
 
   @Deprecated
   public TestsErrorsChecker(SNode root) {
+    this(root, null);
+  }
+
+  @Deprecated
+  public TestsErrorsChecker(SNode root, @Nullable ComponentHost host) {
     assert root == SNodeOperations.getContainingRoot(root);
     myRoot = root;
+    myHost = host;
   }
 
   public SNode getRoot() {
@@ -100,10 +109,10 @@ public class TestsErrorsChecker {
 
     new TypesystemChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new NonTypesystemChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
-    new ConstraintsChecker(null).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
-    new RefScopeChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
+    new ConstraintsChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
+    new RefScopeChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new TargetConceptChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
-    new StructureChecker().asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
+    new StructureChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
 
     final ErrorReportHelper helper = new ErrorReportHelper();
     Set<NodeReportItem> res = SetSequence.fromSetWithValues(new HashSet<NodeReportItem>(), SetSequence.fromSet(result).where(new IWhereFilter<NodeReportItem>() {
