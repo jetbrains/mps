@@ -11,7 +11,7 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.ide.java.tests.utility.Utils;
+import jetbrains.mps.ide.java.tests.utility.JavaToMpsUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -64,8 +64,8 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
-      String genCode = Utils.generateCode(SNodeOperations.cast(getNodeById("4795297196607508732"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-      new Utils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("4795297196607508732"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      String genCode = JavaToMpsUtils.generateCode(SNodeOperations.cast(getNodeById("4795297196607508732"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("4795297196607508732"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
     }
     public void test_Methods() throws Exception {
       addNodeById("4795297196607456975");
@@ -74,8 +74,8 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
-      String genCode = Utils.generateCode(SNodeOperations.cast(getNodeById("4795297196607508741"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-      new Utils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("4795297196607508741"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      String genCode = JavaToMpsUtils.generateCode(SNodeOperations.cast(getNodeById("4795297196607508741"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("4795297196607508741"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
     }
     public void test_Fields() throws Exception {
       addNodeById("4795297196607456975");
@@ -84,8 +84,8 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
-      String genCode = Utils.generateCode(SNodeOperations.cast(getNodeById("8083368042256391114"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-      new Utils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("8083368042256391114"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      String genCode = JavaToMpsUtils.generateCode(SNodeOperations.cast(getNodeById("8083368042256391114"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("8083368042256391114"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
     }
     public void test_TypeVars() throws Exception {
       addNodeById("4795297196607456975");
@@ -94,8 +94,8 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
-      String genCode = Utils.generateCode(SNodeOperations.cast(getNodeById("7030568040400121707"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101edd46144L, "Interface"))));
-      new Utils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("7030568040400121707"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101edd46144L, "Interface"))));
+      String genCode = JavaToMpsUtils.generateCode(SNodeOperations.cast(getNodeById("7030568040400121707"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101edd46144L, "Interface"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkStringStubs(genCode, SNodeOperations.cast(getNodeById("7030568040400121707"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101edd46144L, "Interface"))));
     }
     public void test_OuterClassThis() throws Exception {
       addNodeById("4795297196607456975");
@@ -104,8 +104,8 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
-      String genCode = Utils.generateCode(SNodeOperations.cast(getNodeById("1369191534307040156"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-      new Utils(myProject.getRepository()).checkString(genCode, SNodeOperations.cast(getNodeById("1369191534307040156"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))), false);
+      String genCode = JavaToMpsUtils.generateCode(SNodeOperations.cast(getNodeById("1369191534307040156"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, SNodeOperations.cast(getNodeById("1369191534307040156"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))), false);
     }
     public void test_VarargMethods() throws Exception {
       addNodeById("4795297196607456975");
@@ -114,8 +114,8 @@ public class RoundTrip_Test extends BaseTransformationTest {
       addNodeById("7030568040400121706");
       addNodeById("1369191534307039900");
       addNodeById("1369191534311251473");
-      String genCode = Utils.generateCode(SNodeOperations.cast(getNodeById("1369191534311251786"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-      new Utils(myProject.getRepository()).checkString(genCode, SNodeOperations.cast(getNodeById("1369191534311251786"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))), false);
+      String genCode = JavaToMpsUtils.generateCode(SNodeOperations.cast(getNodeById("1369191534311251786"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkString(genCode, SNodeOperations.cast(getNodeById("1369191534311251786"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))), false);
     }
 
 

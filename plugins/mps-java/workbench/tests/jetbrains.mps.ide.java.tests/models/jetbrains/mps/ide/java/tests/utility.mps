@@ -37,6 +37,7 @@
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -453,7 +454,7 @@
     </language>
   </registry>
   <node concept="312cEu" id="70HT6wFrGK4">
-    <property role="TrG5h" value="Utils" />
+    <property role="TrG5h" value="JavaToMpsUtils" />
     <node concept="312cEg" id="Tb4Psnn4qH" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -464,6 +465,7 @@
         <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
       </node>
     </node>
+    <node concept="2tJIrI" id="1DdwxBFFvaM" role="jymVt" />
     <node concept="3clFbW" id="70HT6wFrGK6" role="jymVt">
       <node concept="37vLTG" id="Tb4Psnn2H5" role="3clF46">
         <property role="TrG5h" value="repository" />
@@ -495,9 +497,9 @@
         <node concept="3clFbF" id="7q5dBpSmDFJ" role="3cqZAp">
           <node concept="2OqwBi" id="7q5dBpSmXH8" role="3clFbG">
             <node concept="37shsh" id="7q5dBpSmDFG" role="2Oq$k0">
-              <node concept="1dCxOk" id="5ZqXG2n7xKv" role="37shsm">
-                <property role="1XxBO9" value="jetbrains.mps.ide.java.tests" />
-                <property role="1XweGW" value="c3786d2b-aba2-45e5-8de0-1124fd14259b" />
+              <node concept="1dCxOk" id="1DdwxBFFOel" role="37shsm">
+                <property role="1XweGW" value="49166c31-952a-46f6-8970-ea45964379d0" />
+                <property role="1XxBO9" value="jetbrains.mps.ide.java.testMaterial" />
               </node>
             </node>
             <node concept="liA8E" id="7q5dBpSmXUx" role="2OqNvi">
@@ -1377,7 +1379,6 @@
             <ref role="3cqZAo" node="7q5dBpSgVul" resolve="expected" />
           </node>
         </node>
-        <node concept="3clFbH" id="7q5dBpSgVui" role="3cqZAp" />
       </node>
       <node concept="3cqZAl" id="7q5dBpSgVuk" role="3clF45" />
       <node concept="37vLTG" id="7q5dBpSgVsm" role="3clF46">

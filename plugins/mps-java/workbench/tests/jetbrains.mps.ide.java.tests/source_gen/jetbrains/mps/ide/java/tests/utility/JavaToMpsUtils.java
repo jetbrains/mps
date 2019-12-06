@@ -57,14 +57,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class Utils {
+public class JavaToMpsUtils {
   private final SRepository myRepo;
-  public Utils(SRepository repository) {
+
+  public JavaToMpsUtils(SRepository repository) {
     myRepo = repository;
   }
 
   private SModule getModule() {
-    return PersistenceFacade.getInstance().createModuleReference("c3786d2b-aba2-45e5-8de0-1124fd14259b(jetbrains.mps.ide.java.tests)").resolve(myRepo);
+    return PersistenceFacade.getInstance().createModuleReference("49166c31-952a-46f6-8970-ea45964379d0(jetbrains.mps.ide.java.testMaterial)").resolve(myRepo);
   }
 
   public static String generateCode(SNode node) {
@@ -150,7 +151,6 @@ public class Utils {
       List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), result);
       Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
     }
-
   }
 
   public void checkStubModels(IFile dirPath, SModelReference... expected) {
