@@ -26,6 +26,7 @@
     <import index="xj2j" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.plugins.projectplugins(MPS.Workbench/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="hq8m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.options(MPS.IDEA/)" />
+    <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -60,9 +61,6 @@
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
-      <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
-        <child id="1182160096073" name="cls" index="YeSDq" />
       </concept>
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
@@ -161,13 +159,13 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
+      <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
+        <child id="1350122676458893092" name="text" index="3ndbpf" />
+      </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
-      <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
-        <reference id="1170346070688" name="classifier" index="1Y3XeK" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -200,6 +198,14 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+    </language>
+    <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
+        <property id="155656958578482949" name="value" index="3oM_SC" />
+      </concept>
+      <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="ng" index="1PaTwC">
+        <child id="2535923850359271783" name="elements" index="1PaTwD" />
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
@@ -494,6 +500,38 @@
       <node concept="3Tm6S6" id="4tfwdmbGEte" role="1B3o_S" />
       <node concept="3cqZAl" id="4tfwdmbGEtf" role="3clF45" />
       <node concept="3clFbS" id="4tfwdmbGEs6" role="3clF47">
+        <node concept="3SKdUt" id="1DdwxBFHgsG" role="3cqZAp">
+          <node concept="1PaTwC" id="1DdwxBFHgsH" role="3ndbpf">
+            <node concept="3oM_SD" id="1DdwxBFHgsJ" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="1DdwxBFHgz3" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="1DdwxBFHgz6" role="1PaTwD">
+              <property role="3oM_SC" value="EDT" />
+            </node>
+            <node concept="3oM_SD" id="1DdwxBFHgzi" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1DdwxBFHgzn" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="1DdwxBFHgzH" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1DdwxBFHgzO" role="1PaTwD">
+              <property role="3oM_SC" value="descriptors" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1DdwxBFHenQ" role="3cqZAp">
+          <node concept="2YIFZM" id="1DdwxBFHeHy" role="3clFbG">
+            <ref role="37wK5l" to="3a50:~ThreadUtils.assertEDT()" resolve="assertEDT" />
+            <ref role="1Pybhc" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="1DdwxBFHeKh" role="3cqZAp" />
         <node concept="3cpWs8" id="4tfwdmbGEs7" role="3cqZAp">
           <node concept="3cpWsn" id="4tfwdmbGEs8" role="3cpWs9">
             <property role="TrG5h" value="descriptors" />
@@ -508,157 +546,119 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="4tfwdmbGEsc" role="3cqZAp" />
-        <node concept="3clFbF" id="4tfwdmbGEsd" role="3cqZAp">
-          <node concept="2OqwBi" id="4tfwdmbGEse" role="3clFbG">
-            <node concept="2YIFZM" id="4tfwdmbGEsf" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+        <node concept="2Gpval" id="4r$i1_a$4pn" role="3cqZAp">
+          <node concept="3clFbS" id="4r$i1_a$4ps" role="2LFqv$">
+            <node concept="3cpWs8" id="4r$i1_a$4pt" role="3cqZAp">
+              <node concept="3cpWsn" id="4r$i1_a$4pu" role="3cpWs9">
+                <property role="TrG5h" value="attachedContent" />
+                <node concept="3uibUv" id="4r$i1_a$4pv" role="1tU5fm">
+                  <ref role="3uigEE" to="v7ux:~Content" resolve="Content" />
+                </node>
+                <node concept="2OqwBi" id="4r$i1_a$4pw" role="33vP2m">
+                  <node concept="2GrUjf" id="4r$i1_a$4q9" role="2Oq$k0">
+                    <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
+                  </node>
+                  <node concept="liA8E" id="4r$i1_a$4py" role="2OqNvi">
+                    <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getAttachedContent()" resolve="getAttachedContent" />
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="liA8E" id="4tfwdmbGEsg" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable,com.intellij.openapi.application.ModalityState)" resolve="invokeLater" />
-              <node concept="2ShNRf" id="4tfwdmbGEsh" role="37wK5m">
-                <node concept="YeOm9" id="4tfwdmbGEsi" role="2ShVmc">
-                  <node concept="1Y3b0j" id="4tfwdmbGEsj" role="YeSDq">
-                    <property role="2bfB8j" value="true" />
-                    <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="3Tm1VV" id="4tfwdmbGEsk" role="1B3o_S" />
-                    <node concept="3clFb_" id="4tfwdmbGEsl" role="jymVt">
-                      <property role="1EzhhJ" value="false" />
-                      <property role="TrG5h" value="run" />
-                      <property role="DiZV1" value="false" />
-                      <node concept="3Tm1VV" id="4tfwdmbGEsm" role="1B3o_S" />
-                      <node concept="3cqZAl" id="4tfwdmbGEsn" role="3clF45" />
-                      <node concept="3clFbS" id="4tfwdmbGEso" role="3clF47">
-                        <node concept="2Gpval" id="4r$i1_a$4pn" role="3cqZAp">
-                          <node concept="3clFbS" id="4r$i1_a$4ps" role="2LFqv$">
-                            <node concept="3cpWs8" id="4r$i1_a$4pt" role="3cqZAp">
-                              <node concept="3cpWsn" id="4r$i1_a$4pu" role="3cpWs9">
-                                <property role="TrG5h" value="attachedContent" />
-                                <node concept="3uibUv" id="4r$i1_a$4pv" role="1tU5fm">
-                                  <ref role="3uigEE" to="v7ux:~Content" resolve="Content" />
-                                </node>
-                                <node concept="2OqwBi" id="4r$i1_a$4pw" role="33vP2m">
-                                  <node concept="2GrUjf" id="4r$i1_a$4q9" role="2Oq$k0">
-                                    <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
-                                  </node>
-                                  <node concept="liA8E" id="4r$i1_a$4py" role="2OqNvi">
-                                    <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getAttachedContent()" resolve="getAttachedContent" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="3clFbJ" id="4r$i1_a$4pz" role="3cqZAp">
-                              <node concept="3clFbC" id="4r$i1_a$4p$" role="3clFbw">
-                                <node concept="37vLTw" id="4r$i1_a$4p_" role="3uHU7B">
-                                  <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
-                                </node>
-                                <node concept="10Nm6u" id="4r$i1_a$4pA" role="3uHU7w" />
-                              </node>
-                              <node concept="3clFbJ" id="4r$i1_a$4pB" role="9aQIa">
-                                <node concept="3clFbC" id="4r$i1_a$4pC" role="3clFbw">
-                                  <node concept="2OqwBi" id="4r$i1_a$4pD" role="3uHU7B">
-                                    <node concept="37vLTw" id="4r$i1_a$4pE" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
-                                    </node>
-                                    <node concept="liA8E" id="4r$i1_a$4pF" role="2OqNvi">
-                                      <ref role="37wK5l" to="v7ux:~Content.getManager()" resolve="getManager" />
-                                    </node>
-                                  </node>
-                                  <node concept="10Nm6u" id="4r$i1_a$4pG" role="3uHU7w" />
-                                </node>
-                                <node concept="9aQIb" id="4r$i1_a$4pH" role="9aQIa">
-                                  <node concept="3clFbS" id="4r$i1_a$4pI" role="9aQI4">
-                                    <node concept="3clFbF" id="4r$i1_a$4pJ" role="3cqZAp">
-                                      <node concept="2OqwBi" id="4r$i1_a$4pK" role="3clFbG">
-                                        <node concept="2OqwBi" id="4r$i1_a$4pL" role="2Oq$k0">
-                                          <node concept="37vLTw" id="4r$i1_a$4pM" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
-                                          </node>
-                                          <node concept="liA8E" id="4r$i1_a$4pN" role="2OqNvi">
-                                            <ref role="37wK5l" to="v7ux:~Content.getManager()" resolve="getManager" />
-                                          </node>
-                                        </node>
-                                        <node concept="liA8E" id="4r$i1_a$4pO" role="2OqNvi">
-                                          <ref role="37wK5l" to="v7ux:~ContentManager.removeAllContents(boolean)" resolve="removeAllContents" />
-                                          <node concept="3clFbT" id="4r$i1_a$4pP" role="37wK5m">
-                                            <property role="3clFbU" value="true" />
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="3clFbS" id="4r$i1_a$4pQ" role="3clFbx">
-                                  <node concept="RRSsy" id="4r$i1_a$4pR" role="3cqZAp">
-                                    <property role="RRSoG" value="gZ5fksE/warn" />
-                                    <node concept="3cpWs3" id="4r$i1_a$4pS" role="RRSoy">
-                                      <node concept="3cpWs3" id="4r$i1_a$4pT" role="3uHU7B">
-                                        <node concept="Xl_RD" id="4r$i1_a$4pU" role="3uHU7B">
-                                          <property role="Xl_RC" value="Manager of attached content of descriptor " />
-                                        </node>
-                                        <node concept="2OqwBi" id="4r$i1_a$4pV" role="3uHU7w">
-                                          <node concept="2GrUjf" id="4r$i1_a$4qa" role="2Oq$k0">
-                                            <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
-                                          </node>
-                                          <node concept="liA8E" id="4r$i1_a$4pX" role="2OqNvi">
-                                            <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getDisplayName()" resolve="getDisplayName" />
-                                          </node>
-                                        </node>
-                                      </node>
-                                      <node concept="Xl_RD" id="4r$i1_a$4pY" role="3uHU7w">
-                                        <property role="Xl_RC" value=" is null." />
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="3clFbS" id="4r$i1_a$4pZ" role="3clFbx">
-                                <node concept="RRSsy" id="4r$i1_a$4q0" role="3cqZAp">
-                                  <property role="RRSoG" value="gZ5fksE/warn" />
-                                  <node concept="3cpWs3" id="4r$i1_a$4q1" role="RRSoy">
-                                    <node concept="3cpWs3" id="4r$i1_a$4q2" role="3uHU7B">
-                                      <node concept="Xl_RD" id="4r$i1_a$4q3" role="3uHU7B">
-                                        <property role="Xl_RC" value="Attached content of descriptor " />
-                                      </node>
-                                      <node concept="2OqwBi" id="4r$i1_a$4q4" role="3uHU7w">
-                                        <node concept="2GrUjf" id="4r$i1_a$4qb" role="2Oq$k0">
-                                          <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
-                                        </node>
-                                        <node concept="liA8E" id="4r$i1_a$4q6" role="2OqNvi">
-                                          <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getDisplayName()" resolve="getDisplayName" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="Xl_RD" id="4r$i1_a$4q7" role="3uHU7w">
-                                      <property role="Xl_RC" value=" is null." />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
+            <node concept="3clFbJ" id="4r$i1_a$4pz" role="3cqZAp">
+              <node concept="3clFbC" id="4r$i1_a$4p$" role="3clFbw">
+                <node concept="37vLTw" id="4r$i1_a$4p_" role="3uHU7B">
+                  <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
+                </node>
+                <node concept="10Nm6u" id="4r$i1_a$4pA" role="3uHU7w" />
+              </node>
+              <node concept="3clFbJ" id="4r$i1_a$4pB" role="9aQIa">
+                <node concept="3clFbC" id="4r$i1_a$4pC" role="3clFbw">
+                  <node concept="2OqwBi" id="4r$i1_a$4pD" role="3uHU7B">
+                    <node concept="37vLTw" id="4r$i1_a$4pE" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
+                    </node>
+                    <node concept="liA8E" id="4r$i1_a$4pF" role="2OqNvi">
+                      <ref role="37wK5l" to="v7ux:~Content.getManager()" resolve="getManager" />
+                    </node>
+                  </node>
+                  <node concept="10Nm6u" id="4r$i1_a$4pG" role="3uHU7w" />
+                </node>
+                <node concept="9aQIb" id="4r$i1_a$4pH" role="9aQIa">
+                  <node concept="3clFbS" id="4r$i1_a$4pI" role="9aQI4">
+                    <node concept="3clFbF" id="4r$i1_a$4pJ" role="3cqZAp">
+                      <node concept="2OqwBi" id="4r$i1_a$4pK" role="3clFbG">
+                        <node concept="2OqwBi" id="4r$i1_a$4pL" role="2Oq$k0">
+                          <node concept="37vLTw" id="4r$i1_a$4pM" role="2Oq$k0">
+                            <ref role="3cqZAo" node="4r$i1_a$4pu" resolve="attachedContent" />
                           </node>
-                          <node concept="37vLTw" id="4r$i1_a$4pr" role="2GsD0m">
-                            <ref role="3cqZAo" node="4tfwdmbGEs8" resolve="descriptors" />
+                          <node concept="liA8E" id="4r$i1_a$4pN" role="2OqNvi">
+                            <ref role="37wK5l" to="v7ux:~Content.getManager()" resolve="getManager" />
                           </node>
-                          <node concept="2GrKxI" id="4r$i1_a$4q8" role="2Gsz3X">
-                            <property role="TrG5h" value="descriptor" />
+                        </node>
+                        <node concept="liA8E" id="4r$i1_a$4pO" role="2OqNvi">
+                          <ref role="37wK5l" to="v7ux:~ContentManager.removeAllContents(boolean)" resolve="removeAllContents" />
+                          <node concept="3clFbT" id="4r$i1_a$4pP" role="37wK5m">
+                            <property role="3clFbU" value="true" />
                           </node>
                         </node>
                       </node>
-                      <node concept="2AHcQZ" id="4tfwdmbGEt9" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbS" id="4r$i1_a$4pQ" role="3clFbx">
+                  <node concept="RRSsy" id="4r$i1_a$4pR" role="3cqZAp">
+                    <property role="RRSoG" value="gZ5fksE/warn" />
+                    <node concept="3cpWs3" id="4r$i1_a$4pS" role="RRSoy">
+                      <node concept="3cpWs3" id="4r$i1_a$4pT" role="3uHU7B">
+                        <node concept="Xl_RD" id="4r$i1_a$4pU" role="3uHU7B">
+                          <property role="Xl_RC" value="Manager of attached content of descriptor " />
+                        </node>
+                        <node concept="2OqwBi" id="4r$i1_a$4pV" role="3uHU7w">
+                          <node concept="2GrUjf" id="4r$i1_a$4qa" role="2Oq$k0">
+                            <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
+                          </node>
+                          <node concept="liA8E" id="4r$i1_a$4pX" role="2OqNvi">
+                            <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getDisplayName()" resolve="getDisplayName" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="Xl_RD" id="4r$i1_a$4pY" role="3uHU7w">
+                        <property role="Xl_RC" value=" is null." />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
-              <node concept="10M0yZ" id="4tfwdmbGEta" role="37wK5m">
-                <ref role="1PxDUh" to="bd8o:~ModalityState" resolve="ModalityState" />
-                <ref role="3cqZAo" to="bd8o:~ModalityState.NON_MODAL" resolve="NON_MODAL" />
+              <node concept="3clFbS" id="4r$i1_a$4pZ" role="3clFbx">
+                <node concept="RRSsy" id="4r$i1_a$4q0" role="3cqZAp">
+                  <property role="RRSoG" value="gZ5fksE/warn" />
+                  <node concept="3cpWs3" id="4r$i1_a$4q1" role="RRSoy">
+                    <node concept="3cpWs3" id="4r$i1_a$4q2" role="3uHU7B">
+                      <node concept="Xl_RD" id="4r$i1_a$4q3" role="3uHU7B">
+                        <property role="Xl_RC" value="Attached content of descriptor " />
+                      </node>
+                      <node concept="2OqwBi" id="4r$i1_a$4q4" role="3uHU7w">
+                        <node concept="2GrUjf" id="4r$i1_a$4qb" role="2Oq$k0">
+                          <ref role="2Gs0qQ" node="4r$i1_a$4q8" resolve="descriptor" />
+                        </node>
+                        <node concept="liA8E" id="4r$i1_a$4q6" role="2OqNvi">
+                          <ref role="37wK5l" to="cjdg:~RunContentDescriptor.getDisplayName()" resolve="getDisplayName" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="4r$i1_a$4q7" role="3uHU7w">
+                      <property role="Xl_RC" value=" is null." />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
+          </node>
+          <node concept="37vLTw" id="4r$i1_a$4pr" role="2GsD0m">
+            <ref role="3cqZAo" node="4tfwdmbGEs8" resolve="descriptors" />
+          </node>
+          <node concept="2GrKxI" id="4r$i1_a$4q8" role="2Gsz3X">
+            <property role="TrG5h" value="descriptor" />
           </node>
         </node>
       </node>
