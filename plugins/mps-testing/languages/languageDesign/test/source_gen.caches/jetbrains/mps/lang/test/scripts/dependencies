@@ -12,7 +12,6 @@
   <dependency className="jetbrains.mps.lang.test.scripts.SpecifyRuleMessagesHelper">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.ref.WeakReference" />
-    <classNode dependClassName="java.time.Duration" />
     <classNode dependClassName="java.time.Instant" />
     <classNode dependClassName="jetbrains.mps.components.ComponentHost" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />
@@ -36,10 +35,13 @@
   <dependency className="jetbrains.mps.lang.test.scripts.SpecifyRuleReferencesInTests_MigrationScript">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.components.ComponentHost" />
     <classNode dependClassName="jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.test.scripts.SpecifyRuleMessagesHelper" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.smodel.CurrentProjectAccessUtil" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />

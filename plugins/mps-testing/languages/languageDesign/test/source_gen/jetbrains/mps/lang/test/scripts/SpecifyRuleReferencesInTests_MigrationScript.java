@@ -8,6 +8,9 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.CurrentProjectAccessUtil;
+import jetbrains.mps.components.ComponentHost;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -36,7 +39,9 @@ public final class SpecifyRuleReferencesInTests_MigrationScript extends BaseMigr
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        new SpecifyRuleMessagesHelper(node, null).fillContainerWithRuleMessages();
+        MPSProject mpsProject = CurrentProjectAccessUtil.getMPSProjectFromUI();
+        ComponentHost host = (mpsProject == null ? null : mpsProject.getPlatform());
+        new SpecifyRuleMessagesHelper(node, host).fillContainerWithRuleMessages();
       }
       @Override
       public boolean isShowAsIntention() {

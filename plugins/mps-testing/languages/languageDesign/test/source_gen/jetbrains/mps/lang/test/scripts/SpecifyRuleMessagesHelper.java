@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.time.Duration;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.ModelImports;
@@ -61,22 +60,8 @@ public final class SpecifyRuleMessagesHelper {
   }
 
   public Iterable<NodeReportItem> getErrorReporters() {
-    // FIXME ugly performance hack to avoid recalculation of node errors to replace another ugly hack with global command listener in TestsErrorsChecker 
-    // Would be great to have TestsErrorsChecker cached right inside SpecifyRuleReferences intention, but it's not possible to have custom field there. 
     SNode containingRoot = SNodeOperations.getContainingRoot(myNodeWeCheck);
-    Iterable<NodeReportItem> errors;
-    TestsErrorsChecker checker = (ourLastCheck == null ? null : ourLastCheck.get());
-    // I assume that user can't change a node in SEC_TO_CHECK_AGAIN seconds %-/ 
-    //  it's mostly for isApplicable/execute pair in SpecifyRuleReferences intention 
-    if (checker == null || checker.getRoot() != containingRoot || Duration.between(ourLastTimestamp, Instant.now()).toSeconds() > SEC_TO_CHECK_AGAIN) {
-      checker = new TestsErrorsChecker(containingRoot, myHost);
-      errors = checker.getErrors(myNodeWeCheck);
-      ourLastTimestamp = Instant.now();
-      ourLastCheck = new WeakReference<TestsErrorsChecker>(checker);
-    } else {
-      errors = checker.getErrors(myNodeWeCheck);
-    }
-    return errors;
+    return new TestsErrorsChecker(containingRoot, myHost).getErrors(myNodeWeCheck);
   }
 
   private static void addModelImports(SNode container, SNode ruleNode) {

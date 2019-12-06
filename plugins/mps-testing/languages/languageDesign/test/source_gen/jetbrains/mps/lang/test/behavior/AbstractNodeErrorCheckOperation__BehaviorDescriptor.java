@@ -12,16 +12,17 @@ import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.components.ComponentHost;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -31,7 +32,7 @@ public final class AbstractNodeErrorCheckOperation__BehaviorDescriptor extends B
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a195a9aL, "jetbrains.mps.lang.test.structure.AbstractNodeErrorCheckOperation");
 
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
-  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
   public static final SMethod<SNode> getReferencedRuleNode_id2wBFdLy8qmt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReferencedRuleNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2wBFdLy8qmt").build();
   /*package*/ static final SMethod<String> getExpectedMessageText_id6kTaUF4b1ss = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMessageText").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("6kTaUF4b1ss").build();
 
@@ -49,9 +50,9 @@ public final class AbstractNodeErrorCheckOperation__BehaviorDescriptor extends B
     }
     return "Node" + errorName + "Check";
   }
-  /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository) {
+  /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository, @Nullable ComponentHost host) {
     SNode annotatedNode = INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__);
-    CheckExpectedMessageRunnable action = (IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__) == null ? new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(annotatedNode, MessageStatus.ERROR, AbstractNodeErrorCheckOperation__BehaviorDescriptor.getExpectedMessageText_id6kTaUF4b1ss.invoke(__thisNode__), ruleRepository, null) : new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(annotatedNode, MessageStatus.ERROR, SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__)), AbstractNodeErrorCheckOperation__BehaviorDescriptor.getExpectedMessageText_id6kTaUF4b1ss.invoke(__thisNode__), ruleRepository, null));
+    CheckExpectedMessageRunnable action = (IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__) == null ? new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(annotatedNode, MessageStatus.ERROR, AbstractNodeErrorCheckOperation__BehaviorDescriptor.getExpectedMessageText_id6kTaUF4b1ss.invoke(__thisNode__), ruleRepository, host) : new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(annotatedNode, MessageStatus.ERROR, SNodeOperations.getPointer(IReferenceAttachable__BehaviorDescriptor.getReferencedRuleNode_id2wBFdLy8qmt.invoke(__thisNode__)), AbstractNodeErrorCheckOperation__BehaviorDescriptor.getExpectedMessageText_id6kTaUF4b1ss.invoke(__thisNode__), ruleRepository, host));
     return action;
   }
   /*package*/ static SNode getReferencedRuleNode_id2wBFdLy8qmt(@NotNull SNode __thisNode__) {
@@ -79,7 +80,7 @@ public final class AbstractNodeErrorCheckOperation__BehaviorDescriptor extends B
       case 0:
         return (T) ((String) getDefaultName_id7scb9XJdmH2(node));
       case 1:
-        return (T) ((CheckExpectedMessageRunnable) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0]));
+        return (T) ((CheckExpectedMessageRunnable) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0], (ComponentHost) parameters[1]));
       case 2:
         return (T) ((SNode) getReferencedRuleNode_id2wBFdLy8qmt(node));
       case 3:

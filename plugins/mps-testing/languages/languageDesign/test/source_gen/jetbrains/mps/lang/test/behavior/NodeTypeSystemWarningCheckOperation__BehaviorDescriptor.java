@@ -12,15 +12,16 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.components.ComponentHost;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -28,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x770c2c9f6f1bbfcaL, "jetbrains.mps.lang.test.structure.NodeTypeSystemWarningCheckOperation");
 
-  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<CheckExpectedMessageRunnable> checkAction_id7jfLc8W17Cr = new SMethodBuilder<CheckExpectedMessageRunnable>(new SJavaCompoundTypeImpl(CheckExpectedMessageRunnable.class)).name("checkAction").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7jfLc8W17Cr").build(SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
   /*package*/ static final SMethod<String> getExpectedMessageText_id3q9wAW4tyBj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getExpectedMessageText").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("3q9wAW4tyBj").build();
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
 
@@ -37,8 +38,8 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository) {
-    return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, NodeTypeSystemWarningCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tyBj.invoke(__thisNode__), ruleRepository, null);
+  /*package*/ static CheckExpectedMessageRunnable checkAction_id7jfLc8W17Cr(@NotNull SNode __thisNode__, SRepository ruleRepository, @Nullable ComponentHost host) {
+    return new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), MessageStatus.WARNING, NodeTypeSystemWarningCheckOperation__BehaviorDescriptor.getExpectedMessageText_id3q9wAW4tyBj.invoke(__thisNode__), ruleRepository, host);
   }
   /*package*/ static String getExpectedMessageText_id3q9wAW4tyBj(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.expectedMessage$gXqz), PROPS.text$lGWw);
@@ -63,7 +64,7 @@ public final class NodeTypeSystemWarningCheckOperation__BehaviorDescriptor exten
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((CheckExpectedMessageRunnable) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0]));
+        return (T) ((CheckExpectedMessageRunnable) checkAction_id7jfLc8W17Cr(node, (SRepository) parameters[0], (ComponentHost) parameters[1]));
       case 1:
         return (T) ((String) getExpectedMessageText_id3q9wAW4tyBj(node));
       case 2:

@@ -36,7 +36,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
   public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
-  public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("77$odk0vlBj").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("77$odk0vlBj").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(perform_id1kgh5YabdhC, getDefaultName_id7scb9XJdmH2, getPresentation_idhEwIMiw, expectsErrorsInside_id77$odk0vlBj);
 
@@ -44,10 +44,10 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
     SPropertyOperations.assign(__thisNode__, PROPS.includeSelf$1l1v, true);
   }
 
-  /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, final SNode node, @Nullable ComponentHost host) {
+  /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, final SNode node, @Nullable final ComponentHost host) {
     new CheckErrorMessagesRunnable(node, SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v)).exclude(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AbstractNodeRuleCheckOperation$Z8, false, new SAbstractConcept[]{})).select(new ISelector<SNode, CheckExpectedMessageRunnable>() {
       public CheckExpectedMessageRunnable select(final SNode excludeAnnotation) {
-        return (CheckExpectedMessageRunnable) AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(excludeAnnotation, SNodeOperations.getModel(node).getRepository());
+        return (CheckExpectedMessageRunnable) AbstractNodeRuleCheckOperation__BehaviorDescriptor.checkAction_id7jfLc8W17Cr.invoke(excludeAnnotation, SNodeOperations.getModel(node).getRepository(), host);
       }
     }).toListSequence()).run();
   }
@@ -57,8 +57,8 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return ((String) ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(__thisNode__));
   }
-  /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository) {
-    CheckErrorMessagesRunnable checkErrorsAction = new CheckErrorMessagesRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq), null).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v));
+  /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository, @Nullable ComponentHost host) {
+    CheckErrorMessagesRunnable checkErrorsAction = new CheckErrorMessagesRunnable(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowWarnings$vTwT), SPropertyOperations.getBoolean(__thisNode__, PROPS.allowErrors$vTwq), host).includeSelf(SPropertyOperations.getBoolean(__thisNode__, PROPS.includeSelf$1l1v));
     return checkErrorsAction.isReportItemAllowed(reportItem);
   }
 
@@ -85,7 +85,7 @@ public final class CheckNodeForErrorMessagesOperation__BehaviorDescriptor extend
       case 2:
         return (T) ((String) getPresentation_idhEwIMiw(node));
       case 3:
-        return (T) ((Boolean) expectsErrorsInside_id77$odk0vlBj(node, (NodeReportItem) parameters[0], (SRepository) parameters[1]));
+        return (T) ((Boolean) expectsErrorsInside_id77$odk0vlBj(node, (NodeReportItem) parameters[0], (SRepository) parameters[1], (ComponentHost) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

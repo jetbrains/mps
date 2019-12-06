@@ -13,14 +13,15 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.components.ComponentHost;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.annotation.ToRemove;
-import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -35,7 +36,7 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
   public static final SMethod<String> getTestName_idhGBohAB = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hGBohAB").build();
   public static final SMethod<SNode> getAnnotatedNode_id38gbJV0XvZR = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAnnotatedNode").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("38gbJV0XvZR").build();
   public static final SMethod<Boolean> expectsErrorsInside_id3efgZvcKrj8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3efgZvcKrj8").build();
-  public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("77$odk0vlBj").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("77$odk0vlBj").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getName_idhHOMYE$, getDefaultName_id7scb9XJdmH2, isMpsStartRequired_id2RMg39tmiFh, getTestCase_idhGBgWVd, getTestName_idhGBohAB, getAnnotatedNode_id38gbJV0XvZR, expectsErrorsInside_id3efgZvcKrj8, expectsErrorsInside_id77$odk0vlBj);
 
@@ -67,7 +68,7 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
   /*package*/ static boolean expectsErrorsInside_id3efgZvcKrj8(@NotNull SNode __thisNode__) {
     return true;
   }
-  /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository) {
+  /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, @NotNull NodeReportItem reportItem, SRepository ruleRepository, @Nullable ComponentHost host) {
     return ((boolean) NodeCheckOperation__BehaviorDescriptor.expectsErrorsInside_id3efgZvcKrj8.invoke(__thisNode__));
   }
 
@@ -99,7 +100,7 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
       case 6:
         return (T) ((Boolean) expectsErrorsInside_id3efgZvcKrj8(node));
       case 7:
-        return (T) ((Boolean) expectsErrorsInside_id77$odk0vlBj(node, (NodeReportItem) parameters[0], (SRepository) parameters[1]));
+        return (T) ((Boolean) expectsErrorsInside_id77$odk0vlBj(node, (NodeReportItem) parameters[0], (SRepository) parameters[1], (ComponentHost) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

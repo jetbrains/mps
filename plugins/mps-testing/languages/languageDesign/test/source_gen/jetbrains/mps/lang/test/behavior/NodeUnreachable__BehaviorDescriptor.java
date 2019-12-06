@@ -32,7 +32,7 @@ public final class NodeUnreachable__BehaviorDescriptor extends BaseBHDescriptor 
 
   public static final SMethod<Void> perform_id1kgh5YabdhC = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("perform").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1kgh5YabdhC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
   public static final SMethod<String> getDefaultName_id7scb9XJdmH2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDefaultName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7scb9XJdmH2").build();
-  public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("77$odk0vlBj").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<Boolean> expectsErrorsInside_id77$odk0vlBj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("expectsErrorsInside").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("77$odk0vlBj").build(SMethodBuilder.createJavaParameter(NodeReportItem.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""), SMethodBuilder.createJavaParameter(ComponentHost.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(perform_id1kgh5YabdhC, getDefaultName_id7scb9XJdmH2, expectsErrorsInside_id77$odk0vlBj);
 
@@ -45,7 +45,7 @@ public final class NodeUnreachable__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static String getDefaultName_id7scb9XJdmH2(@NotNull SNode __thisNode__) {
     return "NodeUnreachableCheck";
   }
-  /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository) {
+  /*package*/ static boolean expectsErrorsInside_id77$odk0vlBj(@NotNull SNode __thisNode__, NodeReportItem reportItem, SRepository ruleRepository, @Nullable ComponentHost host) {
     SNode ruleNode = NodeCheckerUtil.getRuleNodeFromReporter(reportItem, ruleRepository);
     return ruleNode == SNodeOperations.getParent(SNodeOperations.as(SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1597542831871708494"), ruleRepository), CONCEPTS.ReportErrorStatementAnnotation$ka));
   }
@@ -71,7 +71,7 @@ public final class NodeUnreachable__BehaviorDescriptor extends BaseBHDescriptor 
       case 1:
         return (T) ((String) getDefaultName_id7scb9XJdmH2(node));
       case 2:
-        return (T) ((Boolean) expectsErrorsInside_id77$odk0vlBj(node, (NodeReportItem) parameters[0], (SRepository) parameters[1]));
+        return (T) ((Boolean) expectsErrorsInside_id77$odk0vlBj(node, (NodeReportItem) parameters[0], (SRepository) parameters[1], (ComponentHost) parameters[2]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

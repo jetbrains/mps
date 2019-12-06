@@ -12,12 +12,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.test.scripts.SpecifyRuleMessagesHelper;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.CurrentProjectAccessUtil;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.lang.test.scripts.SpecifyRuleMessagesHelper;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,7 +39,7 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$7I), node) && Sequence.fromIterable(new SpecifyRuleMessagesHelper(node, null).getErrorReporters()).isNotEmpty();
+    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$7I), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -62,7 +62,8 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
     public void execute(final SNode node, final EditorContext editorContext) {
       // when we have component host in editorContext, rewrite 
       MPSProject mpsProject = CurrentProjectAccessUtil.getMPSProjectFromUI();
-      new SpecifyRuleMessagesHelper(node, mpsProject.getPlatform()).fillContainerWithRuleMessages();
+      ComponentHost host = (mpsProject == null ? null : mpsProject.getPlatform());
+      new SpecifyRuleMessagesHelper(node, host).fillContainerWithRuleMessages();
     }
     @Override
     public IntentionDescriptor getDescriptor() {
