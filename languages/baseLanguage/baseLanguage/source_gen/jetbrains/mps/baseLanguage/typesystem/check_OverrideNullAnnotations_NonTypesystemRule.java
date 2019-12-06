@@ -33,7 +33,7 @@ public class check_OverrideNullAnnotations_NonTypesystemRule extends AbstractNon
       if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12DPy8.invoke(method, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull")))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(method, "This method must have @NotNull annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5499146221535829680", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(method, "This method must have @NotNull annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6841011242013479830", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.Add_NotNullAnnotation_QuickFix", false);
             intentionProvider.putArgument("method", method);
@@ -48,7 +48,7 @@ public class check_OverrideNullAnnotations_NonTypesystemRule extends AbstractNon
         if (param != null && !((boolean) ParameterDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12Eb7o.invoke(param, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable")))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(param, "This parameter must have @Nullable annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5499146221535981784", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(param, "This parameter must have @Nullable annotation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6841011242013479681", null, errorTarget);
             {
               BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.Add_NullableAnnotationToParameter_QuickFix", false);
               intentionProvider.putArgument("parameter", param);
