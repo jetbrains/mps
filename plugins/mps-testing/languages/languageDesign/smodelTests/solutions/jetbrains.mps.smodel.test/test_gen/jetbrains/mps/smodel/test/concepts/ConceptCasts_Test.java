@@ -48,7 +48,7 @@ public class ConceptCasts_Test extends TestCase {
     SConcept bc1 = CONCEPTS.BaseConcept$Sz;
     SAbstractConcept inc = CONCEPTS.INamedConcept$nV;
     SAbstractConcept bc2 = SNodeOperations.castConcept(inc, (SAbstractConcept) SNodeOperations.asSConcept(bc1));
-    Assert.assertEquals(bc2, bc1);
+    Assert.assertEquals(bc2, inc);
   }
 
   private static final class CONCEPTS {

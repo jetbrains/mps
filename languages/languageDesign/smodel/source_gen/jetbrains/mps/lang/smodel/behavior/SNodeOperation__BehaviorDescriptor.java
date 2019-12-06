@@ -90,6 +90,8 @@ public final class SNodeOperation__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean applicableToModel_id1653mnvAf1y(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
+  @Deprecated
+  @ToRemove(version = 2019.3)
   /*package*/ static boolean applicableToConceptProperty_id1653mnvAgpp(@NotNull SAbstractConcept __thisConcept__) {
     return false;
   }
