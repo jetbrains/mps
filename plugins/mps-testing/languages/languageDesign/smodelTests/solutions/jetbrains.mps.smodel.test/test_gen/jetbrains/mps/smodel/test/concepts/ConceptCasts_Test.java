@@ -44,11 +44,18 @@ public class ConceptCasts_Test extends TestCase {
     }).toListSequence();
     Assert.assertEquals(ListSequence.fromList(statementConcepts).count(), 2);
   }
+  public void test_castToBaseConcept() throws Exception {
+    SConcept bc1 = CONCEPTS.BaseConcept$Sz;
+    SAbstractConcept inc = CONCEPTS.INamedConcept$nV;
+    SAbstractConcept bc2 = SNodeOperations.castConcept(inc, (SAbstractConcept) SNodeOperations.asSConcept(bc1));
+    Assert.assertEquals(bc2, bc1);
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
     /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SInterfaceConcept INamedAspect$HH = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L, "jetbrains.mps.lang.structure.structure.INamedAspect");
+    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

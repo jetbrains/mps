@@ -10,7 +10,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractConceptUtil {
   public static boolean hasSurelyNoInterfacesBeneath(SNode conceptTreeRoot) {
-    return SNodeOperations.isInstanceOf(conceptTreeRoot, CONCEPTS.ConceptDeclaration$qU) && !(SNodeOperations.is(conceptTreeRoot, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
+    return (conceptTreeRoot != null) && SNodeOperations.isInstanceOf(conceptTreeRoot, CONCEPTS.ConceptDeclaration$qU) && !(SNodeOperations.is(conceptTreeRoot, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
   }
 
   private static final class CONCEPTS {
