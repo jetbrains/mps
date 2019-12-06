@@ -18,6 +18,16 @@ public class EditorTestUtil {
     }
     return editorComponent;
   }
+  public static void runWithTypeOverExistingText(EditorTestRunnable runnable, boolean skipTypedCharacters) throws Exception {
+    EditorSettings settings = EditorSettings.getInstance();
+    boolean before = settings.isTypeOverExistingText();
+    settings.setTypeOverExistingText(skipTypedCharacters);
+    try {
+      runnable.run();
+    } finally {
+      settings.setTypeOverExistingText(before);
+    }
+  }
   public static void runWithTwoStepDeletion(EditorTestRunnable runnable, boolean twoStepDeletion) throws Exception {
     boolean twoStepDeletionSettings = EditorSettings.getInstance().isUseTwoStepDeletion();
     EditorSettings.getInstance().setUseTwoStepDeletion(twoStepDeletion);

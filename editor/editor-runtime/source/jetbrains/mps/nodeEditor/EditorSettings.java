@@ -177,6 +177,14 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
     myState.useTwoStepDeletion = useTwoStepDeletion;
   }
 
+  public void setTypeOverExistingText(boolean typeOverExistingText) {
+    myState.typeOverExistingText = typeOverExistingText;
+  }
+
+  public boolean isTypeOverExistingText() {
+    return myState.typeOverExistingText;
+  }
+
   @Deprecated
   // todo: merge read-only and editable default editors, remove this flag
   public boolean isReflectiveEditorReadonly() {
@@ -375,6 +383,7 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
     public boolean useBraces = true;
 
     public boolean useTwoStepDeletion = true;
+    public boolean typeOverExistingText = false;
 
     public int indentSize = 2;
     public int verticalBound = 120;
@@ -419,6 +428,9 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
       if (useTwoStepDeletion != myState.useTwoStepDeletion) {
         return false;
       }
+      if (typeOverExistingText != myState.typeOverExistingText) {
+        return false;
+      }
       if (indentSize != myState.indentSize) {
         return false;
       }
@@ -461,6 +473,7 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
       result = 31 * result + (useAntialiasing ? 1 : 0);
       result = 31 * result + (useBraces ? 1 : 0);
       result = 31 * result + (useTwoStepDeletion ? 1 : 0);
+      result = 31 * result + (typeOverExistingText ? 1 : 0);
       result = 31 * result + indentSize;
       result = 31 * result + verticalBound;
       result = 31 * result + (autoQuickFix ? 1 : 0);

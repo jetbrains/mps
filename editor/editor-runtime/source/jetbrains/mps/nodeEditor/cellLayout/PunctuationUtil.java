@@ -97,14 +97,14 @@ public class PunctuationUtil {
     return hasPunctuationLeft(rightCell);
   }
 
-  private static Boolean hasPunctuationRight(EditorCell cell) {
+  public static Boolean hasPunctuationRight(EditorCell cell) {
     if (cell == null) {
       return true;
     }
     return CellTraversalUtil.getLastLeaf(cell).getStyle().get(StyleAttributes.PUNCTUATION_RIGHT);
   }
 
-  static Boolean hasPunctuationLeft(EditorCell cell) {
+  public static Boolean hasPunctuationLeft(EditorCell cell) {
     if (cell == null) {
       return true;
     }

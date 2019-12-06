@@ -26,20 +26,25 @@ import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.ide.datatransfer.TextPasteUtil;
 import jetbrains.mps.nodeEditor.CellSide;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.IntelligentInputUtil;
 import jetbrains.mps.nodeEditor.IntelligentInputUtil.IntelligentCellProcessor;
+import jetbrains.mps.nodeEditor.cellLayout.PunctuationUtil;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstitutePatternEditor;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
+import jetbrains.mps.openapi.editor.ActionHandler;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.openapi.editor.cells.optional.WithCaret;
 import jetbrains.mps.openapi.editor.selection.MultipleSelection;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.UndoHelper;
 import jetbrains.mps.smodel.UndoRunnable;
@@ -443,7 +448,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     return true;
   }
 
-  public void ensureCaretVisible() {
+  private void ensureCaretVisible() {
     getEditor().scrollRectToVisible(new Rectangle(getCaretX() - 2 * myTextLine.charWidth(), myY, 4 * myTextLine.charWidth(), myHeight));
   }
 
@@ -463,34 +468,88 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       side = null;
     }
 
-    ModelAccess modelAccess = getContext().getRepository().getModelAccess();
+    boolean result = false;
     String text = String.valueOf(keyEvent.getKeyChar());
+
     if (isEditable()) {
-      SubstituteInfo substituteInfo = getSubstituteInfo();
-      EditorComponent editorComponent = getContext().getEditorComponent();
-      if (substituteInfo != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
-        TypecheckingSession typecheckingSession = ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).getTypecheckingSession();
-        if (typecheckingSession != null) {
-          modelAccess.runReadAction(() ->
-                                        TypecheckingFacade.getFromContext()
-                                                          .runWithSession(typecheckingSession,
-                                                                          (session) -> substituteInfo.buildActions()));
+      ModelAccess modelAccess = getContext().getRepository().getModelAccess();
+      buildActions(modelAccess);
+      IntelligentCellProcessor cellProcessor = IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side);
+      ModifyTextCommand command = new ModifyTextCommand(keyEvent, text, allowErrors, side, getContext(), cellProcessor);
+      modelAccess.executeCommand(command);
+      getEditor().relayout();
+      result = command.getResult();
+    } else {
+      if (side != null) {
+        // TODO: we do this twice ... allowErrors = true/false
+        String pattern = getUpdatedText(text);
+        if (!pattern.equals(getRenderedText())) {
+          result = IntelligentInputUtil.processCell(this, getContext(), pattern, side);
         }
       }
-
-      IntelligentCellProcessor cellProcessor = IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side);
-      ModifyTextCommand keyTypedCommand =
-          new ModifyTextCommand(text, allowErrors, side, getContext(), cellProcessor);
-      modelAccess.executeCommand(keyTypedCommand);
-      getEditor().relayout();
-      return keyTypedCommand.getResult();
-    } else if (side != null) {
-      String pattern = getUpdatedText(text);
-      if (!pattern.equals(getRenderedText())) {
-        return IntelligentInputUtil.processCell(this, getContext(), pattern, side);
+      if (!result && isTypeOverExistingText() && typeOverExistingText(keyEvent)) {
+        return true;
       }
     }
-    return false;
+    return result;
+  }
+
+  private void buildActions(ModelAccess modelAccess) {
+    SubstituteInfo substituteInfo = getSubstituteInfo();
+    EditorComponent editorComponent = getContext().getEditorComponent();
+    if (substituteInfo != null && editorComponent instanceof jetbrains.mps.nodeEditor.EditorComponent) {
+      TypecheckingSession typecheckingSession = ((jetbrains.mps.nodeEditor.EditorComponent) editorComponent).getTypecheckingSession();
+      if (typecheckingSession != null) {
+        modelAccess.runReadAction(() ->
+                                      TypecheckingFacade.getFromContext()
+                                                        .runWithSession(typecheckingSession,
+                                                                        (session) -> substituteInfo.buildActions()));
+      }
+    }
+  }
+
+  private boolean isTypeOverExistingText() {
+    return EditorSettings.getInstance().isTypeOverExistingText();
+  }
+
+  // https://youtrack.jetbrains.com/issue/MPS-31209
+  private boolean typeOverExistingText(@NotNull KeyEvent keyEvent) {
+    String cellText = getText();
+    if (cellText.isEmpty() || isErrorState()) {
+      return false;
+    }
+
+    EditorCell nextCell = CellTraversalUtil.getNextLeaf(this);
+    ActionHandler actionHandler = getContext().getEditorComponent().getActionHandler();
+
+    char typedChar = keyEvent.getKeyChar();
+    int caretPosition = getCaretPosition();
+    int textLength = cellText.length();
+    if (caretPosition < textLength) {
+      return cellText.charAt(caretPosition) == typedChar && actionHandler.executeAction(this, CellActionType.RIGHT);
+    } else {
+      if (Character.isWhitespace(typedChar) && !PunctuationUtil.hasPunctuationRight(this) && !PunctuationUtil.hasPunctuationLeft(nextCell)) {
+        return actionHandler.executeAction(this, CellActionType.RIGHT);
+      }
+    }
+
+    if (!(nextCell instanceof EditorCell_Label)) {
+      return false;
+    }
+    EditorCell_Label nextLabel = (EditorCell_Label) nextCell;
+
+    String nextText = nextLabel.getText();
+
+    boolean res = false;
+    if (nextText.length() > 0 && nextText.charAt(0) == typedChar) {
+      if (nextLabel.isEditable() || nextLabel.isCaretPositionAllowed(0)) {
+        actionHandler.executeAction(this, CellActionType.RIGHT);
+        res = nextLabel.processKeyTyped(keyEvent, true);
+      } else {
+        res = actionHandler.executeAction(this, CellActionType.RIGHT);
+      }
+    }
+    return res;
   }
 
   @Override
@@ -1077,52 +1136,59 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     private final CellSide mySide;
     @Nullable
     private final IntelligentCellProcessor myIntelligentCellProcessor;
+    private KeyEvent myKeyEvent;
 
-    public ModifyTextCommand(String replacingText, boolean allowErrors, @Nullable CellSide side, EditorContext context,
-                             @Nullable IntelligentCellProcessor cellProcessor) {
+    private ModifyTextCommand(KeyEvent keyEvent, String replacingText, boolean allowErrors, @Nullable CellSide side, EditorContext context,
+                              @Nullable IntelligentCellProcessor cellProcessor) {
       super(context);
+      this.myKeyEvent = keyEvent;
       myReplacingText = replacingText;
       myAllowErrors = allowErrors;
       mySide = side;
       myIntelligentCellProcessor = cellProcessor;
     }
 
-    public ModifyTextCommand(String replacingText, boolean allowErrors, EditorContext context) {
-      this(replacingText, allowErrors, null, context, null);
+    private ModifyTextCommand(String replacingText, boolean allowErrors, EditorContext context) {
+      this(null, replacingText, allowErrors, null, context, null);
     }
 
     @Override
     protected Boolean doCompute() {
-      if (processMutableKeyTyped(myReplacingText, myAllowErrors)) {
+      String newText = getUpdatedText(myReplacingText);
+      boolean isValid = isValidText(newText);
+      if (myAllowErrors || isValid) {
         getContext().flushEvents();
         addChangeTextUndoableAction();
 
-        if (isErrorState() && myIntelligentCellProcessor != null && myIntelligentCellProcessor.processCell(getRenderedText())) {
-          /**
-           * Resetting current command group ID if cell was side-transformed. In such situations
-           * side-transforming command as well as char typing command should be separate part of
-           * undo-redo process, not connected with eytyping events which are grouped together.
-           */
-          CommandProcessor.getInstance().setCurrentCommandGroupId(null);
+        if (isValid) {
+          commit(newText);
+        } else {
+          if (myIntelligentCellProcessor != null && myIntelligentCellProcessor.processCell(newText)) {
+            /*
+             * Resetting current command group ID if cell was side-transformed. In such situations
+             * side-transforming command as well as char typing command should be separate part of
+             * undo-redo process, not connected with eytyping events which are grouped together.
+             */
+            CommandProcessor.getInstance().setCurrentCommandGroupId(null);
+          } else {
+            if (isTypeOverExistingText() && myKeyEvent != null && typeOverExistingText(myKeyEvent)) {
+                return true;
+            }
+            commit(newText);
+          }
         }
         return true;
       }
       return isErrorState() && mySide == CellSide.LEFT && " ".equals(myReplacingText);
     }
 
-    private boolean processMutableKeyTyped(String replacement, final boolean allowErrors) {
-      String newText = getUpdatedText(replacement);
-      if (!allowErrors && !isValidText(newText)) {
-        return false;
-      }
-
+    private void commit(String newText) {
       int startSelection = myTextLine.getStartTextSelectionPosition();
       changeText(newText);
       setCaretPositionIfPossible(startSelection + myReplacingText.length());
       myTextLine.resetSelection();
       fireSelectionChanged();
       ensureCaretVisible();
-      return true;
     }
 
     @Nullable
@@ -1154,6 +1220,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
    * cell/memento objects only. Empty command in this case will add a "mark" in IDEA undo stack, so corresponding editor
    * memento will be restored on udo/redo of this empty command.
    */
+  @SuppressWarnings("JavadocReference")
   protected static class DummyUndoableAction extends SNodeUndoableAction {
     protected DummyUndoableAction(SNode node) {
       super(node);
