@@ -14,6 +14,7 @@ import java.util.Arrays;
 /*package*/ class MigrationBlock {
   private MigrationTrigger myMigrationTrigger;
   private Set<BlockCause> myBlocks = Collections.synchronizedSet(SetSequence.fromSet(new LinkedHashSet<BlockCause>()));
+  private volatile boolean myShouldCheckAfterUnblock;
 
   public static class BlockCause {
     public final String message;
@@ -33,7 +34,7 @@ import java.util.Arrays;
   public void ensureUnblocked(BlockCause cause) {
     BlockCause contained = SetSequence.fromSet(myBlocks).removeElement(cause);
     if (contained != null && SetSequence.fromSet(myBlocks).isEmpty()) {
-      myMigrationTrigger.checkMigrationNeeded();
+      checkMigrationIfNecessary();
     }
   }
 
@@ -45,19 +46,27 @@ import java.util.Arrays;
     BlockCause contained = SetSequence.fromSet(myBlocks).removeElement(cause);
     assert contained != null : "Non-paired block-unblock method usage. Cause: '" + cause.message + "'";
     if (SetSequence.fromSet(myBlocks).isEmpty()) {
-      myMigrationTrigger.checkMigrationNeeded();
+      checkMigrationIfNecessary();
     }
   }
 
   public boolean isMigrationForbidden() {
-    return SetSequence.fromSet(myBlocks).isNotEmpty();
+    return isMigrationForbiddenWithout();
   }
 
   public boolean isMigrationForbiddenWithout(BlockCause... exceptions) {
+    myShouldCheckAfterUnblock = true;
     return SetSequence.fromSet(myBlocks).subtract(ListSequence.fromList(Arrays.asList(exceptions))).isNotEmpty();
   }
 
   public String getMigrationForbiddenMessage() {
     return (SetSequence.fromSet(myBlocks).isEmpty() ? null : SetSequence.fromSet(myBlocks).last().message);
+  }
+
+  public void checkMigrationIfNecessary() {
+    if (myShouldCheckAfterUnblock) {
+      myShouldCheckAfterUnblock = false;
+      myMigrationTrigger.checkMigrationNeeded();
+    }
   }
 }

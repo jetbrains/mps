@@ -11724,6 +11724,12 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="4EpASiDZe0X" role="jymVt">
+      <property role="34CwA1" value="true" />
+      <property role="TrG5h" value="myShouldCheckAfterUnblock" />
+      <node concept="3Tm6S6" id="4EpASiDZbN0" role="1B3o_S" />
+      <node concept="10P_77" id="4EpASiDZe0z" role="1tU5fm" />
+    </node>
     <node concept="2tJIrI" id="41MBYoJoUFa" role="jymVt" />
     <node concept="312cEu" id="41MBYoJs0T0" role="jymVt">
       <property role="TrG5h" value="BlockCause" />
@@ -11840,14 +11846,9 @@
         </node>
         <node concept="3clFbJ" id="4yMSDz95dB0" role="3cqZAp">
           <node concept="3clFbS" id="4yMSDz95dB1" role="3clFbx">
-            <node concept="3clFbF" id="4yMSDz95dB2" role="3cqZAp">
-              <node concept="2OqwBi" id="4yMSDz95dB3" role="3clFbG">
-                <node concept="37vLTw" id="4yMSDz95dB4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="41MBYoJoTKV" resolve="myMigrationTrigger" />
-                </node>
-                <node concept="liA8E" id="4yMSDz95dB5" role="2OqNvi">
-                  <ref role="37wK5l" node="285c2S_WYWH" resolve="checkMigrationNeeded" />
-                </node>
+            <node concept="3clFbF" id="4EpASiDZJjP" role="3cqZAp">
+              <node concept="1rXfSq" id="4EpASiDZJjO" role="3clFbG">
+                <ref role="37wK5l" node="4EpASiDZkD7" resolve="checkMigrationIfNecessary" />
               </node>
             </node>
           </node>
@@ -11965,14 +11966,9 @@
         </node>
         <node concept="3clFbJ" id="7RkTcA9EXDz" role="3cqZAp">
           <node concept="3clFbS" id="7RkTcA9EXD_" role="3clFbx">
-            <node concept="3clFbF" id="41MBYoJoZAs" role="3cqZAp">
-              <node concept="2OqwBi" id="41MBYoJoZSH" role="3clFbG">
-                <node concept="37vLTw" id="41MBYoJoZAq" role="2Oq$k0">
-                  <ref role="3cqZAo" node="41MBYoJoTKV" resolve="myMigrationTrigger" />
-                </node>
-                <node concept="liA8E" id="41MBYoJp0cZ" role="2OqNvi">
-                  <ref role="37wK5l" node="285c2S_WYWH" resolve="checkMigrationNeeded" />
-                </node>
+            <node concept="3clFbF" id="4EpASiDZJo6" role="3cqZAp">
+              <node concept="1rXfSq" id="4EpASiDZJo5" role="3clFbG">
+                <ref role="37wK5l" node="4EpASiDZkD7" resolve="checkMigrationIfNecessary" />
               </node>
             </node>
           </node>
@@ -11993,12 +11989,9 @@
       <node concept="10P_77" id="41MBYoJqCoD" role="3clF45" />
       <node concept="3Tm1VV" id="41MBYoJqCoE" role="1B3o_S" />
       <node concept="3clFbS" id="41MBYoJqCoF" role="3clF47">
-        <node concept="3clFbF" id="41MBYoJrfjT" role="3cqZAp">
-          <node concept="2OqwBi" id="41MBYoJsyM3" role="3clFbG">
-            <node concept="37vLTw" id="41MBYoJsxLZ" role="2Oq$k0">
-              <ref role="3cqZAo" node="41MBYoJsn8J" resolve="myBlocks" />
-            </node>
-            <node concept="3GX2aA" id="41MBYoJszv8" role="2OqNvi" />
+        <node concept="3clFbF" id="4EpASiDZQjA" role="3cqZAp">
+          <node concept="1rXfSq" id="4EpASiDZQjx" role="3clFbG">
+            <ref role="37wK5l" node="4yMSDz96KrI" resolve="isMigrationForbiddenWithout" />
           </node>
         </node>
       </node>
@@ -12009,6 +12002,16 @@
       <node concept="10P_77" id="4yMSDz96KrJ" role="3clF45" />
       <node concept="3Tm1VV" id="4yMSDz96KrK" role="1B3o_S" />
       <node concept="3clFbS" id="4yMSDz96KrL" role="3clF47">
+        <node concept="3clFbF" id="4EpASiDZQFQ" role="3cqZAp">
+          <node concept="37vLTI" id="4EpASiDZRdH" role="3clFbG">
+            <node concept="3clFbT" id="4EpASiDZRsb" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="37vLTw" id="4EpASiDZQFO" role="37vLTJ">
+              <ref role="3cqZAo" node="4EpASiDZe0X" resolve="myShouldCheckAfterUnblock" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="4yMSDz96KrM" role="3cqZAp">
           <node concept="2OqwBi" id="4yMSDz96Xk8" role="3clFbG">
             <node concept="2OqwBi" id="4yMSDz96KrN" role="2Oq$k0">
@@ -12069,6 +12072,39 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="2tJIrI" id="4EpASiDZfNh" role="jymVt" />
+    <node concept="3clFb_" id="4EpASiDZkD7" role="jymVt">
+      <property role="TrG5h" value="checkMigrationIfNecessary" />
+      <node concept="3cqZAl" id="4EpASiDZkD9" role="3clF45" />
+      <node concept="3clFbS" id="4EpASiDZkDa" role="3clF47">
+        <node concept="3clFbJ" id="4EpASiDZPMT" role="3cqZAp">
+          <node concept="3clFbS" id="4EpASiDZPMV" role="3clFbx">
+            <node concept="3clFbF" id="4EpASiE0Bwv" role="3cqZAp">
+              <node concept="37vLTI" id="4EpASiE0BOH" role="3clFbG">
+                <node concept="3clFbT" id="4EpASiE0BRh" role="37vLTx" />
+                <node concept="37vLTw" id="4EpASiE0Bwt" role="37vLTJ">
+                  <ref role="3cqZAo" node="4EpASiDZe0X" resolve="myShouldCheckAfterUnblock" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="4yMSDz95dB2" role="3cqZAp">
+              <node concept="2OqwBi" id="4yMSDz95dB3" role="3clFbG">
+                <node concept="37vLTw" id="4yMSDz95dB4" role="2Oq$k0">
+                  <ref role="3cqZAo" node="41MBYoJoTKV" resolve="myMigrationTrigger" />
+                </node>
+                <node concept="liA8E" id="4yMSDz95dB5" role="2OqNvi">
+                  <ref role="37wK5l" node="285c2S_WYWH" resolve="checkMigrationNeeded" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="4EpASiDZPZC" role="3clFbw">
+            <ref role="3cqZAo" node="4EpASiDZe0X" resolve="myShouldCheckAfterUnblock" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="4EpASiDZn3e" role="1B3o_S" />
     </node>
   </node>
   <node concept="312cEu" id="2i74bFCd7B9">
