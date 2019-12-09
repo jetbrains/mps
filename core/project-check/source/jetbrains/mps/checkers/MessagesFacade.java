@@ -16,6 +16,7 @@
 package jetbrains.mps.checkers;
 
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspectRegistry;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackPerConceptDescriptor;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
 import jetbrains.mps.core.aspects.feedback.messages.PredefinedFeedbackTypes;
 import jetbrains.mps.core.aspects.feedback.problem.LegacyProblemKind;
@@ -31,6 +32,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -83,10 +85,14 @@ public final class MessagesFacade {
     if (noRegistryPresent()) {
       return Stream.empty();
     }
-    return myRegistry.getPerConceptDescriptors(concept)
-                     .filter(d -> d.getConcept().equals(concept))
-                     .flatMap(d -> d.getProvidersForProblem(PredefinedFeedbackTypes.SHOW_MESSAGE, problem.getId(), context))
-                     .map(p -> (MessageProvider) p); // here we rely on the implicit knowledge: SHOW_MESSAGE <=> MessageProvider is in the generated code
+    // any descriptor for that concept is fine since it will check for any provider there is (poor design, sry)
+    Optional<FeedbackPerConceptDescriptor> any = myRegistry.getPerConceptDescriptors(concept)
+                                                           .filter(d -> d.getConcept().equals(concept))
+                                                           .findAny();
+    return any.stream()
+              .flatMap(d -> d.getProvidersForProblem(PredefinedFeedbackTypes.SHOW_MESSAGE, problem.getId(), context))
+              .map(p -> (MessageProvider) p);
+              // here we rely on the implicit knowledge: SHOW_MESSAGE <=> MessageProvider is in the generated code
   }
 
   @NotNull
@@ -99,6 +105,7 @@ public final class MessagesFacade {
     if (kind instanceof ProblemKindAlsoProblem) {
       ProblemId id = ((ProblemKindAlsoProblem) kind).getId();
       return myRegistry.getPerLanguageDescriptors(language)
+                       .findAny().stream()
                        .flatMap(d -> d.getProvidersForProblem(PredefinedFeedbackTypes.SHOW_MESSAGE, id, context))
                        .map(p -> (MessageProvider<C>) p); // here we rely on the implicit knowledge: SHOW_MESSAGE <=> MessageProvider is in the generated code
     }
