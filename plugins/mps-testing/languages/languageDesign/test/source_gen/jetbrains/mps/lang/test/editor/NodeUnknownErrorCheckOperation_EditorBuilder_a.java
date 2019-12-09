@@ -10,6 +10,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.lang.test.editor.transformationTest_StyleSheet.NodeOperationStyleClass;
@@ -66,10 +67,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
     setCellContext(editorCell);
     editorCell.addEditorCell(createComponent_0());
     editorCell.addEditorCell(createRefNode_0());
+    if (nodeCondition_a85rxi_a2a()) {
+      editorCell.addEditorCell(createRefNode_1());
+    }
     if (SNodeAccessUtil.hasProperty(myNode, PROPS.name$tAp1)) {
       editorCell.addEditorCell(createNonEmptyProperty_0());
     }
     return editorCell;
+  }
+  private boolean nodeCondition_a85rxi_a2a() {
+    return (SLinkOperations.getTarget(myNode, LINKS.expectedMessage$gXqz) != null);
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
@@ -135,6 +142,61 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return "<no errorRef>";
     }
   }
+  private EditorCell createRefNode_1() {
+    SingleRoleCellProvider provider = new expectedMessageSingleRoleHandler_a85rxi_c0(myNode, LINKS.expectedMessage$gXqz, getEditorContext());
+    return provider.createCell();
+  }
+  private static class expectedMessageSingleRoleHandler_a85rxi_c0 extends SingleRoleCellProvider {
+    @NotNull
+    private SNode myNode;
+
+    public expectedMessageSingleRoleHandler_a85rxi_c0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      super(containmentLink, context);
+      myNode = ownerNode;
+    }
+
+    @Override
+    @NotNull
+    public SNode getNode() {
+      return myNode;
+    }
+
+    protected EditorCell createChildCell(SNode child) {
+      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.expectedMessage$gXqz, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.expectedMessage$gXqz, child));
+      installCellInfo(child, editorCell, false);
+      return editorCell;
+    }
+
+
+
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
+      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
+      }
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.expectedMessage$gXqz);
+      }
+    }
+    @Override
+    protected EditorCell createEmptyCell() {
+      getCellFactory().pushCellContext();
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.expectedMessage$gXqz));
+      try {
+        EditorCell editorCell = super.createEmptyCell();
+        editorCell.setCellId("empty_expectedMessage");
+        installCellInfo(null, editorCell, true);
+        setCellContext(editorCell);
+        return editorCell;
+      } finally {
+        getCellFactory().popCellContext();
+      }
+    }
+    protected String getNoTargetText() {
+      return "<no expectedMessage>";
+    }
+  }
   private EditorCell createNonEmptyProperty_0() {
     getCellFactory().pushCellContext();
     try {
@@ -169,6 +231,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink expectedMessage$gXqz = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, 0x9dc8d126017d5dbL, "expectedMessage");
     /*package*/ static final SContainmentLink errorRef$NSNq = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a1917bdL, 0x73a7cdcfba4e961eL, "errorRef");
   }
 
