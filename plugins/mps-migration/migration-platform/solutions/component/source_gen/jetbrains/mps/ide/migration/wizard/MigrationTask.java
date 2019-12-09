@@ -102,7 +102,7 @@ public class MigrationTask {
     if (checkAndIncStage(2)) {
       List<ScriptApplied> missingMigrations = findMissingMigrations(myMonitor.subTask(5));
       if (ListSequence.fromList(missingMigrations).isNotEmpty()) {
-        throw new MigrationsMissingError(missingMigrations);
+        throw new MigrationsMissingError(missingMigrations, mySession.getProject().getRepository());
       }
     }
 
@@ -349,7 +349,7 @@ public class MigrationTask {
 
       preferredId.value = sa.getScriptReference();
       String caption = sa.getScriptReference().resolve(mySession.getProject(), false).getCaption();
-      m.step(caption + " [" + NameUtil.compactNamespace(sa.getModule().getModuleName()) + "]");
+      m.step(caption + " [" + NameUtil.compactNamespace(sa.getModuleReference().getModuleName()) + "]");
       ListSequence.fromList(myWereRun).addElement(sa);
       if (!(executeSingleStep(m, caption, new _FunctionTypes._void_P0_E0() {
         public void invoke() {

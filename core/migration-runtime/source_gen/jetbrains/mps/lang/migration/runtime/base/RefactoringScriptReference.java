@@ -5,7 +5,10 @@ package jetbrains.mps.lang.migration.runtime.base;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.Language;
@@ -36,14 +39,24 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 @GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/5168866961623738063", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public class RefactoringScriptReference implements BaseScriptReference<RefactoringScript> {
   private static final Logger LOG = LogManager.getLogger(RefactoringScriptReference.class);
-  private final SModule module;
+  private final SModuleReference myModule;
   private final int fromVersion;
+  private final SRepository myRepositoryToResolve;
   public RefactoringScriptReference(SModule module, int fromVersion) {
-    this.module = module;
+    this.myModule = module.getModuleReference();
     this.fromVersion = fromVersion;
+    this.myRepositoryToResolve = module.getRepository();
   }
+  @Deprecated
+  @ToRemove(version = 2019.3)
   public SModule getModule() {
-    return module;
+    return myModule.resolve(myRepositoryToResolve);
+  }
+  public SModule getModule(SRepository repository) {
+    return myModule.resolve(repository);
+  }
+  public SModuleReference getModuleReference() {
+    return myModule;
   }
   public int getFromVersion() {
     return fromVersion;
@@ -57,7 +70,7 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
       return false;
     }
     RefactoringScriptReference that = (RefactoringScriptReference) o;
-    if (!(module.equals(that.module))) {
+    if (!(myModule.equals(that.myModule))) {
       return false;
     }
     if (fromVersion != that.fromVersion) {
@@ -67,20 +80,20 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
   }
   @Override
   public int hashCode() {
-    return module.hashCode() + 31 * fromVersion;
+    return myModule.hashCode() + 31 * fromVersion;
   }
   @Override
   public String toString() {
-    return "Refactoring[" + module.getModuleName() + ";" + fromVersion + "]";
+    return "Refactoring[" + myModule.getModuleName() + ";" + fromVersion + "]";
   }
 
   @Override
-  public RefactoringScript resolve(Project p, final boolean silent) {
+  public RefactoringScript resolve(final Project p, final boolean silent) {
     // todo store ModuleRef instead of SModule 
     final Wrappers._T<RefactoringScript> implementation = new Wrappers._T<RefactoringScript>(null);
     p.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        SModule module = RefactoringScriptReference.this.getModule();
+        SModule module = RefactoringScriptReference.this.getModule(p.getRepository());
         if (module instanceof Language) {
           Language depModule = (Language) module;
           final int current = RefactoringScriptReference.this.getFromVersion();

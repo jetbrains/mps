@@ -19,11 +19,10 @@ import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.ide.migration.check.DependencyProblem;
-import java.util.ArrayList;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.classloading.ModuleClassLoaderSupport;
 import org.jetbrains.mps.openapi.module.SDependency;
+import jetbrains.mps.ide.migration.check.DependencyProblem;
 import java.util.Set;
 import java.util.Map;
 import jetbrains.mps.errors.item.FlavouredItem;
@@ -90,7 +89,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
       public void run() {
         List<SModule> projectModules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
         Collection<SModule> depModules = CollectionSequence.fromCollectionWithValues(new HashSet<SModule>(), new GlobalModuleDependenciesManager(projectModules).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE));
-        CollectionSequence.fromCollection(depModules).removeSequence(Sequence.fromIterable((Iterable<SModule>) myProject.getModulesWithGenerators()));
+        CollectionSequence.fromCollection(depModules).removeSequence(Sequence.fromIterable((Iterable<SModule>) myProject.getProjectModulesWithGenerators()));
         depModules = CollectionSequence.fromCollection(depModules).where(new IWhereFilter<SModule>() {
           public boolean accept(SModule it) {
             return MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(it);
@@ -99,7 +98,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
         Collection<ScriptApplied> depMigrationsToRun = myManager.getModuleMigrations(depModules);
         Iterable<SModule> notMigratedModules = CollectionSequence.fromCollection(depMigrationsToRun).select(new ISelector<ScriptApplied, SModule>() {
           public SModule select(ScriptApplied it) {
-            return it.getModule();
+            return it.getModule(myProject.getRepository());
           }
         }).distinct();
         for (final SModule notMigrated : Sequence.fromIterable(notMigratedModules)) {
@@ -125,7 +124,6 @@ public class MigrationCheckerImpl implements MigrationChecker {
         List<SModule> modules = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
         pm.start("Checking...", 10 + ListSequence.fromList(modules).count());
 
-        List<DependencyProblem> rv = ListSequence.fromList(new ArrayList<DependencyProblem>());
         Iterable<ReloadableModule> allModules = ListSequence.fromList(modules).ofType(ReloadableModule.class).where(new IWhereFilter<ReloadableModule>() {
           public boolean accept(ReloadableModule it) {
             return ModuleClassLoaderSupport.canCreate(it);
@@ -203,7 +201,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
       public void run() {
         Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).select(new ISelector<ScriptApplied, SModule>() {
           public SModule select(ScriptApplied it) {
-            return it.getModule();
+            return it.getModule(myProject.getRepository());
           }
         }).distinct();
         Iterable<ScriptApplied> migrations = Sequence.fromIterable(migrationsToCheck).where(new IWhereFilter<ScriptApplied>() {
@@ -214,16 +212,12 @@ public class MigrationCheckerImpl implements MigrationChecker {
 
         m.start("Finding not migrated code...", Sequence.fromIterable(modules).count() + Sequence.fromIterable(migrations).count() * 10);
 
-        final int allSteps = Sequence.fromIterable(migrationsToCheck).count();
-        int stepsPassed = 0;
-
-        List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
         {
-          SearchScope scope_9mxawj_j0a0a8 = CommandUtil.createScope(modules);
-          final SearchScope scope_9mxawj_j0a0a8_0 = new EditableFilteringScope(scope_9mxawj_j0a0a8);
+          SearchScope scope_9mxawj_f0a0a8 = CommandUtil.createScope(modules);
+          final SearchScope scope_9mxawj_f0a0a8_0 = new EditableFilteringScope(scope_9mxawj_f0a0a8);
           QueryExecutionContext context = new QueryExecutionContext() {
             public SearchScope getDefaultSearchScope() {
-              return scope_9mxawj_j0a0a8_0;
+              return scope_9mxawj_f0a0a8_0;
             }
           };
           for (SNode ann : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationAnnotation_old$E0, false)).where(new IWhereFilter<SNode>() {
@@ -241,7 +235,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
 
         // todo show only annotations left by our run migrations 
         for (ScriptApplied sa : Sequence.fromIterable(migrations)) {
-          for (Problem p : Sequence.fromIterable(((MigrationScriptReference) sa.getScriptReference()).resolve(myProject, false).check(sa.getModule()))) {
+          for (Problem p : Sequence.fromIterable(((MigrationScriptReference) sa.getScriptReference()).resolve(myProject, false).check(sa.getModule(myProject.getRepository())))) {
             if (!(processor.process(p))) {
               m.done();
               return;

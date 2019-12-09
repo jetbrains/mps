@@ -37,7 +37,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScript;
 import javax.swing.JTree;
@@ -186,9 +186,9 @@ public class InitialStep extends BaseStep {
           public boolean accept(ScriptApplied it) {
             return it.getScriptReference() instanceof MigrationScriptReference;
           }
-        }).select(new ISelector<ScriptApplied, SModule>() {
-          public SModule select(ScriptApplied it) {
-            return it.getModule();
+        }).select(new ISelector<ScriptApplied, SModuleReference>() {
+          public SModuleReference select(ScriptApplied it) {
+            return it.getModuleReference();
           }
         }).distinct().count();
         final DefaultMutableTreeNode lroot = new DefaultMutableTreeNode("Language Migrations (" + migratedModulesNum + " modules will be affected)");
@@ -202,13 +202,13 @@ public class InitialStep extends BaseStep {
         }
 
         // module migrations 
-        final Map<SModule, DefaultMutableTreeNode> m2n = MapSequence.fromMap(new HashMap<SModule, DefaultMutableTreeNode>());
-        Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).select(new ISelector<RefactoringScriptReference, SModule>() {
-          public SModule select(RefactoringScriptReference it) {
-            return it.getModule();
+        final Map<SModuleReference, DefaultMutableTreeNode> m2n = MapSequence.fromMap(new HashMap<SModuleReference, DefaultMutableTreeNode>());
+        Sequence.fromIterable(scripts).ofType(RefactoringScriptReference.class).select(new ISelector<RefactoringScriptReference, SModuleReference>() {
+          public SModuleReference select(RefactoringScriptReference it) {
+            return it.getModuleReference();
           }
-        }).distinct().visitAll(new IVisitor<SModule>() {
-          public void visit(SModule it) {
+        }).distinct().visitAll(new IVisitor<SModuleReference>() {
+          public void visit(SModuleReference it) {
             MapSequence.fromMap(m2n).put(it, new DefaultMutableTreeNode(NameUtil.compactNamespace(it.getModuleName())));
           }
         });
@@ -217,16 +217,16 @@ public class InitialStep extends BaseStep {
             RefactoringScript rs = it.resolve(mySession.getProject(), false);
             String caption = (rs != null ? rs.getCaption() : "Missing: <script for version " + it.getFromVersion() + ">");
             DefaultMutableTreeNode node = new MyTreeNode(caption, migrationIcon);
-            MapSequence.fromMap(m2n).get(it.getModule()).add(node);
+            MapSequence.fromMap(m2n).get(it.getModuleReference()).add(node);
           }
         });
         int migratedModulesNum2 = CollectionSequence.fromCollection(migrationsApplied).where(new IWhereFilter<ScriptApplied>() {
           public boolean accept(ScriptApplied it) {
             return it.getScriptReference() instanceof RefactoringScriptReference;
           }
-        }).select(new ISelector<ScriptApplied, SModule>() {
-          public SModule select(ScriptApplied it) {
-            return it.getModule();
+        }).select(new ISelector<ScriptApplied, SModuleReference>() {
+          public SModuleReference select(ScriptApplied it) {
+            return it.getModuleReference();
           }
         }).distinct().count();
         final DefaultMutableTreeNode mroot = new DefaultMutableTreeNode("Module Migrations (" + migratedModulesNum2 + " modules will be affected)");

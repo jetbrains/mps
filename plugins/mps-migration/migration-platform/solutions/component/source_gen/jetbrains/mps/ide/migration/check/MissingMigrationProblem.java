@@ -46,12 +46,13 @@ public abstract class MissingMigrationProblem extends Problem<SModule> implement
     public MissingRefactoringLogProblem(RefactoringScriptReference migration, int usedVersion) {
       super(migration.getModule());
       myScriptReference = migration;
+      myUsedVersion = usedVersion;
     }
     public String getMessage() {
       final Wrappers._T<String> msg = new Wrappers._T<String>();
       getReason().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          msg.value = "The module " + myScriptReference.getModule().getModuleName() + " does not provide refactoring log for version " + myScriptReference.getFromVersion() + ". " + "Some modules use this module with version " + myUsedVersion + " while current version is " + ((AbstractModule) myScriptReference.getModule()).getModuleVersion() + ".";
+          msg.value = "The module " + myScriptReference.getModuleReference().getModuleName() + " does not provide refactoring log for version " + myScriptReference.getFromVersion() + ". " + "Some modules use this module with version " + myUsedVersion + " while current version is " + ((AbstractModule) getReason()).getModuleVersion() + ".";
         }
       });
       return msg.value;

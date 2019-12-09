@@ -5,22 +5,43 @@ package jetbrains.mps.ide.migration;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.util.annotation.ToRemove;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/7201972523303742950", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class ScriptApplied<T extends BaseScriptReference> {
   @NotNull
-  private SModule myModule;
+  private SModuleReference myModule;
   @NotNull
   private T myScriptRef;
+  @Deprecated
+  private SRepository myRepositoryToResolve;
 
   public ScriptApplied(SModule module, T scriptRef) {
-    myModule = module;
+    myModule = module.getModuleReference();
     myScriptRef = scriptRef;
+    myRepositoryToResolve = module.getRepository();
   }
 
+  @Deprecated
+  @ToRemove(version = 2019.3)
   public SModule getModule() {
+    return getModule(myRepositoryToResolve);
+  }
+
+  public SModuleReference getModuleReference() {
     return myModule;
+  }
+
+  @NotNull
+  public SModule getModule(SRepository toResolve) {
+    SModule result = myModule.resolve(toResolve);
+    if (result == null) {
+      throw new IllegalStateException("Module " + myModule + " cannot be resolved in repository.");
+    }
+    return result;
   }
 
   public T getScriptReference() {

@@ -29,6 +29,8 @@ import jetbrains.mps.lang.migration.runtime.base.BaseScriptReference;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -220,11 +222,15 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
           final RefactoringScriptReference rid = as_ufn3ol_a0a0a0f0a0a0a0b0u(preferredId, RefactoringScriptReference.class);
           SModule byId = Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
             public boolean accept(SModule it) {
-              return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(it)).contains(rid.getModule());
+              return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(it)).select(new ISelector<SModule, SModuleReference>() {
+                public SModuleReference select(SModule it) {
+                  return it.getModuleReference();
+                }
+              }).contains(rid.getModuleReference());
             }
           }).where(new IWhereFilter<SModule>() {
             public boolean accept(SModule it) {
-              int ver = Math.max(0, ((AbstractModule) it).getDependencyVersion(rid.getModule()));
+              int ver = Math.max(0, ((AbstractModule) it).getDependencyVersion(rid.getModule(it.getRepository())));
               return ver == rid.getFromVersion();
             }
           }).findFirst(new IWhereFilter<SModule>() {
@@ -260,7 +266,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
   private boolean canBeExecutedImmediately(ScriptApplied script) {
     // todo remove explicit class mention 
 
-    AbstractModule moduleToMigrate = (AbstractModule) script.getModule();
+    AbstractModule moduleToMigrate = (AbstractModule) script.getModule(myMpsProject.getRepository());
     if (script.getScriptReference() instanceof MigrationScriptReference) {
       MigrationScriptReference sr = (MigrationScriptReference) script.getScriptReference();
       int v = Math.max(0, moduleToMigrate.getUsedLanguageVersion(sr.getLanguage(), false));
@@ -285,7 +291,7 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
     }
     if (script.getScriptReference() instanceof RefactoringScriptReference) {
       RefactoringScriptReference sr = (RefactoringScriptReference) script.getScriptReference();
-      int v = Math.max(0, moduleToMigrate.getDependencyVersion(sr.getModule(), false));
+      int v = Math.max(0, moduleToMigrate.getDependencyVersion(sr.getModule(moduleToMigrate.getRepository()), false));
       if (v != sr.getFromVersion()) {
         return false;
       }
@@ -309,10 +315,14 @@ public class MigrationRegistryImpl extends AbstractProjectComponent implements M
   }
 
   private boolean needsToBeApplied(RefactoringScriptReference ref, SModule m) {
-    if (!(SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).contains(ref.getModule()))) {
+    if (!(SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).select(new ISelector<SModule, SModuleReference>() {
+      public SModuleReference select(SModule it) {
+        return it.getModuleReference();
+      }
+    }).contains(ref.getModuleReference()))) {
       return false;
     }
-    int dv = Math.max(0, ((AbstractModule) m).getDependencyVersion(ref.getModule(), false));
+    int dv = Math.max(0, ((AbstractModule) m).getDependencyVersion(ref.getModule(m.getRepository()), false));
     return dv <= ref.getFromVersion();
   }
 

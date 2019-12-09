@@ -5,6 +5,7 @@ package jetbrains.mps.ide.migration.wizard;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import jetbrains.mps.ide.migration.ScriptApplied;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -18,13 +19,16 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.ide.migration.check.MissingMigrationProblem;
 import java.util.Collections;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.AbstractModule;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876316539590", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class MigrationsMissingError extends MigrationError {
-  private List<ScriptApplied> errors;
-  public MigrationsMissingError(List<ScriptApplied> errors) {
-    this.errors = errors;
+  private List<ScriptApplied> myErrors;
+  private SRepository myRepository;
+  public MigrationsMissingError(List<ScriptApplied> errors, SRepository repository) {
+    this.myErrors = errors;
+    this.myRepository = repository;
   }
   @Override
   public String getShortMessage() {
@@ -34,12 +38,12 @@ public class MigrationsMissingError extends MigrationError {
     return "Some migration scripts are missing.\n" + "Missing scripts will be shown in ModelChecker after the migration wizard is closed.\n\n" + "Migration can't continue.";
   }
   public Iterable<IssueKindReportItem> getProblems(ProgressIndicator progressIndicator) {
-    final List<SModule> modules = ListSequence.fromList(errors).select(new ISelector<ScriptApplied, SModule>() {
+    final List<SModule> modules = ListSequence.fromList(myErrors).select(new ISelector<ScriptApplied, SModule>() {
       public SModule select(ScriptApplied it) {
-        return it.getModule();
+        return it.getModule(myRepository);
       }
     }).toListSequence();
-    List<BaseScriptReference> sRefs = ListSequence.fromList(errors).select(new ISelector<ScriptApplied, BaseScriptReference>() {
+    List<BaseScriptReference> sRefs = ListSequence.fromList(myErrors).select(new ISelector<ScriptApplied, BaseScriptReference>() {
       public BaseScriptReference select(ScriptApplied it) {
         return it.getScriptReference();
       }
@@ -61,12 +65,16 @@ public class MigrationsMissingError extends MigrationError {
       public IssueKindReportItem select(final RefactoringScriptReference it) {
         List<SModule> languageUsages = ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
           public boolean accept(SModule module) {
-            return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).contains(it.getModule());
+            return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(module)).select(new ISelector<SModule, SModuleReference>() {
+              public SModuleReference select(SModule it) {
+                return it.getModuleReference();
+              }
+            }).contains(it.getModuleReference());
           }
         }).toListSequence();
         return (IssueKindReportItem) new MissingMigrationProblem.MissingRefactoringLogProblem(it, Collections.min(ListSequence.fromList(languageUsages).select(new ISelector<SModule, Integer>() {
           public Integer select(SModule module) {
-            return ((AbstractModule) module).getDependencyVersion(it.getModule());
+            return ((AbstractModule) module).getDependencyVersion(it.getModule(module.getRepository()));
           }
         }).toListSequence()));
       }

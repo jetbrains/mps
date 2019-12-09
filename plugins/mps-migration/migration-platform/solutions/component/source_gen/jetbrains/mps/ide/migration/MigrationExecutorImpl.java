@@ -4,7 +4,6 @@ package jetbrains.mps.ide.migration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.lang.migration.runtime.base.DataCollector;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -39,7 +38,6 @@ import java.util.ArrayList;
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/4815078419490673773", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationExecutorImpl implements MigrationExecutor {
   private Project myProject;
-  private MPSProject myMpsProject;
 
   private DataCollector myDataCollector = new DataCollector() {
     public Map<SModule, SNode> collectData(SModule module, final MigrationScriptReference scriptReference) {
@@ -58,7 +56,6 @@ public class MigrationExecutorImpl implements MigrationExecutor {
 
   public MigrationExecutorImpl(Project project) {
     myProject = project;
-    myMpsProject = ((MPSProject) myProject);
   }
 
   public void dispose() {
@@ -81,8 +78,8 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   }
 
   private void executeMigrationScript(ScriptApplied<MigrationScriptReference> sa) {
-    MigrationScript script = sa.getScriptReference().resolve(myMpsProject, true);
-    AbstractModule module = ((AbstractModule) sa.getModule());
+    MigrationScript script = sa.getScriptReference().resolve(myProject, true);
+    AbstractModule module = ((AbstractModule) sa.getModule(myProject.getRepository()));
     SLanguage fromLanguage = script.getReference().getLanguage();
     Integer usedVersion = module.getModuleDescriptor().getLanguageVersions().get(fromLanguage);
     usedVersion = Math.max(usedVersion, 0);
@@ -115,14 +112,14 @@ public class MigrationExecutorImpl implements MigrationExecutor {
 
   private void executeRefactoringScript(ScriptApplied<RefactoringScriptReference> sa) {
     RefactoringScriptReference rLog = sa.getScriptReference();
-    final AbstractModule module = ((AbstractModule) sa.getModule());
-    SModule fromModule = rLog.getModule();
+    final AbstractModule module = ((AbstractModule) sa.getModule(myProject.getRepository()));
+    SModule fromModule = rLog.getModule(myProject.getRepository());
     int importedVersion = MigrationModuleUtil.getDependencyVersion(module, fromModule);
     importedVersion = Math.max(importedVersion, 0);
     assert importedVersion == rLog.getFromVersion();
 
     final RefactoringSessionImpl refactoringSession = new RefactoringSessionImpl("Apply Logged Refactoring");
-    RefactoringScript ref = rLog.resolve(myMpsProject, true);
+    RefactoringScript ref = rLog.resolve(myProject, true);
     ref.setSession(refactoringSession);
     ref.setTaskExecutor(new _FunctionTypes._void_P1_E0<Runnable>() {
       public void invoke(Runnable task) {
@@ -145,7 +142,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
   }
 
   private <IP, FP> void doRun(AbstractModule module, RefactoringParticipant.PersistentRefactoringParticipant<?, ?, IP, FP> participant, RefactoringUI ui, Iterable<SNode> initialState, final Map<SNode, SNode> initialToFinal, RefactoringSession refactoringSession) {
-    RefactoringProcessor.<IP,FP,SNode,SNode>performRefactoring(new RefactoringParticipant.DeserializingParticipantStateFactory<IP, FP>(), ui, refactoringSession, MigrationExecutorImpl.this.myMpsProject.getRepository(), new ModulesScope(module), ((Iterable<? extends RefactoringParticipant<?, ?, IP, FP>>) Sequence.<RefactoringParticipant<?, ?, IP, FP>>singleton(participant)), Sequence.fromIterable(initialState).toListSequence(), null, new _FunctionTypes._return_P1_E0<Map<SNode, SNode>, Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>>>() {
+    RefactoringProcessor.<IP,FP,SNode,SNode>performRefactoring(new RefactoringParticipant.DeserializingParticipantStateFactory<IP, FP>(), ui, refactoringSession, MigrationExecutorImpl.this.myProject.getRepository(), new ModulesScope(module), ((Iterable<? extends RefactoringParticipant<?, ?, IP, FP>>) Sequence.<RefactoringParticipant<?, ?, IP, FP>>singleton(participant)), Sequence.fromIterable(initialState).toListSequence(), null, new _FunctionTypes._return_P1_E0<Map<SNode, SNode>, Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>>>() {
       public Map<SNode, SNode> invoke(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, IP, FP, SNode, SNode>> changes) {
         return initialToFinal;
       }

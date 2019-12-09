@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
   };
   private MigrationExecutor myExecutor = new MigrationExecutor() {
     public void executeModuleMigration(ScriptApplied s) {
-      s.getScriptReference().resolve(myProject, true).execute(s.getModule());
+      s.getScriptReference().resolve(myProject, true).execute(s.getModule(myProject.getRepository()));
       ListSequence.fromList(passedM).addElement(s);
     }
     public void executeProjectMigration(ProjectMigration pm) {
@@ -163,7 +163,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
     @Override
     public Collection<ScriptApplied> getModuleMigrations(Iterable<SModule> modules) {
       if (Sequence.fromIterable(modules).isEmpty()) {
-        return Collections.emptyList();
+        return Collections.<ScriptApplied>emptyList();
       }
       final Iterable<SModule> modulesWithGenerators = myProject.getProjectModulesWithGenerators();
       if (Sequence.fromIterable(modules).any(new IWhereFilter<SModule>() {
@@ -171,7 +171,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
           return !(Sequence.fromIterable(modulesWithGenerators).contains(it));
         }
       })) {
-        return Collections.emptyList();
+        return Collections.<ScriptApplied>emptyList();
       }
       return (List<ScriptApplied>) ((List) Sequence.fromIterable(getModuleMigrationsApplied()).toListSequence());
     }
@@ -197,7 +197,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
         public boolean accept(final ScriptApplied sa) {
           return ListSequence.fromList(passedM).all(new IWhereFilter<ScriptApplied>() {
             public boolean accept(ScriptApplied it) {
-              return !(Objects.equals(it.getScriptReference(), sa.getScriptReference())) || it.getModule() != sa.getModule();
+              return !(Objects.equals(it.getScriptReference(), sa.getScriptReference())) || !(Objects.equals(it.getModuleReference(), sa.getModuleReference()));
             }
           });
         }
