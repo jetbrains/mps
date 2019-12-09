@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import java.util.List;
 import java.util.Collections;
@@ -20,6 +21,7 @@ import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -31,9 +33,11 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
 
   public static final Rule<CanBeRootContext> check_id2884486869351403846 = new Rule_NAME();
+  public static final Rule<CanBeAncestorContext> check_id2802122285522107750 = new Rule_unnamed_6y4avc_b1();
+  public static final Rule<ContainmentContext> check_id2802122285522073500 = new Rule_unnamed_6y4avc_b2();
   public static final Rule<ContainmentContext> check_id2884486869351523037 = new Rule_unnamed_6y4avc_b3();
 
-  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id2884486869351403846, check_id2884486869351523037));
+  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id2884486869351403846, check_id2802122285522107750, check_id2802122285522073500, check_id2884486869351523037));
 
   @NotNull
   @Override
@@ -56,6 +60,96 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
 
     @Override
     public boolean appliesTo(@NotNull CanBeRootContext context) {
+      return true;
+    }
+  }
+
+  public static final class Def_Depth2802122285522081733 {
+    /**
+     * null is an allowed value
+     * though null is also returned if the def is not defined
+     */
+    @Nullable
+    public static Integer getValue(@NotNull final CanBeAncestorContext context) {
+      if (!(isDefined(context))) {
+        return null;
+      }
+      return (Integer) new _FunctionTypes._return_P0_E0<Integer>() {
+        public Integer invoke() {
+          SNode n = context.getParentNode();
+          int depth = 1;
+          while (n != context.getAncestorNode()) {
+            n = SNodeOperations.getParent(n);
+            ++depth;
+          }
+          return depth;
+        }
+      }.invoke();
+    }
+
+    public static boolean isDefined(@NotNull CanBeAncestorContext context) {
+      return SNodeOperations.isInstanceOf(context.getDescendantNode(), CONCEPTS.TestConcept$83);
+    }
+  }
+
+  public static final class Rule_unnamed_6y4avc_b1 extends BaseRule<CanBeAncestorContext> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)/2802122285522107750");
+    public static final RuleId ID_unnamed_6y4avc_b1 = new RuleId(2802122285522107750L, SOURCE_NODE_REF);
+
+    public Rule_unnamed_6y4avc_b1() {
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_ANCESTOR, ID_unnamed_6y4avc_b1, SOURCE_NODE_REF);
+    }
+
+    @Override
+    public boolean check(@NotNull CanBeAncestorContext context) {
+      return Def_Depth2802122285522081733.getValue(context) < 3;
+    }
+
+    @Override
+    public boolean appliesTo(@NotNull CanBeAncestorContext context) {
+      if (!(Def_Depth2802122285522081733.isDefined(context))) {
+        return false;
+      }
+      return true;
+    }
+  }
+
+  public static final class Def_ChildName2802122285522074390 {
+    /**
+     * null is an allowed value
+     * though null is also returned if the def is not defined
+     */
+    @Nullable
+    public static String getValue(@NotNull ContainmentContext context) {
+      if (!(isDefined(context))) {
+        return null;
+      }
+      return (String) SPropertyOperations.getString(SNodeOperations.cast(context.getChildNode(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1);
+    }
+
+    public static boolean isDefined(@NotNull ContainmentContext context) {
+      return SNodeOperations.isInstanceOf(context.getChildNode(), CONCEPTS.INamedConcept$nV);
+    }
+  }
+
+  public static final class Rule_unnamed_6y4avc_b2 extends BaseRule<ContainmentContext> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)/2802122285522073500");
+    public static final RuleId ID_unnamed_6y4avc_b2 = new RuleId(2802122285522073500L, SOURCE_NODE_REF);
+
+    public Rule_unnamed_6y4avc_b2() {
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_PARENT, ID_unnamed_6y4avc_b2, SOURCE_NODE_REF);
+    }
+
+    @Override
+    public boolean check(@NotNull ContainmentContext context) {
+      return !(Def_ChildName2802122285522074390.getValue(context).contains("ABACABA"));
+    }
+
+    @Override
+    public boolean appliesTo(@NotNull ContainmentContext context) {
+      if (!(Def_ChildName2802122285522074390.isDefined(context))) {
+        return false;
+      }
       return true;
     }
   }
@@ -103,6 +197,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AuxConcept$gq = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f87283L, "messages.customization.structure.AuxConcept");
+    /*package*/ static final SConcept TestConcept$83 = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
     /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 

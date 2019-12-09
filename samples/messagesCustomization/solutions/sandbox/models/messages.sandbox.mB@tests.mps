@@ -94,7 +94,7 @@
         </node>
         <node concept="cMlWa" id="2w7KopAYp3J" role="1eZXdV">
           <property role="TrG5h" value="Bs" />
-          <property role="3ZEpjE" value="4" />
+          <property role="3ZEpjE" value="10" />
         </node>
       </node>
     </node>
@@ -110,7 +110,7 @@
         </node>
         <node concept="cMlWa" id="2w7KopAYxWF" role="1eZXdV">
           <property role="TrG5h" value="As" />
-          <property role="3ZEpjE" value="4" />
+          <property role="3ZEpjE" value="10" />
           <node concept="7CXmI" id="2w7KopAYxWY" role="lGtFl">
             <node concept="mDk06" id="2rz8PXlJx_2" role="7EUXB">
               <node concept="2u4KIi" id="2rz8PXlJx_3" role="39UlJh">
@@ -127,26 +127,66 @@
   </node>
   <node concept="1lH9Xt" id="2w7KopAY0Wb">
     <property role="TrG5h" value="RulesCanBeParent" />
-    <node concept="1qefOq" id="2w7KopAY0Wc" role="1SKRRt">
-      <node concept="cMlWa" id="2w7KopAY0Wd" role="1qenE9">
-        <property role="TrG5h" value="B" />
+    <node concept="1qefOq" id="2rz8PXlK5mF" role="1SKRRt">
+      <node concept="cMlWa" id="2rz8PXlK5mG" role="1qenE9">
+        <property role="TrG5h" value="LALALA" />
         <property role="3ZEpjE" value="10" />
-        <ref role="2175Xa" to="rk6v:2Ew8zTEY7CR" resolve="A" />
-        <node concept="7CXmI" id="2w7KopAY0We" role="lGtFl">
-          <node concept="39XrGg" id="2rz8PXlJKit" role="7EUXB">
-            <node concept="2u4KIi" id="2rz8PXlJKiu" role="39rjcI">
-              <ref role="39XzEq" to="2e5h:7J3GgfrRzNn" />
+        <ref role="2175Xa" node="2rz8PXlK5mG" resolve="LALALA" />
+        <node concept="7CXmI" id="2rz8PXlK5mH" role="lGtFl">
+          <node concept="7OXhh" id="2rz8PXlK5mT" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+          <node concept="mDk06" id="2rz8PXlKDTc" role="7EUXB">
+            <node concept="2u4KIi" id="2rz8PXlKDTd" role="39UlJh">
+              <ref role="39XzEq" to="2e5h:2rz8PXlJVus" />
             </node>
-            <node concept="1DMPye" id="2rz8PXlJKiv" role="1DMPz9">
-              <property role="1DMPyf" value="Reference is out of scope: can not found the link 'link' in the node B" />
+            <node concept="1DMPye" id="2rz8PXlKDTe" role="1DMPz9">
+              <property role="1DMPyf" value="children of the node LALALA are not allowed to contain 'ABACABA' in their names" />
             </node>
           </node>
+        </node>
+        <node concept="cMlWa" id="2rz8PXlK5mR" role="1eZXdV">
+          <property role="TrG5h" value="LALALAABACABA" />
+          <property role="3ZEpjE" value="10" />
         </node>
       </node>
     </node>
   </node>
   <node concept="1lH9Xt" id="2w7KopAY0Wv">
     <property role="TrG5h" value="RulesCanBeAncestor" />
+    <node concept="1qefOq" id="2rz8PXlK5ls" role="1SKRRt">
+      <node concept="cMlWa" id="2rz8PXlK5lw" role="1qenE9">
+        <property role="TrG5h" value="B" />
+        <property role="3ZEpjE" value="10" />
+        <node concept="7CXmI" id="2rz8PXlK5lx" role="lGtFl">
+          <node concept="7OXhh" id="2rz8PXlK5ly" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+        <node concept="cMlWa" id="2rz8PXlK5lz" role="1eZXdV">
+          <property role="TrG5h" value="Bs" />
+          <property role="3ZEpjE" value="10" />
+          <node concept="cMlWa" id="2rz8PXlK5lK" role="1eZXdV">
+            <property role="TrG5h" value="Bss" />
+            <property role="3ZEpjE" value="10" />
+            <node concept="cMlWa" id="2rz8PXlK5lM" role="1eZXdV">
+              <property role="TrG5h" value="Bsss" />
+              <property role="3ZEpjE" value="10" />
+              <node concept="7CXmI" id="2rz8PXlKGfs" role="lGtFl">
+                <node concept="mDk06" id="2rz8PXlKGft" role="7EUXB">
+                  <node concept="2u4KIi" id="2rz8PXlKGfu" role="39UlJh">
+                    <ref role="39XzEq" to="2e5h:2rz8PXlK3PA" />
+                  </node>
+                  <node concept="1DMPye" id="2rz8PXlKGfv" role="1DMPz9">
+                    <property role="1DMPyf" value="The maximal allowed depth is exceeded (3 &gt;= 3), so the node Bcannot be an ancestor of Bsss" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="1lH9Xt" id="2rz8PXlJKnc">
     <property role="TrG5h" value="_RulesCanBeChild2" />

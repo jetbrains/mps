@@ -11,6 +11,7 @@ import jetbrains.mps.core.aspects.feedback.messages.BaseMessageProvider;
 import jetbrains.mps.core.aspects.feedback.messages.FailingRuleProblemId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.aspects.feedback.messages.MessageProvider;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeAncestorContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import java.util.List;
 import java.util.Collections;
@@ -27,7 +28,21 @@ public final class TestConcept_ConstraintsFeedback extends BaseFeedbackDescripto
       return new MessageProvider.StringMsg("The model " + context.getModel() + " contains an instance of the concept 'AuxConcept'");
     }
   };
-  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_b = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_b3.ID_unnamed_6y4avc_b3)) {
+  private static final FeedbackProvider<CanBeAncestorContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_b = new BaseMessageProvider<CanBeAncestorContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_b1.ID_unnamed_6y4avc_b1)) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(CanBeAncestorContext context) {
+      return new MessageProvider.StringMsg("The maximal allowed depth is exceeded (" + TestConcept_ConstraintRules.Def_Depth2802122285522081733.getValue(context) + " >= 3" + "), so the node " + context.getAncestorNode() + "" + "cannot be an ancestor of " + context.getDescendantNode());
+    }
+  };
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_c = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_b2.ID_unnamed_6y4avc_b2)) {
+    @NotNull
+    @Override
+    public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
+      return new MessageProvider.StringMsg("children of the node " + context.getParentNode() + " are not allowed to contain 'ABACABA' in their names");
+    }
+  };
+  private static final FeedbackProvider<ContainmentContext> MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_d = new BaseMessageProvider<ContainmentContext>(new FailingRuleProblemId(TestConcept_ConstraintRules.Rule_unnamed_6y4avc_b3.ID_unnamed_6y4avc_b3)) {
     @NotNull
     @Override
     public MessageProvider.StringMsg yieldMessage(ContainmentContext context) {
@@ -35,7 +50,7 @@ public final class TestConcept_ConstraintsFeedback extends BaseFeedbackDescripto
     }
   };
 
-  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_a, MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_b));
+  private static final List<FeedbackProvider> PROVIDERS = Collections.unmodifiableList(Arrays.<FeedbackProvider>asList(MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_a, MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_b, MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_c, MSGPROVIDER_WhenConstraintRuleFails_rhl8yx_d));
 
   public TestConcept_ConstraintsFeedback() {
     super(CONCEPT);
