@@ -29,8 +29,8 @@ public class B2_Test extends BaseTransformationTest {
   }
 
   @Test
-  public void test_NodeUnknownRuleCheck3188152679658433604() throws Throwable {
-    new TestBody(this).test_NodeUnknownRuleCheck3188152679658433604();
+  public void test_NodeUnknownRuleCheck9082577556141086114() throws Throwable {
+    new TestBody(this).test_NodeUnknownRuleCheck9082577556141086114();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -40,10 +40,10 @@ public class B2_Test extends BaseTransformationTest {
     }
 
 
-    public void test_NodeUnknownRuleCheck3188152679658433604() throws Exception {
+    public void test_NodeUnknownRuleCheck9082577556141086114() throws Exception {
       SNode nodeToCheck = getRealNodeById("1135569809051521662");
-      SNode operation = getRealNodeById("3188152679658433604");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159"), "Reference is out of scope: can not found the link 'link' in the node B", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      SNode operation = getRealNodeById("9082577556141086114");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344669959"), "The name of the model 'messages.sandbox.mB' must contain 'mA'", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
 
   }

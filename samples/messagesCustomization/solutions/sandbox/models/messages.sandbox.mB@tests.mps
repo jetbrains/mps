@@ -89,12 +89,20 @@
         <property role="3ZEpjE" value="10" />
         <ref role="2175Xa" to="rk6v:2Ew8zTEY7CR" resolve="A" />
         <node concept="7CXmI" id="2lja8zi1WvA" role="lGtFl">
-          <node concept="39XrGg" id="2KY_ZxSK2L4" role="7EUXB">
-            <node concept="2u4KIi" id="2KY_ZxSK2L5" role="39rjcI">
+          <node concept="39XrGg" id="2w7KopAVWdk" role="7EUXB">
+            <node concept="2u4KIi" id="2w7KopAVWdl" role="39rjcI">
               <ref role="39XzEq" to="2e5h:7J3GgfrRzNn" />
             </node>
-            <node concept="1DMPye" id="2KY_ZxSK2L6" role="1DMPz9">
+            <node concept="1DMPye" id="2w7KopAVWdm" role="1DMPz9">
               <property role="1DMPyf" value="Reference is out of scope: can not found the link 'link' in the node B" />
+            </node>
+          </node>
+          <node concept="mDk06" id="2w7KopAVWdn" role="7EUXB">
+            <node concept="2u4KIi" id="2w7KopAVWdo" role="39UlJh">
+              <ref role="39XzEq" to="2e5h:2Ew8zTEY947" />
+            </node>
+            <node concept="1DMPye" id="2w7KopAVWdp" role="1DMPz9">
+              <property role="1DMPyf" value="The name of the model 'messages.sandbox.mB' must contain 'mA'" />
             </node>
           </node>
         </node>

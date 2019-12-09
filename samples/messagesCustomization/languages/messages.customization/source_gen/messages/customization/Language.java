@@ -8,6 +8,7 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
+import messages.customization.constraints.GeneratedFeedbackAspectConstraints;
 import messages.customization.feedback.GeneratedFeedbackAspectFeedback;
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
 import messages.customization.constraints.GeneratedRulesConstraintsAspect;
@@ -46,7 +47,7 @@ public class Language extends LanguageRuntime {
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
     if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
-      return aspectClass.cast(FeedbackAspect.combine(new GeneratedFeedbackAspectFeedback()));
+      return aspectClass.cast(FeedbackAspect.combine(new GeneratedFeedbackAspectConstraints(), new GeneratedFeedbackAspectFeedback()));
     }
     if (aspectClass.isAssignableFrom(RulesConstraintsAspect.class)) {
       return aspectClass.cast(new GeneratedRulesConstraintsAspect());

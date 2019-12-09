@@ -14,6 +14,7 @@
     <classNode dependClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
     <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
     <classNode dependClassName="messages.customization.constraints.ConstraintsAspectDescriptor" />
+    <classNode dependClassName="messages.customization.constraints.GeneratedFeedbackAspectConstraints" />
     <classNode dependClassName="messages.customization.constraints.GeneratedRulesConstraintsAspect" />
     <classNode dependClassName="messages.customization.editor.EditorAspectDescriptorImpl" />
     <classNode dependClassName="messages.customization.feedback.GeneratedFeedbackAspectFeedback" />
