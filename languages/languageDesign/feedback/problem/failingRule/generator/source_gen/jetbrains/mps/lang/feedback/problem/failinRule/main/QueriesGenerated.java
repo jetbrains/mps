@@ -44,6 +44,13 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return false;
   }
+  public static boolean rule_Condition_2_2(final BaseMappingRuleContext _context) {
+    if (SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.FailingRuleProblem$JN)) {
+      SNodeReference pointer = SNodeOperations.getPointer(RuleBlockMember__BehaviorDescriptor.getRuleKind_id1BFxp3HHhyj.invoke(SLinkOperations.getTarget(SNodeOperations.cast(_context.getNode(), CONCEPTS.FailingRuleProblem$JN), LINKS.rule$Gl8r)));
+      return Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382576"));
+    }
+    return false;
+  }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.rule$Gl8r), "ruleID");
   }
@@ -61,6 +68,7 @@ public class QueriesGenerated extends QueryProviderBase {
     int i = 0;
     rrcMethods.put("24399255755808131", new RRC(i++));
     rrcMethods.put("8018723092206401028", new RRC(i++));
+    rrcMethods.put("2802122285522236015", new RRC(i++));
   }
   @Override
   @NotNull
@@ -83,6 +91,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.rule_Condition_2_0(ctx);
         case 1:
           return QueriesGenerated.rule_Condition_2_1(ctx);
+        case 2:
+          return QueriesGenerated.rule_Condition_2_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
