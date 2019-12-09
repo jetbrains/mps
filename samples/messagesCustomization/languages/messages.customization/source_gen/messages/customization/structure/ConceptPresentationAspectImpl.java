@@ -9,16 +9,22 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_AuxConcept;
   private ConceptPresentation props_TestConcept;
-  private ConceptPresentation props_TestConcept2;
-  private ConceptPresentation props_TestConceptParent;
-  private ConceptPresentation props_TestConceptParent2;
+  private ConceptPresentation props_TestConcept0;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.AuxConcept:
+        if (props_AuxConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("AuxConcept");
+          props_AuxConcept = cpb.create();
+        }
+        return props_AuxConcept;
       case LanguageConceptSwitch.TestConcept:
         if (props_TestConcept == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -26,27 +32,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TestConcept = cpb.create();
         }
         return props_TestConcept;
-      case LanguageConceptSwitch.TestConcept2:
-        if (props_TestConcept2 == null) {
+      case LanguageConceptSwitch.TestConcept0:
+        if (props_TestConcept0 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_TestConcept2 = cpb.create();
+          props_TestConcept0 = cpb.create();
         }
-        return props_TestConcept2;
-      case LanguageConceptSwitch.TestConceptParent:
-        if (props_TestConceptParent == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_TestConceptParent = cpb.create();
-        }
-        return props_TestConceptParent;
-      case LanguageConceptSwitch.TestConceptParent2:
-        if (props_TestConceptParent2 == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_TestConceptParent2 = cpb.create();
-        }
-        return props_TestConceptParent2;
+        return props_TestConcept0;
     }
     return null;
   }

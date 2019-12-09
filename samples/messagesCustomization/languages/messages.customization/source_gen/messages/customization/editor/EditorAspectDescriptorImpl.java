@@ -8,7 +8,6 @@ import java.util.Collection;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
-import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -20,28 +19,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<ConceptEditor>singletonList(new TestConcept_Editor());
-      case 1:
-        return Collections.<ConceptEditor>singletonList(new TestConceptParent_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();
   }
 
 
-  @NotNull
-  @Override
-  public Collection<SubstituteMenu> getDeclaredDefaultSubstituteMenus(SAbstractConcept concept) {
-    SAbstractConcept cncpt = concept;
-    switch (conceptIndex1.index(cncpt)) {
-      case 0:
-        return Collections.<SubstituteMenu>singletonList(new TestConceptParent_SubstituteMenu());
-      case 1:
-        return Collections.<SubstituteMenu>singletonList(new TestConceptParent2_SubstituteMenu());
-      default:
-    }
-    return Collections.<SubstituteMenu>emptyList();
-  }
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L), MetaIdFactory.conceptId(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0xfc25ab98e2c9294L)).seal();
-  private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0xfc25ab98e2c9294L), MetaIdFactory.conceptId(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0xfc25ab98e2c9c36L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L)).seal();
 }

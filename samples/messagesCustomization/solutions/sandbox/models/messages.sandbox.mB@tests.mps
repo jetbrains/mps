@@ -8,12 +8,15 @@
   </languages>
   <imports>
     <import index="2e5h" ref="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)" />
-    <import index="rk6v" ref="r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)" implicit="true" />
+    <import index="rk6v" ref="r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
       <concept id="1215603922101" name="jetbrains.mps.lang.test.structure.NodeOperationsContainer" flags="ng" index="7CXmI">
         <child id="1215604436604" name="nodeOperations" index="7EUXB" />
+      </concept>
+      <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh">
+        <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
       </concept>
       <concept id="7835233914436786109" name="jetbrains.mps.lang.test.structure.NodeUnknownErrorCheckOperation" flags="ng" index="mDk06">
         <child id="8333855927540028958" name="errorRef" index="39UlJh" />
@@ -45,6 +48,7 @@
       <concept id="5983615114019032372" name="messages.customization.structure.TestConcept" flags="ng" index="cMlWa">
         <property id="5778414857994410328" name="prop" index="3ZEpjE" />
         <reference id="1592627013225970334" name="link" index="2175Xa" />
+        <child id="2884486869351404285" name="child" index="1eZXdV" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -60,49 +64,104 @@
     <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="1lH9Xt" id="2Ew8zTEYgwO">
-    <property role="TrG5h" value="B" />
+    <property role="TrG5h" value="RulesCanBeChild1" />
     <node concept="1qefOq" id="2Ew8zTEYgwP" role="1SKRRt">
       <node concept="cMlWa" id="2Ew8zTEYgwQ" role="1qenE9">
         <property role="TrG5h" value="B" />
         <property role="3ZEpjE" value="10" />
         <ref role="2175Xa" to="rk6v:2Ew8zTEY7CR" resolve="A" />
         <node concept="7CXmI" id="2Ew8zTEYm4W" role="lGtFl">
-          <node concept="mDk06" id="2Ew8zTEYm4X" role="7EUXB">
-            <node concept="2u4KIi" id="2Ew8zTEYm4Y" role="39UlJh">
-              <ref role="39XzEq" to="2e5h:2Ew8zTEY947" />
+          <node concept="39XrGg" id="2w7KopAXZxh" role="7EUXB">
+            <node concept="2u4KIi" id="2w7KopAXZxi" role="39rjcI">
+              <ref role="39XzEq" to="2e5h:7J3GgfrRzNn" />
+            </node>
+            <node concept="1DMPye" id="2w7KopAXZxj" role="1DMPz9">
+              <property role="1DMPyf" value="Reference is out of scope: can not found the link 'link' in the node B" />
             </node>
           </node>
-          <node concept="39XrGg" id="2Ew8zTEYm4Z" role="7EUXB">
-            <node concept="2u4KIi" id="2Ew8zTEYm50" role="39rjcI">
-              <ref role="39XzEq" to="2e5h:7J3GgfrRzNn" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="2w7KopAY3Yp" role="1SKRRt">
+      <node concept="cMlWa" id="2w7KopAY3Yq" role="1qenE9">
+        <property role="TrG5h" value="B" />
+        <property role="3ZEpjE" value="10" />
+        <ref role="2175Xa" node="2w7KopAY3Yq" resolve="B" />
+        <node concept="7CXmI" id="2w7KopAY3Yr" role="lGtFl">
+          <node concept="7OXhh" id="2w7KopAYxWx" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+        <node concept="cMlWa" id="2w7KopAYp3J" role="1eZXdV">
+          <property role="TrG5h" value="Bs" />
+          <property role="3ZEpjE" value="4" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="2w7KopAYxWB" role="1SKRRt">
+      <node concept="cMlWa" id="2w7KopAYxWC" role="1qenE9">
+        <property role="TrG5h" value="B" />
+        <property role="3ZEpjE" value="10" />
+        <ref role="2175Xa" node="2w7KopAYxWC" resolve="B" />
+        <node concept="7CXmI" id="2w7KopAYxWD" role="lGtFl">
+          <node concept="7OXhh" id="2w7KopAYxWW" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+        <node concept="cMlWa" id="2w7KopAYxWF" role="1eZXdV">
+          <property role="TrG5h" value="As" />
+          <property role="3ZEpjE" value="4" />
+          <node concept="7CXmI" id="2w7KopAYxWY" role="lGtFl">
+            <node concept="mDk06" id="2rz8PXlJx_2" role="7EUXB">
+              <node concept="2u4KIi" id="2rz8PXlJx_3" role="39UlJh">
+                <ref role="39XzEq" to="2e5h:2w7KopAY1cz" resolve="parentHasTheSameName" />
+              </node>
+              <node concept="1DMPye" id="2rz8PXlJx_4" role="1DMPz9">
+                <property role="1DMPyf" value="Parent B must be the prefix of As name" />
+              </node>
             </node>
           </node>
         </node>
       </node>
     </node>
   </node>
-  <node concept="1lH9Xt" id="Z2mFAeb99P">
-    <property role="TrG5h" value="B2" />
-    <node concept="1qefOq" id="Z2mFAeb99X" role="1SKRRt">
-      <node concept="cMlWa" id="Z2mFAeb99Y" role="1qenE9">
+  <node concept="1lH9Xt" id="2w7KopAY0Wb">
+    <property role="TrG5h" value="RulesCanBeParent" />
+    <node concept="1qefOq" id="2w7KopAY0Wc" role="1SKRRt">
+      <node concept="cMlWa" id="2w7KopAY0Wd" role="1qenE9">
         <property role="TrG5h" value="B" />
         <property role="3ZEpjE" value="10" />
         <ref role="2175Xa" to="rk6v:2Ew8zTEY7CR" resolve="A" />
-        <node concept="7CXmI" id="2lja8zi1WvA" role="lGtFl">
-          <node concept="39XrGg" id="2w7KopAVWdk" role="7EUXB">
-            <node concept="2u4KIi" id="2w7KopAVWdl" role="39rjcI">
+        <node concept="7CXmI" id="2w7KopAY0We" role="lGtFl">
+          <node concept="39XrGg" id="2rz8PXlJKit" role="7EUXB">
+            <node concept="2u4KIi" id="2rz8PXlJKiu" role="39rjcI">
               <ref role="39XzEq" to="2e5h:7J3GgfrRzNn" />
             </node>
-            <node concept="1DMPye" id="2w7KopAVWdm" role="1DMPz9">
+            <node concept="1DMPye" id="2rz8PXlJKiv" role="1DMPz9">
               <property role="1DMPyf" value="Reference is out of scope: can not found the link 'link' in the node B" />
             </node>
           </node>
-          <node concept="mDk06" id="2w7KopAVWdn" role="7EUXB">
-            <node concept="2u4KIi" id="2w7KopAVWdo" role="39UlJh">
-              <ref role="39XzEq" to="2e5h:2Ew8zTEY947" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="2w7KopAY0Wv">
+    <property role="TrG5h" value="RulesCanBeAncestor" />
+  </node>
+  <node concept="1lH9Xt" id="2rz8PXlJKnc">
+    <property role="TrG5h" value="_RulesCanBeChild2" />
+    <node concept="1qefOq" id="2rz8PXlJKnd" role="1SKRRt">
+      <node concept="cMlWa" id="2rz8PXlJKne" role="1qenE9">
+        <property role="TrG5h" value="B" />
+        <property role="3ZEpjE" value="10" />
+        <ref role="2175Xa" node="2rz8PXlJKne" resolve="B" />
+        <node concept="7CXmI" id="2rz8PXlJKnf" role="lGtFl">
+          <node concept="mDk06" id="2rz8PXlJU9k" role="7EUXB">
+            <node concept="2u4KIi" id="2rz8PXlJU9l" role="39UlJh">
+              <ref role="39XzEq" to="2e5h:2w7KopAYubt" />
             </node>
-            <node concept="1DMPye" id="2w7KopAVWdp" role="1DMPz9">
-              <property role="1DMPyf" value="The name of the model 'messages.sandbox.mB' must contain 'mA'" />
+            <node concept="1DMPye" id="2rz8PXlJU9m" role="1DMPz9">
+              <property role="1DMPyf" value="The root name _RulesCanBeChild2 must start with 'Rules' or 'Feedback'" />
             </node>
           </node>
         </node>

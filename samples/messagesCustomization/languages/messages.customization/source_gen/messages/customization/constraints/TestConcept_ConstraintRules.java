@@ -6,29 +6,34 @@ import jetbrains.mps.core.aspects.constraints.rules.BaseRulesConstraintsDescript
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.constraints.rules.Rule;
+import jetbrains.mps.core.aspects.constraints.rules.kinds.CanBeRootContext;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.ContainmentContext;
 import java.util.List;
 import java.util.Collections;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.core.aspects.constraints.rules.BaseRule;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.core.aspects.constraints.rules.RuleId;
 import jetbrains.mps.core.aspects.constraints.rules.kinds.PredefinedRuleKinds;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
 
-  public static final Rule<ContainmentContext> check_id3071492597344669959 = new Rule_unnamed_6y4avc_c3();
+  public static final Rule<CanBeRootContext> check_id2884486869351403846 = new Rule_NAME();
+  public static final Rule<ContainmentContext> check_id2884486869351523037 = new Rule_unnamed_6y4avc_b3();
 
-  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id3071492597344669959));
+  private static final List<Rule<?>> RULES = Collections.unmodifiableList(Arrays.<Rule<?>>asList(check_id2884486869351403846, check_id2884486869351523037));
 
   @NotNull
   @Override
@@ -36,17 +41,36 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     return RULES;
   }
 
-  public static final class Def_AModel3071492597344669935 {
+  public static final class Rule_NAME extends BaseRule<CanBeRootContext> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)/2884486869351403846");
+    public static final RuleId ID_NAME = new RuleId(2884486869351403846L, SOURCE_NODE_REF);
+
+    public Rule_NAME() {
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_ROOT, ID_NAME, SOURCE_NODE_REF);
+    }
+
+    @Override
+    public boolean check(@NotNull CanBeRootContext context) {
+      return ListSequence.fromList(SModelOperations.roots(context.getModel(), CONCEPTS.AuxConcept$gq)).isEmpty();
+    }
+
+    @Override
+    public boolean appliesTo(@NotNull CanBeRootContext context) {
+      return true;
+    }
+  }
+
+  public static final class Def_Root3071492597344669935 {
     /**
      * null is an allowed value
      * though null is also returned if the def is not defined
      */
     @Nullable
-    public static SModel getValue(@NotNull ContainmentContext context) {
+    public static SNode getValue(@NotNull ContainmentContext context) {
       if (!(isDefined(context))) {
         return null;
       }
-      return (SModel) SNodeOperations.getModel(context.getParentNode());
+      return (SNode) SNodeOperations.cast(SNodeOperations.getContainingRoot(context.getParentNode()), CONCEPTS.INamedConcept$nV);
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {
@@ -54,42 +78,21 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     }
   }
 
-  public static final class Def_AModelName3071492597344669944 {
-    /**
-     * null is an allowed value
-     * though null is also returned if the def is not defined
-     */
-    @Nullable
-    public static String getValue(@NotNull ContainmentContext context) {
-      if (!(isDefined(context))) {
-        return null;
-      }
-      return (String) SModelOperations.getModelName(Def_AModel3071492597344669935.getValue(context));
-    }
+  public static final class Rule_unnamed_6y4avc_b3 extends BaseRule<ContainmentContext> {
+    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)/2884486869351523037");
+    public static final RuleId ID_unnamed_6y4avc_b3 = new RuleId(2884486869351523037L, SOURCE_NODE_REF);
 
-    public static boolean isDefined(@NotNull ContainmentContext context) {
-      return ListSequence.fromList(SModelOperations.nodes(Def_AModel3071492597344669935.getValue(context), CONCEPTS.TestConcept$83)).isNotEmpty();
-    }
-  }
-
-  public static final class Rule_unnamed_6y4avc_c3 extends BaseRule<ContainmentContext> {
-    private static final SNodeReference SOURCE_NODE_REF = PersistenceFacade.getInstance().createNodeReference("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)/3071492597344669959");
-    public static final RuleId ID_unnamed_6y4avc_c3 = new RuleId(3071492597344669959L, SOURCE_NODE_REF);
-
-    public Rule_unnamed_6y4avc_c3() {
-      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_unnamed_6y4avc_c3, SOURCE_NODE_REF);
+    public Rule_unnamed_6y4avc_b3() {
+      super(CONCEPT, PredefinedRuleKinds.CAN_BE_CHILD, ID_unnamed_6y4avc_b3, SOURCE_NODE_REF);
     }
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return Def_AModelName3071492597344669944.getValue(context).contains("mA");
+      return Def_Root3071492597344669935.getValue(context) != null && (SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$tAp1).startsWith("Rules") || SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$tAp1).startsWith("Feedback"));
     }
 
     @Override
     public boolean appliesTo(@NotNull ContainmentContext context) {
-      if (!(Def_AModelName3071492597344669944.isDefined(context))) {
-        return false;
-      }
       return true;
     }
   }
@@ -99,6 +102,11 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestConcept$83 = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
+    /*package*/ static final SConcept AuxConcept$gq = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f87283L, "messages.customization.structure.AuxConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

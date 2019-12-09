@@ -15,6 +15,9 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
+        <child id="1169127546356" name="extends" index="PrDN$" />
+      </concept>
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -29,7 +32,6 @@
       </concept>
       <concept id="1071489288298" name="jetbrains.mps.lang.structure.structure.LinkDeclaration" flags="ig" index="1TJgyj">
         <property id="1071599776563" name="role" index="20kJfa" />
-        <property id="1071599893252" name="sourceCardinality" index="20lbJX" />
         <property id="1071599937831" name="metaClass" index="20lmBu" />
         <property id="241647608299431140" name="linkId" index="IQ2ns" />
         <reference id="1071599976176" name="target" index="20lvS9" />
@@ -59,37 +61,28 @@
     <node concept="PrWs8" id="1oq9tin1BFJ" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
-  </node>
-  <node concept="1TIwiD" id="Z2mFAeb9ak">
-    <property role="EcuMT" value="1135569809051521684" />
-    <property role="TrG5h" value="TestConceptParent" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="Z2mFAeb9al" role="1TKVEi">
-      <property role="IQ2ns" value="1135569809051521685" />
+    <node concept="PrWs8" id="2w7KopAY3Yl" role="PzmwI">
+      <ref role="PrY4T" node="2w7KopAY1c0" resolve="TestConcept0" />
+    </node>
+    <node concept="1TJgyj" id="2w7KopAY1bX" role="1TKVEi">
+      <property role="IQ2ns" value="2884486869351404285" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="obligatoryChildRole" />
-      <property role="20lbJX" value="fLJekj4/_1" />
+      <property role="20kJfa" value="child" />
       <ref role="20lvS9" node="5ca4zTvKOOO" resolve="TestConcept" />
     </node>
-    <node concept="1TJgyj" id="Z2mFAeb9an" role="1TKVEi">
-      <property role="IQ2ns" value="1135569809051521687" />
-      <property role="20kJfa" value="obligatoryRefRole" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="5ca4zTvKOOO" resolve="TestConcept" />
-    </node>
-    <node concept="PrWs8" id="Z2mFAeb9bb" role="PzmwI">
+  </node>
+  <node concept="PlHQZ" id="2w7KopAY1c0">
+    <property role="EcuMT" value="2884486869351404288" />
+    <property role="TrG5h" value="TestConcept0" />
+    <node concept="PrWs8" id="2w7KopAY2fi" role="PrDN$">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
-  <node concept="1TIwiD" id="Z2mFAeb9KP">
-    <property role="EcuMT" value="1135569809051524149" />
-    <property role="TrG5h" value="TestConcept2" />
-    <ref role="1TJDcQ" node="5ca4zTvKOOO" resolve="TestConcept" />
-  </node>
-  <node concept="1TIwiD" id="Z2mFAeb9KQ">
-    <property role="EcuMT" value="1135569809051524150" />
-    <property role="TrG5h" value="TestConceptParent2" />
-    <ref role="1TJDcQ" node="Z2mFAeb9ak" resolve="TestConceptParent" />
+  <node concept="1TIwiD" id="2w7KopAY7a3">
+    <property role="EcuMT" value="2884486869351428739" />
+    <property role="TrG5h" value="AuxConcept" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
 </model>
 

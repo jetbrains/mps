@@ -8,11 +8,18 @@
   </languages>
   <imports>
     <import index="2e5h" ref="r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)" />
+    <import index="dotu" ref="r:85fb8fd8-b1c6-4933-b652-a58a1ce85393(messages.sandbox.mB@tests)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
       <concept id="1215603922101" name="jetbrains.mps.lang.test.structure.NodeOperationsContainer" flags="ng" index="7CXmI">
         <child id="1215604436604" name="nodeOperations" index="7EUXB" />
+      </concept>
+      <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh">
+        <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
+      </concept>
+      <concept id="7835233914439520906" name="jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation" flags="ng" index="mZCkL">
+        <child id="710597951278798299" name="expectedMessage" index="1DMPz9" />
       </concept>
       <concept id="511191073233700873" name="jetbrains.mps.lang.test.structure.ScopesTest" flags="ng" index="2rqxmr">
         <reference id="5449224527592117654" name="checkingReference" index="1BTHP0" />
@@ -34,6 +41,9 @@
       <concept id="1216989428737" name="jetbrains.mps.lang.test.structure.TestNode" flags="ng" index="1qefOq">
         <child id="1216989461394" name="nodeToCheck" index="1qenE9" />
       </concept>
+      <concept id="710597951278798236" name="jetbrains.mps.lang.test.structure.ExpectedMessageContainer" flags="ng" index="1DMPye">
+        <property id="710597951278798237" name="text" index="1DMPyf" />
+      </concept>
       <concept id="3655334166513314291" name="jetbrains.mps.lang.test.structure.ScopesExpectedNode" flags="ng" index="3KTrbX">
         <reference id="4052780437578824735" name="ref" index="3AHY9a" />
       </concept>
@@ -54,16 +64,19 @@
     </language>
   </registry>
   <node concept="1lH9Xt" id="2Ew8zTEY7CQ">
-    <property role="TrG5h" value="A" />
+    <property role="TrG5h" value="FeedbackPropConstraintsAreBroken" />
     <node concept="1qefOq" id="2Ew8zTEY7CS" role="1SKRRt">
       <node concept="cMlWa" id="2Ew8zTEY7CR" role="1qenE9">
         <property role="TrG5h" value="A" />
         <property role="3ZEpjE" value="101" />
         <ref role="2175Xa" node="2Ew8zTEY7CR" resolve="A" />
         <node concept="7CXmI" id="2Ew8zTEYqc0" role="lGtFl">
-          <node concept="39XrGg" id="2Ew8zTEYqc2" role="7EUXB">
-            <node concept="2u4KIi" id="2Ew8zTEYqc3" role="39rjcI">
+          <node concept="39XrGg" id="2w7KopAY0yn" role="7EUXB">
+            <node concept="2u4KIi" id="2w7KopAY0yo" role="39rjcI">
               <ref role="39XzEq" to="2e5h:2Ew8zTEYgJs" />
+            </node>
+            <node concept="1DMPye" id="2w7KopAY0yp" role="1DMPz9">
+              <property role="1DMPyf" value="Property constraints are broken for the property prop  " />
             </node>
           </node>
         </node>
@@ -75,9 +88,47 @@
         </node>
       </node>
     </node>
+    <node concept="1qefOq" id="2w7KopAXZIS" role="1SKRRt">
+      <node concept="cMlWa" id="2w7KopAXZIT" role="1qenE9">
+        <property role="TrG5h" value="A" />
+        <property role="3ZEpjE" value="10" />
+        <ref role="2175Xa" node="2w7KopAXZIT" resolve="A" />
+        <node concept="7CXmI" id="2w7KopAXZIU" role="lGtFl">
+          <node concept="7OXhh" id="2w7KopAY0fI" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="2XOHcx" id="4qWC2JVszPl">
     <property role="2XOHcw" value="${mps_home}" />
+  </node>
+  <node concept="1lH9Xt" id="2w7KopAY0zR">
+    <property role="TrG5h" value="FeedbackChildIsNotDefined" />
+  </node>
+  <node concept="1lH9Xt" id="2w7KopAY0$4">
+    <property role="TrG5h" value="FeedbackPropIsNotDefined" />
+  </node>
+  <node concept="1lH9Xt" id="2rz8PXlJKiz">
+    <property role="TrG5h" value="FeedbackRefOutOfScope" />
+    <node concept="1qefOq" id="2rz8PXlJKi$" role="1SKRRt">
+      <node concept="cMlWa" id="2rz8PXlJKi_" role="1qenE9">
+        <property role="TrG5h" value="A" />
+        <property role="3ZEpjE" value="10" />
+        <ref role="2175Xa" to="dotu:2w7KopAY0Wd" resolve="B" />
+        <node concept="7CXmI" id="2rz8PXlJKiA" role="lGtFl">
+          <node concept="39XrGg" id="2rz8PXlJU9e" role="7EUXB">
+            <node concept="2u4KIi" id="2rz8PXlJU9f" role="39rjcI">
+              <ref role="39XzEq" to="2e5h:7J3GgfrRzNn" />
+            </node>
+            <node concept="1DMPye" id="2rz8PXlJU9g" role="1DMPz9">
+              <property role="1DMPyf" value="Reference is out of scope: can not found the link 'link' in the node A" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

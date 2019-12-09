@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-2tljal3u5ep9as1ivz13d96cgf0c178">
-  <files names="B2_Test.java:B_Test.java" />
+<product version="3" modelHash="51puqv67wpd1731lvhlx1l2axq73ztx">
+  <files names="RulesCanBeAncestor_Test.java:RulesCanBeChild1_Test.java:RulesCanBeParent_Test.java:_RulesCanBeChild2_Test.java" />
 </product>
 
