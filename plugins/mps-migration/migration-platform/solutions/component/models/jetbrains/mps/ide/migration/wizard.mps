@@ -3273,14 +3273,14 @@
                     <node concept="3uibUv" id="6fMyXCHt8vR" role="3rvSg0">
                       <ref role="3uigEE" to="rgfa:~DefaultMutableTreeNode" resolve="DefaultMutableTreeNode" />
                     </node>
-                    <node concept="3uibUv" id="6fMyXCHtf16" role="3rvQeY">
-                      <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                    <node concept="3uibUv" id="4EpASiE6t_p" role="3rvQeY">
+                      <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
                     </node>
                   </node>
                   <node concept="2ShNRf" id="6fMyXCHt8vT" role="33vP2m">
                     <node concept="3rGOSV" id="6fMyXCHt8vU" role="2ShVmc">
-                      <node concept="3uibUv" id="6fMyXCHtg_Y" role="3rHrn6">
-                        <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                      <node concept="3uibUv" id="4EpASiE6vSc" role="3rHrn6">
+                        <ref role="3uigEE" to="lui2:~SModuleReference" resolve="SModuleReference" />
                       </node>
                       <node concept="3uibUv" id="6fMyXCHt8vW" role="3rHtpV">
                         <ref role="3uigEE" to="rgfa:~DefaultMutableTreeNode" resolve="DefaultMutableTreeNode" />
@@ -3311,8 +3311,8 @@
                                 <node concept="37vLTw" id="6fMyXCHt8wp" role="2Oq$k0">
                                   <ref role="3cqZAo" node="6fMyXCHt8wr" resolve="it" />
                                 </node>
-                                <node concept="liA8E" id="6fMyXCHt8wq" role="2OqNvi">
-                                  <ref role="37wK5l" to="6f4m:4uVwhQyPurF" resolve="getModule" />
+                                <node concept="liA8E" id="4EpASiE6xEa" role="2OqNvi">
+                                  <ref role="37wK5l" to="6f4m:4EpASiE4O4M" resolve="getModuleReference" />
                                 </node>
                               </node>
                             </node>
@@ -3342,7 +3342,7 @@
                                       <ref role="3cqZAo" node="6fMyXCHt8wG" resolve="it" />
                                     </node>
                                     <node concept="liA8E" id="6fMyXCHt8wC" role="2OqNvi">
-                                      <ref role="37wK5l" to="lui2:~SModule.getModuleName()" resolve="getModuleName" />
+                                      <ref role="37wK5l" to="lui2:~SModuleReference.getModuleName()" resolve="getModuleName" />
                                     </node>
                                   </node>
                                 </node>
@@ -3478,8 +3478,8 @@
                                 <node concept="37vLTw" id="6fMyXCHt8x9" role="2Oq$k0">
                                   <ref role="3cqZAo" node="6fMyXCHt8xf" resolve="it" />
                                 </node>
-                                <node concept="liA8E" id="6fMyXCHt8xa" role="2OqNvi">
-                                  <ref role="37wK5l" to="6f4m:4uVwhQyPurF" resolve="getModule" />
+                                <node concept="liA8E" id="4EpASiE6_pw" role="2OqNvi">
+                                  <ref role="37wK5l" to="6f4m:4EpASiE4O4M" resolve="getModuleReference" />
                                 </node>
                               </node>
                             </node>
@@ -5452,11 +5452,33 @@
                                   <node concept="3clFbS" id="6Z8qT6OWEh$" role="1bW5cS">
                                     <node concept="3clFbF" id="4biA4YBBwLB" role="3cqZAp">
                                       <node concept="2OqwBi" id="4biA4YBBwLC" role="3clFbG">
-                                        <node concept="2YIFZM" id="4biA4YBBwLD" role="2Oq$k0">
-                                          <ref role="37wK5l" to="6f4m:3UfGsecu9ay" resolve="getModuleDependencies" />
-                                          <ref role="1Pybhc" to="6f4m:4JlWzK6VGnA" resolve="MigrationModuleUtil" />
-                                          <node concept="37vLTw" id="4biA4YBBwLE" role="37wK5m">
-                                            <ref role="3cqZAo" node="6Z8qT6OWEhH" resolve="module" />
+                                        <node concept="2OqwBi" id="4EpASiE6fmn" role="2Oq$k0">
+                                          <node concept="2YIFZM" id="4biA4YBBwLD" role="2Oq$k0">
+                                            <ref role="37wK5l" to="6f4m:3UfGsecu9ay" resolve="getModuleDependencies" />
+                                            <ref role="1Pybhc" to="6f4m:4JlWzK6VGnA" resolve="MigrationModuleUtil" />
+                                            <node concept="37vLTw" id="4biA4YBBwLE" role="37wK5m">
+                                              <ref role="3cqZAo" node="6Z8qT6OWEhH" resolve="module" />
+                                            </node>
+                                          </node>
+                                          <node concept="3$u5V9" id="4EpASiE6gxO" role="2OqNvi">
+                                            <node concept="1bVj0M" id="4EpASiE6gxQ" role="23t8la">
+                                              <node concept="3clFbS" id="4EpASiE6gxR" role="1bW5cS">
+                                                <node concept="3clFbF" id="4EpASiE6hdc" role="3cqZAp">
+                                                  <node concept="2OqwBi" id="4EpASiE6hOy" role="3clFbG">
+                                                    <node concept="37vLTw" id="4EpASiE6hdb" role="2Oq$k0">
+                                                      <ref role="3cqZAo" node="4EpASiE6gxS" resolve="it" />
+                                                    </node>
+                                                    <node concept="liA8E" id="4EpASiE6iwr" role="2OqNvi">
+                                                      <ref role="37wK5l" to="lui2:~SModule.getModuleReference()" resolve="getModuleReference" />
+                                                    </node>
+                                                  </node>
+                                                </node>
+                                              </node>
+                                              <node concept="Rh6nW" id="4EpASiE6gxS" role="1bW2Oz">
+                                                <property role="TrG5h" value="it" />
+                                                <node concept="2jxLKc" id="4EpASiE6gxT" role="1tU5fm" />
+                                              </node>
+                                            </node>
                                           </node>
                                         </node>
                                         <node concept="3JPx81" id="4biA4YBBwLF" role="2OqNvi">
@@ -5464,8 +5486,8 @@
                                             <node concept="37vLTw" id="4biA4YBBwLH" role="2Oq$k0">
                                               <ref role="3cqZAo" node="6Z8qT6OWEi7" resolve="it" />
                                             </node>
-                                            <node concept="liA8E" id="4biA4YBBwLI" role="2OqNvi">
-                                              <ref role="37wK5l" to="6f4m:4uVwhQyPurF" resolve="getModule" />
+                                            <node concept="liA8E" id="4EpASiE6jcD" role="2OqNvi">
+                                              <ref role="37wK5l" to="6f4m:4EpASiE4O4M" resolve="getModuleReference" />
                                             </node>
                                           </node>
                                         </node>
@@ -5521,7 +5543,15 @@
                                                     <ref role="3cqZAo" node="6Z8qT6OWEi7" resolve="it" />
                                                   </node>
                                                   <node concept="liA8E" id="6Z8qT6OWEi2" role="2OqNvi">
-                                                    <ref role="37wK5l" to="6f4m:4uVwhQyPurF" resolve="getModule" />
+                                                    <ref role="37wK5l" to="6f4m:4EpASiE50EI" resolve="getModule" />
+                                                    <node concept="2OqwBi" id="4EpASiE6lW9" role="37wK5m">
+                                                      <node concept="37vLTw" id="4EpASiE6lg3" role="2Oq$k0">
+                                                        <ref role="3cqZAo" node="6Z8qT6OWEi3" resolve="module" />
+                                                      </node>
+                                                      <node concept="liA8E" id="4EpASiE6mCB" role="2OqNvi">
+                                                        <ref role="37wK5l" to="lui2:~SModule.getRepository()" resolve="getRepository" />
+                                                      </node>
+                                                    </node>
                                                   </node>
                                                 </node>
                                               </node>
