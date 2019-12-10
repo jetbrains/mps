@@ -509,12 +509,15 @@ __switch__:
     int pseudoLine = findPseudoLineByY(y);
     if (pseudoLine == -1) {
       return -1;
-    } else {
-      if (SetSequence.fromSet(myCurrentPseudoLines).contains(pseudoLine)) {
-        return -1;
-      }
-      return ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine).fileLine;
     }
+    if (SetSequence.fromSet(myCurrentPseudoLines).contains(pseudoLine)) {
+      return -1;
+    }
+    LineRevisionRecord record = ListSequence.fromList(myEditorLineRecords).getElement(pseudoLine);
+    if (record == null) {
+      return -1;
+    }
+    return record.fileLine;
   }
   @Override
   public JPopupMenu getPopupMenu(MouseEvent event) {
