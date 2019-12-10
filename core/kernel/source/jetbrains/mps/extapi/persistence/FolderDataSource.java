@@ -156,17 +156,19 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   @Override
   public long getTimestamp() {
     long max = myLastAddRemove;
+    boolean any = false;
     for (IFile file : getStreams()) {
       if (!isIncluded(file)) {
         continue;
       }
+      any = true;
 
       long timestamp = file.lastModified();
       if (timestamp > max) {
         max = timestamp;
       }
     }
-    return max;
+    return any ? max : -1;
   }
 
   @Override
