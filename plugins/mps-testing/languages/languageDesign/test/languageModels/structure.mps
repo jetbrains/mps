@@ -1026,7 +1026,6 @@
     <node concept="1TJgyj" id="7eBNsYUjDou" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="errorRef" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="8333855927540028958" />
       <ref role="20lvS9" node="6EW1JnOFKPB" resolve="UnknownRuleReference" />
     </node>
@@ -1046,14 +1045,14 @@
     <property role="R5$K2" value="false" />
     <property role="EcuMT" value="7835233914439520906" />
     <ref role="1TJDcQ" node="hG7unSw" resolve="NodeCheckOperation" />
+    <node concept="PrWs8" id="6MWlVHUgHab" role="PzmwI">
+      <ref role="PrY4T" node="7scb9XIYnWK" resolve="ICheckForExpectedRule" />
+    </node>
     <node concept="1TJgyj" id="Bszh9w5Xnr" role="1TKVEi">
       <property role="IQ2ns" value="710597951278798299" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="expectedMessage" />
       <ref role="20lvS9" node="Bszh9w5Xms" resolve="ExpectedMessageContainer" />
-    </node>
-    <node concept="PrWs8" id="6MWlVHUgHab" role="PzmwI">
-      <ref role="PrY4T" node="7scb9XIYnWK" resolve="ICheckForExpectedRule" />
     </node>
   </node>
   <node concept="1TIwiD" id="7eBNsYUkBrv">
@@ -1499,6 +1498,16 @@
     <property role="EcuMT" value="1225972903834011965" />
     <property role="TrG5h" value="ITestAnnotationsContainer" />
   </node>
+  <node concept="1TIwiD" id="Bszh9w5Xms">
+    <property role="EcuMT" value="710597951278798236" />
+    <property role="TrG5h" value="ExpectedMessageContainer" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="Bszh9w5Xmt" role="1TKVEl">
+      <property role="IQ2nx" value="710597951278798237" />
+      <property role="TrG5h" value="text" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
   <node concept="1TIwiD" id="426cbTMdZVv">
     <property role="TrG5h" value="TypesystemEquationReference" />
     <property role="EcuMT" value="4649457259824807647" />
@@ -1511,16 +1520,6 @@
     </node>
     <node concept="PrWs8" id="426cbTMdZVx" role="PzmwI">
       <ref role="PrY4T" node="6EW1JnOFUIt" resolve="IRuleReference" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="Bszh9w5Xms">
-    <property role="EcuMT" value="710597951278798236" />
-    <property role="TrG5h" value="ExpectedMessageContainer" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="Bszh9w5Xmt" role="1TKVEl">
-      <property role="IQ2nx" value="710597951278798237" />
-      <property role="TrG5h" value="text" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
 </model>

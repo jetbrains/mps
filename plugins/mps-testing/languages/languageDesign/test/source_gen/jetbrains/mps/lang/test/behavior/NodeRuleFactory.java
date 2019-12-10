@@ -42,7 +42,7 @@ public class NodeRuleFactory {
     if (reporter.getSeverity() == MessageStatus.ERROR) {
       result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfba5276dfL, "jetbrains.mps.lang.test.structure.NodeConstraintsErrorCheckOperation"));
     } else {
-      result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0224b421L, "jetbrains.mps.lang.test.structure.NodeWarningCheckOperation"));
+      result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfbbbf8aadL, "jetbrains.mps.lang.test.structure.NodeConstraintsWarningCheckOperation"));
     }
     return result;
   }
@@ -62,7 +62,7 @@ public class NodeRuleFactory {
     if (reporter.getSeverity() == MessageStatus.ERROR) {
       result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a1917bdL, "jetbrains.mps.lang.test.structure.NodeUnknownErrorCheckOperation"));
     } else {
-      result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0224b421L, "jetbrains.mps.lang.test.structure.NodeWarningCheckOperation"));
+      result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfbbc0b900L, "jetbrains.mps.lang.test.structure.NodeUnknownWarningCheckOperation"));
     }
     return result;
   }
