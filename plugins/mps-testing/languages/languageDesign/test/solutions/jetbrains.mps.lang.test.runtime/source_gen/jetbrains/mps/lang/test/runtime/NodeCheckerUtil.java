@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;

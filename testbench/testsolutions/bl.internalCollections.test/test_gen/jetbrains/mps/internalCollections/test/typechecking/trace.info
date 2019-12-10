@@ -21,8 +21,8 @@
       <node id="1089557578627272135" at="58,41,59,41" concept="2" />
       <node id="360223900466871399" at="59,41,60,40" concept="2" />
       <node id="5532302989585163343" at="60,40,61,41" concept="2" />
-      <node id="284455749621385348" at="61,41,62,354" concept="0" />
-      <node id="284455749621393407" at="62,354,63,354" concept="0" />
+      <node id="284455749621385348" at="61,41,62,360" concept="0" />
+      <node id="284455749621393407" at="62,360,63,360" concept="0" />
       <node id="1301553664999174765" at="65,51,66,41" concept="2" />
       <node id="3441689827373214227" at="66,41,67,41" concept="2" />
       <node id="1089557578627272135" at="67,41,68,41" concept="2" />
@@ -34,13 +34,13 @@
       <node id="1089557578627272135" at="79,41,80,41" concept="2" />
       <node id="360223900466871399" at="80,41,81,40" concept="2" />
       <node id="5532302989585163343" at="81,40,82,41" concept="2" />
-      <node id="3143335925184817478" at="82,41,83,359" concept="0" />
+      <node id="3143335925184817478" at="82,41,83,365" concept="0" />
       <node id="1301553664999174765" at="85,78,86,41" concept="2" />
       <node id="3441689827373214227" at="86,41,87,41" concept="2" />
       <node id="1089557578627272135" at="87,41,88,41" concept="2" />
       <node id="360223900466871399" at="88,41,89,40" concept="2" />
       <node id="5532302989585163343" at="89,40,90,41" concept="2" />
-      <node id="3143335925184831595" at="90,41,91,360" concept="0" />
+      <node id="3143335925184831595" at="90,41,91,366" concept="0" />
       <node id="1301553664999174713" at="24,0,26,0" concept="6" trace="ourParamCache" />
       <node id="1301553664999174713" at="26,0,28,0" concept="3" trace="myWithCommandRule" />
       <node id="1301553664999174713" at="29,0,32,0" concept="1" trace="TypeCheckingErrors_Test#()V" />
@@ -73,15 +73,15 @@
       <scope id="1089557578630066569" at="37,0,41,0" />
       <scope id="360223900466908600" at="41,0,45,0" />
       <scope id="5532302989585240183" at="45,0,49,0" />
-      <scope id="360223900466908600" at="77,61,83,359" />
-      <scope id="5532302989585240183" at="85,78,91,360" />
-      <scope id="2169032458071765481" at="56,50,63,354" />
+      <scope id="360223900466908600" at="77,61,83,365" />
+      <scope id="5532302989585240183" at="85,78,91,366" />
+      <scope id="2169032458071765481" at="56,50,63,360" />
       <scope id="360223900466908600" at="77,0,85,0" />
       <scope id="5532302989585240183" at="85,0,93,0" />
       <scope id="2169032458071765481" at="56,0,65,0" />
       <scope id="1089557578630066569" at="65,51,75,9" />
       <scope id="1089557578630066569" at="65,0,77,0" />
-      <unit id="2501421320961027113" at="71,358,75,7" name="jetbrains.mps.internalCollections.test.typechecking.TypeCheckingErrors_Test$TestBody$1" />
+      <unit id="2501421320961027113" at="71,364,75,7" name="jetbrains.mps.internalCollections.test.typechecking.TypeCheckingErrors_Test$TestBody$1" />
       <unit id="1301553664999174713" at="50,0,96,0" name="jetbrains.mps.internalCollections.test.typechecking.TypeCheckingErrors_Test$TestBody" />
       <unit id="1301553664999174713" at="22,0,97,0" name="jetbrains.mps.internalCollections.test.typechecking.TypeCheckingErrors_Test" />
     </file>
