@@ -8823,6 +8823,89 @@
     <property role="2uzpH1" value="Add Language Import" />
     <property role="1teQrl" value="true" />
     <property role="72QZ$" value="true" />
+    <node concept="2XrIbr" id="1yqbt3NqNdI" role="32lrUH">
+      <property role="TrG5h" value="configureImportHelper" />
+      <node concept="3cqZAl" id="1yqbt3NqOGc" role="3clF45" />
+      <node concept="3clFbS" id="1yqbt3NqNdK" role="3clF47">
+        <node concept="3SKdUt" id="1yqbt3NqP5r" role="3cqZAp">
+          <node concept="1PaTwC" id="1yqbt3NqP5s" role="3ndbpf">
+            <node concept="3oM_SD" id="1yqbt3NqP5Q" role="1PaTwD">
+              <property role="3oM_SC" value="no-op," />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP60" role="1PaTwD">
+              <property role="3oM_SC" value="intended" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP6b" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP6f" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP6s" role="1PaTwD">
+              <property role="3oM_SC" value="overridden" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP6E" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP6L" role="1PaTwD">
+              <property role="3oM_SC" value="subclass" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP7h" role="1PaTwD">
+              <property role="3oM_SC" value="(mps-idea-plugin" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP82" role="1PaTwD">
+              <property role="3oM_SC" value="needs" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP8k" role="1PaTwD">
+              <property role="3oM_SC" value="additional" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP8J" role="1PaTwD">
+              <property role="3oM_SC" value="activities" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP93" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqP9g" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPal" role="1PaTwD">
+              <property role="3oM_SC" value="executed" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPaG" role="1PaTwD">
+              <property role="3oM_SC" value="when" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPb4" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPbt" role="1PaTwD">
+              <property role="3oM_SC" value="language" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPbZ" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPci" role="1PaTwD">
+              <property role="3oM_SC" value="added" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPcA" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPcV" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1yqbt3NqPdp" role="1PaTwD">
+              <property role="3oM_SC" value="model)" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tmbuc" id="1yqbt3NqNjj" role="1B3o_S" />
+      <node concept="37vLTG" id="1yqbt3NqO1N" role="3clF46">
+        <property role="TrG5h" value="helper" />
+        <node concept="3uibUv" id="1yqbt3NqOXY" role="1tU5fm">
+          <ref role="3uigEE" to="z1c4:~LanguageImportHelper" resolve="LanguageImportHelper" />
+        </node>
+      </node>
+    </node>
     <node concept="1DS2jV" id="5uaEgp6nCtJ" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
@@ -8862,6 +8945,17 @@
                 <node concept="1rXfSq" id="5uaEgp6nIln" role="37wK5m">
                   <ref role="37wK5l" to="qkt:~AnAction.getShortcutSet()" resolve="getShortcutSet" />
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1yqbt3NqPAw" role="3cqZAp">
+          <node concept="2OqwBi" id="1yqbt3NqPAq" role="3clFbG">
+            <node concept="2WthIp" id="1yqbt3NqPAt" role="2Oq$k0" />
+            <node concept="2XshWL" id="1yqbt3NqPAv" role="2OqNvi">
+              <ref role="2WH_rO" node="1yqbt3NqNdI" resolve="configureImportHelper" />
+              <node concept="37vLTw" id="1yqbt3NqPGY" role="2XxRq1">
+                <ref role="3cqZAo" node="5uaEgp6nIlf" resolve="helper" />
               </node>
             </node>
           </node>

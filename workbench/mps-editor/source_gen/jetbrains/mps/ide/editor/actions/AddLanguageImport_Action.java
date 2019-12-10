@@ -68,10 +68,14 @@ public class AddLanguageImport_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     LanguageImportHelper helper = new LanguageImportHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).setShortcut(getShortcutSet());
+    AddLanguageImport_Action.this.configureImportHelper(helper, _params);
     if (((SModel) MapSequence.fromMap(_params).get("model")) != null) {
       helper.addUsedLanguage(((SModel) MapSequence.fromMap(_params).get("model")));
     } else {
       helper.addExportedLanguage((DevKit) ((SModule) MapSequence.fromMap(_params).get("module")));
     }
+  }
+  protected void configureImportHelper(LanguageImportHelper helper, final Map<String, Object> _params) {
+    // no-op, intended to be overridden in subclass (mps-idea-plugin needs additional activities to be executed when a language is added to a model) 
   }
 }

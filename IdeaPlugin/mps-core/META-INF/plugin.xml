@@ -248,5 +248,14 @@
               class="jetbrains.mps.idea.core.actions.AddFirstLanguageImport">
       </action>
     </group>
+    <unregister id="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action"/>
+    <action id="jetbrains.mps.idea.core.actions.UseLanguageAction"
+            class="jetbrains.mps.idea.core.actions.UseLanguageAction">
+      <!-- Copied from AddLanguageImport_Action declaration at MPSEditorActions.xml-->
+      <keyboard-shortcut first-keystroke="ctrl L" keymap="$default" />
+      <keyboard-shortcut first-keystroke="ctrl L" keymap="Mac OS X" />
+      <keyboard-shortcut first-keystroke="ctrl L" keymap="Mac OS X 10.5+" />
+      <add-to-group group-id="jetbrains.mps.ide.editor.actions.IDE_Edit_ActionGroup" anchor="after" relative-to-action="jetbrains.mps.ide.editor.actions.AddModelImportByRoot_Action"/>
+    </action>
   </actions>
 </idea-plugin>

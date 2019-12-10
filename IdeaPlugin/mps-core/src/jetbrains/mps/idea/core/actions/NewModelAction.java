@@ -18,6 +18,7 @@ package jetbrains.mps.idea.core.actions;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
+import com.intellij.openapi.module.Module;
 import com.intellij.psi.PsiDirectory;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
@@ -27,6 +28,7 @@ import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.fileTypes.FileIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.MPSBundle;
+import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.idea.core.ui.CreateFromTemplateDialog;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
@@ -34,29 +36,32 @@ import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModelsAutoImportsManager;
-import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import javax.lang.model.SourceVersion;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by danilla on 28/10/15.
@@ -75,6 +80,7 @@ public class NewModelAction extends NewModelActionBase {
     SRepository repository = ProjectHelper.getProjectRepository(myProject);
     final ModuleRepositoryFacade repositoryFacade = new ModuleRepositoryFacade(repository);
     Map<String, ModelTemplate> namesToTemplates = new HashMap<String, ModelTemplate>();
+    final Module ideaModule = anActionEvent.getData(LangDataKeys.MODULE); // not null ensured by isEnabled in superclass
     CreateFromTemplateDialog dialog = new CreateFromTemplateDialog(myProject) {
       @Override
       protected void doOKAction() {
@@ -122,8 +128,15 @@ public class NewModelAction extends NewModelActionBase {
               mpsProject.getComponent(ModelsAutoImportsManager.class).performImports(myModelRoot.getModule(), model);
             }
             new MissingDependenciesFixer(model).fixModuleDependencies();
+            if (new ModelImports(model).getUsedLanguages().isEmpty()) {
+              return model;
+            }
+            final SModelReference modelReference = model.getReference();
+            final Stream<SModuleReference> ls = new ModelImports(model).getUsedLanguages().stream().map(SLanguage::getSourceModuleReference);
 
-            return model;
+            ModuleMPSSupport.getInstance().fixImports(ideaModule, ls.collect(Collectors.toSet()));
+            // chances are fixImports reloads module with the model, therefore need to take the new one
+            return modelReference.resolve(repository);
           }
         });
         if (newModel == null) {

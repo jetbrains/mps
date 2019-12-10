@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -104,7 +104,7 @@ import java.util.Set;
 
 public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
   private ModelProperties myModelProperties;
-  private SModel myModelDescriptor;
+  protected SModel myModelDescriptor;
   private boolean myInPlugin = false;
 
   public ModelPropertiesConfigurable(SModel modelDescriptor, Project project) {

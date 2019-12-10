@@ -39,9 +39,7 @@ import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
-import jetbrains.mps.ide.ui.dialogs.properties.ModelPropertiesConfigurable;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.MPSDataKeys;
 import jetbrains.mps.idea.core.projectView.edit.SNodeCutCopyProvider;
@@ -177,7 +175,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
 
                 @Override
                 public void navigate(boolean requestFocus) {
-                  MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurable(perRootModel, mpsProject, true);
+                  MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurableFix(perRootModel, mpsProject);
                   final SingleConfigurableEditor dialog = new SingleConfigurableEditor(myProject, configurable);
                   configurable.setParentForCallBack(dialog);
                   ApplicationManager.getApplication().invokeLater(dialog::show, ModalityState.current());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.projectView;
 
 import com.intellij.ide.projectView.PresentationData;
@@ -32,7 +31,6 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
-import jetbrains.mps.ide.ui.dialogs.properties.ModelPropertiesConfigurable;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiModel;
 import org.jetbrains.annotations.Nullable;
@@ -114,9 +112,8 @@ public class MPSPsiModelTreeNode extends BasePsiNode<MPSPsiModel> implements Nav
     SModelReference modelReference = psiModel.getSModelReference();
     SModel sModel = modelReference.resolve(ProjectHelper.getProjectRepository(getProject()));
 
-    MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurable(sModel,
-      ProjectHelper.fromIdeaProject(MPSPsiModelTreeNode.this.getProject()),
-      true
+    MPSPropertiesConfigurable configurable = new ModelPropertiesConfigurableFix(sModel,
+      ProjectHelper.fromIdeaProject(MPSPsiModelTreeNode.this.getProject())
     );
 
     final SingleConfigurableEditor dialog = new SingleConfigurableEditor(myProject, configurable);

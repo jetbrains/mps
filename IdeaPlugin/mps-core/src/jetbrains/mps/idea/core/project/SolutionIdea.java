@@ -112,7 +112,6 @@ public class SolutionIdea extends Solution {
     // having it before call to setModuleDescriptor() (which should be removed by the way) because it leads to
     // updateModelSet() which sends modelAdded events
     addModuleListener(myModule.getProject().getComponent(PsiModelReloadListener.class).getModuleListener());
-    addModuleListener(MODULE_RUNTIME_IMPORTER);
 
     // TODO: simply set solution descriptor local variable?
     setModuleDescriptor(descriptor);
@@ -127,9 +126,6 @@ public class SolutionIdea extends Solution {
           if (ModuleLibraryType.isModuleLibrary(library)) {
             library.getRootProvider().addRootSetChangedListener(myRootSetListener);
           }
-        }
-        for (SModel model : getModels()) {
-          ((SModelInternal) model).addModelListener(MODEL_RUNTIME_IMPORTER);
         }
       }
     });
@@ -481,19 +477,4 @@ public class SolutionIdea extends Solution {
     return getModuleName() + " [idea module derived solution]";
   }
 
-  private final SModuleListener MODULE_RUNTIME_IMPORTER = new SModuleListenerBase() {
-    @Override
-    public void modelAdded(SModule module, SModel model) {
-      if (!(model instanceof SModelInternal)) return;
-      ((SModelInternal) model).addModelListener(MODEL_RUNTIME_IMPORTER);
-    }
-  };
-
-  private final SModelListener MODEL_RUNTIME_IMPORTER = new SModelAdapter() {
-    @Override
-    public void languageAdded(SModelLanguageEvent event) {
-      SModuleReference langRef = event.getLanguageNamespace();
-      ModuleMPSSupport.getInstance().fixImports(myModule, Collections.singleton(langRef));
-    }
-  };
 }

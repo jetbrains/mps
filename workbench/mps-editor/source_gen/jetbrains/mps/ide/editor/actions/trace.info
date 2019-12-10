@@ -1266,34 +1266,42 @@
       <node id="3467203700125709756" at="63,64,64,51" concept="4" />
       <node id="3467203700125709751" at="65,5,66,16" concept="10" />
       <node id="6308040072501323086" at="69,96,70,149" concept="9" />
-      <node id="6308040072501303539" at="71,71,72,83" concept="4" />
-      <node id="6308040072501325753" at="73,12,74,98" concept="4" />
-      <node id="6308040072501325340" at="73,10,75,5" concept="1" />
+      <node id="1772779778784057760" at="70,149,71,73" concept="4" />
+      <node id="6308040072501303539" at="72,71,73,83" concept="4" />
+      <node id="6308040072501325753" at="74,12,75,98" concept="4" />
+      <node id="1772779778784055643" at="78,104,79,149" concept="11" />
+      <node id="6308040072501325340" at="74,10,76,5" concept="1" />
       <node id="3467203700125709751" at="44,95,47,5" concept="7" />
       <node id="6308040072501299056" at="50,53,53,7" concept="7" />
       <node id="3467203700125709755" at="57,52,60,7" concept="7" />
+      <node id="1772779778784047982" at="78,0,81,0" concept="8" trace="configureImportHelper#(Ljetbrains/mps/project/LanguageImportHelper;Ljava/util/Map;)V" />
       <node id="3467203700125709751" at="30,0,34,0" concept="8" trace="isDumbAware#()Z" />
       <node id="3467203700125709751" at="39,0,43,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="3467203700125709756" at="61,5,65,5" concept="1" />
       <node id="3467203700125709751" at="25,0,30,0" concept="2" trace="AddLanguageImport_Action#()V" />
       <node id="3467203700125709751" at="34,0,39,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="6308040072501323775" at="70,149,75,5" concept="7" />
+      <node id="6308040072501323775" at="71,73,76,5" concept="7" />
       <node id="6308040072501299055" at="47,5,54,5" concept="1" />
       <node id="3467203700125709754" at="54,5,61,5" concept="1" />
-      <node id="3467203700125709751" at="68,0,77,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="3467203700125709751" at="68,0,78,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="3467203700125709751" at="43,0,68,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <scope id="3467203700125709751" at="31,32,32,16" />
       <scope id="3467203700125709751" at="40,89,41,85" />
       <scope id="3467203700125709751" at="45,53,46,19" />
       <scope id="6308040072501299056" at="51,22,52,21" />
       <scope id="3467203700125709755" at="58,22,59,21" />
-      <scope id="6308040072501323777" at="71,71,72,83" />
-      <scope id="6308040072501325341" at="73,12,74,98" />
+      <scope id="6308040072501323777" at="72,71,73,83" />
+      <scope id="6308040072501325341" at="74,12,75,98" />
+      <scope id="1772779778784047984" at="78,104,79,149" />
       <scope id="6395870068821999960" at="35,87,37,306" />
       <scope id="3467203700125709756" at="62,5,64,51">
         <var name="p" id="3467203700125709756" />
       </scope>
       <scope id="3467203700125709751" at="25,37,28,40" />
+      <scope id="1772779778784047982" at="78,0,81,0">
+        <var name="_params" id="1772779778784047982" />
+        <var name="helper" id="1772779778784051315" />
+      </scope>
       <scope id="3467203700125709751" at="30,0,34,0" />
       <scope id="3467203700125709751" at="39,0,43,0">
         <var name="_params" id="3467203700125709751" />
@@ -1310,10 +1318,10 @@
       <scope id="3467203700125709754" at="55,5,60,7">
         <var name="p" id="3467203700125709754" />
       </scope>
-      <scope id="3467203700125709751" at="69,96,75,5">
+      <scope id="3467203700125709751" at="69,96,76,5">
         <var name="helper" id="6308040072501323087" />
       </scope>
-      <scope id="3467203700125709751" at="68,0,77,0">
+      <scope id="3467203700125709751" at="68,0,78,0">
         <var name="_params" id="3467203700125709751" />
         <var name="event" id="3467203700125709751" />
       </scope>
@@ -1322,7 +1330,7 @@
         <var name="_params" id="3467203700125709751" />
         <var name="event" id="3467203700125709751" />
       </scope>
-      <unit id="3467203700125709751" at="21,0,78,0" name="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action" />
+      <unit id="3467203700125709751" at="21,0,82,0" name="jetbrains.mps.ide.editor.actions.AddLanguageImport_Action" />
     </file>
   </root>
   <root nodeRef="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/3467203700125709779">
