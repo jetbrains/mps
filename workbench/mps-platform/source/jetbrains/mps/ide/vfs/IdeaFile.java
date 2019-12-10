@@ -313,7 +313,7 @@ public class IdeaFile implements IFile, CachingFile {
         return false;
       }
     } else {
-      LOG.error("Could not find the file to delete: " + myPath, new Throwable());
+      LOG.warn("Could not find the file to delete: " + myPath, new Throwable());
       return false;
     }
   }
