@@ -19,6 +19,7 @@ import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -47,5 +48,10 @@ public final class MissingRefContext implements Context {
   @NotNull
   public SNode getNode() {
     return myNode;
+  }
+
+  @NotNull
+  public SAbstractConcept getConcept() {
+    return myNode.getConcept();
   }
 }

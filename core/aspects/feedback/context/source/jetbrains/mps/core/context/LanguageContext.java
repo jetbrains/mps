@@ -21,8 +21,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 public interface LanguageContext extends Context {
   /**
    * it is not the language under the glass,
-   * it is the deployed the language blablabla
-   * fixme
+   * it is the deployed language blablabla
    * @return
    */
   @NotNull SLanguage getLanguage();
