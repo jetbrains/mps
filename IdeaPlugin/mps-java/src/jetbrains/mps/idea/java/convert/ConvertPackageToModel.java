@@ -232,7 +232,7 @@ public class ConvertPackageToModel extends AnAction {
         // e.g. not delete, but rather unmark as source dir -- in case if
         // the resulting model(s) don't fall into the same directory where java was
         for (IFile file : parser.getSuccessfulFiles()) {
-          file.delete();
+          file.deleteIfExists();
         }
 
         if (wasUnresolved) {

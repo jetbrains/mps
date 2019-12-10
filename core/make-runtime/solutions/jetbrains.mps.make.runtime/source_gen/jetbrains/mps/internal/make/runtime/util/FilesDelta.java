@@ -66,9 +66,7 @@ public class FilesDelta implements IDelta {
       public boolean acceptDeleted(IFile file) {
         FilesDelta.LOG.debug("Reconciled: deleting " + file);
         try {
-          if (file.exists()) {
-            file.delete();
-          }
+          file.deleteIfExists();
         } catch (RuntimeException ignored) {
           FilesDelta.LOG.error("Exception deleting file " + file, ignored);
         }

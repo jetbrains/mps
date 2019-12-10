@@ -128,7 +128,7 @@ public class IdeCommandUtil {
         final Consumer<IFile> deleteIfFile = new Consumer<IFile>() {
           public void accept(IFile file) {
             if (!(file.isDirectory())) {
-              file.delete();
+              file.deleteIfExists();
             }
           }
         };
@@ -171,7 +171,7 @@ public class IdeCommandUtil {
         }
         for (IFile f : roots) {
           if (f != null) {
-            f.delete();
+            f.deleteIfExists();
           }
         }
       }

@@ -148,7 +148,7 @@ public final class ModuleDeleteHelper {
     if (deleteFiles) {
       myDataSources.keySet().forEach(DisposableDataSource::delete);
       myFilesToDelete.forEach(IFile::deleteIfExists);
-      myLikelyEmptyDirs.stream().filter(ModuleDeleteHelper::canDeleteDirIfEmpty).forEach(IFile::delete);
+      myLikelyEmptyDirs.stream().filter(ModuleDeleteHelper::canDeleteDirIfEmpty).forEach(IFile::deleteIfExists);
     }
     ((ProjectBase) myProject).save();
   }

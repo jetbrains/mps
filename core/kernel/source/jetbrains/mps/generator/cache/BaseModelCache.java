@@ -140,10 +140,10 @@ public abstract class BaseModelCache<T> {
     IFile cachedFile = removed == null ? null : removed.o1;
     IFile actualCacheFile = getCacheFile(model);
     if (actualCacheFile != null) {
-      actualCacheFile.delete();
+      actualCacheFile.deleteIfExists();
     }
     if (cachedFile != null && cachedFile != actualCacheFile) {
-      cachedFile.delete();
+      cachedFile.deleteIfExists();
     }
   }
 }

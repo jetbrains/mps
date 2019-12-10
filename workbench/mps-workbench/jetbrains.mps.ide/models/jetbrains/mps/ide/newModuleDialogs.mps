@@ -4211,8 +4211,8 @@
                 <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleSourceDir()" resolve="getModuleSourceDir" />
               </node>
             </node>
-            <node concept="liA8E" id="1nhFxGTKa$Z" role="2OqNvi">
-              <ref role="37wK5l" to="3ju5:~IFile.delete()" resolve="delete" />
+            <node concept="liA8E" id="2JJHxmYvVz$" role="2OqNvi">
+              <ref role="37wK5l" to="3ju5:~IFile.deleteIfExists()" resolve="deleteIfExists" />
             </node>
           </node>
         </node>

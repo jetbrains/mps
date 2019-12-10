@@ -909,6 +909,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="2JJHxmYw0YW" role="jymVt" />
     <node concept="3clFb_" id="3KiLc2_D17R" role="jymVt">
       <property role="TrG5h" value="filesToDelete" />
       <node concept="3Tm1VV" id="3KiLc2_D17S" role="1B3o_S" />
@@ -948,6 +949,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="2JJHxmYw0YX" role="jymVt" />
     <node concept="3clFb_" id="3KiLc2_D183" role="jymVt">
       <property role="TrG5h" value="flushChanges" />
       <node concept="3Tm1VV" id="3KiLc2_D184" role="1B3o_S" />
@@ -995,8 +997,8 @@
                 <node concept="37vLTw" id="3GM_nagTw4A" role="2Oq$k0">
                   <ref role="3cqZAo" node="3KiLc2_D18i" resolve="file" />
                 </node>
-                <node concept="liA8E" id="3KiLc2_D18o" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.delete()" resolve="delete" />
+                <node concept="liA8E" id="2JJHxmYw3kK" role="2OqNvi">
+                  <ref role="37wK5l" to="3ju5:~IFile.deleteIfExists()" resolve="deleteIfExists" />
                 </node>
               </node>
             </node>

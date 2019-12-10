@@ -57,7 +57,7 @@ public class RemoveHistoryFiles extends BaseProjectMigration {
 
       Sequence.fromIterable(histFiles).visitAll(new IVisitor<IFile>() {
         public void visit(IFile it) {
-          it.delete();
+          it.deleteIfExists();
         }
       });
     }

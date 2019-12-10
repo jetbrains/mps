@@ -69,9 +69,7 @@ public class ModelDeleteHelper {
       IFile classesGenDir = javaFacet.getClassesLocation(myModel);
       if (classesGenDir != null) {
         possiblyEmptyDirsToPrune.add(classesGenDir.getParent()); // I don't expect model output dir to be top of the disk, don't care about parent == null
-        if (classesGenDir.exists()) {
-          classesGenDir.delete();
-        }
+        classesGenDir.deleteIfExists();
       }
     }
 
@@ -88,14 +86,12 @@ public class ModelDeleteHelper {
       if (modelOutput != null) {
         possiblyEmptyDirsToPrune.add(modelOutput.getParent());
         if (modelOutput.exists()) {
-          modelOutput.delete();
+          modelOutput.deleteIfExists();
         }
       }
       if (modelCaches != null) {
         possiblyEmptyDirsToPrune.add(modelCaches.getParent());
-        if (modelCaches.exists()) {
-          modelCaches.delete();
-        }
+        modelCaches.deleteIfExists();
       }
     }
 
@@ -108,7 +104,7 @@ public class ModelDeleteHelper {
         if (parent != null) {
           possiblyEmptyDirsToPrune.addLast(parent);
         }
-        d.delete();
+        d.deleteIfExists();
       }
     }
   }

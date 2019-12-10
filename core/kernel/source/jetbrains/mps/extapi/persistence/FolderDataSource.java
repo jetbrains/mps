@@ -150,7 +150,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   @Override
   public boolean delete(String name) {
     IFile file = getFile(name);
-    return file != null && file.delete();
+    return file != null && file.deleteIfExists();
   }
 
   @Override
@@ -215,7 +215,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
       }
     }
     for (IFile file : toDelete) {
-      file.delete();
+      file.deleteIfExists();
     }
     myLastAddRemove = -1;
   }

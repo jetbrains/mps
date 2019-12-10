@@ -142,7 +142,7 @@ public class FolderSetDataSource extends DataSourceBase implements DataSource, F
   public void delete() {
     Collection<IFile> toDelete = getFiles();
     for (IFile f : toDelete) {
-      f.delete();
+      f.deleteIfExists();
     }
   }
 

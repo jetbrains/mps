@@ -96,7 +96,7 @@ public final class CopyModuleHelper {
   }
 
   private <E extends Exception> AbstractModule recover(E e, AbstractModule result) throws E {
-    result.getModuleSourceDir().delete();
+    result.getModuleSourceDir().deleteIfExists();
     throw e;
   }
 

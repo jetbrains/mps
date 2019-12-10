@@ -1053,8 +1053,8 @@
                                     <node concept="37vLTw" id="22JnV7jo0e2" role="2Oq$k0">
                                       <ref role="3cqZAo" node="22JnV7jrAt6" resolve="file" />
                                     </node>
-                                    <node concept="liA8E" id="22JnV7jo0e3" role="2OqNvi">
-                                      <ref role="37wK5l" to="3ju5:~IFile.delete()" resolve="delete" />
+                                    <node concept="liA8E" id="2JJHxmYvGpB" role="2OqNvi">
+                                      <ref role="37wK5l" to="3ju5:~IFile.deleteIfExists()" resolve="deleteIfExists" />
                                     </node>
                                   </node>
                                 </node>
@@ -1594,8 +1594,8 @@
                               <node concept="37vLTw" id="5XpMuppjss" role="2Oq$k0">
                                 <ref role="3cqZAo" node="5XpMuppaWg" resolve="f" />
                               </node>
-                              <node concept="liA8E" id="5XpMuppjYg" role="2OqNvi">
-                                <ref role="37wK5l" to="3ju5:~IFile.delete()" resolve="delete" />
+                              <node concept="liA8E" id="2JJHxmYvGr$" role="2OqNvi">
+                                <ref role="37wK5l" to="3ju5:~IFile.deleteIfExists()" resolve="deleteIfExists" />
                               </node>
                             </node>
                           </node>
