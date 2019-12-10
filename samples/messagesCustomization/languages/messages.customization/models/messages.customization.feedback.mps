@@ -164,29 +164,6 @@
         <ref role="sa$J1" to="qzsv:2e3ANUBpeJ4" resolve="NoChildInObligatoryRole" />
       </node>
     </node>
-    <node concept="3QByp$" id="65DbCInUbVh" role="3QBEN7">
-      <node concept="16I2mz" id="65DbCInUbVi" role="16N$OO">
-        <node concept="16N$OT" id="65DbCInUbVj" role="16I2mt">
-          <property role="16N$OU" value="Multiple children in the single role '" />
-        </node>
-        <node concept="16Iohu" id="65DbCInUbVk" role="16I2mt">
-          <node concept="3QpRc$" id="65DbCInUbVl" role="9Y7m$">
-            <ref role="3QpVTF" to="qzsv:4YJfwn3BmNM" resolve="link" />
-          </node>
-        </node>
-        <node concept="16N$OT" id="65DbCInUbVm" role="16I2mt">
-          <property role="16N$OU" value="':  " />
-        </node>
-        <node concept="16Iohu" id="65DbCInUbVn" role="16I2mt">
-          <node concept="3QpRc$" id="65DbCInUbVo" role="9Y7m$">
-            <ref role="3QpVTF" to="qzsv:4YJfwn3BmNO" resolve="children" />
-          </node>
-        </node>
-      </node>
-      <node concept="2cc$G1" id="65DbCInUbVp" role="3JXyrO">
-        <ref role="sa$J1" to="qzsv:4YJfwn3BmNJ" resolve="MultipleChildrenInSingleRole" />
-      </node>
-    </node>
   </node>
   <node concept="3QByoM" id="65DbCInUmOS">
     <ref role="3Z9TSV" to="pljn:65DbCInTWch" resolve="BrokenConcept" />
@@ -242,6 +219,35 @@
       </node>
       <node concept="2PegRn" id="65DbCInVpNp" role="3JXyrO">
         <ref role="sa$J1" to="qzsv:2dMY_rcjEws" resolve="MissingChild" />
+      </node>
+    </node>
+  </node>
+  <node concept="3QByoM" id="65DbCInVCb_">
+    <ref role="3Z9TSV" to="pljn:65DbCInVC9J" resolve="CardinalityTestConcept0" />
+    <node concept="3QByp$" id="65DbCInVCbO" role="3QBEN7">
+      <node concept="16I2mz" id="65DbCInVCbP" role="16N$OO">
+        <node concept="16N$OT" id="65DbCInVCbQ" role="16I2mt">
+          <property role="16N$OU" value="Multiple children in the single role '" />
+        </node>
+        <node concept="16Iohu" id="65DbCInVCbR" role="16I2mt">
+          <node concept="3QpRc$" id="65DbCInVCbS" role="9Y7m$">
+            <ref role="3QpVTF" to="qzsv:4YJfwn3BmNM" resolve="link" />
+          </node>
+        </node>
+        <node concept="16N$OT" id="65DbCInVCbT" role="16I2mt">
+          <property role="16N$OU" value="':  " />
+        </node>
+        <node concept="16Iohu" id="65DbCInVCbU" role="16I2mt">
+          <node concept="3QpRc$" id="65DbCInVCbV" role="9Y7m$">
+            <ref role="3QpVTF" to="qzsv:4YJfwn3BmNO" resolve="children" />
+          </node>
+        </node>
+        <node concept="16N$OT" id="65DbCInVPD0" role="16I2mt">
+          <property role="16N$OU" value="!!!" />
+        </node>
+      </node>
+      <node concept="2cc$G1" id="65DbCInVCbW" role="3JXyrO">
+        <ref role="sa$J1" to="qzsv:4YJfwn3BmNJ" resolve="MultipleChildrenInSingleRole" />
       </node>
     </node>
   </node>

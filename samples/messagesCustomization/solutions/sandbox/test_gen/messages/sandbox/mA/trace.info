@@ -85,30 +85,30 @@
   <root nodeRef="r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)/2884486869351401732">
     <file name="FeedbackPropIsNotDefined_Test.java">
       <node id="2884486869351401732" at="26,42,27,25" concept="6" />
-      <node id="7019192671317891513" at="31,73,32,64" concept="1" />
+      <node id="4631579825415184834" at="31,73,32,64" concept="1" />
       <node id="2884486869351401732" at="37,52,38,19" concept="6" />
-      <node id="7019192671317891513" at="42,75,43,65" concept="4" />
-      <node id="7019192671317891513" at="43,65,44,63" concept="4" />
-      <node id="7019192671317891513" at="44,63,45,238" concept="1" />
+      <node id="4631579825415184834" at="42,75,43,65" concept="4" />
+      <node id="4631579825415184834" at="43,65,44,63" concept="4" />
+      <node id="4631579825415184834" at="44,63,45,224" concept="1" />
       <node id="2884486869351401732" at="21,0,23,0" concept="5" trace="ourParamCache" />
       <node id="2884486869351401732" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
       <node id="2884486869351401732" at="26,0,29,0" concept="0" trace="FeedbackPropIsNotDefined_Test#()V" />
       <node id="2884486869351401732" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="7019192671317891513" at="30,0,34,0" concept="3" trace="test_NodeErrorCheck7019192671317891513#()V" />
-      <node id="7019192671317891513" at="42,0,47,0" concept="3" trace="test_NodeErrorCheck7019192671317891513#()V" />
+      <node id="4631579825415184834" at="30,0,34,0" concept="3" trace="test_NodeErrorCheck4631579825415184834#()V" />
+      <node id="4631579825415184834" at="42,0,47,0" concept="3" trace="test_NodeErrorCheck4631579825415184834#()V" />
       <scope id="2884486869351401732" at="26,42,27,25" />
-      <scope id="7019192671317891513" at="31,73,32,64" />
+      <scope id="4631579825415184834" at="31,73,32,64" />
       <scope id="2884486869351401732" at="37,52,38,19" />
       <scope id="2884486869351401732" at="26,0,29,0" />
       <scope id="2884486869351401732" at="37,0,40,0">
         <var name="owner" id="2884486869351401732" />
       </scope>
-      <scope id="7019192671317891513" at="42,75,45,238">
-        <var name="nodeToCheck" id="7019192671317891513" />
-        <var name="operation" id="7019192671317891513" />
+      <scope id="4631579825415184834" at="42,75,45,224">
+        <var name="nodeToCheck" id="4631579825415184834" />
+        <var name="operation" id="4631579825415184834" />
       </scope>
-      <scope id="7019192671317891513" at="30,0,34,0" />
-      <scope id="7019192671317891513" at="42,0,47,0" />
+      <scope id="4631579825415184834" at="30,0,34,0" />
+      <scope id="4631579825415184834" at="42,0,47,0" />
       <unit id="2884486869351401732" at="35,0,49,0" name="messages.sandbox.mA.FeedbackPropIsNotDefined_Test$TestBody" />
       <unit id="2884486869351401732" at="19,0,50,0" name="messages.sandbox.mA.FeedbackPropIsNotDefined_Test" />
     </file>
@@ -125,7 +125,7 @@
       <node id="2884486869351401623" at="61,63,62,358" concept="1" />
       <node id="3071492597344740107" at="64,86,65,65" concept="4" />
       <node id="3071492597344740107" at="65,65,66,63" concept="4" />
-      <node id="3071492597344740107" at="66,63,67,322" concept="1" />
+      <node id="3071492597344740107" at="66,63,67,526" concept="1" />
       <node id="2884486869351400430" at="69,79,70,65" concept="4" />
       <node id="2884486869351400430" at="70,65,71,63" concept="4" />
       <node id="2884486869351400430" at="71,63,72,207" concept="1" />
@@ -152,7 +152,7 @@
         <var name="nodeToCheck" id="2884486869351401623" />
         <var name="operation" id="2884486869351401623" />
       </scope>
-      <scope id="3071492597344740107" at="64,86,67,322">
+      <scope id="3071492597344740107" at="64,86,67,526">
         <var name="nodeToCheck" id="3071492597344740107" />
         <var name="operation" id="3071492597344740107" />
       </scope>
@@ -199,6 +199,99 @@
       <scope id="7019192671317896977" at="42,0,47,0" />
       <unit id="7019192671317892450" at="35,0,49,0" name="messages.sandbox.mA.FeedbackRefIsNotDefined_Test$TestBody" />
       <unit id="7019192671317892450" at="19,0,50,0" name="messages.sandbox.mA.FeedbackRefIsNotDefined_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)/7019192671317951078">
+    <file name="FeedbackNoRefInObligatoryRole_Test.java">
+      <node id="7019192671317951078" at="26,47,27,25" concept="6" />
+      <node id="7019192671317970783" at="31,73,32,64" concept="1" />
+      <node id="7019192671317951078" at="37,52,38,19" concept="6" />
+      <node id="7019192671317970783" at="42,75,43,65" concept="4" />
+      <node id="7019192671317970783" at="43,65,44,63" concept="4" />
+      <node id="7019192671317970783" at="44,63,45,225" concept="1" />
+      <node id="7019192671317951078" at="21,0,23,0" concept="5" trace="ourParamCache" />
+      <node id="7019192671317951078" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
+      <node id="7019192671317951078" at="26,0,29,0" concept="0" trace="FeedbackNoRefInObligatoryRole_Test#()V" />
+      <node id="7019192671317951078" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7019192671317970783" at="30,0,34,0" concept="3" trace="test_NodeErrorCheck7019192671317970783#()V" />
+      <node id="7019192671317970783" at="42,0,47,0" concept="3" trace="test_NodeErrorCheck7019192671317970783#()V" />
+      <scope id="7019192671317951078" at="26,47,27,25" />
+      <scope id="7019192671317970783" at="31,73,32,64" />
+      <scope id="7019192671317951078" at="37,52,38,19" />
+      <scope id="7019192671317951078" at="26,0,29,0" />
+      <scope id="7019192671317951078" at="37,0,40,0">
+        <var name="owner" id="7019192671317951078" />
+      </scope>
+      <scope id="7019192671317970783" at="42,75,45,225">
+        <var name="nodeToCheck" id="7019192671317970783" />
+        <var name="operation" id="7019192671317970783" />
+      </scope>
+      <scope id="7019192671317970783" at="30,0,34,0" />
+      <scope id="7019192671317970783" at="42,0,47,0" />
+      <unit id="7019192671317951078" at="35,0,49,0" name="messages.sandbox.mA.FeedbackNoRefInObligatoryRole_Test$TestBody" />
+      <unit id="7019192671317951078" at="19,0,50,0" name="messages.sandbox.mA.FeedbackNoRefInObligatoryRole_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)/7019192671317970790">
+    <file name="FeedbackNoChildInObligatoryRole_Test.java">
+      <node id="7019192671317970790" at="26,49,27,25" concept="6" />
+      <node id="7019192671317970800" at="31,73,32,64" concept="1" />
+      <node id="7019192671317970790" at="37,52,38,19" concept="6" />
+      <node id="7019192671317970800" at="42,75,43,65" concept="4" />
+      <node id="7019192671317970800" at="43,65,44,63" concept="4" />
+      <node id="7019192671317970800" at="44,63,45,229" concept="1" />
+      <node id="7019192671317970790" at="21,0,23,0" concept="5" trace="ourParamCache" />
+      <node id="7019192671317970790" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
+      <node id="7019192671317970790" at="26,0,29,0" concept="0" trace="FeedbackNoChildInObligatoryRole_Test#()V" />
+      <node id="7019192671317970790" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7019192671317970800" at="30,0,34,0" concept="3" trace="test_NodeErrorCheck7019192671317970800#()V" />
+      <node id="7019192671317970800" at="42,0,47,0" concept="3" trace="test_NodeErrorCheck7019192671317970800#()V" />
+      <scope id="7019192671317970790" at="26,49,27,25" />
+      <scope id="7019192671317970800" at="31,73,32,64" />
+      <scope id="7019192671317970790" at="37,52,38,19" />
+      <scope id="7019192671317970790" at="26,0,29,0" />
+      <scope id="7019192671317970790" at="37,0,40,0">
+        <var name="owner" id="7019192671317970790" />
+      </scope>
+      <scope id="7019192671317970800" at="42,75,45,229">
+        <var name="nodeToCheck" id="7019192671317970800" />
+        <var name="operation" id="7019192671317970800" />
+      </scope>
+      <scope id="7019192671317970800" at="30,0,34,0" />
+      <scope id="7019192671317970800" at="42,0,47,0" />
+      <unit id="7019192671317970790" at="35,0,49,0" name="messages.sandbox.mA.FeedbackNoChildInObligatoryRole_Test$TestBody" />
+      <unit id="7019192671317970790" at="19,0,50,0" name="messages.sandbox.mA.FeedbackNoChildInObligatoryRole_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)/7019192671317970804">
+    <file name="FeedbackMultipleChildrenInSingleRole_Test.java">
+      <node id="7019192671317970804" at="26,54,27,25" concept="6" />
+      <node id="4631579825415181488" at="31,73,32,64" concept="1" />
+      <node id="7019192671317970804" at="37,52,38,19" concept="6" />
+      <node id="4631579825415181488" at="42,75,43,65" concept="4" />
+      <node id="4631579825415181488" at="43,65,44,63" concept="4" />
+      <node id="4631579825415181488" at="44,63,45,280" concept="1" />
+      <node id="7019192671317970804" at="21,0,23,0" concept="5" trace="ourParamCache" />
+      <node id="7019192671317970804" at="23,0,25,0" concept="2" trace="myWithCommandRule" />
+      <node id="7019192671317970804" at="26,0,29,0" concept="0" trace="FeedbackMultipleChildrenInSingleRole_Test#()V" />
+      <node id="7019192671317970804" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4631579825415181488" at="30,0,34,0" concept="3" trace="test_NodeErrorCheck4631579825415181488#()V" />
+      <node id="4631579825415181488" at="42,0,47,0" concept="3" trace="test_NodeErrorCheck4631579825415181488#()V" />
+      <scope id="7019192671317970804" at="26,54,27,25" />
+      <scope id="4631579825415181488" at="31,73,32,64" />
+      <scope id="7019192671317970804" at="37,52,38,19" />
+      <scope id="7019192671317970804" at="26,0,29,0" />
+      <scope id="7019192671317970804" at="37,0,40,0">
+        <var name="owner" id="7019192671317970804" />
+      </scope>
+      <scope id="4631579825415181488" at="42,75,45,280">
+        <var name="nodeToCheck" id="4631579825415181488" />
+        <var name="operation" id="4631579825415181488" />
+      </scope>
+      <scope id="4631579825415181488" at="30,0,34,0" />
+      <scope id="4631579825415181488" at="42,0,47,0" />
+      <unit id="7019192671317970804" at="35,0,49,0" name="messages.sandbox.mA.FeedbackMultipleChildrenInSingleRole_Test$TestBody" />
+      <unit id="7019192671317970804" at="19,0,50,0" name="messages.sandbox.mA.FeedbackMultipleChildrenInSingleRole_Test" />
     </file>
   </root>
 </debug-info>

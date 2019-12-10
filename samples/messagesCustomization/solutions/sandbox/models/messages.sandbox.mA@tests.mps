@@ -49,10 +49,22 @@
         <reference id="4052780437578824735" name="ref" index="3AHY9a" />
       </concept>
     </language>
+    <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
+    </language>
     <language id="7cf7c95b-c81e-4da9-a056-45e480a7abd3" name="messages.customization">
       <concept id="5983615114019032372" name="messages.customization.structure.TestConcept" flags="ng" index="cMlWa">
         <property id="5778414857994410328" name="prop" index="3ZEpjE" />
         <reference id="1592627013225970334" name="link" index="2175Xa" />
+      </concept>
+      <concept id="7019192671317617772" name="messages.customization.structure.CardinalityTestConcept" flags="ng" index="3Qw4bB">
+        <reference id="7019192671317573552" name="obligatoryref" index="3Qwp4V" />
+        <child id="7019192671317573556" name="obligatorychild" index="3Qwp4Z" />
+      </concept>
+      <concept id="7019192671317951087" name="messages.customization.structure.CardinalityTestConcept0" flags="ng" index="3QxUN$">
+        <child id="7019192671317951108" name="singleRoleChild" index="3QxUKf" />
       </concept>
       <concept id="7019192671317508881" name="messages.customization.structure.BrokenConcept" flags="ng" index="3QzIQq">
         <property id="7019192671317508884" name="prop" index="3QzIQv" />
@@ -73,9 +85,9 @@
     <property role="TrG5h" value="FeedbackPropConstraintsAreBroken" />
     <node concept="1qefOq" id="2Ew8zTEY7CS" role="1SKRRt">
       <node concept="cMlWa" id="2Ew8zTEY7CR" role="1qenE9">
-        <property role="TrG5h" value="A" />
+        <property role="TrG5h" value="AA" />
         <property role="3ZEpjE" value="101" />
-        <ref role="2175Xa" node="2Ew8zTEY7CR" resolve="A" />
+        <ref role="2175Xa" node="2Ew8zTEY7CR" resolve="AA" />
         <node concept="7CXmI" id="2Ew8zTEYqc0" role="lGtFl">
           <node concept="39XrGg" id="2w7KopAY0yn" role="7EUXB">
             <node concept="2u4KIi" id="2w7KopAY0yo" role="39rjcI">
@@ -87,9 +99,18 @@
           </node>
         </node>
         <node concept="2rqxmr" id="2Ew8zTEYqcb" role="lGtFl">
-          <ref role="1BTHP0" node="2Ew8zTEY7CR" resolve="A" />
-          <node concept="3KTrbX" id="2Ew8zTEYqcc" role="3KTr4d">
-            <ref role="3AHY9a" node="2Ew8zTEY7CR" resolve="A" />
+          <ref role="1BTHP0" node="2Ew8zTEY7CR" resolve="AA" />
+          <node concept="3KTrbX" id="416FkZyJf6T" role="3KTr4d">
+            <ref role="3AHY9a" node="2w7KopAXZIT" resolve="A" />
+          </node>
+          <node concept="3KTrbX" id="416FkZyJf6G" role="3KTr4d">
+            <ref role="3AHY9a" node="2rz8PXlJKi_" resolve="A" />
+          </node>
+          <node concept="3KTrbX" id="416FkZyJf6L" role="3KTr4d">
+            <ref role="3AHY9a" node="65DbCInVsiu" resolve="A" />
+          </node>
+          <node concept="3KTrbX" id="416FkZyJf79" role="3KTr4d">
+            <ref role="3AHY9a" node="2Ew8zTEY7CR" resolve="AA" />
           </node>
         </node>
       </node>
@@ -135,9 +156,9 @@
         <property role="TrG5h" value="A" />
         <property role="3QzIQv" value="true" />
         <node concept="7CXmI" id="65DbCInVpAS" role="lGtFl">
-          <node concept="mDk06" id="65DbCInVpAT" role="7EUXB">
-            <node concept="1DMPye" id="65DbCInVpAU" role="1DMPz9">
-              <property role="1DMPyf" value="Property 'prop' does not belong to the concept 'TestConcept'!!!" />
+          <node concept="mDk06" id="416FkZyJe72" role="7EUXB">
+            <node concept="1DMPye" id="416FkZyJe73" role="1DMPz9">
+              <property role="1DMPyf" value="Property 'prop' does not belong to the concept!!!" />
             </node>
           </node>
         </node>
@@ -190,6 +211,65 @@
               <property role="1DMPyf" value="Reference 'ref' does not belong to the concept!!!" />
             </node>
           </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="65DbCInVC9A">
+    <property role="TrG5h" value="FeedbackNoRefInObligatoryRole" />
+    <node concept="1qefOq" id="65DbCInVGrF" role="1SKRRt">
+      <node concept="3Qw4bB" id="65DbCInVGD2" role="1qenE9">
+        <property role="TrG5h" value="A" />
+        <node concept="Xl_RD" id="65DbCInVGD6" role="3Qwp4Z">
+          <property role="Xl_RC" value="stub" />
+        </node>
+        <node concept="7CXmI" id="65DbCInVGXo" role="lGtFl">
+          <node concept="mDk06" id="65DbCInVGXv" role="7EUXB">
+            <node concept="1DMPye" id="65DbCInVGXw" role="1DMPz9">
+              <property role="1DMPyf" value="No ref in the very obligatory role 'obligatoryref'" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="65DbCInVGXA">
+    <property role="TrG5h" value="FeedbackNoChildInObligatoryRole" />
+    <node concept="1qefOq" id="65DbCInVGXB" role="1SKRRt">
+      <node concept="3Qw4bB" id="65DbCInVGXC" role="1qenE9">
+        <property role="TrG5h" value="A" />
+        <ref role="3Qwp4V" node="65DbCInVGXC" resolve="A" />
+        <node concept="7CXmI" id="65DbCInVGXE" role="lGtFl">
+          <node concept="mDk06" id="65DbCInVGXK" role="7EUXB">
+            <node concept="1DMPye" id="65DbCInVGXL" role="1DMPz9">
+              <property role="1DMPyf" value="No child in the very obligatory role 'obligatorychild'" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="65DbCInVGXO">
+    <property role="TrG5h" value="FeedbackMultipleChildrenInSingleRole" />
+    <node concept="1qefOq" id="65DbCInVGXP" role="1SKRRt">
+      <node concept="3Qw4bB" id="65DbCInVGXQ" role="1qenE9">
+        <property role="TrG5h" value="A" />
+        <ref role="3Qwp4V" node="65DbCInVGXQ" resolve="A" />
+        <node concept="Xl_RD" id="65DbCInVGXR" role="3Qwp4Z">
+          <property role="Xl_RC" value="stub" />
+        </node>
+        <node concept="7CXmI" id="65DbCInVGXS" role="lGtFl">
+          <node concept="mDk06" id="416FkZyJdiK" role="7EUXB">
+            <node concept="1DMPye" id="416FkZyJdiL" role="1DMPz9">
+              <property role="1DMPyf" value="Multiple children in the single role 'singleRoleChild':  [StringLiteral='one', StringLiteral='second']!!!" />
+            </node>
+          </node>
+        </node>
+        <node concept="Xl_RD" id="65DbCInVHbz" role="3QxUKf">
+          <property role="Xl_RC" value="one" />
+        </node>
+        <node concept="Xl_RD" id="65DbCInVL5V" role="3QxUKf">
+          <property role="Xl_RC" value="second" />
         </node>
       </node>
     </node>

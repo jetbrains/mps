@@ -91,6 +91,9 @@
     <node concept="PrWs8" id="2w7KopAY2fi" role="PrDN$">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="t5JxF" id="65DbCInVC9H" role="lGtFl">
+      <property role="t5JxN" value="checking the inheritance" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2w7KopAY7a3">
     <property role="EcuMT" value="2884486869351428739" />
@@ -148,16 +151,32 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="obligatorychild" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="65DbCInUmLG" resolve="CardinalityTestConcept" />
+      <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
     </node>
     <node concept="1TJgyj" id="65DbCInUmLM" role="1TKVEi">
       <property role="IQ2ns" value="7019192671317573552" />
       <property role="20kJfa" value="obligatoryref" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="65DbCInUmLG" resolve="CardinalityTestConcept" />
+      <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
     </node>
     <node concept="PrWs8" id="65DbCInUmLN" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="PrWs8" id="65DbCInVCaR" role="PzmwI">
+      <ref role="PrY4T" node="65DbCInVC9J" resolve="CardinalityTestConcept0" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="65DbCInVC9J">
+    <property role="EcuMT" value="7019192671317951087" />
+    <property role="TrG5h" value="CardinalityTestConcept0" />
+    <node concept="1TJgyj" id="65DbCInVCa4" role="1TKVEi">
+      <property role="IQ2ns" value="7019192671317951108" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="singleRoleChild" />
+      <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    </node>
+    <node concept="t5JxF" id="65DbCInVC9K" role="lGtFl">
+      <property role="t5JxN" value="checking the inheritance in the aspect 'feedback'" />
     </node>
   </node>
 </model>
