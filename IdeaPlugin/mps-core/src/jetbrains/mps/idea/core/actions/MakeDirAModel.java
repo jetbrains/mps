@@ -16,7 +16,6 @@
 
 package jetbrains.mps.idea.core.actions;
 
-import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.actionSystem.LangDataKeys;
@@ -24,8 +23,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
-import jetbrains.mps.extapi.model.SModelBase;
-import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
@@ -40,19 +37,18 @@ import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.LanguageImportHelper;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
-import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
+
+import java.util.function.Predicate;
 
 /**
  * Created by danilla on 28/10/15.
@@ -67,10 +63,11 @@ public class MakeDirAModel extends NewModelActionBase {
 
   @Override
   public void actionPerformed(AnActionEvent anActionEvent) {
-    EditableSModel model = createModel(anActionEvent);
-    if (model == null) {
-      return;
+    PsiDirectory psiDir = (PsiDirectory) anActionEvent.getData(LangDataKeys.PSI_ELEMENT);
+    if (psiDir == null) {
+      throw new IllegalStateException("Could not find psi directory in the context");
     }
+    VirtualFile targetFile = psiDir.getVirtualFile();
 
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     SRepository repository = ProjectHelper.getProjectRepository(myProject);
@@ -81,58 +78,15 @@ public class MakeDirAModel extends NewModelActionBase {
       new LanguageImportHelper(mpsProject, LANGUAGE_IMPORT_INTERACTION.getData(anActionEvent.getDataContext())) :
       new LanguageImportHelper(mpsProject);
 
-    importHelper.setOnCloseActivity(
-      new Runnable() {
-        @Override
-        public void run() {
-          ModelAccess modelAccess = repository.getModelAccess();
-          boolean noImportHasBeenAdded = new ModelAccessHelper(modelAccess).runReadAction(new Computable<Boolean>() {
-            @Override
-            public Boolean compute() {
-              return ((SModelInternal) model).importedLanguageIds().isEmpty();
-            }
-          });
-          if (noImportHasBeenAdded) {
-            // was cancelled
-            // todo have better way to signal cancellation
-            // fixme DefaultModelRoot currently registers model when created, which is bad
-            // hence, here we have to deregister it in case of cancellation
-            // another solution is to extend api of LanguageImportHelper and have means to choose language
-            // _before_ creating the model
-            modelAccess.runWriteAction(new Runnable() {
-              @Override
-              public void run() {
-                ((SModuleBase) model.getModule()).unregisterModel((SModelBase) model);
-              }
-            });
-            return;
-          }
-
-          // writing file only now, this way VCS dialog doesn't get in the way and make the language chooser disappear
-          modelAccess.runWriteAction(new Runnable() {
-            @Override
-            public void run() {
-              model.save();
-            }
-          });
-
-          ProjectView.getInstance(myProject).refresh();
-        }
-      }
-    ).addUsedLanguage(model);
+    importHelper.addUsedLanguage(() -> createModel(targetFile), sModuleReference -> false);
   }
 
-  private EditableSModel createModel(final AnActionEvent e) {
+  private EditableSModel createModel(final VirtualFile targetFile) {
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     return new ModelAccessHelper(mpsProject.getModelAccess()).executeCommand(() -> {
       EditableSModel model = null;
       try {
         SModelName newModelName = new SModelName(myModelPrefix);
-        PsiDirectory psiDir = (PsiDirectory) e.getData(LangDataKeys.PSI_ELEMENT);
-        if (psiDir == null) {
-          throw new IllegalStateException("Could not find psi directory in the context");
-        }
-        VirtualFile targetFile = psiDir.getVirtualFile();
         DataSourceFactoryFromName dataSourceFactory = createDataSourceFactory(targetFile);
         ModelFactory modelFactory = mpsProject.getComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
         model = (EditableSModel) myModelRoot.createModel(newModelName, mySourceRoot, dataSourceFactory, modelFactory);

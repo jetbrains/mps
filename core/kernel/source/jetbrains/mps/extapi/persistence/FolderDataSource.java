@@ -17,11 +17,11 @@ package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
 import jetbrains.mps.vfs.refresh.FileSystemEvent;
 import jetbrains.mps.vfs.refresh.FileSystemListener;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
@@ -264,6 +264,11 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
     } finally {
       monitor.done();
     }
+  }
+
+  @Override
+  public boolean exists() {
+    return getAvailableStreams().iterator().hasNext();
   }
 
   @NotNull

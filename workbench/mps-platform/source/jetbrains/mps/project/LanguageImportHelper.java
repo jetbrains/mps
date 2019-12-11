@@ -19,6 +19,7 @@ import com.intellij.ide.util.gotoByName.ChooseByNamePopup;
 import com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent.Callback;
 import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.util.Computable;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.smodel.Language;
@@ -43,6 +44,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -121,7 +123,7 @@ public final class LanguageImportHelper {
         devkit.getModuleDescriptor().getExtendedDevkits().add(moduleReference);
       }
       devkit.setChanged();
-    }), getAllDevkitModules(devkit));
+    }), sModuleReference -> getAllDevkitModules(devkit).contains(sModuleReference));
   }
 
   private Set<SModuleReference> getAllDevkitModules(@NotNull DevKit devkit) {
@@ -146,11 +148,20 @@ public final class LanguageImportHelper {
    * @param model affected model, the one to get another language to use
    */
   public void addUsedLanguage(@NotNull final SModel model) {
-    final SModelInternal modelInternal = (SModelInternal) model;
+    addUsedLanguage(() -> model, sModuleReference -> getAllModelLanguagesAndDevkits((SModelInternal) model).contains(sModuleReference));
+  }
+
+  /**
+   * Same as {@link #addUsedLanguage(SModel) addUsedLanguage(SModel)} but also supports case where model is to be created.
+   *
+   * @param modelProvider either provides existing model or creates i on demand
+   */
+  public void addUsedLanguage(@NotNull final Computable<SModel> modelProvider, final Predicate<SModuleReference> modules2Ignore) {
     chooseLanguage((SModuleReference param) -> {
       myProject.getModelAccess().executeCommand(() -> {
         final SModule module = param.resolve(myProject.getRepository());
 
+        final SModelInternal modelInternal = (SModelInternal) modelProvider.compute();
         if (module instanceof Language) {
           modelInternal.addLanguage(MetaAdapterFactory.getLanguage(param));
         } else if (module instanceof DevKit) {
@@ -161,7 +172,7 @@ public final class LanguageImportHelper {
           ((ReloadableModule) module).reload();
         }
       });
-    }, getAllModelLanguagesAndDevkits(modelInternal));
+    }, modules2Ignore);
   }
 
   private Set<SModuleReference> getAllModelLanguagesAndDevkits(SModelInternal modelInternal) {
@@ -203,7 +214,7 @@ public final class LanguageImportHelper {
   }
 
   private void chooseLanguage(final Consumer<SModuleReference> addLanguageAction,
-                              Set<SModuleReference> modules2ignore) {
+                              Predicate<SModuleReference> modules2ignore) {
     final SRepository repo = myProject.getRepository();
     final Reference<Collection<SModuleReference>> projectScope = new Reference<>();
     final Reference<Collection<SModuleReference>> globalScope = new Reference<>();
@@ -212,7 +223,7 @@ public final class LanguageImportHelper {
       ArrayList<SModuleReference> projectLanguagesAndDevkits = new ArrayList<>(20);
       for (SModule m : new ConditionalScope(myProject.getScope(), new ModuleInstanceCondition(Language.class, DevKit.class), null).getModules()) {
         assert m instanceof Language || m instanceof DevKit;
-        if (!modules2ignore.contains(m.getModuleReference())) {
+        if (!modules2ignore.test(m.getModuleReference())) {
           projectLanguagesAndDevkits.add(m.getModuleReference());
         }
       }
@@ -223,7 +234,7 @@ public final class LanguageImportHelper {
       for (SModule m : new ConditionalScope(new GlobalScope(myProject.getRepository()), new ModuleInstanceCondition(Language.class, DevKit.class),
                                             null).getModules()) {
         assert m instanceof Language || m instanceof DevKit;
-        if (!modules2ignore.contains(m.getModuleReference())) {
+        if (!modules2ignore.test(m.getModuleReference())) {
           globalLanguagesAndDevkits.add(m.getModuleReference());
         }
       }
