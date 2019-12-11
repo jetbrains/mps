@@ -77,7 +77,7 @@ public class ErrorReportHelper {
           res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$2l, SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
         } catch (Throwable t) {
           if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error("Exception while invoking suppress() on node " + node, t);
+            LOG.error("Exception while invoking #suppress() on node " + node, t);
           }
         }
         return res;

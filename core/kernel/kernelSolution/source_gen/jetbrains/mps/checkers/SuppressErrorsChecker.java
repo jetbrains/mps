@@ -105,7 +105,6 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
               NodeReportItem replacement = new SuppressedWrapperReportItem(nodeReportItem, activeSupressor);
               Consumer<? super NodeReportItem> postprocessingConsumer = checkingSession.postprocessingConsumer();
               postprocessingConsumer.consume(replacement);
-
             }
           }
         }
