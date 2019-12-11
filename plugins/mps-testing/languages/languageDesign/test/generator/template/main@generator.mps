@@ -481,6 +481,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="ng" index="3oM_SD">
@@ -6071,6 +6075,10 @@
             </node>
           </node>
           <node concept="3clFbF" id="62XJ9UeJ0sN" role="3cqZAp">
+            <node concept="15s5l7" id="5yBbuOfIE9C" role="lGtFl">
+              <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;reference scopes (reference scopes)&quot;;FLAVOUR_MESSAGE=&quot;The reference  myProject (variableDeclaration) is out of search scope&quot;;FLAVOUR_NODE_FEATURE=&quot;variableDeclaration&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/1791178592936928836]&quot;;" />
+              <property role="huDt6" value="The reference  myProject (variableDeclaration) is out of search scope" />
+            </node>
             <node concept="2OqwBi" id="62XJ9UeJ0sO" role="3clFbG">
               <node concept="1PxgMI" id="62XJ9UeJML3" role="2Oq$k0">
                 <node concept="chp4Y" id="62XJ9UeJMOG" role="3oSUPX">
