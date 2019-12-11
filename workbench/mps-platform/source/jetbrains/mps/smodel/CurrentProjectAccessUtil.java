@@ -63,7 +63,7 @@ public final class CurrentProjectAccessUtil {
   }
 
   @Nullable
-  public static MPSProject getMPSProjectFromUI() {
+  /*package*/ static MPSProject getMPSProjectFromUI() {
     Project ideaProject = getProjectFromUI();
     return ideaProject != null ? ProjectHelper.fromIdeaProject(ideaProject) : null;
   }
