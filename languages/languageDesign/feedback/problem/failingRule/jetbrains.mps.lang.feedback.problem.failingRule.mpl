@@ -23,7 +23,9 @@
           <classes generated="true" path="${module}/generator/classes_gen" />
         </facet>
       </facets>
-      <external-templates />
+      <external-templates>
+        <generator generatorUID="3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)" />
+      </external-templates>
       <dependencies>
         <dependency reexport="false">1158b595-143b-40eb-8ac0-b10007fa8d7f(jetbrains.mps.lang.constraints.rules#01)</dependency>
         <dependency reexport="false">3f67a24c-17dc-4d34-9ecd-d2790f764ce0(jetbrains.mps.lang.feedback.problem#01)</dependency>
@@ -68,6 +70,7 @@
         <module reference="841e41b5-5fea-4054-934b-e3646d3aff45(jetbrains.mps.lang.feedback.problem.failingRule#01)" version="0" />
         <module reference="3f98f4e2-decf-4e97-bf80-9109e8b759ab(jetbrains.mps.lang.feedback.problem.rt)" version="0" />
         <module reference="0a98f3e2-decf-4e97-bf80-9109eccc59bb(jetbrains.mps.lang.feedback.problem.rules)" version="0" />
+        <module reference="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" version="0" />
         <module reference="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" version="0" />
       </dependencyVersions>
       <mapping-priorities />
