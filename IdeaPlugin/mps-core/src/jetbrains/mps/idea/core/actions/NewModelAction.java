@@ -18,6 +18,7 @@ package jetbrains.mps.idea.core.actions;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.LangDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.psi.PsiDirectory;
 import jetbrains.mps.extapi.persistence.FileDataSource;
@@ -47,7 +48,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -102,10 +102,8 @@ public class NewModelAction extends NewModelActionBase {
               ModelFactory modelFactory = ProjectHelper.fromIdeaProject(myProject).getComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
               SModelName sModelName = new SModelName(modelName);
               model = (EditableSModel) myModelRoot.createModel(sModelName, mySourceRoot, createDataSourceFactory(), modelFactory);
-              model.setChanged(true);
-              model.save();
             } catch (ModelCannotBeCreatedException e) {
-              LOG.error("Can't create per-root model " + modelName + " under " + path, e);
+              LOG.error("Can't create model " + modelName + " under " + path, e);
               return null;
             }
 
@@ -113,21 +111,21 @@ public class NewModelAction extends NewModelActionBase {
             // model.getSModel() ?
             template.preConfigure(model);
 
-            //Hack for update ProjectView
-            model.addModelListener(new SModelListenerBase() {
-
-              @Override
-              public void modelSaved(SModel sModel) {
-                ProjectView.getInstance(myProject).refresh();
-                sModel.removeModelListener(this); //need to refresh once
-              }
-            });
+            // likely, model.isChanged == true, but just in case it's not, force save
+            // I'm not even sure it's the right moment to save, why not after all the imports has been fixed/auto-added, but
+            // this is the way it was prior to 585b7169 I'm about to revert.
+            model.setChanged(true);
+            model.save();
 
             final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
             if (mpsProject != null) {
               mpsProject.getComponent(ModelsAutoImportsManager.class).performImports(myModelRoot.getModule(), model);
             }
             new MissingDependenciesFixer(model).fixModuleDependencies();
+
+            model.save(); // just in case performImports or fixModuleDependencies touched the model and didn't save it - fixImports, below
+            // may reload module (when/if project libraries change), and AbstractModule.doUpdateModelsSet doesn't reload models in changed state.
+
             if (new ModelImports(model).getUsedLanguages().isEmpty()) {
               return model;
             }
@@ -148,13 +146,9 @@ public class NewModelAction extends NewModelActionBase {
           close(OK_EXIT_CODE);
         }
 
-        //Hack for update ProjectView
-        repository.getModelAccess().runWriteAction(new Runnable() {
-          @Override
-          public void run() {
-            ((EditableSModel) newModel).save();
-          }
-        });
+        // Not sure there's a need to do it explicitly, just a better alternative to postponed model.save and save listener to do the same
+        // (see fbe9056fa1184378a2256f75a6ffd6f04f01cf88)
+        ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(myProject).refresh());
       }
 
       private boolean isModelNameValid(final ModuleRepositoryFacade repositoryFacade, final String modelName) {
