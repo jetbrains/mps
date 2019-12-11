@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.library;
 
 import com.intellij.ide.util.ChooseElementsDialog;
@@ -167,6 +166,14 @@ public class ModuleLibraryType extends LibraryType<DummyLibraryProperties> {
     return new MyLibraryRootsComponentDescriptor();
   }
 
+  public static boolean isMPSModuleLibrary(Library l) {
+    return isModuleLibrary(l);
+  }
+
+  /**
+   * @deprecated use {@link #isMPSModuleLibrary(Library)}, with name that reflects intention better
+   */
+  @Deprecated
   public static boolean isModuleLibrary(Library l) {
     if (l instanceof LibraryEx) {
       PersistentLibraryKind<?> kind = ((LibraryEx) l).getKind();

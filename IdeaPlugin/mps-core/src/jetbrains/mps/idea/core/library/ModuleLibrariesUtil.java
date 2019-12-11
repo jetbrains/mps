@@ -41,10 +41,12 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ModuleLibrariesUtil {
@@ -68,7 +70,7 @@ public class ModuleLibrariesUtil {
   }
 
   private static boolean hasModule(Library library, SModule module) {
-    if (!isSuitableModule(module) || !ModuleLibraryType.isModuleLibrary(library)) {
+    if (!isSuitableModule(module) || !ModuleLibraryType.isMPSModuleLibrary(library)) {
       return false;
     }
     Solution solution = (Solution) module;
@@ -79,17 +81,26 @@ public class ModuleLibrariesUtil {
     return (module instanceof Solution) && !(module instanceof SolutionIdea) && !(module instanceof StubSolutionIdea);
   }
 
+  // grabs read access
   @NotNull
   public static Set<SModuleReference> getModules(SRepository repository, final Library library) {
-    if (!ModuleLibraryType.isModuleLibrary(library)) {
+    if (!ModuleLibraryType.isMPSModuleLibrary(library)) {
       return Collections.emptySet();
     }
-    final Set<SModuleReference> modules = new HashSet<SModuleReference>();
-    final Set<String> moduleXmlPaths = new HashSet<String>();
-    for (VirtualFile file : library.getFiles(ModuleXmlRootDetector.MPS_MODULE_XML)) {
-      moduleXmlPaths.add(canonical(file));
+    return extractMPSModulesFromTheirIDEALibraryCounterpart(repository, Collections.singleton(library));
+  }
+
+  // assumes ModuleLibraryType.isMPSModuleLibrary() == true for every library
+  private static Set<SModuleReference> extractMPSModulesFromTheirIDEALibraryCounterpart(SRepository repository, Collection<Library> libraries) {
+    final Set<String> moduleXmlPaths = new HashSet<>();
+    for (Library library : libraries) {
+      assert ModuleLibraryType.isMPSModuleLibrary(library);
+      for (VirtualFile file : library.getFiles(ModuleXmlRootDetector.MPS_MODULE_XML)) {
+        moduleXmlPaths.add(canonical(file));
+      }
     }
 
+    final Set<SModuleReference> modules = new HashSet<>();
     repository.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
@@ -110,14 +121,19 @@ public class ModuleLibrariesUtil {
     return modules;
   }
 
+  // doesn't need model read itself but grabs one down the road
+  // XXX check SolutionIdea.calculateLibraryDependencies, that uses slightly different way to iterate roots of ModuleRootModel, can't I merge the two?
   public static Set<SModuleReference> getModules(SRepository repository, OrderEntry... roots) {
-    Set<SModuleReference> modules = new HashSet<SModuleReference>();
+    List<Library> libs = new ArrayList<>();
     for (OrderEntry entry : roots) {
       if (entry instanceof LibraryOrderEntry) {
-        modules.addAll(ModuleLibrariesUtil.getModules(repository, ((LibraryOrderEntry) entry).getLibrary()));
+        final Library library = ((LibraryOrderEntry) entry).getLibrary();
+        if (ModuleLibraryType.isMPSModuleLibrary(library)) {
+          libs.add(library);
+        }
       }
     }
-    return modules;
+    return ModuleLibrariesUtil.extractMPSModulesFromTheirIDEALibraryCounterpart(repository, libs);
   }
 
   public static Library getOrCreateAutoLibrary(AbstractModule usedModule, Project project, LibrariesContainer container) {

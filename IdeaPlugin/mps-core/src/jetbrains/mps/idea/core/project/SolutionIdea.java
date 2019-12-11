@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -222,7 +222,7 @@ public class SolutionIdea extends Solution {
     dependencies.addAll(calculateLibraryDependencies(ModuleRootManager.getInstance(myModule).orderEntries(), true));
   }
 
-  public List<SDependency> calculateLibraryDependencies(OrderEnumerator orderEnumerator, final boolean includeStubs) {
+  private List<SDependency> calculateLibraryDependencies(OrderEnumerator orderEnumerator, final boolean includeStubs) {
     final Map<SModule, Boolean> modules = new HashMap<SModule, Boolean>();
     orderEnumerator.forEach(new Processor<OrderEntry>() {
       public boolean process(OrderEntry oe) {

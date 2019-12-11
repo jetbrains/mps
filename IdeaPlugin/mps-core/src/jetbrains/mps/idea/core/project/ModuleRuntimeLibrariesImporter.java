@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.core.project;
 
 import com.intellij.facet.impl.ui.FacetEditorContextBase;
@@ -74,20 +73,28 @@ public abstract class ModuleRuntimeLibrariesImporter {
     new UsedLanguagesImporter(context, addedModules).addMissingLibraries();
   }
 
+  // would grab model write for a project
+  // generally, in most cases we are already inside write (IdeaModuleMPSSupport.fixImports() <-- new model action and model properties are inside command,
+  //    only use language is not.
   public static void importForUsedLanguages(Module ideaModule, Collection<SModuleReference> addedModules, ModifiableRootModel modifiableModel) {
     new UsedLanguagesImporter(ideaModule, addedModules, modifiableModel).addMissingLibraries();
   }
 
+  // would grab model write for a project
   public static void importForUsedModules(Module ideaModule, Collection<SModuleReference> addedModules, ModifiableRootModel modifiableModel) {
     new UsedModulesImporter(ideaModule, addedModules, modifiableModel).addMissingLibraries();
   }
 
-  public void addMissingLibraries() {
+  /*package*/ void addMissingLibraries() {
     final SRepository projectRepository = ProjectHelper.getProjectRepository(myProject);
-    projectRepository.getModelAccess().runReadAction(() -> {
+    // getOrCreateAutoLibrary(), below, triggers BaseLibImporter$MyListener.afterLibraryAdded(), which needs write access to register a module
+    // FIXME need to sort this out to avoid unnecessary locks, hidden from outside world
+    projectRepository.getModelAccess().runWriteAction(() -> {
       Set<SModuleReference> alreadyImported = ModuleLibrariesUtil.getModules(projectRepository, myModifiableRootModel.getOrderEntries());
 
       Collection<Library> projectLibs2Add = new HashSet<Library>();
+      // FIXME the code doesn't look right for added used languages scenario, why don't we stick to SLanguage.getLanguageRuntimes()
+      //       and stop bother with modules and their transitive dependencies (see UsedLanguagesImporter.collectRuntimeModules(), below)
       for (SModule usedModule : collectRuntimeModules(projectRepository, myAddedModules)) {
         if (BootstrapLanguages.jdkRef().equals(usedModule.getModuleReference())) {
           continue;
