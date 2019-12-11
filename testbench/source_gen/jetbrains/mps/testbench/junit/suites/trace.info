@@ -760,21 +760,25 @@
   </root>
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9170334376387816357">
     <file name="AuditConstraints.java">
-      <node id="9170334376387816407" at="26,43,27,18" concept="14" />
-      <node id="250369351435705557" at="31,34,32,297" concept="8" />
-      <node id="3567142084943155977" at="32,297,33,82" concept="3" />
-      <node id="2966246705324522915" at="23,0,25,0" concept="12" trace="ourStats" />
-      <node id="9170334376387816361" at="26,0,29,0" concept="1" trace="AuditConstraints#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="9170334376387816369" at="30,0,35,0" concept="7" trace="checkConstraints#()V" />
-      <scope id="9170334376387816365" at="26,43,27,18" />
-      <scope id="9170334376387816371" at="31,34,33,82">
-        <var name="checkers" id="250369351435705560" />
-      </scope>
-      <scope id="9170334376387816361" at="26,0,29,0">
+      <node id="9170334376387816407" at="28,43,29,18" concept="14" />
+      <node id="6388125092642195872" at="33,34,34,47" concept="8" />
+      <node id="6388125092642198894" at="34,47,35,46" concept="8" />
+      <node id="250369351435705557" at="35,46,36,297" concept="8" />
+      <node id="3567142084943155977" at="36,297,37,82" concept="3" />
+      <node id="2966246705324522915" at="25,0,27,0" concept="12" trace="ourStats" />
+      <node id="9170334376387816361" at="28,0,31,0" concept="1" trace="AuditConstraints#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="9170334376387816369" at="32,0,39,0" concept="7" trace="checkConstraints#()V" />
+      <scope id="9170334376387816365" at="28,43,29,18" />
+      <scope id="9170334376387816361" at="28,0,31,0">
         <var name="module" id="9170334376387816363" />
       </scope>
-      <scope id="9170334376387816369" at="30,0,35,0" />
-      <unit id="9170334376387816357" at="21,0,36,0" name="jetbrains.mps.testbench.junit.suites.AuditConstraints" />
+      <scope id="9170334376387816371" at="33,34,37,82">
+        <var name="checkers" id="250369351435705560" />
+        <var name="environment" id="6388125092642195873" />
+        <var name="host" id="6388125092642198895" />
+      </scope>
+      <scope id="9170334376387816369" at="32,0,39,0" />
+      <unit id="9170334376387816357" at="23,0,40,0" name="jetbrains.mps.testbench.junit.suites.AuditConstraints" />
     </file>
   </root>
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9170334376387870447">

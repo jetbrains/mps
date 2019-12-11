@@ -1416,6 +1416,33 @@
         <ref role="2AI5Lk" to="rjhg:~Test" resolve="Test" />
       </node>
       <node concept="3clFbS" id="7X3$Ctw9yIN" role="3clF47">
+        <node concept="3cpWs8" id="5yBbuOfGCAw" role="3cqZAp">
+          <node concept="3cpWsn" id="5yBbuOfGCAx" role="3cpWs9">
+            <property role="TrG5h" value="environment" />
+            <node concept="3uibUv" id="5yBbuOfGCx1" role="1tU5fm">
+              <ref role="3uigEE" to="79ha:HKKzfMjqRV" resolve="Environment" />
+            </node>
+            <node concept="1rXfSq" id="5yBbuOfGCAy" role="33vP2m">
+              <ref role="37wK5l" node="5lg0Ljo_pKh" resolve="getEnvironment" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="5yBbuOfGDlI" role="3cqZAp">
+          <node concept="3cpWsn" id="5yBbuOfGDlJ" role="3cpWs9">
+            <property role="TrG5h" value="host" />
+            <node concept="3uibUv" id="5yBbuOfGDi2" role="1tU5fm">
+              <ref role="3uigEE" to="4o98:~Platform" resolve="Platform" />
+            </node>
+            <node concept="2OqwBi" id="5yBbuOfGDlK" role="33vP2m">
+              <node concept="37vLTw" id="5yBbuOfGDlL" role="2Oq$k0">
+                <ref role="3cqZAo" node="5yBbuOfGCAx" resolve="environment" />
+              </node>
+              <node concept="liA8E" id="5yBbuOfGDlM" role="2OqNvi">
+                <ref role="37wK5l" to="79ha:8Pnvxgloc_" resolve="getPlatform" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="dTvp$YY5Nl" role="3cqZAp">
           <node concept="3cpWsn" id="dTvp$YY5No" role="3cpWs9">
             <property role="TrG5h" value="checkers" />
@@ -1444,13 +1471,17 @@
                 <node concept="2ShNRf" id="34euvBSHAJv" role="HW$Y0">
                   <node concept="1pGfFk" id="34euvBSHAJw" role="2ShVmc">
                     <ref role="37wK5l" to="k2t0:~ConstraintsChecker.&lt;init&gt;(jetbrains.mps.components.ComponentHost)" resolve="ConstraintsChecker" />
-                    <node concept="10Nm6u" id="3ost_8YMRFk" role="37wK5m" />
+                    <node concept="37vLTw" id="5yBbuOfGDC1" role="37wK5m">
+                      <ref role="3cqZAo" node="5yBbuOfGDlJ" resolve="host" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2ShNRf" id="34euvBSHAJx" role="HW$Y0">
                   <node concept="1pGfFk" id="34euvBSHAJy" role="2ShVmc">
                     <ref role="37wK5l" to="k2t0:~RefScopeChecker.&lt;init&gt;(jetbrains.mps.components.ComponentHost)" resolve="RefScopeChecker" />
-                    <node concept="10Nm6u" id="3ost_8YMS86" role="37wK5m" />
+                    <node concept="37vLTw" id="5yBbuOfGEtT" role="37wK5m">
+                      <ref role="3cqZAo" node="5yBbuOfGDlJ" resolve="host" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2ShNRf" id="34euvBSHAJz" role="HW$Y0">
