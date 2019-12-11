@@ -16,6 +16,7 @@
     <import index="bea4" ref="r:b9ce58c5-a751-4b14-8753-25d90bf90204(jetbrains.mps.lang.feedback.problem.scopes.feedback)" />
     <import index="tpcg" ref="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="6xgk" ref="r:6e9ad488-5df2-49e4-8c01-8a7f3812adf7(jetbrains.mps.lang.scopes.runtime)" />
     <import index="lk2x" ref="r:bc41db58-2589-400b-8121-4dd19c77316b(jetbrains.mps.lang.feedback.problem.scopes.structure)" implicit="true" />
   </imports>
   <registry>
@@ -202,7 +203,7 @@
                         <node concept="2OqwBi" id="1oq9tin14ws" role="3clFbG">
                           <node concept="2OqwBi" id="1oq9tin14wt" role="2Oq$k0">
                             <node concept="37vLTw" id="2e3ANUBo2_k" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2e3ANUBo114" />
+                              <ref role="3cqZAo" node="2e3ANUBo114" resolve="it" />
                             </node>
                             <node concept="3TrcHB" id="1oq9tin14wx" role="2OqNvi">
                               <ref role="3TsBF5" to="tpce:3Ftr4R6BH8$" resolve="metaClass" />
