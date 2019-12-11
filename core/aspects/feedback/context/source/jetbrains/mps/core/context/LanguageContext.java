@@ -18,11 +18,10 @@ package jetbrains.mps.core.context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
+// TODO
 public interface LanguageContext extends Context {
   /**
    * it is not the language under the glass,
-   * it is the deployed language blablabla
-   * @return
    */
   @NotNull SLanguage getLanguage();
 }
