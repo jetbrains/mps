@@ -26,6 +26,7 @@ import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleListenerBase;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -200,24 +202,59 @@ public abstract class ModelRootBase implements ModelRoot {
     Set<SModelId> loaded = new HashSet<>();
     Iterable<SModel> allModels = loadModels();
     for (SModel model : allModels) {
+      if (loaded.contains(model.getModelId())) {
+        LOG.warn(String.format("loadModels() returned model `%s' twice; ignore second instance", model));
+        continue;
+      }
+      loaded.add(model.getModelId());
       SModel oldModel = module.getModel(model.getModelId());
-      if (oldModel == model) {
-        //do nothing
-      } else if (oldModel != null && model.getModelRoot() != null && oldModel.getModelRoot() != model.getModelRoot()) {
+      // in most scenarios, we are reloading exactly the same set of models we already have loaded in the module.
+      if (oldModel != null) {
         // XXX not sure comment on loadModels() to return existing model, if possible, is reasonable. Perhaps, shall strive to have its
         //     semantics clear 'load'/extract, rather than vague "try to re-use". OTOH, what about scenarios like class stubs from r/o jars, why bother
         //     reloading them? Still, the logic not to reload could be kept separate from 'extract' one.
-        LOG.warn(String.format("Trying to load model `%s' which is already loaded by another model root", model));
-      } else if (loaded.contains(model.getModelId())) {
-        LOG.warn(String.format("loadModels() returned model `%s' twice", model));
-      } else {
-        if (oldModel != null) {
-          LOG.warn(String.format("loadModels() loaded model `%s' which id is already present.", model));
-          unregisterModel(oldModel);
+        if (model.getModelRoot() != null) {
+          if (oldModel.getModelRoot() != model.getModelRoot()) {
+            LOG.warn(String.format("Trying to load model `%s' which is already loaded by another model root; new instance ignored", model));
+          } else if (model.getModelRoot() != ModelRootBase.this) {
+            LOG.warn(String.format("Trying to re-use model `%s' from another model root; ignored", model));
+          } else {
+            // case oldModel == model is here as well, no need to check explicitly
+            // we are going to re-use oldModel instance just need to make sure listeners get notified about model reloaded
+            oldModel.unload();
+          }
+          model.unload(); // don't need to keep anything in memory for the instance I don't care about (doesn't hurt either when it's == oldModel).
+          continue;
         }
+        // inv: oldModel.getModelRoot() != null (presumably, ==this); model.getModelRoot() == null; oldModel.modelID == model.modelID
+        if (oldModel.getModelRoot() != this) {
+          LOG.warn(String.format("Try loaded model `%s' which has been already contributed by another model root", model));
+          unregisterModel(oldModel);
+          registerModel(model);
+          continue;
+        }
+        // oldModel came from the same root. Need to replace its data, don't want to unregister/register as it breaks listener, editor and other clients
+        // that don't tolerate models come and go.
+        final DataSource oldDS = oldModel.getSource();
+        final DataSource newDS = model.getSource();
+        if (oldDS.getClass() == newDS.getClass() && oldDS.getLocation().equals(newDS.getLocation()) && Objects.equals(oldDS.getType(), newDS.getType())) {
+          oldModel.unload(); // tell re-used instance to throw away any nodes. FIXME there are still at least 2 issues with that:
+          // FIXME (1) model.unload() doesn't necessarily do anything, model impl is not obliged to do anything about that, we'd better send out explicit event
+          //       (2) model attributes are not part of unloaded SModelData (rather SModelHeader if there's one); and these could get changed as well
+          //       Perhaps, need something like model.replaceWith(openapi.SModel) to address this in a generic fashion (so that model impl could extract
+          //       what it needs from a newly loaded model instance, e.g. attributes
+          model.unload(); // discard instance I'm not gonna use
+          continue;
+        }
+        // same model but different datasource; perhaps, could do smth like SModelBase.replaceModelAndFireEvent, but stick to re-register for now
+        // as I don't expect this to be common scenario (pure assumption)
+        LOG.debug(String.format("loadModels(`%s') discovered an identical model with data source changed", model));
+        unregisterModel(oldModel);
+        registerModel(model);
+      } else {
+        // oldModel == null; just go ahead and register a newly discovered one
         registerModel(model);
       }
-      loaded.add(model.getModelId());
     }
     Collection<SModel> models = new ArrayList<>(getModels());
     for (SModel model : models) {
