@@ -15,20 +15,28 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, "jetbrains.mps.lang.migration.structure.PureMigrationScript");
 
   public static final SMethod<Integer> fromVersion_id4uVwhQyFcnl = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("fromVersion").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4uVwhQyFcnl").build();
   public static final SMethod<Boolean> isVersionSet_id4uVwhQyFpOe = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVersionSet").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4uVwhQyFpOe").build();
+  public static final SMethod<String> getDescription_id1RqXnPV415t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescription").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1RqXnPV415t").build();
   public static final SMethod<Iterable<SNode>> getExecuteAfter_id2bWK$jI6RRp = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExecuteAfter").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2bWK$jI6RRp").build();
   public static final SMethod<Iterable<SNode>> getRequiredData_id7s$_UJMVosT = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequiredData").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7s$_UJMVosT").build();
   public static final SMethod<Iterable<SNode>> getRequiredAnnotationData_id5TUCQr2Pzjk = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getRequiredAnnotationData").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5TUCQr2Pzjk").build();
@@ -36,7 +44,7 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getProducedAnnotationData_id5TUCQr2CN0$ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getProducedAnnotationData").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5TUCQr2CN0$").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, getPresentation_idhEwIMiw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(fromVersion_id4uVwhQyFcnl, isVersionSet_id4uVwhQyFpOe, getDescription_id1RqXnPV415t, getExecuteAfter_id2bWK$jI6RRp, getRequiredData_id7s$_UJMVosT, getRequiredAnnotationData_id5TUCQr2Pzjk, getProducedData_id7s$_UJMVDH8, getProducedAnnotationData_id5TUCQr2CN0$, getPresentation_idhEwIMiw);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -46,6 +54,35 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   }
   /*package*/ static boolean isVersionSet_id4uVwhQyFpOe(@NotNull SNode __thisNode__) {
     return __thisNode__.getProperty(PROPS.fromVersion$jLy0) != null;
+  }
+  /*package*/ static String getDescription_id1RqXnPV415t(@NotNull SNode __thisNode__) {
+    if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.description$9$QN))) {
+      return SPropertyOperations.getString(__thisNode__, PROPS.description$9$QN);
+    }
+    StringBuilder result = new StringBuilder();
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).count() == 1) {
+      result.append("Addition to: ").append(IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).first(), LINKS.target$s$xW)));
+      return result.toString();
+    }
+    result.append("Automatic migration");
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr)).all(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.MoveNodeMigrationPart$gB);
+      }
+    })) {
+      List<SNode> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr)).select(new ISelector<SNode, SNode>() {
+        public SNode select(SNode it) {
+          return AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.toNode$JVO1)).resolve(SNodeOperations.getModel(it).getRepository());
+        }
+      }).toListSequence();
+      if (ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first(), CONCEPTS.INamedConcept$nV)) {
+        result.append(": move node `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+      }
+      if (ListSequence.fromList(movedNodes).count() > 1) {
+        result.append(" and ").append(ListSequence.fromList(movedNodes).count() - 1).append(" others");
+      }
+    }
+    return result.toString();
   }
   /*package*/ static Iterable<SNode> getExecuteAfter_id2bWK$jI6RRp(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.executeAfter$w13r);
@@ -86,16 +123,18 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
       case 1:
         return (T) ((Boolean) isVersionSet_id4uVwhQyFpOe(node));
       case 2:
-        return (T) ((Iterable<SNode>) getExecuteAfter_id2bWK$jI6RRp(node));
+        return (T) ((String) getDescription_id1RqXnPV415t(node));
       case 3:
-        return (T) ((Iterable<SNode>) getRequiredData_id7s$_UJMVosT(node));
+        return (T) ((Iterable<SNode>) getExecuteAfter_id2bWK$jI6RRp(node));
       case 4:
-        return (T) ((Iterable<SNode>) getRequiredAnnotationData_id5TUCQr2Pzjk(node));
+        return (T) ((Iterable<SNode>) getRequiredData_id7s$_UJMVosT(node));
       case 5:
-        return (T) ((SNode) getProducedData_id7s$_UJMVDH8(node));
+        return (T) ((Iterable<SNode>) getRequiredAnnotationData_id5TUCQr2Pzjk(node));
       case 6:
-        return (T) ((SNode) getProducedAnnotationData_id5TUCQr2CN0$(node));
+        return (T) ((SNode) getProducedData_id7s$_UJMVDH8(node));
       case 7:
+        return (T) ((SNode) getProducedAnnotationData_id5TUCQr2CN0$(node));
+      case 8:
         return (T) ((String) getPresentation_idhEwIMiw(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -125,12 +164,26 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
+  }
 
   private static final class PROPS {
     /*package*/ static final SProperty fromVersion$jLy0 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836cabcL, "fromVersion");
+    /*package*/ static final SProperty description$9$QN = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x1ddaf57d7b0038e8L, "description");
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink part$x6zr = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
+    /*package*/ static final SReferenceLink target$s$xW = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
+    /*package*/ static final SContainmentLink toNode$JVO1 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
     /*package*/ static final SContainmentLink executeAfter$w13r = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x47bb811da2d68dd0L, "executeAfter");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept IncludeMigrationPart$zz = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, "jetbrains.mps.lang.migration.structure.IncludeMigrationPart");
+    /*package*/ static final SConcept MoveNodeMigrationPart$gB = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, "jetbrains.mps.lang.migration.structure.MoveNodeMigrationPart");
+    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }
