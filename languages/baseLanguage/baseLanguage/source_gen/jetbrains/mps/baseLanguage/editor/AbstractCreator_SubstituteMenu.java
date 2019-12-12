@@ -43,6 +43,7 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
@@ -277,7 +278,7 @@ public class AbstractCreator_SubstituteMenu extends SubstituteMenuBase {
         ListSequence.fromList(types).addElement(type);
       }
       for (SConcept typeConcept : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.Type$IG, _context.getModel()))) {
-        if (!(typeConcept.isAbstract())) {
+        if (!(typeConcept.isAbstract()) && (boolean) Type__BehaviorDescriptor.isValueType_id4bFkYVCcmm2.invoke(SNodeOperations.asSConcept(typeConcept))) {
           ListSequence.fromList(types).addElement(SNodeFactoryOperations.createNewNode(typeConcept, null));
         }
       }
