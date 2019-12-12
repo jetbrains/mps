@@ -2804,7 +2804,7 @@
     </node>
     <node concept="3tYpXE" id="6fcdXHohrve" role="jymVt">
       <property role="TrG5h" value="description" />
-      <property role="3tYpXF" value="quotation model and node id" />
+      <property role="3tYpXF" value="Encapsulate model and node id" />
       <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
       <node concept="3Tm1VV" id="6fcdXHohrvg" role="1B3o_S" />
       <node concept="17QB3L" id="6fcdXHohrvh" role="1tU5fm" />
