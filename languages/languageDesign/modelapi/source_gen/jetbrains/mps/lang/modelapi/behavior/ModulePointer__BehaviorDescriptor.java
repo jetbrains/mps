@@ -44,7 +44,14 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SModuleReference toModuleReference_id1Bs_61$mqDd(@NotNull SNode __thisNode__) {
     PersistenceFacade pf = PersistenceFacade.getInstance();
-    return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$goi)), SPropertyOperations.getString(__thisNode__, PROPS.moduleName$ZUIo));
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$goi))) {
+      return null;
+    }
+    try {
+      return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$goi)), SPropertyOperations.getString(__thisNode__, PROPS.moduleName$ZUIo));
+    } catch (IllegalArgumentException e) {
+      return null;
+    }
   }
 
   /*package*/ ModulePointer__BehaviorDescriptor() {
@@ -93,6 +100,9 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
   }
 
   private static final class CONCEPTS {
