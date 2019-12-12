@@ -7,12 +7,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -24,6 +25,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/9040118078822290408", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class ConceptEditorOpenHelper {
   public static SNode getBaseNode(SNode node) {
+    if (node == null) {
+      return null;
+    }
     SNode baseNode = null;
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN)) {
       return null;
@@ -32,10 +36,10 @@ public class ConceptEditorOpenHelper {
       baseNode = ((SNode) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IConceptAspect$9g), CONCEPTS.IConceptAspect$9g, SMethodTrimmedId.create("getBaseConcept", null, "2hxg_BDjKM8")));
     }
     if (baseNode == null) {
-      baseNode = getBaseNode2(node);
-    }
-    if (baseNode == null) {
-      return null;
+      baseNode = findBaseNodeMultiTab(node);
+      if (baseNode == null || !(SModuleOperations.isAspect(SNodeOperations.getModel(baseNode), "structure")) || !(SModelStereotype.isGeneratorModel(SNodeOperations.getModel(node)))) {
+        return null;
+      }
     }
     // We should be sure that node and base node are inside the same module. 
     // Otherwise, tabbed editor for base node will be opened, but there will be no tab for "node" 
@@ -53,16 +57,6 @@ public class ConceptEditorOpenHelper {
     } else {
       return (baseModule == mainModule && canOpen(baseNode) ? baseNode : null);
     }
-  }
-  private static SNode getBaseNode2(SNode node) {
-    if (node == null) {
-      return null;
-    }
-    SNode baseNode = findBaseNodeMultiTab(node);
-    if ((baseNode == null) || SModelUtil.getDeclaringLanguage(baseNode) == null || (!(SModelStereotype.isGeneratorModel(SNodeOperations.getModel(node))))) {
-      return null;
-    }
-    return baseNode;
   }
   private static boolean canOpen(SNode node) {
     if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$UN))) {
