@@ -21,6 +21,10 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.IdeBorderFactory;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.scope.ConditionalScope;
+import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.util.AndCondition;
+import jetbrains.mps.util.NotCondition;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import jetbrains.mps.workbench.choose.ModelScopeIterable;
 import jetbrains.mps.workbench.choose.ModelsPresentation;
@@ -28,8 +32,10 @@ import jetbrains.mps.workbench.goTo.ui.ChooseByNamePanel;
 import jetbrains.mps.workbench.goTo.ui.MpsPopupFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SearchScope;
+import org.jetbrains.mps.util.Condition;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -106,7 +112,11 @@ public class GenPlanPickPanel extends JPanel {
       setTitle("Pick model with a generation plan");
       setModal(true);
       ChooseByNameData<SModelReference> data = new ChooseByNameData<>(new ModelsPresentation(mpsProject.getRepository()));
-      data.derivePrompts("model").setCheckBoxName(null).setScope(new ModelScopeIterable(scope, mpsProject.getRepository()), null);
+      // there's DeriveGenPlanDialog with the same filter
+      Condition<SModel> isStub = SModelStereotype::isStubModel;
+      Condition<SModel> isDescriptor = SModelStereotype::isDescriptorModel;
+      ConditionalScope s = new ConditionalScope(scope, null, new AndCondition<>(NotCondition.negate(isStub), NotCondition.negate(isDescriptor)));
+      data.derivePrompts("model").setCheckBoxName(null).setScope(new ModelScopeIterable(s, mpsProject.getRepository()), null);
       myChooser = MpsPopupFactory.createPanelForPackage(mpsProject.getProject(), data, false);
       myResetAction = new DialogWrapperExitAction("Unset plan", UNSET_EXIT_CODE);
     }
