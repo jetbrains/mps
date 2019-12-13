@@ -427,7 +427,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       } else if (myModule instanceof DevKit) {
         // XXX
         myPlanPickScope = new DevkitVisibleScope(myModuleRepository, (DevKit) myModule);
-        myPlanPanel = new GenPlanPickPanel(myMPSProject, myPlanPickScope, "Generation plan for models using this devkit");
+        myPlanPanel = new GenPlanPickPanel((MPSProject) myMPSProject, myPlanPickScope, "Generation plan for models using this devkit");
         myPlanPanel.setPlanModel(((DevkitDescriptor) myModuleDescriptor).getAssociatedGenPlan());
         return myPlanPanel;
       } else if (myModule instanceof Generator && myModuleDescriptor instanceof GeneratorDescriptor) {
