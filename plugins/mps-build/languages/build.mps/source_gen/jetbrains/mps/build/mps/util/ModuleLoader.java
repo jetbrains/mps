@@ -85,6 +85,10 @@ public final class ModuleLoader {
     return this;
   }
 
+  public VisibleModules getVisibleModules() {
+    return myVisibleModules;
+  }
+
   private void reportError(String msg, SNode node) {
     myMsgHandler.handle(Message.createMessage(MessageKind.ERROR, getClass().getName(), msg, SNodeOperations.getPointer(node)));
   }

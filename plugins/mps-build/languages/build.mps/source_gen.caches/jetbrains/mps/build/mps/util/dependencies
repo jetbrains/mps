@@ -114,6 +114,8 @@
     <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRoot" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRootKinds" />
     <classNode dependClassName="jetbrains.mps.generator.GenerationFacade" />
+    <classNode dependClassName="jetbrains.mps.generator.impl.GenPlanTranslator" />
+    <classNode dependClassName="jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />

@@ -23,6 +23,10 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.generator.impl.GenPlanTranslator;
+import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.Set;
 import jetbrains.mps.smodel.BootstrapLanguages;
@@ -54,8 +58,6 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.smodel.MPSModuleOwner;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.smodel.ModelImports;
 import org.jetbrains.annotations.Nullable;
@@ -270,7 +272,7 @@ public final class ModuleChecker {
     }
 
     for (SModuleReference module : descriptor.getExportedLanguages()) {
-      final SNode resolved = SNodeOperations.as(myVisibleModules.resolve(module), CONCEPTS.BuildMps_Language$re);
+      final SNode resolved = myVisibleModules.resolveLanguage(module);
       if (resolved == null) {
         report("cannot find exported languages in dependencies: " + module.getModuleName());
         continue;
@@ -328,6 +330,47 @@ public final class ModuleChecker {
           ListSequence.fromList(SLinkOperations.getChildren(devKit, LINKS.exports$90Bp)).addElement(ul);
         } else {
           ListSequence.fromList(prevExp).removeElement(ul);
+        }
+      }
+    }
+
+    if (descriptor.getAssociatedGenPlan() != null) {
+      // there's a check_ModulesImport that makes sure modules (languages and generators) referenced from an associated plan are among visible modules 
+      // here, we just record these into DevKit's exports so that other build projects, dependant from the one with devkit, add explicit dependencies to plan's required modules 
+      // FIXME I feel BuildMps_DevKit shall be no different from other BuildMps_Module (_AbstractModule and _Module merged into one concept) and I shall use _Module.dependencies 
+      //        to keep information about GP's dependencies, instead of 'exports' 
+      if (type.doPartialImport || type.doFullImport) {
+        // use both doPartial and doFullImport just in case users didn't refresh their build scripts. It costs me extra check of devKit.exports during generation, I humbly accept that. 
+        // FIXME need a mechanism to obtain the plan model! It's not part of the repo we use to provisionally load modules of BuildProject 
+        //     Could utilize assumption GP model is available through a solution exported by the devkit, yet the code to get exported solutions loaded would be too complicated for the bugfix 
+        //     therefore, try repository of build project model (this is unlikely to work for a command-line build, unless we use other means to make sure solution with genplan is part of the same project 
+        //     as the build project node. Therefore, I add these dependencies in doPartialImport as well (not only in doFullImport), so that they are readily available in cmdline build, even though I don't like the fact 
+        //  I make them visible for an end-user. 
+        SModel gp = descriptor.getAssociatedGenPlan().resolve(SNodeOperations.getModel(myModule).getRepository());
+        if (gp != null && gp.getRootNodes().iterator().hasNext()) {
+          SNode planNode = gp.getRootNodes().iterator().next();
+          // the code below is the same as in check_ModulesImport 
+          // use stub classes of j.m.generator.impl, available through MPS.Core, to avoid dependency to j.m.generator solution 
+          GenPlanTranslator gpt = new GenPlanTranslator(planNode);
+          DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
+          gpt.feed(dcpb);
+          for (SLanguage reql : dcpb.getRequiredLanguages()) {
+            final SNode resolved = myVisibleModules.resolve(reql);
+            if (resolved == null) {
+              report(String.format("cannot find language `%s` required by a devkit's associated plan", reql.getQualifiedName()));
+              continue;
+            }
+            boolean alreadyExported = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(devKit, LINKS.exports$90Bp), CONCEPTS.BuildMps_DevKitExportLanguage$ez)).any(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return SLinkOperations.getTarget(it, LINKS.language$wScz) == resolved;
+              }
+            });
+            if (!(alreadyExported)) {
+              SNode expl = SLinkOperations.addNewChild(devKit, LINKS.exports$90Bp, CONCEPTS.BuildMps_DevKitExportLanguage$ez);
+              SLinkOperations.setTarget(expl, LINKS.language$wScz, resolved);
+            }
+          }
+          // FIXME dcpb.requiredGenerators are not taken into account, shall address that once merge _AM and _Module and use module.dependencies instead of devkit.exports 
         }
       }
     }

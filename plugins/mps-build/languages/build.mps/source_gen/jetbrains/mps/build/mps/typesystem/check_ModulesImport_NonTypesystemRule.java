@@ -22,9 +22,22 @@ import jetbrains.mps.messages.IMessage;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.build.mps.util.ModuleChecker;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.DevkitDescriptor;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.generator.impl.GenPlanTranslator;
+import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
+import jetbrains.mps.build.mps.util.VisibleModules;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_ModulesImport_NonTypesystemRule() {
@@ -65,6 +78,49 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
       }
     });
     ml.checkAllModules(ModuleChecker.CheckType.CHECK);
+    for (SNode dk : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$tgxg)).translate(new ITranslator2<SNode, SNode>() {
+      public Iterable<SNode> translate(SNode it) {
+        return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_DevKit$QO, true, new SAbstractConcept[]{});
+      }
+    })) {
+      // XXX would be great not to create ModuleChecker here 
+      ModuleDescriptor md = ml.createModuleChecker(dk).getModuleDescriptor();
+      if (false == md instanceof DevkitDescriptor) {
+        continue;
+      }
+      SModelReference associatedGenPlan = ((DevkitDescriptor) md).getAssociatedGenPlan();
+      if (associatedGenPlan == null) {
+        continue;
+      }
+      SModel gp = associatedGenPlan.resolve(repo);
+      if (gp == null || !(gp.getRootNodes().iterator().hasNext())) {
+        continue;
+      }
+      SNode planNode = gp.getRootNodes().iterator().next();
+      // use stub classes of j.m.generator.impl, available through MPS.Core, to avoid dependency to j.m.generator solution 
+      // FIXME once these classes are not part of MPS.Core (generator shall get separate stub), need to figure out proper approach to perform this check 
+      // the code below is the same as in ValidationUtil 
+      GenPlanTranslator gpt = new GenPlanTranslator(planNode);
+      DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
+      gpt.feed(dcpb);
+      final VisibleModules visibleModules = ml.getVisibleModules();
+      for (SLanguage l : dcpb.getRequiredLanguages()) {
+        if (visibleModules.resolve(l) == null) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dk, String.format("Generation plan requires language %s, which is not available in the project", l.getQualifiedName()), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "5023854759223204350", null, errorTarget);
+          }
+        }
+      }
+      for (SModuleReference g : dcpb.getRequiredGenerators()) {
+        if (visibleModules.resolve(g) == null) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dk, String.format("Generation plan requires generator %s, which is not available in the project", g.getModuleName()), "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "5023854759223218811", null, errorTarget);
+          }
+        }
+      }
+    }
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.BuildProject$BF;
@@ -76,7 +132,12 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
     return false;
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink parts$tgxg = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+  }
+
   private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildMps_DevKit$QO = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, "jetbrains.mps.build.mps.structure.BuildMps_DevKit");
     /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }
