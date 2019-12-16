@@ -20,7 +20,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -70,13 +72,19 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
         return SNodeOperations.isInstanceOf(it, CONCEPTS.MoveNodeMigrationPart$gB);
       }
     })) {
-      List<SNode> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr)).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode it) {
-          return AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.toNode$JVO1)).resolve(SNodeOperations.getModel(it).getRepository());
+      List<Tuples._2<SNode, SNode>> movedNodes = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr)).select(new ISelector<SNode, Tuples._2<SNode, SNode>>() {
+        public Tuples._2<SNode, SNode> select(SNode it) {
+          return MultiTuple.<SNode,SNode>from(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.fromNode$JVN3)).resolve(SNodeOperations.getModel(it).getRepository()), AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.MoveNodeMigrationPart$gB), LINKS.toNode$JVO1)).resolve(SNodeOperations.getModel(it).getRepository()));
         }
       }).toListSequence();
-      if (ListSequence.fromList(movedNodes).isNotEmpty() && SNodeOperations.isInstanceOf(ListSequence.fromList(movedNodes).first(), CONCEPTS.INamedConcept$nV)) {
-        result.append(": move node `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+      if (ListSequence.fromList(movedNodes).isNotEmpty() && ListSequence.fromList(movedNodes).first()._0().isInstanceOfConcept(CONCEPTS.INamedConcept$nV) && ListSequence.fromList(movedNodes).isNotEmpty() && ListSequence.fromList(movedNodes).first()._1().isInstanceOfConcept(CONCEPTS.INamedConcept$nV)) {
+        result.append(": move node `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first()._1(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+        if (ListSequence.fromList(movedNodes).first()._0().getParent() != null && ListSequence.fromList(movedNodes).first()._0().getContainingRoot().isInstanceOfConcept(CONCEPTS.INamedConcept$nV)) {
+          result.append(" from `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first()._0().getContainingRoot(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+        }
+        if (ListSequence.fromList(movedNodes).first()._1().getParent() != null && ListSequence.fromList(movedNodes).first()._1().getContainingRoot().isInstanceOfConcept(CONCEPTS.INamedConcept$nV)) {
+          result.append(" to `").append(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(movedNodes).first()._1().getContainingRoot(), CONCEPTS.INamedConcept$nV), PROPS.name$tAp1)).append("`");
+        }
       }
       if (ListSequence.fromList(movedNodes).count() > 1) {
         result.append(" and ").append(ListSequence.fromList(movedNodes).count() - 1).append(" others");
@@ -177,6 +185,7 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
   private static final class LINKS {
     /*package*/ static final SContainmentLink part$x6zr = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
     /*package*/ static final SReferenceLink target$s$xW = MetaAdapterFactory.getReferenceLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, 0x267418e6b5c2b960L, "target");
+    /*package*/ static final SContainmentLink fromNode$JVN3 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode");
     /*package*/ static final SContainmentLink toNode$JVO1 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
     /*package*/ static final SContainmentLink executeAfter$w13r = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x47bb811da2d68dd0L, "executeAfter");
   }

@@ -25,7 +25,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class Migrate_MoveLinkUp_4 extends MigrationScriptBase {
-  private final String description = "Automatic migration: move node `messageTarget` and 3 others";
+  private final String description = "Automatic migration: move node `messageTarget` from `MessageStatement` to `AbstractReportStatement` and 3 others";
   public String getCaption() {
     return description;
   }
