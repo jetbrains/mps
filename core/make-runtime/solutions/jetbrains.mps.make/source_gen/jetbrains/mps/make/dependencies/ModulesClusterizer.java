@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.impl.plan.ModelContentUtil;
+import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ISequence;
@@ -49,7 +50,19 @@ public class ModulesClusterizer {
       public boolean accept(MResource it) {
         return Sequence.fromIterable(it.models()).all(new IWhereFilter<SModel>() {
           public boolean accept(SModel m) {
-            return ModelContentUtil.getUsedLanguages(m).isEmpty();
+            boolean usedLangsEmpty = ModelContentUtil.getUsedLanguages(m).isEmpty();
+            if (!(usedLangsEmpty)) {
+              return false;
+            }
+            if (m instanceof SModelBase) {
+              boolean importedLangsEmpty = ((SModelBase) m).importedLanguageIds().isEmpty();
+              boolean importedDevkitsEmpty = ((SModelBase) m).importedDevkits().isEmpty();
+              if (!(importedLangsEmpty) || !(importedDevkitsEmpty)) {
+                return false;
+              }
+            }
+            return true;
+
           }
         });
       }
