@@ -41,7 +41,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class ClassLoadingBroadCaster {
   private static final Logger LOG = LogManager.getLogger(ClassLoadingBroadCaster.class);
-  private static final int MAX_SESSIONS_ALIVE = 2;
+  private static final int MAX_SESSIONS_ALIVE = 100; // fixme to be fixed in 201, PluginLoaderRegistry is not up to the desired CLM model
 
   private final LinkedHashSet<ReloadableModule> myLoadedModules = new LinkedHashSet<>();
   private final ModelAccess myModelAccess;

@@ -361,25 +361,28 @@ public class ClassLoaderManager implements CoreComponent {
   Collection<ReloadableModule> preLoadModules(Iterable<? extends ReloadableModule> modules, ProgressMonitor monitor) {
     checkWriteAccess();
     monitor.start("Loading", 6);
+
     try {
-      Set<ReloadableModule> modulesPreLoad = filterModules(modules, myValidCondition);
-      if (modulesPreLoad.isEmpty()) return Collections.emptySet();
+      return runTransaction(() -> {
+        Set<ReloadableModule> modulesPreLoad = filterModules(modules, myValidCondition);
+        if (modulesPreLoad.isEmpty()) return Collections.emptySet();
 
-      // transitive closure
-      modulesPreLoad.addAll(myModulesWatcher.getResolvedDependencies(modulesPreLoad));
-      modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myValidCondition);
-      if (modulesPreLoad.isEmpty()) return Collections.emptySet();
-      monitor.advance(1);
+        // transitive closure
+        modulesPreLoad.addAll(myModulesWatcher.getResolvedDependencies(modulesPreLoad));
+        modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myValidCondition);
+        if (modulesPreLoad.isEmpty()) return Collections.emptySet();
+        monitor.advance(1);
 
-      // add valid back dependencies too; [if now (with new modules) they are fine to load]
-      modulesPreLoad.addAll(myModulesWatcher.getResolvedBackDependencies(modulesPreLoad));
-      modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myMPSLoadableCondition, myValidCondition);
-      if (modulesPreLoad.isEmpty()) return Collections.emptySet();
+        // add valid back dependencies too; [if now (with new modules) they are fine to load]
+        modulesPreLoad.addAll(myModulesWatcher.getResolvedBackDependencies(modulesPreLoad));
+        modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myMPSLoadableCondition, myValidCondition);
+        if (modulesPreLoad.isEmpty()) return Collections.emptySet();
 
-      Set<ReloadableModule> modulesToNotify = myClassLoadersHolder.onLazyLoaded(modulesPreLoad);
-      myBroadCaster.onLoad(modulesToNotify, monitor.subTask(5, SubProgressKind.AS_COMMENT));
+        Set<ReloadableModule> modulesToNotify = myClassLoadersHolder.onLazyLoaded(modulesPreLoad);
+        myBroadCaster.onLoad(modulesToNotify, monitor.subTask(5, SubProgressKind.AS_COMMENT));
 
-      return modulesToNotify;
+        return modulesToNotify;
+      });
     } finally {
       monitor.done();
     }
