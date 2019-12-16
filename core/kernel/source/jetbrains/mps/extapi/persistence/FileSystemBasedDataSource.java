@@ -43,7 +43,7 @@ public interface FileSystemBasedDataSource extends DataSource, DisposableDataSou
   Collection<IFile> getAffectedFiles();
 
   /**
-   * @return true if newly created datasource will not overwrite existing one
+   * @return true if newly created datasource will overwrite existing one
    */
   default boolean exists() {
     return getAffectedFiles().stream()
