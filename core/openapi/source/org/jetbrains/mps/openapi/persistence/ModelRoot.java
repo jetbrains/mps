@@ -88,20 +88,15 @@ public interface ModelRoot {
   /**
    * @return whether a model with a name {@code modelName} can be created under this model root.
    *
-   * @deprecated we have a {@code DataSourceFactory#create} + {@link ModelFactory#create(DataSource, SModelName, ModelLoadingOption...)}
-   *                to create a new model (from a new data source) having just a model name and a model root.
-   *                this method gives out an insufficient API -- it kind of implies that a model root has the only way
-   *                to create a model given a name, however obviously it is not true in a current MPS setup.
-   *
-   *                Semantics of this method (as for 3.5) is to create a new model via default <code>DataSourceFactory</code>
-   *                and default <code>ModelFactory</code>.
-   *                Not sure if it makes sense at all shaped like this. The signature needs to be extended with a {@link ModelFactory} parameter.
-   *                The same applies to the #createModel as well.
-   *                [AP]
+   * @deprecated use the one with SModelName as parameter
    * @param modelName -- the same as in the {@link #createModel(String)}
    */
-  /*@Deprecated*/
+  @Deprecated
   boolean canCreateModel(@NotNull String modelName);
+
+  default boolean canCreateModel(@NotNull SModelName modelName) {
+    return canCreateModel(modelName.getValue());
+  }
 
   /**
    * Creates a new model with the given name.

@@ -19,8 +19,9 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import java.util.function.Predicate;
+import org.jetbrains.mps.openapi.model.SModel;
 import javax.lang.model.SourceVersion;
-import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 
@@ -99,12 +100,15 @@ public class NewModelDialog extends DialogWrapper {
     }
 
     String modelName = mySettings.getModelName();
+    if (modelName == null) {
+      modelName = "";
+    }
     if ((modelName == null || modelName.length() == 0)) {
       setErrorText(IdeBundle.message("dialogs.model.new.error.empty.name"));
       return false;
     }
 
-    if (modelName.lastIndexOf(".") == modelName.length()) {
+    if (modelName.lastIndexOf(".") == modelName.length() - 1) {
       setErrorText(IdeBundle.message("dialogs.model.new.error.empty.short.name"));
       return false;
     }
@@ -117,17 +121,26 @@ public class NewModelDialog extends DialogWrapper {
       }
     }
 
+    final SModelName name = new SModelName(modelName, mySettings.getStereotype());
+
+    if (myModule.getModels().stream().anyMatch(new Predicate<SModel>() {
+      @Override
+      public boolean test(SModel p0) {
+        return p0.getName().equals(name);
+      }
+    })) {
+      setErrorText(IdeBundle.message("dialogs.model.new.error.model.name.already.exists", name, myModule.getModuleName()));
+      return false;
+    }
+
     if (!(SourceVersion.isName(modelName))) {
       setErrorText(IdeBundle.message("dialogs.model.new.error.invalid.package"));
       return false;
     }
 
-    if (!(modelRoot.canCreateModel(modelName))) {
-      boolean isLang = myModule instanceof Language;
-      if (!(isLang) || !((modelRoot instanceof FileBasedModelRoot))) {
-        setErrorText(IdeBundle.message("dialogs.model.new.error.unable.create.under.model.root"));
-        return false;
-      }
+    if (!(modelRoot.canCreateModel(name))) {
+      setErrorText(IdeBundle.message("dialogs.model.new.error.unable.create.under.model.root"));
+      return false;
     }
 
     setErrorText(null);
