@@ -15608,28 +15608,15 @@
           </node>
         </node>
         <node concept="3clFbH" id="6m8wrPChJb$" role="3cqZAp" />
-        <node concept="3clFbJ" id="6m8wrPByj4m" role="3cqZAp">
-          <node concept="3clFbS" id="6m8wrPByj4p" role="3clFbx">
-            <node concept="3clFbF" id="6m8wrPChO8e" role="3cqZAp">
-              <node concept="1rXfSq" id="6m8wrPChO8d" role="3clFbG">
-                <ref role="37wK5l" node="6m8wrPChDM6" resolve="checkModule" />
-                <node concept="37vLTw" id="6m8wrPChWKP" role="37wK5m">
-                  <ref role="3cqZAo" node="6m8wrPAZyWv" resolve="type" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="6m8wrPByvbC" role="3clFbw">
-            <node concept="1mIQ4w" id="6m8wrPByvbD" role="2OqNvi">
-              <node concept="chp4Y" id="6m8wrPByvbE" role="cj9EA">
-                <ref role="cht4Q" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="2BHiRxeukDS" role="2Oq$k0">
-              <ref role="3cqZAo" node="6m8wrPAU3pf" resolve="myModule" />
+        <node concept="3clFbF" id="6m8wrPChO8e" role="3cqZAp">
+          <node concept="1rXfSq" id="6m8wrPChO8d" role="3clFbG">
+            <ref role="37wK5l" node="6m8wrPChDM6" resolve="checkModule" />
+            <node concept="37vLTw" id="6m8wrPChWKP" role="37wK5m">
+              <ref role="3cqZAo" node="6m8wrPAZyWv" resolve="type" />
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="5ok0eyMEKad" role="3cqZAp" />
         <node concept="3clFbJ" id="1_93eakWHjY" role="3cqZAp">
           <node concept="3clFbS" id="1_93eakWHk0" role="3clFbx">
             <node concept="3SKdUt" id="5IzazlwNA2C" role="3cqZAp">

@@ -122,9 +122,8 @@ public final class ModuleChecker {
       return;
     }
 
-    if (SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Module$j$)) {
-      checkModule(type);
-    }
+    checkModule(type);
+
     if (myRepository != null && myLoadedModule != null) {
       // XXX in case myModule is _Language, there' might be another _Generator that references it, and we need to keep module registered. 
       // Don't want to deal with different module kinds right now (i.e. can drop _Solution and _Generator here) 
@@ -1220,8 +1219,8 @@ public final class ModuleChecker {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_Module$j$ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
     /*package*/ static final SConcept BuildMps_DevKit$QO = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, "jetbrains.mps.build.mps.structure.BuildMps_DevKit");
+    /*package*/ static final SConcept BuildMps_Module$j$ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
     /*package*/ static final SConcept BuildMps_ExtractedModuleDependency$LK = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, "jetbrains.mps.build.mps.structure.BuildMps_ExtractedModuleDependency");
     /*package*/ static final SConcept BuildMps_Language$re = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
     /*package*/ static final SConcept BuildMps_Generator$ru = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
