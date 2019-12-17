@@ -16,9 +16,9 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
 import jetbrains.mps.lang.migration.behavior.MigrationScript__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.migration.behavior.IMigrationUnit__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Map;
@@ -116,11 +116,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.dataDependency$Fw_Y), PROPS.name$tAp1);
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
-    if ((MigrationScript__BehaviorDescriptor.getDescription_id7s$_UJMUysQ.invoke(_context.getNode()) != null)) {
-      return SPropertyOperations.getString(MigrationScript__BehaviorDescriptor.getDescription_id7s$_UJMUysQ.invoke(_context.getNode()), PROPS.value$9w0w);
-    } else {
-      return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
-    }
+    return (String) IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
     return (boolean) MigrationScript__BehaviorDescriptor.isRerunnable_id1JWcQ2Vfe4u.invoke(_context.getNode());
@@ -193,7 +189,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$ZCtw), PROPS.varName$DO_b);
   }
   public static Object propertyMacro_GetValue_10_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1);
+    return (String) IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_10_1(final PropertyMacroContext _context) {
     return SPropertyOperations.getInteger(_context.getNode(), PROPS.fromVersion$jLy0);
@@ -1494,7 +1490,6 @@ public class QueriesGenerated extends QueryProviderBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty value$9w0w = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100d04L, 0x59e9926e84100d05L, "value");
     /*package*/ static final SProperty fromVersion$gjq1 = MetaAdapterFactory.getProperty(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, 0x50c63f9f4a0dac17L, "fromVersion");
     /*package*/ static final SProperty varName$DO_b = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, 0x108a9cb4794L, "varName");
     /*package*/ static final SProperty varName$Oh7T = MetaAdapterFactory.getProperty(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108d36d955aL, 0x108d36e0ea4L, "varName");

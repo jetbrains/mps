@@ -62,9 +62,12 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
   }
 
   public void runWithoutPasteAsRef(Runnable toRun) {
-    pasteAsRef = false;
-    toRun.run();
-    pasteAsRef = true;
+    try {
+      pasteAsRef = false;
+      toRun.run();
+    } finally {
+      pasteAsRef = true;
+    }
   }
 
   public void clearAll() {

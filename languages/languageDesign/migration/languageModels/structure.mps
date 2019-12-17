@@ -423,6 +423,11 @@
       <property role="IQ2nx" value="7431903976166443708" />
       <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
+    <node concept="1TJgyi" id="1RqXnPV03zC" role="1TKVEl">
+      <property role="IQ2nx" value="2151301691306162408" />
+      <property role="TrG5h" value="description" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
     <node concept="1TJgyj" id="6szrkDodHvN" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="part" />

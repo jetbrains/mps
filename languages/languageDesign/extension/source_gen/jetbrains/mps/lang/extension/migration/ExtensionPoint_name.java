@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ExtensionPoint_name extends MigrationScriptBase {
-  private final String description = "ExtensionPoint_name";
+  private final String description = "Automatic migration: move node `name` from `ExtensionPointDeclaration` to `INamedConcept`";
   public String getCaption() {
     return description;
   }

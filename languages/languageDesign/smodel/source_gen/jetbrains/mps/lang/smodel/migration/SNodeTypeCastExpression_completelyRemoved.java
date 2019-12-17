@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class SNodeTypeCastExpression_completelyRemoved extends MigrationScriptBase {
-  private final String description = "SNodeTypeCastExpression_completelyRemoved";
+  private final String description = "SNodeTypeCastExpression_completelyRemoved (automatic migration)";
   public String getCaption() {
     return description;
   }

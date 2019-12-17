@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EncapsulateModelNodeId extends MigrationScriptBase {
-  private final String description = "quotation model and node id";
+  private final String description = "Unify node id and model in Quotation and NodeBuilder";
   public String getCaption() {
     return description;
   }

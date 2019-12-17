@@ -24,7 +24,7 @@ import java.util.Collection;
 /**
  * This kind of data source describes a location within physical file system.
  * For example it can be a folder or a single file or a set of folders.
- *
+ * <p>
  * TODO I would rather have a single implementor of this
  *
  * @author evgeny, apyshkin
@@ -39,10 +39,11 @@ public interface FileSystemBasedDataSource extends DataSource, DisposableDataSou
    * 1. If a 'file' is in the result then 'file.getParent()' could not be among resulting files
    * 2. All the files in the directory could not be there (the parent directory as a whole would be returned instead)
    */
-  @NotNull Collection<IFile> getAffectedFiles();
+  @NotNull
+  Collection<IFile> getAffectedFiles();
 
   /**
-   * @return true if at least one of affected files exists
+   * @return true if newly created datasource will overwrite existing one
    */
   default boolean exists() {
     return getAffectedFiles().stream()

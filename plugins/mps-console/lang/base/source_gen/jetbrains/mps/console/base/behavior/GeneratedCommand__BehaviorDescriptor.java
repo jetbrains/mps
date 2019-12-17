@@ -20,13 +20,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.console.tool.BaseConsoleTab;
 import jetbrains.mps.console.tool.ConsoleUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import java.lang.reflect.Method;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.module.ReloadableModule;
 import org.apache.log4j.Level;
+import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -47,45 +47,50 @@ public final class GeneratedCommand__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static void execute_id5WvH$QO9bva(@NotNull SNode __thisNode__, final ConsoleContext context, final ConsoleStream console, final Runnable beforeCallback, final Runnable afterCallback) {
     ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
       public void run() {
-        final SModel model = ((BaseConsoleTab) context.getOutputWindow()).getConsoleModel();
+        final SModel model = context.getOutputWindow().getConsoleModel();
         boolean result = ConsoleUtil.make(context.getProject(), model);
         if (!(result)) {
           return;
         }
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
-            try {
-              SModule module = model.getModule();
-              String name = SModelOperations.getModelName(model) + ".Main";
-              Class<?> aClass = ClassLoaderManager.getInstance().getClass(module, name);
-              if (aClass == null) {
-                throw new ClassNotFoundException("No class " + name + " for module " + module);
-              }
-              Method[] methods = aClass.getMethods();
-              for (final Method method : methods) {
-                if (method.getName().equals("execute")) {
-                  beforeCallback.run();
-                  context.getProject().getRepository().getModelAccess().executeCommand(new Runnable() {
-                    public void run() {
-                      try {
-                        method.invoke(null, new Object[]{context, console});
-                      } catch (IllegalAccessException ignore) {
-                        if (LOG.isEnabledFor(Level.ERROR)) {
-                          LOG.error("Exception on query loading", ignore);
-                        }
-                      } catch (InvocationTargetException ignore) {
-                        if (LOG.isEnabledFor(Level.ERROR)) {
-                          LOG.error("Exception on query loading", ignore);
-                        }
-                      }
-                    }
-                  });
-                  afterCallback.run();
+            final SModule module = model.getModule();
+            final String name = SModelOperations.getModelName(model) + ".Main";
+            final Wrappers._T<Class<?>> aClass = new Wrappers._T<Class<?>>(null);
+            context.getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
+              public void run() {
+                try {
+                  aClass.value = ((ReloadableModule) module).getOwnClass(name);
+                } catch (ClassNotFoundException e) {
+                  if (LOG.isEnabledFor(Level.ERROR)) {
+                    LOG.error("Exception on query loading", e);
+                  }
                 }
               }
-            } catch (ClassNotFoundException ignore) {
-              if (LOG.isEnabledFor(Level.ERROR)) {
-                LOG.error("Exception on query loading", ignore);
+            });
+            if (aClass.value == null) {
+              return;
+            }
+            Method[] methods = aClass.value.getMethods();
+            for (final Method method : methods) {
+              if (method.getName().equals("execute")) {
+                beforeCallback.run();
+                context.getProject().getRepository().getModelAccess().executeCommand(new Runnable() {
+                  public void run() {
+                    try {
+                      method.invoke(null, context, console);
+                    } catch (IllegalAccessException e) {
+                      if (LOG.isEnabledFor(Level.ERROR)) {
+                        LOG.error("Exception on query loading", e);
+                      }
+                    } catch (InvocationTargetException e) {
+                      if (LOG.isEnabledFor(Level.ERROR)) {
+                        LOG.error("Exception on query loading", e);
+                      }
+                    }
+                  }
+                });
+                afterCallback.run();
               }
             }
           }

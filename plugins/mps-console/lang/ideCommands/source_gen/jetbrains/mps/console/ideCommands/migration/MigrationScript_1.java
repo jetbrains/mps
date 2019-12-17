@@ -27,7 +27,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class MigrationScript_1 extends MigrationScriptBase {
-  private final String description = "MigrationScript_1";
+  private final String description = "Automatic migration: move node `OfAspectOperation` and 1 others";
   public String getCaption() {
     return description;
   }

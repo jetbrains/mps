@@ -14,7 +14,6 @@ import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -92,20 +91,9 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     return SNodeOperations.cast(item, CONCEPTS.CommandHolder$6b);
   }
 
-  private void setSelection() {
-    // here we call invokeLater() to be scheduled after invokeLater() from ConsoleStream.addResponse() 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            // call editNode here to update undo node 
-            getEditorComponent().editNode(myRoot);
-            SelectionUtil.selectLabelCellAnSetCaret(getEditorComponent().getEditorContext(), SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), SelectionManager.LAST_CELL, -1);
-            getEditorComponent().ensureSelectionVisible();
-          }
-        });
-      }
-    });
+  protected void scrollToBottom() {
+    SelectionUtil.selectLabelCellAnSetCaret(getEditorComponent().getEditorContext(), SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), SelectionManager.LAST_CELL, -1);
+    super.scrollToBottom();
   }
 
   public void executeCurrentCommand() {
@@ -126,7 +114,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
       }
     }, new Runnable() {
       public void run() {
-        setSelection();
+        scrollToBottom();
       }
     });
   }
@@ -137,7 +125,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, currentCommand);
     getEditorComponent().editNode(myRoot);
     validateImports();
-    setSelection();
+    scrollToBottom();
   }
 
   public void previousCommand() {
@@ -167,7 +155,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     setCommandCursor(newCursor);
     SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$4VSX, CONCEPTS.CommandHolder$6b);
     SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$6b, SMethodTrimmedId.create("getCommandToEdit", null, "ApbqR6U7je")))));
-    setSelection();
+    scrollToBottom();
   }
 
   public void nextCommand() {
@@ -191,7 +179,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
       SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$4VSX), LINKS.command$pL9$, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.hiddenCommand$VDO5), LINKS.command$pL9$)));
       SLinkOperations.setTarget(myRoot, LINKS.hiddenCommand$VDO5, null);
     }
-    setSelection();
+    scrollToBottom();
   }
 
   protected void loadHistory(@Nullable final Element state) {

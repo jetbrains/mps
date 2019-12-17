@@ -26,7 +26,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class Migrate_ParametrizedIntentions extends MigrationScriptBase {
-  private final String description = "Migrate_ParametrizedIntentions";
+  private final String description = "Automatic migration: move node `DescriptionBlock` and 1 others";
   public String getCaption() {
     return description;
   }
