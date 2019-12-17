@@ -14,6 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -30,6 +31,14 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
     super(ourParamCache);
   }
 
+  @Test
+  public void test_NodeInnerClassesCannotDeclareCheck876973622656563830() throws Throwable {
+    new TestBody(this).test_NodeInnerClassesCannotDeclareCheck876973622656563830();
+  }
+  @Test
+  public void test_NodeNonstaticInnerClassesCheck876973622656562586() throws Throwable {
+    new TestBody(this).test_NodeNonstaticInnerClassesCheck876973622656562586();
+  }
   @Test
   public void test_NodeErrorCheck2908733373809544465() throws Throwable {
     new TestBody(this).test_NodeErrorCheck2908733373809544465();
@@ -54,6 +63,16 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
     }
 
 
+    public void test_NodeInnerClassesCannotDeclareCheck876973622656563830() throws Exception {
+      SNode nodeToCheck = getRealNodeById("2908733373806055116");
+      SNode operation = getRealNodeById("876973622656563830");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3701001890861537148"), "Error: Inner classes cannot declare interfaces", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeNonstaticInnerClassesCheck876973622656562586() throws Exception {
+      SNode nodeToCheck = getRealNodeById("2908733373806052139");
+      SNode operation = getRealNodeById("876973622656562586");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765600371255"), "Error: Non-static inner classes cannot have static declarations", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
     public void test_NodeErrorCheck2908733373809544465() throws Exception {
       SNode nodeToCheck = getRealNodeById("2908733373809543368");
       SNode operation = getRealNodeById("2908733373809544465");
@@ -72,7 +91,7 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck2908733373806471082() throws Exception {
       SNode nodeToCheck = getRealNodeById("2908733373806051392");
       SNode operation = getRealNodeById("2908733373806471082");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("2908733373809543368"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("1628645464085512252"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("1628645464085515203"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2908733373806055116"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3701001890861537148"), "Error: Inner classes cannot declare interfaces", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2908733373806052139"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765600371255"), "Error: Non-static inner classes cannot have static declarations", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("2908733373809543368"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("1628645464085512252"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("1628645464085515203"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
 
   }

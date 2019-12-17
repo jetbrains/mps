@@ -67,6 +67,9 @@
         <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
       </concept>
       <concept id="1215612918969" name="jetbrains.mps.lang.test.structure.NodeUnreachable" flags="ng" index="8bhQy" />
+      <concept id="7835233914439520906" name="jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation" flags="ng" index="mZCkL">
+        <child id="710597951278798299" name="expectedMessage" index="1DMPz9" />
+      </concept>
       <concept id="7691029917083831655" name="jetbrains.mps.lang.test.structure.UnknownRuleReference" flags="ng" index="2u4KIi" />
       <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ng" index="2u4UPC">
         <reference id="8333855927540250453" name="declaration" index="39XzEq" />
@@ -116,6 +119,9 @@
       <concept id="1210673684636" name="jetbrains.mps.lang.test.structure.TestNodeAnnotation" flags="ng" index="3xLA65" />
       <concept id="1210674524691" name="jetbrains.mps.lang.test.structure.TestNodeReference" flags="nn" index="3xONca">
         <reference id="1210674534086" name="declaration" index="3xOPvv" />
+      </concept>
+      <concept id="710597951278798236" name="jetbrains.mps.lang.test.structure.ExpectedMessageContainer" flags="ng" index="1DMPye">
+        <property id="710597951278798237" name="text" index="1DMPyf" />
       </concept>
       <concept id="8101092317677916964" name="jetbrains.mps.lang.test.structure.UntypedExpression" flags="ng" index="3JI$YI" />
       <concept id="1225978065297" name="jetbrains.mps.lang.test.structure.SimpleNodeTest" flags="ng" index="1LZb2c" />
@@ -28486,10 +28492,30 @@
             <property role="2bfB8j" value="true" />
             <property role="TrG5h" value="BBBBB" />
             <node concept="3Tm1VV" id="2xtTpu$28Vd" role="1B3o_S" />
+            <node concept="7CXmI" id="KFCHO7Pfrs" role="lGtFl">
+              <node concept="1TM$A" id="KFCHO7PfDQ" role="7EUXB">
+                <node concept="2PYRI3" id="KFCHO7PfDR" role="3lydEf">
+                  <ref role="39XzEq" to="tpeh:3dsApLDQttW" />
+                </node>
+                <node concept="1DMPye" id="KFCHO7PfDS" role="1DMPz9">
+                  <property role="1DMPyf" value="Error: Inner classes cannot declare interfaces" />
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="3Tm1VV" id="2xtTpu$28cG" role="1B3o_S" />
           <node concept="3uibUv" id="2xtTpu$28hE" role="1zkMxy">
             <ref role="3uigEE" node="2xtTpu$284t" resolve="Container.A" />
+          </node>
+          <node concept="7CXmI" id="KFCHO7Pf5Q" role="lGtFl">
+            <node concept="1TM$A" id="KFCHO7Pfmq" role="7EUXB">
+              <node concept="2PYRI3" id="KFCHO7Pfmr" role="3lydEf">
+                <ref role="39XzEq" to="tpeh:rFwcinC28R" />
+              </node>
+              <node concept="1DMPye" id="KFCHO7Pfms" role="1DMPz9">
+                <property role="1DMPyf" value="Error: Non-static inner classes cannot have static declarations" />
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3HP615" id="2xtTpu$292g" role="jymVt">

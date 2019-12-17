@@ -23809,12 +23809,24 @@
                   </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="rFwcinzUSI" role="3uHU7B">
-                <node concept="37vLTw" id="3GM_nagTys5" role="2Oq$k0">
-                  <ref role="3cqZAo" node="rFwcinzUSt" resolve="classConcept" />
+              <node concept="1Wc70l" id="3dsApLDUmAs" role="3uHU7B">
+                <node concept="3fqX7Q" id="3dsApLDUobQ" role="3uHU7B">
+                  <node concept="2OqwBi" id="3dsApLDUobS" role="3fr31v">
+                    <node concept="1YBJjd" id="3dsApLDUobT" role="2Oq$k0">
+                      <ref role="1YBMHb" node="rFwcinzUSL" resolve="staticFieldDeclaration" />
+                    </node>
+                    <node concept="2qgKlT" id="3dsApLDUobU" role="2OqNvi">
+                      <ref role="37wK5l" to="tpek:3dsApLDTYgy" resolve="isConstantValue" />
+                    </node>
+                  </node>
                 </node>
-                <node concept="2qgKlT" id="rFwcinzUSK" role="2OqNvi">
-                  <ref role="37wK5l" to="tpek:sWroEc0xXl" resolve="isInner" />
+                <node concept="2OqwBi" id="rFwcinzUSI" role="3uHU7w">
+                  <node concept="37vLTw" id="3GM_nagTys5" role="2Oq$k0">
+                    <ref role="3cqZAo" node="rFwcinzUSt" resolve="classConcept" />
+                  </node>
+                  <node concept="2qgKlT" id="rFwcinzUSK" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:sWroEc0xXl" resolve="isInner" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -24126,12 +24138,59 @@
                 <node concept="1bVj0M" id="2I6sE$IFE8B" role="23t8la">
                   <node concept="3clFbS" id="2I6sE$IFE8C" role="1bW5cS">
                     <node concept="3clFbF" id="2I6sE$IFEf6" role="3cqZAp">
-                      <node concept="2OqwBi" id="2I6sE$IFEvC" role="3clFbG">
-                        <node concept="2qgKlT" id="2I6sE$IFEU1" role="2OqNvi">
-                          <ref role="37wK5l" to="tpek:6r77ob2USS8" resolve="isStatic" />
+                      <node concept="22lmx$" id="3dsApLDQlvl" role="3clFbG">
+                        <node concept="2OqwBi" id="3dsApLDQoTi" role="3uHU7w">
+                          <node concept="37vLTw" id="3dsApLDQoDT" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2I6sE$IFE8D" resolve="it" />
+                          </node>
+                          <node concept="1mIQ4w" id="3dsApLDQpvj" role="2OqNvi">
+                            <node concept="chp4Y" id="3dsApLDQpCj" role="cj9EA">
+                              <ref role="cht4Q" to="tpee:g7HP654" resolve="Interface" />
+                            </node>
+                          </node>
                         </node>
-                        <node concept="37vLTw" id="2I6sE$IFEf5" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2I6sE$IFE8D" resolve="it" />
+                        <node concept="1eOMI4" id="3dsApLDUh0i" role="3uHU7B">
+                          <node concept="1Wc70l" id="3dsApLDUcS_" role="1eOMHV">
+                            <node concept="1eOMI4" id="3dsApLDUgpE" role="3uHU7w">
+                              <node concept="22lmx$" id="3dsApLDUisa" role="1eOMHV">
+                                <node concept="3fqX7Q" id="3dsApLDUl5m" role="3uHU7w">
+                                  <node concept="2OqwBi" id="3dsApLDUl5o" role="3fr31v">
+                                    <node concept="1PxgMI" id="3dsApLDUl5p" role="2Oq$k0">
+                                      <node concept="chp4Y" id="3dsApLDUl5q" role="3oSUPX">
+                                        <ref role="cht4Q" to="tpee:f$Wx3kv" resolve="StaticFieldDeclaration" />
+                                      </node>
+                                      <node concept="37vLTw" id="3dsApLDUl5r" role="1m5AlR">
+                                        <ref role="3cqZAo" node="2I6sE$IFE8D" resolve="it" />
+                                      </node>
+                                    </node>
+                                    <node concept="2qgKlT" id="3dsApLDUl5s" role="2OqNvi">
+                                      <ref role="37wK5l" to="tpek:3dsApLDTYgy" resolve="isConstantValue" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="3fqX7Q" id="3dsApLDUhVX" role="3uHU7B">
+                                  <node concept="2OqwBi" id="3dsApLDUhVZ" role="3fr31v">
+                                    <node concept="37vLTw" id="3dsApLDUhW0" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="2I6sE$IFE8D" resolve="it" />
+                                    </node>
+                                    <node concept="1mIQ4w" id="3dsApLDUhW1" role="2OqNvi">
+                                      <node concept="chp4Y" id="3dsApLDUhW2" role="cj9EA">
+                                        <ref role="cht4Q" to="tpee:f$Wx3kv" resolve="StaticFieldDeclaration" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="2OqwBi" id="2I6sE$IFEvC" role="3uHU7B">
+                              <node concept="2qgKlT" id="2I6sE$IFEU1" role="2OqNvi">
+                                <ref role="37wK5l" to="tpek:6r77ob2USS8" resolve="isStatic" />
+                              </node>
+                              <node concept="37vLTw" id="2I6sE$IFEf5" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2I6sE$IFE8D" resolve="it" />
+                              </node>
+                            </node>
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -69561,6 +69620,87 @@
     <node concept="1YaCAy" id="3EngrbvrNng" role="1YuTPh">
       <property role="TrG5h" value="localMethodCall" />
       <ref role="1YaFvo" to="tpee:6LFqxSRBTg4" resolve="LocalMethodCall" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="3dsApLDQtir">
+    <property role="TrG5h" value="check_Interface" />
+    <property role="3GE5qa" value="classifiers.classifiers" />
+    <node concept="3clFbS" id="3dsApLDQtis" role="18ibNy">
+      <node concept="3clFbJ" id="3dsApLDQttC" role="3cqZAp">
+        <node concept="2OqwBi" id="3dsApLDQttD" role="3clFbw">
+          <node concept="2OqwBi" id="3dsApLDQttE" role="2Oq$k0">
+            <node concept="2yIwOk" id="3dsApLDQttF" role="2OqNvi" />
+            <node concept="2OqwBi" id="3dsApLDQttG" role="2Oq$k0">
+              <node concept="1YBJjd" id="3dsApLDQtKJ" role="2Oq$k0">
+                <ref role="1YBMHb" node="3dsApLDQtiu" resolve="interfaceDecl" />
+              </node>
+              <node concept="1mfA1w" id="3dsApLDQttI" role="2OqNvi" />
+            </node>
+          </node>
+          <node concept="3O6GUB" id="3dsApLDQttJ" role="2OqNvi">
+            <node concept="chp4Y" id="3dsApLDQttK" role="3QVz_e">
+              <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="3dsApLDQttL" role="3clFbx">
+          <node concept="3cpWs8" id="3dsApLDQttM" role="3cqZAp">
+            <node concept="3cpWsn" id="3dsApLDQttN" role="3cpWs9">
+              <property role="TrG5h" value="classConcept" />
+              <node concept="3Tqbb2" id="3dsApLDQttO" role="1tU5fm">
+                <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+              </node>
+              <node concept="10QFUN" id="3dsApLDQttP" role="33vP2m">
+                <node concept="3Tqbb2" id="3dsApLDQttQ" role="10QFUM">
+                  <ref role="ehGHo" to="tpee:fz12cDA" resolve="ClassConcept" />
+                </node>
+                <node concept="2OqwBi" id="3dsApLDQttR" role="10QFUP">
+                  <node concept="1YBJjd" id="3dsApLDQtRY" role="2Oq$k0">
+                    <ref role="1YBMHb" node="3dsApLDQtiu" resolve="interfaceDecl" />
+                  </node>
+                  <node concept="1mfA1w" id="3dsApLDQttT" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbJ" id="3dsApLDQttU" role="3cqZAp">
+            <node concept="3clFbS" id="3dsApLDQttV" role="3clFbx">
+              <node concept="2MkqsV" id="3dsApLDQttW" role="3cqZAp">
+                <node concept="Xl_RD" id="3dsApLDQttX" role="2MkJ7o">
+                  <property role="Xl_RC" value="Inner classes cannot declare interfaces" />
+                </node>
+                <node concept="1YBJjd" id="3dsApLDQy2h" role="1urrMF">
+                  <ref role="1YBMHb" node="3dsApLDQtiu" resolve="interfaceDecl" />
+                </node>
+              </node>
+            </node>
+            <node concept="1Wc70l" id="3dsApLDQtu4" role="3clFbw">
+              <node concept="3fqX7Q" id="3dsApLDQtu5" role="3uHU7w">
+                <node concept="2OqwBi" id="3dsApLDQtu6" role="3fr31v">
+                  <node concept="2qgKlT" id="3dsApLDQtu7" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:6r77ob2USS8" resolve="isStatic" />
+                  </node>
+                  <node concept="37vLTw" id="3dsApLDQtu8" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3dsApLDQttN" resolve="classConcept" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="3dsApLDQtu9" role="3uHU7B">
+                <node concept="37vLTw" id="3dsApLDQtua" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3dsApLDQttN" resolve="classConcept" />
+                </node>
+                <node concept="2qgKlT" id="3dsApLDQtub" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:sWroEc0xXl" resolve="isInner" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3dsApLDQtiu" role="1YuTPh">
+      <property role="TrG5h" value="interfaceDecl" />
+      <ref role="1YaFvo" to="tpee:g7HP654" resolve="Interface" />
     </node>
   </node>
 </model>
