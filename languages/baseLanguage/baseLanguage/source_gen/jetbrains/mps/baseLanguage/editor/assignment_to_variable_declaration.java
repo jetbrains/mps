@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeSubstituteMenuTransformationMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.editor.menus.GroupMenuPart;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
@@ -28,7 +31,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -68,7 +70,7 @@ public class assignment_to_variable_declaration extends TransformationMenuBase {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
       result.add(new TMP_IncludeSM_ebtzic_a0());
-      result.add(new TMP_WrapSM_ebtzic_b0());
+      result.add(new TMP_Group_ebtzic_b0());
     }
     return result;
   }
@@ -89,74 +91,94 @@ public class assignment_to_variable_declaration extends TransformationMenuBase {
     }
 
   }
-  public class TMP_WrapSM_ebtzic_b0 extends WrapSubstituteMenuTransformationMenuPart {
+  public class TMP_Group_ebtzic_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    @Override
+    protected boolean isApplicable(TransformationMenuContext _context) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseAssignmentExpression$oO) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.Statement$ok);
+    }
+
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "Type", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "2924820976072354830")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3701001890858074352")));
       try {
         return super.createItems(context);
       } finally {
         context.getEditorMenuTrace().popTraceInfo();
       }
     }
-
-    @Nullable
     @Override
-    protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
-      final EditorContext editorContext = _context.getEditorContext();
-      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
-      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+    protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_ebtzic_b0.TMP_WrapSM_ebtzic_a1a());
     }
-    private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.Type$IG;
-    }
-
-
-    @Override
-    protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
-      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
-      return new SubstituteMenuItemAsActionItem(item) {
-        @Override
-        public void execute(@NotNull String pattern) {
-          SNode createdNode = item.createNode(pattern);
-          assert SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseAssignmentExpression$oO) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.Statement$ok);
-
-          SNode rValue = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseAssignmentExpression$oO), LINKS.rValue$J0E2);
-          SNode varstmt = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.LocalVariableDeclarationStatement$BI);
-          SNode var = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
-          SLinkOperations.setTarget(varstmt, LINKS.localVariableDeclaration$O0D0, var);
-          SLinkOperations.setTarget(var, LINKS.type$pLrO, createdNode);
-          SLinkOperations.setTarget(var, LINKS.initializer$KgD, rValue);
-          SelectionUtil.selectCell(_context.getEditorContext(), var, SelectionManager.FIRST_ERROR_CELL);
+    public class TMP_WrapSM_ebtzic_a1a extends WrapSubstituteMenuTransformationMenuPart {
+      @NotNull
+      @Override
+      public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+        context.getEditorMenuTrace().pushTraceInfo();
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "Type", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "2924820976072354830")));
+        try {
+          return super.createItems(context);
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
         }
+      }
 
-        @Override
-        public void customize(String pattern, EditorMenuItemStyle style) {
-          super.customize(pattern, style);
-          if (targetNode != null) {
-            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
-            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
-            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
-            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
-              customizer.customize(style, compositeContext);
-            }
+      @Nullable
+      @Override
+      protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
+        final EditorContext editorContext = _context.getEditorContext();
+        SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+        return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+      }
+      private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
+        return CONCEPTS.Type$IG;
+      }
 
+
+      @Override
+      protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
+        final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
+        return new SubstituteMenuItemAsActionItem(item) {
+          @Override
+          public void execute(@NotNull String pattern) {
+            SNode createdNode = item.createNode(pattern);
+            SNode rValue = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BaseAssignmentExpression$oO), LINKS.rValue$J0E2);
+            SNode varstmt = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.LocalVariableDeclarationStatement$BI);
+            SNode var = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration"));
+            SLinkOperations.setTarget(varstmt, LINKS.localVariableDeclaration$O0D0, var);
+            SLinkOperations.setTarget(var, LINKS.type$pLrO, createdNode);
+            SLinkOperations.setTarget(var, LINKS.initializer$KgD, rValue);
+            SelectionUtil.selectCell(_context.getEditorContext(), var, SelectionManager.FIRST_ERROR_CELL);
           }
-        }
-        @Override
-        public String getShortDescriptionText(@NotNull String pattern) {
-          return "Local variable declaration";
-        }
-      };
+
+          @Override
+          public void customize(String pattern, EditorMenuItemStyle style) {
+            super.customize(pattern, style);
+            if (targetNode != null) {
+              EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+              CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+              EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+              for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+                customizer.customize(style, compositeContext);
+              }
+
+            }
+          }
+          @Override
+          public String getShortDescriptionText(@NotNull String pattern) {
+            return "Local variable declaration";
+          }
+        };
+      }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept BaseAssignmentExpression$oO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
     /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept BaseAssignmentExpression$oO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
+    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept LocalVariableDeclarationStatement$BI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
   }
 
