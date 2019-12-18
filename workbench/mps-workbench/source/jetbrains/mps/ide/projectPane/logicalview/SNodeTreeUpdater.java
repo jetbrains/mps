@@ -257,6 +257,9 @@ public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
         nodesWithChangedPresentations.add(n.getSNode());
       }
 
+      //Moved nodes should not be accidentally removed after being added in their new location
+      removedNodes.removeIf(removed -> removed.getNodeId() != null && addedRoots.stream().anyMatch(added -> removed.getNodeId().equals(added.getNodeId())));
+
       addAndRemoveRoots(removedRoots, addedRoots);
       addAndRemoveVisibleChildren(removedNodes, addedNodes);
 
