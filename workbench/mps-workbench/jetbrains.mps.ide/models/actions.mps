@@ -2885,10 +2885,6 @@
       <node concept="3Tm6S6" id="hGAnAas" role="1B3o_S" />
       <node concept="3Tqbb2" id="hGAnQkj" role="1tU5fm" />
     </node>
-    <node concept="1DS2jV" id="AMutgwlBFI" role="1NuT2Z">
-      <property role="TrG5h" value="editorCell" />
-      <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CELL" resolve="EDITOR_CELL" />
-    </node>
     <node concept="2XrIbr" id="AMutgwkp$G" role="32lrUH">
       <property role="TrG5h" value="getContextClassifier" />
       <node concept="3Tm6S6" id="AMutgwkp$H" role="1B3o_S" />
@@ -3038,6 +3034,10 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="1DS2jV" id="AMutgwlBFI" role="1NuT2Z">
+      <property role="TrG5h" value="editorCell" />
+      <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CELL" resolve="EDITOR_CELL" />
     </node>
   </node>
   <node concept="sE7Ow" id="hGApL1E">
@@ -3203,17 +3203,6 @@
         </node>
         <node concept="3clFbH" id="5purbfZh21S" role="3cqZAp" />
         <node concept="3clFbJ" id="2yoZns6MivH" role="3cqZAp">
-          <node concept="2ZW3vV" id="2yoZns6MivJ" role="3clFbw">
-            <node concept="3uibUv" id="6rIkchcQVAP" role="2ZW6by">
-              <ref role="3uigEE" to="bzwl:~TabbedEditor" resolve="TabbedEditor" />
-            </node>
-            <node concept="2OqwBi" id="2yoZns6MivL" role="2ZW6bz">
-              <node concept="2WthIp" id="2yoZns6MivM" role="2Oq$k0" />
-              <node concept="1DTwFV" id="2yoZns6MivN" role="2OqNvi">
-                <ref role="2WH_rO" node="2yoZns6MbOe" resolve="editor" />
-              </node>
-            </node>
-          </node>
           <node concept="3clFbS" id="2yoZns6MivO" role="3clFbx">
             <node concept="3cpWs8" id="2yoZns6MivR" role="3cqZAp">
               <node concept="3cpWsn" id="2yoZns6MivS" role="3cpWs9">
@@ -3291,6 +3280,17 @@
                 <node concept="chp4Y" id="714IaVdGYrY" role="3oSUPX">
                   <ref role="cht4Q" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
                 </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="2yoZns6MivJ" role="3clFbw">
+            <node concept="3uibUv" id="6rIkchcQVAP" role="2ZW6by">
+              <ref role="3uigEE" to="bzwl:~TabbedEditor" resolve="TabbedEditor" />
+            </node>
+            <node concept="2OqwBi" id="2yoZns6MivL" role="2ZW6bz">
+              <node concept="2WthIp" id="2yoZns6MivM" role="2Oq$k0" />
+              <node concept="1DTwFV" id="2yoZns6MivN" role="2OqNvi">
+                <ref role="2WH_rO" node="2yoZns6MbOe" resolve="editor" />
               </node>
             </node>
           </node>
@@ -36099,6 +36099,28 @@
         <property role="pLAjc" value="ctrl+alt+shift" />
         <property role="pLAjf" value="VK_F" />
         <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
+      </node>
+    </node>
+    <node concept="Zd509" id="5u$TzO$Y6Kd" role="Zd508">
+      <ref role="1bYAoF" node="6qBuBFvMxqN" resolve="ShowDefinition" />
+      <node concept="pLAjd" id="5u$TzO$Y6Ke" role="Zd501">
+        <property role="pLAjc" value="alt" />
+        <property role="pLAjf" value="VK_SPACE" />
+      </node>
+      <node concept="pLAjd" id="55FisMpTBGS" role="Zd501">
+        <property role="pLAjc" value="meta" />
+        <property role="pLAjf" value="VK_Y" />
+      </node>
+    </node>
+    <node concept="Zd509" id="5u$TzO$Y6Df" role="Zd508">
+      <ref role="1bYAoF" node="7fqcWlSvSEo" resolve="ShowDefinitionInMenu" />
+      <node concept="pLAjd" id="5u$TzO$Y6Dh" role="Zd501">
+        <property role="pLAjc" value="alt" />
+        <property role="pLAjf" value="VK_SPACE" />
+      </node>
+      <node concept="pLAjd" id="55FisMpV2qh" role="Zd501">
+        <property role="pLAjc" value="meta" />
+        <property role="pLAjf" value="VK_Y" />
       </node>
     </node>
   </node>
