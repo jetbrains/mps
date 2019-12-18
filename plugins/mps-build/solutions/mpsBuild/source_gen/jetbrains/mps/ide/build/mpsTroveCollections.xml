@@ -86,6 +86,7 @@
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
           <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
           <language id="l:f4ad079d-bc71-4ffb-9600-9328705cf998:jetbrains.mps.lang.descriptor" />
           <language id="l:c0080a47-7e37-4558-bee9-9ae18e690549:jetbrains.mps.lang.extension" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
@@ -271,6 +272,8 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.tuples.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguageInternal.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.aspect.constraints.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.aspect.constraints.rules.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.aspect.constraints.rulesAndMessages.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.aspect.dataflow.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.aspect.migration.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.aspect.structure.jar" />
@@ -330,7 +333,12 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.findUsages.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.behavior.api.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.behavior.runtime.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.constraints.rules.runtime.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.api.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.context.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.problem.rt.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.problem.rules.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.messages.api.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.migration.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.refactoring.runtime.jar" />
