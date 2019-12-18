@@ -11,6 +11,8 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -34,7 +36,9 @@ public class BLCommand_to_Expression {
           }
         });
         if (Sequence.fromIterable(statements).count() == 1 && SNodeOperations.isInstanceOf(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$nm)) {
-          SNodeOperations.replaceWithAnother(node, createBLExpression_6b3zvz_a0a0a1a0a(SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0)));
+          SNode replacement = createBLExpression_6b3zvz_a0a0b0a0(SLinkOperations.getTarget(SNodeOperations.cast(Sequence.fromIterable(statements).first(), CONCEPTS.ExpressionStatement$nm), LINKS.expression$WIP0));
+          SNodeOperations.replaceWithAnother(node, replacement);
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, replacement, SelectionManager.LAST_CELL, -1);
         } else if (Sequence.fromIterable(statements).isEmpty()) {
           SNodeOperations.deleteNode(node);
         } else if (!(DeletionApproverUtil.approve(editorContext, node))) {
@@ -79,7 +83,7 @@ public class BLCommand_to_Expression {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
   }
-  private static SNode createBLExpression_6b3zvz_a0a0a1a0a(SNode node0) {
+  private static SNode createBLExpression_6b3zvz_a0a0b0a0(SNode node0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
     rootBuilder1.forChild(LINKS.expression$HQe6).initNode(node0, CONCEPTS.Expression$TP, true);
     return rootBuilder1.getResult();

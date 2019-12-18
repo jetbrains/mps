@@ -135,6 +135,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.gray));
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
+      CommandHolder_Insert.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.CommandHolder$6b, "jetbrains.mps.console.base.editor.CommandHolder_EmptyCell_TransformationMenu"));
       editorCell.setDefaultText("<no command>");
       editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));

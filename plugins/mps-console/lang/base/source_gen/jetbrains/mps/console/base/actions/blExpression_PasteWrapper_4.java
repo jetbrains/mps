@@ -18,7 +18,7 @@ public final class blExpression_PasteWrapper_4 implements PasteWrapper {
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.BlockStatement$1i;
+    return CONCEPTS.Statement$ok;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
@@ -32,6 +32,7 @@ public final class blExpression_PasteWrapper_4 implements PasteWrapper {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BLCommand$ib = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, "jetbrains.mps.console.base.structure.BLCommand");
+    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SConcept BlockStatement$1i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
