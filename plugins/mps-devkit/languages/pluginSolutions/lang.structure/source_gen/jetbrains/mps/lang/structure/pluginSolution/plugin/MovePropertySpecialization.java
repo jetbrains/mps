@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class MovePropertySpecialization extends StructureSpecializationBase<SProperty> {
+public class MovePropertySpecialization extends MoveConceptMemberSpecialization<SProperty> {
   public Tuples._2<SProperty, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
     if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.PropertyDeclaration$c5) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
       return null;
@@ -44,27 +44,35 @@ public class MovePropertySpecialization extends StructureSpecializationBase<SPro
     }
     return MultiTuple.<SProperty,SNodeReference>from(deployedProperty, SNodeOperations.getPointer(movingNode));
   }
+  @Override
+  public String getMemberKind() {
+    return "property";
+  }
+  @Override
+  public String getMemberKindPlural() {
+    return "properties";
+  }
   public void confirm(List<RefactoringParticipant.Option> selectedOptions, SNodeReference initialState, SNodeReference finalState, SRepository repository, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder, boolean updateModuleDependencies) {
     SNode from = SNodeOperations.cast(SPointerOperations.resolveNode(initialState, repository), CONCEPTS.PropertyDeclaration$c5);
     SNode to = SNodeOperations.cast(SPointerOperations.resolveNode(finalState, repository), CONCEPTS.PropertyDeclaration$c5);
     SNode targetConcept = SNodeOperations.cast(SNodeOperations.getParent(to), CONCEPTS.AbstractConceptDeclaration$UN);
     SPropertyOperations.plusAssignStringProp(from, PROPS.name$tAp1, "_old");
-    AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8), createDeprecatedNodeAnnotation_fubpxk_a0e0b("The property was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
+    AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8), createDeprecatedNodeAnnotation_fubpxk_a0e0d("The property was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
     SPropertyOperations.assign(to, PROPS.propertyId$cckp, ConceptIdHelper.generatePropertyId(targetConcept, to) + "");
 
     SNode oldId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"));
     PropertyId__BehaviorDescriptor.setProperty_id5e7X3XCIM6B.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId"));
     PropertyId__BehaviorDescriptor.setProperty_id5e7X3XCIM6B.invoke(newId, to);
-    migrationBuilder.addPart(from, to, createMoveProperty_fubpxk_c0a11a1(oldId, newId));
+    migrationBuilder.addPart(from, to, createMoveProperty_fubpxk_c0a11a3(oldId, newId));
   }
   public Collection<SNode> findInstances(SProperty oldProperty, SearchScope searchScope) {
     {
-      SearchScope scope_fubpxk_a0c = CommandUtil.createScope(searchScope);
-      final SearchScope scope_fubpxk_a0c_0 = new EditableFilteringScope(scope_fubpxk_a0c);
+      SearchScope scope_fubpxk_a0e = CommandUtil.createScope(searchScope);
+      final SearchScope scope_fubpxk_a0e_0 = new EditableFilteringScope(scope_fubpxk_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_fubpxk_a0c_0;
+          return scope_fubpxk_a0e_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldProperty.getOwner()), false)).toListSequence();
@@ -73,12 +81,12 @@ public class MovePropertySpecialization extends StructureSpecializationBase<SPro
   public void doReplaceInstance(SNode instance, SProperty oldProperty, SProperty newProperty) {
     RefactoringRuntime.changePropertyInstance(instance, oldProperty, newProperty);
   }
-  private static SNode createDeprecatedNodeAnnotation_fubpxk_a0e0b(Object p0) {
+  private static SNode createDeprecatedNodeAnnotation_fubpxk_a0e0d(Object p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
     rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
     return rootBuilder1.getResult();
   }
-  private static SNode createMoveProperty_fubpxk_c0a11a1(SNode node0, SNode node1) {
+  private static SNode createMoveProperty_fubpxk_c0a11a3(SNode node0, SNode node1) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveProperty$J);
     rootBuilder1.forChild(LINKS.sourceId$YxgU).initNode(node0, CONCEPTS.PropertyId$Ig, true);
     rootBuilder1.forChild(LINKS.targetId$Yxhp).initNode(node1, CONCEPTS.PropertyId$Ig, true);

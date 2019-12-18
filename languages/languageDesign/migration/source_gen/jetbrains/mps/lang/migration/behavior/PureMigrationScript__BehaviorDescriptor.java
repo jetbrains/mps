@@ -61,6 +61,7 @@ public final class PureMigrationScript__BehaviorDescriptor extends BaseBHDescrip
     if (isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.description$9$QN))) {
       return SPropertyOperations.getString(__thisNode__, PROPS.description$9$QN);
     }
+    // todo: make description property mandatory and remove this heuristic 
     StringBuilder result = new StringBuilder();
     if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).count() == 1 && (SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).first(), LINKS.target$s$xW) != null)) {
       result.append("Addition to: ").append(IMigrationUnit__BehaviorDescriptor.getDescription_id1RqXnPV415t.invoke(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.part$x6zr), CONCEPTS.IncludeMigrationPart$zz)).first(), LINKS.target$s$xW)));

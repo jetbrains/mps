@@ -19,6 +19,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 
@@ -170,7 +171,7 @@ public interface RefactoringParticipant<InitialDataObject, FinalDataObject, Init
     protected List<List<Change<I, F>>> initChanges(final SRepository repository, final List<Option> selectedOptions, final SearchScope searchScope, final ProgressMonitor progressMonitor) {
       return mapNotNull(myInitialStates, new _FunctionTypes._return_P1_E0<List<List<Change<I, F>>>, List<I>>() {
         public List<List<Change<I, F>>> invoke(List<I> initialStates) {
-          return myParticipant.getChanges(initialStates, repository, selectedOptions, searchScope, progressMonitor);
+          return (ListSequence.fromList(initialStates).isEmpty() ? Collections.<List<Change<I, F>>>emptyList() : myParticipant.getChanges(initialStates, repository, selectedOptions, searchScope, progressMonitor));
         }
       });
     }

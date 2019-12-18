@@ -483,34 +483,6 @@
       <ref role="1YaFvo" to="53vh:6d7r2FpJdsQ" resolve="DataDependencyReference" />
     </node>
   </node>
-  <node concept="18kY7G" id="Czdt9sZoEx">
-    <property role="TrG5h" value="MigrationScriptCycles" />
-    <node concept="3clFbS" id="Czdt9sZoEy" role="18ibNy">
-      <node concept="2Mj0R9" id="Czdt9t40Ww" role="3cqZAp">
-        <node concept="3fqX7Q" id="Czdt9t40XE" role="2MkoU_">
-          <node concept="1eOMI4" id="Czdt9t40XG" role="3fr31v">
-            <node concept="2YIFZM" id="Czdt9t40Vo" role="1eOMHV">
-              <ref role="37wK5l" to="5jto:Czdt9t3YHI" resolve="hasCycles" />
-              <ref role="1Pybhc" to="5jto:3WpkgLwxyX3" resolve="MigrationsCheckUtil" />
-              <node concept="1YBJjd" id="Czdt9t40VC" role="37wK5m">
-                <ref role="1YBMHb" node="Czdt9sZoIW" resolve="migrationScript" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="Xl_RD" id="Czdt9t417u" role="2MkJ7o">
-          <property role="Xl_RC" value="Cyclic migration script dependency detected" />
-        </node>
-        <node concept="1YBJjd" id="Czdt9t410f" role="1urrMF">
-          <ref role="1YBMHb" node="Czdt9sZoIW" resolve="migrationScript" />
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="Czdt9sZoIW" role="1YuTPh">
-      <property role="TrG5h" value="migrationScript" />
-      <ref role="1YaFvo" to="53vh:7fCCGqboGqz" resolve="MigrationScript" />
-    </node>
-  </node>
   <node concept="1YbPZF" id="4SSaNAQl8MZ">
     <property role="TrG5h" value="typeof_TransformStatement" />
     <property role="3GE5qa" value="transformExtension" />
@@ -1273,6 +1245,34 @@
     <node concept="1YaCAy" id="5TUCQr2IDj9" role="1YuTPh">
       <property role="TrG5h" value="getDataExpression" />
       <ref role="1YaFvo" to="53vh:5TUCQr2IyM1" resolve="GetDataExpression" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="Czdt9sZoEx">
+    <property role="TrG5h" value="MigrationScriptCycles" />
+    <node concept="3clFbS" id="Czdt9sZoEy" role="18ibNy">
+      <node concept="2Mj0R9" id="Czdt9t40Ww" role="3cqZAp">
+        <node concept="3fqX7Q" id="Czdt9t40XE" role="2MkoU_">
+          <node concept="1eOMI4" id="Czdt9t40XG" role="3fr31v">
+            <node concept="2YIFZM" id="Czdt9t40Vo" role="1eOMHV">
+              <ref role="37wK5l" to="5jto:Czdt9t3YHI" resolve="hasCycles" />
+              <ref role="1Pybhc" to="5jto:3WpkgLwxyX3" resolve="MigrationsCheckUtil" />
+              <node concept="1YBJjd" id="Czdt9t40VC" role="37wK5m">
+                <ref role="1YBMHb" node="Czdt9sZoIW" resolve="migrationScript" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="Xl_RD" id="Czdt9t417u" role="2MkJ7o">
+          <property role="Xl_RC" value="Cyclic migration script dependency detected" />
+        </node>
+        <node concept="1YBJjd" id="Czdt9t410f" role="1urrMF">
+          <ref role="1YBMHb" node="Czdt9sZoIW" resolve="migrationScript" />
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="Czdt9sZoIW" role="1YuTPh">
+      <property role="TrG5h" value="migrationScript" />
+      <ref role="1YaFvo" to="53vh:7fCCGqboGqz" resolve="MigrationScript" />
     </node>
   </node>
   <node concept="18kY7G" id="4AMiyJgFqNN">

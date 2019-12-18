@@ -116,30 +116,6 @@
       <ref role="PrY4T" to="tpee:h9ngReX" resolve="ClassifierMember" />
     </node>
   </node>
-  <node concept="1TIwiD" id="7fCCGqboGqz">
-    <property role="TrG5h" value="MigrationScript" />
-    <property role="19KtqR" value="true" />
-    <property role="EcuMT" value="8352104482584315555" />
-    <ref role="1TJDcQ" to="tpee:fz12cDA" resolve="ClassConcept" />
-    <node concept="PrWs8" id="4uVwhQyFcOL" role="PzmwI">
-      <ref role="PrY4T" node="4uVwhQyFcjm" resolve="IMigrationUnit" />
-    </node>
-    <node concept="1TJgyi" id="536fTXa3qKn" role="1TKVEl">
-      <property role="TrG5h" value="fromVersion" />
-      <property role="IQ2nx" value="5820409521797704727" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
-    <node concept="PrWs8" id="UBgfI9geXt" role="PzmwI">
-      <ref role="PrY4T" to="oubp:UBgfI9exfH" resolve="AutoInitDSLClass" />
-    </node>
-    <node concept="1QGGSu" id="6d3iXjYjpAh" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/migrationScript.png" />
-    </node>
-    <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
-      <property role="1sEMCp" value="migrations.html" />
-      <ref role="1fZFei" to="che4:46nPloez0vX" resolve="HelpCenterDocUrl" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="536fTXa3qNV">
     <property role="TrG5h" value="ProducedDataDeclaration" />
     <property role="34LRSv" value="produces data" />
@@ -800,6 +776,30 @@
       <property role="20kJfa" value="requiredDataDeclararion" />
       <property role="20lbJX" value="fLJekj4/1" />
       <ref role="20lvS9" node="5TUCQr2GYND" resolve="AnnotationDataDependency" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7fCCGqboGqz">
+    <property role="TrG5h" value="MigrationScript" />
+    <property role="19KtqR" value="true" />
+    <property role="EcuMT" value="8352104482584315555" />
+    <ref role="1TJDcQ" to="tpee:fz12cDA" resolve="ClassConcept" />
+    <node concept="PrWs8" id="4uVwhQyFcOL" role="PzmwI">
+      <ref role="PrY4T" node="4uVwhQyFcjm" resolve="IMigrationUnit" />
+    </node>
+    <node concept="1TJgyi" id="536fTXa3qKn" role="1TKVEl">
+      <property role="TrG5h" value="fromVersion" />
+      <property role="IQ2nx" value="5820409521797704727" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="PrWs8" id="UBgfI9geXt" role="PzmwI">
+      <ref role="PrY4T" to="oubp:UBgfI9exfH" resolve="AutoInitDSLClass" />
+    </node>
+    <node concept="1QGGSu" id="6d3iXjYjpAh" role="rwd14">
+      <property role="1iqoE4" value="${module}/icons/migrationScript.png" />
+    </node>
+    <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
+      <property role="1sEMCp" value="migrations.html" />
+      <ref role="1fZFei" to="che4:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>
 </model>

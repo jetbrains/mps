@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class MoveReferenceLinkSpecialization extends StructureSpecializationBase<SReferenceLink> {
+public class MoveReferenceLinkSpecialization extends MoveConceptMemberSpecialization<SReferenceLink> {
   public Tuples._2<SReferenceLink, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
     if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$bA) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$bA), PROPS.metaClass$tHD7), 0xfc6f4e95b8L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$bA), LINKS.specializedLink$3uH0) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
       return null;
@@ -47,12 +47,20 @@ public class MoveReferenceLinkSpecialization extends StructureSpecializationBase
     }
     return MultiTuple.<SReferenceLink,SNodeReference>from(deployedReferenceLink, SNodeOperations.getPointer(movingNode));
   }
+  @Override
+  public String getMemberKind() {
+    return "link";
+  }
+  @Override
+  public String getMemberKindPlural() {
+    return "links";
+  }
   public void confirm(List<RefactoringParticipant.Option> selectedOptions, SNodeReference initialState, SNodeReference finalState, SRepository repository, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder, boolean updateModuleDependencies) {
     SNode from = SNodeOperations.cast(SPointerOperations.resolveNode(initialState, repository), CONCEPTS.LinkDeclaration$bA);
     SNode to = SNodeOperations.cast(SPointerOperations.resolveNode(finalState, repository), CONCEPTS.LinkDeclaration$bA);
     SNode targetConcept = SNodeOperations.cast(SNodeOperations.getParent(to), CONCEPTS.AbstractConceptDeclaration$UN);
     SPropertyOperations.plusAssignStringProp(from, PROPS.role$r_O$, "_old");
-    AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8), createDeprecatedNodeAnnotation_w90w7j_a0e0b("The link was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
+    AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8), createDeprecatedNodeAnnotation_w90w7j_a0e0d("The link was moved to concept \"" + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(targetConcept) + "\""));
     SPropertyOperations.setEnum(from, PROPS.sourceCardinality$$E8z, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1"));
     SPropertyOperations.assign(to, PROPS.linkId$ccI3, ConceptIdHelper.generateLinkId(targetConcept, to) + "");
 
@@ -60,15 +68,15 @@ public class MoveReferenceLinkSpecialization extends StructureSpecializationBase
     ReferenceLinkId__BehaviorDescriptor.setReference_id5e7X3XCLvlR.invoke(oldId, from);
     SNode newId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId"));
     ReferenceLinkId__BehaviorDescriptor.setReference_id5e7X3XCLvlR.invoke(newId, to);
-    migrationBuilder.addPart(from, to, createMoveReferenceLink_w90w7j_c0a21a1(oldId, newId));
+    migrationBuilder.addPart(from, to, createMoveReferenceLink_w90w7j_c0a21a3(oldId, newId));
   }
   public Collection<SNode> findInstances(SReferenceLink oldLink, SearchScope searchScope) {
     {
-      SearchScope scope_w90w7j_a0c = CommandUtil.createScope(searchScope);
-      final SearchScope scope_w90w7j_a0c_0 = new EditableFilteringScope(scope_w90w7j_a0c);
+      SearchScope scope_w90w7j_a0e = CommandUtil.createScope(searchScope);
+      final SearchScope scope_w90w7j_a0e_0 = new EditableFilteringScope(scope_w90w7j_a0e);
       QueryExecutionContext context = new QueryExecutionContext() {
         public SearchScope getDefaultSearchScope() {
-          return scope_w90w7j_a0c_0;
+          return scope_w90w7j_a0e_0;
         }
       };
       return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), SNodeOperations.asSConcept(oldLink.getOwner()), false)).toListSequence();
@@ -77,12 +85,12 @@ public class MoveReferenceLinkSpecialization extends StructureSpecializationBase
   public void doReplaceInstance(SNode instance, SReferenceLink oldLink, SReferenceLink newLink) {
     RefactoringRuntime.changeReferenceLinkInstances(instance, oldLink, newLink);
   }
-  private static SNode createDeprecatedNodeAnnotation_w90w7j_a0e0b(Object p0) {
+  private static SNode createDeprecatedNodeAnnotation_w90w7j_a0e0d(Object p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
     rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
     return rootBuilder1.getResult();
   }
-  private static SNode createMoveReferenceLink_w90w7j_c0a21a1(SNode node0, SNode node1) {
+  private static SNode createMoveReferenceLink_w90w7j_c0a21a3(SNode node0, SNode node1) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveReferenceLink$ZL);
     rootBuilder1.forChild(LINKS.sourceId$YxsZ).initNode(node0, CONCEPTS.ReferenceLinkId$Ic, true);
     rootBuilder1.forChild(LINKS.targetId$Yxtu).initNode(node1, CONCEPTS.ReferenceLinkId$Ic, true);

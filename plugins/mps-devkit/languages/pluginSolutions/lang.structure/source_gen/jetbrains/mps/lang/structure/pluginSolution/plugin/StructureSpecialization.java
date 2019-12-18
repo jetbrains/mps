@@ -8,14 +8,15 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SRepository;
-import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SearchScope;
 
 public interface StructureSpecialization<I, F> {
   MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<I, SNodeReference>, Tuples._2<F, SNodeReference>> getLocalInstancesDataCollector();
   MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<SNodeReference, SNodeReference> getMigrationDataCollector();
   void confirm(List<RefactoringParticipant.Option> selectedOptions, SNodeReference initialState, SNodeReference finalState, SRepository repository, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder, boolean updateModuleDependencies);
+  void updateMigrationDescription(SNode initialMoveRoot, SNode finalMoveRoot, LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder);
   Collection<SNode> findInstances(I initialState, SearchScope searchScope);
   void doReplaceInstance(SNode instance, I initialState, F finalState);
 }
