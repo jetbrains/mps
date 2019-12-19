@@ -384,7 +384,6 @@ public class PluginLoaderRegistry implements Disposable {
    */
   private void updateInEDT(@NotNull UpdatingTask task) {
     ThreadUtils.assertEDT();
-    assert !ApplicationManager.getApplication().isReadAccessAllowed() || ApplicationManager.getApplication().isHeadlessEnvironment();
     if (ApplicationManager.getApplication().isDisposed()) return;
     DialogWrapperPeerFactory.getInstance(); // otherwise I get initialization cycle
     PotemkinProgress progress = new PotemkinProgress("Reloading MPS plugins", null, null, "Cancel");
