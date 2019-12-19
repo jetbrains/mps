@@ -7,6 +7,8 @@ import java.util.List;
 import jetbrains.mps.project.structure.project.ModulePath;
 import java.util.ArrayList;
 import java.util.Collections;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.project.StandaloneMPSProject;
 import java.util.Comparator;
@@ -14,72 +16,115 @@ import jetbrains.mps.ide.ui.dialogs.properties.StateUtil;
 
 @GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933580312", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 public final class ProjectProperties {
-  private final List<ModulePath> myModule = new ArrayList<ModulePath>();
+  private final List<ModulePath> myModules = new ArrayList<ModulePath>();
+
   public ProjectProperties() {
   }
+
   public List<ModulePath> getModules() {
-    return Collections.unmodifiableList(myModule);
+    return Collections.unmodifiableList(myModules);
   }
-  /*package*/ int add(ModulePath p) {
-    int ix = Collections.binarySearch(myModule, p, PATH_VALID_COMPARATOR);
-    if (ix < 0) {
-      ix = -ix - 1;
+
+  /**
+   * Adds element if collection does not contains such element. 
+   * Method maintains collection sorting and elements uniqueness.
+   * 
+   * @param path to add
+   * @return index of path in collection
+   */
+  /*package*/ int add(@NotNull ModulePath path) {
+    int index = Collections.binarySearch(myModules, path, PATH_VALID_COMPARATOR);
+    if (index < 0) {
+      index = -index - 1;
+      myModules.add(index, path);
     }
-    myModule.add(ix, p);
-    return ix;
+    return index;
   }
-  /*package*/ int remove(ModulePath p) {
-    int ix = Collections.binarySearch(myModule, p, PATH_VALID_COMPARATOR);
-    if (ix < 0) {
+
+  /*package*/ int remove(ModulePath path) {
+    int index = Collections.binarySearch(myModules, path, PATH_VALID_COMPARATOR);
+    if (index < 0) {
       return -1;
     }
-    myModule.remove(ix);
-    return ix;
+    myModules.remove(index);
+    return index;
   }
+
+  /**
+   * Checks if a module path with such file system path is registered in the project.
+   * <br>
+   * This is internal method.
+   * <br>
+   * Depends on maintained <b>sorted order</b> of {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties#myModules }.
+   * 
+   * @param fsPath is absolute file system path to check
+   * @return {@link ModulePath} of project module or {@code null}
+   */
+  @Nullable
+  /*package*/ ModulePath getModulePathByFSPath(String fsPath) {
+    int index = Collections.binarySearch(myModules, new ModulePath(fsPath, null), IGNORE_VIRTUAL_FOLDER_COMPARATOR);
+    if (index < 0) {
+      return null;
+    }
+
+    return myModules.get(index);
+  }
+
   public boolean isSame(ProjectDescriptor projectDescriptor) {
     List<ModulePath> paths = new ArrayList<ModulePath>();
     paths.addAll(projectDescriptor.getModulePaths());
     Collections.sort(paths, PATH_COMPARATOR);
-    return paths.equals(myModule);
+    return paths.equals(myModules);
   }
+
   public void loadFrom(StandaloneMPSProject project) {
     ProjectDescriptor projectDescriptor = project.getProjectDescriptor();
-    myModule.clear();
-    myModule.addAll(projectDescriptor.getModulePaths());
+    myModules.clear();
+    myModules.addAll(projectDescriptor.getModulePaths());
     // FIXME WHY DO WE CARE TO SORT WITH VALIDITY CHECK???? 
-    Collections.sort(myModule, PATH_VALID_COMPARATOR);
+    Collections.sort(myModules, PATH_VALID_COMPARATOR);
   }
+
   public void saveTo(StandaloneMPSProject project) {
     ProjectDescriptor projectDescriptor = new ProjectDescriptor(project.getName());
-    for (ModulePath path : myModule) {
+    for (ModulePath path : myModules) {
       projectDescriptor.addModulePath(path);
     }
 
     project.setProjectDescriptor(projectDescriptor);
   }
-  private final Comparator<ModulePath> PATH_COMPARATOR = new Comparator<ModulePath>() {
+
+  private static final Comparator<ModulePath> PATH_COMPARATOR = new Comparator<ModulePath>() {
     private String getPathString(ModulePath path) {
       return ((path == null) ? "null" : path.getPath() + "#" + path.getVirtualFolder());
     }
+
     @Override
-    public int compare(ModulePath o1, ModulePath o2) {
-      if (o1 == o2) {
+    public int compare(ModulePath path1, ModulePath path2) {
+      if (path1 == path2) {
         return 0;
       }
-      String string1 = getPathString(o1);
-      String string2 = getPathString(o2);
+      String string1 = getPathString(path1);
+      String string2 = getPathString(path2);
       return string1.compareTo(string2);
     }
   };
-  public final Comparator<ModulePath> PATH_VALID_COMPARATOR = new Comparator<ModulePath>() {
+
+  public static final Comparator<ModulePath> PATH_VALID_COMPARATOR = new Comparator<ModulePath>() {
     @Override
-    public int compare(ModulePath o1, ModulePath o2) {
-      int result = StateUtil.compare(o1.getPath(), o2.getPath());
+    public int compare(ModulePath path1, ModulePath path2) {
+      int result = StateUtil.compare(path1.getPath(), path2.getPath());
       if (result != 0) {
         return result;
       }
-      return PATH_COMPARATOR.compare(o1, o2);
+      return PATH_COMPARATOR.compare(path1, path2);
     }
   };
 
+  private static final Comparator<ModulePath> IGNORE_VIRTUAL_FOLDER_COMPARATOR = new Comparator<ModulePath>() {
+    @Override
+    public int compare(ModulePath path1, ModulePath path2) {
+      return path1.getPath().compareTo(path2.getPath());
+    }
+  };
 }

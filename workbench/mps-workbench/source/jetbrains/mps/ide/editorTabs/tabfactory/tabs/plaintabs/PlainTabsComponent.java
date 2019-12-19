@@ -22,8 +22,8 @@ import com.intellij.ui.JBColor;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.TabsListener;
-import com.intellij.ui.tabs.UiDecorator.UiDecoration;
 import com.intellij.ui.tabs.impl.JBTabsImpl;
+import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBUI.Borders;
 import jetbrains.mps.ide.editorTabs.TabColorProvider;
@@ -39,7 +39,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -61,12 +60,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
     super(baseNode, possibleTabs, editor, callback, showGrayed, createModeCallback, project);
 
     myTabs = new JBTabsImpl(project, null, myJbTabsDisposable);
-    myTabs.setTabsPosition(JBTabsPosition.bottom)
-        .setPaintBorder(0, 0, 0, 0)
-        .setTabSidePaintBorder(1)
-        .setGhostsAlwaysVisible(false)
-        .setUiDecorator(() -> new UiDecoration(null, JBUI.insets(0, 8, 0, 8)));
-    myTabs.setBorder(Borders.emptyBottom(1));
+    myTabs.setTabsPosition(JBTabsPosition.bottom);
 
     setContent(myTabs);
 
@@ -212,7 +206,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
             myRealTabs.add(pet);
             SNode node = pet.getNode().resolve(getProject().getRepository());
 
-            TabInfo info = new TabInfo(new JLabel(""))
+            TabInfo info = new TabInfo(getSpacer())
                 .setIcon(GlobalIconManager.getInstance().getIconFor(node))
                 .setText(node.getPresentation())
                 .setPreferredFocusableComponent(myEditor);
@@ -221,7 +215,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
         } else if (myShowGrayed) {
           myRealTabs.add(new PlainEditorTab(tab));
 
-          TabInfo info = new TabInfo(new JLabel(""))
+          TabInfo info = new TabInfo(getSpacer())
               .setText(tab.getTitle()).setDefaultForeground(JBColor.GRAY)
               .setPreferredFocusableComponent(myEditor);
           myTabs.addTab(info);
@@ -295,5 +289,11 @@ public class PlainTabsComponent extends BaseTabsComponent {
     if (i > 0) {
       myTabs.select(myTabs.getTabAt(i - 1), true);
     }
+  }
+
+  private static Spacer getSpacer() {
+    final Spacer spacer = new Spacer();
+    spacer.setBorder(Borders.customLine(JBUI.CurrentTheme.EditorTabs.borderColor(), 1, 0, 0, 0));
+    return spacer;
   }
 }

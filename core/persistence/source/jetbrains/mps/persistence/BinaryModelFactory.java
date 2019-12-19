@@ -77,7 +77,7 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory 
     }
     if (dataSource instanceof FileSystemBasedDataSource) {
       if (((FileSystemBasedDataSource) dataSource).exists()) {
-        return () -> "Some of the data sources already exist";
+        return () -> "Some of the data sources already exist on the disk";
       }
     }
     return NO_PROBLEM;

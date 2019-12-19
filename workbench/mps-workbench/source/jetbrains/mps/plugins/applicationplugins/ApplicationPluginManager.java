@@ -15,7 +15,8 @@
  */
 package jetbrains.mps.plugins.applicationplugins;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.core.platform.Platform;
@@ -122,6 +123,12 @@ public class ApplicationPluginManager extends BasePluginManager<BaseApplicationP
   @Override
   protected void disposePlugin(BaseApplicationPlugin plugin) {
     plugin.dispose();
+  }
+
+  @Override
+  public boolean isDisposed() {
+    Application application = ApplicationManager.getApplication();
+    return application == null || application.isDisposed();
   }
 
   @Override

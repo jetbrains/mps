@@ -94,7 +94,7 @@ class ModuleEventsHandler implements SRepositoryBatchListener {
   }
 
   private void removeModules(List<SModuleReference> modules) {
-    modules.sort(MODULE_COMPARATOR);
+    modules.sort(MODULE_COMPARATOR.reversed());
     // fixme this is wrong but otherwise we will never unload them
     myManager.unloadModules(modules, new EmptyProgressMonitor());
     myModulesWatcher.removeModules(modules);

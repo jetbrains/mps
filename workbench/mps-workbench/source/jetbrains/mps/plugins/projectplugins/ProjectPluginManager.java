@@ -190,6 +190,11 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
     plugin.dispose();
   }
 
+  @Override
+  public boolean isDisposed() {
+    return myProject.isDisposed();
+  }
+
   //----------------COMPONENT STUFF---------------------
 
   @Override

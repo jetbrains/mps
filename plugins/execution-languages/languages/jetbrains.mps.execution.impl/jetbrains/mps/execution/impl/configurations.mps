@@ -377,27 +377,7 @@
       <property role="TrG5h" value="initComponent" />
       <node concept="3Tm1VV" id="4tDMPuHd$Va" role="1B3o_S" />
       <node concept="3cqZAl" id="4tDMPuHd$Vb" role="3clF45" />
-      <node concept="3clFbS" id="4tDMPuHd$Vc" role="3clF47" />
-      <node concept="2AHcQZ" id="3tYsUK_U_dA" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4tfwdmbGhSm" role="jymVt" />
-    <node concept="3clFb_" id="4tDMPuHd$Vd" role="jymVt">
-      <property role="TrG5h" value="disposeComponent" />
-      <node concept="3Tm1VV" id="4tDMPuHd$Ve" role="1B3o_S" />
-      <node concept="3cqZAl" id="4tDMPuHd$Vf" role="3clF45" />
-      <node concept="3clFbS" id="4tDMPuHd$Vg" role="3clF47" />
-      <node concept="2AHcQZ" id="3tYsUK_U_d_" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4tfwdmbGgGR" role="jymVt" />
-    <node concept="3clFb_" id="4tDMPuHd$PY" role="jymVt">
-      <property role="TrG5h" value="projectOpened" />
-      <node concept="3Tm1VV" id="4tDMPuHd$PZ" role="1B3o_S" />
-      <node concept="3cqZAl" id="4tDMPuHd$Q0" role="3clF45" />
-      <node concept="3clFbS" id="4tDMPuHd$Q1" role="3clF47">
+      <node concept="3clFbS" id="4tDMPuHd$Vc" role="3clF47">
         <node concept="3clFbF" id="1cXeJmohr8S" role="3cqZAp">
           <node concept="2OqwBi" id="1cXeJmohr8T" role="3clFbG">
             <node concept="37vLTw" id="1cXeJmohr8U" role="2Oq$k0">
@@ -412,16 +392,16 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="3tYsUK_U_dz" role="2AJF6D">
+      <node concept="2AHcQZ" id="3tYsUK_U_dA" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="4tfwdmbFRc3" role="jymVt" />
-    <node concept="3clFb_" id="4tDMPuHd$Q2" role="jymVt">
-      <property role="TrG5h" value="projectClosed" />
-      <node concept="3Tm1VV" id="4tDMPuHd$Q3" role="1B3o_S" />
-      <node concept="3cqZAl" id="4tDMPuHd$Q4" role="3clF45" />
-      <node concept="3clFbS" id="4tDMPuHd$Q5" role="3clF47">
+    <node concept="2tJIrI" id="4tfwdmbGhSm" role="jymVt" />
+    <node concept="3clFb_" id="4tDMPuHd$Vd" role="jymVt">
+      <property role="TrG5h" value="disposeComponent" />
+      <node concept="3Tm1VV" id="4tDMPuHd$Ve" role="1B3o_S" />
+      <node concept="3cqZAl" id="4tDMPuHd$Vf" role="3clF45" />
+      <node concept="3clFbS" id="4tDMPuHd$Vg" role="3clF47">
         <node concept="3clFbF" id="1cXeJmoht2Q" role="3cqZAp">
           <node concept="2OqwBi" id="1cXeJmoht2R" role="3clFbG">
             <node concept="37vLTw" id="1cXeJmoht2S" role="2Oq$k0">
@@ -434,6 +414,26 @@
           </node>
         </node>
       </node>
+      <node concept="2AHcQZ" id="3tYsUK_U_d_" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="4tfwdmbGgGR" role="jymVt" />
+    <node concept="3clFb_" id="4tDMPuHd$PY" role="jymVt">
+      <property role="TrG5h" value="projectOpened" />
+      <node concept="3Tm1VV" id="4tDMPuHd$PZ" role="1B3o_S" />
+      <node concept="3cqZAl" id="4tDMPuHd$Q0" role="3clF45" />
+      <node concept="3clFbS" id="4tDMPuHd$Q1" role="3clF47" />
+      <node concept="2AHcQZ" id="3tYsUK_U_dz" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="4tfwdmbFRc3" role="jymVt" />
+    <node concept="3clFb_" id="4tDMPuHd$Q2" role="jymVt">
+      <property role="TrG5h" value="projectClosed" />
+      <node concept="3Tm1VV" id="4tDMPuHd$Q3" role="1B3o_S" />
+      <node concept="3cqZAl" id="4tDMPuHd$Q4" role="3clF45" />
+      <node concept="3clFbS" id="4tDMPuHd$Q5" role="3clF47" />
       <node concept="2AHcQZ" id="3tYsUK_U_d$" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>

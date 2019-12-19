@@ -66,20 +66,20 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
 
   @Override
   public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @Override
-  public void projectOpened() {
     myRegistry.addReloadingListener(RunConfigurationsStateManager.this);
   }
 
   @Override
-  public void projectClosed() {
+  public void disposeComponent() {
     myRegistry.removeReloadingListener(this);
+  }
+
+  @Override
+  public void projectOpened() {
+  }
+
+  @Override
+  public void projectClosed() {
   }
 
   public void initRunConfigurations() {

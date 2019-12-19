@@ -35,6 +35,7 @@ import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -104,7 +105,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
     }
     if (dataSource instanceof FileSystemBasedDataSource) {
       if (((FileSystemBasedDataSource) dataSource).exists()) {
-        return () -> "Some of the data sources already exist";
+        return () -> "Some of the data source paths already exist on the disk";
       }
     }
     return NO_PROBLEM;

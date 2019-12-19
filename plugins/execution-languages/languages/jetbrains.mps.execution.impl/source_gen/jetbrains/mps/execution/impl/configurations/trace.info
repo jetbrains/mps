@@ -45,8 +45,8 @@
       <node id="1667993328519712717" at="53,24,54,26" concept="3" />
       <node id="1667993328519775408" at="58,72,59,28" concept="3" />
       <node id="1667993328519775411" at="63,75,64,31" concept="3" />
-      <node id="1386329086796083768" at="76,31,77,72" concept="3" />
-      <node id="1386329086796091574" at="81,31,82,45" concept="3" />
+      <node id="1386329086796083768" at="68,31,69,72" concept="3" />
+      <node id="1386329086796091574" at="73,34,74,45" concept="3" />
       <node id="5145867626676112782" at="86,33,87,13" concept="9" />
       <node id="8565799187151772402" at="88,5,89,27" concept="3" />
       <node id="5145867626676112835" at="92,42,93,37" concept="0" />
@@ -85,8 +85,8 @@
       <node id="970872252592981519" at="183,7,184,37" concept="9" />
       <node id="5108287150807336557" at="113,12,115,7" concept="1" />
       <node id="8565799187151772192" at="162,0,164,0" concept="2" trace="RunConfigurationsState#()V" />
-      <node id="5145867626676113097" at="67,0,70,0" concept="7" trace="initComponent#()V" />
-      <node id="5145867626676113101" at="71,0,74,0" concept="7" trace="disposeComponent#()V" />
+      <node id="5145867626676112766" at="77,0,80,0" concept="7" trace="projectOpened#()V" />
+      <node id="5145867626676112770" at="81,0,84,0" concept="7" trace="projectClosed#()V" />
       <node id="5145867626676112777" at="85,39,88,5" concept="6" />
       <node id="5108287150807336576" at="104,36,107,9" concept="6" />
       <node id="5108287150807336567" at="109,49,112,9" concept="6" />
@@ -100,8 +100,8 @@
       <node id="5145867626676112756" at="52,0,56,0" concept="2" trace="RunConfigurationsStateManager#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/plugins/PluginLoaderRegistry;)V" />
       <node id="1667993328519773933" at="57,0,61,0" concept="7" trace="afterPluginsLoaded#(Ljava/util/List;)V" />
       <node id="1667993328519773937" at="62,0,66,0" concept="7" trace="beforePluginsUnloaded#(Ljava/util/List;)V" />
-      <node id="5145867626676112766" at="75,0,79,0" concept="7" trace="projectOpened#()V" />
-      <node id="5145867626676112770" at="80,0,84,0" concept="7" trace="projectClosed#()V" />
+      <node id="5145867626676113097" at="67,0,71,0" concept="7" trace="initComponent#()V" />
+      <node id="5145867626676113101" at="72,0,76,0" concept="7" trace="disposeComponent#()V" />
       <node id="5145867626676112832" at="92,0,96,0" concept="7" trace="disposeRunConfigurations#()V" />
       <node id="7276157616189155453" at="170,33,174,7" concept="6" />
       <node id="5108287150807328873" at="137,112,142,5" concept="5" />
@@ -115,13 +115,13 @@
       <node id="5108287150807336535" at="101,81,116,5" concept="5" />
       <node id="5138467354513155917" at="97,0,118,0" concept="7" trace="disposeRunContentDescriptors#()V" />
       <node id="4426601056068794200" at="123,0,145,0" concept="7" trace="collectDescriptorsToDispose#()Ljava/util/List;" />
-      <scope id="5145867626676113100" at="68,31,68,31" />
-      <scope id="5145867626676113104" at="72,34,72,34" />
+      <scope id="5145867626676112769" at="78,31,78,31" />
+      <scope id="5145867626676112773" at="82,31,82,31" />
       <scope id="8565799187151772195" at="162,37,162,37" />
       <scope id="1667993328519773936" at="58,72,59,28" />
       <scope id="1667993328519773940" at="63,75,64,31" />
-      <scope id="5145867626676112769" at="76,31,77,72" />
-      <scope id="5145867626676112773" at="81,31,82,45" />
+      <scope id="5145867626676113100" at="68,31,69,72" />
+      <scope id="5145867626676113104" at="73,34,74,45" />
       <scope id="5145867626676112781" at="86,33,87,13" />
       <scope id="5108287150807336576" at="105,43,106,98" />
       <scope id="5108287150807336567" at="110,43,111,109" />
@@ -140,8 +140,8 @@
       <scope id="7276157616189155455" at="171,44,173,54">
         <var name="toSelect" id="7276157616189148702" />
       </scope>
-      <scope id="5145867626676113097" at="67,0,70,0" />
-      <scope id="5145867626676113101" at="71,0,74,0" />
+      <scope id="5145867626676112766" at="77,0,80,0" />
+      <scope id="5145867626676112770" at="81,0,84,0" />
       <scope id="5108287150807336575" at="104,36,107,9" />
       <scope id="5108287150807336566" at="109,49,112,9" />
       <scope id="5138467354513078419" at="119,0,122,0" />
@@ -166,8 +166,8 @@
       <scope id="1667993328519773937" at="62,0,66,0">
         <var name="contributors" id="2555040969573860997" />
       </scope>
-      <scope id="5145867626676112766" at="75,0,79,0" />
-      <scope id="5145867626676112770" at="80,0,84,0" />
+      <scope id="5145867626676113097" at="67,0,71,0" />
+      <scope id="5145867626676113101" at="72,0,76,0" />
       <scope id="5145867626676112776" at="85,39,89,27" />
       <scope id="5145867626676112832" at="92,0,96,0" />
       <scope id="5108287150807328873" at="137,112,142,5">

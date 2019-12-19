@@ -23,6 +23,7 @@ import jetbrains.mps.module.ReloadableModuleBase;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -41,7 +42,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class ClassLoadingBroadCaster {
   private static final Logger LOG = LogManager.getLogger(ClassLoadingBroadCaster.class);
-  private static final int MAX_SESSIONS_ALIVE = 2;
+  private static final int MAX_SESSIONS_ALIVE = 100; // fixme to be fixed in 201, PluginLoaderRegistry is not up to the desired CLM model
+  private static boolean ourCheckMemLeaks = true;
 
   private final LinkedHashSet<ReloadableModule> myLoadedModules = new LinkedHashSet<>();
   private final ModelAccess myModelAccess;
@@ -55,6 +57,14 @@ public class ClassLoadingBroadCaster {
   public ClassLoadingBroadCaster(@NotNull ModelAccess modelAccess, @NotNull ModuleClassLoaderDisposer disposer) {
     myModelAccess = modelAccess;
     myDisposer = disposer;
+  }
+
+  /**
+   * MigrationsTest does that
+   */
+  @TestOnly
+  public static void setCheckMemLeaks(boolean check) {
+    ourCheckMemLeaks = check;
   }
 
   public Set<ReloadableModule> onUnload(Collection<? extends SModuleReference> refsToUnload, @NotNull ProgressMonitor monitor) {
@@ -77,8 +87,8 @@ public class ClassLoadingBroadCaster {
     try {
       monitor.start("Broadcasting Unload Events", 2 * myDeployListeners.size());
       DisposeSession session = myDisposer.createSession(modulesToUnload, mySessionsAlive::remove);
-      if (mySessionsAlive.size() > MAX_SESSIONS_ALIVE) { // note that if we do 100 reloads during a single write action we might get a 100 sessions
-        LOG.error("Possible leaking classes : currently there are " + mySessionsAlive.size() + " sessions alive");
+      if (ourCheckMemLeaks && mySessionsAlive.size() > MAX_SESSIONS_ALIVE) { // note that if we do 100 reloads during a single write action we might get a 100 sessions
+        LOG.error("Possible leaking class loaders : currently there are " + mySessionsAlive.size() + " sessions alive. Please avoid running too many reloads in the single write action");
       }
       mySessionsAlive.add(session);
       ResourceTrackerCallback trackerCallback = session.getTrackerCallback();

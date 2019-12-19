@@ -57,6 +57,12 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   private jetbrains.mps.smodel.SReference[] myReferences = jetbrains.mps.smodel.SReference.EMPTY_ARRAY;
   private Object[] myProperties = null;
   private org.jetbrains.mps.openapi.model.SNodeId myId;
+
+  /**
+   * seems to be ok, and still extremely fragile since it is important to reset the reference to the field on _any_ element change.
+   * I'd rather use some atomic array primitive from java.lang.concurrent
+   */
+  @SuppressWarnings("VolatileArrayField")
   private volatile Object[] myUserObjects; // key,value,key,value ; copy-on-write (!)
   private SConcept myConcept; //todo make final after 3.2
   private SNode parent;

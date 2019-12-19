@@ -68,6 +68,9 @@ public abstract class BasePluginManager<T> implements PluginLoader {
 
   @Override
   public final boolean loadPlugins(@NotNull List<PluginContributor> contributors) {
+    if (isDisposed()) {
+      return false;
+    }
     int size = contributors.size();
     LOG.debug("Loading plugins from " + size + " contributors [" + toString() + "]");
     final Map<PluginContributor, T> plugins = createPlugins(contributors);
@@ -101,6 +104,9 @@ public abstract class BasePluginManager<T> implements PluginLoader {
 
   @Override
   public final boolean unloadPlugins(@NotNull List<PluginContributor> contributors) {
+    if (isDisposed()) {
+      return false;
+    }
     int size = contributors.size();
     LOG.debug("Unloading MPS plugins from " + size + " contributors [" + toString() + "]");
     final List<T> plugins;
@@ -172,6 +178,8 @@ public abstract class BasePluginManager<T> implements PluginLoader {
       }
     }
   }
+
+  public abstract boolean isDisposed();
 
   public List<T> getPlugins() {
     synchronized (myPluginsLock) {
