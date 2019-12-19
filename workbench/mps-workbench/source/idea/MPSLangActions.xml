@@ -83,7 +83,9 @@
     <group id="PrintExportGroup">
       <separator/>
       <action id="ExportToHTML" class="com.intellij.codeEditor.printing.ExportToHTMLAction"/>
+      <!-- See MPS-26514: hide action and wait for fix
       <action id="Print" class="com.intellij.codeEditor.printing.PrintAction" icon="AllIcons.General.Print"/>
+      -->
 
       <add-to-group group-id="FileMenu" anchor="after" relative-to-action="InvalidateCaches"/>
     </group>

@@ -351,17 +351,35 @@ public final class Renamer {
   }
 
   // if module name is a prefix of it's model's name or they are equals - rename the model, too
-  private void renameModelsIfNeeded(@NotNull AbstractModule module, @NotNull String oldName, @NotNull String newName) {
+  private void renameModelsIfNeeded(@NotNull AbstractModule module, @NotNull String oldModuleName, @NotNull String newModuleName) {
     for (SModel m : module.getModels()) {
       if (!m.isReadOnly()) {
         SModelName oldModelName = m.getName();
-        if (oldModelName.getNamespace().startsWith(oldName) || oldModelName.getLongName().equals(oldName)) {
+        if (oldModelName.getNamespace().startsWith(oldModuleName) || oldModelName.getLongName().equals(oldModuleName)) {
           if (m instanceof EditableSModel) {
-            final String namespace = oldModelName.getLongName().equals(oldName)
-                                     ? newName.substring(0, newName.lastIndexOf(DOT + oldModelName.getSimpleName())) // handle equal module & model names
-                                     : newName + oldModelName.getNamespace().substring(oldName.length());
-            SModelName newModelName = new SModelName(namespace, oldModelName.getSimpleName(), oldModelName.getStereotype());
-            ((EditableSModel) m).rename(newModelName.getValue(), m.getSource() instanceof FileDataSource);
+            /*
+            * If old model name is equal to old module name then model renamed accordingly.
+            * New name must be divided to namespace (can be empty) and name to construct SModelName.
+            *
+            * If model had own name started with module name as a prefix then the prefix is renamed and the postfix stays the same.
+            * */
+            String newModelNamespace = null;
+            String newModelName = null;
+            if (oldModelName.getLongName().equals(oldModuleName)) {
+              final int dotIndex = newModuleName.lastIndexOf(DOT);
+              if (dotIndex > 0) {
+                newModelNamespace = newModuleName.substring(0, dotIndex);
+                newModelName = newModuleName.substring(dotIndex + 1);
+              } else {
+                newModelNamespace = null;
+                newModelName = newModuleName;
+              }
+            } else /*if (oldModelName.getNamespace().startsWith(oldModuleName))*/ {
+              newModelNamespace = newModuleName + oldModelName.getNamespace().substring(oldModuleName.length());
+              newModelName = oldModelName.getSimpleName();
+            }
+            SModelName newSModelName = new SModelName(newModelNamespace, newModelName, oldModelName.getStereotype());
+            ((EditableSModel) m).rename(newSModelName.getValue(), m.getSource() instanceof FileDataSource);
           }
         }
       }

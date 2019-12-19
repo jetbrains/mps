@@ -5,13 +5,16 @@ package jetbrains.mps.workbench.dialogs.project.properties.project;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.ui.components.JBPanel;
 import org.jetbrains.mps.openapi.ui.Modifiable;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Arrays;
+import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.StandaloneMPSProject;
 import com.intellij.ui.components.JBList;
 import jetbrains.mps.project.structure.project.ModulePath;
 import java.util.List;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.util.annotation.ToRemove;
-import java.util.Arrays;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
@@ -21,18 +24,23 @@ import jetbrains.mps.workbench.dialogs.project.components.parts.renderers.PathRe
 import javax.swing.ListSelectionModel;
 import com.intellij.ui.TreeUIHelper;
 import com.intellij.util.containers.Convertor;
-import com.intellij.ui.ToolbarDecorator;
-import com.intellij.ui.AnActionButtonRunnable;
+import java.util.function.Consumer;
+import com.intellij.openapi.vfs.VirtualFile;
+import java.util.Comparator;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.function.Function;
 import com.intellij.ui.AnActionButton;
+import com.intellij.icons.AllIcons;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
-import com.intellij.openapi.util.Condition;
-import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.project.ProjectUtil;
+import com.intellij.openapi.vfs.VfsUtilCore;
+import com.intellij.openapi.vfs.VirtualFileVisitor;
+import com.intellij.ui.ToolbarDecorator;
+import com.intellij.ui.AnActionButtonRunnable;
+import com.intellij.openapi.util.Condition;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import com.intellij.ui.IdeBorderFactory;
@@ -40,9 +48,12 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.function.Predicate;
 import javax.swing.AbstractListModel;
+import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933583134", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
+  private static final Set<String> EXTENTIONS = new HashSet<String>(Arrays.asList(MPSExtentions.LANGUAGE, MPSExtentions.SOLUTION, MPSExtentions.DEVKIT, "lib"));
+
   private final StandaloneMPSProject myProject;
   private final ProjectProperties myProperties = new ProjectProperties();
 
@@ -83,7 +94,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
 
     myModulesList.setCellRenderer(new PathRenderer());
     myModulesList.setEmptyText("No modules");
-    myModulesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    myModulesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
     TreeUIHelper.getInstance().installListSpeedSearch(myModulesList, new Convertor<ModulePath, String>() {
       public String convert(ModulePath modulePath) {
@@ -91,47 +102,121 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
       }
     });
 
+    final Consumer<List<VirtualFile>> filesToModulePathsProcessor = new Consumer<List<VirtualFile>>() {
+      /**
+       * Process list of files:<br>
+       * <ul>
+       * <li>Sort input files by path (to add elements in correct order)</li>
+       * <li>Filter out files that are already included in project</li>
+       * <li>Add rest of the files to the project as module paths</li>
+       * <li>Select chosen elements (only new ones) in UI</li>
+       * </ul>
+       * 
+       * @param files to be added to the project as MPS modules
+       */
+      @Override
+      public void accept(List<VirtualFile> files) {
+        if (files == null || files.isEmpty()) {
+          return;
+        }
+
+        files.sort(new Comparator<VirtualFile>() {
+          @Override
+          public int compare(VirtualFile file1, VirtualFile file2) {
+            return file1.getPath().compareTo(file2.getPath());
+          }
+        });
+
+        List<Integer> modulePathsToSelect = new ArrayList<Integer>(files.size());
+        for (VirtualFile file : files) {
+          ModulePath path = ((PathsListModel) myModulesList.getModel()).getModulePathByFSPath(file.getPath());
+
+          if (path == null) {
+            path = new ModulePath(file.getPath(), null);
+            modulePathsToSelect.add(((PathsListModel) myModulesList.getModel()).addPath(path));
+          }
+        }
+
+        final int[] indices = new int[modulePathsToSelect.size()];
+        final Wrappers._int counter = new Wrappers._int(0);
+        modulePathsToSelect.forEach(new Consumer<Integer>() {
+          public void accept(Integer index) {
+            indices[counter.value++] = index;
+          }
+        });
+        myModulesList.setSelectedIndices(indices);
+      }
+    };
+
+    // Check that file has one of the possible MPS module extensions 
+    final Function<VirtualFile, Boolean> isModuleFile = new Function<VirtualFile, Boolean>() {
+      @Override
+      public Boolean apply(VirtualFile file) {
+        String fileExtension = file.getExtension();
+        return fileExtension != null && !(file.isDirectory()) && EXTENTIONS.contains(fileExtension.toLowerCase());
+      }
+    };
+
+    AnActionButton importFolder = new AnActionButton("Import", "Add all modules from selected folder", AllIcons.ToolbarDecorator.Import) {
+      @Override
+      public void actionPerformed(@NotNull AnActionEvent event) {
+        FileChooserDescriptor createSingleFolderDescriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
+        createSingleFolderDescriptor.setDescription("Search for module files (depth is limited to five levels)");
+        VirtualFile folder = FileChooser.chooseFile(createSingleFolderDescriptor, myModulesList, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));
+        if (folder == null) {
+          return;
+        }
+
+        final List<VirtualFile> moduleFiles = new ArrayList<VirtualFile>();
+        VfsUtilCore.visitChildrenRecursively(folder, new VirtualFileVisitor<Void>(VirtualFileVisitor.NO_FOLLOW_SYMLINKS, VirtualFileVisitor.limit(5)) {
+          @Override
+          public boolean visitFile(@NotNull VirtualFile file) {
+            if (isModuleFile.apply(file)) {
+              moduleFiles.add(file);
+            }
+            return super.visitFile(file);
+          }
+        });
+
+        filesToModulePathsProcessor.accept(moduleFiles);
+      }
+    };
+
     ToolbarDecorator decorator = ToolbarDecorator.createDecorator(myModulesList);
     decorator.setAddAction(new AnActionButtonRunnable() {
       @Override
       public void run(AnActionButton button) {
-        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor().withFileFilter(new Condition<VirtualFile>() {
-          private String[] EXTENTIONS = new String[]{MPSExtentions.LANGUAGE, MPSExtentions.SOLUTION, MPSExtentions.DEVKIT, "lib"};
-          public boolean value(final VirtualFile file) {
-            // TODO: create some method to get all extensions by object type (project, module, model) 
-            return Sequence.fromIterable(Sequence.fromArray(EXTENTIONS)).any(new IWhereFilter<String>() {
-              public boolean accept(String it) {
-                return it.equalsIgnoreCase(file.getExtension());
-              }
-            });
+        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFilesNoJarsDescriptor().withFileFilter(new Condition<VirtualFile>() {
+          public boolean value(VirtualFile file) {
+            return isModuleFile.apply(file);
           }
         });
-        VirtualFile file = FileChooser.chooseFile(descriptor, myModulesList, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));
 
-        if (file == null) {
-          return;
-        }
+        // Do not use method with consumer, because it uses com.intellij.util.Consumer instead of java.util.function.Consumer 
+        VirtualFile[] files = FileChooser.chooseFiles(descriptor, myModulesList, myProject.getProject(), ProjectUtil.guessProjectDir(myProject.getProject()));
 
-        ModulePath path = new ModulePath(file.getPath(), null);
-        for (ModulePath p : ((PathsListModel) myModulesList.getModel()).getPaths()) {
-          if (p.getPath().equals(path.getPath())) {
-            myModulesList.setSelectedValue(p, true);
-            return;
-          }
-        }
-        myModulesList.setSelectedIndex(((PathsListModel) myModulesList.getModel()).addPath(path));
+        filesToModulePathsProcessor.accept(Arrays.asList(files));
       }
     }).setRemoveAction(new AnActionButtonRunnable() {
       @Override
       public void run(AnActionButton button) {
-        int selectedIndex = myModulesList.getSelectedIndex();
-        ((PathsListModel) myModulesList.getModel()).removePath(myModulesList.getSelectedValue());
+        int[] selectedIndices = myModulesList.getSelectedIndices();
+        ModulePath[] pathsToRemove = new ModulePath[selectedIndices.length];
+        for (int i = 0; i < selectedIndices.length; i++) {
+          pathsToRemove[i] = myModulesList.getModel().getElementAt(selectedIndices[i]);
+        }
+
+        int minSelectedIndex = myModulesList.getMinSelectionIndex();
+        for (ModulePath path : pathsToRemove) {
+          ((PathsListModel) myModulesList.getModel()).removePath(path);
+        }
+
         if (myModulesList.getItemsCount() > 0) {
-          myModulesList.setSelectedIndex((selectedIndex < myModulesList.getItemsCount() ? selectedIndex : myModulesList.getItemsCount() - 1));
+          myModulesList.setSelectedIndex((minSelectedIndex < myModulesList.getItemsCount() ? minSelectedIndex : myModulesList.getItemsCount() - 1));
         }
 
       }
-    }).disableUpDownActions();
+    }).addExtraAction(importFolder).disableUpDownActions();
     decorator.setPreferredSize(new Dimension(500, 150));
 
     JPanel panel = decorator.createPanel();
@@ -187,7 +272,9 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   }
 
 
-
+  /**
+   * ListModel wrapper over {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties }
+   */
   private class PathsListModel extends AbstractListModel<ModulePath> {
     public PathsListModel() {
     }
@@ -204,6 +291,11 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
 
     public List<ModulePath> getPaths() {
       return myProperties.getModules();
+    }
+
+    @Nullable
+    /*package*/ ModulePath getModulePathByFSPath(String fsPath) {
+      return myProperties.getModulePathByFSPath(fsPath);
     }
 
     public int addPath(ModulePath path) {
