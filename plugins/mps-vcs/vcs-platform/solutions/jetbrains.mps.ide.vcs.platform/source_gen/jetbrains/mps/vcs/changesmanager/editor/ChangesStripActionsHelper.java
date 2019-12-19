@@ -129,7 +129,10 @@ public final class ChangesStripActionsHelper {
 
     final SModel oldModel = ListSequence.fromList(changeGroup.getChanges()).first().getChangeSet().getOldModel();
     // do we need??? there were no de-registration 
-    DiffModelUtil.renameModelAndRegister(oldModel, "old");
+    if (oldModel.getModule() == null) {
+      // without model registration reference resolving doesn't work during paste: should be fixed 
+      DiffModelUtil.renameModelAndRegister(oldModel, "old");
+    }
 
     // compute paths to root 
     Iterable<SNode> baseNodes = ListSequence.fromList(changeGroup.getChanges()).translate(new ITranslator2<ModelChange, SNode>() {
