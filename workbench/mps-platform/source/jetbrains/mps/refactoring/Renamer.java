@@ -357,10 +357,19 @@ public final class Renamer {
         SModelName oldModelName = m.getName();
         if (oldModelName.getNamespace().startsWith(oldName) || oldModelName.getLongName().equals(oldName)) {
           if (m instanceof EditableSModel) {
+            /*
+            * If model name is equal to module name model name renamed accordingly.
+            * New module name must be divided to namespace (can be null) and name (last part after last dot in new name).
+            *
+            * If model had own name started with module name + postfix, prefix is renamed and postfix stays the same.
+            * */
             final String namespace = oldModelName.getLongName().equals(oldName)
-                                     ? newName.substring(0, newName.lastIndexOf(DOT + oldModelName.getSimpleName())) // handle equal module & model names
+                                     ? newName.lastIndexOf(DOT) > 0 ? newName.substring(0, newName.lastIndexOf(DOT)) : null
                                      : newName + oldModelName.getNamespace().substring(oldName.length());
-            SModelName newModelName = new SModelName(namespace, oldModelName.getSimpleName(), oldModelName.getStereotype());
+            final String modelName = oldModelName.getLongName().equals(oldName)
+                                     ? newName.lastIndexOf(DOT) > 0 ? newName.substring(newName.lastIndexOf(DOT) + 1) : newName
+                                     : oldModelName.getSimpleName();
+            SModelName newModelName = new SModelName(namespace, modelName, oldModelName.getStereotype());
             ((EditableSModel) m).rename(newModelName.getValue(), m.getSource() instanceof FileDataSource);
           }
         }
