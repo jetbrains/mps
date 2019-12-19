@@ -34,7 +34,7 @@ public class AnonymousCreator1_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("7468618355357374812", "7468618355357374840");
+      initEditorComponent("7468618355357374812", "5036999749030680394");
       typeString("IntA");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
