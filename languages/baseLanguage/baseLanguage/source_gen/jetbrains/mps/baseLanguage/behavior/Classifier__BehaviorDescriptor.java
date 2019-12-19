@@ -334,19 +334,24 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return ((String) Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(__thisNode__, null));
   }
   /*package*/ static String getNestedNameInContext_id7q4lzBFjvF8(@NotNull SNode __thisNode__, SNode context) {
+    boolean targetIsStatic = ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__)) && SNodeOperations.getParent(__thisNode__) != null;
     List<SNode> containers = ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Classifier$hJ, true)).reversedList();
     List<SNode> contextAncestors = SNodeOperations.getNodeAncestorsWhereConceptInList(context, new SAbstractConcept[]{CONCEPTS.Classifier$hJ, CONCEPTS.StaticKind$hY}, true);
 
     List<SNode> contextContainers = ListSequence.fromList(new ArrayList<SNode>());
-    for (SNode ancestor : contextAncestors) {
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.StaticKind$hY)) {
-        break;
-      }
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.Classifier$hJ)) {
-        SNode classifier = SNodeOperations.cast(ancestor, CONCEPTS.Classifier$hJ);
-        ListSequence.fromList(contextContainers).addElement(classifier);
-        if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier)) {
+    if (targetIsStatic) {
+      ListSequence.fromList(contextContainers).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(contextAncestors, CONCEPTS.Classifier$hJ)));
+    } else {
+      for (SNode ancestor : contextAncestors) {
+        if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.StaticKind$hY)) {
           break;
+        }
+        if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.Classifier$hJ)) {
+          SNode classifier = SNodeOperations.cast(ancestor, CONCEPTS.Classifier$hJ);
+          ListSequence.fromList(contextContainers).addElement(classifier);
+          if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp)) {
+            break;
+          }
         }
       }
     }

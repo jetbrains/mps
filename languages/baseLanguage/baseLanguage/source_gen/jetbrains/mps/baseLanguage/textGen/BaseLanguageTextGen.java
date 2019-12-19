@@ -57,7 +57,7 @@ public abstract class BaseLanguageTextGen {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append("(");
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(methodCall, BaseLanguageTextGen.LINKS.actualArgument$$A7L);
+      Iterable<SNode> collection = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -76,20 +76,20 @@ public abstract class BaseLanguageTextGen {
   }
   public static void annotations(SNode annotable, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode item : SLinkOperations.getChildren(annotable, BaseLanguageTextGen.LINKS.annotation$oVP4)) {
+    for (SNode item : SLinkOperations.getChildren(annotable, LINKS.annotation$oVP4)) {
       tgs.appendNode(item);
     }
-    if (SNodeOperations.isInstanceOf(annotable, BaseLanguageTextGen.CONCEPTS.IDeprecatable$EE) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(annotable, BaseLanguageTextGen.CONCEPTS.IDeprecatable$EE))) {
+    if (SNodeOperations.isInstanceOf(annotable, CONCEPTS.IDeprecatable$EE) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(annotable, CONCEPTS.IDeprecatable$EE))) {
       boolean containsDeprecated = false;
-      for (SNode annotationInstance : SLinkOperations.getChildren(annotable, BaseLanguageTextGen.LINKS.annotation$oVP4)) {
-        if (SLinkOperations.hasPointer(annotationInstance, BaseLanguageTextGen.LINKS.annotation$zNxu, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))) {
+      for (SNode annotationInstance : SLinkOperations.getChildren(annotable, LINKS.annotation$oVP4)) {
+        if (SLinkOperations.hasPointer(annotationInstance, LINKS.annotation$zNxu, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))) {
           containsDeprecated = true;
           break;
         }
       }
       if (!(containsDeprecated)) {
         SNode deprecated = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance"));
-        SLinkOperations.setPointer(deprecated, BaseLanguageTextGen.LINKS.annotation$zNxu, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
+        SLinkOperations.setPointer(deprecated, LINKS.annotation$zNxu, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
         tgs.appendNode(deprecated);
       }
     }
@@ -115,23 +115,23 @@ public abstract class BaseLanguageTextGen {
       return;
     }
     String pkgName = BaseLanguageTextGen.getPackageName(node, ctx);
-    BaseLanguageTextGen.appendClassName(pkgName, NameUtil.longNameFromNamespaceAndShortName(pkgName, SPropertyOperations.getString(node, BaseLanguageTextGen.PROPS.nestedName$XUlU)), contextNode, ctx);
+    BaseLanguageTextGen.appendClassName(node, pkgName, NameUtil.longNameFromNamespaceAndShortName(pkgName, SPropertyOperations.getString(node, PROPS.nestedName$XUlU)), contextNode, ctx);
   }
   public static void internalClassName(String packageName, String className, SNode contextNode, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    BaseLanguageTextGen.appendClassName(packageName, NameUtil.longNameFromNamespaceAndShortName(packageName, className), contextNode, ctx);
+    BaseLanguageTextGen.appendClassName(null, packageName, NameUtil.longNameFromNamespaceAndShortName(packageName, className), contextNode, ctx);
   }
   public static void variableDeclaration(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (SPropertyOperations.getBoolean(node, BaseLanguageTextGen.PROPS.isFinal$hIht)) {
+    if (SPropertyOperations.getBoolean(node, PROPS.isFinal$hIht)) {
       tgs.append("final ");
     }
-    tgs.appendNode(SLinkOperations.getTarget(node, BaseLanguageTextGen.LINKS.type$pLrO));
+    tgs.appendNode(SLinkOperations.getTarget(node, LINKS.type$pLrO));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(node, BaseLanguageTextGen.PROPS.name$tAp1));
-    if ((SLinkOperations.getTarget(node, BaseLanguageTextGen.LINKS.initializer$KgD) != null)) {
+    tgs.append(SPropertyOperations.getString(node, PROPS.name$tAp1));
+    if ((SLinkOperations.getTarget(node, LINKS.initializer$KgD) != null)) {
       tgs.append(" = ");
-      tgs.appendNode(SLinkOperations.getTarget(node, BaseLanguageTextGen.LINKS.initializer$KgD));
+      tgs.appendNode(SLinkOperations.getTarget(node, LINKS.initializer$KgD));
     }
   }
   public static void fileHeader(SNode cls, final TextGenContext ctx) {
@@ -155,15 +155,15 @@ public abstract class BaseLanguageTextGen {
   public static void methodCall(SNode methodCall, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     BaseLanguageTextGen.methodTypeArguments(methodCall, ctx);
-    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(methodCall, BaseLanguageTextGen.LINKS.baseMethodDeclaration$$A7i), ctx);
+    BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$$A7i), ctx);
     BaseLanguageTextGen.arguments(methodCall, ctx);
   }
   public static void methodTypeArguments(SNode methodCall, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (ListSequence.fromList(SLinkOperations.getChildren(methodCall, BaseLanguageTextGen.LINKS.typeArgument$GDtv)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$GDtv)).isNotEmpty()) {
       tgs.append("<");
       {
-        Iterable<SNode> collection = SLinkOperations.getChildren(methodCall, BaseLanguageTextGen.LINKS.typeArgument$GDtv);
+        Iterable<SNode> collection = SLinkOperations.getChildren(methodCall, LINKS.typeArgument$GDtv);
         final SNode lastItem = Sequence.fromIterable(collection).last();
         for (SNode item : collection) {
           tgs.appendNode(item);
@@ -211,7 +211,7 @@ public abstract class BaseLanguageTextGen {
       return;
     }
     String longName = NameUtil.longNameFromNamespaceAndShortName(packageAndShortName._0(), packageAndShortName._1());
-    BaseLanguageTextGen.appendClassName(packageAndShortName._0(), longName, classifierRef.getSourceNode(), ctx);
+    BaseLanguageTextGen.appendClassName(SLinkOperations.getTargetNode(classifierRef), packageAndShortName._0(), longName, classifierRef.getSourceNode(), ctx);
   }
   protected static Tuples._2<String, String> getPackageAndShortName(SReference classifierRef, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
@@ -254,14 +254,14 @@ public abstract class BaseLanguageTextGen {
         return null;
       }
 
-      if (SNodeOperations.isInstanceOf(targetNode, BaseLanguageTextGen.CONCEPTS.Classifier$hJ)) {
-        packageName = BaseLanguageTextGen.getPackageName(SNodeOperations.cast(targetNode, BaseLanguageTextGen.CONCEPTS.Classifier$hJ), ctx);
-        shortName = SPropertyOperations.getString(SNodeOperations.cast(targetNode, BaseLanguageTextGen.CONCEPTS.Classifier$hJ), BaseLanguageTextGen.PROPS.nestedName$XUlU);
-      } else if (SNodeOperations.isInstanceOf(targetNode, BaseLanguageTextGen.CONCEPTS.ConstructorDeclaration$5U)) {
+      if (SNodeOperations.isInstanceOf(targetNode, CONCEPTS.Classifier$hJ)) {
+        packageName = BaseLanguageTextGen.getPackageName(SNodeOperations.cast(targetNode, CONCEPTS.Classifier$hJ), ctx);
+        shortName = SPropertyOperations.getString(SNodeOperations.cast(targetNode, CONCEPTS.Classifier$hJ), PROPS.nestedName$XUlU);
+      } else if (SNodeOperations.isInstanceOf(targetNode, CONCEPTS.ConstructorDeclaration$5U)) {
         //  don't ask me why classifierRef ever points to ConstructorDeclaration. Check ClassCreator_TextGen. 
-        SNode classifier = SNodeOperations.getNodeAncestor(targetNode, BaseLanguageTextGen.CONCEPTS.Classifier$hJ, false, false);
+        SNode classifier = SNodeOperations.getNodeAncestor(targetNode, CONCEPTS.Classifier$hJ, false, false);
         packageName = BaseLanguageTextGen.getPackageName(classifier, ctx);
-        shortName = SPropertyOperations.getString(classifier, BaseLanguageTextGen.PROPS.nestedName$XUlU);
+        shortName = SPropertyOperations.getString(classifier, PROPS.nestedName$XUlU);
       } else {
         packageName = SModelOperations.getModelName(SNodeOperations.getModel(targetNode));
         shortName = jetbrains.mps.util.SNodeOperations.getResolveInfo(targetNode);
@@ -271,19 +271,19 @@ public abstract class BaseLanguageTextGen {
   }
   protected static String getPackageName(SNode cls, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(cls), BaseLanguageTextGen.CONCEPTS.Classifier$hJ), BaseLanguageTextGen.PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(cls, BaseLanguageTextGen.PROPS.packageName$3uUR);
+    if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(SNodeOperations.getContainingRoot(cls), CONCEPTS.Classifier$hJ), PROPS.packageName$3uUR))) {
+      return SPropertyOperations.getString(cls, PROPS.packageName$3uUR);
     }
     return SModelOperations.getModelName(SNodeOperations.getModel(cls));
   }
-  protected static String getClassName(String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
+  protected static String getClassName(SNode target, String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (fqName == null) {
       tgs.reportError("class name is NULL");
       return "???";
     }
 
-    ImportEntry importEntry = tgs.getContextObject("ctx", ClassifierUnitContext.class).getClassifierRefText(packageName, fqName, contextNode);
+    ImportEntry importEntry = tgs.getContextObject("ctx", ClassifierUnitContext.class).getClassifierRefText(target, packageName, fqName, contextNode);
     if (importEntry.needsImport()) {
       tgs.pushTextArea("IMPORTS");
       tgs.append("import ");
@@ -294,9 +294,9 @@ public abstract class BaseLanguageTextGen {
     }
     return importEntry.getName();
   }
-  protected static void appendClassName(String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
+  protected static void appendClassName(SNode target, String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(BaseLanguageTextGen.getClassName(packageName, fqName, contextNode, ctx));
+    tgs.append(BaseLanguageTextGen.getClassName(target, packageName, fqName, contextNode, ctx));
   }
   public static ClassifierUnitContext contextObjectInstance_ctx(SNode primaryInputNode) {
     return new ClassifierUnitContext(primaryInputNode);

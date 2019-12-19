@@ -372,26 +372,26 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return "java";
   }
   private static String getPath_Annotation(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
     }
     return null;
   }
   private static String getPath_ClassConcept(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
     }
     return null;
   }
   private static String getPath_Interface(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
     }
     return null;
   }
   private static String getPath_EnumClass(SNode node) {
-    if (isNotEmptyString(SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR))) {
-      return SPropertyOperations.getString(node, TextGenAspectDescriptor.PROPS.packageName$3uUR).replace('.', '/');
+    if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.packageName$3uUR))) {
+      return SPropertyOperations.getString(node, PROPS.packageName$3uUR).replace('.', '/');
     }
     return null;
   }

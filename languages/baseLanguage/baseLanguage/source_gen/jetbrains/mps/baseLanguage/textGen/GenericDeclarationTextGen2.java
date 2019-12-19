@@ -14,10 +14,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public abstract class GenericDeclarationTextGen2 extends BaseLanguageTextGen {
   public static void typeDeclarations(SNode generic, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (ListSequence.fromList(SLinkOperations.getChildren(generic, GenericDeclarationTextGen2.LINKS.typeVariableDeclaration$ziZT)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(generic, LINKS.typeVariableDeclaration$ziZT)).isNotEmpty()) {
       tgs.append("<");
       {
-        Iterable<SNode> collection = SLinkOperations.getChildren(generic, GenericDeclarationTextGen2.LINKS.typeVariableDeclaration$ziZT);
+        Iterable<SNode> collection = SLinkOperations.getChildren(generic, LINKS.typeVariableDeclaration$ziZT);
         final SNode lastItem = Sequence.fromIterable(collection).last();
         for (SNode item : collection) {
           tgs.appendNode(item);

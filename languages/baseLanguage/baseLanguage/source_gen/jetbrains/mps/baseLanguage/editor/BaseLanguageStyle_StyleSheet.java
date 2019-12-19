@@ -58,7 +58,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_KeyWord(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new KeyWordStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.KeyWordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -68,7 +68,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_CompactKeyWord(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new CompactKeyWordStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.CompactKeyWordStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -78,7 +78,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_FunctionDeclaration(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new FunctionDeclarationStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.FunctionDeclarationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -88,7 +88,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Comment(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new CommentStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.CommentStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -98,7 +98,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_TODO(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new TODOStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.TODOStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -108,7 +108,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_BlockComment(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new BlockCommentStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.BlockCommentStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -118,7 +118,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_JavaDoc(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new JavaDocStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.JavaDocStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -128,7 +128,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_JavaDocTag(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new JavaDocTagStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.JavaDocTagStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -138,7 +138,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Field(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new FieldStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.FieldStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -148,7 +148,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_LocalVariable(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new LocalVariableStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.LocalVariableStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -158,7 +158,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Parameter(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ParameterStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.ParameterStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -168,7 +168,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_StaticField(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StaticFieldStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.StaticFieldStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -178,7 +178,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_StringLiteral(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StringLiteralStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.StringLiteralStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -188,7 +188,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_NumericLiteral(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new NumericLiteralStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.NumericLiteralStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -198,7 +198,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_EmptyCell(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new EmptyCellStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.EmptyCellStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -208,7 +208,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_InstanceMethod(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new InstanceMethodStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.InstanceMethodStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -218,7 +218,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_StaticMethod(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new StaticMethodStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.StaticMethodStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -228,7 +228,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Annotation(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new AnnotationStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.AnnotationStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -238,7 +238,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Operator(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new OperatorStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.OperatorStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -248,7 +248,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_AnyBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.AnyBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -258,7 +258,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Parenthesis(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.ParenthesisStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -268,7 +268,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_LeftParen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new LeftParenStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.LeftParenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -278,7 +278,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_LeftParenAfterName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -288,7 +288,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_RightParen(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RightParenStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.RightParenStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -298,7 +298,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Brace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new BraceStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.BraceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -308,7 +308,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_LeftBrace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new LeftBraceStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.LeftBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -318,7 +318,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_RightBrace(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RightBraceStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.RightBraceStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -328,7 +328,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Bracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new BracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.BracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -338,7 +338,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_LeftBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new LeftBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.LeftBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -348,7 +348,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_RightBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RightBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.RightBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -358,7 +358,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_AngleBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new AngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.AngleBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -368,7 +368,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_LeftAngleBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new LeftAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.LeftAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -378,7 +378,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_RightAngleBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new RightAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.RightAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -388,7 +388,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_MethodName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new MethodNameStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.MethodNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -398,7 +398,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_MPSMethodCall(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new MPSMethodCallStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.MPSMethodCallStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -408,7 +408,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_VariableName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new VariableNameStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.VariableNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -418,7 +418,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_ClassName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ClassNameStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.ClassNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -428,7 +428,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_ConceptName(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ConceptNameStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.ConceptNameStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -438,7 +438,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Semicolon(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new SemicolonStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.SemicolonStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -448,7 +448,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Dot(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new DotStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.DotStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -458,7 +458,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_BaseAngleBracket(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new BaseAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.BaseAngleBracketStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -468,7 +468,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Matching(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new MatchingStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.MatchingStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -478,7 +478,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_FoldedCell(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new FoldedCellStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.FoldedCellStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -488,7 +488,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Url(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new UrlStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.UrlStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -498,7 +498,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_Label(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new LabelStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.LabelStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -508,7 +508,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_FirstLevel(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new FirstLevelStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.FirstLevelStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -518,7 +518,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_SecondLevel(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new SecondLevelStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.SecondLevelStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -528,7 +528,7 @@ public class BaseLanguageStyle_StyleSheet {
   public static void apply_ThirdLevel(Style style, EditorCell editorCell) {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new ThirdLevelStyleClass(editorContext, node).apply(style, editorCell);
+    new BaseLanguageStyle_StyleSheet.ThirdLevelStyleClass(editorContext, node).apply(style, editorCell);
   }
 
   public static class KeyWordStyleClass extends AbstractStyleClass {

@@ -39,12 +39,12 @@ public class ClassifierUnitContext implements RootDependencies.Source {
     myExtends = new HashSet<String>();
   }
 
-  public ImportEntry getClassifierRefText(String packageName, String fqName, SNode contextNode) {
+  public ImportEntry getClassifierRefText(SNode target, String packageName, String fqName, SNode contextNode) {
     addDependency(packageName, fqName);
     // FIXME there's likely no reason to pass package name and fqName (except, perhaps, for nested classes) 
     // Could we instead pass node<Classifier> here directly? Indeed, although it's a major refactoring of crapy 
     // BaseLanguageTextGen, where we go back and forth from node<Classifier> to strings 
-    return myImports.getClassifierRefText(packageName, fqName, contextNode);
+    return myImports.getClassifierRefText(target, packageName, fqName, contextNode);
   }
 
   private void addDependency(String packageName, String fqName) {

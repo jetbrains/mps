@@ -112,7 +112,7 @@ public class ContextClassifiersInRoot {
     Map<String, String> nestedClassifiers = new HashMap<String, String>();
 
     // todo: classifiers with same names in different supertypes? 
-    for (SNode superClassifier : Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SNodeOperations.cast(classifier, ContextClassifiersInRoot.CONCEPTS.Classifier$hJ))) {
+    for (SNode superClassifier : Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SNodeOperations.cast(classifier, CONCEPTS.Classifier$hJ))) {
       for (SNode nestedClassifier : Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(superClassifier)) {
         addClassifierToBindingMap(nestedClassifiers, nestedClassifier);
       }
@@ -122,7 +122,7 @@ public class ContextClassifiersInRoot {
   }
 
   private static void addClassifierToBindingMap(Map<String, String> bindings, SNode classifier) {
-    String simpleName = SPropertyOperations.getString(classifier, ContextClassifiersInRoot.PROPS.name$tAp1);
+    String simpleName = SPropertyOperations.getString(classifier, PROPS.name$tAp1);
     String fqName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classifier);
 
     if (!(bindings.containsKey(simpleName))) {
