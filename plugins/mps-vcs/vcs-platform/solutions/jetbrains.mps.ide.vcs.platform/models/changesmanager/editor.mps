@@ -6423,15 +6423,72 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3w_vEw9Lh7o" role="3cqZAp">
-          <node concept="2YIFZM" id="3w_vEw9Lh7p" role="3clFbG">
-            <ref role="37wK5l" to="hdhb:2v$NtEHjiFm" resolve="renameModelAndRegister" />
-            <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
-            <node concept="37vLTw" id="3w_vEw9Lh7q" role="37wK5m">
-              <ref role="3cqZAo" node="3w_vEw9Lh7b" resolve="oldModel" />
+        <node concept="3clFbJ" id="3jLQrYdLfoe" role="3cqZAp">
+          <node concept="3clFbS" id="3jLQrYdLfog" role="3clFbx">
+            <node concept="3SKdUt" id="3jLQrYdLz4u" role="3cqZAp">
+              <node concept="1PaTwC" id="3jLQrYdLz4v" role="3ndbpf">
+                <node concept="3oM_SD" id="3jLQrYdLz4x" role="1PaTwD">
+                  <property role="3oM_SC" value="without" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz5u" role="1PaTwD">
+                  <property role="3oM_SC" value="model" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz5x" role="1PaTwD">
+                  <property role="3oM_SC" value="registration" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz6d" role="1PaTwD">
+                  <property role="3oM_SC" value="reference" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz86" role="1PaTwD">
+                  <property role="3oM_SC" value="resolving" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz6s" role="1PaTwD">
+                  <property role="3oM_SC" value="doesn't" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz6G" role="1PaTwD">
+                  <property role="3oM_SC" value="work" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz75" role="1PaTwD">
+                  <property role="3oM_SC" value="during" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz7n" role="1PaTwD">
+                  <property role="3oM_SC" value="paste:" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz8S" role="1PaTwD">
+                  <property role="3oM_SC" value="should" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz9d" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="3jLQrYdLz9p" role="1PaTwD">
+                  <property role="3oM_SC" value="fixed" />
+                </node>
+              </node>
             </node>
-            <node concept="Xl_RD" id="3w_vEw9Lh7r" role="37wK5m">
-              <property role="Xl_RC" value="old" />
+            <node concept="3clFbF" id="3w_vEw9Lh7o" role="3cqZAp">
+              <node concept="2YIFZM" id="3w_vEw9Lh7p" role="3clFbG">
+                <ref role="37wK5l" to="hdhb:2v$NtEHjiFm" resolve="renameModelAndRegister" />
+                <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
+                <node concept="37vLTw" id="3w_vEw9Lh7q" role="37wK5m">
+                  <ref role="3cqZAo" node="3w_vEw9Lh7b" resolve="oldModel" />
+                </node>
+                <node concept="Xl_RD" id="3w_vEw9Lh7r" role="37wK5m">
+                  <property role="Xl_RC" value="old" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="3jLQrYdLvmv" role="3clFbw">
+            <node concept="10Nm6u" id="3jLQrYdLwX1" role="3uHU7w" />
+            <node concept="2OqwBi" id="3jLQrYdLuac" role="3uHU7B">
+              <node concept="2JrnkZ" id="3jLQrYdLsBd" role="2Oq$k0">
+                <node concept="37vLTw" id="3jLQrYdLhXi" role="2JrQYb">
+                  <ref role="3cqZAo" node="3w_vEw9Lh7b" resolve="oldModel" />
+                </node>
+              </node>
+              <node concept="liA8E" id="3jLQrYdLveU" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+              </node>
             </node>
           </node>
         </node>
