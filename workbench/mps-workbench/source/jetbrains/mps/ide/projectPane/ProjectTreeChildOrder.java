@@ -18,7 +18,9 @@ package jetbrains.mps.ide.projectPane;
 import gnu.trove.TObjectIntHashMap;
 import jetbrains.mps.ide.ui.tree.MPSTreeChildOrder;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -52,7 +54,8 @@ public class ProjectTreeChildOrder implements MPSTreeChildOrder {
 
   @Override
   public boolean reorder(@NotNull MPSTreeNode parent, @NotNull List<MPSTreeNode> childrenToSort) {
-    if (!(parent instanceof SModelTreeNode)) {
+    final boolean canReorder = parent instanceof SModelTreeNode || parent instanceof PackageNode;
+    if (!canReorder) {
       return false;
     }
     // case-insensitive is vital for end users (see MPSSPRT-139), and as it's likely all the same for language designers,

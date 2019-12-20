@@ -53,6 +53,7 @@ import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
+import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelReadRunnable;
@@ -77,6 +78,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectViewPaneOverride {
   private static final Logger LOG = LogManager.getLogger(ProjectPane.class);
@@ -251,7 +253,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
 
     ProjectPaneTree tree = new ProjectPaneTree(this, myProject);
     Disposer.register(this, tree);
-    tree.orderChildrenWith(new LogicalViewChildOrder(this, new ProjectTreeChildOrder(t -> t instanceof SModelTreeNode && isSortByConcept())));
+    final Predicate<MPSTreeNode> treeNodeWithRootGrouping = t -> (t instanceof SModelTreeNode || t instanceof SNodeGroupTreeNode) && isSortByConcept();
+    tree.orderChildrenWith(new LogicalViewChildOrder(this, new ProjectTreeChildOrder(treeNodeWithRootGrouping)));
     myTree = tree;
 
     myScrollPane = new MyScrollPane(getTree());
