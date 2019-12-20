@@ -33,7 +33,7 @@ public final class BinaryIntegerLiteral__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.value$Uj74), 2);
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, BinaryIntegerLiteral__BehaviorDescriptor.PROPS.value$Uj74), 2);
     } catch (NumberFormatException num) {
       return 0;
     }

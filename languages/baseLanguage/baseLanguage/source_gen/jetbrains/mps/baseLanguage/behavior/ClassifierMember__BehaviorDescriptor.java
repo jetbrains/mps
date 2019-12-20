@@ -58,44 +58,44 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
     final Wrappers._T<SNode> _contextClassifier = new Wrappers._T<SNode>(contextClassifier);
     // FIXME this code duplicates VisibilityUtil.isVisible(contextNode, this), isn't it? 
     //       E.g. check_ClassCreatorConstructorVisibility uses VisibilityUtil, while DefaultConstructorUtils resorts to this method. 
-    if (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.StaticKind$hY)) {
+    if (SNodeOperations.isInstanceOf(__thisNode__, ClassifierMember__BehaviorDescriptor.CONCEPTS.StaticKind$hY)) {
       // todo: read specification! 
-      _contextClassifier.value = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), __thisNode__);
+      _contextClassifier.value = Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(ClassifierMember__BehaviorDescriptor.CONCEPTS.Classifier$hJ), __thisNode__);
     }
 
     // public 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.PublicVisibility$qe)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, ClassifierMember__BehaviorDescriptor.LINKS.visibility$2GiC), ClassifierMember__BehaviorDescriptor.CONCEPTS.PublicVisibility$qe)) {
       return true;
     }
     // private 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, ClassifierMember__BehaviorDescriptor.LINKS.visibility$2GiC), ClassifierMember__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se)) {
       return VisibilityUtil.topClassifier(contextNode) == VisibilityUtil.topClassifier(_contextClassifier.value);
     }
     // default 
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
     String contextClassifierPackage = VisibilityUtil.packageName(_contextClassifier.value);
-    String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), __thisNode__));
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC) == null)) {
+    String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(ClassifierMember__BehaviorDescriptor.CONCEPTS.Classifier$hJ), __thisNode__));
+    if ((SLinkOperations.getTarget(__thisNode__, ClassifierMember__BehaviorDescriptor.LINKS.visibility$2GiC) == null)) {
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
     // protected 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, ClassifierMember__BehaviorDescriptor.LINKS.visibility$2GiC), ClassifierMember__BehaviorDescriptor.CONCEPTS.ProtectedVisibility$OD)) {
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
         return true;
       }
 
       // two cases: 1) from class 2) from dot expression 
-      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$hJ, true)).where(new IWhereFilter<SNode>() {
+      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, ClassifierMember__BehaviorDescriptor.CONCEPTS.Classifier$hJ, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(_contextClassifier.value);
         }
       });
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.DotExpression$6a))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, ClassifierMember__BehaviorDescriptor.CONCEPTS.DotExpression$6a))) {
         // 1 
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
       } else {
         // 2 
-        SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, CONCEPTS.DotExpression$6a));
+        SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, ClassifierMember__BehaviorDescriptor.CONCEPTS.DotExpression$6a));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
         return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -111,7 +111,7 @@ public final class ClassifierMember__BehaviorDescriptor extends BaseBHDescriptor
     // do nothing by default 
   }
   /*package*/ static boolean isVisible_id5laDzmpBPv8(@NotNull SNode __thisNode__, SNode contextClassifierType, SNode contextNode) {
-    return ((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(__thisNode__, SNodeOperations.cast(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(contextClassifierType), CONCEPTS.Classifier$hJ), contextNode));
+    return ((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(__thisNode__, SNodeOperations.cast(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(contextClassifierType), ClassifierMember__BehaviorDescriptor.CONCEPTS.Classifier$hJ), contextNode));
   }
   /*package*/ static boolean isStatic_id6r77ob2USS8(@NotNull SNode __thisNode__) {
     return ((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(__thisNode__));

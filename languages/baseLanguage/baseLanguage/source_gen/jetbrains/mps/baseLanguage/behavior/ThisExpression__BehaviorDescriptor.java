@@ -35,19 +35,19 @@ public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getPossibleClassifiers_idhGcjiYt(@NotNull SNode __thisNode__) {
-    return (List<SNode>) Classifier__BehaviorDescriptor.getNonStaticContextClassifiers_id5S7J9l$QYtM.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), __thisNode__);
+    return (List<SNode>) Classifier__BehaviorDescriptor.getNonStaticContextClassifiers_id5S7J9l$QYtM.invoke(SNodeOperations.asSConcept(ThisExpression__BehaviorDescriptor.CONCEPTS.Classifier$hJ), __thisNode__);
   }
   /*package*/ static SNode getContextClassifierMember_id5DIwcw5fPui(@NotNull SNode __thisNode__) {
-    SNode classConcept = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$Hbij);
+    SNode classConcept = SLinkOperations.getTarget(__thisNode__, ThisExpression__BehaviorDescriptor.LINKS.classConcept$Hbij);
     if ((classConcept != null)) {
-      for (SNode classifierMember : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ClassifierMember$9F, false)) {
+      for (SNode classifierMember : SNodeOperations.getNodeAncestors(__thisNode__, ThisExpression__BehaviorDescriptor.CONCEPTS.ClassifierMember$9F, false)) {
         if (SNodeOperations.getParent(classifierMember) == classConcept) {
           return classifierMember;
         }
       }
       return null;
     } else {
-      SNode classifierMember = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassifierMember$9F, false, false);
+      SNode classifierMember = SNodeOperations.getNodeAncestor(__thisNode__, ThisExpression__BehaviorDescriptor.CONCEPTS.ClassifierMember$9F, false, false);
       return classifierMember;
     }
   }

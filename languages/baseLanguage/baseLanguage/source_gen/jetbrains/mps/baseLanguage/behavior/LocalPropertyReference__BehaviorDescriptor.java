@@ -31,7 +31,7 @@ public final class LocalPropertyReference__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
-    return (boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.property$KTS0));
+    return (boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(__thisNode__, LocalPropertyReference__BehaviorDescriptor.LINKS.property$KTS0));
   }
 
   /*package*/ LocalPropertyReference__BehaviorDescriptor() {

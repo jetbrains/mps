@@ -35,11 +35,11 @@ public final class PropertyReference__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static boolean isLValue_idhEwIP$w(@NotNull SNode __thisNode__) {
-    return (boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.property$64$K));
+    return (boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(SLinkOperations.getTarget(__thisNode__, PropertyReference__BehaviorDescriptor.LINKS.property$64$K));
   }
   /*package*/ static boolean isBeingAssigned_id5WTl5xTCF5s(@NotNull SNode __thisNode__) {
-    SNode parent = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$6a);
-    return SNodeOperations.hasRole(parent, LINKS.lValue$J0D4);
+    SNode parent = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), PropertyReference__BehaviorDescriptor.CONCEPTS.DotExpression$6a);
+    return SNodeOperations.hasRole(parent, PropertyReference__BehaviorDescriptor.LINKS.lValue$J0D4);
   }
 
   /*package*/ PropertyReference__BehaviorDescriptor() {

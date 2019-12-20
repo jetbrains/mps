@@ -46,8 +46,8 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
 
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
     String expectedName = null;
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy) != null)) {
-      expectedName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy), PROPS.name$tAp1);
+    if ((SLinkOperations.getTarget(__thisNode__, FieldReferenceOperation__BehaviorDescriptor.LINKS.fieldDeclaration$mLBy) != null)) {
+      expectedName = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, FieldReferenceOperation__BehaviorDescriptor.LINKS.fieldDeclaration$mLBy), FieldReferenceOperation__BehaviorDescriptor.PROPS.name$tAp1);
     }
     return expectedName;
   }
@@ -55,11 +55,11 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
     return false;
   }
   /*package*/ static boolean canBeConvertedToLocal_id4APqwMfC3hI(@NotNull SNode __thisNode__) {
-    if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$7A))) {
+    if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.ThisExpression$7A))) {
       return false;
     }
-    Scope paramsScope = Scope.getScope(Scope.parent(__thisNode__), __thisNode__, CONCEPTS.ParameterDeclaration$qU);
-    Scope localsScope = Scope.getScope(Scope.parent(__thisNode__), __thisNode__, CONCEPTS.LocalVariableDeclaration$Bf);
+    Scope paramsScope = Scope.getScope(Scope.parent(__thisNode__), __thisNode__, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.ParameterDeclaration$qU);
+    Scope localsScope = Scope.getScope(Scope.parent(__thisNode__), __thisNode__, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.LocalVariableDeclaration$Bf);
     List<SNode> vars = new ArrayList<SNode>();
     if (localsScope != null) {
       vars.addAll(Sequence.fromIterable(localsScope.getAvailableElements(null)).toListSequence());
@@ -68,36 +68,36 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
       vars.addAll(Sequence.fromIterable(paramsScope.getAvailableElements(null)).toListSequence());
     }
 
-    SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy);
+    SNode field = SLinkOperations.getTarget(__thisNode__, FieldReferenceOperation__BehaviorDescriptor.LINKS.fieldDeclaration$mLBy);
     if (field == null) {
       return false;
     }
     for (SNode var : vars) {
-      if (var != null && SNodeOperations.isInstanceOf(var, CONCEPTS.INamedConcept$nV) && SPropertyOperations.getString(SNodeOperations.cast(var, CONCEPTS.INamedConcept$nV), PROPS.name$tAp1).equals(SPropertyOperations.getString(field, PROPS.name$tAp1)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SNodeOperations.getNodeAncestor(field, CONCEPTS.Classifier$hJ, false, false), CONCEPTS.Classifier$hJ, true)).contains(SNodeOperations.getNodeAncestor(var, CONCEPTS.Classifier$hJ, false, false))) {
+      if (var != null && SNodeOperations.isInstanceOf(var, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.INamedConcept$nV) && SPropertyOperations.getString(SNodeOperations.cast(var, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.INamedConcept$nV), FieldReferenceOperation__BehaviorDescriptor.PROPS.name$tAp1).equals(SPropertyOperations.getString(field, FieldReferenceOperation__BehaviorDescriptor.PROPS.name$tAp1)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(SNodeOperations.getNodeAncestor(field, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false), FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.Classifier$hJ, true)).contains(SNodeOperations.getNodeAncestor(var, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false))) {
         return false;
       }
     }
-    if (SLinkOperations.getTarget(SNodeOperations.cast(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$7A), LINKS.classConcept$Hbij) == null) {
+    if (SLinkOperations.getTarget(SNodeOperations.cast(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.ThisExpression$7A), FieldReferenceOperation__BehaviorDescriptor.LINKS.classConcept$Hbij) == null) {
       return true;
     }
-    SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassConcept$IY), __thisNode__);
-    SNode declarationClassifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.Classifier$hJ, false, false);
+    SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.ClassConcept$IY), __thisNode__);
+    SNode declarationClassifier = SNodeOperations.getNodeAncestor(field, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if (!((classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier)))) {
       return false;
     }
     while (classifier != declarationClassifier) {
       for (SNode fieldDeclaration : Members.visibleInstanceFields(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), __thisNode__)) {
-        if (SPropertyOperations.getString(fieldDeclaration, PROPS.name$tAp1) != null && SPropertyOperations.getString(fieldDeclaration, PROPS.name$tAp1).equals(SPropertyOperations.getString(field, PROPS.name$tAp1))) {
+        if (SPropertyOperations.getString(fieldDeclaration, FieldReferenceOperation__BehaviorDescriptor.PROPS.name$tAp1) != null && SPropertyOperations.getString(fieldDeclaration, FieldReferenceOperation__BehaviorDescriptor.PROPS.name$tAp1).equals(SPropertyOperations.getString(field, FieldReferenceOperation__BehaviorDescriptor.PROPS.name$tAp1))) {
           return false;
         }
       }
-      classifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
+      classifier = SNodeOperations.getNodeAncestor(classifier, FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     }
     return true;
   }
   /*package*/ static void convertToLocal_id4APqwMfCtHb(@NotNull SNode __thisNode__) {
-    SNode fieldReference = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(__thisNode__), CONCEPTS.VariableReference$sQ);
-    SLinkOperations.setTarget(fieldReference, LINKS.variableDeclaration$2ky6, SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$mLBy));
+    SNode fieldReference = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(__thisNode__), FieldReferenceOperation__BehaviorDescriptor.CONCEPTS.VariableReference$sQ);
+    SLinkOperations.setTarget(fieldReference, FieldReferenceOperation__BehaviorDescriptor.LINKS.variableDeclaration$2ky6, SLinkOperations.getTarget(__thisNode__, FieldReferenceOperation__BehaviorDescriptor.LINKS.fieldDeclaration$mLBy));
   }
   /*package*/ static boolean lvalue_id1653mnvAgvW(@NotNull SAbstractConcept __thisConcept__) {
     return true;

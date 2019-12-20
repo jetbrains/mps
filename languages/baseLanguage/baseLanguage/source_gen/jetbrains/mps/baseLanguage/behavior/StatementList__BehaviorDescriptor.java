@@ -57,7 +57,7 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Set<SNode> getExternalVariablesDeclarations_idhF5UhAC(@NotNull SNode __thisNode__) {
     Set<SNode> declarations = SetSequence.fromSet(new HashSet<SNode>());
     Set<SNode> reference = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(reference).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.IVariableReference$zQ, false, new SAbstractConcept[]{})));
+    SetSequence.fromSet(reference).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(__thisNode__, StatementList__BehaviorDescriptor.CONCEPTS.IVariableReference$zQ, false, new SAbstractConcept[]{})));
     for (SNode ref : reference) {
       boolean statementsContainsVar = false;
       for (SNode parent : SNodeOperations.getNodeAncestors(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(ref), null, false)) {
@@ -72,32 +72,32 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return declarations;
   }
   /*package*/ static boolean isCompact_idi0zxBt8(@NotNull SNode __thisNode__) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IContainsStatementList$2n))) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), StatementList__BehaviorDescriptor.CONCEPTS.IContainsStatementList$2n))) {
       return false;
     }
-    SNode parent = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IContainsStatementList$2n);
+    SNode parent = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), StatementList__BehaviorDescriptor.CONCEPTS.IContainsStatementList$2n);
     if (!((boolean) IContainsStatementList__BehaviorDescriptor.isStatementListCompactable_idi0zvp2S.invoke(parent))) {
       return false;
     }
     return (boolean) IContainsStatementList__BehaviorDescriptor.isStatementListCompact_idi0zxZ6o.invoke(parent);
   }
   /*package*/ static boolean isOneLiner_idi0z3USV(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).count() > 1) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)).count() > 1) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).count() == 1) {
-      SNode statement = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).first();
-      if (SNodeOperations.isInstanceOf(statement, CONCEPTS.IContainsStatementList$2n)) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)).count() == 1) {
+      SNode statement = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)).first();
+      if (SNodeOperations.isInstanceOf(statement, StatementList__BehaviorDescriptor.CONCEPTS.IContainsStatementList$2n)) {
         return false;
       }
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, CONCEPTS.AnonymousClass$aF, false, new SAbstractConcept[]{})).isNotEmpty()) {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, StatementList__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF, false, new SAbstractConcept[]{})).isNotEmpty()) {
         return false;
       }
     }
     return true;
   }
   /*package*/ static List<SNode> getLocalVariableElements_idi1I$XiP(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8);
+    return SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8);
   }
   /*package*/ static Set<SNode> uncaughtThrowables_id2SVUfbZ9Qq1(@NotNull SNode __thisNode__, boolean ignoreMayBeThrowables) {
     Set<SNode> result = SetSequence.fromSet(new HashSet<SNode>());
@@ -105,13 +105,13 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return result;
   }
   /*package*/ static void collectUncaughtThrowables_id4Gt7ANIVHca(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8))) {
+    for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8))) {
       Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVH8f.invoke(statement, throwables, ((boolean) ignoreMayBeThrowables));
     }
   }
   /*package*/ static SNode getFirstStatement_id4GU1DgEHJ2u(@NotNull SNode __thisNode__) {
-    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)) {
-      if (SNodeOperations.isInstanceOf(statement, CONCEPTS.SingleLineComment$jI) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), CONCEPTS.Statement$ok)) {
+    for (SNode statement : SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)) {
+      if (SNodeOperations.isInstanceOf(statement, StatementList__BehaviorDescriptor.CONCEPTS.SingleLineComment$jI) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), StatementList__BehaviorDescriptor.CONCEPTS.Statement$ok)) {
         continue;
       }
       return statement;
@@ -119,10 +119,10 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static SNode getLastStatement_id28aPEVv8l7T(@NotNull SNode __thisNode__) {
-    List<SNode> statements = SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8);
+    List<SNode> statements = SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8);
     for (int index = ListSequence.fromList(statements).count() - 1; index >= 0; index--) {
       SNode statement = ListSequence.fromList(statements).getElement(index);
-      if (SNodeOperations.isInstanceOf(statement, CONCEPTS.SingleLineComment$jI) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), CONCEPTS.Statement$ok)) {
+      if (SNodeOperations.isInstanceOf(statement, StatementList__BehaviorDescriptor.CONCEPTS.SingleLineComment$jI) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), StatementList__BehaviorDescriptor.CONCEPTS.Statement$ok)) {
         continue;
       }
       return statement;
@@ -131,9 +131,9 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)) {
-      if (SNodeOperations.isInstanceOf(statement, CONCEPTS.LocalVariableDeclarationStatement$BI)) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(statement, CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0));
+    for (SNode statement : SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)) {
+      if (SNodeOperations.isInstanceOf(statement, StatementList__BehaviorDescriptor.CONCEPTS.LocalVariableDeclarationStatement$BI)) {
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(statement, StatementList__BehaviorDescriptor.CONCEPTS.LocalVariableDeclarationStatement$BI), StatementList__BehaviorDescriptor.LINKS.localVariableDeclaration$O0D0));
       }
     }
     return result;
@@ -146,7 +146,7 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
       childStatement = SNodeOperations.getParent(childStatement);
     }
 
-    for (SNode statement : SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)) {
+    for (SNode statement : SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)) {
       if (childStatement == statement) {
         break;
       }
@@ -159,25 +159,25 @@ public final class StatementList__BehaviorDescriptor extends BaseBHDescriptor {
     return result;
   }
   /*package*/ static List<SNode> getLocalVariableDeclarations_id7WLeqcv1izg(@NotNull SNode __thisNode__, int index) {
-    assert index == 0 || index < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).count();
+    assert index == 0 || index < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)).count();
     List<SNode> result = new ArrayList<SNode>();
 
     for (int num = 0; num < index; num++) {
-      if (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).getElement(num), CONCEPTS.ILocalVariableElement$U$)) {
-        ListSequence.fromList(result).addElement(ILocalVariableElement__BehaviorDescriptor.getLocalVariableDeclaration_idi1ItFZH.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statement$WHn8)).getElement(num), CONCEPTS.ILocalVariableElement$U$)));
+      if (SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)).getElement(num), StatementList__BehaviorDescriptor.CONCEPTS.ILocalVariableElement$U$)) {
+        ListSequence.fromList(result).addElement(ILocalVariableElement__BehaviorDescriptor.getLocalVariableDeclaration_idi1ItFZH.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StatementList__BehaviorDescriptor.LINKS.statement$WHn8)).getElement(num), StatementList__BehaviorDescriptor.CONCEPTS.ILocalVariableElement$U$)));
       }
     }
 
     return result;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), StatementList__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe)) {
       return Scopes.forVariables(kind, StatementList__BehaviorDescriptor.getLocalVariableDeclarations_id3tkxRydYUUs.invoke(__thisNode__, child), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return null;
   }
   /*package*/ static Scope getScope_id52_Geb4QFgX(@NotNull SNode __thisNode__, SAbstractConcept kind, SContainmentLink role, int index) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), StatementList__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe)) {
       return Scopes.forVariables(kind, StatementList__BehaviorDescriptor.getLocalVariableDeclarations_id7WLeqcv1izg.invoke(__thisNode__, ((int) index)), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return null;

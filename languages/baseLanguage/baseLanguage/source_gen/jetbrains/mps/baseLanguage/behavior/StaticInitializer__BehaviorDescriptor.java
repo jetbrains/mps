@@ -36,7 +36,7 @@ public final class StaticInitializer__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
-    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.StaticInitializer$dH));
+    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, StaticInitializer__BehaviorDescriptor.CONCEPTS.StaticInitializer$dH));
     markIcons.add(BLIconMarks.STATIC);
     return markIcons;
   }

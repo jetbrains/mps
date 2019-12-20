@@ -37,19 +37,19 @@ public final class ContinueStatement__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getLoop_idhEwIA0E(@NotNull SNode __thisNode__) {
-    for (SNode loop : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.AbstractLoopStatement$wH, false)) {
-      if ((SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$m7OF) != null)) {
-        SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$m7OF), LINKS.loopLabel$GZ00);
+    for (SNode loop : SNodeOperations.getNodeAncestors(__thisNode__, ContinueStatement__BehaviorDescriptor.CONCEPTS.AbstractLoopStatement$wH, false)) {
+      if ((SLinkOperations.getTarget(__thisNode__, ContinueStatement__BehaviorDescriptor.LINKS.loopLabelReference$m7OF) != null)) {
+        SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, ContinueStatement__BehaviorDescriptor.LINKS.loopLabelReference$m7OF), ContinueStatement__BehaviorDescriptor.LINKS.loopLabel$GZ00);
         if ((loopLabel != null)) {
-          if (loopLabel == SLinkOperations.getTarget(loop, LINKS.loopLabel$Vp8n)) {
+          if (loopLabel == SLinkOperations.getTarget(loop, ContinueStatement__BehaviorDescriptor.LINKS.loopLabel$Vp8n)) {
             return loop;
           }
         }
       } else {
-        if (SPropertyOperations.getString(__thisNode__, PROPS.label$Tq0W) == null) {
+        if (SPropertyOperations.getString(__thisNode__, ContinueStatement__BehaviorDescriptor.PROPS.label$Tq0W) == null) {
           return loop;
         }
-        if (SPropertyOperations.getString(__thisNode__, PROPS.label$Tq0W).equals(SPropertyOperations.getString(loop, PROPS.label$5$eZ))) {
+        if (SPropertyOperations.getString(__thisNode__, ContinueStatement__BehaviorDescriptor.PROPS.label$Tq0W).equals(SPropertyOperations.getString(loop, ContinueStatement__BehaviorDescriptor.PROPS.label$5$eZ))) {
           return loop;
         }
       }

@@ -55,8 +55,8 @@ public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseB
 
   /*package*/ static String getVariableExpectedName_idhEwIP$B(@NotNull SNode __thisNode__) {
     String variableExpectedName = null;
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i) != null)) {
-      String name = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1);
+    if ((SLinkOperations.getTarget(__thisNode__, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i) != null)) {
+      String name = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i), InstanceMethodCallOperation__BehaviorDescriptor.PROPS.name$tAp1);
       if (name.startsWith("get")) {
         variableExpectedName = name.substring(3);
       } else
@@ -69,58 +69,58 @@ public final class InstanceMethodCallOperation__BehaviorDescriptor extends BaseB
     return NameUtil.decapitalize(variableExpectedName);
   }
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    return TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__)), CONCEPTS.ClassifierType$IZ);
+    return TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__)), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ);
   }
   /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
     SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
-    if ((SLinkOperations.getTarget(instanceType, LINKS.classifier$pQ_R) == null)) {
+    if ((SLinkOperations.getTarget(instanceType, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.classifier$pQ_R) == null)) {
       return Collections.emptyMap();
     }
-    return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, LINKS.classifier$pQ_R), SLinkOperations.getChildren(instanceType, LINKS.parameter$dQne));
+    return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.classifier$pQ_R), SLinkOperations.getChildren(instanceType, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.parameter$dQne));
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
     return Sequence.fromIterable(Members.visibleInstanceMethods(IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__), __thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, InstanceMethodCallOperation__BehaviorDescriptor.PROPS.name$tAp1), methodName);
       }
     }).toListSequence();
   }
   /*package*/ static boolean canBeConvertedToLocal_id4APqwMfCiZK(@NotNull SNode __thisNode__) {
-    if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$7A))) {
+    if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.ThisExpression$7A))) {
       return false;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeArgument$GDtv)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.typeArgument$GDtv)).isNotEmpty()) {
       return false;
     }
-    if (SLinkOperations.getTarget(SNodeOperations.cast(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), CONCEPTS.ThisExpression$7A), LINKS.classConcept$Hbij) == null) {
+    if (SLinkOperations.getTarget(SNodeOperations.cast(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(__thisNode__), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.ThisExpression$7A), InstanceMethodCallOperation__BehaviorDescriptor.LINKS.classConcept$Hbij) == null) {
       return true;
     }
-    SNode declaration = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i);
-    SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassConcept$IY), __thisNode__);
-    SNode declarationClassifier = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.Classifier$hJ, false, false);
+    SNode declaration = SLinkOperations.getTarget(__thisNode__, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i);
+    SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.ClassConcept$IY), __thisNode__);
+    SNode declarationClassifier = SNodeOperations.getNodeAncestor(declaration, InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if (!((classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier)))) {
       return false;
     }
     while (classifier != declarationClassifier) {
       for (SNode method : Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), __thisNode__)) {
-        if (SPropertyOperations.getString(method, PROPS.name$tAp1).equals(SPropertyOperations.getString(declaration, PROPS.name$tAp1))) {
+        if (SPropertyOperations.getString(method, InstanceMethodCallOperation__BehaviorDescriptor.PROPS.name$tAp1).equals(SPropertyOperations.getString(declaration, InstanceMethodCallOperation__BehaviorDescriptor.PROPS.name$tAp1))) {
           return false;
         }
       }
-      classifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
+      classifier = SNodeOperations.getNodeAncestor(classifier, InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     }
     return true;
   }
   /*package*/ static void convertToLocal_id4APqwMfCtHI(@NotNull SNode __thisNode__) {
-    SNode methodCall = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(__thisNode__), CONCEPTS.LocalMethodCall$77);
-    SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i));
-    ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$$A7L)));
-    ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$GDtv)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeArgument$GDtv)));
+    SNode methodCall = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(__thisNode__), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.LocalMethodCall$77);
+    SLinkOperations.setTarget(methodCall, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(__thisNode__, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i));
+    ListSequence.fromList(SLinkOperations.getChildren(methodCall, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.actualArgument$$A7L)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.actualArgument$$A7L)));
+    ListSequence.fromList(SLinkOperations.getChildren(methodCall, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.typeArgument$GDtv)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, InstanceMethodCallOperation__BehaviorDescriptor.LINKS.typeArgument$GDtv)));
   }
   /*package*/ static boolean isInTypeInferenceContext_id4cxv$9$kw67(@NotNull SNode __thisNode__) {
-    SNode de = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$6a);
-    SNode methodAnc = SNodeOperations.getNodeAncestor(de, CONCEPTS.IMethodLike$kl, false, false);
-    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(de), CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2) == de || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(de), CONCEPTS.VariableDeclaration$xe), LINKS.initializer$KgD) == de || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(de), CONCEPTS.ReturnStatement$SF), LINKS.expression$EsbK) == de || ((methodAnc != null) && IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodAnc) == SNodeOperations.as(SNodeOperations.getParent(de), CONCEPTS.ExpressionStatement$nm));
+    SNode de = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.DotExpression$6a);
+    SNode methodAnc = SNodeOperations.getNodeAncestor(de, InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.IMethodLike$kl, false, false);
+    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(de), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.AssignmentExpression$rS), InstanceMethodCallOperation__BehaviorDescriptor.LINKS.rValue$J0E2) == de || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(de), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe), InstanceMethodCallOperation__BehaviorDescriptor.LINKS.initializer$KgD) == de || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(de), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.ReturnStatement$SF), InstanceMethodCallOperation__BehaviorDescriptor.LINKS.expression$EsbK) == de || ((methodAnc != null) && IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodAnc) == SNodeOperations.as(SNodeOperations.getParent(de), InstanceMethodCallOperation__BehaviorDescriptor.CONCEPTS.ExpressionStatement$nm));
   }
   /*package*/ static boolean substituteInAmbigousPosition_id1653mnvAgq$(@NotNull SAbstractConcept __thisConcept__) {
     return true;

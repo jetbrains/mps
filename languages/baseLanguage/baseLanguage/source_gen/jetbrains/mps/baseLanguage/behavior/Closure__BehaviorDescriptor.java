@@ -43,27 +43,27 @@ public final class Closure__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getVariablesReferencedInClosure_idhNVujlz(@NotNull SNode __thisNode__) {
     List<SNode> referencedInClosures = new ArrayList<SNode>();
-    for (SNode varRef : SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})) {
-      SNode closure = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6), CONCEPTS.Closure$5Q, false, false);
+    for (SNode varRef : SNodeOperations.getNodeDescendants(__thisNode__, Closure__BehaviorDescriptor.CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})) {
+      SNode closure = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(varRef, Closure__BehaviorDescriptor.LINKS.variableDeclaration$2ky6), Closure__BehaviorDescriptor.CONCEPTS.Closure$5Q, false, false);
       if ((closure == null) || closure != SNodeOperations.getParent(__thisNode__)) {
-        ListSequence.fromList(referencedInClosures).addElement(SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$2ky6));
+        ListSequence.fromList(referencedInClosures).addElement(SLinkOperations.getTarget(varRef, Closure__BehaviorDescriptor.LINKS.variableDeclaration$2ky6));
       }
     }
     return referencedInClosures;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     final Wrappers._T<SNode> _child = new Wrappers._T<SNode>(child);
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.ClosureParameter$Za)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), Closure__BehaviorDescriptor.CONCEPTS.ClosureParameter$Za)) {
       while (SNodeOperations.getParent(_child.value) != __thisNode__) {
         _child.value = SNodeOperations.getParent(_child.value);
       }
       return new NamedElementsScope(ListSequence.fromList(SNodeOperations.getChildren(__thisNode__)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.ClosureParameter$Za) && it != _child.value;
+          return SNodeOperations.isInstanceOf(it, Closure__BehaviorDescriptor.CONCEPTS.ClosureParameter$Za) && it != _child.value;
         }
       }).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.ClosureParameter$Za);
+          return SNodeOperations.cast(it, Closure__BehaviorDescriptor.CONCEPTS.ClosureParameter$Za);
         }
       }));
     }

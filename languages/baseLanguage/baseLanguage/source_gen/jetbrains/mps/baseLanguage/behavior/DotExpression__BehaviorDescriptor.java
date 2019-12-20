@@ -42,19 +42,19 @@ public final class DotExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean isLValue_idhEwJgmE(@NotNull SNode __thisNode__) {
-    return (boolean) IOperation__BehaviorDescriptor.isLValue_idhEwIP$w.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.operation$X4R8));
+    return (boolean) IOperation__BehaviorDescriptor.isLValue_idhEwIP$w.invoke(SLinkOperations.getTarget(__thisNode__, DotExpression__BehaviorDescriptor.LINKS.operation$X4R8));
   }
   /*package*/ static SNode getClassifier_idhEwIPI9(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(DotExpression__BehaviorDescriptor.getOperandType_id7GulAc9z0dN.invoke(__thisNode__), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
+    return SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(DotExpression__BehaviorDescriptor.getOperandType_id7GulAc9z0dN.invoke(__thisNode__), DotExpression__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ), DotExpression__BehaviorDescriptor.LINKS.classifier$pQ_R);
   }
   /*package*/ static SNode getOperandType_id7GulAc9z0dN(@NotNull SNode __thisNode__) {
-    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.operand$Lcrr));
+    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, DotExpression__BehaviorDescriptor.LINKS.operand$Lcrr));
   }
   /*package*/ static String getVariableExpectedName_idhEwJgm_(@NotNull SNode __thisNode__) {
-    return (String) IOperation__BehaviorDescriptor.getVariableExpectedName_idhEwIP$B.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.operation$X4R8));
+    return (String) IOperation__BehaviorDescriptor.getVariableExpectedName_idhEwIP$B.invoke(SLinkOperations.getTarget(__thisNode__, DotExpression__BehaviorDescriptor.LINKS.operation$X4R8));
   }
   /*package*/ static boolean isLegalAsStatement_idi26MfYG(@NotNull SNode __thisNode__) {
-    return (boolean) IOperation__BehaviorDescriptor.isDotExpressionLegalAsStatement_idi26OiY_.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.operation$X4R8));
+    return (boolean) IOperation__BehaviorDescriptor.isDotExpressionLegalAsStatement_idi26OiY_.invoke(SLinkOperations.getTarget(__thisNode__, DotExpression__BehaviorDescriptor.LINKS.operation$X4R8));
   }
   /*package*/ static boolean allowsNullOperand_id3Yy2P0QQESt(@NotNull SNode __thisNode__) {
     return false;
@@ -63,10 +63,10 @@ public final class DotExpression__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.operand$Lcrr);
+    return SLinkOperations.getTarget(__thisNode__, DotExpression__BehaviorDescriptor.LINKS.operand$Lcrr);
   }
   /*package*/ static void setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.operand$Lcrr, expr);
+    SLinkOperations.setTarget(__thisNode__, DotExpression__BehaviorDescriptor.LINKS.operand$Lcrr, expr);
   }
 
   /*package*/ DotExpression__BehaviorDescriptor() {

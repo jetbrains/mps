@@ -50,11 +50,11 @@ public class ParenthesisUtil {
 
     SNode current = findWrappingParens(expressionToProcess);
     while (current != null) {
-      SNode leftParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl));
-      SNode rightParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq));
+      SNode leftParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl));
+      SNode rightParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq));
       boolean propagateNewParensInsteadOfExpr = false;
 
-      SNode replacing = SLinkOperations.getTarget(SNodeOperations.cast(current, CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$4_F0);
+      SNode replacing = SLinkOperations.getTarget(SNodeOperations.cast(current, ParenthesisUtil.CONCEPTS.ParenthesizedExpression$vE), ParenthesisUtil.LINKS.expression$4_F0);
       SNode rightMostNode = EditorParenthesisUtil.findRightmostOrLeftmostLeafExpression(replacing, true);
       SNode leftMostNode = EditorParenthesisUtil.findRightmostOrLeftmostLeafExpression(replacing, false);
 
@@ -105,9 +105,9 @@ public class ParenthesisUtil {
 
   private static SNode findWrappingParens(SNode original) {
     SNode current = original;
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.Expression$TP)) {
-      current = SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.Expression$TP);
-      if (SNodeOperations.isInstanceOf(current, CONCEPTS.ParenthesizedExpression$vE)) {
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), ParenthesisUtil.CONCEPTS.Expression$TP)) {
+      current = SNodeOperations.cast(SNodeOperations.getParent(current), ParenthesisUtil.CONCEPTS.Expression$TP);
+      if (SNodeOperations.isInstanceOf(current, ParenthesisUtil.CONCEPTS.ParenthesizedExpression$vE)) {
         return current;
       }
     }
@@ -115,25 +115,25 @@ public class ParenthesisUtil {
   }
 
   private static void setOrIncreaseParen(SNode node, boolean right) {
-    SNode paren = (right ? AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)) : AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)));
+    SNode paren = (right ? AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq)) : AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl)));
     if (paren != null) {
       IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(paren);
     } else {
       if (right) {
-        SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq), CONCEPTS.IncompleteRightParen$rq);
+        SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq), ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq);
       } else {
-        SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl), CONCEPTS.IncompleteLeftParen$yl);
+        SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl), ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl);
       }
     }
   }
 
   private static void setOrMergeParen(SNode myNode, boolean right, SNode parens) {
-    SNode nodesParens = (right ? AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)) : AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)));
+    SNode nodesParens = (right ? AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq)) : AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl)));
     if (nodesParens == null) {
       if (right) {
-        nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq), CONCEPTS.IncompleteRightParen$rq);
+        nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq), ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq);
       } else {
-        nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl), CONCEPTS.IncompleteLeftParen$yl);
+        nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl), ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl);
       }
     }
     while (!((boolean) IIncompleteParen__BehaviorDescriptor.isSingleParen_idVufYxgmHsD.invoke(parens))) {
@@ -148,19 +148,19 @@ public class ParenthesisUtil {
    */
   private static SNode createUnmatchedParenthesis(@NotNull SNode myExpression, boolean completingByRightParen) {
 
-    if (!(completingByRightParen) && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)) != null) {
-      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)));
+    if (!(completingByRightParen) && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl)) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl)));
       return myExpression;
     }
-    if (completingByRightParen && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)) != null) {
-      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)));
+    if (completingByRightParen && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq)) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq)));
       return myExpression;
     }
 
     List<SNode> myParentPath = parentPath(myExpression, completingByRightParen);
     SNode topExp = ListSequence.fromList(myParentPath).findLast(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.IBinaryLike$M8);
+        return SNodeOperations.isInstanceOf(it, ParenthesisUtil.CONCEPTS.IBinaryLike$M8);
       }
     });
     if (topExp == null) {
@@ -180,8 +180,8 @@ public class ParenthesisUtil {
       candidateExpression = ListSequence.fromList(candidateParenthedNodes).getElement(index);
       if (Objects.equals(candidateExpression, myExpression)) {
         // they are both the same node 
-        SNode parens = SNodeFactoryOperations.replaceWithNewChild(candidateExpression, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(parens, LINKS.expression$4_F0, candidateExpression);
+        SNode parens = SNodeFactoryOperations.replaceWithNewChild(candidateExpression, ParenthesisUtil.CONCEPTS.ParenthesizedExpression$vE);
+        SLinkOperations.setTarget(parens, ParenthesisUtil.LINKS.expression$4_F0, candidateExpression);
         ParenthesisUtil.clearIncompleteParens(candidateExpression, completingByRightParen, parens);
         return parens;
       }
@@ -195,12 +195,12 @@ public class ParenthesisUtil {
           }
         });
         assert firstCommonAncestor != null;
-        if (!(SNodeOperations.isInstanceOf(firstCommonAncestor, CONCEPTS.IBinaryLike$M8))) {
+        if (!(SNodeOperations.isInstanceOf(firstCommonAncestor, ParenthesisUtil.CONCEPTS.IBinaryLike$M8))) {
           continue;
         }
 
-        SNode leftSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(firstCommonAncestor, CONCEPTS.IBinaryLike$M8));
-        SNode rightSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(firstCommonAncestor, CONCEPTS.IBinaryLike$M8));
+        SNode leftSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(firstCommonAncestor, ParenthesisUtil.CONCEPTS.IBinaryLike$M8));
+        SNode rightSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(firstCommonAncestor, ParenthesisUtil.CONCEPTS.IBinaryLike$M8));
         List<SNode> candidateAncestors = SNodeOperations.getNodeAncestors(candidateExpression, null, true);
         List<SNode> myAncestors = SNodeOperations.getNodeAncestors(myExpression, null, true);
 
@@ -235,13 +235,13 @@ public class ParenthesisUtil {
     SNode rightTurn = ParenthesisUtil.findRightTurn(rightExpression, firstCommonAncestor);
 
     if (leftTurn != null || rightTurn != null) {
-      SNode parens = ParenthesisUtil.rebalance(leftTurn, SNodeOperations.cast(firstCommonAncestor, CONCEPTS.IBinaryLike$M8), rightTurn);
+      SNode parens = ParenthesisUtil.rebalance(leftTurn, SNodeOperations.cast(firstCommonAncestor, ParenthesisUtil.CONCEPTS.IBinaryLike$M8), rightTurn);
       clearIncompleteParens(candidateExpression, completingByRightParen, parens);
       return parens;
     } else {
-      SNode p = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$vE, null);
+      SNode p = SNodeFactoryOperations.createNewNode(ParenthesisUtil.CONCEPTS.ParenthesizedExpression$vE, null);
       SNode parens = SNodeOperations.replaceWithAnother(firstCommonAncestor, p);
-      SLinkOperations.setTarget(p, LINKS.expression$4_F0, firstCommonAncestor);
+      SLinkOperations.setTarget(p, ParenthesisUtil.LINKS.expression$4_F0, firstCommonAncestor);
       clearIncompleteParens(candidateExpression, completingByRightParen, p);
       return parens;
     }
@@ -259,9 +259,9 @@ public class ParenthesisUtil {
 
     SNode current = expr;
     while (ListSequence.fromList(path).isNotEmpty()) {
-      if (SNodeOperations.isInstanceOf(current, CONCEPTS.IBinaryLike$M8)) {
+      if (SNodeOperations.isInstanceOf(current, ParenthesisUtil.CONCEPTS.IBinaryLike$M8)) {
         if (Objects.equals(ListSequence.fromList(path).last(), current)) {
-          SNode left = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(current, CONCEPTS.IBinaryLike$M8));
+          SNode left = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(current, ParenthesisUtil.CONCEPTS.IBinaryLike$M8));
           if (left != null) {
             ListSequence.fromList(path).addElement(left);
             current = left;
@@ -270,7 +270,7 @@ public class ParenthesisUtil {
           }
         } else {
           ListSequence.fromList(result).addElement(current);
-          SNode right = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(current, CONCEPTS.IBinaryLike$M8));
+          SNode right = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(current, ParenthesisUtil.CONCEPTS.IBinaryLike$M8));
           if (right != null) {
             ListSequence.fromList(path).addElement(right);
             current = right;
@@ -292,7 +292,7 @@ public class ParenthesisUtil {
 
     result = ListSequence.fromList(result).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return completingByRightParen && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)) != null) || !(completingByRightParen) && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)) != null);
+        return completingByRightParen && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl)) != null) || !(completingByRightParen) && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq)) != null);
       }
     }).toListSequence();
 
@@ -315,16 +315,16 @@ public class ParenthesisUtil {
     // These would be the nodes into which we come from the right child. 
     SNode rightAccumulator = buildAccumulator(firstCommonAncestor, rightTurn, false);
 
-    SNode parens = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$vE, null);
-    if (SNodeOperations.isInstanceOf(firstCommonAncestor, CONCEPTS.BinaryOperation$vf)) {
-      rebalanceIBinaryLikeAfterParenthing(SNodeOperations.cast(firstCommonAncestor, CONCEPTS.BinaryOperation$vf), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
-    } else if (SNodeOperations.isInstanceOf(firstCommonAncestor, CONCEPTS.TernaryOperatorExpression$HC)) {
-      rebalanceTernaryOpAfterParenthing(SNodeOperations.cast(firstCommonAncestor, CONCEPTS.TernaryOperatorExpression$HC), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
-    } else if (SNodeOperations.isInstanceOf(firstCommonAncestor, CONCEPTS.CastExpression$7m) || SNodeOperations.isInstanceOf(firstCommonAncestor, CONCEPTS.BaseAssignmentExpression$oO)) {
-      rebalanceIBinaryLikeAfterParenthing(SNodeOperations.cast(firstCommonAncestor, CONCEPTS.IBinaryLike$M8), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
+    SNode parens = SNodeFactoryOperations.createNewNode(ParenthesisUtil.CONCEPTS.ParenthesizedExpression$vE, null);
+    if (SNodeOperations.isInstanceOf(firstCommonAncestor, ParenthesisUtil.CONCEPTS.BinaryOperation$vf)) {
+      rebalanceIBinaryLikeAfterParenthing(SNodeOperations.cast(firstCommonAncestor, ParenthesisUtil.CONCEPTS.BinaryOperation$vf), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
+    } else if (SNodeOperations.isInstanceOf(firstCommonAncestor, ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC)) {
+      rebalanceTernaryOpAfterParenthing(SNodeOperations.cast(firstCommonAncestor, ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
+    } else if (SNodeOperations.isInstanceOf(firstCommonAncestor, ParenthesisUtil.CONCEPTS.CastExpression$7m) || SNodeOperations.isInstanceOf(firstCommonAncestor, ParenthesisUtil.CONCEPTS.BaseAssignmentExpression$oO)) {
+      rebalanceIBinaryLikeAfterParenthing(SNodeOperations.cast(firstCommonAncestor, ParenthesisUtil.CONCEPTS.IBinaryLike$M8), rightTurn, leftTurn, parens, rightAccumulator, leftAccumulator);
     }
 
-    SLinkOperations.setTarget(parens, LINKS.expression$4_F0, firstCommonAncestor);
+    SLinkOperations.setTarget(parens, ParenthesisUtil.LINKS.expression$4_F0, firstCommonAncestor);
     return parens;
   }
 
@@ -334,7 +334,7 @@ public class ParenthesisUtil {
     assert leftSide != null || rightSide != null;
     SNode head = (rightSide != null ? rightSide : leftSide);
     SNodeOperations.replaceWithAnother(node, head);
-    SLinkOperations.setTarget(parens, LINKS.expression$4_F0, node);
+    SLinkOperations.setTarget(parens, ParenthesisUtil.LINKS.expression$4_F0, node);
 
     if (leftAccumulator != null) {
       IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(node, leftAccumulator);
@@ -357,23 +357,23 @@ public class ParenthesisUtil {
   private static void rebalanceTernaryOpAfterParenthing(SNode node, SNode rightTurn, SNode leftTurn, SNode parens, SNode rightAccumulator, SNode leftAccumulator) {
     SNode bottomMostTernary = findBottomMostTernary(node);
     if (rightTurn != null) {
-      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(bottomMostTernary, LINKS.ifFalse$2BqC));
+      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(bottomMostTernary, ParenthesisUtil.LINKS.ifFalse$2BqC));
       if (leftTurn != null) {
-        IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(rightTurn, SLinkOperations.getTarget(node, LINKS.condition$CEb4));
+        IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(rightTurn, SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.condition$CEb4));
         IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(leftTurn, parens);
       } else {
         IBinaryLike__BehaviorDescriptor.setSyntacticallyLeftSideExpression_id1wHCnsn58ZK.invoke(rightTurn, parens);
       }
     } else {
       if (leftTurn != null) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.condition$CEb4));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.condition$CEb4));
         IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(leftTurn, parens);
       } else {
         SNodeOperations.replaceWithAnother(node, parens);
       }
     }
-    SLinkOperations.setTarget(bottomMostTernary, LINKS.ifFalse$2BqC, rightAccumulator);
-    SLinkOperations.setTarget(node, LINKS.condition$CEb4, leftAccumulator);
+    SLinkOperations.setTarget(bottomMostTernary, ParenthesisUtil.LINKS.ifFalse$2BqC, rightAccumulator);
+    SLinkOperations.setTarget(node, ParenthesisUtil.LINKS.condition$CEb4, leftAccumulator);
   }
 
   /**
@@ -383,8 +383,8 @@ public class ParenthesisUtil {
    * @return The found right-most ternary operator expression.
    */
   private static SNode findBottomMostTernary(SNode bottomMostTernary) {
-    while (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(bottomMostTernary, LINKS.ifFalse$2BqC), CONCEPTS.TernaryOperatorExpression$HC)) {
-      bottomMostTernary = SNodeOperations.cast(SLinkOperations.getTarget(bottomMostTernary, LINKS.ifFalse$2BqC), CONCEPTS.TernaryOperatorExpression$HC);
+    while (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(bottomMostTernary, ParenthesisUtil.LINKS.ifFalse$2BqC), ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC)) {
+      bottomMostTernary = SNodeOperations.cast(SLinkOperations.getTarget(bottomMostTernary, ParenthesisUtil.LINKS.ifFalse$2BqC), ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC);
     }
     return bottomMostTernary;
   }
@@ -398,7 +398,7 @@ public class ParenthesisUtil {
       // Accumulate nodes on the path up from the left/right paren 
       accumulator = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(turn) : IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(turn));
       SNodeOperations.deleteNode(accumulator);
-      SNode current = SNodeOperations.cast(SNodeOperations.getParent(turn), CONCEPTS.IBinaryLike$M8);
+      SNode current = SNodeOperations.cast(SNodeOperations.getParent(turn), ParenthesisUtil.CONCEPTS.IBinaryLike$M8);
       SNode previous = turn;
       while (!(Objects.equals(current, firstCommonAncestor))) {
         SNode sideExpression = (left ? IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(current) : IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(current));
@@ -409,11 +409,11 @@ public class ParenthesisUtil {
           } else {
             IBinaryLike__BehaviorDescriptor.setSyntacticallyRightSideExpression_id1wHCnsn58ZY.invoke(current, accumulator);
           }
-          accumulator = SNodeOperations.cast(current, CONCEPTS.Expression$TP);
+          accumulator = SNodeOperations.cast(current, ParenthesisUtil.CONCEPTS.Expression$TP);
         } else {
           previous = current;
         }
-        current = SNodeOperations.cast(SNodeOperations.getParent(previous), CONCEPTS.IBinaryLike$M8);
+        current = SNodeOperations.cast(SNodeOperations.getParent(previous), ParenthesisUtil.CONCEPTS.IBinaryLike$M8);
       }
     } else {
       // Nothing to accumulate 
@@ -434,13 +434,13 @@ public class ParenthesisUtil {
   private static void clearIncompleteParens(SNode otherExpression, boolean completingByRightParen, SNode parens) {
     int count = 0;
     if (completingByRightParen) {
-      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)), PROPS.count$alNw);
-      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl), null);
-      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl), null);
+      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl)), ParenthesisUtil.PROPS.count$alNw);
+      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl), null);
+      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteLeftParen$yl), null);
     } else {
-      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)), PROPS.count$alNw);
-      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq), null);
-      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq), null);
+      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq)), ParenthesisUtil.PROPS.count$alNw);
+      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq), null);
+      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(ParenthesisUtil.CONCEPTS.IncompleteRightParen$rq), null);
     }
 
     // One paren has been matched, so we should decrease the count 
@@ -474,14 +474,14 @@ public class ParenthesisUtil {
   private static SNode findTurn(SNode leaf, SNode stopNode, boolean leftTurn) {
     SNode currentNode = SNodeOperations.getParent(leaf);
     SNode previous = leaf;
-    while (!(Objects.equals(previous, stopNode)) && SNodeOperations.isInstanceOf(currentNode, CONCEPTS.IBinaryLike$M8)) {
-      SNode leftSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(currentNode, CONCEPTS.IBinaryLike$M8));
-      SNode rightSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(currentNode, CONCEPTS.IBinaryLike$M8));
+    while (!(Objects.equals(previous, stopNode)) && SNodeOperations.isInstanceOf(currentNode, ParenthesisUtil.CONCEPTS.IBinaryLike$M8)) {
+      SNode leftSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.cast(currentNode, ParenthesisUtil.CONCEPTS.IBinaryLike$M8));
+      SNode rightSideExpression = IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.cast(currentNode, ParenthesisUtil.CONCEPTS.IBinaryLike$M8));
       if (leftTurn && Objects.equals(rightSideExpression, previous)) {
-        return SNodeOperations.cast(currentNode, CONCEPTS.IBinaryLike$M8);
+        return SNodeOperations.cast(currentNode, ParenthesisUtil.CONCEPTS.IBinaryLike$M8);
       }
       if (!(leftTurn) && Objects.equals(leftSideExpression, previous)) {
-        return SNodeOperations.cast(currentNode, CONCEPTS.IBinaryLike$M8);
+        return SNodeOperations.cast(currentNode, ParenthesisUtil.CONCEPTS.IBinaryLike$M8);
       }
 
       previous = currentNode;
@@ -500,8 +500,8 @@ public class ParenthesisUtil {
     ListSequence.fromList(path).addElement(leaf);
     List<SNode> leafAncestors = SNodeOperations.getNodeAncestors(leaf, null, true);
 
-    for (SNode currentNode = SNodeOperations.getParent(leaf); SNodeOperations.isInstanceOf(currentNode, CONCEPTS.IBinaryLike$M8) && (boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke(SNodeOperations.cast(currentNode, CONCEPTS.IBinaryLike$M8), leaf, ((boolean) rightParen)); currentNode = SNodeOperations.getParent(currentNode)) {
-      ListSequence.fromList(path).addElement(SNodeOperations.cast(currentNode, CONCEPTS.Expression$TP));
+    for (SNode currentNode = SNodeOperations.getParent(leaf); SNodeOperations.isInstanceOf(currentNode, ParenthesisUtil.CONCEPTS.IBinaryLike$M8) && (boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke(SNodeOperations.cast(currentNode, ParenthesisUtil.CONCEPTS.IBinaryLike$M8), leaf, ((boolean) rightParen)); currentNode = SNodeOperations.getParent(currentNode)) {
+      ListSequence.fromList(path).addElement(SNodeOperations.cast(currentNode, ParenthesisUtil.CONCEPTS.Expression$TP));
     }
     return path;
   }
@@ -509,12 +509,12 @@ public class ParenthesisUtil {
   public static void checkWholeExpressionPriorities(SNode expr) {
     SNode current = expr;
     // find the top-most expression 
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.Expression$TP)) {
-      current = SNodeOperations.cast(SNodeOperations.getParent(current), CONCEPTS.Expression$TP);
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), ParenthesisUtil.CONCEPTS.Expression$TP)) {
+      current = SNodeOperations.cast(SNodeOperations.getParent(current), ParenthesisUtil.CONCEPTS.Expression$TP);
     }
 
     List<SNode> candidates = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(candidates).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(current, CONCEPTS.BinaryOperation$vf, true, new SAbstractConcept[]{})));
+    ListSequence.fromList(candidates).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(current, ParenthesisUtil.CONCEPTS.BinaryOperation$vf, true, new SAbstractConcept[]{})));
     checkCandidateExpressionsPriorities(candidates);
   }
 
@@ -533,25 +533,25 @@ public class ParenthesisUtil {
   }
 
   private static boolean checkOperationChildWRTPriority(SNode node, boolean isRight, List<SNode> candidates) {
-    SNode sideExpr = (isRight ? SLinkOperations.getTarget(node, LINKS.rightExpression$rxBl) : SLinkOperations.getTarget(node, LINKS.leftExpression$rxLZ));
-    if (SNodeOperations.isInstanceOf(sideExpr, CONCEPTS.BinaryOperation$vf)) {
-      SNode sideChild = SNodeOperations.cast(sideExpr, CONCEPTS.BinaryOperation$vf);
+    SNode sideExpr = (isRight ? SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.rightExpression$rxBl) : SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ));
+    if (SNodeOperations.isInstanceOf(sideExpr, ParenthesisUtil.CONCEPTS.BinaryOperation$vf)) {
+      SNode sideChild = SNodeOperations.cast(sideExpr, ParenthesisUtil.CONCEPTS.BinaryOperation$vf);
       if (isBadPriority(sideChild, node, isRight)) {
         ParenthesisUtil.rotateTree(sideChild, node, isRight);
-        ListSequence.fromList(candidates).addElement(SNodeOperations.cast(sideExpr, CONCEPTS.BinaryOperation$vf));
+        ListSequence.fromList(candidates).addElement(SNodeOperations.cast(sideExpr, ParenthesisUtil.CONCEPTS.BinaryOperation$vf));
         return false;
       }
-    } else if (SNodeOperations.isInstanceOf(sideExpr, CONCEPTS.TernaryOperatorExpression$HC)) {
+    } else if (SNodeOperations.isInstanceOf(sideExpr, ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC)) {
       SNodeOperations.replaceWithAnother(node, sideExpr);
       if (isRight) {
-        SLinkOperations.setTarget(node, LINKS.rightExpression$rxBl, SLinkOperations.getTarget(SNodeOperations.cast(sideExpr, CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$CEb4));
-        SLinkOperations.setTarget(SNodeOperations.cast(sideExpr, CONCEPTS.TernaryOperatorExpression$HC), LINKS.condition$CEb4, node);
+        SLinkOperations.setTarget(node, ParenthesisUtil.LINKS.rightExpression$rxBl, SLinkOperations.getTarget(SNodeOperations.cast(sideExpr, ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC), ParenthesisUtil.LINKS.condition$CEb4));
+        SLinkOperations.setTarget(SNodeOperations.cast(sideExpr, ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC), ParenthesisUtil.LINKS.condition$CEb4, node);
       } else {
-        SLinkOperations.setTarget(node, LINKS.leftExpression$rxLZ, SLinkOperations.getTarget(SNodeOperations.cast(sideExpr, CONCEPTS.TernaryOperatorExpression$HC), LINKS.ifFalse$2BqC));
-        SLinkOperations.setTarget(SNodeOperations.cast(sideExpr, CONCEPTS.TernaryOperatorExpression$HC), LINKS.ifFalse$2BqC, node);
+        SLinkOperations.setTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ, SLinkOperations.getTarget(SNodeOperations.cast(sideExpr, ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC), ParenthesisUtil.LINKS.ifFalse$2BqC));
+        SLinkOperations.setTarget(SNodeOperations.cast(sideExpr, ParenthesisUtil.CONCEPTS.TernaryOperatorExpression$HC), ParenthesisUtil.LINKS.ifFalse$2BqC, node);
       }
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sideExpr), CONCEPTS.BinaryOperation$vf)) {
-        ListSequence.fromList(candidates).addElement(SNodeOperations.cast(SNodeOperations.getParent(sideExpr), CONCEPTS.BinaryOperation$vf));
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sideExpr), ParenthesisUtil.CONCEPTS.BinaryOperation$vf)) {
+        ListSequence.fromList(candidates).addElement(SNodeOperations.cast(SNodeOperations.getParent(sideExpr), ParenthesisUtil.CONCEPTS.BinaryOperation$vf));
       }
       return false;
     }
@@ -562,12 +562,12 @@ public class ParenthesisUtil {
     if (SNodeOperations.getParent(node) == null) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BinaryOperation$vf)) {
-      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BinaryOperation$vf);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.BinaryOperation$vf)) {
+      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.BinaryOperation$vf);
       boolean isRight = false;
-      if (SLinkOperations.getTarget(parent, LINKS.rightExpression$rxBl) == node) {
+      if (SLinkOperations.getTarget(parent, ParenthesisUtil.LINKS.rightExpression$rxBl) == node) {
         isRight = true;
-      } else if (SLinkOperations.getTarget(parent, LINKS.leftExpression$rxLZ) == node) {
+      } else if (SLinkOperations.getTarget(parent, ParenthesisUtil.LINKS.leftExpression$rxLZ) == node) {
         isRight = false;
       }
       if (ParenthesisUtil.isBadPriority(node, parent, isRight)) {
@@ -577,26 +577,26 @@ public class ParenthesisUtil {
       }
       return true;
     } else {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.AbstractUnaryNumberOperation$pk)) {
-        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractUnaryNumberOperation$pk);
-        SLinkOperations.setTarget(parent, LINKS.expression$7Rjy, SLinkOperations.getTarget(node, LINKS.leftExpression$rxLZ));
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.AbstractUnaryNumberOperation$pk)) {
+        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.AbstractUnaryNumberOperation$pk);
+        SLinkOperations.setTarget(parent, ParenthesisUtil.LINKS.expression$7Rjy, SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ));
         SNodeOperations.replaceWithAnother(parent, node);
-        SLinkOperations.setTarget(node, LINKS.leftExpression$rxLZ, parent);
-      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.CastExpression$7m)) {
-        SNode castExpr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CastExpression$7m);
+        SLinkOperations.setTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ, parent);
+      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.CastExpression$7m)) {
+        SNode castExpr = SNodeOperations.cast(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.CastExpression$7m);
         SNodeOperations.replaceWithAnother(castExpr, node);
-        SLinkOperations.setTarget(castExpr, LINKS.expression$8QPv, SLinkOperations.getTarget(node, LINKS.leftExpression$rxLZ));
-        SLinkOperations.setTarget(node, LINKS.leftExpression$rxLZ, castExpr);
-      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.NotExpression$oq)) {
-        SNode notExpr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.NotExpression$oq);
+        SLinkOperations.setTarget(castExpr, ParenthesisUtil.LINKS.expression$8QPv, SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ));
+        SLinkOperations.setTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ, castExpr);
+      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.NotExpression$oq)) {
+        SNode notExpr = SNodeOperations.cast(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.NotExpression$oq);
         SNodeOperations.replaceWithAnother(notExpr, node);
-        SLinkOperations.setTarget(notExpr, LINKS.expression$bUD_, SLinkOperations.getTarget(node, LINKS.leftExpression$rxLZ));
-        SLinkOperations.setTarget(node, LINKS.leftExpression$rxLZ, notExpr);
-      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a) && SNodeOperations.hasRole(node, LINKS.operand$Lcrr)) {
-        SNode dotExpr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$6a);
+        SLinkOperations.setTarget(notExpr, ParenthesisUtil.LINKS.expression$bUD_, SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ));
+        SLinkOperations.setTarget(node, ParenthesisUtil.LINKS.leftExpression$rxLZ, notExpr);
+      } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.DotExpression$6a) && SNodeOperations.hasRole(node, ParenthesisUtil.LINKS.operand$Lcrr)) {
+        SNode dotExpr = SNodeOperations.cast(SNodeOperations.getParent(node), ParenthesisUtil.CONCEPTS.DotExpression$6a);
         SNodeOperations.replaceWithAnother(dotExpr, node);
-        SLinkOperations.setTarget(dotExpr, LINKS.operand$Lcrr, SLinkOperations.getTarget(node, LINKS.rightExpression$rxBl));
-        SLinkOperations.setTarget(node, LINKS.rightExpression$rxBl, dotExpr);
+        SLinkOperations.setTarget(dotExpr, ParenthesisUtil.LINKS.operand$Lcrr, SLinkOperations.getTarget(node, ParenthesisUtil.LINKS.rightExpression$rxBl));
+        SLinkOperations.setTarget(node, ParenthesisUtil.LINKS.rightExpression$rxBl, dotExpr);
       } else {
         return true;
       }
@@ -606,33 +606,33 @@ public class ParenthesisUtil {
 
   public static SNode getBinOp(SNode expr, boolean toRight) {
     SNode parent = SNodeOperations.getParent(expr);
-    if (!(SNodeOperations.isInstanceOf(parent, CONCEPTS.BinaryOperation$vf))) {
+    if (!(SNodeOperations.isInstanceOf(parent, ParenthesisUtil.CONCEPTS.BinaryOperation$vf))) {
       return null;
     }
-    SNode parentOp = SNodeOperations.cast(parent, CONCEPTS.BinaryOperation$vf);
-    boolean right = toRight && SLinkOperations.getTarget(parentOp, LINKS.leftExpression$rxLZ) == expr;
-    boolean left = !(toRight) && SLinkOperations.getTarget(parentOp, LINKS.rightExpression$rxBl) == expr;
+    SNode parentOp = SNodeOperations.cast(parent, ParenthesisUtil.CONCEPTS.BinaryOperation$vf);
+    boolean right = toRight && SLinkOperations.getTarget(parentOp, ParenthesisUtil.LINKS.leftExpression$rxLZ) == expr;
+    boolean left = !(toRight) && SLinkOperations.getTarget(parentOp, ParenthesisUtil.LINKS.rightExpression$rxBl) == expr;
     if (right || left) {
       return parentOp;
     }
     return getBinOp(parentOp, toRight);
   }
   public static void rotateTree(SNode child, SNode op, boolean isRight) {
-    SNode backsideExpr = (isRight ? SLinkOperations.getTarget(child, LINKS.leftExpression$rxLZ) : SLinkOperations.getTarget(child, LINKS.rightExpression$rxBl));
+    SNode backsideExpr = (isRight ? SLinkOperations.getTarget(child, ParenthesisUtil.LINKS.leftExpression$rxLZ) : SLinkOperations.getTarget(child, ParenthesisUtil.LINKS.rightExpression$rxBl));
     SNodeOperations.deleteNode(child);
     SNodeOperations.replaceWithAnother(op, child);
     if (backsideExpr != null) {
       SNodeOperations.replaceWithAnother(backsideExpr, op);
       if (isRight) {
-        SLinkOperations.setTarget(op, LINKS.rightExpression$rxBl, backsideExpr);
+        SLinkOperations.setTarget(op, ParenthesisUtil.LINKS.rightExpression$rxBl, backsideExpr);
       } else {
-        SLinkOperations.setTarget(op, LINKS.leftExpression$rxLZ, backsideExpr);
+        SLinkOperations.setTarget(op, ParenthesisUtil.LINKS.leftExpression$rxLZ, backsideExpr);
       }
     } else {
       if (isRight) {
-        SLinkOperations.setTarget(child, LINKS.leftExpression$rxLZ, op);
+        SLinkOperations.setTarget(child, ParenthesisUtil.LINKS.leftExpression$rxLZ, op);
       } else {
-        SLinkOperations.setTarget(child, LINKS.rightExpression$rxBl, op);
+        SLinkOperations.setTarget(child, ParenthesisUtil.LINKS.rightExpression$rxBl, op);
       }
     }
   }

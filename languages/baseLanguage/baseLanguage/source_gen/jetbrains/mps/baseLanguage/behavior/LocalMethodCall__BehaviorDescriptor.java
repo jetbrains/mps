@@ -45,14 +45,14 @@ public final class LocalMethodCall__BehaviorDescriptor extends BaseBHDescriptor 
     return true;
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
-    SNode wrappingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode wrappingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, LocalMethodCall__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     return Sequence.fromIterable(Members.visibleStaticMethods(wrappingClassifier, __thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, LocalMethodCall__BehaviorDescriptor.PROPS.name$tAp1), methodName);
       }
     }).union(Sequence.fromIterable(Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(wrappingClassifier), __thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, LocalMethodCall__BehaviorDescriptor.PROPS.name$tAp1), methodName);
       }
     }));
 

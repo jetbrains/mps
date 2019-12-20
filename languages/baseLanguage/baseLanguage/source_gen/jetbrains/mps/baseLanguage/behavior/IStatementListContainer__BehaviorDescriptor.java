@@ -44,7 +44,7 @@ public final class IStatementListContainer__BehaviorDescriptor extends BaseBHDes
     return false;
   }
   /*package*/ static SNode getStatementList_id28aPEVv_31A(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), CONCEPTS.StatementList$TN)).first();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), IStatementListContainer__BehaviorDescriptor.CONCEPTS.StatementList$TN)).first();
   }
 
   /*package*/ IStatementListContainer__BehaviorDescriptor() {

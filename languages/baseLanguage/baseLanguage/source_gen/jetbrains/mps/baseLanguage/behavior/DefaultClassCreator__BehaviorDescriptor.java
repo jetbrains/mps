@@ -37,7 +37,7 @@ public final class DefaultClassCreator__BehaviorDescriptor extends BaseBHDescrip
   /*package*/ static Iterable<SNode> retrieveInstantiationPoints_id5qAZxlfYCBV(@NotNull SAbstractConcept __thisConcept__, SNode type, SNode contextNode) {
     return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$gY5l)) && DefaultConstructorUtils.hasDefaultConstructor(it);
+        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, DefaultClassCreator__BehaviorDescriptor.PROPS.abstractClass$gY5l)) && DefaultConstructorUtils.hasDefaultConstructor(it);
       }
     });
   }

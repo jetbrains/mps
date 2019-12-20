@@ -31,12 +31,12 @@ public final class DoWhileStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$h1yE)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, DoWhileStatement__BehaviorDescriptor.LINKS.condition$h1yE)) {
       return null;
     }
     if (value) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes), false);
+      if (SLinkOperations.getTarget(__thisNode__, DoWhileStatement__BehaviorDescriptor.LINKS.body$OFes) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, DoWhileStatement__BehaviorDescriptor.LINKS.body$OFes), false);
       } else {
         return NextProgramPoint.continueAt(__thisNode__, true);
       }

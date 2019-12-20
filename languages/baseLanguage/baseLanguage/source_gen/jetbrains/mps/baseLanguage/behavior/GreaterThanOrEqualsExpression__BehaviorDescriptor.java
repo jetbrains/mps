@@ -57,7 +57,7 @@ public final class GreaterThanOrEqualsExpression__BehaviorDescriptor extends Bas
     return null;
   }
   /*package*/ static SNode getFlippedOperator_id14Lzlw0K236(@NotNull SNode __thisNode__) {
-    return SNodeFactoryOperations.createNewNode(CONCEPTS.LessThanOrEqualsExpression$Rc, __thisNode__);
+    return SNodeFactoryOperations.createNewNode(GreaterThanOrEqualsExpression__BehaviorDescriptor.CONCEPTS.LessThanOrEqualsExpression$Rc, __thisNode__);
   }
 
   /*package*/ GreaterThanOrEqualsExpression__BehaviorDescriptor() {

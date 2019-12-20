@@ -33,7 +33,7 @@ public final class ForeachStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.variable$H$_G));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, ForeachStatement__BehaviorDescriptor.LINKS.variable$H$_G));
   }
 
   /*package*/ ForeachStatement__BehaviorDescriptor() {

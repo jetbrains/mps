@@ -37,13 +37,13 @@ public final class IncompleteMemberDeclaration__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.static$1Wq);
+    return SPropertyOperations.getBoolean(__thisNode__, IncompleteMemberDeclaration__BehaviorDescriptor.PROPS.static$1Wq);
   }
   /*package*/ static boolean canBeInterfaceMember_id2zJQqQIUx2B(@NotNull SAbstractConcept __thisConcept__) {
     return true;
   }
   /*package*/ static boolean canBeMadeAbstract_id5py1MO2Oyuj(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.abstract$290)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+    return !(SPropertyOperations.getBoolean(__thisNode__, IncompleteMemberDeclaration__BehaviorDescriptor.PROPS.abstract$290)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, IncompleteMemberDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC), IncompleteMemberDeclaration__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se));
   }
 
   /*package*/ IncompleteMemberDeclaration__BehaviorDescriptor() {

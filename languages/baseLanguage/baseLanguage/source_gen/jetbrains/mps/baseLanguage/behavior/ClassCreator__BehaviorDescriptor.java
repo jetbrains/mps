@@ -55,22 +55,22 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, ClassCreator__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i), ClassCreator__BehaviorDescriptor.CONCEPTS.ClassConcept$IY, false, false);
     SNode classifierType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-    SLinkOperations.setTarget(classifierType, LINKS.classifier$pQ_R, classConcept);
-    for (SNode typeParameter : SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$swNi)) {
-      ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$dQne)).addElement(SNodeOperations.copyNode(typeParameter));
+    SLinkOperations.setTarget(classifierType, ClassCreator__BehaviorDescriptor.LINKS.classifier$pQ_R, classConcept);
+    for (SNode typeParameter : SLinkOperations.getChildren(__thisNode__, ClassCreator__BehaviorDescriptor.LINKS.typeParameter$swNi)) {
+      ListSequence.fromList(SLinkOperations.getChildren(classifierType, ClassCreator__BehaviorDescriptor.LINKS.parameter$dQne)).addElement(SNodeOperations.copyNode(typeParameter));
     }
     return classifierType;
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, ClassCreator__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i), ClassCreator__BehaviorDescriptor.CONCEPTS.ClassConcept$IY, false, false);
     if ((classConcept != null)) {
       return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept);
     }
 
     // special logic for java stubs 
-    SReference cRef = SNodeOperations.getReference(__thisNode__, LINKS.baseMethodDeclaration$$A7i);
+    SReference cRef = SNodeOperations.getReference(__thisNode__, ClassCreator__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i);
     if (cRef == null) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
@@ -87,7 +87,7 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
       String constructorId = pf.asString(targetId);
       String classId = (constructorId.indexOf('.') != -1 ? constructorId.substring(0, constructorId.indexOf('.')) : constructorId);
       SNode resolved = new SNodePointer(targetModel, pf.createNodeId(classId)).resolve(SNodeOperations.getModel(__thisNode__).getRepository());
-      classConcept = SNodeOperations.as(resolved, CONCEPTS.ClassConcept$IY);
+      classConcept = SNodeOperations.as(resolved, ClassCreator__BehaviorDescriptor.CONCEPTS.ClassConcept$IY);
     }
 
     if ((classConcept != null)) {
@@ -97,16 +97,16 @@ public final class ClassCreator__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static boolean isInTypeInferenceContext_id4cxv$9$kw67(@NotNull SNode __thisNode__) {
-    return ((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke0(__thisNode__, CONCEPTS.IMethodCall$ln));
+    return ((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke0(__thisNode__, ClassCreator__BehaviorDescriptor.CONCEPTS.IMethodCall$ln));
   }
   /*package*/ static Iterable<SNode> retrieveInstantiationPoints_id5qAZxlfY81X(@NotNull SAbstractConcept __thisConcept__, SNode type, SNode contextNode) {
     return Sequence.fromIterable(ClassifierScopeUtils.getVisibleNestedClassConceptsIncludingInherited(type, contextNode)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.abstractClass$gY5l)) && !(DefaultConstructorUtils.hasDefaultConstructor(it));
+        return !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it)) && !(SPropertyOperations.getBoolean(it, ClassCreator__BehaviorDescriptor.PROPS.abstractClass$gY5l)) && !(DefaultConstructorUtils.hasDefaultConstructor(it));
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(it, CONCEPTS.ClassConcept$IY));
+        return (Iterable<SNode>) ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(it, ClassCreator__BehaviorDescriptor.CONCEPTS.ClassConcept$IY));
       }
     });
   }

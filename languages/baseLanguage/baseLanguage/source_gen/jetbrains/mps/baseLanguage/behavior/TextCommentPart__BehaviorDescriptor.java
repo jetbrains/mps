@@ -31,7 +31,7 @@ public final class TextCommentPart__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isToDo_id6hHyb3YSGHZ(@NotNull SNode __thisNode__) {
-    String text = SPropertyOperations.getString(__thisNode__, PROPS.text$AaEw);
+    String text = SPropertyOperations.getString(__thisNode__, TextCommentPart__BehaviorDescriptor.PROPS.text$AaEw);
     if (text != null) {
       text = text.trim().toLowerCase();
       return text.startsWith("todo") || text.startsWith("fix");

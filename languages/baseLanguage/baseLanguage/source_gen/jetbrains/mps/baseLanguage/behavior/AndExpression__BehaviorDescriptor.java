@@ -46,20 +46,20 @@ public final class AndExpression__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child == SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$rxLZ)) {
-      if (value && SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$rxBl) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$rxBl), false);
+    if (child == SLinkOperations.getTarget(__thisNode__, AndExpression__BehaviorDescriptor.LINKS.leftExpression$rxLZ)) {
+      if (value && SLinkOperations.getTarget(__thisNode__, AndExpression__BehaviorDescriptor.LINKS.rightExpression$rxBl) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, AndExpression__BehaviorDescriptor.LINKS.rightExpression$rxBl), false);
       } else {
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU)) {
-          NextProgramPoint point = IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), AndExpression__BehaviorDescriptor.CONCEPTS.IConditional$bU)) {
+          NextProgramPoint point = IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AndExpression__BehaviorDescriptor.CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
           if (point != null) {
             return point.withJump();
           }
         }
       }
-    } else if (child == SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$rxBl)) {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU)) {
-        return IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
+    } else if (child == SLinkOperations.getTarget(__thisNode__, AndExpression__BehaviorDescriptor.LINKS.rightExpression$rxBl)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), AndExpression__BehaviorDescriptor.CONCEPTS.IConditional$bU)) {
+        return IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AndExpression__BehaviorDescriptor.CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
       }
     }
     return null;

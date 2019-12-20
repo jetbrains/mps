@@ -31,12 +31,12 @@ public final class WhileStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$TZ80)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, WhileStatement__BehaviorDescriptor.LINKS.condition$TZ80)) {
       return null;
     }
     if (value) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes), false);
+      if (SLinkOperations.getTarget(__thisNode__, WhileStatement__BehaviorDescriptor.LINKS.body$OFes) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, WhileStatement__BehaviorDescriptor.LINKS.body$OFes), false);
       } else {
         return NextProgramPoint.continueAt(__thisNode__, true);
       }

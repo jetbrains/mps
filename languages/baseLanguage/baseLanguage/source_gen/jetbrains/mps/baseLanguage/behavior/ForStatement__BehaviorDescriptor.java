@@ -42,35 +42,35 @@ public final class ForStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getScopeVariables_id4pl5GY7LKmA(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.variable$H$_G));
+    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, ForStatement__BehaviorDescriptor.LINKS.variable$H$_G));
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), ForStatement__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe)) {
       List<SNode> variables = new ArrayList<SNode>();
-      if (!(ScopeUtils.comeFrom(LINKS.variable$H$_G, __thisNode__, child))) {
-        ListSequence.fromList(variables).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.variable$H$_G));
-        if (ScopeUtils.comeFrom(LINKS.additionalVar$$Q$J, __thisNode__, child)) {
-          for (SNode variable : SLinkOperations.getChildren(__thisNode__, LINKS.additionalVar$$Q$J)) {
+      if (!(ScopeUtils.comeFrom(ForStatement__BehaviorDescriptor.LINKS.variable$H$_G, __thisNode__, child))) {
+        ListSequence.fromList(variables).addElement(SLinkOperations.getTarget(__thisNode__, ForStatement__BehaviorDescriptor.LINKS.variable$H$_G));
+        if (ScopeUtils.comeFrom(ForStatement__BehaviorDescriptor.LINKS.additionalVar$$Q$J, __thisNode__, child)) {
+          for (SNode variable : SLinkOperations.getChildren(__thisNode__, ForStatement__BehaviorDescriptor.LINKS.additionalVar$$Q$J)) {
             if (variable == child) {
               break;
             }
             ListSequence.fromList(variables).addElement(variable);
           }
         } else {
-          ListSequence.fromList(variables).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.additionalVar$$Q$J)));
+          ListSequence.fromList(variables).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, ForStatement__BehaviorDescriptor.LINKS.additionalVar$$Q$J)));
         }
       }
       return Scopes.forVariables(kind, variables, ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.ForStatement$Y9, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, ForStatement__BehaviorDescriptor.CONCEPTS.ForStatement$Y9, kind, child));
   }
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$c398)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, ForStatement__BehaviorDescriptor.LINKS.condition$c398)) {
       return null;
     }
     if (value) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.body$OFes), false);
+      if (SLinkOperations.getTarget(__thisNode__, ForStatement__BehaviorDescriptor.LINKS.body$OFes) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, ForStatement__BehaviorDescriptor.LINKS.body$OFes), false);
       } else {
         return NextProgramPoint.continueAt(__thisNode__, true);
       }

@@ -32,10 +32,10 @@ public final class InstanceOfExpression__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$zxNn);
+    return SLinkOperations.getTarget(__thisNode__, InstanceOfExpression__BehaviorDescriptor.LINKS.leftExpression$zxNn);
   }
   /*package*/ static void setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.leftExpression$zxNn, expr);
+    SLinkOperations.setTarget(__thisNode__, InstanceOfExpression__BehaviorDescriptor.LINKS.leftExpression$zxNn, expr);
   }
 
   /*package*/ InstanceOfExpression__BehaviorDescriptor() {

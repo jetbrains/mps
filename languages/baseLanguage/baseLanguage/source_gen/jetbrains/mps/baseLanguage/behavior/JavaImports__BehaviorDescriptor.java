@@ -36,16 +36,16 @@ public final class JavaImports__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Iterable<SNode> staticOnDemand_id4ykJ8Y6iCVz(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$9FEq)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, JavaImports__BehaviorDescriptor.LINKS.entries$9FEq)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.static$TWVW) && SPropertyOperations.getBoolean(it, PROPS.onDemand$6eZw);
+        return SPropertyOperations.getBoolean(it, JavaImports__BehaviorDescriptor.PROPS.static$TWVW) && SPropertyOperations.getBoolean(it, JavaImports__BehaviorDescriptor.PROPS.onDemand$6eZw);
       }
     });
   }
   /*package*/ static Iterable<SNode> staticSingleName_id4ykJ8Y6iJRa(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.entries$9FEq)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, JavaImports__BehaviorDescriptor.LINKS.entries$9FEq)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.static$TWVW) && !(SPropertyOperations.getBoolean(it, PROPS.onDemand$6eZw));
+        return SPropertyOperations.getBoolean(it, JavaImports__BehaviorDescriptor.PROPS.static$TWVW) && !(SPropertyOperations.getBoolean(it, JavaImports__BehaviorDescriptor.PROPS.onDemand$6eZw));
       }
     });
   }

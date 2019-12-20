@@ -35,9 +35,9 @@ public final class SwitchCase__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void collectUncaughtThrowables_id3JrbGEZ6KoZ(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     if (!(ignoreMayBeThrowables)) {
-      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$zuuG));
+      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(SwitchCase__BehaviorDescriptor.CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, SwitchCase__BehaviorDescriptor.LINKS.expression$zuuG));
     }
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$2Ve6), throwables, ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, SwitchCase__BehaviorDescriptor.LINKS.body$2Ve6), throwables, ((boolean) ignoreMayBeThrowables));
   }
 
   /*package*/ SwitchCase__BehaviorDescriptor() {

@@ -33,7 +33,7 @@ public final class OctalIntegerLiteral__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.value$6mzz), 8);
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, OctalIntegerLiteral__BehaviorDescriptor.PROPS.value$6mzz), 8);
     } catch (NumberFormatException num) {
       return 0;
     }

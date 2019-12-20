@@ -30,12 +30,12 @@ public final class Annotation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_idhEwJjl2);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$2GiC, CONCEPTS.PublicVisibility$qe);
+    SLinkOperations.setNewChild(__thisNode__, Annotation__BehaviorDescriptor.LINKS.visibility$2GiC, Annotation__BehaviorDescriptor.CONCEPTS.PublicVisibility$qe);
   }
 
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
-    List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, CONCEPTS.Annotation$Os);
-    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$oAl2)));
+    List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, Annotation__BehaviorDescriptor.CONCEPTS.Annotation$Os);
+    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, Annotation__BehaviorDescriptor.LINKS.method$oAl2)));
     return members;
   }
 

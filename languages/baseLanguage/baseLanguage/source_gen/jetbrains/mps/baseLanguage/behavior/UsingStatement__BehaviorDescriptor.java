@@ -36,11 +36,11 @@ public final class UsingStatement__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     if (!(ignoreMayBeThrowables)) {
-      for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.resource$zRvv))) {
-        Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, e);
+      for (SNode e : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, UsingStatement__BehaviorDescriptor.LINKS.resource$zRvv))) {
+        Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(UsingStatement__BehaviorDescriptor.CONCEPTS.Statement$ok), throwables, e);
       }
     }
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$zRvY), throwables, ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, UsingStatement__BehaviorDescriptor.LINKS.body$zRvY), throwables, ((boolean) ignoreMayBeThrowables));
   }
 
   /*package*/ UsingStatement__BehaviorDescriptor() {

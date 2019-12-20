@@ -57,8 +57,8 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode expandGenericDescendants_id3zZky3wIhhm(@NotNull SNode __thisNode__, SNode expanded, final Map<SNode, SNode> substitutions, final List<SNode> expTrace) {
     IGenericType__BehaviorDescriptor.walkDescendants_id77p1ap9WcZw.invoke(__thisNode__, expanded, new _FunctionTypes._return_P2_E0<Boolean, SNode, Queue<SNode>>() {
       public Boolean invoke(SNode desc, Queue<SNode> queue) {
-        if (SNodeOperations.isInstanceOf(desc, CONCEPTS.IGenericType$$h)) {
-          SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, CONCEPTS.IGenericType$$h), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
+        if (SNodeOperations.isInstanceOf(desc, IGenericType__BehaviorDescriptor.CONCEPTS.IGenericType$$h)) {
+          SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, IGenericType__BehaviorDescriptor.CONCEPTS.IGenericType$$h), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
           if (next != desc) {
             SNodeOperations.replaceWithAnother(desc, SNodeOperations.copyNode(next));
             QueueSequence.fromQueue(queue).addSequence(ListSequence.fromList(SNodeOperations.getChildren(desc)));

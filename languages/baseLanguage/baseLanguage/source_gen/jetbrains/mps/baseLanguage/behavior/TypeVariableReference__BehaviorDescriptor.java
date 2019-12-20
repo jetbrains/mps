@@ -57,9 +57,9 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    SNode decl = SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4);
+    SNode decl = SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4);
     if (ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, null, false)).contains(decl)) {
-      return SPropertyOperations.getString(decl, PROPS.name$tAp1);
+      return SPropertyOperations.getString(decl, TypeVariableReference__BehaviorDescriptor.PROPS.name$tAp1);
     }
     if (decl != null) {
       return "@" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(decl);
@@ -67,17 +67,17 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
     return "?typevar_ref?";
   }
   /*package*/ static SNode getErasure_idB1mAlA38Mq(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4), LINKS.bound$dqDF) != null)) {
-      return Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4), LINKS.bound$dqDF));
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4), TypeVariableReference__BehaviorDescriptor.LINKS.bound$dqDF) != null)) {
+      return Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4), TypeVariableReference__BehaviorDescriptor.LINKS.bound$dqDF));
     }
     return _quotation_createNode_6i211a_a1a1();
   }
   /*package*/ static List<SNode> getSupertypes_id4w2h6RLlygH(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    if ((SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4)), LINKS.bound$dqDF) != null)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4)), LINKS.bound$dqDF));
+    if ((SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4)), TypeVariableReference__BehaviorDescriptor.LINKS.bound$dqDF) != null)) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4)), TypeVariableReference__BehaviorDescriptor.LINKS.bound$dqDF));
     }
-    for (SNode bound : SLinkOperations.getChildren((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4)), LINKS.auxBounds$jS6R)) {
+    for (SNode bound : SLinkOperations.getChildren((SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4)), TypeVariableReference__BehaviorDescriptor.LINKS.auxBounds$jS6R)) {
       ListSequence.fromList(result).addElement(bound);
     }
     if (ListSequence.fromList(result).isEmpty()) {
@@ -86,11 +86,11 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
     return result;
   }
   /*package*/ static SNode getLooseType_id4YTQtEKnnzf(@NotNull SNode __thisNode__, @NotNull Set<SNode> visitedTypeVariableReferences) {
-    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4), LINKS.bound$dqDF);
+    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4), TypeVariableReference__BehaviorDescriptor.LINKS.bound$dqDF);
     if ((bound != null) && !(SetSequence.fromSet(visitedTypeVariableReferences).contains(__thisNode__))) {
       SetSequence.fromSet(visitedTypeVariableReferences).addElement(__thisNode__);
       SNode upperBoundType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType"));
-      SLinkOperations.setTarget(upperBoundType, LINKS.bound$7gX0, Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(bound, visitedTypeVariableReferences));
+      SLinkOperations.setTarget(upperBoundType, TypeVariableReference__BehaviorDescriptor.LINKS.bound$7gX0, Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(bound, visitedTypeVariableReferences));
       SetSequence.fromSet(visitedTypeVariableReferences).removeElement(__thisNode__);
       return upperBoundType;
     } else {
@@ -99,17 +99,17 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
 
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
-    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4))) {
+    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4))) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4)), CONCEPTS.InstanceMethodDeclaration$An)) {
-      MapSequence.fromMap(substitutions).put(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4), __thisNode__);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4)), TypeVariableReference__BehaviorDescriptor.CONCEPTS.InstanceMethodDeclaration$An)) {
+      MapSequence.fromMap(substitutions).put(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4), __thisNode__);
     } else {
-      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke0(__thisNode__, CONCEPTS.IGenericType$$h, substitutions);
+      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke0(__thisNode__, TypeVariableReference__BehaviorDescriptor.CONCEPTS.IGenericType$$h, substitutions);
     }
   }
   /*package*/ static SNode expandGenerics_id3$PgO9fYTB5(@NotNull final SNode __thisNode__, Map<SNode, SNode> substitutions, List<SNode> expTrace) {
-    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4))) {
+    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4))) {
       if (ListSequence.fromList(expTrace).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return MatchingUtil.matchNodes(__thisNode__, it);
@@ -117,10 +117,10 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
       })) {
         return __thisNode__;
       }
-      SNode exp = MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$U0X4));
-      if (SNodeOperations.isInstanceOf(exp, CONCEPTS.IGenericType$$h)) {
+      SNode exp = MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(__thisNode__, TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4));
+      if (SNodeOperations.isInstanceOf(exp, TypeVariableReference__BehaviorDescriptor.CONCEPTS.IGenericType$$h)) {
         ListSequence.fromList(expTrace).addElement(__thisNode__);
-        exp = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(exp, CONCEPTS.IGenericType$$h), substitutions, expTrace);
+        exp = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(exp, TypeVariableReference__BehaviorDescriptor.CONCEPTS.IGenericType$$h), substitutions, expTrace);
       }
       return exp;
     }
@@ -140,8 +140,8 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static SNode doResolve_id3QovYE_nFjT(@NotNull SNode __thisNode__, SNode startType, Map<SNode, SNode> substitutions) {
     List<SNode> visited = ListSequence.fromList(new ArrayList<SNode>());
-    while (SNodeOperations.isInstanceOf(startType, CONCEPTS.TypeVariableReference$vZ)) {
-      SNode temp = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(startType, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4)), CONCEPTS.Type$IG);
+    while (SNodeOperations.isInstanceOf(startType, TypeVariableReference__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ)) {
+      SNode temp = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(startType, TypeVariableReference__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ), TypeVariableReference__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4)), TypeVariableReference__BehaviorDescriptor.CONCEPTS.Type$IG);
       if (ListSequence.fromList(visited).contains(temp)) {
         break;
       }

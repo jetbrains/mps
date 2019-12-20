@@ -41,19 +41,19 @@ public final class VariableArityType__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentType$knmw)) + "...";
+    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, VariableArityType__BehaviorDescriptor.LINKS.componentType$knmw)) + "...";
   }
   /*package*/ static List<String> getVariableSuffixes_idhEwIzNo(@NotNull SNode __thisNode__) {
     List<String> variableSuffixes = ListSequence.fromList(new ArrayList<String>());
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.componentType$knmw) != null)) {
-      if ((boolean) Type__BehaviorDescriptor.hasPluralVariableSuffixes_id1gn9ujF3bz3.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentType$knmw))) {
-        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentType$knmw))) {
+    if ((SLinkOperations.getTarget(__thisNode__, VariableArityType__BehaviorDescriptor.LINKS.componentType$knmw) != null)) {
+      if ((boolean) Type__BehaviorDescriptor.hasPluralVariableSuffixes_id1gn9ujF3bz3.invoke(SLinkOperations.getTarget(__thisNode__, VariableArityType__BehaviorDescriptor.LINKS.componentType$knmw))) {
+        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, VariableArityType__BehaviorDescriptor.LINKS.componentType$knmw))) {
           if (!(ListSequence.fromList(variableSuffixes).contains(suffix))) {
             ListSequence.fromList(variableSuffixes).addElement(suffix);
           }
         }
       } else {
-        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentType$knmw))) {
+        for (String suffix : Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(SLinkOperations.getTarget(__thisNode__, VariableArityType__BehaviorDescriptor.LINKS.componentType$knmw))) {
           ListSequence.fromList(variableSuffixes).addElement(NameUtil.pluralize(suffix));
         }
       }
@@ -61,10 +61,10 @@ public final class VariableArityType__BehaviorDescriptor extends BaseBHDescripto
     return variableSuffixes;
   }
   /*package*/ static SNode getErasure_idB1mAlA38Mq(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_mwp9ln_a0a2(Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentType$knmw)));
+    return _quotation_createNode_mwp9ln_a0a2(Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(SLinkOperations.getTarget(__thisNode__, VariableArityType__BehaviorDescriptor.LINKS.componentType$knmw)));
   }
   /*package*/ static String getErasureSignature_idhEwIzNx(@NotNull SNode __thisNode__) {
-    return Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.componentType$knmw)) + "...";
+    return Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(SLinkOperations.getTarget(__thisNode__, VariableArityType__BehaviorDescriptor.LINKS.componentType$knmw)) + "...";
   }
 
   /*package*/ VariableArityType__BehaviorDescriptor() {

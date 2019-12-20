@@ -42,10 +42,10 @@ public final class ThrowStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     if (!(ignoreMayBeThrowables)) {
-      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.throwable$o3ty));
+      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(ThrowStatement__BehaviorDescriptor.CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, ThrowStatement__BehaviorDescriptor.LINKS.throwable$o3ty));
     }
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$o3ty)), CONCEPTS.ClassifierType$IZ)) {
-      SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.throwable$o3ty)), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R));
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, ThrowStatement__BehaviorDescriptor.LINKS.throwable$o3ty)), ThrowStatement__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ)) {
+      SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, ThrowStatement__BehaviorDescriptor.LINKS.throwable$o3ty)), ThrowStatement__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ), ThrowStatement__BehaviorDescriptor.LINKS.classifier$pQ_R));
     }
   }
 

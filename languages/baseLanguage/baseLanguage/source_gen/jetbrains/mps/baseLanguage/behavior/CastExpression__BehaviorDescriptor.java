@@ -32,10 +32,10 @@ public final class CastExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getSyntacticallyRightSideExpression_id1wHCnsn590i(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.expression$8QPv);
+    return SLinkOperations.getTarget(__thisNode__, CastExpression__BehaviorDescriptor.LINKS.expression$8QPv);
   }
   /*package*/ static void setSyntacticallyRightSideExpression_id1wHCnsn58ZY(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.expression$8QPv, expr);
+    SLinkOperations.setTarget(__thisNode__, CastExpression__BehaviorDescriptor.LINKS.expression$8QPv, expr);
   }
 
   /*package*/ CastExpression__BehaviorDescriptor() {

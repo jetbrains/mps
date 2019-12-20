@@ -43,19 +43,19 @@ public final class ConstructorInvocationStatement__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    SNode concept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
+    SNode concept = SNodeOperations.getNodeAncestor(__thisNode__, ConstructorInvocationStatement__BehaviorDescriptor.CONCEPTS.ClassConcept$IY, false, false);
     List<SNode> typeVarRefs = new ArrayList<SNode>();
-    for (SNode tvd : SLinkOperations.getChildren(concept, LINKS.typeVariableDeclaration$ziZT)) {
+    for (SNode tvd : SLinkOperations.getChildren(concept, ConstructorInvocationStatement__BehaviorDescriptor.LINKS.typeVariableDeclaration$ziZT)) {
       ListSequence.fromList(typeVarRefs).addElement(_quotation_createNode_teq92u_a0a0a2a0(tvd));
     }
     return _quotation_createNode_teq92u_a3a0(typeVarRefs, concept);
   }
   /*package*/ static Map<SNode, SNode> getTypesByTypeVars_idJfLh5LDMrj(@NotNull SNode __thisNode__) {
     SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
-    if ((SLinkOperations.getTarget(instanceType, LINKS.classifier$pQ_R) == null)) {
+    if ((SLinkOperations.getTarget(instanceType, ConstructorInvocationStatement__BehaviorDescriptor.LINKS.classifier$pQ_R) == null)) {
       return Collections.emptyMap();
     }
-    return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, LINKS.classifier$pQ_R), SLinkOperations.getChildren(instanceType, LINKS.parameter$dQne));
+    return MethodResolveUtil.getTypesByTypeVars(SLinkOperations.getTarget(instanceType, ConstructorInvocationStatement__BehaviorDescriptor.LINKS.classifier$pQ_R), SLinkOperations.getChildren(instanceType, ConstructorInvocationStatement__BehaviorDescriptor.LINKS.parameter$dQne));
   }
 
   /*package*/ ConstructorInvocationStatement__BehaviorDescriptor() {

@@ -40,15 +40,15 @@ public final class AnnotationInstance__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    Iterable<SNode> methods = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.annotation$zNxu), LINKS.method$oAl2);
+    Iterable<SNode> methods = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, AnnotationInstance__BehaviorDescriptor.LINKS.annotation$zNxu), AnnotationInstance__BehaviorDescriptor.LINKS.method$oAl2);
 
     SAbstractConcept cncpt = kind;
     boolean noneMatched = true;
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AnnotationMethodDeclaration$C2)) {
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, AnnotationInstance__BehaviorDescriptor.CONCEPTS.AnnotationMethodDeclaration$C2)) {
       noneMatched = false;
       return new NamedElementsScope(methods);
     }
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ImplicitAnnotationMethodKind$WE)) {
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, AnnotationInstance__BehaviorDescriptor.CONCEPTS.ImplicitAnnotationMethodKind$WE)) {
       noneMatched = false;
       return (Sequence.fromIterable(methods).count() == 1 ? new NamedElementsScope(methods) : new EmptyScope());
     }

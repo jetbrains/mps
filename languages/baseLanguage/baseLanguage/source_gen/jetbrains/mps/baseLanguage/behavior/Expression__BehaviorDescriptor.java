@@ -52,7 +52,7 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static boolean isLegalAsStatement_idi26MfYG(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.CommentPart$kd)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), Expression__BehaviorDescriptor.CONCEPTS.CommentPart$kd)) {
       return true;
     }
     return (boolean) Expression__BehaviorDescriptor.legalAsStatement_id1653mnvAgqK.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));

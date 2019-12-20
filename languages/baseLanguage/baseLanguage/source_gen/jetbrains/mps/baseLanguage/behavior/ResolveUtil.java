@@ -32,11 +32,11 @@ public class ResolveUtil {
   public static List<SNode> parameterTypes(SNode method, SNode instanceType, SNode classifier) {
     List<SNode> result = ListSequence.fromList(new LinkedList<SNode>());
     boolean containsVars = false;
-    for (SNode parameter : SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)) {
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(parameter, CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})).isNotEmpty()) {
+    for (SNode parameter : SLinkOperations.getChildren(method, ResolveUtil.LINKS.parameter$WIkZ)) {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(parameter, ResolveUtil.CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})).isNotEmpty()) {
         containsVars = true;
       }
-      ListSequence.fromList(result).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(parameter, LINKS.type$pLrO)));
+      ListSequence.fromList(result).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(parameter, ResolveUtil.LINKS.type$pLrO)));
     }
     if (!(containsVars)) {
       return result;
@@ -47,11 +47,11 @@ public class ResolveUtil {
     if (concreteMethodClassifierType == null) {
       return result;
     }
-    List<SNode> typeParameters = ListSequence.fromList(SLinkOperations.getChildren(concreteMethodClassifierType, LINKS.parameter$dQne)).toListSequence();
+    List<SNode> typeParameters = ListSequence.fromList(SLinkOperations.getChildren(concreteMethodClassifierType, ResolveUtil.LINKS.parameter$dQne)).toListSequence();
     for (SNode paramType : ListSequence.fromListWithValues(new ArrayList<SNode>(), result)) {
-      for (SNode typeVar : SNodeOperations.getNodeDescendants(paramType, CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})) {
-        SNode variableDeclaration = SLinkOperations.getTarget(typeVar, LINKS.typeVariableDeclaration$U0X4);
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableDeclaration), CONCEPTS.Classifier$hJ)) {
+      for (SNode typeVar : SNodeOperations.getNodeDescendants(paramType, ResolveUtil.CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})) {
+        SNode variableDeclaration = SLinkOperations.getTarget(typeVar, ResolveUtil.LINKS.typeVariableDeclaration$U0X4);
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableDeclaration), ResolveUtil.CONCEPTS.Classifier$hJ)) {
           SNode replacement = SNodeOperations.copyNode(ListSequence.fromList(typeParameters).getElement(SNodeOperations.getIndexInParent(variableDeclaration)));
           if ((SNodeOperations.getParent(typeVar) == null)) {
             ListSequence.fromList(result).insertElement(ListSequence.fromList(result).indexOf(typeVar), replacement);
@@ -67,14 +67,14 @@ public class ResolveUtil {
 
   public static SNode getConcreteClassifierType(SNode typeWithVars, SNode classifierSubtype) {
     SNode result = SNodeOperations.copyNode(typeWithVars);
-    List<SNode> varRefs = SNodeOperations.getNodeDescendants(result, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{});
-    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(classifierSubtype, LINKS.parameter$dQne)).toListSequence();
+    List<SNode> varRefs = SNodeOperations.getNodeDescendants(result, ResolveUtil.CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{});
+    List<SNode> params = ListSequence.fromList(SLinkOperations.getChildren(classifierSubtype, ResolveUtil.LINKS.parameter$dQne)).toListSequence();
     for (SNode varRef : varRefs) {
-      int index = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(varRef, LINKS.typeVariableDeclaration$U0X4));
+      int index = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(varRef, ResolveUtil.LINKS.typeVariableDeclaration$U0X4));
       if (index < ListSequence.fromList(params).count()) {
         SNodeOperations.replaceWithAnother(varRef, SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)));
       } else {
-        SNodeOperations.replaceWithAnother(varRef, TypeVariableDeclaration__BehaviorDescriptor.getConcreteUpperBound_id3LgQEacCviw.invoke(SLinkOperations.getTarget(varRef, LINKS.typeVariableDeclaration$U0X4)));
+        SNodeOperations.replaceWithAnother(varRef, TypeVariableDeclaration__BehaviorDescriptor.getConcreteUpperBound_id3LgQEacCviw.invoke(SLinkOperations.getTarget(varRef, ResolveUtil.LINKS.typeVariableDeclaration$U0X4)));
       }
     }
     return result;
@@ -84,24 +84,24 @@ public class ResolveUtil {
     SNode concreteMethodClassifierType = null;
     while (!(ListSequence.fromList(frontier).isEmpty())) {
       SNode currentType = ListSequence.fromList(frontier).removeElementAt(0);
-      SNode currentClassifier = SLinkOperations.getTarget(currentType, LINKS.classifier$pQ_R);
+      SNode currentClassifier = SLinkOperations.getTarget(currentType, ResolveUtil.LINKS.classifier$pQ_R);
       if (currentClassifier == classifier) {
         concreteMethodClassifierType = currentType;
         break;
       }
-      if (SNodeOperations.isInstanceOf(currentClassifier, CONCEPTS.ClassConcept$IY)) {
-        SNode classConcept = SNodeOperations.cast(currentClassifier, CONCEPTS.ClassConcept$IY);
-        SNode superclass = SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe);
+      if (SNodeOperations.isInstanceOf(currentClassifier, ResolveUtil.CONCEPTS.ClassConcept$IY)) {
+        SNode classConcept = SNodeOperations.cast(currentClassifier, ResolveUtil.CONCEPTS.ClassConcept$IY);
+        SNode superclass = SLinkOperations.getTarget(classConcept, ResolveUtil.LINKS.superclass$_pqe);
         if ((superclass != null)) {
           ListSequence.fromList(frontier).addElement(getConcreteClassifierType(superclass, currentType));
         }
-        for (SNode intfc : SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$mdc6)) {
+        for (SNode intfc : SLinkOperations.getChildren(classConcept, ResolveUtil.LINKS.implementedInterface$mdc6)) {
           ListSequence.fromList(frontier).addElement(getConcreteClassifierType(intfc, currentType));
         }
       }
-      if (SNodeOperations.isInstanceOf(currentClassifier, CONCEPTS.Interface$Kp)) {
-        SNode interfaceConcept = SNodeOperations.cast(currentClassifier, CONCEPTS.Interface$Kp);
-        for (SNode intfc : SLinkOperations.getChildren(interfaceConcept, LINKS.extendedInterface$rbvY)) {
+      if (SNodeOperations.isInstanceOf(currentClassifier, ResolveUtil.CONCEPTS.Interface$Kp)) {
+        SNode interfaceConcept = SNodeOperations.cast(currentClassifier, ResolveUtil.CONCEPTS.Interface$Kp);
+        for (SNode intfc : SLinkOperations.getChildren(interfaceConcept, ResolveUtil.LINKS.extendedInterface$rbvY)) {
           ListSequence.fromList(frontier).addElement(getConcreteClassifierType(intfc, currentType));
         }
       }
@@ -110,45 +110,45 @@ public class ResolveUtil {
   }
 
   public static SNode processMethodToImplement(SNode enclosingClassifier, SNode method) {
-    SNode declaringClassifier = SNodeOperations.getNodeAncestor(method, CONCEPTS.Classifier$hJ, false, false);
+    SNode declaringClassifier = SNodeOperations.getNodeAncestor(method, ResolveUtil.CONCEPTS.Classifier$hJ, false, false);
     SNode result = SNodeOperations.copyNode(method);
-    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.modifiers$akE0)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(result, ResolveUtil.LINKS.modifiers$akE0)).clear();
     List<SNode> initialClassifierTypes = ListSequence.fromList(new ArrayList<SNode>());
-    if (SNodeOperations.isInstanceOf(enclosingClassifier, CONCEPTS.ClassConcept$IY)) {
-      SNode classConcept = SNodeOperations.cast(enclosingClassifier, CONCEPTS.ClassConcept$IY);
+    if (SNodeOperations.isInstanceOf(enclosingClassifier, ResolveUtil.CONCEPTS.ClassConcept$IY)) {
+      SNode classConcept = SNodeOperations.cast(enclosingClassifier, ResolveUtil.CONCEPTS.ClassConcept$IY);
       SNode superclass;
-      if (SNodeOperations.isInstanceOf(classConcept, CONCEPTS.AnonymousClass$aF)) {
+      if (SNodeOperations.isInstanceOf(classConcept, ResolveUtil.CONCEPTS.AnonymousClass$aF)) {
         superclass = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-        SLinkOperations.setTarget(superclass, LINKS.classifier$pQ_R, SLinkOperations.getTarget(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$aF), LINKS.classifier$1y5e));
-        for (SNode type : SLinkOperations.getChildren(SNodeOperations.cast(classConcept, CONCEPTS.AnonymousClass$aF), LINKS.typeParameter$uY4E)) {
-          ListSequence.fromList(SLinkOperations.getChildren(superclass, LINKS.parameter$dQne)).addElement(SNodeOperations.copyNode(type));
+        SLinkOperations.setTarget(superclass, ResolveUtil.LINKS.classifier$pQ_R, SLinkOperations.getTarget(SNodeOperations.cast(classConcept, ResolveUtil.CONCEPTS.AnonymousClass$aF), ResolveUtil.LINKS.classifier$1y5e));
+        for (SNode type : SLinkOperations.getChildren(SNodeOperations.cast(classConcept, ResolveUtil.CONCEPTS.AnonymousClass$aF), ResolveUtil.LINKS.typeParameter$uY4E)) {
+          ListSequence.fromList(SLinkOperations.getChildren(superclass, ResolveUtil.LINKS.parameter$dQne)).addElement(SNodeOperations.copyNode(type));
         }
       } else {
-        superclass = SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe);
+        superclass = SLinkOperations.getTarget(classConcept, ResolveUtil.LINKS.superclass$_pqe);
       }
       if ((superclass != null)) {
         ListSequence.fromList(initialClassifierTypes).addElement(superclass);
       }
-      for (SNode intfc : SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$mdc6)) {
+      for (SNode intfc : SLinkOperations.getChildren(classConcept, ResolveUtil.LINKS.implementedInterface$mdc6)) {
         ListSequence.fromList(initialClassifierTypes).addElement(intfc);
       }
-    } else if (SNodeOperations.isInstanceOf(enclosingClassifier, CONCEPTS.Interface$Kp)) {
-      SNode interfaceConcept = SNodeOperations.cast(enclosingClassifier, CONCEPTS.Interface$Kp);
-      for (SNode intfc : SLinkOperations.getChildren(interfaceConcept, LINKS.extendedInterface$rbvY)) {
+    } else if (SNodeOperations.isInstanceOf(enclosingClassifier, ResolveUtil.CONCEPTS.Interface$Kp)) {
+      SNode interfaceConcept = SNodeOperations.cast(enclosingClassifier, ResolveUtil.CONCEPTS.Interface$Kp);
+      for (SNode intfc : SLinkOperations.getChildren(interfaceConcept, ResolveUtil.LINKS.extendedInterface$rbvY)) {
         ListSequence.fromList(initialClassifierTypes).addElement(intfc);
       }
     }
     SNode concreteSuperClassifierType = getConcreteSuperClassifierType(initialClassifierTypes, declaringClassifier);
     Set<SNode> types = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(types).addElement(SLinkOperations.getTarget(result, LINKS.returnType$WIkw));
-    for (SNode param : SLinkOperations.getChildren(result, LINKS.parameter$WIkZ)) {
-      SetSequence.fromSet(types).addElement(SLinkOperations.getTarget(param, LINKS.type$pLrO));
+    SetSequence.fromSet(types).addElement(SLinkOperations.getTarget(result, ResolveUtil.LINKS.returnType$WIkw));
+    for (SNode param : SLinkOperations.getChildren(result, ResolveUtil.LINKS.parameter$WIkZ)) {
+      SetSequence.fromSet(types).addElement(SLinkOperations.getTarget(param, ResolveUtil.LINKS.type$pLrO));
     }
-    List<SNode> params = SLinkOperations.getChildren(concreteSuperClassifierType, LINKS.parameter$dQne);
+    List<SNode> params = SLinkOperations.getChildren(concreteSuperClassifierType, ResolveUtil.LINKS.parameter$dQne);
     for (SNode typeToModify : types) {
-      for (SNode varRef : SNodeOperations.getNodeDescendants(typeToModify, CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})) {
+      for (SNode varRef : SNodeOperations.getNodeDescendants(typeToModify, ResolveUtil.CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})) {
         // maybe a var from method 
-        SNode typeVariableDeclaration = SLinkOperations.getTarget(varRef, LINKS.typeVariableDeclaration$U0X4);
+        SNode typeVariableDeclaration = SLinkOperations.getTarget(varRef, ResolveUtil.LINKS.typeVariableDeclaration$U0X4);
         if (SNodeOperations.getParent(typeVariableDeclaration) != result) {
           int index = SNodeOperations.getIndexInParent(typeVariableDeclaration);
           if (0 <= index && index < ListSequence.fromList(params).count()) {
@@ -163,13 +163,13 @@ public class ResolveUtil {
   }
 
   public static boolean goodArguments(Iterable<SNode> parameterTypes, List<SNode> arguments) {
-    if (SNodeOperations.isInstanceOf(Sequence.fromIterable(parameterTypes).last(), CONCEPTS.VariableArityType$jT)) {
+    if (SNodeOperations.isInstanceOf(Sequence.fromIterable(parameterTypes).last(), ResolveUtil.CONCEPTS.VariableArityType$jT)) {
       if (Sequence.fromIterable(parameterTypes).count() - 1 > ListSequence.fromList(arguments).count()) {
         return false;
       }
 
       SNode lastArgument = ListSequence.fromList(arguments).last();
-      SNode varArgType = SNodeOperations.cast(Sequence.fromIterable(parameterTypes).last(), CONCEPTS.VariableArityType$jT);
+      SNode varArgType = SNodeOperations.cast(Sequence.fromIterable(parameterTypes).last(), ResolveUtil.CONCEPTS.VariableArityType$jT);
       Iterator<SNode> pTypesItr = Sequence.fromIterable(parameterTypes).iterator();
       Iterator<SNode> argumentsItr = ListSequence.fromList(arguments).iterator();
 
@@ -184,8 +184,8 @@ public class ResolveUtil {
             return true;
           }
           SNode mayBeLastArgumentType = TypecheckingFacade.getFromContext().getTypeOf(argument);
-          SNode varArgComponentType = SLinkOperations.getTarget(varArgType, LINKS.componentType$knmw);
-          if ((lastArgument == argument) && SNodeOperations.isInstanceOf(mayBeLastArgumentType, CONCEPTS.ArrayType$Yv) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SNodeOperations.cast(mayBeLastArgumentType, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w), varArgComponentType)) {
+          SNode varArgComponentType = SLinkOperations.getTarget(varArgType, ResolveUtil.LINKS.componentType$knmw);
+          if ((lastArgument == argument) && SNodeOperations.isInstanceOf(mayBeLastArgumentType, ResolveUtil.CONCEPTS.ArrayType$Yv) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(SNodeOperations.cast(mayBeLastArgumentType, ResolveUtil.CONCEPTS.ArrayType$Yv), ResolveUtil.LINKS.componentType$10w), varArgComponentType)) {
             // array type as vararg 
             return true;
           } else {

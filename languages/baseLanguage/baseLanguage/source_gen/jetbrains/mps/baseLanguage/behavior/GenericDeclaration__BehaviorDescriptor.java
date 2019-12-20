@@ -37,8 +37,8 @@ public final class GenericDeclaration__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.TypeVariableDeclaration$Cc)) {
-      return Scopes.forTypeVariables(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$ziZT), ScopeUtils.lazyParentScope(__thisNode__, kind));
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), GenericDeclaration__BehaviorDescriptor.CONCEPTS.TypeVariableDeclaration$Cc)) {
+      return Scopes.forTypeVariables(SLinkOperations.getChildren(__thisNode__, GenericDeclaration__BehaviorDescriptor.LINKS.typeVariableDeclaration$ziZT), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return null;
   }

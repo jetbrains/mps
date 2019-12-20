@@ -34,7 +34,7 @@ public final class FloatingPointConstant__BehaviorDescriptor extends BaseBHDescr
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      return Double.parseDouble(SPropertyOperations.getString(__thisNode__, PROPS.value$oKYE));
+      return Double.parseDouble(SPropertyOperations.getString(__thisNode__, FloatingPointConstant__BehaviorDescriptor.PROPS.value$oKYE));
     } catch (NumberFormatException e) {
       return null;
     }

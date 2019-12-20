@@ -59,7 +59,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Object[] getActualArguments_idhJyuD6_(@NotNull SNode __thisNode__, final SModule module) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$$A7L)).select(new ISelector<SNode, Object>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, IMethodCall__BehaviorDescriptor.LINKS.actualArgument$$A7L)).select(new ISelector<SNode, Object>() {
       public Object select(SNode it) {
         return (Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(it, module);
       }
@@ -67,26 +67,26 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
     // is 'experssion' an actual argument in this method call? 
-    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.actualArgument$$A7L)) {
-      SNode method = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i);
+    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, IMethodCall__BehaviorDescriptor.LINKS.actualArgument$$A7L)) {
+      SNode method = SLinkOperations.getTarget(__thisNode__, IMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i);
       int i = SNodeOperations.getIndexInParent(expression);
-      if (i < ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count()) {
-        SNode parameterDeclaration = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).getElement(i);
-        SNode rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(parameterDeclaration, LINKS.type$pLrO));
+      if (i < ListSequence.fromList(SLinkOperations.getChildren(method, IMethodCall__BehaviorDescriptor.LINKS.parameter$WIkZ)).count()) {
+        SNode parameterDeclaration = ListSequence.fromList(SLinkOperations.getChildren(method, IMethodCall__BehaviorDescriptor.LINKS.parameter$WIkZ)).getElement(i);
+        SNode rawType = SNodeOperations.copyNode(SLinkOperations.getTarget(parameterDeclaration, IMethodCall__BehaviorDescriptor.LINKS.type$pLrO));
         SNode instanceType = IMethodCall__BehaviorDescriptor.getInstanceType_id6WzWPTX2vuB.invoke(__thisNode__);
         if ((instanceType == null)) {
           return rawType;
         }
-        final SNode methodClassifier = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), CONCEPTS.Classifier$hJ, false, false);
+        final SNode methodClassifier = SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, IMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i), IMethodCall__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
         {
           GeneratedMatchingPattern pattern_fq0410_f0c0b0b = new Pattern_fq0410_a0a0f0c0b0b(_quotation_createNode_fq0410_a0a0a0f0c0b0b(methodClassifier));
           SNode coercedNode_fq0410_f0c0b0b = TypecheckingFacade.getFromContext().coerceType(instanceType, pattern_fq0410_f0c0b0b);
           if (coercedNode_fq0410_f0c0b0b != null) {
             SNode resultType;
-            if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.TypeVariableReference$vZ)) {
-              resultType = IMethodCall__BehaviorDescriptor.getConcreteType_id6WzWPTX2xhN.invoke(__thisNode__, SNodeOperations.cast(rawType, CONCEPTS.TypeVariableReference$vZ), coercedNode_fq0410_f0c0b0b, methodClassifier);
+            if (SNodeOperations.isInstanceOf(rawType, IMethodCall__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ)) {
+              resultType = IMethodCall__BehaviorDescriptor.getConcreteType_id6WzWPTX2xhN.invoke(__thisNode__, SNodeOperations.cast(rawType, IMethodCall__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ), coercedNode_fq0410_f0c0b0b, methodClassifier);
             } else {
-              for (SNode typeVariableReference : SNodeOperations.getNodeDescendants(rawType, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})) {
+              for (SNode typeVariableReference : SNodeOperations.getNodeDescendants(rawType, IMethodCall__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})) {
                 SNode concreteType = IMethodCall__BehaviorDescriptor.getConcreteType_id6WzWPTX2xhN.invoke(__thisNode__, typeVariableReference, coercedNode_fq0410_f0c0b0b, methodClassifier);
                 SNodeOperations.replaceWithAnother(typeVariableReference, concreteType);
               }
@@ -102,13 +102,13 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static SNode getConcreteType_id6WzWPTX2xhN(@NotNull SNode __thisNode__, SNode typeVariableReference, SNode coercedClt, SNode methodClassifier) {
-    List<SNode> parameters = SLinkOperations.getChildren(coercedClt, LINKS.parameter$dQne);
+    List<SNode> parameters = SLinkOperations.getChildren(coercedClt, IMethodCall__BehaviorDescriptor.LINKS.parameter$dQne);
     if (ListSequence.fromList(parameters).isEmpty()) {
       return _quotation_createNode_fq0410_a0a1a2();
     }
     SNode concreteType;
-    int index = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(typeVariableReference, LINKS.typeVariableDeclaration$U0X4));
-    if (SNodeOperations.getParent(SLinkOperations.getTarget(typeVariableReference, LINKS.typeVariableDeclaration$U0X4)) == methodClassifier && ListSequence.fromList(parameters).count() > index) {
+    int index = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(typeVariableReference, IMethodCall__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4));
+    if (SNodeOperations.getParent(SLinkOperations.getTarget(typeVariableReference, IMethodCall__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4)) == methodClassifier && ListSequence.fromList(parameters).count() > index) {
       concreteType = SNodeOperations.copyNode(ListSequence.fromList(parameters).getElement(index));
     } else {
       concreteType = _quotation_createNode_fq0410_a0a0a4a2();
@@ -116,7 +116,7 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     return concreteType;
   }
   /*package*/ static SNode getTypeAnnotation_idhXbqSv6(@NotNull SNode __thisNode__) {
-    return TypeAnnotable__BehaviorDescriptor.getTypeAnnotation_idhXbqSv6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i));
+    return TypeAnnotable__BehaviorDescriptor.getTypeAnnotation_idhXbqSv6.invoke(SLinkOperations.getTarget(__thisNode__, IMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i));
   }
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
     return null;
@@ -127,8 +127,8 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     if ((instanceType == null)) {
       return result;
     }
-    Iterator<SNode> typeParms = ListSequence.fromList(SLinkOperations.getChildren(instanceType, LINKS.parameter$dQne)).iterator();
-    Iterator<SNode> typeVars = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(instanceType, LINKS.classifier$pQ_R), LINKS.typeVariableDeclaration$ziZT)).iterator();
+    Iterator<SNode> typeParms = ListSequence.fromList(SLinkOperations.getChildren(instanceType, IMethodCall__BehaviorDescriptor.LINKS.parameter$dQne)).iterator();
+    Iterator<SNode> typeVars = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(instanceType, IMethodCall__BehaviorDescriptor.LINKS.classifier$pQ_R), IMethodCall__BehaviorDescriptor.LINKS.typeVariableDeclaration$ziZT)).iterator();
     while (typeParms.hasNext() && typeVars.hasNext()) {
       result.put(typeVars.next(), typeParms.next());
     }
@@ -138,8 +138,8 @@ public final class IMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     return new ArrayList<SNode>();
   }
   /*package*/ static boolean isInTypeInferenceContext_id4cxv$9$kw67(@NotNull SNode __thisNode__) {
-    SNode methodAnc = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMethodLike$kl, false, false);
-    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.VariableDeclaration$xe), LINKS.initializer$KgD) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReturnStatement$SF), LINKS.expression$EsbK) == __thisNode__ || ((methodAnc != null) && IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodAnc) == SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExpressionStatement$nm));
+    SNode methodAnc = SNodeOperations.getNodeAncestor(__thisNode__, IMethodCall__BehaviorDescriptor.CONCEPTS.IMethodLike$kl, false, false);
+    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), IMethodCall__BehaviorDescriptor.CONCEPTS.AssignmentExpression$rS), IMethodCall__BehaviorDescriptor.LINKS.rValue$J0E2) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), IMethodCall__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe), IMethodCall__BehaviorDescriptor.LINKS.initializer$KgD) == __thisNode__ || SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), IMethodCall__BehaviorDescriptor.CONCEPTS.ReturnStatement$SF), IMethodCall__BehaviorDescriptor.LINKS.expression$EsbK) == __thisNode__ || ((methodAnc != null) && IMethodLike__BehaviorDescriptor.getLastStatement_idi2fhS7A.invoke(methodAnc) == SNodeOperations.as(SNodeOperations.getParent(__thisNode__), IMethodCall__BehaviorDescriptor.CONCEPTS.ExpressionStatement$nm));
   }
   /*package*/ static boolean useScopesForMethodDeclarationFixer_id3EWPnx1lHq(@NotNull SNode __thisNode__) {
     // todo: use something better here. check usages of getAvailableMethodDeclarations in charisma etc 

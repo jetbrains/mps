@@ -36,19 +36,19 @@ public final class ParenthesizedExpression__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.expression$4_F0)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, ParenthesizedExpression__BehaviorDescriptor.LINKS.expression$4_F0)) {
       return null;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU)) {
-      return IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), ParenthesizedExpression__BehaviorDescriptor.CONCEPTS.IConditional$bU)) {
+      return IConditional__BehaviorDescriptor.getNextProgramPoint_id3F8BxGibk8h.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), ParenthesizedExpression__BehaviorDescriptor.CONCEPTS.IConditional$bU), __thisNode__, ((boolean) value));
     }
     return null;
   }
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
-    return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expression$4_F0));
+    return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(__thisNode__, ParenthesizedExpression__BehaviorDescriptor.LINKS.expression$4_F0));
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    return (Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expression$4_F0), module);
+    return (Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(__thisNode__, ParenthesizedExpression__BehaviorDescriptor.LINKS.expression$4_F0), module);
   }
 
   /*package*/ ParenthesizedExpression__BehaviorDescriptor() {

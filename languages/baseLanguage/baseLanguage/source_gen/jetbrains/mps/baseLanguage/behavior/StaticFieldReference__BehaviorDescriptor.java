@@ -41,18 +41,18 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$2ky6), PROPS.isFinal$hIht) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$2ky6), LINKS.initializer$KgD));
+    return SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.variableDeclaration$2ky6), StaticFieldReference__BehaviorDescriptor.PROPS.isFinal$hIht) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.variableDeclaration$2ky6), StaticFieldReference__BehaviorDescriptor.LINKS.initializer$KgD));
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZTjE) == null) || !(SModelStereotype.isStubModel(SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZTjE))))) {
-      return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$2ky6), LINKS.initializer$KgD)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$2ky6), LINKS.initializer$KgD), module) : null);
+    if ((SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.classifier$ZTjE) == null) || !(SModelStereotype.isStubModel(SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.classifier$ZTjE))))) {
+      return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.variableDeclaration$2ky6), StaticFieldReference__BehaviorDescriptor.LINKS.initializer$KgD)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.variableDeclaration$2ky6), StaticFieldReference__BehaviorDescriptor.LINKS.initializer$KgD), module) : null);
     }
 
-    SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$2ky6);
+    SNode field = SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.variableDeclaration$2ky6);
     SModule m = check_o8sx3d_a0d0b(SNodeOperations.getModel(field));
     if (m != null) {
       try {
-        final Object c = ReflectionUtil.getConstantValue(m, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZTjE), SPropertyOperations.getString(field, PROPS.name$tAp1));
+        final Object c = ReflectionUtil.getConstantValue(m, SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.classifier$ZTjE), SPropertyOperations.getString(field, StaticFieldReference__BehaviorDescriptor.PROPS.name$tAp1));
         if (c != null) {
           return c;
         }
@@ -64,7 +64,7 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
       return null;
     }
     try {
-      return ReflectionUtil.getConstantValue(module, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZTjE), SPropertyOperations.getString(field, PROPS.name$tAp1));
+      return ReflectionUtil.getConstantValue(module, SLinkOperations.getTarget(__thisNode__, StaticFieldReference__BehaviorDescriptor.LINKS.classifier$ZTjE), SPropertyOperations.getString(field, StaticFieldReference__BehaviorDescriptor.PROPS.name$tAp1));
     } catch (Throwable t) {
       return null;
     }

@@ -65,7 +65,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getUnitName_id4pl5GY7LKmR, getExtendedClassifierTypes_id1UeCwxlWKny, getJavaName_id2_jKYQ0K_an, getSuperclass_idi3H_lLu, getAvailableMethodDeclarations_id50EF2fWdwEN, getIndexInContainingClass_id3BacVlMg8ub, isDescendant_checkLoops_id6dL7A1DpKoA, getNestedName_id7q4lzBFjvIX, getFqName_idhEwIO9y, getAnonymousClassPresentation_id6xEo7wt3U0_, getScope_id52_Geb4QDV$, populateMembers_id6r77ob2USUV, isStatic_id6r77ob2USS8);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.nonStatic$pNlE, true);
+    SPropertyOperations.assign(__thisNode__, AnonymousClass__BehaviorDescriptor.PROPS.nonStatic$pNlE, true);
   }
 
   /*package*/ static String getUnitName_id4pl5GY7LKmR(@NotNull SNode __thisNode__) {
@@ -75,7 +75,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(__thisNode__));
   }
   /*package*/ static String getJavaName_id2_jKYQ0K_an(@NotNull SNode __thisNode__) {
-    List<SNode> ancestors = ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Classifier$hJ, false)).reversedList();
+    List<SNode> ancestors = ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false)).reversedList();
     if (ListSequence.fromList(ancestors).isEmpty()) {
       return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__);
     }
@@ -83,10 +83,10 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
     SNode first = ListSequence.fromList(ancestors).removeElementAt(0);
     String nonanonymousPrefix = ListSequence.fromList(ancestors).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        if (SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$aF)) {
-          return "" + (int) AnonymousClass__BehaviorDescriptor.getIndexInContainingClass_id3BacVlMg8ub.invoke(SNodeOperations.cast(it, CONCEPTS.AnonymousClass$aF));
+        if (SNodeOperations.isInstanceOf(it, AnonymousClass__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF)) {
+          return "" + (int) AnonymousClass__BehaviorDescriptor.getIndexInContainingClass_id3BacVlMg8ub.invoke(SNodeOperations.cast(it, AnonymousClass__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF));
         } else {
-          return SPropertyOperations.getString(it, PROPS.name$tAp1);
+          return SPropertyOperations.getString(it, AnonymousClass__BehaviorDescriptor.PROPS.name$tAp1);
         }
       }
     }).reduceLeft(new ILeftCombinator<String, String>() {
@@ -98,21 +98,21 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
     return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(first) + nonanonymousPrefix + "$" + ((int) AnonymousClass__BehaviorDescriptor.getIndexInContainingClass_id3BacVlMg8ub.invoke(__thisNode__));
   }
   /*package*/ static SNode getSuperclass_idi3H_lLu(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_mhnjwj_a0a3(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameter$uY4E), SLinkOperations.getTarget(__thisNode__, LINKS.classifier$1y5e));
+    return _quotation_createNode_mhnjwj_a0a3(SLinkOperations.getChildren(__thisNode__, AnonymousClass__BehaviorDescriptor.LINKS.typeParameter$uY4E), SLinkOperations.getTarget(__thisNode__, AnonymousClass__BehaviorDescriptor.LINKS.classifier$1y5e));
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode classifier = SLinkOperations.getTarget(__thisNode__, LINKS.classifier$1y5e);
-    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY)) {
-      return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY));
+    SNode classifier = SLinkOperations.getTarget(__thisNode__, AnonymousClass__BehaviorDescriptor.LINKS.classifier$1y5e);
+    if (SNodeOperations.isInstanceOf(classifier, AnonymousClass__BehaviorDescriptor.CONCEPTS.ClassConcept$IY)) {
+      return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, AnonymousClass__BehaviorDescriptor.CONCEPTS.ClassConcept$IY));
     } else {
       return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"));
     }
   }
   /*package*/ static int getIndexInContainingClass_id3BacVlMg8ub(@NotNull SNode __thisNode__) {
-    final SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(ancestor, CONCEPTS.AnonymousClass$aF, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    final SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(ancestor, AnonymousClass__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.getNodeAncestor(it, CONCEPTS.Classifier$hJ, false, false) == ancestor;
+        return SNodeOperations.getNodeAncestor(it, AnonymousClass__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false) == ancestor;
       }
     }).indexOf(__thisNode__) + 1;
   }
@@ -129,43 +129,43 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
     if (((boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(__thisNode__, nodeToCompare))) {
       return true;
     }
-    return (boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$1y5e), nodeToCompare, visited);
+    return (boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(__thisNode__, AnonymousClass__BehaviorDescriptor.LINKS.classifier$1y5e), nodeToCompare, visited);
   }
   /*package*/ static String getNestedName_id7q4lzBFjvIX(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    return (containingClassifier != null ? AnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id6xEo7wt3U0_.invoke(__thisNode__, containingClassifier) + Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(containingClassifier) : Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invokeSuper(__thisNode__, CONCEPTS.AnonymousClass$aF));
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
+    return (containingClassifier != null ? AnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id6xEo7wt3U0_.invoke(__thisNode__, containingClassifier) + Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invoke(containingClassifier) : Classifier__BehaviorDescriptor.getNestedName_id7q4lzBFjvIX.invokeSuper(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    return (containingClassifier != null ? AnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id6xEo7wt3U0_.invoke(__thisNode__, containingClassifier) + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) : INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invokeSuper(__thisNode__, CONCEPTS.AnonymousClass$aF));
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
+    return (containingClassifier != null ? AnonymousClass__BehaviorDescriptor.getAnonymousClassPresentation_id6xEo7wt3U0_.invoke(__thisNode__, containingClassifier) + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) : INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invokeSuper(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF));
   }
   /*package*/ static String getAnonymousClassPresentation_id6xEo7wt3U0_(@NotNull SNode __thisNode__, @NotNull SNode containingClassifier) {
     String result = "Anonymous in ";
-    SNode containingMethod = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR, false, false);
+    SNode containingMethod = SNodeOperations.getNodeAncestor(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.BaseMethodDeclaration$RR, false, false);
     if (containingMethod != null && SNodeOperations.getParent(containingMethod) == containingClassifier) {
-      result += SPropertyOperations.getString(containingMethod, PROPS.name$tAp1) + "() in ";
+      result += SPropertyOperations.getString(containingMethod, AnonymousClass__BehaviorDescriptor.PROPS.name$tAp1) + "() in ";
     }
     return result;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (ScopeUtils.comeFrom(LINKS.actualArgument$$A7L, __thisNode__, child)) {
+    if (ScopeUtils.comeFrom(AnonymousClass__BehaviorDescriptor.LINKS.actualArgument$$A7L, __thisNode__, child)) {
       return ScopeUtils.lazyParentScope(__thisNode__, kind);
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.AnonymousClass$aF, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, AnonymousClass__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF, kind, child));
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
     // populate own members 
     for (SNode member : SNodeOperations.getChildren(__thisNode__)) {
-      if (SNodeOperations.isInstanceOf(member, CONCEPTS.IClassifierMember$mo)) {
-        IClassifierMember__BehaviorDescriptor.populateMember_id6r77ob2UW9O.invoke(SNodeOperations.cast(member, CONCEPTS.IClassifierMember$mo), context, classifierType);
+      if (SNodeOperations.isInstanceOf(member, AnonymousClass__BehaviorDescriptor.CONCEPTS.IClassifierMember$mo)) {
+        IClassifierMember__BehaviorDescriptor.populateMember_id6r77ob2UW9O.invoke(SNodeOperations.cast(member, AnonymousClass__BehaviorDescriptor.CONCEPTS.IClassifierMember$mo), context, classifierType);
       }
     }
 
     // populate extended members 
-    SNode superClass = SNodeOperations.as(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(__thisNode__), CONCEPTS.IClassifierType$af);
-    if (SNodeOperations.isInstanceOf(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(superClass), CONCEPTS.ClassConcept$IY)) {
+    SNode superClass = SNodeOperations.as(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(__thisNode__), AnonymousClass__BehaviorDescriptor.CONCEPTS.IClassifierType$af);
+    if (SNodeOperations.isInstanceOf(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(superClass), AnonymousClass__BehaviorDescriptor.CONCEPTS.ClassConcept$IY)) {
       IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(superClass, context, classifierType);
-    } else if (SNodeOperations.isInstanceOf(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(superClass), CONCEPTS.Interface$Kp)) {
+    } else if (SNodeOperations.isInstanceOf(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(superClass), AnonymousClass__BehaviorDescriptor.CONCEPTS.Interface$Kp)) {
       if ((SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") != null)) {
         IClassifierType__BehaviorDescriptor.populateMembers_id6r77ob2USS_.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")), context, classifierType);
       }

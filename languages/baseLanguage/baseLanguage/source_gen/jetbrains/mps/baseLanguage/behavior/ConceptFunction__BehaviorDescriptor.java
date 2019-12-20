@@ -69,23 +69,23 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
     return ListSequence.fromList(new ArrayList<SNode>());
   }
   /*package*/ static boolean isImplementation_id19gBtYEvixA(@NotNull SNode __thisNode__, SNode child) {
-    return SNodeOperations.isInstanceOf(child, CONCEPTS.StatementList$TN);
+    return SNodeOperations.isInstanceOf(child, ConceptFunction__BehaviorDescriptor.CONCEPTS.StatementList$TN);
   }
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
     return ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(__thisNode__);
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.body$pTP2);
+    return SLinkOperations.getTarget(__thisNode__, ConceptFunction__BehaviorDescriptor.LINKS.body$pTP2);
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(new ArrayList<SConcept>());
   }
   /*package*/ static boolean isReturnOnly_id3fUxpI1uWGM(@NotNull SNode __thisNode__) {
-    if (!((boolean) StatementList__BehaviorDescriptor.isOneLiner_idi0z3USV.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$pTP2)))) {
+    if (!((boolean) StatementList__BehaviorDescriptor.isOneLiner_idi0z3USV.invoke(SLinkOperations.getTarget(__thisNode__, ConceptFunction__BehaviorDescriptor.LINKS.body$pTP2)))) {
       return false;
     }
-    SNode stmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.body$pTP2), LINKS.statement$WHn8)).first();
-    return SNodeOperations.isInstanceOf(stmt, CONCEPTS.ExpressionStatement$nm) || SNodeOperations.isInstanceOf(stmt, CONCEPTS.ReturnStatement$SF);
+    SNode stmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, ConceptFunction__BehaviorDescriptor.LINKS.body$pTP2), ConceptFunction__BehaviorDescriptor.LINKS.statement$WHn8)).first();
+    return SNodeOperations.isInstanceOf(stmt, ConceptFunction__BehaviorDescriptor.CONCEPTS.ExpressionStatement$nm) || SNodeOperations.isInstanceOf(stmt, ConceptFunction__BehaviorDescriptor.CONCEPTS.ReturnStatement$SF);
   }
   /*package*/ static String getName_idhGVcmek(@NotNull SNode __thisNode__) {
     return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__));
@@ -139,11 +139,11 @@ public final class ConceptFunction__BehaviorDescriptor extends BaseBHDescriptor 
     // todo: rewrite using filtering scope 
     SAbstractConcept cncpt = kind;
     boolean noneMatched = true;
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.LocalVariableDeclaration$Bf)) {
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, ConceptFunction__BehaviorDescriptor.CONCEPTS.LocalVariableDeclaration$Bf)) {
       noneMatched = false;
       return new EmptyScope();
     }
-    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.ParameterDeclaration$qU)) {
+    if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, ConceptFunction__BehaviorDescriptor.CONCEPTS.ParameterDeclaration$qU)) {
       noneMatched = false;
       return new EmptyScope();
     }

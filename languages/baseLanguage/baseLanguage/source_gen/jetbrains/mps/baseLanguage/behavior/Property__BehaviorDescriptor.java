@@ -62,37 +62,37 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isDefaultImplementation_idhEwIIZu, isCustomImplementation_idhEwIIZC, isCustomSetterOnlyImplementation_id2hzApTi_Lsg, getCustomPropertyImplementation_idhEwIIZM, getCustomSetterStatements_id2hzApTjcJcI, getPropertyNameWithId_idhEwIIZU, getBackingVarName_id1tRxQXfvLw, getGetterMethodName_idhEwIJ02, getSetterMethodName_idhEwIJ0b, getReferenceMethodName_id4qcYKcpgzJ$, getSetterVisibility_idhEwIJ0k, isSetterVisible_id5WTl5xSBxvj, hasSetter_idhEwIJ0S, getSideIcon_id6TtJ6IUjtJX, populateMember_id6r77ob2UW9O, getFqName_idhEwIO9y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$2GiC, CONCEPTS.PublicVisibility$qe);
-    SLinkOperations.setTarget(__thisNode__, LINKS.propertyImplementation$bCiM, SNodeFactoryOperations.createNewNode(CONCEPTS.DefaultPropertyImplementation$NN, null));
+    SLinkOperations.setNewChild(__thisNode__, Property__BehaviorDescriptor.LINKS.visibility$2GiC, Property__BehaviorDescriptor.CONCEPTS.PublicVisibility$qe);
+    SLinkOperations.setTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM, SNodeFactoryOperations.createNewNode(Property__BehaviorDescriptor.CONCEPTS.DefaultPropertyImplementation$NN, null));
   }
 
   /*package*/ static boolean isDefaultImplementation_idhEwIIZu(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.DefaultPropertyImplementation$NN);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.DefaultPropertyImplementation$NN);
   }
   /*package*/ static boolean isCustomImplementation_idhEwIIZC(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.CustomPropertyImplementation$9G);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.CustomPropertyImplementation$9G);
   }
   /*package*/ static boolean isCustomSetterOnlyImplementation_id2hzApTi_Lsg(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.CustomSetterPropertyImplementation$E1);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.CustomSetterPropertyImplementation$E1);
   }
   /*package*/ static SNode getCustomPropertyImplementation_idhEwIIZM(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.CustomPropertyImplementation$9G);
+    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.CustomPropertyImplementation$9G);
   }
   /*package*/ static List<SNode> getCustomSetterStatements_id2hzApTjcJcI(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.CustomPropertyImplementation$9G)) {
-      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.CustomPropertyImplementation$9G), LINKS.setAccessor$cVSe), LINKS.statementList$SZt9), LINKS.statement$WHn8);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.CustomPropertyImplementation$9G)) {
+      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.CustomPropertyImplementation$9G), Property__BehaviorDescriptor.LINKS.setAccessor$cVSe), Property__BehaviorDescriptor.LINKS.statementList$SZt9), Property__BehaviorDescriptor.LINKS.statement$WHn8);
     } else {
-      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.CustomSetterPropertyImplementation$E1), LINKS.setAccessor$VUMX), LINKS.statementList$SZt9), LINKS.statement$WHn8);
+      return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.CustomSetterPropertyImplementation$E1), Property__BehaviorDescriptor.LINKS.setAccessor$VUMX), Property__BehaviorDescriptor.LINKS.statementList$SZt9), Property__BehaviorDescriptor.LINKS.statement$WHn8);
     }
   }
   /*package*/ static String getPropertyNameWithId_idhEwIIZU(@NotNull SNode __thisNode__) {
-    return NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, PROPS.propertyName$wZnI));
+    return NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, Property__BehaviorDescriptor.PROPS.propertyName$wZnI));
   }
   /*package*/ static String getBackingVarName_id1tRxQXfvLw(@NotNull SNode __thisNode__) {
     return "my" + Property__BehaviorDescriptor.getPropertyNameWithId_idhEwIIZU.invoke(__thisNode__);
   }
   /*package*/ static String getGetterMethodName_idhEwIJ02(@NotNull SNode __thisNode__) {
-    return (check_9xvv7i_a0a0h(SLinkOperations.getTarget(__thisNode__, LINKS.type$bamM)) ? "is" + Property__BehaviorDescriptor.getPropertyNameWithId_idhEwIIZU.invoke(__thisNode__) : "get" + Property__BehaviorDescriptor.getPropertyNameWithId_idhEwIIZU.invoke(__thisNode__));
+    return (check_9xvv7i_a0a0h(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.type$bamM)) ? "is" + Property__BehaviorDescriptor.getPropertyNameWithId_idhEwIIZU.invoke(__thisNode__) : "get" + Property__BehaviorDescriptor.getPropertyNameWithId_idhEwIIZU.invoke(__thisNode__));
   }
   /*package*/ static String getSetterMethodName_idhEwIJ0b(@NotNull SNode __thisNode__) {
     return "set" + Property__BehaviorDescriptor.getPropertyNameWithId_idhEwIIZU.invoke(__thisNode__);
@@ -101,9 +101,9 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
     return "refTo" + Property__BehaviorDescriptor.getPropertyNameWithId_idhEwIIZU.invoke(__thisNode__);
   }
   /*package*/ static SNode getSetterVisibility_idhEwIJ0k(@NotNull SNode __thisNode__) {
-    SNode visibility = SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC);
+    SNode visibility = SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.visibility$2GiC);
     if (((boolean) Property__BehaviorDescriptor.isDefaultImplementation_idhEwIIZu.invoke(__thisNode__))) {
-      SNode setterVisibility = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM), CONCEPTS.DefaultPropertyImplementation$NN), LINKS.defaultSetAccessor$Uisp), LINKS.visibility$peCZ);
+      SNode setterVisibility = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM), Property__BehaviorDescriptor.CONCEPTS.DefaultPropertyImplementation$NN), Property__BehaviorDescriptor.LINKS.defaultSetAccessor$Uisp), Property__BehaviorDescriptor.LINKS.visibility$peCZ);
       if ((setterVisibility != null)) {
         visibility = setterVisibility;
       }
@@ -113,12 +113,12 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isSetterVisible_id5WTl5xSBxvj(@NotNull SNode __thisNode__, final SNode contextClassifier, SNode contextNode) {
     SNode setterVisibility = Property__BehaviorDescriptor.getSetterVisibility_idhEwIJ0k.invoke(__thisNode__);
     // public 
-    if (SNodeOperations.isInstanceOf(setterVisibility, CONCEPTS.PublicVisibility$qe)) {
+    if (SNodeOperations.isInstanceOf(setterVisibility, Property__BehaviorDescriptor.CONCEPTS.PublicVisibility$qe)) {
       return true;
     }
     // private 
-    if (SNodeOperations.isInstanceOf(setterVisibility, CONCEPTS.PrivateVisibility$Se)) {
-      return ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$hJ, true)).last() == ListSequence.fromList(SNodeOperations.getNodeAncestors(contextClassifier, CONCEPTS.Classifier$hJ, true)).last();
+    if (SNodeOperations.isInstanceOf(setterVisibility, Property__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se)) {
+      return ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, Property__BehaviorDescriptor.CONCEPTS.Classifier$hJ, true)).last() == ListSequence.fromList(SNodeOperations.getNodeAncestors(contextClassifier, Property__BehaviorDescriptor.CONCEPTS.Classifier$hJ, true)).last();
     }
     // default 
     String contextNodePackage = VisibilityUtil.packageName(contextNode);
@@ -127,24 +127,24 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
       return Objects.equals(contextNodePackage, contextClassifierPackage);
     }
     // protected 
-    if (SNodeOperations.isInstanceOf(setterVisibility, CONCEPTS.ProtectedVisibility$OD)) {
-      String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), __thisNode__));
+    if (SNodeOperations.isInstanceOf(setterVisibility, Property__BehaviorDescriptor.CONCEPTS.ProtectedVisibility$OD)) {
+      String declarationClassifierPackage = VisibilityUtil.packageName(Classifier__BehaviorDescriptor.getContextClassifier_id5mDmeD1aaq0.invoke(SNodeOperations.asSConcept(Property__BehaviorDescriptor.CONCEPTS.Classifier$hJ), __thisNode__));
       if (Objects.equals(contextNodePackage, declarationClassifierPackage)) {
         return true;
       }
 
       // two cases: 1) from class 2) from dot expression 
-      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$hJ, true)).where(new IWhereFilter<SNode>() {
+      Iterable<SNode> possibleClassifiers = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, Property__BehaviorDescriptor.CONCEPTS.Classifier$hJ, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SetSequence.fromSet(ClassifierScopeUtils.getExtendedClassifiers(it)).contains(contextClassifier);
         }
       });
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.DotExpression$6a))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, Property__BehaviorDescriptor.CONCEPTS.DotExpression$6a))) {
         // 1 
         return Sequence.fromIterable(possibleClassifiers).isNotEmpty();
       } else {
         // 2 
-        SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, CONCEPTS.DotExpression$6a));
+        SNode leftClassifier = DotExpression__BehaviorDescriptor.getClassifier_idhEwIPI9.invoke(SNodeOperations.cast(contextNode, Property__BehaviorDescriptor.CONCEPTS.DotExpression$6a));
         final Set<SNode> extendedClassifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), ClassifierScopeUtils.getExtendedClassifiers(leftClassifier));
         return Sequence.fromIterable(possibleClassifiers).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -157,7 +157,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static boolean hasSetter_idhEwIJ0S(@NotNull SNode __thisNode__) {
-    return (boolean) PropertyImplementation__BehaviorDescriptor.hasSetter_idhEwIUA2.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.propertyImplementation$bCiM));
+    return (boolean) PropertyImplementation__BehaviorDescriptor.hasSetter_idhEwIUA2.invoke(SLinkOperations.getTarget(__thisNode__, Property__BehaviorDescriptor.LINKS.propertyImplementation$bCiM));
   }
   /*package*/ static IconResource getSideIcon_id6TtJ6IUjtJX(@NotNull SNode __thisNode__) {
     return ((IconResource) IVisible__BehaviorDescriptor.getVisibilityIcon_id4mxbjAOAG0d.invoke(__thisNode__));
@@ -167,11 +167,11 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
     context.exposeMember(__thisNode__, null);
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, Property__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if (containingClassifier != null) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, Property__BehaviorDescriptor.PROPS.name$tAp1);
     }
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.INamedConcept$nV);
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, Property__BehaviorDescriptor.CONCEPTS.INamedConcept$nV);
   }
 
   /*package*/ Property__BehaviorDescriptor() {
@@ -252,7 +252,7 @@ public final class Property__BehaviorDescriptor extends BaseBHDescriptor {
   }
   private static boolean check_9xvv7i_a0a0h(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SNodeOperations.isInstanceOf(checkedDotOperand, CONCEPTS.BooleanType$8G);
+      return SNodeOperations.isInstanceOf(checkedDotOperand, Property__BehaviorDescriptor.CONCEPTS.BooleanType$8G);
     }
     return false;
   }

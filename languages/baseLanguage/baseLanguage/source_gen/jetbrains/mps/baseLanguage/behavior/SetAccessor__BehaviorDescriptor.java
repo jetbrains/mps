@@ -37,7 +37,7 @@ public final class SetAccessor__BehaviorDescriptor extends BaseBHDescriptor {
     return null;
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.statementList$SZt9);
+    return SLinkOperations.getTarget(__thisNode__, SetAccessor__BehaviorDescriptor.LINKS.statementList$SZt9);
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
     return new ArrayList<SNode>();

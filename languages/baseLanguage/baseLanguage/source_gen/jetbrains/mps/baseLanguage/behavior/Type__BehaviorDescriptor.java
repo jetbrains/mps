@@ -126,7 +126,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
     return Type__BehaviorDescriptor.getAbstractCreators_idhQFCQT0.invoke(__thisNode__);
   }
   /*package*/ static SNode getJavaType_idhEwIzO1(@NotNull SNode __thisNode__) {
-    return TypecheckingFacade.getFromContext().coerceType(__thisNode__, CONCEPTS.ClassifierType$IZ);
+    return TypecheckingFacade.getFromContext().coerceType(__thisNode__, Type__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ);
   }
   /*package*/ static boolean selectOnVariableCreation_idhEwIzO8(@NotNull SNode __thisNode__) {
     return ((boolean) Type__BehaviorDescriptor.hasMissingParameters_id32KZwowVoMu.invoke(__thisNode__));
@@ -134,9 +134,9 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   @Deprecated
   /*package*/ static SNode getClassExpression_idhEwIzOd(@NotNull SNode __thisNode__) {
     {
-      SNode coercedNode_smb55n_a0n = TypecheckingFacade.getFromContext().coerceType(__thisNode__, CONCEPTS.ClassifierType$IZ);
+      SNode coercedNode_smb55n_a0n = TypecheckingFacade.getFromContext().coerceType(__thisNode__, Type__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ);
       if (coercedNode_smb55n_a0n != null) {
-        return _quotation_createNode_smb55n_a0a1a0a31(SLinkOperations.getTarget(coercedNode_smb55n_a0n, LINKS.classifier$pQ_R));
+        return _quotation_createNode_smb55n_a0a1a0a31(SLinkOperations.getTarget(coercedNode_smb55n_a0n, Type__BehaviorDescriptor.LINKS.classifier$pQ_R));
       } else {
         throw new UnsupportedOperationException();
       }
@@ -154,8 +154,8 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static boolean isSupersetOf_id7PgshREdQKp(@NotNull SNode __thisNode__, SNode t, Map<SNode, SNode> substitutions) {
-    if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$vZ)) {
-      t = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4)), CONCEPTS.Type$IG);
+    if (SNodeOperations.isInstanceOf(t, Type__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ)) {
+      t = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(t, Type__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ), Type__BehaviorDescriptor.LINKS.typeVariableDeclaration$U0X4)), Type__BehaviorDescriptor.CONCEPTS.Type$IG);
       if (t == null) {
         return false;
       }
@@ -171,7 +171,7 @@ public final class Type__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getLooseType_id4YTQtEKnnzf(@NotNull SNode __thisNode__, @NotNull Set<SNode> visitedTypes) {
     SNode looseType = SNodeOperations.copyNode(__thisNode__);
-    for (SNode varRef : SNodeOperations.getNodeDescendants(looseType, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})) {
+    for (SNode varRef : SNodeOperations.getNodeDescendants(looseType, Type__BehaviorDescriptor.CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})) {
       SNodeOperations.replaceWithAnother(varRef, Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(varRef, visitedTypes));
     }
     return looseType;

@@ -37,9 +37,9 @@ public final class IContainsStatementList__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static SNode getStatementList_idi0zv5tb(@NotNull SNode __thisNode__) {
     return SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(__thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.StatementList$TN);
+        return SNodeOperations.isInstanceOf(it, IContainsStatementList__BehaviorDescriptor.CONCEPTS.StatementList$TN);
       }
-    }).first(), CONCEPTS.StatementList$TN);
+    }).first(), IContainsStatementList__BehaviorDescriptor.CONCEPTS.StatementList$TN);
   }
   /*package*/ static boolean isStatementListCompactable_idi0zvp2S(@NotNull SNode __thisNode__) {
     return false;

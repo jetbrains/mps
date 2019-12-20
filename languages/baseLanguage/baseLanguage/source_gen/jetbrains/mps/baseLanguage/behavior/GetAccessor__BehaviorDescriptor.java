@@ -36,10 +36,10 @@ public final class GetAccessor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Property$PY, false, false), LINKS.type$bamM);
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, GetAccessor__BehaviorDescriptor.CONCEPTS.Property$PY, false, false), GetAccessor__BehaviorDescriptor.LINKS.type$bamM);
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.statementList$TTjM);
+    return SLinkOperations.getTarget(__thisNode__, GetAccessor__BehaviorDescriptor.LINKS.statementList$TTjM);
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
     return new ArrayList<SNode>();

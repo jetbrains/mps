@@ -55,27 +55,27 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
 
   /*package*/ static boolean isInitializable_idhEwJfMK(@NotNull SNode __thisNode__) {
     SNode parent = SNodeOperations.getParent(__thisNode__);
-    return SNodeOperations.isInstanceOf(parent, CONCEPTS.LocalVariableDeclarationStatement$BI) || SNodeOperations.isInstanceOf(parent, CONCEPTS.ForStatement$Y9);
+    return SNodeOperations.isInstanceOf(parent, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.LocalVariableDeclarationStatement$BI) || SNodeOperations.isInstanceOf(parent, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.ForStatement$Y9);
   }
   /*package*/ static SNode createReference_idhEwJfME(@NotNull SNode __thisNode__) {
     SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-    SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, __thisNode__);
+    SLinkOperations.setTarget(ref, LocalVariableDeclaration__BehaviorDescriptor.LINKS.variableDeclaration$2ky6, __thisNode__);
     return ref;
   }
   /*package*/ static boolean isVariableReferencedInClosures_idhSV9vo4(@NotNull SNode __thisNode__) {
-    SNode container = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IStatementListContainer$4L, false, false);
+    SNode container = SNodeOperations.getNodeAncestor(__thisNode__, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.IStatementListContainer$4L, false, false);
     {
-      Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6), CONCEPTS.LocalVariableDeclaration$Bf);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.VariableReference$sQ), LocalVariableDeclaration__BehaviorDescriptor.LINKS.variableDeclaration$2ky6), LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.LocalVariableDeclaration$Bf);
         }
       }).toListSequence().iterator();
       SNode ref_var;
       while (ref_it.hasNext()) {
         ref_var = ref_it.next();
-        if (SLinkOperations.getTarget(ref_var, LINKS.variableDeclaration$2ky6) == __thisNode__) {
-          SNode referenceContainer = SNodeOperations.getNodeAncestor(ref_var, CONCEPTS.IStatementListContainer$4L, false, false);
-          if (referenceContainer != container && SNodeOperations.isInstanceOf(referenceContainer, CONCEPTS.ClosureLiteral$zJ)) {
+        if (SLinkOperations.getTarget(ref_var, LocalVariableDeclaration__BehaviorDescriptor.LINKS.variableDeclaration$2ky6) == __thisNode__) {
+          SNode referenceContainer = SNodeOperations.getNodeAncestor(ref_var, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.IStatementListContainer$4L, false, false);
+          if (referenceContainer != container && SNodeOperations.isInstanceOf(referenceContainer, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.ClosureLiteral$zJ)) {
             return true;
           }
         }
@@ -101,25 +101,25 @@ public final class LocalVariableDeclaration__BehaviorDescriptor extends BaseBHDe
     throw new UnsupportedOperationException();
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableDeclaration$yA)) {
-      if (ScopeUtils.comeFrom(LINKS.initializer$KgD, __thisNode__, child)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.IVariableDeclaration$yA)) {
+      if (ScopeUtils.comeFrom(LocalVariableDeclaration__BehaviorDescriptor.LINKS.initializer$KgD, __thisNode__, child)) {
         return Scopes.forVariables(kind, __thisNode__, ScopeUtils.lazyParentScope(__thisNode__, kind));
       } else {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
       }
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.ScopeProvider$M8, kind, child));
   }
   /*package*/ static Scope getScope_id52_Geb4QFgX(@NotNull SNode __thisNode__, SAbstractConcept kind, SContainmentLink role, int index) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableDeclaration$yA)) {
-      if (Objects.equals(role, LINKS.initializer$KgD)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.IVariableDeclaration$yA)) {
+      if (Objects.equals(role, LocalVariableDeclaration__BehaviorDescriptor.LINKS.initializer$KgD)) {
         return Scopes.forVariables(kind, __thisNode__, ScopeUtils.lazyParentScope(__thisNode__, kind));
       } else {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
       }
     }
 
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, role, ((int) index)));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke0(__thisNode__, LocalVariableDeclaration__BehaviorDescriptor.CONCEPTS.ScopeProvider$M8, kind, role, ((int) index)));
   }
 
   /*package*/ LocalVariableDeclaration__BehaviorDescriptor() {

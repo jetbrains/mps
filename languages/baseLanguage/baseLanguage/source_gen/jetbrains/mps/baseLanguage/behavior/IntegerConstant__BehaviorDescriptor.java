@@ -32,7 +32,7 @@ public final class IntegerConstant__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    return SPropertyOperations.getInteger(__thisNode__, PROPS.value$ZeO0);
+    return SPropertyOperations.getInteger(__thisNode__, IntegerConstant__BehaviorDescriptor.PROPS.value$ZeO0);
   }
 
   /*package*/ IntegerConstant__BehaviorDescriptor() {

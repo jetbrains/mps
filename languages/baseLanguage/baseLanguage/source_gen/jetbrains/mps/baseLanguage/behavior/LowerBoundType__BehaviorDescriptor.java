@@ -45,8 +45,8 @@ public final class LowerBoundType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_) != null) {
-      return "? super " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_));
+    if (SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_) != null) {
+      return "? super " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_));
     } else {
       return "? super ???";
     }
@@ -58,28 +58,28 @@ public final class LowerBoundType__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static SNode expandGenerics_id3$PgO9fYTB5(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions, List<SNode> expTrace) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_), CONCEPTS.IGenericType$$h)) {
-      SNode expBound = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_), CONCEPTS.IGenericType$$h), substitutions, expTrace);
-      if (expBound == SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_), LowerBoundType__BehaviorDescriptor.CONCEPTS.IGenericType$$h)) {
+      SNode expBound = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_), LowerBoundType__BehaviorDescriptor.CONCEPTS.IGenericType$$h), substitutions, expTrace);
+      if (expBound == SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_)) {
         return __thisNode__;
       }
       return _quotation_createNode_kcjgm5_a2a0a3(expBound);
     }
-    return IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke0(__thisNode__, CONCEPTS.IGenericType$$h, substitutions, expTrace);
+    return IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke0(__thisNode__, LowerBoundType__BehaviorDescriptor.CONCEPTS.IGenericType$$h, substitutions, expTrace);
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_), CONCEPTS.IGenericType$$h)) {
-      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_), CONCEPTS.IGenericType$$h), substitutions);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_), LowerBoundType__BehaviorDescriptor.CONCEPTS.IGenericType$$h)) {
+      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_), LowerBoundType__BehaviorDescriptor.CONCEPTS.IGenericType$$h), substitutions);
     }
   }
   /*package*/ static boolean isSupersetOf_id7PgshREdQKp(@NotNull SNode __thisNode__, SNode t, Map<SNode, SNode> substitutions) {
-    if (SNodeOperations.isInstanceOf(t, CONCEPTS.LowerBoundType$Uz)) {
+    if (SNodeOperations.isInstanceOf(t, LowerBoundType__BehaviorDescriptor.CONCEPTS.LowerBoundType$Uz)) {
 
-      return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.LowerBoundType$Uz), LINKS.bound$uJC_), SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_), substitutions);
-    } else if (SNodeOperations.isInstanceOf(t, CONCEPTS.UpperBoundType$r6)) {
+      return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(t, LowerBoundType__BehaviorDescriptor.CONCEPTS.LowerBoundType$Uz), LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_), SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_), substitutions);
+    } else if (SNodeOperations.isInstanceOf(t, LowerBoundType__BehaviorDescriptor.CONCEPTS.UpperBoundType$r6)) {
       return false;
     }
-    return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(t, SLinkOperations.getTarget(__thisNode__, LINKS.bound$uJC_), substitutions);
+    return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(t, SLinkOperations.getTarget(__thisNode__, LowerBoundType__BehaviorDescriptor.LINKS.bound$uJC_), substitutions);
   }
   /*package*/ static boolean isValueType_id4bFkYVCcmm2(@NotNull SAbstractConcept __thisConcept__) {
     return false;

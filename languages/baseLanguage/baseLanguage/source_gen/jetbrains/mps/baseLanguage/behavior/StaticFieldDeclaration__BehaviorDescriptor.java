@@ -71,7 +71,7 @@ public final class StaticFieldDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
-    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.StaticFieldDeclaration$R5));
+    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.StaticFieldDeclaration$R5));
     markIcons.add(BLIconMarks.STATIC);
     return markIcons;
   }
@@ -80,12 +80,12 @@ public final class StaticFieldDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static SNode createReference_idhEwJfME(@NotNull SNode __thisNode__) {
     SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-    SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, __thisNode__);
+    SLinkOperations.setTarget(ref, StaticFieldDeclaration__BehaviorDescriptor.LINKS.variableDeclaration$2ky6, __thisNode__);
     return ref;
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
-    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.StaticFieldDeclaration$R5);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC));
+    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.StaticFieldDeclaration$R5);
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC));
     return result;
   }
   /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
@@ -113,45 +113,45 @@ public final class StaticFieldDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
   @Nullable
   /*package*/ static String getTraceableProperty_id4pl5GY7LKmH(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return SPropertyOperations.getString(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1);
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    if (!(context.isElementVisible(__thisNode__)) || SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) == null) {
+    if (!(context.isElementVisible(__thisNode__)) || SPropertyOperations.getString(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1) == null) {
       return;
     }
-    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
-    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
+    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1)));
+    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1)));
   }
   /*package*/ static SNode getQualifiedReference_id3Zg$dTLuqo9(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_ge0l0h_a0a11(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.Classifier$hJ), __thisNode__);
+    return _quotation_createNode_ge0l0h_a0a11(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.Classifier$hJ), __thisNode__);
   }
   /*package*/ static void markDeprecated_id6Va_BJexupi(@NotNull SNode __thisNode__) {
-    IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke0(__thisNode__, CONCEPTS.IBLDeprecatable$Hv);
-    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)) == null)) {
-      SNodeFactoryOperations.setNewAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), CONCEPTS.FieldDocComment$I8);
+    IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke0(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.IBLDeprecatable$Hv);
+    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8)) == null)) {
+      SNodeFactoryOperations.setNewAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8), StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8);
     }
     if (!(((boolean) IBLDeprecatable__BehaviorDescriptor.hasDeprecatedBlockDocTag_id3yvWaPI09DC.invoke(__thisNode__)))) {
-      SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.tags$LJD$, CONCEPTS.DeprecatedBlockDocTag$ma);
+      SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8)), StaticFieldDeclaration__BehaviorDescriptor.LINKS.tags$LJD$, StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.DeprecatedBlockDocTag$ma);
     }
     AnnotationUtil.attachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void unmarkDeprecated_id6Va_BJex$aE(@NotNull SNode __thisNode__) {
-    IBLDeprecatable__BehaviorDescriptor.unmarkDeprecated_id6Va_BJex$aE.invoke0(__thisNode__, CONCEPTS.IBLDeprecatable$Hv);
-    IBLDeprecatable__BehaviorDescriptor.removeDeprecationFromDoc_id63oBH1IM79r.invoke(__thisNode__, AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)));
+    IBLDeprecatable__BehaviorDescriptor.unmarkDeprecated_id6Va_BJex$aE.invoke0(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.IBLDeprecatable$Hv);
+    IBLDeprecatable__BehaviorDescriptor.removeDeprecationFromDoc_id63oBH1IM79r.invoke(__thisNode__, AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8)));
     AnnotationUtil.detachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_ECCQE(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), DeprecationUtil.createDocComment(CONCEPTS.FieldDocComment$I8));
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8), DeprecationUtil.createDocComment(StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if (containingClassifier != null) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1);
     }
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.VariableDeclaration$xe);
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe);
   }
   /*package*/ static boolean isConstantValue_id3dsApLDTYgy(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isFinal$hIht) && (SLinkOperations.getTarget(__thisNode__, LINKS.initializer$KgD) != null) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.PrimitiveType$5) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.StringType$2b) || (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))));
+    return SPropertyOperations.getBoolean(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.PROPS.isFinal$hIht) && (SLinkOperations.getTarget(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.LINKS.initializer$KgD) != null) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO), StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.PrimitiveType$5) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO), StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.StringType$2b) || (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO), StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, StaticFieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO), StaticFieldDeclaration__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ), StaticFieldDeclaration__BehaviorDescriptor.LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))));
   }
 
   /*package*/ StaticFieldDeclaration__BehaviorDescriptor() {

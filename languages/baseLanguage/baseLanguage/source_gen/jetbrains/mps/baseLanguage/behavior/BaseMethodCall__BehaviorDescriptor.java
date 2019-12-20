@@ -38,8 +38,8 @@ public final class BaseMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getVariableExpectedName_idhEwJgm_(@NotNull SNode __thisNode__) {
     String variableExpectedName = null;
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i) != null)) {
-      String name = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i), PROPS.name$tAp1);
+    if ((SLinkOperations.getTarget(__thisNode__, BaseMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i) != null)) {
+      String name = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, BaseMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i), BaseMethodCall__BehaviorDescriptor.PROPS.name$tAp1);
       if (name.startsWith("get")) {
         variableExpectedName = name.substring(3);
       } else
@@ -58,7 +58,7 @@ public final class BaseMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static boolean isInTypeInferenceContext_id4cxv$9$kw67(@NotNull SNode __thisNode__) {
-    return ((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke0(__thisNode__, CONCEPTS.IMethodCall$ln));
+    return ((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke0(__thisNode__, BaseMethodCall__BehaviorDescriptor.CONCEPTS.IMethodCall$ln));
   }
 
   /*package*/ BaseMethodCall__BehaviorDescriptor() {

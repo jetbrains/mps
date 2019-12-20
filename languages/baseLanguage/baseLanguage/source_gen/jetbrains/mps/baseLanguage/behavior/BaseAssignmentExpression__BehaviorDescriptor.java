@@ -46,19 +46,19 @@ public final class BaseAssignmentExpression__BehaviorDescriptor extends BaseBHDe
     return true;
   }
   /*package*/ static boolean canPropagateUnmatchedParenUp_id1wHCnsn58ZA(@NotNull SNode __thisNode__, SNode leaf, boolean rightParen) {
-    return ((boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke0(__thisNode__, CONCEPTS.IBinaryLike$M8, leaf, ((boolean) rightParen))) && (!(rightParen) || ListSequence.fromList(SNodeOperations.getNodeAncestors(leaf, null, true)).contains(SLinkOperations.getTarget(__thisNode__, LINKS.rValue$J0E2)));
+    return ((boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke0(__thisNode__, BaseAssignmentExpression__BehaviorDescriptor.CONCEPTS.IBinaryLike$M8, leaf, ((boolean) rightParen))) && (!(rightParen) || ListSequence.fromList(SNodeOperations.getNodeAncestors(leaf, null, true)).contains(SLinkOperations.getTarget(__thisNode__, BaseAssignmentExpression__BehaviorDescriptor.LINKS.rValue$J0E2)));
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.lValue$J0D4);
+    return SLinkOperations.getTarget(__thisNode__, BaseAssignmentExpression__BehaviorDescriptor.LINKS.lValue$J0D4);
   }
   /*package*/ static SNode getSyntacticallyRightSideExpression_id1wHCnsn590i(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.rValue$J0E2);
+    return SLinkOperations.getTarget(__thisNode__, BaseAssignmentExpression__BehaviorDescriptor.LINKS.rValue$J0E2);
   }
   /*package*/ static void setSyntacticallyLeftSideExpression_id1wHCnsn58ZK(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.lValue$J0D4, expr);
+    SLinkOperations.setTarget(__thisNode__, BaseAssignmentExpression__BehaviorDescriptor.LINKS.lValue$J0D4, expr);
   }
   /*package*/ static void setSyntacticallyRightSideExpression_id1wHCnsn58ZY(@NotNull SNode __thisNode__, SNode expr) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.rValue$J0E2, expr);
+    SLinkOperations.setTarget(__thisNode__, BaseAssignmentExpression__BehaviorDescriptor.LINKS.rValue$J0E2, expr);
   }
 
   /*package*/ BaseAssignmentExpression__BehaviorDescriptor() {

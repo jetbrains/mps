@@ -37,10 +37,10 @@ public final class PostfixIncrementExpression__BehaviorDescriptor extends BaseBH
     return true;
   }
   /*package*/ static boolean canPropagateUnmatchedParenUp_id1wHCnsn58ZA(@NotNull SNode __thisNode__, SNode leaf, boolean rightParen) {
-    return ((boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke0(__thisNode__, CONCEPTS.AbstractUnaryNumberOperation$pk, leaf, ((boolean) rightParen))) && !(rightParen);
+    return ((boolean) IBinaryLike__BehaviorDescriptor.canPropagateUnmatchedParenUp_id1wHCnsn58ZA.invoke0(__thisNode__, PostfixIncrementExpression__BehaviorDescriptor.CONCEPTS.AbstractUnaryNumberOperation$pk, leaf, ((boolean) rightParen))) && !(rightParen);
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.expression$7Rjy);
+    return SLinkOperations.getTarget(__thisNode__, PostfixIncrementExpression__BehaviorDescriptor.LINKS.expression$7Rjy);
   }
 
   /*package*/ PostfixIncrementExpression__BehaviorDescriptor() {

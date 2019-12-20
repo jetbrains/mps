@@ -36,26 +36,26 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean canServeAsReturn_idi2fkDTg(@NotNull SNode __thisNode__) {
-    SNode methodLike = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMethodLike$kl, false, false);
-    if (SNodeOperations.isInstanceOf(methodLike, CONCEPTS.IStatementListContainer$4L) && (boolean) IStatementListContainer__BehaviorDescriptor.isExecuteSynchronous_idhTIpcC8.invoke(SNodeOperations.cast(methodLike, CONCEPTS.IStatementListContainer$4L))) {
+    SNode methodLike = SNodeOperations.getNodeAncestor(__thisNode__, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IMethodLike$kl, false, false);
+    if (SNodeOperations.isInstanceOf(methodLike, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IStatementListContainer$4L) && (boolean) IStatementListContainer__BehaviorDescriptor.isExecuteSynchronous_idhTIpcC8.invoke(SNodeOperations.cast(methodLike, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IStatementListContainer$4L))) {
       return false;
     }
 
     // no return inside void methods or constructors 
     SNode retType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(methodLike);
-    if (retType == null || SNodeOperations.isInstanceOf(retType, CONCEPTS.VoidType$aT)) {
+    if (retType == null || SNodeOperations.isInstanceOf(retType, ExpressionStatement__BehaviorDescriptor.CONCEPTS.VoidType$aT)) {
       return false;
     }
 
     // statement 'a.b()' where b returns void can't produce return value 
     SNode methodCall = null;
-    SNode expression = SLinkOperations.getTarget(__thisNode__, LINKS.expression$WIP0);
-    if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IMethodCall$ln)) {
-      methodCall = SNodeOperations.cast(expression, CONCEPTS.IMethodCall$ln);
-    } else if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.IMethodCall$ln)) {
-      methodCall = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$X4R8), CONCEPTS.IMethodCall$ln);
+    SNode expression = SLinkOperations.getTarget(__thisNode__, ExpressionStatement__BehaviorDescriptor.LINKS.expression$WIP0);
+    if (SNodeOperations.isInstanceOf(expression, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IMethodCall$ln)) {
+      methodCall = SNodeOperations.cast(expression, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IMethodCall$ln);
+    } else if (SNodeOperations.isInstanceOf(expression, ExpressionStatement__BehaviorDescriptor.CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, ExpressionStatement__BehaviorDescriptor.CONCEPTS.DotExpression$6a), ExpressionStatement__BehaviorDescriptor.LINKS.operation$X4R8), ExpressionStatement__BehaviorDescriptor.CONCEPTS.IMethodCall$ln)) {
+      methodCall = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(expression, ExpressionStatement__BehaviorDescriptor.CONCEPTS.DotExpression$6a), ExpressionStatement__BehaviorDescriptor.LINKS.operation$X4R8), ExpressionStatement__BehaviorDescriptor.CONCEPTS.IMethodCall$ln);
     }
-    if (methodCall != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$$A7i), LINKS.returnType$WIkw), CONCEPTS.VoidType$aT)) {
+    if (methodCall != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(methodCall, ExpressionStatement__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i), ExpressionStatement__BehaviorDescriptor.LINKS.returnType$WIkw), ExpressionStatement__BehaviorDescriptor.CONCEPTS.VoidType$aT)) {
       return false;
     }
 
@@ -66,19 +66,19 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
       return true;
     }
     // check if body ends with if and this statement completes this if 
-    if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.IfStatement$pi) && SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IfStatement$pi, false, false) == lastStatement) {
-      SNode ifStmt = SNodeOperations.cast(lastStatement, CONCEPTS.IfStatement$pi);
-      if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).last() == __thisNode__ || SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$Xnu2) == __thisNode__) {
+    if (SNodeOperations.isInstanceOf(lastStatement, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IfStatement$pi) && SNodeOperations.getNodeAncestor(__thisNode__, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IfStatement$pi, false, false) == lastStatement) {
+      SNode ifStmt = SNodeOperations.cast(lastStatement, ExpressionStatement__BehaviorDescriptor.CONCEPTS.IfStatement$pi);
+      if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, ExpressionStatement__BehaviorDescriptor.LINKS.ifTrue$WJ1E), ExpressionStatement__BehaviorDescriptor.LINKS.statement$WHn8)).last() == __thisNode__ || SLinkOperations.getTarget(ifStmt, ExpressionStatement__BehaviorDescriptor.LINKS.ifFalseStatement$Xnu2) == __thisNode__) {
         return true;
       }
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$Xnu2), CONCEPTS.BlockStatement$1i)) {
-        SNode elseBlock = SNodeOperations.cast(SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$Xnu2), CONCEPTS.BlockStatement$1i);
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elseBlock, LINKS.statements$uqR0), LINKS.statement$WHn8)).last() == __thisNode__) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStmt, ExpressionStatement__BehaviorDescriptor.LINKS.ifFalseStatement$Xnu2), ExpressionStatement__BehaviorDescriptor.CONCEPTS.BlockStatement$1i)) {
+        SNode elseBlock = SNodeOperations.cast(SLinkOperations.getTarget(ifStmt, ExpressionStatement__BehaviorDescriptor.LINKS.ifFalseStatement$Xnu2), ExpressionStatement__BehaviorDescriptor.CONCEPTS.BlockStatement$1i);
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elseBlock, ExpressionStatement__BehaviorDescriptor.LINKS.statements$uqR0), ExpressionStatement__BehaviorDescriptor.LINKS.statement$WHn8)).last() == __thisNode__) {
           return true;
         }
       }
-      for (SNode elsif : SLinkOperations.getChildren(ifStmt, LINKS.elsifClauses$uXBQ)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elsif, LINKS.statementList$TaC3), LINKS.statement$WHn8)).last() == __thisNode__) {
+      for (SNode elsif : SLinkOperations.getChildren(ifStmt, ExpressionStatement__BehaviorDescriptor.LINKS.elsifClauses$uXBQ)) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elsif, ExpressionStatement__BehaviorDescriptor.LINKS.statementList$TaC3), ExpressionStatement__BehaviorDescriptor.LINKS.statement$WHn8)).last() == __thisNode__) {
           return true;
         }
       }

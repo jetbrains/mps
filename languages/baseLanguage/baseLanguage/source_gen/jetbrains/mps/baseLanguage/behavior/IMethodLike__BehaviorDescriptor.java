@@ -49,14 +49,14 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getLastStatement_id271$s5ipHtv(@NotNull SNode __thisNode__, SNode statementList) {
     List<SNode> statements = new ArrayList<SNode>();
-    ListSequence.fromList(statements).addSequence(ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$WHn8)));
-    while (SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == CONCEPTS.Statement$ok || SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == CONCEPTS.RemarkStatement$SN || SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == CONCEPTS.SingleLineComment$jI) {
+    ListSequence.fromList(statements).addSequence(ListSequence.fromList(SLinkOperations.getChildren(statementList, IMethodLike__BehaviorDescriptor.LINKS.statement$WHn8)));
+    while (SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == IMethodLike__BehaviorDescriptor.CONCEPTS.Statement$ok || SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == IMethodLike__BehaviorDescriptor.CONCEPTS.RemarkStatement$SN || SNodeOperations.getConcept(ListSequence.fromList(statements).last()) == IMethodLike__BehaviorDescriptor.CONCEPTS.SingleLineComment$jI) {
       ListSequence.fromList(statements).removeLastElement();
     }
     SNode lastStatement = ListSequence.fromList(statements).last();
-    if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.BlockStatement$1i)) {
-      SNode innerStatementList = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, CONCEPTS.BlockStatement$1i), LINKS.statements$uqR0);
-      if (ListSequence.fromList(SLinkOperations.getChildren(innerStatementList, LINKS.statement$WHn8)).isEmpty()) {
+    if (SNodeOperations.isInstanceOf(lastStatement, IMethodLike__BehaviorDescriptor.CONCEPTS.BlockStatement$1i)) {
+      SNode innerStatementList = SLinkOperations.getTarget(SNodeOperations.cast(lastStatement, IMethodLike__BehaviorDescriptor.CONCEPTS.BlockStatement$1i), IMethodLike__BehaviorDescriptor.LINKS.statements$uqR0);
+      if (ListSequence.fromList(SLinkOperations.getChildren(innerStatementList, IMethodLike__BehaviorDescriptor.LINKS.statement$WHn8)).isEmpty()) {
         return lastStatement;
       } else {
         return IMethodLike__BehaviorDescriptor.getLastStatement_id271$s5ipHtv.invoke(__thisNode__, innerStatementList);
@@ -71,7 +71,7 @@ public final class IMethodLike__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$2l, child)) && Objects.equals(child, IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(__thisNode__)) && SNodeOperations.isInstanceOf(child, CONCEPTS.StubStatementList$2k);
+    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invoke0(__thisNode__, IMethodLike__BehaviorDescriptor.CONCEPTS.ISuppressErrors$2l, child)) && Objects.equals(child, IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(__thisNode__)) && SNodeOperations.isInstanceOf(child, IMethodLike__BehaviorDescriptor.CONCEPTS.StubStatementList$2k);
   }
 
   /*package*/ IMethodLike__BehaviorDescriptor() {

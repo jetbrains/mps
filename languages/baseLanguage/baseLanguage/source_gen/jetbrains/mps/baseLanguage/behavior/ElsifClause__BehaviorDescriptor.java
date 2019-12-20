@@ -36,22 +36,22 @@ public final class ElsifClause__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getIfStatement_idhEwIDu9(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IfStatement$pi);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), ElsifClause__BehaviorDescriptor.CONCEPTS.IfStatement$pi);
   }
   /*package*/ static void convertToElseClause_idhIdko9K(@NotNull SNode __thisNode__) {
     SNode ifStatement = ElsifClause__BehaviorDescriptor.getIfStatement_idhEwIDu9.invoke(__thisNode__);
     SNode elseStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement"));
-    SLinkOperations.setTarget(elseStatement, LINKS.statements$uqR0, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.statementList$TaC3)));
+    SLinkOperations.setTarget(elseStatement, ElsifClause__BehaviorDescriptor.LINKS.statements$uqR0, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, ElsifClause__BehaviorDescriptor.LINKS.statementList$TaC3)));
     SNodeOperations.deleteNode(__thisNode__);
-    SLinkOperations.setTarget(ifStatement, LINKS.ifFalseStatement$Xnu2, elseStatement);
+    SLinkOperations.setTarget(ifStatement, ElsifClause__BehaviorDescriptor.LINKS.ifFalseStatement$Xnu2, elseStatement);
   }
   /*package*/ static NextProgramPoint getNextProgramPoint_id3F8BxGibk8h(@NotNull SNode __thisNode__, @NotNull SNode child, boolean value) {
-    if (child != SLinkOperations.getTarget(__thisNode__, LINKS.condition$3oC9)) {
+    if (child != SLinkOperations.getTarget(__thisNode__, ElsifClause__BehaviorDescriptor.LINKS.condition$3oC9)) {
       return null;
     }
     if (value) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.statementList$TaC3) != null) {
-        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, LINKS.statementList$TaC3), false);
+      if (SLinkOperations.getTarget(__thisNode__, ElsifClause__BehaviorDescriptor.LINKS.statementList$TaC3) != null) {
+        return NextProgramPoint.continueAt(SLinkOperations.getTarget(__thisNode__, ElsifClause__BehaviorDescriptor.LINKS.statementList$TaC3), false);
       } else {
         return NextProgramPoint.continueAfter(__thisNode__);
       }

@@ -46,29 +46,29 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
-    return Sequence.fromIterable(Members.visibleStaticMethods(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$BsUa), __thisNode__)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(Members.visibleStaticMethods(SLinkOperations.getTarget(__thisNode__, StaticMethodCall__BehaviorDescriptor.LINKS.classConcept$BsUa), __thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$tAp1), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, StaticMethodCall__BehaviorDescriptor.PROPS.name$tAp1), methodName);
       }
     }).toListSequence();
   }
   /*package*/ static boolean canBeConvertedToLocal_id2RbFUmZleRt(@NotNull SNode __thisNode__) {
-    SNode classConcept1 = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$BsUa);
-    SNode classConcept2 = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode classConcept1 = SLinkOperations.getTarget(__thisNode__, StaticMethodCall__BehaviorDescriptor.LINKS.classConcept$BsUa);
+    SNode classConcept2 = SNodeOperations.getNodeAncestor(__thisNode__, StaticMethodCall__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     return classConcept1 == classConcept2;
   }
   /*package*/ static void convertToLocal_id2RbFUmZlhob(@NotNull SNode __thisNode__) {
-    SNode localStaticMethodCall = SNodeFactoryOperations.replaceWithNewChild(__thisNode__, CONCEPTS.LocalMethodCall$77);
-    SLinkOperations.setTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i));
-    for (SNode actualArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$$A7L))) {
-      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.actualArgument$$A7L)).addElement(actualArgument);
+    SNode localStaticMethodCall = SNodeFactoryOperations.replaceWithNewChild(__thisNode__, StaticMethodCall__BehaviorDescriptor.CONCEPTS.LocalMethodCall$77);
+    SLinkOperations.setTarget(localStaticMethodCall, StaticMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i, SLinkOperations.getTarget(__thisNode__, StaticMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i));
+    for (SNode actualArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StaticMethodCall__BehaviorDescriptor.LINKS.actualArgument$$A7L))) {
+      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, StaticMethodCall__BehaviorDescriptor.LINKS.actualArgument$$A7L)).addElement(actualArgument);
     }
-    for (SNode actualTypeArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeArgument$GDtv))) {
-      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.typeArgument$GDtv)).addElement(actualTypeArgument);
+    for (SNode actualTypeArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StaticMethodCall__BehaviorDescriptor.LINKS.typeArgument$GDtv))) {
+      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, StaticMethodCall__BehaviorDescriptor.LINKS.typeArgument$GDtv)).addElement(actualTypeArgument);
     }
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$BsUa)) + "." + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i));
+    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, StaticMethodCall__BehaviorDescriptor.LINKS.classConcept$BsUa)) + "." + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, StaticMethodCall__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i));
   }
 
   /*package*/ StaticMethodCall__BehaviorDescriptor() {

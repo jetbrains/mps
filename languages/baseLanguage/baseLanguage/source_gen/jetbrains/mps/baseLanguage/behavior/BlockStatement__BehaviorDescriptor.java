@@ -32,7 +32,7 @@ public final class BlockStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.statements$uqR0), throwables, ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, BlockStatement__BehaviorDescriptor.LINKS.statements$uqR0), throwables, ((boolean) ignoreMayBeThrowables));
   }
 
   /*package*/ BlockStatement__BehaviorDescriptor() {

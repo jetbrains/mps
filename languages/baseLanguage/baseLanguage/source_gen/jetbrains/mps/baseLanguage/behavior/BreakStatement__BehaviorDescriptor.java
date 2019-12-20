@@ -40,53 +40,53 @@ public final class BreakStatement__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SNode getLoop_idhEwIHvD(@NotNull SNode __thisNode__) {
     SNode loopOrSwitch = BreakStatement__BehaviorDescriptor.getLoopOrSwitch_idhEwIHwh.invoke(__thisNode__);
-    if (SNodeOperations.isInstanceOf(loopOrSwitch, CONCEPTS.AbstractLoopStatement$wH)) {
-      return SNodeOperations.cast(loopOrSwitch, CONCEPTS.AbstractLoopStatement$wH);
+    if (SNodeOperations.isInstanceOf(loopOrSwitch, BreakStatement__BehaviorDescriptor.CONCEPTS.AbstractLoopStatement$wH)) {
+      return SNodeOperations.cast(loopOrSwitch, BreakStatement__BehaviorDescriptor.CONCEPTS.AbstractLoopStatement$wH);
     }
     return null;
   }
   /*package*/ static SNode getSwitch_idhEwIHvX(@NotNull SNode __thisNode__) {
     SNode loopOrSwitch = BreakStatement__BehaviorDescriptor.getLoopOrSwitch_idhEwIHwh.invoke(__thisNode__);
-    if (SNodeOperations.isInstanceOf(loopOrSwitch, CONCEPTS.SwitchStatement$S1)) {
-      return SNodeOperations.cast(loopOrSwitch, CONCEPTS.SwitchStatement$S1);
+    if (SNodeOperations.isInstanceOf(loopOrSwitch, BreakStatement__BehaviorDescriptor.CONCEPTS.SwitchStatement$S1)) {
+      return SNodeOperations.cast(loopOrSwitch, BreakStatement__BehaviorDescriptor.CONCEPTS.SwitchStatement$S1);
     }
     return null;
   }
   /*package*/ static SNode getLoopOrSwitch_idhEwIHwh(@NotNull SNode __thisNode__) {
-    for (SNode item : SNodeOperations.getNodeAncestorsWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.AbstractLoopStatement$wH, CONCEPTS.SwitchStatement$S1}, false)) {
-      if (SNodeOperations.isInstanceOf(item, CONCEPTS.SwitchStatement$S1)) {
-        SNode switchStatement = SNodeOperations.cast(item, CONCEPTS.SwitchStatement$S1);
-        if ((SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$Hgei) != null)) {
-          SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$Hgei), LINKS.loopLabel$GZ00);
+    for (SNode item : SNodeOperations.getNodeAncestorsWhereConceptInList(__thisNode__, new SAbstractConcept[]{BreakStatement__BehaviorDescriptor.CONCEPTS.AbstractLoopStatement$wH, BreakStatement__BehaviorDescriptor.CONCEPTS.SwitchStatement$S1}, false)) {
+      if (SNodeOperations.isInstanceOf(item, BreakStatement__BehaviorDescriptor.CONCEPTS.SwitchStatement$S1)) {
+        SNode switchStatement = SNodeOperations.cast(item, BreakStatement__BehaviorDescriptor.CONCEPTS.SwitchStatement$S1);
+        if ((SLinkOperations.getTarget(__thisNode__, BreakStatement__BehaviorDescriptor.LINKS.loopLabelReference$Hgei) != null)) {
+          SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, BreakStatement__BehaviorDescriptor.LINKS.loopLabelReference$Hgei), BreakStatement__BehaviorDescriptor.LINKS.loopLabel$GZ00);
           if ((loopLabel != null)) {
-            if (loopLabel == SLinkOperations.getTarget(switchStatement, LINKS.switchLabel$hXmp)) {
+            if (loopLabel == SLinkOperations.getTarget(switchStatement, BreakStatement__BehaviorDescriptor.LINKS.switchLabel$hXmp)) {
               return switchStatement;
             }
           }
         } else {
-          if (SPropertyOperations.getString(__thisNode__, PROPS.label$Xol$) == null) {
+          if (SPropertyOperations.getString(__thisNode__, BreakStatement__BehaviorDescriptor.PROPS.label$Xol$) == null) {
             return switchStatement;
           } else {
-            if (SPropertyOperations.getString(__thisNode__, PROPS.label$Xol$).equals(SPropertyOperations.getString(switchStatement, PROPS.label$Ro9j))) {
+            if (SPropertyOperations.getString(__thisNode__, BreakStatement__BehaviorDescriptor.PROPS.label$Xol$).equals(SPropertyOperations.getString(switchStatement, BreakStatement__BehaviorDescriptor.PROPS.label$Ro9j))) {
               return switchStatement;
             }
           }
         }
       }
-      if (SNodeOperations.isInstanceOf(item, CONCEPTS.AbstractLoopStatement$wH)) {
-        SNode loop = SNodeOperations.cast(item, CONCEPTS.AbstractLoopStatement$wH);
-        if ((SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$Hgei) != null)) {
-          SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$Hgei), LINKS.loopLabel$GZ00);
+      if (SNodeOperations.isInstanceOf(item, BreakStatement__BehaviorDescriptor.CONCEPTS.AbstractLoopStatement$wH)) {
+        SNode loop = SNodeOperations.cast(item, BreakStatement__BehaviorDescriptor.CONCEPTS.AbstractLoopStatement$wH);
+        if ((SLinkOperations.getTarget(__thisNode__, BreakStatement__BehaviorDescriptor.LINKS.loopLabelReference$Hgei) != null)) {
+          SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, BreakStatement__BehaviorDescriptor.LINKS.loopLabelReference$Hgei), BreakStatement__BehaviorDescriptor.LINKS.loopLabel$GZ00);
           if ((loopLabel != null)) {
-            if (loopLabel == SLinkOperations.getTarget(loop, LINKS.loopLabel$Vp8n)) {
+            if (loopLabel == SLinkOperations.getTarget(loop, BreakStatement__BehaviorDescriptor.LINKS.loopLabel$Vp8n)) {
               return loop;
             }
           }
         } else {
-          if (SPropertyOperations.getString(__thisNode__, PROPS.label$Xol$) == null) {
+          if (SPropertyOperations.getString(__thisNode__, BreakStatement__BehaviorDescriptor.PROPS.label$Xol$) == null) {
             return loop;
           } else {
-            if (SPropertyOperations.getString(__thisNode__, PROPS.label$Xol$).equals(SPropertyOperations.getString(loop, PROPS.label$5$eZ))) {
+            if (SPropertyOperations.getString(__thisNode__, BreakStatement__BehaviorDescriptor.PROPS.label$Xol$).equals(SPropertyOperations.getString(loop, BreakStatement__BehaviorDescriptor.PROPS.label$5$eZ))) {
               return loop;
             }
           }

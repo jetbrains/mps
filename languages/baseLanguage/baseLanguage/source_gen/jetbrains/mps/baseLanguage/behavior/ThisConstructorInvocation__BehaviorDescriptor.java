@@ -31,7 +31,7 @@ public final class ThisConstructorInvocation__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, ThisConstructorInvocation__BehaviorDescriptor.CONCEPTS.ClassConcept$IY, false, false);
     return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept);
   }
 

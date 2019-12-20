@@ -42,11 +42,11 @@ public final class UnknownNew__BehaviorDescriptor extends BaseBHDescriptor {
     return ResolveUnknownUtil.resolveNew(__thisNode__);
   }
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode claz = ResolveUnknownUtil.findClass(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.className$qoJZ));
+    SNode claz = ResolveUnknownUtil.findClass(__thisNode__, SPropertyOperations.getString(__thisNode__, UnknownNew__BehaviorDescriptor.PROPS.className$qoJZ));
     if ((claz == null)) {
       return ListSequence.fromList(new ArrayList<SNode>());
     }
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(claz, LINKS.member$oYX5), CONCEPTS.ConstructorDeclaration$5U);
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(claz, UnknownNew__BehaviorDescriptor.LINKS.member$oYX5), UnknownNew__BehaviorDescriptor.CONCEPTS.ConstructorDeclaration$5U);
   }
 
   /*package*/ UnknownNew__BehaviorDescriptor() {

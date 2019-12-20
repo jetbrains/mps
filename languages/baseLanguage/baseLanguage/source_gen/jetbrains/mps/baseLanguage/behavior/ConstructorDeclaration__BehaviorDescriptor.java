@@ -55,7 +55,7 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean isDeprecated_idhOwoPtR(@NotNull SNode __thisNode__) {
-    return ((boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invokeSuper(__thisNode__, CONCEPTS.ConstructorDeclaration$5U)) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.IDeprecatable$EE) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.IDeprecatable$EE)));
+    return ((boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invokeSuper(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ConstructorDeclaration$5U)) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.IDeprecatable$EE) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.IDeprecatable$EE)));
   }
   /*package*/ static boolean canBeAnnotated_idhWp4PwP(@NotNull SNode __thisNode__) {
     return true;
@@ -67,8 +67,8 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     return true;
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
-    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.ConstructorDeclaration$5U);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC));
+    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ConstructorDeclaration$5U);
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC));
     return result;
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
@@ -76,20 +76,20 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   }
   /*package*/ static String getPresentationInContext_idQAyHtBupSt(@NotNull SNode __thisNode__, SNode context) {
     StringBuilder result = new StringBuilder();
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$IY)) {
-      result.append(Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$IY), context));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY)) {
+      result.append(Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY), context));
     } else {
       result.append(".ctor");
     }
     result.append("(");
     boolean first = true;
-    for (SNode parm : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)) {
+    for (SNode parm : SLinkOperations.getChildren(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)) {
       if (!(first)) {
         result.append(",");
       }
       first = false;
-      if (SLinkOperations.getTarget(parm, LINKS.type$pLrO) != null) {
-        result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(parm, LINKS.type$pLrO)));
+      if (SLinkOperations.getTarget(parm, ConstructorDeclaration__BehaviorDescriptor.LINKS.type$pLrO) != null) {
+        result.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(parm, ConstructorDeclaration__BehaviorDescriptor.LINKS.type$pLrO)));
       } else {
         result.append("???");
       }
@@ -100,46 +100,46 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   /*package*/ static String jniSignature_id7F81Cd2CcPY(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder();
     sb.append("(");
-    for (SNode p : SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)) {
-      sb.append(Type__BehaviorDescriptor.jniSignature_id7F81Cd2C7e3.invoke(SLinkOperations.getTarget(p, LINKS.type$pLrO)));
+    for (SNode p : SLinkOperations.getChildren(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)) {
+      sb.append(Type__BehaviorDescriptor.jniSignature_id7F81Cd2C7e3.invoke(SLinkOperations.getTarget(p, ConstructorDeclaration__BehaviorDescriptor.LINKS.type$pLrO)));
     }
     sb.append(")");
     sb.append("V");
     return sb.toString();
   }
   /*package*/ static boolean containsImplicitSuperConstructorCall_id6d19RW5IPof(@NotNull SNode __thisNode__) {
-    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$WIlu));
-    return !(SNodeOperations.isInstanceOf(firstStatement, CONCEPTS.ConstructorInvocationStatement$6c));
+    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.LINKS.body$WIlu));
+    return !(SNodeOperations.isInstanceOf(firstStatement, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ConstructorInvocationStatement$6c));
   }
   /*package*/ static SNode getThisConstructorInvocation_id5e6QuLS30e$(@NotNull SNode __thisNode__) {
-    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$WIlu));
-    if (SNodeOperations.isInstanceOf(firstStatement, CONCEPTS.ConstructorInvocationStatement$6c)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(firstStatement, CONCEPTS.ConstructorInvocationStatement$6c), LINKS.baseMethodDeclaration$$A7i);
+    SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.LINKS.body$WIlu));
+    if (SNodeOperations.isInstanceOf(firstStatement, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ConstructorInvocationStatement$6c)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(firstStatement, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ConstructorInvocationStatement$6c), ConstructorDeclaration__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i);
     }
     return null;
   }
   /*package*/ static SNode getSuperDefaultConstructor_id6d19RW5J1tP(@NotNull SNode __thisNode__) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
-    SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe);
+    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY, false, false);
+    SNode classifierType = SLinkOperations.getTarget(classConcept, ConstructorDeclaration__BehaviorDescriptor.LINKS.superclass$_pqe);
     if (classifierType == null) {
       return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))).first();
     }
-    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
-    if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY))) {
+    SNode classifier = SLinkOperations.getTarget(classifierType, ConstructorDeclaration__BehaviorDescriptor.LINKS.classifier$pQ_R);
+    if (!(SNodeOperations.isInstanceOf(classifier, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY))) {
       return null;
     }
-    SNode superclass = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY);
+    SNode superclass = SNodeOperations.cast(classifier, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY);
     if (!(SNodeOperations.is(superclass, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum")))) {
       Iterable<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, ConstructorDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC), ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se));
         }
       });
       if (Sequence.fromIterable(constructors).isEmpty()) {
         return null;
       }
       for (SNode constructor : constructors) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.parameter$WIkZ)).isEmpty()) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(constructor, ConstructorDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).isEmpty()) {
           return constructor;
         }
       }
@@ -149,16 +149,16 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     }
   }
   /*package*/ static boolean hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS(@NotNull SNode __thisNode__) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
-    SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$_pqe);
+    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY, false, false);
+    SNode classifierType = SLinkOperations.getTarget(classConcept, ConstructorDeclaration__BehaviorDescriptor.LINKS.superclass$_pqe);
     if (classifierType == null) {
       return true;
     }
-    SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R);
-    if (!(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY))) {
+    SNode classifier = SLinkOperations.getTarget(classifierType, ConstructorDeclaration__BehaviorDescriptor.LINKS.classifier$pQ_R);
+    if (!(SNodeOperations.isInstanceOf(classifier, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY))) {
       return false;
     }
-    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY))).isEmpty();
+    return Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, ConstructorDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY))).isEmpty();
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {
     if (SNodeOperations.getParent(__thisNode__) == IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifierType)) {

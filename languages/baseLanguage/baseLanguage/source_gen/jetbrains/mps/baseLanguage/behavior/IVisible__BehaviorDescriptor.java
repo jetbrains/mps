@@ -35,14 +35,14 @@ public final class IVisible__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static IconResource getVisibilityIcon_id4mxbjAOAG0d(@NotNull SNode __thisNode__) {
     IconResource defaultIcon = BLIconMarks.PLOCAL;
-    SNode visibility = SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC);
-    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PublicVisibility$qe)) {
+    SNode visibility = SLinkOperations.getTarget(__thisNode__, IVisible__BehaviorDescriptor.LINKS.visibility$2GiC);
+    if (SNodeOperations.isInstanceOf(visibility, IVisible__BehaviorDescriptor.CONCEPTS.PublicVisibility$qe)) {
       return BLIconMarks.PUBLIC;
     }
-    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(visibility, IVisible__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se)) {
       return BLIconMarks.PRIVATE;
     }
-    if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.ProtectedVisibility$OD)) {
+    if (SNodeOperations.isInstanceOf(visibility, IVisible__BehaviorDescriptor.CONCEPTS.ProtectedVisibility$OD)) {
       return BLIconMarks.PROTECTED;
     }
     return defaultIcon;

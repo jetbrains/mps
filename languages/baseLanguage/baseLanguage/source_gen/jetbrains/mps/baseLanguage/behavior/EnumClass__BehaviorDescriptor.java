@@ -50,8 +50,8 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode findConstantByName_idhEwIiGU(@NotNull SNode __thisNode__, String name) {
-    for (SNode constant : SLinkOperations.getChildren(__thisNode__, LINKS.enumConstant$urAQ)) {
-      if (name.equalsIgnoreCase(SPropertyOperations.getString(constant, PROPS.name$tAp1))) {
+    for (SNode constant : SLinkOperations.getChildren(__thisNode__, EnumClass__BehaviorDescriptor.LINKS.enumConstant$urAQ)) {
+      if (name.equalsIgnoreCase(SPropertyOperations.getString(constant, EnumClass__BehaviorDescriptor.PROPS.name$tAp1))) {
         return constant;
       }
     }
@@ -64,19 +64,19 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     List<SNode> extended = ListSequence.fromList(new ArrayList<SNode>());
     SNode enumType = EnumClass__BehaviorDescriptor.getExtendedEnumJavaType_id6O4rE5gbZ0q.invoke(__thisNode__);
     ListSequence.fromList(extended).addElement(enumType);
-    ListSequence.fromList(extended).addSequence(ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invokeSuper(__thisNode__, CONCEPTS.EnumClass$uy)));
+    ListSequence.fromList(extended).addSequence(ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invokeSuper(__thisNode__, EnumClass__BehaviorDescriptor.CONCEPTS.EnumClass$uy)));
     return extended;
   }
   /*package*/ static SNode getExtendedEnumJavaType_id6O4rE5gbZ0q(@NotNull SNode __thisNode__) {
     // enum A {} <=> A has as a super 'java.lang.Enum<A>' 
     SNode concreteEnumType = Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"));
-    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$dQne)).clear();
-    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, LINKS.parameter$dQne)).addElement(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__));
+    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, EnumClass__BehaviorDescriptor.LINKS.parameter$dQne)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(concreteEnumType, EnumClass__BehaviorDescriptor.LINKS.parameter$dQne)).addElement(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__));
     return concreteEnumType;
   }
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
-    List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, CONCEPTS.EnumClass$uy);
-    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.enumConstant$urAQ)));
+    List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, EnumClass__BehaviorDescriptor.CONCEPTS.EnumClass$uy);
+    ListSequence.fromList(members).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, EnumClass__BehaviorDescriptor.LINKS.enumConstant$urAQ)));
     return members;
   }
   /*package*/ static boolean hasStaticMemebers_idhFq8xqE(@NotNull SNode __thisNode__) {
@@ -84,7 +84,7 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull SNode __thisNode__) {
-    List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invokeSuper(__thisNode__, CONCEPTS.EnumClass$uy);
+    List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invokeSuper(__thisNode__, EnumClass__BehaviorDescriptor.CONCEPTS.EnumClass$uy);
     final List<SNode> ownMethods = Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"));
     Iterable<SNode> remaining = ListSequence.fromList(methodsToImplement).where(new IWhereFilter<SNode>() {
       public boolean accept(final SNode toBeImplemented) {
@@ -98,15 +98,15 @@ public final class EnumClass__BehaviorDescriptor extends BaseBHDescriptor {
     return Sequence.fromIterable(remaining).toListSequence();
   }
   /*package*/ static List<SNode> getMethodsToOverride_id4GM03FJm3zL(@NotNull SNode __thisNode__) {
-    final List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invokeSuper(__thisNode__, CONCEPTS.EnumClass$uy);
+    final List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invokeSuper(__thisNode__, EnumClass__BehaviorDescriptor.CONCEPTS.EnumClass$uy);
     Iterable<SNode> ownMethods = ListSequence.fromList(Classifier__BehaviorDescriptor.getOwnMethods_id1DPgsAlM_WC.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$An) || SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$5U);
+        return SNodeOperations.isInstanceOf(it, EnumClass__BehaviorDescriptor.CONCEPTS.InstanceMethodDeclaration$An) || SNodeOperations.isInstanceOf(it, EnumClass__BehaviorDescriptor.CONCEPTS.ConstructorDeclaration$5U);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC);
-        return (v != null) && !(SNodeOperations.isInstanceOf(v, CONCEPTS.PrivateVisibility$Se)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, CONCEPTS.InstanceMethodDeclaration$An), PROPS.isFinal$I$Qu));
+        SNode v = SLinkOperations.getTarget(SNodeOperations.cast(it, EnumClass__BehaviorDescriptor.CONCEPTS.IVisible$6G), EnumClass__BehaviorDescriptor.LINKS.visibility$2GiC);
+        return (v != null) && !(SNodeOperations.isInstanceOf(v, EnumClass__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se)) && !(SPropertyOperations.getBoolean(SNodeOperations.as(it, EnumClass__BehaviorDescriptor.CONCEPTS.InstanceMethodDeclaration$An), EnumClass__BehaviorDescriptor.PROPS.isFinal$I$Qu));
       }
     });
     Iterable<SNode> allToBeAdded = Sequence.fromIterable(ownMethods).where(new IWhereFilter<SNode>() {

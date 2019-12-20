@@ -60,24 +60,24 @@ public final class Statement__BehaviorDescriptor extends BaseBHDescriptor {
     if (ignoreMayBeThrowables) {
       return;
     }
-    Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, __thisNode__);
+    Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(Statement__BehaviorDescriptor.CONCEPTS.Statement$ok), throwables, __thisNode__);
   }
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVBW7(@NotNull SAbstractConcept __thisConcept__, final Set<SNode> throwables, SNode arg) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.IMethodCall$ln, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, Statement__BehaviorDescriptor.CONCEPTS.IMethodCall$ln, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.baseMethodDeclaration$$A7i), LINKS.throwsItem$gr7e);
+        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, Statement__BehaviorDescriptor.LINKS.baseMethodDeclaration$$A7i), Statement__BehaviorDescriptor.LINKS.throwsItem$gr7e);
       }
-    }).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, CONCEPTS.DefaultClassifierMethodCallOperation$9K, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
+    }).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(arg, Statement__BehaviorDescriptor.CONCEPTS.DefaultClassifierMethodCallOperation$9K, false, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.member$hrpI), LINKS.throwsItem$gr7e);
+        return SLinkOperations.getChildren(SLinkOperations.getTarget(it, Statement__BehaviorDescriptor.LINKS.member$hrpI), Statement__BehaviorDescriptor.LINKS.throwsItem$gr7e);
       }
     })).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ClassifierType$IZ);
+        return SNodeOperations.isInstanceOf(it, Statement__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode throwable) {
-        SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R));
+        SetSequence.fromSet(throwables).addElement(SLinkOperations.getTarget(SNodeOperations.cast(throwable, Statement__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ), Statement__BehaviorDescriptor.LINKS.classifier$pQ_R));
       }
     });
   }

@@ -39,10 +39,10 @@ public final class IOperation__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getOperand_idhEwIP$m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$6a), LINKS.operand$Lcrr);
+    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), IOperation__BehaviorDescriptor.CONCEPTS.DotExpression$6a), IOperation__BehaviorDescriptor.LINKS.operand$Lcrr);
   }
   /*package*/ static SNode getDotExpression_idhO_4GYO(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$6a);
+    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), IOperation__BehaviorDescriptor.CONCEPTS.DotExpression$6a);
   }
   /*package*/ static boolean isLValue_idhEwIP$w(@NotNull SNode __thisNode__) {
     return (boolean) IOperation__BehaviorDescriptor.lvalue_id1653mnvAgvW.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));

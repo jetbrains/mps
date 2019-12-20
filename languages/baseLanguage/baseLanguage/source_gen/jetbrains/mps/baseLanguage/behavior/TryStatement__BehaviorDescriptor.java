@@ -35,11 +35,11 @@ public final class TryStatement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    TryCatchStatement__BehaviorDescriptor.collectUncatchedThrowables_id3JrbGEZ7vt$.invoke(SNodeOperations.asSConcept(CONCEPTS.TryCatchStatement$x5), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.body$TQ1f), SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$GIrD), ((boolean) ignoreMayBeThrowables));
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.finallyBody$LPze), throwables, ((boolean) ignoreMayBeThrowables));
+    TryCatchStatement__BehaviorDescriptor.collectUncatchedThrowables_id3JrbGEZ7vt$.invoke(SNodeOperations.asSConcept(TryStatement__BehaviorDescriptor.CONCEPTS.TryCatchStatement$x5), throwables, SLinkOperations.getTarget(__thisNode__, TryStatement__BehaviorDescriptor.LINKS.body$TQ1f), SLinkOperations.getChildren(__thisNode__, TryStatement__BehaviorDescriptor.LINKS.catchClause$GIrD), ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, TryStatement__BehaviorDescriptor.LINKS.finallyBody$LPze), throwables, ((boolean) ignoreMayBeThrowables));
   }
   /*package*/ static List<SNode> getCatchClauses_id3eptmOG0XgA(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$GIrD);
+    return SLinkOperations.getChildren(__thisNode__, TryStatement__BehaviorDescriptor.LINKS.catchClause$GIrD);
   }
 
   /*package*/ TryStatement__BehaviorDescriptor() {

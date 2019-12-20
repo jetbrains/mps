@@ -43,13 +43,13 @@ public final class IWillBeClassifier__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode baseClassifier_id3_1Lj9FFNJ0(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(_quotation_createNode_937vih_a0a0b(), LINKS.classifier$pQ_R);
+    return SLinkOperations.getTarget(_quotation_createNode_937vih_a0a0b(), IWillBeClassifier__BehaviorDescriptor.LINKS.classifier$pQ_R);
   }
   /*package*/ static SNode resolve_id3ZSHU3ph184(@NotNull SNode __thisNode__, SModel targetModel) {
     final String clsName = IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(__thisNode__);
-    return ListSequence.fromList(SModelOperations.roots(targetModel, CONCEPTS.Classifier$hJ)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(targetModel, IWillBeClassifier__BehaviorDescriptor.CONCEPTS.Classifier$hJ)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode cls) {
-        return clsName.equals(SPropertyOperations.getString(cls, PROPS.name$tAp1));
+        return clsName.equals(SPropertyOperations.getString(cls, IWillBeClassifier__BehaviorDescriptor.PROPS.name$tAp1));
       }
     });
   }

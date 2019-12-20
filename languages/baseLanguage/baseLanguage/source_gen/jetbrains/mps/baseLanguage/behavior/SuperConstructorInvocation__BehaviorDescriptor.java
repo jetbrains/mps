@@ -34,19 +34,19 @@ public final class SuperConstructorInvocation__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassConcept$IY, false, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(__thisNode__, SuperConstructorInvocation__BehaviorDescriptor.CONCEPTS.ClassConcept$IY, false, false);
     SNode superclassType = ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(classConcept);
     if ((superclassType == null)) {
       return new ArrayList<SNode>();
     }
 
-    SNode superClassifier = SLinkOperations.getTarget(superclassType, LINKS.classifier$pQ_R);
+    SNode superClassifier = SLinkOperations.getTarget(superclassType, SuperConstructorInvocation__BehaviorDescriptor.LINKS.classifier$pQ_R);
 
-    if ((superClassifier == null) || !(SNodeOperations.isInstanceOf(superClassifier, CONCEPTS.ClassConcept$IY))) {
+    if ((superClassifier == null) || !(SNodeOperations.isInstanceOf(superClassifier, SuperConstructorInvocation__BehaviorDescriptor.CONCEPTS.ClassConcept$IY))) {
       return new ArrayList<SNode>();
     }
 
-    SNode superclass = SNodeOperations.cast(superClassifier, CONCEPTS.ClassConcept$IY);
+    SNode superclass = SNodeOperations.cast(superClassifier, SuperConstructorInvocation__BehaviorDescriptor.CONCEPTS.ClassConcept$IY);
     return ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superclass);
   }
 

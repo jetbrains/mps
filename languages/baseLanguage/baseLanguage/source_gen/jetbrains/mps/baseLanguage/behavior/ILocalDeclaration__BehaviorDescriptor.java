@@ -35,22 +35,22 @@ public final class ILocalDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static boolean isReferencedInClosure_id2P5W1FWMWTY(@NotNull SNode __thisNode__) {
-    SNode container = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.StatementList$TN, false, false);
+    SNode container = SNodeOperations.getNodeAncestor(__thisNode__, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.StatementList$TN, false, false);
     {
-      Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.ILocalReference$tE, false, new SAbstractConcept[]{})).iterator();
+      Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.ILocalReference$tE, false, new SAbstractConcept[]{})).iterator();
       SNode ref_var;
       while (ref_it.hasNext()) {
         ref_var = ref_it.next();
         if (ILocalReference__BehaviorDescriptor.getDeclaration_id2P5W1FWMYZ5.invoke(ref_var) == __thisNode__) {
-          SNode referenceContainer = SNodeOperations.getNodeAncestor(ref_var, CONCEPTS.StatementList$TN, false, false);
+          SNode referenceContainer = SNodeOperations.getNodeAncestor(ref_var, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.StatementList$TN, false, false);
           while (referenceContainer != null) {
             if (referenceContainer == container) {
               return false;
             }
-            if ((boolean) IStatementListContainer__BehaviorDescriptor.isClosure_id2P5W1FWMZPJ.invoke(SNodeOperations.getNodeAncestor(referenceContainer, CONCEPTS.IStatementListContainer$4L, false, false))) {
+            if ((boolean) IStatementListContainer__BehaviorDescriptor.isClosure_id2P5W1FWMZPJ.invoke(SNodeOperations.getNodeAncestor(referenceContainer, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.IStatementListContainer$4L, false, false))) {
               return true;
             }
-            referenceContainer = SNodeOperations.getNodeAncestor(referenceContainer, CONCEPTS.StatementList$TN, false, false);
+            referenceContainer = SNodeOperations.getNodeAncestor(referenceContainer, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.StatementList$TN, false, false);
           }
         }
       }
@@ -58,14 +58,14 @@ public final class ILocalDeclaration__BehaviorDescriptor extends BaseBHDescripto
     return false;
   }
   /*package*/ static boolean isReferencedInControlFlowInterrupter_id1rgSh_h_K4n(@NotNull SNode __thisNode__) {
-    SNode container = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.StatementList$TN, false, false);
+    SNode container = SNodeOperations.getNodeAncestor(__thisNode__, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.StatementList$TN, false, false);
     {
-      Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.ILocalReference$tE, false, new SAbstractConcept[]{})).iterator();
+      Iterator<SNode> ref_it = ListSequence.fromList(SNodeOperations.getNodeDescendants(container, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.ILocalReference$tE, false, new SAbstractConcept[]{})).iterator();
       SNode ref_var;
       while (ref_it.hasNext()) {
         ref_var = ref_it.next();
         if (ILocalReference__BehaviorDescriptor.getDeclaration_id2P5W1FWMYZ5.invoke(ref_var) == __thisNode__) {
-          SNode interrupter = SNodeOperations.getNodeAncestor(ref_var, CONCEPTS.IControlFlowInterrupter$qo, false, false);
+          SNode interrupter = SNodeOperations.getNodeAncestor(ref_var, ILocalDeclaration__BehaviorDescriptor.CONCEPTS.IControlFlowInterrupter$qo, false, false);
           if (interrupter == container || ListSequence.fromList(SNodeOperations.getNodeAncestors(interrupter, null, false)).contains(container)) {
             return true;
           }

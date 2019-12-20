@@ -38,9 +38,9 @@ public final class SuperMethodCall__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    SNode concept = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassConcept$IY), __thisNode__);
+    SNode concept = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(SuperMethodCall__BehaviorDescriptor.CONCEPTS.ClassConcept$IY), __thisNode__);
     List<SNode> typeVarRefs = new ArrayList<SNode>();
-    for (SNode tvd : SLinkOperations.getChildren(concept, LINKS.typeVariableDeclaration$ziZT)) {
+    for (SNode tvd : SLinkOperations.getChildren(concept, SuperMethodCall__BehaviorDescriptor.LINKS.typeVariableDeclaration$ziZT)) {
       ListSequence.fromList(typeVarRefs).addElement(_quotation_createNode_ypylvf_a0a0a2a0(tvd));
     }
     return _quotation_createNode_ypylvf_a3a0(typeVarRefs, concept);

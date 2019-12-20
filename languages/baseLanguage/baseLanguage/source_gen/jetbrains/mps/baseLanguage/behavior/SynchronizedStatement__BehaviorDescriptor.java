@@ -34,9 +34,9 @@ public final class SynchronizedStatement__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.block$mxye), throwables, ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, SynchronizedStatement__BehaviorDescriptor.LINKS.block$mxye), throwables, ((boolean) ignoreMayBeThrowables));
     if (!(ignoreMayBeThrowables)) {
-      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$K1Pl));
+      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(SynchronizedStatement__BehaviorDescriptor.CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, SynchronizedStatement__BehaviorDescriptor.LINKS.expression$K1Pl));
     }
   }
 

@@ -33,7 +33,7 @@ public final class BooleanConstant__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.value$WIn0);
+    return SPropertyOperations.getBoolean(__thisNode__, BooleanConstant__BehaviorDescriptor.PROPS.value$WIn0);
   }
   /*package*/ static boolean constant_id1653mnvAgr2(@NotNull SAbstractConcept __thisConcept__) {
     return true;

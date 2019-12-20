@@ -31,7 +31,7 @@ public final class CustomSetterPropertyImplementation__BehaviorDescriptor extend
   }
 
   /*package*/ static boolean hasSetter_idhEwIUA2(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.setAccessor$VUMX) != null);
+    return (SLinkOperations.getTarget(__thisNode__, CustomSetterPropertyImplementation__BehaviorDescriptor.LINKS.setAccessor$VUMX) != null);
   }
 
   /*package*/ CustomSetterPropertyImplementation__BehaviorDescriptor() {

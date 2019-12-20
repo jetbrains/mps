@@ -24,7 +24,7 @@ public final class DefaultSetAccessor__BehaviorDescriptor extends BaseBHDescript
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$peCZ, CONCEPTS.PrivateVisibility$Se);
+    SLinkOperations.setNewChild(__thisNode__, DefaultSetAccessor__BehaviorDescriptor.LINKS.visibility$peCZ, DefaultSetAccessor__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se);
   }
 
 

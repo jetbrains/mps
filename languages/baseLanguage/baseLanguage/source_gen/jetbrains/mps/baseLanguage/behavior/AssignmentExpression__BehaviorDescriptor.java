@@ -45,10 +45,10 @@ public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static SNode deriveType_idhEwIVPz(@NotNull SNode __thisNode__, SNode expression) {
     SNode type = null;
-    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, LINKS.rValue$J0E2)) {
-      SNode rawType = SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.lValue$J0D4)));
-      if (SNodeOperations.isInstanceOf(rawType, CONCEPTS.Type$IG)) {
-        type = SNodeOperations.cast(rawType, CONCEPTS.Type$IG);
+    if (SNodeOperations.getParent(expression) == __thisNode__ && SNodeOperations.hasRole(expression, AssignmentExpression__BehaviorDescriptor.LINKS.rValue$J0E2)) {
+      SNode rawType = SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, AssignmentExpression__BehaviorDescriptor.LINKS.lValue$J0D4)));
+      if (SNodeOperations.isInstanceOf(rawType, AssignmentExpression__BehaviorDescriptor.CONCEPTS.Type$IG)) {
+        type = SNodeOperations.cast(rawType, AssignmentExpression__BehaviorDescriptor.CONCEPTS.Type$IG);
       } else {
         return null;
       }
@@ -59,22 +59,22 @@ public final class AssignmentExpression__BehaviorDescriptor extends BaseBHDescri
     return false;
   }
   /*package*/ static boolean canConvertToLocalVariableDeclaration_idhLFstkU(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExpressionStatement$nm);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), AssignmentExpression__BehaviorDescriptor.CONCEPTS.ExpressionStatement$nm);
   }
   /*package*/ static SNode convertToLocalVariableDeclaration_idhLFsFld(@NotNull SNode __thisNode__, String varName) {
-    SNode exprStatement = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExpressionStatement$nm);
-    SNode valueType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.rValue$J0E2));
-    if (SNodeOperations.isInstanceOf(valueType, CONCEPTS.NullType$do)) {
+    SNode exprStatement = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), AssignmentExpression__BehaviorDescriptor.CONCEPTS.ExpressionStatement$nm);
+    SNode valueType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, AssignmentExpression__BehaviorDescriptor.LINKS.rValue$J0E2));
+    if (SNodeOperations.isInstanceOf(valueType, AssignmentExpression__BehaviorDescriptor.CONCEPTS.NullType$do)) {
       valueType = _quotation_createNode_4cbll2_a0a0c0d();
     }
-    SNode varType = TypecheckingFacade.getFromContext().coerceType(valueType, CONCEPTS.Type$IG);
+    SNode varType = TypecheckingFacade.getFromContext().coerceType(valueType, AssignmentExpression__BehaviorDescriptor.CONCEPTS.Type$IG);
     SNode varDeclStmnt = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement"));
-    SLinkOperations.setNewChild(varDeclStmnt, LINKS.localVariableDeclaration$O0D0, null);
-    SNode ref = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.lValue$J0D4), CONCEPTS.VariableReference$sQ);
-    String name = (varName == null ? ((SLinkOperations.getTarget(ref, LINKS.variableDeclaration$2ky6) == null) ? ((SReference) SNodeOperations.getReference(ref, LINKS.variableDeclaration$2ky6)).getResolveInfo() : SPropertyOperations.getString(SLinkOperations.getTarget(ref, LINKS.variableDeclaration$2ky6), PROPS.name$tAp1)) : varName);
-    SPropertyOperations.set(SLinkOperations.getTarget(varDeclStmnt, LINKS.localVariableDeclaration$O0D0), PROPS.name$tAp1, name);
-    SLinkOperations.setTarget(SLinkOperations.getTarget(varDeclStmnt, LINKS.localVariableDeclaration$O0D0), LINKS.type$pLrO, SNodeOperations.copyNode(varType));
-    SLinkOperations.setTarget(SLinkOperations.getTarget(varDeclStmnt, LINKS.localVariableDeclaration$O0D0), LINKS.initializer$KgD, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.rValue$J0E2)));
+    SLinkOperations.setNewChild(varDeclStmnt, AssignmentExpression__BehaviorDescriptor.LINKS.localVariableDeclaration$O0D0, null);
+    SNode ref = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, AssignmentExpression__BehaviorDescriptor.LINKS.lValue$J0D4), AssignmentExpression__BehaviorDescriptor.CONCEPTS.VariableReference$sQ);
+    String name = (varName == null ? ((SLinkOperations.getTarget(ref, AssignmentExpression__BehaviorDescriptor.LINKS.variableDeclaration$2ky6) == null) ? ((SReference) SNodeOperations.getReference(ref, AssignmentExpression__BehaviorDescriptor.LINKS.variableDeclaration$2ky6)).getResolveInfo() : SPropertyOperations.getString(SLinkOperations.getTarget(ref, AssignmentExpression__BehaviorDescriptor.LINKS.variableDeclaration$2ky6), AssignmentExpression__BehaviorDescriptor.PROPS.name$tAp1)) : varName);
+    SPropertyOperations.set(SLinkOperations.getTarget(varDeclStmnt, AssignmentExpression__BehaviorDescriptor.LINKS.localVariableDeclaration$O0D0), AssignmentExpression__BehaviorDescriptor.PROPS.name$tAp1, name);
+    SLinkOperations.setTarget(SLinkOperations.getTarget(varDeclStmnt, AssignmentExpression__BehaviorDescriptor.LINKS.localVariableDeclaration$O0D0), AssignmentExpression__BehaviorDescriptor.LINKS.type$pLrO, SNodeOperations.copyNode(varType));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(varDeclStmnt, AssignmentExpression__BehaviorDescriptor.LINKS.localVariableDeclaration$O0D0), AssignmentExpression__BehaviorDescriptor.LINKS.initializer$KgD, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, AssignmentExpression__BehaviorDescriptor.LINKS.rValue$J0E2)));
     SNodeOperations.replaceWithAnother(exprStatement, varDeclStmnt);
     return varDeclStmnt;
   }

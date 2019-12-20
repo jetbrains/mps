@@ -70,27 +70,27 @@ public final class FieldDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGetterName_idhEwIcY6, getSideIcon_id6TtJ6IUjtJX, createReference_idhEwJfME, getChildrenToDisplayIntention_id3vsDNFqJVhw, hasGetter_idhEwIcYw, isGetter_idhEwIcYT, getSetterName_idhEwIcZl, hasSetter_idhEwIcZv, isSetter_idhEwIcZS, isInitializable_idhEwJfMK, getSuffix_id2Bet8mWh3pg, getPrefix_id2Bet8mWh2lw, getTraceableProperty_id4pl5GY7LKmH, populateMember_id6r77ob2UW9O, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_ECA0g, getFqName_idhEwIO9y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$2GiC, CONCEPTS.PrivateVisibility$Se);
+    SLinkOperations.setNewChild(__thisNode__, FieldDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC, FieldDeclaration__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se);
   }
 
   /*package*/ static String getGetterName_idhEwIcY6(@NotNull SNode __thisNode__) {
     String prefix = "get";
-    if (TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), _quotation_createNode_dh5t54_b0a1a0())) {
+    if (TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, FieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO), _quotation_createNode_dh5t54_b0a1a0())) {
       prefix = "is";
     }
-    return prefix + NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return prefix + NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1));
   }
   /*package*/ static IconResource getSideIcon_id6TtJ6IUjtJX(@NotNull SNode __thisNode__) {
     return ((IconResource) IVisible__BehaviorDescriptor.getVisibilityIcon_id4mxbjAOAG0d.invoke(__thisNode__));
   }
   /*package*/ static SNode createReference_idhEwJfME(@NotNull SNode __thisNode__) {
     SNode ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-    SLinkOperations.setTarget(ref, LINKS.variableDeclaration$2ky6, __thisNode__);
+    SLinkOperations.setTarget(ref, FieldDeclaration__BehaviorDescriptor.LINKS.variableDeclaration$2ky6, __thisNode__);
     return ref;
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
-    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.FieldDeclaration$Ps);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC));
+    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDeclaration$Ps);
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, FieldDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC));
     return result;
   }
   /*package*/ static boolean hasGetter_idhEwIcYw(@NotNull SNode __thisNode__, SNode classConcept) {
@@ -102,10 +102,10 @@ public final class FieldDeclaration__BehaviorDescriptor extends BaseBHDescriptor
     }).isNotEmpty();
   }
   /*package*/ static boolean isGetter_idhEwIcYT(@NotNull SNode __thisNode__, SNode method) {
-    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).isEmpty() && FieldDeclaration__BehaviorDescriptor.getGetterName_idhEwIcY6.invoke(__thisNode__).equals(SPropertyOperations.getString(method, PROPS.name$tAp1)) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO), SLinkOperations.getTarget(method, LINKS.returnType$WIkw));
+    return ListSequence.fromList(SLinkOperations.getChildren(method, FieldDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).isEmpty() && FieldDeclaration__BehaviorDescriptor.getGetterName_idhEwIcY6.invoke(__thisNode__).equals(SPropertyOperations.getString(method, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1)) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(__thisNode__, FieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO), SLinkOperations.getTarget(method, FieldDeclaration__BehaviorDescriptor.LINKS.returnType$WIkw));
   }
   /*package*/ static String getSetterName_idhEwIcZl(@NotNull SNode __thisNode__) {
-    return "set" + NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return "set" + NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1));
   }
   /*package*/ static boolean hasSetter_idhEwIcZv(@NotNull SNode __thisNode__, SNode classConcept) {
     final SNode fieldDeclaration = __thisNode__;
@@ -116,7 +116,7 @@ public final class FieldDeclaration__BehaviorDescriptor extends BaseBHDescriptor
     }).isNotEmpty();
   }
   /*package*/ static boolean isSetter_idhEwIcZS(@NotNull SNode __thisNode__, SNode method) {
-    return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count() == 1 && FieldDeclaration__BehaviorDescriptor.getSetterName_idhEwIcZl.invoke(__thisNode__).equals(SPropertyOperations.getString(method, PROPS.name$tAp1)) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).first(), LINKS.type$pLrO), SLinkOperations.getTarget(__thisNode__, LINKS.type$pLrO));
+    return ListSequence.fromList(SLinkOperations.getChildren(method, FieldDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).count() == 1 && FieldDeclaration__BehaviorDescriptor.getSetterName_idhEwIcZl.invoke(__thisNode__).equals(SPropertyOperations.getString(method, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1)) && TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, FieldDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).first(), FieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO), SLinkOperations.getTarget(__thisNode__, FieldDeclaration__BehaviorDescriptor.LINKS.type$pLrO));
   }
   /*package*/ static boolean isInitializable_idhEwJfMK(@NotNull SNode __thisNode__) {
     return true;
@@ -137,39 +137,39 @@ public final class FieldDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   }
   @Nullable
   /*package*/ static String getTraceableProperty_id4pl5GY7LKmH(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+    return SPropertyOperations.getString(__thisNode__, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1);
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    if (!(context.isElementVisible(__thisNode__)) || SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) == null) {
+    if (!(context.isElementVisible(__thisNode__)) || SPropertyOperations.getString(__thisNode__, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1) == null) {
       return;
     }
-    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
-    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
+    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1)));
+    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1)));
   }
   /*package*/ static void markDeprecated_id6Va_BJexupi(@NotNull SNode __thisNode__) {
-    IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke0(__thisNode__, CONCEPTS.IBLDeprecatable$Hv);
-    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)) == null)) {
-      SNodeFactoryOperations.setNewAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), CONCEPTS.FieldDocComment$I8);
+    IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke0(__thisNode__, FieldDeclaration__BehaviorDescriptor.CONCEPTS.IBLDeprecatable$Hv);
+    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8)) == null)) {
+      SNodeFactoryOperations.setNewAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8), FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8);
     }
     if (!(((boolean) IBLDeprecatable__BehaviorDescriptor.hasDeprecatedBlockDocTag_id3yvWaPI09DC.invoke(__thisNode__)))) {
-      SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.tags$LJD$, CONCEPTS.DeprecatedBlockDocTag$ma);
+      SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8)), FieldDeclaration__BehaviorDescriptor.LINKS.tags$LJD$, FieldDeclaration__BehaviorDescriptor.CONCEPTS.DeprecatedBlockDocTag$ma);
     }
     AnnotationUtil.attachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void unmarkDeprecated_id6Va_BJex$aE(@NotNull SNode __thisNode__) {
-    IBLDeprecatable__BehaviorDescriptor.unmarkDeprecated_id6Va_BJex$aE.invoke0(__thisNode__, CONCEPTS.IBLDeprecatable$Hv);
-    IBLDeprecatable__BehaviorDescriptor.removeDeprecationFromDoc_id63oBH1IM79r.invoke(__thisNode__, AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)));
+    IBLDeprecatable__BehaviorDescriptor.unmarkDeprecated_id6Va_BJex$aE.invoke0(__thisNode__, FieldDeclaration__BehaviorDescriptor.CONCEPTS.IBLDeprecatable$Hv);
+    IBLDeprecatable__BehaviorDescriptor.removeDeprecationFromDoc_id63oBH1IM79r.invoke(__thisNode__, AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8)));
     AnnotationUtil.detachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_ECA0g(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), DeprecationUtil.createDocComment(CONCEPTS.FieldDocComment$I8));
+    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8), DeprecationUtil.createDocComment(FieldDeclaration__BehaviorDescriptor.CONCEPTS.FieldDocComment$I8));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, FieldDeclaration__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if (containingClassifier != null) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, FieldDeclaration__BehaviorDescriptor.PROPS.name$tAp1);
     }
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.VariableDeclaration$xe);
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, FieldDeclaration__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe);
   }
 
   /*package*/ FieldDeclaration__BehaviorDescriptor() {

@@ -35,7 +35,7 @@ public final class ArrayAccessExpression__BehaviorDescriptor extends BaseBHDescr
     return true;
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.array$L7S$);
+    return SLinkOperations.getTarget(__thisNode__, ArrayAccessExpression__BehaviorDescriptor.LINKS.array$L7S$);
   }
 
   /*package*/ ArrayAccessExpression__BehaviorDescriptor() {

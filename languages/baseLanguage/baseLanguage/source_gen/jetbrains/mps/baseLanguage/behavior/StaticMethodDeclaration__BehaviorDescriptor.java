@@ -58,7 +58,7 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
-    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.StaticMethodDeclaration$eX));
+    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.CONCEPTS.StaticMethodDeclaration$eX));
     markIcons.add(BLIconMarks.STATIC);
     return markIcons;
   }
@@ -71,13 +71,13 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
     // the difference between two methods is very visible in main node selection in java run configuation () 
     return TypecheckingFacade.getFromContext().computeIsolated(new Function<TypecheckingSession, Boolean>() {
       public Boolean apply(TypecheckingSession session) {
-        return "main".equals(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2());
+        return "main".equals(SPropertyOperations.getString(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2());
       }
     });
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
-    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.StaticMethodDeclaration$eX);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC));
+    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.CONCEPTS.StaticMethodDeclaration$eX);
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC));
     return result;
   }
   /*package*/ static boolean isStatic_id7MS72Gc8avw(@NotNull SNode __thisNode__) {
@@ -96,20 +96,20 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
   }
   @Deprecated
   /*package*/ static boolean isAbstract_idhWjv7RO(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$LADB);
+    return SPropertyOperations.getBoolean(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.PROPS.isNative$LADB);
   }
   /*package*/ static boolean isAnAbstractMethod_id28P2dHxCoRl(@NotNull SNode __thisNode__) {
     return false;
   }
   /*package*/ static boolean hasBody_id10BRnhak8m8(@NotNull SNode __thisNode__) {
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$LADB));
+    return !(SPropertyOperations.getBoolean(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.PROPS.isNative$LADB));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if (containingClassifier != null) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + "." + SPropertyOperations.getString(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.PROPS.name$tAp1);
     }
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.MethodDeclaration$93);
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, StaticMethodDeclaration__BehaviorDescriptor.CONCEPTS.MethodDeclaration$93);
   }
 
   /*package*/ StaticMethodDeclaration__BehaviorDescriptor() {

@@ -38,18 +38,18 @@ public final class ResolveUnknownUtil {
     if ((result == null)) {
       return null;
     }
-    if (SNodeOperations.isInstanceOf(result, CONCEPTS.Classifier$hJ)) {
+    if (SNodeOperations.isInstanceOf(result, ResolveUnknownUtil.CONCEPTS.Classifier$hJ)) {
       // change to something real as default, e.g. static field access expression without the field 
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode fieldRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
-          SLinkOperations.setTarget(fieldRef, LINKS.classifier$ZTjE, SNodeOperations.cast(result, CONCEPTS.Classifier$hJ));
+          SLinkOperations.setTarget(fieldRef, ResolveUnknownUtil.LINKS.classifier$ZTjE, SNodeOperations.cast(result, ResolveUnknownUtil.CONCEPTS.Classifier$hJ));
           return fieldRef;
         }
       };
     }
 
-    if (SNodeOperations.isInstanceOf(result, CONCEPTS.Expression$TP)) {
+    if (SNodeOperations.isInstanceOf(result, ResolveUnknownUtil.CONCEPTS.Expression$TP)) {
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           return result;
@@ -60,11 +60,11 @@ public final class ResolveUnknownUtil {
     return null;
   }
   public static _FunctionTypes._return_P0_E0<? extends SNode> resolveConsCall(final SNode x) {
-    SNode enclosingClass = SNodeOperations.getNodeAncestor(x, CONCEPTS.ClassConcept$IY, false, false);
+    SNode enclosingClass = SNodeOperations.getNodeAncestor(x, ResolveUnknownUtil.CONCEPTS.ClassConcept$IY, false, false);
     if ((enclosingClass == null)) {
       return null;
     }
-    final SNode foundCons = ResolveUnknownUtil.findConstructor(enclosingClass, SLinkOperations.getChildren(x, LINKS.actualArgument$$A7L));
+    final SNode foundCons = ResolveUnknownUtil.findConstructor(enclosingClass, SLinkOperations.getChildren(x, ResolveUnknownUtil.LINKS.actualArgument$$A7L));
     if ((foundCons == null)) {
       return null;
     }
@@ -72,9 +72,9 @@ public final class ResolveUnknownUtil {
     // success 
     return new _FunctionTypes._return_P0_E0<SNode>() {
       public SNode invoke() {
-        SNode result = (SPropertyOperations.getBoolean(x, PROPS.isSuper$784Y) ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation")));
+        SNode result = (SPropertyOperations.getBoolean(x, ResolveUnknownUtil.PROPS.isSuper$784Y) ? SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation")) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation")));
         reattachMethodArguments(x, result);
-        SLinkOperations.setTarget(result, LINKS.baseMethodDeclaration$$A7i, foundCons);
+        SLinkOperations.setTarget(result, ResolveUnknownUtil.LINKS.baseMethodDeclaration$$A7i, foundCons);
         return result;
       }
     };
@@ -82,27 +82,27 @@ public final class ResolveUnknownUtil {
   public static _FunctionTypes._return_P0_E0<? extends SNode> resolveLocalCall(final SNode x) {
     final Wrappers._T<SNode> call = new Wrappers._T<SNode>(null);
 
-    Scope methodsScope = Scope.getScope(SNodeOperations.getParent(x), x, CONCEPTS.MethodDeclaration$93);
+    Scope methodsScope = Scope.getScope(SNodeOperations.getParent(x), x, ResolveUnknownUtil.CONCEPTS.MethodDeclaration$93);
 
     if (methodsScope == null) {
       return null;
     }
 
-    SNode node = methodsScope.resolve(x, SPropertyOperations.getString(x, PROPS.callee$pU4C));
+    SNode node = methodsScope.resolve(x, SPropertyOperations.getString(x, ResolveUnknownUtil.PROPS.callee$pU4C));
     if ((node == null)) {
       return null;
     }
 
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.StaticMethodDeclaration$eX)) {
-      SNode decl = SNodeOperations.cast(node, CONCEPTS.StaticMethodDeclaration$eX);
+    if (SNodeOperations.isInstanceOf(node, ResolveUnknownUtil.CONCEPTS.StaticMethodDeclaration$eX)) {
+      SNode decl = SNodeOperations.cast(node, ResolveUnknownUtil.CONCEPTS.StaticMethodDeclaration$eX);
       SNode scall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
-      SLinkOperations.setTarget(scall, LINKS.baseMethodDeclaration$$A7i, decl);
+      SLinkOperations.setTarget(scall, ResolveUnknownUtil.LINKS.baseMethodDeclaration$$A7i, decl);
       call.value = scall;
 
-    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$An)) {
-      SNode decl = SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$An);
+    } else if (SNodeOperations.isInstanceOf(node, ResolveUnknownUtil.CONCEPTS.InstanceMethodDeclaration$An)) {
+      SNode decl = SNodeOperations.cast(node, ResolveUnknownUtil.CONCEPTS.InstanceMethodDeclaration$An);
       SNode icall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
-      SLinkOperations.setTarget(icall, LINKS.baseMethodDeclaration$$A7i, decl);
+      SLinkOperations.setTarget(icall, ResolveUnknownUtil.LINKS.baseMethodDeclaration$$A7i, decl);
       call.value = icall;
     }
 
@@ -118,11 +118,11 @@ public final class ResolveUnknownUtil {
     };
   }
   public static _FunctionTypes._return_P0_E0<? extends SNode> resolveNew(final SNode x) {
-    final SNode typ = findClass(x, SPropertyOperations.getString(x, PROPS.className$qoJZ));
+    final SNode typ = findClass(x, SPropertyOperations.getString(x, ResolveUnknownUtil.PROPS.className$qoJZ));
     if ((typ == null)) {
       return null;
     }
-    if (!(SNodeOperations.isInstanceOf(typ, CONCEPTS.ClassConcept$IY))) {
+    if (!(SNodeOperations.isInstanceOf(typ, ResolveUnknownUtil.CONCEPTS.ClassConcept$IY))) {
       return null;
     }
 
@@ -132,20 +132,20 @@ public final class ResolveUnknownUtil {
         SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression"));
         SNode creator;
 
-        SNode resolveResult = MethodResolveUtil.chooseByParameterType(Sequence.fromIterable(IMethodCall__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(x, "")).toListSequence(), SLinkOperations.getChildren(x, LINKS.actualArgument$$A7L), MethodResolveUtil.getTypesByTypeVars(typ, SLinkOperations.getChildren(typ, LINKS.typeVariableDeclaration$ziZT)));
-        SNode ctor = (resolveResult == null ? null : SNodeOperations.as(resolveResult, CONCEPTS.ConstructorDeclaration$5U));
+        SNode resolveResult = MethodResolveUtil.chooseByParameterType(Sequence.fromIterable(IMethodCall__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(x, "")).toListSequence(), SLinkOperations.getChildren(x, ResolveUnknownUtil.LINKS.actualArgument$$A7L), MethodResolveUtil.getTypesByTypeVars(typ, SLinkOperations.getChildren(typ, ResolveUnknownUtil.LINKS.typeVariableDeclaration$ziZT)));
+        SNode ctor = (resolveResult == null ? null : SNodeOperations.as(resolveResult, ResolveUnknownUtil.CONCEPTS.ConstructorDeclaration$5U));
 
         if ((ctor == null)) {
 
           // we can't use default constructor in this case 
-          if (ListSequence.fromList(SLinkOperations.getChildren(x, LINKS.actualArgument$$A7L)).isNotEmpty()) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(x, ResolveUnknownUtil.LINKS.actualArgument$$A7L)).isNotEmpty()) {
             return null;
           }
 
           SNode defaultConsCreator = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator"));
-          SLinkOperations.setTarget(defaultConsCreator, LINKS.classifier$bk50, typ);
-          for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(x, LINKS.typeArgument$GDtv))) {
-            ListSequence.fromList(SLinkOperations.getChildren(defaultConsCreator, LINKS.typeParameter$PRff)).addElement(SNodeOperations.copyNode(arg));
+          SLinkOperations.setTarget(defaultConsCreator, ResolveUnknownUtil.LINKS.classifier$bk50, typ);
+          for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(x, ResolveUnknownUtil.LINKS.typeArgument$GDtv))) {
+            ListSequence.fromList(SLinkOperations.getChildren(defaultConsCreator, ResolveUnknownUtil.LINKS.typeParameter$PRff)).addElement(SNodeOperations.copyNode(arg));
           }
 
           creator = defaultConsCreator;
@@ -157,11 +157,11 @@ public final class ResolveUnknownUtil {
           reattachMethodArguments(x, classCreator);
           reattachTypeArguments(x, classCreator);
 
-          SLinkOperations.setTarget(classCreator, LINKS.baseMethodDeclaration$$A7i, ctor);
+          SLinkOperations.setTarget(classCreator, ResolveUnknownUtil.LINKS.baseMethodDeclaration$$A7i, ctor);
           creator = classCreator;
         }
 
-        SLinkOperations.setTarget(result, LINKS.creator$itDQ, creator);
+        SLinkOperations.setTarget(result, ResolveUnknownUtil.LINKS.creator$itDQ, creator);
         return result;
       }
     };
@@ -175,10 +175,10 @@ public final class ResolveUnknownUtil {
       return null;
     }
 
-    if (SNodeOperations.isInstanceOf(operand, CONCEPTS.Classifier$hJ)) {
-      final SNode target = ((operand == null) ? null : SNodeOperations.cast(operand, CONCEPTS.Classifier$hJ));
+    if (SNodeOperations.isInstanceOf(operand, ResolveUnknownUtil.CONCEPTS.Classifier$hJ)) {
+      final SNode target = ((operand == null) ? null : SNodeOperations.cast(operand, ResolveUnknownUtil.CONCEPTS.Classifier$hJ));
 
-      if ((target != null) && !(SNodeOperations.isInstanceOf(target, CONCEPTS.ClassConcept$IY))) {
+      if ((target != null) && !(SNodeOperations.isInstanceOf(target, ResolveUnknownUtil.CONCEPTS.ClassConcept$IY))) {
         return null;
       }
 
@@ -186,12 +186,12 @@ public final class ResolveUnknownUtil {
         public SNode invoke() {
           SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
           if ((target != null)) {
-            SLinkOperations.setTarget(call, LINKS.classConcept$BsUa, SNodeOperations.cast(target, CONCEPTS.ClassConcept$IY));
+            SLinkOperations.setTarget(call, ResolveUnknownUtil.LINKS.classConcept$BsUa, SNodeOperations.cast(target, ResolveUnknownUtil.CONCEPTS.ClassConcept$IY));
           } else {
-            DynamicReference dr = new DynamicReference(LINKS.classConcept$BsUa, call, null, className);
+            DynamicReference dr = new DynamicReference(ResolveUnknownUtil.LINKS.classConcept$BsUa, call, null, className);
             call.setReference(dr.getLink(), dr);
           }
-          SReference sref = new DynamicReference(LINKS.baseMethodDeclaration$$A7i, call, null, SPropertyOperations.getString(x, PROPS.callee$Nebc));
+          SReference sref = new DynamicReference(ResolveUnknownUtil.LINKS.baseMethodDeclaration$$A7i, call, null, SPropertyOperations.getString(x, ResolveUnknownUtil.PROPS.callee$Nebc));
           call.setReference(sref.getLink(), sref);
           reattachMethodArguments(x, call);
           reattachTypeArguments(x, call);
@@ -199,18 +199,18 @@ public final class ResolveUnknownUtil {
         }
       };
 
-    } else if (SNodeOperations.isInstanceOf(operand, CONCEPTS.Expression$TP)) {
+    } else if (SNodeOperations.isInstanceOf(operand, ResolveUnknownUtil.CONCEPTS.Expression$TP)) {
       // operand is some other expression. it's supposed to be an instance method call then 
 
       return new _FunctionTypes._return_P0_E0<SNode>() {
         public SNode invoke() {
           SNode dotExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
-          SLinkOperations.setTarget(dotExpr, LINKS.operand$Lcrr, SNodeOperations.cast(operand, CONCEPTS.Expression$TP));
+          SLinkOperations.setTarget(dotExpr, ResolveUnknownUtil.LINKS.operand$Lcrr, SNodeOperations.cast(operand, ResolveUnknownUtil.CONCEPTS.Expression$TP));
 
           SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
-          SLinkOperations.setTarget(dotExpr, LINKS.operation$X4R8, call);
+          SLinkOperations.setTarget(dotExpr, ResolveUnknownUtil.LINKS.operation$X4R8, call);
 
-          SReference sref = new DynamicReference(LINKS.baseMethodDeclaration$$A7i, call, null, SPropertyOperations.getString(x, PROPS.callee$Nebc));
+          SReference sref = new DynamicReference(ResolveUnknownUtil.LINKS.baseMethodDeclaration$$A7i, call, null, SPropertyOperations.getString(x, ResolveUnknownUtil.PROPS.callee$Nebc));
           call.setReference(sref.getLink(), sref);
 
           reattachMethodArguments(x, call);
@@ -230,7 +230,7 @@ public final class ResolveUnknownUtil {
     // or node<Classifier> if all tokens form a name class 
     // returns null if could not resolve 
 
-    String[] tokens = SPropertyOperations.getString(x, PROPS.tokens$DqHu).split("\\.");
+    String[] tokens = SPropertyOperations.getString(x, ResolveUnknownUtil.PROPS.tokens$DqHu).split("\\.");
 
     SNode operand = null;
     int tokPos = 0;
@@ -263,25 +263,25 @@ public final class ResolveUnknownUtil {
         final String memberName = tokens[tokPos];
         SNode mbEnumConst = null;
 
-        if (SNodeOperations.isInstanceOf(cls, CONCEPTS.EnumClass$uy)) {
-          mbEnumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.EnumClass$uy), LINKS.enumConstant$urAQ)).where(new IWhereFilter<SNode>() {
+        if (SNodeOperations.isInstanceOf(cls, ResolveUnknownUtil.CONCEPTS.EnumClass$uy)) {
+          mbEnumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(cls, ResolveUnknownUtil.CONCEPTS.EnumClass$uy), ResolveUnknownUtil.LINKS.enumConstant$urAQ)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return memberName.equals(SPropertyOperations.getString(it, PROPS.name$tAp1));
+              return memberName.equals(SPropertyOperations.getString(it, ResolveUnknownUtil.PROPS.name$tAp1));
             }
           }).first();
         }
 
         if (mbEnumConst != null) {
           SNode enumRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-          SLinkOperations.setTarget(enumRef, LINKS.enumClass$9jPZ, SNodeOperations.cast(cls, CONCEPTS.EnumClass$uy));
-          SLinkOperations.setTarget(enumRef, LINKS.enumConstantDeclaration$fB6v, mbEnumConst);
+          SLinkOperations.setTarget(enumRef, ResolveUnknownUtil.LINKS.enumClass$9jPZ, SNodeOperations.cast(cls, ResolveUnknownUtil.CONCEPTS.EnumClass$uy));
+          SLinkOperations.setTarget(enumRef, ResolveUnknownUtil.LINKS.enumConstantDeclaration$fB6v, mbEnumConst);
           operand = enumRef;
 
         } else {
           SNode statFieldRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
-          SLinkOperations.setTarget(statFieldRef, LINKS.classifier$ZTjE, cls);
+          SLinkOperations.setTarget(statFieldRef, ResolveUnknownUtil.LINKS.classifier$ZTjE, cls);
           SReference fieldRef;
-          fieldRef = new DynamicReference(LINKS.variableDeclaration$2ky6, statFieldRef, null, memberName);
+          fieldRef = new DynamicReference(ResolveUnknownUtil.LINKS.variableDeclaration$2ky6, statFieldRef, null, memberName);
           statFieldRef.setReference(fieldRef.getLink(), fieldRef);
           operand = statFieldRef;
         }
@@ -305,15 +305,15 @@ public final class ResolveUnknownUtil {
   }
   public static SNode makeFieldDotExpression(SNode holder, String fieldName) {
     SNode dotExpr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
-    SLinkOperations.setTarget(dotExpr, LINKS.operand$Lcrr, holder);
+    SLinkOperations.setTarget(dotExpr, ResolveUnknownUtil.LINKS.operand$Lcrr, holder);
     SNode fieldRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"));
-    SLinkOperations.setTarget(dotExpr, LINKS.operation$X4R8, fieldRef);
-    SReference sref = new DynamicReference(LINKS.fieldDeclaration$mLBy, fieldRef, null, fieldName);
+    SLinkOperations.setTarget(dotExpr, ResolveUnknownUtil.LINKS.operation$X4R8, fieldRef);
+    SReference sref = new DynamicReference(ResolveUnknownUtil.LINKS.fieldDeclaration$mLBy, fieldRef, null, fieldName);
     fieldRef.setReference(sref.getLink(), sref);
     return dotExpr;
   }
   public static SNode tryFirstTokenAsVarRef(SNode x) {
-    Scope scope = Scope.getScope(SNodeOperations.getParent(x), x, CONCEPTS.VariableDeclaration$xe);
+    Scope scope = Scope.getScope(SNodeOperations.getParent(x), x, ResolveUnknownUtil.CONCEPTS.VariableDeclaration$xe);
     if (scope == null) {
       // TODO make it more informative 
       return null;
@@ -325,7 +325,7 @@ public final class ResolveUnknownUtil {
       // it's a variable 
 
       SNode varRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));
-      SReference sref = new DynamicReference(LINKS.variableDeclaration$2ky6, varRef, null, name);
+      SReference sref = new DynamicReference(ResolveUnknownUtil.LINKS.variableDeclaration$2ky6, varRef, null, name);
       varRef.setReference(sref.getLink(), sref);
 
       return varRef;
@@ -335,7 +335,7 @@ public final class ResolveUnknownUtil {
   }
   public static Tuples._2<SNode, Integer> tryFindClass(SNode x) {
     StringBuilder sb = new StringBuilder();
-    String[] tokens = SPropertyOperations.getString(x, PROPS.tokens$DqHu).split("\\.");
+    String[] tokens = SPropertyOperations.getString(x, ResolveUnknownUtil.PROPS.tokens$DqHu).split("\\.");
 
     int[] dotPositions = new int[tokens.length];
     int lastDot = -1;
@@ -368,18 +368,18 @@ public final class ResolveUnknownUtil {
     if ((className == null || className.length() == 0)) {
       return null;
     }
-    SNode contextClas = SNodeOperations.getNodeAncestor(from, CONCEPTS.Classifier$hJ, true, false);
-    ClassifiersScope scope = new ClassifiersScope(SNodeOperations.getModel(from), contextClas, CONCEPTS.Classifier$hJ, true);
+    SNode contextClas = SNodeOperations.getNodeAncestor(from, ResolveUnknownUtil.CONCEPTS.Classifier$hJ, true, false);
+    ClassifiersScope scope = new ClassifiersScope(SNodeOperations.getModel(from), contextClas, ResolveUnknownUtil.CONCEPTS.Classifier$hJ, true);
 
     SNode claz = scope.resolve(from, className);
     if ((claz == null)) {
       return null;
     }
-    if (!(SNodeOperations.isInstanceOf(claz, CONCEPTS.Classifier$hJ))) {
+    if (!(SNodeOperations.isInstanceOf(claz, ResolveUnknownUtil.CONCEPTS.Classifier$hJ))) {
       return null;
     }
 
-    return SNodeOperations.cast(claz, CONCEPTS.Classifier$hJ);
+    return SNodeOperations.cast(claz, ResolveUnknownUtil.CONCEPTS.Classifier$hJ);
   }
   public static SNode findConstructor(SNode claz, List<SNode> args) {
     SNode result;
@@ -387,7 +387,7 @@ public final class ResolveUnknownUtil {
     SNode c = claz;
     while ((c != null)) {
       ListSequence.fromList(chain).addElement(c);
-      c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, LINKS.superclass$_pqe), LINKS.classifier$pQ_R), CONCEPTS.ClassConcept$IY);
+      c = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(c, ResolveUnknownUtil.LINKS.superclass$_pqe), ResolveUnknownUtil.LINKS.classifier$pQ_R), ResolveUnknownUtil.CONCEPTS.ClassConcept$IY);
     }
     Iterable<SNode> conss = ListSequence.fromList(chain).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
@@ -402,7 +402,7 @@ public final class ResolveUnknownUtil {
       final int argCount = ListSequence.fromList(args).count();
       Iterable<SNode> subset = Sequence.fromIterable(conss).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$WIkZ)).count() == argCount;
+          return ListSequence.fromList(SLinkOperations.getChildren(it, ResolveUnknownUtil.LINKS.parameter$WIkZ)).count() == argCount;
         }
       });
       result = Sequence.fromIterable(subset).first();
@@ -410,13 +410,13 @@ public final class ResolveUnknownUtil {
     return result;
   }
   public static void reattachMethodArguments(SNode from, SNode to) {
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.actualArgument$$A7L))) {
-      ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.actualArgument$$A7L)).addElement(SNodeOperations.copyNode(arg));
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(from, ResolveUnknownUtil.LINKS.actualArgument$$A7L))) {
+      ListSequence.fromList(SLinkOperations.getChildren(to, ResolveUnknownUtil.LINKS.actualArgument$$A7L)).addElement(SNodeOperations.copyNode(arg));
     }
   }
   public static void reattachTypeArguments(SNode from, SNode to) {
-    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(from, LINKS.typeArgument$GDtv))) {
-      ListSequence.fromList(SLinkOperations.getChildren(to, LINKS.typeArgument$GDtv)).addElement(SNodeOperations.copyNode(arg));
+    for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(from, ResolveUnknownUtil.LINKS.typeArgument$GDtv))) {
+      ListSequence.fromList(SLinkOperations.getChildren(to, ResolveUnknownUtil.LINKS.typeArgument$GDtv)).addElement(SNodeOperations.copyNode(arg));
     }
   }
 

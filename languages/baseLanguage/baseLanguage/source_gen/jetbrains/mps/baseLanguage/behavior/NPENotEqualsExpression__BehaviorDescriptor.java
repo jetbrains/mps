@@ -61,10 +61,10 @@ public final class NPENotEqualsExpression__BehaviorDescriptor extends BaseBHDesc
     return (leftValue != null && rightValue != null ? leftValue != rightValue : null);
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if (VariableReferenceUtil.referencesPointToSameVariableDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.leftExpression$rxLZ), SLinkOperations.getTarget(__thisNode__, LINKS.rightExpression$rxBl))) {
+    if (VariableReferenceUtil.referencesPointToSameVariableDeclaration(SLinkOperations.getTarget(__thisNode__, NPENotEqualsExpression__BehaviorDescriptor.LINKS.leftExpression$rxLZ), SLinkOperations.getTarget(__thisNode__, NPENotEqualsExpression__BehaviorDescriptor.LINKS.rightExpression$rxBl))) {
       return false;
     }
-    return ((Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invokeSuper(__thisNode__, CONCEPTS.NPENotEqualsExpression$dt, module));
+    return ((Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invokeSuper(__thisNode__, NPENotEqualsExpression__BehaviorDescriptor.CONCEPTS.NPENotEqualsExpression$dt, module));
   }
 
   /*package*/ NPENotEqualsExpression__BehaviorDescriptor() {

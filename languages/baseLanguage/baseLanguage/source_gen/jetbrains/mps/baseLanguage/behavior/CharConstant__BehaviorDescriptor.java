@@ -33,8 +33,8 @@ public final class CharConstant__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$_7Im).length() > 0) {
-      return new Character(SPropertyOperations.getString(__thisNode__, PROPS.charConstant$_7Im).charAt(0));
+    if (SPropertyOperations.getString(__thisNode__, CharConstant__BehaviorDescriptor.PROPS.charConstant$_7Im).length() > 0) {
+      return new Character(SPropertyOperations.getString(__thisNode__, CharConstant__BehaviorDescriptor.PROPS.charConstant$_7Im).charAt(0));
     } else {
       return null;
     }

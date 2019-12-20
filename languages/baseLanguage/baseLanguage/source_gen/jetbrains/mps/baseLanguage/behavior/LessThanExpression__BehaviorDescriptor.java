@@ -57,7 +57,7 @@ public final class LessThanExpression__BehaviorDescriptor extends BaseBHDescript
     return null;
   }
   /*package*/ static SNode getFlippedOperator_id14Lzlw0K236(@NotNull SNode __thisNode__) {
-    return SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanExpression$wR, __thisNode__);
+    return SNodeFactoryOperations.createNewNode(LessThanExpression__BehaviorDescriptor.CONCEPTS.GreaterThanExpression$wR, __thisNode__);
   }
 
   /*package*/ LessThanExpression__BehaviorDescriptor() {

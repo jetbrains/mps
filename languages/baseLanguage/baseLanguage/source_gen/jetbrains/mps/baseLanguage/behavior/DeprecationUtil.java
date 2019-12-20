@@ -20,8 +20,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
    */
   /*package*/ static SNode createDocComment(SConcept commentConcept) {
     SNode comment = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(commentConcept));
-    SNode tag = SLinkOperations.addNewChild(comment, LINKS.tags$LJD$, CONCEPTS.DeprecatedBlockDocTag$ma);
-    SLinkOperations.setNewChild(tag, LINKS.text$e7yL, null);
+    SNode tag = SLinkOperations.addNewChild(comment, DeprecationUtil.LINKS.tags$LJD$, DeprecationUtil.CONCEPTS.DeprecatedBlockDocTag$ma);
+    SLinkOperations.setNewChild(tag, DeprecationUtil.LINKS.text$e7yL, null);
     return comment;
   }
 

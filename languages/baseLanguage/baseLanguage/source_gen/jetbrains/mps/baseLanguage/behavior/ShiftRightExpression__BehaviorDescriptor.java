@@ -35,7 +35,7 @@ public final class ShiftRightExpression__BehaviorDescriptor extends BaseBHDescri
     return 9;
   }
   /*package*/ static SNode getFlippedOperator_id14Lzlw0K236(@NotNull SNode __thisNode__) {
-    return SNodeFactoryOperations.createNewNode(CONCEPTS.ShiftLeftExpression$pQ, __thisNode__);
+    return SNodeFactoryOperations.createNewNode(ShiftRightExpression__BehaviorDescriptor.CONCEPTS.ShiftLeftExpression$pQ, __thisNode__);
   }
 
   /*package*/ ShiftRightExpression__BehaviorDescriptor() {

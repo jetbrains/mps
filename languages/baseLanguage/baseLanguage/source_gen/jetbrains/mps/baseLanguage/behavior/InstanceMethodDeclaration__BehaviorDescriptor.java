@@ -67,65 +67,65 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
   }
   @Deprecated
   /*package*/ static boolean isAbstract_idhWjv7RO(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$cU_H);
+    return SPropertyOperations.getBoolean(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.isAbstract$cU_H);
   }
   /*package*/ static boolean isAnAbstractMethod_id28P2dHxCoRl(@NotNull SNode __thisNode__) {
-    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$akE0))) {
-      if (SNodeOperations.isInstanceOf(modifier, CONCEPTS.JavaModifier$nA)) {
-        if ((boolean) JavaModifier__BehaviorDescriptor.makesMethodNotAbstract_id4c$BrPwobKA.invoke(SNodeOperations.cast(modifier, CONCEPTS.JavaModifier$nA))) {
+    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.modifiers$akE0))) {
+      if (SNodeOperations.isInstanceOf(modifier, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.JavaModifier$nA)) {
+        if ((boolean) JavaModifier__BehaviorDescriptor.makesMethodNotAbstract_id4c$BrPwobKA.invoke(SNodeOperations.cast(modifier, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.JavaModifier$nA))) {
           return false;
         }
       }
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$Kp)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.Interface$Kp)) {
       return true;
     }
-    boolean isAbstractProperty = SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$cU_H);
+    boolean isAbstractProperty = SPropertyOperations.getBoolean(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.isAbstract$cU_H);
     return isAbstractProperty;
   }
   /*package*/ static boolean hasBody_id10BRnhak8m8(@NotNull SNode __thisNode__) {
-    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$akE0))) {
-      if (SNodeOperations.isInstanceOf(modifier, CONCEPTS.JavaModifier$nA)) {
-        if ((boolean) JavaModifier__BehaviorDescriptor.allowsBody_id10BRnhafkFC.invoke(SNodeOperations.cast(modifier, CONCEPTS.JavaModifier$nA))) {
+    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.modifiers$akE0))) {
+      if (SNodeOperations.isInstanceOf(modifier, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.JavaModifier$nA)) {
+        if ((boolean) JavaModifier__BehaviorDescriptor.allowsBody_id10BRnhafkFC.invoke(SNodeOperations.cast(modifier, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.JavaModifier$nA))) {
           return true;
         }
       }
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$Kp)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.Interface$Kp)) {
       return false;
     }
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$cU_H)) && !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$LADB));
+    return !(SPropertyOperations.getBoolean(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.isAbstract$cU_H)) && !(SPropertyOperations.getBoolean(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.isNative$LADB));
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
-    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.InstanceMethodDeclaration$An);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$2GiC));
+    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.InstanceMethodDeclaration$An);
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC));
     return result;
   }
   /*package*/ static SNode getImplementedInterfaceMethod_id7cTWCexFh1W(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if ((containingClassifier == null)) {
       return null;
     }
-    Iterable<SNode> implementedInterfaces = SNodeOperations.ofConcept(ClassifierScopeUtils.getExtendedClassifiers(containingClassifier), CONCEPTS.Interface$Kp);
+    Iterable<SNode> implementedInterfaces = SNodeOperations.ofConcept(ClassifierScopeUtils.getExtendedClassifiers(containingClassifier), InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.Interface$Kp);
     for (SNode method : Sequence.fromIterable(implementedInterfaces).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it);
       }
     })) {
-      if (Objects.equals(SPropertyOperations.getString(method, PROPS.name$tAp1), SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$WIkZ)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).count() && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(method, __thisNode__)) {
+      if (Objects.equals(SPropertyOperations.getString(method, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.name$tAp1), SPropertyOperations.getString(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(method, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).count() && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(method, __thisNode__)) {
         return method;
       }
     }
     return null;
   }
   /*package*/ static SNode getNearestOverriddenMethod_id4DuBHEkPTzU(@NotNull SNode __thisNode__) {
-    SNode parent = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.AnonymousClass$aF)) {
-      parent = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.AnonymousClass$aF), LINKS.classifier$1y5e);
-    } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ClassConcept$IY)) {
-      SNode superclass = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.ClassConcept$IY), LINKS.superclass$_pqe);
+    SNode parent = SNodeOperations.getNodeAncestor(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
+    if (SNodeOperations.isInstanceOf(parent, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF)) {
+      parent = SLinkOperations.getTarget(SNodeOperations.cast(parent, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.AnonymousClass$aF), InstanceMethodDeclaration__BehaviorDescriptor.LINKS.classifier$1y5e);
+    } else if (SNodeOperations.isInstanceOf(parent, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY)) {
+      SNode superclass = SLinkOperations.getTarget(SNodeOperations.cast(parent, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.ClassConcept$IY), InstanceMethodDeclaration__BehaviorDescriptor.LINKS.superclass$_pqe);
       // XXX is there a need to access extendedClassifiers of Object? Can't we just use empty set for extendedClassifiers? 
-      parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, LINKS.classifier$pQ_R));
+      parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.classifier$pQ_R));
     }
     Set<SNode> extendedClassifiers = ClassifierScopeUtils.getExtendedClassifiers(parent);
     Iterable<SNode> instanceMethods = SetSequence.fromSet(extendedClassifiers).translate(new ITranslator2<SNode, SNode>() {
@@ -134,7 +134,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
       }
     });
     for (SNode methodCandidate : instanceMethods) {
-      if (methodCandidate != __thisNode__ && Objects.equals(SPropertyOperations.getString(methodCandidate, PROPS.name$tAp1), SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(methodCandidate, LINKS.parameter$WIkZ)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$WIkZ)).count()) {
+      if (methodCandidate != __thisNode__ && Objects.equals(SPropertyOperations.getString(methodCandidate, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.name$tAp1), SPropertyOperations.getString(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.name$tAp1)) && ListSequence.fromList(SLinkOperations.getChildren(methodCandidate, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.LINKS.parameter$WIkZ)).count()) {
         if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(methodCandidate, __thisNode__)) {
           return methodCandidate;
         }
@@ -151,11 +151,11 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
     context.hideMembersForAncestors(signature);
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.Classifier$hJ, false, false);
     if (containingClassifier != null) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + '.' + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
+      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + '.' + SPropertyOperations.getString(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.PROPS.name$tAp1);
     }
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.MethodDeclaration$93);
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, InstanceMethodDeclaration__BehaviorDescriptor.CONCEPTS.MethodDeclaration$93);
   }
 
   /*package*/ InstanceMethodDeclaration__BehaviorDescriptor() {

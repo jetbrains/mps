@@ -31,7 +31,7 @@ public final class CustomPropertyImplementation__BehaviorDescriptor extends Base
   }
 
   /*package*/ static boolean hasSetter_idhEwIUA2(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.setAccessor$cVSe) != null);
+    return (SLinkOperations.getTarget(__thisNode__, CustomPropertyImplementation__BehaviorDescriptor.LINKS.setAccessor$cVSe) != null);
   }
 
   /*package*/ CustomPropertyImplementation__BehaviorDescriptor() {

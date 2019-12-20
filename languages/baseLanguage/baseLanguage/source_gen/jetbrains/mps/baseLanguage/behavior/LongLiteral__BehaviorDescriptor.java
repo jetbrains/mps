@@ -37,7 +37,7 @@ public final class LongLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      String value = (SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).endsWith("l") || SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).endsWith("L") ? SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).substring(0, SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0).length() - 1) : SPropertyOperations.getString(__thisNode__, PROPS.value$ODo0));
+      String value = (SPropertyOperations.getString(__thisNode__, LongLiteral__BehaviorDescriptor.PROPS.value$ODo0).endsWith("l") || SPropertyOperations.getString(__thisNode__, LongLiteral__BehaviorDescriptor.PROPS.value$ODo0).endsWith("L") ? SPropertyOperations.getString(__thisNode__, LongLiteral__BehaviorDescriptor.PROPS.value$ODo0).substring(0, SPropertyOperations.getString(__thisNode__, LongLiteral__BehaviorDescriptor.PROPS.value$ODo0).length() - 1) : SPropertyOperations.getString(__thisNode__, LongLiteral__BehaviorDescriptor.PROPS.value$ODo0));
       return Long.parseLong(value);
     } catch (NumberFormatException e) {
       return null;

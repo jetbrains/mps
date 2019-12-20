@@ -35,7 +35,7 @@ public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ) != null) ? new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ))) : new EmptyScope());
+    return ((SLinkOperations.getTarget(__thisNode__, EnumConstantReference__BehaviorDescriptor.LINKS.enumClass$9jPZ) != null) ? new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(__thisNode__, EnumConstantReference__BehaviorDescriptor.LINKS.enumClass$9jPZ))) : new EmptyScope());
   }
 
   /*package*/ EnumConstantReference__BehaviorDescriptor() {

@@ -50,7 +50,7 @@ public final class ConceptFunctionParameter__BehaviorDescriptor extends BaseBHDe
     return !((boolean) ConceptFunctionParameter__BehaviorDescriptor.dontUseParameterObject_id1653mnvAgv$.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))));
   }
   /*package*/ static SNode findConceptFunction_idhEwJh7Q(@NotNull final SNode __thisNode__) {
-    List<SNode> functions = SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ConceptFunction$Tt, false);
+    List<SNode> functions = SNodeOperations.getNodeAncestors(__thisNode__, ConceptFunctionParameter__BehaviorDescriptor.CONCEPTS.ConceptFunction$Tt, false);
     return ListSequence.fromList(functions).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(it)).contains(SNodeOperations.getConcept(__thisNode__));

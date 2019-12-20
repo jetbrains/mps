@@ -13,15 +13,15 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class VariableReferenceUtil {
   public static boolean referencesPointToSameVariableDeclaration(SNode left, SNode right) {
-    return SNodeOperations.isInstanceOf(left, CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(right, CONCEPTS.VariableReference$sQ) && Objects.equals(VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(left, CONCEPTS.VariableReference$sQ)), VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(right, CONCEPTS.VariableReference$sQ)));
+    return SNodeOperations.isInstanceOf(left, VariableReferenceUtil.CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(right, VariableReferenceUtil.CONCEPTS.VariableReference$sQ) && Objects.equals(VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(left, VariableReferenceUtil.CONCEPTS.VariableReference$sQ)), VariableReferenceUtil.getVariableDeclarationAtEndOfChain(SNodeOperations.cast(right, VariableReferenceUtil.CONCEPTS.VariableReference$sQ)));
   }
   public static SNode getVariableDeclarationAtEndOfChain(SNode ref) {
     if (ref == null) {
       return null;
     }
-    SNode declaration = SLinkOperations.getTarget(ref, LINKS.variableDeclaration$2ky6);
-    if (declaration != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.initializer$KgD), CONCEPTS.VariableReference$sQ)) {
-      return getVariableDeclarationAtEndOfChain(SNodeOperations.cast(SLinkOperations.getTarget(declaration, LINKS.initializer$KgD), CONCEPTS.VariableReference$sQ));
+    SNode declaration = SLinkOperations.getTarget(ref, VariableReferenceUtil.LINKS.variableDeclaration$2ky6);
+    if (declaration != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, VariableReferenceUtil.LINKS.initializer$KgD), VariableReferenceUtil.CONCEPTS.VariableReference$sQ)) {
+      return getVariableDeclarationAtEndOfChain(SNodeOperations.cast(SLinkOperations.getTarget(declaration, VariableReferenceUtil.LINKS.initializer$KgD), VariableReferenceUtil.CONCEPTS.VariableReference$sQ));
     } else {
       return declaration;
     }

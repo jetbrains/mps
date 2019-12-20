@@ -38,14 +38,14 @@ public final class AbstractForStatement__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
-      if (ScopeUtils.comeFrom(LINKS.body$OFes, __thisNode__, child)) {
-        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, LINKS.variable$H$_G), ScopeUtils.lazyParentScope(__thisNode__, kind));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), AbstractForStatement__BehaviorDescriptor.CONCEPTS.VariableDeclaration$xe)) {
+      if (ScopeUtils.comeFrom(AbstractForStatement__BehaviorDescriptor.LINKS.body$OFes, __thisNode__, child)) {
+        return Scopes.forVariables(kind, SLinkOperations.getTarget(__thisNode__, AbstractForStatement__BehaviorDescriptor.LINKS.variable$H$_G), ScopeUtils.lazyParentScope(__thisNode__, kind));
       } else {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
       }
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, CONCEPTS.AbstractForStatement$1G, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invokeSuper(__thisNode__, AbstractForStatement__BehaviorDescriptor.CONCEPTS.AbstractForStatement$1G, kind, child));
   }
 
   /*package*/ AbstractForStatement__BehaviorDescriptor() {

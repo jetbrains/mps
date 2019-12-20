@@ -31,7 +31,7 @@ public final class LocalVariableDeclarationStatement__BehaviorDescriptor extends
   }
 
   /*package*/ static SNode getLocalVariableDeclaration_idi1ItFZH(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.localVariableDeclaration$O0D0);
+    return SLinkOperations.getTarget(__thisNode__, LocalVariableDeclarationStatement__BehaviorDescriptor.LINKS.localVariableDeclaration$O0D0);
   }
 
   /*package*/ LocalVariableDeclarationStatement__BehaviorDescriptor() {

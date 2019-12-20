@@ -61,11 +61,11 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
-    SNode enumClass = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EnumClass$uy, false, false);
+    SNode enumClass = SNodeOperations.getNodeAncestor(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy, false, false);
     return (enumClass != null ? ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass) : new ArrayList<SNode>());
   }
   /*package*/ static List<IconResource> getIconMarks_id6TtJ6IUkhQJ(@NotNull SNode __thisNode__) {
-    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, CONCEPTS.EnumConstantDeclaration$ma));
+    List<IconResource> markIcons = new ArrayList<IconResource>(BaseConcept__BehaviorDescriptor.getIconMarks_id6TtJ6IUkhQJ.invokeSuper(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumConstantDeclaration$ma));
     markIcons.add(BLIconMarks.STATIC);
     markIcons.add(BLIconMarks.FINAL);
     return markIcons;
@@ -80,37 +80,37 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
     return ((IconResource) IVisible__BehaviorDescriptor.getVisibilityIcon_id4mxbjAOAG0d.invoke(__thisNode__));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingEnum = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EnumClass$uy, false, false);
-    return (containingEnum != null ? EnumConstantDeclaration__BehaviorDescriptor.getEnumConstantDeclarationPresentation_id7AEI0n132aJ.invoke(__thisNode__) + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingEnum) : INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(__thisNode__, CONCEPTS.INamedConcept$nV)));
+    SNode containingEnum = SNodeOperations.getNodeAncestor(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy, false, false);
+    return (containingEnum != null ? EnumConstantDeclaration__BehaviorDescriptor.getEnumConstantDeclarationPresentation_id7AEI0n132aJ.invoke(__thisNode__) + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingEnum) : INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.INamedConcept$nV)));
   }
   /*package*/ static String getEnumConstantDeclarationPresentation_id7AEI0n132aJ(@NotNull SNode __thisNode__) {
-    return "Enum constant '" + SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) + "' in ";
+    return "Enum constant '" + SPropertyOperations.getString(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.PROPS.name$tAp1) + "' in ";
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1) == null) {
+    if (SPropertyOperations.getString(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.PROPS.name$tAp1) == null) {
       return;
     }
-    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
-    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)));
+    context.exposeMember(__thisNode__, new FieldSignature(SPropertyOperations.getString(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.PROPS.name$tAp1)));
+    context.hideMembersForAncestors(new FieldSignature(SPropertyOperations.getString(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.PROPS.name$tAp1)));
   }
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.method$3$mN);
+    return SLinkOperations.getChildren(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.LINKS.method$3$mN);
   }
   /*package*/ static List<SNode> getMethodsToImplement_id4GM03FJm5q2(@NotNull final SNode __thisNode__) {
-    if ((SNodeOperations.getParent(__thisNode__) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))) {
+    if ((SNodeOperations.getParent(__thisNode__) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy))) {
       return null;
     }
 
     List<SNode> methods = new ArrayList<SNode>();
-    List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy));
-    ListSequence.fromList(methodsToImplement).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
+    List<SNode> methodsToImplement = IMemberContainer__BehaviorDescriptor.getMethodsToImplement_id4GM03FJm5q2.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy));
+    ListSequence.fromList(methodsToImplement).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it);
       }
     }));
     ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToImplement).where(new IWhereFilter<SNode>() {
       public boolean accept(final SNode method) {
-        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$3$mN)).any(new IWhereFilter<SNode>() {
+        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.LINKS.method$3$mN)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode constantBelongingMethod) {
             return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method);
           }
@@ -120,20 +120,20 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
     return methods;
   }
   /*package*/ static List<SNode> getMethodsToOverride_id4GM03FJm3zL(@NotNull final SNode __thisNode__) {
-    if ((SNodeOperations.getParent(__thisNode__) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))) {
+    if ((SNodeOperations.getParent(__thisNode__) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy))) {
       return null;
     }
 
     List<SNode> methods = new ArrayList<SNode>();
-    List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy));
-    ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
+    List<SNode> methodsToOverride = IMemberContainer__BehaviorDescriptor.getMethodsToOverride_id4GM03FJm3zL.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy));
+    ListSequence.fromList(methodsToOverride).addSequence(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SPropertyOperations.getBoolean(it, PROPS.isFinal$I$Qu)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+        return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SPropertyOperations.getBoolean(it, EnumConstantDeclaration__BehaviorDescriptor.PROPS.isFinal$I$Qu)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, EnumConstantDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se));
       }
     }));
     ListSequence.fromList(methods).addSequence(ListSequence.fromList(methodsToOverride).where(new IWhereFilter<SNode>() {
       public boolean accept(final SNode method) {
-        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.method$3$mN)).any(new IWhereFilter<SNode>() {
+        return !(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.LINKS.method$3$mN)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode constantBelongingMethod) {
             return (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(constantBelongingMethod, method);
           }
@@ -143,17 +143,17 @@ public final class EnumConstantDeclaration__BehaviorDescriptor extends BaseBHDes
     return methods;
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SuperMethodKind$9X)) {
-      Scope visibleMembers = Classifier__BehaviorDescriptor.getVisibleMembers_id70J2WaK$Uj3.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy), child, kind);
-      Iterable<SNode> methods = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.SuperMethodKind$9X)) {
+      Scope visibleMembers = Classifier__BehaviorDescriptor.getVisibleMembers_id70J2WaK$Uj3.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy), child, kind);
+      Iterable<SNode> methods = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.visibility$2GiC), CONCEPTS.PrivateVisibility$Se));
+          return !((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(it)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, EnumConstantDeclaration__BehaviorDescriptor.LINKS.visibility$2GiC), EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.PrivateVisibility$Se));
         }
       });
       Scope visibleEumMembers = ListScope.forNamedElements(methods);
       return new CompositeScope(visibleMembers, visibleEumMembers);
     }
-    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
+    return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, EnumConstantDeclaration__BehaviorDescriptor.CONCEPTS.ScopeProvider$M8, kind, child));
   }
 
   /*package*/ EnumConstantDeclaration__BehaviorDescriptor() {

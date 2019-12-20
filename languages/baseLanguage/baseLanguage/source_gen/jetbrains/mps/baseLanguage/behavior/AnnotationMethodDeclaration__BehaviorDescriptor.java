@@ -39,23 +39,23 @@ public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseB
     return false;
   }
   /*package*/ static boolean isGoodReturnType_id5JI19Xbr7EK(@NotNull SNode __thisNode__, SNode type) {
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.VoidType$aT)) {
+    if (SNodeOperations.isInstanceOf(type, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.VoidType$aT)) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.ArrayType$Yv)) {
-      SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w);
-      if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$Yv)) {
+    if (SNodeOperations.isInstanceOf(type, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.ArrayType$Yv)) {
+      SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(type, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.ArrayType$Yv), AnnotationMethodDeclaration__BehaviorDescriptor.LINKS.componentType$10w);
+      if (SNodeOperations.isInstanceOf(componentType, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.ArrayType$Yv)) {
         // nested array types are prohibited 
         return false;
       }
       return ((boolean) AnnotationMethodDeclaration__BehaviorDescriptor.isGoodReturnType_id5JI19Xbr7EK.invoke(__thisNode__, componentType));
     }
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ)) {
-      SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R);
-      if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$uy)) {
+    if (SNodeOperations.isInstanceOf(type, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ)) {
+      SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(type, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.ClassifierType$IZ), AnnotationMethodDeclaration__BehaviorDescriptor.LINKS.classifier$pQ_R);
+      if (SNodeOperations.isInstanceOf(classifier, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.EnumClass$uy)) {
         return true;
       }
-      if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Annotation$Os)) {
+      if (SNodeOperations.isInstanceOf(classifier, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.Annotation$Os)) {
         return true;
       }
       if (SNodeOperations.is(classifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
@@ -66,10 +66,10 @@ public final class AnnotationMethodDeclaration__BehaviorDescriptor extends BaseB
       }
       return false;
     }
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.PrimitiveType$5)) {
+    if (SNodeOperations.isInstanceOf(type, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.PrimitiveType$5)) {
       return true;
     }
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.StringType$2b)) {
+    if (SNodeOperations.isInstanceOf(type, AnnotationMethodDeclaration__BehaviorDescriptor.CONCEPTS.StringType$2b)) {
       return true;
     }
     return false;

@@ -31,7 +31,7 @@ public final class RemarkStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isTodo_idhEwITPs(@NotNull SNode __thisNode__) {
-    String v = SPropertyOperations.getString(__thisNode__, PROPS.value$ATQL);
+    String v = SPropertyOperations.getString(__thisNode__, RemarkStatement__BehaviorDescriptor.PROPS.value$ATQL);
     boolean isToDo = false;
     if (v != null) {
       isToDo = v.startsWith("TODO:") || v.startsWith("FIX:") || v.startsWith("todo:");

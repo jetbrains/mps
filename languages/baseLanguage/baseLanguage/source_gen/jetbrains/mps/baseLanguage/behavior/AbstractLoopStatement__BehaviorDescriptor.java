@@ -39,9 +39,9 @@ public final class AbstractLoopStatement__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.LoopLabel$R4)) {
-      if (ScopeUtils.comeFrom(LINKS.body$OFes, __thisNode__, child)) {
-        return Scopes.forLoopLabels(ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.loopLabel$Vp8n)), ScopeUtils.lazyParentScope(__thisNode__, kind));
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), AbstractLoopStatement__BehaviorDescriptor.CONCEPTS.LoopLabel$R4)) {
+      if (ScopeUtils.comeFrom(AbstractLoopStatement__BehaviorDescriptor.LINKS.body$OFes, __thisNode__, child)) {
+        return Scopes.forLoopLabels(ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, AbstractLoopStatement__BehaviorDescriptor.LINKS.loopLabel$Vp8n)), ScopeUtils.lazyParentScope(__thisNode__, kind));
       }
     }
     return ScopeUtils.lazyParentScope(__thisNode__, kind);

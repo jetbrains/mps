@@ -43,10 +43,10 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
-    TryCatchStatement__BehaviorDescriptor.collectUncatchedThrowables_id3JrbGEZ7vt$.invoke(SNodeOperations.asSConcept(CONCEPTS.TryCatchStatement$x5), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.body$9KDK), SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$jGNt), ((boolean) ignoreMayBeThrowables));
+    TryCatchStatement__BehaviorDescriptor.collectUncatchedThrowables_id3JrbGEZ7vt$.invoke(SNodeOperations.asSConcept(TryCatchStatement__BehaviorDescriptor.CONCEPTS.TryCatchStatement$x5), throwables, SLinkOperations.getTarget(__thisNode__, TryCatchStatement__BehaviorDescriptor.LINKS.body$9KDK), SLinkOperations.getChildren(__thisNode__, TryCatchStatement__BehaviorDescriptor.LINKS.catchClause$jGNt), ((boolean) ignoreMayBeThrowables));
   }
   /*package*/ static List<SNode> getCatchClauses_id3eptmOG0XgA(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$jGNt);
+    return SLinkOperations.getChildren(__thisNode__, TryCatchStatement__BehaviorDescriptor.LINKS.catchClause$jGNt);
   }
   /*package*/ static void collectUncatchedThrowables_id3JrbGEZ7vt$(@NotNull SAbstractConcept __thisConcept__, Set<SNode> throwables, SNode body, List<SNode> catchClause, boolean ignoreMayBeThrowables) {
     Set<SNode> thrownsFromBody = SetSequence.fromSet(new HashSet<SNode>());
@@ -54,10 +54,10 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
 
     // remove what we have catched 
     for (SNode caatch : ListSequence.fromList(catchClause)) {
-      SLinkOperations.getTarget(caatch, LINKS.throwable$5XW_);
+      SLinkOperations.getTarget(caatch, TryCatchStatement__BehaviorDescriptor.LINKS.throwable$5XW_);
       Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
       for (SNode thrownFromBody : SetSequence.fromSet(thrownsFromBody)) {
-        SNode catchedType = SLinkOperations.getTarget(SLinkOperations.getTarget(caatch, LINKS.throwable$5XW_), LINKS.type$pLrO);
+        SNode catchedType = SLinkOperations.getTarget(SLinkOperations.getTarget(caatch, TryCatchStatement__BehaviorDescriptor.LINKS.throwable$5XW_), TryCatchStatement__BehaviorDescriptor.LINKS.type$pLrO);
         if (TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_1bi1ep_a0a1a2a4a2(thrownFromBody), catchedType)) {
           SetSequence.fromSet(toRemove).addElement(thrownFromBody);
         }
@@ -68,7 +68,7 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
 
     // now collect what was thrown in catch blocks 
     for (SNode caatch : ListSequence.fromList(catchClause)) {
-      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(caatch, LINKS.catchBody$5XX4), throwables, ((boolean) ignoreMayBeThrowables));
+      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(caatch, TryCatchStatement__BehaviorDescriptor.LINKS.catchBody$5XX4), throwables, ((boolean) ignoreMayBeThrowables));
     }
   }
 
