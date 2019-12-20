@@ -19,18 +19,15 @@ import com.intellij.configurationStore.JdomSerializer;
 import com.intellij.diagnostic.LoadingState;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
-import com.intellij.openapi.progress.util.PotemkinProgress;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
-import com.intellij.openapi.ui.DialogWrapperPeerFactory;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.openapi.wm.impl.ProjectFrameHelper;
-import com.intellij.util.WaitForProgressToShow;
 import com.intellij.util.xmlb.BeanBinding;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
@@ -75,6 +72,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static java.util.stream.Collectors.toCollection;
@@ -172,14 +170,14 @@ public class PluginLoaderRegistry implements Disposable {
     LOG.debug("Registering the " + loader);
     myLoaderDelta.load(Collections.singleton(loader));
     removeIfProjectIsLoader(loader);
-    forceUpdate();
+    update();
   }
 
   @ToRemove(version = 193)
   @Hack
   private void removeIfProjectIsLoader(@NotNull PluginLoader loader) {
     if (loader instanceof ProjectPluginManager) {
-      forceUpdate();
+      update();
     }
   }
 
@@ -322,25 +320,36 @@ public class PluginLoaderRegistry implements Disposable {
     return rv;
   }
 
+  /**
+   * here we come from the CLM notifications #onLoaded, #onUnloaded
+   */
   private void update() {
     if (myUpdateIsScheduledInEDT.compareAndSet(false, true)) {
       runTaskLater();
     }
   }
 
+  /**
+   * here we come from loaders registering/unregistering
+   *
+   * we would like on app/project dispose to unload all extensions in time so we ignore if another update is already scheduled
+   */
   private void forceUpdate() {
+    LOG.debug("force update");
     if (!ThreadUtils.isInEDT()) {
-      runTaskLater();
-      return;
-    }
-    ThreadUtils.assertEDT();
-    myUpdateIsScheduledInEDT.set(true);
-    UpdatingTask task = new UpdatingTask(null);
-    if (isAppLoaded()) {
-      LOG.debug("force update");
-      updateInEDT(task);
+      update();
     } else {
-      runTaskLater();
+      ThreadUtils.assertEDT();
+      UpdatingTask task = new UpdatingTask(null);
+      if (isAppLoaded()) {
+        // here we are also when #disposeComponent is called in AppPlManager
+        // async will not do, the app will be disposed then, so sync update with a good old UI freeze
+        myUpdateIsScheduledInEDT.set(true);
+        task.update(new EmptyProgressMonitor());
+      } else {
+        // here we are on any not first project open
+        update();
+      }
     }
   }
 
@@ -349,71 +358,66 @@ public class PluginLoaderRegistry implements Disposable {
     assert (ApplicationManager.getApplication().isReadAccessAllowed() || ApplicationManager.getApplication().isHeadlessEnvironment());
     LOG.debug("running the task later");
     ProgressIndicator globalProgressIndicator = ProgressManager.getGlobalProgressIndicator();
+    // trying to pass the current indicator, for example this helps us to reload plugins within the global project open indicator
     ApplicationManager.getApplication().executeOnPooledThread(() -> runTask(globalProgressIndicator));
   }
 
   // now we are not in read
   private void runTask(@Nullable ProgressIndicator oldIndicator) {
-    if (ApplicationManager.getApplication() != null || ApplicationManager.getApplication().isDisposed()) {
+    if (ApplicationManager.getApplication() == null || ApplicationManager.getApplication().isDisposed()) {
       return;
     }
     assert (!ApplicationManager.getApplication().isReadAccessAllowed());
     assert !ThreadUtils.isInEDT(); // we are in EDT iff we have write
 
     LOG.trace("running task with old/new indicator");
-
     UpdatingTask task = new UpdatingTask(null);
-    if (!checkComponentsAreLoaded(oldIndicator)) {
+    if (postponeIfAppIsNotLoaded()) {
       LOG.trace("rescheduling task");
       return;
     }
     assert isAppLoaded();
+    if (oldIndicator == null) {
+      // trying to find any indicator
+      oldIndicator = ProgressManager.getGlobalProgressIndicator();
+    }
     if (oldIndicator != null && oldIndicator.isShowing()) {
       // lets run under the old indicator
       LOG.trace("running with the old");
       task.run(oldIndicator);
     } else {
-      // we have no progress lets create one
+      // usually this section is called after rebuild/make
+      // we have no indicator -- lets create one
       LOG.trace("running with the new");
-      ApplicationManager.getApplication().invokeLater(() -> updateInEDT(task), ModalityState.NON_MODAL, ApplicationManager.getApplication().getDisposed());
+      task.queue();
     }
   }
 
-  /**
-   * That actually works, using PotemkinProgress to update UI right in the EDT task
-   */
-  private void updateInEDT(@NotNull UpdatingTask task) {
-    ThreadUtils.assertEDT();
-    if (ApplicationManager.getApplication().isDisposed()) return;
-    DialogWrapperPeerFactory.getInstance(); // otherwise I get initialization cycle
-    PotemkinProgress progress = new PotemkinProgress("Reloading MPS plugins", null, null, "Cancel");
-    progress.runInSwingThread(() -> task.update(new ProgressMonitorAdapter(progress)));
-  }
-
-  private boolean checkComponentsAreLoaded(@Nullable ProgressIndicator oldIndicator) {
+  // we don't want to do anything until components are all #initialized
+  // this is just to guarantee that we will have only one plugin reload before we open a project
+  private boolean postponeIfAppIsNotLoaded() {
     if (!isAppLoaded()) {
       Timer timer = new Timer();
       TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
-          runTask(oldIndicator);
+          LOG.trace("repeat from alarm");
+          runTask(ProgressManager.getGlobalProgressIndicator());
         }
       };
-      timer.schedule(timerTask, 300);
-      return false;
+      timer.schedule(timerTask, 500);
+      return true;
     }
-    return true;
+    return false;
   }
 
-  // Consider the period when app is not loaded a dead zone for this class, all updates are disabled during that moment
+  // consider the period when app is not loaded a dead zone for this class, the plugin update are disabled during that moment
   private boolean isAppLoaded() {
     return LoadingState.COMPONENTS_LOADED.isOccurred();
   }
 
   /**
    * This task flushes all added/removed loaders and added/removed contributors
-   * update happens only inside this task
-   *
    * @see #update
    */
   private class UpdatingTask extends Task.Modal {
@@ -425,22 +429,35 @@ public class PluginLoaderRegistry implements Disposable {
     public void run(@NotNull ProgressIndicator indicator) {
       // here we just try to update the caption and freeze edt to do our reload of extensions there
       assert !ThreadUtils.isInEDT();
-      try {
-        indicator.pushState();
-        indicator.setText("Reloading MPS Plugins");
-        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> update(new EmptyProgressMonitor()), indicator.getModalityState()); // it does not matter, we cannot change monitor in EDT
-      } finally {
-        indicator.popState();
+      boolean showing = indicator.isShowing();
+      if (!showing) {
+        // we cannot do anything, lets just freeze without any progress
+        ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()));
+      } else {
+        boolean wasIndeterminate = indicator.isIndeterminate();
+        try {
+          indicator.pushState();
+          indicator.setText("Reloading MPS Plugins"); // we hope that the user will see the text but that is unlikely
+          indicator.setIndeterminate(true);
+//          try {
+//            TimeUnit.MILLISECONDS.sleep(200);
+//          } catch (InterruptedException e) {
+//            e.printStackTrace();
+//          }
+          ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()));
+        } finally {
+          indicator.setIndeterminate(wasIndeterminate);
+          indicator.popState();
+        }
       }
     }
 
     public void update(@NotNull ProgressMonitor monitor) {
       try {
         ThreadUtils.assertEDT();
+        if (ApplicationManager.getApplication().isDisposed()) return;
         myUpdateIsScheduledInEDT.compareAndSet(true, false);
-        if (ApplicationManager.getApplication().isDisposeInProgress()) return;
-        monitor.start("Reloading MPS Plugins", 20);
-//        assert ProgressManager.getGlobalProgressIndicator() != null;
+        monitor.start("Reloading MPS Plugins", 6);
         ProgressManager.checkCanceled();
         myModelAccess.runReadAction(() -> {
           myClassLoaderManager.runTransaction(() -> {
@@ -463,16 +480,16 @@ public class PluginLoaderRegistry implements Disposable {
 
               LOG.info("Running Update Task : loaders " + loadersDelta + "; contributors : " + contributorsDelta + "; " + Thread.currentThread());
               fireBeforePluginsUnloaded(loadersDelta, contributorsDelta);
+              monitor.step("Unloading...");
               removeLoaders(monitor, loadersDelta);
               removeContributors(monitor, contributorsDelta);
               clearIDEMenusFromOurActionRefs();
-              monitor.step("Unloaded...");
               ProgressManager.checkCanceled();
+              monitor.step("Loading...");
               addLoaders(monitor, loadersDelta);
               addIdeaExtPointPluginContributors(monitor);
               addContributors(monitor, contributorsDelta);
               fireAfterPluginsLoaded(contributorsDelta);
-              monitor.step("Loading...");
               ProgressManager.checkCanceled();
             } finally {
               snapshot.invokePostRunnables();
@@ -481,6 +498,7 @@ public class PluginLoaderRegistry implements Disposable {
         });
       } catch (VirtualMachineError e) {
         throw e;
+      } catch (ProcessCanceledException ignored) {
       } catch (Throwable t) {
         LOG.error("Problem while reloading mps-plugins in EDT", t);
       } finally {
