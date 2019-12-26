@@ -151,15 +151,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_ueqr71_c0a");
     Style style = new StyleImpl();
     new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
-    style.set(StyleAttributes.EDITABLE, _StyleParameter_QueryFunction_ueqr71_a0c0a());
     editorCell.getStyle().putAll(style);
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.ConceptDeclaration$qU, "jetbrains.mps.lang.structure.editor.ConceptDeclaration_ext_1_RTransform_Menu"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
-  }
-  private boolean _StyleParameter_QueryFunction_ueqr71_a0c0a() {
-    return !(SPropertyOperations.getBoolean(getNode(), PROPS.abstract$moSU)) && !(SPropertyOperations.getBoolean(getNode(), PROPS.final$moVl));
   }
   private EditorCell createTransactionalProperty_0() {
     getCellFactory().pushCellContext();
