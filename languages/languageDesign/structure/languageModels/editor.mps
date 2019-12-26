@@ -174,7 +174,6 @@
       <concept id="1186404574412" name="jetbrains.mps.lang.editor.structure.BackgroundColorStyleClassItem" flags="ln" index="Veino" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
-        <child id="1223387335081" name="query" index="3n$kyP" />
       </concept>
       <concept id="1186414860679" name="jetbrains.mps.lang.editor.structure.EditableStyleClassItem" flags="ln" index="VPxyj" />
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
@@ -1910,33 +1909,6 @@
         <node concept="3F0ifn" id="fOz5hX2" role="3EZMnx">
           <property role="3F0ifm" value="concept" />
           <ref role="1k5W1q" node="24YP6ZDyde4" resolve="Keyword" />
-          <node concept="VPxyj" id="1BHbmDKWgjB" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-            <node concept="3nzxsE" id="43oQEeUO5A1" role="3n$kyP">
-              <node concept="3clFbS" id="43oQEeUO5A2" role="2VODD2">
-                <node concept="3clFbF" id="43oQEeUO5D5" role="3cqZAp">
-                  <node concept="1Wc70l" id="43oQEeUO7m8" role="3clFbG">
-                    <node concept="3fqX7Q" id="43oQEeUO7_L" role="3uHU7w">
-                      <node concept="2OqwBi" id="43oQEeUO83N" role="3fr31v">
-                        <node concept="3TrcHB" id="43oQEeUO8Fl" role="2OqNvi">
-                          <ref role="3TsBF5" to="tpce:40UcGlRb7V7" resolve="final" />
-                        </node>
-                        <node concept="pncrf" id="43oQEeUO7Pk" role="2Oq$k0" />
-                      </node>
-                    </node>
-                    <node concept="3fqX7Q" id="43oQEeUO6QE" role="3uHU7B">
-                      <node concept="2OqwBi" id="43oQEeUO6QG" role="3fr31v">
-                        <node concept="3TrcHB" id="43oQEeUO6QH" role="2OqNvi">
-                          <ref role="3TsBF5" to="tpce:40UcGlRb7V2" resolve="abstract" />
-                        </node>
-                        <node concept="pncrf" id="43oQEeUO6QI" role="2Oq$k0" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="A1WHu" id="1wEcoXjJMWW" role="3vIgyS">
             <ref role="A1WHt" node="1wEcoXjJ80j" resolve="ConceptDeclaration_ext_1_RTransform_Menu" />
           </node>
