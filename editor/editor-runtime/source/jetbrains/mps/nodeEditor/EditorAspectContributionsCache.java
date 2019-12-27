@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  * bundled with some extra data further identifying the contribution. Contributions are collected from the owning editor descriptor's language and languages
  * which extend this language (directly or indirectly).
  * <p>
- * The maintained cache is invalidated by {@link ValidEditorDescriptorsCache#cleanCaches(Iterable)}.
+ * The maintained cache is invalidated by {@link EditorAspectDescriptorBase#clearAllCaches()}.
  *
  * @param <KeyT> type of the identifier of a contribution
  * @param <ContributionT> contribution type

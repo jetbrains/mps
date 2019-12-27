@@ -50,7 +50,6 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
 
   @NotNull
   public Collection<ConceptEditor> getEditors(final SAbstractConcept concept) {
-    clearCachesIfStale();
     return myEditorsCache.get(concept);
   }
 
@@ -61,7 +60,6 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
 
   @NotNull
   public Collection<ConceptEditorComponent> getEditorComponents(final SAbstractConcept concept, final String editorComponentId) {
-    clearCachesIfStale();
     return myEditorComponentsCache.get(new Pair<>(concept, editorComponentId));
   }
 
@@ -73,7 +71,6 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
   @NotNull
   @Override
   public Collection<TransformationMenu> getDefaultTransformationMenus(@NotNull SAbstractConcept concept, @NotNull Collection<SLanguage> usedLanguages) {
-    clearCachesIfStale();
     return myDefaultTransformationMenusCache.getInLanguages(concept, toNamespaces(usedLanguages));
   }
 
@@ -86,7 +83,6 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
   @NotNull
   @Override
   public Collection<TransformationMenu> getNamedTransformationMenus(@NotNull NamedMenuId menuId, @NotNull Collection<SLanguage> usedLanguages) {
-    clearCachesIfStale();
     return myNamedTransformationMenusCache.getInLanguages(menuId, toNamespaces(usedLanguages));
   }
 
@@ -110,19 +106,9 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
     myNamedSubstituteMenusCache= new NamedSubstituteMenusCache(languageRuntime);
   }
 
-  private void clearCachesIfStale() {
-    ValidEditorDescriptorsCache cache = ValidEditorDescriptorsCache.getInstance();
-
-    if (!cache.isDescriptorValid(this)) {
-      clearAllCaches();
-      cache.markDescriptorValid(this);
-    }
-  }
-
   @NotNull
   @Override
   public Collection<SubstituteMenu> getDefaultSubstituteMenus(SAbstractConcept concept, @NotNull Collection<SLanguage> usedLanguages) {
-    clearCachesIfStale();
     return myDefaultSubstituteMenusCache.getInLanguages(concept, toNamespaces(usedLanguages));
   }
 
@@ -135,7 +121,6 @@ public class EditorAspectDescriptorBase implements EditorAspectDescriptor, Langu
   @NotNull
   @Override
   public Collection<SubstituteMenu> getNamedSubstituteMenus(NamedMenuId menuId, @NotNull Collection<SLanguage> usedLanguages) {
-    clearCachesIfStale();
     return myNamedSubstituteMenusCache.getInLanguages(menuId, toNamespaces(usedLanguages));
   }
 
