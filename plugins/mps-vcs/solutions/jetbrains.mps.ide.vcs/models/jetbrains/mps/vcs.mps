@@ -738,13 +738,24 @@
                 <ref role="37wK5l" to="4nm9:~Project.isDefault()" resolve="isDefault" />
               </node>
             </node>
-            <node concept="2OqwBi" id="6OnFPjfFMNU" role="3uHU7B">
-              <node concept="2YIFZM" id="6OnFPjfFMNT" role="2Oq$k0">
-                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+            <node concept="22lmx$" id="npQ_fH7e_E" role="3uHU7B">
+              <node concept="2OqwBi" id="npQ_fH7hA6" role="3uHU7w">
+                <node concept="2YIFZM" id="npQ_fH7htq" role="2Oq$k0">
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                  <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                </node>
+                <node concept="liA8E" id="npQ_fH7hHI" role="2OqNvi">
+                  <ref role="37wK5l" to="bd8o:~Application.isHeadlessEnvironment()" resolve="isHeadlessEnvironment" />
+                </node>
               </node>
-              <node concept="liA8E" id="6OnFPjfFMNY" role="2OqNvi">
-                <ref role="37wK5l" to="bd8o:~Application.isUnitTestMode()" resolve="isUnitTestMode" />
+              <node concept="2OqwBi" id="6OnFPjfFMNU" role="3uHU7B">
+                <node concept="2YIFZM" id="6OnFPjfFMNT" role="2Oq$k0">
+                  <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                </node>
+                <node concept="liA8E" id="6OnFPjfFMNY" role="2OqNvi">
+                  <ref role="37wK5l" to="bd8o:~Application.isUnitTestMode()" resolve="isUnitTestMode" />
+                </node>
               </node>
             </node>
           </node>
