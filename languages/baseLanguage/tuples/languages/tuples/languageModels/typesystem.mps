@@ -1349,8 +1349,11 @@
               <node concept="Xl_RD" id="1URWj4UG5GH" role="2MkJ7o">
                 <property role="Xl_RC" value="Incompatible named closure" />
               </node>
-              <node concept="1YBJjd" id="1URWj4UG5GI" role="1urrMF">
-                <ref role="1YBMHb" node="i2sGDM9" resolve="right" />
+              <node concept="2OqwBi" id="dzFXf_DK8r" role="1urrMF">
+                <node concept="3622Ei" id="dzFXf_DK8s" role="2Oq$k0" />
+                <node concept="liA8E" id="dzFXf_DK8t" role="2OqNvi">
+                  <ref role="37wK5l" to="u78q:~EquationInfo.getNodeWithError()" resolve="getNodeWithError" />
+                </node>
               </node>
             </node>
           </node>
