@@ -123,6 +123,8 @@
     <applicationService serviceInterface="com.intellij.ide.RecentProjectsManager"
                         serviceImplementation="com.intellij.ide.RecentProjectsManagerBase"/>
 
+    <applicationService serviceImplementation="com.intellij.ide.RecentProjectListActionProvider"/>
+
     <!--
     <applicationService serviceInterface="com.intellij.util.descriptors.ConfigFileFactory"
                         serviceImplementation="com.intellij.util.descriptors.impl.ConfigFileFactoryImpl"/>
