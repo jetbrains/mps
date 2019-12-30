@@ -45219,7 +45219,6 @@
       <property role="m$_wk" value="jetbrains.mps.ide.migration.workbench" />
       <property role="1NdglO" value="true" />
       <node concept="m$_yB" id="5lGJ4Tajp8z" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="5lGJ4Tajp1p" resolve="jetbrains.mps.migration.component" />
       </node>
       <node concept="3_J27D" id="5lGJ4TajoVb" role="m$_yQ">
