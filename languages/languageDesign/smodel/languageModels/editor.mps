@@ -395,6 +395,9 @@
         <child id="1948540814635895774" name="cellSelector" index="lGT1i" />
         <child id="3604384757217586546" name="selectionStart" index="3dN3m$" />
       </concept>
+      <concept id="422708224287891156" name="jetbrains.mps.lang.editor.structure.TransformationMenuPart_ReferenceMenu" flags="ng" index="3PzhKR">
+        <reference id="422708224287891157" name="referenceLink" index="3PzhKQ" />
+      </concept>
       <concept id="1161622981231" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext" flags="nn" index="1Q80Hx" />
       <concept id="1088612959204" name="jetbrains.mps.lang.editor.structure.CellModel_Alternation" flags="sg" stub="8104358048506729361" index="1QoScp">
         <property id="1088613081987" name="vertical" index="1QpmdY" />
@@ -10786,6 +10789,9 @@
     <property role="3GE5qa" value="enumerations" />
     <ref role="aqKnT" to="tp25:45eRmv04iIh" resolve="EnumMemberReference" />
     <node concept="1Qtc8_" id="5AopVwtG$GD" role="IW6Ez">
+      <node concept="3PzhKR" id="1tcvH6awP2L" role="1Qtc8A">
+        <ref role="3PzhKQ" to="tp25:45eRmv04iIo" resolve="decl" />
+      </node>
       <node concept="aenpk" id="5AopVwtB0LB" role="1Qtc8A">
         <node concept="1At2My" id="5AopVwtBDWY" role="1b80Z_">
           <property role="TrG5h" value="enumSwitchCase" />
