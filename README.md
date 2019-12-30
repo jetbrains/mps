@@ -27,7 +27,7 @@ Building MPS from sources
     3. Under *Platform Settings -> SDK*, add a new JDK named "JB JDK 11"
 4. Additionally, create an *IntelliJ Platform Plugin SDK* in the same *Platform Settings -> SDK* dialog and name it "IDEA IC".
 The *ideaIntegrationCommon*, *IDEAPlugin* and *ups-idea-plugin* modules need this SDK and they will be using it automatically as soon as you create it and give it the "IDEA IC" name.
-For more details on how to add an SDK in IntelliJ IDEA, consult this [help page](https://www.jetbrains.com/help/idea/configuring-intellij-platform-plugin-sdk.html).
+For more details on how to add an IntelliJ Platform Plugin SDK, consult this [help page](http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/setting_up_environment.html).
 5. Rebuild the project from the _Build_ menu (it will take quite a while the first time)
 6. Run the _MPS -> Run_ run configuration in the _Run_ menu
 7. Once MPS starts, open the _MPS_ project (point MPS to the root folder of what you've cloned)
@@ -48,7 +48,7 @@ System requirements
 To build JetBrains MPS from sources you need JDK 11. Older JDK versions are currently not supported for building MPS from sources.
 
 IntelliJ IDEA Community or Ultimate edition shall be used to open the project. The versions of IntelliJ IDEA must reflect the version (branch) of the MPS project that you are opening:
-* IDEA 2019.2.* for MPS 2019.2 and the 189.* branches
+* IDEA 2019.3.* for MPS 2019.3 and the 193.* branches
 * The latest Idea EAP for the MPS master branch
 
 For *MacOS* users it is required to use the JetBrains JDK (https://bintray.com/jetbrains/intellij-jdk/).
