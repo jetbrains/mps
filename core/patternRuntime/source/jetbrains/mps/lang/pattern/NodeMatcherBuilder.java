@@ -27,9 +27,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NodeMatcherBuilder implements AbstractNodeBuilder {
 
@@ -62,6 +67,8 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     private SConcept myConcept;
     private Map<SContainmentLink, NodeMatcherWrapper> myChildMatchers = new ListMap<>();
     private NodeMatcherWrapper myNextMatcher;
+    private Map<SProperty, Predicate<String>> myPropertyMatchers = new ListMap<>();
+    private Map<SReferenceLink, Predicate<SReference>> myReferenceMatchers = new ListMap<>();
     public ExactConceptNodeMatcher(SConcept concept) {
       myConcept = concept;
     }
@@ -70,12 +77,31 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
       if (!nodeToMatch.getConcept().equals(myConcept)) {
         return false;
       }
+      if (myNextMatcher != null) {
+        if (!myNextMatcher.myMatcher.match(nodeToMatch.getNextSibling())) {
+          return false;
+        }
+      } else {
+        if (nodeToMatch.getNextSibling() != null) {
+          return false;
+        }
+      }
+      for (Entry<SProperty, Predicate<String>> propMatcher : myPropertyMatchers.entrySet()) {
+        if (!propMatcher.getValue().test(nodeToMatch.getProperty(propMatcher.getKey()))) {
+          return false;
+        }
+      }
+      for (Entry<SReferenceLink, Predicate<SReference>> refMatcher : myReferenceMatchers.entrySet()) {
+        if (!refMatcher.getValue().test(nodeToMatch.getReference(refMatcher.getKey()))) {
+          return false;
+        }
+      }
       for (Entry<SContainmentLink, NodeMatcherWrapper> linkMatcher : myChildMatchers.entrySet()) {
         if (!linkMatcher.getValue().myMatcher.match(nodeToMatch.getChildren(linkMatcher.getKey()).iterator().next())) {
           return false;
         }
       }
-      //todo: properties, references, siblings, unordered etc
+      //todo: unordered and other features
       return true;
     }
     @NotNull
@@ -113,18 +139,57 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
   }
 
   @Override
-  public void setProperty(SProperty property, String value) {
-    // todo
+  public void setProperty(SProperty property, String expected) {
+    if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
+      throw new IllegalStateException();
+    }
+    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> Objects.equals(expected, value));
+  }
+
+  public void setPropertyVariable(SProperty property, @NotNull Reference<String> variable) {
+    setPropertyVariable(property, variable, null);
+  }
+
+  public void setPropertyVariable(SProperty property, @NotNull Reference<String> variable, @Nullable Pattern pattern) {
+    if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
+      throw new IllegalStateException();
+    }
+    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> {
+      if (pattern == null || pattern.asPredicate().test(value)) {
+        variable.set(value);
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 
   @Override
-  public void setReference(SReferenceLink link, SNodeReference value) {
-    // todo
+  public void setReference(SReferenceLink link, SNodeReference expectedTarget) {
+    if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
+      throw new IllegalStateException();
+    }
+    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference ->
+                                                                                             Objects.equals(expectedTarget, sReference.getTargetNodeReference()));
+  }
+
+  public void setReferenceVariable(SReferenceLink link, @NotNull Reference<SNode> variable) {
+    if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
+      throw new IllegalStateException();
+    }
+    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference -> {
+      variable.set(sReference.getTargetNode());
+      return true;
+    });
   }
 
   @Override
   public void setReferenceTarget(SReferenceLink link, @Nullable SNode target) {
-    // todo
+    if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
+      throw new IllegalStateException();
+    }
+    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference ->
+                                                                                             Objects.equals(target, sReference.getTargetNode()));
   }
 
   private ExactConceptNodeMatcher getMyExactConceptMatcher() {
@@ -151,20 +216,6 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
 
   public NodeMatcher getMatcher() {
     return this.myMatcherWrapper.myMatcher;
-  }
-
-  public static class SamplePattern extends AbstractGeneratedPattern {
-    private Reference<SNode> var1;
-    @Override
-    protected boolean apply(SNode nodeToMatch) {
-      NodeMatcherBuilder builder = new NodeMatcherBuilder().init(SNodeUtil.concept_ConceptDeclaration);
-      builder.forChild(SNodeUtil.link_BaseConcept_smodelAttribute).initVariable(new NodeVariableMatcher(var1));
-      return builder.getMatcher().match(nodeToMatch);
-    }
-    SNode getVar1() {
-      ensureMatched();
-      return var1.get();
-    }
   }
 
 }

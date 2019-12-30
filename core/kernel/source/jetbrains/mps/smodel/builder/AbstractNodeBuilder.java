@@ -27,12 +27,16 @@ public interface AbstractNodeBuilder {
 
   AbstractNodeBuilder init(SConcept c);
 
-  void setProperty(SProperty property, String value);
+  void setProperty(SProperty property, @Nullable String value);
 
   void setReference(SReferenceLink link, @Nullable SNodeReference target);
 
   void setReferenceTarget(SReferenceLink link, @Nullable SNode target);
 
+  /**
+   * Shouldn't be called twice for the same link, but in fact is.
+   * Instead of calling twice, consider using forSibling()
+   */
   AbstractNodeBuilder forChild(SContainmentLink link);
 
   AbstractNodeBuilder forSibling();
