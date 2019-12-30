@@ -14,27 +14,42 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
 
+  public static final SMethod<SNode> getInitValueInternal_idMyKVmwIJUM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInitValueInternal").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("MyKVmwIJUM").build();
   public static final SMethod<SNode> getInitValue_id1o$2SUuvKUZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInitValue").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1o$2SUuvKUZ").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitValue_id1o$2SUuvKUZ);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInitValueInternal_idMyKVmwIJUM, getInitValue_id1o$2SUuvKUZ);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static SNode getInitValueInternal_idMyKVmwIJUM(@NotNull SNode __thisNode__) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderInitPropertyValue$tJ)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderPropertyExpression$_e), LINKS.expression$j9T0);
+    } else {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN);
+    }
+  }
   /*package*/ static SNode getInitValue_id1o$2SUuvKUZ(@NotNull SNode __thisNode__) {
     if (SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN) != null) {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN);
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderInitPropertyValue$tJ)) {
+        return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN), CONCEPTS.NodeBuilderInitPropertyValue$tJ);
+      } else {
+        return createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.initValue$nhHN)));
+      }
     } else {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.expression$NDf$);
+      return createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.expression$NDf$)));
     }
   }
 
@@ -54,6 +69,8 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
     }
     switch (methodIndex) {
       case 0:
+        return (T) ((SNode) getInitValueInternal_idMyKVmwIJUM(node));
+      case 1:
         return (T) ((SNode) getInitValue_id1o$2SUuvKUZ(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -83,9 +100,26 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
+  private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNode node0) {
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
+    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(node0, CONCEPTS.Expression$TP, true);
+    return rootBuilder1.getResult();
+  }
+  private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNode node0) {
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
+    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(node0, CONCEPTS.Expression$TP, true);
+    return rootBuilder1.getResult();
+  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink initValue$nhHN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink expression$j9T0 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, 0x60f18f425c76d21bL, "expression");
     /*package*/ static final SContainmentLink expression$NDf$ = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L, 0x4bb51009d20b0336L, "expression");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept NodeBuilderPropertyExpression$_e = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression");
+    /*package*/ static final SConcept NodeBuilderInitPropertyValue$tJ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c769982L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitPropertyValue");
+    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

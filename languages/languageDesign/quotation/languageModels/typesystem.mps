@@ -1904,5 +1904,36 @@
       <ref role="1YaFvo" to="tp3r:2S6ZQ64Qx1I" resolve="ModelNodeInitializer" />
     </node>
   </node>
+  <node concept="1YbPZF" id="63LzO9sK7VE">
+    <property role="TrG5h" value="typeof_NodeBuilderPropertyExpression" />
+    <property role="3GE5qa" value="builder" />
+    <node concept="3clFbS" id="63LzO9sK7VF" role="18ibNy">
+      <node concept="1Z5TYs" id="63LzO9sK87v" role="3cqZAp">
+        <node concept="mw_s8" id="63LzO9sK87N" role="1ZfhKB">
+          <node concept="1Z2H0r" id="63LzO9sK87J" role="mwGJk">
+            <node concept="2OqwBi" id="63LzO9sK8h8" role="1Z2MuG">
+              <node concept="1YBJjd" id="63LzO9sK884" role="2Oq$k0">
+                <ref role="1YBMHb" node="63LzO9sK7VH" resolve="nodeBuilderPropertyExpression" />
+              </node>
+              <node concept="3TrEf2" id="63LzO9sK8sD" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp3r:63LzO9stH8r" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="63LzO9sK87y" role="1ZfhK$">
+          <node concept="1Z2H0r" id="63LzO9sK7VL" role="mwGJk">
+            <node concept="1YBJjd" id="63LzO9sK7X_" role="1Z2MuG">
+              <ref role="1YBMHb" node="63LzO9sK7VH" resolve="nodeBuilderPropertyExpression" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="63LzO9sK7VH" role="1YuTPh">
+      <property role="TrG5h" value="nodeBuilderPropertyExpression" />
+      <ref role="1YaFvo" to="tp3r:63LzO9stH8q" resolve="NodeBuilderPropertyExpression" />
+    </node>
+  </node>
 </model>
 

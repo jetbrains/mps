@@ -449,7 +449,6 @@
     <property role="3GE5qa" value="builder" />
     <property role="EcuMT" value="1595412875168045824" />
     <property role="R5$K7" value="true" />
-    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
   </node>
   <node concept="1TIwiD" id="2S6ZQ64Qx1I">
     <property role="EcuMT" value="3316618969910743150" />
@@ -475,6 +474,30 @@
     <property role="EcuMT" value="8642609567145363710" />
     <property role="3GE5qa" value="builder" />
     <property role="TrG5h" value="NodeBuilderInitValueChild" />
+  </node>
+  <node concept="1TIwiD" id="63LzO9stDA2">
+    <property role="EcuMT" value="6985522012210239874" />
+    <property role="3GE5qa" value="builder" />
+    <property role="TrG5h" value="NodeBuilderInitPropertyValue" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+  </node>
+  <node concept="1TIwiD" id="63LzO9stH8q">
+    <property role="TrG5h" value="NodeBuilderPropertyExpression" />
+    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
+    <property role="3GE5qa" value="builder" />
+    <property role="EcuMT" value="6985522012210254362" />
+    <ref role="1TJDcQ" node="63LzO9stDA2" resolve="NodeBuilderInitPropertyValue" />
+    <node concept="1TJgyj" id="63LzO9stH8r" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="expression" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="6985522012210254363" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="PrWs8" id="63LzO9stH8t" role="PzmwI">
+      <ref role="PrY4T" to="tpck:hLJPP0O" resolve="IWrapper" />
+    </node>
   </node>
 </model>
 

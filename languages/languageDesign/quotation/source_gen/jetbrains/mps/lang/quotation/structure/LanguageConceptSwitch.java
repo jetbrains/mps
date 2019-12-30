@@ -22,14 +22,16 @@ public final class LanguageConceptSwitch {
   public static final int NodeBuilderInitLinkValue = 10;
   public static final int NodeBuilderInitPart = 11;
   public static final int NodeBuilderInitProperty = 12;
-  public static final int NodeBuilderInitValueChild = 13;
-  public static final int NodeBuilderList = 14;
-  public static final int NodeBuilderNode = 15;
-  public static final int NodeBuilderRef = 16;
-  public static final int PropertyAntiquotation = 17;
-  public static final int Quotation = 18;
-  public static final int ReferenceAntiquotation = 19;
-  public static final int StringToTypedValueMigrationInfo = 20;
+  public static final int NodeBuilderInitPropertyValue = 13;
+  public static final int NodeBuilderInitValueChild = 14;
+  public static final int NodeBuilderList = 15;
+  public static final int NodeBuilderNode = 16;
+  public static final int NodeBuilderPropertyExpression = 17;
+  public static final int NodeBuilderRef = 18;
+  public static final int PropertyAntiquotation = 19;
+  public static final int Quotation = 20;
+  public static final int ReferenceAntiquotation = 21;
+  public static final int StringToTypedValueMigrationInfo = 22;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L);
@@ -46,9 +48,11 @@ public final class LanguageConceptSwitch {
     builder.put(0x16240b8e9e79db00L, NodeBuilderInitLinkValue);
     builder.put(0x4bb51009d20b0339L, NodeBuilderInitPart);
     builder.put(0x4bb51009d20b0325L, NodeBuilderInitProperty);
+    builder.put(0x60f18f425c769982L, NodeBuilderInitPropertyValue);
     builder.put(0x77f0b79c5e1788feL, NodeBuilderInitValueChild);
     builder.put(0x718e3f4cb7a2df32L, NodeBuilderList);
     builder.put(0x4bb51009d20a4aa0L, NodeBuilderNode);
+    builder.put(0x60f18f425c76d21aL, NodeBuilderPropertyExpression);
     builder.put(0x718e3f4cb7a0fa93L, NodeBuilderRef);
     builder.put(0x116aac96587L, PropertyAntiquotation);
     builder.put(0x1168c104659L, Quotation);
