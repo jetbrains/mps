@@ -393,7 +393,7 @@
     <property role="EcuMT" value="2595803291918990192" />
     <property role="3GE5qa" value="light" />
     <property role="TrG5h" value="PatternVariableNode" />
-    <property role="34LRSv" value="#variable" />
+    <property role="34LRSv" value="%variable" />
     <ref role="1TJDcQ" to="tp3r:1o$2SUuutG0" resolve="NodeBuilderInitLinkValue" />
     <node concept="PrWs8" id="2g69lt1BJHL" role="PzmwI">
       <ref role="PrY4T" to="tp3r:7vKHTLu5SzY" resolve="NodeBuilderInitValueChild" />
@@ -419,6 +419,16 @@
     </node>
     <node concept="PrWs8" id="53SOuJl2VUL" role="PzmwI">
       <ref role="PrY4T" to="tpee:h9ngReX" resolve="ClassifierMember" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="63LzO9stD_y">
+    <property role="EcuMT" value="6985522012210239842" />
+    <property role="3GE5qa" value="light" />
+    <property role="TrG5h" value="PatternVariableProperty" />
+    <property role="34LRSv" value="%variable" />
+    <ref role="1TJDcQ" to="tp3r:63LzO9stDA2" resolve="NodeBuilderInitPropertyValue" />
+    <node concept="PrWs8" id="63LzO9stD_$" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>

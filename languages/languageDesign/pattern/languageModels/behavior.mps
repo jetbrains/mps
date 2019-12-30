@@ -1262,6 +1262,29 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="1tcvH6au_W4" role="13h7CS">
+      <property role="TrG5h" value="getPropertyVariables" />
+      <node concept="3Tm1VV" id="1tcvH6au_W5" role="1B3o_S" />
+      <node concept="_YKpA" id="1tcvH6au_W6" role="3clF45">
+        <node concept="3Tqbb2" id="1tcvH6au_W7" role="_ZDj9">
+          <ref role="ehGHo" to="tp3t:63LzO9stD_y" resolve="PatternVariableProperty" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="1tcvH6au_W8" role="3clF47">
+        <node concept="3clFbF" id="1tcvH6au_W9" role="3cqZAp">
+          <node concept="2OqwBi" id="1tcvH6au_Wa" role="3clFbG">
+            <node concept="2Rf3mk" id="1tcvH6au_Wb" role="2OqNvi">
+              <node concept="1xMEDy" id="1tcvH6au_Wc" role="1xVPHs">
+                <node concept="chp4Y" id="1tcvH6auAcz" role="ri$Ld">
+                  <ref role="cht4Q" to="tp3t:63LzO9stD_y" resolve="PatternVariableProperty" />
+                </node>
+              </node>
+            </node>
+            <node concept="13iPFW" id="1tcvH6au_We" role="2Oq$k0" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="13hLZK" id="2g69lt1_yTJ" role="13h7CW">
       <node concept="3clFbS" id="2g69lt1_yTK" role="2VODD2" />
     </node>

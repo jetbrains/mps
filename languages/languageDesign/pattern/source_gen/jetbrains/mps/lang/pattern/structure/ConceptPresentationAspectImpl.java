@@ -29,6 +29,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_PatternExpression;
   private ConceptPresentation props_PatternVariableDeclaration;
   private ConceptPresentation props_PatternVariableNode;
+  private ConceptPresentation props_PatternVariableProperty;
   private ConceptPresentation props_PatternVariableReference;
   private ConceptPresentation props_PropertyPatternVariableDeclaration;
   private ConceptPresentation props_WildcardPattern;
@@ -177,6 +178,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_PatternVariableNode = cpb.create();
         }
         return props_PatternVariableNode;
+      case LanguageConceptSwitch.PatternVariableProperty:
+        if (props_PatternVariableProperty == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_PatternVariableProperty = cpb.create();
+        }
+        return props_PatternVariableProperty;
       case LanguageConceptSwitch.PatternVariableReference:
         if (props_PatternVariableReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

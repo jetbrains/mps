@@ -29,9 +29,10 @@ public final class LanguageConceptSwitch {
   public static final int PatternExpression = 17;
   public static final int PatternVariableDeclaration = 18;
   public static final int PatternVariableNode = 19;
-  public static final int PatternVariableReference = 20;
-  public static final int PropertyPatternVariableDeclaration = 21;
-  public static final int WildcardPattern = 22;
+  public static final int PatternVariableProperty = 20;
+  public static final int PatternVariableReference = 21;
+  public static final int PropertyPatternVariableDeclaration = 22;
+  public static final int WildcardPattern = 23;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L);
@@ -55,6 +56,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x108a9cb4791L, PatternExpression);
     builder.put(0x108a9cb4793L, PatternVariableDeclaration);
     builder.put(0x24062557419efb70L, PatternVariableNode);
+    builder.put(0x60f18f425c769962L, PatternVariableProperty);
     builder.put(0x2b7df577ffbb6a85L, PatternVariableReference);
     builder.put(0x108a9cb4795L, PropertyPatternVariableDeclaration);
     builder.put(0x108a9cb4797L, WildcardPattern);

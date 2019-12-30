@@ -208,7 +208,7 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
   }
 
   @Override
-  public AbstractNodeBuilder forSibling() {
+  public NodeMatcherBuilder forSibling() {
     NodeMatcherWrapper nextMatcherWrapper = new NodeMatcherWrapper();
     getMyExactConceptMatcher().myNextMatcher = nextMatcherWrapper;
     return new NodeMatcherBuilder(nextMatcherWrapper);

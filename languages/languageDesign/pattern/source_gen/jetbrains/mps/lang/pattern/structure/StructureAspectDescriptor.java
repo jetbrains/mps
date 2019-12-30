@@ -36,6 +36,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptPatternExpression = createDescriptorForPatternExpression();
   /*package*/ final ConceptDescriptor myConceptPatternVariableDeclaration = createDescriptorForPatternVariableDeclaration();
   /*package*/ final ConceptDescriptor myConceptPatternVariableNode = createDescriptorForPatternVariableNode();
+  /*package*/ final ConceptDescriptor myConceptPatternVariableProperty = createDescriptorForPatternVariableProperty();
   /*package*/ final ConceptDescriptor myConceptPatternVariableReference = createDescriptorForPatternVariableReference();
   /*package*/ final ConceptDescriptor myConceptPropertyPatternVariableDeclaration = createDescriptorForPropertyPatternVariableDeclaration();
   /*package*/ final ConceptDescriptor myConceptWildcardPattern = createDescriptorForWildcardPattern();
@@ -56,7 +57,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptActionAsPattern, myConceptActionStatement, myConceptAsPattern, myConceptGeneratorInternal_ChildDescriptor, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptInsertAfterPosition, myConceptInsertBeforePosition, myConceptInsertPosition, myConceptLinkPatternVariableDeclaration, myConceptListPattern, myConceptOrPattern, myConceptOrPatternClause, myConceptOrPatternVariableReference, myConceptPattern, myConceptPatternBuilder, myConceptPatternBuilderClassifierMember, myConceptPatternExpression, myConceptPatternVariableDeclaration, myConceptPatternVariableNode, myConceptPatternVariableReference, myConceptPropertyPatternVariableDeclaration, myConceptWildcardPattern);
+    return Arrays.asList(myConceptActionAsPattern, myConceptActionStatement, myConceptAsPattern, myConceptGeneratorInternal_ChildDescriptor, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptInsertAfterPosition, myConceptInsertBeforePosition, myConceptInsertPosition, myConceptLinkPatternVariableDeclaration, myConceptListPattern, myConceptOrPattern, myConceptOrPatternClause, myConceptOrPatternVariableReference, myConceptPattern, myConceptPatternBuilder, myConceptPatternBuilderClassifierMember, myConceptPatternExpression, myConceptPatternVariableDeclaration, myConceptPatternVariableNode, myConceptPatternVariableProperty, myConceptPatternVariableReference, myConceptPropertyPatternVariableDeclaration, myConceptWildcardPattern);
   }
 
   @Override
@@ -103,6 +104,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptPatternVariableDeclaration;
       case LanguageConceptSwitch.PatternVariableNode:
         return myConceptPatternVariableNode;
+      case LanguageConceptSwitch.PatternVariableProperty:
+        return myConceptPatternVariableProperty;
       case LanguageConceptSwitch.PatternVariableReference:
         return myConceptPatternVariableReference;
       case LanguageConceptSwitch.PropertyPatternVariableDeclaration:
@@ -315,7 +318,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)/2595803291918990192");
     b.version(2);
-    b.alias("#variable");
+    b.alias("%variable");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPatternVariableProperty() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.pattern", "PatternVariableProperty", 0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x60f18f425c769962L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.quotation.structure.NodeBuilderInitPropertyValue", 0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c769982L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)/6985522012210239842");
+    b.version(2);
+    b.alias("%variable");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPatternVariableReference() {

@@ -2122,7 +2122,7 @@
     <ref role="1XX52x" to="tp3t:2g69lt1BJHK" resolve="PatternVariableNode" />
     <node concept="3EZMnI" id="2g69lt1BLH$" role="2wV5jI">
       <node concept="3F0ifn" id="2g69lt1BLHF" role="3EZMnx">
-        <property role="3F0ifm" value="#" />
+        <property role="3F0ifm" value="%" />
         <node concept="VechU" id="2g69lt1BLI0" role="3F10Kt">
           <property role="Vb096" value="g1_qRwE/darkGreen" />
         </node>
@@ -2187,6 +2187,28 @@
         </node>
       </node>
       <node concept="l2Vlx" id="4IP40Bi2GwR" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="MyKVmwKMlu">
+    <property role="3GE5qa" value="light" />
+    <ref role="1XX52x" to="tp3t:63LzO9stD_y" resolve="PatternVariableProperty" />
+    <node concept="3EZMnI" id="MyKVmwKMlv" role="2wV5jI">
+      <node concept="3F0ifn" id="MyKVmwKMlw" role="3EZMnx">
+        <property role="3F0ifm" value="%" />
+        <node concept="VechU" id="MyKVmwKMlx" role="3F10Kt">
+          <property role="Vb096" value="g1_qRwE/darkGreen" />
+        </node>
+        <node concept="11LMrY" id="MyKVmwKMly" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0A7n" id="MyKVmwKMlz" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        <node concept="VechU" id="MyKVmwKMl$" role="3F10Kt">
+          <property role="Vb096" value="g1_qRwE/darkGreen" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="MyKVmwKMl_" role="2iSdaV" />
     </node>
   </node>
 </model>
