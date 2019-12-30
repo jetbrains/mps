@@ -116,8 +116,11 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
 
   private final ClassLoaderManager myClassLoaderManager;
 
+  private final LanguageExtensionRegistry myExtensionRegistry;
+
   public LanguageRegistry(ClassLoaderManager loaderManager) {
     myClassLoaderManager = loaderManager;
+    myExtensionRegistry = new LanguageExtensionRegistry();
   }
 
   @Override
@@ -460,6 +463,7 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
       monitor.advance(1);
 
       for (LanguageRuntime languageRuntime : languagesToUnload) {
+        myExtensionRegistry.clearContributionsOf(languageRuntime);
         languageRuntime.dispose();
         myLanguagesById.remove(languageRuntime.getId());
       }
@@ -495,6 +499,11 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         }
       }
       reinitialize();
+      // perhaps, could be part of LangRuntime.initialize(LangReg), if I expose (package-local) LangExtReg from here
+      for (LanguageRuntime lr : loadedRuntimes) {
+        final LanguageExtensions languageExtensions = myExtensionRegistry.forContributor(this, lr);
+        lr.contributeExtensions(languageExtensions);
+      }
       monitor.advance(1);
 
       monitor.step("Generator Runtime");

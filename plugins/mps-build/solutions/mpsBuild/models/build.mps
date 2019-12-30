@@ -15489,6 +15489,11 @@
               </node>
             </node>
           </node>
+          <node concept="1SiIV0" id="5jW07ocjtuv" role="3bR37C">
+            <node concept="3bR9La" id="5jW07ocjtuw" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="2Qa9MYMHz8V" role="3bR37C">
           <node concept="3bR9La" id="2Qa9MYMHz8U" role="1SiIV1">

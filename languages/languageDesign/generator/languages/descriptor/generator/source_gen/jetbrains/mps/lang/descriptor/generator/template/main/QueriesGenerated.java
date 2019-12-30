@@ -24,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -35,6 +34,7 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.template.InsertMacroContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
 import java.util.Objects;
 import jetbrains.mps.generator.impl.plan.ModelScanner;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -230,7 +230,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16), LINKS.extendedLanguages$9BpW);
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
-    final SRepository repo = ((Language) _context.getVariable("var:langModule")).getRepository();
+    final SRepository repo = ((SRepository) _context.getVariable("var:repo"));
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.copyNode(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16)), LINKS.model$8rak)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, PROPS.qualifiedName$8rw_);
@@ -243,7 +243,21 @@ public class QueriesGenerated {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_0_2(final SourceSubstituteMacroNodesContext _context) {
-    final SRepository repo = ((Language) _context.getVariable("var:langModule")).getRepository();
+    final SRepository repo = ((SRepository) _context.getVariable("var:repo"));
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16), LINKS.model$8rak)).sort(new ISelector<SNode, String>() {
+      public String select(SNode it) {
+        return SPropertyOperations.getString(it, PROPS.qualifiedName$8rw_);
+      }
+    }, true).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        SModel resolved = ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(it).resolve(repo);
+        return resolved != null && ListSequence.fromList(SModelOperations.roots(resolved, null)).isNotEmpty();
+      }
+    });
+  }
+  public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
+    // identical to the LOOPs above 
+    final SRepository repo = ((SRepository) _context.getVariable("var:repo"));
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16), LINKS.model$8rak)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return SPropertyOperations.getString(it, PROPS.qualifiedName$8rw_);
@@ -343,18 +357,24 @@ public class QueriesGenerated {
     return SNodeOperations.cast(SModelOperations.getModuleStub(_context.getOriginalInputModel()), CONCEPTS.Generator$kv);
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
-    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(((Language) _context.getVariable("var:langModule")).getRepository());
+    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(((SRepository) _context.getVariable("var:repo")));
   }
   public static Object varMacro_Value_0_1(final TemplateVarContext _context) {
-    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(((Language) _context.getVariable("var:langModule")).getRepository());
+    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(((SRepository) _context.getVariable("var:repo")));
   }
   public static Object varMacro_Value_0_2(final TemplateVarContext _context) {
+    return _context.getOriginalInputModel().getRepository();
+  }
+  public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
     SModuleReference ref = PersistenceFacade.getInstance().createModuleReference(Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16)));
     SModule l = ref.resolve(_context.getOriginalInputModel().getRepository());
     if (false == l instanceof Language) {
       _context.showErrorMessage(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16), "No language in repository: " + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.language$g16), PROPS.namespace$8m0W));
     }
     return (Language) l;
+  }
+  public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
+    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(((SRepository) _context.getVariable("var:repo")));
   }
   public static Object varMacro_Value_6_0(final TemplateVarContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.model$8rak)).where(new IWhereFilter<SNode>() {

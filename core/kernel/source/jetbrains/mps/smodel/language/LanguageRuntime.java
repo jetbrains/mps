@@ -225,6 +225,23 @@ public abstract class LanguageRuntime {
     myExtendedLanguages.clear();
   }
 
+  /*package*/ final void contributeExtensions(LanguageExtensions extensions) {
+    // I keep this method as an entry point for LanguageRegistry instead of using protected #contribute() directly as I expect to add some mandatory
+    // extension registration in here, and don't want to generate super.contribute() calls
+    contribute(extensions);
+  }
+
+  /**
+   * Override to tell that language represented by this runtime class supplies extensions to aspects of some other language.
+   * Method itself is no-op, no need to call super.
+   * Language is not completely initialized the moment method is invoked, no other activity except contributing extensions
+   * by means of LanguageExtensions is allowed.
+   * @param extensions facade to pass contributions through
+   */
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    // no-op
+  }
+
   void dispose() {
     myAspectDescriptors.values().forEach(ILanguageAspect::dispose);
   }
