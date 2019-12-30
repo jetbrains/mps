@@ -342,15 +342,27 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
 
     List<SNode> contextContainers = ListSequence.fromList(new ArrayList<SNode>());
     for (SNode ancestor : contextAncestors) {
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ClassifierType$IZ) && (SNodeOperations.hasRole(ancestor, LINKS.superclass$_pqe) || SNodeOperations.hasRole(ancestor, LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(ancestor, LINKS.extendedInterface$rbvY) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(ancestor), CONCEPTS.TypeVariableDeclaration$Cc))) {
+      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ClassifierType$IZ) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ancestor), CONCEPTS.ClassifierType$IZ)) {
+        SNode p = SNodeOperations.getParent(ancestor);
+        if (SNodeOperations.hasRole(p, LINKS.superclass$_pqe) || SNodeOperations.hasRole(p, LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(p, LINKS.extendedInterface$rbvY)) {
+          break;
+        }
+      }
+      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ClassifierType$IZ) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ancestor), CONCEPTS.TypeVariableDeclaration$Cc))) {
+        // The type variable parametrizes the target of the ClassifierType reference 
+        if (Objects.equals(SNodeOperations.getParent(SNodeOperations.getParent(ancestor)), __thisNode__)) {
+          ListSequence.fromList(contextContainers).addElement(__thisNode__);
+        }
         break;
       }
       if (!(targetIsStatic) && SNodeOperations.isInstanceOf(ancestor, CONCEPTS.StaticKind$hY)) {
+        ListSequence.fromList(contextContainers).addElement(SNodeOperations.getNodeAncestor(ancestor, CONCEPTS.Classifier$hJ, false, false));
         break;
       }
       if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.Classifier$hJ)) {
         SNode classifier = SNodeOperations.cast(ancestor, CONCEPTS.Classifier$hJ);
         ListSequence.fromList(contextContainers).addElement(classifier);
+        // TODO consider static being set higher up in the target hierarchy 
         if (!(targetIsStatic) && ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp))) {
           break;
         }
@@ -359,6 +371,11 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return contextContainers;
   }
   /*package*/ static List<SNode> getClassifierPathDistinctFromContext_id2qKFNTWlEOm(@NotNull SNode __thisNode__, SNode context) {
+    if (((SNodeOperations.getNodeAncestor(context, CONCEPTS.NestedNewExpression$79, true, false)) != null)) {
+      return ListSequence.fromList(new ArrayList<SNode>());
+    }
+
+
     List<SNode> myContainers = ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Classifier$hJ, true)).reversedList();
     int index = -1;
     for (SNode ctxCls : Classifier__BehaviorDescriptor.getClassifierPathToContext_id2qKFNTWiPl1.invoke(__thisNode__, context)) {
@@ -371,6 +388,10 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       List<SNode> newContainers = new ArrayList<SNode>();
       for (int i = index + 1; i < ListSequence.fromList(myContainers).count(); i++) {
         ListSequence.fromList(newContainers).addElement(ListSequence.fromList(myContainers).getElement(i));
+      }
+      // IF empty then the target is an ancestor to the contextNode 
+      if (ListSequence.fromList(newContainers).isEmpty()) {
+        ListSequence.fromList(newContainers).addElement(__thisNode__);
       }
       myContainers = newContainers;
     }
@@ -390,16 +411,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return result.toString();
   }
   /*package*/ static String getNestedNameInContext_id7q4lzBFjvF8(@NotNull SNode __thisNode__, SNode context) {
-
-    List<SNode> contextContainers = Classifier__BehaviorDescriptor.getClassifierPathToContext_id2qKFNTWiPl1.invoke(__thisNode__, context);
-
-    List<SNode> ancestors = contextContainers;
-    if (ListSequence.fromList(ancestors).contains(SNodeOperations.getParent(__thisNode__)) || ListSequence.fromList(ancestors).contains(__thisNode__) || (SNodeOperations.getNodeAncestor(context, CONCEPTS.NestedNewExpression$79, true, false) != null)) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
-    }
-
     List<SNode> myContainers = Classifier__BehaviorDescriptor.getClassifierPathDistinctFromContext_id2qKFNTWlEOm.invoke(__thisNode__, context);
-    if (ListSequence.fromList(myContainers).count() == 1) {
+    if (ListSequence.fromList(myContainers).count() <= 1) {
       return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
     }
     return Classifier__BehaviorDescriptor.buildClassifierPath_id2qKFNTWoqtI.invoke(__thisNode__, myContainers);
