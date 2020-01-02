@@ -580,6 +580,7 @@
       <concept id="1225727723840" name="jetbrains.mps.baseLanguage.collections.structure.FindFirstOperation" flags="nn" index="1z4cxt" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
+      <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
       <concept id="1178894719932" name="jetbrains.mps.baseLanguage.collections.structure.DistinctOperation" flags="nn" index="1VAtEI" />
     </language>
   </registry>
@@ -2235,6 +2236,34 @@
       </node>
       <node concept="2AHcQZ" id="4z9FuFfsoZ4" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="1W57fq" id="63cWJdbQRFL" role="lGtFl">
+        <node concept="3IZrLx" id="63cWJdbQRFM" role="3IZSJc">
+          <node concept="3clFbS" id="63cWJdbQRFN" role="2VODD2">
+            <node concept="3clFbF" id="63cWJdbQSjG" role="3cqZAp">
+              <node concept="22lmx$" id="63cWJdbQUjZ" role="3clFbG">
+                <node concept="2OqwBi" id="63cWJdbQVYL" role="3uHU7w">
+                  <node concept="2OqwBi" id="63cWJdbQUYj" role="2Oq$k0">
+                    <node concept="1iwH7S" id="63cWJdbQUN8" role="2Oq$k0" />
+                    <node concept="1psM6Z" id="63cWJdbQVi_" role="2OqNvi">
+                      <ref role="1psM6Y" node="7wjXRnKbRMN" resolve="CSDatatypes" />
+                    </node>
+                  </node>
+                  <node concept="3GX2aA" id="63cWJdbQWGp" role="2OqNvi" />
+                </node>
+                <node concept="2OqwBi" id="63cWJdbQTfw" role="3uHU7B">
+                  <node concept="2OqwBi" id="63cWJdbQSP9" role="2Oq$k0">
+                    <node concept="1iwH7S" id="63cWJdbQSjF" role="2Oq$k0" />
+                    <node concept="1psM6Z" id="63cWJdbQSXK" role="2OqNvi">
+                      <ref role="1psM6Y" node="7wjXRnKbLTQ" resolve="enumerations" />
+                    </node>
+                  </node>
+                  <node concept="3GX2aA" id="63cWJdbQU0E" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="75JUw12e04c" role="jymVt" />
