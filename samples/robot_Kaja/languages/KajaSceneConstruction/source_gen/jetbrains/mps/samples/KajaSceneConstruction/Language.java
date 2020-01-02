@@ -14,6 +14,8 @@ import jetbrains.mps.samples.KajaSceneConstruction.editor.EditorAspectDescriptor
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.samples.KajaSceneConstruction.structure.ConceptPresentationAspectImpl;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -59,5 +61,10 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    extensions.recordContribution("jetbrains.mps.samples.Kaja", "049a08c5-1fe5-43cc-bd99-8b46d641d7f5", EditorAspectDescriptor.class);
   }
 }
