@@ -15,7 +15,7 @@
       <unit at="10,0,28,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,65,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.structure.StructureAspectDescriptor" />
+      <unit at="14,0,60,0" name="jetbrains.mps.lang.feedback.problem.childAndProp.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:47656d18-dbba-45c4-80e3-b6a073fd7710(jetbrains.mps.lang.feedback.problem.childAndProp.structure)/24399255755597574">
@@ -36,22 +36,22 @@
       <node id="24399255755597574" at="15,116,16,70" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="24399255755597574" at="16,0,17,0" concept="1" trace="myConceptFailingPropertyConstraintsProblem" />
-      <node id="24399255755597574" at="38,67,39,58" concept="4" />
-      <node id="24399255755597574" at="54,91,55,214" concept="3" />
-      <node id="24399255755597574" at="55,214,56,33" concept="0" />
-      <node id="24399255755597574" at="56,33,57,148" concept="0" />
-      <node id="24399255755597574" at="57,148,58,133" concept="0" />
-      <node id="24399255755597574" at="58,133,59,17" concept="0" />
-      <node id="24399255755615671" at="59,17,60,162" concept="0" />
-      <node id="24399255755597574" at="60,162,61,46" concept="0" />
-      <node id="24399255755597574" at="61,46,62,22" concept="4" />
-      <node id="24399255755597574" at="54,0,64,0" concept="6" trace="createDescriptorForFailingPropertyConstraintsProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="24399255755597574" at="38,67,39,58" />
-      <scope id="24399255755597574" at="54,91,62,22">
+      <node id="24399255755597574" at="15,0,16,0" concept="1" trace="myConceptFailingPropertyConstraintsProblem" />
+      <node id="24399255755597574" at="37,67,38,58" concept="4" />
+      <node id="24399255755597574" at="49,91,50,214" concept="3" />
+      <node id="24399255755597574" at="50,214,51,33" concept="0" />
+      <node id="24399255755597574" at="51,33,52,148" concept="0" />
+      <node id="24399255755597574" at="52,148,53,133" concept="0" />
+      <node id="24399255755597574" at="53,133,54,17" concept="0" />
+      <node id="24399255755615671" at="54,17,55,162" concept="0" />
+      <node id="24399255755597574" at="55,162,56,46" concept="0" />
+      <node id="24399255755597574" at="56,46,57,22" concept="4" />
+      <node id="24399255755597574" at="49,0,59,0" concept="6" trace="createDescriptorForFailingPropertyConstraintsProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="24399255755597574" at="37,67,38,58" />
+      <scope id="24399255755597574" at="49,91,57,22">
         <var name="b" id="24399255755597574" />
       </scope>
-      <scope id="24399255755597574" at="54,0,64,0" />
+      <scope id="24399255755597574" at="49,0,59,0" />
     </file>
   </root>
 </debug-info>

@@ -15,7 +15,7 @@
       <unit at="10,0,28,0" name="jetbrains.mps.lang.feedback.problem.failingRule.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,66,0" name="jetbrains.mps.lang.feedback.problem.failingRule.structure.StructureAspectDescriptor" />
+      <unit at="14,0,61,0" name="jetbrains.mps.lang.feedback.problem.failingRule.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:99b2bb53-594f-4076-8629-aea0f8ec5bfd(jetbrains.mps.lang.feedback.problem.failingRule.structure)/6285588811486137591">
@@ -36,23 +36,23 @@
       <node id="6285588811486137591" at="15,116,16,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="6285588811486137591" at="16,0,17,0" concept="1" trace="myConceptFailingRuleProblem" />
-      <node id="6285588811486137591" at="38,52,39,43" concept="4" />
-      <node id="6285588811486137591" at="54,76,55,200" concept="3" />
-      <node id="6285588811486137591" at="55,200,56,33" concept="0" />
-      <node id="6285588811486137591" at="56,33,57,75" concept="0" />
-      <node id="6285588811486137591" at="57,75,58,76" concept="0" />
-      <node id="6285588811486137591" at="58,76,59,134" concept="0" />
-      <node id="6285588811486137591" at="59,134,60,17" concept="0" />
-      <node id="6285588811486139544" at="60,17,61,168" concept="0" />
-      <node id="6285588811486137591" at="61,168,62,42" concept="0" />
-      <node id="6285588811486137591" at="62,42,63,22" concept="4" />
-      <node id="6285588811486137591" at="54,0,65,0" concept="6" trace="createDescriptorForFailingRuleProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="6285588811486137591" at="38,52,39,43" />
-      <scope id="6285588811486137591" at="54,76,63,22">
+      <node id="6285588811486137591" at="15,0,16,0" concept="1" trace="myConceptFailingRuleProblem" />
+      <node id="6285588811486137591" at="37,52,38,43" concept="4" />
+      <node id="6285588811486137591" at="49,76,50,200" concept="3" />
+      <node id="6285588811486137591" at="50,200,51,33" concept="0" />
+      <node id="6285588811486137591" at="51,33,52,75" concept="0" />
+      <node id="6285588811486137591" at="52,75,53,76" concept="0" />
+      <node id="6285588811486137591" at="53,76,54,134" concept="0" />
+      <node id="6285588811486137591" at="54,134,55,17" concept="0" />
+      <node id="6285588811486139544" at="55,17,56,168" concept="0" />
+      <node id="6285588811486137591" at="56,168,57,42" concept="0" />
+      <node id="6285588811486137591" at="57,42,58,22" concept="4" />
+      <node id="6285588811486137591" at="49,0,60,0" concept="6" trace="createDescriptorForFailingRuleProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="6285588811486137591" at="37,52,38,43" />
+      <scope id="6285588811486137591" at="49,76,58,22">
         <var name="b" id="6285588811486137591" />
       </scope>
-      <scope id="6285588811486137591" at="54,0,65,0" />
+      <scope id="6285588811486137591" at="49,0,60,0" />
     </file>
   </root>
 </debug-info>

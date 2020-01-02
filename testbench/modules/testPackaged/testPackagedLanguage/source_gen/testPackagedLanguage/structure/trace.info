@@ -18,7 +18,7 @@
       <unit at="10,0,28,0" name="testPackagedLanguage.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,62,0" name="testPackagedLanguage.structure.StructureAspectDescriptor" />
+      <unit at="14,0,57,0" name="testPackagedLanguage.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:ab99e75d-0184-4aec-b7b1-2939b54c2f7a(testPackagedLanguage.structure)/6919151941181560079">
@@ -40,19 +40,19 @@
       <node id="6919151941181560079" at="15,116,16,50" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="6919151941181560079" at="16,0,17,0" concept="1" trace="myConceptTestConcept" />
-      <node id="6919151941181560079" at="38,45,39,36" concept="4" />
-      <node id="6919151941181560079" at="54,69,55,166" concept="3" />
-      <node id="6919151941181560079" at="55,166,56,34" concept="0" />
-      <node id="6919151941181560079" at="56,34,57,107" concept="0" />
-      <node id="6919151941181560079" at="57,107,58,17" concept="0" />
-      <node id="6919151941181560079" at="58,17,59,22" concept="4" />
-      <node id="6919151941181560079" at="54,0,61,0" concept="6" trace="createDescriptorForTestConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="6919151941181560079" at="38,45,39,36" />
-      <scope id="6919151941181560079" at="54,69,59,22">
+      <node id="6919151941181560079" at="15,0,16,0" concept="1" trace="myConceptTestConcept" />
+      <node id="6919151941181560079" at="37,45,38,36" concept="4" />
+      <node id="6919151941181560079" at="49,69,50,166" concept="3" />
+      <node id="6919151941181560079" at="50,166,51,34" concept="0" />
+      <node id="6919151941181560079" at="51,34,52,107" concept="0" />
+      <node id="6919151941181560079" at="52,107,53,17" concept="0" />
+      <node id="6919151941181560079" at="53,17,54,22" concept="4" />
+      <node id="6919151941181560079" at="49,0,56,0" concept="6" trace="createDescriptorForTestConcept#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="6919151941181560079" at="37,45,38,36" />
+      <scope id="6919151941181560079" at="49,69,54,22">
         <var name="b" id="6919151941181560079" />
       </scope>
-      <scope id="6919151941181560079" at="54,0,61,0" />
+      <scope id="6919151941181560079" at="49,0,56,0" />
     </file>
   </root>
 </debug-info>
