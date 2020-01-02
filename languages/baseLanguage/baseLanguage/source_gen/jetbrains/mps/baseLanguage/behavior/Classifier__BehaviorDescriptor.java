@@ -365,7 +365,6 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       if (SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.Classifier$hJ)) {
         SNode classifier = SNodeOperations.cast(currentContextAncestor, CONCEPTS.Classifier$hJ);
         ListSequence.fromList(contextContainers).addElement(classifier);
-        // TODO consider static being set higher up in the target hierarchy 
         if (!(targetIsStatic) && ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp))) {
           break;
         }
@@ -415,7 +414,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getNestedNameInContext_id7q4lzBFjvF8(@NotNull SNode __thisNode__, SNode context) {
     List<SNode> myContainers = Classifier__BehaviorDescriptor.getClassifierPathDistinctFromContext_id2qKFNTWlEOm.invoke(__thisNode__, context);
-    if (ListSequence.fromList(myContainers).count() <= 1) {
+    if (ListSequence.fromList(myContainers).count() == 1) {
       return SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1);
     }
     return Classifier__BehaviorDescriptor.buildClassifierPath_id2qKFNTWoqtI.invoke(__thisNode__, myContainers);
