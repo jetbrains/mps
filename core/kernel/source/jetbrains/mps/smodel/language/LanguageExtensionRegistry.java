@@ -18,6 +18,7 @@ package jetbrains.mps.smodel.language;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -71,9 +72,23 @@ class LanguageExtensionRegistry {
 
   /*package*/ <T extends ILanguageAspect> void forEachContributingAspect(LanguageRuntime target, Class<T> aspectClass, Consumer<T> visitor) {
     forEachContributor(target, aspectClass, lr -> {
-      final T aspect = lr.getAspect(aspectClass);
-      if (aspect != null) {
+      final T aspect;
+      try {
+        aspect = lr.getAspect(aspectClass);
+      } catch (NoClassDefFoundError ex) {
+        // inspired by j.m.nodeEditor.LanguageRegistryHelper
+        String msg = "Failed to get extensions of aspect descriptor %s in language %s (requested by %s). Declarations in the language will not be taken into account";
+        Logger.getLogger(LanguageExtensionRegistry.class).error(String.format(msg, aspectClass, lr.getNamespace(), target.getNamespace()));
+        return;
+      }
+      if (aspect == null) {
+        return;
+      }
+      try {
         visitor.accept(aspect);
+      } catch (Exception ex) {
+        String msg = "Error processing contributions of aspect %s in language %s (requested by %s)";
+        Logger.getLogger(LanguageExtensionRegistry.class).error(String.format(msg, aspectClass, lr.getNamespace(), target.getNamespace()), ex);
       }
     });
   }

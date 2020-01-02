@@ -18,6 +18,8 @@ package jetbrains.mps.smodel.language;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
+import java.util.function.Consumer;
+
 /**
  * Lnaguage runtime needs to know what modules contribute extensions to aspects of the language. MPS used to rely on 'extends' relation
  * between language modules to find out possible contributors, which is not perfect - misguiding ('extending' language is not
@@ -35,7 +37,8 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 public interface LanguageExtensions {
   /**
    * Generated code of a language runtime uses this method to manifect it provides contributions to a further unspecified extension point of the
-   * selected aspect of a language. When needed, aspect implementation code could query contributions recorded for it.
+   * selected aspect of a language. When needed, aspect implementation code could query contributions
+   * recorded for it, using {@link LanguageRuntime#forEachContributor(Class, Consumer)}.
    * @param targetLanguage identifies a language to receive contributions
    * @param aspectClass identifies an aspect of the target language.
    */

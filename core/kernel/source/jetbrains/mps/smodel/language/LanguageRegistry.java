@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -566,6 +566,11 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
   private void reinitialize() {
     myLanguagesById.values().forEach(LanguageRuntime::deinitialize);
     myLanguagesById.values().forEach(languageRuntime -> languageRuntime.initialize(this));
+  }
+
+  /*package*/ final LanguageExtensionRegistry getExtensionRegistry() {
+    // provisionally expose the registry. shall keep all the operations over the registry local to this class and guard them with myRuntimeInstanceAccess lock
+    return myExtensionRegistry;
   }
 
   private static void processLinkageErrorForLanguage(Language language, LinkageError linkageError) {
