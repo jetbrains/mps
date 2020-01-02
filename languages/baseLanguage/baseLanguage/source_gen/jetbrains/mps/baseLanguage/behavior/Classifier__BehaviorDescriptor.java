@@ -337,32 +337,33 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return ((String) Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(__thisNode__, null));
   }
   /*package*/ static List<SNode> getClassifierPathToContext_id2qKFNTWiPl1(@NotNull SNode __thisNode__, SNode context) {
-    final boolean targetIsStatic = (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Interface$Kp) || ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__))) && SNodeOperations.getParent(__thisNode__) != null;
+    boolean targetIsStatic = (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Interface$Kp) || ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__))) && SNodeOperations.getParent(__thisNode__) != null;
     List<SNode> contextAncestors = SNodeOperations.getNodeAncestorsWhereConceptInList(context, new SAbstractConcept[]{CONCEPTS.Classifier$hJ, CONCEPTS.StaticKind$hY, CONCEPTS.ClassifierType$IZ}, true);
+    List<SNode> bannedAncestors = ListSequence.fromList(new ArrayList<SNode>());
 
     List<SNode> contextContainers = ListSequence.fromList(new ArrayList<SNode>());
-    for (final SNode ancestor : contextAncestors) {
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ClassifierType$IZ) && ListSequence.fromList(SNodeOperations.getNodeAncestors(ancestor, null, false)).any(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (targetIsStatic || !(Objects.equals(it, SNodeOperations.getParent(ancestor)))) && (SNodeOperations.hasRole(it, LINKS.superclass$_pqe) || SNodeOperations.hasRole(it, LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(it, LINKS.extendedInterface$rbvY));
-        }
-      })) {
-        break;
+    for (SNode currentContextAncestor : contextAncestors) {
+      if (SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.Classifier$hJ) && ListSequence.fromList(bannedAncestors).contains(SNodeOperations.cast(currentContextAncestor, CONCEPTS.Classifier$hJ))) {
+        continue;
+      }
+      if (SNodeOperations.hasRole(currentContextAncestor, LINKS.superclass$_pqe) || SNodeOperations.hasRole(currentContextAncestor, LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(currentContextAncestor, LINKS.extendedInterface$rbvY)) {
+        ListSequence.fromList(bannedAncestors).addElement(SNodeOperations.cast(SNodeOperations.getParent(currentContextAncestor), CONCEPTS.Classifier$hJ));
+        continue;
       }
 
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ClassifierType$IZ) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ancestor), CONCEPTS.TypeVariableDeclaration$Cc))) {
+      if (SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.ClassifierType$IZ) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentContextAncestor), CONCEPTS.TypeVariableDeclaration$Cc))) {
         // The type variable parametrizes the target of the ClassifierType reference 
-        if (Objects.equals(SNodeOperations.getParent(SNodeOperations.getParent(ancestor)), __thisNode__)) {
+        if (Objects.equals(SNodeOperations.getParent(SNodeOperations.getParent(currentContextAncestor)), __thisNode__)) {
           ListSequence.fromList(contextContainers).addElement(__thisNode__);
         }
         break;
       }
-      if (!(targetIsStatic) && SNodeOperations.isInstanceOf(ancestor, CONCEPTS.StaticKind$hY)) {
-        ListSequence.fromList(contextContainers).addElement(SNodeOperations.getNodeAncestor(ancestor, CONCEPTS.Classifier$hJ, false, false));
+      if (!(targetIsStatic) && SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.StaticKind$hY)) {
+        ListSequence.fromList(contextContainers).addElement(SNodeOperations.getNodeAncestor(currentContextAncestor, CONCEPTS.Classifier$hJ, false, false));
         break;
       }
-      if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.Classifier$hJ)) {
-        SNode classifier = SNodeOperations.cast(ancestor, CONCEPTS.Classifier$hJ);
+      if (SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.Classifier$hJ)) {
+        SNode classifier = SNodeOperations.cast(currentContextAncestor, CONCEPTS.Classifier$hJ);
         ListSequence.fromList(contextContainers).addElement(classifier);
         // TODO consider static being set higher up in the target hierarchy 
         if (!(targetIsStatic) && ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp))) {
