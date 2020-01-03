@@ -338,7 +338,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getClassifierPathToContext_id2qKFNTWiPl1(@NotNull SNode __thisNode__, SNode context) {
     boolean targetIsStatic = (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Interface$Kp) || ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__))) && SNodeOperations.getParent(__thisNode__) != null;
-    List<SNode> contextAncestors = SNodeOperations.getNodeAncestorsWhereConceptInList(context, new SAbstractConcept[]{CONCEPTS.Classifier$hJ, CONCEPTS.StaticKind$hY, CONCEPTS.ClassifierType$IZ}, true);
+    List<SNode> contextAncestors = SNodeOperations.getNodeAncestorsWhereConceptInList(context, new SAbstractConcept[]{CONCEPTS.Classifier$hJ, CONCEPTS.StaticKind$hY, CONCEPTS.ClassifierType$IZ, CONCEPTS.ClassCreator$yU, CONCEPTS.DefaultClassCreator$sQ, CONCEPTS.LocalVariableDeclaration$Bf}, true);
     List<SNode> bannedAncestors = ListSequence.fromList(new ArrayList<SNode>());
 
     List<SNode> contextContainers = ListSequence.fromList(new ArrayList<SNode>());
@@ -348,6 +348,25 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       }
       if (SNodeOperations.hasRole(currentContextAncestor, LINKS.superclass$_pqe) || SNodeOperations.hasRole(currentContextAncestor, LINKS.implementedInterface$mdc6) || SNodeOperations.hasRole(currentContextAncestor, LINKS.extendedInterface$rbvY)) {
         ListSequence.fromList(bannedAncestors).addElement(SNodeOperations.cast(SNodeOperations.getParent(currentContextAncestor), CONCEPTS.Classifier$hJ));
+        continue;
+      }
+
+      // LVD, ClassCreator and DefaultClssCreator must be handled to ensure consistent textgen with the previous version, ProjectTest fails otherwise 
+      if ((SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.LocalVariableDeclaration$Bf) || SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.ClassCreator$yU) || SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.DefaultClassCreator$sQ)) && SNodeOperations.getParent(SNodeOperations.getNodeAncestor(currentContextAncestor, CONCEPTS.Classifier$hJ, false, false)) != null) {
+        if (Objects.equals(SNodeOperations.getParent(__thisNode__), SNodeOperations.getNodeAncestor(currentContextAncestor, CONCEPTS.Classifier$hJ, false, false))) {
+          ListSequence.fromList(bannedAncestors).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(currentContextAncestor, CONCEPTS.Classifier$hJ, false)).where(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return SNodeOperations.getParent(it) != null;
+            }
+          }));
+        } else {
+          final List<SNode> targetContainingClassifiers = SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.Classifier$hJ, true);
+          ListSequence.fromList(bannedAncestors).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(currentContextAncestor, CONCEPTS.Classifier$hJ, false)).where(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return !(ListSequence.fromList(targetContainingClassifiers).contains(it));
+            }
+          }));
+        }
         continue;
       }
 
@@ -952,6 +971,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SInterfaceConcept StaticKind$hY = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x427c475b3d6201deL, "jetbrains.mps.baseLanguage.structure.StaticKind");
     /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ClassCreator$yU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept DefaultClassCreator$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, "jetbrains.mps.baseLanguage.structure.DefaultClassCreator");
+    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
     /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
     /*package*/ static final SConcept NestedNewExpression$79 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
     /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
