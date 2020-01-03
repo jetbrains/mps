@@ -16,6 +16,7 @@ import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptAbstractPatternProvider = createDescriptorForAbstractPatternProvider();
   /*package*/ final ConceptDescriptor myConceptActionAsPattern = createDescriptorForActionAsPattern();
   /*package*/ final ConceptDescriptor myConceptActionStatement = createDescriptorForActionStatement();
   /*package*/ final ConceptDescriptor myConceptAsPattern = createDescriptorForAsPattern();
@@ -34,6 +35,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptPatternBuilder = createDescriptorForPatternBuilder();
   /*package*/ final ConceptDescriptor myConceptPatternBuilderClassifierMember = createDescriptorForPatternBuilderClassifierMember();
   /*package*/ final ConceptDescriptor myConceptPatternExpression = createDescriptorForPatternExpression();
+  /*package*/ final ConceptDescriptor myConceptPatternReference = createDescriptorForPatternReference();
+  /*package*/ final ConceptDescriptor myConceptPatternSwitchCase = createDescriptorForPatternSwitchCase();
+  /*package*/ final ConceptDescriptor myConceptPatternSwitchStatement = createDescriptorForPatternSwitchStatement();
   /*package*/ final ConceptDescriptor myConceptPatternVariableDeclaration = createDescriptorForPatternVariableDeclaration();
   /*package*/ final ConceptDescriptor myConceptPatternVariableNode = createDescriptorForPatternVariableNode();
   /*package*/ final ConceptDescriptor myConceptPatternVariableProperty = createDescriptorForPatternVariableProperty();
@@ -49,21 +53,24 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
-    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.extendedLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation");
     deps.aggregatedLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptActionAsPattern, myConceptActionStatement, myConceptAsPattern, myConceptGeneratorInternal_ChildDescriptor, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptInsertAfterPosition, myConceptInsertBeforePosition, myConceptInsertPosition, myConceptLinkPatternVariableDeclaration, myConceptListPattern, myConceptOrPattern, myConceptOrPatternClause, myConceptOrPatternVariableReference, myConceptPattern, myConceptPatternBuilder, myConceptPatternBuilderClassifierMember, myConceptPatternExpression, myConceptPatternVariableDeclaration, myConceptPatternVariableNode, myConceptPatternVariableProperty, myConceptPatternVariableReference, myConceptPropertyPatternVariableDeclaration, myConceptWildcardPattern);
+    return Arrays.asList(myConceptAbstractPatternProvider, myConceptActionAsPattern, myConceptActionStatement, myConceptAsPattern, myConceptGeneratorInternal_ChildDescriptor, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptInsertAfterPosition, myConceptInsertBeforePosition, myConceptInsertPosition, myConceptLinkPatternVariableDeclaration, myConceptListPattern, myConceptOrPattern, myConceptOrPatternClause, myConceptOrPatternVariableReference, myConceptPattern, myConceptPatternBuilder, myConceptPatternBuilderClassifierMember, myConceptPatternExpression, myConceptPatternReference, myConceptPatternSwitchCase, myConceptPatternSwitchStatement, myConceptPatternVariableDeclaration, myConceptPatternVariableNode, myConceptPatternVariableProperty, myConceptPatternVariableReference, myConceptPropertyPatternVariableDeclaration, myConceptWildcardPattern);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.AbstractPatternProvider:
+        return myConceptAbstractPatternProvider;
       case LanguageConceptSwitch.ActionAsPattern:
         return myConceptActionAsPattern;
       case LanguageConceptSwitch.ActionStatement:
@@ -100,6 +107,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptPatternBuilderClassifierMember;
       case LanguageConceptSwitch.PatternExpression:
         return myConceptPatternExpression;
+      case LanguageConceptSwitch.PatternReference:
+        return myConceptPatternReference;
+      case LanguageConceptSwitch.PatternSwitchCase:
+        return myConceptPatternSwitchCase;
+      case LanguageConceptSwitch.PatternSwitchStatement:
+        return myConceptPatternSwitchStatement;
       case LanguageConceptSwitch.PatternVariableDeclaration:
         return myConceptPatternVariableDeclaration;
       case LanguageConceptSwitch.PatternVariableNode:
@@ -126,6 +139,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForAbstractPatternProvider() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.pattern", "AbstractPatternProvider", 0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfbL);
+    b.class_(false, true, false);
+    b.origin("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)/1678856199549152507");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForActionAsPattern() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.pattern", "ActionAsPattern", 0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L);
     b.class_(false, false, false);
@@ -285,6 +305,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)/5834644128080314032");
     b.version(2);
     b.aggregate("pattern", 0x50f8d1ebd50bbeb3L).target(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x240625574192fa19L).optional(false).ordered(true).multiple(false).origin("5834644128080314035").done();
+    b.alias("pattern");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPatternExpression() {
@@ -298,6 +319,36 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("pattern", 0x7d8b4408504314cdL).target(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L).optional(false).ordered(true).multiple(false).origin("9046399079000773837").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias(">pattern<");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPatternReference() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.pattern", "PatternReference", 0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.pattern.structure.AbstractPatternProvider", 0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfbL);
+    b.origin("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)/1678856199549152508");
+    b.version(2);
+    b.associate("declaration", 0x174c7ed18b16ecfdL).target(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L).optional(false).origin("1678856199549152509").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPatternSwitchCase() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.pattern", "PatternSwitchCase", 0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L);
+    b.class_(false, false, false);
+    b.origin("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)/1678856199540978710");
+    b.version(2);
+    b.aggregate("body", 0x10ef02d8048L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("1163670683720").done();
+    b.aggregate("pattern", 0x174c7ed18b16ecf4L).target(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfbL).optional(false).ordered(true).multiple(false).origin("1678856199549152500").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForPatternSwitchStatement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.pattern", "PatternSwitchStatement", 0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a995b51L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    b.origin("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)/1678856199540923217");
+    b.version(2);
+    b.aggregate("expression", 0x527e98a73771f430L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("5944356402132808752").done();
+    b.aggregate("case", 0x527e98a73771f431L).target(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L).optional(true).ordered(true).multiple(true).origin("5944356402132808753").done();
+    b.aggregate("defaultBlock", 0x53cfca750aa0c6d0L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(true).ordered(true).multiple(false).origin("6039268229365417680").done();
+    b.alias("pattern switch");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPatternVariableDeclaration() {

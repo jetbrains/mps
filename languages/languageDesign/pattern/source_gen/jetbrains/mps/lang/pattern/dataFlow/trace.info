@@ -6,7 +6,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="DataFlowAspectDescriptorImpl.java">
-      <unit at="15,0,34,0" name="jetbrains.mps.lang.pattern.dataFlow.DataFlowAspectDescriptorImpl" />
+      <unit at="15,0,38,0" name="jetbrains.mps.lang.pattern.dataFlow.DataFlowAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590341(jetbrains.mps.lang.pattern.dataFlow)/1207240696172">
@@ -55,6 +55,54 @@
       </scope>
       <unit id="1207240950340" at="24,0,29,0" name="jetbrains.mps.lang.pattern.dataFlow.PatternExpression_DataFlow$CONCEPTS" />
       <unit id="1207240950340" at="14,0,30,0" name="jetbrains.mps.lang.pattern.dataFlow.PatternExpression_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590341(jetbrains.mps.lang.pattern.dataFlow)/1678856199540938323">
+    <file name="PatternSwitchStatement_DataFlow.java">
+      <node id="6039268229365399124" at="13,60,14,110" concept="0" />
+      <node id="1207558714582" at="15,95,16,174" concept="0" />
+      <node id="1207558718604" at="17,5,18,232" concept="0" />
+      <node id="6039268229365399129" at="19,95,20,54" concept="0" />
+      <node id="3564379068314596551" at="22,27,23,189" concept="0" />
+      <node id="1207558749370" at="26,5,27,112" concept="0" />
+      <node id="1678856199540938323" at="31,0,32,0" concept="3" trace="expression$nt1k" />
+      <node id="1678856199540938323" at="32,0,33,0" concept="3" trace="case$nt1N" />
+      <node id="1678856199540938323" at="33,0,34,0" concept="3" trace="defaultBlock$twKh" />
+      <node id="1207558684696" at="14,110,17,5" concept="1" />
+      <node id="6711381179806625895" at="22,0,25,0" concept="2" trace="run#()V" />
+      <node id="6711381179806625895" at="20,54,25,9" concept="0" />
+      <node id="6039268229365399127" at="18,232,26,5" concept="1" />
+      <node id="1678856199540938323" at="13,0,29,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1207558684697" at="15,95,16,174" />
+      <scope id="6711381179806625895" at="22,27,23,189" />
+      <scope id="1207558684696" at="14,110,17,5">
+        <var name="switchCase" id="1207558684700" />
+      </scope>
+      <scope id="6711381179806625895" at="22,0,25,0" />
+      <scope id="6039268229365399128" at="19,95,25,9" />
+      <scope id="6039268229365399127" at="18,232,26,5">
+        <var name="switchCase" id="6039268229365399132" />
+      </scope>
+      <scope id="1678856199540938325" at="13,60,27,112" />
+      <scope id="1678856199540938323" at="13,0,29,0">
+        <var name="_context" id="1678856199540938323" />
+      </scope>
+      <unit id="6711381179806625895" at="21,53,25,7" name="jetbrains.mps.lang.pattern.dataFlow.PatternSwitchStatement_DataFlow$1" />
+      <unit id="1678856199540938323" at="30,0,35,0" name="jetbrains.mps.lang.pattern.dataFlow.PatternSwitchStatement_DataFlow$LINKS" />
+      <unit id="1678856199540938323" at="12,0,36,0" name="jetbrains.mps.lang.pattern.dataFlow.PatternSwitchStatement_DataFlow" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590341(jetbrains.mps.lang.pattern.dataFlow)/1678856199540978977">
+    <file name="PatternSwitchCase_DataFlow.java">
+      <node id="1678856199540979018" at="13,60,14,104" concept="0" />
+      <node id="1678856199540978977" at="18,0,19,0" concept="3" trace="body$6jgq" />
+      <node id="1678856199540978977" at="13,0,16,0" concept="2" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1678856199540978979" at="13,60,14,104" />
+      <scope id="1678856199540978977" at="13,0,16,0">
+        <var name="_context" id="1678856199540978977" />
+      </scope>
+      <unit id="1678856199540978977" at="17,0,20,0" name="jetbrains.mps.lang.pattern.dataFlow.PatternSwitchCase_DataFlow$LINKS" />
+      <unit id="1678856199540978977" at="12,0,21,0" name="jetbrains.mps.lang.pattern.dataFlow.PatternSwitchCase_DataFlow" />
     </file>
   </root>
 </debug-info>

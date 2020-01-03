@@ -9,6 +9,8 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
+    <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tp3r" ref="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" implicit="true" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
@@ -94,9 +96,11 @@
       </concept>
       <concept id="1174658326157" name="jetbrains.mps.lang.typesystem.structure.CreateEquationStatement" flags="nn" index="1Z5TYs" />
       <concept id="1174660718586" name="jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement" flags="nn" index="1Zf1VF">
+        <property id="1206359757216" name="checkOnly" index="3wDh2S" />
         <child id="1174660783413" name="leftExpression" index="1ZfhK$" />
         <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
       </concept>
+      <concept id="1174663118805" name="jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement" flags="nn" index="1ZobV4" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -124,6 +128,7 @@
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
+        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
@@ -568,6 +573,36 @@
     <node concept="1YaCAy" id="hvU3U78" role="1YuTPh">
       <property role="TrG5h" value="nodeToCheck" />
       <ref role="1YaFvo" to="tp3t:gyEdBcq" resolve="ListPattern" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="1tcvH6aAm5g">
+    <property role="TrG5h" value="typeof_PatternSwitchStatement" />
+    <property role="3GE5qa" value="light" />
+    <node concept="3clFbS" id="1tcvH6aAm5h" role="18ibNy">
+      <node concept="1ZobV4" id="1tcvH6aAnaJ" role="3cqZAp">
+        <property role="3wDh2S" value="true" />
+        <node concept="mw_s8" id="1tcvH6aAnb_" role="1ZfhKB">
+          <node concept="2c44tf" id="1tcvH6aAnbx" role="mwGJk">
+            <node concept="3Tqbb2" id="1tcvH6aAnbV" role="2c44tc" />
+          </node>
+        </node>
+        <node concept="mw_s8" id="1tcvH6aAnaM" role="1ZfhK$">
+          <node concept="1Z2H0r" id="1tcvH6aAmr3" role="mwGJk">
+            <node concept="2OqwBi" id="1tcvH6aAmDg" role="1Z2MuG">
+              <node concept="1YBJjd" id="1tcvH6aAmve" role="2Oq$k0">
+                <ref role="1YBMHb" node="1tcvH6aAm5j" resolve="patternSwitchStatement" />
+              </node>
+              <node concept="3TrEf2" id="1tcvH6aAmXk" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp3t:59YAasRsvgK" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1tcvH6aAm5j" role="1YuTPh">
+      <property role="TrG5h" value="patternSwitchStatement" />
+      <ref role="1YaFvo" to="tp3t:1tcvH6aAlHh" resolve="PatternSwitchStatement" />
     </node>
   </node>
 </model>

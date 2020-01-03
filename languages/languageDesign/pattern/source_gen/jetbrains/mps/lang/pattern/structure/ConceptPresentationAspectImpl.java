@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_AbstractPatternProvider;
   private ConceptPresentation props_ActionAsPattern;
   private ConceptPresentation props_ActionStatement;
   private ConceptPresentation props_AsPattern;
@@ -27,6 +28,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_PatternBuilder;
   private ConceptPresentation props_PatternBuilderClassifierMember;
   private ConceptPresentation props_PatternExpression;
+  private ConceptPresentation props_PatternReference;
+  private ConceptPresentation props_PatternSwitchCase;
+  private ConceptPresentation props_PatternSwitchStatement;
   private ConceptPresentation props_PatternVariableDeclaration;
   private ConceptPresentation props_PatternVariableNode;
   private ConceptPresentation props_PatternVariableProperty;
@@ -39,6 +43,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.AbstractPatternProvider:
+        if (props_AbstractPatternProvider == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_AbstractPatternProvider = cpb.create();
+        }
+        return props_AbstractPatternProvider;
       case LanguageConceptSwitch.ActionAsPattern:
         if (props_ActionAsPattern == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -164,6 +174,27 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_PatternExpression = cpb.create();
         }
         return props_PatternExpression;
+      case LanguageConceptSwitch.PatternReference:
+        if (props_PatternReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, 0x174c7ed18b16ecfdL, "declaration", "", "");
+          props_PatternReference = cpb.create();
+        }
+        return props_PatternReference;
+      case LanguageConceptSwitch.PatternSwitchCase:
+        if (props_PatternSwitchCase == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("PatternSwitchCase");
+          props_PatternSwitchCase = cpb.create();
+        }
+        return props_PatternSwitchCase;
+      case LanguageConceptSwitch.PatternSwitchStatement:
+        if (props_PatternSwitchStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("pattern switch");
+          props_PatternSwitchStatement = cpb.create();
+        }
+        return props_PatternSwitchStatement;
       case LanguageConceptSwitch.PatternVariableDeclaration:
         if (props_PatternVariableDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

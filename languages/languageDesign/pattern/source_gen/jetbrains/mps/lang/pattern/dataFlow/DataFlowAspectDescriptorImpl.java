@@ -22,12 +22,16 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
       case 0:
         return Collections.<IDataFlowBuilder>singletonList(new PatternExpression_DataFlow());
       case 1:
-        return Collections.<IDataFlowBuilder>singletonList(new PatternVariableDeclaration_DataFlow());
+        return Collections.<IDataFlowBuilder>singletonList(new PatternSwitchCase_DataFlow());
       case 2:
+        return Collections.<IDataFlowBuilder>singletonList(new PatternSwitchStatement_DataFlow());
+      case 3:
+        return Collections.<IDataFlowBuilder>singletonList(new PatternVariableDeclaration_DataFlow());
+      case 4:
         return Collections.<IDataFlowBuilder>singletonList(new PropertyPatternVariableDeclaration_DataFlow());
       default:
     }
     return Collections.<IDataFlowBuilder>emptyList();
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L), MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L), MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4791L), MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a9a3416L), MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18a995b51L), MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L), MetaIdFactory.conceptId(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L)).seal();
 }
