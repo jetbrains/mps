@@ -381,7 +381,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.AddDeleteMethodCallArgument">
-    <classNode dependClassName="java.lang.IllegalStateException" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.MethodArgumentsUtil" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.scopes.MethodResolveUtil" />
@@ -11025,7 +11025,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.MethodCallArguments_ListSeparator">
-    <classNode dependClassName="java.lang.IllegalStateException" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.MethodArgumentsUtil" />

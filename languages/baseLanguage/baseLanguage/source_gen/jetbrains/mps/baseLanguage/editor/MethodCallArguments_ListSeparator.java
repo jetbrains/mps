@@ -44,17 +44,17 @@ public class MethodCallArguments_ListSeparator extends KeyMapImpl {
       if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Expression$TP))) {
         return false;
       }
-      return true;
+      return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
     }
     public void execute(final EditorContext editorContext) {
       EditorCell contextCell = editorContext.getContextCell();
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
+    private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      return MethodArgumentsUtil.getMethodArgumentAncestor(node) != null;
+    }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode argument = MethodArgumentsUtil.getMethodArgumentAncestor(node);
-      if (argument == null) {
-        throw new IllegalStateException(node + "");
-      }
       SNode newArgument = SNodeFactoryOperations.insertNewNextSiblingChild(argument, CONCEPTS.Expression$TP);
       MethodResolveUtil.replaceFromEditor(SNodeOperations.cast(SNodeOperations.getParent(argument), CONCEPTS.IMethodCall$ln));
       SelectionUtil.selectNode(editorContext, newArgument);
