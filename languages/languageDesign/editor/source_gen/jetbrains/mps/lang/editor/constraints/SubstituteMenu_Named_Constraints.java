@@ -34,7 +34,7 @@ public class SubstituteMenu_Named_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return MenuScopes.getNamedMenus(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.SubstituteMenu_Named$J);
+            return MenuScopes.getSubstitueMenus(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition());
           }
         };
       }

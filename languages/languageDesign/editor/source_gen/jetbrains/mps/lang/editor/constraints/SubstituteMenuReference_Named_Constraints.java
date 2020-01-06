@@ -42,7 +42,7 @@ public class SubstituteMenuReference_Named_Constraints extends BaseConstraintsDe
           public Scope createScope(final ReferenceConstraintsContext _context) {
             Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), _context.getLinkTargetConcept());
             if (scope == null) {
-              return MenuScopes.getNamedMenus(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.SubstituteMenu_Named$J);
+              return MenuScopes.getSubstitueMenus(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition());
             }
             return scope;
           }
@@ -57,7 +57,6 @@ public class SubstituteMenuReference_Named_Constraints extends BaseConstraintsDe
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SubstituteMenuReference_Named$Ud = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
-    /*package*/ static final SConcept SubstituteMenu_Named$J = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
   }
 
   private static final class LINKS {
