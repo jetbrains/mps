@@ -72,7 +72,7 @@ public class MPSVcsManager implements ProjectComponent {
     if (vcs == null) {
       return false;
     }
-    VcsDirtyScopeImpl scope = new VcsDirtyScopeImpl(vcs, myProject);
+    VcsDirtyScopeImpl scope = new VcsDirtyScopeImpl(vcs);
     scope.addDirtyFile(VcsContextFactory.SERVICE.getInstance().createFilePathOn(vfile));
     ChangeProvider changeProvider = vcs.getChangeProvider();
     if (changeProvider == null) {
