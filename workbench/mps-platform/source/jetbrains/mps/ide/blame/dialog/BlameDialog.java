@@ -209,7 +209,7 @@ public class BlameDialog extends DialogWrapper {
     myCredentialsLabel = new HyperlinkLabel();
     myCredentialsLabel.addHyperlinkListener(e -> {
       if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-        JetBrainsAccountDialogKt.showJetBrainsAccountDialog(getRootPane()).show();
+        JetBrainsAccountDialogKt.askJBAccountCredentials(getRootPane(), myProject);
         updateCredentialsPane();
       }
     });
