@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import jetbrains.mps.classloading.RootClassloaderLookup;
 import com.intellij.ide.plugins.cl.PluginClassLoader;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -61,7 +61,7 @@ public class SetPluginIdToCompileInIdeaModules_Action extends BaseAction {
       if (pluginId != null) {
         SetPluginIdToCompileInIdeaModules_Action.this.setPluginId(module, pluginId, event);
       } else {
-        SetPluginIdToCompileInIdeaModules_Action.this.setPluginId(module, PluginManager.CORE_PLUGIN_ID, event);
+        SetPluginIdToCompileInIdeaModules_Action.this.setPluginId(module, PluginManagerCore.CORE_PLUGIN_ID, event);
       }
     }
   }
