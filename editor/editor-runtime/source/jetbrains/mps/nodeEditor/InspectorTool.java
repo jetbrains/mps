@@ -17,7 +17,7 @@ package jetbrains.mps.nodeEditor;
 
 import com.intellij.ide.DataManager;
 import com.intellij.ide.actions.ActivateToolWindowAction;
-import com.intellij.ide.favoritesTreeView.FavoritesProjectViewPane;
+import com.intellij.ide.favoritesTreeView.FavoritesViewTreeBuilder;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
@@ -92,7 +92,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     }
 
     BiConsumer<String, KeyStroke> removeDefaultKeyStroke = (keymapId, keyStroke) -> {
-      String favoritesViewId = ActivateToolWindowAction.getActionIdForToolWindow(FavoritesProjectViewPane.ID);
+      String favoritesViewId = ActivateToolWindowAction.getActionIdForToolWindow(FavoritesViewTreeBuilder.ID);
       final Keymap keymap = KeymapManager.getInstance().getKeymap(keymapId);
       if (keymap == null) {
         return;
