@@ -120,8 +120,9 @@
               class="com.intellij.codeInsight.daemon.impl.actions.GotoNextElementUnderCaretUsageAction"/>
       <action id="GotoPrevElementUnderCaretUsage"
               class="com.intellij.codeInsight.daemon.impl.actions.GotoPrevElementUnderCaretUsageAction"/>
-      -->
       <group id="ShowRecentFindUsagesGroup" class="com.intellij.find.impl.ShowRecentFindUsagesGroup" popup="true"/>
+      -->
+
 
       <add-to-group group-id="EditMenu" anchor="after" relative-to-action="FindMenuGroup"/>
     </group>

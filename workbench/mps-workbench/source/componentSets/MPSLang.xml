@@ -49,7 +49,7 @@
 
     <component>
       <interface-class>com.intellij.codeInsight.daemon.DaemonCodeAnalyzer</interface-class>
-      <implementation-class>jetbrains.mps.workbench.codeInsight.NullDaemonCodeAnalyzer</implementation-class>
+      <implementation-class>com.intellij.codeInsight.daemon.impl.DaemonCodeAnalyzerImpl</implementation-class>
       <loadForDefaultProject/>
     </component>
     <!--
