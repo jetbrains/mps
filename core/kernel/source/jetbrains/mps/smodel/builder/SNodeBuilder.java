@@ -89,6 +89,11 @@ public class SNodeBuilder implements AbstractNodeBuilder {
     return this;
   }
 
+  @Override
+  public AbstractNodeBuilder initNull() {
+    return initNode(null, null, true);
+  }
+
   public SNodeBuilder initNode(SNode node, @Nullable SAbstractConcept castTo, boolean allowNull) {
     if (myNode != null) {
       throw new IllegalStateException("double initialization");

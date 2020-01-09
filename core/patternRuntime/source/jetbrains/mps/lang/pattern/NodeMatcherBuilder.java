@@ -29,6 +29,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -72,8 +73,20 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     public ExactConceptNodeMatcher(SConcept concept) {
       myConcept = concept;
     }
+    @Nullable
+    private static <T> T getFirst(Iterable<T> iterable) {
+      Iterator<T> iterator = iterable.iterator();
+      if (iterator.hasNext()) {
+        return iterator.next();
+      } else {
+        return null;
+      }
+    }
     @Override
     public boolean match(SNode nodeToMatch) {
+      if (nodeToMatch == null) {
+        return false;
+      }
       if (!nodeToMatch.getConcept().equals(myConcept)) {
         return false;
       }
@@ -97,7 +110,7 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
         }
       }
       for (Entry<SContainmentLink, NodeMatcherWrapper> linkMatcher : myChildMatchers.entrySet()) {
-        if (!linkMatcher.getValue().myMatcher.match(nodeToMatch.getChildren(linkMatcher.getKey()).iterator().next())) {
+        if (!linkMatcher.getValue().myMatcher.match(getFirst(nodeToMatch.getChildren(linkMatcher.getKey())))) {
           return false;
         }
       }
@@ -108,6 +121,18 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     @Override
     public SConcept getConcept() {
       return myConcept;
+    }
+  }
+
+  public static class NullNodeMatcher extends NodeMatcher {
+    @Override
+    public boolean match(SNode nodeToMatch) {
+      return nodeToMatch == null;
+    }
+    @NotNull
+    @Override
+    public SConcept getConcept() {
+      throw new UnsupportedOperationException();
     }
   }
 
@@ -127,6 +152,15 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
       throw new IllegalStateException("double initialization");
     }
     myMatcherWrapper.myMatcher = new ExactConceptNodeMatcher(c);
+    return this;
+  }
+
+  @Override
+  public AbstractNodeBuilder initNull() {
+    if (myMatcherWrapper.myMatcher != null) {
+      throw new IllegalStateException("double initialization");
+    }
+    myMatcherWrapper.myMatcher = new NullNodeMatcher();
     return this;
   }
 

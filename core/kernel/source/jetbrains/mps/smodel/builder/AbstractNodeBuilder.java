@@ -27,6 +27,8 @@ public interface AbstractNodeBuilder {
 
   AbstractNodeBuilder init(SConcept c);
 
+  AbstractNodeBuilder initNull();
+
   void setProperty(SProperty property, @Nullable String value);
 
   void setReference(SReferenceLink link, @Nullable SNodeReference target);
