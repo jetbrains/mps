@@ -305,7 +305,7 @@
         <fileset file="${artifacts.mps}/lib/log4j.jar" />
         <fileset file="${artifacts.mps}/lib/jdom.jar" />
         <fileset file="${artifacts.mps}/lib/trove4j.jar" />
-        <fileset file="${artifacts.mps}/lib/ecj-4.10.jar" />
+        <fileset file="${artifacts.mps}/lib/ecj-4.13.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-console/lang/jetbrains.mps.console.base-generator.jar" />
       </classpath>
     </javac>

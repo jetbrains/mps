@@ -25228,7 +25228,7 @@
       <node concept="13uQ2_" id="5w9VucA$Mg7" role="39821P">
         <node concept="3_J27D" id="5w9VucA$Mg9" role="13uQ07">
           <node concept="3Mxwew" id="4vNfevbfZxr" role="3MwsjC">
-            <property role="3MwjfP" value="ecj-4.10.jar" />
+            <property role="3MwjfP" value="ecj-4.13.jar" />
           </node>
         </node>
       </node>
@@ -25376,6 +25376,20 @@
         <node concept="3_J27D" id="6ek1Cjkmd9K" role="13uQ07">
           <node concept="3Mxwew" id="6ek1Cjkmdb2" role="3MwsjC">
             <property role="3MwjfP" value="platform-serviceContainer.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="66swJMlYWzN" role="39821P">
+        <node concept="3_J27D" id="66swJMlYWzP" role="13uQ07">
+          <node concept="3Mxwew" id="66swJMlYW_m" role="3MwsjC">
+            <property role="3MwjfP" value="platform-statistics.jar" />
+          </node>
+        </node>
+      </node>
+      <node concept="13uQ2_" id="66swJMlYWwM" role="39821P">
+        <node concept="3_J27D" id="66swJMlYWwO" role="13uQ07">
+          <node concept="3Mxwew" id="66swJMlYWyi" role="3MwsjC">
+            <property role="3MwjfP" value="platform-statistics-devkit.jar" />
           </node>
         </node>
       </node>
@@ -25527,7 +25541,7 @@
           <node concept="13uQ2_" id="3UiXxTrwi5$" role="39821P">
             <node concept="3_J27D" id="3UiXxTrwi5_" role="13uQ07">
               <node concept="3Mxwew" id="3UiXxTrwi5C" role="3MwsjC">
-                <property role="3MwjfP" value="ecj-4.10.jar" />
+                <property role="3MwjfP" value="ecj-4.13.jar" />
               </node>
             </node>
           </node>
