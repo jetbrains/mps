@@ -3580,10 +3580,6 @@
                 <node concept="Xl_RD" id="36vIONTtPEk" role="37wK5m">
                   <property role="Xl_RC" value="Select currently running test in tree" />
                 </node>
-                <node concept="10M0yZ" id="1hahyPaupUJ" role="37wK5m">
-                  <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
-                  <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.TrackTests" resolve="TrackTests" />
-                </node>
                 <node concept="3KIgzJ" id="36vIONTtPEn" role="jymVt">
                   <node concept="3clFbS" id="36vIONTtPEo" role="3KIlGz">
                     <node concept="3clFbF" id="36vIONTtPEp" role="3cqZAp">
@@ -3648,6 +3644,10 @@
                   <node concept="2AHcQZ" id="3tYsUK_Sd5L" role="2AJF6D">
                     <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
+                </node>
+                <node concept="10M0yZ" id="6G2DLgKF_95" role="37wK5m">
+                  <ref role="3cqZAo" to="z2i8:~AllIcons$Nodes$Jsf.Renderer" resolve="Renderer" />
+                  <ref role="1PxDUh" to="z2i8:~AllIcons$Nodes$Jsf" resolve="AllIcons.Nodes.Jsf" />
                 </node>
               </node>
             </node>
@@ -4150,10 +4150,6 @@
                 <node concept="Xl_RD" id="36vIONTtPIq" role="37wK5m">
                   <property role="Xl_RC" value="" />
                 </node>
-                <node concept="10M0yZ" id="1hahyPauwck" role="37wK5m">
-                  <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
-                  <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.SelectFirstDefect" resolve="SelectFirstDefect" />
-                </node>
                 <node concept="3KIgzJ" id="36vIONTtPIt" role="jymVt">
                   <node concept="3clFbS" id="36vIONTtPIu" role="3KIlGz">
                     <node concept="3clFbF" id="36vIONTtPIv" role="3cqZAp">
@@ -4218,6 +4214,10 @@
                   <node concept="2AHcQZ" id="3tYsUK_UC2Z" role="2AJF6D">
                     <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
+                </node>
+                <node concept="10M0yZ" id="6G2DLgKF_zE" role="37wK5m">
+                  <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.ToolbarFailed" resolve="ToolbarFailed" />
+                  <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
                 </node>
               </node>
             </node>
