@@ -31,7 +31,6 @@ import jetbrains.mps.workbench.action.ApplicationPlugin;
 import jetbrains.mps.workbench.action.MPSActions;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,8 +41,6 @@ import java.util.Set;
 
 public abstract class BaseApplicationPlugin implements ApplicationPlugin {
   private static final Logger LOG = org.apache.log4j.LogManager.getLogger(BaseApplicationPlugin.class);
-
-  private ActionManagerEx myActionManager = ActionManagerEx.getInstanceEx();
 
   private List<ApplicationPluginPart> myCustomParts;
   private List<BaseGroup> myGroups = new ArrayList<>();
@@ -127,11 +124,11 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
   }
 
   protected void addAction(BaseAction action) {
-    myActionManager.registerAction(action.getActionId(), action, getId());
+    ActionManagerEx.getInstanceEx().registerAction(action.getActionId(), action, getId());
   }
 
   protected void addGroup(BaseGroup group) {
-    myActionManager.registerAction(group.getId(), group, getId());
+    ActionManagerEx.getInstanceEx().registerAction(group.getId(), group, getId());
     myGroups.add(group);
   }
 
