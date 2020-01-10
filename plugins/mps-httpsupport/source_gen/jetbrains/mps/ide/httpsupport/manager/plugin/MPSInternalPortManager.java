@@ -25,7 +25,7 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
   public static int PORT = 63220;
 
   public MPSInternalPortManager() {
-    Registry.addKey(PORT_KEY, "Port for MPS internal requests (i.e. opening node)", "63320", false);
+    Registry.addKey(PORT_KEY, "Port for MPS internal requests (i.e. opening node)", 63320, false);
     RegistryValue value = Registry.get(PORT_KEY);
     PORT = value.asInteger();
     value.addListener(new RegistryValueListener.Adapter() {
