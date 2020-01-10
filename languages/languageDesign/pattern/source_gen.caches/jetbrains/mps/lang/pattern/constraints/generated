@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8at3ad8cwpsvs4kn72vj7i88ubfr1f3">
-  <files names="ActionAsPattern_Constraints.java:ActionStatement_Constraints.java:ConstraintsAspectDescriptor.java:LinkPatternVariableDeclaration_Constraints.java:OrPatternVariableReference_Constraints.java:PatternBuilder_Constraints.java:PatternVariableDeclaration_Constraints.java:PatternVariableReference_Constraints.java:PropertyPatternVariableDeclaration_Constraints.java" />
+<product version="3" modelHash="-3wgm01ohz67hs6qkdkolk9kpav1gs7l">
+  <files names="ActionAsPattern_Constraints.java:ActionStatement_Constraints.java:ConstraintsAspectDescriptor.java:LinkPatternVariableDeclaration_Constraints.java:OrPatternVariableReference_Constraints.java:PatternBuilder_Constraints.java:PatternReference_Constraints.java:PatternVariableDeclaration_Constraints.java:PatternVariableReference_Constraints.java:PropertyPatternVariableDeclaration_Constraints.java" />
 </product>
 

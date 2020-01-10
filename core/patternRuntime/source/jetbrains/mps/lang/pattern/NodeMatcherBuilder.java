@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.lang.pattern;
 
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.builder.AbstractNodeBuilder;
 import jetbrains.mps.util.ListMap;
@@ -184,12 +185,12 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     setPropertyVariable(property, variable, null);
   }
 
-  public void setPropertyVariable(SProperty property, @NotNull Reference<String> variable, @Nullable Pattern pattern) {
+  public void setPropertyVariable(SProperty property, @NotNull Reference<String> variable, @Nullable Predicate<String> predicate) {
     if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
       throw new IllegalStateException();
     }
     ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> {
-      if (pattern == null || pattern.asPredicate().test(value)) {
+      if (predicate == null || predicate.test(value)) {
         variable.set(value);
         return true;
       } else {
@@ -203,8 +204,9 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference ->
-                                                                                             Objects.equals(expectedTarget, sReference.getTargetNodeReference()));
+    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference -> {
+      return Objects.equals(expectedTarget, sReference == null ? null : sReference.getTargetNodeReference());
+    });
   }
 
   public void setReferenceVariable(SReferenceLink link, @NotNull Reference<SNode> variable) {
@@ -219,11 +221,19 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
 
   @Override
   public void setReferenceTarget(SReferenceLink link, @Nullable SNode target) {
+    if (target != null && (target.getModel() == null || target.getModel().getRepository() == null)) {
+      setReference(link, target.getReference());
+    }
     if (!(myMatcherWrapper.myMatcher instanceof ExactConceptNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference ->
-                                                                                             Objects.equals(target, sReference.getTargetNode()));
+    ((ExactConceptNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference -> {
+      if (target == null) {
+        return sReference == null;
+      } else {
+        return sReference != null && target.equals(sReference.getTargetNode());
+      }
+    });
   }
 
   private ExactConceptNodeMatcher getMyExactConceptMatcher() {
