@@ -408,7 +408,7 @@
   </node>
   <node concept="1TIwiD" id="53SOuJl2VUK">
     <property role="EcuMT" value="5834644128080314032" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <property role="TrG5h" value="PatternBuilderClassifierMember" />
     <property role="34LRSv" value="pattern" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
@@ -438,7 +438,7 @@
   </node>
   <node concept="1TIwiD" id="1tcvH6aAlHh">
     <property role="EcuMT" value="1678856199540923217" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <property role="TrG5h" value="PatternSwitchStatement" />
     <property role="34LRSv" value="pattern switch" />
     <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
@@ -468,8 +468,9 @@
   </node>
   <node concept="1TIwiD" id="1tcvH6aAzgm">
     <property role="EcuMT" value="1678856199540978710" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <property role="TrG5h" value="PatternSwitchCase" />
+    <property role="34LRSv" value="match" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="gVKbo18" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -488,14 +489,14 @@
   </node>
   <node concept="1TIwiD" id="1tcvH6b5INV">
     <property role="EcuMT" value="1678856199549152507" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <property role="TrG5h" value="AbstractPatternProvider" />
     <property role="R5$K7" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
   <node concept="1TIwiD" id="1tcvH6b5INW">
     <property role="EcuMT" value="1678856199549152508" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <property role="TrG5h" value="PatternReference" />
     <ref role="1TJDcQ" node="1tcvH6b5INV" resolve="AbstractPatternProvider" />
     <node concept="1TJgyj" id="1tcvH6b5INX" role="1TKVEi">
@@ -503,6 +504,19 @@
       <property role="20kJfa" value="declaration" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="53SOuJl2VUK" resolve="PatternBuilderClassifierMember" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="7KQFBrEtJoV">
+    <property role="EcuMT" value="8950533135208478267" />
+    <property role="3GE5qa" value="light.bL" />
+    <property role="TrG5h" value="InlinePatternProvider" />
+    <ref role="1TJDcQ" node="1tcvH6b5INV" resolve="AbstractPatternProvider" />
+    <node concept="1TJgyj" id="7KQFBrEtJoX" role="1TKVEi">
+      <property role="IQ2ns" value="8950533135208478269" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="pattern" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2g69lt1$JCp" resolve="PatternBuilder" />
     </node>
   </node>
 </model>

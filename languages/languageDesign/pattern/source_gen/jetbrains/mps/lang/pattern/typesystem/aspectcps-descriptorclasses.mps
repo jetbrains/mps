@@ -3528,7 +3528,7 @@
     </node>
   </node>
   <node concept="312cEu" id="jS">
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <property role="TrG5h" value="typeof_PatternSwitchStatement_InferenceRule" />
     <node concept="3clFbW" id="jT" role="jymVt">
       <node concept="3clFbS" id="k2" role="3clF47">

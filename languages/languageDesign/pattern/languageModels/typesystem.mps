@@ -577,7 +577,7 @@
   </node>
   <node concept="1YbPZF" id="1tcvH6aAm5g">
     <property role="TrG5h" value="typeof_PatternSwitchStatement" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <node concept="3clFbS" id="1tcvH6aAm5h" role="18ibNy">
       <node concept="1ZobV4" id="1tcvH6aAnaJ" role="3cqZAp">
         <property role="3wDh2S" value="true" />

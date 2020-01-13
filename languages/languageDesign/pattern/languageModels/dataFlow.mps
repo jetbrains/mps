@@ -178,7 +178,7 @@
     </node>
   </node>
   <node concept="3_zdsH" id="1tcvH6aAppj">
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <ref role="3_znuS" to="tp3t:1tcvH6aAlHh" resolve="PatternSwitchStatement" />
     <node concept="3__wT9" id="1tcvH6aAppk" role="3_A6iZ">
       <node concept="3clFbS" id="1tcvH6aAppl" role="2VODD2">
@@ -263,7 +263,7 @@
     </node>
   </node>
   <node concept="3_zdsH" id="1tcvH6aAzkx">
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <ref role="3_znuS" to="tp3t:1tcvH6aAzgm" resolve="PatternSwitchCase" />
     <node concept="3__wT9" id="1tcvH6aAzky" role="3_A6iZ">
       <node concept="3clFbS" id="1tcvH6aAzkz" role="2VODD2">

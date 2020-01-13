@@ -590,7 +590,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="3fHwAfrAIfS">
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <ref role="1M2myG" to="tp3t:1tcvH6b5INW" resolve="PatternReference" />
     <node concept="1N5Pfh" id="3fHwAfrAIjP" role="1Mr941">
       <ref role="1N5Vy1" to="tp3t:1tcvH6b5INX" resolve="declaration" />

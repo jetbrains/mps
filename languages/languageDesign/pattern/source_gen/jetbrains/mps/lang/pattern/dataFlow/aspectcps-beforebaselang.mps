@@ -1436,7 +1436,7 @@
   </node>
   <node concept="312cEu" id="7j">
     <property role="TrG5h" value="PatternSwitchCase_DataFlow" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <node concept="3Tm1VV" id="7k" role="1B3o_S">
       <node concept="cd27G" id="7o" role="lGtFl">
         <node concept="3u3nmq" id="7p" role="cd27D">
@@ -1622,7 +1622,7 @@
   </node>
   <node concept="312cEu" id="8p">
     <property role="TrG5h" value="PatternSwitchStatement_DataFlow" />
-    <property role="3GE5qa" value="light" />
+    <property role="3GE5qa" value="light.bL" />
     <node concept="3Tm1VV" id="8q" role="1B3o_S">
       <node concept="cd27G" id="8u" role="lGtFl">
         <node concept="3u3nmq" id="8v" role="cd27D">

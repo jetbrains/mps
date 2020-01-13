@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7rhj8qy59uuxii2ur2ibiajauina6pe">
+<product version="3" modelHash="5a0weqvyjy2kyr3wn45tgiq343sm575">
   <files names="TypesystemDescriptor.java:typeof_AsPattern_InferenceRule.java:typeof_LinkPatternVariableDeclaration_InferenceRule.java:typeof_ListPattern_InferenceRule.java:typeof_PatternExpression_InferenceRule.java:typeof_PatternSwitchStatement_InferenceRule.java:typeof_PatternVariableDeclaration_InferenceRule.java:typeof_PropertyPatternVariableDeclaration_InferenceRule.java" />
 </product>
 

@@ -16,6 +16,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GeneratorInternal_ChildDescriptor;
   private ConceptPresentation props_GeneratorInternal_PropertyDescriptor;
   private ConceptPresentation props_GeneratorInternal_ReferenceDescriptor;
+  private ConceptPresentation props_InlinePatternProvider;
   private ConceptPresentation props_InsertAfterPosition;
   private ConceptPresentation props_InsertBeforePosition;
   private ConceptPresentation props_InsertPosition;
@@ -90,6 +91,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_GeneratorInternal_ReferenceDescriptor = cpb.create();
         }
         return props_GeneratorInternal_ReferenceDescriptor;
+      case LanguageConceptSwitch.InlinePatternProvider:
+        if (props_InlinePatternProvider == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("InlinePatternProvider");
+          props_InlinePatternProvider = cpb.create();
+        }
+        return props_InlinePatternProvider;
       case LanguageConceptSwitch.InsertAfterPosition:
         if (props_InsertAfterPosition == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -184,7 +192,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.PatternSwitchCase:
         if (props_PatternSwitchCase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("PatternSwitchCase");
+          cpb.rawPresentation("match");
           props_PatternSwitchCase = cpb.create();
         }
         return props_PatternSwitchCase;
