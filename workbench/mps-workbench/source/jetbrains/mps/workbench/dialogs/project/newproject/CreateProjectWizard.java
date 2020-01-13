@@ -504,7 +504,8 @@ public final class CreateProjectWizard extends DialogWrapper {
         myCurrentTemplateItem.getTemplateFiller().fillProjectWithModules(project.getComponent(MPSProject.class));
         factory.activate();
       } catch (ProjectNotCreatedException e) {
-        Messages.showErrorDialog(getContentPane(), e.getMessage());
+        final String message = e.getMessage() != null ? e.getMessage() : "No message was provided by exception";
+        Messages.showErrorDialog(message, "Project Creation Failed");
       }
     });
   }
