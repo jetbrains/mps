@@ -67,7 +67,7 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
     List<SNode> result = new ArrayList<SNode>();
     for (ReadInstruction read : SetSequence.fromSet(this.myReadInstructions)) {
       SNode node = (SNode) read.getSource();
-      if (!((SNodeOperations.hasRole(node, LINKS.expression$7Rjy) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.UnaryMinus$Uo)))) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.OperationAssignmentExpression$Ue))) {
+      if (!((SNodeOperations.hasRole(node, LINKS.expression$7Rjy) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.UnaryMinus$Uo)))) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractUnaryNumberOperation$pk)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.OperationAssignmentExpression$Ue))) {
         ListSequence.fromList(result).addElement((node));
       }
     }
@@ -94,6 +94,7 @@ public class InlineVariableAssignmentRefactoring extends InlineVariableRefactori
     /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
     /*package*/ static final SConcept OperationAssignmentExpression$Ue = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44cc327d2ca5cb08L, "jetbrains.mps.baseLanguage.structure.OperationAssignmentExpression");
     /*package*/ static final SConcept UnaryMinus$Uo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
+    /*package*/ static final SConcept AbstractUnaryNumberOperation$pk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, "jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
   }

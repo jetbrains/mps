@@ -4951,11 +4951,11 @@
                               </node>
                               <node concept="3cpWs3" id="8qS5$SbLq" role="37vLTx">
                                 <node concept="Xl_RD" id="8qS5$SbLr" role="3uHU7w">
-                                  <property role="Xl_RC" value=" is never used" />
+                                  <property role="Xl_RC" value=" can be inlined" />
                                 </node>
                                 <node concept="3cpWs3" id="8qS5$SbLs" role="3uHU7B">
                                   <node concept="Xl_RD" id="8qS5$SbLt" role="3uHU7B">
-                                    <property role="Xl_RC" value="Variable " />
+                                    <property role="Xl_RC" value="No occurrences of variable " />
                                   </node>
                                   <node concept="37vLTw" id="3GM_nagTs$u" role="3uHU7w">
                                     <ref role="3cqZAo" node="8qS5$SbL8" resolve="variableName" />

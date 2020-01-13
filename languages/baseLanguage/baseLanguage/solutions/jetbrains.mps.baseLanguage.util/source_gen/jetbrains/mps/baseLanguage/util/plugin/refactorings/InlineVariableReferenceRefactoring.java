@@ -52,7 +52,7 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
           return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$2ky6), variable);
         }
       }).isNotEmpty()) {
-        // Assigments referring to the variable from their right side should not be inlined, since the resulting code will have different semantics than the original 
+        // Assignments referring to the variable from their right side should not be inlined, since the resulting code will have different semantics than the original 
         return myAssignment;
       }
       nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2));
@@ -60,7 +60,7 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
       this.optimizeAssignment(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), variable);
     } else {
       // ATM we do not inline if the last update was through a++ nor a+=1 type-of expressions 
-      return myAssignment;
+      return myReference;
     }
     InlinePrecedenceUtil.parenthesiseIfNecessary(nodeToSelect);
     this.optimizeDeclaration(variable);

@@ -137,7 +137,7 @@ public class InlineLocalVariable_Action extends BaseAction {
           String variableName = SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1);
           int nodesCount = ListSequence.fromList(inlineVARef.getNodesToRefactor()).count();
           if (nodesCount == 0) {
-            infoMessage.value = "Variable " + variableName + " is never used";
+            infoMessage.value = "No occurrences of variable " + variableName + " can be inlined";
           } else {
             if (nodesCount > 1) {
               yesNoMessage.value = "Inline local variable '" + variableName + "'? (" + NameUtil.formatNumericalString(nodesCount, "occurrence") + ")";
