@@ -53,7 +53,7 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
         }
       }).isNotEmpty()) {
         // Assignments referring to the variable from their right side should not be inlined, since the resulting code will have different semantics than the original 
-        return myAssignment;
+        return myReference;
       }
       nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$J0E2));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
