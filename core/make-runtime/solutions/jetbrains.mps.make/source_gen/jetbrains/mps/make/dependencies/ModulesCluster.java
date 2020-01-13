@@ -166,58 +166,43 @@ public class ModulesCluster {
     rv.requires(reqs);
   }
 
-  /*package*/ class ModuleDeps {
+  /*package*/ static class ModuleDeps {
     private final SModule myModule;
-    private final SModuleReference myModuleRef;
-    /*package*/ List<SModuleReference> dependent = ListSequence.fromList(new LinkedList<SModuleReference>());
-    /*package*/ List<SModuleReference> required = ListSequence.fromList(new LinkedList<SModuleReference>());
+    private List<ModuleDeps> myDependent = ListSequence.fromList(new LinkedList<ModuleDeps>());
+    private List<ModuleDeps> myRequired = ListSequence.fromList(new LinkedList<ModuleDeps>());
     /*package*/ final Set<SLanguage> usedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
 
     public ModuleDeps(SModule mod) {
       myModule = mod;
-      myModuleRef = mod.getModuleReference();
-      // XXX what's next for? 
-      ListSequence.fromList(dependent).addElement(myModuleRef);
-      ListSequence.fromList(required).addElement(myModuleRef);
     }
 
     /*package*/ SModule getModule() {
       return myModule;
     }
 
-    /*package*/ Iterable<ModuleDeps> dependent() {
-      return ListSequence.fromList(dependent).select(new ISelector<SModuleReference, ModuleDeps>() {
-        public ModuleDeps select(SModuleReference it) {
-          return MapSequence.fromMap(myDepsGraph).get(it);
-        }
-      });
+    public Iterable<ModuleDeps> dependent() {
+      // AFAIU, self-dependency is a result of MPS-15018 fix (a3220e6e), though not sure I get the reason how come this helps 
+      return ListSequence.fromList(myDependent).concat(Sequence.fromIterable(Sequence.<ModuleDeps>singleton(this)));
     }
-    /*package*/ Iterable<ModuleDeps> required() {
-      return ListSequence.fromList(required).select(new ISelector<SModuleReference, ModuleDeps>() {
-        public ModuleDeps select(SModuleReference it) {
-          return MapSequence.fromMap(myDepsGraph).get(it);
-        }
-      });
+    public Iterable<ModuleDeps> required() {
+      return ListSequence.fromList(myRequired).concat(Sequence.fromIterable(Sequence.<ModuleDeps>singleton(this)));
     }
 
-    public void requires(Iterable<ModuleDeps> others) {
-      ListSequence.fromList(required).addSequence(Sequence.fromIterable(others).select(new ISelector<ModuleDeps, SModuleReference>() {
-        public SModuleReference select(ModuleDeps it) {
-          return it.myModuleRef;
-        }
-      }));
+    /*package*/ void requires(Iterable<ModuleDeps> others) {
+      ListSequence.fromList(myRequired).addSequence(Sequence.fromIterable(others));
       for (ModuleDeps o : others) {
         o.dependsFrom(this);
       }
     }
 
     private void dependsFrom(ModuleDeps other) {
-      ListSequence.fromList(dependent).addElement(other.myModuleRef);
+      assert !(ListSequence.fromList(myDependent).contains(other)) : "duplicated dependency";
+      ListSequence.fromList(myDependent).addElement(other);
     }
   }
 
   /*package*/ static class ModulesGraph extends GraphAnalyzer<ModuleDeps> {
-    private List<ModuleDeps> myAllVertices;
+    private final List<ModuleDeps> myAllVertices;
 
     public ModulesGraph(Iterable<ModuleDeps> allVertices) {
       myAllVertices = Sequence.fromIterable(allVertices).toListSequence();
@@ -273,15 +258,7 @@ public class ModulesCluster {
 
       /*package*/ boolean independent(ModulesGraph.Cycle other) {
         // name of the method is pure guess 
-        return ListSequence.fromList(other.myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
-          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
-            return mr.required();
-          }
-        }).intersect(ListSequence.fromList(myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
-          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
-            return mr.dependent();
-          }
-        })).isEmpty();
+        return Sequence.fromIterable(other.allRequired()).intersect(Sequence.fromIterable(allDependent())).isEmpty();
       }
 
       /*package*/ ModulesGraph.Cycle concat(ModulesGraph.Cycle other) {
@@ -294,6 +271,21 @@ public class ModulesCluster {
             return md.getModule();
           }
         }).toListSequence();
+      }
+
+      private Iterable<ModuleDeps> allRequired() {
+        return ListSequence.fromList(myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
+          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
+            return mr.required();
+          }
+        });
+      }
+      private Iterable<ModuleDeps> allDependent() {
+        return ListSequence.fromList(myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
+          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
+            return mr.dependent();
+          }
+        });
       }
     }
   }
