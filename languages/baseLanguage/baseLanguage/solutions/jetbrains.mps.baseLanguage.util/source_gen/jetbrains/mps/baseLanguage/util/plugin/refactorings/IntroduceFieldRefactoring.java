@@ -12,9 +12,10 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -44,6 +45,11 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
     }
     if (this.myFieldInitialization == FieldInitializationPlace.CONSTRUCTOR) {
       SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$IY, false, false);
+
+      if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$IY, "4_LVZ3pCvsd")))).isEmpty()) {
+        createTheFirstConstructor(classConcept);
+      }
+
       for (SNode constructor : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$IY, "4_LVZ3pCvsd"))))) {
         List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$WIlu), LINKS.statement$WHn8);
         if (ListSequence.fromList(statement).isNotEmpty()) {
@@ -61,9 +67,18 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
     }
     return newDeclaration;
   }
+
+  private void createTheFirstConstructor(SNode classConcept) {
+    SNode c = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"));
+    SLinkOperations.setTarget(c, LINKS.visibility$2GiC, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")));
+    SLinkOperations.setTarget(c, LINKS.body$WIlu, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+    SLinkOperations.setTarget(c, LINKS.returnType$WIkw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
+    MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, c);
+  }
+
   @Override
   public void replaceNode(SNode node, SNode declaration) {
-    SNodeOperations.replaceWithAnother(node, _quotation_createNode_baxqxe_a0a0a2(declaration));
+    SNodeOperations.replaceWithAnother(node, _quotation_createNode_baxqxe_a0a0a5(declaration));
   }
   private static SNode _quotation_createNode_baxqxe_a0a0c0b(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -128,7 +143,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), quotedNode_4);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_baxqxe_a0a0a2(Object parameter_1) {
+  private static SNode _quotation_createNode_baxqxe_a0a0a5(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -154,5 +169,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
     /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink returnType$WIkw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 }
