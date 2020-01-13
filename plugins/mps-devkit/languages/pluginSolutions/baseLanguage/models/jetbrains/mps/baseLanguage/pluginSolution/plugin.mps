@@ -5666,16 +5666,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="8qS5$SbO$" role="3cqZAp">
-          <node concept="2OqwBi" id="8qS5$SbO_" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTsjo" role="2Oq$k0">
-              <ref role="3cqZAo" node="8qS5$SbOg" resolve="dialog" />
-            </node>
-            <node concept="liA8E" id="8qS5$SbOB" role="2OqNvi">
-              <ref role="37wK5l" to="jkm4:~DialogWrapper.pack()" resolve="pack" />
-            </node>
-          </node>
-        </node>
       </node>
     </node>
   </node>
