@@ -32,7 +32,7 @@ import jetbrains.mps.generator.impl.plan.ModelContentUtil;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import java.util.Collections;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.LinkedList;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 
@@ -187,7 +187,7 @@ __switch__:
 
     Set<SLanguage> moduleUsedLanguages;
     // inv: reference existing vertexes only 
-    Set<SModuleReference> reqs = SetSequence.fromSet(new HashSet<SModuleReference>());
+    Set<ModuleDeps> reqs = SetSequence.fromSet(new HashSet<ModuleDeps>());
     if (mod instanceof Generator) {
       Generator generator = (Generator) mod;
       // Unfortunately, GMDM doesn't recognize generator's source language as COMPILE or VISIBLE dependency, therefore have to add it here 
@@ -220,15 +220,17 @@ __switch__:
       SetSequence.fromSet(rv.usedLanguages).addElement(language);
       if (MapSequence.fromMap(languageModules).containsKey(language)) {
         // module uses a language which is part of the make sequence 
-        Language lm = as_7qjyo9_a0a1a4a01a41(MapSequence.fromMap(languageModules).get(language).getModule(), Language.class);
+        ModuleDeps lmd = MapSequence.fromMap(languageModules).get(language);
+        Language lm = as_7qjyo9_a0a2a4a01a41(lmd.getModule(), Language.class);
         // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators... 
         // Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged, 
         // and we make RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first 
         // there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call 
-        SetSequence.fromSet(reqs).addElement(lm.getModuleReference());
+        SetSequence.fromSet(reqs).addElement(lmd);
         for (Generator g : CollectionSequence.fromCollection(lm.getGenerators())) {
-          if (MapSequence.fromMap(myDepsGraph).containsKey(g.getModuleReference())) {
-            SetSequence.fromSet(reqs).addElement(g.getModuleReference());
+          ModuleDeps gmd = MapSequence.fromMap(myDepsGraph).get(g.getModuleReference());
+          if (gmd != null) {
+            SetSequence.fromSet(reqs).addElement(gmd);
           } else {
             // we aren't going to clusterize required generator, but perhaps we do some of its dependencies 
             modExt.add(g);
@@ -251,40 +253,51 @@ __switch__:
     SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE)));
     SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE)));
     // record edges only to existing vertexes 
-    SetSequence.fromSet(reqs).addSequence(SetSequence.fromSet(reqmods).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule m) {
-        return m.getModuleReference();
+    SetSequence.fromSet(reqs).addSequence(SetSequence.fromSet(reqmods).select(new ISelector<SModule, ModuleDeps>() {
+      public ModuleDeps select(SModule m) {
+        return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference());
       }
-    }).where(new IWhereFilter<SModuleReference>() {
-      public boolean accept(SModuleReference it) {
-        return MapSequence.fromMap(myDepsGraph).containsKey(it);
-      }
-    }));
+    }).where(new NotNullWhereFilter<ModuleDeps>()));
 
 
     // XXX perhaps, we shall respect target languages of used languages as well, as they may appear while generating this module. 
     //     We need them anyway to build required facets in ModulesClusterizer.allLanguagesToActivateFacets 
 
-    ListSequence.fromList(rv.required).addSequence(SetSequence.fromSet(reqs));
-    for (SModuleReference req : rv.required) {
-      ListSequence.fromList(MapSequence.fromMap(myDepsGraph).get(req).dependent).addElement(rv.getModule().getModuleReference());
-    }
+    rv.requires(reqs);
   }
 
   /*package*/ static class ModuleDeps {
     private final SModule myModule;
+    private final SModuleReference myModuleRef;
     /*package*/ List<SModuleReference> dependent = ListSequence.fromList(new LinkedList<SModuleReference>());
     /*package*/ List<SModuleReference> required = ListSequence.fromList(new LinkedList<SModuleReference>());
     /*package*/ final Set<SLanguage> usedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
 
     public ModuleDeps(SModule mod) {
       myModule = mod;
-      ListSequence.fromList(dependent).addElement(mod.getModuleReference());
-      ListSequence.fromList(required).addElement(mod.getModuleReference());
+      myModuleRef = mod.getModuleReference();
+      // XXX what's next for? 
+      ListSequence.fromList(dependent).addElement(myModuleRef);
+      ListSequence.fromList(required).addElement(myModuleRef);
     }
 
     /*package*/ SModule getModule() {
       return myModule;
+    }
+
+    public void requires(Iterable<ModuleDeps> others) {
+      ListSequence.fromList(required).addSequence(Sequence.fromIterable(others).select(new ISelector<ModuleDeps, SModuleReference>() {
+        public SModuleReference select(ModuleDeps it) {
+          return it.myModuleRef;
+        }
+      }));
+      for (ModuleDeps o : others) {
+        o.dependsFrom(this);
+      }
+    }
+
+    private void dependsFrom(ModuleDeps other) {
+      ListSequence.fromList(dependent).addElement(other.myModuleRef);
     }
   }
 
@@ -304,7 +317,7 @@ __switch__:
       return MapSequence.fromMap(myDepsGraph).keySet();
     }
   }
-  private static <T> T as_7qjyo9_a0a1a4a01a41(Object o, Class<T> type) {
+  private static <T> T as_7qjyo9_a0a2a4a01a41(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }
