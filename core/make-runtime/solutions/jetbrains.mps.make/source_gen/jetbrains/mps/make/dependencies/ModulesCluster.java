@@ -149,11 +149,9 @@ public class ModulesCluster {
 
     // XXX in fact, don't need to build complete set of dependencies, more effective is to follow one by one to see if it's vertex in the graph or it's known not to give any new dependency 
     GlobalModuleDependenciesManager depman = new GlobalModuleDependenciesManager(modExt);
-    Set<SModule> reqmods = SetSequence.fromSet(new HashSet<SModule>());
-    SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE)));
-    SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE)));
+    Iterable<SModule> reqmods = depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
     // record edges only to existing vertexes 
-    SetSequence.fromSet(reqs).addSequence(SetSequence.fromSet(reqmods).select(new ISelector<SModule, ModuleDeps>() {
+    SetSequence.fromSet(reqs).addSequence(Sequence.fromIterable(reqmods).select(new ISelector<SModule, ModuleDeps>() {
       public ModuleDeps select(SModule m) {
         return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference());
       }

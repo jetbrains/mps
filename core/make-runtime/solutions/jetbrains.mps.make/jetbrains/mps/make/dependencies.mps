@@ -2699,60 +2699,23 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="13dUOCgvquG" role="3cqZAp">
-          <node concept="3cpWsn" id="13dUOCgvquH" role="3cpWs9">
+        <node concept="3cpWs8" id="39$LJdZXwDo" role="3cqZAp">
+          <node concept="3cpWsn" id="39$LJdZXwDp" role="3cpWs9">
             <property role="TrG5h" value="reqmods" />
-            <node concept="2ShNRf" id="4D0ZcWI8fcO" role="33vP2m">
-              <node concept="2i4dXS" id="4D0ZcWI8fcP" role="2ShVmc">
-                <node concept="3uibUv" id="4D0ZcWI8fcQ" role="HW$YZ">
-                  <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-                </node>
-              </node>
-            </node>
-            <node concept="2hMVRd" id="13dUOCgvquI" role="1tU5fm">
-              <node concept="3uibUv" id="13dUOCgvquK" role="2hN53Y">
+            <node concept="A3Dl8" id="39$LJdZXChs" role="1tU5fm">
+              <node concept="3uibUv" id="39$LJdZXChu" role="A3Ik2">
                 <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
               </node>
             </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="13dUOCgvrC1" role="3cqZAp">
-          <node concept="2OqwBi" id="13dUOCgvrC3" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTyVd" role="2Oq$k0">
-              <ref role="3cqZAo" node="13dUOCgvquH" resolve="reqmods" />
-            </node>
-            <node concept="X8dFx" id="TfU9m6v8b5" role="2OqNvi">
-              <node concept="2OqwBi" id="13dUOCgvrCi" role="25WWJ7">
-                <node concept="37vLTw" id="3GM_nagTzQc" role="2Oq$k0">
-                  <ref role="3cqZAo" node="13dUOCgvrCa" resolve="depman" />
-                </node>
-                <node concept="liA8E" id="2u_1aB3ByYo" role="2OqNvi">
-                  <ref role="37wK5l" to="gp7a:~GlobalModuleDependenciesManager.getModules(jetbrains.mps.project.dependency.GlobalModuleDependenciesManager$Deptype)" resolve="getModules" />
-                  <node concept="Rm8GO" id="2u_1aB3ByYq" role="37wK5m">
-                    <ref role="1Px2BO" to="gp7a:~GlobalModuleDependenciesManager$Deptype" resolve="GlobalModuleDependenciesManager.Deptype" />
-                    <ref role="Rm8GQ" to="gp7a:~GlobalModuleDependenciesManager$Deptype.COMPILE" resolve="COMPILE" />
-                  </node>
-                </node>
+            <node concept="2OqwBi" id="39$LJdZXwDq" role="33vP2m">
+              <node concept="37vLTw" id="39$LJdZXwDr" role="2Oq$k0">
+                <ref role="3cqZAo" node="13dUOCgvrCa" resolve="depman" />
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="13dUOCgvrCo" role="3cqZAp">
-          <node concept="2OqwBi" id="13dUOCgvrCq" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTtAK" role="2Oq$k0">
-              <ref role="3cqZAo" node="13dUOCgvquH" resolve="reqmods" />
-            </node>
-            <node concept="X8dFx" id="TfU9m6vaOj" role="2OqNvi">
-              <node concept="2OqwBi" id="13dUOCgvrCx" role="25WWJ7">
-                <node concept="37vLTw" id="3GM_nagT_2C" role="2Oq$k0">
-                  <ref role="3cqZAo" node="13dUOCgvrCa" resolve="depman" />
-                </node>
-                <node concept="liA8E" id="2u_1aB3ByYu" role="2OqNvi">
-                  <ref role="37wK5l" to="gp7a:~GlobalModuleDependenciesManager.getModules(jetbrains.mps.project.dependency.GlobalModuleDependenciesManager$Deptype)" resolve="getModules" />
-                  <node concept="Rm8GO" id="2u_1aB3ByYw" role="37wK5m">
-                    <ref role="1Px2BO" to="gp7a:~GlobalModuleDependenciesManager$Deptype" resolve="GlobalModuleDependenciesManager.Deptype" />
-                    <ref role="Rm8GQ" to="gp7a:~GlobalModuleDependenciesManager$Deptype.VISIBLE" resolve="VISIBLE" />
-                  </node>
+              <node concept="liA8E" id="39$LJdZXwDs" role="2OqNvi">
+                <ref role="37wK5l" to="gp7a:~GlobalModuleDependenciesManager.getModules(jetbrains.mps.project.dependency.GlobalModuleDependenciesManager$Deptype)" resolve="getModules" />
+                <node concept="Rm8GO" id="39$LJdZXwDt" role="37wK5m">
+                  <ref role="1Px2BO" to="gp7a:~GlobalModuleDependenciesManager$Deptype" resolve="GlobalModuleDependenciesManager.Deptype" />
+                  <ref role="Rm8GQ" to="gp7a:~GlobalModuleDependenciesManager$Deptype.COMPILE" resolve="COMPILE" />
                 </node>
               </node>
             </node>
@@ -2788,8 +2751,8 @@
             <node concept="X8dFx" id="TfU9m6z1YG" role="2OqNvi">
               <node concept="2OqwBi" id="7LvIcpX3PGb" role="25WWJ7">
                 <node concept="2OqwBi" id="TfU9m6wrMH" role="2Oq$k0">
-                  <node concept="37vLTw" id="TfU9m6wrMI" role="2Oq$k0">
-                    <ref role="3cqZAo" node="13dUOCgvquH" resolve="reqmods" />
+                  <node concept="37vLTw" id="39$LJdZXOsG" role="2Oq$k0">
+                    <ref role="3cqZAo" node="39$LJdZXwDp" resolve="reqmods" />
                   </node>
                   <node concept="3$u5V9" id="TfU9m6wrMJ" role="2OqNvi">
                     <node concept="1bVj0M" id="TfU9m6wrMK" role="23t8la">
