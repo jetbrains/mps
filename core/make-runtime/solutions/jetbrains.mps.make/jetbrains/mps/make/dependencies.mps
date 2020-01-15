@@ -790,8 +790,8 @@
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="7LvIcpX4EF0" role="2OqNvi">
-                <ref role="37wK5l" node="7LvIcpX4xjA" resolve="compactTotalOrder" />
+              <node concept="liA8E" id="5wqU3r7yBbb" role="2OqNvi">
+                <ref role="37wK5l" node="5wqU3r7ylxD" resolve="compactTotalOrder" />
               </node>
             </node>
           </node>
@@ -3402,9 +3402,107 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="5wqU3r7yjpb" role="jymVt" />
+      <node concept="3clFb_" id="5wqU3r7ylxD" role="jymVt">
+        <property role="TrG5h" value="compactTotalOrder" />
+        <node concept="3clFbS" id="5wqU3r7ylxG" role="3clF47">
+          <node concept="3SKdUt" id="5wqU3r7y$8W" role="3cqZAp">
+            <node concept="1PaTwC" id="5wqU3r7y$8X" role="3ndbpf">
+              <node concept="3oM_SD" id="5wqU3r7y$8Z" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y$Yp" role="1PaTwD">
+                <property role="3oM_SC" value="compact()" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y$YG" role="1PaTwD">
+                <property role="3oM_SC" value="code" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y$YK" role="1PaTwD">
+                <property role="3oM_SC" value="moved" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y$YX" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y$Z3" role="1PaTwD">
+                <property role="3oM_SC" value="GraphAnalyzer," />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y$ZM" role="1PaTwD">
+                <property role="3oM_SC" value="no" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y_03" role="1PaTwD">
+                <property role="3oM_SC" value="need" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7y$Zy" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7yAUt" role="1PaTwD">
+                <property role="3oM_SC" value="use" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7yAUK" role="1PaTwD">
+                <property role="3oM_SC" value="old" />
+              </node>
+              <node concept="3oM_SD" id="5wqU3r7yAV4" role="1PaTwD">
+                <property role="3oM_SC" value="method" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs8" id="5wqU3r7yr6E" role="3cqZAp">
+            <node concept="3cpWsn" id="5wqU3r7yr6F" role="3cpWs9">
+              <property role="TrG5h" value="order" />
+              <node concept="_YKpA" id="5wqU3r7yr6G" role="1tU5fm">
+                <node concept="_YKpA" id="5wqU3r7yr6H" role="_ZDj9">
+                  <node concept="3uibUv" id="5wqU3r7yr6I" role="_ZDj9">
+                    <ref role="3uigEE" node="6QF8nMT33HA" resolve="ModulesCluster.ModuleDeps" />
+                  </node>
+                </node>
+              </node>
+              <node concept="1rXfSq" id="5wqU3r7yr6J" role="33vP2m">
+                <ref role="37wK5l" to="rk9m:4$fVFMMk39w" resolve="totalOrder" />
+                <node concept="3clFbT" id="5wqU3r7yroF" role="37wK5m">
+                  <property role="3clFbU" value="true" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="5wqU3r7yrBJ" role="3cqZAp">
+            <node concept="2OqwBi" id="5wqU3r7yxtx" role="3cqZAk">
+              <node concept="2OqwBi" id="5wqU3r7ytzF" role="2Oq$k0">
+                <node concept="37vLTw" id="5wqU3r7yshi" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5wqU3r7yr6F" resolve="order" />
+                </node>
+                <node concept="3$u5V9" id="5wqU3r7yuG8" role="2OqNvi">
+                  <node concept="1bVj0M" id="5wqU3r7yuGa" role="23t8la">
+                    <node concept="3clFbS" id="5wqU3r7yuGb" role="1bW5cS">
+                      <node concept="3clFbF" id="5wqU3r7yvFE" role="3cqZAp">
+                        <node concept="1rXfSq" id="5wqU3r7yvFD" role="3clFbG">
+                          <ref role="37wK5l" node="7LvIcpX8AXu" resolve="toCycle" />
+                          <node concept="37vLTw" id="5wqU3r7ywyl" role="37wK5m">
+                            <ref role="3cqZAo" node="5wqU3r7yuGc" resolve="it" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="Rh6nW" id="5wqU3r7yuGc" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="5wqU3r7yuGd" role="1tU5fm" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="ANE8D" id="5wqU3r7yy$3" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+        <node concept="_YKpA" id="5wqU3r7ymhJ" role="3clF45">
+          <node concept="3uibUv" id="5wqU3r7ymhK" role="_ZDj9">
+            <ref role="3uigEE" node="7LvIcpX8kkL" resolve="ModulesCluster.ModulesGraph.Cycle" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="5wqU3r7yn7G" role="1B3o_S" />
+      </node>
       <node concept="2tJIrI" id="7LvIcpX4vMe" role="jymVt" />
       <node concept="3clFb_" id="7LvIcpX4xjA" role="jymVt">
-        <property role="TrG5h" value="compactTotalOrder" />
+        <property role="TrG5h" value="compactTotalOrderOld" />
         <node concept="3clFbS" id="7LvIcpX4xjD" role="3clF47">
           <node concept="3cpWs8" id="7LvIcpX4z1I" role="3cqZAp">
             <node concept="3cpWsn" id="7LvIcpX4z1J" role="3cpWs9">

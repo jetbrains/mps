@@ -222,6 +222,16 @@ public class ModulesCluster {
     }
 
     public List<ModulesGraph.Cycle> compactTotalOrder() {
+      // with compact() code moved to GraphAnalyzer, no need to use old method 
+      List<List<ModuleDeps>> order = totalOrder(true);
+      return ListSequence.fromList(order).select(new ISelector<List<ModuleDeps>, ModulesGraph.Cycle>() {
+        public ModulesGraph.Cycle select(List<ModuleDeps> it) {
+          return toCycle(it);
+        }
+      }).toListSequence();
+    }
+
+    public List<ModulesGraph.Cycle> compactTotalOrderOld() {
       List<List<ModuleDeps>> order = totalOrder();
       // XXX what's the point of this code, what do we 'compact' here? Do we merge cycles so that they are built together and later has a chance to load ok? 
       ModulesGraph.Cycle prev = null;
