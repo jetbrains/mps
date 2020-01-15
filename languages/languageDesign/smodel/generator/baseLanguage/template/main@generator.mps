@@ -24612,15 +24612,15 @@
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="tpce:fKQkHSB" resolve="PrimitiveDataTypeDeclaration" />
       <node concept="gft3U" id="5xOmJgD968e" role="1lVwrX">
-        <node concept="2YIFZM" id="5xOmJgD9dkl" role="gfFT$">
-          <ref role="37wK5l" to="i8bi:5IkW5anFfpG" resolve="getBoolean" />
+        <node concept="2YIFZM" id="5sDn0OnbKRK" role="gfFT$">
+          <ref role="37wK5l" to="i8bi:5IkW5anFfp2" resolve="getInteger" />
           <ref role="1Pybhc" to="i8bi:5IkW5anFfnn" resolve="SPropertyOperations" />
-          <node concept="10Nm6u" id="5xOmJgD968i" role="37wK5m">
-            <node concept="29HgVG" id="5xOmJgD968j" role="lGtFl">
-              <node concept="3NFfHV" id="5xOmJgD968k" role="3NFExx">
-                <node concept="3clFbS" id="5xOmJgD968l" role="2VODD2">
-                  <node concept="3clFbF" id="5xOmJgD968m" role="3cqZAp">
-                    <node concept="v3LJS" id="5xOmJgD968n" role="3clFbG">
+          <node concept="10Nm6u" id="5sDn0OnbKRL" role="37wK5m">
+            <node concept="29HgVG" id="5sDn0OnbKRM" role="lGtFl">
+              <node concept="3NFfHV" id="5sDn0OnbKRN" role="3NFExx">
+                <node concept="3clFbS" id="5sDn0OnbKRO" role="2VODD2">
+                  <node concept="3clFbF" id="5sDn0OnbKRP" role="3cqZAp">
+                    <node concept="v3LJS" id="5sDn0OnbKRQ" role="3clFbG">
                       <ref role="v3LJV" node="5xOmJgD967W" resolve="parameter" />
                     </node>
                   </node>
@@ -24649,15 +24649,15 @@
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="tpce:fKQkHSB" resolve="PrimitiveDataTypeDeclaration" />
       <node concept="gft3U" id="5xOmJgD993X" role="1lVwrX">
-        <node concept="2YIFZM" id="5xOmJgD9hLn" role="gfFT$">
-          <ref role="37wK5l" to="i8bi:5IkW5anFfp2" resolve="getInteger" />
+        <node concept="2YIFZM" id="5sDn0OnbKWw" role="gfFT$">
+          <ref role="37wK5l" to="i8bi:5IkW5anFfpG" resolve="getBoolean" />
           <ref role="1Pybhc" to="i8bi:5IkW5anFfnn" resolve="SPropertyOperations" />
-          <node concept="10Nm6u" id="5xOmJgD9hLo" role="37wK5m">
-            <node concept="29HgVG" id="5xOmJgD9hLp" role="lGtFl">
-              <node concept="3NFfHV" id="5xOmJgD9hLq" role="3NFExx">
-                <node concept="3clFbS" id="5xOmJgD9hLr" role="2VODD2">
-                  <node concept="3clFbF" id="5xOmJgD9hLs" role="3cqZAp">
-                    <node concept="v3LJS" id="5xOmJgD9hLt" role="3clFbG">
+          <node concept="10Nm6u" id="5sDn0OnbKWx" role="37wK5m">
+            <node concept="29HgVG" id="5sDn0OnbKWy" role="lGtFl">
+              <node concept="3NFfHV" id="5sDn0OnbKWz" role="3NFExx">
+                <node concept="3clFbS" id="5sDn0OnbKW$" role="2VODD2">
+                  <node concept="3clFbF" id="5sDn0OnbKW_" role="3cqZAp">
+                    <node concept="v3LJS" id="5sDn0OnbKWA" role="3clFbG">
                       <ref role="v3LJV" node="5xOmJgD967W" resolve="parameter" />
                     </node>
                   </node>
