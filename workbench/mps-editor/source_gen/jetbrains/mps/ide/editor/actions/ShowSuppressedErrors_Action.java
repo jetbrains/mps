@@ -138,7 +138,7 @@ public class ShowSuppressedErrors_Action extends BaseAction {
             if (ListSequence.fromList(rules).isNotEmpty() && message != null) {
               for (RuleIdFlavouredItem.TypesystemRuleId rule : ListSequence.fromList(rules)) {
                 SNodeReference ruleRef = rule.getSourceNode();
-                if (ruleRef == null) {
+                if (ruleRef == null || ruleRef.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()) == null) {
                   continue;
                 }
                 SNode ruleRoot = ruleRef.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()).getContainingRoot();
