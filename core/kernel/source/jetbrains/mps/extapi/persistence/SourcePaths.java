@@ -70,6 +70,7 @@ final class SourcePaths {
     SourceRootKind existingRootKind = getKind(root);
     if (existingRootKind != null) {
       LogManager.getLogger(SourcePaths.class).warn(SourceRootAlreadyExistsException.getMsg(root, kind, root, existingRootKind));
+      return;
     }
     myFileKind2SourcePaths.putIfAbsent(kind, new ArrayList<>());
     myFileKind2SourcePaths.get(kind).add(root);
