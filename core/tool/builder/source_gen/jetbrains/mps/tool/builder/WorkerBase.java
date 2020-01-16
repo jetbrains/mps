@@ -212,7 +212,7 @@ public abstract class WorkerBase {
     DescriptorIOFacade descriptorIOFacade = myEnvironment.getPlatform().findComponent(DescriptorIOFacade.class);
     final ModulesMiner mminer = new ModulesMiner(Collections.<IFile>emptySet(), descriptorIOFacade);
     for (File df : CollectionSequence.fromCollection(moduleSourceDescriptorFiles)) {
-      IFile descriptorFile = fs.getFile(df.getPath());
+      IFile descriptorFile = fs.getFile(df);
       if (descriptorIOFacade.fromFileType(descriptorFile) == null) {
         info(String.format("File %s doesn't point to module descriptor, ignored", moduleSourceDescriptorFiles));
         continue;
