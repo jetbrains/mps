@@ -39925,7 +39925,7 @@
       <property role="TZNOO" value="" />
       <property role="2_Ic$B" value="true" />
       <node concept="3qWCbU" id="4ioEhxPa2$j" role="2_Ic$A">
-        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
       </node>
     </node>
     <node concept="398b33" id="2aRSPSKEe9G" role="3989C9">

@@ -1071,7 +1071,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/test-util">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/solutions/jetbrains.mps.lang.test.util/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/solutions/jetbrains.mps.lang.test.util/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1133,7 +1133,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/baseLanguage/unitTest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/baseLanguage/unitTest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1192,7 +1192,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest#1171932017138">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/baseLanguage/unitTest/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/baseLanguage/unitTest/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1259,7 +1259,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/gentest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/gentest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1324,7 +1324,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator#01">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/gentest/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/gentest/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1370,7 +1370,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator.rt">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/gentest.rt/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/gentest.rt/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1390,7 +1390,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.test.matcher">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/solutions/jetbrains.mps.lang.test.matcher/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/solutions/jetbrains.mps.lang.test.matcher/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1562,7 +1562,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.test">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1641,7 +1641,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.test#1210261198005">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1704,7 +1704,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.test.runtime">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/solutions/jetbrains.mps.lang.test.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/test/solutions/jetbrains.mps.lang.test.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
@@ -1758,7 +1758,7 @@
       </classpath>
     </javac>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.smodelTests">
-      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/smodelTests/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-testing/languages/languageDesign/smodelTests/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.svg" />
     </copy>
   </target>
   
