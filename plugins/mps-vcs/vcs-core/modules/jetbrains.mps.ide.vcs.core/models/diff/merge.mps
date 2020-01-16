@@ -7412,6 +7412,9 @@
     <node concept="3uibUv" id="jzhoHG2Hb_" role="EKbjA">
       <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
     </node>
+    <node concept="3uibUv" id="5ejUdCCatpE" role="EKbjA">
+      <ref role="3uigEE" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
+    </node>
     <node concept="312cEg" id="1m2uLwrRTWO" role="jymVt">
       <property role="TrG5h" value="myReadOnly" />
       <property role="eg7rD" value="false" />
@@ -8141,6 +8144,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5ejUdCCaFVl" role="jymVt" />
     <node concept="3Tm1VV" id="1m2uLwrRQWr" role="1B3o_S" />
     <node concept="3uibUv" id="1rZUQEPs3cj" role="1zkMxy">
       <ref role="3uigEE" to="w1kc:~EditableModelDescriptor" resolve="EditableModelDescriptor" />
@@ -8155,6 +8159,127 @@
         <node concept="1dT_AC" id="jzhoHG4wjz" role="1dT_Ay">
           <property role="1dT_AB" value="however, rest of the EditableSModel API is superfluous for the merge model." />
         </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="5ejUdCCaBET" role="jymVt">
+      <property role="TrG5h" value="isGeneratable" />
+      <node concept="3Tm1VV" id="5ejUdCCaBEU" role="1B3o_S" />
+      <node concept="10P_77" id="5ejUdCCaBEW" role="3clF45" />
+      <node concept="3clFbS" id="5ejUdCCaBF1" role="3clF47">
+        <node concept="3clFbF" id="5ejUdCCaBF4" role="3cqZAp">
+          <node concept="3clFbT" id="5ejUdCCaBF3" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="5ejUdCCaBF2" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5ejUdCCaBF5" role="jymVt">
+      <property role="TrG5h" value="isGenerateIntoModelFolder" />
+      <node concept="3Tm1VV" id="5ejUdCCaBF6" role="1B3o_S" />
+      <node concept="10P_77" id="5ejUdCCaBF8" role="3clF45" />
+      <node concept="3clFbS" id="5ejUdCCaBFd" role="3clF47">
+        <node concept="3clFbF" id="5ejUdCCaBFg" role="3cqZAp">
+          <node concept="3clFbT" id="5ejUdCCaBFf" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="5ejUdCCaBFe" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5ejUdCCaBFh" role="jymVt">
+      <property role="TrG5h" value="setGenerateIntoModelFolder" />
+      <node concept="3Tm1VV" id="5ejUdCCaBFi" role="1B3o_S" />
+      <node concept="3cqZAl" id="5ejUdCCaBFk" role="3clF45" />
+      <node concept="37vLTG" id="5ejUdCCaBFl" role="3clF46">
+        <property role="TrG5h" value="b" />
+        <node concept="10P_77" id="5ejUdCCaBFm" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="5ejUdCCaBFr" role="3clF47" />
+      <node concept="2AHcQZ" id="5ejUdCCaBFs" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5ejUdCCaBFt" role="jymVt">
+      <property role="TrG5h" value="getModelHash" />
+      <node concept="3Tm1VV" id="5ejUdCCaBFu" role="1B3o_S" />
+      <node concept="3uibUv" id="5ejUdCCaBFw" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="5ejUdCCaBF_" role="3clF47">
+        <node concept="3clFbF" id="5ejUdCCaBFC" role="3cqZAp">
+          <node concept="10Nm6u" id="5ejUdCCaBFB" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="5ejUdCCaBFA" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5ejUdCCaBFD" role="jymVt">
+      <property role="TrG5h" value="setDoNotGenerate" />
+      <node concept="3Tm1VV" id="5ejUdCCaBFE" role="1B3o_S" />
+      <node concept="3cqZAl" id="5ejUdCCaBFG" role="3clF45" />
+      <node concept="37vLTG" id="5ejUdCCaBFH" role="3clF46">
+        <property role="TrG5h" value="b" />
+        <node concept="10P_77" id="5ejUdCCaBFI" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="5ejUdCCaBFN" role="3clF47">
+        <node concept="3clFbF" id="5ejUdCCaUsb" role="3cqZAp">
+          <node concept="2EnYce" id="5ejUdCCaUsc" role="3clFbG">
+            <node concept="2EnYce" id="5ejUdCCaUsd" role="2Oq$k0">
+              <node concept="0kSF2" id="5ejUdCCaUse" role="2Oq$k0">
+                <node concept="3uibUv" id="5ejUdCCaUsf" role="0kSFW">
+                  <ref role="3uigEE" to="w1kc:~DefaultSModel" resolve="DefaultSModel" />
+                </node>
+                <node concept="1rXfSq" id="5ejUdCCaW7U" role="0kSFX">
+                  <ref role="37wK5l" to="g3l6:~SModelBase.getModelData()" resolve="getModelData" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5ejUdCCaUsh" role="2OqNvi">
+                <ref role="37wK5l" to="w1kc:~DefaultSModel.getSModelHeader()" resolve="getSModelHeader" />
+              </node>
+            </node>
+            <node concept="liA8E" id="5ejUdCCaUVO" role="2OqNvi">
+              <ref role="37wK5l" to="w1kc:~SModelHeader.setDoNotGenerate(boolean)" resolve="setDoNotGenerate" />
+              <node concept="37vLTw" id="5ejUdCCaUY0" role="37wK5m">
+                <ref role="3cqZAo" node="5ejUdCCaBFH" resolve="b" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="5ejUdCCaBFO" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5ejUdCCaBFP" role="jymVt">
+      <property role="TrG5h" value="isDoNotGenerate" />
+      <node concept="3Tm1VV" id="5ejUdCCaBFQ" role="1B3o_S" />
+      <node concept="10P_77" id="5ejUdCCaBFS" role="3clF45" />
+      <node concept="3clFbS" id="5ejUdCCaBFX" role="3clF47">
+        <node concept="3clFbF" id="5ejUdCCaMhD" role="3cqZAp">
+          <node concept="2EnYce" id="5ejUdCCaTVY" role="3clFbG">
+            <node concept="2EnYce" id="5ejUdCCaSEv" role="2Oq$k0">
+              <node concept="0kSF2" id="5ejUdCCaQLp" role="2Oq$k0">
+                <node concept="3uibUv" id="5ejUdCCaRMb" role="0kSFW">
+                  <ref role="3uigEE" to="w1kc:~DefaultSModel" resolve="DefaultSModel" />
+                </node>
+                <node concept="1rXfSq" id="5ejUdCCaWAh" role="0kSFX">
+                  <ref role="37wK5l" to="g3l6:~SModelBase.getModelData()" resolve="getModelData" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5ejUdCCaTjN" role="2OqNvi">
+                <ref role="37wK5l" to="w1kc:~DefaultSModel.getSModelHeader()" resolve="getSModelHeader" />
+              </node>
+            </node>
+            <node concept="liA8E" id="5ejUdCCaUmZ" role="2OqNvi">
+              <ref role="37wK5l" to="w1kc:~SModelHeader.isDoNotGenerate()" resolve="isDoNotGenerate" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="5ejUdCCaBFY" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

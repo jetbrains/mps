@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.EditableModelDescriptor;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.NullDataSource;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -18,13 +19,14 @@ import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.smodel.SModelHeader;
 
 /**
  * Merge model has to be EditableSModel for now (there's otherwise dubious use of isChanged status),
  * however, rest of the EditableSModel API is superfluous for the merge model.
  */
 @GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/1549936565245931290", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
-public final class MergeTemporaryModel extends EditableModelDescriptor implements PersistenceVersionAware, EditableSModel {
+public final class MergeTemporaryModel extends EditableModelDescriptor implements PersistenceVersionAware, EditableSModel, GeneratableSModel {
   private boolean myReadOnly;
 
   public MergeTemporaryModel(SModelReference modelRef, boolean readonly) {
@@ -103,5 +105,59 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   public ModelFactory getModelFactory() {
     // in fact, shall derive persitence from models being merged, however, so far we've got merge for default/xml persistence only, thus it's ok to hardcode specific factory 
     return PersistenceFacade.getInstance().getDefaultModelFactory();
+  }
+
+  @Override
+  public boolean isGeneratable() {
+    return false;
+  }
+  @Override
+  public boolean isGenerateIntoModelFolder() {
+    return false;
+  }
+  @Override
+  public void setGenerateIntoModelFolder(boolean b) {
+  }
+  @Override
+  public String getModelHash() {
+    return null;
+  }
+  @Override
+  public void setDoNotGenerate(boolean b) {
+    check_uihps8_a0a43(check_uihps8_a0a0ib(as_uihps8_a0a0a0ib(getModelData(), DefaultSModel.class), this), b, this);
+  }
+  @Override
+  public boolean isDoNotGenerate() {
+    return check_uihps8_a0a53(check_uihps8_a0a0jb(as_uihps8_a0a0a0jb(getModelData(), DefaultSModel.class), this), this);
+  }
+  private static void check_uihps8_a0a43(SModelHeader checkedDotOperand, Boolean b, MergeTemporaryModel checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.setDoNotGenerate(b);
+    }
+
+  }
+  private static SModelHeader check_uihps8_a0a0ib(DefaultSModel checkedDotOperand, MergeTemporaryModel checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getSModelHeader();
+    }
+    return null;
+  }
+  private static boolean check_uihps8_a0a53(SModelHeader checkedDotOperand, MergeTemporaryModel checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.isDoNotGenerate();
+    }
+    return false;
+  }
+  private static SModelHeader check_uihps8_a0a0jb(DefaultSModel checkedDotOperand, MergeTemporaryModel checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getSModelHeader();
+    }
+    return null;
+  }
+  private static <T> T as_uihps8_a0a0a0ib(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_uihps8_a0a0a0jb(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

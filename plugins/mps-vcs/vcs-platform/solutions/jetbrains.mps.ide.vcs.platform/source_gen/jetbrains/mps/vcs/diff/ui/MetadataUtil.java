@@ -13,7 +13,8 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.extapi.model.GeneratableSModel;
+import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -21,6 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
@@ -66,8 +68,9 @@ public class MetadataUtil {
     // create root with fixed Id (see inspector) 
     SNode root = SModelOperations.createNewNode(myMetadataModel, getMetadataRootId(), CONCEPTS.Model$$J);
     SPropertyOperations.assign(root, PROPS.longname$pfsG, SModelOperations.getModelName(origin));
-    if (origin instanceof GeneratableSModel) {
-      SPropertyOperations.assign(root, PROPS.donotgenerate$pfHD, check_ca1g54_a0a0e0k(((GeneratableSModel) origin)));
+    SModelData originData = check_ca1g54_a0e0k(as_ca1g54_a0a0e0k(origin, SModelBase.class));
+    if (originData instanceof DefaultSModel) {
+      SPropertyOperations.assign(root, PROPS.donotgenerate$pfHD, ((DefaultSModel) originData).getSModelHeader().isDoNotGenerate());
     }
     for (SLanguage language : CollectionSequence.fromCollection(modelBase.importedLanguageIds())) {
       int version = ((SModelBase) origin).getLanguageImportVersion(language);
@@ -241,11 +244,14 @@ public class MetadataUtil {
       }
     }
   }
-  private static boolean check_ca1g54_a0a0e0k(GeneratableSModel checkedDotOperand) {
+  private static SModelData check_ca1g54_a0e0k(SModelBase checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.isDoNotGenerate();
+      return checkedDotOperand.getModelData();
     }
-    return false;
+    return null;
+  }
+  private static <T> T as_ca1g54_a0a0e0k(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {

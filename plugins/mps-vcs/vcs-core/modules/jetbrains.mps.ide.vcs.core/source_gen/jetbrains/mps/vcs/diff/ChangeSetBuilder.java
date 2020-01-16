@@ -50,7 +50,8 @@ import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.Collection;
 import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
-import jetbrains.mps.extapi.model.GeneratableSModel;
+import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.smodel.DefaultSModel;
 import jetbrains.mps.vcs.diff.changes.DoNotGenerateOptionChange;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
@@ -297,9 +298,14 @@ public class ChangeSetBuilder {
     });
     buildForLanguagesEngagedOnGeneration();
 
-    if (myNewModel instanceof GeneratableSModel && myOldModel instanceof GeneratableSModel) {
-      if (((GeneratableSModel) myNewModel).isDoNotGenerate() != ((GeneratableSModel) myOldModel).isDoNotGenerate()) {
-        ListSequence.fromList(myNewChanges).addElement(new DoNotGenerateOptionChange(myChangeSet));
+    if (myNewModel instanceof SModelBase && myOldModel instanceof SModelBase) {
+      SModelData newModel = ((SModelBase) myNewModel).getModelData();
+      SModelData oldModel = ((SModelBase) myOldModel).getModelData();
+
+      if (newModel instanceof DefaultSModel && oldModel instanceof DefaultSModel) {
+        if (((DefaultSModel) newModel).getSModelHeader().isDoNotGenerate() != ((DefaultSModel) oldModel).getSModelHeader().isDoNotGenerate()) {
+          ListSequence.fromList(myNewChanges).addElement(new DoNotGenerateOptionChange(myChangeSet));
+        }
       }
     }
   }
