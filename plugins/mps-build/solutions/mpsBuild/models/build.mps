@@ -41008,6 +41008,11 @@
             <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
           </node>
         </node>
+        <node concept="1SiIV0" id="5ptZBpvdz03" role="3bR37C">
+          <node concept="3bR9La" id="5ptZBpvdz04" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn4_1I" resolve="jetbrains.mps.lang.constraints.rules.kinds" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="ymnOULAU1u" role="2G$12L">
         <property role="BnDLt" value="true" />

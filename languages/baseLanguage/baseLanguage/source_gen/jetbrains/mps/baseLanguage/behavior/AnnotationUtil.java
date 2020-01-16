@@ -115,8 +115,6 @@ public class AnnotationUtil {
     return SLinkOperations.getTarget(ref, LINKS.enumConstantDeclaration$fB6v).getReference();
   }
 
-  static {
-  }
   private static SNode _quotation_createNode_3nvpiw_a0a1a41() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
