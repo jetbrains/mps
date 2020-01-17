@@ -15458,6 +15458,11 @@
               <ref role="3bR37D" node="7Kfy9QB6Lg8" resolve="jetbrains.mps.runtime" />
             </node>
           </node>
+          <node concept="1SiIV0" id="5jW07ocjtuv" role="3bR37C">
+            <node concept="3bR9La" id="5jW07ocjtuw" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
+            </node>
+          </node>
           <node concept="1BupzO" id="73GUf$umm_E" role="3bR31x">
             <property role="3ZfqAx" value="generators/baseLanguage/templates" />
             <property role="1Hdu6h" value="true" />
@@ -15487,11 +15492,6 @@
               <node concept="3qWCbU" id="73GUf$umm_G" role="3LXTna">
                 <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
               </node>
-            </node>
-          </node>
-          <node concept="1SiIV0" id="5jW07ocjtuv" role="3bR37C">
-            <node concept="3bR9La" id="5jW07ocjtuw" role="1SiIV1">
-              <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
             </node>
           </node>
         </node>
@@ -41013,6 +41013,11 @@
             <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
           </node>
         </node>
+        <node concept="1SiIV0" id="5ptZBpvdz03" role="3bR37C">
+          <node concept="3bR9La" id="5ptZBpvdz04" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn4_1I" resolve="jetbrains.mps.lang.constraints.rules.kinds" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="ymnOULAU1u" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -45224,7 +45229,6 @@
       <property role="m$_wk" value="jetbrains.mps.ide.migration.workbench" />
       <property role="1NdglO" value="true" />
       <node concept="m$_yB" id="5lGJ4Tajp8z" role="m$_yh">
-        <property role="1ZOk41" value="true" />
         <ref role="m$_yA" node="5lGJ4Tajp1p" resolve="jetbrains.mps.migration.component" />
       </node>
       <node concept="3_J27D" id="5lGJ4TajoVb" role="m$_yQ">

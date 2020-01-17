@@ -15,6 +15,12 @@
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,41,0" name="jetbrains.mps.lang.test.constraints.ConstraintsAspectDescriptor" />
     </file>
+    <file name="GeneratedFeedbackAspectConstraints.java">
+      <unit at="10,0,17,0" name="jetbrains.mps.lang.test.constraints.GeneratedFeedbackAspectConstraints" />
+    </file>
+    <file name="GeneratedRulesConstraintsAspect.java">
+      <unit at="14,0,28,0" name="jetbrains.mps.lang.test.constraints.GeneratedRulesConstraintsAspect" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)/1213104844716">
     <file name="TestNodeReference_Constraints.java">
@@ -425,6 +431,81 @@
       <unit id="6626913010124378670" at="54,0,58,0" name="jetbrains.mps.lang.test.constraints.MigrationReference_Constraints$LINKS" />
       <unit id="6626913010124378671" at="28,48,43,5" name="jetbrains.mps.lang.test.constraints.MigrationReference_Constraints$1" />
       <unit id="6626913010124378670" at="21,0,63,0" name="jetbrains.mps.lang.test.constraints.MigrationReference_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c89590382(jetbrains.mps.lang.test.constraints)/7896212496293418436">
+    <file name="ProjectExpression_ConstraintRules.java">
+      <node id="7896212496293418436" at="27,0,28,0" concept="8" trace="CONCEPT" />
+      <node id="7896212496293420315" at="29,0,30,0" concept="8" trace="check_id7896212496293420315" />
+      <node id="7896212496293418436" at="31,0,32,0" concept="8" trace="RULES" />
+      <node id="7896212496293418436" at="35,43,36,17" concept="6" />
+      <node id="7896212496293587255" at="46,34,47,20" concept="6" />
+      <node id="7896212496293587255" at="48,7,49,114" concept="6" />
+      <node id="7896212496293587255" at="52,74,53,18" concept="6" />
+      <node id="7896212496293420315" at="58,0,59,0" concept="8" trace="SOURCE_NODE_REF" />
+      <node id="7896212496293420315" at="59,0,60,0" concept="8" trace="ID_unnamed_5silxy_b0" />
+      <node id="7896212496293420315" at="61,37,62,94" concept="10" />
+      <node id="7896212496293420315" at="66,63,67,340" concept="6" />
+      <node id="7896212496293420315" at="71,67,72,18" concept="6" />
+      <node id="7896212496293418436" at="76,51,77,19" concept="10" />
+      <node id="7896212496293418436" at="81,0,82,0" concept="8" trace="ITestable$$d" />
+      <node id="7896212496293418436" at="82,0,83,0" concept="8" trace="BTestCase$o9" />
+      <node id="7896212496293587255" at="45,71,48,7" concept="3" />
+      <node id="7896212496293587255" at="52,0,55,0" concept="9" trace="isDefined#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="7896212496293420315" at="61,0,64,0" concept="0" trace="Rule_unnamed_5silxy_b0#()V" />
+      <node id="7896212496293418436" at="76,0,79,0" concept="0" trace="ProjectExpression_ConstraintRules#()V" />
+      <node id="7896212496293420315" at="65,0,69,0" concept="4" trace="check#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="7896212496293420315" at="70,0,74,0" concept="4" trace="appliesTo#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Z" />
+      <node id="7896212496293418436" at="33,0,38,0" concept="4" trace="getDeclaredRules#()Ljava/util/List;" />
+      <node id="7896212496293587255" at="44,0,51,0" concept="9" trace="getValue#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="7896212496293418436" at="35,43,36,17" />
+      <scope id="7896212496293587255" at="46,34,47,20" />
+      <scope id="7896212496293587255" at="52,74,53,18" />
+      <scope id="7896212496293420315" at="61,37,62,94" />
+      <scope id="7896212496293420315" at="66,63,67,340" />
+      <scope id="7896212496293420315" at="71,67,72,18" />
+      <scope id="7896212496293418436" at="76,51,77,19" />
+      <scope id="7896212496293587255" at="52,0,55,0">
+        <var name="context" id="7896212496293587255" />
+      </scope>
+      <scope id="7896212496293420315" at="61,0,64,0" />
+      <scope id="7896212496293418436" at="76,0,79,0" />
+      <scope id="7896212496293587255" at="45,71,49,114" />
+      <scope id="7896212496293420315" at="65,0,69,0">
+        <var name="context" id="7896212496293420315" />
+      </scope>
+      <scope id="7896212496293420315" at="70,0,74,0">
+        <var name="context" id="7896212496293420315" />
+      </scope>
+      <scope id="7896212496293418436" at="33,0,38,0" />
+      <scope id="7896212496293587255" at="44,0,51,0">
+        <var name="context" id="7896212496293587255" />
+      </scope>
+      <unit id="7896212496293418436" at="80,0,84,0" name="jetbrains.mps.lang.test.constraints.ProjectExpression_ConstraintRules$CONCEPTS" />
+      <unit id="7896212496293587255" at="39,0,56,0" name="jetbrains.mps.lang.test.constraints.ProjectExpression_ConstraintRules$Def_TestableAncestor7896212496293587255" />
+      <unit id="7896212496293420315" at="57,0,75,0" name="jetbrains.mps.lang.test.constraints.ProjectExpression_ConstraintRules$Rule_unnamed_5silxy_b0" />
+      <unit id="7896212496293418436" at="26,0,85,0" name="jetbrains.mps.lang.test.constraints.ProjectExpression_ConstraintRules" />
+    </file>
+    <file name="ProjectExpression_ConstraintsFeedback.java">
+      <node id="7896212496293418436" at="20,0,21,0" concept="8" trace="CONCEPT" />
+      <node id="7896212496293420314" at="25,79,26,103" concept="6" />
+      <node id="7896212496293418436" at="30,0,31,0" concept="8" trace="PROVIDERS" />
+      <node id="7896212496293418436" at="32,50,33,19" concept="10" />
+      <node id="7896212496293418436" at="38,58,39,30" concept="6" />
+      <node id="7896212496293418436" at="32,0,35,0" concept="0" trace="ProjectExpression_ConstraintsFeedback#()V" />
+      <node id="7896212496293420314" at="23,0,28,0" concept="4" trace="yieldMessage#(Ljetbrains/mps/core/aspects/constraints/rules/kinds/ContainmentContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="7896212496293418436" at="36,0,41,0" concept="4" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
+      <node id="7896212496293420314" at="22,0,29,0" concept="8" trace="MSGPROVIDER_WhenConstraintRuleFails_l5xegm_a" />
+      <scope id="7896212496293420314" at="25,79,26,103" />
+      <scope id="7896212496293418436" at="32,50,33,19" />
+      <scope id="7896212496293418436" at="38,58,39,30" />
+      <scope id="7896212496293418436" at="32,0,35,0" />
+      <scope id="7896212496293420314" at="23,0,28,0">
+        <var name="context" id="7896212496293420314" />
+      </scope>
+      <scope id="7896212496293418436" at="36,0,41,0" />
+      <unit id="7896212496293420314" at="22,111,28,3" name="jetbrains.mps.lang.test.constraints.ProjectExpression_ConstraintsFeedback$1" />
+      <unit id="7896212496293418436" at="19,0,42,0" name="jetbrains.mps.lang.test.constraints.ProjectExpression_ConstraintsFeedback" />
     </file>
   </root>
 </debug-info>

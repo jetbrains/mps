@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.make;
 
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -108,6 +109,7 @@ final class ModulesContainer {
   }
 
   public static boolean isExcluded(@NotNull SModule m) {
-    return m.isReadOnly() || !isCompileInMps(m);
+    JavaModuleFacet facet = m.getFacet(JavaModuleFacet.class);
+    return m.isReadOnly() || facet == null || facet.getClassesGen() == null || !isCompileInMps(m);
   }
 }

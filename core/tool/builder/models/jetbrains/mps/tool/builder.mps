@@ -32,6 +32,7 @@
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
+    <import index="ifj7" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.util(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2027,14 +2028,9 @@
                     <ref role="3cqZAo" node="5BF5HLVuM0M" resolve="fs" />
                   </node>
                   <node concept="liA8E" id="5BF5HLVuQnH" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                    <node concept="2OqwBi" id="5BF5HLVuQnI" role="37wK5m">
-                      <node concept="2GrUjf" id="UA8EIkx_sp" role="2Oq$k0">
-                        <ref role="2Gs0qQ" node="UA8EIkxy$Y" resolve="df" />
-                      </node>
-                      <node concept="liA8E" id="5BF5HLVuQnK" role="2OqNvi">
-                        <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
-                      </node>
+                    <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                    <node concept="2GrUjf" id="6u0ian6l2hY" role="37wK5m">
+                      <ref role="2Gs0qQ" node="UA8EIkxy$Y" resolve="df" />
                     </node>
                   </node>
                 </node>
