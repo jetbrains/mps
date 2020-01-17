@@ -448,7 +448,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     return true;
   }
 
-  private void ensureCaretVisible() {
+  public void ensureCaretVisible() {
     getEditor().scrollRectToVisible(new Rectangle(getCaretX() - 2 * myTextLine.charWidth(), myY, 4 * myTextLine.charWidth(), myHeight));
   }
 
