@@ -12294,22 +12294,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5fbWg_bb2BT" role="3cqZAp">
-          <node concept="1rXfSq" id="5fbWg_bb2BS" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonText(java.lang.String)" resolve="setOKButtonText" />
-            <node concept="Xl_RD" id="5fbWg_bb4Ax" role="37wK5m">
-              <property role="Xl_RC" value="&amp;OK" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5fbWg_bb8eI" role="3cqZAp">
-          <node concept="1rXfSq" id="5fbWg_bb8eJ" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setCancelButtonText(java.lang.String)" resolve="setCancelButtonText" />
-            <node concept="Xl_RD" id="5fbWg_bb8eK" role="37wK5m">
-              <property role="Xl_RC" value="Ca&amp;ncel" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="3UBTx_UBISY" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyyI$B" role="3clFbG">
             <ref role="37wK5l" to="jkm4:~DialogWrapper.setModal(boolean)" resolve="setModal" />

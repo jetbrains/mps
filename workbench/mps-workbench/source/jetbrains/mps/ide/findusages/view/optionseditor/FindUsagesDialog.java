@@ -42,8 +42,7 @@ public class FindUsagesDialog extends DialogWrapper {
   public FindUsagesDialog(final FindUsagesOptions defaultOptions, final SNode node, final Project project) {
     super(project);
     setTitle("Find Usages");
-    setOKButtonText("&Find");
-    setCancelButtonText("Ca&ncel");
+    setOKButtonText("Find");
 
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(project);
     mpsProject.getModelAccess().runReadAction(new Runnable() {

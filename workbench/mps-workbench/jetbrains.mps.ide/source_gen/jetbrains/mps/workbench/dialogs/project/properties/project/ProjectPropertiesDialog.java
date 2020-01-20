@@ -16,8 +16,6 @@ public final class ProjectPropertiesDialog extends DialogWrapper {
     super(project);
     myPropertiesComponent = new ProjectPropertiesComponent(project, new ArrayList<ProjectPrefsExtraPanel>());
     setTitle("Project Modules");
-    setOKButtonText("Apply");
-    setOKButtonMnemonic('A');
 
     init();
   }
