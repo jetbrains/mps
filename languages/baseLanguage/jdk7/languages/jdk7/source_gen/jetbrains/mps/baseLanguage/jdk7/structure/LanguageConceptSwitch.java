@@ -9,10 +9,16 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int StringSwitchStatement = 0;
+  public static final int AlternativeType = 0;
+  public static final int CatchVariable = 1;
+  public static final int MultipleCatchClause = 2;
+  public static final int StringSwitchStatement = 3;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L);
+    builder.put(0x70a99a0b674a3895L, AlternativeType);
+    builder.put(0x44bbb37e796ac72eL, CatchVariable);
+    builder.put(0x2aefd560f401b9c6L, MultipleCatchClause);
     builder.put(0x58f5e8197ce2129L, StringSwitchStatement);
     myIndex = builder.seal();
   }
