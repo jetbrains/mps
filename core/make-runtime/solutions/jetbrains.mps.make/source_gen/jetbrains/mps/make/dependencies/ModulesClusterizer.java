@@ -17,14 +17,16 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.impl.plan.ModelContentUtil;
 import jetbrains.mps.extapi.model.SModelBase;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ISequence;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
@@ -68,19 +70,33 @@ public class ModulesClusterizer {
       }
     }).toListSequence();
 
-    final List<MResource> mres = Sequence.fromIterable(input).ofType(MResource.class).subtract(ListSequence.fromList(emptyInput)).toListSequence();
+    List<MResource> mres = Sequence.fromIterable(input).ofType(MResource.class).subtract(ListSequence.fromList(emptyInput)).toListSequence();
     if (ListSequence.fromList(mres).isEmpty()) {
       return result;
     }
 
+    Iterable<IResource> rest = Sequence.fromIterable(((Iterable<IResource>) input)).subtract(ListSequence.fromList(mres)).subtract(ListSequence.fromList(emptyInput));
+    // FIXME use ProgressMonitor as graph ordering may take some time 
+    //  
+    ListSequence.fromList(result).addSequence(Sequence.fromIterable(moduleResourcesToClustersOld(mres)));
+
+    if (Sequence.fromIterable(rest).isNotEmpty()) {
+      ListSequence.fromList(result).addElement(new Cluster(rest, ListSequence.fromList(new ArrayList<SLanguage>()), myLanguageRegistry));
+    }
+
+    moduleResourcesToClustersNew(mres);
+
+    return result;
+  }
+
+  private Iterable<Cluster> moduleResourcesToClustersOld(final List<MResource> mres) {
     Iterable<SModule> mods = ListSequence.fromList(mres).select(new ISelector<MResource, SModule>() {
       public SModule select(MResource r) {
         return r.module();
       }
     });
-    Iterable<IResource> rest = Sequence.fromIterable(((Iterable<IResource>) input)).subtract(ListSequence.fromList(mres)).subtract(ListSequence.fromList(emptyInput));
-    ModulesCluster clst = new ModulesCluster(myLanguageRegistry);
-    // FIXME use ProgressMonitor as graph ordering may take some time 
+
+    final ModulesCluster clst = new ModulesCluster(myLanguageRegistry);
     Iterable<List<SModule>> moduleBuildOrder = clst.buildOrder(mods);
     Iterable<? extends Iterable<MResource>> mresBuildOrder = Sequence.fromIterable(moduleBuildOrder).select(new ISelector<List<SModule>, ISequence<MResource>>() {
       public ISequence<MResource> select(final List<SModule> cl) {
@@ -92,21 +108,70 @@ public class ModulesClusterizer {
       }
     });
 
-    for (Iterable<MResource> s : mresBuildOrder) {
-      ListSequence.fromList(result).addElement(new Cluster(s, allLanguagesToActivateFacets(s, clst), myLanguageRegistry));
+    return Sequence.fromIterable(mresBuildOrder).select(new ISelector<Iterable<MResource>, Cluster>() {
+      public Cluster select(Iterable<MResource> s) {
+        System.out.println("LC[");
+        Sequence.fromIterable(s).visitAll(new IVisitor<MResource>() {
+          public void visit(MResource it) {
+            System.out.println(it.module().getModuleName());
+          }
+        });
+        System.out.println("]LC");
+
+        return new Cluster(s, allLanguagesToActivateFacets(s, clst), myLanguageRegistry);
+      }
+    });
+  }
+
+  private Iterable<Cluster> moduleResourcesToClustersNew(List<MResource> mres) {
+    ModuleBuildSequence mbs = new ModuleBuildSequence();
+    mbs.buildOrder(ListSequence.fromList(mres).select(new ISelector<MResource, SModule>() {
+      public SModule select(MResource r) {
+        return r.module();
+      }
+    }));
+    System.out.println("=======");
+    return Sequence.fromIterable(mods2cluster(mres, mbs.phaseOne())).concat(Sequence.fromIterable(mods2cluster(mres, mbs.phaseTwo()))).concat(Sequence.fromIterable(mods2cluster(mres, mbs.phaseThree())));
+  }
+
+  private Iterable<Cluster> mods2cluster(List<MResource> mres, List<List<SModule>> phase) {
+    List<Cluster> rv = ListSequence.fromList(new ArrayList<Cluster>());
+    System.out.println("PHASE:>>>");
+    for (List<SModule> l : ListSequence.fromList(phase)) {
+      System.out.println("C[");
+      ListSequence.fromList(l).visitAll(new IVisitor<SModule>() {
+        public void visit(SModule it) {
+          System.out.println(it.getModuleName());
+        }
+      });
+      System.out.println("]");
+      final Set<SModule> clusterModules = SetSequence.fromSetWithValues(new HashSet<SModule>(), l);
+      List<SLanguage> usedLangs = ListSequence.fromList(l).translate(new ITranslator2<SModule, SLanguage>() {
+        public Iterable<SLanguage> translate(SModule it) {
+          return it.getUsedLanguages();
+        }
+      }).toListSequence();
+      Set<SLanguage> extended = new SLanguageHierarchy(myLanguageRegistry, usedLangs).getExtended();
+      Iterable<SLanguage> l2af = allLanguagesToActivateFacets(extended);
+      ListSequence.fromList(rv).addElement(new Cluster(ListSequence.fromList(mres).where(new IWhereFilter<MResource>() {
+        public boolean accept(MResource r) {
+          return SetSequence.fromSet(clusterModules).contains(r.module());
+        }
+      }), l2af, myLanguageRegistry));
     }
-    if (Sequence.fromIterable(rest).isNotEmpty()) {
-      ListSequence.fromList(result).addElement(new Cluster(rest, ListSequence.fromList(new ArrayList<SLanguage>()), myLanguageRegistry));
-    }
-    return result;
+    System.out.println("<<<<");
+    return rv;
   }
 
   private Iterable<SLanguage> allLanguagesToActivateFacets(Iterable<MResource> cluster, final ModulesCluster builder) {
-    Iterable<SLanguage> usedLanguages = Sequence.fromIterable(cluster).translate(new ITranslator2<MResource, SLanguage>() {
+    return allLanguagesToActivateFacets(Sequence.fromIterable(cluster).translate(new ITranslator2<MResource, SLanguage>() {
       public Iterable<SLanguage> translate(MResource r) {
         return builder.usedLanguage(r.module());
       }
-    });
+    }));
+  }
+
+  private Iterable<SLanguage> allLanguagesToActivateFacets(Iterable<SLanguage> usedLanguages) {
     Set<SLanguage> namespaces = SetSequence.fromSet(new HashSet<SLanguage>());
     Set<GeneratorRuntime> seen = SetSequence.fromSet(new HashSet<GeneratorRuntime>());
     Queue<SLanguage> nsq = QueueSequence.fromQueue(new LinkedList<SLanguage>());
