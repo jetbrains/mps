@@ -52,14 +52,15 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
     Set<SNode> thrownsFromBody = SetSequence.fromSet(new HashSet<SNode>());
     StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(body, thrownsFromBody, ((boolean) ignoreMayBeThrowables));
 
-    // remove what we have catched 
+    // remove what we have caught 
     for (SNode caatch : ListSequence.fromList(catchClause)) {
-      SLinkOperations.getTarget(caatch, LINKS.throwable$5XW_);
       Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
       for (SNode thrownFromBody : SetSequence.fromSet(thrownsFromBody)) {
-        SNode catchedType = SLinkOperations.getTarget(SLinkOperations.getTarget(caatch, LINKS.throwable$5XW_), LINKS.type$pLrO);
-        if (TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_1bi1ep_a0a1a2a4a2(thrownFromBody), catchedType)) {
-          SetSequence.fromSet(toRemove).addElement(thrownFromBody);
+        List<SNode> caughtTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(caatch);
+        for (SNode caughtType : ListSequence.fromList(caughtTypes)) {
+          if (TypecheckingFacade.getFromContext().isSubtype(_quotation_createNode_1bi1ep_a0a0a1a1a4a2(thrownFromBody), caughtType)) {
+            SetSequence.fromSet(toRemove).addElement(thrownFromBody);
+          }
         }
       }
       SetSequence.fromSet(thrownsFromBody).removeSequence(SetSequence.fromSet(toRemove));
@@ -68,7 +69,7 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
 
     // now collect what was thrown in catch blocks 
     for (SNode caatch : ListSequence.fromList(catchClause)) {
-      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(caatch, LINKS.catchBody$5XX4), throwables, ((boolean) ignoreMayBeThrowables));
+      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(AbstractCatchClause__BehaviorDescriptor.getCatchBody_id4iVGRTTf1R5.invoke(caatch), throwables, ((boolean) ignoreMayBeThrowables));
     }
   }
 
@@ -123,7 +124,7 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode _quotation_createNode_1bi1ep_a0a1a2a4a2(Object parameter_1) {
+  private static SNode _quotation_createNode_1bi1ep_a0a0a1a1a4a2(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
@@ -138,8 +139,5 @@ public final class TryCatchStatement__BehaviorDescriptor extends BaseBHDescripto
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$9KDK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
     /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
-    /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink catchBody$5XX4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f2L, "catchBody");
   }
 }

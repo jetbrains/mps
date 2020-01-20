@@ -6654,7 +6654,7 @@
           <node concept="3cpWsn" id="hYjJ7yl" role="1Duv9x">
             <property role="TrG5h" value="clause" />
             <node concept="3Tqbb2" id="hYjJ7NI" role="1tU5fm">
-              <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+              <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
             </node>
           </node>
         </node>
@@ -6718,7 +6718,7 @@
           <node concept="3cpWsn" id="hYjJCrU" role="1Duv9x">
             <property role="TrG5h" value="clause" />
             <node concept="3Tqbb2" id="hYjJCKf" role="1tU5fm">
-              <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+              <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
             </node>
           </node>
         </node>

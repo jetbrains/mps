@@ -57,10 +57,6 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myInferenceRules.add(inferenceRule);
     }
     {
-      InferenceRule_Runtime inferenceRule = new typeOf_CatchClause_InferenceRule();
-      this.myInferenceRules.add(inferenceRule);
-    }
-    {
       InferenceRule_Runtime inferenceRule = new typeOf_ClassifierClassExpression_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
@@ -170,6 +166,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
     }
     {
       InferenceRule_Runtime inferenceRule = new typeOf_thisExpr_InferenceRule();
+      this.myInferenceRules.add(inferenceRule);
+    }
+    {
+      InferenceRule_Runtime inferenceRule = new typeof_AbstractCatchClause_InferenceRule();
       this.myInferenceRules.add(inferenceRule);
     }
     {

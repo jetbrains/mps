@@ -44262,7 +44262,7 @@
     </node>
   </node>
   <node concept="IW6AY" id="1wEcoXjIEZ9">
-    <ref role="aqKnT" to="tpee:gWTDmSJ" resolve="CatchClause" />
+    <ref role="aqKnT" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
     <node concept="1Qtc8_" id="1wEcoXjIEZa" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjIEZb" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjIEZc" role="CtIbM">
@@ -44288,7 +44288,7 @@
   <node concept="3ICXOK" id="1wEcoXjIEZf">
     <property role="TrG5h" value="tryCatch_CatchClause" />
     <property role="3GE5qa" value="sideTransforms" />
-    <ref role="aqKnT" to="tpee:gWTDmSJ" resolve="CatchClause" />
+    <ref role="aqKnT" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
     <node concept="1Qtc8_" id="1wEcoXjIEZi" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjIEZg" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjIEZh" role="CtIbM">
@@ -45479,7 +45479,7 @@
                 <node concept="3cpWsn" id="1wEcoXjIF8h" role="1Duv9x">
                   <property role="TrG5h" value="catchClause" />
                   <node concept="3Tqbb2" id="1wEcoXjIF8i" role="1tU5fm">
-                    <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+                    <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
                   </node>
                 </node>
                 <node concept="3clFbS" id="1wEcoXjIF8j" role="2LFqv$">
@@ -45550,7 +45550,7 @@
   <node concept="3ICXOK" id="1wEcoXjIF8Q">
     <property role="TrG5h" value="convertToTry" />
     <property role="3GE5qa" value="sideTransforms" />
-    <ref role="aqKnT" to="tpee:gWTDmSJ" resolve="CatchClause" />
+    <ref role="aqKnT" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
     <node concept="1Qtc8_" id="1wEcoXjIF8T" role="IW6Ez">
       <node concept="3cWJ9i" id="1wEcoXjIF8R" role="1Qtc8$">
         <node concept="CtIbL" id="1wEcoXjIF8S" role="CtIbM">
@@ -45693,7 +45693,7 @@
                 <node concept="3cpWsn" id="1wEcoXjIF9T" role="1Duv9x">
                   <property role="TrG5h" value="catchClause" />
                   <node concept="3Tqbb2" id="1wEcoXjIF9U" role="1tU5fm">
-                    <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+                    <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
                   </node>
                 </node>
                 <node concept="3clFbS" id="1wEcoXjIF9V" role="2LFqv$">

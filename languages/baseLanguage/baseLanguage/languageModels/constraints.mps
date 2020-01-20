@@ -224,6 +224,7 @@
       <concept id="1152959968041" name="jetbrains.mps.lang.constraints.structure.ConstraintFunction_PropertySetter" flags="in" index="1LLf8_" />
       <concept id="1213093968558" name="jetbrains.mps.lang.constraints.structure.ConceptConstraints" flags="ng" index="1M2fIO">
         <reference id="1213093996982" name="concept" index="1M2myG" />
+        <reference id="1213106917431" name="defaultConcreteConcept" index="1MND4H" />
         <child id="6702802731807532712" name="canBeParent" index="9SGkU" />
         <child id="6702802731807737306" name="canBeChild" index="9Vyp8" />
         <child id="1426851521646478396" name="instanceIcon" index="XeZnq" />
@@ -4614,6 +4615,11 @@
         </node>
       </node>
     </node>
+  </node>
+  <node concept="1M2fIO" id="72DAwHBbBGK">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1M2myG" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
+    <ref role="1MND4H" to="tpee:gWTDmSJ" resolve="CatchClause" />
   </node>
 </model>
 

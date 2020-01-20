@@ -1550,7 +1550,7 @@
               <node concept="3cpWsn" id="7_ZEXY1iWnJ" role="1Duv9x">
                 <property role="TrG5h" value="catchClause" />
                 <node concept="3Tqbb2" id="7_ZEXY1iWnS" role="1tU5fm">
-                  <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+                  <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
                 </node>
               </node>
               <node concept="2OqwBi" id="7_ZEXY1iWnN" role="1DdaDG">
@@ -1562,50 +1562,47 @@
                 </node>
               </node>
               <node concept="3clFbS" id="7_ZEXY1iWnL" role="2LFqv$">
-                <node concept="3cpWs8" id="7_ZEXY1iWGS" role="3cqZAp">
-                  <node concept="3cpWsn" id="7_ZEXY1iWGT" role="3cpWs9">
+                <node concept="1DcWWT" id="4iVGRTTf6Rd" role="3cqZAp">
+                  <node concept="3clFbS" id="4iVGRTTf6Rf" role="2LFqv$">
+                    <node concept="3clFbJ" id="7_ZEXY1iWH2" role="3cqZAp">
+                      <node concept="3clFbS" id="7_ZEXY1iWH3" role="3clFbx">
+                        <node concept="3_JC1X" id="7_ZEXY1iWHl" role="3cqZAp">
+                          <node concept="3_IHaT" id="7_ZEXY1iWHn" role="3_JbIs">
+                            <node concept="37vLTw" id="3GM_nagTyhb" role="3_I9Fq">
+                              <ref role="3cqZAo" node="7_ZEXY1iWnJ" resolve="catchClause" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3cpWs6" id="7_ZEXY1iWHr" role="3cqZAp" />
+                      </node>
+                      <node concept="3JuTUA" id="7_ZEXY1iWH6" role="3clFbw">
+                        <node concept="2OqwBi" id="7_ZEXY1iWHg" role="3JuY14">
+                          <node concept="2OqwBi" id="7_ZEXY1iWHb" role="2Oq$k0">
+                            <node concept="3__QtB" id="7_ZEXY1iWHa" role="2Oq$k0" />
+                            <node concept="3TrEf2" id="7_ZEXY1iWHf" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tpee:gWYScPJ" resolve="throwable" />
+                            </node>
+                          </node>
+                          <node concept="3JvlWi" id="7_ZEXY1iWHk" role="2OqNvi" />
+                        </node>
+                        <node concept="37vLTw" id="4iVGRTTf9Ie" role="3JuZjQ">
+                          <ref role="3cqZAo" node="4iVGRTTf6Rg" resolve="caughtType" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3cpWsn" id="4iVGRTTf6Rg" role="1Duv9x">
                     <property role="TrG5h" value="caughtType" />
-                    <node concept="3Tqbb2" id="7_ZEXY1iWGU" role="1tU5fm">
+                    <node concept="3Tqbb2" id="4iVGRTTf71n" role="1tU5fm">
                       <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
                     </node>
-                    <node concept="2OqwBi" id="7_ZEXY1iWGV" role="33vP2m">
-                      <node concept="2OqwBi" id="7_ZEXY1iWGW" role="2Oq$k0">
-                        <node concept="37vLTw" id="3GM_nagTrtK" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7_ZEXY1iWnJ" resolve="catchClause" />
-                        </node>
-                        <node concept="3TrEf2" id="7_ZEXY1iWGY" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpee:gWTDEbL" resolve="throwable" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="7_ZEXY1iWGZ" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
-                      </node>
-                    </node>
                   </node>
-                </node>
-                <node concept="3clFbJ" id="7_ZEXY1iWH2" role="3cqZAp">
-                  <node concept="3clFbS" id="7_ZEXY1iWH3" role="3clFbx">
-                    <node concept="3_JC1X" id="7_ZEXY1iWHl" role="3cqZAp">
-                      <node concept="3_IHaT" id="7_ZEXY1iWHn" role="3_JbIs">
-                        <node concept="37vLTw" id="3GM_nagTyhb" role="3_I9Fq">
-                          <ref role="3cqZAo" node="7_ZEXY1iWnJ" resolve="catchClause" />
-                        </node>
-                      </node>
+                  <node concept="2OqwBi" id="7_ZEXY1iWGW" role="1DdaDG">
+                    <node concept="37vLTw" id="3GM_nagTrtK" role="2Oq$k0">
+                      <ref role="3cqZAo" node="7_ZEXY1iWnJ" resolve="catchClause" />
                     </node>
-                    <node concept="3cpWs6" id="7_ZEXY1iWHr" role="3cqZAp" />
-                  </node>
-                  <node concept="3JuTUA" id="7_ZEXY1iWH6" role="3clFbw">
-                    <node concept="2OqwBi" id="7_ZEXY1iWHg" role="3JuY14">
-                      <node concept="2OqwBi" id="7_ZEXY1iWHb" role="2Oq$k0">
-                        <node concept="3__QtB" id="7_ZEXY1iWHa" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="7_ZEXY1iWHf" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpee:gWYScPJ" resolve="throwable" />
-                        </node>
-                      </node>
-                      <node concept="3JvlWi" id="7_ZEXY1iWHk" role="2OqNvi" />
-                    </node>
-                    <node concept="37vLTw" id="3GM_nagTuYn" role="3JuZjQ">
-                      <ref role="3cqZAo" node="7_ZEXY1iWGT" resolve="caughtType" />
+                    <node concept="2qgKlT" id="4iVGRTTf5X_" role="2OqNvi">
+                      <ref role="37wK5l" to="tpek:2FJPm3OMxhX" resolve="getCaughtTypes" />
                     </node>
                   </node>
                 </node>
@@ -1926,7 +1923,7 @@
               <node concept="3cpWsn" id="h$fdrei" role="1Duv9x">
                 <property role="TrG5h" value="c" />
                 <node concept="3Tqbb2" id="h$fdtLE" role="1tU5fm">
-                  <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+                  <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
                 </node>
               </node>
             </node>
@@ -1972,7 +1969,7 @@
                     <property role="TrG5h" value="catchClause" />
                     <property role="3TUv4t" value="true" />
                     <node concept="3Tqbb2" id="6_IR$LvETSq" role="1tU5fm">
-                      <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+                      <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
                     </node>
                   </node>
                   <node concept="3clFbS" id="6_IR$LvETSr" role="2LFqv$">
@@ -2054,7 +2051,7 @@
               <node concept="3cpWsn" id="h$fdxyc" role="1Duv9x">
                 <property role="TrG5h" value="c" />
                 <node concept="3Tqbb2" id="h$fdxHW" role="1tU5fm">
-                  <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+                  <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
                 </node>
               </node>
             </node>
@@ -2100,7 +2097,7 @@
           <node concept="3cpWsn" id="6UtN_JDmjPD" role="1Duv9x">
             <property role="TrG5h" value="catchClause" />
             <node concept="3Tqbb2" id="6UtN_JDmjPE" role="1tU5fm">
-              <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+              <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
             </node>
           </node>
         </node>
@@ -2146,7 +2143,7 @@
                 <property role="TrG5h" value="catchClause" />
                 <property role="3TUv4t" value="true" />
                 <node concept="3Tqbb2" id="6_IR$LvEJPP" role="1tU5fm">
-                  <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+                  <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
                 </node>
               </node>
               <node concept="3clFbS" id="6_IR$LvEJPM" role="2LFqv$">
@@ -2228,7 +2225,7 @@
           <node concept="3cpWsn" id="h$fc$yE" role="1Duv9x">
             <property role="TrG5h" value="c" />
             <node concept="3Tqbb2" id="h$fc$ID" role="1tU5fm">
-              <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+              <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
             </node>
           </node>
         </node>
@@ -3266,7 +3263,7 @@
     <node concept="2YIFZL" id="6_IR$LvEwel" role="jymVt">
       <property role="TrG5h" value="getPossibleCatches" />
       <node concept="2I9FWS" id="6_IR$LvEwqB" role="3clF45">
-        <ref role="2I9WkF" to="tpee:gWTDmSJ" resolve="CatchClause" />
+        <ref role="2I9WkF" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
       </node>
       <node concept="3Tm1VV" id="6_IR$LvEwen" role="1B3o_S" />
       <node concept="3clFbS" id="6_IR$LvEweo" role="3clF47">
@@ -3274,7 +3271,7 @@
           <node concept="3cpWsn" id="6_IR$LvEJNX" role="3cpWs9">
             <property role="TrG5h" value="result" />
             <node concept="2I9FWS" id="6_IR$LvEJNY" role="1tU5fm">
-              <ref role="2I9WkF" to="tpee:gWTDmSJ" resolve="CatchClause" />
+              <ref role="2I9WkF" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
             </node>
             <node concept="2ShNRf" id="6_IR$LvEJO0" role="33vP2m">
               <node concept="2T8Vx0" id="6_IR$LvEJO1" role="2ShVmc">
@@ -3326,124 +3323,121 @@
         </node>
         <node concept="1DcWWT" id="6_IR$LvEJOq" role="3cqZAp">
           <node concept="3clFbS" id="6_IR$LvEJOr" role="2LFqv$">
-            <node concept="3cpWs8" id="6_IR$LvEJOs" role="3cqZAp">
-              <node concept="3cpWsn" id="6_IR$LvEJOt" role="3cpWs9">
+            <node concept="1DcWWT" id="4iVGRTSGx7S" role="3cqZAp">
+              <node concept="3clFbS" id="4iVGRTSGx7U" role="2LFqv$">
+                <node concept="3clFbJ" id="6_IR$LvEJO$" role="3cqZAp">
+                  <node concept="3clFbS" id="6_IR$LvEJO_" role="3clFbx">
+                    <node concept="3clFbF" id="6_IR$LvEJPx" role="3cqZAp">
+                      <node concept="2OqwBi" id="6_IR$LvEJPz" role="3clFbG">
+                        <node concept="37vLTw" id="3GM_nagTxB6" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6_IR$LvEJNX" resolve="result" />
+                        </node>
+                        <node concept="TSZUe" id="6_IR$LvEJPB" role="2OqNvi">
+                          <node concept="37vLTw" id="3GM_nagTwi1" role="25WWJ7">
+                            <ref role="3cqZAo" node="6_IR$LvEJPg" resolve="catchClause" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="22lmx$" id="6_IR$LvEJOF" role="3clFbw">
+                    <node concept="22lmx$" id="6_IR$LvEJOG" role="3uHU7B">
+                      <node concept="3JuTUA" id="6_IR$LvEJOH" role="3uHU7B">
+                        <node concept="37vLTw" id="4iVGRTSGAWg" role="3JuY14">
+                          <ref role="3cqZAo" node="4iVGRTSGx7V" resolve="caughtType" />
+                        </node>
+                        <node concept="2c44tf" id="6_IR$LvEJOJ" role="3JuZjQ">
+                          <node concept="3uibUv" id="6_IR$LvEJOK" role="2c44tc">
+                            <ref role="3uigEE" to="wyt6:~Error" resolve="Error" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3JuTUA" id="6_IR$LvEJOL" role="3uHU7w">
+                        <node concept="37vLTw" id="4iVGRTSGB0m" role="3JuY14">
+                          <ref role="3cqZAo" node="4iVGRTSGx7V" resolve="caughtType" />
+                        </node>
+                        <node concept="2c44tf" id="6_IR$LvEJON" role="3JuZjQ">
+                          <node concept="3uibUv" id="6_IR$LvEJOO" role="2c44tc">
+                            <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3JuTUA" id="6_IR$LvEJOP" role="3uHU7w">
+                      <node concept="2c44tf" id="6_IR$LvEJOQ" role="3JuY14">
+                        <node concept="3uibUv" id="6_IR$LvEJOR" role="2c44tc">
+                          <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="4iVGRTSGB4u" role="3JuZjQ">
+                        <ref role="3cqZAo" node="4iVGRTSGx7V" resolve="caughtType" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="9aQIb" id="6_IR$LvEJOT" role="9aQIa">
+                    <node concept="3clFbS" id="6_IR$LvEJOU" role="9aQI4">
+                      <node concept="1DcWWT" id="6_IR$LvEJOV" role="3cqZAp">
+                        <node concept="3clFbS" id="6_IR$LvEJOW" role="2LFqv$">
+                          <node concept="3clFbJ" id="6_IR$LvEJOX" role="3cqZAp">
+                            <node concept="3clFbS" id="6_IR$LvEJOY" role="3clFbx">
+                              <node concept="3clFbF" id="6_IR$LvEJPE" role="3cqZAp">
+                                <node concept="2OqwBi" id="6_IR$LvEJPF" role="3clFbG">
+                                  <node concept="37vLTw" id="3GM_nagTx_I" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="6_IR$LvEJNX" resolve="result" />
+                                  </node>
+                                  <node concept="TSZUe" id="6_IR$LvEJPH" role="2OqNvi">
+                                    <node concept="37vLTw" id="3GM_nagTwfO" role="25WWJ7">
+                                      <ref role="3cqZAo" node="6_IR$LvEJPg" resolve="catchClause" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                            <node concept="3JuTUA" id="6_IR$LvEJP4" role="3clFbw">
+                              <node concept="2c44tf" id="6_IR$LvEJP5" role="3JuY14">
+                                <node concept="3uibUv" id="6_IR$LvEJP6" role="2c44tc">
+                                  <node concept="2c44tb" id="6_IR$LvEJP7" role="lGtFl">
+                                    <property role="2qtEX8" value="classifier" />
+                                    <property role="3hQQBS" value="ClassifierType" />
+                                    <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
+                                    <node concept="37vLTw" id="3GM_nagTBFF" role="2c44t1">
+                                      <ref role="3cqZAo" node="6_IR$LvEJPb" resolve="throwed" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="37vLTw" id="4iVGRTSGB8C" role="3JuZjQ">
+                                <ref role="3cqZAo" node="4iVGRTSGx7V" resolve="caughtType" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="3GM_nagTtkE" role="1DdaDG">
+                          <ref role="3cqZAo" node="6_IR$LvEJOj" resolve="uncaughtThrowables" />
+                        </node>
+                        <node concept="3cpWsn" id="6_IR$LvEJPb" role="1Duv9x">
+                          <property role="TrG5h" value="throwed" />
+                          <node concept="3Tqbb2" id="6_IR$LvEJPc" role="1tU5fm">
+                            <ref role="ehGHo" to="tpee:g7pOWCK" resolve="Classifier" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWsn" id="4iVGRTSGx7V" role="1Duv9x">
                 <property role="TrG5h" value="caughtType" />
-                <node concept="3Tqbb2" id="6_IR$LvEJOu" role="1tU5fm">
+                <node concept="3Tqbb2" id="4iVGRTSGxi2" role="1tU5fm">
                   <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
                 </node>
-                <node concept="2OqwBi" id="6_IR$LvEJOv" role="33vP2m">
-                  <node concept="2OqwBi" id="6_IR$LvEJOw" role="2Oq$k0">
-                    <node concept="37vLTw" id="3GM_nagTv55" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6_IR$LvEJPg" resolve="catchClause" />
-                    </node>
-                    <node concept="3TrEf2" id="6_IR$LvEJOy" role="2OqNvi">
-                      <ref role="3Tt5mk" to="tpee:gWTDEbL" resolve="throwable" />
-                    </node>
-                  </node>
-                  <node concept="3TrEf2" id="6_IR$LvEJOz" role="2OqNvi">
-                    <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
-                  </node>
-                </node>
               </node>
-            </node>
-            <node concept="3clFbJ" id="6_IR$LvEJO$" role="3cqZAp">
-              <node concept="3clFbS" id="6_IR$LvEJO_" role="3clFbx">
-                <node concept="3clFbF" id="6_IR$LvEJPx" role="3cqZAp">
-                  <node concept="2OqwBi" id="6_IR$LvEJPz" role="3clFbG">
-                    <node concept="37vLTw" id="3GM_nagTxB6" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6_IR$LvEJNX" resolve="result" />
-                    </node>
-                    <node concept="TSZUe" id="6_IR$LvEJPB" role="2OqNvi">
-                      <node concept="37vLTw" id="3GM_nagTwi1" role="25WWJ7">
-                        <ref role="3cqZAo" node="6_IR$LvEJPg" resolve="catchClause" />
-                      </node>
-                    </node>
-                  </node>
+              <node concept="2OqwBi" id="4iVGRTSGyvq" role="1DdaDG">
+                <node concept="37vLTw" id="4iVGRTSGy6w" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6_IR$LvEJPg" resolve="catchClause" />
                 </node>
-              </node>
-              <node concept="22lmx$" id="6_IR$LvEJOF" role="3clFbw">
-                <node concept="22lmx$" id="6_IR$LvEJOG" role="3uHU7B">
-                  <node concept="3JuTUA" id="6_IR$LvEJOH" role="3uHU7B">
-                    <node concept="37vLTw" id="3GM_nagTuyF" role="3JuY14">
-                      <ref role="3cqZAo" node="6_IR$LvEJOt" resolve="caughtType" />
-                    </node>
-                    <node concept="2c44tf" id="6_IR$LvEJOJ" role="3JuZjQ">
-                      <node concept="3uibUv" id="6_IR$LvEJOK" role="2c44tc">
-                        <ref role="3uigEE" to="wyt6:~Error" resolve="Error" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3JuTUA" id="6_IR$LvEJOL" role="3uHU7w">
-                    <node concept="37vLTw" id="3GM_nagTvYI" role="3JuY14">
-                      <ref role="3cqZAo" node="6_IR$LvEJOt" resolve="caughtType" />
-                    </node>
-                    <node concept="2c44tf" id="6_IR$LvEJON" role="3JuZjQ">
-                      <node concept="3uibUv" id="6_IR$LvEJOO" role="2c44tc">
-                        <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3JuTUA" id="6_IR$LvEJOP" role="3uHU7w">
-                  <node concept="2c44tf" id="6_IR$LvEJOQ" role="3JuY14">
-                    <node concept="3uibUv" id="6_IR$LvEJOR" role="2c44tc">
-                      <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="3GM_nagTtRC" role="3JuZjQ">
-                    <ref role="3cqZAo" node="6_IR$LvEJOt" resolve="caughtType" />
-                  </node>
-                </node>
-              </node>
-              <node concept="9aQIb" id="6_IR$LvEJOT" role="9aQIa">
-                <node concept="3clFbS" id="6_IR$LvEJOU" role="9aQI4">
-                  <node concept="1DcWWT" id="6_IR$LvEJOV" role="3cqZAp">
-                    <node concept="3clFbS" id="6_IR$LvEJOW" role="2LFqv$">
-                      <node concept="3clFbJ" id="6_IR$LvEJOX" role="3cqZAp">
-                        <node concept="3clFbS" id="6_IR$LvEJOY" role="3clFbx">
-                          <node concept="3clFbF" id="6_IR$LvEJPE" role="3cqZAp">
-                            <node concept="2OqwBi" id="6_IR$LvEJPF" role="3clFbG">
-                              <node concept="37vLTw" id="3GM_nagTx_I" role="2Oq$k0">
-                                <ref role="3cqZAo" node="6_IR$LvEJNX" resolve="result" />
-                              </node>
-                              <node concept="TSZUe" id="6_IR$LvEJPH" role="2OqNvi">
-                                <node concept="37vLTw" id="3GM_nagTwfO" role="25WWJ7">
-                                  <ref role="3cqZAo" node="6_IR$LvEJPg" resolve="catchClause" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3JuTUA" id="6_IR$LvEJP4" role="3clFbw">
-                          <node concept="2c44tf" id="6_IR$LvEJP5" role="3JuY14">
-                            <node concept="3uibUv" id="6_IR$LvEJP6" role="2c44tc">
-                              <node concept="2c44tb" id="6_IR$LvEJP7" role="lGtFl">
-                                <property role="2qtEX8" value="classifier" />
-                                <property role="3hQQBS" value="ClassifierType" />
-                                <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1107535904670/1107535924139" />
-                                <node concept="37vLTw" id="3GM_nagTBFF" role="2c44t1">
-                                  <ref role="3cqZAo" node="6_IR$LvEJPb" resolve="throwed" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="37vLTw" id="3GM_nagTrTm" role="3JuZjQ">
-                            <ref role="3cqZAo" node="6_IR$LvEJOt" resolve="caughtType" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="37vLTw" id="3GM_nagTtkE" role="1DdaDG">
-                      <ref role="3cqZAo" node="6_IR$LvEJOj" resolve="uncaughtThrowables" />
-                    </node>
-                    <node concept="3cpWsn" id="6_IR$LvEJPb" role="1Duv9x">
-                      <property role="TrG5h" value="throwed" />
-                      <node concept="3Tqbb2" id="6_IR$LvEJPc" role="1tU5fm">
-                        <ref role="ehGHo" to="tpee:g7pOWCK" resolve="Classifier" />
-                      </node>
-                    </node>
-                  </node>
+                <node concept="2qgKlT" id="4iVGRTSGySl" role="2OqNvi">
+                  <ref role="37wK5l" to="tpek:2FJPm3OMxhX" resolve="getCaughtTypes" />
                 </node>
               </node>
             </node>
@@ -3454,7 +3448,7 @@
           <node concept="3cpWsn" id="6_IR$LvEJPg" role="1Duv9x">
             <property role="TrG5h" value="catchClause" />
             <node concept="3Tqbb2" id="6_IR$LvEJPh" role="1tU5fm">
-              <ref role="ehGHo" to="tpee:gWTDmSJ" resolve="CatchClause" />
+              <ref role="ehGHo" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
             </node>
           </node>
         </node>
@@ -3471,7 +3465,7 @@
       <node concept="37vLTG" id="6_IR$LvEJOa" role="3clF46">
         <property role="TrG5h" value="catchClauses" />
         <node concept="2I9FWS" id="6_IR$LvEJOc" role="1tU5fm">
-          <ref role="2I9WkF" to="tpee:gWTDmSJ" resolve="CatchClause" />
+          <ref role="2I9WkF" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
         </node>
       </node>
     </node>

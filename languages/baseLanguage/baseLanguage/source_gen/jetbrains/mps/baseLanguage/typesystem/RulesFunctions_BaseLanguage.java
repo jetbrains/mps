@@ -32,6 +32,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.baseLanguage.behavior.AbstractCatchClause__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.BaseQuickFixProvider;
@@ -583,10 +584,14 @@ __switch__:
           }
           if (matches_5ahx9e_a1a6a91) {
             if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0t, LINKS.body$TQ1f))) {
-              for (final SNode cc : SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$GIrD)) {
+              for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$GIrD)).translate(new ITranslator2<SNode, SNode>() {
+                public Iterable<SNode> translate(SNode it) {
+                  return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
+                }
+              })) {
                 ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
                   public boolean accept(SNode tt) {
-                    return TypecheckingFacade.getFromContext().isSubtype(tt, SLinkOperations.getTarget(SLinkOperations.getTarget(cc, LINKS.throwable$5XW_), LINKS.type$pLrO));
+                    return TypecheckingFacade.getFromContext().isSubtype(tt, caughtType);
                   }
                 });
               }
@@ -601,10 +606,14 @@ __switch__:
             }
             if (matches_5ahx9e_b1a6a91) {
               if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0t, LINKS.body$9KDK))) {
-                for (final SNode cc : SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$jGNt)) {
+                for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$jGNt)).translate(new ITranslator2<SNode, SNode>() {
+                  public Iterable<SNode> translate(SNode it) {
+                    return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
+                  }
+                })) {
                   ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
                     public boolean accept(SNode tt) {
-                      return TypecheckingFacade.getFromContext().isSubtype(tt, SLinkOperations.getTarget(SLinkOperations.getTarget(cc, LINKS.throwable$5XW_), LINKS.type$pLrO));
+                      return TypecheckingFacade.getFromContext().isSubtype(tt, caughtType);
                     }
                   });
                 }
@@ -830,7 +839,6 @@ __switch__:
     /*package*/ static final SContainmentLink componentType$knmw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
     /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
     /*package*/ static final SContainmentLink staticInitializer$Oea4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x110ca5f7c5aL, "staticInitializer");
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
     /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
     /*package*/ static final SContainmentLink body$TQ1f = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
     /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
