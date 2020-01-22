@@ -296,8 +296,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new UnaryMinus_TextGen();
       case LanguageConceptSwitch.UpperBoundType:
         return new UpperBoundType_TextGen();
-      case LanguageConceptSwitch.VarType:
-        return new VarType_TextGen();
       case LanguageConceptSwitch.VariableArityType:
         return new VariableArityType_TextGen();
       case LanguageConceptSwitch.VariableDeclaration:

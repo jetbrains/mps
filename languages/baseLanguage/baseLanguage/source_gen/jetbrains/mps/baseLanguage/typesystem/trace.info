@@ -1586,58 +1586,61 @@
       </scope>
     </file>
     <file name="typeof_BaseVariableDeclaration_InferenceRule.java">
-      <node id="1203030934664" at="27,7,28,46" concept="12" />
-      <node id="1203030934664" at="28,46,29,199" concept="12" />
-      <node id="1203030934664" at="29,199,30,286" concept="6" />
-      <node id="1209916572216" at="34,7,35,66" concept="12" />
-      <node id="1209916572216" at="35,66,36,288" concept="12" />
-      <node id="1176718067025" at="40,50,41,47" concept="13" />
-      <node id="1176718067025" at="43,68,44,102" concept="13" />
-      <node id="1176718067025" at="46,30,47,17" concept="13" />
-      <node id="1176718067025" at="51,0,52,0" concept="16" trace="type$pLrO" />
-      <node id="1176718067025" at="55,0,56,0" concept="16" trace="WildCardType$29" />
-      <node id="1176718067025" at="56,0,57,0" concept="16" trace="VoidType$aT" />
-      <node id="1176718067025" at="57,0,58,0" concept="16" trace="BaseVariableDeclaration$dO" />
+      <node id="6735953169132429875" at="26,121,27,55" concept="14" />
+      <node id="1203030934664" at="29,7,30,46" concept="12" />
+      <node id="1203030934664" at="30,46,31,199" concept="12" />
+      <node id="1203030934664" at="31,199,32,286" concept="6" />
+      <node id="1209916572216" at="36,7,37,66" concept="12" />
+      <node id="1209916572216" at="37,66,38,288" concept="12" />
+      <node id="1176718067025" at="42,50,43,47" concept="13" />
+      <node id="1176718067025" at="45,68,46,102" concept="13" />
+      <node id="1176718067025" at="48,30,49,17" concept="13" />
+      <node id="1176718067025" at="53,0,54,0" concept="16" trace="type$pLrO" />
+      <node id="1176718067025" at="57,0,58,0" concept="16" trace="WildCardType$29" />
+      <node id="1176718067025" at="58,0,59,0" concept="16" trace="UndefinedType$1H" />
+      <node id="1176718067025" at="59,0,60,0" concept="16" trace="VoidType$aT" />
+      <node id="1176718067025" at="60,0,61,0" concept="16" trace="BaseVariableDeclaration$dO" />
       <node id="1176718067025" at="22,0,24,0" concept="3" trace="typeof_BaseVariableDeclaration_InferenceRule#()V" />
-      <node id="1176718067025" at="40,0,43,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1176718067025" at="43,0,46,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="1176718067025" at="46,0,49,0" concept="11" trace="overrides#()Z" />
-      <node id="1209916572216" at="33,109,37,7" concept="1" />
-      <node id="1203030934664" at="26,12,31,7" concept="1" />
-      <node id="1203030927267" at="26,10,32,5" concept="1" />
-      <node id="1209916480535" at="32,5,38,5" concept="10" />
-      <node id="1203030907645" at="24,115,32,5" concept="10" />
-      <node id="1176718067025" at="24,0,40,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="1176718067025" at="42,0,45,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1176718067025" at="45,0,48,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="1176718067025" at="48,0,51,0" concept="11" trace="overrides#()Z" />
+      <node id="1209916572216" at="35,109,39,7" concept="1" />
+      <node id="1203030934664" at="28,12,33,7" concept="1" />
+      <node id="1203030927267" at="28,10,34,5" concept="1" />
+      <node id="1209916480535" at="34,5,40,5" concept="10" />
+      <node id="1203030907645" at="24,115,34,5" concept="10" />
+      <node id="1176718067025" at="24,0,42,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="1176718067025" at="22,57,22,57" />
       <scope id="1203030907646" at="25,113,25,113" />
-      <scope id="1176718067025" at="40,50,41,47" />
-      <scope id="1176718067025" at="43,68,44,102" />
-      <scope id="1176718067025" at="46,30,47,17" />
+      <scope id="6735953169132429026" at="26,121,27,55" />
+      <scope id="1176718067025" at="42,50,43,47" />
+      <scope id="1176718067025" at="45,68,46,102" />
+      <scope id="1176718067025" at="48,30,49,17" />
       <scope id="1176718067025" at="22,0,24,0" />
-      <scope id="1209916572216" at="34,7,36,288">
+      <scope id="1209916572216" at="36,7,38,288">
         <var name="_reporter_2309309498" id="1209916572216" />
         <var name="errorTarget" id="1209916572216" />
       </scope>
-      <scope id="1203030934664" at="27,7,30,286">
+      <scope id="1203030934664" at="29,7,32,286">
         <var name="_info_12389875345" id="1203030934664" />
         <var name="_nodeToCheck_1029348928467" id="1203030934664" />
       </scope>
-      <scope id="1176718067025" at="40,0,43,0" />
-      <scope id="1176718067025" at="43,0,46,0">
+      <scope id="1176718067025" at="42,0,45,0" />
+      <scope id="1176718067025" at="45,0,48,0">
         <var name="argument" id="1176718067025" />
       </scope>
-      <scope id="1176718067025" at="46,0,49,0" />
-      <scope id="1209916480536" at="33,109,37,7" />
-      <scope id="1203030927268" at="26,12,31,7" />
-      <scope id="1176718067026" at="24,115,38,5" />
-      <scope id="1176718067025" at="24,0,40,0">
+      <scope id="1176718067025" at="48,0,51,0" />
+      <scope id="1209916480536" at="35,109,39,7" />
+      <scope id="1203030927268" at="28,12,33,7" />
+      <scope id="1176718067026" at="24,115,40,5" />
+      <scope id="1176718067025" at="24,0,42,0">
         <var name="status" id="1176718067025" />
         <var name="typeCheckingContext" id="1176718067025" />
         <var name="vd" id="1176718067025" />
       </scope>
-      <unit id="1176718067025" at="50,0,53,0" name="jetbrains.mps.baseLanguage.typesystem.typeof_BaseVariableDeclaration_InferenceRule$LINKS" />
-      <unit id="1176718067025" at="54,0,59,0" name="jetbrains.mps.baseLanguage.typesystem.typeof_BaseVariableDeclaration_InferenceRule$CONCEPTS" />
-      <unit id="1176718067025" at="21,0,60,0" name="jetbrains.mps.baseLanguage.typesystem.typeof_BaseVariableDeclaration_InferenceRule" />
+      <unit id="1176718067025" at="52,0,55,0" name="jetbrains.mps.baseLanguage.typesystem.typeof_BaseVariableDeclaration_InferenceRule$LINKS" />
+      <unit id="1176718067025" at="56,0,62,0" name="jetbrains.mps.baseLanguage.typesystem.typeof_BaseVariableDeclaration_InferenceRule$CONCEPTS" />
+      <unit id="1176718067025" at="21,0,63,0" name="jetbrains.mps.baseLanguage.typesystem.typeof_BaseVariableDeclaration_InferenceRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1176719219618">

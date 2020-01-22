@@ -291,15 +291,14 @@ public final class LanguageConceptSwitch {
   public static final int UsingStatement = 279;
   public static final int ValueParameter = 280;
   public static final int ValueRef = 281;
-  public static final int VarType = 282;
-  public static final int VariableArityType = 283;
-  public static final int VariableDeclaration = 284;
-  public static final int VariableReference = 285;
-  public static final int Visibility = 286;
-  public static final int VoidType = 287;
-  public static final int WhileStatement = 288;
-  public static final int WildCardType = 289;
-  public static final int XorAssignmentExpression = 290;
+  public static final int VariableArityType = 282;
+  public static final int VariableDeclaration = 283;
+  public static final int VariableReference = 284;
+  public static final int Visibility = 285;
+  public static final int VoidType = 286;
+  public static final int WhileStatement = 287;
+  public static final int WildCardType = 288;
+  public static final int XorAssignmentExpression = 289;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xf3061a5392264cc5L, 0xa443f952ceaf5816L);
@@ -585,7 +584,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x11d0053f19bL, UsingStatement);
     builder.put(0x117dd047c70L, ValueParameter);
     builder.put(0x53cc4e75e79ac33aL, ValueRef);
-    builder.put(0x112353ac52dL, VarType);
     builder.put(0x11c08f42e7bL, VariableArityType);
     builder.put(0xf8c37a7f6eL, VariableDeclaration);
     builder.put(0xf8c77f1e98L, VariableReference);

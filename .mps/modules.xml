@@ -81,9 +81,9 @@
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/doubleDispatch/solutions/sandbox/jetbrains.mps.baseLanguage.doubleDispatch.sandbox.msd" folder="core.baseLanguage.doubleDispatch" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/javadoc/jetbrains.mps.baseLanguage.javadoc.mpl" folder="core.baseLanguage.javadoc" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/javadoc/jetbrains.mps.baseLanguage.javadoc.sandbox/jetbrains.mps.baseLanguage.javadoc.sandbox.msd" folder="core.baseLanguage.javadoc" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/jdk7/languages/jdk7/jetbrains.mps.baseLanguage.jdk7.mpl" folder="core.baseLanguage.jdk7" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/jdk7/solutions/jetbrains.mps.baseLanguage.jdk7.sandbox/jetbrains.mps.baseLanguage.jdk7.sandbox.msd" folder="core.baseLanguage.jdk7" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/jdk8/languages/jdk8/jetbrains.mps.baseLanguage.jdk8.mpl" folder="core.baseLanguage.jdk8" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/jdk7/languages/jdk7/jetbrains.mps.baseLanguage.jdk7.mpl" folder="core.baseLanguage.javaFeatures.jdk7" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/jdk7/solutions/jetbrains.mps.baseLanguage.jdk7.sandbox/jetbrains.mps.baseLanguage.jdk7.sandbox.msd" folder="core.baseLanguage.javaFeatures.jdk7" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/jdk8/languages/jdk8/jetbrains.mps.baseLanguage.jdk8.mpl" folder="core.baseLanguage.javaFeatures.jdk8" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.mpl" folder="core.baseLanguage.lightweightdsl" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/logging/jetbrains.mps.baseLanguage.logging.mpl" folder="core.baseLanguage.logging" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/logging/runtime/jetbrains.mps.baseLanguage.logging.runtime.msd" folder="core.baseLanguage.logging" />
@@ -94,7 +94,7 @@
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/tuples/runtime/jetbrains.mps.baseLanguage.tuples.runtime.msd" folder="core.baseLanguage.tuples" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/tuples/solutions/jetbrains.mps.baseLanguage.tuples.sandbox/jetbrains.mps.baseLanguage.tuples.sandbox.msd" folder="core.baseLanguage.tuples" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/unitTest/jetbrains.mps.baseLanguage.unitTest.libs.msd" folder="core.baseLanguage.unitTest" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/varVariable/jetbrains.mps.baseLanguage.varVariable.mpl" folder="core.baseLanguage.extensions" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/varVariable/jetbrains.mps.baseLanguage.varVariable.mpl" folder="core.baseLanguage.javaFeatures.jdk10" />
       <modulePath path="$PROJECT_DIR$/languages/core/core/jetbrains.mps.lang.core.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/Annotations/Annotations.msd" folder="core.stub" />
       <modulePath path="$PROJECT_DIR$/languages/core/stub/Ant/Ant.msd" folder="core.stub" />

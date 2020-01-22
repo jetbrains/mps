@@ -187,46 +187,43 @@
       </scope>
     </file>
     <file name="typeof_CatchVariable_InferenceRule.java">
-      <node id="6735953169129845482" at="22,82,23,16" concept="7" />
-      <node id="6735953169129852600" at="27,7,28,57" concept="6" />
-      <node id="6735953169129852600" at="28,57,29,210" concept="6" />
-      <node id="6735953169129852600" at="29,210,30,287" concept="2" />
-      <node id="6735953169129845225" at="34,50,35,37" concept="7" />
-      <node id="6735953169129845225" at="37,68,38,102" concept="7" />
+      <node id="6735953169129852600" at="24,7,25,57" concept="6" />
+      <node id="6735953169129852600" at="25,57,26,210" concept="6" />
+      <node id="6735953169129852600" at="26,210,27,287" concept="2" />
+      <node id="6735953169129845225" at="31,50,32,37" concept="7" />
+      <node id="6735953169129845225" at="34,68,35,102" concept="7" />
+      <node id="6735953169129845225" at="37,30,38,17" concept="7" />
       <node id="6735953169129845225" at="42,0,43,0" concept="10" trace="type$pLrO" />
       <node id="6735953169129845225" at="43,0,44,0" concept="10" trace="classes$Fu70" />
       <node id="6735953169129845225" at="47,0,48,0" concept="10" trace="AlternativeType$aM" />
       <node id="6735953169129845225" at="48,0,49,0" concept="10" trace="CatchVariable$6W" />
       <node id="6735953169129845225" at="20,0,22,0" concept="1" trace="typeof_CatchVariable_InferenceRule#()V" />
-      <node id="6735953169129845225" at="22,0,25,0" concept="5" trace="overrides#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Z" />
-      <node id="6735953169129845225" at="34,0,37,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6735953169129845225" at="37,0,40,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="6735953169129852600" at="26,209,31,7" concept="0" />
-      <node id="6735953169129845638" at="25,126,32,5" concept="3" />
-      <node id="6735953169129845225" at="25,0,34,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="6735953169129845225" at="31,0,34,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6735953169129845225" at="34,0,37,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6735953169129845225" at="37,0,40,0" concept="5" trace="overrides#()Z" />
+      <node id="6735953169129852600" at="23,209,28,7" concept="0" />
+      <node id="6735953169129845638" at="22,126,29,5" concept="3" />
+      <node id="6735953169129845225" at="22,0,31,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="6735953169129845225" at="20,47,20,47" />
-      <scope id="6735953169129845233" at="22,82,23,16" />
-      <scope id="6735953169129845225" at="34,50,35,37" />
-      <scope id="6735953169129845225" at="37,68,38,102" />
+      <scope id="6735953169129845225" at="31,50,32,37" />
+      <scope id="6735953169129845225" at="34,68,35,102" />
+      <scope id="6735953169129845225" at="37,30,38,17" />
       <scope id="6735953169129845225" at="20,0,22,0" />
-      <scope id="6735953169129845225" at="22,0,25,0">
-        <var name="catchVariable" id="6735953169129845225" />
-        <var name="status" id="6735953169129845225" />
-      </scope>
-      <scope id="6735953169129852600" at="27,7,30,287">
+      <scope id="6735953169129852600" at="24,7,27,287">
         <var name="_info_12389875345" id="6735953169129852600" />
         <var name="_nodeToCheck_1029348928467" id="6735953169129852600" />
       </scope>
-      <scope id="6735953169129845225" at="34,0,37,0" />
-      <scope id="6735953169129845225" at="37,0,40,0">
+      <scope id="6735953169129845225" at="31,0,34,0" />
+      <scope id="6735953169129845225" at="34,0,37,0">
         <var name="argument" id="6735953169129845225" />
       </scope>
-      <scope id="6735953169129845644" at="26,209,31,7" />
-      <scope id="6735953169129845226" at="25,126,32,5" />
-      <scope id="6735953169129845638" at="25,126,32,5">
+      <scope id="6735953169129845225" at="37,0,40,0" />
+      <scope id="6735953169129845644" at="23,209,28,7" />
+      <scope id="6735953169129845226" at="22,126,29,5" />
+      <scope id="6735953169129845638" at="22,126,29,5">
         <var name="caughtType" id="6735953169129845640" />
       </scope>
-      <scope id="6735953169129845225" at="25,0,34,0">
+      <scope id="6735953169129845225" at="22,0,31,0">
         <var name="catchVariable" id="6735953169129845225" />
         <var name="status" id="6735953169129845225" />
         <var name="typeCheckingContext" id="6735953169129845225" />

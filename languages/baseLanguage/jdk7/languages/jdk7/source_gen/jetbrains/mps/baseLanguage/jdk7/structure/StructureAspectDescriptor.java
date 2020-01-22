@@ -61,7 +61,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForAlternativeType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "AlternativeType", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x70a99a0b674a3895L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    b.super_("jetbrains.mps.baseLanguage.structure.UndefinedType", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L);
     b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/8118189177080264853");
     b.version(2);
     b.aggregate("classes", 0x70a99a0b674a3896L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(true).origin("8118189177080264854").done();

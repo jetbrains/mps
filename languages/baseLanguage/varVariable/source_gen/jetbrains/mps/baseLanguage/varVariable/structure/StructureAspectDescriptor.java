@@ -10,8 +10,11 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.runtime.ConceptKind;
+import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptVarType = createDescriptorForVarType();
   /*package*/ final ConceptDescriptor myConceptVarVariableDeclaration = createDescriptorForVarVariableDeclaration();
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -27,13 +30,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptVarVariableDeclaration);
+    return Arrays.asList(myConceptVarType, myConceptVarVariableDeclaration);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.VarType:
+        return myConceptVarType;
       case LanguageConceptSwitch.VarVariableDeclaration:
         return myConceptVarVariableDeclaration;
       default:
@@ -46,6 +51,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForVarType() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.varVariable", "VarType", 0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x112353ac52dL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.UndefinedType", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L);
+    b.origin("r:931e38db-856b-4b95-8ae0-a7cd13da6d32(jetbrains.mps.baseLanguage.varVariable.structure)/1177714083117");
+    b.version(2);
+    b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
+    b.alias("var");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForVarVariableDeclaration() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.varVariable", "VarVariableDeclaration", 0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L);
     b.class_(false, false, false);

@@ -23,6 +23,8 @@ public class typeof_BaseVariableDeclaration_InferenceRule extends AbstractInfere
   }
   public void applyRule(final SNode vd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(vd, LINKS.type$pLrO), CONCEPTS.WildCardType$29)) {
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(vd, LINKS.type$pLrO), CONCEPTS.UndefinedType$1H)) {
+      // for extensions that treat types different way 
     } else {
       {
         SNode _nodeToCheck_1029348928467 = vd;
@@ -53,6 +55,7 @@ public class typeof_BaseVariableDeclaration_InferenceRule extends AbstractInfere
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept UndefinedType$1H = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L, "jetbrains.mps.baseLanguage.structure.UndefinedType");
     /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
     /*package*/ static final SConcept BaseVariableDeclaration$dO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, "jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration");
   }

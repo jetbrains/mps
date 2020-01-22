@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_VarType;
   private ConceptPresentation props_VarVariableDeclaration;
 
   @Override
@@ -16,6 +17,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.VarType:
+        if (props_VarType == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("var");
+          props_VarType = cpb.create();
+        }
+        return props_VarType;
       case LanguageConceptSwitch.VarVariableDeclaration:
         if (props_VarVariableDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

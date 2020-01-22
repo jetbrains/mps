@@ -51,7 +51,7 @@
   <node concept="1TIwiD" id="72DAwHBizyl">
     <property role="EcuMT" value="8118189177080264853" />
     <property role="TrG5h" value="AlternativeType" />
-    <ref role="1TJDcQ" to="tpee:fz3vP1H" resolve="Type" />
+    <ref role="1TJDcQ" to="tpee:4ctkEngA$UD" resolve="UndefinedType" />
     <node concept="1TJgyj" id="72DAwHBizym" role="1TKVEi">
       <property role="IQ2ns" value="8118189177080264854" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />

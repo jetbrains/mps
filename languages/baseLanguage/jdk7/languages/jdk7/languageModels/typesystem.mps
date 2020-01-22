@@ -26,9 +26,6 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
-        <child id="1137022507850" name="body" index="2VODD2" />
-      </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
@@ -55,9 +52,6 @@
       </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
-      </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
-        <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6" />
       <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
@@ -90,7 +84,6 @@
       </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
-      <concept id="1766949807893567867" name="jetbrains.mps.lang.typesystem.structure.OverridesConceptFunction" flags="ig" index="bXqS6" />
       <concept id="2329696648445392942" name="jetbrains.mps.lang.typesystem.structure.CheckingRuleReference" flags="ng" index="dlsrG">
         <reference id="2329696648445392943" name="declaration" index="dlsrH" />
       </concept>
@@ -113,9 +106,7 @@
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
-      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF">
-        <child id="422148324487088858" name="overridesFun" index="ujSXK" />
-      </concept>
+      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF" />
       <concept id="1174648085619" name="jetbrains.mps.lang.typesystem.structure.AbstractRule" flags="ng" index="1YuPPy">
         <child id="1174648101952" name="applicableNode" index="1YuTPh" />
       </concept>
@@ -557,15 +548,6 @@
     <node concept="1YaCAy" id="5PUUrvXDF7G" role="1YuTPh">
       <property role="TrG5h" value="catchVariable" />
       <ref role="1YaFvo" to="rymi:4iVGRTTqGsI" resolve="CatchVariable" />
-    </node>
-    <node concept="bXqS6" id="5PUUrvXDF7K" role="ujSXK">
-      <node concept="3clFbS" id="5PUUrvXDF7L" role="2VODD2">
-        <node concept="3clFbF" id="5PUUrvXDFbE" role="3cqZAp">
-          <node concept="3clFbT" id="5PUUrvXDFbD" role="3clFbG">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
     </node>
   </node>
 </model>

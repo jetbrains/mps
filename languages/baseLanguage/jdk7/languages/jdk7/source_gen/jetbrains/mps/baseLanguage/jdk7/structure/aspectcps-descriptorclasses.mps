@@ -1181,7 +1181,7 @@
             <node concept="liA8E" id="6c" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(java.lang.String,long,long,long)" resolve="super_" />
               <node concept="Xl_RD" id="6d" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.baseLanguage.structure.Type" />
+                <property role="Xl_RC" value="jetbrains.mps.baseLanguage.structure.UndefinedType" />
               </node>
               <node concept="1adDum" id="6e" role="37wK5m">
                 <property role="1adDun" value="0xf3061a5392264cc5L" />
@@ -1190,7 +1190,7 @@
                 <property role="1adDun" value="0xa443f952ceaf5816L" />
               </node>
               <node concept="1adDum" id="6g" role="37wK5m">
-                <property role="1adDun" value="0xf8c37f506dL" />
+                <property role="1adDun" value="0x431d52a5d09a4ea9L" />
               </node>
             </node>
           </node>

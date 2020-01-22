@@ -5,8 +5,8 @@ package jetbrains.mps.baseLanguage.jdk7.typesystem;
 import jetbrains.mps.lang.typesystem.runtime.AbstractInferenceRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
+import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -18,9 +18,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_CatchVariable_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_CatchVariable_InferenceRule() {
-  }
-  public boolean overrides(final SNode catchVariable, IsApplicableStatus status) {
-    return true;
   }
   public void applyRule(final SNode catchVariable, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     for (SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(catchVariable, LINKS.type$pLrO), CONCEPTS.AlternativeType$aM), LINKS.classes$Fu70))) {
@@ -36,6 +33,9 @@ public class typeof_CatchVariable_InferenceRule extends AbstractInferenceRule_Ru
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
+  }
+  public boolean overrides() {
+    return false;
   }
 
   private static final class LINKS {

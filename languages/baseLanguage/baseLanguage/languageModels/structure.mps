@@ -2132,14 +2132,6 @@
       <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
     </node>
   </node>
-  <node concept="1TIwiD" id="h8PeGkH">
-    <property role="TrG5h" value="VarType" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="3GE5qa" value="to_remove" />
-    <property role="34LRSv" value="var" />
-    <property role="EcuMT" value="1177714083117" />
-    <ref role="1TJDcQ" node="fz3vP1H" resolve="Type" />
-  </node>
   <node concept="PlHQZ" id="h9ngReX">
     <property role="TrG5h" value="ClassifierMember" />
     <property role="3GE5qa" value="classifiers.base" />
