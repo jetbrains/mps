@@ -20,10 +20,11 @@ import jetbrains.mps.project.DevKit;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.workbench.dialogs.DeleteDialog;
-import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.util.ui.UIUtil;
+import com.intellij.util.PairFunction;
+import javax.swing.JCheckBox;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.module.ModuleDeleteHelper;
 
@@ -98,17 +99,19 @@ public class DeleteModules_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    String message = IdeBundle.message("actions.module.delete.message");
+    final int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.module.delete.message"), IdeBundle.message("actions.module.delete.title"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.CANCEL_BUTTON}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
+      public Integer fun(Integer exitCode, JCheckBox checkBox) {
+        return (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected()));
+      }
+    });
 
-    final DeleteDialog.DeleteOption filesOption = new DeleteDialog.DeleteOption(UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, true);
-
-    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), IdeBundle.message("actions.module.delete.title"), message, filesOption);
-    dialog.show();
-    if (!(dialog.isOK())) {
+    if (result == Messages.CANCEL) {
       return;
     }
 
-    if (!(filesOption.selected) && Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).any(new IWhereFilter<SModule>() {
+    final boolean deleteFiles = result == Messages.YES;
+
+    if (!(deleteFiles) && Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).any(new IWhereFilter<SModule>() {
       public boolean accept(SModule it) {
         return !(((MPSProject) MapSequence.fromMap(_params).get("project")).isProjectModule(it));
       }
@@ -120,7 +123,7 @@ public class DeleteModules_Action extends BaseAction {
         }
       }).visitAll(new IVisitor<SModule>() {
         public void visit(SModule it) {
-          builder.append("<br>").append(it.getModuleName());
+          builder.append("\n").append(it.getModuleName());
         }
       });
       Messages.showWarningDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), IdeBundle.message("actions.module.delete.unable.message", builder), IdeBundle.message("actions.module.delete.unable.title"));
@@ -131,7 +134,7 @@ public class DeleteModules_Action extends BaseAction {
     // While don't support undo no need for command here 
     modelAccess.runWriteAction(new Runnable() {
       public void run() {
-        new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, filesOption.selected);
+        new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, deleteFiles);
       }
     });
   }

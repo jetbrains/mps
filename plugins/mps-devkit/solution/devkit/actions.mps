@@ -140,6 +140,8 @@
     <import index="zce0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.smodel.action(MPS.Editor/)" />
     <import index="zumq" ref="r:3cb1700d-933a-4e99-ae78-290ebea08948(jetbrains.mps.ide.findusages.view)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
+    <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
+    <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" implicit="true" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
     <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" implicit="true" />
@@ -344,9 +346,6 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
-      </concept>
-      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
-        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
       <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
         <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
@@ -3107,8 +3106,12 @@
             <node concept="2ShNRf" id="7OWEUve5YwU" role="33vP2m">
               <node concept="1pGfFk" id="7OWEUve5YwV" role="2ShVmc">
                 <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.&lt;init&gt;(java.lang.String,boolean,boolean)" resolve="DeleteDialog.DeleteOption" />
-                <node concept="Xl_RD" id="7OWEUve5YwW" role="37wK5m">
-                  <property role="Xl_RC" value="Safe Delete" />
+                <node concept="2YIFZM" id="1sGqZUrvWRH" role="37wK5m">
+                  <ref role="37wK5l" to="g1qu:~UIUtil.replaceMnemonicAmpersand(java.lang.String)" resolve="replaceMnemonicAmpersand" />
+                  <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
+                  <node concept="Xl_RD" id="7OWEUve5YwW" role="37wK5m">
+                    <property role="Xl_RC" value="&amp;Safe delete" />
+                  </node>
                 </node>
                 <node concept="3clFbT" id="7OWEUve5YwX" role="37wK5m">
                   <property role="3clFbU" value="true" />
@@ -3129,8 +3132,12 @@
             <node concept="2ShNRf" id="7OWEUve5Yx2" role="33vP2m">
               <node concept="1pGfFk" id="7OWEUve5Yx3" role="2ShVmc">
                 <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.&lt;init&gt;(java.lang.String,boolean,boolean)" resolve="DeleteDialog.DeleteOption" />
-                <node concept="Xl_RD" id="7OWEUve5Yx4" role="37wK5m">
-                  <property role="Xl_RC" value="Delete Files" />
+                <node concept="2YIFZM" id="1sGqZUrvWY3" role="37wK5m">
+                  <ref role="37wK5l" to="g1qu:~UIUtil.replaceMnemonicAmpersand(java.lang.String)" resolve="replaceMnemonicAmpersand" />
+                  <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
+                  <node concept="Xl_RD" id="7OWEUve5Yx4" role="37wK5m">
+                    <property role="Xl_RC" value="Delete &amp;files" />
+                  </node>
                 </node>
                 <node concept="3clFbT" id="7OWEUve5Yx5" role="37wK5m" />
                 <node concept="3clFbT" id="7OWEUve5Yx6" role="37wK5m">
@@ -3149,18 +3156,23 @@
             </node>
             <node concept="2ShNRf" id="1tuGf38GoK4" role="33vP2m">
               <node concept="1pGfFk" id="1tuGf38GoK5" role="2ShVmc">
-                <ref role="37wK5l" to="52hy:~DeleteDialog.&lt;init&gt;(jetbrains.mps.project.Project,java.lang.String,java.lang.String,jetbrains.mps.workbench.dialogs.DeleteDialog$DeleteOption...)" resolve="DeleteDialog" />
-                <node concept="2OqwBi" id="1tuGf38GoK6" role="37wK5m">
-                  <node concept="2WthIp" id="1tuGf38GoK7" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="1tuGf38GoK8" role="2OqNvi">
-                    <ref role="2WH_rO" node="1tuGf38GoLi" resolve="project" />
+                <ref role="37wK5l" to="52hy:~DeleteDialog.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,java.lang.String,jetbrains.mps.workbench.dialogs.DeleteDialog$DeleteOption...)" resolve="DeleteDialog" />
+                <node concept="2OqwBi" id="7RU4EBHLxat" role="37wK5m">
+                  <node concept="2OqwBi" id="1tuGf38GoK6" role="2Oq$k0">
+                    <node concept="2WthIp" id="1tuGf38GoK7" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="1tuGf38GoK8" role="2OqNvi">
+                      <ref role="2WH_rO" node="1tuGf38GoLi" resolve="project" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="7RU4EBHLxYn" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c5:~MPSProject.getProject()" resolve="getProject" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="1tuGf38GoK9" role="37wK5m">
                   <property role="Xl_RC" value="Delete Generator" />
                 </node>
                 <node concept="Xl_RD" id="1tuGf38GoKa" role="37wK5m">
-                  <property role="Xl_RC" value="&lt;html&gt;Are you sure you want to delete generator?&lt;br&gt;This operation is not undoable.&lt;/html&gt;" />
+                  <property role="Xl_RC" value="Are you sure you want to delete generator?\nThis operation cannot be undone." />
                 </node>
                 <node concept="37vLTw" id="3GM_nagTxS1" role="37wK5m">
                   <ref role="3cqZAo" node="7OWEUve5YwS" resolve="safeOption" />
@@ -3178,7 +3190,7 @@
               <ref role="3cqZAo" node="1tuGf38GoK2" resolve="dialog" />
             </node>
             <node concept="liA8E" id="1tuGf38GoKm" role="2OqNvi">
-              <ref role="37wK5l" to="jkm4:~DialogWrapper.show()" resolve="show" />
+              <ref role="37wK5l" to="ov6m:~MessageDialog.show()" resolve="show" />
             </node>
           </node>
         </node>
@@ -3271,8 +3283,8 @@
                   <node concept="37vLTw" id="vTEwPQvTd_" role="2Oq$k0">
                     <ref role="3cqZAo" node="7OWEUve5YwS" resolve="safeOption" />
                   </node>
-                  <node concept="2OwXpG" id="vTEwPQvTn5" role="2OqNvi">
-                    <ref role="2Oxat5" to="52hy:~DeleteDialog$DeleteOption.selected" resolve="selected" />
+                  <node concept="liA8E" id="7RU4EBHLwd7" role="2OqNvi">
+                    <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.isSelected()" resolve="isSelected" />
                   </node>
                 </node>
               </node>
@@ -3283,8 +3295,8 @@
                 <node concept="37vLTw" id="vTEwPQvU7M" role="2Oq$k0">
                   <ref role="3cqZAo" node="7OWEUve5Yx0" resolve="filesOption" />
                 </node>
-                <node concept="2OwXpG" id="vTEwPQvUlI" role="2OqNvi">
-                  <ref role="2Oxat5" to="52hy:~DeleteDialog$DeleteOption.selected" resolve="selected" />
+                <node concept="liA8E" id="7RU4EBHLwm_" role="2OqNvi">
+                  <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.isSelected()" resolve="isSelected" />
                 </node>
               </node>
             </node>
@@ -3488,8 +3500,8 @@
                               <node concept="37vLTw" id="6s6LYnVxCD1" role="2Oq$k0">
                                 <ref role="3cqZAo" node="7OWEUve5Yx0" resolve="filesOption" />
                               </node>
-                              <node concept="2OwXpG" id="6s6LYnVxDae" role="2OqNvi">
-                                <ref role="2Oxat5" to="52hy:~DeleteDialog$DeleteOption.selected" resolve="selected" />
+                              <node concept="liA8E" id="7RU4EBHLwpa" role="2OqNvi">
+                                <ref role="37wK5l" to="52hy:~DeleteDialog$DeleteOption.isSelected()" resolve="isSelected" />
                               </node>
                             </node>
                           </node>

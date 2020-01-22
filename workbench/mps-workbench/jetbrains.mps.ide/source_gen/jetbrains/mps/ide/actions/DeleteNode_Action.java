@@ -18,6 +18,8 @@ import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.dialogs.DeleteDialog;
+import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -101,14 +103,14 @@ public class DeleteNode_Action extends BaseAction {
       }
     });
 
-    DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption("Safe Delete", false, true);
-    DeleteDialog.DeleteOption aspectsOption = new DeleteDialog.DeleteOption("Delete Aspects", true, true);
-    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), "Delete Node", "Are you sure you want to delete selected node?", (hasAspects.value ? new DeleteDialog.DeleteOption[]{safeOption, aspectsOption} : new DeleteDialog.DeleteOption[]{safeOption}));
+    DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption(UIUtil.replaceMnemonicAmpersand(IdeBundle.message("dialog.node.delete.option.safe")), false, true);
+    DeleteDialog.DeleteOption aspectsOption = new DeleteDialog.DeleteOption(UIUtil.replaceMnemonicAmpersand(IdeBundle.message("dialog.node.delete.option.aspects")), true, true);
+    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), IdeBundle.message("dialog.node.delete.title"), IdeBundle.message("dialog.node.delete.text"), (hasAspects.value ? new DeleteDialog.DeleteOption[]{safeOption, aspectsOption} : new DeleteDialog.DeleteOption[]{safeOption}));
     dialog.show();
     if (!(dialog.isOK())) {
       return;
     }
-    helper.deleteNodes(safeOption.selected, aspectsOption.selected, true);
+    helper.deleteNodes(safeOption.isSelected(), aspectsOption.isSelected(), true);
   }
   private Iterable<SNode> getAffectedNodes(final Map<String, Object> _params) {
     Iterable<SNode> list = ((List<SNode>) MapSequence.fromMap(_params).get("nodes"));
