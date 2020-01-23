@@ -10307,8 +10307,8 @@
                 <node concept="37vLTw" id="5iOAkPG8Cfr" role="2Oq$k0">
                   <ref role="3cqZAo" node="7TSspuy9B5" resolve="node" />
                 </node>
-                <node concept="liA8E" id="5iOAkPG8Cfs" role="2OqNvi">
-                  <ref role="37wK5l" to="kxvg:~NamespaceTextNode.getName()" resolve="getName" />
+                <node concept="liA8E" id="5PUUrvXYJfP" role="2OqNvi">
+                  <ref role="37wK5l" to="kxvg:~NamespaceTextNode.getNamespace()" resolve="getNamespace" />
                 </node>
               </node>
               <node concept="10Nm6u" id="5iOAkPG8Cft" role="37wK5m" />

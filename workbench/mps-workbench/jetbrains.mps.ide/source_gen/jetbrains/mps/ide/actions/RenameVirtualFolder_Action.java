@@ -74,7 +74,7 @@ public class RenameVirtualFolder_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final NamespaceTextNode node = ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode")));
-    final Wrappers._T<String> newFolder = new Wrappers._T<String>(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Rename virtual folder", "Rename", null, node.getName(), null));
+    final Wrappers._T<String> newFolder = new Wrappers._T<String>(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Rename virtual folder", "Rename", null, node.getNamespace(), null));
     if (newFolder.value == null) {
       return;
     }
