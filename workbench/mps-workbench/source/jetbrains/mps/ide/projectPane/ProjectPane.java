@@ -43,6 +43,7 @@ import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
+import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectPaneTree;
@@ -124,6 +125,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   private List<List<String>> mySelectedPathsRaw = Collections.emptyList();
   private MessageBusConnection myConnection;
   private final ShowDescriptorModelsAction myShowDescriptorModelsAction;
+  private final MessageBusConnection myMessageBus;
 
   public ProjectPane(final Project project, ProjectView projectView) {
     super(project, projectView);
@@ -140,6 +142,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     };
     ApplicationManager.getApplication().getComponent(ReloadManager.class).addReloadListener(myReloadListener);
     myShowDescriptorModelsAction = new ShowDescriptorModelsAction(this);
+    myMessageBus = myProject.getMessageBus().connect(this);
+    myMessageBus.subscribe(TabbedEditor.TAB_CHANGES, nodeRef -> {
+      if (getProjectView().isAutoscrollFromSource(ID)) {
+        selectNodeWithoutExpansion(nodeRef);
+      }
+    });
   }
 
   @Override
