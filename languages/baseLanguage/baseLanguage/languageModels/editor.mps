@@ -3226,9 +3226,8 @@
           </node>
         </node>
       </node>
-      <node concept="3F1sOY" id="hiAXQQ$" role="3EZMnx">
-        <property role="1$x2rV" value="&lt;no type&gt;" />
-        <ref role="1NtTu8" to="tpee:4VkOLwjf83e" resolve="type" />
+      <node concept="PMmxH" id="4doMSU31bY3" role="3EZMnx">
+        <ref role="PMmxG" node="4doMSU31bY1" resolve="LovalVariableDeclaration_Type" />
       </node>
       <node concept="PMmxH" id="hiAXQQ_" role="3EZMnx">
         <ref role="PMmxG" node="hcE9nLY" resolve="VariableDeclaration_NameCellComponent" />
@@ -4754,6 +4753,9 @@
         <property role="1cu_pB" value="0" />
         <ref role="1k5W1q" node="hgVS8CF" resolve="KeyWord" />
         <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+        <node concept="VPRnO" id="4a44VRC40hr" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
       </node>
       <node concept="1xolST" id="gzTFP$u" role="1QoS34">
         <property role="1xolSY" value="&lt;type&gt;" />
@@ -21131,6 +21133,9 @@
       <property role="1cu_pB" value="0" />
       <ref role="1k5W1q" node="hgVS8CF" resolve="KeyWord" />
       <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      <node concept="VPRnO" id="4a44VRC8Pwj" role="3F10Kt">
+        <property role="VOm3f" value="true" />
+      </node>
     </node>
   </node>
   <node concept="325Ffw" id="4mBa$BIjAvX">
@@ -66016,6 +66021,15 @@
       <property role="1cu_pB" value="0" />
       <ref role="1k5W1q" node="hgVS8CF" resolve="KeyWord" />
       <ref role="PMmxG" to="tpco:37EzmTDC95l" resolve="ImplementationRemovedInStubMessage" />
+    </node>
+  </node>
+  <node concept="PKFIW" id="4doMSU31bY1">
+    <property role="TrG5h" value="LovalVariableDeclaration_Type" />
+    <property role="3GE5qa" value="variables" />
+    <ref role="1XX52x" to="tpee:fzcpWvJ" resolve="LocalVariableDeclaration" />
+    <node concept="3F1sOY" id="4doMSU31bY2" role="2wV5jI">
+      <property role="1$x2rV" value="&lt;no type&gt;" />
+      <ref role="1NtTu8" to="tpee:4VkOLwjf83e" resolve="type" />
     </node>
   </node>
 </model>

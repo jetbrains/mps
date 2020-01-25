@@ -39,7 +39,7 @@ public class VarVariableDeclaration_Constraints extends BaseConstraintsDescripto
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.type$pLrO)) {
+    if (Objects.equals(link, LINKS.type$pLrO) && childNode != null) {
       return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.VarType$lr);
     }
     return true;

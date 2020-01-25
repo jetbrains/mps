@@ -12019,6 +12019,178 @@
       <unit id="4741152186081386068" at="13,0,40,0" name="jetbrains.mps.editorTest.InsertBeforeUnaryMinus_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4792977609791265298">
+    <file name="VarVariableCompletion_Test.java">
+      <node id="4792977609791265298" at="18,39,19,25" concept="11" />
+      <node id="4792977609791265298" at="23,61,24,36" concept="2" />
+      <node id="4792977609791265298" at="29,52,30,19" concept="11" />
+      <node id="4792977609791265298" at="34,51,35,72" concept="2" />
+      <node id="4792977609793250122" at="35,72,36,32" concept="2" />
+      <node id="4792977609791265298" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4792977609791265298" at="18,0,21,0" concept="1" trace="VarVariableCompletion_Test#()V" />
+      <node id="4792977609791265298" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4792977609791265298" at="22,0,26,0" concept="5" trace="test_VarVariableCompletion#()V" />
+      <node id="4792977609791265298" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4792977609791265298" at="18,39,19,25" />
+      <scope id="4792977609791265298" at="23,61,24,36" />
+      <scope id="4792977609791265298" at="29,52,30,19" />
+      <scope id="4792977609791265298" at="34,51,36,32" />
+      <scope id="4792977609791265298" at="18,0,21,0" />
+      <scope id="4792977609791265298" at="29,0,32,0">
+        <var name="owner" id="4792977609791265298" />
+      </scope>
+      <scope id="4792977609791265298" at="22,0,26,0" />
+      <scope id="4792977609791265298" at="33,0,38,0" />
+      <unit id="4792977609791265298" at="27,0,39,0" name="jetbrains.mps.editorTest.VarVariableCompletion_Test$TestBody" />
+      <unit id="4792977609791265298" at="13,0,40,0" name="jetbrains.mps.editorTest.VarVariableCompletion_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4852852411436650271">
+    <file name="VarVariableFromLocalVariable_Test.java">
+      <node id="4852852411436650271" at="18,46,19,25" concept="11" />
+      <node id="4852852411436650271" at="23,68,24,36" concept="2" />
+      <node id="4852852411436650271" at="29,52,30,19" concept="11" />
+      <node id="4852852411436650271" at="34,51,35,72" concept="2" />
+      <node id="4852852411436978176" at="35,72,36,72" concept="2" />
+      <node id="4852852411436978207" at="36,72,37,72" concept="2" />
+      <node id="4852852411436978221" at="37,72,38,72" concept="2" />
+      <node id="4852852411436978237" at="38,72,39,72" concept="2" />
+      <node id="4852852411436978255" at="39,72,40,72" concept="2" />
+      <node id="4852852411436978275" at="40,72,41,72" concept="2" />
+      <node id="4852852411436978297" at="41,72,42,72" concept="2" />
+      <node id="4852852411436978915" at="42,72,43,24" concept="2" />
+      <node id="4852852411436650271" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4852852411436650271" at="18,0,21,0" concept="1" trace="VarVariableFromLocalVariable_Test#()V" />
+      <node id="4852852411436650271" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4852852411436650271" at="22,0,26,0" concept="5" trace="test_VarVariableFromLocalVariable#()V" />
+      <node id="4852852411436650271" at="33,0,45,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4852852411436650271" at="18,46,19,25" />
+      <scope id="4852852411436650271" at="23,68,24,36" />
+      <scope id="4852852411436650271" at="29,52,30,19" />
+      <scope id="4852852411436650271" at="18,0,21,0" />
+      <scope id="4852852411436650271" at="29,0,32,0">
+        <var name="owner" id="4852852411436650271" />
+      </scope>
+      <scope id="4852852411436650271" at="22,0,26,0" />
+      <scope id="4852852411436650271" at="34,51,43,24" />
+      <scope id="4852852411436650271" at="33,0,45,0" />
+      <unit id="4852852411436650271" at="27,0,46,0" name="jetbrains.mps.editorTest.VarVariableFromLocalVariable_Test$TestBody" />
+      <unit id="4852852411436650271" at="13,0,47,0" name="jetbrains.mps.editorTest.VarVariableFromLocalVariable_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4852852411437132966">
+    <file name="VarVariableFromTypePlaceholder_Test.java">
+      <node id="4852852411437132966" at="18,48,19,25" concept="11" />
+      <node id="4852852411437132966" at="23,70,24,36" concept="2" />
+      <node id="4852852411437132966" at="29,52,30,19" concept="11" />
+      <node id="4852852411437132966" at="34,51,35,72" concept="2" />
+      <node id="4852852411437133000" at="35,72,36,24" concept="2" />
+      <node id="4852852411437132998" at="36,24,37,71" concept="2" />
+      <node id="4852852411437862307" at="37,71,38,71" concept="2" />
+      <node id="4852852411437132966" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4852852411437132966" at="18,0,21,0" concept="1" trace="VarVariableFromTypePlaceholder_Test#()V" />
+      <node id="4852852411437132966" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4852852411437132966" at="22,0,26,0" concept="5" trace="test_VarVariableFromTypePlaceholder#()V" />
+      <node id="4852852411437132966" at="33,0,40,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4852852411437132966" at="18,48,19,25" />
+      <scope id="4852852411437132966" at="23,70,24,36" />
+      <scope id="4852852411437132966" at="29,52,30,19" />
+      <scope id="4852852411437132966" at="18,0,21,0" />
+      <scope id="4852852411437132966" at="29,0,32,0">
+        <var name="owner" id="4852852411437132966" />
+      </scope>
+      <scope id="4852852411437132966" at="22,0,26,0" />
+      <scope id="4852852411437132966" at="34,51,38,71" />
+      <scope id="4852852411437132966" at="33,0,40,0" />
+      <unit id="4852852411437132966" at="27,0,41,0" name="jetbrains.mps.editorTest.VarVariableFromTypePlaceholder_Test$TestBody" />
+      <unit id="4852852411437132966" at="13,0,42,0" name="jetbrains.mps.editorTest.VarVariableFromTypePlaceholder_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4852852411438151027">
+    <file name="VarVariableToLocalVariable_Test.java">
+      <node id="4852852411438151027" at="18,44,19,25" concept="11" />
+      <node id="4852852411438151027" at="23,66,24,36" concept="2" />
+      <node id="4852852411438151027" at="29,52,30,19" concept="11" />
+      <node id="4852852411438151027" at="34,51,35,72" concept="2" />
+      <node id="4852852411438151837" at="35,72,36,72" concept="2" />
+      <node id="4852852411438151839" at="36,72,37,72" concept="2" />
+      <node id="4852852411438151841" at="37,72,38,72" concept="2" />
+      <node id="4852852411438151851" at="38,72,39,24" concept="2" />
+      <node id="4852852411438151027" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="4852852411438151027" at="18,0,21,0" concept="1" trace="VarVariableToLocalVariable_Test#()V" />
+      <node id="4852852411438151027" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4852852411438151027" at="22,0,26,0" concept="5" trace="test_VarVariableToLocalVariable#()V" />
+      <node id="4852852411438151027" at="33,0,41,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4852852411438151027" at="18,44,19,25" />
+      <scope id="4852852411438151027" at="23,66,24,36" />
+      <scope id="4852852411438151027" at="29,52,30,19" />
+      <scope id="4852852411438151027" at="18,0,21,0" />
+      <scope id="4852852411438151027" at="29,0,32,0">
+        <var name="owner" id="4852852411438151027" />
+      </scope>
+      <scope id="4852852411438151027" at="22,0,26,0" />
+      <scope id="4852852411438151027" at="34,51,39,24" />
+      <scope id="4852852411438151027" at="33,0,41,0" />
+      <unit id="4852852411438151027" at="27,0,42,0" name="jetbrains.mps.editorTest.VarVariableToLocalVariable_Test$TestBody" />
+      <unit id="4852852411438151027" at="13,0,43,0" name="jetbrains.mps.editorTest.VarVariableToLocalVariable_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4852852411438293101">
+    <file name="VarVariableFromLocalVariableReplace_Test.java">
+      <node id="4852852411438293101" at="20,53,21,25" concept="11" />
+      <node id="4852852411438293101" at="25,75,26,36" concept="2" />
+      <node id="4852852411438293101" at="31,52,32,19" concept="11" />
+      <node id="4852852411438293101" at="36,51,37,72" concept="2" />
+      <node id="4852852411438293119" at="37,72,38,24" concept="2" />
+      <node id="4852852411438293120" at="38,24,39,71" concept="2" />
+      <node id="4852852411438731445" at="39,71,40,82" concept="2" />
+      <node id="4852852411438293101" at="17,0,19,0" concept="9" trace="ourParamCache" />
+      <node id="4852852411438293101" at="20,0,23,0" concept="1" trace="VarVariableFromLocalVariableReplace_Test#()V" />
+      <node id="4852852411438293101" at="31,0,34,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4852852411438293101" at="24,0,28,0" concept="5" trace="test_VarVariableFromLocalVariableReplace#()V" />
+      <node id="4852852411438293101" at="35,0,42,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4852852411438293101" at="20,53,21,25" />
+      <scope id="4852852411438293101" at="25,75,26,36" />
+      <scope id="4852852411438293101" at="31,52,32,19" />
+      <scope id="4852852411438293101" at="20,0,23,0" />
+      <scope id="4852852411438293101" at="31,0,34,0">
+        <var name="owner" id="4852852411438293101" />
+      </scope>
+      <scope id="4852852411438293101" at="24,0,28,0" />
+      <scope id="4852852411438293101" at="36,51,40,82" />
+      <scope id="4852852411438293101" at="35,0,42,0" />
+      <unit id="4852852411438293101" at="29,0,43,0" name="jetbrains.mps.editorTest.VarVariableFromLocalVariableReplace_Test$TestBody" />
+      <unit id="4852852411438293101" at="15,0,44,0" name="jetbrains.mps.editorTest.VarVariableFromLocalVariableReplace_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4852852411438434689">
+    <file name="VarVariableToLocalVariableReplace_Test.java">
+      <node id="4852852411438434689" at="20,51,21,25" concept="11" />
+      <node id="4852852411438434689" at="25,73,26,36" concept="2" />
+      <node id="4852852411438434689" at="31,52,32,19" concept="11" />
+      <node id="4852852411438434689" at="36,51,37,72" concept="2" />
+      <node id="4852852411438434707" at="37,72,38,24" concept="2" />
+      <node id="4852852411438434708" at="38,24,39,71" concept="2" />
+      <node id="4852852411438731490" at="39,71,40,82" concept="2" />
+      <node id="4852852411438434689" at="17,0,19,0" concept="9" trace="ourParamCache" />
+      <node id="4852852411438434689" at="20,0,23,0" concept="1" trace="VarVariableToLocalVariableReplace_Test#()V" />
+      <node id="4852852411438434689" at="31,0,34,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4852852411438434689" at="24,0,28,0" concept="5" trace="test_VarVariableToLocalVariableReplace#()V" />
+      <node id="4852852411438434689" at="35,0,42,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="4852852411438434689" at="20,51,21,25" />
+      <scope id="4852852411438434689" at="25,73,26,36" />
+      <scope id="4852852411438434689" at="31,52,32,19" />
+      <scope id="4852852411438434689" at="20,0,23,0" />
+      <scope id="4852852411438434689" at="31,0,34,0">
+        <var name="owner" id="4852852411438434689" />
+      </scope>
+      <scope id="4852852411438434689" at="24,0,28,0" />
+      <scope id="4852852411438434689" at="36,51,40,82" />
+      <scope id="4852852411438434689" at="35,0,42,0" />
+      <unit id="4852852411438434689" at="29,0,43,0" name="jetbrains.mps.editorTest.VarVariableToLocalVariableReplace_Test$TestBody" />
+      <unit id="4852852411438434689" at="15,0,44,0" name="jetbrains.mps.editorTest.VarVariableToLocalVariableReplace_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4905320928998810980">
     <file name="AddParensToTernary1_Test.java">
       <node id="4905320928998810980" at="18,37,19,25" concept="11" />

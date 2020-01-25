@@ -51,7 +51,7 @@
   <node concept="1TIwiD" id="h8PeGkH">
     <property role="TrG5h" value="VarType" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="3GE5qa" value="to_remove" />
+    <property role="3GE5qa" value="" />
     <property role="34LRSv" value="var" />
     <property role="EcuMT" value="1177714083117" />
     <ref role="1TJDcQ" to="tpee:4ctkEngA$UD" resolve="UndefinedType" />

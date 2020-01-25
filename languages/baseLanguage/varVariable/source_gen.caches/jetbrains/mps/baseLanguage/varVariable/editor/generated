@@ -1,3 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="2es44my2ih3vwfrymxekemekz63umix" />
+<product version="3" modelHash="-4z7ejdtcz3xb8q5xy5kgzjsx1jvhmh1">
+  <files names="EditorAspectDescriptorImpl.java:VarType_Delete.java:VarType_LocalVariableDeclaration.java:VarType_TransformationMenu.java:VarVariable_Type.java:VarVariable_Type_ComponentBuilder_a.java:varType.java" />
+</product>
 

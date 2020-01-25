@@ -18,6 +18,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -277,7 +278,7 @@ public class BL_node_factories {
         SLinkOperations.setTarget(newNode, LINKS.expression$bUD_, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$TP));
         if (PrecedenceUtil.needsParensAroundNotExpression(newNode)) {
           SNode parens = SNodeFactoryOperations.replaceWithNewChild(sampleNode, CONCEPTS.ParenthesizedExpression$vE);
-          SLinkOperations.setTarget(parens, LINKS.expression$4_F0, sampleNode);
+          SLinkOperations.setTarget(parens, LINKS.expression$4_F0, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$TP));
         }
       }
     }
@@ -336,11 +337,17 @@ public class BL_node_factories {
   public static class NodeFactory_1704216628350805216 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
-        final SNode next = sampleNode;
-        if (SNodeOperations.isInstanceOf(next, CONCEPTS.AdditionalForLoopVariable$KW)) {
-          SPropertyOperations.assign(newNode, PROPS.name$tAp1, SPropertyOperations.getString(next, PROPS.name$tAp1));
-          SLinkOperations.setTarget(newNode, LINKS.type$pLrO, SNodeOperations.copyNode(SLinkOperations.getTarget(next, LINKS.type$pLrO)));
-          SLinkOperations.setTarget(newNode, LINKS.initializer$KgD, SNodeOperations.copyNode(SLinkOperations.getTarget(next, LINKS.initializer$KgD)));
+        final SNode original = sampleNode;
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.LocalVariableDeclaration$Bf)) {
+          SPropertyOperations.assign(newNode, PROPS.name$tAp1, SPropertyOperations.getString(original, PROPS.name$tAp1));
+          SLinkOperations.setTarget(newNode, LINKS.type$pLrO, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.type$pLrO)));
+          SLinkOperations.setTarget(newNode, LINKS.initializer$KgD, SNodeOperations.copyNode(SLinkOperations.getTarget(original, LINKS.initializer$KgD)));
+          SPropertyOperations.assign(newNode, PROPS.isFinal$hIht, SPropertyOperations.getBoolean(original, PROPS.isFinal$hIht));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$oVP4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$oVP4)).select(new ISelector<SNode, SNode>() {
+            public SNode select(SNode it) {
+              return SNodeOperations.copyNode(it);
+            }
+          }));
         }
       }
     }
@@ -417,7 +424,6 @@ public class BL_node_factories {
     /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
     /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept AdditionalForLoopVariable$KW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
     /*package*/ static final SConcept OctalIntegerLiteral$gs = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe81fba3b64ca8f8L, "jetbrains.mps.baseLanguage.structure.OctalIntegerLiteral");
     /*package*/ static final SConcept BinaryIntegerLiteral$tr = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10872a073bf6450aL, "jetbrains.mps.baseLanguage.structure.BinaryIntegerLiteral");
     /*package*/ static final SConcept HexIntegerLiteral$5_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129761e073L, "jetbrains.mps.baseLanguage.structure.HexIntegerLiteral");
