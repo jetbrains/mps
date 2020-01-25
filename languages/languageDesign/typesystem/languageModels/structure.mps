@@ -346,9 +346,9 @@
     <property role="R5$K2" value="false" />
     <property role="R4oN_" value="typesystem's type variable" />
     <property role="TrG5h" value="TypeVarDeclaration" />
-    <property role="34LRSv" value="var" />
     <property role="3GE5qa" value="definition" />
     <property role="EcuMT" value="1174665551739" />
+    <property role="34LRSv" value="typevar" />
     <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
     <node concept="1TJgyi" id="h5ZxBs9" role="1TKVEl">
       <property role="TrG5h" value="nullable" />

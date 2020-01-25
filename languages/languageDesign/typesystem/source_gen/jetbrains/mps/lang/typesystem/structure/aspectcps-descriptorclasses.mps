@@ -40429,7 +40429,7 @@
             <node concept="liA8E" id="3It" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.alias(java.lang.String)" resolve="alias" />
               <node concept="Xl_RD" id="3Iu" role="37wK5m">
-                <property role="Xl_RC" value="var" />
+                <property role="Xl_RC" value="typevar" />
               </node>
             </node>
           </node>

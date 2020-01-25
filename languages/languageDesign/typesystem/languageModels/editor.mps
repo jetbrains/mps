@@ -1297,8 +1297,8 @@
     <property role="3GE5qa" value="definition" />
     <ref role="1XX52x" to="tpd4:h5ZxtXV" resolve="TypeVarDeclaration" />
     <node concept="3EZMnI" id="h5ZxGH1" role="2wV5jI">
-      <node concept="3F0ifn" id="h5ZxHhT" role="3EZMnx">
-        <property role="3F0ifm" value="var" />
+      <node concept="PMmxH" id="4a44VRC0_MF" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
         <ref role="1k5W1q" to="tpen:hgVS8CF" resolve="KeyWord" />
       </node>
       <node concept="3F0A7n" id="h5ZxKoM" role="3EZMnx">

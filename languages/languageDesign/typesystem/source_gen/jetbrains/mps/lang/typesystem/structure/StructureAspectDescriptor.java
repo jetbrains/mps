@@ -1470,7 +1470,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)/1174665551739");
     b.version(2);
     b.property("nullable", 0x1117f867709L).type(PrimitiveTypeId.BOOLEAN).origin("1174665590537").done();
-    b.alias("var");
+    b.alias("typevar");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTypeVarReference() {
