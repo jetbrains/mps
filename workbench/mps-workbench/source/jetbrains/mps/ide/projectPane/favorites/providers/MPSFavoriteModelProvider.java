@@ -38,8 +38,8 @@ import java.util.List;
 public class MPSFavoriteModelProvider extends FavoriteNodeProvider {
   @Nullable
   @Override
-  public Collection<AbstractTreeNode> getFavoriteNodes(DataContext context, @NotNull ViewSettings viewSettings) {
-    Collection<AbstractTreeNode> result = new ArrayList<>();
+  public Collection<AbstractTreeNode<?>> getFavoriteNodes(DataContext context, @NotNull ViewSettings viewSettings) {
+    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<SModel> models = MPSDataKeys.MODELS.getData(context);
 

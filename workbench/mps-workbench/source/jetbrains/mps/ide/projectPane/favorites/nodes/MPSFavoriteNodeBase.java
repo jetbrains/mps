@@ -79,7 +79,7 @@ abstract class MPSFavoriteNodeBase<T> extends ProjectViewNode<T> {
 
   @NotNull
   @Override
-  public Collection<? extends AbstractTreeNode> getChildren() {
+  public Collection<? extends AbstractTreeNode<?>> getChildren() {
     return Collections.emptyList();
   }
 
