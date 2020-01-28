@@ -198,6 +198,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new MinusExpression_TextGen();
       case LanguageConceptSwitch.MulExpression:
         return new MulExpression_TextGen();
+      case LanguageConceptSwitch.MultiLineComment:
+        return new MultiLineComment_TextGen();
       case LanguageConceptSwitch.NestedNewExpression:
         return new NestedNewExpression_TextGen();
       case LanguageConceptSwitch.NotEqualsExpression:
