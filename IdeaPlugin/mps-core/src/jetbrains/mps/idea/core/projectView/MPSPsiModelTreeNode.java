@@ -86,7 +86,7 @@ public class MPSPsiModelTreeNode extends BasePsiNode<MPSPsiModel> implements Nav
 
   @Nullable
   @Override
-  public Collection<AbstractTreeNode> getChildrenImpl() {
+  public Collection<AbstractTreeNode<?>> getChildrenImpl() {
     return null;
   }
 
