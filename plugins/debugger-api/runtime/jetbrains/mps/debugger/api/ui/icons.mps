@@ -150,9 +150,9 @@
         <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
       </node>
       <node concept="3Tm1VV" id="3SnNvqCbxJ7" role="1B3o_S" />
-      <node concept="10M0yZ" id="3SQRqvYTlk4" role="33vP2m">
+      <node concept="10M0yZ" id="6BY6fCdTxtL" role="33vP2m">
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Debugger.Watch" resolve="Watch" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Debugger" resolve="AllIcons.Debugger" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Debugger.Watches" resolve="Watches" />
       </node>
     </node>
     <node concept="Wx3nA" id="1gqtULBz58E" role="jymVt">

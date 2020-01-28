@@ -559,12 +559,9 @@
             </node>
             <node concept="2ShNRf" id="38_6U8fKv7C" role="33vP2m">
               <node concept="1pGfFk" id="38_6U8fKv7D" role="2ShVmc">
-                <ref role="37wK5l" to="1037:~VcsDirtyScopeImpl.&lt;init&gt;(com.intellij.openapi.vcs.AbstractVcs,com.intellij.openapi.project.Project)" resolve="VcsDirtyScopeImpl" />
+                <ref role="37wK5l" to="1037:~VcsDirtyScopeImpl.&lt;init&gt;(com.intellij.openapi.vcs.AbstractVcs)" resolve="VcsDirtyScopeImpl" />
                 <node concept="37vLTw" id="3GM_nagT$KN" role="37wK5m">
                   <ref role="3cqZAo" node="38_6U8fKv7o" resolve="vcs" />
-                </node>
-                <node concept="37vLTw" id="2BHiRxeug3w" role="37wK5m">
-                  <ref role="3cqZAo" node="38_6U8fKv5Y" resolve="myProject" />
                 </node>
               </node>
             </node>
@@ -2312,8 +2309,8 @@
               <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptor" resolve="IdeaPluginDescriptor" />
             </node>
             <node concept="2YIFZM" id="5drFrG61MpR" role="33vP2m">
-              <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
               <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
+              <ref role="1Pybhc" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
               <node concept="2YIFZM" id="5drFrG61MpS" role="37wK5m">
                 <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                 <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
@@ -2339,7 +2336,7 @@
                 <ref role="3cqZAo" node="5drFrG61MpP" resolve="vcsCorePlugin" />
               </node>
               <node concept="liA8E" id="5drFrG61Mq6" role="2OqNvi">
-                <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getPath()" resolve="getPath" />
+                <ref role="37wK5l" to="9ti4:~PluginDescriptor.getPath()" resolve="getPath" />
               </node>
             </node>
             <node concept="liA8E" id="6kmsk4KDIXW" role="2OqNvi">

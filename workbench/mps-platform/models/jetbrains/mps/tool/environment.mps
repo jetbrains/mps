@@ -5,7 +5,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
   </languages>
   <imports>
@@ -109,6 +109,10 @@
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
+      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
+        <child id="1070534934091" name="type" index="10QFUM" />
+        <child id="1070534934092" name="expression" index="10QFUP" />
+      </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg">
         <property id="8606350594693632173" name="isTransient" index="eg7rD" />
         <property id="1240249534625" name="isVolatile" index="34CwA1" />
@@ -152,6 +156,7 @@
         <child id="1082485599094" name="ifFalseStatement" index="9aQIa" />
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
+        <child id="1206060520071" name="elsifClauses" index="3eNLev" />
       </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
@@ -172,6 +177,13 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1206060495898" name="jetbrains.mps.baseLanguage.structure.ElsifClause" flags="ng" index="3eNFk2">
+        <child id="1206060619838" name="condition" index="3eO9$A" />
+        <child id="1206060644605" name="statementList" index="3eOfB_" />
+      </concept>
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -341,10 +353,10 @@
     </node>
     <node concept="312cEg" id="65UowUML3$Q" role="jymVt">
       <property role="TrG5h" value="myIdeaApplication" />
-      <node concept="3uibUv" id="7SykjgYVfli" role="1tU5fm">
-        <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
-      </node>
       <node concept="3Tm6S6" id="65UowUML3$T" role="1B3o_S" />
+      <node concept="3uibUv" id="6BY6fCdVnJ8" role="1tU5fm">
+        <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+      </node>
     </node>
     <node concept="312cEg" id="4OPNMy2cxpb" role="jymVt">
       <property role="TrG5h" value="myUnitTestMode" />
@@ -1878,9 +1890,9 @@
                 <node concept="37vLTw" id="65UowUMLeGt" role="37vLTJ">
                   <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaApplication" />
                 </node>
-                <node concept="2YIFZM" id="4eRWbJ_JiEG" role="37vLTx">
-                  <ref role="37wK5l" to="1wbl:~IdeaTestApplication.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="1wbl:~IdeaTestApplication" resolve="IdeaTestApplication" />
+                <node concept="2YIFZM" id="6BY6fCdVnFz" role="37vLTx">
+                  <ref role="37wK5l" to="anz6:~TestApplicationManager.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="anz6:~TestApplicationManager" resolve="TestApplicationManager" />
                 </node>
               </node>
             </node>
@@ -2618,12 +2630,58 @@
                                             </node>
                                           </node>
                                         </node>
-                                        <node concept="3clFbF" id="4OPNMy2dZ45" role="3cqZAp">
-                                          <node concept="2YIFZM" id="4OPNMy2dZ66" role="3clFbG">
-                                            <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
-                                            <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
-                                            <node concept="37vLTw" id="7SykjgYWtcC" role="37wK5m">
+                                        <node concept="3clFbJ" id="6BY6fCdVoLb" role="3cqZAp">
+                                          <node concept="3clFbS" id="6BY6fCdVoLd" role="3clFbx">
+                                            <node concept="3clFbF" id="6BY6fCdVqJF" role="3cqZAp">
+                                              <node concept="2YIFZM" id="6BY6fCdVqKu" role="3clFbG">
+                                                <ref role="37wK5l" to="zn9m:~Disposer.dispose(com.intellij.openapi.Disposable)" resolve="dispose" />
+                                                <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+                                                <node concept="10QFUN" id="6BY6fCdVs4K" role="37wK5m">
+                                                  <node concept="3uibUv" id="6BY6fCdVsKr" role="10QFUM">
+                                                    <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
+                                                  </node>
+                                                  <node concept="37vLTw" id="6BY6fCdVrxc" role="10QFUP">
+                                                    <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaApplication" />
+                                                  </node>
+                                                </node>
+                                              </node>
+                                            </node>
+                                          </node>
+                                          <node concept="2ZW3vV" id="6BY6fCdVpte" role="3clFbw">
+                                            <node concept="3uibUv" id="6BY6fCdVpSn" role="2ZW6by">
+                                              <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
+                                            </node>
+                                            <node concept="37vLTw" id="6BY6fCdVp23" role="2ZW6bz">
                                               <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaApplication" />
+                                            </node>
+                                          </node>
+                                          <node concept="3eNFk2" id="6BY6fCdVrTl" role="3eNLev">
+                                            <node concept="2ZW3vV" id="6BY6fCdVu2H" role="3eO9$A">
+                                              <node concept="3uibUv" id="6BY6fCdVunp" role="2ZW6by">
+                                                <ref role="3uigEE" to="anz6:~TestApplicationManager" resolve="TestApplicationManager" />
+                                              </node>
+                                              <node concept="37vLTw" id="6BY6fCdVtBQ" role="2ZW6bz">
+                                                <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaApplication" />
+                                              </node>
+                                            </node>
+                                            <node concept="3clFbS" id="6BY6fCdVrTn" role="3eOfB_">
+                                              <node concept="3clFbF" id="6BY6fCdVuBK" role="3cqZAp">
+                                                <node concept="2OqwBi" id="6BY6fCdVwzN" role="3clFbG">
+                                                  <node concept="1eOMI4" id="6BY6fCdVwct" role="2Oq$k0">
+                                                    <node concept="10QFUN" id="6BY6fCdVuBH" role="1eOMHV">
+                                                      <node concept="3uibUv" id="6BY6fCdVv9e" role="10QFUM">
+                                                        <ref role="3uigEE" to="anz6:~TestApplicationManager" resolve="TestApplicationManager" />
+                                                      </node>
+                                                      <node concept="37vLTw" id="6BY6fCdVvrT" role="10QFUP">
+                                                        <ref role="3cqZAo" node="65UowUML3$Q" resolve="myIdeaApplication" />
+                                                      </node>
+                                                    </node>
+                                                  </node>
+                                                  <node concept="liA8E" id="6BY6fCdVwRb" role="2OqNvi">
+                                                    <ref role="37wK5l" to="anz6:~TestApplicationManager.dispose()" resolve="dispose" />
+                                                  </node>
+                                                </node>
+                                              </node>
                                             </node>
                                           </node>
                                         </node>

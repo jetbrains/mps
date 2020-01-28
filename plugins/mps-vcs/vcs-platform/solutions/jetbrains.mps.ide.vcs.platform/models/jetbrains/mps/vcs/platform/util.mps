@@ -335,8 +335,8 @@
             <property role="TrG5h" value="p" />
           </node>
           <node concept="2YIFZM" id="7GszMwc02mZ" role="2GsD0m">
-            <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugins()" resolve="getPlugins" />
             <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
+            <ref role="37wK5l" to="ctgy:~PluginManager.getPlugins()" resolve="getPlugins" />
           </node>
           <node concept="3clFbS" id="7GszMwc02iI" role="2LFqv$">
             <node concept="3clFbJ" id="7GszMwc02tg" role="3cqZAp">
@@ -357,7 +357,7 @@
                 <node concept="3cpWs6" id="7GszMwc03tQ" role="3cqZAp">
                   <node concept="2OqwBi" id="7GszMwc6B47" role="3cqZAk">
                     <node concept="liA8E" id="7GszMwc6B48" role="2OqNvi">
-                      <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.isEnabled()" resolve="isEnabled" />
+                      <ref role="37wK5l" to="9ti4:~PluginDescriptor.isEnabled()" resolve="isEnabled" />
                     </node>
                     <node concept="2GrUjf" id="7GszMwc6B49" role="2Oq$k0">
                       <ref role="2Gs0qQ" node="7GszMwc02iE" resolve="p" />
