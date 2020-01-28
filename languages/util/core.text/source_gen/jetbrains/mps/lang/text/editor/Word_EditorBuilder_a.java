@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.lang.text.editor.TextStyles_StyleSheet.WordTextStyleStyleClass;
 import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
@@ -32,9 +32,6 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.awt.Color;
-import jetbrains.mps.nodeEditor.MPSColors;
-import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
@@ -98,12 +95,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setDefaultText("");
       editorCell.setCellId("property_value");
       Style style = new StyleImpl();
+      new WordTextStyleStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.FIRST_POSITION_ALLOWED, true);
       style.set(StyleAttributes.LAST_POSITION_ALLOWED, true);
       style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_8g1p9d_a2b0());
-      style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(_StyleParameter_QueryFunction_8g1p9d_a3b0()));
-      style.set(StyleAttributes.FONT_STYLE, _StyleParameter_QueryFunction_8g1p9d_a4b0());
-      style.set(StyleAttributes.URL, _StyleParameter_QueryFunction_8g1p9d_a5b0());
+      style.set(StyleAttributes.URL, _StyleParameter_QueryFunction_8g1p9d_a3b0());
       editorCell.getStyle().putAll(style);
       Word_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.addKeyMap(new Word_KeyMap());
@@ -127,23 +123,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private boolean _StyleParameter_QueryFunction_8g1p9d_a2b0() {
     return SPropertyOperations.getBoolean(getNode(), PROPS.underlined$WUs$) || isNotEmptyString(SPropertyOperations.getString(getNode(), PROPS.url$WUb8));
   }
-  private Color _StyleParameter_QueryFunction_8g1p9d_a3b0() {
-    if (isNotEmptyString(SPropertyOperations.getString(getNode(), PROPS.url$WUb8))) {
-      return MPSColors.BLUE;
-    }
-    return MPSColors.BLACK;
-  }
-  private int _StyleParameter_QueryFunction_8g1p9d_a4b0() {
-    if (SPropertyOperations.getBoolean(getNode(), PROPS.bold$WTX$) && SPropertyOperations.getBoolean(getNode(), PROPS.italic$WTZ1)) {
-      return MPSFonts.BOLD_ITALIC;
-    } else if (SPropertyOperations.getBoolean(getNode(), PROPS.bold$WTX$)) {
-      return MPSFonts.BOLD;
-    } else if (SPropertyOperations.getBoolean(getNode(), PROPS.italic$WTZ1)) {
-      return MPSFonts.ITALIC;
-    }
-    return MPSFonts.PLAIN;
-  }
-  private String _StyleParameter_QueryFunction_8g1p9d_a5b0() {
+  private String _StyleParameter_QueryFunction_8g1p9d_a3b0() {
     return SPropertyOperations.getString(getNode(), PROPS.url$WUb8);
   }
   public static class ReplaceWith_TextElement_cellMenu_8g1p9d_a0b0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
@@ -176,8 +156,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
     /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
     /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
     /*package*/ static final SProperty underlined$WUs$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
-    /*package*/ static final SProperty italic$WTZ1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
-    /*package*/ static final SProperty bold$WTX$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
   }
 
   private static final class CONCEPTS {

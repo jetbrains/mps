@@ -2389,6 +2389,7 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.AbstractStyleKey" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet">
+    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.CommentPart__BehaviorDescriptor" />
@@ -6371,6 +6372,7 @@
     <classNode extendsClassName="jetbrains.mps.nodeEditor.menus.substitute.SubstituteMenuBase" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.EditorAspectDescriptorImpl">
+    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Arrays" />
@@ -6821,6 +6823,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.variableArityType" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.variableDeclarationInitializer" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.descriptor.ConceptEditorHintImpl" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.InheritableStyleAttribute" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
@@ -6830,11 +6833,13 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.style.StyleAttribute" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.MetaIdFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.EditorAspectDescriptorBase" />
     <classNode extendsClassName="jetbrains.mps.openapi.editor.descriptor.EditorHintsProvider" />
+    <classNode extendsClassName="jetbrains.mps.openapi.editor.descriptor.StyleAttributeProvider" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.editor.EditorParenthesisUtil">
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IBinaryLike__BehaviorDescriptor" />
@@ -12751,6 +12756,7 @@
   <dependency className="jetbrains.mps.baseLanguage.editor.SingleLineComment_EditorBuilder_a">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.CommentLineStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.CommentStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.TODOStyleClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.SingleLineCommentActions" />

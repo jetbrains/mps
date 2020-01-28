@@ -4,6 +4,7 @@ package jetbrains.mps.baseLanguage.editor;
 
 import jetbrains.mps.nodeEditor.EditorAspectDescriptorBase;
 import jetbrains.mps.openapi.editor.descriptor.EditorHintsProvider;
+import jetbrains.mps.openapi.editor.descriptor.StyleAttributeProvider;
 import java.util.Collection;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorHint;
 import java.util.Arrays;
@@ -13,6 +14,8 @@ import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent;
+import jetbrains.mps.openapi.editor.style.StyleAttribute;
+import jetbrains.mps.editor.runtime.style.InheritableStyleAttribute;
 import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
@@ -21,7 +24,7 @@ import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
-public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase implements EditorHintsProvider {
+public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase implements EditorHintsProvider, StyleAttributeProvider {
   private Collection<ConceptEditorHint> myHints = Arrays.<ConceptEditorHint>asList(new ConceptEditorHintImpl("VisibleExpressionBoundaries", "Visible Expression Boundaries", true, "jetbrains.mps.baseLanguage.editor.BLHints.VisibleExpressionBoundaries"));
   @NotNull
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
@@ -489,6 +492,16 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     return myHints;
   }
 
+  public StyleAttribute getStyleAttribute(String attributeName) {
+    switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0g, attributeName)) {
+      case 0:
+        return new InheritableStyleAttribute<Boolean>("forceDarkGray", Boolean.FALSE);
+      case 1:
+        return new InheritableStyleAttribute<Boolean>("forceItalicStyle", Boolean.FALSE);
+      default:
+        return null;
+    }
+  }
   @NotNull
   @Override
   public Collection<TransformationMenu> getDeclaredDefaultTransformationMenus(SAbstractConcept concept) {
@@ -583,7 +596,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     switch (conceptIndex3.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new loopLabels()});
             case 1:
@@ -594,7 +607,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AddAnnotationMemberDefaultValue()});
             default:
@@ -603,7 +616,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AnonymousClass_ApplySideTransforms()});
             case 1:
@@ -614,7 +627,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 3:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AddSquareBracketsToarrayCreatorWithInitializer()});
             default:
@@ -623,7 +636,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 4:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0e1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0e1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new BaseAssignmentExpression_Alias_TransformationMenu()});
             default:
@@ -632,7 +645,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 5:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0f1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0f1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AddThrowsToMethods()});
             case 1:
@@ -643,7 +656,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 6:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0g1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0g1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new BinaryOperation_Alias_TransformationMenu()});
             default:
@@ -652,7 +665,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 7:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0h1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0h1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new convertToTry()});
             case 1:
@@ -663,7 +676,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 8:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0i1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0i1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ClassConceptModifiersExtendsAndImplements()});
             case 1:
@@ -680,7 +693,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 9:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0j1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0j1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ClassCreator_ApplySideTransforms()});
             case 1:
@@ -691,7 +704,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 10:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0k1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0k1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ClassifierClassExpressionToArray()});
             default:
@@ -700,7 +713,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 11:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0l1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0l1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ExtendedClassImplementTransform()});
             case 1:
@@ -717,7 +730,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 12:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0m1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0m1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ConstructorDeclaration_ApplySideTransforms()});
             default:
@@ -726,7 +739,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 13:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0n1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0n1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AddParametersToDefaultClassCreatorToCreateClassCreator()});
             case 1:
@@ -737,7 +750,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 14:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0o1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0o1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new EnumClass_ApplySideTransforms()});
             default:
@@ -746,7 +759,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 15:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0p1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0p1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new EnumConstantDeclaration_ApplySideTransforms()});
             case 1:
@@ -757,7 +770,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 16:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0q1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0q1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new Expression_to_type_Cast()});
             case 1:
@@ -808,7 +821,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 17:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0r1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0r1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new FieldDeclaration_ApplySideTransforms()});
             default:
@@ -817,7 +830,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 18:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0s1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0s1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new addGenericTypeVariableInDeclaration()});
             case 1:
@@ -828,7 +841,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 19:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0t1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0t1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new GenericLValueExpression_RTM()});
             default:
@@ -837,7 +850,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 20:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0u1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0u1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AddMethodCallTypeArgument()});
             case 1:
@@ -850,7 +863,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 21:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0v1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0v1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new Empty_Visibility_TransformtaionMenu()});
             default:
@@ -859,7 +872,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 22:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0w1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0w1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ifStatement()});
             default:
@@ -868,7 +881,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 23:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0x1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0x1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new IncompleteMemberDeclaration_ApplySideTransforms()});
             default:
@@ -877,7 +890,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 24:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0y1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0y1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new InstanceMethodCallOperation_ApplySideTransforms()});
             default:
@@ -886,7 +899,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 25:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0z1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0z1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new InstanceMethodDeclaration_ApplySideTransforms()});
             case 1:
@@ -899,7 +912,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 26:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0ab1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0ab1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new InterfaceModifiersAndExtends_ext_2()});
             case 1:
@@ -914,7 +927,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 27:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0bb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0bb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new MethodDeclaration_final_native_sync_all_mods()});
             default:
@@ -923,7 +936,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 28:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0cb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0cb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ModifierTransformationMenuHelper_TOREMOVE()});
             case 1:
@@ -934,7 +947,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 29:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0db1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0db1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new StaticFieldDeclaration_ApplySideTransforms()});
             default:
@@ -943,7 +956,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 30:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0eb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0eb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new StaticMethodDeclaration_ApplySideTransforms()});
             case 1:
@@ -954,7 +967,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 31:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0fb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0fb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new SwitchStatement_ApplySideTransforms()});
             case 1:
@@ -965,7 +978,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 32:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0gb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0gb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new convertToTry_TryCatchStatement()});
             case 1:
@@ -976,7 +989,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 33:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0hb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0hb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AddFieldModifiersOnTypes()});
             case 1:
@@ -1003,7 +1016,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 34:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0ib1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0ib1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new AddBoundToTypeVariableDeclaration()});
             default:
@@ -1012,7 +1025,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 35:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0jb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0jb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new ArrayAndGenericTypesFromTypesInVarDeclarations()});
             case 1:
@@ -1025,7 +1038,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 36:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0kb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0kb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new LocalInstanceFieldReference_Transform()});
             case 1:
@@ -1036,7 +1049,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 37:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0lb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0lb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new addAbstract()});
             default:
@@ -1045,7 +1058,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 38:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0mb1a7, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0mb1a8, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new TransformationMenu[]{new WildCardType_ApplySideTransforms()});
             default:
@@ -1239,7 +1252,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     switch (conceptIndex5.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new AnnotationInstanceValue_SmartReference()});
             default:
@@ -1248,7 +1261,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new BaseAssignmentExpression_Alias_SubstituteMenu()});
             default:
@@ -1257,7 +1270,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new BinaryOperation_Alias_SubstituteMenu()});
             default:
@@ -1266,7 +1279,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 3:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new ClassCreator_SmartReference()});
             default:
@@ -1275,7 +1288,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 4:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0e1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0e1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new ClassifierClassExpression_SmartReference()});
             default:
@@ -1284,7 +1297,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 5:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0f1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0f1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new StaticFieldInClassifier()});
             case 1:
@@ -1303,7 +1316,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 6:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0g1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0g1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new ClassifierType_SmartReference()});
             default:
@@ -1312,7 +1325,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 7:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0h1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0h1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new DefaultClassCreator_SmartReference()});
             default:
@@ -1321,7 +1334,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 8:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0i1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0i1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new CreateEnumConstantReferences()});
             case 1:
@@ -1352,7 +1365,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 9:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0j1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0j1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new menuForSubstitutingInIf()});
             default:
@@ -1361,7 +1374,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 10:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0k1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0k1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new expressionStatement_()});
             case 1:
@@ -1380,7 +1393,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 11:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0l1a9, menuId.getFqName())) {
+          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0l1a01, menuId.getFqName())) {
             case 0:
               return Arrays.asList(new SubstituteMenu[]{new StaticMethodDeclarationPsvmTemplate()});
             default:
@@ -1408,55 +1421,56 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
   private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a3 = new String[]{"jetbrains.mps.baseLanguage.editor.ConceptFunctionAliased_Component", "jetbrains.mps.baseLanguage.editor.ConceptFunction_Block", "jetbrains.mps.baseLanguage.editor.ConceptFunction_Component", "jetbrains.mps.baseLanguage.editor.ConceptFunction_Folded_Component"};
   private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a3 = new String[]{"jetbrains.mps.baseLanguage.editor.GenericDeclaration_FoldedCodeBlock_Component", "jetbrains.mps.baseLanguage.editor._GenericDeclaration_TypeVariables_Component", "jetbrains.mps.baseLanguage.editor._GenericDeclaration_TypeVariables_WithAnchor_Component"};
   private static final String[] stringSwitchCases_xbvbvu_a0a0a0i1a3 = new String[]{"jetbrains.mps.baseLanguage.editor.IMethodCall_actualArguments", "jetbrains.mps.baseLanguage.editor.IMethodCall_typeArguments"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.loopLabels", "jetbrains.mps.baseLanguage.editor.loopLabelsAndIfStatement"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AddAnnotationMemberDefaultValue"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AnonymousClass_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.expressionRTAfterAnonymous"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AddSquareBracketsToarrayCreatorWithInitializer"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.BaseAssignmentExpression_Alias_TransformationMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0f1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AddThrowsToMethods", "jetbrains.mps.baseLanguage.editor.AddThrowsToMethods_ext_5"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0g1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.BinaryOperation_Alias_TransformationMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0h1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.convertToTry", "jetbrains.mps.baseLanguage.editor.tryCatch_CatchClause"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0i1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements", "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_3", "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_4", "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_5", "jetbrains.mps.baseLanguage.editor.ClassConcept_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0j1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassCreator_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.newExpression_ClassCreator_ext_2"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0k1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassifierClassExpressionToArray"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0l1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ExtendedClassImplementTransform", "jetbrains.mps.baseLanguage.editor.addGenericParameter", "jetbrains.mps.baseLanguage.editor.binaryOperations", "jetbrains.mps.baseLanguage.editor.classifierTypeInLocalVarRT", "jetbrains.mps.baseLanguage.editor.csharp_rTransform"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0m1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ConstructorDeclaration_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0n1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AddParametersToDefaultClassCreatorToCreateClassCreator", "jetbrains.mps.baseLanguage.editor.newExpression_DefaultClassCreator_ext_2"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0o1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.EnumClass_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0p1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.EnumConstantDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.enumConstant_rt"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0q1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.Expression_to_type_Cast", "jetbrains.mps.baseLanguage.editor.Expression_wrapWithPassByRef", "jetbrains.mps.baseLanguage.editor.SubstringExpression_Transform", "jetbrains.mps.baseLanguage.editor.UnaryMinusLeftTransform", "jetbrains.mps.baseLanguage.editor.addComment_Expression", "jetbrains.mps.baseLanguage.editor.arrayAccess", "jetbrains.mps.baseLanguage.editor.assert_", "jetbrains.mps.baseLanguage.editor.assignment_to_variable_declaration", "jetbrains.mps.baseLanguage.editor.assignments", "jetbrains.mps.baseLanguage.editor.binaryOperations_Expression", "jetbrains.mps.baseLanguage.editor.csharp_rTransform_Expression", "jetbrains.mps.baseLanguage.editor.dotExpression", "jetbrains.mps.baseLanguage.editor.expressionStatement", "jetbrains.mps.baseLanguage.editor.expressionToNotExpression", "jetbrains.mps.baseLanguage.editor.expressionToParenthesis", "jetbrains.mps.baseLanguage.editor.expression_to_variable_declaration", "jetbrains.mps.baseLanguage.editor.expressionstmt_to_returnstms_on_expression", "jetbrains.mps.baseLanguage.editor.expressionstmt_to_variable_declaration", "jetbrains.mps.baseLanguage.editor.instanceOf", "jetbrains.mps.baseLanguage.editor.postfix", "jetbrains.mps.baseLanguage.editor.prefix", "jetbrains.mps.baseLanguage.editor.ternaryOperator"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0r1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.FieldDeclaration_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0s1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.addGenericTypeVariableInDeclaration", "jetbrains.mps.baseLanguage.editor.genericDeclaration_right"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0t1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.GenericLValueExpression_RTM"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0u1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument", "jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument_ext_1", "jetbrains.mps.baseLanguage.editor.MethodCallFixer_AddFirstArgument"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0v1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.Empty_Visibility_TransformtaionMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0w1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ifStatement"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0x1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.IncompleteMemberDeclaration_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0y1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.InstanceMethodCallOperation_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0z1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.InstanceMethodDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.InstanceMethodDeclaration_ApplySideTransforms_1", "jetbrains.mps.baseLanguage.editor.InstanceMethodDeclaration_static_abstract"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0ab1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.InterfaceModifiersAndExtends_ext_2", "jetbrains.mps.baseLanguage.editor.InterfaceModifiersAndExtends_ext_4", "jetbrains.mps.baseLanguage.editor.InterfaceModifiersAndExtends_ext_5", "jetbrains.mps.baseLanguage.editor.Interface_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0bb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.MethodDeclaration_final_native_sync_all_mods"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0cb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ModifierTransformationMenuHelper_TOREMOVE", "jetbrains.mps.baseLanguage.editor.addTypeAfterModifier"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0db1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticFieldDeclaration_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0eb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticMethodDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.StaticMethodDeclaration_ApplySideTransforms_1"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0fb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.SwitchStatement_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.switchLabels"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0gb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.convertToTry_TryCatchStatement", "jetbrains.mps.baseLanguage.editor.tryCatch_TryCatchStatement"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0hb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AddFieldModifiersOnTypes", "jetbrains.mps.baseLanguage.editor.AddMethodModifiersOnTypes", "jetbrains.mps.baseLanguage.editor.AddStaticFieldModifiersOnTypes", "jetbrains.mps.baseLanguage.editor.ForReturnTypeOfTheMethod", "jetbrains.mps.baseLanguage.editor.addComment_Type", "jetbrains.mps.baseLanguage.editor.addGenericTypeDeclaration_Type_default", "jetbrains.mps.baseLanguage.editor.arrayBrackets", "jetbrains.mps.baseLanguage.editor.finalOnTypesInVariables", "jetbrains.mps.baseLanguage.editor.instanceOfIntoTernary", "jetbrains.mps.baseLanguage.editor.variableArityType"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0ib1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.AddBoundToTypeVariableDeclaration"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0jb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.ArrayAndGenericTypesFromTypesInVarDeclarations", "jetbrains.mps.baseLanguage.editor.VariableDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.variableDeclarationInitializer"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0kb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.LocalInstanceFieldReference_Transform", "jetbrains.mps.baseLanguage.editor.convertVariableAssignmentToVarDeclaration"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0lb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.addAbstract"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0mb1a7 = new String[]{"jetbrains.mps.baseLanguage.editor.WildCardType_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.AnnotationInstanceValue_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.BaseAssignmentExpression_Alias_SubstituteMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.BinaryOperation_Alias_SubstituteMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassCreator_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassifierClassExpression_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0f1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticFieldInClassifier", "jetbrains.mps.baseLanguage.editor.ctor_IncompleteFromModifier", "jetbrains.mps.baseLanguage.editor.ctor_IncompleteMember", "jetbrains.mps.baseLanguage.editor.ctor_IncompleteMemberInInterface", "jetbrains.mps.baseLanguage.editor.ctor_InterfaceMemberBasedOnIncomplete", "jetbrains.mps.baseLanguage.editor.ctor_MemberBasedOnIncomplete"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0g1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassifierType_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0h1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.DefaultClassCreator_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0i1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.CreateEnumConstantReferences", "jetbrains.mps.baseLanguage.editor.ParensAroundEmptyExpression", "jetbrains.mps.baseLanguage.editor.PrimitiveClassExpression", "jetbrains.mps.baseLanguage.editor.conceptFunctionParameters", "jetbrains.mps.baseLanguage.editor.constants", "jetbrains.mps.baseLanguage.editor.liveTemplates_Expression", "jetbrains.mps.baseLanguage.editor.new_", "jetbrains.mps.baseLanguage.editor.qualifiedSuperMethodCallExpression", "jetbrains.mps.baseLanguage.editor.smartCast", "jetbrains.mps.baseLanguage.editor.staticAccess", "jetbrains.mps.baseLanguage.editor.thisExpression", "jetbrains.mps.baseLanguage.editor.valueParameter"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0j1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.menuForSubstitutingInIf"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0k1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.expressionStatement_", "jetbrains.mps.baseLanguage.editor.ifStatement_", "jetbrains.mps.baseLanguage.editor.localVariables", "jetbrains.mps.baseLanguage.editor.localVariablesWithType", "jetbrains.mps.baseLanguage.editor.loopStatements", "jetbrains.mps.baseLanguage.editor.thisAndSuperConstructor"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0l1a9 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticMethodDeclarationPsvmTemplate"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0g = new String[]{"forceDarkGray", "forceItalicStyle"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.loopLabels", "jetbrains.mps.baseLanguage.editor.loopLabelsAndIfStatement"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AddAnnotationMemberDefaultValue"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AnonymousClass_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.expressionRTAfterAnonymous"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AddSquareBracketsToarrayCreatorWithInitializer"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.BaseAssignmentExpression_Alias_TransformationMenu"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0f1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AddThrowsToMethods", "jetbrains.mps.baseLanguage.editor.AddThrowsToMethods_ext_5"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0g1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.BinaryOperation_Alias_TransformationMenu"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0h1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.convertToTry", "jetbrains.mps.baseLanguage.editor.tryCatch_CatchClause"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0i1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements", "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_3", "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_4", "jetbrains.mps.baseLanguage.editor.ClassConceptModifiersExtendsAndImplements_ext_5", "jetbrains.mps.baseLanguage.editor.ClassConcept_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0j1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassCreator_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.newExpression_ClassCreator_ext_2"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0k1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassifierClassExpressionToArray"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0l1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ExtendedClassImplementTransform", "jetbrains.mps.baseLanguage.editor.addGenericParameter", "jetbrains.mps.baseLanguage.editor.binaryOperations", "jetbrains.mps.baseLanguage.editor.classifierTypeInLocalVarRT", "jetbrains.mps.baseLanguage.editor.csharp_rTransform"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0m1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ConstructorDeclaration_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0n1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AddParametersToDefaultClassCreatorToCreateClassCreator", "jetbrains.mps.baseLanguage.editor.newExpression_DefaultClassCreator_ext_2"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0o1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.EnumClass_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0p1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.EnumConstantDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.enumConstant_rt"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0q1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.Expression_to_type_Cast", "jetbrains.mps.baseLanguage.editor.Expression_wrapWithPassByRef", "jetbrains.mps.baseLanguage.editor.SubstringExpression_Transform", "jetbrains.mps.baseLanguage.editor.UnaryMinusLeftTransform", "jetbrains.mps.baseLanguage.editor.addComment_Expression", "jetbrains.mps.baseLanguage.editor.arrayAccess", "jetbrains.mps.baseLanguage.editor.assert_", "jetbrains.mps.baseLanguage.editor.assignment_to_variable_declaration", "jetbrains.mps.baseLanguage.editor.assignments", "jetbrains.mps.baseLanguage.editor.binaryOperations_Expression", "jetbrains.mps.baseLanguage.editor.csharp_rTransform_Expression", "jetbrains.mps.baseLanguage.editor.dotExpression", "jetbrains.mps.baseLanguage.editor.expressionStatement", "jetbrains.mps.baseLanguage.editor.expressionToNotExpression", "jetbrains.mps.baseLanguage.editor.expressionToParenthesis", "jetbrains.mps.baseLanguage.editor.expression_to_variable_declaration", "jetbrains.mps.baseLanguage.editor.expressionstmt_to_returnstms_on_expression", "jetbrains.mps.baseLanguage.editor.expressionstmt_to_variable_declaration", "jetbrains.mps.baseLanguage.editor.instanceOf", "jetbrains.mps.baseLanguage.editor.postfix", "jetbrains.mps.baseLanguage.editor.prefix", "jetbrains.mps.baseLanguage.editor.ternaryOperator"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0r1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.FieldDeclaration_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0s1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.addGenericTypeVariableInDeclaration", "jetbrains.mps.baseLanguage.editor.genericDeclaration_right"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0t1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.GenericLValueExpression_RTM"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0u1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument", "jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument_ext_1", "jetbrains.mps.baseLanguage.editor.MethodCallFixer_AddFirstArgument"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0v1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.Empty_Visibility_TransformtaionMenu"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0w1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ifStatement"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0x1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.IncompleteMemberDeclaration_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0y1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.InstanceMethodCallOperation_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0z1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.InstanceMethodDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.InstanceMethodDeclaration_ApplySideTransforms_1", "jetbrains.mps.baseLanguage.editor.InstanceMethodDeclaration_static_abstract"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0ab1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.InterfaceModifiersAndExtends_ext_2", "jetbrains.mps.baseLanguage.editor.InterfaceModifiersAndExtends_ext_4", "jetbrains.mps.baseLanguage.editor.InterfaceModifiersAndExtends_ext_5", "jetbrains.mps.baseLanguage.editor.Interface_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0bb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.MethodDeclaration_final_native_sync_all_mods"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0cb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ModifierTransformationMenuHelper_TOREMOVE", "jetbrains.mps.baseLanguage.editor.addTypeAfterModifier"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0db1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticFieldDeclaration_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0eb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticMethodDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.StaticMethodDeclaration_ApplySideTransforms_1"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0fb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.SwitchStatement_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.switchLabels"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0gb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.convertToTry_TryCatchStatement", "jetbrains.mps.baseLanguage.editor.tryCatch_TryCatchStatement"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0hb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AddFieldModifiersOnTypes", "jetbrains.mps.baseLanguage.editor.AddMethodModifiersOnTypes", "jetbrains.mps.baseLanguage.editor.AddStaticFieldModifiersOnTypes", "jetbrains.mps.baseLanguage.editor.ForReturnTypeOfTheMethod", "jetbrains.mps.baseLanguage.editor.addComment_Type", "jetbrains.mps.baseLanguage.editor.addGenericTypeDeclaration_Type_default", "jetbrains.mps.baseLanguage.editor.arrayBrackets", "jetbrains.mps.baseLanguage.editor.finalOnTypesInVariables", "jetbrains.mps.baseLanguage.editor.instanceOfIntoTernary", "jetbrains.mps.baseLanguage.editor.variableArityType"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0ib1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.AddBoundToTypeVariableDeclaration"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0jb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.ArrayAndGenericTypesFromTypesInVarDeclarations", "jetbrains.mps.baseLanguage.editor.VariableDeclaration_ApplySideTransforms", "jetbrains.mps.baseLanguage.editor.variableDeclarationInitializer"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0kb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.LocalInstanceFieldReference_Transform", "jetbrains.mps.baseLanguage.editor.convertVariableAssignmentToVarDeclaration"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0lb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.addAbstract"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0mb1a8 = new String[]{"jetbrains.mps.baseLanguage.editor.WildCardType_ApplySideTransforms"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.AnnotationInstanceValue_SmartReference"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.BaseAssignmentExpression_Alias_SubstituteMenu"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.BinaryOperation_Alias_SubstituteMenu"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassCreator_SmartReference"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassifierClassExpression_SmartReference"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0f1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticFieldInClassifier", "jetbrains.mps.baseLanguage.editor.ctor_IncompleteFromModifier", "jetbrains.mps.baseLanguage.editor.ctor_IncompleteMember", "jetbrains.mps.baseLanguage.editor.ctor_IncompleteMemberInInterface", "jetbrains.mps.baseLanguage.editor.ctor_InterfaceMemberBasedOnIncomplete", "jetbrains.mps.baseLanguage.editor.ctor_MemberBasedOnIncomplete"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0g1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.ClassifierType_SmartReference"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0h1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.DefaultClassCreator_SmartReference"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0i1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.CreateEnumConstantReferences", "jetbrains.mps.baseLanguage.editor.ParensAroundEmptyExpression", "jetbrains.mps.baseLanguage.editor.PrimitiveClassExpression", "jetbrains.mps.baseLanguage.editor.conceptFunctionParameters", "jetbrains.mps.baseLanguage.editor.constants", "jetbrains.mps.baseLanguage.editor.liveTemplates_Expression", "jetbrains.mps.baseLanguage.editor.new_", "jetbrains.mps.baseLanguage.editor.qualifiedSuperMethodCallExpression", "jetbrains.mps.baseLanguage.editor.smartCast", "jetbrains.mps.baseLanguage.editor.staticAccess", "jetbrains.mps.baseLanguage.editor.thisExpression", "jetbrains.mps.baseLanguage.editor.valueParameter"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0j1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.menuForSubstitutingInIf"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0k1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.expressionStatement_", "jetbrains.mps.baseLanguage.editor.ifStatement_", "jetbrains.mps.baseLanguage.editor.localVariables", "jetbrains.mps.baseLanguage.editor.localVariablesWithType", "jetbrains.mps.baseLanguage.editor.loopStatements", "jetbrains.mps.baseLanguage.editor.thisAndSuperConstructor"};
+  private static final String[] stringSwitchCases_xbvbvu_a0a0a0l1a01 = new String[]{"jetbrains.mps.baseLanguage.editor.StaticMethodDeclarationPsvmTemplate"};
 }
