@@ -166,7 +166,7 @@ public class CheckNodeForErrors extends MigrationScriptBase {
     quotedNode_9 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x229012ddae35f04L, "Word")).getResult();
     quotedNode_9.setProperty(MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), "annotation");
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements"), quotedNode_9);
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text"), quotedNode_2);
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line"), quotedNode_2);
     return quotedNode_1;
   }
   private static SNode _quotation_createNode_j3gqtx_a0a4a0a0a0d0a0d(Object parameter_1) {
@@ -195,7 +195,7 @@ public class CheckNodeForErrors extends MigrationScriptBase {
     quotedNode_7 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, "jetbrains.mps.lang.text"), 0x229012ddae35f04L, "Word")).getResult();
     quotedNode_7.setProperty(MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value"), "messages");
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements"), quotedNode_7);
-    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text"), quotedNode_3);
+    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line"), quotedNode_3);
     return quotedNode_2;
   }
 

@@ -131,7 +131,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -3646,7 +3646,7 @@
         <node concept="3clFbJ" id="k_" role="3cqZAp">
           <node concept="3clFbS" id="kF" role="3clFbx">
             <node concept="3SKdUt" id="kI" role="3cqZAp">
-              <node concept="1PaTwC" id="kL" role="3ndbpf">
+              <node concept="1PaTwC" id="kL" role="1aUNEU">
                 <node concept="3oM_SD" id="kN" role="1PaTwD">
                   <property role="3oM_SC" value="anything" />
                   <node concept="cd27G" id="kR" role="lGtFl">
@@ -3803,7 +3803,7 @@
         <node concept="3clFbJ" id="kB" role="3cqZAp">
           <node concept="3clFbS" id="lC" role="3clFbx">
             <node concept="3SKdUt" id="lF" role="3cqZAp">
-              <node concept="1PaTwC" id="lI" role="3ndbpf">
+              <node concept="1PaTwC" id="lI" role="1aUNEU">
                 <node concept="3oM_SD" id="lK" role="1PaTwD">
                   <property role="3oM_SC" value="limit" />
                   <node concept="cd27G" id="lW" role="lGtFl">
@@ -4005,7 +4005,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="kC" role="3cqZAp">
-          <node concept="1PaTwC" id="mS" role="3ndbpf">
+          <node concept="1PaTwC" id="mS" role="1aUNEU">
             <node concept="3oM_SD" id="mU" role="1PaTwD">
               <property role="3oM_SC" value="XXX" />
               <node concept="cd27G" id="nd" role="lGtFl">

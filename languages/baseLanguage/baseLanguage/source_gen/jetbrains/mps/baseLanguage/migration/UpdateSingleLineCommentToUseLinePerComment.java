@@ -17,13 +17,15 @@ import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptBase {
   private final String description = "UpdateSingleLineCommentToUseLinePerComment";
@@ -59,7 +61,15 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
             public void visit(final SNode slc) {
 
               final SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$BOhB)).first();
-              SLinkOperations.setTarget(slc, LINKS.line$32mp, firstLine);
+              if (SLinkOperations.getTarget(slc, LINKS.line$32mp) == null) {
+                SLinkOperations.setTarget(slc, LINKS.line$32mp, firstLine);
+              } else {
+                ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(slc, LINKS.line$32mp), LINKS.elements$eRew)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$eRew)).where(new IWhereFilter<SNode>() {
+                  public boolean accept(SNode it) {
+                    return (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$AM) ? isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.value$cK70)) : true);
+                  }
+                }));
+              }
 
               ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$BOhB)).reversedList().where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
@@ -83,12 +93,22 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 9);
   }
 
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept SingleLineComment$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
     /*package*/ static final SContainmentLink line$32mp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

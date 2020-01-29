@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="9k3fr7x42nit7yaaqi7nxxi1xqtdb0b">
+<product version="3" modelHash="-1ub38g1b74yntja79rz5uh1olkkfal5">
   <files names="AnnotateRefPresentationQueriesAsMigrated.java:ConstraintCanBeFunctions_NodeToConcept.java:ConstraintScopeFactory_NodeToConcept.java:ConstraintsMigrationProblem.java:ConstraintsMigrationUtil.java:DefaultPresentationQueryNotMigrated.java:DropMigratedRefPresentationQueries.java:MigrateEnumPropertyUsages.java:MigrationDescriptor.java:PresentationQueryMigratedWithProblems.java:UseDevkit.java" />
 </product>
 

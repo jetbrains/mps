@@ -241,7 +241,7 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -19386,7 +19386,7 @@
       </node>
       <node concept="3clFbS" id="1JX" role="3clF47">
         <node concept="3SKdUt" id="1K8" role="3cqZAp">
-          <node concept="1PaTwC" id="1Kh" role="3ndbpf">
+          <node concept="1PaTwC" id="1Kh" role="1aUNEU">
             <node concept="3oM_SD" id="1Kj" role="1PaTwD">
               <property role="3oM_SC" value="todo" />
               <node concept="cd27G" id="1Km" role="lGtFl">
@@ -50092,7 +50092,7 @@
         <node concept="3clFbJ" id="4_a" role="3cqZAp">
           <node concept="3clFbS" id="4B1" role="3clFbx">
             <node concept="3SKdUt" id="4B4" role="3cqZAp">
-              <node concept="1PaTwC" id="4B7" role="3ndbpf">
+              <node concept="1PaTwC" id="4B7" role="1aUNEU">
                 <node concept="3oM_SD" id="4B9" role="1PaTwD">
                   <property role="3oM_SC" value="instanceof" />
                   <node concept="cd27G" id="4Bd" role="lGtFl">
@@ -50132,7 +50132,7 @@
             <node concept="3clFbJ" id="4B5" role="3cqZAp">
               <node concept="3clFbS" id="4Bl" role="3clFbx">
                 <node concept="3SKdUt" id="4Bp" role="3cqZAp">
-                  <node concept="1PaTwC" id="4Bs" role="3ndbpf">
+                  <node concept="1PaTwC" id="4Bs" role="1aUNEU">
                     <node concept="3oM_SD" id="4Bu" role="1PaTwD">
                       <property role="3oM_SC" value="XXX" />
                       <node concept="cd27G" id="4BD" role="lGtFl">
@@ -51276,7 +51276,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="4_b" role="3cqZAp">
-          <node concept="1PaTwC" id="4Ij" role="3ndbpf">
+          <node concept="1PaTwC" id="4Ij" role="1aUNEU">
             <node concept="3oM_SD" id="4Il" role="1PaTwD">
               <property role="3oM_SC" value="If" />
               <node concept="cd27G" id="4Iy" role="lGtFl">

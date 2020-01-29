@@ -147,7 +147,7 @@
         <child id="1163670683720" name="body" index="3Kbo56" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -2504,7 +2504,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="dm" role="3cqZAp">
-          <node concept="1PaTwC" id="dF" role="3ndbpf">
+          <node concept="1PaTwC" id="dF" role="1aUNEU">
             <node concept="3oM_SD" id="dH" role="1PaTwD">
               <property role="3oM_SC" value="first" />
               <node concept="cd27G" id="e2" role="lGtFl">
@@ -3738,7 +3738,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="jd" role="3cqZAp">
-          <node concept="1PaTwC" id="lp" role="3ndbpf">
+          <node concept="1PaTwC" id="lp" role="1aUNEU">
             <node concept="3oM_SD" id="lr" role="1PaTwD">
               <property role="3oM_SC" value="A" />
               <node concept="cd27G" id="ly" role="lGtFl">

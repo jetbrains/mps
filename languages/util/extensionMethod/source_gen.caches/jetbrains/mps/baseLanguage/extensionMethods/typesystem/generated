@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-bj2it5vth630x5qbpgtf7r5vvcof9jk">
+<product version="3" modelHash="-c2wcai169y5nqhfkmoysy0qj1e6dt18">
   <files names="RulesFunctions_Extension.java:TypesystemDescriptor.java:typeof_ExtensionMethodCall_InferenceRule.java:typeof_ExtensionThis_InferenceRule.java:typeof_LocalExtendedMethodCall_InferenceRule.java" />
 </product>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-erjnplvipnd832i1nb18zuedq2ix8lb">
+<product version="3" modelHash="byc71pceuj4hxosjw26ktq0j0b07m3p">
   <files names="ConvertOldMergeHints.java:MigrateEnumPropertyUsages.java:MigrationDescriptor.java" />
 </product>
 

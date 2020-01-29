@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-889no0opsj0bh9q5uevzl0ngqjblh1i">
+<product version="3" modelHash="8t7qhs839ofa11gerydweep5n92ebv0">
   <files names="AddMenuPart_ConceptSubstitute_Test.java:AddMenuPart_ParameterizedSubstitute_Test.java:AddMenuPart_ParameterizedSubstitute_smartComplete_Test.java:AddMenuPart_SimpleItemSubstitute_Test.java:AddMenuPart_SimpleItemSubstitute_smartComplete_Test.java:AddMenuPart_WrapperSubstituteDefaultSelection_Test.java:AddMenuPart_WrapperSubstitute_Test.java:AddMenuPart_WrapperSubstitute_returnSmallPart_Test.java:ConceptSubstitutePart_Test.java:DontSubstiuteByDefault_Test.java:RemoveByConditionPart_Test.java:RemoveDefaultsPart_Test.java:RemovePart_Test.java" />
 </product>
 

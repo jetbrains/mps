@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-7yk7whhh6o905udzx6lkev5bmd0t5q7">
+<product version="3" modelHash="1o9ec5kb48emqx5j0um6scglcgxq1zu">
   <files names="IntentionsDescriptor.java:MessageIntentionHelper.java:SpecifyMessageForNodeReferent_Intention.java:SpecifyMessageForPropertyConstraints_Intention.java" />
 </product>
 

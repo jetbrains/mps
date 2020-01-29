@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="u1f8vai1h55wrcvac9x8osl15kzk0n">
+<product version="3" modelHash="6po5wf44s44nxjhp73x1o4fn90ioyh7">
   <files names="RedoChangesOfTransactionalPropertyCell_Test.java:RedoCommitedInvalidTypingInTransactionalPropertyCell_Test.java:RedoInvalidTypingInTransactionalPropertyCell_Test.java:RedoTypingInTransactionalPropertyCell_Test.java:UndoChangesOfTransactionalPropertyCell_Test.java:UndoCommitedInvalidTypingInTransactionalPropertyCell_Test.java:UndoInvalidTypingInTransactionalPropertyCell_Test.java:UndoTypingInTransactionalPropertyCell_Test.java" />
 </product>
 

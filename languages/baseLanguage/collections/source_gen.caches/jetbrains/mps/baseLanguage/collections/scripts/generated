@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="8z3hw0hngwj4tljmgvgm2p0gprofih">
+<product version="3" modelHash="-bnfgtxzjc506m4kwqm34q7gnlp7x91h">
   <files names="ListMigrationUtil.java:MigrationFromMapsToCollections_MigrationScript.java:MigrationToCollections_MigrationScript.java:MigrationToUpdateAllConstants_MigrationScript.java:ParameterType.java:ScriptsDescriptor.java" />
 </product>
 
