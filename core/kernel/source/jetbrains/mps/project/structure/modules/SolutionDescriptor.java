@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project.structure.modules;
 
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +27,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
   private SolutionKind myKind = SolutionKind.NONE;
   private boolean myCompileInMPS = true;
   private boolean myRequestCompileIDEA = false;
+  private JavaLanguageLevel myJavaLanguageLevel = JavaLanguageLevel.getDefault();
 
   public final String getOutputPath() {
     return myOutputPath;
@@ -53,6 +55,10 @@ public class SolutionDescriptor extends ModuleDescriptor {
     return myRequestCompileIDEA;
   }
 
+  public JavaLanguageLevel getJavaLanguageLevel() {
+    return myJavaLanguageLevel;
+  }
+
   @Override
   public void setNeedsExternalIdeaCompile(boolean value) {
     myRequestCompileIDEA = value;
@@ -60,6 +66,10 @@ public class SolutionDescriptor extends ModuleDescriptor {
 
   public final void setCompileInMPS(boolean compileInMPS) {
     myCompileInMPS = compileInMPS;
+  }
+
+  public final void setJavaLanguageLevel(JavaLanguageLevel level) {
+    myJavaLanguageLevel = level;
   }
 
   @Override
@@ -74,6 +84,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
     stream.writeString(myKind.name());
     stream.writeBoolean(myCompileInMPS);
     stream.writeBoolean(myRequestCompileIDEA);
+    stream.writeString(myJavaLanguageLevel.name());
   }
 
   @Override
@@ -83,6 +94,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
     myKind = SolutionKind.valueOf(stream.readString());
     myCompileInMPS = stream.readBoolean();
     myRequestCompileIDEA = stream.readBoolean();
+    myJavaLanguageLevel = JavaLanguageLevel.valueOf(stream.readString());
   }
 
   @Override
@@ -92,6 +104,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
     copy.setKind(getKind());
     copy.setCompileInMPS(getCompileInMPS());
     copy.setNeedsExternalIdeaCompile(needsExternalIdeaCompile());
+    copy.setJavaLanguageLevel(getJavaLanguageLevel());
     copy.setOutputPath(getOutputPath());
     return copy;
   }

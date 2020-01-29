@@ -23,6 +23,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.pom.java.LanguageLevel;
 import com.intellij.ui.ColoredTableCellRenderer;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SimpleTextAttributes;
@@ -41,6 +42,7 @@ import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
@@ -74,9 +76,10 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private boolean mySourcePathsChanged = false;
   private FilesTableModel myLibrariesTableModel;
   private boolean myLibrariesChanged = false;
-  private JBCheckBox myCheckBox;
+  private JBCheckBox myCompileInMPS;
   private JBCheckBox myExternalIdeaCompile;
-  private ComboBox<SolutionKind> myComboBox;
+  private ComboBox<SolutionKind> mySolutionKind;
+  private ComboBox<JavaLanguageLevel> myLanguageLevel;
   private JBLabel myUpdateModelRoots;
 
   private final JavaModuleFacetImpl myJavaModuleFacet;
@@ -98,32 +101,44 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       assert descriptor != null;
 
       JBLabel solutionKindLabel = new JBLabel(PropertiesBundle.message("facet.java.solutionkind"));
-      myComboBox = new ComboBox<>(new DefaultComboBoxModel<>(SolutionKind.values()));
-      myComboBox.setSelectedItem(descriptor.getKind());
+      mySolutionKind = new ComboBox<>(new DefaultComboBoxModel<>(SolutionKind.values()));
+      mySolutionKind.setSelectedItem(descriptor.getKind());
 
       advancedTab.add(solutionKindLabel,
                       new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
                                           GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-      advancedTab.add(myComboBox,
+      advancedTab.add(mySolutionKind,
                       new GridConstraints(row++, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
                                           GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 
-      myCheckBox = new JBCheckBox(PropertiesBundle.message("facet.java.compileinmps"), descriptor.getCompileInMPS());
+      myCompileInMPS = new JBCheckBox(PropertiesBundle.message("facet.java.compileinmps"), descriptor.getCompileInMPS());
       Component compileFlags = null;
       if (RuntimeFlags.isInternalMode()) {
         myExternalIdeaCompile = new JBCheckBox(PropertiesBundle.message("facet.java.compileinidea"), descriptor.needsExternalIdeaCompile());
-        myCheckBox.addChangeListener(e -> {
-          myExternalIdeaCompile.setEnabled(!myCheckBox.isSelected());
+        myExternalIdeaCompile.setEnabled(!myCompileInMPS.isSelected());
+        myCompileInMPS.addChangeListener(e -> {
+          myExternalIdeaCompile.setEnabled(!myCompileInMPS.isSelected());
         });
         JPanel p = new JPanel(new FlowLayout(FlowLayout.LEFT), false);
-        p.add(myCheckBox);
+        p.add(myCompileInMPS);
         p.add(myExternalIdeaCompile);
         compileFlags = p;
       } else {
-        compileFlags = myCheckBox;
+        compileFlags = myCompileInMPS;
       }
       advancedTab.add(compileFlags,
                       new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
+                                          GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+
+      JBLabel languageLevelLabel = new JBLabel("Language level:");
+      myLanguageLevel = new ComboBox<>(new DefaultComboBoxModel<>(JavaLanguageLevel.values()));
+      myLanguageLevel.setSelectedItem(descriptor.getJavaLanguageLevel());
+
+      advancedTab.add(languageLevelLabel,
+                      new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
+                                          GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+      advancedTab.add(myLanguageLevel,
+                      new GridConstraints(row++, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW,
                                           GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
@@ -229,10 +244,11 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     if (myJavaModuleFacet.getModule() instanceof Solution) {
       SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getModule().getModuleDescriptor();
       assert descriptor != null;
-      solutionCheck = descriptor.getCompileInMPS() != myCheckBox.isSelected() || descriptor.getKind() != myComboBox.getSelectedItem();
+      solutionCheck = descriptor.getCompileInMPS() != myCompileInMPS.isSelected() || descriptor.getKind() != mySolutionKind.getSelectedItem();
       if (myExternalIdeaCompile != null) {
         solutionCheck |= descriptor.needsExternalIdeaCompile() != myExternalIdeaCompile.isSelected();
       }
+      solutionCheck |= descriptor.getJavaLanguageLevel() != myLanguageLevel.getSelectedItem();
     }
 
     // Any change in table model will require re-save, even if state in the end is the same, to simplify this check.
@@ -244,8 +260,9 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     if (myJavaModuleFacet.getModule() instanceof Solution) {
       SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getModule().getModuleDescriptor();
       assert descriptor != null;
-      descriptor.setCompileInMPS(myCheckBox.isSelected());
-      descriptor.setKind((SolutionKind) myComboBox.getSelectedItem());
+      descriptor.setCompileInMPS(myCompileInMPS.isSelected());
+      descriptor.setKind((SolutionKind) mySolutionKind.getSelectedItem());
+      descriptor.setJavaLanguageLevel((JavaLanguageLevel) myLanguageLevel.getSelectedItem());
       if (myExternalIdeaCompile != null) {
         descriptor.setNeedsExternalIdeaCompile(myExternalIdeaCompile.isSelected());
       }
