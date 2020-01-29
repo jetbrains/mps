@@ -141,6 +141,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       new CommentLineStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       style.set(StyleAttributes.SELECTABLE, false);
       editorCell.getStyle().putAll(style);
+      editorCell.addKeyMap(new SingleLineCommentKeys());
     }
     @Override
     protected EditorCell createEmptyCell() {
