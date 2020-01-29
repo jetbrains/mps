@@ -14,9 +14,9 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -51,11 +51,12 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
       Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll(new IVisitor<SModel>() {
         public void visit(SModel currentModel) {
 
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$jI, false)).visitAll(new IVisitor<SNode>() {
+          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$jI, false)).where(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.text$BOhB)).isNotEmpty();
+            }
+          }).visitAll(new IVisitor<SNode>() {
             public void visit(final SNode slc) {
-              if (ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$BOhB)).isEmpty()) {
-                return;
-              }
 
               final SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$BOhB)).first();
               SLinkOperations.setTarget(slc, LINKS.line$32mp, firstLine);

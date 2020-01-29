@@ -26847,7 +26847,7 @@
       <node id="1211637016821763888" at="97,27,98,144" concept="5" />
       <node id="1211637016821763901" at="100,28,101,151" concept="11" />
       <node id="1211637016821763909" at="101,151,102,60" concept="5" />
-      <node id="994059256436355158" at="105,86,106,112" concept="11" />
+      <node id="994059256436355158" at="105,86,106,267" concept="11" />
       <node id="994059256436762944" at="107,129,108,118" concept="11" />
       <node id="994059256436227675" at="109,73,110,124" concept="11" />
       <node id="994059256436227686" at="111,27,112,43" concept="5" />
@@ -26907,7 +26907,7 @@
       <node id="5412515780383209412" at="66,0,73,0" concept="16" trace="getCommentedNodes_id3$Sh7m_tmZE#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="994059256436859043" at="108,118,115,7" concept="9" />
       <node id="5185847984244124194" at="54,116,62,5" concept="9" />
-      <node id="994059256436437386" at="106,112,116,5" concept="9" />
+      <node id="994059256436437386" at="106,267,116,5" concept="9" />
       <node id="5412515780383209412" at="155,0,166,0" concept="10" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <node id="5412515780383209412" at="54,0,66,0" concept="16" trace="getScope_id52_Geb4QDV$#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/scope/Scope;" />
       <node id="5412515780383209412" at="92,0,105,0" concept="16" trace="parseAndAddWords_id13gAna0o0W6#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />

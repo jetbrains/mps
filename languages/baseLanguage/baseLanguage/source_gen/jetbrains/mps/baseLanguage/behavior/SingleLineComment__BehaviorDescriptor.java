@@ -103,7 +103,7 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
     }
   }
   /*package*/ static boolean isTODOComment_idRbAU21$c$g(@NotNull SNode __thisNode__) {
-    SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).first();
+    SNode firstLine = (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).isEmpty() ? SLinkOperations.getTarget(__thisNode__, LINKS.line$32mp) : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.text$BOhB)).first());
     if ((firstLine != null) && ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$eRew)).isNotEmpty()) {
       SNode firstElement = ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$eRew)).first();
       if (SNodeOperations.isInstanceOf(firstElement, CONCEPTS.Word$AM)) {
