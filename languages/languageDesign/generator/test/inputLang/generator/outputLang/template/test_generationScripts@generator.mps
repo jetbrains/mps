@@ -7,7 +7,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="tpm0" ref="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)" />
@@ -96,7 +96,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
@@ -494,7 +494,7 @@
     <node concept="1pplIY" id="hppTM8I" role="1pqMTA">
       <node concept="3clFbS" id="hppTM8J" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCG0Z" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnX4t" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnX4t" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnX4u" role="1PaTwD">
               <property role="3oM_SC" value="test1" />
             </node>
@@ -611,7 +611,7 @@
     <node concept="1pplIY" id="hppYcz_" role="1pqMTA">
       <node concept="3clFbS" id="hppYczA" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCG5f" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnX4w" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnX4w" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnX4x" role="1PaTwD">
               <property role="3oM_SC" value="test1" />
             </node>

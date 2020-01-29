@@ -7,7 +7,7 @@
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
   </languages>
   <imports>
@@ -106,7 +106,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -2393,7 +2393,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="R$fwjLmcze" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnY6M" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnY6M" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnY6N" role="1PaTwD">
               <property role="3oM_SC" value="FIXME" />
             </node>
@@ -2449,7 +2449,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="R$fwjLmkXG" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnY6X" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnY6X" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnY6Y" role="1PaTwD">
               <property role="3oM_SC" value="blank" />
             </node>

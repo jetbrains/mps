@@ -73,7 +73,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
         <property id="1200397540847" name="charConstant" index="1XhdNS" />
@@ -142,7 +142,7 @@
       <node concept="1LLf8_" id="hDMFLW1" role="1LXaQT">
         <node concept="3clFbS" id="hDMFLW2" role="2VODD2">
           <node concept="3SKdUt" id="6pumIWoCG65" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnT8d" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnT8d" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnT8e" role="1PaTwD">
                 <property role="3oM_SC" value="nothing" />
               </node>

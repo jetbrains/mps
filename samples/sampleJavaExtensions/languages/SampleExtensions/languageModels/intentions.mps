@@ -93,7 +93,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -472,7 +472,7 @@
     <node concept="2Sbjvc" id="lPhVsfdRWY" role="2ZfgGD">
       <node concept="3clFbS" id="lPhVsfdRWZ" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCFZ3" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo4Yg" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo4Yg" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo4Yh" role="1PaTwD">
               <property role="3oM_SC" value="Invert" />
             </node>

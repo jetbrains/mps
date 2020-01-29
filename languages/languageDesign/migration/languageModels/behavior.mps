@@ -178,7 +178,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -1845,7 +1845,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="5nUatQbErem" role="3cqZAp">
-          <node concept="1PaTwC" id="5nUatQbEBR6" role="3ndbpf">
+          <node concept="1PaTwC" id="5nUatQbEBR6" role="1aUNEU">
             <node concept="3oM_SD" id="5nUatQbErep" role="1PaTwD">
               <property role="3oM_SC" value="todo:" />
             </node>
@@ -3006,7 +3006,7 @@
       <node concept="10P_77" id="4SwrQttL7ET" role="3clF45" />
       <node concept="3clFbS" id="4SwrQttKYC3" role="3clF47">
         <node concept="3SKdUt" id="4SwrQttL7GD" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnXar" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnXar" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnXas" role="1PaTwD">
               <property role="3oM_SC" value="when" />
             </node>

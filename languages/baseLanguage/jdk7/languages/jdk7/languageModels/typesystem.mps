@@ -75,7 +75,7 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
@@ -171,7 +171,7 @@
     <property role="TrG5h" value="check_StringSwitchCase" />
     <node concept="3clFbS" id="mfnC6nPryg" role="18ibNy">
       <node concept="3SKdUt" id="mfnC6nPrzP" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnSY_" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnSY_" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnSYA" role="1PaTwD">
             <property role="3oM_SC" value="checking" />
           </node>

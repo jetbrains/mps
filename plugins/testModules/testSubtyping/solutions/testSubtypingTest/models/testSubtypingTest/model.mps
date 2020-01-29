@@ -83,7 +83,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -302,7 +302,7 @@
         <node concept="3clFbS" id="Bcyb5kJ5f6" role="3clF47">
           <node concept="3clFbH" id="Bcyb5kJ5f7" role="3cqZAp" />
           <node concept="3SKdUt" id="7xW2VNwj5Bx" role="3cqZAp">
-            <node concept="1PaTwC" id="RbAU21o$qq" role="3ndbpf">
+            <node concept="1PaTwC" id="RbAU21o$qq" role="1aUNEU">
               <node concept="3oM_SD" id="RbAU21o$qs" role="1PaTwD">
                 <property role="3oM_SC" value="absent" />
               </node>
@@ -388,7 +388,7 @@
         <node concept="3clFbS" id="Bcyb5kJ5fq" role="3clF47">
           <node concept="3clFbH" id="Bcyb5kJ5fr" role="3cqZAp" />
           <node concept="3SKdUt" id="2Cc_hjaOfku" role="3cqZAp">
-            <node concept="1PaTwC" id="RbAU21o$z6" role="3ndbpf">
+            <node concept="1PaTwC" id="RbAU21o$z6" role="1aUNEU">
               <node concept="3oM_SD" id="RbAU21o$z8" role="1PaTwD">
                 <property role="3oM_SC" value="absent" />
               </node>

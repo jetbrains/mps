@@ -115,7 +115,7 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -1347,7 +1347,7 @@
         </node>
         <node concept="3clFbS" id="6WSEafdvLBv" role="3clFbx">
           <node concept="3SKdUt" id="6WSEafd_uLQ" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnU5X" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnU5X" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnU5Y" role="1PaTwD">
                 <property role="3oM_SC" value="todo" />
               </node>

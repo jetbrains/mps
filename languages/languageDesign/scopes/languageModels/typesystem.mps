@@ -62,7 +62,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -147,7 +147,7 @@
     <property role="TrG5h" value="check_ParentScope" />
     <node concept="3clFbS" id="70qA1hy$wwO" role="18ibNy">
       <node concept="3SKdUt" id="70qA1hy$wwQ" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnY1J" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnY1J" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnY1K" role="1PaTwD">
             <property role="3oM_SC" value="todo:" />
           </node>
@@ -239,7 +239,7 @@
     <property role="TrG5h" value="check_ComeFromExpression" />
     <node concept="3clFbS" id="70qA1hy$CJy" role="18ibNy">
       <node concept="3SKdUt" id="70qA1hy$CJ$" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnY1P" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnY1P" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnY1Q" role="1PaTwD">
             <property role="3oM_SC" value="todo:" />
           </node>
@@ -329,7 +329,7 @@
     <property role="TrG5h" value="check_CompositeWithParentScopeExpression" />
     <node concept="3clFbS" id="70qA1hy$IDS" role="18ibNy">
       <node concept="3SKdUt" id="70qA1hy$IDU" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnY1V" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnY1V" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnY1W" role="1PaTwD">
             <property role="3oM_SC" value="todo:" />
           </node>

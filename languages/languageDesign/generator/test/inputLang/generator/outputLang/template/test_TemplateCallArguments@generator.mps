@@ -5,7 +5,7 @@
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <use id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -58,7 +58,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
@@ -475,7 +475,7 @@
         <node concept="3zFVjK" id="5PVjbugrzR_" role="3zH0cK">
           <node concept="3clFbS" id="5PVjbugrzRA" role="2VODD2">
             <node concept="3SKdUt" id="5PVjbugr$hH" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXnX4j" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXnX4j" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXnX4k" role="1PaTwD">
                   <property role="3oM_SC" value="here" />
                 </node>

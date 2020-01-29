@@ -6,7 +6,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -130,7 +130,7 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
@@ -475,7 +475,7 @@
                   </node>
                   <node concept="3clFbH" id="obyZJhYeBt" role="3cqZAp" />
                   <node concept="3SKdUt" id="mDYNhtwSsp" role="3cqZAp">
-                    <node concept="1PaTwC" id="mDYNhtwSsq" role="3ndbpf">
+                    <node concept="1PaTwC" id="mDYNhtwSsq" role="1aUNEU">
                       <node concept="3oM_SD" id="mDYNhtwSx0" role="1PaTwD">
                         <property role="3oM_SC" value="FIXME" />
                       </node>
@@ -564,7 +564,7 @@
                   </node>
                   <node concept="3clFbH" id="mDYNhtwUe$" role="3cqZAp" />
                   <node concept="3SKdUt" id="mDYNhtwUQd" role="3cqZAp">
-                    <node concept="1PaTwC" id="mDYNhtwUQe" role="3ndbpf">
+                    <node concept="1PaTwC" id="mDYNhtwUQe" role="1aUNEU">
                       <node concept="3oM_SD" id="mDYNhtwUWs" role="1PaTwD">
                         <property role="3oM_SC" value="update" />
                       </node>

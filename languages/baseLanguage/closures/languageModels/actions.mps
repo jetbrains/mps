@@ -75,7 +75,7 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
@@ -286,7 +286,7 @@
                                 </node>
                               </node>
                               <node concept="3SKdUt" id="6pumIWoCG8X" role="3cqZAp">
-                                <node concept="1PaTwC" id="ATZLwXnS9F" role="3ndbpf">
+                                <node concept="1PaTwC" id="ATZLwXnS9F" role="1aUNEU">
                                   <node concept="3oM_SD" id="ATZLwXnS9G" role="1PaTwD">
                                     <property role="3oM_SC" value="TODO:" />
                                   </node>

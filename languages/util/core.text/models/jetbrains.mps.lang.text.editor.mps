@@ -379,7 +379,6 @@
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1471,45 +1470,7 @@
           </node>
           <node concept="3clFbH" id="13gAna03sxR" role="3cqZAp" />
           <node concept="3SKdUt" id="13gAna03ult" role="3cqZAp">
-            <node concept="1PaTwC" id="13gAna03ulu" role="1aUNEU">
-              <node concept="3oM_SD" id="13gAna03ulw" role="1PaTwD">
-                <property role="3oM_SC" value="Test" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03viq" role="1PaTwD">
-                <property role="3oM_SC" value="if" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03vGH" role="1PaTwD">
-                <property role="3oM_SC" value="a" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03vXW" role="1PaTwD">
-                <property role="3oM_SC" value="new" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03w7i" role="1PaTwD">
-                <property role="3oM_SC" value="Line" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03wq0" role="1PaTwD">
-                <property role="3oM_SC" value="following" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03wzT" role="1PaTwD">
-                <property role="3oM_SC" value="the" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03w$s" role="1PaTwD">
-                <property role="3oM_SC" value="current" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03wAh" role="1PaTwD">
-                <property role="3oM_SC" value="Line" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03wKm" role="1PaTwD">
-                <property role="3oM_SC" value="should" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03wKW" role="1PaTwD">
-                <property role="3oM_SC" value="be" />
-              </node>
-              <node concept="3oM_SD" id="13gAna03wLz" role="1PaTwD">
-                <property role="3oM_SC" value="created" />
-              </node>
-            </node>
-            <node concept="1PaTwC" id="13gAna03ulx" role="3ndbpf">
+            <node concept="1PaTwC" id="13gAna03ulx" role="1aUNEU">
               <node concept="3oM_SD" id="13gAna03ulz" role="1PaTwD">
                 <property role="3oM_SC" value="" />
               </node>
@@ -1685,54 +1646,7 @@
             <node concept="9aQIb" id="7fQBo8ThOxP" role="9aQIa">
               <node concept="3clFbS" id="7fQBo8ThOxQ" role="9aQI4">
                 <node concept="3SKdUt" id="13gAna03xw9" role="3cqZAp">
-                  <node concept="1PaTwC" id="13gAna03xwa" role="1aUNEU">
-                    <node concept="3oM_SD" id="13gAna03xwc" role="1PaTwD">
-                      <property role="3oM_SC" value="No" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03xET" role="1PaTwD">
-                      <property role="3oM_SC" value="new" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03xV_" role="1PaTwD">
-                      <property role="3oM_SC" value="line" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03yz2" role="1PaTwD">
-                      <property role="3oM_SC" value="should" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03yR9" role="1PaTwD">
-                      <property role="3oM_SC" value="be" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03z0t" role="1PaTwD">
-                      <property role="3oM_SC" value="created," />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03zld" role="1PaTwD">
-                      <property role="3oM_SC" value="create" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03zvv" role="1PaTwD">
-                      <property role="3oM_SC" value="a" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03zDP" role="1PaTwD">
-                      <property role="3oM_SC" value="default" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03zFF" role="1PaTwD">
-                      <property role="3oM_SC" value="node" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03zQ9" role="1PaTwD">
-                      <property role="3oM_SC" value="in" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03zQK" role="1PaTwD">
-                      <property role="3oM_SC" value="the" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03$1L" role="1PaTwD">
-                      <property role="3oM_SC" value="closest" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03$FJ" role="1PaTwD">
-                      <property role="3oM_SC" value="ancestor" />
-                    </node>
-                    <node concept="3oM_SD" id="13gAna03_0x" role="1PaTwD">
-                      <property role="3oM_SC" value="collection" />
-                    </node>
-                  </node>
-                  <node concept="1PaTwC" id="13gAna03xwd" role="3ndbpf">
+                  <node concept="1PaTwC" id="13gAna03xwd" role="1aUNEU">
                     <node concept="3oM_SD" id="13gAna03xwf" role="1PaTwD">
                       <property role="3oM_SC" value="" />
                     </node>

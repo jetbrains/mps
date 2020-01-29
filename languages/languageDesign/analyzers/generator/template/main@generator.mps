@@ -11,7 +11,7 @@
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="96ee7a94-411d-4cf8-9b94-96cad7e52411" name="jetbrains.mps.baseLanguage.jdk7" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
@@ -213,7 +213,7 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -2956,7 +2956,7 @@
                       <node concept="3clFbJ" id="zzYaEuAyrO" role="3cqZAp">
                         <node concept="3clFbS" id="zzYaEuAyrQ" role="3clFbx">
                           <node concept="3SKdUt" id="zzYaEuAD$f" role="3cqZAp">
-                            <node concept="1PaTwC" id="ATZLwXnU30" role="3ndbpf">
+                            <node concept="1PaTwC" id="ATZLwXnU30" role="1aUNEU">
                               <node concept="3oM_SD" id="ATZLwXnU31" role="1PaTwD">
                                 <property role="3oM_SC" value="compatibility," />
                               </node>
@@ -3110,7 +3110,7 @@
                     <node concept="3clFbJ" id="zzYaEuC9mF" role="3cqZAp">
                       <node concept="3clFbS" id="zzYaEuC9mH" role="3clFbx">
                         <node concept="3SKdUt" id="zzYaEuCcv5" role="3cqZAp">
-                          <node concept="1PaTwC" id="ATZLwXnU39" role="3ndbpf">
+                          <node concept="1PaTwC" id="ATZLwXnU39" role="1aUNEU">
                             <node concept="3oM_SD" id="ATZLwXnU3a" role="1PaTwD">
                               <property role="3oM_SC" value="fallback," />
                             </node>
@@ -4648,7 +4648,7 @@
                       <node concept="3clFbJ" id="zzYaEuA16U" role="3cqZAp">
                         <node concept="3clFbS" id="zzYaEuA16W" role="3clFbx">
                           <node concept="3SKdUt" id="zzYaEuAJYN" role="3cqZAp">
-                            <node concept="1PaTwC" id="ATZLwXnU3l" role="3ndbpf">
+                            <node concept="1PaTwC" id="ATZLwXnU3l" role="1aUNEU">
                               <node concept="3oM_SD" id="ATZLwXnU3m" role="1PaTwD">
                                 <property role="3oM_SC" value="compatibility," />
                               </node>
@@ -4906,7 +4906,7 @@
                     <node concept="3clFbJ" id="zzYaEuBfF9" role="3cqZAp">
                       <node concept="3clFbS" id="zzYaEuBfFb" role="3clFbx">
                         <node concept="3SKdUt" id="zzYaEuBhk9" role="3cqZAp">
-                          <node concept="1PaTwC" id="ATZLwXnU3u" role="3ndbpf">
+                          <node concept="1PaTwC" id="ATZLwXnU3u" role="1aUNEU">
                             <node concept="3oM_SD" id="ATZLwXnU3v" role="1PaTwD">
                               <property role="3oM_SC" value="fallback," />
                             </node>

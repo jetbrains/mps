@@ -2,7 +2,7 @@
 <model ref="r:88da44e4-ffd4-490b-bf61-1da15124dd34(jetbrains.mps.debugger.java.runtime.evaluation.proxies)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="dcbi" ref="r:ea2e6d1f-eab5-4a08-8299-1abe57148f37(jetbrains.mps.debugger.java.api.evaluation.proxies)" />
@@ -182,7 +182,7 @@
         <child id="1170075736412" name="block" index="1HWHxc" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -815,7 +815,7 @@
       </node>
       <node concept="3clFbS" id="2GfvxUDMjA7" role="3clF47">
         <node concept="3SKdUt" id="2GfvxUDMjA8" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXocIF" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXocIF" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXocIG" role="1PaTwD">
               <property role="3oM_SC" value="TODO" />
             </node>
@@ -1854,7 +1854,7 @@
       </node>
       <node concept="3clFbS" id="2GfvxUDMjFn" role="3clF47">
         <node concept="3SKdUt" id="2GfvxUDMjFo" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXocIM" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXocIM" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXocIN" role="1PaTwD">
               <property role="3oM_SC" value="we" />
             </node>

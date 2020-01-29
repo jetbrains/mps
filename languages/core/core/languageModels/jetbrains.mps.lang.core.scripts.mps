@@ -61,7 +61,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="0eddeefa-c2d6-4437-bc2c-de50fd4ce470" name="jetbrains.mps.lang.script">
@@ -151,7 +151,7 @@
           <node concept="3clFbJ" id="QobsgSaX3o" role="3cqZAp">
             <node concept="3clFbS" id="QobsgSaX3q" role="3clFbx">
               <node concept="3SKdUt" id="QobsgSb3_5" role="3cqZAp">
-                <node concept="1PaTwC" id="QobsgSb3_6" role="3ndbpf">
+                <node concept="1PaTwC" id="QobsgSb3_6" role="1aUNEU">
                   <node concept="3oM_SD" id="QobsgSb44X" role="1PaTwD">
                     <property role="3oM_SC" value="property" />
                   </node>

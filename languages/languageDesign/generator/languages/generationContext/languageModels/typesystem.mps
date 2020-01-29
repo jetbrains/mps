@@ -93,7 +93,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -246,7 +246,7 @@
     <property role="TrG5h" value="check_GenerationContextOp_Base" />
     <node concept="3clFbS" id="hHi$4jh" role="18ibNy">
       <node concept="3SKdUt" id="6pumIWoCG2T" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnViD" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnViD" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnViE" role="1PaTwD">
             <property role="3oM_SC" value="" />
           </node>
@@ -500,7 +500,7 @@
     <property role="TrG5h" value="typeof_GenerationContextOp_GetCopiedOutputByInput" />
     <node concept="3clFbS" id="hIfAnd$" role="18ibNy">
       <node concept="3SKdUt" id="6pumIWoCFW7" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnViJ" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnViJ" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnViK" role="1PaTwD">
             <property role="3oM_SC" value="type" />
           </node>
@@ -766,7 +766,7 @@
     <property role="TrG5h" value="typeof_GenerationContextOp_ShowMessageBase" />
     <node concept="3clFbS" id="1D5gQ4cyHAa" role="18ibNy">
       <node concept="3SKdUt" id="6pumIWoCFXX" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnViQ" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnViQ" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnViR" role="1PaTwD">
             <property role="3oM_SC" value="" />
           </node>
@@ -1627,7 +1627,7 @@
         </node>
       </node>
       <node concept="3SKdUt" id="5Wn7$dQZMBG" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnViV" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnViV" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnViW" role="1PaTwD">
             <property role="3oM_SC" value="I'm" />
           </node>

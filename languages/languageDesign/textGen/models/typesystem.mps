@@ -92,7 +92,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -988,7 +988,7 @@
           <node concept="3clFbJ" id="3fG6dkheWIv" role="3cqZAp">
             <node concept="3clFbS" id="3fG6dkheWIx" role="3clFbx">
               <node concept="3SKdUt" id="3fG6dkheXBJ" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXnZn5" role="3ndbpf">
+                <node concept="1PaTwC" id="ATZLwXnZn5" role="1aUNEU">
                   <node concept="3oM_SD" id="ATZLwXnZn6" role="1PaTwD">
                     <property role="3oM_SC" value="allow" />
                   </node>

@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="u132" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:junit.framework(JUnit/)" />
@@ -93,7 +93,7 @@
         <child id="1144231408325" name="iteration" index="1Dwrff" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -151,7 +151,7 @@
       <property role="TrG5h" value="test_shortSequence1" />
       <node concept="3clFbS" id="gXqcPcd" role="3clF47">
         <node concept="3SKdUt" id="6pumIWoCG6P" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopZB" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopZB" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopZC" role="1PaTwD">
               <property role="3oM_SC" value="sequence" />
             </node>
@@ -320,7 +320,7 @@
       <property role="TrG5h" value="test_shortSequence2" />
       <node concept="3clFbS" id="gXqiTaH" role="3clF47">
         <node concept="3SKdUt" id="6pumIWoCFOR" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopZG" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopZG" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopZH" role="1PaTwD">
               <property role="3oM_SC" value="sequence" />
             </node>
@@ -526,7 +526,7 @@
       <property role="TrG5h" value="test_longSequence1" />
       <node concept="3clFbS" id="gXyZJHH" role="3clF47">
         <node concept="3SKdUt" id="6pumIWoCG51" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopZK" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopZK" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopZL" role="1PaTwD">
               <property role="3oM_SC" value="sequence" />
             </node>
@@ -716,7 +716,7 @@
       <property role="TrG5h" value="test_longSequence2" />
       <node concept="3clFbS" id="gXyZJIP" role="3clF47">
         <node concept="3SKdUt" id="6pumIWoCFTB" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopZP" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopZP" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopZQ" role="1PaTwD">
               <property role="3oM_SC" value="sequence" />
             </node>
@@ -953,7 +953,7 @@
       <property role="TrG5h" value="test_1" />
       <node concept="3clFbS" id="gXzdckP" role="3clF47">
         <node concept="3SKdUt" id="6pumIWoCFY9" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopZT" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopZT" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopZU" role="1PaTwD">
               <property role="3oM_SC" value="inner" />
             </node>

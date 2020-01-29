@@ -6,7 +6,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
     <use id="4eb772b0-4df3-414a-b894-63abeb912f56" name="jetbrains.mps.lang.editor.menus.testLanguage" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="9b3af7e0-9a52-4741-a75d-becf7e1d5117" name="jetbrains.mps.lang.editor.menus.testExtendingLanguage" version="-1" />
     <use id="69068b7c-ba1f-47fb-a486-4981f42606e9" name="jetbrains.mps.lang.editor.menus.testMetaLanguage" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
@@ -376,7 +376,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -2122,7 +2122,7 @@
     <property role="TrG5h" value="ContributionScopes" />
     <node concept="3clFbS" id="5XkRVC1EtMB" role="LjaKd">
       <node concept="3SKdUt" id="5XkRVC1ERs1" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXoq2B" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXoq2B" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXoq2C" role="1PaTwD">
             <property role="3oM_SC" value="Can't" />
           </node>
@@ -2189,7 +2189,7 @@
         </node>
       </node>
       <node concept="3SKdUt" id="5XkRVC1EUtW" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXoq2X" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXoq2X" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXoq2Y" role="1PaTwD">
             <property role="3oM_SC" value="a" />
           </node>

@@ -112,7 +112,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -978,7 +978,7 @@
       <node concept="_ZGcI" id="_bcZOagSfQ" role="_XPhp">
         <node concept="3clFbS" id="_bcZOagSfS" role="2VODD2">
           <node concept="3SKdUt" id="_bcZOagZjX" role="3cqZAp">
-            <node concept="1PaTwC" id="_bcZOagZjY" role="3ndbpf">
+            <node concept="1PaTwC" id="_bcZOagZjY" role="1aUNEU">
               <node concept="3oM_SD" id="_bcZOagZk0" role="1PaTwD">
                 <property role="3oM_SC" value="no-op" />
               </node>
@@ -1010,7 +1010,7 @@
       <node concept="_ZGcI" id="_bcZOagZZY" role="_XPhp">
         <node concept="3clFbS" id="_bcZOagZZZ" role="2VODD2">
           <node concept="3SKdUt" id="_bcZOah000" role="3cqZAp">
-            <node concept="1PaTwC" id="_bcZOah001" role="3ndbpf">
+            <node concept="1PaTwC" id="_bcZOah001" role="1aUNEU">
               <node concept="3oM_SD" id="_bcZOah002" role="1PaTwD">
                 <property role="3oM_SC" value="no-op" />
               </node>

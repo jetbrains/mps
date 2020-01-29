@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -178,7 +178,7 @@
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1364,7 +1364,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="42TXcA3Kj9t" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXobyv" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXobyv" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXobyw" role="1PaTwD">
               <property role="3oM_SC" value="XXX" />
             </node>
@@ -1419,7 +1419,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="42TXcA3KkPy" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXobyL" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXobyL" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXobyM" role="1PaTwD">
               <property role="3oM_SC" value="in" />
             </node>

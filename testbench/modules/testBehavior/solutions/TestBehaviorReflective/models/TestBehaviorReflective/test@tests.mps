@@ -7,7 +7,7 @@
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="g0pg" ref="r:d510b5d3-1f95-49d0-a4ec-479ac64c820d(BHL4.structure)" />
@@ -148,7 +148,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1904,7 +1904,7 @@
             </node>
           </node>
           <node concept="3SKdUt" id="7DwYn_xfHuX" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXopm$" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXopm$" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXopm_" role="1PaTwD">
                 <property role="3oM_SC" value="checks" />
               </node>
@@ -2352,7 +2352,7 @@
         <node concept="3Tm1VV" id="7DwYn_xfHx3" role="1B3o_S" />
         <node concept="3clFbS" id="7DwYn_xfHx4" role="3clF47">
           <node concept="3SKdUt" id="7DwYn_xfHx5" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXopmJ" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXopmJ" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXopmK" role="1PaTwD">
                 <property role="3oM_SC" value="test" />
               </node>
@@ -2435,7 +2435,7 @@
         <node concept="3Tm1VV" id="7DwYn_xfHxu" role="1B3o_S" />
         <node concept="3clFbS" id="7DwYn_xfHxv" role="3clF47">
           <node concept="3SKdUt" id="7DwYn_xfHxw" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXopmS" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXopmS" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXopmT" role="1PaTwD">
                 <property role="3oM_SC" value="test" />
               </node>
@@ -3013,7 +3013,7 @@
         <node concept="3Tm1VV" id="7DwYn_xfH$H" role="1B3o_S" />
         <node concept="3clFbS" id="7DwYn_xfH$I" role="3clF47">
           <node concept="3SKdUt" id="7DwYn_xfH$J" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXopn1" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXopn1" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXopn2" role="1PaTwD">
                 <property role="3oM_SC" value="against" />
               </node>
@@ -3580,7 +3580,7 @@
         <node concept="3Tm1VV" id="7DwYn_xfHDW" role="1B3o_S" />
         <node concept="3clFbS" id="7DwYn_xfHDX" role="3clF47">
           <node concept="3SKdUt" id="7DwYn_xfHDY" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXopn6" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXopn6" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXopn7" role="1PaTwD">
                 <property role="3oM_SC" value="this" />
               </node>
@@ -4303,7 +4303,7 @@
     <node concept="1KhYhu" id="6EMTxOPT4XR" role="1KhZu4">
       <node concept="3clFbS" id="6EMTxOPT4XS" role="2VODD2">
         <node concept="3SKdUt" id="5AcmpEOrcpS" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopnq" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopnq" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopnr" role="1PaTwD">
               <property role="3oM_SC" value="MpsEnvironment" />
             </node>
@@ -4337,7 +4337,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7TV6gXQfGgQ" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopnt" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopnt" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopnu" role="1PaTwD">
               <property role="3oM_SC" value="see" />
             </node>

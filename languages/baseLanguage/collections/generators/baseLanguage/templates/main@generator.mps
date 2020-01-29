@@ -13,7 +13,7 @@
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
@@ -199,7 +199,7 @@
         <property id="1199470060942" name="label" index="15Zaip" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
@@ -5521,7 +5521,7 @@
       <node concept="30G5F_" id="hOmOHBO" role="30HLyM">
         <node concept="3clFbS" id="hOmOHBP" role="2VODD2">
           <node concept="3SKdUt" id="6pumIWoCG2J" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnSCi" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnSCi" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnSCj" role="1PaTwD">
                 <property role="3oM_SC" value="Reduce" />
               </node>
@@ -5653,7 +5653,7 @@
       <node concept="30G5F_" id="hOn3tGt" role="30HLyM">
         <node concept="3clFbS" id="hOn3tGu" role="2VODD2">
           <node concept="3SKdUt" id="6pumIWoCFQX" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnSCp" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnSCp" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnSCq" role="1PaTwD">
                 <property role="3oM_SC" value="Reduce" />
               </node>
@@ -13885,7 +13885,7 @@
                 <node concept="3clFbJ" id="4vYKg6QnRud" role="3cqZAp">
                   <node concept="3clFbS" id="4vYKg6QnRue" role="3clFbx">
                     <node concept="3SKdUt" id="4vYKg6QrBiG" role="3cqZAp">
-                      <node concept="1PaTwC" id="ATZLwXnSCw" role="3ndbpf">
+                      <node concept="1PaTwC" id="ATZLwXnSCw" role="1aUNEU">
                         <node concept="3oM_SD" id="ATZLwXnSCx" role="1PaTwD">
                           <property role="3oM_SC" value="although" />
                         </node>
@@ -13928,7 +13928,7 @@
                       </node>
                     </node>
                     <node concept="3SKdUt" id="4vYKg6Qshen" role="3cqZAp">
-                      <node concept="1PaTwC" id="ATZLwXnSCI" role="3ndbpf">
+                      <node concept="1PaTwC" id="ATZLwXnSCI" role="1aUNEU">
                         <node concept="3oM_SD" id="ATZLwXnSCJ" role="1PaTwD">
                           <property role="3oM_SC" value="code" />
                         </node>
@@ -14115,7 +14115,7 @@
                       <node concept="9aQIb" id="4vYKg6QpKXL" role="9aQIa">
                         <node concept="3clFbS" id="4vYKg6QpKXM" role="9aQI4">
                           <node concept="3SKdUt" id="4vYKg6Qqpiq" role="3cqZAp">
-                            <node concept="1PaTwC" id="ATZLwXnSCY" role="3ndbpf">
+                            <node concept="1PaTwC" id="ATZLwXnSCY" role="1aUNEU">
                               <node concept="3oM_SD" id="ATZLwXnSCZ" role="1PaTwD">
                                 <property role="3oM_SC" value="copyFrom" />
                               </node>

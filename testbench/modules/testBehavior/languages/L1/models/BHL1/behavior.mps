@@ -96,7 +96,7 @@
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -690,7 +690,7 @@
       <node concept="10OMs4" id="6rioTyS5hQk" role="3clF45" />
       <node concept="3clFbS" id="6rioTyS5hAW" role="3clF47">
         <node concept="3SKdUt" id="6rioTyS5hAX" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo4Zp" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo4Zp" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo4Zq" role="1PaTwD">
               <property role="3oM_SC" value="TODO" />
             </node>

@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -226,7 +226,7 @@
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -815,7 +815,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7gZx2pWIyzV" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXosiv" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXosiv" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXosiw" role="1PaTwD">
               <property role="3oM_SC" value="FIXME" />
             </node>
@@ -2243,7 +2243,7 @@
         </node>
         <node concept="3clFbH" id="2bQKHu3llW6" role="3cqZAp" />
         <node concept="3SKdUt" id="29PqUnrObWd" role="3cqZAp">
-          <node concept="1PaTwC" id="29PqUnrObWe" role="3ndbpf">
+          <node concept="1PaTwC" id="29PqUnrObWe" role="1aUNEU">
             <node concept="3oM_SD" id="29PqUnrObWg" role="1PaTwD">
               <property role="3oM_SC" value="Check" />
             </node>
@@ -2974,7 +2974,7 @@
                               </node>
                               <node concept="3clFbH" id="fictB8LUms" role="3cqZAp" />
                               <node concept="3SKdUt" id="fictB8MalH" role="3cqZAp">
-                                <node concept="1PaTwC" id="fictB8MalI" role="3ndbpf">
+                                <node concept="1PaTwC" id="fictB8MalI" role="1aUNEU">
                                   <node concept="3oM_SD" id="fictB8MalK" role="1PaTwD">
                                     <property role="3oM_SC" value="Do" />
                                   </node>

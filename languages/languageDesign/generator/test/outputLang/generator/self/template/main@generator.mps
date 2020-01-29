@@ -120,7 +120,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1333,7 +1333,7 @@
         <node concept="9aQIb" id="2kPUo4NfhVM" role="3cqZAp">
           <node concept="3clFbS" id="2kPUo4NfhVN" role="9aQI4">
             <node concept="3SKdUt" id="2kPUo4NfhWr" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXnX50" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXnX50" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXnX52" role="1PaTwD">
                   <property role="3oM_SC" value="ss" />
                 </node>
@@ -1652,7 +1652,7 @@
         <node concept="3Tm1VV" id="36hYR6_BjCE" role="1B3o_S" />
         <node concept="3clFbS" id="36hYR6_BjCF" role="3clF47">
           <node concept="3SKdUt" id="36hYR6_Bkfs" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnX53" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnX53" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnX54" role="1PaTwD">
                 <property role="3oM_SC" value="a" />
               </node>
@@ -1705,7 +1705,7 @@
         <node concept="3clFbS" id="5AyHvbfOxsG" role="3clF47">
           <node concept="3SKdUt" id="5AyHvbfOxsH" role="3cqZAp">
             <node concept="raruj" id="5AyHvbfOxsV" role="lGtFl" />
-            <node concept="1PaTwC" id="ATZLwXnX55" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnX55" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnX56" role="1PaTwD">
                 <property role="3oM_SC" value="to" />
               </node>
