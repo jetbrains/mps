@@ -165,13 +165,13 @@
             <node concept="3uibUv" id="2R_g56b_TVz" role="1tU5fm">
               <ref role="3uigEE" to="ctgy:~IdeaPluginDescriptor" resolve="IdeaPluginDescriptor" />
             </node>
-            <node concept="2YIFZM" id="39WSWWbuFt6" role="33vP2m">
+            <node concept="2YIFZM" id="5U0l2RdHpBQ" role="33vP2m">
               <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
-              <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-              <node concept="2YIFZM" id="39WSWWbuFt7" role="37wK5m">
+              <ref role="1Pybhc" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
+              <node concept="2YIFZM" id="5U0l2RdHpBR" role="37wK5m">
                 <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                 <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
-                <node concept="Xl_RD" id="39WSWWbuFt8" role="37wK5m">
+                <node concept="Xl_RD" id="5U0l2RdHpBS" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.vcs" />
                 </node>
               </node>
@@ -198,11 +198,11 @@
           <node concept="22lmx$" id="2R_g56bGxxq" role="3clFbw">
             <node concept="3fqX7Q" id="2R_g56bGxBK" role="3uHU7w">
               <node concept="2OqwBi" id="2R_g56bGxLA" role="3fr31v">
-                <node concept="37vLTw" id="2R_g56bGxCJ" role="2Oq$k0">
+                <node concept="37vLTw" id="5U0l2RdHr6i" role="2Oq$k0">
                   <ref role="3cqZAo" node="2R_g56b_TVA" resolve="plugin" />
                 </node>
-                <node concept="liA8E" id="2R_g56bGyV$" role="2OqNvi">
-                  <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.isEnabled()" resolve="isEnabled" />
+                <node concept="liA8E" id="5U0l2RdHrhm" role="2OqNvi">
+                  <ref role="37wK5l" to="9ti4:~PluginDescriptor.isEnabled()" resolve="isEnabled" />
                 </node>
               </node>
             </node>

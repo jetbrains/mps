@@ -744,19 +744,19 @@
                               </node>
                               <node concept="2OqwBi" id="75eqTYkqhQZ" role="33vP2m">
                                 <node concept="2OqwBi" id="75eqTYkqhR0" role="2Oq$k0">
-                                  <node concept="2YIFZM" id="7H0x_FtPm3A" role="2Oq$k0">
+                                  <node concept="liA8E" id="75eqTYkqhR3" role="2OqNvi">
+                                    <ref role="37wK5l" to="9ti4:~PluginDescriptor.getPluginClassLoader()" resolve="getPluginClassLoader" />
+                                  </node>
+                                  <node concept="2YIFZM" id="5U0l2RdHoIn" role="2Oq$k0">
                                     <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
-                                    <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
-                                    <node concept="2YIFZM" id="7H0x_FtPm3B" role="37wK5m">
+                                    <ref role="1Pybhc" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
+                                    <node concept="2YIFZM" id="5U0l2RdHoIo" role="37wK5m">
                                       <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
                                       <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
-                                      <node concept="37vLTw" id="7H0x_FtPm3C" role="37wK5m">
+                                      <node concept="37vLTw" id="5U0l2RdHoIp" role="37wK5m">
                                         <ref role="3cqZAo" node="75eqTYkqe2J" resolve="MIGRATION_PLUGIN" />
                                       </node>
                                     </node>
-                                  </node>
-                                  <node concept="liA8E" id="75eqTYkqhR3" role="2OqNvi">
-                                    <ref role="37wK5l" to="9ti4:~PluginDescriptor.getPluginClassLoader()" resolve="getPluginClassLoader" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="75eqTYkqhR4" role="2OqNvi">

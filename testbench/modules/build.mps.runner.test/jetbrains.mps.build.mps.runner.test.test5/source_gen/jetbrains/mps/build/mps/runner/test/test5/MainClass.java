@@ -5,7 +5,7 @@ package jetbrains.mps.build.mps.runner.test.test5;
 import java.io.File;
 import jetbrains.mps.tool.environment.Environment;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.project.Project;
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class MainClass {
   private static final File PROJECT_LOCATION = new File("testbench/modules/simpleProject");
   private static final String PROJECT_PATH = "../testCloneModule/";
   public static void mpsMain(Environment env) {
-    IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
+    IdeaPluginDescriptor plugin = PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
     if (plugin == null || !(plugin.isEnabled())) {
       System.err.println("vcs plugin should be enabled");
     } else {
