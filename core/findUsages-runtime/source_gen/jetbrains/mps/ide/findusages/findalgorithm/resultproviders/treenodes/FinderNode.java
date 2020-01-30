@@ -26,12 +26,15 @@ public class FinderNode extends BaseLeaf {
   public FinderNode() {
     // IMPORTANT: leave default constructor intact, it's in use when IResultProvider is de-serialized, see BaseNode.read() 
   }
-  public FinderNode(IFinder finder) {
+
+  public FinderNode(@NotNull IFinder finder) {
     myFinder = finder;
   }
+
   public String getTaskName() {
     return myFinder.getDescription();
   }
+
   @Override
   public void doFindResults(@NotNull final SearchQuery query, @NotNull IFinder.FindCallback callback, @NotNull final ProgressMonitor monitor) {
     try {
@@ -42,10 +45,12 @@ public class FinderNode extends BaseLeaf {
       Logger.getLogger(getClass()).error(t.getMessage(), t);
     }
   }
+
   @Override
   public long getEstimatedTime(SearchScope scope) {
     return 2;
   }
+
   @Override
   public void write(Element element, Project project) throws CantSaveSomethingException {
     super.write(element, project);
@@ -60,6 +65,7 @@ public class FinderNode extends BaseLeaf {
     }
     element.addContent(finderXML);
   }
+
   @Override
   public void read(Element element, Project project) throws CantLoadSomethingException {
     super.read(element, project);
