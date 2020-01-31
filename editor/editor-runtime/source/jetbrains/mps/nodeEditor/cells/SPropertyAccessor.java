@@ -21,6 +21,7 @@ import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SType;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
@@ -48,7 +49,11 @@ public class SPropertyAccessor implements ModelAccessor, IPropertyAccessor {
 
   @Override
   public String getText() {
-    return myPresentationProvider.getPresentation(doGetValue());
+    Object value = doGetValue();
+    if (value == SType.NOT_A_VALUE) {
+      return null;
+    }
+    return myPresentationProvider.getPresentation(value);
   }
 
   @Override
