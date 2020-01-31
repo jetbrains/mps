@@ -29,11 +29,11 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Collections;
 import jetbrains.mps.util.ConditionalIterable;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527286941", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
@@ -601,10 +601,21 @@ public class SNodeOperations {
     }
     return node;
   }
+  @Deprecated
   public static SNode asNode(SAbstractConcept concept) {
     if (concept == null) {
       return null;
     }
+    SNodeReference sourceNode = concept.getSourceNode();
+    if (sourceNode != null) {
+      // no way to get repository here 
+      SNode node = sourceNode.resolve(MPSModuleRepository.getInstance());
+      if (node != null) {
+        return (SNode) node;
+      }
+    }
+
+    // this should not be executed, still, left as-is for the release 
     return (SNode) concept.getDeclarationNode();
   }
   public static SAbstractConcept asSConcept(SNode node) {
