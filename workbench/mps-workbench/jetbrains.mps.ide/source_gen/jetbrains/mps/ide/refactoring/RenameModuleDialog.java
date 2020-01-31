@@ -16,11 +16,11 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.refactoring.Renamer;
 import javax.swing.JComponent;
 import com.intellij.ui.components.JBPanel;
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 import java.util.Collections;
 import javax.swing.JLabel;
 import com.intellij.ui.components.JBLabel;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.JBUI;
 
 @GeneratedClass(node = "r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)/2482360940803573298", model = "r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)")
 public class RenameModuleDialog extends RenameDialog {
@@ -35,6 +35,7 @@ public class RenameModuleDialog extends RenameDialog {
     myProject = project;
     updateCentralPanel();
     setTitle(IdeBundle.message("actions.module.rename.title"));
+    setResizable(false);
   }
 
   @Nullable
@@ -76,7 +77,7 @@ public class RenameModuleDialog extends RenameDialog {
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    myOptionsPanel = new JBPanel(new FlowLayout(FlowLayout.LEFT));
+    myOptionsPanel = new JBPanel(new BorderLayout());
     return myOptionsPanel;
   }
 
@@ -92,8 +93,9 @@ public class RenameModuleDialog extends RenameDialog {
     mySubModules = new Renamer(myProject).getSubModules(myModule);
 
     if (!(mySubModules.isEmpty())) {
-      JLabel label = new JBLabel(Renamer.getSubmodulesInfoHtml(myProject, myModule), UIUtil.getInformationIcon(), JBLabel.LEFT);
-      myOptionsPanel.add(label);
+      JLabel label = new JBLabel(Renamer.getSubmodulesInfoHtml(myProject, myModule), JBLabel.LEFT);
+      label.setBorder(JBUI.Borders.emptyLeft(2));
+      myOptionsPanel.add(label, BorderLayout.NORTH);
     }
   }
 }

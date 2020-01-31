@@ -236,9 +236,6 @@
       </concept>
       <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
-      <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
-        <property id="1200397540847" name="charConstant" index="1XhdNS" />
-      </concept>
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
         <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
@@ -4015,22 +4012,6 @@
             <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
             <node concept="Xl_RD" id="53OO3hLEITK" role="37wK5m">
               <property role="Xl_RC" value="Project Modules" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="53OO3hLHtGk" role="3cqZAp">
-          <node concept="1rXfSq" id="53OO3hLHtGj" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonText(java.lang.String)" resolve="setOKButtonText" />
-            <node concept="Xl_RD" id="53OO3hLHtJ0" role="37wK5m">
-              <property role="Xl_RC" value="Apply" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="JucQl_TAtd" role="3cqZAp">
-          <node concept="1rXfSq" id="JucQl_TAtb" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonMnemonic(int)" resolve="setOKButtonMnemonic" />
-            <node concept="1Xhbcc" id="JucQl_TAzN" role="37wK5m">
-              <property role="1XhdNS" value="A" />
             </node>
           </node>
         </node>

@@ -15,8 +15,10 @@ import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.workbench.dialogs.DeleteDialog;
-import jetbrains.mps.ide.refactoring.RefactoringSettings;
+import com.intellij.openapi.ui.Messages;
+import com.intellij.util.ui.UIUtil;
+import com.intellij.util.PairFunction;
+import javax.swing.JCheckBox;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -84,15 +86,19 @@ public class DeleteModels_Action extends BaseAction {
     if (DeleteModels_Action.this.forceSafe) {
       safeDelete.value = true;
     } else {
-      DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption(IdeBundle.message("actions.model.delete.safedelete"), RefactoringSettings.getInstance().SAFE_DELETE, true);
-      DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), IdeBundle.message("actions.model.delete.title.many"), IdeBundle.message("actions.model.delete.message"), safeOption);
-      dialog.show();
-      if (!(dialog.isOK())) {
+      int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.model.delete.message"), IdeBundle.message("actions.model.delete.title.many"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.CANCEL_BUTTON}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.model.delete.option.safe")), true, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
+        public Integer fun(Integer exitCode, JCheckBox checkBox) {
+          return (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected()));
+        }
+      });
+
+      if (result == Messages.CANCEL) {
         return;
       }
-      RefactoringSettings.getInstance().SAFE_DELETE = safeOption.selected;
-      safeDelete.value = safeOption.selected;
+
+      safeDelete.value = result == Messages.YES;
     }
+
     final SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
     repository.getModelAccess().executeCommandInEDT(new Runnable() {
       public void run() {

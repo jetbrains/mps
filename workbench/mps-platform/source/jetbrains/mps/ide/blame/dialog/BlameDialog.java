@@ -315,7 +315,6 @@ public class BlameDialog extends DialogWrapper {
     }
 
     setOKButtonText("Send");
-    setOKButtonMnemonic('S');
     setOKActionEnabled(false);
   }
 

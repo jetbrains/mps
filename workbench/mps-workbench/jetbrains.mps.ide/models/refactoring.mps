@@ -2699,6 +2699,12 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="4N51ibjGJsu" role="3cqZAp">
+          <node concept="1rXfSq" id="4N51ibjGJss" role="3clFbG">
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.setResizable(boolean)" resolve="setResizable" />
+            <node concept="3clFbT" id="4N51ibjGJEK" role="37wK5m" />
+          </node>
+        </node>
       </node>
       <node concept="3uibUv" id="29N7xYwTGqN" role="Sfmx6">
         <ref role="3uigEE" to="z60i:~HeadlessException" resolve="HeadlessException" />
@@ -2930,12 +2936,8 @@
               <node concept="1pGfFk" id="7WXh3qIqbK4" role="2ShVmc">
                 <ref role="37wK5l" to="qqrq:~JBPanel.&lt;init&gt;(java.awt.LayoutManager)" resolve="JBPanel" />
                 <node concept="2ShNRf" id="5e7X3XCeEwi" role="37wK5m">
-                  <node concept="1pGfFk" id="5e7X3XCeG6B" role="2ShVmc">
-                    <ref role="37wK5l" to="z60i:~FlowLayout.&lt;init&gt;(int)" resolve="FlowLayout" />
-                    <node concept="10M0yZ" id="5e7X3XCeGu8" role="37wK5m">
-                      <ref role="3cqZAo" to="z60i:~FlowLayout.LEFT" resolve="LEFT" />
-                      <ref role="1PxDUh" to="z60i:~FlowLayout" resolve="FlowLayout" />
-                    </node>
+                  <node concept="1pGfFk" id="2M9WbIhKBco" role="2ShVmc">
+                    <ref role="37wK5l" to="z60i:~BorderLayout.&lt;init&gt;()" resolve="BorderLayout" />
                   </node>
                 </node>
               </node>
@@ -3020,7 +3022,7 @@
                 </node>
                 <node concept="2ShNRf" id="4xnDkoPo94F" role="33vP2m">
                   <node concept="1pGfFk" id="4xnDkoPo9$2" role="2ShVmc">
-                    <ref role="37wK5l" to="qqrq:~JBLabel.&lt;init&gt;(java.lang.String,javax.swing.Icon,int)" resolve="JBLabel" />
+                    <ref role="37wK5l" to="qqrq:~JBLabel.&lt;init&gt;(java.lang.String,int)" resolve="JBLabel" />
                     <node concept="2YIFZM" id="5NLyd09ynar" role="37wK5m">
                       <ref role="1Pybhc" to="smoa:~Renamer" resolve="Renamer" />
                       <ref role="37wK5l" to="smoa:~Renamer.getSubmodulesInfoHtml(jetbrains.mps.project.Project,jetbrains.mps.project.AbstractModule)" resolve="getSubmodulesInfoHtml" />
@@ -3031,13 +3033,26 @@
                         <ref role="3cqZAo" node="29N7xYwTGoV" resolve="myModule" />
                       </node>
                     </node>
-                    <node concept="2YIFZM" id="4xnDkoPonxA" role="37wK5m">
-                      <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
-                      <ref role="37wK5l" to="g1qu:~UIUtil.getInformationIcon()" resolve="getInformationIcon" />
-                    </node>
                     <node concept="10M0yZ" id="4xnDkoPoeFt" role="37wK5m">
                       <ref role="1PxDUh" to="qqrq:~JBLabel" resolve="JBLabel" />
                       <ref role="3cqZAo" to="dxuu:~SwingConstants.LEFT" resolve="LEFT" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="4N51ibjGTee" role="3cqZAp">
+              <node concept="2OqwBi" id="4N51ibjGTVT" role="3clFbG">
+                <node concept="37vLTw" id="4N51ibjGTec" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4xnDkoPo8lS" resolve="label" />
+                </node>
+                <node concept="liA8E" id="4N51ibjGUTi" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
+                  <node concept="2YIFZM" id="4N51ibjGV2a" role="37wK5m">
+                    <ref role="37wK5l" to="g1qu:~JBUI$Borders.emptyLeft(int)" resolve="emptyLeft" />
+                    <ref role="1Pybhc" to="g1qu:~JBUI$Borders" resolve="JBUI.Borders" />
+                    <node concept="3cmrfG" id="4N51ibjGVRK" role="37wK5m">
+                      <property role="3cmrfH" value="2" />
                     </node>
                   </node>
                 </node>
@@ -3049,9 +3064,13 @@
                   <ref role="3cqZAo" node="4xnDkoPnKU7" resolve="myOptionsPanel" />
                 </node>
                 <node concept="liA8E" id="4xnDkoPoWIv" role="2OqNvi">
-                  <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
+                  <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="4xnDkoPoWWF" role="37wK5m">
                     <ref role="3cqZAo" node="4xnDkoPo8lS" resolve="label" />
+                  </node>
+                  <node concept="10M0yZ" id="2M9WbIhKHg_" role="37wK5m">
+                    <ref role="3cqZAo" to="z60i:~BorderLayout.NORTH" resolve="NORTH" />
+                    <ref role="1PxDUh" to="z60i:~BorderLayout" resolve="BorderLayout" />
                   </node>
                 </node>
               </node>

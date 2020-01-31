@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.workbench.dialogs.DeleteDialog;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.ide.devkit.util.DeleteGeneratorHelper;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -67,10 +68,10 @@ public class DeleteGenerator_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption("Safe Delete", true, true);
-    final DeleteDialog.DeleteOption filesOption = new DeleteDialog.DeleteOption("Delete Files", false, true);
+    DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption(UIUtil.replaceMnemonicAmpersand("&Safe delete"), true, true);
+    final DeleteDialog.DeleteOption filesOption = new DeleteDialog.DeleteOption(UIUtil.replaceMnemonicAmpersand("Delete &files"), false, true);
 
-    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), "Delete Generator", "<html>Are you sure you want to delete generator?<br>This operation is not undoable.</html>", safeOption, filesOption);
+    DeleteDialog dialog = new DeleteDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), "Delete Generator", "Are you sure you want to delete generator?\nThis operation cannot be undone.", safeOption, filesOption);
     dialog.show();
     if (!(dialog.isOK())) {
       return;
@@ -80,7 +81,7 @@ public class DeleteGenerator_Action extends BaseAction {
     final Generator generator = ((Generator) ((SModule) MapSequence.fromMap(_params).get("module")));
 
     final DeleteGeneratorHelper butcher = new DeleteGeneratorHelper(((MPSProject) MapSequence.fromMap(_params).get("project")));
-    butcher.safeDelete(safeOption.selected).deleteFiles(filesOption.selected);
+    butcher.safeDelete(safeOption.isSelected()).deleteFiles(filesOption.isSelected());
 
     final Wrappers._T<IStatus> s = new Wrappers._T<IStatus>(new Status.ERROR("Can't execute safety check"));
     modelAccess.runReadAction(new Runnable() {
@@ -95,7 +96,7 @@ public class DeleteGenerator_Action extends BaseAction {
         public void run() {
           // Parameter safeDelete set to false, because safety has been already checked 
           // and DeleteModuleHelper currently not allow to do it. 
-          new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(Collections.singletonList(((SModule) MapSequence.fromMap(_params).get("module"))), false, filesOption.selected);
+          new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(Collections.singletonList(((SModule) MapSequence.fromMap(_params).get("module"))), false, filesOption.isSelected());
         }
       });
     } else {
