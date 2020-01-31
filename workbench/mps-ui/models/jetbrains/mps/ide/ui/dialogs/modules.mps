@@ -644,7 +644,7 @@
         <node concept="3clFbF" id="3rnI4tGs$UA" role="3cqZAp">
           <node concept="3cpWs3" id="3rnI4tGs_Pw" role="3clFbG">
             <node concept="Xl_RD" id="3rnI4tGsAkD" role="3uHU7w">
-              <property role="Xl_RC" value="_clone" />
+              <property role="Xl_RC" value=".clone" />
             </node>
             <node concept="2OqwBi" id="3rnI4tGs_nK" role="3uHU7B">
               <node concept="37vLTw" id="3rnI4tGs$U_" role="2Oq$k0">

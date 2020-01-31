@@ -17,7 +17,7 @@ public class CloneModuleSettings extends AbstractModuleCreationSettings {
 
   @Override
   protected String getDefaultModuleName() {
-    return myModuleOriginal.getModuleName() + "_clone";
+    return myModuleOriginal.getModuleName() + ".clone";
   }
 
   @Override
