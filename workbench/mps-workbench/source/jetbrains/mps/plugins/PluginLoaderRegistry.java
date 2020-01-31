@@ -19,6 +19,7 @@ import com.intellij.configurationStore.JdomSerializer;
 import com.intellij.diagnostic.LoadingState;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
@@ -28,9 +29,12 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.openapi.wm.impl.ProjectFrameHelper;
+import com.intellij.util.containers.ConcurrentList;
 import com.intellij.util.xmlb.BeanBinding;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
+import jetbrains.mps.classloading.ModuleClassLoader;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
@@ -41,9 +45,9 @@ import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionKind;
+import jetbrains.mps.smodel.CurrentProjectAccessUtil;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.util.JavaNameUtil;
@@ -62,6 +66,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,8 +77,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toCollection;
 
@@ -434,11 +439,10 @@ public class PluginLoaderRegistry implements Disposable {
         // we cannot do anything, lets just freeze without any progress
         ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()));
       } else {
-        boolean wasIndeterminate = indicator.isIndeterminate();
         try {
           indicator.pushState();
           indicator.setText("Reloading MPS Plugins"); // we hope that the user will see the text but that is unlikely
-          indicator.setIndeterminate(true);
+//          this also does not work
 //          try {
 //            TimeUnit.MILLISECONDS.sleep(200);
 //          } catch (InterruptedException e) {
@@ -446,7 +450,6 @@ public class PluginLoaderRegistry implements Disposable {
 //          }
           ApplicationManager.getApplication().invokeAndWait(() -> update(new EmptyProgressMonitor()));
         } finally {
-          indicator.setIndeterminate(wasIndeterminate);
           indicator.popState();
         }
       }
@@ -461,6 +464,8 @@ public class PluginLoaderRegistry implements Disposable {
         ProgressManager.checkCanceled();
         myModelAccess.runReadAction(() -> {
           myClassLoaderManager.runTransaction(() -> {
+            // NOTE: when we call #reset we are bound to process those changes, otherwise we lose them
+            // for instance, that is the reason we cannot call #checkCancelled here
             Delta<PluginLoader> loadersDelta = myLoaderDelta.reset();
             @NotNull Snapshot snapshot = myAccumulation.reset();
             try {
@@ -472,7 +477,6 @@ public class PluginLoaderRegistry implements Disposable {
                 return;
               }
               monitor.advance(1);
-              ProgressManager.checkCanceled();
 
               Set<PluginContributor> toUnloadContributors = calcContributorsToUnload(myCurrentContributors, getPluginModules(moduleDelta.toUnload));
               Set<PluginContributor> toLoadContributors = createPluginContributors(getPluginModules(moduleDelta.toLoad));
@@ -484,13 +488,13 @@ public class PluginLoaderRegistry implements Disposable {
               removeLoaders(monitor, loadersDelta);
               removeContributors(monitor, contributorsDelta);
               clearIDEMenusFromOurActionRefs();
-              ProgressManager.checkCanceled();
+              clearIDEASerializationCaches();
+              clearIDEAIconsGlobalCache(snapshot.getCLsToBeDisposed());
               monitor.step("Loading...");
               addLoaders(monitor, loadersDelta);
               addIdeaExtPointPluginContributors(monitor);
               addContributors(monitor, contributorsDelta);
               fireAfterPluginsLoaded(contributorsDelta);
-              ProgressManager.checkCanceled();
             } finally {
               snapshot.invokePostRunnables();
             }
@@ -546,6 +550,21 @@ public class PluginLoaderRegistry implements Disposable {
       myCurrentLoaders.removeAll(loadersToRemove);
     }
 
+    private void clearIDEAIconsGlobalCache(@NotNull Collection<ModuleClassLoader> classLoadersToBeDisposed) {
+      for (ModuleClassLoader cl : classLoadersToBeDisposed) {
+        IconLoader.detachClassLoader(cl);
+      }
+      for (Project project : ProjectManager.getInstanceIfCreated().getOpenProjects()) {
+        FileEditorManagerEx.getInstanceEx(project).refreshIcons();
+      }
+    }
+
+    private void clearIDEASerializationCaches() {
+      Optional<JdomSerializer> jdomSerializer = ServiceLoader.load(JdomSerializer.class, JdomSerializer.class.getClassLoader()).findFirst();
+      jdomSerializer.ifPresent(JdomSerializer::clearSerializationCaches);
+      BeanBinding.clearSerializationCaches();
+    }
+
     private void clearIDEMenusFromOurActionRefs() {
       WindowManagerEx windowManager = WindowManagerEx.getInstanceEx();
       for (Project project : ProjectManager.getInstance().getOpenProjects()) {
@@ -588,29 +607,10 @@ public class PluginLoaderRegistry implements Disposable {
   }
 
   private class SchedulingUpdateListener implements DeployListener {
-    private void unloadIdeaIconsGlobalCache(Set<ReloadableModule> modules) {
-      for (ReloadableModule module : modules) {
-//       some people might use the latter to load icons, who knows
-        IconLoader.detachClassLoader(module.getClassLoader0());
-        IconLoader.detachClassLoader(module.getClassLoader());
-      }
-      IconLoader.clearCache();
-    }
-
-    private void clearIDEACaches() {
-      Optional<JdomSerializer> jdomSerializer = ServiceLoader.load(JdomSerializer.class, JdomSerializer.class.getClassLoader()).findFirst();
-      jdomSerializer.ifPresent(JdomSerializer::clearSerializationCaches);
-      BeanBinding.clearSerializationCaches();
-    }
-
     @Override
     public void onUnloaded(@NotNull ResourceTrackerCallback callback, @NotNull ProgressMonitor monitor) {
-      Set<ReloadableModule> unloadedModules = callback.acquire(PluginLoaderRegistry.this);
-      // we can do this right now, do not need EDT
-      unloadIdeaIconsGlobalCache(unloadedModules);
-      clearIDEACaches();
-
-      myAccumulation.onUnload(unloadedModules);
+      Set<ModuleClassLoader> classLoaders2Dispose = callback.acquire2(PluginLoaderRegistry.this);
+      myAccumulation.onUnload(classLoaders2Dispose);
       myAccumulation.schedulePostRunnable(() -> callback.release(PluginLoaderRegistry.this));
     }
 
@@ -626,10 +626,15 @@ public class PluginLoaderRegistry implements Disposable {
 
   static class EventAccumulation {
     final Delta<ReloadableModule> myDelta = new Delta<>();
-    final Queue<Runnable> myPostRunnableQueue = new ConcurrentLinkedQueue<>();
+    final List<ModuleClassLoader> myCLsToBeDisposed = new ArrayList<>(); // to be disposed in the next invocation of UpdatingTask#update
+    final Queue<Runnable> myPostRunnableQueue = new LinkedList<>();
 
-    public void onUnload(Set<ReloadableModule> unloadedModules) {
+    public synchronized void onUnload(@NotNull Set<ModuleClassLoader> disposingCLs) {
+      Set<ReloadableModule> unloadedModules = disposingCLs.stream()
+                                                          .map(ModuleClassLoader::getModule)
+                                                          .collect(Collectors.toSet());;
       myDelta.unload(unloadedModules);
+      myCLsToBeDisposed.addAll(disposingCLs);
     }
 
     public void onLoad(Set<ReloadableModule> loadedModules) {
@@ -640,14 +645,21 @@ public class PluginLoaderRegistry implements Disposable {
       myPostRunnableQueue.add(r);
     }
 
-    public EventAccumulation.Snapshot reset() {
+    public synchronized EventAccumulation.Snapshot reset() {
       List<Runnable> postRunnablesToRun = shapshotPostRunnables();
       Delta<ReloadableModule> delta0 = shapshotDelta();
+      List<ModuleClassLoader> cls2dispose = snapshotCLs();
       return new Snapshot() {
         @NotNull
         @Override
         public Delta<ReloadableModule> getDelta() {
           return delta0;
+        }
+
+        @NotNull
+        @Override
+        public List<ModuleClassLoader> getCLsToBeDisposed() {
+          return cls2dispose;
         }
 
         @Override
@@ -660,12 +672,19 @@ public class PluginLoaderRegistry implements Disposable {
     }
 
     @NotNull
+    private List<ModuleClassLoader> snapshotCLs() {
+      List<ModuleClassLoader> cls2dispose = new ArrayList<>(myCLsToBeDisposed);
+      myCLsToBeDisposed.clear();
+      return cls2dispose;
+    }
+
+    @NotNull
     private Delta<ReloadableModule> shapshotDelta() {
       return myDelta.reset();
     }
 
     @NotNull
-    private synchronized List<Runnable> shapshotPostRunnables() {
+    private List<Runnable> shapshotPostRunnables() {
       List<Runnable> postRunnablesToRun = new ArrayList<>();
       Runnable first;
       while ((first = myPostRunnableQueue.poll()) != null) {
@@ -676,6 +695,10 @@ public class PluginLoaderRegistry implements Disposable {
 
     interface Snapshot {
       @NotNull Delta<ReloadableModule> getDelta();
+
+      @NotNull
+      List<ModuleClassLoader> getCLsToBeDisposed();
+
       void invokePostRunnables();
     }
   }

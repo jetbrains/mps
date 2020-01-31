@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -241,6 +242,16 @@ class MPSClassLoadersRegistry {
             throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
           }
           return myModulesToUnload;
+        }
+
+        @NotNull
+        @Override
+        public Set<ModuleClassLoader> acquire2(@NotNull Object requestor) {
+          if (null != myBlockingRequestors.putIfAbsent(requestor, Boolean.TRUE)) {
+            throw new IllegalStateException(String.format("Requestor '%s' has invoked #acquire more than once", requestor));
+          }
+
+          return new HashSet<>(myModuleClassloaders2Dispose);
         }
 
         @Override
