@@ -67,6 +67,7 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -513,8 +514,13 @@
               <node concept="2WthIp" id="4X1d9kMmKRY" role="2Oq$k0" />
               <node concept="2XshWL" id="4X1d9kMmKRZ" role="2OqNvi">
                 <ref role="2WH_rO" node="5bkJW_j7kYK" resolve="measureSuppressPerformance" />
-                <node concept="3cmrfG" id="4X1d9kMmKS0" role="2XxRq1">
-                  <property role="3cmrfH" value="1000" />
+                <node concept="17qRlL" id="5yiijaEk3nP" role="2XxRq1">
+                  <node concept="3cmrfG" id="5yiijaEk3nS" role="3uHU7w">
+                    <property role="3cmrfH" value="1000" />
+                  </node>
+                  <node concept="3cmrfG" id="4X1d9kMmKS0" role="3uHU7B">
+                    <property role="3cmrfH" value="4" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -530,27 +536,36 @@
               <node concept="2WthIp" id="4X1d9kMl7J1" role="2Oq$k0" />
               <node concept="2XshWL" id="4X1d9kMl7J2" role="2OqNvi">
                 <ref role="2WH_rO" node="5bkJW_j7kYK" resolve="measureSuppressPerformance" />
-                <node concept="3cmrfG" id="4X1d9kMl7J3" role="2XxRq1">
-                  <property role="3cmrfH" value="40000" />
+                <node concept="17qRlL" id="5yiijaEk3vy" role="2XxRq1">
+                  <node concept="3cmrfG" id="5yiijaEk3v_" role="3uHU7w">
+                    <property role="3cmrfH" value="1000" />
+                  </node>
+                  <node concept="3cmrfG" id="4X1d9kMl7J3" role="3uHU7B">
+                    <property role="3cmrfH" value="40" />
+                  </node>
                 </node>
               </node>
             </node>
           </node>
         </node>
         <node concept="3vwNmj" id="nk6RKov0Tl" role="3cqZAp">
-          <node concept="3eOSWO" id="4X1d9kMnyOI" role="3vwVQn">
+          <node concept="3eOSWO" id="5yiijaElm9x" role="3vwVQn">
             <node concept="2OqwBi" id="nk6RKovgQZ" role="3uHU7B">
-              <node concept="37vLTw" id="4X1d9kMmY5s" role="2Oq$k0">
-                <ref role="3cqZAo" node="4X1d9kMmKRV" resolve="durationA" />
+              <node concept="2OqwBi" id="5yiijaEkVD8" role="2Oq$k0">
+                <node concept="37vLTw" id="4X1d9kMmY5s" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4X1d9kMmKRV" resolve="durationA" />
+                </node>
+                <node concept="liA8E" id="5yiijaEkVZk" role="2OqNvi">
+                  <ref role="37wK5l" to="28m1:~Duration.multipliedBy(long)" resolve="multipliedBy" />
+                  <node concept="3cmrfG" id="5yiijaEkW0t" role="37wK5m">
+                    <property role="3cmrfH" value="15" />
+                  </node>
+                </node>
               </node>
               <node concept="liA8E" id="nk6RKovhTl" role="2OqNvi">
                 <ref role="37wK5l" to="28m1:~Duration.compareTo(java.time.Duration)" resolve="compareTo" />
-                <node concept="2YIFZM" id="4X1d9kMn1ig" role="37wK5m">
-                  <ref role="37wK5l" to="28m1:~Duration.ofMillis(long)" resolve="ofMillis" />
-                  <ref role="1Pybhc" to="28m1:~Duration" resolve="Duration" />
-                  <node concept="3cmrfG" id="4X1d9kMoNtM" role="37wK5m">
-                    <property role="3cmrfH" value="4" />
-                  </node>
+                <node concept="37vLTw" id="5yiijaEk6f9" role="37wK5m">
+                  <ref role="3cqZAo" node="4X1d9kMl7IZ" resolve="durationB" />
                 </node>
               </node>
             </node>
@@ -563,7 +578,15 @@
               <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
               <node concept="Xl_RD" id="4X1d9kMoQon" role="37wK5m">
-                <property role="Xl_RC" value="%d expected to be greater than 4 ms" />
+                <property role="Xl_RC" value="%d expected to be approximately 10 times greater that %d" />
+              </node>
+              <node concept="2OqwBi" id="5yiijaEka5k" role="37wK5m">
+                <node concept="37vLTw" id="5yiijaEk9Fk" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4X1d9kMl7IZ" resolve="durationB" />
+                </node>
+                <node concept="liA8E" id="5yiijaEkayB" role="2OqNvi">
+                  <ref role="37wK5l" to="28m1:~Duration.toMillis()" resolve="toMillis" />
+                </node>
               </node>
               <node concept="2OqwBi" id="4X1d9kMoO8h" role="37wK5m">
                 <node concept="37vLTw" id="4X1d9kMmX5i" role="2Oq$k0">
@@ -576,10 +599,49 @@
             </node>
           </node>
         </node>
+        <node concept="3vwNmj" id="5yiijaElUDs" role="3cqZAp">
+          <node concept="3eOSWO" id="4X1d9kMnyOI" role="3vwVQn">
+            <node concept="2OqwBi" id="5yiijaElUDt" role="3uHU7B">
+              <node concept="37vLTw" id="5yiijaElVTD" role="2Oq$k0">
+                <ref role="3cqZAo" node="4X1d9kMmKRV" resolve="durationA" />
+              </node>
+              <node concept="liA8E" id="5yiijaElUDv" role="2OqNvi">
+                <ref role="37wK5l" to="28m1:~Duration.compareTo(java.time.Duration)" resolve="compareTo" />
+                <node concept="2YIFZM" id="4X1d9kMn1ig" role="37wK5m">
+                  <ref role="37wK5l" to="28m1:~Duration.ofMillis(long)" resolve="ofMillis" />
+                  <ref role="1Pybhc" to="28m1:~Duration" resolve="Duration" />
+                  <node concept="3cmrfG" id="5yiijaEm8Zv" role="37wK5m">
+                    <property role="3cmrfH" value="5" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5yiijaElUDw" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3_1$Yv" id="5yiijaElUDx" role="3_9lra">
+            <node concept="2YIFZM" id="5yiijaElUDy" role="3_1BAH">
+              <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+              <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+              <node concept="Xl_RD" id="5yiijaElUDz" role="37wK5m">
+                <property role="Xl_RC" value="%d expected to be greater than 5 ms" />
+              </node>
+              <node concept="2OqwBi" id="5yiijaElUD$" role="37wK5m">
+                <node concept="37vLTw" id="5yiijaElVxC" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4X1d9kMmKRV" resolve="durationA" />
+                </node>
+                <node concept="liA8E" id="5yiijaElUDA" role="2OqNvi">
+                  <ref role="37wK5l" to="28m1:~Duration.toMillis()" resolve="toMillis" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3vwNmj" id="4X1d9kMmRbg" role="3cqZAp">
           <node concept="3eOVzh" id="4X1d9kMn$np" role="3vwVQn">
             <node concept="2OqwBi" id="4X1d9kMmRbj" role="3uHU7B">
-              <node concept="37vLTw" id="4X1d9kMmRbk" role="2Oq$k0">
+              <node concept="37vLTw" id="5yiijaElWt9" role="2Oq$k0">
                 <ref role="3cqZAo" node="4X1d9kMl7IZ" resolve="durationB" />
               </node>
               <node concept="liA8E" id="4X1d9kMmRbl" role="2OqNvi">
@@ -588,7 +650,7 @@
                   <ref role="37wK5l" to="28m1:~Duration.ofMillis(long)" resolve="ofMillis" />
                   <ref role="1Pybhc" to="28m1:~Duration" resolve="Duration" />
                   <node concept="3cmrfG" id="4X1d9kMn2CT" role="37wK5m">
-                    <property role="3cmrfH" value="1000" />
+                    <property role="3cmrfH" value="10000" />
                   </node>
                 </node>
               </node>
@@ -599,14 +661,14 @@
           </node>
           <node concept="3_1$Yv" id="4X1d9kMmWIO" role="3_9lra">
             <node concept="2YIFZM" id="4X1d9kMoQRK" role="3_1BAH">
-              <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+              <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
               <node concept="Xl_RD" id="4X1d9kMoQRL" role="37wK5m">
-                <property role="Xl_RC" value="%d expected to be less than 1000 ms" />
+                <property role="Xl_RC" value="%d expected to be less than 10000 ms" />
               </node>
               <node concept="2OqwBi" id="4X1d9kMoQRM" role="37wK5m">
-                <node concept="37vLTw" id="4X1d9kMoQRN" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4X1d9kMmKRV" resolve="durationA" />
+                <node concept="37vLTw" id="5yiijaElWu3" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4X1d9kMl7IZ" resolve="durationB" />
                 </node>
                 <node concept="liA8E" id="4X1d9kMoQRO" role="2OqNvi">
                   <ref role="37wK5l" to="28m1:~Duration.toMillis()" resolve="toMillis" />
