@@ -19,6 +19,7 @@ core/components/classes
 core/platform/classes
 core/vfs/classes
 core/kernel/classes
+core/resources_en/classes
 core/resources/classes
 core/model/classes
 core/module/classes
@@ -70,7 +71,6 @@ workbench/mps-ui/classes
 workbench/mps-icons/classes
 :workbench
 workbench/resources/classes
-workbench/resources_en/classes
 workbench/mps-tips/classes
 workbench/typesystemUi/classes
 workbench/mps-workbench/jetbrains.mps.ide/classes

@@ -16,19 +16,24 @@
 package jetbrains.mps.project.validation;
 
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.errors.item.NodeReportItemBase;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SNamedElement;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.text.MessageFormat;
+import java.util.ResourceBundle;
+
 public class ConceptMissingError extends LanguageFeatureMissingError {
-  private SAbstractConcept myConcept;
+  private final SAbstractConcept myConcept;
 
   public ConceptMissingError(SNode node, SAbstractConcept concept) {
-    super(MessageStatus.ERROR, node.getReference(), "Concept " + concept.getName() + " was not found in language " + concept.getLanguage().getQualifiedName());
+    super(MessageStatus.ERROR, node.getReference(),
+          MessageFormat.format(msgFromBundle(), concept.getName(), concept.getLanguage().getQualifiedName()));
     myConcept = concept;
+  }
+
+  private static String msgFromBundle() {
+    ResourceBundle bundle = ResourceBundle.getBundle("jetbrains.mps.project.validation.CoreBundle");
+    return bundle.getString("concept.not.found");
   }
 
   public SAbstractConcept getLanguageFeature() {
