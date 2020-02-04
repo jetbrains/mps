@@ -41,7 +41,7 @@ class Macros {
     String macro = path.substring(2, macroEnd);
     String macroValue = myComponent.getValue(macro);
     if (macroValue == null) {
-      myComponent.report("Please define the path variable '" + macro + "' in the settings section 'Path variables'", macro);
+      myComponent.report(macro);
       return path;
     }
     String expanded = macroValue + path.substring(macroEnd + 1);

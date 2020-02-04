@@ -115,12 +115,12 @@ public final class PathMacros implements CoreComponent {
     return null;
   }
 
-  public void report(String message, String macro) {
+  public void report(@NotNull String macro) {
     if (myReported.contains(macro)) return;
 
     myReported.add(macro);
     for (PathMacrosProvider p : myMacrosProviders) {
-      p.report(message, macro);
+      p.reportUnknownMacro(macro);
     }
   }
 

@@ -73,50 +73,52 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
     myConnection.disconnect();
   }
 
+  @NotNull
   @Override
   public Set<String> getNames() {
     return myPathMacrosIdea.getAllMacroNames();
   }
 
+  @NotNull
   @Override
   public Set<String> getUserNames() {
     return myPathMacrosIdea.getUserMacroNames();
   }
 
   @Override
-  public String getValue(String name) {
+  public String getValue(@NotNull String name) {
     return myPathMacrosIdea.getValue(name);
   }
 
   @Override
-  public void report(String message, String macro) {
+  public void reportUnknownMacro(@NotNull String macro) {
     myMacroLock.lock();
     try {
-      myReported.add(macro);
+      myReportedUnknown.add(macro);
     } finally {
       myMacroLock.unlock();
     }
   }
 
-  private final Set<String> myReported = new LinkedHashSet<>();
+  private final Set<String> myReportedUnknown = new LinkedHashSet<>();
   private final Lock myMacroLock = new ReentrantLock();
 
   private void notifyAboutUndefinedMacros(@NotNull Set<String> macros, @NotNull Project project) {
-    String title = "Unknown macro(s) are detected";
-    String content = "<html>MPS may work incorrectly.<br><a href=''>Please define the macro(s) '" + StringUtil.join(macros, ", ") + "'.</a></html>";
     final Application application = ApplicationManager.getApplication();
+    String content = "<html>MPS may work incorrectly.<br><a href=''>Please define the macro(s) '" + StringUtil.join(macros, ", ") + "'.</a></html>";
     if (application.isHeadlessEnvironment() || application.isUnitTestMode()) {
       throw new RuntimeException(content + ": " + StringUtil.join(macros, ", "));
     }
+    String title = "Unknown macro(s) are detected";
     new UnknownMacroNotification(SYSTEM_MESSAGES_GROUP_ID, title, content, NotificationType.ERROR,
                                  (notification, event) -> fixMacro(project, notification, event),
                                  macros).notify(project);
   }
 
-  private void fixMacro(@NotNull Project project, Notification notification1, HyperlinkEvent event) {
-    if (!(notification1 instanceof UnknownMacroNotification)) return;
-    Collection<String> undefinedMacros = ((UnknownMacroNotification) notification1).getMacros();
-    notification1.expire();
+  private void fixMacro(@NotNull Project project, Notification notification, HyperlinkEvent event) {
+    if (!(notification instanceof UnknownMacroNotification)) return;
+    Collection<String> undefinedMacros = ((UnknownMacroNotification) notification).getMacros();
+    notification.expire();
     if (event.getEventType() != EventType.ACTIVATED) {
       return;
     }
@@ -150,8 +152,8 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
     public void projectOpened(@NotNull Project project) {
       myMacroLock.lock();
       try {
-        if (!myReported.isEmpty()) {
-          notifyAboutUndefinedMacros(myReported, project);
+        if (!myReportedUnknown.isEmpty()) {
+          notifyAboutUndefinedMacros(myReportedUnknown, project);
         }
       } finally {
         myMacroLock.unlock();
@@ -163,7 +165,7 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
       myMacroLock.lock();
       try {
         getMPSCounterpart().clear();
-        myReported.clear();
+        myReportedUnknown.clear();
       } finally {
         myMacroLock.unlock();
       }
