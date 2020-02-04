@@ -38,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkEvent.EventType;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -51,7 +52,6 @@ import static com.intellij.notification.Notifications.SYSTEM_MESSAGES_GROUP_ID;
 public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
   private final MPSCoreComponents myCoreComponents;
   private final com.intellij.openapi.application.PathMacros myPathMacrosIdea;
-  private final ProjectManagerListener myProjectsListener = new MyProjectManagerListener();
 
   private final MessageBusConnection myConnection;
 
@@ -59,7 +59,7 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
     myCoreComponents = coreComponents;
     myPathMacrosIdea = ideaPathMacros;
     myConnection = ApplicationManager.getApplication().getMessageBus().connect();
-    myConnection.subscribe(ProjectManager.TOPIC, myProjectsListener);
+    myConnection.subscribe(ProjectManager.TOPIC, new MyProjectManagerListener());
     getMPSCounterpart().addMacrosProvider(this);
   }
 
@@ -94,9 +94,20 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
   public void reportUnknownMacro(@NotNull String macro) {
     myMacroLock.lock();
     try {
-      myReportedUnknown.add(macro);
+      if (myReportedUnknown.add(macro)) {
+        tryToReportInOpenedProjects(macro);
+      }
     } finally {
       myMacroLock.unlock();
+    }
+  }
+
+  private void tryToReportInOpenedProjects(@NotNull String macro) {
+    Project[] openProjects = ProjectManager.getInstance().getOpenProjects();
+    if (openProjects.length > 0) {
+      for (Project project : openProjects) {
+        notifyAboutUndefinedMacros(Collections.singleton(macro), project);
+      }
     }
   }
 
