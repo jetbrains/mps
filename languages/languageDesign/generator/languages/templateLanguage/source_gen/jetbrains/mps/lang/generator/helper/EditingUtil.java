@@ -17,6 +17,7 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.ArrayList;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -167,7 +168,7 @@ public final class EditingUtil {
       });
     }
     // re append all macros to make them go 'after' the <TF> 
-    ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).toListSequence().visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SNode>(), AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je)))).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).addElement(it);
       }
