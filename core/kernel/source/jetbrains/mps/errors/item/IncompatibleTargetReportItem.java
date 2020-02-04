@@ -16,9 +16,6 @@
 package jetbrains.mps.errors.item;
 
 import jetbrains.mps.errors.MessageStatus;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -28,25 +25,26 @@ public class IncompatibleTargetReportItem extends NodeReportItemBase implements 
   public IncompatibleTargetReportItem(SNodeReference node, String message) {
     super(MessageStatus.ERROR, node, message);
   }
-  public static String createMessage(SConceptFeature link, SAbstractConcept expectedTarget, SConcept foundTarget) {
-    return "incompatible target concept in role \"" + link.getName() + "\": subconcept of \"" + expectedTarget + "\" expected, \"" + foundTarget + "\" found";
-  }
+
   @Override
   public ItemKind getIssueKind() {
     return IssueKindReportItem.TARGET_CONCEPT;
   }
 
   public static class IncompatibleContainmentTargetReportItem extends IncompatibleTargetReportItem {
-    public IncompatibleContainmentTargetReportItem(SNode childNode) {
-      super(childNode.getReference(), createMessage(childNode.getContainmentLink(), childNode.getContainmentLink().getTargetConcept(), childNode.getConcept()));
+    public IncompatibleContainmentTargetReportItem(SNode childNode, String message) {
+      super(childNode.getReference(), message);
     }
   }
+
   public static class IncompatibleReferenceTargetReportItem extends IncompatibleTargetReportItem implements NodeFeatureReportItem {
-    private SReferenceLink myLink;
-    public IncompatibleReferenceTargetReportItem(SReference reference, SNode target) {
-      super(reference.getSourceNode().getReference(), createMessage(reference.getLink(), reference.getLink().getTargetConcept(), target.getConcept()));
+    private final SReferenceLink myLink;
+
+    public IncompatibleReferenceTargetReportItem(SReference reference, String message) {
+      super(reference.getSourceNode().getReference(), message);
       myLink = reference.getLink();
     }
+
     @Override
     public SReferenceLink getConceptFeature() {
       return myLink;

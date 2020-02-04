@@ -21,6 +21,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex.index(cncpt)) {
       case 0:
         return Collections.<ConceptEditor>singletonList(new ProblemKind_Editor());
+      case 1:
+        return Collections.<ConceptEditor>singletonList(new ProblemPointsToKindRoot_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();
@@ -54,7 +56,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     return Collections.<SubstituteMenu>emptyList();
   }
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL), MetaIdFactory.conceptId(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL)).seal();
 }

@@ -20,45 +20,47 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.Optional;
-
 @Immutable
-public final class RefCardinalityContext implements Context {
-  private final SNode myNode;
-  private final SReferenceLink myLink;
-  @Nullable private final SNode myTarget;
+public final class IncorrectTargetChildRoleContext implements Context {
+  private final SNode myNode; // child
 
-  public RefCardinalityContext(@NotNull SNode node, @NotNull SReferenceLink link, @Nullable SNode target) {
-    myNode = node;
-    myLink = link;
-    myTarget = target;
+  public IncorrectTargetChildRoleContext(@NotNull SNode childNode) {
+    if (childNode.getParent() == null) {
+      throw new IllegalArgumentException("roots are not accepted");
+    }
+    myNode = childNode;
   }
 
-  @NotNull
-  public SReferenceLink getLink() {
-    return myLink;
-  }
-
-  @NotNull
-  public SNode getNode() {
+  @Nullable
+  public SNode getChildNode() {
     return myNode;
   }
 
   @NotNull
-  public SNode getTarget() {
-    return myTarget;
+  public SNode getParentNode() {
+    return myNode.getParent();
+  }
+
+  public SAbstractConcept getChildConcept() {
+    return myNode.getConcept();
+  }
+
+  @NotNull
+  public SAbstractConcept getParentConcept() {
+    return myNode.getParent().getConcept();
+  }
+
+
+  @NotNull
+  public SContainmentLink getLink() {
+    return myNode.getContainmentLink();
   }
 
   @NotNull
   public SAbstractConcept getTargetConcept() {
-    return getTarget().getConcept();
-  }
-
-  @NotNull
-  public SAbstractConcept getConcept() {
-    return myNode.getConcept();
+    return myNode.getContainmentLink().getTargetConcept();
   }
 }

@@ -51,7 +51,7 @@ public final class CheckerRegistry implements CoreComponent {
   }
 
   private void registerCoreCheckers() {
-    registerChecker(new TargetConceptChecker());
+    registerChecker(new TargetConceptChecker(myHost));
     registerChecker(new UsedLanguagesChecker());
     registerChecker(new RefScopeChecker(myHost));
     registerChecker(new SuppressErrorsChecker());

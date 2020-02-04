@@ -123,7 +123,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
       SReference reference = node.getReference(refLink);
       if (!refLink.isOptional()) {
         if (reference == null) {
-          RefCardinalityContext context = new RefCardinalityContext(node, refLink);
+          RefCardinalityContext context = new RefCardinalityContext(node, refLink, null);
           InConceptProblem problem =  new InConceptProblem(concept, PredefinedStructureProblemKind.NO_REF_IN_OBLIGATORY_ROLE, null);
           List<String> messages = facade.findTextMessagesForProblem(concept, problem, context);
           for (String message : messages) {

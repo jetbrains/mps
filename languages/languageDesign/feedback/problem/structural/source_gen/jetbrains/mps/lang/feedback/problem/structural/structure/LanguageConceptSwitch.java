@@ -16,6 +16,8 @@ public final class LanguageConceptSwitch {
   public static final int MultipleChildrenInSingleRoleProblem = 4;
   public static final int NoChildInObligatoryRoleProblem = 5;
   public static final int NoRefInObligatoryRoleProblem = 6;
+  public static final int TargetConceptIncorrectChild = 7;
+  public static final int TargetConceptIncorrectRef = 8;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7127d40929f043e8L, 0x917ff016ea288944L);
@@ -26,6 +28,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x4faf3e05c39d7504L, MultipleChildrenInSingleRoleProblem);
     builder.put(0x23839b3ea764df7aL, NoChildInObligatoryRoleProblem);
     builder.put(0x4faf3e05c39d7503L, NoRefInObligatoryRoleProblem);
+    builder.put(0x691edaf2d1aa95ebL, TargetConceptIncorrectChild);
+    builder.put(0x691edaf2d1aa98adL, TargetConceptIncorrectRef);
     myIndex = builder.seal();
   }
 

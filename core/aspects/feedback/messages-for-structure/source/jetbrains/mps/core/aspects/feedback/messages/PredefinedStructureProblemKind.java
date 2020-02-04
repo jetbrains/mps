@@ -21,6 +21,7 @@ import jetbrains.mps.core.aspects.feedback.problem.ProblemKindAlsoProblem;
 import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -104,7 +105,38 @@ public enum PredefinedStructureProblemKind implements ProblemKindAlsoProblem, Pr
       SReferenceLink link = ((RefCardinalityContext) context).getLink();
       return String.format("No reference in the obligatory role '%s'", link.getName());
     }
+  },
+  TARGET_CONCEPT_INCORRECT_CHILD() {
+    @NotNull
+    @Override
+    public String getDefaultMessage(@NotNull Context context) {
+      if (!(context instanceof IncorrectTargetChildRoleContext)) {
+        throw new IllegalArgumentException("Received illegal context " + context);
+      }
+      SContainmentLink link = ((IncorrectTargetChildRoleContext) context).getLink();
+      SAbstractConcept childConcept = ((IncorrectTargetChildRoleContext) context).getChildConcept();
+      return String.format("Incompatible target concept in the child role \"%s\": subconcept of \"%s\" expected, \"%s\" found",
+                           link.getName(),
+                           link.getTargetConcept(),
+                           childConcept);
+    }
+  },
+  TARGET_CONCEPT_INCORRECT_REF() {
+    @NotNull
+    @Override
+    public String getDefaultMessage(@NotNull Context context) {
+      if (!(context instanceof RefCardinalityContext)) {
+        throw new IllegalArgumentException("Received illegal context " + context);
+      }
+      SReferenceLink link = ((RefCardinalityContext) context).getLink();
+      SAbstractConcept targetConcept = ((RefCardinalityContext) context).getTarget().getConcept();
+      return String.format("Incompatible target concept in the reference role \"%s\": subconcept of \"%s\" expected, \"%s\" found",
+                           link.getName(),
+                           link.getTargetConcept(),
+                           targetConcept);
+    }
   };
+
 
   @NotNull
   @Override

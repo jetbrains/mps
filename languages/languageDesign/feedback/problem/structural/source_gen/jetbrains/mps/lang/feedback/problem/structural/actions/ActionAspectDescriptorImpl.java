@@ -18,22 +18,26 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
       switch (Arrays.binarySearch(stringSwitchCases_tpto26_a0a0a0c, concept.getName())) {
         case 0:
-          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_2554379189374330335());
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_2554379189374330335());
         case 1:
-          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_7716791493892398447());
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_7716791493892398447());
         case 2:
-          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_1640022677634389055());
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_1640022677634389055());
         case 3:
-          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_5741876244398307917());
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_5741876244398307917());
         case 4:
-          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_2559059706675259169());
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_2559059706675259169());
         case 5:
-          return Collections.<NodeFactory>singletonList(new Default.NodeFactory_5741876244398307749());
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_5741876244398307749());
+        case 6:
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_7574732359718303543());
+        case 7:
+          return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_7574732359718304019());
         default:
       }
     }
     return Collections.<NodeFactory>emptyList();
   }
 
-  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"MissingChildInConceptProblem", "MissingPropertyInConceptProblem", "MissingRefInConceptProblem", "MultipleChildrenInSingleRoleProblem", "NoChildInObligatoryRoleProblem", "NoRefInObligatoryRoleProblem"};
+  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"MissingChildInConceptProblem", "MissingPropertyInConceptProblem", "MissingRefInConceptProblem", "MultipleChildrenInSingleRoleProblem", "NoChildInObligatoryRoleProblem", "NoRefInObligatoryRoleProblem", "TargetConceptIncorrectChild", "TargetConceptIncorrectRef"};
 }

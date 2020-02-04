@@ -17,12 +17,12 @@ package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
 import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
@@ -38,9 +38,9 @@ import java.util.List;
  * @author apyshkin
  */
 public final class ConstraintsChildAndPropFacade {
-  private ConstraintsChildAndPropFacade() {}
+  private static final Logger LOG = LogManager.getLogger(ConstraintsChildAndPropFacade.class);
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(ConstraintsChildAndPropFacade.class));
+  private ConstraintsChildAndPropFacade() {}
 
   /**
    * Validates both structure constraints {@code SType#isInstanceOf(Object)}
@@ -71,7 +71,7 @@ public final class ConstraintsChildAndPropFacade {
         return Collections.emptyList();
       }
     } catch (Throwable t) {
-      LOG.error("Exception occurred during execution of property validation constraint: " + concept + ":" +property, t);
+      LOG.error("Exception occurred during execution of property validation constraint: " + concept + ":" + property, t);
     }
     return Collections.singletonList(new FailingPropertyConstraintProblem(property, debugInfo.getBreakingNode()));
   }
