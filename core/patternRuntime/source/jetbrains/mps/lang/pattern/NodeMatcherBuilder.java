@@ -66,6 +66,18 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     }
   }
 
+  public static class ListWildcardMatcher extends NodeMatcher {
+    @Override
+    public boolean match(SNode nodeToMatch) {
+      return true;
+    }
+    @NotNull
+    @Override
+    public SConcept getConcept() {
+      throw new UnsupportedOperationException();
+    }
+  }
+
   public static abstract class SingleNodeMatcher extends NodeMatcher {
     protected final Predicate<SConcept> myConceptMatcher;
     protected Map<SProperty, Predicate<String>> myPropertyMatchers = new ListMap<>();
@@ -157,30 +169,22 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     this(new NodeMatcherWrapper());
   }
 
+  public NodeMatcherBuilder init(NodeMatcher matcher) {
+    if (myMatcherWrapper.myMatcher != null) {
+      throw new IllegalStateException("double initialization");
+    }
+    myMatcherWrapper.myMatcher = matcher;
+    return this;
+  }
+
   @Override
   public NodeMatcherBuilder init(SConcept c) {
-    if (myMatcherWrapper.myMatcher != null) {
-      throw new IllegalStateException("double initialization");
-    }
-    myMatcherWrapper.myMatcher = new ExactConceptNodeMatcher(c);
-    return this;
+    return init(new ExactConceptNodeMatcher(c));
   }
 
   @Override
-  public AbstractNodeBuilder initNull() {
-    if (myMatcherWrapper.myMatcher != null) {
-      throw new IllegalStateException("double initialization");
-    }
-    myMatcherWrapper.myMatcher = new NullNodeMatcher();
-    return this;
-  }
-
-  public NodeMatcherBuilder initVariable(NodeVariableMatcher variableMatcher) {
-    if (myMatcherWrapper.myMatcher != null) {
-      throw new IllegalStateException("double initialization");
-    }
-    myMatcherWrapper.myMatcher = variableMatcher;
-    return this;
+  public NodeMatcherBuilder initNull() {
+    return init(new NullNodeMatcher());
   }
 
   @Override

@@ -13,6 +13,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.quotation.behavior.NodeBuilderInitLink__BehaviorDescriptor;
 import jetbrains.mps.lang.quotation.behavior.NodeBuilderInitProperty__BehaviorDescriptor;
 import jetbrains.mps.generator.template.PropertyMacroContext;
@@ -39,7 +40,6 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.behavior.ReferenceLinkId__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import java.util.List;
-import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.pattern.behavior.PatternBuilder__BehaviorDescriptor;
@@ -127,7 +127,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.PatternBuilder$Pa, false, false) != null);
   }
   public static boolean rule_Condition_14_0(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.PatternVariableNode$dP);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ), PROPS.metaClass$tHD7), 0xfc6f4e95b9L) && !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.link$ckAZ))) && SNodeOperations.isInstanceOf(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.PatternVariableNode$dP);
   }
   public static boolean rule_Condition_14_1(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.PatternVariableProperty$JI);
@@ -277,18 +277,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
   public static Object referenceMacro_GetReferent_14_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.PatternVariableNode$dP), "patternNodeVarL");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
   public static Object referenceMacro_GetReferent_14_2(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
-  }
-  public static Object referenceMacro_GetReferent_14_3(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(NodeBuilderInitProperty__BehaviorDescriptor.getInitValue_id1o$2SUuvKUZ.invoke(_context.getNode()), CONCEPTS.PatternVariableProperty$JI), "patternPropVarL");
   }
-  public static Object referenceMacro_GetReferent_14_4(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_14_3(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("nodeBuilderNode")), "nodeVariableL");
   }
-  public static Object referenceMacro_GetReferent_14_5(final ReferenceMacroContext _context) {
+  public static Object referenceMacro_GetReferent_14_4(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.PatternVariableNode$dP), "patternNodeVarL");
   }
   public static Object referenceMacro_GetReferent_15_0(final ReferenceMacroContext _context) {
@@ -1133,18 +1130,17 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("2595803291919328504", new RTQ(11, "myVar"));
     rtqMethods.put("1678856199538903670", new RTQ(12, "myVar"));
     rtqMethods.put("5756354288101156694", new RTQ(13, "builder"));
-    rtqMethods.put("2595803291919259582", new RTQ(14, "varField"));
-    rtqMethods.put("1678856199538870975", new RTQ(15, "builder"));
-    rtqMethods.put("1678856199538871000", new RTQ(16, "varField"));
-    rtqMethods.put("1678856199539215546", new RTQ(17, "builder"));
-    rtqMethods.put("1678856199539215566", new RTQ(18, "varField"));
-    rtqMethods.put("1678856199540475989", new RTQ(19, "varField"));
-    rtqMethods.put("6280652366638821172", new RTQ(20, "p"));
-    rtqMethods.put("6280652366638820293", new RTQ(21, "p"));
-    rtqMethods.put("2793477601721455528", new RTQ(22, "GeneratedPattern"));
-    rtqMethods.put("2793477601720750051", new RTQ(23, "GeneratedPattern"));
-    rtqMethods.put("8950533135209409920", new RTQ(24, "GeneratedPattern"));
-    rtqMethods.put("8950533135209422013", new RTQ(25, "GeneratedPattern"));
+    rtqMethods.put("1678856199538870975", new RTQ(14, "builder"));
+    rtqMethods.put("1678856199538871000", new RTQ(15, "varField"));
+    rtqMethods.put("1678856199539215546", new RTQ(16, "builder"));
+    rtqMethods.put("1678856199539215566", new RTQ(17, "varField"));
+    rtqMethods.put("1678856199540475989", new RTQ(18, "varField"));
+    rtqMethods.put("6280652366638821172", new RTQ(19, "p"));
+    rtqMethods.put("6280652366638820293", new RTQ(20, "p"));
+    rtqMethods.put("2793477601721455528", new RTQ(21, "GeneratedPattern"));
+    rtqMethods.put("2793477601720750051", new RTQ(22, "GeneratedPattern"));
+    rtqMethods.put("8950533135209409920", new RTQ(23, "GeneratedPattern"));
+    rtqMethods.put("8950533135209422013", new RTQ(24, "GeneratedPattern"));
   }
   @NotNull
   @Override
@@ -1201,20 +1197,18 @@ public class QueriesGenerated extends QueryProviderBase {
         case 17:
           return QueriesGenerated.referenceMacro_GetReferent_14_4(ctx);
         case 18:
-          return QueriesGenerated.referenceMacro_GetReferent_14_5(ctx);
-        case 19:
           return QueriesGenerated.referenceMacro_GetReferent_15_0(ctx);
-        case 20:
+        case 19:
           return QueriesGenerated.referenceMacro_GetReferent_16_0(ctx);
-        case 21:
+        case 20:
           return QueriesGenerated.referenceMacro_GetReferent_16_1(ctx);
-        case 22:
+        case 21:
           return QueriesGenerated.referenceMacro_GetReferent_17_0(ctx);
-        case 23:
+        case 22:
           return QueriesGenerated.referenceMacro_GetReferent_17_1(ctx);
-        case 24:
+        case 23:
           return QueriesGenerated.referenceMacro_GetReferent_18_0(ctx);
-        case 25:
+        case 24:
           return QueriesGenerated.referenceMacro_GetReferent_18_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));

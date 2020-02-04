@@ -23,22 +23,30 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class typeof_PatternVariableNode_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_PatternVariableNode_InferenceRule() {
   }
-  public void applyRule(final SNode patternVariableNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.hasRole(patternVariableNode, LINKS.initValue$UJfh)) {
-      SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(patternVariableNode), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ);
+  public void applyRule(final SNode nodeVar, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    if (SNodeOperations.hasRole(nodeVar, LINKS.initValue$UJfh)) {
+      SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeVar), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ);
       // todo: Why cannot I use an enum switch here? 
       if ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(link)) {
         {
-          SNode _nodeToCheck_1029348928467 = patternVariableNode;
+          SNode _nodeToCheck_1029348928467 = nodeVar;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "2793477601722933437", 0, null);
           typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "2793477601722933439", true), (SNode) _quotation_createNode_gft897_a1a0c0a0c0a0b(SLinkOperations.getTarget(link, LINKS.target$egp8)), _info_12389875345);
         }
       } else {
         {
-          SNode _nodeToCheck_1029348928467 = patternVariableNode;
+          SNode _nodeToCheck_1029348928467 = nodeVar;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366641155383", 0, null);
           typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "6280652366641155385", true), (SNode) _quotation_createNode_gft897_a1a0c0a0a2a0a1(SLinkOperations.getTarget(link, LINKS.target$egp8)), _info_12389875345);
         }
+      }
+    }
+    if (SNodeOperations.hasRole(nodeVar, LINKS.nodes$$MVw) && SNodeOperations.hasRole(SNodeOperations.getParent(nodeVar), LINKS.initValue$UJfh)) {
+      SNode link = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(nodeVar)), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$ckAZ);
+      {
+        SNode _nodeToCheck_1029348928467 = nodeVar;
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1973444367045983391", 0, null);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "1973444367045983393", true), (SNode) _quotation_createNode_gft897_a1a0c0b0b0b(SLinkOperations.getTarget(link, LINKS.target$egp8)), _info_12389875345);
       }
     }
   }
@@ -68,11 +76,19 @@ public class typeof_PatternVariableNode_InferenceRule extends AbstractInferenceR
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType"), quotedNode_3);
     return quotedNode_2;
   }
+  private static SNode _quotation_createNode_gft897_a1a0c0b0b0b(Object parameter_1) {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_2 = null;
+    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType")).getResult();
+    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
+    return quotedNode_2;
+  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink initValue$UJfh = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
     /*package*/ static final SReferenceLink link$ckAZ = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
     /*package*/ static final SReferenceLink target$egp8 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SContainmentLink nodes$$MVw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
   }
 
   private static final class CONCEPTS {
