@@ -14,8 +14,6 @@ import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,10 +32,7 @@ public final class PatternReference__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static List<SNode> getVariables_id2r4rhgaEVoa(@NotNull SNode __thisNode__) {
-    List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getNodeVariables_id2g69lt1CX0k.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$6hl0), LINKS.pattern$m3eu))));
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getPropertyVariables_id1tcvH6au_W4.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$6hl0), LINKS.pattern$m3eu))));
-    return result;
+    return PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$6hl0), LINKS.pattern$m3eu));
   }
 
   /*package*/ PatternReference__BehaviorDescriptor() {

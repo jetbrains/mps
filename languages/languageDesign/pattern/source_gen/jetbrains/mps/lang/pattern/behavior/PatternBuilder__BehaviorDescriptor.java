@@ -29,10 +29,9 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x240625574192fa19L, "jetbrains.mps.lang.pattern.structure.PatternBuilder");
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<List<SNode>> getNodeVariables_id2g69lt1CX0k = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getNodeVariables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2g69lt1CX0k").build();
-  public static final SMethod<List<SNode>> getPropertyVariables_id1tcvH6au_W4 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getPropertyVariables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1tcvH6au_W4").build();
+  public static final SMethod<List<SNode>> getVariables_idPFUECvO1RN = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getVariables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("PFUECvO1RN").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getNodeVariables_id2g69lt1CX0k, getPropertyVariables_id1tcvH6au_W4);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getVariables_idPFUECvO1RN);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -43,11 +42,8 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
   }
-  /*package*/ static List<SNode> getNodeVariables_id2g69lt1CX0k(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.PatternVariableNode$dP, false, new SAbstractConcept[]{});
-  }
-  /*package*/ static List<SNode> getPropertyVariables_id1tcvH6au_W4(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.PatternVariableProperty$JI, false, new SAbstractConcept[]{});
+  /*package*/ static List<SNode> getVariables_idPFUECvO1RN(@NotNull SNode __thisNode__) {
+    return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.PatternBuilderVariable$In, false, new SAbstractConcept[]{});
   }
 
   /*package*/ PatternBuilder__BehaviorDescriptor() {
@@ -68,9 +64,7 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       case 1:
-        return (T) ((List<SNode>) getNodeVariables_id2g69lt1CX0k(node));
-      case 2:
-        return (T) ((List<SNode>) getPropertyVariables_id1tcvH6au_W4(node));
+        return (T) ((List<SNode>) getVariables_idPFUECvO1RN(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -103,7 +97,6 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
-    /*package*/ static final SConcept PatternVariableNode$dP = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x24062557419efb70L, "jetbrains.mps.lang.pattern.structure.PatternVariableNode");
-    /*package*/ static final SConcept PatternVariableProperty$JI = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x60f18f425c769962L, "jetbrains.mps.lang.pattern.structure.PatternVariableProperty");
+    /*package*/ static final SInterfaceConcept PatternBuilderVariable$In = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
   }
 }

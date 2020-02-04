@@ -1040,5 +1040,42 @@
       <ref role="1YaFvo" to="tp3t:2r4rhgaDx25" resolve="PatternBuilderVariableReference" />
     </node>
   </node>
+  <node concept="1YbPZF" id="PFUECvOFRZ">
+    <property role="TrG5h" value="typeof_LabeledNode" />
+    <property role="3GE5qa" value="light" />
+    <node concept="3clFbS" id="PFUECvOFS0" role="18ibNy">
+      <node concept="1Z5TYs" id="PFUECvOFZ8" role="3cqZAp">
+        <node concept="mw_s8" id="PFUECvOFZs" role="1ZfhKB">
+          <node concept="2c44tf" id="PFUECvOFZo" role="mwGJk">
+            <node concept="3Tqbb2" id="PFUECvOFZM" role="2c44tc">
+              <node concept="2c44tb" id="PFUECvOG0$" role="lGtFl">
+                <property role="2qtEX8" value="concept" />
+                <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                <node concept="2OqwBi" id="PFUECvOGec" role="2c44t1">
+                  <node concept="1YBJjd" id="PFUECvOG0W" role="2Oq$k0">
+                    <ref role="1YBMHb" node="PFUECvOFS2" resolve="labeledNode" />
+                  </node>
+                  <node concept="3TrEf2" id="PFUECvOGtW" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tp3r:4IP40Bi2KaL" resolve="concept" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="PFUECvOFZb" role="1ZfhK$">
+          <node concept="1Z2H0r" id="PFUECvOFS6" role="mwGJk">
+            <node concept="1YBJjd" id="PFUECvOFSm" role="1Z2MuG">
+              <ref role="1YBMHb" node="PFUECvOFS2" resolve="labeledNode" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="PFUECvOFS2" role="1YuTPh">
+      <property role="TrG5h" value="labeledNode" />
+      <ref role="1YaFvo" to="tp3t:PFUECvMiNB" resolve="LabeledNode" />
+    </node>
+  </node>
 </model>
 

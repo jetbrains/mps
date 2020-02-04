@@ -20,6 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_InsertAfterPosition;
   private ConceptPresentation props_InsertBeforePosition;
   private ConceptPresentation props_InsertPosition;
+  private ConceptPresentation props_LabeledNode;
   private ConceptPresentation props_LinkPatternVariableDeclaration;
   private ConceptPresentation props_ListPattern;
   private ConceptPresentation props_OrPattern;
@@ -121,6 +122,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_InsertPosition = cpb.create();
         }
         return props_InsertPosition;
+      case LanguageConceptSwitch.LabeledNode:
+        if (props_LabeledNode == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_LabeledNode = cpb.create();
+        }
+        return props_LabeledNode;
       case LanguageConceptSwitch.LinkPatternVariableDeclaration:
         if (props_LinkPatternVariableDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

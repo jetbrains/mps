@@ -42,7 +42,6 @@ import java.util.List;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.lang.quotation.behavior.NodeBuilderNode__BehaviorDescriptor;
-import java.util.ArrayList;
 import jetbrains.mps.lang.pattern.behavior.PatternBuilder__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Map;
@@ -536,9 +535,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.builder$Ubq1), LINKS.values$oju9);
   }
   public static Iterable<SNode> sourceNodesQuery_13_3(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getPropertyVariables_id1tcvH6au_W4.invoke(_context.getNode())));
-    return ListSequence.fromList(result).addSequence(ListSequence.fromList(PatternBuilder__BehaviorDescriptor.getNodeVariables_id2g69lt1CX0k.invoke(_context.getNode())));
+    return (List<SNode>) PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_16_0(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.case$nt1N)).where(new IWhereFilter<SNode>() {
