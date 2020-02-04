@@ -58,6 +58,7 @@ public class DefaultSModel extends SModel {
     if (to instanceof DefaultSModel) {
       DefaultSModel dto = (DefaultSModel) to;
       dto.myHeader.setPersistenceVersion(myHeader.getPersistenceVersion());
+      dto.myHeader.setDoNotGenerate(myHeader.isDoNotGenerate());
       // XXX not clear why we copy nothing but persistence version. What about doNotGenerate and other properties from header?
     }
   }
