@@ -23,6 +23,7 @@ import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -32,12 +33,14 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public class PatternVariableNode_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -106,7 +109,7 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.replaceWithAnother(_context.getNode(), createLabeledNode_scvrho_a0a0a0a0());
+        SNodeOperations.replaceWithAnother(_context.getNode(), createLabeledNode_scvrho_a0a0a0a0(SNodeOperations.getModel(_context.getNode()), _context.getNode().getNodeId(), SPropertyOperations.getString(_context.getNode(), PROPS.name$tAp1)));
       }
 
       @Override
@@ -132,11 +135,15 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
     }
 
   }
-  private static SNode createLabeledNode_scvrho_a0a0a0a0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LabeledNode$iM);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(null));
+  private static SNode createLabeledNode_scvrho_a0a0a0a0(SModel modelToCreate, SNodeId nodeId, Object p0) {
+    SNodeBuilder rootBuilder1 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.LabeledNode$iM);
+    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
     rootBuilder1.setReferenceTarget(LINKS.concept$lMG$, null);
     return rootBuilder1.getResult();
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
@@ -147,9 +154,5 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LabeledNode$iM = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0xd6beaaa1fc92ce7L, "jetbrains.mps.lang.pattern.structure.LabeledNode");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

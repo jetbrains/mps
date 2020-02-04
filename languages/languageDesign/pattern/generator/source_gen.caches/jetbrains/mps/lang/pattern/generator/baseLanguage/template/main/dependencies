@@ -49,7 +49,6 @@
     <classNode dependClassName="jetbrains.mps.lang.pattern.behavior.PatternVarsUtil" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.behavior.NodeBuilderInitLink__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.behavior.NodeBuilderInitProperty__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.quotation.behavior.NodeBuilderNode__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.ContainmentLinkId__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.PropertyId__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.ReferenceLinkId__BehaviorDescriptor" />
