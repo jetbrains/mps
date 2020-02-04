@@ -7,6 +7,7 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
@@ -46,7 +47,6 @@
     <classNode dependClassName="jetbrains.mps.lang.pattern.behavior.AbstractPatternProvider__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.behavior.PatternBuilder__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.behavior.PatternSwitchCase__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.pattern.behavior.PatternVariableProperty__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.behavior.PatternVarsUtil" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.behavior.NodeBuilderInitLink__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.behavior.NodeBuilderInitProperty__BehaviorDescriptor" />

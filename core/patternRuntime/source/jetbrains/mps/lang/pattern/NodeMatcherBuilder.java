@@ -46,17 +46,14 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
 
   }
 
-  public static class NodeVariableMatcher extends SingleNodeMatcher {
+  public static class NodeWildcardMatcher extends SingleNodeMatcher {
     private final boolean myNullable;
-    private Reference<SNode> myRef;
-    public NodeVariableMatcher(boolean nullable, Reference<SNode> ref) {
+    public NodeWildcardMatcher(boolean nullable) {
       super(Condition.<SConcept>always().asPredicate());
       myNullable = nullable;
-      myRef = ref;
     }
     @Override
     public final boolean match(SNode nodeToMatch) {
-      myRef.set(nodeToMatch);
       return myNullable ? nodeToMatch == null || super.match(nodeToMatch) : super.match(nodeToMatch);
     }
     @NotNull
@@ -195,22 +192,15 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> Objects.equals(expected, value));
   }
 
-  public void setPropertyVariable(SProperty property, @NotNull Reference<String> variable) {
-    setPropertyVariable(property, variable, null);
+  public void setPropertyVariable(SProperty property) {
+    setPropertyVariable(property, null);
   }
 
-  public void setPropertyVariable(SProperty property, @NotNull Reference<String> variable, @Nullable Predicate<String> predicate) {
+  public void setPropertyVariable(SProperty property, @Nullable Predicate<String> predicate) {
     if (!(myMatcherWrapper.myMatcher instanceof SingleNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> {
-      if (predicate == null || predicate.test(value)) {
-        variable.set(value);
-        return true;
-      } else {
-        return false;
-      }
-    });
+    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> predicate == null || predicate.test(value));
   }
 
   @Override
@@ -223,14 +213,11 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     });
   }
 
-  public void setReferenceVariable(SReferenceLink link, @NotNull Reference<SNode> variable) {
+  public void setReferenceVariable(SReferenceLink link) {
     if (!(myMatcherWrapper.myMatcher instanceof SingleNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference -> {
-      variable.set(sReference.getTargetNode());
-      return true;
-    });
+    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference -> true);
   }
 
   @Override
