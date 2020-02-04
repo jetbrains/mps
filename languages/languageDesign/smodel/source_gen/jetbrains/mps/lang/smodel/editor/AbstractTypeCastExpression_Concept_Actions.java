@@ -5,8 +5,8 @@ package jetbrains.mps.lang.smodel.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -26,7 +26,7 @@ public class AbstractTypeCastExpression_Concept_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.conceptArgument$N8Tv)).isAbstract()) {
+        if ((SLinkOperations.getTarget(node, LINKS.conceptArgument$N8Tv) == null) || SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.conceptArgument$N8Tv)).isAbstract()) {
           SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.leftExpression$NqCX));
         } else {
           SNodeFactoryOperations.setNewChild(node, LINKS.conceptArgument$N8Tv, null);
