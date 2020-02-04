@@ -20,12 +20,13 @@ import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
 import jetbrains.mps.lang.pattern.ConceptMatchingPattern;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.TargetTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.backend.TypecheckingProvider;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
+import jetbrains.mps.typechecking.backend.TypecheckingProvider;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.typesystem.inference.util.StructuralNodeSet;
@@ -162,7 +163,9 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     public void checkRecursively(SNode root, Consumer<? super NodeReportItem> errorsConsumer) {
       run((tcc) -> {
         // the typechecking context is expected to have been created with the same root node
-        if (tcc.getNode() == null || tcc.getNode() != root) return;
+        if (tcc.getNode() == null || !SNodeOperations.getNodeAncestors(root, null, true).contains(tcc.getNode())) {
+          return;
+        }
         tcc.checkIfNotChecked(root, false);
         tcc.getNodesWithErrors(true)
            .stream()
@@ -187,7 +190,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
     protected abstract void run(Consumer<? super TypeCheckingContext> fun);
 
   }
-  
+
   private static class IncrementalLegacyTypecheckingQueries extends AbstractLegacyTypecheckingQueries implements LegacyTypecheckingQueries {
 
     private final IncrementalTypecheckingContext myTypecheckingContext;
