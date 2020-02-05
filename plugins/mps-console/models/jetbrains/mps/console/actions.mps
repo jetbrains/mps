@@ -463,11 +463,8 @@
       <node concept="2zDLo0" id="76n_52h2Vx2" role="2zDLrY">
         <ref role="2zDLo1" node="7nWAV$2o8vd" resolve="Console_Default" />
       </node>
-      <node concept="2zDLo0" id="10GFfN5Vfr4" role="2zDLrY">
-        <ref role="2zDLo1" node="10GFfN5Vfr3" resolve="MacOSX" />
-      </node>
       <node concept="2zDLo0" id="10GFfN5Vfr8" role="2zDLrY">
-        <ref role="2zDLo1" node="10GFfN5Vfr7" resolve="MacOSX105" />
+        <ref role="2zDLo1" node="10GFfN5Vfr7" resolve="Console_MacOSX105" />
       </node>
     </node>
   </node>
@@ -1100,9 +1097,10 @@
     </node>
   </node>
   <node concept="Zd50a" id="10GFfN5Vfr7">
-    <property role="TrG5h" value="MacOSX105" />
+    <property role="TrG5h" value="Console_MacOSX105" />
     <property role="Zd52Q" value="2HiVo5PakU7/Mac_OS_X_Plus" />
     <property role="Z2u3V" value="true" />
+    <property role="3GE5qa" value="tool" />
     <node concept="Zd509" id="10GFfN5VzkE" role="Zd508">
       <ref role="1bYAoF" node="791RMwCQSU4" resolve="ConsoleExecute" />
       <node concept="pLAjd" id="10GFfN5VzkF" role="Zd501">
@@ -1130,27 +1128,6 @@
       <node concept="pLAjd" id="10GFfN5VrgB" role="Zd501">
         <property role="pLAjf" value="VK_DOWN" />
         <property role="pLAjc" value="meta" />
-        <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
-      </node>
-    </node>
-  </node>
-  <node concept="Zd50a" id="10GFfN5Vfr3">
-    <property role="TrG5h" value="MacOSX" />
-    <property role="Zd52Q" value="1mJS7WEAV1T/Mac_OS_X" />
-    <property role="Z2u3V" value="true" />
-    <node concept="Zd509" id="10GFfN5Vrgb" role="Zd508">
-      <ref role="1bYAoF" node="6QZWsVDzQaJ" resolve="ConsolePrev" />
-      <node concept="pLAjd" id="10GFfN5Vrgc" role="Zd501">
-        <property role="pLAjc" value="meta" />
-        <property role="pLAjf" value="VK_UP" />
-        <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
-      </node>
-    </node>
-    <node concept="Zd509" id="10GFfN5Vrge" role="Zd508">
-      <ref role="1bYAoF" node="6QZWsVDzvm_" resolve="ConsoleNext" />
-      <node concept="pLAjd" id="10GFfN5Vrgf" role="Zd501">
-        <property role="pLAjc" value="meta" />
-        <property role="pLAjf" value="VK_DOWN" />
         <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
       </node>
     </node>
