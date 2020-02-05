@@ -917,6 +917,38 @@
       <unit id="6803901086853929087" at="34,0,105,0" name="jetbrains.mps.checkers.ErrorReportHelper" />
     </file>
   </root>
+  <root nodeRef="r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/7390982340086718154">
+    <file name="TargetConceptChecker.java">
+      <node id="3929815563184699880" at="22,0,23,0" concept="6" trace="myCounterpart" />
+      <node id="292141983787795221" at="25,33,26,15" concept="17" />
+      <node id="292141983787784631" at="30,61,31,51" concept="5" />
+      <node id="292141983787800464" at="35,60,36,39" concept="11" />
+      <node id="292141983787815249" at="40,74,41,41" concept="11" />
+      <node id="292141983787834097" at="45,110,46,71" concept="5" />
+      <node id="7390982340086718156" at="24,0,28,0" concept="3" trace="TargetConceptChecker#()V" />
+      <node id="3929815563184694750" at="29,0,33,0" concept="3" trace="TargetConceptChecker#(Ljetbrains/mps/components/ComponentHost;)V" />
+      <node id="250369351434915463" at="34,0,38,0" concept="9" trace="getCategory#()Ljetbrains/mps/errors/item/IssueKindReportItem/CheckerCategory;" />
+      <node id="3494917438986493933" at="39,0,43,0" concept="9" trace="skipCondition#()Ljetbrains/mps/checkers/IChecker/AbstractNodeChecker/ErrorSkipCondition;" />
+      <node id="7390982340086718161" at="44,0,48,0" concept="9" trace="checkNodeInEditor#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/checkers/LanguageErrorsCollector;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <scope id="7390982340086718159" at="25,33,26,15" />
+      <scope id="3929815563184694756" at="30,61,31,51" />
+      <scope id="250369351434915470" at="35,60,36,39" />
+      <scope id="3494917438986493936" at="40,74,41,41" />
+      <scope id="7390982340086718170" at="45,110,46,71" />
+      <scope id="7390982340086718156" at="24,0,28,0" />
+      <scope id="3929815563184694750" at="29,0,33,0">
+        <var name="host" id="3929815563184695431" />
+      </scope>
+      <scope id="250369351434915463" at="34,0,38,0" />
+      <scope id="3494917438986493933" at="39,0,43,0" />
+      <scope id="7390982340086718161" at="44,0,48,0">
+        <var name="errorsCollector" id="7390982340086718166" />
+        <var name="node" id="7390982340086718164" />
+        <var name="repository" id="3678491607201777519" />
+      </scope>
+      <unit id="7390982340086718154" at="18,0,49,0" name="jetbrains.mps.checkers.TargetConceptChecker" />
+    </file>
+  </root>
   <root nodeRef="r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/7390982340086718486">
     <file name="LanguageErrorsComponent.java">
       <node id="6424963521598656841" at="62,0,63,0" concept="6" trace="myFullCheckIterator" />
