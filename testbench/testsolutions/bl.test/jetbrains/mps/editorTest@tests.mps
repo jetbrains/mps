@@ -18,8 +18,8 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
   </languages>
   <imports>
@@ -51135,8 +51135,8 @@
               <node concept="17QB3L" id="RbAU21yncU" role="1tU5fm" />
               <node concept="Xl_RD" id="RbAU21yndH" role="33vP2m">
                 <property role="Xl_RC" value="Hello!" />
-                <node concept="LIFWc" id="RbAU21yneX" role="lGtFl">
-                  <property role="ZRATv" value="true" />
+                <node concept="LIFWc" id="5dcJq5BzlsM" role="lGtFl">
+                  <property role="LIFWa" value="3" />
                   <property role="OXtK3" value="true" />
                   <property role="p6zMq" value="0" />
                   <property role="p6zMs" value="6" />
@@ -51160,14 +51160,14 @@
               </node>
             </node>
           </node>
-          <node concept="3SKdUt" id="7NzosMpPLZf" role="3cqZAp">
-            <node concept="1PaTwC" id="7NzosMpPLZg" role="1aUNEU">
-              <node concept="3oM_SD" id="7NzosMpPLZj" role="1PaTwD">
+          <node concept="3SKdUt" id="5dcJq5ByL4M" role="3cqZAp">
+            <node concept="1PaTwC" id="5dcJq5ByL4N" role="1aUNEU">
+              <node concept="3oM_SD" id="5dcJq5ByL5x" role="1PaTwD">
                 <property role="3oM_SC" value="Hello!" />
-                <node concept="LIFWc" id="7NzosMpPM0X" role="lGtFl">
+                <node concept="LIFWc" id="5dcJq5ByL66" role="lGtFl">
                   <property role="ZRATv" value="true" />
                   <property role="OXtK3" value="true" />
-                  <property role="p6zMq" value="0" />
+                  <property role="p6zMq" value="6" />
                   <property role="p6zMs" value="6" />
                   <property role="LIFWd" value="property_value" />
                 </node>

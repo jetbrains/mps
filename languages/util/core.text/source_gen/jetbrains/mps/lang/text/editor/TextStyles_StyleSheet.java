@@ -45,14 +45,14 @@ public class TextStyles_StyleSheet {
       if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(getNode(), CONCEPTS.Word$AM), PROPS.url$WUb8))) {
         return MPSColors.BLUE;
       }
-      if (StyleHelper.isAttributeSet("forceDarkGray", getEditorContext().getSelectedCell())) {
+      if (TextEditorHelper.isAttributeSet("forceDarkGray", getEditorContext().getSelectedCell())) {
         return MPSColors.DARK_GRAY;
       }
       return MPSColors.BLACK;
     }
     private int _StyleParameter_QueryFunction_vsrnlz_a1a() {
       boolean forceItalics = false;
-      if (StyleHelper.isAttributeSet("forceItalicStyle", getEditorContext().getSelectedCell())) {
+      if (TextEditorHelper.isAttributeSet("forceItalicStyle", getEditorContext().getSelectedCell())) {
         forceItalics = true;
       }
 
