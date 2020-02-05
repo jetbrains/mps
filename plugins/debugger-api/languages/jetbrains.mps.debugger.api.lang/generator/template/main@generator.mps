@@ -582,8 +582,8 @@
               <ref role="3uigEE" to="9ti4:~PluginId" resolve="PluginId" />
             </node>
             <node concept="2YIFZM" id="56ID84F0kSr" role="33vP2m">
-              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
+              <ref role="37wK5l" to="ctgy:~PluginManager.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <node concept="3iG29X" id="56ID84F0kSs" role="37wK5m">
                 <ref role="3iG29W" to="1l1h:3SnNvqCaJDx" resolve="BreakpointCreatorsManager" />
               </node>
@@ -1066,8 +1066,8 @@
               <ref role="3uigEE" to="9ti4:~PluginId" resolve="PluginId" />
             </node>
             <node concept="2YIFZM" id="56ID84F0kT7" role="33vP2m">
-              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
+              <ref role="37wK5l" to="ctgy:~PluginManager.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <node concept="3iG29X" id="56ID84F0kT8" role="37wK5m">
                 <ref role="3iG29W" to="1l1h:3SnNvqCaJDx" resolve="BreakpointCreatorsManager" />
               </node>

@@ -9647,7 +9647,7 @@
                             <property role="3TUv4t" value="true" />
                             <node concept="2YIFZM" id="1Kgs_4ZGAJ4" role="33vP2m">
                               <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
-                              <ref role="37wK5l" to="g1qu:~StartupUiUtil.getCenterPoint(java.awt.Rectangle,java.awt.Dimension)" resolve="getCenterPoint" />
+                              <ref role="37wK5l" to="g1qu:~UIUtil.getCenterPoint(java.awt.Rectangle,java.awt.Dimension)" resolve="getCenterPoint" />
                               <node concept="37vLTw" id="3GM_nagTxlm" role="37wK5m">
                                 <ref role="3cqZAo" node="1Kgs_4ZGAIW" resolve="bounds" />
                               </node>
@@ -10105,7 +10105,7 @@
             </node>
             <node concept="2YIFZM" id="6iqrHsKPHx1" role="33vP2m">
               <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
-              <ref role="37wK5l" to="g1qu:~StartupUiUtil.getLabelFont()" resolve="getLabelFont" />
+              <ref role="37wK5l" to="g1qu:~UIUtil.getLabelFont()" resolve="getLabelFont" />
             </node>
           </node>
         </node>
