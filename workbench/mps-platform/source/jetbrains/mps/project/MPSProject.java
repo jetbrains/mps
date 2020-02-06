@@ -89,11 +89,6 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
     return "MPS Project";
   }
 
-  @Override
-  public boolean isDisposed() {
-    return super.isDisposed() || myProject.isDisposed();
-  }
-
   /**
    * @return the backing idea project
    */

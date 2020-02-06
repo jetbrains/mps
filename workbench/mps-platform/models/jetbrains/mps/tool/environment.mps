@@ -1628,7 +1628,10 @@
                   <property role="3oM_SC" value="StartUpPerformanceReporter.kt/logStats," />
                 </node>
                 <node concept="3oM_SD" id="4$fVFMMeKJv" role="1PaTwD">
-                  <property role="3oM_SC" value="which logs" />
+                  <property role="3oM_SC" value="which" />
+                </node>
+                <node concept="3oM_SD" id="6x0LKEmhVet" role="1PaTwD">
+                  <property role="3oM_SC" value="logs" />
                 </node>
                 <node concept="3oM_SD" id="4$fVFMMeKJV" role="1PaTwD">
                   <property role="3oM_SC" value="statistics" />
@@ -1845,7 +1848,7 @@
                   <property role="3oM_SC" value="before" />
                 </node>
                 <node concept="3oM_SD" id="3brbVNVVHQj" role="1PaTwD">
-                  <property role="3oM_SC" value="IdeaTestApplication" />
+                  <property role="3oM_SC" value="TestApplicationManager" />
                 </node>
                 <node concept="3oM_SD" id="3brbVNVVHQH" role="1PaTwD">
                   <property role="3oM_SC" value="resets" />
