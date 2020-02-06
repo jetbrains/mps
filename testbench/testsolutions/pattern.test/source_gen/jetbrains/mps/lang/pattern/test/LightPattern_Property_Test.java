@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import junit.framework.Assert;
 import jetbrains.mps.lang.pattern.AbstractGeneratedPattern;
 import jetbrains.mps.lang.pattern.NodeMatcherBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -165,8 +165,10 @@ public class LightPattern_Property_Test extends TestCase {
       }
       setMatcher(rootBuilder.getMatcher());
     }
-    public String getVar(SNode rootNode) {
-      return SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(rootNode, CONCEPTS.ReturnStatement$SF), LINKS.expression$EsbK), CONCEPTS.StringLiteral$4G), PROPS.value$kiE0);
+    @Nullable
+    public static String getVar(SNode rootNode) {
+      SNode container = SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(rootNode, CONCEPTS.ReturnStatement$SF), LINKS.expression$EsbK), CONCEPTS.StringLiteral$4G);
+      return container.getProperty(PROPS.value$kiE0);
     }
   }
 

@@ -25,7 +25,7 @@ public class TemplateModelImpl extends TemplateModelBase {
   public TemplateModelImpl(TemplateModule module) {
     super(module);
     mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_main(this));
-    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_NodeBuilder_value(), new Switch_NodeBuilder_child(), new Switch_NodeBuilder_childInit(), new Switch_NodeBuilderNode_ClassifierType());
+    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_NodeBuilder_value(), new Switch_NodeBuilder_child(), new Switch_NodeBuilder_childInit(), new Switch_NodeBuilderNode_ClassifierType(), new Switch_NodeBuilderExternalParameterType());
     model = PersistenceFacade.getInstance().createModelReference("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)");
   }
   public String getLongName() {
@@ -56,12 +56,6 @@ public class TemplateModelImpl extends TemplateModelBase {
     }
     if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1006429225401295242"))) {
       return new Template_NodeBuilder_to_methodCall();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "967124561400903659"))) {
-      return new Template_NodeBuilderExternalParameters_ref();
-    }
-    if (template.equals(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "967124561401023960"))) {
-      return new Template_NodeBuilderExternalParameters_decl();
     }
     return null;
   }

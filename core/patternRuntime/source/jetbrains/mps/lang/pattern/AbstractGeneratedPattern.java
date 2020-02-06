@@ -16,8 +16,15 @@
 package jetbrains.mps.lang.pattern;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public abstract class AbstractGeneratedPattern implements IMatchingPattern {
   private NodeMatcherBuilder.NodeMatcher myMatcher;
@@ -33,5 +40,33 @@ public abstract class AbstractGeneratedPattern implements IMatchingPattern {
   @Override
   public SConcept getConcept() {
     return myMatcher.getConcept();
+  }
+
+  protected boolean checkNotNull(Optional<?>... optionals) {
+    return Arrays.stream(optionals).allMatch(Objects::nonNull);
+  }
+
+  protected static <T> T getNullableElement(List<T> list, int index) {
+    if (index < 0 || index >= list.size()) {
+      return null;
+    } else {
+      return list.get(index);
+    }
+  }
+  protected static <T> T getNullableHead(Iterable<T> iterable) {
+    Iterator<T> iterator = iterable.iterator();
+    if (!iterator.hasNext()) {
+      return null;
+    } else {
+      return iterator.next();
+    }
+  }
+  @SuppressWarnings({"OptionalAssignedToNull", "OptionalUsedAsFieldOrParameterType"})
+  public static <T> T getWithDefault(@Nullable Optional<T> optional, T defaultValue) {
+    if (optional == null) {
+      return defaultValue;
+    } else {
+      return optional.orElse(null);
+    }
   }
 }

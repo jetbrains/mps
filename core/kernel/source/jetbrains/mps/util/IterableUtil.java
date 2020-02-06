@@ -31,6 +31,10 @@ import java.util.Set;
 
 public class IterableUtil {
 
+  public static <T> Iterable<T> covariant(Iterable<? extends T> iterable) {
+    return (Iterable<T>) iterable;
+  }
+
   @NotNull
   public static <T> Iterable<T> distinct(@Nullable Iterable<T> t) {
     if (t == null) {

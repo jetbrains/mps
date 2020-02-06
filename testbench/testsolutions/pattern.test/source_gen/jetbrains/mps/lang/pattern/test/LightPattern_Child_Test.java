@@ -7,7 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import junit.framework.Assert;
 import jetbrains.mps.lang.pattern.AbstractGeneratedPattern;
 import jetbrains.mps.lang.pattern.NodeMatcherBuilder;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -132,8 +132,10 @@ public class LightPattern_Child_Test extends TestCase {
       rootBuilder.forChild(LINKS.expression$EsbK).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
       setMatcher(rootBuilder.getMatcher());
     }
-    public SNode getVar(SNode rootNode) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(rootNode, CONCEPTS.ReturnStatement$SF), LINKS.expression$EsbK);
+    @Nullable
+    public static SNode getVar(SNode rootNode) {
+      SNode container = SNodeOperations.as(rootNode, CONCEPTS.ReturnStatement$SF);
+      return AbstractGeneratedPattern.getNullableHead(container.getChildren(LINKS.expression$EsbK));
     }
   }
   private static SNode _quotation_createNode_55eq59_a0b0a0() {

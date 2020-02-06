@@ -428,6 +428,9 @@
     <node concept="PrWs8" id="53SOuJl2VUL" role="PzmwI">
       <ref role="PrY4T" to="tpee:h9ngReX" resolve="ClassifierMember" />
     </node>
+    <node concept="PrWs8" id="64p9aapFrOY" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
   </node>
   <node concept="1TIwiD" id="63LzO9stD_y">
     <property role="EcuMT" value="6985522012210239842" />
