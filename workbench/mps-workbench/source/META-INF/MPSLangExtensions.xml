@@ -1,5 +1,7 @@
 <idea-plugin>
   <extensions defaultExtensionNs="com.intellij">
+    <projectServiceContainerInitializedListener implementation="com.intellij.openapi.module.impl.ModuleManagerComponent$MyProjectServiceContainerInitializedListener" order="first"/>
+
     <applicationService serviceInterface="com.intellij.openapi.project.impl.ProjectStoreFactory"
                         serviceImplementation="com.intellij.configurationStore.PlatformLangProjectStoreFactory"
                         overrides="true"/>
@@ -18,9 +20,15 @@
 
     <psi.declarationProvider implementation="com.intellij.model.psi.impl.DefaultPsiSymbolDeclarationProvider" order="last"/>
 
+    <searcher forClass="com.intellij.model.search.PsiSymbolReferenceSearchParameters"
+              implementationClass="com.intellij.model.search.impl.PsiToSymbolSearcher"
+              order="last"/>
     <referencesSearch implementation="com.intellij.psi.impl.search.SearcherQueryExecutor"/>
     <referencesSearch implementation="com.intellij.psi.impl.search.CachesBasedRefSearcher"/>
     <referencesSearch implementation="com.intellij.psi.impl.search.NonPhysicalReferenceSearcher"/>
+
+    <searcher forClass="com.intellij.model.search.PsiSymbolDeclarationSearchParameters"
+              implementationClass="com.intellij.model.psi.impl.PsiElementDeclarationSearcher"/>
     -->
     <applicationService serviceImplementation="com.intellij.openapi.roots.ui.configuration.projectRoot.SdkDownloadTracker"/>
     <applicationService serviceImplementation="com.intellij.openapi.roots.ui.configuration.SdkDetector" />
@@ -28,19 +36,22 @@
     <applicationService serviceInterface="com.intellij.openapi.roots.ui.configuration.SdkPopupFactory"
                         serviceImplementation="com.intellij.openapi.roots.ui.configuration.PlatformSdkPopupFactory" />
 
+    <applicationService serviceInterface="com.intellij.openapi.roots.ui.configuration.SdkLookup"
+                        serviceImplementation="com.intellij.openapi.roots.ui.configuration.SdkLookupImpl" />
+
     <registryKey key="sdk.detector.enabled" defaultValue="true" description="Toggles SDK detection features" />
 
     <!-- FileBasedIndex / SerializationManager is quite important and in any case will be used, better to preload it -->
     <applicationService serviceInterface="com.intellij.util.indexing.FileBasedIndex"
-                        serviceImplementation="com.intellij.util.indexing.FileBasedIndexImpl" preload="true"/>
-    <vfs.asyncListener implementation="com.intellij.util.indexing.FileBasedIndexImpl$ChangedFilesCollector"/>
+                        serviceImplementation="com.intellij.util.indexing.FileBasedIndexImpl" preload="notLightEdit"/>
+    <vfs.asyncListener implementation="com.intellij.util.indexing.ChangedFilesCollector"/>
 
     <!-- required for any persistence state component (pathMacroSubstitutor.expandPaths), so, preload -->
     <applicationService serviceInterface="com.intellij.openapi.application.PathMacros"
                         serviceImplementation="com.intellij.ide.macro.IdePathMacros" preload="true"/>
 
     <applicationService serviceInterface="com.intellij.psi.stubs.StubIndex"
-                        serviceImplementation="com.intellij.psi.stubs.StubIndexImpl" preload="true"/>
+                        serviceImplementation="com.intellij.psi.stubs.StubIndexImpl" preload="notLightEdit"/>
 
     <!--
     <applicationService serviceInterface="com.intellij.codeInsight.completion.CompletionService"
@@ -277,8 +288,6 @@
     -->
     <projectService serviceInterface="com.intellij.codeHighlighting.TextEditorHighlightingPassRegistrar"
                     serviceImplementation="com.intellij.codeInsight.daemon.impl.TextEditorHighlightingPassRegistrarImpl"/>
-    <projectService serviceInterface="com.intellij.psi.text.BlockSupport"
-                    serviceImplementation="com.intellij.psi.impl.BlockSupportImpl"/>
     <projectService serviceInterface="com.intellij.psi.codeStyle.CodeStyleManager"
                     serviceImplementation="com.intellij.psi.impl.source.codeStyle.CodeStyleManagerImpl"/>
     <!--
@@ -483,11 +492,19 @@
     <search.topHitProvider implementation="com.intellij.application.options.editor.EditorOptionsTopHitProvider"/>
     -->
     <!-- MPS Patch-->
-    <applicationConfigurable groupId="editor" groupWeight="190" instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable" id="preferences.editor" key="title.editor"
+    <applicationConfigurable groupId="editor" groupWeight="190"
+                             instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable" id="preferences.editor" key="title.editor"
                              bundle="messages.ApplicationBundle" order="after preferences.lookFeel"
                              childrenEPName="com.intellij.editorOptionsProvider"/>
+    <!--
+    <applicationConfigurable groupId="editor" groupWeight="189"
+                             instance="com.intellij.application.options.editor.EditorCodeEditingConfigurable"
+                             id="preferences.editor.code.editing" key="title.code.editing"
+                             bundle="messages.ApplicationBundle"/>
+    -->
     <!--Editor Hints-->
-    <projectConfigurable groupId="editor" groupWeight="180" dynamic="true" instance="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintConfigurable"
+    <projectConfigurable groupId="editor" groupWeight="180" dynamic="true"
+                         instance="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintConfigurable"
                          displayName="Editor hints" order="after preferences.sourceCode" nonDefaultProject="true"/>
     <applicationConfigurable parentId="preferences.editor" instance="com.intellij.execution.console.ConsoleConfigurable" id="Console"
                              bundle="messages.IdeBundle" key="configurable.Console.display.name"/>
@@ -630,8 +647,6 @@
     <fileBasedIndex implementation="com.intellij.psi.impl.cache.impl.todo.TodoIndex"/>
     <fileBasedIndex implementation="com.intellij.psi.impl.cache.impl.id.IdIndexImpl"/>
     <fileBasedIndex implementation="com.intellij.psi.search.FilenameIndexImpl"/>
-    <applicationService serviceInterface="com.intellij.psi.search.FileNameIndexService"
-                        serviceImplementation="com.intellij.psi.search.FileNameIndexServiceImpl"/>
     <fileBasedIndex implementation="com.intellij.psi.search.FileTypeIndexImpl"/>
     <fileBasedIndex implementation="com.intellij.psi.stubs.StubUpdatingIndex"/>
 
@@ -996,10 +1011,6 @@
     <localInspection shortName="LongLine" bundle="messages.InspectionsBundle" key="long.line.display.name"
                      groupKey="inspection.general.tools.group.name" enabledByDefault="false"
                      level="WARNING" implementationClass="com.intellij.codeInspection.longLine.LongLineInspection"/>
-    <localInspection shortName="ProjectFingerprint" displayName="Project Fingerprint" bundle="messages.InspectionsBundle"
-                     groupKey="inspection.general.tools.group.name" enabledByDefault="false"
-                     level="WARNING" implementationClass="com.intellij.codeInspection.projectFingerprint.ProjectFingerprintInspection"
-                     presentation="com.intellij.codeInspection.projectFingerprint.ProjectFingerprintInspectionPresentation"/>
     <globalInspection shortName="RedundantSuppression" bundle="messages.InspectionsBundle" key="inspection.redundant.suppression.name"
                       groupKey="inspection.general.tools.group.name" enabledByDefault="true" level="WARNING"
                       implementationClass="com.intellij.codeInspection.RedundantSuppressInspection"/>
@@ -1070,7 +1081,7 @@
     <statistics.counterUsagesCollector groupId="searchEverywhere" version="3"/>
     <statistics.counterUsagesCollector groupId="actions.runAnything" version="1"/>
     <statistics.counterUsagesCollector groupId="surround.with" version="2"/>
-    <statistics.counterUsagesCollector groupId="find" version="2"/>
+    <statistics.counterUsagesCollector groupId="find" version="3"/>
     <statistics.counterUsagesCollector groupId="create.directory.dialog" version="1"/>
 
     <applicationService serviceImplementation="com.intellij.internal.statistic.persistence.ApprovedGroupsCacheConfigurable" />
@@ -1087,6 +1098,7 @@
 
     <inspectionsReportConverter implementation="com.intellij.codeInspection.ex.PlainTextFormatter"/>
     <inspectionsReportConverter implementation="com.intellij.codeInspection.ex.JsonInspectionsReportConverter"/>
+    <inspectionsReportConverter implementation="com.intellij.codeInspection.ex.JsonSingleFileInspectionsReportConverter"/>
 
     <documentationProvider implementation="com.intellij.openapi.paths.WebReferenceDocumentationProvider"/>
 
@@ -1143,7 +1155,12 @@
 
     <actionPromoter implementation="com.intellij.ui.EditorTextFieldActionPromoter"/>
     <actionPromoter implementation="com.intellij.codeInsight.editorActions.TabActionsPromoter"/>
+    -->
 
+    <projectService serviceImplementation="com.intellij.util.indexing.hash.building.IndexesExporter"/>
+    <projectService serviceImplementation="com.intellij.util.indexing.hash.building.ProjectIndexesExporter"/>
+
+    <!--
     <stepsBeforeRunProvider implementation="com.intellij.execution.impl.RunConfigurationBeforeRunProvider"/>
 
     <lang.foldingBuilder language="TEXT" implementationClass="com.intellij.ide.highlighter.custom.impl.CustomFileTypeFoldingBuilder"/>
@@ -1367,6 +1384,13 @@
                     serviceImplementation="com.intellij.codeInsight.daemon.impl.HectorComponentFactoryImpl"/>
     -->
     <editorFactoryListener implementation="com.intellij.internal.statistic.fileTypes.UpdateComponentEditorListener"/>
+
+    <applicationService serviceImplementation="com.intellij.util.indexing.IndexableSetContributorModificationTracker"/>
+
+    <applicationService serviceInterface="com.intellij.util.indexing.hash.SharedIndexChunkConfiguration"
+                        serviceImplementation="com.intellij.util.indexing.hash.SharedIndexChunkConfigurationImpl"/>
+    <sharedIndexChunkLocator implementation="com.intellij.util.indexing.provided.OnDiskSharedIndexChunkLocator"/>
+    <sharedIndexLoader implementation="com.intellij.util.indexing.provided.OnDiskSharedIndexChunkLocator"/>
   </extensions>
 </idea-plugin>
 
