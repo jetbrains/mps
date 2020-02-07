@@ -708,7 +708,7 @@
       <node id="1376744028423472781" at="65,7,66,39" concept="12" />
       <node id="1400826623542832162" at="71,56,72,56" concept="12" />
       <node id="1400826623542832186" at="75,57,76,101" concept="12" />
-      <node id="1400826623542832086" at="80,43,81,95" concept="11" />
+      <node id="1400826623542832086" at="80,43,81,88" concept="11" />
       <node id="1400826623542832131" at="83,43,84,69" concept="12" />
       <node id="1376744028423472727" at="88,76,89,20" concept="11" />
       <node id="1376744028423472734" at="89,20,90,19" concept="11" />
@@ -779,7 +779,7 @@
       <node id="5130910134095705956" at="107,0,111,0" concept="10" trace="getActionTitle#()Ljava/lang/String;" />
       <node id="6989360587248027384" at="111,0,115,0" concept="10" trace="getAffectedVcsName#()Ljava/lang/String;" />
       <node id="1376744028423472578" at="41,12,46,26" concept="11" />
-      <node id="1400826623542832122" at="81,95,86,7" concept="12" />
+      <node id="1400826623542832122" at="81,88,86,7" concept="12" />
       <node id="1376744028423472717" at="91,55,96,7" concept="9" />
       <node id="1376744028423472759" at="100,5,105,5" concept="9" />
       <node id="6331978077868595715" at="119,12,124,9" concept="12" />
@@ -1167,7 +1167,7 @@
       </scope>
       <unit id="7063426303671974747" at="60,48,64,7" name="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller$1" />
       <unit id="7063426303671974760" at="67,52,71,7" name="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller$2" />
-      <unit id="9048031662360036901" at="110,134,114,5" name="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller$3" />
+      <unit id="9048031662360036901" at="110,127,114,5" name="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller$3" />
       <unit id="7063426303671923441" at="117,51,121,5" name="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller$4" />
       <unit id="7063426303672144301" at="165,92,169,5" name="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller$5" />
       <unit id="572687202609936946" at="29,0,176,0" name="jetbrains.mps.vcs.platform.mergedriver.GitMergeDriverInstaller" />

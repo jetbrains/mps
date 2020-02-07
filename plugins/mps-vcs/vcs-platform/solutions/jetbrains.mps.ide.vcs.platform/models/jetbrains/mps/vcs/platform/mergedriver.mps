@@ -1181,19 +1181,15 @@
               </node>
             </node>
             <node concept="2OqwBi" id="1dKJ6hCbyJq" role="33vP2m">
-              <node concept="2OqwBi" id="1dKJ6hCbyJr" role="2Oq$k0">
-                <node concept="37vLTw" id="2BHiRxeun6u" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1crbmp8Of6C" resolve="myProject" />
-                </node>
-                <node concept="liA8E" id="1dKJ6hCbyJt" role="2OqNvi">
-                  <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="1dKJ6hCbyJu" role="37wK5m">
-                    <ref role="3VsUkX" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-                  </node>
-                </node>
-              </node>
               <node concept="liA8E" id="1dKJ6hCbyJv" role="2OqNvi">
                 <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getAllVcsRoots()" resolve="getAllVcsRoots" />
+              </node>
+              <node concept="2YIFZM" id="1Ctxzt5vB5y" role="2Oq$k0">
+                <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                <node concept="37vLTw" id="1Ctxzt5vCnd" role="37wK5m">
+                  <ref role="3cqZAo" node="1crbmp8Of6C" resolve="myProject" />
+                </node>
               </node>
             </node>
           </node>
@@ -2892,19 +2888,15 @@
             <node concept="2OqwBi" id="7Qh4dIZtgor" role="2Oq$k0">
               <node concept="2OqwBi" id="7Qh4dIZtgos" role="2Oq$k0">
                 <node concept="2OqwBi" id="7Qh4dIZtgot" role="2Oq$k0">
-                  <node concept="2OqwBi" id="7Qh4dIZtgou" role="2Oq$k0">
-                    <node concept="37vLTw" id="7Qh4dIZtgov" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1crbmp8Of6C" resolve="myProject" />
-                    </node>
-                    <node concept="liA8E" id="7Qh4dIZtgow" role="2OqNvi">
-                      <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                      <node concept="3VsKOn" id="7Qh4dIZtgox" role="37wK5m">
-                        <ref role="3VsUkX" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="liA8E" id="7Qh4dIZtgoy" role="2OqNvi">
                     <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getAllVcsRoots()" resolve="getAllVcsRoots" />
+                  </node>
+                  <node concept="2YIFZM" id="1Ctxzt5vwc$" role="2Oq$k0">
+                    <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                    <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                    <node concept="37vLTw" id="1Ctxzt5vxa5" role="37wK5m">
+                      <ref role="3cqZAo" node="1crbmp8Of6C" resolve="myProject" />
+                    </node>
                   </node>
                 </node>
                 <node concept="39bAoz" id="7Qh4dIZtgoz" role="2OqNvi" />

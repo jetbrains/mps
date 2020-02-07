@@ -7573,19 +7573,15 @@
                           <node concept="3clFbS" id="491od_XOIRF" role="2LFqv$">
                             <node concept="3clFbJ" id="491od_XOIRG" role="3cqZAp">
                               <node concept="2OqwBi" id="491od_XOIRH" role="3clFbw">
-                                <node concept="2OqwBi" id="491od_XOIRI" role="2Oq$k0">
-                                  <node concept="37vLTw" id="3GM_nagTwJi" role="2Oq$k0">
+                                <node concept="liA8E" id="1Ctxzt5uBGK" role="2OqNvi">
+                                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.isBackgroundVcsOperationRunning()" resolve="isBackgroundVcsOperationRunning" />
+                                </node>
+                                <node concept="2YIFZM" id="1Ctxzt5uVtN" role="2Oq$k0">
+                                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                                  <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                                  <node concept="37vLTw" id="1Ctxzt5uVyd" role="37wK5m">
                                     <ref role="3cqZAo" node="491od_XOIRD" resolve="project" />
                                   </node>
-                                  <node concept="liA8E" id="491od_XOIRK" role="2OqNvi">
-                                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                                    <node concept="3VsKOn" id="491od_XOIRL" role="37wK5m">
-                                      <ref role="3VsUkX" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="liA8E" id="491od_XOIRM" role="2OqNvi">
-                                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.isBackgroundVcsOperationRunning()" resolve="isBackgroundVcsOperationRunning" />
                                 </node>
                               </node>
                               <node concept="3clFbS" id="491od_XOIRN" role="3clFbx">

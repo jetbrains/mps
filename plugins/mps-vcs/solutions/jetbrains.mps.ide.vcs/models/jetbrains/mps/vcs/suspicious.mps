@@ -1180,29 +1180,14 @@
             </node>
           </node>
           <node concept="3clFbS" id="45jbFh0K4Qn" role="2LFqv$">
-            <node concept="3cpWs8" id="45jbFh0K4Qo" role="3cqZAp">
-              <node concept="3cpWsn" id="45jbFh0K4Qp" role="3cpWs9">
-                <property role="TrG5h" value="vcsMan" />
-                <node concept="3uibUv" id="45jbFh0K4Qq" role="1tU5fm">
-                  <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-                </node>
-                <node concept="2OqwBi" id="45jbFh0K4Qr" role="33vP2m">
-                  <node concept="37vLTw" id="3GM_nagTt0h" role="2Oq$k0">
-                    <ref role="3cqZAo" node="45jbFh0K4Ql" resolve="p" />
-                  </node>
-                  <node concept="liA8E" id="45jbFh0K4Qt" role="2OqNvi">
-                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="45jbFh0K4Qu" role="37wK5m">
-                      <ref role="3VsUkX" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3clFbJ" id="45jbFh0K4Qv" role="3cqZAp">
               <node concept="2OqwBi" id="45jbFh0K4Qw" role="3clFbw">
-                <node concept="37vLTw" id="3GM_nagTAqq" role="2Oq$k0">
-                  <ref role="3cqZAo" node="45jbFh0K4Qp" resolve="vcsMan" />
+                <node concept="2YIFZM" id="1Ctxzt5uXVb" role="2Oq$k0">
+                  <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                  <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                  <node concept="37vLTw" id="1Ctxzt5uXWX" role="37wK5m">
+                    <ref role="3cqZAo" node="45jbFh0K4Ql" resolve="p" />
+                  </node>
                 </node>
                 <node concept="liA8E" id="45jbFh0K4Qy" role="2OqNvi">
                   <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.isBackgroundVcsOperationRunning()" resolve="isBackgroundVcsOperationRunning" />
