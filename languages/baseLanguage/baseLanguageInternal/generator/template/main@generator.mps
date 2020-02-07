@@ -36,6 +36,12 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
+      <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
+        <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+      </concept>
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+        <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -1499,6 +1505,23 @@
             </node>
           </node>
         </node>
+        <node concept="2AHcQZ" id="64p9aapWsQb" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+          <node concept="2b32R4" id="64p9aapWzm_" role="lGtFl">
+            <node concept="3JmXsc" id="64p9aapWzmA" role="2P8S$">
+              <node concept="3clFbS" id="64p9aapWzmB" role="2VODD2">
+                <node concept="3clFbF" id="64p9aapWzne" role="3cqZAp">
+                  <node concept="2OqwBi" id="64p9aapWzRp" role="3clFbG">
+                    <node concept="30H73N" id="64p9aapWznd" role="2Oq$k0" />
+                    <node concept="3Tsc0h" id="64p9aapW$FE" role="2OqNvi">
+                      <ref role="3TtcxE" to="tpee:hiAJF2X" resolve="annotation" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
   </node>
@@ -1688,6 +1711,23 @@
                     <node concept="30H73N" id="6LinJfWuf3Z" role="2Oq$k0" />
                     <node concept="3Tsc0h" id="6LinJfWuf40" role="2OqNvi">
                       <ref role="3TtcxE" to="tpee:fWEKbgp" resolve="implementedInterface" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="64p9aapWqFZ" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+          <node concept="2b32R4" id="64p9aapWwA3" role="lGtFl">
+            <node concept="3JmXsc" id="64p9aapWwA4" role="2P8S$">
+              <node concept="3clFbS" id="64p9aapWwA5" role="2VODD2">
+                <node concept="3clFbF" id="64p9aapWwAG" role="3cqZAp">
+                  <node concept="2OqwBi" id="64p9aapWx6R" role="3clFbG">
+                    <node concept="30H73N" id="64p9aapWwAF" role="2Oq$k0" />
+                    <node concept="3Tsc0h" id="64p9aapWxV8" role="2OqNvi">
+                      <ref role="3TtcxE" to="tpee:hiAJF2X" resolve="annotation" />
                     </node>
                   </node>
                 </node>
