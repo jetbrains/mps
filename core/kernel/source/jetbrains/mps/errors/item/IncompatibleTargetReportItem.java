@@ -16,6 +16,10 @@
 package jetbrains.mps.errors.item;
 
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -24,6 +28,12 @@ import org.jetbrains.mps.openapi.model.SReference;
 public class IncompatibleTargetReportItem extends NodeReportItemBase implements IssueKindReportItem, NodeReportItem {
   public IncompatibleTargetReportItem(SNodeReference node, String message) {
     super(MessageStatus.ERROR, node, message);
+  }
+
+  @Deprecated
+  @ToRemove(version = 201)
+  public static String createMessage(SConceptFeature link, SAbstractConcept expectedTarget, SConcept foundTarget) {
+    return "incompatible target concept in role \"" + link.getName() + "\": subconcept of \"" + expectedTarget + "\" expected, \"" + foundTarget + "\" found";
   }
 
   @Override
@@ -35,10 +45,19 @@ public class IncompatibleTargetReportItem extends NodeReportItemBase implements 
     public IncompatibleContainmentTargetReportItem(SNode childNode, String message) {
       super(childNode.getReference(), message);
     }
+
+    public IncompatibleContainmentTargetReportItem(SNode childNode) {
+      super(childNode.getReference(), createMessage(childNode.getContainmentLink(), childNode.getContainmentLink().getTargetConcept(), childNode.getConcept()));
+    }
   }
 
   public static class IncompatibleReferenceTargetReportItem extends IncompatibleTargetReportItem implements NodeFeatureReportItem {
     private final SReferenceLink myLink;
+
+    public IncompatibleReferenceTargetReportItem(SReference reference, SNode target) {
+      super(reference.getSourceNode().getReference(), createMessage(reference.getLink(), reference.getLink().getTargetConcept(), target.getConcept()));
+      myLink = reference.getLink();
+    }
 
     public IncompatibleReferenceTargetReportItem(SReference reference, String message) {
       super(reference.getSourceNode().getReference(), message);
