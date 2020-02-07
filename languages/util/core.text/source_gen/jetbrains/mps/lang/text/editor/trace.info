@@ -2398,44 +2398,31 @@
       <node id="5287311640335482754" at="39,59,40,132" concept="4" />
       <node id="5287311640335482768" at="40,132,41,88" concept="4" />
       <node id="5287311640335482764" at="45,125,46,30" concept="10" />
-      <node id="5287311640345196322" at="48,99,49,35" concept="10" />
-      <node id="5287311640345210456" at="50,7,51,29" concept="10" />
-      <node id="5287311640348739987" at="53,60,54,35" concept="9" />
-      <node id="5287311640348767813" at="55,102,56,28" concept="4" />
-      <node id="5287311640348724738" at="57,7,58,0" concept="12" />
-      <node id="5287311640335488821" at="58,0,59,67" concept="9" />
-      <node id="1732176556418098504" at="59,67,60,0" concept="12" />
-      <node id="1732176556418066513" at="61,25,62,112" concept="10" />
-      <node id="1732176556418098777" at="63,7,64,0" concept="12" />
-      <node id="5287311640335482773" at="65,127,66,36" concept="10" />
-      <node id="5287311640335482787" at="67,73,68,29" concept="10" />
-      <node id="5287311640335482794" at="69,75,70,31" concept="10" />
-      <node id="5287311640335482796" at="71,7,72,28" concept="10" />
-      <node id="5287311640335482762" at="74,57,75,45" concept="10" />
-      <node id="5287311640335482029" at="80,0,81,0" concept="13" trace="Word$AM" />
-      <node id="5287311640335482029" at="84,0,85,0" concept="13" trace="url$WUb8" />
-      <node id="5287311640335482029" at="85,0,86,0" concept="13" trace="bold$WTX$" />
-      <node id="5287311640335482029" at="86,0,87,0" concept="13" trace="italic$WTZ1" />
+      <node id="5287311640345210456" at="47,7,48,29" concept="10" />
+      <node id="5287311640335488821" at="50,60,51,67" concept="9" />
+      <node id="5287311640335482773" at="52,127,53,36" concept="10" />
+      <node id="5287311640335482787" at="54,73,55,29" concept="10" />
+      <node id="5287311640335482794" at="56,75,57,31" concept="10" />
+      <node id="5287311640335482796" at="58,7,59,28" concept="10" />
+      <node id="5287311640335482762" at="61,57,62,45" concept="10" />
+      <node id="5287311640335482029" at="67,0,68,0" concept="13" trace="Word$AM" />
+      <node id="5287311640335482029" at="71,0,72,0" concept="13" trace="url$WUb8" />
+      <node id="5287311640335482029" at="72,0,73,0" concept="13" trace="italic$WTZ1" />
+      <node id="5287311640335482029" at="73,0,74,0" concept="13" trace="bold$WTX$" />
       <node id="5287311640335482221" at="34,0,37,0" concept="3" trace="WordTextStyleStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5287311640335482757" at="44,62,47,7" concept="7" />
-      <node id="5287311640345154226" at="47,7,50,7" concept="7" />
-      <node id="5287311640348725935" at="54,35,57,7" concept="7" />
-      <node id="1732176556418064988" at="60,0,63,7" concept="7" />
-      <node id="5287311640335482762" at="74,0,77,0" concept="14" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
+      <node id="5287311640335482762" at="61,0,64,0" concept="14" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
       <node id="5287311640335482221" at="38,0,43,0" concept="8" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
       <node id="5287311640335482221" at="26,0,32,0" concept="14" trace="apply_WordTextStyle#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="5287311640335482771" at="64,0,71,7" concept="7" />
-      <node id="5287311640335482755" at="44,0,53,0" concept="8" trace="_StyleParameter_QueryFunction_vsrnlz_a0a#()Ljava/awt/Color;" />
-      <node id="5287311640335482769" at="53,0,74,0" concept="8" trace="_StyleParameter_QueryFunction_vsrnlz_a1a#()I" />
+      <node id="5287311640335482755" at="44,0,50,0" concept="8" trace="_StyleParameter_QueryFunction_vsrnlz_a0a#()Ljava/awt/Color;" />
+      <node id="5287311640335482771" at="51,67,58,7" concept="7" />
+      <node id="5287311640335482769" at="50,0,61,0" concept="8" trace="_StyleParameter_QueryFunction_vsrnlz_a1a#()I" />
       <scope id="5287311640335482221" at="34,77,35,33" />
       <scope id="5287311640335482763" at="45,125,46,30" />
-      <scope id="5287311640345154228" at="48,99,49,35" />
-      <scope id="5287311640348725936" at="55,102,56,28" />
-      <scope id="1732176556418064990" at="61,25,62,112" />
-      <scope id="5287311640335482772" at="65,127,66,36" />
-      <scope id="5287311640335482786" at="67,73,68,29" />
-      <scope id="5287311640335482793" at="69,75,70,31" />
-      <scope id="5287311640335482762" at="74,57,75,45" />
+      <scope id="5287311640335482772" at="52,127,53,36" />
+      <scope id="5287311640335482786" at="54,73,55,29" />
+      <scope id="5287311640335482793" at="56,75,57,31" />
+      <scope id="5287311640335482762" at="61,57,62,45" />
       <scope id="5287311640335482221" at="39,59,41,88" />
       <scope id="5287311640335482221" at="27,78,30,78">
         <var name="editorContext" id="5287311640335482221" />
@@ -2445,9 +2432,10 @@
         <var name="editorContext" id="5287311640335482221" />
         <var name="node" id="5287311640335482221" />
       </scope>
-      <scope id="5287311640335482762" at="74,0,77,0">
+      <scope id="5287311640335482762" at="61,0,64,0">
         <var name="str" id="5287311640335482762" />
       </scope>
+      <scope id="5287311640335482756" at="44,62,48,29" />
       <scope id="5287311640335482221" at="38,0,43,0">
         <var name="editorCell" id="5287311640335482221" />
         <var name="style" id="5287311640335482221" />
@@ -2456,17 +2444,15 @@
         <var name="editorCell" id="5287311640335482221" />
         <var name="style" id="5287311640335482221" />
       </scope>
-      <scope id="5287311640335482756" at="44,62,51,29" />
-      <scope id="5287311640335482755" at="44,0,53,0" />
-      <scope id="5287311640335482770" at="53,60,72,28">
-        <var name="forceItalics" id="5287311640348739990" />
+      <scope id="5287311640335482755" at="44,0,50,0" />
+      <scope id="5287311640335482770" at="50,60,59,28">
         <var name="word" id="5287311640335488824" />
       </scope>
-      <scope id="5287311640335482769" at="53,0,74,0" />
-      <unit id="5287311640335482029" at="79,0,82,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet$CONCEPTS" />
-      <unit id="5287311640335482029" at="83,0,88,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet$PROPS" />
-      <unit id="5287311640335482221" at="33,0,78,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet$WordTextStyleStyleClass" />
-      <unit id="5287311640335482029" at="21,0,89,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet" />
+      <scope id="5287311640335482769" at="50,0,61,0" />
+      <unit id="5287311640335482029" at="66,0,69,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet$CONCEPTS" />
+      <unit id="5287311640335482029" at="70,0,75,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet$PROPS" />
+      <unit id="5287311640335482221" at="33,0,65,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet$WordTextStyleStyleClass" />
+      <unit id="5287311640335482029" at="21,0,76,0" name="jetbrains.mps.lang.text.editor.TextStyles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)/5287311640348708847">

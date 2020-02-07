@@ -445,20 +445,11 @@
       <concept id="5329678514806335510" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Concepts" flags="ng" index="1rTJD9">
         <child id="2857509971901910028" name="concepts" index="AZAoy" />
       </concept>
-      <concept id="3982520150125052579" name="jetbrains.mps.lang.editor.structure.QueryFunction_AttributeStyleParameter" flags="ig" index="3sjG9q" />
       <concept id="730181322658904464" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_IncludeMenu" flags="ng" index="1s_PAr">
         <child id="730181322658904467" name="menuReference" index="1s_PAo" />
       </concept>
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
-      <concept id="3982520150113085419" name="jetbrains.mps.lang.editor.structure.StyleAttributeDeclaration" flags="ig" index="3t5Usi">
-        <child id="3982520150113147643" name="defaultValue" index="3t49C2" />
-        <child id="3982520150113092206" name="valueType" index="3t5Oan" />
-      </concept>
       <concept id="1174088067129" name="jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChildPrimary" flags="ng" index="1t6y$C" />
-      <concept id="3982520150122341378" name="jetbrains.mps.lang.editor.structure.AttributeStyleClassItem" flags="lg" index="3tD6jV">
-        <reference id="3982520150122346707" name="attribute" index="3tD7wE" />
-        <child id="3982520150122341379" name="query" index="3tD6jU" />
-      </concept>
       <concept id="4526149749187797167" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_StyledText" flags="nn" index="1unZQo" />
       <concept id="9122903797336200704" name="jetbrains.mps.lang.editor.structure.ApplyStyleClassCondition" flags="lg" index="1uO$qF">
         <child id="9122903797336200706" name="query" index="1uO$qD" />
@@ -13036,53 +13027,6 @@
         </node>
       </node>
     </node>
-    <node concept="3t5Usi" id="4_wjuLFCQYX" role="V601i">
-      <property role="TrG5h" value="forceDarkGray" />
-      <node concept="3uibUv" id="4_wjuLFCRh$" role="3t5Oan">
-        <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
-      </node>
-      <node concept="10M0yZ" id="4_wjuLFCRi_" role="3t49C2">
-        <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
-        <ref role="3cqZAo" to="wyt6:~Boolean.FALSE" resolve="FALSE" />
-      </node>
-    </node>
-    <node concept="3t5Usi" id="4_wjuLFLOXI" role="V601i">
-      <property role="TrG5h" value="forceItalicStyle" />
-      <node concept="3uibUv" id="4_wjuLFLOXJ" role="3t5Oan">
-        <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
-      </node>
-      <node concept="10M0yZ" id="4_wjuLFLOXK" role="3t49C2">
-        <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
-        <ref role="3cqZAo" to="wyt6:~Boolean.FALSE" resolve="FALSE" />
-      </node>
-    </node>
-    <node concept="14StLt" id="1w9Vmqd$dR$" role="V601i">
-      <property role="TrG5h" value="CommentLine" />
-      <node concept="3tD6jV" id="4_wjuLFCRjC" role="3F10Kt">
-        <ref role="3tD7wE" node="4_wjuLFCQYX" resolve="forceDarkGray" />
-        <node concept="3sjG9q" id="4_wjuLFCRjE" role="3tD6jU">
-          <node concept="3clFbS" id="4_wjuLFCRjG" role="2VODD2">
-            <node concept="3clFbF" id="4_wjuLFCRo3" role="3cqZAp">
-              <node concept="3clFbT" id="4_wjuLFCRo2" role="3clFbG">
-                <property role="3clFbU" value="true" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3tD6jV" id="4_wjuLFLPRD" role="3F10Kt">
-        <ref role="3tD7wE" node="4_wjuLFLOXI" resolve="forceItalicStyle" />
-        <node concept="3sjG9q" id="4_wjuLFLPRF" role="3tD6jU">
-          <node concept="3clFbS" id="4_wjuLFLPRG" role="2VODD2">
-            <node concept="3clFbF" id="4_wjuLFLPRH" role="3cqZAp">
-              <node concept="3clFbT" id="4_wjuLFLPRI" role="3clFbG">
-                <property role="3clFbU" value="true" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="14StLt" id="hshO_Yc" role="V601i">
       <property role="TrG5h" value="Comment" />
       <node concept="2lhJJ2" id="4IkflqMjM1L" role="14Sbyx" />
@@ -17729,17 +17673,16 @@
     <ref role="1XX52x" to="tpee:5vlcUuJ5uOU" resolve="SingleLineComment" />
     <node concept="3EZMnI" id="5vlcUuJ5JXQ" role="2wV5jI">
       <ref role="1ERwB7" node="3_j0yXiPdVv" resolve="SingleLineComment_ExternalCollection_Actions" />
+      <ref role="1k5W1q" node="hshO_Yc" resolve="Comment" />
       <node concept="3F0ifn" id="40vhf9WmgUR" role="3EZMnx">
         <property role="3F0ifm" value="//" />
         <ref role="1ERwB7" node="5mGEVCe5SFh" resolve="UncommentSingleLineComment" />
-        <ref role="1k5W1q" node="hshO_Yc" resolve="Comment" />
         <node concept="Vb9p2" id="4ov_DcGTVH8" role="3F10Kt">
           <property role="Vbekb" value="BOLD_ITALIC" />
         </node>
       </node>
       <node concept="3F1sOY" id="7fQBo8Te9je" role="3EZMnx">
         <ref role="1NtTu8" to="tpee:7fQBo8T7qsS" resolve="line" />
-        <ref role="1k5W1q" node="1w9Vmqd$dR$" resolve="CommentLine" />
         <ref role="34QXea" node="6aLxtilCzZe" resolve="SingleLineCommentKeys" />
         <node concept="pkWqt" id="13gAna0aEcN" role="pqm2j">
           <node concept="3clFbS" id="13gAna0aEcO" role="2VODD2">
@@ -35900,10 +35843,9 @@
     <property role="3GE5qa" value="comments" />
     <ref role="1XX52x" to="tpee:1w9VmqdQ_lv" resolve="MultiLineComment" />
     <node concept="3EZMnI" id="1w9VmqdQO8g" role="2wV5jI">
-      <ref role="1k5W1q" node="1w9Vmqd$dR$" resolve="CommentLine" />
+      <ref role="1k5W1q" node="hshO_Yc" resolve="Comment" />
       <node concept="3F0ifn" id="1w9VmqdQO8M" role="3EZMnx">
         <property role="3F0ifm" value="/*" />
-        <ref role="1k5W1q" node="hshO_Yc" resolve="Comment" />
         <node concept="ljvvj" id="1w9VmqdQOa6" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>

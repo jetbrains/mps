@@ -45,23 +45,10 @@ public class TextStyles_StyleSheet {
       if (isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(getNode(), CONCEPTS.Word$AM), PROPS.url$WUb8))) {
         return MPSColors.BLUE;
       }
-      if (TextEditorHelper.isAttributeSet("forceDarkGray", getEditorContext().getSelectedCell())) {
-        return MPSColors.DARK_GRAY;
-      }
       return MPSColors.BLACK;
     }
     private int _StyleParameter_QueryFunction_vsrnlz_a1a() {
-      boolean forceItalics = false;
-      if (TextEditorHelper.isAttributeSet("forceItalicStyle", getEditorContext().getSelectedCell())) {
-        forceItalics = true;
-      }
-
       SNode word = SNodeOperations.as(getNode(), CONCEPTS.Word$AM);
-
-      if (forceItalics) {
-        return (SPropertyOperations.getBoolean(word, PROPS.bold$WTX$) ? MPSFonts.BOLD_ITALIC : MPSFonts.ITALIC);
-      }
-
       if (SPropertyOperations.getBoolean(word, PROPS.bold$WTX$) && (SPropertyOperations.getBoolean(word, PROPS.italic$WTZ1))) {
         return MPSFonts.BOLD_ITALIC;
       } else if (SPropertyOperations.getBoolean(word, PROPS.bold$WTX$)) {
@@ -82,7 +69,7 @@ public class TextStyles_StyleSheet {
 
   private static final class PROPS {
     /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
-    /*package*/ static final SProperty bold$WTX$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
     /*package*/ static final SProperty italic$WTZ1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
+    /*package*/ static final SProperty bold$WTX$ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
   }
 }

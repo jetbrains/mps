@@ -229,7 +229,6 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.text.editor.TextEditorHelper" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.MPSFonts" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />

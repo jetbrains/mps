@@ -5760,29 +5760,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="4_wjuLFzTaM" role="3cqZAp">
-              <node concept="3clFbS" id="4_wjuLFzTaO" role="3clFbx">
-                <node concept="3cpWs6" id="4_wjuLF$3sy" role="3cqZAp">
-                  <node concept="10M0yZ" id="4_wjuLFQAPY" role="3cqZAk">
-                    <ref role="3cqZAo" to="lzb2:~JBColor.DARK_GRAY" resolve="DARK_GRAY" />
-                    <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
-                  </node>
-                </node>
-              </node>
-              <node concept="2YIFZM" id="4_wjuLFLvET" role="3clFbw">
-                <ref role="37wK5l" node="4_wjuLFLvvk" resolve="isAttributeSet" />
-                <ref role="1Pybhc" node="4_wjuLFLsZJ" resolve="TextEditorHelper" />
-                <node concept="Xl_RD" id="4_wjuLFLvRv" role="37wK5m">
-                  <property role="Xl_RC" value="forceDarkGray" />
-                </node>
-                <node concept="2OqwBi" id="4_wjuLFLwGJ" role="37wK5m">
-                  <node concept="1Q80Hx" id="4_wjuLFLwGK" role="2Oq$k0" />
-                  <node concept="liA8E" id="4_wjuLFLwGL" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedCell()" resolve="getSelectedCell" />
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs6" id="4_wjuLF$6To" role="3cqZAp">
               <node concept="10M0yZ" id="4_wjuLFQAZ_" role="3cqZAk">
                 <ref role="3cqZAo" to="lzb2:~JBColor.BLACK" resolve="BLACK" />
@@ -5796,41 +5773,6 @@
         <property role="Vbekb" value="hL7GYu6/QUERY" />
         <node concept="17KAyr" id="4_wjuLEYZYh" role="17MNgL">
           <node concept="3clFbS" id="4_wjuLEYZYi" role="2VODD2">
-            <node concept="3cpWs8" id="4_wjuLFL$Aj" role="3cqZAp">
-              <node concept="3cpWsn" id="4_wjuLFL$Am" role="3cpWs9">
-                <property role="TrG5h" value="forceItalics" />
-                <node concept="10P_77" id="4_wjuLFL$Ah" role="1tU5fm" />
-                <node concept="3clFbT" id="4_wjuLFLDC9" role="33vP2m" />
-              </node>
-            </node>
-            <node concept="3clFbJ" id="4_wjuLFLxaJ" role="3cqZAp">
-              <node concept="3clFbS" id="4_wjuLFLxaK" role="3clFbx">
-                <node concept="3clFbF" id="4_wjuLFLFp5" role="3cqZAp">
-                  <node concept="37vLTI" id="4_wjuLFLHdI" role="3clFbG">
-                    <node concept="3clFbT" id="4_wjuLFLJ1e" role="37vLTx">
-                      <property role="3clFbU" value="true" />
-                    </node>
-                    <node concept="37vLTw" id="4_wjuLFLFp2" role="37vLTJ">
-                      <ref role="3cqZAo" node="4_wjuLFL$Am" resolve="forceItalics" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="2YIFZM" id="4_wjuLFLxaN" role="3clFbw">
-                <ref role="37wK5l" node="4_wjuLFLvvk" resolve="isAttributeSet" />
-                <ref role="1Pybhc" node="4_wjuLFLsZJ" resolve="TextEditorHelper" />
-                <node concept="Xl_RD" id="4_wjuLFLxaO" role="37wK5m">
-                  <property role="Xl_RC" value="forceItalicStyle" />
-                </node>
-                <node concept="2OqwBi" id="4_wjuLFLxaP" role="37wK5m">
-                  <node concept="1Q80Hx" id="4_wjuLFLxaQ" role="2Oq$k0" />
-                  <node concept="liA8E" id="4_wjuLFLxaR" role="2OqNvi">
-                    <ref role="37wK5l" to="cj4x:~EditorContext.getSelectedCell()" resolve="getSelectedCell" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbH" id="4_wjuLFLwS2" role="3cqZAp" />
             <node concept="3cpWs8" id="4_wjuLEZ1sP" role="3cqZAp">
               <node concept="3cpWsn" id="4_wjuLEZ1sS" role="3cpWs9">
                 <property role="TrG5h" value="word" />
@@ -5846,35 +5788,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbH" id="1w9VmqdzQl8" role="3cqZAp" />
-            <node concept="3clFbJ" id="1w9VmqdzI9s" role="3cqZAp">
-              <node concept="3clFbS" id="1w9VmqdzI9u" role="3clFbx">
-                <node concept="3cpWs6" id="1w9VmqdzIxh" role="3cqZAp">
-                  <node concept="3K4zz7" id="1w9VmqdzNGU" role="3cqZAk">
-                    <node concept="10M0yZ" id="1w9VmqdzOkC" role="3K4E3e">
-                      <ref role="3cqZAo" to="exr9:~MPSFonts.BOLD_ITALIC" resolve="BOLD_ITALIC" />
-                      <ref role="1PxDUh" to="exr9:~MPSFonts" resolve="MPSFonts" />
-                    </node>
-                    <node concept="2OqwBi" id="1w9VmqdzLnQ" role="3K4Cdx">
-                      <node concept="37vLTw" id="1w9VmqdzJAF" role="2Oq$k0">
-                        <ref role="3cqZAo" node="4_wjuLEZ1sS" resolve="word" />
-                      </node>
-                      <node concept="3TrcHB" id="1w9VmqdzLRx" role="2OqNvi">
-                        <ref role="3TsBF5" to="zqge:5vhYBWEWthY" resolve="bold" />
-                      </node>
-                    </node>
-                    <node concept="10M0yZ" id="1w9VmqdzOGj" role="3K4GZi">
-                      <ref role="3cqZAo" to="exr9:~MPSFonts.ITALIC" resolve="ITALIC" />
-                      <ref role="1PxDUh" to="exr9:~MPSFonts" resolve="MPSFonts" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="37vLTw" id="1w9VmqdzIdN" role="3clFbw">
-                <ref role="3cqZAo" node="4_wjuLFL$Am" resolve="forceItalics" />
-              </node>
-            </node>
-            <node concept="3clFbH" id="1w9VmqdzQpp" role="3cqZAp" />
             <node concept="3clFbJ" id="4_wjuLEYZYj" role="3cqZAp">
               <node concept="3clFbS" id="4_wjuLEYZYk" role="3clFbx">
                 <node concept="3cpWs6" id="4_wjuLEYZYl" role="3cqZAp">

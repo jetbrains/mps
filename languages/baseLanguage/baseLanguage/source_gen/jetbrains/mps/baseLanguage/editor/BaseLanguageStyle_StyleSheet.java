@@ -9,7 +9,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.AbstractStyleClass;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.KEYWORD_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.FUNCTION_DECLARATION_StyleKey;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.LINE_COMMENT_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.TODO_StyleKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -27,6 +26,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.NOT_USED_EL
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.STATIC_METHOD_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.ANNOTATION_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.OPERATION_SIGN_StyleKey;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.PARENTH_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.BRACES_StyleKey;
@@ -79,16 +79,6 @@ public class BaseLanguageStyle_StyleSheet {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
     new FunctionDeclarationStyleClass(editorContext, node).apply(style, editorCell);
-  }
-  /**
-   * 
-   * @deprecated Since MPS 3.5 use generated StyleClass
-   */
-  @Deprecated
-  public static void apply_CommentLine(Style style, EditorCell editorCell) {
-    SNode node = (editorCell == null ? null : editorCell.getSNode());
-    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
-    new CommentLineStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -574,24 +564,6 @@ public class BaseLanguageStyle_StyleSheet {
     }
 
   }
-  public static class CommentLineStyleClass extends AbstractStyleClass {
-    public CommentLineStyleClass(EditorContext editorContext, SNode node) {
-      super(editorContext, node);
-    }
-
-    @Override
-    public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.baseLanguage", "forceDarkGray"), _StyleParameter_QueryFunction_the604_a0f());
-      style.set(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.baseLanguage", "forceItalicStyle"), _StyleParameter_QueryFunction_the604_a1f());
-    }
-
-    private Boolean _StyleParameter_QueryFunction_the604_a0f() {
-      return true;
-    }
-    private Boolean _StyleParameter_QueryFunction_the604_a1f() {
-      return true;
-    }
-  }
   public static class CommentStyleClass extends AbstractStyleClass {
     public CommentStyleClass(EditorContext editorContext, SNode node) {
       super(editorContext, node);
@@ -610,12 +582,12 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      if (_StyleParameter_QueryFunction_the604_a0h()) {
+      if (_StyleParameter_QueryFunction_the604_a0e()) {
         new TODO_StyleKey(2).apply(style);
       }
     }
 
-    private boolean _StyleParameter_QueryFunction_the604_a0h() {
+    private boolean _StyleParameter_QueryFunction_the604_a0e() {
       return (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.TextCommentPart$lb) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), CONCEPTS.TextCommentPart$lb))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.SingleLineComment$jI) && (boolean) SingleLineComment__BehaviorDescriptor.isTODOComment_idRbAU21$c$g.invoke(SNodeOperations.cast(getNode(), CONCEPTS.SingleLineComment$jI)));
     }
   }
@@ -961,12 +933,12 @@ public class BaseLanguageStyle_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       new METHOD_CALL_StyleKey().apply(style);
-      if (_StyleParameter_QueryFunction_the604_a1lb()) {
+      if (_StyleParameter_QueryFunction_the604_a1ib()) {
         new STATIC_METHOD_StyleKey().apply(style);
       }
     }
 
-    private boolean _StyleParameter_QueryFunction_the604_a1lb() {
+    private boolean _StyleParameter_QueryFunction_the604_a1ib() {
       return SNodeOperations.isInstanceOf(getNode(), CONCEPTS.StaticMethodDeclaration$eX);
     }
   }
@@ -977,21 +949,21 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      if (_StyleParameter_QueryFunction_the604_a0mb()) {
+      if (_StyleParameter_QueryFunction_the604_a0jb()) {
         new DEFAULT_CONSTANT_StyleKey().apply(style);
       }
-      if (_StyleParameter_QueryFunction_the604_a1mb()) {
+      if (_StyleParameter_QueryFunction_the604_a1jb()) {
         new DEFAULT_STATIC_FIELD_StyleKey().apply(style);
       }
-      if (_StyleParameter_QueryFunction_the604_a2mb()) {
+      if (_StyleParameter_QueryFunction_the604_a2jb()) {
         new DEFAULT_INSTANCE_FIELD_StyleKey().apply(style);
       }
-      if (_StyleParameter_QueryFunction_the604_a3mb()) {
+      if (_StyleParameter_QueryFunction_the604_a3jb()) {
         new DEFAULT_IDENTIFIER_StyleKey().apply(style);
       }
     }
 
-    private boolean _StyleParameter_QueryFunction_the604_a0mb() {
+    private boolean _StyleParameter_QueryFunction_the604_a0jb() {
       if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F)) {
         if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$9F))) {
           if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$xe) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$xe), PROPS.isFinal$hIht)) {
@@ -1001,7 +973,7 @@ public class BaseLanguageStyle_StyleSheet {
       }
       return false;
     }
-    private boolean _StyleParameter_QueryFunction_the604_a1mb() {
+    private boolean _StyleParameter_QueryFunction_the604_a1jb() {
       if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F)) {
         if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$9F))) {
           if (!((SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$xe) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$xe), PROPS.isFinal$hIht)))) {
@@ -1011,7 +983,7 @@ public class BaseLanguageStyle_StyleSheet {
       }
       return false;
     }
-    private boolean _StyleParameter_QueryFunction_the604_a2mb() {
+    private boolean _StyleParameter_QueryFunction_the604_a2jb() {
       if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F)) {
         if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$9F)))) {
           return true;
@@ -1019,7 +991,7 @@ public class BaseLanguageStyle_StyleSheet {
       }
       return false;
     }
-    private boolean _StyleParameter_QueryFunction_the604_a3mb() {
+    private boolean _StyleParameter_QueryFunction_the604_a3jb() {
       if (!(SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F))) {
         return true;
       }
