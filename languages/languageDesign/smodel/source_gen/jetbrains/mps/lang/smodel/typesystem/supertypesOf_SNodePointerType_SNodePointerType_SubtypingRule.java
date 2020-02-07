@@ -45,9 +45,9 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
   public boolean isWeak() {
     return false;
   }
-  private static SNode createSNodePointerType_to4p90_a0a0a1a4a1(SNode node0) {
+  private static SNode createSNodePointerType_to4p90_a0a0a1a4a1(SNode p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    rootBuilder1.setReferenceTarget(LINKS.concept$fJMt, node0);
+    rootBuilder1.setReferenceTarget(LINKS.concept$fJMt, p0);
     return rootBuilder1.getResult();
   }
   private static SNode createSNodePointerType_to4p90_a0a2a4a1() {

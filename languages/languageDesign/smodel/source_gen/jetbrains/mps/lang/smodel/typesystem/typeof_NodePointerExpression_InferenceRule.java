@@ -38,9 +38,9 @@ public class typeof_NodePointerExpression_InferenceRule extends AbstractInferenc
   public boolean overrides() {
     return false;
   }
-  private static SNode createSNodePointerType_xp3gkt_a1a0c0b0b(SNode node0) {
+  private static SNode createSNodePointerType_xp3gkt_a1a0c0b0b(SNode p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    rootBuilder1.setReferenceTarget(LINKS.concept$fJMt, node0);
+    rootBuilder1.setReferenceTarget(LINKS.concept$fJMt, p0);
     return rootBuilder1.getResult();
   }
 

@@ -275,6 +275,10 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
+      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
+        <child id="1196350785111" name="expression" index="2c44t1" />
+      </concept>
+      <concept id="1196350785117" name="jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation" flags="ng" index="2c44tb" />
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
         <child id="1196350785114" name="quotedNode" index="2c44tc" />
       </concept>
@@ -368,6 +372,10 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
+      </concept>
+      <concept id="3364660638048049745" name="jetbrains.mps.lang.core.structure.LinkAttribute" flags="ng" index="A9Btn">
+        <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
+        <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -6219,6 +6227,34 @@
     </node>
     <node concept="13hLZK" id="6TyNL3imBqr" role="13h7CW">
       <node concept="3clFbS" id="6TyNL3imBqs" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="6XhBjWIK$Of">
+    <property role="3GE5qa" value="enums" />
+    <ref role="13h7C2" to="tpce:2TR3acGo7Lv" resolve="EnumerationDeclaration" />
+    <node concept="13hLZK" id="6XhBjWIK$Og" role="13h7CW">
+      <node concept="3clFbS" id="6XhBjWIK$Oh" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="6XhBjWIK$Oq" role="13h7CS">
+      <property role="TrG5h" value="toBaseLanguageType" />
+      <ref role="13i0hy" node="hEwI9ym" resolve="toBaseLanguageType" />
+      <node concept="3Tm1VV" id="6XhBjWIK$Ov" role="1B3o_S" />
+      <node concept="3clFbS" id="6XhBjWIK$Ox" role="3clF47">
+        <node concept="3clFbF" id="6XhBjWIK$OA" role="3cqZAp">
+          <node concept="2c44tf" id="6XhBjWIK_0H" role="3clFbG">
+            <node concept="2ZThk1" id="6XhBjWIK_2E" role="2c44tc">
+              <node concept="2c44tb" id="6XhBjWIK_6t" role="lGtFl">
+                <property role="2qtEX8" value="enum" />
+                <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1240170042401/1240170836027" />
+                <node concept="13iPFW" id="6XhBjWIK_6W" role="2c44t1" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="6XhBjWIK$Oy" role="3clF45">
+        <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+      </node>
     </node>
   </node>
 </model>
