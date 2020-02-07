@@ -392,7 +392,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     private final SearchTaskImpl mySearchTask;
 
     public FindUsagesWithDialogAction(@NotNull SRepository repository, @NotNull SearchTaskImpl searchTask) {
-      super("Settings...", "Show find usages settings dialog", General.ProjectSettings);
+      super("Settings...", "Show find usages settings dialog", General.GearPlain);
       myRepository = repository;
       mySearchTask = searchTask;
     }

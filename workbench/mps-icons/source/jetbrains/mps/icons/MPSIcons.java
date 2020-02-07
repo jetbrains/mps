@@ -41,7 +41,7 @@ public class MPSIcons {
     public static final Icon ImportModulesFromFolder = IconLoader.getIcon("/actions/importModulesFromFolder.png");
     public static final Icon MigrationBulb = IconLoader.getIcon("/actions/migrationBulb.png");
     // todo: create icon
-    public static final Icon SuppressedError = new LayeredIcon(AllIcons.Nodes.ErrorMark, AllIcons.Actions.CloseNew);
+    public static final Icon SuppressedError = new LayeredIcon(AllIcons.Nodes.ErrorMark, AllIcons.Actions.Close);
     public static final Icon SearchedNodes = IconLoader.getIcon("/actions/searchedNodes.png");
     public static final Icon ShowCellInExplorer = IconLoader.getIcon("/actions/showCellInExplorer.png");
     public static final Icon ShowOnlyStrongSubtypes = IconLoader.getIcon("/actions/showOnlyStrongSubtypes.png");

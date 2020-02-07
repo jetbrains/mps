@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
+import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.Modules;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -194,7 +195,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   private JComponent createKindFileDeleteComponent(final SourceRoot sourceRoot) {
     final String tooltipText = "Remove";
-    return new IconActionComponent(Modules.DeleteContentFolder, Modules.DeleteContentFolderRollover, tooltipText, () -> {
+    return new IconActionComponent(Actions.Close, Actions.CloseHovered, tooltipText, () -> {
       myFileBasedModelRoot.removeSourceRoot(sourceRoot);
       updateUI();
     });

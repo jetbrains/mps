@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.search;
 
 import com.intellij.icons.AllIcons.Actions;
+import com.intellij.icons.AllIcons.ToolbarDecorator;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.editor.impl.EditorHeaderComponent;
 import com.intellij.openapi.util.SystemInfo;
@@ -105,7 +106,7 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
 
     JPanel tailPanel = new NonOpaquePanel(new BorderLayout(5, 0));
     JPanel tailContainer = new NonOpaquePanel(new BorderLayout(5, 0));
-    JLabel escapeLabel = new JLabel(Actions.Cross);
+    JLabel escapeLabel = new JLabel(Actions.Close);
 
     tailPanel.add(myFindResult, BorderLayout.CENTER);
     tailPanel.add(escapeLabel, BorderLayout.EAST);
@@ -393,7 +394,7 @@ public abstract class AbstractSearchPanel extends EditorHeaderComponent {
 
   private class FindAllAction extends AnAction {
     private FindAllAction() {
-      getTemplatePresentation().setIcon(Actions.Export);
+      getTemplatePresentation().setIcon(ToolbarDecorator.Export);
       getTemplatePresentation().setDescription("Export matches to Find tool window");
       getTemplatePresentation().setText("Find All");
       AnAction findNext = ActionManager.getInstance().getAction(MPSActions.EDITOR_FIND_NEXT);

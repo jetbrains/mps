@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.roots.editors;
 
+import com.intellij.icons.AllIcons.Actions;
 import com.intellij.icons.AllIcons.Modules;
 import com.intellij.ui.DarculaColors;
 import com.intellij.ui.Gray;
@@ -135,8 +136,8 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
 
     myHeaderLabel.setFont(myHeaderLabel.getFont().deriveFont(Font.BOLD));
     myHeaderLabel.setOpaque(false);
-    final IconActionComponent deleteIconComponent = new IconActionComponent(Modules.DeleteContentRoot,
-                                                                            Modules.DeleteContentRootRollover,
+    final IconActionComponent deleteIconComponent = new IconActionComponent(Actions.Close,
+                                                                            Actions.CloseHovered,
                                                                             "Delete Model Root",
                                                                             () -> myEventDispatcher.getMulticaster().delete(ModelRootEntryContainer.this));
     panel.add(myHeaderLabel, new GridBagConstraints(0, RELATIVE, 1, 1, 1.0, 1.0, NORTHWEST, HORIZONTAL, new Insets(0, 2, 0, 0), 0, 0));

@@ -17,6 +17,7 @@ package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor;
 
 import com.intellij.icons.AllIcons.General;
 import com.intellij.ui.LayeredIcon;
+import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.IconNodeUpdate;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import org.jetbrains.annotations.NotNull;
@@ -43,7 +44,7 @@ public class ModifiedMarker extends TreeUpdateVisitor {
     Icon icon = node.getBaseIcon();
     if (icon == null) {
       // XXX perhaps, I shall not update icon if there's no icon for the model?
-      icon = General.IjLogo;
+      icon = Nodes.Node;
     }
     if (changed) {
       icon = new LayeredIcon(icon, General.Modified);

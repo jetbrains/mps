@@ -462,7 +462,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
     private UsedLangsTableModel myEngagedLanguagesModel;
 
     public InfoTab() {
-      super(PropertiesBundle.message("model.info.title"), AllIcons.General.ExternalToolsSmall,
+      super(PropertiesBundle.message("model.info.title"), AllIcons.General.ExternalTools,
             PropertiesBundle.message("model.info.tip"));
       myIsDefSModelDescr = myInPlugin && myModelDescriptor instanceof DefaultSModelDescriptor;
     }

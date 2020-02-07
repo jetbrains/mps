@@ -121,7 +121,7 @@ public final class CommonPaths {
     addIfExists(result, "lib/ecj-4.13.jar");
     addIfExists(result, "plugins/java/lib/ecj-4.13.jar");
     // next are no longer needed. Kept as there's still use of ClassType.CORE in JdkStubSolutionManager
-    addIfExists(result, "lib/guava-27.1-jre.jar");
+    addIfExists(result, "lib/guava-28.2-jre.jar");
     addIfExists(result, "lib/xstream-1.4.11.1.jar");
     addIfExists(result, "lib/asm-all-7.0.1.jar");
   }
@@ -161,13 +161,13 @@ public final class CommonPaths {
     addRepackedIdeaJars(result);
     addIfExists(result, "lib/bcpkix-jdk15on-1.64.jar");
     addIfExists(result, "lib/bcprov-jdk15on-1.64.jar");
-    addIfExists(result, "lib/netty-buffer-4.1.43.Final.jar");
-    addIfExists(result, "lib/netty-codec-4.1.43.Final.jar");
-    addIfExists(result, "lib/netty-codec-http-4.1.43.Final.jar");
-    addIfExists(result, "lib/netty-common-4.1.43.Final.jar");
-    addIfExists(result, "lib/netty-handler-4.1.43.Final.jar");
-    addIfExists(result, "lib/netty-resolver-4.1.43.Final.jar");
-    addIfExists(result, "lib/netty-transport-4.1.43.Final.jar");
+    addIfExists(result, "lib/netty-buffer-4.1.45.Final.jar");
+    addIfExists(result, "lib/netty-codec-4.1.45.Final.jar");
+    addIfExists(result, "lib/netty-codec-http-4.1.45.Final.jar");
+    addIfExists(result, "lib/netty-common-4.1.45.Final.jar");
+    addIfExists(result, "lib/netty-handler-4.1.45.Final.jar");
+    addIfExists(result, "lib/netty-resolver-4.1.45.Final.jar");
+    addIfExists(result, "lib/netty-transport-4.1.45.Final.jar");
     addIfExists(result, "lib/commons-imaging-1.0-RC.jar");
     addIfExists(result, "lib/util.jar");
     addIfExists(result, "lib/extensions.jar");
