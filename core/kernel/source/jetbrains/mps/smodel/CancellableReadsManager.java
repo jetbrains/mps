@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -24,6 +26,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * @since 2018.3
  */
 /*package*/ final class CancellableReadsManager {
+  private final Logger myLog = Logger.getLogger(CancellableReadsManager.class);
+  private final boolean myLogEnabled = myLog.isDebugEnabled();
 
   private final ConcurrentLinkedQueue<CancellableReadAction> myQueue = new ConcurrentLinkedQueue<>();
 
@@ -37,18 +41,31 @@ import java.util.concurrent.ConcurrentLinkedQueue;
   // be explicit when caller knows Runnable is over, to avoid growing of the queue in case of repeated reads with no writes
   public void removeIfCanCancel(Runnable readAction) {
     if (readAction instanceof CancellableReadAction) {
-      myQueue.remove(readAction);
+      final boolean removed = myQueue.remove(readAction);
+      if (myLogEnabled) {
+        myLog.debug(String.format("Remove %s (found: %b)", str(readAction), removed));
+      }
     }
   }
 
   public void add(CancellableReadAction readAction) {
+    if (myLogEnabled) {
+      myLog.debug(String.format("Add %s", str(readAction)));
+    }
     myQueue.add(readAction);
   }
 
   public void cancel() {
     CancellableReadAction r;
     while ((r = myQueue.poll()) != null) {
+      if (myLogEnabled) {
+        myLog.debug(String.format("Cancel %s", str(r)));
+      }
       r.cancel();
     }
+  }
+
+  private static String str(Object a) {
+    return String.format("%s@%x[%s]", a.getClass().getName(), a.hashCode(), Thread.currentThread().getName());
   }
 }
