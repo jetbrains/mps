@@ -11,13 +11,11 @@
     <action id="jetbrains.mps.console.actions.ConsoleNext_Action" class="jetbrains.mps.console.actions.ConsoleNext_Action">
       <keyboard-shortcut first-keystroke="ctrl alt DOWN" keymap="$default" />
       <keyboard-shortcut first-keystroke="ctrl PAGE_DOWN" keymap="$default" />
-      <keyboard-shortcut first-keystroke="meta DOWN" keymap="Mac OS X" replace-all="true" />
       <keyboard-shortcut first-keystroke="meta DOWN" keymap="Mac OS X 10.5+" replace-all="true" />
     </action>
     <action id="jetbrains.mps.console.actions.ConsolePrev_Action" class="jetbrains.mps.console.actions.ConsolePrev_Action">
       <keyboard-shortcut first-keystroke="ctrl alt UP" keymap="$default" />
       <keyboard-shortcut first-keystroke="ctrl PAGE_UP" keymap="$default" />
-      <keyboard-shortcut first-keystroke="meta UP" keymap="Mac OS X" replace-all="true" />
       <keyboard-shortcut first-keystroke="meta UP" keymap="Mac OS X 10.5+" replace-all="true" />
     </action>
     <action id="jetbrains.mps.console.actions.ExecuteActionAttachedToCurrentNode_Action" class="jetbrains.mps.console.actions.ExecuteActionAttachedToCurrentNode_Action"></action>
