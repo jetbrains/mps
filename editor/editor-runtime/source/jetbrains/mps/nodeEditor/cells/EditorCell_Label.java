@@ -684,8 +684,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     }
     String oldText = getText();
     changeText(oldText.substring(0, startSelectionPosition) + text + oldText.substring(endSelectionPosition));
-    myTextLine.setCaretPosition(startSelectionPosition);
-    myTextLine.setCaretPosition(startSelectionPosition + text.length(), true);
+    myTextLine.setCaretPosition(startSelectionPosition + text.length());
     addChangeTextUndoableAction();
   }
 
