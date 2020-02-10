@@ -37,7 +37,6 @@ import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -51,6 +50,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
@@ -59,6 +59,7 @@ import java.util.function.Consumer;
 public final class ModelValidator {
   private final ComponentHost myComponentHost;
   private final SModel myModel;
+  private boolean mySkipUnlessLoaded = false;
 
   /**
    * @deprecated once use without CH gone, make it NotNull
@@ -75,15 +76,30 @@ public final class ModelValidator {
     myModel = model;
   }
 
+  /**
+   * For models that are not yet loaded, do not perform checks that may trigger its loading.
+   * In this case, only basic checks (like presence in a repository, model reference match, loading issues) are performed.
+   * By default, validation code doesn't care about 'not loaded' state.
+   * @return {@code this} for convenience
+   */
+  public ModelValidator skipUnlessLoaded() {
+    mySkipUnlessLoaded = true;
+    return this;
+  }
+
   public void validate(@NotNull Consumer<? super ModelReportItem> result, @NotNull ProgressMonitor progress) {
     final SModel model = myModel;
     final SRepository repository = model.getRepository();
     if (repository != null) {
       repository.getModelAccess().checkReadAccess();
     }
+    // FIXME I don't think it's right to exclude transients model here. Why can't I check a transient model, after all?
+    //       Perpahs, this check shall relocate to caller.
     if (model instanceof TransientSModel) {
       return;
     }
+
+    // First, check model attributes that don't require model data to get loaded
 
     if (model.getProblems().iterator().hasNext()) {
       for (SModel.Problem m : model.getProblems()) {
@@ -120,8 +136,8 @@ public final class ModelValidator {
         // Use of `((DefaultSModelDescriptor) model).getModelFactory()` would restore undesired [persistence] dependency.
         // Anyway, hiding ModelPersistence.LAST_VERSION logic behind ModelFactory.needsUpgrade() is much better approach
         // than the one used to be here (with knowledge of specific implementation internals and assumption about xml as default model factory kind).
-        ModelFactory actualModelFactory = ModelFactoryService.getInstance().getDefaultModelFactory(modelSourceType);
-        // FIXME ModelFactoryService.getInstance() is inevitable here until ValidationUtil is refactored to abandon its static essence.
+        final ModelFactoryService modelFactoryService = myComponentHost == null ? ModelFactoryService.getInstance() : myComponentHost.findComponent(ModelFactoryService.class);
+        ModelFactory actualModelFactory = modelFactoryService.getDefaultModelFactory(modelSourceType);
         if (actualModelFactory != null && actualModelFactory.supports(modelSource)) {
           try {
             if (actualModelFactory.needsUpgrade(modelSource)) {
@@ -143,11 +159,33 @@ public final class ModelValidator {
       result.accept(new ModelValidationProblem(model, MessageStatus.WARNING, "Model is detached from a repository, could not process further"));
       return; // force return
     }
-    if (model.getReference().resolve(repository) == null) {
+    final SModel repoInstance = model.getReference().resolve(repository);
+    if (repoInstance == null) {
       result.accept(new ModelValidationProblem(model, MessageStatus.ERROR, "Model's repository could not resolve the model by reference"));
       return; // force return
     }
+    if (repoInstance != model) {
+      result.accept(new ModelValidationProblem(model, MessageStatus.WARNING, "Instance of a model inside repository is not the same as the one being checked"));
+      // fall-through
+    }
+    if (!Objects.equals(repoInstance.getReference(), model.getReference())) {
+      // SModelReference.equals respect model identity only, doesn't care about name
+      result.accept(new ModelValidationProblem(model, MessageStatus.ERROR, "Model instance inside repository has different model reference"));
+      Logger.getLogger(ValidationUtil.class).info(String.format("Repository instance identity: %s, while checked model has: %s", repoInstance.getReference(), model.getReference() ));
+      // fall-through
+    }
+    if (!repoInstance.getName().equals(model.getName())) {
+        String msg = String.format("Model name in a repository (%s) is not the same as name of the checked instance (%s)", repoInstance.getName(), model.getName());
+        result.accept(new ModelValidationProblem(model, MessageStatus.WARNING, msg));
+      // fall-through
+    }
 
+    if (mySkipUnlessLoaded && !myModel.isLoaded()) {
+      result.accept(new ModelValidationProblem(model, MessageStatus.OK, "Model is not loaded; no validity check"));
+      return;
+    }
+
+    // Below, model content might be examined. I assume accessing model imports constitutes 'model loading/content access'
 
     SModule module = model.getModule();
     final SearchScope moduleScope = (module instanceof AbstractModule) ? ((AbstractModule) module).getScope() : null;
