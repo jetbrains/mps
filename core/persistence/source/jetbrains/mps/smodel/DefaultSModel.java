@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ public class DefaultSModel extends SModel {
     @Override
     public Iterable<Problem> getProblems() {
       return Collections.singleton(
-        new PersistenceProblem(Kind.Load, myCause == null ? "Couldn't read model." : myCause.getMessageEx(), null, true));
+        new PersistenceProblem(Kind.Load, myCause == null ? "Couldn't read model." : myCause.getMessage(), null, true));
     }
   }
 }
