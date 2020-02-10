@@ -60,6 +60,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return LocalDeclarationToReferenceMarker.isMarked(_context, _context.getNode());
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
+    if (SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$2ky6) == null) {
+      return false;
+    }
     return LocalDeclarationToReferenceMarker.isMarked(_context, SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$2ky6));
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {

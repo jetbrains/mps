@@ -21,6 +21,7 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
+import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -216,11 +217,11 @@ public class QueriesGenerated extends QueryProviderBase {
     // ExtractStaticMethodExpression looks for first non static class 
     // and as long as there's no alternative to ESME, this code shall 
     // respect the way ContextUtil.getContextForMethod works 
-    return SPropertyOperations.getString(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$IY, false)).where(new IWhereFilter<SNode>() {
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.ClassConcept$IY, false)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it);
       }
-    }).first(), PROPS.name$tAp1) + ".IsEmptyStringMethod";
+    }).first()) + ".IsEmptyStringMethod";
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
