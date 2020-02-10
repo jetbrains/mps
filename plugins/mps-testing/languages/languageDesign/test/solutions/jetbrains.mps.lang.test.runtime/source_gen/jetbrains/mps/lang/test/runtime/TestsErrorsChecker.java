@@ -23,7 +23,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
 import jetbrains.mps.checkers.ConstraintsChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
-import jetbrains.mps.checkers.TargetConceptChecker;
+import jetbrains.mps.checkers.TargetConceptChecker2;
 import jetbrains.mps.project.validation.StructureChecker;
 import jetbrains.mps.checkers.ErrorReportHelper;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -111,7 +111,7 @@ public final class TestsErrorsChecker {
     new NonTypesystemChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new ConstraintsChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new RefScopeChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
-    new TargetConceptChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
+    new TargetConceptChecker2(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
     new StructureChecker(myHost).asRootChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());
 
     final ErrorReportHelper helper = new ErrorReportHelper();

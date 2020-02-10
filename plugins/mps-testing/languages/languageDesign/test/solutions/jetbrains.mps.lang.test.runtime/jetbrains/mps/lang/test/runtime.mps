@@ -6893,7 +6893,7 @@
             <node concept="TSZUe" id="fM_JX6vdAP" role="2OqNvi">
               <node concept="2ShNRf" id="fM_JX6veDl" role="25WWJ7">
                 <node concept="1pGfFk" id="fM_JX6veDm" role="2ShVmc">
-                  <ref role="37wK5l" to="k2t0:~TargetConceptChecker.&lt;init&gt;(jetbrains.mps.components.ComponentHost)" resolve="TargetConceptChecker" />
+                  <ref role="37wK5l" to="k2t0:~TargetConceptChecker2.&lt;init&gt;(jetbrains.mps.components.ComponentHost)" resolve="TargetConceptChecker2" />
                   <node concept="37vLTw" id="3q9wAW4rbfc" role="37wK5m">
                     <ref role="3cqZAo" node="3q9wAW4r9Rx" resolve="host" />
                   </node>
@@ -8498,7 +8498,7 @@
             <node concept="2OqwBi" id="5P_sMle9jd0" role="2Oq$k0">
               <node concept="2ShNRf" id="5P_sMle9jd1" role="2Oq$k0">
                 <node concept="1pGfFk" id="5P_sMle9n4g" role="2ShVmc">
-                  <ref role="37wK5l" to="k2t0:~TargetConceptChecker.&lt;init&gt;(jetbrains.mps.components.ComponentHost)" resolve="TargetConceptChecker" />
+                  <ref role="37wK5l" to="k2t0:~TargetConceptChecker2.&lt;init&gt;(jetbrains.mps.components.ComponentHost)" resolve="TargetConceptChecker2" />
                   <node concept="37vLTw" id="5lg0Ljo_5D_" role="37wK5m">
                     <ref role="3cqZAo" node="2lja8zi2_qQ" resolve="myHost" />
                   </node>

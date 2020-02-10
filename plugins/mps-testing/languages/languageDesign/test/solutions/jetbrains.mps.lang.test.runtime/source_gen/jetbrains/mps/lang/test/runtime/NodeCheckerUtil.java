@@ -21,7 +21,7 @@ import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
 import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
 import jetbrains.mps.checkers.ConstraintsChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
-import jetbrains.mps.checkers.TargetConceptChecker;
+import jetbrains.mps.checkers.TargetConceptChecker2;
 import jetbrains.mps.project.validation.StructureChecker;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -58,7 +58,7 @@ public class NodeCheckerUtil {
     ListSequence.fromList(result).addElement(new NonTypesystemChecker());
     ListSequence.fromList(result).addElement(new ConstraintsChecker(host));
     ListSequence.fromList(result).addElement(new RefScopeChecker(host));
-    ListSequence.fromList(result).addElement(new TargetConceptChecker(host));
+    ListSequence.fromList(result).addElement(new TargetConceptChecker2(host));
     ListSequence.fromList(result).addElement(new StructureChecker(host));
     ListSequence.fromList(result).addElement(new SuppressErrorsChecker());
     return result;
