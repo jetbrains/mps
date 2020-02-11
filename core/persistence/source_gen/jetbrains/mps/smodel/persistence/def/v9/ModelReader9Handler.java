@@ -177,7 +177,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     protected void handleAttribute(Object resultObject, String name, String value) throws SAXException {
       ModelLoadResult result = (ModelLoadResult) resultObject;
       if ("doNotGenerate".equals(name)) {
-        my_modelField.getSModelHeader().setDoNotGenerate(Boolean.parseBoolean(value));
+        my_modelField.getSModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, value);
         return;
       }
       if ("content".equals(name)) {

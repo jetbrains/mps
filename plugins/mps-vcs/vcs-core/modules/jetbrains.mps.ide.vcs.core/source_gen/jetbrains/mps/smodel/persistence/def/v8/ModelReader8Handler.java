@@ -181,7 +181,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return;
       }
       if ("doNotGenerate".equals(name)) {
-        my_headerParam.setDoNotGenerate(Boolean.parseBoolean(value));
+        my_headerParam.setOptionalProperty(SModelHeader.DO_NOT_GENERATE, value);
         return;
       }
       super.handleAttribute(resultObject, name, value);

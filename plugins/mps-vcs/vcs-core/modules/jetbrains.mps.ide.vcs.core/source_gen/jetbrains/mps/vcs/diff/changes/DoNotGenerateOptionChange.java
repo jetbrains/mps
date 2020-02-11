@@ -11,9 +11,15 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import org.apache.log4j.Level;
 
+/**
+ * 
+ * @deprecated In MPS 2020.1 has been replaced with generic {@link jetbrains.mps.vcs.diff.changes.ModelAttributeChange }
+ */
+@Deprecated
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/5505786199853653616", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class DoNotGenerateOptionChange extends MetadataChange {
   private static final Logger LOG = LogManager.getLogger(DoNotGenerateOptionChange.class);
+  @Deprecated
   public DoNotGenerateOptionChange(@NotNull ChangeSet changeSet) {
     super(changeSet);
   }

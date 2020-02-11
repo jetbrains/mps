@@ -24,13 +24,14 @@
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="java.util.function.BiConsumer" />
     <classNode dependClassName="java.util.function.Function" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
+    <classNode dependClassName="jetbrains.mps.extapi.model.ModelWithAttributes" />
     <classNode dependClassName="jetbrains.mps.extapi.model.SModelBase" />
-    <classNode dependClassName="jetbrains.mps.extapi.model.SModelData" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
@@ -39,7 +40,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.DefaultSModel" />
     <classNode dependClassName="jetbrains.mps.smodel.DynamicReference" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.SReference" />
@@ -51,9 +51,9 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.DeleteRootChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.DependencyChange" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.DoNotGenerateOptionChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.EngagedLanguageChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ImportedModelChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelAttributeChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModuleDependencyChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupChange" />

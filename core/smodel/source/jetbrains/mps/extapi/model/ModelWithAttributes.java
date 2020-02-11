@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.model;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -66,7 +67,19 @@ public interface ModelWithAttributes extends SModel {
    *
    * @param action action to perform for each key-value attribute pair
    */
-  void forEach(@NotNull BiConsumer<String, String> action);
+  default void forEachAttribute(@NotNull BiConsumer<String, String> action) {
+    // provisional, to facilitate transition.
+    forEach(action);
+  }
+
+  /**
+   * @deprecated unfortunate naming, use {@link #forEachAttribute(BiConsumer)} instead
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
+  default void forEach(@NotNull BiConsumer<String, String> action) {
+    // empty implementation to facilitate transition, callers shall switch to forEachAttribute, implementers shall stop override this one as well.
+  }
 
   /**
    * @param key attribute identity

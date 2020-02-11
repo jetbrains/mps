@@ -17,6 +17,7 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.Nullable;
@@ -47,8 +48,7 @@ public class SModelHeader {
    */
   private SModelReference myModelRef = null;
   private int myPersistenceVersion = -1;
-  private boolean doNotGenerate = false;
-  private Map<String, String> myOptionalProperties = new HashMap<>();
+  private final Map<String, String> myOptionalProperties = new HashMap<>(4);
   private MetaModelInfoProvider myMetaInfoProvider;
 
   public SModelHeader() {
@@ -62,12 +62,21 @@ public class SModelHeader {
     myPersistenceVersion = persistenceVersion;
   }
 
+  /**
+   *
+   * @deprecated Just a handy alternative accessor for {@code getOptionalProperty(DO_NOT_GENERATE)}. This class is about persisting values, not about
+   *             nice typed api. For typed API, use GeneratableSModel, this class has to be generic.
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
   public boolean isDoNotGenerate() {
-    return doNotGenerate;
+    return Boolean.parseBoolean(getOptionalProperty(DO_NOT_GENERATE));
   }
 
+  @Deprecated
+  @ToRemove(version = 2020.1)
   public void setDoNotGenerate(boolean doNotGenerate) {
-    this.doNotGenerate = doNotGenerate;
+    setOptionalProperty(DO_NOT_GENERATE, Boolean.toString(doNotGenerate));
   }
 
   /**
@@ -94,7 +103,6 @@ public class SModelHeader {
   }
 
   public void setOptionalProperty(String key, String value) {
-    assert !DO_NOT_GENERATE.equals(key);
     assert !ModelPersistence.REF.equals(key);
     // roughly following http://www.w3.org/TR/2008/PER-xml-20080205/#NT-Name
     assert key.matches("^[:A-Z_a-z][-:A-Z_a-z.0-9]*") : "bad key [" + key + "]";
@@ -139,7 +147,6 @@ public class SModelHeader {
     stream.writeString(myModelRef == null ? null : PersistenceFacade.getInstance().asString(myModelRef));
     stream.writeInt(myPersistenceVersion);
     stream.writeInt(0); //version was here
-    stream.writeBoolean(doNotGenerate);
     stream.writeInt(myOptionalProperties.size());
     for (Map.Entry<String, String> ss : myOptionalProperties.entrySet()) {
       stream.writeString(ss.getKey());
@@ -154,7 +161,6 @@ public class SModelHeader {
     result.setModelReference(s == null ? null : PersistenceFacade.getInstance().createModelReference(s));
     result.setPersistenceVersion(stream.readInt());
     stream.readInt(); //old model version was here
-    result.setDoNotGenerate(stream.readBoolean());
     for (int size = stream.readInt(); size > 0; size--) {
       result.setOptionalProperty(stream.readString(), stream.readString());
     }
@@ -165,7 +171,6 @@ public class SModelHeader {
     SModelHeader copy = new SModelHeader();
     copy.myModelRef = myModelRef;
     copy.myPersistenceVersion = myPersistenceVersion;
-    copy.doNotGenerate = doNotGenerate;
     copy.myOptionalProperties.putAll(myOptionalProperties);
     return copy;
   }

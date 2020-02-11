@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,7 @@
  */
 package jetbrains.mps.persistence.binary;
 
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.model.SModelData;
-import jetbrains.mps.generator.ModelDigestUtil;
-import jetbrains.mps.generator.ModelDigestUtil.DigestBuilderOutputStream;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.BaseMetaModelInfo;
@@ -68,7 +65,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -160,7 +156,7 @@ public final class BinaryPersistence {
     is.readInt(); //left for compatibility: old version was here
     is.mark(4);
     if (is.readByte() == HEADER_ATTRIBUTES) {
-      result.setDoNotGenerate(is.readBoolean());
+      is.readBoolean(); // just skip placeholder boolean value, see saveModelProperties(), below
       int propsCount = is.readShort();
       for (; propsCount > 0; propsCount--) {
         String key = is.readString();
@@ -241,7 +237,10 @@ public final class BinaryPersistence {
     if (myModelData instanceof DefaultSModel) {
       os.writeByte(HEADER_ATTRIBUTES);
       SModelHeader mh = ((DefaultSModel) myModelData).getSModelHeader();
-      os.writeBoolean(mh.isDoNotGenerate());
+      // FIXME just a placeholder value instead of SModelHeader.isDoNotGenerate() to avoid persistence version change.
+      //       Actual value is serialized as part of optionalProperties now. Once/if binary persistence version changes,
+      //       we shall throw this placeholder away
+      os.writeBoolean(false);
       Map<String, String> props = new HashMap<>(mh.getOptionalProperties());
       os.writeShort(props.size());
       for (Entry<String, String> e : props.entrySet()) {

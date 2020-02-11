@@ -77,10 +77,6 @@
       <concept id="1239531918181" name="jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType" flags="in" index="2pR195" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
-      <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
-        <child id="1224071154657" name="classifierType" index="0kSFW" />
-        <child id="1224071154656" name="expression" index="0kSFX" />
-      </concept>
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -1603,57 +1599,50 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="6$_iT4tdeTZ" role="3cqZAp">
-          <node concept="3cpWsn" id="6$_iT4tdeU0" role="3cpWs9">
-            <property role="TrG5h" value="originData" />
-            <node concept="3uibUv" id="6$_iT4tdeKI" role="1tU5fm">
-              <ref role="3uigEE" to="g3l6:~SModelData" resolve="SModelData" />
-            </node>
-            <node concept="2EnYce" id="6$_iT4tdeU1" role="33vP2m">
-              <node concept="0kSF2" id="6$_iT4tdeU2" role="2Oq$k0">
-                <node concept="3uibUv" id="6$_iT4tdeU3" role="0kSFW">
-                  <ref role="3uigEE" to="g3l6:~SModelBase" resolve="SModelBase" />
-                </node>
-                <node concept="37vLTw" id="6$_iT4tdeU4" role="0kSFX">
-                  <ref role="3cqZAo" node="67J6_UwpKtQ" resolve="origin" />
-                </node>
-              </node>
-              <node concept="liA8E" id="6$_iT4tdeU5" role="2OqNvi">
-                <ref role="37wK5l" to="g3l6:~SModelBase.getModelData()" resolve="getModelData" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="67J6_UwpKsw" role="3cqZAp">
           <node concept="2ZW3vV" id="67J6_UwpKsx" role="3clFbw">
-            <node concept="3uibUv" id="6$_iT4taN1q" role="2ZW6by">
-              <ref role="3uigEE" to="w1kc:~DefaultSModel" resolve="DefaultSModel" />
+            <node concept="3uibUv" id="4dBl_L4HMHX" role="2ZW6by">
+              <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
             </node>
-            <node concept="37vLTw" id="6$_iT4tdibr" role="2ZW6bz">
-              <ref role="3cqZAo" node="6$_iT4tdeU0" resolve="originData" />
+            <node concept="37vLTw" id="4dBl_L4HKKg" role="2ZW6bz">
+              <ref role="3cqZAo" node="67J6_UwpKtQ" resolve="origin" />
             </node>
           </node>
           <node concept="3clFbS" id="67J6_UwpKs_" role="3clFbx">
-            <node concept="3clFbF" id="67J6_UwpKsA" role="3cqZAp">
-              <node concept="37vLTI" id="67J6_UwpKsB" role="3clFbG">
-                <node concept="2OqwBi" id="6$_iT4taOMc" role="37vLTx">
-                  <node concept="2OqwBi" id="6$_iT4taNoE" role="2Oq$k0">
-                    <node concept="1eOMI4" id="67J6_UwpKsD" role="2Oq$k0">
-                      <node concept="10QFUN" id="67J6_UwpKsE" role="1eOMHV">
-                        <node concept="37vLTw" id="6$_iT4tdiVA" role="10QFUP">
-                          <ref role="3cqZAo" node="6$_iT4tdeU0" resolve="originData" />
-                        </node>
-                        <node concept="3uibUv" id="6$_iT4taN4v" role="10QFUM">
-                          <ref role="3uigEE" to="w1kc:~DefaultSModel" resolve="DefaultSModel" />
-                        </node>
+            <node concept="3cpWs8" id="4dBl_L4HP7P" role="3cqZAp">
+              <node concept="3cpWsn" id="4dBl_L4HP7Q" role="3cpWs9">
+                <property role="TrG5h" value="doNotGenerateValue" />
+                <node concept="3uibUv" id="4dBl_L4HP7e" role="1tU5fm">
+                  <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                </node>
+                <node concept="2OqwBi" id="4dBl_L4HP7R" role="33vP2m">
+                  <node concept="1eOMI4" id="4dBl_L4HP7S" role="2Oq$k0">
+                    <node concept="10QFUN" id="4dBl_L4HP7T" role="1eOMHV">
+                      <node concept="37vLTw" id="4dBl_L4HP7U" role="10QFUP">
+                        <ref role="3cqZAo" node="67J6_UwpKtQ" resolve="origin" />
+                      </node>
+                      <node concept="3uibUv" id="4dBl_L4HP7V" role="10QFUM">
+                        <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
                       </node>
                     </node>
-                    <node concept="liA8E" id="6$_iT4taNSS" role="2OqNvi">
-                      <ref role="37wK5l" to="w1kc:~DefaultSModel.getSModelHeader()" resolve="getSModelHeader" />
+                  </node>
+                  <node concept="liA8E" id="4dBl_L4HP7W" role="2OqNvi">
+                    <ref role="37wK5l" to="g3l6:~ModelWithAttributes.getAttribute(java.lang.String)" resolve="getAttribute" />
+                    <node concept="10M0yZ" id="4dBl_L4HP7X" role="37wK5m">
+                      <ref role="3cqZAo" to="w1kc:~SModelHeader.DO_NOT_GENERATE" resolve="DO_NOT_GENERATE" />
+                      <ref role="1PxDUh" to="w1kc:~SModelHeader" resolve="SModelHeader" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="6$_iT4taO1h" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModelHeader.isDoNotGenerate()" resolve="isDoNotGenerate" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="67J6_UwpKsA" role="3cqZAp">
+              <node concept="37vLTI" id="67J6_UwpKsB" role="3clFbG">
+                <node concept="2YIFZM" id="4dBl_L4HQ10" role="37vLTx">
+                  <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
+                  <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                  <node concept="37vLTw" id="4dBl_L4HQjJ" role="37wK5m">
+                    <ref role="3cqZAo" node="4dBl_L4HP7Q" resolve="doNotGenerateValue" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="67J6_UwpKsJ" role="37vLTJ">
