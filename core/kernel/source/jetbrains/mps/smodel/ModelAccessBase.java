@@ -99,7 +99,7 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
   }
 
   // not null
-  protected final ModelAccess getDelegate() {
+  public /*protected*/ final ModelAccess getDelegate() {
     // Can't be cons argument as subclasses might get instantiated BEFORE WorkbenchModelAccess had a chance to register itself as a global MA.
     return ModelAccess.instance();
   }

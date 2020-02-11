@@ -21,6 +21,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.annotations.Internal;
 
 /**
  * Thread-safe
@@ -67,6 +68,11 @@ final class EDTExecutor implements Disposable {
    */
   void flushEventsQueue() {
     myExecutor.flushTasks();
+  }
+
+  @Internal
+  void forceFlush() {
+    myExecutor.forceScheduleFlushEDT();
   }
 
   private void scheduleTask(@NotNull Task task) {
