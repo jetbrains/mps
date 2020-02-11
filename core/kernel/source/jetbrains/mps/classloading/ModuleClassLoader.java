@@ -104,7 +104,8 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     return aClass;
   }
 
-  ReloadableModule getModule() {
+  @NotNull
+  public ReloadableModule getModule() {
     return mySupport.getModule();
   }
 

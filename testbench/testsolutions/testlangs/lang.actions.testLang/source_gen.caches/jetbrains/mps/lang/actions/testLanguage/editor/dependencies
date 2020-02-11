@@ -677,6 +677,27 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.menus.transformation.TransformationMenuBase" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptChild2_Editor">
+    <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptChild2_EditorBuilder_a" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptChild2_EditorBuilder_a">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptChild_Editor">
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptChild_EditorBuilder_a" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
@@ -818,6 +839,44 @@
     <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
   </dependency>
   <dependency className="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformChild1_EditorBuilder_a">
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleAttributes" />
+    <classNode dependClassName="jetbrains.mps.editor.runtime.style.StyleImpl" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Collection" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.cells.SPropertyAccessor" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.style.Style" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.update.AttributeKind" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.editor.runtime.descriptor.AbstractEditorBuilder" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformChild2_Editor">
+    <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformChild2_EditorBuilder_a" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.EditorContext" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.nodeEditor.DefaultNodeEditor" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformChild2_EditorBuilder_a">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
@@ -1158,12 +1217,14 @@
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAbstractChild_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptAbstractChild_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptAbstractChild_TransformationMenu" />
+    <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptChild2_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAddConceptChild_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAnotherAbstractChild_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAnotherAbstractChild_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAnotherChild1_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformAnotherChild2_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformChild1_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformChild2_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformTestAncestor_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.ActionTestSidetransformTestContainer_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_ConceptSubstitute" />

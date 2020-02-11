@@ -351,7 +351,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @SuppressWarnings({"UnusedDeclaration"})
   private ReferenceUnderliner myReferenceUnderliner = new ReferenceUnderliner();
   private BracesHighlighter myBracesHighlighter = new BracesHighlighter(this);
-  private boolean myPopupMenuEnabled = true;
+  private boolean myPopupMenuEnabled;
   private boolean myIsInFiguresHierarchy = false;
 
   private KeymapHandler<KeyEvent> myKeymapHandler = new AWTKeymapHandler();
@@ -371,6 +371,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     myRepository = repository;
     myEditorConfiguration = configuration;
     myReadOnly = myEditorConfiguration.readOnly;
+    myPopupMenuEnabled = configuration.hasContextMenu;
     myCommandContext = createCommandContext();
     myUpdater = createUpdater(myCommandContext);
     myHighlightManager = new NodeHighlightManager(this);
@@ -2406,8 +2407,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return true;
   }
 
-
-  private void deactivateSubstituteChooser() {
+  public final void deactivateSubstituteChooser() {
     myNodeSubstituteChooser.setVisible(false);
   }
 
@@ -2516,6 +2516,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myReadOnly;
   }
 
+  /**
+   * @deprecated use {@link EditorConfigurationBuilder#hasContextMenu(boolean)} instead.
+   */
+  @Deprecated
   public void setPopupMenuEnabled(boolean popupMenuEnabled) {
     myPopupMenuEnabled = popupMenuEnabled;
   }

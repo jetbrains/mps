@@ -108,7 +108,7 @@ public class IncompleteMemberHelper {
 
   public static boolean hasNameEqualToSurroundingClassifier(SNode member, String memberName) {
     SNode clNode = SNodeOperations.as(SNodeOperations.getParent(member), CONCEPTS.Classifier$hJ);
-    return clNode != null && SPropertyOperations.getString(clNode, PROPS.name$tAp1).equals(memberName);
+    return clNode != null && Objects.equals(SPropertyOperations.getString(clNode, PROPS.name$tAp1), memberName);
   }
 
   private static final class CONCEPTS {

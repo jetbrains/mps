@@ -19,14 +19,21 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
+/**
+ * 
+ * @deprecated use TargetConceptChecker from MPS.Core instead
+ */
+@Deprecated
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/7390982340086718154", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class TargetConceptChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
   private final ComponentHost myHost;
 
+  @Deprecated
   public TargetConceptChecker() {
     myHost = null;
   }
 
+  @Deprecated
   public TargetConceptChecker(@Nullable ComponentHost host) {
     myHost = host;
   }

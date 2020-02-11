@@ -16,7 +16,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.checkers.ConstraintsChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
-import jetbrains.mps.checkers.TargetConceptChecker;
+import jetbrains.mps.checkers.TargetConceptChecker2;
 import jetbrains.mps.checkers.UsedLanguagesChecker;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 
@@ -33,7 +33,7 @@ public class AuditConstraints extends BaseCheckerTest {
   public void checkConstraints() {
     Environment environment = getEnvironment();
     Platform host = environment.getPlatform();
-    List<IChecker<?, ? extends IssueKindReportItem>> checkers = ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new ConstraintsChecker(host), new RefScopeChecker(host), new TargetConceptChecker(), new UsedLanguagesChecker(), new SuppressErrorsChecker());
+    List<IChecker<?, ? extends IssueKindReportItem>> checkers = ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new ConstraintsChecker(host), new RefScopeChecker(host), new TargetConceptChecker2(host), new UsedLanguagesChecker(), new SuppressErrorsChecker());
     runCheck(checkers, AuditTypeSystem.ourStats, "Constraints and scopes errors");
   }
 }

@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.bookmark;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.ide.bookmarks.Bookmark;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ProjectComponent;
@@ -496,7 +495,7 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
 
     @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
-      IconUtil.scale(darkBackground() ? AllIcons.Actions.CheckedGrey : AllIcons.Actions.CheckedBlack, c, getScale()).paintIcon(c, g, x, y);
+      IconUtil.scale(PlatformIcons.CHECK_ICON, c, getScale()).paintIcon(c, g, x, y);
     }
 
     @Override

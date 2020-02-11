@@ -2,7 +2,7 @@
 <model ref="r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
@@ -43,14 +43,9 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
         <child id="1153952416686" name="body" index="2GV8ay" />
@@ -125,9 +120,6 @@
       <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="1111509017652" name="jetbrains.mps.baseLanguage.structure.FloatingPointConstant" flags="nn" index="3b6qkQ">
-        <property id="1113006610751" name="value" index="$nhwW" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -213,7 +205,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -230,21 +222,6 @@
         <reference id="6626851894249712469" name="extensionPoint" index="2O5UnU" />
       </concept>
       <concept id="3175313036448560967" name="jetbrains.mps.lang.extension.structure.GetExtensionObjectsOperation" flags="nn" index="SfwO_" />
-    </language>
-    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
-      </concept>
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
-      </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -339,7 +316,7 @@
       </node>
       <node concept="3clFbS" id="2Zv85d0AOpX" role="3clF47">
         <node concept="3SKdUt" id="4rrGGGbgFDr" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoh1H" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoh1H" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoh1I" role="1PaTwD">
               <property role="3oM_SC" value="Do" />
             </node>
@@ -373,7 +350,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="4rrGGGbgGPd" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoh1S" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoh1S" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoh1T" role="1PaTwD">
               <property role="3oM_SC" value="also" />
             </node>
@@ -419,7 +396,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="4rrGGGbgIyK" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoh27" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoh27" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoh28" role="1PaTwD">
               <property role="3oM_SC" value="TODO" />
             </node>
@@ -554,7 +531,7 @@
         <node concept="3clFbJ" id="2Zv85d0B46m" role="3cqZAp">
           <node concept="3clFbS" id="2Zv85d0B46o" role="3clFbx">
             <node concept="3SKdUt" id="kMpyBaRj74" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXoh2m" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXoh2m" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXoh2n" role="1PaTwD">
                   <property role="3oM_SC" value="refferer" />
                 </node>
@@ -1766,7 +1743,7 @@
                 </node>
                 <node concept="3clFbS" id="5vEIebiHi$u" role="TDEfX">
                   <node concept="3SKdUt" id="5vEIebiJqAc" role="3cqZAp">
-                    <node concept="1PaTwC" id="5vEIebiJqAd" role="3ndbpf">
+                    <node concept="1PaTwC" id="5vEIebiJqAd" role="1aUNEU">
                       <node concept="3oM_SD" id="5vEIebiJqAX" role="1PaTwD">
                         <property role="3oM_SC" value="continue" />
                       </node>
@@ -1984,58 +1961,10 @@
         <property role="Xl_RC" value="ide.httpsupport.internalPort" />
       </node>
     </node>
-    <node concept="2tJIrI" id="3BwRxVwWc59" role="jymVt" />
-    <node concept="Wx3nA" id="3PMO5H7WJ51" role="jymVt">
-      <property role="2dlcS1" value="false" />
-      <property role="2dld4O" value="false" />
-      <property role="TrG5h" value="PORT" />
-      <node concept="3Tm1VV" id="3PMO5H7WJ52" role="1B3o_S" />
-      <node concept="10Oyi0" id="3PMO5H7WJ53" role="1tU5fm" />
-      <node concept="z59LJ" id="3BwRxVwWcfi" role="lGtFl">
-        <node concept="TZ5HI" id="3BwRxVwWcfj" role="3nqlJM">
-          <node concept="TZ5HA" id="3BwRxVwWcfk" role="3HnX3l">
-            <node concept="1dT_AC" id="3BwRxVwWiM0" role="1dT_Ay">
-              <property role="1dT_AB" value="Use #getCurrentPort instead, modifying the field doesn't affect real port" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3BwRxVwWcfl" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2AHcQZ" id="3BwRxVwWcp_" role="2AJF6D">
-        <ref role="2AI5Lk" to="ncw5:~ToRemove" resolve="ToRemove" />
-        <node concept="2B6LJw" id="3BwRxVwWipk" role="2B76xF">
-          <ref role="2B6OnR" to="ncw5:~ToRemove.version()" resolve="version" />
-          <node concept="3b6qkQ" id="3BwRxVwWiwW" role="2B70Vg">
-            <property role="$nhwW" value="2019.2" />
-          </node>
-        </node>
-      </node>
-      <node concept="3cmrfG" id="3BwRxVwWiWw" role="33vP2m">
-        <property role="3cmrfH" value="63220" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="3BwRxVwVB8k" role="jymVt" />
     <node concept="3clFbW" id="3BwRxVwVC6d" role="jymVt">
       <node concept="3cqZAl" id="3BwRxVwVC6e" role="3clF45" />
       <node concept="3clFbS" id="3BwRxVwVC6g" role="3clF47">
-        <node concept="3clFbF" id="3BwRxVwVCfp" role="3cqZAp">
-          <node concept="2YIFZM" id="3BwRxVwVCfH" role="3clFbG">
-            <ref role="37wK5l" to="rfhd:~Registry.addKey(java.lang.String,java.lang.String,java.lang.String,boolean)" resolve="addKey" />
-            <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
-            <node concept="37vLTw" id="3BwRxVwWbFl" role="37wK5m">
-              <ref role="3cqZAo" node="3BwRxVwWbFj" resolve="PORT_KEY" />
-            </node>
-            <node concept="Xl_RD" id="3BwRxVwWb9R" role="37wK5m">
-              <property role="Xl_RC" value="Port for MPS internal requests (i.e. opening node)" />
-            </node>
-            <node concept="Xl_RD" id="3BwRxVwWbcL" role="37wK5m">
-              <property role="Xl_RC" value="63320" />
-            </node>
-            <node concept="3clFbT" id="3BwRxVwWbrg" role="37wK5m" />
-          </node>
-        </node>
         <node concept="3cpWs8" id="3BwRxVwWbzD" role="3cqZAp">
           <node concept="3cpWsn" id="3BwRxVwWbzE" role="3cpWs9">
             <property role="TrG5h" value="value" />
@@ -2051,21 +1980,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3BwRxVwW_qb" role="3cqZAp">
-          <node concept="37vLTI" id="3BwRxVwW_Zk" role="3clFbG">
-            <node concept="2OqwBi" id="3BwRxVwWAoO" role="37vLTx">
-              <node concept="37vLTw" id="3BwRxVwWAlw" role="2Oq$k0">
-                <ref role="3cqZAo" node="3BwRxVwWbzE" resolve="value" />
-              </node>
-              <node concept="liA8E" id="3BwRxVwWABg" role="2OqNvi">
-                <ref role="37wK5l" to="rfhd:~RegistryValue.asInteger()" resolve="asInteger" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="3BwRxVwW_q9" role="37vLTJ">
-              <ref role="3cqZAo" node="3PMO5H7WJ51" resolve="PORT" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="3BwRxVwWjtl" role="3cqZAp">
           <node concept="2OqwBi" id="3BwRxVwWjyD" role="3clFbG">
             <node concept="37vLTw" id="3BwRxVwWjtj" role="2Oq$k0">
@@ -2077,8 +1991,8 @@
                 <node concept="YeOm9" id="3BwRxVwWy85" role="2ShVmc">
                   <node concept="1Y3b0j" id="3BwRxVwWy88" role="YeSDq">
                     <property role="2bfB8j" value="true" />
-                    <ref role="37wK5l" to="rfhd:~RegistryValueListener$Adapter.&lt;init&gt;()" resolve="RegistryValueListener.Adapter" />
-                    <ref role="1Y3XeK" to="rfhd:~RegistryValueListener$Adapter" resolve="RegistryValueListener.Adapter" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                    <ref role="1Y3XeK" to="rfhd:~RegistryValueListener" resolve="RegistryValueListener" />
                     <node concept="3Tm1VV" id="3BwRxVwWy89" role="1B3o_S" />
                     <node concept="2tJIrI" id="3BwRxVwWya0" role="jymVt" />
                     <node concept="3clFb_" id="3BwRxVwWydi" role="jymVt">
@@ -2095,21 +2009,6 @@
                         </node>
                       </node>
                       <node concept="3clFbS" id="3BwRxVwWydq" role="3clF47">
-                        <node concept="3clFbF" id="3BwRxVwW_e6" role="3cqZAp">
-                          <node concept="37vLTI" id="3BwRxVwWBfr" role="3clFbG">
-                            <node concept="2OqwBi" id="3BwRxVwWBNC" role="37vLTx">
-                              <node concept="37vLTw" id="3BwRxVwWBz2" role="2Oq$k0">
-                                <ref role="3cqZAo" node="3BwRxVwWydm" resolve="value" />
-                              </node>
-                              <node concept="liA8E" id="3BwRxVwWChc" role="2OqNvi">
-                                <ref role="37wK5l" to="rfhd:~RegistryValue.asInteger()" resolve="asInteger" />
-                              </node>
-                            </node>
-                            <node concept="37vLTw" id="3BwRxVwW_e5" role="37vLTJ">
-                              <ref role="3cqZAo" node="3PMO5H7WJ51" resolve="PORT" />
-                            </node>
-                          </node>
-                        </node>
                         <node concept="3clFbF" id="6H9Q8bRCfG$" role="3cqZAp">
                           <node concept="1rXfSq" id="6H9Q8bRCfGy" role="3clFbG">
                             <ref role="37wK5l" to="iwnc:~CustomPortServerManagerBase.portChanged()" resolve="portChanged" />
@@ -2184,17 +2083,14 @@
           <node concept="2YIFZM" id="3gdTObr$wsi" role="3clFbG">
             <ref role="37wK5l" node="3gdTObr$r8x" resolve="showWarning" />
             <ref role="1Pybhc" node="3gdTObr$r61" resolve="HttpSupportPluginNotifications" />
-            <node concept="3cpWs3" id="3gdTObr$wsj" role="37wK5m">
-              <node concept="Xl_RD" id="3gdTObr$wsk" role="3uHU7w">
-                <property role="Xl_RC" value=". Openning node on HTTP request disabled" />
+            <node concept="2YIFZM" id="5KBR7PxtlJq" role="37wK5m">
+              <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+              <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+              <node concept="Xl_RD" id="5KBR7Pxtn3W" role="37wK5m">
+                <property role="Xl_RC" value="Built-in server cannot bind to port %d. Opening node on HTTP request disabled" />
               </node>
-              <node concept="3cpWs3" id="3gdTObr$wsl" role="3uHU7B">
-                <node concept="Xl_RD" id="3gdTObr$wsm" role="3uHU7B">
-                  <property role="Xl_RC" value="Built-in server cannot bind to port " />
-                </node>
-                <node concept="1rXfSq" id="3BwRxVwWz1O" role="3uHU7w">
-                  <ref role="37wK5l" node="3PMO5H7WJ5h" resolve="getPort" />
-                </node>
+              <node concept="1rXfSq" id="3BwRxVwWz1O" role="37wK5m">
+                <ref role="37wK5l" node="3PMO5H7WJ5h" resolve="getPort" />
               </node>
             </node>
           </node>
@@ -2257,7 +2153,7 @@
       <property role="TrG5h" value="getCurrentPort" />
       <node concept="3clFbS" id="3BwRxVwW$fq" role="3clF47">
         <node concept="3SKdUt" id="474XC7yvGli" role="3cqZAp">
-          <node concept="1PaTwC" id="474XC7yvGC5" role="3ndbpf">
+          <node concept="1PaTwC" id="474XC7yvGC5" role="1aUNEU">
             <node concept="3oM_SD" id="474XC7yvGlU" role="1PaTwD">
               <property role="3oM_SC" value="default" />
             </node>

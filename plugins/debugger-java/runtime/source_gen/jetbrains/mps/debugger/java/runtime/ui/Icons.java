@@ -12,11 +12,11 @@ public class Icons {
   public static final Icon DISABLED_EXCEPTION_BREAKPOINT = AllIcons.Debugger.Db_disabled_exception_breakpoint;
   public static final Icon METHOD_BREAKPOINT = AllIcons.Debugger.Db_method_breakpoint;
   public static final Icon DISABLED_METHOD_BREAKPOINT = AllIcons.Debugger.Db_disabled_method_breakpoint;
-  public static final Icon INVALID_METHOD_BREAKPOINT = AllIcons.Debugger.Db_invalid_method_breakpoint;
+  public static final Icon INVALID_METHOD_BREAKPOINT = AllIcons.Debugger.Db_invalid_breakpoint;
   public static final Icon MUTED_METHOD_BREAKPOINT = AllIcons.Debugger.Db_muted_method_breakpoint;
   public static final Icon FIELD_BREAKPOINT = AllIcons.Debugger.Db_field_breakpoint;
   public static final Icon DISABLED_FIELD_BREAKPOINT = AllIcons.Debugger.Db_disabled_field_breakpoint;
-  public static final Icon INVALID_FIELD_BREAKPOINT = AllIcons.Debugger.Db_invalid_field_breakpoint;
+  public static final Icon INVALID_FIELD_BREAKPOINT = AllIcons.Debugger.Db_invalid_breakpoint;
   public static final Icon MUTED_FIELD_BREAKPOINT = AllIcons.Debugger.Db_muted_field_breakpoint;
   public Icons() {
   }

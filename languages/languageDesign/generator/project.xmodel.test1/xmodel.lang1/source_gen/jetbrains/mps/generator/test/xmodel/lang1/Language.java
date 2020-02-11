@@ -10,6 +10,8 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.generator.test.xmodel.lang1.structure.ConceptPresentationAspectImpl;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -38,6 +40,9 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
+
+
+    // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.generator.test.xmodel.lang1.structure.StructureAspectDescriptor());
     }
@@ -45,5 +50,9 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
   }
 }

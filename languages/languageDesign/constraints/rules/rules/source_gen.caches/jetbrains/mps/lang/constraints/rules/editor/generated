@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5l1mbgfyyppr17ki5iv8hlnk9qwvo9f">
+<product version="3" modelHash="-dg0xpdrf5k58mpen68lochxvoch33at">
   <files names="AddMyselfToMenuOfRuleBlockMember.java:ApplicableCondition_Editor.java:ApplicableCondition_EditorBuilder_a.java:ConstraintsDef_isDefined.java:ConstraintsDef_isDefined_ComponentBuilder_a.java:DefForRule_Editor.java:DefForRule_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:ExpressionWrapper_Editor.java:ExpressionWrapper_EditorBuilder_a.java:HintDefsCustomEditorCell.java:HintIsApplicable.java:HintIsApplicable_ComponentBuilder_a.java:InsertMemberAfterMember.java:IsApplicable.java:IsApplicable_ComponentBuilder_a.java:Rule_Editor.java:Rule_EditorBuilder_a.java:Rule_InspectorBuilder_a.java:Rules_Styles_StyleSheet.java:deleteApplicability.java:deleteCondition.java:deleteExpressionFromRuleOrDef.java:deleteRuleWithBlockAllTogether.java" />
 </product>
 

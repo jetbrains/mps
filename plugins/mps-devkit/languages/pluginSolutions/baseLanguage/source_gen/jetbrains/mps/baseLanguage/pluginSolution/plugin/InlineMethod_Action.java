@@ -97,7 +97,6 @@ public class InlineMethod_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("refactoring.inline");
     InlineMethodDialog dialog = new InlineMethodDialog(((SNode) MapSequence.fromMap(_params).get("node")), ((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));
     dialog.tryToShow(((Frame) MapSequence.fromMap(_params).get("frame")));
-    dialog.pack();
   }
 
   private static final class CONCEPTS {

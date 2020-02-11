@@ -68,6 +68,7 @@ public class ModuleClassLoaderSupport {
     return new ModuleClassLoaderSupport(module, dependencySupplier);
   }
 
+  @NotNull
   public ReloadableModule getModule() {
     return myModule;
   }

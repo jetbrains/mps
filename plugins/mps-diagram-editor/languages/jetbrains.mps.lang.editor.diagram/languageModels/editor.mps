@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -31,9 +31,11 @@
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
+      <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
       <concept id="2000375450116454183" name="jetbrains.mps.lang.editor.structure.ISubstituteMenu" flags="ng" index="22mbnS">
         <child id="414384289274416996" name="parts" index="3ft7WO" />
       </concept>
+      <concept id="2000375450116423800" name="jetbrains.mps.lang.editor.structure.SubstituteMenu" flags="ng" index="22mcaB" />
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi">
         <child id="1078153129734" name="inspectedCellModel" index="6VMZX" />
       </concept>
@@ -126,6 +128,7 @@
       </concept>
       <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ng" index="2ZABuq">
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
+        <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
       <concept id="1630016958697286851" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_parameterObject" flags="ng" index="2ZBlsa" />
       <concept id="1630016958697057551" name="jetbrains.mps.lang.editor.structure.IMenuPartParameterized" flags="ng" index="2ZBHr6">
@@ -180,7 +183,6 @@
       <concept id="3308396621974588243" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution" flags="ng" index="3p309x">
         <child id="7173407872095451092" name="menuReference" index="1IG6uw" />
       </concept>
-      <concept id="3308396621974580100" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Default" flags="ng" index="3p36aQ" />
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="4526149749187797167" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_StyledText" flags="nn" index="1unZQo" />
       <concept id="5425882385312046132" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_CurrentTargetNode" flags="nn" index="1yR$tW" />
@@ -1799,8 +1801,58 @@
       </node>
     </node>
   </node>
-  <node concept="3p36aQ" id="1wEcoXjJkxS">
+  <node concept="3p309x" id="1wEcoXjJkCN">
+    <property role="TrG5h" value="DiagramspecificEditorCells_Contribution" />
+    <node concept="2kknPJ" id="1wEcoXjJkCO" role="1IG6uw">
+      <ref role="2ZyFGn" to="tpc2:fBEYTCT" resolve="EditorCellModel" />
+    </node>
+    <node concept="3N5dw7" id="1wEcoXjJkCQ" role="3ft7WO">
+      <ref role="3EoQqy" to="gbdf:WK6Z46CMrx" resolve="CellModel_DiagramNode" />
+      <node concept="2kknPJ" id="1wEcoXjJkCR" role="2klrvf">
+        <ref role="2ZyFGn" to="gbdf:WK6Z46CMBm" resolve="AbstractFigureReference" />
+      </node>
+      <node concept="3N5aqt" id="1wEcoXjJkCS" role="3Na0zg">
+        <node concept="3clFbS" id="1wEcoXjJkCT" role="2VODD2">
+          <node concept="3cpWs8" id="1wEcoXjJkCU" role="3cqZAp">
+            <node concept="3cpWsn" id="1wEcoXjJkCV" role="3cpWs9">
+              <property role="TrG5h" value="diagramNodeCell" />
+              <node concept="3Tqbb2" id="1wEcoXjJkCW" role="1tU5fm">
+                <ref role="ehGHo" to="gbdf:WK6Z46CMrx" resolve="CellModel_DiagramNode" />
+              </node>
+              <node concept="2ShNRf" id="1wEcoXjJkCX" role="33vP2m">
+                <node concept="3zrR0B" id="1wEcoXjJkCY" role="2ShVmc">
+                  <node concept="3Tqbb2" id="1wEcoXjJkCZ" role="3zrR0E">
+                    <ref role="ehGHo" to="gbdf:WK6Z46CMrx" resolve="CellModel_DiagramNode" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="1wEcoXjJkD0" role="3cqZAp">
+            <node concept="37vLTI" id="1wEcoXjJkD1" role="3clFbG">
+              <node concept="3N4pyC" id="1wEcoXjJkD8" role="37vLTx" />
+              <node concept="2OqwBi" id="1wEcoXjJkD3" role="37vLTJ">
+                <node concept="37vLTw" id="1wEcoXjJkD4" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1wEcoXjJkCV" resolve="diagramNodeCell" />
+                </node>
+                <node concept="3TrEf2" id="1wEcoXjJkD5" role="2OqNvi">
+                  <ref role="3Tt5mk" to="gbdf:WK6Z46CMBp" resolve="figure" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="1wEcoXjJkD6" role="3cqZAp">
+            <node concept="37vLTw" id="1wEcoXjJkD7" role="3clFbG">
+              <ref role="3cqZAo" node="1wEcoXjJkCV" resolve="diagramNodeCell" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="22mcaB" id="1wEcoXjJkxS">
     <ref role="aqKnT" to="gbdf:fQU43XxJyI" resolve="AbstractArgument" />
+    <node concept="22hDWj" id="xzgvwPPq4a" role="22hAXT" />
     <node concept="2F$Pav" id="1wEcoXjJkxU" role="3ft7WO">
       <node concept="3Tqbb2" id="1wEcoXjJkxV" role="2ZBHrp">
         <ref role="ehGHo" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
@@ -2150,57 +2202,9 @@
       </node>
     </node>
   </node>
-  <node concept="3p309x" id="1wEcoXjJkCN">
-    <property role="TrG5h" value="DiagramspecificEditorCells_Contribution" />
-    <node concept="2kknPJ" id="1wEcoXjJkCO" role="1IG6uw">
-      <ref role="2ZyFGn" to="tpc2:fBEYTCT" resolve="EditorCellModel" />
-    </node>
-    <node concept="3N5dw7" id="1wEcoXjJkCQ" role="3ft7WO">
-      <ref role="3EoQqy" to="gbdf:WK6Z46CMrx" resolve="CellModel_DiagramNode" />
-      <node concept="2kknPJ" id="1wEcoXjJkCR" role="2klrvf">
-        <ref role="2ZyFGn" to="gbdf:WK6Z46CMBm" resolve="AbstractFigureReference" />
-      </node>
-      <node concept="3N5aqt" id="1wEcoXjJkCS" role="3Na0zg">
-        <node concept="3clFbS" id="1wEcoXjJkCT" role="2VODD2">
-          <node concept="3cpWs8" id="1wEcoXjJkCU" role="3cqZAp">
-            <node concept="3cpWsn" id="1wEcoXjJkCV" role="3cpWs9">
-              <property role="TrG5h" value="diagramNodeCell" />
-              <node concept="3Tqbb2" id="1wEcoXjJkCW" role="1tU5fm">
-                <ref role="ehGHo" to="gbdf:WK6Z46CMrx" resolve="CellModel_DiagramNode" />
-              </node>
-              <node concept="2ShNRf" id="1wEcoXjJkCX" role="33vP2m">
-                <node concept="3zrR0B" id="1wEcoXjJkCY" role="2ShVmc">
-                  <node concept="3Tqbb2" id="1wEcoXjJkCZ" role="3zrR0E">
-                    <ref role="ehGHo" to="gbdf:WK6Z46CMrx" resolve="CellModel_DiagramNode" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="1wEcoXjJkD0" role="3cqZAp">
-            <node concept="37vLTI" id="1wEcoXjJkD1" role="3clFbG">
-              <node concept="3N4pyC" id="1wEcoXjJkD8" role="37vLTx" />
-              <node concept="2OqwBi" id="1wEcoXjJkD3" role="37vLTJ">
-                <node concept="37vLTw" id="1wEcoXjJkD4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1wEcoXjJkCV" resolve="diagramNodeCell" />
-                </node>
-                <node concept="3TrEf2" id="1wEcoXjJkD5" role="2OqNvi">
-                  <ref role="3Tt5mk" to="gbdf:WK6Z46CMBp" resolve="figure" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="1wEcoXjJkD6" role="3cqZAp">
-            <node concept="37vLTw" id="1wEcoXjJkD7" role="3clFbG">
-              <ref role="3cqZAo" node="1wEcoXjJkCV" resolve="diagramNodeCell" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="3p36aQ" id="1wEcoXjJkD_">
+  <node concept="22mcaB" id="1wEcoXjJkD_">
     <ref role="aqKnT" to="gbdf:WK6Z46DXv7" resolve="FigureParameterMapping" />
+    <node concept="22hDWj" id="xzgvwPPq4b" role="22hAXT" />
   </node>
 </model>
 

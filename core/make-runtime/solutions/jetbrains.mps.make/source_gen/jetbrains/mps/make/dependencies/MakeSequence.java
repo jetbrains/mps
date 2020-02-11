@@ -9,6 +9,7 @@ import jetbrains.mps.make.MakeSession;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
@@ -39,7 +40,7 @@ public class MakeSequence {
     if (myDefaultScript != null) {
       cluster.setScript(myDefaultScript);
     } else {
-      ScriptBuilder builder = cluster.createScriptBuilder();
+      ScriptBuilder builder = cluster.createScriptBuilder(myMakeSession.getProject().getComponent(FacetRegistry.class));
       cluster.setScript(myMakeSession.toScript(builder));
     }
   }

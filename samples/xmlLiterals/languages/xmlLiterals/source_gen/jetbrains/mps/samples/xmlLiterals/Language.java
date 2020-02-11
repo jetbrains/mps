@@ -18,6 +18,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.samples.xmlLiterals.structure.ConceptPresentationAspectImpl;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.samples.xmlLiterals.typesystem.TypesystemDescriptor;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -70,5 +72,10 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new TypesystemDescriptor());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    extensions.recordContribution("jetbrains.mps.core.xml", "479c7a8c-02f9-43b5-9139-d910cb22f298", EditorAspectDescriptor.class);
   }
 }

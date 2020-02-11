@@ -28,6 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.behavior.ConceptId__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -98,11 +99,18 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     migrationBuilder.addPart(from, to, createMoveConcept_c4c66o_c0a71a2(oldId, newId));
   }
   private void addEmptySubstituteMenu(SModel editorModel, final SNode from) {
-    SNode existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$hk)).where(new IWhereFilter<SNode>() {
+    SNode existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu$v4)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt) == from;
+        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt) == from && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it);
       }
     }).first();
+    if (existingSubstituteMenu == null) {
+      existingSubstituteMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$hk)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt) == from;
+        }
+      }).first();
+    }
     if (existingSubstituteMenu != null) {
       List<SNode> parts = ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$MxT3)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -111,9 +119,9 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
       }).toListSequence();
       CommentUtil.commentOutAll(parts);
     } else {
-      existingSubstituteMenu = SModelOperations.addRootNode(editorModel, createSubstituteMenu_Default_c4c66o_a0a0a0a1a3(from));
+      existingSubstituteMenu = SModelOperations.addRootNode(editorModel, createSubstituteMenu_c4c66o_a0a0a0a2a3(from));
     }
-    ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$MxT3)).addElement(_quotation_createNode_c4c66o_a0a2a3());
+    ListSequence.fromList(SLinkOperations.getChildren(existingSubstituteMenu, LINKS.parts$MxT3)).addElement(_quotation_createNode_c4c66o_a0a3a3());
   }
   public Collection<SNode> findInstances(final SAbstractConcept concept, SearchScope searchScope) {
     {
@@ -150,12 +158,13 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     rootBuilder1.forChild(LINKS.targetId$NVqy).initNode(node1, CONCEPTS.ConceptId$5a, true);
     return rootBuilder1.getResult();
   }
-  private static SNode createSubstituteMenu_Default_c4c66o_a0a0a0a1a3(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu_Default$hk);
+  private static SNode createSubstituteMenu_c4c66o_a0a0a0a2a3(SNode node0) {
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu$v4);
     rootBuilder1.setReferenceTarget(LINKS.conceptDeclaration$acmt, node0);
+    rootBuilder1.forChild(LINKS.type$gsXC).init(CONCEPTS.MenuTypeDefault$Sb);
     return rootBuilder1.getResult();
   }
-  private static SNode _quotation_createNode_c4c66o_a0a2a3() {
+  private static SNode _quotation_createNode_c4c66o_a0a3a3() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x88a6ffdb3b4f8c6L, "SubstituteMenuPart_Subconcepts")).getResult();
@@ -168,11 +177,13 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     /*package*/ static final SConcept DeprecatedNodeAnnotation$I8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation");
     /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept SubstituteMenu$v4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
     /*package*/ static final SConcept SubstituteMenu_Default$hk = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
     /*package*/ static final SConcept SubstituteMenuPart_Placeholder$n6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x25c7da75de4cff05L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Placeholder");
     /*package*/ static final SConcept InterfaceConceptReference$Yh = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference");
     /*package*/ static final SConcept MoveConcept$Zi = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, "jetbrains.mps.lang.migration.structure.MoveConcept");
     /*package*/ static final SConcept ConceptId$5a = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept MenuTypeDefault$Sb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L, "jetbrains.mps.lang.editor.structure.MenuTypeDefault");
   }
 
   private static final class PROPS {
@@ -189,5 +200,6 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     /*package*/ static final SReferenceLink intfc$fO5 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
     /*package*/ static final SContainmentLink sourceId$NVp5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6eaL, "sourceId");
     /*package*/ static final SContainmentLink targetId$NVqy = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x2b3f57492c1741b6L, 0x74cb131f590ad6edL, "targetId");
+    /*package*/ static final SContainmentLink type$gsXC = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
   }
 }

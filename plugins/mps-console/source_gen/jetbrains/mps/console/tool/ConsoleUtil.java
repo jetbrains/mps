@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities;
 import org.apache.log4j.Level;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.ide.messages.MessagesViewTool;
@@ -40,7 +41,7 @@ public class ConsoleUtil {
       return false;
     }
 
-    IScript scr = new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.JavaCompile"), new IFacet.Name("jetbrains.mps.make.facets.ReloadClasses"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make")).toScript();
+    IScript scr = new ScriptBuilder(project.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.JavaCompile"), new IFacet.Name("jetbrains.mps.make.facets.ReloadClasses"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make")).toScript();
     final MessagesViewTool mvt = project.getComponent(MessagesViewTool.class);
     IMessageHandler messageHandler = mvt.newHandler("Console Make", true).restrict(MessageKind.ERROR);
     MakeSession session = new MakeSession(project, messageHandler, true);

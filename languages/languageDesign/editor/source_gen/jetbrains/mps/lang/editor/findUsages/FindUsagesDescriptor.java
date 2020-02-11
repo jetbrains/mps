@@ -21,6 +21,8 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
     switch (token) {
       case 0:
         return new DefaultMenuReferences_Finder();
+      case 1:
+        return new TMDefaultMenuReferences_Finder();
       default:
         throw new IllegalArgumentException(String.format("Illegal identifier of a finder implementation: %d", token));
     }
@@ -29,9 +31,11 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
   @Override
   public void init(FinderRegistry reg) {
     reg.add(CONCEPTS.TransformationMenu_Default$In, 0, "DefaultMenuReferences");
+    reg.add(CONCEPTS.TransformationMenu$ZK, 1, "TMDefaultMenuReferences");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TransformationMenu_Default$In = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
+    /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
   }
 }

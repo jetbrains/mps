@@ -81,7 +81,7 @@
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -355,7 +355,7 @@
     <node concept="9S07l" id="147CB3QsUam" role="9Vyp8">
       <node concept="3clFbS" id="147CB3QsUan" role="2VODD2">
         <node concept="3SKdUt" id="147CB3QsUao" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnS4a" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnS4a" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnS4b" role="1PaTwD">
               <property role="3oM_SC" value="override" />
             </node>
@@ -559,7 +559,7 @@
     <node concept="9S07l" id="147CB3QsUaz" role="9Vyp8">
       <node concept="3clFbS" id="147CB3QsUa$" role="2VODD2">
         <node concept="3SKdUt" id="147CB3QsUa_" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnS4d" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnS4d" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnS4e" role="1PaTwD">
               <property role="3oM_SC" value="override" />
             </node>

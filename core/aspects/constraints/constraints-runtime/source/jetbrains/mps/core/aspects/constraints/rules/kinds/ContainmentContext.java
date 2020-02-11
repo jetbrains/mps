@@ -75,7 +75,7 @@ public final class ContainmentContext implements Context {
   @NotNull
   @Override
   public ContextGenre getCategory() {
-    throw new UnsupportedOperationException("GAGAGAGA");
+    throw new UnsupportedOperationException("");
   }
 
   @NotNull

@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -100,7 +100,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -226,7 +226,7 @@
       <node concept="3cqZAl" id="hRzK5Yr" role="3clF45" />
       <node concept="3clFbS" id="hRzK5Ys" role="3clF47">
         <node concept="3SKdUt" id="2aQPn0Pn8xP" role="3cqZAp">
-          <node concept="1PaTwC" id="2aQPn0Pn8xQ" role="3ndbpf">
+          <node concept="1PaTwC" id="2aQPn0Pn8xQ" role="1aUNEU">
             <node concept="3oM_SD" id="2aQPn0Pn8xR" role="1PaTwD">
               <property role="3oM_SC" value="Check" />
             </node>
@@ -251,7 +251,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="2aQPn0Pn8xY" role="3cqZAp">
-          <node concept="1PaTwC" id="2aQPn0Pn8xZ" role="3ndbpf">
+          <node concept="1PaTwC" id="2aQPn0Pn8xZ" role="1aUNEU">
             <node concept="3oM_SD" id="2aQPn0Pn8y0" role="1PaTwD">
               <property role="3oM_SC" value="check" />
             </node>
@@ -337,7 +337,7 @@
       <node concept="3cqZAl" id="hRzK5YO" role="3clF45" />
       <node concept="3clFbS" id="hRzK5YP" role="3clF47">
         <node concept="3SKdUt" id="2aQPn0Pn8y7" role="3cqZAp">
-          <node concept="1PaTwC" id="2aQPn0Pn8y8" role="3ndbpf">
+          <node concept="1PaTwC" id="2aQPn0Pn8y8" role="1aUNEU">
             <node concept="3oM_SD" id="2aQPn0Pn8y9" role="1PaTwD">
               <property role="3oM_SC" value="Check" />
             </node>
@@ -362,7 +362,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="2aQPn0Pn8yg" role="3cqZAp">
-          <node concept="1PaTwC" id="2aQPn0Pn8yh" role="3ndbpf">
+          <node concept="1PaTwC" id="2aQPn0Pn8yh" role="1aUNEU">
             <node concept="3oM_SD" id="2aQPn0Pn8yi" role="1PaTwD">
               <property role="3oM_SC" value="check" />
             </node>

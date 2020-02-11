@@ -8,26 +8,25 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.behavior.IMenu__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -42,7 +41,14 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
   }
   @Override
   public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+    if (!(isApplicableToNode(node, editorContext))) {
+      return false;
+    }
     return true;
+  }
+  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+    // disable for legacy concepts 
+    return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$ZK) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$82);
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,11 +65,13 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
     return list;
   }
   private List<SAbstractConcept> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SConceptOperations.getAllSubConcepts(CONCEPTS.ITransformationMenu$lF, SNodeOperations.getModel(node))).where(new IWhereFilter<SAbstractConcept>() {
-      public boolean accept(SAbstractConcept it) {
-        return !(it.isAbstract()) && it != SNodeOperations.getConcept(node);
-      }
-    }).toListSequence();
+    List<SAbstractConcept> param = ListSequence.fromList(new ArrayList<SAbstractConcept>());
+    if (Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$82)) {
+      ListSequence.fromList(param).addElement(CONCEPTS.TransformationMenu$ZK);
+    } else {
+      ListSequence.fromList(param).addElement(CONCEPTS.TransformationMenuContribution$82);
+    }
+    return param;
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SAbstractConcept myParameter;
@@ -107,7 +115,7 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITransformationMenu$lF = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
+    /*package*/ static final SConcept TransformationMenuContribution$82 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution");
     /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
   }
 

@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="q2nv" ref="r:0874afb3-3c36-4193-9ba6-eed3bcd5ae08(jetbrains.mps.build.mps.runner.test.test1)" />
@@ -114,7 +114,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -437,7 +437,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7viJmryW1Ne" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopc2" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopc2" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopc3" role="1PaTwD">
               <property role="3oM_SC" value="check" />
             </node>
@@ -529,7 +529,7 @@
         </node>
         <node concept="3clFbH" id="1CZB82Av7w2" role="3cqZAp" />
         <node concept="3SKdUt" id="1CZB82Av$Ic" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopc6" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopc6" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopc7" role="1PaTwD">
               <property role="3oM_SC" value="test" />
             </node>
@@ -660,7 +660,7 @@
         </node>
         <node concept="3clFbH" id="1CZB82AvzHt" role="3cqZAp" />
         <node concept="3SKdUt" id="1ZVcZhrQxCc" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopca" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopca" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopcb" role="1PaTwD">
               <property role="3oM_SC" value="create" />
             </node>

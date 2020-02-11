@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,8 +51,6 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.WaitForProgressToShow;
 import com.intellij.util.ui.AbstractTableCellEditor;
-import com.intellij.util.ui.AnimatedIcon;
-import com.intellij.util.ui.AsyncProcessIcon;
 import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -196,7 +194,6 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   private final Project myIdeaProject;
   private final List<FacetCheckBox> myCheckBoxes = new ArrayList<>();
   private final FacetTabsPersistence myFacetTabsPersistence;
-  private final AnimatedIcon myDependenciesSpinner = new AsyncProcessIcon(getClass().getSimpleName());
 
   // We are tightly coupled with IDEA IDE here, no reason to be shy about project kind.
   public ModulePropertiesConfigurable(SModule module, MPSProject project) {
@@ -572,9 +569,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     @Override
     public void init() {
       super.init();
-      final GridConstraints gc = new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-                                                     GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false);
-      getTabComponent().add(myDependenciesSpinner, gc);
+      setTableContentIsLoading(true);
     }
 
     /*package*/ List<DependenciesTableItem> getActualDependencies() {
@@ -640,8 +635,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     @Override
     protected TableCellRenderer getTableCellRender() {
-      final ModuleTableCellRender mtcr = new ModuleTableCellRender(myModuleRepository);
-      mtcr.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
+      final ModuleTableCellRender cellRender = new ModuleTableCellRender(myModuleRepository);
+      cellRender.addCellState(Objects::isNull, DependencyCellState.NOT_AVAILABLE);
       final ScanModuleDependencyTask scanTask = new ScanModuleDependencyTask(myModule);
       //scanTask.whenChanged(myDependTableModel::fireTableDataChanged);
       Runnable whenDone = () -> {
@@ -649,7 +644,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           // XXX would be great to report superfluous extends for generators as well (populate extendSet from template model scanner
           //     that knows what constitutes 'extends' between generators. The main problem is nobody knows how to tell generators are truly
           //     in 'extends' relation.
-          mtcr.addCellState(moduleImport -> {
+          cellRender.addCellState(moduleImport -> {
             SModuleReference importRef = moduleImport.getModuleReference();
             // XXX not quite nice as the same module may be imported twice, as a regular dependency as well as 'extends',
             // here we don't tell one from another and warn both. Would be better to refactor StateTableCellRenderer to give more
@@ -658,19 +653,18 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             return isExtendsDep && !scanTask.getExtendsSet().contains(moduleImport.getModuleReference());
           }, DependencyCellState.SUPERFLUOUS_EXTENDS);
         }
-        mtcr.addCellState(
+        cellRender.addCellState(
             moduleImport -> !scanTask.getGenerationTargets().contains(moduleImport.getModuleReference()) &&
                             !scanTask.getCrossModuleSet().contains(moduleImport.getModuleReference()),
             DependencyCellState.UNUSED);
         myDependTableModel.fireTableDataChanged();
-        myDependenciesSpinner.suspend();
+        ModuleDependenciesTab.this.setTableContentIsLoading(false);
       };
       // invokeLater(Runnable) uses ModalityState.defaultModalityState() which is non-model when invoked from non-EDT thread
       // as long as we need this code to get executed in the dialog, have to specify ModalityState explicitly
       scanTask.whenDone(() -> ApplicationManager.getApplication().invokeLater(whenDone, ModalityState.any()));
-      myDependenciesSpinner.resume();
       BackgroundTaskUtil.executeOnPooledThread(getDisposable(), new ModelReadRunnable(myModuleRepository, scanTask));
-      return mtcr;
+      return cellRender;
     }
 
     @Nullable

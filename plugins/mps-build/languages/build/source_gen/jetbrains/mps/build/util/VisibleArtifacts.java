@@ -43,6 +43,17 @@ public class VisibleArtifacts {
     collectProjectArtifacts();
   }
 
+  public void collectOnlyExternal() {
+    for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildExternalLayoutDependency$Qe)) {
+      SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$nLpY);
+      collectInExternalLayout(layoutDependency, target);
+    }
+    for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$tpR5), CONCEPTS.BuildProjectDependency$Ug)) {
+      SNode target = SLinkOperations.getTarget(projectDependency, LINKS.script$mz1x);
+      collectInProject(projectDependency, target);
+    }
+  }
+
   private void collectProjectArtifacts() {
     collectInProject(SLinkOperations.getTarget(project, LINKS.layout$tpCz), project);
   }
@@ -143,6 +154,13 @@ public class VisibleArtifacts {
     assert !(SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule);
     VisibleArtifacts artifacts = new VisibleArtifacts(project);
     artifacts.collect(false);
+    return artifacts;
+  }
+
+  public static VisibleArtifacts createExternalFor(SNode project) {
+    assert !(SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule);
+    VisibleArtifacts artifacts = new VisibleArtifacts(project);
+    artifacts.collectOnlyExternal();
     return artifacts;
   }
 

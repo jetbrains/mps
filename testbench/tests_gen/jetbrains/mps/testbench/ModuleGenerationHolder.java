@@ -45,11 +45,12 @@ import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.make.resources.IResource;
 import java.util.Collections;
 import jetbrains.mps.smodel.resources.ModelsToResources;
@@ -97,7 +98,8 @@ public class ModuleGenerationHolder {
     }
 
     IResult result;
-    IScript scr = ModuleGenerationHolder.defaultScriptBuilder().toScript();
+    // XXX there's BuildMakeService that creates defaultScriptBuilder itself. Why don't we do the same here in TestMakeService? 
+    IScript scr = defaultScriptBuilder().toScript();
     final MakeSession session = new MakeSession(project, myMessageHandler, true);
     // trace.info is useless for tests, however we do keep these files in repo, and diffModule test 
     // fails if we don't generate one here 
@@ -275,17 +277,13 @@ public class ModuleGenerationHolder {
       }
     });
   }
-  private static ScriptBuilder defaultScriptBuilder() {
-    return new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
+  private ScriptBuilder defaultScriptBuilder() {
+    return new ScriptBuilder(project.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make"), new IFacet.Name("jetbrains.mps.lang.editor.imageGen.GenerateImages")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
   }
   private static Iterable<SModule> withGenerators(Iterable<SModule> modules) {
-    return Sequence.fromIterable(modules).concat(Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule it) {
-        return it instanceof Language;
-      }
-    }).translate(new ITranslator2<SModule, SModule>() {
-      public Iterable<SModule> translate(SModule it) {
-        return (List<SModule>) (List) ((Language) it).getGenerators();
+    return Sequence.fromIterable(modules).concat(Sequence.fromIterable(modules).ofType(Language.class).translate(new ITranslator2<Language, Generator>() {
+      public Iterable<Generator> translate(Language it) {
+        return it.getGenerators();
       }
     }));
   }

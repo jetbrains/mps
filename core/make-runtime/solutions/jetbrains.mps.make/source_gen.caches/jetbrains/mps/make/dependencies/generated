@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-e1vlluzmkzs90j7kal4tj4ouwv8uafg">
-  <files names="Cluster.java:MakeSequence.java:ModulesCluster.java:ModulesClusterizer.java" />
+<product version="3" modelHash="9ps8sssgh0ccitfnh1fhspwth325qdh">
+  <files names="Cluster.java:MakeSequence.java:ModuleBuildSequence.java:ModulesCluster.java:ModulesClusterizer.java" />
 </product>
 

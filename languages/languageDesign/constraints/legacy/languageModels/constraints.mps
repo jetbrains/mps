@@ -124,7 +124,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
@@ -325,7 +325,7 @@
             </node>
           </node>
           <node concept="3SKdUt" id="2e3ANUBoyrv" role="3cqZAp">
-            <node concept="1PaTwC" id="2e3ANUBoyrw" role="3ndbpf">
+            <node concept="1PaTwC" id="2e3ANUBoyrw" role="1aUNEU">
               <node concept="3oM_SD" id="2e3ANUBoyry" role="1PaTwD">
                 <property role="3oM_SC" value="why" />
               </node>
@@ -522,7 +522,7 @@
       <node concept="3dgokm" id="5Vvmn_QkNlQ" role="1N6uqs">
         <node concept="3clFbS" id="5Vvmn_QkNlR" role="2VODD2">
           <node concept="3SKdUt" id="5Vvmn_QkNlS" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnUas" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnUas" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnUat" role="1PaTwD">
                 <property role="3oM_SC" value="properties" />
               </node>
@@ -657,7 +657,7 @@
       <node concept="3dgokm" id="5Vvmn_QkNiW" role="1N6uqs">
         <node concept="3clFbS" id="5Vvmn_QkNiX" role="2VODD2">
           <node concept="3SKdUt" id="5Vvmn_QkNiY" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnUay" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnUay" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnUaz" role="1PaTwD">
                 <property role="3oM_SC" value="links" />
               </node>

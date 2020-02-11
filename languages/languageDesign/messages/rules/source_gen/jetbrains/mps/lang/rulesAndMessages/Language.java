@@ -17,6 +17,8 @@ import jetbrains.mps.lang.rulesAndMessages.editor.EditorAspectDescriptorImpl;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.lang.rulesAndMessages.structure.ConceptPresentationAspectImpl;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -68,5 +70,11 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new ConceptPresentationAspectImpl());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    extensions.recordContribution("jetbrains.mps.lang.constraints.rules", "47257bf3-78d3-470b-89d9-8c3261a61d15", EditorAspectDescriptor.class);
+    extensions.recordContribution("jetbrains.mps.lang.constraints.rules.skeleton", "134c38d4-e3af-4d9e-b069-1c7df0a4005d", EditorAspectDescriptor.class);
   }
 }

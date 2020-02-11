@@ -11,13 +11,13 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.MakeAspectDescriptor;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.ITarget;
 
 @GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/4634869729620616118", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
@@ -38,8 +38,8 @@ public class Cluster {
   public Iterable<IResource> getResources() {
     return myResources;
   }
-  public ScriptBuilder createScriptBuilder() {
-    ScriptBuilder scb = new ScriptBuilder();
+  public ScriptBuilder createScriptBuilder(FacetRegistry facetRegistry) {
+    ScriptBuilder scb = new ScriptBuilder(facetRegistry);
     for (SLanguage ns : allUsedLangNamespaces()) {
       LanguageRuntime lr = myLanguageRegistry.getLanguage(ns);
       MakeAspectDescriptor aspect = (lr == null ? null : lr.getAspect(MakeAspectDescriptor.class));
@@ -49,7 +49,7 @@ public class Cluster {
           return fct.getName();
         }
       }));
-      scb.withFacetNames(Sequence.fromIterable(FacetRegistry.getInstance().getFacetsForLanguage(ns.getQualifiedName())).select(new ISelector<IFacet, IFacet.Name>() {
+      scb.withFacetNames(Sequence.fromIterable(facetRegistry.getFacetsForLanguage(ns.getQualifiedName())).select(new ISelector<IFacet, IFacet.Name>() {
         public IFacet.Name select(IFacet fct) {
           return fct.getName();
         }

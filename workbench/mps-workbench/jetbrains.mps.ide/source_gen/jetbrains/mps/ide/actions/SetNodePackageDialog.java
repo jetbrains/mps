@@ -34,8 +34,6 @@ public class SetNodePackageDialog extends DialogWrapper {
   public SetNodePackageDialog(Project project, List<String> existingPackages) {
     super(((MPSProject) project).getProject());
     setTitle("Set Virtual Package");
-    setOKButtonText("&OK");
-    setCancelButtonText("Ca&ncel");
     setModal(true);
     myMainPanel = new JPanel();
     myMainPanel.setLayout(new GridBagLayout());

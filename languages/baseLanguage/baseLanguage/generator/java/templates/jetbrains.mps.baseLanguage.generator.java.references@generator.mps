@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal" version="0" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
@@ -92,6 +92,7 @@
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
       <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
+      <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -581,6 +582,22 @@
       <ref role="30HIoZ" to="tpee:fz7vLUo" resolve="VariableReference" />
       <node concept="30G5F_" id="5Z1N4vbypyP" role="30HLyM">
         <node concept="3clFbS" id="5Z1N4vbypyQ" role="2VODD2">
+          <node concept="3clFbJ" id="43qk0udYex" role="3cqZAp">
+            <node concept="3clFbS" id="43qk0udYez" role="3clFbx">
+              <node concept="3cpWs6" id="43qk0udZdZ" role="3cqZAp">
+                <node concept="3clFbT" id="43qk0udZkH" role="3cqZAk" />
+              </node>
+            </node>
+            <node concept="3clFbC" id="43qk0udZ0J" role="3clFbw">
+              <node concept="10Nm6u" id="43qk0udZbH" role="3uHU7w" />
+              <node concept="2OqwBi" id="43qk0udYwV" role="3uHU7B">
+                <node concept="30H73N" id="43qk0udYgN" role="2Oq$k0" />
+                <node concept="3TrEf2" id="43qk0udYJD" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tpee:fzcqZ_w" resolve="variableDeclaration" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="5Z1N4vbypEj" role="3cqZAp">
             <node concept="2YIFZM" id="5Z1N4vb$68o" role="3clFbG">
               <ref role="37wK5l" to="63o7:5Z1N4vb$4Uv" resolve="isMarked" />

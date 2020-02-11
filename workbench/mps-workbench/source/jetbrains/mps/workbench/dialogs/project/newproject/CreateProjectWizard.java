@@ -16,7 +16,6 @@
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
 import com.intellij.ide.GeneralSettings;
-import com.intellij.ide.IdeBundle;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -27,7 +26,6 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.popup.ListItemDescriptor;
 import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.ui.CollectionListModel;
 import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.HideableDecorator;
@@ -101,8 +99,6 @@ public final class CreateProjectWizard extends DialogWrapper {
     super(project);
     myCurrentProject = project;
     setTitle("New Project");
-    setOKButtonText(IdeBundle.message("button.ok"));
-    setCancelButtonText(RefactoringBundle.message("cancel.button"));
 
     init();
   }
@@ -504,7 +500,8 @@ public final class CreateProjectWizard extends DialogWrapper {
         myCurrentTemplateItem.getTemplateFiller().fillProjectWithModules(project.getComponent(MPSProject.class));
         factory.activate();
       } catch (ProjectNotCreatedException e) {
-        Messages.showErrorDialog(getContentPane(), e.getMessage());
+        final String message = e.getMessage() != null ? e.getMessage() : "No message was provided by exception";
+        Messages.showErrorDialog(message, "Project Creation Failed");
       }
     });
   }

@@ -100,5 +100,25 @@
       <ref role="PrY4T" to="sis7:5sUTrySMJsG" resolve="Problem" />
     </node>
   </node>
+  <node concept="1TIwiD" id="6$uQJbhEDnF">
+    <property role="EcuMT" value="7574732359718311403" />
+    <property role="TrG5h" value="TargetConceptIncorrectChild" />
+    <property role="R5$K2" value="true" />
+    <property role="34LRSv" value="when child role has incompatible target concept" />
+    <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
+    <node concept="PrWs8" id="6$uQJbhEDnG" role="PzmwI">
+      <ref role="PrY4T" node="Z2mFAeayoh" resolve="InConceptProblem" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6$uQJbhEDyH">
+    <property role="EcuMT" value="7574732359718312109" />
+    <property role="TrG5h" value="TargetConceptIncorrectRef" />
+    <property role="R5$K2" value="true" />
+    <property role="34LRSv" value="when reference role has incompatible target concept" />
+    <ref role="1TJDcQ" to="sis7:6GnzfDRfssU" resolve="ProblemPointsToKindRoot" />
+    <node concept="PrWs8" id="6$uQJbhEDyI" role="PzmwI">
+      <ref role="PrY4T" node="Z2mFAeayoh" resolve="InConceptProblem" />
+    </node>
+  </node>
 </model>
 

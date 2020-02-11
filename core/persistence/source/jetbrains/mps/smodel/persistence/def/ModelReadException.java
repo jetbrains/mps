@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,9 @@
 package jetbrains.mps.smodel.persistence.def;
 
 import jetbrains.mps.smodel.SModelHeader;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-
-import java.io.IOException;
 
 /**
  * Indicates failure to read model. Is not specific to 'default' persistence.
@@ -49,18 +46,12 @@ public class ModelReadException extends Exception {
     return myModelReference;
   }
 
+  /**
+   * @deprecated use {@link #getMessage()}
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
   public String getMessageEx() {
-    Throwable cause = getCause();
-    if (cause instanceof IOException) {
-      return "Couldn't read model because of I/O error.\n" + cause.getMessage();
-    } else if (cause instanceof SAXParseException) {
-      return "Couldn't read model because of invalid XML markup.\n" + cause.getMessage();
-    } else if (cause instanceof SAXException) {
-      return "Couldn't read model because of invalid SAX error.\n" + cause.getMessage();
-    } else if (cause != null && cause.getMessage() != null) {
-      return getMessage() + '\n' + cause.getMessage();
-    } else {
-      return getMessage();
-    }
+    return getMessage();
   }
 }

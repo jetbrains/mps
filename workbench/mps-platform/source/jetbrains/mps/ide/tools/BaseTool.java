@@ -34,6 +34,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -386,6 +387,7 @@ public abstract class BaseTool {
     manager.setSelectedContent(content);
   }
 
+  @Nullable
   protected ContentManager getContentManager() {
     if (!isRegistered()) {
       register();

@@ -43,7 +43,9 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.function.Consumer;
 
 import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
@@ -60,7 +62,12 @@ public class MemManager implements ProjectComponent {
   private final Project myProject;
   private final ComponentHost myComponentHost;
   private MemoryUsagePanel myMemUsagePanel = null;
-  private ActionListener myActionListener = e -> cleanupFromAction();
+  private MouseListener myActionListener = new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+      cleanupFromAction();
+    }
+  };
 
   private Alarm myCleanupAlarm;
   private Alarm myAlarm;
@@ -89,7 +96,7 @@ public class MemManager implements ProjectComponent {
     }
 
     myMemUsagePanel = (MemoryUsagePanel) widget;
-    myMemUsagePanel.addActionListener(myActionListener);
+    myMemUsagePanel.addMouseListener(myActionListener);
 
     int sec = Registry.intValue("ide.memory.cleanup.interval");
     if (sec > 0) {
@@ -100,7 +107,7 @@ public class MemManager implements ProjectComponent {
   @Override
   public void projectClosed() {
     if (myMemUsagePanel != null) {
-      myMemUsagePanel.removeActionListener(myActionListener);
+      myMemUsagePanel.removeMouseListener(myActionListener);
     }
   }
 

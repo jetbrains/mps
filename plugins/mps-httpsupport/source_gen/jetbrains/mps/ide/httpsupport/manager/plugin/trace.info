@@ -149,50 +149,46 @@
   </root>
   <root nodeRef="r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/4427830474126321388">
     <file name="MPSInternalPortManager.java">
-      <node id="4170577479149337299" at="17,0,18,0" concept="11" trace="PORT_KEY" />
-      <node id="4170577479149192153" at="27,35,28,100" concept="1" />
-      <node id="4170577479149336809" at="28,100,29,49" concept="7" />
-      <node id="4170577479149442699" at="29,49,30,29" concept="1" />
-      <node id="4170577479149441926" at="34,67,35,33" concept="1" />
-      <node id="7730948292370037540" at="35,33,36,22" concept="1" />
-      <node id="4427830474126516198" at="42,24,43,39" concept="8" />
-      <node id="3750908339007129361" at="47,49,48,144" concept="1" />
-      <node id="4427830474126324114" at="53,42,54,17" concept="8" />
-      <node id="4427830474126539076" at="57,37,58,73" concept="8" />
-      <node id="4739183745611777362" at="61,38,62,418" concept="9" />
-      <node id="4170577479149439104" at="62,418,63,46" concept="8" />
-      <node id="4427830474126324033" at="23,0,26,0" concept="11" trace="PORT" />
-      <node id="4427830474126538660" at="57,0,60,0" concept="12" trace="isEnabled#()Z" />
-      <node id="4427830474126324049" at="41,0,45,0" concept="6" trace="getPort#()I" />
-      <node id="4427830474126324057" at="46,0,50,0" concept="6" trace="cannotBind#(Ljava/lang/Exception;I)V" />
-      <node id="4427830474126324110" at="52,0,56,0" concept="6" trace="isAvailableExternally#()Z" />
-      <node id="4170577479149437911" at="61,0,65,0" concept="12" trace="getCurrentPort#()I" />
-      <node id="4170577479149429586" at="33,0,38,0" concept="6" trace="afterValueChanged#(Lcom/intellij/openapi/util/registry/RegistryValue;)V" />
-      <node id="4170577479149369173" at="30,29,38,65" concept="1" />
-      <node id="4170577479149191565" at="27,0,40,0" concept="0" trace="MPSInternalPortManager#()V" />
-      <scope id="4427830474126324052" at="42,24,43,39" />
-      <scope id="4427830474126324064" at="47,49,48,144" />
-      <scope id="4427830474126324113" at="53,42,54,17" />
-      <scope id="4427830474126538663" at="57,37,58,73" />
-      <scope id="4170577479149429594" at="34,67,36,22" />
-      <scope id="4170577479149437914" at="61,38,63,46" />
-      <scope id="4427830474126538660" at="57,0,60,0" />
-      <scope id="4427830474126324049" at="41,0,45,0" />
-      <scope id="4427830474126324057" at="46,0,50,0">
+      <node id="4170577479149337299" at="16,0,17,0" concept="11" trace="PORT_KEY" />
+      <node id="4170577479149336809" at="18,35,19,49" concept="7" />
+      <node id="7730948292370037540" at="23,67,24,22" concept="1" />
+      <node id="4427830474126516198" at="30,24,31,39" concept="8" />
+      <node id="3750908339007129361" at="35,49,36,154" concept="1" />
+      <node id="4427830474126324114" at="41,42,42,17" concept="8" />
+      <node id="4427830474126539076" at="45,37,46,73" concept="8" />
+      <node id="4739183745611777362" at="49,38,50,418" concept="9" />
+      <node id="4170577479149439104" at="50,418,51,46" concept="8" />
+      <node id="4427830474126538660" at="45,0,48,0" concept="12" trace="isEnabled#()Z" />
+      <node id="4170577479149429586" at="22,0,26,0" concept="6" trace="afterValueChanged#(Lcom/intellij/openapi/util/registry/RegistryValue;)V" />
+      <node id="4427830474126324049" at="29,0,33,0" concept="6" trace="getPort#()I" />
+      <node id="4427830474126324057" at="34,0,38,0" concept="6" trace="cannotBind#(Ljava/lang/Exception;I)V" />
+      <node id="4427830474126324110" at="40,0,44,0" concept="6" trace="isAvailableExternally#()Z" />
+      <node id="4170577479149437911" at="49,0,53,0" concept="12" trace="getCurrentPort#()I" />
+      <node id="4170577479149369173" at="19,49,26,65" concept="1" />
+      <node id="4170577479149191565" at="18,0,28,0" concept="0" trace="MPSInternalPortManager#()V" />
+      <scope id="4170577479149429594" at="23,67,24,22" />
+      <scope id="4427830474126324052" at="30,24,31,39" />
+      <scope id="4427830474126324064" at="35,49,36,154" />
+      <scope id="4427830474126324113" at="41,42,42,17" />
+      <scope id="4427830474126538663" at="45,37,46,73" />
+      <scope id="4170577479149437914" at="49,38,51,46" />
+      <scope id="4427830474126538660" at="45,0,48,0" />
+      <scope id="4170577479149429586" at="22,0,26,0">
+        <var name="value" id="4170577479149429590" />
+      </scope>
+      <scope id="4427830474126324049" at="29,0,33,0" />
+      <scope id="4427830474126324057" at="34,0,38,0">
         <var name="e" id="4427830474126324060" />
         <var name="port" id="4427830474126324062" />
       </scope>
-      <scope id="4427830474126324110" at="52,0,56,0" />
-      <scope id="4170577479149437911" at="61,0,65,0" />
-      <scope id="4170577479149429586" at="33,0,38,0">
-        <var name="value" id="4170577479149429590" />
-      </scope>
-      <scope id="4170577479149191568" at="27,35,38,65">
+      <scope id="4427830474126324110" at="40,0,44,0" />
+      <scope id="4170577479149437911" at="49,0,53,0" />
+      <scope id="4170577479149191568" at="18,35,26,65">
         <var name="value" id="4170577479149336810" />
       </scope>
-      <scope id="4170577479149191565" at="27,0,40,0" />
-      <unit id="4170577479149429256" at="31,26,38,5" name="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager$1" />
-      <unit id="4427830474126321388" at="14,0,66,0" name="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager" />
+      <scope id="4170577479149191565" at="18,0,28,0" />
+      <unit id="4170577479149429256" at="20,26,26,5" name="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager$1" />
+      <unit id="4427830474126321388" at="13,0,54,0" name="jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager" />
     </file>
   </root>
   <root nodeRef="r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/7720980209309576946">

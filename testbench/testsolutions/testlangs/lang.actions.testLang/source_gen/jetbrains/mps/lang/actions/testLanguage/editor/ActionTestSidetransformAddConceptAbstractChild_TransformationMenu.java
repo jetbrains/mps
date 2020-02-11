@@ -42,7 +42,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu extends TransformationMenuBase {
-  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
+  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
     return SetSequence.fromSet(myLocations).contains(location);
@@ -83,8 +83,14 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_WrapSM_eewfkw_a1());
     }
-    if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
+    if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_WrapSM_eewfkw_a2());
+    }
+    if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
+      result.add(new TMP_WrapSM_eewfkw_a3());
+    }
+    if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
+      result.add(new TMP_WrapSM_eewfkw_a4());
     }
     return result;
   }
@@ -146,6 +152,58 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "ActionTestSidetransformAddConceptChild2", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "4986064659797101738")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Nullable
+    @Override
+    protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
+      final EditorContext editorContext = _context.getEditorContext();
+      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+    }
+    private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
+      return CONCEPTS.ActionTestSidetransformAddConceptChild2$Hp;
+    }
+
+
+    @Override
+    protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
+      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
+      return new SubstituteMenuItemAsActionItem(item) {
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNode createdNode = item.createNode(pattern);
+          SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        }
+
+        @Override
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          super.customize(pattern, style);
+          if (targetNode != null) {
+            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+              customizer.customize(style, compositeContext);
+            }
+
+          }
+        }
+      };
+    }
+  }
+  public class TMP_WrapSM_eewfkw_a3 extends WrapSubstituteMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
       context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "ActionTestSidetransformAddConceptChild", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "1741258697587036497")));
       try {
         return super.createItems(context);
@@ -193,9 +251,62 @@ public class ActionTestSidetransformAddConceptAbstractChild_TransformationMenu e
       };
     }
   }
+  public class TMP_WrapSM_eewfkw_a4 extends WrapSubstituteMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "ActionTestSidetransformAddConceptChild2", new SNodePointer("r:6f930e62-d183-4ca9-a17e-cab70bc506c7(jetbrains.mps.lang.actions.testLanguage.editor)", "4986064659797101978")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Nullable
+    @Override
+    protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
+      final EditorContext editorContext = _context.getEditorContext();
+      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+    }
+    private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
+      return CONCEPTS.ActionTestSidetransformAddConceptChild2$Hp;
+    }
+
+
+    @Override
+    protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
+      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
+      return new SubstituteMenuItemAsActionItem(item) {
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNode createdNode = item.createNode(pattern);
+          SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        }
+
+        @Override
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          super.customize(pattern, style);
+          if (targetNode != null) {
+            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+              customizer.customize(style, compositeContext);
+            }
+
+          }
+        }
+      };
+    }
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ActionTestSidetransformAddConceptAbstractChild$De = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d415e8d80L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptAbstractChild");
     /*package*/ static final SConcept ActionTestSidetransformAddConceptChild$60 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
+    /*package*/ static final SConcept ActionTestSidetransformAddConceptChild2$Hp = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x45320f640a5469b6L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild2");
   }
 }

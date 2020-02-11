@@ -4,7 +4,7 @@
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
@@ -217,7 +217,7 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -2437,7 +2437,7 @@
                 </node>
               </node>
               <node concept="3SKdUt" id="5Ue3IAz39dp" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXoiF8" role="3ndbpf">
+                <node concept="1PaTwC" id="ATZLwXoiF8" role="1aUNEU">
                   <node concept="3oM_SD" id="ATZLwXoiF9" role="1PaTwD">
                     <property role="3oM_SC" value="e.g." />
                   </node>
@@ -3063,7 +3063,7 @@
             </node>
           </node>
           <node concept="3SKdUt" id="21GaM5PRQHH" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXoiFe" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXoiFe" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXoiFf" role="1PaTwD">
                 <property role="3oM_SC" value="being" />
               </node>

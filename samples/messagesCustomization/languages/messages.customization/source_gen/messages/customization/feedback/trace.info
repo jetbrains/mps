@@ -10,6 +10,29 @@
       <unit at="10,0,17,0" name="messages.customization.feedback.GeneratedFeedbackAspectFeedback" />
     </file>
   </root>
+  <root nodeRef="r:ecf311aa-7fee-4454-acdb-4d199fb64430(messages.customization.feedback)/116705030628862225">
+    <file name="IncorrectTargetTestConcept_FeedbackFeedback.java">
+      <node id="116705030628862225" at="21,0,22,0" concept="3" trace="CONCEPT" />
+      <node id="116705030628862755" at="26,92,27,162" concept="2" />
+      <node id="116705030628862225" at="31,0,32,0" concept="3" trace="PROVIDERS" />
+      <node id="116705030628862225" at="33,56,34,19" concept="4" />
+      <node id="116705030628862225" at="39,58,40,30" concept="2" />
+      <node id="116705030628862225" at="33,0,36,0" concept="0" trace="IncorrectTargetTestConcept_FeedbackFeedback#()V" />
+      <node id="116705030628862755" at="24,0,29,0" concept="1" trace="yieldMessage#(Ljetbrains/mps/core/aspects/feedback/messages/IncorrectTargetChildRoleContext;)Ljetbrains/mps/core/aspects/feedback/messages/MessageProvider/StringMsg;" />
+      <node id="116705030628862225" at="37,0,42,0" concept="1" trace="getDeclaredProviders#()Ljava/util/stream/Stream;" />
+      <node id="116705030628862755" at="23,0,30,0" concept="3" trace="MSGPROVIDER_WhenChildRoleHasIncompatibleTargetConcept_cxdcuc_a" />
+      <scope id="116705030628862755" at="26,92,27,162" />
+      <scope id="116705030628862225" at="33,56,34,19" />
+      <scope id="116705030628862225" at="39,58,40,30" />
+      <scope id="116705030628862225" at="33,0,36,0" />
+      <scope id="116705030628862755" at="24,0,29,0">
+        <var name="context" id="116705030628862755" />
+      </scope>
+      <scope id="116705030628862225" at="37,0,42,0" />
+      <unit id="116705030628862755" at="23,142,29,3" name="messages.customization.feedback.IncorrectTargetTestConcept_FeedbackFeedback$1" />
+      <unit id="116705030628862225" at="20,0,43,0" name="messages.customization.feedback.IncorrectTargetTestConcept_FeedbackFeedback" />
+    </file>
+  </root>
   <root nodeRef="r:ecf311aa-7fee-4454-acdb-4d199fb64430(messages.customization.feedback)/5983615114019032371">
     <file name="TestConcept_FeedbackFeedback.java">
       <node id="5983615114019032371" at="24,0,25,0" concept="3" trace="CONCEPT" />

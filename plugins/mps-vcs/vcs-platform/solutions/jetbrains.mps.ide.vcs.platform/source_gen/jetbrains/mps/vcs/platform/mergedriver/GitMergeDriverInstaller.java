@@ -107,7 +107,7 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
   }
 
   private List<VcsRoot> getGitRoots() {
-    return Sequence.fromIterable(Sequence.fromArray(myProject.getComponent(ProjectLevelVcsManager.class).getAllVcsRoots())).where(new IWhereFilter<VcsRoot>() {
+    return Sequence.fromIterable(Sequence.fromArray(ProjectLevelVcsManager.getInstance(myProject).getAllVcsRoots())).where(new IWhereFilter<VcsRoot>() {
       public boolean accept(VcsRoot it) {
         return it.getVcs() instanceof GitVcs;
       }

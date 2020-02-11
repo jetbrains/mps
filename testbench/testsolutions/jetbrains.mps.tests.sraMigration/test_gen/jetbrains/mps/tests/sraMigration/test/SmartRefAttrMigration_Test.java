@@ -129,94 +129,6 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
       }
     });
   }
-  public void test_testExplicitMenu_Direct() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-
-
-        SNode explicitMenu_Direct = findGeneratedSMN(modelref_editor, ref_explicitMenu_Direct);
-        Assert.assertNotNull(explicitMenu_Direct);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_Direct, LINKS.parts$MxT3)).first(), CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
-
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingTextFunction$QMMb));
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingTextFunction$Q3Xy));
-
-        SNode defaultMenu = findSMD(modelref_editor, ref_explicitMenu_Direct);
-
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), defaultMenu);
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0l0a0a0f0(resolveCD(ref_explicitMenu_Direct), explicitMenu_Direct));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
-      }
-    });
-  }
-  public void test_testExplicitMenu_Super() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-
-        SNode explicitMenu_Super = findGeneratedSMN(modelref_editor, ref_explicitMenu_Super);
-        Assert.assertNotNull(explicitMenu_Super);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_Super, LINKS.parts$MxT3)).first(), CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
-
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingTextFunction$QMMb));
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingTextFunction$Q3Xy));
-      }
-    });
-  }
-  public void test_testExplicitMenu_HasVisible() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-
-        SNode explicitMenu_HasVisible = findGeneratedSMN(modelref_editor, ref_explicitMenu_HasVisible);
-        Assert.assertNotNull(explicitMenu_HasVisible);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_HasVisible, LINKS.parts$MxT3)).first(), CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
-
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingTextFunction$QMMb));
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingTextFunction$Q3Xy));
-      }
-    });
-  }
-  public void test_testExplicitMenu_SCAUsage() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-
-        SNode explicitMenu_SCAUsage = findGeneratedSMN(modelref_editor, ref_explicitMenu_SCAUsage);
-        Assert.assertNotNull(explicitMenu_SCAUsage);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_SCAUsage, LINKS.parts$MxT3)).first(), CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
-
-        Assert.assertNotNull(menuPart);
-
-        SNode usage = resolveSMN(ref_explicitMenu_SCAUsage_usage);
-
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), ListSequence.fromList(SLinkOperations.getChildren(usage, LINKS.parts$MxT3)).first());
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0j0a0a0i0(explicitMenu_SCAUsage));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
-      }
-    });
-  }
-  public void test_testExplicitMenu_SCAUsage_Ext() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-
-        SNode explicitMenu_SCAUsage_Ext = findGeneratedSMN(modelref_editor, ref_explicitMenu_SCAUsage_Ext);
-        Assert.assertNotNull(explicitMenu_SCAUsage_Ext);
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(explicitMenu_SCAUsage_Ext, LINKS.parts$MxT3)).first(), CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
-
-        Assert.assertNotNull(menuPart);
-
-        SNode usage = resolveSMN(ref_explicitMenu_SCAUsage_Ext_usage);
-
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), ListSequence.fromList(SLinkOperations.getChildren(usage, LINKS.parts$MxT3)).first());
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0j0a0a0j0(explicitMenu_SCAUsage_Ext));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
-      }
-    });
-  }
   public void test_testExplicitCellMenu() throws Exception {
     executeUnderLock(new Runnable() {
       public void run() {
@@ -464,48 +376,9 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_m5qb0v_a0a0b0l0a0a0f0(Object parameter_1, Object parameter_2) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_3 = null;
-    SNode quotedNode_4 = null;
-    SNode quotedNode_5 = null;
-    SNode quotedNode_6 = null;
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x2de9c932f4e5ab84L, "SubstituteMenu_Default")).getResult();
-    quotedNode_3.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage"), "explicit_menu");
-    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration"), (SNode) parameter_1);
-    quotedNode_4 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xa22200b56b57990L, "SubstituteMenuPart_IncludeMenu")).getResult();
-    quotedNode_6 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x5480a271c0d1df1fL, "SubstituteMenuReference_Named")).getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_6, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu"), (SNode) parameter_2);
-    quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference"), quotedNode_6);
-    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"), quotedNode_4);
-    quotedNode_5 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x88a6ffdb3b4f8c6L, "SubstituteMenuPart_Subconcepts")).getResult();
-    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts"), quotedNode_5);
-    return quotedNode_3;
-  }
-  private static SNode _quotation_createNode_m5qb0v_a0a0b0j0a0a0i0(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xa22200b56b57990L, "SubstituteMenuPart_IncludeMenu")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x5480a271c0d1df1fL, "SubstituteMenuReference_Named")).getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu"), (SNode) parameter_1);
-    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference"), quotedNode_3);
-    return quotedNode_2;
-  }
-  private static SNode _quotation_createNode_m5qb0v_a0a0b0j0a0a0j0(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xa22200b56b57990L, "SubstituteMenuPart_IncludeMenu")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0x5480a271c0d1df1fL, "SubstituteMenuReference_Named")).getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu"), (SNode) parameter_1);
-    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xa22200b56b57990L, 0xa22200b56b57993L, "menuReference"), quotedNode_3);
-    return quotedNode_2;
-  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SmartReferenceAttribute$Lg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute");
-    /*package*/ static final SConcept SubstituteMenuPart_ReferenceScope$po = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_ReferenceScope");
     /*package*/ static final SConcept CellMenuPart_ReferentPrimary$j6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReferentPrimary");
     /*package*/ static final SConcept SubstituteMenu_Named$J = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
     /*package*/ static final SConcept GeneratedSubstituteMenuAttribute$Mz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5b104bd5525fa7L, "jetbrains.mps.lang.editor.structure.GeneratedSubstituteMenuAttribute");
@@ -513,9 +386,6 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$MxT3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, 0x5c03050cab44f64L, "parts");
-    /*package*/ static final SContainmentLink matchingTextFunction$QMMb = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x3bc83bac473451e5L, "matchingTextFunction");
-    /*package*/ static final SContainmentLink visibleMatchingTextFunction$Q3Xy = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x74f6a88f89419d55L, 0x1006e157e5b21db8L, "visibleMatchingTextFunction");
     /*package*/ static final SContainmentLink menuDescriptor$6S7z = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, 0x10f3514bb7cL, "menuDescriptor");
     /*package*/ static final SContainmentLink cellMenuPart$eVUY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart");
     /*package*/ static final SContainmentLink matchingText$KPlJ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3f33baebL, 0x6001c76613d86514L, "matchingText");

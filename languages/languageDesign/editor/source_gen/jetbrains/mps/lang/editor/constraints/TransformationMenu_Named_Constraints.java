@@ -34,7 +34,7 @@ public class TransformationMenu_Named_Constraints extends BaseConstraintsDescrip
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return MenuScopes.getNamedMenus(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.TransformationMenu_Named$1E);
+            return MenuScopes.getTransformationMenus(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition());
           }
         };
       }

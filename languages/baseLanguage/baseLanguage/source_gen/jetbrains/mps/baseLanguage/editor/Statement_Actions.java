@@ -29,7 +29,7 @@ public class Statement_Actions {
           text = ((EditorCell_Label) selectedCell).getText();
         }
         SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-        SingleLineComment__BehaviorDescriptor.parseAndAddWords_id45vN3dBFprj.invoke(comment, text);
+        SingleLineComment__BehaviorDescriptor.parseAndAddWords_id13gAna0o0W6.invoke(comment, text);
         SNodeOperations.replaceWithAnother(node, comment);
       }
 

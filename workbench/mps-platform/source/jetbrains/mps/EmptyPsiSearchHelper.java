@@ -67,22 +67,22 @@ public class EmptyPsiSearchHelper implements PsiSearchHelper {
   }
 
   @Override
-  public boolean processAllFilesWithWord(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor, boolean caseSensitively) {
+  public boolean processAllFilesWithWord(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor, boolean caseSensitively) {
     return false;
   }
 
   @Override
-  public boolean processAllFilesWithWordInText(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor, boolean caseSensitively) {
+  public boolean processAllFilesWithWordInText(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor, boolean caseSensitively) {
     return false;
   }
 
   @Override
-  public boolean processAllFilesWithWordInComments(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor) {
+  public boolean processAllFilesWithWordInComments(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor) {
     return false;
   }
 
   @Override
-  public boolean processAllFilesWithWordInLiterals(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<PsiFile> processor) {
+  public boolean processAllFilesWithWordInLiterals(@NotNull String word, @NotNull GlobalSearchScope scope, @NotNull Processor<? super PsiFile> processor) {
     return false;
   }
 

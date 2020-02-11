@@ -63,7 +63,7 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
     public void execute(final SNode node, final EditorContext editorContext) {
       // when we have component host in editorContext, rewrite 
       ComponentHost host = null;
-      SRepository repository = SNodeOperations.getModel(node).getRepository();
+      SRepository repository = editorContext.getRepository();
       ProjectBase project = (ProjectBase) ProjectHelper.getProject(repository);
       if (project != null) {
         host = project.getPlatform();

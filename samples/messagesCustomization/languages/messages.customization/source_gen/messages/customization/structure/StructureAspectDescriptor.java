@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
-import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
@@ -18,6 +17,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBrokenConcept = createDescriptorForBrokenConcept();
   /*package*/ final ConceptDescriptor myConceptCardinalityTestConcept = createDescriptorForCardinalityTestConcept();
   /*package*/ final ConceptDescriptor myConceptCardinalityTestConcept0 = createDescriptorForCardinalityTestConcept0();
+  /*package*/ final ConceptDescriptor myConceptIncorrectTargetTestConcept = createDescriptorForIncorrectTargetTestConcept();
   /*package*/ final ConceptDescriptor myConceptTestConcept = createDescriptorForTestConcept();
   /*package*/ final ConceptDescriptor myConceptTestConcept0 = createDescriptorForTestConcept0();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -35,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAuxConcept, myConceptBrokenConcept, myConceptCardinalityTestConcept, myConceptCardinalityTestConcept0, myConceptTestConcept, myConceptTestConcept0);
+    return Arrays.asList(myConceptAuxConcept, myConceptBrokenConcept, myConceptCardinalityTestConcept, myConceptCardinalityTestConcept0, myConceptIncorrectTargetTestConcept, myConceptTestConcept, myConceptTestConcept0);
   }
 
   @Override
@@ -50,6 +50,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptCardinalityTestConcept;
       case LanguageConceptSwitch.CardinalityTestConcept0:
         return myConceptCardinalityTestConcept0;
+      case LanguageConceptSwitch.IncorrectTargetTestConcept:
+        return myConceptIncorrectTargetTestConcept;
       case LanguageConceptSwitch.TestConcept:
         return myConceptTestConcept;
       case LanguageConceptSwitch.TestConcept0:
@@ -59,10 +61,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
-  @Override
-  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList();
-  }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
     return myIndexSwitch.index(c);
@@ -71,6 +69,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForAuxConcept() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("messages.customization", "AuxConcept", 0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f87283L);
     b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(messages.customization.structure)/2884486869351428739");
     b.version(2);
     return b.create();
@@ -100,6 +99,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(messages.customization.structure)/7019192671317951087");
     b.version(2);
     b.aggregate("singleRoleChild", 0x61692e8b97ee8284L).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(true).ordered(true).multiple(false).origin("7019192671317951108").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIncorrectTargetTestConcept() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("messages.customization", "IncorrectTargetTestConcept", 0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x19e9e9b662255d2L);
+    b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:7117f6c4-faaf-4889-b5b9-3fe628e41cf8(messages.customization.structure)/116705030628857298");
+    b.version(2);
+    b.associate("obligatoryref", 0x61692e8b97e8bfb0L).target(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f87283L).optional(true).origin("116705030628857300").done();
+    b.aggregate("obligatorychild", 0x61692e8b97e8bfb4L).target(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f87283L).optional(true).ordered(true).multiple(false).origin("116705030628857299").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestConcept() {

@@ -5,12 +5,18 @@ package jetbrains.mps.lang.text.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
+import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
+import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
+import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -19,13 +25,31 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
 
+  public static final SMethod<SNode> normalize_id3yV2h2COV$s = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("normalize").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3yV2h2COV$s").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(normalize_id3yV2h2COV$s);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SPropertyOperations.assign(__thisNode__, PROPS.value$cK70, "");
   }
 
+  /*package*/ static SNode normalize_id3yV2h2COV$s(@NotNull SNode __thisNode__) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.value$cK70).contains(" ")) {
+      String[] chunks = SPropertyOperations.getString(__thisNode__, PROPS.value$cK70).split(" ");
+      if (chunks.length == 0) {
+        return __thisNode__;
+      }
+      SPropertyOperations.assign(__thisNode__, PROPS.value$cK70, chunks[0]);
+      SNode latestWordAdded = __thisNode__;
+      for (int i = 1; i < chunks.length; i++) {
+        SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+        SPropertyOperations.assign(w, PROPS.value$cK70, chunks[i]);
+        latestWordAdded = SNodeOperations.insertNextSiblingChild(latestWordAdded, w);
+      }
+      return latestWordAdded;
+    }
+    return __thisNode__;
+  }
 
   /*package*/ Word__BehaviorDescriptor() {
   }
@@ -42,6 +66,8 @@ public final class Word__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((SNode) normalize_id3yV2h2COV$s(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -6,7 +6,7 @@
     <use id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages" version="-1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -94,7 +94,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -411,7 +411,7 @@
     <node concept="2PqlIu" id="6ndnYgP5nzy" role="3gKxsI">
       <node concept="3clFbS" id="6ndnYgP5nzz" role="2VODD2">
         <node concept="3SKdUt" id="6ndnYgP67y2" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnU5I" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnU5I" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnU5J" role="1PaTwD">
               <property role="3oM_SC" value="top-most" />
             </node>
@@ -621,7 +621,7 @@
                 </node>
               </node>
               <node concept="3SKdUt" id="172ROKPHBAq" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXnU5O" role="3ndbpf">
+                <node concept="1PaTwC" id="ATZLwXnU5O" role="1aUNEU">
                   <node concept="3oM_SD" id="ATZLwXnU5P" role="1PaTwD">
                     <property role="3oM_SC" value="supposedly" />
                   </node>

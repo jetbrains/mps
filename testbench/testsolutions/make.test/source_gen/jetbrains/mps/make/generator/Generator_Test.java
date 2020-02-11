@@ -39,7 +39,7 @@ public class Generator_Test extends MockTestCase {
   private FacetRegistry myFacetRegistry;
   @Test
   public void test_queryStop() throws Exception {
-    ScriptBuilder scb = new ScriptBuilder();
+    ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
     final IScriptController mons = Mockups.monitors(context, "mons");
     final IConfigMonitor cmon = context.mock(IConfigMonitor.class);
     context.checking(new Expectations() {

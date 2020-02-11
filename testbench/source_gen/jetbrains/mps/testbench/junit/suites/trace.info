@@ -763,8 +763,8 @@
       <node id="9170334376387816407" at="28,43,29,18" concept="14" />
       <node id="6388125092642195872" at="33,34,34,47" concept="8" />
       <node id="6388125092642198894" at="34,47,35,46" concept="8" />
-      <node id="250369351435705557" at="35,46,36,297" concept="8" />
-      <node id="3567142084943155977" at="36,297,37,82" concept="3" />
+      <node id="250369351435705557" at="35,46,36,302" concept="8" />
+      <node id="3567142084943155977" at="36,302,37,82" concept="3" />
       <node id="2966246705324522915" at="25,0,27,0" concept="12" trace="ourStats" />
       <node id="9170334376387816361" at="28,0,31,0" concept="1" trace="AuditConstraints#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <node id="9170334376387816369" at="32,0,39,0" concept="7" trace="checkConstraints#()V" />
@@ -783,92 +783,92 @@
   </root>
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/9170334376387870447">
     <file name="CheckProjectStructure.java">
-      <node id="9170334376387870549" at="33,48,34,18" concept="14" />
-      <node id="4005002716613861785" at="42,39,43,178" concept="3" />
-      <node id="4005002716615111280" at="48,29,49,163" concept="3" />
-      <node id="4005002716615236784" at="54,32,55,286" concept="3" />
-      <node id="6147416879428679381" at="58,35,59,42" concept="9" />
-      <node id="4005002716615343989" at="64,33,65,317" concept="3" />
-      <node id="7271693599294966574" at="70,39,71,103" concept="3" />
-      <node id="9170334376386466419" at="71,103,72,56" concept="8" />
-      <node id="2655236589829065928" at="74,25,75,80" concept="8" />
-      <node id="9170334376386466457" at="76,115,77,42" concept="8" />
-      <node id="9170334376386466466" at="78,31,79,82" concept="3" />
-      <node id="9170334376386466473" at="79,82,80,21" concept="2" />
-      <node id="2655236589829160822" at="81,11,82,54" concept="8" />
-      <node id="9170334376386466475" at="82,54,83,67" concept="8" />
-      <node id="9170334376386466485" at="84,32,85,80" concept="3" />
-      <node id="9170334376386466492" at="85,80,86,21" concept="2" />
-      <node id="9170334376386466494" at="87,11,88,68" concept="8" />
-      <node id="9170334376386466503" at="89,33,90,79" concept="3" />
-      <node id="9170334376386466510" at="90,79,91,21" concept="2" />
-      <node id="9170334376386466517" at="93,44,94,141" concept="3" />
-      <node id="9170334376387870513" at="98,7,99,94" concept="3" />
-      <node id="9170334376387282959" at="103,0,104,0" concept="4" trace="myIncludeDoNotGenerate" />
-      <node id="7337374159727067883" at="104,74,105,37" concept="3" />
-      <node id="7337374159727072623" at="105,37,106,18" concept="9" />
-      <node id="9170334376387283045" at="109,47,110,106" concept="9" />
-      <node id="4005002716613823753" at="37,0,39,0" concept="12" trace="ourStats" />
-      <node id="9170334376387870451" at="33,0,36,0" concept="1" trace="CheckProjectStructure#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="6147416879428679388" at="58,0,61,0" concept="7" trace="getHost#()Ljetbrains/mps/components/ComponentHost;" />
-      <node id="9170334376386466511" at="92,11,95,11" concept="6" />
-      <node id="9170334376386466460" at="77,42,81,11" concept="6" />
-      <node id="9170334376386466479" at="83,67,87,11" concept="6" />
-      <node id="9170334376386466497" at="88,68,92,11" concept="6" />
-      <node id="7337374159727060056" at="104,0,108,0" concept="7" trace="excludeDoNoGenerate#()Ljetbrains/mps/checkers/ModelCheckerBuilder/ModelsExtractorImpl;" />
-      <node id="3534896872059145751" at="108,0,112,0" concept="7" trace="includeModel#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="4005002716613755317" at="40,0,45,0" concept="7" trace="checkModuleProperties#()V" />
-      <node id="4005002716615043276" at="46,0,51,0" concept="7" trace="checkModels#()V" />
-      <node id="4005002716615131895" at="52,0,57,0" concept="7" trace="checkStructure#()V" />
-      <node id="4005002716615294569" at="62,0,67,0" concept="7" trace="checkReferences#()V" />
-      <node id="9170334376386466434" at="75,80,96,9" concept="5" />
-      <node id="3890231013090469608" at="74,0,98,0" concept="7" trace="run#()V" />
-      <node id="3890231013090466195" at="72,56,98,7" concept="3" />
-      <node id="9170334376387870501" at="68,0,101,0" concept="7" trace="checkGenerationStatus#()V" />
-      <scope id="9170334376387870455" at="33,48,34,18" />
-      <scope id="4005002716613755322" at="42,39,43,178" />
-      <scope id="4005002716615043281" at="48,29,49,163" />
-      <scope id="4005002716615131900" at="54,32,55,286" />
-      <scope id="6147416879428679380" at="58,35,59,42" />
-      <scope id="4005002716615294574" at="64,33,65,317" />
-      <scope id="9170334376386466516" at="93,44,94,141" />
-      <scope id="3534896872059145775" at="109,47,110,106" />
-      <scope id="9170334376386466465" at="78,31,80,21" />
-      <scope id="9170334376386466484" at="84,32,86,21" />
-      <scope id="9170334376386466502" at="89,33,91,21" />
-      <scope id="7337374159727060060" at="104,74,106,18" />
-      <scope id="9170334376387870451" at="33,0,36,0">
+      <node id="9170334376387870549" at="32,48,33,18" concept="14" />
+      <node id="4005002716613861785" at="41,39,42,178" concept="3" />
+      <node id="4005002716615111280" at="47,29,48,172" concept="3" />
+      <node id="4005002716615236784" at="53,32,54,226" concept="3" />
+      <node id="6147416879428679381" at="57,35,58,42" concept="9" />
+      <node id="4005002716615343989" at="63,33,64,257" concept="3" />
+      <node id="7271693599294966574" at="69,39,70,103" concept="3" />
+      <node id="9170334376386466419" at="70,103,71,56" concept="8" />
+      <node id="2655236589829065928" at="73,25,74,80" concept="8" />
+      <node id="9170334376386466457" at="75,115,76,42" concept="8" />
+      <node id="9170334376386466466" at="77,31,78,82" concept="3" />
+      <node id="9170334376386466473" at="78,82,79,21" concept="2" />
+      <node id="2655236589829160822" at="80,11,81,54" concept="8" />
+      <node id="9170334376386466475" at="81,54,82,67" concept="8" />
+      <node id="9170334376386466485" at="83,32,84,80" concept="3" />
+      <node id="9170334376386466492" at="84,80,85,21" concept="2" />
+      <node id="9170334376386466494" at="86,11,87,68" concept="8" />
+      <node id="9170334376386466503" at="88,33,89,79" concept="3" />
+      <node id="9170334376386466510" at="89,79,90,21" concept="2" />
+      <node id="9170334376386466517" at="92,44,93,141" concept="3" />
+      <node id="9170334376387870513" at="97,7,98,94" concept="3" />
+      <node id="9170334376387282959" at="102,0,103,0" concept="4" trace="myIncludeDoNotGenerate" />
+      <node id="7337374159727067883" at="103,74,104,37" concept="3" />
+      <node id="7337374159727072623" at="104,37,105,18" concept="9" />
+      <node id="9170334376387283045" at="108,47,109,106" concept="9" />
+      <node id="4005002716613823753" at="36,0,38,0" concept="12" trace="ourStats" />
+      <node id="9170334376387870451" at="32,0,35,0" concept="1" trace="CheckProjectStructure#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="6147416879428679388" at="57,0,60,0" concept="7" trace="getHost#()Ljetbrains/mps/components/ComponentHost;" />
+      <node id="9170334376386466511" at="91,11,94,11" concept="6" />
+      <node id="9170334376386466460" at="76,42,80,11" concept="6" />
+      <node id="9170334376386466479" at="82,67,86,11" concept="6" />
+      <node id="9170334376386466497" at="87,68,91,11" concept="6" />
+      <node id="7337374159727060056" at="103,0,107,0" concept="7" trace="excludeDoNoGenerate#()Ljetbrains/mps/checkers/ModelCheckerBuilder/ModelsExtractorImpl;" />
+      <node id="3534896872059145751" at="107,0,111,0" concept="7" trace="includeModel#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="4005002716613755317" at="39,0,44,0" concept="7" trace="checkModuleProperties#()V" />
+      <node id="4005002716615043276" at="45,0,50,0" concept="7" trace="checkModels#()V" />
+      <node id="4005002716615131895" at="51,0,56,0" concept="7" trace="checkStructure#()V" />
+      <node id="4005002716615294569" at="61,0,66,0" concept="7" trace="checkReferences#()V" />
+      <node id="9170334376386466434" at="74,80,95,9" concept="5" />
+      <node id="3890231013090469608" at="73,0,97,0" concept="7" trace="run#()V" />
+      <node id="3890231013090466195" at="71,56,97,7" concept="3" />
+      <node id="9170334376387870501" at="67,0,100,0" concept="7" trace="checkGenerationStatus#()V" />
+      <scope id="9170334376387870455" at="32,48,33,18" />
+      <scope id="4005002716613755322" at="41,39,42,178" />
+      <scope id="4005002716615043281" at="47,29,48,172" />
+      <scope id="4005002716615131900" at="53,32,54,226" />
+      <scope id="6147416879428679380" at="57,35,58,42" />
+      <scope id="4005002716615294574" at="63,33,64,257" />
+      <scope id="9170334376386466516" at="92,44,93,141" />
+      <scope id="3534896872059145775" at="108,47,109,106" />
+      <scope id="9170334376386466465" at="77,31,79,21" />
+      <scope id="9170334376386466484" at="83,32,85,21" />
+      <scope id="9170334376386466502" at="88,33,90,21" />
+      <scope id="7337374159727060060" at="103,74,105,18" />
+      <scope id="9170334376387870451" at="32,0,35,0">
         <var name="module" id="9170334376387870453" />
       </scope>
-      <scope id="6147416879428679388" at="58,0,61,0" />
-      <scope id="7337374159727060056" at="104,0,108,0" />
-      <scope id="3534896872059145751" at="108,0,112,0">
+      <scope id="6147416879428679388" at="57,0,60,0" />
+      <scope id="7337374159727060056" at="103,0,107,0" />
+      <scope id="3534896872059145751" at="107,0,111,0">
         <var name="model" id="3534896872059145752" />
       </scope>
-      <scope id="4005002716613755317" at="40,0,45,0" />
-      <scope id="4005002716615043276" at="46,0,51,0" />
-      <scope id="4005002716615131895" at="52,0,57,0" />
-      <scope id="4005002716615294569" at="62,0,67,0" />
-      <scope id="9170334376386466436" at="76,115,95,11">
+      <scope id="4005002716613755317" at="39,0,44,0" />
+      <scope id="4005002716615043276" at="45,0,50,0" />
+      <scope id="4005002716615131895" at="51,0,56,0" />
+      <scope id="4005002716615294569" at="61,0,66,0" />
+      <scope id="9170334376386466436" at="75,115,94,11">
         <var name="gd" id="2655236589829160823" />
         <var name="genHash" id="9170334376386466474" />
         <var name="module" id="9170334376386466456" />
         <var name="realHash" id="9170334376386466493" />
       </scope>
-      <scope id="9170334376386466434" at="75,80,96,9">
+      <scope id="9170334376386466434" at="74,80,95,9">
         <var name="sm" id="9170334376386466532" />
       </scope>
-      <scope id="3890231013090469609" at="74,25,96,9">
+      <scope id="3890231013090469609" at="73,25,95,9">
         <var name="genDeps" id="2655236589829065929" />
       </scope>
-      <scope id="3890231013090469608" at="74,0,98,0" />
-      <scope id="9170334376387870506" at="70,39,99,94">
+      <scope id="3890231013090469608" at="73,0,97,0" />
+      <scope id="9170334376387870506" at="69,39,98,94">
         <var name="errors" id="9170334376386466418" />
       </scope>
-      <scope id="9170334376387870501" at="68,0,101,0" />
-      <unit id="3534896872059086595" at="102,0,113,0" name="jetbrains.mps.testbench.junit.suites.CheckProjectStructure$TestsModelExtractor" />
-      <unit id="3890231013090469608" at="73,80,98,5" name="jetbrains.mps.testbench.junit.suites.CheckProjectStructure$1" />
-      <unit id="9170334376387870447" at="31,0,115,0" name="jetbrains.mps.testbench.junit.suites.CheckProjectStructure" />
+      <scope id="9170334376387870501" at="67,0,100,0" />
+      <unit id="3534896872059086595" at="101,0,112,0" name="jetbrains.mps.testbench.junit.suites.CheckProjectStructure$TestsModelExtractor" />
+      <unit id="3890231013090469608" at="72,80,97,5" name="jetbrains.mps.testbench.junit.suites.CheckProjectStructure$1" />
+      <unit id="9170334376387870447" at="30,0,114,0" name="jetbrains.mps.testbench.junit.suites.CheckProjectStructure" />
     </file>
   </root>
 </debug-info>

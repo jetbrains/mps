@@ -122,7 +122,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -420,7 +420,7 @@
         </node>
         <node concept="3clFbH" id="3X9rC2XzJes" role="3cqZAp" />
         <node concept="3SKdUt" id="3X9rC2XzJet" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo0j_" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo0j_" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo0jA" role="1PaTwD">
               <property role="3oM_SC" value="fetch" />
             </node>
@@ -581,7 +581,7 @@
         </node>
         <node concept="3clFbH" id="5aPYql$kWvX" role="3cqZAp" />
         <node concept="3SKdUt" id="2whOjLMv80F" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo0jD" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo0jD" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo0jE" role="1PaTwD">
               <property role="3oM_SC" value="fetch" />
             </node>
@@ -831,7 +831,7 @@
       <node concept="3Tm1VV" id="3X9rC2XzJim" role="1B3o_S" />
       <node concept="3clFbS" id="3X9rC2XzJin" role="3clF47">
         <node concept="3SKdUt" id="Dk0PXgLcZn" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo0jG" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo0jG" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo0jH" role="1PaTwD">
               <property role="3oM_SC" value="for" />
             </node>
@@ -1090,7 +1090,7 @@
         </node>
         <node concept="3clFbH" id="57Nqmbchhp0" role="3cqZAp" />
         <node concept="3SKdUt" id="57NqmbchhoC" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo0jM" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo0jM" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo0jN" role="1PaTwD">
               <property role="3oM_SC" value="find" />
             </node>
@@ -1196,7 +1196,7 @@
             <node concept="3clFbJ" id="2TqXzNe_M6X" role="3cqZAp">
               <node concept="3clFbS" id="2TqXzNe_M6Y" role="3clFbx">
                 <node concept="3SKdUt" id="akLgX4tE2E" role="3cqZAp">
-                  <node concept="1PaTwC" id="ATZLwXo0jP" role="3ndbpf">
+                  <node concept="1PaTwC" id="ATZLwXo0jP" role="1aUNEU">
                     <node concept="3oM_SD" id="ATZLwXo0jQ" role="1PaTwD">
                       <property role="3oM_SC" value="specify" />
                     </node>

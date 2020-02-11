@@ -29,6 +29,7 @@ public class EditorConfigurationBuilder {
   private boolean myShowLeftHighlighter = true;
   private boolean myWithUI = true;
   private boolean myReadOnly;
+  private boolean myHasContextMenu = true;
   private EditorPanelManager myEditorPanelManager;
   private CaretManager myCaretManager = CaretManager.getInstance();
 
@@ -61,6 +62,11 @@ public class EditorConfigurationBuilder {
     return this;
   }
 
+  public EditorConfigurationBuilder hasContextMenu(boolean hasContextMenu) {
+    myHasContextMenu = hasContextMenu;
+    return this;
+  }
+
   public EditorConfigurationBuilder editorPanelManager(EditorPanelManager editorPanelManager) {
     myEditorPanelManager = editorPanelManager;
     return this;
@@ -78,6 +84,7 @@ public class EditorConfigurationBuilder {
         myShowLeftHighlighter,
         myWithUI,
         myReadOnly,
+        myHasContextMenu,
         myEditorPanelManager,
         myCaretManager);
   }

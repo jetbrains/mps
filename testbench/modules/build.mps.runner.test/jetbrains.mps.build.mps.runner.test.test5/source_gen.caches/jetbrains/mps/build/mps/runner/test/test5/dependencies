@@ -2,10 +2,14 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.build.mps.runner.test.test5.MainClass">
     <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptor" />
-    <classNode dependClassName="com.intellij.ide.plugins.PluginManager" />
+    <classNode dependClassName="com.intellij.ide.plugins.PluginManagerCore" />
     <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.System" />
-    <classNode dependClassName="jetbrains.mps.build.mps.runner.test.test1.MainClass" />
+    <classNode dependClassName="jetbrains.mps.project.Project" />
+    <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
   </dependency>
 </dependenciesRoot>
 

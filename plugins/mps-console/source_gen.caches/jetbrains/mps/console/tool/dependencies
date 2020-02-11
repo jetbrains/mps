@@ -233,6 +233,7 @@
     <classNode dependClassName="jetbrains.mps.make.IMakeService" />
     <classNode dependClassName="jetbrains.mps.make.MakeServiceComponent" />
     <classNode dependClassName="jetbrains.mps.make.MakeSession" />
+    <classNode dependClassName="jetbrains.mps.make.facet.FacetRegistry" />
     <classNode dependClassName="jetbrains.mps.make.facet.IFacet" />
     <classNode dependClassName="jetbrains.mps.make.facet.ITarget" />
     <classNode dependClassName="jetbrains.mps.make.script.IResult" />

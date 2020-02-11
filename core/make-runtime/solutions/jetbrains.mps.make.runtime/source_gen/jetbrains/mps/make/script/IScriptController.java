@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.make.resources.IResource;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.make.MakeSession;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
@@ -16,8 +15,6 @@ public interface IScriptController {
   void runConfigWithMonitor(_FunctionTypes._void_P1_E0<? super IConfigMonitor> code);
   void runJobWithMonitor(_FunctionTypes._void_P1_E0<? super IJobMonitor> code);
   void setup(IPropertiesPool pp, Iterable<ITarget> toExecute, Iterable<? extends IResource> input);
-  @Deprecated
-  void useMonitor(ProgressMonitor monitor);
   class Stub implements IScriptController {
     private final IConfigMonitor cmon;
     private final IJobMonitor jmon;
@@ -42,9 +39,6 @@ public interface IScriptController {
     @Override
     public void setup(IPropertiesPool pp, Iterable<ITarget> toExecute, Iterable<? extends IResource> input) {
       setup(pp);
-    }
-    @Override
-    public void useMonitor(ProgressMonitor monitor) {
     }
   }
 
@@ -98,10 +92,6 @@ public interface IScriptController {
       for (PropertyPoolInitializer ppi : myPoolInitializers) {
         ppi.populate(pp);
       }
-    }
-    @Deprecated
-    @Override
-    public void useMonitor(ProgressMonitor monitor) {
     }
   }
 }

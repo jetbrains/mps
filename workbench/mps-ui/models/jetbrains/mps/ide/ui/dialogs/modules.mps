@@ -2,7 +2,7 @@
 <model ref="r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
@@ -160,7 +160,7 @@
       </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -644,7 +644,7 @@
         <node concept="3clFbF" id="3rnI4tGs$UA" role="3cqZAp">
           <node concept="3cpWs3" id="3rnI4tGs_Pw" role="3clFbG">
             <node concept="Xl_RD" id="3rnI4tGsAkD" role="3uHU7w">
-              <property role="Xl_RC" value="_clone" />
+              <property role="Xl_RC" value=".clone" />
             </node>
             <node concept="2OqwBi" id="3rnI4tGs_nK" role="3uHU7B">
               <node concept="37vLTw" id="3rnI4tGs$U_" role="2Oq$k0">
@@ -1392,7 +1392,7 @@
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="g46k2sd8rO" role="3clF47">
         <node concept="3SKdUt" id="g46k2sd8rP" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoryx" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoryx" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoryy" role="1PaTwD">
               <property role="3oM_SC" value="If" />
             </node>

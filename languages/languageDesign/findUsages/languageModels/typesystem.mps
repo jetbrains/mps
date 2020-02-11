@@ -53,7 +53,7 @@
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
@@ -509,7 +509,7 @@
     <property role="3GE5qa" value="Statements" />
     <node concept="3clFbS" id="5UvmwWxPqOh" role="18ibNy">
       <node concept="3SKdUt" id="3$9coUqmmIc" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnV4z" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnV4z" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnV4$" role="1PaTwD">
             <property role="3oM_SC" value="" />
           </node>

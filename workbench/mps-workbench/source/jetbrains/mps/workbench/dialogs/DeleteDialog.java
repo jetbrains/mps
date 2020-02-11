@@ -15,84 +15,111 @@
  */
 package jetbrains.mps.workbench.dialogs;
 
-import com.intellij.openapi.ui.DialogWrapper;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.ui.messages.MessageDialog;
 import com.intellij.ui.components.JBCheckBox;
-import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBPanel;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.project.Project;
+import com.intellij.util.ui.JBUI;
+import jetbrains.mps.project.MPSProject;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 
-public class DeleteDialog extends DialogWrapper {
-  private String myMessage;
-  private DeleteOption[] myOptions;
+/**
+ * If dialog requires only one checkbox then it is advised to use {@link Messages#showCheckboxMessageDialog} instead
+ */
+public class DeleteDialog extends MessageDialog {
+  private DeleteOption[] myDeleteOptions;
   private JCheckBox[] myCheckBoxes;
 
-  public DeleteDialog(Project project, String caption, String message, DeleteOption... options) {
-    super(ProjectHelper.toIdeaProject(project), true);
-    myMessage = message;
-    myOptions = options;
-
-    setTitle(caption);
-    setOKButtonText("Delete");
-    init();
+  /**
+   * @deprecated use {@link DeleteDialog#DeleteDialog(com.intellij.openapi.project.Project, String, String, DeleteDialog.DeleteOption...)} instead
+   */
+  @Deprecated
+  public DeleteDialog(jetbrains.mps.project.Project project, String title, String message, DeleteOption... options) {
+    this(((MPSProject)project).getProject(), title, message, options);
   }
 
+  public DeleteDialog(Project project, String title, String message, DeleteOption... options) {
+    myDeleteOptions = options;
+
+    _init(title,message, new String[]{"Delete", Messages.CANCEL_BUTTON}, 0, 0, Messages.getQuestionIcon(), null);
+  }
+
+  @Nullable
   @Override
-  protected JComponent createCenterPanel() {
-    final JPanel panel = new JBPanel(new GridBagLayout());
-    final GridBagConstraints gbc = new GridBagConstraints();
+  protected JComponent createNorthPanel() {
+    JPanel panel = createIconPanel();
+    JPanel messagePanel = createMessagePanel();
 
-    gbc.insets = new Insets(4, 8, 4, 8);
-    gbc.weighty = 1;
-    gbc.weightx = 1;
-    gbc.gridx = 0;
-    gbc.gridy = 0;
-    gbc.gridwidth = 2;
-    gbc.fill = GridBagConstraints.BOTH;
-    gbc.anchor = GridBagConstraints.WEST;
-    panel.add(new JBLabel(myMessage), gbc);
+    messagePanel.add(createCheckComponent(), BorderLayout.SOUTH);
 
-    myCheckBoxes = new JCheckBox[myOptions.length];
-    for (int i = 0; i < myOptions.length; i++) {
-      gbc.gridy++;
-      gbc.gridx = 0;
-      gbc.weightx = 0.0;
-      gbc.gridwidth = 1;
-      gbc.insets = new Insets(4, 8, 0, 8);
-
-      DeleteOption option = myOptions[i];
-      myCheckBoxes[i] = new JBCheckBox(option.caption, option.selected);
-      myCheckBoxes[i].setEnabled(option.enabled);
-      panel.add(myCheckBoxes[i], gbc);
-    }
+    panel.add(messagePanel, BorderLayout.CENTER);
 
     return panel;
   }
 
-  @Override
-  protected void doOKAction() {
-    for (int i = 0; i < myOptions.length; i++) {
-      myOptions[i].selected = myCheckBoxes[i].isSelected();
+  @NotNull
+  private JComponent createCheckComponent() {
+    final JPanel checkComponent = new JBPanel<>(new GridBagLayout());
+    final GridBagConstraints gbc = new GridBagConstraints();
+
+    gbc.weightx = 1;
+    gbc.gridy = 0;
+    gbc.anchor = GridBagConstraints.WEST;
+    gbc.insets = JBUI.insetsTop(5);
+    myCheckBoxes = new JCheckBox[myDeleteOptions.length];
+    for (int i = 0; i < myDeleteOptions.length; i++) {
+      DeleteOption option = myDeleteOptions[i];
+      myCheckBoxes[i] = new JBCheckBox(option.myTitle, option.selected);
+      myCheckBoxes[i].setEnabled(option.enabled);
+      final int index = i;
+      myCheckBoxes[i].addChangeListener(stateChanged -> myDeleteOptions[index].selected = myCheckBoxes[index].isSelected());
+      checkComponent.add(myCheckBoxes[i], gbc);
+      gbc.gridy++;
     }
-    super.doOKAction();
+
+    return checkComponent;
   }
 
-  public static class DeleteOption {
-    public String caption;
+  @Override
+  protected JComponent createCenterPanel() {
+    return null;
+  }
+
+  public static final class DeleteOption {
+    String myTitle;
+    /**
+     * @deprecated input parameter, will be hidden. Use {@link DeleteOption#isSelected()} instead.
+     */
+    @Deprecated
+    @ScheduledForRemoval(inVersion = "2020.1")
     public boolean selected;
+    /**
+     * @deprecated input parameter, will be hidden
+     */
+    @Deprecated
+    @ScheduledForRemoval(inVersion = "2020.1")
     public boolean enabled;
 
-    public DeleteOption(String caption, boolean selected, boolean enabled) {
-      this.caption = caption;
-      this.selected = selected;
-      this.enabled = enabled;
+    public DeleteOption(String title, boolean isSelected, boolean isEnabled) {
+      this.myTitle = title;
+      this.selected = isSelected;
+      this.enabled = isEnabled;
+    }
+
+    public boolean isSelected() {
+      return selected;
     }
   }
 }

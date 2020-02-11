@@ -25,6 +25,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.baseLanguage.lightweightdsl.structure.ConceptPresentationAspectImpl;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.baseLanguage.lightweightdsl.typesystem.TypesystemDescriptor;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -88,5 +90,11 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new TypesystemDescriptor());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    extensions.recordContribution("jetbrains.mps.baseLanguage", "f3061a53-9226-4cc5-a443-f952ceaf5816", EditorAspectDescriptor.class);
+    extensions.recordContribution("jetbrains.mps.lang.modelapi", "446c26eb-2b7b-4bf0-9b35-f83fa582753e", EditorAspectDescriptor.class);
   }
 }

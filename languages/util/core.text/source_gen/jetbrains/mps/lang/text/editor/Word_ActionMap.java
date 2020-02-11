@@ -5,16 +5,86 @@ package jetbrains.mps.lang.text.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.text.behavior.Word__BehaviorDescriptor;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.ide.datatransfer.SNodeTransferable;
+import jetbrains.mps.datatransfer.PasteNodeData;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Word_ActionMap {
 
+  /*package*/ static AbstractCellAction createAction_PASTE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        if (isNotEmptyString(SPropertyOperations.getString(node, PROPS.value$cK70))) {
+          NewElementStrategyFactory.createNewElementStrategy(SNodeOperations.cast(node, CONCEPTS.Word$AM), editorContext, false).execute();
+        }
+        Object dataFromClipboard = TextEditorHelper.getDataFromClipboard();
+        if (dataFromClipboard instanceof String) {
+          SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+          SNodeOperations.insertNextSiblingChild(node, w);
+          SPropertyOperations.assign(w, PROPS.value$cK70, trim_x1dxyg_a2a2a2a1a0a0a1(dataFromClipboard.toString()));
+          SNode lastWord = Word__BehaviorDescriptor.normalize_id3yV2h2COV$s.invoke(w);
+          SelectionUtil.selectCell(editorContext, lastWord, SelectionManager.LAST_CELL);
+        }
+        if (dataFromClipboard instanceof SNodeTransferable) {
+          SNode currentNode = node;
+          PasteNodeData pasteData = ((SNodeTransferable) dataFromClipboard).createNodeData();
+          for (SNode n : pasteData.getNodes()) {
+            if (SNodeOperations.isInstanceOf(n, CONCEPTS.Word$AM)) {
+              SNode copy = SNodeOperations.copyNode(n);
+              SNodeOperations.insertNextSiblingChild(currentNode, copy);
+              currentNode = copy;
+            } else if (SNodeOperations.isInstanceOf(n, CONCEPTS.Line$w3)) {
+              Iterable<SNode> copies = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(n, CONCEPTS.Line$w3), LINKS.elements$eRew)).select(new ISelector<SNode, SNode>() {
+                public SNode select(SNode it) {
+                  return SNodeOperations.copyNode(it);
+                }
+              });
+              for (SNode element : copies) {
+                SNodeOperations.insertNextSiblingChild(currentNode, element);
+                currentNode = element;
+              }
+            } else {
+              SNode wrapper = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
+              SLinkOperations.setTarget(wrapper, LINKS.node$daCF, n);
+              SNodeOperations.insertNextSiblingChild(currentNode, wrapper);
+              currentNode = wrapper;
+            }
+          }
+          SelectionUtil.selectCell(editorContext, currentNode, SelectionManager.LAST_CELL);
+        }
+        if (isEmptyString(SPropertyOperations.getString(node, PROPS.value$cK70))) {
+          SNodeOperations.deleteNode(node);
+        }
+      }
+      @Override
+      public boolean canExecute(EditorContext editorContext) {
+        return this.canExecute_internal(editorContext, node);
+      }
+      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
+        return true;
+      }
+
+    };
+  }
   /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
@@ -81,6 +151,7 @@ public class Word_ActionMap {
     // set cell actions from all imported action maps 
 
     // set cell actions defined directly in this action map 
+    editorCell.setAction(CellActionType.PASTE, createAction_PASTE(node));
     editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
     editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
@@ -93,6 +164,9 @@ public class Word_ActionMap {
     // set cell action(s) of the given type from imported action maps 
 
     // set cell action of the given type defined directly in this action map 
+    if (Objects.equals(actionType, CellActionType.PASTE)) {
+      editorCell.setAction(actionType, createAction_PASTE(node));
+    }
     if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
       editorCell.setAction(actionType, createAction_BACKSPACE(node));
     }
@@ -106,8 +180,27 @@ public class Word_ActionMap {
       editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }
   }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
+  }
+  public static String trim_x1dxyg_a2a2a2a1a0a0a1(String str) {
+    return (str == null ? null : str.trim());
+  }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.length() == 0;
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink node$daCF = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
   }
 }

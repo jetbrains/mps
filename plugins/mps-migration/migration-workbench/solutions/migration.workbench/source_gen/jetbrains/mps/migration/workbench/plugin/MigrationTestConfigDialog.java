@@ -4,9 +4,8 @@ package jetbrains.mps.migration.workbench.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.ui.DialogWrapper;
-import com.intellij.openapi.project.Project;
 import javax.swing.JComponent;
-import javax.swing.JCheckBox;
+import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NonNls;
 import javax.swing.JPanel;
@@ -14,6 +13,7 @@ import com.intellij.openapi.ui.VerticalFlowLayout;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
 import java.awt.Dimension;
+import javax.swing.JCheckBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import com.intellij.ui.IdeBorderFactory;
@@ -33,17 +33,12 @@ import javax.swing.table.AbstractTableModel;
 
 @GeneratedClass(node = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/4221956679900513516", model = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)")
 public class MigrationTestConfigDialog extends DialogWrapper {
-  private Project myProject;
   private JComponent myComponent;
-  private JCheckBox myPreErrorCB;
   private Result myResult = new Result();
 
   public MigrationTestConfigDialog(Project project) {
     super(project);
     setTitle("Test Config Options");
-    setOKButtonText("&OK");
-    setCancelButtonText("Ca&ncel");
-    this.myProject = project;
     this.myComponent = this.createPanel();
     init();
   }
@@ -289,17 +284,17 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     public void setValueAt(Object value, int row, int col) {
       Result.PMigration migration = ListSequence.fromList(myResult.pMigrations).getElement(row);
       if (col == 0) {
-        migration.id = ((String) value);
+        migration.id = (String) value;
         fireTableCellUpdated(row, col);
         return;
       }
       if (col == 1) {
-        migration.hasOptions = ((Boolean) value);
+        migration.hasOptions = (Boolean) value;
         fireTableCellUpdated(row, col);
         return;
       }
       if (col == 2) {
-        migration.error = ((Boolean) value);
+        migration.error = (Boolean) value;
         fireTableCellUpdated(row, col);
         return;
       }
@@ -356,22 +351,22 @@ public class MigrationTestConfigDialog extends DialogWrapper {
         throw new IllegalArgumentException();
       }
       if (col == 1) {
-        migration.error = ((Boolean) value);
+        migration.error = (Boolean) value;
         fireTableCellUpdated(row, col);
         return;
       }
       if (col == 2) {
-        migration.applyToModules[0] = ((Boolean) value);
+        migration.applyToModules[0] = (Boolean) value;
         fireTableCellUpdated(row, col);
         return;
       }
       if (col == 3) {
-        migration.applyToModules[1] = ((Boolean) value);
+        migration.applyToModules[1] = (Boolean) value;
         fireTableCellUpdated(row, col);
         return;
       }
       if (col == 4) {
-        migration.applyToModules[2] = ((Boolean) value);
+        migration.applyToModules[2] = (Boolean) value;
         fireTableCellUpdated(row, col);
         return;
       }

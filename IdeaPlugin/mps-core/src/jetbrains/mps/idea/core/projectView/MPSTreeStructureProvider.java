@@ -86,15 +86,15 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
 
   @NotNull
   @Override
-  public Collection<AbstractTreeNode> modify(@NotNull final AbstractTreeNode treeNode, @NotNull final Collection<AbstractTreeNode> children, final ViewSettings settings) {
-    final Ref<Collection<AbstractTreeNode>> result = new Ref<>(children);
+  public Collection<AbstractTreeNode<?>> modify(@NotNull final AbstractTreeNode<?> treeNode, @NotNull final Collection<AbstractTreeNode<?>> children, final ViewSettings settings) {
+    final Ref<Collection<AbstractTreeNode<?>>> result = new Ref<>(children);
 
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(treeNode.getProject());
     // we're actually in EDT here, but we work with SModels, and various routines assert that we can read, thus read action
     mpsProject.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
-        List<AbstractTreeNode> updatedChildren = null;
+        List<AbstractTreeNode<?>> updatedChildren = null;
         final MPSPsiProvider mpsPsiProvider = MPSPsiProvider.getInstance(treeNode.getProject());
 
         // if current dir is data source from some model
@@ -128,7 +128,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
           }
         }
 
-        for (final AbstractTreeNode child : children) {
+        for (final AbstractTreeNode<?> child : children) {
           if (child instanceof ProjectViewNode && ((ProjectViewNode) child).getVirtualFile() != null && !((ProjectViewNode) child).getVirtualFile().isDirectory()) {
             VirtualFile vFile = ((ProjectViewNode) child).getVirtualFile();
 
@@ -204,7 +204,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
 
   @Nullable
   @Override
-  public Object getData(Collection<AbstractTreeNode> selected, String dataName) {
+  public Object getData(Collection<AbstractTreeNode<?>> selected, String dataName) {
     if (selected == null) {
       return null;
     }
@@ -228,7 +228,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     }
 
     // Applicable only to single element selection
-    AbstractTreeNode selectedNode = selected.iterator().next();
+    AbstractTreeNode<?> selectedNode = selected.iterator().next();
 
     if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataName)) {
       return getModelFilesArray(selectedNode);
@@ -251,14 +251,14 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return null;
   }
 
-  private <T> T getProvider(Collection<AbstractTreeNode> selected, ProviderFactory<T> createProvider) {
+  private <T> T getProvider(Collection<AbstractTreeNode<?>> selected, ProviderFactory<T> createProvider) {
     if (selected.size() == 0) return null;
 
     List<SNodeReference> selectedNodePointers = new ArrayList<>();
     Project project = null;
     EditableSModel modelDescriptor = null;
 
-    for (AbstractTreeNode treeNode : selected) {
+    for (AbstractTreeNode<?> treeNode : selected) {
       if (!(treeNode instanceof MPSPsiElementTreeNode)) return null; // only root nodes please
 
       MPSPsiRootNode mpsPsiNode = ((MPSPsiElementTreeNode) treeNode).getValue();
@@ -285,9 +285,9 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return createProvider.create(selectedNodePointers, modelDescriptor, modelDescriptor, mpsProject);
   }
 
-  private DeleteProvider getDeleteModelProvider(Collection<AbstractTreeNode> selected) {
+  private DeleteProvider getDeleteModelProvider(Collection<AbstractTreeNode<?>> selected) {
     final List<MPSPsiModel> psiModels = new ArrayList<>();
-    for (AbstractTreeNode treeNode : selected) {
+    for (AbstractTreeNode<?> treeNode : selected) {
       if (!(treeNode instanceof MPSPsiModelTreeNode)) {
         return null;
       }
@@ -298,7 +298,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return new SingleFileModelDeleteProvider(psiModels);
   }
 
-  private <T> T getModelProvider(AbstractTreeNode treeNode, ModelProviderFactory<T> createProvider) {
+  private <T> T getModelProvider(AbstractTreeNode<?> treeNode, ModelProviderFactory<T> createProvider) {
     if (!(treeNode instanceof MPSPsiModelTreeNode)) {
       return null; // only model
     }
@@ -317,9 +317,9 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return md != null ? createProvider.create(md, md, mpsProject) : null;
   }
 
-  private Set<IFile> getModelFiles(Collection<AbstractTreeNode> selected) {
+  private Set<IFile> getModelFiles(Collection<AbstractTreeNode<?>> selected) {
     Set<IFile> modelFiles = new HashSet<>();
-    for (AbstractTreeNode nextTreeNode : selected) {
+    for (AbstractTreeNode<?> nextTreeNode : selected) {
       IFile nextModelFile = getModelFile(nextTreeNode);
       if (nextModelFile != null) {
         modelFiles.add(nextModelFile);
@@ -328,7 +328,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return modelFiles;
   }
 
-  private IFile getModelFile(AbstractTreeNode treeNode) {
+  private IFile getModelFile(AbstractTreeNode<?> treeNode) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(treeNode.getProject());
     if (treeNode instanceof MPSPsiModelTreeNode) {
       MPSPsiModelTreeNode fileNode = (MPSPsiModelTreeNode) treeNode;
@@ -350,14 +350,14 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return null;
   }
 
-  private VirtualFile[] getModelFilesArray(AbstractTreeNode treeNode) {
+  private VirtualFile[] getModelFilesArray(AbstractTreeNode<?> treeNode) {
     VirtualFile virtualFile = getVirtualFile(treeNode);
     if (virtualFile == null) return null;
 
     return new VirtualFile[]{virtualFile};
   }
 
-  private VirtualFile getVirtualFile(AbstractTreeNode treeNode) {
+  private VirtualFile getVirtualFile(AbstractTreeNode<?> treeNode) {
     if (!(treeNode instanceof MPSPsiModelTreeNode)) {
       return null;
     }
@@ -368,7 +368,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return modelVFile;
   }
 
-  private SNode getNode(AbstractTreeNode treeNode) {
+  private SNode getNode(AbstractTreeNode<?> treeNode) {
     if (!(treeNode instanceof MPSPsiElementTreeNode)) {
       return null;
     }
@@ -382,18 +382,18 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return new ModelComputeRunnable<>(() -> nodeRef.resolve(repository)).runRead(repository.getModelAccess());
   }
 
-  private Module getIdeaModule(AbstractTreeNode treeNode) {
+  private Module getIdeaModule(AbstractTreeNode<?> treeNode) {
     VirtualFile modelVFile = getVirtualFile(treeNode);
     if (modelVFile == null) return null;
     return ModuleUtilCore.findModuleForFile(modelVFile, treeNode.getProject());
   }
 
-  private SModule getModule(AbstractTreeNode selectedNode) {
+  private SModule getModule(AbstractTreeNode<?> selectedNode) {
     EditableSModel contextModel = getContextModel(selectedNode);
     return contextModel != null ? contextModel.getModule() : null;
   }
 
-  private EditableSModel getModel(AbstractTreeNode selectedNode) {
+  private EditableSModel getModel(AbstractTreeNode<?> selectedNode) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(selectedNode.getProject());
     if (selectedNode instanceof MPSPsiElementTreeNode) {
       MPSPsiNodeBase value = ((MPSPsiElementTreeNode) selectedNode).getValue();
@@ -411,7 +411,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return null;
   }
 
-  private EditableSModel getContextModel(AbstractTreeNode selectedNode) {
+  private EditableSModel getContextModel(AbstractTreeNode<?> selectedNode) {
     if (selectedNode instanceof MPSPsiElementTreeNode) {
       MPSPsiNodeBase value = ((MPSPsiElementTreeNode) selectedNode).getValue();
       return getModel(value);

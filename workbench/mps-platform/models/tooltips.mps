@@ -2,7 +2,7 @@
 <model ref="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
@@ -179,7 +179,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1169,7 +1169,7 @@
                     <ref role="37wK5l" to="dxuu:~JTextArea.setFont(java.awt.Font)" resolve="setFont" />
                     <node concept="2YIFZM" id="2ks2ddTDjPT" role="37wK5m">
                       <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
-                      <ref role="37wK5l" to="g1qu:~StartupUiUtil.getLabelFont()" resolve="getLabelFont" />
+                      <ref role="37wK5l" to="g1qu:~UIUtil.getLabelFont()" resolve="getLabelFont" />
                     </node>
                   </node>
                   <node concept="37vLTw" id="3GM_nagTrvW" role="2Oq$k0">
@@ -2220,7 +2220,7 @@
                     </node>
                     <node concept="3clFbS" id="5sHC7TuRXRe" role="3clF47">
                       <node concept="3SKdUt" id="30uKrivZdeN" role="3cqZAp">
-                        <node concept="1PaTwC" id="ATZLwXoqXf" role="3ndbpf">
+                        <node concept="1PaTwC" id="ATZLwXoqXf" role="1aUNEU">
                           <node concept="3oM_SD" id="ATZLwXoqXg" role="1PaTwD">
                             <property role="3oM_SC" value="masking" />
                           </node>
@@ -2263,7 +2263,7 @@
                         </node>
                       </node>
                       <node concept="3SKdUt" id="30uKrivZdeP" role="3cqZAp">
-                        <node concept="1PaTwC" id="ATZLwXoqXt" role="3ndbpf">
+                        <node concept="1PaTwC" id="ATZLwXoqXt" role="1aUNEU">
                           <node concept="3oM_SD" id="ATZLwXoqXu" role="1PaTwD">
                             <property role="3oM_SC" value="event" />
                           </node>

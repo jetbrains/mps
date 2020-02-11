@@ -114,6 +114,22 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.descriptor.generator.template.main.Switch_ContrubuteLanguageExtensions">
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="java.util.Collections" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.Generated" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.GenerationException" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateContext" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateExecutionEnvironment" />
+    <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateReductionRule" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
+    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateSwitchBase" />
+    <classNode extendsClassName="jetbrains.mps.generator.runtime.TemplateSwitchMapping" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.descriptor.generator.template.main.Switch_InstantiateAspectDescriptor">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.String" />
@@ -143,6 +159,7 @@
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateUtil" />
     <classNode dependClassName="jetbrains.mps.lang.descriptor.generator.template.main.Mapping_GeneratorModule" />
     <classNode dependClassName="jetbrains.mps.lang.descriptor.generator.template.main.Mapping_LanguageModule" />
+    <classNode dependClassName="jetbrains.mps.lang.descriptor.generator.template.main.Switch_ContrubuteLanguageExtensions" />
     <classNode dependClassName="jetbrains.mps.lang.descriptor.generator.template.main.Switch_InstantiateAspectDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.descriptor.generator.template.main.Template_GDClass" />
     <classNode dependClassName="jetbrains.mps.lang.descriptor.generator.template.main.Template_GeneratorRuntime" />

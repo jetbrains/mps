@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.persistence;
 
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -68,7 +69,8 @@ final class SourcePaths {
     }
     SourceRootKind existingRootKind = getKind(root);
     if (existingRootKind != null) {
-      throw new SourceRootAlreadyExistsException(root, kind, root, existingRootKind);
+      LogManager.getLogger(SourcePaths.class).warn(SourceRootAlreadyExistsException.getMsg(root, kind, root, existingRootKind));
+      return;
     }
     myFileKind2SourcePaths.putIfAbsent(kind, new ArrayList<>());
     myFileKind2SourcePaths.get(kind).add(root);
@@ -140,8 +142,13 @@ final class SourcePaths {
     @Override
     @NotNull
     public String getMessage() {
+      return getMsg(myRoot, myPathKind, myExistingRoot, myExistingRootKind);
+    }
+
+    @NotNull
+    public static String getMsg(SourceRoot root, SourceRootKind pathKind, SourceRoot existingRoot, SourceRootKind existingRootKind) {
       return MessageFormat.format("Trying to register the source root: [{0}, kind {1}] while [{2}, kind {3}] " +
-                                  "is already registered", myRoot, myPathKind, myExistingRoot, myExistingRootKind);
+                                  "is already registered", root, pathKind, existingRoot, existingRootKind);
     }
   }
 }

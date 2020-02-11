@@ -4,10 +4,10 @@ package jetbrains.mps.lang.structure.findUsages;
 
 import jetbrains.mps.core.aspects.behaviour.api.AbstractConceptLike;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ConceptWrap extends AbstractConceptWrap implements AbstractConceptLike.ConceptLike {
   private final SNode myPeer;
 
-  public ConceptWrap(SNode peer) {
+  public ConceptWrap(@NotNull SNode peer) {
     super(peer);
     myPeer = peer;
   }
@@ -45,7 +45,9 @@ public final class ConceptWrap extends AbstractConceptWrap implements AbstractCo
     List<AbstractConceptLike.InterfaceConceptLike> result = new ArrayList<AbstractConceptLike.InterfaceConceptLike>();
     List<SNode> superInterfaces = SLinkOperations.getChildren(myPeer, LINKS.implements$oQDh);
     for (SNode superInterfaceRef : ListSequence.fromList(superInterfaces)) {
-      result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5)));
+      if ((SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5) != null)) {
+        result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5)));
+      }
     }
     return result;
   }

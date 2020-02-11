@@ -15,7 +15,7 @@
       <unit at="10,0,28,0" name="jetbrains.mps.lang.feedback.problem.scopes.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,65,0" name="jetbrains.mps.lang.feedback.problem.scopes.structure.StructureAspectDescriptor" />
+      <unit at="14,0,60,0" name="jetbrains.mps.lang.feedback.problem.scopes.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:bc41db58-2589-400b-8121-4dd19c77316b(jetbrains.mps.lang.feedback.problem.scopes.structure)/1592627013225787355">
@@ -36,22 +36,22 @@
       <node id="1592627013225787355" at="15,116,16,59" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="1592627013225787355" at="16,0,17,0" concept="1" trace="myConceptRefOutOfScopeProblem" />
-      <node id="1592627013225787355" at="38,54,39,45" concept="4" />
-      <node id="1592627013225787355" at="54,78,55,197" concept="3" />
-      <node id="1592627013225787355" at="55,197,56,34" concept="0" />
-      <node id="1592627013225787355" at="56,34,57,148" concept="0" />
-      <node id="1592627013225787355" at="57,148,58,129" concept="0" />
-      <node id="1592627013225787355" at="58,129,59,17" concept="0" />
-      <node id="1592627013225788494" at="59,17,60,161" concept="0" />
-      <node id="1592627013225787355" at="60,161,61,46" concept="0" />
-      <node id="1592627013225787355" at="61,46,62,22" concept="4" />
-      <node id="1592627013225787355" at="54,0,64,0" concept="6" trace="createDescriptorForRefOutOfScopeProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="1592627013225787355" at="38,54,39,45" />
-      <scope id="1592627013225787355" at="54,78,62,22">
+      <node id="1592627013225787355" at="15,0,16,0" concept="1" trace="myConceptRefOutOfScopeProblem" />
+      <node id="1592627013225787355" at="37,54,38,45" concept="4" />
+      <node id="1592627013225787355" at="49,78,50,197" concept="3" />
+      <node id="1592627013225787355" at="50,197,51,34" concept="0" />
+      <node id="1592627013225787355" at="51,34,52,148" concept="0" />
+      <node id="1592627013225787355" at="52,148,53,129" concept="0" />
+      <node id="1592627013225787355" at="53,129,54,17" concept="0" />
+      <node id="1592627013225788494" at="54,17,55,161" concept="0" />
+      <node id="1592627013225787355" at="55,161,56,46" concept="0" />
+      <node id="1592627013225787355" at="56,46,57,22" concept="4" />
+      <node id="1592627013225787355" at="49,0,59,0" concept="6" trace="createDescriptorForRefOutOfScopeProblem#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="1592627013225787355" at="37,54,38,45" />
+      <scope id="1592627013225787355" at="49,78,57,22">
         <var name="b" id="1592627013225787355" />
       </scope>
-      <scope id="1592627013225787355" at="54,0,64,0" />
+      <scope id="1592627013225787355" at="49,0,59,0" />
     </file>
   </root>
 </debug-info>

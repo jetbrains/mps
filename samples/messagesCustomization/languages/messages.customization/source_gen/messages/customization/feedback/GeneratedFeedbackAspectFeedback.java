@@ -11,6 +11,6 @@ public final class GeneratedFeedbackAspectFeedback implements FeedbackAspect {
   @NotNull
   @Override
   public Stream<FeedbackPerConceptDescriptor> getPerConceptDescriptors() {
-    return Stream.of(new TestConcept_FeedbackFeedback(), new CardinalityTestConcept_FeedbackFeedback(), new BrokenConcept_FeedbackFeedback(), new CardinalityTestConcept0_FeedbackFeedback());
+    return Stream.of(new TestConcept_FeedbackFeedback(), new CardinalityTestConcept_FeedbackFeedback(), new BrokenConcept_FeedbackFeedback(), new CardinalityTestConcept0_FeedbackFeedback(), new IncorrectTargetTestConcept_FeedbackFeedback());
   }
 }

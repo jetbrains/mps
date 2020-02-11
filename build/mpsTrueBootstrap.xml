@@ -35,7 +35,7 @@
   </path>
   
   <path id="path.java.library.ecj">
-    <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.10.jar" />
+    <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.13.jar" />
   </path>
   
   <target name="assemble" depends="classes">

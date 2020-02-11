@@ -222,6 +222,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.behavior.ConceptId__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations" />

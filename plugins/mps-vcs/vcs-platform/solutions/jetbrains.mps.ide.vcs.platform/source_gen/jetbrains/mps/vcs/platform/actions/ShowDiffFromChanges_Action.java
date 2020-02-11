@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import jetbrains.mps.vcs.changesmanager.editor.ChangesStripActionsHelper;
 import org.jetbrains.mps.openapi.model.SNode;
-import com.intellij.openapi.application.ApplicationManager;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512809006", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ShowDiffFromChanges_Action extends BaseAction {
@@ -59,12 +58,8 @@ public class ShowDiffFromChanges_Action extends BaseAction {
     ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
         SNode editedNode = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent().getEditedNode();
-        final VcsActionsUtil vau = new VcsActionsUtil(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), editedNode, editedNode.getContainingRoot().getName());
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            vau.showRootDifference(bounds);
-          }
-        });
+        final VcsActionsUtil vau = new VcsActionsUtil(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), editedNode.getReference(), editedNode.getContainingRoot().getName());
+        vau.showRootDifference(bounds);
       }
     });
   }

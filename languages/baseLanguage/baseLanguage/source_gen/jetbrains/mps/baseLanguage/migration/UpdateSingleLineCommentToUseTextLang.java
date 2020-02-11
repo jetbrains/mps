@@ -86,7 +86,7 @@ public class UpdateSingleLineCommentToUseTextLang extends MigrationScriptBase {
               ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.commentPart$_gGy)).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode part) {
                   if (SNodeOperations.isInstanceOf(part, CONCEPTS.TextCommentPart$lb)) {
-                    SingleLineComment__BehaviorDescriptor.parseAndAddWords_id45vN3dBFprj.invoke(slc, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw));
+                    SingleLineComment__BehaviorDescriptor.parseAndAddWordsIntoLines_id45vN3dBFprj.invoke(slc, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw));
                   }
                 }
               });

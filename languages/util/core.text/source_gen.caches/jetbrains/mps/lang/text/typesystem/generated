@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-d8z5onvykbpjolg1a3zo9b8fpgg2cb5">
-  <files names="TypesystemDescriptor.java" />
+<product version="3" modelHash="-7oghnvp8ofuo6hxxlqgudch1ri2km7b">
+  <files names="RemoveSpacesFromWord_QuickFix.java:TurnWordIntoLink_QuickFix.java:TypesystemDescriptor.java:check_Word_NonTypesystemRule.java" />
 </product>
 

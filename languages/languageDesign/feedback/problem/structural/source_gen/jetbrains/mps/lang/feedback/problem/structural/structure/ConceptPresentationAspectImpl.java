@@ -16,6 +16,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_MultipleChildrenInSingleRoleProblem;
   private ConceptPresentation props_NoChildInObligatoryRoleProblem;
   private ConceptPresentation props_NoRefInObligatoryRoleProblem;
+  private ConceptPresentation props_TargetConceptIncorrectChild;
+  private ConceptPresentation props_TargetConceptIncorrectRef;
 
   @Override
   @Nullable
@@ -70,6 +72,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NoRefInObligatoryRoleProblem = cpb.create();
         }
         return props_NoRefInObligatoryRoleProblem;
+      case LanguageConceptSwitch.TargetConceptIncorrectChild:
+        if (props_TargetConceptIncorrectChild == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("when child role has incompatible target concept");
+          props_TargetConceptIncorrectChild = cpb.create();
+        }
+        return props_TargetConceptIncorrectChild;
+      case LanguageConceptSwitch.TargetConceptIncorrectRef:
+        if (props_TargetConceptIncorrectRef == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("when reference role has incompatible target concept");
+          props_TargetConceptIncorrectRef = cpb.create();
+        }
+        return props_TargetConceptIncorrectRef;
     }
     return null;
   }

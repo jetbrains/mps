@@ -73,7 +73,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
@@ -211,7 +211,7 @@
       <node concept="3Tm1VV" id="2p1v3tOaDTK" role="1B3o_S" />
       <node concept="3clFbS" id="2p1v3tOaDTM" role="3clF47">
         <node concept="3SKdUt" id="1MqieoZiSYg" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnXYu" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnXYu" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnXYv" role="1PaTwD">
               <property role="3oM_SC" value="path" />
             </node>

@@ -7,6 +7,7 @@ import jetbrains.mps.project.PathMacrosProvider;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import java.util.Map;
+import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import java.util.Collections;
 import org.apache.log4j.Level;
@@ -14,26 +15,35 @@ import org.apache.log4j.Level;
 @GeneratedClass(node = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/5900076103425047615", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
 public class MapPathMacrosProvider implements PathMacrosProvider {
   private static final Logger LOG = LogManager.getLogger(MapPathMacrosProvider.class);
-  private Map<String, String> macros;
-  public MapPathMacrosProvider(Map<String, String> macros) {
-    this.macros = macros;
+  private static final String MSG = "Please define the path variable '%s' in the settings section 'Path variables'";
+
+  private final Map<String, String> myMacros;
+
+  public MapPathMacrosProvider(@NotNull Map<String, String> macros) {
+    myMacros = macros;
   }
+
   @Override
-  public String getValue(String name) {
-    return macros.get(name);
+  public String getValue(@NotNull String name) {
+    return myMacros.get(name);
   }
+
+  @NotNull
   @Override
   public Set<String> getUserNames() {
-    return Collections.unmodifiableSet(macros.keySet());
+    return Collections.unmodifiableSet(myMacros.keySet());
   }
+
+  @NotNull
   @Override
   public Set<String> getNames() {
-    return Collections.unmodifiableSet(macros.keySet());
+    return Collections.unmodifiableSet(myMacros.keySet());
   }
+
   @Override
-  public void report(String message, String macro) {
+  public void reportUnknownMacro(@NotNull String macro) {
     if (LOG.isEnabledFor(Level.WARN)) {
-      LOG.warn("Undefined macro: " + macro + ". " + message);
+      LOG.warn("Undefined macro: " + macro + ". " + String.format(MSG, macro));
     }
   }
 }

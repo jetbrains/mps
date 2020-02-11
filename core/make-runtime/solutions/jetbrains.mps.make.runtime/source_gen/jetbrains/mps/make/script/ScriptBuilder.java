@@ -14,6 +14,8 @@ import java.util.List;
 import jetbrains.mps.internal.make.runtime.script.ValidationError;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.make.facet.FacetRegistry;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.make.runtime.script.InvalidScript;
 import java.util.Map;
@@ -21,7 +23,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.make.runtime.script.TargetRange;
 import jetbrains.mps.internal.make.runtime.script.Script;
-import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
@@ -35,7 +36,19 @@ public class ScriptBuilder {
   private ITarget.Name finalTarget;
   private ITarget.Name startingTarget;
   private List<ValidationError> errors = ListSequence.fromList(new ArrayList<ValidationError>());
+  private final FacetRegistry myFacetRegistry;
+
+  /**
+   * 
+   * @deprecated replace with the one that takes FacetRegistry argument
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
   public ScriptBuilder() {
+    this(FacetRegistry.getInstance());
+  }
+  public ScriptBuilder(FacetRegistry facetRegistry) {
+    myFacetRegistry = facetRegistry;
   }
   public ScriptBuilder withFacetName(IFacet.Name facetName) {
     SetSequence.fromSet(facets).addElement(facetName);
@@ -98,12 +111,13 @@ public class ScriptBuilder {
       return new InvalidScript(errors);
     }
     Script sc = new Script(tr, finalTarget, startingTarget);
+    sc.setFacetRegistry(myFacetRegistry);
     return sc;
   }
   private Map<IFacet.Name, IFacet> collectFacets() {
     Map<IFacet.Name, IFacet> facetsView = MapSequence.fromMap(new HashMap<IFacet.Name, IFacet>());
     for (IFacet.Name fn : SetSequence.fromSet(facets)) {
-      IFacet fct = FacetRegistry.getInstance().lookup(fn);
+      IFacet fct = myFacetRegistry.lookup(fn);
       if (fct != null) {
         MapSequence.fromMap(facetsView).put(fn, fct);
       } else {

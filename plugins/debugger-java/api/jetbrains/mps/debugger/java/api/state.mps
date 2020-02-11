@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="1l1h" ref="r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)" />
@@ -104,7 +104,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
@@ -264,7 +264,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6k4GBOyfDKH" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXobYE" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXobYE" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXobYF" role="1PaTwD">
               <property role="3oM_SC" value="XXX" />
             </node>
@@ -307,7 +307,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="6k4GBOyfE73" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXobYS" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXobYS" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXobYT" role="1PaTwD">
               <property role="3oM_SC" value="just" />
             </node>

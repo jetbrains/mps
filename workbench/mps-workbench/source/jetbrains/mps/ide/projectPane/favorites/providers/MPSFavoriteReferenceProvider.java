@@ -46,8 +46,8 @@ public class MPSFavoriteReferenceProvider extends FavoriteNodeProvider {
 
   @Nullable
   @Override
-  public Collection<AbstractTreeNode> getFavoriteNodes(DataContext context, @NotNull ViewSettings viewSettings) {
-    Collection<AbstractTreeNode> result = new ArrayList<>();
+  public Collection<AbstractTreeNode<?>> getFavoriteNodes(DataContext context, @NotNull ViewSettings viewSettings) {
+    Collection<AbstractTreeNode<?>> result = new ArrayList<>();
     Project project = CommonDataKeys.PROJECT.getData(context);
     List<TreeNode> references = MPSCommonDataKeys.TREE_NODES.getData(context);
 

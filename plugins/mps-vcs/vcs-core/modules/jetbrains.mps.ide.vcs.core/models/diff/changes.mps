@@ -6,8 +6,9 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -220,7 +221,7 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -257,6 +258,12 @@
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+    </language>
+    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
+      <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
+        <property id="2034914114981261751" name="severity" index="RRSoG" />
+        <child id="2034914114981261753" name="message" index="RRSoy" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -552,7 +559,7 @@
       <node concept="3Tm1VV" id="3kU7_0wM0We" role="1B3o_S" />
       <node concept="3clFbS" id="3kU7_0wM0Wf" role="3clF47">
         <node concept="3SKdUt" id="3kU7_0wM2Hj" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolng" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXolng" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolnh" role="1PaTwD">
               <property role="3oM_SC" value="true" />
             </node>
@@ -1678,7 +1685,7 @@
       </node>
       <node concept="3clFbS" id="7n1vgxsABm8" role="3clF47">
         <node concept="3SKdUt" id="7n1vgxsABm9" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoln_" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoln_" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolnA" role="1PaTwD">
               <property role="3oM_SC" value="get" />
             </node>
@@ -1991,7 +1998,7 @@
       </node>
       <node concept="3clFbS" id="2W$ok$XXIeA" role="3clF47">
         <node concept="3SKdUt" id="PhFjFi7uNe" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolnF" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXolnF" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolnG" role="1PaTwD">
               <property role="3oM_SC" value="delete" />
             </node>
@@ -2009,7 +2016,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="3MvRjja9tNu" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolnJ" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXolnJ" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolnK" role="1PaTwD">
               <property role="3oM_SC" value="some" />
             </node>
@@ -2095,7 +2102,7 @@
         </node>
         <node concept="3clFbH" id="PhFjFi7uNb" role="3cqZAp" />
         <node concept="3SKdUt" id="PhFjFi7uNh" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolnW" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXolnW" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolnX" role="1PaTwD">
               <property role="3oM_SC" value="copy" />
             </node>
@@ -2161,7 +2168,7 @@
         </node>
         <node concept="3clFbH" id="PhFjFi7uNc" role="3cqZAp" />
         <node concept="3SKdUt" id="PhFjFi7uNk" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolo1" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXolo1" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolo2" role="1PaTwD">
               <property role="3oM_SC" value="insert" />
             </node>
@@ -2742,7 +2749,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="58$Pzbkb2Km" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolo5" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXolo5" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolo6" role="1PaTwD">
               <property role="3oM_SC" value="FIXME" />
             </node>
@@ -3268,7 +3275,7 @@
       </node>
       <node concept="3clFbS" id="7n1vgxs$Liu" role="3clF47">
         <node concept="3SKdUt" id="7n1vgxs$Qr5" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoloi" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoloi" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoloj" role="1PaTwD">
               <property role="3oM_SC" value="get" />
             </node>
@@ -3727,7 +3734,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="2p9HAeNSoqm" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoloo" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoloo" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolop" role="1PaTwD">
               <property role="3oM_SC" value="if" />
             </node>
@@ -3794,7 +3801,7 @@
         </node>
         <node concept="3clFbH" id="5xVZxjNqwel" role="3cqZAp" />
         <node concept="3SKdUt" id="5xVZxjNruMd" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoloB" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoloB" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoloC" role="1PaTwD">
               <property role="3oM_SC" value="check" />
             </node>
@@ -4336,7 +4343,7 @@
       </node>
       <node concept="3clFbS" id="7n1vgxs_SDe" role="3clF47">
         <node concept="3SKdUt" id="7n1vgxs_SDf" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoloT" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoloT" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoloU" role="1PaTwD">
               <property role="3oM_SC" value="get" />
             </node>
@@ -4525,7 +4532,7 @@
       <node concept="3Tm1VV" id="51cMXQKRj5a" role="1B3o_S" />
       <node concept="3clFbS" id="51cMXQKRj5b" role="3clF47">
         <node concept="3SKdUt" id="51cMXQKRj9A" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoloZ" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoloZ" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXolp0" role="1PaTwD">
               <property role="3oM_SC" value="TODO" />
             </node>
@@ -5065,7 +5072,7 @@
           </node>
           <node concept="3clFbS" id="2WueYNNTBVF" role="3clFbx">
             <node concept="3SKdUt" id="2WueYNNTBVG" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXolp4" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXolp4" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXolp5" role="1PaTwD">
                   <property role="3oM_SC" value="This" />
                 </node>
@@ -6274,6 +6281,16 @@
               <ref role="3cqZAo" node="4LCuQ2VxAIg" resolve="model" />
             </node>
           </node>
+          <node concept="9aQIb" id="1BRs9BXuJhZ" role="9aQIa">
+            <node concept="3clFbS" id="1BRs9BXuJi0" role="9aQI4">
+              <node concept="RRSsy" id="1BRs9BXuJzf" role="3cqZAp">
+                <property role="RRSoG" value="gZ5fh_4/error" />
+                <node concept="Xl_RD" id="1BRs9BXuJzh" role="RRSoy">
+                  <property role="Xl_RC" value="trying to apply \&quot;do not generate\&quot; change to the model that is not GeneratableSModel" />
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="3tYsUK_SfT3" role="2AJF6D">
@@ -6900,7 +6917,7 @@
               </node>
               <node concept="3clFbS" id="69abr3GmYqX" role="3clFbx">
                 <node concept="3SKdUt" id="69abr3GmYqY" role="3cqZAp">
-                  <node concept="1PaTwC" id="ATZLwXolp9" role="3ndbpf">
+                  <node concept="1PaTwC" id="ATZLwXolp9" role="1aUNEU">
                     <node concept="3oM_SD" id="ATZLwXolpa" role="1PaTwD">
                       <property role="3oM_SC" value="node" />
                     </node>
@@ -7781,7 +7798,7 @@
                 <node concept="9aQIb" id="4$lWBA3TcjS" role="9aQIa">
                   <node concept="3clFbS" id="4$lWBA3TcjT" role="9aQI4">
                     <node concept="3SKdUt" id="4$lWBA3TkwW" role="3cqZAp">
-                      <node concept="1PaTwC" id="ATZLwXolpf" role="3ndbpf">
+                      <node concept="1PaTwC" id="ATZLwXolpf" role="1aUNEU">
                         <node concept="3oM_SD" id="ATZLwXolpg" role="1PaTwD">
                           <property role="3oM_SC" value="try" />
                         </node>
@@ -8047,7 +8064,7 @@
           </node>
           <node concept="3clFbS" id="42UviMIifDj" role="3clFbx">
             <node concept="3SKdUt" id="42UviMIifDk" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXolpk" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXolpk" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXolpl" role="1PaTwD">
                   <property role="3oM_SC" value="This" />
                 </node>
@@ -8477,7 +8494,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="3C60Wuacnhl" role="3cqZAp">
-          <node concept="1PaTwC" id="3C60Wuacnhm" role="3ndbpf">
+          <node concept="1PaTwC" id="3C60Wuacnhm" role="1aUNEU">
             <node concept="3oM_SD" id="3C60Wuacnho" role="1PaTwD">
               <property role="3oM_SC" value="ChangeType:" />
             </node>

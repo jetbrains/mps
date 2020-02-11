@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,16 @@ import jetbrains.mps.ide.ui.tree.TreeElement;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.ModelReadRunnable;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.CancellableReadAction;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Deque;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
@@ -57,7 +61,7 @@ public class ProjectPaneTreeHighlighter {
   private SModelNodeListeners myModelListeners;
   private volatile boolean myIsPaused = false;
 
-  public ProjectPaneTreeHighlighter(ProjectPaneTree tree, Project mpsProject) {
+  public ProjectPaneTreeHighlighter(ProjectPaneTree tree, MPSProject mpsProject) {
     myTree = tree;
     myProjectRepository = mpsProject.getRepository();
     myUpdater = new TreeNodeUpdater(mpsProject);
@@ -135,7 +139,7 @@ public class ProjectPaneTreeHighlighter {
     if (myIsPaused) {
       return;
     }
-    dispatchForHierarchy(myTree.getRootNode());
+    scheduleWholeTreeUpdate();
   }
 
   public void pause() {
@@ -150,9 +154,7 @@ public class ProjectPaneTreeHighlighter {
     if (myIsPaused) {
       return;
     }
-    for (ProjectModuleTreeNode tn : treeNodes) {
-      schedule(tn, myErrorVisitor);
-    }
+    scheduleTreeNodeUpdate(treeNodes, myErrorVisitor, false);
   }
 
   /*package*/ void refreshModelTreeNodes(Collection<SModelTreeNode> treeNodes) {
@@ -160,40 +162,107 @@ public class ProjectPaneTreeHighlighter {
       return;
     }
     // XXX don't need to keep instance of a visitor any more. Can instantiate here as needed, and then visitors could utilize their state.
-    for (SModelTreeNode tn : treeNodes) {
-      schedule(tn, myErrorVisitor);
-      schedule(tn, myModifiedMarker);
-      schedule(tn, myGenStatusVisitor);
-    }
+    scheduleTreeNodeUpdate(treeNodes, myErrorVisitor, false);
+    scheduleTreeNodeUpdate(treeNodes, myModifiedMarker, false);
+    scheduleTreeNodeUpdate(treeNodes, myGenStatusVisitor, false);
   }
 
   /*package*/ void refreshGenerationStatusForTreeNodes(Collection<SModelTreeNode> treeNodes) {
     if (myIsPaused) {
       return;
     }
-    for (SModelTreeNode tn : treeNodes) {
-      schedule(tn, myGenStatusVisitor);
-    }
+    scheduleTreeNodeUpdate(treeNodes, myGenStatusVisitor, false);
   }
 
-  private <T extends MPSTreeNode & TreeElement> void schedule(final T node, final TreeNodeVisitor visitor) {
-    myExecutor.execute(new ModelReadRunnable(myProjectRepository.getModelAccess(), () -> {
-      boolean disposed = node.getTree() == null;
-      if (disposed) {
-        return;
+  private void scheduleTreeNodeUpdate(final Collection<? extends MPSTreeNode> nodes, final TreeNodeVisitor visitor, boolean withChildren) {
+    // no need to run numerous ModelReadRunnable to facilitate UI responsiveness, use CancellableReadAction
+    // Perhaps, now we don't need our own executor with custom re-schedule policy any more, and can utilize IDEA's JobScheduler?
+    myExecutor.execute(() -> {
+      final ArrayDeque<Collection<? extends MPSTreeNode>> childrenQueue = new ArrayDeque<>();
+      childrenQueue.add(nodes);
+      final int maxAttemptsWhenReadFails = 10;
+      int attemptCount = 0;
+      while (!childrenQueue.isEmpty() && !myExecutor.isShutdown()) {
+        final VisitTreeWithRead r = new VisitTreeWithRead(childrenQueue, visitor, withChildren);
+        myProjectRepository.getModelAccess().runReadAction(r);
+        if (r.queueHasBeenChanged()) {
+          attemptCount = 0; // reset
+          continue;
+        }
+        if (++attemptCount < maxAttemptsWhenReadFails) {
+          try {
+            Thread.sleep(attemptCount * 100);
+          } catch (InterruptedException e) {
+            // ignore
+          }
+        } else {
+          final Logger logger = Logger.getLogger(ProjectPaneTreeHighlighter.class);
+          if (logger.isInfoEnabled()) {
+            final String fmt = "ProjectPane highlight: tree visitor %s%s didn't get a chance to run against %d nodes";
+            final String m = String.format(fmt, visitor, withChildren ? "(recursive)" : "", nodes.size());
+            logger.info(m);
+          }
+          break;
+        }
       }
-      node.accept(visitor);
-    }));
+    });
   }
 
-  private void dispatchForHierarchy(MPSTreeNode treeNode) {
-    if (treeNode instanceof TreeElement) {
-      schedule((MPSTreeNode & TreeElement) treeNode, myGenStatusVisitor);
+  private void scheduleWholeTreeUpdate() {
+    final MPSTreeNode treeRoot = myTree.getRootNode();
+    for (MPSTreeNode c : treeRoot.getChildren()) {
+      // for each module/virtual folder/top element spin a new thread that would grab a read
+      scheduleTreeNodeUpdate(Collections.singletonList(c), myGenStatusVisitor, true);
     }
-    for (MPSTreeNode node : treeNode.getChildren()) {
-      dispatchForHierarchy(node);
+    // also update project root
+    scheduleTreeNodeUpdate(Collections.singleton(treeRoot), myGenStatusVisitor, false);
+  }
+
+  // cancellable model read that visits tree nodes;
+  // optionally, walks tree hierarchically, top to bottom, visits parent node and then its children
+  private static class VisitTreeWithRead extends CancellableReadAction {
+    private final Deque<Collection<? extends MPSTreeNode>> myQueue;
+    private final TreeNodeVisitor myVisitor;
+    private final boolean myWithChildren;
+    private boolean myQueueChanged = false;
+
+    VisitTreeWithRead(/*modified by reference*/ Deque<Collection<? extends MPSTreeNode>> queue, TreeNodeVisitor visitor, boolean withChildren) {
+      myQueue = queue;
+      myVisitor = visitor;
+      myWithChildren = withChildren;
+    }
+
+    @Override
+    protected void execute() {
+      while (!myQueue.isEmpty()) {
+        final Collection<? extends MPSTreeNode> next = myQueue.peekFirst();
+        for (MPSTreeNode treeNode : next) {
+          if (treeNode.getTree() == null) {
+            continue;
+          }
+          if (isCancelRequested()) {
+            confirmCancel();
+            // we keep `next` list in childrenQueue to try it next time (unless there would be no containing tree)
+            return;
+          }
+          if (treeNode instanceof TreeElement) {
+            ((TreeElement) treeNode).accept(myVisitor);
+          }
+          if (myWithChildren && treeNode.getChildCount() > 0) {
+            myQueue.add(treeNode.getChildren());
+            myQueueChanged = true;
+          }
+        }
+        myQueue.removeFirst();
+        myQueueChanged = true;
+      }
+    }
+
+    /*package*/ boolean queueHasBeenChanged() {
+      return myQueueChanged;
     }
   }
+
 
   private class MyMPSTreeNodeListener implements MPSTreeNodeListener {
 

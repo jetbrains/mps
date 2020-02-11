@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5ij4qieofvjruku3f7x6qv8ka39kpwp">
+<product version="3" modelHash="-945hoyqeubwl0z7n4j9way5awo5zdh9">
   <files names="BaseClassifierType__BehaviorDescriptor.java:BehaviorAspectDescriptor.java:DefaultClassifierFieldAccessOperation__BehaviorDescriptor.java:DefaultClassifierFieldDeclaration__BehaviorDescriptor.java:DefaultClassifierMethodDeclaration__BehaviorDescriptor.java:DefaultClassifierType__BehaviorDescriptor.java:IClassifierPart__BehaviorDescriptor.java:IClassifier__BehaviorDescriptor.java:IMemberOperation__BehaviorDescriptor.java:IMember__BehaviorDescriptor.java:SuperClassifierExpresson__BehaviorDescriptor.java:ThisClassifierExpression__BehaviorDescriptor.java" />
 </product>
 

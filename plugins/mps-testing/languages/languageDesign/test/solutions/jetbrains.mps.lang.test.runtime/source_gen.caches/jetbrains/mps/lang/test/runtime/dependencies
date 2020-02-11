@@ -116,11 +116,15 @@
     <classNode dependClassName="java.awt.datatransfer.Clipboard" />
     <classNode dependClassName="java.awt.datatransfer.StringSelection" />
     <classNode dependClassName="java.lang.Exception" />
+    <classNode dependClassName="java.lang.IllegalStateException" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
+    <classNode dependClassName="org.apache.log4j.Level" />
+    <classNode dependClassName="org.apache.log4j.LogManager" />
+    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.junit.Rule" />
@@ -354,7 +358,7 @@
     <classNode dependClassName="jetbrains.mps.checkers.ModelCheckerBuilder" />
     <classNode dependClassName="jetbrains.mps.checkers.RefScopeChecker" />
     <classNode dependClassName="jetbrains.mps.checkers.SuppressErrorsChecker" />
-    <classNode dependClassName="jetbrains.mps.checkers.TargetConceptChecker" />
+    <classNode dependClassName="jetbrains.mps.checkers.TargetConceptChecker2" />
     <classNode dependClassName="jetbrains.mps.components.ComponentHost" />
     <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeFlavouredItem" />
@@ -459,7 +463,7 @@
     <classNode dependClassName="jetbrains.mps.checkers.ConstraintsChecker" />
     <classNode dependClassName="jetbrains.mps.checkers.ErrorReportHelper" />
     <classNode dependClassName="jetbrains.mps.checkers.RefScopeChecker" />
-    <classNode dependClassName="jetbrains.mps.checkers.TargetConceptChecker" />
+    <classNode dependClassName="jetbrains.mps.checkers.TargetConceptChecker2" />
     <classNode dependClassName="jetbrains.mps.components.ComponentHost" />
     <classNode dependClassName="jetbrains.mps.errors.MessageStatus" />
     <classNode dependClassName="jetbrains.mps.errors.item.NodeReportItem" />

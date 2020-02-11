@@ -22,7 +22,7 @@
     <classNode dependClassName="jetbrains.mps.checkers.IChecker" />
     <classNode dependClassName="jetbrains.mps.checkers.RefScopeChecker" />
     <classNode dependClassName="jetbrains.mps.checkers.SuppressErrorsChecker" />
-    <classNode dependClassName="jetbrains.mps.checkers.TargetConceptChecker" />
+    <classNode dependClassName="jetbrains.mps.checkers.TargetConceptChecker2" />
     <classNode dependClassName="jetbrains.mps.checkers.UsedLanguagesChecker" />
     <classNode dependClassName="jetbrains.mps.core.platform.Platform" />
     <classNode dependClassName="jetbrains.mps.errors.item.IssueKindReportItem" />
@@ -152,7 +152,6 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.checkers.AbstractNodeCheckerInEditor" />
     <classNode dependClassName="jetbrains.mps.checkers.IChecker" />
     <classNode dependClassName="jetbrains.mps.checkers.ModelCheckerBuilder" />
     <classNode dependClassName="jetbrains.mps.checkers.ModelPropertiesChecker" />

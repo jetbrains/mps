@@ -317,6 +317,7 @@
     <classNode extendsClassName="jetbrains.mps.checkers.AbstractNodeCheckerInEditor" />
   </dependency>
   <dependency className="jetbrains.mps.checkers.TargetConceptChecker">
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.checkers.LanguageErrorsCollector" />

@@ -367,5 +367,18 @@
     <property role="EcuMT" value="4886882084761150502" />
     <ref role="1TJDcQ" node="4fhGlP1nCQ0" resolve="ActionTestSidetransformAddConceptAbstractChild" />
   </node>
+  <node concept="1TIwiD" id="5rrkjWjs7Lh">
+    <property role="3GE5qa" value="sidetransform" />
+    <property role="TrG5h" value="ActionTestSidetransformChild2" />
+    <property role="EcuMT" value="6258685438512364625" />
+    <ref role="1TJDcQ" node="1uvaauHT77N" resolve="ActionTestSidetransformAbstractChild" />
+  </node>
+  <node concept="1TIwiD" id="4kM3Qgal6AQ">
+    <property role="3GE5qa" value="sidetransform" />
+    <property role="TrG5h" value="ActionTestSidetransformAddConceptChild2" />
+    <property role="34LRSv" value="otherConceptChild" />
+    <property role="EcuMT" value="4986064659797010870" />
+    <ref role="1TJDcQ" node="4fhGlP1nCQ0" resolve="ActionTestSidetransformAddConceptAbstractChild" />
+  </node>
 </model>
 

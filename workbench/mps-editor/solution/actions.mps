@@ -416,7 +416,7 @@
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -3314,7 +3314,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="5SJbI3P1FFK" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoqLD" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoqLD" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoqLE" role="1PaTwD">
               <property role="3oM_SC" value="TODO:" />
             </node>
@@ -3455,7 +3455,7 @@
       <node concept="3Tm1VV" id="5WVM2Z0c1di" role="1B3o_S" />
       <node concept="3clFbS" id="5WVM2Z0c1dj" role="3clF47">
         <node concept="3SKdUt" id="6zr71cdAH9A" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoqLI" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoqLI" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoqLJ" role="1PaTwD">
               <property role="3oM_SC" value="TODO" />
             </node>
@@ -3510,7 +3510,7 @@
         <node concept="3clFbJ" id="5WVM2Z0c2vX" role="3cqZAp">
           <node concept="3clFbS" id="5WVM2Z0c2vY" role="3clFbx">
             <node concept="3SKdUt" id="5WVM2Z0c2vZ" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXoqLQ" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXoqLQ" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXoqLR" role="1PaTwD">
                   <property role="3oM_SC" value="Looking" />
                 </node>
@@ -3903,7 +3903,7 @@
         <node concept="3clFbJ" id="6ofa_0tKIC_" role="3cqZAp">
           <node concept="3clFbS" id="6ofa_0tKICA" role="3clFbx">
             <node concept="3SKdUt" id="6ofa_0tKICB" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXoqLZ" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXoqLZ" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXoqM0" role="1PaTwD">
                   <property role="3oM_SC" value="Looking" />
                 </node>
@@ -3972,7 +3972,7 @@
             <node concept="3clFbJ" id="6ofa_0tKICO" role="3cqZAp">
               <node concept="3clFbS" id="6ofa_0tKICP" role="3clFbx">
                 <node concept="3SKdUt" id="6ofa_0tKICQ" role="3cqZAp">
-                  <node concept="1PaTwC" id="ATZLwXoqMc" role="3ndbpf">
+                  <node concept="1PaTwC" id="ATZLwXoqMc" role="1aUNEU">
                     <node concept="3oM_SD" id="ATZLwXoqMd" role="1PaTwD">
                       <property role="3oM_SC" value="Looking" />
                     </node>
@@ -6898,7 +6898,7 @@
                           </node>
                         </node>
                         <node concept="3SKdUt" id="4Mdt1RkW$xd" role="3cqZAp">
-                          <node concept="1PaTwC" id="ATZLwXoqMl" role="3ndbpf">
+                          <node concept="1PaTwC" id="ATZLwXoqMl" role="1aUNEU">
                             <node concept="3oM_SD" id="ATZLwXoqMm" role="1PaTwD">
                               <property role="3oM_SC" value="todo" />
                             </node>
@@ -8828,7 +8828,7 @@
       <node concept="3cqZAl" id="1yqbt3NqOGc" role="3clF45" />
       <node concept="3clFbS" id="1yqbt3NqNdK" role="3clF47">
         <node concept="3SKdUt" id="1yqbt3NqP5r" role="3cqZAp">
-          <node concept="1PaTwC" id="1yqbt3NqP5s" role="3ndbpf">
+          <node concept="1PaTwC" id="1yqbt3NqP5s" role="1aUNEU">
             <node concept="3oM_SD" id="1yqbt3NqP5Q" role="1PaTwD">
               <property role="3oM_SC" value="no-op," />
             </node>
@@ -9019,7 +9019,7 @@
     <node concept="2ScWuX" id="5z2Gv3pG45n" role="tmbBb">
       <node concept="3clFbS" id="5z2Gv3pG45o" role="2VODD2">
         <node concept="3SKdUt" id="5uaEgp6omWm" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoqMr" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXoqMr" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoqMs" role="1PaTwD">
               <property role="3oM_SC" value="'editable'" />
             </node>
@@ -17491,7 +17491,7 @@
         </node>
         <node concept="3clFbH" id="706B9ZFy6E6" role="3cqZAp" />
         <node concept="3SKdUt" id="706B9ZFy6E7" role="3cqZAp">
-          <node concept="1PaTwC" id="706B9ZFy6E8" role="3ndbpf">
+          <node concept="1PaTwC" id="706B9ZFy6E8" role="1aUNEU">
             <node concept="3oM_SD" id="706B9ZFy6E9" role="1PaTwD">
               <property role="3oM_SC" value="dirty-dirty" />
             </node>
@@ -17694,6 +17694,19 @@
               <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
               <node concept="1bVj0M" id="706B9ZFvPKX" role="37wK5m">
                 <node concept="3clFbS" id="706B9ZFvPKY" role="1bW5cS">
+                  <node concept="3clFbF" id="2PJbQK9$WUh" role="3cqZAp">
+                    <node concept="2OqwBi" id="2PJbQK9$XTx" role="3clFbG">
+                      <node concept="2OqwBi" id="2PJbQK9$WUb" role="2Oq$k0">
+                        <node concept="2WthIp" id="2PJbQK9$WUe" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="2PJbQK9$WUg" role="2OqNvi">
+                          <ref role="2WH_rO" node="3zdPyHKBfcm" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="4sU0LYlsTSW" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.deactivateSubstituteChooser()" resolve="deactivateSubstituteChooser" />
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3clFbF" id="odQdBSgYb1" role="3cqZAp">
                     <node concept="2OqwBi" id="odQdBSh2et" role="3clFbG">
                       <node concept="2OqwBi" id="odQdBSh1LW" role="2Oq$k0">

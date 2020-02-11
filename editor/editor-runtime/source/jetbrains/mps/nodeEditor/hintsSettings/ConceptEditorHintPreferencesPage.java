@@ -95,7 +95,11 @@ public class ConceptEditorHintPreferencesPage {
   }
 
   private void addHintCheckbox(JPanel panel, final String lang, final ConceptEditorHint hint, boolean state) {
-    JCheckBox item = new JCheckBox(hint.getId() + ": " + hint.getPresentation());
+    JCheckBox item = new JCheckBox(
+        hint.getPresentation() != null && !hint.getPresentation().trim().isEmpty()
+        ? hint.getPresentation()
+        : hint.getId()
+    );
     item.setSelected(state);
     panel.add(item);
     item.addItemListener(e -> {

@@ -2,7 +2,7 @@
 <model ref="r:924402ba-f852-4795-a33c-1f25ff898cad(messages.customization.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -265,6 +265,66 @@
         <node concept="lj46D" id="65DbCInUmMm" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="6uBDHA8AfN">
+    <ref role="1XX52x" to="pljn:6uBDHA8_ni" resolve="IncorrectTargetTestConcept" />
+    <node concept="3EZMnI" id="6uBDHA8AgP" role="2wV5jI">
+      <node concept="l2Vlx" id="6uBDHA8AgQ" role="2iSdaV" />
+      <node concept="3F0ifn" id="6uBDHA8AgR" role="3EZMnx">
+        <property role="3F0ifm" value="IncorrectTargetTestConcept" />
+      </node>
+      <node concept="3F0A7n" id="6uBDHA8AgS" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        <node concept="ljvvj" id="6uBDHA8AgT" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="6uBDHA8AgU" role="3EZMnx">
+        <property role="3F0ifm" value="obligatory:" />
+        <node concept="lj46D" id="6uBDHA8AgV" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3EZMnI" id="6uBDHA8AgW" role="3EZMnx">
+        <node concept="l2Vlx" id="6uBDHA8AgX" role="2iSdaV" />
+        <node concept="3F1sOY" id="6uBDHA8AgY" role="3EZMnx">
+          <ref role="1NtTu8" to="pljn:6uBDHA8_nj" resolve="obligatorychild" />
+          <node concept="ljvvj" id="6uBDHA8AgZ" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="lj46D" id="6uBDHA8Ah0" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="1iCGBv" id="6uBDHA8Ah7" role="3EZMnx">
+          <ref role="1NtTu8" to="pljn:6uBDHA8_nk" resolve="obligatoryref" />
+          <node concept="1sVBvm" id="6uBDHA8Ah8" role="1sWHZn">
+            <node concept="3SHvHV" id="6uBDHA8Ah9" role="2wV5jI" />
+          </node>
+          <node concept="lj46D" id="6uBDHA8Aha" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="ljvvj" id="6uBDHA8Ahb" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="lj46D" id="6uBDHA8Ahc" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="6uBDHA8LO$">
+    <ref role="1XX52x" to="pljn:2w7KopAY7a3" resolve="AuxConcept" />
+    <node concept="3EZMnI" id="6uBDHA8LTD" role="2wV5jI">
+      <node concept="2iRfu4" id="6uBDHA8LTE" role="2iSdaV" />
+      <node concept="3F0ifn" id="6uBDHA8LPA" role="3EZMnx">
+        <property role="3F0ifm" value="AUX CONCEPT WITH THE NAME" />
+      </node>
+      <node concept="3F0A7n" id="6uBDHA8LUM" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
       </node>
     </node>
   </node>

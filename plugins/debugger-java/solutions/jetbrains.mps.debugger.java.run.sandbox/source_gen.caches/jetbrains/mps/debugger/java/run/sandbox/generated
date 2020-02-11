@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8kzp2pnz6imj7e8cxkpyj7jzlbdk9dj">
+<product version="3" modelHash="-cwcag7vuxdxvya5z9rfzikibecc6j6n">
   <files names="BaseClass.java:Data.java:DebugCollections.java:DebugObjects.java:DerivedClass.java:InnerClassTest.java:SeveralThreads.java:TestTextSource.java:UncaughtException.java" />
 </product>
 

@@ -168,7 +168,7 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     myFileSystemTree = new FileSystemTreeImpl(null, myDescriptor, myTree, getModelRootEntryCellRenderer(), init, null) {
       @Override
       protected AbstractTreeBuilder createTreeBuilder(JTree tree, DefaultTreeModel treeModel, AbstractTreeStructure treeStructure,
-          Comparator<NodeDescriptor> comparator, FileChooserDescriptor descriptor, final Runnable onInitialized) {
+          Comparator<NodeDescriptor<?>> comparator, FileChooserDescriptor descriptor, final Runnable onInitialized) {
         return new MyFileTreeBuilder(tree, treeModel, treeStructure, comparator, descriptor, onInitialized);
       }
     };
@@ -250,7 +250,7 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     public MyFileTreeBuilder(JTree tree,
         DefaultTreeModel treeModel,
         AbstractTreeStructure treeStructure,
-        Comparator<NodeDescriptor> comparator,
+        Comparator<NodeDescriptor<?>> comparator,
         FileChooserDescriptor descriptor,
         @Nullable Runnable onInitialized) {
       super(tree, treeModel, treeStructure, comparator, descriptor, onInitialized);

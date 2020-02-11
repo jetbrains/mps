@@ -4,7 +4,7 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -226,7 +226,7 @@
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -236,9 +236,6 @@
       </concept>
       <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
-      <concept id="1200397529627" name="jetbrains.mps.baseLanguage.structure.CharConstant" flags="nn" index="1Xhbcc">
-        <property id="1200397540847" name="charConstant" index="1XhdNS" />
-      </concept>
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
         <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
@@ -815,7 +812,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7gZx2pWIyzV" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXosiv" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXosiv" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXosiw" role="1PaTwD">
               <property role="3oM_SC" value="FIXME" />
             </node>
@@ -2243,7 +2240,7 @@
         </node>
         <node concept="3clFbH" id="2bQKHu3llW6" role="3cqZAp" />
         <node concept="3SKdUt" id="29PqUnrObWd" role="3cqZAp">
-          <node concept="1PaTwC" id="29PqUnrObWe" role="3ndbpf">
+          <node concept="1PaTwC" id="29PqUnrObWe" role="1aUNEU">
             <node concept="3oM_SD" id="29PqUnrObWg" role="1PaTwD">
               <property role="3oM_SC" value="Check" />
             </node>
@@ -2974,7 +2971,7 @@
                               </node>
                               <node concept="3clFbH" id="fictB8LUms" role="3cqZAp" />
                               <node concept="3SKdUt" id="fictB8MalH" role="3cqZAp">
-                                <node concept="1PaTwC" id="fictB8MalI" role="3ndbpf">
+                                <node concept="1PaTwC" id="fictB8MalI" role="1aUNEU">
                                   <node concept="3oM_SD" id="fictB8MalK" role="1PaTwD">
                                     <property role="3oM_SC" value="Do" />
                                   </node>
@@ -4015,22 +4012,6 @@
             <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
             <node concept="Xl_RD" id="53OO3hLEITK" role="37wK5m">
               <property role="Xl_RC" value="Project Modules" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="53OO3hLHtGk" role="3cqZAp">
-          <node concept="1rXfSq" id="53OO3hLHtGj" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonText(java.lang.String)" resolve="setOKButtonText" />
-            <node concept="Xl_RD" id="53OO3hLHtJ0" role="37wK5m">
-              <property role="Xl_RC" value="Apply" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="JucQl_TAtd" role="3cqZAp">
-          <node concept="1rXfSq" id="JucQl_TAtb" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.setOKButtonMnemonic(int)" resolve="setOKButtonMnemonic" />
-            <node concept="1Xhbcc" id="JucQl_TAzN" role="37wK5m">
-              <property role="1XhdNS" value="A" />
             </node>
           </node>
         </node>

@@ -5,8 +5,8 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
@@ -40,9 +40,11 @@
     </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
+      <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
       <concept id="2000375450116454183" name="jetbrains.mps.lang.editor.structure.ISubstituteMenu" flags="ng" index="22mbnS">
         <child id="414384289274416996" name="parts" index="3ft7WO" />
       </concept>
+      <concept id="2000375450116423800" name="jetbrains.mps.lang.editor.structure.SubstituteMenu" flags="ng" index="22mcaB" />
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi">
         <child id="1078153129734" name="inspectedCellModel" index="6VMZX" />
       </concept>
@@ -123,6 +125,7 @@
       </concept>
       <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ng" index="2ZABuq">
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
+        <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
       <concept id="1630016958697286851" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_parameterObject" flags="ng" index="2ZBlsa" />
       <concept id="1630016958697057551" name="jetbrains.mps.lang.editor.structure.IMenuPartParameterized" flags="ng" index="2ZBHr6">
@@ -174,7 +177,6 @@
       <concept id="3308396621974588243" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution" flags="ng" index="3p309x">
         <child id="7173407872095451092" name="menuReference" index="1IG6uw" />
       </concept>
-      <concept id="3308396621974580100" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Default" flags="ng" index="3p36aQ" />
       <concept id="7580468736840446506" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_model" flags="nn" index="1rpKSd" />
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="1180615838666" name="jetbrains.mps.lang.editor.structure.CellMenuPart_PropertyPostfixHints" flags="ng" index="3yc0Fo">
@@ -396,7 +398,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -977,7 +979,7 @@
             <node concept="3ycQeJ" id="i2lMf36" role="3yc0Fp">
               <node concept="3clFbS" id="i2lMf37" role="2VODD2">
                 <node concept="3SKdUt" id="6pumIWoCFSN" role="3cqZAp">
-                  <node concept="1PaTwC" id="ATZLwXnT4C" role="3ndbpf">
+                  <node concept="1PaTwC" id="ATZLwXnT4C" role="1aUNEU">
                     <node concept="3oM_SD" id="ATZLwXnT4D" role="1PaTwD">
                       <property role="3oM_SC" value="" />
                     </node>
@@ -1059,7 +1061,7 @@
                   </node>
                 </node>
                 <node concept="3SKdUt" id="6pumIWoCG7N" role="3cqZAp">
-                  <node concept="1PaTwC" id="ATZLwXnT4I" role="3ndbpf">
+                  <node concept="1PaTwC" id="ATZLwXnT4I" role="1aUNEU">
                     <node concept="3oM_SD" id="ATZLwXnT4J" role="1PaTwD">
                       <property role="3oM_SC" value="we" />
                     </node>
@@ -1084,7 +1086,7 @@
                   </node>
                 </node>
                 <node concept="3SKdUt" id="6pumIWoCG6f" role="3cqZAp">
-                  <node concept="1PaTwC" id="ATZLwXnT4Q" role="3ndbpf">
+                  <node concept="1PaTwC" id="ATZLwXnT4Q" role="1aUNEU">
                     <node concept="3oM_SD" id="ATZLwXnT4R" role="1PaTwD">
                       <property role="3oM_SC" value="DO" />
                     </node>
@@ -2143,12 +2145,6 @@
       </node>
     </node>
   </node>
-  <node concept="3p36aQ" id="1wEcoXjJlN3">
-    <ref role="aqKnT" to="cx9y:i1LFfHg" resolve="IndexedTupleMemberAccessExpression" />
-  </node>
-  <node concept="3p36aQ" id="1wEcoXjJlN4">
-    <ref role="aqKnT" to="cx9y:i2pR1d_" resolve="NamedTupleType" />
-  </node>
   <node concept="3INDKC" id="1wEcoXjJ_KC">
     <property role="TrG5h" value="tuple_member_access_Contribution" />
     <node concept="A1WHr" id="1wEcoXjJ_KD" role="AmTjC">
@@ -2600,7 +2596,7 @@
                 </node>
                 <node concept="3clFbS" id="2U15YDCUovJ" role="3eOfB_">
                   <node concept="3SKdUt" id="2U15YDCV_sk" role="3cqZAp">
-                    <node concept="1PaTwC" id="ATZLwXnT4V" role="3ndbpf">
+                    <node concept="1PaTwC" id="ATZLwXnT4V" role="1aUNEU">
                       <node concept="3oM_SD" id="ATZLwXnT4W" role="1PaTwD">
                         <property role="3oM_SC" value="matchNodes(RETURNTYPE," />
                       </node>
@@ -3202,6 +3198,14 @@
         </node>
       </node>
     </node>
+  </node>
+  <node concept="22mcaB" id="1wEcoXjJlN3">
+    <ref role="aqKnT" to="cx9y:i1LFfHg" resolve="IndexedTupleMemberAccessExpression" />
+    <node concept="22hDWj" id="xzgvwPPp5I" role="22hAXT" />
+  </node>
+  <node concept="22mcaB" id="1wEcoXjJlN4">
+    <ref role="aqKnT" to="cx9y:i2pR1d_" resolve="NamedTupleType" />
+    <node concept="22hDWj" id="xzgvwPPp5J" role="22hAXT" />
   </node>
 </model>
 

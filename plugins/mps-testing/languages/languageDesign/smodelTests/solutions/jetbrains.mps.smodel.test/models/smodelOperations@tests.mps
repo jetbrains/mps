@@ -10,7 +10,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
   </languages>
   <imports>
@@ -179,7 +179,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1873,7 +1873,7 @@
       <node concept="3cqZAl" id="7tE9sNRJZ83" role="3clF45" />
       <node concept="3clFbS" id="7tE9sNRJZ84" role="3clF47">
         <node concept="3SKdUt" id="7tE9sNRSu3g" role="3cqZAp">
-          <node concept="1PaTwC" id="7tE9sNRSu3h" role="3ndbpf">
+          <node concept="1PaTwC" id="7tE9sNRSu3h" role="1aUNEU">
             <node concept="3oM_SD" id="7tE9sNRSIq0" role="1PaTwD">
               <property role="3oM_SC" value="see" />
             </node>
@@ -4884,7 +4884,7 @@
         </node>
         <node concept="3clFbH" id="tJEuhpTT26" role="3cqZAp" />
         <node concept="3SKdUt" id="tJEuhpSmDk" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXokdV" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXokdV" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXokdW" role="1PaTwD">
               <property role="3oM_SC" value="eliminate" />
             </node>

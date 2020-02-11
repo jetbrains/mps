@@ -40,8 +40,8 @@
       <node id="3185679905989925888" at="38,72,39,22" concept="1" />
       <node id="3694071247855998007" at="39,22,40,71" concept="1" />
       <node id="3185679905989925891" at="40,71,41,85" concept="1" />
-      <node id="3185679905989925897" at="41,85,42,87" concept="1" />
-      <node id="3185679905989925903" at="42,87,43,72" concept="1" />
+      <node id="4986064659796986655" at="41,85,42,99" concept="1" />
+      <node id="3185679905989925903" at="42,99,43,72" concept="1" />
       <node id="3185679905989925910" at="43,72,44,83" concept="1" />
       <node id="3185679905989925287" at="18,0,20,0" concept="3" trace="ourParamCache" />
       <node id="3185679905989925287" at="21,0,24,0" concept="0" trace="RightTransformWithCustomItem_Simple_checkCanBeAncestor_Test#()V" />
@@ -97,8 +97,8 @@
       <node id="3185679905990188319" at="38,72,39,22" concept="1" />
       <node id="3694071247855998045" at="39,22,40,71" concept="1" />
       <node id="3185679905990188322" at="40,71,41,85" concept="1" />
-      <node id="3185679905990188328" at="41,85,42,87" concept="1" />
-      <node id="3185679905990188334" at="42,87,43,72" concept="1" />
+      <node id="4986064659796998765" at="41,85,42,99" concept="1" />
+      <node id="3185679905990188334" at="42,99,43,72" concept="1" />
       <node id="3185679905990188341" at="43,72,44,83" concept="1" />
       <node id="3185679905990188312" at="18,0,20,0" concept="3" trace="ourParamCache" />
       <node id="3185679905990188312" at="21,0,24,0" concept="0" trace="LeftTransformWithCustomItem_Simple_checkCanBeParent_Test#()V" />
@@ -128,8 +128,8 @@
       <node id="3185679905990189315" at="38,72,39,22" concept="1" />
       <node id="3694071247855998011" at="39,22,40,71" concept="1" />
       <node id="3185679905990189318" at="40,71,41,85" concept="1" />
-      <node id="3185679905990189324" at="41,85,42,87" concept="1" />
-      <node id="3185679905990189330" at="42,87,43,72" concept="1" />
+      <node id="4986064659796992837" at="41,85,42,99" concept="1" />
+      <node id="3185679905990189330" at="42,99,43,72" concept="1" />
       <node id="3185679905990189337" at="43,72,44,83" concept="1" />
       <node id="3185679905990189305" at="18,0,20,0" concept="3" trace="ourParamCache" />
       <node id="3185679905990189305" at="21,0,24,0" concept="0" trace="LeftTransformWithCustomItem_Simple_checkCanBeAncestor_Test#()V" />
@@ -178,64 +178,74 @@
   </root>
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905991685372">
     <file name="RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test.java">
-      <node id="3185679905991685372" at="21,78,22,25" concept="4" />
-      <node id="3185679905991685372" at="26,100,27,36" concept="1" />
-      <node id="3185679905991685372" at="32,52,33,19" concept="4" />
-      <node id="3185679905991685372" at="37,51,38,72" concept="1" />
-      <node id="3185679905991685379" at="38,72,39,22" concept="1" />
-      <node id="3694071247855998079" at="39,22,40,71" concept="1" />
-      <node id="3185679905991685382" at="40,71,41,85" concept="1" />
-      <node id="3185679905991685388" at="41,85,42,87" concept="1" />
-      <node id="3185679905991685394" at="42,87,43,72" concept="1" />
-      <node id="3185679905991685401" at="43,72,44,83" concept="1" />
-      <node id="3185679905991685372" at="18,0,20,0" concept="3" trace="ourParamCache" />
-      <node id="3185679905991685372" at="21,0,24,0" concept="0" trace="RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test#()V" />
-      <node id="3185679905991685372" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="3185679905991685372" at="25,0,29,0" concept="2" trace="test_RightTransformWithCustomItems_Parameterized_checkCanBeParent#()V" />
-      <node id="3185679905991685372" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
-      <scope id="3185679905991685372" at="21,78,22,25" />
-      <scope id="3185679905991685372" at="26,100,27,36" />
-      <scope id="3185679905991685372" at="32,52,33,19" />
-      <scope id="3185679905991685372" at="21,0,24,0" />
-      <scope id="3185679905991685372" at="32,0,35,0">
+      <node id="3185679905991685372" at="22,78,23,25" concept="4" />
+      <node id="3185679905991685372" at="27,100,28,36" concept="1" />
+      <node id="3185679905991685372" at="33,52,34,19" concept="4" />
+      <node id="3185679905991685372" at="38,51,39,72" concept="1" />
+      <node id="5747264436174803898" at="41,44,42,26" concept="1" />
+      <node id="3694071247855998079" at="44,16,45,71" concept="1" />
+      <node id="3185679905991685382" at="45,71,46,85" concept="1" />
+      <node id="3185679905991685388" at="46,85,47,87" concept="1" />
+      <node id="3185679905991685394" at="47,87,48,72" concept="1" />
+      <node id="3185679905991685401" at="48,72,49,83" concept="1" />
+      <node id="3185679905991685372" at="19,0,21,0" concept="3" trace="ourParamCache" />
+      <node id="3185679905991685372" at="22,0,25,0" concept="0" trace="RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test#()V" />
+      <node id="3185679905991685372" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5747264436174803896" at="41,0,44,0" concept="2" trace="run#()V" />
+      <node id="3185679905991685372" at="26,0,30,0" concept="2" trace="test_RightTransformWithCustomItems_Parameterized_checkCanBeParent#()V" />
+      <node id="5747264436174803894" at="39,72,44,16" concept="1" />
+      <node id="3185679905991685372" at="37,0,51,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="3185679905991685372" at="22,78,23,25" />
+      <scope id="3185679905991685372" at="27,100,28,36" />
+      <scope id="3185679905991685372" at="33,52,34,19" />
+      <scope id="5747264436174803897" at="41,44,42,26" />
+      <scope id="3185679905991685372" at="22,0,25,0" />
+      <scope id="3185679905991685372" at="33,0,36,0">
         <var name="owner" id="3185679905991685372" />
       </scope>
-      <scope id="3185679905991685372" at="25,0,29,0" />
-      <scope id="3185679905991685372" at="37,51,44,83" />
-      <scope id="3185679905991685372" at="36,0,46,0" />
-      <unit id="3185679905991685372" at="30,0,47,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test$TestBody" />
-      <unit id="3185679905991685372" at="16,0,48,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test" />
+      <scope id="5747264436174803896" at="41,0,44,0" />
+      <scope id="3185679905991685372" at="26,0,30,0" />
+      <scope id="3185679905991685372" at="38,51,49,83" />
+      <scope id="3185679905991685372" at="37,0,51,0" />
+      <unit id="5747264436174803896" at="40,53,44,7" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test$TestBody$1" />
+      <unit id="3185679905991685372" at="31,0,52,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test$TestBody" />
+      <unit id="3185679905991685372" at="17,0,53,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test" />
     </file>
   </root>
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905992058594">
     <file name="RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test.java">
-      <node id="3185679905992058594" at="21,80,22,25" concept="4" />
-      <node id="3185679905992058594" at="26,102,27,36" concept="1" />
-      <node id="3185679905992058594" at="32,52,33,19" concept="4" />
-      <node id="3185679905992058594" at="37,51,38,72" concept="1" />
-      <node id="3185679905992058604" at="38,72,39,22" concept="1" />
-      <node id="3694071247855998067" at="39,22,40,71" concept="1" />
-      <node id="3185679905992058607" at="40,71,41,85" concept="1" />
-      <node id="3185679905992058613" at="41,85,42,87" concept="1" />
-      <node id="3185679905992058619" at="42,87,43,72" concept="1" />
-      <node id="3185679905992058626" at="43,72,44,83" concept="1" />
-      <node id="3185679905992058594" at="18,0,20,0" concept="3" trace="ourParamCache" />
-      <node id="3185679905992058594" at="21,0,24,0" concept="0" trace="RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test#()V" />
-      <node id="3185679905992058594" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="3185679905992058594" at="25,0,29,0" concept="2" trace="test_RightTransformWithCustomItems_Parameterized_checkCanBeAncestor#()V" />
-      <node id="3185679905992058594" at="36,0,46,0" concept="2" trace="testMethodImpl#()V" />
-      <scope id="3185679905992058594" at="21,80,22,25" />
-      <scope id="3185679905992058594" at="26,102,27,36" />
-      <scope id="3185679905992058594" at="32,52,33,19" />
-      <scope id="3185679905992058594" at="21,0,24,0" />
-      <scope id="3185679905992058594" at="32,0,35,0">
+      <node id="3185679905992058594" at="22,80,23,25" concept="4" />
+      <node id="3185679905992058594" at="27,102,28,36" concept="1" />
+      <node id="3185679905992058594" at="33,52,34,19" concept="4" />
+      <node id="3185679905992058594" at="38,51,39,72" concept="1" />
+      <node id="3185679905992058604" at="41,44,42,26" concept="1" />
+      <node id="3694071247855998067" at="44,16,45,71" concept="1" />
+      <node id="3185679905992058607" at="45,71,46,85" concept="1" />
+      <node id="3185679905992058613" at="46,85,47,87" concept="1" />
+      <node id="3185679905992058619" at="47,87,48,72" concept="1" />
+      <node id="3185679905992058626" at="48,72,49,83" concept="1" />
+      <node id="3185679905992058594" at="19,0,21,0" concept="3" trace="ourParamCache" />
+      <node id="3185679905992058594" at="22,0,25,0" concept="0" trace="RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test#()V" />
+      <node id="3185679905992058594" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5747264436174803006" at="41,0,44,0" concept="2" trace="run#()V" />
+      <node id="3185679905992058594" at="26,0,30,0" concept="2" trace="test_RightTransformWithCustomItems_Parameterized_checkCanBeAncestor#()V" />
+      <node id="5747264436174790454" at="39,72,44,16" concept="1" />
+      <node id="3185679905992058594" at="37,0,51,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="3185679905992058594" at="22,80,23,25" />
+      <scope id="3185679905992058594" at="27,102,28,36" />
+      <scope id="3185679905992058594" at="33,52,34,19" />
+      <scope id="5747264436174803008" at="41,44,42,26" />
+      <scope id="3185679905992058594" at="22,0,25,0" />
+      <scope id="3185679905992058594" at="33,0,36,0">
         <var name="owner" id="3185679905992058594" />
       </scope>
-      <scope id="3185679905992058594" at="25,0,29,0" />
-      <scope id="3185679905992058594" at="37,51,44,83" />
-      <scope id="3185679905992058594" at="36,0,46,0" />
-      <unit id="3185679905992058594" at="30,0,47,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test$TestBody" />
-      <unit id="3185679905992058594" at="16,0,48,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test" />
+      <scope id="5747264436174803006" at="41,0,44,0" />
+      <scope id="3185679905992058594" at="26,0,30,0" />
+      <scope id="3185679905992058594" at="38,51,49,83" />
+      <scope id="3185679905992058594" at="37,0,51,0" />
+      <unit id="5747264436174803006" at="40,53,44,7" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test$TestBody$1" />
+      <unit id="3185679905992058594" at="31,0,52,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test$TestBody" />
+      <unit id="3185679905992058594" at="17,0,53,0" name="jetbrains.mps.lang.actions.test.sidetransform.RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test" />
     </file>
   </root>
   <root nodeRef="r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)/3185679905992082137">
@@ -273,7 +283,7 @@
       <node id="3185679905992082154" at="38,72,39,22" concept="1" />
       <node id="3694071247855998083" at="39,22,40,71" concept="1" />
       <node id="3185679905992082157" at="40,71,41,85" concept="1" />
-      <node id="3185679905992082163" at="41,85,42,87" concept="1" />
+      <node id="5747264436174978251" at="41,85,42,87" concept="1" />
       <node id="3185679905992082169" at="42,87,43,72" concept="1" />
       <node id="3185679905992082176" at="43,72,44,83" concept="1" />
       <node id="3185679905992082145" at="18,0,20,0" concept="3" trace="ourParamCache" />
@@ -304,7 +314,7 @@
       <node id="3185679905992082185" at="38,72,39,22" concept="1" />
       <node id="3694071247855998043" at="39,22,40,71" concept="1" />
       <node id="3185679905992082188" at="40,71,41,85" concept="1" />
-      <node id="3185679905992082194" at="41,85,42,87" concept="1" />
+      <node id="5747264436174983821" at="41,85,42,87" concept="1" />
       <node id="3185679905992082200" at="42,87,43,72" concept="1" />
       <node id="3185679905992082207" at="43,72,44,83" concept="1" />
       <node id="3185679905992082178" at="18,0,20,0" concept="3" trace="ourParamCache" />
@@ -335,8 +345,8 @@
       <node id="3959984916895237532" at="38,72,39,22" concept="1" />
       <node id="3694071247855997995" at="39,22,40,71" concept="1" />
       <node id="3959984916895237535" at="40,71,41,85" concept="1" />
-      <node id="3959984916895237541" at="41,85,42,87" concept="1" />
-      <node id="3959984916895237547" at="42,87,43,72" concept="1" />
+      <node id="4986064659797005850" at="41,85,42,99" concept="1" />
+      <node id="3959984916895237547" at="42,99,43,72" concept="1" />
       <node id="3959984916895237554" at="43,72,44,83" concept="1" />
       <node id="3959984916895237523" at="18,0,20,0" concept="3" trace="ourParamCache" />
       <node id="3959984916895237523" at="21,0,24,0" concept="0" trace="RightTransformWithAddConcept_checkCanBeAncestor_Test#()V" />
@@ -392,8 +402,8 @@
       <node id="3185679905989355995" at="38,72,39,22" concept="1" />
       <node id="3694071247855997985" at="39,22,40,71" concept="1" />
       <node id="2550657305104001899" at="40,71,41,85" concept="1" />
-      <node id="6866660893594420694" at="41,85,42,87" concept="1" />
-      <node id="6866660893594421553" at="42,87,43,72" concept="1" />
+      <node id="4986064659796970535" at="41,85,42,99" concept="1" />
+      <node id="6866660893594421553" at="42,99,43,72" concept="1" />
       <node id="3185679905989363848" at="43,72,44,83" concept="1" />
       <node id="4942308145798660281" at="18,0,20,0" concept="3" trace="ourParamCache" />
       <node id="4942308145798660281" at="21,0,24,0" concept="0" trace="RightTransformWithCustomItem_Simple_checkCanBeParent_Test#()V" />
@@ -449,8 +459,8 @@
       <node id="6500338114639041783" at="38,72,39,22" concept="1" />
       <node id="3694071247855997997" at="39,22,40,71" concept="1" />
       <node id="6500338114639041786" at="40,71,41,85" concept="1" />
-      <node id="6500338114639041792" at="41,85,42,87" concept="1" />
-      <node id="6500338114639041798" at="42,87,43,72" concept="1" />
+      <node id="4986064659797192063" at="41,85,42,99" concept="1" />
+      <node id="6500338114639041798" at="42,99,43,72" concept="1" />
       <node id="6500338114639041805" at="43,72,44,83" concept="1" />
       <node id="6500338114639041774" at="18,0,20,0" concept="3" trace="ourParamCache" />
       <node id="6500338114639041774" at="21,0,24,0" concept="0" trace="LeftTransformWithAddConcept_checkCanBeAncestor_Test#()V" />

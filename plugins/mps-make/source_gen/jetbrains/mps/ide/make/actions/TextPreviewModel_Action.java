@@ -22,6 +22,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -111,7 +112,7 @@ public class TextPreviewModel_Action extends BaseAction {
     final SNodeReference contextNode = (event.getData(MPSCommonDataKeys.NODE) == null ? null : event.getData(MPSCommonDataKeys.NODE).getReference());
     IMakeService makeService = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(MakeServiceComponent.class).get();
     if (makeService.openNewSession(session)) {
-      IScript scr = new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGenToMemory")).toScript();
+      IScript scr = new ScriptBuilder(mpsProject.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.lang.core.TextGen.textGenToMemory")).toScript();
       SModel model = TextPreviewModel_Action.this.modelToGenerate(event);
       final SModelReference model2generateRef = model.getReference();
       final Future<IResult> future = makeService.make(session, new ModelsToResources(Sequence.<SModel>singleton(model)).resources(), scr);

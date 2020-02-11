@@ -161,6 +161,10 @@ public class GenSourcesAndCompilerXmlGenerationTest {
         if (cp.startsWith(sourcePath + File.separator)) continue outer;
       }
 
+      //this is where we store jdk in tests
+      //[MM] Maybe it would be better to change layout in tests, but not everyone can do that
+      if (isUnder(cp, "/jdk11")) continue;
+
       //test material
       if (isUnder(cp, "/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/resources/testData")) continue;
 

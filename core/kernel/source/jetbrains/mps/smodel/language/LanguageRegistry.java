@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -116,8 +116,11 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
 
   private final ClassLoaderManager myClassLoaderManager;
 
+  private final LanguageExtensionRegistry myExtensionRegistry;
+
   public LanguageRegistry(ClassLoaderManager loaderManager) {
     myClassLoaderManager = loaderManager;
+    myExtensionRegistry = new LanguageExtensionRegistry();
   }
 
   @Override
@@ -460,6 +463,8 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
       monitor.advance(1);
 
       for (LanguageRuntime languageRuntime : languagesToUnload) {
+        myExtensionRegistry.clearContributionsOf(languageRuntime);
+        languageRuntime.dispose();
         myLanguagesById.remove(languageRuntime.getId());
       }
       reinitialize();
@@ -494,6 +499,11 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         }
       }
       reinitialize();
+      // perhaps, could be part of LangRuntime.initialize(LangReg), if I expose (package-local) LangExtReg from here
+      for (LanguageRuntime lr : loadedRuntimes) {
+        final LanguageExtensions languageExtensions = myExtensionRegistry.forContributor(this, lr);
+        lr.contributeExtensions(languageExtensions);
+      }
       monitor.advance(1);
 
       monitor.step("Generator Runtime");
@@ -556,6 +566,11 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
   private void reinitialize() {
     myLanguagesById.values().forEach(LanguageRuntime::deinitialize);
     myLanguagesById.values().forEach(languageRuntime -> languageRuntime.initialize(this));
+  }
+
+  /*package*/ final LanguageExtensionRegistry getExtensionRegistry() {
+    // provisionally expose the registry. shall keep all the operations over the registry local to this class and guard them with myRuntimeInstanceAccess lock
+    return myExtensionRegistry;
   }
 
   private static void processLinkageErrorForLanguage(Language language, LinkageError linkageError) {

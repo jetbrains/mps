@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="81a3307b-d10f-4e90-8043-ff6aa5380c33" name="jetbrains.mps.samples.requirementTracking.Traces" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="uq0e" ref="r:a1d097a7-0850-4256-bc79-d04ba5618094(jetbrains.mps.samples.Specification.coreRequirements)" />

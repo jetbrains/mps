@@ -146,7 +146,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -735,7 +735,7 @@
                     <node concept="2jfdEK" id="1FBVWojy_Bx" role="1ps_xN">
                       <node concept="3clFbS" id="1FBVWojy_By" role="2VODD2">
                         <node concept="3SKdUt" id="_8ACpCocEA" role="3cqZAp">
-                          <node concept="1PaTwC" id="_8ACpCocTr" role="3ndbpf">
+                          <node concept="1PaTwC" id="_8ACpCocTr" role="1aUNEU">
                             <node concept="3oM_SD" id="_8ACpCocLt" role="1PaTwD">
                               <property role="3oM_SC" value="rather" />
                             </node>
@@ -791,7 +791,9 @@
                               <property role="3oM_SC" value="module," />
                             </node>
                           </node>
-                          <node concept="1PaTwC" id="_8ACpCodj$" role="3ndbpf">
+                        </node>
+                        <node concept="3SKdUt" id="62vXEZekz7y" role="3cqZAp">
+                          <node concept="1PaTwC" id="_8ACpCodj$" role="1aUNEU">
                             <node concept="3oM_SD" id="_8ACpCodjz" role="1PaTwD">
                               <property role="3oM_SC" value="then" />
                             </node>
@@ -844,7 +846,9 @@
                               <property role="3oM_SC" value="&lt;GeneratedAspectDescriptor&gt;." />
                             </node>
                           </node>
-                          <node concept="1PaTwC" id="_8ACpCodDk" role="3ndbpf">
+                        </node>
+                        <node concept="3SKdUt" id="62vXEZekz7u" role="3cqZAp">
+                          <node concept="1PaTwC" id="_8ACpCodDk" role="1aUNEU">
                             <node concept="3oM_SD" id="_8ACpCodDj" role="1PaTwD">
                               <property role="3oM_SC" value="" />
                             </node>

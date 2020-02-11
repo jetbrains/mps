@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="b0pp6867s7i2zjckhqf7o9bc672j8ap">
+<product version="3" modelHash="37chzrrjc6itn0t88ri093fklrucq05">
   <files names="ChooserRefactoringDialog.java:ConceptAncestorsProvider.java:ModelElementTargetChooser.java:ModelOrNodeChooserDialog.java:MoveNodeDialog.java:MoveNodesDialog.java:NodeLocation.java:RefactoringAccessEx.java:RefactoringDialog.java:RefactoringFacadeImpl.java:RefactoringViewAction.java:RefactoringViewItem.java:RenameDialog.java:RenameMethodDialog.java:StringChooserDialog.java:UsagesModelTracker.java" />
 </product>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5aml5dkmotuy4kozcuf4bcvkmv4ygu8">
+<product version="3" modelHash="5b3icfbyqcvojji4bdelpdrqi5y2i28">
   <files dir="nowhere/another" names="Instance.java" />
   <files dir="nowhere/leads/thispath/to" names="SampleClassInControlledPackage.java" />
   <files dir="nowhere/location" names="OtherPackageIface.java" />

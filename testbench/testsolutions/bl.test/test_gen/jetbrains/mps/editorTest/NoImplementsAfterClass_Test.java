@@ -9,6 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
+import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class NoImplementsAfterClass_Test extends BaseTransformationTest {
@@ -33,7 +34,11 @@ public class NoImplementsAfterClass_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6136581231959556348", "6136581231959556353");
-      typeString(" implements");
+      EditorTestUtil.runWithTypeOverExistingText(new EditorTestUtil.EditorTestRunnable() {
+        public void run() throws Exception {
+          typeString(" implements");
+        }
+      }, false);
       typeString("implements");
     }
   }

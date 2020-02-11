@@ -78,7 +78,7 @@ import com.intellij.openapi.vcs.AbstractVcs;
     }).count();
   }
   private Iterable<VcsRoot> getGitRoots() {
-    VcsRoot[] allRoots = myProject.getComponent(ProjectLevelVcsManager.class).getAllVcsRoots();
+    VcsRoot[] allRoots = ProjectLevelVcsManager.getInstance(myProject).getAllVcsRoots();
     return Sequence.fromIterable(Sequence.fromArray(allRoots)).where(new IWhereFilter<VcsRoot>() {
       public boolean accept(VcsRoot root) {
         return "Git".equals(check_mnsjzr_a0a0a0a0b0e(root.getVcs()));

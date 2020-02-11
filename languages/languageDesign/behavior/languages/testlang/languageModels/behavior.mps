@@ -73,7 +73,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -612,7 +612,7 @@
         </node>
         <node concept="3SKdUt" id="46FlynTbUY5" role="3cqZAp" />
         <node concept="3SKdUt" id="46FlynTjrrS" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnU8D" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnU8D" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnU8E" role="1PaTwD">
               <property role="3oM_SC" value="FIXME" />
             </node>
@@ -658,7 +658,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="46FlynTjrXM" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnU8S" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnU8S" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnU8T" role="1PaTwD">
               <property role="3oM_SC" value="staticAbstractVirtualMethod()" />
             </node>
@@ -919,14 +919,14 @@
           </node>
         </node>
         <node concept="3SKdUt" id="46FlynTjtgL" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnU8U" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnU8U" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnU8V" role="1PaTwD">
               <property role="3oM_SC" value="staticAbstractVirtualMethod()" />
             </node>
           </node>
         </node>
         <node concept="3SKdUt" id="46FlynTj_gi" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnU8W" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnU8W" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnU8X" role="1PaTwD">
               <property role="3oM_SC" value="staticVirtualAbstractFromInterfaceConcept()" />
             </node>
@@ -963,7 +963,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="46FlynTjAYw" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnU98" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnU98" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnU99" role="1PaTwD">
               <property role="3oM_SC" value="implement" />
             </node>

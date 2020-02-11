@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class InterfaceConceptWrap extends AbstractConceptWrap implements AbstractConceptLike.InterfaceConceptLike {
   private final SNode myPeer;
 
-  public InterfaceConceptWrap(SNode peer) {
+  public InterfaceConceptWrap(@NotNull SNode peer) {
     super(peer);
     myPeer = peer;
   }
@@ -27,7 +27,9 @@ public final class InterfaceConceptWrap extends AbstractConceptWrap implements A
     List<AbstractConceptLike.InterfaceConceptLike> result = new ArrayList<AbstractConceptLike.InterfaceConceptLike>();
     List<SNode> superInterfaces = SLinkOperations.getChildren(myPeer, LINKS.extends$3Y1p);
     for (SNode superInterfaceRef : ListSequence.fromList(superInterfaces)) {
-      result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5)));
+      if ((SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5) != null)) {
+        result.add(new InterfaceConceptWrap(SLinkOperations.getTarget(superInterfaceRef, LINKS.intfc$fO5)));
+      }
     }
     return result;
   }

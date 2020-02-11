@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
-import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
@@ -20,6 +19,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptMultipleChildrenInSingleRoleProblem = createDescriptorForMultipleChildrenInSingleRoleProblem();
   /*package*/ final ConceptDescriptor myConceptNoChildInObligatoryRoleProblem = createDescriptorForNoChildInObligatoryRoleProblem();
   /*package*/ final ConceptDescriptor myConceptNoRefInObligatoryRoleProblem = createDescriptorForNoRefInObligatoryRoleProblem();
+  /*package*/ final ConceptDescriptor myConceptTargetConceptIncorrectChild = createDescriptorForTargetConceptIncorrectChild();
+  /*package*/ final ConceptDescriptor myConceptTargetConceptIncorrectRef = createDescriptorForTargetConceptIncorrectRef();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -34,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptInConceptProblem, myConceptMissingChildInConceptProblem, myConceptMissingPropertyInConceptProblem, myConceptMissingRefInConceptProblem, myConceptMultipleChildrenInSingleRoleProblem, myConceptNoChildInObligatoryRoleProblem, myConceptNoRefInObligatoryRoleProblem);
+    return Arrays.asList(myConceptInConceptProblem, myConceptMissingChildInConceptProblem, myConceptMissingPropertyInConceptProblem, myConceptMissingRefInConceptProblem, myConceptMultipleChildrenInSingleRoleProblem, myConceptNoChildInObligatoryRoleProblem, myConceptNoRefInObligatoryRoleProblem, myConceptTargetConceptIncorrectChild, myConceptTargetConceptIncorrectRef);
   }
 
   @Override
@@ -55,15 +56,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptNoChildInObligatoryRoleProblem;
       case LanguageConceptSwitch.NoRefInObligatoryRoleProblem:
         return myConceptNoRefInObligatoryRoleProblem;
+      case LanguageConceptSwitch.TargetConceptIncorrectChild:
+        return myConceptTargetConceptIncorrectChild;
+      case LanguageConceptSwitch.TargetConceptIncorrectRef:
+        return myConceptTargetConceptIncorrectRef;
       default:
         return null;
     }
   }
 
-  @Override
-  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList();
-  }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
     return myIndexSwitch.index(c);
@@ -135,6 +136,26 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/5741876244398306563");
     b.version(2);
     b.alias("when there is no ref in role with nonzero cardinality");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTargetConceptIncorrectChild() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "TargetConceptIncorrectChild", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x691edaf2d1aa95ebL);
+    b.class_(true, false, false);
+    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
+    b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/7574732359718311403");
+    b.version(2);
+    b.alias("when child role has incompatible target concept");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTargetConceptIncorrectRef() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.structural", "TargetConceptIncorrectRef", 0x7127d40929f043e8L, 0x917ff016ea288944L, 0x691edaf2d1aa98adL);
+    b.class_(true, false, false);
+    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    b.parent(0x7127d40929f043e8L, 0x917ff016ea288944L, 0xfc25ab98e2a2611L);
+    b.origin("r:270d7173-b5a9-45a3-a074-68571d20064c(jetbrains.mps.lang.feedback.problem.structural.structure)/7574732359718312109");
+    b.version(2);
+    b.alias("when reference role has incompatible target concept");
     return b.create();
   }
 }

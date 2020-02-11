@@ -39,7 +39,7 @@ public class LeftTransformWithCustomItem_Simple_checkCanBeParent_Test extends Ba
       typeString(" ");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-      Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isMenuEmpty());
+      Assert.assertEquals(1, getEditorComponent().getNodeSubstituteChooser().getNumberOfActions());
       getEditorComponent().getNodeSubstituteChooser().setVisible(false);
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
     }

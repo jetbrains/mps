@@ -155,6 +155,36 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="6uBDHA83ff" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="uj7v:6$uQJbhEDnF" resolve="TargetConceptIncorrectChild" />
+      <node concept="gft3U" id="6uBDHA83fg" role="1lVwrX">
+        <node concept="2ShNRf" id="6uBDHA83fh" role="gfFT$">
+          <node concept="1pGfFk" id="6uBDHA83fi" role="2ShVmc">
+            <ref role="37wK5l" to="j809:~ProblemKindId.&lt;init&gt;(jetbrains.mps.core.aspects.feedback.problem.ProblemKind)" resolve="ProblemKindId" />
+            <node concept="Rm8GO" id="6uBDHA83re" role="37wK5m">
+              <ref role="Rm8GQ" to="j809:~PredefinedStructureProblemKind.TARGET_CONCEPT_INCORRECT_CHILD" resolve="TARGET_CONCEPT_INCORRECT_CHILD" />
+              <ref role="1Px2BO" to="j809:~PredefinedStructureProblemKind" resolve="PredefinedStructureProblemKind" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="6uBDHA83fR" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="uj7v:6$uQJbhEDyH" resolve="TargetConceptIncorrectRef" />
+      <node concept="gft3U" id="6uBDHA83fS" role="1lVwrX">
+        <node concept="2ShNRf" id="6uBDHA83fT" role="gfFT$">
+          <node concept="1pGfFk" id="6uBDHA83fU" role="2ShVmc">
+            <ref role="37wK5l" to="j809:~ProblemKindId.&lt;init&gt;(jetbrains.mps.core.aspects.feedback.problem.ProblemKind)" resolve="ProblemKindId" />
+            <node concept="Rm8GO" id="6uBDHA83pX" role="37wK5m">
+              <ref role="Rm8GQ" to="j809:~PredefinedStructureProblemKind.TARGET_CONCEPT_INCORRECT_REF" resolve="TARGET_CONCEPT_INCORRECT_REF" />
+              <ref role="1Px2BO" to="j809:~PredefinedStructureProblemKind" resolve="PredefinedStructureProblemKind" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="jVnub" id="1mFJTG6XQ2">
     <property role="TrG5h" value="context" />
@@ -216,6 +246,24 @@
       <node concept="gft3U" id="4YJfwn3Bpdq" role="1lVwrX">
         <node concept="3uibUv" id="4YJfwn3BpdL" role="gfFT$">
           <ref role="3uigEE" to="j809:~ChildCardinalityContext" resolve="ChildCardinalityContext" />
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="5kV4$qnLVcF" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="uj7v:6$uQJbhEDnF" resolve="TargetConceptIncorrectChild" />
+      <node concept="gft3U" id="5kV4$qnLVcG" role="1lVwrX">
+        <node concept="3uibUv" id="6uBDHA80EP" role="gfFT$">
+          <ref role="3uigEE" to="j809:~IncorrectTargetChildRoleContext" resolve="IncorrectTargetChildRoleContext" />
+        </node>
+      </node>
+    </node>
+    <node concept="3aamgX" id="5kV4$qnLVcI" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="uj7v:6$uQJbhEDyH" resolve="TargetConceptIncorrectRef" />
+      <node concept="gft3U" id="5kV4$qnLVcJ" role="1lVwrX">
+        <node concept="3uibUv" id="5kV4$qnLVeq" role="gfFT$">
+          <ref role="3uigEE" to="j809:~RefCardinalityContext" resolve="RefCardinalityContext" />
         </node>
       </node>
     </node>

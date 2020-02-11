@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-3bx5q07dmjzy58yu6o1q051rkub9vhk">
+<product version="3" modelHash="3w63uj3cdc4d8ged4lkmwv8v97y4kqa">
   <files names="BehaviorAspectDescriptor.java:ModelIdentity__BehaviorDescriptor.java:ModelName__BehaviorDescriptor.java:ModelPointer__BehaviorDescriptor.java:ModuleIdentity__BehaviorDescriptor.java:ModulePointer__BehaviorDescriptor.java:NamedNodeReference__BehaviorDescriptor.java:NodeIdentity__BehaviorDescriptor.java:NodePointer__BehaviorDescriptor.java" />
 </product>
 

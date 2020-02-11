@@ -2064,6 +2064,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="5rrkjWjs5vA" role="3bR37C">
+          <node concept="3bR9La" id="5rrkjWjs5vB" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="53PdBITeVn8" role="2G$12L">
         <property role="BnDLt" value="true" />

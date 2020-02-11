@@ -5,7 +5,7 @@
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="-1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
     <use id="d8f591ec-4d86-4af2-9f92-a9e93c803ffa" name="jetbrains.mps.lang.scopes" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -1436,13 +1436,13 @@
       <node concept="3clFbS" id="1o$2SUuvKV2" role="3clF47">
         <node concept="3clFbJ" id="1o$2SUuvKV3" role="3cqZAp">
           <node concept="3y3z36" id="1o$2SUuvKV4" role="3clFbw">
+            <node concept="10Nm6u" id="1o$2SUuvKV5" role="3uHU7w" />
             <node concept="2OqwBi" id="1o$2SUuvKV6" role="3uHU7B">
               <node concept="13iPFW" id="1o$2SUuvKV7" role="2Oq$k0" />
               <node concept="3TrEf2" id="1o$2SUuvKV8" role="2OqNvi">
                 <ref role="3Tt5mk" to="tp3r:1o$2SUuutyh" resolve="initValue" />
               </node>
             </node>
-            <node concept="10Nm6u" id="1o$2SUuvKV5" role="3uHU7w" />
           </node>
           <node concept="3clFbS" id="1o$2SUuvKV9" role="3clFbx">
             <node concept="3clFbJ" id="MyKVmw$Os6" role="3cqZAp">

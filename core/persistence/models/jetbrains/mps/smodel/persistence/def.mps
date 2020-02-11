@@ -7,7 +7,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
@@ -186,7 +186,7 @@
         <child id="1163670683720" name="body" index="3Kbo56" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -806,7 +806,7 @@
       <node concept="3Tm1VV" id="7E_6zdv1nly" role="1B3o_S" />
       <node concept="3clFbS" id="7E_6zdv1nlz" role="3clF47">
         <node concept="3SKdUt" id="1XtqokxkdCR" role="3cqZAp">
-          <node concept="1PaTwC" id="1XtqokxkdCS" role="3ndbpf">
+          <node concept="1PaTwC" id="1XtqokxkdCS" role="1aUNEU">
             <node concept="3oM_SD" id="1XtqokxkdD1" role="1PaTwD">
               <property role="3oM_SC" value="XXX" />
             </node>
@@ -1163,7 +1163,7 @@
       <node concept="3Tm1VV" id="YgAGKvbD1G" role="1B3o_S" />
       <node concept="3clFbS" id="YgAGKvbD1H" role="3clF47">
         <node concept="3SKdUt" id="YgAGKvbD46" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo7BD" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo7BD" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo7BE" role="1PaTwD">
               <property role="3oM_SC" value="returns" />
             </node>
@@ -1194,7 +1194,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="YgAGKvbD1P" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo7BN" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo7BN" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo7BO" role="1PaTwD">
               <property role="3oM_SC" value="[modelID.]nodeID" />
             </node>
@@ -1433,7 +1433,7 @@
       <property role="TrG5h" value="readLinkId" />
       <node concept="3clFbS" id="3McbO0WUeaL" role="3clF47">
         <node concept="3SKdUt" id="3McbO0WUeaP" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo7BR" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXo7BR" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo7BS" role="1PaTwD">
               <property role="3oM_SC" value="[modelID.]nodeID[:version]" />
             </node>
@@ -2038,7 +2038,7 @@
           </node>
           <node concept="3clFbS" id="3McbO0WUedY" role="3clFbx">
             <node concept="3SKdUt" id="3McbO0WUeeL" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXo7BV" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXo7BV" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXo7BW" role="1PaTwD">
                   <property role="3oM_SC" value="no" />
                 </node>

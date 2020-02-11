@@ -16,7 +16,7 @@ public class Icons {
   public static final Icon SHOW_AS_TREE = AllIcons.Actions.ShowAsTree;
   public static final Icon FRAMES = AllIcons.Debugger.Frame;
   public static final Icon VARIABLES = AllIcons.Debugger.Value;
-  public static final Icon WATCHES = AllIcons.Debugger.Watches;
+  public static final Icon WATCHES = AllIcons.Debugger.Watch;
   public static final Icon BREAKPOINTS_DIALOG_DELETE = MPSIcons.Debug.DeleteBreakpoint;
   public static final Icon BREAKPOINTS_DIALOG_ADD = MPSIcons.Debug.AddBreakPoint;
   public static final Icon BREAKPOINTS_DIALOG_GOTO = MPSIcons.Debug.GoToSource;

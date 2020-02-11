@@ -232,11 +232,7 @@ public final class ModuleMaker {
     tracer.push(BUILDING_BACK_DEPS_MSG);
     for (SModule m : candidates) {
       for (SModule dep : new GlobalModuleDependenciesManager(m).getModules(Deptype.COMPILE)) {
-        Set<SModule> incoming = backDependencies.get(dep);
-        if (incoming == null) {
-          incoming = new HashSet<>();
-          backDependencies.put(dep, incoming);
-        }
+        Set<SModule> incoming = backDependencies.computeIfAbsent(dep, k -> new HashSet<>());
         incoming.add(m);
       }
     }

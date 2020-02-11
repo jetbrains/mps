@@ -26,7 +26,7 @@ public class ScriptBuilder_Test extends MockTestCase {
   private FacetRegistry myFacetRegistry;
   @Test
   public void test_make() throws Exception {
-    ScriptBuilder scb = new ScriptBuilder();
+    ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
     scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
       public IFacet.Name select(IFacet f) {
         return f.getName();
@@ -45,7 +45,7 @@ public class ScriptBuilder_Test extends MockTestCase {
   }
   @Test
   public void test_gen() throws Exception {
-    ScriptBuilder scb = new ScriptBuilder();
+    ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
     scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
       public IFacet.Name select(IFacet f) {
         return f.getName();
@@ -64,7 +64,7 @@ public class ScriptBuilder_Test extends MockTestCase {
   }
   @Test
   public void test_notExisting() throws Exception {
-    ScriptBuilder scb = new ScriptBuilder();
+    ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
     scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
       public IFacet.Name select(IFacet f) {
         return f.getName();
@@ -80,14 +80,14 @@ public class ScriptBuilder_Test extends MockTestCase {
   @Test
   public void test_noFacets() throws Exception {
     // Test empty script (no languages/make facets involved) 
-    ScriptBuilder scb = new ScriptBuilder();
+    ScriptBuilder scb = new ScriptBuilder(myFacetRegistry);
     scb.withFinalTarget(new ITarget.Name("none"));
     IScript sc = scb.toScript();
     Assert.assertNotNull(sc);
     Assert.assertFalse(sc.isValid());
     Assert.assertTrue(Sequence.fromIterable(sc.validationErrors()).count() == 1);
     // Fake ScriptBuilder invocation, to satisfy mock expectations of setUp/tearDown 
-    scb = new ScriptBuilder();
+    scb = new ScriptBuilder(myFacetRegistry);
     scb.withFacetNames(Sequence.fromIterable(Sequence.fromArray(facets)).select(new ISelector<IFacet, IFacet.Name>() {
       public IFacet.Name select(IFacet f) {
         return f.getName();

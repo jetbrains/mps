@@ -18,6 +18,7 @@ package jetbrains.mps.ide.editor;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorProvider;
@@ -72,7 +73,7 @@ public class MPSEditorOpener {
     ThreadUtils.assertEDT();
     myProject.getModelAccess().checkReadAccess();
 
-    myProject.getComponent(IdeDocumentHistory.class).includeCurrentCommandAsNavigation();
+    ServiceManager.getService(myProject.getProject(), IdeDocumentHistory.class).includeCurrentCommandAsNavigation();
     /* TODO use SNodeReference instead of SNode */
     return doOpenNode(node, focus, select);
   }

@@ -412,28 +412,26 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.defaultMember$iFMB), "EnumerationMember");
   }
   public static boolean ifMacro_Condition_2_0(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptDeclaration$qU);
+    return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:enumerations"))).isNotEmpty() || Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:CSDatatypes"))).isNotEmpty();
   }
   public static boolean ifMacro_Condition_2_1(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.InterfaceConceptDeclaration$MT);
+    return SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptDeclaration$qU);
   }
   public static boolean ifMacro_Condition_2_2(final IfMacroContext _context) {
+    return SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.InterfaceConceptDeclaration$MT);
+  }
+  public static boolean ifMacro_Condition_2_3(final IfMacroContext _context) {
     if (SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptDeclaration$qU)) {
       SNode superConcept = SLinkOperations.getTarget(SNodeOperations.as(_context.getNode(), CONCEPTS.ConceptDeclaration$qU), LINKS.extends$LQV3);
       return (superConcept != null) && !(SNodeOperations.is(superConcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626")));
     }
     return false;
   }
-  public static boolean ifMacro_Condition_2_3(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_2_4(final IfMacroContext _context) {
     return ((SNodeReference) _context.getVariable("var:origin")) != null;
   }
-  public static boolean ifMacro_Condition_2_4(final IfMacroContext _context) {
-    return (((SNode) _context.getVariable("var:stubConcept")) != null);
-  }
   public static boolean ifMacro_Condition_2_5(final IfMacroContext _context) {
-    // inspired by respective code from incl_Prop. We don't have sourceNode reference in PropertyDeclaration, hence need to look at the owner 
-    SNode acd = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN);
-    return (SLinkOperations.getTarget(acd, LINKS.sourceNode$pB4_) == null || SLinkOperations.getTarget(acd, LINKS.sourceNode$pB4_) == acd) && TracingUtil.getInput(_context.getNode()) != null;
+    return (((SNode) _context.getVariable("var:stubConcept")) != null);
   }
   public static boolean ifMacro_Condition_2_6(final IfMacroContext _context) {
     // inspired by respective code from incl_Prop. We don't have sourceNode reference in PropertyDeclaration, hence need to look at the owner 
@@ -446,12 +444,17 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(acd, LINKS.sourceNode$pB4_) == null || SLinkOperations.getTarget(acd, LINKS.sourceNode$pB4_) == acd) && TracingUtil.getInput(_context.getNode()) != null;
   }
   public static boolean ifMacro_Condition_2_8(final IfMacroContext _context) {
-    return SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptDeclaration$qU);
+    // inspired by respective code from incl_Prop. We don't have sourceNode reference in PropertyDeclaration, hence need to look at the owner 
+    SNode acd = SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AbstractConceptDeclaration$UN);
+    return (SLinkOperations.getTarget(acd, LINKS.sourceNode$pB4_) == null || SLinkOperations.getTarget(acd, LINKS.sourceNode$pB4_) == acd) && TracingUtil.getInput(_context.getNode()) != null;
   }
   public static boolean ifMacro_Condition_2_9(final IfMacroContext _context) {
-    return !("NORMAL".equals(((String) _context.getVariable("var:kind")))) || !(SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.as(_context.getNode(), CONCEPTS.ConceptDeclaration$qU), PROPS.staticScope$SzuZ), 0x4b014033eedc8be8L));
+    return SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptDeclaration$qU);
   }
   public static boolean ifMacro_Condition_2_10(final IfMacroContext _context) {
+    return !("NORMAL".equals(((String) _context.getVariable("var:kind")))) || !(SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.as(_context.getNode(), CONCEPTS.ConceptDeclaration$qU), PROPS.staticScope$SzuZ), 0x4b014033eedc8be8L));
+  }
+  public static boolean ifMacro_Condition_2_11(final IfMacroContext _context) {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.conceptAlias$YIL2));
   }
   public static boolean ifMacro_Condition_4_0(final IfMacroContext _context) {
@@ -1458,6 +1461,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
   {
     int i = 0;
+    imcMethods.put("6975217049653705457", new IfMC(i++));
     imcMethods.put("4927458743547296534", new IfMC(i++));
     imcMethods.put("4927458743547332004", new IfMC(i++));
     imcMethods.put("4267113346161045507", new IfMC(i++));
@@ -1529,42 +1533,44 @@ public class QueriesGenerated extends QueryProviderBase {
         case 10:
           return QueriesGenerated.ifMacro_Condition_2_10(ctx);
         case 11:
-          return QueriesGenerated.ifMacro_Condition_4_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_2_11(ctx);
         case 12:
-          return QueriesGenerated.ifMacro_Condition_4_1(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_0(ctx);
         case 13:
-          return QueriesGenerated.ifMacro_Condition_4_2(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_1(ctx);
         case 14:
-          return QueriesGenerated.ifMacro_Condition_4_3(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_2(ctx);
         case 15:
-          return QueriesGenerated.ifMacro_Condition_4_4(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_3(ctx);
         case 16:
-          return QueriesGenerated.ifMacro_Condition_4_5(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_4(ctx);
         case 17:
-          return QueriesGenerated.ifMacro_Condition_4_6(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_5(ctx);
         case 18:
-          return QueriesGenerated.ifMacro_Condition_4_7(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_6(ctx);
         case 19:
-          return QueriesGenerated.ifMacro_Condition_11_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_4_7(ctx);
         case 20:
-          return QueriesGenerated.ifMacro_Condition_11_1(ctx);
+          return QueriesGenerated.ifMacro_Condition_11_0(ctx);
         case 21:
-          return QueriesGenerated.ifMacro_Condition_11_2(ctx);
+          return QueriesGenerated.ifMacro_Condition_11_1(ctx);
         case 22:
-          return QueriesGenerated.ifMacro_Condition_11_3(ctx);
+          return QueriesGenerated.ifMacro_Condition_11_2(ctx);
         case 23:
-          return QueriesGenerated.ifMacro_Condition_11_4(ctx);
+          return QueriesGenerated.ifMacro_Condition_11_3(ctx);
         case 24:
-          return QueriesGenerated.ifMacro_Condition_13_0(ctx);
+          return QueriesGenerated.ifMacro_Condition_11_4(ctx);
         case 25:
-          return QueriesGenerated.ifMacro_Condition_13_1(ctx);
+          return QueriesGenerated.ifMacro_Condition_13_0(ctx);
         case 26:
-          return QueriesGenerated.ifMacro_Condition_13_2(ctx);
+          return QueriesGenerated.ifMacro_Condition_13_1(ctx);
         case 27:
-          return QueriesGenerated.ifMacro_Condition_13_3(ctx);
+          return QueriesGenerated.ifMacro_Condition_13_2(ctx);
         case 28:
-          return QueriesGenerated.ifMacro_Condition_13_4(ctx);
+          return QueriesGenerated.ifMacro_Condition_13_3(ctx);
         case 29:
+          return QueriesGenerated.ifMacro_Condition_13_4(ctx);
+        case 30:
           return QueriesGenerated.ifMacro_Condition_13_5(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));

@@ -32,13 +32,13 @@
   <extensions defaultExtensionNs="com.intellij">
     <applicationInitializedListener implementation="com.intellij.internal.statistic.updater.StatisticsJobsScheduler"/>
 
+    <projectViewPane implementation="jetbrains.mps.ide.projectPane.ProjectPane"/>
+    <projectViewPane implementation="jetbrains.mps.ide.projectPane.fileSystem.FileViewProjectPane"/>
+
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <analyzeStacktraceFilter implementation="jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter"/>
 
     <directoryIndexExcludePolicy implementation="jetbrains.mps.ide.vfs.ClassesGenPolicy"/>
-
-    <!--<bundledColorScheme path="/colorSchemes/Darcula"/>-->
-    <projectService serviceInterface="com.intellij.psi.impl.file.PsiDirectoryFactory"
-                    serviceImplementation="com.intellij.psi.impl.file.PsiDirectoryFactoryImpl"/>
 
     <projectService serviceInterface="com.intellij.ide.projectView.impl.nodes.ProjectViewDirectoryHelper"
                     serviceImplementation="com.intellij.ide.projectView.impl.nodes.ProjectViewDirectoryHelper"/>
@@ -48,13 +48,19 @@
     <projectService serviceInterface="com.intellij.openapi.vcs.impl.DefaultVcsRootPolicy"
                     serviceImplementation="jetbrains.mps.ide.vcs.ExtendedDefaultVcsRootPolicy"/>
     <projectService serviceInterface="com.intellij.openapi.roots.FileIndexFacade"
-                    serviceImplementation="com.intellij.mock.MockFileIndexFacade"/>
+                    serviceImplementation="com.intellij.mock.MockFileIndexFacade" overrides="true"/>
 
     <projectService serviceInterface="com.intellij.platform.ProjectBaseDirectory"
-                        serviceImplementation="com.intellij.platform.ProjectBaseDirectory"/>
+                    serviceImplementation="com.intellij.platform.ProjectBaseDirectory"/>
+
+    <!-- Use default implementation instead of PsiCachedValuesFactory in CoreImpl.xml-->
+    <projectService serviceInterface="com.intellij.util.CachedValuesFactory"
+                    serviceImplementation="com.intellij.util.DefaultCachedValuesFactory" overrides="true"/>
 
     <!-- allow mps to open mpr projects from command line -->
     <projectOpenProcessor implementation="jetbrains.mps.ide.project.MpsProjectOpenProcessor"/>
+
+    <moduleRendererFactory implementation="com.intellij.ide.util.PlatformModuleRendererFactory" order="last" id="platform"/>
 
     <!--For run config creation with action-->
     <getDataRule key="Location"
@@ -72,6 +78,39 @@
     <!-- TODO: decide, if it is needed
     <favoriteNodeProvider implementation="jetbrains.mps.ide.projectPane.favorites.providers.MPSFavoritePropertyProvider"/>
     -->
+
+    <!-- Seems like we should set platform prefix different from IDEA/community so this scope will not be necessary anymore -->
+    <customScopesProvider implementation="com.intellij.packageDependencies.TestScopeProvider"/>
+
+    <fileBasedIndex implementation="jetbrains.mps.ide.generator.index.ModelDigestIndex"/>
+    <fileBasedIndex implementation="jetbrains.mps.ide.generator.index.BinaryModelDigestIndex"/>
+    <indexedRootsProvider implementation="jetbrains.mps.ide.findusages.caches.MPSIndexableSetContributor"/>
+
+    <syntaxHighlighter key="JAVA" implementationClass="jetbrains.mps.ide.java.JavaFileHighlighter"/>
+    <syntaxHighlighter key="XML" implementationClass="com.intellij.ide.highlighter.XmlFileHighlighter"/>
+    <syntaxHighlighter key="Model" implementationClass="com.intellij.ide.highlighter.XmlFileHighlighter"/>
+    <syntaxHighlighter key="Solution" implementationClass="com.intellij.ide.highlighter.XmlFileHighlighter"/>
+    <syntaxHighlighter key="Language" implementationClass="com.intellij.ide.highlighter.XmlFileHighlighter"/>
+    <syntaxHighlighter key="Devkit" implementationClass="com.intellij.ide.highlighter.XmlFileHighlighter"/>
+    <syntaxHighlighter key="MPS Project" implementationClass="com.intellij.ide.highlighter.XmlFileHighlighter"/>
+
+    <gotoFileContributor implementation="jetbrains.mps.MPSGoToFileContributor"/>
+
+    <projectService serviceInterface="com.intellij.ide.projectView.ProjectView"
+                    serviceImplementation="jetbrains.mps.ide.projectView.ProjectViewImpl"
+                    overrides="true"/>
+
+    <fileIconProvider implementation="jetbrains.mps.workbench.editors.MPSIconProvider"/>
+
+    <bundledKeymap file="Visual Studio.xml"/>
+
+    <!-- TODO: check if can be removed -->
+    <projectService serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsDetector" preload="notHeadless"/>
+
+    <projectService serviceInterface="com.intellij.psi.search.PsiSearchHelper"
+                    serviceImplementation="jetbrains.mps.EmptyPsiSearchHelper" overrides="true"/>
+    <projectService serviceInterface="com.intellij.psi.search.PsiTodoSearchHelper"
+                    serviceImplementation="jetbrains.mps.EmptyPsiTodoSearchHelper" overrides="true"/>
   </extensions>
 
 </idea-plugin>

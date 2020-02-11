@@ -705,8 +705,8 @@
     <file name="Generator_Test.java">
       <node id="671853460608825978" at="38,0,39,0" concept="3" trace="manifest" />
       <node id="743280580075868527" at="39,0,40,0" concept="3" trace="myFacetRegistry" />
-      <node id="2551169102353647626" at="41,49,42,44" concept="7" />
-      <node id="5646063728432375752" at="42,44,43,69" concept="7" />
+      <node id="2551169102353647626" at="41,49,42,59" concept="7" />
+      <node id="5646063728432375752" at="42,59,43,69" concept="7" />
       <node id="1977954644795630949" at="43,69,44,67" concept="7" />
       <node id="5646063728432375761" at="46,7,47,43" concept="7" />
       <node id="5646063728432375793" at="50,44,51,23" concept="2" />

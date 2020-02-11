@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="422oen8csjgeq2j6gzvnh6ytqqetvbz">
+<product version="3" modelHash="c1cjz4254hufzbqh4j8okro4p7fhuyy">
   <files names="EventWatchablesCreator.java:JavaExceptionWatchable.java:JavaMethodWatchable.java:JavaReturnWatchable.java:JavaWatchpointValueWatchable.java:JavaWatchpointWatchable.java" />
 </product>
 

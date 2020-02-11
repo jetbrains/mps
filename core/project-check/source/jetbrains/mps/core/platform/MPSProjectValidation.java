@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ public class MPSProjectValidation extends ComponentPlugin implements ComponentHo
   public void init() {
     myRegistry.init();
     myCheckers.add(new StructureChecker(myHost).withoutBrokenReferences());
-    myCheckers.add(new ModelPropertiesChecker());
+    myCheckers.add(new ModelPropertiesChecker(myHost));
     myCheckers.add(new ModuleChecker());
     myCheckers.add(new ConstraintsChecker(myHost));
     myCheckers.forEach(myRegistry::registerChecker);

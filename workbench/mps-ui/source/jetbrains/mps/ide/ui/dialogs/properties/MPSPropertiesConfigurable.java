@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -82,6 +82,7 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -363,6 +364,7 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   public abstract class DependenciesTab extends BaseTab {
 
     protected DependTableModel myDependTableModel;
+    private JBTable myDependenciesTable;
 
     public DependenciesTab() {
       super(PropertiesBundle.message("mps.properties.dependencies.title"), General.Dependencies, PropertiesBundle.message("mps.properties.dependencies.tip"));
@@ -376,55 +378,52 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     @Override
     public void init() {
       JPanel dependenciesTab = new JPanel();
-      // XXX due to peculiar design, have to account for various uses of the dependenciesTab component in subclasses
-      // in a very uncommon way. In module properties, we add another component to the tab, let layout manager be aware
-      // of another row
-      dependenciesTab.setLayout(new GridLayoutManager(2, 1, INSETS, -1, -1));
+      dependenciesTab.setLayout(new GridLayoutManager(1, 1, INSETS, -1, -1));
 
-      final JBTable tableDepend = new JBTable();
-      tableDepend.setShowHorizontalLines(false);
-      tableDepend.setShowVerticalLines(false);
-      tableDepend.setAutoCreateRowSorter(false);
-      tableDepend.setAutoscrolls(true);
-      tableDepend.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+      myDependenciesTable = new JBTable();
+      myDependenciesTable.setShowHorizontalLines(false);
+      myDependenciesTable.setShowVerticalLines(false);
+      myDependenciesTable.setAutoCreateRowSorter(false);
+      myDependenciesTable.setAutoscrolls(true);
+      myDependenciesTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
       myDependTableModel = getDependTableModel();
-      tableDepend.setModel(myDependTableModel);
+      myDependenciesTable.setModel(myDependTableModel);
 
-      tableDepend.setDefaultRenderer(DependenciesTableItem.class, getTableCellRender());
-      tableDepend.setDefaultRenderer(Boolean.class, new BooleanTableCellRenderer());
+      myDependenciesTable.setDefaultRenderer(DependenciesTableItem.class, getTableCellRender());
+      myDependenciesTable.setDefaultRenderer(Boolean.class, new BooleanTableCellRenderer());
 
-      tableDepend.setDefaultRenderer(SDependencyScope.class, new ComboBoxTableRenderer<>(SDependencyScope.values()));
-      tableDepend.setDefaultEditor(SDependencyScope.class, getTableCellEditor());
+      myDependenciesTable.setDefaultRenderer(SDependencyScope.class, new ComboBoxTableRenderer<>(SDependencyScope.values()));
+      myDependenciesTable.setDefaultEditor(SDependencyScope.class, getTableCellEditor());
 
 
       TableColumn column;
       if (myDependTableModel.getExportColumnIndex() >= 0) {
-        column = tableDepend.getTableHeader().getColumnModel().getColumn(myDependTableModel.getExportColumnIndex());
+        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(myDependTableModel.getExportColumnIndex());
         column.setMinWidth(20);
-        column.setPreferredWidth(50);
-        column.setMaxWidth(50);
+        column.setPreferredWidth(70);
+        column.setMaxWidth(70);
       }
       if (myDependTableModel.getRoleColumnIndex() >= 0) {
-        column = tableDepend.getTableHeader().getColumnModel().getColumn(myDependTableModel.getRoleColumnIndex());
+        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(myDependTableModel.getRoleColumnIndex());
         column.setMinWidth(80);
         column.setPreferredWidth(130);
         column.setMaxWidth(200);
       }
       if (myDependTableModel.getItemColumnIndex() >= 0) {
-        column = tableDepend.getTableHeader().getColumnModel().getColumn(myDependTableModel.getItemColumnIndex());
+        column = myDependenciesTable.getTableHeader().getColumnModel().getColumn(myDependTableModel.getItemColumnIndex());
         column.setPreferredWidth(250);
       }
 
 
-      ToolbarDecorator decorator = ToolbarDecorator.createDecorator(tableDepend);
-      decorator.setAddAction(getAnActionButtonRunnable()).setRemoveAction(new RemoveEntryAction(tableDepend) {
+      ToolbarDecorator decorator = ToolbarDecorator.createDecorator(myDependenciesTable);
+      decorator.setAddAction(getAnActionButtonRunnable()).setRemoveAction(new RemoveEntryAction(myDependenciesTable) {
         @Override
         protected boolean confirmRemove(int row) {
           return DependenciesTab.this.confirmRemove(myDependTableModel.getValueAt(row, myDependTableModel.getItemColumnIndex()));
         }
       });
-      FindActionButton findActionButton = getFindAnAction(tableDepend);
+      FindActionButton findActionButton = getFindAnAction(myDependenciesTable);
       if (findActionButton != null) {
         decorator.addExtraAction(findActionButton);
       }
@@ -439,7 +438,13 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
 
       setTabComponent(dependenciesTab);
 
-      new TableColumnSearch(tableDepend, myDependTableModel.getItemColumnIndex()).setComparator(new SpeedSearchComparator(false, true));
+      new TableColumnSearch(myDependenciesTable, myDependTableModel.getItemColumnIndex()).setComparator(new SpeedSearchComparator(false, true));
+    }
+
+    /*package*/ void setTableContentIsLoading(boolean isLoading) {
+      if (myDependenciesTable != null) {
+        myDependenciesTable.setPaintBusy(isLoading);
+      }
     }
 
     /*CellRenderer for module column, actual value supplied to renderer is DependenciesTableItem instance */

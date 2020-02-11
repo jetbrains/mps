@@ -19,7 +19,7 @@ import jetbrains.mps.checkers.AbstractNodeCheckerInEditor;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.checkers.RefScopeChecker;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
-import jetbrains.mps.checkers.TargetConceptChecker;
+import jetbrains.mps.checkers.TargetConceptChecker2;
 import jetbrains.mps.checkers.UsedLanguagesChecker;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
@@ -51,7 +51,7 @@ public final class CheckerRegistry implements CoreComponent {
   }
 
   private void registerCoreCheckers() {
-    registerChecker(new TargetConceptChecker());
+    registerChecker(new TargetConceptChecker2(myHost));
     registerChecker(new UsedLanguagesChecker());
     registerChecker(new RefScopeChecker(myHost));
     registerChecker(new SuppressErrorsChecker());

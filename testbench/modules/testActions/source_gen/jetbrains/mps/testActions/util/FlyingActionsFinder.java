@@ -6,7 +6,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import java.util.Set;
 import java.util.HashSet;
 import com.intellij.openapi.extensions.PluginId;
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import org.jdom.Element;
 import java.util.Arrays;
@@ -28,8 +28,8 @@ public class FlyingActionsFinder {
    * @return set of actions ids
    */
   private Set<String> getIdeaCoreActions() {
-    PluginId pluginId = PluginId.getId(PluginManager.CORE_PLUGIN_ID);
-    IdeaPluginDescriptor descriptor = PluginManager.getPlugin(pluginId);
+    PluginId pluginId = PluginId.getId(PluginManagerCore.CORE_PLUGIN_ID);
+    IdeaPluginDescriptor descriptor = PluginManagerCore.getPlugin(pluginId);
     Set<String> ideaCoreActions = new HashSet<String>();
 
     if (descriptor == null) {

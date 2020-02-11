@@ -14,6 +14,8 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -60,7 +62,12 @@ public class MakeFieldStatic extends BaseRefactoring {
   public void refactor(final RefactoringContext refactoringContext) {
     SNode newDeclaration = _quotation_createNode_so6etp_a0a0a(SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.visibility$2GiC)), SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.type$pLrO)), SPropertyOperations.getString(((SNode) refactoringContext.getParameter("declaration")), PROPS.name$tAp1));
     SNode declarationClassifier = SNodeOperations.getNodeAncestor(((SNode) refactoringContext.getParameter("declaration")), CONCEPTS.Classifier$hJ, false, false);
-    ListSequence.fromList(SLinkOperations.getChildren(declarationClassifier, LINKS.member$oYX5)).addElement(newDeclaration);
+    SPropertyOperations.assign(newDeclaration, PROPS.isFinal$hIht, SPropertyOperations.getBoolean(((SNode) refactoringContext.getParameter("declaration")), PROPS.isFinal$hIht));
+    SLinkOperations.setTarget(newDeclaration, LINKS.initializer$KgD, SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.initializer$KgD)));
+    ListSequence.fromList(SLinkOperations.getChildren(newDeclaration, LINKS.annotation$oVP4)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(((SNode) refactoringContext.getParameter("declaration")), LINKS.annotation$oVP4)));
+    AttributeOperations.setAttribute(newDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), AttributeOperations.getAttribute(((SNode) refactoringContext.getParameter("declaration")), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)));
+
+    SNodeOperations.insertNextSiblingChild(((SNode) refactoringContext.getParameter("declaration")), newDeclaration);
     for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {
       SNode usage = result.getObject();
       SNode replacing;
@@ -71,9 +78,9 @@ public class MakeFieldStatic extends BaseRefactoring {
       }
       SNode newReference;
       if (SNodeOperations.getNodeAncestor(usage, CONCEPTS.Classifier$hJ, false, false) != declarationClassifier) {
-        newReference = _quotation_createNode_so6etp_a0a0e0d0a(declarationClassifier, newDeclaration);
+        newReference = _quotation_createNode_so6etp_a0a0e0i0a(declarationClassifier, newDeclaration);
       } else {
-        newReference = _quotation_createNode_so6etp_a0a0a4a3a0(newDeclaration);
+        newReference = _quotation_createNode_so6etp_a0a0a4a8a0(newDeclaration);
       }
       SNodeOperations.replaceWithAnother(replacing, newReference);
     }
@@ -102,7 +109,7 @@ public class MakeFieldStatic extends BaseRefactoring {
     }
     return quotedNode_4;
   }
-  private static SNode _quotation_createNode_so6etp_a0a0e0d0a(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_so6etp_a0a0e0i0a(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940c80846L, "StaticFieldReference")).getResult();
@@ -110,7 +117,7 @@ public class MakeFieldStatic extends BaseRefactoring {
     SNodeAccessUtil.setReferenceTarget(quotedNode_3, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), (SNode) parameter_2);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_so6etp_a0a0a4a3a0(Object parameter_1) {
+  private static SNode _quotation_createNode_so6etp_a0a0a4a8a0(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference")).getResult();
@@ -121,16 +128,19 @@ public class MakeFieldStatic extends BaseRefactoring {
   private static final class CONCEPTS {
     /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
     /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept FieldDocComment$I8 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
     /*package*/ static final SConcept FieldReferenceOperation$N8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink visibility$2GiC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
     /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink member$oYX5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink initializer$KgD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink annotation$oVP4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$hIht = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

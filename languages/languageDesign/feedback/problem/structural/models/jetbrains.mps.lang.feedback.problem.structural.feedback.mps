@@ -12,7 +12,7 @@
     <use id="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" name="jetbrains.mps.lang.context" version="0" />
     <use id="feec32f9-bc8f-4da8-8efd-7f3f9dd4101b" name="jetbrains.mps.lang.feedback.problem.scopes" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <devkit ref="0845ddb4-34c2-4a32-b2ae-270bffc5b430(jetbrains.mps.devkit.aspect.feedback)" />
   </languages>
   <imports>
@@ -20,6 +20,9 @@
   </imports>
   <registry>
     <language id="ea3159bf-f48e-4720-bde2-86dba75f0d34" name="jetbrains.mps.lang.context.defs">
+      <concept id="2740527090601018866" name="jetbrains.mps.lang.context.defs.structure.NativeTypedConceptDef" flags="ng" index="1i$SGG">
+        <reference id="2740527090601018867" name="conceptParameter" index="1i$SGH" />
+      </concept>
       <concept id="315923949159026769" name="jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef" flags="ng" index="1DMZdT">
         <reference id="315923949159027763" name="conceptParameter" index="1DMZsr" />
       </concept>
@@ -201,6 +204,74 @@
         </node>
       </node>
       <node concept="3RW26_" id="4YJfwn3BmO0" role="2Sp0rL">
+        <property role="TrG5h" value="C" />
+      </node>
+    </node>
+  </node>
+  <node concept="1Gj5c1" id="sEk7mxZevW">
+    <property role="TrG5h" value="IncorrectRefTargetConcept" />
+    <node concept="1GjLv3" id="sEk7mxZevX" role="1GjqVN">
+      <node concept="1DMZdT" id="sEk7mxZevY" role="3QpnaF">
+        <property role="TrG5h" value="node" />
+        <ref role="1DMZsr" node="sEk7mxZew3" resolve="C" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZevZ" role="3QpnaF">
+        <property role="TrG5h" value="concept" />
+        <node concept="3bZ5Sz" id="sEk7mxZew0" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZeUd" role="3QpnaF">
+        <property role="TrG5h" value="target" />
+        <node concept="3Tqbb2" id="sEk7mxZeWq" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZeL4" role="3QpnaF">
+        <property role="TrG5h" value="targetConcept" />
+        <node concept="3bZ5Sz" id="sEk7mxZeL5" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZew1" role="3QpnaF">
+        <property role="TrG5h" value="link" />
+        <node concept="3uibUv" id="sEk7mxZew2" role="3RXm0y">
+          <ref role="3uigEE" to="c17a:~SReferenceLink" resolve="SReferenceLink" />
+        </node>
+      </node>
+      <node concept="3RW26_" id="sEk7mxZew3" role="2Sp0rL">
+        <property role="TrG5h" value="C" />
+      </node>
+    </node>
+  </node>
+  <node concept="1Gj5c1" id="sEk7mxZf2A">
+    <property role="TrG5h" value="IncorrectChildTargetConcept" />
+    <node concept="1GjLv3" id="sEk7mxZf2B" role="1GjqVN">
+      <node concept="1DMZdT" id="sEk7mxZf2C" role="3QpnaF">
+        <property role="TrG5h" value="parentNode" />
+        <ref role="1DMZsr" node="sEk7mxZf2L" resolve="C" />
+      </node>
+      <node concept="1i$SGG" id="sEk7mxZfrm" role="3QpnaF">
+        <property role="TrG5h" value="parentConcept" />
+        <ref role="1i$SGH" node="sEk7mxZf2L" resolve="C" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZfeM" role="3QpnaF">
+        <property role="TrG5h" value="childNode" />
+        <node concept="3Tqbb2" id="sEk7mxZfeN" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZf2D" role="3QpnaF">
+        <property role="TrG5h" value="childConcept" />
+        <node concept="3bZ5Sz" id="sEk7mxZf2E" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZf2F" role="3QpnaF">
+        <property role="TrG5h" value="target" />
+        <node concept="3Tqbb2" id="sEk7mxZf2G" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZf2H" role="3QpnaF">
+        <property role="TrG5h" value="targetConcept" />
+        <node concept="3bZ5Sz" id="sEk7mxZf2I" role="3RXm0y" />
+      </node>
+      <node concept="3RXm0x" id="sEk7mxZf2J" role="3QpnaF">
+        <property role="TrG5h" value="link" />
+        <node concept="3uibUv" id="sEk7mxZf2K" role="3RXm0y">
+          <ref role="3uigEE" to="c17a:~SReferenceLink" resolve="SReferenceLink" />
+        </node>
+      </node>
+      <node concept="3RW26_" id="sEk7mxZf2L" role="2Sp0rL">
         <property role="TrG5h" value="C" />
       </node>
     </node>

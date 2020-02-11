@@ -38,6 +38,10 @@ public final class InConceptProblem implements Problem {
     myId = new ProblemKindId(kind);
   }
 
+  public InConceptProblem(@NotNull SAbstractConcept concept, @NotNull ProblemKind kind) {
+    this(concept, kind, null);
+  }
+
   @NotNull
   public SAbstractConcept getConcept() {
     return myConcept;

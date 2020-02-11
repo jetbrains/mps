@@ -44,8 +44,8 @@ public class ActionTestSidetransformTestAncestor_Constraints extends BaseConstra
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ActionTestSidetransformTestAncestor$Dj = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefc9cfa78L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformTestAncestor");
-    /*package*/ static final SConcept ActionTestSidetransformAddConceptChild$60 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
     /*package*/ static final SConcept ActionTestSidetransformChild1$Zx = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x44969b12b8c94c1bL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformChild1");
     /*package*/ static final SConcept ActionTestSidetransformAnotherChildCommonSuperConcept$hw = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefcaa0dd0L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAnotherChildCommonSuperConcept");
+    /*package*/ static final SConcept ActionTestSidetransformAddConceptChild$60 = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d4168a426L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptChild");
   }
 }

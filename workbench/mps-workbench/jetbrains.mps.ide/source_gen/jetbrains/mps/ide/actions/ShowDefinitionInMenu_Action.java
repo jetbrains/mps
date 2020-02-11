@@ -28,7 +28,7 @@ public class ShowDefinitionInMenu_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ShowDefinitionInMenu_Action() {
-    super("Show Definition", "", ICON);
+    super("Show Definition in Completion Menu", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     this.addPlace(null);
@@ -71,7 +71,7 @@ public class ShowDefinitionInMenu_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    PopupWithNodeEditor popupWithNodeEditor = new PopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project"))) {
+    PopupWithNodeEditor popupWithNodeEditor = new PopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent"))) {
       @Override
       public void show() {
         final NodeSubstituteChooser chooser = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getNodeSubstituteChooser();

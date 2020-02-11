@@ -17,19 +17,24 @@ package jetbrains.mps.core.aspects.feedback.messages;
 
 import jetbrains.mps.core.context.Context;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.Optional;
+
 @Immutable
 public final class RefCardinalityContext implements Context {
   private final SNode myNode;
   private final SReferenceLink myLink;
+  @Nullable private final SNode myTarget;
 
-  public RefCardinalityContext(@NotNull SNode node, @NotNull SReferenceLink link) {
+  public RefCardinalityContext(@NotNull SNode node, @NotNull SReferenceLink link, @Nullable SNode target) {
     myNode = node;
     myLink = link;
+    myTarget = target;
   }
 
   @NotNull
@@ -40,6 +45,16 @@ public final class RefCardinalityContext implements Context {
   @NotNull
   public SNode getNode() {
     return myNode;
+  }
+
+  @NotNull
+  public SNode getTarget() {
+    return myTarget;
+  }
+
+  @NotNull
+  public SAbstractConcept getTargetConcept() {
+    return getTarget().getConcept();
   }
 
   @NotNull

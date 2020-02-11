@@ -20,6 +20,7 @@ import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -70,7 +71,19 @@ public interface DeployListener {
   }
 
   interface ResourceTrackerCallback {
+    /**
+     * takes a lock for the classloaders (guaranteed not to be disposed until release is invoked) and return
+     * the set of unloaded modules
+     */
     @NotNull Set<ReloadableModule> acquire(@NotNull Object requestor);
+
+    /**
+     * the same as before but return a list of module classloaders, which is a low-level info.
+     * you always can invoke {ModuleClassLoader#getModule}.
+     */
+    @NotNull
+    Set<ModuleClassLoader> acquire2(@NotNull Object requestor);
+
     void release(@NotNull Object requestor);
   }
 }

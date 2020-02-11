@@ -275,8 +275,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
   }
 
-  private class Controller extends IScriptController.Stub {
-    private ProgressMonitor progressMonitor;
+  private class Controller implements IScriptController {
     private final IScriptController delegateScrCtr;
     private IConfigMonitor delegateConfMon;
     private IConfigMonitor confMon;
@@ -335,11 +334,6 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       }
     }
 
-    @Override
-    public void useMonitor(ProgressMonitor monitor) {
-      this.progressMonitor = monitor;
-    }
-
     private void init() {
       final MakeSession makeSession = WorkbenchMakeService.this.getSession();
       this.confMon = new IConfigMonitor.Stub(makeSession) {
@@ -353,7 +347,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         }
         @Override
         public boolean stopRequested() {
-          return progressMonitor != null && progressMonitor.isCanceled();
+          return delegateConfMon != null && delegateConfMon.stopRequested();
         }
         @Override
         public void reportFeedback(IFeedback fdbk) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,6 +101,13 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
   @Override
   protected void reloadContents() {
     if (getLoadingState() == ModelLoadingState.NOT_LOADED) {
+      // even though model is not loaded, it might be an invalid model that failed to load due to some error inside a file.
+      // once file is changed, we get reloadContents() through file listener, and need to clear old InvalidSModel instance of model data.
+      final SModel modelData = myModel.getModel(null);
+      if (modelData != null) {
+        myModel.replaceWith(null, ModelLoadingState.NOT_LOADED);
+        modelData.dispose();
+      }
       return;
     }
 

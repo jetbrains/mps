@@ -2,7 +2,7 @@
 <model ref="r:965afa85-7195-40ad-84ac-dc46d395c63b(jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
     <use id="69068b7c-ba1f-47fb-a486-4981f42606e9" name="jetbrains.mps.lang.editor.menus.testMetaLanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -15,6 +15,7 @@
       <concept id="6436886136983394210" name="jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationLocation_Test" flags="ng" index="ZR7TO" />
     </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
+      <concept id="5991739802479784074" name="jetbrains.mps.lang.editor.structure.MenuTypeNamed" flags="ng" index="22hDWg" />
       <concept id="6718020819487620873" name="jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named" flags="ng" index="A1WHu">
         <reference id="6718020819487620874" name="menu" index="A1WHt" />
       </concept>
@@ -25,9 +26,10 @@
       </concept>
       <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ng" index="2ZABuq">
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
+        <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
       <concept id="5692353713941573329" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_ActionLabelText" flags="ig" index="1hCUdq" />
-      <concept id="5624877018226904808" name="jetbrains.mps.lang.editor.structure.TransformationMenu_Named" flags="ng" index="3ICXOK" />
+      <concept id="5624877018226900666" name="jetbrains.mps.lang.editor.structure.TransformationMenu" flags="ng" index="3ICUPy" />
       <concept id="5624877018228267058" name="jetbrains.mps.lang.editor.structure.ITransformationMenu" flags="ng" index="3INCJE">
         <child id="1638911550608572412" name="sections" index="IW6Ez" />
       </concept>
@@ -53,7 +55,7 @@
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -78,7 +80,7 @@
         <node concept="1hCUdq" id="33LYnHO_tE4" role="1hCUd6">
           <node concept="3clFbS" id="33LYnHO_tE6" role="2VODD2">
             <node concept="3SKdUt" id="33LYnHO_z2b" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXo51m" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXo51m" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXo51n" role="1PaTwD">
                   <property role="3oM_SC" value="Action" />
                 </node>
@@ -139,7 +141,7 @@
               </node>
             </node>
             <node concept="3SKdUt" id="33LYnHO_zh$" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXo51E" role="3ndbpf">
+              <node concept="1PaTwC" id="ATZLwXo51E" role="1aUNEU">
                 <node concept="3oM_SD" id="ATZLwXo51F" role="1PaTwD">
                   <property role="3oM_SC" value="at" />
                 </node>
@@ -164,9 +166,11 @@
       <ref role="A1WHt" to="j2fg:33LYnHO_wMY" resolve="ContributedToFromUnusedLanguage" />
     </node>
   </node>
-  <node concept="3ICXOK" id="Vk$nhxzDeQ">
-    <property role="TrG5h" value="MenuForBaseInUnusedExtendingLanguage" />
+  <node concept="3ICUPy" id="Vk$nhxzDeQ">
     <ref role="aqKnT" to="wtc3:Vk$nhxzCwi" resolve="ScopesTestConceptBase" />
+    <node concept="22hDWg" id="xzgvwPPq$x" role="22hAXT">
+      <property role="TrG5h" value="MenuForBaseInUnusedExtendingLanguage" />
+    </node>
     <node concept="1Qtc8_" id="Vk$nhxzDz9" role="IW6Ez">
       <node concept="ZR7TO" id="Vk$nhxzDzf" role="1Qtc8$" />
       <node concept="IWgqT" id="Vk$nhxzDzi" role="1Qtc8A">

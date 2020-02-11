@@ -12,17 +12,15 @@
   <xi:include href="/componentSets/MPSIdeaComponents.xml" xpointer="xpointer(/components/*)"/>
   <xi:include href="/idea/MPSRichPlatformActions.xml" xpointer="xpointer(/component/*)"/>
 
-  <!--
-  <project-components>
-    <component>
-      <implementation-class>com.intellij.framework.detection.impl.FrameworkDetectionManager</implementation-class>
-    </component>
-    <component>
-      <interface-class>com.intellij.ide.impl.convert.ProjectFileVersion</interface-class>
-      <implementation-class>com.intellij.ide.impl.convert.ProjectFileVersionImpl</implementation-class>
-    </component>
-  </project-components>
-  -->
+  <xi:include href="/META-INF/Core.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/CoreImpl.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/Analysis.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/AnalysisImpl.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/ProjectModel.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/ProjectModelImpl.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/Indexing.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/Editor.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/META-INF/EditorEx.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <extensionPoints>
     <xi:include href="/META-INF/PlatformExtensionPoints.xml" xpointer="xpointer(/idea-plugin/extensionPoints/*)"/>
@@ -30,78 +28,15 @@
     <xi:include href="/META-INF/LangExtensionPoints.xml" xpointer="xpointer(/idea-plugin/extensionPoints/*)"/>
     <!--
     <xi:include href="/META-INF/ExternalSystemExtensionPoints.xml" xpointer="xpointer(/idea-plugin/extensionPoints/*)"/>
-
-    <extensionPoint name="antBuildGen"
-                    interface="com.intellij.compiler.ant.ChunkBuildExtension"/>
-
-    <extensionPoint name="antCustomCompiler"
-                    interface="com.intellij.compiler.ant.ChunkCustomCompilerExtension"/>
-
-    <extensionPoint name="compiler.buildTargetScopeProvider"
-                    interface="com.intellij.compiler.impl.BuildTargetScopeProvider"/>
-
-    <extensionPoint name="compiler.optionsManager"
-                    interface="com.intellij.compiler.options.CompilerOptionsFilter"/>
-
-    <extensionPoint name="java.programPatcher"
-                    interface="com.intellij.execution.runners.JavaProgramPatcher"/>
-
-    <extensionPoint name="OrderRootTypeUI"
-                    beanClass="com.intellij.openapi.extensions.KeyedFactoryEPBean">
-      <with attribute="implementationClass" implements="com.intellij.openapi.roots.ui.OrderRootTypeUIFactory"/>
-    </extensionPoint>
-
-    <extensionPoint name="packaging.elementType" interface="com.intellij.packaging.elements.PackagingElementType"/>
-    <extensionPoint name="packaging.artifactPropertiesProvider" interface="com.intellij.packaging.artifacts.ArtifactPropertiesProvider"/>
-    <extensionPoint name="packaging.sourceItemProvider" interface="com.intellij.packaging.ui.PackagingSourceItemsProvider"/>
-    <extensionPoint name="packaging.sourceItemFilter" interface="com.intellij.packaging.ui.PackagingSourceItemFilter"/>
-    <extensionPoint name="packaging.artifactType" interface="com.intellij.packaging.artifacts.ArtifactType"/>
-
-    <extensionPoint name="frameworkSupport" interface="com.intellij.ide.util.frameworkSupport.FrameworkSupportProvider"/>
-    <extensionPoint name="frameworkSupportCommunicator" interface="com.intellij.ide.util.newProjectWizard.impl.FrameworkSupportCommunicator"/>
-
-    &lt;!&ndash;new project wizard&ndash;&gt;
-    <extensionPoint name="projectWizard.projectCategory" interface="com.intellij.ide.projectWizard.ProjectCategory"/>
-    <extensionPoint name="projectImportProvider" interface="com.intellij.projectImport.ProjectImportProvider"/>
-    <extensionPoint name="projectImportBuilder" interface="com.intellij.projectImport.ProjectImportBuilder"/>
-    <extensionPoint name="projectStructureDetector" interface="com.intellij.ide.util.projectWizard.importSources.ProjectStructureDetector"/>
-
-    <extensionPoint name="codeInsight.wordCompletionFilter" beanClass="com.intellij.lang.LanguageExtensionPoint">
-      <with attribute="implementationClass" implements="com.intellij.lang.WordCompletionElementFilter"/>
-    </extensionPoint>
-
-    <extensionPoint name="projectStructureConfigurableFilter" interface="com.intellij.openapi.roots.ui.configuration.ProjectStructureConfigurableFilter"/>
-    <extensionPoint name="projectStructureConfigurableAdder" interface="com.intellij.openapi.roots.ui.configuration.ProjectStructureConfigurableContributor"/>
-
-    <extensionPoint name="compiler" area="IDEA_PROJECT" interface="com.intellij.openapi.compiler.Compiler"/>
-    <extensionPoint name="compilerFactory" area="IDEA_PROJECT" interface="com.intellij.openapi.compiler.CompilerFactory"/>
-    <extensionPoint name="compiler.task" area="IDEA_PROJECT" beanClass="com.intellij.compiler.CompileTaskBean"/>
-    <extensionPoint name="compilerSettingsFactory" area="IDEA_PROJECT" interface="com.intellij.compiler.CompilerSettingsFactory"/>
-    <extensionPoint name="compileServer.plugin" beanClass="com.intellij.compiler.server.CompileServerPlugin"/>
-    <extensionPoint name="buildProcess.parametersProvider" area="IDEA_PROJECT" interface="com.intellij.compiler.server.BuildProcessParametersProvider"/>
-
-    <extensionPoint name="attachSourcesProvider" interface="com.intellij.codeInsight.AttachSourcesProvider"/>
-
-    <extensionPoint name="java.compiler" area="IDEA_PROJECT"
-                    interface="com.intellij.compiler.impl.javaCompiler.BackendCompiler"/>
-
-    <extensionPoint name="configuration.ModuleStructureExtension"
-                    interface="com.intellij.openapi.roots.ui.configuration.projectRoot.ModuleStructureExtension"/>
-
-    <extensionPoint name="projectStructureValidator"
-                    interface="com.intellij.openapi.roots.ui.configuration.projectRoot.daemon.ProjectStructureValidator"/>
     -->
     <extensionPoint name="compiler.updateResourcesBuildContributor" interface="com.intellij.compiler.impl.UpdateResourcesBuildContributor"/>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
-    <xi:include href="/META-INF/MPSPlatformExtensions.xml" xpointer="xpointer(/extensions/*)"/>
+    <xi:include href="/META-INF/MPSPlatformExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
     <xi:include href="/META-INF/MPSLangExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
-    <xi:include href="/META-INF/VcsExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
     <!--
     <xi:include href="/META-INF/ExternalSystemExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
-
-    <projectViewPane implementation="com.intellij.ide.projectView.impl.ProjectViewPane"/>
 
     <appStarter implementation="com.intellij.compiler.ant.GenerateAntMain"/>
 
@@ -122,6 +57,8 @@
 
     <applicationService serviceInterface="com.intellij.ide.RecentProjectsManager"
                         serviceImplementation="com.intellij.ide.RecentProjectsManagerBase"/>
+
+    <applicationService serviceImplementation="com.intellij.ide.RecentProjectListActionProvider"/>
 
     <!--
     <applicationService serviceInterface="com.intellij.util.descriptors.ConfigFileFactory"
@@ -198,8 +135,6 @@
 
     <projectService serviceInterface="com.intellij.openapi.vcs.impl.DefaultVcsRootPolicy"
                     serviceImplementation="com.intellij.openapi.vcs.impl.ModuleDefaultVcsRootPolicy"/>
-    <projectService serviceInterface="com.intellij.openapi.roots.FileIndexFacade"
-                    serviceImplementation="com.intellij.openapi.roots.impl.ProjectFileIndexFacade"/>
     <projectService serviceInterface="com.intellij.openapi.vcs.impl.VcsPathPresenter"
                     serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsPathPresenter"/>
 
@@ -368,6 +303,9 @@
     <compiler.updateResourcesBuildContributor implementation="com.intellij.compiler.impl.JavaResourcesBuildContributor"/>
   -->
   </extensions>
+
+  <xi:include href="/META-INF/VcsExtensions.xml" xpointer="xpointer(/idea-plugin/*)"/>
+
   <!--
   <extensions defaultExtensionNs="org.jetbrains">
     <webServerRootsProvider implementation="org.jetbrains.builtInWebServer.ArtifactWebServerRootsProvider" order="last"/>
@@ -399,7 +337,6 @@
   <extensionPoints>
     <!-- Copy paste from XmlPlugin.xml-->
     <extensionPoint name="embeddedTokenHighlighter" interface="com.intellij.ide.highlighter.EmbeddedTokenHighlighter"/>
-    <extensionPoint name="breadcrumbsPresentationProvider" interface="com.intellij.xml.breadcrumbs.BreadcrumbsPresentationProvider"/>
   </extensionPoints>
   <!--
   <xi:include href="/META-INF/XmlPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>

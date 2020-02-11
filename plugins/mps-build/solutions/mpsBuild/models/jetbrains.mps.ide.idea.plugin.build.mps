@@ -1014,7 +1014,7 @@
               <node concept="398BVA" id="1JH2jV0Vj1s" role="2HvfZ0">
                 <ref role="398BVh" node="611WBGkdzRi" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="1JH2jV0Vj1y" role="iGT6I">
-                  <property role="2Ry0Am" value="workbench" />
+                  <property role="2Ry0Am" value="core" />
                   <node concept="2Ry0Ak" id="1JH2jV0Vj1D" role="2Ry0An">
                     <property role="2Ry0Am" value="resources_en" />
                     <node concept="2Ry0Ak" id="1JH2jV0Vj1I" role="2Ry0An">

@@ -292,8 +292,8 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2019" minorVersoin="3">
-      <build number="193.1166" version="2019.3">
-        <message>JetBrains MPS 2019.3 is now available.</message>
+      <build number="193.1270" version="2019.3.2">
+        <message>JetBrains MPS 2019.3.2 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
@@ -302,8 +302,8 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2019" minorVersoin="3">
-      <build number="193.1166" version="2019.3">
-        <message>JetBrains MPS 2019.3 is now available.</message>
+      <build number="193.1270" version="2019.3.2">
+        <message>JetBrains MPS 2019.3.2 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>

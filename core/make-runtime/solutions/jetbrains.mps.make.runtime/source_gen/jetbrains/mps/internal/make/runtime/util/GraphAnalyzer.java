@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 @GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/1936544640085949692", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public abstract class GraphAnalyzer<V> {
@@ -42,36 +43,53 @@ public abstract class GraphAnalyzer<V> {
   public abstract Iterable<V> vertices();
   public abstract Iterable<V> forwardEdges(V v);
   public abstract Iterable<V> backwardEdges(V v);
+
   public List<List<V>> findCycles() {
     Iterable<Wrapper<V>> ws = this.init(vertices());
-    return this.collectCycles(this.topoSort(ws), false);
+    List<List<Wrapper<V>>> cycles = this.collectCycles(this.topoSort(ws), false);
+    return ListSequence.fromList(cycles).select(new ISelector<List<Wrapper<V>>, List<V>>() {
+      public List<V> select(List<Wrapper<V>> it) {
+        return unwrap(it);
+      }
+    }).toListSequence();
   }
   public List<List<V>> totalOrder() {
+    return totalOrder(false);
+  }
+  public List<List<V>> totalOrder(boolean compact) {
     Iterable<Wrapper<V>> ws = this.init(vertices());
-    return this.collectCycles(this.topoSort(ws), true);
+    List<List<Wrapper<V>>> cycles = this.collectCycles(this.topoSort(ws), true);
+    if (compact) {
+      cycles = compactCycles(cycles);
+    }
+    return ListSequence.fromList(cycles).select(new ISelector<List<Wrapper<V>>, List<V>>() {
+      public List<V> select(List<Wrapper<V>> it) {
+        return unwrap(it);
+      }
+    }).toListSequence();
   }
   public Iterable<V> topologicalSort() {
     Iterable<Wrapper<V>> ws = this.init(vertices());
-    return ListSequence.fromList(this.topoSort(ws)).select(new ISelector<Wrapper<V>, V>() {
-      public V select(Wrapper<V> w) {
-        return w.vertex;
-      }
-    });
+    return unwrap(this.topoSort(ws));
   }
   public Iterable<V> precursors(V v) {
     Iterable<Wrapper<V>> ws = this.init(vertices());
-    return ListSequence.fromList(this.reachable(MapSequence.fromMap(wrapMap).get(v), ws, backward)).select(new ISelector<Wrapper<V>, V>() {
-      public V select(Wrapper<V> w) {
-        return w.vertex;
-      }
-    });
+    return unwrap(this.reachable(MapSequence.fromMap(wrapMap).get(v), ws, backward));
   }
+
   private Iterable<Wrapper<V>> init(Iterable<V> vertices) {
     return Sequence.fromIterable(vertices).select(new ISelector<V, Wrapper<V>>() {
       public Wrapper<V> select(V v) {
         Wrapper<V> data = new Wrapper<V>(v);
         MapSequence.fromMap(wrapMap).put(v, data);
         return data;
+      }
+    }).toListSequence();
+  }
+  private List<V> unwrap(Iterable<Wrapper<V>> vertices) {
+    return Sequence.fromIterable(vertices).select(new ISelector<Wrapper<V>, V>() {
+      public V select(Wrapper<V> it) {
+        return it.vertex;
       }
     }).toListSequence();
   }
@@ -85,7 +103,7 @@ public abstract class GraphAnalyzer<V> {
     }, forward);
     return ListSequence.fromList(res).reversedList();
   }
-  public List<Wrapper<V>> reachable(Wrapper<V> from, Iterable<Wrapper<V>> ws, _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> edges) {
+  private List<Wrapper<V>> reachable(Wrapper<V> from, Iterable<Wrapper<V>> ws, _FunctionTypes._return_P1_E0<? extends Iterable<Wrapper<V>>, ? super Wrapper<V>> edges) {
     final List<Wrapper<V>> res = ListSequence.fromList(new ArrayList<Wrapper<V>>());
     Sequence.fromIterable(ws).visitAll(new IVisitor<Wrapper<V>>() {
       public void visit(Wrapper<V> w) {
@@ -100,8 +118,8 @@ public abstract class GraphAnalyzer<V> {
     }, edges);
     return res;
   }
-  private List<List<V>> collectCycles(Iterable<Wrapper<V>> ws, final boolean trivial) {
-    final List<List<V>> cycles = ListSequence.fromList(new ArrayList<List<V>>());
+  private List<List<Wrapper<V>>> collectCycles(Iterable<Wrapper<V>> ws, final boolean trivial) {
+    final List<List<Wrapper<V>>> cycles = ListSequence.fromList(new ArrayList<List<Wrapper<V>>>());
     Sequence.fromIterable(ws).visitAll(new IVisitor<Wrapper<V>>() {
       public void visit(Wrapper<V> w) {
         w.clear();
@@ -122,17 +140,17 @@ public abstract class GraphAnalyzer<V> {
           }
         }, backward);
         if (trivial || ListSequence.fromList(w.successors).isNotEmpty()) {
-          ListSequence.fromList(cycles).addElement(collectSuccessors(w, ListSequence.fromListAndArray(new ArrayList<V>(), w.vertex)));
+          ListSequence.fromList(cycles).addElement(collectSuccessors(w, ListSequence.fromListAndArray(new ArrayList<Wrapper<V>>(), w)));
         }
       }
     });
     return cycles;
   }
-  private List<V> collectSuccessors(final Wrapper<V> w, final List<V> list) {
+  private List<Wrapper<V>> collectSuccessors(final Wrapper<V> w, final List<Wrapper<V>> list) {
     ListSequence.fromList(w.successors).visitAll(new IVisitor<Wrapper<V>>() {
       public void visit(Wrapper<V> ww) {
         if (w != ww) {
-          ListSequence.fromList(list).addElement(ww.vertex);
+          ListSequence.fromList(list).addElement(ww);
           collectSuccessors(ww, list);
         }
       }
@@ -172,6 +190,35 @@ public abstract class GraphAnalyzer<V> {
     });
     w.exit();
   }
+  private List<List<Wrapper<V>>> compactCycles(List<List<Wrapper<V>>> cycles) {
+    // the code comes from ModulesCluster 
+    List<List<Wrapper<V>>> rv = ListSequence.fromList(new ArrayList<List<Wrapper<V>>>());
+    List<Wrapper<V>> prev = null;
+    for (List<Wrapper<V>> c : ListSequence.fromList(cycles)) {
+      if (prev == null) {
+        prev = c;
+      } else {
+        if (ListSequence.fromList(c).translate(new ITranslator2<Wrapper<V>, Wrapper<V>>() {
+          public Iterable<Wrapper<V>> translate(Wrapper<V> w) {
+            return backward.invoke(w);
+          }
+        }).intersect(ListSequence.fromList(prev).translate(new ITranslator2<Wrapper<V>, Wrapper<V>>() {
+          public Iterable<Wrapper<V>> translate(Wrapper<V> w) {
+            return forward.invoke(w);
+          }
+        })).isEmpty()) {
+          prev = ListSequence.fromList(prev).concat(ListSequence.fromList(c)).toListSequence();
+        } else {
+          ListSequence.fromList(rv).addElement(prev);
+          prev = c;
+        }
+      }
+    }
+    if (prev != null) {
+      ListSequence.fromList(rv).addElement(prev);
+    }
+    return rv;
+  }
   private static class Wrapper<V> {
     private V vertex;
     private boolean entered = false;
@@ -192,6 +239,11 @@ public abstract class GraphAnalyzer<V> {
     private void clear() {
       this.entered = false;
       this.exited = false;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("W[%s]", vertex);
     }
   }
 }

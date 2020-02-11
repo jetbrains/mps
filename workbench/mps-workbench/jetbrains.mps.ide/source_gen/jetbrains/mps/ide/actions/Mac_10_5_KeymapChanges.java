@@ -15,6 +15,8 @@ public class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
   public Mac_10_5_KeymapChanges() {
     // simple 
     addSimpleShortcut("jetbrains.mps.ide.actions.NewElement_Action", getShortcut("meta N"), getShortcut("ctrl ENTER"));
+    addSimpleShortcut("jetbrains.mps.ide.actions.ShowDefinitionInMenu_Action", getShortcut("alt SPACE"), getShortcut("meta Y"));
+    addSimpleShortcut("jetbrains.mps.ide.actions.ShowDefinition_Action", getShortcut("alt SPACE"), getShortcut("meta Y"));
     // simple with remove/replace 
     addSimpleShortcut("jetbrains.mps.ide.actions.FindTextInProject_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("ctrl alt shift F"), false, true));
     addSimpleShortcut("jetbrains.mps.ide.actions.GoToModel_Action", new BaseKeymapChanges.ShortcutWrapper(getShortcut("meta shift O"), false, true));

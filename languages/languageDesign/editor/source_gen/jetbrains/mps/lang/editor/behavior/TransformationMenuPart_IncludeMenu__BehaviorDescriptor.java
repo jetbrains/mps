@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.editor.constraints.MenuScopes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.structure.constraints.Scopes;
 import jetbrains.mps.scope.ModelPlusImportedScope;
@@ -24,6 +25,9 @@ import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -41,16 +45,21 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (child == SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$5IwX)) {
       SAbstractConcept cncpt = kind;
-      boolean noneMatched = true;
-      if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$UN)) {
-        noneMatched = false;
-        // Default scope of AbstractConceptDeclaration 
-        return Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$UN);
-      }
-      if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TransformationMenu_Named$1E)) {
-        noneMatched = false;
-        // Default scope of TransformationMenu_Named - more or less 
-        return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.TransformationMenu_Named$1E);
+      switch (conceptIndex.index(cncpt)) {
+        case 0:
+          return MenuScopes.getTransformationMenus(__thisNode__);
+        default:
+          boolean noneMatched = true;
+          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$UN)) {
+            noneMatched = false;
+            // Default scope of AbstractConceptDeclaration 
+            return Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$UN);
+          }
+          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TransformationMenu_Named$1E)) {
+            noneMatched = false;
+            // Default scope of TransformationMenu_Named - more or less 
+            return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.TransformationMenu_Named$1E);
+          }
       }
     }
     return ScopeUtils.lazyParentScope(__thisNode__, kind);
@@ -106,6 +115,7 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL)).seal();
   private static SNode check_pjfxcn_a0a1(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(checkedDotOperand);

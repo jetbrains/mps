@@ -72,7 +72,7 @@ public class MPSVcsManager implements ProjectComponent {
     if (vcs == null) {
       return false;
     }
-    VcsDirtyScopeImpl scope = new VcsDirtyScopeImpl(vcs, myProject);
+    VcsDirtyScopeImpl scope = new VcsDirtyScopeImpl(vcs);
     scope.addDirtyFile(VcsContextFactory.SERVICE.getInstance().createFilePathOn(vfile));
     ChangeProvider changeProvider = vcs.getChangeProvider();
     if (changeProvider == null) {
@@ -88,7 +88,7 @@ public class MPSVcsManager implements ProjectComponent {
   }
   @Override
   public void projectOpened() {
-    if (ApplicationManager.getApplication().isUnitTestMode() || myProject.isDefault()) {
+    if (ApplicationManager.getApplication().isUnitTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment() || myProject.isDefault()) {
       return;
     }
     final MergeDriverNotification mergeDriverNotification = MergeDriverNotification.getInstance(myProject);

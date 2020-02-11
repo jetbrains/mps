@@ -18,11 +18,9 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
@@ -85,9 +83,6 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        if ((SNodeOperations.getNextSibling(_context.getCurrentTargetNode()) == null)) {
-          SNodeOperations.insertNextSiblingChild(_context.getCurrentTargetNode(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")));
-        }
         return SNodeFactoryOperations.createNewNode(CONCEPTS.SingleLineComment$jI, _context.getCurrentTargetNode());
       }
 

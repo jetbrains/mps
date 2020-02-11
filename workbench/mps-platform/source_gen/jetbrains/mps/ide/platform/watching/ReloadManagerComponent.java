@@ -146,7 +146,7 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
     myTaskQueue.queue(new Update(myUpdateId) {
       public void run() {
         for (Project project : myProjectManager.getOpenProjects()) {
-          if (project.getComponent(ProjectLevelVcsManager.class).isBackgroundVcsOperationRunning()) {
+          if (ProjectLevelVcsManager.getInstance(project).isBackgroundVcsOperationRunning()) {
             queueReloadSession();
             return;
           }

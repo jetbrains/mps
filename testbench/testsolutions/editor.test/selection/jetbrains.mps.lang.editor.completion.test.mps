@@ -7,7 +7,7 @@
     <use id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers" version="-1" />
     <use id="9ded098b-ad6a-4657-bfd9-48636cfe8bc3" name="jetbrains.mps.lang.traceable" version="-1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="81f0abb8-d71e-4d13-a0c1-d2291fbb28b7" name="jetbrains.mps.lang.editor.editorTest" version="-1" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
@@ -8393,12 +8393,12 @@
           <node concept="10Oyi0" id="64$ALJK$eHo" role="2hCZv1" />
         </node>
         <node concept="2hCZug" id="64$ALJK$eHz" role="2hCZui">
-          <property role="TrG5h" value="var2" />
+          <property role="TrG5h" value="zar2" />
           <node concept="10P_77" id="64$ALJK$gkC" role="2hCZv1" />
         </node>
         <node concept="10Oyi0" id="64$ALJK$gq_" role="2hCZue" />
         <node concept="3eDk3l" id="3AsrwZRgaUl" role="3eDk4q">
-          <ref role="3eDk3k" node="64$ALJK$eHz" resolve="var2" />
+          <ref role="3eDk3k" node="64$ALJK$eHz" resolve="zar2" />
           <node concept="LIFWc" id="3AsrwZRgVZU" role="lGtFl">
             <property role="LIFWa" value="0" />
             <property role="OXtK3" value="true" />
@@ -8416,7 +8416,7 @@
           <node concept="10Oyi0" id="64$ALJK$gl8" role="2hCZv1" />
         </node>
         <node concept="2hCZug" id="64$ALJK$gl9" role="2hCZui">
-          <property role="TrG5h" value="var2" />
+          <property role="TrG5h" value="zar2" />
           <node concept="10P_77" id="64$ALJK$gla" role="2hCZv1" />
         </node>
         <node concept="10Oyi0" id="64$ALJK$gv3" role="2hCZue" />

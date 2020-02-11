@@ -122,7 +122,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -910,7 +910,7 @@
       </node>
       <node concept="3clFbS" id="3B" role="3clF47">
         <node concept="3SKdUt" id="3V" role="3cqZAp">
-          <node concept="1PaTwC" id="3Y" role="3ndbpf">
+          <node concept="1PaTwC" id="3Y" role="1aUNEU">
             <node concept="3oM_SD" id="40" role="1PaTwD">
               <property role="3oM_SC" value="todo:" />
               <node concept="cd27G" id="46" role="lGtFl">
@@ -1497,7 +1497,7 @@
       </node>
       <node concept="3clFbS" id="7h" role="3clF47">
         <node concept="3SKdUt" id="7_" role="3cqZAp">
-          <node concept="1PaTwC" id="7E" role="3ndbpf">
+          <node concept="1PaTwC" id="7E" role="1aUNEU">
             <node concept="3oM_SD" id="7G" role="1PaTwD">
               <property role="3oM_SC" value="todo:" />
               <node concept="cd27G" id="7M" role="lGtFl">
@@ -2358,7 +2358,7 @@
       </node>
       <node concept="3clFbS" id="cA" role="3clF47">
         <node concept="3SKdUt" id="cU" role="3cqZAp">
-          <node concept="1PaTwC" id="cX" role="3ndbpf">
+          <node concept="1PaTwC" id="cX" role="1aUNEU">
             <node concept="3oM_SD" id="cZ" role="1PaTwD">
               <property role="3oM_SC" value="todo:" />
               <node concept="cd27G" id="d5" role="lGtFl">

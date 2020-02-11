@@ -10,6 +10,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.samples.heating.tabular.editor.EditorAspectDescriptorImpl;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -46,5 +48,10 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    extensions.recordContribution("jetbrains.mps.samples.heating", "a7d67633-e8d9-473b-98ce-995a7aa66941", EditorAspectDescriptor.class);
   }
 }

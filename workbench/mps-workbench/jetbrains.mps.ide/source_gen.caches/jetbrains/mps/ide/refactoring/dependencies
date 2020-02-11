@@ -171,8 +171,8 @@
   <dependency className="jetbrains.mps.ide.refactoring.RenameModuleDialog">
     <classNode dependClassName="com.intellij.ui.components.JBLabel" />
     <classNode dependClassName="com.intellij.ui.components.JBPanel" />
-    <classNode dependClassName="com.intellij.util.ui.UIUtil" />
-    <classNode dependClassName="java.awt.FlowLayout" />
+    <classNode dependClassName="com.intellij.util.ui.JBUI" />
+    <classNode dependClassName="java.awt.BorderLayout" />
     <classNode dependClassName="java.awt.HeadlessException" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />

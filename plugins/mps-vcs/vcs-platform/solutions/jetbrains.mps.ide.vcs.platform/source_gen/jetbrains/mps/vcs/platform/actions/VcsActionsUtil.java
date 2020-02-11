@@ -6,10 +6,12 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.persistence.FilePerRootDataSource;
@@ -17,10 +19,19 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.util.Reference;
+import com.intellij.openapi.vcs.VcsException;
+import com.intellij.diff.requests.DiffRequest;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.vcs.VcsBundle;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.diff.DiffProvider;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
+import org.apache.log4j.Level;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import com.intellij.diff.DiffContentFactory;
@@ -28,16 +39,11 @@ import java.util.List;
 import com.intellij.diff.contents.DiffContent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import com.intellij.diff.requests.DiffRequest;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
-import com.intellij.diff.DiffManager;
-import com.intellij.openapi.vcs.VcsException;
-import org.apache.log4j.Level;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.diff.DiffManager;
 import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -46,63 +52,107 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512809101", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class VcsActionsUtil {
   private static final Logger LOG = LogManager.getLogger(VcsActionsUtil.class);
   private final MPSProject myProject;
-  private final SNode myNode;
+  private final SNodeReference myNodeRef;
   private final String myContainingRootName;
 
-  public VcsActionsUtil(MPSProject mpsProject, SNode node, String containingRootName) {
+  public VcsActionsUtil(MPSProject mpsProject, SNodeReference nodeRef, String containingRootName) {
     myProject = mpsProject;
-    myNode = node;
+    myNodeRef = nodeRef;
     myContainingRootName = containingRootName;
   }
 
   @Nullable
   public VirtualFile detectVirtualFile() {
-    // XXX detectVirtualFile is invoked outisde of model read, how come node.getModel doesn't fail? 
-    DataSource source = myNode.getModel().getSource();
+    final Wrappers._T<DataSource> source = new Wrappers._T<DataSource>();
+    myProject.getModelAccess().runReadAction(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<DataSource>() {
+      public DataSource invoke() {
+        return source.value = check_brpb5o_a0a0a0a1a6(check_brpb5o_a0a0a0a0b0g(myNodeRef.getModelReference(), myProject));
+      }
+    }));
     IFile iFile;
-    if (source instanceof FileDataSource) {
-      iFile = ((FileDataSource) source).getFile();
-    } else if (source instanceof FilePerRootDataSource) {
+    if (source.value instanceof FileDataSource) {
+      iFile = ((FileDataSource) source.value).getFile();
+    } else if (source.value instanceof FilePerRootDataSource) {
       // FIXME other uses of FilePerRootDataSource.getFile suggest we shall use approach similar to FilePerRootFormatUtil.getStreamNames instead of assumption of root.name + '.mpsr' 
-      iFile = ((FilePerRootDataSource) source).getFile(myContainingRootName + '.' + MPSExtentions.MODEL_ROOT);
+      iFile = ((FilePerRootDataSource) source.value).getFile(myContainingRootName + '.' + MPSExtentions.MODEL_ROOT);
     } else {
       return null;
     }
     return VirtualFileUtils.getProjectVirtualFile(iFile);
   }
 
-  public void showRootDifference(@Nullable Bounds bounds) {
+  public void showRootDifference(@Nullable final Bounds bounds) {
     final Project ideaProject = myProject.getProject();
-    try {
-      VirtualFile vFile = detectVirtualFile();
-      assert vFile != null;
-      AbstractVcs vcs = ProjectLevelVcsManager.getInstance(ideaProject).getVcsFor(vFile);
-      assert vcs != null;
-      DiffProvider diffProvider = vcs.getDiffProvider();
-      assert diffProvider != null;
-      VcsRevisionNumber revisionNumber = diffProvider.getCurrentRevision(vFile);
-      ContentRevision revision = diffProvider.createFileContent(revisionNumber, vFile);
-      final SNodeId id = myNode.getNodeId();
+    final Reference<VcsException> exception = new Reference<VcsException>();
+    final Reference<DiffRequest> request = new Reference<DiffRequest>();
+    final VirtualFile vFile = detectVirtualFile();
+    assert vFile != null;
+    ProgressManager.getInstance().run(new Task.Backgroundable(ideaProject, VcsBundle.message("show.diff.progress.title.detailed", vFile.getPresentableUrl()), true) {
+      @Override
+      public void run(@NotNull ProgressIndicator pi) {
+        try {
+          AbstractVcs vcs = ProjectLevelVcsManager.getInstance(ideaProject).getVcsFor(vFile);
+          assert vcs != null;
+          DiffProvider diffProvider = vcs.getDiffProvider();
+          assert diffProvider != null;
+          VcsRevisionNumber revisionNumber = diffProvider.getCurrentRevision(vFile);
+          if (revisionNumber == null) {
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn("current revision number is null for file " + vFile);
+            }
+            return;
+          }
+          ContentRevision revision = diffProvider.createFileContent(revisionNumber, vFile);
+          final SNodeId id = myNodeRef.getNodeId();
+          if (revision == null) {
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn("content revision is null for file " + vFile + " revision=" + revisionNumber);
+            }
+            return;
+          }
 
-      DiffContentFactory diffContentFactory = DiffContentFactory.getInstance();
-      List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), diffContentFactory.create(revision.getContent(), vFile.getFileType()), diffContentFactory.create(ideaProject, vFile));
-      List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), revisionNumber.asString() + " (Read-Only)", "Your Version");
-      DiffRequest request = new SimpleDiffRequest(myContainingRootName, contents, titles);
-      // put hint to show only one root and navigate 
-      request.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, id);
-      request.putUserData(ModelDiffViewer.DIFF_NAVIGATE_TO, bounds);
-      DiffManager.getInstance().showDiff(ideaProject, request);
-    } catch (VcsException e) {
-      if (LOG.isEnabledFor(Level.WARN)) {
-        LOG.warn("", e);
+          DiffContentFactory diffContentFactory = DiffContentFactory.getInstance();
+          String content = revision.getContent();
+          if (content == null) {
+            throw new VcsException("Failed to load content");
+          }
+          List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), diffContentFactory.create(content, vFile.getFileType()), diffContentFactory.create(ideaProject, vFile));
+          List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), revisionNumber.asString() + " (Read-Only)", "Your Version");
+          DiffRequest req = new SimpleDiffRequest(myContainingRootName, contents, titles);
+          // put hint to show only one root and navigate 
+          req.putUserData(ModelDiffViewer.DIFF_SHOW_ROOTID, id);
+          req.putUserData(ModelDiffViewer.DIFF_NAVIGATE_TO, bounds);
+          request.set(req);
+        } catch (VcsException e) {
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("", e);
+          }
+          exception.set(e);
+        }
       }
-      Messages.showErrorDialog(ideaProject, "Can't show difference due to the following error: " + e.getMessage(), "Error");
-    }
+      @Override
+      public void onCancel() {
+        onSuccess();
+      }
+      @Override
+      public void onSuccess() {
+        if (exception.get() != null) {
+          Messages.showErrorDialog(ideaProject, "Can't show difference due to the following error: " + exception.get().getMessage(), "Error");
+          return;
+        }
+        if (request.get() != null) {
+          DiffManager.getInstance().showDiff(ideaProject, request.get());
+        }
+      }
+    });
+
   }
 
   private static Iterable<VirtualFile> collectUnversionedFiles(final VcsFileStatusProvider fileStatusProvider, @NotNull final VirtualFile dir) {
@@ -203,5 +253,17 @@ __switch__:
         return getUnversionedFilesForModule(project, m);
       }
     }).toListSequence();
+  }
+  private static DataSource check_brpb5o_a0a0a0a1a6(SModel checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getSource();
+    }
+    return null;
+  }
+  private static SModel check_brpb5o_a0a0a0a0b0g(SModelReference checkedDotOperand, MPSProject myProject) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.resolve(myProject.getRepository());
+    }
+    return null;
   }
 }

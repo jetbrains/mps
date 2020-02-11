@@ -4311,6 +4311,10 @@
       <property role="1sEMCp" value="transformation-menu-language.html" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
+    <node concept="asaX9" id="1TV1N6EwvZU" role="lGtFl" />
+    <node concept="t5JxF" id="1TV1N6EwvZW" role="lGtFl">
+      <property role="t5JxN" value="Named and Default menus are now merged into TransformationMenuImpl and their specific concepts will be removed" />
+    </node>
   </node>
   <node concept="1TIwiD" id="5OVd5tVffW9">
     <property role="3GE5qa" value="Menu.Transformation" />
@@ -4326,7 +4330,7 @@
       <property role="20kJfa" value="menu" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6718020819487620874" />
-      <ref role="20lvS9" node="4Sf$XywF4VC" resolve="TransformationMenu_Named" />
+      <ref role="20lvS9" node="4Sf$XywF3UU" resolve="TransformationMenu" />
     </node>
     <node concept="RPilO" id="47y0FrqaLdc" role="lGtFl">
       <ref role="RPilL" node="5OVd5tVffWa" resolve="menu" />
@@ -4398,6 +4402,10 @@
       <property role="1sEMCp" value="transformation-menu-language.html" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
+    <node concept="asaX9" id="3f5kCAcOqEI" role="lGtFl" />
+    <node concept="t5JxF" id="3f5kCAcOqEK" role="lGtFl">
+      <property role="t5JxN" value="Named and Default menus are now merged into TransformationMenuImpl and their specific concepts will be removed" />
+    </node>
   </node>
   <node concept="1TIwiD" id="3xbeilB7DBJ">
     <property role="3GE5qa" value="Menu.Transformation" />
@@ -4424,10 +4432,9 @@
   <node concept="1TIwiD" id="4Sf$XywF3UU">
     <property role="3GE5qa" value="Menu.Transformation" />
     <property role="TrG5h" value="TransformationMenu" />
-    <property role="R5$K7" value="true" />
-    <property role="R5$K2" value="false" />
     <property role="19KtqR" value="true" />
     <property role="EcuMT" value="5624877018226900666" />
+    <property role="34LRSv" value="Transformation menu" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4DKJNVBqp0m" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/transformationMenu.png" />
@@ -4739,6 +4746,12 @@
     <node concept="PrWs8" id="1quYWAD4M96" role="PrDN$">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
     </node>
+    <node concept="1TJgyj" id="5cAVTFho83z" role="1TKVEi">
+      <property role="IQ2ns" value="5991739802479788259" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="type" />
+      <ref role="20lvS9" node="5cAVTFho728" resolve="MenuType" />
+    </node>
   </node>
   <node concept="1TIwiD" id="yarZQNHfz6">
     <property role="EcuMT" value="615427434521884870" />
@@ -4761,6 +4774,10 @@
     <node concept="PrWs8" id="1quYWAD18Lx" role="PrDN$">
       <ref role="PrY4T" node="1quYWAD18Lj" resolve="IMenu_Concept" />
     </node>
+    <node concept="asaX9" id="3f5kCAcOqES" role="lGtFl" />
+    <node concept="t5JxF" id="3f5kCAcOqEU" role="lGtFl">
+      <property role="t5JxN" value="Named and Default menus are now merged and their specific concepts will be removed" />
+    </node>
   </node>
   <node concept="PlHQZ" id="1quYWAD18L6">
     <property role="EcuMT" value="1630016958697344070" />
@@ -4768,6 +4785,10 @@
     <property role="TrG5h" value="IMenu_Named" />
     <node concept="PrWs8" id="1quYWAD19HF" role="PrDN$">
       <ref role="PrY4T" node="1quYWAD18Lj" resolve="IMenu_Concept" />
+    </node>
+    <node concept="asaX9" id="3f5kCAcOqEX" role="lGtFl" />
+    <node concept="t5JxF" id="3f5kCAcOqEZ" role="lGtFl">
+      <property role="t5JxN" value="Named and Default menus are now merged and their specific concepts will be removed" />
     </node>
   </node>
   <node concept="PlHQZ" id="1quYWAD18x6">
@@ -4889,8 +4910,8 @@
     <property role="EcuMT" value="2000375450116423800" />
     <property role="3GE5qa" value="Menu.Substitute" />
     <property role="TrG5h" value="SubstituteMenu" />
-    <property role="R5$K7" value="true" />
     <property role="19KtqR" value="true" />
+    <property role="34LRSv" value="Substitute Menu" />
     <node concept="1QGGSu" id="4DKJNVBqp0q" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/substituteMenu.png" />
     </node>
@@ -4970,7 +4991,7 @@
       <property role="20kJfa" value="menu" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6089045305654944382" />
-      <ref role="20lvS9" node="3fw9B$5YUrX" resolve="SubstituteMenu_Named" />
+      <ref role="20lvS9" node="1J2KHYpAw1S" resolve="SubstituteMenu" />
     </node>
     <node concept="PrWs8" id="1quYWAD5iG9" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD2$6Q" resolve="IMenuReference_Named" />
@@ -5286,6 +5307,10 @@
       <property role="1sEMCp" value="transformation-menu-language.html" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
+    <node concept="asaX9" id="3f5kCAcOqEz" role="lGtFl" />
+    <node concept="t5JxF" id="3f5kCAcOqEC" role="lGtFl">
+      <property role="t5JxN" value="Named and Default menus are now merged into SubstituteMenuImpl and their specific concepts will be removed" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7Nx4mSUbw5N">
     <property role="EcuMT" value="8998492695583129971" />
@@ -5530,6 +5555,10 @@
     <node concept="1sEMCm" id="5Jed3OJ9HKH" role="bvy1s">
       <property role="1sEMCp" value="transformation-menu-language.html" />
       <ref role="1fZFei" to="9anm:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
+    <node concept="asaX9" id="3f5kCAcOqEN" role="lGtFl" />
+    <node concept="t5JxF" id="3f5kCAcOqEP" role="lGtFl">
+      <property role="t5JxN" value="Named and Default menus are now merged into SubstituteMenuImpl and their specific concepts will be removed" />
     </node>
   </node>
   <node concept="1TIwiD" id="20vEJZ2AULf">
@@ -8046,6 +8075,32 @@
       <property role="1L1pqM" value="gutter-and-editor" />
       <property role="3tVfz5" value="5266818545798429768" />
       <ref role="2wpffI" node="4$nvT06KjL8" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5cAVTFho728">
+    <property role="EcuMT" value="5991739802479784072" />
+    <property role="3GE5qa" value="Menu" />
+    <property role="TrG5h" value="MenuType" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="5cAVTFho729">
+    <property role="EcuMT" value="5991739802479784073" />
+    <property role="3GE5qa" value="Menu" />
+    <property role="TrG5h" value="MenuTypeDefault" />
+    <property role="34LRSv" value="default" />
+    <property role="R4oN_" value="Default menu" />
+    <ref role="1TJDcQ" node="5cAVTFho728" resolve="MenuType" />
+  </node>
+  <node concept="1TIwiD" id="5cAVTFho72a">
+    <property role="EcuMT" value="5991739802479784074" />
+    <property role="3GE5qa" value="Menu" />
+    <property role="TrG5h" value="MenuTypeNamed" />
+    <property role="34LRSv" value="named" />
+    <property role="R4oN_" value="Named menu" />
+    <ref role="1TJDcQ" node="5cAVTFho728" resolve="MenuType" />
+    <node concept="PrWs8" id="5cAVTFhA5jt" role="PzmwI">
+      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
   </node>
 </model>

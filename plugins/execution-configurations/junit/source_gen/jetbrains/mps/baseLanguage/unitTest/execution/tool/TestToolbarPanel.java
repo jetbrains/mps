@@ -63,7 +63,7 @@ public class TestToolbarPanel extends JPanel {
   }
 
   private ToggleAction cteateTrackRunningAction() {
-    return new ToggleAction("Track Running Test", "Select currently running test in tree", AllIcons.RunConfigurations.TrackTests) {
+    return new ToggleAction("Track Running Test", "Select currently running test in tree", AllIcons.Nodes.Jsf.Renderer) {
       {
         setSelected(null, UnitTestOptions.isTrackRunning());
       }
@@ -136,7 +136,7 @@ public class TestToolbarPanel extends JPanel {
   }
 
   private ToggleAction createSelectFirstFailedAction() {
-    return new ToggleAction("Select First Failed Test When Finished", "", AllIcons.RunConfigurations.SelectFirstDefect) {
+    return new ToggleAction("Select First Failed Test When Finished", "", AllIcons.RunConfigurations.ToolbarFailed) {
       {
         setSelected(null, UnitTestOptions.isSelectFirstFailed());
       }

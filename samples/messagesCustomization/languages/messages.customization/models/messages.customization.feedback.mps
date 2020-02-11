@@ -31,6 +31,7 @@
       <concept id="5741876244398306563" name="jetbrains.mps.lang.feedback.problem.structural.structure.NoRefInObligatoryRoleProblem" flags="ng" index="2cc$G6" />
       <concept id="5724083730281438001" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingPropertyInConceptProblem" flags="ng" index="ft9Ny" />
       <concept id="1640022677634386488" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingRefInConceptProblem" flags="ng" index="2PegRn" />
+      <concept id="7574732359718311403" name="jetbrains.mps.lang.feedback.problem.structural.structure.TargetConceptIncorrectChild" flags="ng" index="2SH4Wp" />
       <concept id="2554379189374329844" name="jetbrains.mps.lang.feedback.problem.structural.structure.MissingChildInConceptProblem" flags="ng" index="3Jf5Ay" />
     </language>
     <language id="cd17a113-ca4e-472f-a8de-c49008f9eea8" name="jetbrains.mps.lang.feedback">
@@ -248,6 +249,32 @@
       </node>
       <node concept="2cc$G1" id="65DbCInVCbW" role="3JXyrO">
         <ref role="sa$J1" to="qzsv:4YJfwn3BmNJ" resolve="MultipleChildrenInSingleRole" />
+      </node>
+    </node>
+  </node>
+  <node concept="3QByoM" id="6uBDHA8A$h">
+    <ref role="3Z9TSV" to="pljn:6uBDHA8_ni" resolve="IncorrectTargetTestConcept" />
+    <node concept="3QByp$" id="6uBDHA8AGz" role="3QBEN7">
+      <node concept="16I2mz" id="6uBDHA8AG$" role="16N$OO">
+        <node concept="16N$OT" id="6uBDHA8ALK" role="16I2mt">
+          <property role="16N$OU" value="CHILD ROLE IS of CONCEPT " />
+        </node>
+        <node concept="16Iohu" id="6uBDHA8ALJ" role="16I2mt">
+          <node concept="3QpRc$" id="6uBDHA8AMN" role="9Y7m$">
+            <ref role="3QpVTF" to="qzsv:sEk7mxZf2D" resolve="childConcept" />
+          </node>
+        </node>
+        <node concept="16N$OT" id="6uBDHA8AS0" role="16I2mt">
+          <property role="16N$OU" value=" which is not subconcept of " />
+        </node>
+        <node concept="16Iohu" id="6uBDHA8ARZ" role="16I2mt">
+          <node concept="3QpRc$" id="6uBDHA8AU6" role="9Y7m$">
+            <ref role="3QpVTF" to="qzsv:sEk7mxZf2H" resolve="targetConcept" />
+          </node>
+        </node>
+      </node>
+      <node concept="2SH4Wp" id="6uBDHA8AGy" role="3JXyrO">
+        <ref role="sa$J1" to="qzsv:sEk7mxZf2A" resolve="IncorrectChildTargetConcept" />
       </node>
     </node>
   </node>

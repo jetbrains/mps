@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-6l9ijbt3bo45boacpxbz5ato4n7lp08">
+<product version="3" modelHash="8qv7k7rsm2vrcb94xjikzylkqjclnxw">
   <files names="EventProcessor.java:FSChangesWatcher.java:FileProcessor.java:FileSystemListenersContainer.java:ModelCacheReloader.java:ModuleRootCache.java:ReloadAction.java:ReloadListener.java:ReloadManager.java:ReloadManagerComponent.java:ReloadParticipant.java:ReloadSession.java:WatchedRoots.java" />
 </product>
 

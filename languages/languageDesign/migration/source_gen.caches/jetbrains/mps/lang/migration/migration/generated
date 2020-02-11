@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="21ko4r5gqfahk3l6mls601kyq7hws7j">
+<product version="3" modelHash="emkqdytrhwt88gc4wbllt6s7ofw5gq1">
   <files names="MigratePropertyPatternVariables.java:MigrationDescriptor.java:TransformStatementDetachFix.java" />
 </product>
 

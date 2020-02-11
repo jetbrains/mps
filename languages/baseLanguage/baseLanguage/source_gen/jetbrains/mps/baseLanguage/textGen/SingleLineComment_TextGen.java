@@ -10,12 +10,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.ArrayList;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class SingleLineComment_TextGen extends TextGenDescriptorBase {
   @Override
@@ -26,22 +27,9 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
     tgs.indent();
     tgs.append("// ");
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).isEmpty() || (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.commentPart$_gGy)).first(), CONCEPTS.TextCommentPart$lb), PROPS.text$AaEw)))) {
-      for (SNode line : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.text$BOhB)) {
-        for (SNode el : SLinkOperations.getChildren(line, LINKS.elements$eRew)) {
-          if (SNodeOperations.isInstanceOf(el, CONCEPTS.Word$AM)) {
-            SNode word = SNodeOperations.cast(el, CONCEPTS.Word$AM);
-            tgs.append(SPropertyOperations.getString(word, PROPS.value$cK70));
-            if (isNotEmptyString(SPropertyOperations.getString(word, PROPS.url$WUb8))) {
-              tgs.append(" (");
-              tgs.append(SPropertyOperations.getString(word, PROPS.url$WUb8));
-              tgs.append(")");
-            }
-            tgs.append(" ");
-          }
-          if (SNodeOperations.isInstanceOf(el, CONCEPTS.NodeWrapperElement$9z)) {
-            tgs.append("<node>");
-          }
-        }
+
+      for (SNode line : (((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$32mp) != null) ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.line$32mp)) : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.text$BOhB)))) {
+        Comments.commentLine(line, ctx);
         if ((SNodeOperations.getNextSibling(line) != null)) {
           tgs.newLine();
           tgs.indent();
@@ -59,29 +47,22 @@ public class SingleLineComment_TextGen extends TextGenDescriptorBase {
       tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.TraceableConcept$kK)));
     }
   }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
-  }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink line$32mp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+  }
+
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept NodeWrapperElement$9z = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement");
     /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
     /*package*/ static final SInterfaceConcept TraceableConcept$kK = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$cK70 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$WUb8 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
     /*package*/ static final SProperty text$AaEw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink text$BOhB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
-    /*package*/ static final SContainmentLink commentPart$_gGy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
   }
 }

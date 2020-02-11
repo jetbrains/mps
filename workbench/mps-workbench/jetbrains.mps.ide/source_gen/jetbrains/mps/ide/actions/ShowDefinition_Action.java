@@ -15,11 +15,24 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import java.util.Objects;
-import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.ide.findusages.model.SearchResults;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.ide.findusages.model.scopes.GlobalScope;
+import jetbrains.mps.ide.findusages.view.FindUtils;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.ide.findusages.model.SearchResult;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6234924461565203594", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
+@GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7397015581138491059", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowDefinition_Action extends BaseAction {
   private static final Icon ICON = null;
 
@@ -34,7 +47,7 @@ public class ShowDefinition_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ShowDefinition_Action.this.findNodeDeclaration(_params) != null;
+    return ShowDefinition_Action.this.isInterface(_params) || ShowDefinition_Action.this.isClass(_params) || ShowDefinition_Action.this.isMethodDeclaration(_params) || ShowDefinition_Action.this.findNodeDeclaration(_params) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -80,16 +93,54 @@ public class ShowDefinition_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final Wrappers._T<SNode> declaration = new Wrappers._T<SNode>();
+    final Wrappers._T<List<SNode>> nodes = new Wrappers._T<List<SNode>>();
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        declaration.value = Objects.requireNonNull(ShowDefinition_Action.this.findNodeDeclaration(_params), "By contract node should have a declaration, i.e findNodeDeclaration() != null");
+        nodes.value = ShowDefinition_Action.this.findImplementations(_params);
       }
     });
-    PopupWithNodeEditor popupWithNodeEditor = new SimplePopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Collections.singletonList(declaration.value));
+    PopupWithNodeEditor popupWithNodeEditor = new SimplePopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), nodes.value);
     popupWithNodeEditor.show();
   }
-  /*package*/ SNode findNodeDeclaration(final Map<String, Object> _params) {
+  /*package*/ List<SNode> findImplementations(final Map<String, Object> _params) {
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().checkReadAccess();
+
+    final List<SNode> nodes = new ArrayList<SNode>();
+    ListSequence.fromList(nodes).addElement(ShowDefinition_Action.this.getUnwrapped(_params));
+    SearchResults<SNode> results;
+    SearchScope scope = new GlobalScope(((MPSProject) MapSequence.fromMap(_params).get("project")));
+    if (ShowDefinition_Action.this.isInterface(_params)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.ImplementingClasses_Finder");
+    } else if (ShowDefinition_Action.this.isClass(_params)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder");
+    } else if (ShowDefinition_Action.this.isMethodDeclaration(_params) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ShowDefinition_Action.this.getUnwrapped(_params)), CONCEPTS.Interface$Kp)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder");
+    } else if (ShowDefinition_Action.this.isMethodDeclaration(_params)) {
+      results = FindUtils.getSearchResults(new EmptyProgressMonitor(), ShowDefinition_Action.this.getUnwrapped(_params), scope, "jetbrains.mps.baseLanguage.findUsages.DerivedMethods_Finder");
+    } else {
+      return Sequence.fromIterable(Sequence.<SNode>singleton(ShowDefinition_Action.this.findNodeDeclaration(_params))).toListSequence();
+    }
+    for (SearchResult<SNode> searchResult : results.getSearchResults2()) {
+      SNode foundNode = searchResult.getObject();
+      if ((foundNode != null)) {
+        ListSequence.fromList(nodes).addElement(foundNode);
+      }
+    }
+    return nodes;
+  }
+  private SNode getUnwrapped(final Map<String, Object> _params) {
+    return (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ) ? SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R) : ((SNode) MapSequence.fromMap(_params).get("node")));
+  }
+  private boolean isInterface(final Map<String, Object> _params) {
+    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.Interface$Kp);
+  }
+  private boolean isClass(final Map<String, Object> _params) {
+    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.ClassConcept$IY);
+  }
+  private boolean isMethodDeclaration(final Map<String, Object> _params) {
+    return SNodeOperations.isInstanceOf(ShowDefinition_Action.this.getUnwrapped(_params), CONCEPTS.InstanceMethodDeclaration$An) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(ShowDefinition_Action.this.getUnwrapped(_params)), CONCEPTS.Classifier$hJ);
+  }
+  private SNode findNodeDeclaration(final Map<String, Object> _params) {
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().checkReadAccess();
 
     SNode wrtNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("cell")));
@@ -97,5 +148,17 @@ public class ShowDefinition_Action extends BaseAction {
       return wrtNode;
     }
     return null;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

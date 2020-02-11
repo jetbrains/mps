@@ -2,7 +2,7 @@
 <model ref="r:f2fc442e-c0f0-467d-ac9f-8f38c8182f6f(jetbrains.mps.samples.StateChart.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
   </languages>
   <imports>
@@ -11,6 +11,8 @@
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
+      <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
+      <concept id="2000375450116423800" name="jetbrains.mps.lang.editor.structure.SubstituteMenu" flags="ng" index="22mcaB" />
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
       <concept id="1597643335227097138" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_node" flags="ng" index="7Obwk" />
       <concept id="6516520003787916624" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Condition" flags="ig" index="27VH4U" />
@@ -31,7 +33,6 @@
       <concept id="3473224453637651916" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform_PlaceInCellHolder" flags="ng" index="CtIbL">
         <property id="3473224453637651917" name="placeInCell" index="CtIbK" />
       </concept>
-      <concept id="1638911550608571617" name="jetbrains.mps.lang.editor.structure.TransformationMenu_Default" flags="ng" index="IW6AY" />
       <concept id="1638911550608610798" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Execute" flags="ig" index="IWg2L" />
       <concept id="1638911550608610278" name="jetbrains.mps.lang.editor.structure.TransformationMenuPart_Action" flags="ng" index="IWgqT">
         <child id="6202297022026447496" name="canExecuteFunction" index="2jiSrf" />
@@ -56,6 +57,7 @@
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
       <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ng" index="2ZABuq">
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
+        <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
       <concept id="2896773699153795590" name="jetbrains.mps.lang.editor.structure.TransformationLocation_SideTransform" flags="ng" index="3cWJ9i">
         <child id="3473224453637651919" name="placeInCell" index="CtIbM" />
@@ -64,7 +66,6 @@
       <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
         <child id="1088186146602" name="editorComponent" index="1sWHZn" />
       </concept>
-      <concept id="3308396621974580100" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Default" flags="ng" index="3p36aQ" />
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <property id="1140017977771" name="readOnly" index="1Intyy" />
@@ -96,6 +97,7 @@
       <concept id="1225900081164" name="jetbrains.mps.lang.editor.structure.CellModel_ReadOnlyModelAccessor" flags="sg" stub="3708815482283559694" index="1HlG4h">
         <child id="1225900141900" name="modelAccessor" index="1HlULh" />
       </concept>
+      <concept id="5624877018226900666" name="jetbrains.mps.lang.editor.structure.TransformationMenu" flags="ng" index="3ICUPy" />
       <concept id="5624877018228267058" name="jetbrains.mps.lang.editor.structure.ITransformationMenu" flags="ng" index="3INCJE">
         <child id="1638911550608572412" name="sections" index="IW6Ez" />
       </concept>
@@ -668,10 +670,6 @@
       <node concept="2iRkQZ" id="5Uf3geaGAFE" role="2czzBx" />
     </node>
   </node>
-  <node concept="3p36aQ" id="5Uf3geaGAG6">
-    <property role="3GE5qa" value="operations" />
-    <ref role="aqKnT" to="oyog:5Uf3geaGAFG" resolve="EmptyOperation" />
-  </node>
   <node concept="24kQdi" id="5Uf3geaGAGw">
     <property role="3GE5qa" value="operations" />
     <ref role="1XX52x" to="oyog:5Uf3geaGAFG" resolve="EmptyOperation" />
@@ -682,8 +680,63 @@
       </node>
     </node>
   </node>
-  <node concept="IW6AY" id="5Uf3geaH9Ew">
+  <node concept="PKFIW" id="5Uf3geaLUhc">
+    <property role="TrG5h" value="StateChartContents" />
+    <ref role="1XX52x" to="oyog:2RZlCJYvtyP" resolve="Stateful" />
+    <node concept="3EZMnI" id="5Uf3geaLUhh" role="2wV5jI">
+      <node concept="3F0ifn" id="5Uf3geaLUho" role="3EZMnx">
+        <property role="3F0ifm" value="Triggers" />
+        <node concept="lj46D" id="5Uf3geaLUhp" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="5Uf3geaLUhq" role="3EZMnx">
+        <ref role="1NtTu8" to="oyog:1id1$wMpeiL" resolve="availableTriggers" />
+        <node concept="2iRkQZ" id="5Uf3geaLUhr" role="2czzBx" />
+        <node concept="ljvvj" id="5Uf3geaLUhs" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="5Uf3geaLUht" role="3EZMnx">
+        <property role="3F0ifm" value="States:" />
+        <node concept="lj46D" id="5Uf3geaLUhu" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="5Uf3geaLUhv" role="3EZMnx">
+        <ref role="1NtTu8" to="oyog:1id1$wMpeiN" resolve="states" />
+        <node concept="2iRkQZ" id="5Uf3geaLUhw" role="2czzBx" />
+      </node>
+      <node concept="l2Vlx" id="5Uf3geaLUhk" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="PKFIW" id="5p4P5Xpjsyq">
+    <property role="TrG5h" value="StateTransitions" />
+    <ref role="1XX52x" to="oyog:1id1$wMpeiA" resolve="State" />
+    <node concept="3F2HdR" id="5p4P5Xpjsys" role="2wV5jI">
+      <ref role="1NtTu8" to="oyog:1id1$wMpeiJ" resolve="transitions" />
+      <node concept="2iRkQZ" id="5p4P5Xpjsyv" role="2czzBx" />
+    </node>
+  </node>
+  <node concept="PKFIW" id="5p4P5Xpjsx0">
+    <property role="TrG5h" value="StateTriggers" />
+    <ref role="1XX52x" to="oyog:2RZlCJYvtyP" resolve="Stateful" />
+    <node concept="3F2HdR" id="5p4P5XpjsxS" role="2wV5jI">
+      <ref role="1NtTu8" to="oyog:1id1$wMpeiL" resolve="availableTriggers" />
+      <node concept="2iRkQZ" id="5p4P5XpjsxV" role="2czzBx" />
+    </node>
+  </node>
+  <node concept="PKFIW" id="5p4P5Xpjvgi">
+    <property role="TrG5h" value="StateStates" />
+    <ref role="1XX52x" to="oyog:2RZlCJYvtyP" resolve="Stateful" />
+    <node concept="3F2HdR" id="5p4P5Xpjvgk" role="2wV5jI">
+      <ref role="1NtTu8" to="oyog:1id1$wMpeiN" resolve="states" />
+      <node concept="2iRkQZ" id="5p4P5Xpjvgn" role="2czzBx" />
+    </node>
+  </node>
+  <node concept="3ICUPy" id="5Uf3geaH9Ew">
     <ref role="aqKnT" to="oyog:1id1$wMpeiD" resolve="Transition" />
+    <node concept="22hDWj" id="xzgvwPPqqV" role="22hAXT" />
     <node concept="1Qtc8_" id="5Uf3geaH9Ex" role="IW6Ez">
       <node concept="3cWJ9i" id="5Uf3geaH9E_" role="1Qtc8$">
         <node concept="CtIbL" id="5Uf3geaH9EB" role="CtIbM">
@@ -743,59 +796,9 @@
       </node>
     </node>
   </node>
-  <node concept="PKFIW" id="5Uf3geaLUhc">
-    <property role="TrG5h" value="StateChartContents" />
-    <ref role="1XX52x" to="oyog:2RZlCJYvtyP" resolve="Stateful" />
-    <node concept="3EZMnI" id="5Uf3geaLUhh" role="2wV5jI">
-      <node concept="3F0ifn" id="5Uf3geaLUho" role="3EZMnx">
-        <property role="3F0ifm" value="Triggers" />
-        <node concept="lj46D" id="5Uf3geaLUhp" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F2HdR" id="5Uf3geaLUhq" role="3EZMnx">
-        <ref role="1NtTu8" to="oyog:1id1$wMpeiL" resolve="availableTriggers" />
-        <node concept="2iRkQZ" id="5Uf3geaLUhr" role="2czzBx" />
-        <node concept="ljvvj" id="5Uf3geaLUhs" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F0ifn" id="5Uf3geaLUht" role="3EZMnx">
-        <property role="3F0ifm" value="States:" />
-        <node concept="lj46D" id="5Uf3geaLUhu" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F2HdR" id="5Uf3geaLUhv" role="3EZMnx">
-        <ref role="1NtTu8" to="oyog:1id1$wMpeiN" resolve="states" />
-        <node concept="2iRkQZ" id="5Uf3geaLUhw" role="2czzBx" />
-      </node>
-      <node concept="l2Vlx" id="5Uf3geaLUhk" role="2iSdaV" />
-    </node>
-  </node>
-  <node concept="PKFIW" id="5p4P5Xpjsyq">
-    <property role="TrG5h" value="StateTransitions" />
-    <ref role="1XX52x" to="oyog:1id1$wMpeiA" resolve="State" />
-    <node concept="3F2HdR" id="5p4P5Xpjsys" role="2wV5jI">
-      <ref role="1NtTu8" to="oyog:1id1$wMpeiJ" resolve="transitions" />
-      <node concept="2iRkQZ" id="5p4P5Xpjsyv" role="2czzBx" />
-    </node>
-  </node>
-  <node concept="PKFIW" id="5p4P5Xpjsx0">
-    <property role="TrG5h" value="StateTriggers" />
-    <ref role="1XX52x" to="oyog:2RZlCJYvtyP" resolve="Stateful" />
-    <node concept="3F2HdR" id="5p4P5XpjsxS" role="2wV5jI">
-      <ref role="1NtTu8" to="oyog:1id1$wMpeiL" resolve="availableTriggers" />
-      <node concept="2iRkQZ" id="5p4P5XpjsxV" role="2czzBx" />
-    </node>
-  </node>
-  <node concept="PKFIW" id="5p4P5Xpjvgi">
-    <property role="TrG5h" value="StateStates" />
-    <ref role="1XX52x" to="oyog:2RZlCJYvtyP" resolve="Stateful" />
-    <node concept="3F2HdR" id="5p4P5Xpjvgk" role="2wV5jI">
-      <ref role="1NtTu8" to="oyog:1id1$wMpeiN" resolve="states" />
-      <node concept="2iRkQZ" id="5p4P5Xpjvgn" role="2czzBx" />
-    </node>
+  <node concept="22mcaB" id="5Uf3geaGAG6">
+    <ref role="aqKnT" to="oyog:5Uf3geaGAFG" resolve="EmptyOperation" />
+    <node concept="22hDWj" id="xzgvwPPqqW" role="22hAXT" />
   </node>
 </model>
 

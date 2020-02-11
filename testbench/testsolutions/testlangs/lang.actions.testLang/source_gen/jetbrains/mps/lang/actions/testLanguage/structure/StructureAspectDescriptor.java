@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
-import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
@@ -29,11 +28,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAbstractChild = createDescriptorForActionTestSidetransformAbstractChild();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAddConceptAbstractChild = createDescriptorForActionTestSidetransformAddConceptAbstractChild();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAddConceptChild = createDescriptorForActionTestSidetransformAddConceptChild();
+  /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAddConceptChild2 = createDescriptorForActionTestSidetransformAddConceptChild2();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAnotherAbstractChild = createDescriptorForActionTestSidetransformAnotherAbstractChild();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAnotherChild1 = createDescriptorForActionTestSidetransformAnotherChild1();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAnotherChild2 = createDescriptorForActionTestSidetransformAnotherChild2();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformAnotherChildCommonSuperConcept = createDescriptorForActionTestSidetransformAnotherChildCommonSuperConcept();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformChild1 = createDescriptorForActionTestSidetransformChild1();
+  /*package*/ final ConceptDescriptor myConceptActionTestSidetransformChild2 = createDescriptorForActionTestSidetransformChild2();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformTestAncestor = createDescriptorForActionTestSidetransformTestAncestor();
   /*package*/ final ConceptDescriptor myConceptActionTestSidetransformTestContainer = createDescriptorForActionTestSidetransformTestContainer();
   private final LanguageConceptSwitch myIndexSwitch;
@@ -50,7 +51,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptActionTestAbstractChild, myConceptActionTestAbstractChildWrapper, myConceptActionTestChild1, myConceptActionTestChild1Child, myConceptActionTestChild1SubConcept, myConceptActionTestChild2, myConceptActionTestChildToWrap1, myConceptActionTestChildToWrap2, myConceptActionTestChildWrapper, myConceptActionTestContainer, myConceptActionTestDefaultAbstractChild, myConceptActionTestDefaultChild1, myConceptActionTestDefaultChild2, myConceptActionTestSidetransformAbstractChild, myConceptActionTestSidetransformAddConceptAbstractChild, myConceptActionTestSidetransformAddConceptChild, myConceptActionTestSidetransformAnotherAbstractChild, myConceptActionTestSidetransformAnotherChild1, myConceptActionTestSidetransformAnotherChild2, myConceptActionTestSidetransformAnotherChildCommonSuperConcept, myConceptActionTestSidetransformChild1, myConceptActionTestSidetransformTestAncestor, myConceptActionTestSidetransformTestContainer);
+    return Arrays.asList(myConceptActionTestAbstractChild, myConceptActionTestAbstractChildWrapper, myConceptActionTestChild1, myConceptActionTestChild1Child, myConceptActionTestChild1SubConcept, myConceptActionTestChild2, myConceptActionTestChildToWrap1, myConceptActionTestChildToWrap2, myConceptActionTestChildWrapper, myConceptActionTestContainer, myConceptActionTestDefaultAbstractChild, myConceptActionTestDefaultChild1, myConceptActionTestDefaultChild2, myConceptActionTestSidetransformAbstractChild, myConceptActionTestSidetransformAddConceptAbstractChild, myConceptActionTestSidetransformAddConceptChild, myConceptActionTestSidetransformAddConceptChild2, myConceptActionTestSidetransformAnotherAbstractChild, myConceptActionTestSidetransformAnotherChild1, myConceptActionTestSidetransformAnotherChild2, myConceptActionTestSidetransformAnotherChildCommonSuperConcept, myConceptActionTestSidetransformChild1, myConceptActionTestSidetransformChild2, myConceptActionTestSidetransformTestAncestor, myConceptActionTestSidetransformTestContainer);
   }
 
   @Override
@@ -89,6 +90,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptActionTestSidetransformAddConceptAbstractChild;
       case LanguageConceptSwitch.ActionTestSidetransformAddConceptChild:
         return myConceptActionTestSidetransformAddConceptChild;
+      case LanguageConceptSwitch.ActionTestSidetransformAddConceptChild2:
+        return myConceptActionTestSidetransformAddConceptChild2;
       case LanguageConceptSwitch.ActionTestSidetransformAnotherAbstractChild:
         return myConceptActionTestSidetransformAnotherAbstractChild;
       case LanguageConceptSwitch.ActionTestSidetransformAnotherChild1:
@@ -99,6 +102,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptActionTestSidetransformAnotherChildCommonSuperConcept;
       case LanguageConceptSwitch.ActionTestSidetransformChild1:
         return myConceptActionTestSidetransformChild1;
+      case LanguageConceptSwitch.ActionTestSidetransformChild2:
+        return myConceptActionTestSidetransformChild2;
       case LanguageConceptSwitch.ActionTestSidetransformTestAncestor:
         return myConceptActionTestSidetransformTestAncestor;
       case LanguageConceptSwitch.ActionTestSidetransformTestContainer:
@@ -108,10 +113,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
-  @Override
-  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList();
-  }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
     return myIndexSwitch.index(c);
@@ -265,6 +266,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("addConceptChild");
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForActionTestSidetransformAddConceptChild2() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.actions.testLanguage", "ActionTestSidetransformAddConceptChild2", 0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x45320f640a5469b6L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAddConceptAbstractChild", 0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d415e8d80L);
+    b.origin("r:4d38763d-a252-449a-a228-c5edf22068a3(jetbrains.mps.lang.actions.testLanguage.structure)/4986064659797010870");
+    b.version(2);
+    b.alias("otherConceptChild");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForActionTestSidetransformAnotherAbstractChild() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.actions.testLanguage", "ActionTestSidetransformAnotherAbstractChild", 0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefca54d96L);
     b.class_(false, true, false);
@@ -303,6 +313,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.super_("jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAbstractChild", 0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade471f3L);
     b.origin("r:4d38763d-a252-449a-a228-c5edf22068a3(jetbrains.mps.lang.actions.testLanguage.structure)/4942308145797614619");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForActionTestSidetransformChild2() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.actions.testLanguage", "ActionTestSidetransformChild2", 0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x56db513f13707c51L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.actions.testLanguage.structure.ActionTestSidetransformAbstractChild", 0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade471f3L);
+    b.origin("r:4d38763d-a252-449a-a228-c5edf22068a3(jetbrains.mps.lang.actions.testLanguage.structure)/6258685438512364625");
     b.version(2);
     return b.create();
   }

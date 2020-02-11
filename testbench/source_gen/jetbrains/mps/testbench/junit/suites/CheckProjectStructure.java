@@ -14,7 +14,6 @@ import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.checkers.ModuleChecker;
 import jetbrains.mps.checkers.ModelPropertiesChecker;
-import jetbrains.mps.checkers.AbstractNodeCheckerInEditor;
 import jetbrains.mps.project.validation.StructureChecker;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
 import jetbrains.mps.components.ComponentHost;
@@ -46,13 +45,13 @@ public class CheckProjectStructure extends BaseCheckerTest {
   @Test
   @Order(value = 2)
   public void checkModels() {
-    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new ModelPropertiesChecker()), null, "Model errors");
+    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new ModelPropertiesChecker(getHost())), null, "Model errors");
   }
 
   @Test
   @Order(value = 3)
   public void checkStructure() {
-    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) (AbstractNodeCheckerInEditor) new StructureChecker(getHost()).withoutBrokenReferences(), new SuppressErrorsChecker()), null, "Structure errors:");
+    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new StructureChecker(getHost()).withoutBrokenReferences(), new SuppressErrorsChecker()), null, "Structure errors:");
   }
 
   private ComponentHost getHost() {
@@ -62,7 +61,7 @@ public class CheckProjectStructure extends BaseCheckerTest {
   @Test
   @Order(value = 4)
   public void checkReferences() {
-    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), (AbstractNodeCheckerInEditor) (AbstractNodeCheckerInEditor) new StructureChecker(getHost()).withoutCardinalities().withoutMissingRTLanguages(), new SuppressErrorsChecker()), null, "Broken reference errors");
+    super.runCheck(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), new StructureChecker(getHost()).withoutCardinalities().withoutMissingRTLanguages(), new SuppressErrorsChecker()), null, "Broken reference errors");
   }
 
   @Test

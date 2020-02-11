@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.Consumer;
 
 /**
  * Runtime representation of a language, extension point for various language aspects.
@@ -50,6 +51,7 @@ public abstract class LanguageRuntime {
   private final ConcurrentMap<Class<? extends ILanguageAspect>, ILanguageAspect> myAspectDescriptors = new ConcurrentHashMap<>();
   private final List<LanguageRuntime> myExtendingLanguages = new ArrayList<>();
   private final List<LanguageRuntime> myExtendedLanguages = new ArrayList<>();
+  private LanguageRegistry myLanguageRegistry;
 
   /**
    * @return full name of the language, never {@code null}.
@@ -192,6 +194,7 @@ public abstract class LanguageRuntime {
   }
 
   void initialize(LanguageRegistry registry) {
+    assert myLanguageRegistry == null : "attempt to initialize LanguageRuntime that has been already initialized";
     Queue<SLanguage> extendedLanguageIDs = new ArrayDeque<>();
     fillExtendedLanguages(extendedLanguageIDs);
     Set<SLanguageId> visitedLanguages = new HashSet<>();
@@ -218,11 +221,69 @@ public abstract class LanguageRuntime {
     if (this != langCore && !visitedLanguages.contains(langCore.getId())) {
       langCore.registerExtendingLanguage(this);
     }
+    myLanguageRegistry = registry;
   }
 
   void deinitialize() {
+    myLanguageRegistry = null;
     myExtendingLanguages.clear();
     myExtendedLanguages.clear();
+  }
+
+  /*package*/ final void contributeExtensions(LanguageExtensions extensions) {
+    // I keep this method as an entry point for LanguageRegistry instead of using protected #contribute() directly as I expect to add some mandatory
+    // extension registration in here, and don't want to generate super.contribute() calls
+    contribute(extensions);
+  }
+
+  /**
+   * Override to tell that language represented by this runtime class supplies extensions to aspects of some other language.
+   * Method itself is no-op, no need to call super.
+   * Language is not completely initialized the moment method is invoked, no other activity except contributing extensions
+   * by means of LanguageExtensions is allowed.
+   * @param extensions facade to pass contributions through
+   */
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    // no-op
+  }
+
+  /**
+   * Visit contributions to this language recorded using {@link LanguageExtensions#recordContribution(SLanguage, Class)} with identity of this language as
+   * contribution target.
+   * @param aspectClass  identity of an aspect extensions were contributed with
+   * @param aspectVisitor code to handle extension aspect instance
+   */
+  public final <T extends ILanguageAspect> void forEachContributor(Class<T> aspectClass, Consumer<T> aspectVisitor) {
+    if (myLanguageRegistry == null) {
+      // generally shall not happen
+      String msg = String.format("Attempt to access contributors of non-initialized language runtime, ignored. Requested aspect: %s", aspectClass);
+      Logger.getLogger(LanguageRuntime.class).error(msg, new Throwable());
+      return;
+    }
+    // XXX not sure it's ok to expose LanguageExtensionRegistry, perhaps, shall keep this code inside LanguageRegistry
+    //     so that it can control the moment languages get re-loaded and the extension registry is invalidated.
+    myLanguageRegistry.getExtensionRegistry().forEachContributingAspect(this, aspectClass, aspectVisitor);
+  }
+
+  /**
+   * Same as {@link #forEachContributor(Class, Consumer)} except that gives access to {@link LanguageRuntime} instance for clients that need it.
+   * Prefer {@link #forEachContributor(Class, Consumer)} when possible.
+   *
+   * XXX Has to be final, but there are tests that don't utilize LanguageRegistry and need to tweak LanguageRuntime implementation
+   */
+  public void forEachContributor(Consumer<LanguageRuntime> visitor, Class<? extends ILanguageAspect> aspectClass) {
+    if (myLanguageRegistry == null) {
+      // generally shall not happen
+      String msg = String.format("Attempt to access contributors of non-initialized language runtime, ignored. Requested aspect: %s", aspectClass);
+      Logger.getLogger(LanguageRuntime.class).error(msg, new Throwable());
+      return;
+    }
+    myLanguageRegistry.getExtensionRegistry().forEachContributor(this, aspectClass, visitor);
+  }
+
+
+  void dispose() {
+    myAspectDescriptors.values().forEach(ILanguageAspect::dispose);
   }
 
   @Override

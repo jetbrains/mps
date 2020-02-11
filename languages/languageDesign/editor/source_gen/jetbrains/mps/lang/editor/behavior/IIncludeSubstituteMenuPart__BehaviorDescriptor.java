@@ -15,6 +15,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.editor.constraints.MenuScopes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.structure.constraints.Scopes;
@@ -24,6 +25,9 @@ import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class IIncludeSubstituteMenuPart__BehaviorDescriptor extends BaseBHDescriptor {
@@ -40,16 +44,21 @@ public final class IIncludeSubstituteMenuPart__BehaviorDescriptor extends BaseBH
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (child == IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(__thisNode__)) {
       SAbstractConcept cncpt = kind;
-      boolean noneMatched = true;
-      if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$UN)) {
-        noneMatched = false;
-        // Default scope of AbstractConceptDeclaration 
-        return new FilteringScope(Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$UN));
-      }
-      if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.SubstituteMenu_Named$J)) {
-        noneMatched = false;
-        // Default scope of SubstituteMenu_Named - more or less 
-        return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.SubstituteMenu_Named$J);
+      switch (conceptIndex.index(cncpt)) {
+        case 0:
+          return MenuScopes.getSubstituteMenus(__thisNode__);
+        default:
+          boolean noneMatched = true;
+          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$UN)) {
+            noneMatched = false;
+            // Default scope of AbstractConceptDeclaration 
+            return new FilteringScope(Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$UN));
+          }
+          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.SubstituteMenu_Named$J)) {
+            noneMatched = false;
+            // Default scope of SubstituteMenu_Named - more or less 
+            return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.SubstituteMenu_Named$J);
+          }
       }
     }
     return ScopeUtils.lazyParentScope(__thisNode__, kind);
@@ -100,6 +109,7 @@ public final class IIncludeSubstituteMenuPart__BehaviorDescriptor extends BaseBH
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L)).seal();
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");

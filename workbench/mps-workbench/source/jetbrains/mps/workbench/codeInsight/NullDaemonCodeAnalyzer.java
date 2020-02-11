@@ -15,12 +15,11 @@
  */
 package jetbrains.mps.workbench.codeInsight;
 
-import com.intellij.codeInsight.daemon.impl.DaemonCodeAnalyzerImpl;
+import com.intellij.codeInsight.daemon.DaemonCodeAnalyzer;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
-import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,18 +27,13 @@ import org.jetbrains.annotations.Nullable;
  * User: shatalin
  * Date: 11/19/12
  */
-public class NullDaemonCodeAnalyzer extends DaemonCodeAnalyzerImpl {
+public class NullDaemonCodeAnalyzer extends DaemonCodeAnalyzer {
 
   public NullDaemonCodeAnalyzer(@NotNull Project project) {
-    super(project);
   }
 
   @Override
   public void settingsChanged() {
-  }
-
-  @Override
-  public void updateVisibleHighlighters(@NotNull Editor editor) {
   }
 
   @Override
@@ -87,16 +81,5 @@ public class NullDaemonCodeAnalyzer extends DaemonCodeAnalyzerImpl {
 
   @Override
   public void autoImportReferenceAtCursor(@NotNull Editor editor, @NotNull PsiFile file) {
-  }
-
-
-  @Nullable
-  @Override
-  public Element getState() {
-    return null;
-  }
-
-  @Override
-  public void loadState(@NotNull Element state) {
   }
 }

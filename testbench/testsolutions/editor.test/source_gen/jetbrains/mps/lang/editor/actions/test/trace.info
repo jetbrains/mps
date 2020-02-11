@@ -1961,6 +1961,32 @@
       <unit id="2972757353568126156" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.Uncomment_NodeByDelete_Test" />
     </file>
   </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/3087957895633151777">
+    <file name="TypeOver_ReturnStatement_Test.java">
+      <node id="3087957895633151777" at="18,42,19,25" concept="8" />
+      <node id="3087957895633151777" at="23,64,24,36" concept="1" />
+      <node id="3087957895633151777" at="29,52,30,19" concept="8" />
+      <node id="3087957895633151777" at="34,51,35,72" concept="1" />
+      <node id="3087957895633151779" at="35,72,36,32" concept="1" />
+      <node id="3087957895633151777" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="3087957895633151777" at="18,0,21,0" concept="0" trace="TypeOver_ReturnStatement_Test#()V" />
+      <node id="3087957895633151777" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3087957895633151777" at="22,0,26,0" concept="3" trace="test_TypeOver_ReturnStatement#()V" />
+      <node id="3087957895633151777" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="3087957895633151777" at="18,42,19,25" />
+      <scope id="3087957895633151777" at="23,64,24,36" />
+      <scope id="3087957895633151777" at="29,52,30,19" />
+      <scope id="3087957895633151777" at="34,51,36,32" />
+      <scope id="3087957895633151777" at="18,0,21,0" />
+      <scope id="3087957895633151777" at="29,0,32,0">
+        <var name="owner" id="3087957895633151777" />
+      </scope>
+      <scope id="3087957895633151777" at="22,0,26,0" />
+      <scope id="3087957895633151777" at="33,0,38,0" />
+      <unit id="3087957895633151777" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_ReturnStatement_Test$TestBody" />
+      <unit id="3087957895633151777" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_ReturnStatement_Test" />
+    </file>
+  </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/3568961255313870695">
     <file name="Subst_MultiChildDefaultConcrete_AddNewChildByEnter_Empty_Test.java">
       <node id="3568961255313870695" at="18,74,19,25" concept="8" />
@@ -2480,6 +2506,32 @@
       <unit id="474718489011577918" at="15,0,43,0" name="jetbrains.mps.lang.editor.actions.test.PlaceholderCompletion_Test" />
     </file>
   </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5107764459033738679">
+    <file name="TypeOver_InsideKeyWord_Test.java">
+      <node id="5107764459033738679" at="18,40,19,25" concept="8" />
+      <node id="5107764459033738679" at="23,62,24,36" concept="1" />
+      <node id="5107764459033738679" at="29,52,30,19" concept="8" />
+      <node id="5107764459033738679" at="34,51,35,72" concept="1" />
+      <node id="3805673212021463883" at="35,72,36,24" concept="1" />
+      <node id="5107764459033738679" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="5107764459033738679" at="18,0,21,0" concept="0" trace="TypeOver_InsideKeyWord_Test#()V" />
+      <node id="5107764459033738679" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5107764459033738679" at="22,0,26,0" concept="3" trace="test_TypeOver_InsideKeyWord#()V" />
+      <node id="5107764459033738679" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="5107764459033738679" at="18,40,19,25" />
+      <scope id="5107764459033738679" at="23,62,24,36" />
+      <scope id="5107764459033738679" at="29,52,30,19" />
+      <scope id="5107764459033738679" at="34,51,36,24" />
+      <scope id="5107764459033738679" at="18,0,21,0" />
+      <scope id="5107764459033738679" at="29,0,32,0">
+        <var name="owner" id="5107764459033738679" />
+      </scope>
+      <scope id="5107764459033738679" at="22,0,26,0" />
+      <scope id="5107764459033738679" at="33,0,38,0" />
+      <unit id="5107764459033738679" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_InsideKeyWord_Test$TestBody" />
+      <unit id="5107764459033738679" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_InsideKeyWord_Test" />
+    </file>
+  </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5383578965096699346">
     <file name="DelOnSpecialChild1DeleteParent_Test.java">
       <node id="5383578965096699346" at="19,48,20,25" concept="8" />
@@ -2540,6 +2592,61 @@
       <unit id="1241246198932820341" at="37,48,41,7" name="jetbrains.mps.lang.editor.actions.test.DelOnSpecialChild1ReplaceItWithLinkTarget_Test$TestBody$1" />
       <unit id="5383578965096740755" at="28,0,44,0" name="jetbrains.mps.lang.editor.actions.test.DelOnSpecialChild1ReplaceItWithLinkTarget_Test$TestBody" />
       <unit id="5383578965096740755" at="14,0,45,0" name="jetbrains.mps.lang.editor.actions.test.DelOnSpecialChild1ReplaceItWithLinkTarget_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/553922048626467054">
+    <file name="TypeOver_ArrayInitializer_Test.java">
+      <node id="553922048626467054" at="18,43,19,25" concept="8" />
+      <node id="553922048626467054" at="23,65,24,36" concept="1" />
+      <node id="553922048626467054" at="29,52,30,19" concept="8" />
+      <node id="553922048626467054" at="34,51,35,70" concept="1" />
+      <node id="553922048626467060" at="35,70,36,23" concept="1" />
+      <node id="553922048626467061" at="36,23,37,72" concept="1" />
+      <node id="553922048626484862" at="37,72,38,72" concept="1" />
+      <node id="553922048626467063" at="38,72,39,23" concept="1" />
+      <node id="553922048626467054" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="553922048626467054" at="18,0,21,0" concept="0" trace="TypeOver_ArrayInitializer_Test#()V" />
+      <node id="553922048626467054" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="553922048626467054" at="22,0,26,0" concept="3" trace="test_TypeOver_ArrayInitializer#()V" />
+      <node id="553922048626467054" at="33,0,41,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="553922048626467054" at="18,43,19,25" />
+      <scope id="553922048626467054" at="23,65,24,36" />
+      <scope id="553922048626467054" at="29,52,30,19" />
+      <scope id="553922048626467054" at="18,0,21,0" />
+      <scope id="553922048626467054" at="29,0,32,0">
+        <var name="owner" id="553922048626467054" />
+      </scope>
+      <scope id="553922048626467054" at="22,0,26,0" />
+      <scope id="553922048626467054" at="34,51,39,23" />
+      <scope id="553922048626467054" at="33,0,41,0" />
+      <unit id="553922048626467054" at="27,0,42,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_ArrayInitializer_Test$TestBody" />
+      <unit id="553922048626467054" at="13,0,43,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_ArrayInitializer_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5557211017848461508">
+    <file name="TypeOver_InsideMultiCharOperator_Test.java">
+      <node id="5557211017848461508" at="18,50,19,25" concept="8" />
+      <node id="5557211017848461508" at="23,72,24,36" concept="1" />
+      <node id="5557211017848461508" at="29,52,30,19" concept="8" />
+      <node id="5557211017848461508" at="34,51,35,72" concept="1" />
+      <node id="4651581299735146622" at="35,72,36,22" concept="1" />
+      <node id="5557211017848461508" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="5557211017848461508" at="18,0,21,0" concept="0" trace="TypeOver_InsideMultiCharOperator_Test#()V" />
+      <node id="5557211017848461508" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5557211017848461508" at="22,0,26,0" concept="3" trace="test_TypeOver_InsideMultiCharOperator#()V" />
+      <node id="5557211017848461508" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="5557211017848461508" at="18,50,19,25" />
+      <scope id="5557211017848461508" at="23,72,24,36" />
+      <scope id="5557211017848461508" at="29,52,30,19" />
+      <scope id="5557211017848461508" at="34,51,36,22" />
+      <scope id="5557211017848461508" at="18,0,21,0" />
+      <scope id="5557211017848461508" at="29,0,32,0">
+        <var name="owner" id="5557211017848461508" />
+      </scope>
+      <scope id="5557211017848461508" at="22,0,26,0" />
+      <scope id="5557211017848461508" at="33,0,38,0" />
+      <unit id="5557211017848461508" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_InsideMultiCharOperator_Test$TestBody" />
+      <unit id="5557211017848461508" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_InsideMultiCharOperator_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5639868649489808119">
@@ -2774,6 +2881,33 @@
       <scope id="5639868649490214923" at="33,0,38,0" />
       <unit id="5639868649490214923" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.Comment_LineFromParameter_Test$TestBody" />
       <unit id="5639868649490214923" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.Comment_LineFromParameter_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/570774940890225459">
+    <file name="TypeOver_ErrorState_Test.java">
+      <node id="570774940890225459" at="19,37,20,25" concept="8" />
+      <node id="570774940890225459" at="24,59,25,36" concept="1" />
+      <node id="570774940890225459" at="30,52,31,19" concept="8" />
+      <node id="570774940890225459" at="35,51,36,70" concept="1" />
+      <node id="570774940890306139" at="36,70,37,25" concept="1" />
+      <node id="1230058635771" at="37,25,38,85" concept="1" />
+      <node id="570774940890225459" at="16,0,18,0" concept="7" trace="ourParamCache" />
+      <node id="570774940890225459" at="19,0,22,0" concept="0" trace="TypeOver_ErrorState_Test#()V" />
+      <node id="570774940890225459" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="570774940890225459" at="23,0,27,0" concept="3" trace="test_TypeOver_ErrorState#()V" />
+      <node id="570774940890225459" at="34,0,40,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="570774940890225459" at="19,37,20,25" />
+      <scope id="570774940890225459" at="24,59,25,36" />
+      <scope id="570774940890225459" at="30,52,31,19" />
+      <scope id="570774940890225459" at="19,0,22,0" />
+      <scope id="570774940890225459" at="30,0,33,0">
+        <var name="owner" id="570774940890225459" />
+      </scope>
+      <scope id="570774940890225459" at="35,51,38,85" />
+      <scope id="570774940890225459" at="23,0,27,0" />
+      <scope id="570774940890225459" at="34,0,40,0" />
+      <unit id="570774940890225459" at="28,0,41,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_ErrorState_Test$TestBody" />
+      <unit id="570774940890225459" at="14,0,42,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_ErrorState_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/5824791737913673482">
@@ -3272,6 +3406,84 @@
       <scope id="6047905657530835410" at="33,0,39,0" />
       <unit id="6047905657530835410" at="27,0,40,0" name="jetbrains.mps.lang.editor.actions.test.Comment_CommentUncomment_Test$TestBody" />
       <unit id="6047905657530835410" at="13,0,41,0" name="jetbrains.mps.lang.editor.actions.test.Comment_CommentUncomment_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/614331455314525152">
+    <file name="TypeOver_AssigmentAfter_Test.java">
+      <node id="614331455314525152" at="18,41,19,25" concept="8" />
+      <node id="614331455314525152" at="23,63,24,36" concept="1" />
+      <node id="614331455314525152" at="29,52,30,19" concept="8" />
+      <node id="614331455314525152" at="34,51,35,70" concept="1" />
+      <node id="614331455314700706" at="35,70,36,22" concept="1" />
+      <node id="614331455314525152" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="614331455314525152" at="18,0,21,0" concept="0" trace="TypeOver_AssigmentAfter_Test#()V" />
+      <node id="614331455314525152" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="614331455314525152" at="22,0,26,0" concept="3" trace="test_TypeOver_AssigmentAfter#()V" />
+      <node id="614331455314525152" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="614331455314525152" at="18,41,19,25" />
+      <scope id="614331455314525152" at="23,63,24,36" />
+      <scope id="614331455314525152" at="29,52,30,19" />
+      <scope id="614331455314525152" at="34,51,36,22" />
+      <scope id="614331455314525152" at="18,0,21,0" />
+      <scope id="614331455314525152" at="29,0,32,0">
+        <var name="owner" id="614331455314525152" />
+      </scope>
+      <scope id="614331455314525152" at="22,0,26,0" />
+      <scope id="614331455314525152" at="33,0,38,0" />
+      <unit id="614331455314525152" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_AssigmentAfter_Test$TestBody" />
+      <unit id="614331455314525152" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_AssigmentAfter_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/614331455314815693">
+    <file name="TypeOver_BeforeAndAfterSemicolon_Test.java">
+      <node id="614331455314815693" at="18,50,19,25" concept="8" />
+      <node id="614331455314815693" at="23,72,24,36" concept="1" />
+      <node id="614331455314815693" at="29,52,30,19" concept="8" />
+      <node id="614331455314815693" at="34,51,35,70" concept="1" />
+      <node id="614331455314815695" at="35,70,36,22" concept="1" />
+      <node id="614331455314815693" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="614331455314815693" at="18,0,21,0" concept="0" trace="TypeOver_BeforeAndAfterSemicolon_Test#()V" />
+      <node id="614331455314815693" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="614331455314815693" at="22,0,26,0" concept="3" trace="test_TypeOver_BeforeAndAfterSemicolon#()V" />
+      <node id="614331455314815693" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="614331455314815693" at="18,50,19,25" />
+      <scope id="614331455314815693" at="23,72,24,36" />
+      <scope id="614331455314815693" at="29,52,30,19" />
+      <scope id="614331455314815693" at="34,51,36,22" />
+      <scope id="614331455314815693" at="18,0,21,0" />
+      <scope id="614331455314815693" at="29,0,32,0">
+        <var name="owner" id="614331455314815693" />
+      </scope>
+      <scope id="614331455314815693" at="22,0,26,0" />
+      <scope id="614331455314815693" at="33,0,38,0" />
+      <unit id="614331455314815693" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_BeforeAndAfterSemicolon_Test$TestBody" />
+      <unit id="614331455314815693" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_BeforeAndAfterSemicolon_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/614331455315044115">
+    <file name="TypeOver_AssignmentBefore_Test.java">
+      <node id="614331455315044115" at="18,43,19,25" concept="8" />
+      <node id="614331455315044115" at="23,65,24,36" concept="1" />
+      <node id="614331455315044115" at="29,52,30,19" concept="8" />
+      <node id="614331455315044115" at="34,51,35,70" concept="1" />
+      <node id="4651581299735069371" at="35,70,36,22" concept="1" />
+      <node id="614331455315044115" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="614331455315044115" at="18,0,21,0" concept="0" trace="TypeOver_AssignmentBefore_Test#()V" />
+      <node id="614331455315044115" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="614331455315044115" at="22,0,26,0" concept="3" trace="test_TypeOver_AssignmentBefore#()V" />
+      <node id="614331455315044115" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="614331455315044115" at="18,43,19,25" />
+      <scope id="614331455315044115" at="23,65,24,36" />
+      <scope id="614331455315044115" at="29,52,30,19" />
+      <scope id="614331455315044115" at="34,51,36,22" />
+      <scope id="614331455315044115" at="18,0,21,0" />
+      <scope id="614331455315044115" at="29,0,32,0">
+        <var name="owner" id="614331455315044115" />
+      </scope>
+      <scope id="614331455315044115" at="22,0,26,0" />
+      <scope id="614331455315044115" at="33,0,38,0" />
+      <unit id="614331455315044115" at="27,0,39,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_AssignmentBefore_Test$TestBody" />
+      <unit id="614331455315044115" at="13,0,40,0" name="jetbrains.mps.lang.editor.actions.test.TypeOver_AssignmentBefore_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/618557683845300132">

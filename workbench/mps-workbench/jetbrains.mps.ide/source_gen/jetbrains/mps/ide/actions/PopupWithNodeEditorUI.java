@@ -85,19 +85,22 @@ public final class PopupWithNodeEditorUI implements Disposable {
   @NotNull
   private final EditorComponent myUIEditorComponent;
   @NotNull
+  private final EditorComponent myMainEditorComponent;
+  @NotNull
   private final JLabel myLocationLabel = new JLabel("");
   @NotNull
   private final JLabel myCountLabel = new JLabel("0 of 0");
   @Nullable
   private JBPopup myPopup = null;
 
-  public PopupWithNodeEditorUI(@NotNull final Project project) {
+  public PopupWithNodeEditorUI(@NotNull final Project project, @NotNull final EditorComponent editorComponent) {
     myPanel = new JPanel();
+    myMainEditorComponent = editorComponent;
     myImplNodes = new ArrayList<ImplementationNode>();
     myNodeChooser = new ComboBox<ImplementationNode>(new CollectionComboBoxModel<ImplementationNode>(myImplNodes, null));
     myLabel = new JLabel();
     myProject = project;
-    myUIEditorComponent = new NodeEditorComponent(project.getRepository(), new EditorConfigurationBuilder().showLeftHighlighter(false).readOnly(true));
+    myUIEditorComponent = new NodeEditorComponent(project.getRepository(), new EditorConfigurationBuilder().showLeftHighlighter(false).readOnly(true).hasContextMenu(false));
 
     configurePermanentUI();
     configureBehaviour();
@@ -307,11 +310,11 @@ public final class PopupWithNodeEditorUI implements Disposable {
   }
 
   private class ShowSourceAction extends AnAction {
-    private final boolean myClosePopup;
+    private final boolean myFocusEditor;
 
-    public ShowSourceAction(String name, Icon icon, boolean closePopup) {
+    public ShowSourceAction(String name, Icon icon, boolean focusEditor) {
       super(name, null, icon);
-      myClosePopup = closePopup;
+      myFocusEditor = focusEditor;
     }
 
     @Override
@@ -324,8 +327,10 @@ public final class PopupWithNodeEditorUI implements Disposable {
       if (selectedNode == null) {
         return;
       }
-      new EditorNavigator(myProject).shallFocus(true).shallSelect(true).open(selectedNode);
-      if (myClosePopup && myPopup != null) {
+      myMainEditorComponent.deactivateSubstituteChooser();
+      new EditorNavigator(myProject).shallFocus(myFocusEditor).shallSelect(true).open(selectedNode);
+
+      if (myPopup != null) {
         myPopup.cancel();
       }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2019 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,4 +20,14 @@ package jetbrains.mps.smodel.runtime;
  * @see jetbrains.mps.smodel.language.LanguageRuntime#getAspect(Class)
  */
 public interface ILanguageAspect {
+
+  /**
+   * Invoked by LanguageRuntime once it's no longer in use. Intended to perform cleanup of internal caches only.
+   * Aspect implementation shall not access another aspect of the language here;
+   * moreover, generally shall not query any external service that could be unavailable the moment languages get disposed.
+   * Note, aspect instances get disposed in no particular order.
+   */
+  default void dispose() {
+    // no-op
+  }
 }

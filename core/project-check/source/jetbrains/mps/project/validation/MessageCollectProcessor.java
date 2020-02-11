@@ -21,8 +21,9 @@ import org.jetbrains.mps.openapi.util.Processor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class MessageCollectProcessor<T extends ReportItem> implements Processor<T> {
+public class MessageCollectProcessor<T extends ReportItem> implements Processor<T>, Consumer<T> {
   private List<String> myWarnings = new ArrayList<>(1);
   private List<String> myErrors = new ArrayList<>(1);
   private final boolean myCollectWarnings;
@@ -43,6 +44,11 @@ public class MessageCollectProcessor<T extends ReportItem> implements Processor<
       myWarnings.add(formatMessage(problem));
     }
     return true;
+  }
+
+  @Override
+  public void accept(T t) {
+    process(t);
   }
 
   protected String formatMessage(T problem) {

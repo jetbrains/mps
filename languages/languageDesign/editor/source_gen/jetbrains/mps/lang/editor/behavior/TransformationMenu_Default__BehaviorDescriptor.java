@@ -14,13 +14,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TransformationMenu_Default__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
@@ -33,13 +29,8 @@ public final class TransformationMenu_Default__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static boolean canBeAppliedToNode_id7IH442d05tK(@NotNull SAbstractConcept __thisConcept__, SNode candidate) {
-    List<SNode> existing = AbstractConceptDeclaration__BehaviorDescriptor.findConceptAspectCollection_id1n18fON7w20.invoke(candidate, LanguageAspect.EDITOR);
-    for (SNode node : existing) {
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.TransformationMenu_Default$In)) {
-        return false;
-      }
-    }
-    return true;
+    //  disable deprecated aspect 
+    return false;
   }
 
   /*package*/ TransformationMenu_Default__BehaviorDescriptor() {
@@ -86,9 +77,5 @@ public final class TransformationMenu_Default__BehaviorDescriptor extends BaseBH
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu_Default$In = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
   }
 }

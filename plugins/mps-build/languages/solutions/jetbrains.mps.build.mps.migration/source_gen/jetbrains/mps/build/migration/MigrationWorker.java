@@ -18,7 +18,7 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import java.lang.reflect.Method;
 import com.intellij.openapi.project.ProjectManager;
@@ -81,7 +81,7 @@ public class MigrationWorker extends WorkerBase {
           try {
             // XXX instead of explicit IDEA's PluginManager, we could use CL of "j.m.migration.component" MPS module to load desired class 
             // MPS would resort to proper plugin CL to perform the task. 
-            Class<?> euClass = PluginManager.getPlugin(PluginId.getId(MIGRATION_PLUGIN)).getPluginClassLoader().loadClass(TASK_EXEC_CLASS);
+            Class<?> euClass = PluginManagerCore.getPlugin(PluginId.getId(MIGRATION_PLUGIN)).getPluginClassLoader().loadClass(TASK_EXEC_CLASS);
             Method method = euClass.getMethod("migrate", Project.class);
             method.invoke(null, project);
             com.intellij.openapi.project.Project[] projects = ProjectManager.getInstance().getOpenProjects();

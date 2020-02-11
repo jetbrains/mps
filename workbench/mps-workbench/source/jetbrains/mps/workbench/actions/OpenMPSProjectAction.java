@@ -16,7 +16,6 @@
 package jetbrains.mps.workbench.actions;
 
 import com.intellij.icons.AllIcons.Actions;
-import com.intellij.icons.AllIcons.Welcome;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.ActionPlaces;
@@ -37,7 +36,7 @@ import java.util.Map;
 
 public class OpenMPSProjectAction extends BaseAction {
   private static final Icon OPEN_ICON = Actions.Menu_open;
-  private static final Icon OPEN_ICON_WELCOME_SCREEN = Welcome.OpenProject;
+  private static final Icon OPEN_ICON_WELCOME_SCREEN = Actions.Menu_open;
 
   public OpenMPSProjectAction() {
     setExecuteOutsideCommand(true);

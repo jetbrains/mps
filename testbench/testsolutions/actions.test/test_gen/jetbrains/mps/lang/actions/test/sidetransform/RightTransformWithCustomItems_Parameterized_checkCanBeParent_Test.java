@@ -9,6 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
+import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -36,7 +37,11 @@ public class RightTransformWithCustomItems_Parameterized_checkCanBeParent_Test e
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3185679905991685373", "3185679905991685376");
-      typeString(" ");
+      EditorTestUtil.runWithTypeOverExistingText(new EditorTestUtil.EditorTestRunnable() {
+        public void run() throws Exception {
+          typeString(" ");
+        }
+      }, false);
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isMenuEmpty());

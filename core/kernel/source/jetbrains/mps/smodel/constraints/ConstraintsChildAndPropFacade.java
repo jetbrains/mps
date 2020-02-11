@@ -21,8 +21,12 @@ import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 import java.util.Collections;
 import java.util.List;
@@ -34,6 +38,8 @@ import java.util.List;
  * @author apyshkin
  */
 public final class ConstraintsChildAndPropFacade {
+  private static final Logger LOG = LogManager.getLogger(ConstraintsChildAndPropFacade.class);
+
   private ConstraintsChildAndPropFacade() {}
 
   /**
@@ -42,10 +48,12 @@ public final class ConstraintsChildAndPropFacade {
    */
   @NotNull
   public static List<FailingPropertyConstraintProblem> checkPropertyValue(@NotNull FailingPropertyConstraintContext context) {
-    final SDataType type = context.getProperty().getType();
+    final SProperty property = context.getProperty();
+    final SAbstractConcept concept = context.getConcept();
+    final SDataType type = property.getType();
     Object value = context.getValue();
     if (!type.isInstanceOf(value)) {
-      return Collections.singletonList(new FailingPropertyConstraintProblem(context.getProperty(), null));
+      return Collections.singletonList(new FailingPropertyConstraintProblem(property, null));
     }
     if (value == null && type.isInstanceOf("")) {
       // existent property constraints relies to take empty string values instead of null as its argument
@@ -54,14 +62,17 @@ public final class ConstraintsChildAndPropFacade {
     }
     CheckingNodeContextImpl debugInfo = new CheckingNodeContextImpl();
     @NotNull ConstraintsDescriptor descriptor = ConceptRegistryUtil.getConstraintsDescriptor(context.getNode().getConcept());
-    PropertyConstraintsDescriptor pcd = descriptor.getProperty(context.getProperty());
+    PropertyConstraintsDescriptor pcd = descriptor.getProperty(property);
     if (pcd == null) {
-      return Collections.singletonList(new FailingPropertyConstraintProblem(context.getProperty(), context.getNode().getReference()));
+      return Collections.singletonList(new FailingPropertyConstraintProblem(property, context.getNode().getReference()));
     }
-    boolean res = pcd.validateValue(context.getNode(), value, debugInfo);
-    if (res) {
-      return Collections.emptyList();
+    try {
+      if (pcd.validateValue(context.getNode(), value, debugInfo)) {
+        return Collections.emptyList();
+      }
+    } catch (Throwable t) {
+      LOG.error("Exception occurred during execution of property validation constraint: " + concept + ":" + property, t);
     }
-    return Collections.singletonList(new FailingPropertyConstraintProblem(context.getProperty(), debugInfo.getBreakingNode()));
+    return Collections.singletonList(new FailingPropertyConstraintProblem(property, debugInfo.getBreakingNode()));
   }
 }

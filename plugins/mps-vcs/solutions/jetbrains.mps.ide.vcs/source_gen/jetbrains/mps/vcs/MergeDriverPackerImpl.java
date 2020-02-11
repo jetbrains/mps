@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import jetbrains.mps.util.ClassType;
 import jetbrains.mps.util.ClassPathReader;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -56,7 +56,7 @@ public class MergeDriverPackerImpl extends MergeDriverPacker implements Applicat
   }
   @Override
   protected String getVCSCorePluginPath() {
-    IdeaPluginDescriptor vcsCorePlugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
+    IdeaPluginDescriptor vcsCorePlugin = PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
     assert vcsCorePlugin != null;
     return vcsCorePlugin.getPath().getPath();
   }

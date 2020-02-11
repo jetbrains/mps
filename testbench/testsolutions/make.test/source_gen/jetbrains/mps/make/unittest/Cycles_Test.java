@@ -119,6 +119,43 @@ public class Cycles_Test extends TestCase {
     }, false);
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"), cd.topologicalSort());
   }
+  public void test_totalOrderCompactNoSelfEdges() throws Exception {
+    Graph<String> graph = forTotalOrder();
+
+    GraphAnalyzer<String> cd = graph.getCycleDetector();
+
+    // L3, S9, L1, {S1, M1, M2, S2, S0}, S3, S6, {S4,L2} 
+    Assert.assertEquals(7, ListSequence.fromList(cd.totalOrder(false)).count());
+
+    List<List<String>> cycles = cd.totalOrder(true);
+    Assert.assertEquals(4, ListSequence.fromList(cycles).count());
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "L3", "S9", "L1"), ListSequence.fromList(cycles).getElement(0));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S1", "M1", "M2", "S2", "S0"), ListSequence.fromList(cycles).getElement(1));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S3", "S6"), ListSequence.fromList(cycles).getElement(2));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S4", "L2"), ListSequence.fromList(cycles).getElement(3));
+  }
+  public void test_totalOrderCompactWithSelfEdges() throws Exception {
+    final Graph<String> graph = forTotalOrder();
+    // same graph as above, with each node keeping dependency to self 
+    // The idea here is to see how MPS-15018 fix (a3220e6e) affects the outcome graph 
+    // Compare the outcome with the result in totalOrderCompactNoSelfEdges(), above, to see the difference 
+    // It's still unclear to me how come this change helps to address the issue, the test added just to capture this difference 
+    Sequence.fromIterable(graph.getVertices()).visitAll(new IVisitor<String>() {
+      public void visit(String it) {
+        graph.addEdges(it, it);
+      }
+    });
+    //  
+    GraphAnalyzer<String> cd = graph.getCycleDetector();
+    List<List<String>> cycles = cd.totalOrder(true);
+    Assert.assertEquals(6, ListSequence.fromList(cycles).count());
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "L3"), ListSequence.fromList(cycles).getElement(0));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S9", "L1"), ListSequence.fromList(cycles).getElement(1));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S1", "M1", "M2", "S2", "S0"), ListSequence.fromList(cycles).getElement(2));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S3"), ListSequence.fromList(cycles).getElement(3));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S6"), ListSequence.fromList(cycles).getElement(4));
+    Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "S4", "L2"), ListSequence.fromList(cycles).getElement(5));
+  }
   public void test_precursors() throws Exception {
     Graph<String> graph = new Graph<String>();
     graph.addEdges("A", "B");
@@ -135,5 +172,39 @@ public class Cycles_Test extends TestCase {
       }
     }, false);
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "A", "B", "C", "D", "E"), cd.precursors("E"));
+  }
+  private Graph<String> forTotalOrder() {
+    Graph<String> graph = new Graph<String>();
+    // addEdges: add 'forward' edge aka 'dependent', not 'required'. Read "'from' is a dependency for 'to' )  
+    //  cycle of 3 (S0 <- S1 <- S2 <- S0) 
+    graph.addEdges("S0", "S1");
+    graph.addEdges("S1", "S2");
+    graph.addEdges("S2", "S0");
+    // dependent outside of the first cycle (S1 uses L1) 
+    // L1 <- S1 
+    graph.addEdges("L1", "S1");
+    // another dependent (pair of, S3 and S6) out of the cycle 
+    // S2 <- S3 <- S6 <- S4 
+    graph.addEdges("S2", "S3");
+    graph.addEdges("S3", "S6");
+    graph.addEdges("S6", "S4");
+    // S4+L2 is one more cycle 
+    // S4 <-> L2 
+    graph.addEdges("L2", "S4");
+    graph.addEdges("S4", "L2");
+    // part of graph independent from above (simulates a project language, independent from anything else in the project, and a solution written in the language) 
+    // L3 <- S9 
+    graph.addEdges("L3", "S9");
+    // bigger cycle that includes the first one, S1 <- M1 <- M2 <- S2 
+    graph.addEdges("S1", "M1");
+    graph.addEdges("M1", "M2");
+    graph.addEdges("M2", "S2");
+
+    graph.sort(new _FunctionTypes._return_P1_E0<String, String>() {
+      public String invoke(String s) {
+        return s;
+      }
+    }, true);
+    return graph;
   }
 }

@@ -652,7 +652,7 @@
       <node id="3215910972767110643" at="82,15,83,0" concept="9" />
       <node id="4710708256402349000" at="83,0,84,92" concept="6" />
       <node id="4710708256403507097" at="84,92,85,97" concept="2" />
-      <node id="6919512216184423819" at="88,88,89,206" concept="2" />
+      <node id="6919512216184423819" at="88,88,89,215" concept="2" />
       <node id="4710708256403370712" at="93,105,94,86" concept="2" />
       <node id="4710708256403847086" at="94,86,95,0" concept="9" />
       <node id="4710708256404537886" at="96,15,97,102" concept="2" />
@@ -708,7 +708,7 @@
       <scope id="4147037235115846012" at="68,51,69,123" />
       <scope id="3558668946651441187" at="71,19,72,23" />
       <scope id="3215910972757297487" at="78,52,79,55" />
-      <scope id="4710708256402399868" at="88,88,89,206" />
+      <scope id="4710708256402399868" at="88,88,89,215" />
       <scope id="4147037235115268451" at="111,52,112,36" />
       <scope id="2386398653329945881" at="116,41,117,109" />
       <scope id="4147037235115710931" at="123,40,124,143" />
@@ -789,6 +789,126 @@
       <unit id="3215910972768086858" at="65,211,99,11" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseTextLang$2$1" />
       <unit id="3215910972760646700" at="61,101,101,7" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseTextLang$2" />
       <unit id="6919512216183344778" at="37,0,154,0" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseTextLang" />
+    </file>
+  </root>
+  <root nodeRef="r:1dca72a1-44ae-4339-a783-4859610b0285(jetbrains.mps.baseLanguage.migration)/7111612434693067915">
+    <file name="UpdateSingleLineCommentToUseLinePerComment.java">
+      <node id="7111612434693067915" at="31,0,32,0" concept="3" trace="description" />
+      <node id="7111612434693067915" at="32,30,33,23" concept="7" />
+      <node id="7111612434693067915" at="36,33,37,16" concept="7" />
+      <node id="7111612434693067915" at="39,41,40,17" concept="2" />
+      <node id="7111612434693067915" at="40,17,41,16" concept="7" />
+      <node id="7111612434693072335" at="44,5,45,64" concept="6" />
+      <node id="7111612434693072335" at="45,64,46,90" concept="6" />
+      <node id="7111612434693072335" at="48,52,49,36" concept="7" />
+      <node id="7111612434693072337" at="51,8,52,0" concept="9" />
+      <node id="7111612434693072348" at="54,48,55,0" concept="9" />
+      <node id="3297136752050775090" at="57,45,58,106" concept="7" />
+      <node id="7111612434693072384" at="61,48,62,0" concept="9" />
+      <node id="7111612434694054377" at="62,0,63,119" concept="6" />
+      <node id="7111612434693640688" at="64,76,65,75" concept="2" />
+      <node id="9217259655397699459" at="68,51,69,197" concept="7" />
+      <node id="7111612434693769624" at="72,15,73,0" concept="9" />
+      <node id="7111612434694008965" at="75,49,76,58" concept="7" />
+      <node id="7111612434694372731" at="79,47,80,219" concept="6" />
+      <node id="7111612434694219619" at="80,219,81,71" concept="2" />
+      <node id="7111612434694436012" at="81,71,82,76" concept="2" />
+      <node id="7111612434694566778" at="84,17,85,95" concept="2" />
+      <node id="7111612434693067915" at="92,51,93,147" concept="7" />
+      <node id="9217259655397883355" at="96,55,97,43" concept="7" />
+      <node id="7111612434693067915" at="101,0,102,0" concept="10" trace="SingleLineComment$jI" />
+      <node id="7111612434693067915" at="102,0,103,0" concept="10" trace="Word$AM" />
+      <node id="7111612434693067915" at="106,0,107,0" concept="10" trace="text$BOhB" />
+      <node id="7111612434693067915" at="107,0,108,0" concept="10" trace="line$32mp" />
+      <node id="7111612434693067915" at="108,0,109,0" concept="10" trace="elements$eRew" />
+      <node id="7111612434693067915" at="112,0,113,0" concept="10" trace="value$cK70" />
+      <node id="7111612434693067915" at="32,0,35,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
+      <node id="7111612434693072335" at="48,0,51,0" concept="5" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="3297136752050764911" at="57,0,60,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="9217259655397683587" at="68,0,71,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7111612434693987939" at="75,0,78,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7111612434693067915" at="92,0,95,0" concept="5" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="9217259655397883355" at="96,0,99,0" concept="11" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
+      <node id="7111612434693067915" at="35,0,39,0" concept="5" trace="isRerunnable#()Z" />
+      <node id="7111612434693067915" at="39,0,43,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7111612434693072335" at="46,90,51,8" concept="6" />
+      <node id="9217259655397472704" at="66,22,71,20" concept="2" />
+      <node id="7111612434693930533" at="79,0,84,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="9217259655397462592" at="66,20,72,15" concept="0" />
+      <node id="9217259655397370532" at="63,119,72,15" concept="4" />
+      <node id="7111612434693832026" at="73,0,84,17" concept="2" />
+      <node id="7111612434693072358" at="61,0,87,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="7111612434693072349" at="55,0,87,13" concept="2" />
+      <node id="7111612434693072342" at="54,0,89,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="7111612434693072338" at="52,0,89,9" concept="2" />
+      <node id="7111612434693072335" at="43,42,90,5" concept="0" />
+      <node id="7111612434693067915" at="43,0,92,0" concept="5" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="7111612434693067915" at="32,30,33,23" />
+      <scope id="7111612434693067915" at="36,33,37,16" />
+      <scope id="7111612434693072335" at="48,52,49,36" />
+      <scope id="3297136752050764912" at="57,45,58,106" />
+      <scope id="9217259655397370534" at="64,76,65,75" />
+      <scope id="9217259655397683588" at="68,51,69,197" />
+      <scope id="7111612434693987940" at="75,49,76,58" />
+      <scope id="7111612434693067915" at="92,51,93,147" />
+      <scope id="9217259655397883355" at="96,55,97,43" />
+      <scope id="7111612434693067915" at="39,41,41,16" />
+      <scope id="7111612434693067915" at="32,0,35,0" />
+      <scope id="7111612434693072335" at="48,0,51,0" />
+      <scope id="3297136752050764911" at="57,0,60,0">
+        <var name="it" id="3297136752050764911" />
+      </scope>
+      <scope id="9217259655397683587" at="68,0,71,0">
+        <var name="it" id="9217259655397683587" />
+      </scope>
+      <scope id="7111612434693987939" at="75,0,78,0">
+        <var name="it" id="7111612434693987939" />
+      </scope>
+      <scope id="7111612434693930534" at="79,47,82,76">
+        <var name="comment" id="7111612434694372732" />
+      </scope>
+      <scope id="7111612434693067915" at="92,0,95,0" />
+      <scope id="9217259655397883355" at="96,0,99,0">
+        <var name="str" id="9217259655397883355" />
+      </scope>
+      <scope id="7111612434693067915" at="35,0,39,0" />
+      <scope id="7111612434693067915" at="39,0,43,0">
+        <var name="m" id="7111612434693067915" />
+      </scope>
+      <scope id="9217259655397462593" at="66,22,71,20" />
+      <scope id="7111612434693930533" at="79,0,84,0">
+        <var name="line" id="7111612434693930533" />
+      </scope>
+      <scope id="7111612434693072359" at="61,48,85,95">
+        <var name="firstLine" id="7111612434694054378" />
+      </scope>
+      <scope id="7111612434693072358" at="61,0,87,0">
+        <var name="slc" id="7111612434693072358" />
+      </scope>
+      <scope id="7111612434693072343" at="54,48,87,13" />
+      <scope id="7111612434693072342" at="54,0,89,0">
+        <var name="currentModel" id="7111612434693072342" />
+      </scope>
+      <scope id="7111612434693072335" at="44,5,89,9">
+        <var name="context" id="7111612434693072335" />
+        <var name="scope_ropth0_a0e" id="7111612434693072335" />
+        <var name="scope_ropth0_a0e_0" id="7111612434693072335" />
+      </scope>
+      <scope id="7111612434693067915" at="43,42,90,5" />
+      <scope id="7111612434693067915" at="43,0,92,0">
+        <var name="m" id="7111612434693067915" />
+      </scope>
+      <unit id="7111612434693067915" at="111,0,114,0" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$PROPS" />
+      <unit id="7111612434693072335" at="47,48,51,7" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$1" />
+      <unit id="3297136752050764911" at="56,208,60,11" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$2$1" />
+      <unit id="9217259655397683587" at="67,242,71,17" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$2$2$1" />
+      <unit id="7111612434693987939" at="74,112,78,15" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$2$2$2" />
+      <unit id="7111612434693067915" at="100,0,104,0" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$CONCEPTS" />
+      <unit id="7111612434693067915" at="105,0,110,0" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$LINKS" />
+      <unit id="7111612434693930533" at="78,30,84,15" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$2$2$3" />
+      <unit id="7111612434693072358" at="60,26,87,11" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$2$2" />
+      <unit id="7111612434693072342" at="53,101,89,7" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment$2" />
+      <unit id="7111612434693067915" at="30,0,115,0" name="jetbrains.mps.baseLanguage.migration.UpdateSingleLineCommentToUseLinePerComment" />
     </file>
   </root>
   <root nodeRef="r:1dca72a1-44ae-4339-a783-4859610b0285(jetbrains.mps.baseLanguage.migration)/7690769658520961928">

@@ -5,13 +5,15 @@ package jetbrains.mps.lang.text.editor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -52,18 +54,29 @@ import org.jetbrains.mps.openapi.language.SProperty;
     @Override
     /*package*/ void execute() {
       SNode currentLine = SNodeOperations.cast(SNodeOperations.getParent(myElement), CONCEPTS.Line$w3);
+      SNode lineContainer = TextStrategy.findLineContainer(currentLine);
+
       SNode currentSibling = SNodeOperations.cast(SNodeOperations.getNextSibling(myElement), CONCEPTS.TextElement$Ue);
       SNode newElement = createNewElement();
-      SNode newLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(newElement);
-      while (currentSibling != null) {
-        SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), CONCEPTS.TextElement$Ue);
-        ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(currentSibling);
-        currentSibling = next;
-      }
-      SNodeOperations.insertNextSiblingChild(currentLine, newLine);
-      if (mySelectNewLine) {
-        SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newElement, SelectionManager.FIRST_CELL, 0);
+
+      // Test if a new Line following the current Line should be created 
+      if (currentSibling != null || myIncludeCurrentElement || currentLine == lineContainer || isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(newElement, CONCEPTS.Word$AM), PROPS.value$cK70))) {
+        SNode newLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
+        ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(newElement);
+        while (currentSibling != null) {
+          SNode next = SNodeOperations.cast(SNodeOperations.getNextSibling(currentSibling), CONCEPTS.TextElement$Ue);
+          ListSequence.fromList(SLinkOperations.getChildren(newLine, LINKS.elements$eRew)).addElement(currentSibling);
+          currentSibling = next;
+        }
+
+        TextStrategy.createNewLineContainer(lineContainer, newLine);
+        if (mySelectNewLine) {
+          SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newElement, SelectionManager.FIRST_CELL, 0);
+        }
+      } else {
+        // No new line should be created, create a default node in the closest ancestor collection 
+        SAbstractConcept c = SNodeOperations.getContainingLink(lineContainer).getTargetConcept();
+        SNodeOperations.insertNextSiblingChild(lineContainer, SNodeFactoryOperations.createNewNode(c, null));
       }
     }
 
@@ -73,6 +86,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
       } else {
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
       }
+    }
+    private static boolean isNotEmptyString(String str) {
+      return str != null && str.length() > 0;
     }
   }
   private static class AddNewLineAndSplitWordStrategy extends AddNewLineStrategy {

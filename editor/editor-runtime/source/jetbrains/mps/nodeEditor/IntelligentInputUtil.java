@@ -256,13 +256,15 @@ public class IntelligentInputUtil {
           if (tryToSubstituteFirstSuitable(smallPattern + tail, mySubstituteInfo)) {
             return true;
           }
+          myCell.setText(smallPattern + tail);
           activateNodeSubstituteChooser(myEditorContext, myCell);
+          return true;
         } else if (isInAmbigousPosition(mySubstituteInfo, smallPattern, tail)) {
           if (tryToSubstituteFirstSuitable(smallPattern, mySubstituteInfo)) {
             return true;
           }
-          myCell.setText(smallPattern);
           activateNodeSubstituteChooser(myEditorContext, myCell);
+          return true;
         }
       }
       return false;
@@ -279,7 +281,8 @@ public class IntelligentInputUtil {
 
       if (rtAction == null || !hasSideActions) {
         final CellInfo cellInfo = cellForNewNode.getCellInfo();
-        return putTextInErrorChild(cellInfo, smallPattern + tail, myEditorContext);
+        putTextInErrorChild(cellInfo, smallPattern + tail, myEditorContext);
+        return false;
       }
 
       if (cellForNewNode instanceof EditorCell_Label) {
@@ -399,7 +402,8 @@ public class IntelligentInputUtil {
       if (ltAction == null || !hasSideActions) {
         CellInfo cellInfo = cellForNewNode.getCellInfo();
         if (!sourceCellRemains) {
-          return putTextInErrorChild(cellInfo, head + smallPattern, myEditorContext);
+          putTextInErrorChild(cellInfo, head + smallPattern, myEditorContext);
+          return false;
         } else {
           return false;
         }
@@ -472,7 +476,7 @@ public class IntelligentInputUtil {
       return prepareSTCell(context, node, textToSet);
     }
 
-    private boolean putTextInErrorChild(CellInfo cellInfo, String textToSet, EditorContext editorContext) {
+    private void putTextInErrorChild(CellInfo cellInfo, String textToSet, EditorContext editorContext) {
       editorContext.flushEvents();
       EditorComponent component = (EditorComponent) editorContext.getEditorComponent();
       EditorCell cellToSelect = cellInfo.findCell(component);
@@ -481,10 +485,8 @@ public class IntelligentInputUtil {
         if (label != null && label != cellToSelect && label.isEditable() && !(label instanceof EditorCell_Constant)) {
           label.changeText(textToSet);
           label.end();
-          return true;
         }
       }
-      return false;
     }
 
     private boolean hasSideActions(EditorCell cell, Side side, String prefix) {

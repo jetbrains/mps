@@ -35,6 +35,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class ScopeUtil {
   public ScopeUtil() {
   }
+
   public static Scope simpleRoleScope(SNode node, SContainmentLink link) {
     return new SimpleRoleScope(node, link) {
       @Override
@@ -46,6 +47,7 @@ public class ScopeUtil {
       }
     };
   }
+
   public static Scope where(Scope scope, final _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> filter) {
     return new FilteringScope(scope) {
       @Override
@@ -54,6 +56,7 @@ public class ScopeUtil {
       }
     };
   }
+
   public static Iterable<Scope> imported(Iterable<SNode> importDeclarations, final SAbstractConcept concept, final SNode child) {
     return Sequence.fromIterable(importDeclarations).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -76,6 +79,7 @@ public class ScopeUtil {
       }
     });
   }
+
   public static Scope unique(Scope scope) {
     return new DelegatingScope(scope) {
       @Override
@@ -84,6 +88,7 @@ public class ScopeUtil {
       }
     };
   }
+
   public static Scope getVisibleArtifactsScope(SNode project, boolean includeLayoutRoots) {
     if (SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule) {
       SModule transientModule = SNodeOperations.getModel(project).getModule();
@@ -91,20 +96,26 @@ public class ScopeUtil {
     }
     return new VisibleArtifactsScope(VisibleArtifacts.createFor(project), includeLayoutRoots);
   }
+
+  /**
+   * returns the external jars which are visible for a build project
+   */
   public static Scope getVisibleJarsScope(SNode project) {
     if (SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule) {
       SModule transientModule = SNodeOperations.getModel(project).getModule();
       return new ModelPlusImportedScope(SNodeOperations.getModel(project), false, CONCEPTS.BuildSource_SingleFile$P_);
     }
-    return new VisibleJarsScope(VisibleArtifacts.createFor(project));
+    return new VisibleJarsScope(VisibleArtifacts.createExternalFor(project));
   }
+
   public static Scope getVisibleJarFoldersScope(SNode project) {
     if (SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule) {
       SModule transientModule = SNodeOperations.getModel(project).getModule();
       return new ModelPlusImportedScope(SNodeOperations.getModel(project), false, CONCEPTS.BuildSource_SingleFolder$ux);
     }
-    return new VisibleJarFoldersScope(VisibleArtifacts.createFor(project));
+    return new VisibleJarFoldersScope(VisibleArtifacts.createExternalFor(project));
   }
+
   private static class VisibleArtifactsScope extends Scope {
     private VisibleArtifacts artifacts;
     private boolean includeLayoutRoots;

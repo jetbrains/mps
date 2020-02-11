@@ -26,6 +26,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
@@ -108,9 +109,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return null;
     }
 
-    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Default$hk)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu$v4)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt) == concept;
+        return SLinkOperations.getTarget(it, LINKS.conceptDeclaration$acmt) == concept && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it);
       }
     });
   }
@@ -229,7 +230,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenu_Default$hk = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
+    /*package*/ static final SConcept SubstituteMenu$v4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
     /*package*/ static final SInterfaceConcept ISubstituteMenuReference$Ak = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x36f88ebb7cc59e52L, "jetbrains.mps.lang.editor.structure.ISubstituteMenuReference");
     /*package*/ static final SConcept SubstituteMenuReference_Default$TI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
     /*package*/ static final SConcept LinkAttribute$7j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");

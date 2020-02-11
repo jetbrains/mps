@@ -9,6 +9,7 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
+import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
 public class BadCodeTest_Test extends BaseTransformationTest {
@@ -33,7 +34,11 @@ public class BadCodeTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1230058635715", "1230058635724");
-      typeString("2;");
+      EditorTestUtil.runWithTypeOverExistingText(new EditorTestUtil.EditorTestRunnable() {
+        public void run() throws Exception {
+          typeString("2;");
+        }
+      }, false);
     }
   }
 }

@@ -32,6 +32,7 @@ import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.IdeFocusManager;
+import com.intellij.util.messages.Topic;
 import jetbrains.mps.ide.editor.BaseNodeEditor;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.editorTabs.tabfactory.NodeChangeCallback;
@@ -105,6 +106,9 @@ public class TabbedEditor extends BaseNodeEditor {
   private boolean myDisposed;
   private final Disposable myDisposable = Disposer.newDisposable(TabbedEditor.class.getName());
 
+  public static final Topic<TabChangedListener> TAB_CHANGES = new Topic<>(TabChangedListener.class);
+  private final TabChangedListener myEventPublisher;
+
   public TabbedEditor(SNodeReference baseNode, Set<RelationDescriptor> possibleTabs, @NotNull Project mpsProject) {
     super(mpsProject);
     myBaseNode = baseNode;
@@ -136,6 +140,7 @@ public class TabbedEditor extends BaseNodeEditor {
     myTabsPanel.add(btn, BorderLayout.WEST);
 
     EditorSettings.getInstance().addEditorSettingsListener(mySettingsListener);
+    myEventPublisher = ((MPSProject)mpsProject).getProject().getMessageBus().syncPublisher(TAB_CHANGES);
   }
 
   private void installTabsComponent() {
@@ -259,6 +264,10 @@ public class TabbedEditor extends BaseNodeEditor {
     if (virtualFile != null) {
       FileStatusManager.getInstance(project).fileStatusChanged(virtualFile);
       manager.updateFilePresentation(virtualFile);
+    }
+
+    if (this.getCurrentlyEditedNode() != null) {
+      myEventPublisher.tabChanged(getCurrentlyEditedNode());
     }
   }
 
@@ -414,5 +423,9 @@ public class TabbedEditor extends BaseNodeEditor {
       myTabsComponent.updateTabs();
       myTabsComponent.editNode(newNode);
     }
+  }
+
+  public interface TabChangedListener {
+    void tabChanged(@NotNull SNodeReference nodeReference);
   }
 }

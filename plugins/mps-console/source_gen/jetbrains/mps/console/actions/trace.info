@@ -90,7 +90,7 @@
   </root>
   <root nodeRef="r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/3257040239264853769">
     <file name="ConsoleActions.xml">
-      <unit id="3257040239264853769" at="1,0,41,13" name="jetbrains.mps.console.actions.ConsoleActions" />
+      <unit id="3257040239264853769" at="1,0,39,13" name="jetbrains.mps.console.actions.ConsoleActions" />
     </file>
   </root>
   <root nodeRef="r:ab572aa6-6e4f-43f3-8bc9-ad4a8ae29372(jetbrains.mps.console.actions)/3257040239274145603">

@@ -70,6 +70,7 @@ public class GoToDeclarationInMenu_Action extends BaseAction {
     final SNode declaration = GoToDeclarationInMenu_Action.this.getNodeDeclaration(_params);
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
       public void run() {
+        ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).deactivateSubstituteChooser();
         new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(declaration));
       }
     });

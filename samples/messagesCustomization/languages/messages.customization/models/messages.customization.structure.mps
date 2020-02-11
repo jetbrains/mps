@@ -100,6 +100,9 @@
     <property role="TrG5h" value="AuxConcept" />
     <property role="19KtqR" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="6uBDHA8LL7" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
   </node>
   <node concept="1TIwiD" id="65DbCInTWch">
     <property role="EcuMT" value="7019192671317508881" />
@@ -177,6 +180,26 @@
     </node>
     <node concept="t5JxF" id="65DbCInVC9K" role="lGtFl">
       <property role="t5JxN" value="checking the inheritance in the aspect 'feedback'" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6uBDHA8_ni">
+    <property role="EcuMT" value="116705030628857298" />
+    <property role="TrG5h" value="IncorrectTargetTestConcept" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6uBDHA8_nj" role="1TKVEi">
+      <property role="IQ2ns" value="7019192671317573556" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="obligatorychild" />
+      <ref role="20lvS9" node="2w7KopAY7a3" resolve="AuxConcept" />
+    </node>
+    <node concept="1TJgyj" id="6uBDHA8_nk" role="1TKVEi">
+      <property role="IQ2ns" value="7019192671317573552" />
+      <property role="20kJfa" value="obligatoryref" />
+      <ref role="20lvS9" node="2w7KopAY7a3" resolve="AuxConcept" />
+    </node>
+    <node concept="PrWs8" id="6uBDHA8_nl" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
 </model>

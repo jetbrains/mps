@@ -14,13 +14,8 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -32,9 +27,10 @@ import jetbrains.mps.generator.impl.plan.ModelContentUtil;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import java.util.Collections;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.LinkedList;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
 @GeneratedClass(node = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)/5888262800849895741", model = "r:d357a980-6a2b-481f-acb3-29792a9d3728(jetbrains.mps.make.dependencies)")
 public class ModulesCluster {
@@ -66,17 +62,12 @@ public class ModulesCluster {
     }
   }
 
-  public Iterable<? extends Iterable<SModule>> buildOrder(Iterable<SModule> pool) {
+  public Iterable<List<SModule>> buildOrder(Iterable<SModule> pool) {
     collectRequired(pool);
-    List<List<SModuleReference>> order = new ModulesGraph().totalOrder();
-    Iterable<? extends Iterable<SModuleReference>> compacted = Sequence.fromIterable(this.compact(order)).toListSequence();
-    return Sequence.fromIterable(compacted).select(new ISelector<Iterable<SModuleReference>, IListSequence<SModule>>() {
-      public IListSequence<SModule> select(Iterable<SModuleReference> cycle) {
-        return Sequence.fromIterable(cycle).select(new ISelector<SModuleReference, SModule>() {
-          public SModule select(SModuleReference mr) {
-            return MapSequence.fromMap(myDepsGraph).get(mr).getModule();
-          }
-        }).toListSequence();
+    List<ModulesGraph.Cycle> compacted = new ModulesGraph(MapSequence.fromMap(myDepsGraph).values()).compactTotalOrder();
+    return ListSequence.fromList(compacted).select(new ISelector<ModulesGraph.Cycle, List<SModule>>() {
+      public List<SModule> select(ModulesGraph.Cycle cycle) {
+        return cycle.modules();
       }
     }).toListSequence();
   }
@@ -88,97 +79,6 @@ public class ModulesCluster {
     return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference()).usedLanguages;
   }
 
-  private Iterable<? extends Iterable<SModuleReference>> compact(List<List<SModuleReference>> order) {
-    // XXX what's the point of this code, what do we 'compact' here? Do we merge cycles so that they are built together and later has a chance to load ok? 
-    final Wrappers._T<Iterable<SModuleReference>> prev = new Wrappers._T<Iterable<SModuleReference>>(null);
-    return ListSequence.fromList(order).concat(Sequence.fromIterable(Sequence.<List<SModuleReference>>singleton(null))).translate(new ITranslator2<List<SModuleReference>, Iterable<SModuleReference>>() {
-      public Iterable<Iterable<SModuleReference>> translate(final List<SModuleReference> cycle) {
-        return new Iterable<Iterable<SModuleReference>>() {
-          public Iterator<Iterable<SModuleReference>> iterator() {
-            return new YieldingIterator<Iterable<SModuleReference>>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      if (cycle == null) {
-                        this.__CP__ = 3;
-                        break;
-                      } else if (prev.value == null) {
-                        this.__CP__ = 6;
-                        break;
-                      }
-                      this.__CP__ = 8;
-                      break;
-                    case 9:
-                      if (ListSequence.fromList(cycle).translate(new ITranslator2<SModuleReference, SModuleReference>() {
-                        public Iterable<SModuleReference> translate(SModuleReference mr) {
-                          return MapSequence.fromMap(myDepsGraph).get(mr).required;
-                        }
-                      }).intersect(Sequence.fromIterable(prev.value).translate(new ITranslator2<SModuleReference, SModuleReference>() {
-                        public Iterable<SModuleReference> translate(SModuleReference mr) {
-                          return MapSequence.fromMap(myDepsGraph).get(mr).dependent;
-                        }
-                      })).isEmpty()) {
-                        this.__CP__ = 10;
-                        break;
-                      }
-                      this.__CP__ = 12;
-                      break;
-                    case 4:
-                      this.__CP__ = 5;
-                      this.yield(prev.value);
-                      return true;
-                    case 13:
-                      this.__CP__ = 14;
-                      this.yield(prev.value);
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    case 3:
-                      this.__CP__ = 4;
-                      break;
-                    case 5:
-                      prev.value = null;
-                      this.__CP__ = 1;
-                      break;
-                    case 6:
-                      prev.value = ListSequence.fromList(cycle).toListSequence();
-                      this.__CP__ = 1;
-                      break;
-                    case 8:
-                      this.__CP__ = 9;
-                      break;
-                    case 10:
-                      prev.value = Sequence.fromIterable(prev.value).concat(ListSequence.fromList(cycle).toListSequence());
-                      this.__CP__ = 1;
-                      break;
-                    case 12:
-                      this.__CP__ = 13;
-                      break;
-                    case 14:
-                      prev.value = ListSequence.fromList(cycle).toListSequence();
-                      this.__CP__ = 1;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
-  }
-
   private void fillEdges(ModuleDeps rv) {
     final SModule mod = rv.getModule();
     // get a set of modules we are going to build transitive dependencies for 
@@ -187,7 +87,7 @@ __switch__:
 
     Set<SLanguage> moduleUsedLanguages;
     // inv: reference existing vertexes only 
-    Set<SModuleReference> reqs = SetSequence.fromSet(new HashSet<SModuleReference>());
+    Set<ModuleDeps> reqs = SetSequence.fromSet(new HashSet<ModuleDeps>());
     if (mod instanceof Generator) {
       Generator generator = (Generator) mod;
       // Unfortunately, GMDM doesn't recognize generator's source language as COMPILE or VISIBLE dependency, therefore have to add it here 
@@ -220,15 +120,17 @@ __switch__:
       SetSequence.fromSet(rv.usedLanguages).addElement(language);
       if (MapSequence.fromMap(languageModules).containsKey(language)) {
         // module uses a language which is part of the make sequence 
-        Language lm = as_7qjyo9_a0a1a4a01a41(MapSequence.fromMap(languageModules).get(language).getModule(), Language.class);
+        ModuleDeps lmd = MapSequence.fromMap(languageModules).get(language);
+        Language lm = as_7qjyo9_a0a2a4a01a21(lmd.getModule(), Language.class);
         // if a module of any used language happens to be among modules to build, ensure it's build first, as well as their generators... 
         // Note with this approach we ignore workspace dependencies of a deployed language. E.g. if there's a changed RT solution, its language module unchanged, 
         // and we make RT solution and the one that uses the language, we may miss the dependency that RT needs to be 'Make' first 
         // there's vertex for this language module, don't care to calculate its dependencies, will get to that anyway at respective fillEdges call 
-        SetSequence.fromSet(reqs).addElement(lm.getModuleReference());
+        SetSequence.fromSet(reqs).addElement(lmd);
         for (Generator g : CollectionSequence.fromCollection(lm.getGenerators())) {
-          if (MapSequence.fromMap(myDepsGraph).containsKey(g.getModuleReference())) {
-            SetSequence.fromSet(reqs).addElement(g.getModuleReference());
+          ModuleDeps gmd = MapSequence.fromMap(myDepsGraph).get(g.getModuleReference());
+          if (gmd != null) {
+            SetSequence.fromSet(reqs).addElement(gmd);
           } else {
             // we aren't going to clusterize required generator, but perhaps we do some of its dependencies 
             modExt.add(g);
@@ -247,64 +149,155 @@ __switch__:
 
     // XXX in fact, don't need to build complete set of dependencies, more effective is to follow one by one to see if it's vertex in the graph or it's known not to give any new dependency 
     GlobalModuleDependenciesManager depman = new GlobalModuleDependenciesManager(modExt);
-    Set<SModule> reqmods = SetSequence.fromSet(new HashSet<SModule>());
-    SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE)));
-    SetSequence.fromSet(reqmods).addSequence(CollectionSequence.fromCollection(depman.getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE)));
+    Iterable<SModule> reqmods = depman.getModules(GlobalModuleDependenciesManager.Deptype.COMPILE);
     // record edges only to existing vertexes 
-    SetSequence.fromSet(reqs).addSequence(SetSequence.fromSet(reqmods).select(new ISelector<SModule, SModuleReference>() {
-      public SModuleReference select(SModule m) {
-        return m.getModuleReference();
+    SetSequence.fromSet(reqs).addSequence(Sequence.fromIterable(reqmods).select(new ISelector<SModule, ModuleDeps>() {
+      public ModuleDeps select(SModule m) {
+        return MapSequence.fromMap(myDepsGraph).get(m.getModuleReference());
       }
-    }).where(new IWhereFilter<SModuleReference>() {
-      public boolean accept(SModuleReference it) {
-        return MapSequence.fromMap(myDepsGraph).containsKey(it);
-      }
-    }));
+    }).where(new NotNullWhereFilter<ModuleDeps>()));
 
 
     // XXX perhaps, we shall respect target languages of used languages as well, as they may appear while generating this module. 
     //     We need them anyway to build required facets in ModulesClusterizer.allLanguagesToActivateFacets 
 
-    ListSequence.fromList(rv.required).addSequence(SetSequence.fromSet(reqs));
-    for (SModuleReference req : rv.required) {
-      ListSequence.fromList(MapSequence.fromMap(myDepsGraph).get(req).dependent).addElement(rv.getModule().getModuleReference());
-    }
+    rv.requires(reqs);
   }
 
   /*package*/ static class ModuleDeps {
     private final SModule myModule;
-    /*package*/ List<SModuleReference> dependent = ListSequence.fromList(new LinkedList<SModuleReference>());
-    /*package*/ List<SModuleReference> required = ListSequence.fromList(new LinkedList<SModuleReference>());
+    private List<ModuleDeps> myDependent = ListSequence.fromList(new LinkedList<ModuleDeps>());
+    private List<ModuleDeps> myRequired = ListSequence.fromList(new LinkedList<ModuleDeps>());
     /*package*/ final Set<SLanguage> usedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
 
     public ModuleDeps(SModule mod) {
       myModule = mod;
-      ListSequence.fromList(dependent).addElement(mod.getModuleReference());
-      ListSequence.fromList(required).addElement(mod.getModuleReference());
     }
 
     /*package*/ SModule getModule() {
       return myModule;
     }
+
+    public Iterable<ModuleDeps> dependent() {
+      // AFAIU, self-dependency is a result of MPS-15018 fix (a3220e6e), though not sure I get the reason how come this helps 
+      return ListSequence.fromList(myDependent).concat(Sequence.fromIterable(Sequence.<ModuleDeps>singleton(this)));
+    }
+    public Iterable<ModuleDeps> required() {
+      return ListSequence.fromList(myRequired).concat(Sequence.fromIterable(Sequence.<ModuleDeps>singleton(this)));
+    }
+
+    /*package*/ void requires(Iterable<ModuleDeps> others) {
+      ListSequence.fromList(myRequired).addSequence(Sequence.fromIterable(others));
+      for (ModuleDeps o : others) {
+        o.dependencyOf(this);
+      }
+    }
+
+    private void dependencyOf(ModuleDeps other) {
+      assert !(ListSequence.fromList(myDependent).contains(other)) : "duplicated dependency";
+      ListSequence.fromList(myDependent).addElement(other);
+    }
   }
 
-  public class ModulesGraph extends GraphAnalyzer<SModuleReference> {
-    public ModulesGraph() {
+  /*package*/ static class ModulesGraph extends GraphAnalyzer<ModuleDeps> {
+    private final List<ModuleDeps> myAllVertices;
+
+    public ModulesGraph(Iterable<ModuleDeps> allVertices) {
+      myAllVertices = Sequence.fromIterable(allVertices).toListSequence();
+    }
+
+    @Override
+    public Iterable<ModuleDeps> forwardEdges(ModuleDeps v) {
+      return v.dependent();
     }
     @Override
-    public Iterable<SModuleReference> forwardEdges(SModuleReference v) {
-      return MapSequence.fromMap(myDepsGraph).get(v).dependent;
+    public Iterable<ModuleDeps> backwardEdges(ModuleDeps v) {
+      return v.required();
     }
     @Override
-    public Iterable<SModuleReference> backwardEdges(SModuleReference v) {
-      return MapSequence.fromMap(myDepsGraph).get(v).required;
+    public Iterable<ModuleDeps> vertices() {
+      return myAllVertices;
     }
-    @Override
-    public Iterable<SModuleReference> vertices() {
-      return MapSequence.fromMap(myDepsGraph).keySet();
+
+    public List<ModulesGraph.Cycle> compactTotalOrder() {
+      // with compact() code moved to GraphAnalyzer, no need to use old method 
+      List<List<ModuleDeps>> order = totalOrder(true);
+      return ListSequence.fromList(order).select(new ISelector<List<ModuleDeps>, ModulesGraph.Cycle>() {
+        public ModulesGraph.Cycle select(List<ModuleDeps> it) {
+          return toCycle(it);
+        }
+      }).toListSequence();
+    }
+
+    public List<ModulesGraph.Cycle> compactTotalOrderOld() {
+      List<List<ModuleDeps>> order = totalOrder();
+      // XXX what's the point of this code, what do we 'compact' here? Do we merge cycles so that they are built together and later has a chance to load ok? 
+      ModulesGraph.Cycle prev = null;
+      List<ModulesGraph.Cycle> rv = ListSequence.fromList(new ArrayList<ModulesGraph.Cycle>());
+      for (List<ModuleDeps> c : ListSequence.fromList(order)) {
+        ModulesGraph.Cycle cycle = toCycle(c);
+        if (prev == null) {
+          prev = cycle;
+        } else {
+          if (prev.independent(cycle)) {
+            prev = prev.concat(cycle);
+          } else {
+            ListSequence.fromList(rv).addElement(prev);
+            prev = cycle;
+          }
+        }
+      }
+      if (prev != null) {
+        ListSequence.fromList(rv).addElement(prev);
+      }
+      return rv;
+    }
+
+    private ModulesGraph.Cycle toCycle(List<ModuleDeps> cycle) {
+      return new ModulesGraph.Cycle(cycle);
+    }
+
+    /*package*/ static class Cycle {
+      private final List<ModuleDeps> myElements;
+
+      /*package*/ Cycle(List<ModuleDeps> elements) {
+        myElements = elements;
+      }
+
+      /*package*/ boolean independent(ModulesGraph.Cycle other) {
+        // name of the method is pure guess 
+        return Sequence.fromIterable(other.allRequired()).intersect(Sequence.fromIterable(allDependent())).isEmpty();
+      }
+
+      /*package*/ ModulesGraph.Cycle concat(ModulesGraph.Cycle other) {
+        return new ModulesGraph.Cycle(ListSequence.fromList(myElements).concat(ListSequence.fromList(other.myElements)).toListSequence());
+      }
+
+      /*package*/ List<SModule> modules() {
+        return ListSequence.fromList(myElements).select(new ISelector<ModuleDeps, SModule>() {
+          public SModule select(ModuleDeps md) {
+            return md.getModule();
+          }
+        }).toListSequence();
+      }
+
+      private Iterable<ModuleDeps> allRequired() {
+        return ListSequence.fromList(myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
+          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
+            return mr.required();
+          }
+        });
+      }
+      private Iterable<ModuleDeps> allDependent() {
+        return ListSequence.fromList(myElements).translate(new ITranslator2<ModuleDeps, ModuleDeps>() {
+          public Iterable<ModuleDeps> translate(ModuleDeps mr) {
+            return mr.dependent();
+          }
+        });
+      }
     }
   }
-  private static <T> T as_7qjyo9_a0a1a4a01a41(Object o, Class<T> type) {
+  private static <T> T as_7qjyo9_a0a2a4a01a21(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

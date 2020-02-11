@@ -2,7 +2,7 @@
 <model ref="r:3189948c-a57a-415e-beba-405572f2d13c(jetbrains.mps.ide.findusages.model.scopes)">
   <persistence version="9" />
   <languages>
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
@@ -167,7 +167,7 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -510,7 +510,7 @@
       <property role="TrG5h" value="scopeChanged" />
       <node concept="3clFbS" id="7rEOvdELBDt" role="3clF47">
         <node concept="3SKdUt" id="7rEOvdELBFk" role="3cqZAp">
-          <node concept="1PaTwC" id="7rEOvdELBFl" role="3ndbpf">
+          <node concept="1PaTwC" id="7rEOvdELBFl" role="1aUNEU">
             <node concept="3oM_SD" id="7rEOvdELBFo" role="1PaTwD">
               <property role="3oM_SC" value="no-op" />
             </node>
@@ -549,7 +549,7 @@
       </node>
       <node concept="3clFbS" id="7rEOvdELBDC" role="3clF47">
         <node concept="3SKdUt" id="7rEOvdELBFp" role="3cqZAp">
-          <node concept="1PaTwC" id="7rEOvdELBFq" role="3ndbpf">
+          <node concept="1PaTwC" id="7rEOvdELBFq" role="1aUNEU">
             <node concept="3oM_SD" id="7rEOvdELBFt" role="1PaTwD">
               <property role="3oM_SC" value="use" />
             </node>
@@ -597,7 +597,7 @@
       </node>
       <node concept="3clFbS" id="7rEOvdELBDO" role="3clF47">
         <node concept="3SKdUt" id="7rEOvdELBFx" role="3cqZAp">
-          <node concept="1PaTwC" id="7rEOvdELBFy" role="3ndbpf">
+          <node concept="1PaTwC" id="7rEOvdELBFy" role="1aUNEU">
             <node concept="3oM_SD" id="7rEOvdELBF_" role="1PaTwD">
               <property role="3oM_SC" value="do" />
             </node>
@@ -1707,7 +1707,7 @@
       </node>
       <node concept="3clFbS" id="7rEOvdELB1g" role="3clF47">
         <node concept="3SKdUt" id="7rEOvdELB3w" role="3cqZAp">
-          <node concept="1PaTwC" id="7rEOvdELB3x" role="3ndbpf">
+          <node concept="1PaTwC" id="7rEOvdELB3x" role="1aUNEU">
             <node concept="3oM_SD" id="7rEOvdELB3$" role="1PaTwD">
               <property role="3oM_SC" value="FIXME" />
             </node>
@@ -1744,7 +1744,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="7rEOvdELB3J" role="3cqZAp">
-          <node concept="1PaTwC" id="7rEOvdELB3K" role="3ndbpf">
+          <node concept="1PaTwC" id="7rEOvdELB3K" role="1aUNEU">
             <node concept="3oM_SD" id="7rEOvdELB3N" role="1PaTwD">
               <property role="3oM_SC" value="we've" />
             </node>

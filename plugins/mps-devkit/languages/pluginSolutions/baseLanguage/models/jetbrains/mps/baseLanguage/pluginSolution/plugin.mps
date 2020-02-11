@@ -9,7 +9,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
     <use id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl" version="-1" />
@@ -4951,11 +4951,11 @@
                               </node>
                               <node concept="3cpWs3" id="8qS5$SbLq" role="37vLTx">
                                 <node concept="Xl_RD" id="8qS5$SbLr" role="3uHU7w">
-                                  <property role="Xl_RC" value=" is never used" />
+                                  <property role="Xl_RC" value=" can be inlined" />
                                 </node>
                                 <node concept="3cpWs3" id="8qS5$SbLs" role="3uHU7B">
                                   <node concept="Xl_RD" id="8qS5$SbLt" role="3uHU7B">
-                                    <property role="Xl_RC" value="Variable " />
+                                    <property role="Xl_RC" value="No occurrences of variable " />
                                   </node>
                                   <node concept="37vLTw" id="3GM_nagTs$u" role="3uHU7w">
                                     <ref role="3cqZAo" node="8qS5$SbL8" resolve="variableName" />
@@ -5663,16 +5663,6 @@
             </node>
             <node concept="37vLTw" id="3GM_nagTv80" role="2Oq$k0">
               <ref role="3cqZAo" node="8qS5$SbOg" resolve="dialog" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="8qS5$SbO$" role="3cqZAp">
-          <node concept="2OqwBi" id="8qS5$SbO_" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTsjo" role="2Oq$k0">
-              <ref role="3cqZAo" node="8qS5$SbOg" resolve="dialog" />
-            </node>
-            <node concept="liA8E" id="8qS5$SbOB" role="2OqNvi">
-              <ref role="37wK5l" to="jkm4:~DialogWrapper.pack()" resolve="pack" />
             </node>
           </node>
         </node>

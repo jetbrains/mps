@@ -40,8 +40,7 @@ import jetbrains.mps.ide.platform.watching.ReloadListener;
 
   public boolean isProcessingAllowed() {
     for (Project p : myProjectManager.getOpenProjects()) {
-      ProjectLevelVcsManager vcsMan = p.getComponent(ProjectLevelVcsManager.class);
-      if (vcsMan.isBackgroundVcsOperationRunning()) {
+      if (ProjectLevelVcsManager.getInstance(p).isBackgroundVcsOperationRunning()) {
         return false;
       }
     }

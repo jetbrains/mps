@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
@@ -122,7 +122,7 @@
       </concept>
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -222,8 +222,8 @@
               <ref role="37wK5l" to="9ti4:~PluginId.getId(java.lang.String)" resolve="getId" />
               <ref role="1Pybhc" to="9ti4:~PluginId" resolve="PluginId" />
               <node concept="10M0yZ" id="3SXwVgLRG_n" role="37wK5m">
-                <ref role="1PxDUh" to="ctgy:~PluginManager" resolve="PluginManager" />
                 <ref role="3cqZAo" to="ctgy:~PluginManagerCore.CORE_PLUGIN_ID" resolve="CORE_PLUGIN_ID" />
+                <ref role="1PxDUh" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
               </node>
             </node>
           </node>
@@ -236,7 +236,7 @@
             </node>
             <node concept="2YIFZM" id="7H0x_FtPfiZ" role="33vP2m">
               <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPlugin(com.intellij.openapi.extensions.PluginId)" resolve="getPlugin" />
-              <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
+              <ref role="1Pybhc" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
               <node concept="37vLTw" id="7H0x_FtPfj0" role="37wK5m">
                 <ref role="3cqZAo" node="3SXwVgLRG_s" resolve="pluginId" />
               </node>
@@ -309,7 +309,7 @@
               <ref role="3cqZAo" node="1YKWOow4fO7" resolve="descriptor" />
             </node>
             <node concept="liA8E" id="7H0x_FtPnpJ" role="2OqNvi">
-              <ref role="37wK5l" to="ctgy:~IdeaPluginDescriptor.getActionDescriptionElements()" resolve="getActionDescriptionElements" />
+              <ref role="37wK5l" to="9ti4:~PluginDescriptor.getActionDescriptionElements()" resolve="getActionDescriptionElements" />
             </node>
           </node>
         </node>
@@ -691,7 +691,7 @@
         </node>
         <node concept="3clFbH" id="7WyXo5rCC5x" role="3cqZAp" />
         <node concept="3SKdUt" id="7WyXo5rCEuy" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopcM" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXopcM" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXopcN" role="1PaTwD">
               <property role="3oM_SC" value="Special" />
             </node>

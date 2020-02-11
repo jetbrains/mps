@@ -59,9 +59,14 @@
         <property id="5778414857994410328" name="prop" index="3ZEpjE" />
         <reference id="1592627013225970334" name="link" index="2175Xa" />
       </concept>
-      <concept id="7019192671317617772" name="messages.customization.structure.CardinalityTestConcept" flags="ng" index="3Qw4bB">
+      <concept id="2884486869351428739" name="messages.customization.structure.AuxConcept" flags="ng" index="1eZVc5" />
+      <concept id="116705030628857298" name="messages.customization.structure.IncorrectTargetTestConcept" flags="ng" index="1BJcH9">
         <reference id="7019192671317573552" name="obligatoryref" index="3Qwp4V" />
         <child id="7019192671317573556" name="obligatorychild" index="3Qwp4Z" />
+      </concept>
+      <concept id="7019192671317617772" name="messages.customization.structure.CardinalityTestConcept" flags="ng" index="3Qw4bB">
+        <reference id="7019192671317573552" name="obligatoryref" index="3Qwp4W" />
+        <child id="7019192671317573556" name="obligatorychild" index="3Qwp50" />
       </concept>
       <concept id="7019192671317951087" name="messages.customization.structure.CardinalityTestConcept0" flags="ng" index="3QxUN$">
         <child id="7019192671317951108" name="singleRoleChild" index="3QxUKf" />
@@ -111,6 +116,12 @@
           </node>
           <node concept="3KTrbX" id="416FkZyJf79" role="3KTr4d">
             <ref role="3AHY9a" node="2Ew8zTEY7CR" resolve="AA" />
+          </node>
+          <node concept="3KTrbX" id="lTjnfyPLcm" role="3KTr4d">
+            <ref role="3AHY9a" node="6uBDHA8Kvw" resolve="a" />
+          </node>
+          <node concept="3KTrbX" id="lTjnfyPLc$" role="3KTr4d">
+            <ref role="3AHY9a" node="6uBDHA8TBT" resolve="aux2" />
           </node>
         </node>
       </node>
@@ -220,7 +231,7 @@
     <node concept="1qefOq" id="65DbCInVGrF" role="1SKRRt">
       <node concept="3Qw4bB" id="65DbCInVGD2" role="1qenE9">
         <property role="TrG5h" value="A" />
-        <node concept="Xl_RD" id="65DbCInVGD6" role="3Qwp4Z">
+        <node concept="Xl_RD" id="65DbCInVGD6" role="3Qwp50">
           <property role="Xl_RC" value="stub" />
         </node>
         <node concept="7CXmI" id="65DbCInVGXo" role="lGtFl">
@@ -238,7 +249,7 @@
     <node concept="1qefOq" id="65DbCInVGXB" role="1SKRRt">
       <node concept="3Qw4bB" id="65DbCInVGXC" role="1qenE9">
         <property role="TrG5h" value="A" />
-        <ref role="3Qwp4V" node="65DbCInVGXC" resolve="A" />
+        <ref role="3Qwp4W" node="65DbCInVGXC" resolve="A" />
         <node concept="7CXmI" id="65DbCInVGXE" role="lGtFl">
           <node concept="mDk06" id="65DbCInVGXK" role="7EUXB">
             <node concept="1DMPye" id="65DbCInVGXL" role="1DMPz9">
@@ -254,8 +265,8 @@
     <node concept="1qefOq" id="65DbCInVGXP" role="1SKRRt">
       <node concept="3Qw4bB" id="65DbCInVGXQ" role="1qenE9">
         <property role="TrG5h" value="A" />
-        <ref role="3Qwp4V" node="65DbCInVGXQ" resolve="A" />
-        <node concept="Xl_RD" id="65DbCInVGXR" role="3Qwp4Z">
+        <ref role="3Qwp4W" node="65DbCInVGXQ" resolve="A" />
+        <node concept="Xl_RD" id="65DbCInVGXR" role="3Qwp50">
           <property role="Xl_RC" value="stub" />
         </node>
         <node concept="7CXmI" id="65DbCInVGXS" role="lGtFl">
@@ -270,6 +281,66 @@
         </node>
         <node concept="Xl_RD" id="65DbCInVL5V" role="3QxUKf">
           <property role="Xl_RC" value="second" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="6uBDHA8_7W">
+    <property role="TrG5h" value="FeedbackIncorrectConceptInRole" />
+    <node concept="1qefOq" id="6uBDHA8LHS" role="1SKRRt">
+      <node concept="1eZVc5" id="6uBDHA8LJ5" role="1qenE9">
+        <property role="TrG5h" value="aux1" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="6uBDHA8TAD" role="1SKRRt">
+      <node concept="cMlWa" id="6uBDHA8TBT" role="1qenE9">
+        <property role="TrG5h" value="aux2" />
+        <property role="3ZEpjE" value="3" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="6uBDHA8Kjr" role="1SKRRt">
+      <node concept="1BJcH9" id="6uBDHA8Kjq" role="1qenE9">
+        <property role="TrG5h" value="TargetTest" />
+        <ref role="3Qwp4V" node="6uBDHA8TBT" resolve="aux2" />
+        <node concept="cMlWa" id="6uBDHA8Kvw" role="3Qwp4Z">
+          <property role="TrG5h" value="a" />
+          <property role="3ZEpjE" value="3" />
+          <node concept="7CXmI" id="6uBDHA8WMJ" role="lGtFl">
+            <node concept="mDk06" id="6uBDHAbEkP" role="7EUXB">
+              <node concept="1DMPye" id="6uBDHAbEkQ" role="1DMPz9">
+                <property role="1DMPyf" value="CHILD ROLE IS of CONCEPT messages.customization.structure.TestConcept which is not subconcept of messages.customization.structure.AuxConcept" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="6uBDHA8KDy" role="lGtFl">
+          <node concept="7OXhh" id="6uBDHA8KF$" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+          <node concept="mDk06" id="6uBDHAbEmT" role="7EUXB">
+            <node concept="1DMPye" id="6uBDHAbEmU" role="1DMPz9">
+              <property role="1DMPyf" value="The reference  aux2 (obligatoryref) is out of search scope" />
+            </node>
+          </node>
+          <node concept="mDk06" id="6uBDHAbEmV" role="7EUXB">
+            <node concept="1DMPye" id="6uBDHAbEmW" role="1DMPz9">
+              <property role="1DMPyf" value="Incompatible target concept in the reference role &quot;obligatoryref&quot;: subconcept of &quot;messages.customization.structure.AuxConcept&quot; expected, &quot;messages.customization.structure.TestConcept&quot; found" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="6uBDHA8KGE" role="1SKRRt">
+      <node concept="1BJcH9" id="6uBDHA8KGF" role="1qenE9">
+        <property role="TrG5h" value="TargetTest" />
+        <ref role="3Qwp4V" node="6uBDHA8LJ5" resolve="aux1" />
+        <node concept="7CXmI" id="6uBDHA8KGH" role="lGtFl">
+          <node concept="7OXhh" id="6uBDHA8KGI" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+        <node concept="1eZVc5" id="6uBDHA8TsB" role="3Qwp4Z">
+          <property role="TrG5h" value="__SOME_NAME__" />
         </node>
       </node>
     </node>

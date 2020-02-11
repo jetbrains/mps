@@ -344,7 +344,6 @@ public class Execute_Test extends MockTestCase {
           }
         });
         exactly(1).of(mons).setup(with(Expectations.aNonNull(IPropertiesPool.class)), with(Expectations.aNonNull(Iterable.class)), with(Expectations.<Iterable>anything()));
-        atLeast(1).of(mons).useMonitor(with(Expectations.aNonNull(ProgressMonitor.class)));
         exactly(1).of(jmon).reportFeedback(with(new BaseMatcher<IFeedback>() {
           @Override
           public boolean matches(Object o) {
@@ -358,7 +357,6 @@ public class Execute_Test extends MockTestCase {
           public void describeTo(Description p0) {
           }
         }));
-        exactly(1).of(mons).useMonitor(with(Expectations.aNull(ProgressMonitor.class)));
 
         atLeast(1).of(res).before();
         will(Expectations.returnValue(Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("make")})));

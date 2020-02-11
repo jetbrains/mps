@@ -5,12 +5,19 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public class UncommentSingleLineComment {
 
@@ -34,14 +41,20 @@ public class UncommentSingleLineComment {
   /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
     return new AbstractCellAction() {
       public String getDescriptionText() {
-        return "If delete comes from end of previos single-line comment (due to the nature editor distributes notification), merge comments. Otherwise, unwrap commented statement, if any";
+        return "If delete comes from end of the previos single-line comment (due to the nature editor distributes notification), merge comments. Otherwise, unwrap commented statement, if any";
       }
       public void execute(EditorContext editorContext) {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, node)) {
-          return;
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$jI)) {
+          SNode firstMoved = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$32mp), LINKS.elements$eRew)).first();
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$jI), LINKS.line$32mp), LINKS.elements$eRew)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$32mp), LINKS.elements$eRew)));
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, firstMoved, SelectionManager.FIRST_CELL, 0);
+        } else {
+          if (DeletionApproverUtil.approve(editorContext, node)) {
+            return;
+          }
         }
         SNodeOperations.deleteNode(node);
       }
@@ -86,5 +99,14 @@ public class UncommentSingleLineComment {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink line$32mp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink elements$eRew = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept SingleLineComment$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
   }
 }

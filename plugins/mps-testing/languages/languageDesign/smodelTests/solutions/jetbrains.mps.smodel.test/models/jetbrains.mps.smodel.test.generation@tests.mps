@@ -64,7 +64,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
@@ -394,7 +394,7 @@
         <node concept="3Tm1VV" id="1CQDqZTH4zk" role="1B3o_S" />
         <node concept="3clFbS" id="1CQDqZTH4zl" role="3clF47">
           <node concept="3SKdUt" id="1CQDqZTHlMo" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXokcu" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXokcu" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXokcv" role="1PaTwD">
                 <property role="3oM_SC" value="This" />
               </node>

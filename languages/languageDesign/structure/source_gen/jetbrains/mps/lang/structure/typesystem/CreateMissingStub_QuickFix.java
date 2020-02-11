@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -59,14 +60,20 @@ public class CreateMissingStub_QuickFix extends QuickFix_Runtime {
     SLinkOperations.setTarget(editor, LINKS.cellModel$3wIV, component);
     editorModel.addRootNode(editor);
 
-    SNode menu = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default"));
+    SNode menu = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu"));
     SLinkOperations.setTarget(menu, LINKS.conceptDeclaration$acmt, stub);
+    SLinkOperations.setTarget(menu, LINKS.type$gsXC, createMenuTypeDefault_jj3urb_a0db0c());
     SPropertyOperations.set(menu, PROPS.virtualPackage$j19t, virtualPackage);
     editorModel.addRootNode(menu);
+  }
+  private static SNode createMenuTypeDefault_jj3urb_a0db0c() {
+    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
+    return rootBuilder1.getResult();
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept MenuTypeDefault$Sb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L, "jetbrains.mps.lang.editor.structure.MenuTypeDefault");
   }
 
   private static final class PROPS {
@@ -82,5 +89,6 @@ public class CreateMissingStub_QuickFix extends QuickFix_Runtime {
     /*package*/ static final SReferenceLink editorComponent$AnLw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
     /*package*/ static final SContainmentLink cellModel$3wIV = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
     /*package*/ static final SReferenceLink conceptDeclaration$acmt = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink type$gsXC = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
   }
 }

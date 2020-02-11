@@ -5,38 +5,74 @@ package jetbrains.mps.lang.editor.constraints;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.scope.ModelPlusImportedScope;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.scope.ModelPlusImportedScope;
+import jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor;
+import jetbrains.mps.scope.CompositeScope;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class MenuScopes {
-  public static Scope getNamedMenus(SNode contextNode, SContainmentLink link, int position, SAbstractConcept concept) {
-    final Scope allNamedMenus = new ModelPlusImportedScope(SNodeOperations.getModel(contextNode), true, concept);
 
-    // Uses the scope of allowed concepts (for default menus) to restrict the set of named menus to those 
-    // reference allowed concepts. 
+  public static Scope getSubstitueMenus(SNode context, SContainmentLink link, int position) {
+    return getMenus(context, link, position, false);
+  }
+
+  public static Scope getTransformationMenus(SNode context, SContainmentLink link, int position) {
+    return getMenus(context, link, position, true);
+  }
+
+  public static Scope getTransformationMenus(SNode context) {
+    return findMenus(context, true);
+  }
+
+  public static Scope getSubstituteMenus(SNode context) {
+    return findMenus(context, false);
+  }
+
+  private static Scope getMenus(SNode contextNode, SContainmentLink link, int position, boolean isTransformation) {
     final Scope allowedConcepts = Scope.getScope(contextNode, link, position, CONCEPTS.AbstractConceptDeclaration$UN);
     if (allowedConcepts == null) {
       return new EmptyScope();
     }
 
-    return new FilteringScope(allNamedMenus) {
+    Scope namedMenus = findMenus(contextNode, isTransformation);
+    return new FilteringScope(namedMenus) {
       @Override
       public boolean isExcluded(SNode node) {
-        return !(allowedConcepts.contains(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IMenu_Named$Ew), LINKS.conceptDeclaration$acmt)));
+        return !(allowedConcepts.contains(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IMenu_Concept$UY), LINKS.conceptDeclaration$acmt)));
       }
     };
   }
 
+  private static Scope findMenus(SNode context, boolean isTransformation) {
+    SAbstractConcept legacyConcept = (isTransformation ? CONCEPTS.TransformationMenu_Named$1E : CONCEPTS.SubstituteMenu_Named$J);
+    SAbstractConcept menuConcept = (isTransformation ? CONCEPTS.TransformationMenu$ZK : CONCEPTS.SubstituteMenu$v4);
+    Scope legacyNamedMenus = new ModelPlusImportedScope(SNodeOperations.getModel(context), true, legacyConcept);
+    Scope namedMenus = new ModelPlusImportedScope(SNodeOperations.getModel(context), true, menuConcept);
+    FilteringScope scope = new FilteringScope(namedMenus) {
+      @Override
+      public boolean isExcluded(SNode node) {
+        SNode menu = SNodeOperations.cast(node, CONCEPTS.IMenu_Concept$UY);
+        return (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(menu) || SNodeOperations.isInstanceOf(menu, CONCEPTS.IMenu_Named$Ew);
+      }
+    };
+    return new CompositeScope(legacyNamedMenus, scope);
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IMenu_Concept$UY = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
+    /*package*/ static final SConcept TransformationMenu_Named$1E = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");
+    /*package*/ static final SConcept SubstituteMenu_Named$J = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
+    /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
+    /*package*/ static final SConcept SubstituteMenu$v4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
     /*package*/ static final SInterfaceConcept IMenu_Named$Ew = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c46L, "jetbrains.mps.lang.editor.structure.IMenu_Named");
   }
 

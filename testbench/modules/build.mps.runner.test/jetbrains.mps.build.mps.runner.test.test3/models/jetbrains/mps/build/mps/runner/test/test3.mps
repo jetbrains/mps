@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
   </languages>
   <imports>
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
@@ -77,7 +77,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
@@ -180,7 +180,7 @@
                       <node concept="1bVj0M" id="4CYT8qWE_rc" role="37wK5m">
                         <node concept="3clFbS" id="4CYT8qWE_rd" role="1bW5cS">
                           <node concept="3SKdUt" id="7UcJGWn6CVB" role="3cqZAp">
-                            <node concept="1PaTwC" id="7UcJGWn6CVC" role="3ndbpf">
+                            <node concept="1PaTwC" id="7UcJGWn6CVC" role="1aUNEU">
                               <node concept="3oM_SD" id="7UcJGWn6CVE" role="1PaTwD">
                                 <property role="3oM_SC" value="Note," />
                               </node>

@@ -23,6 +23,7 @@ import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import jetbrains.mps.make.service.CoreMakeTask;
 import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.ITarget;
 
 @GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/878521226301293123", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
@@ -35,10 +36,10 @@ public class BuildMakeService extends AbstractMakeService implements IMakeServic
   }
   @Override
   public Future<IResult> make(MakeSession session, Iterable<? extends IResource> resources) {
-    return make(session, resources, BuildMakeService.defaultScript().toScript(), null, new EmptyProgressMonitor());
+    return make(session, resources, session.toScript(defaultScript(session)), null, new EmptyProgressMonitor());
   }
   public Future<IResult> makeAndReload(MakeSession session, Iterable<? extends IResource> resources) {
-    return make(session, resources, BuildMakeService.defaultScript().withFacetNames(new IFacet.Name("jetbrains.mps.make.facets.ReloadClasses")).toScript(), null, new EmptyProgressMonitor());
+    return make(session, resources, session.toScript(defaultScript(session).withFacetNames(new IFacet.Name("jetbrains.mps.make.facets.ReloadClasses"))), null, new EmptyProgressMonitor());
   }
   @Override
   public boolean isSessionActive() {
@@ -89,7 +90,7 @@ public class BuildMakeService extends AbstractMakeService implements IMakeServic
     return new IScriptController.Stub2(msess);
   }
 
-  private static ScriptBuilder defaultScript() {
-    return new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.JavaCompile"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
+  private ScriptBuilder defaultScript(MakeSession makeSession) {
+    return new ScriptBuilder(makeSession.getProject().getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.resources.Binaries"), new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.make.facets.JavaCompile"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.make.facets.Make.make"));
   }
 }

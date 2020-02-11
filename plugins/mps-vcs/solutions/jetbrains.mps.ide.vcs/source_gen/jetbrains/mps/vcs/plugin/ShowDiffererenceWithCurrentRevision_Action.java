@@ -97,6 +97,6 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
         rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName();
       }
     });
-    return new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), rootName.value);
+    return new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE).getReference(), rootName.value);
   }
 }

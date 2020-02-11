@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="51l7yel1iaf14d5t5qfqdiy9cm6qsxe">
+<product version="3" modelHash="-bhq5jhpmsyvtjqbi0b7yqio9e491gko">
   <files names="AddPropertyAttribute_Test.java:LeftTransformForAttributedProperty_Test.java:RemovePropertyAttribute_Test.java:RemovingLeftTransformForAttributedProperty_Test.java:RemovingRightTransformForAttributedProperty_Test.java:RightTransformForAttributedProperty_Test.java:UpdateHidingAttribute_Test.java" />
 </product>
 

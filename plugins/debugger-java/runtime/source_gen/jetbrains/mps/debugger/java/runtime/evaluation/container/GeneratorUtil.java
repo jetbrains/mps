@@ -13,6 +13,7 @@ import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.ScriptBuilder;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.facet.IFacet;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.make.resources.IResource;
@@ -42,7 +43,7 @@ public class GeneratorUtil {
     MakeSession makeSession = new MakeSession(project, new DefaultMakeMessageHandler(project), false);
     if (makeService.openNewSession(makeSession)) {
       try {
-        IScript script = new ScriptBuilder().withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator")).toScript();
+        IScript script = new ScriptBuilder(project.getComponent(FacetRegistry.class)).withFacetNames(new IFacet.Name("jetbrains.mps.lang.core.Generate"), new IFacet.Name("jetbrains.mps.lang.core.TextGen"), new IFacet.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate"), new IFacet.Name("jetbrains.mps.make.facets.Make")).withFinalTarget(new ITarget.Name("jetbrains.mps.debugger.java.evaluation.JavaDebugEvaluate.compileEvaluator")).toScript();
         Iterable<IResource> resources = new ModelsToResources(Sequence.<SModel>singleton(model)).canGenerateCondition(new _FunctionTypes._return_P1_E0<Boolean, SModel>() {
           public Boolean invoke(SModel m) {
             return true;

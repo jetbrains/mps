@@ -8,6 +8,10 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
+import jetbrains.mps.core.aspects.feedback.api.FeedbackAspect;
+import jetbrains.mps.lang.test.constraints.GeneratedFeedbackAspectConstraints;
+import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsAspect;
+import jetbrains.mps.lang.test.constraints.GeneratedRulesConstraintsAspect;
 import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
@@ -25,6 +29,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.lang.test.structure.ConceptPresentationAspectImpl;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.lang.test.typesystem.TypesystemDescriptor;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -56,6 +62,12 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
+    if (aspectClass.isAssignableFrom(FeedbackAspect.class)) {
+      return aspectClass.cast(FeedbackAspect.combine(new GeneratedFeedbackAspectConstraints()));
+    }
+    if (aspectClass.isAssignableFrom(RulesConstraintsAspect.class)) {
+      return aspectClass.cast(new GeneratedRulesConstraintsAspect());
+    }
 
 
     // AP: legacy part, must be migrated from switch: please use lang.descriptor mapping label 
@@ -90,5 +102,11 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new TypesystemDescriptor());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
+    extensions.recordContribution("jetbrains.mps.baseLanguage", "f3061a53-9226-4cc5-a443-f952ceaf5816", EditorAspectDescriptor.class);
+    extensions.recordContribution("jetbrains.mps.lang.core", "ceab5195-25ea-4f22-9b92-103b95ca8c0c", EditorAspectDescriptor.class);
   }
 }

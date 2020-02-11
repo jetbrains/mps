@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,38 @@
  */
 package jetbrains.mps.checkers;
 
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.ModelReportItem;
+import jetbrains.mps.project.validation.ModelValidator;
+import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.project.validation.ValidationUtil;
-import org.jetbrains.mps.openapi.util.Processor;
-import jetbrains.mps.errors.item.IssueKindReportItem;
 
 public class ModelPropertiesChecker extends IChecker.AbstractModelChecker<ModelReportItem> {
 
+  private final ComponentHost myComponentHost;
+
+
+  /**
+   * DONT USE, IT IS HERE ONLY FOR BACKWARD COMPATIBILITY.
+   */
+  @Deprecated
+  @ToRemove(version = 2020.1)
+  public ModelPropertiesChecker() {
+    this.myComponentHost = null;
+  }
+
+  public ModelPropertiesChecker(@NotNull ComponentHost componentHost) {
+    myComponentHost = componentHost;
+  }
+
   @Override
   public void check(SModel model, SRepository repository, final Consumer<? super ModelReportItem> errorCollector, final ProgressMonitor monitor) {
-    ValidationUtil.validateModel(model, new Processor<ModelReportItem>() {
-      public boolean process(final ModelReportItem problem) {
-        errorCollector.consume(problem);
-        return monitor.isCanceled();
-      }
-    });
+    new ModelValidator(myComponentHost, model).validate(errorCollector, monitor);
   }
 
   @Override

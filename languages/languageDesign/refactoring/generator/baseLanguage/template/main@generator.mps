@@ -9,7 +9,7 @@
     <use id="3ecd7c84-cde3-45de-886c-135ecc69b742" name="jetbrains.mps.lang.refactoring" version="-1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
   </languages>
   <imports>
@@ -197,7 +197,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -1307,7 +1307,7 @@
       <node concept="2VP$b9" id="7T2CYsOw4ul" role="2VPoh3">
         <node concept="3clFbS" id="7T2CYsOw4um" role="2VODD2">
           <node concept="3SKdUt" id="7T2CYsOw5eo" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnXXt" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnXXt" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnXXu" role="1PaTwD">
                 <property role="3oM_SC" value="MPS-24613" />
               </node>
@@ -3018,7 +3018,7 @@
                             <node concept="3$xsQk" id="6olX11zmbhz" role="3$ytzL">
                               <node concept="3clFbS" id="6olX11zmbh$" role="2VODD2">
                                 <node concept="3SKdUt" id="71FvR51fVek" role="3cqZAp">
-                                  <node concept="1PaTwC" id="ATZLwXnXXv" role="3ndbpf">
+                                  <node concept="1PaTwC" id="ATZLwXnXXv" role="1aUNEU">
                                     <node concept="3oM_SD" id="ATZLwXnXXw" role="1PaTwD">
                                       <property role="3oM_SC" value="TODO" />
                                     </node>

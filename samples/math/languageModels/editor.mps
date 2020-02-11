@@ -7,8 +7,8 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="13" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <use id="b1c7d06f-525d-43b5-9b0a-2fc8f7f076ba" name="jetbrains.mps.editor.contextActionsTool.lang.menus" version="0" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
@@ -37,9 +37,11 @@
     </language>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
       <concept id="1402906326895675325" name="jetbrains.mps.lang.editor.structure.CellActionMap_FunctionParm_selectedNode" flags="nn" index="0IXxy" />
+      <concept id="5991739802479784073" name="jetbrains.mps.lang.editor.structure.MenuTypeDefault" flags="ng" index="22hDWj" />
       <concept id="2000375450116454183" name="jetbrains.mps.lang.editor.structure.ISubstituteMenu" flags="ng" index="22mbnS">
         <child id="414384289274416996" name="parts" index="3ft7WO" />
       </concept>
+      <concept id="2000375450116423800" name="jetbrains.mps.lang.editor.structure.SubstituteMenu" flags="ng" index="22mcaB" />
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi">
         <child id="1078153129734" name="inspectedCellModel" index="6VMZX" />
       </concept>
@@ -125,6 +127,7 @@
       </concept>
       <concept id="1630016958697344083" name="jetbrains.mps.lang.editor.structure.IMenu_Concept" flags="ng" index="2ZABuq">
         <reference id="6591946374543067572" name="conceptDeclaration" index="aqKnT" />
+        <child id="5991739802479788259" name="type" index="22hAXT" />
       </concept>
       <concept id="1630016958697286851" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_parameterObject" flags="ng" index="2ZBlsa" />
       <concept id="1630016958697057551" name="jetbrains.mps.lang.editor.structure.IMenuPartParameterized" flags="ng" index="2ZBHr6">
@@ -196,7 +199,6 @@
       <concept id="3308396621974588243" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution" flags="ng" index="3p309x">
         <child id="7173407872095451092" name="menuReference" index="1IG6uw" />
       </concept>
-      <concept id="3308396621974580100" name="jetbrains.mps.lang.editor.structure.SubstituteMenu_Default" flags="ng" index="3p36aQ" />
       <concept id="7580468736840446506" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_model" flags="nn" index="1rpKSd" />
       <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="4056398722183895535" name="jetbrains.mps.lang.editor.structure.TransformationMenuPart_SubMenu" flags="ng" index="1vlq3a">
@@ -3407,18 +3409,6 @@
       </node>
     </node>
   </node>
-  <node concept="3p36aQ" id="4sp4$05ZLfw">
-    <ref role="aqKnT" to="39kg:6iLUnbAh3Cw" resolve="ExponentialOperation" />
-  </node>
-  <node concept="3p36aQ" id="4sp4$05ZLfx">
-    <ref role="aqKnT" to="39kg:i0fIbNH" resolve="MathTypeCast" />
-  </node>
-  <node concept="3p36aQ" id="4sp4$05ZLfy">
-    <ref role="aqKnT" to="39kg:5yEI9AszOcE" resolve="MatrixElementAccessExpression" />
-  </node>
-  <node concept="3p36aQ" id="4sp4$05ZLfz">
-    <ref role="aqKnT" to="39kg:i1i8$Gb" resolve="ComplexLiteral" />
-  </node>
   <node concept="3INDKC" id="4sp4$05ZLfV">
     <property role="TrG5h" value="ML_SideTransforms_LocalVariableDeclaration_Contribution" />
     <node concept="A1WHr" id="4sp4$05ZLfW" role="AmTjC">
@@ -4010,6 +4000,22 @@
         </node>
       </node>
     </node>
+  </node>
+  <node concept="22mcaB" id="4sp4$05ZLfw">
+    <ref role="aqKnT" to="39kg:6iLUnbAh3Cw" resolve="ExponentialOperation" />
+    <node concept="22hDWj" id="xzgvwPPqje" role="22hAXT" />
+  </node>
+  <node concept="22mcaB" id="4sp4$05ZLfx">
+    <ref role="aqKnT" to="39kg:i0fIbNH" resolve="MathTypeCast" />
+    <node concept="22hDWj" id="xzgvwPPqjf" role="22hAXT" />
+  </node>
+  <node concept="22mcaB" id="4sp4$05ZLfy">
+    <ref role="aqKnT" to="39kg:5yEI9AszOcE" resolve="MatrixElementAccessExpression" />
+    <node concept="22hDWj" id="xzgvwPPqjg" role="22hAXT" />
+  </node>
+  <node concept="22mcaB" id="4sp4$05ZLfz">
+    <ref role="aqKnT" to="39kg:i1i8$Gb" resolve="ComplexLiteral" />
+    <node concept="22hDWj" id="xzgvwPPqjh" role="22hAXT" />
   </node>
 </model>
 

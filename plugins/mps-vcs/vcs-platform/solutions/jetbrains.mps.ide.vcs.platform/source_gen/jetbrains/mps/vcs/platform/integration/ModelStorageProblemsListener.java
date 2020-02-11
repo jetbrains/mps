@@ -176,11 +176,12 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
     return project;
   }
 
-  private void resolveDiskMemoryConflict(final EditableSModel model) {
+  private void resolveDiskMemoryConflict(@NotNull final EditableSModel model) {
     if (!(model.getSource() instanceof FileDataSource)) {
       if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error(String.format("Conflicting content in memory and on disk for model %s from %s. Unfortunately, MPS does not support conflict resolution for models from multiple files yet, conflict ignored.", model.getName(), model.getSource().getLocation()));
+        LOG.error(String.format("Conflicting content in memory and on disk for models '%s' and '%s'. MPS does not support this data source; it will save the model and ignore the external modifications.", model.getName(), model.getSource().getLocation()));
       }
+      saveModel(model);
       return;
     }
     final IFile file = ((FileDataSource) model.getSource()).getFile();
@@ -212,12 +213,7 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
           //       MSPL, however, listens to all repositories, and it's odd to execute a command in a project for a model that may belong to a completely different one. 
           //       Therefore, it's better to stick to model's native repository. What we lack with runWriteAction instead of executeCommand is undo capability, perhaps. 
           //       Is it something so vital anyone would complain of? 
-          model.getRepository().getModelAccess().runWriteAction(new Runnable() {
-            public void run() {
-              model.updateTimestamp();
-              model.save();
-            }
-          });
+          saveModel(model);
         } else {
           model.getRepository().getModelAccess().runWriteAction(new Runnable() {
             public void run() {
@@ -231,6 +227,16 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
         }
       }
     }, ModalityState.defaultModalityState());
+  }
+
+  private void saveModel(final EditableSModel model) {
+    model.getRepository().getModelAccess().runWriteAction(new Runnable() {
+      public void run() {
+        // fixme why this? -- #save updates timestamp by itself 
+        model.updateTimestamp();
+        model.save();
+      }
+    });
   }
 
   private static boolean showDeletedFromDiskQuestion(SModel inMemory, File backupFile) {

@@ -13,7 +13,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="9" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -176,7 +176,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
@@ -582,8 +582,8 @@
               <ref role="3uigEE" to="9ti4:~PluginId" resolve="PluginId" />
             </node>
             <node concept="2YIFZM" id="56ID84F0kSr" role="33vP2m">
-              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
+              <ref role="37wK5l" to="ctgy:~PluginManager.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <node concept="3iG29X" id="56ID84F0kSs" role="37wK5m">
                 <ref role="3iG29W" to="1l1h:3SnNvqCaJDx" resolve="BreakpointCreatorsManager" />
               </node>
@@ -626,7 +626,7 @@
         </node>
         <node concept="3clFbH" id="4yPik6OrGKK" role="3cqZAp" />
         <node concept="3SKdUt" id="4yPik6OrLfA" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnZEv" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnZEv" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnZEw" role="1PaTwD">
               <property role="3oM_SC" value="next" />
             </node>
@@ -675,7 +675,7 @@
           </node>
         </node>
         <node concept="3SKdUt" id="4yPik6Osgdn" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnZEJ" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnZEJ" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnZEK" role="1PaTwD">
               <property role="3oM_SC" value="basically:" />
             </node>
@@ -1066,8 +1066,8 @@
               <ref role="3uigEE" to="9ti4:~PluginId" resolve="PluginId" />
             </node>
             <node concept="2YIFZM" id="56ID84F0kT7" role="33vP2m">
-              <ref role="37wK5l" to="ctgy:~PluginManagerCore.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <ref role="1Pybhc" to="ctgy:~PluginManager" resolve="PluginManager" />
+              <ref role="37wK5l" to="ctgy:~PluginManager.getPluginByClassName(java.lang.String)" resolve="getPluginByClassName" />
               <node concept="3iG29X" id="56ID84F0kT8" role="37wK5m">
                 <ref role="3iG29W" to="1l1h:3SnNvqCaJDx" resolve="BreakpointCreatorsManager" />
               </node>

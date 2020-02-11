@@ -138,12 +138,6 @@
       <node concept="3clFbS" id="147CB3Qt016" role="2VODD2">
         <node concept="3cpWs6" id="147CB3Qt017" role="3cqZAp">
           <node concept="1Wc70l" id="147CB3Qt018" role="3cqZAk">
-            <node concept="3y3z36" id="147CB3Qt019" role="3uHU7w">
-              <node concept="35c_gC" id="147CB3Qt01m" role="3uHU7w">
-                <ref role="35c_gD" to="kxd5:4fhGlP1qagA" resolve="ActionTestSidetransformAddConceptChild" />
-              </node>
-              <node concept="2DD5aU" id="147CB3Qt01l" role="3uHU7B" />
-            </node>
             <node concept="1Wc70l" id="147CB3Qt01c" role="3uHU7B">
               <node concept="3y3z36" id="147CB3Qt01d" role="3uHU7B">
                 <node concept="2DD5aU" id="147CB3Qt01n" role="3uHU7B" />
@@ -161,6 +155,12 @@
                   </node>
                 </node>
               </node>
+            </node>
+            <node concept="3y3z36" id="147CB3Qt019" role="3uHU7w">
+              <node concept="35c_gC" id="147CB3Qt01m" role="3uHU7w">
+                <ref role="35c_gD" to="kxd5:4fhGlP1qagA" resolve="ActionTestSidetransformAddConceptChild" />
+              </node>
+              <node concept="2DD5aU" id="147CB3Qt01l" role="3uHU7B" />
             </node>
           </node>
         </node>

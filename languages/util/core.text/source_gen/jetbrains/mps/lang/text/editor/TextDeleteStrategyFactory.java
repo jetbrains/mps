@@ -6,6 +6,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.Objects;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -48,8 +49,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       }
     } else {
       SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Line$w3);
-      SNode neighbourLine = SNodeOperations.cast(((isForward ? SNodeOperations.getNextSibling(currentLine) : SNodeOperations.getPrevSibling(currentLine))), CONCEPTS.Line$w3);
-      if ((neighbourLine != null)) {
+      SNode lineContainer = TextStrategy.findLineContainer(currentLine);
+
+      SNode neighbourContainer = (isForward ? SNodeOperations.getNextSibling(lineContainer) : SNodeOperations.getPrevSibling(lineContainer));
+      SNode neighbourLine = TextStrategy.findLineInContainer(neighbourContainer);
+      if (Objects.equals(SNodeOperations.getConcept(neighbourContainer), SNodeOperations.getConcept(lineContainer)) && (neighbourLine != null)) {
         return new RemoveLineStrategy(currentNode, currentLine, neighbourLine, editorContext, isForward);
       } else {
         return new RemoveWholeTextStrategy(SNodeOperations.getParent(currentLine), editorContext, isForward);
@@ -206,7 +210,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
           }
         });
       }
-      SNodeOperations.deleteNode(myNeighbourLine);
+      SNodeOperations.deleteNode(TextStrategy.findLineContainer(myNeighbourLine));
       if (SNodeOperations.isInstanceOf(edgeElement, CONCEPTS.Word$AM) && SNodeOperations.isInstanceOf(myCurrentNode, CONCEPTS.Word$AM)) {
         TextDeleteStrategyFactory.createDeleteStrategy(myCurrentNode, myEditorContext, myIsForward).execute();
       }

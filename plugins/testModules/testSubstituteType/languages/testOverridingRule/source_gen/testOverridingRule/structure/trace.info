@@ -15,7 +15,7 @@
       <unit at="10,0,32,0" name="testOverridingRule.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="16,0,88,0" name="testOverridingRule.structure.StructureAspectDescriptor" />
+      <unit at="15,0,83,0" name="testOverridingRule.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:1440b521-6c1d-4859-b19d-60ba0d9d36b1(testOverridingRule.structure)/8837437332634520113">
@@ -36,20 +36,20 @@
       <node id="8837437332634520113" at="17,116,18,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="8837437332634520113" at="17,0,18,0" concept="1" trace="myConceptConceptA" />
-      <node id="8837437332634520113" at="41,42,42,33" concept="4" />
-      <node id="8837437332634520113" at="61,66,62,161" concept="3" />
-      <node id="8837437332634520113" at="62,161,63,34" concept="0" />
-      <node id="8837437332634520113" at="63,34,64,105" concept="0" />
-      <node id="8837437332634520113" at="64,105,65,17" concept="0" />
-      <node id="8837437332634520180" at="65,17,66,118" concept="0" />
-      <node id="8837437332634520113" at="66,118,67,22" concept="4" />
-      <node id="8837437332634520113" at="61,0,69,0" concept="6" trace="createDescriptorForConceptA#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="8837437332634520113" at="41,42,42,33" />
-      <scope id="8837437332634520113" at="61,66,67,22">
+      <node id="8837437332634520113" at="16,0,17,0" concept="1" trace="myConceptConceptA" />
+      <node id="8837437332634520113" at="40,42,41,33" concept="4" />
+      <node id="8837437332634520113" at="56,66,57,161" concept="3" />
+      <node id="8837437332634520113" at="57,161,58,34" concept="0" />
+      <node id="8837437332634520113" at="58,34,59,105" concept="0" />
+      <node id="8837437332634520113" at="59,105,60,17" concept="0" />
+      <node id="8837437332634520180" at="60,17,61,118" concept="0" />
+      <node id="8837437332634520113" at="61,118,62,22" concept="4" />
+      <node id="8837437332634520113" at="56,0,64,0" concept="6" trace="createDescriptorForConceptA#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8837437332634520113" at="40,42,41,33" />
+      <scope id="8837437332634520113" at="56,66,62,22">
         <var name="b" id="8837437332634520113" />
       </scope>
-      <scope id="8837437332634520113" at="61,0,69,0" />
+      <scope id="8837437332634520113" at="56,0,64,0" />
     </file>
   </root>
   <root nodeRef="r:1440b521-6c1d-4859-b19d-60ba0d9d36b1(testOverridingRule.structure)/8837437332634520228">
@@ -70,21 +70,21 @@
       <node id="8837437332634520228" at="18,47,19,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="8837437332634520228" at="18,0,19,0" concept="1" trace="myConceptConceptB" />
-      <node id="8837437332634520228" at="43,42,44,33" concept="4" />
-      <node id="8837437332634520228" at="69,66,70,161" concept="3" />
-      <node id="8837437332634520228" at="70,161,71,34" concept="0" />
-      <node id="8837437332634520228" at="71,34,72,117" concept="0" />
-      <node id="8837437332634520228" at="72,117,73,105" concept="0" />
-      <node id="8837437332634520228" at="73,105,74,17" concept="0" />
-      <node id="8837437332634520229" at="74,17,75,118" concept="0" />
-      <node id="8837437332634520228" at="75,118,76,22" concept="4" />
-      <node id="8837437332634520228" at="69,0,78,0" concept="6" trace="createDescriptorForConceptB#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="8837437332634520228" at="43,42,44,33" />
-      <scope id="8837437332634520228" at="69,66,76,22">
+      <node id="8837437332634520228" at="17,0,18,0" concept="1" trace="myConceptConceptB" />
+      <node id="8837437332634520228" at="42,42,43,33" concept="4" />
+      <node id="8837437332634520228" at="64,66,65,161" concept="3" />
+      <node id="8837437332634520228" at="65,161,66,34" concept="0" />
+      <node id="8837437332634520228" at="66,34,67,117" concept="0" />
+      <node id="8837437332634520228" at="67,117,68,105" concept="0" />
+      <node id="8837437332634520228" at="68,105,69,17" concept="0" />
+      <node id="8837437332634520229" at="69,17,70,118" concept="0" />
+      <node id="8837437332634520228" at="70,118,71,22" concept="4" />
+      <node id="8837437332634520228" at="64,0,73,0" concept="6" trace="createDescriptorForConceptB#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8837437332634520228" at="42,42,43,33" />
+      <scope id="8837437332634520228" at="64,66,71,22">
         <var name="b" id="8837437332634520228" />
       </scope>
-      <scope id="8837437332634520228" at="69,0,78,0" />
+      <scope id="8837437332634520228" at="64,0,73,0" />
     </file>
   </root>
   <root nodeRef="r:1440b521-6c1d-4859-b19d-60ba0d9d36b1(testOverridingRule.structure)/8837437332634520230">
@@ -105,21 +105,21 @@
       <node id="8837437332634520230" at="19,47,20,47" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <node id="8837437332634520230" at="19,0,20,0" concept="1" trace="myConceptConceptC" />
-      <node id="8837437332634520230" at="45,42,46,33" concept="4" />
-      <node id="8837437332634520230" at="78,66,79,161" concept="3" />
-      <node id="8837437332634520230" at="79,161,80,34" concept="0" />
-      <node id="8837437332634520230" at="80,34,81,117" concept="0" />
-      <node id="8837437332634520230" at="81,117,82,105" concept="0" />
-      <node id="8837437332634520230" at="82,105,83,17" concept="0" />
-      <node id="8837437332634520231" at="83,17,84,118" concept="0" />
-      <node id="8837437332634520230" at="84,118,85,22" concept="4" />
-      <node id="8837437332634520230" at="78,0,87,0" concept="6" trace="createDescriptorForConceptC#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
-      <scope id="8837437332634520230" at="45,42,46,33" />
-      <scope id="8837437332634520230" at="78,66,85,22">
+      <node id="8837437332634520230" at="18,0,19,0" concept="1" trace="myConceptConceptC" />
+      <node id="8837437332634520230" at="44,42,45,33" concept="4" />
+      <node id="8837437332634520230" at="73,66,74,161" concept="3" />
+      <node id="8837437332634520230" at="74,161,75,34" concept="0" />
+      <node id="8837437332634520230" at="75,34,76,117" concept="0" />
+      <node id="8837437332634520230" at="76,117,77,105" concept="0" />
+      <node id="8837437332634520230" at="77,105,78,17" concept="0" />
+      <node id="8837437332634520231" at="78,17,79,118" concept="0" />
+      <node id="8837437332634520230" at="79,118,80,22" concept="4" />
+      <node id="8837437332634520230" at="73,0,82,0" concept="6" trace="createDescriptorForConceptC#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <scope id="8837437332634520230" at="44,42,45,33" />
+      <scope id="8837437332634520230" at="73,66,80,22">
         <var name="b" id="8837437332634520230" />
       </scope>
-      <scope id="8837437332634520230" at="78,0,87,0" />
+      <scope id="8837437332634520230" at="73,0,82,0" />
     </file>
   </root>
 </debug-info>

@@ -11,6 +11,8 @@ import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
 import jetbrains.mps.lang.editor.menus.extras.testLanguage.intentions.IntentionsDescriptor;
 import jetbrains.mps.refactoring.runtime.RefactoringAspect;
 import jetbrains.mps.lang.editor.menus.extras.testLanguage.refactorings.RefactoringAspectDescriptor;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.smodel.language.LanguageExtensions;
 
 public class Language extends LanguageRuntime {
   private final SLanguageId myId;
@@ -49,5 +51,9 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new RefactoringAspectDescriptor());
     }
     return null;
+  }
+
+  @Override
+  protected void contribute(@NotNull LanguageExtensions extensions) {
   }
 }

@@ -25,11 +25,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ActionTestSidetransformAbstractChild;
   private ConceptPresentation props_ActionTestSidetransformAddConceptAbstractChild;
   private ConceptPresentation props_ActionTestSidetransformAddConceptChild;
+  private ConceptPresentation props_ActionTestSidetransformAddConceptChild2;
   private ConceptPresentation props_ActionTestSidetransformAnotherAbstractChild;
   private ConceptPresentation props_ActionTestSidetransformAnotherChild1;
   private ConceptPresentation props_ActionTestSidetransformAnotherChild2;
   private ConceptPresentation props_ActionTestSidetransformAnotherChildCommonSuperConcept;
   private ConceptPresentation props_ActionTestSidetransformChild1;
+  private ConceptPresentation props_ActionTestSidetransformChild2;
   private ConceptPresentation props_ActionTestSidetransformTestAncestor;
   private ConceptPresentation props_ActionTestSidetransformTestContainer;
 
@@ -54,7 +56,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionTestChild1 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a2b0y);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a2b0ab);
           props_ActionTestChild1 = cpb.create();
         }
         return props_ActionTestChild1;
@@ -69,7 +71,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionTestChild1SubConcept == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a4b0y);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a4b0ab);
           props_ActionTestChild1SubConcept = cpb.create();
         }
         return props_ActionTestChild1SubConcept;
@@ -77,7 +79,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionTestChild2 == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a2a0a5b0y);
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a5b0ab);
           props_ActionTestChild2 = cpb.create();
         }
         return props_ActionTestChild2;
@@ -148,6 +150,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ActionTestSidetransformAddConceptChild = cpb.create();
         }
         return props_ActionTestSidetransformAddConceptChild;
+      case LanguageConceptSwitch.ActionTestSidetransformAddConceptChild2:
+        if (props_ActionTestSidetransformAddConceptChild2 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("otherConceptChild");
+          props_ActionTestSidetransformAddConceptChild2 = cpb.create();
+        }
+        return props_ActionTestSidetransformAddConceptChild2;
       case LanguageConceptSwitch.ActionTestSidetransformAnotherAbstractChild:
         if (props_ActionTestSidetransformAnotherAbstractChild == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -181,6 +190,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ActionTestSidetransformChild1 = cpb.create();
         }
         return props_ActionTestSidetransformChild1;
+      case LanguageConceptSwitch.ActionTestSidetransformChild2:
+        if (props_ActionTestSidetransformChild2 == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ActionTestSidetransformChild2 = cpb.create();
+        }
+        return props_ActionTestSidetransformChild2;
       case LanguageConceptSwitch.ActionTestSidetransformTestAncestor:
         if (props_ActionTestSidetransformTestAncestor == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

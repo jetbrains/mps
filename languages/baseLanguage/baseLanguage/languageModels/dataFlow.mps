@@ -223,7 +223,7 @@
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -1226,7 +1226,7 @@
     <node concept="3__wT9" id="hzAPKt7" role="3_A6iZ">
       <node concept="3clFbS" id="hzAPKt8" role="2VODD2">
         <node concept="3SKdUt" id="6pumIWoCFOn" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXnPzK" role="3ndbpf">
+          <node concept="1PaTwC" id="ATZLwXnPzK" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXnPzL" role="1PaTwD">
               <property role="3oM_SC" value="todo" />
             </node>
@@ -7476,7 +7476,7 @@
       <node concept="3clFbJ" id="6FvvGn2gR5i" role="3cqZAp">
         <node concept="3clFbS" id="6FvvGn2gR5k" role="3clFbx">
           <node concept="3SKdUt" id="6FvvGn2gRFA" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnPzN" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnPzN" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnPzO" role="1PaTwD">
                 <property role="3oM_SC" value="instanceof" />
               </node>
@@ -7491,7 +7491,7 @@
           <node concept="3clFbJ" id="6FvvGn2gSh0" role="3cqZAp">
             <node concept="3clFbS" id="6FvvGn2gSh2" role="3clFbx">
               <node concept="3SKdUt" id="6FvvGn2gSGd" role="3cqZAp">
-                <node concept="1PaTwC" id="ATZLwXnPzR" role="3ndbpf">
+                <node concept="1PaTwC" id="ATZLwXnPzR" role="1aUNEU">
                   <node concept="3oM_SD" id="ATZLwXnPzS" role="1PaTwD">
                     <property role="3oM_SC" value="XXX" />
                   </node>
@@ -7586,7 +7586,7 @@
         </node>
       </node>
       <node concept="3SKdUt" id="6FvvGn2gRXD" role="3cqZAp">
-        <node concept="1PaTwC" id="ATZLwXnP$2" role="3ndbpf">
+        <node concept="1PaTwC" id="ATZLwXnP$2" role="1aUNEU">
           <node concept="3oM_SD" id="ATZLwXnP$3" role="1PaTwD">
             <property role="3oM_SC" value="If" />
           </node>

@@ -208,7 +208,7 @@ public class JavaParser {
             line_ = line.substring(1);
           }
           SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-          BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$jI, SMethodTrimmedId.create("parseAndAddWords", CONCEPTS.SingleLineComment$jI, "45vN3dBFprj"), line_);
+          BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$jI, SMethodTrimmedId.create("parseAndAddWords", CONCEPTS.SingleLineComment$jI, "13gAna0o0W6"), line_);
           ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$WHn8)).insertElement(pos++, commentLine);
         }
       } else {

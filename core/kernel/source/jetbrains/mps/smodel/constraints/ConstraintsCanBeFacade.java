@@ -37,8 +37,6 @@ import java.util.stream.Stream;
  * Here we expose API for external constraints invocation
  * See also the legacy counterpart {@link ModelConstraints}
  *
- * fixme to be rewritten, we ned to consider the legacy + new constraints interoperability much better than this
- *
  * @author apyshkin
  */
 public class ConstraintsCanBeFacade {

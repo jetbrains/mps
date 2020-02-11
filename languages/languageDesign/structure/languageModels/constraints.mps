@@ -190,7 +190,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
@@ -452,7 +452,7 @@
       <node concept="3dgokm" id="5Vvmn_QkT3X" role="1N6uqs">
         <node concept="3clFbS" id="5Vvmn_QkT3Y" role="2VODD2">
           <node concept="3SKdUt" id="5Vvmn_QkT3Z" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnYKz" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnYKz" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnYK$" role="1PaTwD">
                 <property role="3oM_SC" value="don't" />
               </node>
@@ -647,7 +647,7 @@
       <node concept="3dgokm" id="5Vvmn_QkT45" role="1N6uqs">
         <node concept="3clFbS" id="5Vvmn_QkT46" role="2VODD2">
           <node concept="3SKdUt" id="5Vvmn_QkT47" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnYKB" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnYKB" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnYKC" role="1PaTwD">
                 <property role="3oM_SC" value="links" />
               </node>
@@ -904,7 +904,7 @@
       <node concept="3dgokm" id="5Vvmn_QkT0A" role="1N6uqs">
         <node concept="3clFbS" id="5Vvmn_QkT0B" role="2VODD2">
           <node concept="3SKdUt" id="5Vvmn_QkT0C" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnYKJ" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnYKJ" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnYKK" role="1PaTwD">
                 <property role="3oM_SC" value="members" />
               </node>

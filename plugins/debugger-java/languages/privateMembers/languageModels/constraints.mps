@@ -74,7 +74,7 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
-        <child id="1350122676458893092" name="text" index="3ndbpf" />
+        <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
     </language>
     <language id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints">
@@ -182,7 +182,7 @@
             </node>
           </node>
           <node concept="3SKdUt" id="5Vvmn_QkX8B" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXnZYo" role="3ndbpf">
+            <node concept="1PaTwC" id="ATZLwXnZYo" role="1aUNEU">
               <node concept="3oM_SD" id="ATZLwXnZYp" role="1PaTwD">
                 <property role="3oM_SC" value="fields" />
               </node>

@@ -10,6 +10,7 @@ import jetbrains.mps.make.facet.ITarget;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.messages.IMessage;
@@ -42,7 +43,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.make.resources.IPropertiesIO;
 import java.io.IOException;
-import jetbrains.mps.make.facet.FacetRegistry;
 import jetbrains.mps.make.resources.IPropertiesPersistence;
 import jetbrains.mps.make.resources.IPropertiesAccessor;
 import jetbrains.mps.make.resources.IResourceWithProperties;
@@ -56,6 +56,8 @@ public class Script implements IScript {
   private TargetRange targetRange;
   private List<ValidationError> errors = ListSequence.fromList(new ArrayList<ValidationError>());
   private boolean validated = false;
+  private FacetRegistry myFacetRegistry;
+
   public Script(TargetRange targetRange, ITarget.Name defaultTargetName) {
     this.targetRange = targetRange;
     this.finalTarget = defaultTargetName;
@@ -129,6 +131,19 @@ public class Script implements IScript {
   private void error(String message) {
     LOG.debug(message);
     ListSequence.fromList(this.errors).addElement(new ValidationError(this, message));
+  }
+  /*package*/ FacetRegistry getFacetRegistry() {
+    // nullable 
+    return myFacetRegistry;
+  }
+  public void setFacetRegistry(FacetRegistry facetRegistry) {
+    // FIXME provisional mechanism to get FacetRegistry instance for use in PropertiesWithBackstore 
+    //       Shall be set prior to execute() call. General MPS implementation supplies one as MResource it uses are of IResourceWithProperties kind 
+    //       and chances are we get to loadProperties(IFacet.Name). Tests that don't use MResource don't need to bother. 
+    //       Alternatively, could extract FacetRegistry from IJobMonitor.getSession().getProject().getComponent() inside #executeTargets 
+    //       but find this setter much more straightforward (although don't like the approach in general - not clear what's Script and what's its relation  
+    //       to FacetRegistry as long as it keeps ITarget.Name. Still, there's execute, so it's not pure target container, and I'm in doubt how to wrap it up right, hence fixme) 
+    myFacetRegistry = facetRegistry;
   }
   @Override
   public IResult execute(IScriptController controller, Iterable<? extends IResource> scriptInput, ProgressMonitor monitor) {
@@ -232,7 +247,7 @@ __switch__:
     }
     return (target.requiresInput() || target.producesOutput() ? 100 : 10);
   }
-  private void executeTargets(final IScriptController ctl, final Iterable<ITarget> toExecute, final Iterable<? extends IResource> scriptInput, final ParametersPool pool, final CompositeResult results, final ProgressMonitor monitor) {
+  private void executeTargets(IScriptController ctl, final Iterable<ITarget> toExecute, final Iterable<? extends IResource> scriptInput, final ParametersPool pool, final CompositeResult results, final ProgressMonitor monitor) {
     final Map<ITarget.Name, Long> timeStatistic = MapSequence.fromMap(new HashMap<ITarget.Name, Long>());
     // add time statistic result first - in composite result output() is the last one 
     results.addResult(TIME_STATISTIC_RESULT_NAME, new IResult.SUCCESS(Sequence.<IResource>singleton(new TimeStatisticResource(timeStatistic))));
@@ -289,7 +304,6 @@ with_targets:
               }
 
               ProgressMonitor subMonitor = monitor.subTask(workEstimate(trg));
-              ctl.useMonitor(subMonitor);
               IJob job = trg.createJob();
               long startTime = System.currentTimeMillis();
               IResult jr;
@@ -313,7 +327,6 @@ with_targets:
                 LOG.debug((jr.isSucessful() ? "Stop requested" : "Execution failed"));
                 return;
               }
-              ctl.useMonitor(null);
 
               monitor.advance(0);
             } catch (TimeOutRuntimeException to) {
@@ -363,6 +376,7 @@ with_targets:
       }
     });
   }
+
   private class ParametersPool implements IPropertiesPool {
     private Map<ITarget.Name, Object> cache = MapSequence.fromMap(new HashMap<ITarget.Name, Object>());
     private Map<ITarget.Name, Object> copyFrom;
@@ -406,6 +420,7 @@ with_targets:
       }
     }
   }
+
   private class PropertiesWithBackstore implements IPropertiesPool {
     private final IPropertiesPool transProps;
     private final IPropertiesPool persProps = new ParametersPool();
@@ -448,7 +463,7 @@ with_targets:
     }
     private void loadProperties(IFacet.Name facetName) {
       if (!(SetSequence.fromSet(loadedFacets).contains(facetName))) {
-        IFacet fct = FacetRegistry.getInstance().lookup(facetName);
+        IFacet fct = getFacetRegistry().lookup(facetName);
         if (fct != null) {
           IPropertiesPersistence pp = fct.propertiesPersistence();
           if (pp != null) {

@@ -4,9 +4,8 @@ package jetbrains.mps.ide.httpsupport.manager.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.io.CustomPortServerManagerBase;
-import jetbrains.mps.util.annotation.ToRemove;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.util.registry.RegistryValue;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.util.registry.RegistryValueListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.ide.BuiltInServerManager;
@@ -16,23 +15,12 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
 
   private static final String PORT_KEY = "ide.httpsupport.internalPort";
 
-  /**
-   * 
-   * @deprecated Use #getCurrentPort instead, modifying the field doesn't affect real port
-   */
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  public static int PORT = 63220;
-
   public MPSInternalPortManager() {
-    Registry.addKey(PORT_KEY, "Port for MPS internal requests (i.e. opening node)", "63320", false);
     RegistryValue value = Registry.get(PORT_KEY);
-    PORT = value.asInteger();
-    value.addListener(new RegistryValueListener.Adapter() {
+    value.addListener(new RegistryValueListener() {
 
       @Override
       public void afterValueChanged(@NotNull RegistryValue value) {
-        PORT = value.asInteger();
         portChanged();
       }
     }, BuiltInServerManager.getInstance().getServerDisposable());
@@ -45,7 +33,7 @@ public class MPSInternalPortManager extends CustomPortServerManagerBase {
 
   @Override
   public void cannotBind(Exception e, int port) {
-    HttpSupportPluginNotifications.showWarning("Built-in server cannot bind to port " + getPort() + ". Openning node on HTTP request disabled");
+    HttpSupportPluginNotifications.showWarning(String.format("Built-in server cannot bind to port %d. Opening node on HTTP request disabled", getPort()));
   }
 
 
