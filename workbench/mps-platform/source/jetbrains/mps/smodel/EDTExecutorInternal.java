@@ -27,10 +27,12 @@ import jetbrains.mps.smodel.EDTExecutor.Task;
 import jetbrains.mps.smodel.EDTExecutor.TaskIsOutdated;
 import jetbrains.mps.util.NamedThreadFactory;
 import jetbrains.mps.util.annotation.Hack;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -73,7 +75,7 @@ final class EDTExecutorInternal implements Disposable {
 
   private boolean myDisposed = false; // access only in EDT!
 
-  private final com.intellij.openapi.util.Condition myExpiredCondition = o -> myDisposed;
+  private final com.intellij.openapi.util.Condition<Boolean> myExpiredCondition = o -> myDisposed;
 
   @NotNull
   private static ThreadFactory createDaemonFactory() {
@@ -81,7 +83,7 @@ final class EDTExecutorInternal implements Disposable {
   }
 
   /**
-   * elements are added only in the {@link EDTExecutor#scheduleTask(Task)}
+   * elements are added only in the {@code EDTExecutor#scheduleTask(Task)}
    * elements are removed in the EDT only in the {@link EDTExecutorInternal#tryToRunTopTask()}
    */
   private final Queue<Task> myTaskQueue = new ConcurrentLinkedQueue<>();
@@ -97,9 +99,7 @@ final class EDTExecutorInternal implements Disposable {
       // impossible by the contract of ConcurrentLinkedQueue
       LOG.error("Failed to add the task into the queue " + task);
     }
-    if (myFlushIsScheduled.compareAndSet(false, true)) {
-      scheduleFlushInEDT();
-    }
+    scheduleFlushInEDT();
   }
 
   private void checkTheContract() {
@@ -115,21 +115,53 @@ final class EDTExecutorInternal implements Disposable {
 
   private void traceTheCaller() {
     if (LOG.isTraceEnabled()) {
-      LOG.trace("schedule task: the caller is " + ReflectionUtil.findCallerClass(8));
+      LOG.trace("schedule task:" + callersString());
     }
+  }
+
+  @NotNull
+  private String callersString() {
+    return " the callers are :: "
+           + ReflectionUtil.findCallerClass(9)
+           + " :: " + ReflectionUtil.findCallerClass(10)
+           + " :: " + ReflectionUtil.findCallerClass(11);
   }
 
   /**
    * flushing the whole queue in the edt asynchronously
    */
   private void scheduleFlushInEDT() {
-    if (LOG.isTraceEnabled()) {
-      LOG.trace("flushing the queue: the caller is " + ReflectionUtil.findCallerClass(9) + " : context transaction " +
-                TransactionGuard.getInstance().getContextTransaction());
+    if (myFlushIsScheduled.compareAndSet(false, true)) {
+      doScheduleFlushInEDT();
     }
+  }
+
+  private void doScheduleFlushInEDT() {
+    try {
+      myFlushIsScheduled.set(true);
+      forceScheduleFlushEDT();
+    } catch (Throwable t) {
+      LOG.error("Caught an exception while scheduling the flush", t);
+      myFlushIsScheduled.set(false);
+    }
+  }
+
+  @Internal
+  @ToRemove(version = 201)
+  public void forceScheduleFlushEDT() {
+    if (LOG.isTraceEnabled()) {
+      LOG.trace("flushing the queue: " + callersString() + " : context transaction " + TransactionGuard.getInstance().getContextTransaction());
+    }
+    // here we are tricking IJ modality policy
     TransactionGuardImpl guard = (TransactionGuardImpl) TransactionGuard.getInstance();
     Runnable wrapped = guaranteeWriteSafetyViaHack(guard);
-    ApplicationManager.getApplication().invokeLater(wrapped, ModalityState.any(), myExpiredCondition);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      try {
+        wrapped.run();
+      } finally {
+        myFlushIsScheduled.compareAndSet(true, false);
+      }
+    }, ModalityState.any(), myExpiredCondition);
   }
 
   /**
@@ -150,6 +182,7 @@ final class EDTExecutorInternal implements Disposable {
   private void flushTasksQueue() {
     ThreadUtils.assertEDT();
     if (myTaskQueue.isEmpty()) {
+      LOG.trace("the task queue is empty, aborting");
       return;
     }
 
@@ -162,31 +195,31 @@ final class EDTExecutorInternal implements Disposable {
   private void doFlush() {
     ScheduledFuture<?> timer = createTimeOutFuture();
 
-    if (timer != null) {
+    if (timer == null) {
+      LOG.error("Timer is null, could not run tasks", new Throwable());
+    } else {
       try {
         while (!myTaskQueue.isEmpty()) {
           LOG.trace(String.format("flushing tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
           flushNTasks(timer, myTasks2RunCount.get());
           if (timer.isDone()) {
+            LOG.trace("exiting by timer");
             return;
           }
         }
       } finally {
+        boolean again = true;
         if (myTaskQueue.isEmpty()) {
-          myFlushIsScheduled.compareAndSet(true, false);
-          if (myTaskQueue.isEmpty()) { // double check since we could add tasks to the queue between previous statement and this one
-            try (CloseableLock ignored = myQueueIsEmptyLock.lock()) {
-              signalQueueWasEmpty();
-            }
-          } else {
-            scheduleFlushInEDT();
+          try (CloseableLock ignored = myQueueIsEmptyLock.lock()) {
+            signalQueueWasEmpty();
+            again = false;
           }
-        } else {
-          scheduleFlushInEDT();
+        }
+        if (again) {
+          LOG.trace("flushing the queue again");
+          doScheduleFlushInEDT();
         }
       }
-    } else {
-      LOG.error("Timer is null, could not run tasks", new Throwable());
     }
   }
 
