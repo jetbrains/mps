@@ -103,10 +103,10 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
-  private static SNode createPatternVariableNode_y43w6t_a0a0a(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PatternVariableNode$dP);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createPatternVariableNode_y43w6t_a0a0a(String p0) {
+    SNodeBuilder rootBuilder = new SNodeBuilder().init(CONCEPTS.PatternVariableNode$dP);
+    rootBuilder.setProperty(PROPS.name$tAp1, p0);
+    return rootBuilder.getResult();
   }
 
   private static final class CONCEPTS {

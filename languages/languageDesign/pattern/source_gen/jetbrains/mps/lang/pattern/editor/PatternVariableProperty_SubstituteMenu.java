@@ -103,10 +103,10 @@ public class PatternVariableProperty_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
-  private static SNode createPatternVariableProperty_kdsknv_a0a0a(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PatternVariableProperty$JI);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createPatternVariableProperty_kdsknv_a0a0a(String p0) {
+    SNodeBuilder rootBuilder = new SNodeBuilder().init(CONCEPTS.PatternVariableProperty$JI);
+    rootBuilder.setProperty(PROPS.name$tAp1, p0);
+    return rootBuilder.getResult();
   }
 
   private static final class CONCEPTS {

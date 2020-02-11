@@ -135,11 +135,11 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
     }
 
   }
-  private static SNode createLabeledNode_scvrho_a0a0a0a0(SModel modelToCreate, SNodeId nodeId, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.LabeledNode$iM);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    rootBuilder1.setReferenceTarget(LINKS.concept$lMG$, null);
-    return rootBuilder1.getResult();
+  private static SNode createLabeledNode_scvrho_a0a0a0a0(SModel modelToCreate, SNodeId nodeId, String p0) {
+    SNodeBuilder rootBuilder = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.LabeledNode$iM);
+    rootBuilder.setProperty(PROPS.name$tAp1, p0);
+    rootBuilder.setReferenceTarget(LINKS.concept$lMG$, null);
+    return rootBuilder.getResult();
   }
 
   private static final class PROPS {

@@ -20,6 +20,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptGeneratorInternal_InternalReferenceHolder = createDescriptorForGeneratorInternal_InternalReferenceHolder();
   /*package*/ final ConceptDescriptor myConceptGeneratorInternal_PropertyDescriptor = createDescriptorForGeneratorInternal_PropertyDescriptor();
   /*package*/ final ConceptDescriptor myConceptGeneratorInternal_ReferenceDescriptor = createDescriptorForGeneratorInternal_ReferenceDescriptor();
+  /*package*/ final ConceptDescriptor myConceptINodeBuilderContainer = createDescriptorForINodeBuilderContainer();
   /*package*/ final ConceptDescriptor myConceptListAntiquotation = createDescriptorForListAntiquotation();
   /*package*/ final ConceptDescriptor myConceptModelNodeInitializer = createDescriptorForModelNodeInitializer();
   /*package*/ final ConceptDescriptor myConceptNodeBuilder = createDescriptorForNodeBuilder();
@@ -56,7 +57,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractAntiquotation, myConceptAntiquotation, myConceptGeneratorInternal_InternalReferenceHolder, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptListAntiquotation, myConceptModelNodeInitializer, myConceptNodeBuilder, myConceptNodeBuilderExpression, myConceptNodeBuilderInitLink, myConceptNodeBuilderInitLinkValue, myConceptNodeBuilderInitPart, myConceptNodeBuilderInitProperty, myConceptNodeBuilderInitPropertyValue, myConceptNodeBuilderInitValueChild, myConceptNodeBuilderList, myConceptNodeBuilderNode, myConceptNodeBuilderPropertyExpression, myConceptNodeBuilderRef, myConceptPropertyAntiquotation, myConceptQuotation, myConceptReferenceAntiquotation, myConceptStringToTypedValueMigrationInfo);
+    return Arrays.asList(myConceptAbstractAntiquotation, myConceptAntiquotation, myConceptGeneratorInternal_InternalReferenceHolder, myConceptGeneratorInternal_PropertyDescriptor, myConceptGeneratorInternal_ReferenceDescriptor, myConceptINodeBuilderContainer, myConceptListAntiquotation, myConceptModelNodeInitializer, myConceptNodeBuilder, myConceptNodeBuilderExpression, myConceptNodeBuilderInitLink, myConceptNodeBuilderInitLinkValue, myConceptNodeBuilderInitPart, myConceptNodeBuilderInitProperty, myConceptNodeBuilderInitPropertyValue, myConceptNodeBuilderInitValueChild, myConceptNodeBuilderList, myConceptNodeBuilderNode, myConceptNodeBuilderPropertyExpression, myConceptNodeBuilderRef, myConceptPropertyAntiquotation, myConceptQuotation, myConceptReferenceAntiquotation, myConceptStringToTypedValueMigrationInfo);
   }
 
   @Override
@@ -73,6 +74,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptGeneratorInternal_PropertyDescriptor;
       case LanguageConceptSwitch.GeneratorInternal_ReferenceDescriptor:
         return myConceptGeneratorInternal_ReferenceDescriptor;
+      case LanguageConceptSwitch.INodeBuilderContainer:
+        return myConceptINodeBuilderContainer;
       case LanguageConceptSwitch.ListAntiquotation:
         return myConceptListAntiquotation;
       case LanguageConceptSwitch.ModelNodeInitializer:
@@ -170,6 +173,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("linkId", 0x6e238a9f74e89138L).target(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL).optional(false).ordered(true).multiple(false).origin("7936339385822777656").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForINodeBuilderContainer() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.quotation", "INodeBuilderContainer", 0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL);
+    b.interface_();
+    b.origin("r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)/1010197743173864766");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForListAntiquotation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.quotation", "ListAntiquotation", 0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL);
     b.class_(false, false, false);
@@ -194,6 +204,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
+    b.parent(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL);
     b.origin("r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)/5455284157993863837");
     b.version(2);
     b.aggregate("quotedNode", 0x4bb51009d20a4a9eL).target(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L).optional(false).ordered(true).multiple(false).origin("5455284157993863838").done();

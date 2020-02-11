@@ -4366,9 +4366,9 @@
       <node id="6996663776879117107" at="92,49,93,27" concept="9" />
       <node id="6996663776879514794" at="98,93,99,25" concept="9" />
       <node id="6996663776879515727" at="100,16,101,31" concept="9" />
-      <node id="6996663776879613747" at="106,78,107,93" concept="8" />
-      <node id="6996663776879613747" at="107,93,108,86" concept="3" />
-      <node id="6996663776879613747" at="108,86,109,36" concept="9" />
+      <node id="6996663776879613747" at="106,78,107,92" concept="8" />
+      <node id="6996663776879613747" at="107,92,108,49" concept="3" />
+      <node id="6996663776879613747" at="108,49,109,35" concept="9" />
       <node id="6996663776879116954" at="113,0,114,0" concept="12" trace="PatternVariableProperty$JI" />
       <node id="6996663776879116954" at="117,0,118,0" concept="12" trace="name$tAp1" />
       <node id="6996663776879515350" at="100,14,102,9" concept="1" />
@@ -4378,7 +4378,7 @@
       <node id="6996663776879116954" at="40,255,45,5" concept="16" />
       <node id="6996663776879117107" at="85,0,90,0" concept="7" trace="createNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6996663776879509222" at="97,62,102,9" concept="6" />
-      <node id="6996663776879613747" at="106,0,111,0" concept="13" trace="createPatternVariableProperty_kdsknv_a0a0a#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6996663776879613747" at="106,0,111,0" concept="13" trace="createPatternVariableProperty_kdsknv_a0a0a#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6996663776879117107" at="55,25,61,7" concept="15" />
       <node id="6996663776879117107" at="63,52,69,7" concept="16" />
       <node id="6996663776879116954" at="28,0,35,0" concept="7" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
@@ -4406,8 +4406,8 @@
       <scope id="6996663776879117107" at="81,0,84,0">
         <var name="traceInfo" id="6996663776879117107" />
       </scope>
-      <scope id="6996663776879613747" at="106,78,109,36">
-        <var name="rootBuilder1" id="6996663776879613747" />
+      <scope id="6996663776879613747" at="106,78,109,35">
+        <var name="rootBuilder" id="6996663776879613747" />
       </scope>
       <scope id="6996663776879117107" at="76,0,80,0">
         <var name="context" id="6996663776879117107" />
@@ -4554,9 +4554,9 @@
       <node id="6996663776879938834" at="92,49,93,27" concept="9" />
       <node id="6996663776879938861" at="98,93,99,25" concept="9" />
       <node id="6996663776879938865" at="100,16,101,31" concept="9" />
-      <node id="6996663776879938838" at="106,74,107,89" concept="8" />
-      <node id="6996663776879938838" at="107,89,108,86" concept="3" />
-      <node id="6996663776879938838" at="108,86,109,36" concept="9" />
+      <node id="6996663776879938838" at="106,74,107,88" concept="8" />
+      <node id="6996663776879938838" at="107,88,108,49" concept="3" />
+      <node id="6996663776879938838" at="108,49,109,35" concept="9" />
       <node id="6996663776879938833" at="113,0,114,0" concept="12" trace="PatternVariableNode$dP" />
       <node id="6996663776879938833" at="117,0,118,0" concept="12" trace="name$tAp1" />
       <node id="6996663776879938863" at="100,14,102,9" concept="1" />
@@ -4566,7 +4566,7 @@
       <node id="6996663776879938833" at="40,251,45,5" concept="16" />
       <node id="6996663776879938834" at="85,0,90,0" concept="7" trace="createNode#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6996663776879938849" at="97,62,102,9" concept="6" />
-      <node id="6996663776879938838" at="106,0,111,0" concept="13" trace="createPatternVariableNode_y43w6t_a0a0a#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6996663776879938838" at="106,0,111,0" concept="13" trace="createPatternVariableNode_y43w6t_a0a0a#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6996663776879938834" at="55,25,61,7" concept="15" />
       <node id="6996663776879938834" at="63,52,69,7" concept="16" />
       <node id="6996663776879938833" at="28,0,35,0" concept="7" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/List;" />
@@ -4594,8 +4594,8 @@
       <scope id="6996663776879938834" at="81,0,84,0">
         <var name="traceInfo" id="6996663776879938834" />
       </scope>
-      <scope id="6996663776879938838" at="106,74,109,36">
-        <var name="rootBuilder1" id="6996663776879938838" />
+      <scope id="6996663776879938838" at="106,74,109,35">
+        <var name="rootBuilder" id="6996663776879938838" />
       </scope>
       <scope id="6996663776879938834" at="76,0,80,0">
         <var name="context" id="6996663776879938834" />
@@ -4785,9 +4785,9 @@
       <node id="8950533135208924974" at="133,70,134,80" concept="8" />
       <node id="8950533135208924974" at="134,80,135,128" concept="9" />
       <node id="8950533135208924974" at="137,86,138,40" concept="9" />
-      <node id="8950533135208925261" at="141,75,142,91" concept="8" />
-      <node id="8950533135208925261" at="142,91,143,93" concept="3" />
-      <node id="8950533135208925261" at="143,93,144,36" concept="9" />
+      <node id="8950533135208925261" at="141,75,142,90" concept="8" />
+      <node id="8950533135208925261" at="142,90,143,92" concept="3" />
+      <node id="8950533135208925261" at="143,92,144,35" concept="9" />
       <node id="8950533135208924962" at="148,0,149,0" concept="12" trace="PatternReference$Mm" />
       <node id="8950533135208924962" at="149,0,150,0" concept="12" trace="AbstractPatternProvider$LR" />
       <node id="8950533135208924962" at="150,0,151,0" concept="12" trace="PatternBuilder$Pa" />
@@ -4836,8 +4836,8 @@
       <scope id="8950533135208924974" at="137,0,140,0">
         <var name="_context" id="8950533135208924974" />
       </scope>
-      <scope id="8950533135208925261" at="141,75,144,36">
-        <var name="rootBuilder1" id="8950533135208925261" />
+      <scope id="8950533135208925261" at="141,75,144,35">
+        <var name="rootBuilder" id="8950533135208925261" />
       </scope>
       <scope id="8950533135208924962" at="43,118,47,18">
         <var name="result" id="8950533135208924962" />
@@ -6351,10 +6351,10 @@
       <node id="967124561400540840" at="128,157,129,46" concept="8" />
       <node id="967124561400540840" at="129,46,130,290" concept="8" />
       <node id="967124561400540840" at="131,114,132,56" concept="3" />
-      <node id="967124561400572282" at="138,107,139,102" concept="8" />
-      <node id="967124561400572282" at="139,102,140,86" concept="3" />
-      <node id="967124561400572282" at="140,86,141,62" concept="3" />
-      <node id="967124561400572282" at="141,62,142,36" concept="9" />
+      <node id="967124561400572282" at="138,107,139,101" concept="8" />
+      <node id="967124561400572282" at="139,101,140,49" concept="3" />
+      <node id="967124561400572282" at="140,49,141,61" concept="3" />
+      <node id="967124561400572282" at="141,61,142,35" concept="9" />
       <node id="967124561400540827" at="146,0,147,0" concept="12" trace="name$tAp1" />
       <node id="967124561400540827" at="150,0,151,0" concept="12" trace="initValue$UJfh" />
       <node id="967124561400540827" at="151,0,152,0" concept="12" trace="nodes$$MVw" />
@@ -6372,7 +6372,7 @@
       <node id="967124561400540840" at="104,0,109,0" concept="7" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="967124561400540840" at="78,25,84,7" concept="15" />
       <node id="967124561400540840" at="85,51,91,7" concept="16" />
-      <node id="967124561400572282" at="138,0,144,0" concept="13" trace="createLabeledNode_scvrho_a0a0a0a0#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="967124561400572282" at="138,0,144,0" concept="13" trace="createLabeledNode_scvrho_a0a0a0a0#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="967124561400540840" at="127,0,135,0" concept="7" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
       <node id="967124561400540827" at="64,0,73,0" concept="7" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
       <node id="967124561400540827" at="52,0,63,0" concept="7" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
@@ -6414,8 +6414,8 @@
         <var name="pattern" id="967124561400540840" />
       </scope>
       <scope id="967124561400540840" at="122,0,126,0" />
-      <scope id="967124561400572282" at="138,107,142,36">
-        <var name="rootBuilder1" id="967124561400572282" />
+      <scope id="967124561400572282" at="138,107,142,35">
+        <var name="rootBuilder" id="967124561400572282" />
       </scope>
       <scope id="967124561400540827" at="66,124,71,18">
         <var name="result" id="967124561400540827" />

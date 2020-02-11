@@ -395,6 +395,9 @@
     <node concept="PrWs8" id="2g69lt1__B5" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
+    <node concept="PrWs8" id="S4WnV2LUCX" role="PzmwI">
+      <ref role="PrY4T" to="tp3r:S4WnV2LSOY" resolve="INodeBuilderContainer" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2g69lt1BJHK">
     <property role="EcuMT" value="2595803291918990192" />

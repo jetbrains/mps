@@ -100,14 +100,14 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNode node0) {
+  private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNode p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
-    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(node0, CONCEPTS.Expression$TP, true);
+    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
     return rootBuilder1.getResult();
   }
-  private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNode node0) {
+  private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNode p0) {
     SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
-    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(node0, CONCEPTS.Expression$TP, true);
+    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
     return rootBuilder1.getResult();
   }
 

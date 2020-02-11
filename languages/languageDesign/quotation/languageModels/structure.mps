@@ -258,6 +258,9 @@
     <node concept="PrWs8" id="1BC2tkV2axS" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
+    <node concept="PrWs8" id="S4WnV2LSP5" role="PzmwI">
+      <ref role="PrY4T" node="S4WnV2LSOY" resolve="INodeBuilderContainer" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4IP40Bi38Sq">
     <property role="TrG5h" value="NodeBuilderInitLink" />
@@ -498,6 +501,11 @@
     <node concept="PrWs8" id="63LzO9stH8t" role="PzmwI">
       <ref role="PrY4T" to="tpck:hLJPP0O" resolve="IWrapper" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="S4WnV2LSOY">
+    <property role="EcuMT" value="1010197743173864766" />
+    <property role="3GE5qa" value="container" />
+    <property role="TrG5h" value="INodeBuilderContainer" />
   </node>
 </model>
 

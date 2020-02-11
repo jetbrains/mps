@@ -36,6 +36,7 @@ import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.lang.smodel.behavior.ReferenceLinkId__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.behavior.ContainmentLinkId__BehaviorDescriptor;
+import jetbrains.mps.lang.structure.behavior.DataTypeDeclaration__BehaviorDescriptor;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
@@ -49,7 +50,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.generator.template.TemplateVarContext;
-import java.util.concurrent.ConcurrentMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -131,13 +131,13 @@ public class QueriesGenerated {
     return _context.createUniqueName(_context.getTemplateValue(), SNodeOperations.getContainingRoot(_context.getNode()));
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return "p" + ((Integer) _context.getVariable("cv:c"));
+    return _context.createIndexedName("n", SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.INodeBuilderContainer$cS, false, false), false);
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return "rootBuilder" + ((Integer) _context.getVariable("var:index"));
+    return _context.createUniqueName("create" + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), LINKS.concept$lMG$), PROPS.name$tAp1), _context.getNode());
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
-    return _context.createUniqueName("create" + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), LINKS.concept$lMG$), PROPS.name$tAp1), _context.getNode());
+    return "p" + ((Integer) _context.getVariable("cv:c"));
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az), LINKS.target$dU9a).getModel().getReference().toString();
@@ -146,7 +146,7 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$az), LINKS.target$dU9a).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_5_0(final PropertyMacroContext _context) {
-    return "n" + ((Integer) _context.getVariable("var:index"));
+    return _context.createIndexedName("n", SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.INodeBuilderContainer$cS, false, false), false);
   }
   public static Object propertyMacro_GetValue_6_0(final PropertyMacroContext _context) {
     return ((Optional<Boolean>) _context.getVariable("allowNull")).get();
@@ -447,10 +447,10 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$MRab), LINKS.nodeId$GU4Z);
   }
   public static SNode sourceNodeQuery_3_2(final SourceSubstituteMacroNodeContext _context) {
-    return _context.getNode();
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw);
   }
   public static SNode sourceNodeQuery_3_3(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw);
+    return _context.getNode();
   }
   public static SNode sourceNodeQuery_3_4(final SourceSubstituteMacroNodeContext _context) {
     if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate_old$8JaZ) != null) {
@@ -508,6 +508,9 @@ public class QueriesGenerated {
   }
   public static SNode sourceNodeQuery_6_1(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.concept$lMG$);
+  }
+  public static SNode sourceNodeQuery_8_0(final SourceSubstituteMacroNodeContext _context) {
+    return (SNode) DataTypeDeclaration__BehaviorDescriptor.toBaseLanguageType_idhEwI9ym.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.NodeBuilderInitProperty$wV, false, false), LINKS.property$NCMw), LINKS.dataType$fLUl));
   }
   public static Object templateArgumentQuery_3_0(final TemplateArgumentContext _context) {
     return SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NodeBuilderNode$RN);
@@ -724,10 +727,10 @@ public class QueriesGenerated {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw));
+    return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), LINKS.values$oju9);
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw), LINKS.values$oju9);
+    return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw));
   }
   public static Iterable<SNode> sourceNodesQuery_3_2(final SourceSubstituteMacroNodesContext _context) {
     return (Iterable<SNode>) NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$8Jaw));
@@ -747,12 +750,6 @@ public class QueriesGenerated {
     return _context.getNode();
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
-    ConcurrentMap<String, Integer> builderMap = QuotationUtil.getBuilderMap(_context, _context.getNode(), "index");
-    int index = (builderMap.isEmpty() ? 0 : builderMap.get("index"));
-    builderMap.put("index", index + 1);
-    return index + 1;
-  }
-  public static Object varMacro_Value_3_1(final TemplateVarContext _context) {
     return _context.getNode();
   }
   public static Object varMacro_Value_4_0(final TemplateVarContext _context) {
@@ -760,12 +757,6 @@ public class QueriesGenerated {
   }
   public static Object varMacro_Value_5_0(final TemplateVarContext _context) {
     return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.NodeBuilder$Gb, false, false);
-  }
-  public static Object varMacro_Value_5_1(final TemplateVarContext _context) {
-    ConcurrentMap<String, Integer> builderMap = QuotationUtil.getBuilderMap(_context, SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.NodeBuilder$Gb, false, false), "index");
-    int index = (builderMap.isEmpty() ? 0 : builderMap.get("index"));
-    builderMap.put("index", index + 1);
-    return index + 1;
   }
 
   private static final class CONCEPTS {
@@ -776,6 +767,7 @@ public class QueriesGenerated {
     /*package*/ static final SConcept NodeBuilderList$lD = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, "jetbrains.mps.lang.quotation.structure.NodeBuilderList");
     /*package*/ static final SConcept NodeBuilder$Gb = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, "jetbrains.mps.lang.quotation.structure.NodeBuilder");
     /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
+    /*package*/ static final SInterfaceConcept INodeBuilderContainer$cS = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL, "jetbrains.mps.lang.quotation.structure.INodeBuilderContainer");
     /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
     /*package*/ static final SConcept Antiquotation$Ui = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L, "jetbrains.mps.lang.quotation.structure.Antiquotation");
     /*package*/ static final SConcept ListAntiquotation$Xc = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
@@ -783,6 +775,7 @@ public class QueriesGenerated {
     /*package*/ static final SConcept PropertyId$Ig = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefc235cL, "jetbrains.mps.lang.smodel.structure.PropertyId");
     /*package*/ static final SConcept ReferenceLinkId$Ic = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6ecL, "jetbrains.mps.lang.smodel.structure.ReferenceLinkId");
     /*package*/ static final SConcept ContainmentLinkId$FL = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x74cb131f5923b6e7L, "jetbrains.mps.lang.smodel.structure.ContainmentLinkId");
+    /*package*/ static final SConcept NodeBuilderInitProperty$wV = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
     /*package*/ static final SConcept PropertyAntiquotation$v = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L, "jetbrains.mps.lang.quotation.structure.PropertyAntiquotation");
     /*package*/ static final SConcept GeneratorInternal_PropertyDescriptor$BZ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x746e600f0bda67c7L, "jetbrains.mps.lang.quotation.structure.GeneratorInternal_PropertyDescriptor");
     /*package*/ static final SConcept ReferenceAntiquotation$WH = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465dL, "jetbrains.mps.lang.quotation.structure.ReferenceAntiquotation");

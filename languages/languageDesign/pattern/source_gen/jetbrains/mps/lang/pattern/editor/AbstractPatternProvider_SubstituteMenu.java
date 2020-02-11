@@ -139,9 +139,9 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private static SNode createInlinePatternProvider_mehu0s_a0a0b(SNode p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InlinePatternProvider$43);
-    rootBuilder1.forChild(LINKS.pattern$65eZ).initNode(p0, CONCEPTS.PatternBuilder$Pa, true);
-    return rootBuilder1.getResult();
+    SNodeBuilder rootBuilder = new SNodeBuilder().init(CONCEPTS.InlinePatternProvider$43);
+    rootBuilder.forChild(LINKS.pattern$65eZ).initNode(p0, CONCEPTS.PatternBuilder$Pa, true);
+    return rootBuilder.getResult();
   }
 
   private static final class CONCEPTS {

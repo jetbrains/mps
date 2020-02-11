@@ -3,8 +3,6 @@
   <dependency className="jetbrains.mps.lang.quotation.generator.baseLanguage.template.util.QuotationUtil">
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.concurrent.ConcurrentHashMap" />
-    <classNode dependClassName="java.util.concurrent.ConcurrentMap" />
     <classNode dependClassName="jetbrains.mps.generator.template.TemplateQueryContext" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
