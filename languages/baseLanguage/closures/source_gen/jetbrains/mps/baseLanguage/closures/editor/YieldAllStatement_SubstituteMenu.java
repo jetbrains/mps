@@ -68,7 +68,7 @@ public class YieldAllStatement_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_4np28e_a.SMP_Subconcepts_4np28e_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.YieldAllStatement$Rn) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_4np28e_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.YieldAllStatement$Rn) {
 
         @NotNull
         @Override

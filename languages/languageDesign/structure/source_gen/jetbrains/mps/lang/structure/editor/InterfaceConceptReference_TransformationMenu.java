@@ -110,12 +110,12 @@ public class InterfaceConceptReference_TransformationMenu extends Transformation
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_fqowf9_a1.TMP_Action_fqowf9_a0b(), CONCEPTS.ConceptDeclaration$qU));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_fqowf9_a0b(), CONCEPTS.ConceptDeclaration$qU));
     }
     private class TMP_Action_fqowf9_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_fqowf9_a1.TMP_Action_fqowf9_a0b.Item item = new TMP_Group_fqowf9_a1.TMP_Action_fqowf9_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

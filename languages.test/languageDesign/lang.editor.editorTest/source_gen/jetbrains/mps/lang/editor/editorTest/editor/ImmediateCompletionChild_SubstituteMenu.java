@@ -57,7 +57,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rh3s5w_a.Item item = new SMP_Action_rh3s5w_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -112,7 +112,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rh3s5w_b.Item item = new SMP_Action_rh3s5w_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -167,7 +167,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rh3s5w_c.Item item = new SMP_Action_rh3s5w_c.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -222,7 +222,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rh3s5w_d.Item item = new SMP_Action_rh3s5w_d.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -277,7 +277,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rh3s5w_e.Item item = new SMP_Action_rh3s5w_e.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -332,7 +332,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rh3s5w_f.Item item = new SMP_Action_rh3s5w_f.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -387,7 +387,7 @@ public class ImmediateCompletionChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rh3s5w_g.Item item = new SMP_Action_rh3s5w_g.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

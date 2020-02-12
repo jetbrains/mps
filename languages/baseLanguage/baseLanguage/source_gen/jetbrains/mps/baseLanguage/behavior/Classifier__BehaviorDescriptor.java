@@ -344,17 +344,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }).first();
   }
-  /*package*/ static List<SNode> getClassifierPathToContext_id2qKFNTWiPl1(@NotNull SNode __thisNode__, final SNode context) {
+  /*package*/ static List<SNode> getClassifierPathToContext_id2qKFNTWiPl1(@NotNull SNode __thisNode__, SNode context) {
     List<SNode> bannedAncestors = ListSequence.fromList(new ArrayList<SNode>());
     boolean targetIsStatic = (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Interface$Kp) || ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__))) && SNodeOperations.getParent(__thisNode__) != null;
-
-    if (Objects.equals(__thisNode__, Classifier__BehaviorDescriptor.getAncestorNonAnnymousClassifier_id5mpyJtmQBek.invoke(__thisNode__.getConcept(), context)) || Objects.equals(SNodeOperations.getParent(__thisNode__), Classifier__BehaviorDescriptor.getAncestorNonAnnymousClassifier_id5mpyJtmQBek.invoke(__thisNode__.getConcept(), context))) {
-      ListSequence.fromList(bannedAncestors).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.Classifier$hJ, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SNodeOperations.getParent(it) != null || (SNodeOperations.isInstanceOf(it, CONCEPTS.EnumClass$uy) && ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.EnumConstantDeclaration$ma, false)).isNotEmpty())) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$aF));
-        }
-      }));
-    }
 
     List<SNode> contextAncestors = SNodeOperations.getNodeAncestorsWhereConceptInList(context, new SAbstractConcept[]{CONCEPTS.Classifier$hJ, CONCEPTS.StaticKind$hY, CONCEPTS.ClassifierType$IZ}, true);
 
@@ -974,8 +966,6 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
     /*package*/ static final SInterfaceConcept StaticKind$hY = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x427c475b3d6201deL, "jetbrains.mps.baseLanguage.structure.StaticKind");
     /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");

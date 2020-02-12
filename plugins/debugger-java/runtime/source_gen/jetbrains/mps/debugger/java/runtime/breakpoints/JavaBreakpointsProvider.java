@@ -163,19 +163,19 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
     private JavaBreakpoint myBreakpoint;
     private final JPanel myMainPanel;
     private final JCheckBox myLogMessageButton;
-    private final JRadioButton[] myButtons = new JRadioButton[MyIBreakpointPropertiesUi.SuspendPolicy.values().length];
+    private final JRadioButton[] myButtons = new JRadioButton[SuspendPolicy.values().length];
     public MyIBreakpointPropertiesUi() {
       JPanel suspendPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
       suspendPanel.setBorder(new TitledBorder("Suspend policy"));
       ButtonGroup group = new ButtonGroup();
-      for (MyIBreakpointPropertiesUi.SuspendPolicy policy : MyIBreakpointPropertiesUi.SuspendPolicy.values()) {
+      for (SuspendPolicy policy : SuspendPolicy.values()) {
         JRadioButton button = new JRadioButton(policy.getName());
         myButtons[policy.ordinal()] = button;
         button.setActionCommand(policy.name());
         button.addActionListener(new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
-            MyIBreakpointPropertiesUi.SuspendPolicy suspendPolicy = MyIBreakpointPropertiesUi.SuspendPolicy.valueOf(e.getActionCommand());
+            SuspendPolicy suspendPolicy = SuspendPolicy.valueOf(e.getActionCommand());
             if (suspendPolicy != null) {
               myBreakpoint.setSuspendPolicy(suspendPolicy.myValue);
             }
@@ -202,7 +202,7 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
     public void setBreakpoint(JavaBreakpoint breakpoint) {
       myBreakpoint = breakpoint;
       int suspendPolicy = breakpoint.getSuspendPolicy();
-      for (MyIBreakpointPropertiesUi.SuspendPolicy policy : MyIBreakpointPropertiesUi.SuspendPolicy.values()) {
+      for (SuspendPolicy policy : SuspendPolicy.values()) {
         if (policy.myValue == suspendPolicy) {
           myButtons[policy.ordinal()].setSelected(true);
         }

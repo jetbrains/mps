@@ -91,7 +91,7 @@ public class FacetReference_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_y0lqi1_a1.TMP_Include_y0lqi1_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_y0lqi1_a0b());
     }
     public class TMP_Include_y0lqi1_a0b extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

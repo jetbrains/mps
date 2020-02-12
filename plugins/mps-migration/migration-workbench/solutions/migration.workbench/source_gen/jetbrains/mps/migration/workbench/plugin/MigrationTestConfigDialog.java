@@ -190,8 +190,8 @@ public class MigrationTestConfigDialog extends DialogWrapper {
     public int preError;
     public int hasMissingMigrations;
     public int postError;
-    public List<Result.PMigration> pMigrations = ListSequence.fromList(new ArrayList<Result.PMigration>());
-    public List<Result.LMigration> lMigrations = ListSequence.fromList(new ArrayList<Result.LMigration>());
+    public List<PMigration> pMigrations = ListSequence.fromList(new ArrayList<PMigration>());
+    public List<LMigration> lMigrations = ListSequence.fromList(new ArrayList<LMigration>());
 
     public static class PMigration {
       public String id;

@@ -110,7 +110,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createRefNode_0() {
-      SingleRoleCellProvider provider = new Inline_Builder0.conceptParameterSingleRoleHandler_gy2khw_a0a1a(myNode, LINKS.conceptParameter$JcMo, getEditorContext());
+      SingleRoleCellProvider provider = new conceptParameterSingleRoleHandler_gy2khw_a0a1a(myNode, LINKS.conceptParameter$JcMo, getEditorContext());
       return provider.createCell();
     }
     private static class conceptParameterSingleRoleHandler_gy2khw_a0a1a extends SingleRoleCellProvider {

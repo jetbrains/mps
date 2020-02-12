@@ -171,7 +171,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return editorCell;
     }
     private EditorCell createRefNodeList_0() {
-      AbstractCellListHandler handler = new Inline_Builder0.defsListHandler_fd2qmk_a0a3a(myNode, getEditorContext());
+      AbstractCellListHandler handler = new defsListHandler_fd2qmk_a0a3a(myNode, getEditorContext());
       EditorCell_Collection editorCell = handler.createCells(new CellLayout_Vertical(), false);
       editorCell.setCellId("refNodeList_defs");
       editorCell.setSRole(handler.getElementSRole());

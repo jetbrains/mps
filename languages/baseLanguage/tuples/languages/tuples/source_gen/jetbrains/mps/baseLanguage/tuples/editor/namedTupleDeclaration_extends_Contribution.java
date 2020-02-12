@@ -81,13 +81,13 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0(), CONCEPTS.ClassifierType$IZ));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_evf1f9_a0(), CONCEPTS.ClassifierType$IZ));
     }
     private class SMP_Param_evf1f9_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a(parameter).createItems(context);
+        return new SMP_Action_evf1f9_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -118,7 +118,7 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a.Item item = new SMP_Group_evf1f9_a.SMP_Param_evf1f9_a0.SMP_Action_evf1f9_a0a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");

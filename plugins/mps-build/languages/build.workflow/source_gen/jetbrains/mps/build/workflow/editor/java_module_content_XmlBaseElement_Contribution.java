@@ -75,13 +75,13 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0(), CONCEPTS.XmlElement$Pm));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_fc12n3_a0(), CONCEPTS.XmlElement$Pm));
     }
     private class SMP_Param_fc12n3_a0 extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-        return new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a(parameter).createItems(context);
+        return new SMP_Action_fc12n3_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -108,7 +108,7 @@ public class java_module_content_XmlBaseElement_Contribution extends SubstituteM
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a.Item item = new SMP_Group_fc12n3_a.SMP_Param_fc12n3_a0.SMP_Action_fc12n3_a0a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");

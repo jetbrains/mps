@@ -96,12 +96,12 @@ public class add_throw_to_ClosureLiteralType extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_buzigt_a0.TMP_Action_buzigt_a0a(), CONCEPTS.BaseConcept$Sz));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_buzigt_a0a(), CONCEPTS.BaseConcept$Sz));
     }
     private class TMP_Action_buzigt_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_buzigt_a0.TMP_Action_buzigt_a0a.Item item = new TMP_Group_buzigt_a0.TMP_Action_buzigt_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

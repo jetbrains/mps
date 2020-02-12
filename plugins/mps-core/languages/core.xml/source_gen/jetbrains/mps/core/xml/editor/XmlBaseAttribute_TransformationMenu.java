@@ -120,7 +120,7 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_xjbv2x_a1.TMP_WrapSM_xjbv2x_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_xjbv2x_a0b());
     }
     public class TMP_WrapSM_xjbv2x_a0b extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -199,12 +199,12 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_xjbv2x_b1.TMP_Action_xjbv2x_a1b(), CONCEPTS.XmlElement$Pm));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_xjbv2x_a1b(), CONCEPTS.XmlElement$Pm));
     }
     private class TMP_Action_xjbv2x_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_xjbv2x_b1.TMP_Action_xjbv2x_a1b.Item item = new TMP_Group_xjbv2x_b1.TMP_Action_xjbv2x_a1b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

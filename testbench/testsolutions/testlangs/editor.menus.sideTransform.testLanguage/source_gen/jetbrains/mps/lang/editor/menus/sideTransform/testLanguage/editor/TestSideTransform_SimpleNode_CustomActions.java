@@ -71,7 +71,7 @@ public class TestSideTransform_SimpleNode_CustomActions extends TransformationMe
   private class TMP_Action_4y61ji_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_4y61ji_a0.Item item = new TMP_Action_4y61ji_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -132,7 +132,7 @@ public class TestSideTransform_SimpleNode_CustomActions extends TransformationMe
   private class TMP_Action_4y61ji_a1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_4y61ji_a1.Item item = new TMP_Action_4y61ji_a1.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

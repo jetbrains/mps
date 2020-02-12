@@ -350,8 +350,8 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
       }
       return t;
     }
-    public static Target_compileEvaluator.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_compileEvaluator.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<SModule> {
       public Parameters() {

@@ -73,7 +73,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_y5n1eq_a.SMP_Concepts_y5n1eq_a0(), CONCEPTS.IOperation$No));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a0(), CONCEPTS.IOperation$No));
     }
     public class SMP_Concepts_y5n1eq_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
@@ -136,7 +136,7 @@ public class substitute_IOperation_IteratorType extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_y5n1eq_b.SMP_Concepts_y5n1eq_a1(), CONCEPTS.IOperation$No));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_y5n1eq_a1(), CONCEPTS.IOperation$No));
     }
     public class SMP_Concepts_y5n1eq_a1 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {

@@ -91,14 +91,14 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Param_vydzh3_a0a());
     }
     private class TMP_Param_vydzh3_a0a extends ParameterizedMenuPart<SEnumerationLiteral, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SEnumerationLiteral parameter, TransformationMenuContext context) {
-        return new TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0(parameter).createItems(context);
+        return new TMP_Action_vydzh3_a0a0(parameter).createItems(context);
       }
 
       @Nullable
@@ -125,7 +125,7 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0.Item item = new TMP_Group_vydzh3_a0.TMP_Param_vydzh3_a0a.TMP_Action_vydzh3_a0a0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");

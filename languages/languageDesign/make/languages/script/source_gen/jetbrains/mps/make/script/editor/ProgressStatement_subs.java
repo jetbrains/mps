@@ -80,7 +80,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_kz2qu0_a.SMP_Action_kz2qu0_a0(), CONCEPTS.BeginWorkStatement$C0), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AdvanceWorkStatement$CY) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kz2qu0_a0(), CONCEPTS.BeginWorkStatement$C0), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AdvanceWorkStatement$CY) {
 
         @NotNull
         @Override
@@ -106,14 +106,14 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.FinishWorkStatement$Er), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_d0(), CONCEPTS.AdvanceWorkStatement$CY), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_e0(), CONCEPTS.FinishWorkStatement$Er));
+      }, CONCEPTS.FinishWorkStatement$Er), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_d0(), CONCEPTS.AdvanceWorkStatement$CY), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_e0(), CONCEPTS.FinishWorkStatement$Er));
     }
     private class SMP_Action_kz2qu0_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_kz2qu0_a.SMP_Action_kz2qu0_a0.Item item = new SMP_Group_kz2qu0_a.SMP_Action_kz2qu0_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -165,7 +165,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_d0.SMP_Action_kz2qu0_a3a(parameter).createItems(context);
+        return new SMP_Action_kz2qu0_a3a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -192,7 +192,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_d0.SMP_Action_kz2qu0_a3a.Item item = new SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_d0.SMP_Action_kz2qu0_a3a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -267,7 +267,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_e0.SMP_Action_kz2qu0_a4a(parameter).createItems(context);
+        return new SMP_Action_kz2qu0_a4a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -294,7 +294,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_e0.SMP_Action_kz2qu0_a4a.Item item = new SMP_Group_kz2qu0_a.SMP_Param_kz2qu0_e0.SMP_Action_kz2qu0_a4a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");

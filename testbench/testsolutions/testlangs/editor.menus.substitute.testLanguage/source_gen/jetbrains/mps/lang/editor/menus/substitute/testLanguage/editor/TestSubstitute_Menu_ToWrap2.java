@@ -49,7 +49,7 @@ public class TestSubstitute_Menu_ToWrap2 extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_re1x1c_a.Item item = new SMP_Action_re1x1c_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

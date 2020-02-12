@@ -62,7 +62,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_6gqf7r_a.Item item = new SMP_Action_6gqf7r_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -128,7 +128,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_6gqf7r_b.Item item = new SMP_Action_6gqf7r_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -190,7 +190,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_6gqf7r_c.Item item = new SMP_Action_6gqf7r_c.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -261,7 +261,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_6gqf7r_d.Item item = new SMP_Action_6gqf7r_d.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

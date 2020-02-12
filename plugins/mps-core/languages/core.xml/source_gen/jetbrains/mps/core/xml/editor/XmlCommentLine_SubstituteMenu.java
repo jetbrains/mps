@@ -74,7 +74,7 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_cdpt4e_a.Item item = new SMP_Action_cdpt4e_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

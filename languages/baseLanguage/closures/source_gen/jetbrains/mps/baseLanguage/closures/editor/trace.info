@@ -4023,9 +4023,9 @@
       <node id="1741258697587050663" at="87,51,88,235" concept="2" />
       <node id="1741258697587050663" at="89,11,90,42" concept="8" />
       <node id="1741258697587050663" at="91,17,92,52" concept="2" />
-      <node id="1741258697587050663" at="96,92,97,226" concept="8" />
-      <node id="1741258697587050674" at="101,86,102,122" concept="7" />
-      <node id="1741258697587050674" at="102,122,103,27" concept="7" />
+      <node id="1741258697587050663" at="96,92,97,206" concept="8" />
+      <node id="1741258697587050674" at="101,86,102,38" concept="7" />
+      <node id="1741258697587050674" at="102,38,103,27" concept="7" />
       <node id="1741258697587050674" at="104,13,105,64" concept="2" />
       <node id="1741258697587050674" at="106,31,107,105" concept="2" />
       <node id="1741258697587050674" at="107,105,108,22" concept="8" />
@@ -4100,7 +4100,7 @@
       <scope id="1741258697587050665" at="80,72,81,144" />
       <scope id="1741258697587050663" at="89,11,90,42" />
       <scope id="1741258697587050663" at="91,17,92,52" />
-      <scope id="1741258697587050663" at="96,92,97,226" />
+      <scope id="1741258697587050663" at="96,92,97,206" />
       <scope id="1741258697587050674" at="104,13,105,64" />
       <scope id="1741258697587050674" at="114,19,115,54" />
       <scope id="1741258697587050674" at="123,57,124,29" />
@@ -4734,9 +4734,9 @@
       <node id="1741258697587180406" at="89,51,90,235" concept="2" />
       <node id="1741258697587180406" at="91,11,92,42" concept="8" />
       <node id="1741258697587180406" at="93,17,94,52" concept="2" />
-      <node id="1741258697587180406" at="98,92,99,219" concept="8" />
-      <node id="1741258697587180462" at="103,86,104,122" concept="7" />
-      <node id="1741258697587180462" at="104,122,105,27" concept="7" />
+      <node id="1741258697587180406" at="98,92,99,199" concept="8" />
+      <node id="1741258697587180462" at="103,86,104,38" concept="7" />
+      <node id="1741258697587180462" at="104,38,105,27" concept="7" />
       <node id="1741258697587180462" at="106,13,107,64" concept="2" />
       <node id="1741258697587180462" at="108,31,109,105" concept="2" />
       <node id="1741258697587180462" at="109,105,110,22" concept="8" />
@@ -4790,7 +4790,7 @@
       <scope id="1741258697587180437" at="80,75,81,287" />
       <scope id="1741258697587180406" at="91,11,92,42" />
       <scope id="1741258697587180406" at="93,17,94,52" />
-      <scope id="1741258697587180406" at="98,92,99,219" />
+      <scope id="1741258697587180406" at="98,92,99,199" />
       <scope id="1741258697587180462" at="106,13,107,64" />
       <scope id="1741258697587180462" at="116,19,117,54" />
       <scope id="1741258697587180462" at="125,57,126,29" />
@@ -4953,9 +4953,9 @@
       <node id="1741258697587180511" at="88,51,89,235" concept="2" />
       <node id="1741258697587180511" at="90,11,91,42" concept="8" />
       <node id="1741258697587180511" at="92,17,93,52" concept="2" />
-      <node id="1741258697587180511" at="97,92,98,239" concept="8" />
-      <node id="1741258697587180545" at="102,86,103,122" concept="7" />
-      <node id="1741258697587180545" at="103,122,104,27" concept="7" />
+      <node id="1741258697587180511" at="97,92,98,219" concept="8" />
+      <node id="1741258697587180545" at="102,86,103,38" concept="7" />
+      <node id="1741258697587180545" at="103,38,104,27" concept="7" />
       <node id="1741258697587180545" at="105,13,106,64" concept="2" />
       <node id="1741258697587180545" at="107,31,108,105" concept="2" />
       <node id="1741258697587180545" at="108,105,109,22" concept="8" />
@@ -5019,7 +5019,7 @@
       <scope id="1741258697587180513" at="81,72,82,538" />
       <scope id="1741258697587180511" at="90,11,91,42" />
       <scope id="1741258697587180511" at="92,17,93,52" />
-      <scope id="1741258697587180511" at="97,92,98,239" />
+      <scope id="1741258697587180511" at="97,92,98,219" />
       <scope id="1741258697587180545" at="105,13,106,64" />
       <scope id="1741258697587180545" at="115,19,116,54" />
       <scope id="1741258697587180545" at="124,57,125,29" />
@@ -5127,9 +5127,9 @@
       <node id="1741258697587180660" at="89,51,90,235" concept="2" />
       <node id="1741258697587180660" at="91,11,92,42" concept="8" />
       <node id="1741258697587180660" at="93,17,94,52" concept="2" />
-      <node id="1741258697587180660" at="98,92,99,219" concept="8" />
-      <node id="1741258697587180694" at="103,86,104,122" concept="7" />
-      <node id="1741258697587180694" at="104,122,105,27" concept="7" />
+      <node id="1741258697587180660" at="98,92,99,199" concept="8" />
+      <node id="1741258697587180694" at="103,86,104,38" concept="7" />
+      <node id="1741258697587180694" at="104,38,105,27" concept="7" />
       <node id="1741258697587180694" at="106,13,107,64" concept="2" />
       <node id="1741258697587180694" at="108,31,109,105" concept="2" />
       <node id="1741258697587180694" at="109,105,110,22" concept="8" />
@@ -5183,7 +5183,7 @@
       <scope id="1741258697587180670" at="80,81,81,299" />
       <scope id="1741258697587180660" at="91,11,92,42" />
       <scope id="1741258697587180660" at="93,17,94,52" />
-      <scope id="1741258697587180660" at="98,92,99,219" />
+      <scope id="1741258697587180660" at="98,92,99,199" />
       <scope id="1741258697587180694" at="106,13,107,64" />
       <scope id="1741258697587180694" at="116,19,117,54" />
       <scope id="1741258697587180694" at="125,57,126,29" />
@@ -5352,7 +5352,7 @@
       <scope id="2722384699544264499" at="70,84,84,38" />
       <scope id="2722384699544264499" at="69,0,86,0" />
       <unit id="2722384699544264496" at="109,0,113,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldStatement_SubstituteMenu$CONCEPTS" />
-      <unit id="2722384699544270758" at="71,188,84,7" name="jetbrains.mps.baseLanguage.closures.editor.YieldStatement_SubstituteMenu$SMP_Group_i2hqa3_a$1" />
+      <unit id="2722384699544270758" at="71,169,84,7" name="jetbrains.mps.baseLanguage.closures.editor.YieldStatement_SubstituteMenu$SMP_Group_i2hqa3_a$1" />
       <unit id="2722384699545458329" at="86,0,107,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldStatement_SubstituteMenu$SMP_Group_i2hqa3_a$SMP_Subconcepts_i2hqa3_a0" />
       <unit id="2722384699544264499" at="51,0,108,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldStatement_SubstituteMenu$SMP_Group_i2hqa3_a" />
       <unit id="2722384699544264496" at="29,0,114,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldStatement_SubstituteMenu" />
@@ -5447,7 +5447,7 @@
       <scope id="2722384699544270920" at="70,84,84,41" />
       <scope id="2722384699544270920" at="69,0,86,0" />
       <unit id="2722384699544270919" at="109,0,113,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldAllStatement_SubstituteMenu$CONCEPTS" />
-      <unit id="2722384699544270936" at="71,188,84,7" name="jetbrains.mps.baseLanguage.closures.editor.YieldAllStatement_SubstituteMenu$SMP_Group_4np28e_a$1" />
+      <unit id="2722384699544270936" at="71,169,84,7" name="jetbrains.mps.baseLanguage.closures.editor.YieldAllStatement_SubstituteMenu$SMP_Group_4np28e_a$1" />
       <unit id="2722384699545458909" at="86,0,107,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldAllStatement_SubstituteMenu$SMP_Group_4np28e_a$SMP_Subconcepts_4np28e_a0" />
       <unit id="2722384699544270920" at="51,0,108,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldAllStatement_SubstituteMenu$SMP_Group_4np28e_a" />
       <unit id="2722384699544270919" at="29,0,114,0" name="jetbrains.mps.baseLanguage.closures.editor.YieldAllStatement_SubstituteMenu" />

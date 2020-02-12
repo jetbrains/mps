@@ -55,7 +55,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-      return new SMP_Param_v1e5qc_a.SMP_Action_v1e5qc_a0(parameter).createItems(context);
+      return new SMP_Action_v1e5qc_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -82,7 +82,7 @@ public class BuildSource_JavaContentFolder_SubstituteMenu extends SubstituteMenu
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_v1e5qc_a.SMP_Action_v1e5qc_a0.Item item = new SMP_Param_v1e5qc_a.SMP_Action_v1e5qc_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

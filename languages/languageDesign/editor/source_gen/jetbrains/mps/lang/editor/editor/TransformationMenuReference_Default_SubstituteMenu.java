@@ -71,7 +71,7 @@ public class TransformationMenuReference_Default_SubstituteMenu extends Substitu
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new SMP_ReferenceScope_fl7q7d_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;

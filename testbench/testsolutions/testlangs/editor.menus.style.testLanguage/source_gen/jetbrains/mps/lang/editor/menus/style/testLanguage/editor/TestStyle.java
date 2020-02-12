@@ -64,7 +64,7 @@ public class TestStyle extends TransformationMenuBase {
   private class TMP_Action_6pydjj_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_6pydjj_a0.Item item = new TMP_Action_6pydjj_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -123,7 +123,7 @@ public class TestStyle extends TransformationMenuBase {
   private class TMP_Action_6pydjj_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_6pydjj_b0.Item item = new TMP_Action_6pydjj_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

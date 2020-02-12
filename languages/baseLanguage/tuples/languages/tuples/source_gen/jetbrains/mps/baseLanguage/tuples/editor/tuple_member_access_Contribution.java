@@ -96,12 +96,12 @@ public class tuple_member_access_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_dlrmni_a0.TMP_Action_dlrmni_a0a(), CONCEPTS.IndexedTupleMemberAccessExpression$cm));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dlrmni_a0a(), CONCEPTS.IndexedTupleMemberAccessExpression$cm));
     }
     private class TMP_Action_dlrmni_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_dlrmni_a0.TMP_Action_dlrmni_a0a.Item item = new TMP_Group_dlrmni_a0.TMP_Action_dlrmni_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

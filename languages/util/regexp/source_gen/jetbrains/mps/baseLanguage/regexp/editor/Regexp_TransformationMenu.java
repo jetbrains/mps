@@ -133,12 +133,12 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_luzgqn_a1.TMP_Action_luzgqn_a0b(), CONCEPTS.NTimesRegexp$8p), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_luzgqn_a1.TMP_Action_luzgqn_b0b(), CONCEPTS.AtLeastNTimesRegexp$a3), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_luzgqn_a1.TMP_Action_luzgqn_c0b(), CONCEPTS.FromNToMTimesRegexp$yu), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_luzgqn_a1.TMP_Param_luzgqn_d0b(), CONCEPTS.UnaryRegexp$aG));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_a0b(), CONCEPTS.NTimesRegexp$8p), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_b0b(), CONCEPTS.AtLeastNTimesRegexp$a3), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_c0b(), CONCEPTS.FromNToMTimesRegexp$yu), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_luzgqn_d0b(), CONCEPTS.UnaryRegexp$aG));
     }
     private class TMP_Action_luzgqn_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_luzgqn_a1.TMP_Action_luzgqn_a0b.Item item = new TMP_Group_luzgqn_a1.TMP_Action_luzgqn_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -220,7 +220,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     private class TMP_Action_luzgqn_b0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_luzgqn_a1.TMP_Action_luzgqn_b0b.Item item = new TMP_Group_luzgqn_a1.TMP_Action_luzgqn_b0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -302,7 +302,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     private class TMP_Action_luzgqn_c0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_luzgqn_a1.TMP_Action_luzgqn_c0b.Item item = new TMP_Group_luzgqn_a1.TMP_Action_luzgqn_c0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -405,7 +405,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-        return new TMP_Group_luzgqn_a1.TMP_Param_luzgqn_d0b.TMP_Action_luzgqn_a3a1(parameter).createItems(context);
+        return new TMP_Action_luzgqn_a3a1(parameter).createItems(context);
       }
 
       @Nullable
@@ -432,7 +432,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_luzgqn_a1.TMP_Param_luzgqn_d0b.TMP_Action_luzgqn_a3a1.Item item = new TMP_Group_luzgqn_a1.TMP_Param_luzgqn_d0b.TMP_Action_luzgqn_a3a1.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -555,7 +555,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_luzgqn_c1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_luzgqn_c1.Item item = new TMP_Action_luzgqn_c1.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -624,7 +624,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-      return new TMP_Param_luzgqn_d1.TMP_Action_luzgqn_a3b(parameter).createItems(context);
+      return new TMP_Action_luzgqn_a3b(parameter).createItems(context);
     }
 
     @Nullable
@@ -662,7 +662,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_luzgqn_d1.TMP_Action_luzgqn_a3b.Item item = new TMP_Param_luzgqn_d1.TMP_Action_luzgqn_a3b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -789,7 +789,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-      return new TMP_Param_luzgqn_f1.TMP_Action_luzgqn_a5b(parameter).createItems(context);
+      return new TMP_Action_luzgqn_a5b(parameter).createItems(context);
     }
 
     @Nullable
@@ -816,7 +816,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_luzgqn_f1.TMP_Action_luzgqn_a5b.Item item = new TMP_Param_luzgqn_f1.TMP_Action_luzgqn_a5b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -894,7 +894,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-      return new TMP_Param_luzgqn_g1.TMP_Action_luzgqn_a6b(parameter).createItems(context);
+      return new TMP_Action_luzgqn_a6b(parameter).createItems(context);
     }
 
     @Nullable
@@ -921,7 +921,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_luzgqn_g1.TMP_Action_luzgqn_a6b.Item item = new TMP_Param_luzgqn_g1.TMP_Action_luzgqn_a6b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

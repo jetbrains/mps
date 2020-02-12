@@ -82,7 +82,7 @@ public class SkipStatement_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.SkipStatement$he), new SMP_Group_yf7yw4_a.SMP_Subconcepts_yf7yw4_b0());
+      }, CONCEPTS.SkipStatement$he), new SMP_Subconcepts_yf7yw4_b0());
     }
     public class SMP_Subconcepts_yf7yw4_b0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {

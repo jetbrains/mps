@@ -88,7 +88,7 @@ public class AddMenuPart_WrapperSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_n7g34w_a.SMP_Wrap_n7g34w_a0(), CONCEPTS.ActionTestChildWrapper$OJ));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_n7g34w_a0(), CONCEPTS.ActionTestChildWrapper$OJ));
     }
     private class SMP_Wrap_n7g34w_a0 extends WrapperSubstituteMenuPart {
       @NotNull

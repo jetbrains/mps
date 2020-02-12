@@ -98,7 +98,7 @@ public class print extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_vtzrq_a0.TMP_WrapSM_vtzrq_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_vtzrq_a0a());
     }
     public class TMP_WrapSM_vtzrq_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

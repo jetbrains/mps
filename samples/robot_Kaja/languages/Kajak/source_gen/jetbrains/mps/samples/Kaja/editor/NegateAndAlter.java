@@ -95,12 +95,12 @@ public class NegateAndAlter extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a(), CONCEPTS.Not$Vv));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_egefa8_a0a(), CONCEPTS.Not$Vv));
     }
     private class TMP_Action_egefa8_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a.Item item = new TMP_Group_egefa8_a0.TMP_Action_egefa8_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -169,7 +169,7 @@ public class NegateAndAlter extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a(parameter).createItems(context);
+      return new TMP_Action_egefa8_a1a(parameter).createItems(context);
     }
 
     @Nullable
@@ -196,7 +196,7 @@ public class NegateAndAlter extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a.Item item = new TMP_Param_egefa8_b0.TMP_Action_egefa8_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

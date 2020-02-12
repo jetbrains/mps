@@ -75,7 +75,7 @@ public class NamedMenu extends TransformationMenuBase {
   private class TMP_Action_qsw3kc_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_qsw3kc_a0.Item item = new TMP_Action_qsw3kc_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -146,7 +146,7 @@ public class NamedMenu extends TransformationMenuBase {
       context.getEditorMenuTrace().pushTraceInfo();
       context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("intention transformation menu part: " + "AddLetterToName", new SNodePointer("r:0f1cfce5-1514-42b6-8353-156be9a116e3(jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor)", "1953791277760667760")));
       try {
-        return new TMP_Intention_qsw3kc_b0.Item(context, executable);
+        return new Item(context, executable);
       } finally {
         context.getEditorMenuTrace().popTraceInfo();
       }
@@ -172,7 +172,7 @@ public class NamedMenu extends TransformationMenuBase {
   private class TMP_Action_qsw3kc_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_qsw3kc_c0.Item item = new TMP_Action_qsw3kc_c0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

@@ -68,14 +68,14 @@ public class BLC_substitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0(), CONCEPTS.SortDirection$8O), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0(), CONCEPTS.SortDirection$8O));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4r5ods_a0(), CONCEPTS.SortDirection$8O), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4r5ods_b0(), CONCEPTS.SortDirection$8O));
     }
     private class SMP_Action_4r5ods_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0.Item item = new SMP_Group_4r5ods_a.SMP_Action_4r5ods_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -135,7 +135,7 @@ public class BLC_substitute extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0.Item item = new SMP_Group_4r5ods_a.SMP_Action_4r5ods_b0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

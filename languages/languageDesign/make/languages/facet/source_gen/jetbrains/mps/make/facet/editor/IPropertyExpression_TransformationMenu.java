@@ -108,12 +108,12 @@ public class IPropertyExpression_TransformationMenu extends TransformationMenuBa
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_j2qvk8_a1.TMP_Action_j2qvk8_a0b(), CONCEPTS.ResourceSpecificPropertiesExpression$QD));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j2qvk8_a0b(), CONCEPTS.ResourceSpecificPropertiesExpression$QD));
     }
     private class TMP_Action_j2qvk8_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_j2qvk8_a1.TMP_Action_j2qvk8_a0b.Item item = new TMP_Group_j2qvk8_a1.TMP_Action_j2qvk8_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

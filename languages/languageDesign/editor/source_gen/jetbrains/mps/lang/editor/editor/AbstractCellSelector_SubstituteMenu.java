@@ -93,7 +93,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_1rdeze_b.Item item = new SMP_Action_1rdeze_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -179,13 +179,13 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2(), CONCEPTS.PredefinedSelector$vL));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_1rdeze_a2(), CONCEPTS.PredefinedSelector$vL));
     }
     private class SMP_Param_1rdeze_a2 extends ParameterizedMenuPart<SEnumerationLiteral, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SEnumerationLiteral parameter, SubstituteMenuContext context) {
-        return new SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c(parameter).createItems(context);
+        return new SMP_Action_1rdeze_a0c(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -212,7 +212,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c.Item item = new SMP_Group_1rdeze_c.SMP_Param_1rdeze_a2.SMP_Action_1rdeze_a0c.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -285,7 +285,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_1rdeze_d.Item item = new SMP_Action_1rdeze_d.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -357,7 +357,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_1rdeze_e.Item item = new SMP_Action_1rdeze_e.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

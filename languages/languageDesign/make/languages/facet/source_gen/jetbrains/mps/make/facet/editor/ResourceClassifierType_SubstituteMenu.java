@@ -65,7 +65,7 @@ public class ResourceClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_k868c7_a.SMP_Include_k868c7_a0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_k868c7_a0());
     }
     public class SMP_Include_k868c7_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 

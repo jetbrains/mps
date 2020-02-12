@@ -255,7 +255,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createRefNode_1() {
-      SingleRoleCellProvider provider = new Inline_Builder0.expressionSingleRoleHandler_sv5oqe_a0a3a(myNode, LINKS.expression$GH5k, getEditorContext());
+      SingleRoleCellProvider provider = new expressionSingleRoleHandler_sv5oqe_a0a3a(myNode, LINKS.expression$GH5k, getEditorContext());
       return provider.createCell();
     }
     private static class expressionSingleRoleHandler_sv5oqe_a0a3a extends SingleRoleCellProvider {

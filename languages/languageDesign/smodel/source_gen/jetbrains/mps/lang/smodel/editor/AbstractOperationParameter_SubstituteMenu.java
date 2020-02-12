@@ -68,7 +68,7 @@ public class AbstractOperationParameter_SubstituteMenu extends SubstituteMenuBas
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_6hfhq2_a.SMP_Concepts_6hfhq2_a0(), CONCEPTS.AbstractOperationParameter$PJ));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_6hfhq2_a0(), CONCEPTS.AbstractOperationParameter$PJ));
     }
     public class SMP_Concepts_6hfhq2_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {

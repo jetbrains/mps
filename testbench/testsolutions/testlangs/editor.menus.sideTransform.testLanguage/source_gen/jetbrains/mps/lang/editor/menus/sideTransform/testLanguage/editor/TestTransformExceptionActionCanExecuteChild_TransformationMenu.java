@@ -64,7 +64,7 @@ public class TestTransformExceptionActionCanExecuteChild_TransformationMenu exte
   private class TMP_Action_u60pf1_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_u60pf1_a0.Item item = new TMP_Action_u60pf1_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -127,7 +127,7 @@ public class TestTransformExceptionActionCanExecuteChild_TransformationMenu exte
   private class TMP_Action_u60pf1_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_u60pf1_b0.Item item = new TMP_Action_u60pf1_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

@@ -73,7 +73,7 @@ public class add_reexport_BuildSourcePath extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_xb4wa_a0.TMP_Include_xb4wa_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_xb4wa_a0a());
     }
     public class TMP_Include_xb4wa_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

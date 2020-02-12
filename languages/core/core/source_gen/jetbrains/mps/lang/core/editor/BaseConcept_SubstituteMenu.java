@@ -84,7 +84,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0(), new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_b0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_s3h0kg_a0(), new SMP_Group_s3h0kg_b0());
     }
     public class SMP_Group_s3h0kg_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -105,13 +105,13 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a(), CONCEPTS.BaseConcept$Sz));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_s3h0kg_a0a(), CONCEPTS.BaseConcept$Sz));
       }
       private class SMP_Param_s3h0kg_a0a extends ParameterizedMenuPart<SAbstractConcept, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SAbstractConcept parameter, SubstituteMenuContext context) {
-          return new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0(parameter).createItems(context);
+          return new SMP_Action_s3h0kg_a0a0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -138,7 +138,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0.Item item = new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_a0.SMP_Param_s3h0kg_a0a.SMP_Action_s3h0kg_a0a0.Item(_context);
+            Item item = new Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -223,7 +223,7 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_s3h0kg_a.SMP_Group_s3h0kg_b0.SMP_Include_s3h0kg_a1a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_s3h0kg_a1a());
       }
       public class SMP_Include_s3h0kg_a1a extends IncludeSubstituteMenuSubstituteMenuPart {
 

@@ -65,7 +65,7 @@ public class AddMenuPart_ConceptSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_1nroa3_a.SMP_Concepts_1nroa3_a0(), CONCEPTS.ActionTestChild1$O9));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_1nroa3_a0(), CONCEPTS.ActionTestChild1$O9));
     }
     public class SMP_Concepts_1nroa3_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {

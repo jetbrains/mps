@@ -107,7 +107,7 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
       return builder;
     }
     private SNode myRefactoringStep;
-    public final MigrationBuilder.MigrationDescription myDescription = new MigrationBuilder.MigrationDescription();
+    public final MigrationDescription myDescription = new MigrationDescription();
     public static class MigrationDescription {
       public String description;
       public final List<String> conceptArgs = ListSequence.fromList(new ArrayList<String>());

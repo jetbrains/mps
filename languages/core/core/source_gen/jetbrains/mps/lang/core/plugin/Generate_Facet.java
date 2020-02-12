@@ -253,8 +253,8 @@ public class Generate_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 10;
     }
-    public static Target_configure.Variables vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_configure.Variables.class);
+    public static Variables vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Variables.class);
     }
     public static class Variables extends MultiTuple._5<Boolean, GenerationOptions.OptionsBuilder, DefaultGenerationParametersProvider, TransientModelsProvider, ModelGenerationPlan> {
       public Variables() {

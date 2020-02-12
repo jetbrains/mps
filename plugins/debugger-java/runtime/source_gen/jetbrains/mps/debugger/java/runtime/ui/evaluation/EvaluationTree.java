@@ -224,7 +224,7 @@ import jetbrains.mps.ide.messages.Icons;
         myCachedWatchable = new CalculatedWatchable(myPresentation, myValue, myThreadReference);
       }
       if (myCachedWatchable != null) {
-        WatchableNode watchableNode = new ResultState.MyWatchableNode(model, myCachedWatchable) {
+        WatchableNode watchableNode = new MyWatchableNode(model, myCachedWatchable) {
           @Override
           public boolean isLeaf() {
             if (canEvalaute) {

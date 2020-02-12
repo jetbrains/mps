@@ -344,7 +344,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     private EditorCell createError_0() {
       EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<no migration>");
       editorCell.setCellId("Error_w3rzlq_a2c0");
-      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new migrationListHandler_w3rzlq_c2a.MigrationTestCase_generic_cellMenu_w3rzlq_a0a2c0(), new SChildSubstituteInfoPartEx(editorCell)}));
+      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new MigrationTestCase_generic_cellMenu_w3rzlq_a0a2c0(), new SChildSubstituteInfoPartEx(editorCell)}));
       return editorCell;
     }
     public static class MigrationTestCase_generic_cellMenu_w3rzlq_a0a2c0 extends AbstractCellMenuPart_Generic_Group {

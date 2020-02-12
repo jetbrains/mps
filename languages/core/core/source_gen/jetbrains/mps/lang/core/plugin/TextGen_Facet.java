@@ -443,8 +443,8 @@ public class TextGen_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 400;
     }
-    public static Target_textGen.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_textGen.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<Boolean> {
       public Parameters() {

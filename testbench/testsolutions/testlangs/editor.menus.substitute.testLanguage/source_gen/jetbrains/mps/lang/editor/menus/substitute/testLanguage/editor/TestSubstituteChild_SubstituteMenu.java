@@ -132,14 +132,14 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ddv2zo_a.SMP_Action_ddv2zo_a0(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_ddv2zo_a0(), CONCEPTS.TestSubstituteChild$sN));
     }
     private class SMP_Action_ddv2zo_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_ddv2zo_a.SMP_Action_ddv2zo_a0.Item item = new SMP_Group_ddv2zo_a.SMP_Action_ddv2zo_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -271,13 +271,13 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ddv2zo_b.SMP_Param_ddv2zo_a1(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_ddv2zo_a1(), CONCEPTS.TestSubstituteChild$sN));
     }
     private class SMP_Param_ddv2zo_a1 extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-        return new SMP_Group_ddv2zo_b.SMP_Param_ddv2zo_a1.SMP_Action_ddv2zo_a0b(parameter).createItems(context);
+        return new SMP_Action_ddv2zo_a0b(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -308,7 +308,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_ddv2zo_b.SMP_Param_ddv2zo_a1.SMP_Action_ddv2zo_a0b.Item item = new SMP_Group_ddv2zo_b.SMP_Param_ddv2zo_a1.SMP_Action_ddv2zo_a0b.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -396,7 +396,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ddv2zo_c.SMP_Wrap_ddv2zo_a2(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ddv2zo_a2(), CONCEPTS.TestSubstituteChild$sN));
     }
     private class SMP_Wrap_ddv2zo_a2 extends WrapperSubstituteMenuPart {
       @NotNull
@@ -552,7 +552,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ddv2zo_d.SMP_Wrap_ddv2zo_a3(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ddv2zo_a3(), CONCEPTS.TestSubstituteChild$sN));
     }
     private class SMP_Wrap_ddv2zo_a3 extends WrapperSubstituteMenuPart {
       @NotNull
@@ -714,7 +714,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ddv2zo_e.SMP_Wrap_ddv2zo_a4(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ddv2zo_a4(), CONCEPTS.TestSubstituteChild$sN));
     }
     private class SMP_Wrap_ddv2zo_a4 extends WrapperSubstituteMenuPart {
       @NotNull
@@ -870,7 +870,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ddv2zo_f.SMP_Concepts_ddv2zo_a5(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_ddv2zo_a5(), CONCEPTS.TestSubstituteChild$sN));
     }
     public class SMP_Concepts_ddv2zo_a5 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
@@ -965,7 +965,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ddv2zo_h.SMP_Subconcepts_ddv2zo_a7());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_ddv2zo_a7());
     }
     public class SMP_Subconcepts_ddv2zo_a7 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
@@ -1008,7 +1008,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ddv2zo_i.SMP_Include_ddv2zo_a8());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_ddv2zo_a8());
     }
     public class SMP_Include_ddv2zo_a8 extends IncludeSubstituteMenuSubstituteMenuPart {
 
@@ -1054,7 +1054,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ddv2zo_j.SMP_Include_ddv2zo_a9());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_ddv2zo_a9());
     }
     public class SMP_Include_ddv2zo_a9 extends IncludeSubstituteMenuSubstituteMenuPart {
 
@@ -1100,7 +1100,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ddv2zo_k.SMP_Subconcepts_ddv2zo_a01());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_ddv2zo_a01());
     }
     public class SMP_Subconcepts_ddv2zo_a01 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
@@ -1143,7 +1143,7 @@ public class TestSubstituteChild_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ddv2zo_l.SMP_Subconcepts_ddv2zo_a11());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_ddv2zo_a11());
     }
     public class SMP_Subconcepts_ddv2zo_a11 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {

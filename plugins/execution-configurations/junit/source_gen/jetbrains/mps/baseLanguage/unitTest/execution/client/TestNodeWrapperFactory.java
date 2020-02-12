@@ -29,10 +29,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public enum TestNodeWrapperFactory {
-  LanguageTestCaseNodeWrapperFactory(TestNodeWrapperFactory.CONCEPTS.ITestCase$uo, true) {
+  LanguageTestCaseNodeWrapperFactory(CONCEPTS.ITestCase$uo, true) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
-      if (SNodeOperations.isInstanceOf(node, TestNodeWrapperFactory.CONCEPTS.BTestCase$o9) && SPropertyOperations.getBoolean(SNodeOperations.cast(node, TestNodeWrapperFactory.CONCEPTS.BTestCase$o9), TestNodeWrapperFactory.PROPS.abstractClass$gY5l)) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BTestCase$o9) && SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.BTestCase$o9), PROPS.abstractClass$gY5l)) {
         return null;
       }
       if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(node)).isEmpty()) {
@@ -42,7 +42,7 @@ public enum TestNodeWrapperFactory {
     }
 
   },
-  LanguageTestMethodNodeWrapperFactory(TestNodeWrapperFactory.CONCEPTS.ITestMethod$1l, false) {
+  LanguageTestMethodNodeWrapperFactory(CONCEPTS.ITestMethod$1l, false) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
       SNode testCase = ITestMethod__BehaviorDescriptor.getTestCase_idhGBgWVd.invoke(node);
@@ -54,15 +54,15 @@ public enum TestNodeWrapperFactory {
     }
 
   },
-  JUnit3TestCaseNodeWrapperFactory(TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY, true) {
+  JUnit3TestCaseNodeWrapperFactory(CONCEPTS.ClassConcept$IY, true) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY)) {
-        if (!(SPropertyOperations.getBoolean(SNodeOperations.cast(node, TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY), TestNodeWrapperFactory.PROPS.abstractClass$gY5l))) {
-          SNode ancestor = SNodeOperations.cast(node, TestNodeWrapperFactory.CONCEPTS.Classifier$hJ);
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$IY)) {
+        if (!(SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$gY5l))) {
+          SNode ancestor = SNodeOperations.cast(node, CONCEPTS.Classifier$hJ);
           if ((boolean) Classifier__BehaviorDescriptor.checkLoops_id3sXyOQUqKq0.invoke(ancestor)) {
-            while (ancestor != null && SNodeOperations.isInstanceOf(ancestor, TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY) && !(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ancestor).equals(TestCase.class.getCanonicalName()))) {
-              ancestor = check_kl7j79_a0a0a0b0a0a0a2(SLinkOperations.getTarget(SNodeOperations.cast(ancestor, TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY), TestNodeWrapperFactory.LINKS.superclass$_pqe));
+            while (ancestor != null && SNodeOperations.isInstanceOf(ancestor, CONCEPTS.ClassConcept$IY) && !(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ancestor).equals(TestCase.class.getCanonicalName()))) {
+              ancestor = check_kl7j79_a0a0a0b0a0a0a2(SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.ClassConcept$IY), LINKS.superclass$_pqe));
             }
             if (ancestor != null) {
               return new JUnit3TestWrapper(node);
@@ -74,7 +74,7 @@ public enum TestNodeWrapperFactory {
     }
 
   },
-  JUnit3MethodsNodeWrapperFactory(TestNodeWrapperFactory.CONCEPTS.InstanceMethodDeclaration$An, false) {
+  JUnit3MethodsNodeWrapperFactory(CONCEPTS.InstanceMethodDeclaration$An, false) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
       ITestNodeWrapper testCase = TestNodeWrapperFactory.JUnit3TestCaseNodeWrapperFactory.wrap(SNodeOperations.getParent(node));
@@ -82,23 +82,23 @@ public enum TestNodeWrapperFactory {
     }
 
   },
-  JUnit4TestNodeWrapperFactory(TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY, true) {
+  JUnit4TestNodeWrapperFactory(CONCEPTS.ClassConcept$IY, true) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
-      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY) && JUnit4TestWrapper.isJUnit4TestCase(SNodeOperations.cast(node, TestNodeWrapperFactory.CONCEPTS.ClassConcept$IY))) {
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)), CONCEPTS.ClassConcept$IY) && JUnit4TestWrapper.isJUnit4TestCase(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY))) {
         new JUnit4TestWrapper(node);
       }
       return null;
     }
 
   },
-  JUnit4MethodsNodeWrapperFactory(TestNodeWrapperFactory.CONCEPTS.InstanceMethodDeclaration$An, false) {
+  JUnit4MethodsNodeWrapperFactory(CONCEPTS.InstanceMethodDeclaration$An, false) {
     @Nullable
     public ITestNodeWrapper<SNode> wrap(@NotNull SNode node) {
       // XXX it's not clear to me how this story works in case test method comes from an abstract class (i.e. if we've got non-trivial test class hierarchy) 
       //     It seems that in this case we just create an odd testcase for the abstract class. 
       //     JUnit4MethodWrapper.getTestCase used to take node.ancestor<ClassConcept>, so it has been like that for a while. 
-      if (JUnit4MethodWrapper.isJUnit4TestMethod(SNodeOperations.cast(node, TestNodeWrapperFactory.CONCEPTS.InstanceMethodDeclaration$An))) {
+      if (JUnit4MethodWrapper.isJUnit4TestMethod(SNodeOperations.cast(node, CONCEPTS.InstanceMethodDeclaration$An))) {
         ITestNodeWrapper testCase = TestNodeWrapperFactory.JUnit4TestNodeWrapperFactory.wrap(SNodeOperations.getParent(node));
         return (testCase == null ? null : new JUnit4MethodWrapper(testCase, node));
       }
@@ -106,7 +106,7 @@ public enum TestNodeWrapperFactory {
     }
 
   },
-  GeneratorTest(TestNodeWrapperFactory.CONCEPTS.GeneratorTest$vD, true) {
+  GeneratorTest(CONCEPTS.GeneratorTest$vD, true) {
     @Nullable
     @Override
     public ITestNodeWrapper wrap(@NotNull SNode node) {

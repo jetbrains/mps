@@ -66,7 +66,7 @@ public class TestSubstituteParentPropertyAndReference_CustomPropertyMenu extends
   private class TMP_Action_kjp90i_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_kjp90i_a0.Item item = new TMP_Action_kjp90i_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

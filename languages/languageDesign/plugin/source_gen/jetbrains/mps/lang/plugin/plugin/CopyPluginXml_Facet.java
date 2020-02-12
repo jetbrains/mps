@@ -168,8 +168,8 @@ public class CopyPluginXml_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 10;
     }
-    public static Target_copyPluginXml.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_copyPluginXml.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<String> {
       public Parameters() {

@@ -140,7 +140,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.statementRef$wnfS, CONCEPTS.InfoStatementReference$Dx), new SubstituteInfoPartExt[]{new statementRefSingleRoleHandler_4bw08u_b0.NodeInfoCheckOperation_generic_cellMenu_4bw08u_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.statementRef$wnfS, CONCEPTS.InfoStatementReference$Dx), new SubstituteInfoPartExt[]{new NodeInfoCheckOperation_generic_cellMenu_4bw08u_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.statementRef$wnfS);

@@ -95,7 +95,7 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_a0a());
     }
     public class TMP_SubMenu_pmdw_a0a extends SubMenuMenuTransformationMenuPart {
       @Override
@@ -124,12 +124,12 @@ public class Math extends TransformationMenuBase {
 
       @Override
       protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0(), new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0(), new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0(), new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0());
+        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_pmdw_a0a0(), new TMP_Action_pmdw_b0a0(), new TMP_Action_pmdw_c0a0(), new TMP_Action_pmdw_d0a0());
       }
       private class TMP_Action_pmdw_a0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_a0a0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -189,7 +189,7 @@ public class Math extends TransformationMenuBase {
       private class TMP_Action_pmdw_b0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_b0a0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -249,7 +249,7 @@ public class Math extends TransformationMenuBase {
       private class TMP_Action_pmdw_c0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_c0a0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -309,7 +309,7 @@ public class Math extends TransformationMenuBase {
       private class TMP_Action_pmdw_d0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0.Item item = new TMP_SubMenu_pmdw_a0.TMP_SubMenu_pmdw_a0a.TMP_Action_pmdw_d0a0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -395,12 +395,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a(), new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_pmdw_a1a(), new TMP_Action_pmdw_b1a());
     }
     private class TMP_Action_pmdw_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a.Item item = new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -461,7 +461,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a.Item item = new TMP_SubMenu_pmdw_b0.TMP_Action_pmdw_b1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -546,12 +546,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a(), new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a(), new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a(), new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_pmdw_a2a(), new TMP_Action_pmdw_b2a(), new TMP_Action_pmdw_c2a(), new TMP_Action_pmdw_d2a());
     }
     private class TMP_Action_pmdw_a2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_a2a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -611,7 +611,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_b2a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -671,7 +671,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_c2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_c2a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -731,7 +731,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_d2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a.Item item = new TMP_SubMenu_pmdw_c0.TMP_Action_pmdw_d2a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -816,12 +816,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a(), new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a(), new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a(), new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_pmdw_a3a(), new TMP_Action_pmdw_b3a(), new TMP_Action_pmdw_c3a(), new TMP_Action_pmdw_d3a());
     }
     private class TMP_Action_pmdw_a3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_a3a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -881,7 +881,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_b3a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -941,7 +941,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_c3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_c3a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1001,7 +1001,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_d3a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a.Item item = new TMP_SubMenu_pmdw_d0.TMP_Action_pmdw_d3a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1086,12 +1086,12 @@ public class Math extends TransformationMenuBase {
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a(), new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a(), new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_pmdw_a4a(), new TMP_Action_pmdw_b4a(), new TMP_Action_pmdw_c4a());
     }
     private class TMP_Action_pmdw_a4a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a.Item item = new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_a4a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1151,7 +1151,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_b4a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a.Item item = new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_b4a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1211,7 +1211,7 @@ public class Math extends TransformationMenuBase {
     private class TMP_Action_pmdw_c4a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a.Item item = new TMP_SubMenu_pmdw_e0.TMP_Action_pmdw_c4a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

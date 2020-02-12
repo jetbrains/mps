@@ -106,12 +106,12 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_7vmljf_a0a());
     }
     private class TMP_Action_7vmljf_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a.Item item = new TMP_Group_7vmljf_a0.TMP_Action_7vmljf_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -179,7 +179,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
   private class TMP_Action_7vmljf_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_7vmljf_b0.Item item = new TMP_Action_7vmljf_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -260,14 +260,14 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Param_7vmljf_a2a());
     }
     private class TMP_Param_7vmljf_a2a extends ParameterizedMenuPart<SConcept, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-        return new TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0(parameter).createItems(context);
+        return new TMP_Action_7vmljf_a0c0(parameter).createItems(context);
       }
 
       @Nullable
@@ -300,7 +300,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0.Item item = new TMP_Group_7vmljf_c0.TMP_Param_7vmljf_a2a.TMP_Action_7vmljf_a0c0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");

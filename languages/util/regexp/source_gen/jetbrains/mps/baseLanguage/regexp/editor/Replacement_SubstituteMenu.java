@@ -59,7 +59,7 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_h3zx5f_a.Item item = new SMP_Action_h3zx5f_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

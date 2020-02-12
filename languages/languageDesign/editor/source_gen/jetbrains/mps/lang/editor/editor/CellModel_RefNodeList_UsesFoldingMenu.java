@@ -92,7 +92,7 @@ public class CellModel_RefNodeList_UsesFoldingMenu extends TransformationMenuBas
   private class TMP_Action_aewiw8_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_aewiw8_b0.Item item = new TMP_Action_aewiw8_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

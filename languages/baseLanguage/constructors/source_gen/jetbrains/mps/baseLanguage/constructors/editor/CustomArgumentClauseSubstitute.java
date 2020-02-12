@@ -85,7 +85,7 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_79baz_a.SMP_Wrap_79baz_a0(), CONCEPTS.CustomArgumentClause$2w));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_79baz_a0(), CONCEPTS.CustomArgumentClause$2w));
     }
     private class SMP_Wrap_79baz_a0 extends WrapperSubstituteMenuPart {
       @NotNull

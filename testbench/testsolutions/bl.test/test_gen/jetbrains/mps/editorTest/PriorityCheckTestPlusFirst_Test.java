@@ -53,10 +53,10 @@ public class PriorityCheckTestPlusFirst_Test extends BaseTransformationTest {
       addNodeById("818296778579245164");
       SNode op = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL, "jetbrains.mps.baseLanguage.structure.PlusExpression"));
       SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));
-      SPropertyOperations.assign(constant, PriorityCheckTestPlusFirst_Test.PROPS.value$ZeO0, 3);
-      SLinkOperations.setTarget(op, PriorityCheckTestPlusFirst_Test.LINKS.leftExpression$rxLZ, constant);
+      SPropertyOperations.assign(constant, PROPS.value$ZeO0, 3);
+      SLinkOperations.setTarget(op, LINKS.leftExpression$rxLZ, constant);
       SNodeOperations.replaceWithAnother(SNodeOperations.cast(getNodeById("818296778579252641"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfe476b758fL, "MulExpression"))), op);
-      SLinkOperations.setTarget(op, PriorityCheckTestPlusFirst_Test.LINKS.rightExpression$rxBl, SNodeOperations.cast(getNodeById("818296778579252641"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfe476b758fL, "MulExpression"))));
+      SLinkOperations.setTarget(op, LINKS.rightExpression$rxBl, SNodeOperations.cast(getNodeById("818296778579252641"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfe476b758fL, "MulExpression"))));
       ParenthesisUtil.checkOperationWRTPriority(op);
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("818296778579245167"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))));

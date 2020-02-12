@@ -95,7 +95,7 @@ public class IRefConceptArg_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_9e3ftz_a0.TMP_Group_9e3ftz_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_9e3ftz_a0a());
     }
     public class TMP_Group_9e3ftz_a0a extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
       private boolean isCastExpression;
@@ -122,7 +122,7 @@ public class IRefConceptArg_TransformationMenu extends TransformationMenuBase {
       }
       @Override
       protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_9e3ftz_a0.TMP_Group_9e3ftz_a0a.TMP_Group_9e3ftz_a0a0(), new TMP_Group_9e3ftz_a0.TMP_Group_9e3ftz_a0a.TMP_Group_9e3ftz_b0a0());
+        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_9e3ftz_a0a0(), new TMP_Group_9e3ftz_b0a0());
       }
       public class TMP_Group_9e3ftz_a0a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Override
@@ -143,7 +143,7 @@ public class IRefConceptArg_TransformationMenu extends TransformationMenuBase {
         }
         @Override
         protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-          return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_9e3ftz_a0.TMP_Group_9e3ftz_a0a.TMP_Group_9e3ftz_a0a0.TMP_Include_9e3ftz_a0a0a());
+          return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_9e3ftz_a0a0a());
         }
         public class TMP_Include_9e3ftz_a0a0a extends IncludeTransformationMenuTransformationMenuPart {
           @NotNull
@@ -185,12 +185,12 @@ public class IRefConceptArg_TransformationMenu extends TransformationMenuBase {
         }
         @Override
         protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-          return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_9e3ftz_a0.TMP_Group_9e3ftz_a0a.TMP_Group_9e3ftz_b0a0.TMP_Action_9e3ftz_a1a0a(), CONCEPTS.ParenthesizedExpression$vE));
+          return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_9e3ftz_a1a0a(), CONCEPTS.ParenthesizedExpression$vE));
         }
         private class TMP_Action_9e3ftz_a1a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
           @Nullable
           protected TransformationMenuItem createItem(TransformationMenuContext context) {
-            TMP_Group_9e3ftz_a0.TMP_Group_9e3ftz_a0a.TMP_Group_9e3ftz_b0a0.TMP_Action_9e3ftz_a1a0a.Item item = new TMP_Group_9e3ftz_a0.TMP_Group_9e3ftz_a0a.TMP_Group_9e3ftz_b0a0.TMP_Action_9e3ftz_a1a0a.Item(context);
+            Item item = new Item(context);
             String description;
             try {
               description = "single item: " + item.getLabelText("");

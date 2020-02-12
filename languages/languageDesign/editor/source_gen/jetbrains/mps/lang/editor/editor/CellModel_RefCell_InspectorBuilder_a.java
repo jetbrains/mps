@@ -326,7 +326,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         protected EditorCell createReferenceCell(final SNode targetNode) {
           EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
             public EditorCell compute() {
-              return new Inline_Builder1.Inline_Builder2(getEditorContext(), getNode(), targetNode).createCell();
+              return new Inline_Builder2(getEditorContext(), getNode(), targetNode).createCell();
             }
           }, targetNode, LINKS.conceptDeclaration$sbgS);
           CellUtil.setupIDeprecatableStyles(targetNode, cell);

@@ -61,7 +61,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rajt6d_a.Item item = new SMP_Action_rajt6d_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -114,7 +114,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rajt6d_b.Item item = new SMP_Action_rajt6d_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -167,7 +167,7 @@ public class XmlValuePart_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_rajt6d_c.Item item = new SMP_Action_rajt6d_c.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

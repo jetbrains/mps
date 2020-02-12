@@ -117,7 +117,7 @@ public class snodeOperation extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_o4406x_a.SMP_Subconcepts_o4406x_a0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_o4406x_a0());
     }
     public class SMP_Subconcepts_o4406x_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {

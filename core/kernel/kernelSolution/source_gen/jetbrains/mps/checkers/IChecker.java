@@ -128,14 +128,14 @@ public interface IChecker<O, I extends IssueKindReportItem> {
     public AbstractModelChecker<I> asModelChecker() {
       return this.asRootChecker().asModelChecker();
     }
-    public AbstractNodeChecker.ErrorSkipCondition skipCondition() {
+    public ErrorSkipCondition skipCondition() {
       return SKIP_NOTHING_CONDITION;
     }
     public interface ErrorSkipCondition {
       boolean skipSingleNode(SNode node);
       boolean skipSubtree(SNode root);
     }
-    public static final AbstractNodeChecker.ErrorSkipCondition SKIP_NOTHING_CONDITION = new AbstractNodeChecker.ErrorSkipCondition() {
+    public static final ErrorSkipCondition SKIP_NOTHING_CONDITION = new ErrorSkipCondition() {
       public boolean skipSingleNode(SNode node) {
         return false;
       }

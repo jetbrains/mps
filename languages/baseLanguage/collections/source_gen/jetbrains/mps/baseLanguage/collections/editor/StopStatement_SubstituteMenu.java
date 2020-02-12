@@ -82,7 +82,7 @@ public class StopStatement_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.StopStatement$QO), new SMP_Group_zaqlh_a.SMP_Subconcepts_zaqlh_b0());
+      }, CONCEPTS.StopStatement$QO), new SMP_Subconcepts_zaqlh_b0());
     }
     public class SMP_Subconcepts_zaqlh_b0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {

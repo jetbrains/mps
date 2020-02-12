@@ -207,7 +207,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.query$7Yu1, CONCEPTS.QueryFunction_FontStyle$xJ), new SubstituteInfoPartExt[]{new querySingleRoleHandler_n0gj60_d0.FontStyleStyleClassItem_generic_cellMenu_n0gj60_a0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.query$7Yu1, CONCEPTS.QueryFunction_FontStyle$xJ), new SubstituteInfoPartExt[]{new FontStyleStyleClassItem_generic_cellMenu_n0gj60_a0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.query$7Yu1);

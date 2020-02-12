@@ -103,7 +103,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.relativeTo$fT9T, CONCEPTS.Expression$TP), new SubstituteInfoPartExt[]{new relativeToSingleRoleHandler_wv5dgr_b0.RelativePosition_relativeTo_cellMenu_wv5dgr_a0b0(), new relativeToSingleRoleHandler_wv5dgr_b0.RelativePosition_customReplace_cellMenu_wv5dgr_b0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.relativeTo$fT9T, CONCEPTS.Expression$TP), new SubstituteInfoPartExt[]{new RelativePosition_relativeTo_cellMenu_wv5dgr_a0b0(), new RelativePosition_customReplace_cellMenu_wv5dgr_b0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.relativeTo$fT9T);

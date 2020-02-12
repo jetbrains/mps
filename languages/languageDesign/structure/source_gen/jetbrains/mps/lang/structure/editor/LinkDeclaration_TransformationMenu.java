@@ -114,14 +114,14 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bjuler_a1.TMP_Param_bjuler_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Param_bjuler_a0b());
     }
     private class TMP_Param_bjuler_a0b extends ParameterizedMenuPart<SNode, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-        return new TMP_Group_bjuler_a1.TMP_Param_bjuler_a0b.TMP_Action_bjuler_a0a1(parameter).createItems(context);
+        return new TMP_Action_bjuler_a0a1(parameter).createItems(context);
       }
 
       @Nullable
@@ -163,7 +163,7 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_bjuler_a1.TMP_Param_bjuler_a0b.TMP_Action_bjuler_a0a1.Item item = new TMP_Group_bjuler_a1.TMP_Param_bjuler_a0b.TMP_Action_bjuler_a0a1.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -242,12 +242,12 @@ public class LinkDeclaration_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bjuler_b1.TMP_Action_bjuler_a1b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_bjuler_a1b());
     }
     private class TMP_Action_bjuler_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_bjuler_b1.TMP_Action_bjuler_a1b.Item item = new TMP_Group_bjuler_b1.TMP_Action_bjuler_a1b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

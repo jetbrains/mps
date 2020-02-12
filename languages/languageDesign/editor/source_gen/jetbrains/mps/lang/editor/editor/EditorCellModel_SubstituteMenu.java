@@ -93,7 +93,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_a.Item item = new SMP_Action_le0q3j_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -153,7 +153,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_b.Item item = new SMP_Action_le0q3j_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -216,7 +216,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_c.Item item = new SMP_Action_le0q3j_c.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -276,7 +276,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_d.Item item = new SMP_Action_le0q3j_d.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -339,7 +339,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_e.Item item = new SMP_Action_le0q3j_e.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -399,7 +399,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_f.Item item = new SMP_Action_le0q3j_f.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -462,7 +462,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_g.Item item = new SMP_Action_le0q3j_g.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -522,7 +522,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_h.Item item = new SMP_Action_le0q3j_h.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -582,7 +582,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_i.Item item = new SMP_Action_le0q3j_i.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -642,7 +642,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_j.Item item = new SMP_Action_le0q3j_j.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -705,7 +705,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_k.Item item = new SMP_Action_le0q3j_k.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -765,7 +765,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_l.Item item = new SMP_Action_le0q3j_l.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -828,7 +828,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_m.Item item = new SMP_Action_le0q3j_m.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -886,7 +886,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_n.Item item = new SMP_Action_le0q3j_n.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -944,7 +944,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_o.Item item = new SMP_Action_le0q3j_o.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1002,7 +1002,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_p.Item item = new SMP_Action_le0q3j_p.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1061,7 +1061,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_q.Item item = new SMP_Action_le0q3j_q.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1132,7 +1132,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_r.Item item = new SMP_Action_le0q3j_r.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1203,7 +1203,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_le0q3j_s.Item item = new SMP_Action_le0q3j_s.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -1273,7 +1273,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91(parameter).createItems(context);
+      return new SMP_Action_le0q3j_a91(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -1312,7 +1312,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91.Item item = new SMP_Param_le0q3j_t.SMP_Action_le0q3j_a91.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

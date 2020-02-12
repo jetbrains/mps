@@ -73,14 +73,14 @@ public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0(), CONCEPTS.IncompleteMemberDeclaration$QW));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_oxmga2_a0(), CONCEPTS.IncompleteMemberDeclaration$QW));
     }
     private class SMP_Action_oxmga2_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0.Item item = new SMP_Group_oxmga2_a.SMP_Action_oxmga2_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

@@ -155,7 +155,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
           SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.Relationship$ZC), LINKS.target$$xE0, SNodeOperations.cast(to, CONCEPTS.Thought$K8));
         }
       })}));
-      setPalette(new DiagramCellImpl_e8klwn_d0.DiagramPaletteImpl_e8klwn_a3a(this));
+      setPalette(new DiagramPaletteImpl_e8klwn_a3a(this));
       synchronize();
     }
 

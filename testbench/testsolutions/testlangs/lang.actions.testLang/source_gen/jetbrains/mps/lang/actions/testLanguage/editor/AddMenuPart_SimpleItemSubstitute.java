@@ -97,14 +97,14 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_mw8afp_a.SMP_Action_mw8afp_a0(), CONCEPTS.ActionTestChild1$O9), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_mw8afp_a.SMP_Action_mw8afp_b0(), CONCEPTS.ActionTestChild1$O9), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_mw8afp_a.SMP_Action_mw8afp_c0(), CONCEPTS.ActionTestChild2$vZ));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_mw8afp_a0(), CONCEPTS.ActionTestChild1$O9), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_mw8afp_b0(), CONCEPTS.ActionTestChild1$O9), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_mw8afp_c0(), CONCEPTS.ActionTestChild2$vZ));
     }
     private class SMP_Action_mw8afp_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_mw8afp_a.SMP_Action_mw8afp_a0.Item item = new SMP_Group_mw8afp_a.SMP_Action_mw8afp_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -233,7 +233,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_mw8afp_a.SMP_Action_mw8afp_b0.Item item = new SMP_Group_mw8afp_a.SMP_Action_mw8afp_b0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -297,7 +297,7 @@ public class AddMenuPart_SimpleItemSubstitute extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_mw8afp_a.SMP_Action_mw8afp_c0.Item item = new SMP_Group_mw8afp_a.SMP_Action_mw8afp_c0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

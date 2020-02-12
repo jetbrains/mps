@@ -79,7 +79,7 @@ public class AbstractRequestDescription_SubstituteMenu extends SubstituteMenuBas
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_dcepxw_b.Item item = new SMP_Action_dcepxw_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

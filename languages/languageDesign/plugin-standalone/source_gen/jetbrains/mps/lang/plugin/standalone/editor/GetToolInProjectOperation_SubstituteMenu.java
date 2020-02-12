@@ -71,7 +71,7 @@ public class GetToolInProjectOperation_SubstituteMenu extends SubstituteMenuBase
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new SMP_ReferenceScope_8l9mrv_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;

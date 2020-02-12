@@ -142,8 +142,8 @@ public class Sample_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 1;
     }
-    public static Target_readParams.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_readParams.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._3<String, Integer, String> {
       public Parameters() {

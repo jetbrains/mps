@@ -150,12 +150,12 @@ public class transform_ElementAttributes_XmlElement_ext_1 extends Transformation
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_gxyyd8_a1a());
     }
     private class TMP_Action_gxyyd8_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a.Item item = new TMP_Group_gxyyd8_b0.TMP_Action_gxyyd8_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

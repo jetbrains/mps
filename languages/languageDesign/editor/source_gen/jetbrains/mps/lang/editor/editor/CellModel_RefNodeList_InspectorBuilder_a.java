@@ -704,7 +704,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.separatorTextQuery$ttHL, CONCEPTS.QueryFunction_SeparatorText$N_), new SubstituteInfoPartExt[]{new separatorTextQuerySingleRoleHandler_2v2794_c6d0.CellModel_RefNodeList_generic_cellMenu_2v2794_a0c6d0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.separatorTextQuery$ttHL, CONCEPTS.QueryFunction_SeparatorText$N_), new SubstituteInfoPartExt[]{new CellModel_RefNodeList_generic_cellMenu_2v2794_a0c6d0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.separatorTextQuery$ttHL);

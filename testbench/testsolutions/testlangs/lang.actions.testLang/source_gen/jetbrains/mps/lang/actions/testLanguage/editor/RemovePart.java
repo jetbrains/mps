@@ -67,7 +67,7 @@ public class RemovePart extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_pkf68r_a.SMP_Subconcepts_pkf68r_a0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_pkf68r_a0());
     }
     public class SMP_Subconcepts_pkf68r_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {

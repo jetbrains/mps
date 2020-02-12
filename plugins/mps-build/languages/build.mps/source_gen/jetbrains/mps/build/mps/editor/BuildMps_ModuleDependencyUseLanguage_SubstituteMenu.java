@@ -71,7 +71,7 @@ public class BuildMps_ModuleDependencyUseLanguage_SubstituteMenu extends Substit
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new SMP_ReferenceScope_lfbsba_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;

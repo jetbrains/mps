@@ -72,7 +72,7 @@ public class TestSubstituteChildWithConstraints1_TransformationMenu extends Tran
   private class TMP_Action_szzd63_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_szzd63_a0.Item item = new TMP_Action_szzd63_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -137,7 +137,7 @@ public class TestSubstituteChildWithConstraints1_TransformationMenu extends Tran
   private class TMP_Action_szzd63_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_szzd63_b0.Item item = new TMP_Action_szzd63_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -202,7 +202,7 @@ public class TestSubstituteChildWithConstraints1_TransformationMenu extends Tran
   private class TMP_Action_szzd63_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_szzd63_c0.Item item = new TMP_Action_szzd63_c0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

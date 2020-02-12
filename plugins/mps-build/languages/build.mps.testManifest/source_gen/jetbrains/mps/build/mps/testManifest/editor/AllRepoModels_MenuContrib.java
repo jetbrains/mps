@@ -68,7 +68,7 @@ public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ngt524_a.SMP_Include_ngt524_a0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_ngt524_a0());
     }
     public class SMP_Include_ngt524_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 

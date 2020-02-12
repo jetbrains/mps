@@ -275,7 +275,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createRefNodeList_0() {
-      AbstractCellListHandler handler = new Inline_Builder1.componentListHandler_ulpguu_a0a1b0(myNode, getEditorContext());
+      AbstractCellListHandler handler = new componentListHandler_ulpguu_a0a1b0(myNode, getEditorContext());
       EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
       editorCell.setCellId("refNodeList_component");
       Style style = new StyleImpl();

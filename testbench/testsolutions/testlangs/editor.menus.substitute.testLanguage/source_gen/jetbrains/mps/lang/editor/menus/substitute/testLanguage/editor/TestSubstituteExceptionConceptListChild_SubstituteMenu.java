@@ -87,7 +87,7 @@ public class TestSubstituteExceptionConceptListChild_SubstituteMenu extends Subs
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_v3z36n_b.Item item = new SMP_Action_v3z36n_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

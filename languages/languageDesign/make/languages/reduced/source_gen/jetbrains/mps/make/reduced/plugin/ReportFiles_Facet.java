@@ -148,8 +148,8 @@ public class ReportFiles_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 100;
     }
-    public static Target_report.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_report.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._4<List<String>, List<String>, List<String>, Map<String, SModel>> {
       public Parameters() {

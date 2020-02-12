@@ -97,7 +97,7 @@ public class ActionTestSidetransformAbstractChild_TransformationMenu extends Tra
   private class TMP_Action_hcgfcd_a1 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_hcgfcd_a1.Item item = new TMP_Action_hcgfcd_a1.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -162,7 +162,7 @@ public class ActionTestSidetransformAbstractChild_TransformationMenu extends Tra
   private class TMP_Action_hcgfcd_a2 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_hcgfcd_a2.Item item = new TMP_Action_hcgfcd_a2.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -227,7 +227,7 @@ public class ActionTestSidetransformAbstractChild_TransformationMenu extends Tra
   private class TMP_Action_hcgfcd_a3 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_hcgfcd_a3.Item item = new TMP_Action_hcgfcd_a3.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -292,7 +292,7 @@ public class ActionTestSidetransformAbstractChild_TransformationMenu extends Tra
   private class TMP_Action_hcgfcd_a4 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_hcgfcd_a4.Item item = new TMP_Action_hcgfcd_a4.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

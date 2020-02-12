@@ -70,7 +70,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new SMP_ReferenceScope_tafz9j_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;
@@ -103,7 +103,7 @@ public class TestSubstituteExceptionReferenceMatchingTextChild_SubstituteMenu ex
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_tafz9j_b.Item item = new SMP_Action_tafz9j_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

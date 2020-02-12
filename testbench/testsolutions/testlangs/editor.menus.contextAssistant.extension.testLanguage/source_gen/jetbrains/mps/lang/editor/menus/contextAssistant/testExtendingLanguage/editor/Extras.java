@@ -69,7 +69,7 @@ public class Extras extends TransformationMenuBase {
 
     @Override
     protected TransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull IRefactoring refactoring) {
-      return new TMP_Refactoring_ha3uwx_a0.Item(context, refactoring);
+      return new Item(context, refactoring);
     }
 
     private class Item extends RefactoringMenuItemBase implements SidebarActionItem {
@@ -94,7 +94,7 @@ public class Extras extends TransformationMenuBase {
 
     @Override
     protected TransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull AnAction action) {
-      return new TMP_PluginAction_ha3uwx_b0.Item(context, action);
+      return new Item(context, action);
     }
 
     private class Item extends PluginActionMenuItemBase implements SidebarActionItem {
@@ -122,7 +122,7 @@ public class Extras extends TransformationMenuBase {
       context.getEditorMenuTrace().pushTraceInfo();
       context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("intention transformation menu part: " + "AddLetterToName", new SNodePointer("r:1ed8add9-1a05-4a2d-a8ee-1a24e378c5f6(jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor)", "2468431357009934542")));
       try {
-        return new TMP_Intention_ha3uwx_c0.Item(context, executable);
+        return new Item(context, executable);
       } finally {
         context.getEditorMenuTrace().popTraceInfo();
       }
