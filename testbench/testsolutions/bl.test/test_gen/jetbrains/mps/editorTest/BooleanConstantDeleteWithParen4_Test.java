@@ -12,16 +12,16 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 
 @MPSLaunch
-public class BooleanConstantDelete3_Test extends BaseTransformationTest {
+public class BooleanConstantDeleteWithParen4_Test extends BaseTransformationTest {
   @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(BooleanConstantDelete3_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  public static final TestParametersCache ourParamCache = new TestParametersCache(BooleanConstantDeleteWithParen4_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
 
-  public BooleanConstantDelete3_Test() {
+  public BooleanConstantDeleteWithParen4_Test() {
     super(ourParamCache);
   }
 
   @Test
-  public void test_BooleanConstantDelete3() throws Throwable {
+  public void test_BooleanConstantDeleteWithParen4() throws Throwable {
     new TestBody(this).testMethod();
   }
 
@@ -33,9 +33,11 @@ public class BooleanConstantDelete3_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6450120067538813824", "6450120067538813832");
+      initEditorComponent("1010197743255863415", "1010197743255863425");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
+          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
           invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");

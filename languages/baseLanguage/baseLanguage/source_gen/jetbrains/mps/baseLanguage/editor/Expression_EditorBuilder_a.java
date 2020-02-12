@@ -60,7 +60,7 @@ import jetbrains.mps.editor.runtime.style.Padding;
         return new AbstractCellProvider(myNode) {
           @Override
           public EditorCell createEditorCell(EditorContext context) {
-            EditorCell_Error result = new EditorCell_Error(context, myNode, "<" + myNode.getRoleInParent() + ">");
+            EditorCell_Error result = new EditorCell_Error(context, myNode, "<" + SNodeOperations.getContainingLink(myNode).getName() + ">");
             result.getStyle().set(StyleAttributes.PADDING_LEFT, new Padding(0.0));
             result.getStyle().set(StyleAttributes.PADDING_RIGHT, new Padding(0.0));
             return result;

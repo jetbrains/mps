@@ -12,6 +12,43 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/1010197743255863399">
+    <file name="BooleanConstantDeleteWithParen4_Test.java">
+      <node id="1010197743255863399" at="19,49,20,25" concept="11" />
+      <node id="1010197743255863399" at="24,71,25,36" concept="2" />
+      <node id="1010197743255863399" at="30,52,31,19" concept="11" />
+      <node id="1010197743255863399" at="35,51,36,72" concept="2" />
+      <node id="1010197743255863401" at="38,44,39,76" concept="2" />
+      <node id="1010197743255863403" at="39,76,40,76" concept="2" />
+      <node id="1010197743255863405" at="40,76,41,76" concept="2" />
+      <node id="1010197743255863407" at="41,76,42,76" concept="2" />
+      <node id="1010197743255863409" at="42,76,43,76" concept="2" />
+      <node id="1010197743255863411" at="43,76,44,76" concept="2" />
+      <node id="1010197743255864513" at="44,76,45,76" concept="2" />
+      <node id="1010197743255863399" at="16,0,18,0" concept="9" trace="ourParamCache" />
+      <node id="1010197743255863399" at="19,0,22,0" concept="1" trace="BooleanConstantDeleteWithParen4_Test#()V" />
+      <node id="1010197743255863399" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1010197743255863399" at="23,0,27,0" concept="5" trace="test_BooleanConstantDeleteWithParen4#()V" />
+      <node id="1010197743255866119" at="38,0,47,0" concept="5" trace="run#()V" />
+      <node id="1010197743255864848" at="36,72,47,16" concept="2" />
+      <node id="1010197743255863399" at="34,0,49,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="1010197743255863399" at="19,49,20,25" />
+      <scope id="1010197743255863399" at="24,71,25,36" />
+      <scope id="1010197743255863399" at="30,52,31,19" />
+      <scope id="1010197743255863399" at="19,0,22,0" />
+      <scope id="1010197743255863399" at="30,0,33,0">
+        <var name="owner" id="1010197743255863399" />
+      </scope>
+      <scope id="1010197743255863399" at="23,0,27,0" />
+      <scope id="1010197743255866121" at="38,44,45,76" />
+      <scope id="1010197743255866119" at="38,0,47,0" />
+      <scope id="1010197743255863399" at="35,51,47,16" />
+      <scope id="1010197743255863399" at="34,0,49,0" />
+      <unit id="1010197743255866119" at="37,48,47,7" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen4_Test$TestBody$1" />
+      <unit id="1010197743255863399" at="28,0,50,0" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen4_Test$TestBody" />
+      <unit id="1010197743255863399" at="14,0,51,0" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen4_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/1077509448392937329">
     <file name="BackspaceCommentedConditionAfterCommented_Test.java">
       <node id="1077509448392937329" at="18,59,19,25" concept="11" />
@@ -18460,15 +18497,14 @@
       <node id="6450120067538813816" at="39,76,40,76" concept="2" />
       <node id="6450120067538813818" at="40,76,41,76" concept="2" />
       <node id="6450120067538813820" at="41,76,42,76" concept="2" />
-      <node id="6450120067538813822" at="42,76,43,76" concept="2" />
-      <node id="6450120067538813943" at="43,76,44,76" concept="2" />
+      <node id="6450120067538813943" at="42,76,43,76" concept="2" />
       <node id="6450120067538813812" at="16,0,18,0" concept="9" trace="ourParamCache" />
       <node id="6450120067538813812" at="19,0,22,0" concept="1" trace="BooleanConstantDelete3_Test#()V" />
       <node id="6450120067538813812" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="6450120067538813812" at="23,0,27,0" concept="5" trace="test_BooleanConstantDelete3#()V" />
-      <node id="1241246198920150488" at="38,0,46,0" concept="5" trace="run#()V" />
-      <node id="1241246198920150486" at="36,72,46,16" concept="2" />
-      <node id="6450120067538813812" at="34,0,48,0" concept="5" trace="testMethodImpl#()V" />
+      <node id="1241246198920150488" at="38,0,45,0" concept="5" trace="run#()V" />
+      <node id="1241246198920150486" at="36,72,45,16" concept="2" />
+      <node id="6450120067538813812" at="34,0,47,0" concept="5" trace="testMethodImpl#()V" />
       <scope id="6450120067538813812" at="19,40,20,25" />
       <scope id="6450120067538813812" at="24,62,25,36" />
       <scope id="6450120067538813812" at="30,52,31,19" />
@@ -18477,43 +18513,13 @@
         <var name="owner" id="6450120067538813812" />
       </scope>
       <scope id="6450120067538813812" at="23,0,27,0" />
-      <scope id="1241246198920150489" at="38,44,44,76" />
-      <scope id="1241246198920150488" at="38,0,46,0" />
-      <scope id="6450120067538813812" at="35,51,46,16" />
-      <scope id="6450120067538813812" at="34,0,48,0" />
-      <unit id="1241246198920150488" at="37,48,46,7" name="jetbrains.mps.editorTest.BooleanConstantDelete3_Test$TestBody$1" />
-      <unit id="6450120067538813812" at="28,0,49,0" name="jetbrains.mps.editorTest.BooleanConstantDelete3_Test$TestBody" />
-      <unit id="6450120067538813812" at="14,0,50,0" name="jetbrains.mps.editorTest.BooleanConstantDelete3_Test" />
-    </file>
-  </root>
-  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6450120067538813957">
-    <file name="BooleanConstantDelete2_Test.java">
-      <node id="6450120067538813957" at="18,40,19,25" concept="11" />
-      <node id="6450120067538813957" at="23,62,24,36" concept="2" />
-      <node id="6450120067538813957" at="29,52,30,19" concept="11" />
-      <node id="6450120067538813957" at="34,51,35,72" concept="2" />
-      <node id="6450120067538813959" at="35,72,36,72" concept="2" />
-      <node id="6450120067538813961" at="36,72,37,72" concept="2" />
-      <node id="6450120067538813963" at="37,72,38,72" concept="2" />
-      <node id="6450120067538813965" at="38,72,39,72" concept="2" />
-      <node id="6450120067538813967" at="39,72,40,72" concept="2" />
-      <node id="6450120067538813957" at="15,0,17,0" concept="9" trace="ourParamCache" />
-      <node id="6450120067538813957" at="18,0,21,0" concept="1" trace="BooleanConstantDelete2_Test#()V" />
-      <node id="6450120067538813957" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6450120067538813957" at="22,0,26,0" concept="5" trace="test_BooleanConstantDelete2#()V" />
-      <node id="6450120067538813957" at="33,0,42,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6450120067538813957" at="18,40,19,25" />
-      <scope id="6450120067538813957" at="23,62,24,36" />
-      <scope id="6450120067538813957" at="29,52,30,19" />
-      <scope id="6450120067538813957" at="18,0,21,0" />
-      <scope id="6450120067538813957" at="29,0,32,0">
-        <var name="owner" id="6450120067538813957" />
-      </scope>
-      <scope id="6450120067538813957" at="22,0,26,0" />
-      <scope id="6450120067538813957" at="34,51,40,72" />
-      <scope id="6450120067538813957" at="33,0,42,0" />
-      <unit id="6450120067538813957" at="27,0,43,0" name="jetbrains.mps.editorTest.BooleanConstantDelete2_Test$TestBody" />
-      <unit id="6450120067538813957" at="13,0,44,0" name="jetbrains.mps.editorTest.BooleanConstantDelete2_Test" />
+      <scope id="1241246198920150489" at="38,44,43,76" />
+      <scope id="1241246198920150488" at="38,0,45,0" />
+      <scope id="6450120067538813812" at="35,51,45,16" />
+      <scope id="6450120067538813812" at="34,0,47,0" />
+      <unit id="1241246198920150488" at="37,48,45,7" name="jetbrains.mps.editorTest.BooleanConstantDelete3_Test$TestBody$1" />
+      <unit id="6450120067538813812" at="28,0,48,0" name="jetbrains.mps.editorTest.BooleanConstantDelete3_Test$TestBody" />
+      <unit id="6450120067538813812" at="14,0,49,0" name="jetbrains.mps.editorTest.BooleanConstantDelete3_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6450120067538814179">
@@ -18574,39 +18580,34 @@
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6450120067538819173">
     <file name="BooleanConstantDeleteWithParen3_Test.java">
-      <node id="6450120067538819173" at="19,49,20,25" concept="11" />
-      <node id="6450120067538819173" at="24,71,25,36" concept="2" />
-      <node id="6450120067538819173" at="30,52,31,19" concept="11" />
-      <node id="6450120067538819173" at="35,51,36,72" concept="2" />
-      <node id="8135300941721723577" at="38,44,39,76" concept="2" />
-      <node id="6450120067538819177" at="39,76,40,76" concept="2" />
-      <node id="6450120067538819179" at="40,76,41,76" concept="2" />
-      <node id="6450120067538819181" at="41,76,42,76" concept="2" />
-      <node id="6450120067538819183" at="42,76,43,76" concept="2" />
-      <node id="6450120067538819887" at="43,76,44,76" concept="2" />
-      <node id="8135300941721723559" at="46,16,47,0" concept="8" />
-      <node id="6450120067538819173" at="16,0,18,0" concept="9" trace="ourParamCache" />
-      <node id="6450120067538819173" at="19,0,22,0" concept="1" trace="BooleanConstantDeleteWithParen3_Test#()V" />
-      <node id="6450120067538819173" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6450120067538819173" at="23,0,27,0" concept="5" trace="test_BooleanConstantDeleteWithParen3#()V" />
-      <node id="8135300941721723575" at="38,0,46,0" concept="5" trace="run#()V" />
-      <node id="8135300941721723573" at="36,72,46,16" concept="2" />
-      <node id="6450120067538819173" at="34,0,49,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="6450120067538819173" at="19,49,20,25" />
-      <scope id="6450120067538819173" at="24,71,25,36" />
-      <scope id="6450120067538819173" at="30,52,31,19" />
-      <scope id="6450120067538819173" at="19,0,22,0" />
-      <scope id="6450120067538819173" at="30,0,33,0">
+      <node id="6450120067538819173" at="18,49,19,25" concept="11" />
+      <node id="6450120067538819173" at="23,71,24,36" concept="2" />
+      <node id="6450120067538819173" at="29,52,30,19" concept="11" />
+      <node id="6450120067538819173" at="34,51,35,72" concept="2" />
+      <node id="8135300941721723577" at="35,72,36,72" concept="2" />
+      <node id="6450120067538819177" at="36,72,37,72" concept="2" />
+      <node id="6450120067538819179" at="37,72,38,72" concept="2" />
+      <node id="6450120067538819181" at="38,72,39,72" concept="2" />
+      <node id="6450120067538819183" at="39,72,40,72" concept="2" />
+      <node id="6450120067538819887" at="40,72,41,72" concept="2" />
+      <node id="8135300941721723559" at="41,72,42,0" concept="8" />
+      <node id="6450120067538819173" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6450120067538819173" at="18,0,21,0" concept="1" trace="BooleanConstantDeleteWithParen3_Test#()V" />
+      <node id="6450120067538819173" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6450120067538819173" at="22,0,26,0" concept="5" trace="test_BooleanConstantDeleteWithParen3#()V" />
+      <node id="6450120067538819173" at="33,0,44,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6450120067538819173" at="18,49,19,25" />
+      <scope id="6450120067538819173" at="23,71,24,36" />
+      <scope id="6450120067538819173" at="29,52,30,19" />
+      <scope id="6450120067538819173" at="18,0,21,0" />
+      <scope id="6450120067538819173" at="29,0,32,0">
         <var name="owner" id="6450120067538819173" />
       </scope>
-      <scope id="6450120067538819173" at="23,0,27,0" />
-      <scope id="8135300941721723576" at="38,44,44,76" />
-      <scope id="8135300941721723575" at="38,0,46,0" />
-      <scope id="6450120067538819173" at="35,51,47,0" />
-      <scope id="6450120067538819173" at="34,0,49,0" />
-      <unit id="8135300941721723575" at="37,48,46,7" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen3_Test$TestBody$1" />
-      <unit id="6450120067538819173" at="28,0,50,0" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen3_Test$TestBody" />
-      <unit id="6450120067538819173" at="14,0,51,0" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen3_Test" />
+      <scope id="6450120067538819173" at="22,0,26,0" />
+      <scope id="6450120067538819173" at="34,51,42,0" />
+      <scope id="6450120067538819173" at="33,0,44,0" />
+      <unit id="6450120067538819173" at="27,0,45,0" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen3_Test$TestBody" />
+      <unit id="6450120067538819173" at="13,0,46,0" name="jetbrains.mps.editorTest.BooleanConstantDeleteWithParen3_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6517948727589782823">
