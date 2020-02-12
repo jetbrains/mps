@@ -19,6 +19,8 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
+import org.jetbrains.mps.openapi.language.SType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -102,10 +104,11 @@ public class constants extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode intConst = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.IntegerConstant$mo, null);
-        try {
-          SPropertyOperations.set(intConst, PROPS.value$ZeO0, Integer.parseInt(pattern));
-        } catch (NumberFormatException e) {
+        Object result = SPrimitiveTypes.INTEGER.fromString(pattern);
+        if (result == null || result == SType.NOT_A_VALUE) {
           SPropertyOperations.set(intConst, PROPS.value$ZeO0, 0);
+        } else {
+          SPropertyOperations.set(intConst, PROPS.value$ZeO0, (int) result);
         }
         return intConst;
       }
@@ -128,17 +131,8 @@ public class constants extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        try {
-          Integer.parseInt(pattern);
-        } catch (NumberFormatException e) {
-          return false;
-        }
-
-        if (strictly) {
-          return REGEXP_w0ulk7_a0a0a2a21c5.matcher(pattern).matches();
-        } else {
-          return REGEXP_w0ulk7_a0a0a0c0m2f.matcher(pattern).matches();
-        }
+        Object result = SPrimitiveTypes.INTEGER.fromString(pattern);
+        return (result == null ? !(strictly) : result != SType.NOT_A_VALUE);
       }
     }
   }
@@ -545,8 +539,6 @@ public class constants extends SubstituteMenuBase {
       }, CONCEPTS.ArrayLiteral$dK));
     }
   }
-  private static final Pattern REGEXP_w0ulk7_a0a0a2a21c5 = Pattern.compile("-?\\d+", 0);
-  private static final Pattern REGEXP_w0ulk7_a0a0a0c0m2f = Pattern.compile("-?\\d*", 0);
   private static final Pattern REGEXP_w0ulk7_a0a0a21c6 = Pattern.compile("-?\\d+(?:l|L)", 0);
   private static final Pattern REGEXP_w0ulk7_a0a0a21c8 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[dD]?", 0);
   private static final Pattern REGEXP_w0ulk7_a0a0a21c9 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[fF]", 0);
