@@ -37,7 +37,6 @@
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -63,9 +62,6 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1239714755177" name="jetbrains.mps.baseLanguage.structure.AbstractUnaryNumberOperation" flags="nn" index="2$Kvd9">
         <child id="1239714902950" name="expression" index="2$L3a6" />
-      </concept>
-      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
-        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -2705,8 +2701,8 @@
           <node concept="3cpWsn" id="Tb4Psnn76O" role="3cpWs9">
             <property role="TrG5h" value="binSRoot" />
             <node concept="2ShNRf" id="Tb4Psnn76P" role="33vP2m">
-              <node concept="HV5vD" id="6aShalczsu$" role="2ShVmc">
-                <ref role="HV5vE" to="ft0j:5JsnGMj1qiW" resolve="JavaClassStubsModelRoot" />
+              <node concept="1pGfFk" id="2EuI5pryg8i" role="2ShVmc">
+                <ref role="37wK5l" to="ft0j:2EuI5prxUkO" resolve="JavaClassStubsModelRoot" />
               </node>
             </node>
             <node concept="3uibUv" id="Tb4Psnn76R" role="1tU5fm">

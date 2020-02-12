@@ -12,8 +12,6 @@ import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.incremental.CompileContext;
-import org.jetbrains.jps.incremental.messages.BuildMessage.Kind;
-import org.jetbrains.jps.incremental.messages.CompilerMessage;
 import org.jetbrains.jps.model.library.JpsLibrary;
 import org.jetbrains.jps.model.library.JpsLibraryRoot;
 import org.jetbrains.jps.model.library.JpsOrderRootType;
@@ -30,7 +28,6 @@ import java.util.Set;
 /**
  * danilla 12/18/12
  */
-
 public class JpsLibSolution extends Solution {
 
   private JpsLibrary myLibrary;
@@ -66,10 +63,12 @@ public class JpsLibSolution extends Solution {
 
     List<ModelRoot> modelRoots = new ArrayList<ModelRoot>();
     if (roots.get(0).getUrl().startsWith(VFSManager.JRT_FS)) {
-      JDKStubsModelRoot modelRoot = ((JDKStubsModelRoot) new JDKClassStubModelRootFactory(myVfsManager).create());
+      JDKStubsModelRoot modelRoot = ((JDKStubsModelRoot) PersistenceFacade.getInstance().getModelRootFactory(PersistenceRegistry.JDK_CLASSES_ROOT).create());
       for (JpsLibraryRoot libRoot: roots) {
         String path = getPath(libRoot);
-        if (ignoredPaths.contains(path)) continue;
+        if (ignoredPaths.contains(path)) {
+          continue;
+        }
 
         modelRoot.addPath(new QualifiedPath(VFSManager.JRT_FS,path));
       }

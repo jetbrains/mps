@@ -1680,6 +1680,38 @@
   </node>
   <node concept="312cEu" id="5JsnGMj1qiI">
     <property role="TrG5h" value="JavaClassStubModelRootFactory" />
+    <node concept="312cEg" id="2EuI5prximE" role="jymVt">
+      <property role="TrG5h" value="myStubRootProvider" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2EuI5prximF" role="1B3o_S" />
+      <node concept="3uibUv" id="CWmjREQmJL" role="1tU5fm">
+        <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2EuI5prxiAh" role="jymVt" />
+    <node concept="3clFbW" id="2EuI5prxi2N" role="jymVt">
+      <node concept="37vLTG" id="2EuI5prxi59" role="3clF46">
+        <property role="TrG5h" value="stubRootPathProvider" />
+        <node concept="3uibUv" id="CWmjREQmJ4" role="1tU5fm">
+          <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="2EuI5prxi2P" role="3clF45" />
+      <node concept="3Tm1VV" id="2EuI5prxi2Q" role="1B3o_S" />
+      <node concept="3clFbS" id="2EuI5prxi2R" role="3clF47">
+        <node concept="3clFbF" id="2EuI5prximI" role="3cqZAp">
+          <node concept="37vLTI" id="2EuI5prximK" role="3clFbG">
+            <node concept="37vLTw" id="2EuI5prximN" role="37vLTJ">
+              <ref role="3cqZAo" node="2EuI5prximE" resolve="myStubRootProvider" />
+            </node>
+            <node concept="37vLTw" id="2EuI5prximO" role="37vLTx">
+              <ref role="3cqZAo" node="2EuI5prxi59" resolve="stubRootPathProvider" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2EuI5prxiFq" role="jymVt" />
     <node concept="3uibUv" id="2vQAd4gSK9c" role="EKbjA">
       <ref role="3uigEE" to="dush:~ModelRootFactory" resolve="ModelRootFactory" />
     </node>
@@ -1695,8 +1727,11 @@
       <node concept="3clFbS" id="5JsnGMj1qiS" role="3clF47">
         <node concept="3cpWs6" id="5JsnGMj1qiT" role="3cqZAp">
           <node concept="2ShNRf" id="5JsnGMj1qiU" role="3cqZAk">
-            <node concept="HV5vD" id="6aShalcz3$k" role="2ShVmc">
-              <ref role="HV5vE" node="5JsnGMj1qiW" resolve="JavaClassStubsModelRoot" />
+            <node concept="1pGfFk" id="2EuI5pryVlm" role="2ShVmc">
+              <ref role="37wK5l" node="2EuI5pry4c6" resolve="JavaClassStubsModelRoot" />
+              <node concept="37vLTw" id="2EuI5prz2XI" role="37wK5m">
+                <ref role="3cqZAo" node="2EuI5prximE" resolve="myStubRootProvider" />
+              </node>
             </node>
           </node>
         </node>
@@ -1738,7 +1773,53 @@
       <ref role="3uigEE" to="ends:~FileBasedModelRoot" resolve="FileBasedModelRoot" />
     </node>
     <node concept="3Tm1VV" id="5JsnGMj1qiY" role="1B3o_S" />
+    <node concept="312cEg" id="2EuI5pry9O_" role="jymVt">
+      <property role="TrG5h" value="myStubPathProvider" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2EuI5pry9OA" role="1B3o_S" />
+      <node concept="3uibUv" id="CWmjREQiny" role="1tU5fm">
+        <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="1OabvAsfEQ7" role="jymVt" />
+    <node concept="3clFbW" id="2EuI5prxUkO" role="jymVt">
+      <node concept="3cqZAl" id="2EuI5prxUkQ" role="3clF45" />
+      <node concept="3Tm1VV" id="2EuI5prxUkR" role="1B3o_S" />
+      <node concept="3clFbS" id="2EuI5prxUkS" role="3clF47">
+        <node concept="3clFbF" id="2EuI5prydf_" role="3cqZAp">
+          <node concept="37vLTI" id="2EuI5pryesv" role="3clFbG">
+            <node concept="10Nm6u" id="2EuI5pryfch" role="37vLTx" />
+            <node concept="37vLTw" id="2EuI5prydf$" role="37vLTJ">
+              <ref role="3cqZAo" node="2EuI5pry9O_" resolve="myStubPathProvider" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2EuI5prxWtu" role="jymVt" />
+    <node concept="3clFbW" id="2EuI5pry4c6" role="jymVt">
+      <node concept="37vLTG" id="2EuI5pry6ug" role="3clF46">
+        <property role="TrG5h" value="stubPathProvider" />
+        <node concept="3uibUv" id="CWmjREQjur" role="1tU5fm">
+          <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="2EuI5pry4c8" role="3clF45" />
+      <node concept="3Tm1VV" id="2EuI5pry4c9" role="1B3o_S" />
+      <node concept="3clFbS" id="2EuI5pry4ca" role="3clF47">
+        <node concept="3clFbF" id="2EuI5pry9OD" role="3cqZAp">
+          <node concept="37vLTI" id="2EuI5pry9OF" role="3clFbG">
+            <node concept="37vLTw" id="2EuI5pry9OI" role="37vLTJ">
+              <ref role="3cqZAo" node="2EuI5pry9O_" resolve="myStubPathProvider" />
+            </node>
+            <node concept="37vLTw" id="2EuI5pry9OJ" role="37vLTx">
+              <ref role="3cqZAo" node="2EuI5pry6ug" resolve="stubPathProvider" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2EuI5prxRWi" role="jymVt" />
     <node concept="3clFb_" id="5JsnGMj1qj3" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getType" />
@@ -1811,6 +1892,162 @@
         </node>
       </node>
       <node concept="3clFbS" id="rP8MxQUY2p" role="3clF47">
+        <node concept="3cpWs8" id="CWmjREQD_s" role="3cqZAp">
+          <node concept="3cpWsn" id="CWmjREQD_t" role="3cpWs9">
+            <property role="TrG5h" value="provided" />
+            <node concept="3uibUv" id="CWmjREQD$Y" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="2OqwBi" id="CWmjREQD_u" role="33vP2m">
+              <node concept="37vLTw" id="CWmjREQD_v" role="2Oq$k0">
+                <ref role="3cqZAo" node="rP8MxQUY2n" resolve="memento" />
+              </node>
+              <node concept="liA8E" id="CWmjREQD_w" role="2OqNvi">
+                <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
+                <node concept="Xl_RD" id="CWmjREQD_x" role="37wK5m">
+                  <property role="Xl_RC" value="provided" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="CWmjREQp0P" role="3cqZAp">
+          <node concept="3clFbS" id="CWmjREQp0R" role="3clFbx">
+            <node concept="3SKdUt" id="CWmjREQRnv" role="3cqZAp">
+              <node concept="1PaTwC" id="CWmjREQRnw" role="1aUNEU">
+                <node concept="3oM_SD" id="CWmjREQRny" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRqr" role="1PaTwD">
+                  <property role="3oM_SC" value="case" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRqA" role="1PaTwD">
+                  <property role="3oM_SC" value="provider" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRqE" role="1PaTwD">
+                  <property role="3oM_SC" value="add" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRr7" role="1PaTwD">
+                  <property role="3oM_SC" value="anything" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRrl" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRr$" role="1PaTwD">
+                  <property role="3oM_SC" value="memento," />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRrW" role="1PaTwD">
+                  <property role="3oM_SC" value="don't" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRsd" role="1PaTwD">
+                  <property role="3oM_SC" value="want" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRsn" role="1PaTwD">
+                  <property role="3oM_SC" value="anyone" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRsE" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRw2" role="1PaTwD">
+                  <property role="3oM_SC" value="see" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRt3" role="1PaTwD">
+                  <property role="3oM_SC" value="that" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRwt" role="1PaTwD">
+                  <property role="3oM_SC" value="changes" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRvj" role="1PaTwD">
+                  <property role="3oM_SC" value="or" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRtp" role="1PaTwD">
+                  <property role="3oM_SC" value="try" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRtK" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRu0" role="1PaTwD">
+                  <property role="3oM_SC" value="persist" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRuD" role="1PaTwD">
+                  <property role="3oM_SC" value="them" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRx9" role="1PaTwD">
+                  <property role="3oM_SC" value="afterwards" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="CWmjREQOAS" role="3cqZAp">
+              <node concept="3cpWsn" id="CWmjREQOAT" role="3cpWs9">
+                <property role="TrG5h" value="copy" />
+                <node concept="3uibUv" id="CWmjREQNRu" role="1tU5fm">
+                  <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
+                </node>
+                <node concept="2OqwBi" id="CWmjREQOAU" role="33vP2m">
+                  <node concept="37vLTw" id="CWmjREQOAV" role="2Oq$k0">
+                    <ref role="3cqZAo" node="rP8MxQUY2n" resolve="memento" />
+                  </node>
+                  <node concept="liA8E" id="74EzGwfLns4" role="2OqNvi">
+                    <ref role="37wK5l" to="dush:~Memento.copy()" resolve="copy" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="CWmjREQGNg" role="3cqZAp">
+              <node concept="2OqwBi" id="CWmjREQK3$" role="3clFbG">
+                <node concept="37vLTw" id="CWmjREQIRW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2EuI5pry9O_" resolve="myStubPathProvider" />
+                </node>
+                <node concept="liA8E" id="CWmjREQLcL" role="2OqNvi">
+                  <ref role="37wK5l" to="i290:~ClassStubRootConfiguration.configure(java.lang.String,org.jetbrains.mps.openapi.persistence.Memento)" resolve="configure" />
+                  <node concept="37vLTw" id="CWmjREQLiW" role="37wK5m">
+                    <ref role="3cqZAo" node="CWmjREQD_t" resolve="provided" />
+                  </node>
+                  <node concept="37vLTw" id="CWmjREQOAX" role="37wK5m">
+                    <ref role="3cqZAo" node="CWmjREQOAT" resolve="copy" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="CWmjREQPXu" role="3cqZAp">
+              <node concept="37vLTI" id="CWmjREQQ5y" role="3clFbG">
+                <node concept="37vLTw" id="CWmjREQQQK" role="37vLTx">
+                  <ref role="3cqZAo" node="CWmjREQOAT" resolve="copy" />
+                </node>
+                <node concept="37vLTw" id="CWmjREQPXs" role="37vLTJ">
+                  <ref role="3cqZAo" node="rP8MxQUY2n" resolve="memento" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="CWmjREQwkH" role="3clFbw">
+            <node concept="2OqwBi" id="CWmjREQAHF" role="3uHU7w">
+              <node concept="37vLTw" id="CWmjREQ_wm" role="2Oq$k0">
+                <ref role="3cqZAo" node="2EuI5pry9O_" resolve="myStubPathProvider" />
+              </node>
+              <node concept="liA8E" id="CWmjREQBQI" role="2OqNvi">
+                <ref role="37wK5l" to="i290:~ClassStubRootConfiguration.supports(java.lang.String)" resolve="supports" />
+                <node concept="37vLTw" id="CWmjREQD_z" role="37wK5m">
+                  <ref role="3cqZAo" node="CWmjREQD_t" resolve="provided" />
+                </node>
+              </node>
+            </node>
+            <node concept="1Wc70l" id="CWmjREQxrp" role="3uHU7B">
+              <node concept="3y3z36" id="CWmjREQ$ho" role="3uHU7B">
+                <node concept="10Nm6u" id="CWmjREQ_pP" role="3uHU7w" />
+                <node concept="37vLTw" id="CWmjREQz5C" role="3uHU7B">
+                  <ref role="3cqZAo" node="2EuI5pry9O_" resolve="myStubPathProvider" />
+                </node>
+              </node>
+              <node concept="3y3z36" id="CWmjREQv0K" role="3uHU7w">
+                <node concept="37vLTw" id="CWmjREQD_y" role="3uHU7B">
+                  <ref role="3cqZAo" node="CWmjREQD_t" resolve="provided" />
+                </node>
+                <node concept="10Nm6u" id="CWmjREQwhB" role="3uHU7w" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="rP8MxQV0nz" role="3cqZAp">
           <node concept="3nyPlj" id="rP8MxQV0ny" role="3clFbG">
             <ref role="37wK5l" to="ends:~FileBasedModelRoot.load(org.jetbrains.mps.openapi.persistence.Memento)" resolve="load" />
@@ -2092,6 +2329,55 @@
         </node>
         <node concept="3clFbJ" id="4KlVfHJ60r" role="3cqZAp">
           <node concept="3clFbS" id="4KlVfHJ60t" role="3clFbx">
+            <node concept="3SKdUt" id="CWmjREQR_U" role="3cqZAp">
+              <node concept="1PaTwC" id="CWmjREQR_V" role="1aUNEU">
+                <node concept="3oM_SD" id="CWmjREQRCc" role="1PaTwD">
+                  <property role="3oM_SC" value="XXX" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRCe" role="1PaTwD">
+                  <property role="3oM_SC" value="save" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRCD" role="1PaTwD">
+                  <property role="3oM_SC" value="package" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRCP" role="1PaTwD">
+                  <property role="3oM_SC" value="scope" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRDv" role="1PaTwD">
+                  <property role="3oM_SC" value="iff" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRDP" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQREc" role="1PaTwD">
+                  <property role="3oM_SC" value="was" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQREk" role="1PaTwD">
+                  <property role="3oM_SC" value="part" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQREH" role="1PaTwD">
+                  <property role="3oM_SC" value="or" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQREZ" role="1PaTwD">
+                  <property role="3oM_SC" value="initial" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRFq" role="1PaTwD">
+                  <property role="3oM_SC" value="memento," />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRFQ" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRHg" role="1PaTwD">
+                  <property role="3oM_SC" value="from" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRHI" role="1PaTwD">
+                  <property role="3oM_SC" value="path" />
+                </node>
+                <node concept="3oM_SD" id="CWmjREQRI5" role="1PaTwD">
+                  <property role="3oM_SC" value="provider" />
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="4KlVfHJ7sE" role="3cqZAp">
               <node concept="2OqwBi" id="4KlVfHJ7UC" role="3clFbG">
                 <node concept="37vLTw" id="4KlVfHJ7Nf" role="2Oq$k0">
@@ -3745,10 +4031,19 @@
     </node>
     <node concept="312cEg" id="6KsDlhvq3Ob" role="jymVt">
       <property role="TrG5h" value="myVfsManager" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="6KsDlhvq3Od" role="1tU5fm">
         <ref role="3uigEE" to="3ju5:~VFSManager" resolve="VFSManager" />
       </node>
       <node concept="3Tm6S6" id="6KsDlhvq3Oe" role="1B3o_S" />
+    </node>
+    <node concept="312cEg" id="2EuI5prz04o" role="jymVt">
+      <property role="TrG5h" value="myStubPathProvider" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2EuI5prz04p" role="1B3o_S" />
+      <node concept="3uibUv" id="CWmjREQkYN" role="1tU5fm">
+        <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
+      </node>
     </node>
     <node concept="2tJIrI" id="6KsDlhvq4Bc" role="jymVt" />
     <node concept="3clFbW" id="6KsDlhvq3Of" role="jymVt">
@@ -3759,6 +4054,12 @@
           <ref role="3uigEE" to="3ju5:~VFSManager" resolve="VFSManager" />
         </node>
       </node>
+      <node concept="37vLTG" id="2EuI5pryZpx" role="3clF46">
+        <property role="TrG5h" value="stubPathProvider" />
+        <node concept="3uibUv" id="CWmjREQljx" role="1tU5fm">
+          <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
+        </node>
+      </node>
       <node concept="3clFbS" id="6KsDlhvq3Oj" role="3clF47">
         <node concept="3clFbF" id="6KsDlhvq3Ok" role="3cqZAp">
           <node concept="37vLTI" id="6KsDlhvq3Ol" role="3clFbG">
@@ -3767,6 +4068,16 @@
             </node>
             <node concept="37vLTw" id="6KsDlhvq3On" role="37vLTx">
               <ref role="3cqZAo" node="6KsDlhvq3Oh" resolve="vfsManager" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2EuI5prz04s" role="3cqZAp">
+          <node concept="37vLTI" id="2EuI5prz04u" role="3clFbG">
+            <node concept="37vLTw" id="2EuI5prz04x" role="37vLTJ">
+              <ref role="3cqZAo" node="2EuI5prz04o" resolve="myStubPathProvider" />
+            </node>
+            <node concept="37vLTw" id="2EuI5prz04y" role="37vLTx">
+              <ref role="3cqZAo" node="2EuI5pryZpx" resolve="stubPathProvider" />
             </node>
           </node>
         </node>
@@ -4371,12 +4682,26 @@
       </node>
       <node concept="3Tm6S6" id="6KsDlhvpXxW" role="1B3o_S" />
     </node>
+    <node concept="312cEg" id="2EuI5pryVzd" role="jymVt">
+      <property role="TrG5h" value="myStubRootPathProvider" />
+      <node concept="3Tm6S6" id="2EuI5pryVze" role="1B3o_S" />
+      <node concept="3uibUv" id="CWmjREQmt2" role="1tU5fm">
+        <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2EuI5pryVGY" role="jymVt" />
     <node concept="3clFbW" id="6KsDlhvpXxX" role="jymVt">
       <node concept="3cqZAl" id="6KsDlhvpXxY" role="3clF45" />
       <node concept="37vLTG" id="6KsDlhvpXxZ" role="3clF46">
         <property role="TrG5h" value="vfsManager" />
         <node concept="3uibUv" id="6KsDlhvpXy0" role="1tU5fm">
           <ref role="3uigEE" to="3ju5:~VFSManager" resolve="VFSManager" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2EuI5pryVvJ" role="3clF46">
+        <property role="TrG5h" value="stubRootPathProvider" />
+        <node concept="3uibUv" id="CWmjREQm$W" role="1tU5fm">
+          <ref role="3uigEE" to="i290:~ClassStubRootConfiguration" resolve="ClassStubRootConfiguration" />
         </node>
       </node>
       <node concept="3clFbS" id="6KsDlhvpXy1" role="3clF47">
@@ -4390,9 +4715,20 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="2EuI5pryVzh" role="3cqZAp">
+          <node concept="37vLTI" id="2EuI5pryVzj" role="3clFbG">
+            <node concept="37vLTw" id="2EuI5pryVzm" role="37vLTJ">
+              <ref role="3cqZAo" node="2EuI5pryVzd" resolve="myStubRootPathProvider" />
+            </node>
+            <node concept="37vLTw" id="2EuI5pryVzn" role="37vLTx">
+              <ref role="3cqZAo" node="2EuI5pryVvJ" resolve="stubRootPathProvider" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3Tm1VV" id="6KsDlhvpXy6" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="2EuI5pryVEj" role="jymVt" />
     <node concept="3clFb_" id="6KsDlhvpXy7" role="jymVt">
       <property role="TrG5h" value="create" />
       <node concept="2AHcQZ" id="6KsDlhvpXy8" role="2AJF6D">
@@ -4408,6 +4744,9 @@
               <ref role="37wK5l" node="6KsDlhvq3Of" resolve="JDKStubsModelRoot" />
               <node concept="37vLTw" id="6KsDlhvq1Id" role="37wK5m">
                 <ref role="3cqZAo" node="6KsDlhvpXxT" resolve="myVfsManager" />
+              </node>
+              <node concept="37vLTw" id="2EuI5prz2Eh" role="37wK5m">
+                <ref role="3cqZAo" node="2EuI5pryVzd" resolve="myStubRootPathProvider" />
               </node>
             </node>
           </node>

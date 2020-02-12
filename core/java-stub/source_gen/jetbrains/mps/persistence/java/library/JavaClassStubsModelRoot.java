@@ -7,6 +7,7 @@ import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.baseLanguage.javastub.JavadocSupplier;
+import jetbrains.mps.java.stub.ClassStubRootConfiguration;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelId;
@@ -43,6 +44,15 @@ import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 public class JavaClassStubsModelRoot extends FileBasedModelRoot implements CopyableModelRoot<JavaClassStubsModelRoot> {
   private PackageScopeControl myPackageScope;
   private JavadocSupplier myDocSupplier;
+  private final ClassStubRootConfiguration myStubPathProvider;
+
+  public JavaClassStubsModelRoot() {
+    myStubPathProvider = null;
+  }
+
+  public JavaClassStubsModelRoot(ClassStubRootConfiguration stubPathProvider) {
+    myStubPathProvider = stubPathProvider;
+  }
 
   @Override
   public String getType() {
@@ -57,6 +67,13 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
 
   @Override
   public void load(@NotNull Memento memento) {
+    String provided = memento.get("provided");
+    if (myStubPathProvider != null && provided != null && myStubPathProvider.supports(provided)) {
+      // in case provider add anything to memento, don't want anyone to see that changes or try to persist them afterwards 
+      Memento copy = memento.copy();
+      myStubPathProvider.configure(provided, copy);
+      memento = copy;
+    }
     super.load(memento);
     // Perhaps, shall support multiple scope configurations per root 
     Memento packScope = memento.getChild("PackageScope");
@@ -81,6 +98,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   public void save(@NotNull Memento memento) {
     super.save(memento);
     if (myPackageScope != null) {
+      // XXX save package scope iff it was part or initial memento, not from path provider 
       myPackageScope.save(memento.createChild("PackageScope"));
     }
   }

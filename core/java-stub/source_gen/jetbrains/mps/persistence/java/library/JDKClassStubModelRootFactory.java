@@ -5,18 +5,23 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
 import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.java.stub.ClassStubRootConfiguration;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 @GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/1497708355220781874", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JDKClassStubModelRootFactory implements ModelRootFactory {
   private VFSManager myVfsManager;
-  public JDKClassStubModelRootFactory(VFSManager vfsManager) {
+  private ClassStubRootConfiguration myStubRootPathProvider;
+
+  public JDKClassStubModelRootFactory(VFSManager vfsManager, ClassStubRootConfiguration stubRootPathProvider) {
     myVfsManager = vfsManager;
+    myStubRootPathProvider = stubRootPathProvider;
   }
+
   @NotNull
   @Override
   public ModelRoot create() {
-    return new JDKStubsModelRoot(myVfsManager);
+    return new JDKStubsModelRoot(myVfsManager, myStubRootPathProvider);
   }
 }

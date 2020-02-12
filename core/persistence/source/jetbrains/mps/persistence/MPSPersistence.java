@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
+import jetbrains.mps.java.stub.ClassStubRootProvider;
 import jetbrains.mps.persistence.java.library.JavaClassesPersistence;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +48,8 @@ public final class MPSPersistence extends ComponentPlugin implements ComponentHo
     super.init();
     init(new DataSourceFactoryRuleCoreService(myDataSourceService));
     init(new ModelFactoryCoreService(myModelFactoryService));
-    init(new JavaClassesPersistence(myPersistenceFacade, myVfsManager));
+    final ClassStubRootProvider srp = init(new ClassStubRootProvider());
+    init(new JavaClassesPersistence(myPersistenceFacade, myVfsManager, srp));
   }
 
   @Nullable
