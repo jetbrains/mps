@@ -95,6 +95,7 @@
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.HashSet" />
@@ -106,7 +107,8 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.SingleZipWithJavaSources" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.CopyNotSupportedException" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.FolderSetDataSource" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRoot" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRootKinds" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />

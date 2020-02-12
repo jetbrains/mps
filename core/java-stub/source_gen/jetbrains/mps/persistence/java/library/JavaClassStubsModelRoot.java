@@ -14,21 +14,23 @@ import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import java.io.File;
 import jetbrains.mps.baseLanguage.javastub.SingleZipWithJavaSources;
+import java.util.List;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
+import java.util.Set;
+import java.util.HashSet;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.vfs.path.Path;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.Collection;
-import java.util.Set;
-import jetbrains.mps.vfs.IFile;
-import java.util.HashSet;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.extapi.persistence.SourceRoot;
+import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -106,22 +108,17 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   @NotNull
   @Override
   public Iterable<SModel> loadModels() {
-    final Map<SModelId, SModel> result = MapSequence.fromMap(new HashMap<SModelId, SModel>());
-    final Collection<String> files = getFiles(FileBasedModelRoot.SOURCE_ROOTS);
-    final Collection<String> excludedFiles = getFiles(FileBasedModelRoot.EXCLUDED);
+    final List<IFile> files = roots2files(getSourceRoots(SourceRootKinds.SOURCES));
+    final List<IFile> excludedFiles = roots2files(getSourceRoots(SourceRootKinds.EXCLUDED));
 
     Set<IFile> jarsToLoad = new HashSet<IFile>();
-    Set<IFile> cpRootsToLoad = new HashSet<IFile>();
+    final Set<IFile> cpRootsToLoad = new HashSet<IFile>();
 
-    for (IFile file : CollectionSequence.fromCollection(files).select(new ISelector<String, IFile>() {
-      public IFile select(String it) {
-        return getFileSystem().getFile(it);
-      }
-    })) {
+    for (IFile file : files) {
       collectJarFiles(file, excludedFiles, jarsToLoad);
 
       // we suppose here that each path can be either a jar-file or a classes directory or a jar directory, 
-      // but does not contain both jar-fils and class-files 
+      // but does not contain both jar files and class files 
       if (SetSequence.fromSet(jarsToLoad).isNotEmpty()) {
         continue;
       }
@@ -129,18 +126,22 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       SetSequence.fromSet(cpRootsToLoad).addElement(file);
     }
 
+    // FIXME though IFile("whatever.jar") could be already from JAR FS (e.g. CommonPaths creates IFiles using JAR FS for jar files right away), I found no way to figure it out 
+    //        therefore have to resort to this stupid way to step into jar 
     SetSequence.fromSet(jarsToLoad).select(new ISelector<IFile, IFile>() {
       public IFile select(IFile it) {
         return getFileSystem().getFile(it.getPath() + Path.ARCHIVE_SEPARATOR);
       }
     }).visitAll(new IVisitor<IFile>() {
       public void visit(IFile it) {
-        getModelDescriptors(result, it, "", getModule());
+        SetSequence.fromSet(cpRootsToLoad).addElement(it);
       }
     });
+
+    final Map<SModelId, SModel> result = MapSequence.fromMap(new HashMap<SModelId, SModel>());
     SetSequence.fromSet(cpRootsToLoad).visitAll(new IVisitor<IFile>() {
       public void visit(IFile it) {
-        getModelDescriptors(result, it, "", getModule());
+        getModelDescriptors(result, it, "");
       }
     });
 
@@ -155,19 +156,27 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
     return MapSequence.fromMap(result).values();
   }
 
-  private void collectJarFiles(final IFile file, Collection<String> excluded, Set<IFile> files) {
-    if (CollectionSequence.fromCollection(excluded).contains(file.getPath())) {
+  private static List<IFile> roots2files(Collection<SourceRoot> roots) {
+    ArrayList<IFile> rv = new ArrayList<IFile>(roots.size());
+    for (SourceRoot r : roots) {
+      rv.add(r.getAbsolutePath());
+    }
+    return rv;
+  }
+
+  private static void collectJarFiles(final IFile file, Collection<IFile> excluded, Set<IFile> archiveFiles) {
+    if (excluded.contains(file)) {
       return;
     }
     if (file.getPath().endsWith(".jar") || file.getPath().endsWith(".zip")) {
-      SetSequence.fromSet(files).addElement(file);
+      SetSequence.fromSet(archiveFiles).addElement(file);
       return;
     }
     if (!(file.isDirectory())) {
       return;
     }
     for (IFile child : file.getChildren()) {
-      collectJarFiles(child, excluded, files);
+      collectJarFiles(child, excluded, archiveFiles);
     }
   }
 
@@ -186,8 +195,8 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
     return null;
   }
 
-  public void getModelDescriptors(Map<SModelId, SModel> result, IFile file, String prefix, SModule module) {
-    JavaClassStubsModelRoot.getModelDescriptors_(result, file, prefix, module, myPackageScope, this);
+  private void getModelDescriptors(Map<SModelId, SModel> result, IFile file, String prefix) {
+    JavaClassStubsModelRoot.getModelDescriptors_(result, file, prefix, getModule(), myPackageScope, this);
   }
 
   /*package*/ static void getModelDescriptors_(final Map<SModelId, SModel> result, IFile file, String prefix, SModule module, PackageScopeControl psc, ModelRoot mr) {
