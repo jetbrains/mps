@@ -401,7 +401,6 @@
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1143512015885" name="jetbrains.mps.lang.smodel.structure.Node_GetNextSiblingOperation" flags="nn" index="YCak7" />
-      <concept id="4124388153790980106" name="jetbrains.mps.lang.smodel.structure.Reference_GetTargetOperation" flags="nn" index="2ZHEkA" />
       <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
         <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
@@ -2373,14 +2372,57 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="2osqY0EFH_0" role="3cqZAp" />
+        <node concept="3cpWs8" id="2osqY0EFJFE" role="3cqZAp">
+          <node concept="3cpWsn" id="2osqY0EFJFF" role="3cpWs9">
+            <property role="TrG5h" value="reference" />
+            <node concept="3uibUv" id="2osqY0EFJFG" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
+            </node>
+            <node concept="37vLTw" id="2osqY0EFJLK" role="33vP2m">
+              <ref role="3cqZAo" node="6fUw26UhtdD" resolve="classifierRef" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2osqY0EFHDC" role="3cqZAp">
+          <node concept="3cpWsn" id="2osqY0EFHDD" role="3cpWs9">
+            <property role="TrG5h" value="targetNode" />
+            <node concept="3uibUv" id="2osqY0EFHDE" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+            </node>
+            <node concept="3K4zz7" id="2osqY0EFKrM" role="33vP2m">
+              <node concept="10Nm6u" id="2osqY0EFKtM" role="3K4E3e" />
+              <node concept="22lmx$" id="2osqY0EFIUw" role="3K4Cdx">
+                <node concept="2ZW3vV" id="2osqY0EFJiq" role="3uHU7w">
+                  <node concept="3uibUv" id="2osqY0EFJmr" role="2ZW6by">
+                    <ref role="3uigEE" to="w1kc:~DynamicReference" resolve="DynamicReference" />
+                  </node>
+                  <node concept="37vLTw" id="2osqY0EFJR2" role="2ZW6bz">
+                    <ref role="3cqZAo" node="2osqY0EFJFF" resolve="reference" />
+                  </node>
+                </node>
+                <node concept="3clFbC" id="2osqY0EFIOi" role="3uHU7B">
+                  <node concept="37vLTw" id="2osqY0EFL4h" role="3uHU7B">
+                    <ref role="3cqZAo" node="2osqY0EFJFF" resolve="reference" />
+                  </node>
+                  <node concept="10Nm6u" id="2osqY0EFIU0" role="3uHU7w" />
+                </node>
+              </node>
+              <node concept="2YIFZM" id="2osqY0EFKIL" role="3K4GZi">
+                <ref role="1Pybhc" to="unno:1NYD3hytmTa" resolve="SNodeOperations" />
+                <ref role="37wK5l" to="unno:7Yvyxcb_4ZV" resolve="getTargetNodeSilently" />
+                <node concept="37vLTw" id="2osqY0EFKIM" role="37wK5m">
+                  <ref role="3cqZAo" node="2osqY0EFJFF" resolve="reference" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="3su$jtv$BzZ" role="3cqZAp">
           <node concept="1JECQ7" id="3su$jtv$B$0" role="3clFbG">
             <ref role="1JF1rN" node="3su$jtv$Bzs" resolve="appendClassName" />
-            <node concept="2OqwBi" id="4nB19mAMnsn" role="1JF4iq">
-              <node concept="37vLTw" id="4nB19mAMnkR" role="2Oq$k0">
-                <ref role="3cqZAo" node="6fUw26UhtdD" resolve="classifierRef" />
-              </node>
-              <node concept="2ZHEkA" id="4nB19mAMnyI" role="2OqNvi" />
+            <node concept="37vLTw" id="2osqY0EFKUC" role="1JF4iq">
+              <ref role="3cqZAo" node="2osqY0EFHDD" resolve="targetNode" />
             </node>
             <node concept="1LFfDK" id="3su$jtv$B$m" role="1JF4iq">
               <node concept="3cmrfG" id="3su$jtv$B$p" role="1LF_Uc">

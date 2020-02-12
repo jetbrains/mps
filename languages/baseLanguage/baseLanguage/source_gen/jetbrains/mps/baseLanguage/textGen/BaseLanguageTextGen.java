@@ -211,7 +211,10 @@ public abstract class BaseLanguageTextGen {
       return;
     }
     String longName = NameUtil.longNameFromNamespaceAndShortName(packageAndShortName._0(), packageAndShortName._1());
-    BaseLanguageTextGen.appendClassName(SLinkOperations.getTargetNode(classifierRef), packageAndShortName._0(), longName, classifierRef.getSourceNode(), ctx);
+
+    SReference reference = classifierRef;
+    SNode targetNode = (reference == null || reference instanceof DynamicReference ? null : jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(reference));
+    BaseLanguageTextGen.appendClassName(targetNode, packageAndShortName._0(), longName, classifierRef.getSourceNode(), ctx);
   }
   protected static Tuples._2<String, String> getPackageAndShortName(SReference classifierRef, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
