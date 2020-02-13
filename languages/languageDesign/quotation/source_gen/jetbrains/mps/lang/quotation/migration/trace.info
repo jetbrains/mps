@@ -158,9 +158,9 @@
       <node id="6707600521751372229" at="71,41,72,68" concept="8" />
       <node id="6707600521751386047" at="77,40,78,75" concept="8" />
       <node id="6707600521751197406" at="85,51,86,149" concept="8" />
-      <node id="6707600521751496183" at="89,85,90,91" concept="7" />
-      <node id="6707600521751496183" at="90,91,91,95" concept="2" />
-      <node id="6707600521751496183" at="91,95,92,36" concept="8" />
+      <node id="6707600521751496183" at="89,82,90,81" concept="7" />
+      <node id="6707600521751496183" at="90,81,91,82" concept="2" />
+      <node id="6707600521751496183" at="91,82,92,26" concept="8" />
       <node id="6707600521751197406" at="96,0,97,0" concept="10" trace="NodeBuilderInitLink$Xj" />
       <node id="6707600521751197406" at="97,0,98,0" concept="10" trace="NullLiteral$q4" />
       <node id="6707600521751197406" at="98,0,99,0" concept="10" trace="NodeBuilderExpression$Ub" />
@@ -211,8 +211,8 @@
       </scope>
       <scope id="6707600521751383782" at="77,0,80,0" />
       <scope id="6707600521751197406" at="85,0,88,0" />
-      <scope id="6707600521751496183" at="89,85,92,36">
-        <var name="rootBuilder1" id="6707600521751496183" />
+      <scope id="6707600521751496183" at="89,82,92,26">
+        <var name="n0" id="6707600521751496183" />
       </scope>
       <scope id="6707600521751197406" at="31,0,35,0" />
       <scope id="6707600521751197406" at="35,0,39,0">
@@ -223,7 +223,7 @@
       </scope>
       <scope id="6707600521751374261" at="75,49,80,12" />
       <scope id="6707600521751496183" at="89,0,94,0">
-        <var name="node0" id="6707600521751496183" />
+        <var name="p0" id="6707600521751496183" />
       </scope>
       <scope id="6707600521751374260" at="75,0,82,0">
         <var name="it" id="6707600521751374260" />
@@ -1477,6 +1477,117 @@
       <unit id="8460355373818766253" at="137,0,143,0" name="jetbrains.mps.lang.quotation.migration.MigrateEnumPropertyUsagesAndPropertyAntiquotation$CONCEPTS" />
       <unit id="3899612785644213603" at="102,20,111,7" name="jetbrains.mps.lang.quotation.migration.MigrateEnumPropertyUsagesAndPropertyAntiquotation$6" />
       <unit id="8460355373818766253" at="33,0,148,0" name="jetbrains.mps.lang.quotation.migration.MigrateEnumPropertyUsagesAndPropertyAntiquotation" />
+    </file>
+  </root>
+  <root nodeRef="r:7ad1a8ce-e70e-4057-a779-4c8aa59d70d0(jetbrains.mps.lang.quotation.migration)/94066396685028958">
+    <file name="LightQuotation_InitProperyExpression.java">
+      <node id="94066396685028958" at="27,0,28,0" concept="3" trace="description" />
+      <node id="94066396685028958" at="28,30,29,23" concept="8" />
+      <node id="94066396685028958" at="32,33,33,16" concept="8" />
+      <node id="94066396685028958" at="35,41,36,17" concept="2" />
+      <node id="94066396685028958" at="36,17,37,16" concept="8" />
+      <node id="94066396685059416" at="40,5,41,64" concept="7" />
+      <node id="94066396685059416" at="41,64,42,90" concept="7" />
+      <node id="94066396685059416" at="44,52,45,36" concept="8" />
+      <node id="94066396685036797" at="49,41,50,144" concept="8" />
+      <node id="94066396685086335" at="53,37,54,229" concept="7" />
+      <node id="94066396685089925" at="54,229,55,125" concept="2" />
+      <node id="94066396685036815" at="55,125,56,75" concept="2" />
+      <node id="94066396685043124" at="63,5,64,64" concept="7" />
+      <node id="94066396685043124" at="64,64,65,62" concept="7" />
+      <node id="94066396685043124" at="67,52,68,36" concept="8" />
+      <node id="94066396685043134" at="72,41,73,144" concept="8" />
+      <node id="94066396685152191" at="79,40,80,97" concept="8" />
+      <node id="94066396685043152" at="82,12,83,25" concept="8" />
+      <node id="94066396685028958" at="88,51,89,149" concept="8" />
+      <node id="94066396685028958" at="93,0,94,0" concept="10" trace="NodeBuilderInitProperty$wV" />
+      <node id="94066396685028958" at="94,0,95,0" concept="10" trace="NodeBuilderInitPropertyValue$tJ" />
+      <node id="94066396685028958" at="98,0,99,0" concept="10" trace="initValue$nhHN" />
+      <node id="94066396685028958" at="99,0,100,0" concept="10" trace="expression$j9T0" />
+      <node id="94066396685028958" at="28,0,31,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
+      <node id="94066396685059416" at="44,0,47,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="94066396685036795" at="49,0,52,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="94066396685043124" at="67,0,70,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
+      <node id="94066396685043132" at="72,0,75,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="94066396685028958" at="88,0,91,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="94066396685028958" at="31,0,35,0" concept="6" trace="isRerunnable#()Z" />
+      <node id="94066396685028958" at="35,0,39,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="94066396685152175" at="78,0,82,0" concept="6" trace="getMessage#()Ljava/lang/String;" />
+      <node id="94066396685059416" at="42,90,47,8" concept="7" />
+      <node id="94066396685036813" at="53,0,58,0" concept="6" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="94066396685043124" at="65,62,70,8" concept="7" />
+      <node id="94066396685043145" at="76,41,82,12" concept="7" />
+      <node id="94066396685043143" at="76,0,85,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/migration/runtime/base/Problem;" />
+      <node id="94066396685036789" at="47,8,58,9" concept="2" />
+      <node id="94066396685043126" at="70,8,85,9" concept="8" />
+      <node id="94066396685059416" at="39,42,59,5" concept="0" />
+      <node id="94066396685028958" at="39,0,61,0" concept="6" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="94066396685043124" at="62,45,86,5" concept="0" />
+      <node id="94066396685028958" at="61,0,88,0" concept="6" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
+      <scope id="94066396685028958" at="28,30,29,23" />
+      <scope id="94066396685028958" at="32,33,33,16" />
+      <scope id="94066396685059416" at="44,52,45,36" />
+      <scope id="94066396685036796" at="49,41,50,144" />
+      <scope id="94066396685043124" at="67,52,68,36" />
+      <scope id="94066396685043133" at="72,41,73,144" />
+      <scope id="94066396685152188" at="79,40,80,97" />
+      <scope id="94066396685028958" at="88,51,89,149" />
+      <scope id="94066396685028958" at="35,41,37,16" />
+      <scope id="94066396685028958" at="28,0,31,0" />
+      <scope id="94066396685059416" at="44,0,47,0" />
+      <scope id="94066396685036795" at="49,0,52,0">
+        <var name="it" id="94066396685036795" />
+      </scope>
+      <scope id="94066396685036814" at="53,37,56,75">
+        <var name="replacement" id="94066396685086338" />
+      </scope>
+      <scope id="94066396685043124" at="67,0,70,0" />
+      <scope id="94066396685043132" at="72,0,75,0">
+        <var name="it" id="94066396685043132" />
+      </scope>
+      <scope id="94066396685028958" at="88,0,91,0" />
+      <scope id="94066396685028958" at="31,0,35,0" />
+      <scope id="94066396685028958" at="35,0,39,0">
+        <var name="m" id="94066396685028958" />
+      </scope>
+      <scope id="94066396685152175" at="78,0,82,0" />
+      <scope id="94066396685036813" at="53,0,58,0">
+        <var name="it" id="94066396685036813" />
+      </scope>
+      <scope id="94066396685043144" at="76,41,83,25">
+        <var name="problem" id="94066396685043146" />
+      </scope>
+      <scope id="94066396685043143" at="76,0,85,0">
+        <var name="it" id="94066396685043143" />
+      </scope>
+      <scope id="94066396685059416" at="40,5,58,9">
+        <var name="context" id="94066396685059416" />
+        <var name="scope_u6isg4_a0e" id="94066396685059416" />
+        <var name="scope_u6isg4_a0e_0" id="94066396685059416" />
+      </scope>
+      <scope id="94066396685028958" at="39,42,59,5" />
+      <scope id="94066396685028958" at="39,0,61,0">
+        <var name="m" id="94066396685028958" />
+      </scope>
+      <scope id="94066396685043124" at="63,5,85,9">
+        <var name="context" id="94066396685043124" />
+        <var name="scope_u6isg4_a0f" id="94066396685043124" />
+        <var name="scope_u6isg4_a0f_0" id="94066396685043124" />
+      </scope>
+      <scope id="94066396685028958" at="62,45,86,5" />
+      <scope id="94066396685028958" at="61,0,88,0">
+        <var name="m" id="94066396685028958" />
+      </scope>
+      <unit id="94066396685059416" at="43,42,47,7" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$1" />
+      <unit id="94066396685036795" at="48,157,52,7" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$2" />
+      <unit id="94066396685043124" at="66,42,70,7" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$4" />
+      <unit id="94066396685043132" at="71,164,75,7" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$5" />
+      <unit id="94066396685028958" at="92,0,96,0" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$CONCEPTS" />
+      <unit id="94066396685028958" at="97,0,101,0" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$LINKS" />
+      <unit id="94066396685150957" at="77,32,82,11" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$6$1" />
+      <unit id="94066396685036813" at="52,22,58,7" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$3" />
+      <unit id="94066396685043143" at="75,20,85,7" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression$6" />
+      <unit id="94066396685028958" at="26,0,102,0" name="jetbrains.mps.lang.quotation.migration.LightQuotation_InitProperyExpression" />
     </file>
   </root>
 </debug-info>

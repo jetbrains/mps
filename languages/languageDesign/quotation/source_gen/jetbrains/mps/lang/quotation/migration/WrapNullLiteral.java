@@ -86,10 +86,10 @@ public class WrapNullLiteral extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, "jetbrains.mps.lang.quotation"), 0);
   }
 
-  private static SNode createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
-    rootBuilder1.forChild(LINKS.expression$JCaZ).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createNodeBuilderExpression_nzk9pr_a0b0a0a0a0a6(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
+    n0.forChild(LINKS.expression$JCaZ).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {
