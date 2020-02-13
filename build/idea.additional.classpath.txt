@@ -1,5 +1,3 @@
-:openapi
-core/openapi/classes
 :aspects
 core/aspects/behavior/behavior-runtime/classes
 core/aspects/behavior/behavior-api/classes

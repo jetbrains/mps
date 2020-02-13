@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,8 +61,6 @@ public class Solution extends ReloadableModuleBase {
     List<ClassType> classTypes = new ArrayList<>();
     classTypes.add(ClassType.JDK);
     classTypes.add(ClassType.JDK_TOOLS);
-    classTypes.add(ClassType.ANNOTATIONS);
-    classTypes.add(ClassType.OPENAPI);
     classTypes.add(ClassType.CORE);
     classTypes.add(ClassType.EDITOR);
     classTypes.add(ClassType.PLATFORM);
@@ -72,6 +70,10 @@ public class Solution extends ReloadableModuleBase {
     for (ClassType classType : classTypes) {
       result.put(BootstrapLanguages.bootstrapSolutionRef(classType), classType);
     }
+    // FIXME this is a hack to ensure isBootstrapSolution tells true for migration code to ignore these modules
+    //       need better mechansim to exclude stub solutions like these from migration (perhaps, explicit mark as R/O?)
+    result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.OPENAPI), null);
+    result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.ANNOTATIONS), null);
     return result;
   }
 
