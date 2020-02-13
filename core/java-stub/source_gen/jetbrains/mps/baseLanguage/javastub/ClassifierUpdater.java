@@ -401,16 +401,10 @@ public class ClassifierUpdater {
 
   private void updateInstanceMethods(SNode cls) {
     for (ASMMethod m : myParsedClass.getDeclaredMethods()) {
-      if (shallSkip(m)) {
+      if (m.isStatic() || shallSkip(m)) {
         continue;
       }
-      if (m.isStatic()) {
-        continue;
-      }
-      if (m.isBridge()) {
-        continue;
-      }
-      if (m.isCompilerGenerated()) {
+      if (m.isSynthetic() || m.isBridge() || m.isCompilerGenerated()) {
         continue;
       }
 
@@ -428,13 +422,10 @@ public class ClassifierUpdater {
   }
   private void updateStaticMethods(SNode cls) {
     for (ASMMethod m : myParsedClass.getDeclaredMethods()) {
-      if (shallSkip(m)) {
+      if (!(m.isStatic()) || shallSkip(m)) {
         continue;
       }
-      if (!(m.isStatic())) {
-        continue;
-      }
-      if (m.isCompilerGenerated()) {
+      if (m.isSynthetic() || m.isCompilerGenerated()) {
         continue;
       }
       if (SNodeOperations.isInstanceOf(cls, CONCEPTS.EnumClass$uy) && isGeneratedEnumMethod(m)) {
