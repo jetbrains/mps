@@ -6,16 +6,20 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import java.util.List;
+import jetbrains.mps.extapi.persistence.SourceRootKind;
+import java.util.Collections;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.util.FileUtil;
-import org.jetbrains.annotations.NotNull;
-import java.util.List;
+import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import java.util.Collection;
+import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
 import java.util.HashSet;
@@ -29,15 +33,22 @@ import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 public class JavaSourceStubModelRoot extends FileBasedModelRoot implements CopyableModelRoot<JavaSourceStubModelRoot> {
   private static final Logger LOG = Logger.getLogger(JavaSourceStubModelRoot.class);
 
+  private String TYPE = "java_source_stubs";
+
   private static final String PATH_KEY = "path";
 
   public JavaSourceStubModelRoot() {
-    super(new String[]{SOURCE_ROOTS});
+  }
+
+  @NotNull
+  @Override
+  public List<SourceRootKind> getSupportedFileKinds1() {
+    return Collections.<SourceRootKind>singletonList(SourceRootKinds.SOURCES);
   }
 
   @Override
   public String getType() {
-    return "java_source_stubs";
+    return TYPE;
   }
 
   @Override
@@ -53,26 +64,21 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
   @Override
   public void load(Memento memento) {
     super.load(memento);
-    if (memento.get("path") == null) {
+    if (memento.get(PATH_KEY) == null) {
       return;
     }
-    String path = FileUtil.stripLastSlashes(memento.get("path"));
+    String path = FileUtil.stripLastSlashes(memento.get(PATH_KEY));
     assert path != null;
     IFile file = getFileSystem().getFile(path);
-    if (file.getParent() != null) {
-      path = file.getParent().getPath();
-    }
-    setContentRoot(path);
-    addFile(SOURCE_ROOTS, memento.get(PATH_KEY));
+    addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(file));
   }
 
   @Override
   @NotNull
   public Iterable<SModel> loadModels() {
     List<SModel> result = ListSequence.fromList(new ArrayList<SModel>());
-    final Collection<String> files = getFiles(SOURCE_ROOTS);
-    for (String file : files) {
-      ListSequence.fromList(result).addSequence(SetSequence.fromSet(getModels(getFileSystem().getFile(file))));
+    for (SourceRoot sr : getSourceRoots(SourceRootKinds.SOURCES)) {
+      ListSequence.fromList(result).addSequence(SetSequence.fromSet(getModels(sr.getAbsolutePath())));
     }
     return result;
   }

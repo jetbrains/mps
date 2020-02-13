@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,16 @@ public final class DefaultSourceRoot implements SourceRoot {
     }
   }
 
+  /**
+   * Handy alternative to {@code new DefaultSourceRoot("", absolutePath)}, with a difference that {@link #getPath()} value is absolute path, not ""
+   * @param absolutePath
+   */
+  public DefaultSourceRoot(@NotNull IFile absolutePath) {
+    myPath = canonicalize(absolutePath.getPath());
+    assert FileUtil.isAbsolute(myPath);
+    myAbsolutePath = absolutePath;
+  }
+
   @NotNull
   private String canonicalize(@NotNull String path) {
     path = FileUtil.stripLastSlashes(FileUtil.getUnixPath(path));
@@ -66,7 +76,7 @@ public final class DefaultSourceRoot implements SourceRoot {
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof DefaultSourceRoot) {
-      return Objects.equals(myPath, ((DefaultSourceRoot) obj).getPath());
+      return Objects.equals(myPath, ((DefaultSourceRoot) obj).myPath);
     }
     return false;
   }

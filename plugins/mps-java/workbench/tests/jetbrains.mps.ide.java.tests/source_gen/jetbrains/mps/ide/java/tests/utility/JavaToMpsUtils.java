@@ -127,8 +127,7 @@ public class JavaToMpsUtils {
   public void checkFile(IFile path, SNode expected) {
     JavaSourceStubModelRoot mr = new JavaSourceStubModelRoot();
     mr.setModule((SModuleBase) getModule());
-    mr.setContentDirectory(path);
-    mr.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", path));
+    mr.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(path));
 
     Iterator<SModel> models = mr.loadModels().iterator();
     Assert.assertTrue("No models returned from model root", models.hasNext());
@@ -156,8 +155,7 @@ public class JavaToMpsUtils {
   public void checkStubModels(IFile dirPath, SModelReference... expected) {
     JavaSourceStubModelRoot mr = new JavaSourceStubModelRoot();
     mr.setModule((SModuleBase) getModule());
-    mr.setContentDirectory(dirPath);
-    mr.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", dirPath));
+    mr.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(dirPath));
     mr.attach();
 
     List<SModel> models = ListSequence.fromList(new ArrayList<SModel>());
@@ -242,8 +240,7 @@ public class JavaToMpsUtils {
     List<SModel> binModels = ListSequence.fromList(new ArrayList<SModel>());
     JavaClassStubsModelRoot binSRoot = new JavaClassStubsModelRoot();
     binSRoot.setModule((SModuleBase) mod1);
-    binSRoot.setContentDirectory(binPath);
-    binSRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", binPath));
+    binSRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(binPath));
     Iterable<SModel> binStubModels = binSRoot.loadModels();
     for (SModel md : Sequence.fromIterable(binStubModels)) {
       SModel m = md;
@@ -266,8 +263,7 @@ public class JavaToMpsUtils {
     List<SModel> srcModelsX = ListSequence.fromList(new ArrayList<SModel>());
 
     src2.setModule((SModuleBase) mod2);
-    src2.setContentDirectory(sourcePath);
-    src2.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", sourcePath));
+    src2.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(sourcePath));
     srcModels = src2.loadModels();
 
     for (SModel m : Sequence.fromIterable(srcModels)) {

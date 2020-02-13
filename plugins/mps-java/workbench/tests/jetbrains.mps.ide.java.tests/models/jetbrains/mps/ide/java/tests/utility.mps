@@ -1106,19 +1106,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="7q5dBpSgVs_" role="3cqZAp">
-          <node concept="2OqwBi" id="7q5dBpSgVsA" role="3clFbG">
-            <node concept="liA8E" id="7q5dBpSgVsB" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentDirectory(jetbrains.mps.vfs.IFile)" resolve="setContentDirectory" />
-              <node concept="37vLTw" id="7q5dBpSgVsC" role="37wK5m">
-                <ref role="3cqZAo" node="7q5dBpSgVsm" resolve="path" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="7q5dBpSgVsD" role="2Oq$k0">
-              <ref role="3cqZAo" node="7q5dBpSgVsq" resolve="mr" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="7q5dBpSgVsE" role="3cqZAp">
           <node concept="2OqwBi" id="7q5dBpSgVsF" role="3clFbG">
             <node concept="37vLTw" id="7q5dBpSgVsG" role="2Oq$k0">
@@ -1132,8 +1119,7 @@
               </node>
               <node concept="2ShNRf" id="7q5dBpSgVsJ" role="37wK5m">
                 <node concept="1pGfFk" id="7q5dBpSgVsK" role="2ShVmc">
-                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(java.lang.String,jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
-                  <node concept="Xl_RD" id="7q5dBpSgVsL" role="37wK5m" />
+                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
                   <node concept="37vLTw" id="7q5dBpSgVsM" role="37wK5m">
                     <ref role="3cqZAo" node="7q5dBpSgVsm" resolve="path" />
                   </node>
@@ -1429,19 +1415,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="7q5dBpSh9Jy" role="3cqZAp">
-          <node concept="2OqwBi" id="7q5dBpSh9Jz" role="3clFbG">
-            <node concept="liA8E" id="7q5dBpSh9J$" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentDirectory(jetbrains.mps.vfs.IFile)" resolve="setContentDirectory" />
-              <node concept="37vLTw" id="7q5dBpSh9J_" role="37wK5m">
-                <ref role="3cqZAo" node="7q5dBpSh9Ky" resolve="dirPath" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="7q5dBpSh9JA" role="2Oq$k0">
-              <ref role="3cqZAo" node="7q5dBpSh9Jn" resolve="mr" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="7q5dBpSh9JB" role="3cqZAp">
           <node concept="2OqwBi" id="7q5dBpSh9JC" role="3clFbG">
             <node concept="37vLTw" id="7q5dBpSh9JD" role="2Oq$k0">
@@ -1455,8 +1428,7 @@
               </node>
               <node concept="2ShNRf" id="7q5dBpSh9JG" role="37wK5m">
                 <node concept="1pGfFk" id="7q5dBpSh9JH" role="2ShVmc">
-                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(java.lang.String,jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
-                  <node concept="Xl_RD" id="7q5dBpSh9JI" role="37wK5m" />
+                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
                   <node concept="37vLTw" id="7q5dBpSh9JJ" role="37wK5m">
                     <ref role="3cqZAo" node="7q5dBpSh9Ky" resolve="dirPath" />
                   </node>
@@ -2728,19 +2700,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="Tb4Psnn76X" role="3cqZAp">
-          <node concept="2OqwBi" id="Tb4Psnn76Y" role="3clFbG">
-            <node concept="37vLTw" id="Tb4Psnn76Z" role="2Oq$k0">
-              <ref role="3cqZAo" node="Tb4Psnn76O" resolve="binSRoot" />
-            </node>
-            <node concept="liA8E" id="Tb4Psnn770" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentDirectory(jetbrains.mps.vfs.IFile)" resolve="setContentDirectory" />
-              <node concept="37vLTw" id="Tb4Psnn771" role="37wK5m">
-                <ref role="3cqZAo" node="Tb4Psnn79j" resolve="binPath" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="Tb4Psnn772" role="3cqZAp">
           <node concept="2OqwBi" id="Tb4Psnn773" role="3clFbG">
             <node concept="37vLTw" id="Tb4Psnn774" role="2Oq$k0">
@@ -2754,10 +2713,7 @@
               </node>
               <node concept="2ShNRf" id="4c_IX9qBPR$" role="37wK5m">
                 <node concept="1pGfFk" id="4c_IX9qBT0t" role="2ShVmc">
-                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(java.lang.String,jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
-                  <node concept="Xl_RD" id="4c_IX9qBTcL" role="37wK5m">
-                    <property role="Xl_RC" value="" />
-                  </node>
+                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
                   <node concept="37vLTw" id="4c_IX9qBTsT" role="37wK5m">
                     <ref role="3cqZAo" node="Tb4Psnn79j" resolve="binPath" />
                   </node>
@@ -2962,19 +2918,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="Tb4Psnn78c" role="3cqZAp">
-          <node concept="2OqwBi" id="Tb4Psnn78d" role="3clFbG">
-            <node concept="liA8E" id="Tb4Psnn78e" role="2OqNvi">
-              <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentDirectory(jetbrains.mps.vfs.IFile)" resolve="setContentDirectory" />
-              <node concept="37vLTw" id="Tb4Psnn78f" role="37wK5m">
-                <ref role="3cqZAo" node="Tb4Psnn79l" resolve="sourcePath" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="Tb4Psnn78g" role="2Oq$k0">
-              <ref role="3cqZAo" node="Tb4Psnn76s" resolve="src2" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="Tb4Psnn78h" role="3cqZAp">
           <node concept="2OqwBi" id="Tb4Psnn78i" role="3clFbG">
             <node concept="37vLTw" id="Tb4Psnn78j" role="2Oq$k0">
@@ -2988,10 +2931,7 @@
               </node>
               <node concept="2ShNRf" id="4c_IX9qBW$F" role="37wK5m">
                 <node concept="1pGfFk" id="4c_IX9qBYc4" role="2ShVmc">
-                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(java.lang.String,jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
-                  <node concept="Xl_RD" id="4c_IX9qBZ$L" role="37wK5m">
-                    <property role="Xl_RC" value="" />
-                  </node>
+                  <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
                   <node concept="37vLTw" id="4c_IX9qBZTP" role="37wK5m">
                     <ref role="3cqZAo" node="Tb4Psnn79l" resolve="sourcePath" />
                   </node>

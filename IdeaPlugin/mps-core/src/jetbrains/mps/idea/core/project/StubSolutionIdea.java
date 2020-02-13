@@ -25,7 +25,8 @@ import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.SRepositoryExt;
-import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.idea.core.project.stubs.JdkStubSolutionManager;
 import jetbrains.mps.idea.core.project.stubs.StubModuleNameTakenException;
 import jetbrains.mps.module.SDependencyImpl;
@@ -41,6 +42,7 @@ import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.MacroHelper.MacroNoHelper;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
@@ -196,8 +198,13 @@ public abstract class StubSolutionIdea extends StubSolution {
     for (VirtualFile f : roots) {
       String localPath = getLocalPath(f);
       JavaClassStubsModelRoot modelRoot = new JavaClassStubsModelRoot();
-      modelRoot.setContentRoot(localPath);
-      modelRoot.addFile(FileBasedModelRoot.SOURCE_ROOTS, localPath);
+      // FIXME there's a lot with this code to get fixed, please, PLEASE take a look at this.
+      //   - dubious similarity in addModelRoots(VF[]) and addModelRoots(SD, VF[]), former instantiates ModelRoot right away, latter opts for ModelRootDescriptor
+      //   - file2QP() could have helped us to go from VF to an MPS-friendly object, but JCSMR doesn't work with QualifiedPath, it's JDKStubsModelRoot that
+      //     understands QP, however, it's poorly named (has nothing to do with JDK, just r/o, QP-capable java class stub root) and (more important)
+      //     its id/type is different from the one of JCSMR; therefore need to make sure there's no assumptions elsewere in the code about particular root kind
+      //     of a library.
+      modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(FileSystem.getInstance().getFile(localPath)));
       result.add(modelRoot);
     }
 

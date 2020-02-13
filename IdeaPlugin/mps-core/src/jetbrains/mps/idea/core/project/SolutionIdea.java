@@ -32,7 +32,6 @@ import com.intellij.openapi.roots.ModuleRootListener;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.OrderEntry;
 import com.intellij.openapi.roots.OrderEnumerator;
-import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.roots.RootProvider;
 import com.intellij.openapi.roots.RootProvider.RootSetChangedListener;
 import com.intellij.openapi.roots.impl.libraries.ProjectLibraryTable;
@@ -357,21 +356,6 @@ public class SolutionIdea extends Solution {
       };
     }
     return super.setupFacet(facet, memento);
-  }
-
-  private void addLibs(SolutionDescriptor solutionDescriptor) {
-    // adding libraries
-    for (OrderEntry e : ModuleRootManager.getInstance(myModule).getOrderEntries()) {
-      if (!(e instanceof LibraryOrderEntry)) continue;
-
-      LibraryOrderEntry loe = (LibraryOrderEntry) e;
-      if (!loe.isModuleLevel()) continue;
-
-      Library library = loe.getLibrary();
-      if (library == null) continue;
-
-      StubSolutionIdea.addModelRoots(solutionDescriptor, library.getFiles(OrderRootType.CLASSES));
-    }
   }
 
   public Module getIdeaModule() {

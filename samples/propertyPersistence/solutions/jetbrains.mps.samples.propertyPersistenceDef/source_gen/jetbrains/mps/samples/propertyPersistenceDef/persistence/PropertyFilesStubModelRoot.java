@@ -68,8 +68,7 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
     assert path != null;
     // TODO Any replacement for this deprecation? 
     IFile file = getFileSystem().getFile(path);
-    setContentDirectory((file.getParent() != null ? file.getParent() : file));
-    addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(memento.get(PATH_KEY), getContentDirectory()));
+    addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(file));
   }
 
   @Override

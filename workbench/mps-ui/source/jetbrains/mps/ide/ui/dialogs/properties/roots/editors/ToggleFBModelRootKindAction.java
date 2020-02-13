@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,12 +40,10 @@ import javax.swing.JComponent;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
-import java.lang.Override;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public abstract class ToggleFBModelRootKindAction extends ToggleAction implements CustomComponentAction, DumbAware {
@@ -81,8 +79,7 @@ public abstract class ToggleFBModelRootKindAction extends ToggleAction implement
   @Nullable
   private SourceRoot getSourceRootByPath(@NotNull IFile path) {
     final FileBasedModelRoot modelRoot = myModelRootEditor.getFileBasedModelRootEntry().getModelRoot();
-    Optional<SourceRoot> any = modelRoot.getSourceRoots(getKind()).stream().filter(sourceRoot -> sourceRoot.getAbsolutePath().equals(path)).findAny();
-    return any.isPresent() ? any.get() : null;
+    return modelRoot.getSourceRoots(getKind()).stream().filter(sourceRoot -> sourceRoot.getAbsolutePath().equals(path)).findAny().orElse(null);
   }
 
   @Override
@@ -97,8 +94,7 @@ public abstract class ToggleFBModelRootKindAction extends ToggleAction implement
       SourceRoot sourceRootByPath = getSourceRootByPath(selectedFile);
       if (enabled) {
         assert sourceRootByPath == null;
-        assert modelRoot.getContentDirectory() != null;
-        modelRoot.addSourceRoot(getKind(), new DefaultSourceRoot(selectedFile.getPath(), modelRoot.getContentDirectory()));
+        modelRoot.addSourceRoot(getKind(), new DefaultSourceRoot(selectedFile));
       } else {
         assert sourceRootByPath != null;
         modelRoot.removeSourceRoot(sourceRootByPath);

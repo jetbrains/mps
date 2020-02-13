@@ -1,13 +1,14 @@
 package jetbrains.mps.jps.project;
 
-import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.jps.build.MPSCompilerUtil;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.persistence.java.library.JDKClassStubModelRootFactory;
 import jetbrains.mps.persistence.java.library.JDKStubsModelRoot;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
@@ -84,12 +85,14 @@ public class JpsLibSolution extends Solution {
         }
 
         String path = getPath(libRoot);
-        if (ignoredPaths.contains(path)) continue;
+        if (ignoredPaths.contains(path)) {
+          continue;
+        }
 
         MPSCompilerUtil.debug(context, "@@@@ path = " + path);
-
-        ((JavaClassStubsModelRoot)modelRoot).setContentRoot(path);
-        ((JavaClassStubsModelRoot)modelRoot).addFile(FileBasedModelRoot.SOURCE_ROOTS, path);
+        // FIXME see comment in StubSolutionIdea.addModelRoots. I've got VF here, and instead of using brand-new, shiny QP, I resort to some dubious
+        //       path mangling in #getPath(), plain strings for paths and deprecated FS
+        ((JavaClassStubsModelRoot)modelRoot).addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(FileSystem.getInstance().getFile(path)));
         modelRoots.add(modelRoot);
       }
     }

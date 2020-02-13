@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -246,7 +246,7 @@ public class JpsMPSRepositoryFacade implements MPSModuleOwner {
         MPSCompilerUtil.debug(context, "SDK name" + sdk.getName() + " type: " + sdk.getType());
 
         JpsLibSolution sdkSolution = createLibSolution(sdk, jdk, context);
-        JpsLibSolution regSolution = ((SRepositoryExt) myRepository).registerModule(sdkSolution, myProject);
+        JpsLibSolution regSolution = myRepository.registerModule(sdkSolution, myProject);
         MPSCompilerUtil.debug(context, "SDK " + regSolution.getModuleReference().toString());
         if (sdkSolution == regSolution) {
           MPSCompilerUtil.debug(context, "SDK updating model set for " + sdk.getName());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,9 @@ import com.intellij.ide.util.treeView.NodeRenderer;
 import com.intellij.openapi.fileChooser.FileElement;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKind;
+import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
 
@@ -67,33 +69,32 @@ public class FileBasedModelRootEntryTreeCellRender extends NodeRenderer {
   }
 
   private Icon updateIcon(FileBasedModelRoot modelRoot, VirtualFile file, Icon originalIcon) {
-    Collection<SourceRootKind> kinds = modelRoot.getSupportedFileKinds1();
-    for (SourceRootKind kind : kinds) {
-      if (modelRoot.containsFile(kind.getName(), file.getPath())) {
-        return myModelRootEditor.getFileBasedModelRootEntry().getKindIcon(kind);
-      }
-      Collection<String> kindFiles = modelRoot.getFiles(kind.getName());
-      for (String kindFile : kindFiles) {
-        if (file.getPath().startsWith(kindFile + "/")) {
-          return myModelRootEditor.getFileBasedModelRootEntry().getKindIcon(kind);
-        }
-      }
+    SourceRootKind kind = isFileUnderRoot(file, modelRoot);
+    if (kind != null) {
+      return myModelRootEditor.getFileBasedModelRootEntry().getKindIcon(kind);
     }
-    if (file.getPath().equals(modelRoot.getContentRoot())) {
+    if (modelRoot.getContentDirectory() != null && file.getPath().equals(modelRoot.getContentDirectory().getPath())) {
       return Nodes.HomeFolder;
     }
     return originalIcon;
   }
 
   private Color getColorForFile(FileBasedModelRoot modelRoot, VirtualFile file) {
+    SourceRootKind kind = isFileUnderRoot(file, modelRoot);
+    if (kind != null) {
+      return myModelRootEditor.getFileBasedModelRootEntry().getKindColor(kind);
+    }
+    return null;
+  }
+
+  private static SourceRootKind isFileUnderRoot(VirtualFile file, FileBasedModelRoot modelRoot) {
+    final String filePath = file.getPath();
     for (SourceRootKind kind : modelRoot.getSupportedFileKinds1()) {
-      Collection<String> files = modelRoot.getFiles(kind.getName());
-      if (files.contains(file.getPath())) {
-        return myModelRootEditor.getFileBasedModelRootEntry().getKindColor(kind);
-      }
-      for (String kindFile : files) {
-        if (file.getPath().startsWith(kindFile + "/")) {
-          return myModelRootEditor.getFileBasedModelRootEntry().getKindColor(kind);
+      Collection<SourceRoot> sr = modelRoot.getSourceRoots(kind);
+      for (SourceRoot r : sr) {
+        final String srFilePath = r.getAbsolutePath().getPath();
+        if (filePath.equals(srFilePath) || filePath.startsWith(srFilePath + IFileSystem.SEPARATOR_CHAR)) {
+          return kind;
         }
       }
     }
