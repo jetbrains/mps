@@ -373,7 +373,7 @@ public class EditorSettings implements ApplicationComponent, PersistentStateComp
 
   @SuppressWarnings("WeakerAccess")
   public static class MyState {
-    public String fontFamily = "Monospaced";
+    public String fontFamily = "JetBrains Mono";
     public int fontSize = 13;
     public double lineSpacing = 1.0;
 
