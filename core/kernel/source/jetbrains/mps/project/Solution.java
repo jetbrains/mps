@@ -64,7 +64,6 @@ public class Solution extends ReloadableModuleBase {
     classTypes.add(ClassType.CORE);
     classTypes.add(ClassType.PLATFORM);
     classTypes.add(ClassType.IDEA);
-    classTypes.add(ClassType.TEST);
     for (ClassType classType : classTypes) {
       result.put(BootstrapLanguages.bootstrapSolutionRef(classType), classType);
     }
@@ -74,6 +73,7 @@ public class Solution extends ReloadableModuleBase {
     result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.ANNOTATIONS), null);
     result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.EDITOR), null);
     result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.WORKBENCH), null);
+    result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.TEST), null);
     return result;
   }
 

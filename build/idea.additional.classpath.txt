@@ -58,8 +58,3 @@ workbench/mps-platform/classes
 workbench/mps-debugger/classes
 workbench/mps-ui/classes
 workbench/mps-icons/classes
-:test
-core/tool/environment/classes
-testbench/classes
-:tool-common
-core/tool/common/classes
