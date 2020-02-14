@@ -3857,10 +3857,32 @@
         <node concept="1E1SXE" id="6iXh2SsYGtw" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="16Vg0jOdbW2" resolve="mps-editor" />
+          <node concept="398BVA" id="4MNZWP8arSh" role="17Grwy">
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="4MNZWP8arYE" role="iGT6I">
+              <property role="2Ry0Am" value="mps-editor.jar" />
+            </node>
+          </node>
+        </node>
+        <node concept="1E1SXE" id="4MNZWP8asRN" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="16Vg0jOdbW2" resolve="mps-editor" />
+          <node concept="398BVA" id="4MNZWP8asRO" role="17Grwy">
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="4MNZWP8at4L" role="iGT6I">
+              <property role="2Ry0Am" value="mps-editor-runtime.jar" />
+            </node>
+          </node>
         </node>
         <node concept="1E1SXE" id="6iXh2SsYGty" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="3cAdGiIRUkj" resolve="mps-editor-api" />
+          <node concept="398BVA" id="4MNZWP8aso2" role="17Grwy">
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="4MNZWP8asLs" role="iGT6I">
+              <property role="2Ry0Am" value="mps-editor-api.jar" />
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="6iXh2SsYGtz" role="3bR37C">
           <node concept="3bR9La" id="6iXh2SsYGt$" role="1SiIV1">
@@ -23994,6 +24016,15 @@
         <node concept="1E1SXE" id="5xa9wY2ujz$" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="2eDSGe9d1oD" resolve="mps-workbench" />
+          <node concept="398BVA" id="4MNZWP8arCU" role="17Grwy">
+            <ref role="398BVh" node="2eDSGe9d1qB" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4MNZWP8arDw" role="iGT6I">
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="4MNZWP8arDz" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-workbench.jar" />
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="1E1SXE" id="44DBpZnHxNj" role="3bR37C">
           <property role="1E1SXH" value="true" />

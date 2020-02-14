@@ -62,10 +62,8 @@ public class Solution extends ReloadableModuleBase {
     classTypes.add(ClassType.JDK);
     classTypes.add(ClassType.JDK_TOOLS);
     classTypes.add(ClassType.CORE);
-    classTypes.add(ClassType.EDITOR);
     classTypes.add(ClassType.PLATFORM);
     classTypes.add(ClassType.IDEA);
-    classTypes.add(ClassType.WORKBENCH);
     classTypes.add(ClassType.TEST);
     for (ClassType classType : classTypes) {
       result.put(BootstrapLanguages.bootstrapSolutionRef(classType), classType);
@@ -74,6 +72,8 @@ public class Solution extends ReloadableModuleBase {
     //       need better mechansim to exclude stub solutions like these from migration (perhaps, explicit mark as R/O?)
     result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.OPENAPI), null);
     result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.ANNOTATIONS), null);
+    result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.EDITOR), null);
+    result.put(BootstrapLanguages.bootstrapSolutionRef(ClassType.WORKBENCH), null);
     return result;
   }
 

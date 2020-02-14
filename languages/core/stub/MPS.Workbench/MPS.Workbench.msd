@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="MPS.Workbench" uuid="86441d7a-e194-42da-81a5-2161ec62a379" compileInMPS="false">
-  <models />
+  <models>
+    <modelRoot type="java_classes">
+      <sourceRoot path="${mps_home}/lib/mps-workbench.jar" />
+    </modelRoot>
+  </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
+  <stubModelEntries>
+    <stubModelEntry path="${mps_home}/lib/mps-workbench.jar" />
+  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

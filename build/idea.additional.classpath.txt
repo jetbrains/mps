@@ -50,15 +50,6 @@ languages/baseLanguage/closures/runtime/classes
 languages/baseLanguage/tuples/runtime/classes
 languages/baseLanguage/references/runtime/classes
 languages/baseLanguage/annotations/runtime/classes
-:editor
-editor/editor-api/classes
-editor/editorlang-runtime/classes
-editor/editor-runtime/classes
-editor/editing-runtime/classes
-editor/actions-runtime/classes
-editor/intentions-runtime/classes
-editor/typesystemIntegration/classes
-workbench/mps-editor/classes
 :platform
 languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/classes
 languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/classes
@@ -67,11 +58,6 @@ workbench/mps-platform/classes
 workbench/mps-debugger/classes
 workbench/mps-ui/classes
 workbench/mps-icons/classes
-:workbench
-workbench/resources/classes
-workbench/mps-tips/classes
-workbench/typesystemUi/classes
-workbench/mps-workbench/jetbrains.mps.ide/classes
 :test
 core/tool/environment/classes
 testbench/classes
