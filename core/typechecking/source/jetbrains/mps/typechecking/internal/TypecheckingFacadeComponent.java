@@ -79,8 +79,8 @@ public class TypecheckingFacadeComponent implements CoreComponent {
                 }
               }
 
-              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session) {
-                return new SharedSessionTypecheckingController(myTypecheckingBackend, session);
+              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController) {
+                return new SharedSessionTypecheckingController(myTypecheckingBackend, session, contextController);
               }
             });
 
@@ -95,8 +95,8 @@ public class TypecheckingFacadeComponent implements CoreComponent {
                 return new DefaultTypecheckingController(myTypecheckingBackend, flags);
               }
 
-              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session) {
-                return new SharedSessionTypecheckingController(myTypecheckingBackend, session);
+              public TypecheckingController shared(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController) {
+                return new SharedSessionTypecheckingController(myTypecheckingBackend, session, contextController);
               }
             });
           }
@@ -123,7 +123,7 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
     TypecheckingController isolated(Flags flags);
 
-    TypecheckingController shared(@NotNull TypecheckingSessionImpl session);
+    TypecheckingController shared(@NotNull TypecheckingSessionImpl session, TypecheckingController contextController);
 
   }
 
@@ -144,35 +144,42 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
     protected void dispose() {
       while (!myControllerStack.isEmpty()) {
-        myControllerStack.pop().dispose();
+        myControllerStack.removeFirst().dispose();
+      }
+    }
+
+    private void init() {
+      if (myControllerStack.isEmpty()) {
+        myControllerStack.addFirst(myControllerFactory.context());
       }
     }
 
     @NotNull
     @Override
     protected TypecheckingController controller() {
-      if (myControllerStack.isEmpty()) {
-        myControllerStack.push(myControllerFactory.context());
-      }
+      init();
       //noinspection ConstantConditions
-      return myControllerStack.peek();
+      return myControllerStack.peekFirst();
     }
 
     @Override
     protected void overrideSharedController(@NotNull TypecheckingSessionImpl session) {
-      myControllerStack.push(myControllerFactory.shared(session));
+      init();
+      // provide the initial "context" controller as the delegate
+      myControllerStack.addFirst(myControllerFactory.shared(session, myControllerStack.peekLast()));
     }
 
     @Override
     protected TypecheckingController overrideIsolatedController(Flags flags) {
+      init();
       TypecheckingController controller = myControllerFactory.isolated(flags);
-      myControllerStack.push(controller);
+      myControllerStack.addFirst(controller);
       return controller;
     }
 
     @Override
     protected void resetOverride() {
-      myControllerStack.pop().dispose();
+      myControllerStack.removeFirst().dispose();
     }
   }
 
