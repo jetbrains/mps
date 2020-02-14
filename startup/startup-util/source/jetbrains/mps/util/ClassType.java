@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,8 +33,7 @@ public enum ClassType {
   PLATFORM("platform"),
   IDEA("idea"),
   WORKBENCH("workbench"),
-  TEST("test"),
-  TOOL_COMMON("tool-common");
+  TEST("test");
 
   private String myTypeString;
 
