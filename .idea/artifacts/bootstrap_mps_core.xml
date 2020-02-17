@@ -64,6 +64,12 @@
       <element id="archive" name="mps-logging.jar">
         <element id="module-output" name="logging" />
       </element>
+      <element id="archive" name="mps-behavior-api.jar">
+        <element id="module-output" name="behavior-api" />
+      </element>
+      <element id="archive" name="mps-behavior-runtime.jar">
+        <element id="module-output" name="behavior-runtime" />
+      </element>
     </root>
   </artifact>
 </component>
