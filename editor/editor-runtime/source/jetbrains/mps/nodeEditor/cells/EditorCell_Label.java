@@ -533,6 +533,13 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       }
     }
 
+    while ((nextCell instanceof EditorCell_Collection)) {
+      EditorCell_Collection collection = (EditorCell_Collection) nextCell;
+      if (collection.getCellsCount() == 0) {
+        nextCell = CellTraversalUtil.getNextLeaf(nextCell);
+      }
+    }
+
     if (!(nextCell instanceof EditorCell_Label)) {
       return false;
     }

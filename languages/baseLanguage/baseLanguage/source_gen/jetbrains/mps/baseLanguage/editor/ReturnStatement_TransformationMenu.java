@@ -141,7 +141,11 @@ public class ReturnStatement_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return ((pattern == null ? null : pattern.trim()));
+          String text = ((pattern == null ? null : pattern.trim()));
+          if (text.equals(";")) {
+            return null;
+          }
+          return text;
         }
 
         @Override
