@@ -56,12 +56,18 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
 
   @Override
   public void afterPluginsLoaded(List<PluginContributor> contributors) {
-    initRunConfigurations();
+    // this can be executed in "later", so we check that the project is not yet closed 
+    if (myProject.isDisposed()) {
+      return;
+    }
+
+    myState.restoreState();
   }
 
   @Override
   public void beforePluginsUnloaded(List<PluginContributor> contributors) {
-    disposeRunConfigurations();
+    // the current contract is that this can be executed in "later", but only when it's not project disposal  
+    disposeRunContentDescriptors();
   }
 
   @Override
@@ -80,18 +86,6 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
 
   @Override
   public void projectClosed() {
-  }
-
-  public void initRunConfigurations() {
-    if (myProject.isDisposed()) {
-      return;
-    }
-    myState.restoreState();
-  }
-
-  public void disposeRunConfigurations() {
-    assert !(myProject.isDisposed());
-    disposeRunContentDescriptors();
   }
 
   private void disposeRunContentDescriptors() {
