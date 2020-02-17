@@ -2,11 +2,8 @@
 <solution name="jetbrains.mps.baseLanguage.references.runtime" uuid="52b81ac7-93fd-4e9e-b972-4995882da6d4" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}" type="java_classes">
-      <sourceRoot location="classes" />
-    </modelRoot>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="mps-references.jar" />
+    <modelRoot type="java_classes">
+      <sourceRoot path="${mps_home}/lib/mps-references.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -16,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/classes" />
+    <stubModelEntry path="${mps_home}/lib/mps-references.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

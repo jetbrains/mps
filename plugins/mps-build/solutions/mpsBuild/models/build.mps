@@ -3407,21 +3407,9 @@
             <node concept="3yLZsm" id="6IJvZDkJCZB" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-references.jar" />
               <node concept="398BVA" id="4Gy9vLLv8OS" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="4Gy9vLLv8OT" role="iGT6I">
-                  <property role="2Ry0Am" value="languages" />
-                  <node concept="2Ry0Ak" id="4Gy9vLLv8OU" role="2Ry0An">
-                    <property role="2Ry0Am" value="baseLanguage" />
-                    <node concept="2Ry0Ak" id="4Gy9vLLv8OV" role="2Ry0An">
-                      <property role="2Ry0Am" value="references" />
-                      <node concept="2Ry0Ak" id="4Gy9vLLv8OW" role="2Ry0An">
-                        <property role="2Ry0Am" value="runtime" />
-                        <node concept="2Ry0Ak" id="4Gy9vLLv8OX" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="1SoZ8PyX3s" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-references.jar" />
                 </node>
               </node>
             </node>
@@ -4591,21 +4579,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="1dsbP8r1mZ9" resolve="mps-references" />
           <node concept="398BVA" id="4Gy9vLLv7QW" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="4Gy9vLLv82c" role="iGT6I">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="4Gy9vLLv8dr" role="2Ry0An">
-                <property role="2Ry0Am" value="baseLanguage" />
-                <node concept="2Ry0Ak" id="4Gy9vLLv8oE" role="2Ry0An">
-                  <property role="2Ry0Am" value="references" />
-                  <node concept="2Ry0Ak" id="4Gy9vLLv8uk" role="2Ry0An">
-                    <property role="2Ry0Am" value="runtime" />
-                    <node concept="2Ry0Ak" id="4Gy9vLLv8Dz" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="1SoZ8PyWDj" role="iGT6I">
+              <property role="2Ry0Am" value="mps-references.jar" />
             </node>
           </node>
         </node>
