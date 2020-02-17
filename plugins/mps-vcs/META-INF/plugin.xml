@@ -41,7 +41,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
-    <postStartupActivity implementation="com.intellij.platform.PlatformVcsDetector"/>
   </extensions>
 
   <application-components>
