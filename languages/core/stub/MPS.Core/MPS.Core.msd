@@ -25,6 +25,7 @@
       <sourceRoot location="guava-27.1-jre.jar" />
       <sourceRoot location="xstream-1.4.11.1.jar" />
       <sourceRoot location="asm-all-7.0.1.jar" />
+      <Sources zip="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>
   </models>
   <facets>
@@ -47,6 +48,11 @@
     <stubModelEntry path="${mps_home}/lib/mps-collections.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-tuples.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-constraints-runtime.jar" />
+    <!-- Some code expects MPS.Core to provide next libraries as classpath. Don't want to add guava, xstream, asm-all unless have to do so-->
+    <stubModelEntry path="${platform_lib}/log4j.jar" />
+    <stubModelEntry path="${platform_lib}/trove4j.jar" />
+    <stubModelEntry path="${platform_lib}/jdom.jar" />
+    <stubModelEntry path="${platform_lib}/ecj-4.13.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
