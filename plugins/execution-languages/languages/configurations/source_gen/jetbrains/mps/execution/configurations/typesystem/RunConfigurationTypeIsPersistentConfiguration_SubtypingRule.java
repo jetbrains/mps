@@ -28,8 +28,8 @@ public class RunConfigurationTypeIsPersistentConfiguration_SubtypingRule extends
     return true;
   }
   private static SNode createTemplatePersistentConfigurationType_h3k8gi_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

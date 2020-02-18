@@ -91,10 +91,10 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
       return myParameter;
     }
   }
-  private static SNode createDSLAnnotation_qk2y7i_a0a0a(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DSLAnnotation$dI);
-    rootBuilder1.setReferenceTarget(LINKS.descriptor$Zoot, node0);
-    return rootBuilder1.getResult();
+  private static SNode createDSLAnnotation_qk2y7i_a0a0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DSLAnnotation$dI);
+    n0.setReferenceTarget(LINKS.descriptor$Zoot, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

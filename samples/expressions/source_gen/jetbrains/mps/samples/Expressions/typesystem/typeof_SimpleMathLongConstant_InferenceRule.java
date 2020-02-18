@@ -33,8 +33,8 @@ public class typeof_SimpleMathLongConstant_InferenceRule extends AbstractInferen
     return false;
   }
   private static SNode createSimpleMathLongType_j74srz_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

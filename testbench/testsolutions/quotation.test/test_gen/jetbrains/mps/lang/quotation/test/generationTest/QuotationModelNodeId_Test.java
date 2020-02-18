@@ -69,9 +69,9 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
 
 
     private static SNode createReturnStatement_fw7ydn_a0c0d8(SModel modelToCreate, org.jetbrains.mps.openapi.model.SNodeId nodeId) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder1.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.ReturnStatement$SF);
+      n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
+      return n0.getResult();
     }
     private static SNode _quotation_createNode_fw7ydn_a0c0e8(Object parameter_1, Object parameter_2) {
       PersistenceFacade facade = PersistenceFacade.getInstance();

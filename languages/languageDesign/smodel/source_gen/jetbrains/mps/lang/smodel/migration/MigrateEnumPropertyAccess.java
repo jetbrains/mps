@@ -328,15 +328,15 @@ public class MigrateEnumPropertyAccess extends MigrationScriptBase {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode createEnumMemberReference_xqhmgi_a0f0d0d0m(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EnumMemberReference$9_);
-    rootBuilder1.setReferenceTarget(LINKS.decl$Hqa_, node0);
-    return rootBuilder1.getResult();
+  private static SNode createEnumMemberReference_xqhmgi_a0f0d0d0m(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EnumMemberReference$9_);
+    n0.setReferenceTarget(LINKS.decl$Hqa_, p0);
+    return n0.getResult();
   }
-  private static SNode createEnumMemberReference_xqhmgi_a0a2a4a6a3a21(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EnumMemberReference$9_);
-    rootBuilder1.setReferenceTarget(LINKS.decl$Hqa_, node0);
-    return rootBuilder1.getResult();
+  private static SNode createEnumMemberReference_xqhmgi_a0a2a4a6a3a21(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EnumMemberReference$9_);
+    n0.setReferenceTarget(LINKS.decl$Hqa_, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

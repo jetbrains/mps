@@ -373,8 +373,9 @@ with_throws:
     return quotedNode_1;
   }
   private static SNode createClassifierType_ksvwin_a0b0i() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
+    n0.setReferenceTarget(LINKS.classifier$pQ_R, null);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_ksvwin_a0a0m() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

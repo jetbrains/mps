@@ -34,10 +34,10 @@ public class typeof_CommandReferenceExpression_InferenceRule extends AbstractInf
   public boolean overrides() {
     return false;
   }
-  private static SNode createCommandType_ec8mha_a1a0c0a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CommandType$8c);
-    rootBuilder1.setReferenceTarget(LINKS.classifier$LHKW, node0);
-    return rootBuilder1.getResult();
+  private static SNode createCommandType_ec8mha_a1a0c0a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CommandType$8c);
+    n0.setReferenceTarget(LINKS.classifier$LHKW, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

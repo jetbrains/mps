@@ -85,16 +85,16 @@ public class typeof_ArithmeticSimpleMathExpression_InferenceRule extends Abstrac
     return false;
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
+    return n0.getResult();
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0b0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
+    return n0.getResult();
   }
   private static SNode createSimpleMathNumberType_jrhb9c_a1a0c0c0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
+    return n0.getResult();
   }
 
   private static final class LINKS {

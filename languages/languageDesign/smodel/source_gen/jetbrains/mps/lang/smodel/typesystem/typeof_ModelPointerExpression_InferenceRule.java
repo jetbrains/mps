@@ -33,8 +33,8 @@ public class typeof_ModelPointerExpression_InferenceRule extends AbstractInferen
     return false;
   }
   private static SNode createSModelPointerType_uayjdk_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SModelPointerType$8T);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SModelPointerType$8T);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

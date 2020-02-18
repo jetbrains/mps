@@ -99,10 +99,10 @@ public final class MoveConcept__BehaviorDescriptor extends BaseBHDescriptor {
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createDeprecatedNodeAnnotation_t3xq9p_a0e0b(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createDeprecatedNodeAnnotation_t3xq9p_a0e0b(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
+    n0.setProperty(PROPS.comment$MxQb, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

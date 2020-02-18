@@ -54,12 +54,12 @@
       <node id="8417162567090546835" at="116,41,117,72" concept="7" />
       <node id="8417162567090411897" at="117,72,118,25" concept="8" />
       <node id="284455749617423107" at="123,51,124,144" concept="8" />
-      <node id="284455749617649047" at="127,110,128,104" concept="7" />
-      <node id="284455749617649047" at="128,104,129,100" concept="2" />
-      <node id="284455749617649047" at="129,100,130,103" concept="2" />
-      <node id="284455749617649047" at="130,103,131,107" concept="2" />
-      <node id="284455749617649047" at="131,107,132,86" concept="2" />
-      <node id="284455749617649047" at="132,86,133,36" concept="8" />
+      <node id="284455749617649047" at="127,111,128,94" concept="7" />
+      <node id="284455749617649047" at="128,94,129,54" concept="2" />
+      <node id="284455749617649047" at="129,54,130,57" concept="2" />
+      <node id="284455749617649047" at="130,57,131,59" concept="2" />
+      <node id="284455749617649047" at="131,59,132,40" concept="2" />
+      <node id="284455749617649047" at="132,40,133,26" concept="8" />
       <node id="284455749617804612" at="135,71,136,63" concept="7" />
       <node id="284455749617804612" at="136,63,137,30" concept="7" />
       <node id="284455749617804612" at="137,30,138,30" concept="7" />
@@ -160,7 +160,7 @@
       <node id="7763823021513822668" at="69,236,74,11" concept="5" />
       <node id="8417162567090341321" at="105,62,110,8" concept="7" />
       <node id="7763823021511398884" at="89,16,96,11" concept="0" />
-      <node id="284455749617649047" at="127,0,135,0" concept="11" trace="createCheckNodeForErrorMessagesOperation_j3gqtx_a0a2a0a0a0d0a0d#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="284455749617649047" at="127,0,135,0" concept="11" trace="createCheckNodeForErrorMessagesOperation_j3gqtx_a0a2a0a0a0d0a0d#(ZLjava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8417162567090341323" at="110,8,120,9" concept="8" />
       <node id="7763823021513791626" at="63,76,76,9" concept="5" />
       <node id="7763823021513789429" at="62,91,77,7" concept="4" />
@@ -208,8 +208,8 @@
       <scope id="7763823021511398885" at="89,18,95,127">
         <var name="ann" id="2482611074347124804" />
       </scope>
-      <scope id="284455749617649047" at="127,110,133,36">
-        <var name="rootBuilder1" id="284455749617649047" />
+      <scope id="284455749617649047" at="127,111,133,26">
+        <var name="n0" id="284455749617649047" />
       </scope>
       <scope id="7763823021513791628" at="68,113,75,61">
         <var name="testName" id="7763823021513822655" />
@@ -581,9 +581,9 @@
       <node id="5462094956390011552" at="75,41,76,83" concept="8" />
       <node id="7680625225105658074" at="79,41,80,113" concept="8" />
       <node id="6471305449341895792" at="85,51,86,144" concept="8" />
-      <node id="6471305449342044946" at="90,83,91,88" concept="7" />
-      <node id="6471305449342044946" at="91,88,92,65" concept="2" />
-      <node id="6471305449342044946" at="92,65,93,36" concept="8" />
+      <node id="6471305449342044946" at="90,80,91,78" concept="7" />
+      <node id="6471305449342044946" at="91,78,92,52" concept="2" />
+      <node id="6471305449342044946" at="92,52,93,26" concept="8" />
       <node id="6471305449341895792" at="97,0,98,0" concept="10" trace="MigrationTestCase$Sn" />
       <node id="6471305449341895792" at="98,0,99,0" concept="10" trace="MigrationReference$BB" />
       <node id="6471305449341895792" at="102,0,103,0" concept="10" trace="migration_old$otou" />
@@ -632,8 +632,8 @@
         <var name="it" id="5462094956390014897" />
       </scope>
       <scope id="6471305449341895792" at="85,0,88,0" />
-      <scope id="6471305449342044946" at="90,83,93,36">
-        <var name="rootBuilder1" id="6471305449342044946" />
+      <scope id="6471305449342044946" at="90,80,93,26">
+        <var name="n0" id="6471305449342044946" />
       </scope>
       <scope id="6471305449341895792" at="34,0,38,0" />
       <scope id="6471305449341895792" at="38,0,42,0">
@@ -643,7 +643,7 @@
         <var name="it" id="1304837983361845061" />
       </scope>
       <scope id="6471305449342044946" at="90,0,95,0">
-        <var name="node0" id="6471305449342044946" />
+        <var name="p0" id="6471305449342044946" />
       </scope>
       <scope id="5462094956390018376" at="66,5,82,9">
         <var name="context" id="5462094956390018376" />

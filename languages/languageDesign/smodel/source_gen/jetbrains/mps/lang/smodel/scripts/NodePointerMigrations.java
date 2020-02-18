@@ -149,51 +149,51 @@ public final class NodePointerMigrations {
     SNodeOperations.replaceWithAnother(node, createDotExpression_svssow_a0a0a53(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.operand$Lcrr), CONCEPTS.SemanticDowncastExpression$us), LINKS.leftExpression$flIo)));
   }
 
-  private static SNode createDotExpression_svssow_a0a6(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
+  private static SNode createDotExpression_svssow_a0a6(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    n0.forChild(LINKS.operand$Lcrr).initNode(p0, CONCEPTS.Expression$TP, true);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Node_IsOperation$IL);
-      n2.forChild(LINKS.ref$Jrnz).initNode(node1, CONCEPTS.NodeIdentity$tk, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.Node_IsOperation$IL);
+      n1.forChild(LINKS.ref$Jrnz).initNode(p1, CONCEPTS.NodeIdentity$tk, true);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createNotExpression_svssow_a0a8(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NotExpression$oq);
-    rootBuilder1.forChild(LINKS.expression$bUD_).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createNotExpression_svssow_a0a8(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NotExpression$oq);
+    n0.forChild(LINKS.expression$bUD_).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
-  private static SNode createNamedNodeReference_svssow_a0a0d0q(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NamedNodeReference$uC);
-    rootBuilder1.setReferenceTarget(LINKS.target$I6bY, node0);
-    rootBuilder1.forChild(LINKS.child$I6D2).initNode(node1, CONCEPTS.NamedNodeReference$uC, true);
-    return rootBuilder1.getResult();
+  private static SNode createNamedNodeReference_svssow_a0a0d0q(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NamedNodeReference$uC);
+    n0.setReferenceTarget(LINKS.target$I6bY, p0);
+    n0.forChild(LINKS.child$I6D2).initNode(p1, CONCEPTS.NamedNodeReference$uC, true);
+    return n0.getResult();
   }
-  private static SNode createDotExpression_svssow_a0a02(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
+  private static SNode createDotExpression_svssow_a0a02(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    n0.forChild(LINKS.operand$Lcrr).initNode(p0, CONCEPTS.Expression$TP, true);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Node_IsOperation$IL);
-      n2.forChild(LINKS.ref$Jrnz).initNode(node1, CONCEPTS.NodeIdentity$tk, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.Node_IsOperation$IL);
+      n1.forChild(LINKS.ref$Jrnz).initNode(p1, CONCEPTS.NodeIdentity$tk, true);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createNotExpression_svssow_a0a22(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NotExpression$oq);
-    rootBuilder1.forChild(LINKS.expression$bUD_).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createNotExpression_svssow_a0a22(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NotExpression$oq);
+    n0.forChild(LINKS.expression$bUD_).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
-  private static SNode createDotExpression_svssow_a0a0a33(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
-    rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Node_PointerOperation$Ry);
-    return rootBuilder1.getResult();
+  private static SNode createDotExpression_svssow_a0a0a33(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    n0.forChild(LINKS.operand$Lcrr).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.Node_PointerOperation$Ry);
+    return n0.getResult();
   }
-  private static SNode createDotExpression_svssow_a0a0a53(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
-    rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Model_PointerOperation$_k);
-    return rootBuilder1.getResult();
+  private static SNode createDotExpression_svssow_a0a0a53(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    n0.forChild(LINKS.operand$Lcrr).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.Model_PointerOperation$_k);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

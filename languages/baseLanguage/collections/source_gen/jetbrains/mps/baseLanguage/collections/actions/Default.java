@@ -40,10 +40,10 @@ public class Default {
         });
       }
     }
-    private static SNode createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SNode node0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MultiForEachVariableReference$PW);
-      rootBuilder1.setReferenceTarget(LINKS.variable$ptyX, node0);
-      return rootBuilder1.getResult();
+    private static SNode createMultiForEachVariableReference_qjewi8_a0a0a0a0f0a0a0(SNode p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MultiForEachVariableReference$PW);
+      n0.setReferenceTarget(LINKS.variable$ptyX, p0);
+      return n0.getResult();
     }
   }
   public static class NodeFactory_8656797459614853042 implements NodeFactory {
@@ -64,10 +64,10 @@ public class Default {
         });
       }
     }
-    private static SNode createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SNode node0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ForEachVariableReference$q$);
-      rootBuilder1.setReferenceTarget(LINKS.variable$ue0d, node0);
-      return rootBuilder1.getResult();
+    private static SNode createForEachVariableReference_qjewi8_a0a0a0a0e0a0a1(SNode p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ForEachVariableReference$q$);
+      n0.setReferenceTarget(LINKS.variable$ue0d, p0);
+      return n0.getResult();
     }
   }
 

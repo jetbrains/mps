@@ -152,12 +152,12 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
       return CONCEPTS.AbstractToolKeystroke$VM;
     }
   }
-  private static SNode createCustomToolShortcut_7ty2v0_a0a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CustomToolShortcut$gS);
+  private static SNode createCustomToolShortcut_7ty2v0_a0a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomToolShortcut$gS);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.changes$bLB7).initNode(node0, CONCEPTS.AbstractToolKeystroke$VM, false);
+      SNodeBuilder n1 = n0.forChild(LINKS.changes$bLB7).initNode(p0, CONCEPTS.AbstractToolKeystroke$VM, false);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

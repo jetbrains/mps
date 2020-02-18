@@ -5,15 +5,12 @@ package jetbrains.mps.lang.pattern.test;
 import junit.framework.TestCase;
 import org.jetbrains.mps.openapi.model.SNode;
 import junit.framework.Assert;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.smodel.ModelAccess;
-import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.pattern.AbstractGeneratedPattern;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.pattern.NodeMatcherBuilder;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -74,55 +71,10 @@ public class LightPattern_Reference_Test extends TestCase {
     }
     Assert.assertTrue(matches);
   }
-  public void test_patternSwitch4_matches() throws Exception {
-    final Wrappers._boolean matches = new Wrappers._boolean();
-    // todo: read access should be redundant here 
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeToMatch = _quotation_createNode_z02wj9_a0a0a2a5a();
-        if (new Pattern4_Pattern().match(nodeToMatch)) {
-          matches.value = true;
-        } else {
-          matches.value = false;
-        }
-      }
-    });
-    Assert.assertTrue(matches.value);
-  }
-  public void test_patternSwitch4_referenceMismatch() throws Exception {
-    final Wrappers._boolean matches = new Wrappers._boolean();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeToMatch = _quotation_createNode_z02wj9_a0a0a1a6a();
-        if (new Pattern4_Pattern().match(nodeToMatch)) {
-          matches.value = true;
-        } else {
-          matches.value = false;
-        }
-      }
-    });
-    Assert.assertFalse(matches.value);
-  }
-  public void test_patternSwitch5_matchesWithReference() throws Exception {
-    final Wrappers._boolean matches = new Wrappers._boolean();
-    ModelAccess.instance().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeToMatch = _quotation_createNode_z02wj9_a0a0a1a7a();
-        Pattern5_Pattern pattern0;
-        if ((pattern0 = new Pattern5_Pattern()).match(nodeToMatch)) {
-          matches.value = Objects.equals(SNodeOperations.getPointer(Pattern5_Pattern.getVar(nodeToMatch)), new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String.<init>()"));
-        } else {
-          matches.value = false;
-        }
-      }
-    });
-    Assert.assertTrue(matches.value);
-  }
   public void test_patternSwitch5_matchesWithoutReference() throws Exception {
     boolean matches;
-    SNode nodeToMatch = _quotation_createNode_z02wj9_a0b0i0();
-    Pattern5_Pattern pattern0;
-    if ((pattern0 = new Pattern5_Pattern()).match(nodeToMatch)) {
+    SNode nodeToMatch = _quotation_createNode_z02wj9_a0b0f0();
+    if (new Pattern5_Pattern().match(nodeToMatch)) {
       matches = Pattern5_Pattern.getVar(nodeToMatch) == null;
     } else {
       matches = false;
@@ -132,65 +84,65 @@ public class LightPattern_Reference_Test extends TestCase {
   private static class Pattern1_Pattern extends AbstractGeneratedPattern {
     public Pattern1_Pattern() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n1 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
         {
           NodeMatcherBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
           n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object.<init>()")));
         }
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern2_Pattern extends AbstractGeneratedPattern {
     public Pattern2_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n3 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
         {
-          NodeMatcherBuilder n4 = n3.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-          n4.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, null);
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+          n2.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, null);
         }
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern3_Pattern extends AbstractGeneratedPattern {
     public Pattern3_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n5 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
-        n5.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
+        n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern4_Pattern extends AbstractGeneratedPattern {
     public Pattern4_Pattern() {
       SNode p0 = SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"), SNodeOperations.getModel(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")).getRepository());
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n6 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
         {
-          NodeMatcherBuilder n7 = n6.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-          n7.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+          n2.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
         }
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern5_Pattern extends AbstractGeneratedPattern {
     public Pattern5_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n8 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
         {
-          NodeMatcherBuilder n9 = n8.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-          n9.setReferenceVariable(LINKS.constructorDeclaration$KXsm);
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+          n2.setReferenceVariable(LINKS.constructorDeclaration$KXsm);
         }
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Nullable
     public static SNode getVar(SNode rootNode) {
@@ -263,46 +215,7 @@ public class LightPattern_Reference_Test extends TestCase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_z02wj9_a0a0a2a5a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement")).getResult();
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator")).getResult();
-    quotedNode_3.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), quotedNode_3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object.<init>()")));
-    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), quotedNode_3);
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_2);
-    return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_z02wj9_a0a0a1a6a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement")).getResult();
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator")).getResult();
-    quotedNode_3.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), quotedNode_3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String.<init>()")));
-    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), quotedNode_3);
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_2);
-    return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_z02wj9_a0a0a1a7a() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    SNode quotedNode_2 = null;
-    SNode quotedNode_3 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement")).getResult();
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression")).getResult();
-    quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator")).getResult();
-    quotedNode_3.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), quotedNode_3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String.<init>()")));
-    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), quotedNode_3);
-    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_2);
-    return quotedNode_1;
-  }
-  private static SNode _quotation_createNode_z02wj9_a0b0i0() {
+  private static SNode _quotation_createNode_z02wj9_a0b0f0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;

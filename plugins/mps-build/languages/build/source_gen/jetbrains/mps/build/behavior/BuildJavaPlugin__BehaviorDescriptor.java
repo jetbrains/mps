@@ -139,9 +139,9 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
   }
   private static SNode createBwfTaskLibraryDependency_bn484n_a0a0a0c() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$Kt);
-    rootBuilder1.setReference(LINKS.target$LSxw, new SNodePointer(facade.createModelReference("r:dc6ee11b-0a41-4208-a099-65b1a11fb3ff(jetbrains.mps.build.workflow.preset.java)"), facade.createNodeId("7306485738221408314")));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$Kt);
+    n0.setReference(LINKS.target$LSxw, new SNodePointer(facade.createModelReference("r:dc6ee11b-0a41-4208-a099-65b1a11fb3ff(jetbrains.mps.build.workflow.preset.java)"), facade.createNodeId("7306485738221408314")));
+    return n0.getResult();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

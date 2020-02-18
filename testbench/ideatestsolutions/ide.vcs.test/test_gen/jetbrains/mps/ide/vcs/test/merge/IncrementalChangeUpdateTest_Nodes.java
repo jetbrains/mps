@@ -165,9 +165,9 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
     });
   }
   private static SNode createClassConcept_2k50sb_a0a0a0a0a8() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "NewRoot");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
+    n0.setProperty(PROPS.name$tAp1, "NewRoot");
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_2k50sb_a0a0a0a0o() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

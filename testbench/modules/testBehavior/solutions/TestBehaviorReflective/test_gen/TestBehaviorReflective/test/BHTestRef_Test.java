@@ -459,300 +459,300 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
     new TestMakeUtil(myEnvironment.getPlatform()).make(myProject);
   }
   private static SNode createA_cc8y9n_a0a0a0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0b0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0c0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0d0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0e0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0f0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0g0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0h0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0i0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0j0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0k0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0l0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0m0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0n0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0o0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0p0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0q0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0r0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0s0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0t0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0u0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0v0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0w0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0x0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0y0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0z0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$5Q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$5Q);
+    return n0.getResult();
   }
   private static SNode createA1_cc8y9n_a0a0ab0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A1$TK);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A1$TK);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0bb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$OZ);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$OZ);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0c0bb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$uM);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$uM);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0cb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$OZ);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$OZ);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0c0cb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$uM);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$uM);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0db0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Ck);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Ck);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0c0db0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Ck);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Ck);
+    return n0.getResult();
   }
   private static SNode createC1_cc8y9n_a0a0eb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C1$Fd);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C1$Fd);
+    return n0.getResult();
   }
   private static SNode createC2_cc8y9n_a0a0fb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C2$Gl);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C2$Gl);
+    return n0.getResult();
   }
   private static SNode createC3_cc8y9n_a0a0gb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C3$Wr);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C3$Wr);
+    return n0.getResult();
   }
   private static SNode createC4_cc8y9n_a0a0hb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C4$cS);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C4$cS);
+    return n0.getResult();
   }
   private static SNode createC5_cc8y9n_a0a0ib0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C5$Ng);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C5$Ng);
+    return n0.getResult();
   }
   private static SNode createP_cc8y9n_a0a0jb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.P$tz);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.P$tz);
+    return n0.getResult();
   }
   private static SNode createP_cc8y9n_a0a0kb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.P$tz);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.P$tz);
+    return n0.getResult();
   }
   private static SNode createP_cc8y9n_a0a0lb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.P$tz);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.P$tz);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0tb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$70);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$70);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0ub0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Yl);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Yl);
+    return n0.getResult();
   }
   private static SNode createC_cc8y9n_a0a0vb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C$Q6);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C$Q6);
+    return n0.getResult();
   }
   private static SNode createD_cc8y9n_a0a0yb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.D$6y);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.D$6y);
+    return n0.getResult();
   }
   private static SNode createD_cc8y9n_a0a0zb0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.D$6y);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.D$6y);
+    return n0.getResult();
   }
   private static SNode createD_cc8y9n_a0a0ac0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.D$6y);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.D$6y);
+    return n0.getResult();
   }
   private static SNode createD_cc8y9n_a0b0bc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.D$6y);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.D$6y);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0cc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Yl);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Yl);
+    return n0.getResult();
   }
   private static SNode createD_cc8y9n_a0c0cc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.D$6y);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.D$6y);
+    return n0.getResult();
   }
   private static SNode createH_cc8y9n_a0a0dc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.H$xy);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.H$xy);
+    return n0.getResult();
   }
   private static SNode createH_cc8y9n_a0c0dc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.H$xy);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.H$xy);
+    return n0.getResult();
   }
   private static SNode createJ_cc8y9n_a0a0ec0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.J$69);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.J$69);
+    return n0.getResult();
   }
   private static SNode createJ_cc8y9n_a0a0fc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.J$69);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.J$69);
+    return n0.getResult();
   }
   private static SNode createE_cc8y9n_a0a0gc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.E$qK);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.E$qK);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0hc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Xh);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Xh);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0ic0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Xh);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Xh);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0jc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Xh);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Xh);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0kc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Xh);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Xh);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0a0lc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Xh);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Xh);
+    return n0.getResult();
   }
   private static SNode createC_cc8y9n_a0a0mc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C$Fu);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C$Fu);
+    return n0.getResult();
   }
   private static SNode createH_cc8y9n_a0a0nc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.H$Vv);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.H$Vv);
+    return n0.getResult();
   }
   private static SNode createD_cc8y9n_a0b0oc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.D$q8);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.D$q8);
+    return n0.getResult();
   }
   private static SNode createD_cc8y9n_a0d0oc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.D$q8);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.D$q8);
+    return n0.getResult();
   }
   private static SNode createF_cc8y9n_a0a0pc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.F$pf);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.F$pf);
+    return n0.getResult();
   }
   private static SNode createG_cc8y9n_a0d0pc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.G$CM);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.G$CM);
+    return n0.getResult();
   }
   private static SNode createG_cc8y9n_a0f0pc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.G$CM);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.G$CM);
+    return n0.getResult();
   }
   private static SNode createE_cc8y9n_a0a0qc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.E$vi);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.E$vi);
+    return n0.getResult();
   }
   private static SNode createC_cc8y9n_a0a0sc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.C$Fu);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.C$Fu);
+    return n0.getResult();
   }
   private static SNode createB_cc8y9n_a0b0sc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.B$Xh);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.B$Xh);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0c0sc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$WM);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$WM);
+    return n0.getResult();
   }
   private static SNode createK_cc8y9n_a0d0sc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.K$be);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.K$be);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0tc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$WM);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$WM);
+    return n0.getResult();
   }
   private static SNode createA_cc8y9n_a0a0uc0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.A$WM);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$WM);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -33,8 +33,8 @@ public class typeof_HighLevelWatchableCreator_InferenceRule extends AbstractInfe
     return false;
   }
   private static SNode createWatchableType_qzkqie_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.WatchableType$1t);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.WatchableType$1t);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

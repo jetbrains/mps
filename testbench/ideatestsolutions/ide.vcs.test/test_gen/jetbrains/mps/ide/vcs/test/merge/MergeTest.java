@@ -439,22 +439,22 @@ public class MergeTest extends ChangesTestBase {
     SModel createModel();
   }
   private static SNode createClassConcept_u0wfvp_a0a0a0a0u() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
+    return n0.getResult();
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0y() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "newMethod");
-    rootBuilder1.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-    rootBuilder1.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
+    n0.setProperty(PROPS.name$tAp1, "newMethod");
+    n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
+    n0.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
+    return n0.getResult();
   }
   private static SNode createInstanceMethodDeclaration_u0wfvp_a0a0a0a0a0a15() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "newMethod");
-    rootBuilder1.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-    rootBuilder1.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
+    n0.setProperty(PROPS.name$tAp1, "newMethod");
+    n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
+    n0.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
+    return n0.getResult();
   }
 
   private static final class PROPS {

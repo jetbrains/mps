@@ -74,7 +74,7 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
   private class TMP_Action_scvrho_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_scvrho_a0.Item item = new TMP_Action_scvrho_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -136,10 +136,10 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
 
   }
   private static SNode createLabeledNode_scvrho_a0a0a0a0(SModel modelToCreate, SNodeId nodeId, String p0) {
-    SNodeBuilder rootBuilder = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.LabeledNode$iM);
-    rootBuilder.setProperty(PROPS.name$tAp1, p0);
-    rootBuilder.setReferenceTarget(LINKS.concept$lMG$, null);
-    return rootBuilder.getResult();
+    SNodeBuilder n0 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.LabeledNode$iM);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setReferenceTarget(LINKS.concept$lMG$, null);
+    return n0.getResult();
   }
 
   private static final class PROPS {

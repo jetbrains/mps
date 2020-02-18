@@ -128,9 +128,9 @@ public class RootStatusTest extends ChangesTestBase {
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }
   private static SNode createClassConcept_37f57n_a0a0a0a0a2() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "NewRoot");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
+    n0.setProperty(PROPS.name$tAp1, "NewRoot");
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_37f57n_a0a0a0a0i() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

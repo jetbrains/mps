@@ -35,9 +35,9 @@ public class TemplatePersistentConfigurationTypeClassifier_SubtypingRule extends
   }
   private static SNode createClassifierType_ggkioq_a0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    rootBuilder1.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)"), facade.createNodeId("3908032508224771772")));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
+    n0.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)"), facade.createNodeId("3908032508224771772")));
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

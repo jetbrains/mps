@@ -71,20 +71,20 @@ public final class LiteralMessageSplitHelper {
       }
     }
   }
-  private static SNode createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    n0.setProperty(PROPS.message$vnr0, p0);
+    return n0.getResult();
   }
-  private static SNode createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    n0.setProperty(PROPS.message$vnr0, p0);
+    return n0.getResult();
   }
-  private static SNode createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(Iterable<? extends SNode> seq0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
-    rootBuilder1.forChild(LINKS.part$x7tZ).initNodeList(seq0, CONCEPTS.MessageExpression$FF);
-    return rootBuilder1.getResult();
+  private static SNode createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(Iterable<? extends SNode> p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
+    n0.forChild(LINKS.part$x7tZ).initNodeList(p0, CONCEPTS.MessageExpression$FF);
+    return n0.getResult();
   }
 
   private static final class LINKS {

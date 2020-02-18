@@ -62,10 +62,10 @@ public class Producer_TabDescriptor extends RelationDescriptor {
     SModelOperations.addRootNode(SNodeOperations.getModel(node), producer);
     return producer;
   }
-  private static SNode createPersistentConfigurationType_rqzr2x_a0b0a0(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
-    return rootBuilder1.getResult();
+  private static SNode createPersistentConfigurationType_rqzr2x_a0b0a0(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

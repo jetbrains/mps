@@ -51,7 +51,7 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_y43w6t_a.Item item = new SMP_Action_y43w6t_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -104,9 +104,9 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private static SNode createPatternVariableNode_y43w6t_a0a0a(String p0) {
-    SNodeBuilder rootBuilder = new SNodeBuilder().init(CONCEPTS.PatternVariableNode$dP);
-    rootBuilder.setProperty(PROPS.name$tAp1, p0);
-    return rootBuilder.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PatternVariableNode$dP);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -24,10 +24,10 @@ public final class SwitchExpressionPW_PasteWrapper_3 implements PasteWrapper {
   public SNode wrap(SNode sourceNode) {
     return createEnumSwitchCaseBody_Expression_degi1_a0a0d(SLinkOperations.getTarget(sourceNode, LINKS.expression$WIP0));
   }
-  private static SNode createEnumSwitchCaseBody_Expression_degi1_a0a0d(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_Expression$Xi);
-    rootBuilder1.forChild(LINKS.expression$6WR0).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createEnumSwitchCaseBody_Expression_degi1_a0a0d(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_Expression$Xi);
+    n0.forChild(LINKS.expression$6WR0).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

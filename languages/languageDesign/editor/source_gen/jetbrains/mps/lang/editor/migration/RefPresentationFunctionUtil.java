@@ -164,10 +164,10 @@ public final class RefPresentationFunctionUtil {
       quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant")).getResult();
       return quotedNode_1;
     }
-    private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j4(Object p0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      rootBuilder1.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(p0));
-      return rootBuilder1.getResult();
+    private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j4(boolean p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
+      n0.setProperty(PROPS.value$WIn0, "" + (p0));
+      return n0.getResult();
     }
     private static SNode _quotation_createNode_5b8pgj_a0a0a0a0a0k4() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -409,15 +409,15 @@ public final class RefPresentationFunctionUtil {
       quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant")).getResult();
       return quotedNode_1;
     }
-    private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j6(Object p0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      rootBuilder1.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(p0));
-      return rootBuilder1.getResult();
+    private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j6(boolean p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
+      n0.setProperty(PROPS.value$WIn0, "" + (p0));
+      return n0.getResult();
     }
-    private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0k6(Object p0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      rootBuilder1.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(p0));
-      return rootBuilder1.getResult();
+    private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0k6(boolean p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
+      n0.setProperty(PROPS.value$WIn0, "" + (p0));
+      return n0.getResult();
     }
     private static SNode _quotation_createNode_5b8pgj_a0a0a0a0a0l6() {
       PersistenceFacade facade = PersistenceFacade.getInstance();

@@ -82,15 +82,15 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:f5dc9f67-2195-4fd6-8b9b-a998435bfa08(jetbrains.mps.lang.generator.scripts)/8102310632648167264");
   }
-  private static SNode createNodePointerExpression_vfdyfl_a0a0a0a(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    rootBuilder1.forChild(LINKS.ref$Xkjz).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
-    return rootBuilder1.getResult();
+  private static SNode createNodePointerExpression_vfdyfl_a0a0a0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
+    n0.forChild(LINKS.ref$Xkjz).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    return n0.getResult();
   }
-  private static SNode createNodePointerExpression_vfdyfl_a0a1a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    rootBuilder1.forChild(LINKS.ref$Xkjz).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
-    return rootBuilder1.getResult();
+  private static SNode createNodePointerExpression_vfdyfl_a0a1a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
+    n0.forChild(LINKS.ref$Xkjz).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

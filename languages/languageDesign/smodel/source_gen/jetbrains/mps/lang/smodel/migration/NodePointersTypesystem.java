@@ -73,10 +73,10 @@ public class NodePointersTypesystem extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 9);
   }
 
-  private static SNode createSemanticDowncastExpression_p7xwcw_a0a0a2a0a0a0b0a0g(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$us);
-    rootBuilder1.forChild(LINKS.leftExpression$flIo).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createSemanticDowncastExpression_p7xwcw_a0a0a2a0a0a0b0a0g(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$us);
+    n0.forChild(LINKS.leftExpression$flIo).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

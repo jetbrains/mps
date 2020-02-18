@@ -617,9 +617,9 @@
       <node id="244232129432264121" at="111,70,112,80" concept="7" />
       <node id="244232129432264121" at="112,80,113,128" concept="8" />
       <node id="244232129432264121" at="115,86,116,36" concept="8" />
-      <node id="244232129432264484" at="119,69,120,82" concept="7" />
-      <node id="244232129432264484" at="120,82,121,95" concept="2" />
-      <node id="244232129432264484" at="121,95,122,36" concept="8" />
+      <node id="244232129432264484" at="119,66,120,72" concept="7" />
+      <node id="244232129432264484" at="120,72,121,82" concept="2" />
+      <node id="244232129432264484" at="121,82,122,26" concept="8" />
       <node id="244232129432264120" at="126,0,127,0" concept="11" trace="BLExpression$iZ" />
       <node id="244232129432264120" at="127,0,128,0" concept="11" trace="Expression$TP" />
       <node id="244232129432264120" at="131,0,132,0" concept="11" trace="expression$HQe6" />
@@ -662,8 +662,8 @@
       <scope id="244232129432264121" at="115,0,118,0">
         <var name="_context" id="244232129432264121" />
       </scope>
-      <scope id="244232129432264484" at="119,69,122,36">
-        <var name="rootBuilder1" id="244232129432264484" />
+      <scope id="244232129432264484" at="119,66,122,26">
+        <var name="n0" id="244232129432264484" />
       </scope>
       <scope id="244232129432264121" at="92,0,96,0">
         <var name="createdNode" id="244232129432264121" />
@@ -671,7 +671,7 @@
       </scope>
       <scope id="244232129432264121" at="80,0,85,0" />
       <scope id="244232129432264484" at="119,0,124,0">
-        <var name="node0" id="244232129432264484" />
+        <var name="p0" id="244232129432264484" />
       </scope>
       <scope id="244232129432264120" at="39,0,46,0">
         <var name="_context" id="244232129432264120" />
@@ -3584,9 +3584,9 @@
       <node id="8403273890733878620" at="79,70,80,0" concept="10" />
       <node id="8403273890733878620" at="80,0,81,77" concept="9" />
       <node id="8403273890733878621" at="82,60,83,66" concept="2" />
-      <node id="244232129432518983" at="86,72,87,82" concept="7" />
-      <node id="244232129432518983" at="87,82,88,95" concept="2" />
-      <node id="244232129432518983" at="88,95,89,36" concept="8" />
+      <node id="244232129432518983" at="86,69,87,72" concept="7" />
+      <node id="244232129432518983" at="87,72,88,82" concept="2" />
+      <node id="244232129432518983" at="88,82,89,26" concept="8" />
       <node id="8403273890733878620" at="93,0,94,0" concept="11" trace="body$78zK" />
       <node id="8403273890733878620" at="94,0,95,0" concept="11" trace="statement$WHn8" />
       <node id="8403273890733878620" at="95,0,96,0" concept="11" trace="expression$WIP0" />
@@ -3623,11 +3623,11 @@
       <scope id="8403273890733887894" at="38,169,41,110">
         <var name="replacement" id="244232129432518982" />
       </scope>
-      <scope id="244232129432518983" at="86,72,89,36">
-        <var name="rootBuilder1" id="244232129432518983" />
+      <scope id="244232129432518983" at="86,69,89,26">
+        <var name="n0" id="244232129432518983" />
       </scope>
       <scope id="244232129432518983" at="86,0,91,0">
-        <var name="node0" id="244232129432518983" />
+        <var name="p0" id="244232129432518983" />
       </scope>
       <scope id="8403273890733878620" at="68,102,74,0" />
       <scope id="8403273890733878620" at="77,135,84,5" />
@@ -3779,11 +3779,11 @@
       <node id="963101385307642090" at="84,0,85,77" concept="9" />
       <node id="963101385307643994" at="86,60,87,66" concept="2" />
       <node id="6891027939994643973" at="89,63,90,69" concept="2" />
-      <node id="244232129432388516" at="93,68,94,79" concept="7" />
-      <node id="244232129432388516" at="95,5,96,95" concept="7" />
+      <node id="244232129432388516" at="93,65,94,69" concept="7" />
+      <node id="244232129432388516" at="95,5,96,85" concept="7" />
       <node id="244232129432388516" at="97,7,98,98" concept="7" />
-      <node id="244232129432388516" at="98,98,99,89" concept="2" />
-      <node id="244232129432388516" at="101,5,102,36" concept="8" />
+      <node id="244232129432388516" at="98,98,99,86" concept="2" />
+      <node id="244232129432388516" at="101,5,102,26" concept="8" />
       <node id="963101385307642090" at="106,0,107,0" concept="11" trace="expression$HQe6" />
       <node id="963101385307642090" at="107,0,108,0" concept="11" trace="commandHolder$4VSX" />
       <node id="963101385307642090" at="108,0,109,0" concept="11" trace="command$pL9$" />
@@ -3802,9 +3802,9 @@
       <node id="963101385307643994" at="85,77,88,5" concept="5" />
       <node id="6891027939994643973" at="88,5,91,5" concept="5" />
       <node id="963101385307643994" at="33,0,37,0" concept="6" trace="canExecute#(Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="244232129432388516" at="96,95,100,7" concept="0" />
+      <node id="244232129432388516" at="96,85,100,7" concept="0" />
       <node id="963101385307643994" at="28,0,33,0" concept="6" trace="execute_internal#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="244232129432388516" at="94,79,101,5" concept="0" />
+      <node id="244232129432388516" at="94,69,101,5" concept="0" />
       <node id="6891027939994643973" at="43,82,52,6" concept="8" />
       <node id="963101385307642090" at="71,0,80,0" concept="12" trace="setDefinedCellActions#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="6891027939994643973" at="43,0,54,0" concept="12" trace="createAction_BACKSPACE#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/editor/runtime/cells/AbstractCellAction;" />
@@ -3821,8 +3821,8 @@
       <scope id="963101385307642090" at="66,81,67,67" />
       <scope id="963101385307643994" at="86,60,87,66" />
       <scope id="6891027939994643973" at="89,63,90,69" />
-      <scope id="244232129432388516" at="97,7,99,89">
-        <var name="n3" id="244232129432388516" />
+      <scope id="244232129432388516" at="97,7,99,86">
+        <var name="n2" id="244232129432388516" />
       </scope>
       <scope id="963101385307643994" at="25,0,28,0">
         <var name="editorContext" id="963101385307643994" />
@@ -3849,7 +3849,7 @@
         <var name="node" id="963101385307643994" />
       </scope>
       <scope id="244232129432388516" at="95,5,100,7">
-        <var name="n2" id="244232129432388516" />
+        <var name="n1" id="244232129432388516" />
       </scope>
       <scope id="963101385307642090" at="71,102,78,0" />
       <scope id="6891027939994643973" at="43,82,52,6" />
@@ -3858,15 +3858,15 @@
         <var name="editorCell" id="963101385307642090" />
         <var name="node" id="963101385307642090" />
       </scope>
-      <scope id="244232129432388516" at="93,68,102,36">
-        <var name="rootBuilder1" id="244232129432388516" />
+      <scope id="244232129432388516" at="93,65,102,26">
+        <var name="n0" id="244232129432388516" />
       </scope>
       <scope id="963101385307642090" at="81,135,91,5" />
       <scope id="6891027939994643973" at="43,0,54,0">
         <var name="node" id="6891027939994643973" />
       </scope>
       <scope id="244232129432388516" at="93,0,104,0">
-        <var name="node0" id="244232129432388516" />
+        <var name="p0" id="244232129432388516" />
       </scope>
       <scope id="963101385307642090" at="81,0,93,0">
         <var name="actionType" id="963101385307642090" />

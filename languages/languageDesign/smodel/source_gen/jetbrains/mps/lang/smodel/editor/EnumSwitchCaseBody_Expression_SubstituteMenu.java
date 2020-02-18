@@ -116,10 +116,10 @@ public class EnumSwitchCaseBody_Expression_SubstituteMenu extends SubstituteMenu
       return CONCEPTS.Expression$TP;
     }
   }
-  private static SNode createEnumSwitchCaseBody_Expression_le0nmc_a0a0a(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_Expression$Xi);
-    rootBuilder1.forChild(LINKS.expression$6WR0).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createEnumSwitchCaseBody_Expression_le0nmc_a0a0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EnumSwitchCaseBody_Expression$Xi);
+    n0.forChild(LINKS.expression$6WR0).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -90,16 +90,16 @@ public class MoveContainmentLinkSpecialization extends MoveConceptMemberSpeciali
   public void doReplaceInstance(SNode instance, SContainmentLink oldLink, SContainmentLink newLink) {
     RefactoringRuntime.changeContainmentLinkInstance(instance, oldLink, newLink);
   }
-  private static SNode createDeprecatedNodeAnnotation_mzlq6b_a0e0d(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createDeprecatedNodeAnnotation_mzlq6b_a0e0d(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
+    n0.setProperty(PROPS.comment$MxQb, p0);
+    return n0.getResult();
   }
-  private static SNode createMoveContainmentLink_mzlq6b_c0a21a3(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveContainmentLink$1e);
-    rootBuilder1.forChild(LINKS.sourceId$YxeZ).initNode(node0, CONCEPTS.ContainmentLinkId$FL, true);
-    rootBuilder1.forChild(LINKS.targetId$Yxfu).initNode(node1, CONCEPTS.ContainmentLinkId$FL, true);
-    return rootBuilder1.getResult();
+  private static SNode createMoveContainmentLink_mzlq6b_c0a21a3(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveContainmentLink$1e);
+    n0.forChild(LINKS.sourceId$YxeZ).initNode(p0, CONCEPTS.ContainmentLinkId$FL, true);
+    n0.forChild(LINKS.targetId$Yxfu).initNode(p1, CONCEPTS.ContainmentLinkId$FL, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

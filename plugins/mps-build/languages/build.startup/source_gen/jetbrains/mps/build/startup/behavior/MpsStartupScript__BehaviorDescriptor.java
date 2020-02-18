@@ -181,15 +181,15 @@ public final class MpsStartupScript__BehaviorDescriptor extends BaseBHDescriptor
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createTextLine_p7akvg_a0a0a0a0e(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TextLine$oe);
-    rootBuilder1.setProperty(PROPS.text$$xW, PROPS.text$$xW.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createTextLine_p7akvg_a0a0a0a0e(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TextLine$oe);
+    n0.setProperty(PROPS.text$$xW, p0);
+    return n0.getResult();
   }
-  private static SNode createTextLine_p7akvg_a0a0a0a0f(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TextLine$oe);
-    rootBuilder1.setProperty(PROPS.text$$xW, PROPS.text$$xW.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createTextLine_p7akvg_a0a0a0a0f(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TextLine$oe);
+    n0.setProperty(PROPS.text$$xW, p0);
+    return n0.getResult();
   }
   public static String trim_9sggks_a0a0q(String str) {
     return (str == null ? null : str.trim());

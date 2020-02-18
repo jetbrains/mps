@@ -142,27 +142,27 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
   public void doReplaceInstance(SNode instance, SAbstractConcept oldConcept, SAbstractConcept newConcept) {
     RefactoringRuntime.replaceWithNewConcept(instance, newConcept);
   }
-  private static SNode createDeprecatedNodeAnnotation_c4c66o_a0d0c(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createDeprecatedNodeAnnotation_c4c66o_a0d0c(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
+    n0.setProperty(PROPS.comment$MxQb, p0);
+    return n0.getResult();
   }
-  private static SNode createInterfaceConceptReference_c4c66o_a0a0a0a0l0c(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    rootBuilder1.setReferenceTarget(LINKS.intfc$fO5, node0);
-    return rootBuilder1.getResult();
+  private static SNode createInterfaceConceptReference_c4c66o_a0a0a0a0l0c(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
+    n0.setReferenceTarget(LINKS.intfc$fO5, p0);
+    return n0.getResult();
   }
-  private static SNode createMoveConcept_c4c66o_c0a71a2(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveConcept$Zi);
-    rootBuilder1.forChild(LINKS.sourceId$NVp5).initNode(node0, CONCEPTS.ConceptId$5a, true);
-    rootBuilder1.forChild(LINKS.targetId$NVqy).initNode(node1, CONCEPTS.ConceptId$5a, true);
-    return rootBuilder1.getResult();
+  private static SNode createMoveConcept_c4c66o_c0a71a2(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveConcept$Zi);
+    n0.forChild(LINKS.sourceId$NVp5).initNode(p0, CONCEPTS.ConceptId$5a, true);
+    n0.forChild(LINKS.targetId$NVqy).initNode(p1, CONCEPTS.ConceptId$5a, true);
+    return n0.getResult();
   }
-  private static SNode createSubstituteMenu_c4c66o_a0a0a0a2a3(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu$v4);
-    rootBuilder1.setReferenceTarget(LINKS.conceptDeclaration$acmt, node0);
-    rootBuilder1.forChild(LINKS.type$gsXC).init(CONCEPTS.MenuTypeDefault$Sb);
-    return rootBuilder1.getResult();
+  private static SNode createSubstituteMenu_c4c66o_a0a0a0a2a3(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu$v4);
+    n0.setReferenceTarget(LINKS.conceptDeclaration$acmt, p0);
+    n0.forChild(LINKS.type$gsXC).init(CONCEPTS.MenuTypeDefault$Sb);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_c4c66o_a0a3a3() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

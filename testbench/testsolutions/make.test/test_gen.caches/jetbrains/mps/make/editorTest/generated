@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="cfofhkf7qikzop7b83kki3vjiofnztc">
+<product version="3" modelHash="-disz78ttdvoc97l8w8at0k2thonbl4z">
   <files names="TypeFailureInConfigDefinition_Test.java:TypeFailureInJobDefinition_Test.java:TypeReturnInConfigDefinitionInQuotation_Test.java:TypeReturnInConfigDefinition_Test.java:TypeReturnInJobDefinitionInQuotation_Test.java:TypeReturnInJobDefinition_Test.java:TypeSuccessInConfigDefinition_Test.java:TypeSuccessInJobDefinition_Test.java" />
 </product>
 

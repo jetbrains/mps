@@ -47,8 +47,8 @@ public class typeof_ConsoleCreator_InferenceRule extends AbstractInferenceRule_R
     return false;
   }
   private static SNode createConsoleType_c6o0kc_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ConsoleType$J4);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConsoleType$J4);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_c6o0kc_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

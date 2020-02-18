@@ -340,10 +340,10 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0p(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$cg);
-    rootBuilder1.setProperty(PROPS.path$LlSY, PROPS.path$LlSY.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0p(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$cg);
+    n0.setProperty(PROPS.path$LlSY, p0);
+    return n0.getResult();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

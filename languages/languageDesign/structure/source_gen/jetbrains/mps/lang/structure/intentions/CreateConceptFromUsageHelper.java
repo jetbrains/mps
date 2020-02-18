@@ -167,25 +167,25 @@ public class CreateConceptFromUsageHelper {
 
     public abstract void exec(_FunctionTypes._void_P0_E0 r);
   }
-  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    rootBuilder1.setReferenceTarget(LINKS.intfc$fO5, node0);
-    return rootBuilder1.getResult();
+  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0b81a11(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
+    n0.setReferenceTarget(LINKS.intfc$fO5, p0);
+    return n0.getResult();
   }
-  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
-    rootBuilder1.setReferenceTarget(LINKS.intfc$fO5, node0);
-    return rootBuilder1.getResult();
+  private static SNode createInterfaceConceptReference_yye2ek_a0a1a0a0c0d81a11(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptReference$Yh);
+    n0.setReferenceTarget(LINKS.intfc$fO5, p0);
+    return n0.getResult();
   }
-  private static SNode createConceptDeclaration_yye2ek_a0a0n(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ConceptDeclaration$qU);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createConceptDeclaration_yye2ek_a0a0n(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptDeclaration$qU);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    return n0.getResult();
   }
-  private static SNode createInterfaceConceptDeclaration_yye2ek_a0a0o(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptDeclaration$MT);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createInterfaceConceptDeclaration_yye2ek_a0a0o(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InterfaceConceptDeclaration$MT);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

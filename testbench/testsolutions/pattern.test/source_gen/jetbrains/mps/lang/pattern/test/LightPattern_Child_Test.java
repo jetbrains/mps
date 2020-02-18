@@ -108,29 +108,29 @@ public class LightPattern_Child_Test extends TestCase {
   }
   private static class Pattern1_Pattern extends AbstractGeneratedPattern {
     public Pattern1_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
-      setMatcher(rootBuilder.getMatcher());
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern2_Pattern extends AbstractGeneratedPattern {
     public Pattern2_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder.forChild(LINKS.expression$EsbK).initNull();
-      setMatcher(rootBuilder.getMatcher());
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      n0.forChild(LINKS.expression$EsbK).initNull();
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern3_Pattern extends AbstractGeneratedPattern {
     public Pattern3_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      setMatcher(rootBuilder.getMatcher());
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern4_Pattern extends AbstractGeneratedPattern {
     public Pattern4_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder.forChild(LINKS.expression$EsbK).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
-      setMatcher(rootBuilder.getMatcher());
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      n0.forChild(LINKS.expression$EsbK).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
+      setMatcher(n0.getMatcher());
     }
     @Nullable
     public static SNode getVar(SNode rootNode) {

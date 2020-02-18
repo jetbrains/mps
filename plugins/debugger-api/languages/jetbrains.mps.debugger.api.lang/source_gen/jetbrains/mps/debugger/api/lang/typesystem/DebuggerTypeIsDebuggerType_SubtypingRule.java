@@ -31,8 +31,8 @@ public class DebuggerTypeIsDebuggerType_SubtypingRule extends SubtypingRule_Runt
     return true;
   }
   private static SNode createDebuggerType_ueeq0q_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

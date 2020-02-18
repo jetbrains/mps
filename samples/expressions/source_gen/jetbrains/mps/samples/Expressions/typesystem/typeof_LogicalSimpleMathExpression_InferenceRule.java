@@ -46,8 +46,8 @@ public class typeof_LogicalSimpleMathExpression_InferenceRule extends AbstractIn
     return false;
   }
   private static SNode createSimpleMathBooleanType_ngq3xd_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathBooleanType$9q);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathBooleanType$9q);
+    return n0.getResult();
   }
 
   private static final class LINKS {

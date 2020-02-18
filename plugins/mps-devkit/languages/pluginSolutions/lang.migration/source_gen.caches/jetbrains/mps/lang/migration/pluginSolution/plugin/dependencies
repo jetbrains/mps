@@ -10,7 +10,6 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.migration.pluginSolution.plugin.LogBuilder">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.HashMap" />

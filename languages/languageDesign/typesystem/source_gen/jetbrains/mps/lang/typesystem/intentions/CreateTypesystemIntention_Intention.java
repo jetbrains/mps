@@ -75,18 +75,18 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
     }
   }
   private static SNode createTypesystemQuickFix_wv8vj7_a0a0a() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TypesystemQuickFix$ii);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "fix_");
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypesystemQuickFix$ii);
+    n0.setProperty(PROPS.name$tAp1, "fix_");
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.executeBlock$kCq9).init(CONCEPTS.QuickFixExecuteBlock$MP);
-      n2.forChild(LINKS.body$pTP2).init(CONCEPTS.StatementList$TN);
+      SNodeBuilder n1 = n0.forChild(LINKS.executeBlock$kCq9).init(CONCEPTS.QuickFixExecuteBlock$MP);
+      n1.forChild(LINKS.body$pTP2).init(CONCEPTS.StatementList$TN);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createTypesystemIntention_wv8vj7_a0c0a(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TypesystemIntention$aE);
-    rootBuilder1.setReferenceTarget(LINKS.quickFix$FQGK, node0);
-    return rootBuilder1.getResult();
+  private static SNode createTypesystemIntention_wv8vj7_a0c0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypesystemIntention$aE);
+    n0.setReferenceTarget(LINKS.quickFix$FQGK, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

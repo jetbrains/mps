@@ -33,10 +33,10 @@ public class fixContainerName_QuickFix extends QuickFix_Runtime {
       ListSequence.fromList(SLinkOperations.getChildren(containerName, LINKS.parts$aVY3)).addElement(createBuildTextStringPart_uzundk_a0a0a0c0c(((String) fixContainerName_QuickFix.this.getField("newExtension")[0])));
     }
   }
-  private static SNode createBuildTextStringPart_uzundk_a0a0a0c0c(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildTextStringPart$xk);
-    rootBuilder1.setProperty(PROPS.text$2p89, PROPS.text$2p89.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createBuildTextStringPart_uzundk_a0a0a0c0c(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildTextStringPart$xk);
+    n0.setProperty(PROPS.text$2p89, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

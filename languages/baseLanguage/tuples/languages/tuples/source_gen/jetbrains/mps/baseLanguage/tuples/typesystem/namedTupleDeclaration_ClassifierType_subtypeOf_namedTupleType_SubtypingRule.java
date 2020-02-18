@@ -33,10 +33,10 @@ public class namedTupleDeclaration_ClassifierType_subtypeOf_namedTupleType_Subty
   public boolean isWeak() {
     return false;
   }
-  private static SNode createNamedTupleType_hwsftp_a0a0a1(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NamedTupleType$$b);
-    rootBuilder1.setReferenceTarget(LINKS.classifier$pQ_R, node0);
-    return rootBuilder1.getResult();
+  private static SNode createNamedTupleType_hwsftp_a0a0a1(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NamedTupleType$$b);
+    n0.setReferenceTarget(LINKS.classifier$pQ_R, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

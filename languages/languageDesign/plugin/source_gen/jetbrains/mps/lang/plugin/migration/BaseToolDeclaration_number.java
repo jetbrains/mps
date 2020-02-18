@@ -89,10 +89,10 @@ public class BaseToolDeclaration_number extends MigrationScriptBase {
   }
 
 
-  private static SNode createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$zP);
-    rootBuilder1.setProperty(PROPS.number$5Dx6, PROPS.number$5Dx6.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createNumberToolShortcut_p58wrf_a0a0a0a0a0a6(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$zP);
+    n0.setProperty(PROPS.number$5Dx6, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -35,9 +35,9 @@ public class typeof_ConceptIdRefExpression_InferenceRule extends AbstractInferen
     return false;
   }
   private static SNode createSConceptTypeLiteral_8j47c6_a1a0c0a0b(SNode p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SConceptTypeLiteral$4X);
-    rootBuilder1.setReferenceTarget(LINKS.conceptDeclaraton$xAhw, p0);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SConceptTypeLiteral$4X);
+    n0.setReferenceTarget(LINKS.conceptDeclaraton$xAhw, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

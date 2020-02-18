@@ -33,8 +33,8 @@ public class typeof_SimpleMathIntegerConstant_InferenceRule extends AbstractInfe
     return false;
   }
   private static SNode createSimpleMathIntegerType_611g7c_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

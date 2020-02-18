@@ -745,8 +745,8 @@ public class ClassifierUpdater {
     return ASMNodeId.createId((i == -1 ? className : className.substring(0, i)));
   }
   private static SNode createPublicVisibility_ol94f8_a0a1a0a41() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PublicVisibility$qe);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PublicVisibility$qe);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_ol94f8_a0a0a0s(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -1113,40 +1113,40 @@ public class ClassifierUpdater {
     return quotedNode_1;
   }
   private static SNode createBooleanType_ol94f8_a0a0a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BooleanType$8G);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanType$8G);
+    return n0.getResult();
   }
   private static SNode createByteType_ol94f8_a0a1a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ByteType$lE);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ByteType$lE);
+    return n0.getResult();
   }
   private static SNode createShortType_ol94f8_a0a2a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ShortType$YA);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ShortType$YA);
+    return n0.getResult();
   }
   private static SNode createIntegerType_ol94f8_a0a3a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
+    return n0.getResult();
   }
   private static SNode createLongType_ol94f8_a0a4a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LongType$Db);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LongType$Db);
+    return n0.getResult();
   }
   private static SNode createFloatType_ol94f8_a0a5a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.FloatType$1B);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.FloatType$1B);
+    return n0.getResult();
   }
   private static SNode createDoubleType_ol94f8_a0a6a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DoubleType$4e);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DoubleType$4e);
+    return n0.getResult();
   }
   private static SNode createVoidType_ol94f8_a0a7a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
+    return n0.getResult();
   }
   private static SNode createCharType_ol94f8_a0a8a44() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CharType$j4);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CharType$j4);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_ol94f8_a0a9a44(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

@@ -31,8 +31,8 @@ public class EditorIsSusbtypeOfEditor_SubtypingRule extends SubtypingRule_Runtim
     return true;
   }
   private static SNode createSettingsEditorType_naixql_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$Bn);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$Bn);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

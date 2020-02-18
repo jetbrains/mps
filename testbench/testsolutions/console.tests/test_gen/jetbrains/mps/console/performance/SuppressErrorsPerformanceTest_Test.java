@@ -81,13 +81,15 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       return Duration.ofNanos(stopTime - startTime);
     }
     private static SNode createNodeResponseItem_wxn1w7_a0a0a2a6h() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$jy);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$jy);
+      n0.forChild(LINKS.node$MHJ0).initNull();
+      return n0.getResult();
     }
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink item$zh_g = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171a5ba02L, 0x4e3b035171b356edL, "item");
+    /*package*/ static final SContainmentLink node$MHJ0 = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e3b035171b35c14L, 0x4e3b035171b35c15L, "node");
   }
 
   private static final class CONCEPTS {

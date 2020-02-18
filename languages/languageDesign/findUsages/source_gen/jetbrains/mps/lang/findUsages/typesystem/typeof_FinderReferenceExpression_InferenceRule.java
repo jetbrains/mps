@@ -38,9 +38,9 @@ public class typeof_FinderReferenceExpression_InferenceRule extends AbstractInfe
   }
   private static SNode createClassifierType_hid3c2_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    rootBuilder1.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)"), facade.createNodeId("8267733531687413132")));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
+    n0.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)"), facade.createNodeId("8267733531687413132")));
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -14,9 +14,9 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.lang.reflect.Method;
 import jetbrains.mps.classloading.ClassLoaderManager;
@@ -24,10 +24,10 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ParameterDescriptor");
@@ -42,7 +42,7 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode create_id2h59CdJp99Y(@NotNull SNode __thisNode__, SNode point) {
-    return createMethodParameterInstance_e87i4c_a0a0(__thisNode__, (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$HV6v), CONCEPTS.DependentTypeDescriptor$1L) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.type$HV6v), CONCEPTS.DependentTypeDescriptor$1L), point) : SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$HV6v))), SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1));
+    return createMethodParameterInstance_e87i4c_a0a0(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1), __thisNode__, (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$HV6v), CONCEPTS.DependentTypeDescriptor$1L) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.type$HV6v), CONCEPTS.DependentTypeDescriptor$1L), point) : SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$HV6v))));
   }
   /*package*/ static boolean isNeeded_id7GXvAHO1j1d(@NotNull SNode __thisNode__, SNode node) {
     try {
@@ -114,12 +114,16 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createMethodParameterInstance_e87i4c_a0a0(SNode node0, SNode node1, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MethodParameterInstance$yX);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    rootBuilder1.setReferenceTarget(LINKS.decl$HZxr, node0);
-    rootBuilder1.forChild(LINKS.type$pLrO).initNode(node1, CONCEPTS.Type$IG, true);
-    return rootBuilder1.getResult();
+  private static SNode createMethodParameterInstance_e87i4c_a0a0(String p0, SNode p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MethodParameterInstance$yX);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setReferenceTarget(LINKS.decl$HZxr, p1);
+    n0.forChild(LINKS.type$pLrO).initNode(p2, CONCEPTS.Type$IG, true);
+    return n0.getResult();
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
@@ -135,9 +139,5 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
     /*package*/ static final SConcept ParameterDescriptor$fO = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ParameterDescriptor");
     /*package*/ static final SConcept MethodParameterInstance$yX = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance");
     /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

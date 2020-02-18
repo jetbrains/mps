@@ -52,10 +52,10 @@ public class HintDefsCustomEditorCell extends AbstractCellProvider {
     collection.addEditorCell(newCell);
     return collection;
   }
-  private static SNode createEditorListOfDefs_igmisa_a0d0e(Iterable<? extends SNode> seq0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.EditorListOfDefs$7C);
-    rootBuilder1.forChild(LINKS.defs$D2dt).initNodeList(seq0, CONCEPTS.TypedDefReference$7f);
-    return rootBuilder1.getResult();
+  private static SNode createEditorListOfDefs_igmisa_a0d0e(Iterable<? extends SNode> p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.EditorListOfDefs$7C);
+    n0.forChild(LINKS.defs$D2dt).initNodeList(p0, CONCEPTS.TypedDefReference$7f);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

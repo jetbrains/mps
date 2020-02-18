@@ -31,8 +31,8 @@ public class SimpleMathIntegerType_subtypeOf_Long_SubtypingRule extends Subtypin
     return true;
   }
   private static SNode createSimpleMathLongType_alq2vz_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

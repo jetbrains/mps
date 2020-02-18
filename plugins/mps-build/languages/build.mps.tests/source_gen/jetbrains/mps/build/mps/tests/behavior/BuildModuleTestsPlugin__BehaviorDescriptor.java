@@ -114,9 +114,9 @@ public final class BuildModuleTestsPlugin__BehaviorDescriptor extends BaseBHDesc
   }
   private static SNode createBwfTaskLibraryDependency_s7wj2j_a0a0b0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$Kt);
-    rootBuilder1.setReference(LINKS.target$LSxw, new SNodePointer(facade.createModelReference("r:e6234636-faf1-4112-be6c-55df7ec7314a(jetbrains.mps.build.mps.tests.accessories)"), facade.createNodeId("398731435597190701")));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BwfTaskLibraryDependency$Kt);
+    n0.setReference(LINKS.target$LSxw, new SNodePointer(facade.createModelReference("r:e6234636-faf1-4112-be6c-55df7ec7314a(jetbrains.mps.build.mps.tests.accessories)"), facade.createNodeId("398731435597190701")));
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -2003,7 +2003,6 @@
   </dependency>
   <dependency className="jetbrains.mps.build.editor.BuildLayout_JarManifest_Part_SubstituteMenu">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />

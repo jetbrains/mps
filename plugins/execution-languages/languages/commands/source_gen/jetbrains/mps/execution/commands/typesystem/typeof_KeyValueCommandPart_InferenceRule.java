@@ -55,18 +55,18 @@ public class typeof_KeyValueCommandPart_InferenceRule extends AbstractInferenceR
   }
   private static SNode createJoinType_jl7ika_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.argument$xIHX).init(CONCEPTS.StringType$2b);
-      SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n3.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
-      SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.ProcessBuilderCommandPartType$gI);
+      SNodeBuilder n1 = n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.StringType$2b);
+      SNodeBuilder n2 = n1.forSibling().init(CONCEPTS.ClassifierType$IZ);
+      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)"), facade.createNodeId("~File")));
+      SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ProcessBuilderCommandPartType$gI);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
   private static SNode createProcessBuilderCommandPartType_jl7ika_a1a0c0c0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ProcessBuilderCommandPartType$gI);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProcessBuilderCommandPartType$gI);
+    return n0.getResult();
   }
 
   private static final class LINKS {

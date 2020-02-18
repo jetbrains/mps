@@ -50,7 +50,7 @@ public class XmlConverter {
     }
     List<Namespace> additionalNamespaces = (List<Namespace>) elem.getAdditionalNamespaces();
     for (Namespace ns : ListSequence.fromList(additionalNamespaces)) {
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.attributes$U009)).addElement(createXmlAttribute_h7fa2c_a0a0a5a3(convertAttributeText(ns.getURI()), "xmlns:" + ns.getPrefix()));
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.attributes$U009)).addElement(createXmlAttribute_h7fa2c_a0a0a5a3("xmlns:" + ns.getPrefix(), convertAttributeText(ns.getURI())));
     }
 
     List<Content> list = (List<Content>) elem.getContent();
@@ -229,85 +229,85 @@ public class XmlConverter {
     SLinkOperations.setTarget(file, LINKS.document$w2K0, createXmlDocument_h7fa2c_a0a2a11(name));
     return file;
   }
-  private static SNode createXmlAttribute_h7fa2c_a0a0a5a3(Iterable<? extends SNode> seq0, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlAttribute$UQ);
-    rootBuilder1.setProperty(PROPS.attrName$j_5Y, PROPS.attrName$j_5Y.getType().toString(p0));
-    rootBuilder1.forChild(LINKS.value$RZKQ).initNodeList(seq0, CONCEPTS.XmlValuePart$Ad);
-    return rootBuilder1.getResult();
+  private static SNode createXmlAttribute_h7fa2c_a0a0a5a3(String p0, Iterable<? extends SNode> p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlAttribute$UQ);
+    n0.setProperty(PROPS.attrName$j_5Y, p0);
+    n0.forChild(LINKS.value$RZKQ).initNodeList(p1, CONCEPTS.XmlValuePart$Ad);
+    return n0.getResult();
   }
-  private static SNode createXmlCommentLine_h7fa2c_a0a0a0a0c0a0a4(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCommentLine$tE);
-    rootBuilder1.setProperty(PROPS.text$U6F0, PROPS.text$U6F0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlCommentLine_h7fa2c_a0a0a0a0c0a0a4(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlCommentLine$tE);
+    n0.setProperty(PROPS.text$U6F0, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlProcessingInstruction_h7fa2c_a0a1a1a0e(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlProcessingInstruction$B0);
-    rootBuilder1.setProperty(PROPS.target$ZWw0, PROPS.target$ZWw0.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.rawData$ZWwv, PROPS.rawData$ZWwv.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createXmlProcessingInstruction_h7fa2c_a0a1a1a0e(String p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlProcessingInstruction$B0);
+    n0.setProperty(PROPS.target$ZWw0, p0);
+    n0.setProperty(PROPS.rawData$ZWwv, p1);
+    return n0.getResult();
   }
-  private static SNode createXmlCDATA_h7fa2c_a0a1a2a0e(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCDATA$Dr);
-    rootBuilder1.setProperty(PROPS.content$ENhU, PROPS.content$ENhU.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlCDATA_h7fa2c_a0a1a2a0e(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlCDATA$Dr);
+    n0.setProperty(PROPS.content$ENhU, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlEntityRef_h7fa2c_a0a1a4a0e(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
-    rootBuilder1.setProperty(PROPS.entityName$nUu1, PROPS.entityName$nUu1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlEntityRef_h7fa2c_a0a1a4a0e(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
+    n0.setProperty(PROPS.entityName$nUu1, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlText_h7fa2c_a0a0a0a1a3a1a5(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
-    rootBuilder1.setProperty(PROPS.value$Wjv0, PROPS.value$Wjv0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlText_h7fa2c_a0a0a0a1a3a1a5(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
+    n0.setProperty(PROPS.value$Wjv0, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlCharRef_h7fa2c_a0a0a2a1a3a1a5(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRef$xa);
-    rootBuilder1.setProperty(PROPS.charCode$ocV0, PROPS.charCode$ocV0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlCharRef_h7fa2c_a0a0a2a1a3a1a5(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlCharRef$xa);
+    n0.setProperty(PROPS.charCode$ocV0, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlEntityRef_h7fa2c_a0a2a0c0b0d0b0f(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
-    rootBuilder1.setProperty(PROPS.entityName$nUu1, PROPS.entityName$nUu1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlEntityRef_h7fa2c_a0a2a0c0b0d0b0f(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlEntityRef$k8);
+    n0.setProperty(PROPS.entityName$nUu1, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlText_h7fa2c_a0a0a4a1a5(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
-    rootBuilder1.setProperty(PROPS.value$Wjv0, PROPS.value$Wjv0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlText_h7fa2c_a0a0a4a1a5(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
+    n0.setProperty(PROPS.value$Wjv0, p0);
+    return n0.getResult();
   }
   private static SNode createXmlText_h7fa2c_a0a0a5a1a5() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
-    rootBuilder1.setProperty(PROPS.value$Wjv0, "");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlText$ZE);
+    n0.setProperty(PROPS.value$Wjv0, "");
+    return n0.getResult();
   }
-  private static SNode createXmlTextValue_h7fa2c_a0a0a0a1a3a6(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
-    rootBuilder1.setProperty(PROPS.text$$xPb, PROPS.text$$xPb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlTextValue_h7fa2c_a0a0a0a1a3a6(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
+    n0.setProperty(PROPS.text$$xPb, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlCharRefValue_h7fa2c_a0a0a2a1a3a6(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlCharRefValue$_9);
-    rootBuilder1.setProperty(PROPS.charCode$Hh3$, PROPS.charCode$Hh3$.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlCharRefValue_h7fa2c_a0a0a2a1a3a6(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlCharRefValue$_9);
+    n0.setProperty(PROPS.charCode$Hh3$, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlEntityRefValue_h7fa2c_a0a2a0c0b0d0g(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlEntityRefValue$MN);
-    rootBuilder1.setProperty(PROPS.entityName$EMB8, PROPS.entityName$EMB8.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlEntityRefValue_h7fa2c_a0a2a0c0b0d0g(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlEntityRefValue$MN);
+    n0.setProperty(PROPS.entityName$EMB8, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlTextValue_h7fa2c_a0a0a4a6(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
-    rootBuilder1.setProperty(PROPS.text$$xPb, PROPS.text$$xPb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createXmlTextValue_h7fa2c_a0a0a4a6(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlTextValue$BE);
+    n0.setProperty(PROPS.text$$xPb, p0);
+    return n0.getResult();
   }
-  private static SNode createXmlDocument_h7fa2c_a0a2a11(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.XmlDocument$RD);
+  private static SNode createXmlDocument_h7fa2c_a0a2a11(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.XmlDocument$RD);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.rootElement$3ntj).init(CONCEPTS.XmlElement$Pm);
-      n2.setProperty(PROPS.tagName$U00C, PROPS.tagName$U00C.getType().toString(p0));
+      SNodeBuilder n1 = n0.forChild(LINKS.rootElement$3ntj).init(CONCEPTS.XmlElement$Pm);
+      n1.setProperty(PROPS.tagName$U00C, p0);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class PROPS {

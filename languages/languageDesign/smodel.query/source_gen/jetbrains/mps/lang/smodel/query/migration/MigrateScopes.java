@@ -183,99 +183,99 @@ public class MigrateScopes extends MigrationScriptBase {
     AttributeOperations.setAttribute(oldParameter, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$E1), ann);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL)).seal();
-  private static SNode createCustomScope_9zyy9x_a0a0a0a0m0d0d(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
-    rootBuilder1.forChild(LINKS.scope$M3Kw).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createCustomScope_9zyy9x_a0a0a0a0m0d0d(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    n0.forChild(LINKS.scope$M3Kw).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
-  private static SNode createCustomScope_9zyy9x_a0a0a0a0a21a3a3(SNode node0) {
+  private static SNode createCustomScope_9zyy9x_a0a0a0a0a21a3a3(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-        n3.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+        n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
         {
-          SNodeBuilder n4 = n3.forChild(LINKS.actualArgument$$A7L).initNode(node0, CONCEPTS.Expression$TP, false);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$$A7L).initNode(p0, CONCEPTS.Expression$TP, false);
         }
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createCustomScope_9zyy9x_a0a0a0a1m0d0d(SNode node0) {
+  private static SNode createCustomScope_9zyy9x_a0a0a0a1m0d0d(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-        n3.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+        n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
         {
-          SNodeBuilder n4 = n3.forChild(LINKS.actualArgument$$A7L).initNode(node0, CONCEPTS.Expression$TP, false);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$$A7L).initNode(p0, CONCEPTS.Expression$TP, false);
         }
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createCustomScope_9zyy9x_a0a0a0a0b21a3a3(SNode node0) {
+  private static SNode createCustomScope_9zyy9x_a0a0a0a0b21a3a3(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-        n3.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+        n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
         {
-          SNodeBuilder n4 = n3.forChild(LINKS.actualArgument$$A7L).init(CONCEPTS.GenericNewExpression$ev);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$$A7L).init(CONCEPTS.GenericNewExpression$ev);
           {
-            SNodeBuilder n5 = n4.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-            n5.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
+            SNodeBuilder n4 = n3.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+            n4.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
             {
-              SNodeBuilder n6 = n5.forChild(LINKS.actualArgument$$A7L).initNode(node0, CONCEPTS.Expression$TP, false);
+              SNodeBuilder n5 = n4.forChild(LINKS.actualArgument$$A7L).initNode(p0, CONCEPTS.Expression$TP, false);
             }
           }
         }
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createCustomScope_9zyy9x_a0a0a0a2m0d0d(SNode node0) {
+  private static SNode createCustomScope_9zyy9x_a0a0a0a2m0d0d(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-        n3.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+        n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
         {
-          SNodeBuilder n4 = n3.forChild(LINKS.actualArgument$$A7L).initNode(node0, CONCEPTS.Expression$TP, false);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$$A7L).initNode(p0, CONCEPTS.Expression$TP, false);
         }
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createCustomScope_9zyy9x_a0a0a0a0c21a3a3(SNode node0) {
+  private static SNode createCustomScope_9zyy9x_a0a0a0a0c21a3a3(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$M3Kw).init(CONCEPTS.GenericNewExpression$ev);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-        n3.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+        n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
         {
-          SNodeBuilder n4 = n3.forChild(LINKS.actualArgument$$A7L).init(CONCEPTS.GenericNewExpression$ev);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$$A7L).init(CONCEPTS.GenericNewExpression$ev);
           {
-            SNodeBuilder n5 = n4.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
-            n5.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
+            SNodeBuilder n4 = n3.forChild(LINKS.creator$itDQ).init(CONCEPTS.ClassCreator$yU);
+            n4.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
             {
-              SNodeBuilder n6 = n5.forChild(LINKS.actualArgument$$A7L).initNode(node0, CONCEPTS.Expression$TP, false);
+              SNodeBuilder n5 = n4.forChild(LINKS.actualArgument$$A7L).initNode(p0, CONCEPTS.Expression$TP, false);
             }
           }
         }
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

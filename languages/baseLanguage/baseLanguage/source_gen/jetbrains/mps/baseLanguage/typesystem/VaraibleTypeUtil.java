@@ -356,10 +356,10 @@ public class VaraibleTypeUtil {
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cc380dL, "ShortType")).getResult();
     return quotedNode_1;
   }
-  private static SNode createClassifierType_c9xwxw_a0a1a0a12(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    rootBuilder1.setReferenceTarget(LINKS.classifier$pQ_R, node0);
-    return rootBuilder1.getResult();
+  private static SNode createClassifierType_c9xwxw_a0a1a0a12(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
+    n0.setReferenceTarget(LINKS.classifier$pQ_R, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

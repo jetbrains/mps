@@ -31,8 +31,8 @@ public class TemplatePersistentConfigurationTypeIsTemplatePersistentConfiguratio
     return true;
   }
   private static SNode createTemplatePersistentConfigurationType_n8elw8_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

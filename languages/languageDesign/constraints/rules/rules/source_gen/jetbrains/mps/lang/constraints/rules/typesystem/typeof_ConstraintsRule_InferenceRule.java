@@ -37,8 +37,8 @@ public class typeof_ConstraintsRule_InferenceRule extends AbstractInferenceRule_
     return false;
   }
   private static SNode createBooleanType_utdjwt_a1a0c0a0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BooleanType$8G);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanType$8G);
+    return n0.getResult();
   }
 
   private static final class LINKS {

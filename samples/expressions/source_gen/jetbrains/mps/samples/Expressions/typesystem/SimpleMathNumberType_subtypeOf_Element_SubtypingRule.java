@@ -31,8 +31,8 @@ public class SimpleMathNumberType_subtypeOf_Element_SubtypingRule extends Subtyp
     return true;
   }
   private static SNode createSimpleMathElementType_wcy28w_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathElementType$o$);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathElementType$o$);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -101,14 +101,14 @@ public final class NodeBuilderInitProperty__BehaviorDescriptor extends BaseBHDes
     return CONCEPT;
   }
   private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0a0b(SNode p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
-    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
+    n0.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
   private static SNode createNodeBuilderPropertyExpression_d9e4bt_a0a0a0b(SNode p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
-    rootBuilder1.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderPropertyExpression$_e);
+    n0.forChild(LINKS.expression$j9T0).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class LINKS {

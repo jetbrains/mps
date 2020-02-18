@@ -198,12 +198,12 @@ public class ClassifierLoader {
     return name.substring(0, name.indexOf('.'));
   }
   private static SNode createProtectedVisibility_eoyrbu_a0a0h0l0o() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ProtectedVisibility$OD);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProtectedVisibility$OD);
+    return n0.getResult();
   }
   private static SNode createPrivateVisibility_eoyrbu_a0a0a7a11a41() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PrivateVisibility$Se);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PrivateVisibility$Se);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

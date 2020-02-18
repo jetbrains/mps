@@ -85,20 +85,20 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
   }
 
   private static SNode createReviewMigration_old_5d7h7i_a0a0a0a0a0a6() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ReviewMigration_old$E1);
-    rootBuilder1.setProperty(PROPS.readableId$WLXq, "MigrateOldNodePointerExpressions");
-    rootBuilder1.setProperty(PROPS.reasonShort$7yZv, "Couldn't migrate node with attributes");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ReviewMigration_old$E1);
+    n0.setProperty(PROPS.readableId$WLXq, "MigrateOldNodePointerExpressions");
+    n0.setProperty(PROPS.reasonShort$7yZv, "Couldn't migrate node with attributes");
+    return n0.getResult();
   }
-  private static SNode createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    rootBuilder1.forChild(LINKS.ref$Xkjz).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
-    return rootBuilder1.getResult();
+  private static SNode createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
+    n0.forChild(LINKS.ref$Xkjz).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    return n0.getResult();
   }
-  private static SNode createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$us);
-    rootBuilder1.forChild(LINKS.leftExpression$flIo).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createSemanticDowncastExpression_5d7h7i_a0a0b0a0a0a0a6(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SemanticDowncastExpression$us);
+    n0.forChild(LINKS.leftExpression$flIo).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

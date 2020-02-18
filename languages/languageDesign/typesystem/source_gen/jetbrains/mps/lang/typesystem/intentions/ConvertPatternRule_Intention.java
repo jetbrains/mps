@@ -14,8 +14,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -65,7 +65,7 @@ public final class ConvertPatternRule_Intention extends AbstractIntentionDescrip
       SNode patternCondition = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.applicableNode$lCke), CONCEPTS.PatternCondition$hM);
       SNode pattern = SLinkOperations.getTarget(patternCondition, LINKS.pattern$ag0O);
       SNode body = SLinkOperations.getTarget(node, LINKS.body$uYGk);
-      SNode newApplicable = createConceptReference_kdoxak_a0d0a(SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(pattern)), SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.applicableNode$lCke), PROPS.name$tAp1));
+      SNode newApplicable = createConceptReference_kdoxak_a0d0a(SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.applicableNode$lCke), PROPS.name$tAp1), SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(pattern)));
       SNodeOperations.deleteNode(body);
       SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.applicableNode$lCke), newApplicable);
       SLinkOperations.setTarget(node, LINKS.body$uYGk, createStatementList_kdoxak_a0g0a(newApplicable, patternCondition, body));
@@ -75,27 +75,27 @@ public final class ConvertPatternRule_Intention extends AbstractIntentionDescrip
       return ConvertPatternRule_Intention.this;
     }
   }
-  private static SNode createConceptReference_kdoxak_a0d0a(SNode node0, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ConceptReference$Je);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    rootBuilder1.setReferenceTarget(LINKS.concept$Q1Nr, node0);
-    return rootBuilder1.getResult();
+  private static SNode createConceptReference_kdoxak_a0d0a(String p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptReference$Je);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setReferenceTarget(LINKS.concept$Q1Nr, p1);
+    return n0.getResult();
   }
-  private static SNode createStatementList_kdoxak_a0g0a(SNode node0, SNode node1, SNode node2) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
+  private static SNode createStatementList_kdoxak_a0g0a(SNode p0, SNode p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statement$WHn8).init(CONCEPTS.MatchStatement$1G);
+      SNodeBuilder n1 = n0.forChild(LINKS.statement$WHn8).init(CONCEPTS.MatchStatement$1G);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.expression$8_90).init(CONCEPTS.ApplicableNodeReference$VP);
-        n3.setReferenceTarget(LINKS.applicableNode$z$o5, node0);
+        SNodeBuilder n2 = n1.forChild(LINKS.expression$8_90).init(CONCEPTS.ApplicableNodeReference$VP);
+        n2.setReferenceTarget(LINKS.applicableNode$z$o5, p0);
       }
       {
-        SNodeBuilder n4 = n2.forChild(LINKS.item$AXJR).init(CONCEPTS.MatchStatementItem$EH);
-        n4.forChild(LINKS.condition$JZ3Z).initNode(node1, CONCEPTS.ApplicableNodeCondition$sh, true);
-        n4.forChild(LINKS.ifTrue$S5VZ).initNode(node2, CONCEPTS.StatementList$TN, true);
+        SNodeBuilder n3 = n1.forChild(LINKS.item$AXJR).init(CONCEPTS.MatchStatementItem$EH);
+        n3.forChild(LINKS.condition$JZ3Z).initNode(p1, CONCEPTS.ApplicableNodeCondition$sh, true);
+        n3.forChild(LINKS.ifTrue$S5VZ).initNode(p2, CONCEPTS.StatementList$TN, true);
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class LINKS {

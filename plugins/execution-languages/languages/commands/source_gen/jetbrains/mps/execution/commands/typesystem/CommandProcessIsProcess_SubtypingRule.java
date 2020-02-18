@@ -28,8 +28,8 @@ public class CommandProcessIsProcess_SubtypingRule extends SubtypingRule_Runtime
     return false;
   }
   private static SNode createProcessType_y17zi2_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

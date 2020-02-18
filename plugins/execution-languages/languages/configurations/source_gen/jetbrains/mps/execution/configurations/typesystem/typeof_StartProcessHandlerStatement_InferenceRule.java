@@ -39,13 +39,13 @@ public class typeof_StartProcessHandlerStatement_InferenceRule extends AbstractI
   }
   private static SNode createJoinType_psezx7_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.argument$xIHX).init(CONCEPTS.NamedTupleType$$b);
-      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("r:5a505993-793e-4b2d-84cf-271f9dde39b3(jetbrains.mps.execution.lib)"), facade.createNodeId("1977878056377381089")));
+      SNodeBuilder n1 = n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.NamedTupleType$$b);
+      n1.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("r:5a505993-793e-4b2d-84cf-271f9dde39b3(jetbrains.mps.execution.lib)"), facade.createNodeId("1977878056377381089")));
     }
-    rootBuilder1.forChild(LINKS.argument$xIHX).init(CONCEPTS.ConsoleType$J4);
-    return rootBuilder1.getResult();
+    n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.ConsoleType$J4);
+    return n0.getResult();
   }
 
   private static final class LINKS {

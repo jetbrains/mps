@@ -148,9 +148,9 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
     return null;
   }
   private static SNode createClassConcept_2jv4hj_a0a1a5() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "NewRoot");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
+    n0.setProperty(PROPS.name$tAp1, "NewRoot");
+    return n0.getResult();
   }
   private static List<ModelChange> check_2jv4hj_a0a8a5(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {

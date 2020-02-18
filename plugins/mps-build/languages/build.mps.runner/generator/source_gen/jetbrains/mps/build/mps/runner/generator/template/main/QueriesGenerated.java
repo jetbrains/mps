@@ -244,11 +244,11 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_PluginExpanded_x583g4_a0a0a0e0m(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_PluginExpanded$8B);
-    rootBuilder1.setProperty(PROPS.path$7q6F, PROPS.path$7q6F.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.id$7q7a, PROPS.id$7q7a.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createGeneratorInternal_PluginExpanded_x583g4_a0a0a0e0m(String p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_PluginExpanded$8B);
+    n0.setProperty(PROPS.path$7q6F, p0);
+    n0.setProperty(PROPS.id$7q7a, p1);
+    return n0.getResult();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

@@ -114,16 +114,16 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode createSimpleMathIntegerType_3ist9o_a0a0a1() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
+      return n0.getResult();
     }
     private static SNode createSimpleMathIntegerType_3ist9o_a0b0a1() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
+      return n0.getResult();
     }
     private static SNode createSimpleMathIntegerType_3ist9o_a0a1b() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
+      return n0.getResult();
     }
   }
   public static class CustomOverloadedOperationsTypesProvider_b extends OverloadedOperationsTypesProvider {
@@ -149,24 +149,24 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode createSimpleMathFloatType_3ist9o_a0a0a2() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
+      return n0.getResult();
     }
     private static SNode createSimpleMathFloatType_3ist9o_a0b0a2() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
+      return n0.getResult();
     }
     private static SNode createSimpleMathFloatType_3ist9o_a0a1c() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
+      return n0.getResult();
     }
     private static SNode createSimpleMathLongType_3ist9o_b0a0a0a2c() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
+      return n0.getResult();
     }
     private static SNode createSimpleMathLongType_3ist9o_b0a0a0a2c_0() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
+      return n0.getResult();
     }
   }
   public static class CustomOverloadedOperationsTypesProvider_a extends OverloadedOperationsTypesProvider {
@@ -192,24 +192,24 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode createSimpleMathNumberType_3ist9o_a0a0a3() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
+      return n0.getResult();
     }
     private static SNode createSimpleMathNumberType_3ist9o_a0b0a3() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
+      return n0.getResult();
     }
     private static SNode createSimpleMathNumberType_3ist9o_a0a1d() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
+      return n0.getResult();
     }
     private static SNode createSimpleMathFloatType_3ist9o_b0a0a0a2d() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
+      return n0.getResult();
     }
     private static SNode createSimpleMathFloatType_3ist9o_b0a0a0a2d_0() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
+      return n0.getResult();
     }
   }
   public static class CustomOverloadedOperationsTypesProvider_c extends OverloadedOperationsTypesProvider {
@@ -235,24 +235,24 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode createSimpleMathLongType_3ist9o_a0a0a4() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
+      return n0.getResult();
     }
     private static SNode createSimpleMathLongType_3ist9o_a0b0a4() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
+      return n0.getResult();
     }
     private static SNode createSimpleMathLongType_3ist9o_a0a1e() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathLongType$jS);
+      return n0.getResult();
     }
     private static SNode createSimpleMathIntegerType_3ist9o_b0a0a0a2e() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
+      return n0.getResult();
     }
     private static SNode createSimpleMathIntegerType_3ist9o_b0a0a0a2e_0() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
+      return n0.getResult();
     }
   }
 

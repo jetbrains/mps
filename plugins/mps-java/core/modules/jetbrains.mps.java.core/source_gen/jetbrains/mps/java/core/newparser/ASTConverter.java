@@ -1099,8 +1099,8 @@ public class ASTConverter {
     }
   }
   private static SNode createPublicVisibility_rbndtb_a0a1a1a0a2a61a01() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PublicVisibility$qe);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PublicVisibility$qe);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_rbndtb_a0b0c0g0u() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

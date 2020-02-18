@@ -171,15 +171,15 @@ public class Test_QuotationDetachNodes_Test extends TestCase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode createBlockStatement_yc3t95_a0b0e0(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BlockStatement$1i);
+  private static SNode createBlockStatement_yc3t95_a0b0e0(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BlockStatement$1i);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+      SNodeBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.statement$WHn8).initNode(node0, CONCEPTS.Statement$ok, false);
+        SNodeBuilder n2 = n1.forChild(LINKS.statement$WHn8).initNode(p0, CONCEPTS.Statement$ok, false);
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_yc3t95_a0a0f0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -193,13 +193,13 @@ public class Test_QuotationDetachNodes_Test extends TestCase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode createBlockStatement_yc3t95_a0b0f0(Iterable<? extends SNode> seq0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BlockStatement$1i);
+  private static SNode createBlockStatement_yc3t95_a0b0f0(Iterable<? extends SNode> p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BlockStatement$1i);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
-      n2.forChild(LINKS.statement$WHn8).initNodeList(seq0, CONCEPTS.Statement$ok);
+      SNodeBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
+      n1.forChild(LINKS.statement$WHn8).initNodeList(p0, CONCEPTS.Statement$ok);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class LINKS {

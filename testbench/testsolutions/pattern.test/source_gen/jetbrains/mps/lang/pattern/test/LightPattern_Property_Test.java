@@ -121,49 +121,49 @@ public class LightPattern_Property_Test extends TestCase {
   }
   private static class Pattern1_Pattern extends AbstractGeneratedPattern {
     public Pattern1_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n10 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.IntegerConstant$mo);
-        n10.setProperty(PROPS.value$ZeO0, "" + (239));
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.IntegerConstant$mo);
+        n1.setProperty(PROPS.value$ZeO0, "" + (239));
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern2_Pattern extends AbstractGeneratedPattern {
     public Pattern2_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n11 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
-        n11.setProperty(PROPS.value$kiE0, null);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
+        n1.setProperty(PROPS.value$kiE0, null);
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern3_Pattern extends AbstractGeneratedPattern {
     public Pattern3_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n12 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
-        n12.setProperty(PROPS.value$kiE0, "");
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
+        n1.setProperty(PROPS.value$kiE0, "");
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern4_Pattern extends AbstractGeneratedPattern {
     public Pattern4_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
-      rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
-      setMatcher(rootBuilder.getMatcher());
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
+      setMatcher(n0.getMatcher());
     }
   }
   private static class Pattern5_Pattern extends AbstractGeneratedPattern {
     public Pattern5_Pattern() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
-        NodeMatcherBuilder n13 = rootBuilder.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
-        n13.setPropertyVariable(PROPS.value$kiE0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
+        n1.setPropertyVariable(PROPS.value$kiE0);
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Nullable
     public static String getVar(SNode rootNode) {

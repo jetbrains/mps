@@ -147,21 +147,21 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
     public void addPart(SNode migrationPart) {
       ListSequence.fromList(SLinkOperations.getChildren(myRefactoringStep, LINKS.part$x6zr)).addElement(migrationPart);
     }
-    private static SNode createPureMigrationScript_kz6lmo_a0d0f01(Object p0, Object p1) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PureMigrationScript$YW);
-      rootBuilder1.setProperty(PROPS.fromVersion$jLy0, PROPS.fromVersion$jLy0.getType().toString(p0));
-      rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p1));
-      rootBuilder1.setProperty(PROPS.description$9$QN, PROPS.description$9$QN.getType().toString(null));
-      return rootBuilder1.getResult();
+    private static SNode createPureMigrationScript_kz6lmo_a0d0f01(int p0, String p1) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PureMigrationScript$YW);
+      n0.setProperty(PROPS.fromVersion$jLy0, "" + (p0));
+      n0.setProperty(PROPS.name$tAp1, p1);
+      n0.setProperty(PROPS.description$9$QN, null);
+      return n0.getResult();
     }
-    private static SNode createMoveNodeMigrationPart_kz6lmo_a0a0g01(SNode node0, SNode node1, SNode node2) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveNodeMigrationPart$gB);
-      rootBuilder1.forChild(LINKS.fromNode$JVN3).initNode(node0, CONCEPTS.AbstractNodeReference$T6, true);
-      rootBuilder1.forChild(LINKS.toNode$JVO1).initNode(node1, CONCEPTS.AbstractNodeReference$T6, true);
+    private static SNode createMoveNodeMigrationPart_kz6lmo_a0a0g01(SNode p0, SNode p1, SNode p2) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveNodeMigrationPart$gB);
+      n0.forChild(LINKS.fromNode$JVN3).initNode(p0, CONCEPTS.AbstractNodeReference$T6, true);
+      n0.forChild(LINKS.toNode$JVO1).initNode(p1, CONCEPTS.AbstractNodeReference$T6, true);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.specialization$GqXw).initNode(node2, CONCEPTS.MoveNodeSpecialization$k2, false);
+        SNodeBuilder n1 = n0.forChild(LINKS.specialization$GqXw).initNode(p2, CONCEPTS.MoveNodeSpecialization$k2, false);
       }
-      return rootBuilder1.getResult();
+      return n0.getResult();
     }
   }
 

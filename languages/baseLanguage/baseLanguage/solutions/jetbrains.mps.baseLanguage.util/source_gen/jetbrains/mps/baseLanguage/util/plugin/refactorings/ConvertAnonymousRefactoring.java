@@ -252,11 +252,11 @@ public class ConvertAnonymousRefactoring {
     }
     return quotedNode_3;
   }
-  private static SNode createSuperConstructorInvocation_qy1soj_a0b0a0q(SNode node0, Iterable<? extends SNode> seq0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SuperConstructorInvocation$48);
-    rootBuilder1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
-    rootBuilder1.forChild(LINKS.actualArgument$$A7L).initNodeList(seq0, CONCEPTS.Expression$TP);
-    return rootBuilder1.getResult();
+  private static SNode createSuperConstructorInvocation_qy1soj_a0b0a0q(SNode p0, Iterable<? extends SNode> p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SuperConstructorInvocation$48);
+    n0.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
+    n0.forChild(LINKS.actualArgument$$A7L).initNodeList(p1, CONCEPTS.Expression$TP);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_qy1soj_a0a0a1a61(Object parameter_1, Object parameter_2, Object parameter_3) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

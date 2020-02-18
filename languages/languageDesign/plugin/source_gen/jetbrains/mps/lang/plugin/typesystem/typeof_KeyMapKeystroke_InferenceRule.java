@@ -33,8 +33,8 @@ public class typeof_KeyMapKeystroke_InferenceRule extends AbstractInferenceRule_
     return false;
   }
   private static SNode createKeyStrokeType_wqs68h_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.KeyStrokeType$48);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.KeyStrokeType$48);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

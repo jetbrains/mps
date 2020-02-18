@@ -107,19 +107,19 @@ public class ConsoleStreamImpl implements ConsoleStream {
       }
     });
   }
-  private static SNode createTextResponseItem_kp3e3v_a0a0b0b0f(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TextResponseItem$3v);
-    rootBuilder1.setProperty(PROPS.text$PmeJ, PROPS.text$PmeJ.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createTextResponseItem_kp3e3v_a0a0b0b0f(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TextResponseItem$3v);
+    n0.setProperty(PROPS.text$PmeJ, p0);
+    return n0.getResult();
   }
   private static SNode createNewLineResponseItem_kp3e3v_a0a0c0b0f() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NewLineResponseItem$r4);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NewLineResponseItem$r4);
+    return n0.getResult();
   }
-  private static SNode createNodeResponseItem_kp3e3v_a0a0j(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$jy);
-    rootBuilder1.forChild(LINKS.node$MHJ0).initNode(node0, CONCEPTS.BaseConcept$Sz, true);
-    return rootBuilder1.getResult();
+  private static SNode createNodeResponseItem_kp3e3v_a0a0j(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$jy);
+    n0.forChild(LINKS.node$MHJ0).initNode(p0, CONCEPTS.BaseConcept$Sz, true);
+    return n0.getResult();
   }
 
   private static final class LINKS {

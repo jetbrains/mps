@@ -34,10 +34,10 @@ public class typeof_DebuggerReference_InferenceRule extends AbstractInferenceRul
   public boolean overrides() {
     return false;
   }
-  private static SNode createDebuggerType_uu2qih_a1a0c0a0b(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
-    rootBuilder1.setProperty(PROPS.name$d3D9, PROPS.name$d3D9.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createDebuggerType_uu2qih_a1a0c0a0b(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
+    n0.setProperty(PROPS.name$d3D9, p0);
+    return n0.getResult();
   }
 
   private static final class PROPS {

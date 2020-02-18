@@ -33,8 +33,8 @@ public class typeof_DateLiteral_InferenceRule extends AbstractInferenceRule_Runt
     return false;
   }
   private static SNode createDateType_gobu8k_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

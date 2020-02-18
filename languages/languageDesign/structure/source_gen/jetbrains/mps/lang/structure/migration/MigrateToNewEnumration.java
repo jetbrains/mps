@@ -430,14 +430,14 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     return enumeration.toString(replacementKind);
   }
 
-  private static SNode createStringLiteral_3t318f_a0b0a0a0a1a7a21(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StringLiteral$4G);
-    rootBuilder1.setProperty(PROPS.value$kiE0, PROPS.value$kiE0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createStringLiteral_3t318f_a0b0a0a0a1a7a21(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringLiteral$4G);
+    n0.setProperty(PROPS.value$kiE0, p0);
+    return n0.getResult();
   }
   private static SNode createNullLiteral_3t318f_a0b0a0a0a1a7a21() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NullLiteral$q4);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NullLiteral$q4);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_3t318f_c0a0d0h0m() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -457,14 +457,14 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType")).getResult();
     return quotedNode_1;
   }
-  private static SNode createStringLiteral_3t318f_a0b0a0a0a2a4a9a21(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StringLiteral$4G);
-    rootBuilder1.setProperty(PROPS.value$kiE0, PROPS.value$kiE0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createStringLiteral_3t318f_a0b0a0a0a2a4a9a21(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringLiteral$4G);
+    n0.setProperty(PROPS.value$kiE0, p0);
+    return n0.getResult();
   }
   private static SNode createNullLiteral_3t318f_a0b0a0a0a2a4a9a21() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NullLiteral$q4);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NullLiteral$q4);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_3t318f_a0b0a4a9a21() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -472,10 +472,10 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType")).getResult();
     return quotedNode_1;
   }
-  private static SNode createIntegerConstant_3t318f_a0a0a0a0c0a4a9a21(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IntegerConstant$mo);
-    rootBuilder1.setProperty(PROPS.value$ZeO0, PROPS.value$ZeO0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createIntegerConstant_3t318f_a0a0a0a0c0a4a9a21(int p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerConstant$mo);
+    n0.setProperty(PROPS.value$ZeO0, "" + (p0));
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_3t318f_a0d0lb(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4, Object parameter_5, Object parameter_6) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

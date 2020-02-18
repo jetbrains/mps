@@ -202,10 +202,10 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
     }
 
   }
-  private static SNode createBuildCompositePath_a4cilw_a0a0a0b1(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildCompositePath$7I);
-    rootBuilder1.forChild(LINKS.tail$vKD0).initNode(node0, CONCEPTS.BuildCompositePath$7I, true);
-    return rootBuilder1.getResult();
+  private static SNode createBuildCompositePath_a4cilw_a0a0a0b1(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildCompositePath$7I);
+    n0.forChild(LINKS.tail$vKD0).initNode(p0, CONCEPTS.BuildCompositePath$7I, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

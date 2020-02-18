@@ -75,10 +75,10 @@ public final class SmartRefAttributeUtil {
     }
     return null;
   }
-  private static SNode createSmartReferenceAttribute_9k4hui_a0a5a4(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SmartReferenceAttribute$Lg);
-    rootBuilder1.setReferenceTarget(LINKS.charactersticReference$hNpW, node0);
-    return rootBuilder1.getResult();
+  private static SNode createSmartReferenceAttribute_9k4hui_a0a5a4(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SmartReferenceAttribute$Lg);
+    n0.setReferenceTarget(LINKS.charactersticReference$hNpW, p0);
+    return n0.getResult();
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;

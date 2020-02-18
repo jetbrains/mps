@@ -30,8 +30,8 @@
       <node id="3825148134790537984" at="26,50,27,35" concept="5" />
       <node id="3825148134790537984" at="29,68,30,102" concept="5" />
       <node id="3825148134790537984" at="32,30,33,17" concept="5" />
-      <node id="3825148134790538114" at="35,58,36,78" concept="4" />
-      <node id="3825148134790538114" at="36,78,37,36" concept="5" />
+      <node id="3825148134790538114" at="35,58,36,68" concept="4" />
+      <node id="3825148134790538114" at="36,68,37,26" concept="5" />
       <node id="3825148134790537984" at="41,0,42,0" concept="6" trace="DateLiteral$4P" />
       <node id="3825148134790537984" at="42,0,43,0" concept="6" trace="DateType$_S" />
       <node id="3825148134790537984" at="17,0,19,0" concept="1" trace="typeof_DateLiteral_InferenceRule#()V" />
@@ -46,8 +46,8 @@
       <scope id="3825148134790537984" at="29,68,30,102" />
       <scope id="3825148134790537984" at="32,30,33,17" />
       <scope id="3825148134790537984" at="17,0,19,0" />
-      <scope id="3825148134790538114" at="35,58,37,36">
-        <var name="rootBuilder1" id="3825148134790538114" />
+      <scope id="3825148134790538114" at="35,58,37,26">
+        <var name="n0" id="3825148134790538114" />
       </scope>
       <scope id="3825148134790538108" at="20,5,23,282">
         <var name="_info_12389875345" id="3825148134790538108" />
@@ -84,12 +84,12 @@
       <node id="3825148134790539181" at="38,112,39,48" concept="2" />
       <node id="3825148134790541254" at="41,99,42,43" concept="5" />
       <node id="3825148134790539181" at="45,71,46,59" concept="2" />
-      <node id="3825148134790541126" at="48,57,49,80" concept="4" />
-      <node id="3825148134790541126" at="49,80,50,38" concept="5" />
-      <node id="3825148134790541173" at="52,60,53,83" concept="4" />
-      <node id="3825148134790541173" at="53,83,54,38" concept="5" />
-      <node id="3825148134790541256" at="56,56,57,80" concept="4" />
-      <node id="3825148134790541256" at="57,80,58,38" concept="5" />
+      <node id="3825148134790541126" at="48,57,49,70" concept="4" />
+      <node id="3825148134790541126" at="49,70,50,28" concept="5" />
+      <node id="3825148134790541173" at="52,60,53,73" concept="4" />
+      <node id="3825148134790541173" at="53,73,54,28" concept="5" />
+      <node id="3825148134790541256" at="56,56,57,70" concept="4" />
+      <node id="3825148134790541256" at="57,70,58,28" concept="5" />
       <node id="3825148134790539181" at="41,0,44,0" concept="3" trace="getOperationType#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3825148134790539181" at="44,0,48,0" concept="3" trace="reportConflict#(Ljetbrains/mps/errors/IRuleConflictWarningProducer;)V" />
       <node id="3825148134790541126" at="48,0,52,0" concept="7" trace="createDateType_3ist9o_a0a0a1#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -98,14 +98,14 @@
       <node id="3825148134790539181" at="30,0,41,0" concept="1" trace="CustomOverloadedOperationsTypesProvider_a#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)V" />
       <scope id="3825148134790539206" at="41,99,42,43" />
       <scope id="3825148134790539181" at="45,71,46,59" />
-      <scope id="3825148134790541126" at="48,57,50,38">
-        <var name="rootBuilder1" id="3825148134790541126" />
+      <scope id="3825148134790541126" at="48,57,50,28">
+        <var name="n0" id="3825148134790541126" />
       </scope>
-      <scope id="3825148134790541173" at="52,60,54,38">
-        <var name="rootBuilder1" id="3825148134790541173" />
+      <scope id="3825148134790541173" at="52,60,54,28">
+        <var name="n0" id="3825148134790541173" />
       </scope>
-      <scope id="3825148134790541256" at="56,56,58,38">
-        <var name="rootBuilder1" id="3825148134790541256" />
+      <scope id="3825148134790541256" at="56,56,58,28">
+        <var name="n0" id="3825148134790541256" />
       </scope>
       <scope id="3825148134790539181" at="41,0,44,0">
         <var name="leftOperandType" id="3825148134790539181" />

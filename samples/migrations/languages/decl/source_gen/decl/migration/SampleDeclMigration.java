@@ -130,11 +130,11 @@ public class SampleDeclMigration extends MigrationScriptBase {
     }
     return quotedNode_3;
   }
-  private static SNode createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeclMigrationData$E1);
-    rootBuilder1.setProperty(PROPS.oldId$W$wZ, PROPS.oldId$W$wZ.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.newId$W$xu, PROPS.newId$W$xu.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(String p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeclMigrationData$E1);
+    n0.setProperty(PROPS.oldId$W$wZ, p0);
+    n0.setProperty(PROPS.newId$W$xu, p1);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

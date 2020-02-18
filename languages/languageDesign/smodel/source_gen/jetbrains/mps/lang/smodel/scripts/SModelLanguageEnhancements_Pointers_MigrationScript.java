@@ -679,45 +679,45 @@ public final class SModelLanguageEnhancements_Pointers_MigrationScript extends B
   public SNodeReference getScriptNode() {
     return PersistenceFacade.getInstance().createNodeReference("r:00000000-0000-4000-0000-011c89590300(jetbrains.mps.lang.smodel.scripts)/1693197062082143330");
   }
-  private static SNode createDotExpression_y8o86o_a0c0a4(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
+  private static SNode createDotExpression_y8o86o_a0c0a4(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    n0.forChild(LINKS.operand$Lcrr).initNode(p0, CONCEPTS.Expression$TP, true);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Link_SetTargetPointerOperation$59);
+      SNodeBuilder n1 = n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.Link_SetTargetPointerOperation$59);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
-        n3.forChild(LINKS.ref$ryyU).initNode(node1, CONCEPTS.NodeIdentity$tk, true);
+        SNodeBuilder n2 = n1.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+        n2.forChild(LINKS.ref$ryyU).initNode(p1, CONCEPTS.NodeIdentity$tk, true);
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a5(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
+  private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a5(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
-      n2.forChild(LINKS.ref$ryyU).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+      n1.forChild(LINKS.ref$ryyU).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createDotExpression_y8o86o_a0c0a91(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
+  private static SNode createDotExpression_y8o86o_a0c0a91(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    n0.forChild(LINKS.operand$Lcrr).initNode(p0, CONCEPTS.Expression$TP, true);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.Link_SetTargetPointerOperation$59);
+      SNodeBuilder n1 = n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.Link_SetTargetPointerOperation$59);
       {
-        SNodeBuilder n3 = n2.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
-        n3.forChild(LINKS.ref$ryyU).initNode(node1, CONCEPTS.NodeIdentity$tk, true);
+        SNodeBuilder n2 = n1.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+        n2.forChild(LINKS.ref$ryyU).initNode(p1, CONCEPTS.NodeIdentity$tk, true);
       }
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a02(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
+  private static SNode createLink_SetTargetPointerOperation_y8o86o_a0b0a02(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Link_SetTargetPointerOperation$59);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
-      n2.forChild(LINKS.ref$ryyU).initNode(node0, CONCEPTS.NodeIdentity$tk, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.linkTarget$ezbw).init(CONCEPTS.NodePointerArg_Identity$5_);
+      n1.forChild(LINKS.ref$ryyU).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

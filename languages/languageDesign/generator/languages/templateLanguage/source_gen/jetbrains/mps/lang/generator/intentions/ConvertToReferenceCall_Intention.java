@@ -100,19 +100,19 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
       return ConvertToReferenceCall_Intention.this;
     }
   }
-  private static SNode createReferenceMacro_nfdvwd_a0a0e0a(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ReferenceMacro$nk);
+  private static SNode createReferenceMacro_nfdvwd_a0a0e0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ReferenceMacro$nk);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.referentFunction$ABIo).init(CONCEPTS.ReferenceMacro_GetReferent$OO);
-      n2.forChild(LINKS.body$pTP2).initNode(node0, CONCEPTS.StatementList$TN, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.referentFunction$ABIo).init(CONCEPTS.ReferenceMacro_GetReferent$OO);
+      n1.forChild(LINKS.body$pTP2).initNode(p0, CONCEPTS.StatementList$TN, true);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createDotExpression_nfdvwd_a0a5a0(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
-    rootBuilder1.forChild(LINKS.operand$Lcrr).initNode(node0, CONCEPTS.Expression$TP, true);
-    rootBuilder1.forChild(LINKS.operation$X4R8).initNode(node1, CONCEPTS.IOperation$No, true);
-    return rootBuilder1.getResult();
+  private static SNode createDotExpression_nfdvwd_a0a5a0(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    n0.forChild(LINKS.operand$Lcrr).initNode(p0, CONCEPTS.Expression$TP, true);
+    n0.forChild(LINKS.operation$X4R8).initNode(p1, CONCEPTS.IOperation$No, true);
+    return n0.getResult();
   }
 
   private static final class LINKS {

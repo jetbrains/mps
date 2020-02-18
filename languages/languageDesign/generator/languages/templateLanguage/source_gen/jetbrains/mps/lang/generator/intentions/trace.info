@@ -2823,14 +2823,14 @@
       <node id="6420301932294073045" at="93,155,94,432" concept="2" />
       <node id="6420301932290901156" at="95,7,96,176" concept="2" />
       <node id="6420301932290385125" at="99,48,100,51" concept="8" />
-      <node id="6420301932294809641" at="103,73,104,84" concept="7" />
-      <node id="6420301932294809641" at="105,5,106,120" concept="7" />
-      <node id="6420301932294809641" at="106,120,107,84" concept="2" />
-      <node id="6420301932294809641" at="108,5,109,36" concept="8" />
-      <node id="6420301932292779388" at="111,84,112,83" concept="7" />
-      <node id="6420301932292779388" at="112,83,113,92" concept="2" />
-      <node id="6420301932292779388" at="113,92,114,94" concept="2" />
-      <node id="6420301932292779388" at="114,94,115,36" concept="8" />
+      <node id="6420301932294809641" at="103,70,104,74" concept="7" />
+      <node id="6420301932294809641" at="105,5,106,110" concept="7" />
+      <node id="6420301932294809641" at="106,110,107,81" concept="2" />
+      <node id="6420301932294809641" at="108,5,109,26" concept="8" />
+      <node id="6420301932292779388" at="111,78,112,73" concept="7" />
+      <node id="6420301932292779388" at="112,73,113,79" concept="2" />
+      <node id="6420301932292779388" at="113,79,114,81" concept="2" />
+      <node id="6420301932292779388" at="114,81,115,26" concept="8" />
       <node id="6420301932290385125" at="119,0,120,0" concept="11" trace="smodelAttribute$K8bJ" />
       <node id="6420301932290385125" at="120,0,121,0" concept="11" trace="instance$eKq" />
       <node id="6420301932290385125" at="121,0,122,0" concept="11" trace="baseMethodDeclaration$$A7i" />
@@ -2865,7 +2865,7 @@
       <node id="6420301932290385125" at="66,0,70,0" concept="6" trace="isSurroundWith#()Z" />
       <node id="6420301932290385125" at="79,0,83,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
       <node id="6420301932290385125" at="98,0,102,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
-      <node id="6420301932294809641" at="104,84,108,5" concept="0" />
+      <node id="6420301932294809641" at="104,74,108,5" concept="0" />
       <node id="6420301932290494013" at="59,5,64,20" concept="8" />
       <node id="6420301932290800997" at="86,216,91,18" concept="2" />
       <node id="6420301932290385125" at="70,0,76,0" concept="6" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
@@ -2888,8 +2888,8 @@
       <scope id="6420301932294158099" at="93,155,94,432" />
       <scope id="6420301932290385125" at="99,48,100,51" />
       <scope id="6420301932290385125" at="77,0,79,0" />
-      <scope id="6420301932294809641" at="105,5,107,84">
-        <var name="n2" id="6420301932294809641" />
+      <scope id="6420301932294809641" at="105,5,107,81">
+        <var name="n1" id="6420301932294809641" />
       </scope>
       <scope id="6420301932290385125" at="38,0,41,0" />
       <scope id="6420301932290690967" at="61,0,64,0">
@@ -2907,26 +2907,26 @@
         <var name="node" id="6420301932290385125" />
       </scope>
       <scope id="6420301932290385125" at="98,0,102,0" />
-      <scope id="6420301932292779388" at="111,84,115,36">
-        <var name="rootBuilder1" id="6420301932292779388" />
+      <scope id="6420301932292779388" at="111,78,115,26">
+        <var name="n0" id="6420301932292779388" />
       </scope>
       <scope id="6420301932290385125" at="70,0,76,0">
         <var name="context" id="6420301932290385125" />
         <var name="node" id="6420301932290385125" />
       </scope>
-      <scope id="6420301932294809641" at="103,73,109,36">
-        <var name="rootBuilder1" id="6420301932294809641" />
+      <scope id="6420301932294809641" at="103,70,109,26">
+        <var name="n0" id="6420301932294809641" />
       </scope>
       <scope id="6420301932292779388" at="111,0,117,0">
-        <var name="node0" id="6420301932292779388" />
-        <var name="node1" id="6420301932292779388" />
+        <var name="p0" id="6420301932292779388" />
+        <var name="p1" id="6420301932292779388" />
       </scope>
       <scope id="6420301932290385125" at="45,0,52,0">
         <var name="editorContext" id="6420301932290385125" />
         <var name="node" id="6420301932290385125" />
       </scope>
       <scope id="6420301932294809641" at="103,0,111,0">
-        <var name="node0" id="6420301932294809641" />
+        <var name="p0" id="6420301932294809641" />
       </scope>
       <scope id="6420301932290406567" at="52,91,64,20">
         <var name="classifierType" id="6420301932290468780" />

@@ -37,9 +37,9 @@ public class typeof_ContextExpression_InferenceRule extends AbstractInferenceRul
   }
   private static SNode createClassifierType_wnwgn_a1a0c0a0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
-    rootBuilder1.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.actions(MPS.IDEA/)"), facade.createNodeId("~ConfigurationContext")));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
+    n0.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.actions(MPS.IDEA/)"), facade.createNodeId("~ConfigurationContext")));
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

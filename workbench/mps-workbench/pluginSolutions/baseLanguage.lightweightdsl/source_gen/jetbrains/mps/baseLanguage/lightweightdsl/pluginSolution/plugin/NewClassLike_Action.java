@@ -110,10 +110,10 @@ public class NewClassLike_Action extends BaseAction {
   public static String descr_State(SNode object) {
     return object.getNodeId().toString();
   }
-  private static SNode createDSLAnnotation_3skzbb_a0c0c0a(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DSLAnnotation$dI);
-    rootBuilder1.setReferenceTarget(LINKS.descriptor$Zoot, node0);
-    return rootBuilder1.getResult();
+  private static SNode createDSLAnnotation_3skzbb_a0c0c0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DSLAnnotation$dI);
+    n0.setReferenceTarget(LINKS.descriptor$Zoot, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

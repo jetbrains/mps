@@ -169,8 +169,8 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
     }
   }
   private static SNode createProcessType_rmyimx_b0a0a0a0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

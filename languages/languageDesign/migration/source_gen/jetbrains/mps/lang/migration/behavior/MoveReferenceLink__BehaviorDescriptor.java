@@ -94,10 +94,10 @@ public final class MoveReferenceLink__BehaviorDescriptor extends BaseBHDescripto
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createDeprecatedNodeAnnotation_d93bla_a0e0a(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createDeprecatedNodeAnnotation_d93bla_a0e0a(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
+    n0.setProperty(PROPS.comment$MxQb, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -83,10 +83,10 @@ public class BLCommand_to_Expression {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
   }
-  private static SNode createBLExpression_6b3zvz_a0a0b0a0(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
-    rootBuilder1.forChild(LINKS.expression$HQe6).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createBLExpression_6b3zvz_a0a0b0a0(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
+    n0.forChild(LINKS.expression$HQe6).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class LINKS {

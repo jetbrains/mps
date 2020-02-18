@@ -87,8 +87,8 @@ public class EditorExpression_Constraints extends BaseConstraintsDescriptor {
     return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.EditorOperationDeclaration$mT, true, false) != null);
   }
   private static SNode createTemplatePersistentConfigurationType_lq9qwe_b0a0a0a0a0a1a0a0a1a0a0a0d() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    return n0.getResult();
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "1227128029536565529");
   private static final SNodePointer breakingNode_lq9qwe_a0a0a0a0a1a0a0a0d = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "6836281137582823946");

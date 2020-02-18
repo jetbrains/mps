@@ -446,10 +446,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     public String getMatchingText() {
       return "choose";
     }
-    private static SNode createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(SNode node0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CheckingRuleReference$lK);
-      rootBuilder1.setReferenceTarget(LINKS.declaration$jp80, node0);
-      return rootBuilder1.getResult();
+    private static SNode createCheckingRuleReference_tg6zfx_a0a0a0a0b0a1a0a1b1b0(SNode p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CheckingRuleReference$lK);
+      n0.setReferenceTarget(LINKS.declaration$jp80, p0);
+      return n0.getResult();
     }
   }
   private EditorCell createRefNodeList_0() {

@@ -113,7 +113,7 @@ public class LogBuilder {
     });
   }
   public void addPart(RefactoringParticipant.PersistentRefactoringParticipant participant, SNode initialState, SNode finalState) {
-    ListSequence.fromList(SLinkOperations.getChildren(myRefactoringStep, LINKS.part$jAsu)).addElement(createRefactoringPart_1o8b1n_a0a0a4(initialState, finalState, participant.getId()));
+    ListSequence.fromList(SLinkOperations.getChildren(myRefactoringStep, LINKS.part$jAsu)).addElement(createRefactoringPart_1o8b1n_a0a0a4(participant.getId(), initialState, finalState));
   }
   public int getFromVersion() {
     return SPropertyOperations.getInteger(this.myRefactoringStep, PROPS.fromVersion$jArZ);
@@ -132,25 +132,25 @@ public class LogBuilder {
       }
     }
   }
-  private static SNode createRefactoringLog_1o8b1n_a0h0d(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringLog$eD);
-    rootBuilder1.setProperty(PROPS.virtualPackage$j19t, "refactoring");
-    rootBuilder1.setProperty(PROPS.fromVersion$jArZ, PROPS.fromVersion$jArZ.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createRefactoringLog_1o8b1n_a0h0d(int p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RefactoringLog$eD);
+    n0.setProperty(PROPS.virtualPackage$j19t, "refactoring");
+    n0.setProperty(PROPS.fromVersion$jArZ, "" + (p0));
+    n0.setProperty(PROPS.name$tAp1, p1);
+    return n0.getResult();
   }
-  private static SNode createRefactoringPart_1o8b1n_a0a0a4(SNode node0, SNode node1, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringPart$34);
-    rootBuilder1.setProperty(PROPS.participant$hcv6, PROPS.participant$hcv6.getType().toString(p0));
-    rootBuilder1.forChild(LINKS.initialState$hcw4).initNode(node0, CONCEPTS.BaseConcept$Sz, true);
-    rootBuilder1.forChild(LINKS.finalState$hcx2).initNode(node1, CONCEPTS.BaseConcept$Sz, true);
-    return rootBuilder1.getResult();
+  private static SNode createRefactoringPart_1o8b1n_a0a0a4(String p0, SNode p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RefactoringPart$34);
+    n0.setProperty(PROPS.participant$hcv6, p0);
+    n0.forChild(LINKS.initialState$hcw4).initNode(p1, CONCEPTS.BaseConcept$Sz, true);
+    n0.forChild(LINKS.finalState$hcx2).initNode(p2, CONCEPTS.BaseConcept$Sz, true);
+    return n0.getResult();
   }
-  private static SNode createRefactoringOption_1o8b1n_a0a0a0a1a6(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefactoringOption$Ks);
-    rootBuilder1.setProperty(PROPS.optionId$o0M0, PROPS.optionId$o0M0.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.description$akyD, PROPS.description$akyD.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createRefactoringOption_1o8b1n_a0a0a0a1a6(String p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RefactoringOption$Ks);
+    n0.setProperty(PROPS.optionId$o0M0, p0);
+    n0.setProperty(PROPS.description$akyD, p1);
+    return n0.getResult();
   }
 
   private static final class LINKS {

@@ -391,35 +391,35 @@ public class QuotationConverter {
     }
     return null;
   }
-  private static SNode createNodeBuilderInitLink_aytayy_a0a0a4a7(SNode node0, Iterable<? extends SNode> seq0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
-    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
+  private static SNode createNodeBuilderInitLink_aytayy_a0a0a4a7(SNode p0, Iterable<? extends SNode> p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    n0.setReferenceTarget(LINKS.link$ckAZ, p0);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.initValue$UJfh).init(CONCEPTS.NodeBuilderList$lD);
-      n2.forChild(LINKS.nodes$$MVw).initNodeList(seq0, CONCEPTS.NodeBuilderInitLinkValue$_6);
+      SNodeBuilder n1 = n0.forChild(LINKS.initValue$UJfh).init(CONCEPTS.NodeBuilderList$lD);
+      n1.forChild(LINKS.nodes$$MVw).initNodeList(p1, CONCEPTS.NodeBuilderInitLinkValue$_6);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createNodeBuilderInitLink_aytayy_a0a0a5a7(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
-    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
-    rootBuilder1.forChild(LINKS.initValue$UJfh).initNode(node1, CONCEPTS.NodeBuilderInitLinkValue$_6, true);
-    return rootBuilder1.getResult();
+  private static SNode createNodeBuilderInitLink_aytayy_a0a0a5a7(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    n0.setReferenceTarget(LINKS.link$ckAZ, p0);
+    n0.forChild(LINKS.initValue$UJfh).initNode(p1, CONCEPTS.NodeBuilderInitLinkValue$_6, true);
+    return n0.getResult();
   }
-  private static SNode createNodeBuilderInitLink_aytayy_a0a3a6a7(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
-    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
+  private static SNode createNodeBuilderInitLink_aytayy_a0a3a6a7(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    n0.setReferenceTarget(LINKS.link$ckAZ, p0);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.initValue$UJfh).init(CONCEPTS.NodeBuilderExpression$Ub);
-      n2.forChild(LINKS.expression$JCaZ).initNode(node1, CONCEPTS.Expression$TP, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.initValue$UJfh).init(CONCEPTS.NodeBuilderExpression$Ub);
+      n1.forChild(LINKS.expression$JCaZ).initNode(p1, CONCEPTS.Expression$TP, true);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createNodeBuilderInitLink_aytayy_a0a0a0a1a0g0h(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
-    rootBuilder1.setReferenceTarget(LINKS.link$ckAZ, node0);
-    rootBuilder1.forChild(LINKS.initValue$UJfh).initNode(node1, CONCEPTS.NodeBuilderInitLinkValue$_6, true);
-    return rootBuilder1.getResult();
+  private static SNode createNodeBuilderInitLink_aytayy_a0a0a0a1a0g0h(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderInitLink$Xj);
+    n0.setReferenceTarget(LINKS.link$ckAZ, p0);
+    n0.forChild(LINKS.initValue$UJfh).initNode(p1, CONCEPTS.NodeBuilderInitLinkValue$_6, true);
+    return n0.getResult();
   }
   private static <T> T as_aytayy_a0a0b2a0a2a0a6a6(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

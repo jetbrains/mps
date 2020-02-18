@@ -107,19 +107,19 @@ public class ConvertConstraintsToRulesAutomatically extends IntentionsFactory {
     });
     return result;
   }
-  private static SNode createRulesBlock_dji8hx_a0a0b0f0h(Iterable<? extends SNode> seq0) {
+  private static SNode createRulesBlock_dji8hx_a0a0b0f0h(Iterable<? extends SNode> p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RulesBlock$2N);
-    rootBuilder1.setReference(LINKS.kind$ipQZ, new SNodePointer(facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382583")));
-    rootBuilder1.forChild(LINKS.members$ipQw).initNodeList(seq0, CONCEPTS.RuleBlockMember$5H);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RulesBlock$2N);
+    n0.setReference(LINKS.kind$ipQZ, new SNodePointer(facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382583")));
+    n0.forChild(LINKS.members$ipQw).initNodeList(p0, CONCEPTS.RuleBlockMember$5H);
+    return n0.getResult();
   }
-  private static SNode createRulesBlock_dji8hx_a0a0b0g0h(Iterable<? extends SNode> seq0) {
+  private static SNode createRulesBlock_dji8hx_a0a0b0g0h(Iterable<? extends SNode> p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RulesBlock$2N);
-    rootBuilder1.setReference(LINKS.kind$ipQZ, new SNodePointer(facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382590")));
-    rootBuilder1.forChild(LINKS.members$ipQw).initNodeList(seq0, CONCEPTS.RuleBlockMember$5H);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RulesBlock$2N);
+    n0.setReference(LINKS.kind$ipQZ, new SNodePointer(facade.createModelReference("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)"), facade.createNodeId("8018723092206382590")));
+    n0.forChild(LINKS.members$ipQw).initNodeList(p0, CONCEPTS.RuleBlockMember$5H);
+    return n0.getResult();
   }
   private static <T> T as_dji8hx_a0a1a32(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);

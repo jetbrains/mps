@@ -179,10 +179,10 @@ public final class PersistentConfiguration__BehaviorDescriptor extends BaseBHDes
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createPersistentConfigurationType_4ves9l_a0a3(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
-    return rootBuilder1.getResult();
+  private static SNode createPersistentConfigurationType_4ves9l_a0a3(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

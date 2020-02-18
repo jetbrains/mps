@@ -35,10 +35,10 @@ public class typeof_CommandBuilderExpression_InferenceRule extends AbstractInfer
   public boolean overrides() {
     return false;
   }
-  private static SNode createCommandProcessType_mdceom_a1a0c0a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CommandProcessType$Cb);
-    rootBuilder1.setReferenceTarget(LINKS.commandDeclaration$shaw, node0);
-    return rootBuilder1.getResult();
+  private static SNode createCommandProcessType_mdceom_a1a0c0a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CommandProcessType$Cb);
+    n0.setReferenceTarget(LINKS.commandDeclaration$shaw, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

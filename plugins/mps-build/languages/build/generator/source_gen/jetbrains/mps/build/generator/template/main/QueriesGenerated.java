@@ -1791,7 +1791,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
     return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
       public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a114(it._0(), it._1());
+        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a114(it._1(), it._0());
       }
     }).toListSequence();
   }
@@ -3516,11 +3516,11 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a114(SNode node0, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$CC);
-    rootBuilder1.setProperty(PROPS.path$Xp8A, PROPS.path$Xp8A.getType().toString(p0));
-    rootBuilder1.setReferenceTarget(LINKS.project$6dB_, node0);
-    return rootBuilder1.getResult();
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a114(String p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$CC);
+    n0.setProperty(PROPS.path$Xp8A, p0);
+    n0.setReferenceTarget(LINKS.project$6dB_, p1);
+    return n0.getResult();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

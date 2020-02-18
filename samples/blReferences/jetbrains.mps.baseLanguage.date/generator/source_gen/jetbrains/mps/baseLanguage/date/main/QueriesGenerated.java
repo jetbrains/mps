@@ -155,12 +155,12 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   private static SNode createDateType_x583g4_b0a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
+    return n0.getResult();
   }
   private static SNode createDateType_x583g4_b0a0a2() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
+    return n0.getResult();
   }
 
   private static final class LINKS {

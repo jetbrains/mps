@@ -277,9 +277,9 @@ public class ChangesCalculationTest extends ChangesTestBase {
     return diff.getModelChanges();
   }
   private static SNode createClassConcept_7w1430_a0a0a0b0k() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "NewRoot");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
+    n0.setProperty(PROPS.name$tAp1, "NewRoot");
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_7w1430_a0a0a0a0q() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

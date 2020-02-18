@@ -81,16 +81,16 @@ public class MovePropertySpecialization extends MoveConceptMemberSpecialization<
   public void doReplaceInstance(SNode instance, SProperty oldProperty, SProperty newProperty) {
     RefactoringRuntime.changePropertyInstance(instance, oldProperty, newProperty);
   }
-  private static SNode createDeprecatedNodeAnnotation_fubpxk_a0e0d(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createDeprecatedNodeAnnotation_fubpxk_a0e0d(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
+    n0.setProperty(PROPS.comment$MxQb, p0);
+    return n0.getResult();
   }
-  private static SNode createMoveProperty_fubpxk_c0a11a3(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveProperty$J);
-    rootBuilder1.forChild(LINKS.sourceId$YxgU).initNode(node0, CONCEPTS.PropertyId$Ig, true);
-    rootBuilder1.forChild(LINKS.targetId$Yxhp).initNode(node1, CONCEPTS.PropertyId$Ig, true);
-    return rootBuilder1.getResult();
+  private static SNode createMoveProperty_fubpxk_c0a11a3(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveProperty$J);
+    n0.forChild(LINKS.sourceId$YxgU).initNode(p0, CONCEPTS.PropertyId$Ig, true);
+    n0.forChild(LINKS.targetId$Yxhp).initNode(p1, CONCEPTS.PropertyId$Ig, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

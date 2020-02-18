@@ -47,25 +47,25 @@ public class typeof_PersistentPropertyDeclaration_InferenceRule extends Abstract
   }
   private static SNode createJoinType_sacma3_a1a0c0i0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.argument$xIHX).init(CONCEPTS.ClassifierType$IZ);
-      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
+      SNodeBuilder n1 = n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.ClassifierType$IZ);
+      n1.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Cloneable")));
+      SNodeBuilder n2 = n1.forSibling().init(CONCEPTS.ClassifierType$IZ);
+      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
       SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n3.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Enum")));
-      SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n4.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
-      SNodeBuilder n5 = n4.forSibling().init(CONCEPTS.BooleanType$8G);
-      SNodeBuilder n6 = n5.forSibling().init(CONCEPTS.IntegerType$Eo);
-      SNodeBuilder n7 = n6.forSibling().init(CONCEPTS.FloatType$1B);
-      SNodeBuilder n8 = n7.forSibling().init(CONCEPTS.DoubleType$4e);
-      SNodeBuilder n9 = n8.forSibling().init(CONCEPTS.CharType$j4);
-      SNodeBuilder n10 = n9.forSibling().init(CONCEPTS.ByteType$lE);
-      SNodeBuilder n11 = n10.forSibling().init(CONCEPTS.LongType$Db);
-      SNodeBuilder n12 = n11.forSibling().init(CONCEPTS.ShortType$YA);
-      SNodeBuilder n13 = n12.forSibling().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+      n3.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~String")));
+      SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.BooleanType$8G);
+      SNodeBuilder n5 = n4.forSibling().init(CONCEPTS.IntegerType$Eo);
+      SNodeBuilder n6 = n5.forSibling().init(CONCEPTS.FloatType$1B);
+      SNodeBuilder n7 = n6.forSibling().init(CONCEPTS.DoubleType$4e);
+      SNodeBuilder n8 = n7.forSibling().init(CONCEPTS.CharType$j4);
+      SNodeBuilder n9 = n8.forSibling().init(CONCEPTS.ByteType$lE);
+      SNodeBuilder n10 = n9.forSibling().init(CONCEPTS.LongType$Db);
+      SNodeBuilder n11 = n10.forSibling().init(CONCEPTS.ShortType$YA);
+      SNodeBuilder n12 = n11.forSibling().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class LINKS {

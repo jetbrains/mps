@@ -105,34 +105,36 @@ public class Migrate_MergeNamedAndDefaultMenus extends MigrationScriptBase {
 
 
   private static SNode createMenuTypeDefault_uuumhm_a0a0a8() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
+    return n0.getResult();
   }
-  private static SNode createMenuTypeNamed_uuumhm_a0a0a8(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MenuTypeNamed$SE);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createMenuTypeNamed_uuumhm_a0a0a8(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MenuTypeNamed$SE);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    return n0.getResult();
   }
   private static SNode createTransformationMenu_uuumhm_a0b0i(SModel modelToCreate, SNodeId nodeId) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.TransformationMenu$ZK);
-    rootBuilder1.setReference(LINKS.conceptDeclaration$acmt, new SNodePointer(facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.TransformationMenu$ZK);
+    n0.setReference(LINKS.conceptDeclaration$acmt, new SNodePointer(facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
+    n0.forChild(LINKS.type$gsXC).initNull();
+    return n0.getResult();
   }
   private static SNode createMenuTypeDefault_uuumhm_a0a0a01() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
+    return n0.getResult();
   }
-  private static SNode createMenuTypeNamed_uuumhm_a0a0a01(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MenuTypeNamed$SE);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createMenuTypeNamed_uuumhm_a0a0a01(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MenuTypeNamed$SE);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    return n0.getResult();
   }
   private static SNode createSubstituteMenu_uuumhm_a0b0k(SModel modelToCreate, SNodeId nodeId) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.SubstituteMenu$v4);
-    rootBuilder1.setReference(LINKS.conceptDeclaration$acmt, new SNodePointer(facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.SubstituteMenu$v4);
+    n0.setReference(LINKS.conceptDeclaration$acmt, new SNodePointer(facade.createModelReference("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)"), facade.createNodeId("1133920641626")));
+    n0.forChild(LINKS.type$gsXC).initNull();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

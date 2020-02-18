@@ -283,9 +283,9 @@
       <node id="6904920584772906287" at="73,41,74,102" concept="5" />
       <node id="6904920584772941117" at="79,40,80,82" concept="5" />
       <node id="6904920584772662312" at="87,51,88,146" concept="5" />
-      <node id="6904920584772882532" at="92,80,93,88" concept="4" />
-      <node id="6904920584772882532" at="93,88,94,90" concept="1" />
-      <node id="6904920584772882532" at="94,90,95,36" concept="5" />
+      <node id="6904920584772882532" at="92,80,93,78" concept="4" />
+      <node id="6904920584772882532" at="93,78,94,42" concept="1" />
+      <node id="6904920584772882532" at="94,42,95,26" concept="5" />
       <node id="6904920584772662312" at="99,0,100,0" concept="7" trace="BaseToolDeclaration$fH" />
       <node id="6904920584772662312" at="100,0,101,0" concept="7" trace="NumberToolShortcut$zP" />
       <node id="6904920584772662312" at="104,0,105,0" concept="7" trace="shortcut$qnAW" />
@@ -304,7 +304,7 @@
       <node id="6904920584772847389" at="44,90,49,8" concept="4" />
       <node id="6904920584772906277" at="66,90,71,8" concept="4" />
       <node id="6904920584772909590" at="77,49,82,12" concept="5" />
-      <node id="6904920584772882532" at="92,0,97,0" concept="8" trace="createNumberToolShortcut_p58wrf_a0a0a0a0a0a6#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6904920584772882532" at="92,0,97,0" concept="8" trace="createNumberToolShortcut_p58wrf_a0a0a0a0a0a6#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6904920584772908750" at="77,0,84,0" concept="3" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/migration/runtime/base/NotMigratedNode;" />
       <node id="6904920584772847940" at="49,8,59,9" concept="1" />
       <node id="6904920584772939648" at="71,8,84,9" concept="5" />
@@ -333,8 +333,8 @@
       </scope>
       <scope id="6904920584772935737" at="79,0,82,0" />
       <scope id="6904920584772662312" at="87,0,90,0" />
-      <scope id="6904920584772882532" at="92,80,95,36">
-        <var name="rootBuilder1" id="6904920584772882532" />
+      <scope id="6904920584772882532" at="92,80,95,26">
+        <var name="n0" id="6904920584772882532" />
       </scope>
       <scope id="6904920584772662312" at="33,0,37,0" />
       <scope id="6904920584772662312" at="37,0,41,0">

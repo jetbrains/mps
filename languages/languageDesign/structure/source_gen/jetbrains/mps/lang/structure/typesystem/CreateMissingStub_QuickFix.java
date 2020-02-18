@@ -67,8 +67,8 @@ public class CreateMissingStub_QuickFix extends QuickFix_Runtime {
     editorModel.addRootNode(menu);
   }
   private static SNode createMenuTypeDefault_jj3urb_a0db0c() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

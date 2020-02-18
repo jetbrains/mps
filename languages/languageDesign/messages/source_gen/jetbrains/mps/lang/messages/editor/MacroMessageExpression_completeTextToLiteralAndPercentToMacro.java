@@ -68,14 +68,14 @@ public class MacroMessageExpression_completeTextToLiteralAndPercentToMacro exten
       return " letter or digit";
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0c0a0() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-      rootBuilder1.setProperty(PROPS.message$vnr0, "");
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+      n0.setProperty(PROPS.message$vnr0, "");
+      return n0.getResult();
     }
     private static SNode createLiteralMessageExpression_4ojwcw_a0a0a0a2a0a() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-      rootBuilder1.setProperty(PROPS.message$vnr0, "");
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+      n0.setProperty(PROPS.message$vnr0, "");
+      return n0.getResult();
     }
     private static <T> T as_4ojwcw_a0a0a4b(Object o, Class<T> type) {
       return (type.isInstance(o) ? (T) o : null);

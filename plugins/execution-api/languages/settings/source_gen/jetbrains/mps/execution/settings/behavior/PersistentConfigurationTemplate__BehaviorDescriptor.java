@@ -80,10 +80,10 @@ public final class PersistentConfigurationTemplate__BehaviorDescriptor extends B
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createTemplatePersistentConfigurationType_3swbqk_a0a0(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
-    return rootBuilder1.getResult();
+  private static SNode createTemplatePersistentConfigurationType_3swbqk_a0a0(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

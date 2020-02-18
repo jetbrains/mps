@@ -7631,23 +7631,23 @@ public class QueriesGenerated extends QueryProviderBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, 0x10f34f82910L, "cellMenuPart"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode createSubstituteMenu_RefPresentationTemplate_x583g4_a0a1a0a8a4801(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu_RefPresentationTemplate$mP);
-    rootBuilder1.setProperty(PROPS.prefix$CMHd, PROPS.prefix$CMHd.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.suffix$CMSP, PROPS.suffix$CMSP.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createSubstituteMenu_RefPresentationTemplate_x583g4_a0a1a0a8a4801(String p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu_RefPresentationTemplate$mP);
+    n0.setProperty(PROPS.prefix$CMHd, p0);
+    n0.setProperty(PROPS.suffix$CMSP, p1);
+    return n0.getResult();
   }
-  private static SNode createSubstituteMenu_x583g4_a0a2a0a8a4801(SNode node0, SNode node1, SNode node2) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu$v4);
-    rootBuilder1.forChild(LINKS.type$gsXC).init(CONCEPTS.MenuTypeDefault$Sb);
-    rootBuilder1.setReferenceTarget(LINKS.conceptDeclaration$acmt, node0);
+  private static SNode createSubstituteMenu_x583g4_a0a2a0a8a4801(SNode p0, SNode p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SubstituteMenu$v4);
+    n0.forChild(LINKS.type$gsXC).init(CONCEPTS.MenuTypeDefault$Sb);
+    n0.setReferenceTarget(LINKS.conceptDeclaration$acmt, p0);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.parts$MxT3).init(CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
-      n2.setReferenceTarget(LINKS.reference$w67J, node1);
-      n2.forChild(LINKS.matchingTextFunction$QMMb).initNode(node2, CONCEPTS.ISubstituteMenu_RefPresentation$3B, true);
+      SNodeBuilder n1 = n0.forChild(LINKS.parts$MxT3).init(CONCEPTS.SubstituteMenuPart_ReferenceScope$po);
+      n1.setReferenceTarget(LINKS.reference$w67J, p1);
+      n1.forChild(LINKS.matchingTextFunction$QMMb).initNode(p2, CONCEPTS.ISubstituteMenu_RefPresentation$3B, true);
     }
-    rootBuilder1.forChild(LINKS.parts$MxT3).init(CONCEPTS.SubstituteMenuPart_Subconcepts$YA);
-    return rootBuilder1.getResult();
+    n0.forChild(LINKS.parts$MxT3).init(CONCEPTS.SubstituteMenuPart_Subconcepts$YA);
+    return n0.getResult();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

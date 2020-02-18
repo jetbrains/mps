@@ -162,7 +162,7 @@ public class CreateMethodFromUsageHelper {
   }
 
   private SNode createDecl(SNode classifier, boolean sameClassifier, final String name, SNode retType) {
-    SNode method = createInstanceMethodDeclaration_tok9no_a0a0r(retType, (sameClassifier ? createPrivateVisibility_tok9no_a0a3a0a0a71() : createPublicVisibility_tok9no_a0a3a0a0a71()), name);
+    SNode method = createInstanceMethodDeclaration_tok9no_a0a0r(name, retType, (sameClassifier ? createPrivateVisibility_tok9no_a0a3a0a0a71() : createPublicVisibility_tok9no_a0a3a0a0a71()));
     if (!(sameClassifier)) {
       Classifier__BehaviorDescriptor.addMember_id32Td0IabBk_.invoke(classifier, method, ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.InstanceMethodDeclaration$An, CONCEPTS.StaticMethodDeclaration$eX));
       return method;
@@ -209,55 +209,55 @@ public class CreateMethodFromUsageHelper {
 
     public abstract void exec(_FunctionTypes._void_P0_E0 r);
   }
-  private static SNode createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0m(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InstanceMethodCallOperation$1G);
-    rootBuilder1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
-    return rootBuilder1.getResult();
+  private static SNode createInstanceMethodCallOperation_tok9no_a0a1a0a0b0x0m(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodCallOperation$1G);
+    n0.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
+    return n0.getResult();
   }
-  private static SNode createLocalMethodCall_tok9no_a0a1a0a0b0a32a21(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LocalMethodCall$77);
-    rootBuilder1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
-    return rootBuilder1.getResult();
+  private static SNode createLocalMethodCall_tok9no_a0a1a0a0b0a32a21(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LocalMethodCall$77);
+    n0.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
+    return n0.getResult();
   }
   private static SNode createVoidType_tok9no_d0a0a0a0b0b32a21() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
+    return n0.getResult();
   }
-  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0b32a21(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
+  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0b32a21(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$WIP0).init(CONCEPTS.LocalMethodCall$77);
-      n2.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
+      SNodeBuilder n1 = n0.forChild(LINKS.expression$WIP0).init(CONCEPTS.LocalMethodCall$77);
+      n1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
   private static SNode createVoidType_tok9no_d0a0a0a0b0c32a21() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.VoidType$aT);
+    return n0.getResult();
   }
-  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0c32a21(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
+  private static SNode createExpressionStatement_tok9no_a0a1a0a0b0c32a21(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$WIP0).init(CONCEPTS.LocalMethodCall$77);
-      n2.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
+      SNodeBuilder n1 = n0.forChild(LINKS.expression$WIP0).init(CONCEPTS.LocalMethodCall$77);
+      n1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createInstanceMethodDeclaration_tok9no_a0a0r(SNode node0, SNode node1, Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    rootBuilder1.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-    rootBuilder1.forChild(LINKS.returnType$WIkw).initNode(node0, CONCEPTS.Type$IG, true);
-    rootBuilder1.forChild(LINKS.visibility$2GiC).initNode(node1, CONCEPTS.Visibility$Lz, true);
-    return rootBuilder1.getResult();
+  private static SNode createInstanceMethodDeclaration_tok9no_a0a0r(String p0, SNode p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
+    n0.forChild(LINKS.returnType$WIkw).initNode(p1, CONCEPTS.Type$IG, true);
+    n0.forChild(LINKS.visibility$2GiC).initNode(p2, CONCEPTS.Visibility$Lz, true);
+    return n0.getResult();
   }
   private static SNode createPublicVisibility_tok9no_a0a3a0a0a71() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PublicVisibility$qe);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PublicVisibility$qe);
+    return n0.getResult();
   }
   private static SNode createPrivateVisibility_tok9no_a0a3a0a0a71() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PrivateVisibility$Se);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PrivateVisibility$Se);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_tok9no_a0a1a91() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

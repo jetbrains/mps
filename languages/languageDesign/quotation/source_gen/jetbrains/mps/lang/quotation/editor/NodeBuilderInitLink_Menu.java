@@ -142,9 +142,9 @@ public class NodeBuilderInitLink_Menu extends SubstituteMenuBase {
     }
   }
   private static SNode createNodeBuilderExpression_5gak4t_a0a0b(SNode p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
-    rootBuilder1.forChild(LINKS.expression$JCaZ).initNode(p0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeBuilderExpression$Ub);
+    n0.forChild(LINKS.expression$JCaZ).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

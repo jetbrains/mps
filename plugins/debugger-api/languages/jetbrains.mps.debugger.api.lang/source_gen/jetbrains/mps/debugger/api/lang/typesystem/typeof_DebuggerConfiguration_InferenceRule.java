@@ -35,8 +35,8 @@ public class typeof_DebuggerConfiguration_InferenceRule extends AbstractInferenc
     return false;
   }
   private static SNode createDebuggerType_p6alym_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DebuggerType$gI);
+    return n0.getResult();
   }
 
   private static final class LINKS {

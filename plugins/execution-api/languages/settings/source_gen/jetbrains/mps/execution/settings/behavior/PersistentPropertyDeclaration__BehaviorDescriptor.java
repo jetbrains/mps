@@ -153,8 +153,8 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
     return CONCEPT;
   }
   private static SNode createTemplatePersistentConfigurationType_ex141d_b0a0a0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    return n0.getResult();
   }
 
   private static final class LINKS {

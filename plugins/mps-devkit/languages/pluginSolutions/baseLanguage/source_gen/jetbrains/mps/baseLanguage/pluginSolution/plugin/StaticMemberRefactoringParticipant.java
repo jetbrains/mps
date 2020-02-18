@@ -61,17 +61,17 @@ public abstract class StaticMemberRefactoringParticipant extends UpdateReference
     return new NodeData<UpdateReferencesParticipantBase.NamedNodeReference>(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.nodeData$gifF)), SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.nodeData$gifF), PROPS.nodeName$KMmO)), classifierData);
   }
 
-  private static SNode createClassifierMemberData_io42ml_a0a5(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$xl);
-    rootBuilder1.forChild(LINKS.nodeData$gifF).initNode(node0, CONCEPTS.ReflectionNodeReference$Ue, true);
-    rootBuilder1.forChild(LINKS.classifierData$gigD).initNode(node1, CONCEPTS.ReflectionNodeReference$Ue, true);
-    return rootBuilder1.getResult();
+  private static SNode createClassifierMemberData_io42ml_a0a5(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$xl);
+    n0.forChild(LINKS.nodeData$gifF).initNode(p0, CONCEPTS.ReflectionNodeReference$Ue, true);
+    n0.forChild(LINKS.classifierData$gigD).initNode(p1, CONCEPTS.ReflectionNodeReference$Ue, true);
+    return n0.getResult();
   }
-  private static SNode createClassifierMemberData_io42ml_a0a6(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$xl);
-    rootBuilder1.forChild(LINKS.nodeData$gifF).initNode(node0, CONCEPTS.ReflectionNodeReference$Ue, true);
-    rootBuilder1.forChild(LINKS.classifierData$gigD).initNode(node1, CONCEPTS.ReflectionNodeReference$Ue, true);
-    return rootBuilder1.getResult();
+  private static SNode createClassifierMemberData_io42ml_a0a6(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierMemberData$xl);
+    n0.forChild(LINKS.nodeData$gifF).initNode(p0, CONCEPTS.ReflectionNodeReference$Ue, true);
+    n0.forChild(LINKS.classifierData$gigD).initNode(p1, CONCEPTS.ReflectionNodeReference$Ue, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

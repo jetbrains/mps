@@ -26,11 +26,9 @@ public class LightPattern_Inline_Test extends TestCase {
     boolean matches1 = false;
     boolean matches2 = false;
     SNode nodeToMatch = _quotation_createNode_c1xprt_a0c0a0();
-    Pattern_c1xprt_a0a2a0a pattern0;
-    Pattern_c1xprt_a0b2a0a pattern1;
-    if ((pattern0 = new Pattern_c1xprt_a0a2a0a()).match(nodeToMatch)) {
+    if (new Pattern_c1xprt_a0a2a0a().match(nodeToMatch)) {
       matches1 = Pattern_c1xprt_a0a2a0a.getValue(nodeToMatch) >= 8 && Pattern_c1xprt_a0a2a0a.getValue(nodeToMatch) <= 8 && SNodeOperations.isInstanceOf(Pattern_c1xprt_a0a2a0a.getType(nodeToMatch), CONCEPTS.IntegerType$Eo) && Pattern_c1xprt_a0a2a0a.getDecl(nodeToMatch) != null;
-    } else if ((pattern1 = new Pattern_c1xprt_a0b2a0a()).match(nodeToMatch)) {
+    } else if (new Pattern_c1xprt_a0b2a0a().match(nodeToMatch)) {
       matches2 = Objects.equals(Pattern_c1xprt_a0b2a0a.getName(nodeToMatch), "x");
     }
     Assert.assertTrue(matches1);
@@ -39,8 +37,7 @@ public class LightPattern_Inline_Test extends TestCase {
   public void test_testLabels() throws Exception {
     boolean matches;
     SNode nodeToMatch = _quotation_createNode_c1xprt_a0b0b0();
-    Pattern_c1xprt_a0a1a1a pattern0;
-    if ((pattern0 = new Pattern_c1xprt_a0a1a1a()).match(nodeToMatch)) {
+    if (new Pattern_c1xprt_a0a1a1a().match(nodeToMatch)) {
       matches = SLinkOperations.getTarget(SLinkOperations.getTarget(Pattern_c1xprt_a0a1a1a.getRoot(nodeToMatch), LINKS.localVariableDeclaration$O0D0), LINKS.type$pLrO) == Pattern_c1xprt_a0a1a1a.getType(nodeToMatch);
     } else {
       matches = false;
@@ -81,13 +78,13 @@ public class LightPattern_Inline_Test extends TestCase {
   }
   private static class Pattern_c1xprt_a0b2a0a extends AbstractGeneratedPattern {
     public Pattern_c1xprt_a0b2a0a() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
       {
-        NodeMatcherBuilder n14 = rootBuilder.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
-        n14.forChild(LINKS.type$pLrO).init(CONCEPTS.IntegerType$Eo);
-        n14.setPropertyVariable(PROPS.name$tAp1);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
+        n1.forChild(LINKS.type$pLrO).init(CONCEPTS.IntegerType$Eo);
+        n1.setPropertyVariable(PROPS.name$tAp1);
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Nullable
     public static String getName(SNode rootNode) {
@@ -97,24 +94,24 @@ public class LightPattern_Inline_Test extends TestCase {
   }
   private static class Pattern_c1xprt_a0a2a0a extends AbstractGeneratedPattern {
     public Pattern_c1xprt_a0a2a0a() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
       {
-        NodeMatcherBuilder n15 = rootBuilder.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
-        n15.forChild(LINKS.type$pLrO).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
-        n15.setPropertyVariable(PROPS.name$tAp1);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
+        n1.forChild(LINKS.type$pLrO).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
+        n1.setPropertyVariable(PROPS.name$tAp1);
         {
-          NodeMatcherBuilder n16 = n15.forChild(LINKS.initializer$KgD).init(CONCEPTS.PlusExpression$Re);
+          NodeMatcherBuilder n2 = n1.forChild(LINKS.initializer$KgD).init(CONCEPTS.PlusExpression$Re);
           {
-            NodeMatcherBuilder n17 = n16.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-            n17.setPropertyVariable(PROPS.value$ZeO0);
+            NodeMatcherBuilder n3 = n2.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
+            n3.setPropertyVariable(PROPS.value$ZeO0);
           }
           {
-            NodeMatcherBuilder n18 = n16.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.VariableReference$sQ);
-            n18.setReferenceVariable(LINKS.variableDeclaration$2ky6);
+            NodeMatcherBuilder n4 = n2.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.VariableReference$sQ);
+            n4.setReferenceVariable(LINKS.variableDeclaration$2ky6);
           }
         }
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Nullable
     public static SNode getType(SNode rootNode) {
@@ -139,13 +136,13 @@ public class LightPattern_Inline_Test extends TestCase {
   }
   private static class Pattern_c1xprt_a0a1a1a extends AbstractGeneratedPattern {
     public Pattern_c1xprt_a0a1a1a() {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$BI);
       {
-        NodeMatcherBuilder n19 = rootBuilder.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
-        n19.forChild(LINKS.type$pLrO).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
-        n19.setProperty(PROPS.name$tAp1, "x");
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.localVariableDeclaration$O0D0).init(CONCEPTS.LocalVariableDeclaration$Bf);
+        n1.forChild(LINKS.type$pLrO).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
+        n1.setProperty(PROPS.name$tAp1, "x");
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Nullable
     public static SNode getRoot(SNode rootNode) {
@@ -159,17 +156,17 @@ public class LightPattern_Inline_Test extends TestCase {
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
   private static class Pattern_c1xprt_a0a1a2a extends AbstractGeneratedPattern {
-    public Pattern_c1xprt_a0a1a2a(Object p0) {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
+    public Pattern_c1xprt_a0a1a2a(int p0) {
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
       {
-        NodeMatcherBuilder n20 = rootBuilder.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n20.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$ZeO0);
       }
       {
-        NodeMatcherBuilder n21 = rootBuilder.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n21.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Override
     public boolean match(SNode nodeToMatch) {
@@ -183,17 +180,17 @@ public class LightPattern_Inline_Test extends TestCase {
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
   private static class Pattern_c1xprt_a0a1a3a extends AbstractGeneratedPattern {
-    public Pattern_c1xprt_a0a1a3a(Object p0) {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
+    public Pattern_c1xprt_a0a1a3a(int p0) {
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
       {
-        NodeMatcherBuilder n22 = rootBuilder.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n22.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$ZeO0);
       }
       {
-        NodeMatcherBuilder n23 = rootBuilder.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n23.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Override
     public boolean match(SNode nodeToMatch) {
@@ -207,17 +204,17 @@ public class LightPattern_Inline_Test extends TestCase {
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
   private static class Pattern_c1xprt_a0b1a4a extends AbstractGeneratedPattern {
-    public Pattern_c1xprt_a0b1a4a(Object p0) {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.MulExpression$8_);
+    public Pattern_c1xprt_a0b1a4a(int p0) {
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.MulExpression$8_);
       {
-        NodeMatcherBuilder n24 = rootBuilder.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n24.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$ZeO0);
       }
       {
-        NodeMatcherBuilder n25 = rootBuilder.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n25.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Override
     public boolean match(SNode nodeToMatch) {
@@ -231,17 +228,17 @@ public class LightPattern_Inline_Test extends TestCase {
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
   private static class Pattern_c1xprt_a0a1a4a extends AbstractGeneratedPattern {
-    public Pattern_c1xprt_a0a1a4a(Object p0) {
-      NodeMatcherBuilder rootBuilder = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
+    public Pattern_c1xprt_a0a1a4a(int p0) {
+      NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.PlusExpression$Re);
       {
-        NodeMatcherBuilder n26 = rootBuilder.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
-        n26.setPropertyVariable(PROPS.value$ZeO0);
+        NodeMatcherBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.IntegerConstant$mo);
+        n1.setPropertyVariable(PROPS.value$ZeO0);
       }
       {
-        NodeMatcherBuilder n27 = rootBuilder.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
-        n27.setProperty(PROPS.value$ZeO0, "" + (p0));
+        NodeMatcherBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.IntegerConstant$mo);
+        n2.setProperty(PROPS.value$ZeO0, "" + (p0));
       }
-      setMatcher(rootBuilder.getMatcher());
+      setMatcher(n0.getMatcher());
     }
     @Override
     public boolean match(SNode nodeToMatch) {

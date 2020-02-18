@@ -24,10 +24,10 @@ public final class blExpression_PasteWrapper_2 implements PasteWrapper {
   public SNode wrap(SNode sourceNode) {
     return createExpressionStatement_sma98h_a0a0c(SLinkOperations.getTarget(sourceNode, LINKS.expression$HQe6));
   }
-  private static SNode createExpressionStatement_sma98h_a0a0c(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
-    rootBuilder1.forChild(LINKS.expression$WIP0).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createExpressionStatement_sma98h_a0a0c(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionStatement$nm);
+    n0.forChild(LINKS.expression$WIP0).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

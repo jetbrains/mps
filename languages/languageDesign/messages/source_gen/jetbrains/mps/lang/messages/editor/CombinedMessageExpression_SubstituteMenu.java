@@ -131,12 +131,12 @@ public class CombinedMessageExpression_SubstituteMenu extends SubstituteMenuBase
       return CONCEPTS.MessageExpression$FF;
     }
   }
-  private static SNode createCombinedMessageExpression_6s2f6n_a0a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
+  private static SNode createCombinedMessageExpression_6s2f6n_a0a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.part$x7tZ).initNode(node0, CONCEPTS.MessageExpression$FF, false);
+      SNodeBuilder n1 = n0.forChild(LINKS.part$x7tZ).initNode(p0, CONCEPTS.MessageExpression$FF, false);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

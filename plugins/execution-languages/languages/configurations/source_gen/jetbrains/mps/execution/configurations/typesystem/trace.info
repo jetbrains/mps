@@ -32,11 +32,11 @@
       <node id="1594211126127671963" at="34,68,35,102" concept="7" />
       <node id="1594211126127671963" at="37,30,38,17" concept="7" />
       <node id="7060245871956279702" at="40,58,41,63" concept="6" />
-      <node id="7060245871956279702" at="41,63,42,78" concept="6" />
-      <node id="7060245871956279702" at="43,5,44,100" concept="6" />
-      <node id="7060245871956279702" at="44,100,45,207" concept="2" />
-      <node id="7060245871956279702" at="46,5,47,77" concept="2" />
-      <node id="7060245871956279702" at="47,77,48,36" concept="7" />
+      <node id="7060245871956279702" at="41,63,42,68" concept="6" />
+      <node id="7060245871956279702" at="43,5,44,90" concept="6" />
+      <node id="7060245871956279702" at="44,90,45,207" concept="2" />
+      <node id="7060245871956279702" at="46,5,47,67" concept="2" />
+      <node id="7060245871956279702" at="47,67,48,26" concept="7" />
       <node id="1594211126127671963" at="52,0,53,0" concept="8" trace="tool$Z7Xd" />
       <node id="1594211126127671963" at="53,0,54,0" concept="8" trace="argument$xIHX" />
       <node id="1594211126127671963" at="54,0,55,0" concept="8" trace="classifier$pQ_R" />
@@ -48,7 +48,7 @@
       <node id="1594211126127671963" at="31,0,34,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1594211126127671963" at="34,0,37,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="1594211126127671963" at="37,0,40,0" concept="5" trace="overrides#()Z" />
-      <node id="7060245871956279702" at="42,78,46,5" concept="0" />
+      <node id="7060245871956279702" at="42,68,46,5" concept="0" />
       <node id="1594211126127671995" at="24,141,29,5" concept="0" />
       <node id="1594211126127671963" at="24,0,31,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <node id="7060245871956279702" at="40,0,50,0" concept="9" trace="createJoinType_psezx7_a1a0c0a0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -58,7 +58,7 @@
       <scope id="1594211126127671963" at="37,30,38,17" />
       <scope id="1594211126127671963" at="22,0,24,0" />
       <scope id="7060245871956279702" at="43,5,45,207">
-        <var name="n2" id="7060245871956279702" />
+        <var name="n1" id="7060245871956279702" />
       </scope>
       <scope id="1594211126127671995" at="25,5,28,313">
         <var name="_info_12389875345" id="1594211126127671995" />
@@ -75,9 +75,9 @@
         <var name="status" id="1594211126127671963" />
         <var name="typeCheckingContext" id="1594211126127671963" />
       </scope>
-      <scope id="7060245871956279702" at="40,58,48,36">
+      <scope id="7060245871956279702" at="40,58,48,26">
         <var name="facade" id="7060245871956279702" />
-        <var name="rootBuilder1" id="7060245871956279702" />
+        <var name="n0" id="7060245871956279702" />
       </scope>
       <scope id="7060245871956279702" at="40,0,50,0" />
       <unit id="1594211126127671963" at="51,0,56,0" name="jetbrains.mps.execution.configurations.typesystem.typeof_StartProcessHandlerStatement_InferenceRule$LINKS" />
@@ -158,8 +158,8 @@
       <node id="1594211126127774350" at="40,50,41,38" concept="7" />
       <node id="1594211126127774350" at="43,68,44,102" concept="7" />
       <node id="1594211126127774350" at="46,30,47,17" concept="7" />
-      <node id="7060245871956100127" at="49,61,50,81" concept="6" />
-      <node id="7060245871956100127" at="50,81,51,36" concept="7" />
+      <node id="7060245871956100127" at="49,61,50,71" concept="6" />
+      <node id="7060245871956100127" at="50,71,51,26" concept="7" />
       <node id="1594211126127774956" at="53,65,54,63" concept="6" />
       <node id="1594211126127774956" at="54,63,55,30" concept="6" />
       <node id="1594211126127774956" at="55,30,56,234" concept="2" />
@@ -189,8 +189,8 @@
       <scope id="1594211126127774350" at="43,68,44,102" />
       <scope id="1594211126127774350" at="46,30,47,17" />
       <scope id="1594211126127774350" at="21,0,23,0" />
-      <scope id="7060245871956100127" at="49,61,51,36">
-        <var name="rootBuilder1" id="7060245871956100127" />
+      <scope id="7060245871956100127" at="49,61,51,26">
+        <var name="n0" id="7060245871956100127" />
       </scope>
       <scope id="1594211126127774357" at="24,5,27,292">
         <var name="_info_12389875345" id="1594211126127774357" />
@@ -305,9 +305,9 @@
       <node id="2181232403821937322" at="28,50,29,56" concept="7" />
       <node id="2181232403821937322" at="31,68,32,102" concept="7" />
       <node id="2181232403821937322" at="34,30,35,17" concept="7" />
-      <node id="48168216978191037" at="37,81,38,90" concept="6" />
-      <node id="48168216978191037" at="38,90,39,79" concept="2" />
-      <node id="48168216978191037" at="39,79,40,36" concept="7" />
+      <node id="48168216978191037" at="37,78,38,80" concept="6" />
+      <node id="48168216978191037" at="38,80,39,66" concept="2" />
+      <node id="48168216978191037" at="39,66,40,26" concept="7" />
       <node id="2181232403821937322" at="44,0,45,0" concept="8" trace="configuration$3hcJ" />
       <node id="2181232403821937322" at="45,0,46,0" concept="8" trace="persistentConfiguration$28v0" />
       <node id="2181232403821937322" at="49,0,50,0" concept="8" trace="DummyRunConfigurationInitializer$4m" />
@@ -333,12 +333,12 @@
         <var name="argument" id="2181232403821937322" />
       </scope>
       <scope id="2181232403821937322" at="34,0,37,0" />
-      <scope id="48168216978191037" at="37,81,40,36">
-        <var name="rootBuilder1" id="48168216978191037" />
+      <scope id="48168216978191037" at="37,78,40,26">
+        <var name="n0" id="48168216978191037" />
       </scope>
       <scope id="2181232403821937323" at="21,124,26,5" />
       <scope id="48168216978191037" at="37,0,42,0">
-        <var name="node0" id="48168216978191037" />
+        <var name="p0" id="48168216978191037" />
       </scope>
       <scope id="2181232403821937322" at="21,0,28,0">
         <var name="initializer" id="2181232403821937322" />
@@ -367,9 +367,9 @@
       <node id="2181232403822948246" at="34,68,35,102" concept="7" />
       <node id="2181232403822948246" at="37,30,38,17" concept="7" />
       <node id="2181232403822958746" at="40,64,41,63" concept="6" />
-      <node id="2181232403822958746" at="41,63,42,84" concept="6" />
-      <node id="2181232403822958746" at="42,84,43,218" concept="2" />
-      <node id="2181232403822958746" at="43,218,44,36" concept="7" />
+      <node id="2181232403822958746" at="41,63,42,74" concept="6" />
+      <node id="2181232403822958746" at="42,74,43,208" concept="2" />
+      <node id="2181232403822958746" at="43,208,44,26" concept="7" />
       <node id="2181232403822948246" at="48,0,49,0" concept="8" trace="projectParameter$6vQN" />
       <node id="2181232403822948246" at="49,0,50,0" concept="8" trace="classifier$pQ_R" />
       <node id="2181232403822948246" at="53,0,54,0" concept="8" trace="DummyRunConfigurationInitializer$4m" />
@@ -395,9 +395,9 @@
         <var name="argument" id="2181232403822948246" />
       </scope>
       <scope id="2181232403822948246" at="37,0,40,0" />
-      <scope id="2181232403822958746" at="40,64,44,36">
+      <scope id="2181232403822958746" at="40,64,44,26">
         <var name="facade" id="2181232403822958746" />
-        <var name="rootBuilder1" id="2181232403822958746" />
+        <var name="n0" id="2181232403822958746" />
       </scope>
       <scope id="2181232403822948247" at="24,124,29,5" />
       <scope id="2181232403822958746" at="40,0,46,0" />
@@ -767,8 +767,8 @@
       <node id="4414733712827570583" at="21,50,22,44" concept="7" />
       <node id="4414733712827570583" at="24,68,25,102" concept="7" />
       <node id="4414733712827570583" at="27,27,28,16" concept="7" />
-      <node id="4414733712827570773" at="30,80,31,105" concept="6" />
-      <node id="4414733712827570773" at="31,105,32,36" concept="7" />
+      <node id="4414733712827570773" at="30,80,31,95" concept="6" />
+      <node id="4414733712827570773" at="31,95,32,26" concept="7" />
       <node id="4414733712827570583" at="36,0,37,0" concept="8" trace="RunConfigurationType$qY" />
       <node id="4414733712827570583" at="37,0,38,0" concept="8" trace="TemplatePersistentConfigurationType$ht" />
       <node id="4414733712827570583" at="16,0,18,0" concept="1" trace="RunConfigurationTypeIsPersistentConfiguration_SubtypingRule#()V" />
@@ -783,8 +783,8 @@
       <scope id="4414733712827570583" at="24,68,25,102" />
       <scope id="4414733712827570583" at="27,27,28,16" />
       <scope id="4414733712827570583" at="16,0,18,0" />
-      <scope id="4414733712827570773" at="30,80,32,36">
-        <var name="rootBuilder1" id="4414733712827570773" />
+      <scope id="4414733712827570773" at="30,80,32,26">
+        <var name="n0" id="4414733712827570773" />
       </scope>
       <scope id="4414733712827570583" at="18,0,21,0">
         <var name="runConfigurationType" id="4414733712827570583" />
@@ -825,9 +825,9 @@
       <node id="4414733712828683079" at="27,50,28,40" concept="7" />
       <node id="4414733712828683079" at="30,68,31,102" concept="7" />
       <node id="4414733712828683079" at="33,30,34,17" concept="7" />
-      <node id="4414733712828692754" at="36,81,37,90" concept="6" />
-      <node id="4414733712828692754" at="37,90,38,79" concept="2" />
-      <node id="4414733712828692754" at="38,79,39,36" concept="7" />
+      <node id="4414733712828692754" at="36,78,37,80" concept="6" />
+      <node id="4414733712828692754" at="37,80,38,66" concept="2" />
+      <node id="4414733712828692754" at="38,66,39,26" concept="7" />
       <node id="4414733712828683079" at="43,0,44,0" concept="8" trace="RunConfiguration$UX" />
       <node id="4414733712828683079" at="44,0,45,0" concept="8" trace="RunConfigurationType$qY" />
       <node id="4414733712828683079" at="48,0,49,0" concept="8" trace="persistentConfiguration$28v0" />
@@ -852,12 +852,12 @@
         <var name="argument" id="4414733712828683079" />
       </scope>
       <scope id="4414733712828683079" at="33,0,36,0" />
-      <scope id="4414733712828692754" at="36,81,39,36">
-        <var name="rootBuilder1" id="4414733712828692754" />
+      <scope id="4414733712828692754" at="36,78,39,26">
+        <var name="n0" id="4414733712828692754" />
       </scope>
       <scope id="4414733712828683080" at="20,129,25,5" />
       <scope id="4414733712828692754" at="36,0,41,0">
-        <var name="node0" id="4414733712828692754" />
+        <var name="p0" id="4414733712828692754" />
       </scope>
       <scope id="4414733712828683079" at="20,0,27,0">
         <var name="runConfiguration" id="4414733712828683079" />
@@ -886,9 +886,9 @@
       <node id="4805365031744813340" at="31,50,32,47" concept="7" />
       <node id="4805365031744813340" at="34,68,35,102" concept="7" />
       <node id="4805365031744813340" at="37,30,38,17" concept="7" />
-      <node id="2181232403826283705" at="40,81,41,90" concept="6" />
-      <node id="2181232403826283705" at="41,90,42,79" concept="2" />
-      <node id="2181232403826283705" at="42,79,43,36" concept="7" />
+      <node id="2181232403826283705" at="40,78,41,80" concept="6" />
+      <node id="2181232403826283705" at="41,80,42,66" concept="2" />
+      <node id="2181232403826283705" at="42,66,43,26" concept="7" />
       <node id="4805365031744813340" at="47,0,48,0" concept="8" trace="RunConfigurationProducer$Ul" />
       <node id="4805365031744813340" at="48,0,49,0" concept="8" trace="RunConfiguration$UX" />
       <node id="4805365031744813340" at="49,0,50,0" concept="8" trace="Configuration_Parameter$vm" />
@@ -916,11 +916,11 @@
         <var name="argument" id="4805365031744813340" />
       </scope>
       <scope id="4805365031744813340" at="37,0,40,0" />
-      <scope id="2181232403826283705" at="40,81,43,36">
-        <var name="rootBuilder1" id="2181232403826283705" />
+      <scope id="2181232403826283705" at="40,78,43,26">
+        <var name="n0" id="2181232403826283705" />
       </scope>
       <scope id="2181232403826283705" at="40,0,45,0">
-        <var name="node0" id="2181232403826283705" />
+        <var name="p0" id="2181232403826283705" />
       </scope>
       <scope id="4805365031744813341" at="23,117,29,5">
         <var name="rc" id="2181232403826298018" />
@@ -1651,9 +1651,9 @@
       <node id="6981317760235477791" at="23,50,24,44" concept="7" />
       <node id="6981317760235477791" at="26,68,27,102" concept="7" />
       <node id="6981317760235477791" at="29,27,30,17" concept="7" />
-      <node id="48168216978189781" at="32,83,33,97" concept="6" />
-      <node id="48168216978189781" at="33,97,34,79" concept="2" />
-      <node id="48168216978189781" at="34,79,35,36" concept="7" />
+      <node id="48168216978189781" at="32,80,33,87" concept="6" />
+      <node id="48168216978189781" at="33,87,34,66" concept="2" />
+      <node id="48168216978189781" at="34,66,35,26" concept="7" />
       <node id="6981317760235477791" at="39,0,40,0" concept="8" trace="persistentConfiguration$28v0" />
       <node id="6981317760235477791" at="43,0,44,0" concept="8" trace="RunConfigurationType$qY" />
       <node id="6981317760235477791" at="44,0,45,0" concept="8" trace="PersistentConfigurationType$e2" />
@@ -1679,11 +1679,11 @@
         <var name="argument" id="6981317760235477791" />
       </scope>
       <scope id="6981317760235477791" at="29,0,32,0" />
-      <scope id="48168216978189781" at="32,83,35,36">
-        <var name="rootBuilder1" id="48168216978189781" />
+      <scope id="48168216978189781" at="32,80,35,26">
+        <var name="n0" id="48168216978189781" />
       </scope>
       <scope id="48168216978189781" at="32,0,37,0">
-        <var name="node0" id="48168216978189781" />
+        <var name="p0" id="48168216978189781" />
       </scope>
       <unit id="6981317760235477791" at="38,0,41,0" name="jetbrains.mps.execution.configurations.typesystem.RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule$LINKS" />
       <unit id="6981317760235477791" at="42,0,46,0" name="jetbrains.mps.execution.configurations.typesystem.RunConfigurationIsSubtypeOfPersistentConfiguration_SubtypingRule$CONCEPTS" />
@@ -1715,9 +1715,9 @@
       <node id="7667828742972817495" at="32,68,33,102" concept="7" />
       <node id="7667828742972817495" at="35,30,36,17" concept="7" />
       <node id="6250782472215252137" at="38,63,39,63" concept="6" />
-      <node id="6250782472215252137" at="39,63,40,84" concept="6" />
-      <node id="6250782472215252137" at="40,84,41,233" concept="2" />
-      <node id="6250782472215252137" at="41,233,42,36" concept="7" />
+      <node id="6250782472215252137" at="39,63,40,74" concept="6" />
+      <node id="6250782472215252137" at="40,74,41,223" concept="2" />
+      <node id="6250782472215252137" at="41,223,42,26" concept="7" />
       <node id="7667828742972817495" at="46,0,47,0" concept="8" trace="ContextExpression$13" />
       <node id="7667828742972817495" at="47,0,48,0" concept="8" trace="ClassifierType$IZ" />
       <node id="7667828742972817495" at="51,0,52,0" concept="8" trace="classifier$pQ_R" />
@@ -1742,9 +1742,9 @@
         <var name="argument" id="7667828742972817495" />
       </scope>
       <scope id="7667828742972817495" at="35,0,38,0" />
-      <scope id="6250782472215252137" at="38,63,42,36">
+      <scope id="6250782472215252137" at="38,63,42,26">
         <var name="facade" id="6250782472215252137" />
-        <var name="rootBuilder1" id="6250782472215252137" />
+        <var name="n0" id="6250782472215252137" />
       </scope>
       <scope id="7667828742972817496" at="22,130,27,5" />
       <scope id="6250782472215252137" at="38,0,44,0" />

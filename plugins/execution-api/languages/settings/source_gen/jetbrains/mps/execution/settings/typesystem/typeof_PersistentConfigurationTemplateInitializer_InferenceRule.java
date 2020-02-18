@@ -55,10 +55,10 @@ public class typeof_PersistentConfigurationTemplateInitializer_InferenceRule ext
   public boolean overrides() {
     return false;
   }
-  private static SNode createTemplatePersistentConfigurationType_xmb8fa_a1a0c0a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
-    return rootBuilder1.getResult();
+  private static SNode createTemplatePersistentConfigurationType_xmb8fa_a1a0c0a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TemplatePersistentConfigurationType$ht);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

@@ -557,14 +557,14 @@
       <node id="4692848271444276098" at="99,66,100,80" concept="0" />
       <node id="4692848271443795412" at="103,59,104,34" concept="5" />
       <node id="7538089231777683086" at="104,34,105,116" concept="5" />
-      <node id="48168216978432693" at="110,75,111,86" concept="10" />
-      <node id="48168216978432693" at="111,86,112,86" concept="5" />
-      <node id="48168216978432693" at="112,86,113,36" concept="11" />
-      <node id="7315649411652422685" at="115,69,116,89" concept="10" />
-      <node id="7315649411652422685" at="116,89,117,36" concept="11" />
-      <node id="7315649411652345147" at="119,73,120,86" concept="10" />
-      <node id="7315649411652345147" at="120,86,121,90" concept="5" />
-      <node id="7315649411652345147" at="121,90,122,36" concept="11" />
+      <node id="48168216978432693" at="110,75,111,76" concept="10" />
+      <node id="48168216978432693" at="111,76,112,40" concept="5" />
+      <node id="48168216978432693" at="112,40,113,26" concept="11" />
+      <node id="7315649411652422685" at="115,69,116,79" concept="10" />
+      <node id="7315649411652422685" at="116,79,117,26" concept="11" />
+      <node id="7315649411652345147" at="119,70,120,76" concept="10" />
+      <node id="7315649411652345147" at="120,76,121,77" concept="5" />
+      <node id="7315649411652345147" at="121,77,122,26" concept="11" />
       <node id="4692848271443657146" at="126,0,127,0" concept="14" trace="target$9y$J" />
       <node id="4692848271443657146" at="127,0,128,0" concept="14" trace="item$zh_g" />
       <node id="4692848271443657146" at="128,0,129,0" concept="14" trace="node$MHJ0" />
@@ -585,7 +585,7 @@
       <node id="7315649411652422685" at="115,0,119,0" concept="15" trace="createNewLineResponseItem_kp3e3v_a0a0c0b0f#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4598452390225752486" at="59,0,64,0" concept="9" trace="addNodeRef#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3237470200221266052" at="86,27,91,13" concept="5" />
-      <node id="48168216978432693" at="110,0,115,0" concept="15" trace="createTextResponseItem_kp3e3v_a0a0b0b0f#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="48168216978432693" at="110,0,115,0" concept="15" trace="createTextResponseItem_kp3e3v_a0a0b0b0f#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7315649411652345147" at="119,0,124,0" concept="15" trace="createNodeResponseItem_kp3e3v_a0a0j#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4598452390225752502" at="74,0,80,0" concept="9" trace="addClosure#(Ljava/lang/Runnable;Ljava/lang/String;)V" />
       <node id="8224271355610803233" at="102,0,108,0" concept="9" trace="doExecute#()V" />
@@ -607,8 +607,8 @@
       <scope id="8627797991303072802" at="82,28,83,32" />
       <scope id="3237470200221266056" at="88,31,89,49" />
       <scope id="4692848271444285935" at="103,59,105,116" />
-      <scope id="7315649411652422685" at="115,69,117,36">
-        <var name="rootBuilder1" id="7315649411652422685" />
+      <scope id="7315649411652422685" at="115,69,117,26">
+        <var name="n0" id="7315649411652422685" />
       </scope>
       <scope id="4692848271443779922" at="34,0,37,0">
         <var name="tab" id="4692848271443779929" />
@@ -623,11 +623,11 @@
         <var name="node" id="2348043250037290194" />
       </scope>
       <scope id="3237470200221266054" at="88,0,91,0" />
-      <scope id="48168216978432693" at="110,75,113,36">
-        <var name="rootBuilder1" id="48168216978432693" />
+      <scope id="48168216978432693" at="110,75,113,26">
+        <var name="n0" id="48168216978432693" />
       </scope>
-      <scope id="7315649411652345147" at="119,73,122,36">
-        <var name="rootBuilder1" id="7315649411652345147" />
+      <scope id="7315649411652345147" at="119,70,122,26">
+        <var name="n0" id="7315649411652345147" />
       </scope>
       <scope id="4598452390225752510" at="74,57,78,29">
         <var name="nodeWithClosure" id="7600370246423004421" />
@@ -645,7 +645,7 @@
         <var name="p0" id="48168216978432693" />
       </scope>
       <scope id="7315649411652345147" at="119,0,124,0">
-        <var name="node0" id="7315649411652345147" />
+        <var name="p0" id="7315649411652345147" />
       </scope>
       <scope id="4598452390225752501" at="65,41,71,29">
         <var name="exceptionHolder" id="6558068108108370772" />

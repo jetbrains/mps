@@ -163,11 +163,11 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
     return menu;
   }
 
-  private static SNode createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a3a3a6(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SmartRefMigrationDataEntity$RK);
-    rootBuilder1.setReferenceTarget(LINKS.conceptNode$fdeu, node0);
-    rootBuilder1.setReferenceTarget(LINKS.generatedMenu$fdfV, node1);
-    return rootBuilder1.getResult();
+  private static SNode createSmartRefMigrationDataEntity_b3phj_a0a2a6a1a3a3a6(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SmartRefMigrationDataEntity$RK);
+    n0.setReferenceTarget(LINKS.conceptNode$fdeu, p0);
+    n0.setReferenceTarget(LINKS.generatedMenu$fdfV, p1);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_b3phj_a0a0u(Object parameter_1, Object parameter_2, Object parameter_3) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

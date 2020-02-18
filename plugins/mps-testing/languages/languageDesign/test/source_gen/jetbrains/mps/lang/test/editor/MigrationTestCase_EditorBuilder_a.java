@@ -369,10 +369,10 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
         return new EditorMenuDescriptorBase("generic group with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00000000-0000-4000-0000-011c89590384(jetbrains.mps.lang.test.editor)", "6626913010124512135"));
       }
-      private static SNode createMigrationReference_w3rzlq_a0a0a0a0a2c0(SNode node0) {
-        SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MigrationReference$BB);
-        rootBuilder1.setReferenceTarget(LINKS.migration$RUsw, node0);
-        return rootBuilder1.getResult();
+      private static SNode createMigrationReference_w3rzlq_a0a0a0a0a2c0(SNode p0) {
+        SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MigrationReference$BB);
+        n0.setReferenceTarget(LINKS.migration$RUsw, p0);
+        return n0.getResult();
       }
     }
   }

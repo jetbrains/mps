@@ -319,21 +319,21 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
       }
     }
   }
-  private static SNode createBuildStringNotEmpty_aabwkk_a0a4a0a1a(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
+  private static SNode createBuildStringNotEmpty_aabwkk_a0a4a0a1a(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.parts$aVY3).init(CONCEPTS.BuildTextStringPart$xk);
-      n2.setProperty(PROPS.text$2p89, PROPS.text$2p89.getType().toString(p0));
+      SNodeBuilder n1 = n0.forChild(LINKS.parts$aVY3).init(CONCEPTS.BuildTextStringPart$xk);
+      n1.setProperty(PROPS.text$2p89, p0);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
-  private static SNode createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
+  private static SNode createBuildStringNotEmpty_aabwkk_a0a0a5a0a1a(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildStringNotEmpty$FZ);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.parts$aVY3).init(CONCEPTS.BuildTextStringPart$xk);
-      n2.setProperty(PROPS.text$2p89, PROPS.text$2p89.getType().toString(p0));
+      SNodeBuilder n1 = n0.forChild(LINKS.parts$aVY3).init(CONCEPTS.BuildTextStringPart$xk);
+      n1.setProperty(PROPS.text$2p89, p0);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

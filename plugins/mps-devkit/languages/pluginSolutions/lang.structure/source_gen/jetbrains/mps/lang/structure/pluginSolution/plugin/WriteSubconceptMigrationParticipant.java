@@ -34,8 +34,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.refactoring.participant.RefactoringSession;
-import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.migration.behavior.AbstractNodeReference__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
@@ -163,7 +163,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
 
 
   public SNode serializeInitialState(Tuples._2<NamedNodeReference, MigrationScriptRef> initialState) {
-    return createConceptMigrationReference_8k3jue_a0a51(NodeReferenceUtil.makeReflection(initialState._0().reference(), initialState._0().name()), initialState._1().getVersion(), PersistenceFacade.getInstance().asString(initialState._1().getLanguage()));
+    return createConceptMigrationReference_8k3jue_a0a51(initialState._1().getVersion(), PersistenceFacade.getInstance().asString(initialState._1().getLanguage()), NodeReferenceUtil.makeReflection(initialState._0().reference(), initialState._0().name()));
   }
   public Tuples._2<NamedNodeReference, MigrationScriptRef> deserializeInitialState(SNode serialized) {
     return MultiTuple.<NamedNodeReference,MigrationScriptRef>from(new NamedNodeReference(AbstractNodeReference__BehaviorDescriptor.getNodeReference_id4uVwhQyQbdz.invoke(SLinkOperations.getTarget(serialized, LINKS.oldConcept$BI1t)), BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(serialized, LINKS.oldConcept$BI1t))), new MigrationScriptRef(PersistenceFacade.getInstance().createModuleReference(SPropertyOperations.getString(SLinkOperations.getTarget(serialized, LINKS.migrationScript$BI00), PROPS.module$CX3T)), SPropertyOperations.getInteger(SLinkOperations.getTarget(serialized, LINKS.migrationScript$BI00), PROPS.fromVersion$6eac)));
@@ -189,20 +189,20 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
   public MoveNodeRefactoringParticipant.MoveNodeRefactoringDataCollector<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> getDataCollector() {
     return myDataCollector;
   }
-  private static SNode createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IncludeMigrationPart$zz);
-    rootBuilder1.setReferenceTarget(LINKS.target$s$xW, node0);
-    return rootBuilder1.getResult();
+  private static SNode createIncludeMigrationPart_8k3jue_a0a1a1a0a0a0a0a0a5a2a21(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IncludeMigrationPart$zz);
+    n0.setReferenceTarget(LINKS.target$s$xW, p0);
+    return n0.getResult();
   }
-  private static SNode createConceptMigrationReference_8k3jue_a0a51(SNode node0, Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ConceptMigrationReference$$0);
+  private static SNode createConceptMigrationReference_8k3jue_a0a51(int p0, String p1, SNode p2) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptMigrationReference$$0);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.migrationScript$BI00).init(CONCEPTS.MigrationScriptReference$AH);
-      n2.setProperty(PROPS.fromVersion$6eac, PROPS.fromVersion$6eac.getType().toString(p0));
-      n2.setProperty(PROPS.module$CX3T, PROPS.module$CX3T.getType().toString(p1));
+      SNodeBuilder n1 = n0.forChild(LINKS.migrationScript$BI00).init(CONCEPTS.MigrationScriptReference$AH);
+      n1.setProperty(PROPS.fromVersion$6eac, "" + (p0));
+      n1.setProperty(PROPS.module$CX3T, p1);
     }
-    rootBuilder1.forChild(LINKS.oldConcept$BI1t).initNode(node0, CONCEPTS.AbstractNodeReference$T6, true);
-    return rootBuilder1.getResult();
+    n0.forChild(LINKS.oldConcept$BI1t).initNode(p2, CONCEPTS.AbstractNodeReference$T6, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

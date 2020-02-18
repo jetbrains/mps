@@ -173,11 +173,11 @@ public class ChangesRollbackTest extends ChangesTestBase {
     return quotedNode_1;
   }
   private static SNode createInstanceMethodDeclaration_p3cuek_a0a5a31() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
-    rootBuilder1.setProperty(PROPS.name$tAp1, "m1");
-    rootBuilder1.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-    rootBuilder1.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InstanceMethodDeclaration$An);
+    n0.setProperty(PROPS.name$tAp1, "m1");
+    n0.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
+    n0.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
+    return n0.getResult();
   }
 
   private static final class PROPS {

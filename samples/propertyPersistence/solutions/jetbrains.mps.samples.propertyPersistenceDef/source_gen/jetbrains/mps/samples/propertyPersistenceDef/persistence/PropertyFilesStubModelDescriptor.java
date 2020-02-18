@@ -149,16 +149,16 @@ public class PropertyFilesStubModelDescriptor extends RegularModelDescriptor {
     return (MultiStreamDataSource) super.getSource();
   }
 
-  private static SNode createPropertyCollection_fmf8ck_a0c0b0b0b0m(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PropertyCollection$cr);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createPropertyCollection_fmf8ck_a0c0b0b0b0m(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PropertyCollection$cr);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    return n0.getResult();
   }
-  private static SNode createProperty_fmf8ck_a0c0a1a6a1a1a1a21(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Property$dS);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.value$EV4Y, PROPS.value$EV4Y.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createProperty_fmf8ck_a0c0a1a6a1a1a1a21(String p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Property$dS);
+    n0.setProperty(PROPS.name$tAp1, p0);
+    n0.setProperty(PROPS.value$EV4Y, p1);
+    return n0.getResult();
   }
   public static String trim_fmf8ck_a0a0a0b0g0b0b0b0m(String str) {
     return (str == null ? null : str.trim());

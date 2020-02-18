@@ -25,10 +25,10 @@ public class ParameterFactory {
       SLinkOperations.setTarget(newNode, LINKS.returnType$WIkw, _quotation_createNode_3abd0g_a0d0a0());
     }
     private static SNode createForConceptMethodParameter_3abd0g_a0a1a0a() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ForConceptMethodParameter$Dz);
-      rootBuilder1.setProperty(PROPS.name$tAp1, "node");
-      rootBuilder1.forChild(LINKS.type$pLrO).init(CONCEPTS.SNodeType$gn);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ForConceptMethodParameter$Dz);
+      n0.setProperty(PROPS.name$tAp1, "node");
+      n0.forChild(LINKS.type$pLrO).init(CONCEPTS.SNodeType$gn);
+      return n0.getResult();
     }
     private static SNode _quotation_createNode_3abd0g_a0a2a0a() {
       PersistenceFacade facade = PersistenceFacade.getInstance();

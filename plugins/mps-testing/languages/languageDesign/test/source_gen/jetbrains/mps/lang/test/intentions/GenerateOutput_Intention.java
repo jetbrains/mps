@@ -144,10 +144,10 @@ public final class GenerateOutput_Intention extends AbstractIntentionDescriptor 
     }
     return null;
   }
-  private static SNode createTestNode_8ua06z_a0a0a1a3a0(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TestNode$kc);
-    rootBuilder1.forChild(LINKS.nodeToCheck$Pz43).initNode(node0, CONCEPTS.BaseConcept$Sz, true);
-    return rootBuilder1.getResult();
+  private static SNode createTestNode_8ua06z_a0a0a1a3a0(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TestNode$kc);
+    n0.forChild(LINKS.nodeToCheck$Pz43).initNode(p0, CONCEPTS.BaseConcept$Sz, true);
+    return n0.getResult();
   }
 
   private static final class LINKS {

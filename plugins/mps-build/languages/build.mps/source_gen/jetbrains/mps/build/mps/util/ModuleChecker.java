@@ -1205,11 +1205,11 @@ public final class ModuleChecker {
   }
 
 
-  private static SNode createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a63(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildMps_ModuleDependencyOnModule$_g);
-    rootBuilder1.setReferenceTarget(LINKS.module$gbmo, node0);
-    rootBuilder1.setProperty(PROPS.reexport$gb$r, PROPS.reexport$gb$r.getType().toString(false));
-    return rootBuilder1.getResult();
+  private static SNode createBuildMps_ModuleDependencyOnModule_yr5c5g_a0a0a0a31a63(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildMps_ModuleDependencyOnModule$_g);
+    n0.setReferenceTarget(LINKS.module$gbmo, p0);
+    n0.setProperty(PROPS.reexport$gb$r, "" + (false));
+    return n0.getResult();
   }
 
   private static final class PROPS {

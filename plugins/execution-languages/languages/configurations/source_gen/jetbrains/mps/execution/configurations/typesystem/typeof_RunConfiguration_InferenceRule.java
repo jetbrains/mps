@@ -33,10 +33,10 @@ public class typeof_RunConfiguration_InferenceRule extends AbstractInferenceRule
   public boolean overrides() {
     return false;
   }
-  private static SNode createRunConfigurationType_cltvnr_a1a0c0a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RunConfigurationType$qY);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
-    return rootBuilder1.getResult();
+  private static SNode createRunConfigurationType_cltvnr_a1a0c0a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RunConfigurationType$qY);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

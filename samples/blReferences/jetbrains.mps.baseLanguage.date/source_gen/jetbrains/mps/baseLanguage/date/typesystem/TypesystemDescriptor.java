@@ -46,16 +46,16 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       producer.produceWarning(myRuleModelId, myRuleNodeId);
     }
     private static SNode createDateType_3ist9o_a0a0a1() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
+      return n0.getResult();
     }
     private static SNode createIntegerType_3ist9o_a0b0a1() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
+      return n0.getResult();
     }
     private static SNode createDateType_3ist9o_a0a1b() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DateType$_S);
+      return n0.getResult();
     }
   }
 

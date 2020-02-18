@@ -25,10 +25,10 @@ public class includeIntoLayout_QuickFix extends QuickFix_Runtime {
   public void execute(SNode node) {
     ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(((SNode) includeIntoLayout_QuickFix.this.getField("project")[0]), LINKS.layout$tpCz), LINKS.children$aiMf)).addElement(createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2(((SNode) includeIntoLayout_QuickFix.this.getField("module")[0])));
   }
-  private static SNode createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BuildMpsLayout_ModuleJars$mB);
-    rootBuilder1.setReferenceTarget(LINKS.module$5MWZ, node0);
-    return rootBuilder1.getResult();
+  private static SNode createBuildMpsLayout_ModuleJars_f5l1y2_a0a0a2(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildMpsLayout_ModuleJars$mB);
+    n0.setReferenceTarget(LINKS.module$5MWZ, p0);
+    return n0.getResult();
   }
 
   private static final class PROPS {

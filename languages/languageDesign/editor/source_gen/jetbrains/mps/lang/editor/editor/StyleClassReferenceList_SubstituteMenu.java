@@ -118,10 +118,10 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
       return CONCEPTS.StyleClassReference$zy;
     }
   }
-  private static SNode createStyleClassReferenceList_cyyevv_a0a0a(Iterable<? extends SNode> seq0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StyleClassReferenceList$9U);
-    rootBuilder1.forChild(LINKS.element$VLR9).initNodeList(seq0, CONCEPTS.StyleClassReference$zy);
-    return rootBuilder1.getResult();
+  private static SNode createStyleClassReferenceList_cyyevv_a0a0a(Iterable<? extends SNode> p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StyleClassReferenceList$9U);
+    n0.forChild(LINKS.element$VLR9).initNodeList(p0, CONCEPTS.StyleClassReference$zy);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

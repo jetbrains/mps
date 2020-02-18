@@ -113,20 +113,20 @@ public class CreateClassFromUsageHelper {
 
     public abstract void exec(_FunctionTypes._void_P0_E0 r);
   }
-  private static SNode createClassCreator_lt4o84_a0a3a0a0s0l(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassCreator$yU);
-    rootBuilder1.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, node0);
-    return rootBuilder1.getResult();
+  private static SNode createClassCreator_lt4o84_a0a3a0a0s0l(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassCreator$yU);
+    n0.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
+    return n0.getResult();
   }
-  private static SNode createClassConcept_lt4o84_a0a31(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
+  private static SNode createClassConcept_lt4o84_a0a31(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
+    n0.setProperty(PROPS.name$tAp1, p0);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.member$oYX5).init(CONCEPTS.ConstructorDeclaration$5U);
-      n2.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
-      n2.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
+      SNodeBuilder n1 = n0.forChild(LINKS.member$oYX5).init(CONCEPTS.ConstructorDeclaration$5U);
+      n1.forChild(LINKS.body$WIlu).init(CONCEPTS.StatementList$TN);
+      n1.forChild(LINKS.returnType$WIkw).init(CONCEPTS.VoidType$aT);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -149,13 +149,13 @@ public final class ExecuteCommandPart__BehaviorDescriptor extends BaseBHDescript
   }
   private static SNode createJoinType_qal9w4_a0a5() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.JoinType$9o);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.argument$xIHX).init(CONCEPTS.ProcessType$tB);
-      SNodeBuilder n3 = n2.forSibling().init(CONCEPTS.ClassifierType$IZ);
-      n3.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)"), facade.createNodeId("~ProcessHandler")));
+      SNodeBuilder n1 = n0.forChild(LINKS.argument$xIHX).init(CONCEPTS.ProcessType$tB);
+      SNodeBuilder n2 = n1.forSibling().init(CONCEPTS.ClassifierType$IZ);
+      n2.setReference(LINKS.classifier$pQ_R, new SNodePointer(facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.process(MPS.IDEA/)"), facade.createNodeId("~ProcessHandler")));
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class LINKS {

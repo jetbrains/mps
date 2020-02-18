@@ -116,10 +116,10 @@ public class BLExpression_SubstituteMenu extends SubstituteMenuBase {
       return CONCEPTS.Expression$TP;
     }
   }
-  private static SNode createBLExpression_c9dft7_a0a0a(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
-    rootBuilder1.forChild(LINKS.expression$HQe6).initNode(node0, CONCEPTS.Expression$TP, true);
-    return rootBuilder1.getResult();
+  private static SNode createBLExpression_c9dft7_a0a0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BLExpression$iZ);
+    n0.forChild(LINKS.expression$HQe6).initNode(p0, CONCEPTS.Expression$TP, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

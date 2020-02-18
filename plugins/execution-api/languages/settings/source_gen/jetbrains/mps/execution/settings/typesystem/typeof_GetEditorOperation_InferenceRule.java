@@ -42,15 +42,15 @@ public class typeof_GetEditorOperation_InferenceRule extends AbstractInferenceRu
   public boolean overrides() {
     return false;
   }
-  private static SNode createPersistentConfigurationType_89tbzo_a1a0c0b0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    rootBuilder1.setReferenceTarget(LINKS.persistentConfiguration$28v0, node0);
-    return rootBuilder1.getResult();
+  private static SNode createPersistentConfigurationType_89tbzo_a1a0c0b0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
+    n0.setReferenceTarget(LINKS.persistentConfiguration$28v0, p0);
+    return n0.getResult();
   }
-  private static SNode createSettingsEditorType_89tbzo_a1a0c0c0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$Bn);
-    rootBuilder1.setReferenceTarget(LINKS.configuration$2u$w, node0);
-    return rootBuilder1.getResult();
+  private static SNode createSettingsEditorType_89tbzo_a1a0c0c0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$Bn);
+    n0.setReferenceTarget(LINKS.configuration$2u$w, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

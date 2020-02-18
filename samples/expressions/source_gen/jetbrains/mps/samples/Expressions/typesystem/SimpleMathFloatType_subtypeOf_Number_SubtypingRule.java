@@ -31,8 +31,8 @@ public class SimpleMathFloatType_subtypeOf_Number_SubtypingRule extends Subtypin
     return true;
   }
   private static SNode createSimpleMathNumberType_mxid1z_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathNumberType$zZ);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

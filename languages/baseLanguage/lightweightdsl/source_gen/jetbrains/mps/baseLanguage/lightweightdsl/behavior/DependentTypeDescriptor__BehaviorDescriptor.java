@@ -117,11 +117,11 @@ public final class DependentTypeDescriptor__BehaviorDescriptor extends BaseBHDes
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createDependentTypeInstance_anu5lw_a0a0(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DependentTypeInstance$to);
-    rootBuilder1.setReferenceTarget(LINKS.decl$HVk0, node0);
-    rootBuilder1.setReferenceTarget(LINKS.point$7xs1, node1);
-    return rootBuilder1.getResult();
+  private static SNode createDependentTypeInstance_anu5lw_a0a0(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DependentTypeInstance$to);
+    n0.setReferenceTarget(LINKS.decl$HVk0, p0);
+    n0.setReferenceTarget(LINKS.point$7xs1, p1);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

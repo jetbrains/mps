@@ -34,10 +34,10 @@ public class typeof_ExtensionPointExpression_InferenceRule extends AbstractInfer
   public boolean overrides() {
     return false;
   }
-  private static SNode createExtensionPointType_x0hnp2_a1a0c0a0b(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ExtensionPointType$TB);
-    rootBuilder1.setReferenceTarget(LINKS.extensionPoint$Ohsw, node0);
-    return rootBuilder1.getResult();
+  private static SNode createExtensionPointType_x0hnp2_a1a0c0a0b(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExtensionPointType$TB);
+    n0.setReferenceTarget(LINKS.extensionPoint$Ohsw, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {

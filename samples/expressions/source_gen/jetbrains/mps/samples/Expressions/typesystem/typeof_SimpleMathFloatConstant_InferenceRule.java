@@ -33,8 +33,8 @@ public class typeof_SimpleMathFloatConstant_InferenceRule extends AbstractInfere
     return false;
   }
   private static SNode createSimpleMathFloatType_v572xj_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

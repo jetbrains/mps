@@ -146,8 +146,8 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
     return quotedNode_1;
   }
   private static SNode createIntegerType_cdqxf8_a0e0c() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
+    return n0.getResult();
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;

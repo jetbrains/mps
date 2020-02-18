@@ -75,8 +75,8 @@ public final class StubOperationDeclaration__BehaviorDescriptor extends BaseBHDe
     return CONCEPT;
   }
   private static SNode createStatementList_8pk1bs_a0a1a0() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StatementList$TN);
+    return n0.getResult();
   }
 
   private static final class LINKS {

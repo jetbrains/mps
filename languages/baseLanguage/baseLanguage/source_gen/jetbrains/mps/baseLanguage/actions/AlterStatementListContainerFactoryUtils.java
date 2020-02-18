@@ -173,76 +173,84 @@ public class AlterStatementListContainerFactoryUtils {
     }
   }
   private static SNode createIntegerConstant_kz5t2g_a0a1a01a2a1a4() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IntegerConstant$mo);
-    rootBuilder1.setProperty(PROPS.value$ZeO0, PROPS.value$ZeO0.getType().toString(0));
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerConstant$mo);
+    n0.setProperty(PROPS.value$ZeO0, "" + (0));
+    return n0.getResult();
   }
   private static SNode createIntegerType_kz5t2g_a0a2a01a2a1a4() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
+    return n0.getResult();
   }
   private static SNode createLessThanExpression_kz5t2g_a0a4a01a2a1a4() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LessThanExpression$kw);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LessThanExpression$kw);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.VariableReference$sQ);
+      SNodeBuilder n1 = n0.forChild(LINKS.leftExpression$rxLZ).init(CONCEPTS.VariableReference$sQ);
+      n1.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
     }
     {
-      SNodeBuilder n3 = rootBuilder1.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.DotExpression$6a);
+      SNodeBuilder n2 = n0.forChild(LINKS.rightExpression$rxBl).init(CONCEPTS.DotExpression$6a);
       {
-        SNodeBuilder n4 = n3.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+        SNodeBuilder n3 = n2.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+        n3.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
       }
-      n3.forChild(LINKS.operation$X4R8).init(CONCEPTS.ArrayLengthOperation$M_);
+      n2.forChild(LINKS.operation$X4R8).init(CONCEPTS.ArrayLengthOperation$M_);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
   private static SNode createPostfixIncrementExpression_kz5t2g_a0a5a01a2a1a4() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PostfixIncrementExpression$3_);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PostfixIncrementExpression$3_);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$7Rjy).init(CONCEPTS.VariableReference$sQ);
+      SNodeBuilder n1 = n0.forChild(LINKS.expression$7Rjy).init(CONCEPTS.VariableReference$sQ);
+      n1.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
   private static SNode createArrayAccessExpression_kz5t2g_a0l0k0c0b0e() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ArrayAccessExpression$dG);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ArrayAccessExpression$dG);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.array$L7S$).init(CONCEPTS.VariableReference$sQ);
+      SNodeBuilder n1 = n0.forChild(LINKS.array$L7S$).init(CONCEPTS.VariableReference$sQ);
+      n1.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
     }
     {
-      SNodeBuilder n3 = rootBuilder1.forChild(LINKS.index$JFzt).init(CONCEPTS.VariableReference$sQ);
+      SNodeBuilder n2 = n0.forChild(LINKS.index$JFzt).init(CONCEPTS.VariableReference$sQ);
+      n2.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
   private static SNode createDotExpression_kz5t2g_a0a1a0k0c0b0e() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+      SNodeBuilder n1 = n0.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+      n1.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
     }
-    rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.GetIteratorOperation$yI);
-    return rootBuilder1.getResult();
+    n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.GetIteratorOperation$yI);
+    return n0.getResult();
   }
   private static SNode createDotExpression_kz5t2g_a0a11a0k0c0b0e() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+      SNodeBuilder n1 = n0.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+      n1.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
     }
     {
-      SNodeBuilder n3 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.InstanceMethodCallOperation$1G);
-      n3.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~Iterator.hasNext()")));
+      SNodeBuilder n2 = n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.InstanceMethodCallOperation$1G);
+      n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~Iterator.hasNext()")));
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
   private static SNode createDotExpression_kz5t2g_a0a71a0k0c0b0e() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DotExpression$6a);
     {
-      SNodeBuilder n2 = rootBuilder1.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+      SNodeBuilder n1 = n0.forChild(LINKS.operand$Lcrr).init(CONCEPTS.VariableReference$sQ);
+      n1.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
     }
     {
-      SNodeBuilder n3 = rootBuilder1.forChild(LINKS.operation$X4R8).init(CONCEPTS.InstanceMethodCallOperation$1G);
-      n3.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~Iterator.next()")));
+      SNodeBuilder n2 = n0.forChild(LINKS.operation$X4R8).init(CONCEPTS.InstanceMethodCallOperation$1G);
+      n2.setReference(LINKS.baseMethodDeclaration$$A7i, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)"), facade.createNodeId("~Iterator.next()")));
     }
-    return rootBuilder1.getResult();
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

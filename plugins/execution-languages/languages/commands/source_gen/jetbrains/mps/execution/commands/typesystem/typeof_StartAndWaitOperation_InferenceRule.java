@@ -47,8 +47,8 @@ public class typeof_StartAndWaitOperation_InferenceRule extends AbstractInferenc
     return false;
   }
   private static SNode createProcessType_g7qgj6_a1a0c0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_g7qgj6_a1a0c0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

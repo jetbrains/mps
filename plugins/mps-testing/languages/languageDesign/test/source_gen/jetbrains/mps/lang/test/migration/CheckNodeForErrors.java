@@ -124,13 +124,13 @@ public class CheckNodeForErrors extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test"), 2);
   }
 
-  private static SNode createCheckNodeForErrorMessagesOperation_j3gqtx_a0a2a0a0a0d0a0d(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CheckNodeForErrorMessagesOperation$c0);
-    rootBuilder1.setProperty(PROPS.includeSelf$1l1v, PROPS.includeSelf$1l1v.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.allowErrors$vTwq, PROPS.allowErrors$vTwq.getType().toString(false));
-    rootBuilder1.setProperty(PROPS.allowWarnings$vTwT, PROPS.allowWarnings$vTwT.getType().toString(false));
-    rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createCheckNodeForErrorMessagesOperation_j3gqtx_a0a2a0a0a0d0a0d(boolean p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CheckNodeForErrorMessagesOperation$c0);
+    n0.setProperty(PROPS.includeSelf$1l1v, "" + (p0));
+    n0.setProperty(PROPS.allowErrors$vTwq, "" + (false));
+    n0.setProperty(PROPS.allowWarnings$vTwT, "" + (false));
+    n0.setProperty(PROPS.name$tAp1, p1);
+    return n0.getResult();
   }
   private static SNode _quotation_createNode_j3gqtx_a0a3a0a0a0d0a0d() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

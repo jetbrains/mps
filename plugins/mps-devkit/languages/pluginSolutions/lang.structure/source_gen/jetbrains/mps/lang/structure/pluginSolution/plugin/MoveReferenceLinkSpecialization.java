@@ -85,16 +85,16 @@ public class MoveReferenceLinkSpecialization extends MoveConceptMemberSpecializa
   public void doReplaceInstance(SNode instance, SReferenceLink oldLink, SReferenceLink newLink) {
     RefactoringRuntime.changeReferenceLinkInstances(instance, oldLink, newLink);
   }
-  private static SNode createDeprecatedNodeAnnotation_w90w7j_a0e0d(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
-    rootBuilder1.setProperty(PROPS.comment$MxQb, PROPS.comment$MxQb.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createDeprecatedNodeAnnotation_w90w7j_a0e0d(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeprecatedNodeAnnotation$I8);
+    n0.setProperty(PROPS.comment$MxQb, p0);
+    return n0.getResult();
   }
-  private static SNode createMoveReferenceLink_w90w7j_c0a21a3(SNode node0, SNode node1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.MoveReferenceLink$ZL);
-    rootBuilder1.forChild(LINKS.sourceId$YxsZ).initNode(node0, CONCEPTS.ReferenceLinkId$Ic, true);
-    rootBuilder1.forChild(LINKS.targetId$Yxtu).initNode(node1, CONCEPTS.ReferenceLinkId$Ic, true);
-    return rootBuilder1.getResult();
+  private static SNode createMoveReferenceLink_w90w7j_c0a21a3(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MoveReferenceLink$ZL);
+    n0.forChild(LINKS.sourceId$YxsZ).initNode(p0, CONCEPTS.ReferenceLinkId$Ic, true);
+    n0.forChild(LINKS.targetId$Yxtu).initNode(p1, CONCEPTS.ReferenceLinkId$Ic, true);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

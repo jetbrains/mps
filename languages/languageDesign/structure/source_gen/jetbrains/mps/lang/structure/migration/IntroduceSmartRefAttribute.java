@@ -110,16 +110,16 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
     }
     return false;
   }
-  private static SNode createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SmartReferenceAttribute$Lg);
-    rootBuilder1.setReferenceTarget(LINKS.charactersticReference$hNpW, node0);
-    return rootBuilder1.getResult();
+  private static SNode createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SmartReferenceAttribute$Lg);
+    n0.setReferenceTarget(LINKS.charactersticReference$hNpW, p0);
+    return n0.getResult();
   }
-  private static SNode createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(Object p0, Object p1) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.RefPresentationTemplate$57);
-    rootBuilder1.setProperty(PROPS.prefix$CMHd, PROPS.prefix$CMHd.getType().toString(p0));
-    rootBuilder1.setProperty(PROPS.suffix$CMSP, PROPS.suffix$CMSP.getType().toString(p1));
-    return rootBuilder1.getResult();
+  private static SNode createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(String p0, String p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RefPresentationTemplate$57);
+    n0.setProperty(PROPS.prefix$CMHd, p0);
+    n0.setProperty(PROPS.suffix$CMSP, p1);
+    return n0.getResult();
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.length() == 0;

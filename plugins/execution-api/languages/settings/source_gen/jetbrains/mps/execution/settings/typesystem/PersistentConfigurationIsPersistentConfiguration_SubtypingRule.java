@@ -31,8 +31,8 @@ public class PersistentConfigurationIsPersistentConfiguration_SubtypingRule exte
     return true;
   }
   private static SNode createPersistentConfigurationType_jh4ubp_a0a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PersistentConfigurationType$e2);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

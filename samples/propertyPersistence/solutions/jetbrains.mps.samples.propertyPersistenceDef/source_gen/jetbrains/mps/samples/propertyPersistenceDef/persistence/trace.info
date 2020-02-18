@@ -316,13 +316,13 @@
       <node id="1581198836067817371" at="135,31,136,156" concept="16" />
       <node id="1581198836067746926" at="142,54,143,56" concept="10" />
       <node id="1436063320240416094" at="148,44,149,53" concept="10" />
-      <node id="4006994020106781268" at="152,79,153,88" concept="9" />
-      <node id="4006994020106781268" at="153,88,154,86" concept="4" />
-      <node id="4006994020106781268" at="154,86,155,36" concept="10" />
-      <node id="4006994020106798918" at="157,86,158,78" concept="9" />
-      <node id="4006994020106798918" at="158,78,159,86" concept="4" />
-      <node id="4006994020106798918" at="159,86,160,88" concept="4" />
-      <node id="4006994020106798918" at="160,88,161,36" concept="10" />
+      <node id="4006994020106781268" at="152,79,153,78" concept="9" />
+      <node id="4006994020106781268" at="153,78,154,40" concept="4" />
+      <node id="4006994020106781268" at="154,40,155,26" concept="10" />
+      <node id="4006994020106798918" at="157,86,158,68" concept="9" />
+      <node id="4006994020106798918" at="158,68,159,40" concept="4" />
+      <node id="4006994020106798918" at="159,40,160,41" concept="4" />
+      <node id="4006994020106798918" at="160,41,161,26" concept="10" />
       <node id="4006994020106709151" at="163,66,164,45" concept="10" />
       <node id="4006994020106710290" at="166,66,167,45" concept="10" />
       <node id="4006994020106470658" at="171,0,172,0" concept="13" trace="properties$F1qm" />
@@ -343,9 +343,9 @@
       <node id="4006994020107282567" at="111,69,116,21" concept="9" />
       <node id="4006994020107440609" at="124,0,129,13" concept="4" />
       <node id="4423331261408313227" at="146,0,151,0" concept="8" trace="getSource#()Lorg/jetbrains/mps/openapi/persistence/MultiStreamDataSource;" />
-      <node id="4006994020106781268" at="152,0,157,0" concept="14" trace="createPropertyCollection_fmf8ck_a0c0b0b0b0m#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4006994020106781268" at="152,0,157,0" concept="14" trace="createPropertyCollection_fmf8ck_a0c0b0b0b0m#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4006994020107282587" at="116,21,122,11" concept="7" />
-      <node id="4006994020106798918" at="157,0,163,0" concept="14" trace="createProperty_fmf8ck_a0c0a1a6a1a1a1a21#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="4006994020106798918" at="157,0,163,0" concept="14" trace="createProperty_fmf8ck_a0c0a1a6a1a1a1a21#(Ljava/lang/String;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1581198836067809627" at="69,0,76,0" concept="8" trace="readModel#()Ljetbrains/mps/smodel/SModel;" />
       <node id="1581198836068022604" at="58,51,66,5" concept="17" />
       <node id="4006994020106658971" at="99,51,107,13" concept="7" />
@@ -386,8 +386,8 @@
       <scope id="4006994020107440612" at="126,0,129,0">
         <var name="it" id="4006994020107440612" />
       </scope>
-      <scope id="4006994020106781268" at="152,79,155,36">
-        <var name="rootBuilder1" id="4006994020106781268" />
+      <scope id="4006994020106781268" at="152,79,155,26">
+        <var name="n0" id="4006994020106781268" />
       </scope>
       <scope id="4006994020106709151" at="163,0,166,0">
         <var name="str" id="4006994020106709151" />
@@ -407,8 +407,8 @@
         <var name="value" id="4006994020106710282" />
       </scope>
       <scope id="1581198836067746921" at="141,0,145,0" />
-      <scope id="4006994020106798918" at="157,86,161,36">
-        <var name="rootBuilder1" id="4006994020106798918" />
+      <scope id="4006994020106798918" at="157,86,161,26">
+        <var name="n0" id="4006994020106798918" />
       </scope>
       <scope id="1581198836067809630" at="69,56,74,21">
         <var name="modelData" id="1581198836067817426" />

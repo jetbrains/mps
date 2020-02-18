@@ -46,13 +46,13 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
     return false;
   }
   private static SNode createSNodePointerType_to4p90_a0a0a1a4a1(SNode p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    rootBuilder1.setReferenceTarget(LINKS.concept$fJMt, p0);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
+    n0.setReferenceTarget(LINKS.concept$fJMt, p0);
+    return n0.getResult();
   }
   private static SNode createSNodePointerType_to4p90_a0a2a4a1() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
+    return n0.getResult();
   }
 
   private static final class LINKS {

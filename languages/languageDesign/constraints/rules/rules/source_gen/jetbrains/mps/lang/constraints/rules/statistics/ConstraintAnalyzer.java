@@ -57,14 +57,14 @@ public class ConstraintAnalyzer {
     public List<SNode> toBlock() {
       return ListSequence.fromListAndArray(new ArrayList<SNode>(), createRule_6fp4o1_a0a0a2b(myExpression));
     }
-    private static SNode createRule_6fp4o1_a0a0a2b(SNode node0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Rule$LR);
-      rootBuilder1.setProperty(PROPS.name$tAp1, "rule");
+    private static SNode createRule_6fp4o1_a0a0a2b(SNode p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Rule$LR);
+      n0.setProperty(PROPS.name$tAp1, "rule");
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expr$dx1v).init(CONCEPTS.ExpressionWrapper$mw);
-        n2.forChild(LINKS.expression$GH5k).initNode(node0, CONCEPTS.Expression$TP, true);
+        SNodeBuilder n1 = n0.forChild(LINKS.expr$dx1v).init(CONCEPTS.ExpressionWrapper$mw);
+        n1.forChild(LINKS.expression$GH5k).initNode(p0, CONCEPTS.Expression$TP, true);
       }
-      return rootBuilder1.getResult();
+      return n0.getResult();
     }
   }
   public static class ResultMultipleStatements extends Result {
@@ -153,115 +153,115 @@ public class ConstraintAnalyzer {
             if (SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK), CONCEPTS.BooleanConstant$Ui), PROPS.value$WIn0) == true) {
               // do nothing 
             } else {
-              ListSequence.fromList(rules).addElement(createRule_6fp4o1_a0a0a0a0b0b0b0o5(invertExpression(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b)), "rule" + (ListSequence.fromList(rules).count() + 1)));
+              ListSequence.fromList(rules).addElement(createRule_6fp4o1_a0a0a0a0b0b0b0o5("rule" + (ListSequence.fromList(rules).count() + 1), invertExpression(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b))));
             }
           } else {
-            ListSequence.fromList(rules).addElement(createRule_6fp4o1_a0a0a0b0b0b0o5(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b), SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK), "rule" + (ListSequence.fromList(rules).count() + 1)));
+            ListSequence.fromList(rules).addElement(createRule_6fp4o1_a0a0a0b0b0b0o5("rule" + (ListSequence.fromList(rules).count() + 1), SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b), SLinkOperations.getTarget(returnStatement, LINKS.expression$EsbK)));
           }
         } else {
           SNode localVariableDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$WJ1E), LINKS.statement$WHn8)).first(), CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$O0D0);
-          SNode defFromVar = createDefForRule_6fp4o1_a0b0a1a1a41f(SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b), SLinkOperations.getTarget(localVariableDeclaration, LINKS.initializer$KgD), SLinkOperations.getTarget(localVariableDeclaration, LINKS.type$pLrO), SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1));
+          SNode defFromVar = createDefForRule_6fp4o1_a0b0a1a1a41f(SPropertyOperations.getString(localVariableDeclaration, PROPS.name$tAp1), SLinkOperations.getTarget(ifStatement, LINKS.condition$WJ1b), SLinkOperations.getTarget(localVariableDeclaration, LINKS.initializer$KgD), SLinkOperations.getTarget(localVariableDeclaration, LINKS.type$pLrO));
           ListSequence.fromList(rules).addElement(defFromVar);
           MapSequence.fromMap(myDefMap).put(SNodeOperations.cast(MapSequence.fromMap(myIntermediateVarMap).get(localVariableDeclaration), CONCEPTS.LocalVariableDeclaration$Bf), defFromVar);
         }
       }
       return new ResultIfLatter(rules, myDefMap);
     }
-    private static SNode createIfStatement_6fp4o1_a0a0a4f(SNode node0, SNode node1) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IfStatement$pi);
-      rootBuilder1.setProperty(PROPS.forceMultiLine$LXXY, PROPS.forceMultiLine$LXXY.getType().toString(true));
-      rootBuilder1.forChild(LINKS.condition$WJ1b).initNode(node0, CONCEPTS.Expression$TP, true);
+    private static SNode createIfStatement_6fp4o1_a0a0a4f(SNode p0, SNode p1) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IfStatement$pi);
+      n0.setProperty(PROPS.forceMultiLine$LXXY, "" + (true));
+      n0.forChild(LINKS.condition$WJ1b).initNode(p0, CONCEPTS.Expression$TP, true);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.ifTrue$WJ1E).init(CONCEPTS.StatementList$TN);
+        SNodeBuilder n1 = n0.forChild(LINKS.ifTrue$WJ1E).init(CONCEPTS.StatementList$TN);
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.statement$WHn8).init(CONCEPTS.ReturnStatement$SF);
-          n3.forChild(LINKS.expression$EsbK).initNode(node1, CONCEPTS.Expression$TP, true);
+          SNodeBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.ReturnStatement$SF);
+          n2.forChild(LINKS.expression$EsbK).initNode(p1, CONCEPTS.Expression$TP, true);
         }
       }
-      return rootBuilder1.getResult();
+      return n0.getResult();
     }
     private static SNode createBooleanConstant_6fp4o1_a0a0a5f() {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      rootBuilder1.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(true));
-      return rootBuilder1.getResult();
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
+      n0.setProperty(PROPS.value$WIn0, "" + (true));
+      return n0.getResult();
     }
-    private static SNode createAndExpression_6fp4o1_a0a0a0a1a5f(SNode node0, SNode node1) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.AndExpression$zq);
-      rootBuilder1.forChild(LINKS.leftExpression$rxLZ).initNode(node0, CONCEPTS.Expression$TP, true);
-      rootBuilder1.forChild(LINKS.rightExpression$rxBl).initNode(node1, CONCEPTS.Expression$TP, true);
-      return rootBuilder1.getResult();
+    private static SNode createAndExpression_6fp4o1_a0a0a0a1a5f(SNode p0, SNode p1) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.AndExpression$zq);
+      n0.forChild(LINKS.leftExpression$rxLZ).initNode(p0, CONCEPTS.Expression$TP, true);
+      n0.forChild(LINKS.rightExpression$rxBl).initNode(p1, CONCEPTS.Expression$TP, true);
+      return n0.getResult();
     }
-    private static SNode createIfStatement_6fp4o1_a0a2a6f(SNode node0, SNode node1) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.IfStatement$pi);
-      rootBuilder1.forChild(LINKS.condition$WJ1b).initNode(node0, CONCEPTS.Expression$TP, true);
+    private static SNode createIfStatement_6fp4o1_a0a2a6f(SNode p0, SNode p1) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IfStatement$pi);
+      n0.forChild(LINKS.condition$WJ1b).initNode(p0, CONCEPTS.Expression$TP, true);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.ifTrue$WJ1E).init(CONCEPTS.StatementList$TN);
+        SNodeBuilder n1 = n0.forChild(LINKS.ifTrue$WJ1E).init(CONCEPTS.StatementList$TN);
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.statement$WHn8).init(CONCEPTS.LocalVariableDeclarationStatement$BI);
-          n3.forChild(LINKS.localVariableDeclaration$O0D0).initNode(node1, CONCEPTS.LocalVariableDeclaration$Bf, true);
+          SNodeBuilder n2 = n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.LocalVariableDeclarationStatement$BI);
+          n2.forChild(LINKS.localVariableDeclaration$O0D0).initNode(p1, CONCEPTS.LocalVariableDeclaration$Bf, true);
         }
       }
-      return rootBuilder1.getResult();
+      return n0.getResult();
     }
-    private static SNode createNotExpression_6fp4o1_a0a0a0j5(SNode node0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.NotExpression$oq);
+    private static SNode createNotExpression_6fp4o1_a0a0a0j5(SNode p0) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NotExpression$oq);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.expression$bUD_).init(CONCEPTS.ParenthesizedExpression$vE);
-        n2.forChild(LINKS.expression$4_F0).initNode(node0, CONCEPTS.Expression$TP, true);
+        SNodeBuilder n1 = n0.forChild(LINKS.expression$bUD_).init(CONCEPTS.ParenthesizedExpression$vE);
+        n1.forChild(LINKS.expression$4_F0).initNode(p0, CONCEPTS.Expression$TP, true);
       }
-      return rootBuilder1.getResult();
+      return n0.getResult();
     }
-    private static SNode createRule_6fp4o1_a0a0a0a0b0b0b0o5(SNode node0, Object p0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Rule$LR);
-      rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
+    private static SNode createRule_6fp4o1_a0a0a0a0b0b0b0o5(String p0, SNode p1) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Rule$LR);
+      n0.setProperty(PROPS.name$tAp1, p0);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.condition$yA9K).init(CONCEPTS.ApplicableCondition$xa);
+        SNodeBuilder n1 = n0.forChild(LINKS.condition$yA9K).init(CONCEPTS.ApplicableCondition$xa);
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.expr$y0me).init(CONCEPTS.ExpressionWrapper$mw);
+          SNodeBuilder n2 = n1.forChild(LINKS.expr$y0me).init(CONCEPTS.ExpressionWrapper$mw);
           {
-            SNodeBuilder n4 = n3.forChild(LINKS.expression$GH5k).init(CONCEPTS.BooleanConstant$Ui);
-            n4.setProperty(PROPS.value$WIn0, PROPS.value$WIn0.getType().toString(true));
+            SNodeBuilder n3 = n2.forChild(LINKS.expression$GH5k).init(CONCEPTS.BooleanConstant$Ui);
+            n3.setProperty(PROPS.value$WIn0, "" + (true));
           }
         }
       }
       {
-        SNodeBuilder n5 = rootBuilder1.forChild(LINKS.expr$dx1v).init(CONCEPTS.ExpressionWrapper$mw);
-        n5.forChild(LINKS.expression$GH5k).initNode(node0, CONCEPTS.Expression$TP, true);
+        SNodeBuilder n4 = n0.forChild(LINKS.expr$dx1v).init(CONCEPTS.ExpressionWrapper$mw);
+        n4.forChild(LINKS.expression$GH5k).initNode(p1, CONCEPTS.Expression$TP, true);
       }
-      return rootBuilder1.getResult();
+      return n0.getResult();
     }
-    private static SNode createRule_6fp4o1_a0a0a0b0b0b0o5(SNode node0, SNode node1, Object p0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.Rule$LR);
-      rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
+    private static SNode createRule_6fp4o1_a0a0a0b0b0b0o5(String p0, SNode p1, SNode p2) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Rule$LR);
+      n0.setProperty(PROPS.name$tAp1, p0);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.condition$yA9K).init(CONCEPTS.ApplicableCondition$xa);
+        SNodeBuilder n1 = n0.forChild(LINKS.condition$yA9K).init(CONCEPTS.ApplicableCondition$xa);
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.expr$y0me).init(CONCEPTS.ExpressionWrapper$mw);
-          n3.forChild(LINKS.expression$GH5k).initNode(node0, CONCEPTS.Expression$TP, true);
+          SNodeBuilder n2 = n1.forChild(LINKS.expr$y0me).init(CONCEPTS.ExpressionWrapper$mw);
+          n2.forChild(LINKS.expression$GH5k).initNode(p1, CONCEPTS.Expression$TP, true);
         }
       }
       {
-        SNodeBuilder n4 = rootBuilder1.forChild(LINKS.expr$dx1v).init(CONCEPTS.ExpressionWrapper$mw);
-        n4.forChild(LINKS.expression$GH5k).initNode(node1, CONCEPTS.Expression$TP, true);
+        SNodeBuilder n3 = n0.forChild(LINKS.expr$dx1v).init(CONCEPTS.ExpressionWrapper$mw);
+        n3.forChild(LINKS.expression$GH5k).initNode(p2, CONCEPTS.Expression$TP, true);
       }
-      return rootBuilder1.getResult();
+      return n0.getResult();
     }
-    private static SNode createDefForRule_6fp4o1_a0b0a1a1a41f(SNode node0, SNode node1, SNode node2, Object p0) {
-      SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.DefForRule$Hm);
-      rootBuilder1.setProperty(PROPS.name$tAp1, PROPS.name$tAp1.getType().toString(p0));
+    private static SNode createDefForRule_6fp4o1_a0b0a1a1a41f(String p0, SNode p1, SNode p2, SNode p3) {
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DefForRule$Hm);
+      n0.setProperty(PROPS.name$tAp1, p0);
       {
-        SNodeBuilder n2 = rootBuilder1.forChild(LINKS.condition$yA9K).init(CONCEPTS.ApplicableCondition$xa);
+        SNodeBuilder n1 = n0.forChild(LINKS.condition$yA9K).init(CONCEPTS.ApplicableCondition$xa);
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.expr$y0me).init(CONCEPTS.ExpressionWrapper$mw);
-          n3.forChild(LINKS.expression$GH5k).initNode(node0, CONCEPTS.Expression$TP, true);
+          SNodeBuilder n2 = n1.forChild(LINKS.expr$y0me).init(CONCEPTS.ExpressionWrapper$mw);
+          n2.forChild(LINKS.expression$GH5k).initNode(p1, CONCEPTS.Expression$TP, true);
         }
       }
       {
-        SNodeBuilder n4 = rootBuilder1.forChild(LINKS.expr$Pmm2).init(CONCEPTS.ExpressionWrapper$mw);
-        n4.forChild(LINKS.expression$GH5k).initNode(node1, CONCEPTS.Expression$TP, true);
+        SNodeBuilder n3 = n0.forChild(LINKS.expr$Pmm2).init(CONCEPTS.ExpressionWrapper$mw);
+        n3.forChild(LINKS.expression$GH5k).initNode(p2, CONCEPTS.Expression$TP, true);
       }
-      rootBuilder1.forChild(LINKS.type$loHZ).initNode(node2, CONCEPTS.Type$IG, true);
-      return rootBuilder1.getResult();
+      n0.forChild(LINKS.type$loHZ).initNode(p3, CONCEPTS.Type$IG, true);
+      return n0.getResult();
     }
   }
   public static class ResultSingleNonReturn extends Result {
@@ -486,15 +486,15 @@ public class ConstraintAnalyzer {
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode createTypedDefReference_6fp4o1_a0a0a2a0a41(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TypedDefReference$7f);
-    rootBuilder1.setReferenceTarget(LINKS.declaration$LqCB, node0);
-    return rootBuilder1.getResult();
+  private static SNode createTypedDefReference_6fp4o1_a0a0a2a0a41(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedDefReference$7f);
+    n0.setReferenceTarget(LINKS.declaration$LqCB, p0);
+    return n0.getResult();
   }
-  private static SNode createTypedDefReference_6fp4o1_a0a0a1a0a0o(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.TypedDefReference$7f);
-    rootBuilder1.setReferenceTarget(LINKS.declaration$LqCB, node0);
-    return rootBuilder1.getResult();
+  private static SNode createTypedDefReference_6fp4o1_a0a0a1a0a0o(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedDefReference$7f);
+    n0.setReferenceTarget(LINKS.declaration$LqCB, p0);
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

@@ -3774,10 +3774,10 @@
       <node id="2409421742521908022" at="3397,15,3398,58" concept="6" />
       <node id="2409421742521908026" at="3399,16,3400,58" concept="6" />
       <node id="2409421742521908030" at="3401,16,3402,58" concept="6" />
-      <node id="6354776497070586694" at="3519,110,3520,105" concept="5" />
-      <node id="6354776497070586694" at="3520,105,3521,86" concept="1" />
-      <node id="6354776497070586694" at="3521,86,3522,63" concept="1" />
-      <node id="6354776497070586694" at="3522,63,3523,36" concept="6" />
+      <node id="6354776497070586694" at="3519,107,3520,95" concept="5" />
+      <node id="6354776497070586694" at="3520,95,3521,40" concept="1" />
+      <node id="6354776497070586694" at="3521,40,3522,50" concept="1" />
+      <node id="6354776497070586694" at="3522,50,3523,26" concept="6" />
       <node id="5368511706901764962" at="536,0,539,0" concept="8" trace="propertyMacro_GetValue_1_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="5368511706901764926" at="539,0,542,0" concept="8" trace="propertyMacro_GetValue_1_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="4129895186893528655" at="542,0,545,0" concept="8" trace="propertyMacro_GetValue_1_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
@@ -3825,7 +3825,7 @@
       <node id="6854204111265839004" at="1607,114,1612,7" concept="3" />
       <node id="6354776497069876461" at="1791,142,1796,24" concept="6" />
       <node id="9126048691954996134" at="1177,0,1183,0" concept="8" trace="ifMacro_Condition_1_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
-      <node id="6354776497070586694" at="3519,0,3525,0" concept="8" trace="createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a114#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6354776497070586694" at="3519,0,3525,0" concept="8" trace="createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a114#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5662391463398078669" at="601,0,608,0" concept="8" trace="propertyMacro_GetValue_1_13#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="4129895186893528603" at="1783,0,1790,0" concept="8" trace="varMacro_Value_1_0#(Ljetbrains/mps/generator/template/TemplateVarContext;)Ljava/lang/Object;" />
       <node id="361130699823726270" at="620,0,628,0" concept="8" trace="propertyMacro_GetValue_1_18#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
@@ -4030,8 +4030,8 @@
       <scope id="6520682027040886838" at="1183,0,1187,0">
         <var name="_context" id="6520682027040886838" />
       </scope>
-      <scope id="6354776497070586694" at="3519,110,3523,36">
-        <var name="rootBuilder1" id="6354776497070586694" />
+      <scope id="6354776497070586694" at="3519,107,3523,26">
+        <var name="n0" id="6354776497070586694" />
       </scope>
       <scope id="5662391463398078670" at="601,89,606,29" />
       <scope id="4129895186893528604" at="1783,78,1788,20">
@@ -4048,8 +4048,8 @@
         <var name="dependencies" id="6354776497070447252" />
       </scope>
       <scope id="6354776497070586694" at="3519,0,3525,0">
-        <var name="node0" id="6354776497070586694" />
         <var name="p0" id="6354776497070586694" />
+        <var name="p1" id="6354776497070586694" />
       </scope>
       <scope id="5662391463398078669" at="601,0,608,0">
         <var name="_context" id="5662391463398078669" />

@@ -119,20 +119,20 @@ public class MacroMessageExpression_actions {
       editorCell.setAction(actionType, createAction_INSERT_BEFORE(node));
     }
   }
-  private static SNode createLiteralMessageExpression_jg075k_a0a0c0b0a0(Object p0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, PROPS.message$vnr0.getType().toString(p0));
-    return rootBuilder1.getResult();
+  private static SNode createLiteralMessageExpression_jg075k_a0a0c0b0a0(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    n0.setProperty(PROPS.message$vnr0, p0);
+    return n0.getResult();
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0b() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, "");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    n0.setProperty(PROPS.message$vnr0, "");
+    return n0.getResult();
   }
   private static SNode createLiteralMessageExpression_jg075k_a0a0a0c() {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    rootBuilder1.setProperty(PROPS.message$vnr0, "");
-    return rootBuilder1.getResult();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
+    n0.setProperty(PROPS.message$vnr0, "");
+    return n0.getResult();
   }
 
   private static final class CONCEPTS {

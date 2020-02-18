@@ -186,10 +186,10 @@ public final class CommandDeclaration__BehaviorDescriptor extends BaseBHDescript
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static SNode createCommandType_5aznw1_a0a2(SNode node0) {
-    SNodeBuilder rootBuilder1 = new SNodeBuilder().init(CONCEPTS.CommandType$8c);
-    rootBuilder1.setReferenceTarget(LINKS.classifier$LHKW, node0);
-    return rootBuilder1.getResult();
+  private static SNode createCommandType_5aznw1_a0a2(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CommandType$8c);
+    n0.setReferenceTarget(LINKS.classifier$LHKW, p0);
+    return n0.getResult();
   }
 
   private static final class LINKS {
