@@ -91,14 +91,14 @@ public class ifStatement extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Param_dmkm09_a0a());
     }
     private class TMP_Param_dmkm09_a0a extends ParameterizedMenuPart<String, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-        return new TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0(parameter).createItems(context);
+        return new TMP_Action_dmkm09_a0a0(parameter).createItems(context);
       }
 
       @Nullable
@@ -125,7 +125,7 @@ public class ifStatement extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0.Item item = new TMP_Group_dmkm09_a0.TMP_Param_dmkm09_a0a.TMP_Action_dmkm09_a0a0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");
@@ -190,7 +190,7 @@ public class ifStatement extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a(parameter).createItems(context);
+      return new TMP_Action_dmkm09_a1a(parameter).createItems(context);
     }
 
     @Nullable
@@ -217,7 +217,7 @@ public class ifStatement extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a.Item item = new TMP_Param_dmkm09_b0.TMP_Action_dmkm09_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

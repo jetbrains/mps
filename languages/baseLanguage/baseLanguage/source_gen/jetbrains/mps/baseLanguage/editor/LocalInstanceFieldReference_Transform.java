@@ -93,12 +93,12 @@ public class LocalInstanceFieldReference_Transform extends TransformationMenuBas
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_b53kb3_a0.TMP_Action_b53kb3_a0a(), CONCEPTS.DotExpression$6a));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_b53kb3_a0a(), CONCEPTS.DotExpression$6a));
     }
     private class TMP_Action_b53kb3_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_b53kb3_a0.TMP_Action_b53kb3_a0a.Item item = new TMP_Group_b53kb3_a0.TMP_Action_b53kb3_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

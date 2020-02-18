@@ -72,14 +72,14 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_z82rnb_a.SMP_Action_z82rnb_a0(), CONCEPTS.ParenthesizedExpression$vE));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a0(), CONCEPTS.ParenthesizedExpression$vE));
     }
     private class SMP_Action_z82rnb_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_z82rnb_a.SMP_Action_z82rnb_a0.Item item = new SMP_Group_z82rnb_a.SMP_Action_z82rnb_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -172,14 +172,14 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_z82rnb_b.SMP_Action_z82rnb_a1(), CONCEPTS.NotExpression$oq));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a1(), CONCEPTS.NotExpression$oq));
     }
     private class SMP_Action_z82rnb_a1 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_z82rnb_b.SMP_Action_z82rnb_a1.Item item = new SMP_Group_z82rnb_b.SMP_Action_z82rnb_a1.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

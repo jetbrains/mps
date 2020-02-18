@@ -96,7 +96,7 @@ public class ElsifClause_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_9fqsrr_a1.TMP_Action_9fqsrr_a0b(parameter).createItems(context);
+      return new TMP_Action_9fqsrr_a0b(parameter).createItems(context);
     }
 
     @Nullable
@@ -123,7 +123,7 @@ public class ElsifClause_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_9fqsrr_a1.TMP_Action_9fqsrr_a0b.Item item = new TMP_Param_9fqsrr_a1.TMP_Action_9fqsrr_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -192,7 +192,7 @@ public class ElsifClause_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_9fqsrr_b1.TMP_Action_9fqsrr_a1b(parameter).createItems(context);
+      return new TMP_Action_9fqsrr_a1b(parameter).createItems(context);
     }
 
     @Nullable
@@ -219,7 +219,7 @@ public class ElsifClause_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_9fqsrr_b1.TMP_Action_9fqsrr_a1b.Item item = new TMP_Param_9fqsrr_b1.TMP_Action_9fqsrr_a1b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

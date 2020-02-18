@@ -106,12 +106,12 @@ public class ReturnStatement_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bu3tbo_a1.TMP_Action_bu3tbo_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_bu3tbo_a0b());
     }
     private class TMP_Action_bu3tbo_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_bu3tbo_a1.TMP_Action_bu3tbo_a0b.Item item = new TMP_Group_bu3tbo_a1.TMP_Action_bu3tbo_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -141,7 +141,11 @@ public class ReturnStatement_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return ((pattern == null ? null : pattern.trim()));
+          String text = ((pattern == null ? null : pattern.trim()));
+          if (text.equals(";")) {
+            return null;
+          }
+          return text;
         }
 
         @Override

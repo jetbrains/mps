@@ -24,6 +24,9 @@ import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.persistence.PersistenceVersionAware;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
+import org.jetbrains.annotations.NotNull;
+import java.util.function.BiConsumer;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.module.SModuleId;
@@ -105,7 +108,7 @@ public class VCSPersistenceUtil {
       return null;
     }
   }
-  private static class MyModel extends TrivialModelDescriptor implements PersistenceVersionAware {
+  private static class MyModel extends TrivialModelDescriptor implements PersistenceVersionAware, ModelWithAttributes {
     private final SModelHeader myHeader;
 
     public void setPersistenceVersion(int pv) {
@@ -118,12 +121,26 @@ public class VCSPersistenceUtil {
     public ModelFactory getModelFactory() {
       return null;
     }
+
     public MyModel(jetbrains.mps.smodel.SModel readModel, SModelHeader header) {
       super(readModel);
       myHeader = header;
     }
-  }
 
+    @Override
+    public void setAttribute(@NotNull String key, @Nullable String value) {
+      myHeader.setOptionalProperty(key, value);
+    }
+    @Nullable
+    @Override
+    public String getAttribute(@NotNull String key) {
+      return myHeader.getOptionalProperty(key);
+    }
+    @Override
+    public void forEach(@NotNull BiConsumer<String, String> consumer) {
+      myHeader.getOptionalProperties().forEach(consumer);
+    }
+  }
 
   public static SModelReference createModelReference(String modelUID) {
     Pair<Pair<SModuleId, String>, Pair<SModelId, String>> parseResult = jetbrains.mps.smodel.SModelReference.parseReference_internal(modelUID);

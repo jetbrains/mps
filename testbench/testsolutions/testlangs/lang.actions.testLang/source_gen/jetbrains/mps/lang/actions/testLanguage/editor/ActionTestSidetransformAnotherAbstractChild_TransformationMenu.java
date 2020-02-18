@@ -96,7 +96,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-      return new TMP_Param_qh3wu9_a1.TMP_Action_qh3wu9_a0b(parameter).createItems(context);
+      return new TMP_Action_qh3wu9_a0b(parameter).createItems(context);
     }
 
     @Nullable
@@ -127,7 +127,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_qh3wu9_a1.TMP_Action_qh3wu9_a0b.Item item = new TMP_Param_qh3wu9_a1.TMP_Action_qh3wu9_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -195,7 +195,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-      return new TMP_Param_qh3wu9_a2.TMP_Action_qh3wu9_a0c(parameter).createItems(context);
+      return new TMP_Action_qh3wu9_a0c(parameter).createItems(context);
     }
 
     @Nullable
@@ -226,7 +226,7 @@ public class ActionTestSidetransformAnotherAbstractChild_TransformationMenu exte
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_qh3wu9_a2.TMP_Action_qh3wu9_a0c.Item item = new TMP_Param_qh3wu9_a2.TMP_Action_qh3wu9_a0c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

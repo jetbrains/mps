@@ -181,8 +181,8 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 300;
     }
-    public static Target_compile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_compile.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._3<Boolean, Boolean, JavaCompilerOptions> {
       public Parameters() {
@@ -340,8 +340,8 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 100;
     }
-    public static Target_auxCompile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_auxCompile.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._2<Project, Boolean> {
       public Parameters() {

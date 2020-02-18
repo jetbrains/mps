@@ -113,14 +113,14 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b(), CONCEPTS.TargetReferenceExpression$Fc));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_bw4iz1_a0b(), CONCEPTS.TargetReferenceExpression$Fc));
     }
     private class TMP_Param_bw4iz1_a0b extends ParameterizedMenuPart<SNode, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-        return new TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1(parameter).createItems(context);
+        return new TMP_Action_bw4iz1_a0a1(parameter).createItems(context);
       }
 
       @Nullable
@@ -147,7 +147,7 @@ public class FacetReferenceExpression_TransformationMenu extends TransformationM
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1.Item item = new TMP_Group_bw4iz1_a1.TMP_Param_bw4iz1_a0b.TMP_Action_bw4iz1_a0a1.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");

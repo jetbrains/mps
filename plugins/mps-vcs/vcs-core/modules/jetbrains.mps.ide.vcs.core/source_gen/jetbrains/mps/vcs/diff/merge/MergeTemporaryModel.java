@@ -103,7 +103,8 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
 
   @Nullable
   public ModelFactory getModelFactory() {
-    // in fact, shall derive persitence from models being merged, however, so far we've got merge for default/xml persistence only, thus it's ok to hardcode specific factory 
+    // in fact, shall derive persistence from models being merged, however, so far we've got merge for default/xml persistence only, thus it's ok to hardcode specific factory 
+    // XXX is there any use of the method during merge? Perhaps, could go with plain 'null'? 
     return PersistenceFacade.getInstance().getDefaultModelFactory();
   }
 
@@ -124,40 +125,15 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   }
   @Override
   public void setDoNotGenerate(boolean b) {
-    check_uihps8_a0a43(check_uihps8_a0a0ib(as_uihps8_a0a0a0ib(getModelData(), DefaultSModel.class), this), b, this);
+    if (getModelData() instanceof DefaultSModel) {
+      ((DefaultSModel) getModelData()).getSModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, Boolean.toString(b));
+    }
   }
   @Override
   public boolean isDoNotGenerate() {
-    return check_uihps8_a0a53(check_uihps8_a0a0jb(as_uihps8_a0a0a0jb(getModelData(), DefaultSModel.class), this), this);
-  }
-  private static void check_uihps8_a0a43(SModelHeader checkedDotOperand, Boolean b, MergeTemporaryModel checkedDotThisExpression) {
-    if (null != checkedDotOperand) {
-      checkedDotOperand.setDoNotGenerate(b);
-    }
-
-  }
-  private static SModelHeader check_uihps8_a0a0ib(DefaultSModel checkedDotOperand, MergeTemporaryModel checkedDotThisExpression) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getSModelHeader();
-    }
-    return null;
-  }
-  private static boolean check_uihps8_a0a53(SModelHeader checkedDotOperand, MergeTemporaryModel checkedDotThisExpression) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.isDoNotGenerate();
+    if (getModelData() instanceof DefaultSModel) {
+      return Boolean.parseBoolean(((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperty(SModelHeader.DO_NOT_GENERATE));
     }
     return false;
-  }
-  private static SModelHeader check_uihps8_a0a0jb(DefaultSModel checkedDotOperand, MergeTemporaryModel checkedDotThisExpression) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getSModelHeader();
-    }
-    return null;
-  }
-  private static <T> T as_uihps8_a0a0a0ib(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_uihps8_a0a0a0jb(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
   }
 }

@@ -150,7 +150,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createRefNodeList_0() {
-      AbstractCellListHandler handler = new Inline_Builder0.parameterListHandler_50ofcu_a0a1a(myNode, getEditorContext());
+      AbstractCellListHandler handler = new parameterListHandler_50ofcu_a0a1a(myNode, getEditorContext());
       EditorCell_Collection editorCell = handler.createCells(new CellLayout_Horizontal(), false);
       editorCell.setCellId("refNodeList_parameter");
       Style style = new StyleImpl();
@@ -586,7 +586,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createRefNode_3() {
-      SingleRoleCellProvider provider = new Inline_Builder1.bodySingleRoleHandler_50ofcu_a0a41a(myNode, LINKS.body$DJEC, getEditorContext());
+      SingleRoleCellProvider provider = new bodySingleRoleHandler_50ofcu_a0a41a(myNode, LINKS.body$DJEC, getEditorContext());
       return provider.createCell();
     }
     private static class bodySingleRoleHandler_50ofcu_a0a41a extends SingleRoleCellProvider {

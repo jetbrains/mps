@@ -294,7 +294,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
           SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.target$ClT$), LINKS.metaPort$JUWK, (SNode) toId);
         }
       })}));
-      setPalette(new DiagramCellImpl_32adaa_e0.DiagramPaletteImpl_32adaa_a4a(this));
+      setPalette(new DiagramPaletteImpl_32adaa_a4a(this));
       synchronize();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -453,7 +453,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
   public static ModelRootDescriptor createSingleFolderDescriptor(@NotNull final IFile modelDir) {
     DefaultModelRoot result = new DefaultModelRoot(0);
     result.setContentDirectory(modelDir);
-    result.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot("", modelDir));
+    result.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(modelDir));
     return result.toDescriptor();
   }
 

@@ -77,7 +77,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_a0(), new SMP_Group_gutaar_a.SMP_Group_gutaar_b0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a0(), new SMP_Group_gutaar_b0());
     }
     public class SMP_Group_gutaar_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -98,7 +98,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_a0.SMP_Group_gutaar_a0a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a0a());
       }
       public class SMP_Group_gutaar_a0a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
         @Override
@@ -121,7 +121,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
         @Override
         protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-          return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_a0.SMP_Group_gutaar_a0a.SMP_Subconcepts_gutaar_a0a0());
+          return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_gutaar_a0a0());
         }
         public class SMP_Subconcepts_gutaar_a0a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
           protected Collection getConcepts(final SubstituteMenuContext _context) {
@@ -165,7 +165,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_gutaar_a.SMP_Group_gutaar_b0.SMP_Subconcepts_gutaar_a1a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_gutaar_a1a());
       }
       public class SMP_Subconcepts_gutaar_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {

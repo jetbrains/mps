@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="Testbench" uuid="920eaa0e-ecca-46bc-bee7-4e5c59213dd6" compileInMPS="false">
-  <models />
+  <models>
+    <modelRoot type="java_classes">
+      <sourceRoot path="${mps_home}/lib/mps-environment.jar" />
+      <sourceRoot path="${mps_home}/lib/mps-test.jar" />
+    </modelRoot>
+  </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
+  <stubModelEntries>
+    <stubModelEntry path="${mps_home}/lib/mps-environment.jar" />
+    <stubModelEntry path="${mps_home}/lib/mps-test.jar" />
+  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">847a3235-09f9-403c-b6a9-1c294a212e92(Ant)</dependency>

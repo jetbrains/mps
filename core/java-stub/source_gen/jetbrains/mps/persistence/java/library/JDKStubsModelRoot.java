@@ -8,6 +8,7 @@ import java.util.List;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.java.stub.ClassStubRootConfiguration;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -33,10 +34,12 @@ import java.util.ArrayList;
 public class JDKStubsModelRoot extends ModelRootBase {
   private List<QualifiedPath> myJrtPaths;
   private PackageScopeControl myScopeControl;
-  private VFSManager myVfsManager;
+  private final VFSManager myVfsManager;
+  private final ClassStubRootConfiguration myStubPathProvider;
 
-  public JDKStubsModelRoot(VFSManager vfsManager) {
+  public JDKStubsModelRoot(VFSManager vfsManager, ClassStubRootConfiguration stubPathProvider) {
     myVfsManager = vfsManager;
+    myStubPathProvider = stubPathProvider;
   }
 
   @Override

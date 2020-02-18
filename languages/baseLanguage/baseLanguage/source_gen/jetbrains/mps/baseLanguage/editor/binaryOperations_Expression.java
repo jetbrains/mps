@@ -93,7 +93,7 @@ public class binaryOperations_Expression extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bai4z9_a0.TMP_WrapSM_bai4z9_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_bai4z9_a0a());
     }
     public class TMP_WrapSM_bai4z9_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -166,7 +166,7 @@ public class binaryOperations_Expression extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_bai4z9_a1.TMP_WrapSM_bai4z9_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_bai4z9_a0b());
     }
     public class TMP_WrapSM_bai4z9_a0b extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

@@ -120,12 +120,12 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_5klijv_b0.TMP_Action_5klijv_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_5klijv_a1a());
     }
     private class TMP_Action_5klijv_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_5klijv_b0.TMP_Action_5klijv_a1a.Item item = new TMP_Group_5klijv_b0.TMP_Action_5klijv_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

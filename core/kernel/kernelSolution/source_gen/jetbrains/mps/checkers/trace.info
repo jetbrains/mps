@@ -674,7 +674,7 @@
       <node id="4549571101012579272" at="119,34,120,53" concept="11" />
       <node id="3494917438986729694" at="123,124,124,75" concept="5" />
       <node id="6729911822238036399" at="128,53,129,51" concept="11" />
-      <node id="4460398911822003826" at="131,67,132,36" concept="11" />
+      <node id="4460398911822003826" at="131,47,132,36" concept="11" />
       <node id="4716987871699533421" at="135,0,136,0" concept="9" trace="skipSingleNode#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4716987871699532641" at="136,0,137,0" concept="9" trace="skipSubtree#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4716987871700054230" at="139,49,140,21" concept="11" />
@@ -724,7 +724,7 @@
       <scope id="4549571101012567180" at="119,34,120,53" />
       <scope id="3494917438986712713" at="123,124,124,75" />
       <scope id="6729911822235806569" at="128,53,129,51" />
-      <scope id="4460398911821731525" at="131,67,132,36" />
+      <scope id="4460398911821731525" at="131,47,132,36" />
       <scope id="4716987871699533421" at="135,0,136,0">
         <var name="node" id="4716987871699536727" />
       </scope>
@@ -788,7 +788,7 @@
       <unit id="842888854129459419" at="62,98,66,7" name="jetbrains.mps.checkers.IChecker$AbstractRootChecker$1" />
       <unit id="4716987871699523363" at="134,0,138,0" name="jetbrains.mps.checkers.IChecker$AbstractNodeChecker$ErrorSkipCondition" />
       <unit id="4460398911821747385" at="43,0,50,0" name="jetbrains.mps.checkers.IChecker$AbstractChecker" />
-      <unit id="4716987871700054222" at="138,92,145,5" name="jetbrains.mps.checkers.IChecker$AbstractNodeChecker$3" />
+      <unit id="4716987871700054222" at="138,72,145,5" name="jetbrains.mps.checkers.IChecker$AbstractNodeChecker$3" />
       <unit id="3494917438986897822" at="67,17,83,7" name="jetbrains.mps.checkers.IChecker$AbstractRootChecker$2" />
       <unit id="3494917438986701921" at="110,17,126,7" name="jetbrains.mps.checkers.IChecker$AbstractNodeChecker$2" />
       <unit id="3494917438987072459" at="92,112,109,7" name="jetbrains.mps.checkers.IChecker$AbstractNodeChecker$1" />

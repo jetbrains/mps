@@ -49,7 +49,7 @@ public class TestSubstitute_Menu_ToInclude1 extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_1daimw_a.Item item = new SMP_Action_1daimw_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

@@ -84,7 +84,7 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_97h82d_a.SMP_Group_97h82d_a0(), new SMP_Group_97h82d_a.SMP_Group_97h82d_b0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_97h82d_a0(), new SMP_Group_97h82d_b0());
     }
     public class SMP_Group_97h82d_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -105,7 +105,7 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_97h82d_a.SMP_Group_97h82d_a0.SMP_Concepts_97h82d_a0a(), CONCEPTS.TransformationFeature$2t));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_97h82d_a0a(), CONCEPTS.TransformationFeature$2t));
       }
       public class SMP_Concepts_97h82d_a0a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(SubstituteMenuContext _context) {
@@ -178,7 +178,7 @@ public class TransformationFeature_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_97h82d_a.SMP_Group_97h82d_b0.SMP_Subconcepts_97h82d_a1a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_97h82d_a1a());
       }
       public class SMP_Subconcepts_97h82d_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {

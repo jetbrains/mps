@@ -90,12 +90,12 @@ public class enumConstant_rt extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_oiseim_a0.TMP_Action_oiseim_a0a(), CONCEPTS.InstanceMethodDeclaration$An));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_oiseim_a0a(), CONCEPTS.InstanceMethodDeclaration$An));
     }
     private class TMP_Action_oiseim_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_oiseim_a0.TMP_Action_oiseim_a0a.Item item = new TMP_Group_oiseim_a0.TMP_Action_oiseim_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

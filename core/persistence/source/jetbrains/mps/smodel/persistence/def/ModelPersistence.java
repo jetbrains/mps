@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -371,7 +371,7 @@ public class ModelPersistence {
             final SModelReference mr = value == null ? null : PersistenceFacade.getInstance().createModelReference(value);
             myResult.setModelReference(mr);
           } else if (SModelHeader.DO_NOT_GENERATE.equals(name)) {
-            myResult.setDoNotGenerate(Boolean.parseBoolean(value));
+            myResult.setOptionalProperty(name, value);
           } else if ("version".equals(name)) {
             // old model version
             // [AP] copied as is from the VCSPersistenceSupport: I have know idea whether this branch is necessary

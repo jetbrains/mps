@@ -2633,9 +2633,12 @@
       <node concept="3Tm1VV" id="6aLxtim8pii" role="1B3o_S" />
       <node concept="10P_77" id="6aLxtim8pij" role="1tU5fm" />
     </node>
-    <node concept="3tTeZs" id="6aLxtim8pik" role="jymVt">
-      <property role="3tTeZt" value="&lt;description&gt;" />
-      <ref role="3tTeZr" to="slm6:1_lSsE3RFpE" resolve="description" />
+    <node concept="3tYpXE" id="7yFtKI4HH_q" role="jymVt">
+      <property role="TrG5h" value="description" />
+      <property role="3tYpXF" value="Split comments that spread accross several lines into separate single-line comments" />
+      <ref role="25KYV2" to="slm6:1_lSsE3RFpE" resolve="description" />
+      <node concept="3Tm1VV" id="7yFtKI4HH_s" role="1B3o_S" />
+      <node concept="17QB3L" id="7yFtKI4HH_t" role="1tU5fm" />
     </node>
     <node concept="q3mfD" id="6aLxtim8pil" role="jymVt">
       <property role="TrG5h" value="execute" />

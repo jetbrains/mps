@@ -311,7 +311,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.child$TQKd, CONCEPTS.MenuTraceGrandChildCellMenu$57), new SubstituteInfoPartExt[]{new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_a0e0(), new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_b0e0(), new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_c0e0(), new childSingleRoleHandler_i2boga_e0.MenuTraceChildCellMenu_child_cellMenu_i2boga_d0e0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.child$TQKd, CONCEPTS.MenuTraceGrandChildCellMenu$57), new SubstituteInfoPartExt[]{new MenuTraceChildCellMenu_child_cellMenu_i2boga_a0e0(), new MenuTraceChildCellMenu_child_cellMenu_i2boga_b0e0(), new MenuTraceChildCellMenu_child_cellMenu_i2boga_c0e0(), new MenuTraceChildCellMenu_child_cellMenu_i2boga_d0e0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.child$TQKd);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -190,6 +190,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   /**
    * @return the <code>FileKind</code> of the removed <code>SourceRoot</code> if it was successfully removed.
    */
+  @SuppressWarnings("UnusedReturnValue")
   @Nullable
   public final SourceRootKind removeSourceRoot(@NotNull SourceRoot root) {
     assertCanChange();
@@ -243,42 +244,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
                                  .collect(Collectors.toList()));
   }
 
-  /**
-   * @deprecated use {@link #getSourceRoots(SourceRootKind)} + {@link List#contains}.
-   */
-  @Deprecated
-  @ToRemove(version = 0)
-  public final boolean containsFile(String kind, String file) {
-    Collection<String> sourceRoots = getFiles(kind);
-    return sourceRoots.contains(file);
-  }
-
-  /**
-   * @deprecated use {@link #addSourceRoot(SourceRootKind, SourceRoot)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  public final void addFile(String kind, String filePath) {
-    SourceRootKind sourceRootKind = resolveKindByName(kind);
-    addSourceRoot(sourceRootKind, new DefaultSourceRoot(filePath, myContentDir));
-  }
-
-  /**
-   * @deprecated use {@link #removeSourceRoot(SourceRoot)} instead
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  public final void deleteFile(String kind, String file) {
-    checkNotRegistered();
-
-    if (!containsFile(kind, file)) {
-      throw new FileKindIsNotAllowedException(kind, file);
-    }
-
-
-    removeSourceRoot(new DefaultSourceRoot(file, myContentDir));
-  }
-
   @Override
   public final String getPresentation() {
     IFile contentDirectory = getContentDirectory();
@@ -294,15 +259,15 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     for (SourceRootKind kind : getSupportedFileKinds1()) {
       for (SourceRoot root : getSourceRoots(kind)) {
         Memento modelRootMemento = memento.createChild(kind.getName());
-        String contentRootPath = root.getAbsolutePath().getPath(); // must go away as soon as we allow relative paths
-        if (FileUtil.isAncestor(myContentDir.getPath(), contentRootPath)) {
-          String relPath = relativize(contentRootPath, myContentDir);
+        String sourceRootPath = root.getAbsolutePath().getPath(); // must go away as soon as we allow relative paths
+        if (myContentDir != null && FileUtil.isAncestor(myContentDir.getPath(), sourceRootPath)) {
+          String relPath = relativize(sourceRootPath, myContentDir);
           if (relPath.isEmpty()) {
             relPath = MPSExtentions.DOT;
           }
           modelRootMemento.put(LOCATION, relPath);
         } else {
-          modelRootMemento.put(PATH, contentRootPath);
+          modelRootMemento.put(PATH, sourceRootPath);
         }
       }
     }
@@ -323,9 +288,10 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
       for (Memento root : memento.getChildren(kind.getName())) {
         String relPath = root.get(LOCATION);
         if (relPath != null) {
+          assert myContentDir != null;
           addSourceRoot(kind, new DefaultSourceRoot(relPath, myContentDir)); // relative
-        } else {
-          addSourceRoot(kind, new DefaultSourceRoot(root.get(PATH), myContentDir)); // absolute
+        } else if (root.get(PATH) != null) {
+          addSourceRoot(kind, new DefaultSourceRoot(myFileSystem.getFile(root.get(PATH)))); // absolute
         }
       }
     }

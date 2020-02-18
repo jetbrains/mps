@@ -159,7 +159,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(String parameter, SubstituteMenuContext context) {
-      return new SMP_Param_fxbim_c.SMP_Action_fxbim_a2(parameter).createItems(context);
+      return new SMP_Action_fxbim_a2(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -186,7 +186,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_fxbim_c.SMP_Action_fxbim_a2.Item item = new SMP_Param_fxbim_c.SMP_Action_fxbim_a2.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -303,7 +303,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_fxbim_g.Item item = new SMP_Action_fxbim_g.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -366,14 +366,14 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_fxbim_h.SMP_Action_fxbim_a7(), CONCEPTS.MenuTraceSubstituteChild$jq));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_fxbim_a7(), CONCEPTS.MenuTraceSubstituteChild$jq));
     }
     private class SMP_Action_fxbim_a7 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_fxbim_h.SMP_Action_fxbim_a7.Item item = new SMP_Group_fxbim_h.SMP_Action_fxbim_a7.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

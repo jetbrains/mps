@@ -1,19 +1,18 @@
 package jetbrains.mps.jps.project;
 
-import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
+import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.jps.build.MPSCompilerUtil;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.persistence.java.library.JDKClassStubModelRootFactory;
 import jetbrains.mps.persistence.java.library.JDKStubsModelRoot;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.jps.incremental.CompileContext;
-import org.jetbrains.jps.incremental.messages.BuildMessage.Kind;
-import org.jetbrains.jps.incremental.messages.CompilerMessage;
 import org.jetbrains.jps.model.library.JpsLibrary;
 import org.jetbrains.jps.model.library.JpsLibraryRoot;
 import org.jetbrains.jps.model.library.JpsOrderRootType;
@@ -30,7 +29,6 @@ import java.util.Set;
 /**
  * danilla 12/18/12
  */
-
 public class JpsLibSolution extends Solution {
 
   private JpsLibrary myLibrary;
@@ -66,10 +64,12 @@ public class JpsLibSolution extends Solution {
 
     List<ModelRoot> modelRoots = new ArrayList<ModelRoot>();
     if (roots.get(0).getUrl().startsWith(VFSManager.JRT_FS)) {
-      JDKStubsModelRoot modelRoot = ((JDKStubsModelRoot) new JDKClassStubModelRootFactory(myVfsManager).create());
+      JDKStubsModelRoot modelRoot = ((JDKStubsModelRoot) PersistenceFacade.getInstance().getModelRootFactory(PersistenceRegistry.JDK_CLASSES_ROOT).create());
       for (JpsLibraryRoot libRoot: roots) {
         String path = getPath(libRoot);
-        if (ignoredPaths.contains(path)) continue;
+        if (ignoredPaths.contains(path)) {
+          continue;
+        }
 
         modelRoot.addPath(new QualifiedPath(VFSManager.JRT_FS,path));
       }
@@ -85,12 +85,14 @@ public class JpsLibSolution extends Solution {
         }
 
         String path = getPath(libRoot);
-        if (ignoredPaths.contains(path)) continue;
+        if (ignoredPaths.contains(path)) {
+          continue;
+        }
 
         MPSCompilerUtil.debug(context, "@@@@ path = " + path);
-
-        ((JavaClassStubsModelRoot)modelRoot).setContentRoot(path);
-        ((JavaClassStubsModelRoot)modelRoot).addFile(FileBasedModelRoot.SOURCE_ROOTS, path);
+        // FIXME see comment in StubSolutionIdea.addModelRoots. I've got VF here, and instead of using brand-new, shiny QP, I resort to some dubious
+        //       path mangling in #getPath(), plain strings for paths and deprecated FS
+        ((JavaClassStubsModelRoot)modelRoot).addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(FileSystem.getInstance().getFile(path)));
         modelRoots.add(modelRoot);
       }
     }

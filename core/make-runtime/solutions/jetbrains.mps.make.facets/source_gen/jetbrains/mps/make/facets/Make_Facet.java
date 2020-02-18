@@ -186,8 +186,8 @@ public class Make_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 200;
     }
-    public static Target_reconcile.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_reconcile.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<Boolean> {
       public Parameters() {
@@ -352,8 +352,8 @@ public class Make_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 1;
     }
-    public static Target_make.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_make.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<_FunctionTypes._return_P1_E0<? extends IFile, ? super String>> {
       public Parameters() {

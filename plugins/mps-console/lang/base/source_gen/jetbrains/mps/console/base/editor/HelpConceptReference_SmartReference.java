@@ -66,7 +66,7 @@ public class HelpConceptReference_SmartReference extends SubstituteMenuBase {
     @Override
     @NotNull
     protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new SMP_ReferenceScope_gtqjni_a.Item(context, referencedNode, getSConcept(), getReferenceLink());
+      return new Item(context, referencedNode, getSConcept(), getReferenceLink());
     }
     private class Item extends ReferenceScopeSubstituteMenuItem {
       private final SubstituteMenuContext _context;

@@ -62,7 +62,7 @@ public class Parameterized extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(Integer parameter, TransformationMenuContext context) {
-      return new TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a(parameter).createItems(context);
+      return new TMP_Action_3h2zbg_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -89,7 +89,7 @@ public class Parameterized extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a.Item item = new TMP_Param_3h2zbg_a0.TMP_Action_3h2zbg_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

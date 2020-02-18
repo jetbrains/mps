@@ -223,7 +223,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
     }
     MPSProject openedProject = openProjectInIdeaEnvironment(projectFile);
     if (testMode) {
-      Disposer.register(openedProject, disposable0);
+      Disposer.register(openedProject.getProject(), disposable0);
     }
     return openedProject;
   }

@@ -115,8 +115,8 @@ public class Generator__Facet extends IFacet.Stub {
       }
       return t;
     }
-    public static Target_Configure.Variables vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_Configure.Variables.class);
+    public static Variables vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Variables.class);
     }
     public static class Variables extends MultiTuple._1<String> {
       public Variables() {

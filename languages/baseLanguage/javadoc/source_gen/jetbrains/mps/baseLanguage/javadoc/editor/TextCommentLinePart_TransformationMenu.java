@@ -97,7 +97,7 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_rifg0n_a1.TMP_Action_rifg0n_a0b(parameter).createItems(context);
+      return new TMP_Action_rifg0n_a0b(parameter).createItems(context);
     }
 
     @Nullable
@@ -132,7 +132,7 @@ public class TextCommentLinePart_TransformationMenu extends TransformationMenuBa
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_rifg0n_a1.TMP_Action_rifg0n_a0b.Item item = new TMP_Param_rifg0n_a1.TMP_Action_rifg0n_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

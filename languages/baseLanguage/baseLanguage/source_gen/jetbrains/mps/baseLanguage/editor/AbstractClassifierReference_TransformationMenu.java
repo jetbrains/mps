@@ -98,12 +98,12 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_j08dcv_a0.TMP_Action_j08dcv_a0a(), CONCEPTS.LocalVariableDeclarationStatement$BI), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_j08dcv_a0.TMP_Action_j08dcv_b0a(), CONCEPTS.LocalVariableDeclarationStatement$BI));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_a0a(), CONCEPTS.LocalVariableDeclarationStatement$BI), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b0a(), CONCEPTS.LocalVariableDeclarationStatement$BI));
     }
     private class TMP_Action_j08dcv_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_j08dcv_a0.TMP_Action_j08dcv_a0a.Item item = new TMP_Group_j08dcv_a0.TMP_Action_j08dcv_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -174,7 +174,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     private class TMP_Action_j08dcv_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_j08dcv_a0.TMP_Action_j08dcv_b0a.Item item = new TMP_Group_j08dcv_a0.TMP_Action_j08dcv_b0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -274,12 +274,12 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
           }
         }
 
-      }, new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_j08dcv_b0.TMP_Action_j08dcv_b1a(), CONCEPTS.ArrayType$Yv));
+      }, new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b1a(), CONCEPTS.ArrayType$Yv));
     }
     private class TMP_Action_j08dcv_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_j08dcv_b0.TMP_Action_j08dcv_b1a.Item item = new TMP_Group_j08dcv_b0.TMP_Action_j08dcv_b1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

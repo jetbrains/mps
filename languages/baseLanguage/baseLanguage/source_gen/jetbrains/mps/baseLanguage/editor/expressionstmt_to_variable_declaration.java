@@ -92,7 +92,7 @@ public class expressionstmt_to_variable_declaration extends TransformationMenuBa
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_mt5nim_a0.TMP_WrapSM_mt5nim_a0a(), new TMP_Group_mt5nim_a0.TMP_WrapSM_mt5nim_b0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_mt5nim_a0a(), new TMP_WrapSM_mt5nim_b0a());
     }
     public class TMP_WrapSM_mt5nim_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

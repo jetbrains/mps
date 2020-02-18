@@ -161,7 +161,7 @@ public class ResizableSelectionFrameView extends AbstractExternalFrameView {
     private Property<DragHandler> myDragHandler = new ValueProperty<DragHandler>();
     private ResizeHandleMapper(Vector position, RectangleUpdater... updater) {
       super(position, new ResizeHandleView(position));
-      myDragHandler.set(new ResizeHandleMapper.DragHandlerImpl(updater));
+      myDragHandler.set(new DragHandlerImpl(updater));
     }
     @Override
     protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {

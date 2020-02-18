@@ -13,8 +13,8 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.extapi.model.SModelData;
-import jetbrains.mps.smodel.DefaultSModel;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
+import jetbrains.mps.smodel.SModelHeader;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -68,9 +68,9 @@ public class MetadataUtil {
     // create root with fixed Id (see inspector) 
     SNode root = SModelOperations.createNewNode(myMetadataModel, getMetadataRootId(), CONCEPTS.Model$$J);
     SPropertyOperations.assign(root, PROPS.longname$pfsG, SModelOperations.getModelName(origin));
-    SModelData originData = check_ca1g54_a0e0k(as_ca1g54_a0a0e0k(origin, SModelBase.class));
-    if (originData instanceof DefaultSModel) {
-      SPropertyOperations.assign(root, PROPS.donotgenerate$pfHD, ((DefaultSModel) originData).getSModelHeader().isDoNotGenerate());
+    if (origin instanceof ModelWithAttributes) {
+      String doNotGenerateValue = ((ModelWithAttributes) origin).getAttribute(SModelHeader.DO_NOT_GENERATE);
+      SPropertyOperations.assign(root, PROPS.donotgenerate$pfHD, Boolean.parseBoolean(doNotGenerateValue));
     }
     for (SLanguage language : CollectionSequence.fromCollection(modelBase.importedLanguageIds())) {
       int version = ((SModelBase) origin).getLanguageImportVersion(language);
@@ -243,15 +243,6 @@ public class MetadataUtil {
       } else {
       }
     }
-  }
-  private static SModelData check_ca1g54_a0e0k(SModelBase checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModelData();
-    }
-    return null;
-  }
-  private static <T> T as_ca1g54_a0a0e0k(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {

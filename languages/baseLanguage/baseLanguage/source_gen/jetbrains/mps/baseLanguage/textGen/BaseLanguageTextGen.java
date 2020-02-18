@@ -115,11 +115,11 @@ public abstract class BaseLanguageTextGen {
       return;
     }
     String pkgName = BaseLanguageTextGen.getPackageName(node, ctx);
-    BaseLanguageTextGen.appendClassName(pkgName, NameUtil.longNameFromNamespaceAndShortName(pkgName, SPropertyOperations.getString(node, PROPS.nestedName$XUlU)), contextNode, ctx);
+    BaseLanguageTextGen.appendClassName(node, pkgName, NameUtil.longNameFromNamespaceAndShortName(pkgName, SPropertyOperations.getString(node, PROPS.nestedName$XUlU)), contextNode, ctx);
   }
   public static void internalClassName(String packageName, String className, SNode contextNode, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    BaseLanguageTextGen.appendClassName(packageName, NameUtil.longNameFromNamespaceAndShortName(packageName, className), contextNode, ctx);
+    BaseLanguageTextGen.appendClassName(null, packageName, NameUtil.longNameFromNamespaceAndShortName(packageName, className), contextNode, ctx);
   }
   public static void variableDeclaration(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
@@ -211,7 +211,10 @@ public abstract class BaseLanguageTextGen {
       return;
     }
     String longName = NameUtil.longNameFromNamespaceAndShortName(packageAndShortName._0(), packageAndShortName._1());
-    BaseLanguageTextGen.appendClassName(packageAndShortName._0(), longName, classifierRef.getSourceNode(), ctx);
+
+    SReference reference = classifierRef;
+    SNode targetNode = (reference == null || reference instanceof DynamicReference ? null : jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(reference));
+    BaseLanguageTextGen.appendClassName(targetNode, packageAndShortName._0(), longName, classifierRef.getSourceNode(), ctx);
   }
   protected static Tuples._2<String, String> getPackageAndShortName(SReference classifierRef, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
@@ -276,14 +279,14 @@ public abstract class BaseLanguageTextGen {
     }
     return SModelOperations.getModelName(SNodeOperations.getModel(cls));
   }
-  protected static String getClassName(String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
+  protected static String getClassName(SNode target, String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (fqName == null) {
       tgs.reportError("class name is NULL");
       return "???";
     }
 
-    ImportEntry importEntry = tgs.getContextObject("ctx", ClassifierUnitContext.class).getClassifierRefText(packageName, fqName, contextNode);
+    ImportEntry importEntry = tgs.getContextObject("ctx", ClassifierUnitContext.class).getClassifierRefText(target, packageName, fqName, contextNode);
     if (importEntry.needsImport()) {
       tgs.pushTextArea("IMPORTS");
       tgs.append("import ");
@@ -294,9 +297,9 @@ public abstract class BaseLanguageTextGen {
     }
     return importEntry.getName();
   }
-  protected static void appendClassName(String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
+  protected static void appendClassName(SNode target, String packageName, String fqName, SNode contextNode, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(BaseLanguageTextGen.getClassName(packageName, fqName, contextNode, ctx));
+    tgs.append(BaseLanguageTextGen.getClassName(target, packageName, fqName, contextNode, ctx));
   }
   public static ClassifierUnitContext contextObjectInstance_ctx(SNode primaryInputNode) {
     return new ClassifierUnitContext(primaryInputNode);

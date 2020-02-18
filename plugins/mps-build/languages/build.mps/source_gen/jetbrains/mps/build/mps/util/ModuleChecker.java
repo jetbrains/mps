@@ -869,12 +869,20 @@ public final class ModuleChecker {
       final String relPath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(p);
       if (path.endsWith(".jar")) {
         if (type.doCheck) {
-          if (!(Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyJar$qY)).any(new IWhereFilter<SNode>() {
+          boolean extractedJar = Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyJar$qY)).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
               return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$PN10)), relPath);
             }
-          }))) {
-            report("jar stub library should be extracted into build script: " + relPath);
+          });
+          if (!(extractedJar)) {
+            boolean extractedAsJavaModule = Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$mo)).any(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return (SLinkOperations.getTarget(it, LINKS.javaLibLocation$VgPH) != null) && Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.javaLibLocation$VgPH)), relPath);
+              }
+            });
+            if (!(extractedAsJavaModule)) {
+              report("Java library jar should be extracted into build script: " + relPath);
+            }
           }
         }
 

@@ -78,7 +78,7 @@ public class ForReturnTypeOfTheMethod extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_fr0itg_a0.TMP_Include_fr0itg_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_fr0itg_a0a());
     }
     public class TMP_Include_fr0itg_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

@@ -102,12 +102,12 @@ public class expression_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_2hw6rf_a0.TMP_Action_2hw6rf_a0a(), CONCEPTS.SNodeTypeCastExpression$Sg), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_2hw6rf_a0.TMP_Action_2hw6rf_b0a(), CONCEPTS.SNodeTypeCastExpression$Sg));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_2hw6rf_a0a(), CONCEPTS.SNodeTypeCastExpression$Sg), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_2hw6rf_b0a(), CONCEPTS.SNodeTypeCastExpression$Sg));
     }
     private class TMP_Action_2hw6rf_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_2hw6rf_a0.TMP_Action_2hw6rf_a0a.Item item = new TMP_Group_2hw6rf_a0.TMP_Action_2hw6rf_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -178,7 +178,7 @@ public class expression_Contribution extends TransformationMenuBase {
     private class TMP_Action_2hw6rf_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_2hw6rf_a0.TMP_Action_2hw6rf_b0a.Item item = new TMP_Group_2hw6rf_a0.TMP_Action_2hw6rf_b0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -268,12 +268,12 @@ public class expression_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_2hw6rf_b0.TMP_Action_2hw6rf_a1a(), CONCEPTS.SConceptTypeCastExpression$3w));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_2hw6rf_a1a(), CONCEPTS.SConceptTypeCastExpression$3w));
     }
     private class TMP_Action_2hw6rf_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_2hw6rf_b0.TMP_Action_2hw6rf_a1a.Item item = new TMP_Group_2hw6rf_b0.TMP_Action_2hw6rf_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -383,12 +383,12 @@ public class expression_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_2hw6rf_c0.TMP_Action_2hw6rf_a2a(), CONCEPTS.SemanticDowncastExpression$us));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_2hw6rf_a2a(), CONCEPTS.SemanticDowncastExpression$us));
     }
     private class TMP_Action_2hw6rf_a2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_2hw6rf_c0.TMP_Action_2hw6rf_a2a.Item item = new TMP_Group_2hw6rf_c0.TMP_Action_2hw6rf_a2a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

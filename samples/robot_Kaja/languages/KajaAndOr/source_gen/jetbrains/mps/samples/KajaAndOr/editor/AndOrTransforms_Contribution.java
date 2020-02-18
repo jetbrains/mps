@@ -82,7 +82,7 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SConcept parameter, TransformationMenuContext context) {
-      return new TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a(parameter).createItems(context);
+      return new TMP_Action_ry9dqf_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -113,7 +113,7 @@ public class AndOrTransforms_Contribution extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a.Item item = new TMP_Param_ry9dqf_a0.TMP_Action_ry9dqf_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

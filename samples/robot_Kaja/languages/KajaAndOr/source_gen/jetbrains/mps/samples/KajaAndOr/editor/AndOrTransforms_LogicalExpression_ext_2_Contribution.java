@@ -82,7 +82,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a(parameter).createItems(context);
+      return new TMP_Action_m0wxkr_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -109,7 +109,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a.Item item = new TMP_Param_m0wxkr_a0.TMP_Action_m0wxkr_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -181,7 +181,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b(parameter).createItems(context);
+      return new TMP_Action_m0wxkr_a0b(parameter).createItems(context);
     }
 
     @Nullable
@@ -208,7 +208,7 @@ public class AndOrTransforms_LogicalExpression_ext_2_Contribution extends Transf
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b.Item item = new TMP_Param_m0wxkr_a1.TMP_Action_m0wxkr_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

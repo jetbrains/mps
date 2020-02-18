@@ -175,7 +175,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return editorCell;
     }
     private EditorCell createRefNode_0() {
-      SingleRoleCellProvider provider = new Inline_Builder0.conceptParameterSingleRoleHandler_velomm_a0a3a(myNode, LINKS.conceptParameter$JcMo, getEditorContext());
+      SingleRoleCellProvider provider = new conceptParameterSingleRoleHandler_velomm_a0a3a(myNode, LINKS.conceptParameter$JcMo, getEditorContext());
       return provider.createCell();
     }
     private static class conceptParameterSingleRoleHandler_velomm_a0a3a extends SingleRoleCellProvider {
@@ -296,7 +296,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return editorCell;
     }
     private EditorCell createRefNodeList_0() {
-      AbstractCellListHandler handler = new Inline_Builder1.defsListHandler_velomm_a0a0e0(myNode, getEditorContext());
+      AbstractCellListHandler handler = new defsListHandler_velomm_a0a0e0(myNode, getEditorContext());
       EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
       editorCell.setCellId("refNodeList_defs");
       Style style = new StyleImpl();

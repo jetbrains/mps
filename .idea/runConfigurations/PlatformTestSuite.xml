@@ -20,6 +20,15 @@
     <ConfigurationWrapper RunnerId="Run" />
     <method v="2">
       <option name="Make" enabled="true" />
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="bootstrap:mps-annotations" />
+        <artifact name="bootstrap:mps-core" />
+        <artifact name="bootstrap:mps-editor" />
+        <artifact name="bootstrap:mps-openapi" />
+        <artifact name="bootstrap:mps-platform" />
+        <artifact name="bootstrap:mps-testbench" />
+        <artifact name="bootstrap:mps-workbench" />
+      </option>
       <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
     </method>
   </configuration>

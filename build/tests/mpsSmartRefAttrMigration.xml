@@ -29,18 +29,18 @@
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path"/>
 
   <target name="check">
-    <migrate project="${test.project}">
-      <macro name="mps_home" path="${mps_build_home}"/>
-      <jvmargs>
-        <arg value="-Xmx1200m" />
-        <arg value="-ea" />
-      </jvmargs>
-    </migrate>
+<!--    <migrate project="${test.project}">-->
+<!--      <macro name="mps_home" path="${mps_build_home}"/>-->
+<!--      <jvmargs>-->
+<!--        <arg value="-Xmx1200m" />-->
+<!--        <arg value="-ea" />-->
+<!--      </jvmargs>-->
+<!--    </migrate>-->
 
-    <ant antfile="build/tests/mpsSmartRefAttrMigration_gen.xml" inheritAll="true" useNativeBasedir="true">
-      <target name="build"/>
-      <target name="check"/>
-      <property name="mps_home" value="${mps_build_home}"/>
-    </ant>
+<!--    <ant antfile="build/tests/mpsSmartRefAttrMigration_gen.xml" inheritAll="true" useNativeBasedir="true">-->
+<!--      <target name="build"/>-->
+<!--      <target name="check"/>-->
+<!--      <property name="mps_home" value="${mps_build_home}"/>-->
+<!--    </ant>-->
   </target>
 </project>

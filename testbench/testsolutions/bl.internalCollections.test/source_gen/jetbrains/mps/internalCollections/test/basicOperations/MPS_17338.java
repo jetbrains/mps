@@ -17,8 +17,8 @@ public class MPS_17338 {
     public static class Block {
     }
 
-    public Point.Block getBlock() {
-      return new Point.Block();
+    public Block getBlock() {
+      return new Block();
     }
   }
 }

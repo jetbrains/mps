@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -170,12 +170,11 @@ public class ModelWriter9 implements IModelWriter {
   }
 
   private void saveAdditionalProps(SModel sourceModel, Element rootElement) {
-    if (!(sourceModel instanceof DefaultSModel)) return;
+    if (!(sourceModel instanceof DefaultSModel)) {
+      return;
+    }
 
     SModelHeader header = ((DefaultSModel) sourceModel).getSModelHeader();
-    if (header.isDoNotGenerate()) {
-      rootElement.setAttribute(SModelHeader.DO_NOT_GENERATE, Boolean.TRUE.toString());
-    }
 
     for (Map.Entry<String, String> en : header.getOptionalProperties().entrySet()) {
       Element attr = new Element(ModelPersistence9.MODEL_ATTRIBUTE);

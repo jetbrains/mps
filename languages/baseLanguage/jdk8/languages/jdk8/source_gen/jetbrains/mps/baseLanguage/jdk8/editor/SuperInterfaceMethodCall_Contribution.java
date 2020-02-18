@@ -65,7 +65,7 @@ public class SuperInterfaceMethodCall_Contribution extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new SMP_Param_73nkqx_a.SMP_Action_73nkqx_a0(parameter).createItems(context);
+      return new SMP_Action_73nkqx_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -100,7 +100,7 @@ public class SuperInterfaceMethodCall_Contribution extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_73nkqx_a.SMP_Action_73nkqx_a0.Item item = new SMP_Param_73nkqx_a.SMP_Action_73nkqx_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

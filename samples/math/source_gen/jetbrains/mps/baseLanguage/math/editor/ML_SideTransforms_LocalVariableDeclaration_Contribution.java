@@ -98,12 +98,12 @@ public class ML_SideTransforms_LocalVariableDeclaration_Contribution extends Tra
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_8mvt7x_a0.TMP_Action_8mvt7x_a0a(), CONCEPTS.LinearSolveOperation$s8));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_8mvt7x_a0a(), CONCEPTS.LinearSolveOperation$s8));
     }
     private class TMP_Action_8mvt7x_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_8mvt7x_a0.TMP_Action_8mvt7x_a0a.Item item = new TMP_Group_8mvt7x_a0.TMP_Action_8mvt7x_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

@@ -2028,6 +2028,86 @@
       <unit id="6999890265143052298" at="13,0,41,0" name="jetbrains.mps.lang.editor.completion.test.CompleteSmart_SmartReference_Test" />
     </file>
   </root>
+  <root nodeRef="r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)/7083357524234822112">
+    <file name="IntegerPropertyFirstDigitDelete_Test.java">
+      <node id="7083357524234822112" at="18,49,19,25" concept="9" />
+      <node id="7083357524234822112" at="23,71,24,36" concept="1" />
+      <node id="7083357524234822112" at="29,52,30,19" concept="9" />
+      <node id="7083357524234822112" at="34,51,35,72" concept="1" />
+      <node id="7083357524234835296" at="35,72,36,69" concept="1" />
+      <node id="7083357524234837873" at="36,69,37,22" concept="1" />
+      <node id="7083357524234822112" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="7083357524234822112" at="18,0,21,0" concept="0" trace="IntegerPropertyFirstDigitDelete_Test#()V" />
+      <node id="7083357524234822112" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7083357524234822112" at="22,0,26,0" concept="3" trace="test_IntegerPropertyFirstDigitDelete#()V" />
+      <node id="7083357524234822112" at="33,0,39,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="7083357524234822112" at="18,49,19,25" />
+      <scope id="7083357524234822112" at="23,71,24,36" />
+      <scope id="7083357524234822112" at="29,52,30,19" />
+      <scope id="7083357524234822112" at="18,0,21,0" />
+      <scope id="7083357524234822112" at="29,0,32,0">
+        <var name="owner" id="7083357524234822112" />
+      </scope>
+      <scope id="7083357524234822112" at="34,51,37,22" />
+      <scope id="7083357524234822112" at="22,0,26,0" />
+      <scope id="7083357524234822112" at="33,0,39,0" />
+      <unit id="7083357524234822112" at="27,0,40,0" name="jetbrains.mps.lang.editor.completion.test.IntegerPropertyFirstDigitDelete_Test$TestBody" />
+      <unit id="7083357524234822112" at="13,0,41,0" name="jetbrains.mps.lang.editor.completion.test.IntegerPropertyFirstDigitDelete_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)/7083357524235458932">
+    <file name="IntegerPropertyFirstDigitBackspace_Test.java">
+      <node id="7083357524235458932" at="18,52,19,25" concept="9" />
+      <node id="7083357524235458932" at="23,74,24,36" concept="1" />
+      <node id="7083357524235458932" at="29,52,30,19" concept="9" />
+      <node id="7083357524235458932" at="34,51,35,72" concept="1" />
+      <node id="7083357524235458950" at="35,72,36,72" concept="1" />
+      <node id="7083357524235458952" at="36,72,37,22" concept="1" />
+      <node id="7083357524235458932" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="7083357524235458932" at="18,0,21,0" concept="0" trace="IntegerPropertyFirstDigitBackspace_Test#()V" />
+      <node id="7083357524235458932" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7083357524235458932" at="22,0,26,0" concept="3" trace="test_IntegerPropertyFirstDigitBackspace#()V" />
+      <node id="7083357524235458932" at="33,0,39,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="7083357524235458932" at="18,52,19,25" />
+      <scope id="7083357524235458932" at="23,74,24,36" />
+      <scope id="7083357524235458932" at="29,52,30,19" />
+      <scope id="7083357524235458932" at="18,0,21,0" />
+      <scope id="7083357524235458932" at="29,0,32,0">
+        <var name="owner" id="7083357524235458932" />
+      </scope>
+      <scope id="7083357524235458932" at="34,51,37,22" />
+      <scope id="7083357524235458932" at="22,0,26,0" />
+      <scope id="7083357524235458932" at="33,0,39,0" />
+      <unit id="7083357524235458932" at="27,0,40,0" name="jetbrains.mps.lang.editor.completion.test.IntegerPropertyFirstDigitBackspace_Test$TestBody" />
+      <unit id="7083357524235458932" at="13,0,41,0" name="jetbrains.mps.lang.editor.completion.test.IntegerPropertyFirstDigitBackspace_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)/7083357524235836132">
+    <file name="IntegerPropertyFirstDigitZeroSubstitution_Test.java">
+      <node id="7083357524235836132" at="18,59,19,25" concept="9" />
+      <node id="7083357524235836132" at="23,81,24,36" concept="1" />
+      <node id="7083357524235836132" at="29,52,30,19" concept="9" />
+      <node id="7083357524235836132" at="34,51,35,72" concept="1" />
+      <node id="7083357524235836152" at="35,72,36,22" concept="1" />
+      <node id="7083357524235836132" at="15,0,17,0" concept="7" trace="ourParamCache" />
+      <node id="7083357524235836132" at="18,0,21,0" concept="0" trace="IntegerPropertyFirstDigitZeroSubstitution_Test#()V" />
+      <node id="7083357524235836132" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7083357524235836132" at="22,0,26,0" concept="3" trace="test_IntegerPropertyFirstDigitZeroSubstitution#()V" />
+      <node id="7083357524235836132" at="33,0,38,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="7083357524235836132" at="18,59,19,25" />
+      <scope id="7083357524235836132" at="23,81,24,36" />
+      <scope id="7083357524235836132" at="29,52,30,19" />
+      <scope id="7083357524235836132" at="34,51,36,22" />
+      <scope id="7083357524235836132" at="18,0,21,0" />
+      <scope id="7083357524235836132" at="29,0,32,0">
+        <var name="owner" id="7083357524235836132" />
+      </scope>
+      <scope id="7083357524235836132" at="22,0,26,0" />
+      <scope id="7083357524235836132" at="33,0,38,0" />
+      <unit id="7083357524235836132" at="27,0,39,0" name="jetbrains.mps.lang.editor.completion.test.IntegerPropertyFirstDigitZeroSubstitution_Test$TestBody" />
+      <unit id="7083357524235836132" at="13,0,40,0" name="jetbrains.mps.lang.editor.completion.test.IntegerPropertyFirstDigitZeroSubstitution_Test" />
+    </file>
+  </root>
   <root nodeRef="r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)/787021975296531738">
     <file name="CompleteDotInPattern_Test.java">
       <node id="787021975296531738" at="21,38,22,25" concept="9" />

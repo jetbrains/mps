@@ -104,12 +104,12 @@ public class BLC_rtansform extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_ahju1d_a0.TMP_Action_ahju1d_a0a(), CONCEPTS.MapElement$_s));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ahju1d_a0a(), CONCEPTS.MapElement$_s));
     }
     private class TMP_Action_ahju1d_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_ahju1d_a0.TMP_Action_ahju1d_a0a.Item item = new TMP_Group_ahju1d_a0.TMP_Action_ahju1d_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

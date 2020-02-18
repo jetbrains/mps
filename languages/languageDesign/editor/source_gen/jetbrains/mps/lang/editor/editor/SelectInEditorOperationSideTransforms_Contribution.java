@@ -97,12 +97,12 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a(), CONCEPTS.AbstractCellSelector$$5), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a(), CONCEPTS.AbstractCellSelector$$5));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_weywl8_a0a(), CONCEPTS.AbstractCellSelector$$5), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_weywl8_b0a(), CONCEPTS.AbstractCellSelector$$5));
     }
     private class TMP_Action_weywl8_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a.Item item = new TMP_Group_weywl8_a0.TMP_Action_weywl8_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -173,7 +173,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     private class TMP_Action_weywl8_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a.Item item = new TMP_Group_weywl8_a0.TMP_Action_weywl8_b0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -261,12 +261,12 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a(), new TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_weywl8_a1a(), new TMP_Action_weywl8_b1a());
     }
     private class TMP_Action_weywl8_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a.Item item = new TMP_Group_weywl8_b0.TMP_Action_weywl8_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -332,7 +332,7 @@ public class SelectInEditorOperationSideTransforms_Contribution extends Transfor
     private class TMP_Action_weywl8_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a.Item item = new TMP_Group_weywl8_b0.TMP_Action_weywl8_b1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

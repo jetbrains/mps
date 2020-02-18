@@ -89,7 +89,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_a0(), new SMP_Group_aabwkk_a.SMP_Group_aabwkk_b0(), new SMP_Group_aabwkk_a.SMP_Group_aabwkk_c0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_aabwkk_a0(), new SMP_Group_aabwkk_b0(), new SMP_Group_aabwkk_c0());
     }
     public class SMP_Group_aabwkk_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -110,14 +110,14 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_a0.SMP_Action_aabwkk_a0a(), CONCEPTS.BuildLayout_JarManifest_Section$zw));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_aabwkk_a0a(), CONCEPTS.BuildLayout_JarManifest_Section$zw));
       }
       private class SMP_Action_aabwkk_a0a extends SingleItemSubstituteMenuPart {
 
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_aabwkk_a.SMP_Group_aabwkk_a0.SMP_Action_aabwkk_a0a.Item item = new SMP_Group_aabwkk_a.SMP_Group_aabwkk_a0.SMP_Action_aabwkk_a0a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -192,14 +192,14 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_b0.SMP_Action_aabwkk_a1a(), CONCEPTS.BuildLayout_JarManifest_Attribute$Oq));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_aabwkk_a1a(), CONCEPTS.BuildLayout_JarManifest_Attribute$Oq));
       }
       private class SMP_Action_aabwkk_a1a extends SingleItemSubstituteMenuPart {
 
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_aabwkk_a.SMP_Group_aabwkk_b0.SMP_Action_aabwkk_a1a.Item item = new SMP_Group_aabwkk_a.SMP_Group_aabwkk_b0.SMP_Action_aabwkk_a1a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");
@@ -294,7 +294,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_aabwkk_a.SMP_Group_aabwkk_c0.SMP_Subconcepts_aabwkk_a2a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_aabwkk_a2a());
       }
       public class SMP_Subconcepts_aabwkk_a2a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {

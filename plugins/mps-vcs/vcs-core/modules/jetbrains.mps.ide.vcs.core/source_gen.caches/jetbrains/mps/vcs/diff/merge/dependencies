@@ -109,8 +109,6 @@
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.merge.MergeTemporaryModel">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.UnsupportedOperationException" />

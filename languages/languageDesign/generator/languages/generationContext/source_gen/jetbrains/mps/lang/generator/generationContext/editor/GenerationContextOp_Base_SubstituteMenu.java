@@ -67,7 +67,7 @@ public class GenerationContextOp_Base_SubstituteMenu extends SubstituteMenuBase 
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_wphz80_a.SMP_Subconcepts_wphz80_a0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_wphz80_a0());
     }
     public class SMP_Subconcepts_wphz80_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {

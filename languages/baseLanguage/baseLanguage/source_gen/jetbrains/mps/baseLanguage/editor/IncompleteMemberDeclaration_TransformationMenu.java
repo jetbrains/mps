@@ -136,12 +136,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_a1.TMP_Action_rt3nn6_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a0b());
     }
     private class TMP_Action_rt3nn6_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_a1.TMP_Action_rt3nn6_a0b.Item item = new TMP_Group_rt3nn6_a1.TMP_Action_rt3nn6_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -225,12 +225,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_b1.TMP_Action_rt3nn6_a1b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a1b());
     }
     private class TMP_Action_rt3nn6_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_b1.TMP_Action_rt3nn6_a1b.Item item = new TMP_Group_rt3nn6_b1.TMP_Action_rt3nn6_a1b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -313,7 +313,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_a2.TMP_WrapSM_rt3nn6_a0c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_rt3nn6_a0c());
     }
     public class TMP_WrapSM_rt3nn6_a0c extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -387,7 +387,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_b2.TMP_WrapSM_rt3nn6_a1c(), new TMP_Group_rt3nn6_b2.TMP_WrapSM_rt3nn6_b1c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_rt3nn6_a1c(), new TMP_WrapSM_rt3nn6_b1c());
     }
     public class TMP_WrapSM_rt3nn6_a1c extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -513,7 +513,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_c2.TMP_WrapSM_rt3nn6_a2c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_rt3nn6_a2c());
     }
     public class TMP_WrapSM_rt3nn6_a2c extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -587,7 +587,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_d2.TMP_WrapSM_rt3nn6_a3c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_rt3nn6_a3c());
     }
     public class TMP_WrapSM_rt3nn6_a3c extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
@@ -661,12 +661,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_e2.TMP_Action_rt3nn6_a4c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a4c());
     }
     private class TMP_Action_rt3nn6_a4c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_e2.TMP_Action_rt3nn6_a4c.Item item = new TMP_Group_rt3nn6_e2.TMP_Action_rt3nn6_a4c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -744,12 +744,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_f2.TMP_Action_rt3nn6_a5c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a5c());
     }
     private class TMP_Action_rt3nn6_a5c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_f2.TMP_Action_rt3nn6_a5c.Item item = new TMP_Group_rt3nn6_f2.TMP_Action_rt3nn6_a5c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -827,12 +827,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_g2.TMP_Action_rt3nn6_a6c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a6c());
     }
     private class TMP_Action_rt3nn6_a6c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_g2.TMP_Action_rt3nn6_a6c.Item item = new TMP_Group_rt3nn6_g2.TMP_Action_rt3nn6_a6c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -910,12 +910,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_h2.TMP_Action_rt3nn6_a7c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a7c());
     }
     private class TMP_Action_rt3nn6_a7c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_h2.TMP_Action_rt3nn6_a7c.Item item = new TMP_Group_rt3nn6_h2.TMP_Action_rt3nn6_a7c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -993,12 +993,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_i2.TMP_Action_rt3nn6_a8c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a8c());
     }
     private class TMP_Action_rt3nn6_a8c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_i2.TMP_Action_rt3nn6_a8c.Item item = new TMP_Group_rt3nn6_i2.TMP_Action_rt3nn6_a8c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1076,12 +1076,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_j2.TMP_Action_rt3nn6_a9c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a9c());
     }
     private class TMP_Action_rt3nn6_a9c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_j2.TMP_Action_rt3nn6_a9c.Item item = new TMP_Group_rt3nn6_j2.TMP_Action_rt3nn6_a9c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1159,12 +1159,12 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_k2.TMP_Action_rt3nn6_a01c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_rt3nn6_a01c());
     }
     private class TMP_Action_rt3nn6_a01c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_rt3nn6_k2.TMP_Action_rt3nn6_a01c.Item item = new TMP_Group_rt3nn6_k2.TMP_Action_rt3nn6_a01c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -1238,7 +1238,7 @@ public class IncompleteMemberDeclaration_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_rt3nn6_l2.TMP_WrapSM_rt3nn6_a11c());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_rt3nn6_a11c());
     }
     public class TMP_WrapSM_rt3nn6_a11c extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

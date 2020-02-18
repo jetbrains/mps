@@ -118,7 +118,8 @@ public final class PathManager {
    */
   @Internal
   public static boolean isFromSources() {
-    return !getContainingJar(PathManager.class).endsWith(".jar");
+    final URL launcherURL = ClassLoader.getSystemResource("jetbrains/mps/Launcher.class");
+    return launcherURL != null && launcherURL.getProtocol().equals(FILE);
   }
 
   private static String getContainingJar(Class aClass) {

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="MPS.OpenAPI" uuid="8865b7a8-5271-43d3-884c-6fd1d9cfdd34" compileInMPS="false">
-  <models />
+<solution name="MPS.OpenAPI" uuid="8865b7a8-5271-43d3-884c-6fd1d9cfdd34" moduleVersion="0" compileInMPS="false">
+  <models>
+    <modelRoot type="java_classes">
+      <sourceRoot path="${mps_home}/lib/mps-openapi.jar" />
+      <Sources zip="${mps_home}/lib/MPS-src.zip"/>
+    </modelRoot>
+  </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
+  <stubModelEntries>
+    <stubModelEntry path="${mps_home}/lib/mps-openapi.jar" />
+  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

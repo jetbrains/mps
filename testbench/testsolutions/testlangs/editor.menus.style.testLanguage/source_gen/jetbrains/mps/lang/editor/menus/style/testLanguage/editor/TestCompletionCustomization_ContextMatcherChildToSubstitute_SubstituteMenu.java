@@ -52,7 +52,7 @@ public class TestCompletionCustomization_ContextMatcherChildToSubstitute_Substit
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_9w8282_a.Item item = new SMP_Action_9w8282_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -107,7 +107,7 @@ public class TestCompletionCustomization_ContextMatcherChildToSubstitute_Substit
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_9w8282_b.Item item = new SMP_Action_9w8282_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

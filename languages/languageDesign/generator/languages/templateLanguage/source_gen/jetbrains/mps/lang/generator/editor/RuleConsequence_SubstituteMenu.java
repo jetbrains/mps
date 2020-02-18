@@ -70,7 +70,7 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ygcyd4_a.SMP_Subconcepts_ygcyd4_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.WeaveEach_RuleConsequence$M2) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_ygcyd4_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.WeaveEach_RuleConsequence$M2) {
 
         @NotNull
         @Override
@@ -133,7 +133,7 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ygcyd4_b.SMP_Group_ygcyd4_a1(), new SMP_Group_ygcyd4_b.SMP_Subconcepts_ygcyd4_b1());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_ygcyd4_a1(), new SMP_Subconcepts_ygcyd4_b1());
     }
     public class SMP_Group_ygcyd4_a1 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override

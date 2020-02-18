@@ -52,7 +52,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_8ml84f_a.Item item = new SMP_Action_8ml84f_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -112,7 +112,7 @@ public class GenerationContextOp_CreateIndexedName_SubstituteMenu extends Substi
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_8ml84f_b.Item item = new SMP_Action_8ml84f_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

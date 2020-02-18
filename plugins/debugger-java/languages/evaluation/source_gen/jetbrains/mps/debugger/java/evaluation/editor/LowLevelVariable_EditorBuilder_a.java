@@ -140,7 +140,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createRefNode_0() {
-      SingleRoleCellProvider provider = new Inline_Builder0.highTypeSingleRoleHandler_f5bzsg_a0a0a(myNode, LINKS.highType$UDHZ, getEditorContext());
+      SingleRoleCellProvider provider = new highTypeSingleRoleHandler_f5bzsg_a0a0a(myNode, LINKS.highType$UDHZ, getEditorContext());
       return provider.createCell();
     }
     private static class highTypeSingleRoleHandler_f5bzsg_a0a0a extends SingleRoleCellProvider {
@@ -291,7 +291,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     }
     private EditorCell createRefNode_1() {
-      SingleRoleCellProvider provider = new Inline_Builder1.lowTypeSingleRoleHandler_f5bzsg_a0a1c0(myNode, LINKS.lowType$UDHw, getEditorContext());
+      SingleRoleCellProvider provider = new lowTypeSingleRoleHandler_f5bzsg_a0a1c0(myNode, LINKS.lowType$UDHw, getEditorContext());
       return provider.createCell();
     }
     private static class lowTypeSingleRoleHandler_f5bzsg_a0a1c0 extends SingleRoleCellProvider {

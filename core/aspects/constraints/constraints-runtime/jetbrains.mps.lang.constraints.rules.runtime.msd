@@ -2,11 +2,8 @@
 <solution name="jetbrains.mps.lang.constraints.rules.runtime" uuid="8e98f4e2-decf-4e97-bf80-9109e8b759ee" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}" type="java_classes">
-      <sourceRoot location="classes" />
-    </modelRoot>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="mps-constraints-runtime.jar" />
+    <modelRoot type="java_classes">
+      <sourceRoot path="${mps_home}/lib/mps-constraints-runtime.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -16,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/classes" />
+    <stubModelEntry path="${mps_home}/lib/mps-constraints-runtime.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

@@ -155,7 +155,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.matchingText$KPlJ, CONCEPTS.QueryFunction_RefPresentation$yX), new SubstituteInfoPartExt[]{new matchingTextSingleRoleHandler_rsvjao_b1b0.CellMenuPart_ReferentPrimary_matchingText_cellMenu_rsvjao_a0b1b0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.matchingText$KPlJ, CONCEPTS.QueryFunction_RefPresentation$yX), new SubstituteInfoPartExt[]{new CellMenuPart_ReferentPrimary_matchingText_cellMenu_rsvjao_a0b1b0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.matchingText$KPlJ);
@@ -278,7 +278,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.visibleMatchingText$_Wck, CONCEPTS.QueryFunction_RefPresentation$yX), new SubstituteInfoPartExt[]{new visibleMatchingTextSingleRoleHandler_rsvjao_b1c0.CellMenuPart_ReferentPrimary_visibleMatchingText_cellMenu_rsvjao_a0b1c0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.visibleMatchingText$_Wck, CONCEPTS.QueryFunction_RefPresentation$yX), new SubstituteInfoPartExt[]{new CellMenuPart_ReferentPrimary_visibleMatchingText_cellMenu_rsvjao_a0b1c0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.visibleMatchingText$_Wck);

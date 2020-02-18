@@ -89,7 +89,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_puymhi_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_puymhi_a0.Item item = new TMP_Action_puymhi_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -146,7 +146,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_puymhi_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_puymhi_b0.Item item = new TMP_Action_puymhi_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -220,7 +220,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-      return new TMP_Param_puymhi_c0.TMP_Action_puymhi_a2a(parameter).createItems(context);
+      return new TMP_Action_puymhi_a2a(parameter).createItems(context);
     }
 
     @Nullable
@@ -273,7 +273,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_puymhi_c0.TMP_Action_puymhi_a2a.Item item = new TMP_Param_puymhi_c0.TMP_Action_puymhi_a2a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -326,7 +326,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_puymhi_d0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_puymhi_d0.Item item = new TMP_Action_puymhi_d0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -401,7 +401,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-      return new TMP_Param_puymhi_e0.TMP_Action_puymhi_a4a(parameter).createItems(context);
+      return new TMP_Action_puymhi_a4a(parameter).createItems(context);
     }
 
     @Nullable
@@ -464,7 +464,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_puymhi_e0.TMP_Action_puymhi_a4a.Item item = new TMP_Param_puymhi_e0.TMP_Action_puymhi_a4a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -533,7 +533,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_puymhi_f0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_puymhi_f0.Item item = new TMP_Action_puymhi_f0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -642,7 +642,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_puymhi_g0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_puymhi_g0.Item item = new TMP_Action_puymhi_g0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -711,7 +711,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
   private class TMP_Action_puymhi_h0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_puymhi_h0.Item item = new TMP_Action_puymhi_h0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

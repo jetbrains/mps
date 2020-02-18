@@ -94,12 +94,12 @@ public class addComment_Expression extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_ouazrg_a0.TMP_Action_ouazrg_a0a(), CONCEPTS.BaseCommentAttribute$Zd));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ouazrg_a0a(), CONCEPTS.BaseCommentAttribute$Zd));
     }
     private class TMP_Action_ouazrg_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_ouazrg_a0.TMP_Action_ouazrg_a0a.Item item = new TMP_Group_ouazrg_a0.TMP_Action_ouazrg_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -187,12 +187,12 @@ public class addComment_Expression extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_ouazrg_b0.TMP_Action_ouazrg_a1a(), CONCEPTS.BaseCommentAttribute$Zd));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ouazrg_a1a(), CONCEPTS.BaseCommentAttribute$Zd));
     }
     private class TMP_Action_ouazrg_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_ouazrg_b0.TMP_Action_ouazrg_a1a.Item item = new TMP_Group_ouazrg_b0.TMP_Action_ouazrg_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

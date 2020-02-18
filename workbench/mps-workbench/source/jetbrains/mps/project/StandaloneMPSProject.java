@@ -121,7 +121,6 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   public void disposeComponent() {
     super.disposeComponent();
     removeListener(myListener);
-    dispose();
   }
 
   @NotNull

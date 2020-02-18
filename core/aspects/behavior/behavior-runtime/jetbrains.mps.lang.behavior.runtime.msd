@@ -2,11 +2,8 @@
 <solution name="jetbrains.mps.lang.behavior.runtime" uuid="d936855b-48da-4812-a8a0-2bfddd633ac4" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}" type="java_classes">
-      <sourceRoot location="classes" />
-    </modelRoot>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="mps-behavior-runtime.jar" />
+    <modelRoot type="java_classes">
+      <sourceRoot path="${mps_home}/lib/mps-behavior-runtime.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -16,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/classes" />
+    <stubModelEntry path="${mps_home}/lib/mps-behavior-runtime.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

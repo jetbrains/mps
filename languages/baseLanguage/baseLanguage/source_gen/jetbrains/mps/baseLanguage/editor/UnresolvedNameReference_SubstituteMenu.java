@@ -86,7 +86,7 @@ public class UnresolvedNameReference_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_46ekb8_a.SMP_Wrap_46ekb8_a0(), CONCEPTS.StaticMethodCall$eu));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_46ekb8_a0(), CONCEPTS.StaticMethodCall$eu));
     }
     private class SMP_Wrap_46ekb8_a0 extends WrapperSubstituteMenuPart {
       @NotNull

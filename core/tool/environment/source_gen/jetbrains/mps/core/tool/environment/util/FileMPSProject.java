@@ -79,15 +79,11 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
     loadDescriptor(new ElementProjectDataSource(getElement(), getProjectFile(), createMacroHelper()));
   }
 
-  private boolean close() {
-    projectClosed();
-    assert getProjectModules().isEmpty();
-    return true;
-  }
 
   @Override
   public void dispose() {
-    close();
+    projectClosed();
+    assert getProjectModules().isEmpty();
     super.dispose();
   }
 

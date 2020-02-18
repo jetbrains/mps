@@ -137,7 +137,7 @@ public enum JUnitRunTypes {
             if (testNode != null) {
               SModel model = testNode.getModel();
               SNode module = SModelOperations.getModuleStub(model);
-              if (!(SPropertyOperations.getBoolean(module, JUnitRunTypes.PROPS.compileInMPS$8r6V))) {
+              if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$8r6V))) {
                 return "The module's " + module + " compile output is not managed by MPS.";
               }
             }
@@ -172,7 +172,7 @@ public enum JUnitRunTypes {
             if (testMethpdNode != null) {
               SModel model = testMethpdNode.getModel();
               SNode module = SModelOperations.getModuleStub(model);
-              if (!(SPropertyOperations.getBoolean(module, JUnitRunTypes.PROPS.compileInMPS$8r6V))) {
+              if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$8r6V))) {
                 return "The module's " + module + " compile output is not managed by MPS.";
               }
             }

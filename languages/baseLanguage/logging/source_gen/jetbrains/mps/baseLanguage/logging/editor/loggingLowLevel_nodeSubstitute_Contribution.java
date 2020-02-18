@@ -64,7 +64,7 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SEnumerationLiteral parameter, SubstituteMenuContext context) {
-      return new SMP_Param_35gsnl_a.SMP_Action_35gsnl_a0(parameter).createItems(context);
+      return new SMP_Action_35gsnl_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -91,7 +91,7 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_35gsnl_a.SMP_Action_35gsnl_a0.Item item = new SMP_Param_35gsnl_a.SMP_Action_35gsnl_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

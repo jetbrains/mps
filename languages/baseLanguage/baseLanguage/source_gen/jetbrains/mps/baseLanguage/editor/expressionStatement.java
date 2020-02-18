@@ -91,7 +91,7 @@ public class expressionStatement extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_qgb0t7_a0.TMP_WrapSM_qgb0t7_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_qgb0t7_a0a());
     }
     public class TMP_WrapSM_qgb0t7_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

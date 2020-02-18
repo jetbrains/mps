@@ -104,7 +104,7 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
   private class TMP_Action_mhpf25_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_mhpf25_a0.Item item = new TMP_Action_mhpf25_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -179,12 +179,12 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_mhpf25_b0.TMP_Action_mhpf25_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_mhpf25_a1a());
     }
     private class TMP_Action_mhpf25_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_mhpf25_b0.TMP_Action_mhpf25_a1a.Item item = new TMP_Group_mhpf25_b0.TMP_Action_mhpf25_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -285,7 +285,7 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_mhpf25_e0.TMP_Action_mhpf25_a4a(parameter).createItems(context);
+      return new TMP_Action_mhpf25_a4a(parameter).createItems(context);
     }
 
     @Nullable
@@ -312,7 +312,7 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_mhpf25_e0.TMP_Action_mhpf25_a4a.Item item = new TMP_Param_mhpf25_e0.TMP_Action_mhpf25_a4a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -396,12 +396,12 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
 
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_SubMenu_mhpf25_f0.TMP_Action_mhpf25_a5a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_mhpf25_a5a());
     }
     private class TMP_Action_mhpf25_a5a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_SubMenu_mhpf25_f0.TMP_Action_mhpf25_a5a.Item item = new TMP_SubMenu_mhpf25_f0.TMP_Action_mhpf25_a5a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

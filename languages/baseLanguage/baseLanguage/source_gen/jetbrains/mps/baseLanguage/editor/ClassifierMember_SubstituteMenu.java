@@ -74,7 +74,7 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_iuuuam_a.SMP_Include_iuuuam_a0(), new SMP_Group_iuuuam_a.SMP_Subconcepts_iuuuam_b0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_iuuuam_a0(), new SMP_Subconcepts_iuuuam_b0());
     }
     public class SMP_Include_iuuuam_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 

@@ -100,12 +100,12 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a(), new TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a(), new TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_b1erct_a0a(), new TMP_Action_b1erct_b0a(), new TMP_Action_b1erct_c0a());
     }
     private class TMP_Action_b1erct_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a.Item item = new TMP_Group_b1erct_a0.TMP_Action_b1erct_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -170,7 +170,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     private class TMP_Action_b1erct_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a.Item item = new TMP_Group_b1erct_a0.TMP_Action_b1erct_b0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -235,7 +235,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     private class TMP_Action_b1erct_c0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a.Item item = new TMP_Group_b1erct_a0.TMP_Action_b1erct_c0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -313,7 +313,7 @@ public class MethodDeclaration_final_native_sync_all_mods extends Transformation
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_b1erct_b0.TMP_WrapSM_b1erct_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_b1erct_a1a());
     }
     public class TMP_WrapSM_b1erct_a1a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

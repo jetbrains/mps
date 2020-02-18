@@ -73,7 +73,7 @@ public class instanceOfIntoTernary extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_v9arav_a0.TMP_Include_v9arav_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_v9arav_a0a());
     }
     public class TMP_Include_v9arav_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

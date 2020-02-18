@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptBase {
-  private final String description = "UpdateSingleLineCommentToUseLinePerComment";
+  private final String description = "Split comments that spread accross several lines into separate single-line comments";
   public String getCaption() {
     return description;
   }

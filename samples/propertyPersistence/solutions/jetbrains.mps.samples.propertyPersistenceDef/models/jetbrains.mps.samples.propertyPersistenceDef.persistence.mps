@@ -213,11 +213,6 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
-      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
-        <child id="1163668914799" name="condition" index="3K4Cdx" />
-        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
-        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
-      </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -834,35 +829,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="17lAPX5QA$" role="3cqZAp">
-          <node concept="1rXfSq" id="17lAPX5QAy" role="3clFbG">
-            <ref role="37wK5l" to="ends:~FileBasedModelRoot.setContentDirectory(jetbrains.mps.vfs.IFile)" resolve="setContentDirectory" />
-            <node concept="3K4zz7" id="17lAPX5Soz" role="37wK5m">
-              <node concept="2OqwBi" id="17lAPX5SOT" role="3K4E3e">
-                <node concept="37vLTw" id="17lAPX5S_j" role="2Oq$k0">
-                  <ref role="3cqZAo" node="rqS1YhJVE8" resolve="file" />
-                </node>
-                <node concept="liA8E" id="17lAPX5SVJ" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
-                </node>
-              </node>
-              <node concept="37vLTw" id="17lAPX5T7s" role="3K4GZi">
-                <ref role="3cqZAo" node="rqS1YhJVE8" resolve="file" />
-              </node>
-              <node concept="3y3z36" id="17lAPX5RUL" role="3K4Cdx">
-                <node concept="10Nm6u" id="17lAPX5Sdx" role="3uHU7w" />
-                <node concept="2OqwBi" id="17lAPX5RCW" role="3uHU7B">
-                  <node concept="37vLTw" id="17lAPX5RpG" role="2Oq$k0">
-                    <ref role="3cqZAo" node="rqS1YhJVE8" resolve="file" />
-                  </node>
-                  <node concept="liA8E" id="17lAPX5ROS" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="17lAPX7kRL" role="3cqZAp">
           <node concept="1rXfSq" id="17lAPX7kRJ" role="3clFbG">
             <ref role="37wK5l" to="ends:~FileBasedModelRoot.addSourceRoot(jetbrains.mps.extapi.persistence.SourceRootKind,jetbrains.mps.extapi.persistence.SourceRoot)" resolve="addSourceRoot" />
@@ -872,20 +838,9 @@
             </node>
             <node concept="2ShNRf" id="17lAPX7AvB" role="37wK5m">
               <node concept="1pGfFk" id="17lAPX7EPv" role="2ShVmc">
-                <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(java.lang.String,jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
-                <node concept="2OqwBi" id="17lAPX7oXp" role="37wK5m">
-                  <node concept="37vLTw" id="17lAPX7oXq" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3PyP5yK7pfR" resolve="memento" />
-                  </node>
-                  <node concept="liA8E" id="17lAPX7oXr" role="2OqNvi">
-                    <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
-                    <node concept="37vLTw" id="17lAPX7Q5G" role="37wK5m">
-                      <ref role="3cqZAo" node="7l6b$Kxeghb" resolve="PATH_KEY" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="1rXfSq" id="17lAPX7K49" role="37wK5m">
-                  <ref role="37wK5l" to="ends:~FileBasedModelRoot.getContentDirectory()" resolve="getContentDirectory" />
+                <ref role="37wK5l" to="ends:~DefaultSourceRoot.&lt;init&gt;(jetbrains.mps.vfs.IFile)" resolve="DefaultSourceRoot" />
+                <node concept="37vLTw" id="5BzBQVHVMjK" role="37wK5m">
+                  <ref role="3cqZAo" node="rqS1YhJVE8" resolve="file" />
                 </node>
               </node>
             </node>

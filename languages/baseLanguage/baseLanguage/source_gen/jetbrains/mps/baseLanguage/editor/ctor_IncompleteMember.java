@@ -91,14 +91,14 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Action_lzobpd_a0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Action_lzobpd_b0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Action_lzobpd_c0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Action_lzobpd_d0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Action_lzobpd_e0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Action_lzobpd_f0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Action_lzobpd_g0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Wrap_lzobpd_h0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_lzobpd_a.SMP_Wrap_lzobpd_i0(), CONCEPTS.IncompleteMemberDeclaration$QW), new SMP_Group_lzobpd_a.SMP_Include_lzobpd_j0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_a0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_b0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_c0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_d0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_e0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_f0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_g0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_lzobpd_h0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_lzobpd_i0(), CONCEPTS.IncompleteMemberDeclaration$QW), new SMP_Include_lzobpd_j0());
     }
     private class SMP_Action_lzobpd_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_lzobpd_a.SMP_Action_lzobpd_a0.Item item = new SMP_Group_lzobpd_a.SMP_Action_lzobpd_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -153,7 +153,7 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_lzobpd_a.SMP_Action_lzobpd_b0.Item item = new SMP_Group_lzobpd_a.SMP_Action_lzobpd_b0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -208,7 +208,7 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_lzobpd_a.SMP_Action_lzobpd_c0.Item item = new SMP_Group_lzobpd_a.SMP_Action_lzobpd_c0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -263,7 +263,7 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_lzobpd_a.SMP_Action_lzobpd_d0.Item item = new SMP_Group_lzobpd_a.SMP_Action_lzobpd_d0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -318,7 +318,7 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_lzobpd_a.SMP_Action_lzobpd_e0.Item item = new SMP_Group_lzobpd_a.SMP_Action_lzobpd_e0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -373,7 +373,7 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_lzobpd_a.SMP_Action_lzobpd_f0.Item item = new SMP_Group_lzobpd_a.SMP_Action_lzobpd_f0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -428,7 +428,7 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_lzobpd_a.SMP_Action_lzobpd_g0.Item item = new SMP_Group_lzobpd_a.SMP_Action_lzobpd_g0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

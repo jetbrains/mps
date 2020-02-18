@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -455,7 +455,7 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     }
 
     @Override
-    public void forEach(@NotNull BiConsumer<String, String> action) {
+    public void forEachAttribute(@NotNull BiConsumer<String, String> action) {
       getModelHeader().getOptionalProperties().forEach(action);
     }
   }

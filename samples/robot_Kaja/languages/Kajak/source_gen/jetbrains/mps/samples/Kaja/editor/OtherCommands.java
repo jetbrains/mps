@@ -64,7 +64,7 @@ public class OtherCommands extends TransformationMenuBase {
   private class TMP_Action_uewb7w_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_uewb7w_a0.Item item = new TMP_Action_uewb7w_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -116,7 +116,7 @@ public class OtherCommands extends TransformationMenuBase {
   private class TMP_Action_uewb7w_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_uewb7w_b0.Item item = new TMP_Action_uewb7w_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -184,12 +184,12 @@ public class OtherCommands extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_uewb7w_a2a());
     }
     private class TMP_Action_uewb7w_a2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a.Item item = new TMP_Group_uewb7w_c0.TMP_Action_uewb7w_a2a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

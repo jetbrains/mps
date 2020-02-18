@@ -182,8 +182,8 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 30;
     }
-    public static Target_copyTraceInfo.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_copyTraceInfo.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._1<Boolean> {
       public Parameters() {

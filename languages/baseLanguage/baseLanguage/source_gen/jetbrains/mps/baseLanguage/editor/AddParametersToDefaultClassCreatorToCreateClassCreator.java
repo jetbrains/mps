@@ -112,7 +112,7 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_tsvgb1_a0.TMP_WrapSM_tsvgb1_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_tsvgb1_a0a());
     }
     public class TMP_WrapSM_tsvgb1_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

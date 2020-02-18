@@ -77,7 +77,7 @@ public class NoWaitTransforms_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_uv3amh_a0.TMP_Include_uv3amh_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_uv3amh_a0a());
     }
     public class TMP_Include_uv3amh_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

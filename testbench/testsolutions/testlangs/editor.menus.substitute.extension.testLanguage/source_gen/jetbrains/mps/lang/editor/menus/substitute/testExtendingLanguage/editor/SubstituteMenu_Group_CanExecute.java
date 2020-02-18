@@ -57,7 +57,7 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_ulw6p1_a.Item item = new SMP_Action_ulw6p1_a.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");
@@ -137,14 +137,14 @@ public class SubstituteMenu_Group_CanExecute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_ulw6p1_b.SMP_Action_ulw6p1_a1(), CONCEPTS.TestSubstituteChild$sN));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_ulw6p1_a1(), CONCEPTS.TestSubstituteChild$sN));
     }
     private class SMP_Action_ulw6p1_a1 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_ulw6p1_b.SMP_Action_ulw6p1_a1.Item item = new SMP_Group_ulw6p1_b.SMP_Action_ulw6p1_a1.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

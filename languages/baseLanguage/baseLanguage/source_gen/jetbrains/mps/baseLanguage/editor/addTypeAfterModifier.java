@@ -77,7 +77,7 @@ public class addTypeAfterModifier extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_r8k8zw_a0.TMP_Include_r8k8zw_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_r8k8zw_a0a());
     }
     public class TMP_Include_r8k8zw_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

@@ -66,7 +66,7 @@ public class AbstractArgument_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new SMP_Param_eitulo_a.SMP_Action_eitulo_a0(parameter).createItems(context);
+      return new SMP_Action_eitulo_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class AbstractArgument_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_eitulo_a.SMP_Action_eitulo_a0.Item item = new SMP_Param_eitulo_a.SMP_Action_eitulo_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -182,7 +182,7 @@ public class AbstractArgument_SubstituteMenu extends SubstituteMenuBase {
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new SMP_Param_eitulo_b.SMP_Action_eitulo_a1(parameter).createItems(context);
+      return new SMP_Action_eitulo_a1(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -217,7 +217,7 @@ public class AbstractArgument_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_eitulo_b.SMP_Action_eitulo_a1.Item item = new SMP_Param_eitulo_b.SMP_Action_eitulo_a1.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -300,7 +300,7 @@ public class AbstractArgument_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_eitulo_c.Item item = new SMP_Action_eitulo_c.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

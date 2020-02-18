@@ -17,38 +17,34 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Map;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.LinkedHashMap;
 import org.apache.log4j.Level;
-import java.util.Queue;
-import jetbrains.mps.internal.collections.runtime.QueueSequence;
-import java.util.LinkedList;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import com.intellij.openapi.application.ApplicationManager;
 
 @GeneratedClass(node = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)/287989868854455048", model = "r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)")
 public abstract class MergeDriverPacker {
   private static final Logger LOG = LogManager.getLogger(MergeDriverPacker.class);
-  private static MergeDriverPacker ourInstance;
   private static final Iterable<String> mpsLibJars = Arrays.asList("mps-closures.jar", "mps-collections.jar", "mps-tuples.jar", "mps-core.jar", "mps-openapi.jar", "mps-references.jar", "mps-behavior-api.jar", "mps-behavior-runtime.jar", "mps-logging.jar", "mps-annotations.jar", "mps-boot-util.jar", "mps-persistence.jar", "mps-constraints-runtime.jar");
   protected static Iterable<String> mpsAddJars = Arrays.asList("ext" + File.separator + "diffutils-1.2.1.jar");
   private static final Iterable<String> ideaLibJars = Arrays.asList("asm-all-7.0.1.jar", "xstream-1.4.11.1.jar", "guava-27.1-jre.jar", "jdom.jar", "log4j.jar", "trove4j.jar", "annotations.jar");
   private static final String MERGEDRIVER_PATH = "mergedriver";
   private static final String MERGER_RT = "merger-rt.jar";
-  private Boolean myFromSources = null;
-  public MergeDriverPacker() {
+
+  protected MergeDriverPacker() {
   }
+
   public String getPath() {
     return PathManager.getConfigPath() + File.separator + MERGEDRIVER_PATH;
   }
+
   private File getFile() {
     return new File(getPath());
   }
+
   public void pack(final Project project) {
     ThreadUtils.runInUIThreadAndWait(new Runnable() {
       public void run() {
@@ -60,22 +56,10 @@ public abstract class MergeDriverPacker {
             File tmpDir = FileUtil.createTmpDir();
             FileUtil.delete(getFile());
 
-            Iterable<String> classpathDirs = getClasspath(false);
-            Iterable<String> classPathJars = Sequence.fromIterable(classpathDirs).where(new IWhereFilter<String>() {
-              public boolean accept(String cpd) {
-                return cpd.endsWith(".jar");
-              }
-            });
+            Iterable<String> classpath = getClasspath();
             monitor.step("Packing new merge driver");
-            internalPack(classPathJars, tmpDir, false);
+            internalPack(classpath, tmpDir, false);
 
-            if (isFromSources()) {
-              packMergerRT(Sequence.fromIterable(classpathDirs).where(new IWhereFilter<String>() {
-                public boolean accept(String cpd) {
-                  return !(cpd.endsWith(".jar"));
-                }
-              }), new File(tmpDir, MERGER_RT));
-            }
             monitor.step("Installing merge driver");
             FileUtil.copyDir(tmpDir, getFile());
             monitor.step("Deleting temporary files");
@@ -85,33 +69,7 @@ public abstract class MergeDriverPacker {
       }
     });
   }
-  private void packMergerRT(Iterable<String> classpathDirs, File to) {
-    Map<String, File> files = MapSequence.fromMap(new LinkedHashMap<String, File>(16, (float) 0.75, false));
-    for (String basePath : classpathDirs) {
-      File baseDir = new File(basePath);
-      if (!(baseDir.exists())) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error(String.format("Bad classpath location %s, file doesn't exist", basePath));
-        }
-        continue;
-      }
-      Queue<String> pathQueue = QueueSequence.fromQueueAndArray(new LinkedList<String>(), baseDir.list());
-      while (QueueSequence.fromQueue(pathQueue).isNotEmpty()) {
-        String path = QueueSequence.fromQueue(pathQueue).removeFirstElement();
-        File f = new File(baseDir, path);
-        if (f.isDirectory()) {
-          for (String child : f.list()) {
-            QueueSequence.fromQueue(pathQueue).addLastElement(path + "/" + child);
-          }
-        } else if (path.endsWith(".class") || path.contains("META-INF")) {
-          MapSequence.fromMap(files).put(path, f);
-        }
-      }
-    }
-    if (MapSequence.fromMap(files).isNotEmpty()) {
-      FileUtil.zip(files, to);
-    }
-  }
+
   private void internalPack(Iterable<String> classpathDirs, File tmpDir, boolean isForZip) {
     for (String classpathDir : classpathDirs) {
       File file = new File(classpathDir);
@@ -134,45 +92,36 @@ public abstract class MergeDriverPacker {
   }
   protected abstract String getVCSCorePluginPath();
   protected abstract String getMPSCorePath();
-  protected abstract Set<String> getClasspathInternal();
   protected abstract String getVCSCoreFileName();
-  public Set<String> getClasspath(boolean withSvnkit) {
-    Set<String> classpathItems = SetSequence.fromSet(new LinkedHashSet<String>());
-    if (isFromSources()) {
-      SetSequence.fromSet(classpathItems).addSequence(SetSequence.fromSet(getClasspathInternal()));
-    } else {
-      // FIXME why don't we use CommonPath.getMPSPaths(ClassType.[CORE|OPENAPI|ANNOATATION]) That would reduce number of places with jar names we have to keep! 
-      final String mpsCorePath = getMPSCorePath();
-      SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsLibJars).select(new ISelector<String, String>() {
-        public String select(String it) {
-          return mpsCorePath + File.separator + it;
-        }
-      }));
-      SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsAddJars).select(new ISelector<String, String>() {
-        public String select(String it) {
-          return mpsCorePath + File.separator + it;
-        }
-      }));
-      SetSequence.fromSet(classpathItems).addElement(getVCSCorePluginPath() + File.separator + "lib" + File.separator + getVCSCoreFileName());
-    }
 
+  private Set<String> getClasspath() {
+    Set<String> classpathItems = SetSequence.fromSet(new LinkedHashSet<String>());
+
+    // FIXME why don't we use CommonPath.getMPSPaths(ClassType.[CORE|OPENAPI|ANNOATATION]) That would reduce number of places with jar names we have to keep! 
+    final String mpsCorePath = getMPSCorePath();
+    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsLibJars).select(new ISelector<String, String>() {
+      public String select(String it) {
+        return mpsCorePath + File.separator + it;
+      }
+    }));
+    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(mpsAddJars).select(new ISelector<String, String>() {
+      public String select(String it) {
+        return mpsCorePath + File.separator + it;
+      }
+    }));
+
+    SetSequence.fromSet(classpathItems).addElement(getVCSCorePluginPath() + File.separator + "lib" + File.separator + getVCSCoreFileName());
+
+    final String ideaLibPath = PathManager.getLibPath();
     SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(ideaLibJars).select(new ISelector<String, String>() {
       public String select(String it) {
-        return PathManager.getLibPath() + File.separator + it;
+        return ideaLibPath + File.separator + it;
       }
     }));
     return classpathItems;
   }
-  private boolean isFromSources() {
-    if (myFromSources == null) {
-      myFromSources = !(new File(getMPSCorePath() + File.separator + Sequence.fromIterable(mpsLibJars).first()).exists());
-    }
-    return myFromSources;
-  }
+
   public static MergeDriverPacker getInstance() {
-    return ourInstance;
-  }
-  protected static void setInstance(MergeDriverPacker instance) {
-    ourInstance = instance;
+    return ApplicationManager.getApplication().getService(MergeDriverPacker.class);
   }
 }

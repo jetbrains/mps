@@ -1,7 +1,10 @@
 package jetbrains.mps.idea.java.sourceStubs;
 
+import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
+import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.java.core.sourceStubs.JavaSourceStubModelRoot;
 import jetbrains.mps.idea.core.project.JpsModelRootContributor;
+import jetbrains.mps.vfs.FileSystem;
 import org.jetbrains.jps.model.module.JpsModule;
 import org.jetbrains.jps.model.module.JpsModuleSourceRoot;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -12,7 +15,6 @@ import java.util.List;
 /**
  * danilla 12/11/12
  */
-
 public class JavaSourceJpsModelRootContributor implements JpsModelRootContributor {
   @Override
   public Iterable<ModelRoot> getModelRoots(JpsModule module) {
@@ -22,8 +24,7 @@ public class JavaSourceJpsModelRootContributor implements JpsModelRootContributo
     for (JpsModuleSourceRoot sourceRoot : module.getSourceRoots()) {
       String path = sourceRoot.getFile().getPath();
       JavaSourceStubModelRoot modelRoot = new JavaSourceStubModelRoot();
-      modelRoot.setContentRoot(path);
-      modelRoot.addFile(JavaSourceStubModelRoot.SOURCE_ROOTS, path);
+      modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(FileSystem.getInstance().getFile(path)));
       modelRoots.add(modelRoot);
     }
 

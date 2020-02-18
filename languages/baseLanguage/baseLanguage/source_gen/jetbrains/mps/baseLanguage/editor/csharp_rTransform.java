@@ -73,7 +73,7 @@ public class csharp_rTransform extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_xbr0jd_a0.TMP_Include_xbr0jd_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_xbr0jd_a0a());
     }
     public class TMP_Include_xbr0jd_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

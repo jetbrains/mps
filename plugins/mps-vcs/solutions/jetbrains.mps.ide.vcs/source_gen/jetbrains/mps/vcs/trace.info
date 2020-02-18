@@ -5,19 +5,17 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
   <root nodeRef="r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/3613324658897711340">
     <file name="MPSVcsManager.java">
-      <node id="3613324658897711481" at="51,0,52,0" concept="12" trace="LOG" />
+      <node id="3613324658897711481" at="51,0,52,0" concept="10" trace="LOG" />
       <node id="3613324658897711486" at="52,0,53,0" concept="4" trace="myProject" />
       <node id="8222824327012890554" at="53,0,54,0" concept="4" trace="myLastProjectStatus" />
       <node id="3613324658897711489" at="54,0,55,0" concept="4" trace="myManager" />
@@ -29,18 +27,18 @@
       <node id="3613324658897711539" at="65,102,66,24" concept="3" />
       <node id="3613324658897711543" at="66,24,67,24" concept="3" />
       <node id="3613324658897711547" at="67,24,68,36" concept="3" />
-      <node id="3613324658897711575" at="70,56,71,49" concept="8" />
-      <node id="3613324658897711587" at="72,22,73,19" concept="9" />
-      <node id="3613324658897711589" at="74,5,75,57" concept="8" />
+      <node id="3613324658897711575" at="70,56,71,49" concept="7" />
+      <node id="3613324658897711587" at="72,22,73,19" concept="8" />
+      <node id="3613324658897711589" at="74,5,75,57" concept="7" />
       <node id="3613324658897711596" at="75,57,76,88" concept="3" />
-      <node id="3613324658897711604" at="76,88,77,60" concept="8" />
-      <node id="3613324658897711615" at="78,33,79,19" concept="9" />
-      <node id="3613324658897711617" at="80,5,81,71" concept="8" />
+      <node id="3613324658897711604" at="76,88,77,60" concept="7" />
+      <node id="3613324658897711615" at="78,33,79,19" concept="8" />
+      <node id="3613324658897711617" at="80,5,81,71" concept="7" />
       <node id="3613324658897711634" at="82,9,83,111" concept="3" />
       <node id="3613324658897711626" at="84,30,85,25" concept="3" />
-      <node id="3613324658897711644" at="86,5,87,34" concept="9" />
-      <node id="7860944453394967816" at="91,151,92,13" concept="9" />
-      <node id="7307809004211498227" at="93,5,94,107" concept="8" />
+      <node id="3613324658897711644" at="86,5,87,34" concept="8" />
+      <node id="7860944453394967816" at="91,151,92,13" concept="8" />
+      <node id="7307809004211498227" at="93,5,94,107" concept="7" />
       <node id="1138176312634851279" at="94,107,95,55" concept="3" />
       <node id="7794712048471485912" at="95,55,96,65" concept="3" />
       <node id="7794712048471487319" at="98,45,99,59" concept="3" />
@@ -49,87 +47,87 @@
       <node id="8222824327012890239" at="105,5,106,89" concept="3" />
       <node id="8222824327012890543" at="109,31,110,92" concept="3" />
       <node id="7794712048471485935" at="110,92,111,47" concept="3" />
-      <node id="3613324658897711660" at="116,36,117,25" concept="9" />
-      <node id="3613324658897711684" at="119,51,120,42" concept="9" />
+      <node id="3613324658897711660" at="116,36,117,25" concept="8" />
+      <node id="3613324658897711684" at="119,51,120,42" concept="8" />
       <node id="3613324658897711698" at="123,31,124,74" concept="3" />
       <node id="3613324658897711715" at="127,34,128,77" concept="3" />
-      <node id="933498344605274415" at="130,46,131,57" concept="8" />
-      <node id="933498344605296685" at="132,30,133,13" concept="9" />
-      <node id="8222824327012891725" at="134,5,135,95" concept="8" />
-      <node id="8222824327012905326" at="137,120,138,243" concept="8" />
+      <node id="933498344605274415" at="130,46,131,57" concept="7" />
+      <node id="933498344605296685" at="132,30,133,13" concept="8" />
+      <node id="8222824327012891725" at="134,5,135,95" concept="7" />
+      <node id="8222824327012905326" at="137,120,138,243" concept="7" />
       <node id="8222824327012905458" at="139,26,140,95" concept="3" />
       <node id="8222824327012891714" at="142,7,143,42" concept="3" />
-      <node id="3613324658897711725" at="146,71,147,82" concept="9" />
-      <node id="3613324658897711524" at="149,69,150,53" concept="9" />
-      <node id="18693120959317320" at="156,44,157,18" concept="9" />
-      <node id="3613324658897711769" at="163,49,164,18" concept="9" />
-      <node id="3613324658897711772" at="168,56,169,18" concept="9" />
-      <node id="3613324658897711776" at="172,71,173,18" concept="9" />
-      <node id="3613324658897711779" at="176,74,177,18" concept="9" />
-      <node id="3613324658897711786" at="189,58,190,36" concept="9" />
-      <node id="7491858234833039520" at="193,57,194,36" concept="9" />
+      <node id="3613324658897711725" at="146,71,147,82" concept="8" />
+      <node id="3613324658897711524" at="149,69,150,53" concept="8" />
+      <node id="18693120959317320" at="156,44,157,18" concept="8" />
+      <node id="3613324658897711769" at="163,49,164,18" concept="8" />
+      <node id="3613324658897711772" at="168,56,169,18" concept="8" />
+      <node id="3613324658897711776" at="172,71,173,18" concept="8" />
+      <node id="3613324658897711779" at="176,74,177,18" concept="8" />
+      <node id="3613324658897711786" at="189,58,190,36" concept="8" />
+      <node id="7491858234833039520" at="193,57,194,36" concept="8" />
       <node id="3613324658897711442" at="198,0,199,0" concept="4" trace="myVirtualFile" />
       <node id="3613324658897711445" at="199,0,200,0" concept="4" trace="myIsMergedWithConflict" />
       <node id="3613324658897711789" at="200,51,201,28" concept="3" />
       <node id="3613324658897711794" at="204,100,205,36" concept="3" />
       <node id="3613324658897711800" at="208,90,209,36" concept="3" />
-      <node id="3613324658897711813" at="213,76,214,68" concept="8" />
+      <node id="3613324658897711813" at="213,76,214,68" concept="7" />
       <node id="3613324658897711836" at="216,104,217,42" concept="3" />
-      <node id="3613324658897711841" at="222,35,223,36" concept="9" />
+      <node id="3613324658897711841" at="222,35,223,36" concept="8" />
       <node id="8222824327012891025" at="230,39,231,36" concept="3" />
       <node id="8222824327012891047" at="235,52,236,38" concept="3" />
       <node id="7860944453394965435" at="241,36,242,37" concept="3" />
-      <node id="7860944453394965435" at="243,5,244,0" concept="11" />
+      <node id="7860944453394965435" at="243,5,244,0" concept="9" />
       <node id="3613324658897711380" at="153,0,155,0" concept="2" trace="StubChangeListManagerGate#()V" />
       <node id="8222824327012887838" at="227,0,229,0" concept="2" trace="MyFileStatusListener#()V" />
-      <node id="3613324658897711582" at="71,49,74,5" concept="6" />
-      <node id="3613324658897711610" at="77,60,80,5" concept="6" />
-      <node id="7860944453394967332" at="90,31,93,5" concept="6" />
-      <node id="7794712048471487317" at="98,0,101,0" concept="7" trace="directoryMappingChanged#()V" />
-      <node id="5678297231090798651" at="102,100,105,5" concept="6" />
-      <node id="3613324658897711680" at="119,0,122,0" concept="7" trace="isChangeListManagerInitialized#()Z" />
-      <node id="933498344605291239" at="131,57,134,5" concept="6" />
-      <node id="8222824327012905338" at="138,243,141,9" concept="6" />
-      <node id="3613324658897711720" at="146,0,149,0" concept="7" trace="getUnversionedFilesFromChangeListManager#()Ljava/util/List;" />
-      <node id="3613324658897711517" at="149,0,152,0" concept="13" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/MPSVcsManager;" />
-      <node id="6976105926957963289" at="159,0,162,0" concept="7" trace="setDefaultChangeList#(Ljava/lang/String;)V" />
-      <node id="3613324658897711406" at="179,0,182,0" concept="7" trace="editComment#(Ljava/lang/String;Ljava/lang/String;)V" />
-      <node id="3613324658897711413" at="182,0,185,0" concept="7" trace="editName#(Ljava/lang/String;Ljava/lang/String;)V" />
-      <node id="3613324658897711428" at="185,0,188,0" concept="7" trace="setListsToDisappear#(Ljava/util/Collection;)V" />
+      <node id="3613324658897711582" at="71,49,74,5" concept="5" />
+      <node id="3613324658897711610" at="77,60,80,5" concept="5" />
+      <node id="7860944453394967332" at="90,31,93,5" concept="5" />
+      <node id="7794712048471487317" at="98,0,101,0" concept="6" trace="directoryMappingChanged#()V" />
+      <node id="5678297231090798651" at="102,100,105,5" concept="5" />
+      <node id="3613324658897711680" at="119,0,122,0" concept="6" trace="isChangeListManagerInitialized#()Z" />
+      <node id="933498344605291239" at="131,57,134,5" concept="5" />
+      <node id="8222824327012905338" at="138,243,141,9" concept="5" />
+      <node id="3613324658897711720" at="146,0,149,0" concept="6" trace="getUnversionedFilesFromChangeListManager#()Ljava/util/List;" />
+      <node id="3613324658897711517" at="149,0,152,0" concept="11" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/MPSVcsManager;" />
+      <node id="6976105926957963289" at="159,0,162,0" concept="6" trace="setDefaultChangeList#(Ljava/lang/String;)V" />
+      <node id="3613324658897711406" at="179,0,182,0" concept="6" trace="editComment#(Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="3613324658897711413" at="182,0,185,0" concept="6" trace="editName#(Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="3613324658897711428" at="185,0,188,0" concept="6" trace="setListsToDisappear#(Ljava/util/Collection;)V" />
       <node id="3613324658897711448" at="200,0,203,0" concept="2" trace="MyChangelistBuilder#(Lcom/intellij/openapi/vfs/VirtualFile;)V" />
-      <node id="3613324658897711824" at="215,38,218,11" concept="6" />
-      <node id="3613324658897711478" at="222,0,225,0" concept="7" trace="isInConflict#()Z" />
-      <node id="8222824327012891027" at="234,62,237,7" concept="6" />
-      <node id="7860944453394965435" at="240,82,243,5" concept="6" />
-      <node id="3613324658897711514" at="58,0,62,0" concept="7" trace="changeListUpdateDone#()V" />
-      <node id="3613324658897711686" at="122,0,126,0" concept="7" trace="initComponent#()V" />
-      <node id="3613324658897711703" at="126,0,130,0" concept="7" trace="disposeComponent#()V" />
-      <node id="18693120959317314" at="155,0,159,0" concept="7" trace="getStatus#(Ljava/io/File;)Lcom/intellij/openapi/vcs/FileStatus;" />
-      <node id="3613324658897711383" at="162,0,166,0" concept="7" trace="getListsCopy#()Ljava/util/List;" />
-      <node id="3613324658897711392" at="171,0,175,0" concept="7" trace="addChangeList#(Ljava/lang/String;Ljava/lang/String;)Lcom/intellij/openapi/vcs/changes/LocalChangeList;" />
-      <node id="3613324658897711399" at="175,0,179,0" concept="7" trace="findOrCreateList#(Ljava/lang/String;Ljava/lang/String;)Lcom/intellij/openapi/vcs/changes/LocalChangeList;" />
-      <node id="3613324658897711434" at="188,0,192,0" concept="7" trace="getStatus#(Lcom/intellij/openapi/vfs/VirtualFile;)Lcom/intellij/openapi/vcs/FileStatus;" />
-      <node id="7491858234833036845" at="192,0,196,0" concept="7" trace="getStatus#(Lcom/intellij/openapi/vcs/FilePath;)Lcom/intellij/openapi/vcs/FileStatus;" />
-      <node id="3613324658897711453" at="203,0,207,0" concept="7" trace="processChangeInList#(Lcom/intellij/openapi/vcs/changes/Change;Lcom/intellij/openapi/vcs/changes/ChangeList;Lcom/intellij/openapi/vcs/VcsKey;)V" />
-      <node id="3613324658897711462" at="207,0,211,0" concept="7" trace="processChangeInList#(Lcom/intellij/openapi/vcs/changes/Change;Ljava/lang/String;Lcom/intellij/openapi/vcs/VcsKey;)V" />
-      <node id="8222824327012887843" at="229,0,233,0" concept="7" trace="fileStatusesChanged#()V" />
+      <node id="3613324658897711824" at="215,38,218,11" concept="5" />
+      <node id="3613324658897711478" at="222,0,225,0" concept="6" trace="isInConflict#()Z" />
+      <node id="8222824327012891027" at="234,62,237,7" concept="5" />
+      <node id="7860944453394965435" at="240,82,243,5" concept="5" />
+      <node id="3613324658897711514" at="58,0,62,0" concept="6" trace="changeListUpdateDone#()V" />
+      <node id="3613324658897711686" at="122,0,126,0" concept="6" trace="initComponent#()V" />
+      <node id="3613324658897711703" at="126,0,130,0" concept="6" trace="disposeComponent#()V" />
+      <node id="18693120959317314" at="155,0,159,0" concept="6" trace="getStatus#(Ljava/io/File;)Lcom/intellij/openapi/vcs/FileStatus;" />
+      <node id="3613324658897711383" at="162,0,166,0" concept="6" trace="getListsCopy#()Ljava/util/List;" />
+      <node id="3613324658897711392" at="171,0,175,0" concept="6" trace="addChangeList#(Ljava/lang/String;Ljava/lang/String;)Lcom/intellij/openapi/vcs/changes/LocalChangeList;" />
+      <node id="3613324658897711399" at="175,0,179,0" concept="6" trace="findOrCreateList#(Ljava/lang/String;Ljava/lang/String;)Lcom/intellij/openapi/vcs/changes/LocalChangeList;" />
+      <node id="3613324658897711434" at="188,0,192,0" concept="6" trace="getStatus#(Lcom/intellij/openapi/vfs/VirtualFile;)Lcom/intellij/openapi/vcs/FileStatus;" />
+      <node id="7491858234833036845" at="192,0,196,0" concept="6" trace="getStatus#(Lcom/intellij/openapi/vcs/FilePath;)Lcom/intellij/openapi/vcs/FileStatus;" />
+      <node id="3613324658897711453" at="203,0,207,0" concept="6" trace="processChangeInList#(Lcom/intellij/openapi/vcs/changes/Change;Lcom/intellij/openapi/vcs/changes/ChangeList;Lcom/intellij/openapi/vcs/VcsKey;)V" />
+      <node id="3613324658897711462" at="207,0,211,0" concept="6" trace="processChangeInList#(Lcom/intellij/openapi/vcs/changes/Change;Ljava/lang/String;Lcom/intellij/openapi/vcs/VcsKey;)V" />
+      <node id="8222824327012887843" at="229,0,233,0" concept="6" trace="fileStatusesChanged#()V" />
       <node id="3613324658897711529" at="65,0,70,0" concept="2" trace="MPSVcsManager#(Lcom/intellij/openapi/project/Project;Lcom/intellij/openapi/vcs/ProjectLevelVcsManager;Lcom/intellij/openapi/vcs/changes/ChangeListManager;)V" />
-      <node id="3613324658897711623" at="81,71,86,5" concept="14" />
-      <node id="7794712048471487315" at="96,65,101,6" concept="8" />
-      <node id="3613324658897711652" at="108,0,113,0" concept="7" trace="projectClosed#()V" />
-      <node id="3613324658897711387" at="166,0,171,0" concept="7" trace="findChangeList#(Ljava/lang/String;)Lcom/intellij/openapi/vcs/changes/LocalChangeList;" />
-      <node id="3613324658897711819" at="214,68,219,9" concept="6" />
+      <node id="3613324658897711623" at="81,71,86,5" concept="12" />
+      <node id="7794712048471487315" at="96,65,101,6" concept="7" />
+      <node id="3613324658897711652" at="108,0,113,0" concept="6" trace="projectClosed#()V" />
+      <node id="3613324658897711387" at="166,0,171,0" concept="6" trace="findChangeList#(Ljava/lang/String;)Lcom/intellij/openapi/vcs/changes/LocalChangeList;" />
+      <node id="3613324658897711819" at="214,68,219,9" concept="5" />
       <node id="3613324658897711508" at="57,0,63,0" concept="4" trace="myChangeListUpdateListener" />
-      <node id="3613324658897711656" at="113,0,119,0" concept="7" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="8222824327012891746" at="136,47,142,7" concept="6" />
-      <node id="8222824327012887847" at="233,0,239,0" concept="7" trace="fileStatusChanged#(Lcom/intellij/openapi/vfs/VirtualFile;)V" />
-      <node id="7860944453394965435" at="240,0,246,0" concept="13" trace="check_2eqssr_a1a21#(Lcom/intellij/util/messages/MessageBusConnection;)V" />
-      <node id="3613324658897711805" at="212,61,220,7" concept="6" />
-      <node id="8222824327012891737" at="135,95,144,5" concept="6" />
-      <node id="3613324658897711471" at="211,0,222,0" concept="7" trace="processChange#(Lcom/intellij/openapi/vcs/changes/Change;Lcom/intellij/openapi/vcs/VcsKey;)V" />
-      <node id="8222824327012891020" at="130,0,146,0" concept="7" trace="checkIfProjectIsConflicting#()V" />
-      <node id="3613324658897711551" at="70,0,89,0" concept="7" trace="isInConflict#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
-      <node id="3613324658897711648" at="89,0,108,0" concept="7" trace="projectOpened#()V" />
+      <node id="3613324658897711656" at="113,0,119,0" concept="6" trace="getComponentName#()Ljava/lang/String;" />
+      <node id="8222824327012891746" at="136,47,142,7" concept="5" />
+      <node id="8222824327012887847" at="233,0,239,0" concept="6" trace="fileStatusChanged#(Lcom/intellij/openapi/vfs/VirtualFile;)V" />
+      <node id="7860944453394965435" at="240,0,246,0" concept="11" trace="check_2eqssr_a1a21#(Lcom/intellij/util/messages/MessageBusConnection;)V" />
+      <node id="3613324658897711805" at="212,61,220,7" concept="5" />
+      <node id="8222824327012891737" at="135,95,144,5" concept="5" />
+      <node id="3613324658897711471" at="211,0,222,0" concept="6" trace="processChange#(Lcom/intellij/openapi/vcs/changes/Change;Lcom/intellij/openapi/vcs/VcsKey;)V" />
+      <node id="8222824327012891020" at="130,0,146,0" concept="6" trace="checkIfProjectIsConflicting#()V" />
+      <node id="3613324658897711551" at="70,0,89,0" concept="6" trace="isInConflict#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
+      <node id="3613324658897711648" at="89,0,108,0" concept="6" trace="projectOpened#()V" />
       <scope id="3613324658897711767" at="153,40,153,40" />
       <scope id="6976105926957963295" at="160,62,160,62" />
       <scope id="3613324658897711781" at="180,58,180,58" />
@@ -290,13 +288,13 @@
   </root>
   <root nodeRef="r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/7314351270975557769">
     <file name="TestMergeDialog.java">
-      <node id="7314351270975557769" at="40,0,41,0" concept="12" trace="LOG" />
+      <node id="7314351270975557769" at="40,0,41,0" concept="10" trace="LOG" />
       <node id="430932450847537172" at="43,0,44,0" concept="4" trace="myProject" />
       <node id="430932450847537176" at="45,49,46,27" concept="3" />
-      <node id="8193277789682710667" at="49,58,50,49" concept="8" />
-      <node id="7314351270975557852" at="50,49,51,42" concept="8" />
-      <node id="7314351270975557861" at="51,42,52,22" concept="8" />
-      <node id="7314351270975557960" at="53,47,54,171" concept="8" />
+      <node id="8193277789682710667" at="49,58,50,49" concept="7" />
+      <node id="7314351270975557852" at="50,49,51,42" concept="7" />
+      <node id="7314351270975557861" at="51,42,52,22" concept="7" />
+      <node id="7314351270975557960" at="53,47,54,171" concept="7" />
       <node id="7314351270975557975" at="54,171,55,28" concept="3" />
       <node id="7314351270975557983" at="55,28,56,28" concept="3" />
       <node id="7314351270975557991" at="56,28,57,28" concept="3" />
@@ -308,21 +306,21 @@
       <node id="7314351270975557951" at="68,29,69,88" concept="3" />
       <node id="7314351270975557944" at="70,14,71,29" concept="3" />
       <node id="7314351270975557890" at="73,12,74,57" concept="3" />
-      <node id="7314351270975557895" at="74,57,75,13" concept="9" />
-      <node id="4480386305859316393" at="76,5,77,0" concept="11" />
-      <node id="4915141521380781950" at="77,0,78,70" concept="8" />
-      <node id="4915141521380462819" at="78,70,79,91" concept="8" />
-      <node id="4915141521380566783" at="79,91,80,132" concept="8" />
-      <node id="4915141521380728663" at="81,9,82,256" concept="8" />
+      <node id="7314351270975557895" at="74,57,75,13" concept="8" />
+      <node id="4480386305859316393" at="76,5,77,0" concept="9" />
+      <node id="4915141521380781950" at="77,0,78,70" concept="7" />
+      <node id="4915141521380462819" at="78,70,79,91" concept="7" />
+      <node id="4915141521380566783" at="79,91,80,132" concept="7" />
+      <node id="4915141521380728663" at="81,9,82,256" concept="7" />
       <node id="4915141521380765409" at="82,256,83,64" concept="3" />
       <node id="3818729150937340920" at="85,42,86,25" concept="3" />
       <node id="949244662739155928" at="92,27,93,52" concept="3" />
-      <node id="949244662739158828" at="93,52,94,54" concept="8" />
+      <node id="949244662739158828" at="93,52,94,54" concept="7" />
       <node id="949244662739158848" at="94,54,95,65" concept="3" />
-      <node id="8193277789682677382" at="96,5,97,81" concept="8" />
+      <node id="8193277789682677382" at="96,5,97,81" concept="7" />
       <node id="430932450847524944" at="97,81,98,15" concept="3" />
       <node id="7314351270975557850" at="98,15,99,26" concept="3" />
-      <node id="8193277789682693962" at="99,26,100,72" concept="8" />
+      <node id="8193277789682693962" at="99,26,100,72" concept="7" />
       <node id="8193277789682739894" at="100,72,101,44" concept="0" />
       <node id="430932450847546972" at="101,44,102,59" concept="3" />
       <node id="430932450847815474" at="102,59,103,33" concept="3" />
@@ -331,15 +329,15 @@
       <node id="7314351270975557942" at="70,12,72,7" concept="1" />
       <node id="7314351270975557834" at="45,0,48,0" concept="2" trace="TestMergeDialog#(Ljetbrains/mps/project/MPSProject;)V" />
       <node id="7314351270975557888" at="73,10,76,5" concept="1" />
-      <node id="3818729150937340920" at="84,45,87,7" concept="6" />
-      <node id="7314351270975557999" at="57,28,62,7" concept="6" />
-      <node id="7314351270975557936" at="67,55,72,7" concept="6" />
-      <node id="949244662739155908" at="91,96,96,5" concept="6" />
-      <node id="4915141521380953057" at="80,132,88,5" concept="14" />
-      <node id="7314351270975557876" at="63,10,76,5" concept="6" />
-      <node id="7314351270975557838" at="91,0,106,0" concept="13" trace="main#([Ljava/lang/String;)V" />
-      <node id="7314351270975557864" at="52,22,76,5" concept="6" />
-      <node id="430932450847543169" at="49,0,90,0" concept="7" trace="run#([Ljava/lang/String;)V" />
+      <node id="3818729150937340920" at="84,45,87,7" concept="5" />
+      <node id="7314351270975557999" at="57,28,62,7" concept="5" />
+      <node id="7314351270975557936" at="67,55,72,7" concept="5" />
+      <node id="949244662739155908" at="91,96,96,5" concept="5" />
+      <node id="4915141521380953057" at="80,132,88,5" concept="12" />
+      <node id="7314351270975557876" at="63,10,76,5" concept="5" />
+      <node id="7314351270975557838" at="91,0,106,0" concept="11" trace="main#([Ljava/lang/String;)V" />
+      <node id="7314351270975557864" at="52,22,76,5" concept="5" />
+      <node id="430932450847543169" at="49,0,90,0" concept="6" trace="run#([Ljava/lang/String;)V" />
       <scope id="7314351270975557837" at="45,49,46,27" />
       <scope id="7314351270975558013" at="58,29,59,94" />
       <scope id="7314351270975558006" at="60,14,61,29" />
@@ -387,74 +385,26 @@
   </root>
   <root nodeRef="r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/8298649587588696257">
     <file name="MergeDriverPackerImpl.java">
-      <node id="8298649587588715695" at="29,34,30,36" concept="9" />
-      <node id="3042807695808132376" at="33,48,34,82" concept="8" />
-      <node id="1326967558921614861" at="34,82,35,39" concept="8" />
-      <node id="2018552779709939405" at="35,39,36,173" concept="10" />
-      <node id="2018552779709959971" at="36,173,37,64" concept="10" />
-      <node id="7284133972121415828" at="39,39,40,52" concept="9" />
-      <node id="657732043655498981" at="42,8,43,17" concept="10" />
-      <node id="2018552779709894434" at="43,17,44,139" concept="10" />
-      <node id="2018552779709915459" at="44,139,45,118" concept="10" />
-      <node id="7211226859971706757" at="45,118,46,48" concept="8" />
-      <node id="1443637779768392219" at="46,48,47,64" concept="8" />
-      <node id="1443637779768531825" at="47,64,48,37" concept="3" />
-      <node id="1443637779768559652" at="48,37,49,34" concept="3" />
-      <node id="1443637779768559727" at="49,34,50,37" concept="3" />
-      <node id="7132604126494245311" at="51,72,52,75" concept="3" />
-      <node id="7284133972121415784" at="53,5,54,120" concept="3" />
-      <node id="8298649587588715721" at="54,120,55,26" concept="9" />
-      <node id="6006585546800309876" at="58,43,59,106" concept="8" />
-      <node id="6006585546800309882" at="59,106,60,33" concept="0" />
-      <node id="6006585546800309886" at="60,33,61,45" concept="9" />
-      <node id="8298649587588787318" at="64,31,65,40" concept="3" />
-      <node id="8298649587588787326" at="70,36,71,61" concept="9" />
-      <node id="8298649587588787322" at="74,34,75,40" concept="3" />
-      <node id="462404415121492311" at="78,41,79,26" concept="9" />
-      <node id="8298649587588696259" at="26,0,28,0" concept="2" trace="MergeDriverPackerImpl#()V" />
-      <node id="7284133972121415826" at="39,0,42,0" concept="7" trace="select#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="7132604126494212168" at="50,37,53,5" concept="5" />
-      <node id="8298649587588715672" at="28,0,32,0" concept="7" trace="getMPSCorePath#()Ljava/lang/String;" />
-      <node id="8298649587588787302" at="63,0,67,0" concept="7" trace="initComponent#()V" />
-      <node id="8298649587588787314" at="73,0,77,0" concept="7" trace="disposeComponent#()V" />
-      <node id="462404415121492289" at="77,0,81,0" concept="7" trace="getVCSCoreFileName#()Ljava/lang/String;" />
-      <node id="7284133972121415820" at="37,64,42,8" concept="3" />
-      <node id="4037209045268266394" at="57,0,63,0" concept="7" trace="getVCSCorePluginPath#()Ljava/lang/String;" />
-      <node id="8298649587588787306" at="67,0,73,0" concept="7" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="8298649587588715676" at="32,0,57,0" concept="7" trace="getClasspathInternal#()Ljava/util/Set;" />
-      <scope id="8298649587588696262" at="26,34,26,34" />
-      <scope id="8298649587588715675" at="29,34,30,36" />
-      <scope id="7284133972121415827" at="39,39,40,52" />
-      <scope id="7132604126494212174" at="51,72,52,75" />
-      <scope id="8298649587588787305" at="64,31,65,40" />
-      <scope id="8298649587588787311" at="70,36,71,61" />
-      <scope id="8298649587588787317" at="74,34,75,40" />
-      <scope id="462404415121492292" at="78,41,79,26" />
-      <scope id="8298649587588696259" at="26,0,28,0" />
-      <scope id="7284133972121415826" at="39,0,42,0">
-        <var name="it" id="7284133972121415826" />
-      </scope>
-      <scope id="7132604126494212168" at="50,37,53,5">
-        <var name="cpi" id="7132604126494212170" />
-      </scope>
-      <scope id="4037209045268266398" at="58,43,61,45">
+      <node id="8298649587588715695" at="17,34,18,36" concept="8" />
+      <node id="6006585546800309876" at="22,43,23,106" concept="7" />
+      <node id="6006585546800309882" at="23,106,24,33" concept="0" />
+      <node id="6006585546800309886" at="24,33,25,45" concept="8" />
+      <node id="462404415121492311" at="29,41,30,26" concept="8" />
+      <node id="8298649587588696259" at="14,0,16,0" concept="2" trace="MergeDriverPackerImpl#()V" />
+      <node id="8298649587588715672" at="16,0,20,0" concept="6" trace="getMPSCorePath#()Ljava/lang/String;" />
+      <node id="462404415121492289" at="28,0,32,0" concept="6" trace="getVCSCoreFileName#()Ljava/lang/String;" />
+      <node id="4037209045268266394" at="21,0,27,0" concept="6" trace="getVCSCorePluginPath#()Ljava/lang/String;" />
+      <scope id="8298649587588696262" at="14,34,14,34" />
+      <scope id="8298649587588715675" at="17,34,18,36" />
+      <scope id="462404415121492292" at="29,41,30,26" />
+      <scope id="8298649587588696259" at="14,0,16,0" />
+      <scope id="4037209045268266398" at="22,43,25,45">
         <var name="vcsCorePlugin" id="6006585546800309877" />
       </scope>
-      <scope id="8298649587588715672" at="28,0,32,0" />
-      <scope id="8298649587588787302" at="63,0,67,0" />
-      <scope id="8298649587588787314" at="73,0,77,0" />
-      <scope id="462404415121492289" at="77,0,81,0" />
-      <scope id="4037209045268266394" at="57,0,63,0" />
-      <scope id="8298649587588787306" at="67,0,73,0" />
-      <scope id="8298649587588715680" at="33,48,55,26">
-        <var name="classpathItems" id="3042807695808132377" />
-        <var name="coreTypes" id="1443637779768392220" />
-        <var name="fsep" id="1326967558921614862" />
-        <var name="homePath" id="7211226859971706758" />
-      </scope>
-      <scope id="8298649587588715676" at="32,0,57,0" />
-      <unit id="7284133972121415826" at="38,115,42,5" name="jetbrains.mps.vcs.MergeDriverPackerImpl$1" />
-      <unit id="8298649587588696257" at="24,0,82,0" name="jetbrains.mps.vcs.MergeDriverPackerImpl" />
+      <scope id="8298649587588715672" at="16,0,20,0" />
+      <scope id="462404415121492289" at="28,0,32,0" />
+      <scope id="4037209045268266394" at="21,0,27,0" />
+      <unit id="8298649587588696257" at="12,0,33,0" name="jetbrains.mps.vcs.MergeDriverPackerImpl" />
     </file>
   </root>
 </debug-info>

@@ -69,7 +69,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
   private class TMP_Action_vryvy0_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_vryvy0_a0.Item item = new TMP_Action_vryvy0_a0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");
@@ -123,7 +123,7 @@ public class CommandHolder_Empty_Snippets extends TransformationMenuBase {
   private class TMP_Action_vryvy0_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_vryvy0_b0.Item item = new TMP_Action_vryvy0_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

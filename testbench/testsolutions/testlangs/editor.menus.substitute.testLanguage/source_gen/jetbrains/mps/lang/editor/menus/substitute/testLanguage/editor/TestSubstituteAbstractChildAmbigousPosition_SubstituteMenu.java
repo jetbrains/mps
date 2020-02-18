@@ -180,7 +180,7 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_cu4p6c_c.SMP_Wrap_cu4p6c_a2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_cu4p6c_c.SMP_Wrap_cu4p6c_b2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_a2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_b2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl));
     }
     private class SMP_Wrap_cu4p6c_a2 extends WrapperSubstituteMenuPart {
       @NotNull
@@ -324,7 +324,7 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_cu4p6c_d.SMP_Wrap_cu4p6c_a3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_cu4p6c_d.SMP_Wrap_cu4p6c_b3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_a3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_b3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$dl));
     }
     private class SMP_Wrap_cu4p6c_a3 extends WrapperSubstituteMenuPart {
       @NotNull

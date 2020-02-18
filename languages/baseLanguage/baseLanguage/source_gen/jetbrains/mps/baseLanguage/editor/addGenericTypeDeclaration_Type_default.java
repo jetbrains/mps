@@ -77,7 +77,7 @@ public class addGenericTypeDeclaration_Type_default extends TransformationMenuBa
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_6y1cjc_a0.TMP_Include_6y1cjc_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_6y1cjc_a0a());
     }
     public class TMP_Include_6y1cjc_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

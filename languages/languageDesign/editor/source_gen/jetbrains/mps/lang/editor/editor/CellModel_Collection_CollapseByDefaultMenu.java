@@ -92,7 +92,7 @@ public class CellModel_Collection_CollapseByDefaultMenu extends TransformationMe
   private class TMP_Action_ikacvd_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      TMP_Action_ikacvd_b0.Item item = new TMP_Action_ikacvd_b0.Item(context);
+      Item item = new Item(context);
       String description;
       try {
         description = "single item: " + item.getLabelText("");

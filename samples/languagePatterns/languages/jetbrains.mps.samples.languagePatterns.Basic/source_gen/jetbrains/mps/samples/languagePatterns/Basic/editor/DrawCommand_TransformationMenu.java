@@ -73,7 +73,7 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
     @NotNull
     @Override
     protected List<TransformationMenuItem> createItems(String parameter, TransformationMenuContext context) {
-      return new TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a(parameter).createItems(context);
+      return new TMP_Action_oy1rtc_a0a(parameter).createItems(context);
     }
 
     @Nullable
@@ -100,7 +100,7 @@ public class DrawCommand_TransformationMenu extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a.Item item = new TMP_Param_oy1rtc_a0.TMP_Action_oy1rtc_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

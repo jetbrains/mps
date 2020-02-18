@@ -160,8 +160,8 @@ public class Diff_Facet extends IFacet.Stub {
     public int workEstimate() {
       return 500;
     }
-    public static Target_diff.Parameters vars(IPropertiesPool ppool) {
-      return ppool.properties(name, Target_diff.Parameters.class);
+    public static Parameters vars(IPropertiesPool ppool) {
+      return ppool.properties(name, Parameters.class);
     }
     public static class Parameters extends MultiTuple._2<_FunctionTypes._return_P1_E0<? extends String, ? super IFile>, Set<File>> {
       public Parameters() {

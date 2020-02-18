@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2019 JetBrains s.r.o.
+  ~ Copyright 2003-2020 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -57,9 +57,6 @@
     <component>
       <implementation-class>jetbrains.mps.vcs.platform.integration.PluginVCSManager</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.vcs.MergeDriverPackerImpl</implementation-class>
-    </component>
   </application-components>
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/"/>
@@ -67,6 +64,10 @@
     <vcs.fileStatusProvider implementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider"/>
     <checkinHandlerFactory implementation="jetbrains.mps.vcs.platform.integration.OptimizeImportsCheckinHandler$OptimizeImportsCheckinHandlerFactory"/>
     <mps.editorWarningsProvider implementation="jetbrains.mps.vcs.platform.integration.ConflictingModelsWarnings" />
+
+    <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
+                        serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />
+
   </extensions>
   <project-components>
     <component>

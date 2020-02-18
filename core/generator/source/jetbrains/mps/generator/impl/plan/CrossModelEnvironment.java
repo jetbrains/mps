@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -121,7 +121,7 @@ public class CrossModelEnvironment {
       new CloneUtil(m, exposed).cloneModelWithImports();
       assert exposed instanceof ModelWithAttributes;
       assert m instanceof ModelWithAttributes;
-      ((ModelWithAttributes) m).forEach(((ModelWithAttributes) exposed)::setAttribute);
+      ((ModelWithAttributes) m).forEachAttribute(((ModelWithAttributes) exposed)::setAttribute);
       myModule.addModelToKeep(exposed.getReference(), true);
       CheckpointIdentity persistedCheckpoint = readIdentityAttributes((ModelWithAttributes) m, GENERATION_PLAN, CHECKPOINT);
       CheckpointIdentity prevCheckpoint = readIdentityAttributes((ModelWithAttributes) m, PREV_GENERATION_PLAN, PREV_CHECKPOINT);

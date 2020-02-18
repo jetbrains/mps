@@ -62,7 +62,7 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
     @NotNull
     @Override
     protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new SMP_Param_33kcmf_a.SMP_Action_33kcmf_a0(parameter).createItems(context);
+      return new SMP_Action_33kcmf_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
@@ -94,7 +94,7 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Param_33kcmf_a.SMP_Action_33kcmf_a0.Item item = new SMP_Param_33kcmf_a.SMP_Action_33kcmf_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

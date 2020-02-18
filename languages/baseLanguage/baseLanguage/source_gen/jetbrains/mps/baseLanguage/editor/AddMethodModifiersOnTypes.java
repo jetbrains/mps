@@ -78,7 +78,7 @@ public class AddMethodModifiersOnTypes extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_svkn68_a0.TMP_Include_svkn68_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_svkn68_a0a());
     }
     public class TMP_Include_svkn68_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull
@@ -128,7 +128,7 @@ public class AddMethodModifiersOnTypes extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_svkn68_b0.TMP_Include_svkn68_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_svkn68_a1a());
     }
     public class TMP_Include_svkn68_a1a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull

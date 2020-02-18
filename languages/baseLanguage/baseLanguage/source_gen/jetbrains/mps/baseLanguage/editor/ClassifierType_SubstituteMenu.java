@@ -110,7 +110,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_6wdawe_a0(), new SMP_Group_6wdawe_b0(), new SMP_Group_6wdawe_c0(), new SMP_Group_6wdawe_d0());
     }
     public class SMP_Group_6wdawe_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
@@ -131,13 +131,13 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a(), CONCEPTS.ClassifierType$IZ));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_6wdawe_a0a(), CONCEPTS.ClassifierType$IZ));
       }
       private class SMP_Param_6wdawe_a0a extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-          return new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0(parameter).createItems(context);
+          return new SMP_Action_6wdawe_a0a0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -168,7 +168,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0.Item item = new SMP_Group_6wdawe_a.SMP_Group_6wdawe_a0.SMP_Param_6wdawe_a0a.SMP_Action_6wdawe_a0a0.Item(_context);
+            Item item = new Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -261,13 +261,13 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a(), CONCEPTS.ClassifierType$IZ));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_6wdawe_a1a(), CONCEPTS.ClassifierType$IZ));
       }
       private class SMP_Param_6wdawe_a1a extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-          return new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0(parameter).createItems(context);
+          return new SMP_Action_6wdawe_a0b0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -294,7 +294,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0.Item item = new SMP_Group_6wdawe_a.SMP_Group_6wdawe_b0.SMP_Param_6wdawe_a1a.SMP_Action_6wdawe_a0b0.Item(_context);
+            Item item = new Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -387,13 +387,13 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a(), CONCEPTS.ClassifierType$IZ));
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_6wdawe_a2a(), CONCEPTS.ClassifierType$IZ));
       }
       private class SMP_Param_6wdawe_a2a extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
         @NotNull
         @Override
         protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-          return new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0(parameter).createItems(context);
+          return new SMP_Action_6wdawe_a0c0(parameter).createItems(context);
         }
         @NotNull
         @Override
@@ -424,7 +424,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
           @Nullable
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-            SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0.Item item = new SMP_Group_6wdawe_a.SMP_Group_6wdawe_c0.SMP_Param_6wdawe_a2a.SMP_Action_6wdawe_a0c0.Item(_context);
+            Item item = new Item(_context);
             String description;
             try {
               description = "Substitute item: " + item.getMatchingText("");
@@ -517,7 +517,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0.SMP_Subconcepts_6wdawe_a3a(), new SMP_Group_6wdawe_a.SMP_Group_6wdawe_d0.SMP_Include_6wdawe_b3a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_6wdawe_a3a(), new SMP_Include_6wdawe_b3a());
       }
       public class SMP_Subconcepts_6wdawe_a3a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {

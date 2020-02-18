@@ -2210,8 +2210,13 @@
               <node concept="2YIFZM" id="3qbI1lNp2uw" role="3clFbG">
                 <ref role="37wK5l" to="zn9m:~Disposer.register(com.intellij.openapi.Disposable,com.intellij.openapi.Disposable)" resolve="register" />
                 <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
-                <node concept="37vLTw" id="3qbI1lNp2xP" role="37wK5m">
-                  <ref role="3cqZAo" node="3qbI1lNoBDX" resolve="openedProject" />
+                <node concept="2OqwBi" id="4sfB6SDPu8G" role="37wK5m">
+                  <node concept="37vLTw" id="3qbI1lNp2xP" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3qbI1lNoBDX" resolve="openedProject" />
+                  </node>
+                  <node concept="liA8E" id="4sfB6SDPuqQ" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
+                  </node>
                 </node>
                 <node concept="37vLTw" id="3qbI1lNpfdp" role="37wK5m">
                   <ref role="3cqZAo" node="3qbI1lNoEgH" resolve="disposable0" />

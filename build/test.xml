@@ -136,10 +136,10 @@
       <target name="check"/>
       <property name="mps_home" value="${mps_build_home}"/>
     </ant>
-    <ant antfile="build/tests/mpsMigrationTest.xml" inheritAll="true" useNativeBasedir="true">
-      <target name="checkAll"/>
-      <property name="mps_home" value="${mps_build_home}"/>
-    </ant>
+<!--    <ant antfile="build/tests/mpsMigrationTest.xml" inheritAll="true" useNativeBasedir="true">-->
+<!--      <target name="checkAll"/>-->
+<!--      <property name="mps_home" value="${mps_build_home}"/>-->
+<!--    </ant>-->
     <ant antfile="build/tests/mpsAntTaskTest.xml" inheritAll="true" useNativeBasedir="true">
       <target name="checkAll"/>
       <property name="mps_home" value="${mps_build_home}"/>

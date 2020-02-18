@@ -12363,5 +12363,53 @@
       </node>
     </node>
   </node>
+  <node concept="LiM7Y" id="5aCY7vt7t_0">
+    <property role="3GE5qa" value="typeOverExistingText" />
+    <property role="TrG5h" value="TypeOver_ReturnStatementEmpty" />
+    <property role="3YCmrE" value="Skip semicolon after return keyword by typing it" />
+    <node concept="3clFbS" id="5aCY7vt7t_1" role="LjaKd">
+      <node concept="2TK7Tu" id="5aCY7vt7t_2" role="3cqZAp">
+        <property role="2TTd_B" value="return;" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="5aCY7vt7t_3" role="25YQCW">
+      <node concept="2YIFZL" id="5aCY7vt7t_4" role="1qenE9">
+        <property role="TrG5h" value="method" />
+        <node concept="3uibUv" id="5aCY7vt7t_5" role="3clF45">
+          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+        </node>
+        <node concept="3Tm1VV" id="5aCY7vt7t_6" role="1B3o_S" />
+        <node concept="3clFbS" id="5aCY7vt7t_7" role="3clF47">
+          <node concept="LIFWc" id="5aCY7vt7un_" role="lGtFl">
+            <property role="ZRATv" value="true" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="0" />
+            <property role="p6zMs" value="0" />
+            <property role="LIFWd" value="Constant_u338ov_a0a" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="5aCY7vt7t_9" role="25YQFr">
+      <node concept="2YIFZL" id="5aCY7vt7t_a" role="1qenE9">
+        <property role="TrG5h" value="method" />
+        <node concept="3uibUv" id="5aCY7vt7t_b" role="3clF45">
+          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+        </node>
+        <node concept="3Tm1VV" id="5aCY7vt7t_c" role="1B3o_S" />
+        <node concept="3clFbS" id="5aCY7vt7t_d" role="3clF47">
+          <node concept="3cpWs6" id="5aCY7vt7umh" role="3cqZAp">
+            <node concept="LIFWc" id="5aCY7vt7unh" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="1" />
+              <property role="p6zMs" value="1" />
+              <property role="LIFWd" value="Constant_evgwyu_c0" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

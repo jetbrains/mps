@@ -597,7 +597,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.encoding$pVbL, CONCEPTS.EncodingDeclarationBase$mN), new SubstituteInfoPartExt[]{new encodingSingleRoleHandler_9mcqjq_c3h0.ConceptTextGenDeclaration_generic_cellMenu_9mcqjq_a0c3h0(), new encodingSingleRoleHandler_9mcqjq_c3h0.ConceptTextGenDeclaration_generic_cellMenu_9mcqjq_b0c3h0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.encoding$pVbL, CONCEPTS.EncodingDeclarationBase$mN), new SubstituteInfoPartExt[]{new ConceptTextGenDeclaration_generic_cellMenu_9mcqjq_a0c3h0(), new ConceptTextGenDeclaration_generic_cellMenu_9mcqjq_b0c3h0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.encoding$pVbL);

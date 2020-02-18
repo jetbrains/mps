@@ -93,12 +93,12 @@ public class ArrayAndGenericTypesFromTypesInVarDeclarations extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_y9ko6u_a0.TMP_Action_y9ko6u_a0a(), CONCEPTS.LocalVariableDeclaration$Bf));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_y9ko6u_a0a(), CONCEPTS.LocalVariableDeclaration$Bf));
     }
     private class TMP_Action_y9ko6u_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_y9ko6u_a0.TMP_Action_y9ko6u_a0a.Item item = new TMP_Group_y9ko6u_a0.TMP_Action_y9ko6u_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -187,12 +187,12 @@ public class ArrayAndGenericTypesFromTypesInVarDeclarations extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_y9ko6u_b0.TMP_Action_y9ko6u_a1a(), CONCEPTS.LocalVariableDeclaration$Bf));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_y9ko6u_a1a(), CONCEPTS.LocalVariableDeclaration$Bf));
     }
     private class TMP_Action_y9ko6u_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_y9ko6u_b0.TMP_Action_y9ko6u_a1a.Item item = new TMP_Group_y9ko6u_b0.TMP_Action_y9ko6u_a1a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

@@ -92,12 +92,12 @@ public class ClassConceptModifiersExtendsAndImplements_ext_4 extends Transformat
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_52qbso_a0.TMP_Action_52qbso_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_52qbso_a0a());
     }
     private class TMP_Action_52qbso_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_52qbso_a0.TMP_Action_52qbso_a0a.Item item = new TMP_Group_52qbso_a0.TMP_Action_52qbso_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -175,12 +175,12 @@ public class ClassConceptModifiersExtendsAndImplements_ext_4 extends Transformat
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_52qbso_a1.TMP_Action_52qbso_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Action_52qbso_a0b());
     }
     private class TMP_Action_52qbso_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_52qbso_a1.TMP_Action_52qbso_a0b.Item item = new TMP_Group_52qbso_a1.TMP_Action_52qbso_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

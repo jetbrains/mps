@@ -43,7 +43,7 @@ import java.io.IOException;
  * <p>
  * fixme introduce a project<->library relation on this particular level (AP)
  */
-public class MPSProject extends ProjectBase implements FileBasedProject, ProjectComponent, Disposable {
+public class MPSProject extends ProjectBase implements FileBasedProject, ProjectComponent {
   private final com.intellij.openapi.project.Project myProject;
   private final IdeaFileSystem myProjectFileSystem;
 
@@ -68,7 +68,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   }
 
   public void disposeComponent() {
-
+    dispose();
   }
 
   @NotNull

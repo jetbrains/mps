@@ -69,12 +69,16 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.Collection" />
+    <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.CopyNotSupportedException" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.DefaultSourceRoot" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRoot" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRootKind" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.SourceRootKinds" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />

@@ -89,7 +89,7 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_c1nwm3_a.SMP_Include_c1nwm3_a0(), new SMP_Group_c1nwm3_a.SMP_Include_c1nwm3_b0(), new SMP_Group_c1nwm3_a.SMP_Include_c1nwm3_c0(), new SMP_Group_c1nwm3_a.SMP_Group_c1nwm3_d0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_c1nwm3_a0(), new SMP_Include_c1nwm3_b0(), new SMP_Include_c1nwm3_c0(), new SMP_Group_c1nwm3_d0());
     }
     public class SMP_Include_c1nwm3_a0 extends IncludeSubstituteMenuSubstituteMenuPart {
 
@@ -182,7 +182,7 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_c1nwm3_a.SMP_Group_c1nwm3_d0.SMP_Subconcepts_c1nwm3_a3a());
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_c1nwm3_a3a());
       }
       public class SMP_Subconcepts_c1nwm3_a3a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {

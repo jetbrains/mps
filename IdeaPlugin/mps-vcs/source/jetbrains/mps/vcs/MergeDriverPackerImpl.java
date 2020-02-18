@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,12 @@ package jetbrains.mps.vcs;
 
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
-public class MergeDriverPackerImpl extends MergeDriverPacker implements ApplicationComponent {
+public class MergeDriverPackerImpl extends MergeDriverPacker {
 
   private String getMPSCorePluginPath() {
     IdeaPluginDescriptor mpsCorePlugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.core"));
@@ -34,22 +30,9 @@ public class MergeDriverPackerImpl extends MergeDriverPacker implements Applicat
     return mpsCorePlugin.getPath().getPath();
   }
 
-
   @Override
   public String getMPSCorePath() {
     return getMPSCorePluginPath() + File.separator + "lib";
-  }
-
-  @Override
-  protected Set<String> getClasspathInternal() {
-    Set<String> classpathItems = new LinkedHashSet<String>();
-    String mpsCorePluginPath = getMPSCorePluginPath();
-    for (String jar : mpsAddJars) {
-      classpathItems.add(mpsCorePluginPath + File.separator + "lib" + File.separator + jar);
-    }
-    classpathItems.add(mpsCorePluginPath + File.separator + "classes");
-    classpathItems.add(getVCSCorePluginPath() + File.separator + "classes");
-    return classpathItems;
   }
 
   @Override
@@ -62,21 +45,5 @@ public class MergeDriverPackerImpl extends MergeDriverPacker implements Applicat
   @Override
   protected String getVCSCoreFileName() {
     return "vcs-core.jar";
-  }
-
-  @Override
-  public void initComponent() {
-    MergeDriverPacker.setInstance(this);
-  }
-
-  @Override
-  public void disposeComponent() {
-    MergeDriverPacker.setInstance(null);
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "IDEA Plugin-specific Merge Driver Packer implementation";
   }
 }

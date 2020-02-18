@@ -4,76 +4,27 @@ package jetbrains.mps.vcs;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.application.PathManager;
-import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.LinkedHashSet;
-import java.io.File;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import java.util.ArrayList;
-import jetbrains.mps.util.ClassType;
-import jetbrains.mps.util.ClassPathReader;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/8298649587588696257", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
-public class MergeDriverPackerImpl extends MergeDriverPacker implements ApplicationComponent {
+public class MergeDriverPackerImpl extends MergeDriverPacker {
   public MergeDriverPackerImpl() {
   }
   @Override
   public String getMPSCorePath() {
     return PathManager.getLibPath();
   }
-  @Override
-  protected Set<String> getClasspathInternal() {
-    Set<String> classpathItems = SetSequence.fromSet(new LinkedHashSet<String>());
-    final String fsep = File.separator;
-    // XXX Guess, the reason we use IDEA's PathManager instead of MPS's own copy is that we are running from sources here, and no chances to get <project home>/lib location 
-    //     by using resource root of our own PathManager class. 
-    SetSequence.fromSet(classpathItems).addSequence(Sequence.fromIterable(MergeDriverPacker.mpsAddJars).select(new ISelector<String, String>() {
-      public String select(String it) {
-        return PathManager.getLibPath() + fsep + it;
-      }
-    }));
-    // IMPORTANT 
-    //       MergeDriverMain uses 'PERSISTENCE' level of the Platform, hence doesn't need to load MPSDataFlow or MPSTextGenerator classes. 
-    //       Here, we shall satisfy relevant 'PERSISTANCE'-level dependencies only, not complete mps-core.jar content 
-    String homePath = PathManager.getHomePath();
-    ArrayList<ClassType> coreTypes = new ArrayList<ClassType>();
-    coreTypes.add(ClassType.OPENAPI);
-    coreTypes.add(ClassType.CORE);
-    coreTypes.add(ClassType.ASPECTS);
-    for (String cpi : new ClassPathReader(homePath, coreTypes).read()) {
-      SetSequence.fromSet(classpathItems).addElement(homePath + "/" + cpi);
-    }
-    SetSequence.fromSet(classpathItems).addElement(getVCSCorePluginPath() + fsep + "lib" + fsep + getVCSCoreFileName());
-    return classpathItems;
-  }
+
   @Override
   protected String getVCSCorePluginPath() {
     IdeaPluginDescriptor vcsCorePlugin = PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.vcs"));
     assert vcsCorePlugin != null;
     return vcsCorePlugin.getPath().getPath();
   }
-  @Override
-  public void initComponent() {
-    MergeDriverPacker.setInstance(this);
-  }
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MPS-specific Merge Driver Packer implementation";
-  }
-  @Override
-  public void disposeComponent() {
-    MergeDriverPacker.setInstance(null);
-  }
+
   @Override
   protected String getVCSCoreFileName() {
     return "vcs-core.jar";

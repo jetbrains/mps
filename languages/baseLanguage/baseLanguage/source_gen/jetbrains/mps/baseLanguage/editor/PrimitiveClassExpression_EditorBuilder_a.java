@@ -95,7 +95,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.primitiveType$e71w, CONCEPTS.PrimitiveType$5), new SubstituteInfoPartExt[]{new primitiveTypeSingleRoleHandler_bw5rf5_a0.ReplaceWith_AbstractClassifierReference_cellMenu_bw5rf5_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.primitiveType$e71w, CONCEPTS.PrimitiveType$5), new SubstituteInfoPartExt[]{new ReplaceWith_AbstractClassifierReference_cellMenu_bw5rf5_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.primitiveType$e71w);

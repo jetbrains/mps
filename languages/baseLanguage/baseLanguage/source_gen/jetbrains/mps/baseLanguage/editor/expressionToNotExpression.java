@@ -102,12 +102,12 @@ public class expressionToNotExpression extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_ihw7u4_a0.TMP_Action_ihw7u4_a0a(), CONCEPTS.NotExpression$oq));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ihw7u4_a0a(), CONCEPTS.NotExpression$oq));
     }
     private class TMP_Action_ihw7u4_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_ihw7u4_a0.TMP_Action_ihw7u4_a0a.Item item = new TMP_Group_ihw7u4_a0.TMP_Action_ihw7u4_a0a.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

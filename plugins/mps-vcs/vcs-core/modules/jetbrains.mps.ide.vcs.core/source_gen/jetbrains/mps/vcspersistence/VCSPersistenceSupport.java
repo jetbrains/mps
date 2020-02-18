@@ -13,25 +13,23 @@ import jetbrains.mps.smodel.persistence.def.v6.ModelPersistence6;
 import jetbrains.mps.smodel.persistence.def.v7.ModelPersistence7;
 import jetbrains.mps.smodel.persistence.def.v8.ModelPersistence8;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
-import jetbrains.mps.smodel.SModelHeader;
-import org.jetbrains.mps.openapi.persistence.StreamDataSource;
-import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import java.io.InputStream;
-import org.xml.sax.InputSource;
-import java.io.InputStreamReader;
-import jetbrains.mps.util.FileUtil;
-import java.io.IOException;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import java.util.Map;
+import jetbrains.mps.smodel.SModelHeader;
+import org.xml.sax.InputSource;
+import java.io.IOException;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.persistence.def.PersistenceVersionNotFoundException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
 import jetbrains.mps.smodel.persistence.def.v4.IPersistenceWithReader;
 import jetbrains.mps.smodel.persistence.def.v4.IModelReader;
 import org.jdom.Document;
 import jetbrains.mps.smodel.SModel;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import jetbrains.mps.util.FileUtil;
 import java.util.List;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import java.io.StringReader;
@@ -39,6 +37,7 @@ import java.io.ByteArrayInputStream;
 import jetbrains.mps.util.JDOMUtil;
 import org.jdom.JDOMException;
 import jetbrains.mps.smodel.DefaultSModel;
+import java.util.Map;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.vfs.FileSystem;
@@ -127,39 +126,10 @@ public class VCSPersistenceSupport {
     return ModelPersistence.getPersistence(version);
   }
 
-  private static void loadDescriptor(SModelHeader result, StreamDataSource dataSource) throws ModelReadException {
-    InputStream in = null;
-    try {
-      in = dataSource.openInputStream();
-      InputSource source = new InputSource(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
-      parseAndHandleExceptions(source, new ModelPersistence.HeaderOnlyHandler(result), "model descriptor");
-    } catch (IOException e) {
-      throw new ModelReadException("Couldn't read descriptor from " + dataSource.getLocation() + ": " + e.getMessage(), e);
-    } finally {
-      FileUtil.closeFileSafe(in);
-    }
-  }
-
   @NotNull
   public static SModelHeader loadDescriptor(InputSource source) throws IOException {
     SModelHeader result = new SModelHeader();
     parseAndHandleExceptions(source, new ModelPersistence.HeaderOnlyHandler(result), "model descriptor");
-    return result;
-  }
-
-  @NotNull
-  public static SModelHeader loadDescriptor(StreamDataSource source) throws ModelReadException {
-    final SModelHeader result = new SModelHeader();
-    loadDescriptor(result, source);
-    // for old persistences try to load header from metadata 
-    if (result.getPersistenceVersion() < 7 && source instanceof FileDataSource) {
-      Map<String, String> metadata = loadMetadata(((FileDataSource) source).getFile());
-      if (metadata != null) {
-        if (metadata.containsKey(SModelHeader.DO_NOT_GENERATE)) {
-          result.setDoNotGenerate(Boolean.parseBoolean(metadata.remove(SModelHeader.DO_NOT_GENERATE)));
-        }
-      }
-    }
     return result;
   }
 
@@ -264,13 +234,6 @@ public class VCSPersistenceSupport {
     } catch (JDOMException e) {
       throw new IOException("Exception on loading model from " + source, e);
     }
-  }
-
-  @NotNull
-  public static DefaultSModel readModel(@NotNull final StreamDataSource source, boolean interfaceOnly) throws ModelReadException {
-    SModelHeader header = loadDescriptor(source);
-    ModelLoadingState state = (interfaceOnly ? ModelLoadingState.INTERFACE_LOADED : ModelLoadingState.FULLY_LOADED);
-    return (DefaultSModel) readModel(header, source, state).getModel();
   }
 
   @NotNull

@@ -90,7 +90,7 @@ public class binaryOperations extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_vwyr1i_a0.TMP_WrapSM_vwyr1i_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_vwyr1i_a0a());
     }
     public class TMP_WrapSM_vwyr1i_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

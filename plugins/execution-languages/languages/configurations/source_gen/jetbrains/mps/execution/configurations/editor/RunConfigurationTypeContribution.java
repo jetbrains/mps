@@ -78,13 +78,13 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_82l17u_a.SMP_Param_82l17u_a0(), CONCEPTS.RunConfigurationType$qY));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_82l17u_a0(), CONCEPTS.RunConfigurationType$qY));
     }
     private class SMP_Param_82l17u_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a(parameter).createItems(context);
+        return new SMP_Action_82l17u_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -115,7 +115,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a.Item item = new SMP_Group_82l17u_a.SMP_Param_82l17u_a0.SMP_Action_82l17u_a0a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");

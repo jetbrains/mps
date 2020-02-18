@@ -77,14 +77,14 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_a0(), CONCEPTS.ClassifierMethodMember$VF), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_b0(), CONCEPTS.StaticFieldDeclaration$R5), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_c0(), CONCEPTS.Classifier$hJ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_d0(), CONCEPTS.Classifier$hJ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_e0(), CONCEPTS.Classifier$hJ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_f0(), CONCEPTS.Classifier$hJ));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_a0(), CONCEPTS.ClassifierMethodMember$VF), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_b0(), CONCEPTS.StaticFieldDeclaration$R5), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_c0(), CONCEPTS.Classifier$hJ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_d0(), CONCEPTS.Classifier$hJ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_e0(), CONCEPTS.Classifier$hJ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_f0(), CONCEPTS.Classifier$hJ));
     }
     private class SMP_Action_4h4lbo_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_a0.Item item = new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -193,7 +193,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_b0.Item item = new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_b0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -295,7 +295,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_c0.Item item = new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_c0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -370,7 +370,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_d0.Item item = new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_d0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -441,7 +441,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_e0.Item item = new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_e0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -512,7 +512,7 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_f0.Item item = new SMP_Group_4h4lbo_a.SMP_Action_4h4lbo_f0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");

@@ -246,6 +246,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
+        <child id="2546654756694997556" name="reference" index="92FcQ" />
+        <child id="3106559687488913694" name="line" index="2XjZqd" />
+      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
@@ -256,9 +260,16 @@
       <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
         <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
+      <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
+        <reference id="2217234381367530213" name="classifier" index="VXe09" />
+      </concept>
+      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
+        <child id="6962838954693749192" name="tag" index="qph3F" />
+      </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -6367,6 +6378,29 @@
         </node>
       </node>
     </node>
+    <node concept="3UR2Jj" id="2UfOlWno_s4" role="lGtFl">
+      <node concept="TZ5HI" id="2UfOlWno_s5" role="3nqlJM">
+        <node concept="TZ5HA" id="2UfOlWno_s6" role="3HnX3l">
+          <node concept="1dT_AC" id="2UfOlWno_YX" role="1dT_Ay">
+            <property role="1dT_AB" value="In MPS 2020.1 has been replaced with generic " />
+          </node>
+          <node concept="1dT_AA" id="2UfOlWno_Z0" role="1dT_Ay">
+            <node concept="92FcH" id="2UfOlWno_Z6" role="qph3F">
+              <node concept="TZ5HA" id="2UfOlWno_Z8" role="2XjZqd" />
+              <node concept="VXe08" id="2UfOlWnoAOK" role="92FcQ">
+                <ref role="VXe09" node="3FsEmiltk75" resolve="ModelAttributeChange" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="2UfOlWno_YZ" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="2UfOlWno_s7" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+    </node>
   </node>
   <node concept="312cEu" id="69abr3GmYnQ">
     <property role="TrG5h" value="NodeCopier" />
@@ -9226,6 +9260,325 @@
     <node concept="3Tm1VV" id="5UKxCD6L7Xw" role="1B3o_S" />
     <node concept="3uibUv" id="5UKxCD6L82D" role="1zkMxy">
       <ref role="3uigEE" node="5Gi8bfMd_nS" resolve="DependencyChange" />
+    </node>
+  </node>
+  <node concept="312cEu" id="3FsEmiltk75">
+    <property role="3GE5qa" value="metadata" />
+    <property role="TrG5h" value="ModelAttributeChange" />
+    <node concept="312cEg" id="3FsEmiltqe6" role="jymVt">
+      <property role="TrG5h" value="myKey" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3FsEmiltqe7" role="1B3o_S" />
+      <node concept="3uibUv" id="3FsEmiltqe9" role="1tU5fm">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+    </node>
+    <node concept="312cEg" id="3FsEmiltqR4" role="jymVt">
+      <property role="TrG5h" value="myNewValue" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3FsEmiltqR5" role="1B3o_S" />
+      <node concept="3uibUv" id="3FsEmiltqR7" role="1tU5fm">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3FsEmiltqs$" role="jymVt" />
+    <node concept="3clFbW" id="3FsEmiltknm" role="jymVt">
+      <node concept="37vLTG" id="3FsEmiltkpC" role="3clF46">
+        <property role="TrG5h" value="changeSet" />
+        <node concept="3uibUv" id="3FsEmiltkpD" role="1tU5fm">
+          <ref role="3uigEE" to="bfxj:3kRMfhMv03j" resolve="ChangeSet" />
+        </node>
+        <node concept="2AHcQZ" id="3FsEmiltkpE" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3FsEmilto2$" role="3clF46">
+        <property role="TrG5h" value="key" />
+        <node concept="3uibUv" id="3FsEmilto9O" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+        <node concept="2AHcQZ" id="3FsEmiltqHH" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3FsEmiltoaw" role="3clF46">
+        <property role="TrG5h" value="newValue" />
+        <node concept="3uibUv" id="3FsEmiltoit" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="3FsEmiltkno" role="3clF45" />
+      <node concept="3Tm1VV" id="3FsEmiltknp" role="1B3o_S" />
+      <node concept="3clFbS" id="3FsEmiltknq" role="3clF47">
+        <node concept="XkiVB" id="3FsEmiltkrq" role="3cqZAp">
+          <ref role="37wK5l" node="5Gi8bfMd_nq" resolve="MetadataChange" />
+          <node concept="37vLTw" id="3FsEmiltksZ" role="37wK5m">
+            <ref role="3cqZAo" node="3FsEmiltkpC" resolve="changeSet" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3FsEmiltqea" role="3cqZAp">
+          <node concept="37vLTI" id="3FsEmiltqec" role="3clFbG">
+            <node concept="37vLTw" id="3FsEmiltqef" role="37vLTJ">
+              <ref role="3cqZAo" node="3FsEmiltqe6" resolve="myKey" />
+            </node>
+            <node concept="37vLTw" id="3FsEmiltqeg" role="37vLTx">
+              <ref role="3cqZAo" node="3FsEmilto2$" resolve="key" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3FsEmiltqR8" role="3cqZAp">
+          <node concept="37vLTI" id="3FsEmiltqRa" role="3clFbG">
+            <node concept="37vLTw" id="3FsEmiltqRd" role="37vLTJ">
+              <ref role="3cqZAo" node="3FsEmiltqR4" resolve="myNewValue" />
+            </node>
+            <node concept="37vLTw" id="3FsEmiltqRe" role="37vLTx">
+              <ref role="3cqZAo" node="3FsEmiltoaw" resolve="newValue" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3FsEmiltkto" role="jymVt" />
+    <node concept="3Tm1VV" id="3FsEmiltk76" role="1B3o_S" />
+    <node concept="3uibUv" id="3FsEmiltkd6" role="1zkMxy">
+      <ref role="3uigEE" node="5Gi8bfMd_nh" resolve="MetadataChange" />
+    </node>
+    <node concept="3clFb_" id="3FsEmiltkuQ" role="jymVt">
+      <property role="TrG5h" value="apply" />
+      <node concept="3cqZAl" id="3FsEmiltkuR" role="3clF45" />
+      <node concept="3Tm1VV" id="3FsEmiltkuS" role="1B3o_S" />
+      <node concept="37vLTG" id="3FsEmiltkuU" role="3clF46">
+        <property role="TrG5h" value="model" />
+        <node concept="H_c77" id="3FsEmiltkuV" role="1tU5fm" />
+        <node concept="2AHcQZ" id="3FsEmiltkuW" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3FsEmiltkuX" role="3clF46">
+        <property role="TrG5h" value="nodeCopier" />
+        <node concept="3uibUv" id="3FsEmiltkuY" role="1tU5fm">
+          <ref role="3uigEE" node="69abr3GmYnQ" resolve="NodeCopier" />
+        </node>
+        <node concept="2AHcQZ" id="3FsEmiltkuZ" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="3FsEmiltkv1" role="3clF47">
+        <node concept="3clFbJ" id="3FsEmiltsrY" role="3cqZAp">
+          <node concept="2ZW3vV" id="3FsEmiltsGC" role="3clFbw">
+            <node concept="3uibUv" id="3FsEmiltsPJ" role="2ZW6by">
+              <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
+            </node>
+            <node concept="37vLTw" id="3FsEmiltstA" role="2ZW6bz">
+              <ref role="3cqZAo" node="3FsEmiltkuU" resolve="model" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3FsEmiltss0" role="3clFbx">
+            <node concept="3clFbF" id="3FsEmiltsWd" role="3cqZAp">
+              <node concept="2OqwBi" id="3FsEmilttxQ" role="3clFbG">
+                <node concept="1eOMI4" id="3FsEmilttjS" role="2Oq$k0">
+                  <node concept="10QFUN" id="3FsEmiltt4D" role="1eOMHV">
+                    <node concept="3uibUv" id="3FsEmilttdG" role="10QFUM">
+                      <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
+                    </node>
+                    <node concept="37vLTw" id="3FsEmiltsWb" role="10QFUP">
+                      <ref role="3cqZAo" node="3FsEmiltkuU" resolve="model" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="3FsEmilttLD" role="2OqNvi">
+                  <ref role="37wK5l" to="g3l6:~ModelWithAttributes.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+                  <node concept="37vLTw" id="3FsEmilttMW" role="37wK5m">
+                    <ref role="3cqZAo" node="3FsEmiltqe6" resolve="myKey" />
+                  </node>
+                  <node concept="37vLTw" id="3FsEmilttZa" role="37wK5m">
+                    <ref role="3cqZAo" node="3FsEmiltqR4" resolve="myNewValue" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="9aQIb" id="3FsEmiltuam" role="9aQIa">
+            <node concept="3clFbS" id="3FsEmiltuan" role="9aQI4">
+              <node concept="RRSsy" id="3FsEmiltuja" role="3cqZAp">
+                <property role="RRSoG" value="gZ5fksE/warn" />
+                <node concept="Xl_RD" id="3FsEmiltujb" role="RRSoy">
+                  <property role="Xl_RC" value="trying to apply model attribute change to s model that is not capable to keep attributes" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3FsEmiltkv2" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3FsEmiltrj9" role="jymVt" />
+    <node concept="3clFb_" id="3FsEmiltkv3" role="jymVt">
+      <property role="TrG5h" value="createOppositeChange" />
+      <node concept="3uibUv" id="3FsEmiltkv4" role="3clF45">
+        <ref role="3uigEE" node="7Dh0CRFZxgO" resolve="ModelChange" />
+      </node>
+      <node concept="3Tmbuc" id="3FsEmiltkv5" role="1B3o_S" />
+      <node concept="2AHcQZ" id="3FsEmiltkv7" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3clFbS" id="3FsEmiltkv9" role="3clF47">
+        <node concept="3SKdUt" id="3FsEmilt_jR" role="3cqZAp">
+          <node concept="1PaTwC" id="3FsEmilt_jS" role="1aUNEU">
+            <node concept="3oM_SD" id="3FsEmilt_jU" role="1PaTwD">
+              <property role="3oM_SC" value="inspired" />
+            </node>
+            <node concept="3oM_SD" id="3FsEmilt_mV" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="3FsEmilt_mY" role="1PaTwD">
+              <property role="3oM_SC" value="SetPropertyChange" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3FsEmiltxdd" role="3cqZAp">
+          <node concept="3cpWsn" id="3FsEmiltxde" role="3cpWs9">
+            <property role="TrG5h" value="ocs" />
+            <node concept="3uibUv" id="3FsEmiltx4R" role="1tU5fm">
+              <ref role="3uigEE" to="bfxj:3kRMfhMv03j" resolve="ChangeSet" />
+            </node>
+            <node concept="2OqwBi" id="3FsEmiltxdf" role="33vP2m">
+              <node concept="1rXfSq" id="3FsEmiltxdg" role="2Oq$k0">
+                <ref role="37wK5l" node="5x0q8wkvS4u" resolve="getChangeSet" />
+              </node>
+              <node concept="liA8E" id="3FsEmiltxdh" role="2OqNvi">
+                <ref role="37wK5l" to="bfxj:3kRMfhMv9uc" resolve="getOppositeChangeSet" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3FsEmiltyNg" role="3cqZAp">
+          <node concept="3cpWsn" id="3FsEmiltyNh" role="3cpWs9">
+            <property role="TrG5h" value="m" />
+            <node concept="H_c77" id="3FsEmiltxCK" role="1tU5fm" />
+            <node concept="2OqwBi" id="3FsEmiltyNi" role="33vP2m">
+              <node concept="37vLTw" id="3FsEmiltyNj" role="2Oq$k0">
+                <ref role="3cqZAo" node="3FsEmiltxde" resolve="ocs" />
+              </node>
+              <node concept="liA8E" id="3FsEmiltyNk" role="2OqNvi">
+                <ref role="37wK5l" to="bfxj:3kRMfhMv9u3" resolve="getOldModel" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3FsEmiltzPr" role="3cqZAp">
+          <node concept="3cpWsn" id="3FsEmiltzPu" role="3cpWs9">
+            <property role="TrG5h" value="value" />
+            <node concept="17QB3L" id="3FsEmiltzPp" role="1tU5fm" />
+            <node concept="10Nm6u" id="3FsEmiltzV4" role="33vP2m" />
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3FsEmiltySb" role="3cqZAp">
+          <node concept="3clFbS" id="3FsEmiltySd" role="3clFbx">
+            <node concept="3clFbF" id="3FsEmilt$1b" role="3cqZAp">
+              <node concept="37vLTI" id="3FsEmilt$lp" role="3clFbG">
+                <node concept="37vLTw" id="3FsEmilt$19" role="37vLTJ">
+                  <ref role="3cqZAo" node="3FsEmiltzPu" resolve="value" />
+                </node>
+                <node concept="2OqwBi" id="3FsEmiltzpG" role="37vLTx">
+                  <node concept="1eOMI4" id="3FsEmiltzcw" role="2Oq$k0">
+                    <node concept="10QFUN" id="3FsEmiltzct" role="1eOMHV">
+                      <node concept="3uibUv" id="3FsEmiltzcy" role="10QFUM">
+                        <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
+                      </node>
+                      <node concept="37vLTw" id="3FsEmiltzgU" role="10QFUP">
+                        <ref role="3cqZAo" node="3FsEmiltyNh" resolve="m" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3FsEmiltzwq" role="2OqNvi">
+                    <ref role="37wK5l" to="g3l6:~ModelWithAttributes.getAttribute(java.lang.String)" resolve="getAttribute" />
+                    <node concept="37vLTw" id="3FsEmiltzz7" role="37wK5m">
+                      <ref role="3cqZAo" node="3FsEmiltqe6" resolve="myKey" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="3FsEmiltz4r" role="3clFbw">
+            <node concept="3uibUv" id="3FsEmiltz8N" role="2ZW6by">
+              <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
+            </node>
+            <node concept="37vLTw" id="3FsEmiltyW2" role="2ZW6bz">
+              <ref role="3cqZAo" node="3FsEmiltyNh" resolve="m" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3FsEmiltkvc" role="3cqZAp">
+          <node concept="2ShNRf" id="3FsEmilturc" role="3clFbG">
+            <node concept="1pGfFk" id="3FsEmiltwVp" role="2ShVmc">
+              <ref role="37wK5l" node="3FsEmiltknm" resolve="ModelAttributeChange" />
+              <node concept="37vLTw" id="3FsEmilt_vM" role="37wK5m">
+                <ref role="3cqZAo" node="3FsEmiltxde" resolve="ocs" />
+              </node>
+              <node concept="37vLTw" id="3FsEmilt_As" role="37wK5m">
+                <ref role="3cqZAo" node="3FsEmiltqe6" resolve="myKey" />
+              </node>
+              <node concept="37vLTw" id="3FsEmilt_Lp" role="37wK5m">
+                <ref role="3cqZAo" node="3FsEmiltzPu" resolve="value" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3FsEmiltkva" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3FsEmiltrsy" role="jymVt" />
+    <node concept="3clFb_" id="3FsEmiltkvd" role="jymVt">
+      <property role="TrG5h" value="getType" />
+      <node concept="3uibUv" id="3FsEmiltkve" role="3clF45">
+        <ref role="3uigEE" node="7inhnIFBpHM" resolve="ChangeType" />
+      </node>
+      <node concept="3Tm1VV" id="3FsEmiltkvf" role="1B3o_S" />
+      <node concept="2AHcQZ" id="3FsEmiltkvh" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3clFbS" id="3FsEmiltkvj" role="3clF47">
+        <node concept="3clFbF" id="3FsEmiltkYF" role="3cqZAp">
+          <node concept="Rm8GO" id="3FsEmiltkYG" role="3clFbG">
+            <ref role="Rm8GQ" node="7inhnIFBpI0" resolve="CHANGE" />
+            <ref role="1Px2BO" node="7inhnIFBpHM" resolve="ChangeType" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3FsEmiltkvk" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3FsEmiltnKP" role="jymVt" />
+    <node concept="3clFb_" id="3FsEmiltnmY" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="toString" />
+      <property role="DiZV1" value="false" />
+      <node concept="3Tm1VV" id="3FsEmiltnmZ" role="1B3o_S" />
+      <node concept="17QB3L" id="3FsEmiltnn0" role="3clF45" />
+      <node concept="2AHcQZ" id="3FsEmiltnn1" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="3clFbS" id="3FsEmiltnn2" role="3clF47">
+        <node concept="3clFbF" id="3FsEmiltrCt" role="3cqZAp">
+          <node concept="2YIFZM" id="3FsEmiltrD8" role="3clFbG">
+            <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+            <node concept="Xl_RD" id="3FsEmiltnn4" role="37wK5m">
+              <property role="Xl_RC" value="Change Model Attribute [%s]" />
+            </node>
+            <node concept="37vLTw" id="3FsEmiltrOU" role="37wK5m">
+              <ref role="3cqZAo" node="3FsEmiltqe6" resolve="myKey" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

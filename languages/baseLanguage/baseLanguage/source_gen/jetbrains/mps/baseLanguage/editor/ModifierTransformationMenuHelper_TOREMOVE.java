@@ -93,7 +93,7 @@ public class ModifierTransformationMenuHelper_TOREMOVE extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_r0u7vs_a0.TMP_WrapSM_r0u7vs_a0a(), new TMP_Group_r0u7vs_a0.TMP_Include_r0u7vs_b0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_r0u7vs_a0a(), new TMP_Include_r0u7vs_b0a());
     }
     public class TMP_WrapSM_r0u7vs_a0a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

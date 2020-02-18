@@ -66,14 +66,14 @@ public class TestSubstituteExceptionGroupChild_SubstituteMenu extends Substitute
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_o94mr0_a.SMP_Action_o94mr0_a0(), CONCEPTS.TestSubstituteExceptionGroupChild$JO));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_o94mr0_a0(), CONCEPTS.TestSubstituteExceptionGroupChild$JO));
     }
     private class SMP_Action_o94mr0_a0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        SMP_Group_o94mr0_a.SMP_Action_o94mr0_a0.Item item = new SMP_Group_o94mr0_a.SMP_Action_o94mr0_a0.Item(_context);
+        Item item = new Item(_context);
         String description;
         try {
           description = "Substitute item: " + item.getMatchingText("");
@@ -127,7 +127,7 @@ public class TestSubstituteExceptionGroupChild_SubstituteMenu extends Substitute
     @Nullable
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      SMP_Action_o94mr0_b.Item item = new SMP_Action_o94mr0_b.Item(_context);
+      Item item = new Item(_context);
       String description;
       try {
         description = "Substitute item: " + item.getMatchingText("");

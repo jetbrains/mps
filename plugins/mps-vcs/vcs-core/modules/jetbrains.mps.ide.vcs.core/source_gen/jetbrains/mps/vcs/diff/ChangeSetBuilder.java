@@ -50,9 +50,9 @@ import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.Collection;
 import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
-import jetbrains.mps.extapi.model.SModelData;
-import jetbrains.mps.smodel.DefaultSModel;
-import jetbrains.mps.vcs.diff.changes.DoNotGenerateOptionChange;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
+import java.util.function.BiConsumer;
+import jetbrains.mps.vcs.diff.changes.ModelAttributeChange;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/4652592318748341229", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
@@ -298,15 +298,18 @@ public class ChangeSetBuilder {
     });
     buildForLanguagesEngagedOnGeneration();
 
-    if (myNewModel instanceof SModelBase && myOldModel instanceof SModelBase) {
-      SModelData newModel = ((SModelBase) myNewModel).getModelData();
-      SModelData oldModel = ((SModelBase) myOldModel).getModelData();
+    if (myNewModel instanceof ModelWithAttributes && myOldModel instanceof ModelWithAttributes) {
+      ModelWithAttributes newModel = (ModelWithAttributes) myNewModel;
+      final ModelWithAttributes oldModel = (ModelWithAttributes) myOldModel;
 
-      if (newModel instanceof DefaultSModel && oldModel instanceof DefaultSModel) {
-        if (((DefaultSModel) newModel).getSModelHeader().isDoNotGenerate() != ((DefaultSModel) oldModel).getSModelHeader().isDoNotGenerate()) {
-          ListSequence.fromList(myNewChanges).addElement(new DoNotGenerateOptionChange(myChangeSet));
+      newModel.forEachAttribute(new BiConsumer<String, String>() {
+        public void accept(String k, String v) {
+          String oldv = oldModel.getAttribute(k);
+          if (!(Objects.equals(v, oldv))) {
+            ListSequence.fromList(myNewChanges).addElement(new ModelAttributeChange(myChangeSet, k, v));
+          }
         }
-      }
+      });
     }
   }
 

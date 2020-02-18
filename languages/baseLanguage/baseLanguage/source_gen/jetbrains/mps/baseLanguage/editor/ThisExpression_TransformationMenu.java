@@ -112,14 +112,14 @@ public class ThisExpression_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_xqoe4o_a1.TMP_Param_xqoe4o_a0b());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Param_xqoe4o_a0b());
     }
     private class TMP_Param_xqoe4o_a0b extends ParameterizedMenuPart<SNode, TransformationMenuItem, TransformationMenuContext> {
 
       @NotNull
       @Override
       protected List<TransformationMenuItem> createItems(SNode parameter, TransformationMenuContext context) {
-        return new TMP_Group_xqoe4o_a1.TMP_Param_xqoe4o_a0b.TMP_Action_xqoe4o_a0a1(parameter).createItems(context);
+        return new TMP_Action_xqoe4o_a0a1(parameter).createItems(context);
       }
 
       @Nullable
@@ -146,7 +146,7 @@ public class ThisExpression_TransformationMenu extends TransformationMenuBase {
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_xqoe4o_a1.TMP_Param_xqoe4o_a0b.TMP_Action_xqoe4o_a0a1.Item item = new TMP_Group_xqoe4o_a1.TMP_Param_xqoe4o_a0b.TMP_Action_xqoe4o_a0a1.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");

@@ -54,12 +54,12 @@ public class DefaultSModel extends SModel {
 
   @Override
   public void copyPropertiesTo(SModel to) {
+    // XXX what's the justification for the method? Single use from CopyUtil. Perhaps, use of ModelWithAttributes would be better?
     super.copyPropertiesTo(to);
     if (to instanceof DefaultSModel) {
       DefaultSModel dto = (DefaultSModel) to;
       dto.myHeader.setPersistenceVersion(myHeader.getPersistenceVersion());
-      dto.myHeader.setDoNotGenerate(myHeader.isDoNotGenerate());
-      // XXX not clear why we copy nothing but persistence version. What about doNotGenerate and other properties from header?
+      myHeader.getOptionalProperties().forEach((k, v) -> dto.myHeader.setOptionalProperty(k, v));
     }
   }
 

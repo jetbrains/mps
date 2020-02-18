@@ -86,7 +86,7 @@ public class Builder_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_85pfem_a.SMP_Wrap_85pfem_a0(), CONCEPTS.AsTypeBuilder$JG));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_85pfem_a0(), CONCEPTS.AsTypeBuilder$JG));
     }
     private class SMP_Wrap_85pfem_a0 extends WrapperSubstituteMenuPart {
       @NotNull

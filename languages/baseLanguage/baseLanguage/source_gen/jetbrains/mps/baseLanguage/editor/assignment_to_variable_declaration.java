@@ -110,7 +110,7 @@ public class assignment_to_variable_declaration extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_ebtzic_b0.TMP_WrapSM_ebtzic_a1a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_ebtzic_a1a());
     }
     public class TMP_WrapSM_ebtzic_a1a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull

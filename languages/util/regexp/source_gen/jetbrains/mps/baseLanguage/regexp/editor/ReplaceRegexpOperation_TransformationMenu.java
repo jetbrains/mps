@@ -110,12 +110,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a0b(), CONCEPTS.InlineRegexpExpression$Xy));
     }
     private class TMP_Action_z6skvi_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b.Item item = new TMP_Group_z6skvi_a1.TMP_Action_z6skvi_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -202,12 +202,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a1b(), CONCEPTS.InlineRegexpExpression$Xy));
     }
     private class TMP_Action_z6skvi_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b.Item item = new TMP_Group_z6skvi_b1.TMP_Action_z6skvi_a1b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -294,12 +294,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a2b(), CONCEPTS.InlineRegexpExpression$Xy));
     }
     private class TMP_Action_z6skvi_a2b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b.Item item = new TMP_Group_z6skvi_c1.TMP_Action_z6skvi_a2b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -386,12 +386,12 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a3b(), CONCEPTS.InlineRegexpExpression$Xy));
     }
     private class TMP_Action_z6skvi_a3b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b.Item item = new TMP_Group_z6skvi_d1.TMP_Action_z6skvi_a3b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

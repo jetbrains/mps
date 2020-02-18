@@ -115,12 +115,12 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_by8jv6_a1.TMP_Action_by8jv6_a0b(), CONCEPTS.OrCellSelector$lT));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a0b(), CONCEPTS.OrCellSelector$lT));
     }
     private class TMP_Action_by8jv6_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_by8jv6_a1.TMP_Action_by8jv6_a0b.Item item = new TMP_Group_by8jv6_a1.TMP_Action_by8jv6_a0b.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -219,12 +219,12 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_by8jv6_a2.TMP_Action_by8jv6_a0c(), CONCEPTS.OrCellSelector$lT));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a0c(), CONCEPTS.OrCellSelector$lT));
     }
     private class TMP_Action_by8jv6_a0c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_by8jv6_a2.TMP_Action_by8jv6_a0c.Item item = new TMP_Group_by8jv6_a2.TMP_Action_by8jv6_a0c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -323,12 +323,12 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_by8jv6_b2.TMP_Action_by8jv6_a1c(), CONCEPTS.Expression$TP), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_by8jv6_b2.TMP_Action_by8jv6_b1c(), CONCEPTS.Expression$TP));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a1c(), CONCEPTS.Expression$TP), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_b1c(), CONCEPTS.Expression$TP));
     }
     private class TMP_Action_by8jv6_a1c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_by8jv6_b2.TMP_Action_by8jv6_a1c.Item item = new TMP_Group_by8jv6_b2.TMP_Action_by8jv6_a1c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");
@@ -399,7 +399,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     private class TMP_Action_by8jv6_b1c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        TMP_Group_by8jv6_b2.TMP_Action_by8jv6_b1c.Item item = new TMP_Group_by8jv6_b2.TMP_Action_by8jv6_b1c.Item(context);
+        Item item = new Item(context);
         String description;
         try {
           description = "single item: " + item.getLabelText("");

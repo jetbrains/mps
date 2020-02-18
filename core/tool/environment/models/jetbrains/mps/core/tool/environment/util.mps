@@ -864,15 +864,16 @@
       </node>
     </node>
     <node concept="2tJIrI" id="6qMd1Cr3Bx$" role="jymVt" />
-    <node concept="3clFb_" id="6qMd1Cr3QHN" role="jymVt">
+    <node concept="2tJIrI" id="15VbAzMFvW9" role="jymVt" />
+    <node concept="3clFb_" id="15VbAzMFwbF" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="close" />
+      <property role="TrG5h" value="dispose" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="6qMd1Cr3QHQ" role="3clF47">
-        <node concept="3clFbF" id="6qMd1Cr4gfQ" role="3cqZAp">
-          <node concept="1rXfSq" id="6qMd1Cr4gfO" role="3clFbG">
+      <node concept="3clFbS" id="15VbAzMFwbI" role="3clF47">
+        <node concept="3clFbF" id="4sfB6SDOR3O" role="3cqZAp">
+          <node concept="1rXfSq" id="4sfB6SDOR3M" role="3clFbG">
             <ref role="37wK5l" to="z1c3:~ProjectBase.projectClosed()" resolve="projectClosed" />
           </node>
         </node>
@@ -884,28 +885,6 @@
             <node concept="liA8E" id="6qMd1Cr4iJY" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
             </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="6qMd1Cr4j6$" role="3cqZAp">
-          <node concept="3clFbT" id="6qMd1Cr4j7S" role="3cqZAk">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="6qMd1Cr3Q2K" role="1B3o_S" />
-      <node concept="10P_77" id="6qMd1Cr3QxN" role="3clF45" />
-    </node>
-    <node concept="2tJIrI" id="15VbAzMFvW9" role="jymVt" />
-    <node concept="3clFb_" id="15VbAzMFwbF" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="dispose" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="3clFbS" id="15VbAzMFwbI" role="3clF47">
-        <node concept="3clFbF" id="6qMd1Cr4jFp" role="3cqZAp">
-          <node concept="1rXfSq" id="6qMd1Cr4jFn" role="3clFbG">
-            <ref role="37wK5l" node="6qMd1Cr3QHN" resolve="close" />
           </node>
         </node>
         <node concept="3clFbF" id="15VbAzMFwtl" role="3cqZAp">

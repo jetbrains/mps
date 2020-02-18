@@ -78,7 +78,7 @@ public class TestSubstituteParentPropertyAndReference_ReferenceMenuPart extends 
     @NotNull
     @Override
     protected ReferenceTransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull SReferenceLink referenceLink, final SNode targetNode) {
-      return new TMP_Reference_17vnwe_a0.Item(referenceLink, targetNode, context);
+      return new Item(referenceLink, targetNode, context);
     }
     private class Item extends ReferenceTransformationMenuItem implements SubstituteCompletionActionItem {
       private final TransformationMenuContext _context;

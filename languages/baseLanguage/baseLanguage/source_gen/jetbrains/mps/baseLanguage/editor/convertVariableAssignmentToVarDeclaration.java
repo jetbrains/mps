@@ -103,7 +103,7 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_lavomd_a0.TMP_Group_lavomd_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_lavomd_a0a());
     }
     public class TMP_Group_lavomd_a0a extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
       private SNode assignment;
@@ -136,12 +136,12 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
       }
       @Override
       protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Group_lavomd_a0.TMP_Group_lavomd_a0a.TMP_Action_lavomd_a0a0(), CONCEPTS.Expression$TP));
+        return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_lavomd_a0a0(), CONCEPTS.Expression$TP));
       }
       private class TMP_Action_lavomd_a0a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          TMP_Group_lavomd_a0.TMP_Group_lavomd_a0a.TMP_Action_lavomd_a0a0.Item item = new TMP_Group_lavomd_a0.TMP_Group_lavomd_a0a.TMP_Action_lavomd_a0a0.Item(context);
+          Item item = new Item(context);
           String description;
           try {
             description = "single item: " + item.getLabelText("");

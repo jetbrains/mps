@@ -75,13 +75,13 @@ public class qualifiedSuperMethodCallExpression extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Group_37w0d7_a.SMP_Param_37w0d7_a0(), CONCEPTS.SuperMethodCall$Xa));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_37w0d7_a0(), CONCEPTS.SuperMethodCall$Xa));
     }
     private class SMP_Param_37w0d7_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
       @Override
       protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-        return new SMP_Group_37w0d7_a.SMP_Param_37w0d7_a0.SMP_Action_37w0d7_a0a(parameter).createItems(context);
+        return new SMP_Action_37w0d7_a0a(parameter).createItems(context);
       }
       @NotNull
       @Override
@@ -121,7 +121,7 @@ public class qualifiedSuperMethodCallExpression extends SubstituteMenuBase {
         @Nullable
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-          SMP_Group_37w0d7_a.SMP_Param_37w0d7_a0.SMP_Action_37w0d7_a0a.Item item = new SMP_Group_37w0d7_a.SMP_Param_37w0d7_a0.SMP_Action_37w0d7_a0a.Item(_context);
+          Item item = new Item(_context);
           String description;
           try {
             description = "Substitute item: " + item.getMatchingText("");

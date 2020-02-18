@@ -168,13 +168,13 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   public void setDoNotGenerate(boolean value) {
     assertCanChange();
 
-    getModelHeader().setDoNotGenerate(value);
+    getModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, Boolean.toString(value));
     setChanged(true);
   }
 
   @Override
   public boolean isDoNotGenerate() {
-    return getModelHeader().isDoNotGenerate();
+    return Boolean.parseBoolean(getModelHeader().getOptionalProperty(SModelHeader.DO_NOT_GENERATE));
   }
 
   @Override
@@ -189,7 +189,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   }
 
   @Override
-  public void forEach(@NotNull BiConsumer<String, String> action) {
+  public void forEachAttribute(@NotNull BiConsumer<String, String> action) {
     getModelHeader().getOptionalProperties().forEach(action);
   }
 

@@ -131,12 +131,6 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
-        <child id="1081516765348" name="expression" index="3fr31v" />
-      </concept>
-      <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
-        <child id="1160998896846" name="condition" index="1gVkn0" />
-      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -326,9 +320,80 @@
       <node concept="3Tm1VV" id="1s_TLxa97VI" role="1B3o_S" />
       <node concept="3cqZAl" id="1s_TLxa97VJ" role="3clF45" />
       <node concept="3clFbS" id="1s_TLxa97VK" role="3clF47">
-        <node concept="3clFbF" id="1s_TLxa98iK" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyzkqA" role="3clFbG">
-            <ref role="37wK5l" node="4tDMPuHd$Q6" resolve="initRunConfigurations" />
+        <node concept="3SKdUt" id="4sfB6SDPPET" role="3cqZAp">
+          <node concept="1PaTwC" id="4sfB6SDPPEU" role="1aUNEU">
+            <node concept="3oM_SD" id="4sfB6SDPPEW" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPGd" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPLp" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPM_" role="1PaTwD">
+              <property role="3oM_SC" value="executed" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPPa" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPQo" role="1PaTwD">
+              <property role="3oM_SC" value="&quot;later&quot;," />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPSZ" role="1PaTwD">
+              <property role="3oM_SC" value="so" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPTf" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPPUw" role="1PaTwD">
+              <property role="3oM_SC" value="check" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPQ6x" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPQ7W" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPQ9g" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPQaH" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPQb3" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPQcq" role="1PaTwD">
+              <property role="3oM_SC" value="yet" />
+            </node>
+            <node concept="3oM_SD" id="4sfB6SDPQcM" role="1PaTwD">
+              <property role="3oM_SC" value="closed" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4tDMPuHd$Q9" role="3cqZAp">
+          <node concept="2OqwBi" id="4tDMPuHd$Qa" role="3clFbw">
+            <node concept="37vLTw" id="2BHiRxeuq92" role="2Oq$k0">
+              <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
+            </node>
+            <node concept="liA8E" id="4tDMPuHd$Qc" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="4tDMPuHd$Qd" role="3clFbx">
+            <node concept="3cpWs6" id="4tDMPuHd$Qe" role="3cqZAp" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="4sfB6SDPOyl" role="3cqZAp" />
+        <node concept="3clFbF" id="7rvPfCBwHFM" role="3cqZAp">
+          <node concept="2OqwBi" id="7rvPfCBwHFU" role="3clFbG">
+            <node concept="37vLTw" id="2BHiRxeukog" role="2Oq$k0">
+              <ref role="3cqZAo" node="7rvPfCBwHFd" resolve="myState" />
+            </node>
+            <node concept="liA8E" id="7rvPfCBwHFZ" role="2OqNvi">
+              <ref role="37wK5l" node="1xg2vZtrX1Z" resolve="restoreState" />
+            </node>
           </node>
         </node>
       </node>
@@ -362,9 +427,70 @@
       <node concept="3Tm1VV" id="1s_TLxa97VM" role="1B3o_S" />
       <node concept="3cqZAl" id="1s_TLxa97VN" role="3clF45" />
       <node concept="3clFbS" id="1s_TLxa97VO" role="3clF47">
-        <node concept="3clFbF" id="1s_TLxa98iN" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyzbZS" role="3clFbG">
-            <ref role="37wK5l" node="4tDMPuHd$R0" resolve="disposeRunConfigurations" />
+        <node concept="3SKdUt" id="o76KkZUXZP" role="3cqZAp">
+          <node concept="1PaTwC" id="o76KkZUXZQ" role="1aUNEU">
+            <node concept="3oM_SD" id="o76KkZUXZS" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY51" role="1PaTwD">
+              <property role="3oM_SC" value="current" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY5D" role="1PaTwD">
+              <property role="3oM_SC" value="contract" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY6q" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY6O" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY7f" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY0k" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY0v" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY0F" role="1PaTwD">
+              <property role="3oM_SC" value="executed" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY1g" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY1u" role="1PaTwD">
+              <property role="3oM_SC" value="&quot;later&quot;," />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY25" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY2l" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY2I" role="1PaTwD">
+              <property role="3oM_SC" value="when" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY38" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY3r" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY3J" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY4c" role="1PaTwD">
+              <property role="3oM_SC" value="disposal" />
+            </node>
+            <node concept="3oM_SD" id="o76KkZUY4E" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4sfB6SDPRak" role="3cqZAp">
+          <node concept="1rXfSq" id="4sfB6SDPRal" role="3clFbG">
+            <ref role="37wK5l" node="4tfwdmbGEtd" resolve="disposeRunContentDescriptors" />
           </node>
         </node>
       </node>
@@ -439,62 +565,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="4tfwdmbFQg9" role="jymVt" />
-    <node concept="3clFb_" id="4tDMPuHd$Q6" role="jymVt">
-      <property role="TrG5h" value="initRunConfigurations" />
-      <node concept="3cqZAl" id="4tDMPuHd$Q7" role="3clF45" />
-      <node concept="3clFbS" id="4tDMPuHd$Q8" role="3clF47">
-        <node concept="3clFbJ" id="4tDMPuHd$Q9" role="3cqZAp">
-          <node concept="2OqwBi" id="4tDMPuHd$Qa" role="3clFbw">
-            <node concept="37vLTw" id="2BHiRxeuq92" role="2Oq$k0">
-              <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
-            </node>
-            <node concept="liA8E" id="4tDMPuHd$Qc" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
-            </node>
-          </node>
-          <node concept="3clFbS" id="4tDMPuHd$Qd" role="3clFbx">
-            <node concept="3cpWs6" id="4tDMPuHd$Qe" role="3cqZAp" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="7rvPfCBwHFM" role="3cqZAp">
-          <node concept="2OqwBi" id="7rvPfCBwHFU" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeukog" role="2Oq$k0">
-              <ref role="3cqZAo" node="7rvPfCBwHFd" resolve="myState" />
-            </node>
-            <node concept="liA8E" id="7rvPfCBwHFZ" role="2OqNvi">
-              <ref role="37wK5l" node="1xg2vZtrX1Z" resolve="restoreState" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="59E0K5d_FSf" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="4tfwdmbFNPW" role="jymVt" />
-    <node concept="3clFb_" id="4tDMPuHd$R0" role="jymVt">
-      <property role="TrG5h" value="disposeRunConfigurations" />
-      <node concept="3cqZAl" id="4tDMPuHd$R1" role="3clF45" />
-      <node concept="3clFbS" id="4tDMPuHd$R2" role="3clF47">
-        <node concept="1gVbGN" id="4tDMPuHd$R3" role="3cqZAp">
-          <node concept="3fqX7Q" id="4tDMPuHd$R4" role="1gVkn0">
-            <node concept="2OqwBi" id="4tDMPuHd$R5" role="3fr31v">
-              <node concept="37vLTw" id="2BHiRxeumYB" role="2Oq$k0">
-                <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="4tDMPuHd$R7" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="4tfwdmbGEth" role="3cqZAp">
-          <node concept="1rXfSq" id="4tfwdmbGEtg" role="3clFbG">
-            <ref role="37wK5l" node="4tfwdmbGEtd" resolve="disposeRunContentDescriptors" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="59E0K5d_FSg" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="4tfwdmbGFLO" role="jymVt" />
     <node concept="3clFb_" id="4tfwdmbGEtd" role="jymVt">
       <property role="TrG5h" value="disposeRunContentDescriptors" />
       <node concept="3Tm6S6" id="4tfwdmbGEte" role="1B3o_S" />

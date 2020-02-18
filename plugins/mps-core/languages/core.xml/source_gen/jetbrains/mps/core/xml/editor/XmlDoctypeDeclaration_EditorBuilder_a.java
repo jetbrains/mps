@@ -202,7 +202,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.externalId$sRaL, CONCEPTS.XmlExternalId$et), new SubstituteInfoPartExt[]{new externalIdSingleRoleHandler_kqvvq_c1a.XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_a0c1a(), new externalIdSingleRoleHandler_kqvvq_c1a.XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_b0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.externalId$sRaL, CONCEPTS.XmlExternalId$et), new SubstituteInfoPartExt[]{new XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_a0c1a(), new XmlDoctypeDeclaration_externalId_cellMenu_kqvvq_b0c1a(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.externalId$sRaL);

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="MPS.Platform" uuid="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61" compileInMPS="false">
-  <models />
+  <models>
+    <modelRoot type="java_classes">
+      <sourceRoot path="${mps_home}/lib/mps-platform.jar" />
+      <sourceRoot path="${mps_home}/lib/mps-icons.jar" />
+    </modelRoot>
+  </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
+  <stubModelEntries>
+    <stubModelEntry path="${mps_home}/lib/mps-platform.jar" />
+    <stubModelEntry path="${mps_home}/lib/mps-icons.jar" />
+  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>

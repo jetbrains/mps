@@ -48,7 +48,6 @@ import java.util.concurrent.atomic.AtomicReference;
 /**
  * danilla 12/10/12
  */
-
 public class JpsSolutionIdea extends Solution {
 
   private JpsModule myModule;
@@ -58,7 +57,6 @@ public class JpsSolutionIdea extends Solution {
 
   public JpsSolutionIdea(@NotNull JpsModule module, SolutionDescriptor descriptor, CompileContext compileCtx) {
     super(descriptor, null);
-    myModule = module;
     myModule = module;
     myCompileContext = compileCtx;
   }
@@ -171,7 +169,7 @@ public class JpsSolutionIdea extends Solution {
   @Override
   protected Iterable<ModelRoot> loadRoots() {
     if (myContributedModelRoots == null) {
-      myContributedModelRoots = new HashSet<ModelRoot>();
+      myContributedModelRoots = new HashSet<>();
       for (JpsModelRootContributor c : JpsServiceManager.getInstance().getExtensions(JpsModelRootContributor.class)) {
         for (ModelRoot root : c.getModelRoots(myModule)) {
           myContributedModelRoots.add(root);

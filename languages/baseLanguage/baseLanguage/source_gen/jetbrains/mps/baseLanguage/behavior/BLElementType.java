@@ -10,43 +10,43 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public enum BLElementType {
   TYPE() {
     public boolean accept(SNode target) {
-      return SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.Classifier$hJ);
+      return SNodeOperations.isInstanceOf(target, CONCEPTS.Classifier$hJ);
     }
 
   },
   FIELD() {
     public boolean accept(SNode target) {
-      return SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.StaticFieldDeclaration$R5);
+      return SNodeOperations.isInstanceOf(target, CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(target, CONCEPTS.StaticFieldDeclaration$R5);
     }
 
   },
   METHOD() {
     public boolean accept(SNode target) {
-      return SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.BaseMethodDeclaration$RR);
+      return SNodeOperations.isInstanceOf(target, CONCEPTS.BaseMethodDeclaration$RR);
     }
 
   },
   PARAMETER() {
     public boolean accept(SNode target) {
-      return SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.ParameterDeclaration$qU);
+      return SNodeOperations.isInstanceOf(target, CONCEPTS.ParameterDeclaration$qU);
     }
 
   },
   CONSTRUCTOR() {
     public boolean accept(SNode target) {
-      return SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.ConstructorDeclaration$5U);
+      return SNodeOperations.isInstanceOf(target, CONCEPTS.ConstructorDeclaration$5U);
     }
 
   },
   LOCAL_VARIABLE() {
     public boolean accept(SNode target) {
-      return SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.LocalVariableDeclaration$Bf);
+      return SNodeOperations.isInstanceOf(target, CONCEPTS.LocalVariableDeclaration$Bf);
     }
 
   },
   ANNOTATION_TYPE() {
     public boolean accept(SNode target) {
-      return SNodeOperations.isInstanceOf(target, BLElementType.CONCEPTS.Annotation$Os);
+      return SNodeOperations.isInstanceOf(target, CONCEPTS.Annotation$Os);
     }
 
   },

@@ -83,6 +83,9 @@ public final class SPrimitiveTypes {
       if (string.startsWith("+")) {
         return SType.NOT_A_VALUE;
       }
+      if (string.length() > 1 && string.charAt(0) == '0') {
+        return SType.NOT_A_VALUE;
+      }
       try {
         return Integer.parseInt(string);
       } catch (NumberFormatException e) {
