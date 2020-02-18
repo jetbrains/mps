@@ -126,6 +126,27 @@
     <node concept="lpD6D" id="6hx2iFnoqPd" role="lpD6w">
       <ref role="lpD7u" to="2j2z:6hx2iFnoizQ" resolve="Test_CreatePropertyPatternIntention" />
     </node>
+    <node concept="lpD6D" id="5zNZr7ZTSOI" role="lpD6w">
+      <ref role="lpD7u" to="2j2z:7KQFBrEr0NL" resolve="Test_LightPattern" />
+    </node>
+    <node concept="lpD6D" id="5zNZr7ZTSPh" role="lpD6w">
+      <ref role="lpD7u" to="srq7:747TPqO$Xge" resolve="LightPattern_Reference_Test" />
+    </node>
+    <node concept="lpD6D" id="5zNZr7ZTSPQ" role="lpD6w">
+      <ref role="lpD7u" to="srq7:3fHwAfrvXrv" resolve="LightPattern_Child_Test" />
+    </node>
+    <node concept="lpD6D" id="5zNZr7ZTSQt" role="lpD6w">
+      <ref role="lpD7u" to="srq7:5sDn0OnmnrJ" resolve="LightPattern_List_Test" />
+    </node>
+    <node concept="lpD6D" id="5zNZr7ZTStF" role="lpD6w">
+      <ref role="lpD7u" to="srq7:7KQFBrEqjLZ" resolve="Pattern_References" />
+    </node>
+    <node concept="lpD6D" id="5zNZr7ZTSRI" role="lpD6w">
+      <ref role="lpD7u" to="srq7:7KQFBrEv9hF" resolve="LightPattern_Inline_Test" />
+    </node>
+    <node concept="lpD6D" id="5zNZr7ZTSSz" role="lpD6w">
+      <ref role="lpD7u" to="srq7:7KQFBrEpBDV" resolve="LightPattern_Property_Test" />
+    </node>
   </node>
   <node concept="lpD6F" id="2m_lP2P6ovq">
     <node concept="2R4zua" id="2m_lP2P6ovr" role="2R4z3u">
