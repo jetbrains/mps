@@ -26,14 +26,22 @@ import org.jetbrains.mps.openapi.model.SNode;
 /**
  * @author Fedor Isakov
  */
-public class SharedSessionTypecheckingController extends DefaultTypecheckingController {
+public class SharedSessionTypecheckingController extends TypecheckingController {
 
   private TypecheckingSessionImpl mySharedSession;
+  private final TypecheckingController myDelegate;
 
-  public SharedSessionTypecheckingController(TypecheckingBackend typecheckingBackend, TypecheckingSessionImpl session) {
-    super(typecheckingBackend, TypecheckingSession.Flags.basic());
+  /**
+   * Delegate controller is the bottom-most controller from the controller stack of TypecheckingFacade for this thread.
+   */
+  public SharedSessionTypecheckingController(TypecheckingBackend typecheckingBackend,
+                                             TypecheckingSessionImpl session,
+                                             TypecheckingController delegate)
+  {
+    super(typecheckingBackend);
     mySharedSession = session;
     mySharedSession.incUsages();
+    myDelegate = delegate;
   }
 
   @Override
@@ -42,13 +50,13 @@ public class SharedSessionTypecheckingController extends DefaultTypecheckingCont
       mySharedSession.decUsages();
       this.mySharedSession = null;
     }
-    super.dispose();
+    // not disposing the delegate: TypecheckingFacade is responsible for it
   }
 
   @NotNull
   @Override
   protected Handle requestSession(@NotNull Flags flags) {
-    return super.requestSession(flags);
+    return myDelegate.requestSession(flags);
   }
 
   @NotNull
@@ -59,13 +67,13 @@ public class SharedSessionTypecheckingController extends DefaultTypecheckingCont
       return mySharedSession.getQueries(selectProvider(src, trg, trgConcept));
       
     } else {
-      return super.getQueries(src, trg, trgConcept);
+      return myDelegate.getQueries(src, trg, trgConcept);
     }
   }
 
   @Override
   protected void sessionReleased(@NotNull TypecheckingSessionImpl session) {
-    super.sessionReleased(session);
+    myDelegate.sessionReleased(session);
   }
   
 }
