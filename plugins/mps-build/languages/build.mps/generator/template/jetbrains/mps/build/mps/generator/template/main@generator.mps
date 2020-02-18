@@ -488,6 +488,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
@@ -14859,8 +14862,10 @@
                                         <ref role="2pJxaS" to="kdzh:QkG2t1bKw$" resolve="GeneratorInternal_String" />
                                         <node concept="2pJxcG" id="QkG2t1bOZK" role="2pJxcM">
                                           <ref role="2pJxcJ" to="kdzh:QkG2t1bKwB" resolve="path" />
-                                          <node concept="37vLTw" id="2BHiRxgm9sf" role="28ntcv">
-                                            <ref role="3cqZAo" node="QkG2t1bOZp" resolve="it" />
+                                          <node concept="WxPPo" id="6bbvpKWHoNa" role="28ntcv">
+                                            <node concept="37vLTw" id="2BHiRxgm9sf" role="WxPPp">
+                                              <ref role="3cqZAo" node="QkG2t1bOZp" resolve="it" />
+                                            </node>
                                           </node>
                                         </node>
                                       </node>
@@ -16132,8 +16137,10 @@
                                         <ref role="2pJxaS" to="kdzh:QkG2t1bKw$" resolve="GeneratorInternal_String" />
                                         <node concept="2pJxcG" id="2NPgP3pAJQi" role="2pJxcM">
                                           <ref role="2pJxcJ" to="kdzh:QkG2t1bKwB" resolve="path" />
-                                          <node concept="37vLTw" id="2BHiRxglp2Q" role="28ntcv">
-                                            <ref role="3cqZAo" node="2NPgP3pAJQk" resolve="it" />
+                                          <node concept="WxPPo" id="6bbvpKWHoNb" role="28ntcv">
+                                            <node concept="37vLTw" id="2BHiRxglp2Q" role="WxPPp">
+                                              <ref role="3cqZAo" node="2NPgP3pAJQk" resolve="it" />
+                                            </node>
                                           </node>
                                         </node>
                                       </node>
@@ -17425,12 +17432,14 @@
                                     <ref role="2pJxaS" to="3ior:5wKGSSmC1pc" resolve="GeneratorInternal_ProjectDependency" />
                                     <node concept="2pJxcG" id="5wKGSSnLZX6" role="2pJxcM">
                                       <ref role="2pJxcJ" to="3ior:5wKGSSmC1uX" resolve="path" />
-                                      <node concept="1LFfDK" id="5wKGSSnLZX7" role="28ntcv">
-                                        <node concept="3cmrfG" id="5wKGSSnLZX8" role="1LF_Uc">
-                                          <property role="3cmrfH" value="1" />
-                                        </node>
-                                        <node concept="37vLTw" id="5wKGSSnLZX9" role="1LFl5Q">
-                                          <ref role="3cqZAo" node="5wKGSSnLZXf" resolve="it" />
+                                      <node concept="WxPPo" id="6bbvpKWHoNc" role="28ntcv">
+                                        <node concept="1LFfDK" id="5wKGSSnLZX7" role="WxPPp">
+                                          <node concept="3cmrfG" id="5wKGSSnLZX8" role="1LF_Uc">
+                                            <property role="3cmrfH" value="1" />
+                                          </node>
+                                          <node concept="37vLTw" id="5wKGSSnLZX9" role="1LFl5Q">
+                                            <ref role="3cqZAo" node="5wKGSSnLZXf" resolve="it" />
+                                          </node>
                                         </node>
                                       </node>
                                     </node>

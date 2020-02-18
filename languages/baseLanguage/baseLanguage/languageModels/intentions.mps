@@ -369,6 +369,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
@@ -25365,8 +25368,10 @@
                 <ref role="2pJxaS" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
                 <node concept="2pJxcG" id="3jCIZp$uiBw" role="2pJxcM">
                   <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                  <node concept="37vLTw" id="3jCIZp$tcK6" role="28ntcv">
-                    <ref role="3cqZAo" node="3jCIZp$sMJa" resolve="name" />
+                  <node concept="WxPPo" id="6bbvpKWHoKK" role="28ntcv">
+                    <node concept="37vLTw" id="3jCIZp$tcK6" role="WxPPp">
+                      <ref role="3cqZAo" node="3jCIZp$sMJa" resolve="name" />
+                    </node>
                   </node>
                 </node>
                 <node concept="2pIpSj" id="3jCIZp$uiBy" role="2pJxcM">
@@ -26298,8 +26303,10 @@
               <ref role="2pJxaS" to="tpee:fz12cDA" resolve="ClassConcept" />
               <node concept="2pJxcG" id="6_mTUEdwaoE" role="2pJxcM">
                 <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                <node concept="37vLTw" id="6_mTUEdwaoF" role="28ntcv">
-                  <ref role="3cqZAo" node="6_mTUEdwaov" resolve="name" />
+                <node concept="WxPPo" id="6bbvpKWHoKL" role="28ntcv">
+                  <node concept="37vLTw" id="6_mTUEdwaoF" role="WxPPp">
+                    <ref role="3cqZAo" node="6_mTUEdwaov" resolve="name" />
+                  </node>
                 </node>
               </node>
               <node concept="2pIpSj" id="6_mTUEdxgEh" role="2pJxcM">

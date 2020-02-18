@@ -695,6 +695,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
@@ -48631,30 +48634,34 @@
                           <ref role="2pJxaS" to="tpc2:3J8eUL7n4GQ" resolve="SubstituteMenu_RefPresentationTemplate" />
                           <node concept="2pJxcG" id="1OqbCsxTg2p" role="2pJxcM">
                             <ref role="2pJxcJ" to="tpce:3J8eUL7n4Hp" resolve="prefix" />
-                            <node concept="2YIFZM" id="1OqbCsy8jli" role="28ntcv">
-                              <ref role="1Pybhc" to="18ew:~StringUtil" resolve="StringUtil" />
-                              <ref role="37wK5l" to="18ew:~StringUtil.emptyIfNull(java.lang.String)" resolve="emptyIfNull" />
-                              <node concept="2OqwBi" id="1OqbCsxTgcj" role="37wK5m">
-                                <node concept="37vLTw" id="1OqbCsxTg3y" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="1OqbCsxT93B" resolve="originTemplate" />
-                                </node>
-                                <node concept="3TrcHB" id="1OqbCsxTgrC" role="2OqNvi">
-                                  <ref role="3TsBF5" to="tpce:3J8eUL7n4Hp" resolve="prefix" />
+                            <node concept="WxPPo" id="6bbvpKWHoL0" role="28ntcv">
+                              <node concept="2YIFZM" id="1OqbCsy8jli" role="WxPPp">
+                                <ref role="1Pybhc" to="18ew:~StringUtil" resolve="StringUtil" />
+                                <ref role="37wK5l" to="18ew:~StringUtil.emptyIfNull(java.lang.String)" resolve="emptyIfNull" />
+                                <node concept="2OqwBi" id="1OqbCsxTgcj" role="37wK5m">
+                                  <node concept="37vLTw" id="1OqbCsxTg3y" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="1OqbCsxT93B" resolve="originTemplate" />
+                                  </node>
+                                  <node concept="3TrcHB" id="1OqbCsxTgrC" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tpce:3J8eUL7n4Hp" resolve="prefix" />
+                                  </node>
                                 </node>
                               </node>
                             </node>
                           </node>
                           <node concept="2pJxcG" id="1OqbCsxTgu2" role="2pJxcM">
                             <ref role="2pJxcJ" to="tpce:3J8eUL7n4Hs" resolve="suffix" />
-                            <node concept="2YIFZM" id="1OqbCsy8jvY" role="28ntcv">
-                              <ref role="1Pybhc" to="18ew:~StringUtil" resolve="StringUtil" />
-                              <ref role="37wK5l" to="18ew:~StringUtil.emptyIfNull(java.lang.String)" resolve="emptyIfNull" />
-                              <node concept="2OqwBi" id="1OqbCsy8jvZ" role="37wK5m">
-                                <node concept="37vLTw" id="1OqbCsy8jw0" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="1OqbCsxT93B" resolve="originTemplate" />
-                                </node>
-                                <node concept="3TrcHB" id="1OqbCsy8jPj" role="2OqNvi">
-                                  <ref role="3TsBF5" to="tpce:3J8eUL7n4Hs" resolve="suffix" />
+                            <node concept="WxPPo" id="6bbvpKWHoL1" role="28ntcv">
+                              <node concept="2YIFZM" id="1OqbCsy8jvY" role="WxPPp">
+                                <ref role="1Pybhc" to="18ew:~StringUtil" resolve="StringUtil" />
+                                <ref role="37wK5l" to="18ew:~StringUtil.emptyIfNull(java.lang.String)" resolve="emptyIfNull" />
+                                <node concept="2OqwBi" id="1OqbCsy8jvZ" role="37wK5m">
+                                  <node concept="37vLTw" id="1OqbCsy8jw0" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="1OqbCsxT93B" resolve="originTemplate" />
+                                  </node>
+                                  <node concept="3TrcHB" id="1OqbCsy8jPj" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tpce:3J8eUL7n4Hs" resolve="suffix" />
+                                  </node>
                                 </node>
                               </node>
                             </node>

@@ -84,6 +84,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
       <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
@@ -181,12 +184,14 @@
               <ref role="2pJxaS" to="86gq:Xiy0zT4FQ3" resolve="DebuggerType" />
               <node concept="2pJxcG" id="2F8bNQskaR" role="2pJxcM">
                 <ref role="2pJxcJ" to="86gq:2eCkIB4f4lH" resolve="name" />
-                <node concept="2OqwBi" id="2F8bNQskd4" role="28ntcv">
-                  <node concept="1YBJjd" id="2F8bNQskbg" role="2Oq$k0">
-                    <ref role="1YBMHb" node="2cgI0d$wEWE" resolve="debuggerReference" />
-                  </node>
-                  <node concept="3TrcHB" id="2F8bNQskmm" role="2OqNvi">
-                    <ref role="3TsBF5" to="86gq:Xiy0zT4H5l" resolve="debuggerName" />
+                <node concept="WxPPo" id="6bbvpKWHoN4" role="28ntcv">
+                  <node concept="2OqwBi" id="2F8bNQskd4" role="WxPPp">
+                    <node concept="1YBJjd" id="2F8bNQskbg" role="2Oq$k0">
+                      <ref role="1YBMHb" node="2cgI0d$wEWE" resolve="debuggerReference" />
+                    </node>
+                    <node concept="3TrcHB" id="2F8bNQskmm" role="2OqNvi">
+                      <ref role="3TsBF5" to="86gq:Xiy0zT4H5l" resolve="debuggerName" />
+                    </node>
                   </node>
                 </node>
               </node>

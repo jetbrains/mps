@@ -3,7 +3,7 @@
   <compileInIDEA />
   <models>
     <modelRoot type="java_classes">
-      <sourceRoot path="${mps_home}/lib/mps-constraints-runtime.jar" />
+      <sourceRoot path="${platform_lib}/mps-constraints-runtime.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -13,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${mps_home}/lib/mps-constraints-runtime.jar" />
+    <stubModelEntry path="${platform_lib}/mps-constraints-runtime.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

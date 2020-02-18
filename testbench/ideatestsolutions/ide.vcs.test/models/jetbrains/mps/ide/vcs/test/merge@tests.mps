@@ -8,7 +8,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
@@ -420,6 +420,9 @@
       <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
+      </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
       </concept>
     </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
@@ -3405,8 +3408,10 @@
                         <ref role="2pJxaS" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
                         <node concept="2pJxcG" id="4CruXksy55A" role="2pJxcM">
                           <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                          <node concept="Xl_RD" id="4CruXksy55B" role="28ntcv">
-                            <property role="Xl_RC" value="newMethod" />
+                          <node concept="WxPPo" id="6bbvpKWHq0s" role="28ntcv">
+                            <node concept="Xl_RD" id="4CruXksy55B" role="WxPPp">
+                              <property role="Xl_RC" value="newMethod" />
+                            </node>
                           </node>
                         </node>
                         <node concept="2pIpSj" id="4CruXksy55C" role="2pJxcM">
@@ -4681,8 +4686,10 @@
                               <ref role="2pJxaS" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
                               <node concept="2pJxcG" id="7HgS$VkfEqy" role="2pJxcM">
                                 <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                                <node concept="Xl_RD" id="7HgS$VkfEqz" role="28ntcv">
-                                  <property role="Xl_RC" value="newMethod" />
+                                <node concept="WxPPo" id="6bbvpKWHq0t" role="28ntcv">
+                                  <node concept="Xl_RD" id="7HgS$VkfEqz" role="WxPPp">
+                                    <property role="Xl_RC" value="newMethod" />
+                                  </node>
                                 </node>
                               </node>
                               <node concept="2pIpSj" id="4CruXksxMYJ" role="2pJxcM">
@@ -9073,8 +9080,10 @@
                         <ref role="2pJxaS" to="tpee:fz12cDA" resolve="ClassConcept" />
                         <node concept="2pJxcG" id="4CruXkswDH0" role="2pJxcM">
                           <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                          <node concept="Xl_RD" id="4CruXkswDH1" role="28ntcv">
-                            <property role="Xl_RC" value="NewRoot" />
+                          <node concept="WxPPo" id="6bbvpKWHq0u" role="28ntcv">
+                            <node concept="Xl_RD" id="4CruXkswDH1" role="WxPPp">
+                              <property role="Xl_RC" value="NewRoot" />
+                            </node>
                           </node>
                         </node>
                       </node>
@@ -10925,8 +10934,10 @@
                           <ref role="2pJxaS" to="tpee:fz12cDA" resolve="ClassConcept" />
                           <node concept="2pJxcG" id="7HgS$VjRdMK" role="2pJxcM">
                             <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                            <node concept="Xl_RD" id="7HgS$VjRedg" role="28ntcv">
-                              <property role="Xl_RC" value="NewRoot" />
+                            <node concept="WxPPo" id="6bbvpKWHq0v" role="28ntcv">
+                              <node concept="Xl_RD" id="7HgS$VjRedg" role="WxPPp">
+                                <property role="Xl_RC" value="NewRoot" />
+                              </node>
                             </node>
                           </node>
                         </node>
@@ -13282,8 +13293,10 @@
                   <ref role="2pJxaS" to="tpee:fz12cDA" resolve="ClassConcept" />
                   <node concept="2pJxcG" id="7HgS$VkfQ4h" role="2pJxcM">
                     <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                    <node concept="Xl_RD" id="7HgS$VkfQ5G" role="28ntcv">
-                      <property role="Xl_RC" value="NewRoot" />
+                    <node concept="WxPPo" id="6bbvpKWHq0w" role="28ntcv">
+                      <node concept="Xl_RD" id="7HgS$VkfQ5G" role="WxPPp">
+                        <property role="Xl_RC" value="NewRoot" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -13600,8 +13613,10 @@
                           <ref role="2pJxaS" to="tpee:fz12cDA" resolve="ClassConcept" />
                           <node concept="2pJxcG" id="7HgS$Vk7wEV" role="2pJxcM">
                             <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                            <node concept="Xl_RD" id="7HgS$Vk7wEW" role="28ntcv">
-                              <property role="Xl_RC" value="NewRoot" />
+                            <node concept="WxPPo" id="6bbvpKWHq0x" role="28ntcv">
+                              <node concept="Xl_RD" id="7HgS$Vk7wEW" role="WxPPp">
+                                <property role="Xl_RC" value="NewRoot" />
+                              </node>
                             </node>
                           </node>
                         </node>
@@ -14778,8 +14793,10 @@
                   <ref role="2pJxaS" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
                   <node concept="2pJxcG" id="7HgS$Vk554z" role="2pJxcM">
                     <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                    <node concept="Xl_RD" id="7HgS$Vk55nP" role="28ntcv">
-                      <property role="Xl_RC" value="m1" />
+                    <node concept="WxPPo" id="6bbvpKWHq0y" role="28ntcv">
+                      <node concept="Xl_RD" id="7HgS$Vk55nP" role="WxPPp">
+                        <property role="Xl_RC" value="m1" />
+                      </node>
                     </node>
                   </node>
                   <node concept="2pIpSj" id="7HgS$Vk56je" role="2pJxcM">

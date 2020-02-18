@@ -6,7 +6,7 @@
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
   </languages>
   <imports>
     <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
@@ -245,6 +245,9 @@
       <concept id="5455284157993863840" name="jetbrains.mps.lang.quotation.structure.NodeBuilderNode" flags="nn" index="2pJPED">
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
+      </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
@@ -2251,8 +2254,10 @@
                             <ref role="2pJxaS" to="6qko:4Q7oJrne$rI" resolve="PropertyCollection" />
                             <node concept="2pJxcG" id="3urGXjh_4RP" role="2pJxcM">
                               <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                              <node concept="2GrUjf" id="3urGXjhArpq" role="28ntcv">
-                                <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="fileName" />
+                              <node concept="WxPPo" id="6bbvpKWHoNT" role="28ntcv">
+                                <node concept="2GrUjf" id="3urGXjhArpq" role="WxPPp">
+                                  <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="fileName" />
+                                </node>
                               </node>
                             </node>
                           </node>
@@ -2438,14 +2443,18 @@
                                       <ref role="2pJxaS" to="6qko:4Q7oJrne$rL" resolve="Property" />
                                       <node concept="2pJxcG" id="3urGXjh_97$" role="2pJxcM">
                                         <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                                        <node concept="37vLTw" id="3urGXjh_9nK" role="28ntcv">
-                                          <ref role="3cqZAo" node="3urGXjh$IuH" resolve="key" />
+                                        <node concept="WxPPo" id="6bbvpKWHoNU" role="28ntcv">
+                                          <node concept="37vLTw" id="3urGXjh_9nK" role="WxPPp">
+                                            <ref role="3cqZAo" node="3urGXjh$IuH" resolve="key" />
+                                          </node>
                                         </node>
                                       </node>
                                       <node concept="2pJxcG" id="3urGXjh_9Ol" role="2pJxcM">
                                         <ref role="2pJxcJ" to="6qko:4Q7oJrne$rO" resolve="value" />
-                                        <node concept="37vLTw" id="3urGXjh_a2Y" role="28ntcv">
-                                          <ref role="3cqZAo" node="3urGXjh$MOa" resolve="value" />
+                                        <node concept="WxPPo" id="6bbvpKWHoNV" role="28ntcv">
+                                          <node concept="37vLTw" id="3urGXjh_a2Y" role="WxPPp">
+                                            <ref role="3cqZAo" node="3urGXjh$MOa" resolve="value" />
+                                          </node>
                                         </node>
                                       </node>
                                     </node>

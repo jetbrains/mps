@@ -468,6 +468,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
@@ -11866,12 +11869,14 @@
                                 <ref role="2pJxaS" to="3ior:5wKGSSmC1pc" resolve="GeneratorInternal_ProjectDependency" />
                                 <node concept="2pJxcG" id="5wKGSSmTIlK" role="2pJxcM">
                                   <ref role="2pJxcJ" to="3ior:5wKGSSmC1uX" resolve="path" />
-                                  <node concept="1LFfDK" id="5wKGSSmU6Nd" role="28ntcv">
-                                    <node concept="3cmrfG" id="5wKGSSmU6Nk" role="1LF_Uc">
-                                      <property role="3cmrfH" value="1" />
-                                    </node>
-                                    <node concept="37vLTw" id="5wKGSSmTXwe" role="1LFl5Q">
-                                      <ref role="3cqZAo" node="5wKGSSmT21J" resolve="it" />
+                                  <node concept="WxPPo" id="6bbvpKWHoNi" role="28ntcv">
+                                    <node concept="1LFfDK" id="5wKGSSmU6Nd" role="WxPPp">
+                                      <node concept="3cmrfG" id="5wKGSSmU6Nk" role="1LF_Uc">
+                                        <property role="3cmrfH" value="1" />
+                                      </node>
+                                      <node concept="37vLTw" id="5wKGSSmTXwe" role="1LFl5Q">
+                                        <ref role="3cqZAo" node="5wKGSSmT21J" resolve="it" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>

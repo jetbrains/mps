@@ -172,6 +172,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -782,12 +785,14 @@
                               <ref role="2pJxaS" to="tp4k:qbzkx3HQ47" resolve="NumberToolShortcut" />
                               <node concept="2pJxcG" id="5Zjdb0xETqL" role="2pJxcM">
                                 <ref role="2pJxcJ" to="tp4k:qbzkx3HQ4z" resolve="number" />
-                                <node concept="2OqwBi" id="5Zjdb0xETXR" role="28ntcv">
-                                  <node concept="37vLTw" id="5Zjdb0xETDg" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="5Zjdb0xEQR9" resolve="tool" />
-                                  </node>
-                                  <node concept="3TrcHB" id="5Zjdb0xEUkW" role="2OqNvi">
-                                    <ref role="3TsBF5" to="tp4k:5FstybB4cWH" resolve="number" />
+                                <node concept="WxPPo" id="6bbvpKWHoLh" role="28ntcv">
+                                  <node concept="2OqwBi" id="5Zjdb0xETXR" role="WxPPp">
+                                    <node concept="37vLTw" id="5Zjdb0xETDg" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="5Zjdb0xEQR9" resolve="tool" />
+                                    </node>
+                                    <node concept="3TrcHB" id="5Zjdb0xEUkW" role="2OqNvi">
+                                      <ref role="3TsBF5" to="tp4k:5FstybB4cWH" resolve="number" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>

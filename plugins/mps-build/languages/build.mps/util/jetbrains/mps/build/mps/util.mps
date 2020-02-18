@@ -416,6 +416,9 @@
         <reference id="5455284157993910961" name="concept" index="2pJxaS" />
         <child id="5455284157993911099" name="values" index="2pJxcM" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
@@ -24548,8 +24551,10 @@
                           </node>
                           <node concept="2pJxcG" id="1kfMLj5itH9" role="2pJxcM">
                             <ref role="2pJxcJ" to="kdzh:4zCbl23d1N1" resolve="reexport" />
-                            <node concept="3clFbT" id="1kfMLj5ixxy" role="28ntcv">
-                              <property role="3clFbU" value="false" />
+                            <node concept="WxPPo" id="6bbvpKWHoN8" role="28ntcv">
+                              <node concept="3clFbT" id="1kfMLj5ixxy" role="WxPPp">
+                                <property role="3clFbU" value="false" />
+                              </node>
                             </node>
                           </node>
                         </node>
@@ -30341,8 +30346,10 @@
                         <ref role="2pJxaS" to="kdzh:QkG2t1bKw$" resolve="GeneratorInternal_String" />
                         <node concept="2pJxcG" id="63InNWG5ayG" role="2pJxcM">
                           <ref role="2pJxcJ" to="kdzh:QkG2t1bKwB" resolve="path" />
-                          <node concept="37vLTw" id="63InNWG5ayH" role="28ntcv">
-                            <ref role="3cqZAo" node="2whOjLMRfJ_" resolve="it" />
+                          <node concept="WxPPo" id="6bbvpKWHoN9" role="28ntcv">
+                            <node concept="37vLTw" id="63InNWG5ayH" role="WxPPp">
+                              <ref role="3cqZAo" node="2whOjLMRfJ_" resolve="it" />
+                            </node>
                           </node>
                         </node>
                       </node>

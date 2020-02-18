@@ -5,7 +5,7 @@
     <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="de1ad86d-6e50-4a02-b306-d4d17f64c375" name="jetbrains.mps.console.base" version="0" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
@@ -603,7 +603,7 @@
           <node concept="3eOSWO" id="4X1d9kMnyOI" role="3vwVQn">
             <node concept="2OqwBi" id="5yiijaElUDt" role="3uHU7B">
               <node concept="37vLTw" id="5yiijaElVTD" role="2Oq$k0">
-                <ref role="3cqZAo" node="4X1d9kMmKRV" />
+                <ref role="3cqZAo" node="4X1d9kMmKRV" resolve="durationA" />
               </node>
               <node concept="liA8E" id="5yiijaElUDv" role="2OqNvi">
                 <ref role="37wK5l" to="28m1:~Duration.compareTo(java.time.Duration)" resolve="compareTo" />

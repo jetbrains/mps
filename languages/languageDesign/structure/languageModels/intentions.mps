@@ -5,7 +5,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
     <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="4" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
@@ -295,6 +295,9 @@
         <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
       </concept>
       <concept id="1196866233735" name="jetbrains.mps.lang.quotation.structure.PropertyAntiquotation" flags="ng" index="2EMmih" />
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
@@ -2902,8 +2905,10 @@
                 <ref role="2pJxaS" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
                 <node concept="2pJxcG" id="5YgbkwagCgx" role="2pJxcM">
                   <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                  <node concept="37vLTw" id="5YgbkwagCgy" role="28ntcv">
-                    <ref role="3cqZAo" node="6_mTUEdwaov" resolve="name" />
+                  <node concept="WxPPo" id="6bbvpKWHoMU" role="28ntcv">
+                    <node concept="37vLTw" id="5YgbkwagCgy" role="WxPPp">
+                      <ref role="3cqZAo" node="6_mTUEdwaov" resolve="name" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -2968,8 +2973,10 @@
                 <ref role="2pJxaS" to="tpce:h0PlHMJ" resolve="InterfaceConceptDeclaration" />
                 <node concept="2pJxcG" id="5YgbkwagDWf" role="2pJxcM">
                   <ref role="2pJxcJ" to="tpck:h0TrG11" resolve="name" />
-                  <node concept="37vLTw" id="5YgbkwagDWg" role="28ntcv">
-                    <ref role="3cqZAo" node="35dGiMsDOlV" resolve="name" />
+                  <node concept="WxPPo" id="6bbvpKWHoMV" role="28ntcv">
+                    <node concept="37vLTw" id="5YgbkwagDWg" role="WxPPp">
+                      <ref role="3cqZAo" node="35dGiMsDOlV" resolve="name" />
+                    </node>
                   </node>
                 </node>
               </node>

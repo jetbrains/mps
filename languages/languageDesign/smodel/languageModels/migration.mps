@@ -289,6 +289,9 @@
       <concept id="3316618969910743150" name="jetbrains.mps.lang.quotation.structure.ModelNodeInitializer" flags="ng" index="2EReWf">
         <child id="3316618969910743151" name="modelToCreate" index="2EReWe" />
       </concept>
+      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
+        <child id="6985522012210254363" name="expression" index="WxPPp" />
+      </concept>
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
@@ -5975,14 +5978,18 @@
                               <ref role="2pJxaS" to="tpck:29O0pTxSzj9" resolve="ReviewMigration_old" />
                               <node concept="2pJxcG" id="7uvxILP6e7D" role="2pJxcM">
                                 <ref role="2pJxcJ" to="tpck:29O0pTxUvrE" resolve="readableId" />
-                                <node concept="Xl_RD" id="7uvxILP6e7E" role="28ntcv">
-                                  <property role="Xl_RC" value="MigrateOldNodePointerExpressions" />
+                                <node concept="WxPPo" id="6bbvpKWHoMS" role="28ntcv">
+                                  <node concept="Xl_RD" id="7uvxILP6e7E" role="WxPPp">
+                                    <property role="Xl_RC" value="MigrateOldNodePointerExpressions" />
+                                  </node>
                                 </node>
                               </node>
                               <node concept="2pJxcG" id="7uvxILP6e7F" role="2pJxcM">
                                 <ref role="2pJxcJ" to="tpck:29O0pTxSzjm" resolve="reasonShort" />
-                                <node concept="Xl_RD" id="7uvxILP6e7G" role="28ntcv">
-                                  <property role="Xl_RC" value="Couldn't migrate node with attributes" />
+                                <node concept="WxPPo" id="6bbvpKWHoMT" role="28ntcv">
+                                  <node concept="Xl_RD" id="7uvxILP6e7G" role="WxPPp">
+                                    <property role="Xl_RC" value="Couldn't migrate node with attributes" />
+                                  </node>
                                 </node>
                               </node>
                             </node>

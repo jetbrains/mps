@@ -3,7 +3,7 @@
   <compileInIDEA />
   <models>
     <modelRoot type="java_classes">
-      <sourceRoot path="${mps_home}/lib/mps-references.jar" />
+      <sourceRoot path="${platform_lib}/mps-references.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -13,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${mps_home}/lib/mps-references.jar" />
+    <stubModelEntry path="${platform_lib}/mps-references.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
