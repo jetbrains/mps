@@ -66,6 +66,12 @@ public class ThreadWatcher implements Output {
 
       // com.intellij.psi.impl.DocumentCommitThread 
       builder.append("|(Document Committing Pool)");
+
+      // com.intellij.util.indexing.ChangedFilesCollector 
+      builder.append("|(FileBasedIndex Vfs Event Processor)");
+
+      // com.intellij.openapi.project.CacheUpdateRunner#createRunnable 
+      builder.append("|(Indexing)");
       // -------------------------------- 
 
 

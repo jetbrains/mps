@@ -714,6 +714,48 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbH" id="6s9bz$smg$6" role="3cqZAp" />
+          <node concept="3SKdUt" id="6s9bz$smmgu" role="3cqZAp">
+            <node concept="1PaTwC" id="6s9bz$smmgv" role="1aUNEU">
+              <node concept="3oM_SD" id="6s9bz$smmLu" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.util.indexing.ChangedFilesCollector" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6s9bz$smiez" role="3cqZAp">
+            <node concept="2OqwBi" id="6s9bz$smie$" role="3clFbG">
+              <node concept="37vLTw" id="6s9bz$smie_" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="6s9bz$smieA" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="6s9bz$smieB" role="37wK5m">
+                  <property role="Xl_RC" value="|(FileBasedIndex Vfs Event Processor)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="6s9bz$smqoA" role="3cqZAp" />
+          <node concept="3SKdUt" id="6s9bz$smrE1" role="3cqZAp">
+            <node concept="1PaTwC" id="6s9bz$smrE2" role="1aUNEU">
+              <node concept="3oM_SD" id="6s9bz$smsc6" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.openapi.project.CacheUpdateRunner#createRunnable" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6s9bz$smnca" role="3cqZAp">
+            <node concept="2OqwBi" id="6s9bz$smncb" role="3clFbG">
+              <node concept="37vLTw" id="6s9bz$smncc" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="6s9bz$smncd" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="6s9bz$smnce" role="37wK5m">
+                  <property role="Xl_RC" value="|(Indexing)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3SKdUt" id="3m4z3Ef6VAX" role="3cqZAp">
             <node concept="1PaTwC" id="3m4z3Ef6VAY" role="1aUNEU">
               <node concept="3oM_SD" id="3m4z3Ef6WpE" role="1PaTwD">
