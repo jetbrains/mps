@@ -45,6 +45,7 @@ public final class DataTypeDeclaration__BehaviorDescriptor extends BaseBHDescrip
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  @Deprecated
   /*package*/ static SNode toBaseLanguageType_idhEwI9ym(@NotNull SNode __thisNode__) {
     return _quotation_createNode_47r3zh_a0a0();
   }

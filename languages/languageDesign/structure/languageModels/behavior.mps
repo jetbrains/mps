@@ -903,6 +903,24 @@
       <node concept="3Tqbb2" id="i2svbIL" role="3clF45">
         <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
       </node>
+      <node concept="P$JXv" id="5zNZr7ZT3h5" role="lGtFl">
+        <node concept="TZ5HI" id="5zNZr7ZT3h6" role="3nqlJM">
+          <node concept="TZ5HA" id="5zNZr7ZT3h7" role="3HnX3l" />
+        </node>
+        <node concept="TZ5HA" id="5zNZr7ZT3k6" role="TZ5H$">
+          <node concept="1dT_AC" id="5zNZr7ZT3k7" role="1dT_Ay">
+            <property role="1dT_AB" value="This method exposes baseLaguage dependency." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5zNZr7ZT3B6" role="TZ5H$">
+          <node concept="1dT_AC" id="5zNZr7ZT3B7" role="1dT_Ay">
+            <property role="1dT_AB" value="Use RulesUtil.datatypeBLType() instead." />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="5zNZr7ZT3h8" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
     </node>
     <node concept="13i0hz" id="hKtF$7L" role="13h7CS">
       <property role="TrG5h" value="isSimple" />
