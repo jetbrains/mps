@@ -92,9 +92,6 @@
       <concept id="4056363777117001481" name="jetbrains.mps.lang.quotation.structure.StringToTypedValueMigrationInfo" flags="ng" index="AAgTk">
         <property id="2173356959483005420" name="stringValueMigrated" index="3qcH_f" />
       </concept>
-      <concept id="6985522012210254362" name="jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression" flags="nn" index="WxPPo">
-        <child id="6985522012210254363" name="expression" index="WxPPp" />
-      </concept>
     </language>
     <language id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest">
       <concept id="1171981022339" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertTrue" flags="nn" index="3vwNmj">
@@ -185,32 +182,27 @@
     <property role="TrG5h" value="Test_LightPattern" />
     <node concept="3clFbS" id="7KQFBrEr0NM" role="LjaKd">
       <node concept="2TK7Tu" id="7KQFBrEr3mM" role="3cqZAp">
-        <property role="2TTd_B" value="%var" />
+        <property role="2TTd_B" value="%myVar" />
       </node>
       <node concept="2HxZob" id="7KQFBrErl3K" role="3cqZAp">
         <node concept="1iFQzN" id="7KQFBrErl3S" role="3iKnsn">
           <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
         </node>
       </node>
-      <node concept="2TK7Tu" id="7KQFBrEr3te" role="3cqZAp">
-        <property role="2TTd_B" value="myVar" />
-      </node>
     </node>
     <node concept="1qefOq" id="7KQFBrEr0NQ" role="25YQCW">
       <node concept="1__dXe" id="7KQFBrEr0PX" role="1qenE9">
         <node concept="2pJPED" id="7KQFBrEr0Qa" role="1__i56">
           <ref role="2pJxaS" to="tpee:fzcmrck" resolve="IntegerConstant" />
-          <node concept="2pJxcG" id="7KQFBrEr0Qf" role="2pJxcM">
+          <node concept="2pJxcG" id="5zNZr7ZTSXl" role="2pJxcM">
             <ref role="2pJxcJ" to="tpee:fzcmrcl" resolve="value" />
-            <node concept="WxPPo" id="6bbvpKWHq0z" role="28ntcv">
-              <node concept="33vP2n" id="7KQFBrEr3eW" role="WxPPp">
-                <node concept="LIFWc" id="7KQFBrEr3j8" role="lGtFl">
-                  <property role="ZRATv" value="true" />
-                  <property role="OXtK3" value="true" />
-                  <property role="p6zMq" value="0" />
-                  <property role="p6zMs" value="0" />
-                  <property role="LIFWd" value="Custom_1ltshm_a0" />
-                </node>
+            <node concept="33vP2n" id="5zNZr7ZTSYU" role="28ntcv">
+              <node concept="LIFWc" id="5zNZr7ZTSZ4" role="lGtFl">
+                <property role="ZRATv" value="true" />
+                <property role="OXtK3" value="true" />
+                <property role="p6zMq" value="0" />
+                <property role="p6zMs" value="0" />
+                <property role="LIFWd" value="Custom_1ltshm_a0" />
               </node>
             </node>
           </node>

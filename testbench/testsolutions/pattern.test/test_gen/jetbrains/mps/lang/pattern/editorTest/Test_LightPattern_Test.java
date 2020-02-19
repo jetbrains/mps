@@ -33,9 +33,8 @@ public class Test_LightPattern_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8950533135207763325", "8950533135208198003");
-      typeString("%var");
+      typeString("%myVar");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-      typeString("myVar");
     }
   }
 }
