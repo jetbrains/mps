@@ -14,6 +14,7 @@
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess" />
     <classNode dependClassName="com.intellij.testFramework.PlatformTestUtil" />
+    <classNode dependClassName="com.intellij.testFramework.ThreadTracker" />
     <classNode dependClassName="com.intellij.util.PlatformUtils" />
     <classNode dependClassName="java.awt.GraphicsEnvironment" />
     <classNode dependClassName="java.io.File" />
@@ -40,6 +41,7 @@
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.project.ProjectManager" />
+    <classNode dependClassName="jetbrains.mps.smodel.WorkbenchModelAccess" />
     <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentConfig" />
     <classNode dependClassName="jetbrains.mps.tool.environment.EnvironmentSetupException" />

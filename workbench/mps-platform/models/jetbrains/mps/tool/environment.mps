@@ -43,6 +43,7 @@
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="3fye" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application.impl(MPS.IDEA/)" />
+    <import index="w1kd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.smodel(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -87,6 +88,7 @@
         <property id="6468716278899126575" name="isVolatile" index="2dlcS1" />
         <property id="6468716278899125786" name="isTransient" index="2dld4O" />
       </concept>
+      <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
@@ -405,6 +407,17 @@
             </node>
             <node concept="37vLTw" id="4OPNMy2cxpl" role="37vLTx">
               <ref role="3cqZAo" node="4OPNMy2cwtU" resolve="unitTestMode" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5WEPrBtx9HV" role="3cqZAp">
+          <node concept="2YIFZM" id="5WEPrBtx9Jx" role="3clFbG">
+            <ref role="37wK5l" to="anz6:~ThreadTracker.longRunningThreadCreated(com.intellij.openapi.Disposable,java.lang.String...)" resolve="longRunningThreadCreated" />
+            <ref role="1Pybhc" to="anz6:~ThreadTracker" resolve="ThreadTracker" />
+            <node concept="Xjq3P" id="5WEPrBtx9N2" role="37wK5m" />
+            <node concept="10M0yZ" id="5WEPrBtxA06" role="37wK5m">
+              <ref role="3cqZAo" to="w1kd:~WorkbenchModelAccess.THREAD_GROUP_NAME" resolve="THREAD_GROUP_NAME" />
+              <ref role="1PxDUh" to="w1kd:~WorkbenchModelAccess" resolve="WorkbenchModelAccess" />
             </node>
           </node>
         </node>

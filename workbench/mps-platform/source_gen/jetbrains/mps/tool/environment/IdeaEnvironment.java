@@ -7,6 +7,8 @@ import com.intellij.openapi.Disposable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.testFramework.ThreadTracker;
+import jetbrains.mps.smodel.WorkbenchModelAccess;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.util.annotation.Hack;
 import java.util.StringJoiner;
@@ -69,6 +71,7 @@ public final class IdeaEnvironment extends EnvironmentBase implements Disposable
   public IdeaEnvironment(@NotNull EnvironmentConfig config, boolean unitTestMode) {
     super(config);
     myUnitTestMode = unitTestMode;
+    ThreadTracker.longRunningThreadCreated(this, WorkbenchModelAccess.THREAD_GROUP_NAME);
   }
 
   public void init() {
