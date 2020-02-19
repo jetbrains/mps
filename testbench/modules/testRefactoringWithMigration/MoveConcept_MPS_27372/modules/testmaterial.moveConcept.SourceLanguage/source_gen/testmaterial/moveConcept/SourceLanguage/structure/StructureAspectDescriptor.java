@@ -4,6 +4,7 @@ package testmaterial.moveConcept.SourceLanguage.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
@@ -12,15 +13,18 @@ import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptMoveConcept_A = createDescriptorForMoveConcept_A();
   /*package*/ final ConceptDescriptor myConceptMoveConcept_B = createDescriptorForMoveConcept_B();
   /*package*/ final ConceptDescriptor myConceptMoveConcept_CompletionSuperconcept = createDescriptorForMoveConcept_CompletionSuperconcept();
   /*package*/ final ConceptDescriptor myConceptMoveConcept_CompletionTest = createDescriptorForMoveConcept_CompletionTest();
+  /*package*/ final ConceptDescriptor myConceptMoveEnumPropertyContainer = createDescriptorForMoveEnumPropertyContainer();
   /*package*/ final ConceptDescriptor myConceptMovePropertyContainer = createDescriptorForMovePropertyContainer();
   /*package*/ final ConceptDescriptor myConceptMovePropertyInstance = createDescriptorForMovePropertyInstance();
   /*package*/ final ConceptDescriptor myConceptMovePropertySupercontainer = createDescriptorForMovePropertySupercontainer();
+  /*package*/ final EnumerationDescriptor myEnumerationMoveProperty_EnumerationDataType = new EnumerationDescriptor_MoveProperty_EnumerationDataType();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -35,7 +39,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptMoveConcept_A, myConceptMoveConcept_B, myConceptMoveConcept_CompletionSuperconcept, myConceptMoveConcept_CompletionTest, myConceptMovePropertyContainer, myConceptMovePropertyInstance, myConceptMovePropertySupercontainer);
+    return Arrays.asList(myConceptMoveConcept_A, myConceptMoveConcept_B, myConceptMoveConcept_CompletionSuperconcept, myConceptMoveConcept_CompletionTest, myConceptMoveEnumPropertyContainer, myConceptMovePropertyContainer, myConceptMovePropertyInstance, myConceptMovePropertySupercontainer);
   }
 
   @Override
@@ -50,6 +54,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptMoveConcept_CompletionSuperconcept;
       case LanguageConceptSwitch.MoveConcept_CompletionTest:
         return myConceptMoveConcept_CompletionTest;
+      case LanguageConceptSwitch.MoveEnumPropertyContainer:
+        return myConceptMoveEnumPropertyContainer;
       case LanguageConceptSwitch.MovePropertyContainer:
         return myConceptMovePropertyContainer;
       case LanguageConceptSwitch.MovePropertyInstance:
@@ -63,7 +69,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList();
+    return Arrays.asList(myEnumerationMoveProperty_EnumerationDataType);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
@@ -105,6 +111,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("child", 0x40b30fd75e3f0f70L).target(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x993386ec95b6ac4L).optional(true).ordered(true).multiple(true).origin("4662087456932171632").done();
     b.alias("concept239");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForMoveEnumPropertyContainer() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testmaterial.moveConcept.SourceLanguage", "MoveEnumPropertyContainer", 0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x7a8eee678823661aL);
+    b.class_(false, false, true);
+    b.parent(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x6d8b1cefdb1b2c3L);
+    b.origin("r:469ff9d9-5a2e-4029-9891-ce478377a661(testmaterial.moveConcept.SourceLanguage.structure)/8831258047753184794");
+    b.version(2);
+    b.property("moveEnumProperty", 0x7a8eee678820ad27L).type(MetaIdFactory.dataTypeId(0x3e00419d48014badL, 0xbf2a50479218fb53L, 0x7a8eee67881ee9caL)).origin("8831258047753006375").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForMovePropertyContainer() {

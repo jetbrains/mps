@@ -237,7 +237,7 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
       }
     }, new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        ConceptDescriptor conceptDescriptor = ConceptRegistry.getInstance().getConceptDescriptor(MetaAdapterByDeclaration.getConcept(getConcept_PropertyContainer()));
+        ConceptDescriptor conceptDescriptor = ConceptRegistry.getInstance().getConceptDescriptor(MetaAdapterByDeclaration.getConcept(getConcept_EnumPropertyContainer()));
         assert conceptDescriptor instanceof CompiledConceptDescriptor;
       }
     }, new _FunctionTypes._void_P1_E0<List<SNode>>() {
@@ -261,6 +261,54 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
             Assert.assertFalse(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
               public boolean accept(SProperty it) {
                 return Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertyContainer().getReference());
+              }
+            }));
+            Assert.assertTrue(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
+              public boolean accept(SProperty it) {
+                return Objects.equals(it.getOwner().getSourceNode(), getConcept_PropertySupercontainer().getReference());
+              }
+            }));
+          }
+        });
+      }
+    });
+  }
+  public void test_moveEnumProperty() throws Exception {
+    commonTest(new _FunctionTypes._void_P1_E0<List<RefactoringParticipant.Option>>() {
+      public void invoke(List<RefactoringParticipant.Option> options) {
+
+        ListSequence.fromList(options).addElement(UpdateModelImports.OPTION);
+        ListSequence.fromList(options).addElement(UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
+
+
+        ListSequence.fromList(options).addElement(LanguageStructureMigrationParticipant.OPTION);
+      }
+    }, new _FunctionTypes._void_P0_E0() {
+      public void invoke() {
+        ConceptDescriptor conceptDescriptor = ConceptRegistry.getInstance().getConceptDescriptor(MetaAdapterByDeclaration.getConcept(getConcept_EnumPropertyContainer()));
+        assert conceptDescriptor instanceof CompiledConceptDescriptor;
+      }
+    }, new _FunctionTypes._void_P1_E0<List<SNode>>() {
+      public void invoke(List<SNode> nodesToMove) {
+        ListSequence.fromList(nodesToMove).addElement(getProperty_MovedEnumProperty());
+      }
+    }, new _FunctionTypes._return_P0_E0<MoveNodesUtil.NodeCreatingProcessor>() {
+      public MoveNodesUtil.NodeCreatingProcessor invoke() {
+        return new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationChild(getConcept_PropertySupercontainer(), LINKS.propertyDeclaration$lL73), project);
+      }
+    }, new _FunctionTypes._void_P0_E0() {
+      public void invoke() {
+        project.getRepository().getModelAccess().runReadAction(new Runnable() {
+          public void run() {
+            Iterable<SProperty> properties = getEnumPropertyConceptInstance().getProperties();
+            Assert.assertTrue(Sequence.fromIterable(properties).all(new IWhereFilter<SProperty>() {
+              public boolean accept(SProperty it) {
+                return getEnumPropertyConceptInstance().getConcept().getProperties().contains(it);
+              }
+            }));
+            Assert.assertFalse(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
+              public boolean accept(SProperty it) {
+                return Objects.equals(it.getOwner().getSourceNode(), getConcept_EnumPropertyContainer().getReference());
               }
             }));
             Assert.assertTrue(Sequence.fromIterable(properties).any(new IWhereFilter<SProperty>() {
@@ -379,6 +427,9 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
   public SNode getConcept_PropertyContainer() {
     return SPointerOperations.resolveNode(new SNodePointer("r:469ff9d9-5a2e-4029-9891-ce478377a661(jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage.structure)", "493339661774729917"), project.getRepository());
   }
+  public SNode getConcept_EnumPropertyContainer() {
+    return SPointerOperations.resolveNode(new SNodePointer("r:469ff9d9-5a2e-4029-9891-ce478377a661(jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage.structure)", "8831258047753184794"), project.getRepository());
+  }
   public SNode getConcept_PropertySupercontainer() {
     return SPointerOperations.resolveNode(new SNodePointer("r:469ff9d9-5a2e-4029-9891-ce478377a661(jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage.structure)", "493339661774729923"), project.getRepository());
   }
@@ -388,6 +439,9 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
   public SNode getProperty_MovedProperty() {
     return SPointerOperations.resolveNode(new SNodePointer("r:469ff9d9-5a2e-4029-9891-ce478377a661(jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage.structure)", "493339661774729918"), project.getRepository());
   }
+  public SNode getProperty_MovedEnumProperty() {
+    return SPointerOperations.resolveNode(new SNodePointer("r:469ff9d9-5a2e-4029-9891-ce478377a661(jetbrains.mps.refactoring.testmaterial.moveConcept.SourceLanguage.structure)", "8831258047753006375"), project.getRepository());
+  }
   public SNode getInstanceA() {
     return SPointerOperations.resolveNode(new SNodePointer("r:ac08359f-193b-493f-92ef-48848aecee7b(jetbrains.mps.refactoring.testmaterial.moveConcept.InstanceSolution.main)", "6006982468244420385"), project.getRepository());
   }
@@ -396,6 +450,9 @@ public class MoveConceptRefactoring_Test extends AbstractRefactoringTest {
   }
   public SNode getPropertyConceptInstance() {
     return SPointerOperations.resolveNode(new SNodePointer("r:ac08359f-193b-493f-92ef-48848aecee7b(jetbrains.mps.refactoring.testmaterial.moveConcept.InstanceSolution.main)", "493339661776050901"), project.getRepository());
+  }
+  public SNode getEnumPropertyConceptInstance() {
+    return SPointerOperations.resolveNode(new SNodePointer("r:ac08359f-193b-493f-92ef-48848aecee7b(jetbrains.mps.refactoring.testmaterial.moveConcept.InstanceSolution.main)", "8831258047753333951"), project.getRepository());
   }
   public SNode getInstanceTestCompletion() {
     return SPointerOperations.resolveNode(new SNodePointer("r:ac08359f-193b-493f-92ef-48848aecee7b(jetbrains.mps.refactoring.testmaterial.moveConcept.InstanceSolution.main)", "4662087456932179903"), project.getRepository());

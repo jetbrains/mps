@@ -13,9 +13,10 @@ public final class LanguageConceptSwitch {
   public static final int MoveConcept_B = 1;
   public static final int MoveConcept_CompletionSuperconcept = 2;
   public static final int MoveConcept_CompletionTest = 3;
-  public static final int MovePropertyContainer = 4;
-  public static final int MovePropertyInstance = 5;
-  public static final int MovePropertySupercontainer = 6;
+  public static final int MoveEnumPropertyContainer = 4;
+  public static final int MovePropertyContainer = 5;
+  public static final int MovePropertyInstance = 6;
+  public static final int MovePropertySupercontainer = 7;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x3e00419d48014badL, 0xbf2a50479218fb53L);
@@ -23,6 +24,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x44717f871a8a9L, MoveConcept_B);
     builder.put(0x993386ec95b6ac4L, MoveConcept_CompletionSuperconcept);
     builder.put(0x40b30fd75e3f0f6fL, MoveConcept_CompletionTest);
+    builder.put(0x7a8eee678823661aL, MoveEnumPropertyContainer);
     builder.put(0x6d8b1cefdb1b2bdL, MovePropertyContainer);
     builder.put(0x6d8b1cefdb1b2c0L, MovePropertyInstance);
     builder.put(0x6d8b1cefdb1b2c3L, MovePropertySupercontainer);

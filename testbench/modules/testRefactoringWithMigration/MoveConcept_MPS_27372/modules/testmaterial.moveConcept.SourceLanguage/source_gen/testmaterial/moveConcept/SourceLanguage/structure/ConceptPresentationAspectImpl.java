@@ -13,6 +13,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_MoveConcept_B;
   private ConceptPresentation props_MoveConcept_CompletionSuperconcept;
   private ConceptPresentation props_MoveConcept_CompletionTest;
+  private ConceptPresentation props_MoveEnumPropertyContainer;
   private ConceptPresentation props_MovePropertyContainer;
   private ConceptPresentation props_MovePropertyInstance;
   private ConceptPresentation props_MovePropertySupercontainer;
@@ -49,6 +50,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_MoveConcept_CompletionTest = cpb.create();
         }
         return props_MoveConcept_CompletionTest;
+      case LanguageConceptSwitch.MoveEnumPropertyContainer:
+        if (props_MoveEnumPropertyContainer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("MoveEnumPropertyContainer");
+          props_MoveEnumPropertyContainer = cpb.create();
+        }
+        return props_MoveEnumPropertyContainer;
       case LanguageConceptSwitch.MovePropertyContainer:
         if (props_MovePropertyContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

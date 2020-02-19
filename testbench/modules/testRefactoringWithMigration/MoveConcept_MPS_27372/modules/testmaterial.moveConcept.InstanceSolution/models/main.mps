@@ -11,6 +11,9 @@
       <concept id="6006982468244407213" name="testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_A" flags="ng" index="GU1kn">
         <property id="6006982468244994111" name="prop" index="GSeU5" />
       </concept>
+      <concept id="8831258047753184794" name="testmaterial.moveConcept.SourceLanguage.structure.MoveEnumPropertyContainer" flags="ng" index="3MFoxX">
+        <property id="8831258047753006375" name="moveEnumProperty" index="3MF$d0" />
+      </concept>
       <concept id="1204068184860841" name="testmaterial.moveConcept.SourceLanguage.structure.MoveConcept_B" flags="ng" index="3StuYY" />
       <concept id="493339661774729920" name="testmaterial.moveConcept.SourceLanguage.structure.MovePropertyInstance" flags="ng" index="3Vqgce" />
       <concept id="493339661774729917" name="testmaterial.moveConcept.SourceLanguage.structure.MovePropertyContainer" flags="ng" index="3VqgdN">
@@ -37,6 +40,9 @@
   </node>
   <node concept="uz02S" id="42N3XtufMYZ">
     <property role="TrG5h" value="testCompletionInstance" />
+  </node>
+  <node concept="3MFoxX" id="7EeVAu89qMZ">
+    <property role="3MF$d0" value="7EeVAu87IBc/second" />
   </node>
 </model>
 
