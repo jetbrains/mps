@@ -66,7 +66,7 @@ public class ClassStubsJpsModelRootContributor implements JpsModelRootContributo
         String path = root.getPath();
         JavaClassStubsModelRoot modelRoot = new JavaClassStubsModelRoot();
         // no idea where to take FS from, likely need to fix JpsSolutionIdea to pass FS/ComponentHost in here
-        modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(FileSystem.getInstance().getFile(path)));
+        modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(path, FileSystem.getInstance().getFile(path)));
         modelRoots.add(modelRoot);
       }
     }

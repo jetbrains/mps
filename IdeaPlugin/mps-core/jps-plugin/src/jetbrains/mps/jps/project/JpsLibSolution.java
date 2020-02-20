@@ -92,7 +92,7 @@ public class JpsLibSolution extends Solution {
         MPSCompilerUtil.debug(context, "@@@@ path = " + path);
         // FIXME see comment in StubSolutionIdea.addModelRoots. I've got VF here, and instead of using brand-new, shiny QP, I resort to some dubious
         //       path mangling in #getPath(), plain strings for paths and deprecated FS
-        ((JavaClassStubsModelRoot)modelRoot).addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(FileSystem.getInstance().getFile(path)));
+        ((JavaClassStubsModelRoot)modelRoot).addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(path, FileSystem.getInstance().getFile(path)));
         modelRoots.add(modelRoot);
       }
     }

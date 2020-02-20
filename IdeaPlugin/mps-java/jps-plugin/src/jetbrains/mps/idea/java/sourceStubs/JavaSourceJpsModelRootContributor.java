@@ -24,7 +24,7 @@ public class JavaSourceJpsModelRootContributor implements JpsModelRootContributo
     for (JpsModuleSourceRoot sourceRoot : module.getSourceRoots()) {
       String path = sourceRoot.getFile().getPath();
       JavaSourceStubModelRoot modelRoot = new JavaSourceStubModelRoot();
-      modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(FileSystem.getInstance().getFile(path)));
+      modelRoot.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(path, FileSystem.getInstance().getFile(path)));
       modelRoots.add(modelRoot);
     }
 

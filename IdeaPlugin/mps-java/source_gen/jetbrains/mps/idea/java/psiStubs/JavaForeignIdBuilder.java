@@ -18,7 +18,6 @@ import com.intellij.openapi.module.ModuleManager;
 import jetbrains.mps.idea.core.facet.MPSFacet;
 import com.intellij.facet.FacetManager;
 import jetbrains.mps.idea.core.facet.MPSFacetType;
-import com.intellij.util.xml.ModuleContentRootSearchScope;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiField;
@@ -86,7 +85,7 @@ public class JavaForeignIdBuilder {
       if (facet == null) {
         continue;
       }
-      if (new ModuleContentRootSearchScope(module).contains(vfile)) {
+      if (module.getModuleContentScope().contains(vfile)) {
         mpsModule = facet.getSolution();
         break;
       }
