@@ -8,9 +8,9 @@
       <root url="jar://$APPLICATION_HOME_DIR$/lib/jdom.jar!/" />
       <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/lib/mps-project-check.jar!/" />
       <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/lib/mps-annotations.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/guava-25.1-jre.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/plugins/java/lib/ecj-4.10.jar!/" />
-      <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/lib/ecj-4.10.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/guava-28.2-jre.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/plugins/java/lib/ecj-4.13.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/lib/ecj-4.13.jar!/" />
       <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/lib/mps-boot-util.jar!/" />
       <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/lib/mps-core.jar!/" />
       <root url="jar://$APPLICATION_PLUGINS_DIR$/mps-core/lib/mps-messaging.jar!/" />
