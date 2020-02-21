@@ -168,8 +168,9 @@ public final class LanguageImportHelper {
           modelInternal.addDevKit(param);
         }
 
-        if (module instanceof ReloadableModule) {
-          ((ReloadableModule) module).reload();
+        SModule moduleThatUses = modelProvider.compute().getModule();
+        if (moduleThatUses instanceof ReloadableModule) {
+          ((ReloadableModule) moduleThatUses).reload();
         }
       });
     }, modules2Ignore);
