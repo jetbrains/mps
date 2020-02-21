@@ -85,7 +85,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
       SLinkOperations.setTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC, SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IVisible$6G), LINKS.visibility$2GiC));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.smodelAttribute$K8bJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$K8bJ)));
       SNodeOperations.insertNextSiblingChild(node, method);
-      if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(node))) {
+      if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(method))) {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$WIlu), LINKS.statement$WHn8)).clear();
       }
       SNodeOperations.deleteNode(node);

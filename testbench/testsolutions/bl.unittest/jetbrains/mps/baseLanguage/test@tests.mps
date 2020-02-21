@@ -11540,9 +11540,6 @@
           <node concept="3cqZAl" id="3NZe7JF5O0R" role="3clF45" />
           <node concept="3Tm1VV" id="3NZe7JF5O0S" role="1B3o_S" />
           <node concept="3clFbS" id="3NZe7JF5O0T" role="3clF47" />
-          <node concept="3xLA65" id="VLMLLsSmYZ" role="lGtFl">
-            <property role="TrG5h" value="dd" />
-          </node>
         </node>
         <node concept="3clFb_" id="3NZe7JF5O0V" role="jymVt">
           <property role="TrG5h" value="a" />
