@@ -351,7 +351,12 @@ public abstract class BaseTool {
       }
     }
 
-    myWindowManager.unregisterToolWindow(myId);
+    if (!myProject.isDisposed()) {
+      //dirty hack until this is rewritten to a newer API.
+      //this means it happens not during project close. When project is closing, tool windows are unregistered automatically, this call causes an exception
+      //see https://youtrack.jetbrains.com/issue/IDEA-233220
+      myWindowManager.unregisterToolWindow(myId);
+    }
     myIsRegistered = false;
   }
 
