@@ -8,6 +8,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.cells.BigCellUtil;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
 
 /*package*/ class DefaultModifier_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -35,6 +38,9 @@ import jetbrains.mps.editor.runtime.cells.BigCellUtil;
       bigCell.setBig(true);
       setCellContext(bigCell);
     }
+    Style style = new StyleImpl();
+    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    editorCell.getStyle().putAll(style);
     return editorCell;
   }
 }
