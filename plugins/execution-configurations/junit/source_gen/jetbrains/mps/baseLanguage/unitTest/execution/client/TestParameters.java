@@ -50,9 +50,8 @@ public final class TestParameters {
     myNeedsMPS = mpsRequired;
     if (myNeedsMPS) {
       ListSequence.fromList(myAdditionalJvmArgs).addElement("-DNO_FS_ROOTS_ACCESS_CHECK=true");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("-Djdk.module.illegalAccess.silent=true");
     }
-    ListSequence.fromList(myAdditionalJvmArgs).addElement("-ea");
-    ListSequence.fromList(myAdditionalJvmArgs).addElement("-Djdk.module.illegalAccess.silent=true");
   }
 
   public Class<?> getExecutorClass() {

@@ -779,23 +779,48 @@
           <node concept="3cpWsn" id="4rbJdZOvySH" role="3cpWs9">
             <property role="TrG5h" value="vmParams" />
             <node concept="17QB3L" id="4rbJdZOvySF" role="1tU5fm" />
-            <node concept="3cpWs3" id="4rbJdZOvCF0" role="33vP2m">
-              <node concept="10M0yZ" id="4rbJdZOvDxE" role="3uHU7w">
-                <ref role="3cqZAo" to="u9u1:4rbJdZOvA9R" resolve="SYS_PROPERTY_EXPECTED_VALUE" />
-                <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
-              </node>
-              <node concept="3cpWs3" id="4rbJdZOv_wy" role="3uHU7B">
-                <node concept="3cpWs3" id="4rbJdZOv$cV" role="3uHU7B">
-                  <node concept="Xl_RD" id="4rbJdZOvySI" role="3uHU7B">
-                    <property role="Xl_RC" value="-D" />
+            <node concept="3cpWs3" id="1J1$cwfY44y" role="33vP2m">
+              <node concept="2OqwBi" id="1J1$cwfY106" role="3uHU7w">
+                <node concept="2OqwBi" id="1J1$cwfXZ3u" role="2Oq$k0">
+                  <node concept="2OqwBi" id="1J1$cwfXWcV" role="2Oq$k0">
+                    <node concept="37vLTw" id="1J1$cwfXVc1" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1T5iP2az7WM" resolve="junitRC" />
+                    </node>
+                    <node concept="yHkDZ" id="1J1$cwfXX$9" role="2OqNvi">
+                      <ref role="yHkDY" to="ic9i:6woObKLCiTr" resolve="myJavaRunParameters" />
+                    </node>
                   </node>
-                  <node concept="10M0yZ" id="4rbJdZOv$Y6" role="3uHU7w">
-                    <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
-                    <ref role="3cqZAo" to="u9u1:4rbJdZOuy6t" resolve="SYS_PROPERTY" />
+                  <node concept="yHkDZ" id="1J1$cwfXZqo" role="2OqNvi">
+                    <ref role="yHkDY" to="go48:6woObKLBCks" resolve="myJavaParameters" />
                   </node>
                 </node>
-                <node concept="Xl_RD" id="4rbJdZOvBVD" role="3uHU7w">
-                  <property role="Xl_RC" value="=" />
+                <node concept="liA8E" id="1J1$cwfY3vP" role="2OqNvi">
+                  <ref role="37wK5l" to="go48:14R2qyOCsVI" resolve="getVmOptions" />
+                </node>
+              </node>
+              <node concept="3cpWs3" id="1J1$cwfXUqA" role="3uHU7B">
+                <node concept="3cpWs3" id="4rbJdZOvCF0" role="3uHU7B">
+                  <node concept="3cpWs3" id="4rbJdZOv_wy" role="3uHU7B">
+                    <node concept="3cpWs3" id="4rbJdZOv$cV" role="3uHU7B">
+                      <node concept="Xl_RD" id="4rbJdZOvySI" role="3uHU7B">
+                        <property role="Xl_RC" value="-D" />
+                      </node>
+                      <node concept="10M0yZ" id="4rbJdZOv$Y6" role="3uHU7w">
+                        <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
+                        <ref role="3cqZAo" to="u9u1:4rbJdZOuy6t" resolve="SYS_PROPERTY" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="4rbJdZOvBVD" role="3uHU7w">
+                      <property role="Xl_RC" value="=" />
+                    </node>
+                  </node>
+                  <node concept="10M0yZ" id="4rbJdZOvDxE" role="3uHU7w">
+                    <ref role="3cqZAo" to="u9u1:4rbJdZOvA9R" resolve="SYS_PROPERTY_EXPECTED_VALUE" />
+                    <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="1J1$cwfY4aZ" role="3uHU7w">
+                  <property role="Xl_RC" value=" " />
                 </node>
               </node>
             </node>

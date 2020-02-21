@@ -11242,33 +11242,21 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbF" id="3Fszdttq77Z" role="3cqZAp">
+              <node concept="2OqwBi" id="3Fszdttq889" role="3clFbG">
+                <node concept="37vLTw" id="3Fszdttq77X" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="3Fszdttq9rx" role="2OqNvi">
+                  <node concept="Xl_RD" id="3Fszdttq9zE" role="25WWJ7">
+                    <property role="Xl_RC" value="-Djdk.module.illegalAccess.silent=true" />
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="37vLTw" id="47U0A_sBIzZ" role="3clFbw">
             <ref role="3cqZAo" node="40J2CKBsoFY" resolve="myNeedsMPS" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="35ZcvJSce07" role="3cqZAp">
-          <node concept="2OqwBi" id="35ZcvJSce08" role="3clFbG">
-            <node concept="37vLTw" id="35ZcvJSce09" role="2Oq$k0">
-              <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
-            </node>
-            <node concept="TSZUe" id="35ZcvJSce0a" role="2OqNvi">
-              <node concept="Xl_RD" id="35ZcvJSce0b" role="25WWJ7">
-                <property role="Xl_RC" value="-ea" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3Fszdttq77Z" role="3cqZAp">
-          <node concept="2OqwBi" id="3Fszdttq889" role="3clFbG">
-            <node concept="37vLTw" id="3Fszdttq77X" role="2Oq$k0">
-              <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
-            </node>
-            <node concept="TSZUe" id="3Fszdttq9rx" role="2OqNvi">
-              <node concept="Xl_RD" id="3Fszdttq9zE" role="25WWJ7">
-                <property role="Xl_RC" value="-Djdk.module.illegalAccess.silent=true" />
-              </node>
-            </node>
           </node>
         </node>
       </node>

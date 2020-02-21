@@ -2395,6 +2395,54 @@
       </node>
       <node concept="3Tm1VV" id="5gyVhZ1aye8" role="1B3o_S" />
     </node>
+    <node concept="yHkHE" id="1J1$cwfVjc$" role="yHkHi">
+      <property role="TrG5h" value="createJavaRunParameters" />
+      <node concept="yHkIc" id="1J1$cwfVna2" role="3clF45">
+        <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
+      </node>
+      <node concept="3clFbS" id="1J1$cwfVjcA" role="3clF47">
+        <node concept="3cpWs8" id="1J1$cwfVwtM" role="3cqZAp">
+          <node concept="3cpWsn" id="1J1$cwfVwtN" role="3cpWs9">
+            <property role="TrG5h" value="conf" />
+            <node concept="yHkIc" id="1J1$cwfVwnP" role="1tU5fm">
+              <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
+            </node>
+            <node concept="2ShNRf" id="1J1$cwfVwtO" role="33vP2m">
+              <node concept="yHkDB" id="1J1$cwfVwtP" role="2ShVmc">
+                <ref role="yHkDA" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
+                <node concept="2OqwBi" id="1J1$cwfVwtQ" role="yHkDD">
+                  <node concept="2WthIp" id="1J1$cwfVwtR" role="2Oq$k0" />
+                  <node concept="3a8Xsn" id="1J1$cwfVwtS" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1J1$cwfV$yx" role="3cqZAp">
+          <node concept="2OqwBi" id="1J1$cwfVEpD" role="3clFbG">
+            <node concept="2OqwBi" id="1J1$cwfVBwi" role="2Oq$k0">
+              <node concept="37vLTw" id="1J1$cwfV$yv" role="2Oq$k0">
+                <ref role="3cqZAo" node="1J1$cwfVwtN" resolve="conf" />
+              </node>
+              <node concept="yHkDZ" id="1J1$cwfVC4P" role="2OqNvi">
+                <ref role="yHkDY" to="go48:6woObKLBCks" resolve="myJavaParameters" />
+              </node>
+            </node>
+            <node concept="liA8E" id="1J1$cwfVH9t" role="2OqNvi">
+              <ref role="37wK5l" to="go48:14R2qyOCsVy" resolve="setVmOptions" />
+              <node concept="Xl_RD" id="1J1$cwfVHaL" role="37wK5m">
+                <property role="Xl_RC" value="-ea" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1J1$cwfVqvk" role="3cqZAp">
+          <node concept="37vLTw" id="1J1$cwfVwtT" role="3clFbG">
+            <ref role="3cqZAo" node="1J1$cwfVwtN" resolve="conf" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="yHkHE" id="1b7CZFPOnO2" role="yHkHi">
       <property role="TrG5h" value="createTestViewComponent" />
       <node concept="3uibUv" id="1b7CZFPOr$k" role="3clF45">
@@ -2539,13 +2587,10 @@
       <node concept="yHkIc" id="6woObKLCnqF" role="1tU5fm">
         <ref role="yHkHG" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
       </node>
-      <node concept="2ShNRf" id="6woObKLCiTt" role="33vP2m">
-        <node concept="yHkDB" id="6woObKLCiTu" role="2ShVmc">
-          <ref role="yHkDA" to="go48:6woObKLBCjU" resolve="JavaRunParameters" />
-          <node concept="2OqwBi" id="6woObKLCiTv" role="yHkDD">
-            <node concept="2WthIp" id="6woObKLCiTw" role="2Oq$k0" />
-            <node concept="3a8Xsn" id="6woObKLCiTx" role="2OqNvi" />
-          </node>
+      <node concept="2OqwBi" id="1J1$cwfVtfM" role="33vP2m">
+        <node concept="2WthIp" id="1J1$cwfVtfP" role="2Oq$k0" />
+        <node concept="2XshWL" id="1J1$cwfVtfR" role="2OqNvi">
+          <ref role="2WH_rO" node="1J1$cwfVjc$" resolve="createJavaRunParameters" />
         </node>
       </node>
     </node>

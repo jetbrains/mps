@@ -87,7 +87,7 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
     public void test_programParametersArePassedToTheTest() throws Exception {
       List<ITestNodeWrapper> testsToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "4414733712821357918"));
       JUnitTests_Configuration junitRC = this.createDefaultJUnitRC();
-      String vmParams = "-D" + ReadingPropertyBTestCase_Test.SYS_PROPERTY + "=" + ReadingPropertyBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE;
+      String vmParams = "-D" + ReadingPropertyBTestCase_Test.SYS_PROPERTY + "=" + ReadingPropertyBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE + " " + junitRC.getJavaRunParameters().getJavaParameters().getVmOptions();
       junitRC.getJavaRunParameters().getJavaParameters().setVmOptions(vmParams);
       this.runTestsWithSettings(junitRC, testsToSucceed, this.emptyList());
     }
