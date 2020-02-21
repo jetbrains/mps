@@ -15,8 +15,8 @@ import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.ide.project.ProjectHelper;
 
-@GeneratedClass(node = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/173672751428923189", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
-public class UIQueryRelayStrategy {
+@GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428923189", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
+/*package*/ class UIQueryRelayStrategy {
   public UIQueryRelayStrategy() {
   }
   public <T extends IOption> T relayQuery(final IQuery<T> query, final Project mpsProject) {

@@ -27,7 +27,10 @@ import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
+
+import java.util.List;
 
 /**
  * Created by danilla on 21/10/15.
@@ -64,7 +67,8 @@ public class GenerateModuleInProcessAction extends AnAction {
   public void actionPerformed(AnActionEvent anActionEvent) {
     Module module = LangDataKeys.MODULE.getData(anActionEvent.getDataContext());
     Solution solution = ModuleMPSSupport.getInstance().getSolution(module);
-    new GenerateModelsInProcess(module.getProject(), solution.getModels()).generate(getMakeConfigurator());
+    List<SModel> models = new ModelAccessHelper(solution.getRepository().getModelAccess()).runReadAction((solution::getModels));
+    new GenerateModelsInProcess(module.getProject(), models).generate(getMakeConfigurator());
   }
 
   @Nullable

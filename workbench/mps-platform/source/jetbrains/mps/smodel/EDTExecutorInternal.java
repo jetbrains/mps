@@ -61,7 +61,6 @@ import static jetbrains.mps.smodel.EDTExecutor.MAX_SINGLE_EXECUTION_TIME_MS;
  */
 final class EDTExecutorInternal implements Disposable {
   private static final Logger LOG = LogManager.getLogger(EDTExecutorInternal.class);
-  private static final String THREAD_GROUP_NAME = "MPS EDT Executor Thread";
 
   private final ScheduledExecutorService EXECUTOR_SERVICE = Executors.newSingleThreadScheduledExecutor(createDaemonFactory());
   private final AtomicBoolean myFlushIsScheduled = new AtomicBoolean();
@@ -78,7 +77,7 @@ final class EDTExecutorInternal implements Disposable {
 
   @NotNull
   private static ThreadFactory createDaemonFactory() {
-    return new NamedThreadFactory(THREAD_GROUP_NAME + "-", true);
+    return new NamedThreadFactory(WorkbenchModelAccess.THREAD_GROUP_NAME + "-", true);
   }
 
   /**
@@ -86,18 +85,6 @@ final class EDTExecutorInternal implements Disposable {
    * elements are removed in the EDT only in the {@link EDTExecutorInternal#tryToRunTopTask()}
    */
   private final Queue<Task> myTaskQueue = new ConcurrentLinkedQueue<>();
-
-  EDTExecutorInternal() {
-    tellIdeaToBackOff();
-  }
-
-  /**
-   * otherwise the test in the idea plugin are failing since the ThreadTracker is very strict
-   * AP
-   */
-  private void tellIdeaToBackOff() {
-    ThreadTracker.longRunningThreadCreated(this, THREAD_GROUP_NAME);
-  }
 
   void scheduleTask(Task task) {
     traceTheCaller();

@@ -33,7 +33,7 @@
     </component>
     <component>
       <interface-class>jetbrains.mps.make.IMakeService</interface-class>
-      <implementation-class>jetbrains.mps.idea.core.make.NoMakeService</implementation-class>
+      <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.idea.core.navigation.NavigationSupportImpl</implementation-class>
@@ -192,6 +192,7 @@
                     overrides="true"/>
     <fileEditorProvider implementation="jetbrains.mps.idea.core.editor.ModelFileToRootDispatchingEditorProvider"/>
     <gotoClassContributor implementation="jetbrains.mps.idea.core.navigation.MPSIdeaGotoClassContributor"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

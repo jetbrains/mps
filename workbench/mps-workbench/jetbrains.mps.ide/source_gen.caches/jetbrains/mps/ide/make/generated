@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="5i8oihss771p7o84nrhfylxsplutf5y">
-  <files names="MakeServiceConfiguration.java:MakeSettingsPanel.java:MakeTask.java:TextPreviewFile.java:UIQueryRelayStrategy.java:WorkbenchMakeService.java" />
+<product version="3" modelHash="5wecm9qdj3v7leojmv1sakqnfeglzmm">
+  <files names="MakeSettingsPanel.java:TextPreviewFile.java" />
 </product>
 

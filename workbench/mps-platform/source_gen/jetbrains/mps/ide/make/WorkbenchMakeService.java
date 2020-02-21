@@ -60,7 +60,7 @@ import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
 
-@GeneratedClass(node = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/173672751428923285", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
+@GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428923285", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 public class WorkbenchMakeService extends AbstractMakeService implements IMakeService, Disposable {
 
   private static Logger LOG = LogManager.getLogger(WorkbenchMakeService.class);

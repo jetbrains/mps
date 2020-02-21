@@ -37,6 +37,8 @@ import static java.math.BigDecimal.valueOf;
  * We always first acquire IDEA's lock and only then acquire MPS's lock
  */
 public final class WorkbenchModelAccess extends ModelAccess implements Disposable {
+  public static final String THREAD_GROUP_NAME = "MPS EDT Executor Thread";
+
   private static final int WAIT_FOR_WRITE_LOCK_MILLIS = 200;
   private static final String IDEA_WRITE_LOCK_FAIL = "Failed to acquire the IDEA write lock after having waited for %.3f s";
 

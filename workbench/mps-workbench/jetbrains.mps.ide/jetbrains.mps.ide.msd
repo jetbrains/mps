@@ -8,7 +8,9 @@
   </models>
   <facets>
     <facet type="tests" />
-    <facet type="java" />
+    <facet type="java">
+      <classes generated="true" />
+    </facet>
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>

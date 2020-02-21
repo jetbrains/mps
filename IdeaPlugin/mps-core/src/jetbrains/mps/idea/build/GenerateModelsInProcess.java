@@ -15,12 +15,17 @@
  */
 package jetbrains.mps.idea.build;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.generator.DefaultModifiableGenerationSettings;
 import jetbrains.mps.generator.GenerationSettingsProvider;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
+import jetbrains.mps.make.IMakeService;
+import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IPropertiesPool;
@@ -29,7 +34,6 @@ import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.script.PropertyPoolInitializer;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.smodel.resources.ModelsToResources;
-import jetbrains.mps.tool.builder.make.BuildMakeService;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -55,7 +59,8 @@ public class GenerateModelsInProcess {
 
     final MakeSession makeSession = new MakeSession(ProjectHelper.fromIdeaProject(myProject), msgHandler, true);
     JavaCompileFacetInitializer jcfi = new JavaCompileFacetInitializer().skipCompilation(true);
-    BuildMakeService makeService = new BuildMakeService();
+    Platform mpsPlaf = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform();
+    IMakeService makeService = mpsPlaf.findComponent(MakeServiceComponent.class).get();
     IScriptController controller = new IScriptController.Stub2(makeSession, jcfi, new PropertyPoolInitializer() {
       @Override
       public void populate(IPropertiesPool ppool) {
@@ -65,6 +70,7 @@ public class GenerateModelsInProcess {
         }
       }
     });
+    makeService.openNewSession(makeSession);
     Future<IResult> future = makeService.make(makeSession, resources, null, controller);
     // todo write message at the bottom of the window like idea does after compilation
   }

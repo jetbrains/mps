@@ -27,8 +27,8 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-@GeneratedClass(node = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)/173672751428921800", model = "r:0e3b77a4-c2c4-4ca6-a3b1-df5ad0152a9c(jetbrains.mps.ide.make)")
-public class MakeTask extends Task.Backgroundable implements Future<IResult> {
+@GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428921800", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
+/*package*/ class MakeTask extends Task.Backgroundable implements Future<IResult> {
   private final CountDownLatch myLatch = new CountDownLatch(1);
   private final AtomicReference<TaskState> myState = new AtomicReference<TaskState>(TaskState.NOT_STARTED);
   private final CoreMakeTask coreTask;
