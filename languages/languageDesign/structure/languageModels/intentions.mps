@@ -652,10 +652,22 @@
     </node>
   </node>
   <node concept="2S6QgY" id="43oQEeUENTT">
-    <property role="TrG5h" value="MakeAbstract" />
+    <property role="TrG5h" value="ToggleConceptAbstract" />
     <ref role="2ZfgGC" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
     <node concept="2S6ZIM" id="43oQEeUENTV" role="2ZfVej">
       <node concept="3clFbS" id="43oQEeUENTW" role="2VODD2">
+        <node concept="3cpWs8" id="VLMLLt44pm" role="3cqZAp">
+          <node concept="3cpWsn" id="VLMLLt44pp" role="3cpWs9">
+            <property role="TrG5h" value="conceptName" />
+            <node concept="17QB3L" id="VLMLLt44pk" role="1tU5fm" />
+            <node concept="2OqwBi" id="VLMLLt44H2" role="33vP2m">
+              <node concept="2Sf5sV" id="VLMLLt44qG" role="2Oq$k0" />
+              <node concept="3TrcHB" id="VLMLLt452g" role="2OqNvi">
+                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="43oQEeUEPCA" role="3cqZAp">
           <node concept="3K4zz7" id="43oQEeUEPCB" role="3clFbG">
             <node concept="2OqwBi" id="43oQEeUEPCC" role="3K4Cdx">
@@ -664,11 +676,31 @@
               </node>
               <node concept="2Sf5sV" id="43oQEeUEPCD" role="2Oq$k0" />
             </node>
-            <node concept="Xl_RD" id="43oQEeUEPCF" role="3K4E3e">
-              <property role="Xl_RC" value="Make Not Abstract" />
+            <node concept="3cpWs3" id="VLMLLt2ScA" role="3K4E3e">
+              <node concept="3cpWs3" id="VLMLLt2SN2" role="3uHU7B">
+                <node concept="37vLTw" id="VLMLLt45aU" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt44pp" resolve="conceptName" />
+                </node>
+                <node concept="Xl_RD" id="VLMLLt2ScG" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="VLMLLt2ScI" role="3uHU7w">
+                <property role="Xl_RC" value="' Not Abstract" />
+              </node>
             </node>
-            <node concept="Xl_RD" id="43oQEeUEPCG" role="3K4GZi">
-              <property role="Xl_RC" value="Make Abstract" />
+            <node concept="3cpWs3" id="VLMLLt45ck" role="3K4GZi">
+              <node concept="3cpWs3" id="VLMLLt45cl" role="3uHU7B">
+                <node concept="37vLTw" id="VLMLLt45cm" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt44pp" resolve="conceptName" />
+                </node>
+                <node concept="Xl_RD" id="VLMLLt45cn" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="VLMLLt45co" role="3uHU7w">
+                <property role="Xl_RC" value="' Abstract" />
+              </node>
             </node>
           </node>
         </node>

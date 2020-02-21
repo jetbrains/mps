@@ -45,7 +45,8 @@ public final class MakeAbstract_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.abstract$moSU) ? "Make Not Abstract" : "Make Abstract");
+      String conceptName = SPropertyOperations.getString(node, PROPS.name$tAp1);
+      return (SPropertyOperations.getBoolean(node, PROPS.abstract$moSU) ? "Make '" + conceptName + "' Not Abstract" : "Make '" + conceptName + "' Abstract");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
@@ -61,6 +62,7 @@ public final class MakeAbstract_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty abstract$moSU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
     /*package*/ static final SProperty final$moVl = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
   }

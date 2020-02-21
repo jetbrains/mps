@@ -9798,11 +9798,23 @@
   </node>
   <node concept="2S6QgY" id="hZiwP5N">
     <property role="2ZfUl0" value="true" />
-    <property role="TrG5h" value="MakeBLMethodAbstract" />
+    <property role="TrG5h" value="ToggleBLMethodAbstract" />
     <property role="3GE5qa" value="classifiers.members" />
     <ref role="2ZfgGC" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
     <node concept="2S6ZIM" id="hZiwP5O" role="2ZfVej">
       <node concept="3clFbS" id="hZiwP5P" role="2VODD2">
+        <node concept="3cpWs8" id="VLMLLt2Q71" role="3cqZAp">
+          <node concept="3cpWsn" id="VLMLLt2Q74" role="3cpWs9">
+            <property role="TrG5h" value="methodName" />
+            <node concept="17QB3L" id="VLMLLt2Q70" role="1tU5fm" />
+            <node concept="2OqwBi" id="VLMLLt2QCZ" role="33vP2m">
+              <node concept="2Sf5sV" id="VLMLLt2QiM" role="2Oq$k0" />
+              <node concept="3TrcHB" id="VLMLLt2RM0" role="2OqNvi">
+                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="hZix6dh" role="3cqZAp">
           <node concept="3K4zz7" id="4kb4CLbNGWt" role="3clFbG">
             <node concept="2OqwBi" id="4kb4CLbNGWn" role="3K4Cdx">
@@ -9811,11 +9823,31 @@
                 <ref role="3TsBF5" to="tpee:h9EzhlX" resolve="isAbstract" />
               </node>
             </node>
-            <node concept="Xl_RD" id="4kb4CLbNGWx" role="3K4E3e">
-              <property role="Xl_RC" value="Make Method Not Abstract" />
+            <node concept="3cpWs3" id="VLMLLt2ScA" role="3K4E3e">
+              <node concept="3cpWs3" id="VLMLLt2SN2" role="3uHU7B">
+                <node concept="37vLTw" id="VLMLLt2SXG" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt2Q74" resolve="methodName" />
+                </node>
+                <node concept="Xl_RD" id="VLMLLt2ScG" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="VLMLLt2ScI" role="3uHU7w">
+                <property role="Xl_RC" value="' Not Abstract" />
+              </node>
             </node>
-            <node concept="Xl_RD" id="4kb4CLbNGWy" role="3K4GZi">
-              <property role="Xl_RC" value="Make Method Abstract" />
+            <node concept="3cpWs3" id="VLMLLt2T8F" role="3K4GZi">
+              <node concept="3cpWs3" id="VLMLLt2T8G" role="3uHU7B">
+                <node concept="37vLTw" id="VLMLLt2T8H" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt2Q74" resolve="methodName" />
+                </node>
+                <node concept="Xl_RD" id="VLMLLt2T8I" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="VLMLLt2T8J" role="3uHU7w">
+                <property role="Xl_RC" value="' Abstract" />
+              </node>
             </node>
           </node>
         </node>
@@ -10239,7 +10271,7 @@
             </node>
             <node concept="3cpWs3" id="6WSEafdyfYF" role="3K4GZi">
               <node concept="Xl_RD" id="6WSEafdy8o0" role="3uHU7w">
-                <property role="Xl_RC" value="' final" />
+                <property role="Xl_RC" value="' Final" />
               </node>
               <node concept="3cpWs3" id="6WSEafdy8nS" role="3uHU7B">
                 <node concept="Xl_RD" id="6WSEafdy8nY" role="3uHU7B">
@@ -10252,7 +10284,7 @@
             </node>
             <node concept="3cpWs3" id="6WSEafdyew3" role="3K4E3e">
               <node concept="Xl_RD" id="6WSEafdy9A0" role="3uHU7w">
-                <property role="Xl_RC" value="' not final" />
+                <property role="Xl_RC" value="' Not Final" />
               </node>
               <node concept="3cpWs3" id="6WSEafdy9_S" role="3uHU7B">
                 <node concept="Xl_RD" id="6WSEafdy9_Y" role="3uHU7B">
@@ -14730,6 +14762,18 @@
     <ref role="2ZfgGC" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
     <node concept="2S6ZIM" id="3HnrdCzoiNO" role="2ZfVej">
       <node concept="3clFbS" id="3HnrdCzoiNP" role="2VODD2">
+        <node concept="3cpWs8" id="VLMLLt2DOz" role="3cqZAp">
+          <node concept="3cpWsn" id="VLMLLt2DO$" role="3cpWs9">
+            <property role="TrG5h" value="methodName" />
+            <node concept="17QB3L" id="VLMLLt2DO_" role="1tU5fm" />
+            <node concept="2OqwBi" id="VLMLLt2DOA" role="33vP2m">
+              <node concept="2Sf5sV" id="VLMLLt2DOB" role="2Oq$k0" />
+              <node concept="3TrcHB" id="VLMLLt2DOC" role="2OqNvi">
+                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="3HnrdCzojiV" role="3cqZAp">
           <node concept="3K4zz7" id="3HnrdCzojiW" role="3clFbG">
             <node concept="2OqwBi" id="3HnrdCzojj1" role="3K4Cdx">
@@ -14738,11 +14782,31 @@
                 <ref role="3TsBF5" to="tpee:3HnrdCzoiLU" resolve="isSynchronized" />
               </node>
             </node>
-            <node concept="Xl_RD" id="3HnrdCzojj7" role="3K4E3e">
-              <property role="Xl_RC" value="Make Method Not Synchronized" />
+            <node concept="3cpWs3" id="VLMLLt2E8s" role="3K4E3e">
+              <node concept="3cpWs3" id="VLMLLt2EGf" role="3uHU7B">
+                <node concept="37vLTw" id="VLMLLt2EQ_" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt2DO$" resolve="methodName" />
+                </node>
+                <node concept="Xl_RD" id="VLMLLt2E8y" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="VLMLLt2E8$" role="3uHU7w">
+                <property role="Xl_RC" value="' Not Synchronized" />
+              </node>
             </node>
-            <node concept="Xl_RD" id="3HnrdCzojj8" role="3K4GZi">
-              <property role="Xl_RC" value="Make Method Synchronized" />
+            <node concept="3cpWs3" id="VLMLLt2FV$" role="3K4GZi">
+              <node concept="Xl_RD" id="VLMLLt2F9P" role="3uHU7w">
+                <property role="Xl_RC" value="' Synchronized" />
+              </node>
+              <node concept="3cpWs3" id="VLMLLt2F9H" role="3uHU7B">
+                <node concept="Xl_RD" id="VLMLLt2F9N" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+                <node concept="37vLTw" id="VLMLLt2GaM" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt2DO$" resolve="methodName" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -19190,6 +19254,24 @@
               </node>
             </node>
             <node concept="2Sf5sV" id="2B7XHzx0SZ" role="2Oq$k0" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="VLMLLt4UP8" role="3cqZAp">
+          <node concept="2OqwBi" id="VLMLLt59bm" role="3clFbG">
+            <node concept="2OqwBi" id="VLMLLt56hL" role="2Oq$k0">
+              <node concept="2OqwBi" id="VLMLLt55B$" role="2Oq$k0">
+                <node concept="37vLTw" id="VLMLLt4UP6" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2B7XHzwNtV" resolve="method" />
+                </node>
+                <node concept="3TrEf2" id="VLMLLt565t" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tpee:fzclF7Z" resolve="body" />
+                </node>
+              </node>
+              <node concept="3Tsc0h" id="VLMLLt56P_" role="2OqNvi">
+                <ref role="3TtcxE" to="tpee:fzcqZ_x" resolve="statement" />
+              </node>
+            </node>
+            <node concept="2Kehj3" id="VLMLLt5c_E" role="2OqNvi" />
           </node>
         </node>
         <node concept="3clFbF" id="2B7XHzxarE" role="3cqZAp">
