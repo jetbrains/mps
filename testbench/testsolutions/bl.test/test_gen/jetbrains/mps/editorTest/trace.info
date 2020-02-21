@@ -12,6 +12,35 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/1076865108590316952">
+    <file name="ToggleStaticMethodInInterfaceDoesNotWorkOnPrivate_Test.java">
+      <node id="1076865108590316952" at="19,67,20,25" concept="11" />
+      <node id="1076865108590316952" at="24,89,25,36" concept="2" />
+      <node id="1076865108590316952" at="30,52,31,19" concept="11" />
+      <node id="1076865108590316952" at="35,51,36,72" concept="2" />
+      <node id="1076865108590429633" at="36,72,37,131" concept="6" />
+      <node id="1076865108590430622" at="37,131,38,30" concept="2" />
+      <node id="1076865108590316952" at="16,0,18,0" concept="9" trace="ourParamCache" />
+      <node id="1076865108590316952" at="19,0,22,0" concept="1" trace="ToggleStaticMethodInInterfaceDoesNotWorkOnPrivate_Test#()V" />
+      <node id="1076865108590316952" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1076865108590316952" at="23,0,27,0" concept="5" trace="test_ToggleStaticMethodInInterfaceDoesNotWorkOnPrivate#()V" />
+      <node id="1076865108590316952" at="34,0,40,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="1076865108590316952" at="19,67,20,25" />
+      <scope id="1076865108590316952" at="24,89,25,36" />
+      <scope id="1076865108590316952" at="30,52,31,19" />
+      <scope id="1076865108590316952" at="19,0,22,0" />
+      <scope id="1076865108590316952" at="30,0,33,0">
+        <var name="owner" id="1076865108590316952" />
+      </scope>
+      <scope id="1076865108590316952" at="35,51,38,30">
+        <var name="res" id="1076865108590429634" />
+      </scope>
+      <scope id="1076865108590316952" at="23,0,27,0" />
+      <scope id="1076865108590316952" at="34,0,40,0" />
+      <unit id="1076865108590316952" at="28,0,41,0" name="jetbrains.mps.editorTest.ToggleStaticMethodInInterfaceDoesNotWorkOnPrivate_Test$TestBody" />
+      <unit id="1076865108590316952" at="14,0,42,0" name="jetbrains.mps.editorTest.ToggleStaticMethodInInterfaceDoesNotWorkOnPrivate_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/1077509448392937329">
     <file name="BackspaceCommentedConditionAfterCommented_Test.java">
       <node id="1077509448392937329" at="18,59,19,25" concept="11" />
@@ -3623,6 +3652,58 @@
       <scope id="1995955262515612310" at="33,0,38,0" />
       <unit id="1995955262515612310" at="27,0,39,0" name="jetbrains.mps.editorTest.InsertPlaceholderMemberBeforeNode_Test$TestBody" />
       <unit id="1995955262515612310" at="13,0,40,0" name="jetbrains.mps.editorTest.InsertPlaceholderMemberBeforeNode_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/2000038898466345448">
+    <file name="ToggleStaticMethodInInterface1_Test.java">
+      <node id="2000038898466345448" at="18,48,19,25" concept="11" />
+      <node id="2000038898466345448" at="23,70,24,36" concept="2" />
+      <node id="2000038898466345448" at="29,52,30,19" concept="11" />
+      <node id="2000038898466345448" at="34,51,35,72" concept="2" />
+      <node id="2000038898466351977" at="35,72,36,111" concept="2" />
+      <node id="2000038898466345448" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="2000038898466345448" at="18,0,21,0" concept="1" trace="ToggleStaticMethodInInterface1_Test#()V" />
+      <node id="2000038898466345448" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2000038898466345448" at="22,0,26,0" concept="5" trace="test_ToggleStaticMethodInInterface1#()V" />
+      <node id="2000038898466345448" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="2000038898466345448" at="18,48,19,25" />
+      <scope id="2000038898466345448" at="23,70,24,36" />
+      <scope id="2000038898466345448" at="29,52,30,19" />
+      <scope id="2000038898466345448" at="34,51,36,111" />
+      <scope id="2000038898466345448" at="18,0,21,0" />
+      <scope id="2000038898466345448" at="29,0,32,0">
+        <var name="owner" id="2000038898466345448" />
+      </scope>
+      <scope id="2000038898466345448" at="22,0,26,0" />
+      <scope id="2000038898466345448" at="33,0,38,0" />
+      <unit id="2000038898466345448" at="27,0,39,0" name="jetbrains.mps.editorTest.ToggleStaticMethodInInterface1_Test$TestBody" />
+      <unit id="2000038898466345448" at="13,0,40,0" name="jetbrains.mps.editorTest.ToggleStaticMethodInInterface1_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/2000038898466408228">
+    <file name="ToggleStaticMethodInInterface2_Test.java">
+      <node id="2000038898466408228" at="18,48,19,25" concept="11" />
+      <node id="2000038898466408228" at="23,70,24,36" concept="2" />
+      <node id="2000038898466408228" at="29,52,30,19" concept="11" />
+      <node id="2000038898466408228" at="34,51,35,72" concept="2" />
+      <node id="2000038898466408230" at="35,72,36,111" concept="2" />
+      <node id="2000038898466408228" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="2000038898466408228" at="18,0,21,0" concept="1" trace="ToggleStaticMethodInInterface2_Test#()V" />
+      <node id="2000038898466408228" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2000038898466408228" at="22,0,26,0" concept="5" trace="test_ToggleStaticMethodInInterface2#()V" />
+      <node id="2000038898466408228" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="2000038898466408228" at="18,48,19,25" />
+      <scope id="2000038898466408228" at="23,70,24,36" />
+      <scope id="2000038898466408228" at="29,52,30,19" />
+      <scope id="2000038898466408228" at="34,51,36,111" />
+      <scope id="2000038898466408228" at="18,0,21,0" />
+      <scope id="2000038898466408228" at="29,0,32,0">
+        <var name="owner" id="2000038898466408228" />
+      </scope>
+      <scope id="2000038898466408228" at="22,0,26,0" />
+      <scope id="2000038898466408228" at="33,0,38,0" />
+      <unit id="2000038898466408228" at="27,0,39,0" name="jetbrains.mps.editorTest.ToggleStaticMethodInInterface2_Test$TestBody" />
+      <unit id="2000038898466408228" at="13,0,40,0" name="jetbrains.mps.editorTest.ToggleStaticMethodInInterface2_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/2138084782796863470">
@@ -11415,19 +11496,19 @@
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4615554537706953396">
-    <file name="NoStaticInInterface_Test.java">
-      <node id="4615554537706953396" at="18,37,19,25" concept="11" />
-      <node id="4615554537706953396" at="23,59,24,36" concept="2" />
+    <file name="ThereIsStaticInInterface_Test.java">
+      <node id="4615554537706953396" at="18,42,19,25" concept="11" />
+      <node id="4615554537706953396" at="23,64,24,36" concept="2" />
       <node id="4615554537706953396" at="29,52,30,19" concept="11" />
       <node id="4615554537706953396" at="34,51,35,72" concept="2" />
       <node id="4615554537706953398" at="35,72,36,27" concept="2" />
       <node id="4615554537706953396" at="15,0,17,0" concept="9" trace="ourParamCache" />
-      <node id="4615554537706953396" at="18,0,21,0" concept="1" trace="NoStaticInInterface_Test#()V" />
+      <node id="4615554537706953396" at="18,0,21,0" concept="1" trace="ThereIsStaticInInterface_Test#()V" />
       <node id="4615554537706953396" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="4615554537706953396" at="22,0,26,0" concept="5" trace="test_NoStaticInInterface#()V" />
+      <node id="4615554537706953396" at="22,0,26,0" concept="5" trace="test_ThereIsStaticInInterface#()V" />
       <node id="4615554537706953396" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="4615554537706953396" at="18,37,19,25" />
-      <scope id="4615554537706953396" at="23,59,24,36" />
+      <scope id="4615554537706953396" at="18,42,19,25" />
+      <scope id="4615554537706953396" at="23,64,24,36" />
       <scope id="4615554537706953396" at="29,52,30,19" />
       <scope id="4615554537706953396" at="34,51,36,27" />
       <scope id="4615554537706953396" at="18,0,21,0" />
@@ -11436,8 +11517,8 @@
       </scope>
       <scope id="4615554537706953396" at="22,0,26,0" />
       <scope id="4615554537706953396" at="33,0,38,0" />
-      <unit id="4615554537706953396" at="27,0,39,0" name="jetbrains.mps.editorTest.NoStaticInInterface_Test$TestBody" />
-      <unit id="4615554537706953396" at="13,0,40,0" name="jetbrains.mps.editorTest.NoStaticInInterface_Test" />
+      <unit id="4615554537706953396" at="27,0,39,0" name="jetbrains.mps.editorTest.ThereIsStaticInInterface_Test$TestBody" />
+      <unit id="4615554537706953396" at="13,0,40,0" name="jetbrains.mps.editorTest.ThereIsStaticInInterface_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/4615554537706956324">

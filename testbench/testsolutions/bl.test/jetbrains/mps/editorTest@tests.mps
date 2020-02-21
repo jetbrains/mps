@@ -39534,7 +39534,7 @@
   </node>
   <node concept="LiM7Y" id="40dJAnltLEO">
     <property role="3GE5qa" value="methodModifiers.interface" />
-    <property role="TrG5h" value="NoStaticInInterface" />
+    <property role="TrG5h" value="ThereIsStaticInInterface" />
     <node concept="3clFbS" id="40dJAnltLEP" role="LjaKd">
       <node concept="2TK7Tu" id="40dJAnltLEQ" role="3cqZAp">
         <property role="2TTd_B" value="static" />
@@ -80966,6 +80966,158 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="1J1$cwg3d7C">
+    <property role="TrG5h" value="ToggleStaticMethodInInterface1" />
+    <property role="3GE5qa" value="methodModifiers.interface" />
+    <node concept="3clFbS" id="1J1$cwg3d7D" role="LjaKd">
+      <node concept="1MFPAf" id="1J1$cwg3eHD" role="3cqZAp">
+        <ref role="1MFYO6" to="tpei:2B7XHzwaEF" resolve="ToggleMethodStatic" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="1J1$cwg3d9K" role="25YQCW">
+      <node concept="3HP615" id="1J1$cwg3d9I" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="3clFb_" id="1J1$cwg3ecP" role="jymVt">
+          <property role="TrG5h" value="bar" />
+          <node concept="3clFbS" id="1J1$cwg3ecS" role="3clF47" />
+          <node concept="3Tm1VV" id="1J1$cwg3ecT" role="1B3o_S" />
+          <node concept="3cqZAl" id="1J1$cwg3ec9" role="3clF45" />
+          <node concept="LIFWc" id="1J1$cwg3edO" role="lGtFl">
+            <property role="LIFWa" value="1" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="1" />
+            <property role="p6zMs" value="1" />
+            <property role="LIFWd" value="methodName" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="1J1$cwg3d9J" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="1J1$cwg3efd" role="25YQFr">
+      <node concept="3HP615" id="1J1$cwg3efe" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="2YIFZL" id="1J1$cwg3egj" role="jymVt">
+          <property role="TrG5h" value="bar" />
+          <node concept="3clFbS" id="1J1$cwg3efg" role="3clF47" />
+          <node concept="3cqZAl" id="1J1$cwg3efi" role="3clF45" />
+          <node concept="3Tm1VV" id="1J1$cwg3efh" role="1B3o_S" />
+          <node concept="LIFWc" id="1J1$cwg3efj" role="lGtFl">
+            <property role="LIFWa" value="1" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="1" />
+            <property role="p6zMs" value="1" />
+            <property role="LIFWd" value="methodName" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="1J1$cwg3efk" role="1B3o_S" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="1J1$cwg3ss$">
+    <property role="TrG5h" value="ToggleStaticMethodInInterface2" />
+    <property role="3GE5qa" value="methodModifiers.interface" />
+    <node concept="3clFbS" id="1J1$cwg3ss_" role="LjaKd">
+      <node concept="1MFPAf" id="1J1$cwg3ssA" role="3cqZAp">
+        <ref role="1MFYO6" to="tpei:2B7XHzwaEF" resolve="ToggleMethodStatic" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="1J1$cwg3ssB" role="25YQCW">
+      <node concept="3HP615" id="1J1$cwg3ssC" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="2YIFZL" id="VLMLLsysEV" role="jymVt">
+          <property role="TrG5h" value="bar" />
+          <node concept="3clFbS" id="VLMLLsyoO_" role="3clF47" />
+          <node concept="3cqZAl" id="VLMLLsyoNM" role="3clF45" />
+          <node concept="3Tm1VV" id="VLMLLsyoOA" role="1B3o_S" />
+          <node concept="LIFWc" id="VLMLLsysFP" role="lGtFl">
+            <property role="LIFWa" value="0" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="0" />
+            <property role="p6zMs" value="0" />
+            <property role="LIFWd" value="methodName" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="1J1$cwg3ssI" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="1J1$cwg3ssJ" role="25YQFr">
+      <node concept="3HP615" id="1J1$cwg3ssK" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="3clFb_" id="VLMLLsysGF" role="jymVt">
+          <property role="TrG5h" value="bar" />
+          <node concept="3clFbS" id="1J1$cwg3ssM" role="3clF47" />
+          <node concept="3cqZAl" id="1J1$cwg3ssN" role="3clF45" />
+          <node concept="3Tm1VV" id="1J1$cwg3ssO" role="1B3o_S" />
+          <node concept="LIFWc" id="1J1$cwg3ssP" role="lGtFl">
+            <property role="LIFWa" value="1" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="1" />
+            <property role="p6zMs" value="1" />
+            <property role="LIFWd" value="methodName" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="1J1$cwg3ssQ" role="1B3o_S" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="VLMLLsysQo">
+    <property role="TrG5h" value="ToggleStaticMethodInInterfaceDoesNotWorkOnPrivate" />
+    <property role="3GE5qa" value="methodModifiers.interface" />
+    <node concept="3clFbS" id="VLMLLsysQp" role="LjaKd">
+      <node concept="3cpWs8" id="VLMLLsySn1" role="3cqZAp">
+        <node concept="3cpWsn" id="VLMLLsySn2" role="3cpWs9">
+          <property role="TrG5h" value="res" />
+          <node concept="10P_77" id="VLMLLsySiS" role="1tU5fm" />
+          <node concept="2bRw2S" id="VLMLLsySn3" role="33vP2m">
+            <ref role="2bRw2V" to="tpei:2B7XHzwaEF" resolve="ToggleMethodStatic" />
+          </node>
+        </node>
+      </node>
+      <node concept="3vFxKo" id="VLMLLsySAu" role="3cqZAp">
+        <node concept="37vLTw" id="VLMLLsySBj" role="3vFALc">
+          <ref role="3cqZAo" node="VLMLLsySn2" resolve="res" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="VLMLLsysQr" role="25YQCW">
+      <node concept="3HP615" id="VLMLLsysQs" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="2YIFZL" id="VLMLLsysQt" role="jymVt">
+          <property role="TrG5h" value="bar" />
+          <node concept="3clFbS" id="VLMLLsysQu" role="3clF47" />
+          <node concept="3cqZAl" id="VLMLLsysQv" role="3clF45" />
+          <node concept="3Tm6S6" id="VLMLLsysSi" role="1B3o_S" />
+          <node concept="LIFWc" id="VLMLLsysQx" role="lGtFl">
+            <property role="LIFWa" value="0" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="0" />
+            <property role="p6zMs" value="0" />
+            <property role="LIFWd" value="methodName" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="VLMLLsysQy" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="VLMLLsysQz" role="25YQFr">
+      <node concept="3HP615" id="VLMLLsysQ$" role="1qenE9">
+        <property role="TrG5h" value="foo" />
+        <node concept="2YIFZL" id="VLMLLs$0gc" role="jymVt">
+          <property role="TrG5h" value="bar" />
+          <node concept="3clFbS" id="VLMLLs$0gd" role="3clF47" />
+          <node concept="3cqZAl" id="VLMLLs$0ge" role="3clF45" />
+          <node concept="3Tm6S6" id="VLMLLs$0gf" role="1B3o_S" />
+          <node concept="LIFWc" id="VLMLLs$0gg" role="lGtFl">
+            <property role="LIFWa" value="0" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="0" />
+            <property role="p6zMs" value="0" />
+            <property role="LIFWd" value="methodName" />
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="VLMLLsysQE" role="1B3o_S" />
       </node>
     </node>
   </node>

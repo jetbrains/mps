@@ -51,7 +51,6 @@
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" implicit="true" />
     <import index="tpfp" ref="r:00000000-0000-4000-0000-011c89590519(jetbrains.mps.baseLanguage.regexp.jetbrains.mps.regexp.accessory)" implicit="true" />
-    <import index="tpch" ref="r:00000000-0000-4000-0000-011c8959028d(jetbrains.mps.lang.structure.editor)" implicit="true" />
     <import index="1i04" ref="r:3270011d-8b2d-4938-8dff-d256a759e017(jetbrains.mps.lang.behavior.structure)" implicit="true" />
   </imports>
   <registry>
@@ -61538,7 +61537,6 @@
     <node concept="3F2HdR" id="3$ZGCDjhC3$" role="2wV5jI">
       <ref role="1NtTu8" to="tpee:20YUQaJkyYL" resolve="modifiers" />
       <ref role="1ERwB7" node="4c$BrPwRwry" resolve="ModifiersInsertHandler" />
-      <ref role="1k5W1q" to="tpch:24YP6ZDyde4" resolve="Keyword" />
       <node concept="l2Vlx" id="3$ZGCDjhC3_" role="2czzBx" />
       <node concept="pkWqt" id="3$ZGCDjhC3A" role="pqm2j">
         <node concept="3clFbS" id="3$ZGCDjhC3B" role="2VODD2">

@@ -281,7 +281,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
-          intentions[0] = new MakeMethodStatic_Intention();
+          intentions[0] = new ToggleMethodStatic_Intention();
         }
         break;
       case 31:
@@ -491,7 +491,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[77] = new AlterStatementListContainer_Intention();
     rv[78] = new RemoveStaticFieldModifier_Intention();
     rv[79] = new AddStaticFieldModifier_Intention();
-    rv[80] = new MakeMethodStatic_Intention();
+    rv[80] = new ToggleMethodStatic_Intention();
     rv[81] = new MakeStaticFieldVolatile_Intention();
     rv[82] = new MakeStaticFieldTransient_Intention();
     rv[83] = new OrToAndAndBack_Intention();
