@@ -34,9 +34,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept 
-          intentions = new IntentionFactory[2];
-          intentions[0] = new MakeMethodDefault_Intention();
-          intentions[1] = new MakeMethodNotDefault_Intention();
+          intentions = new IntentionFactory[1];
+          intentions[0] = new ToggleMethodDefault_Intention();
         }
         break;
       default:
@@ -48,9 +47,8 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[2];
-    rv[0] = new MakeMethodDefault_Intention();
-    rv[1] = new MakeMethodNotDefault_Intention();
+    IntentionFactory[] rv = new IntentionFactory[1];
+    rv[0] = new ToggleMethodDefault_Intention();
     return Arrays.asList(rv);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL)).seal();
