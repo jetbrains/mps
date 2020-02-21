@@ -202,17 +202,20 @@ public class LightPattern_List_Test extends TestCase {
     Assert.assertTrue(matches);
   }
   private static class Pattern1_Pattern extends AbstractGeneratedPattern {
-    public Pattern1_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
         n1.forChild(LINKS.statement$WHn8).init(CONCEPTS.ReturnStatement$SF);
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern2_Pattern extends AbstractGeneratedPattern {
-    public Pattern2_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
@@ -221,10 +224,12 @@ public class LightPattern_List_Test extends TestCase {
         }
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern3_Pattern extends AbstractGeneratedPattern {
-    public Pattern3_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
@@ -234,6 +239,7 @@ public class LightPattern_List_Test extends TestCase {
         }
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
     @Nullable
     public static SNode getOther(SNode rootNode) {
@@ -242,7 +248,8 @@ public class LightPattern_List_Test extends TestCase {
     }
   }
   private static class Pattern4_Pattern extends AbstractGeneratedPattern {
-    public Pattern4_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
@@ -252,6 +259,7 @@ public class LightPattern_List_Test extends TestCase {
         }
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
     @Nullable
     public static SNode getOther(SNode rootNode) {
@@ -260,13 +268,15 @@ public class LightPattern_List_Test extends TestCase {
     }
   }
   private static class Pattern5_Pattern extends AbstractGeneratedPattern {
-    public Pattern5_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
         n1.forChild(LINKS.statement$WHn8).init(new NodeMatcherBuilder.ListWildcardMatcher());
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
     @Nullable
     public static Iterable<SNode> getStatements(SNode rootNode) {
@@ -275,7 +285,8 @@ public class LightPattern_List_Test extends TestCase {
     }
   }
   private static class Pattern6_Pattern extends AbstractGeneratedPattern {
-    public Pattern6_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
@@ -284,6 +295,7 @@ public class LightPattern_List_Test extends TestCase {
         }
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
     @Nullable
     public static SNode getStatement(SNode rootNode) {
@@ -292,7 +304,8 @@ public class LightPattern_List_Test extends TestCase {
     }
   }
   private static class Pattern7_Pattern extends AbstractGeneratedPattern {
-    public Pattern7_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.BlockStatement$1i);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.statements$uqR0).init(CONCEPTS.StatementList$TN);
@@ -302,6 +315,7 @@ public class LightPattern_List_Test extends TestCase {
         }
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
     @Nullable
     public static SNode getExpression(SNode rootNode) {
