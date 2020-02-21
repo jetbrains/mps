@@ -42,7 +42,6 @@
     <import index="cttk" ref="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)" />
     <import index="ospv" ref="r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)" />
     <import index="yctd" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.findUsages(MPS.Core/)" />
-    <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
   <registry>
@@ -11529,30 +11528,6 @@
     <property role="TrG5h" value="TestExpectedType" />
     <property role="3GE5qa" value="typeSystem" />
     <property role="26Nn1l" value="false" />
-    <node concept="1LZb2c" id="VLMLLsSmRi" role="1SL9yI">
-      <property role="TrG5h" value="asdf" />
-      <node concept="3cqZAl" id="VLMLLsSmRj" role="3clF45" />
-      <node concept="3clFbS" id="VLMLLsSmRn" role="3clF47">
-        <node concept="3vwNmj" id="VLMLLsSmYL" role="3cqZAp">
-          <node concept="2OqwBi" id="VLMLLsSoyH" role="3vwVQn">
-            <node concept="2OqwBi" id="VLMLLsSniO" role="2Oq$k0">
-              <node concept="3xONca" id="VLMLLsSn07" role="2Oq$k0">
-                <ref role="3xOPvv" node="VLMLLsSmYZ" resolve="dd" />
-              </node>
-              <node concept="2qgKlT" id="VLMLLsSo4F" role="2OqNvi">
-                <ref role="37wK5l" to="tpcu:hEwIO9y" resolve="getFqName" />
-              </node>
-            </node>
-            <node concept="liA8E" id="VLMLLsSoUg" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
-              <node concept="Xl_RD" id="VLMLLsSpyN" role="37wK5m">
-                <property role="Xl_RC" value="ExpectedTest" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="1qefOq" id="3NZe7JF5O0N" role="1SKRRt">
       <node concept="312cEu" id="3NZe7JF5O0O" role="1qenE9">
         <property role="TrG5h" value="ExpectedTest" />

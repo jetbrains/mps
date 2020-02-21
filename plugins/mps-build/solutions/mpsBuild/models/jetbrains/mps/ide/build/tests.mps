@@ -2176,6 +2176,11 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="6s0TC9aOWoG" role="3bR37C">
+          <node concept="3bR9La" id="6s0TC9aOWoH" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:7iiyGQ7dLQL" resolve="jetbrains.mps.baseLanguage.jdk8" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="7wqdV6Y5fwj" role="2G$12L">
         <property role="BnDLt" value="true" />

@@ -64,7 +64,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String methodName = SPropertyOperations.getString(node, PROPS.name$tAp1);
-      return (SNodeOperations.isInstanceOf(node, CONCEPTS.StaticMethodDeclaration$eX) ? "Make '" + methodName + "' not static" : "Make '" + methodName + "' static");
+      return (SNodeOperations.isInstanceOf(node, CONCEPTS.StaticMethodDeclaration$eX) ? "Make '" + methodName + "' Not Static" : "Make '" + methodName + "' Static");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

@@ -37,13 +37,14 @@
       <node id="4838165336397485686" at="81,39,82,43" concept="2" />
       <node id="1076865108598603664" at="85,104,86,141" concept="2" />
       <node id="4838165336397326276" at="88,14,89,93" concept="2" />
-      <node id="4838165336397280137" at="93,48,94,48" concept="7" />
-      <node id="4838165336397280137" at="99,0,100,0" concept="8" trace="Interface$Kp" />
-      <node id="4838165336397280137" at="100,0,101,0" concept="8" trace="DefaultModifier$Z2" />
-      <node id="4838165336397280137" at="104,0,105,0" concept="8" trace="name$tAp1" />
-      <node id="4838165336397280137" at="108,0,109,0" concept="8" trace="modifiers$akE0" />
-      <node id="4838165336397280137" at="109,0,110,0" concept="8" trace="body$WIlu" />
-      <node id="4838165336397280137" at="110,0,111,0" concept="8" trace="statement$WHn8" />
+      <node id="47041348238616302" at="90,7,91,47" concept="2" />
+      <node id="4838165336397280137" at="94,48,95,48" concept="7" />
+      <node id="4838165336397280137" at="100,0,101,0" concept="8" trace="Interface$Kp" />
+      <node id="4838165336397280137" at="101,0,102,0" concept="8" trace="DefaultModifier$Z2" />
+      <node id="4838165336397280137" at="105,0,106,0" concept="8" trace="name$tAp1" />
+      <node id="4838165336397280137" at="109,0,110,0" concept="8" trace="modifiers$akE0" />
+      <node id="4838165336397280137" at="110,0,111,0" concept="8" trace="body$WIlu" />
+      <node id="4838165336397280137" at="111,0,112,0" concept="8" trace="statement$WHn8" />
       <node id="4838165336397280137" at="58,0,60,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="2000038898466510605" at="88,12,90,7" concept="0" />
       <node id="4838165336397280137" at="30,0,33,0" concept="1" trace="ToggleMethodDefault_Intention#()V" />
@@ -57,14 +58,14 @@
       <node id="1076865108598538163" at="84,11,87,9" concept="4" />
       <node id="4838165336397280137" at="33,0,37,0" concept="5" trace="getPresentation#()Ljava/lang/String;" />
       <node id="4838165336397280137" at="47,0,51,0" concept="5" trace="isSurroundWith#()Z" />
-      <node id="4838165336397280137" at="92,0,96,0" concept="5" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
+      <node id="4838165336397280137" at="93,0,97,0" concept="5" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
       <node id="1240248371782" at="62,79,67,90" concept="7" />
       <node id="4838165336397280137" at="51,0,57,0" concept="5" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
       <node id="4838165336397280137" at="37,0,44,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
       <node id="4838165336397280137" at="60,0,69,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
       <node id="4838165336397374663" at="75,11,84,11" concept="2" />
       <node id="2000038898466489727" at="70,78,90,7" concept="4" />
-      <node id="4838165336397280137" at="69,0,92,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="4838165336397280137" at="69,0,93,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <scope id="4838165336397280137" at="58,38,58,38" />
       <scope id="4838165336397280137" at="30,42,31,157" />
       <scope id="4838165336397280137" at="34,35,35,33" />
@@ -78,7 +79,7 @@
       <scope id="4838165336397484609" at="81,39,82,43" />
       <scope id="1076865108598538165" at="85,104,86,141" />
       <scope id="2000038898466510606" at="88,14,89,93" />
-      <scope id="4838165336397280137" at="93,48,94,48" />
+      <scope id="4838165336397280137" at="94,48,95,48" />
       <scope id="4838165336397280137" at="58,0,60,0" />
       <scope id="4838165336397280137" at="30,0,33,0" />
       <scope id="4838165336397280137" at="44,0,47,0">
@@ -101,7 +102,7 @@
       <scope id="4838165336397280137" at="38,84,42,16" />
       <scope id="4838165336397280137" at="47,0,51,0" />
       <scope id="4838165336397280137" at="51,99,55,30" />
-      <scope id="4838165336397280137" at="92,0,96,0" />
+      <scope id="4838165336397280137" at="93,0,97,0" />
       <scope id="4838165336397280137" at="51,0,57,0">
         <var name="context" id="4838165336397280137" />
         <var name="node" id="4838165336397280137" />
@@ -118,20 +119,20 @@
         <var name="node" id="4838165336397280137" />
       </scope>
       <scope id="2000038898466489729" at="75,11,87,9" />
-      <scope id="4838165336397280141" at="70,78,90,7" />
-      <scope id="4838165336397280137" at="69,0,92,0">
+      <scope id="4838165336397280141" at="70,78,91,47" />
+      <scope id="4838165336397280137" at="69,0,93,0">
         <var name="editorContext" id="4838165336397280137" />
         <var name="node" id="4838165336397280137" />
       </scope>
-      <unit id="4838165336397280137" at="103,0,106,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$PROPS" />
+      <unit id="4838165336397280137" at="104,0,107,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$PROPS" />
       <unit id="2000038898466475416" at="63,101,67,7" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$1" />
       <unit id="2000038898466504455" at="71,97,75,7" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$4" />
       <unit id="4838165336397437393" at="76,97,80,9" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$2" />
       <unit id="4838165336397484608" at="80,24,84,9" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation$3" />
-      <unit id="4838165336397280137" at="98,0,102,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$CONCEPTS" />
-      <unit id="4838165336397280137" at="107,0,112,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$LINKS" />
-      <unit id="4838165336397280137" at="57,0,97,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation" />
-      <unit id="4838165336397280137" at="28,0,113,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention" />
+      <unit id="4838165336397280137" at="99,0,103,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$CONCEPTS" />
+      <unit id="4838165336397280137" at="108,0,113,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$LINKS" />
+      <unit id="4838165336397280137" at="57,0,98,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention$IntentionImplementation" />
+      <unit id="4838165336397280137" at="28,0,114,0" name="jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention" />
     </file>
   </root>
 </debug-info>

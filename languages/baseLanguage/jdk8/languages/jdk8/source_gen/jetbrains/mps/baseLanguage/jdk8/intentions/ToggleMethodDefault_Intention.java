@@ -88,6 +88,7 @@ public final class ToggleMethodDefault_Intention extends AbstractIntentionDescri
       } else {
         SLinkOperations.addNewChild(node, LINKS.modifiers$akE0, CONCEPTS.DefaultModifier$Z2);
       }
+      editorContext.selectWRTFocusPolicy(node);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

@@ -18915,7 +18915,7 @@
           <node concept="3K4zz7" id="1J1$cwg3z4I" role="3clFbG">
             <node concept="3cpWs3" id="1J1$cwg3z4M" role="3K4GZi">
               <node concept="Xl_RD" id="1J1$cwg3z4N" role="3uHU7w">
-                <property role="Xl_RC" value="' static" />
+                <property role="Xl_RC" value="' Static" />
               </node>
               <node concept="3cpWs3" id="1J1$cwg3z4O" role="3uHU7B">
                 <node concept="Xl_RD" id="1J1$cwg3z4P" role="3uHU7B">
@@ -18928,7 +18928,7 @@
             </node>
             <node concept="3cpWs3" id="1J1$cwg3z4R" role="3K4E3e">
               <node concept="Xl_RD" id="1J1$cwg3z4S" role="3uHU7w">
-                <property role="Xl_RC" value="' not static" />
+                <property role="Xl_RC" value="' Not Static" />
               </node>
               <node concept="3cpWs3" id="1J1$cwg3z4T" role="3uHU7B">
                 <node concept="Xl_RD" id="1J1$cwg3z4U" role="3uHU7B">

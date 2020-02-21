@@ -46,7 +46,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions = new IntentionFactory[6];
           intentions[0] = new MakeRootable_Intention();
           intentions[1] = new MakeFinal_Intention();
-          intentions[2] = new MakeAbstract_Intention();
+          intentions[2] = new ToggleConceptAbstract_Intention();
           intentions[3] = new CreateConceptIcon_Intention();
           intentions[4] = new AttachSmartReferenceAttribute_Intention();
           intentions[5] = new CreateConceptFromUsageInConcept_Intention();
@@ -100,7 +100,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[0] = new AddDeprecatedAnnotation_Intention();
     rv[1] = new MakeRootable_Intention();
     rv[2] = new MakeFinal_Intention();
-    rv[3] = new MakeAbstract_Intention();
+    rv[3] = new ToggleConceptAbstract_Intention();
     rv[4] = new ForbidIncomingReferencesInSubconcepts_Intention();
     rv[5] = new CreateConceptIcon_Intention();
     rv[6] = new AnnotateToDocument_Intention();

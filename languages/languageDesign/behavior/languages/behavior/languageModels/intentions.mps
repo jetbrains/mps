@@ -515,7 +515,7 @@
             </node>
             <node concept="3cpWs3" id="6WSEafdyfYF" role="3K4GZi">
               <node concept="Xl_RD" id="6WSEafdy8o0" role="3uHU7w">
-                <property role="Xl_RC" value="' static" />
+                <property role="Xl_RC" value="' Static" />
               </node>
               <node concept="3cpWs3" id="6WSEafdy8nS" role="3uHU7B">
                 <node concept="Xl_RD" id="6WSEafdy8nY" role="3uHU7B">
@@ -528,7 +528,7 @@
             </node>
             <node concept="3cpWs3" id="6WSEafdyew3" role="3K4E3e">
               <node concept="Xl_RD" id="6WSEafdy9A0" role="3uHU7w">
-                <property role="Xl_RC" value="' not static" />
+                <property role="Xl_RC" value="' Not Static" />
               </node>
               <node concept="3cpWs3" id="6WSEafdy9_S" role="3uHU7B">
                 <node concept="Xl_RD" id="6WSEafdy9_Y" role="3uHU7B">
