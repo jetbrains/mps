@@ -12,7 +12,7 @@ import jetbrains.mps.baseLanguage.tuples.util.SharedPair;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ArrayUtils;
+import java.lang.reflect.Array;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
@@ -128,8 +128,8 @@ public class NamedTuples_Test extends TestCase {
     Assert.assertEquals("B", ListSequence.fromList(lot).getElement(1).first());
   }
   public void test_arrayOfTuples() throws Exception {
-    Pair<String, Long>[] arr1 = ArrayUtils.asArray(new Pair<String, Long>("A", 1L), new Pair<String, Long>("B", 2L));
-    Pair<String, Long>[] arr2 = (Pair<String, Long>[]) ArrayUtils.newArrayInstance(Pair.class, 2);
+    Pair<String, Long>[] arr1 = Tuples.asArray(new Pair<String, Long>("A", 1L), new Pair<String, Long>("B", 2L));
+    Pair<String, Long>[] arr2 = (Pair<String, Long>[]) Array.newInstance(Pair.class, 2);
     for (int idx = 0; idx < arr1.length; idx++) {
       arr2[idx] = arr1[idx];
     }
