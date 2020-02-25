@@ -22191,6 +22191,11 @@
               <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
             </node>
           </node>
+          <node concept="1SiIV0" id="25XiZe969bZ" role="3bR37C">
+            <node concept="3bR9La" id="25XiZe969c0" role="1SiIV1">
+              <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+            </node>
+          </node>
           <node concept="1SiIV0" id="7YI57w6K0wf" role="3bR37C">
             <node concept="3bR9La" id="7YI57w6K0wg" role="1SiIV1">
               <ref role="3bR37D" node="7Kfy9QB6LgV" resolve="jetbrains.mps.make.runtime" />
@@ -22215,6 +22220,11 @@
           <node concept="1SiIV0" id="tXmJuW3tlD" role="3bR37C">
             <node concept="3bR9La" id="tXmJuW3tlE" role="1SiIV1">
               <ref role="3bR37D" node="7Kfy9QB6L8Y" resolve="jetbrains.mps.lang.project" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="25XiZe968q9" role="3bR37C">
+            <node concept="3bR9La" id="25XiZe968zo" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6L2N" resolve="jetbrains.mps.baseLanguage.tuples.runtime" />
             </node>
           </node>
           <node concept="1BupzO" id="73GUf$ummRx" role="3bR31x">
