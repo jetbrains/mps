@@ -8,9 +8,9 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="3j2" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.stubs.javastub.classpath(MPS.Core/)" />
-    <import index="tuzk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jetbrains.org.objectweb.asm.signature(MPS.Core/)" />
-    <import index="dd86" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jetbrains.org.objectweb.asm.tree(MPS.Core/)" />
-    <import index="k8ye" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jetbrains.org.objectweb.asm(MPS.Core/)" />
+    <import index="tuzk" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm.signature(jetbrains.mps.java.stub/)" />
+    <import index="dd86" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm.tree(jetbrains.mps.java.stub/)" />
+    <import index="k8ye" ref="b55d8dfc-0d9d-43d5-886d-c644e7083bff/java:org.jetbrains.org.objectweb.asm(jetbrains.mps.java.stub/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">

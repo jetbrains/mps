@@ -27,7 +27,7 @@ public class JavaStubIdIndexer implements IdIndexer {
   @Override
   public Map<IdIndexEntry, Integer> map(FileContent inputData) {
     byte[] bytes = inputData.getContent();
-    if (bytes == null || bytes.length == 0) {
+    if (bytes.length == 0) {
       return Collections.<IdIndexEntry,Integer>emptyMap();
     }
 

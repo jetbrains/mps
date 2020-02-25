@@ -6194,6 +6194,15 @@
             </node>
           </node>
         </node>
+        <node concept="1E1SXE" id="ROdlokvOU7" role="3bR37C">
+          <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
+          <node concept="398BVA" id="ROdlokvOU8" role="17Grwy">
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="ROdlokvOU9" role="iGT6I">
+              <property role="2Ry0Am" value="asm-all-7.0.1.jar" />
+            </node>
+          </node>
+        </node>
         <node concept="1BupzO" id="73GUf$ummbE" role="3bR31x">
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />

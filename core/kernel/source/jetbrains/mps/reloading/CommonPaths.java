@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,6 +120,7 @@ public final class CommonPaths {
     addIfExists(result, "lib/jdom.jar");
     addIfExists(result, "lib/ecj-4.13.jar");
     addIfExists(result, "plugins/java/lib/ecj-4.13.jar");
+    // next are no longer needed. Kept as there's still use of ClassType.CORE in JdkStubSolutionManager
     addIfExists(result, "lib/guava-27.1-jre.jar");
     addIfExists(result, "lib/xstream-1.4.11.1.jar");
     addIfExists(result, "lib/asm-all-7.0.1.jar");

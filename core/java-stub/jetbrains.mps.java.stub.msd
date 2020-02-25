@@ -5,6 +5,9 @@
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
+    <modelRoot contentPath="${platform_lib}" type="java_classes">
+      <sourceRoot location="asm-all-7.0.1.jar" />
+    </modelRoot>
   </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
@@ -14,6 +17,7 @@
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${module}/classes" />
+    <stubModelEntry path="${platform_lib}/asm-all-7.0.1.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

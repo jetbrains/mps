@@ -21,7 +21,6 @@
       <sourceRoot location="trove4j.jar" />
       <sourceRoot location="jdom.jar" />
       <sourceRoot location="ecj-4.13.jar" />
-      <sourceRoot location="asm-all-7.0.1.jar" />
       <Sources zip="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>
   </models>
