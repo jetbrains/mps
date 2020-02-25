@@ -45,6 +45,8 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
     List<SNode> mayInitialize = new ArrayList<SNode>();
     ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.instanceInitializers_id6Fz0RL3y9UD.invoke(classifier)));
     ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classifier)));
+    List<SNode> doNotInitialize = new ArrayList<SNode>();
+    ListSequence.fromList(doNotInitialize).addSequence(ListSequence.fromList(mayInitialize));
     for (SNode member : mayInitialize) {
       if (member != null) {
         for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(member, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
@@ -53,23 +55,36 @@ public class check_FinalFieldWasAssigned_NonTypesystemRule extends AbstractNonTy
           }
         }).toListSequence()) {
           if (SLinkOperations.getTarget(reference, LINKS.variableDeclaration$2ky6) == field && CheckingUtil.isAssigned(reference)) {
-            return;
+            ListSequence.fromList(doNotInitialize).removeElement(member);
+            continue;
           }
         }
         for (SNode reference : SNodeOperations.getNodeDescendants(member, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{})) {
           if (SLinkOperations.getTarget(reference, LINKS.fieldDeclaration$mLBy) == field && CheckingUtil.isAssigned(reference)) {
-            return;
+            ListSequence.fromList(doNotInitialize).removeElement(member);
+            continue;
           }
         }
       }
-
     }
-    {
-      final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$tAp1) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047887576", null, errorTarget);
+    if (ListSequence.fromList(mayInitialize).isEmpty() || ListSequence.fromList(doNotInitialize).isNotEmpty()) {
       {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeVariable_QuickFix", false);
-        _reporter_2309309498.addIntentionProvider(intentionProvider);
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(field, "Variable '" + SPropertyOperations.getString(field, PROPS.name$tAp1) + "' might not have been initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "843236768047887576", null, errorTarget);
+        {
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.AddConstructorParameterToInitializeField_QuickFix", false);
+          intentionProvider.putArgument("membersWithoutInitialization", doNotInitialize);
+          _reporter_2309309498.addIntentionProvider(intentionProvider);
+        }
+        {
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeFieldInConstructor_QuickFix", false);
+          intentionProvider.putArgument("membersWithoutInitialization", doNotInitialize);
+          _reporter_2309309498.addIntentionProvider(intentionProvider);
+        }
+        {
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.InitializeVariable_QuickFix", false);
+          _reporter_2309309498.addIntentionProvider(intentionProvider);
+        }
       }
     }
   }
