@@ -31,9 +31,9 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.generator.template.WeavingMappingRuleContext;
@@ -716,11 +716,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return nodes;
   }
   public static Iterable<SNode> sourceNodesQuery_0_8(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.dimensionExpression$uV5v)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode de) {
-        return SLinkOperations.getTarget(de, LINKS.expression$WGFJ);
-      }
-    });
+    return SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.dimensionExpression$uV5v), LINKS.expression$WGFJ);
   }
   public static Iterable<SNode> sourceNodesQuery_0_9(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.componentType$aKPo), CONCEPTS.IndexedTupleType$15), LINKS.componentType$62ij);
@@ -962,11 +958,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_5_5(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.dimensionExpression$uV5v)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode de) {
-        return SLinkOperations.getTarget(de, LINKS.expression$WGFJ);
-      }
-    });
+    return SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.dimensionExpression$uV5v), LINKS.expression$WGFJ);
   }
   public static Iterable<SNode> sourceNodesQuery_5_6(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$itDQ), CONCEPTS.ArrayCreator$IL), LINKS.componentType$aKPo), CONCEPTS.NamedTupleType$$b), LINKS.parameter$dQne)).select(new ISelector<SNode, SNode>() {
@@ -1515,9 +1507,9 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("6272899139367872556", new SNsQ(i++));
     snsqMethods.put("6272899139367872578", new SNsQ(i++));
     snsqMethods.put("1241263972258", new SNsQ(i++));
-    snsqMethods.put("1604260043160917401", new SNsQ(i++));
+    snsqMethods.put("2413168484686156151", new SNsQ(i++));
     snsqMethods.put("1604260043160917509", new SNsQ(i++));
-    snsqMethods.put("1604260043160030520", new SNsQ(i++));
+    snsqMethods.put("2413168484686927873", new SNsQ(i++));
     snsqMethods.put("1238927287735", new SNsQ(i++));
     snsqMethods.put("1238931738356", new SNsQ(i++));
     snsqMethods.put("1238950442258", new SNsQ(i++));
@@ -1544,9 +1536,9 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("2682363017137741862", new SNsQ(i++));
     snsqMethods.put("1241018440898", new SNsQ(i++));
     snsqMethods.put("1241018440922", new SNsQ(i++));
-    snsqMethods.put("8755343252890081195", new SNsQ(i++));
+    snsqMethods.put("2413168484686095947", new SNsQ(i++));
     snsqMethods.put("8755343252890081421", new SNsQ(i++));
-    snsqMethods.put("8755343252890021979", new SNsQ(i++));
+    snsqMethods.put("2413168484686749893", new SNsQ(i++));
     snsqMethods.put("2423993921025729703", new SNsQ(i++));
     snsqMethods.put("1239641965342", new SNsQ(i++));
     snsqMethods.put("1239975886561", new SNsQ(i++));
@@ -1939,7 +1931,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("1238938164853", new RTQ(7, "_0"));
     rtqMethods.put("1241263972235", new RTQ(8, "_0"));
     rtqMethods.put("1241263972247", new RTQ(9, "_tmp"));
-    rtqMethods.put("1604260043160917366", new RTQ(10, "Object"));
+    rtqMethods.put("2413168484686156112", new RTQ(10, "Object"));
     rtqMethods.put("1604260043160917472", new RTQ(11, "Object"));
     rtqMethods.put("1238926804168", new RTQ(12, "_1"));
     rtqMethods.put("1238929212406", new RTQ(13, "T"));
@@ -1972,7 +1964,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("1238949913807", new RTQ(40, "T"));
     rtqMethods.put("1238949913858", new RTQ(41, "_0"));
     rtqMethods.put("1241018440883", new RTQ(42, "Object"));
-    rtqMethods.put("8755343252890081161", new RTQ(43, "Object"));
+    rtqMethods.put("2413168484686095911", new RTQ(43, "Object"));
     rtqMethods.put("8755343252890081395", new RTQ(44, "Object"));
     rtqMethods.put("1239636757671", new RTQ(45, "_1"));
     rtqMethods.put("1239640673717", new RTQ(46, "component"));

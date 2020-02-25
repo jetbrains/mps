@@ -20,7 +20,6 @@ import java.util.Comparator;
 import org.junit.Test;
 import jetbrains.mps.testbench.junit.Order;
 import org.junit.Assert;
-import jetbrains.mps.internal.collections.runtime.IterableUtils;
 
 /**
  * todo: extract common part from ProjectTest and BaseCheckModulesTest
@@ -77,9 +76,9 @@ public class ProjectTest {
 
     if (!(generationHolder.isBuildSuccessful())) {
       List<String> errors = generationHolder.buildErrors();
-      Assert.assertTrue("Build errors:\n" + IterableUtils.join(errors, "\n"), errors.isEmpty());
+      Assert.assertTrue("Build errors:\n" + String.join("\n", errors), errors.isEmpty());
       List<String> warns = generationHolder.buildWarns();
-      Assert.assertTrue("Build warnings:\n" + IterableUtils.join(warns, "\n"), warns.isEmpty());
+      Assert.assertTrue("Build warnings:\n" + String.join("\n", warns), warns.isEmpty());
       //  sanity, if build fails without messages 
       Assert.fail(String.format("Make failed with %d errors and %d warnings", errors.size(), warns.size()));
     }
@@ -92,7 +91,7 @@ public class ProjectTest {
       Assert.assertTrue("Can't diff a module that needs generation but didn't get any file generated", generationHolder.hasFilesGenerated());
     }
     List<String> diffReport = generationHolder.diff();
-    Assert.assertTrue("Difference:\n" + IterableUtils.join(diffReport, "\n"), diffReport.isEmpty());
+    Assert.assertTrue("Difference:\n" + String.join("\n", diffReport), diffReport.isEmpty());
 
     generationHolder.cleanUp();
   }

@@ -36,7 +36,6 @@
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="ap4t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator(MPS.Core/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
-    <import index="k9t0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.internal.collections.runtime(MPS.Core/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="1gam" ref="r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)" />
@@ -4494,14 +4493,14 @@
                   <node concept="Xl_RD" id="7X3$CtwaMRp" role="3uHU7B">
                     <property role="Xl_RC" value="Build errors:\n" />
                   </node>
-                  <node concept="2YIFZM" id="7X3$CtwaP5I" role="3uHU7w">
-                    <ref role="1Pybhc" to="k9t0:~IterableUtils" resolve="IterableUtils" />
-                    <ref role="37wK5l" to="k9t0:~IterableUtils.join(java.lang.Iterable,java.lang.String)" resolve="join" />
-                    <node concept="37vLTw" id="7X3$CtwaMRr" role="37wK5m">
-                      <ref role="3cqZAo" node="7X3$CtwaMRg" resolve="errors" />
-                    </node>
+                  <node concept="2YIFZM" id="25XiZe8RUxV" role="3uHU7w">
+                    <ref role="37wK5l" to="wyt6:~String.join(java.lang.CharSequence,java.lang.Iterable)" resolve="join" />
+                    <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                     <node concept="Xl_RD" id="7X3$CtwaMRs" role="37wK5m">
                       <property role="Xl_RC" value="\n" />
+                    </node>
+                    <node concept="37vLTw" id="25XiZe8RVbO" role="37wK5m">
+                      <ref role="3cqZAo" node="7X3$CtwaMRg" resolve="errors" />
                     </node>
                   </node>
                 </node>
@@ -4541,14 +4540,14 @@
                   <node concept="Xl_RD" id="7X3$CtwaMRB" role="3uHU7B">
                     <property role="Xl_RC" value="Build warnings:\n" />
                   </node>
-                  <node concept="2YIFZM" id="7X3$CtwaP5S" role="3uHU7w">
-                    <ref role="1Pybhc" to="k9t0:~IterableUtils" resolve="IterableUtils" />
-                    <ref role="37wK5l" to="k9t0:~IterableUtils.join(java.lang.Iterable,java.lang.String)" resolve="join" />
-                    <node concept="37vLTw" id="7X3$CtwaMRD" role="37wK5m">
-                      <ref role="3cqZAo" node="7X3$CtwaMRu" resolve="warns" />
-                    </node>
-                    <node concept="Xl_RD" id="7X3$CtwaMRE" role="37wK5m">
+                  <node concept="2YIFZM" id="25XiZe8RZhv" role="3uHU7w">
+                    <ref role="37wK5l" to="wyt6:~String.join(java.lang.CharSequence,java.lang.Iterable)" resolve="join" />
+                    <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                    <node concept="Xl_RD" id="25XiZe8RZhw" role="37wK5m">
                       <property role="Xl_RC" value="\n" />
+                    </node>
+                    <node concept="37vLTw" id="25XiZe8RZJu" role="37wK5m">
+                      <ref role="3cqZAo" node="7X3$CtwaMRu" resolve="warns" />
                     </node>
                   </node>
                 </node>
@@ -4698,14 +4697,14 @@
               <node concept="Xl_RD" id="7X3$CtwaMS4" role="3uHU7B">
                 <property role="Xl_RC" value="Difference:\n" />
               </node>
-              <node concept="2YIFZM" id="7X3$CtwaP62" role="3uHU7w">
-                <ref role="1Pybhc" to="k9t0:~IterableUtils" resolve="IterableUtils" />
-                <ref role="37wK5l" to="k9t0:~IterableUtils.join(java.lang.Iterable,java.lang.String)" resolve="join" />
-                <node concept="37vLTw" id="7X3$CtwaMS6" role="37wK5m">
-                  <ref role="3cqZAo" node="7X3$CtwaMRV" resolve="diffReport" />
-                </node>
-                <node concept="Xl_RD" id="7X3$CtwaMS7" role="37wK5m">
+              <node concept="2YIFZM" id="25XiZe8S0vh" role="3uHU7w">
+                <ref role="37wK5l" to="wyt6:~String.join(java.lang.CharSequence,java.lang.Iterable)" resolve="join" />
+                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                <node concept="Xl_RD" id="25XiZe8S0vi" role="37wK5m">
                   <property role="Xl_RC" value="\n" />
+                </node>
+                <node concept="37vLTw" id="25XiZe8S1e1" role="37wK5m">
+                  <ref role="3cqZAo" node="7X3$CtwaMRV" resolve="diffReport" />
                 </node>
               </node>
             </node>
