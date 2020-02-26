@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.smodel.references.UnregisteredNodes;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModelReference;
 
 /**
  * State of a node not being added to any model yet.
@@ -32,6 +34,11 @@ final class FreeFloatNodeOwner extends SNodeOwner {
 
   @Override
   public SModel getModel() {
+    return null;
+  }
+
+  @Override
+  SModelReference lastKnownModel() {
     return null;
   }
 

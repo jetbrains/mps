@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
    */
   @SuppressWarnings("VolatileArrayField")
   private volatile Object[] myUserObjects; // key,value,key,value ; copy-on-write (!)
-  private SConcept myConcept; //todo make final after 3.2
+  private final SConcept myConcept;
   private SNode parent;
   /**
    * access only in firstChild()/firstChildInRole(role)
@@ -245,7 +245,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   @NotNull
   @Override
   public SNodeReference getReference() {
-    return new jetbrains.mps.smodel.SNodePointer(this);
+    return new jetbrains.mps.smodel.SNodePointer(myOwner.lastKnownModel(), myId);
   }
 
   @Override
