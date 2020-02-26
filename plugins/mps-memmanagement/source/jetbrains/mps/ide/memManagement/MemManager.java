@@ -19,6 +19,10 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.Notifications;
+import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionPopupMenu;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.ProjectComponent;
@@ -29,6 +33,7 @@ import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.ex.StatusBarEx;
 import com.intellij.openapi.wm.ex.WindowManagerEx;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
+import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.Alarm;
 import com.intellij.util.Alarm.ThreadToUse;
 import jetbrains.mps.components.ComponentHost;
@@ -43,6 +48,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import javax.swing.AbstractAction;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -61,13 +72,6 @@ public class MemManager implements ProjectComponent {
 
   private final Project myProject;
   private final ComponentHost myComponentHost;
-  private MemoryUsagePanel myMemUsagePanel = null;
-  private MouseListener myActionListener = new MouseAdapter() {
-    @Override
-    public void mouseClicked(MouseEvent e) {
-      cleanupFromAction();
-    }
-  };
 
   private Alarm myCleanupAlarm;
   private Alarm myAlarm;
@@ -82,22 +86,6 @@ public class MemManager implements ProjectComponent {
 
   @Override
   public void projectOpened() {
-    IdeFrame frame = WindowManagerEx.getInstanceEx().findFrameHelper(myProject);
-    if (frame == null) {
-      return;
-    }
-    StatusBarEx sb = (StatusBarEx) frame.getStatusBar();
-    if (sb == null) {
-      return;
-    }
-    StatusBarWidget widget = sb.getWidget(MemoryUsagePanel.WIDGET_ID);
-    if (!(widget instanceof MemoryUsagePanel)) {
-      return;
-    }
-
-    myMemUsagePanel = (MemoryUsagePanel) widget;
-    myMemUsagePanel.addMouseListener(myActionListener);
-
     int sec = Registry.intValue("ide.memory.cleanup.interval");
     if (sec > 0) {
       new MyRepeatingCleanup(Math.round(sec * 1000)).run();
@@ -106,12 +94,10 @@ public class MemManager implements ProjectComponent {
 
   @Override
   public void projectClosed() {
-    if (myMemUsagePanel != null) {
-      myMemUsagePanel.removeMouseListener(myActionListener);
-    }
+
   }
 
-  private void cleanupFromAction() {
+  public void cleanupFromAction() {
     if (myComponentHost.findComponent(MakeServiceComponent.class).isSessionActive()) {
       final Notification n = ourNotificationGroup.createNotification().setContent("Can not perform cleanup while Make is in progress");
       Notifications.Bus.notify(n, myProject);

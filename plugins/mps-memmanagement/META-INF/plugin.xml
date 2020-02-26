@@ -28,5 +28,6 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <registryKey key="ide.memory.cleanup.interval" defaultValue="-1" description="Unload all models each N seconds. Non-positive value disables models unloading" restartRequired="true"/>
+    <statusBarWidgetProvider implementation="jetbrains.mps.ide.memManagement.LoadedModelsPanel" id="LoadedModels"/>
   </extensions>
 </idea-plugin>
