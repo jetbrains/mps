@@ -89,7 +89,7 @@
       <node id="1841925426083462648" at="141,109,166,17" concept="4" />
       <node id="2270132903213485426" at="137,0,168,0" concept="5" trace="run#()V" />
       <node id="4141068403138593725" at="61,0,94,0" concept="5" trace="showProblems#(Ljava/util/Collection;)V" />
-      <node id="2270132903213478890" at="135,92,168,15" concept="2" />
+      <node id="3707661270081882448" at="135,92,168,15" concept="2" />
       <node id="1880847875687531604" at="107,0,170,0" concept="5" trace="run#()V" />
       <node id="1880847875687531602" at="105,62,170,11" concept="2" />
       <node id="7983203488415968532" at="104,0,172,0" concept="5" trace="accept#(Ljava/lang/Iterable;)V" />
@@ -197,7 +197,7 @@
       <unit id="7133788473465020823" at="150,47,158,23" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler$5$1$3$1$2" />
       <unit id="7133788473464666133" at="144,58,160,19" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler$5$1$3$1" />
       <unit id="7983203488415126811" at="108,92,127,13" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler$5$1$1" />
-      <unit id="2270132903213485426" at="136,43,168,13" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler$5$1$3" />
+      <unit id="2270132903213485426" at="136,64,168,13" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler$5$1$3" />
       <unit id="1880847875687531604" at="106,49,170,9" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler$5$1" />
       <unit id="7983203488415968532" at="103,45,172,5" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler$5" />
       <unit id="6423044698582254379" at="47,0,184,0" name="jetbrains.mps.migration.workbench.components.WorkbenchMigrationProblemHandler" />

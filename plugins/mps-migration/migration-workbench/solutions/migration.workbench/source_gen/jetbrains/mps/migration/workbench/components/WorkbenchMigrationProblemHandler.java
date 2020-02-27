@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
-import javax.swing.SwingUtilities;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
@@ -133,7 +133,7 @@ public class WorkbenchMigrationProblemHandler implements ProjectComponent, Migra
 
             // todo the following is copied from MakeActionImpl, it's better to make MAI to be compilied in Idea 
             // todo (and contributed by xml); this code should use idea-compiled class then 
-            SwingUtilities.invokeLater(new Runnable() {
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
               public void run() {
                 // save all before launching make 
                 new SaveRepositoryCommand(myMpsProject.getRepository()).execute();
