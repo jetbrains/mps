@@ -424,14 +424,17 @@ public class ChangesTracking {
 
   public class MyEventsCollector extends SModelEventVisitorAdapter implements SModelCommandListener {
     private Map<SNode, Set<SContainmentLink>> childChanged;
+    private Set<SNodeId> rootsDeleted;
 
     @Override
     public void eventsHappenedInCommand(List<SModelEvent> events) {
       childChanged = MapSequence.fromMap(new HashMap<SNode, Set<SContainmentLink>>());
+      rootsDeleted = new HashSet<SNodeId>();
       for (SModelEvent event : ListSequence.fromList(events)) {
         event.accept(this);
       }
       childChanged = null;
+      rootsDeleted = null;
 
       // make model file[s] dirty 
       Set<IFile> affectedFiles = SetSequence.fromSet(new HashSet<IFile>());
@@ -442,7 +445,7 @@ public class ChangesTracking {
         FilePerRootDataSource ds = (FilePerRootDataSource) dataSource;
         Map<SNodeId, String> streamNames = FilePerRootFormatUtil.getStreamNames(myModelDescriptor.getRootNodes());
         for (SModelEvent event : ListSequence.fromList(events)) {
-          SNodeId rootId = check_5iuzi5_a0a0c0a7a2zb(event.getAffectedRoot());
+          SNodeId rootId = check_5iuzi5_a0a0c0a9a3zb(event.getAffectedRoot());
           if (rootId != null && streamNames.containsKey(rootId)) {
             SetSequence.fromSet(affectedFiles).addElement(ds.getFile(streamNames.get(rootId)));
           }
@@ -572,19 +575,18 @@ public class ChangesTracking {
     public void visitRootEvent(final SModelRootEvent event) {
       SNode root = event.getRoot();
       final boolean added = event.isAdded();
+      final SNodeId rootId = root.getNodeId();
       if (added) {
         if (root.getModel() == null) {
           return;
         }
       } else {
         // there are two almost identical SModelRootEvent generated: from beforeRootRemoved and from rootRemoved 
-        // rootRemoved event has SModelRootEvent with rootRef = (null, null) 
-        //  we skip the first one 
-        if (event.getRootRef().getNodeId() != null) {
+        //  we skip one if already seen delete root event for the same root 
+        if (!(rootsDeleted.add(rootId))) {
           return;
         }
       }
-      final SNodeId rootId = root.getNodeId();
       runUpdateTask(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
           if (added) {
@@ -620,7 +622,7 @@ public class ChangesTracking {
     @Override
     public void visitLanguageEvent(SModelLanguageEvent event) {
       final SLanguage eventLang = event.getEventLanguage();
-      final SModelInternal model = as_5iuzi5_a0a1a21ac(event.getModel(), SModelInternal.class);
+      final SModelInternal model = as_5iuzi5_a0a1a31ac(event.getModel(), SModelInternal.class);
       final boolean deleted = !(event.isAdded());
       runUpdateTask(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
@@ -685,13 +687,13 @@ public class ChangesTracking {
     }
     return null;
   }
-  private static SNodeId check_5iuzi5_a0a0c0a7a2zb(SNode checkedDotOperand) {
+  private static SNodeId check_5iuzi5_a0a0c0a9a3zb(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-  private static <T> T as_5iuzi5_a0a1a21ac(Object o, Class<T> type) {
+  private static <T> T as_5iuzi5_a0a1a31ac(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
