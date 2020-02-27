@@ -28713,7 +28713,7 @@
       </node>
     </node>
     <node concept="398b33" id="42kMDMFt6h4" role="3989C9">
-      <property role="TrG5h" value="mps-memmanagement" />
+      <property role="TrG5h" value="mps-memtool" />
       <node concept="2GAZfH" id="42kMDMFt6h5" role="398b2p">
         <node concept="TIC1d" id="42kMDMFt6h6" role="2GAZfG">
           <node concept="398BVA" id="42kMDMFt6h7" role="TIC6M">
@@ -28721,7 +28721,7 @@
             <node concept="2Ry0Ak" id="42kMDMFt6h8" role="iGT6I">
               <property role="2Ry0Am" value="plugins" />
               <node concept="2Ry0Ak" id="42kMDMFt6h9" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-memmanagement" />
+                <property role="2Ry0Am" value="mps-memtool" />
                 <node concept="2Ry0Ak" id="42kMDMFt6ha" role="2Ry0An">
                   <property role="2Ry0Am" value="source" />
                 </node>
@@ -28883,7 +28883,7 @@
               <node concept="2Ry0Ak" id="42kMDMFt6RZ" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="42kMDMFt6S0" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-memmanagement" />
+                  <property role="2Ry0Am" value="mps-memtool" />
                   <node concept="2Ry0Ak" id="42kMDMFt6S1" role="2Ry0An">
                     <property role="2Ry0Am" value="META-INF" />
                     <node concept="2Ry0Ak" id="42kMDMFt6S2" role="2Ry0An">
@@ -28904,11 +28904,11 @@
           <node concept="3981dx" id="42kMDMFt6RT" role="39821P">
             <node concept="3_J27D" id="42kMDMFt6RU" role="Nbhlr">
               <node concept="3Mxwew" id="42kMDMFt6RV" role="3MwsjC">
-                <property role="3MwjfP" value="memmanagement.jar" />
+                <property role="3MwjfP" value="memtool.jar" />
               </node>
             </node>
             <node concept="Saw0i" id="42kMDMFt6S5" role="39821P">
-              <ref role="Saw0g" node="42kMDMFt6h4" resolve="mps-memmanagement" />
+              <ref role="Saw0g" node="42kMDMFt6h4" resolve="mps-memtool" />
             </node>
           </node>
           <node concept="3_J27D" id="42kMDMFt6Sa" role="Nbhlr">

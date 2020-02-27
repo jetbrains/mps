@@ -16,8 +16,8 @@
 <!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
 <idea-plugin>
   <id>jetbrains.mps.ide.memmanagement</id>
-  <name>Memory Management</name>
-  <description>Enables and manages model unloading process, logs related stats</description>
+  <name>Memory Tool</name>
+  <description>Adds loaded models indicator, enables model unloading process, logs related stats</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
 
   <project-components>
