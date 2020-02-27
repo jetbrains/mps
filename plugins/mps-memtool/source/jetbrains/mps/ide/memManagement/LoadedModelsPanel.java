@@ -8,7 +8,6 @@ import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.StatusBar.Anchors;
 import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.StatusBarWidgetProvider;
-import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.openapi.wm.impl.status.TextPanel;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
@@ -17,10 +16,12 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.update.Activatable;
 import com.intellij.util.ui.update.UiNotifyConnector;
-import jetbrains.mps.smodel.SModelRepository;
+import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.JComponent;
 import java.awt.Color;
@@ -29,7 +30,6 @@ import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -40,7 +40,7 @@ public final class LoadedModelsPanel extends TextPanel implements StatusBarWidge
   private Project myProject;
   private ScheduledFuture<?> myFuture;
   private int myLastLoadedModels = 0;
-  private int myMaxModels = 1000;
+  private int myModelsTotal = 1000;
 
   private MouseListener myActionListener = new MouseAdapter() {
     @Override
@@ -115,7 +115,7 @@ public final class LoadedModelsPanel extends TextPanel implements StatusBarWidge
     Dimension size = getSize();
     int barWidth = size.width;
 
-    int usedBarLength = (int) (barWidth * myLastLoadedModels / myMaxModels);
+    int usedBarLength = (int) (barWidth * myLastLoadedModels / myModelsTotal);
 
     // background
     g.setColor(UIUtil.getPanelBackground());
@@ -139,17 +139,23 @@ public final class LoadedModelsPanel extends TextPanel implements StatusBarWidge
       return;
     }
 
-    List<SModel> models = SModelRepository.getInstance().getModelDescriptors();
-    myLastLoadedModels = 0;
-    myMaxModels = models.size();
-    for (SModel m : models) {
-      if (m.isLoaded()) {
-        myLastLoadedModels++;
-      }
-    }
+    SRepository repo = ProjectHelper.getProjectRepository(myProject);
+    repo.getModelAccess().runReadAction(()->{
 
-    setText(getCaption(myLastLoadedModels, myMaxModels));
-    setToolTipText("Models Loaded: " + myLastLoadedModels + "<br>" + "Total: " + myMaxModels);
+      myLastLoadedModels = 0;
+      myModelsTotal = 0;
+      for (SModule module: repo.getModules()){
+        for (SModel m : module.getModels()) {
+          myModelsTotal++;
+          if (m.isLoaded()) {
+            myLastLoadedModels++;
+          }
+        }
+      }
+    });
+
+    setText(getCaption(myLastLoadedModels, myModelsTotal));
+    setToolTipText("Models Loaded: " + myLastLoadedModels + "<br>" + "Total: " + myModelsTotal);
   }
 
   @NotNull
