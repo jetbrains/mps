@@ -134,9 +134,6 @@
 
     <!-- typesystem -->
     <component>
-      <implementation-class>jetbrains.mps.typesystem.uiActions.SupertypesViewTool</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.plugins.projectplugins.ProjectPluginManager</implementation-class>
     </component>
     <component>
