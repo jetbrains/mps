@@ -1572,6 +1572,66 @@
       <unit id="5142438244426402999" at="12,0,62,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.BasicMoveRefactoring" />
     </file>
   </root>
+  <root nodeRef="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/7024895274322369629">
+    <file name="InitializeFieldInConstructorRefactoring.java">
+      <node id="8833038268015520284" at="23,53,24,98" concept="10" />
+      <node id="6911873060802737024" at="24,98,25,78" concept="10" />
+      <node id="6911873060802737029" at="25,78,26,73" concept="10" />
+      <node id="6911873060802737044" at="26,73,27,143" concept="4" />
+      <node id="6911873060802737032" at="30,85,31,79" concept="10" />
+      <node id="6911873060802737032" at="32,5,33,98" concept="10" />
+      <node id="6911873060802737032" at="34,7,35,93" concept="10" />
+      <node id="6911873060802737032" at="35,93,36,66" concept="4" />
+      <node id="6911873060802737032" at="37,7,38,80" concept="4" />
+      <node id="6911873060802737032" at="39,5,40,26" concept="11" />
+      <node id="7024895274322369629" at="44,0,45,0" concept="14" trace="ConstructorDeclaration$5U" />
+      <node id="7024895274322369629" at="45,0,46,0" concept="14" trace="ExpressionStatement$nm" />
+      <node id="7024895274322369629" at="46,0,47,0" concept="14" trace="AssignmentExpression$rS" />
+      <node id="7024895274322369629" at="47,0,48,0" concept="14" trace="VariableReference$sQ" />
+      <node id="7024895274322369629" at="48,0,49,0" concept="14" trace="Expression$TP" />
+      <node id="7024895274322369629" at="52,0,53,0" concept="14" trace="body$WIlu" />
+      <node id="7024895274322369629" at="53,0,54,0" concept="14" trace="statement$WHn8" />
+      <node id="7024895274322369629" at="54,0,55,0" concept="14" trace="expression$WIP0" />
+      <node id="7024895274322369629" at="55,0,56,0" concept="14" trace="lValue$J0D4" />
+      <node id="7024895274322369629" at="56,0,57,0" concept="14" trace="variableDeclaration$2ky6" />
+      <node id="7024895274322369629" at="57,0,58,0" concept="14" trace="rValue$J0E2" />
+      <node id="6911873060802737032" at="33,98,37,7" concept="0" />
+      <node id="8833038268015520282" at="22,110,28,5" concept="7" />
+      <node id="7024895274322394815" at="22,0,30,0" concept="9" trace="performRefactoring#(Lorg/jetbrains/mps/openapi/model/SNode;[Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="6911873060802737032" at="31,79,39,5" concept="0" />
+      <node id="6911873060802737032" at="30,0,42,0" concept="15" trace="createExpressionStatement_liqiui_a0c0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="6911873060802737032" at="34,7,36,66">
+        <var name="n2" id="6911873060802737032" />
+      </scope>
+      <scope id="8833038268015520283" at="23,53,27,143">
+        <var name="c" id="8833038268015520285" />
+        <var name="init" id="6911873060802737025" />
+        <var name="stmt" id="6911873060802737030" />
+      </scope>
+      <scope id="7024895274322394818" at="22,110,28,5" />
+      <scope id="8833038268015520282" at="22,110,28,5">
+        <var name="ref" id="8833038268015520349" />
+      </scope>
+      <scope id="6911873060802737032" at="32,5,38,80">
+        <var name="n1" id="6911873060802737032" />
+      </scope>
+      <scope id="7024895274322394815" at="22,0,30,0">
+        <var name="field" id="7024895274322396150" />
+        <var name="repository" id="1904418645614127861" />
+        <var name="selectedConstructors" id="7024895274322413826" />
+      </scope>
+      <scope id="6911873060802737032" at="30,85,40,26">
+        <var name="n0" id="6911873060802737032" />
+      </scope>
+      <scope id="6911873060802737032" at="30,0,42,0">
+        <var name="p0" id="6911873060802737032" />
+        <var name="p1" id="6911873060802737032" />
+      </scope>
+      <unit id="7024895274322369629" at="43,0,50,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.InitializeFieldInConstructorRefactoring$CONCEPTS" />
+      <unit id="7024895274322369629" at="51,0,59,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.InitializeFieldInConstructorRefactoring$LINKS" />
+      <unit id="7024895274322369629" at="19,0,60,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.InitializeFieldInConstructorRefactoring" />
+    </file>
+  </root>
   <root nodeRef="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/7539251793091424811">
     <file name="MemberInsertingUtils.java">
       <node id="7539251793092281546" at="18,0,19,0" concept="14" trace="MEMBERS_ORDER" />
@@ -1619,6 +1679,167 @@
       <unit id="7539251793091424811" at="47,0,50,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MemberInsertingUtils$LINKS" />
       <unit id="7539251793091424811" at="37,0,46,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MemberInsertingUtils$CONCEPTS" />
       <unit id="7539251793091424811" at="16,0,51,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MemberInsertingUtils" />
+    </file>
+  </root>
+  <root nodeRef="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/775260118347134758">
+    <file name="AbstractInitializeFieldRefactoring.java">
+      <node id="775260118347134760" at="30,0,31,0" concept="5" trace="doNotInitialize" />
+      <node id="775260118347134769" at="32,66,33,67" concept="11" />
+      <node id="775260118347134783" at="36,44,37,102" concept="10" />
+      <node id="775260118347134793" at="38,160,39,19" concept="11" />
+      <node id="775260118347134809" at="40,5,41,0" concept="13" />
+      <node id="775260118347134810" at="41,0,42,55" concept="10" />
+      <node id="775260118347134816" at="42,55,43,246" concept="4" />
+      <node id="775260118347134823" at="43,246,44,238" concept="4" />
+      <node id="775260118347134830" at="44,238,45,93" concept="4" />
+      <node id="775260118347134853" at="49,43,50,194" concept="11" />
+      <node id="775260118347134878" at="53,132,54,73" concept="4" />
+      <node id="775260118347134883" at="54,73,55,21" concept="3" />
+      <node id="775260118347134898" at="59,129,60,73" concept="4" />
+      <node id="775260118347134903" at="60,73,61,21" concept="3" />
+      <node id="775260118347134912" at="65,5,66,113" concept="11" />
+      <node id="775260118347134922" at="68,0,69,0" concept="9" trace="performRefactoring#(Lorg/jetbrains/mps/openapi/model/SNode;[Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="775260118347134758" at="71,0,72,0" concept="14" trace="ClassConcept$IY" />
+      <node id="775260118347134758" at="72,0,73,0" concept="14" trace="VariableReference$sQ" />
+      <node id="775260118347134758" at="73,0,74,0" concept="14" trace="FieldDeclaration$Ps" />
+      <node id="775260118347134758" at="74,0,75,0" concept="14" trace="FieldReferenceOperation$N8" />
+      <node id="775260118347134758" at="78,0,79,0" concept="14" trace="isFinal$hIht" />
+      <node id="775260118347134758" at="82,0,83,0" concept="14" trace="initializer$KgD" />
+      <node id="775260118347134758" at="83,0,84,0" concept="14" trace="variableDeclaration$2ky6" />
+      <node id="775260118347134758" at="84,0,85,0" concept="14" trace="fieldDeclaration$mLBy" />
+      <node id="775260118347134767" at="32,0,35,0" concept="9" trace="doesNotContainFieldInitialization#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="775260118347134791" at="37,102,40,5" concept="8" />
+      <node id="775260118347134851" at="49,0,52,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="775260118347134868" at="52,30,56,11" concept="8" />
+      <node id="775260118347134888" at="58,146,62,11" concept="8" />
+      <node id="775260118347134884" at="57,9,63,9" concept="7" />
+      <node id="775260118347134842" at="47,27,57,9" concept="7" />
+      <node id="775260118347134840" at="46,40,64,7" concept="8" />
+      <node id="775260118347134835" at="45,93,65,5" concept="7" />
+      <node id="775260118347134779" at="36,0,68,0" concept="9" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="775260118347134768" at="32,66,33,67" />
+      <scope id="775260118347134792" at="38,160,39,19" />
+      <scope id="775260118347134852" at="49,43,50,194" />
+      <scope id="775260118347134922" at="68,0,69,0">
+        <var name="field" id="775260118347134969" />
+        <var name="repository" id="775260118347134974" />
+        <var name="selectedConstructors" id="775260118347134971" />
+      </scope>
+      <scope id="775260118347134877" at="53,132,55,21" />
+      <scope id="775260118347134897" at="59,129,61,21" />
+      <scope id="775260118347134767" at="32,0,35,0">
+        <var name="member" id="775260118347134776" />
+      </scope>
+      <scope id="775260118347134851" at="49,0,52,0">
+        <var name="it" id="775260118347134851" />
+      </scope>
+      <scope id="775260118347134867" at="52,30,56,11" />
+      <scope id="775260118347134887" at="58,146,62,11" />
+      <scope id="775260118347134884" at="57,9,63,9">
+        <var name="reference" id="775260118347134885" />
+      </scope>
+      <scope id="775260118347134842" at="47,27,57,9">
+        <var name="reference" id="775260118347134865" />
+      </scope>
+      <scope id="775260118347134841" at="47,27,63,9" />
+      <scope id="775260118347134839" at="46,40,64,7" />
+      <scope id="775260118347134835" at="45,93,65,5">
+        <var name="member" id="775260118347134837" />
+      </scope>
+      <scope id="775260118347134782" at="36,44,66,113">
+        <var name="classifier" id="775260118347134784" />
+        <var name="mayInitialize" id="775260118347134811" />
+      </scope>
+      <scope id="775260118347134779" at="36,0,68,0">
+        <var name="field" id="775260118347134780" />
+      </scope>
+      <unit id="775260118347134758" at="77,0,80,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractInitializeFieldRefactoring$PROPS" />
+      <unit id="775260118347134851" at="48,171,52,9" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractInitializeFieldRefactoring$1" />
+      <unit id="775260118347134758" at="81,0,86,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractInitializeFieldRefactoring$LINKS" />
+      <unit id="775260118347134758" at="70,0,76,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractInitializeFieldRefactoring$CONCEPTS" />
+      <unit id="775260118347134758" at="27,0,87,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AbstractInitializeFieldRefactoring" />
+    </file>
+  </root>
+  <root nodeRef="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/775260118347464044">
+    <file name="AddConstructorParameterRefactoring.java">
+      <node id="8833038268007781563" at="24,53,25,98" concept="10" />
+      <node id="6911873060803704510" at="25,98,26,75" concept="10" />
+      <node id="6911873060803656240" at="26,75,27,108" concept="4" />
+      <node id="6911873060803715166" at="27,108,28,129" concept="4" />
+      <node id="6911873060800599713" at="28,129,29,70" concept="10" />
+      <node id="6911873060800502679" at="29,70,30,143" concept="4" />
+      <node id="6911873060800599715" at="33,85,34,79" concept="10" />
+      <node id="6911873060800599715" at="35,5,36,98" concept="10" />
+      <node id="6911873060800599715" at="37,7,38,89" concept="10" />
+      <node id="6911873060800599715" at="38,89,39,73" concept="4" />
+      <node id="6911873060800599715" at="40,9,41,104" concept="10" />
+      <node id="6911873060800599715" at="41,104,42,65" concept="4" />
+      <node id="6911873060800599715" at="45,7,46,93" concept="10" />
+      <node id="6911873060800599715" at="46,93,47,66" concept="4" />
+      <node id="6911873060800599715" at="49,5,50,26" concept="11" />
+      <node id="775260118347464044" at="54,0,55,0" concept="14" trace="ConstructorDeclaration$5U" />
+      <node id="775260118347464044" at="55,0,56,0" concept="14" trace="ExpressionStatement$nm" />
+      <node id="775260118347464044" at="56,0,57,0" concept="14" trace="AssignmentExpression$rS" />
+      <node id="775260118347464044" at="57,0,58,0" concept="14" trace="DotExpression$6a" />
+      <node id="775260118347464044" at="58,0,59,0" concept="14" trace="ThisExpression$7A" />
+      <node id="775260118347464044" at="59,0,60,0" concept="14" trace="FieldReferenceOperation$N8" />
+      <node id="775260118347464044" at="60,0,61,0" concept="14" trace="VariableReference$sQ" />
+      <node id="775260118347464044" at="64,0,65,0" concept="14" trace="parameter$WIkZ" />
+      <node id="775260118347464044" at="65,0,66,0" concept="14" trace="type$pLrO" />
+      <node id="775260118347464044" at="66,0,67,0" concept="14" trace="body$WIlu" />
+      <node id="775260118347464044" at="67,0,68,0" concept="14" trace="statement$WHn8" />
+      <node id="775260118347464044" at="68,0,69,0" concept="14" trace="expression$WIP0" />
+      <node id="775260118347464044" at="69,0,70,0" concept="14" trace="lValue$J0D4" />
+      <node id="775260118347464044" at="70,0,71,0" concept="14" trace="operand$Lcrr" />
+      <node id="775260118347464044" at="71,0,72,0" concept="14" trace="operation$X4R8" />
+      <node id="775260118347464044" at="72,0,73,0" concept="14" trace="fieldDeclaration$mLBy" />
+      <node id="775260118347464044" at="73,0,74,0" concept="14" trace="rValue$J0E2" />
+      <node id="775260118347464044" at="74,0,75,0" concept="14" trace="variableDeclaration$2ky6" />
+      <node id="775260118347464044" at="78,0,79,0" concept="14" trace="name$tAp1" />
+      <node id="6911873060800599715" at="39,73,43,9" concept="0" />
+      <node id="6911873060800599715" at="44,7,48,7" concept="0" />
+      <node id="8833038268007737377" at="23,110,31,5" concept="7" />
+      <node id="6911873060800599715" at="36,98,44,7" concept="0" />
+      <node id="775260118347464046" at="23,0,33,0" concept="9" trace="performRefactoring#(Lorg/jetbrains/mps/openapi/model/SNode;[Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="6911873060800599715" at="34,79,49,5" concept="0" />
+      <node id="6911873060800599715" at="33,0,52,0" concept="15" trace="createExpressionStatement_bv3c4o_a0e0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="6911873060800599715" at="40,9,42,65">
+        <var name="n3" id="6911873060800599715" />
+      </scope>
+      <scope id="6911873060800599715" at="45,7,47,66">
+        <var name="n4" id="6911873060800599715" />
+      </scope>
+      <scope id="8833038268007737379" at="24,53,30,143">
+        <var name="c" id="8833038268007781564" />
+        <var name="p" id="6911873060803704511" />
+        <var name="stmt" id="6911873060800599714" />
+      </scope>
+      <scope id="6911873060800599715" at="37,7,43,9">
+        <var name="n2" id="6911873060800599715" />
+      </scope>
+      <scope id="775260118347464047" at="23,110,31,5" />
+      <scope id="8833038268007737377" at="23,110,31,5">
+        <var name="ref" id="8833038268007737380" />
+      </scope>
+      <scope id="775260118347464046" at="23,0,33,0">
+        <var name="field" id="775260118347464093" />
+        <var name="repository" id="775260118347464098" />
+        <var name="selectedConstructors" id="775260118347464095" />
+      </scope>
+      <scope id="6911873060800599715" at="35,5,48,7">
+        <var name="n1" id="6911873060800599715" />
+      </scope>
+      <scope id="6911873060800599715" at="33,85,50,26">
+        <var name="n0" id="6911873060800599715" />
+      </scope>
+      <scope id="6911873060800599715" at="33,0,52,0">
+        <var name="p0" id="6911873060800599715" />
+        <var name="p1" id="6911873060800599715" />
+      </scope>
+      <unit id="775260118347464044" at="77,0,80,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AddConstructorParameterRefactoring$PROPS" />
+      <unit id="775260118347464044" at="53,0,62,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AddConstructorParameterRefactoring$CONCEPTS" />
+      <unit id="775260118347464044" at="63,0,76,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AddConstructorParameterRefactoring$LINKS" />
+      <unit id="775260118347464044" at="20,0,81,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.AddConstructorParameterRefactoring" />
     </file>
   </root>
   <root nodeRef="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/8032461659229412326">

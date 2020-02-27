@@ -9,12 +9,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.ProjectManager;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -44,27 +38,6 @@ public class VariableInitializationUtil {
       init = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression"));
     }
     return init;
-  }
-
-  public static MPSProject retrieveMPSProject(SNode field) {
-    if (field == null) {
-      return null;
-    }
-    Project project = ProjectHelper.getProject(SNodeOperations.getModel(field).getRepository());
-    if (project == null) {
-      SModel m = field.getModel();
-      if (m == null) {
-        return null;
-      }
-      SModule module = m.getModule();
-      for (Project p : ProjectManager.getInstance().getOpenedProjects()) {
-        if (p instanceof MPSProject && p.isProjectModule(module)) {
-          project = p;
-          break;
-        }
-      }
-    }
-    return (MPSProject) project;
   }
 
   private static final class CONCEPTS {
