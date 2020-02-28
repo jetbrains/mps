@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,22 +15,19 @@
  */
 package jetbrains.mps.smodel.references;
 
-import gnu.trove.THashSet;
 import jetbrains.mps.util.PairMap;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-
-import java.util.Set;
 
 public class UnregisteredNodes {
   private static final Logger LOG = LogManager.getLogger(UnregisteredNodes.class);
   private static UnregisteredNodes ourInstance;
 
   private final PairMap<SModelReference, SNodeId, SNode> myMap = new PairMap<>();
-  private final Set<SNode> myNodesWithoutRefs = new THashSet<>();
   private final Object myLock = new Object();
 
   private boolean myDisabled = true;
@@ -65,16 +62,6 @@ public class UnregisteredNodes {
   public void clear() {
     synchronized (myLock) {
       myMap.clear();
-      myNodesWithoutRefs.clear();
-    }
-  }
-
-  public boolean contains(SNode node) {
-    if (myDisabled) {
-      return false;
-    }
-    synchronized (myLock) {
-      return myMap.values().contains(node) || myNodesWithoutRefs.contains(node);
     }
   }
 
@@ -84,18 +71,18 @@ public class UnregisteredNodes {
   //     child attached elsewhere and hence removed from this registry, and then request to resolve C as ref target comes in). Need to think it over.
   public void put(SNode node) {
     if (myDisabled) return;
-    if (node.getNodeId() == null || node.getModel() == null) {
-      myNodesWithoutRefs.add(node);
+    final SNodeId nid = node.getNodeId();
+    final SModel model = node.getModel();
+    if (nid == null || model == null) {
       return;
     }
-    add(node.getModel().getReference(), node.getNodeId(), node);
+    add(model.getReference(), nid, node);
   }
 
   public void remove(SNode node) {
     if (myDisabled) return;
     synchronized (myLock) {
       myMap.remove(node);
-      myNodesWithoutRefs.remove(node);
     }
   }
 

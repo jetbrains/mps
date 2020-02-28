@@ -34,10 +34,15 @@ final class FreeFloatNodeOwner extends SNodeOwner {
   }
 
   @Override
-  void performUndoableAction(org.jetbrains.mps.openapi.model.SNode node, SNodeUndoableAction action) {
+  void registerNode(SNode node) {
+    assert !(node.getNodeOwner() instanceof AttachedNodeOwner);
+  }
+
+  @Override
+  void performUndoableAction(SNodeUndoableAction action) {
     SNodeOwner detachedNodeOwner;
     if (action instanceof ChildUndoableAction && (detachedNodeOwner = childOwnerFromAction((ChildUndoableAction) action)) instanceof DetachedNodeOwner) {
-      detachedNodeOwner.performUndoableAction(node, action);
+      detachedNodeOwner.performUndoableAction(action);
     }
   }
 

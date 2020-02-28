@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,22 +93,58 @@ final class AttachedNodeOwner extends SNodeOwner {
 
   @Override
   public void registerNode(SNode node) {
+    doRegister(node);
+    node.makeReferencesIndirect();
+  }
+
+  private void doRegister(SNode node) {
+    // XXX model.registerNode shall go *BEFORE* setNodeOwner, otherwise SNode.setId fails - attached owner provides model.
+    //     At the moment, there's copy-paste editor functionality that depends on ability to change nodeId
+    //     (copied node preserves id of the original node, and if pasted into same model, there's id conflict which is resolved in SModel.assignNewId())
     myModel.registerNode(node);
+    node.setNodeOwner(this);
+    // for an attached node, its complete subtree has to share same SNodeOwner, assign it unconditionally
     // FIXME why UnregisteredNodes.put in SNode#unRegisterFromModel (#detach(SNodeOwner)) us conditioned with !isUpdateMode(), and this one is not?
+    //       I suppose the reason was remove() doesn't hurt in case there's no such node, though not 100% sure
     UnregisteredNodes.instance().remove(node);
+
+    for (SNode child = node.firstChild(); child != null; child = child.treeNext()) {
+      doRegister(child);
+    }
   }
 
   @Override
   public void unregisterNode(SNode node) {
+    if (!myModel.isUpdateMode()) {
+      // XXX no idea what this isUpdateMode() check is about, used to be in SNode.detach()
+      //     it dates back to e64402e1, I suspect it might be a performance optimization
+      //     (nobody gonna access references of a node that has been removed during internal update process)
+      //
+      // makeDirect has been separated from detach() code to give better control over reference resolution time.
+      // indeed, in a perfect world we would know all nodes to be deleted during a command beforehand, and could process their references at once.
+      // as it's not possible (node.sibling.detach could come right after node.detach) we at least go easy path for references within a detached subtree
+      node.makeReferencesDirect();
+    }
+
+    doUnregister(new DetachedNodeOwner(myModel), node);
+  }
+
+  private void doUnregister(DetachedNodeOwner detachedOwner, SNode node) {
     myModel.unregisterNode(node);
     if (!myModel.isUpdateMode()) {
       // XXX perhaps, SModel shall tell myOwner.enterUpdate()/myOwner.leaveUpdate() instead of isUpdateMode checks?
       UnregisteredNodes.instance().put(node);
     }
+    // XXX when we put a node in UnregisteredNodes, it better keep original SModel so that any reference pointing to the node could still get resolved.
+    //     Tests like MakeFieldNonStaticAndHaveReferencesUpdated fail if UN receives a node with detached model owner (model unset)
+    node.setNodeOwner(detachedOwner);
+    for (SNode child = node.firstChild(); child != null; child = child.treeNext()) {
+      doUnregister(detachedOwner, child);
+    }
   }
 
   @Override
-  void performUndoableAction(org.jetbrains.mps.openapi.model.SNode node, SNodeUndoableAction action) {
+  void performUndoableAction(SNodeUndoableAction action) {
     myModel.performUndoableAction(action);
   }
 
