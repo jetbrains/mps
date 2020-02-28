@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -194,7 +194,9 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
       wasChild.makeReferencesDirect();
     }
     // FIXME what if myOwner is DetachedNodeOwner - shall we make node free-floating or leave it as detached?
-    wasChild.detach(model == null ? myOwner : new DetachedNodeOwner(model));
+    if (!(myOwner instanceof FreeFloatNodeOwner && wasChild.getNodeOwner() instanceof DetachedNodeOwner)) {
+      wasChild.detach(model == null ? myOwner : new DetachedNodeOwner(model));
+    }
 
     myOwner.performUndoableAction(this, new RemoveChildUndoableAction(this, anchorNext, wasRole, wasChild));
     myOwner.fireNodeRemove(this, wasRole, wasChild, anchorPrev);
@@ -438,6 +440,8 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
     myOwner = nodeOwner;
 
+    // FIXME why indirect references for any attach? what it it's DetachedNodeOwner? Guess, this should be for attached scenario only (if ever -
+    //       why it's per node, not per command? What if a target is attached afterwards, makeIndirect might not see it the moment source node is attached)
     for (SReference ref : myReferences) {
       ref.makeIndirect();
     }
@@ -796,7 +800,9 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     schild.myRoleInParent = role;
     children_insertBefore(((SNode) anchor), schild);
 
-    schild.attach(myOwner);
+    if (!(myOwner instanceof FreeFloatNodeOwner && schild.getNodeOwner() instanceof DetachedNodeOwner)) {
+      schild.attach(myOwner);
+    }
 
     myOwner.performUndoableAction(this, new InsertChildAtUndoableAction(this, anchor, role, child));
 
