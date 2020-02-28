@@ -223,10 +223,6 @@ public class SModel implements SModelData, UpdateModeSupport {
       myNodeOwner.performUndoableAction(new RemoveRootUndoableAction(node, myModelDescriptor));
       myRoots.remove(node);
       SNode sn = (SNode) node;
-      if (!isUpdateMode()) {
-        // see SNode.removeChild for rant about isUpdateMode()
-        sn.makeReferencesDirect();
-      }
       myNodeOwner.unregisterNode(sn);
       myNodeOwner.fireNodeRemove(null, null, sn, null);
     }
