@@ -188,18 +188,20 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     if (!(myMatcherWrapper.myMatcher instanceof SingleNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> Objects.equals(expected, value));
+    setPropertyPredicate(property, Predicate.isEqual(expected));
   }
 
   public void setPropertyVariable(SProperty property) {
-    setPropertyVariable(property, null);
+    setPropertyPredicate(property, null);
   }
 
-  public void setPropertyVariable(SProperty property, @Nullable Predicate<String> predicate) {
+  public void setPropertyPredicate(SProperty property, @Nullable Predicate<String> predicate) {
     if (!(myMatcherWrapper.myMatcher instanceof SingleNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> predicate == null || predicate.test(value));
+    if (((SingleNodeMatcher) myMatcherWrapper.myMatcher).myPropertyMatchers.put(property, value -> predicate == null || predicate.test(value)) != null) {
+      throw new IllegalStateException("property " + property + " is already initialized");
+    }
   }
 
   @Override
@@ -207,16 +209,23 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
     if (!(myMatcherWrapper.myMatcher instanceof SingleNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference -> {
-      return Objects.equals(expectedTarget, sReference == null ? null : sReference.getTargetNodeReference());
-    });
+    setReferencePredicate(link, sReference -> Objects.equals(expectedTarget, sReference == null ? null : sReference.getTargetNodeReference()));
   }
 
   public void setReferenceVariable(SReferenceLink link) {
     if (!(myMatcherWrapper.myMatcher instanceof SingleNodeMatcher)) {
       throw new IllegalStateException();
     }
-    ((SingleNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, sReference -> true);
+    setReferencePredicate(link, sReference -> true);
+  }
+
+  public void setReferencePredicate(SReferenceLink link, Predicate<SReference> predicate) {
+    if (!(myMatcherWrapper.myMatcher instanceof SingleNodeMatcher)) {
+      throw new IllegalStateException();
+    }
+    if (((SingleNodeMatcher) myMatcherWrapper.myMatcher).myReferenceMatchers.put(link, predicate) != null) {
+      throw new IllegalStateException("reference link " + link + " is already initialized");
+    }
   }
 
   @Override
@@ -248,7 +257,9 @@ public class NodeMatcherBuilder implements AbstractNodeBuilder {
   @Override
   public NodeMatcherBuilder forChild(SContainmentLink link) {
     NodeMatcherWrapper childMatcherWrapper = new NodeMatcherWrapper();
-    getNodeMatcher().myChildMatchers.put(link, childMatcherWrapper);
+    if (getNodeMatcher().myChildMatchers.put(link, childMatcherWrapper) != null) {
+      throw new IllegalStateException("link " + link + " is already initialized");
+    }
     return new NodeMatcherBuilder(childMatcherWrapper);
   }
 
