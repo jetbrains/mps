@@ -12,13 +12,13 @@ import java.util.Objects;
 
 public class QueryExpression_Actions {
 
-  /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
+  /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        CellAction parentAction = editorContext.getEditorComponent().getActionHandler().getApplicableCellAction(editorContext.getEditorComponent().findNodeCell(node), CellActionType.BACKSPACE);
+        CellAction parentAction = editorContext.getEditorComponent().getActionHandler().getApplicableCellAction(editorContext.getEditorComponent().findNodeCell(node), CellActionType.DELETE);
         parentAction.execute(editorContext);
       }
 
@@ -46,7 +46,7 @@ public class QueryExpression_Actions {
     // set cell actions from all imported action maps 
 
     // set cell actions defined directly in this action map 
-    editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
+    editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
 
   }
 
@@ -55,8 +55,8 @@ public class QueryExpression_Actions {
     // set cell action(s) of the given type from imported action maps 
 
     // set cell action of the given type defined directly in this action map 
-    if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
-      editorCell.setAction(actionType, createAction_BACKSPACE(node));
+    if (Objects.equals(actionType, CellActionType.DELETE)) {
+      editorCell.setAction(actionType, createAction_DELETE(node));
     }
   }
 }
