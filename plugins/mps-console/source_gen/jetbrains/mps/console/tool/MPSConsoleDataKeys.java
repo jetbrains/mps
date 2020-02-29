@@ -8,6 +8,6 @@ import com.intellij.openapi.actionSystem.DataKey;
 
 @GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/8501841415479214219", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public class MPSConsoleDataKeys extends MPSCommonDataKeys {
-  @MPSCommonDataKeys.Description(description = "selected packages")
+  @MPSCommonDataKeys.Description(description = "current console tab")
   public static final DataKey<BaseConsoleTab> CONSOLE_TAB = DataKey.create("MPS_ConsoleTab");
 }

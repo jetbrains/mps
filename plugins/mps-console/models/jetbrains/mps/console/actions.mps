@@ -1106,6 +1106,7 @@
       <node concept="pLAjd" id="10GFfN5VzkF" role="Zd501">
         <property role="pLAjf" value="VK_ENTER" />
         <property role="pLAjc" value="meta" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
       </node>
     </node>
     <node concept="Zd509" id="10GFfN5VzkG" role="Zd508">
@@ -1113,6 +1114,7 @@
       <node concept="pLAjd" id="10GFfN5VzkH" role="Zd501">
         <property role="pLAjf" value="VK_BACK_SPACE" />
         <property role="pLAjc" value="meta" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
       </node>
     </node>
     <node concept="Zd509" id="10GFfN5Vrgz" role="Zd508">
