@@ -38,14 +38,9 @@ import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
-import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
-import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
-import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenAfterNameStyleClass;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -190,29 +185,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new EnumValueOfExpression_customReplace_cellMenu_5sxwue_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new EnumValueOfExpression_component_cellMenu_5sxwue_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
-  public static class EnumValueOfExpression_customReplace_cellMenu_5sxwue_a0c0 extends AbstractCellMenuPart_ReplaceNode_Group {
-    public EnumValueOfExpression_customReplace_cellMenu_5sxwue_a0c0() {
+  public static class EnumValueOfExpression_component_cellMenu_5sxwue_a0c0 implements SubstituteInfoPartExt {
+    private QualifiedReferenceMenu myComponent;
+    public EnumValueOfExpression_component_cellMenu_5sxwue_a0c0() {
+      this.myComponent = new QualifiedReferenceMenu();
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
-      return QueriesUtil.replaceNodeMenu_parameterObjects(SLinkOperations.getTarget(node, LINKS.enumClass$FRAq), node);
+    public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
+      return this.myComponent.createSubstituteActions(cellContext, editorContext);
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((SNode) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return QueriesUtil.replaceNodeMenu_createNewNode(SLinkOperations.getTarget(node, LINKS.enumClass$FRAq), parameterObject, node);
-    }
-    public boolean isReferentPresentation() {
-      return true;
-    }
-    @Override
-    protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
-      return new EditorMenuDescriptorBase("replace node (group of custom actions) with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1224577760394"));
-    }
-
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");

@@ -49,6 +49,9 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.DotStyleCl
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
+import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -194,7 +197,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     ClassifierClassExpression_DeleteClass.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ClassifierClassExpression_component_cellMenu_ejwutq_a0c0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
+  }
+  public static class ClassifierClassExpression_component_cellMenu_ejwutq_a0c0 implements SubstituteInfoPartExt {
+    private QualifiedReferenceMenu myComponent;
+    public ClassifierClassExpression_component_cellMenu_ejwutq_a0c0() {
+      this.myComponent = new QualifiedReferenceMenu();
+    }
+    public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
+      return this.myComponent.createSubstituteActions(cellContext, editorContext);
+    }
   }
 
   private static final class LINKS {
