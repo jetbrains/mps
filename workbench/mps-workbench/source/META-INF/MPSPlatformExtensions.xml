@@ -685,9 +685,11 @@
     <postStartupActivity implementation="com.intellij.ide.actions.PowerSaveModeNotifier"/>
     <postStartupActivity implementation="com.intellij.xml.breadcrumbs.BreadcrumbsInitializingActivity"/>
 
+    <!--
     <applicationConfigurable parentId="preferences.editor" id="editor.breadcrumbs"
                              key="configurable.breadcrumbs" bundle="messages.ApplicationBundle"
                              instance="com.intellij.xml.breadcrumbs.BreadcrumbsConfigurable"/>
+    -->
 
     <fileBreadcrumbsCollector implementation="com.intellij.xml.breadcrumbs.PsiFileBreadcrumbsCollector" order="last"/>
 
