@@ -331,7 +331,7 @@ public class SModel implements SModelData, UpdateModeSupport {
   //todo code in the following methods should be written w/o duplication
 
   public boolean canFireEvent() {
-    return myModelDescriptor != null && jetbrains.mps.util.SNodeOperations.isRegistered(myModelDescriptor) && !isUpdateMode();
+    return myModelDescriptor != null && !isUpdateMode();
   }
 
   public boolean canFireReadEvent() {
