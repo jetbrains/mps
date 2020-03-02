@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,10 @@ import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -45,7 +49,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  *
  * @see org.jetbrains.mps.openapi.module.ModelAccess
  */
-public abstract class ModelAccess extends AbstractModelAccess implements ModelCommandExecutor, org.jetbrains.mps.openapi.module.ModelAccess {
+public abstract class ModelAccess extends AbstractModelAccess implements ModelCommandExecutor, org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
   protected static final Logger LOG = LogManager.getLogger(ModelAccess.class);
 
   protected static ModelAccess ourInstance = new DefaultModelAccess();
@@ -59,6 +63,8 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
       return Boolean.FALSE;
     }
   };
+
+  private final CommandContextProvider myCommandContextProvider = new CommandContextProvider();
 
   protected ModelAccess() {
   }
@@ -157,13 +163,18 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
   }
 
   protected void onCommandStarted() {
-    UnregisteredNodes.instance().enable();
-    ImmatureReferences.getInstance().enable();
+    myCommandContextProvider.engage();
   }
 
   protected void onCommandFinished() {
-    ImmatureReferences.getInstance().disable();
-    UnregisteredNodes.instance().disable();
+    myCommandContextProvider.discard();
+  }
+
+  @Nullable
+  @Override
+  public ModelCommandContext getCommandContext(SModel model) {
+    // isInsideCommand might be excessive, just want to make sure there's not access to MCC from a thread other than the command one.
+    return isInsideCommand() ? myCommandContextProvider.get(model) : null;
   }
 
   /**
@@ -197,4 +208,67 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     }
   }
 
+  private static class CommandContextProvider {
+    // don't care about multi-threaded access as command are executed inside 1 thread only
+    private boolean myEngaged = false;
+    // provisional, shall get replaced with per-model map
+    private CommandContextImpl mySharedContext;
+
+    private final UnregisteredNodes UN = UnregisteredNodes.instance();
+    private final ImmatureReferences IR = ImmatureReferences.getInstance();
+
+    /**/CommandContextProvider() {
+    }
+
+    void engage() {
+      assert !myEngaged;
+      myEngaged = true;
+      IR.enable();
+      UN.enable();
+    }
+
+    void discard() {
+      IR.disable();
+      UN.disable();
+      assert myEngaged;
+      myEngaged = false;
+    }
+
+    ModelCommandContext get(SModel model) {
+      if (myEngaged) {
+        if (mySharedContext == null) {
+          mySharedContext = new CommandContextImpl(UN, IR);
+        }
+        return mySharedContext;
+      }
+      return null;
+    }
+  }
+
+  private static class CommandContextImpl implements ModelCommandContext {
+    private final UnregisteredNodes myUN;
+    private final ImmatureReferences myIR;
+
+    public CommandContextImpl(UnregisteredNodes un, ImmatureReferences ir) {
+      myUN = un;
+      myIR = ir;
+    }
+
+    @Override
+    public void nodeAttached(SNode node) {
+      myUN.remove(node);
+    }
+
+    @Override
+    public void nodeDetached(SNode node) {
+      myUN.put(node);
+    }
+
+    @Override
+    public void associationSet(SReference association) {
+      if (association instanceof StaticReference && ((StaticReference) association).isDirect()) {
+        myIR.add((StaticReference) association);
+      }
+    }
+  }
 }
