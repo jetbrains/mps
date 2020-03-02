@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.smodel.TestModelFactory.TestModelAccess;
 import jetbrains.mps.smodel.TestModelFactory.TestRepository;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -106,14 +105,10 @@ public class ModelUndoTest {
 
   private void emulateCommandStart() {
     myModelAccess.enterCommand();
-    // mimic beforeCommand listener behavior
-    UnregisteredNodes.instance().enable();
   }
 
   private void emulateCommandFinish() {
     myUndo.flushCommand();
-    // mimic afterCommand listener behavior
-    UnregisteredNodes.instance().disable();
     myModelAccess.leaveCommand();
   }
 
@@ -587,23 +582,19 @@ public class ModelUndoTest {
 
 
     public void undo() {
-      UnregisteredNodes.instance().enable();
       final ArrayList<SNodeUndoableAction> reversed = new ArrayList<SNodeUndoableAction>(myActions);
       Collections.reverse(reversed);
       for (SNodeUndoableAction a : reversed) {
         a.undo();
       }
       myHandler.discard();
-      UnregisteredNodes.instance().disable();
     }
 
     public void redo() {
-      UnregisteredNodes.instance().enable();
       for (SNodeUndoableAction a : myActions) {
         a.redo();
       }
       myHandler.discard();
-      UnregisteredNodes.instance().disable();
     }
   }
 }
