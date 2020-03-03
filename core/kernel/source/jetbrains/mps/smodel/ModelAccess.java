@@ -216,7 +216,6 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     private boolean myEngaged = false;
     private final Map<SModel, CommandContextImpl> myModel2Context = new IdentityHashMap<>();
 
-    private final UnregisteredNodes UN = UnregisteredNodes.instance();
     private final ImmatureReferences IR = ImmatureReferences.getInstance();
 
     /**/CommandContextProvider() {
@@ -226,12 +225,10 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
       assert !myEngaged;
       myEngaged = true;
       IR.enable();
-      UN.enable();
     }
 
     void discard() {
       IR.disable();
-      UN.disable();
       myModel2Context.clear();
       assert myEngaged;
       myEngaged = false;
@@ -239,7 +236,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
 
     ModelCommandContext get(SModel model) {
       if (myEngaged) {
-        return myModel2Context.computeIfAbsent(model, m -> new CommandContextImpl(m, UN, IR));
+        return myModel2Context.computeIfAbsent(model, m -> new CommandContextImpl(m, IR));
       }
       return null;
     }
@@ -250,19 +247,19 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     private final UnregisteredNodes myUN;
     private final ImmatureReferences myIR;
 
-    public CommandContextImpl(SModel m, UnregisteredNodes un, ImmatureReferences ir) {
+    public CommandContextImpl(SModel m, ImmatureReferences ir) {
       myModel = m;
-      myUN = un;
+      myUN = new UnregisteredNodes(myModel.getReference());
       myIR = ir;
     }
 
     @Override
-    public void nodeAttached(SNode node) {
+    public void nodeAttached(/*NotNull*/ SNode node) {
       myUN.remove(node);
     }
 
     @Override
-    public void nodeDetached(SNode node) {
+    public void nodeDetached(/*NotNull*/ SNode node) {
       myUN.put(node);
     }
 
