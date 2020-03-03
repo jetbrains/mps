@@ -74,10 +74,6 @@
       <implementation-class>jetbrains.mps.smodel.WorkbenchModelAccess</implementation-class>
     </component>
     <component>
-      <interface-class>jetbrains.mps.smodel.UndoHandler</interface-class>
-      <implementation-class>jetbrains.mps.ide.undo.WorkbenchUndoHandler</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.persistence.PersistenceComponent</implementation-class>
     </component>
     <component>

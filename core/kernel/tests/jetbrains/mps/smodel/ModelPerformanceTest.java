@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,13 +55,6 @@ public class ModelPerformanceTest {
 
   private final TestModelAccess myTestModelAccess = new TestModelAccess();
   private final SRepository myTestRepo = new TestRepository(myTestModelAccess);
-
-  @Before
-  public void setUp() {
-    TestUndoHandler uh = new TestUndoHandler();
-    uh.needsUndo(false); // undo is not our focus here, we merely need to avoid NPE from ModelAccess.instance().isInsideCommand()
-    UndoHelper.getInstance().setUndoHandler(uh);
-  }
 
   /**
    * Ensure parallel reads are viable.

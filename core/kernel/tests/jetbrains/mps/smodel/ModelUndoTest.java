@@ -51,14 +51,9 @@ public class ModelUndoTest {
   @Rule
   public ErrorCollector myErrors = new ErrorCollector();
 
-  private final TestModelAccess myModelAccess = new TestModelAccess();
-  private final TestRepository myRepo = new TestRepository(myModelAccess);
   private final TestUndoHandler myUndo = new TestUndoHandler();
-
-  @Before
-  public void setUp() {
-    UndoHelper.getInstance().setUndoHandler(myUndo);
-  }
+  private final TestModelAccess myModelAccess = new TestModelAccess(myUndo);
+  private final TestRepository myRepo = new TestRepository(myModelAccess);
 
   /**
    * Model M, node Nc from M.

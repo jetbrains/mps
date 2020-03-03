@@ -303,7 +303,7 @@ final class AttachedNodeOwner extends SNodeOwner {
     }
   }
 
-  private ModelCommandContext commandContext() {
+  /*package*/ ModelCommandContext commandContext() {
     final SRepository repo = myModel.getRepository();
     final org.jetbrains.mps.openapi.model.SModel md = myModel.getModelDescriptor();
     if (repo == null || md == null) {

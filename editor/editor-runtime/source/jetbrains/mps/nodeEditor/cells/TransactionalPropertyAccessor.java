@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,12 @@ package jetbrains.mps.nodeEditor.cells;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label.DummyUndoableAction;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.smodel.UndoHelper;
-import jetbrains.mps.util.annotation.ToRemove;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
 public class TransactionalPropertyAccessor extends PropertyAccessor implements TransactionalModelAccessor {
   private Object myOldValue;
@@ -73,11 +74,17 @@ public class TransactionalPropertyAccessor extends PropertyAccessor implements T
     if (myHasValueToCommit) {
       doCommit0(myOldValue, myUncommittedValue);
 
-      getRepository().getModelAccess().executeCommand(new ChangePropertyEditorCommand(myEditorCell.getContext(), getGroupId()) {
+      final ModelAccess modelAccess = getRepository().getModelAccess();
+      modelAccess.executeCommand(new ChangePropertyEditorCommand(myEditorCell.getContext(), getGroupId()) {
         @Override
         protected void doExecute() {
           resetUncommittedValue();
-          UndoHelper.getInstance().addUndoableAction(new DummyUndoableAction(getNode()));
+          if (modelAccess instanceof ModelCommandContext.Provider) {
+            final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(myEditorCell.getContext().getModel());
+            if (cc != null) {
+              cc.registerActionWithUndo(new DummyUndoableAction(getNode()));
+            }
+          }
         }
       });
 

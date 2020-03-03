@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.UndoHandler;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -51,7 +50,6 @@ public class MPSCoreComponents implements Disposable {
   public MPSCoreComponents() {
     @NotNull ManagingFS fs = ManagingFS.getInstance();
     @NotNull ModelAccess access = ApplicationManager.getApplication().getComponent(ModelAccess.class);
-    @NotNull UndoHandler handler = ApplicationManager.getApplication().getComponent(UndoHandler.class);
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
     myBaseLanguage = new MPSBaseLanguage();
     myBaseLanguage.init();

@@ -48,6 +48,10 @@ public interface ModelCommandContext {
     public SNode resolveUnregistered(SNodeId nodeId) {
       return null;
     }
+
+    @Override
+    public void registerActionWithUndo(SNodeUndoableAction action) {
+    }
   };
 
   void nodeAttached(/*NotNull*/ SNode node);
@@ -57,6 +61,8 @@ public interface ModelCommandContext {
 
   @Nullable
   SNode resolveUnregistered(/*NotNull*/ SNodeId nodeId);
+
+  void registerActionWithUndo(/*NotNull*/ SNodeUndoableAction action);
 
   interface Provider {
     // argument is never null

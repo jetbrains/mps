@@ -325,7 +325,10 @@ public class SModel implements SModelData, UpdateModeSupport {
     if (!canFireEvent()) {
       return;
     }
-    UndoHelper.getInstance().addUndoableAction(action);
+    // indeed, it's not nice to go back and forth from SNodeOwner, but I care to
+    // get the overall picture fixed at the moment. There's subclass that needs to
+    // control undo, need to fit it into the story
+    myNodeOwner.commandContext().registerActionWithUndo(action);
   }
 
   //todo code in the following methods should be written w/o duplication

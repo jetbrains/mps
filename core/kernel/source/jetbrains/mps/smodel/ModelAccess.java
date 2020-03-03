@@ -60,12 +60,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
   private final ReentrantReadWriteLockEx myReadWriteLock = new ReentrantReadWriteLockEx();
 
   //ModelAccess is a singleton, so we can omit remove() here though the field is not static
-  private ThreadLocal<Boolean> myReadEnabledFlag = new ThreadLocal<Boolean>() {
-    @Override
-    protected Boolean initialValue() {
-      return Boolean.FALSE;
-    }
-  };
+  private ThreadLocal<Boolean> myReadEnabledFlag = ThreadLocal.withInitial(() -> Boolean.FALSE);
 
   private final CommandContextProvider myCommandContextProvider = new CommandContextProvider();
 
@@ -177,8 +172,11 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
   @Override
   public ModelCommandContext getCommandContext(SModel model) {
     // isInsideCommand might be excessive, just want to make sure there's not access to MCC from a thread other than the command one.
-    return isInsideCommand() ? myCommandContextProvider.get(model) : null;
+    return isInsideCommand() ? myCommandContextProvider.get(model, getUndoHandler(model)) : null;
   }
+
+  @Nullable
+  protected abstract UndoHandler getUndoHandler(/*NotNull*/ SModel model);
 
   /**
    * Enables canRead() without actually acquiring the read lock (screw you, ReadWriteLock!).
@@ -231,20 +229,22 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
       myEngaged = false;
     }
 
-    ModelCommandContext get(SModel model) {
+    ModelCommandContext get(SModel model, UndoHandler undoHandler) {
       if (myEngaged) {
-        return myModel2Context.computeIfAbsent(model, CommandContextImpl::new);
+        return myModel2Context.computeIfAbsent(model, m -> new CommandContextImpl(undoHandler, m));
       }
       return null;
     }
   }
 
   private static class CommandContextImpl implements ModelCommandContext {
+    private final UndoHandler myUndoHandler;
     private final SModel myModel;
     private final UnregisteredNodes myUN;
     private ImmatureReferences myIR;
 
-    public CommandContextImpl(SModel m) {
+    public CommandContextImpl(@Nullable UndoHandler undoHandler, /*NotNull*/ SModel m) {
+      myUndoHandler = undoHandler == null ? a -> {} : undoHandler;
       myModel = m;
       myUN = new UnregisteredNodes(myModel.getReference());
     }
@@ -273,6 +273,11 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     @Override
     public SNode resolveUnregistered(SNodeId nodeId) {
       return myUN.get(myModel.getReference(), nodeId);
+    }
+
+    @Override
+    public void registerActionWithUndo(SNodeUndoableAction action) {
+      myUndoHandler.addUndoableAction(action);
     }
 
     /*package*/void onCommandOver() {
