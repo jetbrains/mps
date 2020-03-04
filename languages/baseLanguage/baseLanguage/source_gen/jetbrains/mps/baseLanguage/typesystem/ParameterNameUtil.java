@@ -51,7 +51,10 @@ public class ParameterNameUtil {
   }
 
   public static boolean isArgumentSubtypeOfParameter(SNode argType, SNode paramType) {
-    return TypecheckingFacade.getFromContext().isSubtype(argType, paramType) || (SNodeOperations.isInstanceOf(paramType, CONCEPTS.IGenericType$$h) && ListSequence.fromList(SNodeOperations.getNodeDescendants(paramType, CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})).isNotEmpty()) || (SNodeOperations.isInstanceOf(argType, CONCEPTS.IGenericType$$h) && ListSequence.fromList(SNodeOperations.getNodeDescendants(TypecheckingFacade.getFromContext().getTypeOf(argType), CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})).isNotEmpty());
+    return (argType == null) || SNodeOperations.isInstanceOf(argType, CONCEPTS.RuntimeTypeVariable$Mk) || TypecheckingFacade.getFromContext().isSubtype(argType, paramType) || typeCannotBeCheckedQuickly(paramType) || typeCannotBeCheckedQuickly(argType);
+  }
+  private static boolean typeCannotBeCheckedQuickly(SNode typeToCheck) {
+    return (SNodeOperations.isInstanceOf(typeToCheck, CONCEPTS.IGenericType$$h) && !(SNodeOperations.isInstanceOf(typeToCheck, CONCEPTS.StringType$2b)) && (!(SNodeOperations.isInstanceOf(typeToCheck, CONCEPTS.ClassifierType$IZ)) || ListSequence.fromList(SNodeOperations.getNodeDescendants(typeToCheck, CONCEPTS.TypeVariableReference$vZ, true, new SAbstractConcept[]{})).isNotEmpty()));
   }
 
   /**
@@ -84,7 +87,10 @@ public class ParameterNameUtil {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept RuntimeTypeVariable$Mk = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
     /*package*/ static final SInterfaceConcept IGenericType$$h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
   }
 }

@@ -64,8 +64,12 @@ public class Generics_Test extends BaseTransformationTest {
     new TestBody(this).test_ErrorMessagesCheck4246614868164066979();
   }
   @Test
-  public void test_NodeTypeSystemCheck6923385624928697593() throws Throwable {
-    new TestBody(this).test_NodeTypeSystemCheck6923385624928697593();
+  public void test_NodeTypeSystemCheck5956182814459540021() throws Throwable {
+    new TestBody(this).test_NodeTypeSystemCheck5956182814459540021();
+  }
+  @Test
+  public void test_NodeIncompatibleMethodSignatureCheck5956182814459569874() throws Throwable {
+    new TestBody(this).test_NodeIncompatibleMethodSignatureCheck5956182814459569874();
   }
   @Test
   public void test_ErrorMessagesCheck75433039838559829() throws Throwable {
@@ -273,12 +277,17 @@ public class Generics_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck4246614868164066979() throws Exception {
       SNode nodeToCheck = getRealNodeById("4246614868164066942");
       SNode operation = getRealNodeById("4246614868164066979");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getRealNodeById("3951985765451231549"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getRealNodeById("3951985765451231549"), MessageStatus.ERROR, "Error: incompatible types: java.lang.Number and java.lang.Object", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4246614868164066956"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
-    public void test_NodeTypeSystemCheck6923385624928697593() throws Exception {
+    public void test_NodeTypeSystemCheck5956182814459540021() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451231549");
-      SNode operation = getRealNodeById("6923385624928697593");
-      new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      SNode operation = getRealNodeById("5956182814459540021");
+      new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Error: incompatible types: java.lang.Number and java.lang.Object", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
+    public void test_NodeIncompatibleMethodSignatureCheck5956182814459569874() throws Exception {
+      SNode nodeToCheck = getRealNodeById("4246614868164066956");
+      SNode operation = getRealNodeById("5956182814459569874");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
     public void test_ErrorMessagesCheck75433039838559829() throws Exception {
       SNode nodeToCheck = getRealNodeById("1512063073409996427");
