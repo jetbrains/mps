@@ -8,16 +8,15 @@
   <imports>
     <import index="4hos" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.vcs(MPS.Workbench/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="hr4p" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea(jetbrains.mps.ide.vcs.platform/)" />
-    <import index="l8al" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.commands(jetbrains.mps.ide.vcs.platform/)" />
     <import index="4rb9" ref="r:e4939376-be00-4167-9510-67715eca6425(jetbrains.mps.vcs.platform.util)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="jlcu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs(MPS.IDEA/)" />
-    <import index="rfyv" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.branch(jetbrains.mps.ide.vcs.platform/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="5mlj" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.repo(jetbrains.mps.ide.vcs.platform/)" />
+    <import index="5mlj" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.repo(jetbrains.mps.git4idea.stubs/)" />
+    <import index="hr4p" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea(jetbrains.mps.git4idea.stubs/)" />
+    <import index="l8al" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.commands(jetbrains.mps.git4idea.stubs/)" />
     <import index="tkms" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.dvcs.repo(MPS.IDEA/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
@@ -373,7 +372,7 @@
             <node concept="3cpWs8" id="6s9bz$skRDt" role="3cqZAp">
               <node concept="3cpWsn" id="6s9bz$skRDs" role="3cpWs9">
                 <property role="TrG5h" value="repository" />
-                <node concept="3uibUv" id="6s9bz$skSUl" role="1tU5fm">
+                <node concept="3uibUv" id="4wxeloVy3xO" role="1tU5fm">
                   <ref role="3uigEE" to="5mlj:~GitRepository" resolve="GitRepository" />
                 </node>
                 <node concept="2OqwBi" id="6s9bz$skRDv" role="33vP2m">
@@ -576,7 +575,7 @@
         <node concept="3cpWs8" id="3Lj0jv7ELtt" role="3cqZAp">
           <node concept="3cpWsn" id="3Lj0jv7ELtu" role="3cpWs9">
             <property role="TrG5h" value="h" />
-            <node concept="3uibUv" id="3Lj0jv7ELtv" role="1tU5fm">
+            <node concept="3uibUv" id="4wxeloVy6_3" role="1tU5fm">
               <ref role="3uigEE" to="l8al:~GitSimpleHandler" resolve="GitSimpleHandler" />
             </node>
             <node concept="2ShNRf" id="3Lj0jv7ELtw" role="33vP2m">
@@ -588,9 +587,9 @@
                 <node concept="37vLTw" id="2BHiRxgm9do" role="37wK5m">
                   <ref role="3cqZAo" node="3Lj0jv7ELtX" resolve="root" />
                 </node>
-                <node concept="10M0yZ" id="3Lj0jv7ELt$" role="37wK5m">
-                  <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
+                <node concept="10M0yZ" id="4wxeloVy99G" role="37wK5m">
                   <ref role="3cqZAo" to="l8al:~GitCommand.LOG" resolve="LOG" />
+                  <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
                 </node>
               </node>
             </node>
@@ -677,7 +676,7 @@
         <node concept="3cpWs8" id="3Lj0jv7ELu8" role="3cqZAp">
           <node concept="3cpWsn" id="3Lj0jv7ELu9" role="3cpWs9">
             <property role="TrG5h" value="h" />
-            <node concept="3uibUv" id="3Lj0jv7ELua" role="1tU5fm">
+            <node concept="3uibUv" id="4wxeloVy7jG" role="1tU5fm">
               <ref role="3uigEE" to="l8al:~GitSimpleHandler" resolve="GitSimpleHandler" />
             </node>
             <node concept="2ShNRf" id="3Lj0jv7ELub" role="33vP2m">
@@ -689,9 +688,9 @@
                 <node concept="37vLTw" id="2BHiRxgm9Ko" role="37wK5m">
                   <ref role="3cqZAo" node="3Lj0jv7ELu3" resolve="root" />
                 </node>
-                <node concept="10M0yZ" id="3Lj0jv7ELuf" role="37wK5m">
-                  <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
+                <node concept="10M0yZ" id="4wxeloVy9T7" role="37wK5m">
                   <ref role="3cqZAo" to="l8al:~GitCommand.MERGE_BASE" resolve="MERGE_BASE" />
+                  <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
                 </node>
               </node>
             </node>
@@ -734,7 +733,7 @@
               <node concept="37vLTw" id="3GM_nagTyLh" role="2Oq$k0">
                 <ref role="3cqZAo" node="3Lj0jv7ELu9" resolve="h" />
               </node>
-              <node concept="liA8E" id="3Lj0jv7ELu_" role="2OqNvi">
+              <node concept="liA8E" id="4wxeloV$54e" role="2OqNvi">
                 <ref role="37wK5l" to="l8al:~GitSimpleHandler.run()" resolve="run" />
               </node>
             </node>
@@ -805,7 +804,7 @@
         <node concept="3cpWs8" id="3Lj0jv7ELv0" role="3cqZAp">
           <node concept="3cpWsn" id="3Lj0jv7ELv1" role="3cpWs9">
             <property role="TrG5h" value="h" />
-            <node concept="3uibUv" id="3Lj0jv7ELv2" role="1tU5fm">
+            <node concept="3uibUv" id="4wxeloVyaee" role="1tU5fm">
               <ref role="3uigEE" to="l8al:~GitSimpleHandler" resolve="GitSimpleHandler" />
             </node>
             <node concept="2ShNRf" id="3Lj0jv7ELv3" role="33vP2m">
@@ -817,9 +816,9 @@
                 <node concept="37vLTw" id="2BHiRxgm7Kc" role="37wK5m">
                   <ref role="3cqZAo" node="3Lj0jv7ELuV" resolve="root" />
                 </node>
-                <node concept="10M0yZ" id="3Lj0jv7ELv7" role="37wK5m">
-                  <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
+                <node concept="10M0yZ" id="4wxeloVyb1S" role="37wK5m">
                   <ref role="3cqZAo" to="l8al:~GitCommand.REV_LIST" resolve="REV_LIST" />
+                  <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
                 </node>
               </node>
             </node>
@@ -862,7 +861,7 @@
               <node concept="37vLTw" id="3GM_nagTzXH" role="2Oq$k0">
                 <ref role="3cqZAo" node="3Lj0jv7ELv1" resolve="h" />
               </node>
-              <node concept="liA8E" id="3Lj0jv7ELvt" role="2OqNvi">
+              <node concept="liA8E" id="4wxeloV$5L_" role="2OqNvi">
                 <ref role="37wK5l" to="l8al:~GitSimpleHandler.run()" resolve="run" />
               </node>
             </node>

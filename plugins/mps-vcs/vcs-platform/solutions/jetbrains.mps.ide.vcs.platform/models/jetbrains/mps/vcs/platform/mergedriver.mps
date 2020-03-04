@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:36539f52-7ec3-4937-98bf-1fbc1fbe99fc(jetbrains.mps.vcs.platform.mergedriver)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
@@ -22,8 +23,6 @@
     <import index="gsia" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.event(JDK/)" />
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="dtmf" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.config(jetbrains.mps.ide.vcs.platform/)" />
-    <import index="ejh2" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:org.jetbrains.idea.svn(jetbrains.mps.ide.vcs.platform/)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="mk8z" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
@@ -41,9 +40,11 @@
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
-    <import index="wbby" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.crlf(jetbrains.mps.ide.vcs.platform/)" />
-    <import index="hr4p" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea(jetbrains.mps.ide.vcs.platform/)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
+    <import index="dtmf" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.config(jetbrains.mps.git4idea.stubs/)" />
+    <import index="wbby" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.crlf(jetbrains.mps.git4idea.stubs/)" />
+    <import index="hr4p" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea(jetbrains.mps.git4idea.stubs/)" />
+    <import index="ejh2" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:org.jetbrains.idea.svn(jetbrains.mps.ide.vcs.platform/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2876,7 +2877,7 @@
                   <node concept="3clFbS" id="7Qh4dIZtgoA" role="1bW5cS">
                     <node concept="3clFbF" id="7Qh4dIZtgoB" role="3cqZAp">
                       <node concept="2ZW3vV" id="1v1P0T12gGP" role="3clFbG">
-                        <node concept="3uibUv" id="1v1P0T12oDV" role="2ZW6by">
+                        <node concept="3uibUv" id="4wxeloVyHi1" role="2ZW6by">
                           <ref role="3uigEE" to="hr4p:~GitVcs" resolve="GitVcs" />
                         </node>
                         <node concept="2OqwBi" id="1v1P0T12e_3" role="2ZW6bz">
@@ -6526,7 +6527,7 @@
                       <ref role="37wK5l" to="4nm9:~Project.getBaseDir()" resolve="getBaseDir" />
                     </node>
                   </node>
-                  <node concept="10M0yZ" id="SqGzJ0FSff" role="37wK5m">
+                  <node concept="10M0yZ" id="4wxeloVyF7B" role="37wK5m">
                     <ref role="3cqZAo" to="dtmf:~GitConfigUtil.CORE_AUTOCRLF" resolve="CORE_AUTOCRLF" />
                     <ref role="1PxDUh" to="dtmf:~GitConfigUtil" resolve="GitConfigUtil" />
                   </node>
@@ -6624,12 +6625,12 @@
                   </node>
                 </node>
                 <node concept="10M0yZ" id="SqGzJ0GbeG" role="37wK5m">
-                  <ref role="3cqZAo" to="dtmf:~GitConfigUtil.CORE_AUTOCRLF" resolve="CORE_AUTOCRLF" />
                   <ref role="1PxDUh" to="dtmf:~GitConfigUtil" resolve="GitConfigUtil" />
+                  <ref role="3cqZAo" to="dtmf:~GitConfigUtil.CORE_AUTOCRLF" resolve="CORE_AUTOCRLF" />
                 </node>
                 <node concept="10M0yZ" id="SqGzJ0GclU" role="37wK5m">
-                  <ref role="3cqZAo" to="wbby:~GitCrlfUtil.RECOMMENDED_VALUE" resolve="RECOMMENDED_VALUE" />
                   <ref role="1PxDUh" to="wbby:~GitCrlfUtil" resolve="GitCrlfUtil" />
+                  <ref role="3cqZAo" to="wbby:~GitCrlfUtil.RECOMMENDED_VALUE" resolve="RECOMMENDED_VALUE" />
                 </node>
                 <node concept="Xl_RD" id="SqGzJ0Gbte" role="37wK5m">
                   <property role="Xl_RC" value="--global" />

@@ -294,6 +294,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.diagram.generated/jetbrains.mps.testHybridEditor.diagram.generated.mpl" folder="core.aspects.editor.diagram" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.sandbox/jetbrains.mps.testHybridEditor.sandbox.msd" folder="core.aspects.editor.diagram" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor/jetbrains.mps.testHybridEditor.mpl" folder="core.aspects.editor.diagram" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-git4idea/stubs/jetbrains.mps.git4idea.stubs.msd" folder="platform.vcs" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/jetbrains.mps.ide.httpsupport.manager.msd" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/language/jetbrains.mps.ide.httpsupport.mpl" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/solutions/nodeaccess/jetbrains.mps.ide.httpsupport.nodeaccess.msd" folder="platform.httpsupport" />

@@ -57,7 +57,6 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="vybg" ref="r:21cf9f47-5464-40f2-9509-d94ba20bfe82(simpleModel)" />
     <import index="1k94" ref="r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)" />
-    <import index="l8al" ref="6fd1293f-7f65-4ffd-99dc-4719eca7c171/java:git4idea.commands(jetbrains.mps.ide.vcs.platform/)" />
     <import index="3ebz" ref="r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)" />
     <import index="bqeu" ref="r:e71f8bf8-158e-40c6-bd90-ff2f1a21d867(jetbrains.mps.ide.vcs.test.testdiff)" />
     <import index="sxph" ref="r:f9cefa7f-7dcc-422d-acd3-c452503bcca5(jetbrains.mps.ide.vcs.test.testdiff2)" />
@@ -69,6 +68,7 @@
     <import index="iyvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence.datasource(MPS.Core/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="j86o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.impl(MPS.IDEA/)" />
+    <import index="l8al" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.commands(jetbrains.mps.git4idea.stubs/)" />
     <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
@@ -12640,7 +12640,7 @@
               <node concept="3cpWs8" id="3Lj0jv7EFVI" role="3cqZAp">
                 <node concept="3cpWsn" id="3Lj0jv7EFVJ" role="3cpWs9">
                   <property role="TrG5h" value="h" />
-                  <node concept="3uibUv" id="3Lj0jv7EFVK" role="1tU5fm">
+                  <node concept="3uibUv" id="1wq$LlylbR1" role="1tU5fm">
                     <ref role="3uigEE" to="l8al:~GitSimpleHandler" resolve="GitSimpleHandler" />
                   </node>
                   <node concept="2ShNRf" id="3Lj0jv7EFVL" role="33vP2m">
@@ -12657,9 +12657,9 @@
                           <ref role="37wK5l" to="4nm9:~Project.getBaseDir()" resolve="getBaseDir" />
                         </node>
                       </node>
-                      <node concept="10M0yZ" id="3Lj0jv7EFVP" role="37wK5m">
-                        <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
+                      <node concept="10M0yZ" id="1wq$LlyluRv" role="37wK5m">
                         <ref role="3cqZAo" to="l8al:~GitCommand.RESET" resolve="RESET" />
+                        <ref role="1PxDUh" to="l8al:~GitCommand" resolve="GitCommand" />
                       </node>
                     </node>
                   </node>
@@ -12686,7 +12686,7 @@
                   <node concept="37vLTw" id="3GM_nagTtE$" role="2Oq$k0">
                     <ref role="3cqZAo" node="3Lj0jv7EFVJ" resolve="h" />
                   </node>
-                  <node concept="liA8E" id="3Lj0jv7EFW6" role="2OqNvi">
+                  <node concept="liA8E" id="1wq$Llyluzk" role="2OqNvi">
                     <ref role="37wK5l" to="l8al:~GitSimpleHandler.run()" resolve="run" />
                   </node>
                 </node>

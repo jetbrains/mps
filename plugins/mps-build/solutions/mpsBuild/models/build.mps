@@ -27765,6 +27765,9 @@
         <node concept="3_I8Xc" id="73fHb9hpuxm" role="39821P">
           <ref role="3_I8Xa" node="I6XuqH2zYV" resolve="git4idea" />
         </node>
+        <node concept="3_I8Xc" id="1wq$Llytga7" role="39821P">
+          <ref role="3_I8Xa" node="4wxeloVufXE" resolve="mps-git4idea" />
+        </node>
         <node concept="3_I8Xc" id="3nGzrDEksX6" role="39821P">
           <ref role="3_I8Xa" node="3nGzrDEfcNJ" resolve="svn4idea" />
         </node>
@@ -30970,6 +30973,11 @@
           </node>
         </node>
       </node>
+      <node concept="1SiIV0" id="4wxeloV_fB1" role="3bR37C">
+        <node concept="3bR9La" id="4wxeloV_fB2" role="1SiIV1">
+          <ref role="3bR37D" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
+        </node>
+      </node>
     </node>
     <node concept="m$_wf" id="RJsmGEieyQ" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.vcs" />
@@ -31043,8 +31051,8 @@
       <node concept="m$_yC" id="6pfW_jueeEg" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
-      <node concept="m$_yC" id="iTJcDIxtWI" role="m$_yJ">
-        <ref role="m$_y1" node="I6XuqGYf8K" resolve="Git4Idea" />
+      <node concept="m$_yC" id="4wxeloV_fCc" role="m$_yJ">
+        <ref role="m$_y1" node="4wxeloVufXr" resolve="jetbrains.mps.git4idea.stubs" />
       </node>
       <node concept="m$_yC" id="iTJcDIxtWQ" role="m$_yJ">
         <ref role="m$_y1" node="3nGzrDDNo$o" resolve="Subversion" />
@@ -31160,6 +31168,9 @@
       </node>
       <node concept="3_I8Xc" id="6ifcnI8$H4f" role="39821P">
         <ref role="3_I8Xa" node="I6XuqH2zYV" resolve="git4idea" />
+      </node>
+      <node concept="3_I8Xc" id="1wq$Llytg92" role="39821P">
+        <ref role="3_I8Xa" node="4wxeloVufXE" resolve="mps-git4idea" />
       </node>
       <node concept="3_I8Xc" id="3nGzrDDNoMc" role="39821P">
         <ref role="3_I8Xa" node="3nGzrDEfcNJ" resolve="svn4idea" />
@@ -43184,6 +43195,11 @@
           </node>
         </node>
       </node>
+      <node concept="1SiIV0" id="4wxeloV_3ju" role="3bR37C">
+        <node concept="3bR9La" id="4wxeloV_3jv" role="1SiIV1">
+          <ref role="3bR37D" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
+        </node>
+      </node>
     </node>
     <node concept="13uUGR" id="6ifcnI8$2lq" role="1l3spa">
       <ref role="13uUGO" node="6eCuTcwOnJO" resolve="IDEA" />
@@ -43330,6 +43346,139 @@
         </node>
       </node>
     </node>
+    <node concept="1E1JtA" id="4wxeloVufXp" role="3989C9">
+      <property role="BnDLt" value="true" />
+      <property role="TrG5h" value="jetbrains.mps.git4idea.stubs" />
+      <property role="3LESm3" value="f57286e3-4e19-4d8d-8045-3900761f6530" />
+      <property role="2GAjPV" value="true" />
+      <node concept="55IIr" id="4wxeloVufXj" role="3LF7KH">
+        <node concept="2Ry0Ak" id="4wxeloVufXk" role="iGT6I">
+          <property role="2Ry0Am" value="plugins" />
+          <node concept="2Ry0Ak" id="4wxeloVufXl" role="2Ry0An">
+            <property role="2Ry0Am" value="mps-git4idea" />
+            <node concept="2Ry0Ak" id="4wxeloVufXm" role="2Ry0An">
+              <property role="2Ry0Am" value="stubs" />
+              <node concept="2Ry0Ak" id="4wxeloVufXn" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.git4idea.stubs.msd" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4wxeloVufXG" role="3bR37C">
+        <node concept="3bR9La" id="4wxeloVufXH" role="1SiIV1">
+          <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4wxeloVufXI" role="3bR37C">
+        <node concept="3bR9La" id="4wxeloVufXJ" role="1SiIV1">
+          <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4wxeloVug3w" role="3bR37C">
+        <node concept="1BurEX" id="4wxeloVug3x" role="1SiIV1">
+          <node concept="398BVA" id="4wxeloVug3m" role="1BurEY">
+            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4wxeloVug3n" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="4wxeloVug3o" role="2Ry0An">
+                <property role="2Ry0Am" value="git4idea" />
+                <node concept="2Ry0Ak" id="4wxeloVug3p" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="4wxeloVug3q" role="2Ry0An">
+                    <property role="2Ry0Am" value="git4idea-rt.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4wxeloVug3G" role="3bR37C">
+        <node concept="1BurEX" id="4wxeloVug3H" role="1SiIV1">
+          <node concept="398BVA" id="4wxeloVug3y" role="1BurEY">
+            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4wxeloVug3z" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="4wxeloVug3$" role="2Ry0An">
+                <property role="2Ry0Am" value="git4idea" />
+                <node concept="2Ry0Ak" id="4wxeloVug3_" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="4wxeloVug3A" role="2Ry0An">
+                    <property role="2Ry0Am" value="git4idea.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4wxeloVug3S" role="3bR37C">
+        <node concept="1BurEX" id="4wxeloVug3T" role="1SiIV1">
+          <node concept="398BVA" id="4wxeloVug3I" role="1BurEY">
+            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4wxeloVug3J" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="4wxeloVug3K" role="2Ry0An">
+                <property role="2Ry0Am" value="git4idea" />
+                <node concept="2Ry0Ak" id="4wxeloVug3L" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="4wxeloVug3M" role="2Ry0An">
+                    <property role="2Ry0Am" value="remote-servers-git.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4wxeloVug44" role="3bR37C">
+        <node concept="1BurEX" id="4wxeloVug45" role="1SiIV1">
+          <node concept="398BVA" id="4wxeloVug3U" role="1BurEY">
+            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4wxeloVug3V" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="4wxeloVug3W" role="2Ry0An">
+                <property role="2Ry0Am" value="git4idea" />
+                <node concept="2Ry0Ak" id="4wxeloVug3X" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="4wxeloVug3Y" role="2Ry0An">
+                    <property role="2Ry0Am" value="resources_en.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="m$_wf" id="4wxeloVufXr" role="3989C9">
+      <property role="m$_wk" value="jetbrains.mps.git4idea.stubs" />
+      <node concept="m$_yC" id="4wxeloV$CRd" role="m$_yJ">
+        <ref role="m$_y1" node="I6XuqGYf8K" resolve="Git4Idea" />
+      </node>
+      <node concept="3_J27D" id="4wxeloVufXs" role="m$_yQ">
+        <node concept="3Mxwew" id="4wxeloVufXt" role="3MwsjC">
+          <property role="3MwjfP" value="MPS Git integration - stubs" />
+        </node>
+      </node>
+      <node concept="3_J27D" id="4wxeloVufXu" role="m$_w8">
+        <node concept="3Mxwey" id="1wq$Llya7bU" role="3MwsjC">
+          <ref role="3Mxwex" node="5HVSRHdVf2d" resolve="version" />
+        </node>
+      </node>
+      <node concept="m$_yC" id="4wxeloVufXx" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
+      </node>
+      <node concept="3_J27D" id="4wxeloVufXy" role="m_cZH">
+        <node concept="3Mxwew" id="4wxeloVufXz" role="3MwsjC">
+          <property role="3MwjfP" value="mps-git4idea" />
+        </node>
+      </node>
+      <node concept="m$_yB" id="4wxeloV_3hA" role="m$_yh">
+        <ref role="m$_yA" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
+      </node>
+    </node>
     <node concept="m$_wf" id="3nGzrDDNo$o" role="3989C9">
       <property role="m$_wk" value="Subversion" />
       <node concept="3_J27D" id="3nGzrDDNo$p" role="m$_yQ">
@@ -43408,6 +43557,92 @@
           </node>
           <node concept="3LWZYq" id="1diLdO26H8f" role="2HvfZ1">
             <property role="3LWZYl" value="**/*.zip" />
+          </node>
+        </node>
+      </node>
+      <node concept="m$_wl" id="4wxeloVufXE" role="39821P">
+        <ref role="m_rDy" node="4wxeloVufXr" resolve="jetbrains.mps.git4idea.stubs" />
+        <node concept="pUk6w" id="GF9IugXSnD" role="pUk7w" />
+        <node concept="398223" id="GF9IugXSs8" role="39821P">
+          <node concept="3_J27D" id="GF9IugXSs9" role="Nbhlr">
+            <node concept="3Mxwew" id="GF9IugXSti" role="3MwsjC">
+              <property role="3MwjfP" value="languages" />
+            </node>
+          </node>
+          <node concept="L2wRC" id="GF9IugXStk" role="39821P">
+            <ref role="L2wRA" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
+            <node concept="3yLZsm" id="GF9IugXSvy" role="3yL2VB">
+              <property role="3yLZsk" value="../../git4idea/lib/git4idea.jar" />
+              <node concept="398BVA" id="GF9IugYBPZ" role="3yLZsn">
+                <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="GF9IugYBQ5" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="GF9IugYBQ6" role="2Ry0An">
+                    <property role="2Ry0Am" value="git4idea" />
+                    <node concept="2Ry0Ak" id="GF9IugYBQ7" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="GF9IugYBQ8" role="2Ry0An">
+                        <property role="2Ry0Am" value="git4idea.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="GF9IugZbc$" role="3yL2VB">
+              <property role="3yLZsk" value="../../git4idea/lib/git4idea-rt.jar" />
+              <node concept="398BVA" id="GF9IugZbc_" role="3yLZsn">
+                <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="GF9IugZbcA" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="GF9IugZbcB" role="2Ry0An">
+                    <property role="2Ry0Am" value="git4idea" />
+                    <node concept="2Ry0Ak" id="GF9IugZbcC" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="GF9IugZbcD" role="2Ry0An">
+                        <property role="2Ry0Am" value="git4idea-rt.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="GF9IugZbdY" role="3yL2VB">
+              <property role="3yLZsk" value="../../git4idea/lib/remote-servers-get.jar" />
+              <node concept="398BVA" id="GF9IugZbdZ" role="3yLZsn">
+                <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="GF9IugZbe0" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="GF9IugZbe1" role="2Ry0An">
+                    <property role="2Ry0Am" value="git4idea" />
+                    <node concept="2Ry0Ak" id="GF9IugZbe2" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="GF9IugZbe3" role="2Ry0An">
+                        <property role="2Ry0Am" value="remote-servers-git.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3yLZsm" id="GF9IugZbfu" role="3yL2VB">
+              <property role="3yLZsk" value="../../git4idea/lib/resources_en.jar" />
+              <node concept="398BVA" id="GF9IugZbfv" role="3yLZsn">
+                <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="GF9IugZbfw" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="GF9IugZbfx" role="2Ry0An">
+                    <property role="2Ry0Am" value="git4idea" />
+                    <node concept="2Ry0Ak" id="GF9IugZbfy" role="2Ry0An">
+                      <property role="2Ry0Am" value="lib" />
+                      <node concept="2Ry0Ak" id="GF9IugZbfz" role="2Ry0An">
+                        <property role="2Ry0Am" value="resources_en.jar" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>

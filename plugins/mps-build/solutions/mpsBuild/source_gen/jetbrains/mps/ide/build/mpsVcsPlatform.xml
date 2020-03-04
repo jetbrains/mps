@@ -78,6 +78,42 @@
         <exclude name="**/*.zip" />
       </fileset>
     </copy>
+    <mkdir dir="${build.layout}/mps-git4idea" />
+    <mkdir dir="${build.layout}/mps-git4idea/META-INF" />
+    <echoxml file="${build.layout}/mps-git4idea/META-INF/plugin.xml">
+      <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+        <id>jetbrains.mps.git4idea.stubs</id>
+        <name>MPS Git integration - stubs</name>
+        <version>${mpsBootstrapCore.version}</version>
+        <depends>Git4Idea</depends>
+        <depends>jetbrains.mps.core</depends>
+        
+        <extensions defaultExtensionNs="com.intellij">
+          <mps.LanguageLibrary dir="/languages" />
+        </extensions>
+      </idea-plugin>
+    </echoxml>
+    <mkdir dir="${build.layout}/mps-git4idea/languages" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.git4idea.stubs" type="solution" uuid="f57286e3-4e19-4d8d-8045-3900761f6530">
+        <dependencies>
+          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+        </dependencies>
+        <uses />
+        <library jar="../../git4idea/lib/git4idea-rt.jar" />
+        <library jar="../../git4idea/lib/git4idea.jar" />
+        <library jar="../../git4idea/lib/remote-servers-get.jar" />
+        <library jar="../../git4idea/lib/resources_en.jar" />
+        <sources jar="." descriptor="jetbrains.mps.git4idea.stubs.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-git4idea/languages/jetbrains.mps.git4idea.stubs.jar" duplicate="preserve">
+      <zipfileset file="${basedir}/plugins/mps-git4idea/stubs/jetbrains.mps.git4idea.stubs.msd" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar" />
+    </jar>
     <mkdir dir="${build.layout}/lib" />
     <copy file="${artifacts.mpsVcsPlatformPre}/lib/vcs-core.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsVcsPlatformPre}/lib/vcs-platform.jar" todir="${build.layout}/lib" />
@@ -150,6 +186,7 @@
           <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
           <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
           <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
+          <module ref="f57286e3-4e19-4d8d-8045-3900761f6530(jetbrains.mps.git4idea.stubs)" kind="cl" />
           <module ref="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="cl" />
           <module ref="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="cl" />
           <module ref="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" kind="cl" />
@@ -503,6 +540,7 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/xml/jetbrains.mps.core.xml.sax.jar" />
       <chunk>
+        <module file="${basedir}/plugins/mps-git4idea/stubs/jetbrains.mps.git4idea.stubs.msd" />
         <module file="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/jetbrains.mps.ide.vcs.core.msd" />
         <module file="${mps_home}/plugins/mps-vcs/vcs-platform/languages/modelmetadata/jetbrains.mps.ide.vcs.modelmetadata.mpl" />
         <module file="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/jetbrains.mps.ide.vcs.platform.msd" />
