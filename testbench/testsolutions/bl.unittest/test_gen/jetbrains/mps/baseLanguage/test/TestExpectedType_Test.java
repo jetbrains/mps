@@ -17,8 +17,6 @@ import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
-import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.test.runtime.CheckTypesAction;
 
 @MPSLaunch
@@ -49,10 +47,6 @@ public class TestExpectedType_Test extends BaseTransformationTest {
     new TestBody(this).test_NodeExpectedTypeCheck8101092317677999915();
   }
   @Test
-  public void test_NodeIncompatibleMethodSignatureCheck1955277442708664505() throws Throwable {
-    new TestBody(this).test_NodeIncompatibleMethodSignatureCheck1955277442708664505();
-  }
-  @Test
   public void test_NodeExpectedTypeCheck8101092317678002448() throws Throwable {
     new TestBody(this).test_NodeExpectedTypeCheck8101092317678002448();
   }
@@ -75,7 +69,7 @@ public class TestExpectedType_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck4395293866213260523() throws Exception {
       SNode nodeToCheck = getRealNodeById("4395293866213195828");
       SNode operation = getRealNodeById("4395293866213260523");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4923130412073222090"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
     }
     public void test_NodeExpectedTypeCheck8101092317677991775() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317677985822");
@@ -94,11 +88,6 @@ public class TestExpectedType_Test extends BaseTransformationTest {
       SNode operation = getRealNodeById("8101092317677999915");
       addNodeById("8101092317677999916");
       new CheckTypesAction.CheckExpectedType(nodeToCheck).checkTypeIs(getNodeById("8101092317677999916"));
-    }
-    public void test_NodeIncompatibleMethodSignatureCheck1955277442708664505() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4923130412073222090");
-      SNode operation = getRealNodeById("1955277442708664505");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
     public void test_NodeExpectedTypeCheck8101092317678002448() throws Exception {
       SNode nodeToCheck = getRealNodeById("8101092317678002446");
