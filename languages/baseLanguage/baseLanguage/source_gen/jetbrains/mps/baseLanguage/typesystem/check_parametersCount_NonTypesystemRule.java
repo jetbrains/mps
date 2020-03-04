@@ -4,8 +4,6 @@ package jetbrains.mps.baseLanguage.typesystem;
 
 import jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
@@ -17,9 +15,6 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
-import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.baseLanguage.logging.runtime.model.LoggingRuntime;
-import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -28,7 +23,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-  private static final Logger LOG = LogManager.getLogger(check_parametersCount_NonTypesystemRule.class);
   public check_parametersCount_NonTypesystemRule() {
   }
   public void applyRule(final SNode iMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
@@ -63,13 +57,13 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
           if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT)) {
             SNode typeToMatch = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT), LINKS.componentType$knmw);
             for (int j = i; j < ListSequence.fromList(actualArguments).count(); j++) {
-              isParamTypesOk = isParamTypesOk && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(actualArguments).getElement(j)), typeToMatch));
+              isParamTypesOk = isParamTypesOk && ParameterNameUtil.isArgumentSubtypeOfParameter(ListSequence.fromList(actualArguments).getElement(j), typeToMatch);
 
             }
             break;
           }
-          LoggingRuntime.logMsgView(Level.WARN, "AAAAAAAA " + TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(actualArguments).getElement(i)), SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO)) + ":" + TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(actualArguments).getElement(i)) + ":" + SNodeOperations.getConcept(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO)), check_parametersCount_NonTypesystemRule.class, null, null);
-          isParamTypesOk = isParamTypesOk && TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(actualArguments).getElement(i)), SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO));
+          isParamTypesOk = isParamTypesOk && ParameterNameUtil.isArgumentSubtypeOfParameter(ListSequence.fromList(actualArguments).getElement(i), SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO));
+
 
         }
         if (!(isParamTypesOk)) {

@@ -12,8 +12,10 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ParameterNameUtil {
   public static String suggestParameterName(SNode argument, SNode requestedType, Iterable<String> existingNames) {
@@ -47,6 +49,10 @@ public class ParameterNameUtil {
     return candidateName;
   }
 
+  public static boolean isArgumentSubtypeOfParameter(SNode arg, SNode paramType) {
+    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(arg), paramType) || SNodeOperations.isInstanceOf(paramType, CONCEPTS.IGenericType$$h) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.IGenericType$$h);
+  }
+
   /**
    * Appends the appropriate 'th', 'st', 'nd' or 'rd' ending to a number to create an ordinal number.
    */
@@ -77,5 +83,6 @@ public class ParameterNameUtil {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SInterfaceConcept IGenericType$$h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
   }
 }
