@@ -26,6 +26,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
@@ -53,6 +56,9 @@
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
+      <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
+        <child id="1081516765348" name="expression" index="3fr31v" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -82,9 +88,16 @@
       <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
         <child id="1185788644032" name="normalType" index="mwGJk" />
       </concept>
+      <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
+        <child id="1175517851849" name="errorString" index="2MkJ7o" />
+      </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
         <property id="1195213689297" name="overrides" index="18ip37" />
         <child id="1195213635060" name="body" index="18ibNy" />
+      </concept>
+      <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="3937244445246642777" name="jetbrains.mps.lang.typesystem.structure.AbstractReportStatement" flags="ng" index="1urrMJ">
+        <child id="3937244445246642781" name="nodeToReport" index="1urrMF" />
       </concept>
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
@@ -126,6 +139,10 @@
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
+      <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
+        <child id="1177027386292" name="conceptArgument" index="cj9EA" />
+      </concept>
+      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144195091934" name="jetbrains.mps.lang.smodel.structure.Node_IsRoleOperation" flags="nn" index="1BlSNk">
         <reference id="1144195362400" name="conceptOfParent" index="1BmUXE" />
         <reference id="1144195396777" name="linkInParent" index="1Bn3mz" />
@@ -1075,6 +1092,63 @@
     <node concept="1YaCAy" id="PFUECvOFS2" role="1YuTPh">
       <property role="TrG5h" value="labeledNode" />
       <ref role="1YaFvo" to="tp3t:PFUECvMiNB" resolve="LabeledNode" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="6SIgReP6224">
+    <property role="TrG5h" value="check_ExpressionPatternProvider" />
+    <property role="3GE5qa" value="light.bL" />
+    <node concept="3clFbS" id="6SIgReP6225" role="18ibNy">
+      <node concept="3clFbJ" id="6SIgReP622e" role="3cqZAp">
+        <node concept="1Wc70l" id="6SIgReP63D6" role="3clFbw">
+          <node concept="3fqX7Q" id="6SIgReP62rp" role="3uHU7w">
+            <node concept="2OqwBi" id="6SIgReP62rr" role="3fr31v">
+              <node concept="2OqwBi" id="6SIgReP62zN" role="2Oq$k0">
+                <node concept="1YBJjd" id="6SIgReP62rs" role="2Oq$k0">
+                  <ref role="1YBMHb" node="6SIgReP6227" resolve="expressionPatternProvider" />
+                </node>
+                <node concept="3TrEf2" id="6SIgReP62Ha" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tp3t:6SIgReP4RfT" resolve="expression" />
+                </node>
+              </node>
+              <node concept="1mIQ4w" id="6SIgReP62rt" role="2OqNvi">
+                <node concept="chp4Y" id="6SIgReP62ru" role="cj9EA">
+                  <ref role="cht4Q" to="tp3t:6SIgReP4Tro" resolve="QualifiedPatternReference" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="6SIgReP64Ig" role="3uHU7B">
+            <node concept="2OqwBi" id="6SIgReP63Ea" role="2Oq$k0">
+              <node concept="1YBJjd" id="6SIgReP63Eb" role="2Oq$k0">
+                <ref role="1YBMHb" node="6SIgReP6227" resolve="expressionPatternProvider" />
+              </node>
+              <node concept="3TrEf2" id="6SIgReP63Ec" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp3t:6SIgReP4RfT" resolve="expression" />
+              </node>
+            </node>
+            <node concept="3x8VRR" id="6SIgReP64Ro" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3clFbS" id="6SIgReP622g" role="3clFbx">
+          <node concept="2MkqsV" id="6SIgReP64TY" role="3cqZAp">
+            <node concept="Xl_RD" id="6SIgReP64Ua" role="2MkJ7o">
+              <property role="Xl_RC" value="pattern expected" />
+            </node>
+            <node concept="2OqwBi" id="6SIgReP653r" role="1urrMF">
+              <node concept="1YBJjd" id="6SIgReP64Vk" role="2Oq$k0">
+                <ref role="1YBMHb" node="6SIgReP6227" resolve="expressionPatternProvider" />
+              </node>
+              <node concept="3TrEf2" id="6SIgReP65ku" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp3t:6SIgReP4RfT" resolve="expression" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="6SIgReP6227" role="1YuTPh">
+      <property role="TrG5h" value="expressionPatternProvider" />
+      <ref role="1YaFvo" to="tp3t:6SIgReP4RfS" resolve="ExpressionPatternProvider" />
     </node>
   </node>
 </model>

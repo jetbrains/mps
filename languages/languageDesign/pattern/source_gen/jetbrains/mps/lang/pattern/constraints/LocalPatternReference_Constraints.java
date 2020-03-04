@@ -22,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class PatternReference_Constraints extends BaseConstraintsDescriptor {
-  public PatternReference_Constraints() {
-    super(CONCEPTS.PatternReference$Mm);
+public class LocalPatternReference_Constraints extends BaseConstraintsDescriptor {
+  public LocalPatternReference_Constraints() {
+    super(CONCEPTS.LocalPatternReference$Mm);
   }
 
   @Override
@@ -40,7 +40,7 @@ public class PatternReference_Constraints extends BaseConstraintsDescriptor {
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_q4phvt_a0a0a0a0a1a0a0a0c;
+            return breakingNode_wj1hri_a0a0a0a0a1a0a0a0c;
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
@@ -53,10 +53,10 @@ public class PatternReference_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
-  private static final SNodePointer breakingNode_q4phvt_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "3741790230813196240");
+  private static final SNodePointer breakingNode_wj1hri_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "3741790230813196240");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternReference$Mm = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, "jetbrains.mps.lang.pattern.structure.PatternReference");
+    /*package*/ static final SConcept LocalPatternReference$Mm = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, "jetbrains.mps.lang.pattern.structure.LocalPatternReference");
     /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept PatternBuilderClassifierMember$75 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, "jetbrains.mps.lang.pattern.structure.PatternBuilderClassifierMember");
   }

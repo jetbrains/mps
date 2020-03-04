@@ -21,6 +21,7 @@ import jetbrains.mps.lang.quotation.behavior.NodeBuilderInitProperty__BehaviorDe
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.pattern.behavior.PatternVarsUtil;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.pattern.behavior.PatternBuilderClassifierMember__BehaviorDescriptor;
 import java.util.Optional;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.structure.behavior.PropertyDeclaration__BehaviorDescriptor;
@@ -227,7 +228,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "p" + ((Integer) _context.getVariable("cv:c"));
   }
   public static Object propertyMacro_GetValue_18_1(final PropertyMacroContext _context) {
-    return NameUtil.capitalize(SPropertyOperations.getString(((SNode) _context.getVariable("var:classMember")), PROPS.name$tAp1)) + "_Pattern";
+    return (String) PatternBuilderClassifierMember__BehaviorDescriptor.getGeneratedName_id6SIgReParNN.invoke(((SNode) _context.getVariable("var:classMember")));
   }
   public static Object propertyMacro_GetValue_19_0(final PropertyMacroContext _context) {
     return ((Optional<Boolean>) _context.getVariable("allowNull")).get();

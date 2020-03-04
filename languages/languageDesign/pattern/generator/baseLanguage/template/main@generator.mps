@@ -4658,7 +4658,7 @@
     <property role="3GE5qa" value="switch" />
     <property role="TrG5h" value="PatternSwitchCase_switchType" />
     <node concept="3aamgX" id="7KQFBrExfYJ" role="3aUrZf">
-      <ref role="30HIoZ" to="tp3t:1tcvH6b5INW" resolve="PatternReference" />
+      <ref role="30HIoZ" to="tp3t:1tcvH6b5INW" resolve="LocalPatternReference" />
       <node concept="1Koe21" id="7KQFBrExfYK" role="1lVwrX">
         <node concept="9aQIb" id="7KQFBrExfYL" role="1Koe22">
           <node concept="3clFbS" id="7KQFBrExfYM" role="9aQI4">
@@ -5280,25 +5280,16 @@
         <property role="P4ACc" value="ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001" />
         <node concept="3zFVjK" id="3fHwAfryfLc" role="3zH0cK">
           <node concept="3clFbS" id="3fHwAfryfLd" role="2VODD2">
-            <node concept="3clFbF" id="64p9aapNvIM" role="3cqZAp">
-              <node concept="3cpWs3" id="3fHwAfryyqR" role="3clFbG">
-                <node concept="Xl_RD" id="3fHwAfryyqS" role="3uHU7w">
-                  <property role="Xl_RC" value="_Pattern" />
-                </node>
-                <node concept="2YIFZM" id="3fHwAfryyqT" role="3uHU7B">
-                  <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <ref role="37wK5l" to="18ew:~NameUtil.capitalize(java.lang.String)" resolve="capitalize" />
-                  <node concept="2OqwBi" id="3fHwAfryyqU" role="37wK5m">
-                    <node concept="3TrcHB" id="64p9aapNwoD" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-                    </node>
-                    <node concept="2OqwBi" id="64p9aapQ5sJ" role="2Oq$k0">
-                      <node concept="1iwH7S" id="64p9aapQ5c6" role="2Oq$k0" />
-                      <node concept="1psM6Z" id="64p9aapQ5Al" role="2OqNvi">
-                        <ref role="1psM6Y" node="64p9aapQ3fi" resolve="classMember" />
-                      </node>
-                    </node>
+            <node concept="3clFbF" id="6SIgRePaxK$" role="3cqZAp">
+              <node concept="2OqwBi" id="6SIgRePayLA" role="3clFbG">
+                <node concept="2OqwBi" id="6SIgRePaymO" role="2Oq$k0">
+                  <node concept="1iwH7S" id="6SIgRePaxKz" role="2Oq$k0" />
+                  <node concept="1psM6Z" id="6SIgRePaysj" role="2OqNvi">
+                    <ref role="1psM6Y" node="64p9aapQ3fi" resolve="classMember" />
                   </node>
+                </node>
+                <node concept="2qgKlT" id="6SIgRePaz5Z" role="2OqNvi">
+                  <ref role="37wK5l" to="tp2b:6SIgReParNN" resolve="getGeneratedName" />
                 </node>
               </node>
             </node>
@@ -5520,7 +5511,7 @@
     <property role="3GE5qa" value="switch" />
     <property role="TrG5h" value="PatternSwitchCase_switch" />
     <node concept="3aamgX" id="1tcvH6b5JfZ" role="3aUrZf">
-      <ref role="30HIoZ" to="tp3t:1tcvH6b5INW" resolve="PatternReference" />
+      <ref role="30HIoZ" to="tp3t:1tcvH6b5INW" resolve="LocalPatternReference" />
       <node concept="1Koe21" id="1tcvH6b5K0P" role="1lVwrX">
         <node concept="9aQIb" id="1tcvH6b5K0V" role="1Koe22">
           <node concept="3clFbS" id="1tcvH6b5K0W" role="9aQI4">

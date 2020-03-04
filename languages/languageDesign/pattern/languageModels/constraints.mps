@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -17,6 +18,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -594,7 +596,7 @@
   </node>
   <node concept="1M2fIO" id="3fHwAfrAIfS">
     <property role="3GE5qa" value="light.bL" />
-    <ref role="1M2myG" to="tp3t:1tcvH6b5INW" resolve="PatternReference" />
+    <ref role="1M2myG" to="tp3t:1tcvH6b5INW" resolve="LocalPatternReference" />
     <node concept="1N5Pfh" id="3fHwAfrAIjP" role="1Mr941">
       <ref role="1N5Vy1" to="tp3t:1tcvH6b5INX" resolve="declaration" />
       <node concept="3dgokm" id="3fHwAfrDrZg" role="1N6uqs">
@@ -657,6 +659,50 @@
       <ref role="1N5Vy1" to="tp3t:2r4rhgaDx28" resolve="declaration" />
       <node concept="1dDu$B" id="2r4rhgaESl1" role="1N6uqs">
         <ref role="1dDu$A" to="tp3t:2r4rhgaDx1I" resolve="PatternBuilderVariable" />
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="6SIgReP4Rhe">
+    <property role="3GE5qa" value="light.bL" />
+    <ref role="1M2myG" to="tp3t:6SIgReP4RfS" resolve="ExpressionPatternProvider" />
+    <node concept="9SLcT" id="6SIgReP4Rlb" role="9SGkU">
+      <node concept="3clFbS" id="6SIgReP4Rlc" role="2VODD2">
+        <node concept="3clFbJ" id="6SIgReP4Rp7" role="3cqZAp">
+          <node concept="17R0WA" id="6SIgReP4RM6" role="3clFbw">
+            <node concept="359W_D" id="6SIgReP4RQP" role="3uHU7w">
+              <ref role="359W_E" to="tp3t:6SIgReP4RfS" resolve="ExpressionPatternProvider" />
+              <ref role="359W_F" to="tp3t:6SIgReP4RfT" resolve="expression" />
+            </node>
+            <node concept="2DA6wF" id="6SIgReP4RpC" role="3uHU7B" />
+          </node>
+          <node concept="3clFbS" id="6SIgReP4Rp9" role="3clFbx">
+            <node concept="3cpWs6" id="6SIgReP4RW4" role="3cqZAp">
+              <node concept="22lmx$" id="6SIgReP4TaR" role="3cqZAk">
+                <node concept="2OqwBi" id="6SIgReP4Sii" role="3uHU7B">
+                  <node concept="2DD5aU" id="6SIgReP4S0r" role="2Oq$k0" />
+                  <node concept="2Zo12i" id="6SIgReP4SxI" role="2OqNvi">
+                    <node concept="chp4Y" id="6SIgReP4SCO" role="2Zo12j">
+                      <ref role="cht4Q" to="tpee:6LG$uY_V8Nn" resolve="AbstractClassifierReference" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="6SIgReP4Tix" role="3uHU7w">
+                  <node concept="2DD5aU" id="6SIgReP4Tiy" role="2Oq$k0" />
+                  <node concept="2Zo12i" id="6SIgReP4Tiz" role="2OqNvi">
+                    <node concept="chp4Y" id="6SIgReP61L1" role="2Zo12j">
+                      <ref role="cht4Q" to="tpee:7S22xyoLQFx" resolve="QualifiedReference" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6SIgReP4SKj" role="3cqZAp">
+          <node concept="3clFbT" id="6SIgReP4SSa" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
       </node>
     </node>
   </node>

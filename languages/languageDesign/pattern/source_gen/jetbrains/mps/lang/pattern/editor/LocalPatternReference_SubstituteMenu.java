@@ -23,13 +23,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-public class PatternReference_SubstituteMenu extends SubstituteMenuBase {
+public class LocalPatternReference_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_br40f2_a(), CONCEPTS.PatternReference$Mm));
-    result.add(new SMP_Subconcepts_br40f2_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_7gy47d_a(), CONCEPTS.LocalPatternReference$Mm));
+    result.add(new SMP_Subconcepts_7gy47d_b());
     return result;
   }
 
@@ -37,7 +37,7 @@ public class PatternReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for PatternReference. Generated from implicit smart reference attribute.", new SNodePointer("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)", "1678856199549152508")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for LocalPatternReference. Generated from implicit smart reference attribute.", new SNodePointer("r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)", "1678856199549152508")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -46,11 +46,11 @@ public class PatternReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
-  public class SMP_ReferenceScope_br40f2_a extends ReferenceScopeSubstituteMenuPart {
+  public class SMP_ReferenceScope_7gy47d_a extends ReferenceScopeSubstituteMenuPart {
 
-    public SMP_ReferenceScope_br40f2_a() {
+    public SMP_ReferenceScope_7gy47d_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PatternReference$Mm, LINKS.declaration$6hl0);
+      super((SAbstractConcept) CONCEPTS.LocalPatternReference$Mm, LINKS.declaration$6hl0);
     }
     @NotNull
     @Override
@@ -65,15 +65,15 @@ public class PatternReference_SubstituteMenu extends SubstituteMenuBase {
     }
 
   }
-  public class SMP_Subconcepts_br40f2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+  public class SMP_Subconcepts_7gy47d_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PatternReference$Mm);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LocalPatternReference$Mm);
     }
     @NotNull
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "PatternReference", null));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "LocalPatternReference", null));
       try {
         return super.createItems(context);
       } finally {
@@ -88,7 +88,7 @@ public class PatternReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternReference$Mm = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, "jetbrains.mps.lang.pattern.structure.PatternReference");
+    /*package*/ static final SConcept LocalPatternReference$Mm = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, "jetbrains.mps.lang.pattern.structure.LocalPatternReference");
   }
 
   private static final class LINKS {
