@@ -50,7 +50,7 @@ public class ParameterNameUtil {
   }
 
   public static boolean isArgumentSubtypeOfParameter(SNode arg, SNode paramType) {
-    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(arg), paramType) || SNodeOperations.isInstanceOf(paramType, CONCEPTS.IGenericType$$h) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.IGenericType$$h);
+    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(arg), paramType) || SNodeOperations.getConcept(arg).isAbstract() || SNodeOperations.isInstanceOf(paramType, CONCEPTS.IGenericType$$h) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.IGenericType$$h);
   }
 
   /**

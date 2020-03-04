@@ -72207,15 +72207,28 @@
         <node concept="3clFbF" id="1GyyBA1_VNk" role="3cqZAp">
           <node concept="22lmx$" id="1GyyBA1_VNm" role="3clFbG">
             <node concept="22lmx$" id="1GyyBA1_VNn" role="3uHU7B">
-              <node concept="3JuTUA" id="1GyyBA1_VNq" role="3uHU7B">
-                <node concept="2OqwBi" id="1GyyBA1_VNr" role="3JuY14">
-                  <node concept="37vLTw" id="1GyyBA1_WUf" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1GyyBA1_N_o" resolve="arg" />
+              <node concept="22lmx$" id="1GyyBA1Qqcy" role="3uHU7B">
+                <node concept="2OqwBi" id="1GyyBA1Qrhb" role="3uHU7w">
+                  <node concept="2OqwBi" id="1GyyBA1QqCd" role="2Oq$k0">
+                    <node concept="37vLTw" id="1GyyBA1Qqm8" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1GyyBA1_N_o" resolve="arg" />
+                    </node>
+                    <node concept="2yIwOk" id="1GyyBA1QqUt" role="2OqNvi" />
                   </node>
-                  <node concept="3JvlWi" id="1GyyBA1_VNv" role="2OqNvi" />
+                  <node concept="liA8E" id="1GyyBA1QrOm" role="2OqNvi">
+                    <ref role="37wK5l" to="c17a:~SAbstractConcept.isAbstract()" resolve="isAbstract" />
+                  </node>
                 </node>
-                <node concept="37vLTw" id="1GyyBA1_XxI" role="3JuZjQ">
-                  <ref role="3cqZAo" node="1GyyBA1_NDO" resolve="paramType" />
+                <node concept="3JuTUA" id="1GyyBA1_VNq" role="3uHU7B">
+                  <node concept="2OqwBi" id="1GyyBA1_VNr" role="3JuY14">
+                    <node concept="37vLTw" id="1GyyBA1_WUf" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1GyyBA1_N_o" resolve="arg" />
+                    </node>
+                    <node concept="3JvlWi" id="1GyyBA1_VNv" role="2OqNvi" />
+                  </node>
+                  <node concept="37vLTw" id="1GyyBA1_XxI" role="3JuZjQ">
+                    <ref role="3cqZAo" node="1GyyBA1_NDO" resolve="paramType" />
+                  </node>
                 </node>
               </node>
               <node concept="2OqwBi" id="1GyyBA1_VNP" role="3uHU7w">
