@@ -6377,7 +6377,7 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="6LX8FiPnN64" role="3cqZAp" />
+        <node concept="3clFbH" id="2j3A0Qkxi8M" role="3cqZAp" />
         <node concept="3SKdUt" id="2oeJbOGGXCw" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXnUTM" role="3ndbpf">
             <node concept="3oM_SD" id="ATZLwXnUTN" role="1PaTwD">
@@ -6552,6 +6552,76 @@
               </node>
               <node concept="37vLTw" id="6LX8FiPnNsl" role="3uHU7w">
                 <ref role="3cqZAo" node="6LX8FiPnKlK" resolve="originalDelete" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2j3A0Qkxm7t" role="3cqZAp">
+          <node concept="3cpWsn" id="2j3A0Qkxm7w" role="3cpWs9">
+            <property role="TrG5h" value="newObj" />
+            <node concept="17QB3L" id="2j3A0Qkxm7r" role="1tU5fm" />
+            <node concept="Xl_RD" id="2j3A0Qkxmr2" role="33vP2m">
+              <property role="Xl_RC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2j3A0QkxjoM" role="3cqZAp">
+          <node concept="3clFbS" id="2j3A0QkxjoO" role="3clFbx">
+            <node concept="3clFbF" id="2j3A0Qkxnx1" role="3cqZAp">
+              <node concept="d57v9" id="2j3A0Qkxo3I" role="3clFbG">
+                <node concept="Xl_RD" id="2j3A0Qkxo9y" role="37vLTx">
+                  <property role="Xl_RC" value="own_del" />
+                </node>
+                <node concept="37vLTw" id="2j3A0Qkxnx0" role="37vLTJ">
+                  <ref role="3cqZAo" node="2j3A0Qkxm7w" resolve="newObj" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="2j3A0QkxjTw" role="3clFbw">
+            <node concept="37vLTw" id="2j3A0Qkxk27" role="3uHU7w">
+              <ref role="3cqZAo" node="6LX8FiPnKlK" resolve="originalDelete" />
+            </node>
+            <node concept="37vLTw" id="2j3A0QkxjEk" role="3uHU7B">
+              <ref role="3cqZAo" node="5DMYqHh7Qc$" resolve="deleteAction" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2j3A0QkxkPL" role="3cqZAp">
+          <node concept="3clFbS" id="2j3A0QkxkPM" role="3clFbx">
+            <node concept="3clFbF" id="2j3A0Qkxopw" role="3cqZAp">
+              <node concept="d57v9" id="2j3A0Qkxp51" role="3clFbG">
+                <node concept="Xl_RD" id="2j3A0QkxpaP" role="37vLTx">
+                  <property role="Xl_RC" value="own_back" />
+                </node>
+                <node concept="37vLTw" id="2j3A0Qkxopp" role="37vLTJ">
+                  <ref role="3cqZAo" node="2j3A0Qkxm7w" resolve="newObj" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="2j3A0QkxkPT" role="3clFbw">
+            <node concept="37vLTw" id="2j3A0Qkxl_3" role="3uHU7w">
+              <ref role="3cqZAo" node="6LX8FiPnLTA" resolve="originalBackspace" />
+            </node>
+            <node concept="37vLTw" id="2j3A0QkxlmQ" role="3uHU7B">
+              <ref role="3cqZAo" node="5DMYqHh7SNM" resolve="backspaceAction" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2j3A0Qkxkb4" role="3cqZAp">
+          <node concept="2OqwBi" id="2j3A0Qkxkm4" role="3clFbG">
+            <node concept="37vLTw" id="2j3A0Qkxkb2" role="2Oq$k0">
+              <ref role="3cqZAo" node="g_FjgtG" resolve="editorCell" />
+            </node>
+            <node concept="liA8E" id="2j3A0Qkxkus" role="2OqNvi">
+              <ref role="37wK5l" to="f4zo:~EditorCell.putUserObject(java.lang.Object,java.lang.Object)" resolve="putUserObject" />
+              <node concept="10M0yZ" id="2j3A0QkxkEz" role="37wK5m">
+                <ref role="3cqZAo" to="emqf:~AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET" resolve="ELEMENT_CELL_ACTIONS_SET" />
+                <ref role="1PxDUh" to="emqf:~AbstractCellListHandler" resolve="AbstractCellListHandler" />
+              </node>
+              <node concept="37vLTw" id="2j3A0QkxpKa" role="37wK5m">
+                <ref role="3cqZAo" node="2j3A0Qkxm7w" resolve="newObj" />
               </node>
             </node>
           </node>
