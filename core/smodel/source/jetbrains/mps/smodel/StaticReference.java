@@ -207,7 +207,7 @@ public final class StaticReference extends SReferenceBase {
    */
   @Deprecated
   @ToRemove(version = 2018.3)
-  public SModel getTargetSModel() {
+  private SModel getTargetSModel() {
     SModel current = getSourceNode().getModel();
     if (current != null && current.getReference().equals(getTargetSModelReference())) return current;
 
