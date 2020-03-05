@@ -34,12 +34,10 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.DotStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.nodeEditor.MPSFonts;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.MPSColors;
+import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.StaticFieldStyleClass;
+import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -70,7 +68,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     setCellContext(editorCell);
     editorCell.addEditorCell(createRefCell_0());
     editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createRefCell_1());
+    editorCell.addEditorCell(createCollection_1());
     return editorCell;
   }
   private EditorCell createRefCell_0() {
@@ -162,7 +160,17 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     Style style = new StyleImpl();
     new DotStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
+    EnumConstantReference_DeleteToDot.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createCollection_1() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
+    editorCell.setCellId("constant");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createRefCell_1());
     return editorCell;
   }
   private EditorCell createRefCell_1() {
@@ -188,9 +196,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(LINKS.enumConstantDeclaration$fB6v);
     }
-    if (true) {
-      editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.FIRST_EDITABLE_CELL);
-    }
+    EnumConstantReference_DeleteToDot.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.QualifiedReference$lF, "jetbrains.mps.baseLanguage.editor.ReplaceQualifiedReference"));
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$7j);
@@ -235,9 +241,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setDefaultText("<no name>");
         editorCell.setCellId("property_name1");
         Style style = new StyleImpl();
-        style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-        style.set(StyleAttributes.TEXT_COLOR, StyleRegistry.getInstance().getSimpleColor(MPSColors.DARK_MAGENTA));
+        new StaticFieldStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        style.set(StyleAttributes.AUTO_DELETABLE, true);
         editorCell.getStyle().putAll(style);
+        if (true) {
+          editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);
+        }
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
         Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);

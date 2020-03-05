@@ -168,7 +168,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     Style style = new StyleImpl();
     new DotStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    StaticFieldReference_DeleteDot.setCellActions(editorCell, myNode, getEditorContext());
+    StaticFieldReference_DeleteToDot.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -202,7 +202,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(LINKS.variableDeclaration$2ky6);
     }
-    StaticFieldReference_DeleteDot.setCellActions(editorCell, myNode, getEditorContext());
+    StaticFieldReference_DeleteToDot.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.QualifiedReference$lF, "jetbrains.mps.baseLanguage.editor.ReplaceQualifiedReference"));
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink, CONCEPTS.StaticFieldDeclaration$R5));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$7j);
@@ -248,6 +248,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setCellId("property_name");
         Style style = new StyleImpl();
         new StaticFieldStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+        style.set(StyleAttributes.AUTO_DELETABLE, true);
         editorCell.getStyle().putAll(style);
         if (true) {
           editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);

@@ -112,7 +112,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(LINKS.classConcept$BsUa);
     }
-    StaticMethodCall_Actions.setCellActions(editorCell, myNode, getEditorContext());
+    StaticMethodCall_ConvertToLocal.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new StaticMethodCall_classConcept_cellMenu_a4wjjz_a0a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$7j);
     Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
@@ -187,10 +187,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_a4wjjz_d0");
+    editorCell.setCellId("method");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
+    StaticMethodCall_DeleteToDot.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.IMethodCall$ln, "jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument"));
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     editorCell.addEditorCell(createRefCell_1());
@@ -221,6 +222,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       editorCell.setReferenceCell(true);
       editorCell.setSRole(LINKS.baseMethodDeclaration$$A7i);
     }
+    StaticMethodCall_DeleteToDot.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.StaticMethodCall$eu, "jetbrains.mps.baseLanguage.editor.StaticMethodCall_TransformationMenu"));
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfo(editorCell, referenceLink, CONCEPTS.StaticMethodDeclaration$eX));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$7j);
@@ -267,6 +269,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         Style style = new StyleImpl();
         new MPSMethodCallStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
         style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
+        style.set(StyleAttributes.AUTO_DELETABLE, true);
         editorCell.getStyle().putAll(style);
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);

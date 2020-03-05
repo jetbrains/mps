@@ -5,14 +5,18 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.baseLanguage.behavior.StaticMethodCall__BehaviorDescriptor;
-import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.behavior.QualifiedReference__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-public class StaticMethodCall_Actions {
+public class QualifierReference_DeleteToDot {
 
   /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
     return new AbstractCellAction() {
@@ -20,12 +24,7 @@ public class StaticMethodCall_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((boolean) StaticMethodCall__BehaviorDescriptor.canBeConvertedToLocal_id2RbFUmZleRt.invoke(node)) {
-          if (DeletionApproverUtil.approve(editorContext, node, "class")) {
-            return;
-          }
-          StaticMethodCall__BehaviorDescriptor.convertToLocal_id2RbFUmZlhob.invoke(node);
-        }
+        SNodeOperations.replaceWithAnother(node, createStaticFieldReference_cqb7si_a0a0a0a(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(node)));
       }
 
     };
@@ -64,5 +63,20 @@ public class StaticMethodCall_Actions {
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
+  }
+  private static SNode createStaticFieldReference_cqb7si_a0a0a0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StaticFieldReference$K8);
+    n0.setReferenceTarget(LINKS.classifier$ZTjE, p0);
+    n0.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
+    return n0.getResult();
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept StaticFieldReference$K8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }
