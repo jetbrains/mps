@@ -111,7 +111,11 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.NodeBuilderNode$RN));
+        if (!(strictly)) {
+          return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.NodeBuilderNode$RN));
+        } else {
+          return pattern.startsWith("%");
+        }
       }
     }
   }

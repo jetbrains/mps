@@ -3201,17 +3201,39 @@
       <node concept="16NL3D" id="7S22xyoUkN9" role="upBLP">
         <node concept="16Na2f" id="7S22xyoUkNb" role="16NL3A">
           <node concept="3clFbS" id="7S22xyoUkNd" role="2VODD2">
-            <node concept="3clFbF" id="7S22xyoUkSA" role="3cqZAp">
-              <node concept="15s5l7" id="7S22xyoUm8L" role="lGtFl">
-                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;PatternVariableNode&gt; is not comparable with node&lt;NodeBuilderNode&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)/4101496941862450650]&quot;;" />
-                <property role="huDt6" value="Error: type node&lt;PatternVariableNode&gt; is not comparable with node&lt;NodeBuilderNode&gt;" />
+            <node concept="3clFbJ" id="4d7byJskWlh" role="3cqZAp">
+              <node concept="3clFbS" id="4d7byJskWlj" role="3clFbx">
+                <node concept="3cpWs6" id="4d7byJskW$y" role="3cqZAp">
+                  <node concept="15s5l7" id="4d7byJskWOs" role="lGtFl">
+                    <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;PatternVariableNode&gt; is not comparable with node&lt;NodeBuilderNode&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)/4101496941862450650]&quot;;" />
+                    <property role="huDt6" value="Error: type node&lt;PatternVariableNode&gt; is not comparable with node&lt;NodeBuilderNode&gt;" />
+                  </node>
+                  <node concept="3fqX7Q" id="7S22xyoUlIB" role="3cqZAk">
+                    <node concept="2OqwBi" id="7S22xyoUlID" role="3fr31v">
+                      <node concept="1yR$tW" id="7S22xyoUlIE" role="2Oq$k0" />
+                      <node concept="1mIQ4w" id="7S22xyoUlIF" role="2OqNvi">
+                        <node concept="chp4Y" id="7S22xyoUlIG" role="cj9EA">
+                          <ref role="cht4Q" to="tp3r:4IP40Bi2$Ew" resolve="NodeBuilderNode" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
-              <node concept="3fqX7Q" id="7S22xyoUlIB" role="3clFbG">
-                <node concept="2OqwBi" id="7S22xyoUlID" role="3fr31v">
-                  <node concept="1yR$tW" id="7S22xyoUlIE" role="2Oq$k0" />
-                  <node concept="1mIQ4w" id="7S22xyoUlIF" role="2OqNvi">
-                    <node concept="chp4Y" id="7S22xyoUlIG" role="cj9EA">
-                      <ref role="cht4Q" to="tp3r:4IP40Bi2$Ew" resolve="NodeBuilderNode" />
+              <node concept="3fqX7Q" id="4d7byJskWxd" role="3clFbw">
+                <node concept="34TFGs" id="4d7byJskWyl" role="3fr31v" />
+              </node>
+              <node concept="9aQIb" id="4d7byJskX2L" role="9aQIa">
+                <node concept="3clFbS" id="4d7byJskX2M" role="9aQI4">
+                  <node concept="3cpWs6" id="4d7byJskX3W" role="3cqZAp">
+                    <node concept="2OqwBi" id="4d7byJskXXl" role="3cqZAk">
+                      <node concept="ub8z3" id="4d7byJskX5T" role="2Oq$k0" />
+                      <node concept="liA8E" id="4d7byJskYvf" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
+                        <node concept="Xl_RD" id="4d7byJskYDs" role="37wK5m">
+                          <property role="Xl_RC" value="%" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
