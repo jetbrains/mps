@@ -18,6 +18,7 @@
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
@@ -607,6 +608,198 @@
       <node concept="37vLTG" id="7w8ar22NA5O" role="3clF46">
         <property role="TrG5h" value="componentCount" />
         <node concept="10Oyi0" id="7w8ar22NA5N" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="QgBMFuW3PQ" role="jymVt" />
+    <node concept="2YIFZL" id="QgBMFuW3X9" role="jymVt">
+      <property role="TrG5h" value="tupleImplByComponents" />
+      <node concept="3clFbS" id="QgBMFuW3U_" role="3clF47">
+        <node concept="3KaCP$" id="QgBMFuW42w" role="3cqZAp">
+          <node concept="37vLTw" id="QgBMFuW42x" role="3KbGdf">
+            <ref role="3cqZAo" node="QgBMFuW41_" resolve="componentCount" />
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW42y" role="3KbHQx">
+            <node concept="3cmrfG" id="QgBMFuW42z" role="3Kbmr1">
+              <property role="3cmrfH" value="0" />
+            </node>
+            <node concept="3clFbS" id="QgBMFuW42$" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW42_" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW42A" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4dk" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4gn" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8y0" resolve="MultiTuple._0" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW42D" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW42E" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW42F" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4hS" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4hT" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4NF" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8yB" resolve="MultiTuple._1" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW42J" role="3Kbmr1">
+              <property role="3cmrfH" value="1" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW42K" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW42L" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW42M" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4mv" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4mw" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4Ma" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8zD" resolve="MultiTuple._2" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW42Q" role="3Kbmr1">
+              <property role="3cmrfH" value="2" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW42R" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW42S" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW42T" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4o3" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4o4" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4KD" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8$O" resolve="MultiTuple._3" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW42X" role="3Kbmr1">
+              <property role="3cmrfH" value="3" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW42Y" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW42Z" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW430" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4pB" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4pC" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4J8" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8A8" resolve="MultiTuple._4" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW434" role="3Kbmr1">
+              <property role="3cmrfH" value="4" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW435" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW436" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW437" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4rb" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4rc" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4G6" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8B_" resolve="MultiTuple._5" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW43b" role="3Kbmr1">
+              <property role="3cmrfH" value="5" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW43c" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW43d" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW43e" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4sJ" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4sK" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4E_" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8Db" resolve="MultiTuple._6" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW43i" role="3Kbmr1">
+              <property role="3cmrfH" value="6" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW43j" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW43k" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW43l" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4uj" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4uk" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4D4" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8EU" resolve="MultiTuple._7" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW43p" role="3Kbmr1">
+              <property role="3cmrfH" value="7" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW43q" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW43r" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW43s" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4yU" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4yV" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4Bz" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8GM" resolve="MultiTuple._8" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW43w" role="3Kbmr1">
+              <property role="3cmrfH" value="8" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="QgBMFuW43x" role="3KbHQx">
+            <node concept="3clFbS" id="QgBMFuW43y" role="3Kbo56">
+              <node concept="3cpWs6" id="QgBMFuW43z" role="3cqZAp">
+                <node concept="2tJFMh" id="QgBMFuW4$u" role="3cqZAk">
+                  <node concept="ZC_QK" id="QgBMFuW4$v" role="2tJFKM">
+                    <ref role="2aWVGs" to="upz5:i1Qa0Fe" resolve="MultiTuple" />
+                    <node concept="ZC_QK" id="QgBMFuW4A2" role="2aWVGa">
+                      <ref role="2aWVGs" to="upz5:QgBMFuP8IN" resolve="MultiTuple._9" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="QgBMFuW43B" role="3Kbmr1">
+              <property role="3cmrfH" value="9" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="QgBMFuW43C" role="3cqZAp">
+          <node concept="10Nm6u" id="QgBMFuW43D" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="2sp9CU" id="QgBMFuW3ZE" role="3clF45">
+        <ref role="2sp9C9" to="tpee:fz12cDA" resolve="ClassConcept" />
+      </node>
+      <node concept="3Tm1VV" id="QgBMFuW3U$" role="1B3o_S" />
+      <node concept="37vLTG" id="QgBMFuW41_" role="3clF46">
+        <property role="TrG5h" value="componentCount" />
+        <node concept="10Oyi0" id="QgBMFuW41$" role="1tU5fm" />
       </node>
     </node>
     <node concept="3Tm1VV" id="7w8ar22NA3w" role="1B3o_S" />
