@@ -8786,6 +8786,114 @@
       <unit id="3586175963765097035" at="13,0,41,0" name="jetbrains.mps.editorTest.CompletionSpaceSecond_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3593987271369314934">
+    <file name="MethodCall_InsertParameterWithComma_Test.java">
+      <node id="3593987271369314934" at="18,53,19,25" concept="11" />
+      <node id="3593987271369314934" at="23,75,24,36" concept="2" />
+      <node id="3593987271369314934" at="29,52,30,19" concept="11" />
+      <node id="3593987271369314934" at="34,51,35,72" concept="2" />
+      <node id="3593987271369314936" at="35,72,36,22" concept="2" />
+      <node id="3593987271369314937" at="36,22,37,23" concept="2" />
+      <node id="3593987271369314934" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="3593987271369314934" at="18,0,21,0" concept="1" trace="MethodCall_InsertParameterWithComma_Test#()V" />
+      <node id="3593987271369314934" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3593987271369314934" at="22,0,26,0" concept="5" trace="test_MethodCall_InsertParameterWithComma#()V" />
+      <node id="3593987271369314934" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3593987271369314934" at="18,53,19,25" />
+      <scope id="3593987271369314934" at="23,75,24,36" />
+      <scope id="3593987271369314934" at="29,52,30,19" />
+      <scope id="3593987271369314934" at="18,0,21,0" />
+      <scope id="3593987271369314934" at="29,0,32,0">
+        <var name="owner" id="3593987271369314934" />
+      </scope>
+      <scope id="3593987271369314934" at="34,51,37,23" />
+      <scope id="3593987271369314934" at="22,0,26,0" />
+      <scope id="3593987271369314934" at="33,0,39,0" />
+      <unit id="3593987271369314934" at="27,0,40,0" name="jetbrains.mps.editorTest.MethodCall_InsertParameterWithComma_Test$TestBody" />
+      <unit id="3593987271369314934" at="13,0,41,0" name="jetbrains.mps.editorTest.MethodCall_InsertParameterWithComma_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3593987271369497476">
+    <file name="MethodCall_InsertSecondParameterWithComma_Test.java">
+      <node id="3593987271369497476" at="18,59,19,25" concept="11" />
+      <node id="3593987271369497476" at="23,81,24,36" concept="2" />
+      <node id="3593987271369497476" at="29,52,30,19" concept="11" />
+      <node id="3593987271369497476" at="34,51,35,72" concept="2" />
+      <node id="3593987271369497478" at="35,72,36,22" concept="2" />
+      <node id="3593987271369497479" at="36,22,37,23" concept="2" />
+      <node id="3593987271369497476" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="3593987271369497476" at="18,0,21,0" concept="1" trace="MethodCall_InsertSecondParameterWithComma_Test#()V" />
+      <node id="3593987271369497476" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3593987271369497476" at="22,0,26,0" concept="5" trace="test_MethodCall_InsertSecondParameterWithComma#()V" />
+      <node id="3593987271369497476" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3593987271369497476" at="18,59,19,25" />
+      <scope id="3593987271369497476" at="23,81,24,36" />
+      <scope id="3593987271369497476" at="29,52,30,19" />
+      <scope id="3593987271369497476" at="18,0,21,0" />
+      <scope id="3593987271369497476" at="29,0,32,0">
+        <var name="owner" id="3593987271369497476" />
+      </scope>
+      <scope id="3593987271369497476" at="34,51,37,23" />
+      <scope id="3593987271369497476" at="22,0,26,0" />
+      <scope id="3593987271369497476" at="33,0,39,0" />
+      <unit id="3593987271369497476" at="27,0,40,0" name="jetbrains.mps.editorTest.MethodCall_InsertSecondParameterWithComma_Test$TestBody" />
+      <unit id="3593987271369497476" at="13,0,41,0" name="jetbrains.mps.editorTest.MethodCall_InsertSecondParameterWithComma_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3593987271370607993">
+    <file name="MethodCall_InsertLeadingParameterWithComma_Test.java">
+      <node id="3593987271370607993" at="18,60,19,25" concept="11" />
+      <node id="3593987271370607993" at="23,82,24,36" concept="2" />
+      <node id="3593987271370607993" at="29,52,30,19" concept="11" />
+      <node id="3593987271370607993" at="34,51,35,72" concept="2" />
+      <node id="3593987271370607995" at="35,72,36,22" concept="2" />
+      <node id="3593987271370607996" at="36,22,37,22" concept="2" />
+      <node id="3593987271370607993" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="3593987271370607993" at="18,0,21,0" concept="1" trace="MethodCall_InsertLeadingParameterWithComma_Test#()V" />
+      <node id="3593987271370607993" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3593987271370607993" at="22,0,26,0" concept="5" trace="test_MethodCall_InsertLeadingParameterWithComma#()V" />
+      <node id="3593987271370607993" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3593987271370607993" at="18,60,19,25" />
+      <scope id="3593987271370607993" at="23,82,24,36" />
+      <scope id="3593987271370607993" at="29,52,30,19" />
+      <scope id="3593987271370607993" at="18,0,21,0" />
+      <scope id="3593987271370607993" at="29,0,32,0">
+        <var name="owner" id="3593987271370607993" />
+      </scope>
+      <scope id="3593987271370607993" at="34,51,37,22" />
+      <scope id="3593987271370607993" at="22,0,26,0" />
+      <scope id="3593987271370607993" at="33,0,39,0" />
+      <unit id="3593987271370607993" at="27,0,40,0" name="jetbrains.mps.editorTest.MethodCall_InsertLeadingParameterWithComma_Test$TestBody" />
+      <unit id="3593987271370607993" at="13,0,41,0" name="jetbrains.mps.editorTest.MethodCall_InsertLeadingParameterWithComma_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3593987271370619280">
+    <file name="MethodCall_InsertSecondParameterWithCommaOnLeft_Test.java">
+      <node id="3593987271370619280" at="18,65,19,25" concept="11" />
+      <node id="3593987271370619280" at="23,87,24,36" concept="2" />
+      <node id="3593987271370619280" at="29,52,30,19" concept="11" />
+      <node id="3593987271370619280" at="34,51,35,72" concept="2" />
+      <node id="3593987271370619282" at="35,72,36,22" concept="2" />
+      <node id="3593987271370619283" at="36,22,37,23" concept="2" />
+      <node id="3593987271370619280" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="3593987271370619280" at="18,0,21,0" concept="1" trace="MethodCall_InsertSecondParameterWithCommaOnLeft_Test#()V" />
+      <node id="3593987271370619280" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3593987271370619280" at="22,0,26,0" concept="5" trace="test_MethodCall_InsertSecondParameterWithCommaOnLeft#()V" />
+      <node id="3593987271370619280" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3593987271370619280" at="18,65,19,25" />
+      <scope id="3593987271370619280" at="23,87,24,36" />
+      <scope id="3593987271370619280" at="29,52,30,19" />
+      <scope id="3593987271370619280" at="18,0,21,0" />
+      <scope id="3593987271370619280" at="29,0,32,0">
+        <var name="owner" id="3593987271370619280" />
+      </scope>
+      <scope id="3593987271370619280" at="34,51,37,23" />
+      <scope id="3593987271370619280" at="22,0,26,0" />
+      <scope id="3593987271370619280" at="33,0,39,0" />
+      <unit id="3593987271370619280" at="27,0,40,0" name="jetbrains.mps.editorTest.MethodCall_InsertSecondParameterWithCommaOnLeft_Test$TestBody" />
+      <unit id="3593987271370619280" at="13,0,41,0" name="jetbrains.mps.editorTest.MethodCall_InsertSecondParameterWithCommaOnLeft_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3670689702814547975">
     <file name="DefaultEditor_CompleteMultipleChild_Test.java">
       <node id="3670689702814547975" at="20,53,21,25" concept="11" />
