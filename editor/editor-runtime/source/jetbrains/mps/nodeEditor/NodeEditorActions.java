@@ -692,7 +692,7 @@ public class NodeEditorActions {
   public static class ShowMessage extends AbstractCellAction {
     @Override
     public void execute(EditorContext context) {
-      ((jetbrains.mps.nodeEditor.EditorComponent) context.getEditorComponent()).showMessageTooltip();
+      // TODO: remove
     }
   }
 

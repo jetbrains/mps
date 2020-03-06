@@ -36,9 +36,6 @@ public class EditorComponentKeyboardHandler implements KeyboardHandler {
 
   @Override
   public boolean processKeyPressed(final EditorContext editorContext, final KeyEvent keyEvent) {
-    EditorComponent nodeEditor = editorContext.getNodeEditorComponent();
-    nodeEditor.hideMessageToolTip();
-
     if (processKeyMaps(editorContext, keyEvent)) {
       return true;
     }
@@ -61,9 +58,6 @@ public class EditorComponentKeyboardHandler implements KeyboardHandler {
 
   @Override
   public boolean processKeyTyped(EditorContext editorContext, final KeyEvent keyEvent) {
-    EditorComponent nodeEditor = editorContext.getNodeEditorComponent();
-    nodeEditor.hideMessageToolTip();
-
     if (processKeyMaps(editorContext, keyEvent)) {
       return true;
     }

@@ -15,12 +15,11 @@
  */
 package jetbrains.mps.intentions;
 
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
+import com.intellij.ide.HelpTooltipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.intentions.icons.Icons;
 
 import javax.swing.JLabel;
-import javax.swing.ToolTipManager;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,10 +33,8 @@ public abstract class LightBulbMenu extends JLabel implements TooltipComponent {
     setBorder(new EmptyBorder(0, 2, 1, 2));
     setBackground(Color.WHITE);
 
-    ToolTipManager.sharedInstance().unregisterComponent(this);
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().registerComponent(this);
-    }
+    setToolTipText("Click or press Alt+Enter");
+    putClientProperty(HelpTooltipManager.SHORTCUT_PROPERTY, "Alt + Enter");
 
     setPreferredSize(new Dimension(getWidth(), getHeight()));
     setSize(getWidth(), getHeight());
@@ -52,7 +49,7 @@ public abstract class LightBulbMenu extends JLabel implements TooltipComponent {
 
   @Override
   public String getMPSTooltipText(MouseEvent event) {
-    return "Click or press Alt+Enter";
+    return getToolTipText(event);
   }
 
   @Override

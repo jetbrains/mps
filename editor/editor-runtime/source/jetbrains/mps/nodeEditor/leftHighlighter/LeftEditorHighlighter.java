@@ -28,7 +28,6 @@ import gnu.trove.THashMap;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
@@ -149,9 +148,6 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
         }
       }
     });
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().registerComponent(this);
-    }
     editorComponent.getUpdater().addListener(new UpdaterListenerAdapter() {
       @Override
       public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
@@ -214,9 +210,6 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     }
     for (AbstractLeftColumn column : myLeftColumns) {
       column.dispose();
-    }
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().unregisterComponent(this);
     }
   }
 
@@ -536,7 +529,12 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   }
 
   @Override
-  public String getMPSTooltipText(MouseEvent e) {
+  public String getMPSTooltipText(MouseEvent event) {
+    return getToolTipText(event);
+  }
+
+  @Override
+  public String getToolTipText(MouseEvent e) {
     if (isInFoldingArea(e)) {
       for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
         if (painter.getToolTipText() != null) {

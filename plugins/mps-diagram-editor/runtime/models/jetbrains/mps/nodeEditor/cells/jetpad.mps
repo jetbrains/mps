@@ -47,6 +47,7 @@
     <import index="nlpl" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.commands(MPS.Editor/)" />
     <import index="hhnx" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime(MPS.Editor/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
@@ -8138,14 +8139,15 @@
                                   </node>
                                 </node>
                               </node>
-                              <node concept="3clFbF" id="L6rm9$W99n" role="3cqZAp">
-                                <node concept="2OqwBi" id="L6rm9$W99o" role="3clFbG">
-                                  <node concept="2YIFZM" id="L6rm9$WdoG" role="2Oq$k0">
-                                    <ref role="1Pybhc" to="475o:1s17jCa4YDf" resolve="MPSToolTipManager" />
-                                    <ref role="37wK5l" to="475o:1s17jCa4YDJ" resolve="getInstance" />
+                              <node concept="3clFbF" id="5N7YVqEHPZo" role="3cqZAp">
+                                <node concept="2OqwBi" id="5N7YVqEHQNd" role="3clFbG">
+                                  <node concept="2YIFZM" id="5N7YVqEHQ_x" role="2Oq$k0">
+                                    <ref role="37wK5l" to="ddhc:~IdeTooltipManager.getInstance()" resolve="getInstance" />
+                                    <ref role="1Pybhc" to="ddhc:~IdeTooltipManager" resolve="IdeTooltipManager" />
                                   </node>
-                                  <node concept="liA8E" id="L6rm9$XDeL" role="2OqNvi">
-                                    <ref role="37wK5l" to="475o:59WdvGPQugF" resolve="hideToolTip" />
+                                  <node concept="liA8E" id="5N7YVqEHR80" role="2OqNvi">
+                                    <ref role="37wK5l" to="ddhc:~IdeTooltipManager.hideCurrentNow(boolean)" resolve="hideCurrentNow" />
+                                    <node concept="3clFbT" id="5N7YVqEHRxC" role="37wK5m" />
                                   </node>
                                 </node>
                               </node>

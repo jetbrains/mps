@@ -7906,15 +7906,86 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="42hl10VHauW" role="3cqZAp">
-          <node concept="2OqwBi" id="42hl10VHauX" role="3clFbG">
-            <node concept="2YIFZM" id="42hl10VHauY" role="2Oq$k0">
-              <ref role="37wK5l" to="475o:1s17jCa4YDJ" resolve="getInstance" />
-              <ref role="1Pybhc" to="475o:1s17jCa4YDf" resolve="MPSToolTipManager" />
+        <node concept="3SKdUt" id="bT3GMwTbSA" role="3cqZAp">
+          <node concept="1PaTwC" id="bT3GMwTbSB" role="3ndbpf">
+            <node concept="3oM_SD" id="bT3GMwTbSD" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
             </node>
-            <node concept="liA8E" id="42hl10VHauZ" role="2OqNvi">
-              <ref role="37wK5l" to="475o:1s17jCa51wx" resolve="registerComponent" />
-              <node concept="Xjq3P" id="42hl10VHav0" role="37wK5m" />
+            <node concept="3oM_SD" id="bT3GMwTcdw" role="1PaTwD">
+              <property role="3oM_SC" value="allows" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTce3" role="1PaTwD">
+              <property role="3oM_SC" value="com.intellij.ide.IdeTooltipManager#eventDispatched" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTerQ" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTes3" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTesp" role="1PaTwD">
+              <property role="3oM_SC" value="notification" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTesC" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTesS" role="1PaTwD">
+              <property role="3oM_SC" value="events" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTet9" role="1PaTwD">
+              <property role="3oM_SC" value="over" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTetr" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTetI" role="1PaTwD">
+              <property role="3oM_SC" value="component" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTeu2" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTeuf" role="1PaTwD">
+              <property role="3oM_SC" value="draw" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTeu_" role="1PaTwD">
+              <property role="3oM_SC" value="tool" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTev4" role="1PaTwD">
+              <property role="3oM_SC" value="tip" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTev$" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTevX" role="1PaTwD">
+              <property role="3oM_SC" value="text" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTewv" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTewM" role="1PaTwD">
+              <property role="3oM_SC" value="getToolTipText" />
+            </node>
+            <node concept="3oM_SD" id="bT3GMwTexQ" role="1PaTwD">
+              <property role="3oM_SC" value="method" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1_syLce3qJB" role="3cqZAp">
+          <node concept="2OqwBi" id="1_syLce3rqt" role="3clFbG">
+            <node concept="Xjq3P" id="1_syLce3qJ_" role="2Oq$k0" />
+            <node concept="liA8E" id="1_syLce3vQ_" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Component.addMouseListener(java.awt.event.MouseListener)" resolve="addMouseListener" />
+              <node concept="2ShNRf" id="1_syLce3wQS" role="37wK5m">
+                <node concept="YeOm9" id="1_syLce46bO" role="2ShVmc">
+                  <node concept="1Y3b0j" id="1_syLce46bR" role="YeSDq">
+                    <property role="2bfB8j" value="true" />
+                    <ref role="37wK5l" to="hyam:~MouseAdapter.&lt;init&gt;()" resolve="MouseAdapter" />
+                    <ref role="1Y3XeK" to="hyam:~MouseAdapter" resolve="MouseAdapter" />
+                    <node concept="3Tm1VV" id="1_syLce46bS" role="1B3o_S" />
+                    <node concept="2tJIrI" id="bT3GMwT9$I" role="jymVt" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -8656,9 +8727,35 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="32VV7bMRIy6" role="jymVt" />
+    <node concept="3clFb_" id="32VV7bMRZhu" role="jymVt">
+      <property role="TrG5h" value="getMPSTooltipText" />
+      <node concept="3Tm1VV" id="32VV7bMRZhv" role="1B3o_S" />
+      <node concept="17QB3L" id="32VV7bMS6_8" role="3clF45" />
+      <node concept="37vLTG" id="32VV7bMRZhy" role="3clF46">
+        <property role="TrG5h" value="event" />
+        <node concept="3uibUv" id="32VV7bMRZhz" role="1tU5fm">
+          <ref role="3uigEE" to="hyam:~MouseEvent" resolve="MouseEvent" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="32VV7bMRZh$" role="3clF47">
+        <node concept="3clFbF" id="32VV7bMRZhC" role="3cqZAp">
+          <node concept="1rXfSq" id="32VV7bMSeBX" role="3clFbG">
+            <ref role="37wK5l" node="42hl10VHavD" resolve="getToolTipText" />
+            <node concept="37vLTw" id="32VV7bMSgh1" role="37wK5m">
+              <ref role="3cqZAo" node="32VV7bMRZhy" resolve="event" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="32VV7bMRZh_" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="32VV7bMRJQy" role="jymVt" />
     <node concept="3clFb_" id="42hl10VHavD" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getMPSTooltipText" />
+      <property role="TrG5h" value="getToolTipText" />
       <node concept="3clFbS" id="42hl10VHavI" role="3clF47">
         <node concept="1HWtB8" id="42hl10VHavJ" role="3cqZAp">
           <node concept="Xjq3P" id="42hl10VHavK" role="1HWFw0" />
@@ -8902,18 +8999,51 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="32VV7bMRDXk" role="jymVt" />
     <node concept="3clFb_" id="42hl10VHaxf" role="jymVt">
       <property role="TrG5h" value="dispose" />
       <node concept="3clFbS" id="42hl10VHaxi" role="3clF47">
-        <node concept="3clFbF" id="42hl10VHaxj" role="3cqZAp">
-          <node concept="2OqwBi" id="42hl10VHaxk" role="3clFbG">
-            <node concept="liA8E" id="42hl10VHaxm" role="2OqNvi">
-              <ref role="37wK5l" to="475o:5Ib2SMdWudE" resolve="unregisterComponent" />
-              <node concept="Xjq3P" id="42hl10VHaxn" role="37wK5m" />
+        <node concept="3SKdUt" id="5N7YVqEHBQw" role="3cqZAp">
+          <node concept="1PaTwC" id="5N7YVqEHBQx" role="3ndbpf">
+            <node concept="3oM_SD" id="5N7YVqEHBQz" role="1PaTwD">
+              <property role="3oM_SC" value="TODO:" />
             </node>
-            <node concept="2YIFZM" id="42hl10VHaxl" role="2Oq$k0">
-              <ref role="1Pybhc" to="475o:1s17jCa4YDf" resolve="MPSToolTipManager" />
-              <ref role="37wK5l" to="475o:1s17jCa4YDJ" resolve="getInstance" />
+            <node concept="3oM_SD" id="5N7YVqEHBQK" role="1PaTwD">
+              <property role="3oM_SC" value="remove?" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1_syLce47aR" role="3cqZAp">
+          <node concept="2OqwBi" id="1_syLce49N9" role="3clFbG">
+            <node concept="2OqwBi" id="1_syLce48Y7" role="2Oq$k0">
+              <node concept="2OqwBi" id="1_syLce48cO" role="2Oq$k0">
+                <node concept="Xjq3P" id="1_syLce47aP" role="2Oq$k0" />
+                <node concept="liA8E" id="1_syLce48qZ" role="2OqNvi">
+                  <ref role="37wK5l" to="z60i:~Component.getMouseListeners()" resolve="getMouseListeners" />
+                </node>
+              </node>
+              <node concept="39bAoz" id="1_syLce49yK" role="2OqNvi" />
+            </node>
+            <node concept="2es0OD" id="1_syLce4axt" role="2OqNvi">
+              <node concept="1bVj0M" id="1_syLce4axv" role="23t8la">
+                <node concept="3clFbS" id="1_syLce4axw" role="1bW5cS">
+                  <node concept="3clFbF" id="1_syLce4bas" role="3cqZAp">
+                    <node concept="2OqwBi" id="1_syLce4bRq" role="3clFbG">
+                      <node concept="Xjq3P" id="1_syLce4bar" role="2Oq$k0" />
+                      <node concept="liA8E" id="1_syLce4car" role="2OqNvi">
+                        <ref role="37wK5l" to="z60i:~Component.removeMouseListener(java.awt.event.MouseListener)" resolve="removeMouseListener" />
+                        <node concept="37vLTw" id="1_syLce4dhZ" role="37wK5m">
+                          <ref role="3cqZAo" node="1_syLce4axx" resolve="it" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="Rh6nW" id="1_syLce4axx" role="1bW2Oz">
+                  <property role="TrG5h" value="it" />
+                  <node concept="2jxLKc" id="1_syLce4axy" role="1tU5fm" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

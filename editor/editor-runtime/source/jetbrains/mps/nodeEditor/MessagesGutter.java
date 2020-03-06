@@ -26,7 +26,6 @@ import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -79,9 +78,6 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   @Override
   protected void installListeners() {
     super.installListeners();
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().registerComponentRightAligned(scrollbar);
-    }
     scrollbar.addMouseListener(this);
     scrollbar.addMouseMotionListener(this);
   }
@@ -90,9 +86,6 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   public void uninstallListeners() {
     scrollbar.removeMouseMotionListener(this);
     scrollbar.removeMouseListener(this);
-    if (MPSToolTipManager.getInstance() != null) {
-      MPSToolTipManager.getInstance().unregisterComponentRightAligned(scrollbar);
-    }
     super.uninstallListeners();
   }
 
@@ -356,7 +349,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       StringBuilder text = new StringBuilder();
       for (GutterMark mark : gutterMarks) {
         if (text.length() > 0) {
-          text.append('\n');
+          text.append("<br>");
         }
         text.append(mark.getEditorMessage().getMessage());
       }

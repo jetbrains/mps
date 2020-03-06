@@ -17,13 +17,13 @@ import com.intellij.featureStatistics.FeatureUsageTracker;
 import java.awt.Point;
 import jetbrains.mps.editor.runtime.style.ParametersInformation;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import java.awt.Component;
-import jetbrains.mps.ide.tooltips.MPSToolTipManager;
-import jetbrains.mps.ide.tooltips.ToolTipData;
+import javax.swing.JComponent;
+import com.intellij.ide.IdeTooltipManager;
+import com.intellij.ide.IdeTooltip;
 import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
-import jetbrains.mps.ide.tooltips.ToolTip;
+import com.intellij.codeInsight.hint.HintUtil;
 import javax.swing.border.EmptyBorder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -101,13 +101,13 @@ public class ShowParameters_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.showParameters");
     ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        Point p = new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getHeight());
+        Point point = new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getWidth(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getHeight());
         EditorCell currentCell = ((EditorCell) MapSequence.fromMap(_params).get("cell"));
         while (currentCell != null) {
           ParametersInformation parametersInformation = currentCell.getStyle().get(StyleAttributes.PARAMETERS_INFORMATION);
           if (parametersInformation != null) {
-            Component component = ShowParameters_Action.this.createComponent(parametersInformation, currentCell.getSNode(), _params);
-            MPSToolTipManager.getInstance().showToolTip(new ToolTipData(component), ((EditorComponent) MapSequence.fromMap(_params).get("editor")), p);
+            JComponent component = ShowParameters_Action.this.createComponent(parametersInformation, currentCell.getSNode(), _params);
+            IdeTooltipManager.getInstance().show(new IdeTooltip(((EditorComponent) MapSequence.fromMap(_params).get("editor")), point, component), true);
             return;
           }
           currentCell = currentCell.getParent();
@@ -118,10 +118,10 @@ public class ShowParameters_Action extends BaseAction {
   /*package*/ SNode getCellNode(final Map<String, Object> _params) {
     return ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode();
   }
-  private <T> Component createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {
+  private <T> JComponent createComponent(ParametersInformation<T> parametersInformation, SNode node, final Map<String, Object> _params) {
     // TODO: make IDEA like 
     JPanel panel = new JPanel(new GridBagLayout());
-    panel.setBackground(ToolTip.BACKGROUND_COLOR);
+    panel.setBackground(HintUtil.getInformationColor());
     panel.setBorder(new EmptyBorder(0, 4, 0, 4));
 
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.DefaultClassCreator$sQ)) {
@@ -142,7 +142,7 @@ public class ShowParameters_Action extends BaseAction {
         if (Sequence.fromIterable(methods).count() > 1 && parametersInformation.isMethodCurrent(node, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), method)) {
           textPane.setBackground(new JBColor(new Color(231, 254, 234), Gray._100));
         } else {
-          textPane.setBackground(ToolTip.BACKGROUND_COLOR);
+          textPane.setBackground(HintUtil.getInformationColor());
         }
         GridBagConstraints constraints = ShowParameters_Action.this.createConstraints(_params);
         constraints.gridy = lineNumber++;
@@ -163,7 +163,7 @@ public class ShowParameters_Action extends BaseAction {
     textPane.setFont(EditorSettings.getInstance().getDefaultEditorFont());
     textPane.setOpaque(true);
     textPane.setBackground(new JBColor(new Color(231, 254, 234), Gray._100));
-    textPane.setBackground(ToolTip.BACKGROUND_COLOR);
+    textPane.setBackground(HintUtil.getInformationColor());
     textPane.setForeground(JBColor.foreground());
     return textPane;
   }

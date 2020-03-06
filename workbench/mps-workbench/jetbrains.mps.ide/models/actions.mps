@@ -197,6 +197,7 @@
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="al1t" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diagnostic(MPS.IDEA/)" />
+    <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -11354,9 +11355,9 @@
             </node>
             <node concept="liA8E" id="6yUTBPwOhJw" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setBackground(java.awt.Color)" resolve="setBackground" />
-              <node concept="10M0yZ" id="6yUTBPwOhJx" role="37wK5m">
-                <ref role="1PxDUh" to="475o:4MyJhaCOtYC" resolve="ToolTip" />
-                <ref role="3cqZAo" to="475o:4MyJhaCOtYZ" resolve="BACKGROUND_COLOR" />
+              <node concept="2YIFZM" id="bT3GMwWzou" role="37wK5m">
+                <ref role="37wK5l" to="439w:~HintUtil.getInformationColor()" resolve="getInformationColor" />
+                <ref role="1Pybhc" to="439w:~HintUtil" resolve="HintUtil" />
               </node>
             </node>
           </node>
@@ -11691,9 +11692,9 @@
                             </node>
                             <node concept="liA8E" id="6yUTBPwOhKL" role="2OqNvi">
                               <ref role="37wK5l" to="dxuu:~JComponent.setBackground(java.awt.Color)" resolve="setBackground" />
-                              <node concept="10M0yZ" id="6yUTBPwOhKM" role="37wK5m">
-                                <ref role="1PxDUh" to="475o:4MyJhaCOtYC" resolve="ToolTip" />
-                                <ref role="3cqZAo" to="475o:4MyJhaCOtYZ" resolve="BACKGROUND_COLOR" />
+                              <node concept="2YIFZM" id="bT3GMwWzkF" role="37wK5m">
+                                <ref role="37wK5l" to="439w:~HintUtil.getInformationColor()" resolve="getInformationColor" />
+                                <ref role="1Pybhc" to="439w:~HintUtil" resolve="HintUtil" />
                               </node>
                             </node>
                           </node>
@@ -11837,9 +11838,6 @@
           </node>
         </node>
       </node>
-      <node concept="3uibUv" id="6yUTBPwHqCG" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
-      </node>
       <node concept="37vLTG" id="6yUTBPwOiCq" role="3clF46">
         <property role="TrG5h" value="parametersInformation" />
         <node concept="3uibUv" id="6yUTBPwOiKA" role="1tU5fm">
@@ -11855,6 +11853,9 @@
       </node>
       <node concept="16euLQ" id="5P5FNO7d9zA" role="16eVyc">
         <property role="TrG5h" value="T" />
+      </node>
+      <node concept="3uibUv" id="3IiXsnhbk1i" role="3clF45">
+        <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
       </node>
     </node>
     <node concept="2XrIbr" id="1nrk5lHBZWc" role="32lrUH">
@@ -11973,9 +11974,9 @@
             </node>
             <node concept="liA8E" id="1nrk5lHCogO" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setBackground(java.awt.Color)" resolve="setBackground" />
-              <node concept="10M0yZ" id="1nrk5lHCogP" role="37wK5m">
-                <ref role="1PxDUh" to="475o:4MyJhaCOtYC" resolve="ToolTip" />
-                <ref role="3cqZAo" to="475o:4MyJhaCOtYZ" resolve="BACKGROUND_COLOR" />
+              <node concept="2YIFZM" id="bT3GMwWur7" role="37wK5m">
+                <ref role="37wK5l" to="439w:~HintUtil.getInformationColor()" resolve="getInformationColor" />
+                <ref role="1Pybhc" to="439w:~HintUtil" resolve="HintUtil" />
               </node>
             </node>
           </node>
@@ -12115,7 +12116,7 @@
                 <node concept="3clFbS" id="5z503Qb_1EB" role="1bW5cS">
                   <node concept="3cpWs8" id="6PWCPPtWbrq" role="3cqZAp">
                     <node concept="3cpWsn" id="6PWCPPtWbrr" role="3cpWs9">
-                      <property role="TrG5h" value="p" />
+                      <property role="TrG5h" value="point" />
                       <node concept="3uibUv" id="6PWCPPtWbrs" role="1tU5fm">
                         <ref role="3uigEE" to="z60i:~Point" resolve="Point" />
                       </node>
@@ -12226,9 +12227,6 @@
                           <node concept="3cpWs8" id="6yUTBPwQwxI" role="3cqZAp">
                             <node concept="3cpWsn" id="6yUTBPwQwxJ" role="3cpWs9">
                               <property role="TrG5h" value="component" />
-                              <node concept="3uibUv" id="6yUTBPwQwxG" role="1tU5fm">
-                                <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
-                              </node>
                               <node concept="2OqwBi" id="6yUTBPwQwxK" role="33vP2m">
                                 <node concept="2WthIp" id="6yUTBPwQwxL" role="2Oq$k0" />
                                 <node concept="2XshWL" id="6yUTBPwQwxM" role="2OqNvi">
@@ -12246,32 +12244,38 @@
                                   </node>
                                 </node>
                               </node>
+                              <node concept="3uibUv" id="bT3GMwWp78" role="1tU5fm">
+                                <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
+                              </node>
                             </node>
                           </node>
-                          <node concept="3clFbF" id="6hVcDj68JMH" role="3cqZAp">
-                            <node concept="2OqwBi" id="6hVcDj68JMI" role="3clFbG">
-                              <node concept="2YIFZM" id="6hVcDj68JMJ" role="2Oq$k0">
-                                <ref role="1Pybhc" to="88dm:~MPSToolTipManager" resolve="MPSToolTipManager" />
-                                <ref role="37wK5l" to="88dm:~MPSToolTipManager.getInstance()" resolve="getInstance" />
+                          <node concept="3clFbF" id="bT3GMwVwrN" role="3cqZAp">
+                            <node concept="2OqwBi" id="bT3GMwVyxp" role="3clFbG">
+                              <node concept="2YIFZM" id="bT3GMwVxlR" role="2Oq$k0">
+                                <ref role="37wK5l" to="ddhc:~IdeTooltipManager.getInstance()" resolve="getInstance" />
+                                <ref role="1Pybhc" to="ddhc:~IdeTooltipManager" resolve="IdeTooltipManager" />
                               </node>
-                              <node concept="liA8E" id="6hVcDj68JMK" role="2OqNvi">
-                                <ref role="37wK5l" to="88dm:~MPSToolTipManager.showToolTip(jetbrains.mps.ide.tooltips.ToolTipData,javax.swing.JComponent,java.awt.Point)" resolve="showToolTip" />
-                                <node concept="2ShNRf" id="6hVcDj68JML" role="37wK5m">
-                                  <node concept="1pGfFk" id="6hVcDj68JMM" role="2ShVmc">
-                                    <ref role="37wK5l" to="88dm:~ToolTipData.&lt;init&gt;(java.awt.Component)" resolve="ToolTipData" />
-                                    <node concept="37vLTw" id="6yUTBPwQPep" role="37wK5m">
+                              <node concept="liA8E" id="bT3GMwVz88" role="2OqNvi">
+                                <ref role="37wK5l" to="ddhc:~IdeTooltipManager.show(com.intellij.ide.IdeTooltip,boolean)" resolve="show" />
+                                <node concept="2ShNRf" id="bT3GMwVBfc" role="37wK5m">
+                                  <node concept="1pGfFk" id="bT3GMwWb42" role="2ShVmc">
+                                    <ref role="37wK5l" to="ddhc:~IdeTooltip.&lt;init&gt;(java.awt.Component,java.awt.Point,javax.swing.JComponent,java.lang.Object...)" resolve="IdeTooltip" />
+                                    <node concept="2OqwBi" id="bT3GMwWlTt" role="37wK5m">
+                                      <node concept="2WthIp" id="bT3GMwWkF5" role="2Oq$k0" />
+                                      <node concept="1DTwFV" id="bT3GMwWn85" role="2OqNvi">
+                                        <ref role="2WH_rO" node="6PWCPPtWbkQ" resolve="editor" />
+                                      </node>
+                                    </node>
+                                    <node concept="37vLTw" id="bT3GMwWexc" role="37wK5m">
+                                      <ref role="3cqZAo" node="6PWCPPtWbrr" resolve="point" />
+                                    </node>
+                                    <node concept="37vLTw" id="bT3GMwWcyI" role="37wK5m">
                                       <ref role="3cqZAo" node="6yUTBPwQwxJ" resolve="component" />
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="2OqwBi" id="6hVcDj68JMO" role="37wK5m">
-                                  <node concept="2WthIp" id="6hVcDj68JMP" role="2Oq$k0" />
-                                  <node concept="1DTwFV" id="6hVcDj68JMQ" role="2OqNvi">
-                                    <ref role="2WH_rO" node="6PWCPPtWbkQ" resolve="editor" />
-                                  </node>
-                                </node>
-                                <node concept="37vLTw" id="3GM_nagTvpi" role="37wK5m">
-                                  <ref role="3cqZAo" node="6PWCPPtWbrr" resolve="p" />
+                                <node concept="3clFbT" id="bT3GMwVAFF" role="37wK5m">
+                                  <property role="3clFbU" value="true" />
                                 </node>
                               </node>
                             </node>
