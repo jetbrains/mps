@@ -31,9 +31,6 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.TestDialog;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.extapi.model.SModelBase;
-import jetbrains.mps.extapi.module.SModuleBase;
-import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -44,38 +41,36 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectManager;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
-import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
-import org.jetbrains.mps.openapi.persistence.DataSource;
-import org.jetbrains.mps.openapi.persistence.ModelFactory;
-import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 
 import javax.swing.JOptionPane;
 import javax.swing.event.HyperlinkEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * a copy of ModelDiskConflictResolver in IJ
+ * todo: - work with modules as well
+ *       - replace literals with bundle queries
+ *       - introduce hashes for the model content (in-memory they call it here) and check for it before acting
+ */
 public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
   private static final Logger LOG = LogManager.getLogger(ModelStorageProblemsListener.class);
 
@@ -107,13 +102,11 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
   public void modelSaved(SModel model) {
     final SModelReference ref = myLastModel;
     if (ref != null && ref.equals(model.getReference())) {
-      UIUtil.invokeLaterIfNeeded(new Runnable() {
-        public void run() {
-          if (myLastModel == ref && myLastNotification != null) {
-            myLastNotification.expire();
-            myLastNotification = null;
-            myLastModel = null;
-          }
+      UIUtil.invokeLaterIfNeeded(() -> {
+        if (myLastModel == ref && myLastNotification != null) {
+          myLastNotification.expire();
+          myLastNotification = null;
+          myLastModel = null;
         }
       });
     }
@@ -198,110 +191,99 @@ public class ModelStorageProblemsListener extends SRepositoryContentAdapter {
   }
 
   private void resolveDiskMemoryConflict(@NotNull final EditableSModel model) {
-    DataSource source = model.getSource();
-    if (!(source instanceof FileDataSource)) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error(String.format("Conflicting content in memory and on disk for models '%s' and '%s'. MPS does not support this data source; it will save the model and ignore the external modifications.", model.getName(), source
-                                                                                                                                                                                                                                 .getLocation()));
-      }
+    if (!(model.getSource() instanceof FileSystemBasedDataSource)) {
+      LOG.error(String.format("Conflicting content in memory and on disk for models '%s' and '%s'. " +
+                              "MPS does not support this data source; it will save the model and ignore the external modifications.", model.getName(), model.getSource()));
       saveModel(model);
       return;
     }
-    final File backupFile = doBackup(model);
-    final IFile file = ((FileDataSource) source).getFile();
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        // do nothing if conflict was already resolved and model was saved or reloaded or unregistered 
-        if (!(model.isChanged()) || model.getRepository() == null) {
-          FileUtil.delete(backupFile);
-          return;
-        }
-        assert model.getRepository() != null;
+    FileSystemBasedDataSource source = (FileSystemBasedDataSource) model.getSource();
+    final File backupFile = new BackupHelper(model, myPersistenceRegistry, myVfsManager).createBackup();
+    ApplicationManager.getApplication().invokeLater(() -> {
+      // do nothing if conflict was already resolved and model was saved or reloaded or unregistered
+      if (!(model.isChanged()) || model.getRepository() == null) {
+        FileUtil.delete(backupFile);
+        return;
+      }
+      assert model.getRepository() != null;
 
-        final boolean contentConflict = ((FileDataSource) source).exists();
-        boolean needSave = myReloadManager.computeNoReload(new Computable<Boolean>() {
-          public Boolean compute() {
-            if (contentConflict) {
-              return showDiskMemoryQuestion(file, model, backupFile);
-            } else {
-              return showDeletedFromDiskQuestion(model, backupFile);
-            }
-          }
-        });
-        if (needSave) {
-          // FIXME it used to be executeCommand (that replaced runWriteActionInCommand) here. 
-          //       as long as our modules are always loaded into global repository, model.getRepository().getModelAccess() gives 
-          //       GlobalModelAccess of MPSModuleRepository, which doesn't support commands. 
-          //       Earlier code went fine with runWriteActionInCommand() which looked up active project from UI. 
-          //       MSPL, however, listens to all repositories, and it's odd to execute a command in a project for a model that may belong to a completely different one. 
-          //       Therefore, it's better to stick to model's native repository. What we lack with runWriteAction instead of executeCommand is undo capability, perhaps. 
-          //       Is it something so vital anyone would complain of? 
-          saveModel(model);
-        } else {
-          model.getRepository().getModelAccess().runWriteAction(new Runnable() {
-            public void run() {
-              if (contentConflict) {
-                model.reloadFromSource();
-              } else {
-                ((SModuleBase) model.getModule()).unregisterModel((SModelBase) model);
-              }
-            }
-          });
-        }
+      // fixme we need to check here that the world (= the underlying model & file) is still the same
+      UserChoice choice = showDiskMemoryQuestion(source, model, backupFile);
+      if (choice == UserChoice.MEMORY_CHOSEN) {
+        // fixme and here we need to check here that the world is still the same as well
+        // FIXME it used to be executeCommand (that replaced runWriteActionInCommand) here.
+        //       as long as our modules are always loaded into global repository, model.getRepository().getModelAccess() gives
+        //       GlobalModelAccess of MPSModuleRepository, which doesn't support commands.
+        //       Earlier code went fine with runWriteActionInCommand() which looked up active project from UI.
+        //       MSPL, however, listens to all repositories, and it's odd to execute a command in a project for a model that may belong to a completely different one.
+        //       Therefore, it's better to stick to model's native repository. What we lack with runWriteAction instead of executeCommand is undo capability, perhaps.
+        //       Is it something so vital anyone would complain of?
+        // -- Yes, and it is natural to be able to undo this choice (it has been like that in IJ for quite some time)
+        // we can do this per-project and that ideological problem will be gone
+        // TODO
+        saveModel(model);
+      } else {
+        // fixme and here we need to check here that the world is still the same as well
+        model.getRepository().getModelAccess().runWriteAction(model::reloadFromSource);
       }
     }, ModalityState.defaultModalityState());
   }
 
   private void saveModel(final EditableSModel model) {
-    model.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        // fixme why this? -- #save updates timestamp by itself 
-        model.updateTimestamp();
-        model.save();
-      }
+    model.getRepository().getModelAccess().runWriteAction(() -> {
+      // fixme this is needed for #save to work
+      model.updateTimestamp();
+      model.save();
     });
   }
 
-  private static boolean showDeletedFromDiskQuestion(SModel inMemory, File backupFile) {
-    if (isApplicationInUnitTestOrHeadless()) {
-      return ourTestImplementation.show("") == 0;
-    }
-    int result = JOptionPane.showConfirmDialog(null, "Model file for model \n" + inMemory + "\n was externally deleted from disk.\n" + "Backup of it was saved to \"" + backupFile.getAbsolutePath() + "\"\nDo you wish to restore it?", "Model Deleted Externally", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Messages.getQuestionIcon());
-    return result == 0;
-  }
-
-  private static boolean showDiskMemoryQuestion(IFile modelFile, SModel inMemory, File backupFile) {
-    String message = "Changes have been made to \n" + inMemory + "\n model in memory and on disk.\n" + "Backup of both versions was saved to \"" + backupFile.getAbsolutePath() + "\"\n" + "Which version to use?";
+  @NotNull
+  private UserChoice showDiskMemoryQuestion(@NotNull FileSystemBasedDataSource source, @NotNull SModel model, @NotNull File backupFile) {
+    String message = String.format("Changes have been made to \n%s\n model in memory and on disk.\nBackup of both versions was saved to \"%s\"\nWhich version to use?",
+                                   model, backupFile.getAbsolutePath());
     String title = "Model Versions Conflict";
-    String[] options = {"Load File System Version", "Save Memory Version", "Show Difference"};
+    String[] options = {"Load Disk Version", "Save Memory Version", "Show Difference"};
+    // fixme true looks bad to me
     while (true) {
+      // fixme replace with proper stuff
       if (isApplicationInUnitTestOrHeadless()) {
-        return ourTestImplementation.show("") == 1;
+        return ourTestImplementation.show("") == 1 ? UserChoice.MEMORY_CHOSEN : UserChoice.DISK_CHOSEN;
       }
       int result = JOptionPane.showOptionDialog(null, message, title, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, Messages.getQuestionIcon(), options, null);
       switch (result) {
         case 0:
-          // disk version 
-          return false;
+          return UserChoice.DISK_CHOSEN;
         case 1:
-          // memory version 
-          return true;
+          return UserChoice.MEMORY_CHOSEN;
         case 2:
+          return UserChoice.CANCEL;
         default:
-          // diff dialog or cancel 
-          openDiffDialog(modelFile, inMemory);
+          openDiffDialog(source, model); // should I be able to use diff and to choose the final version of the model I want to keep?
       }
     }
+  }
+  enum UserChoice {
+    DISK_CHOSEN,
+    MEMORY_CHOSEN,
+    CANCEL
   }
 
   /**
    * TODO [0] --wtf
    * copy everything from MemoryDiskConflictResolver
    */
-  private static void openDiffDialog(IFile modelFile, SModel inMemory) {
-    SModel onDisk = VCSPersistenceUtil.loadModel(modelFile);
+  private void openDiffDialog(@NotNull FileSystemBasedDataSource source, @NotNull SModel model) {
+    SModel onDisk;
+    try {
+      onDisk = myPersistenceRegistry.getModelFactory(source.getType()).load(source);
+    } catch (UnsupportedDataSourceException | ModelLoadException e) {
+      // properly reflect this case
+      LOG.error("Problem while loading the model from disk", e);
+      return;
+    }
+    // fixme solve it making the listener per-project
     com.intellij.openapi.project.Project project = com.intellij.openapi.project.ProjectManager.getInstance().getOpenProjects()[0];
-    List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), new ModelDiffContent(onDisk), new ModelDiffContent(inMemory));
+    List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<DiffContent>(), new ModelDiffContent(onDisk), new ModelDiffContent(model));
     List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Filesystem version (Read-Only)", "Memory Version");
     DiffRequest request = new SimpleDiffRequest("Model file and model in memory differs", contents, titles);
     DiffManager.getInstance().showDiff(project, request, DiffDialogHints.MODAL);

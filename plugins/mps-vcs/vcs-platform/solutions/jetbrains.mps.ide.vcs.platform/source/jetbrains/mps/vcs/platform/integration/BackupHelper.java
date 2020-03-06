@@ -67,14 +67,14 @@ class BackupHelper {
   private void copyMemory(@NotNull SModel model, @NotNull File tmp) {
     ModelFactory factory = myPersistenceRegistry.getModelFactory(PreinstalledModelFactoryTypes.PLAIN_XML);
     if (factory == null) {
-      ModelStorageProblemsListener.LOG.error("It was impossible to save the model backup using the default model persistence (plain xml)");
+      LOG.error("It was impossible to save the model backup using the default model persistence (plain xml)");
     } else {
       model.getRepository().getModelAccess().runReadAction( () -> {
         try {
           FileDataSource target = new FileDataSource(toIFile(new File(tmp, "memory")));
           factory.save(model, target);
         } catch (ModelSaveException | IOException e) {
-          ModelStorageProblemsListener.LOG.error("It was impossible to save the model backup ", e);
+          LOG.error("It was impossible to save the model backup ", e);
         }
       });
     }

@@ -59,25 +59,6 @@ public class VCSPersistenceUtil {
     return null;
   }
 
-  @Nullable
-  public static SModel loadModel(IFile file) {
-    InputStream input = null;
-    try {
-      input = file.openInputStream();
-      byte[] bytes = ReadUtil.read(input);
-      return loadModel(bytes, file.getName().substring(file.getName().lastIndexOf('.')));
-    } catch (IOException e) {
-      return null;
-    } finally {
-      if (input != null) {
-        try {
-          input.close();
-        } catch (IOException e) {
-          // do nothing 
-        }
-      }
-    }
-  }
   public static boolean isModelFullyLoaded(@Nullable SModel model) {
     //  call after loadModel to fully load model and check for errors 
     if (model == null) {
