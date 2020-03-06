@@ -196,6 +196,9 @@ final class EDTExecutorInternal implements Disposable {
         LOG.trace(String.format("flush tasks: %d ms left", timer.getDelay(TimeUnit.MILLISECONDS)));
       }
       tryToRunTopTask();
+      if (timer.isDone() || timer.isCancelled()) {
+        break;
+      }
     }
   }
 
