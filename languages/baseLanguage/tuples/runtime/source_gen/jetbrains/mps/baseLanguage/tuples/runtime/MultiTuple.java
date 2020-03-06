@@ -78,8 +78,11 @@ public class MultiTuple {
     public _0(Object... objs) {
       super(objs);
     }
-    public _0() {
-      super(0);
+    protected _0(int c) {
+      super(c);
+    }
+    protected _0() {
+      this(0);
     }
     public Tuples._0 assign(Tuples._0 from) {
       if (from == null) {
@@ -95,8 +98,11 @@ public class MultiTuple {
     public _1(Object... objs) {
       super(objs);
     }
-    public _1() {
-      super(1);
+    protected _1(int c) {
+      super(c);
+    }
+    protected _1() {
+      this(1);
     }
     public T0 _0(T0 value) {
       return set(0, value);
@@ -118,8 +124,11 @@ public class MultiTuple {
     public _2(Object... objs) {
       super(objs);
     }
-    public _2() {
-      super(2);
+    protected _2(int c) {
+      super(c);
+    }
+    protected _2() {
+      this(2);
     }
     public T1 _1(T1 value) {
       return set(1, value);
@@ -141,8 +150,11 @@ public class MultiTuple {
     public _3(Object... objs) {
       super(objs);
     }
-    public _3() {
-      super(3);
+    protected _3(int c) {
+      super(c);
+    }
+    protected _3() {
+      this(3);
     }
     public T2 _2(T2 value) {
       return set(2, value);
@@ -164,8 +176,11 @@ public class MultiTuple {
     public _4(Object... objs) {
       super(objs);
     }
-    public _4() {
-      super(4);
+    protected _4(int c) {
+      super(c);
+    }
+    protected _4() {
+      this(4);
     }
     public T3 _3(T3 value) {
       return set(3, value);
@@ -187,8 +202,11 @@ public class MultiTuple {
     public _5(Object... objs) {
       super(objs);
     }
-    public _5() {
-      super(5);
+    protected _5(int c) {
+      super(c);
+    }
+    protected _5() {
+      this(5);
     }
     public T4 _4(T4 value) {
       return set(4, value);
@@ -210,8 +228,11 @@ public class MultiTuple {
     public _6(Object... objs) {
       super(objs);
     }
-    public _6() {
-      super(6);
+    protected _6(int c) {
+      super(c);
+    }
+    protected _6() {
+      this(6);
     }
     public T5 _5(T5 value) {
       return set(5, value);
@@ -233,8 +254,11 @@ public class MultiTuple {
     public _7(Object... objs) {
       super(objs);
     }
-    public _7() {
-      super(7);
+    protected _7(int c) {
+      super(c);
+    }
+    protected _7() {
+      this(7);
     }
     public T6 _6(T6 value) {
       return set(6, value);
@@ -256,8 +280,11 @@ public class MultiTuple {
     public _8(Object... objs) {
       super(objs);
     }
-    public _8() {
-      super(8);
+    protected _8(int c) {
+      super(c);
+    }
+    protected _8() {
+      this(8);
     }
     public T7 _7(T7 value) {
       return set(7, value);
@@ -279,8 +306,11 @@ public class MultiTuple {
     public _9(Object... objs) {
       super(objs);
     }
-    public _9() {
-      super(9);
+    protected _9(int c) {
+      super(c);
+    }
+    protected _9() {
+      this(9);
     }
     public T8 _8(T8 value) {
       return set(8, value);

@@ -178,24 +178,36 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
               SLinkOperations.setTarget(SLinkOperations.addNewChild(implementedIface, LINKS.parameter$dQne, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4, td);
             }
           }
+          // first cons takes Object... 
+          // second cons is for subclasses, takes int and passes it up to MultiTuple to initialize array 
+          // third cons is no-arg cons for use in empty() 
           SNode c1 = SLinkOperations.addNewChild(ic, LINKS.member$oYX5, CONCEPTS.ConstructorDeclaration$5U);
           SNode c2 = SLinkOperations.addNewChild(ic, LINKS.member$oYX5, CONCEPTS.ConstructorDeclaration$5U);
+          SNode c3 = SLinkOperations.addNewChild(ic, LINKS.member$oYX5, CONCEPTS.ConstructorDeclaration$5U);
           SLinkOperations.setNewChild(c1, LINKS.body$WIlu, null);
           SLinkOperations.setNewChild(c2, LINKS.body$WIlu, null);
+          SLinkOperations.setNewChild(c3, LINKS.body$WIlu, null);
           SLinkOperations.setNewChild(c1, LINKS.returnType$WIkw, CONCEPTS.VoidType$aT);
           SLinkOperations.setNewChild(c2, LINKS.returnType$WIkw, CONCEPTS.VoidType$aT);
-          // FIXME for whatever reason, there's code (e.g.TResource) that does new MultiTuple._2 instead of MultiTuple.from() 
-          //      have to fix templates and then can replace with 'protected' 
+          SLinkOperations.setNewChild(c3, LINKS.returnType$WIkw, CONCEPTS.VoidType$aT);
+          // FIXME there used to be code (e.g.TResource) that did new MultiTuple._2 instead of MultiTuple.from() 
+          //      I fixed templates in 2020.1; can replace with 'protected' once 2020.1 is out 
           SLinkOperations.setNewChild(c1, LINKS.visibility$2GiC, CONCEPTS.PublicVisibility$qe);
-          SLinkOperations.setNewChild(c2, LINKS.visibility$2GiC, CONCEPTS.PublicVisibility$qe);
-          SNode c1pd = ListSequence.fromList(SLinkOperations.getChildren(c1, LINKS.parameter$WIkZ)).addElement(_quotation_createNode_yti4yq_a0a0n0n0a1());
+          SLinkOperations.setNewChild(c2, LINKS.visibility$2GiC, CONCEPTS.ProtectedVisibility$OD);
+          SLinkOperations.setNewChild(c3, LINKS.visibility$2GiC, CONCEPTS.ProtectedVisibility$OD);
+          SNode c1pd = ListSequence.fromList(SLinkOperations.getChildren(c1, LINKS.parameter$WIkZ)).addElement(_quotation_createNode_yti4yq_a0a0u0n0a1());
           SNode c1Super = SLinkOperations.addNewChild(SLinkOperations.getTarget(c1, LINKS.body$WIlu), LINKS.statement$WHn8, CONCEPTS.SuperConstructorInvocation$48);
           SLinkOperations.setTarget(SLinkOperations.addNewChild(c1Super, LINKS.actualArgument$$A7L, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6, c1pd);
           SLinkOperations.setTarget(c1Super, LINKS.baseMethodDeclaration$$A7i, Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(prevIC)).first());
 
+          ListSequence.fromList(SLinkOperations.getChildren(c2, LINKS.parameter$WIkZ)).addElement(_quotation_createNode_yti4yq_a0a52a31a0b());
           SNode c2Super = SLinkOperations.addNewChild(SLinkOperations.getTarget(c2, LINKS.body$WIlu), LINKS.statement$WHn8, CONCEPTS.SuperConstructorInvocation$48);
-          SPropertyOperations.assign(SLinkOperations.addNewChild(c2Super, LINKS.actualArgument$$A7L, CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0, i);
+          SLinkOperations.setTarget(SLinkOperations.addNewChild(c2Super, LINKS.actualArgument$$A7L, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$2ky6, ListSequence.fromList(SLinkOperations.getChildren(c2, LINKS.parameter$WIkZ)).first());
           SLinkOperations.setTarget(c2Super, LINKS.baseMethodDeclaration$$A7i, Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(prevIC)).skip(1).first());
+
+          SNode c3This = SLinkOperations.addNewChild(SLinkOperations.getTarget(c3, LINKS.body$WIlu), LINKS.statement$WHn8, CONCEPTS.ThisConstructorInvocation$XM);
+          SPropertyOperations.assign(SLinkOperations.addNewChild(c3This, LINKS.actualArgument$$A7L, CONCEPTS.IntegerConstant$mo), PROPS.value$ZeO0, i);
+          SLinkOperations.setTarget(c3This, LINKS.baseMethodDeclaration$$A7i, c2);
 
           if (i > 0) {
             // get(), set() 
@@ -300,10 +312,11 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
         //  
         // emptyN() methods 
         for (int i = 0; i < MAX_TUPLE_COMPONENTS; i++) {
-          SNode classCreator = createClassCreator_yti4yq_a0a0t0a1(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(implClasses.get("_" + i))).skip(1).first());
-          SNode retType = createClassifierType_yti4yq_a0b0t0a1(tupleIfaces[i]);
-          SNode ret = createReturnStatement_yti4yq_a0c0t0a1(classCreator);
-          SNode emptyMethod = createStaticMethodDeclaration_yti4yq_a0d0t0a1("empty" + i, ret, retType);
+          // it's third cons that takes no args 
+          SNode classCreator = createClassCreator_yti4yq_a0b0t0a1(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(implClasses.get("_" + i))).skip(2).first());
+          SNode retType = createClassifierType_yti4yq_a0c0t0a1(tupleIfaces[i]);
+          SNode ret = createReturnStatement_yti4yq_a0d0t0a1(classCreator);
+          SNode emptyMethod = createStaticMethodDeclaration_yti4yq_a0e0t0a1("empty" + i, ret, retType);
 
           for (int j = 0; j < i; j++) {
             SNode td = SLinkOperations.addNewChild(emptyMethod, LINKS.typeVariableDeclaration$ziZT, null);
@@ -492,7 +505,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     n0.setProperty(PROPS.name$tAp1, p0);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_yti4yq_a0a0n0n0a1() {
+  private static SNode _quotation_createNode_yti4yq_a0a0u0n0a1() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
@@ -503,6 +516,16 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     quotedNode_3 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
     quotedNode_3.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_3, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType"), quotedNode_3);
+    quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_2);
+    return quotedNode_1;
+  }
+  private static SNode _quotation_createNode_yti4yq_a0a52a31a0b() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    SNode quotedNode_2 = null;
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration")).getResult();
+    quotedNode_1.setProperty(MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "c");
+    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d22479L, "IntegerType")).getResult();
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_2);
     return quotedNode_1;
   }
@@ -537,17 +560,17 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     n0.forChild(LINKS.returnType$WIkw).initNode(p1, CONCEPTS.Type$IG, true);
     return n0.getResult();
   }
-  private static SNode createClassCreator_yti4yq_a0a0t0a1(SNode p0) {
+  private static SNode createClassCreator_yti4yq_a0b0t0a1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassCreator$yU);
     n0.setReferenceTarget(LINKS.baseMethodDeclaration$$A7i, p0);
     return n0.getResult();
   }
-  private static SNode createClassifierType_yti4yq_a0b0t0a1(SNode p0) {
+  private static SNode createClassifierType_yti4yq_a0c0t0a1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$IZ);
     n0.setReferenceTarget(LINKS.classifier$pQ_R, p0);
     return n0.getResult();
   }
-  private static SNode createReturnStatement_yti4yq_a0c0t0a1(SNode p0) {
+  private static SNode createReturnStatement_yti4yq_a0d0t0a1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ReturnStatement$SF);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.GenericNewExpression$ev);
@@ -555,7 +578,7 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     }
     return n0.getResult();
   }
-  private static SNode createStaticMethodDeclaration_yti4yq_a0d0t0a1(String p0, SNode p1, SNode p2) {
+  private static SNode createStaticMethodDeclaration_yti4yq_a0e0t0a1(String p0, SNode p1, SNode p2) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StaticMethodDeclaration$eX);
     n0.setProperty(PROPS.name$tAp1, p0);
     n0.forChild(LINKS.visibility$2GiC).init(CONCEPTS.PublicVisibility$qe);
@@ -576,8 +599,10 @@ public final class UpdateTuplesRuntime_MigrationScript extends BaseMigrationScri
     /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
     /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
     /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept ProtectedVisibility$OD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
     /*package*/ static final SConcept SuperConstructorInvocation$48 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
     /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept ThisConstructorInvocation$XM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1127b878882L, "jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation");
     /*package*/ static final SConcept IntegerConstant$mo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
     /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");

@@ -1037,7 +1037,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("247710080512637315", new SNsQ(i++));
     snsqMethods.put("247710080512637624", new SNsQ(i++));
     snsqMethods.put("247710080512637772", new SNsQ(i++));
-    snsqMethods.put("977456125622904544", new SNsQ(i++));
+    snsqMethods.put("574925412489664635", new SNsQ(i++));
     snsqMethods.put("247710080512637216", new SNsQ(i++));
     snsqMethods.put("247710080512637235", new SNsQ(i++));
     snsqMethods.put("4237952634722591605", new SNsQ(i++));
@@ -1370,7 +1370,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("247710080512637565", new RTQ(10, "NamedTuple"));
     rtqMethods.put("247710080512637638", new RTQ(11, "T"));
     rtqMethods.put("247710080512637693", new RTQ(12, "_1"));
-    rtqMethods.put("977456125622918454", new RTQ(13, "empty1"));
+    rtqMethods.put("574925412489664652", new RTQ(13, "empty1"));
     rtqMethods.put("247710080512637241", new RTQ(14, "component"));
     rtqMethods.put("4237952634722624282", new RTQ(15, "component"));
     rtqMethods.put("6392574240232855005", new RTQ(16, "_1"));
