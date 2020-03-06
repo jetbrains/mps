@@ -17,7 +17,6 @@ package jetbrains.mps.vcs.platform.integration;
 
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
-import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
@@ -29,6 +28,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,12 +37,12 @@ class BackupHelper {
   private static final Logger LOG = LogManager.getLogger(BackupHelper.class);
 
   private final SModel myModelToBackup;
-  private final PersistenceRegistry myPersistenceRegistry;
+  private final PersistenceFacade myPersistenceFacade;
   private final VFSManager myVfsManager;
 
-  public BackupHelper(@NotNull SModel modelToBackup, @NotNull PersistenceRegistry persistenceRegistry, @NotNull VFSManager vfsManager) {
+  public BackupHelper(@NotNull SModel modelToBackup, @NotNull PersistenceFacade facade, @NotNull VFSManager vfsManager) {
     myModelToBackup = modelToBackup;
-    myPersistenceRegistry = persistenceRegistry;
+    myPersistenceFacade = facade;
     myVfsManager = vfsManager;
   }
 
@@ -65,7 +65,7 @@ class BackupHelper {
   }
 
   private void copyMemory(@NotNull SModel model, @NotNull File tmp) {
-    ModelFactory factory = myPersistenceRegistry.getModelFactory(PreinstalledModelFactoryTypes.PLAIN_XML);
+    ModelFactory factory = myPersistenceFacade.getModelFactory(PreinstalledModelFactoryTypes.PLAIN_XML);
     if (factory == null) {
       LOG.error("It was impossible to save the model backup using the default model persistence (plain xml)");
     } else {

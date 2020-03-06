@@ -27,8 +27,9 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.TestDialog;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.VFSManager;
 import org.apache.log4j.LogManager;
@@ -37,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 
 import javax.swing.JOptionPane;
@@ -51,15 +53,20 @@ import java.util.List;
  *       - introduce hashes for the model content (in-memory they call it here) and check for it before acting
  * @author apyshkin
  */
-public class ModelMemoryDiskConflictResolver {
+public final class ModelMemoryDiskConflictResolver {
   private static final Logger LOG = LogManager.getLogger(ModelMemoryDiskConflictResolver.class);
 
-  private final PersistenceRegistry myPersistenceRegistry;
+  private final MPSProject myProject;
+  private final PersistenceFacade myPersistenceFacade;
   private final ReloadManager myReloadManager;
   private final VFSManager myVfsManager;
 
-  ModelMemoryDiskConflictResolver(PersistenceRegistry persistenceRegistry, ReloadManager reloadManager, VFSManager vfsManager) {
-    myPersistenceRegistry = persistenceRegistry;
+  ModelMemoryDiskConflictResolver(MPSProject project,
+                                  PersistenceFacade persistenceFacade,
+                                  ReloadManager reloadManager,
+                                  VFSManager vfsManager) {
+    myProject = project;
+    myPersistenceFacade = persistenceFacade;
     myReloadManager = reloadManager;
     myVfsManager = vfsManager;
   }
@@ -72,7 +79,7 @@ public class ModelMemoryDiskConflictResolver {
       return;
     }
     FileSystemBasedDataSource source = (FileSystemBasedDataSource) model.getSource();
-    final File backupFile = new BackupHelper(model, myPersistenceRegistry, myVfsManager).createBackup();
+    final File backupFile = new BackupHelper(model, myPersistenceFacade, myVfsManager).createBackup();
     ApplicationManager.getApplication().invokeLater(() -> {
       // do nothing if conflict was already resolved and model was saved or reloaded or unregistered
       if (!(model.isChanged()) || model.getRepository() == null) {
@@ -84,23 +91,12 @@ public class ModelMemoryDiskConflictResolver {
       // fixme we need to check here that the world (= the underlying model & file) is still the same
       UserChoice choice = showDiskMemoryQuestion(source, model, backupFile);
       if (choice == UserChoice.MEMORY_CHOSEN) {
-        // fixme and here we need to check here that the world is still the same as well
-        // FIXME it used to be executeCommand (that replaced runWriteActionInCommand) here.
-        //       as long as our modules are always loaded into global repository, model.getRepository().getModelAccess() gives
-        //       GlobalModelAccess of MPSModuleRepository, which doesn't support commands.
-        //       Earlier code went fine with runWriteActionInCommand() which looked up active project from UI.
-        //       MSPL, however, listens to all repositories, and it's odd to execute a command in a project for a model that may belong to a completely different one.
-        //       Therefore, it's better to stick to model's native repository. What we lack with runWriteAction instead of executeCommand is undo capability, perhaps.
-        //       Is it something so vital anyone would complain of?
-        // -- Yes, and it is natural to be able to undo this choice (it has been like that in IJ for quite some time)
-        // we can do this per-project and that ideological problem will be gone
-        // TODO
         saveModel(model);
       } else {
         // fixme and here we need to check here that the world is still the same as well
-        model.getRepository().getModelAccess().runWriteAction(model::reloadFromSource);
+        model.getRepository().getModelAccess().executeCommand(model::reloadFromSource);
       }
-    }, ModalityState.defaultModalityState());
+    }, ModalityState.NON_MODAL);
   }
 
   private void saveModel(final EditableSModel model) {
@@ -123,7 +119,7 @@ public class ModelMemoryDiskConflictResolver {
       if (isApplicationInUnitTestOrHeadless()) {
         return ourTestImplementation.show("") == 1 ? UserChoice.MEMORY_CHOSEN : UserChoice.DISK_CHOSEN;
       }
-      int result = JOptionPane.showOptionDialog(null, message, title, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, Messages.getQuestionIcon(), options, null);
+      int result = JOptionPane.showOptionDialog(ProjectHelper.toMainFrame(myProject), message, title, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, Messages.getQuestionIcon(), options, null);
       switch (result) {
         case 0:
           return UserChoice.DISK_CHOSEN;
@@ -144,25 +140,21 @@ public class ModelMemoryDiskConflictResolver {
     CANCEL
   }
 
-  /**
-   * TODO [0] --wtf
-   * copy everything from MemoryDiskConflictResolver
-   */
   private void openDiffDialog(@NotNull FileSystemBasedDataSource source, @NotNull SModel model) {
-    SModel onDisk;
+    SModel onDisk = null;
     try {
-      onDisk = myPersistenceRegistry.getModelFactory(source.getType()).load(source);
+      if (source.exists()) {
+        onDisk = myPersistenceFacade.getModelFactory(source.getType()).load(source);
+      }
     } catch (UnsupportedDataSourceException | ModelLoadException e) {
       // properly reflect this case
       LOG.error("Problem while loading the model from disk", e);
       return;
     }
-    // fixme solve it making the listener per-project
-    com.intellij.openapi.project.Project project = com.intellij.openapi.project.ProjectManager.getInstance().getOpenProjects()[0];
     List<DiffContent> contents = ListSequence.fromListAndArray(new ArrayList<>(), new ModelDiffContent(onDisk), new ModelDiffContent(model));
-    List<String> titles = ListSequence.fromListAndArray(new ArrayList<>(), "Filesystem version (Read-Only)", "Memory Version");
-    DiffRequest request = new SimpleDiffRequest("Model file and model in memory differs", contents, titles);
-    DiffManager.getInstance().showDiff(project, request, DiffDialogHints.MODAL);
+    List<String> titles = ListSequence.fromListAndArray(new ArrayList<>(), "Disk version (Read-Only)", "Memory Version");
+    DiffRequest request = new SimpleDiffRequest("Model on disk and model in memory differs", contents, titles);
+    DiffManager.getInstance().showDiff(myProject.getProject(), request, DiffDialogHints.MODAL);
   }
 
 

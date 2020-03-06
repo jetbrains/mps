@@ -16,21 +16,17 @@
 package jetbrains.mps.vcs.platform.integration;
 
 import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
-import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.project.ProjectManager;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.VFSManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -39,12 +35,11 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import javax.swing.event.HyperlinkEvent;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -60,12 +55,17 @@ public final class ModelStorageProblemsListener extends SRepositoryContentAdapte
   private static final Logger LOG = LogManager.getLogger(ModelStorageProblemsListener.class);
 
   private final ModelMemoryDiskConflictResolver myMemoryDiskConflictResolver;
+  @NotNull private final MPSProject myProject;
 
   private Notification myLastNotification; // fixme that is not the way to hide notifications, can we address IJ instead?
   private volatile SModelReference myLastModel;
 
-  /*package*/ ModelStorageProblemsListener(@NotNull PersistenceRegistry persistenceRegistry, @NotNull ReloadManager reloadManager, @NotNull VFSManager vfsManager) {
-    myMemoryDiskConflictResolver = new ModelMemoryDiskConflictResolver(persistenceRegistry, reloadManager, vfsManager);
+  /*package*/ ModelStorageProblemsListener(@NotNull MPSProject project,
+                                           @NotNull PersistenceFacade persistenceFacade,
+                                           @NotNull ReloadManager reloadManager,
+                                           @NotNull VFSManager vfsManager) {
+    myProject = project;
+    myMemoryDiskConflictResolver = new ModelMemoryDiskConflictResolver(project, persistenceFacade, reloadManager, vfsManager);
   }
 
   @Override
@@ -106,30 +106,26 @@ public final class ModelStorageProblemsListener extends SRepositoryContentAdapte
 
   @Override
   public void problemsDetected(SModel model, Iterable<SModel.Problem> problems) {
-    Iterable<SModel.Problem> pr = problems;
-    SRepository repository = model.getRepository();
-    final Project project = getProjectFromUI(repository);
-
-    if (Sequence.fromIterable(pr).any(new IWhereFilter<SModel.Problem>() {
+    if (Sequence.fromIterable(problems).any(new IWhereFilter<>() {
       public boolean accept(SModel.Problem it) {
         return it.isError();
       }
     })) {
-      final boolean isSave = Sequence.fromIterable(pr).any(new IWhereFilter<SModel.Problem>() {
+      final boolean isSave = Sequence.fromIterable(problems).any(new IWhereFilter<SModel.Problem>() {
         public boolean accept(SModel.Problem it) {
           return it.isError() && it.getKind() == SModel.Problem.Kind.Save;
         }
       });
       final Map<String, SNodeReference> errMap = new HashMap<String, SNodeReference>();
       final Wrappers._int index = new Wrappers._int(0);
-      String problemText = IterableUtils.join(Sequence.fromIterable(pr).where(new IWhereFilter<SModel.Problem>() {
+      String problemText = IterableUtils.join(Sequence.fromIterable(problems).where(new IWhereFilter<SModel.Problem>() {
         public boolean accept(SModel.Problem it) {
           return it.isError();
         }
       }).select(new ISelector<SModel.Problem, String>() {
         public String select(SModel.Problem it) {
           String link = "";
-          if (it.getAnchorNode() != null && project != null) {
+          if (it.getAnchorNode() != null) {
             link = " (<a href=\"" + index.value + "\">view node</a>)";
             errMap.put(Integer.toString(index.value++), it.getAnchorNode());
           }
@@ -138,39 +134,24 @@ public final class ModelStorageProblemsListener extends SRepositoryContentAdapte
       }).take(3), "<br/>");
       final String message = String.format("<p>Cannot %s model %s.<br/>%s</p>", (isSave ? "save" : "load"), model.getName(), problemText);
       final SModelReference ref = model.getReference();
-      UIUtil.invokeLaterIfNeeded(new Runnable() {
-        public void run() {
-          if (myLastNotification != null) {
-            myLastNotification.expire();
-          }
-          myLastNotification = new Notification("Model Persistence", (isSave ? "Save Failure" : "Load Failure"), message, NotificationType.WARNING, new NotificationListener() {
-            public void hyperlinkUpdate(@NotNull Notification p0, @NotNull HyperlinkEvent e) {
-              if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
-                return;
-              }
-
-              SNodeReference ref = errMap.get(e.getDescription());
-              assert ref != null;
-              new EditorNavigator(project).shallFocus(true).shallSelect(true).open(ref);
-            }
-          });
-          myLastModel = ref;
-          Notifications.Bus.notify(myLastNotification);
+      UIUtil.invokeLaterIfNeeded(() -> {
+        if (myLastNotification != null) {
+          myLastNotification.expire();
         }
+        myLastNotification = new Notification("Model Persistence", (isSave ? "Save failure" : "Load failure"), message, NotificationType.WARNING, (p0, e) -> {
+          if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
+            return;
+          }
+
+          SNodeReference ref1 = errMap.get(e.getDescription());
+          assert ref1 != null;
+          new EditorNavigator(myProject).shallFocus(true)
+                                        .shallSelect(true)
+                                        .open(ref1);
+        });
+        myLastModel = ref;
+        Notifications.Bus.notify(myLastNotification);
       });
     }
-  }
-
-  // fixme replace with per-project relation
-  private Project getProjectFromUI(SRepository repository) {
-    Project project = ProjectHelper.getProject(repository);
-    if (project == null) {
-      // Note: the following code can be removed after proper implementation of project repositories 
-      List<Project> openProjects = ProjectManager.getInstance().getOpenedProjects();
-      if (openProjects.size() == 1) {
-        project = openProjects.get(0);
-      }
-    }
-    return project;
   }
 }
