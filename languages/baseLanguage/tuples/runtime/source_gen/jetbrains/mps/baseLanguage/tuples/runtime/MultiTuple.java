@@ -6,8 +6,8 @@ import java.util.Arrays;
 
 public class MultiTuple {
   private static final Object[] EMPTY = new Object[0];
-  private Object[] values;
-  private MultiTuple(Object... objs) {
+  private final Object[] values;
+  protected MultiTuple(Object... objs) {
     if (objs == null || objs.length == 0) {
       this.values = EMPTY;
     } else {
@@ -15,10 +15,10 @@ public class MultiTuple {
       System.arraycopy(objs, 0, this.values, 0, objs.length);
     }
   }
-  private MultiTuple() {
+  protected MultiTuple() {
     this.values = EMPTY;
   }
-  private MultiTuple(int size) {
+  protected MultiTuple(int size) {
     this.values = new Object[size];
   }
   @Override
@@ -45,25 +45,32 @@ public class MultiTuple {
     }
     return sb.append("]").toString();
   }
-  public Object set(int idx, Object value) {
-    return this.values[idx] = value;
+  public <X> X set(int idx, X value) {
+    this.values[idx] = value;
+    return value;
   }
   public Object get(int idx) {
     return this.values[idx];
   }
   @Deprecated
   public void assign(Object... values) {
+    // still uses in templates (?), e.g. see TResource code 
     assignValues(values);
   }
   public MultiTuple assignValues(Object... values) {
     if (values == null) {
-      Arrays.fill(this.values, null);
+      reset();
     } else {
       System.arraycopy(values, 0, this.values, 0, values.length);
     }
     return this;
   }
+  protected void reset() {
+    Arrays.fill(this.values, null);
+  }
+  @Deprecated
   public static boolean eq(Object a, Object b) {
+    // uses were replaced with regular Objects.equals(); keep for one release and drop then 
     return (a == b) || ((a != null ? a.equals(b) : false));
   }
   public static class _0 extends MultiTuple implements Tuples._0 {
