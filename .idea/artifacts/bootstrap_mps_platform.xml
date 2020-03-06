@@ -12,6 +12,7 @@
         <element id="module-output" name="migrations-runtime" />
         <element id="module-output" name="mps-debugger" />
         <element id="module-output" name="mps-ui" />
+        <element id="module-output" name="vfs-tracking" />
       </element>
     </root>
   </artifact>
