@@ -54,6 +54,9 @@ public interface PersistenceVersionAware extends SModel {
    * Actual {@link org.jetbrains.mps.openapi.persistence.ModelFactory} which is currently responsible for model load/save,
    * or <code>null</code> if model knowns nothing about persistence at the moment.
    * @return model load/save facility or <code>null</code> if undefined
+   *
+   * fixme: kind of strange method considering that the design implies that model and modelfactory are isolated concepts. we have MF#save(SModel, DataSource),
+   * fixme: meaning that any ModelFactory can save any model to the data source it supports [AP]
    */
   @Nullable
   ModelFactory getModelFactory();
