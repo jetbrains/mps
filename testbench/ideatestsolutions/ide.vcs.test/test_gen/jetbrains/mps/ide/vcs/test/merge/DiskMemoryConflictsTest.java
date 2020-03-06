@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import java.util.regex.Pattern;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
+import jetbrains.mps.vcs.platform.integration.ModelMemoryDiskConflictResolver;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.tool.environment.Environment;
 import java.io.File;
@@ -115,12 +116,12 @@ public class DiskMemoryConflictsTest implements EnvironmentAware {
     });
     Assert.assertNotNull(myModelBackup);
     Assert.assertNotNull(myOriginalModelDataSource);
-    myOriginalDialog = ModelStorageProblemsListener.setTestDialog(myMockDialog = new TestDialogImpl());
+    myOriginalDialog = ModelMemoryDiskConflictResolver.setTestDialog(myMockDialog = new TestDialogImpl());
   }
 
   @After
   public void afterTest() {
-    ModelStorageProblemsListener.setTestDialog(myOriginalDialog);
+    ModelMemoryDiskConflictResolver.setTestDialog(myOriginalDialog);
     myMockDialog = null;
     restoreModel();
     checkInitialState();
