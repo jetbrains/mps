@@ -41,6 +41,7 @@ public class StaticMethodCall_Complete_Test extends BaseTransformationTest {
       // .method() 
       // .class 
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible() && getEditorComponent().getNodeSubstituteChooser().getNumberOfActions() == 3);
+      pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " DOWN"));
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
     }
   }

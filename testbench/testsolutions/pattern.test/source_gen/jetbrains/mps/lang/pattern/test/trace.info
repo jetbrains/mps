@@ -2779,7 +2779,7 @@
       <node id="8187773339868680381" at="61,7,62,33" concept="2" />
       <node id="8187773339868678967" at="64,74,65,41" concept="2" />
       <node id="8187773339868680389" at="65,41,66,22" concept="6" />
-      <node id="8187773339868681421" at="66,22,67,64" concept="6" />
+      <node id="8187773339868681421" at="66,22,67,324" concept="6" />
       <node id="8187773339868680398" at="68,82,69,23" concept="2" />
       <node id="8187773339868680408" at="70,14,71,24" concept="2" />
       <node id="8187773339868680412" at="72,7,73,34" concept="2" />
@@ -2802,15 +2802,15 @@
       <node id="8187773339868680372" at="98,466,99,166" concept="2" />
       <node id="8187773339868680372" at="99,166,100,167" concept="2" />
       <node id="8187773339868680372" at="100,167,101,26" concept="7" />
-      <node id="8187773339868680403" at="103,64,104,65" concept="6" />
+      <node id="8187773339868680403" at="103,82,104,65" concept="6" />
       <node id="8187773339868680403" at="104,65,105,32" concept="6" />
       <node id="8187773339868680403" at="105,32,106,32" concept="6" />
       <node id="8187773339868680403" at="106,32,107,32" concept="6" />
       <node id="8187773339868680403" at="107,32,108,236" concept="2" />
       <node id="8187773339868680403" at="108,236,109,242" concept="2" />
       <node id="8187773339868680403" at="109,242,110,234" concept="2" />
-      <node id="8187773339868680403" at="110,234,111,483" concept="2" />
-      <node id="8187773339868680403" at="111,483,112,166" concept="2" />
+      <node id="8187773339868680403" at="110,234,111,211" concept="2" />
+      <node id="8187773339868680403" at="111,211,112,166" concept="2" />
       <node id="8187773339868680403" at="112,166,113,167" concept="2" />
       <node id="8187773339868680403" at="113,167,114,26" concept="7" />
       <node id="8187773339868680440" at="116,82,117,65" concept="6" />
@@ -2835,13 +2835,13 @@
       <node id="8187773339868681421" at="38,0,42,0" concept="5" trace="test_patternSwitch4_referenceMismatch#()V" />
       <node id="8187773339868682146" at="42,0,46,0" concept="5" trace="test_patternSwitch5_matchesWithReference#()V" />
       <node id="8187773339868680146" at="56,64,61,7" concept="4" />
-      <node id="8187773339868681421" at="67,64,72,7" concept="4" />
+      <node id="8187773339868681421" at="67,324,72,7" concept="4" />
       <node id="8187773339868682146" at="78,324,85,7" concept="4" />
       <node id="8187773339868680146" at="53,0,64,0" concept="5" trace="test_patternSwitch4_matches#()V" />
       <node id="8187773339868681421" at="64,0,75,0" concept="5" trace="test_patternSwitch4_referenceMismatch#()V" />
       <node id="8187773339868682146" at="75,0,88,0" concept="5" trace="test_patternSwitch5_matchesWithReference#()V" />
       <node id="8187773339868680372" at="90,0,103,0" concept="10" trace="_quotation_createNode_9nn70n_a0c0d9#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8187773339868680403" at="103,0,116,0" concept="10" trace="_quotation_createNode_9nn70n_a0c0e9#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8187773339868680403" at="103,0,116,0" concept="10" trace="_quotation_createNode_9nn70n_a0c0e9#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8187773339868680440" at="116,0,129,0" concept="10" trace="_quotation_createNode_9nn70n_a0c0f9#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="8187773339868678966" at="30,43,31,25" />
       <scope id="8187773339868680146" at="35,62,36,53" />
@@ -2881,11 +2881,11 @@
         <var name="quotedNode_2" id="8187773339868680372" />
         <var name="quotedNode_3" id="8187773339868680372" />
       </scope>
-      <scope id="8187773339868680403" at="103,64,114,26">
+      <scope id="8187773339868680403" at="103,82,114,26">
         <var name="facade" id="8187773339868680403" />
-        <var name="quotedNode_1" id="8187773339868680403" />
         <var name="quotedNode_2" id="8187773339868680403" />
         <var name="quotedNode_3" id="8187773339868680403" />
+        <var name="quotedNode_4" id="8187773339868680403" />
       </scope>
       <scope id="8187773339868680440" at="116,82,127,26">
         <var name="facade" id="8187773339868680440" />
@@ -2895,7 +2895,9 @@
       </scope>
       <scope id="8187773339868682146" at="75,0,88,0" />
       <scope id="8187773339868680372" at="90,0,103,0" />
-      <scope id="8187773339868680403" at="103,0,116,0" />
+      <scope id="8187773339868680403" at="103,0,116,0">
+        <var name="parameter_1" id="8187773339868680403" />
+      </scope>
       <scope id="8187773339868680440" at="116,0,129,0">
         <var name="parameter_1" id="8187773339868680440" />
       </scope>

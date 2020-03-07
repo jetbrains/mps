@@ -5083,8 +5083,15 @@
           <node concept="2c44tf" id="76wO7zgil3j" role="1_3QMn">
             <node concept="3cpWs6" id="76wO7zgil3k" role="2c44tc">
               <node concept="2ShNRf" id="76wO7zgil3l" role="3cqZAk">
-                <node concept="1pGfFk" id="76wO7zgil3m" role="2ShVmc">
-                  <ref role="37wK5l" node="76wO7zgisac" resolve="MyClass" />
+                <node concept="1pGfFk" id="54oiU1DIWfV" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                  <node concept="2c44tb" id="54oiU1DIWhx" role="lGtFl">
+                    <property role="2qtEX8" value="baseMethodDeclaration" />
+                    <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
+                    <node concept="3xONca" id="54oiU1DIWiA" role="2c44t1">
+                      <ref role="3xOPvv" node="76wO7zgit1W" resolve="constructor" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -5188,12 +5195,12 @@
           <node concept="2c44tf" id="76wO7zgil3S" role="1_3QMn">
             <node concept="3cpWs6" id="76wO7zgil3T" role="2c44tc">
               <node concept="2ShNRf" id="76wO7zgil3U" role="3cqZAk">
-                <node concept="1pGfFk" id="76wO7zgil3V" role="2ShVmc">
-                  <ref role="37wK5l" node="76wO7zgisac" resolve="MyClass" />
-                  <node concept="2c44tb" id="76wO7zgkfGV" role="lGtFl">
+                <node concept="1pGfFk" id="54oiU1DIWYR" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                  <node concept="2c44tb" id="54oiU1DIXiE" role="lGtFl">
                     <property role="2qtEX8" value="baseMethodDeclaration" />
                     <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1204053956946/1068499141037" />
-                    <node concept="3xONca" id="76wO7zgkg1p" role="2c44t1">
+                    <node concept="3xONca" id="54oiU1DIXlP" role="2c44t1">
                       <ref role="3xOPvv" node="76wO7zgit1W" resolve="constructor" />
                     </node>
                   </node>

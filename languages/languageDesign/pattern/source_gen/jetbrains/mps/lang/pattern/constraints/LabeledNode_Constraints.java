@@ -38,7 +38,7 @@ public class LabeledNode_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.INodeBuilderContainer$cS, false, false), CONCEPTS.PatternBuilder$Pa);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.INodeBuilderContainer$cS, true, false), CONCEPTS.PatternBuilder$Pa);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "4847894289815594025");
 

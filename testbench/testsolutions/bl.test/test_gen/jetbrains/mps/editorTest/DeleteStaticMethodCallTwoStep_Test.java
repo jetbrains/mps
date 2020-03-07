@@ -14,16 +14,16 @@ import junit.framework.Assert;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 
 @MPSLaunch
-public class DeleteBinaryOperationLeftExpressionTwoStep_Test extends BaseTransformationTest {
+public class DeleteStaticMethodCallTwoStep_Test extends BaseTransformationTest {
   @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(DeleteBinaryOperationLeftExpressionTwoStep_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  public static final TestParametersCache ourParamCache = new TestParametersCache(DeleteStaticMethodCallTwoStep_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
 
-  public DeleteBinaryOperationLeftExpressionTwoStep_Test() {
+  public DeleteStaticMethodCallTwoStep_Test() {
     super(ourParamCache);
   }
 
   @Test
-  public void test_DeleteBinaryOperationLeftExpressionTwoStep() throws Throwable {
+  public void test_DeleteStaticMethodCallTwoStep() throws Throwable {
     new TestBody(this).testMethod();
   }
 
@@ -35,12 +35,12 @@ public class DeleteBinaryOperationLeftExpressionTwoStep_Test extends BaseTransfo
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("8979250711586584422", "8979250711586584369");
+      initEditorComponent("5843503668854246533", "5843503668854246544");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode(), "method"));
+          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
         }
       }, true);
 
