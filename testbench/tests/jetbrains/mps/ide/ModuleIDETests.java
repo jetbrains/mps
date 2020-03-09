@@ -16,6 +16,7 @@
 package jetbrains.mps.ide;
 
 import com.intellij.configurationStore.StoreReloadManager;
+import jdk.jshell.spi.ExecutionControl.RunException;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.module.ModuleDeleteHelper;
@@ -38,6 +39,9 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.junit.Assert;
 import org.junit.Test;
@@ -48,6 +52,8 @@ import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -55,7 +61,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Also checks some elementary vfs changes.
  * Note: several {@link #invokeInCommand(Runnable)} calls
  * are needed because of the absent undo realisation for the 'create module' actions.
- *
+ * <p>
  * Also {@link StoreReloadManager#flushChangedProjectFileAlarm()} requires zero-level command
  */
 public abstract class ModuleIDETests extends ModuleInProjectTest {
@@ -104,6 +110,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
       checkGenerators(language);
     });
   }
+
   @Test
   public void createDevkit() {
     String devkitName = getNewModuleName();
@@ -150,8 +157,9 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
             runtimeSolution[0] = NewModuleUtil.createRuntimeSolution(language, moduleFolder.getAbsolutePath(), myProject);
             language.getModuleDescriptor().getRuntimeModules().add(runtimeSolution[0].getModuleReference());
             sandboxSolution[0] = NewModuleUtil.createSandboxSolution(language, moduleFolder.getAbsolutePath(), myProject);
-            someUnexpectedSolution[0] = NewModuleUtil.createSolution(someUnexpectedSolutionName, moduleFolder.getAbsolutePath() + File.separator+ someUnexpectedSolutionName,
-                                                                     myProject);
+            someUnexpectedSolution[0] =
+                NewModuleUtil.createSolution(someUnexpectedSolutionName, moduleFolder.getAbsolutePath() + File.separator + someUnexpectedSolutionName,
+                                             myProject);
           } catch (IOException e) {
             e.printStackTrace();
           }
@@ -373,14 +381,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
       langRef.set(NewModuleUtil.createLanguage(moduleName, newDirInProject.get(), myProject));
     });
     invokeInCommand(() -> {
-      @NotNull Language lang = langRef.get();
-      FileUtil.delete(Paths.get(newDirInProject.get()).toFile());
-      CachingFile moduleSourceDir = (CachingFile) lang.getModuleSourceDir();
-      Assert.assertNotNull(moduleSourceDir);
-      moduleSourceDir.refresh(new DefaultCachingContext(true, true));
-      Assert.assertFalse(moduleSourceDir.exists());
-      Assert.assertFalse("The language stayed in the project", myProject.getProjectModules().contains(lang));
-      Assert.assertNull("The language stayed in the repo", myProject.getRepository().getModule(lang.getModuleId()));
+      testDeletion(langRef.get(), newDirInProject.get());
     });
   }
 
@@ -394,15 +395,42 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
       slnRef.set(NewModuleUtil.createSolution(moduleName, newDirInProject.get(), myProject));
     });
     invokeInCommand(() -> {
-      @NotNull Solution sln = slnRef.get();
-      FileUtil.delete(Paths.get(newDirInProject.get()).toFile());
-      CachingFile moduleSourceDir = (CachingFile) sln.getModuleSourceDir();
-      Assert.assertNotNull(moduleSourceDir);
-      moduleSourceDir.refresh(new DefaultCachingContext(true, true));
-      Assert.assertFalse(moduleSourceDir.exists());
-      Assert.assertFalse("The solution stayed in the project", myProject.getProjectModules().contains(sln));
-      Assert.assertNull("The solution stayed in the repo", myProject.getRepository().getModule(sln.getModuleId()));
+      testDeletion(slnRef.get(), newDirInProject.get());
     });
+  }
+
+  public void testDeletion(AbstractModule moduleToCheck, String dir) {
+    CountDownLatch latch = new CountDownLatch(1);
+    SRepositoryListenerBase oneTimeListener = new SRepositoryListenerBase() {
+      @Override
+      public void moduleRemoved(@NotNull SModuleReference m) {
+        if (!m.equals(moduleToCheck.getModuleReference())) {
+          return;
+        }
+
+        Assert.assertFalse("The module stayed in the project", myProject.getProjectModules().contains(moduleToCheck));
+        Assert.assertNull("The module stayed in the repo", myProject.getRepository().getModule(moduleToCheck.getModuleId()));
+        latch.countDown();
+        myProject.getRepository().removeRepositoryListener(this);
+      }
+    };
+    myProject.getRepository().addRepositoryListener(oneTimeListener);
+
+    FileUtil.delete(Paths.get(dir).toFile());
+    CachingFile moduleSourceDir = (CachingFile) moduleToCheck.getModuleSourceDir();
+    Assert.assertNotNull(moduleSourceDir);
+    moduleSourceDir.refresh(new DefaultCachingContext(true, true));
+    Assert.assertFalse(moduleSourceDir.exists());
+
+    new Thread(() -> {
+      try {
+        if (!latch.await(10, TimeUnit.SECONDS)) {
+          Assert.fail("Module deletion did not happen");
+        }
+      } catch (InterruptedException e) {
+        throw new RuntimeException("Should not happen");
+      }
+    }).start();
   }
 
   @Test
