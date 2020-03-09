@@ -971,6 +971,11 @@
             <ref role="3bR37D" to="ffeo:7Kfy9QB6KZG" resolve="jetbrains.mps.baseLanguage.closures" />
           </node>
         </node>
+        <node concept="1SiIV0" id="4iB89$NCK5t" role="3bR37C">
+          <node concept="3bR9La" id="4iB89$NCK5_" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:7Kfy9QB6KZM" resolve="closures.runtime" />
+          </node>
+        </node>
         <node concept="1BupzO" id="442$DQsGVYM" role="3bR31x">
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />
