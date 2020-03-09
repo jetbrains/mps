@@ -132,6 +132,9 @@
     <node concept="lpD6D" id="5zNZr7ZTSPh" role="lpD6w">
       <ref role="lpD7u" to="srq7:747TPqO$Xge" resolve="LightPattern_Reference_Test" />
     </node>
+    <node concept="lpD6D" id="54oiU1E1Rju" role="lpD6w">
+      <ref role="lpD7u" to="srq7:76wO7zgikGQ" resolve="LightPatternReferenceTest" />
+    </node>
     <node concept="lpD6D" id="5zNZr7ZTSPQ" role="lpD6w">
       <ref role="lpD7u" to="srq7:3fHwAfrvXrv" resolve="LightPattern_Child_Test" />
     </node>
