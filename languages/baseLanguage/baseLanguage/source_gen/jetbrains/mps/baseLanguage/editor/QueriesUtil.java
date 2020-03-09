@@ -14,10 +14,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class QueriesUtil {
   public QueriesUtil() {
@@ -82,9 +82,12 @@ public class QueriesUtil {
       for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$$A7L))) {
         ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$$A7L)).addElement(SNodeOperations.copyNode(arg));
       }
+      for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.typeArgument$GDtv))) {
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeArgument$GDtv)).addElement(SNodeOperations.copyNode(arg));
+      }
     }
     for (SNode attribute : ListSequence.fromList(AttributeOperations.getAttributeList(oldNode, new IAttributeDescriptor.AllAttributes()))) {
-      String role = attribute.getRoleInParent();
+      SContainmentLink role = SNodeOperations.getContainingLink(attribute);
       newNode.addChild(role, SNodeOperations.copyNode(attribute));
     }
     return newNode;
@@ -115,5 +118,6 @@ public class QueriesUtil {
     /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SReferenceLink classConcept$BsUa = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
     /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$GDtv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 }

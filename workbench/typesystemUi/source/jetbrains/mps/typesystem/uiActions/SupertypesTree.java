@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,7 @@ public class SupertypesTree extends AbstractHierarchyTree {
   public SupertypesTree(Project mpsProject) {
     super(mpsProject.getRepository());
     myProject = mpsProject;
+    setRootVisible(false);
   }
 
   protected String noNodeString() {
@@ -65,6 +66,10 @@ public class SupertypesTree extends AbstractHierarchyTree {
     }
     return TypeChecker.getInstance().getSubtypingManager().
         collectImmediateSupertypes(node, !myShowOnlyStrong);
+  }
+
+  public boolean isShowOnlyStrong() {
+    return myShowOnlyStrong;
   }
 
   public void setShowOnlyStrong(boolean showOnlyStrong) {

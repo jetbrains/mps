@@ -14,6 +14,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.errors.BaseQuickFixProvider;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,19 +28,66 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
   }
   public void applyRule(final SNode iMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode baseMethodDeclaration = SLinkOperations.getTarget(iMethodCall, LINKS.baseMethodDeclaration$$A7i);
-    boolean isOk;
+    boolean isParamNumOk;
     if (baseMethodDeclaration != null) {
       List<SNode> parameterDeclarations = SLinkOperations.getChildren(baseMethodDeclaration, LINKS.parameter$WIkZ);
       List<SNode> actualArguments = SLinkOperations.getChildren(iMethodCall, LINKS.actualArgument$$A7L);
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).last(), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT)) {
-        isOk = ListSequence.fromList(parameterDeclarations).count() - 1 <= ListSequence.fromList(actualArguments).count();
+        isParamNumOk = ListSequence.fromList(parameterDeclarations).count() - 1 <= ListSequence.fromList(actualArguments).count();
       } else {
-        isOk = ListSequence.fromList(parameterDeclarations).count() == ListSequence.fromList(actualArguments).count();
+        isParamNumOk = ListSequence.fromList(parameterDeclarations).count() == ListSequence.fromList(actualArguments).count();
       }
-      if (!(isOk)) {
+      if (!(isParamNumOk)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "wrong number of parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1219948518456", null, errorTarget);
+          {
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateMethodFromCall_QuickFix", false);
+            intentionProvider.putArgument("call", iMethodCall);
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
+          {
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodSignatureFromCall_QuickFix", false);
+            intentionProvider.putArgument("call", iMethodCall);
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
+        }
+      } else {
+        boolean isParamTypesOk = true;
+        for (int i = 0; i < ListSequence.fromList(parameterDeclarations).count(); i++) {
+          SNode argType = SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(actualArguments).getElement(i)), CONCEPTS.Type$IG);
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT)) {
+            SNode typeToMatch = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO), CONCEPTS.VariableArityType$jT), LINKS.componentType$knmw);
+            if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ArrayType$Yv)) {
+              isParamTypesOk = isParamTypesOk && (SNodeOperations.getConcept(ListSequence.fromList(actualArguments).getElement(i)).isAbstract() || ParameterNameUtil.isArgumentSubtypeOfParameter(SLinkOperations.getTarget(SNodeOperations.as(argType, CONCEPTS.ArrayType$Yv), LINKS.componentType$10w), typeToMatch));
+
+            } else {
+              for (int j = i; j < ListSequence.fromList(actualArguments).count(); j++) {
+                isParamTypesOk = isParamTypesOk && (SNodeOperations.getConcept(ListSequence.fromList(actualArguments).getElement(j)).isAbstract() || ParameterNameUtil.isArgumentSubtypeOfParameter(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(actualArguments).getElement(j)), CONCEPTS.Type$IG), typeToMatch));
+
+              }
+            }
+            break;
+          }
+          isParamTypesOk = isParamTypesOk && (SNodeOperations.getConcept(ListSequence.fromList(actualArguments).getElement(i)).isAbstract() || ParameterNameUtil.isArgumentSubtypeOfParameter(SNodeOperations.as(argType, CONCEPTS.Type$IG), SLinkOperations.getTarget(ListSequence.fromList(parameterDeclarations).getElement(i), LINKS.type$pLrO)));
+
+
+        }
+        if (!(isParamTypesOk)) {
+          {
+            final MessageTarget errorTarget = new NodeMessageTarget();
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "Incompatible method signature", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992", null, errorTarget);
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.ChangeMethodSignatureFromCall_QuickFix", false);
+              intentionProvider.putArgument("call", iMethodCall);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+            {
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.CreateMethodFromCall_QuickFix", false);
+              intentionProvider.putArgument("call", iMethodCall);
+              _reporter_2309309498.addIntentionProvider(intentionProvider);
+            }
+          }
         }
       }
     }
@@ -58,10 +107,14 @@ public class check_parametersCount_NonTypesystemRule extends AbstractNonTypesyst
     /*package*/ static final SContainmentLink parameter$WIkZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
     /*package*/ static final SContainmentLink actualArgument$$A7L = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
     /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink componentType$knmw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
+    /*package*/ static final SContainmentLink componentType$10w = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept VariableArityType$jT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
     /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

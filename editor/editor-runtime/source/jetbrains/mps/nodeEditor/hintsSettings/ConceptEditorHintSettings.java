@@ -19,7 +19,9 @@ import jetbrains.mps.openapi.editor.descriptor.ConceptEditorHint;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorHintsProvider;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SLanguage;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -32,14 +34,23 @@ import java.util.concurrent.ConcurrentHashMap;
  * Semen Alperovich
  * 05 15, 2013
  */
-public class ConceptEditorHintSettings {
+public final class ConceptEditorHintSettings {
   private final Map<String, Map<ConceptEditorHint, Boolean>> mySettings = new ConcurrentHashMap<>();
 
   public ConceptEditorHintSettings() {
   }
 
   public ConceptEditorHintSettings(@NotNull LanguageRegistry languageRegistry) {
-    languageRegistry.withAvailableLanguages(language -> {
+    init(languageRegistry, languageRegistry.getAllLanguages());
+  }
+
+  public ConceptEditorHintSettings(@NotNull LanguageRegistry languageRegistry, @NotNull Iterable<SLanguage> languages) {
+    init(languageRegistry, languages);
+  }
+
+  private void init(@NotNull LanguageRegistry languageRegistry, @NotNull Iterable<SLanguage> languages) {
+    for (SLanguage slanguage : languages) {
+      LanguageRuntime language = languageRegistry.getLanguage(slanguage);
       EditorAspectDescriptor editorDescriptor = language.getAspect(EditorAspectDescriptor.class);
       if (editorDescriptor instanceof EditorHintsProvider) {
         String lang = language.getNamespace();
@@ -49,7 +60,7 @@ public class ConceptEditorHintSettings {
           }
         }
       }
-    });
+    }
   }
 
   @NotNull
@@ -82,6 +93,7 @@ public class ConceptEditorHintSettings {
     return mySettings.get(lang).keySet();
   }
 
+  @SuppressWarnings("WeakerAccess") // used by mbeddr
   public Set<String> getLanguagesNames() {
     return mySettings.keySet();
   }

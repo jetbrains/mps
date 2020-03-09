@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -295,7 +295,10 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isModelDisposed(SModel model) {
-    return ((SModelInternal) model).getDisposedStacktrace() != null;
+    if (model instanceof ModelWithDisposeInfo) {
+      return ((ModelWithDisposeInfo) model).isDisposed();
+    }
+    return model.getRepository() != null;
   }
   /**
    * 

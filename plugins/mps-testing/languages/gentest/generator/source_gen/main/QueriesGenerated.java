@@ -270,7 +270,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("7985317431307113950", new RTQ(0, "f"));
-    rtqMethods.put("7985317431307194769", new RTQ(1, "f"));
+    rtqMethods.put("7985317431307194769", new RTQ(1, "i"));
     rtqMethods.put("7985317431307179476", new RTQ(2, "f"));
     rtqMethods.put("6346338635721222466", new RTQ(3, "f"));
     rtqMethods.put("6346338635721222489", new RTQ(4, "f"));

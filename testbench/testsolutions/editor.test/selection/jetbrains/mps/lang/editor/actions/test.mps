@@ -370,6 +370,11 @@
         <child id="6997653033587013241" name="customPlaceholder" index="21vXSy" />
         <child id="6866182640452532268" name="multipleChildren" index="30quMn" />
       </concept>
+      <concept id="5721350981294406897" name="jetbrains.mps.lang.editor.editorTest.structure.AutodeletableChild" flags="ng" index="341eUm" />
+      <concept id="5721350981294406896" name="jetbrains.mps.lang.editor.editorTest.structure.ContainerConcept" flags="ng" index="341eUn">
+        <property id="5721350981294508816" name="prop" index="340x_R" />
+        <child id="5721350981294406898" name="child" index="341eUl" />
+      </concept>
       <concept id="1465006755393550581" name="jetbrains.mps.lang.editor.editorTest.structure.ActionMapIndividualImportTester" flags="ng" index="34$Ksk">
         <property id="1465006755393550582" name="result" index="34$Ksn" />
       </concept>
@@ -12406,6 +12411,70 @@
               <property role="p6zMs" value="1" />
               <property role="LIFWd" value="Constant_evgwyu_c0" />
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="4XAkAubrjer">
+    <property role="TrG5h" value="DeleteAutodeletable" />
+    <node concept="1qefOq" id="4XAkAubrjfs" role="25YQCW">
+      <node concept="341eUn" id="4XAkAubrjfC" role="1qenE9">
+        <property role="340x_R" value="1" />
+        <node concept="341eUm" id="4XAkAubrjfM" role="341eUl">
+          <node concept="LIFWc" id="4XAkAubrjgc" role="lGtFl">
+            <property role="ZRATv" value="true" />
+            <property role="OXtK3" value="true" />
+            <property role="p6zMq" value="4" />
+            <property role="p6zMs" value="4" />
+            <property role="LIFWd" value="Constant_1ywu16_a" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="4XAkAubrjfO" role="25YQFr">
+      <node concept="341eUn" id="4XAkAubrjg0" role="1qenE9">
+        <property role="340x_R" value="2" />
+        <node concept="LIFWc" id="4XAkAubrjge" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="0" />
+          <property role="p6zMs" value="0" />
+          <property role="LIFWd" value="empty_child" />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="4XAkAubrjgg" role="LjaKd">
+      <node concept="3clFbF" id="4XAkAubrn9H" role="3cqZAp">
+        <node concept="2YIFZM" id="4XAkAubrn9I" role="3clFbG">
+          <ref role="37wK5l" to="tp6m:14TMHtHs1EN" resolve="runWithTwoStepDeletion" />
+          <ref role="1Pybhc" to="tp6m:5s44y2Lh6_5" resolve="EditorTestUtil" />
+          <node concept="1bVj0M" id="4XAkAubrn9J" role="37wK5m">
+            <node concept="3clFbS" id="4XAkAubrn9K" role="1bW5cS">
+              <node concept="2HxZob" id="4XAkAubrjkE" role="3cqZAp">
+                <node concept="1iFQzN" id="4XAkAubrjkQ" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+                </node>
+              </node>
+              <node concept="2HxZob" id="4XAkAubrjl9" role="3cqZAp">
+                <node concept="1iFQzN" id="4XAkAubrjla" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+                </node>
+              </node>
+              <node concept="2HxZob" id="4XAkAubrjln" role="3cqZAp">
+                <node concept="1iFQzN" id="4XAkAubrjlo" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+                </node>
+              </node>
+              <node concept="2HxZob" id="4XAkAubrjlB" role="3cqZAp">
+                <node concept="1iFQzN" id="4XAkAubrjlC" role="3iKnsn">
+                  <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbT" id="4XAkAubrnaf" role="37wK5m">
+            <property role="3clFbU" value="true" />
           </node>
         </node>
       </node>

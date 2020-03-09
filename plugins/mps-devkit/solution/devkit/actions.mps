@@ -142,6 +142,7 @@
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
+    <import index="dp1x" ref="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="wff5" ref="r:2ac18004-8536-478a-bf05-03a0f407633f(jetbrains.mps.lang.feedback.skeleton.structure)" implicit="true" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
@@ -4251,37 +4252,27 @@
     <property role="fJN8o" value="true" />
     <property role="TrG5h" value="PrintNodeID" />
     <property role="3GE5qa" value="InternalActions" />
-    <property role="2uzpH1" value="Print Node ID To System.out" />
+    <property role="2uzpH1" value="Copy Node ID" />
     <node concept="tnohg" id="2jM9X_IgWXA" role="tncku">
       <node concept="3clFbS" id="2jM9X_IgWXB" role="2VODD2">
-        <node concept="3clFbF" id="2jM9X_IgWXC" role="3cqZAp">
-          <node concept="2OqwBi" id="2jM9X_IgWXD" role="3clFbG">
-            <node concept="10M0yZ" id="2jM9X_IgWXE" role="2Oq$k0">
-              <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
-              <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
-            </node>
-            <node concept="liA8E" id="2jM9X_IgWXF" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
-              <node concept="3cpWs3" id="2jM9X_IgWXG" role="37wK5m">
-                <node concept="2OqwBi" id="5nAzUdZif1N" role="3uHU7w">
-                  <node concept="2OqwBi" id="5nAzUdZif1O" role="2Oq$k0">
-                    <node concept="liA8E" id="24cAaiUz$hT" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
-                    </node>
-                    <node concept="2OqwBi" id="5nAzUdZif1P" role="2Oq$k0">
-                      <node concept="2WthIp" id="5nAzUdZif1Q" role="2Oq$k0" />
-                      <node concept="1DTwFV" id="5nAzUdZif1R" role="2OqNvi">
-                        <ref role="2WH_rO" node="2jM9X_IgWXN" resolve="node" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="5nAzUdZif1T" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
+        <node concept="3clFbF" id="4npc6Q0ooGG" role="3cqZAp">
+          <node concept="2YIFZM" id="241570iWKR8" role="3clFbG">
+            <ref role="37wK5l" to="dp1x:5tGs5KqKiI4" resolve="copyTextToClipboard" />
+            <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
+            <node concept="2OqwBi" id="7S22xyoGO6z" role="37wK5m">
+              <node concept="2OqwBi" id="7S22xyoGO6$" role="2Oq$k0">
+                <node concept="liA8E" id="7S22xyoGO6_" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
+                </node>
+                <node concept="2OqwBi" id="7S22xyoGO6A" role="2Oq$k0">
+                  <node concept="2WthIp" id="7S22xyoGO6B" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="7S22xyoGO6C" role="2OqNvi">
+                    <ref role="2WH_rO" node="2jM9X_IgWXN" resolve="node" />
                   </node>
                 </node>
-                <node concept="Xl_RD" id="2jM9X_IgWXM" role="3uHU7B">
-                  <property role="Xl_RC" value="ID = " />
-                </node>
+              </node>
+              <node concept="liA8E" id="7S22xyoGO6D" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
               </node>
             </node>
           </node>

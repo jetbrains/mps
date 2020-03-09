@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -207,8 +207,8 @@ public class SModel implements SModelData, UpdateModeSupport {
 
     SNode sn = (SNode) node;
     myRoots.add(sn);
-    sn.attach(myNodeOwner);
-    myNodeOwner.performUndoableAction(node, new AddRootUndoableAction(node));
+    myNodeOwner.registerNode(sn);
+    myNodeOwner.performUndoableAction(new AddRootUndoableAction(node));
     myNodeOwner.fireNodeAdd(null, null, sn, null);
   }
 
@@ -220,14 +220,10 @@ public class SModel implements SModelData, UpdateModeSupport {
       myNodeOwner.fireBeforeNodeRemove(null, null, (SNode) node, null);
       // performing undoable action while node is still in the model because VirtualFiles
       // (and so documents) are available only for those nodes existing in the model.
-      myNodeOwner.performUndoableAction(node, new RemoveRootUndoableAction(node, myModelDescriptor));
+      myNodeOwner.performUndoableAction(new RemoveRootUndoableAction(node, myModelDescriptor));
       myRoots.remove(node);
       SNode sn = (SNode) node;
-      if (!isUpdateMode()) {
-        // see SNode.removeChild for rant about isUpdateMode()
-        sn.makeReferencesDirect();
-      }
-      sn.detach(new DetachedNodeOwner(this));
+      myNodeOwner.unregisterNode(sn);
       myNodeOwner.fireNodeRemove(null, null, sn, null);
     }
   }
@@ -322,20 +318,23 @@ public class SModel implements SModelData, UpdateModeSupport {
 //---------listeners--------
 
   /**
-   * Name clash with {@link SNodeOwner#performUndoableAction(org.jetbrains.mps.openapi.model.SNode, SNodeUndoableAction)} is unfortunate.
+   * Name clash with {@link SNodeOwner#performUndoableAction(SNodeUndoableAction)} is unfortunate.
    * This one is rather 'registerActionWithUndo'.
    */
   protected void performUndoableAction(@NotNull SNodeUndoableAction action) {
     if (!canFireEvent()) {
       return;
     }
-    UndoHelper.getInstance().addUndoableAction(action);
+    // indeed, it's not nice to go back and forth from SNodeOwner, but I care to
+    // get the overall picture fixed at the moment. There's subclass that needs to
+    // control undo, need to fit it into the story
+    myNodeOwner.commandContext().registerActionWithUndo(action);
   }
 
   //todo code in the following methods should be written w/o duplication
 
   public boolean canFireEvent() {
-    return myModelDescriptor != null && jetbrains.mps.util.SNodeOperations.isRegistered(myModelDescriptor) && !isUpdateMode();
+    return myModelDescriptor != null && myModelDescriptor.getRepository() != null && !isUpdateMode();
   }
 
   public boolean canFireReadEvent() {

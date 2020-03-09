@@ -8,16 +8,14 @@ import jetbrains.mps.ide.platform.dependencyViewer.DependenciesPanel;
 import com.intellij.openapi.project.Project;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.wm.ToolWindowAnchor;
-import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.platform.dependencyViewer.DependencyViewerScope;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.platform.dependencyViewer.DependencyViewerScope;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.ide.project.ProjectHelper;
 import javax.swing.JComponent;
 
 @GeneratedClass(node = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)/3137902298078256639", model = "r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)")
 public class AnalyzeDependenciesViewTool extends BaseProjectTool {
-
   private DependenciesPanel myDependenciesPanel;
 
   public AnalyzeDependenciesViewTool(Project project) {
@@ -36,18 +34,7 @@ public class AnalyzeDependenciesViewTool extends BaseProjectTool {
 
   @Override
   protected void createTool() {
-    // FIXME construct UI lazily, on demand 
-    myDependenciesPanel = new DependenciesPanel(this, ProjectHelper.fromIdeaProject(getProject()));
-  }
-
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.ide.platform.actions.AnalyzeDependenciesViewTool#setContent(DependencyViewerScope, DependencyViewerScope, boolean) } instead (second scope == null, meta == false)
-   */
-  @Deprecated
-  @ToRemove(version = 2019.1)
-  public void setContent(DependencyViewerScope scope) {
-    mainPanelLazy().resetContent(scope, false);
+    // constructs UI lazily, on demand, see getComponent 
   }
 
   public void setContent(@NotNull DependencyViewerScope from, @Nullable DependencyViewerScope limitTo, boolean meta) {
@@ -55,12 +42,14 @@ public class AnalyzeDependenciesViewTool extends BaseProjectTool {
   }
 
   private DependenciesPanel mainPanelLazy() {
-    // FIXME refactor along with getComponent() to construct UI on demand 
+    if (myDependenciesPanel == null) {
+      myDependenciesPanel = new DependenciesPanel(this, ProjectHelper.fromIdeaProject(getProject()));
+    }
     return myDependenciesPanel;
   }
 
   @Override
   public JComponent getComponent() {
-    return myDependenciesPanel;
+    return mainPanelLazy();
   }
 }

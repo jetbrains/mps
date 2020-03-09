@@ -708,7 +708,7 @@
       <node id="5532289631192184243" at="54,0,57,0" concept="7" trace="prepare#(Ljava/lang/Runnable;)V" />
       <node id="3872874963723045751" at="57,116,60,5" concept="6" />
       <node id="1817798995038281877" at="62,0,65,0" concept="7" trace="select#(Ljetbrains/mps/refactoring/participant/RefactoringParticipant/Option;)Ljava/lang/String;" />
-      <node id="3872874963722999869" at="65,146,68,5" concept="6" />
+      <node id="3872874963722999869" at="65,144,68,5" concept="6" />
       <node id="3872874963722999881" at="70,0,73,0" concept="7" trace="select#(Ljava/lang/Integer;)Ljetbrains/mps/refactoring/participant/RefactoringParticipant/Option;" />
       <node id="3818729150937331619" at="85,39,88,15" concept="6" />
       <node id="3818729150937328056" at="105,48,108,13" concept="6" />
@@ -716,7 +716,7 @@
       <node id="5271515234663598686" at="118,0,121,0" concept="7" trace="canExecute#()Z" />
       <node id="5271515234663598692" at="121,0,125,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/ide/findusages/model/SearchResults;" />
       <node id="5532289631192148818" at="40,0,45,0" concept="1" trace="DefaultRefactoringUI#(Lcom/intellij/openapi/project/Project;Lorg/jetbrains/mps/openapi/module/SRepository;Ljava/lang/String;)V" />
-      <node id="3872874963722999862" at="60,5,65,146" concept="8" />
+      <node id="3872874963722999862" at="60,5,65,144" concept="8" />
       <node id="3872874963723011872" at="68,5,73,24" concept="9" />
       <node id="8821602715296162359" at="45,0,51,0" concept="1" trace="DefaultRefactoringUI#(Ljetbrains/mps/project/MPSProject;)V" />
       <node id="2879121209715195062" at="102,16,109,11" concept="17" />

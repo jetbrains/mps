@@ -142,7 +142,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
   private void findUsages(IResultProvider provider, final SearchQuery query, final UsageToolOptions options) {
     final SearchTaskImpl searchTask = new SearchTaskImpl(ProjectHelper.fromIdeaProject(getProject()), provider, query);
     ThreadUtils.runInUIThreadNoWait(() -> new Backgroundable(getProject(), "Searching", true, PerformInBackgroundOption.DEAF) {
-      private SearchResults searchResults;
+      private SearchResults<?> searchResults;
 
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
@@ -156,25 +156,27 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
     }.queue());
   }
 
-  public void show(SearchResults results, String notFoundMsg) {
+  public void show(SearchResults<?> results, String notFoundMsg) {
     show(results, notFoundMsg, null);
   }
 
-  public void show(SearchResults results, String notFoundMsg, @Nullable INodeRepresentator representator) {
+  public <T> void show(SearchResults<T> results, String notFoundMsg, @Nullable INodeRepresentator<T> representator) {
     ThreadUtils.assertEDT();
-    showResults(null, results, new UsageToolOptions().navigateIfSingle(false).forceNewTab(true).allowRunAgain(false).notFoundMessage(notFoundMsg), representator);
+    showResults(null, results, new UsageToolOptions().navigateIfSingle(false).allowRunAgain(false).notFoundMessage(notFoundMsg), representator);
   }
 
-  @Nullable
-  private void showResults(SearchTaskImpl searchTask, final SearchResults<?> searchResults, UsageToolOptions options, @Nullable INodeRepresentator representator) {
+  public <T> void showResults(@Nullable SearchTaskImpl searchTask, final SearchResults<T> searchResults, UsageToolOptions options, @Nullable INodeRepresentator<T> representator) {
+    if (options.myRunAgain && searchTask == null) {
+      throw new IllegalStateException("Search task should be provided to allow rerunning.");
+    }
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
-    int resCount = searchResults.getSearchResults().size();
+    int resCount = searchResults.getSearchResults2().size();
     if (resCount == 0) {
       final ToolWindowManager manager = ToolWindowManager.getInstance(getProject());
       manager.notifyByBalloon(TOOL_WINDOW_ID, MessageType.INFO, options.myNotFoundMessage, null, null);
       return;
     } else if (resCount == 1 && options.myNavigateIfSingle) {
-      final SearchResult<?> searchResult = searchResults.getSearchResults().get(0);
+      final SearchResult<?> searchResult = searchResults.getSearchResults2().get(0);
       if (searchResult.getObject() instanceof SNode) {
         final SNode node = (SNode) searchResult.getObject();
         new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(node.getReference());
@@ -417,7 +419,7 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
 
         @Nullable
         @Override
-        public Object getData(@NonNls String dataId) {
+        public Object getData(@NotNull String dataId) {
           if (MPSCommonDataKeys.CONTEXT_MODEL.is(dataId)) {
             SNode resolved = searchedNode.resolve(myRepository);
             return resolved == null ? null : resolved.getModel();

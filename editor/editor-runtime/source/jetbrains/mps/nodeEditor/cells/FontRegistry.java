@@ -19,6 +19,7 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
@@ -93,7 +94,7 @@ public class FontRegistry {
     Font result = myFontsCache.get(key);
     if (result == null) {
       Pair<String, Integer> realFontName = getRealFontNameAndStyle(fontName, style);
-      result = new Font(realFontName.o1, realFontName.o2, size);
+      result = UIUtil.getFontWithFallback(realFontName.o1, realFontName.o2, size);
       myFontsCache.put(key, result);
     }
     return result;

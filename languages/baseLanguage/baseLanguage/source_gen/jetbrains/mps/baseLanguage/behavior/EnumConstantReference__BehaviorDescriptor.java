@@ -28,14 +28,22 @@ public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescr
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getClassifier_id7S22xyoLQG7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7S22xyoLQG7").build();
+  public static final SMethod<Void> setClassifier_id7S22xyoLQH8 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setClassifier").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7S22xyoLQH8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getClassifier_id7S22xyoLQG7, setClassifier_id7S22xyoLQH8);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     return ((SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ) != null) ? new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ))) : new EmptyScope());
+  }
+  /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.enumClass$9jPZ);
+  }
+  /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
+    SLinkOperations.setTarget(__thisNode__, LINKS.enumClass$9jPZ, (SNode) classifier);
   }
 
   /*package*/ EnumConstantReference__BehaviorDescriptor() {
@@ -55,6 +63,11 @@ public final class EnumConstantReference__BehaviorDescriptor extends BaseBHDescr
     switch (methodIndex) {
       case 0:
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+      case 1:
+        return (T) ((SNode) getClassifier_id7S22xyoLQG7(node));
+      case 2:
+        setClassifier_id7S22xyoLQH8(node, (SNode) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }

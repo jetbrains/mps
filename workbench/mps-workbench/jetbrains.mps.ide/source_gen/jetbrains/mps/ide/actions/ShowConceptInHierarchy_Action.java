@@ -11,15 +11,17 @@ import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.ide.hierarchy.HierarchyViewTool;
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,7 +41,7 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return (ShowConceptInHierarchy_Action.this.getConceptNode(_params) != null);
+    return (ShowConceptInHierarchy_Action.this.getConceptNode(event) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -52,49 +54,45 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
-      MapSequence.fromMap(_params).put("ideaProject", p);
       if (p == null) {
         return false;
       }
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      MapSequence.fromMap(_params).put("selectedNode", node);
       if (node == null) {
         return false;
       }
     }
     {
       EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
-      MapSequence.fromMap(_params).put("editorCell", p);
     }
     {
       Editor p = event.getData(MPSEditorDataKeys.MPS_EDITOR);
-      MapSequence.fromMap(_params).put("editor", p);
     }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final HierarchyViewTool tool = ((Project) MapSequence.fromMap(_params).get("ideaProject")).getComponent(HierarchyViewTool.class);
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        tool.showItemInHierarchy(ShowConceptInHierarchy_Action.this.getConceptNode(_params));
+    final HierarchyViewTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(HierarchyViewTool.class);
+    SNodeReference cd = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<SNodeReference>() {
+      public SNodeReference compute() {
+        return SNodeOperations.getPointer(ShowConceptInHierarchy_Action.this.getConceptNode(event));
       }
     });
+    tool.showItemInHierarchy(cd);
     tool.openToolLater(true);
   }
-  private SNode getConceptNode(final Map<String, Object> _params) {
+  private SNode getConceptNode(final AnActionEvent event) {
 
-    if (((EditorCell) MapSequence.fromMap(_params).get("editorCell")) != null) {
-      SNode refNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
+    if (event.getData(MPSEditorDataKeys.EDITOR_CELL) != null) {
+      SNode refNode = APICellAdapter.getSNodeWRTReference(event.getData(MPSEditorDataKeys.EDITOR_CELL));
       if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.AbstractConceptDeclaration$UN)) {
         return SNodeOperations.cast(refNode, CONCEPTS.AbstractConceptDeclaration$UN);
       }
@@ -106,14 +104,14 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
       }
     }
 
-    SNode outerConcept = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.AbstractConceptDeclaration$UN, true, false);
+    SNode outerConcept = SNodeOperations.getNodeAncestor(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.AbstractConceptDeclaration$UN, true, false);
     if (outerConcept != null) {
       return outerConcept;
     }
 
-    if (((Editor) MapSequence.fromMap(_params).get("editor")) instanceof TabbedEditor) {
-      TabbedEditor tabbedEditor = (TabbedEditor) ((Editor) MapSequence.fromMap(_params).get("editor"));
-      SNode editedNode = tabbedEditor.getCurrentlyEditedNode().resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository());
+    if (event.getData(MPSEditorDataKeys.MPS_EDITOR) instanceof TabbedEditor) {
+      TabbedEditor tabbedEditor = (TabbedEditor) event.getData(MPSEditorDataKeys.MPS_EDITOR);
+      SNode editedNode = tabbedEditor.getCurrentlyEditedNode().resolve(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository());
       if (!(SNodeOperations.isInstanceOf(editedNode, CONCEPTS.AbstractConceptDeclaration$UN))) {
         return null;
       }

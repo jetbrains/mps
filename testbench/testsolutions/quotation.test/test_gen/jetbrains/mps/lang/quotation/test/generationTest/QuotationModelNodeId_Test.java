@@ -18,9 +18,13 @@ import jetbrains.mps.smodel.SNodeId;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import junit.framework.Assert;
+import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -43,6 +47,10 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
   public void test_quotation_nodeId() throws Throwable {
     new TestBody(this).test_quotation_nodeId();
   }
+  @Test
+  public void test_quotationTreeNodeId() throws Throwable {
+    new TestBody(this).test_quotationTreeNodeId();
+  }
 
   /*package*/ static class TestBody extends BaseTestBody {
 
@@ -53,7 +61,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     public void test_lightQuotation_nodeId() throws Exception {
       SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
       SNodeId.Regular id = new SNodeId.Regular(239);
-      SNode node = createReturnStatement_fw7ydn_a0c0d8(model, id);
+      SNode node = createReturnStatement_fw7ydn_a0c0d9(model, id);
       SModelOperations.addRootNode(model, node);
       Assert.assertTrue(node.getNodeId().equals(id));
       TemporaryModels.getInstance().dispose(model);
@@ -61,25 +69,56 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     public void test_quotation_nodeId() throws Exception {
       SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
       SNodeId.Regular id = new SNodeId.Regular(239);
-      SNode node = _quotation_createNode_fw7ydn_a0c0e8(model, id);
+      SNode node = _quotation_createNode_fw7ydn_a0c0e9(model, id);
       SModelOperations.addRootNode(model, node);
       Assert.assertTrue(node.getNodeId().equals(id));
       TemporaryModels.getInstance().dispose(model);
     }
+    public void test_quotationTreeNodeId() throws Exception {
+      // when quotation constructs a tree of nodes, make sure it's only the top one that gets the id 
+      SNodeId.Regular id = new SNodeId.Regular(239);
+      SNode node = _quotation_createNode_fw7ydn_a0c0f9(null, id);
+      Assert.assertTrue(Objects.equals(node.getNodeId(), id));
+      Assert.assertEquals(2, ListSequence.fromList(SNodeOperations.getChildren(node)).count());
+      Assert.assertFalse(Objects.equals(ListSequence.fromList(SNodeOperations.getChildren(node)).getElement(0).getNodeId(), id));
+      Assert.assertFalse(Objects.equals(ListSequence.fromList(SNodeOperations.getChildren(node)).getElement(1).getNodeId(), id));
+    }
 
 
-    private static SNode createReturnStatement_fw7ydn_a0c0d8(SModel modelToCreate, org.jetbrains.mps.openapi.model.SNodeId nodeId) {
+    private static SNode createReturnStatement_fw7ydn_a0c0d9(SModel modelToCreate, org.jetbrains.mps.openapi.model.SNodeId nodeId) {
       SNodeBuilder n0 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.ReturnStatement$SF);
       n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
       return n0.getResult();
     }
-    private static SNode _quotation_createNode_fw7ydn_a0c0e8(Object parameter_1, Object parameter_2) {
+    private static SNode _quotation_createNode_fw7ydn_a0c0e9(Object parameter_1, Object parameter_2) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNode quotedNode_3 = null;
       SNode quotedNode_4 = null;
       quotedNode_3 = new SNodeBuilder((SModel) parameter_1, (org.jetbrains.mps.openapi.model.SNodeId) parameter_2).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement")).getResult();
-      quotedNode_4 = new SNodeBuilder((SModel) parameter_1, (org.jetbrains.mps.openapi.model.SNodeId) parameter_2).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral")).getResult();
+      quotedNode_4 = new SNodeBuilder((SModel) parameter_1, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral")).getResult();
       quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_4);
+      return quotedNode_3;
+    }
+    private static SNode _quotation_createNode_fw7ydn_a0c0f9(Object parameter_1, Object parameter_2) {
+      PersistenceFacade facade = PersistenceFacade.getInstance();
+      SNode quotedNode_3 = null;
+      SNode quotedNode_4 = null;
+      SNode quotedNode_5 = null;
+      SNode quotedNode_6 = null;
+      SNode quotedNode_7 = null;
+      SNode quotedNode_8 = null;
+      quotedNode_3 = new SNodeBuilder((SModel) parameter_1, (org.jetbrains.mps.openapi.model.SNodeId) parameter_2).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b200L, "StatementList")).getResult();
+      quotedNode_4 = new SNodeBuilder((SModel) parameter_1, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")).getResult();
+      quotedNode_6 = new SNodeBuilder((SModel) parameter_1, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression")).getResult();
+      quotedNode_8 = new SNodeBuilder((SModel) parameter_1, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator")).getResult();
+      quotedNode_8.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"), quotedNode_8, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object.<init>()")));
+      quotedNode_6.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator"), quotedNode_8);
+      quotedNode_4.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression"), quotedNode_6);
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), quotedNode_4);
+      quotedNode_5 = new SNodeBuilder((SModel) parameter_1, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7feL, "ReturnStatement")).getResult();
+      quotedNode_7 = new SNodeBuilder((SModel) parameter_1, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral")).getResult();
+      quotedNode_5.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression"), quotedNode_7);
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement"), quotedNode_5);
       return quotedNode_3;
     }
   }

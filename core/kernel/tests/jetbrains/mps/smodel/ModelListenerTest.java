@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.smodel.ModelUndoTest.TestUndoHandler;
 import jetbrains.mps.smodel.TestModelFactory.TestModelAccess;
 import jetbrains.mps.smodel.TestModelFactory.TestRepository;
 import jetbrains.mps.smodel.event.SModelChildEvent;
@@ -43,7 +42,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ErrorCollector;
@@ -73,13 +71,6 @@ public class ModelListenerTest {
 
   private final TestModelAccess myTestModelAccess = new TestModelAccess();
   private final SRepository myTestRepo = new TestRepository(myTestModelAccess);
-
-  @Before
-  public void setUp() {
-    TestUndoHandler uh = new TestUndoHandler();
-    uh.needsUndo(false); // undo is not our focus here, we merely need to avoid NPE from ModelAccess.instance().isInsideCommand()
-    UndoHelper.getInstance().setUndoHandler(uh);
-  }
 
 
   /**

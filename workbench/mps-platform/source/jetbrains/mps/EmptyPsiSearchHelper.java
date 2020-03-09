@@ -17,6 +17,7 @@ package jetbrains.mps;
 
 import com.intellij.concurrency.AsyncFuture;
 import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReference;
@@ -42,6 +43,12 @@ public class EmptyPsiSearchHelper implements PsiSearchHelper {
   @Override
   public boolean processCommentsContainingIdentifier(@NotNull String identifier, @NotNull SearchScope searchScope, @NotNull Processor<? super PsiElement> processor) {
     return false;  //To change body of implemented methods use File | Settings | File Templates.
+  }
+
+  @Override
+  public boolean processCandidateFilesForText(@NotNull GlobalSearchScope scope, short searchContext, boolean caseSensitively, @NotNull String text,
+                                              @NotNull Processor<? super VirtualFile> processor) {
+    return false;
   }
 
   @NotNull

@@ -39,8 +39,10 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Boolean> canBeConvertedToLocal_id2RbFUmZleRt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeConvertedToLocal").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2RbFUmZleRt").build();
   public static final SMethod<Void> convertToLocal_id2RbFUmZlhob = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("convertToLocal").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2RbFUmZlhob").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<SNode> getClassifier_id7S22xyoLQG7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7S22xyoLQG7").build();
+  public static final SMethod<Void> setClassifier_id7S22xyoLQH8 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setClassifier").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7S22xyoLQH8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, canBeConvertedToLocal_id2RbFUmZleRt, convertToLocal_id2RbFUmZlhob, getPresentation_idhEwIMiw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getAvailableMethodDeclarations_id50EF2fWdwEN, canBeConvertedToLocal_id2RbFUmZleRt, convertToLocal_id2RbFUmZlhob, getPresentation_idhEwIMiw, getClassifier_id7S22xyoLQG7, setClassifier_id7S22xyoLQH8);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -70,6 +72,12 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$BsUa)) + "." + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$$A7i));
   }
+  /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$BsUa);
+  }
+  /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
+    SLinkOperations.setTarget(__thisNode__, LINKS.classConcept$BsUa, classifier);
+  }
 
   /*package*/ StaticMethodCall__BehaviorDescriptor() {
   }
@@ -95,6 +103,11 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
         return null;
       case 3:
         return (T) ((String) getPresentation_idhEwIMiw(node));
+      case 4:
+        return (T) ((SNode) getClassifier_id7S22xyoLQG7(node));
+      case 5:
+        setClassifier_id7S22xyoLQH8(node, (SNode) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }

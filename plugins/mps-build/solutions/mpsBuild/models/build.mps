@@ -28743,7 +28743,7 @@
       </node>
       <node concept="3_J27D" id="42kMDMFt4A5" role="m_cZH">
         <node concept="3Mxwew" id="42kMDMFt4A6" role="3MwsjC">
-          <property role="3MwjfP" value="mps-memmanagement" />
+          <property role="3MwjfP" value="mps-memtool" />
         </node>
       </node>
       <node concept="3_J27D" id="42kMDMFt4A7" role="m$_w8">
@@ -28757,7 +28757,7 @@
       <node concept="398BVA" id="42kMDMFt5bW" role="I30fb">
         <ref role="398BVh" node="5lGJ4TaqfAJ" resolve="plugin_home" />
         <node concept="2Ry0Ak" id="42kMDMFt5bX" role="iGT6I">
-          <property role="2Ry0Am" value="mps-memmanagement" />
+          <property role="2Ry0Am" value="mps-memtool" />
           <node concept="2Ry0Ak" id="42kMDMFt5bY" role="2Ry0An">
             <property role="2Ry0Am" value="META-INF" />
             <node concept="2Ry0Ak" id="42kMDMFt5bZ" role="2Ry0An">

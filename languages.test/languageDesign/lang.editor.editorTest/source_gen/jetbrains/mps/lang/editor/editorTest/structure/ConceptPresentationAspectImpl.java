@@ -20,6 +20,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AutoResolveChildWithErrorCell;
   private ConceptPresentation props_AutoResolveNodeToReference;
   private ConceptPresentation props_AutoResolveRoot;
+  private ConceptPresentation props_AutodeletableChild;
   private ConceptPresentation props_Bar;
   private ConceptPresentation props_BinaryExpression;
   private ConceptPresentation props_BracesBlock;
@@ -32,6 +33,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CompletionParent;
   private ConceptPresentation props_Composition;
   private ConceptPresentation props_Container;
+  private ConceptPresentation props_ContainerConcept;
   private ConceptPresentation props_CustomPlaceholder;
   private ConceptPresentation props_DelTestAbstractChild;
   private ConceptPresentation props_DelTestChild1;
@@ -221,6 +223,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AutoResolveRoot = cpb.create();
         }
         return props_AutoResolveRoot;
+      case LanguageConceptSwitch.AutodeletableChild:
+        if (props_AutodeletableChild == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("AutodeletableChild");
+          props_AutodeletableChild = cpb.create();
+        }
+        return props_AutodeletableChild;
       case LanguageConceptSwitch.Bar:
         if (props_Bar == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -303,6 +312,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Container = cpb.create();
         }
         return props_Container;
+      case LanguageConceptSwitch.ContainerConcept:
+        if (props_ContainerConcept == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ContainerConcept");
+          props_ContainerConcept = cpb.create();
+        }
+        return props_ContainerConcept;
       case LanguageConceptSwitch.CustomPlaceholder:
         if (props_CustomPlaceholder == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

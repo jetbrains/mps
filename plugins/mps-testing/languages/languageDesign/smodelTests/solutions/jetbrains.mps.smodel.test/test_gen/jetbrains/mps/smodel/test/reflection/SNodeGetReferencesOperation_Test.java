@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 @MPSLaunch
@@ -184,18 +183,24 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
           return (SLinkOperations.getTargetNode(it) == null);
         }
       }).isEmpty());
-      SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), LINKS.root$mWz0).delete();
-      UnregisteredNodes.instance().clear();
+      final SNode deletedNode = SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), LINKS.root$mWz0);
+      SNodeOperations.deleteNode(deletedNode);
       Assert.assertEquals(initialSize, ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count());
+      // the whole test method runs within a command, our model implementation makes sure reference resolution during 
+      // command works even for nodes deleted during the same command (UnregisteredNodes) 
+      // Perhaps, need another test to check association target truly gone once command is over 
       Iterable<SReference> brokenReferences = ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).where(new IWhereFilter<SReference>() {
         public boolean accept(SReference it) {
-          return jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(it) == null;
+          return SNodeOperations.getModel(SLinkOperations.getTargetNode(it)) == null;
         }
       });
       Assert.assertEquals(1, Sequence.fromIterable(brokenReferences).count());
       SReference theReference = Sequence.fromIterable(brokenReferences).first();
+      Assert.assertSame(deletedNode, SLinkOperations.getTargetNode(theReference));
+      // make sure that the link target is truly deleted from the model 
+      Assert.assertTrue(SNodeOperations.getModel(deletedNode) == null);
+      Assert.assertNull(SNodeOperations.getModel(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer")))).getNode(deletedNode.getNodeId()));
       Assert.assertEquals(LINKS.root$mWz0, SLinkOperations.getRefLink(theReference));
-      Assert.assertEquals(SLinkOperations.findLinkDeclaration(LINKS.root$mWz0), SLinkOperations.findLinkDeclaration(theReference));
       Assert.assertNotNull(SLinkOperations.getResolveInfo(theReference));
     }
     public void test_forNull() throws Exception {

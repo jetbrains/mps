@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,20 @@ public class BookmarksTool extends BaseProjectTool implements PersistentStateCom
   }
 
   @Override
+  public void disposeComponent() {
+    super.disposeComponent();
+    if (myTree != null) {
+      myTree.dispose();
+      myTree = null;
+    }
+  }
+
+  @Override
   protected void createTool() {
+    // no-op, tool instantiated lazily
+  }
+
+  private void createToolLazy() {
     myBookmarkManager = getProject().getComponent(BookmarkManager.class);
     myTree = new BookmarksTree(ProjectHelper.toMPSProject(getProject()), myBookmarkManager);
     myComponent = ScrollPaneFactory.createScrollPane(myTree);
@@ -61,6 +74,9 @@ public class BookmarksTool extends BaseProjectTool implements PersistentStateCom
 
   @Override
   public JComponent getComponent() {
+    if (myComponent == null) {
+      createToolLazy();
+    }
     return myComponent;
   }
 

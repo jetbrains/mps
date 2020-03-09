@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import junit.framework.Assert;
+import java.util.Objects;
 import jetbrains.mps.baseLanguage.tuples.util.A;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -31,7 +32,7 @@ public class IndexedTuples_Test extends TestCase {
     Assert.assertEquals("a", pair._1());
     Tuples._2<Integer, String> anotherPair = pair;
     Assert.assertTrue(((Object) anotherPair) == ((Object) pair));
-    Assert.assertTrue(MultiTuple.eq(anotherPair, pair));
+    Assert.assertTrue(Objects.equals(anotherPair, pair));
     Assert.assertEquals(pair, anotherPair);
     Assert.assertSame(1, (int) anotherPair._0());
     Assert.assertEquals("a", anotherPair._1());
@@ -77,12 +78,12 @@ public class IndexedTuples_Test extends TestCase {
   public void test_equalsOperator() throws Exception {
     Tuples._2<Integer, Character> tpl1 = MultiTuple.<Integer,Character>from(1, 'a');
     Tuples._2<Integer, Character> tpl2 = MultiTuple.<Integer,Character>from(1, 'a');
-    Assert.assertTrue(MultiTuple.eq(tpl1, tpl2));
-    Assert.assertFalse(!(MultiTuple.eq(tpl1, tpl2)));
+    Assert.assertTrue(Objects.equals(tpl1, tpl2));
+    Assert.assertFalse(!(Objects.equals(tpl1, tpl2)));
     tpl2._0(2);
     tpl1._1('b');
-    Assert.assertTrue(!(MultiTuple.eq(tpl1, tpl2)));
-    Assert.assertFalse(MultiTuple.eq(tpl1, tpl2));
+    Assert.assertTrue(!(Objects.equals(tpl1, tpl2)));
+    Assert.assertFalse(Objects.equals(tpl1, tpl2));
   }
   public void test_mps5466() throws Exception {
     Iterable<Tuples._2<String, Boolean>> seq = A.foo();

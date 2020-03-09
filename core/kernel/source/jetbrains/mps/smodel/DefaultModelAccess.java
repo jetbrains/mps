@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
+import org.jetbrains.mps.openapi.model.SModel;
+
 import javax.swing.SwingUtilities;
 
 /**
@@ -24,6 +26,7 @@ import javax.swing.SwingUtilities;
  * Evgeny Gryaznov, Sep 3, 2010
  */
 class DefaultModelAccess extends ModelAccess {
+  private final DefaultUndoHandler myUndoHandler = new DefaultUndoHandler();
 
   DefaultModelAccess() {
   }
@@ -81,6 +84,12 @@ class DefaultModelAccess extends ModelAccess {
     // The order of command/write notifications is different, does it matter? Is there contract for that? WorkbenchModelAccess sends out
     // command notifications from within a write!
     runWriteAction(myCommandActionDispatcher.wrap(r));
+  }
 
+  @Override
+  protected UndoHandler getUndoHandler(SModel model) {
+    // XXX perhaps, could be null?
+    // With no singleton UndoHelper.getInstance(), do we ever get to undo with DMA?
+    return myUndoHandler;
   }
 }

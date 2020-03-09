@@ -11,10 +11,10 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -34,8 +34,10 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Boolean> isCompileTimeConstant_idi1LOPRp = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCompileTimeConstant").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1LOPRp").build();
   public static final SMethod<Object> getCompileTimeConstantValue_idi1LP2xI = new SMethodBuilder<Object>(new SJavaCompoundTypeImpl(Object.class)).name("getCompileTimeConstantValue").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("i1LP2xI").build(SMethodBuilder.createJavaParameter(SModule.class, ""));
   public static final SMethod<Boolean> lvalue_id1653mnvAgpj = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("lvalue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgpj").build();
+  public static final SMethod<SNode> getClassifier_id7S22xyoLQG7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7S22xyoLQG7").build();
+  public static final SMethod<Void> setClassifier_id7S22xyoLQH8 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setClassifier").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7S22xyoLQH8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, lvalue_id1653mnvAgpj);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, lvalue_id1653mnvAgpj, getClassifier_id7S22xyoLQG7, setClassifier_id7S22xyoLQH8);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -72,6 +74,12 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
   /*package*/ static boolean lvalue_id1653mnvAgpj(@NotNull SAbstractConcept __thisConcept__) {
     return true;
   }
+  /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZTjE);
+  }
+  /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
+    SLinkOperations.setTarget(__thisNode__, LINKS.classifier$ZTjE, classifier);
+  }
 
   /*package*/ StaticFieldReference__BehaviorDescriptor() {
   }
@@ -92,6 +100,11 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
         return (T) ((Boolean) isCompileTimeConstant_idi1LOPRp(node));
       case 1:
         return (T) ((Object) getCompileTimeConstantValue_idi1LP2xI(node, (SModule) parameters[0]));
+      case 3:
+        return (T) ((SNode) getClassifier_id7S22xyoLQG7(node));
+      case 4:
+        setClassifier_id7S22xyoLQH8(node, (SNode) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }

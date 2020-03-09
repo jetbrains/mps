@@ -12,17 +12,26 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
-import java.util.Collection;
+import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collections;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
+import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
+import org.apache.log4j.Logger;
+import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.presentation.NodePresentationUtil;
+import jetbrains.mps.smodel.runtime.IconResource;
+import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class conceptFunctionParameters extends SubstituteMenuBase {
@@ -30,7 +39,7 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_4x8do5_a(), CONCEPTS.ConceptFunctionParameter$sy));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_4x8do5_a(), CONCEPTS.Expression$TP));
     return result;
   }
 
@@ -47,8 +56,26 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
   }
 
 
-  public class SMP_Concepts_4x8do5_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(SubstituteMenuContext _context) {
+  private class SMP_Param_4x8do5_a extends ParameterizedMenuPart<SConcept, SubstituteMenuItem, SubstituteMenuContext> {
+    @NotNull
+    @Override
+    protected List<SubstituteMenuItem> createItems(SConcept parameter, SubstituteMenuContext context) {
+      return new SMP_Action_4x8do5_a0(parameter).createItems(context);
+    }
+    @NotNull
+    @Override
+    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("parameterized substitute menu part", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "9079830899487410363")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+    @Nullable
+    @Override
+    protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
       List<SNode> functions = SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.ConceptFunction$Tt, false);
       // skip Closure 
       SNode parentFunction = ListSequence.fromList(functions).where(new IWhereFilter<SNode>() {
@@ -61,38 +88,99 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
       }
       return ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(parentFunction);
     }
+    private class SMP_Action_4x8do5_a0 extends SingleItemSubstituteMenuPart {
+      private final SConcept myParameterObject;
+      public SMP_Action_4x8do5_a0(SConcept parameterObject) {
+        myParameterObject = parameterObject;
+      }
 
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext _context) {
-      _context.getEditorMenuTrace().pushTraceInfo();
-      _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple actions for the list of concepts", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963359")));
-      try {
-        return super.createItems(_context);
-      } finally {
-        _context.getEditorMenuTrace().popTraceInfo();
+      @Nullable
+      @Override
+      protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+        Item item = new Item(_context);
+        String description;
+        try {
+          description = "Substitute item: " + item.getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+        } catch (Throwable t) {
+          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+          return null;
+        }
+
+        _context.getEditorMenuTrace().pushTraceInfo();
+        try {
+          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "9079830899487412016")));
+          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+        } finally {
+          _context.getEditorMenuTrace().popTraceInfo();
+        }
+
+        return item;
+      }
+      private class Item extends DefaultSubstituteMenuItem {
+        private final SubstituteMenuContext _context;
+        private EditorMenuTraceInfo myTraceInfo;
+        public Item(SubstituteMenuContext context) {
+          super(CONCEPTS.Expression$TP, context);
+          _context = context;
+        }
+
+        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+          myTraceInfo = traceInfo;
+        }
+
+        @Nullable
+        @Override
+        public SNode createNode(@NotNull String pattern) {
+          SModelInternal sModelInternal = as_4x8do5_a0a0a6e3f(_context.getModel(), SModelInternal.class);
+          if (!(sModelInternal.importedLanguageIds().contains(myParameterObject.getLanguage()))) {
+            sModelInternal.addLanguage(myParameterObject.getLanguage());
+          }
+          return SNodeFactoryOperations.createNewNode(myParameterObject, null);
+        }
+
+        @Override
+        public EditorMenuTraceInfo getTraceInfo() {
+          return myTraceInfo;
+        }
+        @NotNull
+        protected CompletionItemInformation createInformation(String pattern) {
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.Expression$TP, getMatchingText(pattern), getDescriptionText(pattern));
+        }
+        @Nullable
+        @Override
+        public String getMatchingText(@NotNull String pattern) {
+          if (myParameterObject instanceof SAbstractConcept) {
+            return NodePresentationUtil.matchingText((SAbstractConcept) myParameterObject);
+          }
+          return "" + myParameterObject;
+        }
+        @Nullable
+        @Override
+        public String getDescriptionText(@NotNull String pattern) {
+          if (myParameterObject instanceof SAbstractConcept) {
+            return NodePresentationUtil.descriptionText((SAbstractConcept) myParameterObject);
+          }
+          return "" + myParameterObject;
+        }
+        @Nullable
+        @Override
+        public IconResource getIcon(@NotNull String pattern) {
+          if (myParameterObject instanceof SAbstractConcept) {
+            return IconResourceUtil.getIconResourceForConcept(((SAbstractConcept) myParameterObject));
+          }
+          return null;
+        }
       }
     }
-    @Override
-    protected Collection<SubstituteMenuItem> createItemsForConcept(final SubstituteMenuContext _context, final SAbstractConcept concept) {
-      return new SimpleConceptSubstituteMenuPart(concept) {
-        @NotNull
-        @Override
-        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-          context.getEditorMenuTrace().pushTraceInfo();
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple action for concept: " + concept.getName(), null));
-          try {
-            return super.createItems(context);
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-        }
-      }.createItems(_context);
-    }
+
+  }
+  private static <T> T as_4x8do5_a0a0a6e3f(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunctionParameter$sy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
+    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
     /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
     /*package*/ static final SConcept Closure$5Q = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
   }

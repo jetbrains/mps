@@ -1864,5 +1864,29 @@
       <ref role="20lvS9" to="tpee:fzcmrck" resolve="IntegerConstant" />
     </node>
   </node>
+  <node concept="1TIwiD" id="4XAkAuboFNL">
+    <property role="EcuMT" value="5721350981294406897" />
+    <property role="TrG5h" value="AutodeletableChild" />
+    <property role="3GE5qa" value="autodeletable" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="4XAkAuboFNK">
+    <property role="EcuMT" value="5721350981294406896" />
+    <property role="TrG5h" value="ContainerConcept" />
+    <property role="19KtqR" value="true" />
+    <property role="3GE5qa" value="autodeletable" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="4XAkAubp4Gg" role="1TKVEl">
+      <property role="IQ2nx" value="5721350981294508816" />
+      <property role="TrG5h" value="prop" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="1TJgyj" id="4XAkAuboFNM" role="1TKVEi">
+      <property role="IQ2ns" value="5721350981294406898" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="child" />
+      <ref role="20lvS9" node="4XAkAuboFNL" resolve="AutodeletableChild" />
+    </node>
+  </node>
 </model>
 

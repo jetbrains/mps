@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,12 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   private static final Object USER_OBJECT_LOCK = new Object();
 
   /**
-   * inv: all children of a node, inclusive, have the same owner
+   * For an attached node, owner of the node and all its children is the same, the same instance of AttachedNodeOwner.
+   * For a detached node, owner is DetachedNodeOwner. Its children, however, may be FreeFloatNodeOwner.
+   * For a newly created, free-floating node, owner if FreeFloatNodeOwner. Children of a free-floating node, however, could have DetachedNodeOwner in case
+   * they were previously removed (aka detached) from a model.
+   * Once node is attached to a model, {@link AttachedNodeOwner#registerNode(SNode)} is responsible to ensure complete hierarchy of added node, whether it's
+   * detached, free-floating or mixed, is initialized with the same AttachedNodeOwner of the model itself.
    */
   @NotNull
   private SNodeOwner myOwner = FreeFloatNodeOwner.INSTANCE;
@@ -182,21 +187,10 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
     children_remove(wasChild);
     wasChild.myRoleInParent = null;
-    SModel model = myOwner.getModel();
-    if (model != null && !model.isUpdateMode()) {
-      // XXX no idea what this isUpdateMode() check is about, used to be in SNode.detach()
-      //     it dates back to e64402e1, I suspect it might be a performance optimization
-      //     (nobody gonna access references of a node that has been removed during internal update process)
-      //
-      // makeDirect has been separated from detach() code to give better control over reference resolution time.
-      // indeed, in a perfect world we would know all nodes to be deleted during a command beforehand, and could process their references at once.
-      // as it's not possible (node.sibling.detach could come right after node.detach) we at least go easy path for references within a detached subtree
-      wasChild.makeReferencesDirect();
-    }
-    // FIXME what if myOwner is DetachedNodeOwner - shall we make node free-floating or leave it as detached?
-    wasChild.detach(model == null ? myOwner : new DetachedNodeOwner(model));
 
-    myOwner.performUndoableAction(this, new RemoveChildUndoableAction(this, anchorNext, wasRole, wasChild));
+    myOwner.unregisterNode(wasChild);
+
+    myOwner.performUndoableAction(new RemoveChildUndoableAction(this, anchorNext, wasRole, wasChild));
     myOwner.fireNodeRemove(this, wasRole, wasChild, anchorPrev);
   }
 
@@ -433,17 +427,17 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     }
   }
 
-  void attach(@NotNull SNodeOwner nodeOwner) {
-    nodeOwner.registerNode(this);
-
-    myOwner = nodeOwner;
-
+  /**
+   * for a subtree starting at this node, ask all references to establish identity-backed target information, rather than instance-backed.
+   * This operation usually follows attachment of a node/subtree
+   */
+  final void makeReferencesIndirect() {
     for (SReference ref : myReferences) {
       ref.makeIndirect();
     }
 
     for (SNode child = firstChild(); child != null; child = child.treeNext()) {
-      child.attach(nodeOwner);
+      child.makeReferencesIndirect();
     }
   }
 
@@ -461,15 +455,12 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     }
   }
 
-  void detach(@NotNull SNodeOwner detachedOwner) {
-    myOwner.unregisterNode(this);
-
-    for (SNode child = firstChild(); child != null; child = child.treeNext()) {
-      child.detach(detachedOwner);
-    }
-
-    myOwner = detachedOwner;
-  }
+//  final void forEachInSubtree(Consumer<SNode> c) {
+//    c.accept(this);
+//    for (SNode child = firstChild(); child != null; child = child.treeNext()) {
+//      child.forEachInSubtree(c);
+//    }
+//  }
 
   @NotNull
   /*package*/ SNodeOwner getNodeOwner() {
@@ -478,6 +469,10 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     // and in ChildrenIterator, which I don't want to make non-static, nor don't want to pass SNodeOwner in there right now
     // FIXME revisit uses of this method, re-consider approach. E.g. perhaps SModel shall keep SNodeOwner instance?
     return myOwner;
+  }
+
+  /*package*/ void setNodeOwner(/*NotNull*/ SNodeOwner owner) {
+    myOwner = owner;
   }
 
   //--------private-------
@@ -490,7 +485,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     newArray[oldLen] = reference;
     myReferences = newArray;
 
-    myOwner.performUndoableAction(this, new InsertReferenceAtUndoableAction(this, reference));
+    myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, reference));
   }
 
   // perform inner structures update, doesn't dispatch any events
@@ -513,7 +508,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     System.arraycopy(myReferences, index + 1, newArray, index, myReferences.length - index - 1);
     myReferences = newArray;
 
-    myOwner.performUndoableAction(this, new RemoveReferenceAtUndoableAction(this, ref));
+    myOwner.performUndoableAction(new RemoveReferenceAtUndoableAction(this, ref));
   }
 
   protected SNode firstChild() {
@@ -651,7 +646,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
       myProperties[index + 1] = propertyValue;
     }
 
-    myOwner.performUndoableAction(this, new PropertyChangeUndoableAction(this, property, oldValue, propertyValue));
+    myOwner.performUndoableAction(new PropertyChangeUndoableAction(this, property, oldValue, propertyValue));
 
     myOwner.firePropertyChange(this, property, oldValue, propertyValue);
   }
@@ -796,9 +791,9 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
     schild.myRoleInParent = role;
     children_insertBefore(((SNode) anchor), schild);
 
-    schild.attach(myOwner);
+    myOwner.registerNode(schild);
 
-    myOwner.performUndoableAction(this, new InsertChildAtUndoableAction(this, anchor, role, child));
+    myOwner.performUndoableAction(new InsertChildAtUndoableAction(this, anchor, role, child));
 
     myOwner.fireNodeAdd(this, role, schild, (SNode) anchor);
   }

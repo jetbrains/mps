@@ -11,13 +11,14 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2662234144540708709", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
 public class PrintNodeID_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public PrintNodeID_Action() {
-    super("Print Node ID To System.out", "", ICON);
+    super("Copy Node ID", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.UNDO_PROJECT);
   }
@@ -40,6 +41,6 @@ public class PrintNodeID_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    System.out.println("ID = " + event.getData(MPSCommonDataKeys.NODE).getNodeId().toString());
+    CopyPasteUtil.copyTextToClipboard(event.getData(MPSCommonDataKeys.NODE).getNodeId().toString());
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,13 +77,14 @@ abstract class SNodeOwner {
   // establish SNode->SModel connection
 
   /**
-   * Nodes being attached (add/insert node to a model) to the owner announce themselves using this method.
+   * Introduce a node into the associated model
+   * Once a node is attached (add/insert) to a model, let the actual owner perform necessary activities (e.g. associate node hierarchy with the proper owner)
    * @param node non-null
    */
   void registerNode(SNode node) {
   }
   /**
-   * Nodes being detached from the owner announce themselves using this method.
+   * Tell the owner it no longer responsible for the node and its children.
    * @param node non-null
    */
   void unregisterNode(SNode node) {
@@ -94,8 +95,7 @@ abstract class SNodeOwner {
   /**
    * Notify environment there's a change in the model that could be undone. It's up to owner's discretion whether
    * the action shall end up in undo queue.
-   * @param node non-null
    * @param action non-null
    */
-  abstract void performUndoableAction(org.jetbrains.mps.openapi.model.SNode node, SNodeUndoableAction action);
+  abstract void performUndoableAction(SNodeUndoableAction action);
 }

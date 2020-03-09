@@ -3639,7 +3639,7 @@
               </node>
               <node concept="3cpWs3" id="7i7ttYT28li" role="37wK5m">
                 <node concept="Xl_RD" id="1$U7CSckq2u" role="3uHU7w">
-                  <property role="Xl_RC" value=": Select Participants" />
+                  <property role="Xl_RC" value="Select Participants" />
                 </node>
                 <node concept="1eOMI4" id="7i7ttYT2amn" role="3uHU7B">
                   <node concept="3K4zz7" id="7i7ttYT22mn" role="1eOMHV">

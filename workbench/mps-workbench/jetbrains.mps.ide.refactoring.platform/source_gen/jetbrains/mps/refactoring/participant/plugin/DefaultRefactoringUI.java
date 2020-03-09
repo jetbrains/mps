@@ -62,7 +62,7 @@ public class DefaultRefactoringUI implements RefactoringUI {
       public String select(RefactoringParticipant.Option it) {
         return it.getDescription();
       }
-    }).toListSequence(), ((myRefactoringName == null ? "" : myRefactoringName + ": ")) + ": Select Participants", "Select how to update usages:");
+    }).toListSequence(), ((myRefactoringName == null ? "" : myRefactoringName + ": ")) + "Select Participants", "Select how to update usages:");
     if (selectedOptionIndices == null) {
       return null;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -162,8 +162,11 @@ public abstract class SModuleBase implements SModule {
 
   private void fireBeforeModelRemoved(SModel model) {
     assertCanChange();
-
-    ImmatureReferences.getInstance().beforeModelRemoved(this, model);
+//  XXX I wonder if it's truly necessary to clean references kept in IR that point to deleted model
+//      if they get 'matured' at the end of a command, does it make them any worse? I suspect it might be target model reference
+//      gone that makes these broken references harder to analyze. Would like to figure it out.
+//      If necessary, could access MCC from repository's MA here and notify about model removal
+//    ImmatureReferences.getInstance().beforeModelRemoved(this, model);
     for (SModuleListener listener : myListeners) {
       try {
         listener.beforeModelRemoved(this, model);

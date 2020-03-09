@@ -5555,22 +5555,44 @@
         </node>
       </node>
       <node concept="3clFbS" id="5SJ0jl3iqxY" role="3clF47">
+        <node concept="3clFbJ" id="1hbNz5jdkpa" role="3cqZAp">
+          <node concept="3clFbS" id="1hbNz5jdkpc" role="3clFbx">
+            <node concept="3cpWs6" id="1hbNz5jdlDP" role="3cqZAp">
+              <node concept="2OqwBi" id="1hbNz5jdli3" role="3cqZAk">
+                <node concept="1eOMI4" id="1hbNz5jdl5E" role="2Oq$k0">
+                  <node concept="10QFUN" id="1hbNz5jdl5B" role="1eOMHV">
+                    <node concept="3uibUv" id="1hbNz5jdl5G" role="10QFUM">
+                      <ref role="3uigEE" to="g3l6:~ModelWithDisposeInfo" resolve="ModelWithDisposeInfo" />
+                    </node>
+                    <node concept="37vLTw" id="1hbNz5jdlyi" role="10QFUP">
+                      <ref role="3cqZAo" node="5SJ0jl3ip5c" resolve="model" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="1hbNz5jdlzT" role="2OqNvi">
+                  <ref role="37wK5l" to="g3l6:~ModelWithDisposeInfo.isDisposed()" resolve="isDisposed" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="1hbNz5jdkO0" role="3clFbw">
+            <node concept="3uibUv" id="1hbNz5jdkV0" role="2ZW6by">
+              <ref role="3uigEE" to="g3l6:~ModelWithDisposeInfo" resolve="ModelWithDisposeInfo" />
+            </node>
+            <node concept="37vLTw" id="1hbNz5jdk_N" role="2ZW6bz">
+              <ref role="3cqZAo" node="5SJ0jl3ip5c" resolve="model" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="5SJ0jl3iqxX" role="3cqZAp">
           <node concept="3y3z36" id="2R7EsbQQlqK" role="3cqZAk">
             <node concept="10Nm6u" id="2R7EsbQQlt2" role="3uHU7w" />
-            <node concept="2OqwBi" id="5SJ0jl3ivxB" role="3uHU7B">
-              <node concept="liA8E" id="5SJ0jl3iwIh" role="2OqNvi">
-                <ref role="37wK5l" to="g3l6:~ModelWithDisposeInfo.getDisposedStacktrace()" resolve="getDisposedStacktrace" />
+            <node concept="2OqwBi" id="1hbNz5jdmbQ" role="3uHU7B">
+              <node concept="37vLTw" id="1hbNz5jdlZc" role="2Oq$k0">
+                <ref role="3cqZAo" node="5SJ0jl3ip5c" resolve="model" />
               </node>
-              <node concept="1eOMI4" id="5SJ0jl3isES" role="2Oq$k0">
-                <node concept="10QFUN" id="5SJ0jl3isET" role="1eOMHV">
-                  <node concept="37vLTw" id="5SJ0jl3isER" role="10QFUP">
-                    <ref role="3cqZAo" node="5SJ0jl3ip5c" resolve="model" />
-                  </node>
-                  <node concept="3uibUv" id="1KRNqi_Ms1l" role="10QFUM">
-                    <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
-                  </node>
-                </node>
+              <node concept="liA8E" id="1hbNz5jdmjJ" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
               </node>
             </node>
           </node>

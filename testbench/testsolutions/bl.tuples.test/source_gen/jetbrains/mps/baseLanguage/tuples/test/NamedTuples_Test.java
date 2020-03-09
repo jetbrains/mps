@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.util.SharedPair;
 import java.util.List;
@@ -79,11 +79,11 @@ public class NamedTuples_Test extends TestCase {
     Data tpl1 = this.getData();
     Data tpl2 = this.getData();
     Assert.assertFalse(((Object) tpl1) == ((Object) tpl2));
-    Assert.assertTrue(MultiTuple.eq(tpl1, tpl2));
-    Assert.assertFalse(!(MultiTuple.eq(tpl1, tpl2)));
+    Assert.assertTrue(Objects.equals(tpl1, tpl2));
+    Assert.assertFalse(!(Objects.equals(tpl1, tpl2)));
     tpl2 = new Data(tpl2.bar(), tpl2.foo());
-    Assert.assertFalse(MultiTuple.eq(tpl1, tpl2));
-    Assert.assertTrue(!(MultiTuple.eq(tpl1, tpl2)));
+    Assert.assertFalse(Objects.equals(tpl1, tpl2));
+    Assert.assertTrue(!(Objects.equals(tpl1, tpl2)));
   }
   public void test_boolean() throws Exception {
     Bool truth = new Bool(true);
@@ -160,7 +160,7 @@ public class NamedTuples_Test extends TestCase {
     Assert.assertNotNull(pair);
   }
   public void test_implementsInterface() throws Exception {
-    Sample sample = new Sample(42);
+    Sample sample = new Sample(42, 0.0f);
     Assert.assertSame(42, sample.get());
     Assert.assertEquals("<42>", sample.getSample());
     ISample s = sample;

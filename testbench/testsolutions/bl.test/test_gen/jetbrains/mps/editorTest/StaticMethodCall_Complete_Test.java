@@ -37,7 +37,10 @@ public class StaticMethodCall_Complete_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("8475715909118790375", "8475715909118808416");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-      Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible() && getEditorComponent().getNodeSubstituteChooser().getNumberOfActions() == 2);
+      // .field 
+      // .method() 
+      // .class 
+      Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible() && getEditorComponent().getNodeSubstituteChooser().getNumberOfActions() == 3);
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
     }
   }

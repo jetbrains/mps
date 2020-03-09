@@ -9783,7 +9783,7 @@
         <node concept="2B6LJw" id="7nWAV$2m10J" role="2B76xF">
           <ref role="2B6OnR" to="qq03:~MPSCommonDataKeys$Description.description()" resolve="description" />
           <node concept="Xl_RD" id="7nWAV$2m10K" role="2B70Vg">
-            <property role="Xl_RC" value="selected packages" />
+            <property role="Xl_RC" value="current console tab" />
           </node>
         </node>
       </node>

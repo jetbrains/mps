@@ -74,7 +74,9 @@
       <concept id="7691029917083872157" name="jetbrains.mps.lang.test.structure.IRuleReference" flags="ng" index="2u4UPC">
         <reference id="8333855927540250453" name="declaration" index="39XzEq" />
       </concept>
-      <concept id="428590876651279930" name="jetbrains.mps.lang.test.structure.NodeTypeSystemErrorCheckOperation" flags="ng" index="2DdRWr" />
+      <concept id="428590876651279930" name="jetbrains.mps.lang.test.structure.NodeTypeSystemErrorCheckOperation" flags="ng" index="2DdRWr">
+        <child id="4649457259824818099" name="equationRef" index="MJxsd" />
+      </concept>
       <concept id="7011073693661765739" name="jetbrains.mps.lang.test.structure.InvokeActionStatement" flags="nn" index="2HxZob">
         <child id="1101347953350127927" name="actionReference" index="3iKnsn" />
       </concept>
@@ -94,6 +96,7 @@
         <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
         <property id="1229432188737" name="isLastPosition" index="ZRATv" />
       </concept>
+      <concept id="4649457259824807647" name="jetbrains.mps.lang.test.structure.TypesystemEquationReference" flags="ng" index="MGsTx" />
       <concept id="4531408400486526326" name="jetbrains.mps.lang.test.structure.WarningStatementReference" flags="ng" index="2PQEqo" />
       <concept id="4531408400484511853" name="jetbrains.mps.lang.test.structure.ReportErrorStatementReference" flags="ng" index="2PYRI3" />
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
@@ -560,6 +563,7 @@
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
       <concept id="1204980550705" name="jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation" flags="nn" index="2es0OD" />
+      <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
       <concept id="1224414427926" name="jetbrains.mps.baseLanguage.collections.structure.SequenceCreator" flags="nn" index="kMnCb">
         <child id="1224414456414" name="elementType" index="kMuH3" />
       </concept>
@@ -9496,6 +9500,14 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbF" id="1vBGqoDm_Z4" role="3cqZAp">
+              <node concept="37vLTI" id="1vBGqoDmAgN" role="3clFbG">
+                <node concept="10Nm6u" id="1vBGqoDmAkW" role="37vLTx" />
+                <node concept="37vLTw" id="1vBGqoDm_Z2" role="37vLTJ">
+                  <ref role="3cqZAo" node="6iLd9Ck7Yjb" resolve="myString5" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="1Pe0a1" id="INLPXP3Qhq" role="jymVt">
@@ -9507,6 +9519,20 @@
                 </node>
                 <node concept="37vLTw" id="2BHiRxeonNf" role="37vLTJ">
                   <ref role="3cqZAo" node="INLPXP3Qhf" resolve="ourStatic2" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3KIgzJ" id="1vBGqoDm_cT" role="jymVt">
+          <node concept="3clFbS" id="1vBGqoDm_cV" role="3KIlGz">
+            <node concept="3clFbF" id="1vBGqoDm_qX" role="3cqZAp">
+              <node concept="37vLTI" id="1vBGqoDm_Fn" role="3clFbG">
+                <node concept="Xl_RD" id="1vBGqoDm_IT" role="37vLTx">
+                  <property role="Xl_RC" value="2" />
+                </node>
+                <node concept="37vLTw" id="1vBGqoDm_qW" role="37vLTJ">
+                  <ref role="3cqZAo" node="INLPXP3QhD" resolve="myString2" />
                 </node>
               </node>
             </node>
@@ -12696,8 +12722,25 @@
                 <node concept="2YIFZM" id="3rohxPV7J4X" role="37wK5m">
                   <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
                   <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
-                  <node concept="7CXmI" id="3rohxPV7J50" role="lGtFl">
-                    <node concept="2DdRWr" id="60kNCHgUVNT" role="7EUXB" />
+                  <node concept="7CXmI" id="5aCBbpD9jBH" role="lGtFl">
+                    <node concept="2DdRWr" id="5aCBbpD9r8P" role="7EUXB">
+                      <node concept="MGsTx" id="5aCBbpD9r8Q" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:6ffEDrbzX0u" />
+                      </node>
+                      <node concept="1DMPye" id="5aCBbpD9r8R" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: incompatible types: java.lang.Number and java.lang.Object" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpD9rau" role="lGtFl">
+                  <node concept="1TM$A" id="5aCBbpD9yri" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD9yrj" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD9yrk" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -24575,6 +24618,16 @@
                     <node concept="2DdRWr" id="2aQPn0PsiS3" role="7EUXB" />
                   </node>
                 </node>
+                <node concept="7CXmI" id="1GyyBA1YRx6" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA1YUdI" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA1YUdJ" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1YUdK" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="3clFbF" id="6_1qUe43sKG" role="3cqZAp">
@@ -25243,6 +25296,16 @@
                   <property role="3cmrfH" value="10" />
                   <node concept="7CXmI" id="6_1qUe4d6Mp" role="lGtFl">
                     <node concept="2DdRWr" id="2aQPn0Psuu2" role="7EUXB" />
+                  </node>
+                </node>
+                <node concept="7CXmI" id="1GyyBA1YVyY" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA1YY0V" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA1YY0W" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1YY0X" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -28926,6 +28989,16 @@
                     <node concept="1TM$A" id="6iGg45HRWSN" role="7EUXB" />
                   </node>
                 </node>
+                <node concept="7CXmI" id="dSQg3T1__Y" role="lGtFl">
+                  <node concept="1TM$A" id="dSQg3T1AkE" role="7EUXB">
+                    <node concept="2PYRI3" id="dSQg3T1AkF" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="dSQg3T1AkG" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -31506,6 +31579,1086 @@
             <property role="G7GLP" value="true" />
           </node>
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="1GyyBA1YZ3_">
+    <property role="3GE5qa" value="typeSystem" />
+    <property role="TrG5h" value="IncompatibleMethodSignature" />
+    <node concept="1qefOq" id="1GyyBA1YZ3C" role="1SKRRt">
+      <node concept="312cEu" id="1GyyBA1YZ3A" role="1qenE9">
+        <property role="TrG5h" value="StaticMethodHolder" />
+        <node concept="2YIFZL" id="1GyyBA1YZfz" role="jymVt">
+          <property role="TrG5h" value="foo1" />
+          <node concept="3clFbS" id="1GyyBA1YZfA" role="3clF47" />
+          <node concept="3Tm1VV" id="1GyyBA1YZ7Z" role="1B3o_S" />
+          <node concept="3cqZAl" id="1GyyBA1YZjy" role="3clF45" />
+          <node concept="37vLTG" id="1GyyBA1YZns" role="3clF46">
+            <property role="TrG5h" value="a" />
+            <node concept="10Oyi0" id="1GyyBA1YZnr" role="1tU5fm" />
+          </node>
+        </node>
+        <node concept="2YIFZL" id="1GyyBA1Z1hd" role="jymVt">
+          <property role="TrG5h" value="foo2" />
+          <node concept="3clFbS" id="1GyyBA1Z1hg" role="3clF47" />
+          <node concept="3Tm1VV" id="1GyyBA1Z17Y" role="1B3o_S" />
+          <node concept="3cqZAl" id="1GyyBA1Z1gM" role="3clF45" />
+          <node concept="37vLTG" id="1GyyBA1Z1me" role="3clF46">
+            <property role="TrG5h" value="s" />
+            <node concept="17QB3L" id="1GyyBA1Z1md" role="1tU5fm" />
+          </node>
+          <node concept="37vLTG" id="1GyyBA1Z1nr" role="3clF46">
+            <property role="TrG5h" value="num" />
+            <node concept="3uibUv" id="1GyyBA1Z1rJ" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~Number" resolve="Number" />
+            </node>
+          </node>
+        </node>
+        <node concept="2YIFZL" id="1GyyBA1Z8JA" role="jymVt">
+          <property role="TrG5h" value="foo3" />
+          <node concept="3clFbS" id="1GyyBA1Z8JD" role="3clF47" />
+          <node concept="3Tm1VV" id="1GyyBA1Z8yj" role="1B3o_S" />
+          <node concept="3cqZAl" id="1GyyBA1Z8I8" role="3clF45" />
+          <node concept="37vLTG" id="1GyyBA1Z8QA" role="3clF46">
+            <property role="TrG5h" value="l" />
+            <node concept="_YKpA" id="1GyyBA1Z8Q$" role="1tU5fm">
+              <node concept="17QB3L" id="1GyyBA1Z8XM" role="_ZDj9" />
+            </node>
+          </node>
+        </node>
+        <node concept="2YIFZL" id="5aCBbpD$uIq" role="jymVt">
+          <property role="TrG5h" value="foo4" />
+          <node concept="3clFbS" id="5aCBbpD$uIt" role="3clF47" />
+          <node concept="3Tm1VV" id="5aCBbpD$uoe" role="1B3o_S" />
+          <node concept="3cqZAl" id="5aCBbpD$uEj" role="3clF45" />
+          <node concept="37vLTG" id="5aCBbpD$uT0" role="3clF46">
+            <property role="TrG5h" value="a" />
+            <node concept="17QB3L" id="5aCBbpD$uSZ" role="1tU5fm" />
+          </node>
+          <node concept="37vLTG" id="5aCBbpD$uXz" role="3clF46">
+            <property role="TrG5h" value="b" />
+            <node concept="8X2XB" id="5aCBbpD$vdN" role="1tU5fm">
+              <node concept="10Oyi0" id="5aCBbpD$v5K" role="8Xvag" />
+            </node>
+          </node>
+        </node>
+        <node concept="2YIFZL" id="5aCBbpD$R8M" role="jymVt">
+          <property role="TrG5h" value="foo5" />
+          <node concept="3clFbS" id="5aCBbpD$R8N" role="3clF47" />
+          <node concept="3Tm1VV" id="5aCBbpD$R8O" role="1B3o_S" />
+          <node concept="3cqZAl" id="5aCBbpD$R8P" role="3clF45" />
+          <node concept="37vLTG" id="5aCBbpD$R8Q" role="3clF46">
+            <property role="TrG5h" value="l" />
+            <node concept="3uibUv" id="5aCBbpD$SNE" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~List" resolve="List" />
+              <node concept="3uibUv" id="5aCBbpD$Te0" role="11_B2D">
+                <ref role="3uigEE" to="wyt6:~Number" resolve="Number" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2tJIrI" id="1GyyBA1YZnZ" role="jymVt" />
+        <node concept="2YIFZL" id="1GyyBA1YZ$0" role="jymVt">
+          <property role="TrG5h" value="testCalls" />
+          <node concept="3clFbS" id="1GyyBA1YZ$3" role="3clF47">
+            <node concept="3clFbF" id="1GyyBA1YZFf" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1YZFe" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1YZfz" resolve="foo1" />
+                <node concept="7CXmI" id="1GyyBA1YZHj" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA1YZI5" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA1YZI6" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1YZI7" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1YZNV" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1YZNT" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1YZfz" resolve="foo1" />
+                <node concept="3cmrfG" id="1GyyBA1YZRm" role="37wK5m">
+                  <property role="3cmrfH" value="10" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z000" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1YZZY" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1YZfz" resolve="foo1" />
+                <node concept="3b6qkQ" id="1GyyBA1Z06J" role="37wK5m">
+                  <property role="$nhwW" value="1.2" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA1Z0ie" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA1Z0r2" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA1Z0r3" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1Z0r4" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                  <node concept="2DdRWr" id="1GyyBA1Z0r5" role="7EUXB">
+                    <node concept="MGsTx" id="1GyyBA1Z0r6" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:5bMTuDbXcz0" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1Z0r7" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: type double is not a subtype of int" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z0xL" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z0xJ" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1YZfz" resolve="foo1" />
+                <node concept="3b6qkQ" id="1GyyBA1Z0Cu" role="37wK5m">
+                  <property role="$nhwW" value="1.2" />
+                </node>
+                <node concept="Xl_RD" id="1GyyBA1Z0PC" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA1Z0Ry" role="lGtFl">
+                  <node concept="2DdRWr" id="1GyyBA1Z10T" role="7EUXB">
+                    <node concept="MGsTx" id="1GyyBA1Z10U" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:5bMTuDbXcz0" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1Z10V" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: type double is not a subtype of int" />
+                    </node>
+                  </node>
+                  <node concept="1TM$A" id="1GyyBA1Z10W" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA1Z10X" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1Z10Y" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="1GyyBA1Z11E" role="3cqZAp" />
+            <node concept="3clFbF" id="1GyyBA1Z1FN" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z1FL" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z1hd" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA1Z1KW" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="1GyyBA1Z1Px" role="37wK5m">
+                  <property role="3cmrfH" value="10" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z21m" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z21k" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z1hd" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA1Z27I" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3b6qkQ" id="1GyyBA1Z2eU" role="37wK5m">
+                  <property role="$nhwW" value="1.2" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z2ts" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z2tq" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z1hd" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA1Z2Ax" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="2YIFZM" id="1GyyBA1Z63y" role="37wK5m">
+                  <ref role="37wK5l" to="wyt6:~Float.valueOf(java.lang.String)" resolve="valueOf" />
+                  <ref role="1Pybhc" to="wyt6:~Float" resolve="Float" />
+                  <node concept="Xl_RD" id="1GyyBA1Z69h" role="37wK5m">
+                    <property role="Xl_RC" value="1.0" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z4OR" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z4OP" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z1hd" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA1Z56E" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA1Z592" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA1Z5wO" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA1Z5wP" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1Z5wQ" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z5PS" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z5PQ" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z1hd" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA1Z5WZ" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="1GyyBA1Z6fn" role="37wK5m">
+                  <property role="3cmrfH" value="10" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z6xv" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z6xt" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z1hd" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA1Z6Ia" role="37wK5m">
+                  <property role="Xl_RC" value="aaa" />
+                </node>
+                <node concept="Xl_RD" id="1GyyBA1Z6Ny" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA22u_G" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA22vnZ" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA22vo0" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22vo1" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                  <node concept="2DdRWr" id="1GyyBA22vo2" role="7EUXB">
+                    <node concept="MGsTx" id="1GyyBA22vo3" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:5bMTuDbXcyD" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22vo4" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: type string is not a subtype of java.lang.Number" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z7xM" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z7xK" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z1hd" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA1Z7N8" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="Xl_RD" id="1GyyBA1Z7RH" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="Xl_RD" id="1GyyBA1Z7Wq" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA1Z7YS" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA1Z8n9" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA1Z8na" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1Z8nb" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                  <node concept="2DdRWr" id="1GyyBA1Z8nc" role="7EUXB">
+                    <node concept="MGsTx" id="1GyyBA1Z8nd" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:5bMTuDbXcyD" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA1Z8ne" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: type string is not a subtype of java.lang.Number" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z9n1" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z9mZ" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z8JA" resolve="foo3" />
+                <node concept="10Nm6u" id="1GyyBA1Z9yt" role="37wK5m" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Z9QB" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Z9Q_" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z8JA" resolve="foo3" />
+                <node concept="2ShNRf" id="1GyyBA1Za2B" role="37wK5m">
+                  <node concept="Tc6Ow" id="1GyyBA1Za$6" role="2ShVmc">
+                    <node concept="17QB3L" id="1GyyBA1Zbhf" role="HW$YZ" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpDfGgq" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpDfGgr" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z8JA" resolve="foo3" />
+                <node concept="2ShNRf" id="5aCBbpDfGgs" role="37wK5m">
+                  <node concept="2i4dXS" id="5aCBbpDfGgt" role="2ShVmc">
+                    <node concept="17QB3L" id="5aCBbpDfGgu" role="HW$YZ" />
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpDfGgv" role="lGtFl">
+                  <node concept="2DdRWr" id="5aCBbpDfGgw" role="7EUXB">
+                    <node concept="MGsTx" id="5aCBbpDfGgx" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:5bMTuDbXcyD" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpDfGgy" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: type set&lt;string&gt; is not a subtype of list&lt;string&gt;" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpDfGgh" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpDfGgi" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA1Z8JA" resolve="foo3" />
+                <node concept="2ShNRf" id="5aCBbpDfGgj" role="37wK5m">
+                  <node concept="Tc6Ow" id="5aCBbpDfGgk" role="2ShVmc">
+                    <node concept="10Oyi0" id="5aCBbpDfGgl" role="HW$YZ" />
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpDfGgm" role="lGtFl">
+                  <node concept="2DdRWr" id="5aCBbpDfGgn" role="7EUXB">
+                    <node concept="MGsTx" id="5aCBbpDfGgo" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:5bMTuDbXcyD" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpDfGgp" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: type list&lt;int&gt; is not a subtype of list&lt;string&gt;" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$vCo" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$vCm" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$uIq" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$vRn" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$xMG" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$xMH" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$uIq" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$xMI" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$xMJ" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$vYe" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$vYf" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$uIq" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$vYg" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$vYh" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$wf9" role="37wK5m">
+                  <property role="3cmrfH" value="2" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$wge" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$wgf" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$uIq" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$wgg" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$wgh" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$wgi" role="37wK5m">
+                  <property role="3cmrfH" value="2" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$wyU" role="37wK5m">
+                  <property role="3cmrfH" value="3" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$EhA" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$EhB" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$uIq" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$EhC" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$EhD" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+                <node concept="3b6qkQ" id="5aCBbpD$E_N" role="37wK5m">
+                  <property role="$nhwW" value="2.1" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$EhF" role="37wK5m">
+                  <property role="3cmrfH" value="3" />
+                </node>
+                <node concept="7CXmI" id="5aCBbpD$EFv" role="lGtFl">
+                  <node concept="1TM$A" id="5aCBbpD$G1b" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD$G1c" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD$G1d" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                  <node concept="2DdRWr" id="5aCBbpD$G1e" role="7EUXB">
+                    <node concept="MGsTx" id="5aCBbpD$G1f" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:5bMTuDbXcz0" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD$G1g" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: type double is not a subtype of int" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$w_t" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$w_u" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$uIq" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$w_v" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="2ShNRf" id="5aCBbpD$wWJ" role="37wK5m">
+                  <node concept="3g6Rrh" id="5aCBbpD$xxv" role="2ShVmc">
+                    <node concept="10Oyi0" id="5aCBbpD$xjI" role="3g7fb8" />
+                    <node concept="3cmrfG" id="5aCBbpD$xA9" role="3g7hyw">
+                      <property role="3cmrfH" value="1" />
+                    </node>
+                    <node concept="3cmrfG" id="5aCBbpD$xGh" role="3g7hyw">
+                      <property role="3cmrfH" value="2" />
+                    </node>
+                    <node concept="3cmrfG" id="5aCBbpD$xL1" role="3g7hyw">
+                      <property role="3cmrfH" value="3" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1Zb_Y" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1Zb_W" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$R8M" resolve="foo5" />
+                <node concept="2ShNRf" id="5aCBbpDghhe" role="37wK5m">
+                  <node concept="1pGfFk" id="5aCBbpDghhf" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+                    <node concept="17QB3L" id="5aCBbpDghhg" role="1pMfVU" />
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpD$Wvi" role="lGtFl">
+                  <node concept="1TM$A" id="5aCBbpD$Ygb" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD$Ygc" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD$Ygd" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                  <node concept="1TM$A" id="5aCBbpD$Yge" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD$Ygf" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:56b3vLW08zf" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD$Ygg" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: HashSet&lt;string&gt; is not a subtype of List&lt;Number&gt;" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA1ZdDm" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA1ZdDk" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$R8M" resolve="foo5" />
+                <node concept="2ShNRf" id="1GyyBA1ZdWd" role="37wK5m">
+                  <node concept="1pGfFk" id="5aCBbpDfK_w" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+                    <node concept="3uibUv" id="5aCBbpDfM5o" role="1pMfVU">
+                      <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpD$YhR" role="lGtFl">
+                  <node concept="1TM$A" id="5aCBbpD$ZvU" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD$ZvV" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD$ZvW" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                  <node concept="2DdRWr" id="5aCBbpD$ZvX" role="7EUXB">
+                    <node concept="MGsTx" id="5aCBbpD$ZvY" role="MJxsd">
+                      <ref role="39XzEq" to="tpeh:6ffEDrbzX0u" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD$ZvZ" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: incompatible types: java.lang.Number and java.lang.Integer" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$VBe" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$VBf" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$R8M" resolve="foo5" />
+                <node concept="2ShNRf" id="5aCBbpD$VBg" role="37wK5m">
+                  <node concept="1pGfFk" id="5aCBbpD$VBh" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+                    <node concept="3uibUv" id="5aCBbpD$W9z" role="1pMfVU">
+                      <ref role="3uigEE" to="wyt6:~Number" resolve="Number" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="5aCBbpD$UUM" role="3cqZAp" />
+          </node>
+          <node concept="3Tm1VV" id="1GyyBA1YZsa" role="1B3o_S" />
+          <node concept="3cqZAl" id="1GyyBA1YZzP" role="3clF45" />
+          <node concept="7CXmI" id="1GyyBA1YZ_M" role="lGtFl">
+            <node concept="7OXhh" id="1GyyBA1YZA8" role="7EUXB">
+              <property role="GvXf4" value="true" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="1GyyBA1YZ3B" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="1GyyBA22x3q" role="1SKRRt">
+      <node concept="312cEu" id="1GyyBA22x3r" role="1qenE9">
+        <property role="TrG5h" value="MethodHolder" />
+        <node concept="3clFb_" id="1GyyBA22xz8" role="jymVt">
+          <property role="TrG5h" value="foo1" />
+          <node concept="3clFbS" id="1GyyBA22xza" role="3clF47" />
+          <node concept="3cqZAl" id="1GyyBA22xzc" role="3clF45" />
+          <node concept="37vLTG" id="1GyyBA22xzd" role="3clF46">
+            <property role="TrG5h" value="a" />
+            <node concept="10Oyi0" id="1GyyBA22xze" role="1tU5fm" />
+          </node>
+          <node concept="3Tm1VV" id="1GyyBA22xzb" role="1B3o_S" />
+        </node>
+        <node concept="3clFb_" id="1GyyBA22xEZ" role="jymVt">
+          <property role="TrG5h" value="foo2" />
+          <node concept="3clFbS" id="1GyyBA22xF1" role="3clF47" />
+          <node concept="3cqZAl" id="1GyyBA22xF3" role="3clF45" />
+          <node concept="37vLTG" id="1GyyBA22xF4" role="3clF46">
+            <property role="TrG5h" value="s" />
+            <node concept="17QB3L" id="1GyyBA22xF5" role="1tU5fm" />
+          </node>
+          <node concept="37vLTG" id="1GyyBA22xF6" role="3clF46">
+            <property role="TrG5h" value="num" />
+            <node concept="3uibUv" id="1GyyBA22xF7" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~Number" resolve="Number" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="1GyyBA22xF2" role="1B3o_S" />
+        </node>
+        <node concept="3clFb_" id="1GyyBA22xYW" role="jymVt">
+          <property role="TrG5h" value="foo3" />
+          <node concept="3clFbS" id="1GyyBA22xYY" role="3clF47" />
+          <node concept="3cqZAl" id="1GyyBA22xZ0" role="3clF45" />
+          <node concept="37vLTG" id="1GyyBA22xZ1" role="3clF46">
+            <property role="TrG5h" value="l" />
+            <node concept="_YKpA" id="1GyyBA22xZ2" role="1tU5fm">
+              <node concept="17QB3L" id="1GyyBA22xZ3" role="_ZDj9" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="1GyyBA22xYZ" role="1B3o_S" />
+        </node>
+        <node concept="3clFb_" id="5aCBbpD$DYp" role="jymVt">
+          <property role="TrG5h" value="foo4" />
+          <node concept="3clFbS" id="5aCBbpD$DYr" role="3clF47" />
+          <node concept="3cqZAl" id="5aCBbpD$DYs" role="3clF45" />
+          <node concept="37vLTG" id="5aCBbpD$DYt" role="3clF46">
+            <property role="TrG5h" value="a" />
+            <node concept="17QB3L" id="5aCBbpD$DYu" role="1tU5fm" />
+          </node>
+          <node concept="37vLTG" id="5aCBbpD$DYv" role="3clF46">
+            <property role="TrG5h" value="b" />
+            <node concept="8X2XB" id="5aCBbpD$DYw" role="1tU5fm">
+              <node concept="10Oyi0" id="5aCBbpD$DYx" role="8Xvag" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="5aCBbpD$DYy" role="1B3o_S" />
+        </node>
+        <node concept="3clFb_" id="5aCBbpD_64x" role="jymVt">
+          <property role="TrG5h" value="foo5" />
+          <node concept="3clFbS" id="5aCBbpD_64z" role="3clF47" />
+          <node concept="3cqZAl" id="5aCBbpD_64_" role="3clF45" />
+          <node concept="37vLTG" id="5aCBbpD_64A" role="3clF46">
+            <property role="TrG5h" value="l" />
+            <node concept="3uibUv" id="5aCBbpD_64B" role="1tU5fm">
+              <ref role="3uigEE" to="33ny:~List" resolve="List" />
+              <node concept="3uibUv" id="5aCBbpD_64C" role="11_B2D">
+                <ref role="3uigEE" to="wyt6:~Number" resolve="Number" />
+              </node>
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="5aCBbpD_64$" role="1B3o_S" />
+        </node>
+        <node concept="2tJIrI" id="5aCBbpD$y5J" role="jymVt" />
+        <node concept="2tJIrI" id="1GyyBA22x3L" role="jymVt" />
+        <node concept="3clFb_" id="1GyyBA22ybZ" role="jymVt">
+          <property role="TrG5h" value="testCalls" />
+          <node concept="3clFbS" id="1GyyBA22yc1" role="3clF47">
+            <node concept="3clFbF" id="1GyyBA22yc2" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22yc3" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xz8" resolve="foo1" />
+                <node concept="7CXmI" id="1GyyBA22yc4" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA22yc5" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA22yc6" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22yc7" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22yc8" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22yc9" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xz8" resolve="foo1" />
+                <node concept="3cmrfG" id="1GyyBA22yca" role="37wK5m">
+                  <property role="3cmrfH" value="10" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ycb" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycc" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xz8" resolve="foo1" />
+                <node concept="3b6qkQ" id="1GyyBA22ycd" role="37wK5m">
+                  <property role="$nhwW" value="1.2" />
+                  <node concept="7CXmI" id="1GyyBA22zA9" role="lGtFl">
+                    <node concept="2DdRWr" id="1GyyBA22$Ed" role="7EUXB">
+                      <node concept="MGsTx" id="1GyyBA22$Ee" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:5ZbU$b1J6HE" />
+                      </node>
+                      <node concept="1DMPye" id="1GyyBA22$Ef" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: type double is not a subtype of int" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="7CXmI" id="1GyyBA22ywD" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA22z$H" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA22z$I" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22z$J" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ycl" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycm" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xz8" resolve="foo1" />
+                <node concept="3b6qkQ" id="1GyyBA22ycn" role="37wK5m">
+                  <property role="$nhwW" value="1.2" />
+                  <node concept="7CXmI" id="1GyyBA22_M7" role="lGtFl">
+                    <node concept="2DdRWr" id="1GyyBA22AUH" role="7EUXB">
+                      <node concept="MGsTx" id="1GyyBA22AUI" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:5ZbU$b1J6HE" />
+                      </node>
+                      <node concept="1DMPye" id="1GyyBA22AUJ" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: type double is not a subtype of int" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="1GyyBA22yco" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA22$GB" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA22_KF" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA22_KG" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22_KH" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="1GyyBA22ycw" role="3cqZAp" />
+            <node concept="3clFbF" id="1GyyBA22ycx" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycy" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xEZ" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA22ycz" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="1GyyBA22yc$" role="37wK5m">
+                  <property role="3cmrfH" value="10" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22yc_" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycA" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xEZ" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA22ycB" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3b6qkQ" id="1GyyBA22ycC" role="37wK5m">
+                  <property role="$nhwW" value="1.2" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ycD" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycE" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xEZ" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA22ycF" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="2YIFZM" id="1GyyBA22ycG" role="37wK5m">
+                  <ref role="37wK5l" to="wyt6:~Float.valueOf(java.lang.String)" resolve="valueOf" />
+                  <ref role="1Pybhc" to="wyt6:~Float" resolve="Float" />
+                  <node concept="Xl_RD" id="1GyyBA22ycH" role="37wK5m">
+                    <property role="Xl_RC" value="1.0" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ycI" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycJ" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xEZ" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA22ycK" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA22ycL" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA22ycM" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA22ycN" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22ycO" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ycP" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycQ" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xEZ" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA22ycR" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="1GyyBA22ycS" role="37wK5m">
+                  <property role="3cmrfH" value="10" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ycT" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ycU" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xEZ" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA22ycV" role="37wK5m">
+                  <property role="Xl_RC" value="aaa" />
+                </node>
+                <node concept="Xl_RD" id="1GyyBA22ycW" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                  <node concept="7CXmI" id="1GyyBA22BNe" role="lGtFl">
+                    <node concept="2DdRWr" id="1GyyBA22C$O" role="7EUXB">
+                      <node concept="MGsTx" id="1GyyBA22C$P" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:5ZbU$b1J6Iq" />
+                      </node>
+                      <node concept="1DMPye" id="1GyyBA22C$Q" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: type string is not a subtype of java.lang.Number" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="7CXmI" id="1GyyBA22AXc" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA22BLH" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA22BLI" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22BLJ" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22yd4" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22yd5" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xEZ" resolve="foo2" />
+                <node concept="Xl_RD" id="1GyyBA22yd6" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="Xl_RD" id="1GyyBA22yd7" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                  <node concept="7CXmI" id="1GyyBA22D_O" role="lGtFl">
+                    <node concept="2DdRWr" id="1GyyBA22EyJ" role="7EUXB">
+                      <node concept="MGsTx" id="1GyyBA22EyK" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:5ZbU$b1J6Iq" />
+                      </node>
+                      <node concept="1DMPye" id="1GyyBA22EyL" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: type string is not a subtype of java.lang.Number" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="1GyyBA22yd8" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="7CXmI" id="1GyyBA22CBo" role="lGtFl">
+                  <node concept="1TM$A" id="1GyyBA22D$j" role="7EUXB">
+                    <node concept="2PYRI3" id="1GyyBA22D$k" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:hKaAhKS" />
+                    </node>
+                    <node concept="1DMPye" id="1GyyBA22D$l" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: wrong number of parameters" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ydg" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ydh" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xYW" resolve="foo3" />
+                <node concept="10Nm6u" id="1GyyBA22ydi" role="37wK5m" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ydj" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ydk" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xYW" resolve="foo3" />
+                <node concept="2ShNRf" id="1GyyBA22ydl" role="37wK5m">
+                  <node concept="Tc6Ow" id="1GyyBA22ydm" role="2ShVmc">
+                    <node concept="17QB3L" id="1GyyBA22ydn" role="HW$YZ" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22ydo" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22ydp" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xYW" resolve="foo3" />
+                <node concept="2ShNRf" id="1GyyBA22ydq" role="37wK5m">
+                  <node concept="2i4dXS" id="1GyyBA22ydr" role="2ShVmc">
+                    <node concept="17QB3L" id="1GyyBA22yds" role="HW$YZ" />
+                  </node>
+                  <node concept="7CXmI" id="1GyyBA22F$7" role="lGtFl">
+                    <node concept="2DdRWr" id="1GyyBA22Gx2" role="7EUXB">
+                      <node concept="MGsTx" id="1GyyBA22Gx3" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:5ZbU$b1J6Iq" />
+                      </node>
+                      <node concept="1DMPye" id="1GyyBA22Gx4" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: type set&lt;string&gt; is not a subtype of list&lt;string&gt;" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1GyyBA22yd$" role="3cqZAp">
+              <node concept="1rXfSq" id="1GyyBA22yd_" role="3clFbG">
+                <ref role="37wK5l" node="1GyyBA22xYW" resolve="foo3" />
+                <node concept="2ShNRf" id="1GyyBA22ydA" role="37wK5m">
+                  <node concept="Tc6Ow" id="1GyyBA22ydB" role="2ShVmc">
+                    <node concept="10Oyi0" id="1GyyBA22ydC" role="HW$YZ" />
+                  </node>
+                  <node concept="7CXmI" id="1GyyBA22HyK" role="lGtFl">
+                    <node concept="2DdRWr" id="1GyyBA22IvF" role="7EUXB">
+                      <node concept="MGsTx" id="1GyyBA22IvG" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:5ZbU$b1J6Iq" />
+                      </node>
+                      <node concept="1DMPye" id="1GyyBA22IvH" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: type list&lt;int&gt; is not a subtype of list&lt;string&gt;" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$A1A" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$CQY" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$DYp" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$Ank" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$A1D" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$D67" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$DYp" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$An4" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$An5" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$A1H" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$Dk2" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$DYp" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$AmG" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$AmH" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$AmI" role="37wK5m">
+                  <property role="3cmrfH" value="2" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$A1M" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$Dy3" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$DYp" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$Ana" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$Anb" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$Anc" role="37wK5m">
+                  <property role="3cmrfH" value="2" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$And" role="37wK5m">
+                  <property role="3cmrfH" value="3" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$G2_" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$G2A" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$DYp" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$G2B" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$G2C" role="37wK5m">
+                  <property role="3cmrfH" value="1" />
+                </node>
+                <node concept="3cmrfG" id="5aCBbpD$G2D" role="37wK5m">
+                  <property role="3cmrfH" value="2" />
+                </node>
+                <node concept="Xl_RD" id="5aCBbpD$GnQ" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                  <node concept="7CXmI" id="5aCBbpD$Hxx" role="lGtFl">
+                    <node concept="2DdRWr" id="5aCBbpD$IWQ" role="7EUXB">
+                      <node concept="MGsTx" id="5aCBbpD$IWR" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:5ZbU$b1J6HE" />
+                      </node>
+                      <node concept="1DMPye" id="5aCBbpD$IWS" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: type string is not a subtype of int" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpD$IXU" role="lGtFl">
+                  <node concept="1TM$A" id="5aCBbpD$JQl" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD$JQm" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD$JQn" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD$A1S" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD$DKa" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD$DYp" resolve="foo4" />
+                <node concept="Xl_RD" id="5aCBbpD$AmO" role="37wK5m">
+                  <property role="Xl_RC" value="" />
+                </node>
+                <node concept="2ShNRf" id="5aCBbpD$AmP" role="37wK5m">
+                  <node concept="3g6Rrh" id="5aCBbpD$AmQ" role="2ShVmc">
+                    <node concept="10Oyi0" id="5aCBbpD$AmR" role="3g7fb8" />
+                    <node concept="3cmrfG" id="5aCBbpD$AmS" role="3g7hyw">
+                      <property role="3cmrfH" value="1" />
+                    </node>
+                    <node concept="3cmrfG" id="5aCBbpD$AmT" role="3g7hyw">
+                      <property role="3cmrfH" value="2" />
+                    </node>
+                    <node concept="3cmrfG" id="5aCBbpD$AmU" role="3g7hyw">
+                      <property role="3cmrfH" value="3" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD_0p4" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD_4Na" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD_64x" resolve="foo5" />
+                <node concept="2ShNRf" id="5aCBbpD_12F" role="37wK5m">
+                  <node concept="1pGfFk" id="5aCBbpD_12G" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
+                    <node concept="17QB3L" id="5aCBbpD_12H" role="1pMfVU" />
+                  </node>
+                  <node concept="7CXmI" id="5aCBbpD_6_H" role="lGtFl">
+                    <node concept="1TM$A" id="5aCBbpD_8zy" role="7EUXB">
+                      <node concept="2PYRI3" id="5aCBbpD_8zz" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:56b3vLW08zf" />
+                      </node>
+                      <node concept="1DMPye" id="5aCBbpD_8z$" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: HashSet&lt;string&gt; is not a subtype of List&lt;Number&gt;" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpD_8$K" role="lGtFl">
+                  <node concept="1TM$A" id="5aCBbpD_9Ro" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD_9Rp" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD_9Rq" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD_0pg" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD_58B" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD_64x" resolve="foo5" />
+                <node concept="2ShNRf" id="5aCBbpD_12z" role="37wK5m">
+                  <node concept="1pGfFk" id="5aCBbpD_12$" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+                    <node concept="3uibUv" id="5aCBbpD_12_" role="1pMfVU">
+                      <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                    </node>
+                  </node>
+                  <node concept="7CXmI" id="5aCBbpD_9Uc" role="lGtFl">
+                    <node concept="2DdRWr" id="5aCBbpD_bS1" role="7EUXB">
+                      <node concept="MGsTx" id="5aCBbpD_bS2" role="MJxsd">
+                        <ref role="39XzEq" to="tpeh:6ffEDrbzX0u" />
+                      </node>
+                      <node concept="1DMPye" id="5aCBbpD_bS3" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: incompatible types: java.lang.Number and java.lang.Integer" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="7CXmI" id="5aCBbpD_bYI" role="lGtFl">
+                  <node concept="1TM$A" id="5aCBbpD_dWz" role="7EUXB">
+                    <node concept="2PYRI3" id="5aCBbpD_dW$" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:1W1T8AXfLxC" />
+                    </node>
+                    <node concept="1DMPye" id="5aCBbpD_dW_" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Incompatible method signature" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5aCBbpD_0ps" role="3cqZAp">
+              <node concept="1rXfSq" id="5aCBbpD_5ua" role="3clFbG">
+                <ref role="37wK5l" node="5aCBbpD_64x" resolve="foo5" />
+                <node concept="2ShNRf" id="5aCBbpD_12r" role="37wK5m">
+                  <node concept="1pGfFk" id="5aCBbpD_12s" role="2ShVmc">
+                    <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
+                    <node concept="3uibUv" id="5aCBbpD_12t" role="1pMfVU">
+                      <ref role="3uigEE" to="wyt6:~Number" resolve="Number" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cqZAl" id="1GyyBA22ydL" role="3clF45" />
+          <node concept="3Tm1VV" id="1GyyBA22ydK" role="1B3o_S" />
+          <node concept="7CXmI" id="1GyyBA22ydP" role="lGtFl">
+            <node concept="7OXhh" id="1GyyBA22ydQ" role="7EUXB">
+              <property role="GvXf4" value="true" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="1GyyBA22x5A" role="1B3o_S" />
       </node>
     </node>
   </node>

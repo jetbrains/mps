@@ -32,7 +32,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Comparator;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.event.SModelEvent;
@@ -287,9 +286,6 @@ public final class MergeSession {
   public void restoreState(MergeSessionState state) {
     MergeSessionState stateCopy = new MergeSessionState(state);
     myResultModel.setSModelInternal(stateCopy.myResultModel.getSModel());
-
-    // clear UnregisteredNodes pool to avoid a lot of ERRORs in log: 
-    UnregisteredNodes.instance().clear();
 
     myResolvedChanges = stateCopy.myResolvedChanges;
     myNodeCopier.setState(stateCopy.myIdReplacementCache, myResultModel);

@@ -182,6 +182,7 @@
       <patternset>
         <exclude name="license/*"/>
         <exclude name="plugins/java-ide-customization/**"/>
+        <exclude name="plugins/platform-images/**"/>
         <!-- TODO: Exclude log.xml & mps.svg from platform-->
         <exclude name="bin/log.xml"/>
         <exclude name="bin/mps.svg"/>
@@ -264,6 +265,7 @@
     <delete dir="${basedir}/../plugins/svn4idea" failonerror="false"/>
     <delete dir="${basedir}/../plugins/github" failonerror="false"/>
     <delete dir="${basedir}/../plugins/vcs-changeReminder" failonerror="false"/>
+    <delete dir="${basedir}/../plugins/platform-images" failonerror="false"/>
   </target>
 
   <target name="clean-diffutils">

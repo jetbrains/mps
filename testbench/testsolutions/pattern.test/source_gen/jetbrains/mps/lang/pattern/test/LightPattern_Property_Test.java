@@ -120,50 +120,60 @@ public class LightPattern_Property_Test extends TestCase {
     Assert.assertTrue(matches);
   }
   private static class Pattern1_Pattern extends AbstractGeneratedPattern {
-    public Pattern1_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.IntegerConstant$mo);
         n1.setProperty(PROPS.value$ZeO0, "" + (239));
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern2_Pattern extends AbstractGeneratedPattern {
-    public Pattern2_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
         n1.setProperty(PROPS.value$kiE0, null);
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern3_Pattern extends AbstractGeneratedPattern {
-    public Pattern3_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
         n1.setProperty(PROPS.value$kiE0, "");
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern4_Pattern extends AbstractGeneratedPattern {
-    public Pattern4_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern5_Pattern extends AbstractGeneratedPattern {
-    public Pattern5_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       {
         NodeMatcherBuilder n1 = n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.StringLiteral$4G);
         n1.setPropertyVariable(PROPS.value$kiE0);
       }
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
     @Nullable
     public static String getVar(SNode rootNode) {

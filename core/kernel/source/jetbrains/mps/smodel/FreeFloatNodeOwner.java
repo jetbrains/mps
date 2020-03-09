@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 package jetbrains.mps.smodel;
-
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 
 /**
  * State of a node not being added to any model yet.
@@ -36,9 +34,26 @@ final class FreeFloatNodeOwner extends SNodeOwner {
   }
 
   @Override
-  void performUndoableAction(org.jetbrains.mps.openapi.model.SNode node, SNodeUndoableAction action) {
-    if (action instanceof ChildUndoableAction && UnregisteredNodes.instance().contains(((ChildUndoableAction) action).getChild())) {
-      UndoHelper.getInstance().addUndoableAction(action);
+  void registerNode(SNode node) {
+    assert !(node.getNodeOwner() instanceof AttachedNodeOwner);
+  }
+
+  @Override
+  void performUndoableAction(SNodeUndoableAction action) {
+    SNodeOwner detachedNodeOwner;
+    if (action instanceof ChildUndoableAction && (detachedNodeOwner = childOwnerFromAction((ChildUndoableAction) action)) instanceof DetachedNodeOwner) {
+      detachedNodeOwner.performUndoableAction(action);
     }
+  }
+
+  private SNodeOwner childOwnerFromAction(ChildUndoableAction action) {
+    if (action.getChild() instanceof SNode) {
+      // it's a stupid check, indeed, there are no other SNode implementations right now, and even there are, we
+      // likely use another mechanism than SNodeOwner then, or we'll adapt foreigh nodes to smodel.SNode the moment they get into the model.
+      // However, if we ever get to the point we've got other openapi.SNode and keep them along, AND would like to use SNodeOwner mechanism, it's not a
+      // big deal to extract SNodeWithOwner interface then.
+      return ((SNode) action.getChild()).getNodeOwner();
+    }
+    return null;
   }
 }

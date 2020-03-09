@@ -22,7 +22,7 @@ public final class DependenciesUtil {
   public static void openDependenciesTool(Project ideaProject, DependencyViewerScope scope, boolean setActive) {
     AnalyzeDependenciesViewTool tool = ideaProject.getComponent(AnalyzeDependenciesViewTool.class);
     if (scope != null) {
-      tool.setContent(scope);
+      tool.setContent(scope, null, false);
     }
     tool.openToolLater(setActive);
   }

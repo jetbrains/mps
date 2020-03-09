@@ -9,13 +9,15 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewTool;
-import jetbrains.mps.nodeEditor.cells.APICellAdapter;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -35,7 +37,7 @@ public class ShowClassInHierarchy_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return (ShowClassInHierarchy_Action.this.getContextClassifier(_params) != null);
+    return (ShowClassInHierarchy_Action.this.getContextClassifier(event) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -48,39 +50,36 @@ public class ShowClassInHierarchy_Action extends BaseAction {
     }
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
       if (p == null) {
         return false;
       }
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      MapSequence.fromMap(_params).put("selectedNode", node);
       if (node == null) {
         return false;
       }
     }
     {
       EditorCell p = event.getData(MPSEditorDataKeys.EDITOR_CELL);
-      MapSequence.fromMap(_params).put("editorCell", p);
     }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final BaseLanguageHierarchyViewTool tool = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(BaseLanguageHierarchyViewTool.class);
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode classNode = ShowClassInHierarchy_Action.this.getContextClassifier(_params);
-        tool.showItemInHierarchy(classNode);
-        tool.openToolLater(true);
+    final BaseLanguageHierarchyViewTool tool = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(BaseLanguageHierarchyViewTool.class);
+    SNodeReference c = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<SNodeReference>() {
+      public SNodeReference compute() {
+        return SNodeOperations.getPointer(ShowClassInHierarchy_Action.this.getContextClassifier(event));
       }
     });
+    tool.showItemInHierarchy(c);
+    tool.openToolLater(true);
   }
-  private SNode getContextClassifier(final Map<String, Object> _params) {
+  private SNode getContextClassifier(final AnActionEvent event) {
 
-    if (((EditorCell) MapSequence.fromMap(_params).get("editorCell")) != null) {
-      SNode refNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
+    if (event.getData(MPSEditorDataKeys.EDITOR_CELL) != null) {
+      SNode refNode = APICellAdapter.getSNodeWRTReference(event.getData(MPSEditorDataKeys.EDITOR_CELL));
       if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.Classifier$hJ)) {
         return SNodeOperations.cast(refNode, CONCEPTS.Classifier$hJ);
       }
@@ -92,7 +91,7 @@ public class ShowClassInHierarchy_Action extends BaseAction {
       }
     }
 
-    SNode outerClass = SNodeOperations.cast(SNodeOperations.getNodeAncestorWhereConceptInList(((SNode) MapSequence.fromMap(_params).get("selectedNode")), new SAbstractConcept[]{CONCEPTS.ClassConcept$IY, CONCEPTS.Interface$Kp}, true, false), CONCEPTS.Classifier$hJ);
+    SNode outerClass = SNodeOperations.cast(SNodeOperations.getNodeAncestorWhereConceptInList(event.getData(MPSCommonDataKeys.NODE), new SAbstractConcept[]{CONCEPTS.ClassConcept$IY, CONCEPTS.Interface$Kp}, true, false), CONCEPTS.Classifier$hJ);
     return outerClass;
   }
 

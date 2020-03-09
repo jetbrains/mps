@@ -107,30 +107,38 @@ public class LightPattern_Child_Test extends TestCase {
     Assert.assertTrue(matches);
   }
   private static class Pattern1_Pattern extends AbstractGeneratedPattern {
-    public Pattern1_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       n0.forChild(LINKS.expression$EsbK).init(CONCEPTS.NullLiteral$q4);
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern2_Pattern extends AbstractGeneratedPattern {
-    public Pattern2_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       n0.forChild(LINKS.expression$EsbK).initNull();
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern3_Pattern extends AbstractGeneratedPattern {
-    public Pattern3_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
   }
   private static class Pattern4_Pattern extends AbstractGeneratedPattern {
-    public Pattern4_Pattern() {
+    @Override
+    public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
       n0.forChild(LINKS.expression$EsbK).init(new NodeMatcherBuilder.NodeWildcardMatcher(true));
       setMatcher(n0.getMatcher());
+      return super.match(nodeToMatch);
     }
     @Nullable
     public static SNode getVar(SNode rootNode) {

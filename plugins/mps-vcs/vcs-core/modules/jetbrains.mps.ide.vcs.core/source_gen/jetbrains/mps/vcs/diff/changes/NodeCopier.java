@@ -26,6 +26,7 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 public class NodeCopier {
   private Map<SNodeId, SNodeId> myIdReplacementCache = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
   private SModel myModel;
+
   public NodeCopier(SModel model) {
     myModel = model;
   }
@@ -51,7 +52,9 @@ public class NodeCopier {
     return copy;
   }
   public void restoreIds(boolean affectOthers) {
-    UnregisteredNodes.WarningLevel oldWarningLevel = UnregisteredNodes.instance().setWarningLevel(UnregisteredNodes.WarningLevel.WARNING);
+    // no idea if the reasons that lead to this code still hold  
+    // With UN being tracked for repository-attached models and within command only, do we still get errors here? 
+    UnregisteredNodes.WarningLevel oldWarningLevel = UnregisteredNodes.setWarningLevel(UnregisteredNodes.WarningLevel.WARNING);
     try {
       softRestoreIds();
       if (affectOthers) {
@@ -64,15 +67,14 @@ public class NodeCopier {
         });
       }
     } finally {
-      UnregisteredNodes.instance().setWarningLevel(oldWarningLevel);
+      UnregisteredNodes.setWarningLevel(oldWarningLevel);
     }
   }
   private void setId(SNode node, SNodeId id) {
-    SModel model = SNodeOperations.getModel(node);
     if (SNodeOperations.getParent(node) == null) {
       SNodeOperations.deleteNode(node);
       ((jetbrains.mps.smodel.SNode) node).setId(id);
-      SModelOperations.addRootNode(model, node);
+      SModelOperations.addRootNode(myModel, node);
     } else {
       SNode stubNode = new jetbrains.mps.smodel.SNode(SNodeUtil.concept_BaseConcept);
       SNodeOperations.replaceWithAnother(node, stubNode);

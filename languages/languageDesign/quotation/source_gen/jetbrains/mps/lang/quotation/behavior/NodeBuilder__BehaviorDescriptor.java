@@ -19,6 +19,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.constraints.Scopes;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -29,8 +31,9 @@ public final class NodeBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, "jetbrains.mps.lang.quotation.structure.NodeBuilder");
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<InitializerPolicy> getCheckPolicy_id4XAkAubwHns = new SMethodBuilder<InitializerPolicy>(new SJavaCompoundTypeImpl(InitializerPolicy.class)).name("getCheckPolicy").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4XAkAubwHns").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getCheckPolicy_id4XAkAubwHns);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -40,6 +43,39 @@ public final class NodeBuilder__BehaviorDescriptor extends BaseBHDescriptor {
       return Scopes.forConcepts(__thisNode__, CONCEPTS.ConceptDeclaration$qU);
     }
     return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
+  }
+  /*package*/ static InitializerPolicy getCheckPolicy_id4XAkAubwHns(@NotNull SNode __thisNode__) {
+    return new InitializerPolicy() {
+      @Override
+      public MessageStatus reportRequiredProperty(SNode builderNode, SNode property) {
+        return MessageStatus.OK;
+      }
+
+      @Override
+      public MessageStatus reportRequiredContainmentLink(SNode builderNode, SNode link) {
+        return ((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(link) ? MessageStatus.ERROR : MessageStatus.OK);
+      }
+
+      @Override
+      public MessageStatus reportRequiredReferenceLink(SNode builderNode, SNode link) {
+        return ((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(link) ? MessageStatus.ERROR : MessageStatus.OK);
+      }
+
+      @Override
+      public MessageStatus reportDuplicatedProperty(SNode builderNode, SNode link) {
+        return MessageStatus.ERROR;
+      }
+
+      @Override
+      public MessageStatus reportDuplicatedContainmentLink(SNode builderNode, SNode link) {
+        return ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(link) ? MessageStatus.ERROR : MessageStatus.OK);
+      }
+
+      @Override
+      public MessageStatus reportDuplicatedReferenceLink(SNode builderNode, SNode link) {
+        return MessageStatus.ERROR;
+      }
+    };
   }
 
   /*package*/ NodeBuilder__BehaviorDescriptor() {
@@ -59,6 +95,8 @@ public final class NodeBuilder__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+      case 1:
+        return (T) ((InitializerPolicy) getCheckPolicy_id4XAkAubwHns(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

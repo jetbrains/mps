@@ -317,7 +317,7 @@ public class QueriesGenerated {
   }
   public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
     SNode quotation = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Quotation$UL, false, false);
-    return (SLinkOperations.getTarget(quotation, LINKS.nodeId_old$QEQA) == null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z) == null);
+    return SLinkOperations.getTarget(quotation, LINKS.quotedNode$kInw) != ((SNode) _context.getVariable("var:quotedNode")) || (SLinkOperations.getTarget(quotation, LINKS.nodeId_old$QEQA) == null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$mAt), LINKS.nodeId$GU4Z) == null);
   }
   public static boolean ifMacro_Condition_0_3(final IfMacroContext _context) {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.stringValueMigrated$gFe8);

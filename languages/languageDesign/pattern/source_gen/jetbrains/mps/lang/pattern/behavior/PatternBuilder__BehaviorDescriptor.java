@@ -13,12 +13,14 @@ import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
+import jetbrains.mps.lang.quotation.behavior.InitializerPolicy;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.constraints.Scopes;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,8 +32,9 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SNode>> getVariables_idPFUECvO1RN = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getVariables").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("PFUECvO1RN").build();
+  public static final SMethod<InitializerPolicy> getCheckPolicy_id4XAkAubwHns = new SMethodBuilder<InitializerPolicy>(new SJavaCompoundTypeImpl(InitializerPolicy.class)).name("getCheckPolicy").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4XAkAubwHns").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getVariables_idPFUECvO1RN);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getVariables_idPFUECvO1RN, getCheckPolicy_id4XAkAubwHns);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -44,6 +47,39 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getVariables_idPFUECvO1RN(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.PatternBuilderVariable$In, false, new SAbstractConcept[]{});
+  }
+  /*package*/ static InitializerPolicy getCheckPolicy_id4XAkAubwHns(@NotNull SNode __thisNode__) {
+    return new InitializerPolicy() {
+      @Override
+      public MessageStatus reportRequiredProperty(SNode builderNode, SNode property) {
+        return MessageStatus.OK;
+      }
+
+      @Override
+      public MessageStatus reportRequiredContainmentLink(SNode builderNode, SNode link) {
+        return MessageStatus.OK;
+      }
+
+      @Override
+      public MessageStatus reportRequiredReferenceLink(SNode builderNode, SNode link) {
+        return MessageStatus.OK;
+      }
+
+      @Override
+      public MessageStatus reportDuplicatedProperty(SNode builderNode, SNode property) {
+        return MessageStatus.ERROR;
+      }
+
+      @Override
+      public MessageStatus reportDuplicatedContainmentLink(SNode builderNode, SNode link) {
+        return MessageStatus.ERROR;
+      }
+
+      @Override
+      public MessageStatus reportDuplicatedReferenceLink(SNode builderNode, SNode link) {
+        return MessageStatus.ERROR;
+      }
+    };
   }
 
   /*package*/ PatternBuilder__BehaviorDescriptor() {
@@ -65,6 +101,8 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       case 1:
         return (T) ((List<SNode>) getVariables_idPFUECvO1RN(node));
+      case 2:
+        return (T) ((InitializerPolicy) getCheckPolicy_id4XAkAubwHns(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
