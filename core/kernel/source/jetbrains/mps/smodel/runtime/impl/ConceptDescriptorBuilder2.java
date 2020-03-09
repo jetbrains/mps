@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -220,7 +220,7 @@ public class ConceptDescriptorBuilder2 {
     ReferenceDescriptor[] assoc = myAssociations == null ? new ReferenceDescriptor[0] : myAssociations.toArray(new ReferenceDescriptor[0]);
     LinkDescriptor[] aggr = myAggregations == null ? new LinkDescriptor[0] : myAggregations.toArray(new LinkDescriptor[0]);
     SConceptId[] parents = myParents.toArray(new SConceptId[0]);
-    return new CompiledConceptDescriptor(myVersion, myConceptId, conceptFQName, mySuperConceptId, myIsInterface, parents, pd, assoc, aggr, myIsAbstract, myIsFinal, myIsRoot, myAlias, myScope, myStubConceptId, /* FIXME myConceptKind, */myOrigin);
+    return new CompiledConceptDescriptor(myVersion, myConceptId, conceptFQName, mySuperConceptId, myIsInterface, parents, pd, assoc, aggr, myIsAbstract, myIsFinal, myIsRoot, myAlias, myScope, myStubConceptId, myConceptKind, myOrigin);
   }
 
   /*package*/ void addProperty(PropertyDescriptor d) {
