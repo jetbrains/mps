@@ -247,7 +247,7 @@ public class DefaultModelPersistence implements ModelFactory, IndexAwareModelFac
   }
 
   @Override
-  public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException {
+  public SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException, ModelReadException {
     return ModelPersistence.getModelData(input);
   }
 
