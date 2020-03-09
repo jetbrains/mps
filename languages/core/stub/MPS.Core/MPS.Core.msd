@@ -13,9 +13,8 @@
       <sourceRoot location="mps-textgen.jar" />
       <sourceRoot location="mps-persistence.jar" />
       <!-- FIXME make sure nobody references these runtimes through MPS.Core. These are regular solutions, clients shall reference source nodes, not stubs-->
-      <sourceRoot location="mps-closures.jar" /> <!-- few uses in closures language -->
       <sourceRoot location="mps-constraints-runtime.jar" />
-      <!-- For historical reasons, next libraries were exposed through MPS.Core -->
+      <!-- For historical reasons, next libraries were exposed through MPS.Core; need to write migration code to update references to proper solutions -->
       <sourceRoot location="log4j.jar" />
       <sourceRoot location="trove4j.jar" />
       <sourceRoot location="jdom.jar" />
