@@ -2915,32 +2915,36 @@
       <node id="1227128029536558406" at="43,100,44,177" concept="8" />
       <node id="1227128029536558423" at="46,162,47,18" concept="8" />
       <node id="1227128029536558436" at="49,88,50,18" concept="8" />
-      <node id="1227128029536558444" at="52,83,53,18" concept="8" />
-      <node id="1227128029536558450" at="54,5,55,17" concept="8" />
-      <node id="5536314641534779166" at="57,0,58,0" concept="11" trace="canBeChildBreakingPoint" />
-      <node id="5536314641534779166" at="60,0,61,0" concept="11" trace="ArrayLiteral$dK" />
-      <node id="5536314641534779166" at="61,0,62,0" concept="11" trace="VariableDeclaration$xe" />
-      <node id="5536314641534779166" at="62,0,63,0" concept="11" trace="ArrayType$Yv" />
-      <node id="5536314641534779166" at="63,0,64,0" concept="11" trace="ArrayCreatorWithInitializer$aE" />
-      <node id="5536314641534779166" at="64,0,65,0" concept="11" trace="AnnotationInstanceValue$sl" />
-      <node id="5536314641534779166" at="65,0,66,0" concept="11" trace="AnnotationInstance$5z" />
-      <node id="5536314641534779166" at="69,0,70,0" concept="11" trace="initializer$KgD" />
-      <node id="5536314641534779166" at="70,0,71,0" concept="11" trace="type$pLrO" />
+      <node id="4703771440037914971" at="52,92,53,18" concept="8" />
+      <node id="1227128029536558444" at="55,83,56,18" concept="8" />
+      <node id="1227128029536558450" at="57,5,58,17" concept="8" />
+      <node id="5536314641534779166" at="60,0,61,0" concept="11" trace="canBeChildBreakingPoint" />
+      <node id="5536314641534779166" at="63,0,64,0" concept="11" trace="ArrayLiteral$dK" />
+      <node id="5536314641534779166" at="64,0,65,0" concept="11" trace="VariableDeclaration$xe" />
+      <node id="5536314641534779166" at="65,0,66,0" concept="11" trace="ArrayType$Yv" />
+      <node id="5536314641534779166" at="66,0,67,0" concept="11" trace="ArrayCreatorWithInitializer$aE" />
+      <node id="5536314641534779166" at="67,0,68,0" concept="11" trace="AnnotationInstanceValue$sl" />
+      <node id="5536314641534779166" at="68,0,69,0" concept="11" trace="AnnotationMethodDeclaration$C2" />
+      <node id="5536314641534779166" at="69,0,70,0" concept="11" trace="AnnotationInstance$5z" />
+      <node id="5536314641534779166" at="73,0,74,0" concept="11" trace="initializer$KgD" />
+      <node id="5536314641534779166" at="74,0,75,0" concept="11" trace="type$pLrO" />
       <node id="5536314641534779166" at="22,0,25,0" concept="2" trace="ArrayLiteral_Constraints#()V" />
       <node id="5536314641534779166" at="32,0,35,9" concept="5" />
       <node id="1227128029536558421" at="45,5,48,5" concept="5" />
       <node id="1227128029536558434" at="48,5,51,5" concept="5" />
-      <node id="1227128029536558442" at="51,5,54,5" concept="5" />
+      <node id="4703771440037914969" at="51,5,54,5" concept="5" />
+      <node id="1227128029536558442" at="54,5,57,5" concept="5" />
       <node id="1227128029536558398" at="41,128,45,5" concept="5" />
       <node id="5536314641534779166" at="29,0,39,0" concept="6" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="5536314641534779166" at="27,103,39,6" concept="8" />
       <node id="5536314641534779166" at="26,0,41,0" concept="6" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <node id="5536314641534779166" at="41,0,57,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="5536314641534779166" at="41,0,60,0" concept="12" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <scope id="5536314641534779166" at="22,37,23,36" />
       <scope id="5536314641534779166" at="33,55,34,71" />
       <scope id="1227128029536558422" at="46,162,47,18" />
       <scope id="1227128029536558435" at="49,88,50,18" />
-      <scope id="1227128029536558443" at="52,83,53,18" />
+      <scope id="4703771440037914970" at="52,92,53,18" />
+      <scope id="1227128029536558443" at="55,83,56,18" />
       <scope id="1227128029536558399" at="42,84,44,177">
         <var name="variableDeclaration" id="1227128029536558401" />
       </scope>
@@ -2953,18 +2957,18 @@
         <var name="context" id="5536314641534779166" />
       </scope>
       <scope id="5536314641534779166" at="27,103,39,6" />
-      <scope id="1227128029536558397" at="41,128,55,17" />
       <scope id="5536314641534779166" at="26,0,41,0" />
-      <scope id="5536314641534779166" at="41,0,57,0">
+      <scope id="1227128029536558397" at="41,128,58,17" />
+      <scope id="5536314641534779166" at="41,0,60,0">
         <var name="childConcept" id="5536314641534779166" />
         <var name="link" id="5536314641534779166" />
         <var name="node" id="5536314641534779166" />
         <var name="parentNode" id="5536314641534779166" />
       </scope>
-      <unit id="5536314641534779166" at="68,0,72,0" name="jetbrains.mps.baseLanguage.constraints.ArrayLiteral_Constraints$LINKS" />
-      <unit id="5536314641534779166" at="59,0,67,0" name="jetbrains.mps.baseLanguage.constraints.ArrayLiteral_Constraints$CONCEPTS" />
+      <unit id="5536314641534779166" at="72,0,76,0" name="jetbrains.mps.baseLanguage.constraints.ArrayLiteral_Constraints$LINKS" />
+      <unit id="5536314641534779166" at="62,0,71,0" name="jetbrains.mps.baseLanguage.constraints.ArrayLiteral_Constraints$CONCEPTS" />
       <unit id="5536314641534779166" at="28,15,39,5" name="jetbrains.mps.baseLanguage.constraints.ArrayLiteral_Constraints$1" />
-      <unit id="5536314641534779166" at="21,0,73,0" name="jetbrains.mps.baseLanguage.constraints.ArrayLiteral_Constraints" />
+      <unit id="5536314641534779166" at="21,0,77,0" name="jetbrains.mps.baseLanguage.constraints.ArrayLiteral_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/5862977038373005231">

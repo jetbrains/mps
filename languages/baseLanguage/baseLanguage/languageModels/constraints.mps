@@ -4,6 +4,7 @@
   <languages>
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -3276,6 +3277,23 @@
             <node concept="1mIQ4w" id="147CB3QsTPC" role="2OqNvi">
               <node concept="chp4Y" id="147CB3QsTPD" role="cj9EA">
                 <ref role="cht4Q" to="tpee:hiB6LFO" resolve="AnnotationInstanceValue" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4579NfW5A_p" role="3cqZAp">
+          <node concept="3clFbS" id="4579NfW5A_q" role="3clFbx">
+            <node concept="3cpWs6" id="4579NfW5A_r" role="3cqZAp">
+              <node concept="3clFbT" id="4579NfW5A_s" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="4579NfW5A_t" role="3clFbw">
+            <node concept="nLn13" id="4579NfW5A_u" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="4579NfW5A_v" role="2OqNvi">
+              <node concept="chp4Y" id="4579NfW5ASO" role="cj9EA">
+                <ref role="cht4Q" to="tpee:hiACnCB" resolve="AnnotationMethodDeclaration" />
               </node>
             </node>
           </node>
