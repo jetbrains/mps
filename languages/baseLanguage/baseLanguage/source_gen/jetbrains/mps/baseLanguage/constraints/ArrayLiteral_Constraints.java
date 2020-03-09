@@ -49,6 +49,9 @@ public class ArrayLiteral_Constraints extends BaseConstraintsDescriptor {
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.AnnotationInstanceValue$sl)) {
       return true;
     }
+    if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.AnnotationMethodDeclaration$C2)) {
+      return true;
+    }
     if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.AnnotationInstance$5z)) {
       return true;
     }
@@ -62,6 +65,7 @@ public class ArrayLiteral_Constraints extends BaseConstraintsDescriptor {
     /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
     /*package*/ static final SConcept ArrayCreatorWithInitializer$aE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, "jetbrains.mps.baseLanguage.structure.ArrayCreatorWithInitializer");
     /*package*/ static final SConcept AnnotationInstanceValue$sl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue");
+    /*package*/ static final SConcept AnnotationMethodDeclaration$C2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration");
     /*package*/ static final SConcept AnnotationInstance$5z = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
   }
 
