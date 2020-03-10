@@ -51,8 +51,6 @@ import java.util.Map;
 public class Solution extends ReloadableModuleBase {
   private SolutionDescriptor mySolutionDescriptor;
   public static final String SOLUTION_MODELS = "models";
-  // idea plugin wants to turn it off sometimes, when it knows better what jdk is and what platform is
-  private boolean myUpdateBootstrapSolutions = true;
 
   private static Map<SModuleReference, ClassType> bootstrapCP = initBootstrapSolutions();
 
@@ -163,10 +161,6 @@ public class Solution extends ReloadableModuleBase {
     setModuleReference(mp);
   }
 
-  public void setUpdateBootstrapSolutions(boolean b) {
-    myUpdateBootstrapSolutions = b;
-  }
-
   @Override
   public void save() {
     super.save();
@@ -194,14 +188,14 @@ public class Solution extends ReloadableModuleBase {
 
   @Override
   public void updateModelsSet() {
-    if (myUpdateBootstrapSolutions) {
-      updateBootstrapSolutionLibraries();
-    }
+    updateBootstrapSolutionLibraries();
     super.updateModelsSet();
   }
 
   @Hack
-  private void updateBootstrapSolutionLibraries() {
+  protected void updateBootstrapSolutionLibraries() {
+    // idea plugin wants to turn it off sometimes, when it knows better what jdk is and what platform is
+
     ModuleDescriptor descriptor = getModuleDescriptor();
 
     ClassType classType = bootstrapCP.get(descriptor.getModuleReference());

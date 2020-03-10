@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -291,7 +291,6 @@ public abstract class StubSolutionIdea extends StubSolution {
       super(descriptor, vfsManager);
       mySdk = sdk;
       myBaseJdk = baseJdk;
-      setUpdateBootstrapSolutions(false);
       attachRootsListener();
     }
 
@@ -317,6 +316,11 @@ public abstract class StubSolutionIdea extends StubSolution {
   private static class JdkStubSolution extends SdkStubSolution {
     JdkStubSolution(SolutionDescriptor descriptor, VFSManager vfsManager, @NotNull Sdk jdk) {
       super(descriptor, vfsManager, jdk, null);
+    }
+
+    @Override
+    protected void updateBootstrapSolutionLibraries() {
+      // intentionally no-op, "JDK" solution is managed here, not through CommonPaths
     }
 
     @Override
