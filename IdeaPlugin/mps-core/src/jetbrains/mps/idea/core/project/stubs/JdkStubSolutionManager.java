@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,13 +38,10 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.project.StubSolutionIdea;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.VFSManager;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.io.File;
@@ -52,10 +49,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 /**
  * User: shatalin
@@ -260,29 +255,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
     VirtualFile[] roots = remainingRoots.toArray(new VirtualFile[0]);
 
-    // remove from MPS.Platform 2 jars that contain idea classes but have different names,
-    // not like in idea sdk
-
-    SModule mpsPlatform = repository.getModule(ModuleId.regular(UUID.fromString("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61")));
-    assert mpsPlatform instanceof Solution;
-
-    Set<String> ideaStuffPaths = new HashSet<String>(CommonPaths.getMPSPaths(ClassType.IDEA_PLATFORM));
-    ModuleDescriptor mpsPlatfromDesc = ((Solution) mpsPlatform).getModuleDescriptor();
-
-    Iterator<ModelRootDescriptor> platformModelRoots = mpsPlatfromDesc.getModelRootDescriptors().iterator();
-    boolean changed = false;
-    while (platformModelRoots.hasNext()) {
-      ModelRootDescriptor modelRoot = platformModelRoots.next();
-      if (ideaStuffPaths.contains(modelRoot.getMemento().get("path"))) {
-        platformModelRoots.remove();
-        changed = true;
-      }
-    }
-
-    if (changed) {
-      ((Solution) mpsPlatform).setUpdateBootstrapSolutions(false);
-      ((Solution) mpsPlatform).setModuleDescriptor(mpsPlatfromDesc);
-    }
+    // JFTR, here used to be dead code to modify MPS.Platform jars
 
     myIdeaSdkSolution = StubSolutionIdea.newInstanceForRoots(sdk, jdk, roots, this, (SRepositoryExt) repository, getVFSManager());
     myIdeaSdk = sdk;
