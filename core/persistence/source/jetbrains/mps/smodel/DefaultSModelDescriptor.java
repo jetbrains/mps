@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.LazyLoadFacility;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.DefaultSModel.InvalidDefaultSModel;
-import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.apache.log4j.LogManager;
@@ -60,7 +59,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   }
 
   @Override
-  protected ModelLoadResult loadSModel(ModelLoadingState state) {
+  protected ModelLoadResult<SModel> loadSModel(ModelLoadingState state) {
     DataSource source = getSource();
     if (!source.isReadOnly() && source.getTimestamp() == -1) {
       // no file on disk
@@ -68,7 +67,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
       return new ModelLoadResult(model, ModelLoadingState.FULLY_LOADED);
     }
 
-    ModelLoadResult result;
+    jetbrains.mps.smodel.loading.ModelLoadResult result;
     try {
       result = myPersistence.readModel(myHeader, state);
     } catch (ModelReadException e) {
@@ -93,7 +92,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
             "but was UID            : \"" + model.getReference() + "\"\n" +
             "the model will not be available.\n" +
             "Make sure that all project's roots and/or the model namespace is correct");
-    return result;
+    return new ModelLoadResult<>(result.getModel(), result.getState());
   }
 
   protected boolean shouldCorrectModelRef(){
