@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@ import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.LinkDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import jetbrains.mps.smodel.runtime.StaticScope;
-import jetbrains.mps.smodel.runtime.base.BaseConceptDescriptor;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class CompiledConceptDescriptor extends BaseConceptDescriptor {
+public final class CompiledConceptDescriptor implements ConceptDescriptor {
   private final SConceptId myId;
   private final String myConceptFqName;
   @Nullable
@@ -57,6 +57,7 @@ public class CompiledConceptDescriptor extends BaseConceptDescriptor {
   private final boolean myFinal;
   private final boolean myIsRootable;
   private final String myConceptAlias;
+  private final ConceptKind myConceptKind;
   private final StaticScope myStaticScope;
   @Nullable
   private final SConceptId myStubConceptId;
@@ -86,6 +87,7 @@ public class CompiledConceptDescriptor extends BaseConceptDescriptor {
       String conceptAlias,
       StaticScope staticScope,
       SConceptId stubConcept,
+      ConceptKind conceptKind,
       SNodeReference sourceNodeRef) {
     myVersion = version;
     myId = id;
@@ -127,6 +129,8 @@ public class CompiledConceptDescriptor extends BaseConceptDescriptor {
     myFinal = isFinal;
     myIsRootable = isRootable;
     myConceptAlias = conceptAlias == null ? "" : conceptAlias;
+    // generally, conceptKind != null, and defaults to NORMAL. In case there could be code that does CDB2.kind(null,...), can make sure it's not null here
+    myConceptKind = conceptKind;
     myStaticScope = staticScope;
 
     myStubConceptId = stubConcept;
@@ -246,6 +250,11 @@ public class CompiledConceptDescriptor extends BaseConceptDescriptor {
   }
 
   @Override
+  public ConceptKind getConceptKind() {
+    return myConceptKind;
+  }
+
+  @Override
   public StaticScope getStaticScope() {
     return myStaticScope;
   }
@@ -340,5 +349,10 @@ public class CompiledConceptDescriptor extends BaseConceptDescriptor {
   public LinkDescriptor getLinkDescriptor(SContainmentLinkId id) {
     init();
     return links.get(id);
+  }
+
+  @Override
+  public boolean isAssignableTo(SConceptId conceptId) {
+    return getAncestorsIds().contains(conceptId);
   }
 }

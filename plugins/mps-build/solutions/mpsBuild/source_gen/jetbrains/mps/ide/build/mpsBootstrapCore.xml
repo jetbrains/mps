@@ -17358,7 +17358,6 @@
         <pathelement path="${mps_home}/editor/editor-runtime/source" />
         <pathelement path="${mps_home}/editor/editor-runtime/source_gen" />
         <pathelement path="${mps_home}/editor/actions-runtime/source" />
-        <pathelement path="${mps_home}/editor/actions-runtime/source_gen" />
         <pathelement path="${mps_home}/editor/intentions-runtime/source" />
         <pathelement path="${mps_home}/editor/typesystemIntegration/source" />
         <pathelement path="${mps_home}/editor/typesystemIntegration/source_gen" />
@@ -17414,7 +17413,6 @@
       <fileset dir="${mps_home}/editor/editor-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/editor/editor-runtime/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/editor/actions-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/editor/actions-runtime/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/editor/intentions-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/editor/typesystemIntegration/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/editor/typesystemIntegration/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />

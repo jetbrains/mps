@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,20 +17,12 @@ package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public interface ReferenceScopeProvider {
-  // MPS 2019.2 generates overrides of the method, with MPS 2019.3 we generate createScope(RCC)
-  // Remove this method once MPS 2019.3 is out
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  Scope createScope(IOperationContext operationContext, ReferenceConstraintsContext _context);
-
   // since 2019.3
   default Scope createScope(ReferenceConstraintsContext _context) {
-    // compatibility code
-    return createScope(null, _context);
+    return null;
   }
 
   boolean hasPresentation();
