@@ -205,7 +205,9 @@ public class Solution extends ReloadableModuleBase {
     ModuleDescriptor descriptor = getModuleDescriptor();
 
     ClassType classType = bootstrapCP.get(descriptor.getModuleReference());
-    if (classType == null) return;
+    if (classType == null) {
+      return;
+    }
 
     // do it only for first time
     List<QualifiedPath> jrtPaths = new ArrayList<>();

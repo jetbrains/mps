@@ -37,6 +37,12 @@ public final class CommonPaths {
   //--------paths-----------
 
   public static List<QualifiedPath> getPaths(ClassType type) {
+    if (type != ClassType.JDK && type != ClassType.JDK_TOOLS && type != ClassType.IDEA) {
+      String s = "CommonPaths no longer serves as a list of hard-coded libraries, ClassType '%s' is not supported";
+      throw new IllegalArgumentException(String.format(s, type.getTypeString()));
+      // in fact, idea shall fade away pretty much the same way as other ClassType values.
+      // it's only jdk/jdk-tools we can not manage in JDK.msd; for those PredefinedRootClassTypeConfig shall help
+    }
     Predicate<QualifiedPath> toolsPredicate = s -> s.getPath().contains("jdk.jdi") || s.getPath().contains("tools.jar");
     if (type == ClassType.JDK) {
       return getJDKPathInternal().stream().filter(toolsPredicate.negate()).collect(Collectors.toList());
@@ -46,26 +52,12 @@ public final class CommonPaths {
 
     final List<QualifiedPath> result = new ArrayList<>();
     for (String path : new ClassPathReader(PathManager.getHomePath(), Collections.singletonList(type)).read()) {
+      // inactive code, it's unlikely we need to specify jdk/idea jars through idea.additional.classpath.txt;
+      // left as a reminder to deal with CPR some day (leave just to augment classpath for Launcher, perhaps)?
       addIfExists(result, path);
     }
-    if (type == ClassType.ANNOTATIONS) {
-      addAnnotations(result);
-    } else if (type == ClassType.OPENAPI) {
-      addOpenAPIJars(result);
-    } else if (type == ClassType.CORE) {
-      addCoreJars(result);
-    } else if (type == ClassType.EDITOR) {
-      addEditorJars(result);
-    } else if (type == ClassType.IDEA_PLATFORM) {
-      addRepackedIdeaJars(result);
-    } else if (type == ClassType.IDEA) {
+    if (type == ClassType.IDEA) {
       addIdeaJars(result);
-    } else if (type == ClassType.PLATFORM) {
-      addPlatformJars(result);
-    } else if (type == ClassType.WORKBENCH) {
-      addWorkbenchJars(result);
-    } else if (type == ClassType.TEST) {
-      addTestJars(result);
     }
     return result;
   }
@@ -74,6 +66,7 @@ public final class CommonPaths {
   @ToRemove(version = 2019.1)
   //use getPaths
   public static List<String> getMPSPaths(ClassType type) {
+    // there's only 1 use in Ant_Command with ClassType.JDK_TOOLS
     return getPaths(type).stream().map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
   }
 
@@ -85,51 +78,6 @@ public final class CommonPaths {
 
   private static List<QualifiedPath> getJDKPathInternal() {
     return SDKDiscovery.discover();
-  }
-
-  //------classpaths : MPS--------
-
-  private static void addAnnotations(Collection<QualifiedPath> result) {
-    addIfExists(result, "lib/annotations.jar");
-  }
-
-  private static void addOpenAPIJars(Collection<QualifiedPath> result) {
-    addIfExists(result, "lib/mps-openapi.jar");
-  }
-
-  private static void addCoreJars(Collection<QualifiedPath> result) {
-    addIfExists(result, "lib/mps-annotations.jar");
-    addIfExists(result, "lib/mps-logging.jar");
-    addIfExists(result, "lib/mps-messaging.jar");
-    addIfExists(result, "lib/mps-core.jar");
-    addIfExists(result, "lib/mps-boot-util.jar");
-    addIfExists(result, "lib/mps-closures.jar");
-    addIfExists(result, "lib/mps-collections.jar");
-    addIfExists(result, "lib/mps-constraints-runtime.jar");
-    addIfExists(result, "lib/mps-tuples.jar");
-    addIfExists(result, "lib/mps-project-check.jar");
-    // classes of [java-stub] and [persistence] have been exposed though MPS.Core; even though they got bundled into distinct jar now, and both
-    // mps.persistence and java.stub solutions expose mps-persistence.jar as their classpath library
-    addIfExists(result, "lib/mps-persistence.jar");
-        // XXX likely, generator and textgen deserve their own stub modules, but for the time being, there classes are resolved through MPS.Core
-    // OTOH, if we are ok with missing reference targets in MPS.Core, perhaps, it doesn't make sense to use a lot of different stub modules?
-    addIfExists(result, "lib/mps-generator.jar");
-    addIfExists(result, "lib/mps-textgen.jar");
-    addIfExists(result, "lib/log4j.jar");
-    addIfExists(result, "lib/trove4j.jar");
-    addIfExists(result, "lib/jdom.jar");
-    addIfExists(result, "lib/ecj-4.13.jar");
-    addIfExists(result, "plugins/java/lib/ecj-4.13.jar");
-    // next are no longer needed. Kept as there's still use of ClassType.CORE in JdkStubSolutionManager
-    addIfExists(result, "lib/guava-28.2-jre.jar");
-    addIfExists(result, "lib/xstream-1.4.11.1.jar");
-    addIfExists(result, "lib/asm-all-7.0.1.jar");
-  }
-
-  private static void addEditorJars(Collection<QualifiedPath> result) {
-    addIfExists(result, "lib/mps-editor.jar");
-    addIfExists(result, "lib/mps-editor-api.jar");
-    addIfExists(result, "lib/mps-editor-runtime.jar");
   }
 
   private static void addRepackedIdeaJars(Collection<QualifiedPath> result) {
@@ -174,20 +122,6 @@ public final class CommonPaths {
     addIfExists(result, "lib/picocontainer-1.2.jar");
     addIfExists(result, "lib/forms_rt.jar");
     addIfExists(result, "lib/jdom.jar");
-  }
-
-  private static void addPlatformJars(Collection<QualifiedPath> result) {
-    addIfExists(result, "lib/mps-platform.jar");
-    addIfExists(result, "lib/mps-icons.jar");
-  }
-
-  private static void addWorkbenchJars(Collection<QualifiedPath> result) {
-    addIfExists(result, "lib/mps-workbench.jar");
-  }
-
-  private static void addTestJars(Collection<QualifiedPath> result) {
-    addIfExists(result, "lib/mps-test.jar");
-    addIfExists(result, "lib/mps-environment.jar");
   }
 
   private static void addIfExists(Collection<QualifiedPath> item, String path) {
