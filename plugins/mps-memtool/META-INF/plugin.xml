@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2010 JetBrains s.r.o.
+  ~ Copyright 2003-2020 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,19 +15,14 @@
   -->
 <!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
 <idea-plugin>
-  <id>jetbrains.mps.ide.memmanagement</id>
+  <id>jetbrains.mps.ide.memtool</id>
   <name>Memory Tool</name>
   <description>Adds loaded models indicator, enables model unloading process, logs related stats</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
 
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.memManagement.MemManager</implementation-class>
-    </component>
-  </project-components>
-
   <extensions defaultExtensionNs="com.intellij">
-    <registryKey key="ide.memory.cleanup.interval" defaultValue="-1" description="Unload all models each N seconds. Non-positive value disables models unloading" restartRequired="true"/>
-    <statusBarWidgetProvider implementation="jetbrains.mps.ide.memManagement.LoadedModelsPanel" id="LoadedModels"/>
+    <registryKey key="ide.memory.cleanup.interval" defaultValue="-1" description="Unload all models each N seconds. Non-positive value disables models unloading" restartRequired="false"/>
+    <statusBarWidgetProvider implementation="jetbrains.mps.ide.memtool.LoadedModelsPanel" id="LoadedModels"/>
+    <backgroundPostStartupActivity implementation="jetbrains.mps.ide.memtool.MemManager" />
   </extensions>
 </idea-plugin>

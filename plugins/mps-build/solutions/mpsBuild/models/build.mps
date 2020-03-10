@@ -28746,10 +28746,10 @@
       </node>
     </node>
     <node concept="m$_wf" id="42kMDMFt4A2" role="3989C9">
-      <property role="m$_wk" value="jetbrains.mps.ide.memmanagement" />
+      <property role="m$_wk" value="jetbrains.mps.ide.memtool" />
       <node concept="3_J27D" id="42kMDMFt4A3" role="m$_yQ">
         <node concept="3Mxwew" id="42kMDMFt4A4" role="3MwsjC">
-          <property role="3MwjfP" value="Memory Management" />
+          <property role="3MwjfP" value="Memory Tool" />
         </node>
       </node>
       <node concept="3_J27D" id="42kMDMFt4A5" role="m_cZH">
@@ -28885,7 +28885,7 @@
         </node>
       </node>
       <node concept="m$_wl" id="42kMDMFt6RQ" role="39821P">
-        <ref role="m_rDy" node="42kMDMFt4A2" resolve="jetbrains.mps.ide.memmanagement" />
+        <ref role="m_rDy" node="42kMDMFt4A2" resolve="jetbrains.mps.ide.memtool" />
         <node concept="pUk6w" id="42kMDMFt6RR" role="pUk7w" />
         <node concept="398223" id="42kMDMFt6RW" role="39821P">
           <node concept="28jJK3" id="42kMDMFt6RX" role="39821P">

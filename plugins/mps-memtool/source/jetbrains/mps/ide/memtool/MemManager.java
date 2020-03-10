@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,27 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.ide.memManagement;
+package jetbrains.mps.ide.memtool;
 
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.Notifications;
-import com.intellij.openapi.actionSystem.ActionGroup;
-import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.openapi.actionSystem.ActionPopupMenu;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.openapi.wm.IdeFrame;
-import com.intellij.openapi.wm.StatusBarWidget;
-import com.intellij.openapi.wm.ex.StatusBarEx;
-import com.intellij.openapi.wm.ex.WindowManagerEx;
-import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
-import com.intellij.ui.awt.RelativePoint;
+import com.intellij.openapi.util.registry.RegistryValue;
+import com.intellij.openapi.util.registry.RegistryValueListener;
 import com.intellij.util.Alarm;
 import com.intellij.util.Alarm.ThreadToUse;
 import jetbrains.mps.components.ComponentHost;
@@ -48,20 +40,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import javax.swing.AbstractAction;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.function.Consumer;
 
 import static com.intellij.openapi.util.io.FileUtilRt.MEGABYTE;
 
-public class MemManager implements ProjectComponent {
+public class MemManager implements StartupActivity.Background {
   public static final int DELAY = 5;
   private static final Logger LOG = LogManager.getLogger(MemManager.class);
   private static final int DELAY2 = DELAY * 2;
@@ -70,32 +53,42 @@ public class MemManager implements ProjectComponent {
   // b) Perhaps, shall use NotificationsConfiguration.LIGHTWEIGHT_PREFIX for a group id?
   private static final NotificationGroup ourNotificationGroup = new NotificationGroup("MPS Memory Stats", NotificationDisplayType.BALLOON, false);
 
-  private final Project myProject;
-  private final ComponentHost myComponentHost;
+  private Project myProject;
+  private ComponentHost myComponentHost;
 
   private Alarm myCleanupAlarm;
   private Alarm myAlarm;
 
-  public MemManager(Project project) {
+  public MemManager() {
+  }
+
+  @Override
+  public void runActivity(@NotNull Project project) {
     myProject = project;
     final MPSCoreComponents mpsCore = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
     myComponentHost = mpsCore.getPlatform();
     myAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
-    myCleanupAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
+    final RegistryValue rv = Registry.get("ide.memory.cleanup.interval");
+    rescheduleRepeatingCleanup(rv.asInteger());
+    rv.addListener(new RegistryValueListener() {
+      @Override
+      public void afterValueChanged(@NotNull RegistryValue value) {
+        rescheduleRepeatingCleanup(value.asInteger());
+      }
+    }, project);
   }
 
-  @Override
-  public void projectOpened() {
-    int sec = Registry.intValue("ide.memory.cleanup.interval");
+  private void rescheduleRepeatingCleanup(int sec) {
+    if (myCleanupAlarm != null) {
+      myCleanupAlarm.dispose();
+      myCleanupAlarm = null;
+    }
     if (sec > 0) {
+      myCleanupAlarm = new Alarm(ThreadToUse.POOLED_THREAD, myProject);
       new MyRepeatingCleanup(Math.round(sec * 1000)).run();
     }
   }
 
-  @Override
-  public void projectClosed() {
-
-  }
 
   public void cleanupFromAction() {
     if (myComponentHost.findComponent(MakeServiceComponent.class).isSessionActive()) {
