@@ -64,6 +64,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
   private DefaultSModel my_modelField;
   private ImportsHelper my_importHelperField;
   private IdEncoder my_idEncoderField;
+  private boolean my_nodesIgnoredField;
   public ModelReader9Handler(SModelHeader header, IdInfoReadHelper readHelper) {
     my_headerParam = header;
     my_readHelperParam = readHelper;
@@ -164,13 +165,13 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected ModelLoadResult createObject(Attributes attrs) throws SAXException {
+      my_nodesIgnoredField = false;
       my_idEncoderField = my_readHelperParam.getIdEncoder();
       SModelReference ref = my_idEncoderField.parseModelReference(attrs.getValue("ref"));
       my_modelField = new DefaultSModel(ref, my_headerParam);
       my_modelField.getSModelHeader().setPersistenceVersion(9);
       my_importHelperField = new ImportsHelper(ref);
       ModelLoadResult result = new ModelLoadResult((SModel) my_modelField, ModelLoadingState.NOT_LOADED);
-      result.setState((my_readHelperParam.isRequestedInterfaceOnly() ? ModelLoadingState.INTERFACE_LOADED : ((my_readHelperParam.isRequestedStripImplementation() ? ModelLoadingState.NO_IMPLEMENTATION : ModelLoadingState.FULLY_LOADED))));
       return result;
     }
     @Override
@@ -246,8 +247,27 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       }
     }
     private void handleChild_8237920533349931307(Object resultObject, Object value) throws SAXException {
-      Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> child = (Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink>) value;
+      Tuples._2<SNode, SContainmentLink> child = (Tuples._2<SNode, SContainmentLink>) value;
       my_modelField.addRootNode(child._0());
+    }
+    @Override
+    protected void validate(Object resultObject) throws SAXException {
+      if (!(validateInternal((ModelLoadResult) resultObject))) {
+        throw new SAXParseException("missing tags", null);
+      }
+    }
+    private boolean validateInternal(ModelLoadResult result) throws SAXException {
+      // assume can't get request to load both 'interface only' and 'strip implementation' 
+      if (my_readHelperParam.isRequestedInterfaceOnly()) {
+        // we could face a model (e.g. structure) that is full of InterfacePart nodes (e.g. most of lang.structure concepts are) 
+        // without nodesSkipped flag that indicates we truly skip nodes, we won't notice we loaded the model fully 
+        result.setState((my_nodesIgnoredField ? ModelLoadingState.INTERFACE_LOADED : ModelLoadingState.FULLY_LOADED));
+      } else if (my_readHelperParam.isRequestedStripImplementation()) {
+        result.setState((my_nodesIgnoredField ? ModelLoadingState.NO_IMPLEMENTATION : ModelLoadingState.FULLY_LOADED));
+      } else {
+        result.setState(ModelLoadingState.FULLY_LOADED);
+      }
+      return true;
     }
   }
   public class PersistenceElementHandler extends ElementHandler {
@@ -462,8 +482,9 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       setRequiredAttributes("concept", "id");
     }
     @Override
-    protected Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> createObject(Attributes attrs) throws SAXException {
+    protected Tuples._2<SNode, SContainmentLink> createObject(Attributes attrs) throws SAXException {
       SConcept concept = my_readHelperParam.readConcept(attrs.getValue("concept"));
+      // 'implementation with stub' roots are handled in 'model/child with tag node', above 
       boolean interfaceNode = false;
       if (my_readHelperParam.isRequestedInterfaceOnly()) {
         interfaceNode = (my_readHelperParam.isInterface(concept) || attrs.getValue("role") == null);
@@ -476,7 +497,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       }
       SNode result = (interfaceNode ? new InterfaceSNode(concept, nodeId) : new SNode(concept, nodeId));
       // can be root 
-      return MultiTuple.<org.jetbrains.mps.openapi.model.SNode,SContainmentLink>from(((org.jetbrains.mps.openapi.model.SNode) result), my_readHelperParam.readAggregation(attrs.getValue("role")));
+      return MultiTuple.<SNode,SContainmentLink>from(result, my_readHelperParam.readAggregation(attrs.getValue("role")));
     }
     @Override
     protected ElementHandler createChild(Object resultObject, String tagName, Attributes attrs) throws SAXException {
@@ -507,6 +528,15 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
         });
         return ignoredNodeHandler;
       }
+      if ("node".equals(tagName) && checknode_2194321272293078606(resultObject, attrs)) {
+        myChildHandlersStack.push(new ChildHandler() {
+          @Override
+          public void apply(Object resultObject, Object value) throws SAXException {
+            handleChild_2194321272293078539(resultObject, value);
+          }
+        });
+        return ignoredNodeHandler;
+      }
       if ("node".equals(tagName)) {
         myChildHandlersStack.push(new ChildHandler() {
           @Override
@@ -519,20 +549,22 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       return super.createChild(resultObject, tagName, attrs);
     }
     private boolean checknode_8237920533350080210(Object resultObject, Attributes attrs) {
-      Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> result = (Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink>) resultObject;
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
       SConcept childConcept = my_readHelperParam.readConcept(attrs.getValue("concept"));
-      if (my_readHelperParam.isRequestedStripImplementation() && my_readHelperParam.isImplementation(childConcept)) {
-        return true;
-      }
+      return my_readHelperParam.isRequestedStripImplementation() && my_readHelperParam.isImplementation(childConcept);
+    }
+    private boolean checknode_2194321272293078606(Object resultObject, Attributes attrs) {
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
+      SConcept childConcept = my_readHelperParam.readConcept(attrs.getValue("concept"));
       return result._0() instanceof InterfaceSNode && !(my_readHelperParam.isInterface(childConcept));
     }
     private void handleChild_5480414999147804176(Object resultObject, Object value) throws SAXException {
-      Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> result = (Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink>) resultObject;
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
       Tuples._2<SProperty, String> child = (Tuples._2<SProperty, String>) value;
       result._0().setProperty(child._0(), child._1());
     }
     private void handleChild_4968492044127349726(Object resultObject, Object value) throws SAXException {
-      Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> result = (Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink>) resultObject;
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
       Tuples._4<SReferenceLink, SModelReference, SNodeId, String> child = (Tuples._4<SReferenceLink, SModelReference, SNodeId, String>) value;
       SModelReference targetModel = child._1();
       SNodeId nodeId = child._2();
@@ -542,23 +574,28 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       result._0().setReference(link, ref);
     }
     private void handleChild_5480414999147804300(Object resultObject, Object value) throws SAXException {
-      Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> result = (Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink>) resultObject;
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
       Tuples._2<SContainmentLink, SConcept> child = (Tuples._2<SContainmentLink, SConcept>) value;
       SContainmentLink link = child._0();
       SConcept concept = child._1();
-      if (my_readHelperParam.isRequestedStripImplementation() && my_readHelperParam.isImplementationWithStub(concept)) {
+      if (my_readHelperParam.isImplementationWithStub(concept)) {
         SConcept stubConcept = my_readHelperParam.getStubConcept(concept);
         SNode childNode = new SNode(stubConcept);
         result._0().addChild(link, childNode);
         return;
       }
-      if (result._0() instanceof InterfaceSNode) {
-        ((InterfaceSNode) result._0()).skipRole(link);
-      }
+      // otherwise, it's an implementation node without stub, just ignore it  
+    }
+    private void handleChild_2194321272293078539(Object resultObject, Object value) throws SAXException {
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
+      Tuples._2<SContainmentLink, SConcept> child = (Tuples._2<SContainmentLink, SConcept>) value;
+      SContainmentLink link = child._0();
+      // result[0] InterfacePart and child[1] not InterfacePart 
+      ((InterfaceSNode) result._0()).skipRole(link);
     }
     private void handleChild_5480414999147804248(Object resultObject, Object value) throws SAXException {
-      Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> result = (Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink>) resultObject;
-      Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink> child = (Tuples._2<org.jetbrains.mps.openapi.model.SNode, SContainmentLink>) value;
+      Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
+      Tuples._2<SNode, SContainmentLink> child = (Tuples._2<SNode, SContainmentLink>) value;
       result._0().addChild(child._1(), child._0());
     }
   }
@@ -594,6 +631,8 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected Tuples._2<SContainmentLink, SConcept> createObject(Attributes attrs) throws SAXException {
+      // denote we ignore actual node either by replacing it with a stub or skipping it altogether 
+      my_nodesIgnoredField = true;
       return MultiTuple.<SContainmentLink,SConcept>from(my_readHelperParam.readAggregation(attrs.getValue("role")), my_readHelperParam.readConcept(attrs.getValue("concept")));
     }
     @Override
