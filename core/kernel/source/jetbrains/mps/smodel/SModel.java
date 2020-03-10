@@ -607,7 +607,6 @@ public class SModel implements SModelData, UpdateModeSupport {
       return;
     }
 
-    enforceFullLoad(); // FIXME dubious need to perform full load if all we do is populating id map
     org.jetbrains.mps.openapi.model.SNodeId id = node.getNodeId();
     if (id == null) {
       assignNewId(node);

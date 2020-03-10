@@ -94,6 +94,7 @@ final class AttachedNodeOwner extends SNodeOwner {
 
   @Override
   public void registerNode(SNode node) {
+    myModel.enforceFullLoad(); // FIXME dubious need to perform full load if all we do is populating id map
     doRegister(node, commandContext());
     node.makeReferencesIndirect();
   }
