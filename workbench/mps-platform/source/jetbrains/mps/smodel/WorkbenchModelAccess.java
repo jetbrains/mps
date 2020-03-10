@@ -27,6 +27,7 @@ import jetbrains.mps.smodel.undo.UndoContext;
 import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.openapi.model.SModel;
 
 import java.math.BigDecimal;
 
@@ -53,7 +54,7 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     mySubstitutedModelAccess = instance();
     assert mySubstitutedModelAccess instanceof DefaultModelAccess;
     setInstance(this);
-    myUndoHandler = (WorkbenchUndoHandler) ApplicationManager.getApplication().getComponent(UndoHandler.class);
+    myUndoHandler = new WorkbenchUndoHandler();
     myPlatformWriteHelper = new TryRunPlatformWriteHelper();
     myCancellableReads = new CancellableReadsManager();
     Disposer.register(this, myEDTExecutor);
@@ -319,6 +320,11 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   @Override
   public boolean hasScheduledWrites() {
     return myPlatformWriteHelper.hasScheduledWrites() || super.hasScheduledWrites();
+  }
+
+  @Override
+  protected UndoHandler getUndoHandler(SModel model) {
+    return myUndoHandler;
   }
 
   /**

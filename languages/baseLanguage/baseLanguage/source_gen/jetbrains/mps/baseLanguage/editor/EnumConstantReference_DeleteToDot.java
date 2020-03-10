@@ -7,18 +7,17 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.behavior.QualifiedReference__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-public class StaticFieldReference_DeleteDot {
+public class EnumConstantReference_DeleteToDot {
 
   /*package*/ static AbstractCellAction createAction_DELETE(final SNode node) {
     return new AbstractCellAction() {
@@ -26,10 +25,9 @@ public class StaticFieldReference_DeleteDot {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, node, "field")) {
-          return;
+        if (!(DeletionApproverUtil.approve(editorContext, node, "constant"))) {
+          SNodeOperations.replaceWithAnother(node, createStaticFieldReference_2461o5_a0a0a0a0a(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(node)));
         }
-        SNodeOperations.replaceWithAnother(node, _quotation_createNode_65e73j_a0a1a0a(SLinkOperations.getTarget(node, LINKS.classifier$ZTjE)));
       }
 
     };
@@ -69,15 +67,19 @@ public class StaticFieldReference_DeleteDot {
       editorCell.setAction(actionType, createAction_DELETE(node));
     }
   }
-  private static SNode _quotation_createNode_65e73j_a0a1a0a(Object parameter_1) {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_2 = null;
-    quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x6c6c91efa5ec8cd7L, "AbstractClassifierReference")).getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier"), (SNode) parameter_1);
-    return quotedNode_2;
+  private static SNode createStaticFieldReference_2461o5_a0a0a0a0a(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StaticFieldReference$K8);
+    n0.setReferenceTarget(LINKS.classifier$ZTjE, p0);
+    n0.setReferenceTarget(LINKS.variableDeclaration$2ky6, null);
+    return n0.getResult();
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept StaticFieldReference$K8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink classifier$ZTjE = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$2ky6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

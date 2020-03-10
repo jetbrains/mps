@@ -12,6 +12,23 @@
     <import index="tp3r" ref="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" implicit="true" />
   </imports>
   <registry>
+    <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="2756621024541681841" name="jetbrains.mps.lang.resources.structure.Primitive" flags="ng" index="1irPi6">
+        <child id="1860120738943552529" name="fillColor" index="3PKjn_" />
+      </concept>
+      <concept id="2756621024541681849" name="jetbrains.mps.lang.resources.structure.Text" flags="ng" index="1irPie">
+        <property id="2756621024541681854" name="text" index="1irPi9" />
+        <child id="1860120738943552534" name="color" index="3PKjny" />
+      </concept>
+      <concept id="2756621024541674821" name="jetbrains.mps.lang.resources.structure.TextIcon" flags="ng" index="1irR5M">
+        <property id="1358878980655415353" name="iconId" index="2$rrk2" />
+        <child id="2756621024541675110" name="layers" index="1irR9h" />
+      </concept>
+      <concept id="2756621024541675104" name="jetbrains.mps.lang.resources.structure.Circle" flags="ng" index="1irR9n" />
+      <concept id="1860120738943552477" name="jetbrains.mps.lang.resources.structure.ColorLiteral" flags="ng" index="3PKj8D">
+        <property id="1860120738943552481" name="val" index="3PKj8l" />
+      </concept>
+    </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
@@ -42,6 +59,7 @@
         <property id="5404671619616246344" name="staticScope" index="2_RsDV" />
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
+        <child id="6327362524875300597" name="icon" index="rwd14" />
         <child id="1169129564478" name="implements" index="PzmwI" />
       </concept>
       <concept id="1071489288299" name="jetbrains.mps.lang.structure.structure.PropertyDeclaration" flags="ig" index="1TJgyi">
@@ -434,6 +452,20 @@
     <node concept="PrWs8" id="64p9aapFrOY" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
+    <node concept="1irR5M" id="6SIgRePbkRv" role="rwd14">
+      <property role="2$rrk2" value="1" />
+      <node concept="1irR9n" id="6SIgRePbkRJ" role="1irR9h">
+        <node concept="3PKj8D" id="6SIgRePbl$r" role="3PKjn_">
+          <property role="3PKj8l" value="6B8E23" />
+        </node>
+      </node>
+      <node concept="1irPie" id="6SIgRePbkRS" role="1irR9h">
+        <property role="1irPi9" value="»" />
+        <node concept="3PKj8D" id="6SIgRePbkS4" role="3PKjny">
+          <property role="3PKj8l" value="000000" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="1TIwiD" id="63LzO9stD_y">
     <property role="EcuMT" value="6985522012210239842" />
@@ -509,7 +541,7 @@
   <node concept="1TIwiD" id="1tcvH6b5INW">
     <property role="EcuMT" value="1678856199549152508" />
     <property role="3GE5qa" value="light.bL" />
-    <property role="TrG5h" value="PatternReference" />
+    <property role="TrG5h" value="LocalPatternReference" />
     <ref role="1TJDcQ" node="1tcvH6b5INV" resolve="AbstractPatternProvider" />
     <node concept="1TJgyj" id="1tcvH6b5INX" role="1TKVEi">
       <property role="IQ2ns" value="1678856199549152509" />
@@ -557,6 +589,40 @@
     <ref role="1TJDcQ" to="tp3r:4IP40Bi2$Ew" resolve="NodeBuilderNode" />
     <node concept="PrWs8" id="PFUECvMj1D" role="PzmwI">
       <ref role="PrY4T" node="2r4rhgaDx1I" resolve="PatternBuilderVariable" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6SIgReP4RfS">
+    <property role="EcuMT" value="7939357357339014136" />
+    <property role="3GE5qa" value="light.bL" />
+    <property role="TrG5h" value="ExpressionPatternProvider" />
+    <ref role="1TJDcQ" node="1tcvH6b5INV" resolve="AbstractPatternProvider" />
+    <node concept="1TJgyj" id="6SIgReP4RfT" role="1TKVEi">
+      <property role="IQ2ns" value="7939357357339014137" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="expression" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6SIgReP4Tro">
+    <property role="EcuMT" value="7939357357339023064" />
+    <property role="3GE5qa" value="light.bL" />
+    <property role="TrG5h" value="QualifiedPatternReference" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+    <node concept="1TJgyj" id="6SIgReP4Tz5" role="1TKVEi">
+      <property role="IQ2ns" value="7939357357339023557" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <property role="20kJfa" value="classifier" />
+      <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
+    </node>
+    <node concept="1TJgyj" id="6SIgReP4Tzk" role="1TKVEi">
+      <property role="IQ2ns" value="7939357357339023572" />
+      <property role="20kJfa" value="pattern" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="53SOuJl2VUK" resolve="PatternBuilderClassifierMember" />
+    </node>
+    <node concept="PrWs8" id="6SIgReP4Trp" role="PzmwI">
+      <ref role="PrY4T" to="tpee:7S22xyoLQFx" resolve="QualifiedReference" />
     </node>
   </node>
 </model>

@@ -54,7 +54,6 @@
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
-    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="cmfw" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.event(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
@@ -1040,14 +1039,14 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="51NkKCgB3ev" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyzkcz" role="3clFbG">
-            <ref role="37wK5l" node="4$kvR95B1r8" resolve="showItemInHierarchy" />
-            <node concept="10QFUN" id="4$kvR95BXSm" role="37wK5m">
-              <node concept="3uibUv" id="4$kvR95BXY8" role="10QFUM">
-                <ref role="3uigEE" to="mhbf:~SNodeReference" resolve="SNodeReference" />
-              </node>
-              <node concept="10Nm6u" id="51NkKCgB3ex" role="10QFUP" />
+        <node concept="3clFbF" id="5a835WT3Pxc" role="3cqZAp">
+          <node concept="2OqwBi" id="5a835WT3SwX" role="3clFbG">
+            <node concept="37vLTw" id="5a835WT3Pxa" role="2Oq$k0">
+              <ref role="3cqZAo" node="51NkKCgB3d9" resolve="myHierarchyTree" />
+            </node>
+            <node concept="liA8E" id="5a835WT3UGP" role="2OqNvi">
+              <ref role="37wK5l" node="2z9SX9btPUk" resolve="setHierarchyNode" />
+              <node concept="10Nm6u" id="5a835WT3VHf" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -1064,93 +1063,48 @@
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3clFbS" id="5CK42mQosJu" role="3clF47">
-        <node concept="3clFbF" id="WEmn41y5F2" role="3cqZAp">
-          <node concept="2OqwBi" id="WEmn41y6GT" role="3clFbG">
-            <node concept="2YIFZM" id="WEmn41y64y" role="2Oq$k0">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+        <node concept="3cpWs8" id="5CK42mQosJM" role="3cqZAp">
+          <node concept="3cpWsn" id="5CK42mQosJL" role="3cpWs9">
+            <property role="3TUv4t" value="false" />
+            <property role="TrG5h" value="buttonsPanel" />
+            <node concept="3uibUv" id="5CK42mQosJN" role="1tU5fm">
+              <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
             </node>
-            <node concept="liA8E" id="WEmn41y7xd" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
-              <node concept="2ShNRf" id="5CK42mQosJE" role="37wK5m">
-                <node concept="YeOm9" id="5CK42mQosJF" role="2ShVmc">
-                  <node concept="1Y3b0j" id="5CK42mQosJG" role="YeSDq">
-                    <property role="2bfB8j" value="true" />
-                    <property role="1sVAO0" value="false" />
-                    <property role="1EXbeo" value="false" />
-                    <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="3Tm1VV" id="5CK42mQosJH" role="1B3o_S" />
-                    <node concept="3clFb_" id="5CK42mQosJI" role="jymVt">
-                      <property role="TrG5h" value="run" />
-                      <property role="DiZV1" value="false" />
-                      <property role="od$2w" value="false" />
-                      <node concept="2AHcQZ" id="5CK42mQosJJ" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                      </node>
-                      <node concept="3clFbS" id="5CK42mQosJK" role="3clF47">
-                        <node concept="3clFbJ" id="7ucF$RjvAgG" role="3cqZAp">
-                          <node concept="3clFbS" id="7ucF$RjvAgI" role="3clFbx">
-                            <node concept="3cpWs8" id="5CK42mQosJM" role="3cqZAp">
-                              <node concept="3cpWsn" id="5CK42mQosJL" role="3cpWs9">
-                                <property role="3TUv4t" value="false" />
-                                <property role="TrG5h" value="buttonsPanel" />
-                                <node concept="3uibUv" id="5CK42mQosJN" role="1tU5fm">
-                                  <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
-                                </node>
-                                <node concept="2OqwBi" id="5CK42mQosJO" role="33vP2m">
-                                  <node concept="2OqwBi" id="5CK42mQosJP" role="2Oq$k0">
-                                    <node concept="2YIFZM" id="5CK42mQosKC" role="2Oq$k0">
-                                      <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
-                                      <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
-                                    </node>
-                                    <node concept="liA8E" id="5CK42mQosJR" role="2OqNvi">
-                                      <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
-                                      <node concept="10M0yZ" id="5CK42mQosRY" role="37wK5m">
-                                        <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
-                                        <ref role="3cqZAo" to="qkt:~ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR" resolve="TYPE_HIERARCHY_VIEW_TOOLBAR" />
-                                      </node>
-                                      <node concept="1rXfSq" id="5CK42mQosJT" role="37wK5m">
-                                        <ref role="37wK5l" node="51NkKCgB3f5" resolve="createButtonsGroup" />
-                                      </node>
-                                      <node concept="3clFbT" id="5CK42mQosJU" role="37wK5m">
-                                        <property role="3clFbU" value="true" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                  <node concept="liA8E" id="5CK42mQosJV" role="2OqNvi">
-                                    <ref role="37wK5l" to="qkt:~ActionToolbar.getComponent()" resolve="getComponent" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                            <node concept="3clFbF" id="7ucF$RjvgIH" role="3cqZAp">
-                              <node concept="2OqwBi" id="7ucF$RjvhKX" role="3clFbG">
-                                <node concept="37vLTw" id="7ucF$RjvgIF" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="51NkKCgB3dh" resolve="myComponent" />
-                                </node>
-                                <node concept="liA8E" id="7ucF$Rjv$jB" role="2OqNvi">
-                                  <ref role="37wK5l" to="jkm4:~SimpleToolWindowPanel.setToolbar(javax.swing.JComponent)" resolve="setToolbar" />
-                                  <node concept="37vLTw" id="7ucF$Rjv$WW" role="37wK5m">
-                                    <ref role="3cqZAo" node="5CK42mQosJL" resolve="buttonsPanel" />
-                                  </node>
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="3y3z36" id="7ucF$RjvC7L" role="3clFbw">
-                            <node concept="10Nm6u" id="7ucF$RjvCrA" role="3uHU7w" />
-                            <node concept="37vLTw" id="7ucF$RjvAYC" role="3uHU7B">
-                              <ref role="3cqZAo" node="51NkKCgB3dh" resolve="myComponent" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3Tm1VV" id="5CK42mQosK0" role="1B3o_S" />
-                      <node concept="3cqZAl" id="5CK42mQosK1" role="3clF45" />
-                    </node>
+            <node concept="2OqwBi" id="5CK42mQosJO" role="33vP2m">
+              <node concept="2OqwBi" id="5CK42mQosJP" role="2Oq$k0">
+                <node concept="2YIFZM" id="5CK42mQosKC" role="2Oq$k0">
+                  <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
+                  <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
+                </node>
+                <node concept="liA8E" id="5CK42mQosJR" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~ActionManager.createActionToolbar(java.lang.String,com.intellij.openapi.actionSystem.ActionGroup,boolean)" resolve="createActionToolbar" />
+                  <node concept="10M0yZ" id="5CK42mQosRY" role="37wK5m">
+                    <ref role="1PxDUh" to="qkt:~ActionPlaces" resolve="ActionPlaces" />
+                    <ref role="3cqZAo" to="qkt:~ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR" resolve="TYPE_HIERARCHY_VIEW_TOOLBAR" />
+                  </node>
+                  <node concept="1rXfSq" id="5CK42mQosJT" role="37wK5m">
+                    <ref role="37wK5l" node="51NkKCgB3f5" resolve="createButtonsGroup" />
+                  </node>
+                  <node concept="3clFbT" id="5CK42mQosJU" role="37wK5m">
+                    <property role="3clFbU" value="true" />
                   </node>
                 </node>
+              </node>
+              <node concept="liA8E" id="5CK42mQosJV" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~ActionToolbar.getComponent()" resolve="getComponent" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7ucF$RjvgIH" role="3cqZAp">
+          <node concept="2OqwBi" id="7ucF$RjvhKX" role="3clFbG">
+            <node concept="37vLTw" id="7ucF$RjvgIF" role="2Oq$k0">
+              <ref role="3cqZAo" node="51NkKCgB3dh" resolve="myComponent" />
+            </node>
+            <node concept="liA8E" id="7ucF$Rjv$jB" role="2OqNvi">
+              <ref role="37wK5l" to="jkm4:~SimpleToolWindowPanel.setToolbar(javax.swing.JComponent)" resolve="setToolbar" />
+              <node concept="37vLTw" id="7ucF$Rjv$WW" role="37wK5m">
+                <ref role="3cqZAo" node="5CK42mQosJL" resolve="buttonsPanel" />
               </node>
             </node>
           </node>
@@ -1964,6 +1918,30 @@
                       <node concept="3Tm1VV" id="4$kvR95BeNd" role="1B3o_S" />
                       <node concept="3cqZAl" id="4$kvR95BeNe" role="3clF45" />
                       <node concept="3clFbS" id="4$kvR95BeNf" role="3clF47">
+                        <node concept="3SKdUt" id="BrGX7RpoJw" role="3cqZAp">
+                          <node concept="1PaTwC" id="BrGX7RpoJx" role="1aUNEU">
+                            <node concept="3oM_SD" id="BrGX7RpoJz" role="1PaTwD">
+                              <property role="3oM_SC" value="make" />
+                            </node>
+                            <node concept="3oM_SD" id="BrGX7Rppgg" role="1PaTwD">
+                              <property role="3oM_SC" value="sure" />
+                            </node>
+                            <node concept="3oM_SD" id="BrGX7Rpphc" role="1PaTwD">
+                              <property role="3oM_SC" value="UI" />
+                            </node>
+                            <node concept="3oM_SD" id="BrGX7Rpphw" role="1PaTwD">
+                              <property role="3oM_SC" value="is" />
+                            </node>
+                            <node concept="3oM_SD" id="BrGX7Rpph_" role="1PaTwD">
+                              <property role="3oM_SC" value="initialized" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="BrGX7RpntL" role="3cqZAp">
+                          <node concept="1rXfSq" id="BrGX7RpntJ" role="3clFbG">
+                            <ref role="37wK5l" node="51NkKCgB3iz" resolve="getComponent" />
+                          </node>
+                        </node>
                         <node concept="3cpWs8" id="4$kvR95BeNg" role="3cqZAp">
                           <node concept="3cpWsn" id="4$kvR95BeNh" role="3cpWs9">
                             <property role="TrG5h" value="project" />

@@ -14,13 +14,15 @@ import jetbrains.mps.project.AbstractModule;
 
 @GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/2257725414731981663", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public class TResource extends DResource implements Tuples._3<Iterable<IDelta>, SModule, SModel>, ITResource, IResourceWithProperties {
-  private MultiTuple._2<SModule, SModel> tuple;
+  private final Tuples._2<SModule, SModel> tuple;
+
   public TResource() {
     super();
+    this.tuple = MultiTuple.<SModule,SModel>empty2();
   }
   public TResource(Iterable<IDelta> delta, SModule module, SModel modelDescriptor) {
     super(delta);
-    this.tuple = new MultiTuple._2<SModule, SModel>(module, modelDescriptor);
+    this.tuple = MultiTuple.<SModule,SModel>from(module, modelDescriptor);
   }
   public SModule module(SModule value) {
     return this._1(value);
@@ -48,12 +50,13 @@ public class TResource extends DResource implements Tuples._3<Iterable<IDelta>, 
   }
   public Tuples._2<Iterable<IDelta>, SModule> assign(Tuples._2<? extends Iterable<IDelta>, ? extends SModule> from) {
     super.assign(from);
-    tuple.assign(from._1());
+    tuple._0(from._1());
     return this;
   }
   public Tuples._3<Iterable<IDelta>, SModule, SModel> assign(Tuples._3<? extends Iterable<IDelta>, ? extends SModule, ? extends SModel> from) {
     super.assign(from);
-    tuple.assign(from._1(), from._2());
+    tuple._0(from._1());
+    tuple._1(from._2());
     return this;
   }
   public String describe() {

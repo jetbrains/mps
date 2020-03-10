@@ -15,12 +15,13 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
-import jetbrains.mps.smodel.references.UnregisteredNodes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
@@ -93,11 +94,12 @@ final class AttachedNodeOwner extends SNodeOwner {
 
   @Override
   public void registerNode(SNode node) {
-    doRegister(node);
+    doRegister(node, commandContext());
     node.makeReferencesIndirect();
   }
 
-  private void doRegister(SNode node) {
+  // pre: myCommandContext != null
+  private void doRegister(SNode node, ModelCommandContext commandContext) {
     // XXX model.registerNode shall go *BEFORE* setNodeOwner, otherwise SNode.setId fails - attached owner provides model.
     //     At the moment, there's copy-paste editor functionality that depends on ability to change nodeId
     //     (copied node preserves id of the original node, and if pasted into same model, there's id conflict which is resolved in SModel.assignNewId())
@@ -106,10 +108,10 @@ final class AttachedNodeOwner extends SNodeOwner {
     // for an attached node, its complete subtree has to share same SNodeOwner, assign it unconditionally
     // FIXME why UnregisteredNodes.put in SNode#unRegisterFromModel (#detach(SNodeOwner)) us conditioned with !isUpdateMode(), and this one is not?
     //       I suppose the reason was remove() doesn't hurt in case there's no such node, though not 100% sure
-    UnregisteredNodes.instance().remove(node);
+    commandContext.nodeAttached(node);
 
     for (SNode child = node.firstChild(); child != null; child = child.treeNext()) {
-      doRegister(child);
+      doRegister(child, commandContext);
     }
   }
 
@@ -126,20 +128,21 @@ final class AttachedNodeOwner extends SNodeOwner {
       node.makeReferencesDirect();
     }
 
-    doUnregister(new DetachedNodeOwner(myModel), node);
+    doUnregister(new DetachedNodeOwner(myModel), node, commandContext());
   }
 
-  private void doUnregister(DetachedNodeOwner detachedOwner, SNode node) {
+  // pre: myCommandContext != null
+  private void doUnregister(DetachedNodeOwner detachedOwner, SNode node, ModelCommandContext commandContext) {
     myModel.unregisterNode(node);
     if (!myModel.isUpdateMode()) {
       // XXX perhaps, SModel shall tell myOwner.enterUpdate()/myOwner.leaveUpdate() instead of isUpdateMode checks?
-      UnregisteredNodes.instance().put(node);
+      commandContext.nodeDetached(node);
     }
     // XXX when we put a node in UnregisteredNodes, it better keep original SModel so that any reference pointing to the node could still get resolved.
     //     Tests like MakeFieldNonStaticAndHaveReferencesUpdated fail if UN receives a node with detached model owner (model unset)
     node.setNodeOwner(detachedOwner);
     for (SNode child = node.firstChild(); child != null; child = child.treeNext()) {
-      doUnregister(detachedOwner, child);
+      doUnregister(detachedOwner, child, commandContext);
     }
   }
 
@@ -224,6 +227,8 @@ final class AttachedNodeOwner extends SNodeOwner {
 
   @Override
   /*package*/ void fireReferenceChange(SNode node, SReferenceLink l, org.jetbrains.mps.openapi.model.SReference oldRef, org.jetbrains.mps.openapi.model.SReference newRef) {
+    // XXX is it true we need to register immature even in update mode?
+    commandContext().associationSet(newRef);
     if (myModel.isUpdateMode()) {
       return;
     }
@@ -290,5 +295,19 @@ final class AttachedNodeOwner extends SNodeOwner {
     if (md != null) {
       md.fireNodeRemove(node, role, child);
     }
+  }
+
+  /*package*/ ModelCommandContext commandContext() {
+    final SRepository repo = myModel.getRepository();
+    final org.jetbrains.mps.openapi.model.SModel md = myModel.getModelDescriptor();
+    if (repo == null || md == null) {
+      return ModelCommandContext.EMPTY;
+    }
+    final ModelAccess ma = repo.getModelAccess();
+    if (ma instanceof ModelCommandContext.Provider) {
+      final ModelCommandContext cc = ((Provider) ma).getCommandContext(md);
+      return cc == null ? ModelCommandContext.EMPTY : cc;
+    }
+    return ModelCommandContext.EMPTY;
   }
 }

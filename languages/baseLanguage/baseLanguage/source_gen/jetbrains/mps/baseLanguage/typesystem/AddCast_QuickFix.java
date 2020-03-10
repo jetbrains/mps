@@ -21,19 +21,20 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4017912752400074243"));
   }
   public String getDescription(SNode node) {
-    String text = "expression";
+    String text;
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseAssignmentExpression$oO)) {
       text = "right side of assignment";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.VariableDeclaration$xe)) {
       text = "initializer";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodCall$S9) || SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodCallOperation$1G) || SNodeOperations.hasRole(node, LINKS.actualArgument$$A7L)) {
-      text = "parameter";
+      int index = SNodeOperations.getIndexInParent(((SNode) AddCast_QuickFix.this.getField("expression")[0])) + 1;
+      text = ((index != -1 ? ParameterNameUtil.buildOrdinalFromNumber(index) + " " : "")) + "parameter";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$TP) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ReturnStatement$SF) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ExpressionStatement$nm) && (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.ExpressionStatement$nm)))) {
       text = "returned expression";
     } else {
       text = "expression";
     }
-    return "Cast " + text + " to " + ((SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$IG) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])))));
+    return "Cast the " + text + " to " + ((SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$IG) ? ((SNode) AddCast_QuickFix.this.getField("desiredType")[0]) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) AddCast_QuickFix.this.getField("desiredType")[0])))));
   }
   public void execute(SNode node) {
     if (!(SNodeOperations.isInstanceOf(((SNode) AddCast_QuickFix.this.getField("expression")[0]), CONCEPTS.Expression$TP))) {

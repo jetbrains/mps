@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,19 +15,15 @@
  */
 package jetbrains.mps.ide.undo;
 
-import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.smodel.DefaultUndoHandler;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.UndoHandler;
-import jetbrains.mps.smodel.UndoHelper;
 import jetbrains.mps.smodel.undo.UndoContext;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Evgeny Gryaznov, Sep 3, 2010
  */
-public class WorkbenchUndoHandler implements UndoHandler, ApplicationComponent {
+public class WorkbenchUndoHandler implements UndoHandler {
   private UndoActionsCollector myActionsCollector = null;
 
   @Override
@@ -53,21 +49,5 @@ public class WorkbenchUndoHandler implements UndoHandler, ApplicationComponent {
   public void startCommand(UndoContext context) {
     assert myActionsCollector == null;
     myActionsCollector = new UndoActionsCollector(context);
-  }
-
-  @Override
-  public void initComponent() {
-    UndoHelper.getInstance().setUndoHandler(this);
-  }
-
-  @Override
-  public void disposeComponent() {
-    UndoHelper.getInstance().setUndoHandler(new DefaultUndoHandler());
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return getClass().getSimpleName();
   }
 }

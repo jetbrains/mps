@@ -81,7 +81,11 @@ public class PatternBuilderVariableReference_SubstituteMenu extends SubstituteMe
       }
       @Override
       public String getMatchingText(String pattern) {
-        return "%" + SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        if (pattern.startsWith("%")) {
+          return "%" + SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        } else {
+          return SPropertyOperations.getString(referencedNode, PROPS.name$tAp1);
+        }
       }
       @Override
       public String getVisibleMatchingText(String pattern) {

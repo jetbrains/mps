@@ -36,6 +36,8 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessListener;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -279,10 +281,21 @@ final class TestModelFactory {
     }
   }
 
-  /*package*/ static class TestModelAccess extends AbstractModelAccess {
+  /*package*/ static class TestModelAccess extends AbstractModelAccess implements ModelCommandContext.Provider {
     private boolean myCanRead;
     private boolean myCanWrite;
     private int myCommandCount = 0;
+    private final UndoHandler myUndoHandler;
+
+    // commands of this MA don't track undo
+    TestModelAccess() {
+      myUndoHandler = null;
+    }
+
+    // command of this MA do track undo
+    TestModelAccess(UndoHandler undoHandler) {
+      myUndoHandler = undoHandler;
+    }
 
     void disableRead() {
       myCanRead = myCanWrite = false;
@@ -361,6 +374,41 @@ final class TestModelFactory {
     @Override
     public boolean isCommandAction() {
       return myCommandCount > 0;
+    }
+
+    @Nullable
+    @Override
+    public ModelCommandContext getCommandContext(SModel model) {
+      if (myUndoHandler == null) {
+        return null;
+      }
+      // At the moment, I don't want UN/IR in tests, therefore use bare MCC impl with
+      // UndoHandler only. However, if testing UN/IR is essential, shall consider refactoring
+      // of MA.CommandContextProvider code to share it here
+      return new ModelCommandContext() {
+        @Override
+        public void nodeAttached(SNode node) {
+        }
+
+        @Override
+        public void nodeDetached(SNode node) {
+        }
+
+        @Override
+        public void associationSet(SReference association) {
+        }
+
+        @Nullable
+        @Override
+        public SNode resolveUnregistered(SNodeId nodeId) {
+          return null;
+        }
+
+        @Override
+        public void registerActionWithUndo(SNodeUndoableAction action) {
+          myUndoHandler.addUndoableAction(action);
+        }
+      };
     }
   }
 }

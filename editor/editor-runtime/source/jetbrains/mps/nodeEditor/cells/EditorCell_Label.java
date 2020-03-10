@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,9 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.openapi.editor.cells.optional.WithCaret;
 import jetbrains.mps.openapi.editor.selection.MultipleSelection;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.SNodeUndoableAction;
-import jetbrains.mps.smodel.UndoHelper;
 import jetbrains.mps.smodel.UndoRunnable;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
@@ -585,7 +585,13 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   private void addChangeTextUndoableAction() {
-    UndoHelper.getInstance().addUndoableAction(new DummyUndoableAction(getSNode()));
+    final ModelAccess ma = getContext().getRepository().getModelAccess();
+    if (ma instanceof ModelCommandContext.Provider) {
+      final ModelCommandContext cc = ((Provider) ma).getCommandContext(getContext().getModel());
+      if (cc != null) {
+        cc.registerActionWithUndo(new DummyUndoableAction(getSNode()));
+      }
+    }
   }
 
   @Override

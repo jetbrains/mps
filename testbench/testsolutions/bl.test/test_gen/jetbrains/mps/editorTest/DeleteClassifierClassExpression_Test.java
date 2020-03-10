@@ -34,6 +34,11 @@ public class DeleteClassifierClassExpression_Test extends BaseTransformationTest
     public void testMethodImpl() throws Exception {
       initEditorComponent("7992311602000236812", "7992311602000236805");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+      invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
     }
   }
 }

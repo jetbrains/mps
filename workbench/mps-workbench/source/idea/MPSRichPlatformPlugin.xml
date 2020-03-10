@@ -9,7 +9,7 @@
   <module value="com.intellij.modules.xml"/>
   <module value="com.intellij.modules.externalSystem"/>
 
-  <xi:include href="/componentSets/MPSIdeaComponents.xml" xpointer="xpointer(/components/*)"/>
+  <xi:include href="/componentSets/MPSIdeaComponents.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/idea/MPSRichPlatformActions.xml" xpointer="xpointer(/component/*)"/>
 
   <xi:include href="/META-INF/Core.xml" xpointer="xpointer(/idea-plugin/*)"/>

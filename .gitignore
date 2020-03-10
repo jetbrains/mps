@@ -58,6 +58,7 @@ teamcity-info.xml
 /plugins/svn4idea
 /plugins/github
 /plugins/vcs-changeReminder
+/plugins/platform-images
 
 # Main libraries folder: dependencies are downloaded before complilation with task 'install' from build/getDependencies.xml
 /lib/

@@ -38,9 +38,9 @@ public class DeleteBinaryOperationLeftExpressionTwoStep_Test extends BaseTransfo
       initEditorComponent("8979250711586584422", "8979250711586584369");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
           Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
         }
       }, true);
 

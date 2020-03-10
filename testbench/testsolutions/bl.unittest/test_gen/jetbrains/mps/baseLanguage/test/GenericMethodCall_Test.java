@@ -18,6 +18,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class GenericMethodCall_Test extends BaseTransformationTest {
@@ -37,6 +38,10 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
   @Test
   public void test_NodeErrorCheck7254243749547462195() throws Throwable {
     new TestBody(this).test_NodeErrorCheck7254243749547462195();
+  }
+  @Test
+  public void test_NodeIncompatibleMethodSignatureCheck250188377520235818() throws Throwable {
+    new TestBody(this).test_NodeIncompatibleMethodSignatureCheck250188377520235818();
   }
   @Test
   public void test_ErrorMessagesCheck7254243749546905207() throws Throwable {
@@ -60,10 +65,15 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
       SNode operation = getRealNodeById("7254243749547462195");
       new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
+    public void test_NodeIncompatibleMethodSignatureCheck250188377520235818() throws Exception {
+      SNode nodeToCheck = getRealNodeById("7254243749546905202");
+      SNode operation = getRealNodeById("250188377520235818");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
     public void test_ErrorMessagesCheck7254243749546905207() throws Exception {
       SNode nodeToCheck = getRealNodeById("7254243749546905177");
       SNode operation = getRealNodeById("7254243749546905207");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("7254243749547456075"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("7254243749546905202"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2234318170389157992"), "Error: Incompatible method signature", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
 
   }

@@ -230,12 +230,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     private EditorCell createConstant_6() {
-      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<default>");
+      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
       editorCell.setCellId("Constant_zihja6_a7a");
       Style style = new StyleImpl();
       new CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
       editorCell.getStyle().putAll(style);
-      editorCell.setDefaultText("");
+      editorCell.setDefaultText("<default>");
       return editorCell;
     }
   }

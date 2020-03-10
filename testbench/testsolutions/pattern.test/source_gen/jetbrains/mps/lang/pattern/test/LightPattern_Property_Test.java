@@ -119,7 +119,7 @@ public class LightPattern_Property_Test extends TestCase {
     }
     Assert.assertTrue(matches);
   }
-  private static class Pattern1_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern1_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
@@ -131,7 +131,7 @@ public class LightPattern_Property_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern2_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern2_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
@@ -143,7 +143,7 @@ public class LightPattern_Property_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern3_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern3_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
@@ -155,7 +155,7 @@ public class LightPattern_Property_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern4_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern4_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
@@ -164,7 +164,7 @@ public class LightPattern_Property_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern5_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern5_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);

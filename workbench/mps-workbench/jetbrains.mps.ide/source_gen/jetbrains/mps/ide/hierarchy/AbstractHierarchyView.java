@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.navigation.NodeNavigatable;
 import com.intellij.usageView.UsageViewBundle;
 import com.intellij.ui.ScrollPaneFactory;
-import com.intellij.openapi.application.ApplicationManager;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
@@ -102,20 +101,13 @@ public abstract class AbstractHierarchyView extends BaseProjectTool {
     myHierarchyTree.setRootVisible(false);
     this.myComponent = new RootPanel();
     myComponent.setContent(ScrollPaneFactory.createScrollPane(myHierarchyTree, true));
-    showItemInHierarchy((SNodeReference) null);
+    myHierarchyTree.setHierarchyNode(null);
     createControlPanel();
   }
 
   protected void createControlPanel() {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        if (myComponent != null) {
-          JComponent buttonsPanel = ActionManager.getInstance().createActionToolbar(ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR, createButtonsGroup(), true).getComponent();
-          myComponent.setToolbar(buttonsPanel);
-        }
-      }
-    });
+    JComponent buttonsPanel = ActionManager.getInstance().createActionToolbar(ActionPlaces.TYPE_HIERARCHY_VIEW_TOOLBAR, createButtonsGroup(), true).getComponent();
+    myComponent.setToolbar(buttonsPanel);
   }
 
   protected abstract AbstractHierarchyTree createHierarchyTree(boolean isParentHierarchy);
@@ -210,6 +202,8 @@ public abstract class AbstractHierarchyView extends BaseProjectTool {
     mpsProject.getModelAccess().runReadInEDT(new Runnable() {
       @Override
       public void run() {
+        // make sure UI is initialized 
+        getComponent();
         Project project = getProject();
         if (project == null || project.isDisposed()) {
           return;

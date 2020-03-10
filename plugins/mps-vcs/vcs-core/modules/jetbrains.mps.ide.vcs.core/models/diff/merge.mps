@@ -22,7 +22,6 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="4szu" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.references(MPS.Core/)" />
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="4it6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.loading(MPS.Core/)" />
@@ -6524,55 +6523,6 @@
                   <ref role="37wK5l" to="g3l6:~SModelDescriptorStub.getSModel()" resolve="getSModel" />
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="1DT3gLw77pr" role="3cqZAp" />
-        <node concept="3SKdUt" id="6MaP3pPDa9G" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolrJ" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXolrK" role="1PaTwD">
-              <property role="3oM_SC" value="clear" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrL" role="1PaTwD">
-              <property role="3oM_SC" value="UnregisteredNodes" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrM" role="1PaTwD">
-              <property role="3oM_SC" value="pool" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrN" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrO" role="1PaTwD">
-              <property role="3oM_SC" value="avoid" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrP" role="1PaTwD">
-              <property role="3oM_SC" value="a" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrQ" role="1PaTwD">
-              <property role="3oM_SC" value="lot" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrR" role="1PaTwD">
-              <property role="3oM_SC" value="of" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrS" role="1PaTwD">
-              <property role="3oM_SC" value="ERRORs" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrT" role="1PaTwD">
-              <property role="3oM_SC" value="in" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXolrU" role="1PaTwD">
-              <property role="3oM_SC" value="log:" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6MaP3pPByIY" role="3cqZAp">
-          <node concept="2OqwBi" id="6MaP3pPBKbh" role="3clFbG">
-            <node concept="2YIFZM" id="6NhE2DavECK" role="2Oq$k0">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.instance()" resolve="instance" />
-              <ref role="1Pybhc" to="4szu:~UnregisteredNodes" resolve="UnregisteredNodes" />
-            </node>
-            <node concept="liA8E" id="6MaP3pPBRNp" role="2OqNvi">
-              <ref role="37wK5l" to="4szu:~UnregisteredNodes.clear()" resolve="clear" />
             </node>
           </node>
         </node>

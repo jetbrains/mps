@@ -3998,6 +3998,12 @@
                     <property role="3cmrfH" value="42" />
                   </node>
                 </node>
+                <node concept="2r$n1x" id="16Nm4vUAnvh" role="2r_Bvh">
+                  <ref role="2r$qp6" node="16Nm4vUAnm$" resolve="f" />
+                  <node concept="2$xPTn" id="16Nm4vUAxEJ" role="2r_lH1">
+                    <property role="2$xPTl" value="0.0f" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -5098,6 +5104,10 @@
       <property role="3dDGau" value="false" />
       <property role="TrG5h" value="i" />
       <node concept="10Oyi0" id="5GhXmmtJsB_" role="2lK19J" />
+    </node>
+    <node concept="2lGYhJ" id="16Nm4vUAnm$" role="2pHZQ9">
+      <property role="TrG5h" value="f" />
+      <node concept="10OMs4" id="16Nm4vUAnnW" role="2lK19J" />
     </node>
     <node concept="3Tm1VV" id="5GhXmmtIMP3" role="1B3o_S" />
     <node concept="3uibUv" id="5GhXmmtJU8o" role="3TOOP4">

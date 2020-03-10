@@ -69,10 +69,10 @@
       <root url="jar://$PROJECT_DIR$/lib/platform-serviceContainer.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-statistics.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-statistics-devkit.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/platform-statistics-uploader.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ui.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-util-ex.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spellchecker.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/images.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/configuration-store-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jps-model.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lz4-java-1.7.1.jar!/" />
@@ -81,7 +81,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.10.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.10.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jbcrypt-1.0.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jediterm-pty-2.24.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jediterm-pty-2.27.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jing-20030619.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jshell-frontend.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/xmlbeans-2.6.0.jar!/" />

@@ -148,7 +148,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     if (true) {
       editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.ATTRACTS_FOCUS);
     }
-    ClassifierClassExpression_DeleteClass.setCellActions(editorCell, myNode, getEditorContext());
+    QualifierReference_DeleteToDot.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }

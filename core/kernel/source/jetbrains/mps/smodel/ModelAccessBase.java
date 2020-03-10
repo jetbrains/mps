@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,8 @@
 package jetbrains.mps.smodel;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.jetbrains.mps.openapi.repository.ReadActionListener;
 import org.jetbrains.mps.openapi.repository.WriteActionListener;
@@ -27,7 +29,7 @@ import org.jetbrains.mps.openapi.repository.WriteActionListener;
  *
  * Created by Alex Pyshkin on 9/3/14.
  */
-public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.module.ModelAccess {
+public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
 
   @Override
   public boolean canRead() {
@@ -117,6 +119,12 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     // FIXME LegacySharedReadAccess violates SharedReadModelAccess contract as it keeps 'read access' regardless of read lock in original thread
     //       Shall deal with that once proper implementation is in place.
     return new LegacySharedReadAccess(getDelegate());
+  }
+
+  @Nullable
+  @Override
+  public ModelCommandContext getCommandContext(SModel model) {
+    return getDelegate() instanceof ModelCommandContext.Provider ? ((ModelCommandContext.Provider) getDelegate()).getCommandContext(model) : null;
   }
 
   private static class LegacySharedReadAccess implements SharedReadModelAccess {

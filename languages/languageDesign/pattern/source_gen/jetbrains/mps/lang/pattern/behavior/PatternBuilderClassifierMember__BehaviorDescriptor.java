@@ -12,6 +12,7 @@ import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -20,19 +21,25 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.scopes.ClassifierSignature;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class PatternBuilderClassifierMember__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, "jetbrains.mps.lang.pattern.structure.PatternBuilderClassifierMember");
 
   public static final SMethod<Boolean> isStatic_id7MS72Gc8avw = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isStatic").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7MS72Gc8avw").build();
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> getGeneratedName_id6SIgReParNN = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6SIgReParNN").build();
+  public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStatic_id7MS72Gc8avw, getScope_id52_Geb4QDV$);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isStatic_id7MS72Gc8avw, getScope_id52_Geb4QDV$, getGeneratedName_id6SIgReParNN, populateMember_id6r77ob2UW9O);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -45,6 +52,14 @@ public final class PatternBuilderClassifierMember__BehaviorDescriptor extends Ba
       return new NamedElementsScope(PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$m3eu)));
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child));
+  }
+  /*package*/ static String getGeneratedName_id6SIgReParNN(@NotNull SNode __thisNode__) {
+    return NameUtil.capitalize(SPropertyOperations.getString(__thisNode__, PROPS.name$tAp1)) + "_Pattern";
+  }
+  /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
+    ClassifierSignature signature = new ClassifierSignature(PatternBuilderClassifierMember__BehaviorDescriptor.getGeneratedName_id6SIgReParNN.invoke(__thisNode__));
+    context.hideMembersForAncestors(signature);
+    context.exposeMember(__thisNode__, signature);
   }
 
   /*package*/ PatternBuilderClassifierMember__BehaviorDescriptor() {
@@ -66,6 +81,11 @@ public final class PatternBuilderClassifierMember__BehaviorDescriptor extends Ba
         return (T) ((Boolean) isStatic_id7MS72Gc8avw(node));
       case 1:
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+      case 2:
+        return (T) ((String) getGeneratedName_id6SIgReParNN(node));
+      case 3:
+        populateMember_id6r77ob2UW9O(node, (MembersPopulatingContext) parameters[0], (SNode) parameters[1]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -102,5 +122,9 @@ public final class PatternBuilderClassifierMember__BehaviorDescriptor extends Ba
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept PatternBuilderVariable$In = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
     /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -19,8 +19,12 @@ import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.function.Supplier;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.scopes.MethodsScope;
 import jetbrains.mps.baseLanguage.scopes.Members;
+import jetbrains.mps.scope.CompositeScope;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -59,11 +63,24 @@ public class InstanceMethodCallOperation_Constraints extends BaseConstraintsDesc
                 return TypecheckingFacade.getFromContext().getTypeOf(instance);
               }
             });
+
+            List<Scope> scopes = ListSequence.fromList(new ArrayList<Scope>());
             SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instanceType, CONCEPTS.ClassifierType$IZ);
             if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$pQ_R) == null)) {
               return new EmptyScope();
             }
-            return new MethodsScope(classifierType, Members.visibleInstanceMethods(classifierType, _context.getContextNode()));
+            ListSequence.fromList(scopes).addElement(new MethodsScope(classifierType, Members.visibleInstanceMethods(classifierType, _context.getContextNode())));
+            if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(instanceType, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4), LINKS.auxBounds$jS6R)).isNotEmpty()) {
+              for (SNode t : SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(instanceType, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$U0X4), LINKS.auxBounds$jS6R)) {
+                SNode ctype = TypecheckingFacade.getFromContext().strongCoerceType(t, CONCEPTS.ClassifierType$IZ);
+                if ((SLinkOperations.getTarget(ctype, LINKS.classifier$pQ_R) != null)) {
+                  ListSequence.fromList(scopes).addElement(new MethodsScope(ctype, Members.visibleInstanceMethods(ctype, _context.getContextNode())));
+                }
+              }
+              return new CompositeScope(ListSequence.fromList(scopes).toGenericArray(Scope.class));
+            } else {
+              return ListSequence.fromList(scopes).getElement(0);
+            }
           }
         };
       }
@@ -78,11 +95,14 @@ public class InstanceMethodCallOperation_Constraints extends BaseConstraintsDesc
     /*package*/ static final SConcept InstanceMethodCallOperation$1G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
     /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SContainmentLink operand$Lcrr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
     /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$U0X4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink auxBounds$jS6R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
   }
 }

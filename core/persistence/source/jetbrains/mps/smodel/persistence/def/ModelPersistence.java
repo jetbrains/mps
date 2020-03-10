@@ -163,7 +163,7 @@ public class ModelPersistence {
 
   @NotNull
   public static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull StreamDataSource dataSource, ModelLoadingState state) throws
-      ModelReadException {
+                                                                                                                                       ModelReadException {
     InputStream in = null;
     try {
       in = dataSource.openInputStream();
@@ -324,8 +324,8 @@ public class ModelPersistence {
       IModelPersistence mp = getPersistence(header.getPersistenceVersion());
       if (!(mp instanceof XMLPersistence)) {
         LOG.warn("Can't index old persistence. Please update persistence of old models.\n" +
-            "Persistence version: " + header.getPersistenceVersion() + "\n" +
-            "Model: " + header.getModelReference().getModelName());
+                 "Persistence version: " + header.getPersistenceVersion() + "\n" +
+                 "Model: " + header.getModelReference().getModelName());
         return;
       }
 
@@ -340,17 +340,13 @@ public class ModelPersistence {
     }
   }
 
-  public static SModelData getModelData(@NotNull InputStream input) throws IOException {
+  public static SModelData getModelData(@NotNull InputStream input) throws IOException, ModelReadException {
     assertMarkSupported(input);
-    try {
-      input.mark(HEADER_READ_LIMIT);
-      SModelHeader header = loadDescriptor(new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)));
-      input.reset();
-      ModelLoadResult result = readModel(header, new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)), ModelLoadingState.FULLY_LOADED);
-      return result.getModel();
-    } catch (ModelReadException e) {
-      throw new IOException(e);
-    }
+    input.mark(HEADER_READ_LIMIT);
+    SModelHeader header = loadDescriptor(new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)));
+    input.reset();
+    ModelLoadResult result = readModel(header, new InputSource(new InputStreamReader(input, FileUtil.DEFAULT_CHARSET)), ModelLoadingState.FULLY_LOADED);
+    return result.getModel();
   }
 
   public static class HeaderOnlyHandler extends DefaultHandler {

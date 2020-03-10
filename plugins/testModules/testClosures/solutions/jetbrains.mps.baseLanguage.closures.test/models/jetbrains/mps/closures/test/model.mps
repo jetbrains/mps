@@ -25,7 +25,7 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="ggp6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)" />
-    <import index="v7n5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.baseLanguage.closures.runtime(MPS.Core/)" />
+    <import index="qbve" ref="r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -962,7 +962,7 @@
               </node>
               <node concept="2c44tf" id="5xREo5PHgrz" role="2XxRq1">
                 <node concept="3uibUv" id="5xREo5PHgrH" role="2c44tc">
-                  <ref role="3uigEE" to="v7n5:~_FunctionTypes$_void_P0_E2" resolve="_FunctionTypes._void_P0_E2" />
+                  <ref role="3uigEE" to="qbve:4PjiKAen0bm" resolve="_FunctionTypes._void_P0_E2" />
                   <node concept="3qUE_q" id="U7sbC7T0F7" role="11_B2D">
                     <node concept="3uibUv" id="U7sbC7T0FU" role="3qUE_r">
                       <ref role="3uigEE" to="wyt6:~IllegalAccessException" resolve="IllegalAccessException" />

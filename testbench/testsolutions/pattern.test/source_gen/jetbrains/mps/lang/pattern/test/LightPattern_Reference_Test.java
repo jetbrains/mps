@@ -92,7 +92,7 @@ public class LightPattern_Reference_Test extends TestCase {
     }
     Assert.assertTrue(matches);
   }
-  private static class Pattern1_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern1_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -108,7 +108,7 @@ public class LightPattern_Reference_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern2_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern2_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
@@ -123,7 +123,7 @@ public class LightPattern_Reference_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern3_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern3_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
@@ -135,7 +135,7 @@ public class LightPattern_Reference_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern4_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern4_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       SNode p0 = SPointerOperations.resolveNode(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"), SNodeOperations.getModel(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")).getRepository());
@@ -151,7 +151,7 @@ public class LightPattern_Reference_Test extends TestCase {
       return super.match(nodeToMatch);
     }
   }
-  private static class Pattern5_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern5_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       NodeMatcherBuilder n0 = new NodeMatcherBuilder().init(CONCEPTS.ReturnStatement$SF);
@@ -172,7 +172,7 @@ public class LightPattern_Reference_Test extends TestCase {
     }
   }
   @SuppressWarnings(value = "OptionalAssignedToNull")
-  private static class Pattern6_Pattern extends AbstractGeneratedPattern {
+  public static class Pattern6_Pattern extends AbstractGeneratedPattern {
     @Override
     public boolean match(SNode nodeToMatch) {
       SNode p0 = AbstractGeneratedPattern.getWithDefault(Pattern6_Pattern.getVar(nodeToMatch), null);

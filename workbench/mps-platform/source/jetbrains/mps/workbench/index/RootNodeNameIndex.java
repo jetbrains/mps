@@ -39,6 +39,7 @@ import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.workbench.findusages.ConcreteFilesGlobalSearchScope;
 import jetbrains.mps.workbench.goTo.index.SNodeDescriptor;
 import jetbrains.mps.workbench.index.ModelRootsData.Entry;
@@ -103,6 +104,8 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
           return null;
         }
         inputData.putUserData(PARSED_MODEL, modelData);
+      } catch (ModelReadException e) {
+        //do nothing. This may happen e.g. when the file is created and not yet filled with content
       } catch (URLNotSupportedException | IOException e) {
         LOG.error(String.format("Failed to index %s", inputData.getFileName()), e);
         return null;

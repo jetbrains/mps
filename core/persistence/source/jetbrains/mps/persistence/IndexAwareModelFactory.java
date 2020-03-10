@@ -17,6 +17,7 @@ package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -59,7 +60,7 @@ public interface IndexAwareModelFactory extends ModelFactory {
    *
    * @see org.jetbrains.mps.openapi.persistence.MultiStreamDataSource
    */
-  SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException;
+  SModelData parseSingleStream(@NotNull String name, @NotNull InputStream input) throws IOException, ModelReadException;
 
   /**
    * Callback implementation shall tolerate duplicated notifications

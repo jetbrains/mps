@@ -73,10 +73,10 @@ public class SNodePointer implements SNodeReference {
       }
     }
 
-    UnregisteredNodes unregisteredNodes = UnregisteredNodes.instance();
-    if (unregisteredNodes != null) {
-      return unregisteredNodes.get(myModelReference, myNodeId);
-    }
+//    UnregisteredNodes unregisteredNodes = UnregisteredNodes.instance();
+//    if (unregisteredNodes != null) {
+//      return unregisteredNodes.get(myModelReference, myNodeId);
+//    }
     return null;
   }
 
