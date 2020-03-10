@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.generator.trace;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -52,7 +51,9 @@ public final class TraceFacility {
 
   public RuleTrace2 reductionRule(TemplateReductionRule reductionRule) {
     // may want to cache RT2 instances per RR if single thread or RT2 made thread-aware
-    return new RuleTrace2(myActiveClients, reductionRule);
+    final RuleTrace2 rv = new RuleTrace2(myActiveClients, reductionRule);
+    rv.reached();
+    return rv;
   }
 
   // pair of methods to manage/tell the state of this session, for client read thread to figure out there would be no more datagrams
