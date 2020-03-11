@@ -97,7 +97,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
     editorCell.setCellId("Constant_5ng77o_a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD_ITALIC);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
     UncommentSingleLineComment.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");

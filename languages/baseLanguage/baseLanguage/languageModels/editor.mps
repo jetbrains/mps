@@ -17552,9 +17552,6 @@
         <node concept="Vb9p2" id="4ov_DcGTVH8" role="3F10Kt">
           <property role="Vbekb" value="BOLD_ITALIC" />
         </node>
-        <node concept="11LMrY" id="1iyAsFrPoSC" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
       </node>
       <node concept="3F1sOY" id="7fQBo8Te9je" role="3EZMnx">
         <ref role="1NtTu8" to="tpee:7fQBo8T7qsS" resolve="line" />
@@ -31396,15 +31393,15 @@
         <node concept="Vb9p2" id="5fIuys08Qpm" role="3F10Kt">
           <property role="Vbekb" value="BOLD_ITALIC" />
         </node>
-        <node concept="11LMrY" id="1iyAsFrWt3_" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
         <node concept="2SqB2G" id="5iVrCyTuaCu" role="2SqHTX">
           <property role="TrG5h" value="LEFT_COMMENT_ANCHOR" />
         </node>
       </node>
       <node concept="3F0ifn" id="4Xej3lZQOBM" role="3EZMnx">
         <node concept="VPM3Z" id="4Xej3lZQOCj" role="3F10Kt" />
+        <node concept="11L4FC" id="7IHBor01YzT" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
         <node concept="11LMrY" id="1iyAsFshLeH" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>

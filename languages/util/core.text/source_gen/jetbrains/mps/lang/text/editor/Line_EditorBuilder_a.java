@@ -62,6 +62,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_78ent8_a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
+    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
