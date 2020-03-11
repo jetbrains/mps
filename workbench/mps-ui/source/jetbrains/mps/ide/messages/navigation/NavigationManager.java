@@ -18,6 +18,7 @@ package jetbrains.mps.ide.messages.navigation;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.navigation.NavigatableFactory;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.project.MPSProject;
 import org.apache.log4j.LogManager;
@@ -28,11 +29,11 @@ import java.util.List;
 /**
  * Facilitate navigation to different kinds of {@link IMessage#getHintObject() hint objects} from {@link IMessage}.
  */
-public class NavigationManager extends AbstractProjectComponent {
+public class NavigationManager  {
   private final List<NavigatableFactory> myHandlers = new ArrayList<>();
 
-  public NavigationManager(Project ideaProject, MPSProject mpsProject) {
-    super(ideaProject);
+  public NavigationManager(Project ideaProject) {
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(ideaProject);
     myHandlers.add(new FileWithPositionNavigationHandler(ideaProject));
     myHandlers.add(new FileWithLogicalPositionNavigationHandler(ideaProject));
     myHandlers.add(new NodePointerNavigationHandler(mpsProject));

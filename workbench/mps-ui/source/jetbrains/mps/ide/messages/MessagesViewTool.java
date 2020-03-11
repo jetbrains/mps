@@ -62,16 +62,12 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
   private static final String DEFAULT_LIST = "DEFAULT_LIST";
 
   private final Project myProject;
-  private final NavigationManager myNavigationManager;
-  private final ToolWindowManager myToolWindowManager;
   private final MyMessageList myDefaultList;
   private final Map<Object, List<MessageList>> myMessageLists = new HashMap<>();
   private final MessageViewLoggingHandler myMessageViewLoggingHandler;
 
-  public MessagesViewTool(Project project, NavigationManager navigationManager, ToolWindowManager toolWindowManager) {
+  public MessagesViewTool(Project project) {
     myProject = project;
-    myNavigationManager = navigationManager;
-    myToolWindowManager = toolWindowManager;
     myDefaultList = new MyMessageList("Messages");
     Disposer.register(this, myDefaultList);
     // default list doesn't need too much attention, don't activate it on any message
@@ -288,7 +284,7 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
 
     @Override
     protected void bringToFront() {
-      ToolWindow window = myToolWindowManager.getToolWindow(ToolWindowId.MESSAGES_WINDOW);
+      ToolWindow window = ToolWindowManager.getInstance(myProject).getToolWindow(ToolWindowId.MESSAGES_WINDOW);
       if (window == null) {
         return; // just in case
       }
@@ -358,7 +354,8 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
 
     @Override
     protected boolean canNavigate(@NotNull IMessage message) {
-      return message.getHintObject() != null && myNavigationManager.canNavigateTo(message.getHintObject());
+      final NavigationManager navigationManager = myProject.getService(NavigationManager.class);
+      return message.getHintObject() != null && navigationManager.canNavigateTo(message.getHintObject());
     }
 
     @Override
@@ -366,7 +363,8 @@ public class MessagesViewTool implements ProjectComponent, PersistentStateCompon
       // XXX could receive Navigatable from NM and in case navigation fails (e.g. due to deleted/missing node)
       // could show a balloon with explanation (it's better to do it here rather than in Navigatable itself as here we've
       // got tool window to anchor.
-      myNavigationManager.navigateTo(message.getHintObject(), focus);
+      final NavigationManager navigationManager = myProject.getService(NavigationManager.class);
+      navigationManager.navigateTo(message.getHintObject(), focus);
     }
 
     @Override

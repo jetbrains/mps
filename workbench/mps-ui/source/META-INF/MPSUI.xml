@@ -9,10 +9,10 @@
     <component>
       <implementation-class>jetbrains.mps.ide.platform.actions.AnalyzeDependenciesViewTool</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.messages.navigation.NavigationManager</implementation-class>
-    </component>
   </project-components>
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceImplementation="jetbrains.mps.ide.messages.navigation.NavigationManager"/>
+  </extensions>
 
   <extensionPoints>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootEntry" beanClass="jetbrains.mps.ide.ui.dialogs.properties.persistence.ModelRootEntryEP"/>
