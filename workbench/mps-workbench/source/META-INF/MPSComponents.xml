@@ -156,6 +156,8 @@
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">
+    <appStarter implementation="jetbrains.mps.tool.environment.MPSHeadlessPlatformStarter"/>
+
     <!-- This is needed for JDK solution loading. Is better to be replaced by lazy loading. Also a possible solution is to load JDK solution with IO FS -->
     <virtualFileSystem implementationClass="com.intellij.openapi.vfs.impl.jrt.JrtFileSystemImpl" key="jrt" physical="true"/>
 
