@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ public final class RuntimeFlags {
   private static Boolean ourUseInterpretedLanguages = null;
   private static boolean ourMergeDriverMode = false;
   private static Boolean ourCastException = null;
-  private static Boolean ourEnableStubSources = null;
 
   private RuntimeFlags() {
   }
@@ -103,12 +102,5 @@ public final class RuntimeFlags {
       ourCastException = !Boolean.getBoolean("mps.disableNodeCastExceptions");
     }
     return ourCastException;
-  }
-
-  public static boolean enableStubSources() {
-    if (ourEnableStubSources == null) {
-      ourEnableStubSources = Boolean.getBoolean("mps.enableStubSources");
-    }
-    return ourEnableStubSources;
   }
 }
