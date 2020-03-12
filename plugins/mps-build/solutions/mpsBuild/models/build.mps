@@ -3722,105 +3722,6 @@
             </node>
           </node>
         </node>
-        <node concept="1E1SXE" id="79RLYYOj6nu" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj6nv" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj6wt" role="iGT6I">
-              <property role="2Ry0Am" value="mps-constraints-runtime.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="79RLYYOj6wv" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj6ww" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj6Dx" role="iGT6I">
-              <property role="2Ry0Am" value="mps-closures.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="79RLYYOj6Dz" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj6D$" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj7bZ" role="iGT6I">
-              <property role="2Ry0Am" value="mps-collections.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="79RLYYOj7ku" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj7kv" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj7tA" role="iGT6I">
-              <property role="2Ry0Am" value="mps-tuples.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="79RLYYOj7A5" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj7A6" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj7Su" role="iGT6I">
-              <property role="2Ry0Am" value="mps-logging.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="79RLYYOj7Jg" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj7Jh" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj80X" role="iGT6I">
-              <property role="2Ry0Am" value="mps-boot-util.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="79RLYYOj89s" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj89t" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj8iH" role="iGT6I">
-              <property role="2Ry0Am" value="mps-messaging.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="79RLYYOj8iJ" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="79RLYYOj8iK" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj8s3" role="iGT6I">
-              <property role="2Ry0Am" value="mps-annotations.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="j2cmApzdrW" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="j2cmApzdrX" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="j2cmApzd_R" role="iGT6I">
-              <property role="2Ry0Am" value="jdom.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="j2cmApzdIE" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="j2cmApzdIF" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="j2cmApze1p" role="iGT6I">
-              <property role="2Ry0Am" value="trove4j.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="j2cmApzeac" role="3bR37C">
-          <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
-          <node concept="398BVA" id="j2cmApzead" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="j2cmApze_J" role="iGT6I">
-              <property role="2Ry0Am" value="log4j.jar" />
-            </node>
-          </node>
-        </node>
         <node concept="1E1SXE" id="3dkXFAFlcLF" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
@@ -3828,15 +3729,6 @@
             <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
             <node concept="2Ry0Ak" id="79RLYYOj2wW" role="iGT6I">
               <property role="2Ry0Am" value="mps-persistence.jar" />
-            </node>
-          </node>
-        </node>
-        <node concept="1E1SXE" id="j2cmApzfaa" role="3bR37C">
-          <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
-          <node concept="398BVA" id="j2cmApzfab" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="j2cmApzft2" role="iGT6I">
-              <property role="2Ry0Am" value="ecj-4.13.jar" />
             </node>
           </node>
         </node>
