@@ -42,7 +42,6 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ClassifierTypeToAlternativeType extends TransformationMenuBase {
@@ -116,7 +115,7 @@ public class ClassifierTypeToAlternativeType extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode catchClauseToReplace = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(_context.getNode())), CONCEPTS.CatchClause$hu);
-        SNode replacement = createMultipleCatchClause_y8xil4_a0b0a0a(SPropertyOperations.getBoolean(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), PROPS.isFinal$hIht), SLinkOperations.getChildren(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), LINKS.annotation$oVP4), SLinkOperations.getChildren(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), LINKS.smodelAttribute$K8bJ), SPropertyOperations.getString(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), PROPS.name$tAp1), SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ));
+        SNode replacement = createMultipleCatchClause_y8xil4_a0b0a0a(SPropertyOperations.getBoolean(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), PROPS.isFinal$hIht), SLinkOperations.getChildren(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), LINKS.annotation$oVP4), SLinkOperations.getChildren(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), LINKS.smodelAttribute$K8bJ), SPropertyOperations.getString(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), PROPS.name$tAp1), SLinkOperations.getTarget(SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_), LINKS.type$pLrO));
         Map<SNode, SNode> referenceMap = MapSequence.<SNode, SNode>fromMapAndKeysArray(new HashMap<SNode, SNode>(), SLinkOperations.getTarget(catchClauseToReplace, LINKS.throwable$5XW_)).withValues(SLinkOperations.getTarget(replacement, LINKS.throwable$5XW_));
         SLinkOperations.setTarget(replacement, LINKS.catchBody$5XX4, SNodeOperations.cast(CopyUtil.copy(SLinkOperations.getTarget(catchClauseToReplace, LINKS.catchBody$5XX4), referenceMap, true), CONCEPTS.StatementList$TN));
         SNodeOperations.replaceWithAnother(catchClauseToReplace, replacement);
@@ -158,8 +157,7 @@ public class ClassifierTypeToAlternativeType extends TransformationMenuBase {
         SNodeBuilder n2 = n1.forChild(LINKS.type$pLrO).init(CONCEPTS.AlternativeType$aM);
         {
           SNodeBuilder n3 = n2.forChild(LINKS.classes$Fu70).initNode(p4, CONCEPTS.Type$IG, false);
-          SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.ClassifierType$IZ);
-          n4.setReferenceTarget(LINKS.classifier$pQ_R, null);
+          SNodeBuilder n4 = n3.forSibling().init(CONCEPTS.Type$IG);
         }
       }
     }
@@ -168,7 +166,6 @@ public class ClassifierTypeToAlternativeType extends TransformationMenuBase {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept MultipleCatchClause$U5 = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x2aefd560f401b9c6L, "jetbrains.mps.baseLanguage.jdk7.structure.MultipleCatchClause");
     /*package*/ static final SConcept CatchVariable$6W = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x44bbb37e796ac72eL, "jetbrains.mps.baseLanguage.jdk7.structure.CatchVariable");
@@ -185,7 +182,6 @@ public class ClassifierTypeToAlternativeType extends TransformationMenuBase {
     /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SContainmentLink catchBody$5XX4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f2L, "catchBody");
     /*package*/ static final SContainmentLink classes$Fu70 = MetaAdapterFactory.getContainmentLink(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "classes");
-    /*package*/ static final SReferenceLink classifier$pQ_R = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class PROPS {

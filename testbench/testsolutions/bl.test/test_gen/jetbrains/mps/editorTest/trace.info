@@ -13254,6 +13254,58 @@
       <unit id="5337196445347381882" at="13,0,44,0" name="jetbrains.mps.editorTest.MoveBlockAndEmptyStatementOutOfTheBlock_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/5351203823894944496">
+    <file name="TryCatchToAlternativeType_Test.java">
+      <node id="5351203823894944496" at="18,43,19,25" concept="11" />
+      <node id="5351203823894944496" at="23,65,24,36" concept="2" />
+      <node id="5351203823894944496" at="29,52,30,19" concept="11" />
+      <node id="5351203823894944496" at="34,51,35,72" concept="2" />
+      <node id="5351203823894957148" at="35,72,36,22" concept="2" />
+      <node id="5351203823894944496" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="5351203823894944496" at="18,0,21,0" concept="1" trace="TryCatchToAlternativeType_Test#()V" />
+      <node id="5351203823894944496" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5351203823894944496" at="22,0,26,0" concept="5" trace="test_TryCatchToAlternativeType#()V" />
+      <node id="5351203823894944496" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="5351203823894944496" at="18,43,19,25" />
+      <scope id="5351203823894944496" at="23,65,24,36" />
+      <scope id="5351203823894944496" at="29,52,30,19" />
+      <scope id="5351203823894944496" at="34,51,36,22" />
+      <scope id="5351203823894944496" at="18,0,21,0" />
+      <scope id="5351203823894944496" at="29,0,32,0">
+        <var name="owner" id="5351203823894944496" />
+      </scope>
+      <scope id="5351203823894944496" at="22,0,26,0" />
+      <scope id="5351203823894944496" at="33,0,38,0" />
+      <unit id="5351203823894944496" at="27,0,39,0" name="jetbrains.mps.editorTest.TryCatchToAlternativeType_Test$TestBody" />
+      <unit id="5351203823894944496" at="13,0,40,0" name="jetbrains.mps.editorTest.TryCatchToAlternativeType_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/5351203823894957158">
+    <file name="TryCatchFromAlternativeType_Test.java">
+      <node id="5351203823894957158" at="18,45,19,25" concept="11" />
+      <node id="5351203823894957158" at="23,67,24,36" concept="2" />
+      <node id="5351203823894957158" at="29,52,30,19" concept="11" />
+      <node id="5351203823894957158" at="34,51,35,72" concept="2" />
+      <node id="5351203823894963519" at="35,72,36,72" concept="2" />
+      <node id="5351203823894957158" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="5351203823894957158" at="18,0,21,0" concept="1" trace="TryCatchFromAlternativeType_Test#()V" />
+      <node id="5351203823894957158" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5351203823894957158" at="22,0,26,0" concept="5" trace="test_TryCatchFromAlternativeType#()V" />
+      <node id="5351203823894957158" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="5351203823894957158" at="18,45,19,25" />
+      <scope id="5351203823894957158" at="23,67,24,36" />
+      <scope id="5351203823894957158" at="29,52,30,19" />
+      <scope id="5351203823894957158" at="34,51,36,72" />
+      <scope id="5351203823894957158" at="18,0,21,0" />
+      <scope id="5351203823894957158" at="29,0,32,0">
+        <var name="owner" id="5351203823894957158" />
+      </scope>
+      <scope id="5351203823894957158" at="22,0,26,0" />
+      <scope id="5351203823894957158" at="33,0,38,0" />
+      <unit id="5351203823894957158" at="27,0,39,0" name="jetbrains.mps.editorTest.TryCatchFromAlternativeType_Test$TestBody" />
+      <unit id="5351203823894957158" at="13,0,40,0" name="jetbrains.mps.editorTest.TryCatchFromAlternativeType_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/537222088365503481">
     <file name="CutMethodComment_Test.java">
       <node id="537222088365503481" at="18,34,19,25" concept="11" />

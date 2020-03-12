@@ -14,10 +14,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import java.util.LinkedList;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.baseLanguage.behavior.AbstractCatchClause__BehaviorDescriptor;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
@@ -90,27 +89,19 @@ public class typeof_ClosureLiteral_InferenceRule extends AbstractInferenceRule_R
           }
           ListSequence.fromList(allThrows).addElement(typeCheckingContext.getRepresentative(tt_typevar_1221579075612));
         } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.TryStatement$Vw)) {
-          for (SNode caught : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryStatement$Vw), LINKS.catchClause$GIrD)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.throwable$5XW_), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
+          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryStatement$Vw), LINKS.catchClause$GIrD)).translate(new ITranslator2<SNode, SNode>() {
+            public Iterable<SNode> translate(SNode it) {
+              return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
             }
-          }).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.throwable$5XW_), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
-            }
-          })) {
+          }), CONCEPTS.ClassifierType$IZ)) {
             ListSequence.fromList(allCatches).addElement(caught);
           }
         } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.TryCatchStatement$x5)) {
-          for (SNode caught : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryCatchStatement$x5), LINKS.catchClause$jGNt)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.throwable$5XW_), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
+          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryCatchStatement$x5), LINKS.catchClause$jGNt)).translate(new ITranslator2<SNode, SNode>() {
+            public Iterable<SNode> translate(SNode it) {
+              return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
             }
-          }).select(new ISelector<SNode, SNode>() {
-            public SNode select(SNode it) {
-              return SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.throwable$5XW_), LINKS.type$pLrO), CONCEPTS.ClassifierType$IZ);
-            }
-          })) {
+          }), CONCEPTS.ClassifierType$IZ)) {
             ListSequence.fromList(allCatches).addElement(caught);
           }
         } else {
@@ -424,7 +415,6 @@ with_allThrows:
     /*package*/ static final SContainmentLink body$DJEC = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
     /*package*/ static final SReferenceLink baseMethodDeclaration$$A7i = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
-    /*package*/ static final SContainmentLink throwable$5XW_ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
     /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
     /*package*/ static final SContainmentLink throwable$o3ty = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, 0x10f3ee0cd6fL, "throwable");
     /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
