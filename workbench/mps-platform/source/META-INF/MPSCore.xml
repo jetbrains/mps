@@ -25,10 +25,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.VisibleModuleRegistry</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.save.IdeMPSFileSaver</implementation-class>
       <headless-implementation-class>jetbrains.mps.ide.save.DummyIdeMPSFileSaver</headless-implementation-class>
     </component>
@@ -120,6 +116,7 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceImplementation="jetbrains.mps.ide.icons.GlobalIconManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.VisibleModuleRegistry"/>
 
     <fileTypeFactory implementation="jetbrains.mps.fileTypes.MPSFileTypeFactory"/>
 

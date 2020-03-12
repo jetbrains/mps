@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,12 @@
  */
 package jetbrains.mps;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.util.Condition;
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.util.text.StringUtil;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -34,9 +31,17 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 
-public class VisibleModuleRegistry implements ApplicationComponent {
+public class VisibleModuleRegistry implements Disposable {
   private final Map<String, Boolean> myCache = new ConcurrentHashMap<>();
-  private List<Pattern> myPatterns;
+  private final List<Pattern> myPatterns;
+
+  public VisibleModuleRegistry() {
+    List<VisibleModuleMask> extensions = VisibleModuleMask.EP_VISIBLE_MODULES.getExtensionList();
+    myPatterns = new ArrayList<>(extensions.size());
+    for (VisibleModuleMask e : extensions) {
+      myPatterns.add(Pattern.compile(e.mask));
+    }
+  }
 
   public boolean isVisible(@Nullable final SModule module) {
     if (module == null) {
@@ -73,27 +78,12 @@ public class VisibleModuleRegistry implements ApplicationComponent {
   }
 
   public static VisibleModuleRegistry getInstance() {
-    return ApplicationManager.getApplication().getComponent(VisibleModuleRegistry.class);
+    return ServiceManager.getService(VisibleModuleRegistry.class);
   }
 
   @Override
-  public void initComponent() {
-    VisibleModuleMask[] extensions = VisibleModuleMask.EP_VISIBLE_MODULES.getExtensions();
-    myPatterns = new ArrayList<>(extensions.length);
-    for (VisibleModuleMask e : extensions) {
-      myPatterns.add(Pattern.compile(e.mask));
-    }
-  }
-
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     myCache.clear();
     myPatterns.clear();
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return VisibleModuleRegistry.class.getSimpleName();
   }
 }
