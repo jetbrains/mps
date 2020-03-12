@@ -31,7 +31,6 @@
       <sourceRoot location="netty-handler-4.1.45.Final.jar" />
       <sourceRoot location="netty-resolver-4.1.45.Final.jar" />
       <sourceRoot location="netty-transport-4.1.45.Final.jar" />
-      <sourceRoot location="commons-imaging-1.0-RC.ja" />
       <sourceRoot location="util.jar" />
       <sourceRoot location="extensions.jar" />
       <sourceRoot location="forms_rt.jar" />
@@ -72,7 +71,6 @@
     <stubModelEntry path="${platform_lib}/netty-handler-4.1.45.Final.jar" />
     <stubModelEntry path="${platform_lib}/netty-resolver-4.1.45.Final.jar" />
     <stubModelEntry path="${platform_lib}/netty-transport-4.1.45.Final.jar" />
-    <stubModelEntry path="${platform_lib}/commons-imaging-1.0-RC.ja" />
     <stubModelEntry path="${platform_lib}/util.jar" />
     <stubModelEntry path="${platform_lib}/extensions.jar" />
     <stubModelEntry path="${platform_lib}/forms_rt.jar" />
