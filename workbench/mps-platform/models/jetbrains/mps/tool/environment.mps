@@ -20,7 +20,6 @@
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="1wbl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.idea(MPS.IDEA/)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
@@ -34,8 +33,6 @@
     <import index="ab4o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.newvfs.impl(MPS.IDEA/)" />
     <import index="7nyy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.refresh(MPS.Core/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
-    <import index="ctgy" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.plugins(MPS.IDEA/)" />
-    <import index="f061" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application.ex(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="32g5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library(MPS.Core/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
@@ -88,7 +85,6 @@
         <property id="6468716278899126575" name="isVolatile" index="2dlcS1" />
         <property id="6468716278899125786" name="isTransient" index="2dld4O" />
       </concept>
-      <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
@@ -122,7 +118,6 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
-        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -419,17 +414,6 @@
             </node>
             <node concept="37vLTw" id="4OPNMy2cxpl" role="37vLTx">
               <ref role="3cqZAo" node="4OPNMy2cwtU" resolve="unitTestMode" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5WEPrBtx9HV" role="3cqZAp">
-          <node concept="2YIFZM" id="5WEPrBtx9Jx" role="3clFbG">
-            <ref role="37wK5l" to="anz6:~ThreadTracker.longRunningThreadCreated(com.intellij.openapi.Disposable,java.lang.String...)" resolve="longRunningThreadCreated" />
-            <ref role="1Pybhc" to="anz6:~ThreadTracker" resolve="ThreadTracker" />
-            <node concept="Xjq3P" id="5WEPrBtx9N2" role="37wK5m" />
-            <node concept="10M0yZ" id="5WEPrBtxA06" role="37wK5m">
-              <ref role="3cqZAo" to="w1kd:~WorkbenchModelAccess.THREAD_GROUP_NAME" resolve="THREAD_GROUP_NAME" />
-              <ref role="1PxDUh" to="w1kd:~WorkbenchModelAccess" resolve="WorkbenchModelAccess" />
             </node>
           </node>
         </node>
@@ -1928,6 +1912,20 @@
                   </node>
                 </node>
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5WEPrBtx9HV" role="3cqZAp">
+          <node concept="2YIFZM" id="5WEPrBtx9Jx" role="3clFbG">
+            <ref role="1Pybhc" to="anz6:~ThreadTracker" resolve="ThreadTracker" />
+            <ref role="37wK5l" to="anz6:~ThreadTracker.longRunningThreadCreated(com.intellij.openapi.Disposable,java.lang.String...)" resolve="longRunningThreadCreated" />
+            <node concept="2YIFZM" id="3DE6_ds7Fd_" role="37wK5m">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+            </node>
+            <node concept="10M0yZ" id="5WEPrBtxA06" role="37wK5m">
+              <ref role="3cqZAo" to="w1kd:~WorkbenchModelAccess.THREAD_GROUP_NAME" resolve="THREAD_GROUP_NAME" />
+              <ref role="1PxDUh" to="w1kd:~WorkbenchModelAccess" resolve="WorkbenchModelAccess" />
             </node>
           </node>
         </node>
@@ -4229,9 +4227,6 @@
         </node>
         <node concept="3Tm1VV" id="6_mFlZWT$uc" role="1B3o_S" />
       </node>
-    </node>
-    <node concept="3uibUv" id="3qbI1lNnC6k" role="EKbjA">
-      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
   </node>
 </model>
