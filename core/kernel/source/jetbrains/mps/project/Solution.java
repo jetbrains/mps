@@ -50,19 +50,6 @@ public class Solution extends ReloadableModuleBase {
   private SolutionDescriptor mySolutionDescriptor;
   public static final String SOLUTION_MODELS = "models";
 
-  private static Map<SModuleReference, ClassType> bootstrapCP = initBootstrapSolutions();
-
-  private static Map<SModuleReference, ClassType> initBootstrapSolutions() {
-    Map<SModuleReference, ClassType> result = new HashMap<>();
-    List<ClassType> classTypes = new ArrayList<>();
-    classTypes.add(ClassType.JDK);
-    classTypes.add(ClassType.JDK_TOOLS);
-    for (ClassType classType : classTypes) {
-      result.put(BootstrapLanguages.bootstrapSolutionRef(classType), classType);
-    }
-    return result;
-  }
-
   /* TODO make package local, move to appropriate package */
   public Solution(SolutionDescriptor descriptor, @Nullable IFile file) {
     super(file);
@@ -70,58 +57,6 @@ public class Solution extends ReloadableModuleBase {
     setModuleReference(descriptor.getModuleReference());
   }
 
-  private static void populateModelRoot(ClassType classType, Memento m) {
-    PackageScopeControl psc = getPackageScopeControl(classType);
-    if (psc == null) {
-      return;
-    }
-
-    psc.save(m.createChild("PackageScope"));
-  }
-
-  @Nullable
-  public static PackageScopeControl getPackageScopeControl(ClassType classType) {
-    PackageScopeControl psc = null;
-    switch (classType) {
-      case JDK:
-        PackageScopeControl jdkPackages = new PackageScopeControl();
-        jdkPackages.setSkipPrivate(true);
-        jdkPackages.includeWithPrefix("java.");
-        jdkPackages.includeWithPrefix("javax.");
-        jdkPackages.includeWithPrefix("org.");
-        // java fx (from ext/jfxrt.jar)
-        jdkPackages.includeWithPrefix("javafx.");
-        jdkPackages.includeWithPrefix("netscape.javascript.");
-        // sun.awt used in mbeddr
-        jdkPackages.includeWithPrefix("sun.awt.");
-        psc = jdkPackages;
-        break;
-      case JDK_TOOLS:
-        psc = new PackageScopeControl();
-        psc.setSkipPrivate(true);
-        psc.includeWithPrefix("com.sun.codemodel.");
-        psc.includeWithPrefix("com.sun.source.");
-        psc.includeWithPrefix("com.sun.tools.");
-        psc.includeWithPrefix("com.sun.jarsigner.");
-        psc.includeWithPrefix("com.sun.javadoc.");
-        psc.includeWithPrefix("com.sun.jdi.");
-        psc.includeWithPrefix("org.relaxng.");
-        psc.includeWithPrefix("sun.jvmstat.");
-        psc.includeWithPrefix("sun.rmi.rmic.");
-        psc.includeWithPrefix("sun.tools.");
-        psc.includeWithPrefix("sun.applet.");
-        break;
-      case PLATFORM:
-      case IDEA:
-        PackageScopeControl platformPackages = new PackageScopeControl();
-        // mbeddr uses reflection (though custom dsl) to access MPS internals
-        // hence we need to expose private methods unless this reflection language and its uses are removed
-        //      platformPackages.setSkipPrivate(true);
-        psc = platformPackages;
-        break;
-    }
-    return psc;
-  }
 
   @NotNull
   @Override
@@ -179,40 +114,7 @@ public class Solution extends ReloadableModuleBase {
   protected void updateBootstrapSolutionLibraries() {
     // idea plugin wants to turn it off sometimes, when it knows better what jdk is and what platform is
 
-    ModuleDescriptor descriptor = getModuleDescriptor();
-
-    ClassType classType = bootstrapCP.get(descriptor.getModuleReference());
-    if (classType == null) {
-      return;
-    }
-
-    // do it only for first time
-    List<QualifiedPath> jrtPaths = new ArrayList<>();
-    if (descriptor.getModelRootDescriptors().isEmpty()) {
-      for (QualifiedPath path : CommonPaths.getPaths(classType)) {
-        final Collection<ModelRootDescriptor> modelRootDescriptors = descriptor.getModelRootDescriptors();
-
-        if (!path.getFsId().equals(VFSManager.JRT_FS)){
-          IFile pathFile = getFileSystem().getFile(path.getPath());
-          final ModelRootDescriptor javaStubsModelRoot = ModelRootDescriptor.addJavaStubModelRoot(pathFile, modelRootDescriptors);
-          if (javaStubsModelRoot != null) {
-            modelRootDescriptors.add(javaStubsModelRoot);
-            populateModelRoot(classType, javaStubsModelRoot.getMemento());
-          }
-          descriptor.getJavaLibs().add(path.getPath());
-        } else {
-          jrtPaths.add(path);
-        }
-      }
-      if (!jrtPaths.isEmpty()){
-        MementoImpl memento = new MementoImpl();
-        for(QualifiedPath jp: jrtPaths){
-          memento.createChild("path").put("value", jp.serialize(new MacroNoHelper()));
-        }
-        populateModelRoot(classType, memento);
-        descriptor.getModelRootDescriptors().add(new ModelRootDescriptor(PersistenceRegistry.JDK_CLASSES_ROOT, memento));
-      }
-    }
+    // FIXME deal with IDEA plugin
   }
 
   public String toString() {

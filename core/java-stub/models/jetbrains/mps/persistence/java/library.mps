@@ -4658,6 +4658,200 @@
         </node>
       </node>
       <node concept="3clFbS" id="7aqpU4HvU7M" role="3clF47">
+        <node concept="3cpWs8" id="Uui6m16M1m" role="3cqZAp">
+          <node concept="3cpWsn" id="Uui6m16M1n" role="3cpWs9">
+            <property role="TrG5h" value="provided" />
+            <node concept="3uibUv" id="Uui6m16M1o" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            </node>
+            <node concept="2OqwBi" id="Uui6m16M1p" role="33vP2m">
+              <node concept="37vLTw" id="Uui6m16M1q" role="2Oq$k0">
+                <ref role="3cqZAo" node="7aqpU4HvU7J" resolve="memento" />
+              </node>
+              <node concept="liA8E" id="Uui6m16M1r" role="2OqNvi">
+                <ref role="37wK5l" to="dush:~Memento.get(java.lang.String)" resolve="get" />
+                <node concept="Xl_RD" id="Uui6m16M1s" role="37wK5m">
+                  <property role="Xl_RC" value="provided" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="Uui6m16Bfj" role="3cqZAp">
+          <node concept="3clFbS" id="Uui6m16Bfl" role="3clFbx">
+            <node concept="3SKdUt" id="Uui6m16QZY" role="3cqZAp">
+              <node concept="1PaTwC" id="Uui6m16QZZ" role="1aUNEU">
+                <node concept="3oM_SD" id="Uui6m16R00" role="1PaTwD">
+                  <property role="3oM_SC" value="generally," />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7il" role="1PaTwD">
+                  <property role="3oM_SC" value="if" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R02" role="1PaTwD">
+                  <property role="3oM_SC" value="provider" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R03" role="1PaTwD">
+                  <property role="3oM_SC" value="adds" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R04" role="1PaTwD">
+                  <property role="3oM_SC" value="anything" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R05" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R06" role="1PaTwD">
+                  <property role="3oM_SC" value="memento," />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R07" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7j2" role="1PaTwD">
+                  <property role="3oM_SC" value="don't" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R08" role="1PaTwD">
+                  <property role="3oM_SC" value="want" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R09" role="1PaTwD">
+                  <property role="3oM_SC" value="anyone" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0a" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0b" role="1PaTwD">
+                  <property role="3oM_SC" value="see" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0c" role="1PaTwD">
+                  <property role="3oM_SC" value="that" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0d" role="1PaTwD">
+                  <property role="3oM_SC" value="changes" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0e" role="1PaTwD">
+                  <property role="3oM_SC" value="or" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0f" role="1PaTwD">
+                  <property role="3oM_SC" value="try" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0g" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0h" role="1PaTwD">
+                  <property role="3oM_SC" value="persist" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0i" role="1PaTwD">
+                  <property role="3oM_SC" value="them" />
+                </node>
+                <node concept="3oM_SD" id="Uui6m16R0j" role="1PaTwD">
+                  <property role="3oM_SC" value="afterwards" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="l2QlraD7A6" role="3cqZAp">
+              <node concept="1PaTwC" id="l2QlraD7A7" role="1aUNEU">
+                <node concept="3oM_SD" id="l2QlraD7A9" role="1PaTwD">
+                  <property role="3oM_SC" value="however," />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7BW" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7BZ" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7Cb" role="1PaTwD">
+                  <property role="3oM_SC" value="case" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7Cg" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7Cm" role="1PaTwD">
+                  <property role="3oM_SC" value="know" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7D6" role="1PaTwD">
+                  <property role="3oM_SC" value="save()" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7De" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7Dn" role="1PaTwD">
+                  <property role="3oM_SC" value="no" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7Dx" role="1PaTwD">
+                  <property role="3oM_SC" value="op," />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7DG" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD7E0" role="1PaTwD">
+                  <property role="3oM_SC" value="therefore" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD8Dh" role="1PaTwD">
+                  <property role="3oM_SC" value="don't" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD8DB" role="1PaTwD">
+                  <property role="3oM_SC" value="make" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD8E6" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD8Eu" role="1PaTwD">
+                  <property role="3oM_SC" value="copy" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD8ER" role="1PaTwD">
+                  <property role="3oM_SC" value="like" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD8Fh" role="1PaTwD">
+                  <property role="3oM_SC" value="JavaClassStubsModelRoot" />
+                </node>
+                <node concept="3oM_SD" id="l2QlraD8Gc" role="1PaTwD">
+                  <property role="3oM_SC" value="does." />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="Uui6m16R0q" role="3cqZAp">
+              <node concept="2OqwBi" id="Uui6m16R0r" role="3clFbG">
+                <node concept="37vLTw" id="Uui6m16R0s" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2EuI5prz04o" resolve="myStubPathProvider" />
+                </node>
+                <node concept="liA8E" id="Uui6m16R0t" role="2OqNvi">
+                  <ref role="37wK5l" to="i290:~ClassStubRootConfiguration.configure(java.lang.String,org.jetbrains.mps.openapi.persistence.Memento)" resolve="configure" />
+                  <node concept="37vLTw" id="Uui6m16R0u" role="37wK5m">
+                    <ref role="3cqZAo" node="Uui6m16M1n" resolve="provided" />
+                  </node>
+                  <node concept="37vLTw" id="l2QlraD7G4" role="37wK5m">
+                    <ref role="3cqZAo" node="7aqpU4HvU7J" resolve="memento" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="Uui6m16Pj7" role="3clFbw">
+            <node concept="1Wc70l" id="Uui6m16MMP" role="3uHU7B">
+              <node concept="3y3z36" id="Uui6m16CgC" role="3uHU7B">
+                <node concept="37vLTw" id="Uui6m16BRg" role="3uHU7B">
+                  <ref role="3cqZAo" node="2EuI5prz04o" resolve="myStubPathProvider" />
+                </node>
+                <node concept="10Nm6u" id="Uui6m16CAH" role="3uHU7w" />
+              </node>
+              <node concept="3y3z36" id="Uui6m16P8C" role="3uHU7w">
+                <node concept="37vLTw" id="Uui6m16OSW" role="3uHU7B">
+                  <ref role="3cqZAo" node="Uui6m16M1n" resolve="provided" />
+                </node>
+                <node concept="10Nm6u" id="Uui6m16Pi7" role="3uHU7w" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="Uui6m16PBP" role="3uHU7w">
+              <node concept="37vLTw" id="Uui6m16PWG" role="2Oq$k0">
+                <ref role="3cqZAo" node="2EuI5prz04o" resolve="myStubPathProvider" />
+              </node>
+              <node concept="liA8E" id="Uui6m16PBR" role="2OqNvi">
+                <ref role="37wK5l" to="i290:~ClassStubRootConfiguration.supports(java.lang.String)" resolve="supports" />
+                <node concept="37vLTw" id="Uui6m16PBS" role="37wK5m">
+                  <ref role="3cqZAo" node="Uui6m16M1n" resolve="provided" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="21LLI_RYE0" role="3cqZAp">
           <node concept="1PaTwC" id="21LLI_RYE1" role="1aUNEU">
             <node concept="3oM_SD" id="21LLI_RYE2" role="1PaTwD">
@@ -4870,7 +5064,27 @@
       </node>
       <node concept="TZ5HA" id="7aqpU4Hwqfk" role="TZ5H$">
         <node concept="1dT_AC" id="7aqpU4Hwqfl" role="1dT_Ay">
-          <property role="1dT_AB" value="A better solution is to use QualifiedPaths everywhere in model roots and utilize the regular JavaClassStubvModel" />
+          <property role="1dT_AB" value="A better solution is to use QualifiedPaths everywhere in model roots and utilize the regular JavaClassStubsModelRoot" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="Uui6m16Rq5" role="TZ5H$">
+        <node concept="1dT_AC" id="Uui6m16Rq6" role="1dT_Ay">
+          <property role="1dT_AB" value="In fact, this class is no different from JavaClassStubsModelRoot except that it works through VFSManager, QualifiedPath and doesn't group source locations under a source root" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="l2QlraD5xP" role="TZ5H$">
+        <node concept="1dT_AC" id="l2QlraD5xQ" role="1dT_Ay">
+          <property role="1dT_AB" value="It's an example of poor approach to MPS development, as it duplicates functionality instead of refactoring existing one. Now with 'jdk' stub root (which is basically VFS+QP root, not related to " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="l2QlraD7fD" role="TZ5H$">
+        <node concept="1dT_AC" id="l2QlraD7fE" role="1dT_Ay">
+          <property role="1dT_AB" value="JDK at all), and 'java_stubs' root, with IFile and slightly different persistence values, one have to cope with two entities instead of one. I can not imagine what would be guiding idea for any " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="l2QlraD7g0" role="TZ5H$">
+        <node concept="1dT_AC" id="l2QlraD7g1" role="1dT_Ay">
+          <property role="1dT_AB" value="other MSPS developer to pick either of these when he needs stubs functionality." />
         </node>
       </node>
     </node>

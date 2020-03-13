@@ -5,6 +5,11 @@
     <modelRoot type="java_classes">
       <sourceRoot path="${mps_home}/lib/mps-platform.jar" />
       <sourceRoot path="${mps_home}/lib/mps-icons.jar" />
+      <!--
+         Would like to use PackageScope (at least with skip-private=true), however
+         mbeddr uses reflection (though custom dsl) to access MPS internals
+         hence we need to expose private methods unless this reflection language and its uses are removed
+       -->
     </modelRoot>
   </models>
   <facets>

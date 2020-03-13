@@ -18,13 +18,17 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.util.ClassPathReader;
 import jetbrains.mps.util.ClassType;
+import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.MacroProcessor;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.util.PathUtil;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -68,17 +72,21 @@ final class PredefinedRootClassTypeConfig implements ClassStubRootConfiguration 
   }
 
   private void doConfigure(ClassType ct, Memento rootConfig) {
-    if (PathManager.isFromSources()) {
-      rootConfig.put(FileBasedModelRoot.CONTENT_PATH, PathUtil.toSystemIndependent(PathManager.getHomePath()));
-      for (String path : new ClassPathReader(PathManager.getHomePath(), Collections.singletonList(ct)).read()) {
-        rootConfig.createChild(SourceRootKinds.SOURCES.getName()).put(FileBasedModelRoot.LOCATION, path);
+    final String rootKind = rootConfig.get("type");
+    if (PersistenceRegistry.JDK_CLASSES_ROOT.equals(rootKind)) {
+      // JDKStubsModelRoot doesn't have contentPath root, just list of paths
+      final MacroProcessor mp = new MacroNoHelper();
+      for (QualifiedPath path : CommonPaths.getPaths(ct)) {
+        rootConfig.createChild("path").put("value", path.serialize(mp));
       }
-    } else {
+    } else if (PersistenceRegistry.JAVA_CLASSES_ROOT.equals(rootKind)) {
       // no idea if CommonPaths.getPaths share any common root, just use FS root and keep each path as absolute, using undocumented "path" attribute
       rootConfig.put(FileBasedModelRoot.CONTENT_PATH, IFileSystem.SEPARATOR);
       for (QualifiedPath path : CommonPaths.getPaths(ct)) {
         rootConfig.createChild(SourceRootKinds.SOURCES.getName()).put("path", path.getPath());
       }
+    } else {
+      Logger.getLogger(PredefinedRootClassTypeConfig.class).warn(String.format("Unsupported stub root type '%s' with ClassType identity '%s'", rootKind, ct));
     }
   }
 }

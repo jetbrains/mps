@@ -28,7 +28,11 @@ import java.util.ArrayList;
 
 /**
  * This is for faster implementing model roots that can handle J9 modules.
- * A better solution is to use QualifiedPaths everywhere in model roots and utilize the regular JavaClassStubvModel
+ * A better solution is to use QualifiedPaths everywhere in model roots and utilize the regular JavaClassStubsModelRoot
+ * In fact, this class is no different from JavaClassStubsModelRoot except that it works through VFSManager, QualifiedPath and doesn't group source locations under a source root
+ * It's an example of poor approach to MPS development, as it duplicates functionality instead of refactoring existing one. Now with 'jdk' stub root (which is basically VFS+QP root, not related to 
+ * JDK at all), and 'java_stubs' root, with IFile and slightly different persistence values, one have to cope with two entities instead of one. I can not imagine what would be guiding idea for any 
+ * other MSPS developer to pick either of these when he needs stubs functionality.
  */
 @GeneratedClass(node = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)/8258026808687960484", model = "r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)")
 public class JDKStubsModelRoot extends ModelRootBase {
@@ -92,6 +96,12 @@ public class JDKStubsModelRoot extends ModelRootBase {
   }
   @Override
   public void load(@NotNull Memento memento) {
+    String provided = memento.get("provided");
+    if (myStubPathProvider != null && provided != null && myStubPathProvider.supports(provided)) {
+      // generally, if provider adds anything to memento, we don't want anyone to see that changes or try to persist them afterwards 
+      // however, in this case we know save() is no op, and therefore don't make a copy like JavaClassStubsModelRoot does. 
+      myStubPathProvider.configure(provided, memento);
+    }
     // Perhaps, shall support multiple scope configurations per root 
     Memento packScope = memento.getChild("PackageScope");
     if (packScope != null) {
