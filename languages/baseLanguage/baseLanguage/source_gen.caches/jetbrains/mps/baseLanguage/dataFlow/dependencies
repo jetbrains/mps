@@ -273,7 +273,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.TernaryOperatorExpression_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.ThrowStatement_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.TryCatchStatement_DataFlow" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.TryStatement_DataFlow" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.TryFinallyStatement_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.VariableDeclaration_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.VariableReference_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.WhileStatement_DataFlow" />
@@ -903,7 +903,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.dataFlow.TryStatement_DataFlow">
+  <dependency className="jetbrains.mps.baseLanguage.dataFlow.TryFinallyStatement_DataFlow">
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.DataFlowTryCatchUtil" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />

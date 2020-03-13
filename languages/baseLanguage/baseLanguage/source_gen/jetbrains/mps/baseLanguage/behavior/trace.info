@@ -13993,7 +13993,7 @@
       <node id="1213877501569" at="36,0,37,0" concept="15" trace="BH_METHODS" />
       <node id="1213877501575" at="41,90,42,48" concept="11" />
       <node id="1213877501581" at="42,48,43,33" concept="11" />
-      <node id="1213877501590" at="45,76,46,85" concept="11" />
+      <node id="1213877501590" at="45,83,46,92" concept="11" />
       <node id="1213877501597" at="47,198,48,116" concept="5" />
       <node id="1213877501621" at="50,7,51,51" concept="5" />
       <node id="1213877501629" at="52,147,53,14" concept="2" />
@@ -14022,7 +14022,7 @@
       <node id="1213877501569" at="122,14,123,58" concept="19" />
       <node id="1213877501569" at="129,48,130,22" concept="12" />
       <node id="1213877501569" at="135,40,136,19" concept="12" />
-      <node id="1213877501569" at="140,0,141,0" concept="15" trace="TryStatement$Vw" />
+      <node id="1213877501569" at="140,0,141,0" concept="15" trace="TryFinallyStatement$Vw" />
       <node id="1213877501569" at="141,0,142,0" concept="15" trace="StatementList$TN" />
       <node id="1213877501569" at="142,0,143,0" concept="15" trace="Statement$ok" />
       <node id="1213877501569" at="143,0,144,0" concept="15" trace="IMethodLike$kl" />
@@ -14035,7 +14035,7 @@
       <node id="1213877501569" at="153,0,154,0" concept="15" trace="expression$EsbK" />
       <node id="1213877501569" at="38,0,40,0" concept="16" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877501569" at="87,0,89,0" concept="3" trace="ReturnStatement__BehaviorDescriptor#()V" />
-      <node id="1213877501595" at="46,85,49,9" concept="9" />
+      <node id="1213877501595" at="46,92,49,9" concept="9" />
       <node id="1213877501627" at="51,51,54,7" concept="9" />
       <node id="1227261424291" at="65,113,68,9" concept="9" />
       <node id="1229351917829" at="74,119,77,5" concept="9" />
@@ -14081,7 +14081,7 @@
         <var name="__thisNode__" id="1213877501569" />
       </scope>
       <scope id="1213877501569" at="87,0,89,0" />
-      <scope id="1213877501589" at="45,76,49,9">
+      <scope id="1213877501589" at="45,83,49,9">
         <var name="tryStatement" id="1213877501591" />
       </scope>
       <scope id="1213877501676" at="64,14,68,9">
@@ -25100,7 +25100,7 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/4313092516462065665">
-    <file name="TryStatement__BehaviorDescriptor.java">
+    <file name="TryFinallyStatement__BehaviorDescriptor.java">
       <node id="4313092516462065665" at="27,0,28,0" concept="15" trace="CONCEPT" />
       <node id="4313092516462065665" at="29,0,30,0" concept="15" trace="collectUncaughtMethodThrowables_id4Gt7ANIVH8f" />
       <node id="4313092516462065665" at="30,0,31,0" concept="15" trace="getCatchClauses_id3eptmOG0XgA" />
@@ -25125,7 +25125,7 @@
       <node id="4313092516462065665" at="100,0,101,0" concept="15" trace="catchClause$GIrD" />
       <node id="4313092516462065665" at="101,0,102,0" concept="15" trace="finallyBody$LPze" />
       <node id="4313092516462065665" at="34,0,36,0" concept="16" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="4313092516462065665" at="45,0,47,0" concept="3" trace="TryStatement__BehaviorDescriptor#()V" />
+      <node id="4313092516462065665" at="45,0,47,0" concept="3" trace="TryFinallyStatement__BehaviorDescriptor#()V" />
       <node id="4313092516462065665" at="41,0,44,0" concept="16" trace="getCatchClauses_id3eptmOG0XgA#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
       <node id="4313092516462065665" at="55,49,58,5" concept="9" />
       <node id="4313092516462065665" at="72,49,75,5" concept="9" />
@@ -25138,7 +25138,7 @@
       <node id="4313092516462065665" at="70,0,81,0" concept="10" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <node id="4313092516462065665" at="53,0,69,0" concept="10" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <scope id="4313092516462065665" at="34,63,34,63" />
-      <scope id="4313092516462065665" at="45,50,45,50" />
+      <scope id="4313092516462065665" at="45,57,45,57" />
       <scope id="5255918499422580102" at="41,93,42,77" />
       <scope id="4313092516462065665" at="49,114,50,21" />
       <scope id="4313092516462065665" at="56,26,57,56" />
@@ -25185,9 +25185,9 @@
         <var name="node" id="4313092516462065665" />
         <var name="parameters" id="4313092516462065665" />
       </scope>
-      <unit id="4313092516462065665" at="94,0,97,0" name="jetbrains.mps.baseLanguage.behavior.TryStatement__BehaviorDescriptor$CONCEPTS" />
-      <unit id="4313092516462065665" at="98,0,103,0" name="jetbrains.mps.baseLanguage.behavior.TryStatement__BehaviorDescriptor$LINKS" />
-      <unit id="4313092516462065665" at="26,0,104,0" name="jetbrains.mps.baseLanguage.behavior.TryStatement__BehaviorDescriptor" />
+      <unit id="4313092516462065665" at="94,0,97,0" name="jetbrains.mps.baseLanguage.behavior.TryFinallyStatement__BehaviorDescriptor$CONCEPTS" />
+      <unit id="4313092516462065665" at="98,0,103,0" name="jetbrains.mps.baseLanguage.behavior.TryFinallyStatement__BehaviorDescriptor$LINKS" />
+      <unit id="4313092516462065665" at="26,0,104,0" name="jetbrains.mps.baseLanguage.behavior.TryFinallyStatement__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/4313092516462065717">

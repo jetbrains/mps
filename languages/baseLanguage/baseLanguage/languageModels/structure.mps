@@ -1629,7 +1629,7 @@
     </node>
   </node>
   <node concept="1TIwiD" id="gMGUZlm">
-    <property role="TrG5h" value="TryStatement" />
+    <property role="TrG5h" value="TryFinallyStatement" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="3GE5qa" value="control_flow.try_catch" />
     <property role="34LRSv" value="try {...} finally" />

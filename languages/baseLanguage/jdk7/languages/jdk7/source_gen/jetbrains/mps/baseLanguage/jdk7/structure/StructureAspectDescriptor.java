@@ -17,7 +17,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAlternativeType = createDescriptorForAlternativeType();
   /*package*/ final ConceptDescriptor myConceptCatchVariable = createDescriptorForCatchVariable();
   /*package*/ final ConceptDescriptor myConceptMultipleCatchClause = createDescriptorForMultipleCatchClause();
+  /*package*/ final ConceptDescriptor myConceptResourceVariable = createDescriptorForResourceVariable();
   /*package*/ final ConceptDescriptor myConceptStringSwitchStatement = createDescriptorForStringSwitchStatement();
+  /*package*/ final ConceptDescriptor myConceptTryWithResourcesStatement = createDescriptorForTryWithResourcesStatement();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -33,7 +35,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAlternativeType, myConceptCatchVariable, myConceptMultipleCatchClause, myConceptStringSwitchStatement);
+    return Arrays.asList(myConceptAlternativeType, myConceptCatchVariable, myConceptMultipleCatchClause, myConceptResourceVariable, myConceptStringSwitchStatement, myConceptTryWithResourcesStatement);
   }
 
   @Override
@@ -46,8 +48,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptCatchVariable;
       case LanguageConceptSwitch.MultipleCatchClause:
         return myConceptMultipleCatchClause;
+      case LanguageConceptSwitch.ResourceVariable:
+        return myConceptResourceVariable;
       case LanguageConceptSwitch.StringSwitchStatement:
         return myConceptStringSwitchStatement;
+      case LanguageConceptSwitch.TryWithResourcesStatement:
+        return myConceptTryWithResourcesStatement;
       default:
         return null;
     }
@@ -84,6 +90,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForResourceVariable() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "ResourceVariable", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a546561eL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL);
+    b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/5351203823916832286");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForStringSwitchStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "StringSwitchStatement", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L);
     b.class_(false, false, false);
@@ -92,6 +106,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("switch");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTryWithResourcesStatement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "TryWithResourcesStatement", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a54515f2L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.baseLanguage.structure.TryFinallyStatement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
+    b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/5351203823916750322");
+    b.version(2);
+    b.aggregate("resource", 0x4a434b86a54515feL).target(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a546561eL).optional(false).ordered(true).multiple(true).origin("5351203823916750334").done();
     return b.create();
   }
 }

@@ -2847,7 +2847,7 @@
       </node>
     </node>
     <node concept="37WvkG" id="heFKGy3" role="37WGs$">
-      <ref role="37XkoT" to="tpee:gMGUZlm" resolve="TryStatement" />
+      <ref role="37XkoT" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
       <node concept="37Y9Zx" id="heFKGy4" role="37ZfLb">
         <node concept="3clFbS" id="heFKGy5" role="2VODD2">
           <node concept="3clFbJ" id="heFL8mK" role="3cqZAp">

@@ -21,6 +21,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     switch (myIndex.index(concept)) {
       case LanguageConceptSwitch.AlternativeType:
         return new AlternativeType_TextGen();
+      case LanguageConceptSwitch.ResourceVariable:
+        return new ResourceVariable_TextGen();
+      case LanguageConceptSwitch.TryWithResourcesStatement:
+        return new TryWithResourcesStatement_TextGen();
     }
     return null;
   }

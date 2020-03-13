@@ -1899,7 +1899,7 @@
   </node>
   <node concept="3_zdsH" id="hzFzZhG">
     <property role="3GE5qa" value="control_flow.try_catch" />
-    <ref role="3_znuS" to="tpee:gMGUZlm" resolve="TryStatement" />
+    <ref role="3_znuS" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
     <node concept="3__wT9" id="hzFzZhH" role="3_A6iZ">
       <node concept="3clFbS" id="hzFzZhI" role="2VODD2">
         <node concept="4dLnG" id="h$4hOs$" role="3cqZAp">

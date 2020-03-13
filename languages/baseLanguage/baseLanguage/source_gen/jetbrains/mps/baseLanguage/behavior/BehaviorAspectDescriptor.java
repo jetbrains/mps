@@ -94,7 +94,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
   private final BHDescriptor myGreaterThanOrEqualsExpression__BehaviorDescriptor = new GreaterThanOrEqualsExpression__BehaviorDescriptor();
   private final BHDescriptor myRemExpression__BehaviorDescriptor = new RemExpression__BehaviorDescriptor();
   private final BHDescriptor myLessThanOrEqualsExpression__BehaviorDescriptor = new LessThanOrEqualsExpression__BehaviorDescriptor();
-  private final BHDescriptor myTryStatement__BehaviorDescriptor = new TryStatement__BehaviorDescriptor();
+  private final BHDescriptor myTryFinallyStatement__BehaviorDescriptor = new TryFinallyStatement__BehaviorDescriptor();
   private final BHDescriptor myAbstractLoopStatement__BehaviorDescriptor = new AbstractLoopStatement__BehaviorDescriptor();
   private final BHDescriptor myTernaryOperatorExpression__BehaviorDescriptor = new TernaryOperatorExpression__BehaviorDescriptor();
   private final BHDescriptor mySwitchStatement__BehaviorDescriptor = new SwitchStatement__BehaviorDescriptor();
@@ -617,7 +617,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
       case 191:
         return myTryCatchStatement__BehaviorDescriptor;
       case 192:
-        return myTryStatement__BehaviorDescriptor;
+        return myTryFinallyStatement__BehaviorDescriptor;
       case 193:
         return myType__BehaviorDescriptor;
       case 194:

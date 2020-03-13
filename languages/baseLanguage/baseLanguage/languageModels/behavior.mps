@@ -38679,11 +38679,11 @@
                   <node concept="3cpWsn" id="hEwJbUn" role="3cpWs9">
                     <property role="TrG5h" value="tryStatement" />
                     <node concept="3Tqbb2" id="hEwJbUo" role="1tU5fm">
-                      <ref role="ehGHo" to="tpee:gMGUZlm" resolve="TryStatement" />
+                      <ref role="ehGHo" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
                     </node>
                     <node concept="1PxgMI" id="hEwJbUp" role="33vP2m">
                       <node concept="chp4Y" id="714IaVdH19j" role="3oSUPX">
-                        <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryStatement" />
+                        <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
                       </node>
                       <node concept="37vLTw" id="3GM_nagT_mh" role="1m5AlR">
                         <ref role="3cqZAo" node="hEwJbUe" resolve="current" />
@@ -38746,7 +38746,7 @@
                 </node>
                 <node concept="1mIQ4w" id="hEwJbUN" role="2OqNvi">
                   <node concept="chp4Y" id="hEwJbUO" role="cj9EA">
-                    <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryStatement" />
+                    <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
                   </node>
                 </node>
               </node>
@@ -49755,7 +49755,7 @@
   </node>
   <node concept="13h7C7" id="3JrbGEZ7vw1">
     <property role="3GE5qa" value="control_flow.try_catch" />
-    <ref role="13h7C2" to="tpee:gMGUZlm" resolve="TryStatement" />
+    <ref role="13h7C2" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
     <node concept="13i0hz" id="3JrbGEZ7vw4" role="13h7CS">
       <property role="TrG5h" value="collectUncaughtMethodThrowables" />
       <ref role="13i0hy" node="4Gt7ANIVH8f" resolve="collectUncaughtMethodThrowables" />

@@ -1674,7 +1674,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.ThisExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.ThrowStatement_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.TryCatchStatement_TextGen" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.TryStatement_TextGen" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.TryFinallyStatement_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.TypeVariableDeclaration_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.TypeVariableReference_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.UnaryMinus_TextGen" />
@@ -1752,7 +1752,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.textGen.TryStatement_TextGen">
+  <dependency className="jetbrains.mps.baseLanguage.textGen.TryFinallyStatement_TextGen">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />

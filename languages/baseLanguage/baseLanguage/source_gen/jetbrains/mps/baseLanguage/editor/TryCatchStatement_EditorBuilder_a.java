@@ -30,6 +30,8 @@ import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
+import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -199,7 +201,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(catchClauseListHandler_k2ibe6_e0.this.getNode(), LINKS.catchClause$jGNt));
       try {
         EditorCell emptyCell = null;
-        emptyCell = super.createEmptyCell();
+        emptyCell = createError_0();
         installElementCellActions(null, emptyCell, true);
         setCellContext(emptyCell);
         return emptyCell;
@@ -218,6 +220,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
           elementCell.setSubstituteInfo((isEmptyCell ? new SEmptyContainmentSubstituteInfo(elementCell) : new SChildSubstituteInfo(elementCell)));
         }
       }
+    }
+    private EditorCell createError_0() {
+      EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<catch>");
+      editorCell.setCellId("Error_k2ibe6_a4a");
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.TryCatchStatement$x5, "jetbrains.mps.baseLanguage.editor.addClause"));
+      editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
+      return editorCell;
     }
   }
 

@@ -76,7 +76,7 @@ public class DataFlowUtil {
   public static void checkReturns(final TypeCheckingContext typeCheckingContext, Program program) {
     Set<SNode> expectedReturns = DataFlow.getExpectedReturns(program);
     for (SNode expectedReturn : expectedReturns) {
-      if (expectedReturn != null && !(SNodeOperations.isInstanceOf(expectedReturn, CONCEPTS.TryStatement$Vw)) && SNodeOperations.getNodeAncestor(expectedReturn, CONCEPTS.SetAccessor$QT, true, false) == null) {
+      if (expectedReturn != null && !(SNodeOperations.isInstanceOf(expectedReturn, CONCEPTS.TryFinallyStatement$Vw)) && SNodeOperations.getNodeAncestor(expectedReturn, CONCEPTS.SetAccessor$QT, true, false) == null) {
         SNode nodeToSelect;
         SNode sl = SNodeOperations.getNodeAncestor(expectedReturn, CONCEPTS.StatementList$TN, true, false);
         if ((sl != null) && ListSequence.fromList(SLinkOperations.getChildren(sl, LINKS.statement$WHn8)).isNotEmpty()) {
@@ -227,7 +227,7 @@ public class DataFlowUtil {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SetAccessor$QT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117bd9ac3d9L, "jetbrains.mps.baseLanguage.structure.SetAccessor");
-    /*package*/ static final SConcept TryStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SConcept LocalVariableDeclarationStatement$BI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");

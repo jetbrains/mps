@@ -555,7 +555,7 @@ __switch__:
     check(typeCheckingContext, throwables, mainNode, "uncaught exceptions:");
   }
   @CheckingMethod
-  /*package*/ static void check(final TypeCheckingContext typeCheckingContext, Set<SNode> throwables, SNode mainNode, String message) {
+  public static void check(final TypeCheckingContext typeCheckingContext, Set<SNode> throwables, SNode mainNode, String message) {
     List<SNode> throwTypes = ListSequence.fromListWithValues(new ArrayList<SNode>(), throwables);
     ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
       public boolean accept(SNode tt) {
@@ -568,22 +568,26 @@ __switch__:
     List<SNode> ancSLs = SNodeOperations.getNodeAncestors(mainNode, CONCEPTS.StatementList$TN, false);
     boolean useQuickfix = false;
     boolean supportsCheckedExceptions = true;
-    for (SNode anc : SNodeOperations.getNodeAncestorsWhereConceptInList(mainNode, new SAbstractConcept[]{CONCEPTS.TryStatement$Vw, CONCEPTS.TryCatchStatement$x5, CONCEPTS.IStatementListContainer$4L}, false)) {
+    for (SNode anc : SNodeOperations.getNodeAncestorsWhereConceptInList(mainNode, new SAbstractConcept[]{CONCEPTS.TryFinallyStatement$Vw, CONCEPTS.TryCatchStatement$x5, CONCEPTS.IStatementListContainer$4L}, false)) {
       if (ListSequence.fromList(throwTypes).isEmpty()) {
         return;
       }
       {
-        SNode matchedNode_5ahx9e_b0g0t = anc;
+        final SNode matchedNode_5ahx9e_b0g0t = anc;
         {
           boolean matches_5ahx9e_a1a6a91 = false;
           {
             SNode matchingNode_5ahx9e_a1a6a91 = anc;
             if (matchingNode_5ahx9e_a1a6a91 != null) {
-              matches_5ahx9e_a1a6a91 = matchingNode_5ahx9e_a1a6a91.getConcept().isSubConceptOf(CONCEPTS.TryStatement$Vw);
+              matches_5ahx9e_a1a6a91 = matchingNode_5ahx9e_a1a6a91.getConcept().isSubConceptOf(CONCEPTS.TryWithResourcesStatement$80);
             }
           }
           if (matches_5ahx9e_a1a6a91) {
-            if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0t, LINKS.body$TQ1f))) {
+            if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0t, LINKS.body$TQ1f)) || ListSequence.fromList(SNodeOperations.getNodeAncestors(mainNode, CONCEPTS.ResourceVariable$QC, true)).any(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return SNodeOperations.getParent(it) == matchedNode_5ahx9e_b0g0t;
+              }
+            })) {
               for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$GIrD)).translate(new ITranslator2<SNode, SNode>() {
                 public Iterable<SNode> translate(SNode it) {
                   return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
@@ -601,12 +605,12 @@ __switch__:
             {
               SNode matchingNode_5ahx9e_b1a6a91 = anc;
               if (matchingNode_5ahx9e_b1a6a91 != null) {
-                matches_5ahx9e_b1a6a91 = matchingNode_5ahx9e_b1a6a91.getConcept().isSubConceptOf(CONCEPTS.TryCatchStatement$x5);
+                matches_5ahx9e_b1a6a91 = matchingNode_5ahx9e_b1a6a91.getConcept().isSubConceptOf(CONCEPTS.TryFinallyStatement$Vw);
               }
             }
             if (matches_5ahx9e_b1a6a91) {
-              if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0t, LINKS.body$9KDK))) {
-                for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$jGNt)).translate(new ITranslator2<SNode, SNode>() {
+              if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0t, LINKS.body$TQ1f))) {
+                for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$GIrD)).translate(new ITranslator2<SNode, SNode>() {
                   public Iterable<SNode> translate(SNode it) {
                     return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
                   }
@@ -619,26 +623,49 @@ __switch__:
                 }
               }
             } else {
-              if (ListSequence.fromList(ancSLs).contains(IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(SNodeOperations.as(anc, CONCEPTS.IMethodLike$kl)))) {
-                SNode methodLike = SNodeOperations.cast(anc, CONCEPTS.IMethodLike$kl);
-                supportsCheckedExceptions = (boolean) IMethodLike__BehaviorDescriptor.supportsCheckedExceptions_id7orZYjMoFMH.invoke(methodLike);
-                if ((boolean) IMethodLike__BehaviorDescriptor.implicitThrows_id4kX30tnJ9kz.invoke(methodLike)) {
-                  ListSequence.fromList(throwTypes).clear();
-                } else {
-                  List<SNode> methodThrowableTypes = IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invoke(methodLike);
-                  if (methodThrowableTypes != null) {
-                    for (final SNode thr : methodThrowableTypes) {
-                      ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
-                        public boolean accept(SNode tt) {
-                          return TypecheckingFacade.getFromContext().isSubtype(tt, thr);
-                        }
-                      });
-                    }
-                    useQuickfix = true;
-                  }
+              boolean matches_5ahx9e_c1a6a91 = false;
+              {
+                SNode matchingNode_5ahx9e_c1a6a91 = anc;
+                if (matchingNode_5ahx9e_c1a6a91 != null) {
+                  matches_5ahx9e_c1a6a91 = matchingNode_5ahx9e_c1a6a91.getConcept().isSubConceptOf(CONCEPTS.TryCatchStatement$x5);
                 }
               }
-              break;
+              if (matches_5ahx9e_c1a6a91) {
+                if (ListSequence.fromList(ancSLs).contains(SLinkOperations.getTarget(matchedNode_5ahx9e_b0g0t, LINKS.body$9KDK))) {
+                  for (final SNode caughtType : ListSequence.fromList(SLinkOperations.getChildren(matchedNode_5ahx9e_b0g0t, LINKS.catchClause$jGNt)).translate(new ITranslator2<SNode, SNode>() {
+                    public Iterable<SNode> translate(SNode it) {
+                      return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
+                    }
+                  })) {
+                    ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
+                      public boolean accept(SNode tt) {
+                        return TypecheckingFacade.getFromContext().isSubtype(tt, caughtType);
+                      }
+                    });
+                  }
+                }
+              } else {
+                if (ListSequence.fromList(ancSLs).contains(IMethodLike__BehaviorDescriptor.getBody_idi2fhZ_m.invoke(SNodeOperations.as(anc, CONCEPTS.IMethodLike$kl)))) {
+                  SNode methodLike = SNodeOperations.cast(anc, CONCEPTS.IMethodLike$kl);
+                  supportsCheckedExceptions = (boolean) IMethodLike__BehaviorDescriptor.supportsCheckedExceptions_id7orZYjMoFMH.invoke(methodLike);
+                  if ((boolean) IMethodLike__BehaviorDescriptor.implicitThrows_id4kX30tnJ9kz.invoke(methodLike)) {
+                    ListSequence.fromList(throwTypes).clear();
+                  } else {
+                    List<SNode> methodThrowableTypes = IMethodLike__BehaviorDescriptor.getThrowableTypes_id5op8ooRkkc7.invoke(methodLike);
+                    if (methodThrowableTypes != null) {
+                      for (final SNode thr : methodThrowableTypes) {
+                        ListSequence.fromList(throwTypes).removeWhere(new IWhereFilter<SNode>() {
+                          public boolean accept(SNode tt) {
+                            return TypecheckingFacade.getFromContext().isSubtype(tt, thr);
+                          }
+                        });
+                      }
+                      useQuickfix = true;
+                    }
+                  }
+                }
+                break;
+              }
             }
           }
         }
@@ -869,8 +896,10 @@ __switch__:
     /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept TryStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
     /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept TryWithResourcesStatement$80 = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.jdk7.structure.TryWithResourcesStatement");
+    /*package*/ static final SConcept ResourceVariable$QC = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.jdk7.structure.ResourceVariable");
     /*package*/ static final SInterfaceConcept IMethodLike$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
     /*package*/ static final SInterfaceConcept ITryCatchStatement$WV = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
     /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");

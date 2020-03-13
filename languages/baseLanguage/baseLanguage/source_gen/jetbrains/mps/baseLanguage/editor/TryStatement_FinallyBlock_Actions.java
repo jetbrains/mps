@@ -5,10 +5,10 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -16,9 +16,9 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TryStatement_FinallyBlock_Actions {
 
@@ -31,22 +31,15 @@ public class TryStatement_FinallyBlock_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$GIrD)).isNotEmpty()) {
-          if (DeletionApproverUtil.approve(editorContext, node, "finally")) {
-            return;
-          }
-          SNode tryCatchStatement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.TryCatchStatement$x5);
-          SLinkOperations.setTarget(tryCatchStatement, LINKS.body$9KDK, SLinkOperations.getTarget(node, LINKS.body$TQ1f));
-          ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$jGNt)).clear();
-          ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$jGNt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$GIrD)));
-          SNodeOperations.deleteNode(node);
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, tryCatchStatement, SelectionManager.LAST_CELL, -1);
-        } else {
-          if (DeletionApproverUtil.approve(editorContext, node)) {
-            return;
-          }
-          UnwrapStatementsUtil.unwrapIContainsStatementList(node);
+        if (DeletionApproverUtil.approve(editorContext, node, "finally")) {
+          return;
         }
+        SNode tryCatchStatement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.TryCatchStatement$x5);
+        SLinkOperations.setTarget(tryCatchStatement, LINKS.body$9KDK, SLinkOperations.getTarget(node, LINKS.body$TQ1f));
+        ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$jGNt)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$jGNt)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$GIrD)));
+        SNodeOperations.deleteNode(node);
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, tryCatchStatement, SelectionManager.LAST_CELL, -1);
       }
 
     };
@@ -87,14 +80,14 @@ public class TryStatement_FinallyBlock_Actions {
     }
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+  }
+
   private static final class LINKS {
-    /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
     /*package*/ static final SContainmentLink body$9KDK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
     /*package*/ static final SContainmentLink body$TQ1f = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
     /*package*/ static final SContainmentLink catchClause$jGNt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SContainmentLink catchClause$GIrD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
   }
 }

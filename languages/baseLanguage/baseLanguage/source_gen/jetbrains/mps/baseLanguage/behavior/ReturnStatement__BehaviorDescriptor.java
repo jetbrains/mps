@@ -42,8 +42,8 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
     List<SNode> result = new ArrayList<SNode>();
     SNode current = __thisNode__;
     while (true) {
-      if (SNodeOperations.isInstanceOf(current, CONCEPTS.TryStatement$Vw)) {
-        SNode tryStatement = SNodeOperations.cast(current, CONCEPTS.TryStatement$Vw);
+      if (SNodeOperations.isInstanceOf(current, CONCEPTS.TryFinallyStatement$Vw)) {
+        SNode tryStatement = SNodeOperations.cast(current, CONCEPTS.TryFinallyStatement$Vw);
         if ((SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$LPze) != null) && SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$LPze) != SNodeOperations.getParent(__thisNode__)) {
           ListSequence.fromList(result).addElement(SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$LPze));
         }
@@ -137,7 +137,7 @@ public final class ReturnStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SInterfaceConcept IMethodLike$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");

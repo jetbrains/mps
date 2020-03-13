@@ -12,7 +12,9 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AlternativeType;
   private ConceptPresentation props_CatchVariable;
   private ConceptPresentation props_MultipleCatchClause;
+  private ConceptPresentation props_ResourceVariable;
   private ConceptPresentation props_StringSwitchStatement;
+  private ConceptPresentation props_TryWithResourcesStatement;
 
   @Override
   @Nullable
@@ -40,6 +42,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_MultipleCatchClause = cpb.create();
         }
         return props_MultipleCatchClause;
+      case LanguageConceptSwitch.ResourceVariable:
+        if (props_ResourceVariable == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_ResourceVariable = cpb.create();
+        }
+        return props_ResourceVariable;
       case LanguageConceptSwitch.StringSwitchStatement:
         if (props_StringSwitchStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -47,6 +56,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_StringSwitchStatement = cpb.create();
         }
         return props_StringSwitchStatement;
+      case LanguageConceptSwitch.TryWithResourcesStatement:
+        if (props_TryWithResourcesStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TryWithResourcesStatement");
+          props_TryWithResourcesStatement = cpb.create();
+        }
+        return props_TryWithResourcesStatement;
     }
     return null;
   }

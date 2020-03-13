@@ -154,7 +154,7 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
       case 60:
         return Collections.<IDataFlowBuilder>singletonList(new TryCatchStatement_DataFlow());
       case 61:
-        return Collections.<IDataFlowBuilder>singletonList(new TryStatement_DataFlow());
+        return Collections.<IDataFlowBuilder>singletonList(new TryFinallyStatement_DataFlow());
       case 62:
         return Collections.<IDataFlowBuilder>singletonList(new VariableDeclaration_DataFlow());
       case 63:

@@ -3445,10 +3445,10 @@
   </root>
   <root nodeRef="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)/1235134292973">
     <file name="TextGenAspectDescriptor.java">
-      <node id="1235134292973" at="291,46,292,42" concept="12" />
-      <scope id="1235134292973" at="291,46,292,42" />
+      <node id="1235134292973" at="291,53,292,49" concept="12" />
+      <scope id="1235134292973" at="291,53,292,49" />
     </file>
-    <file name="TryStatement_TextGen.java">
+    <file name="TryFinallyStatement_TextGen.java">
       <node id="1235134292973" at="18,54,19,55" concept="11" />
       <node id="1235134292973" at="19,55,20,29" concept="5" />
       <node id="1237562080594" at="20,29,21,18" concept="5" />
@@ -3487,9 +3487,9 @@
       <scope id="1235134292973" at="17,0,44,0">
         <var name="ctx" id="1235134292973" />
       </scope>
-      <unit id="1235134292973" at="51,0,54,0" name="jetbrains.mps.baseLanguage.textGen.TryStatement_TextGen$CONCEPTS" />
-      <unit id="1235134292973" at="45,0,50,0" name="jetbrains.mps.baseLanguage.textGen.TryStatement_TextGen$LINKS" />
-      <unit id="1235134292973" at="16,0,55,0" name="jetbrains.mps.baseLanguage.textGen.TryStatement_TextGen" />
+      <unit id="1235134292973" at="51,0,54,0" name="jetbrains.mps.baseLanguage.textGen.TryFinallyStatement_TextGen$CONCEPTS" />
+      <unit id="1235134292973" at="45,0,50,0" name="jetbrains.mps.baseLanguage.textGen.TryFinallyStatement_TextGen$LINKS" />
+      <unit id="1235134292973" at="16,0,55,0" name="jetbrains.mps.baseLanguage.textGen.TryFinallyStatement_TextGen" />
     </file>
   </root>
   <root nodeRef="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)/1235148827560">

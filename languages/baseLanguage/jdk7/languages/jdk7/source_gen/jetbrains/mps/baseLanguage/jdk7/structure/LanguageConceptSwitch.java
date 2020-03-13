@@ -12,14 +12,18 @@ public final class LanguageConceptSwitch {
   public static final int AlternativeType = 0;
   public static final int CatchVariable = 1;
   public static final int MultipleCatchClause = 2;
-  public static final int StringSwitchStatement = 3;
+  public static final int ResourceVariable = 3;
+  public static final int StringSwitchStatement = 4;
+  public static final int TryWithResourcesStatement = 5;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L);
     builder.put(0x70a99a0b674a3895L, AlternativeType);
     builder.put(0x44bbb37e796ac72eL, CatchVariable);
     builder.put(0x2aefd560f401b9c6L, MultipleCatchClause);
+    builder.put(0x4a434b86a546561eL, ResourceVariable);
     builder.put(0x58f5e8197ce2129L, StringSwitchStatement);
+    builder.put(0x4a434b86a54515f2L, TryWithResourcesStatement);
     myIndex = builder.seal();
   }
 

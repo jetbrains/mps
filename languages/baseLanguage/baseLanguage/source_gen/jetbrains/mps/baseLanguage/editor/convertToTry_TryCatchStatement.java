@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -43,7 +44,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class convertToTry_TryCatchStatement extends TransformationMenuBase {
-  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM);
+  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.SUBSTITUTE);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
     return SetSequence.fromSet(myLocations).contains(location);
@@ -66,6 +67,9 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
+      result.add(new TMP_Group_4jnsla_a0());
+    }
+    if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
       result.add(new TMP_Group_4jnsla_a0());
     }
     return result;
@@ -113,7 +117,7 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
         return item;
       }
 
-      private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
+      private class Item extends ActionItemBase implements SideTransformCompletionActionItem, SubstituteCompletionActionItem {
         private final TransformationMenuContext _context;
         private EditorMenuTraceInfo myEditorMenuTraceInfo;
         private Item(TransformationMenuContext context) {
@@ -130,7 +134,7 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TryStatement$Vw, null);
+          SNode tryStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.TryFinallyStatement$Vw, null);
           SNode body = SLinkOperations.getTarget(_context.getNode(), LINKS.body$9KDK);
           SLinkOperations.setTarget(tryStatement, LINKS.body$TQ1f, body);
           for (SNode catchClause : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$jGNt)) {
@@ -138,7 +142,7 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
           }
           SNodeFactoryOperations.setNewChild(tryStatement, LINKS.finallyBody$LPze, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), tryStatement);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), tryStatement, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(tryStatement, LINKS.finallyBody$LPze), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -171,6 +175,6 @@ public class convertToTry_TryCatchStatement extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
   }
 }

@@ -69,7 +69,7 @@ public final class UnwrapTryCatch_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode body = (SNodeOperations.isInstanceOf(node, CONCEPTS.TryStatement$Vw) ? SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryStatement$Vw), LINKS.body$TQ1f) : SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryCatchStatement$x5), LINKS.body$9KDK));
+      SNode body = (SNodeOperations.isInstanceOf(node, CONCEPTS.TryFinallyStatement$Vw) ? SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryFinallyStatement$Vw), LINKS.body$TQ1f) : SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TryCatchStatement$x5), LINKS.body$9KDK));
 
       if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN)) {
         final SNode statementList = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.StatementList$TN);
@@ -94,7 +94,7 @@ public final class UnwrapTryCatch_Intention extends AbstractIntentionDescriptor 
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept ITryCatchStatement$WV = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
-    /*package*/ static final SConcept TryStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
     /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");

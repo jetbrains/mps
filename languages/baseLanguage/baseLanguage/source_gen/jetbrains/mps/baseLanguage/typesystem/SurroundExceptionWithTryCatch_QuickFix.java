@@ -36,7 +36,7 @@ public class SurroundExceptionWithTryCatch_QuickFix extends QuickFix_Runtime {
       return;
     }
 
-    SNode parentTryStatement = (((Boolean) SurroundExceptionWithTryCatch_QuickFix.this.getField("createNew")[0]) ? null : SNodeOperations.getNodeAncestor(ancestorStatement, CONCEPTS.ITryCatchStatement$WV, false, false));
+    SNode parentTryStatement = (((Boolean) SurroundExceptionWithTryCatch_QuickFix.this.getField("createNew")[0]) ? null : SNodeOperations.getNodeAncestor(ancestorStatement, CONCEPTS.ITryCatchStatement$WV, true, false));
 
     final List<SNode> clauses = ListSequence.fromList(new ArrayList<SNode>());
     ListSequence.fromList(((List<SNode>) SurroundExceptionWithTryCatch_QuickFix.this.getField("throwableTypes")[0])).visitAll(new IVisitor<SNode>() {
@@ -59,8 +59,8 @@ public class SurroundExceptionWithTryCatch_QuickFix extends QuickFix_Runtime {
       clauses.removeAll(ITryCatchStatement__BehaviorDescriptor.getCatchClauses_id3eptmOG0XgA.invoke(parentTryStatement));
       if (SNodeOperations.isInstanceOf(parentTryStatement, CONCEPTS.TryCatchStatement$x5)) {
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentTryStatement, CONCEPTS.TryCatchStatement$x5), LINKS.catchClause$jGNt)).addSequence(ListSequence.fromList(clauses));
-      } else if (SNodeOperations.isInstanceOf(parentTryStatement, CONCEPTS.TryStatement$Vw)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentTryStatement, CONCEPTS.TryStatement$Vw), LINKS.catchClause$GIrD)).addSequence(ListSequence.fromList(clauses));
+      } else if (SNodeOperations.isInstanceOf(parentTryStatement, CONCEPTS.TryFinallyStatement$Vw)) {
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentTryStatement, CONCEPTS.TryFinallyStatement$Vw), LINKS.catchClause$GIrD)).addSequence(ListSequence.fromList(clauses));
       }
     } else {
       SNode tryCatchStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement"));
@@ -77,7 +77,7 @@ public class SurroundExceptionWithTryCatch_QuickFix extends QuickFix_Runtime {
     /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
-    /*package*/ static final SConcept TryStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
   }
 
   private static final class LINKS {

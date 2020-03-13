@@ -274,7 +274,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Tokens;
   private ConceptPresentation props_TrimOperation;
   private ConceptPresentation props_TryCatchStatement;
-  private ConceptPresentation props_TryStatement;
+  private ConceptPresentation props_TryFinallyStatement;
   private ConceptPresentation props_Type;
   private ConceptPresentation props_TypeAnnotable;
   private ConceptPresentation props_TypeDerivable;
@@ -2202,13 +2202,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TryCatchStatement = cpb.create();
         }
         return props_TryCatchStatement;
-      case LanguageConceptSwitch.TryStatement:
-        if (props_TryStatement == null) {
+      case LanguageConceptSwitch.TryFinallyStatement:
+        if (props_TryFinallyStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("try {...} finally");
-          props_TryStatement = cpb.create();
+          props_TryFinallyStatement = cpb.create();
         }
-        return props_TryStatement;
+        return props_TryFinallyStatement;
       case LanguageConceptSwitch.Type:
         if (props_Type == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

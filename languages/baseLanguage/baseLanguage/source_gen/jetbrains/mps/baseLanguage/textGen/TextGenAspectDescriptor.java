@@ -288,8 +288,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ThrowStatement_TextGen();
       case LanguageConceptSwitch.TryCatchStatement:
         return new TryCatchStatement_TextGen();
-      case LanguageConceptSwitch.TryStatement:
-        return new TryStatement_TextGen();
+      case LanguageConceptSwitch.TryFinallyStatement:
+        return new TryFinallyStatement_TextGen();
       case LanguageConceptSwitch.TypeVariableDeclaration:
         return new TypeVariableDeclaration_TextGen();
       case LanguageConceptSwitch.TypeVariableReference:

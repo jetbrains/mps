@@ -6762,7 +6762,7 @@
   </node>
   <node concept="WtQ9Q" id="hYjJqfH">
     <property role="3GE5qa" value="control_flow.try_catch" />
-    <ref role="WuzLi" to="tpee:gMGUZlm" resolve="TryStatement" />
+    <ref role="WuzLi" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
     <node concept="11bSqf" id="hYjJqfI" role="11c4hB">
       <node concept="3clFbS" id="hYjJqfJ" role="2VODD2">
         <node concept="lc7rE" id="i0$sFzV" role="3cqZAp">

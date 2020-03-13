@@ -274,7 +274,7 @@ public final class LanguageConceptSwitch {
   public static final int Tokens = 262;
   public static final int TrimOperation = 263;
   public static final int TryCatchStatement = 264;
-  public static final int TryStatement = 265;
+  public static final int TryFinallyStatement = 265;
   public static final int Type = 266;
   public static final int TypeAnnotable = 267;
   public static final int TypeDerivable = 268;
@@ -569,7 +569,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x5a98df4004080866L, Tokens);
     builder.put(0x11d47e0122aL, TrimOperation);
     builder.put(0x10f383e6771L, TryCatchStatement);
-    builder.put(0x10cacebf556L, TryStatement);
+    builder.put(0x10cacebf556L, TryFinallyStatement);
     builder.put(0xf8c37f506dL, Type);
     builder.put(0x11f4b6b2435L, TypeAnnotable);
     builder.put(0x117ac2330f4L, TypeDerivable);
