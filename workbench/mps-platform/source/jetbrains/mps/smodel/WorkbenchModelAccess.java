@@ -25,9 +25,11 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.undo.DefaultUndoContext;
 import jetbrains.mps.smodel.undo.UndoContext;
 import jetbrains.mps.util.ComputeRunnable;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.annotations.Internal;
 
 import java.math.BigDecimal;
 
@@ -119,6 +121,12 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
   @Override
   public void flushEventQueue() {
     myEDTExecutor.flushEventsQueue();
+  }
+
+  @ToRemove(version = 201)
+  @Internal
+  public void forceFlush() {
+    myEDTExecutor.forceFlush();
   }
 
   @Override

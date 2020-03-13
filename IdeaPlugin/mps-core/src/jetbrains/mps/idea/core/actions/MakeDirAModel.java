@@ -20,6 +20,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.util.NotNullFactory;
+import com.intellij.openapi.util.NotNullLazyValue;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
@@ -42,6 +44,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -78,7 +81,7 @@ public class MakeDirAModel extends NewModelActionBase {
       new LanguageImportHelper(mpsProject, LANGUAGE_IMPORT_INTERACTION.getData(anActionEvent.getDataContext())) :
       new LanguageImportHelper(mpsProject);
 
-    importHelper.addUsedLanguage(() -> createModel(targetFile), sModuleReference -> false);
+    importHelper.addUsedLanguage(NotNullLazyValue.createValue(() -> createModel(targetFile)), sModuleReference -> false);
   }
 
   private EditableSModel createModel(final VirtualFile targetFile) {

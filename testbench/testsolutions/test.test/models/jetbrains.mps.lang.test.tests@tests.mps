@@ -2,9 +2,9 @@
 <model ref="r:77241c59-7b48-4e57-9855-3e6233f0c2f2(jetbrains.mps.lang.test.tests@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
-    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
+    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="-1" />
   </languages>
   <imports>
     <import index="s9pv" ref="r:d23dfab6-8d89-4872-a030-483768adf2c0(jetbrains.mps.lang.test.migration)" />
@@ -23,12 +23,28 @@
         <child id="5476670926298698900" name="outputNodes" index="2lJPY$" />
         <child id="6626913010124294914" name="migration" index="3ea0P7" />
       </concept>
+      <concept id="1229187653856" name="jetbrains.mps.lang.test.structure.EditorTestCase" flags="lg" index="LiM7Y">
+        <child id="3143335925185262946" name="testNodeBefore" index="25YQCW" />
+        <child id="3143335925185262981" name="testNodeResult" index="25YQFr" />
+        <child id="1229187755283" name="code" index="LjaKd" />
+      </concept>
+      <concept id="1229194968594" name="jetbrains.mps.lang.test.structure.AnonymousCellAnnotation" flags="ng" index="LIFWc">
+        <property id="6268941039745498163" name="selectionStart" index="p6zMq" />
+        <property id="6268941039745498165" name="selectionEnd" index="p6zMs" />
+        <property id="1229194968595" name="cellId" index="LIFWd" />
+        <property id="1932269937152561478" name="useLabelSelection" index="OXtK3" />
+        <property id="1229432188737" name="isLastPosition" index="ZRATv" />
+      </concept>
+      <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
+        <property id="1227184461946" name="keys" index="2TTd_B" />
+      </concept>
       <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
         <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
       </concept>
       <concept id="6626913010124185481" name="jetbrains.mps.lang.test.structure.MigrationReference" flags="ng" index="3ea_Bc">
         <reference id="6626913010124185482" name="migration" index="3ea_Bf" />
       </concept>
+      <concept id="1225467090849" name="jetbrains.mps.lang.test.structure.ProjectExpression" flags="nn" index="1jxXqW" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <child id="1217501822150" name="nodesToCheck" index="1SKRRt" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
@@ -53,6 +69,9 @@
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123135" name="body" index="3clF47" />
+      </concept>
+      <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
+        <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
       <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
@@ -524,6 +543,50 @@
   </node>
   <node concept="2XOHcx" id="6IYCYtgaunl">
     <property role="2XOHcw" value="${mps_home}" />
+  </node>
+  <node concept="LiM7Y" id="VLMLLsYLiG">
+    <property role="TrG5h" value="ProjectExpressionIsThere" />
+    <node concept="1qefOq" id="VLMLLsYLiH" role="25YQCW">
+      <node concept="1lH9Xt" id="VLMLLsYLiO" role="1qenE9">
+        <node concept="1LZb2c" id="VLMLLsYLj0" role="1SL9yI">
+          <node concept="3cqZAl" id="VLMLLsYLj1" role="3clF45" />
+          <node concept="3clFbS" id="VLMLLsYLj5" role="3clF47">
+            <node concept="LIFWc" id="VLMLLsZ1Cs" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="Constant_u338ov_a0a" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="VLMLLsYLiR" role="25YQFr">
+      <node concept="1lH9Xt" id="VLMLLsYLiQ" role="1qenE9">
+        <node concept="1LZb2c" id="VLMLLsZ1Cu" role="1SL9yI">
+          <node concept="3cqZAl" id="VLMLLsZ1Cv" role="3clF45" />
+          <node concept="3clFbS" id="VLMLLsZ1Cw" role="3clF47">
+            <node concept="3clFbF" id="VLMLLsZ1CB" role="3cqZAp">
+              <node concept="1jxXqW" id="VLMLLsZ1CA" role="3clFbG">
+                <node concept="LIFWc" id="VLMLLsZ1G6" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="7" />
+                  <property role="p6zMs" value="7" />
+                  <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="VLMLLsZ1Gc" role="LjaKd">
+      <node concept="2TK7Tu" id="VLMLLsZ1Gb" role="3cqZAp">
+        <property role="2TTd_B" value="project" />
+      </node>
+    </node>
   </node>
 </model>
 

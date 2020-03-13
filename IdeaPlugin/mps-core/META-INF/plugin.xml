@@ -24,7 +24,7 @@
   <idea-version since-build="201.1" until-build="202.1"/>
 
   <depends optional="true" config-file="idea-support.xml">com.intellij.modules.java</depends>
-  <depends optional="true" config-file="intellij-ides-support.xml">com.intellij.modules.ultimate</depends>
+  <depends optional="true" config-file="intellij-ides-support.xml">com.intellij.modules.platform</depends>
 
   <application-components>
     <component>

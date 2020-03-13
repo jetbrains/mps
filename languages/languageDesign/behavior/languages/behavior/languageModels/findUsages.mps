@@ -5,8 +5,8 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages" version="-1" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -466,22 +466,61 @@
                   </node>
                 </node>
               </node>
+              <node concept="3cpWs8" id="66cnolf9qhv" role="3cqZAp">
+                <node concept="3cpWsn" id="66cnolf9qhw" role="3cpWs9">
+                  <property role="TrG5h" value="cncptModel" />
+                  <node concept="3uibUv" id="66cnolf9peZ" role="1tU5fm">
+                    <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+                  </node>
+                  <node concept="2JrnkZ" id="66cnolf9qhx" role="33vP2m">
+                    <node concept="2OqwBi" id="66cnolf9qhy" role="2JrQYb">
+                      <node concept="37vLTw" id="66cnolf9qhz" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1ofoPOHO3iB" resolve="ancestorConcept" />
+                      </node>
+                      <node concept="I4A8Y" id="66cnolf9qh$" role="2OqNvi" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbJ" id="66cnolf9rg1" role="3cqZAp">
+                <node concept="3clFbS" id="66cnolf9rg3" role="3clFbx">
+                  <node concept="RRSsy" id="66cnolf9sik" role="3cqZAp">
+                    <property role="RRSoG" value="gZ5fh_4/error" />
+                    <node concept="3cpWs3" id="66cnolf9sil" role="RRSoy">
+                      <node concept="Xl_RD" id="66cnolf9sim" role="3uHU7w">
+                        <property role="Xl_RC" value="'" />
+                      </node>
+                      <node concept="3cpWs3" id="66cnolf9sin" role="3uHU7B">
+                        <node concept="Xl_RD" id="66cnolf9sio" role="3uHU7B">
+                          <property role="Xl_RC" value="Could not found the ancestorConcept model while looking for the ancestors for the concept '" />
+                        </node>
+                        <node concept="37vLTw" id="66cnolf9sip" role="3uHU7w">
+                          <ref role="3cqZAo" node="1ofoPOHO3iB" resolve="ancestorConcept" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3cpWs6" id="66cnolf9siq" role="3cqZAp" />
+                  <node concept="3clFbH" id="66cnolf9rg2" role="3cqZAp" />
+                </node>
+                <node concept="3clFbC" id="66cnolf9s85" role="3clFbw">
+                  <node concept="10Nm6u" id="66cnolf9s8f" role="3uHU7w" />
+                  <node concept="37vLTw" id="66cnolf9roZ" role="3uHU7B">
+                    <ref role="3cqZAo" node="66cnolf9qhw" resolve="cncptModel" />
+                  </node>
+                </node>
+              </node>
               <node concept="3cpWs8" id="74j1j8ZLwhG" role="3cqZAp">
                 <node concept="3cpWsn" id="74j1j8ZLwhH" role="3cpWs9">
                   <property role="TrG5h" value="aspectModel" />
                   <node concept="1qvjxa" id="qmfyRQNqY5" role="33vP2m">
                     <ref role="1quiSB" to="mg3u:2LiUEk8oQ$g" resolve="behavior" />
                     <node concept="2OqwBi" id="172ROKPCuF8" role="1qvjxb">
+                      <node concept="37vLTw" id="66cnolf9qh_" role="2Oq$k0">
+                        <ref role="3cqZAo" node="66cnolf9qhw" resolve="cncptModel" />
+                      </node>
                       <node concept="liA8E" id="172ROKPCvmp" role="2OqNvi">
                         <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                      </node>
-                      <node concept="2JrnkZ" id="172ROKPCuFh" role="2Oq$k0">
-                        <node concept="2OqwBi" id="172ROKP_Jxj" role="2JrQYb">
-                          <node concept="37vLTw" id="1ofoPOHOilK" role="2Oq$k0">
-                            <ref role="3cqZAo" node="1ofoPOHO3iB" resolve="ancestorConcept" />
-                          </node>
-                          <node concept="I4A8Y" id="172ROKP_Keu" role="2OqNvi" />
-                        </node>
                       </node>
                     </node>
                   </node>

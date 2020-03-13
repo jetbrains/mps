@@ -25,14 +25,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public final class MakeBLMethodAbstract_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+public final class ToggleBLMethodAbstract_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
-  public MakeBLMethodAbstract_Intention() {
+  public ToggleBLMethodAbstract_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1236187435379"));
   }
   @Override
   public String getPresentation() {
-    return "MakeBLMethodAbstract";
+    return "ToggleBLMethodAbstract";
   }
   @Override
   public boolean isApplicable(final SNode node, final EditorContext editorContext) {
@@ -73,7 +73,8 @@ public final class MakeBLMethodAbstract_Intention extends AbstractIntentionDescr
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.isAbstract$cU_H) ? "Make Method Not Abstract" : "Make Method Abstract");
+      String methodName = SPropertyOperations.getString(node, PROPS.name$tAp1);
+      return (SPropertyOperations.getBoolean(node, PROPS.isAbstract$cU_H) ? "Make '" + methodName + "' Not Abstract" : "Make '" + methodName + "' Abstract");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
@@ -83,7 +84,7 @@ public final class MakeBLMethodAbstract_Intention extends AbstractIntentionDescr
     }
     @Override
     public IntentionDescriptor getDescriptor() {
-      return MakeBLMethodAbstract_Intention.this;
+      return ToggleBLMethodAbstract_Intention.this;
     }
   }
 
@@ -99,6 +100,7 @@ public final class MakeBLMethodAbstract_Intention extends AbstractIntentionDescr
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty name$tAp1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty isAbstract$cU_H = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
     /*package*/ static final SProperty isFinal$I$Qu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }

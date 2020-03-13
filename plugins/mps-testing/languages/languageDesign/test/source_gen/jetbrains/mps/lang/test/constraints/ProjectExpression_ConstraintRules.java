@@ -46,7 +46,7 @@ public final class ProjectExpression_ConstraintRules extends BaseRulesConstraint
       if (!(isDefined(context))) {
         return null;
       }
-      return (SNode) SNodeOperations.getNodeAncestor(context.getChildNode(), CONCEPTS.ITestable$$d, false, false);
+      return (SNode) SNodeOperations.getNodeAncestor(context.getParentNode(), CONCEPTS.ITestable$$d, true, false);
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {

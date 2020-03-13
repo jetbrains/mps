@@ -8,7 +8,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="tp5g" ref="r:00000000-0000-4000-0000-011c89590388(jetbrains.mps.lang.test.structure)" />
@@ -2525,7 +2525,7 @@
         <node concept="2GUZhq" id="1l3HexGi0xp" role="3cqZAp">
           <node concept="3clFbS" id="1l3HexGi0xr" role="2GV8ay">
             <node concept="3clFbF" id="4cFHg$8nt7N" role="3cqZAp">
-              <node concept="1rXfSq" id="ORe5oE8eTX" role="3clFbG">
+              <node concept="1rXfSq" id="VLMLLsYlU8" role="3clFbG">
                 <ref role="37wK5l" node="4cFHg$8nt7E" resolve="testMethodImpl" />
               </node>
             </node>

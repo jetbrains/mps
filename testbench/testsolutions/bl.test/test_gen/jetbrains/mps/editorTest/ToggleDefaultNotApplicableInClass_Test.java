@@ -9,18 +9,19 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
+import junit.framework.Assert;
 
 @MPSLaunch
-public class NoStaticInInterface_Test extends BaseTransformationTest {
+public class ToggleDefaultNotApplicableInClass_Test extends BaseTransformationTest {
   @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(NoStaticInInterface_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
+  public static final TestParametersCache ourParamCache = new TestParametersCache(ToggleDefaultNotApplicableInClass_Test.class, "${mps_home}", "r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)", false);
 
-  public NoStaticInInterface_Test() {
+  public ToggleDefaultNotApplicableInClass_Test() {
     super(ourParamCache);
   }
 
   @Test
-  public void test_NoStaticInInterface() throws Throwable {
+  public void test_ToggleDefaultNotApplicableInClass() throws Throwable {
     new TestBody(this).testMethod();
   }
 
@@ -32,8 +33,9 @@ public class NoStaticInInterface_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4615554537706953399", "4615554537706953406");
-      typeString("static");
+      initEditorComponent("1076865108603933438", "1076865108603933451");
+      Assert.assertFalse(isIntentionApplicable("jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention", myStart.getNode()));
+
     }
   }
 }

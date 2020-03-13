@@ -2,16 +2,16 @@
 <model ref="r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
-    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
-    <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="1" />
-    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
-    <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
+    <use id="d7a92d38-f7db-40d0-8431-763b0c3c9f20" name="jetbrains.mps.lang.intentions" version="-1" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
+    <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -655,23 +655,55 @@
     </node>
   </node>
   <node concept="2S6QgY" id="43oQEeUENTT">
-    <property role="TrG5h" value="MakeAbstract" />
+    <property role="TrG5h" value="ToggleConceptAbstract" />
     <ref role="2ZfgGC" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
     <node concept="2S6ZIM" id="43oQEeUENTV" role="2ZfVej">
       <node concept="3clFbS" id="43oQEeUENTW" role="2VODD2">
+        <node concept="3cpWs8" id="VLMLLt44pm" role="3cqZAp">
+          <node concept="3cpWsn" id="VLMLLt44pp" role="3cpWs9">
+            <property role="TrG5h" value="conceptName" />
+            <node concept="17QB3L" id="VLMLLt44pk" role="1tU5fm" />
+            <node concept="2OqwBi" id="VLMLLt44H2" role="33vP2m">
+              <node concept="2Sf5sV" id="VLMLLt44qG" role="2Oq$k0" />
+              <node concept="3TrcHB" id="VLMLLt452g" role="2OqNvi">
+                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="43oQEeUEPCA" role="3cqZAp">
           <node concept="3K4zz7" id="43oQEeUEPCB" role="3clFbG">
+            <node concept="3cpWs3" id="VLMLLt45ck" role="3K4GZi">
+              <node concept="3cpWs3" id="VLMLLt45cl" role="3uHU7B">
+                <node concept="37vLTw" id="VLMLLt45cm" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt44pp" resolve="conceptName" />
+                </node>
+                <node concept="Xl_RD" id="VLMLLt45cn" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="VLMLLt45co" role="3uHU7w">
+                <property role="Xl_RC" value="' Abstract" />
+              </node>
+            </node>
+            <node concept="3cpWs3" id="VLMLLt2ScA" role="3K4E3e">
+              <node concept="3cpWs3" id="VLMLLt2SN2" role="3uHU7B">
+                <node concept="37vLTw" id="VLMLLt45aU" role="3uHU7w">
+                  <ref role="3cqZAo" node="VLMLLt44pp" resolve="conceptName" />
+                </node>
+                <node concept="Xl_RD" id="VLMLLt2ScG" role="3uHU7B">
+                  <property role="Xl_RC" value="Make '" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="VLMLLt2ScI" role="3uHU7w">
+                <property role="Xl_RC" value="' Not Abstract" />
+              </node>
+            </node>
             <node concept="2OqwBi" id="43oQEeUEPCC" role="3K4Cdx">
               <node concept="3TrcHB" id="43oQEeUEQeo" role="2OqNvi">
                 <ref role="3TsBF5" to="tpce:40UcGlRb7V2" resolve="abstract" />
               </node>
               <node concept="2Sf5sV" id="43oQEeUEPCD" role="2Oq$k0" />
-            </node>
-            <node concept="Xl_RD" id="43oQEeUEPCF" role="3K4E3e">
-              <property role="Xl_RC" value="Make Not Abstract" />
-            </node>
-            <node concept="Xl_RD" id="43oQEeUEPCG" role="3K4GZi">
-              <property role="Xl_RC" value="Make Abstract" />
             </node>
           </node>
         </node>

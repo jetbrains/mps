@@ -76,7 +76,7 @@ public final class ToggleMethodFinal_Intention extends AbstractIntentionDescript
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String methodName = SPropertyOperations.getString(node, PROPS.name$tAp1);
-      return (SPropertyOperations.getBoolean(node, PROPS.isFinal$I$Qu) ? "Make '" + methodName + "' not final" : "Make '" + methodName + "' final");
+      return (SPropertyOperations.getBoolean(node, PROPS.isFinal$I$Qu) ? "Make '" + methodName + "' Not Final" : "Make '" + methodName + "' Final");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

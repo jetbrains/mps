@@ -20,6 +20,8 @@ import com.intellij.ide.util.gotoByName.ChooseByNamePopupComponent.Callback;
 import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.util.Computable;
+import com.intellij.openapi.util.NotNullComputable;
+import com.intellij.openapi.util.NotNullLazyValue;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.smodel.Language;
@@ -45,6 +47,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -148,7 +151,7 @@ public final class LanguageImportHelper {
    * @param model affected model, the one to get another language to use
    */
   public void addUsedLanguage(@NotNull final SModel model) {
-    addUsedLanguage(() -> model, sModuleReference -> getAllModelLanguagesAndDevkits((SModelInternal) model).contains(sModuleReference));
+    addUsedLanguage(NotNullLazyValue.createConstantValue(model), sModuleReference -> getAllModelLanguagesAndDevkits((SModelInternal) model).contains(sModuleReference));
   }
 
   /**
@@ -156,20 +159,23 @@ public final class LanguageImportHelper {
    *
    * @param modelProvider either provides existing model or creates i on demand
    */
-  public void addUsedLanguage(@NotNull final Computable<SModel> modelProvider, final Predicate<SModuleReference> modules2Ignore) {
+  public void addUsedLanguage(@NotNull NotNullLazyValue<SModel> modelProvider, final Predicate<SModuleReference> modules2Ignore) {
     chooseLanguage((SModuleReference param) -> {
       myProject.getModelAccess().executeCommand(() -> {
         final SModule module = param.resolve(myProject.getRepository());
 
-        final SModelInternal modelInternal = (SModelInternal) modelProvider.compute();
+        final SModelInternal modelInternal = (SModelInternal) modelProvider.getValue();
         if (module instanceof Language) {
           modelInternal.addLanguage(MetaAdapterFactory.getLanguage(param));
         } else if (module instanceof DevKit) {
           modelInternal.addDevKit(param);
         }
 
-        if (module instanceof ReloadableModule) {
-          ((ReloadableModule) module).reload();
+        if (modelProvider.getValue() != null) {
+          SModule moduleThatUses = modelProvider.getValue().getModule();
+          if (moduleThatUses instanceof ReloadableModule) {
+            ((ReloadableModule) moduleThatUses).reload();
+          }
         }
       });
     }, modules2Ignore);
