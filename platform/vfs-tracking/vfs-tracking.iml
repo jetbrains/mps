@@ -2,7 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/../../platform/smodel-fs/classes" />
-    <output-test url="file://$MODULE_DIR$/../../platform/smodel-fs/classes" />
+    <output-test url="file://$MODULE_DIR$/../../platform/vfs-tracking/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../platform/vfs-tracking">
       <sourceFolder url="file://$MODULE_DIR$/../../platform/vfs-tracking/source" isTestSource="false" />
