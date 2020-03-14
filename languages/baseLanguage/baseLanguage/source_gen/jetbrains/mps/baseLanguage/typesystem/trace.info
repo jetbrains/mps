@@ -18025,86 +18025,78 @@
       </scope>
     </file>
     <file name="check_switchArgument_NonTypesystemRule.java">
-      <node id="3306910260423134464" at="29,128,30,82" concept="12" />
-      <node id="3306910260423168145" at="31,22,32,13" concept="13" />
-      <node id="3306910260423168183" at="33,5,34,71" concept="12" />
-      <node id="9035995549588681125" at="37,9,38,68" concept="12" />
-      <node id="9035995549588681125" at="38,68,39,279" concept="12" />
-      <node id="9035995549588681129" at="41,7,42,13" concept="13" />
-      <node id="3306910260423168219" at="45,391,46,15" concept="13" />
-      <node id="4125795553993934562" at="50,201,51,15" concept="13" />
-      <node id="5385972835767721874" at="52,7,53,0" concept="15" />
-      <node id="8258888512022685548" at="55,72,56,13" concept="13" />
-      <node id="3306910260423168223" at="58,5,59,64" concept="12" />
-      <node id="3306910260423168223" at="59,64,60,258" concept="12" />
-      <node id="3306910260423123726" at="63,50,64,39" concept="13" />
-      <node id="3306910260423123726" at="66,68,67,102" concept="13" />
-      <node id="3306910260423123726" at="69,30,70,17" concept="13" />
-      <node id="3306910260423123726" at="74,0,75,0" concept="16" trace="expression$z0sO" />
-      <node id="3306910260423123726" at="75,0,76,0" concept="16" trace="classifier$pQ_R" />
-      <node id="3306910260423123726" at="79,0,80,0" concept="16" trace="IntegerType$Eo" />
-      <node id="3306910260423123726" at="80,0,81,0" concept="16" trace="CharType$j4" />
-      <node id="3306910260423123726" at="81,0,82,0" concept="16" trace="ByteType$lE" />
-      <node id="3306910260423123726" at="82,0,83,0" concept="16" trace="ShortType$YA" />
-      <node id="3306910260423123726" at="83,0,84,0" concept="16" trace="PrimitiveType$5" />
-      <node id="3306910260423123726" at="84,0,85,0" concept="16" trace="ClassifierType$IZ" />
-      <node id="3306910260423123726" at="85,0,86,0" concept="16" trace="EnumClass$uy" />
-      <node id="3306910260423123726" at="86,0,87,0" concept="16" trace="IWillBeClassifier$sr" />
-      <node id="3306910260423123726" at="87,0,88,0" concept="16" trace="StringType$2b" />
-      <node id="3306910260423123726" at="88,0,89,0" concept="16" trace="SwitchStatement$S1" />
-      <node id="3306910260423123726" at="27,0,29,0" concept="3" trace="check_switchArgument_NonTypesystemRule#()V" />
-      <node id="3306910260423168136" at="30,82,33,5" concept="10" />
-      <node id="3306910260423168201" at="44,76,47,7" concept="10" />
-      <node id="4125795553993934538" at="49,79,52,7" concept="10" />
-      <node id="8258888512022682809" at="54,5,57,5" concept="10" />
-      <node id="3306910260423123726" at="63,0,66,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="3306910260423123726" at="66,0,69,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="3306910260423123726" at="69,0,72,0" concept="11" trace="overrides#()Z" />
-      <node id="9035995549588681125" at="36,270,40,9" concept="1" />
-      <node id="3306910260423168223" at="57,5,61,5" concept="1" />
-      <node id="3306910260423168166" at="43,5,48,5" concept="10" />
-      <node id="9035995549588681087" at="35,74,41,7" concept="10" />
-      <node id="4125795553993934526" at="48,5,54,5" concept="10" />
-      <node id="3306910260423168147" at="34,71,43,5" concept="10" />
-      <node id="3306910260423123726" at="29,0,63,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="3306910260423123726" at="27,51,27,51" />
-      <scope id="3306910260423168137" at="31,22,32,13" />
-      <scope id="3306910260423168203" at="45,391,46,15" />
-      <scope id="4125795553993934539" at="50,201,51,15" />
-      <scope id="8258888512022682811" at="55,72,56,13" />
-      <scope id="3306910260423123726" at="63,50,64,39" />
-      <scope id="3306910260423123726" at="66,68,67,102" />
-      <scope id="3306910260423123726" at="69,30,70,17" />
-      <scope id="3306910260423123726" at="27,0,29,0" />
-      <scope id="9035995549588681125" at="37,9,39,279">
-        <var name="_reporter_2309309498" id="9035995549588681125" />
-        <var name="errorTarget" id="9035995549588681125" />
-      </scope>
-      <scope id="3306910260423168223" at="58,5,60,258">
+      <node id="3306910260423134464" at="28,128,29,82" concept="12" />
+      <node id="3306910260423168145" at="30,22,31,13" concept="13" />
+      <node id="3306910260423168183" at="32,5,33,71" concept="12" />
+      <node id="9035995549588681129" at="35,265,36,15" concept="13" />
+      <node id="3306910260423168219" at="40,1184,41,15" concept="13" />
+      <node id="4125795553993934562" at="45,201,46,15" concept="13" />
+      <node id="8258888512022685548" at="49,72,50,13" concept="13" />
+      <node id="3306910260423168223" at="52,5,53,64" concept="12" />
+      <node id="3306910260423168223" at="53,64,54,286" concept="12" />
+      <node id="3306910260423123726" at="57,50,58,39" concept="13" />
+      <node id="3306910260423123726" at="60,68,61,102" concept="13" />
+      <node id="3306910260423123726" at="63,30,64,17" concept="13" />
+      <node id="3306910260423123726" at="68,0,69,0" concept="16" trace="expression$z0sO" />
+      <node id="3306910260423123726" at="69,0,70,0" concept="16" trace="classifier$pQ_R" />
+      <node id="3306910260423123726" at="73,0,74,0" concept="16" trace="IntegerType$Eo" />
+      <node id="3306910260423123726" at="74,0,75,0" concept="16" trace="CharType$j4" />
+      <node id="3306910260423123726" at="75,0,76,0" concept="16" trace="ByteType$lE" />
+      <node id="3306910260423123726" at="76,0,77,0" concept="16" trace="ShortType$YA" />
+      <node id="3306910260423123726" at="77,0,78,0" concept="16" trace="PrimitiveType$5" />
+      <node id="3306910260423123726" at="78,0,79,0" concept="16" trace="ClassifierType$IZ" />
+      <node id="3306910260423123726" at="79,0,80,0" concept="16" trace="EnumClass$uy" />
+      <node id="3306910260423123726" at="80,0,81,0" concept="16" trace="IWillBeClassifier$sr" />
+      <node id="3306910260423123726" at="81,0,82,0" concept="16" trace="StringType$2b" />
+      <node id="3306910260423123726" at="82,0,83,0" concept="16" trace="SwitchStatement$S1" />
+      <node id="3306910260423123726" at="26,0,28,0" concept="3" trace="check_switchArgument_NonTypesystemRule#()V" />
+      <node id="3306910260423168136" at="29,82,32,5" concept="10" />
+      <node id="9035995549588681087" at="34,74,37,7" concept="10" />
+      <node id="3306910260423168201" at="39,76,42,7" concept="10" />
+      <node id="4125795553993934538" at="44,79,47,7" concept="10" />
+      <node id="8258888512022682809" at="48,5,51,5" concept="10" />
+      <node id="3306910260423123726" at="57,0,60,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="3306910260423123726" at="60,0,63,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="3306910260423123726" at="63,0,66,0" concept="11" trace="overrides#()Z" />
+      <node id="3306910260423168223" at="51,5,55,5" concept="1" />
+      <node id="3306910260423168147" at="33,71,38,5" concept="10" />
+      <node id="3306910260423168166" at="38,5,43,5" concept="10" />
+      <node id="4125795553993934526" at="43,5,48,5" concept="10" />
+      <node id="3306910260423123726" at="28,0,57,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="3306910260423123726" at="26,51,26,51" />
+      <scope id="3306910260423168137" at="30,22,31,13" />
+      <scope id="9035995549588681124" at="35,265,36,15" />
+      <scope id="3306910260423168203" at="40,1184,41,15" />
+      <scope id="4125795553993934539" at="45,201,46,15" />
+      <scope id="8258888512022682811" at="49,72,50,13" />
+      <scope id="3306910260423123726" at="57,50,58,39" />
+      <scope id="3306910260423123726" at="60,68,61,102" />
+      <scope id="3306910260423123726" at="63,30,64,17" />
+      <scope id="3306910260423123726" at="26,0,28,0" />
+      <scope id="3306910260423168223" at="52,5,54,286">
         <var name="_reporter_2309309498" id="3306910260423168223" />
         <var name="errorTarget" id="3306910260423168223" />
       </scope>
-      <scope id="3306910260423168167" at="44,76,47,7" />
-      <scope id="3306910260423123726" at="63,0,66,0" />
-      <scope id="3306910260423123726" at="66,0,69,0">
+      <scope id="3306910260423168148" at="34,74,37,7" />
+      <scope id="3306910260423168167" at="39,76,42,7" />
+      <scope id="4125795553993934527" at="44,79,47,7" />
+      <scope id="3306910260423123726" at="57,0,60,0" />
+      <scope id="3306910260423123726" at="60,0,63,0">
         <var name="argument" id="3306910260423123726" />
       </scope>
-      <scope id="3306910260423123726" at="69,0,72,0" />
-      <scope id="9035995549588681124" at="36,270,40,9" />
-      <scope id="4125795553993934527" at="49,79,53,0" />
-      <scope id="3306910260423168148" at="35,74,42,13" />
-      <scope id="3306910260423123727" at="29,128,61,5">
+      <scope id="3306910260423123726" at="63,0,66,0" />
+      <scope id="3306910260423123727" at="28,128,55,5">
         <var name="arg" id="3306910260423134465" />
         <var name="argType" id="3306910260423168184" />
       </scope>
-      <scope id="3306910260423123726" at="29,0,63,0">
+      <scope id="3306910260423123726" at="28,0,57,0">
         <var name="status" id="3306910260423123726" />
         <var name="switchStatement" id="3306910260423123726" />
         <var name="typeCheckingContext" id="3306910260423123726" />
       </scope>
-      <unit id="3306910260423123726" at="73,0,77,0" name="jetbrains.mps.baseLanguage.typesystem.check_switchArgument_NonTypesystemRule$LINKS" />
-      <unit id="3306910260423123726" at="78,0,90,0" name="jetbrains.mps.baseLanguage.typesystem.check_switchArgument_NonTypesystemRule$CONCEPTS" />
-      <unit id="3306910260423123726" at="26,0,91,0" name="jetbrains.mps.baseLanguage.typesystem.check_switchArgument_NonTypesystemRule" />
+      <unit id="3306910260423123726" at="67,0,71,0" name="jetbrains.mps.baseLanguage.typesystem.check_switchArgument_NonTypesystemRule$LINKS" />
+      <unit id="3306910260423123726" at="72,0,84,0" name="jetbrains.mps.baseLanguage.typesystem.check_switchArgument_NonTypesystemRule$CONCEPTS" />
+      <unit id="3306910260423123726" at="25,0,85,0" name="jetbrains.mps.baseLanguage.typesystem.check_switchArgument_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/3383150178652161638">

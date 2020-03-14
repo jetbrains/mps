@@ -10,12 +10,11 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.baseLanguage.behavior.IWillBeClassifier__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
-import java.util.Objects;
-import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.baseLanguage.behavior.IWillBeClassifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,16 +32,12 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
     }
     SNode argType = TypecheckingFacade.getFromContext().getTypeOf(arg);
     if (SNodeOperations.isInstanceOf(argType, CONCEPTS.PrimitiveType$5)) {
-      if (!((SNodeOperations.isInstanceOf(argType, CONCEPTS.IntegerType$Eo) || SNodeOperations.isInstanceOf(argType, CONCEPTS.CharType$j4) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ByteType$lE) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ShortType$YA)))) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Primitive argument of switch should be byte, short, char or int", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "9035995549588681125", null, errorTarget);
-        }
+      if (SNodeOperations.isInstanceOf(argType, CONCEPTS.IntegerType$Eo) || SNodeOperations.isInstanceOf(argType, CONCEPTS.CharType$j4) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ByteType$lE) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ShortType$YA)) {
+        return;
       }
-      return;
     }
     if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ClassifierType$IZ)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), CONCEPTS.EnumClass$uy) || Objects.equals(SLinkOperations.getPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R), CONCEPTS.EnumClass$uy) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Integer")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Character")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Byte")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$pQ_R, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Short"))) {
         return;
       }
     }
@@ -50,14 +45,13 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
       if (SNodeOperations.isInstanceOf(IWillBeClassifier__BehaviorDescriptor.baseClassifier_id3_1Lj9FFNJ0.invoke(SNodeOperations.cast(argType, CONCEPTS.IWillBeClassifier$sr)), CONCEPTS.EnumClass$uy)) {
         return;
       }
-
     }
     if (SNodeOperations.isInstanceOf(argType, CONCEPTS.StringType$2b)) {
       return;
     }
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Argument of switch should be enum of primitive", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3306910260423168223", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(arg, "Argument of switch should have type char, byte, short, int, String or Enum", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3306910260423168223", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
