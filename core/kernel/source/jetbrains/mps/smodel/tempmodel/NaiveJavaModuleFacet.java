@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel.tempmodel;
 
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
@@ -58,6 +59,11 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   @Override
   public boolean isCompileInMps() {
     return true;
+  }
+
+  @Override
+  public JavaLanguageLevel getLanguageLevel() {
+    return JavaLanguageLevel.getDefault();
   }
 
   @Nullable

@@ -20,6 +20,7 @@ import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.module.ModuleClassLoaderIsNullException;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
@@ -547,6 +548,11 @@ public class ModulesReloadTest extends ModuleMpsTest {
     @Override
     public boolean isCompileInMps() {
       return myCompileInMps;
+    }
+
+    @Override
+    public JavaLanguageLevel getLanguageLevel() {
+      return JavaLanguageLevel.getDefault();
     }
 
     @Override

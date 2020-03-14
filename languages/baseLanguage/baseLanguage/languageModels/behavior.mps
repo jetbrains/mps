@@ -133,7 +133,7 @@
         <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
+      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryFinallyStatement" flags="nn" index="2GUZhq">
         <child id="1153952416686" name="body" index="2GV8ay" />
         <child id="1153952429843" name="finallyBody" index="2GVbov" />
       </concept>
@@ -10517,7 +10517,7 @@
             <node concept="2OqwBi" id="1IX8Z602GjZ" role="33vP2m">
               <node concept="2ShNRf" id="1IX8Z602Gk0" role="2Oq$k0">
                 <node concept="HV5vD" id="5Zo6BfBytWC" role="2ShVmc">
-                  <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="StubClassifierCorrespondenceHelper" />
+                  <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
                 </node>
               </node>
               <node concept="liA8E" id="1IX8Z602Gk4" role="2OqNvi">
@@ -10538,7 +10538,7 @@
             <node concept="2OqwBi" id="1IX8Z60nQBj" role="33vP2m">
               <node concept="2ShNRf" id="1IX8Z60nQBk" role="2Oq$k0">
                 <node concept="HV5vD" id="5Zo6BfByv46" role="2ShVmc">
-                  <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="StubClassifierCorrespondenceHelper" />
+                  <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
                 </node>
               </node>
               <node concept="liA8E" id="1IX8Z60nQBo" role="2OqNvi">

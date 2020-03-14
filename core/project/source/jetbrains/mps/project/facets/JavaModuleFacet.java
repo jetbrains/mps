@@ -35,6 +35,8 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
   // for "generate" task
   boolean isCompileInMps();
 
+  JavaLanguageLevel getLanguageLevel();
+
   /**
    * @return root folder where generated classes of any module's model reside, or {@code null} if associated module doesn't expect class files to be written.
    *         Note, although generated classes are part of {@linkplain #getClassPath() classpath}, this method is to access design-time location of generated

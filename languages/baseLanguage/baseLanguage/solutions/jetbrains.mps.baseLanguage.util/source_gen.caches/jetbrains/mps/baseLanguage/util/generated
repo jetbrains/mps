@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="3q1ajl3bnh6418mvmu8o6pk7bjm1q8n">
-  <files names="CheckingUtil.java:CodeStyleSettings.java:CodeStyleSettingsRegistry.java:IdentifierConstraintsUtil.java:OverridingMethodsCalculator.java:ReflectionUtil.java:StubClassifierCorrespondenceHelper.java:VariableInitializationUtil.java" />
+<product version="3" modelHash="-cuokubqswuvgh9akf1woh2tdi87l053">
+  <files names="BaseLanguageEnvironmentHelper.java:CheckingUtil.java:CodeStyleSettings.java:CodeStyleSettingsRegistry.java:IdentifierConstraintsUtil.java:OverridingMethodsCalculator.java:ReflectionUtil.java:VariableInitializationUtil.java" />
 </product>
 

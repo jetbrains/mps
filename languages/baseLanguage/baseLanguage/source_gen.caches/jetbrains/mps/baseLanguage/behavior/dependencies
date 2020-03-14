@@ -1498,7 +1498,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.scopes.MethodsScope" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.scopes.Scopes" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />

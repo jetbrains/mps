@@ -18,6 +18,7 @@ package jetbrains.mps.project.structure.modules;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.util.annotation.ToRemove;
@@ -137,6 +138,11 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
    */
   public boolean needsExternalIdeaCompile() {
     return false;
+  }
+
+  @NotNull
+  public JavaLanguageLevel getJavaLanguageLevel() {
+    return JavaLanguageLevel.getDefault();
   }
 
   public void setNeedsExternalIdeaCompile(boolean value) {

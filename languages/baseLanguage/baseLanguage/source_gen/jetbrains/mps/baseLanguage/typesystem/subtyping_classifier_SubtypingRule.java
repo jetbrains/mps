@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.util.StubClassifierCorrespondenceHelper;
+import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -46,7 +46,7 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     if (ListSequence.fromList(supertypes).isEmpty()) {
       ListSequence.fromList(result).addElement(_quotation_createNode_pgdy8e_a0a0a6a1());
     }
-    List<SNode> mirrors = new StubClassifierCorrespondenceHelper().findCompatibleClassifiers(classifier);
+    List<SNode> mirrors = new BaseLanguageEnvironmentHelper().findCompatibleClassifiers(classifier);
     for (SNode mirror : ListSequence.fromList(mirrors)) {
       SNode mirrorType = SNodeOperations.copyNode(clt);
       SLinkOperations.setTarget(mirrorType, LINKS.classifier$pQ_R, mirror);

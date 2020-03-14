@@ -56,6 +56,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
     return myRequestCompileIDEA;
   }
 
+  @Override
   @NotNull
   public JavaLanguageLevel getJavaLanguageLevel() {
     return myJavaLanguageLevel;

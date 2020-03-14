@@ -63,6 +63,13 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     return descriptor != null && descriptor.getCompileInMPS();
   }
 
+  @Override
+  public JavaLanguageLevel getLanguageLevel() {
+    AbstractModule module = getModule();
+    ModuleDescriptor descriptor = module.getModuleDescriptor();
+    return descriptor == null ? JavaLanguageLevel.getDefault() : descriptor.getJavaLanguageLevel();
+  }
+
   @NotNull
   @Override
   public AbstractModule getModule() {

@@ -1723,7 +1723,7 @@
           <node concept="2OqwBi" id="1IX8Z602GjZ" role="33vP2m">
             <node concept="2ShNRf" id="1IX8Z602Gk0" role="2Oq$k0">
               <node concept="HV5vD" id="5Zo6BfByKQY" role="2ShVmc">
-                <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="StubClassifierCorrespondenceHelper" />
+                <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
               </node>
             </node>
             <node concept="liA8E" id="1IX8Z602Gk4" role="2OqNvi">

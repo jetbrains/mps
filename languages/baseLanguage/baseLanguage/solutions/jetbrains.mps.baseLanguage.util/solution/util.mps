@@ -2880,8 +2880,75 @@
     </node>
   </node>
   <node concept="312cEu" id="7$LYU9arBWF">
-    <property role="TrG5h" value="StubClassifierCorrespondenceHelper" />
+    <property role="TrG5h" value="BaseLanguageEnvironmentHelper" />
     <node concept="2tJIrI" id="1WmYFrECnlC" role="jymVt" />
+    <node concept="3clFb_" id="jlPzbWisGb" role="jymVt">
+      <property role="TrG5h" value="getLanguageLevel" />
+      <node concept="3uibUv" id="jlPzbWiweT" role="3clF45">
+        <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+      </node>
+      <node concept="3Tm1VV" id="jlPzbWisGe" role="1B3o_S" />
+      <node concept="3clFbS" id="jlPzbWisGf" role="3clF47">
+        <node concept="3cpWs8" id="7w4_QD1KlYE" role="3cqZAp">
+          <node concept="3cpWsn" id="7w4_QD1KlYF" role="3cpWs9">
+            <property role="TrG5h" value="moduleLevel" />
+            <node concept="3uibUv" id="7w4_QD1KlTt" role="1tU5fm">
+              <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+            </node>
+            <node concept="2EnYce" id="7w4_QD1KlYG" role="33vP2m">
+              <node concept="2EnYce" id="7w4_QD1KlYH" role="2Oq$k0">
+                <node concept="2EnYce" id="7w4_QD1KlYI" role="2Oq$k0">
+                  <node concept="2EnYce" id="7w4_QD1KlYJ" role="2Oq$k0">
+                    <node concept="2JrnkZ" id="7w4_QD1KlYK" role="2Oq$k0">
+                      <node concept="37vLTw" id="7w4_QD1KlYL" role="2JrQYb">
+                        <ref role="3cqZAo" node="jlPzbWiAXK" resolve="contextNode" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="7w4_QD1KlYM" role="2OqNvi">
+                      <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="7w4_QD1KlYN" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="7w4_QD1KlYO" role="2OqNvi">
+                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
+                  <node concept="3VsKOn" id="7w4_QD1KlYP" role="37wK5m">
+                    <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="7w4_QD1KlYQ" role="2OqNvi">
+                <ref role="37wK5l" to="b0pz:~JavaModuleFacet.getLanguageLevel()" resolve="getLanguageLevel" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7w4_QD1Knvx" role="3cqZAp">
+          <node concept="3K4zz7" id="7w4_QD1Ks2o" role="3cqZAk">
+            <node concept="2YIFZM" id="7w4_QD1Kvlj" role="3K4E3e">
+              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.getDefault()" resolve="getDefault" />
+              <ref role="1Pybhc" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+            </node>
+            <node concept="37vLTw" id="7w4_QD1KwSz" role="3K4GZi">
+              <ref role="3cqZAo" node="7w4_QD1KlYF" resolve="moduleLevel" />
+            </node>
+            <node concept="3clFbC" id="7w4_QD1KrFD" role="3K4Cdx">
+              <node concept="10Nm6u" id="7w4_QD1KrG8" role="3uHU7w" />
+              <node concept="37vLTw" id="7w4_QD1KpX$" role="3uHU7B">
+                <ref role="3cqZAo" node="7w4_QD1KlYF" resolve="moduleLevel" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="jlPzbWiAXK" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="jlPzbWiAXJ" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="jlPzbWipeT" role="jymVt" />
     <node concept="3clFb_" id="1WmYFrECoBl" role="jymVt">
       <property role="TrG5h" value="findStubClassifiers" />
       <node concept="37vLTG" id="1WmYFrECpc9" role="3clF46">
