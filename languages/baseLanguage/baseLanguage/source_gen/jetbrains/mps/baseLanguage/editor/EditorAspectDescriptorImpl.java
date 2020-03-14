@@ -720,6 +720,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
       case 11:
         if (true) {
           switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.editor.ClassifierToAlternativeType":
+              return Arrays.asList(new TransformationMenu[]{new ClassifierToAlternativeType()});
             case "jetbrains.mps.baseLanguage.editor.ExtendedClassImplementTransform":
               return Arrays.asList(new TransformationMenu[]{new ExtendedClassImplementTransform()});
             case "jetbrains.mps.baseLanguage.editor.addGenericParameter":

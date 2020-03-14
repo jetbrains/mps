@@ -2262,7 +2262,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.TryWithResourcesStatement:
         if (props_TryWithResourcesStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("TryWithResourcesStatement");
+          cpb.rawPresentation("try with resources");
           props_TryWithResourcesStatement = cpb.create();
         }
         return props_TryWithResourcesStatement;

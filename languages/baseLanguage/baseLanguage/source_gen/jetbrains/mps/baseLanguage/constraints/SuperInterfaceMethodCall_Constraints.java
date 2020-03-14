@@ -29,6 +29,8 @@ import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescri
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -112,7 +114,7 @@ public class SuperInterfaceMethodCall_Constraints extends BaseConstraintsDescrip
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return ConstraintsUtil.isInNonStaticClasssifierContext(parentNode);
+    return new BaseLanguageEnvironmentHelper().getLanguageLevel(node).isAtLeast(JavaLanguageLevel.JAVA_8) && ConstraintsUtil.isInNonStaticClasssifierContext(parentNode);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1227128029536560559");
   private static final SNodePointer breakingNode_bs3nei_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "8287904403586986407");

@@ -37,4 +37,7 @@ public enum JavaLanguageLevel {
   public int getLevel() {
     return myLevel;
   }
+  public boolean isAtLeast(JavaLanguageLevel threshold) {
+    return this.getLevel() >= threshold.getLevel();
+  }
 }

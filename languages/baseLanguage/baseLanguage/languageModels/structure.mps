@@ -4664,6 +4664,7 @@
     <property role="EcuMT" value="5351203823916750322" />
     <property role="TrG5h" value="TryWithResourcesStatement" />
     <property role="3GE5qa" value="control_flow.try_catch" />
+    <property role="34LRSv" value="try with resources" />
     <ref role="1TJDcQ" node="gMGUZlm" resolve="TryFinallyStatement" />
     <node concept="1TJgyj" id="4D3iSq_hhnY" role="1TKVEi">
       <property role="IQ2ns" value="5351203823916750334" />
@@ -4687,6 +4688,7 @@
   <node concept="1TIwiD" id="1vrGgVFsInp">
     <property role="TrG5h" value="SuperInterfaceMethodCall" />
     <property role="EcuMT" value="1719162360409810393" />
+    <property role="3GE5qa" value="classifiers.refs" />
     <ref role="1TJDcQ" node="fBnyPmE" resolve="SuperMethodCall" />
     <node concept="1TJgyj" id="1vrGgVFtizu" role="1TKVEi">
       <property role="20kJfa" value="classifier" />

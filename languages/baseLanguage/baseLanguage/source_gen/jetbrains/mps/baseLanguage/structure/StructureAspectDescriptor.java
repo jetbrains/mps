@@ -3781,6 +3781,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/5351203823916750322");
     b.version(2);
     b.aggregate("resource", 0x4a434b86a54515feL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL).optional(false).ordered(true).multiple(true).origin("5351203823916750334").done();
+    b.alias("try with resources");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForType() {

@@ -15337,6 +15337,7 @@
     </node>
   </node>
   <node concept="WtQ9Q" id="5_deIS4VsfG">
+    <property role="3GE5qa" value="classifiers.refs" />
     <ref role="WuzLi" to="tpee:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
     <node concept="11bSqf" id="5_deIS4VsfH" role="11c4hB">
       <node concept="3clFbS" id="5_deIS4VsfI" role="2VODD2">

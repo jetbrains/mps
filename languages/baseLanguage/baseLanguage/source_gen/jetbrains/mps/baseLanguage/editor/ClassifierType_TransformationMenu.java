@@ -71,6 +71,7 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
       result.add(new TMP_Include_eyzbhi_d0());
       result.add(new TMP_Include_eyzbhi_e0());
       result.add(new TMP_Include_eyzbhi_f0());
+      result.add(new TMP_Include_eyzbhi_g0());
     }
     return result;
   }
@@ -187,6 +188,29 @@ public class ClassifierType_TransformationMenu extends TransformationMenuBase {
       final EditorContext editorContext = _context.getEditorContext();
 
       return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.ClassifierType$IZ, "jetbrains.mps.baseLanguage.editor.classifierTypeInLocalVarRT");
+    }
+
+  }
+  public class TMP_Include_eyzbhi_g0 extends IncludeTransformationMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named transformation menu " + "ClassifierToAlternativeType", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "8276990574885398078")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Nullable
+    @Override
+    protected TransformationMenuLookup getMenuLookup(TransformationMenuContext _context) {
+      final SNode node = _context.getNode();
+      final EditorContext editorContext = _context.getEditorContext();
+
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.ClassifierType$IZ, "jetbrains.mps.baseLanguage.editor.ClassifierToAlternativeType");
     }
 
   }
