@@ -222,7 +222,7 @@
       <concept id="7251340091268481742" name="jetbrains.mps.baseLanguage.structure.IncompleteLeftParen" flags="ng" index="2DeEQE" />
       <concept id="2329139813954029793" name="jetbrains.mps.baseLanguage.structure.IncompleteRightParen" flags="ng" index="ECsMN" />
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
+      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryFinallyStatement" flags="nn" index="2GUZhq">
         <child id="1153952416686" name="body" index="2GV8ay" />
         <child id="1153952429843" name="finallyBody" index="2GVbov" />
         <child id="1164903700860" name="catchClause" index="TEXxN" />
@@ -35125,12 +35125,12 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsRIU" role="2GVbov" />
-            <node concept="LIFWc" id="434bMCwsS4I" role="lGtFl">
+            <node concept="LIFWc" id="5$HBxhc1P60" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
-              <property role="p6zMq" value="1" />
-              <property role="p6zMs" value="1" />
-              <property role="LIFWd" value="Constant_cmnz0s_b0" />
+              <property role="p6zMq" value="3" />
+              <property role="p6zMs" value="3" />
+              <property role="LIFWd" value="Constant_93n6cy_a0" />
             </node>
           </node>
         </node>
@@ -35265,12 +35265,12 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsS6P" role="2GVbov" />
-            <node concept="LIFWc" id="434bMCwsSp3" role="lGtFl">
+            <node concept="LIFWc" id="5$HBxhc1P8g" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
               <property role="p6zMq" value="1" />
               <property role="p6zMs" value="1" />
-              <property role="LIFWd" value="Constant_cmnz0s_d0" />
+              <property role="LIFWd" value="Constant_93n6cy_b0" />
             </node>
           </node>
         </node>
@@ -35356,13 +35356,6 @@
       <node concept="9aQIb" id="434bMCwsT7b" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsT7c" role="9aQI4">
           <node concept="2GUZhq" id="434bMCwsT7d" role="3cqZAp">
-            <node concept="LIFWc" id="14TMHtHYOXV" role="lGtFl">
-              <property role="ZRATv" value="true" />
-              <property role="OXtK3" value="true" />
-              <property role="p6zMq" value="1" />
-              <property role="p6zMs" value="1" />
-              <property role="LIFWd" value="Constant_cmnz0s_b0" />
-            </node>
             <node concept="3clFbS" id="434bMCwsT7e" role="2GV8ay">
               <node concept="3clFbF" id="5zY$kuE3amX" role="3cqZAp">
                 <node concept="2OqwBi" id="5zY$kuE3amY" role="3clFbG">
@@ -35412,6 +35405,13 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsT7k" role="2GVbov" />
+            <node concept="LIFWc" id="5$HBxhc1OOk" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="1" />
+              <property role="p6zMs" value="1" />
+              <property role="LIFWd" value="Constant_93n6cy_d0" />
+            </node>
           </node>
         </node>
       </node>
@@ -35511,7 +35511,7 @@
                 </node>
               </node>
               <node concept="3clFbS" id="434bMCwsTri" role="TDEfX" />
-              <node concept="LIFWc" id="434bMCwsTOh" role="lGtFl">
+              <node concept="LIFWc" id="5$HBxhc1PlC" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="1" />
@@ -35619,12 +35619,12 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsTRN" role="2GVbov" />
-            <node concept="LIFWc" id="434bMCwsU7$" role="lGtFl">
+            <node concept="LIFWc" id="5$HBxhc1Pn_" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
               <property role="p6zMq" value="1" />
               <property role="p6zMs" value="1" />
-              <property role="LIFWd" value="Constant_cmnz0s_d0" />
+              <property role="LIFWd" value="Constant_93n6cy_d0" />
             </node>
           </node>
         </node>
@@ -35683,13 +35683,6 @@
       <node concept="9aQIb" id="434bMCwsUa4" role="1qenE9">
         <node concept="3clFbS" id="434bMCwsUa5" role="9aQI4">
           <node concept="2GUZhq" id="434bMCwsUa6" role="3cqZAp">
-            <node concept="LIFWc" id="14TMHtHZSUW" role="lGtFl">
-              <property role="ZRATv" value="true" />
-              <property role="OXtK3" value="true" />
-              <property role="p6zMq" value="1" />
-              <property role="p6zMs" value="1" />
-              <property role="LIFWd" value="Constant_cmnz0s_b5a" />
-            </node>
             <node concept="TDmWw" id="434bMCwsUa7" role="TEXxN">
               <node concept="3cpWsn" id="434bMCwsUa8" role="TDEfY">
                 <property role="TrG5h" value="e" />
@@ -35716,6 +35709,13 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsUah" role="2GVbov" />
+            <node concept="LIFWc" id="5$HBxhc1Pxu" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="1" />
+              <property role="p6zMs" value="1" />
+              <property role="LIFWd" value="Constant_93n6cy_d5a" />
+            </node>
           </node>
         </node>
       </node>
@@ -35796,12 +35796,12 @@
                 </node>
               </node>
               <node concept="3clFbS" id="434bMCwsVmm" role="TDEfX" />
-              <node concept="LIFWc" id="434bMCwsVZX" role="lGtFl">
+              <node concept="LIFWc" id="5$HBxhc1PNk" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="1" />
                 <property role="p6zMs" value="1" />
-                <property role="LIFWd" value="Constant_5rb7wh_g0" />
+                <property role="LIFWd" value="Constant_5rb7wh_e0" />
               </node>
             </node>
             <node concept="TDmWw" id="434bMCwsVd4" role="TEXxN">
@@ -35931,12 +35931,12 @@
               </node>
             </node>
             <node concept="3clFbS" id="434bMCwsW40" role="2GVbov" />
-            <node concept="LIFWc" id="434bMCwsWzV" role="lGtFl">
+            <node concept="LIFWc" id="5$HBxhc1PNY" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
               <property role="p6zMq" value="1" />
               <property role="p6zMs" value="1" />
-              <property role="LIFWd" value="Constant_cmnz0s_d0" />
+              <property role="LIFWd" value="Constant_93n6cy_d0" />
             </node>
           </node>
         </node>
@@ -66973,12 +66973,12 @@
                 <node concept="3clFbH" id="4ZFm$8TrBBB" role="3cqZAp" />
               </node>
               <node concept="3clFbS" id="4ZFm$8TrBBD" role="2GVbov" />
-              <node concept="LIFWc" id="4ZFm$8TrBOY" role="lGtFl">
+              <node concept="LIFWc" id="5$HBxhbZr3b" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="1" />
                 <property role="p6zMs" value="1" />
-                <property role="LIFWd" value="Constant_cmnz0s_d0" />
+                <property role="LIFWd" value="Constant_93n6cy_d0" />
               </node>
             </node>
           </node>
@@ -67003,12 +67003,12 @@
                 <node concept="3clFbH" id="4ZFm$8TrC5T" role="3cqZAp" />
               </node>
               <node concept="3clFbS" id="4ZFm$8TrC5U" role="2GVbov" />
-              <node concept="LIFWc" id="4ZFm$8TrCn8" role="lGtFl">
+              <node concept="LIFWc" id="5$HBxhbYNLf" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
                 <property role="p6zMq" value="1" />
                 <property role="p6zMs" value="1" />
-                <property role="LIFWd" value="Constant_cmnz0s_d0" />
+                <property role="LIFWd" value="Constant_93n6cy_d0" />
               </node>
             </node>
           </node>
@@ -68581,7 +68581,7 @@
               <node concept="3vwNmj" id="4ZFm$8TrXCI" role="3cqZAp">
                 <node concept="2YIFZM" id="4ZFm$8TrXCJ" role="3vwVQn">
                   <ref role="1Pybhc" to="df4k:~DeletionApproverUtil" resolve="DeletionApproverUtil" />
-                  <ref role="37wK5l" to="df4k:~DeletionApproverUtil.isApprovedForDeletion(jetbrains.mps.openapi.editor.EditorContext,org.jetbrains.mps.openapi.model.SNode)" resolve="isApprovedForDeletion" />
+                  <ref role="37wK5l" to="df4k:~DeletionApproverUtil.isApprovedForDeletion(jetbrains.mps.openapi.editor.EditorContext,org.jetbrains.mps.openapi.model.SNode,java.lang.String)" resolve="isApprovedForDeletion" />
                   <node concept="2OqwBi" id="4ZFm$8TrXCK" role="37wK5m">
                     <node concept="369mXd" id="4ZFm$8TrXCL" role="2Oq$k0" />
                     <node concept="liA8E" id="4ZFm$8TrXCM" role="2OqNvi">
@@ -68593,6 +68593,9 @@
                     <node concept="liA8E" id="4ZFm$8TrXCP" role="2OqNvi">
                       <ref role="37wK5l" to="exr9:~EditorComponent.getSelectedNode()" resolve="getSelectedNode" />
                     </node>
+                  </node>
+                  <node concept="Xl_RD" id="5$HBxhbYQbM" role="37wK5m">
+                    <property role="Xl_RC" value="finally" />
                   </node>
                 </node>
               </node>
@@ -68635,12 +68638,12 @@
                 </node>
               </node>
               <node concept="3clFbS" id="4ZFm$8TrXD7" role="2GVbov" />
-              <node concept="LIFWc" id="4ZFm$8Tws4y" role="lGtFl">
-                <property role="LIFWa" value="3" />
+              <node concept="LIFWc" id="5$HBxhc00HD" role="lGtFl">
+                <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
-                <property role="p6zMq" value="3" />
-                <property role="p6zMs" value="3" />
-                <property role="LIFWd" value="Constant_cmnz0s_a5a" />
+                <property role="p6zMq" value="0" />
+                <property role="p6zMs" value="0" />
+                <property role="LIFWd" value="Constant_93n6cy_a5a" />
               </node>
             </node>
           </node>
@@ -68660,22 +68663,26 @@
           <property role="DiZV1" value="false" />
           <property role="2aFKle" value="false" />
           <node concept="3clFbS" id="4ZFm$8TrXDd" role="3clF47">
-            <node concept="3clFbF" id="4ZFm$8TrXDe" role="3cqZAp">
-              <node concept="2OqwBi" id="4ZFm$8TrXDf" role="3clFbG">
-                <node concept="10M0yZ" id="4ZFm$8TrXDg" role="2Oq$k0">
-                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
-                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
-                </node>
-                <node concept="liA8E" id="4ZFm$8TrXDh" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println()" resolve="println" />
+            <node concept="SfApY" id="5$HBxhbVjF0" role="3cqZAp">
+              <node concept="3clFbS" id="5$HBxhbVjD8" role="SfCbr">
+                <node concept="3clFbF" id="5$HBxhbVjD9" role="3cqZAp">
+                  <node concept="2OqwBi" id="5$HBxhbVjDa" role="3clFbG">
+                    <node concept="10M0yZ" id="5$HBxhbVjDb" role="2Oq$k0">
+                      <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
+                      <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                    </node>
+                    <node concept="liA8E" id="5$HBxhbVjDc" role="2OqNvi">
+                      <ref role="37wK5l" to="guwi:~PrintStream.println()" resolve="println" />
+                    </node>
+                  </node>
                 </node>
               </node>
-              <node concept="LIFWc" id="4ZFm$8TwslW" role="lGtFl">
+              <node concept="LIFWc" id="5$HBxhbVjH$" role="lGtFl">
                 <property role="ZRATv" value="true" />
                 <property role="OXtK3" value="true" />
-                <property role="p6zMq" value="1" />
-                <property role="p6zMs" value="1" />
-                <property role="LIFWd" value="Constant_zedcwq_b0" />
+                <property role="p6zMq" value="0" />
+                <property role="p6zMs" value="0" />
+                <property role="LIFWd" value="Error_k2ibe6_a4a" />
               </node>
             </node>
           </node>
@@ -71526,12 +71533,12 @@
                 </node>
               </node>
               <node concept="3clFbS" id="4ZFm$8TrCA7" role="2GVbov" />
-              <node concept="LIFWc" id="4ZFm$8Twtja" role="lGtFl">
-                <property role="ZRATv" value="true" />
+              <node concept="LIFWc" id="5$HBxhc17LQ" role="lGtFl">
+                <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
-                <property role="p6zMq" value="1" />
-                <property role="p6zMs" value="1" />
-                <property role="LIFWd" value="Constant_cmnz0s_d0" />
+                <property role="p6zMq" value="0" />
+                <property role="p6zMs" value="0" />
+                <property role="LIFWd" value="Constant_93n6cy_a0" />
               </node>
             </node>
           </node>
@@ -71681,12 +71688,12 @@
                 </node>
               </node>
               <node concept="3clFbS" id="4ZFm$8TrX6e" role="2GVbov" />
-              <node concept="LIFWc" id="4ZFm$8Twt9$" role="lGtFl">
-                <property role="LIFWa" value="4" />
+              <node concept="LIFWc" id="5$HBxhc0$_s" role="lGtFl">
+                <property role="LIFWa" value="0" />
                 <property role="OXtK3" value="true" />
-                <property role="p6zMq" value="4" />
-                <property role="p6zMs" value="4" />
-                <property role="LIFWd" value="Constant_cmnz0s_a5a" />
+                <property role="p6zMq" value="0" />
+                <property role="p6zMs" value="0" />
+                <property role="LIFWd" value="Constant_93n6cy_a5a" />
               </node>
             </node>
           </node>
