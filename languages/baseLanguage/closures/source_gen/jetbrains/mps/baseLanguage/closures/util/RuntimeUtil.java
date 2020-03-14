@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.closures.util;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import java.util.Arrays;
 import jetbrains.mps.smodel.SNodePointer;
 import org.apache.log4j.Level;
 
@@ -16,490 +15,490 @@ public class RuntimeUtil {
   private static final Logger LOG = LogManager.getLogger(RuntimeUtil.class);
 
   public static SNodeReference function(String fnsignature) {
-    switch (Arrays.binarySearch(stringSwitchCases_k17xt9_a0a0b, fnsignature)) {
-      case 121:
+    switch (fnsignature) {
+      case "_void_P0_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619079");
-      case 122:
+      case "_void_P0_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619085");
-      case 124:
+      case "_void_P0_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619094");
-      case 125:
+      case "_void_P0_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619106");
-      case 126:
+      case "_void_P0_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619121");
-      case 127:
+      case "_void_P0_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619139");
-      case 128:
+      case "_void_P0_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619160");
-      case 129:
+      case "_void_P0_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619184");
-      case 130:
+      case "_void_P0_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619211");
-      case 131:
+      case "_void_P0_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619241");
-      case 123:
+      case "_void_P0_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619274");
-      case 143:
+      case "_void_P1_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619310");
-      case 144:
+      case "_void_P1_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619319");
-      case 146:
+      case "_void_P1_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619331");
-      case 147:
+      case "_void_P1_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619346");
-      case 148:
+      case "_void_P1_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619364");
-      case 149:
+      case "_void_P1_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619385");
-      case 150:
+      case "_void_P1_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619409");
-      case 151:
+      case "_void_P1_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619436");
-      case 152:
+      case "_void_P1_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619466");
-      case 153:
+      case "_void_P1_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619499");
-      case 145:
+      case "_void_P1_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619535");
-      case 154:
+      case "_void_P2_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619574");
-      case 155:
+      case "_void_P2_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619586");
-      case 157:
+      case "_void_P2_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619601");
-      case 158:
+      case "_void_P2_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619619");
-      case 159:
+      case "_void_P2_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619640");
-      case 160:
+      case "_void_P2_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619664");
-      case 161:
+      case "_void_P2_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619691");
-      case 162:
+      case "_void_P2_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619721");
-      case 163:
+      case "_void_P2_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619754");
-      case 164:
+      case "_void_P2_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619790");
-      case 156:
+      case "_void_P2_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619829");
-      case 165:
+      case "_void_P3_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619871");
-      case 166:
+      case "_void_P3_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619886");
-      case 168:
+      case "_void_P3_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619904");
-      case 169:
+      case "_void_P3_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619925");
-      case 170:
+      case "_void_P3_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619949");
-      case 171:
+      case "_void_P3_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619976");
-      case 172:
+      case "_void_P3_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620006");
-      case 173:
+      case "_void_P3_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620039");
-      case 174:
+      case "_void_P3_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620075");
-      case 175:
+      case "_void_P3_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620114");
-      case 167:
+      case "_void_P3_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620156");
-      case 176:
+      case "_void_P4_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620201");
-      case 177:
+      case "_void_P4_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620219");
-      case 179:
+      case "_void_P4_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620240");
-      case 180:
+      case "_void_P4_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620264");
-      case 181:
+      case "_void_P4_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620291");
-      case 182:
+      case "_void_P4_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620321");
-      case 183:
+      case "_void_P4_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620354");
-      case 184:
+      case "_void_P4_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620390");
-      case 185:
+      case "_void_P4_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620429");
-      case 186:
+      case "_void_P4_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620471");
-      case 178:
+      case "_void_P4_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620516");
-      case 187:
+      case "_void_P5_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620564");
-      case 188:
+      case "_void_P5_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620585");
-      case 190:
+      case "_void_P5_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620609");
-      case 191:
+      case "_void_P5_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620636");
-      case 192:
+      case "_void_P5_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620666");
-      case 193:
+      case "_void_P5_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620699");
-      case 194:
+      case "_void_P5_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620735");
-      case 195:
+      case "_void_P5_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620774");
-      case 196:
+      case "_void_P5_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620816");
-      case 197:
+      case "_void_P5_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620861");
-      case 189:
+      case "_void_P5_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620909");
-      case 198:
+      case "_void_P6_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620960");
-      case 199:
+      case "_void_P6_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402620984");
-      case 201:
+      case "_void_P6_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621011");
-      case 202:
+      case "_void_P6_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621041");
-      case 203:
+      case "_void_P6_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621074");
-      case 204:
+      case "_void_P6_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621110");
-      case 205:
+      case "_void_P6_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621149");
-      case 206:
+      case "_void_P6_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621191");
-      case 207:
+      case "_void_P6_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621236");
-      case 208:
+      case "_void_P6_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621284");
-      case 200:
+      case "_void_P6_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621335");
-      case 209:
+      case "_void_P7_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621389");
-      case 210:
+      case "_void_P7_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621416");
-      case 212:
+      case "_void_P7_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621446");
-      case 213:
+      case "_void_P7_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621479");
-      case 214:
+      case "_void_P7_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621515");
-      case 215:
+      case "_void_P7_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621554");
-      case 216:
+      case "_void_P7_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621596");
-      case 217:
+      case "_void_P7_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621641");
-      case 218:
+      case "_void_P7_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621689");
-      case 219:
+      case "_void_P7_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621740");
-      case 211:
+      case "_void_P7_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621794");
-      case 220:
+      case "_void_P8_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621851");
-      case 221:
+      case "_void_P8_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621881");
-      case 223:
+      case "_void_P8_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621914");
-      case 224:
+      case "_void_P8_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621950");
-      case 225:
+      case "_void_P8_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402621989");
-      case 226:
+      case "_void_P8_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622031");
-      case 227:
+      case "_void_P8_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622076");
-      case 228:
+      case "_void_P8_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622124");
-      case 229:
+      case "_void_P8_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622175");
-      case 230:
+      case "_void_P8_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622229");
-      case 222:
+      case "_void_P8_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622286");
-      case 231:
+      case "_void_P9_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622346");
-      case 232:
+      case "_void_P9_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622379");
-      case 234:
+      case "_void_P9_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622415");
-      case 235:
+      case "_void_P9_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622454");
-      case 236:
+      case "_void_P9_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622496");
-      case 237:
+      case "_void_P9_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622541");
-      case 238:
+      case "_void_P9_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622589");
-      case 239:
+      case "_void_P9_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622640");
-      case 240:
+      case "_void_P9_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622694");
-      case 241:
+      case "_void_P9_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622751");
-      case 233:
+      case "_void_P9_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622811");
-      case 132:
+      case "_void_P10_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622874");
-      case 133:
+      case "_void_P10_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622910");
-      case 135:
+      case "_void_P10_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622949");
-      case 136:
+      case "_void_P10_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402622991");
-      case 137:
+      case "_void_P10_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623036");
-      case 138:
+      case "_void_P10_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623084");
-      case 139:
+      case "_void_P10_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623135");
-      case 140:
+      case "_void_P10_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623189");
-      case 141:
+      case "_void_P10_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623246");
-      case 142:
+      case "_void_P10_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623306");
-      case 134:
+      case "_void_P10_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623369");
-      case 0:
+      case "_return_P0_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623435");
-      case 1:
+      case "_return_P0_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623442");
-      case 3:
+      case "_return_P0_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623452");
-      case 4:
+      case "_return_P0_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623465");
-      case 5:
+      case "_return_P0_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623481");
-      case 6:
+      case "_return_P0_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623500");
-      case 7:
+      case "_return_P0_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623522");
-      case 8:
+      case "_return_P0_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623547");
-      case 9:
+      case "_return_P0_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623575");
-      case 10:
+      case "_return_P0_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623606");
-      case 2:
+      case "_return_P0_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623640");
-      case 22:
+      case "_return_P1_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623677");
-      case 23:
+      case "_return_P1_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623687");
-      case 25:
+      case "_return_P1_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623700");
-      case 26:
+      case "_return_P1_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623716");
-      case 27:
+      case "_return_P1_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623735");
-      case 28:
+      case "_return_P1_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623757");
-      case 29:
+      case "_return_P1_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623782");
-      case 30:
+      case "_return_P1_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623810");
-      case 31:
+      case "_return_P1_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623841");
-      case 32:
+      case "_return_P1_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623875");
-      case 24:
+      case "_return_P1_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623912");
-      case 33:
+      case "_return_P2_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623952");
-      case 34:
+      case "_return_P2_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623965");
-      case 36:
+      case "_return_P2_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402623981");
-      case 37:
+      case "_return_P2_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624000");
-      case 38:
+      case "_return_P2_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624022");
-      case 39:
+      case "_return_P2_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624047");
-      case 40:
+      case "_return_P2_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624075");
-      case 41:
+      case "_return_P2_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624106");
-      case 42:
+      case "_return_P2_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624140");
-      case 43:
+      case "_return_P2_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624177");
-      case 35:
+      case "_return_P2_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624217");
-      case 44:
+      case "_return_P3_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624260");
-      case 45:
+      case "_return_P3_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624276");
-      case 47:
+      case "_return_P3_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624295");
-      case 48:
+      case "_return_P3_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624317");
-      case 49:
+      case "_return_P3_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624342");
-      case 50:
+      case "_return_P3_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624370");
-      case 51:
+      case "_return_P3_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624401");
-      case 52:
+      case "_return_P3_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624435");
-      case 53:
+      case "_return_P3_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624472");
-      case 54:
+      case "_return_P3_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624512");
-      case 46:
+      case "_return_P3_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624555");
-      case 55:
+      case "_return_P4_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624601");
-      case 56:
+      case "_return_P4_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624620");
-      case 58:
+      case "_return_P4_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624642");
-      case 59:
+      case "_return_P4_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624667");
-      case 60:
+      case "_return_P4_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624695");
-      case 61:
+      case "_return_P4_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624726");
-      case 62:
+      case "_return_P4_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624760");
-      case 63:
+      case "_return_P4_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624797");
-      case 64:
+      case "_return_P4_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624837");
-      case 65:
+      case "_return_P4_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624880");
-      case 57:
+      case "_return_P4_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624926");
-      case 66:
+      case "_return_P5_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624975");
-      case 67:
+      case "_return_P5_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402624997");
-      case 69:
+      case "_return_P5_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625022");
-      case 70:
+      case "_return_P5_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625050");
-      case 71:
+      case "_return_P5_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625081");
-      case 72:
+      case "_return_P5_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625115");
-      case 73:
+      case "_return_P5_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625152");
-      case 74:
+      case "_return_P5_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625192");
-      case 75:
+      case "_return_P5_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625235");
-      case 76:
+      case "_return_P5_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625281");
-      case 68:
+      case "_return_P5_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625330");
-      case 77:
+      case "_return_P6_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625382");
-      case 78:
+      case "_return_P6_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625407");
-      case 80:
+      case "_return_P6_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625435");
-      case 81:
+      case "_return_P6_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625466");
-      case 82:
+      case "_return_P6_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625500");
-      case 83:
+      case "_return_P6_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625537");
-      case 84:
+      case "_return_P6_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625577");
-      case 85:
+      case "_return_P6_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625620");
-      case 86:
+      case "_return_P6_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625666");
-      case 87:
+      case "_return_P6_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625715");
-      case 79:
+      case "_return_P6_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625767");
-      case 88:
+      case "_return_P7_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625822");
-      case 89:
+      case "_return_P7_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625850");
-      case 91:
+      case "_return_P7_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625881");
-      case 92:
+      case "_return_P7_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625915");
-      case 93:
+      case "_return_P7_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625952");
-      case 94:
+      case "_return_P7_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402625992");
-      case 95:
+      case "_return_P7_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626035");
-      case 96:
+      case "_return_P7_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626081");
-      case 97:
+      case "_return_P7_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626130");
-      case 98:
+      case "_return_P7_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626182");
-      case 90:
+      case "_return_P7_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626237");
-      case 99:
+      case "_return_P8_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626295");
-      case 100:
+      case "_return_P8_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626326");
-      case 102:
+      case "_return_P8_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626360");
-      case 103:
+      case "_return_P8_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626397");
-      case 104:
+      case "_return_P8_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626437");
-      case 105:
+      case "_return_P8_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626480");
-      case 106:
+      case "_return_P8_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626526");
-      case 107:
+      case "_return_P8_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626575");
-      case 108:
+      case "_return_P8_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626627");
-      case 109:
+      case "_return_P8_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626682");
-      case 101:
+      case "_return_P8_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626740");
-      case 110:
+      case "_return_P9_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626801");
-      case 111:
+      case "_return_P9_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626835");
-      case 113:
+      case "_return_P9_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626872");
-      case 114:
+      case "_return_P9_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626912");
-      case 115:
+      case "_return_P9_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402626955");
-      case 116:
+      case "_return_P9_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627001");
-      case 117:
+      case "_return_P9_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627050");
-      case 118:
+      case "_return_P9_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627102");
-      case 119:
+      case "_return_P9_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627157");
-      case 120:
+      case "_return_P9_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627215");
-      case 112:
+      case "_return_P9_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627276");
-      case 11:
+      case "_return_P10_E0":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627340");
-      case 12:
+      case "_return_P10_E1":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627377");
-      case 14:
+      case "_return_P10_E2":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627417");
-      case 15:
+      case "_return_P10_E3":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627460");
-      case 16:
+      case "_return_P10_E4":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627506");
-      case 17:
+      case "_return_P10_E5":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627555");
-      case 18:
+      case "_return_P10_E6":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627607");
-      case 19:
+      case "_return_P10_E7":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627662");
-      case 20:
+      case "_return_P10_E8":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627720");
-      case 21:
+      case "_return_P10_E9":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627781");
-      case 13:
+      case "_return_P10_E10":
         return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402627845");
       default:
         if (LOG.isEnabledFor(Level.WARN)) {
@@ -513,5 +512,4 @@ public class RuntimeUtil {
     // this method is not generated by UpdateRuntimeUtil script, it's hand 
     return new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402619079");
   }
-  private static final String[] stringSwitchCases_k17xt9_a0a0b = new String[]{"_return_P0_E0", "_return_P0_E1", "_return_P0_E10", "_return_P0_E2", "_return_P0_E3", "_return_P0_E4", "_return_P0_E5", "_return_P0_E6", "_return_P0_E7", "_return_P0_E8", "_return_P0_E9", "_return_P10_E0", "_return_P10_E1", "_return_P10_E10", "_return_P10_E2", "_return_P10_E3", "_return_P10_E4", "_return_P10_E5", "_return_P10_E6", "_return_P10_E7", "_return_P10_E8", "_return_P10_E9", "_return_P1_E0", "_return_P1_E1", "_return_P1_E10", "_return_P1_E2", "_return_P1_E3", "_return_P1_E4", "_return_P1_E5", "_return_P1_E6", "_return_P1_E7", "_return_P1_E8", "_return_P1_E9", "_return_P2_E0", "_return_P2_E1", "_return_P2_E10", "_return_P2_E2", "_return_P2_E3", "_return_P2_E4", "_return_P2_E5", "_return_P2_E6", "_return_P2_E7", "_return_P2_E8", "_return_P2_E9", "_return_P3_E0", "_return_P3_E1", "_return_P3_E10", "_return_P3_E2", "_return_P3_E3", "_return_P3_E4", "_return_P3_E5", "_return_P3_E6", "_return_P3_E7", "_return_P3_E8", "_return_P3_E9", "_return_P4_E0", "_return_P4_E1", "_return_P4_E10", "_return_P4_E2", "_return_P4_E3", "_return_P4_E4", "_return_P4_E5", "_return_P4_E6", "_return_P4_E7", "_return_P4_E8", "_return_P4_E9", "_return_P5_E0", "_return_P5_E1", "_return_P5_E10", "_return_P5_E2", "_return_P5_E3", "_return_P5_E4", "_return_P5_E5", "_return_P5_E6", "_return_P5_E7", "_return_P5_E8", "_return_P5_E9", "_return_P6_E0", "_return_P6_E1", "_return_P6_E10", "_return_P6_E2", "_return_P6_E3", "_return_P6_E4", "_return_P6_E5", "_return_P6_E6", "_return_P6_E7", "_return_P6_E8", "_return_P6_E9", "_return_P7_E0", "_return_P7_E1", "_return_P7_E10", "_return_P7_E2", "_return_P7_E3", "_return_P7_E4", "_return_P7_E5", "_return_P7_E6", "_return_P7_E7", "_return_P7_E8", "_return_P7_E9", "_return_P8_E0", "_return_P8_E1", "_return_P8_E10", "_return_P8_E2", "_return_P8_E3", "_return_P8_E4", "_return_P8_E5", "_return_P8_E6", "_return_P8_E7", "_return_P8_E8", "_return_P8_E9", "_return_P9_E0", "_return_P9_E1", "_return_P9_E10", "_return_P9_E2", "_return_P9_E3", "_return_P9_E4", "_return_P9_E5", "_return_P9_E6", "_return_P9_E7", "_return_P9_E8", "_return_P9_E9", "_void_P0_E0", "_void_P0_E1", "_void_P0_E10", "_void_P0_E2", "_void_P0_E3", "_void_P0_E4", "_void_P0_E5", "_void_P0_E6", "_void_P0_E7", "_void_P0_E8", "_void_P0_E9", "_void_P10_E0", "_void_P10_E1", "_void_P10_E10", "_void_P10_E2", "_void_P10_E3", "_void_P10_E4", "_void_P10_E5", "_void_P10_E6", "_void_P10_E7", "_void_P10_E8", "_void_P10_E9", "_void_P1_E0", "_void_P1_E1", "_void_P1_E10", "_void_P1_E2", "_void_P1_E3", "_void_P1_E4", "_void_P1_E5", "_void_P1_E6", "_void_P1_E7", "_void_P1_E8", "_void_P1_E9", "_void_P2_E0", "_void_P2_E1", "_void_P2_E10", "_void_P2_E2", "_void_P2_E3", "_void_P2_E4", "_void_P2_E5", "_void_P2_E6", "_void_P2_E7", "_void_P2_E8", "_void_P2_E9", "_void_P3_E0", "_void_P3_E1", "_void_P3_E10", "_void_P3_E2", "_void_P3_E3", "_void_P3_E4", "_void_P3_E5", "_void_P3_E6", "_void_P3_E7", "_void_P3_E8", "_void_P3_E9", "_void_P4_E0", "_void_P4_E1", "_void_P4_E10", "_void_P4_E2", "_void_P4_E3", "_void_P4_E4", "_void_P4_E5", "_void_P4_E6", "_void_P4_E7", "_void_P4_E8", "_void_P4_E9", "_void_P5_E0", "_void_P5_E1", "_void_P5_E10", "_void_P5_E2", "_void_P5_E3", "_void_P5_E4", "_void_P5_E5", "_void_P5_E6", "_void_P5_E7", "_void_P5_E8", "_void_P5_E9", "_void_P6_E0", "_void_P6_E1", "_void_P6_E10", "_void_P6_E2", "_void_P6_E3", "_void_P6_E4", "_void_P6_E5", "_void_P6_E6", "_void_P6_E7", "_void_P6_E8", "_void_P6_E9", "_void_P7_E0", "_void_P7_E1", "_void_P7_E10", "_void_P7_E2", "_void_P7_E3", "_void_P7_E4", "_void_P7_E5", "_void_P7_E6", "_void_P7_E7", "_void_P7_E8", "_void_P7_E9", "_void_P8_E0", "_void_P8_E1", "_void_P8_E10", "_void_P8_E2", "_void_P8_E3", "_void_P8_E4", "_void_P8_E5", "_void_P8_E6", "_void_P8_E7", "_void_P8_E8", "_void_P8_E9", "_void_P9_E0", "_void_P9_E1", "_void_P9_E10", "_void_P9_E2", "_void_P9_E3", "_void_P9_E4", "_void_P9_E5", "_void_P9_E6", "_void_P9_E7", "_void_P9_E8", "_void_P9_E9"};
 }
