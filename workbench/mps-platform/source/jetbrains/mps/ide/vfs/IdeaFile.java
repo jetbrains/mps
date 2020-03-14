@@ -513,10 +513,12 @@ public class IdeaFile implements IFile, CachingFile {
   public void refresh(@NotNull CachingContext context) {
     VirtualFile virtualFile = findVirtualFile();
     if (virtualFile != null) {
-      virtualFile.getChildren(); // This was added to force refresh
-      virtualFile.refresh(!context.isSynchronous(), context.isRecursive());
+      myFS.refresh(context, Collections.singleton(this));
     } else {
-      findVirtualFile0(true);
+      virtualFile = findVirtualFile0(true);
+      if (virtualFile != null) {
+        myFS.refresh(context, Collections.singleton(this));
+      }
     }
   }
 
