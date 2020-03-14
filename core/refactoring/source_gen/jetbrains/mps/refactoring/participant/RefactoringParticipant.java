@@ -66,6 +66,10 @@ public interface RefactoringParticipant<InitialDataObject, FinalDataObject, Init
 
   List<Option> getAvailableOptions(List<InitialDataObject> initialStates, SRepository repository);
 
+  /**
+   * 
+   * @return the list of the same size as initialStates
+   */
   List<List<Change<InitialDataObject, FinalDataObject>>> getChanges(@NonNls List<InitialDataObject> initialStates, SRepository repository, List<Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor);
 
   /**

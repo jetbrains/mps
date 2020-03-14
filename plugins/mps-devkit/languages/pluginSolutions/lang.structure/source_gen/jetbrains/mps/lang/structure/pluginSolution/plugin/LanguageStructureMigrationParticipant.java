@@ -178,7 +178,12 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
   @Override
   public List<List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>> getChanges(final List<SNodeReference> initialStates, final SRepository repository, final List<RefactoringParticipant.Option> selectedOptions, SearchScope searchScope, ProgressMonitor progressMonitor) {
     if (!(ListSequence.fromList(selectedOptions).contains(OPTION))) {
-      return ListSequence.fromList(new ArrayList<List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>>());
+      return ListSequence.fromList(initialStates).select(new ISelector<SNodeReference, List<RefactoringParticipant.Change<SNodeReference, SNodeReference>>>() {
+        public List<RefactoringParticipant.Change<SNodeReference, SNodeReference>> select(SNodeReference it) {
+          List<RefactoringParticipant.Change<SNodeReference, SNodeReference>> list = ListSequence.fromList(new ArrayList<RefactoringParticipant.Change<SNodeReference, SNodeReference>>());
+          return list;
+        }
+      }).toListSequence();
     }
     final boolean updateModelImports = ListSequence.fromList(selectedOptions).contains(UpdateModelImports.OPTION);
 
