@@ -56,9 +56,7 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
       lang.save();
       lang.getGenerators().forEach(Generator::save);
     });
-    invokeInCommand(() -> {
-      projectBackup.restoreFromBackup();
-    });
+    invokeInCommand(projectBackup::restoreFromBackup);
     refreshProjectRecursively();
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
@@ -93,8 +91,8 @@ public final class FSTests extends ModuleInProjectTest { // e.g. in order to get
     refreshProjectRecursively();
     invokeInCommand(() -> {
       Language lang = langRef.get();
-      Assert.assertTrue(myProject.getProjectModules().size() == 1);
-      Assert.assertTrue("Language is not in project", lang != null); // only language
+      Assert.assertEquals(1, myProject.getProjectModules().size());
+      Assert.assertNotNull("Language is not in project", lang); // only language
       List<SDependency> deps = IterableUtil.asList(lang.getDeclaredDependencies());
       Assert.assertFalse("The language still depends on the solution", deps.stream().anyMatch(d -> d.getTargetModule().equals(solutionRef.get().getModuleReference())));
     });

@@ -20,13 +20,10 @@ import com.intellij.diff.DiffManager;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.diff.requests.DiffRequest;
 import com.intellij.diff.requests.SimpleDiffRequest;
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.ui.TestDialog;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
-import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.MPSProject;
@@ -34,6 +31,7 @@ import jetbrains.mps.vfs.VFSManager;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.ModelLoadException;
@@ -41,9 +39,11 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 
 import javax.swing.JOptionPane;
+import java.awt.Component;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * a copy of MemoryDiskConflictResolver in IJ
@@ -57,20 +57,31 @@ public final class ModelMemoryDiskConflictResolver {
 
   private final MPSProject myProject;
   private final PersistenceFacade myPersistenceFacade;
-  private final ReloadManager myReloadManager;
   private final VFSManager myVfsManager;
+  private final DiskMemoryDialogExposer myDialogExposer;
+
+  private static DiskMemoryDialogExposer defaultExposer() {
+    return ModelMemoryDiskConflictResolver::showDiskMemoryQuestion;
+  }
+
+  ModelMemoryDiskConflictResolver(@NotNull MPSProject project,
+                                  PersistenceFacade persistenceFacade,
+                                  VFSManager vfsManager,
+                                  DiskMemoryDialogExposer exposer) {
+    myProject = project;
+    myPersistenceFacade = persistenceFacade;
+    myVfsManager = vfsManager;
+    myDialogExposer = exposer;
+  }
 
   ModelMemoryDiskConflictResolver(MPSProject project,
                                   PersistenceFacade persistenceFacade,
-                                  ReloadManager reloadManager,
                                   VFSManager vfsManager) {
-    myProject = project;
-    myPersistenceFacade = persistenceFacade;
-    myReloadManager = reloadManager;
-    myVfsManager = vfsManager;
+    this(project, persistenceFacade, vfsManager, defaultExposer());
   }
 
   void resolve(@NotNull EditableSModel model) {
+    myResolverListeners.forEach(l -> l.onConflict(model));
     if (!(model.getSource() instanceof FileSystemBasedDataSource)) {
       LOG.error(String.format("Conflicting content in memory and on disk for models '%s' and '%s'. " +
                               "MPS does not support this data source; it will save the model and ignore the external modifications.", model.getName(), model.getSource()));
@@ -78,6 +89,10 @@ public final class ModelMemoryDiskConflictResolver {
       return;
     }
     FileSystemBasedDataSource source = (FileSystemBasedDataSource) model.getSource();
+    backupAndShowDialog(model, source);
+  }
+
+  private void backupAndShowDialog(@NotNull EditableSModel model, FileSystemBasedDataSource source) {
     ApplicationManager.getApplication().invokeLater(() -> {
       // do nothing if conflict was already resolved and model was saved or reloaded or unregistered
       if (!(model.isChanged()) || model.getRepository() == null) {
@@ -87,23 +102,28 @@ public final class ModelMemoryDiskConflictResolver {
 
       File backupFile = new BackupHelper(model, myPersistenceFacade, myVfsManager).createBackup();
       // fixme we need to check here that the world (= the underlying model & file) is still the same
-      UserChoice choice = showDiskMemoryQuestion(model, backupFile);
-      switch (choice) {
-        case DISK_CHOSEN: {
-          // fixme and here we need to check that the world is still the same as well
-          myProject.getRepository().getModelAccess().executeCommand(model::reloadFromSource);
-          break;
-        }
-        case DIFF_CHOSEN: {
-          openDiffDialog(source, model);
-        }
-        default : saveModel(model);
-      }
+      @NotNull UserChoice choice = myDialogExposer.askUser(ProjectHelper.toMainFrame(myProject), model, backupFile);
+      processUserChoice(model, source, choice);
+      myResolverListeners.forEach(l -> l.onConflictResolved(model));
     }, ModalityState.NON_MODAL);
   }
 
+  private void processUserChoice(@NotNull EditableSModel model, FileSystemBasedDataSource source, UserChoice choice) {
+    switch (choice) {
+      case DISK_CHOSEN: {
+        // fixme and here we need to check that the world is still the same as well
+        myProject.getRepository().getModelAccess().executeCommand(model::reloadFromSource);
+        break;
+      }
+      case DIFF_CHOSEN: {
+        openDiffDialog(source, model);
+      }
+      default : saveModel(model);
+    }
+  }
+
   private void saveModel(final EditableSModel model) {
-    model.getRepository().getModelAccess().runWriteAction(() -> {
+    myProject.getRepository().getModelAccess().runWriteAction(() -> {
       // fixme this is needed for #save to work
       model.updateTimestamp();
       model.save();
@@ -111,15 +131,16 @@ public final class ModelMemoryDiskConflictResolver {
   }
 
   @NotNull
-  private UserChoice showDiskMemoryQuestion(@NotNull SModel model, @NotNull File backupFile) {
+  private static UserChoice showDiskMemoryQuestion(@Nullable Component parentComponent, @NotNull EditableSModel model, @NotNull File backupFile) {
+    if (ApplicationManager.getApplication().isHeadlessEnvironment()) {
+      LOG.info(String.format("Saving the MPS changes to the disk -- we are headless, model : %s at %s", model.getName(), model.getSource()));
+      // by default save the changes from memory
+      return UserChoice.MEMORY_CHOSEN;
+    }
     String message = String.format("Changes have been made to the model \n%s\n in memory and on disk.\nBackup of both versions was saved to \"%s\"\nWhich version to use?",
                                    model, backupFile.getAbsolutePath());
     String title = "Model Versions Conflict";
-    // fixme replace with proper stuff
-    if (isApplicationInUnitTestOrHeadless()) {
-      return ourTestImplementation.show("") == 1 ? UserChoice.MEMORY_CHOSEN : UserChoice.DISK_CHOSEN;
-    }
-    int result = JOptionPane.showOptionDialog(ProjectHelper.toMainFrame(myProject), message, title,
+    int result = JOptionPane.showOptionDialog(parentComponent, message, title,
                                               JOptionPane.YES_NO_CANCEL_OPTION,
                                               JOptionPane.QUESTION_MESSAGE, Messages.getQuestionIcon(),
                                               UserChoice.values(),
@@ -132,10 +153,9 @@ public final class ModelMemoryDiskConflictResolver {
       default:
         return UserChoice.MEMORY_CHOSEN;
     }
-
   }
 
-  enum UserChoice {
+  public enum UserChoice {
     DISK_CHOSEN("Load Disk Version"),
     MEMORY_CHOSEN("Save Memory Version"), // default
     DIFF_CHOSEN("Show Diff");
@@ -173,21 +193,19 @@ public final class ModelMemoryDiskConflictResolver {
     DiffManager.getInstance().showDiff(myProject.getProject(), request, DiffDialogHints.MODAL);
   }
 
-
-  // TODO REMOVE EVERYTHING BELOW
-
-  private static TestDialog ourTestImplementation = TestDialog.DEFAULT;
-
-  public static TestDialog setTestDialog(TestDialog newValue) {
-    Application application = ApplicationManager.getApplication();
-    assert application == null || isApplicationInUnitTestOrHeadless() : "This method is available for test/headless mode only";
-    TestDialog oldValue = ourTestImplementation;
-    ourTestImplementation = newValue;
-    return oldValue;
+  /*package*/ void addListener(@NotNull __ConflictResolverListener listener) {
+    myResolverListeners.add(listener);
   }
 
-  private static boolean isApplicationInUnitTestOrHeadless() {
-    final Application application = ApplicationManager.getApplication();
-    return application != null && (application.isUnitTestMode() || application.isHeadlessEnvironment());
+  /*package*/ void removeListener(@NotNull __ConflictResolverListener listener) {
+    myResolverListeners.remove(listener);
+  }
+
+  private final List<__ConflictResolverListener> myResolverListeners = new CopyOnWriteArrayList<>();
+
+  interface __ConflictResolverListener {
+    void onConflict(@NotNull EditableSModel model);
+
+    void onConflictResolved(@NotNull EditableSModel model);
   }
 }

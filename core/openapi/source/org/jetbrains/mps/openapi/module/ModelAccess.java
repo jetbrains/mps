@@ -15,10 +15,17 @@
  */
 package org.jetbrains.mps.openapi.module;
 
+import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.jetbrains.mps.openapi.repository.ReadActionListener;
 import org.jetbrains.mps.openapi.repository.WriteActionListener;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
+import java.util.concurrent.Semaphore;
+import java.util.function.Supplier;
 
 /**
  * Grants access to objects in the repository (for example to models)
@@ -83,7 +90,17 @@ public interface ModelAccess {
    * Represents a write action executed with respect to platform undo mechanism, runs asynchronously from EDT thread.
    * This method may be invoked from any thread.
    */
-  void executeCommandInEDT(Runnable r);
+  void executeCommandInEDT(@NotNull Runnable r);
+
+  @NotNull
+  @Experimental
+  default <T> Future<T> executeCommandInEDT(@NotNull Supplier<T> supplier) {
+    CompletableFuture<T> future = new CompletableFuture<>();
+    executeCommandInEDT(() -> {
+      future.complete(supplier.get());
+    });
+    return future;
+  }
 
   /**
    * FIXME need thorough documentation

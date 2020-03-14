@@ -16,28 +16,51 @@
 package jetbrains.mps.vfs.tracking;
 
 import com.intellij.openapi.Disposable;
-import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.TestOnly;
 
+/**
+ * todo module tracking
+ */
 public final class ModelTracking implements Disposable {
-  private final ModelStorageProblemsListener myResolver;
-  private final MPSCoreComponents myMPSComponents;
+  private /*final*/ volatile ModelStorageProblemsListener myResolver;
   private final MPSProject myProject;
 
-  public ModelTracking(@NotNull MPSProject project, @NotNull MPSCoreComponents coreComponents, ReloadManager reloadManager) {
-    myResolver = new ModelStorageProblemsListener(project, coreComponents.getPersistenceFacade(), reloadManager,
+  public ModelTracking(@NotNull MPSProject project, @NotNull MPSCoreComponents coreComponents) {
+    myResolver = new ModelStorageProblemsListener(project,
+                                                  coreComponents.getPersistenceFacade(),
                                                   coreComponents.getPlatform().findComponent(VFSManager.class));
     myProject = project;
-    myMPSComponents = coreComponents;
-    project.getRepository().getModelAccess().runReadAction(() -> project.getRepository().addRepositoryListener(myResolver));
+    attachListener();
+  }
+
+  private void runRead(Runnable runnable) {
+    myProject.getRepository().getModelAccess().runReadAction(runnable);
+  }
+
+  @TestOnly
+  @NotNull
+  /*package*/ ModelStorageProblemsListener replaceListener(@NotNull ModelStorageProblemsListener listener) {
+    detachListener();
+    ModelStorageProblemsListener old = myResolver;
+    myResolver = listener;
+    attachListener();
+    return old;
   }
 
   @Override
   public void dispose() {
-    myProject.getRepository().getModelAccess().runReadAction(() -> myProject.getRepository().removeRepositoryListener(myResolver));
+    detachListener();
+  }
+
+  private void attachListener() {
+    runRead(() -> myProject.getRepository().addRepositoryListener(myResolver));
+  }
+
+  private void detachListener() {
+    runRead(() -> myProject.getRepository().removeRepositoryListener(myResolver));
   }
 }

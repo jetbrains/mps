@@ -28,7 +28,6 @@
 
   <application-components>
     <component>
-      <interface-class>jetbrains.mps.ide.platform.watching.FileSystemListenersContainer</interface-class>
       <implementation-class>jetbrains.mps.ide.platform.watching.FileSystemListenersContainer</implementation-class>
     </component>
     <component>

@@ -94,9 +94,12 @@ class BackupHelper {
       IFile diskDir = toIOFile(new File(parentTarget, "disk"));
       diskDir.mkdirs();
       // just for idea vfs, hopefully it will go away in 2020
-      ApplicationManager.getApplication().runWriteAction(() -> {
-        ((FileSystemBasedDataSource) source).physicalCopy(diskDir);
-      });
+      FileSystemBasedDataSource dataSource = (FileSystemBasedDataSource) source;
+      if (dataSource.exists()) {
+        ApplicationManager.getApplication().runWriteAction(() -> {
+          dataSource.physicalCopy(diskDir);
+        });
+      }
     }
   }
 

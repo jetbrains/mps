@@ -60,10 +60,14 @@ public final class ModelStorageProblemsListener extends SRepositoryContentAdapte
 
   /*package*/ ModelStorageProblemsListener(@NotNull MPSProject project,
                                            @NotNull PersistenceFacade persistenceFacade,
-                                           @NotNull ReloadManager reloadManager,
                                            @NotNull VFSManager vfsManager) {
+    this(project, new ModelMemoryDiskConflictResolver(project, persistenceFacade, vfsManager));
+  }
+
+  /*package*/ ModelStorageProblemsListener(@NotNull MPSProject project,
+                                           @NotNull ModelMemoryDiskConflictResolver resolver) {
     myProject = project;
-    myMemoryDiskConflictResolver = new ModelMemoryDiskConflictResolver(project, persistenceFacade, reloadManager, vfsManager);
+    myMemoryDiskConflictResolver = resolver;
   }
 
   @Override
