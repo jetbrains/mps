@@ -106,7 +106,7 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
-      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryStatement" flags="nn" index="2GUZhq">
+      <concept id="1153952380246" name="jetbrains.mps.baseLanguage.structure.TryFinallyStatement" flags="nn" index="2GUZhq">
         <child id="1153952416686" name="body" index="2GV8ay" />
         <child id="1153952429843" name="finallyBody" index="2GVbov" />
       </concept>
@@ -4038,7 +4038,7 @@
                           </node>
                         </node>
                         <node concept="WFELt" id="4c$BrPwhyHx" role="2OqNvi">
-                          <ref role="1A0vxQ" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                          <ref role="1A0vxQ" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                         </node>
                       </node>
                     </node>
@@ -20837,12 +20837,12 @@
               <node concept="3cpWsn" id="31WmxQNAJ5u" role="3cpWs9">
                 <property role="TrG5h" value="tryStatement" />
                 <node concept="3Tqbb2" id="31WmxQNAJ5v" role="1tU5fm">
-                  <ref role="ehGHo" to="tpee:gMGUZlm" resolve="TryStatement" />
+                  <ref role="ehGHo" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
                 </node>
                 <node concept="2ShNRf" id="31WmxQNAJ5w" role="33vP2m">
                   <node concept="3zrR0B" id="31WmxQNAJ5x" role="2ShVmc">
                     <node concept="3Tqbb2" id="31WmxQNAJ5y" role="3zrR0E">
-                      <ref role="ehGHo" to="tpee:gMGUZlm" resolve="TryStatement" />
+                      <ref role="ehGHo" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
                     </node>
                   </node>
                 </node>

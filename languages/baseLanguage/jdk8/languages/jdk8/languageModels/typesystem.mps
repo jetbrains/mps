@@ -318,7 +318,7 @@
     </node>
     <node concept="1YaCAy" id="6wTaD3FpQFV" role="1YuTPh">
       <property role="TrG5h" value="superInterfaceMethodCall" />
-      <ref role="1YaFvo" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
+      <ref role="1YaFvo" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall_old" />
     </node>
   </node>
   <node concept="18kY7G" id="1muh51orlNA">
@@ -410,7 +410,7 @@
     </node>
     <node concept="1YaCAy" id="1muh51orlND" role="1YuTPh">
       <property role="TrG5h" value="modifier" />
-      <ref role="1YaFvo" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+      <ref role="1YaFvo" to="jqf9:43H3v3JgacM" resolve="DefaultModifier_old" />
     </node>
   </node>
   <node concept="Q5z_Y" id="1muh51or_0c">
@@ -444,7 +444,7 @@
                         </node>
                         <node concept="1mIQ4w" id="2f5oWa05VIA" role="2OqNvi">
                           <node concept="chp4Y" id="2f5oWa05VVr" role="cj9EA">
-                            <ref role="cht4Q" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                            <ref role="cht4Q" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                           </node>
                         </node>
                       </node>
@@ -596,7 +596,7 @@
     </node>
     <node concept="1YaCAy" id="6fye98SzSDj" role="1YuTPh">
       <property role="TrG5h" value="modifier" />
-      <ref role="1YaFvo" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+      <ref role="1YaFvo" to="jqf9:43H3v3JgacM" resolve="DefaultModifier_old" />
     </node>
   </node>
   <node concept="18kY7G" id="6fye98S_69F">
@@ -724,7 +724,7 @@
     </node>
     <node concept="1YaCAy" id="6fye98S_6a_" role="1YuTPh">
       <property role="TrG5h" value="modifier" />
-      <ref role="1YaFvo" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+      <ref role="1YaFvo" to="jqf9:43H3v3JgacM" resolve="DefaultModifier_old" />
     </node>
   </node>
 </model>

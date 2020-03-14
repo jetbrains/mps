@@ -12,8 +12,8 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptDefaultModifier = createDescriptorForDefaultModifier();
-  /*package*/ final ConceptDescriptor myConceptSuperInterfaceMethodCall = createDescriptorForSuperInterfaceMethodCall();
+  /*package*/ final ConceptDescriptor myConceptDefaultModifier_old = createDescriptorForDefaultModifier_old();
+  /*package*/ final ConceptDescriptor myConceptSuperInterfaceMethodCall_old = createDescriptorForSuperInterfaceMethodCall_old();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -28,17 +28,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptDefaultModifier, myConceptSuperInterfaceMethodCall);
+    return Arrays.asList(myConceptDefaultModifier_old, myConceptSuperInterfaceMethodCall_old);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.DefaultModifier:
-        return myConceptDefaultModifier;
-      case LanguageConceptSwitch.SuperInterfaceMethodCall:
-        return myConceptSuperInterfaceMethodCall;
+      case LanguageConceptSwitch.DefaultModifier_old:
+        return myConceptDefaultModifier_old;
+      case LanguageConceptSwitch.SuperInterfaceMethodCall_old:
+        return myConceptSuperInterfaceMethodCall_old;
       default:
         return null;
     }
@@ -49,8 +49,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForDefaultModifier() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk8", "DefaultModifier", 0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L);
+  private static ConceptDescriptor createDescriptorForDefaultModifier_old() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk8", "DefaultModifier_old", 0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L);
     b.class_(false, false, false);
     b.super_("jetbrains.mps.baseLanguage.structure.JavaModifier", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1027dd744a287198L);
     b.origin("r:c97f7798-14e8-47eb-b3f8-b032ba7575c4(jetbrains.mps.baseLanguage.jdk8.structure)/4678410916365116210");
@@ -58,13 +58,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("default");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForSuperInterfaceMethodCall() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk8", "SuperInterfaceMethodCall", 0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L);
+  private static ConceptDescriptor createDescriptorForSuperInterfaceMethodCall_old() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk8", "SuperInterfaceMethodCall_old", 0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L);
     b.class_(false, false, false);
     b.super_("jetbrains.mps.baseLanguage.structure.SuperMethodCall", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9d78b55aaL);
     b.origin("r:c97f7798-14e8-47eb-b3f8-b032ba7575c4(jetbrains.mps.baseLanguage.jdk8.structure)/1719162360409810393");
     b.version(2);
-    b.associate("classifier", 0x17dbb10eeb7528deL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(false).origin("1719162360409958622").done();
+    b.associate("classifier_old", 0x17dbb10eeb7528deL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(true).origin("1719162360409958622").done();
     return b.create();
   }
 }

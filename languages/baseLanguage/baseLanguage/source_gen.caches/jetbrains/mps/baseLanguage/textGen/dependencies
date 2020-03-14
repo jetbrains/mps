@@ -610,6 +610,12 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.textGen.DefaultModifier_TextGen">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
+    <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
+    <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.DimensionExpression_TextGen">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -1509,6 +1515,16 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.textGen.SuperInterfaceMethodCall_TextGen">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
+    <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
+    <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.SuperMethodCall_TextGen">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
@@ -1611,6 +1627,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.ConstructorDeclaration_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.ContinueStatement_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.DefaultClassCreator_TextGen" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.DefaultModifier_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.DimensionExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.DivExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.DoWhileStatement_TextGen" />
@@ -1691,6 +1708,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.StringLiteral_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.StringType_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.SuperConstructorInvocation_TextGen" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.SuperInterfaceMethodCall_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.SuperMethodCall_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.SynchronizedStatement_TextGen" />

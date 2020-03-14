@@ -19,10 +19,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public TextGenDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     switch (myIndex.index(concept)) {
-      case LanguageConceptSwitch.DefaultModifier:
-        return new DefaultModifier_TextGen();
-      case LanguageConceptSwitch.SuperInterfaceMethodCall:
-        return new SuperInterfaceMethodCall_TextGen();
+      case LanguageConceptSwitch.DefaultModifier_old:
+        return new DefaultModifier_old_TextGen();
+      case LanguageConceptSwitch.SuperInterfaceMethodCall_old:
+        return new SuperInterfaceMethodCall_old_TextGen();
     }
     return null;
   }

@@ -16,7 +16,6 @@
     <import index="m373" ref="r:4095af4f-a097-4799-aaa9-03df087ddfa6(jetbrains.mps.baseLanguage.javadoc.structure)" />
     <import index="1i04" ref="r:3270011d-8b2d-4938-8dff-d256a759e017(jetbrains.mps.lang.behavior.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="jqf9" ref="r:c97f7798-14e8-47eb-b3f8-b032ba7575c4(jetbrains.mps.baseLanguage.jdk8.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -510,7 +509,7 @@
                           </node>
                         </node>
                         <node concept="2DeJg1" id="1j7jIZEgjL1" role="2OqNvi">
-                          <ref role="1A0vxQ" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                          <ref role="1A0vxQ" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                         </node>
                       </node>
                     </node>
@@ -740,7 +739,7 @@
                                   </node>
                                   <node concept="1mIQ4w" id="1j7jIZEhjk_" role="2OqNvi">
                                     <node concept="chp4Y" id="1j7jIZEhjkA" role="cj9EA">
-                                      <ref role="cht4Q" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                                      <ref role="cht4Q" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                                     </node>
                                   </node>
                                 </node>
@@ -774,7 +773,7 @@
                                       </node>
                                       <node concept="1mIQ4w" id="1j7jIZEhluY" role="2OqNvi">
                                         <node concept="chp4Y" id="1j7jIZEhluZ" role="cj9EA">
-                                          <ref role="cht4Q" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                                          <ref role="cht4Q" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                                         </node>
                                       </node>
                                     </node>
@@ -887,7 +886,7 @@
                             </node>
                           </node>
                           <node concept="2DeJg1" id="1j7jIZEgE7J" role="2OqNvi">
-                            <ref role="1A0vxQ" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                            <ref role="1A0vxQ" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                           </node>
                         </node>
                       </node>

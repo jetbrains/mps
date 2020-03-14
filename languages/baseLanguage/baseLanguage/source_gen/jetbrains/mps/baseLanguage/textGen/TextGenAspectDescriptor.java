@@ -114,6 +114,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ContinueStatement_TextGen();
       case LanguageConceptSwitch.DefaultClassCreator:
         return new DefaultClassCreator_TextGen();
+      case LanguageConceptSwitch.DefaultModifier:
+        return new DefaultModifier_TextGen();
       case LanguageConceptSwitch.DimensionExpression:
         return new DimensionExpression_TextGen();
       case LanguageConceptSwitch.DivExpression:
@@ -274,6 +276,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new StringType_TextGen();
       case LanguageConceptSwitch.SuperConstructorInvocation:
         return new SuperConstructorInvocation_TextGen();
+      case LanguageConceptSwitch.SuperInterfaceMethodCall:
+        return new SuperInterfaceMethodCall_TextGen();
       case LanguageConceptSwitch.SuperMethodCall:
         return new SuperMethodCall_TextGen();
       case LanguageConceptSwitch.SwitchStatement:

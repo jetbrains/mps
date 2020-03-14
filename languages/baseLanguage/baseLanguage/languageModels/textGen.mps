@@ -15324,5 +15324,46 @@
       </node>
     </node>
   </node>
+  <node concept="WtQ9Q" id="4c$BrPwIrcM">
+    <ref role="WuzLi" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
+    <node concept="11bSqf" id="4c$BrPwIrcN" role="11c4hB">
+      <node concept="3clFbS" id="4c$BrPwIrcO" role="2VODD2">
+        <node concept="lc7rE" id="4c$BrPwIrd9" role="3cqZAp">
+          <node concept="la8eA" id="4c$BrPwIrdv" role="lcghm">
+            <property role="lacIc" value="default" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="WtQ9Q" id="5_deIS4VsfG">
+    <ref role="WuzLi" to="tpee:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
+    <node concept="11bSqf" id="5_deIS4VsfH" role="11c4hB">
+      <node concept="3clFbS" id="5_deIS4VsfI" role="2VODD2">
+        <node concept="lc7rE" id="3ltt6suXIv8" role="3cqZAp">
+          <node concept="1bDJIP" id="3ltt6suXIv9" role="lcghm">
+            <ref role="1rvKf6" node="6fUw26UhtdA" resolve="blClassifierRef" />
+            <node concept="2OqwBi" id="3ltt6suXIva" role="1ryhcI">
+              <node concept="117lpO" id="3ltt6suXIvb" role="2Oq$k0" />
+              <node concept="37Cfm0" id="3ltt6suXIvc" role="2OqNvi">
+                <node concept="1aIX9F" id="3ltt6suXIvd" role="37CeNk">
+                  <node concept="26LbJo" id="5_deIS4Vu0a" role="1aIX9E">
+                    <ref role="26LbJp" to="tpee:1vrGgVFtizu" resolve="classifier" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="la8eA" id="3ltt6suXIve" role="lcghm">
+            <property role="lacIc" value=".super." />
+          </node>
+          <node concept="1bDJIP" id="3ltt6suXIvf" role="lcghm">
+            <ref role="1rvKf6" node="hYHLMDp" resolve="methodCall" />
+            <node concept="117lpO" id="3ltt6suXIvg" role="1ryhcI" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

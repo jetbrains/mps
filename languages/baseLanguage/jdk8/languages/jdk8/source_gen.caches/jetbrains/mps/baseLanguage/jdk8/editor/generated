@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-1bucam07ddjpw9jyxkh0zkdm90x2fyx">
-  <files names="DefaultModifier_Editor.java:DefaultModifier_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:SuperInterfaceMethodCall_Contribution.java:SuperInterfaceMethodCall_Editor.java:SuperInterfaceMethodCall_EditorBuilder_a.java:SuperInterfaceMethodCall_actions.java:addCtorIncompleteFromModifier.java" />
+<product version="3" modelHash="clvbricql8gv6fax82jfnlc90wxpmv0">
+  <files names="DefaultModifier_old_Editor.java:DefaultModifier_old_EditorBuilder_a.java:DefaultModifier_old_SubstituteMenu.java:EditorAspectDescriptorImpl.java:SuperInterfaceMethodCall_Contribution.java:SuperInterfaceMethodCall_actions.java:SuperInterfaceMethodCall_old_Editor.java:SuperInterfaceMethodCall_old_EditorBuilder_a.java:SuperInterfaceMethodCall_old_SubstituteMenu.java:addCtorIncompleteFromModifier.java" />
 </product>
 

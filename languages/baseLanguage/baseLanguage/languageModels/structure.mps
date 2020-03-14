@@ -4676,5 +4676,24 @@
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
   </node>
+  <node concept="1TIwiD" id="43H3v3JgacM">
+    <property role="EcuMT" value="4678410916365116210" />
+    <property role="3GE5qa" value="" />
+    <property role="TrG5h" value="DefaultModifier" />
+    <property role="34LRSv" value="default" />
+    <property role="R4oN_" value="the 'default' modifier for an interface method" />
+    <ref role="1TJDcQ" node="10BRnhaa76o" resolve="JavaModifier" />
+  </node>
+  <node concept="1TIwiD" id="1vrGgVFsInp">
+    <property role="TrG5h" value="SuperInterfaceMethodCall" />
+    <property role="EcuMT" value="1719162360409810393" />
+    <ref role="1TJDcQ" node="fBnyPmE" resolve="SuperMethodCall" />
+    <node concept="1TJgyj" id="1vrGgVFtizu" role="1TKVEi">
+      <property role="20kJfa" value="classifier" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1719162360409958622" />
+      <ref role="20lvS9" node="g7pOWCK" resolve="Classifier" />
+    </node>
+  </node>
 </model>
 

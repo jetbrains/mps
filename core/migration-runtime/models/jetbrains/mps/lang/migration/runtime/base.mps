@@ -10503,13 +10503,29 @@
       <node concept="3clFbS" id="4z_SuroFtuv" role="3clF47">
         <node concept="XkiVB" id="4z_SuroFvXO" role="3cqZAp">
           <ref role="37wK5l" node="3n7MNzOKQKS" resolve="Problem" />
-          <node concept="37vLTw" id="4z_SuroFyvr" role="37wK5m">
-            <ref role="3cqZAo" node="4z_SuroFtuy" resolve="reason" />
+          <node concept="37vLTw" id="3ltt6sv5oyE" role="37wK5m">
+            <ref role="3cqZAo" node="3ltt6sv5o3i" resolve="reason" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="3ltt6sv6hE8" role="3cqZAp">
+          <node concept="37vLTI" id="3ltt6sv6hWP" role="3clFbG">
+            <node concept="37vLTw" id="3ltt6sv6ib4" role="37vLTx">
+              <ref role="3cqZAo" node="4z_SuroFtuy" resolve="language" />
+            </node>
+            <node concept="37vLTw" id="3ltt6sv6hE6" role="37vLTJ">
+              <ref role="3cqZAo" node="4z_SuroFv8m" resolve="myLanguage" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="4z_SuroFtuy" role="3clF46">
+      <node concept="37vLTG" id="3ltt6sv5o3i" role="3clF46">
         <property role="TrG5h" value="reason" />
+        <node concept="3uibUv" id="3ltt6sv5oaQ" role="1tU5fm">
+          <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="4z_SuroFtuy" role="3clF46">
+        <property role="TrG5h" value="language" />
         <node concept="3uibUv" id="4z_SuroFv4b" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
         </node>
@@ -10532,8 +10548,8 @@
               <node concept="Xl_RD" id="4z_SuroFtuG" role="3uHU7B">
                 <property role="Xl_RC" value="Deprecated language '" />
               </node>
-              <node concept="1rXfSq" id="4z_SuroFtuI" role="3uHU7w">
-                <ref role="37wK5l" node="3n7MNzOA6ls" resolve="getReason" />
+              <node concept="37vLTw" id="3ltt6sv5p76" role="3uHU7w">
+                <ref role="3cqZAo" node="4z_SuroFv8m" resolve="myLanguage" />
               </node>
             </node>
           </node>
@@ -10543,8 +10559,33 @@
     <node concept="3Tm1VV" id="4z_SuroFtuK" role="1B3o_S" />
     <node concept="3uibUv" id="4z_SuroFuSS" role="1zkMxy">
       <ref role="3uigEE" node="3n7MNzO_IjP" resolve="Problem" />
-      <node concept="3uibUv" id="4z_SuroFxxs" role="11_B2D">
-        <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
+      <node concept="3uibUv" id="3ltt6sv5oHb" role="11_B2D">
+        <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="3ltt6sv5q_D" role="jymVt">
+      <property role="TrG5h" value="getModel" />
+      <node concept="3Tm1VV" id="3ltt6sv5q_E" role="1B3o_S" />
+      <node concept="2AHcQZ" id="3ltt6sv5q_G" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="3ltt6sv5q_H" role="3clF45">
+        <ref role="3uigEE" to="mhbf:~SModelReference" resolve="SModelReference" />
+      </node>
+      <node concept="3clFbS" id="3ltt6sv5q_P" role="3clF47">
+        <node concept="3clFbF" id="3ltt6sv5q_S" role="3cqZAp">
+          <node concept="2OqwBi" id="3ltt6sv5rrJ" role="3clFbG">
+            <node concept="1rXfSq" id="3ltt6sv5rc7" role="2Oq$k0">
+              <ref role="37wK5l" node="3n7MNzOA6ls" resolve="getReason" />
+            </node>
+            <node concept="liA8E" id="3ltt6sv5rEq" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3ltt6sv5q_Q" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="4z_SuroFyZ2" role="jymVt">
@@ -10566,6 +10607,9 @@
       <node concept="2AHcQZ" id="4z_SuroFyZ7" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+    </node>
+    <node concept="3uibUv" id="3ltt6sv5nM7" role="EKbjA">
+      <ref role="3uigEE" to="d6hs:~ModelReportItem" resolve="ModelReportItem" />
     </node>
   </node>
 </model>

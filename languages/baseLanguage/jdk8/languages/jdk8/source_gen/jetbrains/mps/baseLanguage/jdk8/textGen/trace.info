@@ -11,7 +11,7 @@
     </file>
   </root>
   <root nodeRef="r:b6a70233-79fe-4a79-a356-99338b0be46c(jetbrains.mps.baseLanguage.jdk8.textGen)/4838165336399917874">
-    <file name="DefaultModifier_TextGen.java">
+    <file name="DefaultModifier_old_TextGen.java">
       <node id="4838165336399917874" at="11,54,12,55" concept="2" />
       <node id="4838165336399917919" at="12,55,13,26" concept="0" />
       <node id="4838165336399917874" at="10,0,15,0" concept="1" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
@@ -21,20 +21,20 @@
       <scope id="4838165336399917874" at="10,0,15,0">
         <var name="ctx" id="4838165336399917874" />
       </scope>
-      <unit id="4838165336399917874" at="9,0,16,0" name="jetbrains.mps.baseLanguage.jdk8.textGen.DefaultModifier_TextGen" />
+      <unit id="4838165336399917874" at="9,0,16,0" name="jetbrains.mps.baseLanguage.jdk8.textGen.DefaultModifier_old_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4838165336399917874" at="22,49,23,45" concept="3" />
-      <scope id="4838165336399917874" at="22,49,23,45" />
+      <node id="4838165336399917874" at="22,53,23,49" concept="3" />
+      <scope id="4838165336399917874" at="22,53,23,49" />
     </file>
   </root>
   <root nodeRef="r:b6a70233-79fe-4a79-a356-99338b0be46c(jetbrains.mps.baseLanguage.jdk8.textGen)/6434864236541625324">
-    <file name="SuperInterfaceMethodCall_TextGen.java">
+    <file name="SuperInterfaceMethodCall_old_TextGen.java">
       <node id="6434864236541625324" at="15,54,16,55" concept="2" />
-      <node id="7204211436280793956" at="16,55,17,121" concept="0" />
-      <node id="1237463992935" at="17,121,18,26" concept="0" />
+      <node id="7204211436280793956" at="16,55,17,125" concept="0" />
+      <node id="1237463992935" at="17,125,18,26" concept="0" />
       <node id="6434864236541638989" at="18,26,19,63" concept="0" />
-      <node id="6434864236541625324" at="23,0,24,0" concept="4" trace="classifier$xsNt" />
+      <node id="6434864236541625324" at="23,0,24,0" concept="4" trace="classifier_old$xsNt" />
       <node id="6434864236541625324" at="14,0,21,0" concept="1" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="6434864236541625324" at="15,54,19,63">
         <var name="tgs" id="6434864236541625324" />
@@ -42,12 +42,12 @@
       <scope id="6434864236541625324" at="14,0,21,0">
         <var name="ctx" id="6434864236541625324" />
       </scope>
-      <unit id="6434864236541625324" at="22,0,25,0" name="jetbrains.mps.baseLanguage.jdk8.textGen.SuperInterfaceMethodCall_TextGen$LINKS" />
-      <unit id="6434864236541625324" at="13,0,26,0" name="jetbrains.mps.baseLanguage.jdk8.textGen.SuperInterfaceMethodCall_TextGen" />
+      <unit id="6434864236541625324" at="22,0,25,0" name="jetbrains.mps.baseLanguage.jdk8.textGen.SuperInterfaceMethodCall_old_TextGen$LINKS" />
+      <unit id="6434864236541625324" at="13,0,26,0" name="jetbrains.mps.baseLanguage.jdk8.textGen.SuperInterfaceMethodCall_old_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6434864236541625324" at="24,58,25,54" concept="3" />
-      <scope id="6434864236541625324" at="24,58,25,54" />
+      <node id="6434864236541625324" at="24,62,25,58" concept="3" />
+      <scope id="6434864236541625324" at="24,62,25,58" />
     </file>
   </root>
 </debug-info>

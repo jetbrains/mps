@@ -60,7 +60,11 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
+    <classNode extendsClassName="jetbrains.mps.errors.item.ModelReportItem" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.Problem" />
   </dependency>
   <dependency className="jetbrains.mps.lang.migration.runtime.base.EmptyRefactoringUI">

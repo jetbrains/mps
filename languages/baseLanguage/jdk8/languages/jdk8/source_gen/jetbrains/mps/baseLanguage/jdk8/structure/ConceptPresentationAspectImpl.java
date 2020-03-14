@@ -9,29 +9,32 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_DefaultModifier;
-  private ConceptPresentation props_SuperInterfaceMethodCall;
+  private ConceptPresentation props_DefaultModifier_old;
+  private ConceptPresentation props_SuperInterfaceMethodCall_old;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.DefaultModifier:
-        if (props_DefaultModifier == null) {
+      case LanguageConceptSwitch.DefaultModifier_old:
+        if (props_DefaultModifier_old == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("the 'default' modifier for an interface method");
           cpb.rawPresentation("default");
-          props_DefaultModifier = cpb.create();
+          props_DefaultModifier_old = cpb.create();
         }
-        return props_DefaultModifier;
-      case LanguageConceptSwitch.SuperInterfaceMethodCall:
-        if (props_SuperInterfaceMethodCall == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("SuperInterfaceMethodCall");
-          props_SuperInterfaceMethodCall = cpb.create();
+        return props_DefaultModifier_old;
+      case LanguageConceptSwitch.SuperInterfaceMethodCall_old:
+        if (props_SuperInterfaceMethodCall_old == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L);
+          cpb.deprecated(true);
+          cpb.deprecateAssociation(0x17dbb10eeb7528deL, "classifier_old");
+          cpb.rawPresentation("SuperInterfaceMethodCall_old");
+          props_SuperInterfaceMethodCall_old = cpb.create();
         }
-        return props_SuperInterfaceMethodCall;
+        return props_SuperInterfaceMethodCall_old;
     }
     return null;
   }

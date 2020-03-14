@@ -6,8 +6,7 @@
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
-    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
-    <import index="jqf9" ref="r:c97f7798-14e8-47eb-b3f8-b032ba7575c4(jetbrains.mps.baseLanguage.jdk8.structure)" implicit="true" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -110,7 +109,7 @@
               </node>
             </node>
             <node concept="WFELt" id="4c$BrPw$Dg1" role="2OqNvi">
-              <ref role="1A0vxQ" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+              <ref role="1A0vxQ" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
             </node>
           </node>
         </node>
@@ -137,7 +136,7 @@
                         </node>
                         <node concept="1mIQ4w" id="4c$BrPw$y9I" role="2OqNvi">
                           <node concept="chp4Y" id="4c$BrPw$y9J" role="cj9EA">
-                            <ref role="cht4Q" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                            <ref role="cht4Q" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                           </node>
                         </node>
                       </node>
@@ -188,7 +187,7 @@
                         </node>
                         <node concept="1mIQ4w" id="4c$BrPw$YaI" role="2OqNvi">
                           <node concept="chp4Y" id="4c$BrPw$Yo1" role="cj9EA">
-                            <ref role="cht4Q" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                            <ref role="cht4Q" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                           </node>
                         </node>
                       </node>
@@ -243,7 +242,7 @@
                       </node>
                       <node concept="1mIQ4w" id="4c$BrPw$Ijr" role="2OqNvi">
                         <node concept="chp4Y" id="4c$BrPw$Ijs" role="cj9EA">
-                          <ref role="cht4Q" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+                          <ref role="cht4Q" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
                         </node>
                       </node>
                     </node>

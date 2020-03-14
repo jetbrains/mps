@@ -59,6 +59,7 @@
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="rymi" ref="r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)" />
     <import index="zma8" ref="r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)" />
+    <import index="ityx" ref="r:0396c9ff-0a4d-4e54-9678-835fc58468cd(jetbrains.mps.baseLanguage.jdk8.typesystem)" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -73348,6 +73349,417 @@
     <node concept="1YaCAy" id="4D3iSq_hD10" role="1YuTPh">
       <property role="TrG5h" value="resourceVariable" />
       <ref role="1YaFvo" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="1muh51orlNA">
+    <property role="TrG5h" value="check_DefaultMethodIsNotAbstract" />
+    <node concept="3clFbS" id="1muh51orlNB" role="18ibNy">
+      <node concept="3cpWs8" id="3R8Ssjf99M_" role="3cqZAp">
+        <node concept="3cpWsn" id="3R8Ssjf99MA" role="3cpWs9">
+          <property role="TrG5h" value="parent" />
+          <node concept="3Tqbb2" id="3R8Ssjf99M$" role="1tU5fm" />
+          <node concept="2OqwBi" id="3R8Ssjf99MB" role="33vP2m">
+            <node concept="1YBJjd" id="3R8Ssjf99MC" role="2Oq$k0">
+              <ref role="1YBMHb" node="1muh51orlND" resolve="modifier" />
+            </node>
+            <node concept="1mfA1w" id="3R8Ssjf99MD" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="3R8Ssjf99UZ" role="3cqZAp">
+        <node concept="3clFbS" id="3R8Ssjf99V1" role="3clFbx">
+          <node concept="3cpWs6" id="3R8Ssjf9fmR" role="3cqZAp" />
+        </node>
+        <node concept="3fqX7Q" id="3R8Ssjf9fe8" role="3clFbw">
+          <node concept="2OqwBi" id="3R8Ssjf9fea" role="3fr31v">
+            <node concept="37vLTw" id="3R8Ssjf9feb" role="2Oq$k0">
+              <ref role="3cqZAo" node="3R8Ssjf99MA" resolve="parent" />
+            </node>
+            <node concept="1mIQ4w" id="3R8Ssjf9fec" role="2OqNvi">
+              <node concept="chp4Y" id="3R8Ssjf9fis" role="cj9EA">
+                <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3cpWs8" id="1muh51ormSZ" role="3cqZAp">
+        <node concept="3cpWsn" id="1muh51ormT0" role="3cpWs9">
+          <property role="TrG5h" value="method" />
+          <node concept="3Tqbb2" id="1muh51ormSV" role="1tU5fm">
+            <ref role="ehGHo" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+          </node>
+          <node concept="1PxgMI" id="1muh51ormT1" role="33vP2m">
+            <node concept="chp4Y" id="1muh51ormT2" role="3oSUPX">
+              <ref role="cht4Q" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
+            </node>
+            <node concept="37vLTw" id="3R8Ssjf99ME" role="1m5AlR">
+              <ref role="3cqZAo" node="3R8Ssjf99MA" resolve="parent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="1muh51ormV1" role="3cqZAp">
+        <node concept="3clFbS" id="1muh51ormV3" role="3clFbx">
+          <node concept="2MkqsV" id="1muh51or$VC" role="3cqZAp">
+            <node concept="Xl_RD" id="1muh51or$VU" role="2MkJ7o">
+              <property role="Xl_RC" value="The 'abstract' and 'default' modifiers are not allowed together" />
+            </node>
+            <node concept="37vLTw" id="1muh51or$Z9" role="1urrMF">
+              <ref role="3cqZAo" node="1muh51ormT0" resolve="method" />
+            </node>
+            <node concept="3Cnw8n" id="2f5oWa0aetr" role="1urrFz">
+              <ref role="QpYPw" to="ityx:2f5oWa05dQV" resolve="RemoveAbstractModifier" />
+              <node concept="3CnSsL" id="2f5oWa0aetP" role="3Coj4f">
+                <ref role="QkamJ" to="ityx:6WSEafdwzGO" resolve="method" />
+                <node concept="37vLTw" id="2f5oWa0aeu2" role="3CoRuB">
+                  <ref role="3cqZAo" node="1muh51ormT0" resolve="method" />
+                </node>
+              </node>
+            </node>
+            <node concept="3Cnw8n" id="1muh51orCLe" role="1urrFz">
+              <ref role="QpYPw" to="ityx:1muh51or_0c" resolve="RemoveDefaultModifier" />
+              <node concept="3CnSsL" id="2f5oWa0aeud" role="3Coj4f">
+                <ref role="QkamJ" to="ityx:2f5oWa05D_Y" resolve="member" />
+                <node concept="37vLTw" id="2f5oWa0aeuU" role="3CoRuB">
+                  <ref role="3cqZAo" node="1muh51ormT0" resolve="method" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2OqwBi" id="1muh51ornnc" role="3clFbw">
+          <node concept="37vLTw" id="1muh51ormVo" role="2Oq$k0">
+            <ref role="3cqZAo" node="1muh51ormT0" resolve="method" />
+          </node>
+          <node concept="3TrcHB" id="1muh51or$QC" role="2OqNvi">
+            <ref role="3TsBF5" to="tpee:h9EzhlX" resolve="isAbstract" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1muh51orlND" role="1YuTPh">
+      <property role="TrG5h" value="modifier" />
+      <ref role="1YaFvo" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="6fye98SzSCJ">
+    <property role="TrG5h" value="check_DefaultMethodIsNotStatic" />
+    <node concept="3clFbS" id="6fye98SzSCK" role="18ibNy">
+      <node concept="3cpWs8" id="6fye98SzSCL" role="3cqZAp">
+        <node concept="3cpWsn" id="6fye98SzSCM" role="3cpWs9">
+          <property role="TrG5h" value="member" />
+          <node concept="3Tqbb2" id="6fye98SzSCN" role="1tU5fm" />
+          <node concept="2OqwBi" id="6fye98SzSCO" role="33vP2m">
+            <node concept="1YBJjd" id="6fye98SzSCP" role="2Oq$k0">
+              <ref role="1YBMHb" node="6fye98SzSDj" resolve="modifier" />
+            </node>
+            <node concept="1mfA1w" id="6fye98SzSCQ" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="6fye98SzSCR" role="3cqZAp">
+        <node concept="3clFbS" id="6fye98SzSCS" role="3clFbx">
+          <node concept="2MkqsV" id="6fye98SzSD7" role="3cqZAp">
+            <node concept="Xl_RD" id="6fye98SzSDe" role="2MkJ7o">
+              <property role="Xl_RC" value="The 'default' modifier is not allowed in static context" />
+            </node>
+            <node concept="2OqwBi" id="6fye98S$M39" role="1urrMF">
+              <node concept="1YBJjd" id="6fye98S$LTB" role="2Oq$k0">
+                <ref role="1YBMHb" node="6fye98SzSDj" resolve="modifier" />
+              </node>
+              <node concept="1mfA1w" id="6fye98S$MnN" role="2OqNvi" />
+            </node>
+            <node concept="3Cnw8n" id="6fye98SzSDb" role="1urrFz">
+              <ref role="QpYPw" to="ityx:1muh51or_0c" resolve="RemoveDefaultModifier" />
+              <node concept="3CnSsL" id="6fye98SzSDc" role="3Coj4f">
+                <ref role="QkamJ" to="ityx:2f5oWa05D_Y" resolve="member" />
+                <node concept="1PxgMI" id="6fye98S$QDK" role="3CoRuB">
+                  <node concept="chp4Y" id="6fye98S$QEh" role="3oSUPX">
+                    <ref role="cht4Q" to="tpee:20YUQaJkyY_" resolve="IHasModifiers" />
+                  </node>
+                  <node concept="37vLTw" id="6fye98S$MTI" role="1m5AlR">
+                    <ref role="3cqZAo" node="6fye98SzSCM" resolve="member" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2OqwBi" id="6fye98SzV78" role="3clFbw">
+          <node concept="1PxgMI" id="6fye98SzT43" role="2Oq$k0">
+            <node concept="chp4Y" id="6fye98SzT4r" role="3oSUPX">
+              <ref role="cht4Q" to="tpee:h9ngReX" resolve="ClassifierMember" />
+            </node>
+            <node concept="37vLTw" id="6fye98SzSQn" role="1m5AlR">
+              <ref role="3cqZAo" node="6fye98SzSCM" resolve="member" />
+            </node>
+          </node>
+          <node concept="2qgKlT" id="6fye98S$HSA" role="2OqNvi">
+            <ref role="37wK5l" to="tpek:7MS72Gc8avw" resolve="isStatic" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="6fye98SzSDj" role="1YuTPh">
+      <property role="TrG5h" value="modifier" />
+      <ref role="1YaFvo" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="3ltt6suXIrb">
+    <property role="TrG5h" value="check_DefaultMethodDeclarationV8" />
+    <property role="3GE5qa" value="" />
+    <node concept="3clFbS" id="3ltt6suXIrc" role="18ibNy">
+      <node concept="3cpWs8" id="3ltt6suXIrd" role="3cqZAp">
+        <node concept="3cpWsn" id="3ltt6suXIre" role="3cpWs9">
+          <property role="TrG5h" value="project" />
+          <node concept="3uibUv" id="3ltt6suXIrf" role="1tU5fm">
+            <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+          </node>
+        </node>
+      </node>
+      <node concept="3cpWs8" id="3ltt6suXIrg" role="3cqZAp">
+        <node concept="3cpWsn" id="3ltt6suXIrh" role="3cpWs9">
+          <property role="TrG5h" value="module" />
+          <node concept="3uibUv" id="3ltt6suXIri" role="1tU5fm">
+            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+          </node>
+          <node concept="2EnYce" id="3ltt6suXIrj" role="33vP2m">
+            <node concept="2JrnkZ" id="3ltt6suXIrk" role="2Oq$k0">
+              <node concept="2OqwBi" id="3ltt6suXIrl" role="2JrQYb">
+                <node concept="1YBJjd" id="3ltt6suXIrm" role="2Oq$k0">
+                  <ref role="1YBMHb" node="3ltt6suXIrW" resolve="modifier" />
+                </node>
+                <node concept="I4A8Y" id="3ltt6suXIrn" role="2OqNvi" />
+              </node>
+            </node>
+            <node concept="liA8E" id="3ltt6suXIro" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbF" id="3ltt6suXIrp" role="3cqZAp">
+        <node concept="37vLTI" id="3ltt6suXIrq" role="3clFbG">
+          <node concept="37vLTw" id="3ltt6suXIrr" role="37vLTJ">
+            <ref role="3cqZAo" node="3ltt6suXIre" resolve="project" />
+          </node>
+          <node concept="2YIFZM" id="3ltt6suXIrs" role="37vLTx">
+            <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+            <ref role="37wK5l" to="z1c3:~SModuleOperations.getProjectForModule(org.jetbrains.mps.openapi.module.SModule)" resolve="getProjectForModule" />
+            <node concept="37vLTw" id="3ltt6suXIrt" role="37wK5m">
+              <ref role="3cqZAo" node="3ltt6suXIrh" resolve="module" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="3ltt6suXIru" role="3cqZAp">
+        <node concept="3clFbS" id="3ltt6suXIrv" role="3clFbx">
+          <node concept="3cpWs6" id="3ltt6suXIrw" role="3cqZAp" />
+        </node>
+        <node concept="3clFbC" id="3ltt6suXIrx" role="3clFbw">
+          <node concept="10Nm6u" id="3ltt6suXIry" role="3uHU7w" />
+          <node concept="37vLTw" id="3ltt6suXIrz" role="3uHU7B">
+            <ref role="3cqZAo" node="3ltt6suXIre" resolve="project" />
+          </node>
+        </node>
+      </node>
+      <node concept="3cpWs8" id="3ltt6suXIr$" role="3cqZAp">
+        <node concept="3cpWsn" id="3ltt6suXIr_" role="3cpWs9">
+          <property role="TrG5h" value="sourceJavaVersion" />
+          <node concept="3uibUv" id="3ltt6suXIrA" role="1tU5fm">
+            <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
+          </node>
+          <node concept="2OqwBi" id="3ltt6suXIrB" role="33vP2m">
+            <node concept="2OqwBi" id="3ltt6suXIrC" role="2Oq$k0">
+              <node concept="2YIFZM" id="3ltt6suXIrD" role="2Oq$k0">
+                <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getInstance()" resolve="getInstance" />
+              </node>
+              <node concept="liA8E" id="3ltt6suXIrE" role="2OqNvi">
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
+                <node concept="37vLTw" id="3ltt6suXIrF" role="37wK5m">
+                  <ref role="3cqZAo" node="3ltt6suXIre" resolve="project" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="3ltt6suXIrG" role="2OqNvi">
+              <ref role="37wK5l" to="l46t:~JavaCompilerOptions.getTargetJavaVersion()" resolve="getTargetJavaVersion" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="3ltt6suXIrH" role="3cqZAp">
+        <node concept="3clFbS" id="3ltt6suXIrI" role="3clFbx">
+          <node concept="2MkqsV" id="3ltt6suXIrJ" role="3cqZAp">
+            <node concept="3cpWs3" id="3ltt6suXIrK" role="2MkJ7o">
+              <node concept="Xl_RD" id="3ltt6suXIrL" role="3uHU7B">
+                <property role="Xl_RC" value="Default methods are allowed only at source level 1.8 or above. Current java language level:" />
+              </node>
+              <node concept="2OqwBi" id="3ltt6suXIrM" role="3uHU7w">
+                <node concept="37vLTw" id="3ltt6suXIrN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3ltt6suXIr_" resolve="sourceJavaVersion" />
+                </node>
+                <node concept="liA8E" id="3ltt6suXIrO" role="2OqNvi">
+                  <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.getCompilerVersion()" resolve="getCompilerVersion" />
+                </node>
+              </node>
+            </node>
+            <node concept="1YBJjd" id="3ltt6suXIrP" role="1urrMF">
+              <ref role="1YBMHb" node="3ltt6suXIrW" resolve="modifier" />
+            </node>
+          </node>
+        </node>
+        <node concept="3eOVzh" id="3ltt6suXIrQ" role="3clFbw">
+          <node concept="3cmrfG" id="3ltt6suXIrR" role="3uHU7w">
+            <property role="3cmrfH" value="0" />
+          </node>
+          <node concept="2OqwBi" id="3ltt6suXIrS" role="3uHU7B">
+            <node concept="37vLTw" id="3ltt6suXIrT" role="2Oq$k0">
+              <ref role="3cqZAo" node="3ltt6suXIr_" resolve="sourceJavaVersion" />
+            </node>
+            <node concept="liA8E" id="3ltt6suXIrU" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~Enum.compareTo(java.lang.Enum)" resolve="compareTo" />
+              <node concept="Rm8GO" id="3ltt6suXIrV" role="37wK5m">
+                <ref role="1Px2BO" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
+                <ref role="Rm8GQ" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.VERSION_1_8" resolve="VERSION_1_8" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3ltt6suXIrW" role="1YuTPh">
+      <property role="TrG5h" value="modifier" />
+      <ref role="1YaFvo" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="6wTaD3FpQF7">
+    <property role="TrG5h" value="check_SuperInterfaceMethodCall" />
+    <node concept="3clFbS" id="6wTaD3FpQFT" role="18ibNy">
+      <node concept="3cpWs8" id="3ltt6suXItr" role="3cqZAp">
+        <node concept="3cpWsn" id="3ltt6suXIts" role="3cpWs9">
+          <property role="TrG5h" value="project" />
+          <node concept="3uibUv" id="3ltt6suXItt" role="1tU5fm">
+            <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+          </node>
+          <node concept="10Nm6u" id="6wTaD3FqcpK" role="33vP2m" />
+        </node>
+      </node>
+      <node concept="3cpWs8" id="3ltt6suXItu" role="3cqZAp">
+        <node concept="3cpWsn" id="3ltt6suXItv" role="3cpWs9">
+          <property role="TrG5h" value="module" />
+          <node concept="3uibUv" id="3ltt6suXItw" role="1tU5fm">
+            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+          </node>
+          <node concept="2EnYce" id="3ltt6suXItx" role="33vP2m">
+            <node concept="2JrnkZ" id="3ltt6suXIty" role="2Oq$k0">
+              <node concept="2OqwBi" id="3ltt6suXItz" role="2JrQYb">
+                <node concept="1YBJjd" id="6wTaD3Fq6IY" role="2Oq$k0">
+                  <ref role="1YBMHb" node="6wTaD3FpQFV" resolve="superInterfaceMethodCall" />
+                </node>
+                <node concept="I4A8Y" id="3ltt6suXIt$" role="2OqNvi" />
+              </node>
+            </node>
+            <node concept="liA8E" id="3ltt6suXIt_" role="2OqNvi">
+              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbF" id="3ltt6suXItA" role="3cqZAp">
+        <node concept="37vLTI" id="3ltt6suXItB" role="3clFbG">
+          <node concept="37vLTw" id="3ltt6suXItC" role="37vLTJ">
+            <ref role="3cqZAo" node="3ltt6suXIts" resolve="project" />
+          </node>
+          <node concept="2YIFZM" id="3ltt6suXItD" role="37vLTx">
+            <ref role="37wK5l" to="z1c3:~SModuleOperations.getProjectForModule(org.jetbrains.mps.openapi.module.SModule)" resolve="getProjectForModule" />
+            <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+            <node concept="37vLTw" id="3ltt6suXItE" role="37wK5m">
+              <ref role="3cqZAo" node="3ltt6suXItv" resolve="module" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="3ltt6suXItF" role="3cqZAp">
+        <node concept="3clFbS" id="3ltt6suXItG" role="3clFbx">
+          <node concept="3cpWs6" id="3ltt6suXItH" role="3cqZAp" />
+        </node>
+        <node concept="3clFbC" id="3ltt6suXItI" role="3clFbw">
+          <node concept="10Nm6u" id="3ltt6suXItJ" role="3uHU7w" />
+          <node concept="37vLTw" id="3ltt6suXItK" role="3uHU7B">
+            <ref role="3cqZAo" node="3ltt6suXIts" resolve="project" />
+          </node>
+        </node>
+      </node>
+      <node concept="3cpWs8" id="3ltt6suXItL" role="3cqZAp">
+        <node concept="3cpWsn" id="3ltt6suXItM" role="3cpWs9">
+          <property role="TrG5h" value="sourceJavaVersion" />
+          <node concept="3uibUv" id="6wTaD3FwK7r" role="1tU5fm">
+            <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
+          </node>
+          <node concept="2OqwBi" id="3ltt6suXItN" role="33vP2m">
+            <node concept="2OqwBi" id="3ltt6suXItO" role="2Oq$k0">
+              <node concept="2YIFZM" id="3ltt6suXItP" role="2Oq$k0">
+                <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getInstance()" resolve="getInstance" />
+              </node>
+              <node concept="liA8E" id="3ltt6suXItQ" role="2OqNvi">
+                <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
+                <node concept="37vLTw" id="3ltt6suXItR" role="37wK5m">
+                  <ref role="3cqZAo" node="3ltt6suXIts" resolve="project" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="3ltt6suXItS" role="2OqNvi">
+              <ref role="37wK5l" to="l46t:~JavaCompilerOptions.getTargetJavaVersion()" resolve="getTargetJavaVersion" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="3ltt6suXItT" role="3cqZAp">
+        <node concept="3clFbS" id="3ltt6suXItU" role="3clFbx">
+          <node concept="2MkqsV" id="3ltt6suXItV" role="3cqZAp">
+            <node concept="3cpWs3" id="3ltt6suXItW" role="2MkJ7o">
+              <node concept="Xl_RD" id="3ltt6suXItX" role="3uHU7B">
+                <property role="Xl_RC" value="Super interface method invocations are supported in Java 1.8 or higher. Current java language level:" />
+              </node>
+              <node concept="2OqwBi" id="3ltt6suXItY" role="3uHU7w">
+                <node concept="37vLTw" id="3ltt6suXItZ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3ltt6suXItM" resolve="sourceJavaVersion" />
+                </node>
+                <node concept="liA8E" id="3ltt6suXIu0" role="2OqNvi">
+                  <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.getCompilerVersion()" resolve="getCompilerVersion" />
+                </node>
+              </node>
+            </node>
+            <node concept="1YBJjd" id="6wTaD3FqggM" role="1urrMF">
+              <ref role="1YBMHb" node="6wTaD3FpQFV" resolve="superInterfaceMethodCall" />
+            </node>
+          </node>
+        </node>
+        <node concept="3eOVzh" id="3ltt6suXIu1" role="3clFbw">
+          <node concept="3cmrfG" id="3ltt6suXIu2" role="3uHU7w">
+            <property role="3cmrfH" value="0" />
+          </node>
+          <node concept="2OqwBi" id="3ltt6suXIu3" role="3uHU7B">
+            <node concept="37vLTw" id="3ltt6suXIu4" role="2Oq$k0">
+              <ref role="3cqZAo" node="3ltt6suXItM" resolve="sourceJavaVersion" />
+            </node>
+            <node concept="liA8E" id="3ltt6suXIu5" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~Enum.compareTo(java.lang.Enum)" resolve="compareTo" />
+              <node concept="Rm8GO" id="6wTaD3FwPLU" role="37wK5m">
+                <ref role="Rm8GQ" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.VERSION_1_8" resolve="VERSION_1_8" />
+                <ref role="1Px2BO" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="6wTaD3FpQFV" role="1YuTPh">
+      <property role="TrG5h" value="superInterfaceMethodCall" />
+      <ref role="1YaFvo" to="tpee:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
     </node>
   </node>
 </model>

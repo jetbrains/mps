@@ -185,7 +185,7 @@
   </registry>
   <node concept="312cEu" id="0">
     <property role="1sVAO0" value="false" />
-    <property role="TrG5h" value="DefaultModifier_TextGen" />
+    <property role="TrG5h" value="DefaultModifier_old_TextGen" />
     <node concept="3Tm1VV" id="1" role="1B3o_S">
       <node concept="cd27G" id="5" role="lGtFl">
         <node concept="3u3nmq" id="6" role="cd27D">
@@ -350,9 +350,9 @@
     <node concept="39e2AJ" id="10" role="39e2AI">
       <property role="39e3Y2" value="TextGenClass" />
       <node concept="39e2AG" id="12" role="39e3Y0">
-        <ref role="39e2AK" to="g26t:4c$BrPwIrcM" resolve="DefaultModifier_TextGen" />
+        <ref role="39e2AK" to="g26t:4c$BrPwIrcM" resolve="DefaultModifier_old_TextGen" />
         <node concept="385nmt" id="14" role="385vvn">
-          <property role="385vuF" value="DefaultModifier_TextGen" />
+          <property role="385vuF" value="DefaultModifier_old_TextGen" />
           <node concept="2$VJBW" id="16" role="385v07">
             <property role="2$VJBR" value="4838165336399917874" />
             <node concept="2x4n5u" id="17" role="3iCydw">
@@ -366,13 +366,13 @@
           </node>
         </node>
         <node concept="39e2AT" id="15" role="39e2AY">
-          <ref role="39e2AS" node="0" resolve="DefaultModifier_TextGen" />
+          <ref role="39e2AS" node="0" resolve="DefaultModifier_old_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="13" role="39e3Y0">
-        <ref role="39e2AK" to="g26t:5_deIS4VsfG" resolve="SuperInterfaceMethodCall_TextGen" />
+        <ref role="39e2AK" to="g26t:5_deIS4VsfG" resolve="SuperInterfaceMethodCall_old_TextGen" />
         <node concept="385nmt" id="19" role="385vvn">
-          <property role="385vuF" value="SuperInterfaceMethodCall_TextGen" />
+          <property role="385vuF" value="SuperInterfaceMethodCall_old_TextGen" />
           <node concept="2$VJBW" id="1b" role="385v07">
             <property role="2$VJBR" value="6434864236541625324" />
             <node concept="2x4n5u" id="1c" role="3iCydw">
@@ -386,7 +386,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="1a" role="39e2AY">
-          <ref role="39e2AS" node="1g" resolve="SuperInterfaceMethodCall_TextGen" />
+          <ref role="39e2AS" node="1g" resolve="SuperInterfaceMethodCall_old_TextGen" />
         </node>
       </node>
     </node>
@@ -402,7 +402,7 @@
   </node>
   <node concept="312cEu" id="1g">
     <property role="1sVAO0" value="false" />
-    <property role="TrG5h" value="SuperInterfaceMethodCall_TextGen" />
+    <property role="TrG5h" value="SuperInterfaceMethodCall_old_TextGen" />
     <node concept="3Tm1VV" id="1h" role="1B3o_S">
       <node concept="cd27G" id="1l" role="lGtFl">
         <node concept="3u3nmq" id="1m" role="cd27D">
@@ -511,7 +511,7 @@
               <node concept="37Cfm0" id="22" role="2OqNvi">
                 <node concept="1aIX9F" id="28" role="37CeNk">
                   <node concept="26LbJo" id="2a" role="1aIX9E">
-                    <ref role="26LbJp" to="jqf9:1vrGgVFtizu" resolve="classifier" />
+                    <ref role="26LbJp" to="jqf9:1vrGgVFtizu" resolve="classifier_old" />
                     <node concept="cd27G" id="2c" role="lGtFl">
                       <node concept="3u3nmq" id="2d" role="cd27D">
                         <property role="3u3nmv" value="6434864236541632522" />
@@ -745,14 +745,14 @@
           </node>
           <node concept="3KbdKl" id="3p" role="3KbHQx">
             <node concept="1n$iZg" id="3u" role="3Kbmr1">
-              <property role="1n_iUB" value="DefaultModifier" />
+              <property role="1n_iUB" value="DefaultModifier_old" />
               <property role="1n_ezw" value="jetbrains.mps.baseLanguage.jdk8.structure.LanguageConceptSwitch" />
             </node>
             <node concept="3clFbS" id="3v" role="3Kbo56">
               <node concept="3cpWs6" id="3w" role="3cqZAp">
                 <node concept="2ShNRf" id="3x" role="3cqZAk">
                   <node concept="HV5vD" id="3y" role="2ShVmc">
-                    <ref role="HV5vE" node="0" resolve="DefaultModifier_TextGen" />
+                    <ref role="HV5vE" node="0" resolve="DefaultModifier_old_TextGen" />
                   </node>
                 </node>
               </node>
@@ -760,14 +760,14 @@
           </node>
           <node concept="3KbdKl" id="3q" role="3KbHQx">
             <node concept="1n$iZg" id="3z" role="3Kbmr1">
-              <property role="1n_iUB" value="SuperInterfaceMethodCall" />
+              <property role="1n_iUB" value="SuperInterfaceMethodCall_old" />
               <property role="1n_ezw" value="jetbrains.mps.baseLanguage.jdk8.structure.LanguageConceptSwitch" />
             </node>
             <node concept="3clFbS" id="3$" role="3Kbo56">
               <node concept="3cpWs6" id="3_" role="3cqZAp">
                 <node concept="2ShNRf" id="3A" role="3cqZAk">
                   <node concept="HV5vD" id="3B" role="2ShVmc">
-                    <ref role="HV5vE" node="1g" resolve="SuperInterfaceMethodCall_TextGen" />
+                    <ref role="HV5vE" node="1g" resolve="SuperInterfaceMethodCall_old_TextGen" />
                   </node>
                 </node>
               </node>
