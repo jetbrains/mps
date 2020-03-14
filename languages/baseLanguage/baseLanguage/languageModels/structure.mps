@@ -2,6 +2,7 @@
 <model ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)">
   <persistence version="9" />
   <languages>
+    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -4626,6 +4627,53 @@
       <property role="20kJfa" value="lines" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="72DAwHBizyl">
+    <property role="EcuMT" value="8118189177080264853" />
+    <property role="TrG5h" value="AlternativeType" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1TJDcQ" node="4ctkEngA$UD" resolve="UndefinedType" />
+    <node concept="1TJgyj" id="72DAwHBizym" role="1TKVEi">
+      <property role="IQ2ns" value="8118189177080264854" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <property role="20kJfa" value="classes" />
+      <ref role="20lvS9" node="fz3vP1H" resolve="Type" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4iVGRTTqGsI">
+    <property role="EcuMT" value="4952749571008284462" />
+    <property role="TrG5h" value="CatchVariable" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1TJDcQ" node="fzcpWvJ" resolve="LocalVariableDeclaration" />
+  </node>
+  <node concept="1TIwiD" id="2FJPm3O0rB6">
+    <property role="EcuMT" value="3093926081414150598" />
+    <property role="TrG5h" value="MultipleCatchClause" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1TJDcQ" node="gWTDmSJ" resolve="CatchClause" />
+  </node>
+  <node concept="1TIwiD" id="4D3iSq_h_ou">
+    <property role="EcuMT" value="5351203823916832286" />
+    <property role="TrG5h" value="ResourceVariable" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1TJDcQ" node="fzcpWvJ" resolve="LocalVariableDeclaration" />
+  </node>
+  <node concept="1TIwiD" id="4D3iSq_hhnM">
+    <property role="EcuMT" value="5351203823916750322" />
+    <property role="TrG5h" value="TryWithResourcesStatement" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1TJDcQ" node="gMGUZlm" resolve="TryFinallyStatement" />
+    <node concept="1TJgyj" id="4D3iSq_hhnY" role="1TKVEi">
+      <property role="IQ2ns" value="5351203823916750334" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="resource" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" node="4D3iSq_h_ou" resolve="ResourceVariable" />
+    </node>
+    <node concept="PrWs8" id="4D3iSq_iWaC" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
   </node>
 </model>

@@ -12,6 +12,7 @@
     <use id="daafa647-f1f7-4b0b-b096-69cd7c8408c0" name="jetbrains.mps.baseLanguage.regexp" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -101,6 +102,7 @@
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="1140524464359" name="emptyCellModel" index="2czzBI" />
         <child id="928328222691832421" name="separatorTextQuery" index="2gpyvW" />
+        <child id="1233141163694" name="separatorStyle" index="sWeuL" />
         <child id="6046489571270834038" name="foldedCellModel" index="3EmGlc" />
       </concept>
       <concept id="4510086454722552739" name="jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector" flags="ng" index="eBIwv">
@@ -147,6 +149,7 @@
       </concept>
       <concept id="8478191136886971898" name="jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Icon" flags="in" index="pEWwh" />
       <concept id="1237385578942" name="jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem" flags="ln" index="pVoyu" />
+      <concept id="1233148810477" name="jetbrains.mps.lang.editor.structure.InlineStyleDeclaration" flags="ng" index="tppnM" />
       <concept id="1177327274449" name="jetbrains.mps.lang.editor.structure.QueryFunctionParameter_pattern" flags="nn" index="ub8z3" />
       <concept id="1177327570013" name="jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Substitute" flags="in" index="ucgPf" />
       <concept id="7671875129586001610" name="jetbrains.mps.lang.editor.structure.TransformationMenuPart_IncludeSubstituteMenu" flags="ng" index="ulPW2">
@@ -67297,6 +67300,215 @@
       </node>
     </node>
     <node concept="22hDWj" id="4D3iSq$Vzic" role="22hAXT" />
+  </node>
+  <node concept="24kQdi" id="72DAwHBizyR">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1XX52x" to="tpee:72DAwHBizyl" resolve="AlternativeType" />
+    <node concept="3F2HdR" id="72DAwHBiz$H" role="2wV5jI">
+      <property role="2czwfO" value="|" />
+      <ref role="1NtTu8" to="tpee:72DAwHBizym" resolve="classes" />
+      <node concept="l2Vlx" id="72DAwHBiz$U" role="2czzBx" />
+      <node concept="tppnM" id="72DAwHBi$Jq" role="sWeuL">
+        <ref role="1k5W1q" node="hF$iUjy" resolve="Operator" />
+        <node concept="11L4FC" id="72DAwHBiGRL" role="3F10Kt" />
+        <node concept="VPM3Z" id="72DAwHBiHZV" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="1xolST" id="4D3iSqzZQp4" role="2czzBI">
+        <property role="1xolSY" value="&lt;type&gt;" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="4D3iSq_iw40">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1XX52x" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
+    <node concept="3EZMnI" id="4z_SuroxERv" role="2wV5jI">
+      <node concept="3EZMnI" id="4z_SuroxERw" role="3EZMnx">
+        <node concept="3F2HdR" id="4z_SuroxERx" role="3EZMnx">
+          <ref role="1NtTu8" to="tpee:hiAJF2X" resolve="annotation" />
+          <node concept="l2Vlx" id="4z_SuroxERy" role="2czzBx" />
+          <node concept="ljvvj" id="4z_SuroxERz" role="3F10Kt" />
+        </node>
+        <node concept="pkWqt" id="4z_SuroxER$" role="pqm2j">
+          <node concept="3clFbS" id="4z_SuroxER_" role="2VODD2">
+            <node concept="3clFbF" id="4z_SuroxERA" role="3cqZAp">
+              <node concept="2OqwBi" id="4z_SuroxERB" role="3clFbG">
+                <node concept="2OqwBi" id="4z_SuroxERC" role="2Oq$k0">
+                  <node concept="pncrf" id="4z_SuroxERD" role="2Oq$k0" />
+                  <node concept="Bykcj" id="4z_SuroxERE" role="2OqNvi">
+                    <node concept="1aIX9F" id="4z_SuroxERF" role="1xVPHs">
+                      <node concept="26LbJo" id="4z_SuroxERG" role="1aIX9E">
+                        <ref role="26LbJp" to="tpee:hiAJF2X" resolve="annotation" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3GX2aA" id="4z_SuroxERH" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="VPM3Z" id="4z_SuroxERI" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+        <node concept="l2Vlx" id="4z_SuroxERJ" role="2iSdaV" />
+      </node>
+      <node concept="PMmxH" id="4z_SuroxERK" role="3EZMnx">
+        <ref role="PMmxG" node="4doMSU31bY1" resolve="LovalVariableDeclaration_Type" />
+      </node>
+      <node concept="PMmxH" id="4z_SuroxERL" role="3EZMnx">
+        <ref role="PMmxG" node="hcE9nLY" resolve="VariableDeclaration_NameCellComponent" />
+        <ref role="1ERwB7" node="3fsGbyaBOw3" resolve="LocalVariableDeclaration_Name_Actions" />
+      </node>
+      <node concept="3EZMnI" id="4z_SuroxERM" role="3EZMnx">
+        <property role="1ayjP4" value="false" />
+        <node concept="3F0ifn" id="4z_SuroxERN" role="3EZMnx">
+          <property role="3F0ifm" value="=" />
+          <ref role="1k5W1q" node="hF$iUjy" resolve="Operator" />
+        </node>
+        <node concept="3F1sOY" id="4z_SuroxERO" role="3EZMnx">
+          <ref role="1NtTu8" to="tpee:fz3vP1I" resolve="initializer" />
+          <node concept="VPRnO" id="4z_SuroxERP" role="3F10Kt">
+            <property role="VOm3f" value="false" />
+          </node>
+        </node>
+        <node concept="VPM3Z" id="4z_SuroxERQ" role="3F10Kt">
+          <property role="VOm3f" value="false" />
+        </node>
+        <node concept="l2Vlx" id="4z_SuroxERR" role="2iSdaV" />
+      </node>
+      <node concept="l2Vlx" id="4z_SuroxERS" role="2iSdaV" />
+    </node>
+    <node concept="3EZMnI" id="4z_SuroxERT" role="6VMZX">
+      <node concept="3F0ifn" id="4z_SuroxERU" role="3EZMnx">
+        <property role="3F0ifm" value="annotations:" />
+        <node concept="ljvvj" id="4z_SuroxERV" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="4z_SuroxERW" role="3EZMnx">
+        <ref role="1NtTu8" to="tpee:hiAJF2X" resolve="annotation" />
+        <node concept="ljvvj" id="4z_SuroxERX" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="l2Vlx" id="4z_SuroxERY" role="2czzBx" />
+      </node>
+      <node concept="l2Vlx" id="4z_SuroxERZ" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="4D3iSq_hhot">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1XX52x" to="tpee:4D3iSq_hhnM" resolve="TryWithResourcesStatement" />
+    <node concept="3EZMnI" id="4z_SuroxEXu" role="2wV5jI">
+      <ref role="1ERwB7" node="1CJSrHA7vHo" resolve="BigStatement_comment_action" />
+      <node concept="3F0ifn" id="4z_SuroxEXv" role="3EZMnx">
+        <property role="3F0ifm" value="try" />
+        <ref role="1ERwB7" node="19cklmQRQ9N" resolve="UnwrapStatementListContainer" />
+        <ref role="1k5W1q" node="hgVS8CF" resolve="KeyWord" />
+      </node>
+      <node concept="3F0ifn" id="4D3iSq_hhpu" role="3EZMnx">
+        <property role="3F0ifm" value="(" />
+        <ref role="1k5W1q" node="hFCSAw$" resolve="LeftParen" />
+      </node>
+      <node concept="3F2HdR" id="4D3iSq_hhrw" role="3EZMnx">
+        <property role="2czwfO" value=";" />
+        <ref role="1NtTu8" to="tpee:4D3iSq_hhnY" resolve="resource" />
+        <node concept="l2Vlx" id="4D3iSq_hhry" role="2czzBx" />
+      </node>
+      <node concept="3F0ifn" id="4D3iSq_hhqu" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <ref role="1k5W1q" node="hFCSUmN" resolve="RightParen" />
+      </node>
+      <node concept="3F0ifn" id="4z_SuroxEXw" role="3EZMnx">
+        <property role="3F0ifm" value="{" />
+        <ref role="1ERwB7" node="19cklmQRQ9N" resolve="UnwrapStatementListContainer" />
+        <ref role="1k5W1q" node="hFD5onb" resolve="LeftBrace" />
+        <node concept="3mYdg7" id="4z_SuroxEXx" role="3F10Kt">
+          <property role="1413C4" value="try" />
+        </node>
+        <node concept="ljvvj" id="4z_SuroxEXy" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F1sOY" id="4z_SuroxEXz" role="3EZMnx">
+        <ref role="1NtTu8" to="tpee:gMGV8eI" resolve="body" />
+        <node concept="lj46D" id="4z_SuroxEX$" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="ljvvj" id="4z_SuroxEX_" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="4z_SuroxEXA" role="3EZMnx">
+        <property role="3F0ifm" value="}" />
+        <ref role="1ERwB7" node="434bMCuYCTt" resolve="TryStatement_DeleteBodyEndingBrace" />
+        <ref role="1k5W1q" node="hFD5_7H" resolve="RightBrace" />
+        <node concept="3mYdg7" id="4z_SuroxEXB" role="3F10Kt">
+          <property role="1413C4" value="try" />
+        </node>
+        <node concept="VPxyj" id="4z_SuroxEXC" role="3F10Kt" />
+        <node concept="A1WHr" id="4z_SuroxEXD" role="3vIgyS">
+          <ref role="2ZyFGn" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="4z_SuroxEXE" role="3EZMnx">
+        <ref role="1NtTu8" to="tpee:gWTEX_W" resolve="catchClause" />
+        <node concept="l2Vlx" id="4z_SuroxEXF" role="2czzBx" />
+        <node concept="3F0ifn" id="4z_SuroxEXG" role="2czzBI">
+          <node concept="11L4FC" id="4z_SuroxEXH" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="3EZMnI" id="4z_SuroxEXI" role="3EZMnx">
+        <ref role="1ERwB7" node="3ePv0$YD6yW" resolve="TryStatement_FinallyBlock_Actions" />
+        <node concept="l2Vlx" id="4z_SuroxEXJ" role="2iSdaV" />
+        <node concept="3F0ifn" id="4z_SuroxEXK" role="3EZMnx">
+          <property role="3F0ifm" value="finally" />
+          <ref role="1k5W1q" node="hgVS8CF" resolve="KeyWord" />
+          <ref role="1ERwB7" node="3ePv0$YD6yW" resolve="TryStatement_FinallyBlock_Actions" />
+          <node concept="VechU" id="4z_SuroxEXL" role="3F10Kt">
+            <property role="Vb096" value="DARK_BLUE" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4z_SuroxEXM" role="3EZMnx">
+          <property role="3F0ifm" value="{" />
+          <ref role="1k5W1q" node="hFD5onb" resolve="LeftBrace" />
+          <ref role="1ERwB7" node="3ePv0$YD6yW" resolve="TryStatement_FinallyBlock_Actions" />
+          <node concept="3mYdg7" id="4z_SuroxEXN" role="3F10Kt">
+            <property role="1413C4" value="finally" />
+          </node>
+          <node concept="ljvvj" id="4z_SuroxEXO" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F1sOY" id="4z_SuroxEXP" role="3EZMnx">
+          <ref role="1NtTu8" to="tpee:gMGVbsj" resolve="finallyBody" />
+          <node concept="lj46D" id="4z_SuroxEXQ" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+          <node concept="ljvvj" id="4z_SuroxEXR" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="4z_SuroxEXS" role="3EZMnx">
+          <property role="3F0ifm" value="}" />
+          <ref role="1k5W1q" node="hFD5_7H" resolve="RightBrace" />
+          <ref role="1ERwB7" node="3ePv0$YD6yW" resolve="TryStatement_FinallyBlock_Actions" />
+          <node concept="3mYdg7" id="4z_SuroxEXT" role="3F10Kt">
+            <property role="1413C4" value="finally" />
+          </node>
+          <node concept="ljvvj" id="4z_SuroxEXU" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="2SqB2G" id="4z_SuroxEXV" role="2SqHTX">
+          <property role="TrG5h" value="finally" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="4z_SuroxEXW" role="2iSdaV" />
+    </node>
   </node>
 </model>
 

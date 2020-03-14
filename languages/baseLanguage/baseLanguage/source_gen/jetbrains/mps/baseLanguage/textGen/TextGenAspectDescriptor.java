@@ -30,6 +30,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     switch (myIndex.index(concept)) {
       case LanguageConceptSwitch.AdditionalForLoopVariable:
         return new AdditionalForLoopVariable_TextGen();
+      case LanguageConceptSwitch.AlternativeType:
+        return new AlternativeType_TextGen();
       case LanguageConceptSwitch.AndExpression:
         return new AndExpression_TextGen();
       case LanguageConceptSwitch.Annotation:
@@ -236,6 +238,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new RemExpression_TextGen();
       case LanguageConceptSwitch.RemarkStatement:
         return new RemarkStatement_TextGen();
+      case LanguageConceptSwitch.ResourceVariable:
+        return new ResourceVariable_TextGen();
       case LanguageConceptSwitch.ReturnStatement:
         return new ReturnStatement_TextGen();
       case LanguageConceptSwitch.ShiftLeftExpression:
@@ -290,6 +294,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new TryCatchStatement_TextGen();
       case LanguageConceptSwitch.TryFinallyStatement:
         return new TryFinallyStatement_TextGen();
+      case LanguageConceptSwitch.TryWithResourcesStatement:
+        return new TryWithResourcesStatement_TextGen();
       case LanguageConceptSwitch.TypeVariableDeclaration:
         return new TypeVariableDeclaration_TextGen();
       case LanguageConceptSwitch.TypeVariableReference:

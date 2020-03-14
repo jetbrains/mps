@@ -36,9 +36,6 @@
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
-      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
-        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
@@ -90,12 +87,8 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
-      </concept>
-      <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
-        <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
@@ -122,11 +115,6 @@
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
     </language>
-    <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
-        <child id="1196350785114" name="quotedNode" index="2c44tc" />
-      </concept>
-    </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
       <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
         <reference id="7256306938026143658" name="target" index="2aWVGs" />
@@ -137,17 +125,8 @@
       <concept id="2329696648445392942" name="jetbrains.mps.lang.typesystem.structure.CheckingRuleReference" flags="ng" index="dlsrG">
         <reference id="2329696648445392943" name="declaration" index="dlsrH" />
       </concept>
-      <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
-        <child id="1185788644032" name="normalType" index="mwGJk" />
-      </concept>
-      <concept id="1175517400280" name="jetbrains.mps.lang.typesystem.structure.AssertStatement" flags="nn" index="2Mj0R9">
-        <child id="1175517761460" name="condition" index="2MkoU_" />
-      </concept>
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
-      </concept>
-      <concept id="1227096620180" name="jetbrains.mps.lang.typesystem.structure.ReferenceMessageTarget" flags="ng" index="2OE7Q9">
-        <reference id="1227096645744" name="linkDeclaration" index="2OEe5H" />
       </concept>
       <concept id="1195213580585" name="jetbrains.mps.lang.typesystem.structure.AbstractCheckingRule" flags="ig" index="18hYwZ">
         <child id="1195213635060" name="body" index="18ibNy" />
@@ -156,7 +135,6 @@
         <child id="2329696648448631592" name="overridenRules" index="dp_RE" />
       </concept>
       <concept id="3937244445246642777" name="jetbrains.mps.lang.typesystem.structure.AbstractReportStatement" flags="ng" index="1urrMJ">
-        <child id="3937244445246643443" name="messageTarget" index="1urrC5" />
         <child id="3937244445246642781" name="nodeToReport" index="1urrMF" />
       </concept>
       <concept id="1176544042499" name="jetbrains.mps.lang.typesystem.structure.Node_TypeOperation" flags="nn" index="3JvlWi" />
@@ -169,24 +147,12 @@
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
-      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF" />
       <concept id="1174648085619" name="jetbrains.mps.lang.typesystem.structure.AbstractRule" flags="ng" index="1YuPPy">
         <child id="1174648101952" name="applicableNode" index="1YuTPh" />
       </concept>
       <concept id="1174650418652" name="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference" flags="nn" index="1YBJjd">
         <reference id="1174650432090" name="applicableNode" index="1YBMHb" />
       </concept>
-      <concept id="1174657487114" name="jetbrains.mps.lang.typesystem.structure.TypeOfExpression" flags="nn" index="1Z2H0r">
-        <child id="1174657509053" name="term" index="1Z2MuG" />
-      </concept>
-      <concept id="1174660718586" name="jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement" flags="nn" index="1Zf1VF">
-        <property id="1206359757216" name="checkOnly" index="3wDh2S" />
-        <child id="1174660783413" name="leftExpression" index="1ZfhK$" />
-        <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
-        <child id="1174662598553" name="nodeToCheck" index="1ZmcU8" />
-      </concept>
-      <concept id="1174663118805" name="jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement" flags="nn" index="1ZobV4" />
-      <concept id="1174663239020" name="jetbrains.mps.lang.typesystem.structure.CreateGreaterThanInequationStatement" flags="nn" index="1ZoDhX" />
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
@@ -216,10 +182,7 @@
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
-      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
-      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
-        <property id="1238684351431" name="asCast" index="1BlNFB" />
-      </concept>
+      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="3661776679762942774" name="jetbrains.mps.lang.smodel.structure.Node_IsOperation" flags="ng" index="1QLmlb">
         <child id="3661776679762942860" name="ref" index="1QLmnL" />
       </concept>
@@ -263,17 +226,8 @@
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
-      <concept id="1153943597977" name="jetbrains.mps.baseLanguage.collections.structure.ForEachStatement" flags="nn" index="2Gpval">
-        <child id="1153944400369" name="variable" index="2Gsz3X" />
-        <child id="1153944424730" name="inputSequence" index="2GsD0m" />
-      </concept>
-      <concept id="1153944193378" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariable" flags="nr" index="2GrKxI" />
-      <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
-        <reference id="1153944258490" name="variable" index="2Gs0qQ" />
-      </concept>
       <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
         <child id="1237721435807" name="elementType" index="HW$YZ" />
-        <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
@@ -593,207 +547,20 @@
       <ref role="dlsrH" to="tpeh:2R$wlLKBmce" resolve="check_switchArgument" />
     </node>
   </node>
-  <node concept="1YbPZF" id="5PUUrvXDF7D">
-    <property role="TrG5h" value="typeof_CatchVariable" />
-    <node concept="3clFbS" id="5PUUrvXDF7E" role="18ibNy">
-      <node concept="2Gpval" id="5PUUrvXDFe6" role="3cqZAp">
-        <node concept="2GrKxI" id="5PUUrvXDFe8" role="2Gsz3X">
-          <property role="TrG5h" value="caughtType" />
-        </node>
-        <node concept="2OqwBi" id="5PUUrvXDGbw" role="2GsD0m">
-          <node concept="1PxgMI" id="5PUUrvXDZ$J" role="2Oq$k0">
-            <property role="1BlNFB" value="true" />
-            <node concept="chp4Y" id="5PUUrvXDZ_W" role="3oSUPX">
-              <ref role="cht4Q" to="rymi:72DAwHBizyl" resolve="AlternativeType" />
-            </node>
-            <node concept="2OqwBi" id="5PUUrvXDFxZ" role="1m5AlR">
-              <node concept="1YBJjd" id="5PUUrvXDFer" role="2Oq$k0">
-                <ref role="1YBMHb" node="5PUUrvXDF7G" resolve="catchVariable" />
-              </node>
-              <node concept="3TrEf2" id="5PUUrvXDZps" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
-              </node>
-            </node>
-          </node>
-          <node concept="3Tsc0h" id="5PUUrvXDGot" role="2OqNvi">
-            <ref role="3TtcxE" to="rymi:72DAwHBizym" resolve="classes" />
-          </node>
-        </node>
-        <node concept="3clFbS" id="5PUUrvXDFec" role="2LFqv$">
-          <node concept="1ZoDhX" id="5PUUrvXDGUS" role="3cqZAp">
-            <node concept="mw_s8" id="5PUUrvXDGUV" role="1ZfhK$">
-              <node concept="1Z2H0r" id="5PUUrvXDGUW" role="mwGJk">
-                <node concept="1YBJjd" id="5PUUrvXDGUX" role="1Z2MuG">
-                  <ref role="1YBMHb" node="5PUUrvXDF7G" resolve="catchVariable" />
-                </node>
-              </node>
-            </node>
-            <node concept="mw_s8" id="5PUUrvXDH3j" role="1ZfhKB">
-              <node concept="2GrUjf" id="5PUUrvXDH3h" role="mwGJk">
-                <ref role="2Gs0qQ" node="5PUUrvXDFe8" resolve="caughtType" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="5PUUrvXDF7G" role="1YuTPh">
-      <property role="TrG5h" value="catchVariable" />
-      <ref role="1YaFvo" to="rymi:4iVGRTTqGsI" resolve="CatchVariable" />
-    </node>
-  </node>
-  <node concept="18kY7G" id="4D3iSq_hD0X">
-    <property role="TrG5h" value="check_ResourceVariable" />
-    <node concept="3clFbS" id="4D3iSq_hD0Y" role="18ibNy">
-      <node concept="2Mj0R9" id="4D3iSq_hDWb" role="3cqZAp">
-        <node concept="Xl_RD" id="4D3iSq_hEfB" role="2MkJ7o">
-          <property role="Xl_RC" value="Resource variable should be initialized" />
-        </node>
-        <node concept="1YBJjd" id="4D3iSq_hEhQ" role="1urrMF">
-          <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
-        </node>
-        <node concept="2OqwBi" id="4D3iSq_hE3l" role="2MkoU_">
-          <node concept="2OqwBi" id="4D3iSq_hDkC" role="2Oq$k0">
-            <node concept="1YBJjd" id="4D3iSq_hD1g" role="2Oq$k0">
-              <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
-            </node>
-            <node concept="3TrEf2" id="4D3iSq_hDIK" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpee:fz3vP1I" resolve="initializer" />
-            </node>
-          </node>
-          <node concept="3x8VRR" id="4D3iSq_hEbY" role="2OqNvi" />
-        </node>
-        <node concept="2OE7Q9" id="4D3iSq_i$8m" role="1urrC5">
-          <ref role="2OEe5H" to="tpee:fz3vP1I" resolve="initializer" />
-        </node>
-      </node>
-      <node concept="2Mj0R9" id="4D3iSq_hF9j" role="3cqZAp">
-        <node concept="2OqwBi" id="4D3iSq_hFth" role="2MkoU_">
-          <node concept="1YBJjd" id="4D3iSq_hF9N" role="2Oq$k0">
-            <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
-          </node>
-          <node concept="3TrcHB" id="4D3iSq_hFYK" role="2OqNvi">
-            <ref role="3TsBF5" to="tpee:h7TUv0c" resolve="isFinal" />
-          </node>
-        </node>
-        <node concept="Xl_RD" id="4D3iSq_hGHk" role="2MkJ7o">
-          <property role="Xl_RC" value="Resource variable should be final" />
-        </node>
-        <node concept="1YBJjd" id="4D3iSq_hGRi" role="1urrMF">
-          <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="4D3iSq_hD10" role="1YuTPh">
-      <property role="TrG5h" value="resourceVariable" />
-      <ref role="1YaFvo" to="rymi:4D3iSq_h_ou" resolve="ResourceVariable" />
-    </node>
-  </node>
-  <node concept="1YbPZF" id="4D3iSq_i$9v">
-    <property role="TrG5h" value="typeof_ResourceVariable" />
-    <node concept="3clFbS" id="4D3iSq_i$9w" role="18ibNy">
-      <node concept="1ZobV4" id="4D3iSq_i$9A" role="3cqZAp">
-        <property role="3wDh2S" value="true" />
-        <node concept="mw_s8" id="4D3iSq_i$US" role="1ZfhKB">
-          <node concept="2c44tf" id="4D3iSq_i$UO" role="mwGJk">
-            <node concept="3uibUv" id="4D3iSq_i$Wf" role="2c44tc">
-              <ref role="3uigEE" to="wyt6:~AutoCloseable" resolve="AutoCloseable" />
-            </node>
-          </node>
-        </node>
-        <node concept="mw_s8" id="4D3iSq_i$9I" role="1ZfhK$">
-          <node concept="2OqwBi" id="4D3iSq_i$pM" role="mwGJk">
-            <node concept="1YBJjd" id="4D3iSq_i$9G" role="2Oq$k0">
-              <ref role="1YBMHb" node="4D3iSq_i$9y" resolve="resourceVariable" />
-            </node>
-            <node concept="3TrEf2" id="4D3iSq_i$NU" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
-            </node>
-          </node>
-        </node>
-        <node concept="2OqwBi" id="4D3iSq_iBC_" role="1ZmcU8">
-          <node concept="1YBJjd" id="4D3iSq_iBoA" role="2Oq$k0">
-            <ref role="1YBMHb" node="4D3iSq_i$9y" resolve="resourceVariable" />
-          </node>
-          <node concept="3TrEf2" id="4D3iSq_iC6P" role="2OqNvi">
-            <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="4D3iSq_i$9y" role="1YuTPh">
-      <property role="TrG5h" value="resourceVariable" />
-      <ref role="1YaFvo" to="rymi:4D3iSq_h_ou" resolve="ResourceVariable" />
-    </node>
-  </node>
-  <node concept="18kY7G" id="hB46f1H">
-    <property role="TrG5h" value="checkThrowsOfResourceIsCaught" />
-    <node concept="3clFbS" id="hB46f1I" role="18ibNy">
-      <node concept="3cpWs8" id="jlPzbW43Wl" role="3cqZAp">
-        <node concept="3cpWsn" id="jlPzbW43Wm" role="3cpWs9">
-          <property role="TrG5h" value="throwables" />
-          <node concept="2hMVRd" id="jlPzbW43Wn" role="1tU5fm">
-            <node concept="3Tqbb2" id="jlPzbW43Wo" role="2hN53Y">
-              <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
-            </node>
-          </node>
-          <node concept="2ShNRf" id="jlPzbW43Wp" role="33vP2m">
-            <node concept="2i4dXS" id="jlPzbW43Wq" role="2ShVmc">
-              <node concept="3Tqbb2" id="jlPzbW43Wr" role="HW$YZ">
-                <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
-              </node>
-              <node concept="2OqwBi" id="jlPzbW43Ws" role="I$8f6">
-                <node concept="2ShNRf" id="jlPzbW4jBD" role="2Oq$k0">
-                  <node concept="1pGfFk" id="jlPzbW4kPN" role="2ShVmc">
-                    <ref role="37wK5l" node="jlPzbW43gt" resolve="ResourceVariableHelper" />
-                    <node concept="1YBJjd" id="jlPzbW4kY5" role="37wK5m">
-                      <ref role="1YBMHb" node="hB4agFk" resolve="resourceVariable" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="jlPzbW4l9c" role="2OqNvi">
-                  <ref role="37wK5l" node="jlPzbW43T3" resolve="getCloseThrown" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3clFbF" id="jlPzbW43Wv" role="3cqZAp">
-        <node concept="2YIFZM" id="jlPzbW43Ww" role="3clFbG">
-          <ref role="1Pybhc" to="tpeh:h84y26V" resolve="RulesFunctions_BaseLanguage" />
-          <ref role="37wK5l" to="tpeh:hB4up1x" resolve="check" />
-          <node concept="37vLTw" id="jlPzbW43Wx" role="37wK5m">
-            <ref role="3cqZAo" node="jlPzbW43Wm" resolve="throwables" />
-          </node>
-          <node concept="1YBJjd" id="jlPzbW8PmJ" role="37wK5m">
-            <ref role="1YBMHb" node="hB4agFk" resolve="resourceVariable" />
-          </node>
-          <node concept="Xl_RD" id="jlPzbW43Wz" role="37wK5m">
-            <property role="Xl_RC" value="Unhandled exception from auto-closeable resource:" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="hB4agFk" role="1YuTPh">
-      <property role="TrG5h" value="resourceVariable" />
-      <ref role="1YaFvo" to="rymi:4D3iSq_h_ou" resolve="ResourceVariable" />
-    </node>
-  </node>
   <node concept="312cEu" id="jlPzbW43fB">
     <property role="TrG5h" value="ResourceVariableHelper" />
     <node concept="312cEg" id="jlPzbW43hX" role="jymVt">
       <property role="TrG5h" value="myVariable" />
       <node concept="3Tm6S6" id="jlPzbW43hY" role="1B3o_S" />
       <node concept="3Tqbb2" id="jlPzbW43il" role="1tU5fm">
-        <ref role="ehGHo" to="rymi:4D3iSq_h_ou" resolve="ResourceVariable" />
+        <ref role="ehGHo" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
       </node>
     </node>
     <node concept="3clFbW" id="jlPzbW43gt" role="jymVt">
       <node concept="37vLTG" id="jlPzbW43gR" role="3clF46">
         <property role="TrG5h" value="resourceVariable" />
         <node concept="3Tqbb2" id="jlPzbW43hc" role="1tU5fm">
-          <ref role="ehGHo" to="rymi:4D3iSq_h_ou" resolve="ResourceVariable" />
+          <ref role="ehGHo" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
         </node>
       </node>
       <node concept="3cqZAl" id="jlPzbW43gv" role="3clF45" />

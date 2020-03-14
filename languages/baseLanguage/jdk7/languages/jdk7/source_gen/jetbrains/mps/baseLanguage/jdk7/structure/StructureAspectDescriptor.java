@@ -14,12 +14,7 @@ import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptAlternativeType = createDescriptorForAlternativeType();
-  /*package*/ final ConceptDescriptor myConceptCatchVariable = createDescriptorForCatchVariable();
-  /*package*/ final ConceptDescriptor myConceptMultipleCatchClause = createDescriptorForMultipleCatchClause();
-  /*package*/ final ConceptDescriptor myConceptResourceVariable = createDescriptorForResourceVariable();
   /*package*/ final ConceptDescriptor myConceptStringSwitchStatement = createDescriptorForStringSwitchStatement();
-  /*package*/ final ConceptDescriptor myConceptTryWithResourcesStatement = createDescriptorForTryWithResourcesStatement();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -30,30 +25,19 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAlternativeType, myConceptCatchVariable, myConceptMultipleCatchClause, myConceptResourceVariable, myConceptStringSwitchStatement, myConceptTryWithResourcesStatement);
+    return Arrays.asList(myConceptStringSwitchStatement);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.AlternativeType:
-        return myConceptAlternativeType;
-      case LanguageConceptSwitch.CatchVariable:
-        return myConceptCatchVariable;
-      case LanguageConceptSwitch.MultipleCatchClause:
-        return myConceptMultipleCatchClause;
-      case LanguageConceptSwitch.ResourceVariable:
-        return myConceptResourceVariable;
       case LanguageConceptSwitch.StringSwitchStatement:
         return myConceptStringSwitchStatement;
-      case LanguageConceptSwitch.TryWithResourcesStatement:
-        return myConceptTryWithResourcesStatement;
       default:
         return null;
     }
@@ -64,40 +48,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForAlternativeType() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "AlternativeType", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x70a99a0b674a3895L);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.UndefinedType", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x431d52a5d09a4ea9L);
-    b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/8118189177080264853");
-    b.version(2);
-    b.aggregate("classes", 0x70a99a0b674a3896L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(true).origin("8118189177080264854").done();
-    b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForCatchVariable() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "CatchVariable", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x44bbb37e796ac72eL);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL);
-    b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/4952749571008284462");
-    b.version(2);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForMultipleCatchClause() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "MultipleCatchClause", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x2aefd560f401b9c6L);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.CatchClause", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL);
-    b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/3093926081414150598");
-    b.version(2);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForResourceVariable() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "ResourceVariable", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a546561eL);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL);
-    b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/5351203823916832286");
-    b.version(2);
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForStringSwitchStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "StringSwitchStatement", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L);
     b.class_(false, false, false);
@@ -106,16 +56,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("switch");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForTryWithResourcesStatement() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.jdk7", "TryWithResourcesStatement", 0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a54515f2L);
-    b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.TryFinallyStatement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
-    b.origin("r:64af8966-9a33-4cc7-8f2a-fe243f26c38f(jetbrains.mps.baseLanguage.jdk7.structure)/5351203823916750322");
-    b.version(2);
-    b.aggregate("resource", 0x4a434b86a54515feL).target(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a546561eL).optional(false).ordered(true).multiple(true).origin("5351203823916750334").done();
     return b.create();
   }
 }

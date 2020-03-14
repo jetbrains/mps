@@ -5,6 +5,8 @@
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -4814,6 +4816,146 @@
     <property role="3GE5qa" value="control_flow.try_catch" />
     <ref role="1M2myG" to="tpee:2FJPm3OfY71" resolve="AbstractCatchClause" />
     <ref role="1MND4H" to="tpee:gWTDmSJ" resolve="CatchClause" />
+  </node>
+  <node concept="1M2fIO" id="72DAwHBiAXO">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1M2myG" to="tpee:72DAwHBizyl" resolve="AlternativeType" />
+    <node concept="9S07l" id="72DAwHBiAZP" role="9Vyp8">
+      <node concept="3clFbS" id="72DAwHBiAZQ" role="2VODD2">
+        <node concept="3clFbF" id="72DAwHBiB3M" role="3cqZAp">
+          <node concept="1Wc70l" id="72DAwHBiDky" role="3clFbG">
+            <node concept="2OqwBi" id="72DAwHBiDGX" role="3uHU7w">
+              <node concept="2OqwBi" id="72DAwHBiFjt" role="2Oq$k0">
+                <node concept="nLn13" id="72DAwHBiDqx" role="2Oq$k0" />
+                <node concept="1mfA1w" id="72DAwHBiFEE" role="2OqNvi" />
+              </node>
+              <node concept="1mIQ4w" id="72DAwHBiDWR" role="2OqNvi">
+                <node concept="chp4Y" id="72DAwHBiE1W" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:2FJPm3O0rB6" resolve="MultipleCatchClause" />
+                </node>
+              </node>
+            </node>
+            <node concept="1Wc70l" id="72DAwHBiBOk" role="3uHU7B">
+              <node concept="1Wc70l" id="5PUUrvXDAqi" role="3uHU7B">
+                <node concept="17R0WA" id="5PUUrvXDB9S" role="3uHU7B">
+                  <node concept="359W_D" id="5PUUrvXDBvc" role="3uHU7w">
+                    <ref role="359W_E" to="tpee:4iVGRTTqGsI" resolve="CatchVariable" />
+                    <ref role="359W_F" to="tpee:4VkOLwjf83e" resolve="type" />
+                  </node>
+                  <node concept="2DA6wF" id="5PUUrvXDAx_" role="3uHU7B" />
+                </node>
+                <node concept="2OqwBi" id="72DAwHBiBdZ" role="3uHU7w">
+                  <node concept="nLn13" id="72DAwHBiB3L" role="2Oq$k0" />
+                  <node concept="1mIQ4w" id="72DAwHBiBjG" role="2OqNvi">
+                    <node concept="chp4Y" id="5PUUrvX$XlT" role="cj9EA">
+                      <ref role="cht4Q" to="tpee:4iVGRTTqGsI" resolve="CatchVariable" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="72DAwHBiC7Y" role="3uHU7w">
+                <node concept="nLn13" id="72DAwHBiBYV" role="2Oq$k0" />
+                <node concept="1BlSNk" id="72DAwHBiChN" role="2OqNvi">
+                  <ref role="1BmUXE" to="tpee:2FJPm3O0rB6" resolve="MultipleCatchClause" />
+                  <ref role="1Bn3mz" to="tpee:gWTDEbL" resolve="throwable" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="4iVGRTTqH1y">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1M2myG" to="tpee:4iVGRTTqGsI" resolve="CatchVariable" />
+    <node concept="9S07l" id="4iVGRTTqH1z" role="9Vyp8">
+      <node concept="3clFbS" id="4iVGRTTqH1$" role="2VODD2">
+        <node concept="3clFbF" id="4iVGRTTqH1X" role="3cqZAp">
+          <node concept="1Wc70l" id="4iVGRTTqI7s" role="3clFbG">
+            <node concept="2OqwBi" id="4iVGRTTqIhp" role="3uHU7w">
+              <node concept="nLn13" id="4iVGRTTqI8u" role="2Oq$k0" />
+              <node concept="1mIQ4w" id="4iVGRTTqIr6" role="2OqNvi">
+                <node concept="chp4Y" id="5PUUrvXDCqu" role="cj9EA">
+                  <ref role="cht4Q" to="tpee:2FJPm3O0rB6" resolve="MultipleCatchClause" />
+                </node>
+              </node>
+            </node>
+            <node concept="17R0WA" id="4iVGRTTqHv2" role="3uHU7B">
+              <node concept="2DA6wF" id="4iVGRTTqH1W" role="3uHU7B" />
+              <node concept="359W_D" id="4iVGRTTqHAT" role="3uHU7w">
+                <ref role="359W_E" to="tpee:2FJPm3O0rB6" resolve="MultipleCatchClause" />
+                <ref role="359W_F" to="tpee:gWTDEbL" resolve="throwable" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="9SLcT" id="5PUUrvXDX72" role="9SGkU">
+      <node concept="3clFbS" id="5PUUrvXDX73" role="2VODD2">
+        <node concept="3clFbJ" id="5PUUrvXDX7r" role="3cqZAp">
+          <node concept="17R0WA" id="5PUUrvXDXsS" role="3clFbw">
+            <node concept="359W_D" id="5PUUrvXDXx2" role="3uHU7w">
+              <ref role="359W_E" to="tpee:4iVGRTTqGsI" resolve="CatchVariable" />
+              <ref role="359W_F" to="tpee:4VkOLwjf83e" resolve="type" />
+            </node>
+            <node concept="2DA6wF" id="5PUUrvXDX7W" role="3uHU7B" />
+          </node>
+          <node concept="3clFbS" id="5PUUrvXDX7t" role="3clFbx">
+            <node concept="3cpWs6" id="5PUUrvXDXyI" role="3cqZAp">
+              <node concept="2OqwBi" id="5PUUrvXDYie" role="3cqZAk">
+                <node concept="2DD5aU" id="5PUUrvXDY3k" role="2Oq$k0" />
+                <node concept="2Zo12i" id="5PUUrvXDYu7" role="2OqNvi">
+                  <node concept="chp4Y" id="5PUUrvXDYxE" role="2Zo12j">
+                    <ref role="cht4Q" to="tpee:72DAwHBizyl" resolve="AlternativeType" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5PUUrvXDY_H" role="3cqZAp">
+          <node concept="3clFbT" id="5PUUrvXDYH$" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="5PUUrvXEeeP">
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <ref role="1M2myG" to="tpee:2FJPm3O0rB6" resolve="MultipleCatchClause" />
+    <node concept="9SLcT" id="5PUUrvXEeeQ" role="9SGkU">
+      <node concept="3clFbS" id="5PUUrvXEeeR" role="2VODD2">
+        <node concept="3clFbJ" id="5PUUrvXEeff" role="3cqZAp">
+          <node concept="17R0WA" id="5PUUrvXEeCf" role="3clFbw">
+            <node concept="359W_D" id="5PUUrvXEeDs" role="3uHU7w">
+              <ref role="359W_E" to="tpee:2FJPm3O0rB6" resolve="MultipleCatchClause" />
+              <ref role="359W_F" to="tpee:gWTDEbL" resolve="throwable" />
+            </node>
+            <node concept="2DA6wF" id="5PUUrvXEejj" role="3uHU7B" />
+          </node>
+          <node concept="3clFbS" id="5PUUrvXEefh" role="3clFbx">
+            <node concept="3cpWs6" id="5PUUrvXEeF8" role="3cqZAp">
+              <node concept="2OqwBi" id="5PUUrvXEeYD" role="3cqZAk">
+                <node concept="2DD5aU" id="5PUUrvXEeJx" role="2Oq$k0" />
+                <node concept="2Zo12i" id="5PUUrvXEfay" role="2OqNvi">
+                  <node concept="chp4Y" id="5PUUrvXEfe5" role="2Zo12j">
+                    <ref role="cht4Q" to="tpee:4iVGRTTqGsI" resolve="CatchVariable" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5PUUrvXEffg" role="3cqZAp">
+          <node concept="3clFbT" id="5PUUrvXEfgi" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

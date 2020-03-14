@@ -7,6 +7,10 @@
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -6935,7 +6939,7 @@
               <node concept="DmCVY" id="jlPzbW9Nac" role="DkKE3">
                 <node concept="1YaCAy" id="jlPzbW9Nad" role="DmFtg">
                   <property role="TrG5h" value="tryWithResourcesStatement" />
-                  <ref role="1YaFvo" to="rymi:4D3iSq_hhnM" resolve="TryWithResourcesStatement" />
+                  <ref role="1YaFvo" to="tpee:4D3iSq_hhnM" resolve="TryWithResourcesStatement" />
                 </node>
                 <node concept="3clFbS" id="jlPzbW9Nae" role="DmIXo">
                   <node concept="3clFbJ" id="jlPzbW9Naf" role="3cqZAp">
@@ -7032,7 +7036,7 @@
                           <node concept="z$bX8" id="jlPzbWasjJ" role="2OqNvi">
                             <node concept="1xMEDy" id="jlPzbWat$j" role="1xVPHs">
                               <node concept="chp4Y" id="jlPzbWat$M" role="ri$Ld">
-                                <ref role="cht4Q" to="rymi:4D3iSq_h_ou" resolve="ResourceVariable" />
+                                <ref role="cht4Q" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
                               </node>
                             </node>
                             <node concept="1xIGOp" id="jlPzbWeEnF" role="1xVPHs" />
@@ -25644,7 +25648,7 @@
                                           <ref role="1YBMHb" node="jlPzbW4o6S" resolve="tryWithResourcesStatement" />
                                         </node>
                                         <node concept="3Tsc0h" id="jlPzbW4tz9" role="2OqNvi">
-                                          <ref role="3TtcxE" to="rymi:4D3iSq_hhnY" resolve="resource" />
+                                          <ref role="3TtcxE" to="tpee:4D3iSq_hhnY" resolve="resource" />
                                         </node>
                                       </node>
                                       <node concept="3goQfb" id="jlPzbW4C0P" role="2OqNvi">
@@ -25689,7 +25693,7 @@
                         </node>
                         <node concept="1YaCAy" id="jlPzbW4o6S" role="DmFtg">
                           <property role="TrG5h" value="tryWithResourcesStatement" />
-                          <ref role="1YaFvo" to="rymi:4D3iSq_hhnM" resolve="TryWithResourcesStatement" />
+                          <ref role="1YaFvo" to="tpee:4D3iSq_hhnM" resolve="TryWithResourcesStatement" />
                         </node>
                       </node>
                       <node concept="DmCVY" id="7oysyrldiPC" role="DkKE3">
@@ -73154,6 +73158,197 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="5ZFTYQpAjLD" role="1B3o_S" />
+  </node>
+  <node concept="1YbPZF" id="5PUUrvXDF7D">
+    <property role="TrG5h" value="typeof_CatchVariable" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <node concept="3clFbS" id="5PUUrvXDF7E" role="18ibNy">
+      <node concept="2Gpval" id="5PUUrvXDFe6" role="3cqZAp">
+        <node concept="2GrKxI" id="5PUUrvXDFe8" role="2Gsz3X">
+          <property role="TrG5h" value="caughtType" />
+        </node>
+        <node concept="2OqwBi" id="5PUUrvXDGbw" role="2GsD0m">
+          <node concept="1PxgMI" id="5PUUrvXDZ$J" role="2Oq$k0">
+            <property role="1BlNFB" value="true" />
+            <node concept="chp4Y" id="5PUUrvXDZ_W" role="3oSUPX">
+              <ref role="cht4Q" to="tpee:72DAwHBizyl" resolve="AlternativeType" />
+            </node>
+            <node concept="2OqwBi" id="5PUUrvXDFxZ" role="1m5AlR">
+              <node concept="1YBJjd" id="5PUUrvXDFer" role="2Oq$k0">
+                <ref role="1YBMHb" node="5PUUrvXDF7G" resolve="catchVariable" />
+              </node>
+              <node concept="3TrEf2" id="5PUUrvXDZps" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
+              </node>
+            </node>
+          </node>
+          <node concept="3Tsc0h" id="5PUUrvXDGot" role="2OqNvi">
+            <ref role="3TtcxE" to="tpee:72DAwHBizym" resolve="classes" />
+          </node>
+        </node>
+        <node concept="3clFbS" id="5PUUrvXDFec" role="2LFqv$">
+          <node concept="1ZoDhX" id="5PUUrvXDGUS" role="3cqZAp">
+            <node concept="mw_s8" id="5PUUrvXDGUV" role="1ZfhK$">
+              <node concept="1Z2H0r" id="5PUUrvXDGUW" role="mwGJk">
+                <node concept="1YBJjd" id="5PUUrvXDGUX" role="1Z2MuG">
+                  <ref role="1YBMHb" node="5PUUrvXDF7G" resolve="catchVariable" />
+                </node>
+              </node>
+            </node>
+            <node concept="mw_s8" id="5PUUrvXDH3j" role="1ZfhKB">
+              <node concept="2GrUjf" id="5PUUrvXDH3h" role="mwGJk">
+                <ref role="2Gs0qQ" node="5PUUrvXDFe8" resolve="caughtType" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="5PUUrvXDF7G" role="1YuTPh">
+      <property role="TrG5h" value="catchVariable" />
+      <ref role="1YaFvo" to="tpee:4iVGRTTqGsI" resolve="CatchVariable" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="4z_SuroxEPC">
+    <property role="TrG5h" value="checkThrowsOfResourceIsCaught" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <node concept="3clFbS" id="4z_SuroxEPD" role="18ibNy">
+      <node concept="3cpWs8" id="jlPzbW43Wl" role="3cqZAp">
+        <node concept="3cpWsn" id="jlPzbW43Wm" role="3cpWs9">
+          <property role="TrG5h" value="throwables" />
+          <node concept="2hMVRd" id="jlPzbW43Wn" role="1tU5fm">
+            <node concept="3Tqbb2" id="jlPzbW43Wo" role="2hN53Y">
+              <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+            </node>
+          </node>
+          <node concept="2ShNRf" id="jlPzbW43Wp" role="33vP2m">
+            <node concept="2i4dXS" id="jlPzbW43Wq" role="2ShVmc">
+              <node concept="3Tqbb2" id="jlPzbW43Wr" role="HW$YZ">
+                <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
+              </node>
+              <node concept="2OqwBi" id="jlPzbW43Ws" role="I$8f6">
+                <node concept="2ShNRf" id="jlPzbW4jBD" role="2Oq$k0">
+                  <node concept="1pGfFk" id="jlPzbW4kPN" role="2ShVmc">
+                    <ref role="37wK5l" to="zma8:jlPzbW43gt" resolve="ResourceVariableHelper" />
+                    <node concept="1YBJjd" id="jlPzbW4kY5" role="37wK5m">
+                      <ref role="1YBMHb" node="4z_SuroxEPE" resolve="resourceVariable" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="jlPzbW4l9c" role="2OqNvi">
+                  <ref role="37wK5l" to="zma8:jlPzbW43T3" resolve="getCloseThrown" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbF" id="jlPzbW43Wv" role="3cqZAp">
+        <node concept="2YIFZM" id="jlPzbW43Ww" role="3clFbG">
+          <ref role="1Pybhc" node="h84y26V" resolve="RulesFunctions_BaseLanguage" />
+          <ref role="37wK5l" node="hB4up1x" resolve="check" />
+          <node concept="37vLTw" id="jlPzbW43Wx" role="37wK5m">
+            <ref role="3cqZAo" node="jlPzbW43Wm" resolve="throwables" />
+          </node>
+          <node concept="1YBJjd" id="jlPzbW8PmJ" role="37wK5m">
+            <ref role="1YBMHb" node="4z_SuroxEPE" resolve="resourceVariable" />
+          </node>
+          <node concept="Xl_RD" id="jlPzbW43Wz" role="37wK5m">
+            <property role="Xl_RC" value="Unhandled exception from auto-closeable resource:" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4z_SuroxEPE" role="1YuTPh">
+      <property role="TrG5h" value="resourceVariable" />
+      <ref role="1YaFvo" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="4D3iSq_i$9v">
+    <property role="TrG5h" value="typeof_ResourceVariable" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <node concept="3clFbS" id="4D3iSq_i$9w" role="18ibNy">
+      <node concept="1ZobV4" id="4D3iSq_i$9A" role="3cqZAp">
+        <property role="3wDh2S" value="true" />
+        <node concept="mw_s8" id="4D3iSq_i$US" role="1ZfhKB">
+          <node concept="2c44tf" id="4D3iSq_i$UO" role="mwGJk">
+            <node concept="3uibUv" id="4D3iSq_i$Wf" role="2c44tc">
+              <ref role="3uigEE" to="wyt6:~AutoCloseable" resolve="AutoCloseable" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="4D3iSq_i$9I" role="1ZfhK$">
+          <node concept="2OqwBi" id="4D3iSq_i$pM" role="mwGJk">
+            <node concept="1YBJjd" id="4D3iSq_i$9G" role="2Oq$k0">
+              <ref role="1YBMHb" node="4D3iSq_i$9y" resolve="resourceVariable" />
+            </node>
+            <node concept="3TrEf2" id="4D3iSq_i$NU" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
+            </node>
+          </node>
+        </node>
+        <node concept="2OqwBi" id="4D3iSq_iBC_" role="1ZmcU8">
+          <node concept="1YBJjd" id="4D3iSq_iBoA" role="2Oq$k0">
+            <ref role="1YBMHb" node="4D3iSq_i$9y" resolve="resourceVariable" />
+          </node>
+          <node concept="3TrEf2" id="4D3iSq_iC6P" role="2OqNvi">
+            <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4D3iSq_i$9y" role="1YuTPh">
+      <property role="TrG5h" value="resourceVariable" />
+      <ref role="1YaFvo" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="4D3iSq_hD0X">
+    <property role="TrG5h" value="check_ResourceVariable" />
+    <property role="3GE5qa" value="control_flow.try_catch" />
+    <node concept="3clFbS" id="4D3iSq_hD0Y" role="18ibNy">
+      <node concept="2Mj0R9" id="4D3iSq_hDWb" role="3cqZAp">
+        <node concept="Xl_RD" id="4D3iSq_hEfB" role="2MkJ7o">
+          <property role="Xl_RC" value="Resource variable should be initialized" />
+        </node>
+        <node concept="1YBJjd" id="4D3iSq_hEhQ" role="1urrMF">
+          <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
+        </node>
+        <node concept="2OqwBi" id="4D3iSq_hE3l" role="2MkoU_">
+          <node concept="2OqwBi" id="4D3iSq_hDkC" role="2Oq$k0">
+            <node concept="1YBJjd" id="4D3iSq_hD1g" role="2Oq$k0">
+              <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
+            </node>
+            <node concept="3TrEf2" id="4D3iSq_hDIK" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpee:fz3vP1I" resolve="initializer" />
+            </node>
+          </node>
+          <node concept="3x8VRR" id="4D3iSq_hEbY" role="2OqNvi" />
+        </node>
+        <node concept="2OE7Q9" id="4D3iSq_i$8m" role="1urrC5">
+          <ref role="2OEe5H" to="tpee:fz3vP1I" resolve="initializer" />
+        </node>
+      </node>
+      <node concept="2Mj0R9" id="4D3iSq_hF9j" role="3cqZAp">
+        <node concept="2OqwBi" id="4D3iSq_hFth" role="2MkoU_">
+          <node concept="1YBJjd" id="4D3iSq_hF9N" role="2Oq$k0">
+            <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
+          </node>
+          <node concept="3TrcHB" id="4D3iSq_hFYK" role="2OqNvi">
+            <ref role="3TsBF5" to="tpee:h7TUv0c" resolve="isFinal" />
+          </node>
+        </node>
+        <node concept="Xl_RD" id="4D3iSq_hGHk" role="2MkJ7o">
+          <property role="Xl_RC" value="Resource variable should be final" />
+        </node>
+        <node concept="1YBJjd" id="4D3iSq_hGRi" role="1urrMF">
+          <ref role="1YBMHb" node="4D3iSq_hD10" resolve="resourceVariable" />
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4D3iSq_hD10" role="1YuTPh">
+      <property role="TrG5h" value="resourceVariable" />
+      <ref role="1YaFvo" to="tpee:4D3iSq_h_ou" resolve="ResourceVariable" />
+    </node>
   </node>
 </model>
 

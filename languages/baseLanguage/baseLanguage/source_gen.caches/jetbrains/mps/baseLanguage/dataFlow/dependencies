@@ -274,6 +274,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.ThrowStatement_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.TryCatchStatement_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.TryFinallyStatement_DataFlow" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.TryWithResourcesStatement_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.VariableDeclaration_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.VariableReference_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.WhileStatement_DataFlow" />
@@ -906,6 +907,19 @@
   <dependency className="jetbrains.mps.baseLanguage.dataFlow.TryFinallyStatement_DataFlow">
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.DataFlowTryCatchUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.InstructionUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.Instruction" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilder" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.dataFlow.TryWithResourcesStatement_DataFlow">
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.DataFlowTryCatchUtil" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.InstructionUtil" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.Instruction" />

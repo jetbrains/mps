@@ -56,6 +56,13 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.NotMigratedNode" />
   </dependency>
+  <dependency className="jetbrains.mps.lang.migration.runtime.base.DeprecatedLanguageNotMigratedProblem">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
+    <classNode extendsClassName="jetbrains.mps.lang.migration.runtime.base.Problem" />
+  </dependency>
   <dependency className="jetbrains.mps.lang.migration.runtime.base.EmptyRefactoringUI">
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.util.List" />

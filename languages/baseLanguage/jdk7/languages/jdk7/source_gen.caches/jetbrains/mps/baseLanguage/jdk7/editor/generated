@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="elrcobzg45d12yrwx5c65wrjo331tat">
-  <files names="AlternativeType_Editor.java:AlternativeType_EditorBuilder_a.java:ClassifierTypeToAlternativeType.java:EditorAspectDescriptorImpl.java:ResourceVariable_Editor.java:ResourceVariable_EditorBuilder_a.java:ResourceVariable_InspectorBuilder_a.java:TryWithResourcesStatement_Editor.java:TryWithResourcesStatement_EditorBuilder_a.java" />
+<product version="3" modelHash="-9u1cs2hmnuiqz0jug164shsbvhb9qe">
+  <files names="ClassifierTypeToAlternativeType.java:EditorAspectDescriptorImpl.java" />
 </product>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7qsajqzf8kj7u1adfzvm75ve8x3g4b3">
-  <files names="AlternativeType_TextGen.java:ResourceVariable_TextGen.java:TextGenAspectDescriptor.java:TryWithResourcesStatement_TextGen.java" />
+<product version="3" modelHash="bwvt5vbxw5knzab3ts63pawrknzjp09">
+  <files names="TextGenAspectDescriptor.java" />
 </product>
 

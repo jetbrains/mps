@@ -167,11 +167,11 @@ public class ClassifierTypeToAlternativeType extends TransformationMenuBase {
   private static final class CONCEPTS {
     /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
     /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept MultipleCatchClause$U5 = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x2aefd560f401b9c6L, "jetbrains.mps.baseLanguage.jdk7.structure.MultipleCatchClause");
-    /*package*/ static final SConcept CatchVariable$6W = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x44bbb37e796ac72eL, "jetbrains.mps.baseLanguage.jdk7.structure.CatchVariable");
+    /*package*/ static final SConcept MultipleCatchClause$U5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, "jetbrains.mps.baseLanguage.structure.MultipleCatchClause");
+    /*package*/ static final SConcept CatchVariable$6W = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44bbb37e796ac72eL, "jetbrains.mps.baseLanguage.structure.CatchVariable");
     /*package*/ static final SConcept AnnotationInstance$5z = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
     /*package*/ static final SConcept Attribute$RJ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
-    /*package*/ static final SConcept AlternativeType$aM = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x70a99a0b674a3895L, "jetbrains.mps.baseLanguage.jdk7.structure.AlternativeType");
+    /*package*/ static final SConcept AlternativeType$aM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, "jetbrains.mps.baseLanguage.structure.AlternativeType");
     /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
@@ -181,7 +181,7 @@ public class ClassifierTypeToAlternativeType extends TransformationMenuBase {
     /*package*/ static final SContainmentLink smodelAttribute$K8bJ = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
     /*package*/ static final SContainmentLink type$pLrO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SContainmentLink catchBody$5XX4 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f2L, "catchBody");
-    /*package*/ static final SContainmentLink classes$Fu70 = MetaAdapterFactory.getContainmentLink(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "classes");
+    /*package*/ static final SContainmentLink classes$Fu70 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "classes");
   }
 
   private static final class PROPS {

@@ -9,60 +9,21 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_AlternativeType;
-  private ConceptPresentation props_CatchVariable;
-  private ConceptPresentation props_MultipleCatchClause;
-  private ConceptPresentation props_ResourceVariable;
   private ConceptPresentation props_StringSwitchStatement;
-  private ConceptPresentation props_TryWithResourcesStatement;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.AlternativeType:
-        if (props_AlternativeType == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("AlternativeType");
-          props_AlternativeType = cpb.create();
-        }
-        return props_AlternativeType;
-      case LanguageConceptSwitch.CatchVariable:
-        if (props_CatchVariable == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_CatchVariable = cpb.create();
-        }
-        return props_CatchVariable;
-      case LanguageConceptSwitch.MultipleCatchClause:
-        if (props_MultipleCatchClause == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("MultipleCatchClause");
-          props_MultipleCatchClause = cpb.create();
-        }
-        return props_MultipleCatchClause;
-      case LanguageConceptSwitch.ResourceVariable:
-        if (props_ResourceVariable == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_ResourceVariable = cpb.create();
-        }
-        return props_ResourceVariable;
       case LanguageConceptSwitch.StringSwitchStatement:
         if (props_StringSwitchStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("switch");
           props_StringSwitchStatement = cpb.create();
         }
         return props_StringSwitchStatement;
-      case LanguageConceptSwitch.TryWithResourcesStatement:
-        if (props_TryWithResourcesStatement == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("TryWithResourcesStatement");
-          props_TryWithResourcesStatement = cpb.create();
-        }
-        return props_TryWithResourcesStatement;
     }
     return null;
   }

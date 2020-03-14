@@ -6,9 +6,6 @@ import jetbrains.mps.smodel.runtime.BaseConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor;
-import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
-import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor {
   public ConstraintsAspectDescriptor() {
@@ -17,16 +14,6 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
   @Override
   public ConstraintsDescriptor getConstraints(SAbstractConcept concept) {
     SAbstractConcept cncpt = concept;
-    switch (conceptIndex.index(cncpt)) {
-      case 0:
-        return new AlternativeType_Constraints();
-      case 1:
-        return new CatchVariable_Constraints();
-      case 2:
-        return new MultipleCatchClause_Constraints();
-      default:
-    }
     return new BaseConstraintsDescriptor(concept);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x70a99a0b674a3895L), MetaIdFactory.conceptId(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x44bbb37e796ac72eL), MetaIdFactory.conceptId(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x2aefd560f401b9c6L)).seal();
 }

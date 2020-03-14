@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cj1pzmb3mthj03enyb92c6mlbz9cho0">
-  <files names="DataFlowAspectDescriptorImpl.java:TryWithResourcesStatement_DataFlow.java" />
+<product version="3" modelHash="-1221y9cxtfbm671pp835m8tcv06uo0w">
+  <files names="DataFlowAspectDescriptorImpl.java" />
 </product>
 

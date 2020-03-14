@@ -898,8 +898,8 @@ __switch__:
     /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
     /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
-    /*package*/ static final SConcept TryWithResourcesStatement$80 = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.jdk7.structure.TryWithResourcesStatement");
-    /*package*/ static final SConcept ResourceVariable$QC = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.jdk7.structure.ResourceVariable");
+    /*package*/ static final SConcept TryWithResourcesStatement$80 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.structure.TryWithResourcesStatement");
+    /*package*/ static final SConcept ResourceVariable$QC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.structure.ResourceVariable");
     /*package*/ static final SInterfaceConcept IMethodLike$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
     /*package*/ static final SInterfaceConcept ITryCatchStatement$WV = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3399756d2c03d422L, "jetbrains.mps.baseLanguage.structure.ITryCatchStatement");
     /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
