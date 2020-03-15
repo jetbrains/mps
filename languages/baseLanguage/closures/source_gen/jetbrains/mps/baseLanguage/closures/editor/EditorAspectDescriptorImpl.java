@@ -77,8 +77,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.closures.editor.compact_invoke":
               return Arrays.asList(new TransformationMenu[]{new compact_invoke()});
             default:
           }
@@ -86,8 +86,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.closures.editor.transform_FunctionType_to_ClassifierLiteralType":
               return Arrays.asList(new TransformationMenu[]{new transform_FunctionType_to_ClassifierLiteralType()});
             default:
           }
@@ -95,10 +95,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.closures.editor.add_throw_to_ClosureLiteralType":
               return Arrays.asList(new TransformationMenu[]{new add_throw_to_ClosureLiteralType()});
-            case 1:
+            case "jetbrains.mps.baseLanguage.closures.editor.add_throw_to_FunctionType":
               return Arrays.asList(new TransformationMenu[]{new add_throw_to_FunctionType()});
             default:
           }
@@ -147,8 +147,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex4.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.closures.editor.remove_ReturnStatement":
               return Arrays.asList(new SubstituteMenu[]{new remove_ReturnStatement()});
             default:
           }
@@ -165,8 +165,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0xe8770ba07b68051L), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x11e49db3870L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x117545d385aL), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a964795L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x118276b7086L), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x11e25fc6c63L), MetaIdFactory.conceptId(0xfd3920347849419dL, 0x907112563d152375L, 0x11797183e82L)).seal();
   private static final ConceptSwitchIndex conceptIndex4 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.baseLanguage.closures.editor.compact_invoke"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a4 = new String[]{"jetbrains.mps.baseLanguage.closures.editor.transform_FunctionType_to_ClassifierLiteralType"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a4 = new String[]{"jetbrains.mps.baseLanguage.closures.editor.add_throw_to_ClosureLiteralType", "jetbrains.mps.baseLanguage.closures.editor.add_throw_to_FunctionType"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a6 = new String[]{"jetbrains.mps.baseLanguage.closures.editor.remove_ReturnStatement"};
 }

@@ -222,10 +222,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex3.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.typesystem.editor.InferenceRule_ApplySideTransforms":
               return Arrays.asList(new TransformationMenu[]{new InferenceRule_ApplySideTransforms()});
-            case 1:
+            case "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction":
               return Arrays.asList(new TransformationMenu[]{new InferenceRule_add_OverridesConceptFunction()});
             default:
           }
@@ -233,8 +233,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_backToAll":
               return Arrays.asList(new TransformationMenu[]{new NonTypesystemRule_backToAll()});
             default:
           }
@@ -321,8 +321,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex5.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a7, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.typesystem.editor.InequationReference_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new InequationReference_SmartReference()});
             default:
           }
@@ -340,7 +340,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL)).seal();
   private static final ConceptSwitchIndex conceptIndex4 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e9ef5dcL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2152354b0d500086L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078ffb82L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078e410eL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e078ecdbdL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3618c300L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11e07431ba7L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x42501924d0bd1913L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1206cda22fcL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fcc4cf5b0L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d92ad3L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1206cd802f8L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x111ef7d5e03L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fcc4d8298L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d10036L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a6a000L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11192d97ff9L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b3683c009L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x70489eee8479b55dL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4a87c94L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11fcc4d8edaL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114168188c7L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f90b04cL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85f8628L), MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L)).seal();
   private static final ConceptSwitchIndex conceptIndex5 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x42501924d0bd1913L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a5 = new String[]{"jetbrains.mps.lang.typesystem.editor.InferenceRule_ApplySideTransforms", "jetbrains.mps.lang.typesystem.editor.InferenceRule_add_OverridesConceptFunction"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a5 = new String[]{"jetbrains.mps.lang.typesystem.editor.NonTypesystemRule_backToAll"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a7 = new String[]{"jetbrains.mps.lang.typesystem.editor.InequationReference_SmartReference"};
 }

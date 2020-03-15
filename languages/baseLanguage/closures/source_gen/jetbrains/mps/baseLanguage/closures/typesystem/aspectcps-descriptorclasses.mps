@@ -19934,7 +19934,7 @@
                           </node>
                           <node concept="1mIQ4w" id="1Sg" role="2OqNvi">
                             <node concept="chp4Y" id="1Sk" role="cj9EA">
-                              <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryStatement" />
+                              <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
                               <node concept="cd27G" id="1Sm" role="lGtFl">
                                 <node concept="3u3nmq" id="1Sn" role="cd27D">
                                   <property role="3u3nmv" value="2403854473132723240" />
@@ -20028,7 +20028,7 @@
                                       </node>
                                     </node>
                                     <node concept="chp4Y" id="1T0" role="3oSUPX">
-                                      <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryStatement" />
+                                      <ref role="cht4Q" to="tpee:gMGUZlm" resolve="TryFinallyStatement" />
                                       <node concept="cd27G" id="1T4" role="lGtFl">
                                         <node concept="3u3nmq" id="1T5" role="cd27D">
                                           <property role="3u3nmv" value="8089793891579200084" />

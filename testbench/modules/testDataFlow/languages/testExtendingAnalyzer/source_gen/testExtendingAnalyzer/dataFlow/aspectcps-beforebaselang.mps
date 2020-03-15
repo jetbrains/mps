@@ -138,9 +138,6 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
     </language>
-    <language id="96ee7a94-411d-4cf8-9b94-96cad7e52411" name="jetbrains.mps.baseLanguage.jdk7">
-      <concept id="400642802549924137" name="jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement" flags="nn" index="2ignYC" />
-    </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
       <concept id="7980339663309897032" name="jetbrains.mps.lang.generator.structure.OriginTrace" flags="ng" index="cd27G">
         <child id="7980339663309897037" name="origin" index="cd27D" />
@@ -196,7 +193,7 @@
         </node>
       </node>
       <node concept="3clFbS" id="8" role="3clF47">
-        <node concept="2ignYC" id="k" role="3cqZAp">
+        <node concept="3KaCP$" id="k" role="3cqZAp">
           <node concept="3KbdKl" id="n" role="3KbHQx">
             <node concept="Xl_RD" id="r" role="3Kbmr1">
               <property role="Xl_RC" value="jetbrains.mps.baseLanguage.dataFlow.Nullable" />
@@ -258,15 +255,15 @@
               </node>
             </node>
           </node>
-          <node concept="37vLTw" id="o" role="3KbGdf">
-            <ref role="3cqZAo" node="9" resolve="analyzerId" />
+          <node concept="3clFbS" id="o" role="3Kb1Dw">
             <node concept="cd27G" id="M" role="lGtFl">
               <node concept="3u3nmq" id="N" role="cd27D">
                 <property role="3u3nmv" value="15" />
               </node>
             </node>
           </node>
-          <node concept="3clFbS" id="p" role="3Kb1Dw">
+          <node concept="37vLTw" id="p" role="3KbGdf">
+            <ref role="3cqZAo" node="9" resolve="analyzerId" />
             <node concept="cd27G" id="O" role="lGtFl">
               <node concept="3u3nmq" id="P" role="cd27D">
                 <property role="3u3nmv" value="16" />
@@ -855,7 +852,7 @@
                     </node>
                     <node concept="2ShNRf" id="4r" role="33vP2m">
                       <node concept="1pGfFk" id="4v" role="2ShVmc">
-                        <ref role="37wK5l" to="d3yh:4Su" resolve="notNullInstruction" />
+                        <ref role="37wK5l" to="d3yh:51y" resolve="notNullInstruction" />
                         <node concept="2YIFZM" id="4x" role="37wK5m">
                           <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
                           <ref role="37wK5l" to="i8bi:1pwnB5DiOAj" resolve="getTarget" />

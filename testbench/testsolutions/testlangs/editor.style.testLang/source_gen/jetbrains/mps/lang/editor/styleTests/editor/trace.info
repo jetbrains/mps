@@ -10,10 +10,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="21,0,113,0" name="jetbrains.mps.lang.editor.styleTests.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,110,0" name="jetbrains.mps.lang.editor.styleTests.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:716dc35d-6443-4b45-a1e5-08b46978f63d(jetbrains.mps.lang.editor.styleTests.editor)/1157549163016181399">
@@ -198,6 +198,10 @@
     </file>
   </root>
   <root nodeRef="r:716dc35d-6443-4b45-a1e5-08b46978f63d(jetbrains.mps.lang.editor.styleTests.editor)/4078300376847951548">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4078300376847951548" at="70,89,71,104" concept="6" />
+      <scope id="4078300376847951548" at="70,89,71,104" />
+    </file>
     <file name="StyleTest_EditorComponent.java">
       <node id="4078300376847951548" at="15,47,16,35" concept="6" />
       <node id="4078300376847951548" at="18,79,19,94" concept="6" />
@@ -425,6 +429,10 @@
     </file>
   </root>
   <root nodeRef="r:716dc35d-6443-4b45-a1e5-08b46978f63d(jetbrains.mps.lang.editor.styleTests.editor)/4078300376847974718">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4078300376847974718" at="68,96,69,111" concept="6" />
+      <scope id="4078300376847974718" at="68,96,69,111" />
+    </file>
     <file name="StyleTestElement_EditorComponent.java">
       <node id="4078300376847974718" at="15,47,16,35" concept="6" />
       <node id="4078300376847974718" at="18,79,19,101" concept="6" />
@@ -1369,6 +1377,12 @@
     </file>
   </root>
   <root nodeRef="r:716dc35d-6443-4b45-a1e5-08b46978f63d(jetbrains.mps.lang.editor.styleTests.editor)/6609104295326650955">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="6609104295326650972" at="98,38,99,81" concept="6" />
+      <node id="6609104295326651003" at="100,35,101,80" concept="6" />
+      <scope id="6609104295326650972" at="98,38,99,81" />
+      <scope id="6609104295326651003" at="100,35,101,80" />
+    </file>
     <file name="TestStylesheet_StyleSheet.java">
       <node id="7571028832046676331" at="18,78,19,69" concept="5" />
       <node id="7571028832046676331" at="19,69,20,88" concept="5" />

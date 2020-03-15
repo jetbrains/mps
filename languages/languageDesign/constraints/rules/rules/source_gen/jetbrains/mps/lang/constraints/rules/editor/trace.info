@@ -14,10 +14,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="18,0,81,0" name="jetbrains.mps.lang.constraints.rules.editor.EditorAspectDescriptorImpl" />
+      <unit at="17,0,79,0" name="jetbrains.mps.lang.constraints.rules.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/1328301445982561437">
@@ -766,6 +766,10 @@
     </file>
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/4310380201428894259">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4310380201428894259" at="49,80,50,95" concept="8" />
+      <scope id="4310380201428894259" at="49,80,50,95" />
+    </file>
     <file name="HintIsApplicable.java">
       <node id="4310380201428894259" at="15,47,16,35" concept="8" />
       <node id="4310380201428894259" at="18,79,19,85" concept="8" />
@@ -887,6 +891,10 @@
     </file>
   </root>
   <root nodeRef="r:c333438f-9631-41c0-a716-72d23eed1ba4(jetbrains.mps.lang.constraints.rules.editor)/4607300357955494482">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4607300357955494482" at="51,76,52,91" concept="8" />
+      <scope id="4607300357955494482" at="51,76,52,91" />
+    </file>
     <file name="IsApplicable.java">
       <node id="4607300357955494482" at="15,47,16,35" concept="8" />
       <node id="4607300357955494482" at="18,79,19,81" concept="8" />

@@ -19,9 +19,9 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new DefaultModifier_Constraints();
+        return new DefaultModifier_old_Constraints();
       case 1:
-        return new SuperInterfaceMethodCall_Constraints();
+        return new SuperInterfaceMethodCall_old_Constraints();
       default:
     }
     return new BaseConstraintsDescriptor(concept);

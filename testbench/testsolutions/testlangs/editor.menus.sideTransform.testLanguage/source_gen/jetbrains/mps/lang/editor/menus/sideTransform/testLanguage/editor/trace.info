@@ -13,13 +13,17 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="18,0,121,0" name="jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.EditorAspectDescriptorImpl" />
+      <unit at="18,0,119,0" name="jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:73252a8a-5dfe-41ab-9452-7c5453e47c1f(jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor)/278746753871076069">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="278746753871076069" at="103,128,104,111" concept="7" />
+      <scope id="278746753871076069" at="103,128,104,111" />
+    </file>
     <file name="TestSideTransform_SimpleNode_CustomActions.java">
       <node id="278746753871076069" at="40,0,41,0" concept="2" trace="myLocations" />
       <node id="278746753871076069" at="42,67,43,63" concept="7" />
@@ -713,6 +717,10 @@
     </file>
   </root>
   <root nodeRef="r:73252a8a-5dfe-41ab-9452-7c5453e47c1f(jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor)/4091667478583508351">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4091667478583508351" at="94,135,95,118" concept="7" />
+      <scope id="4091667478583508351" at="94,135,95,118" />
+    </file>
     <file name="TestSideTransform_NodeWithReference_CustomActions.java">
       <node id="4091667478583508351" at="40,0,41,0" concept="2" trace="myLocations" />
       <node id="4091667478583508351" at="42,67,43,63" concept="7" />

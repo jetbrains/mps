@@ -13,10 +13,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="18,0,119,0" name="jetbrains.mps.baseLanguage.builders.editor.EditorAspectDescriptorImpl" />
+      <unit at="18,0,118,0" name="jetbrains.mps.baseLanguage.builders.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="PresentationProviders.java">
       <unit at="24,0,27,0" name="jetbrains.mps.baseLanguage.builders.editor.PresentationProviders$CONCEPTS" />
@@ -969,6 +969,10 @@
       <unit id="4747359941571311586" at="73,0,98,0" name="jetbrains.mps.baseLanguage.builders.editor.BeanPropertyBuilder_SmartReference$SMP_ReferenceScope_i1rqlx_a$Item" />
       <unit id="4747359941571311586" at="50,0,99,0" name="jetbrains.mps.baseLanguage.builders.editor.BeanPropertyBuilder_SmartReference$SMP_ReferenceScope_i1rqlx_a" />
       <unit id="4747359941571311588" at="28,0,112,0" name="jetbrains.mps.baseLanguage.builders.editor.BeanPropertyBuilder_SmartReference" />
+    </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311588" at="102,97,103,99" concept="7" />
+      <scope id="4747359941571311588" at="102,97,103,99" />
     </file>
   </root>
   <root nodeRef="r:4b2fc856-1e6f-49a5-825e-2904bdab655c(jetbrains.mps.baseLanguage.builders.editor)/4747359941571311590">

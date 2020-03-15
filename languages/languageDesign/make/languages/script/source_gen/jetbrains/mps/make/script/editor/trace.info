@@ -13,10 +13,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,159,0" name="jetbrains.mps.make.script.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,156,0" name="jetbrains.mps.make.script.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="OptionExpression_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.make.script.editor.OptionExpression_SubstituteMenu$CONCEPTS" />
@@ -31,6 +31,10 @@
     </file>
   </root>
   <root nodeRef="r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)/1741258697587104896">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587104896" at="72,71,73,87" concept="7" />
+      <scope id="1741258697587104896" at="72,71,73,87" />
+    </file>
     <file name="Option_makeDefault.java">
       <node id="1741258697587104896" at="44,0,45,0" concept="2" trace="myLocations" />
       <node id="1741258697587104896" at="46,67,47,63" concept="7" />
@@ -273,6 +277,10 @@
     </file>
   </root>
   <root nodeRef="r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)/1741258697587104956">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587104956" at="126,78,127,90" concept="7" />
+      <scope id="1741258697587104956" at="126,78,127,90" />
+    </file>
     <file name="RelayQueryExpression_subs.java">
       <node id="1741258697587104956" at="27,118,28,140" concept="6" />
       <node id="1741258697587104958" at="28,140,29,41" concept="1" />
@@ -465,6 +473,10 @@
     </file>
   </root>
   <root nodeRef="r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)/1741258697587105004">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587105004" at="139,73,140,85" concept="7" />
+      <scope id="1741258697587105004" at="139,73,140,85" />
+    </file>
     <file name="ResultStatement_subs.java">
       <node id="1741258697587105004" at="40,118,41,140" concept="6" />
       <node id="1741258697587105006" at="41,140,42,41" concept="1" />
@@ -710,6 +722,10 @@
     </file>
   </root>
   <root nodeRef="r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)/1741258697587105220">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587105220" at="137,81,138,93" concept="7" />
+      <scope id="1741258697587105220" at="137,81,138,93" />
+    </file>
     <file name="ReportFeedbackStatement_subs.java">
       <node id="1741258697587105220" at="38,118,39,140" concept="6" />
       <node id="1741258697587105222" at="39,140,40,41" concept="1" />
@@ -894,6 +910,10 @@
     </file>
   </root>
   <root nodeRef="r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)/1741258697587105369">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587105369" at="135,75,136,87" concept="7" />
+      <scope id="1741258697587105369" at="135,75,136,87" />
+    </file>
     <file name="ProgressStatement_subs.java">
       <node id="1741258697587105369" at="45,118,46,140" concept="6" />
       <node id="1741258697587105371" at="46,140,47,41" concept="1" />
@@ -1394,6 +1414,10 @@
       <unit id="1741258697587105767" at="65,136,78,7" name="jetbrains.mps.make.script.editor.AllWorkLeftExpression_subs$SMP_Group_q0pmcw_a$1" />
       <unit id="1741258697587105725" at="46,0,81,0" name="jetbrains.mps.make.script.editor.AllWorkLeftExpression_subs$SMP_Group_q0pmcw_a" />
       <unit id="1741258697587105723" at="24,0,91,0" name="jetbrains.mps.make.script.editor.AllWorkLeftExpression_subs" />
+    </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587105723" at="124,79,125,91" concept="7" />
+      <scope id="1741258697587105723" at="124,79,125,91" />
     </file>
   </root>
   <root nodeRef="r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)/1741258697587105772">

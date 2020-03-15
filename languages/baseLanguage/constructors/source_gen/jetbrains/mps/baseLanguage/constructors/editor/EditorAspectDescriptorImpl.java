@@ -68,10 +68,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.constructors.editor.CustomArgumentClauseSubstitute":
               return Arrays.asList(new SubstituteMenu[]{new CustomArgumentClauseSubstitute()});
-            case 1:
+            case "jetbrains.mps.baseLanguage.constructors.editor.ListArgumentClauseSubstitute":
               return Arrays.asList(new SubstituteMenu[]{new ListArgumentClauseSubstitute()});
             default:
           }
@@ -86,5 +86,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c1L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x41c47a5073807afbL)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b7L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x41c47a50737ea2a7L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b7L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.baseLanguage.constructors.editor.CustomArgumentClauseSubstitute", "jetbrains.mps.baseLanguage.constructors.editor.ListArgumentClauseSubstitute"};
 }

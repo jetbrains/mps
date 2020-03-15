@@ -55,8 +55,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.modelapi.editor.AllRepositoryModels_TM":
               return Arrays.asList(new TransformationMenu[]{new AllRepositoryModels_TM()});
             default:
           }
@@ -64,8 +64,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.modelapi.editor.ContextRepositoryModules_TM":
               return Arrays.asList(new TransformationMenu[]{new ContextRepositoryModules_TM()});
             default:
           }
@@ -73,8 +73,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.modelapi.editor.NamedNodeReference_ChildTransformationMenu":
               return Arrays.asList(new TransformationMenu[]{new NamedNodeReference_ChildTransformationMenu()});
             default:
           }
@@ -105,8 +105,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex4.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.modelapi.editor.AllRepositoryModels_SM":
               return Arrays.asList(new SubstituteMenu[]{new AllRepositoryModels_SM()});
             default:
           }
@@ -114,8 +114,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.modelapi.editor.ContextRepositoryModules_SM":
               return Arrays.asList(new SubstituteMenu[]{new ContextRepositoryModules_SM()});
             default:
           }
@@ -132,9 +132,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x7d58bd9fd9c8b6d3L), MetaIdFactory.conceptId(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afc2bc9L), MetaIdFactory.conceptId(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL), MetaIdFactory.conceptId(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL)).seal();
   private static final ConceptSwitchIndex conceptIndex4 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L), MetaIdFactory.conceptId(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.lang.modelapi.editor.AllRepositoryModels_TM"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a4 = new String[]{"jetbrains.mps.lang.modelapi.editor.ContextRepositoryModules_TM"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a4 = new String[]{"jetbrains.mps.lang.modelapi.editor.NamedNodeReference_ChildTransformationMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a6 = new String[]{"jetbrains.mps.lang.modelapi.editor.AllRepositoryModels_SM"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a6 = new String[]{"jetbrains.mps.lang.modelapi.editor.ContextRepositoryModules_SM"};
 }

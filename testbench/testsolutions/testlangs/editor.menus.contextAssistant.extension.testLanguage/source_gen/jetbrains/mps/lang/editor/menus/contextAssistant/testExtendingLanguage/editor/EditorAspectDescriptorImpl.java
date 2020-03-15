@@ -35,8 +35,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.NamedMenu":
               return Arrays.asList(new TransformationMenu[]{new Child_MoreNamedActions(), new NamedMenuContribution()});
             default:
           }
@@ -50,5 +50,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x4d6a8b533e60aa32L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x4d6a8b533e60aa32L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.NamedMenu"};
 }

@@ -90,12 +90,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.workflow.editor.BwfSubTask_ApplySideTransforms":
               return Arrays.asList(new TransformationMenu[]{new BwfSubTask_ApplySideTransforms()});
-            case 1:
+            case "jetbrains.mps.build.workflow.editor.add_dependencies":
               return Arrays.asList(new TransformationMenu[]{new add_dependencies()});
-            case 2:
+            case "jetbrains.mps.build.workflow.editor.add_dependencies_BwfSubTask_ext_3":
               return Arrays.asList(new TransformationMenu[]{new add_dependencies_BwfSubTask_ext_3()});
             default:
           }
@@ -103,8 +103,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.workflow.editor.add_dependencies_BwfTask_ext_2":
               return Arrays.asList(new TransformationMenu[]{new add_dependencies_BwfTask_ext_2()});
             default:
           }
@@ -112,8 +112,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.workflow.editor.add_dependencies_BwfTaskPart":
               return Arrays.asList(new TransformationMenu[]{new add_dependencies_BwfTaskPart()});
             default:
           }
@@ -153,7 +153,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5dc467L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2318e5dbdfc1e415L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x1c936d31d3127b3bL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x365f30e12d6048cL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x7313ce29aa27bafcL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede06eL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114723a759L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2021cfb4db4e306L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2021cfb4db759cbL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5fb388b43aa25d48L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5a7e1dc16b0ca24fL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c10L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6287L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2318e5dbdfc153dbL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b4a1bL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede06eL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38c4L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c1fL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da1147260537L), MetaIdFactory.conceptId(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.build.workflow.editor.BwfSubTask_ApplySideTransforms", "jetbrains.mps.build.workflow.editor.add_dependencies", "jetbrains.mps.build.workflow.editor.add_dependencies_BwfSubTask_ext_3"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a3 = new String[]{"jetbrains.mps.build.workflow.editor.add_dependencies_BwfTask_ext_2"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a3 = new String[]{"jetbrains.mps.build.workflow.editor.add_dependencies_BwfTaskPart"};
 }

@@ -117,8 +117,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedTransformationMenu":
               return Arrays.asList(new TransformationMenu[]{new NamedTransformationMenu()});
             default:
           }
@@ -126,14 +126,14 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedTransformationMenu_EmptyCell":
               return Arrays.asList(new TransformationMenu[]{new NamedTransformationMenu_EmptyCell()});
-            case 1:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParent_WrapDefaultSubstituteMenu":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParent_WrapDefaultSubstituteMenu()});
-            case 2:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParent_WrapDefaultSubstituteMenuWithFunction":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParent_WrapDefaultSubstituteMenuWithFunction()});
-            case 3:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParent_WrapNamedSubstituteMenu":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParent_WrapNamedSubstituteMenu()});
             default:
           }
@@ -141,18 +141,18 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_BooleanMenuPart":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParentPropertyAndReference_BooleanMenuPart()});
-            case 1:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_CustomPropertyMenu":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParentPropertyAndReference_CustomPropertyMenu()});
-            case 2:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_CustomReferenceMenu":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParentPropertyAndReference_CustomReferenceMenu()});
-            case 3:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_EnumMenuPart":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParentPropertyAndReference_EnumMenuPart()});
-            case 4:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_ReferenceMenuPart":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParentPropertyAndReference_ReferenceMenuPart()});
-            case 5:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_StringMenuPart":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParentPropertyAndReference_StringMenuPart()});
             default:
           }
@@ -160,8 +160,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 3:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart()});
             default:
           }
@@ -169,8 +169,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 4:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0e1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSpecialChild_TransformationMenu":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteSpecialChild_TransformationMenu()});
             default:
           }
@@ -178,10 +178,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 5:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0f1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSpecialParent_Multiple_EmptyCell_TransformationMenu":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteSpecialParent_Multiple_EmptyCell_TransformationMenu()});
-            case 1:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSpecialParent_Single_EmptyCell_TransformationMenu":
               return Arrays.asList(new TransformationMenu[]{new TestSubstituteSpecialParent_Single_EmptyCell_TransformationMenu()});
             default:
           }
@@ -272,8 +272,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex4.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.ParameterizedByPrimitiveType":
               return Arrays.asList(new SubstituteMenu[]{new ParameterizedByPrimitiveType()});
             default:
           }
@@ -281,12 +281,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenu":
               return Arrays.asList(new SubstituteMenu[]{new NamedSubstituteMenu()});
-            case 1:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuForContribution":
               return Arrays.asList(new SubstituteMenu[]{new NamedSubstituteMenuForContribution()});
-            case 2:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenu_EmptyCell":
               return Arrays.asList(new SubstituteMenu[]{new NamedSubstituteMenu_EmptyCell()});
             default:
           }
@@ -294,8 +294,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSubChildSmartReference_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new TestSubstituteSubChildSmartReference_SmartReference()});
             default:
           }
@@ -303,8 +303,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 3:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuToWrapFromSubstituteMenu":
               return Arrays.asList(new SubstituteMenu[]{new NamedSubstituteMenuToWrapFromSubstituteMenu()});
             default:
           }
@@ -312,8 +312,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 4:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0e1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuToWrapFromTransformMenu":
               return Arrays.asList(new SubstituteMenu[]{new NamedSubstituteMenuToWrapFromTransformMenu()});
             default:
           }
@@ -321,8 +321,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 5:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0f1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.IncludeDefaultAndNullMenu":
               return Arrays.asList(new SubstituteMenu[]{new IncludeDefaultAndNullMenu()});
             default:
           }
@@ -330,10 +330,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 6:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0g1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToInclude1":
               return Arrays.asList(new SubstituteMenu[]{new TestSubstitute_Menu_ToInclude1()});
-            case 1:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToInclude2":
               return Arrays.asList(new SubstituteMenu[]{new TestSubstitute_Menu_ToInclude2()});
             default:
           }
@@ -341,8 +341,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 7:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0h1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToInclude":
               return Arrays.asList(new SubstituteMenu[]{new TestSubstitute_SameMenu_ToInclude()});
             default:
           }
@@ -350,10 +350,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 8:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0i1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToWrap1":
               return Arrays.asList(new SubstituteMenu[]{new TestSubstitute_Menu_ToWrap1()});
-            case 1:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToWrap2":
               return Arrays.asList(new SubstituteMenu[]{new TestSubstitute_Menu_ToWrap2()});
             default:
           }
@@ -361,8 +361,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 9:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0j1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToWrap":
               return Arrays.asList(new SubstituteMenu[]{new TestSubstitute_SameMenu_ToWrap()});
             default:
           }
@@ -379,20 +379,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x69b757bd7bd1801L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x314f66c376dfa909L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a98L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a99L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7f53d2199235476bL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470cL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x446b8c93949517d4L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d36ae2L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d41c8eL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb580f352L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581957aL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581a862L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb5817a84L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581c35cL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb5822235L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb581f203L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb58267deL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb58283b9L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582c0d2L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582978bL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb582b4edL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x4c7dc5cc7a893d21L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x28bb36fb7222267fL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7dd7af941a6edd1bL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x6723ebbaa490bde6L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x6723ebbaa49bf847L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aaL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7315fee8e56db2aeL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x401156263ff3470bL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb28100fdcL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709aL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb2810192dL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709dL)).seal();
   private static final ConceptSwitchIndex conceptIndex4 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x75a761fb50351afbL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aeL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6ff2aaL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7315fee8e56db2aeL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x41299cab94ed9982L), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb28100fdcL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709aL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb2810192dL), MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709dL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedTransformationMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a4 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedTransformationMenu_EmptyCell", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParent_WrapDefaultSubstituteMenu", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParent_WrapDefaultSubstituteMenuWithFunction", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParent_WrapNamedSubstituteMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a4 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_BooleanMenuPart", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_CustomPropertyMenu", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_CustomReferenceMenu", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_EnumMenuPart", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_ReferenceMenuPart", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndReference_StringMenuPart"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a4 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteParentPropertyAndRef_Subconcept_RefMenuPart"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a4 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSpecialChild_TransformationMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0f1a4 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSpecialParent_Multiple_EmptyCell_TransformationMenu", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSpecialParent_Single_EmptyCell_TransformationMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.ParameterizedByPrimitiveType"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenu", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuForContribution", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenu_EmptyCell"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstituteSubChildSmartReference_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuToWrapFromSubstituteMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuToWrapFromTransformMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0f1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.IncludeDefaultAndNullMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0g1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToInclude1", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToInclude2"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0h1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToInclude"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0i1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToWrap1", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToWrap2"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0j1a6 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_SameMenu_ToWrap"};
 }

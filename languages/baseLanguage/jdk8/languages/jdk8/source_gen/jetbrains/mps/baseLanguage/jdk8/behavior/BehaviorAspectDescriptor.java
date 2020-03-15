@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
-  private final BHDescriptor myDefaultModifier__BehaviorDescriptor = new DefaultModifier__BehaviorDescriptor();
+  private final BHDescriptor myDefaultModifier_old__BehaviorDescriptor = new DefaultModifier_old__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
   }
@@ -22,7 +22,7 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myDefaultModifier__BehaviorDescriptor;
+        return myDefaultModifier_old__BehaviorDescriptor;
       default:
     }
     return null;

@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="ApplicableNodeReference_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.lang.typesystem.editor.ApplicableNodeReference_SubstituteMenu$CONCEPTS" />
@@ -32,7 +32,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.lang.typesystem.editor.CheckingRuleReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,347,0" name="jetbrains.mps.lang.typesystem.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,344,0" name="jetbrains.mps.lang.typesystem.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="LinkPatternVariableReference_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.lang.typesystem.editor.LinkPatternVariableReference_SubstituteMenu$CONCEPTS" />
@@ -19617,6 +19617,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/1741258697587166486">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587166486" at="228,99,229,111" concept="8" />
+      <scope id="1741258697587166486" at="228,99,229,111" />
+    </file>
     <file name="InferenceRule_add_OverridesConceptFunction.java">
       <node id="1741258697587166486" at="49,0,50,0" concept="3" trace="myLocations" />
       <node id="1741258697587166486" at="51,67,52,63" concept="8" />
@@ -20773,6 +20777,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/1741258697587243598">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587243598" at="226,90,227,102" concept="8" />
+      <scope id="1741258697587243598" at="226,90,227,102" />
+    </file>
     <file name="InferenceRule_ApplySideTransforms.java">
       <node id="1741258697587243598" at="30,0,31,0" concept="3" trace="myLocations" />
       <node id="1741258697587243598" at="32,67,33,63" concept="8" />
@@ -21728,6 +21736,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/4747359941571311564">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311564" at="325,91,326,99" concept="8" />
+      <scope id="4747359941571311564" at="325,91,326,99" />
+    </file>
     <file name="InequationReference_SmartReference.java">
       <node id="4747359941571311564" at="31,118,32,140" concept="7" />
       <node id="4747359941571311562" at="32,140,33,136" concept="2" />
@@ -24842,6 +24854,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)/8837437332641838288">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="8837437332641838288" at="237,84,238,96" concept="8" />
+      <scope id="8837437332641838288" at="237,84,238,96" />
+    </file>
     <file name="NonTypesystemRule_backToAll.java">
       <node id="8837437332641838288" at="50,0,51,0" concept="3" trace="myLocations" />
       <node id="8837437332641838288" at="52,67,53,63" concept="8" />

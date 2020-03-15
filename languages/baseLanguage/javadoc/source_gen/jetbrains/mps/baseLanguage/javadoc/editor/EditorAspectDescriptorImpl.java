@@ -107,8 +107,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_ApplySideTransforms":
               return Arrays.asList(new TransformationMenu[]{new TextCommentLinePart_ApplySideTransforms()});
             default:
           }
@@ -147,5 +147,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86d8L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dbe86dbL), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x44ac82392ce5c6b0L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec252c9a28L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2d3L), MetaIdFactory.conceptId(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5a38b07c2d6d7c7bL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.baseLanguage.javadoc.editor.TextCommentLinePart_ApplySideTransforms"};
 }

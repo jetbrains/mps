@@ -17,10 +17,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,156,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,150,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/1068638940632614981">
@@ -305,6 +305,10 @@
       </scope>
       <unit id="2705676212746996130" at="18,0,45,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.Base_NamedTransformationMenu" />
     </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="2705676212746996130" at="65,100,66,97" concept="10" />
+      <scope id="2705676212746996130" at="65,100,66,97" />
+    </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/2705676212746996156">
     <file name="Derived_NamedTransformationMenu.java">
@@ -337,6 +341,10 @@
         <var name="context" id="2705676212746996156" />
       </scope>
       <unit id="2705676212746996156" at="18,0,45,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.Derived_NamedTransformationMenu" />
+    </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="2705676212746996156" at="74,103,75,100" concept="10" />
+      <scope id="2705676212746996156" at="74,103,75,100" />
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/3526874291840093374">
@@ -371,6 +379,10 @@
       </scope>
       <unit id="3526874291840093374" at="18,0,45,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ContributedToFromUnusedLanguage" />
     </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="3526874291840093374" at="110,103,111,100" concept="10" />
+      <scope id="3526874291840093374" at="110,103,111,100" />
+    </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/3526874291840774961">
     <file name="ContributedToFromUsedLanguage.java">
@@ -404,8 +416,16 @@
       </scope>
       <unit id="3526874291840774961" at="18,0,45,0" name="jetbrains.mps.lang.editor.menus.testLanguage.editor.ContributedToFromUsedLanguage" />
     </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="3526874291840774961" at="112,101,113,98" concept="10" />
+      <scope id="3526874291840774961" at="112,101,113,98" />
+    </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/3794279994274164831">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="3794279994274164831" at="92,88,93,85" concept="10" />
+      <scope id="3794279994274164831" at="92,88,93,85" />
+    </file>
     <file name="NamedMenuForBase.java">
       <node id="3794279994274164831" at="19,0,20,0" concept="6" trace="myLocations" />
       <node id="3794279994274164831" at="21,67,22,63" concept="10" />
@@ -439,6 +459,10 @@
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/4091667478582879857">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4091667478582879857" at="101,89,102,86" concept="10" />
+      <scope id="4091667478582879857" at="101,89,102,86" />
+    </file>
     <file name="NamedMenuForChild.java">
       <node id="4091667478582879857" at="19,0,20,0" concept="6" trace="myLocations" />
       <node id="4091667478582879857" at="21,67,22,63" concept="10" />
@@ -472,6 +496,10 @@
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/5239313638630261293">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="5239313638630261293" at="120,91,121,88" concept="10" />
+      <scope id="5239313638630261293" at="120,91,121,88" />
+    </file>
     <file name="WithNestedVariables.java">
       <node id="5239313638630261293" at="28,0,29,0" concept="6" trace="myLocations" />
       <node id="5239313638630261293" at="30,67,31,63" concept="10" />
@@ -771,6 +799,10 @@
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/6202297022023752048">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="6202297022023752048" at="114,85,115,82" concept="10" />
+      <scope id="6202297022023752048" at="114,85,115,82" />
+    </file>
     <file name="NamedTestMenu.java">
       <node id="6202297022023752048" at="25,0,26,0" concept="6" trace="myLocations" />
       <node id="6202297022023752048" at="27,67,28,63" concept="10" />
@@ -865,6 +897,10 @@
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/6202297022026415601">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="6202297022026415601" at="122,95,123,92" concept="10" />
+      <scope id="6202297022026415601" at="122,95,123,92" />
+    </file>
     <file name="WithNonExecutableAction.java">
       <node id="6202297022026415601" at="25,0,26,0" concept="6" trace="myLocations" />
       <node id="6202297022026415601" at="27,67,28,63" concept="10" />
@@ -971,6 +1007,10 @@
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/6202297022027496048">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="6202297022027496048" at="118,92,119,89" concept="10" />
+      <scope id="6202297022027496048" at="118,92,119,89" />
+    </file>
     <file name="WithExecutableAction.java">
       <node id="6202297022027496048" at="25,0,26,0" concept="6" trace="myLocations" />
       <node id="6202297022027496048" at="27,67,28,63" concept="10" />
@@ -1193,6 +1233,10 @@
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/8477852555557899240">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="8477852555557899240" at="116,100,117,97" concept="10" />
+      <scope id="8477852555557899240" at="116,100,117,97" />
+    </file>
     <file name="ParameterizedByPrimitiveType.java">
       <node id="8477852555557899240" at="31,0,32,0" concept="6" trace="myLocations" />
       <node id="8477852555557899240" at="33,67,34,63" concept="10" />
@@ -1521,6 +1565,10 @@
     </file>
   </root>
   <root nodeRef="r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)/8991930073415901008">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="8991930073415901008" at="83,88,84,85" concept="10" />
+      <scope id="8991930073415901008" at="83,88,84,85" />
+    </file>
     <file name="MenuForEmptyCell.java">
       <node id="8991930073415901008" at="22,0,23,0" concept="6" trace="myLocations" />
       <node id="8991930073415901008" at="24,67,25,63" concept="10" />

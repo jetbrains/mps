@@ -282,7 +282,7 @@
             <node concept="3clFbS" id="l" role="1pnPq1">
               <node concept="3cpWs6" id="n" role="3cqZAp">
                 <node concept="1nCR9W" id="o" role="3cqZAk">
-                  <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_Constraints" />
+                  <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.jdk8.constraints.SuperInterfaceMethodCall_old_Constraints" />
                   <node concept="3uibUv" id="p" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
@@ -290,14 +290,14 @@
               </node>
             </node>
             <node concept="3gn64h" id="m" role="1pnPq6">
-              <ref role="3gnhBz" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
+              <ref role="3gnhBz" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall_old" />
             </node>
           </node>
           <node concept="1pnPoh" id="j" role="1_3QMm">
             <node concept="3clFbS" id="q" role="1pnPq1">
               <node concept="3cpWs6" id="s" role="3cqZAp">
                 <node concept="1nCR9W" id="t" role="3cqZAk">
-                  <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_Constraints" />
+                  <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.jdk8.constraints.DefaultModifier_old_Constraints" />
                   <node concept="3uibUv" id="u" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
@@ -305,7 +305,7 @@
               </node>
             </node>
             <node concept="3gn64h" id="r" role="1pnPq6">
-              <ref role="3gnhBz" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+              <ref role="3gnhBz" to="jqf9:43H3v3JgacM" resolve="DefaultModifier_old" />
             </node>
           </node>
           <node concept="3clFbS" id="k" role="1prKM_" />
@@ -325,7 +325,7 @@
   </node>
   <node concept="312cEu" id="y">
     <property role="3GE5qa" value="" />
-    <property role="TrG5h" value="DefaultModifier_Constraints" />
+    <property role="TrG5h" value="DefaultModifier_old_Constraints" />
     <node concept="3Tm1VV" id="z" role="1B3o_S">
       <node concept="cd27G" id="E" role="lGtFl">
         <node concept="3u3nmq" id="F" role="cd27D">
@@ -354,7 +354,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="1BaE9c" id="Q" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
-            <property role="1BaxDp" value="DefaultModifier$Z2" />
+            <property role="1BaxDp" value="DefaultModifier_old$Z2" />
             <node concept="2YIFZM" id="S" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
@@ -383,7 +383,7 @@
                 </node>
               </node>
               <node concept="Xl_RD" id="X" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier" />
+                <property role="Xl_RC" value="jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier_old" />
                 <node concept="cd27G" id="15" role="lGtFl">
                   <node concept="3u3nmq" id="16" role="cd27D">
                     <property role="3u3nmv" value="1164142520228621411" />
@@ -1148,7 +1148,7 @@
     </node>
   </node>
   <node concept="312cEu" id="5$">
-    <property role="TrG5h" value="SuperInterfaceMethodCall_Constraints" />
+    <property role="TrG5h" value="SuperInterfaceMethodCall_old_Constraints" />
     <node concept="3Tm1VV" id="5_" role="1B3o_S">
       <node concept="cd27G" id="5H" role="lGtFl">
         <node concept="3u3nmq" id="5I" role="cd27D">
@@ -1177,7 +1177,7 @@
           <ref role="37wK5l" to="79pl:~BaseConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="BaseConstraintsDescriptor" />
           <node concept="1BaE9c" id="5T" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
-            <property role="1BaxDp" value="SuperInterfaceMethodCall$VW" />
+            <property role="1BaxDp" value="SuperInterfaceMethodCall_old$VW" />
             <node concept="2YIFZM" id="5V" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
@@ -1206,7 +1206,7 @@
                 </node>
               </node>
               <node concept="Xl_RD" id="60" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.baseLanguage.jdk8.structure.SuperInterfaceMethodCall" />
+                <property role="Xl_RC" value="jetbrains.mps.baseLanguage.jdk8.structure.SuperInterfaceMethodCall_old" />
                 <node concept="cd27G" id="68" role="lGtFl">
                   <node concept="3u3nmq" id="69" role="cd27D">
                     <property role="3u3nmv" value="1719162360409958585" />
@@ -1790,7 +1790,7 @@
                   <ref role="37wK5l" to="79pl:~BaseReferenceConstraintsDescriptor.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,jetbrains.mps.smodel.runtime.ConstraintsDescriptor)" resolve="BaseReferenceConstraintsDescriptor" />
                   <node concept="1BaE9c" id="9H" role="37wK5m">
                     <property role="1ouuDV" value="LINKS" />
-                    <property role="1BaxDp" value="classifier$xsNt" />
+                    <property role="1BaxDp" value="classifier_old$xsNt" />
                     <node concept="2YIFZM" id="9N" role="1Bazha">
                       <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                       <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
@@ -1827,7 +1827,7 @@
                         </node>
                       </node>
                       <node concept="Xl_RD" id="9T" role="37wK5m">
-                        <property role="Xl_RC" value="classifier" />
+                        <property role="Xl_RC" value="classifier_old" />
                         <node concept="cd27G" id="a3" role="lGtFl">
                           <node concept="3u3nmq" id="a4" role="cd27D">
                             <property role="3u3nmv" value="1719162360409958585" />
@@ -2674,7 +2674,7 @@
                                           </node>
                                         </node>
                                         <node concept="3TrEf2" id="fg" role="2OqNvi">
-                                          <ref role="3Tt5mk" to="jqf9:1vrGgVFtizu" resolve="classifier" />
+                                          <ref role="3Tt5mk" to="jqf9:1vrGgVFtizu" resolve="classifier_old" />
                                           <node concept="cd27G" id="fm" role="lGtFl">
                                             <node concept="3u3nmq" id="fn" role="cd27D">
                                               <property role="3u3nmv" value="6836281137582776115" />

@@ -40,8 +40,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.logging.editor.LogLowFirstCell":
               return Arrays.asList(new TransformationMenu[]{new LogLowFirstCell()});
             default:
           }
@@ -49,8 +49,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.logging.editor.MsgFirstCell":
               return Arrays.asList(new TransformationMenu[]{new MsgFirstCell()});
             default:
           }
@@ -83,8 +83,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex3.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage":
               return Arrays.asList(new SubstituteMenu[]{new ReplaceLogWithMessage()});
             default:
           }
@@ -92,8 +92,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.logging.editor.ReplaceMessageWithLog":
               return Arrays.asList(new SubstituteMenu[]{new ReplaceMessageWithLog()});
             default:
           }
@@ -109,8 +109,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L), MetaIdFactory.conceptId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L), MetaIdFactory.conceptId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L), MetaIdFactory.conceptId(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.baseLanguage.logging.editor.LogLowFirstCell"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a3 = new String[]{"jetbrains.mps.baseLanguage.logging.editor.MsgFirstCell"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a5 = new String[]{"jetbrains.mps.baseLanguage.logging.editor.ReplaceLogWithMessage"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a5 = new String[]{"jetbrains.mps.baseLanguage.logging.editor.ReplaceMessageWithLog"};
 }

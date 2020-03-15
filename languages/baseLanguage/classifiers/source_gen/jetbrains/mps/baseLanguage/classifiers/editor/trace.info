@@ -13,7 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="DefaultClassifierFieldAccessOperation_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierFieldAccessOperation_SubstituteMenu$CONCEPTS" />
@@ -37,7 +37,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierType_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,96,0" name="jetbrains.mps.baseLanguage.classifiers.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,95,0" name="jetbrains.mps.baseLanguage.classifiers.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590370(jetbrains.mps.baseLanguage.classifiers.editor)/1205752655131">
@@ -2157,6 +2157,10 @@
       <unit id="1741258697587182932" at="59,0,82,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_ApplySideTransforms$TMP_Include_tthcgy_a0" />
       <unit id="1741258697587182933" at="82,0,105,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_ApplySideTransforms$TMP_Include_tthcgy_b0" />
       <unit id="1741258697587182927" at="29,0,111,0" name="jetbrains.mps.baseLanguage.classifiers.editor.DefaultClassifierMethodDeclaration_ApplySideTransforms" />
+    </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587182927" at="61,120,62,123" concept="8" />
+      <scope id="1741258697587182927" at="61,120,62,123" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590370(jetbrains.mps.baseLanguage.classifiers.editor)/4737538687464648006">

@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="CommandHolderRef_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.console.base.editor.CommandHolderRef_SubstituteMenu$CONCEPTS" />
@@ -26,7 +26,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.console.base.editor.CommandHolderRef_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,173,0" name="jetbrains.mps.console.base.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,171,0" name="jetbrains.mps.console.base.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="NodeReferencePresentation_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.console.base.editor.NodeReferencePresentation_SubstituteMenu$CONCEPTS" />
@@ -1307,6 +1307,10 @@
     </file>
   </root>
   <root nodeRef="r:f09c85c2-fb88-4283-852e-78d5fc87420e(jetbrains.mps.console.base.editor)/4747359941571311668">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311668" at="152,89,153,100" concept="8" />
+      <scope id="4747359941571311668" at="152,89,153,100" />
+    </file>
     <file name="HelpConceptReference_SmartReference.java">
       <node id="4747359941571311668" at="29,118,30,140" concept="7" />
       <node id="4747359941571311666" at="30,140,31,137" concept="2" />
@@ -3743,6 +3747,10 @@
       <unit id="9041541628638947515" at="83,0,86,0" name="jetbrains.mps.console.base.editor.CommandHolder_EmptyCell_TransformationMenu$LINKS" />
       <unit id="523596204891427598" at="54,0,82,0" name="jetbrains.mps.console.base.editor.CommandHolder_EmptyCell_TransformationMenu$TMP_IncludeSM_8yeiqo_a0" />
       <unit id="9041541628638947515" at="25,0,87,0" name="jetbrains.mps.console.base.editor.CommandHolder_EmptyCell_TransformationMenu" />
+    </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="9041541628638947515" at="110,96,111,111" concept="8" />
+      <scope id="9041541628638947515" at="110,96,111,111" />
     </file>
   </root>
   <root nodeRef="r:f09c85c2-fb88-4283-852e-78d5fc87420e(jetbrains.mps.console.base.editor)/963101385307642090">

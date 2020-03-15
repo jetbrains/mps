@@ -7,7 +7,6 @@ import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import java.util.Collection;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor implements ActionAspectDescriptor {
@@ -16,22 +15,22 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   @Override
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
-      switch (Arrays.binarySearch(stringSwitchCases_tpto26_a0a0a0c, concept.getName())) {
-        case 0:
+      switch (concept.getName()) {
+        case "MissingChildInConceptProblem":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_2554379189374330335());
-        case 1:
+        case "MissingPropertyInConceptProblem":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_7716791493892398447());
-        case 2:
+        case "MissingRefInConceptProblem":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_1640022677634389055());
-        case 3:
+        case "MultipleChildrenInSingleRoleProblem":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_5741876244398307917());
-        case 4:
+        case "NoChildInObligatoryRoleProblem":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_2559059706675259169());
-        case 5:
+        case "NoRefInObligatoryRoleProblem":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_5741876244398307749());
-        case 6:
+        case "TargetConceptIncorrectChild":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_7574732359718303543());
-        case 7:
+        case "TargetConceptIncorrectRef":
           return Collections.<NodeFactory>singletonList(new DefaultKindSetting.NodeFactory_7574732359718304019());
         default:
       }
@@ -39,5 +38,4 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
     return Collections.<NodeFactory>emptyList();
   }
 
-  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"MissingChildInConceptProblem", "MissingPropertyInConceptProblem", "MissingRefInConceptProblem", "MultipleChildrenInSingleRoleProblem", "NoChildInObligatoryRoleProblem", "NoRefInObligatoryRoleProblem", "TargetConceptIncorrectChild", "TargetConceptIncorrectRef"};
 }

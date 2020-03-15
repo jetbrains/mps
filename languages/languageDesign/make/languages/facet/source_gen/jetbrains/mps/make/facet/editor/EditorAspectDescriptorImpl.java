@@ -77,8 +77,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.make.facet.editor.TargetDeclaration_makeOptional":
               return Arrays.asList(new TransformationMenu[]{new TargetDeclaration_makeOptional()});
             default:
           }
@@ -125,10 +125,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex4.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.make.facet.editor.ForeignParameters":
               return Arrays.asList(new SubstituteMenu[]{new ForeignParameters()});
-            case 1:
+            case "jetbrains.mps.make.facet.editor.LocalParameters":
               return Arrays.asList(new SubstituteMenu[]{new LocalParameters()});
             default:
           }
@@ -136,8 +136,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.make.facet.editor.ResourceClassifierType_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new ResourceClassifierType_SmartReference()});
             default:
           }
@@ -154,7 +154,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b23b819L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x6598ce4d2f231cb2L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1aa1f6c694329f95L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x73e720709e312229L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aea0b4L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L)).seal();
   private static final ConceptSwitchIndex conceptIndex4 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aea0b4L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.make.facet.editor.TargetDeclaration_makeOptional"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a6 = new String[]{"jetbrains.mps.make.facet.editor.ForeignParameters", "jetbrains.mps.make.facet.editor.LocalParameters"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a6 = new String[]{"jetbrains.mps.make.facet.editor.ResourceClassifierType_SmartReference"};
 }

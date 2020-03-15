@@ -18,10 +18,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,161,0" name="jetbrains.mps.make.facet.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,158,0" name="jetbrains.mps.make.facet.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="ExtendsFacetReference_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.make.facet.editor.ExtendsFacetReference_SubstituteMenu$CONCEPTS" />
@@ -714,6 +714,10 @@
     </file>
   </root>
   <root nodeRef="r:53dc5a43-c15e-4a00-8af6-c42420ba30d9(jetbrains.mps.make.facet.editor)/1741258697587108400">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587108400" at="81,82,82,99" concept="10" />
+      <scope id="1741258697587108400" at="81,82,82,99" />
+    </file>
     <file name="TargetDeclaration_makeOptional.java">
       <node id="1741258697587108400" at="42,0,43,0" concept="5" trace="myLocations" />
       <node id="1741258697587108400" at="44,67,45,63" concept="10" />
@@ -1197,6 +1201,10 @@
     </file>
   </root>
   <root nodeRef="r:53dc5a43-c15e-4a00-8af6-c42420ba30d9(jetbrains.mps.make.facet.editor)/1741258697587108642">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587108642" at="129,69,130,82" concept="10" />
+      <scope id="1741258697587108642" at="129,69,130,82" />
+    </file>
     <file name="ForeignParameters.java">
       <node id="1741258697587108642" at="45,118,46,140" concept="9" />
       <node id="1741258697587108644" at="46,140,47,144" concept="4" />
@@ -1658,6 +1666,10 @@
     </file>
   </root>
   <root nodeRef="r:53dc5a43-c15e-4a00-8af6-c42420ba30d9(jetbrains.mps.make.facet.editor)/1741258697587109039">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587109039" at="131,67,132,80" concept="10" />
+      <scope id="1741258697587109039" at="131,67,132,80" />
+    </file>
     <file name="LocalParameters.java">
       <node id="1741258697587109039" at="43,118,44,140" concept="9" />
       <node id="1741258697587109041" at="44,140,45,41" concept="4" />
@@ -2803,6 +2815,10 @@
     </file>
   </root>
   <root nodeRef="r:53dc5a43-c15e-4a00-8af6-c42420ba30d9(jetbrains.mps.make.facet.editor)/4747359941571311347">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311347" at="140,89,141,102" concept="10" />
+      <scope id="4747359941571311347" at="140,89,141,102" />
+    </file>
     <file name="ResourceClassifierType_SmartReference.java">
       <node id="4747359941571311347" at="27,118,28,140" concept="9" />
       <node id="4747359941571311345" at="28,140,29,139" concept="4" />

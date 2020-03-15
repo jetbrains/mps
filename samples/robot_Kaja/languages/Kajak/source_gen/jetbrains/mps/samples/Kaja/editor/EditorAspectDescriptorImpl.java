@@ -99,8 +99,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.Kaja.editor.OtherCommands":
               return Arrays.asList(new TransformationMenu[]{new OtherCommands()});
             default:
           }
@@ -108,10 +108,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.Kaja.editor.IfElse":
               return Arrays.asList(new TransformationMenu[]{new IfElse()});
-            case 1:
+            case "jetbrains.mps.samples.Kaja.editor.IfElse_ext_1":
               return Arrays.asList(new TransformationMenu[]{new IfElse_ext_1()});
             default:
           }
@@ -119,8 +119,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.Kaja.editor.NegateAndAlter":
               return Arrays.asList(new TransformationMenu[]{new NegateAndAlter()});
             default:
           }
@@ -128,8 +128,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 3:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.Kaja.editor.While_to_if":
               return Arrays.asList(new TransformationMenu[]{new While_to_if()});
             default:
           }
@@ -160,8 +160,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed0d39L), MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ee0a16L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ee0a16L), MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL), MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L), MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecece0L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL), MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ee0a16L), MetaIdFactory.conceptId(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.samples.Kaja.editor.OtherCommands"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a4 = new String[]{"jetbrains.mps.samples.Kaja.editor.IfElse", "jetbrains.mps.samples.Kaja.editor.IfElse_ext_1"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a4 = new String[]{"jetbrains.mps.samples.Kaja.editor.NegateAndAlter"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a4 = new String[]{"jetbrains.mps.samples.Kaja.editor.While_to_if"};
 }

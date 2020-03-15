@@ -73,12 +73,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.lambdaCalculus.editor.BinaryOperations":
               return Arrays.asList(new TransformationMenu[]{new BinaryOperations()});
-            case 1:
+            case "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformApplication":
               return Arrays.asList(new TransformationMenu[]{new SideTransformApplication()});
-            case 2:
+            case "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformMultiple":
               return Arrays.asList(new TransformationMenu[]{new SideTransformMultiple()});
             default:
           }
@@ -111,14 +111,14 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex4.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.lambdaCalculus.editor.Lambda_Substitute":
               return Arrays.asList(new SubstituteMenu[]{new Lambda_Substitute()});
-            case 1:
+            case "jetbrains.mps.samples.lambdaCalculus.editor.Let_Substitute":
               return Arrays.asList(new SubstituteMenu[]{new Let_Substitute()});
-            case 2:
+            case "jetbrains.mps.samples.lambdaCalculus.editor.Numeric_Substitute":
               return Arrays.asList(new SubstituteMenu[]{new Numeric_Substitute()});
-            case 3:
+            case "jetbrains.mps.samples.lambdaCalculus.editor.ParenthesisSubstitute":
               return Arrays.asList(new SubstituteMenu[]{new ParenthesisSubstitute()});
             default:
           }
@@ -135,6 +135,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7fe548fL), MetaIdFactory.conceptId(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L), MetaIdFactory.conceptId(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edc7216cL)).seal();
   private static final ConceptSwitchIndex conceptIndex4 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x37d11ba7d7ec98e9L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.samples.lambdaCalculus.editor.BinaryOperations", "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformApplication", "jetbrains.mps.samples.lambdaCalculus.editor.SideTransformMultiple"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a6 = new String[]{"jetbrains.mps.samples.lambdaCalculus.editor.Lambda_Substitute", "jetbrains.mps.samples.lambdaCalculus.editor.Let_Substitute", "jetbrains.mps.samples.lambdaCalculus.editor.Numeric_Substitute", "jetbrains.mps.samples.lambdaCalculus.editor.ParenthesisSubstitute"};
 }

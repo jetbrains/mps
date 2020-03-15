@@ -7,9 +7,9 @@ import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import java.util.Collection;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import java.util.Arrays;
 import java.util.Collections;
 import jetbrains.mps.openapi.actions.descriptor.PasteWrapper;
+import java.util.Arrays;
 
 public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor implements ActionAspectDescriptor {
   private static final String LANGUAGE_FQ_NAME = "jetbrains.mps.console.base";
@@ -17,8 +17,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   @Override
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
-      switch (Arrays.binarySearch(stringSwitchCases_tpto26_a0a0a0c, concept.getName())) {
-        case 0:
+      switch (concept.getName()) {
+        case "AbstractPrintExpression":
           return Collections.<NodeFactory>singletonList(new printStatement_NodeFactories.NodeFactory_7284872370241013667());
         default:
       }
@@ -30,5 +30,4 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<PasteWrapper> getPasteWrappers() {
     return Arrays.asList(new PasteWrapper[]{new blExpression_PasteWrapper_0(), new blExpression_PasteWrapper_1(), new blExpression_PasteWrapper_2(), new blExpression_PasteWrapper_3(), new blExpression_PasteWrapper_4(), new blExpression_PasteWrapper_5()});
   }
-  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbstractPrintExpression"};
 }

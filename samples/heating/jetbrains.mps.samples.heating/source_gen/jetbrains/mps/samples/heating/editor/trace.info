@@ -14,10 +14,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,107,0" name="jetbrains.mps.samples.heating.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,105,0" name="jetbrains.mps.samples.heating.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="PresentationProviders.java">
       <unit at="21,0,24,0" name="jetbrains.mps.samples.heating.editor.PresentationProviders$PROPS" />
@@ -171,6 +171,10 @@
       <unit id="1741258697587050476" at="77,0,161,0" name="jetbrains.mps.samples.heating.editor.Customizes$TMP_Group_3ero0o_a0" />
       <unit id="1741258697587050470" at="45,0,170,0" name="jetbrains.mps.samples.heating.editor.Customizes" />
     </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587050470" at="56,67,57,79" concept="7" />
+      <scope id="1741258697587050470" at="56,67,57,79" />
+    </file>
   </root>
   <root nodeRef="r:4b82218b-d47e-4120-8b44-e2530c2efcf5(jetbrains.mps.samples.heating.editor)/1741258697587180344">
     <file name="DailyPlan_ApplySideTransforms.java">
@@ -236,6 +240,10 @@
       <unit id="1741258697587180344" at="85,0,88,0" name="jetbrains.mps.samples.heating.editor.DailyPlan_ApplySideTransforms$CONCEPTS" />
       <unit id="1741258697587180349" at="61,0,84,0" name="jetbrains.mps.samples.heating.editor.DailyPlan_ApplySideTransforms$TMP_Include_dzntsn_a0" />
       <unit id="1741258697587180344" at="29,0,89,0" name="jetbrains.mps.samples.heating.editor.DailyPlan_ApplySideTransforms" />
+    </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587180344" at="58,86,59,98" concept="7" />
+      <scope id="1741258697587180344" at="58,86,59,98" />
     </file>
   </root>
   <root nodeRef="r:4b82218b-d47e-4120-8b44-e2530c2efcf5(jetbrains.mps.samples.heating.editor)/4664795093170436393">
@@ -774,6 +782,10 @@
       <unit id="4747359941571312132" at="71,0,96,0" name="jetbrains.mps.samples.heating.editor.DailyPlanReference_SmartReference$SMP_ReferenceScope_5a277g_a$Item" />
       <unit id="4747359941571312132" at="48,0,97,0" name="jetbrains.mps.samples.heating.editor.DailyPlanReference_SmartReference$SMP_ReferenceScope_5a277g_a" />
       <unit id="4747359941571312134" at="26,0,110,0" name="jetbrains.mps.samples.heating.editor.DailyPlanReference_SmartReference" />
+    </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571312134" at="88,90,89,98" concept="7" />
+      <scope id="4747359941571312134" at="88,90,89,98" />
     </file>
   </root>
   <root nodeRef="r:4b82218b-d47e-4120-8b44-e2530c2efcf5(jetbrains.mps.samples.heating.editor)/4747359941571312136">

@@ -6,7 +6,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <root>
     <file name="ActionAspectDescriptorImpl.java">
-      <unit at="13,0,30,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.ActionAspectDescriptorImpl" />
+      <unit at="12,0,28,0" name="jetbrains.mps.lang.feedback.problem.scopes.actions.ActionAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:ce8f16f4-24c5-47e8-b357-561bf11455c0(jetbrains.mps.lang.feedback.problem.scopes.actions)/1592627013225788521">

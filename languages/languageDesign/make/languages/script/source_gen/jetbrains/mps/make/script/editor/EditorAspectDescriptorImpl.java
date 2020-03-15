@@ -68,8 +68,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.make.script.editor.Option_makeDefault":
               return Arrays.asList(new TransformationMenu[]{new Option_makeDefault()});
             default:
           }
@@ -120,10 +120,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex3.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.make.script.editor.AllWorkLeftExpression_subs":
               return Arrays.asList(new SubstituteMenu[]{new AllWorkLeftExpression_subs()});
-            case 1:
+            case "jetbrains.mps.make.script.editor.RelayQueryExpression_subs":
               return Arrays.asList(new SubstituteMenu[]{new RelayQueryExpression_subs()});
             default:
           }
@@ -131,12 +131,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.make.script.editor.ProgressStatement_subs":
               return Arrays.asList(new SubstituteMenu[]{new ProgressStatement_subs()});
-            case 1:
+            case "jetbrains.mps.make.script.editor.ReportFeedbackStatement_subs":
               return Arrays.asList(new SubstituteMenu[]{new ReportFeedbackStatement_subs()});
-            case 2:
+            case "jetbrains.mps.make.script.editor.ResultStatement_subs":
               return Arrays.asList(new SubstituteMenu[]{new ResultStatement_subs()});
             default:
           }
@@ -152,7 +152,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc49ec9L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x2dc2243445538ecaL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6987L), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dacL), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b2L), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972068L), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x716499a9068b35e9L), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x1b731b4510dbc59fL), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b828L), MetaIdFactory.conceptId(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.make.script.editor.Option_makeDefault"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a5 = new String[]{"jetbrains.mps.make.script.editor.AllWorkLeftExpression_subs", "jetbrains.mps.make.script.editor.RelayQueryExpression_subs"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a5 = new String[]{"jetbrains.mps.make.script.editor.ProgressStatement_subs", "jetbrains.mps.make.script.editor.ReportFeedbackStatement_subs", "jetbrains.mps.make.script.editor.ResultStatement_subs"};
 }

@@ -13,10 +13,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,157,0" name="jetbrains.mps.baseLanguageInternal.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,154,0" name="jetbrains.mps.baseLanguageInternal.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="ExtractStaticMethod_CallExpression_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.baseLanguageInternal.editor.ExtractStaticMethod_CallExpression_SubstituteMenu$CONCEPTS" />
@@ -4671,6 +4671,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903aa(jetbrains.mps.baseLanguageInternal.editor)/2046400078104793282">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="2046400078104793282" at="88,108,89,115" concept="7" />
+      <scope id="2046400078104793282" at="88,108,89,115" />
+    </file>
     <file name="InternalAnonymousClass_Empty_SideTransformMenu.java">
       <node id="2046400078104793282" at="21,0,22,0" concept="3" trace="myLocations" />
       <node id="2046400078104793282" at="23,67,24,63" concept="7" />
@@ -6971,6 +6975,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903aa(jetbrains.mps.baseLanguageInternal.editor)/4747359941571311085">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311085" at="137,107,138,110" concept="7" />
+      <scope id="4747359941571311085" at="137,107,138,110" />
+    </file>
     <file name="ExtractToConstantRefExpression_SmartReference.java">
       <node id="4747359941571311085" at="29,118,30,140" concept="6" />
       <node id="4747359941571311083" at="30,140,31,146" concept="2" />
@@ -7147,6 +7155,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903aa(jetbrains.mps.baseLanguageInternal.editor)/4747359941571311163">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311163" at="128,107,129,110" concept="7" />
+      <scope id="4747359941571311163" at="128,107,129,110" />
+    </file>
     <file name="ExtractStaticInnerClassCreator_SmartReference.java">
       <node id="4747359941571311163" at="30,118,31,140" concept="6" />
       <node id="4747359941571311160" at="31,140,32,147" concept="2" />

@@ -9,7 +9,6 @@ import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent;
-import java.util.Arrays;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -46,10 +45,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a2, editorComponentId)) {
-            case 0:
+          switch (editorComponentId) {
+            case "jetbrains.mps.lang.constraints.rules.editor.HintIsApplicable":
               return Collections.<ConceptEditorComponent>singletonList(new HintIsApplicable());
-            case 1:
+            case "jetbrains.mps.lang.constraints.rules.editor.IsApplicable":
               return Collections.<ConceptEditorComponent>singletonList(new IsApplicable());
             default:
               return Collections.<ConceptEditorComponent>emptyList();
@@ -76,5 +75,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x653030359366e9d5L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6090f0354fe61d2cL), MetaIdFactory.conceptId(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a2 = new String[]{"jetbrains.mps.lang.constraints.rules.editor.HintIsApplicable", "jetbrains.mps.lang.constraints.rules.editor.IsApplicable"};
 }

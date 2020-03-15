@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent;
-import java.util.Arrays;
 import jetbrains.mps.openapi.editor.style.StyleAttribute;
 import jetbrains.mps.editor.runtime.style.InheritableStyleAttribute;
 import jetbrains.mps.editor.runtime.style.SimpleStyleAttribute;
@@ -65,10 +64,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a2, editorComponentId)) {
-            case 0:
+          switch (editorComponentId) {
+            case "jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent":
               return Collections.<ConceptEditorComponent>singletonList(new StyleTestElement_EditorComponent());
-            case 1:
+            case "jetbrains.mps.lang.editor.styleTests.editor.StyleTest_EditorComponent":
               return Collections.<ConceptEditorComponent>singletonList(new StyleTest_EditorComponent());
             default:
               return Collections.<ConceptEditorComponent>emptyList();
@@ -95,10 +94,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
   }
 
   public StyleAttribute getStyleAttribute(String attributeName) {
-    switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0e, attributeName)) {
-      case 0:
+    switch (attributeName) {
+      case "test-inherited-attribute":
         return new InheritableStyleAttribute<String>("test-inherited-attribute");
-      case 1:
+      case "test-simple-attribute":
         return new SimpleStyleAttribute<Boolean>("test-simple-attribute", true);
       default:
         return null;
@@ -107,6 +106,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7697714d0d49e230L), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a36a0aL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x38990895c164873aL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a34c76L), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a3689eL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x6d1be7c4cdf956fL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x6d1be7c4cdf954fL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x5bb841570e741168L), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a35eddL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a3595dL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x692a1b3ce85cd977L), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a36a0fL)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7697714d0d49e230L), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x74e28664f056014cL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a35eddL), MetaIdFactory.conceptId(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a3595dL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a2 = new String[]{"jetbrains.mps.lang.editor.styleTests.editor.StyleTestElement_EditorComponent", "jetbrains.mps.lang.editor.styleTests.editor.StyleTest_EditorComponent"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0e = new String[]{"test-inherited-attribute", "test-simple-attribute"};
 }

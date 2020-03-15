@@ -35,8 +35,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.editor.ctor_IncompleteFromModifier":
               return Arrays.asList(new SubstituteMenu[]{new addCtorIncompleteFromModifier()});
             default:
           }
@@ -50,5 +50,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.baseLanguage.editor.ctor_IncompleteFromModifier"};
 }

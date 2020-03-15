@@ -84,8 +84,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguageInternal.editor.InternalAnonymousClass_Empty_SideTransformMenu":
               return Arrays.asList(new TransformationMenu[]{new InternalAnonymousClass_Empty_SideTransformMenu()});
             default:
           }
@@ -124,8 +124,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex3.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguageInternal.editor.ExtractStaticInnerClassCreator_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new ExtractStaticInnerClassCreator_SmartReference()});
             default:
           }
@@ -133,8 +133,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguageInternal.editor.ExtractToConstantRefExpression_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new ExtractToConstantRefExpression_SmartReference()});
             default:
           }
@@ -150,7 +150,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746809L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ed999aL), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x7a00a2a7a8b080daL)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L), MetaIdFactory.conceptId(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.baseLanguageInternal.editor.InternalAnonymousClass_Empty_SideTransformMenu"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a5 = new String[]{"jetbrains.mps.baseLanguageInternal.editor.ExtractStaticInnerClassCreator_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a5 = new String[]{"jetbrains.mps.baseLanguageInternal.editor.ExtractToConstantRefExpression_SmartReference"};
 }

@@ -184,9 +184,6 @@
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
     </language>
-    <language id="96ee7a94-411d-4cf8-9b94-96cad7e52411" name="jetbrains.mps.baseLanguage.jdk7">
-      <concept id="400642802549924137" name="jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement" flags="nn" index="2ignYC" />
-    </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
       <concept id="7980339663309897032" name="jetbrains.mps.lang.generator.structure.OriginTrace" flags="ng" index="cd27G">
         <child id="7980339663309897037" name="origin" index="cd27D" />
@@ -4073,7 +4070,7 @@
         </node>
       </node>
       <node concept="3clFbS" id="ns" role="3clF47">
-        <node concept="2ignYC" id="nx" role="3cqZAp">
+        <node concept="3KaCP$" id="nx" role="3cqZAp">
           <node concept="3KbdKl" id="nz" role="3KbHQx">
             <node concept="Xl_RD" id="nB" role="3Kbmr1">
               <property role="Xl_RC" value="testCustomAnalyzer.dataFlow.CounterAnalyzerWithConstructor" />
@@ -4116,10 +4113,10 @@
               </node>
             </node>
           </node>
-          <node concept="37vLTw" id="n_" role="3KbGdf">
+          <node concept="3clFbS" id="n_" role="3Kb1Dw" />
+          <node concept="37vLTw" id="nA" role="3KbGdf">
             <ref role="3cqZAo" node="nt" resolve="analyzerId" />
           </node>
-          <node concept="3clFbS" id="nA" role="3Kb1Dw" />
         </node>
         <node concept="3cpWs6" id="ny" role="3cqZAp">
           <node concept="2YIFZM" id="nP" role="3cqZAk">

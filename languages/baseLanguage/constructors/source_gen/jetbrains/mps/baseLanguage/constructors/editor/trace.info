@@ -12,7 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="CustomConstructorParameterReference_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.baseLanguage.constructors.editor.CustomConstructorParameterReference_SubstituteMenu$CONCEPTS" />
@@ -29,7 +29,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.constructors.editor.CustomConstructorUsage_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="18,0,91,0" name="jetbrains.mps.baseLanguage.constructors.editor.EditorAspectDescriptorImpl" />
+      <unit at="18,0,90,0" name="jetbrains.mps.baseLanguage.constructors.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="ListParameterReference_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.baseLanguage.constructors.editor.ListParameterReference_SubstituteMenu$CONCEPTS" />
@@ -476,8 +476,16 @@
       <unit id="1741258697587217589" at="66,0,152,0" name="jetbrains.mps.baseLanguage.constructors.editor.CustomArgumentClauseSubstitute$SMP_Group_79baz_a" />
       <unit id="1741258697587217587" at="44,0,165,0" name="jetbrains.mps.baseLanguage.constructors.editor.CustomArgumentClauseSubstitute" />
     </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587217587" at="72,97,73,95" concept="7" />
+      <scope id="1741258697587217587" at="72,97,73,95" />
+    </file>
   </root>
   <root nodeRef="r:a26c2d31-3099-460a-9c78-2ba0012a8914(jetbrains.mps.baseLanguage.constructors.editor)/1741258697587217705">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587217705" at="74,95,75,93" concept="7" />
+      <scope id="1741258697587217705" at="74,95,75,93" />
+    </file>
     <file name="ListArgumentClauseSubstitute.java">
       <node id="1741258697587217705" at="33,118,34,140" concept="6" />
       <node id="1741258697587217707" at="34,140,35,41" concept="1" />

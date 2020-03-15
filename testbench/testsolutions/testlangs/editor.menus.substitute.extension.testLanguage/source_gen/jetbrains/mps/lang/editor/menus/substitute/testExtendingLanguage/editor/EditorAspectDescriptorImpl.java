@@ -24,10 +24,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a2, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenu":
               return Arrays.asList(new SubstituteMenu[]{new SubstituteMenu_Group_CanExecute()});
-            case 1:
+            case "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuForContribution":
               return Arrays.asList(new SubstituteMenu[]{new NamedContribution()});
             default:
           }
@@ -40,5 +40,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a2 = new String[]{"jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenu", "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenuForContribution"};
 }

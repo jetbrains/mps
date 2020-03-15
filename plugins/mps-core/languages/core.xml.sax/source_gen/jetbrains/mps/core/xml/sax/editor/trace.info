@@ -13,10 +13,10 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="18,0,101,0" name="jetbrains.mps.core.xml.sax.editor.EditorAspectDescriptorImpl" />
+      <unit at="18,0,100,0" name="jetbrains.mps.core.xml.sax.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="PresentationProviders.java">
       <unit at="27,0,30,0" name="jetbrains.mps.core.xml.sax.editor.PresentationProviders$CONCEPTS" />
@@ -4612,6 +4612,10 @@
     </file>
   </root>
   <root nodeRef="r:1c9826ed-1ac5-4a4a-a16c-c4f33a9e7348(jetbrains.mps.core.xml.sax.editor)/4747359941571312070">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571312070" at="84,93,85,104" concept="7" />
+      <scope id="4747359941571312070" at="84,93,85,104" />
+    </file>
     <file name="XMLSAXAttributeReference_SmartReference.java">
       <node id="4747359941571312070" at="30,118,31,140" concept="6" />
       <node id="4747359941571312068" at="31,140,32,141" concept="1" />

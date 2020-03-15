@@ -15,13 +15,17 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,86,0" name="jetbrains.mps.lang.messages.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,85,0" name="jetbrains.mps.lang.messages.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)/2716118816016769335">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="2716118816016769335" at="57,81,58,95" concept="8" />
+      <scope id="2716118816016769335" at="57,81,58,95" />
+    </file>
     <file name="LiteralMessageAllowsMacros.java">
       <node id="2716118816016769335" at="43,0,44,0" concept="3" trace="myLocations" />
       <node id="2716118816016769335" at="45,67,46,63" concept="8" />

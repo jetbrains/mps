@@ -177,8 +177,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.test.editor.ShowText":
               return Arrays.asList(new TransformationMenu[]{new ShowText()});
             default:
           }
@@ -233,5 +233,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfba5276dfL)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbfe9cf9L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x5bf7864595dddf89L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf9c211L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfba5276dfL), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfbbbf8aadL), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a1917bdL), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x73a7cdcfbbc0b900L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ee2cbee8b19b06dL), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbf67ae2L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x119e1d33213L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x408630be7237fedfL), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4af0d67L), MetaIdFactory.conceptId(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ee2cbee8b386d76L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a6 = new String[]{"jetbrains.mps.lang.test.editor.ShowText"};
 }

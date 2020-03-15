@@ -13,11 +13,11 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="18,0,135,0" name="jetbrains.mps.lang.generator.generationContext.editor.EditorAspectDescriptorImpl" />
+      <unit at="18,0,134,0" name="jetbrains.mps.lang.generator.generationContext.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="GenerationContextOp_GenParameterRef_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.lang.generator.generationContext.editor.GenerationContextOp_GenParameterRef_SubstituteMenu$CONCEPTS" />
@@ -4668,6 +4668,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902f0(jetbrains.mps.lang.generator.generationContext.editor)/4747359941571311279">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311279" at="118,115,119,106" concept="6" />
+      <scope id="4747359941571311279" at="118,115,119,106" />
+    </file>
     <file name="GenerationContextOp_VarRef_SmartReference.java">
       <node id="4747359941571311279" at="29,118,30,140" concept="5" />
       <node id="4747359941571311277" at="30,140,31,143" concept="1" />

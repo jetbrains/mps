@@ -52,10 +52,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a3, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.heating.editor.Customizes":
               return Arrays.asList(new TransformationMenu[]{new Customizes()});
-            case 1:
+            case "jetbrains.mps.samples.heating.editor.DailyPlan_ApplySideTransforms":
               return Arrays.asList(new TransformationMenu[]{new DailyPlan_ApplySideTransforms()});
             default:
           }
@@ -84,8 +84,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex3.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.heating.editor.DailyPlanReference_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new DailyPlanReference_SmartReference()});
             default:
           }
@@ -101,6 +101,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a3 = new String[]{"jetbrains.mps.samples.heating.editor.Customizes", "jetbrains.mps.samples.heating.editor.DailyPlan_ApplySideTransforms"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a5 = new String[]{"jetbrains.mps.samples.heating.editor.DailyPlanReference_SmartReference"};
 }

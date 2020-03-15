@@ -9,7 +9,6 @@ import jetbrains.mps.openapi.editor.descriptor.ConceptEditor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Collections;
 import jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent;
-import java.util.Arrays;
 import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
@@ -55,12 +54,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a2, editorComponentId)) {
-            case 0:
+          switch (editorComponentId) {
+            case "jetbrains.mps.samples.StateChart.editor.StateChartContents":
               return Collections.<ConceptEditorComponent>singletonList(new StateChartContents());
-            case 1:
+            case "jetbrains.mps.samples.StateChart.editor.StateStates":
               return Collections.<ConceptEditorComponent>singletonList(new StateStates());
-            case 2:
+            case "jetbrains.mps.samples.StateChart.editor.StateTriggers":
               return Collections.<ConceptEditorComponent>singletonList(new StateTriggers());
             default:
               return Collections.<ConceptEditorComponent>emptyList();
@@ -99,5 +98,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L), MetaIdFactory.conceptId(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a9L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26aecL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a2 = new String[]{"jetbrains.mps.samples.StateChart.editor.StateChartContents", "jetbrains.mps.samples.StateChart.editor.StateStates", "jetbrains.mps.samples.StateChart.editor.StateTriggers"};
 }

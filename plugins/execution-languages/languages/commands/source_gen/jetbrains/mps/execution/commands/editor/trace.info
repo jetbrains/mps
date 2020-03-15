@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="CommandParameterAssignment_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.execution.commands.editor.CommandParameterAssignment_SubstituteMenu$CONCEPTS" />
@@ -31,7 +31,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.execution.commands.editor.CommandParameterReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,130,0" name="jetbrains.mps.execution.commands.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,129,0" name="jetbrains.mps.execution.commands.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:e255c21e-d39c-4295-8088-dd96816b455c(jetbrains.mps.execution.commands.editor)/1594211126127664034">
@@ -554,6 +554,10 @@
     </file>
   </root>
   <root nodeRef="r:e255c21e-d39c-4295-8088-dd96816b455c(jetbrains.mps.execution.commands.editor)/1741258697587103929">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587103929" at="108,85,109,90" concept="7" />
+      <scope id="1741258697587103929" at="108,85,109,90" />
+    </file>
     <file name="SubstituteListCommandPart.java">
       <node id="1741258697587103929" at="30,118,31,140" concept="6" />
       <node id="1741258697587103931" at="31,140,32,124" concept="1" />
@@ -731,6 +735,10 @@
     </file>
   </root>
   <root nodeRef="r:e255c21e-d39c-4295-8088-dd96816b455c(jetbrains.mps.execution.commands.editor)/1741258697587104030">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587104030" at="112,76,113,81" concept="7" />
+      <scope id="1741258697587104030" at="112,76,113,81" />
+    </file>
     <file name="commandReference.java">
       <node id="1741258697587104030" at="37,118,38,140" concept="6" />
       <node id="1741258697587104032" at="38,140,39,134" concept="1" />
@@ -886,6 +894,10 @@
     </file>
   </root>
   <root nodeRef="r:e255c21e-d39c-4295-8088-dd96816b455c(jetbrains.mps.execution.commands.editor)/1741258697587104188">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1741258697587104188" at="110,84,111,89" concept="7" />
+      <scope id="1741258697587104188" at="110,84,111,89" />
+    </file>
     <file name="commandBuilderExpression.java">
       <node id="1741258697587104188" at="37,118,38,140" concept="6" />
       <node id="1741258697587104190" at="38,140,39,132" concept="1" />

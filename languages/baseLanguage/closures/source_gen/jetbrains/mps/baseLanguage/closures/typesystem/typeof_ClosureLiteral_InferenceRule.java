@@ -88,8 +88,8 @@ public class typeof_ClosureLiteral_InferenceRule extends AbstractInferenceRule_R
             typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(tt_typevar_1221579075612), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "1221579075617", true), _info_12389875345);
           }
           ListSequence.fromList(allThrows).addElement(typeCheckingContext.getRepresentative(tt_typevar_1221579075612));
-        } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.TryStatement$Vw)) {
-          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryStatement$Vw), LINKS.catchClause$GIrD)).translate(new ITranslator2<SNode, SNode>() {
+        } else if (SNodeOperations.isInstanceOf(stmt, CONCEPTS.TryFinallyStatement$Vw)) {
+          for (SNode caught : SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(stmt, CONCEPTS.TryFinallyStatement$Vw), LINKS.catchClause$GIrD)).translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode it) {
               return (List<SNode>) AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(it);
             }
@@ -433,7 +433,7 @@ with_allThrows:
     /*package*/ static final SConcept YieldAllStatement$Rn = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11e25fc6c63L, "jetbrains.mps.baseLanguage.closures.structure.YieldAllStatement");
     /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
     /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept TryStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryStatement");
+    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
     /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
     /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
     /*package*/ static final SConcept ThrowStatement$yK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");

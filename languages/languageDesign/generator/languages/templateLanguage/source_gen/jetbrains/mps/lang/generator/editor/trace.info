@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
   <root>
     <file name="DropAttributeRule_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.lang.generator.editor.DropAttributeRule_SubstituteMenu$CONCEPTS" />
@@ -32,7 +32,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.lang.generator.editor.DropRootRule_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="21,0,328,0" name="jetbrains.mps.lang.generator.editor.EditorAspectDescriptorImpl" />
+      <unit at="21,0,323,0" name="jetbrains.mps.lang.generator.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="GeneratorDebug_NodeRef_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.lang.generator.editor.GeneratorDebug_NodeRef_SubstituteMenu$CONCEPTS" />
@@ -10323,6 +10323,10 @@
       <unit id="1167328078404" at="263,0,314,0" name="jetbrains.mps.lang.generator.editor.BaseMappingRule_premise_ComponentBuilder_a$conditionFunctionSingleRoleHandler_v63wqt_b2a" />
       <unit id="1167328078404" at="52,0,330,0" name="jetbrains.mps.lang.generator.editor.BaseMappingRule_premise_ComponentBuilder_a" />
     </file>
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1167328078404" at="165,79,166,102" concept="9" />
+      <scope id="1167328078404" at="165,79,166,102" />
+    </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/1167328252970">
     <file name="Reduction_MappingRule_Editor.java">
@@ -12842,6 +12846,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/1184864447477">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="1184864447477" at="193,73,194,96" concept="9" />
+      <scope id="1184864447477" at="193,73,194,96" />
+    </file>
     <file name="NodeMacro_postfix.java">
       <node id="1184864447477" at="15,47,16,35" concept="9" />
       <node id="1184864447477" at="18,79,19,86" concept="9" />
@@ -17818,6 +17826,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/2238065674975615585">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="2238065674975615585" at="191,81,192,104" concept="9" />
+      <scope id="2238065674975615585" at="191,81,192,104" />
+    </file>
     <file name="NodeMacro_label_inspector.java">
       <node id="2238065674975615585" at="15,47,16,35" concept="9" />
       <node id="2238065674975615585" at="18,79,19,94" concept="9" />
@@ -20190,6 +20202,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/4747359941571311309">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311309" at="291,98,292,107" concept="9" />
+      <scope id="4747359941571311309" at="291,98,292,107" />
+    </file>
     <file name="GeneratorParameterReference_SmartReference.java">
       <node id="4747359941571311309" at="31,118,32,140" concept="8" />
       <node id="4747359941571311307" at="32,140,33,144" concept="3" />
@@ -20367,6 +20383,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/4747359941571311324">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="4747359941571311324" at="300,108,301,117" concept="9" />
+      <scope id="4747359941571311324" at="300,108,301,117" />
+    </file>
     <file name="TemplateArgumentVariableRefExpression_SmartReference.java">
       <node id="4747359941571311324" at="29,118,30,140" concept="8" />
       <node id="4747359941571311322" at="30,140,31,154" concept="3" />
@@ -23009,6 +23029,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/7723269784408643379">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="7723269784408643379" at="213,72,214,85" concept="9" />
+      <scope id="7723269784408643379" at="213,72,214,85" />
+    </file>
     <file name="ReplaceNodeMacro.java">
       <node id="7723269784408643379" at="44,0,45,0" concept="4" trace="myLocations" />
       <node id="7723269784408643379" at="46,67,47,63" concept="9" />
@@ -23318,6 +23342,10 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/7898029224686240839">
+    <file name="EditorAspectDescriptorImpl.java">
+      <node id="7898029224686240839" at="167,79,168,102" concept="9" />
+      <scope id="7898029224686240839" at="167,79,168,102" />
+    </file>
     <file name="MappingRuleCommonFields.java">
       <node id="7898029224686240839" at="15,47,16,35" concept="9" />
       <node id="7898029224686240839" at="18,79,19,92" concept="9" />

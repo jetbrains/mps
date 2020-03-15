@@ -90,8 +90,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.TestSideTransform_NodeWithReference_CustomActions":
               return Arrays.asList(new TransformationMenu[]{new TestSideTransform_NodeWithReference_CustomActions()});
             default:
           }
@@ -99,8 +99,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.TestSideTransform_SimpleNode_CustomActions":
               return Arrays.asList(new TransformationMenu[]{new TestSideTransform_SimpleNode_CustomActions()});
             default:
           }
@@ -115,6 +115,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x38c885e4a7fcf788L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x38c885e4a7fcfbb8L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb26L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb27L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7d1L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7f6L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7faL), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7f7L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7f8L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7fbL), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7fdL), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x63457d5cb580f351L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1da6379L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1da76a8L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb27L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7d1L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7f6L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7faL), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7f7L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7f8L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7fbL), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1d9c7fdL), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1da6379L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x7c48377ae1da76a8L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x38c885e4a7fcfbb8L), MetaIdFactory.conceptId(0x14a4b50159f64c39L, 0xb5de4a5d59477831L, 0x56074a6f055ddb27L)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.TestSideTransform_NodeWithReference_CustomActions"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a4 = new String[]{"jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor.TestSideTransform_SimpleNode_CustomActions"};
 }

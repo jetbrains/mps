@@ -174,8 +174,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3":
               return Arrays.asList(new TransformationMenu[]{new add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3()});
             default:
           }
@@ -183,8 +183,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.add_fromPluginXml":
               return Arrays.asList(new TransformationMenu[]{new add_fromPluginXml()});
             default:
           }
@@ -192,8 +192,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_Module_ext_4":
               return Arrays.asList(new TransformationMenu[]{new add_moduleLocationAndFlags_BuildMps_Module_ext_4()});
             default:
           }
@@ -201,8 +201,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 3:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0d1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.add_reexport_BuildMps_ModuleDependencyOnJavaModule":
               return Arrays.asList(new TransformationMenu[]{new add_reexport_BuildMps_ModuleDependencyOnJavaModule()});
             default:
           }
@@ -210,8 +210,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 4:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0e1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.add_reexport":
               return Arrays.asList(new TransformationMenu[]{new add_reexport()});
             default:
           }
@@ -219,10 +219,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 5:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0f1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.BuildMps_Solution_ApplySideTransforms":
               return Arrays.asList(new TransformationMenu[]{new BuildMps_Solution_ApplySideTransforms()});
-            case 1:
+            case "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags":
               return Arrays.asList(new TransformationMenu[]{new add_moduleLocationAndFlags()});
             default:
           }
@@ -291,8 +291,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex4.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginGroup_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new BuildMps_IdeaPluginGroup_SmartReference()});
             default:
           }
@@ -300,8 +300,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a6, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginModule_SmartReference":
               return Arrays.asList(new SubstituteMenu[]{new BuildMps_IdeaPluginModule_SmartReference()});
             default:
           }
@@ -318,12 +318,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d6aL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d29d7aL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6d1df6c2700aeb81L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d5bc49L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643d2d2L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6e2dd2f4c4c3e91aL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914644b6e3L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d5083341d2fL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x44e5dd192e7771cfL), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x44e5dd192e77725eL)).seal();
   private static final ConceptSwitchIndex conceptIndex4 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L), MetaIdFactory.conceptId(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a4 = new String[]{"jetbrains.mps.build.mps.editor.add_fromPluginXml"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a4 = new String[]{"jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_Module_ext_4"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0d1a4 = new String[]{"jetbrains.mps.build.mps.editor.add_reexport_BuildMps_ModuleDependencyOnJavaModule"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0e1a4 = new String[]{"jetbrains.mps.build.mps.editor.add_reexport"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0f1a4 = new String[]{"jetbrains.mps.build.mps.editor.BuildMps_Solution_ApplySideTransforms", "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a6 = new String[]{"jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginGroup_SmartReference"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a6 = new String[]{"jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginModule_SmartReference"};
 }

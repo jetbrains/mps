@@ -7,9 +7,9 @@ import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import java.util.Collection;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import java.util.Arrays;
 import java.util.Collections;
 import jetbrains.mps.openapi.actions.descriptor.PasteWrapper;
+import java.util.Arrays;
 
 public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor implements ActionAspectDescriptor {
   private static final String LANGUAGE_FQ_NAME = "jetbrains.mps.console.ideCommands";
@@ -17,10 +17,10 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   @Override
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
-      switch (Arrays.binarySearch(stringSwitchCases_tpto26_a0a0a0c, concept.getName())) {
-        case 0:
+      switch (concept.getName()) {
+        case "AbsractMake":
           return Collections.<NodeFactory>singletonList(new MakeFactories.NodeFactory_5308946314782063424());
-        case 1:
+        case "SubtreeStatisticsTarget":
           return Collections.<NodeFactory>singletonList(new NodeStatisticsTarget_Setup.NodeFactory_2087237500476328251());
         default:
       }
@@ -32,5 +32,4 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<PasteWrapper> getPasteWrappers() {
     return Arrays.asList(new PasteWrapper[]{new PasterNodeRef_wrappers_PasteWrapper_0(), new PasterNodeRef_wrappers_PasteWrapper_1()});
   }
-  private static final String[] stringSwitchCases_tpto26_a0a0a0c = new String[]{"AbsractMake", "SubtreeStatisticsTarget"};
 }

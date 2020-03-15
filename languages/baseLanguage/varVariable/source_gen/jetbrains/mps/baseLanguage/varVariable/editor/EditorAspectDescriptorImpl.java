@@ -54,8 +54,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex2.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a4, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.varVariable.editor.VarType_LocalVariableDeclaration":
               return Arrays.asList(new SubstituteMenu[]{new VarType_LocalVariableDeclaration()});
             default:
           }
@@ -70,5 +70,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x11ff0aa3699L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL), MetaIdFactory.conceptId(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x112353ac52dL)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x515552c7fcc04ab4L, 0x97892f3c49344e85L, 0x112353ac52dL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a4 = new String[]{"jetbrains.mps.baseLanguage.varVariable.editor.VarType_LocalVariableDeclaration"};
 }

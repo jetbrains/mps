@@ -48,8 +48,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     switch (conceptIndex1.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.samples.heating.tabular.editor.DailyPlan_ApplySideTransforms":
               return Arrays.asList(new TransformationMenu[]{new DailyPlan_ApplySideTransforms()});
             default:
           }
@@ -63,5 +63,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec62L), MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL), MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aa3f2L), MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a5 = new String[]{"jetbrains.mps.samples.heating.tabular.editor.DailyPlan_ApplySideTransforms"};
 }

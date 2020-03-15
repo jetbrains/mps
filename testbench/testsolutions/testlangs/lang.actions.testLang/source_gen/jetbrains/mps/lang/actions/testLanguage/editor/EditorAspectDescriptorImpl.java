@@ -110,14 +110,14 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     switch (conceptIndex3.index(cncpt)) {
       case 0:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0a1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_ConceptSubstitute":
               return Arrays.asList(new SubstituteMenu[]{new AddMenuPart_ConceptSubstitute()});
-            case 1:
+            case "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_ParameterizedSubstitute":
               return Arrays.asList(new SubstituteMenu[]{new AddMenuPart_ParameterizedSubstitute()});
-            case 2:
+            case "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_SimpleItemSubstitute":
               return Arrays.asList(new SubstituteMenu[]{new AddMenuPart_SimpleItemSubstitute()});
-            case 3:
+            case "jetbrains.mps.lang.actions.testLanguage.editor.ConceptSubstitutePartTest":
               return Arrays.asList(new SubstituteMenu[]{new ConceptSubstitutePartTest()});
             default:
           }
@@ -125,10 +125,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 1:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0b1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_WrapperSubstitute":
               return Arrays.asList(new SubstituteMenu[]{new AddMenuPart_WrapperSubstitute()});
-            case 1:
+            case "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_WrapperSubstituteDefaultSelection":
               return Arrays.asList(new SubstituteMenu[]{new AddMenuPart_WrapperSubstituteDefaultSelection()});
             default:
           }
@@ -136,12 +136,12 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
         break;
       case 2:
         if (true) {
-          switch (Arrays.binarySearch(stringSwitchCases_xbvbvu_a0a0a0c1a5, menuId.getFqName())) {
-            case 0:
+          switch (menuId.getFqName()) {
+            case "jetbrains.mps.lang.actions.testLanguage.editor.RemoveByConditionPart":
               return Arrays.asList(new SubstituteMenu[]{new RemoveByConditionPart()});
-            case 1:
+            case "jetbrains.mps.lang.actions.testLanguage.editor.RemoveDefaultsPart":
               return Arrays.asList(new SubstituteMenu[]{new RemoveDefaultsPart()});
-            case 2:
+            case "jetbrains.mps.lang.actions.testLanguage.editor.RemovePart":
               return Arrays.asList(new SubstituteMenu[]{new RemovePart()});
             default:
           }
@@ -157,7 +157,4 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x179f28a7ade471f3L), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x43d1b15d415e8d80L), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c35cefefca54d96L)).seal();
   private static final ConceptSwitchIndex conceptIndex2 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671a9caL), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec53f71L), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c99ba4dd5ff2533L), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ee71badL), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x73dfe0fc25514b8dL)).seal();
   private static final ConceptSwitchIndex conceptIndex3 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671a9caL), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ec53f71L), MetaIdFactory.conceptId(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x73dfe0fc25514b8dL)).seal();
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0a1a5 = new String[]{"jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_ConceptSubstitute", "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_ParameterizedSubstitute", "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_SimpleItemSubstitute", "jetbrains.mps.lang.actions.testLanguage.editor.ConceptSubstitutePartTest"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0b1a5 = new String[]{"jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_WrapperSubstitute", "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_WrapperSubstituteDefaultSelection"};
-  private static final String[] stringSwitchCases_xbvbvu_a0a0a0c1a5 = new String[]{"jetbrains.mps.lang.actions.testLanguage.editor.RemoveByConditionPart", "jetbrains.mps.lang.actions.testLanguage.editor.RemoveDefaultsPart", "jetbrains.mps.lang.actions.testLanguage.editor.RemovePart"};
 }
