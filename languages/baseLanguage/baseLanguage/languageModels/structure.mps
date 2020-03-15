@@ -4684,7 +4684,7 @@
     <property role="EcuMT" value="5351203823916750322" />
     <property role="TrG5h" value="TryUniversalStatement" />
     <property role="3GE5qa" value="control_flow.try_catch" />
-    <property role="34LRSv" value="try with resources" />
+    <property role="34LRSv" value="try" />
     <ref role="1TJDcQ" node="fzclF8l" resolve="Statement" />
     <node concept="1TJgyj" id="4D3iSq_hhnY" role="1TKVEi">
       <property role="IQ2ns" value="5351203823916750334" />

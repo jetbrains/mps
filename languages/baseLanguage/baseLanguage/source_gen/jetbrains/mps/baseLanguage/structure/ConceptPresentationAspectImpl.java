@@ -2270,7 +2270,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.TryUniversalStatement:
         if (props_TryUniversalStatement == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("try with resources");
+          cpb.rawPresentation("try");
           props_TryUniversalStatement = cpb.create();
         }
         return props_TryUniversalStatement;

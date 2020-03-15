@@ -34,7 +34,7 @@ public class SurroundWith_TryCatchExceptionStatement_Test extends BaseTransforma
     public void testMethodImpl() throws Exception {
       initEditorComponent("2234724526726912933", "2234724526726912957");
       invokeAction("jetbrains.mps.ide.editor.actions.SelectNext_Action");
-      invokeSurroundWithIntention("jetbrains.mps.baseLanguage.intentions.SuroundWithTryCatch_Intention");
+      invokeSurroundWithIntention("jetbrains.mps.baseLanguage.intentions.SurroundWithTryCatch_Intention");
     }
   }
 }

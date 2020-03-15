@@ -9363,8 +9363,8 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="5351203823916750322" at="285,0,286,0" concept="2" trace="props_TryUniversalStatement" />
       <node id="5351203823916750322" at="2271,50,2272,76" concept="5" />
-      <node id="5351203823916750322" at="2272,76,2273,52" concept="1" />
-      <node id="5351203823916750322" at="2273,52,2274,53" concept="1" />
+      <node id="5351203823916750322" at="2272,76,2273,37" concept="1" />
+      <node id="5351203823916750322" at="2273,37,2274,53" concept="1" />
       <node id="5351203823916750322" at="2275,9,2276,43" concept="6" />
       <node id="5351203823916750322" at="2270,55,2275,9" concept="3" />
       <scope id="5351203823916750322" at="2271,50,2274,53">
@@ -9389,8 +9389,8 @@
       <node id="8276990574886367508" at="3801,200,3802,192" concept="1" />
       <node id="8276990574886367510" at="3802,192,3803,203" concept="1" />
       <node id="8276990574886367509" at="3803,203,3804,204" concept="1" />
-      <node id="5351203823916750322" at="3804,204,3805,34" concept="1" />
-      <node id="5351203823916750322" at="3805,34,3806,22" concept="6" />
+      <node id="5351203823916750322" at="3804,204,3805,19" concept="1" />
+      <node id="5351203823916750322" at="3805,19,3806,22" concept="6" />
       <node id="5351203823916750322" at="3792,0,3808,0" concept="8" trace="createDescriptorForTryUniversalStatement#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="5351203823916750322" at="900,55,901,46" />
       <scope id="5351203823916750322" at="3792,79,3806,22">

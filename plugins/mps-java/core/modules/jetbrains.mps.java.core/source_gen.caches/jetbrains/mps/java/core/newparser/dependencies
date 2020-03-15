@@ -234,6 +234,7 @@
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.AllocationExpression" />
+    <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.Argument" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.AssertStatement" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.Block" />
     <classNode dependClassName="org.eclipse.jdt.internal.compiler.ast.BreakStatement" />

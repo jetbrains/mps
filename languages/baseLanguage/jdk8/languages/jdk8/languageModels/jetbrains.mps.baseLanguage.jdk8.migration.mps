@@ -17,6 +17,7 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="6f4m" ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -178,6 +179,7 @@
       <concept id="4611582986551314327" name="jetbrains.mps.baseLanguage.collections.structure.OfTypeOperation" flags="nn" index="UnYns">
         <child id="4611582986551314344" name="requestedType" index="UnYnz" />
       </concept>
+      <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
     </language>
   </registry>
@@ -388,11 +390,44 @@
           <node concept="3clFbS" id="7btLLch76BA" role="L3pyw">
             <node concept="3cpWs6" id="7btLLch7mAz" role="3cqZAp">
               <node concept="2OqwBi" id="7btLLch77oA" role="3cqZAk">
-                <node concept="2OqwBi" id="7btLLch77c_" role="2Oq$k0">
-                  <node concept="EZOir" id="7btLLch77cA" role="2Oq$k0" />
-                  <node concept="UnYns" id="7btLLch77cB" role="2OqNvi">
-                    <node concept="3uibUv" id="7btLLch77cC" role="UnYnz">
-                      <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
+                <node concept="2OqwBi" id="4hKJ3ZGkDG_" role="2Oq$k0">
+                  <node concept="2OqwBi" id="7btLLch77c_" role="2Oq$k0">
+                    <node concept="EZOir" id="7btLLch77cA" role="2Oq$k0" />
+                    <node concept="UnYns" id="7btLLch77cB" role="2OqNvi">
+                      <node concept="3uibUv" id="7btLLch77cC" role="UnYnz">
+                        <ref role="3uigEE" to="w1kc:~SModelInternal" resolve="SModelInternal" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3zZkjj" id="4hKJ3ZGkE0p" role="2OqNvi">
+                    <node concept="1bVj0M" id="4hKJ3ZGkE0r" role="23t8la">
+                      <node concept="3clFbS" id="4hKJ3ZGkE0s" role="1bW5cS">
+                        <node concept="3clFbF" id="4hKJ3ZGkEak" role="3cqZAp">
+                          <node concept="2OqwBi" id="4hKJ3ZGkFSS" role="3clFbG">
+                            <node concept="2OqwBi" id="4hKJ3ZGkEoa" role="2Oq$k0">
+                              <node concept="37vLTw" id="4hKJ3ZGkEaj" role="2Oq$k0">
+                                <ref role="3cqZAo" node="4hKJ3ZGkE0t" resolve="it" />
+                              </node>
+                              <node concept="liA8E" id="4hKJ3ZGkFly" role="2OqNvi">
+                                <ref role="37wK5l" to="w1kc:~SModelInternal.importedLanguageIds()" resolve="importedLanguageIds" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="4hKJ3ZGkGtI" role="2OqNvi">
+                              <ref role="37wK5l" to="33ny:~Collection.contains(java.lang.Object)" resolve="contains" />
+                              <node concept="pHN19" id="4hKJ3ZGkJCI" role="37wK5m">
+                                <node concept="2V$Bhx" id="4hKJ3ZGkJCJ" role="2V$M_3">
+                                  <property role="2V$B1T" value="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" />
+                                  <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.jdk8" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="Rh6nW" id="4hKJ3ZGkE0t" role="1bW2Oz">
+                        <property role="TrG5h" value="it" />
+                        <node concept="2jxLKc" id="4hKJ3ZGkE0u" role="1tU5fm" />
+                      </node>
                     </node>
                   </node>
                 </node>

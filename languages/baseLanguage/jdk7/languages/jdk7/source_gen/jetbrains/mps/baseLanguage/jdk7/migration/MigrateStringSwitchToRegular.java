@@ -19,6 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedLanguageNotMigratedProblem;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -74,7 +75,11 @@ public class MigrateStringSwitchToRegular extends MigrationScriptBase {
         public Problem select(SNode it) {
           return (Problem) new DeprecatedConceptNotMigratedProblem(it);
         }
-      }).concat(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).select(new ISelector<SModelInternal, Problem>() {
+      }).concat(Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).where(new IWhereFilter<SModelInternal>() {
+        public boolean accept(SModelInternal it) {
+          return it.importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"));
+        }
+      }).select(new ISelector<SModelInternal, Problem>() {
         public Problem select(SModelInternal it) {
           return (Problem) new DeprecatedLanguageNotMigratedProblem((SModel) it, MetaAdapterFactory.getLanguage(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, "jetbrains.mps.baseLanguage.jdk7"));
         }

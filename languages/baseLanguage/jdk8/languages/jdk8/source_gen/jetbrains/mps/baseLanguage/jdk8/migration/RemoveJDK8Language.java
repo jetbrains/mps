@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedLanguageNotMigratedProblem;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -58,7 +59,11 @@ public class RemoveJDK8Language extends MigrationScriptBase {
           return scope_ev9oy9_a0f_0;
         }
       };
-      return Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).select(new ISelector<SModelInternal, Problem>() {
+      return Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).ofType(SModelInternal.class).where(new IWhereFilter<SModelInternal>() {
+        public boolean accept(SModelInternal it) {
+          return it.importedLanguageIds().contains(MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"));
+        }
+      }).select(new ISelector<SModelInternal, Problem>() {
         public Problem select(SModelInternal it) {
           return (Problem) new DeprecatedLanguageNotMigratedProblem((SModel) it, MetaAdapterFactory.getLanguage(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, "jetbrains.mps.baseLanguage.jdk8"));
         }

@@ -3802,7 +3802,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("body", 0x72ddc713115bb114L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("8276990574886367508").done();
     b.aggregate("catchClause", 0x72ddc713115bb116L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L).optional(true).ordered(true).multiple(true).origin("8276990574886367510").done();
     b.aggregate("finallyBody", 0x72ddc713115bb115L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL).optional(true).ordered(true).multiple(false).origin("8276990574886367509").done();
-    b.alias("try with resources");
+    b.alias("try");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForType() {
