@@ -132,6 +132,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private EditorCell createError_0() {
       EditorCell_Error editorCell = new EditorCell_Error(getEditorContext(), myNode, "<type>");
       editorCell.setCellId("Error_u6hstu_a0a");
+      AlternativeType_Delete.setCellActions(editorCell, myNode, getEditorContext());
       return editorCell;
     }
   }

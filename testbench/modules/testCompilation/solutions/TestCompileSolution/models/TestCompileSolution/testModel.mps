@@ -2,13 +2,11 @@
 <model ref="r:640618e1-83da-4da2-a799-af20502fa1d8(TestCompileSolution.testModel)">
   <persistence version="9" />
   <languages>
-    <use id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8" version="0" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="487m" ref="a2e9b672-d7f0-4804-bc04-9161af907fda/java:test(TestCompileSolution/)" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -89,9 +87,7 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
-    </language>
-    <language id="fdcdc48f-bfd8-4831-aa76-5abac2ffa010" name="jetbrains.mps.baseLanguage.jdk8">
-      <concept id="1719162360409810393" name="jetbrains.mps.baseLanguage.jdk8.structure.SuperInterfaceMethodCall" flags="ng" index="3WEljn">
+      <concept id="1719162360409810393" name="jetbrains.mps.baseLanguage.structure.SuperInterfaceMethodCall" flags="ng" index="3WEljn">
         <reference id="1719162360409958622" name="classifier" index="3WFDBg" />
       </concept>
     </language>
@@ -156,8 +152,8 @@
         <node concept="3clFbF" id="4ep0Y$Xs_Kl" role="3cqZAp">
           <node concept="3cpWs3" id="4ep0Y$XsCal" role="3clFbG">
             <node concept="3WEljn" id="4ep0Y$Xs_Kk" role="3uHU7B">
-              <ref role="3WFDBg" to="487m:~TestInterface" resolve="TestInterface" />
               <ref role="37wK5l" to="487m:~TestInterface.getDefaultTestValue()" resolve="getDefaultTestValue" />
+              <ref role="3WFDBg" to="487m:~TestInterface" resolve="TestInterface" />
             </node>
             <node concept="3cmrfG" id="4ep0Y$XsCCW" role="3uHU7w">
               <property role="3cmrfH" value="1" />
