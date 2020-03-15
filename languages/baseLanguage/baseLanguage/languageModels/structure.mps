@@ -1655,7 +1655,7 @@
       <property role="20kJfa" value="catchClause" />
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1164903700860" />
-      <ref role="20lvS9" node="2FJPm3OfY71" resolve="AbstractCatchClause" />
+      <ref role="20lvS9" node="gWTDmSJ" resolve="CatchClause" />
     </node>
     <node concept="PrWs8" id="4XzDcS4cdoi" role="PzmwI">
       <ref role="PrY4T" node="i0zv2NF" resolve="IContainsStatementList" />
@@ -1884,7 +1884,7 @@
       <property role="20kJfa" value="catchClause" />
       <property role="20lbJX" value="fLJekj6/1..n" />
       <property role="IQ2ns" value="1164903496223" />
-      <ref role="20lvS9" node="2FJPm3OfY71" resolve="AbstractCatchClause" />
+      <ref role="20lvS9" node="gWTDmSJ" resolve="CatchClause" />
     </node>
     <node concept="PrWs8" id="4XzDcS4cdoh" role="PzmwI">
       <ref role="PrY4T" node="i0zv2NF" resolve="IContainsStatementList" />

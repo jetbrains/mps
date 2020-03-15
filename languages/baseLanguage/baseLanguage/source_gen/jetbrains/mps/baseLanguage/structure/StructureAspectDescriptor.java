@@ -3769,7 +3769,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1164879751025");
     b.version(2);
     b.aggregate("body", 0x10f383e83d4L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("1164879758292").done();
-    b.aggregate("catchClause", 0x10f39a8ba1fL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f43fe1c1L).optional(false).ordered(true).multiple(true).origin("1164903496223").done();
+    b.aggregate("catchClause", 0x10f39a8ba1fL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL).optional(false).ordered(true).multiple(true).origin("1164903496223").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("try {...} catch");
     return b.create();
@@ -3784,7 +3784,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.aggregate("body", 0x10cacec83aeL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("1153952416686").done();
     b.aggregate("finallyBody", 0x10cacecb713L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("1153952429843").done();
-    b.aggregate("catchClause", 0x10f39abd97cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f43fe1c1L).optional(true).ordered(true).multiple(true).origin("1164903700860").done();
+    b.aggregate("catchClause", 0x10f39abd97cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL).optional(true).ordered(true).multiple(true).origin("1164903700860").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("try {...} finally");
     return b.create();

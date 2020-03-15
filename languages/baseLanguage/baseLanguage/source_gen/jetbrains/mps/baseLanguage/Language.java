@@ -49,7 +49,7 @@ public class Language extends LanguageRuntime {
 
   @Override
   public int getVersion() {
-    return 10;
+    return 11;
   }
 
   public SLanguageId getId() {
