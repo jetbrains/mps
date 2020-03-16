@@ -165,11 +165,6 @@
       </concept>
       <concept id="6681408443912573553" name="jetbrains.mps.lang.editor.structure.QueryFunction_URL" flags="in" index="3u3nf_" />
       <concept id="1219226236603" name="jetbrains.mps.lang.editor.structure.DrawBracketsStyleClassItem" flags="ln" index="3vyZuw" />
-      <concept id="1215007762405" name="jetbrains.mps.lang.editor.structure.FloatStyleClassItem" flags="ln" index="3$6MrZ">
-        <property id="1215007802031" name="value" index="3$6WeP" />
-      </concept>
-      <concept id="1215007883204" name="jetbrains.mps.lang.editor.structure.PaddingLeftStyleClassItem" flags="ln" index="3$7fVu" />
-      <concept id="1215007897487" name="jetbrains.mps.lang.editor.structure.PaddingRightStyleClassItem" flags="ln" index="3$7jql" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
         <property id="1214560368769" name="emptyNoTargetText" index="39s7Ar" />
         <property id="1140114345053" name="allowEmptyText" index="1O74Pk" />
@@ -5118,9 +5113,6 @@
         <node concept="11LMrY" id="5MT8pi2$bMs" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="3$7fVu" id="5MT8pi2$v6M" role="3F10Kt">
-          <property role="3$6WeP" value="1.0" />
-        </node>
       </node>
       <node concept="3F1sOY" id="2HViukQ0LZQ" role="3EZMnx">
         <ref role="1NtTu8" to="zqge:2HViukQ0LZE" resolve="node" />
@@ -5137,9 +5129,6 @@
         </node>
         <node concept="11L4FC" id="5MT8pi2$p4a" role="3F10Kt">
           <property role="VOm3f" value="true" />
-        </node>
-        <node concept="3$7jql" id="5MT8pi2$v72" role="3F10Kt">
-          <property role="3$6WeP" value="1.0" />
         </node>
       </node>
       <node concept="3F0ifn" id="qmyvdpOGCc" role="3EZMnx">
