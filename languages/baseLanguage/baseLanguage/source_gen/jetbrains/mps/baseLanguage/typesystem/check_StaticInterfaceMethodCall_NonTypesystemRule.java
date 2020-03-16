@@ -9,15 +9,12 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.project.Project;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
+import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -29,17 +26,12 @@ public class check_StaticInterfaceMethodCall_NonTypesystemRule extends AbstractN
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(staticMethodCall, LINKS.classConcept$BsUa), CONCEPTS.ClassConcept$IY)) {
       return;
     }
-    Project project;
-    SModule module = check_93pmib_a0c0b(SNodeOperations.getModel(staticMethodCall));
-    project = SModuleOperations.getProjectForModule(module);
-    if (project == null) {
-      return;
-    }
-    JavaCompilerOptionsComponent.JavaVersion sourceJavaVersion = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion();
-    if (sourceJavaVersion.compareTo(JavaCompilerOptionsComponent.JavaVersion.VERSION_1_8) < 0) {
+
+    JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(staticMethodCall);
+    if (!(languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticMethodCall, "Static interface method invocations are supported in Java 1.8 or higher. Current java language level:" + sourceJavaVersion.getCompilerVersion(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7510080655530197744", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticMethodCall, "Static interface method invocations can be used only since Java 8. Current java language level:" + languageLevel.getCompactDescription(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7510080655530197744", null, errorTarget);
       }
     }
   }
@@ -51,12 +43,6 @@ public class check_StaticInterfaceMethodCall_NonTypesystemRule extends AbstractN
   }
   public boolean overrides() {
     return false;
-  }
-  private static SModule check_93pmib_a0c0b(SModel checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
-    }
-    return null;
   }
 
   private static final class LINKS {

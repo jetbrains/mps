@@ -535,118 +535,90 @@
               </node>
             </node>
           </node>
-          <node concept="3cpWs8" id="5Vvmn_Qkht6" role="3cqZAp">
-            <node concept="3cpWsn" id="5Vvmn_Qkht7" role="3cpWs9">
-              <property role="TrG5h" value="project" />
-              <node concept="3uibUv" id="5Vvmn_Qkht8" role="1tU5fm">
-                <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+          <node concept="3clFbH" id="2n6RfgDZKv5" role="3cqZAp" />
+          <node concept="3cpWs8" id="2n6RfgDZ$0x" role="3cqZAp">
+            <node concept="3cpWsn" id="2n6RfgDZ$0y" role="3cpWs9">
+              <property role="TrG5h" value="languageLevel" />
+              <node concept="3uibUv" id="2n6RfgDZ$0z" role="1tU5fm">
+                <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
               </node>
-              <node concept="2YIFZM" id="5Vvmn_Qkht9" role="33vP2m">
-                <ref role="37wK5l" to="z1c3:~SModuleOperations.getProjectForModule(org.jetbrains.mps.openapi.module.SModule)" resolve="getProjectForModule" />
-                <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
-                <node concept="2OqwBi" id="5Vvmn_Qkhta" role="37wK5m">
-                  <node concept="2JrnkZ" id="5Vvmn_Qkhtb" role="2Oq$k0">
-                    <node concept="2OqwBi" id="5Vvmn_Qkhtc" role="2JrQYb">
-                      <node concept="2rP1CM" id="5Vvmn_Qkhtd" role="2Oq$k0" />
-                      <node concept="I4A8Y" id="5Vvmn_Qkhte" role="2OqNvi" />
-                    </node>
+              <node concept="2OqwBi" id="2n6RfgDZ$0$" role="33vP2m">
+                <node concept="2ShNRf" id="2n6RfgDZ$0_" role="2Oq$k0">
+                  <node concept="HV5vD" id="2n6RfgDZ$0A" role="2ShVmc">
+                    <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
                   </node>
-                  <node concept="liA8E" id="5Vvmn_Qkhtf" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
+                </node>
+                <node concept="liA8E" id="2n6RfgDZ$0B" role="2OqNvi">
+                  <ref role="37wK5l" to="pz2c:jlPzbWisGb" resolve="getLanguageLevel" />
+                  <node concept="2rP1CM" id="2n6RfgDZLQS" role="37wK5m" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3clFbJ" id="5Vvmn_Qkhtg" role="3cqZAp">
-            <node concept="3clFbS" id="5Vvmn_Qkhth" role="3clFbx">
-              <node concept="3cpWs6" id="5Vvmn_Qkhti" role="3cqZAp">
-                <node concept="2ShNRf" id="5Vvmn_Qkhtj" role="3cqZAk">
-                  <node concept="YeOm9" id="5Vvmn_Qkhtk" role="2ShVmc">
-                    <node concept="1Y3b0j" id="5Vvmn_Qkhtl" role="YeSDq">
-                      <property role="2bfB8j" value="true" />
-                      <ref role="1Y3XeK" to="o8zo:3rV3sBXetA0" resolve="FilteringScope" />
-                      <ref role="37wK5l" to="o8zo:3rV3sBXetA2" resolve="FilteringScope" />
-                      <node concept="3Tm1VV" id="5Vvmn_Qkhtm" role="1B3o_S" />
-                      <node concept="37vLTw" id="5Vvmn_Qkhtn" role="37wK5m">
-                        <ref role="3cqZAo" node="5Vvmn_Qkht1" resolve="visibleClassifiersScope" />
-                      </node>
-                      <node concept="2tJIrI" id="5Vvmn_Qkhto" role="jymVt" />
-                      <node concept="3clFb_" id="5Vvmn_Qkhtp" role="jymVt">
-                        <property role="TrG5h" value="isExcluded" />
-                        <property role="1EzhhJ" value="false" />
-                        <node concept="10P_77" id="5Vvmn_Qkhtq" role="3clF45" />
-                        <node concept="3Tm1VV" id="5Vvmn_Qkhtr" role="1B3o_S" />
-                        <node concept="37vLTG" id="5Vvmn_Qkhts" role="3clF46">
-                          <property role="TrG5h" value="node" />
-                          <node concept="3Tqbb2" id="5Vvmn_Qkhtt" role="1tU5fm" />
+          <node concept="3clFbJ" id="2n6RfgDZ$0D" role="3cqZAp">
+            <node concept="2OqwBi" id="2n6RfgDZOcC" role="3clFbw">
+              <node concept="37vLTw" id="2n6RfgDZOcD" role="2Oq$k0">
+                <ref role="3cqZAo" node="2n6RfgDZ$0y" resolve="languageLevel" />
+              </node>
+              <node concept="liA8E" id="2n6RfgDZOcE" role="2OqNvi">
+                <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
+                <node concept="Rm8GO" id="2n6RfgDZOcF" role="37wK5m">
+                  <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+                  <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="2n6RfgDZNxx" role="3clFbx">
+              <node concept="3cpWs6" id="5Vvmn_QkhtQ" role="3cqZAp">
+                <node concept="37vLTw" id="5Vvmn_QkhtR" role="3cqZAk">
+                  <ref role="3cqZAo" node="5Vvmn_Qkht1" resolve="visibleClassifiersScope" />
+                </node>
+              </node>
+            </node>
+            <node concept="9aQIb" id="2n6RfgDZOuc" role="9aQIa">
+              <node concept="3clFbS" id="2n6RfgDZ$0E" role="9aQI4">
+                <node concept="3cpWs6" id="5Vvmn_Qkhti" role="3cqZAp">
+                  <node concept="2ShNRf" id="5Vvmn_Qkhtj" role="3cqZAk">
+                    <node concept="YeOm9" id="5Vvmn_Qkhtk" role="2ShVmc">
+                      <node concept="1Y3b0j" id="5Vvmn_Qkhtl" role="YeSDq">
+                        <property role="2bfB8j" value="true" />
+                        <ref role="37wK5l" to="o8zo:3rV3sBXetA2" resolve="FilteringScope" />
+                        <ref role="1Y3XeK" to="o8zo:3rV3sBXetA0" resolve="FilteringScope" />
+                        <node concept="3Tm1VV" id="5Vvmn_Qkhtm" role="1B3o_S" />
+                        <node concept="37vLTw" id="5Vvmn_Qkhtn" role="37wK5m">
+                          <ref role="3cqZAo" node="5Vvmn_Qkht1" resolve="visibleClassifiersScope" />
                         </node>
-                        <node concept="3clFbS" id="5Vvmn_Qkhtu" role="3clF47">
-                          <node concept="3clFbF" id="5Vvmn_Qkhtv" role="3cqZAp">
-                            <node concept="3fqX7Q" id="5Vvmn_Qkhtw" role="3clFbG">
-                              <node concept="2OqwBi" id="5Vvmn_Qkhtx" role="3fr31v">
-                                <node concept="37vLTw" id="5Vvmn_Qkhty" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="5Vvmn_Qkhts" resolve="node" />
-                                </node>
-                                <node concept="1mIQ4w" id="5Vvmn_Qkhtz" role="2OqNvi">
-                                  <node concept="chp4Y" id="5Vvmn_Qkht$" role="cj9EA">
-                                    <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                        <node concept="3clFb_" id="5Vvmn_Qkhtp" role="jymVt">
+                          <property role="TrG5h" value="isExcluded" />
+                          <property role="1EzhhJ" value="false" />
+                          <node concept="10P_77" id="5Vvmn_Qkhtq" role="3clF45" />
+                          <node concept="3Tm1VV" id="5Vvmn_Qkhtr" role="1B3o_S" />
+                          <node concept="37vLTG" id="5Vvmn_Qkhts" role="3clF46">
+                            <property role="TrG5h" value="node" />
+                            <node concept="3Tqbb2" id="5Vvmn_Qkhtt" role="1tU5fm" />
+                          </node>
+                          <node concept="3clFbS" id="5Vvmn_Qkhtu" role="3clF47">
+                            <node concept="3clFbF" id="5Vvmn_Qkhtv" role="3cqZAp">
+                              <node concept="3fqX7Q" id="5Vvmn_Qkhtw" role="3clFbG">
+                                <node concept="2OqwBi" id="5Vvmn_Qkhtx" role="3fr31v">
+                                  <node concept="37vLTw" id="5Vvmn_Qkhty" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="5Vvmn_Qkhts" resolve="node" />
+                                  </node>
+                                  <node concept="1mIQ4w" id="5Vvmn_Qkhtz" role="2OqNvi">
+                                    <node concept="chp4Y" id="5Vvmn_Qkht$" role="cj9EA">
+                                      <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
                             </node>
                           </node>
-                        </node>
-                        <node concept="2AHcQZ" id="5Vvmn_Qkht_" role="2AJF6D">
-                          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="1Wc70l" id="5Vvmn_QkhtA" role="3clFbw">
-              <node concept="3y3z36" id="5Vvmn_QkhtB" role="3uHU7B">
-                <node concept="37vLTw" id="5Vvmn_QkhtC" role="3uHU7B">
-                  <ref role="3cqZAo" node="5Vvmn_Qkht7" resolve="project" />
-                </node>
-                <node concept="10Nm6u" id="5Vvmn_QkhtD" role="3uHU7w" />
-              </node>
-              <node concept="3fqX7Q" id="5Vvmn_QkhtE" role="3uHU7w">
-                <node concept="2OqwBi" id="5Vvmn_QkhtF" role="3fr31v">
-                  <node concept="2OqwBi" id="5Vvmn_QkhtG" role="2Oq$k0">
-                    <node concept="2OqwBi" id="5Vvmn_QkhtH" role="2Oq$k0">
-                      <node concept="2YIFZM" id="5Vvmn_QkhtI" role="2Oq$k0">
-                        <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
-                        <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getInstance()" resolve="getInstance" />
-                      </node>
-                      <node concept="liA8E" id="5Vvmn_QkhtJ" role="2OqNvi">
-                        <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
-                        <node concept="37vLTw" id="5Vvmn_QkhtK" role="37wK5m">
-                          <ref role="3cqZAo" node="5Vvmn_Qkht7" resolve="project" />
+                          <node concept="2AHcQZ" id="5Vvmn_Qkht_" role="2AJF6D">
+                            <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                          </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="liA8E" id="5Vvmn_QkhtL" role="2OqNvi">
-                      <ref role="37wK5l" to="l46t:~JavaCompilerOptions.getTargetJavaVersion()" resolve="getTargetJavaVersion" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="5Vvmn_QkhtM" role="2OqNvi">
-                    <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.isAtLeast(jetbrains.mps.compiler.JavaCompilerOptionsComponent$JavaVersion)" resolve="isAtLeast" />
-                    <node concept="Rm8GO" id="5Vvmn_QkhtN" role="37wK5m">
-                      <ref role="Rm8GQ" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.VERSION_1_8" resolve="VERSION_1_8" />
-                      <ref role="1Px2BO" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="9aQIb" id="5Vvmn_QkhtO" role="9aQIa">
-              <node concept="3clFbS" id="5Vvmn_QkhtP" role="9aQI4">
-                <node concept="3cpWs6" id="5Vvmn_QkhtQ" role="3cqZAp">
-                  <node concept="37vLTw" id="5Vvmn_QkhtR" role="3cqZAk">
-                    <ref role="3cqZAo" node="5Vvmn_Qkht1" resolve="visibleClassifiersScope" />
                   </node>
                 </node>
               </node>
@@ -4946,33 +4918,11 @@
                   </node>
                 </node>
               </node>
-              <node concept="1Wc70l" id="7btLLcgYCa4" role="3uHU7B">
-                <node concept="2OqwBi" id="6fye98SzTKp" role="3uHU7w">
-                  <node concept="nLn13" id="6fye98SzTwd" role="2Oq$k0" />
-                  <node concept="1mIQ4w" id="6fye98SzUil" role="2OqNvi">
-                    <node concept="chp4Y" id="6fye98SzUzD" role="cj9EA">
-                      <ref role="cht4Q" to="tpee:h9ngReX" resolve="ClassifierMember" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="7btLLcgYCc7" role="3uHU7B">
-                  <node concept="2OqwBi" id="7btLLcgYCc8" role="2Oq$k0">
-                    <node concept="2ShNRf" id="7btLLcgYCc9" role="2Oq$k0">
-                      <node concept="HV5vD" id="7btLLcgYCca" role="2ShVmc">
-                        <ref role="HV5vE" to="pz2c:7$LYU9arBWF" resolve="BaseLanguageEnvironmentHelper" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="7btLLcgYCcb" role="2OqNvi">
-                      <ref role="37wK5l" to="pz2c:jlPzbWisGb" resolve="getLanguageLevel" />
-                      <node concept="EsrRn" id="7btLLcgYCcc" role="37wK5m" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="7btLLcgYCcd" role="2OqNvi">
-                    <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
-                    <node concept="Rm8GO" id="7btLLcgYCce" role="37wK5m">
-                      <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
-                      <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-                    </node>
+              <node concept="2OqwBi" id="6fye98SzTKp" role="3uHU7B">
+                <node concept="nLn13" id="6fye98SzTwd" role="2Oq$k0" />
+                <node concept="1mIQ4w" id="6fye98SzUil" role="2OqNvi">
+                  <node concept="chp4Y" id="6fye98SzUzD" role="cj9EA">
+                    <ref role="cht4Q" to="tpee:h9ngReX" resolve="ClassifierMember" />
                   </node>
                 </node>
               </node>

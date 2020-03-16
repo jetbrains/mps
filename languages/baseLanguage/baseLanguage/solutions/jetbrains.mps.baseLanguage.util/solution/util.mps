@@ -294,6 +294,7 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
+      <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
@@ -2889,56 +2890,14 @@
       </node>
       <node concept="3Tm1VV" id="jlPzbWisGe" role="1B3o_S" />
       <node concept="3clFbS" id="jlPzbWisGf" role="3clF47">
-        <node concept="3cpWs8" id="7w4_QD1KlYE" role="3cqZAp">
-          <node concept="3cpWsn" id="7w4_QD1KlYF" role="3cpWs9">
-            <property role="TrG5h" value="moduleLevel" />
-            <node concept="3uibUv" id="7w4_QD1KlTt" role="1tU5fm">
-              <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-            </node>
-            <node concept="2EnYce" id="7w4_QD1KlYG" role="33vP2m">
-              <node concept="2EnYce" id="7w4_QD1KlYH" role="2Oq$k0">
-                <node concept="2EnYce" id="7w4_QD1KlYI" role="2Oq$k0">
-                  <node concept="2EnYce" id="7w4_QD1KlYJ" role="2Oq$k0">
-                    <node concept="2JrnkZ" id="7w4_QD1KlYK" role="2Oq$k0">
-                      <node concept="37vLTw" id="7w4_QD1KlYL" role="2JrQYb">
-                        <ref role="3cqZAo" node="jlPzbWiAXK" resolve="contextNode" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="7w4_QD1KlYM" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="7w4_QD1KlYN" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="7w4_QD1KlYO" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                  <node concept="3VsKOn" id="7w4_QD1KlYP" role="37wK5m">
-                    <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
-                  </node>
-                </node>
+        <node concept="3clFbF" id="uD1GcGTz9S" role="3cqZAp">
+          <node concept="1rXfSq" id="uD1GcGTz9Q" role="3clFbG">
+            <ref role="37wK5l" node="uD1GcGTtSC" resolve="getLanguageLevel" />
+            <node concept="2OqwBi" id="uD1GcGTFAm" role="37wK5m">
+              <node concept="37vLTw" id="uD1GcGT$83" role="2Oq$k0">
+                <ref role="3cqZAo" node="jlPzbWiAXK" resolve="contextNode" />
               </node>
-              <node concept="liA8E" id="7w4_QD1KlYQ" role="2OqNvi">
-                <ref role="37wK5l" to="b0pz:~JavaModuleFacet.getLanguageLevel()" resolve="getLanguageLevel" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="7w4_QD1Knvx" role="3cqZAp">
-          <node concept="3K4zz7" id="7w4_QD1Ks2o" role="3cqZAk">
-            <node concept="2YIFZM" id="7w4_QD1Kvlj" role="3K4E3e">
-              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.getDefault()" resolve="getDefault" />
-              <ref role="1Pybhc" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-            </node>
-            <node concept="37vLTw" id="7w4_QD1KwSz" role="3K4GZi">
-              <ref role="3cqZAo" node="7w4_QD1KlYF" resolve="moduleLevel" />
-            </node>
-            <node concept="3clFbC" id="7w4_QD1KrFD" role="3K4Cdx">
-              <node concept="10Nm6u" id="7w4_QD1KrG8" role="3uHU7w" />
-              <node concept="37vLTw" id="7w4_QD1KpX$" role="3uHU7B">
-                <ref role="3cqZAo" node="7w4_QD1KlYF" resolve="moduleLevel" />
-              </node>
+              <node concept="I4A8Y" id="uD1GcGTFJN" role="2OqNvi" />
             </node>
           </node>
         </node>
@@ -2946,6 +2905,67 @@
       <node concept="37vLTG" id="jlPzbWiAXK" role="3clF46">
         <property role="TrG5h" value="contextNode" />
         <node concept="3Tqbb2" id="jlPzbWiAXJ" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="uD1GcGTtSC" role="jymVt">
+      <property role="TrG5h" value="getLanguageLevel" />
+      <node concept="3uibUv" id="uD1GcGTtSD" role="3clF45">
+        <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+      </node>
+      <node concept="3Tm1VV" id="uD1GcGTtSE" role="1B3o_S" />
+      <node concept="3clFbS" id="uD1GcGTtSF" role="3clF47">
+        <node concept="3cpWs8" id="uD1GcGTtSG" role="3cqZAp">
+          <node concept="3cpWsn" id="uD1GcGTtSH" role="3cpWs9">
+            <property role="TrG5h" value="moduleLevel" />
+            <node concept="3uibUv" id="uD1GcGTtSI" role="1tU5fm">
+              <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+            </node>
+            <node concept="2EnYce" id="uD1GcGTtSJ" role="33vP2m">
+              <node concept="2EnYce" id="uD1GcGTtSK" role="2Oq$k0">
+                <node concept="2EnYce" id="uD1GcGTtSL" role="2Oq$k0">
+                  <node concept="2JrnkZ" id="uD1GcGTtSN" role="2Oq$k0">
+                    <node concept="37vLTw" id="uD1GcGTtSO" role="2JrQYb">
+                      <ref role="3cqZAo" node="uD1GcGTtT1" resolve="contextModel" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="uD1GcGTtSQ" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="uD1GcGTtSR" role="2OqNvi">
+                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
+                  <node concept="3VsKOn" id="uD1GcGTtSS" role="37wK5m">
+                    <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="uD1GcGTtST" role="2OqNvi">
+                <ref role="37wK5l" to="b0pz:~JavaModuleFacet.getLanguageLevel()" resolve="getLanguageLevel" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="uD1GcGTtSU" role="3cqZAp">
+          <node concept="3K4zz7" id="uD1GcGTtSV" role="3cqZAk">
+            <node concept="2YIFZM" id="uD1GcGTtSW" role="3K4E3e">
+              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.getDefault()" resolve="getDefault" />
+              <ref role="1Pybhc" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+            </node>
+            <node concept="37vLTw" id="uD1GcGTtSX" role="3K4GZi">
+              <ref role="3cqZAo" node="uD1GcGTtSH" resolve="moduleLevel" />
+            </node>
+            <node concept="3clFbC" id="uD1GcGTtSY" role="3K4Cdx">
+              <node concept="10Nm6u" id="uD1GcGTtSZ" role="3uHU7w" />
+              <node concept="37vLTw" id="uD1GcGTtT0" role="3uHU7B">
+                <ref role="3cqZAo" node="uD1GcGTtSH" resolve="moduleLevel" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="uD1GcGTtT1" role="3clF46">
+        <property role="TrG5h" value="contextModel" />
+        <node concept="H_c77" id="uD1GcGTv3S" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="jlPzbWipeT" role="jymVt" />

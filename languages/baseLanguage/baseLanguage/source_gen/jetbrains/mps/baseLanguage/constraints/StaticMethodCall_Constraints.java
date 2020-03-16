@@ -19,9 +19,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.scopes.MethodsScope;
 import jetbrains.mps.baseLanguage.scopes.Members;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
-import jetbrains.mps.project.Project;
-import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
+import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
 import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashMap;
@@ -81,17 +80,17 @@ public class StaticMethodCall_Constraints extends BaseConstraintsDescriptor {
               return new EmptyScope();
             }
             Scope visibleClassifiersScope = ClassifierScopes.getVisibleClassifiersScope(_context.getContextNode(), true);
-            Project project = SModuleOperations.getProjectForModule(SNodeOperations.getModel(_context.getContextNode()).getModule());
-            if (project != null && !(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion().isAtLeast(JavaCompilerOptionsComponent.JavaVersion.VERSION_1_8))) {
-              return new FilteringScope(visibleClassifiersScope) {
 
+            JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(_context.getContextNode());
+            if (languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8)) {
+              return visibleClassifiersScope;
+            } else {
+              return new FilteringScope(visibleClassifiersScope) {
                 @Override
                 public boolean isExcluded(SNode node) {
                   return !(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY));
                 }
               };
-            } else {
-              return visibleClassifiersScope;
             }
           }
         };

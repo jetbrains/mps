@@ -11,8 +11,6 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
-import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -40,7 +38,7 @@ public class DefaultModifier_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return new BaseLanguageEnvironmentHelper().getLanguageLevel(node).isAtLeast(JavaLanguageLevel.JAVA_8) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ClassifierMember$9F) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IHasModifiers$LF) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.Interface$Kp);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ClassifierMember$9F) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IHasModifiers$LF) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(parentNode), CONCEPTS.Interface$Kp);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "1164142520228621412");
 

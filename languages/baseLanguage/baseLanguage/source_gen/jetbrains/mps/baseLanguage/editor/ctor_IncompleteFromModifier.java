@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.GroupMenuPart;
+import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
@@ -54,7 +56,7 @@ public class ctor_IncompleteFromModifier extends SubstituteMenuBase {
   public class SMP_Group_ylzf1h_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$Kp);
+      return new BaseLanguageEnvironmentHelper().getLanguageLevel(_context.getParentNode()).isAtLeast(JavaLanguageLevel.JAVA_8) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$Kp);
     }
     @NotNull
     @Override

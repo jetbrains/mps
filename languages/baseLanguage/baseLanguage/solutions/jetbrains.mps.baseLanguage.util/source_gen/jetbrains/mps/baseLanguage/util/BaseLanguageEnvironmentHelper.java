@@ -5,9 +5,10 @@ package jetbrains.mps.baseLanguage.util;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -29,7 +30,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.SModelStereotype;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,18 +42,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class BaseLanguageEnvironmentHelper {
 
   public JavaLanguageLevel getLanguageLevel(SNode contextNode) {
-    JavaLanguageLevel moduleLevel = check_sif9ng_a0a0b(check_sif9ng_a0a0a1(check_sif9ng_a0a0a0b(check_sif9ng_a0a0a0a1(contextNode))));
+    return getLanguageLevel(SNodeOperations.getModel(contextNode));
+  }
+  public JavaLanguageLevel getLanguageLevel(SModel contextModel) {
+    JavaLanguageLevel moduleLevel = check_sif9ng_a0a0c(check_sif9ng_a0a0a2(check_sif9ng_a0a0a0c(contextModel)));
     return (moduleLevel == null ? JavaLanguageLevel.getDefault() : moduleLevel);
   }
 
   public List<SNode> findStubClassifiers(SNode nodeClassifier) {
-    JavaModuleFacet javaFacet = check_sif9ng_a0a0d(check_sif9ng_a0a0a3(SNodeOperations.getModel(nodeClassifier)));
+    JavaModuleFacet javaFacet = check_sif9ng_a0a0e(check_sif9ng_a0a0a4(SNodeOperations.getModel(nodeClassifier)));
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     if (javaFacet == null || javaFacet.isCompileInMps()) {
       return result;
     }
-    SModule mpsModule = check_sif9ng_a0d0d(SNodeOperations.getModel(nodeClassifier));
-    SRepository repository = check_sif9ng_a0e0d(mpsModule);
+    SModule mpsModule = check_sif9ng_a0d0e(SNodeOperations.getModel(nodeClassifier));
+    SRepository repository = check_sif9ng_a0e0e(mpsModule);
     if (repository == null) {
       return null;
     }
@@ -64,7 +67,7 @@ public class BaseLanguageEnvironmentHelper {
     SNodeId nodeId = new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + nestedShortName);
 
     for (ClassType classType : ClassType.values()) {
-      SNode stubClass = check_sif9ng_a0a0m0d(check_sif9ng_a0a0a21a3(check_sif9ng_a0a0a0m0d(BootstrapLanguages.bootstrapSolutionRef(classType), repository), stubModelId), nodeId);
+      SNode stubClass = check_sif9ng_a0a0m0e(check_sif9ng_a0a0a21a4(check_sif9ng_a0a0a0m0e(BootstrapLanguages.bootstrapSolutionRef(classType), repository), stubModelId), nodeId);
       if (stubClass != null) {
         ListSequence.fromList(result).addElement(SNodeOperations.cast(stubClass, CONCEPTS.Classifier$hJ));
       }
@@ -84,7 +87,7 @@ public class BaseLanguageEnvironmentHelper {
     }
     SNode generatedAnnotation = ListSequence.fromList(SLinkOperations.getChildren(stubClassifier, LINKS.annotation$oVP4)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(check_sif9ng_a0a0a0a0a1a5(SLinkOperations.getTarget(it, LINKS.annotation$zNxu)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass").getNodeId());
+        return Objects.equals(check_sif9ng_a0a0a0a0a1a6(SLinkOperations.getTarget(it, LINKS.annotation$zNxu)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass").getNodeId());
       }
     }).first();
     if (generatedAnnotation == null) {
@@ -92,7 +95,7 @@ public class BaseLanguageEnvironmentHelper {
     }
     String nodeParameter = SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(generatedAnnotation, LINKS.value$EXfF)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(check_sif9ng_a0a0a0a0a0a0d0f(SLinkOperations.getTarget(it, LINKS.key$y5Ln)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass.node()").getNodeId());
+        return Objects.equals(check_sif9ng_a0a0a0a0a0a0d0g(SLinkOperations.getTarget(it, LINKS.key$y5Ln)), new SNodePointer("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)", "~GeneratedClass.node()").getNodeId());
       }
     }).first(), LINKS.value$Bis), CONCEPTS.StringLiteral$4G), PROPS.value$kiE0);
     if (nodeParameter == null) {
@@ -118,79 +121,73 @@ public class BaseLanguageEnvironmentHelper {
     return result;
   }
 
-  private static JavaLanguageLevel check_sif9ng_a0a0b(JavaModuleFacet checkedDotOperand) {
+  private static JavaLanguageLevel check_sif9ng_a0a0c(JavaModuleFacet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getLanguageLevel();
     }
     return null;
   }
-  private static JavaModuleFacet check_sif9ng_a0a0a1(SModule checkedDotOperand) {
+  private static JavaModuleFacet check_sif9ng_a0a0a2(SModule checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getFacet(JavaModuleFacet.class);
     }
     return null;
   }
-  private static SModule check_sif9ng_a0a0a0b(SModel checkedDotOperand) {
+  private static SModule check_sif9ng_a0a0a0c(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
     }
     return null;
   }
-  private static SModel check_sif9ng_a0a0a0a1(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModel();
-    }
-    return null;
-  }
-  private static JavaModuleFacet check_sif9ng_a0a0d(SModule checkedDotOperand) {
+  private static JavaModuleFacet check_sif9ng_a0a0e(SModule checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getFacet(JavaModuleFacet.class);
     }
     return null;
   }
-  private static SModule check_sif9ng_a0a0a3(SModel checkedDotOperand) {
+  private static SModule check_sif9ng_a0a0a4(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
     }
     return null;
   }
-  private static SModule check_sif9ng_a0d0d(SModel checkedDotOperand) {
+  private static SModule check_sif9ng_a0d0e(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
     }
     return null;
   }
-  private static SRepository check_sif9ng_a0e0d(SModule checkedDotOperand) {
+  private static SRepository check_sif9ng_a0e0e(SModule checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRepository();
     }
     return null;
   }
-  private static SNode check_sif9ng_a0a0m0d(SModel checkedDotOperand, SNodeId nodeId) {
+  private static SNode check_sif9ng_a0a0m0e(SModel checkedDotOperand, SNodeId nodeId) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNode(nodeId);
     }
     return null;
   }
-  private static SModel check_sif9ng_a0a0a21a3(SModule checkedDotOperand, SModelId stubModelId) {
+  private static SModel check_sif9ng_a0a0a21a4(SModule checkedDotOperand, SModelId stubModelId) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModel(stubModelId);
     }
     return null;
   }
-  private static SModule check_sif9ng_a0a0a0m0d(SModuleReference checkedDotOperand, SRepository repository) {
+  private static SModule check_sif9ng_a0a0a0m0e(SModuleReference checkedDotOperand, SRepository repository) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.resolve(repository);
     }
     return null;
   }
-  private static SNodeId check_sif9ng_a0a0a0a0a1a5(SNode checkedDotOperand) {
+  private static SNodeId check_sif9ng_a0a0a0a0a1a6(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-  private static SNodeId check_sif9ng_a0a0a0a0a0a0d0f(SNode checkedDotOperand) {
+  private static SNodeId check_sif9ng_a0a0a0a0a0a0d0g(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }

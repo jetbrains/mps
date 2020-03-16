@@ -7,16 +7,12 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.project.Project;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
+import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -24,17 +20,11 @@ public class check_SuperInterfaceMethodCall_NonTypesystemRule extends AbstractNo
   public check_SuperInterfaceMethodCall_NonTypesystemRule() {
   }
   public void applyRule(final SNode superInterfaceMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Project project = null;
-    SModule module = check_et794z_a0b0b(SNodeOperations.getModel(superInterfaceMethodCall));
-    project = SModuleOperations.getProjectForModule(module);
-    if (project == null) {
-      return;
-    }
-    JavaCompilerOptionsComponent.JavaVersion sourceJavaVersion = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion();
-    if (sourceJavaVersion.compareTo(JavaCompilerOptionsComponent.JavaVersion.VERSION_1_8) < 0) {
+    JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(superInterfaceMethodCall);
+    if (!(languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(superInterfaceMethodCall, "Super interface method invocations are supported in Java 1.8 or higher. Current java language level:" + sourceJavaVersion.getCompilerVersion(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3845357643094222715", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(superInterfaceMethodCall, "Super interface method invocations can be used only since Java 8. Current java language level:" + languageLevel.getCompactDescription(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2722105966026746113", null, errorTarget);
       }
     }
   }
@@ -46,12 +36,6 @@ public class check_SuperInterfaceMethodCall_NonTypesystemRule extends AbstractNo
   }
   public boolean overrides() {
     return false;
-  }
-  private static SModule check_et794z_a0b0b(SModel checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
-    }
-    return null;
   }
 
   private static final class CONCEPTS {

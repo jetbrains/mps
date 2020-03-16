@@ -9,16 +9,12 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.project.Project;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
+import jetbrains.mps.project.facets.JavaLanguageLevel;
+import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -26,19 +22,15 @@ public class check_StaticInterfaceMethodDeclarationV8_NonTypesystemRule extends 
   public check_StaticInterfaceMethodDeclarationV8_NonTypesystemRule() {
   }
   public void applyRule(final SNode intfc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (Sequence.fromIterable(Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invoke(intfc)).isNotEmpty()) {
-      Project project;
-      SModule module = check_9qsk8d_a0b0a0b(SNodeOperations.getModel(intfc));
-      project = SModuleOperations.getProjectForModule(module);
-      if (project == null) {
-        return;
-      }
-      JavaCompilerOptionsComponent.JavaVersion sourceJavaVersion = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion();
-      if (sourceJavaVersion.compareTo(JavaCompilerOptionsComponent.JavaVersion.VERSION_1_8) < 0) {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(intfc, "Static interface method declarations are allowed only at source level 1.8 or above. Current java language level:" + sourceJavaVersion.getCompilerVersion(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7197377355157103256", null, errorTarget);
-        }
+    if (Sequence.fromIterable(Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invoke(intfc)).isEmpty()) {
+      return;
+    }
+
+    JavaLanguageLevel languageLevel = new BaseLanguageEnvironmentHelper().getLanguageLevel(intfc);
+    if (!(languageLevel.isAtLeast(JavaLanguageLevel.JAVA_8))) {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(intfc, "Static interface methods can be used only since Java 8. Current java language level:" + languageLevel.getCompactDescription(), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2722105966026702891", null, errorTarget);
       }
     }
   }
@@ -50,12 +42,6 @@ public class check_StaticInterfaceMethodDeclarationV8_NonTypesystemRule extends 
   }
   public boolean overrides() {
     return false;
-  }
-  private static SModule check_9qsk8d_a0b0a0b(SModel checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getModule();
-    }
-    return null;
   }
 
   private static final class CONCEPTS {

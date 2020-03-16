@@ -32,7 +32,13 @@ public enum JavaLanguageLevel {
     myDescription = description;
   }
   public String toString() {
+    return getFullDescription();
+  }
+  public String getFullDescription() {
     return "Java " + myLevel + myDescription + (this == getDefault() ? " (default)" : "");
+  }
+  public String getCompactDescription() {
+    return "Java " + myLevel;
   }
   public int getLevel() {
     return myLevel;
