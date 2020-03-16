@@ -42,8 +42,8 @@ public class ToggleBackDefaultMethodInInterface_Test extends BaseTransformationT
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1076865108604282488", "1076865108604282497");
-      Assert.assertTrue(isIntentionApplicable("jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention", myStart.getNode()));
-      invokeIntention("jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention", myStart.getNode());
+      Assert.assertTrue(isIntentionApplicable("jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention", myStart.getNode()));
+      invokeIntention("jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention", myStart.getNode());
       Assert.assertTrue(new ModelAccessHelper(myProject.getRepository()).runReadAction(new Computable<Boolean>() {
         public Boolean compute() {
           return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("1076865108604282497"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101edd46144L, "Interface"))), LINKS.member$oYX5)).first(), CONCEPTS.InstanceMethodDeclaration$An), LINKS.body$WIlu), LINKS.statement$WHn8)).isEmpty();

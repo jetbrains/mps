@@ -34,7 +34,7 @@ public class ToggleDefaultNotApplicableInClass_Test extends BaseTransformationTe
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1076865108603933438", "1076865108603933451");
-      Assert.assertFalse(isIntentionApplicable("jetbrains.mps.baseLanguage.jdk8.intentions.ToggleMethodDefault_Intention", myStart.getNode()));
+      Assert.assertFalse(isIntentionApplicable("jetbrains.mps.baseLanguage.intentions.ToggleMethodDefault_Intention", myStart.getNode()));
 
     }
   }
