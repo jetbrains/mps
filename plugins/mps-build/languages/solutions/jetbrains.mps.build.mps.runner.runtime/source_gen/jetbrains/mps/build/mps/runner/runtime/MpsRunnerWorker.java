@@ -52,13 +52,14 @@ public class MpsRunnerWorker extends WorkerBase {
         try {
           return ((ReloadableModule) module).getClass(properties.getStartClass());
         } catch (ClassNotFoundException e) {
-          error(String.format("cannot find class '%s' in solution %s", properties.getStartClass(), solutionRef));
+          error(noClassMsg(properties));
+          e.printStackTrace(System.err);
         }
         return null;
       }
     });
     if (mainClass == null) {
-      return;
+      throw new NoClassDefFoundError(noClassMsg(properties));
     }
     try {
       final String methodName = properties.getStartMethod();
@@ -111,10 +112,14 @@ public class MpsRunnerWorker extends WorkerBase {
         return;
       }
     } catch (InvocationTargetException ex) {
-      log(ex);
+      throw new RuntimeException(ex.getCause());
     } catch (IllegalAccessException ex) {
-      log(ex);
+      throw new RuntimeException(ex.getCause());
     }
+  }
+
+  private String noClassMsg(final MpsRunnerProperties properties) {
+    return String.format("cannot find class '%s' in solution %s", properties.getStartClass(), properties.getSolution());
   }
 
   public static void main(String[] args) {

@@ -62,9 +62,15 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
+      <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
+        <child id="1164991057263" name="throwable" index="YScLw" />
+      </concept>
       <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
         <child id="1081256993305" name="classType" index="2ZW6by" />
         <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
+      </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
@@ -164,6 +170,7 @@
         <child id="1350122676458893092" name="text" index="3ndbpf" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
@@ -460,22 +467,24 @@
                           <node concept="3clFbF" id="5AcmpEObevn" role="3cqZAp">
                             <node concept="1rXfSq" id="5AcmpEObevo" role="3clFbG">
                               <ref role="37wK5l" to="jo3e:KL8Aqlj5zJ" resolve="error" />
-                              <node concept="2YIFZM" id="5AcmpEObevp" role="37wK5m">
-                                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
-                                <node concept="Xl_RD" id="5AcmpEObevq" role="37wK5m">
-                                  <property role="Xl_RC" value="cannot find class '%s' in solution %s" />
+                              <node concept="1rXfSq" id="X8UZrxRbKN" role="37wK5m">
+                                <ref role="37wK5l" node="X8UZrxRbKI" resolve="noClassMsg" />
+                                <node concept="37vLTw" id="X8UZrxRbKM" role="37wK5m">
+                                  <ref role="3cqZAo" node="1Vi5mb_oEYY" resolve="properties" />
                                 </node>
-                                <node concept="2OqwBi" id="5AcmpEObevr" role="37wK5m">
-                                  <node concept="37vLTw" id="5AcmpEObevs" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="1Vi5mb_oEYY" resolve="properties" />
-                                  </node>
-                                  <node concept="liA8E" id="5AcmpEObevt" role="2OqNvi">
-                                    <ref role="37wK5l" to="asz6:1Vi5mb_omwh" resolve="getStartClass" />
-                                  </node>
-                                </node>
-                                <node concept="37vLTw" id="5AcmpEObevu" role="37wK5m">
-                                  <ref role="3cqZAo" node="5AcmpEObeuM" resolve="solutionRef" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3clFbF" id="X8UZrxRROb" role="3cqZAp">
+                            <node concept="2OqwBi" id="X8UZrxRTlu" role="3clFbG">
+                              <node concept="37vLTw" id="X8UZrxRRO9" role="2Oq$k0">
+                                <ref role="3cqZAo" node="5AcmpEObevk" resolve="e" />
+                              </node>
+                              <node concept="liA8E" id="X8UZrxRV6v" role="2OqNvi">
+                                <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace(java.io.PrintStream)" resolve="printStackTrace" />
+                                <node concept="10M0yZ" id="X8UZrxRYvl" role="37wK5m">
+                                  <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
+                                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
                                 </node>
                               </node>
                             </node>
@@ -494,7 +503,19 @@
         </node>
         <node concept="3clFbJ" id="5AcmpEOblzo" role="3cqZAp">
           <node concept="3clFbS" id="5AcmpEOblzq" role="3clFbx">
-            <node concept="3cpWs6" id="5AcmpEObqPK" role="3cqZAp" />
+            <node concept="YS8fn" id="X8UZrxRb2n" role="3cqZAp">
+              <node concept="2ShNRf" id="X8UZrxRbgi" role="YScLw">
+                <node concept="1pGfFk" id="X8UZrxRnzB" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~NoClassDefFoundError.&lt;init&gt;(java.lang.String)" resolve="NoClassDefFoundError" />
+                  <node concept="1rXfSq" id="X8UZrxRo3t" role="37wK5m">
+                    <ref role="37wK5l" node="X8UZrxRbKI" resolve="noClassMsg" />
+                    <node concept="37vLTw" id="X8UZrxRt8E" role="37wK5m">
+                      <ref role="3cqZAo" node="1Vi5mb_oEYY" resolve="properties" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="3clFbC" id="5AcmpEObqso" role="3clFbw">
             <node concept="10Nm6u" id="5AcmpEObqKL" role="3uHU7w" />
@@ -1228,11 +1249,18 @@
           </node>
           <node concept="TDmWw" id="5iKxrmkr3AZ" role="TEbGg">
             <node concept="3clFbS" id="5iKxrmkr3B0" role="TDEfX">
-              <node concept="3clFbF" id="5AcmpEOegja" role="3cqZAp">
-                <node concept="1rXfSq" id="5AcmpEOegj8" role="3clFbG">
-                  <ref role="37wK5l" to="jo3e:KL8Aqlj5zY" resolve="log" />
-                  <node concept="37vLTw" id="5AcmpEOej0n" role="37wK5m">
-                    <ref role="3cqZAo" node="5iKxrmkr3B5" resolve="ex" />
+              <node concept="YS8fn" id="X8UZrxS2yx" role="3cqZAp">
+                <node concept="2ShNRf" id="X8UZrxS2Xc" role="YScLw">
+                  <node concept="1pGfFk" id="X8UZrxS3wH" role="2ShVmc">
+                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
+                    <node concept="2OqwBi" id="X8UZrxSsnl" role="37wK5m">
+                      <node concept="37vLTw" id="X8UZrxS3Lj" role="2Oq$k0">
+                        <ref role="3cqZAo" node="5iKxrmkr3B5" resolve="ex" />
+                      </node>
+                      <node concept="liA8E" id="X8UZrxSsLm" role="2OqNvi">
+                        <ref role="37wK5l" to="t6h5:~InvocationTargetException.getCause()" resolve="getCause" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
@@ -1246,11 +1274,18 @@
           </node>
           <node concept="TDmWw" id="5iKxrmkr3B7" role="TEbGg">
             <node concept="3clFbS" id="5iKxrmkr3B8" role="TDEfX">
-              <node concept="3clFbF" id="5AcmpEOehV_" role="3cqZAp">
-                <node concept="1rXfSq" id="5AcmpEOehVz" role="3clFbG">
-                  <ref role="37wK5l" to="jo3e:KL8Aqlj5zY" resolve="log" />
-                  <node concept="37vLTw" id="5AcmpEOeik_" role="37wK5m">
-                    <ref role="3cqZAo" node="5iKxrmkr3Bd" resolve="ex" />
+              <node concept="YS8fn" id="X8UZrxS46Y" role="3cqZAp">
+                <node concept="2ShNRf" id="X8UZrxS46Z" role="YScLw">
+                  <node concept="1pGfFk" id="X8UZrxS470" role="2ShVmc">
+                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
+                    <node concept="2OqwBi" id="X8UZrxSr_y" role="37wK5m">
+                      <node concept="37vLTw" id="X8UZrxS50x" role="2Oq$k0">
+                        <ref role="3cqZAo" node="5iKxrmkr3Bd" resolve="ex" />
+                      </node>
+                      <node concept="liA8E" id="X8UZrxSrZv" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~Throwable.getCause()" resolve="getCause" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
@@ -1259,6 +1294,46 @@
               <property role="TrG5h" value="ex" />
               <node concept="3uibUv" id="5iKxrmkr3Be" role="1tU5fm">
                 <ref role="3uigEE" to="wyt6:~IllegalAccessException" resolve="IllegalAccessException" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="X8UZrxRjxH" role="jymVt" />
+    <node concept="3clFb_" id="X8UZrxRbKI" role="jymVt">
+      <property role="TrG5h" value="noClassMsg" />
+      <node concept="3Tm6S6" id="X8UZrxRbKJ" role="1B3o_S" />
+      <node concept="17QB3L" id="X8UZrxRhmO" role="3clF45" />
+      <node concept="37vLTG" id="X8UZrxRbKD" role="3clF46">
+        <property role="TrG5h" value="properties" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3uibUv" id="X8UZrxRbKE" role="1tU5fm">
+          <ref role="3uigEE" to="asz6:1Vi5mb_oi7$" resolve="MpsRunnerProperties" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="X8UZrxRbKv" role="3clF47">
+        <node concept="3cpWs6" id="X8UZrxRbKw" role="3cqZAp">
+          <node concept="2YIFZM" id="X8UZrxRbKx" role="3cqZAk">
+            <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+            <node concept="Xl_RD" id="X8UZrxRbKy" role="37wK5m">
+              <property role="Xl_RC" value="cannot find class '%s' in solution %s" />
+            </node>
+            <node concept="2OqwBi" id="X8UZrxRbKz" role="37wK5m">
+              <node concept="37vLTw" id="X8UZrxRbKF" role="2Oq$k0">
+                <ref role="3cqZAo" node="X8UZrxRbKD" resolve="properties" />
+              </node>
+              <node concept="liA8E" id="X8UZrxRbK_" role="2OqNvi">
+                <ref role="37wK5l" to="asz6:1Vi5mb_omwh" resolve="getStartClass" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="X8UZrxRyUn" role="37wK5m">
+              <node concept="37vLTw" id="X8UZrxRwUu" role="2Oq$k0">
+                <ref role="3cqZAo" node="X8UZrxRbKD" resolve="properties" />
+              </node>
+              <node concept="liA8E" id="X8UZrxR_r0" role="2OqNvi">
+                <ref role="37wK5l" to="asz6:5iKxrmkqgTC" resolve="getSolution" />
               </node>
             </node>
           </node>

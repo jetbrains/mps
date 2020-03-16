@@ -36,6 +36,9 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
   public void test_useAdditionalPlugin() throws Exception {
     runAndCheck(PROJECT_PATH, "test5.xml");
   }
+  public void test_useRegistryInDummyPlugin() throws Exception {
+    runAndCheck(PROJECT_PATH, "testDummyPlugin.xml");
+  }
   public void setUp() {
     myProject = myEnvironment.openProject(new File(PROJECT_PATH));
   }
