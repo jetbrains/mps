@@ -2,16 +2,16 @@
 <model ref="r:70ba7cf7-d705-4776-9784-5a0abc3ae48a(jetbrains.mps.execution.impl.configurations.tests.outproces@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="-1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi" version="-1" />
     <use id="22e72e4c-0f69-46ce-8403-6750153aa615" name="jetbrains.mps.execution.configurations" version="-1" />
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
@@ -778,27 +778,52 @@
         <node concept="3cpWs8" id="4rbJdZOvySG" role="3cqZAp">
           <node concept="3cpWsn" id="4rbJdZOvySH" role="3cpWs9">
             <property role="TrG5h" value="vmParams" />
-            <node concept="17QB3L" id="4rbJdZOvySF" role="1tU5fm" />
-            <node concept="3cpWs3" id="4rbJdZOvCF0" role="33vP2m">
-              <node concept="10M0yZ" id="4rbJdZOvDxE" role="3uHU7w">
-                <ref role="3cqZAo" to="u9u1:4rbJdZOvA9R" resolve="SYS_PROPERTY_EXPECTED_VALUE" />
-                <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
-              </node>
-              <node concept="3cpWs3" id="4rbJdZOv_wy" role="3uHU7B">
-                <node concept="3cpWs3" id="4rbJdZOv$cV" role="3uHU7B">
-                  <node concept="Xl_RD" id="4rbJdZOvySI" role="3uHU7B">
-                    <property role="Xl_RC" value="-D" />
+            <node concept="3cpWs3" id="1J1$cwfY44y" role="33vP2m">
+              <node concept="2OqwBi" id="1J1$cwfY106" role="3uHU7w">
+                <node concept="2OqwBi" id="1J1$cwfXZ3u" role="2Oq$k0">
+                  <node concept="2OqwBi" id="1J1$cwfXWcV" role="2Oq$k0">
+                    <node concept="37vLTw" id="1J1$cwfXVc1" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1T5iP2az7WM" resolve="junitRC" />
+                    </node>
+                    <node concept="yHkDZ" id="1J1$cwfXX$9" role="2OqNvi">
+                      <ref role="yHkDY" to="ic9i:6woObKLCiTr" resolve="myJavaRunParameters" />
+                    </node>
                   </node>
-                  <node concept="10M0yZ" id="4rbJdZOv$Y6" role="3uHU7w">
-                    <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
-                    <ref role="3cqZAo" to="u9u1:4rbJdZOuy6t" resolve="SYS_PROPERTY" />
+                  <node concept="yHkDZ" id="1J1$cwfXZqo" role="2OqNvi">
+                    <ref role="yHkDY" to="go48:6woObKLBCks" resolve="myJavaParameters" />
                   </node>
                 </node>
-                <node concept="Xl_RD" id="4rbJdZOvBVD" role="3uHU7w">
-                  <property role="Xl_RC" value="=" />
+                <node concept="liA8E" id="1J1$cwfY3vP" role="2OqNvi">
+                  <ref role="37wK5l" to="go48:14R2qyOCsVI" resolve="getVmOptions" />
+                </node>
+              </node>
+              <node concept="3cpWs3" id="1J1$cwfXUqA" role="3uHU7B">
+                <node concept="3cpWs3" id="4rbJdZOvCF0" role="3uHU7B">
+                  <node concept="3cpWs3" id="4rbJdZOv_wy" role="3uHU7B">
+                    <node concept="3cpWs3" id="4rbJdZOv$cV" role="3uHU7B">
+                      <node concept="Xl_RD" id="4rbJdZOvySI" role="3uHU7B">
+                        <property role="Xl_RC" value="-D" />
+                      </node>
+                      <node concept="10M0yZ" id="4rbJdZOv$Y6" role="3uHU7w">
+                        <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
+                        <ref role="3cqZAo" to="u9u1:4rbJdZOuy6t" resolve="SYS_PROPERTY" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="4rbJdZOvBVD" role="3uHU7w">
+                      <property role="Xl_RC" value="=" />
+                    </node>
+                  </node>
+                  <node concept="10M0yZ" id="4rbJdZOvDxE" role="3uHU7w">
+                    <ref role="3cqZAo" to="u9u1:4rbJdZOvA9R" resolve="SYS_PROPERTY_EXPECTED_VALUE" />
+                    <ref role="1PxDUh" to="u9u1:4rbJdZOuxYR" resolve="ReadingPropertyBTestCase_Test" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="1J1$cwfY4aZ" role="3uHU7w">
+                  <property role="Xl_RC" value=" " />
                 </node>
               </node>
             </node>
+            <node concept="17QB3L" id="4rbJdZOvySF" role="1tU5fm" />
           </node>
         </node>
         <node concept="3clFbF" id="3P4ieJEEifq" role="3cqZAp">

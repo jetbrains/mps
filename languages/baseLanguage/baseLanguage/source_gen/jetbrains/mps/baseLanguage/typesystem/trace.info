@@ -12953,7 +12953,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1557757632988467212">
     <file name="RemoveDefaultModifier_QuickFix.java">
       <node id="1557757632988467212" at="18,43,19,132" concept="18" />
-      <node id="8014340958386797380" at="21,44,22,43" concept="13" />
+      <node id="8014340958386797380" at="21,44,22,39" concept="13" />
       <node id="2577576048763268551" at="26,39,27,77" concept="13" />
       <node id="2577576048763467511" at="30,35,31,39" concept="6" />
       <node id="1557757632988467212" at="37,0,38,0" concept="16" trace="modifiers$akE0" />
@@ -12965,7 +12965,7 @@
       <node id="2577576048763247023" at="24,35,33,7" concept="6" />
       <node id="1557757632988467212" at="24,0,35,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="1557757632988467212" at="18,43,19,132" />
-      <scope id="1557757632988469361" at="21,44,22,43" />
+      <scope id="1557757632988469361" at="21,44,22,39" />
       <scope id="2577576048763267985" at="26,39,27,77" />
       <scope id="2577576048763467297" at="30,35,31,39" />
       <scope id="1557757632988467212" at="18,0,21,0" />
@@ -23473,36 +23473,35 @@
       <node id="498633765600377192" at="32,263,33,289" concept="6" />
       <node id="498633765600371330" at="33,289,34,201" concept="6" />
       <node id="498633765600371353" at="34,201,35,186" concept="6" />
-      <node id="498633765600378298" at="35,186,36,110" concept="6" />
-      <node id="498633765600378321" at="36,110,37,110" concept="6" />
-      <node id="498633765600371276" at="41,0,42,0" concept="16" trace="name$tAp1" />
-      <node id="498633765600371276" at="42,0,43,0" concept="16" trace="isFinal$I$Qu" />
-      <node id="498633765600371276" at="46,0,47,0" concept="16" trace="returnType$WIkw" />
-      <node id="498633765600371276" at="47,0,48,0" concept="16" trace="parameter$WIkZ" />
-      <node id="498633765600371276" at="48,0,49,0" concept="16" trace="body$WIlu" />
-      <node id="498633765600371276" at="49,0,50,0" concept="16" trace="throwsItem$gr7e" />
-      <node id="498633765600371276" at="50,0,51,0" concept="16" trace="annotation$oVP4" />
-      <node id="498633765600371276" at="51,0,52,0" concept="16" trace="typeVariableDeclaration$ziZT" />
-      <node id="498633765600371276" at="52,0,53,0" concept="16" trace="visibility$2GiC" />
-      <node id="498633765600371276" at="53,0,54,0" concept="16" trace="member$oYX5" />
+      <node id="498633765600378321" at="35,186,36,110" concept="6" />
+      <node id="498633765600371276" at="40,0,41,0" concept="16" trace="name$tAp1" />
+      <node id="498633765600371276" at="41,0,42,0" concept="16" trace="isFinal$I$Qu" />
+      <node id="498633765600371276" at="45,0,46,0" concept="16" trace="returnType$WIkw" />
+      <node id="498633765600371276" at="46,0,47,0" concept="16" trace="parameter$WIkZ" />
+      <node id="498633765600371276" at="47,0,48,0" concept="16" trace="body$WIlu" />
+      <node id="498633765600371276" at="48,0,49,0" concept="16" trace="throwsItem$gr7e" />
+      <node id="498633765600371276" at="49,0,50,0" concept="16" trace="annotation$oVP4" />
+      <node id="498633765600371276" at="50,0,51,0" concept="16" trace="typeVariableDeclaration$ziZT" />
+      <node id="498633765600371276" at="51,0,52,0" concept="16" trace="visibility$2GiC" />
+      <node id="498633765600371276" at="52,0,53,0" concept="16" trace="member$oYX5" />
       <node id="498633765600371276" at="18,0,21,0" concept="3" trace="MakeStaticMethodNotStatic_QuickFix#()V" />
       <node id="498633765600371276" at="21,0,24,0" concept="11" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="498633765600371276" at="24,0,39,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="498633765600371276" at="24,0,38,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="498633765600371276" at="18,47,19,131" />
       <scope id="498633765600371361" at="21,44,22,165" />
       <scope id="498633765600371276" at="18,0,21,0" />
       <scope id="498633765600371276" at="21,0,24,0">
         <var name="node" id="498633765600371276" />
       </scope>
-      <scope id="498633765600371282" at="24,35,37,110">
+      <scope id="498633765600371282" at="24,35,36,110">
         <var name="methodDeclaration" id="498633765600371284" />
       </scope>
-      <scope id="498633765600371276" at="24,0,39,0">
+      <scope id="498633765600371276" at="24,0,38,0">
         <var name="node" id="498633765600371276" />
       </scope>
-      <unit id="498633765600371276" at="40,0,44,0" name="jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix$PROPS" />
-      <unit id="498633765600371276" at="45,0,55,0" name="jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix$LINKS" />
-      <unit id="498633765600371276" at="17,0,56,0" name="jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix" />
+      <unit id="498633765600371276" at="39,0,43,0" name="jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix$PROPS" />
+      <unit id="498633765600371276" at="44,0,54,0" name="jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix$LINKS" />
+      <unit id="498633765600371276" at="17,0,55,0" name="jetbrains.mps.baseLanguage.typesystem.MakeStaticMethodNotStatic_QuickFix" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/498633765600377965">

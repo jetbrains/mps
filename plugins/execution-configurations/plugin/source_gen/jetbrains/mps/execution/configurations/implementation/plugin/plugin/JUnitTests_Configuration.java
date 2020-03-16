@@ -44,7 +44,7 @@ import java.io.File;
 public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(JUnitTests_Configuration.class);
   private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration(this.getProject());
-  private JavaRunParameters_Configuration myJavaRunParameters = new JavaRunParameters_Configuration(this.getProject());
+  private JavaRunParameters_Configuration myJavaRunParameters = createJavaRunParameters();
   private DeployPluginsSettings_Configuration myDeploySettings = new DeployPluginsSettings_Configuration(this.getProject());
 
   @Override
@@ -110,6 +110,11 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
 
   public List<SNodeReference> getTestsToMake() {
     return this.getJUnitSettings().getTestsToMake(ProjectHelper.fromIdeaProject(this.getProject()));
+  }
+  /*package*/ JavaRunParameters_Configuration createJavaRunParameters() {
+    JavaRunParameters_Configuration conf = new JavaRunParameters_Configuration(this.getProject());
+    conf.getJavaParameters().setVmOptions("-ea");
+    return conf;
   }
   public UnitTestViewComponent createTestViewComponent(TestRunState runState, final ProcessHandler process) {
     ConsoleView console = ConsoleCreator.createConsoleView(this.getProject(), false);

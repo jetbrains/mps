@@ -34,7 +34,6 @@ public class MakeStaticMethodNotStatic_QuickFix extends QuickFix_Runtime {
     SLinkOperations.setTarget(methodDeclaration, LINKS.visibility$2GiC, SLinkOperations.getTarget(((SNode) MakeStaticMethodNotStatic_QuickFix.this.getField("staticMethod")[0]), LINKS.visibility$2GiC));
     ListSequence.fromList(SLinkOperations.getChildren(((SNode) MakeStaticMethodNotStatic_QuickFix.this.getField("containingClass")[0]), LINKS.member$oYX5)).addElement(methodDeclaration);
     SNodeOperations.deleteNode(((SNode) MakeStaticMethodNotStatic_QuickFix.this.getField("staticMethod")[0]));
-    SNodeOperations.deleteNode(((SNode) MakeStaticMethodNotStatic_QuickFix.this.getField("staticMethod")[0]));
   }
 
   private static final class PROPS {

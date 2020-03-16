@@ -2,9 +2,9 @@
 <model ref="r:c3ac4b0a-a487-4481-b87d-bcfbfdd6a85d(jetbrains.mps.lang.editor.imageGen.plugin)">
   <persistence version="9" />
   <languages>
-    <use id="95f8a3e6-f994-4ca0-a65e-763c9bae2d3b" name="jetbrains.mps.make.script" version="0" />
-    <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
-    <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="0" />
+    <use id="95f8a3e6-f994-4ca0-a65e-763c9bae2d3b" name="jetbrains.mps.make.script" version="-1" />
+    <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
+    <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -2061,15 +2061,12 @@
         <node concept="3cpWs8" id="3kcKtVhMEzB" role="3cqZAp">
           <node concept="3cpWsn" id="3kcKtVhMEzC" role="3cpWs9">
             <property role="TrG5h" value="editorComponent" />
-            <node concept="3uibUv" id="3kcKtVhMEzD" role="1tU5fm">
+            <node concept="3uibUv" id="3IocghpgnpK" role="1tU5fm">
               <ref role="3uigEE" to="7a0s:6qGpHl7IHpK" resolve="HeadlessEditorComponent" />
             </node>
             <node concept="2ShNRf" id="3kcKtVhMEzE" role="33vP2m">
               <node concept="1pGfFk" id="3kcKtVhMEzF" role="2ShVmc">
-                <ref role="37wK5l" to="7a0s:2qx2hw9gxhG" resolve="HeadlessEditorComponent" />
-                <node concept="37vLTw" id="3kcKtVhMKLk" role="37wK5m">
-                  <ref role="3cqZAo" node="3kcKtVhMIyX" resolve="node" />
-                </node>
+                <ref role="37wK5l" to="7a0s:2iNJDZP2RE6" resolve="HeadlessEditorComponent" />
                 <node concept="37vLTw" id="3kcKtVhMKZe" role="37wK5m">
                   <ref role="3cqZAo" node="3kcKtVhMFQe" resolve="myRepository" />
                 </node>
@@ -2079,6 +2076,19 @@
         </node>
         <node concept="2GUZhq" id="3kcKtVhMEzI" role="3cqZAp">
           <node concept="3clFbS" id="3kcKtVhMEzJ" role="2GV8ay">
+            <node concept="3clFbF" id="2iNJDZP3uO0" role="3cqZAp">
+              <node concept="2OqwBi" id="2iNJDZP3vDx" role="3clFbG">
+                <node concept="37vLTw" id="2iNJDZP3uNY" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3kcKtVhMEzC" resolve="editorComponent" />
+                </node>
+                <node concept="liA8E" id="2iNJDZP3wwQ" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.editNode(org.jetbrains.mps.openapi.model.SNode)" resolve="editNode" />
+                  <node concept="37vLTw" id="2iNJDZP3wJ_" role="37wK5m">
+                    <ref role="3cqZAo" node="3kcKtVhMIyX" resolve="node" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="SfApY" id="3kcKtVhME$9" role="3cqZAp">
               <node concept="3clFbS" id="3kcKtVhME$a" role="SfCbr">
                 <node concept="3clFbF" id="3kcKtVhMPWr" role="3cqZAp">

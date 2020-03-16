@@ -2,8 +2,8 @@
 <model ref="r:e83eb82a-b3b8-4003-84af-b40cb742ea94(jetbrains.mps.ide.editor.resolver)">
   <persistence version="9" />
   <languages>
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
   </languages>
   <imports>
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
@@ -305,13 +305,7 @@
             </node>
             <node concept="2ShNRf" id="1$3BPv3VYXm" role="33vP2m">
               <node concept="1pGfFk" id="1$3BPv3VYXn" role="2ShVmc">
-                <ref role="37wK5l" to="7a0s:2qx2hw9gxhG" resolve="HeadlessEditorComponent" />
-                <node concept="2OqwBi" id="1$3BPv3VZov" role="37wK5m">
-                  <node concept="37vLTw" id="2BHiRxgm8Xe" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1$3BPv3VW9s" resolve="sourceNode" />
-                  </node>
-                  <node concept="2Rxl7S" id="1$3BPv3VZo_" role="2OqNvi" />
-                </node>
+                <ref role="37wK5l" to="7a0s:2iNJDZP2RE6" resolve="HeadlessEditorComponent" />
                 <node concept="37vLTw" id="HonEu9viB5" role="37wK5m">
                   <ref role="3cqZAo" node="1$3BPv3VW9v" resolve="repository" />
                 </node>
@@ -321,6 +315,22 @@
         </node>
         <node concept="2GUZhq" id="2WfrGFPtdQR" role="3cqZAp">
           <node concept="3clFbS" id="2WfrGFPtdQS" role="2GV8ay">
+            <node concept="3clFbF" id="2iNJDZP30Qd" role="3cqZAp">
+              <node concept="2OqwBi" id="2iNJDZP31_y" role="3clFbG">
+                <node concept="37vLTw" id="2iNJDZP30Qb" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1$3BPv3VYXj" resolve="headlessEditor" />
+                </node>
+                <node concept="liA8E" id="2iNJDZP32$4" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.editNode(org.jetbrains.mps.openapi.model.SNode)" resolve="editNode" />
+                  <node concept="2OqwBi" id="2iNJDZP32RD" role="37wK5m">
+                    <node concept="37vLTw" id="2iNJDZP32E7" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1$3BPv3VW9s" resolve="sourceNode" />
+                    </node>
+                    <node concept="2Rxl7S" id="2iNJDZP336G" role="2OqNvi" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs6" id="4InNjD1HHCg" role="3cqZAp">
               <node concept="2YIFZM" id="4InNjD1Hwx4" role="3cqZAk">
                 <ref role="1Pybhc" to="wexy:4InNjD1Gavm" resolve="EditorBasedReferenceResolverUtils" />

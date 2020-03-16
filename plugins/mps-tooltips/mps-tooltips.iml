@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/../../mps-tooltips/classes" />
+    <output-test url="file://$MODULE_DIR$/../../mps-tooltips/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Idea-platform" level="project" />
+    <orderEntry type="module" module-name="logging" />
+    <orderEntry type="module" module-name="mps-platform" />
+    <orderEntry type="module" module-name="make-runtime" />
+    <orderEntry type="module" module-name="editor-api" />
+    <orderEntry type="module" module-name="editor-runtime" />
+  </component>
+</module>

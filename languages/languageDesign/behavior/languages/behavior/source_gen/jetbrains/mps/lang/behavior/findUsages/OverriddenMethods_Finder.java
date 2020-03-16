@@ -18,8 +18,8 @@ import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.apache.log4j.Level;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -75,7 +75,15 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
               if (ancestorConcept == ConceptMethodDeclaration__BehaviorDescriptor.getContainingConcept_idi3POAMX.invoke(node)) {
                 return;
               }
-              SModel aspectModel = SModuleOperations.getAspect(SNodeOperations.getModel(ancestorConcept).getModule(), "behavior");
+              SModel cncptModel = SNodeOperations.getModel(ancestorConcept);
+              if (cncptModel == null) {
+                if (LOG.isEnabledFor(Level.ERROR)) {
+                  LOG.error("Could not found the ancestorConcept model while looking for the ancestors for the concept '" + ancestorConcept + "'");
+                }
+                return;
+
+              }
+              SModel aspectModel = SModuleOperations.getAspect(cncptModel.getModule(), "behavior");
               if (aspectModel == null) {
                 if (LOG.isEnabledFor(Level.ERROR)) {
                   LOG.error("Could not found the aspect behavior model while looking for the ancestors for the concept '" + ancestorConcept + "'");

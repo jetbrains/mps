@@ -102,8 +102,9 @@ public class PrintNodeRunnable implements Runnable {
       return;
     }
 
-    HeadlessEditorComponent editorComponent = new HeadlessEditorComponent(node, myRepository);
+    HeadlessEditorComponent editorComponent = new HeadlessEditorComponent(myRepository);
     try {
+      editorComponent.editNode(node);
       try {
         myResult = new ByteArrayOutputStream();
         boolean successful = ImageIO.write(printCellToImage(editorComponent.getRootCell()), myImageFormat, myResult);

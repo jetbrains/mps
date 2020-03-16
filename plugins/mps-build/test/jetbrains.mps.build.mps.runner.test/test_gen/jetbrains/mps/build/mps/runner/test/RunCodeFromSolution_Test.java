@@ -83,5 +83,4 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
     }
     okFile.delete();
   }
-
 }

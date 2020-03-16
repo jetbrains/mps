@@ -101,7 +101,7 @@
         <var name="scriptPath" id="2304492758938066904" />
       </scope>
       <unit id="2304492758938066830" at="64,35,74,5" name="jetbrains.mps.build.mps.runner.test.RunCodeFromSolution_Test$1" />
-      <unit id="2304492758937914221" at="20,0,88,0" name="jetbrains.mps.build.mps.runner.test.RunCodeFromSolution_Test" />
+      <unit id="2304492758937914221" at="20,0,87,0" name="jetbrains.mps.build.mps.runner.test.RunCodeFromSolution_Test" />
     </file>
   </root>
 </debug-info>

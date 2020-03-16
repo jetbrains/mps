@@ -20,9 +20,12 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ToggleMethodStatic_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -59,7 +62,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String methodName = SPropertyOperations.getString(node, PROPS.name$tAp1);
-      return (SPropertyOperations.getBoolean(node, PROPS.isStatic$KaRv) ? "Make '" + methodName + "' not static" : "Make '" + methodName + "' static");
+      return (SPropertyOperations.getBoolean(node, PROPS.isStatic$KaRv) ? "Make '" + methodName + "' Not Static" : "Make '" + methodName + "' Static");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
@@ -77,6 +80,9 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
         }
       });
       SPropertyOperations.set(node, PROPS.isStatic$KaRv, !(oldStatic));
+      if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasBody_id10BRnhak8m8.invoke(node))) {
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$WIlu), LINKS.statement$WHn8)).clear();
+      }
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -93,5 +99,10 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
     /*package*/ static final SConcept ThisConceptExpression$T_ = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
     /*package*/ static final SConcept ThisNodeExpression$BO = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
     /*package*/ static final SConcept SuperConceptExpression$HR = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink body$WIlu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$WHn8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

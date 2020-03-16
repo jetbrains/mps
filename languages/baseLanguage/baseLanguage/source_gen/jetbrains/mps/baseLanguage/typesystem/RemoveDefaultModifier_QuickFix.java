@@ -19,7 +19,7 @@ public class RemoveDefaultModifier_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1557757632988467212"));
   }
   public String getDescription(SNode node) {
-    return "Remove the 'default' modifier";
+    return "Remove 'default' Modifier";
   }
   public void execute(SNode node) {
     ListSequence.fromList(SLinkOperations.getChildren(((SNode) RemoveDefaultModifier_QuickFix.this.getField("member")[0]), LINKS.modifiers$akE0)).where(new IWhereFilter<SNode>() {

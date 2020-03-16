@@ -5,9 +5,9 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
@@ -363,6 +363,12 @@
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
       <concept id="2217234381367188008" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocReference" flags="ng" index="VUqz4" />
+      <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
+        <child id="3106559687488741665" name="line" index="2Xj1qM" />
+      </concept>
+      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
+        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
+      </concept>
       <concept id="5562345046718956738" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseVariableDocReference" flags="ng" index="YTMYr">
         <reference id="5562345046718956740" name="declaration" index="YTMYt" />
       </concept>
@@ -3945,7 +3951,73 @@
   </node>
   <node concept="312cEu" id="6qGpHl7IHpK">
     <property role="TrG5h" value="HeadlessEditorComponent" />
+    <node concept="2tJIrI" id="nRWmC30WRE" role="jymVt" />
     <node concept="3clFbW" id="2qx2hw9gxhG" role="jymVt">
+      <node concept="P$JXv" id="nRWmC30Xhf" role="lGtFl">
+        <node concept="TZ5HA" id="nRWmC30Xhg" role="TZ5H$">
+          <node concept="1dT_AC" id="nRWmC30Xhh" role="1dT_Ay">
+            <property role="1dT_AB" value="Use " />
+          </node>
+          <node concept="1dT_AA" id="nRWmC30Xne" role="1dT_Ay">
+            <node concept="92FcH" id="nRWmC30XnE" role="qph3F">
+              <node concept="TZ5HA" id="nRWmC30XnH" role="2XjZqd" />
+              <node concept="VXe0Z" id="nRWmC31715" role="92FcQ">
+                <ref role="VXe0S" node="2iNJDZP2RE6" resolve="HeadlessEditorComponent" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="nRWmC30Xnd" role="1dT_Ay">
+            <property role="1dT_AB" value=" and " />
+          </node>
+          <node concept="1dT_AA" id="nRWmC3175Z" role="1dT_Ay">
+            <node concept="92FcH" id="nRWmC3176i" role="qph3F">
+              <node concept="TZ5HA" id="nRWmC3176k" role="2XjZqd" />
+              <node concept="VXe0Z" id="nRWmC317fN" role="92FcQ">
+                <ref role="VXe0S" to="exr9:~EditorComponent.editNode(org.jetbrains.mps.openapi.model.SNode)" resolve="editNode" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="nRWmC3175Y" role="1dT_Ay">
+            <property role="1dT_AB" value=" instead." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="nRWmC317ku" role="TZ5H$">
+          <node concept="1dT_AC" id="nRWmC317kv" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="nRWmC317l1" role="TZ5H$">
+          <node concept="1dT_AC" id="nRWmC317l2" role="1dT_Ay">
+            <property role="1dT_AB" value="Using this constructor defeats the purpose of " />
+          </node>
+          <node concept="1dT_AA" id="nRWmC317x0" role="1dT_Ay">
+            <node concept="92FcH" id="nRWmC317xe" role="qph3F">
+              <node concept="TZ5HA" id="nRWmC317xg" role="2XjZqd" />
+              <node concept="VXe0Z" id="nRWmC31jNw" role="92FcQ">
+                <ref role="VXe0S" to="cj4x:~EditorComponent.dispose()" resolve="dispose" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="nRWmC317wZ" role="1dT_Ay">
+            <property role="1dT_AB" value=" in try-finally blocks, since it makes impossible to dispose on exceptions thrown from " />
+          </node>
+          <node concept="1dT_AA" id="nRWmC31jRX" role="1dT_Ay">
+            <node concept="VVOAv" id="nRWmC31jSu" role="qph3F">
+              <node concept="TZ5HA" id="nRWmC31jSx" role="2Xj1qM">
+                <node concept="1dT_AC" id="nRWmC31jSI" role="1dT_Ay">
+                  <property role="1dT_AB" value="editNode" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="nRWmC31jRW" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="nRWmC30Wy3" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
       <node concept="37vLTG" id="1$3BPv3VYLL" role="3clF46">
         <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="1$3BPv3VYLM" role="1tU5fm" />
@@ -3988,6 +4060,43 @@
             <ref role="37wK5l" to="exr9:~EditorComponent.editNode(org.jetbrains.mps.openapi.model.SNode)" resolve="editNode" />
             <node concept="37vLTw" id="2qx2hw9g_4D" role="37wK5m">
               <ref role="3cqZAo" node="1$3BPv3VYLL" resolve="node" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="nRWmC30I78" role="jymVt" />
+    <node concept="3clFbW" id="2iNJDZP2RE6" role="jymVt">
+      <node concept="37vLTG" id="2iNJDZP2RE9" role="3clF46">
+        <property role="TrG5h" value="repository" />
+        <node concept="3uibUv" id="2iNJDZP2REa" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="2iNJDZP2REb" role="3clF45" />
+      <node concept="3Tm1VV" id="2iNJDZP2REc" role="1B3o_S" />
+      <node concept="3clFbS" id="2iNJDZP2REd" role="3clF47">
+        <node concept="XkiVB" id="2iNJDZP2REe" role="3cqZAp">
+          <ref role="37wK5l" to="exr9:~EditorComponent.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository,jetbrains.mps.nodeEditor.configuration.EditorConfiguration)" resolve="EditorComponent" />
+          <node concept="37vLTw" id="2iNJDZP2REf" role="37wK5m">
+            <ref role="3cqZAo" node="2iNJDZP2RE9" resolve="repository" />
+          </node>
+          <node concept="2OqwBi" id="2iNJDZP2REg" role="37wK5m">
+            <node concept="2OqwBi" id="2iNJDZP2REh" role="2Oq$k0">
+              <node concept="2ShNRf" id="2iNJDZP2REi" role="2Oq$k0">
+                <node concept="1pGfFk" id="2iNJDZP2REj" role="2ShVmc">
+                  <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.&lt;init&gt;()" resolve="EditorConfigurationBuilder" />
+                </node>
+              </node>
+              <node concept="liA8E" id="2iNJDZP2REk" role="2OqNvi">
+                <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.withUI(boolean)" resolve="withUI" />
+                <node concept="3clFbT" id="2iNJDZP2REl" role="37wK5m">
+                  <property role="3clFbU" value="false" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="2iNJDZP2REm" role="2OqNvi">
+              <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.build()" resolve="build" />
             </node>
           </node>
         </node>
