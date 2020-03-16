@@ -790,6 +790,15 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.textGen.FinallyClause_TextGen">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
+    <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.textGen.FloatType_TextGen">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
@@ -1655,6 +1664,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.ExpressionStatement_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.FieldDeclaration_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.FieldReferenceOperation_TextGen" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.FinallyClause_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.FloatType_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.FloatingPointConstant_TextGen" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.FloatingPointFloatConstant_TextGen" />
@@ -1826,6 +1836,7 @@
   <dependency className="jetbrains.mps.baseLanguage.textGen.TryUniversalStatement_TextGen">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />

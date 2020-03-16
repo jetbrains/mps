@@ -146,6 +146,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new FieldDeclaration_TextGen();
       case LanguageConceptSwitch.FieldReferenceOperation:
         return new FieldReferenceOperation_TextGen();
+      case LanguageConceptSwitch.FinallyClause:
+        return new FinallyClause_TextGen();
       case LanguageConceptSwitch.FloatType:
         return new FloatType_TextGen();
       case LanguageConceptSwitch.FloatingPointConstant:

@@ -5,8 +5,9 @@ package jetbrains.mps.baseLanguage.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -21,35 +22,33 @@ public class TryUniversalStatement_TextGen extends TextGenDescriptorBase {
     tgs.createPositionInfo();
     tgs.newLine();
     tgs.indent();
-    tgs.append("try (");
-    {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.resource$nWfw);
-      final SNode lastItem = Sequence.fromIterable(collection).last();
-      for (SNode item : collection) {
-        tgs.appendNode(item);
-        if (item != lastItem) {
-          tgs.append(";");
+    tgs.append("try");
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.resource$nWfw)).isNotEmpty()) {
+      tgs.append(" (");
+      {
+        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.resource$nWfw);
+        final SNode lastItem = Sequence.fromIterable(collection).last();
+        for (SNode item : collection) {
+          tgs.appendNode(item);
+          if (item != lastItem) {
+            tgs.append(";");
+          }
         }
       }
+      tgs.append(")");
     }
-    tgs.append(") {");
+    tgs.append(" {");
     ctx.getBuffer().area().increaseIndent();
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.body$4P0u));
     ctx.getBuffer().area().decreaseIndent();
     tgs.newLine();
+    tgs.indent();
+    tgs.append("}");
     for (SNode clause : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.catchClause$4PbB)) {
       tgs.appendNode(clause);
-      tgs.newLine();
     }
     if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.finallyBody$4P0X) != null)) {
-      tgs.indent();
-      tgs.append("} finally {");
-      ctx.getBuffer().area().increaseIndent();
       tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.finallyBody$4P0X));
-      ctx.getBuffer().area().decreaseIndent();
-      tgs.newLine();
-      tgs.indent();
-      tgs.append("}");
     }
     if (tgs.needPositions()) {
       tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.TraceableConcept$kK)));

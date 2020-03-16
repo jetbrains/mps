@@ -17,13 +17,15 @@ public class MultipleCatchClause_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createScopeInfo();
-    tgs.indent();
-    tgs.append("} catch (");
+    tgs.append(" catch (");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.throwable$pijh));
     tgs.append(") {");
     ctx.getBuffer().area().increaseIndent();
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.catchBody$pijK));
     ctx.getBuffer().area().decreaseIndent();
+    tgs.newLine();
+    tgs.indent();
+    tgs.append("}");
     if (tgs.needPositions()) {
       tgs.fillScopeInfo(ScopeConcept__BehaviorDescriptor.getScopeVariables_id4pl5GY7LKmA.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.ScopeConcept$kh)));
     }
