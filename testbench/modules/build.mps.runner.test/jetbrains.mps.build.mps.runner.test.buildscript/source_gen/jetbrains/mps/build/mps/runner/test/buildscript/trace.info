@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
+  <root nodeRef="r:1df60b02-4b01-4931-9ed0-efa7ab133a2f(jetbrains.mps.build.mps.runner.test.buildscript)/1101389554473443113">
+    <file name="testDummyPlugin.xml">
+      <unit id="1101389554473443113" at="1,0,334,10" name="jetbrains.mps.build.mps.runner.test.buildscript.testDummyPlugin" />
+    </file>
+  </root>
   <root nodeRef="r:1df60b02-4b01-4931-9ed0-efa7ab133a2f(jetbrains.mps.build.mps.runner.test.buildscript)/138593292063253314">
     <file name="test3.xml">
       <unit id="138593292063253314" at="1,0,332,10" name="jetbrains.mps.build.mps.runner.test.buildscript.test3" />

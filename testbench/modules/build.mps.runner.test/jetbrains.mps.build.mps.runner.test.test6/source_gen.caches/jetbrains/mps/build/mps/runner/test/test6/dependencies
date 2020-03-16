@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependenciesRoot>
+  <dependency className="jetbrains.mps.build.mps.runner.test.test6.MainClass">
+    <classNode dependClassName="com.intellij.ide.plugins.IdeaPluginDescriptor" />
+    <classNode dependClassName="com.intellij.ide.plugins.PluginManager" />
+    <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
+    <classNode dependClassName="com.intellij.openapi.util.registry.Registry" />
+    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="java.io.IOException" />
+    <classNode dependClassName="java.lang.RuntimeException" />
+    <classNode dependClassName="java.lang.System" />
+    <classNode dependClassName="jetbrains.mps.tool.environment.Environment" />
+  </dependency>
+</dependenciesRoot>
+
