@@ -19319,15 +19319,17 @@
             <node concept="3YRAZt" id="2B7XHzxarH" role="2OqNvi" />
           </node>
         </node>
-        <node concept="3clFbF" id="2B7XHzxarI" role="3cqZAp">
-          <node concept="2OqwBi" id="2B7XHzxarJ" role="3clFbG">
-            <node concept="liA8E" id="2B7XHzxarK" role="2OqNvi">
-              <ref role="37wK5l" to="cj4x:~EditorContext.selectWRTFocusPolicy(org.jetbrains.mps.openapi.model.SNode)" resolve="selectWRTFocusPolicy" />
-              <node concept="37vLTw" id="2B7XHzxbPf" role="37wK5m">
-                <ref role="3cqZAo" node="2B7XHzwNtV" resolve="method" />
+        <node concept="3clFbF" id="1UCiTOPQzQD" role="3cqZAp">
+          <node concept="2OqwBi" id="1UCiTOPQzQE" role="3clFbG">
+            <node concept="37vLTw" id="1UCiTOPScW7" role="2Oq$k0">
+              <ref role="3cqZAo" node="2B7XHzwNtV" resolve="method" />
+            </node>
+            <node concept="1OKiuA" id="1UCiTOPQzQG" role="2OqNvi">
+              <node concept="1XNTG" id="1UCiTOPQzQH" role="lBI5i" />
+              <node concept="2TlHUq" id="1UCiTOPQzQI" role="lGT1i">
+                <ref role="2TlMyj" to="tpen:fNOVZ6LJDM" resolve="methodName" />
               </node>
             </node>
-            <node concept="1XNTG" id="2B7XHzxarM" role="2Oq$k0" />
           </node>
         </node>
       </node>
@@ -27054,6 +27056,17 @@
                   </node>
                   <node concept="WFELt" id="4c$BrPw$Dg1" role="2OqNvi">
                     <ref role="1A0vxQ" to="tpee:43H3v3JgacM" resolve="DefaultModifier" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="1UCiTOPN0W1" role="3cqZAp">
+                <node concept="2OqwBi" id="1UCiTOPN1Ac" role="3clFbG">
+                  <node concept="2Sf5sV" id="1UCiTOPN0W0" role="2Oq$k0" />
+                  <node concept="1OKiuA" id="1UCiTOPN3p1" role="2OqNvi">
+                    <node concept="1XNTG" id="1UCiTOPN3wr" role="lBI5i" />
+                    <node concept="2TlHUq" id="1UCiTOPN3F_" role="lGT1i">
+                      <ref role="2TlMyj" to="tpen:fNOVZ6LJDM" resolve="methodName" />
+                    </node>
                   </node>
                 </node>
               </node>

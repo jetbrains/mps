@@ -17,6 +17,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -79,6 +80,7 @@ public final class ToggleMethodDefault_Intention extends AbstractIntentionDescri
         }
       } else {
         SLinkOperations.addNewChild(node, LINKS.modifiers$akE0, CONCEPTS.DefaultModifier$Z2);
+        SelectionUtil.selectCell(editorContext, node, "methodName");
       }
     }
     @Override
