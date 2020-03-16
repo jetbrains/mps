@@ -61,6 +61,7 @@
     <import index="qyr2" ref="r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
+    <import index="24bc" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.vfs.tracking(MPS.Platform/)" />
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" implicit="true" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
@@ -126,7 +127,7 @@
       <concept id="1562714432501166197" name="jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration" flags="ng" index="Zd50a">
         <child id="1562714432501166199" name="shortcutChange" index="Zd508" />
       </concept>
-      <concept id="6193305307616715384" name="jetbrains.mps.lang.plugin.structure.ShortcutChange" flags="lg" index="1bYyw_">
+      <concept id="6193305307616715384" name="jetbrains.mps.lang.plugin.structure.ShortcutChange" flags="ng" index="1bYyw_">
         <reference id="6193305307616734326" name="action" index="1bYAoF" />
       </concept>
       <concept id="5678361901872075170" name="jetbrains.mps.lang.plugin.structure.EditableModel" flags="ng" index="3dZWAM" />
@@ -1595,7 +1596,7 @@
                 </node>
                 <node concept="2ShNRf" id="wriWL6UBOl" role="HW$Y0">
                   <node concept="1pGfFk" id="wriWL6V4wv" role="2ShVmc">
-                    <ref role="37wK5l" to="qyr2:IOaVVgtyks" resolve="ModelDiffContent" />
+                    <ref role="37wK5l" to="24bc:~ModelDiffContent.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelDiffContent" />
                     <node concept="37vLTw" id="wriWL6V$3y" role="37wK5m">
                       <ref role="3cqZAo" node="6z2l4wacpgX" resolve="diskModel" />
                     </node>
@@ -1603,7 +1604,7 @@
                 </node>
                 <node concept="2ShNRf" id="wriWL6V6ss" role="HW$Y0">
                   <node concept="1pGfFk" id="wriWL6Va4l" role="2ShVmc">
-                    <ref role="37wK5l" to="qyr2:IOaVVgtyks" resolve="ModelDiffContent" />
+                    <ref role="37wK5l" to="24bc:~ModelDiffContent.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelDiffContent" />
                     <node concept="2OqwBi" id="wriWL6V$ly" role="37wK5m">
                       <node concept="2WthIp" id="wriWL6V$l_" role="2Oq$k0" />
                       <node concept="1DTwFV" id="wriWL6V$lB" role="2OqNvi">
@@ -3258,7 +3259,7 @@
                           </node>
                           <node concept="2ShNRf" id="wriWL6WtgV" role="10QFUP">
                             <node concept="1pGfFk" id="wriWL6Wulw" role="2ShVmc">
-                              <ref role="37wK5l" to="qyr2:IOaVVgtyks" resolve="ModelDiffContent" />
+                              <ref role="37wK5l" to="24bc:~ModelDiffContent.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelDiffContent" />
                               <node concept="37vLTw" id="wriWL6Wu_X" role="37wK5m">
                                 <ref role="3cqZAo" node="wriWL6Wsy4" resolve="model" />
                               </node>

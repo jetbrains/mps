@@ -41,14 +41,16 @@ public class FSChangesWatcher implements ApplicationComponent {
     public void beforeRefreshStart(boolean async) {
       myReloadManager.suspendReloads();
     }
+
     @Override
     public void afterRefreshFinish(boolean async) {
       myReloadManager.resumeReloads();
-      if (!async) {
+      if (!(async)) {
         myReloadManager.flush();
       }
     }
   };
+
   private MessageBusConnection myConnection;
   private BulkFileListener myBusListener = new BulkFileChangesListener();
   private final ReloadManagerComponent myReloadManager;
