@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,6 +68,7 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.environment.MpsEnvironmentTest.class,
     jetbrains.mps.repo.RepoListenerTest.class,
     jetbrains.mps.java.stub.StubModelLazyLoadStressTest.class,
+    jetbrains.mps.java.stub.JavaClassAnnotationValueTest.class,
     jetbrains.mps.classloading.ProjectMPSFacetCorrectnessTest.class,
     jetbrains.mps.workbench.ProjectOpenCloseTest.class,
     jetbrains.mps.nodeEditor.EditorTestSuite.class
