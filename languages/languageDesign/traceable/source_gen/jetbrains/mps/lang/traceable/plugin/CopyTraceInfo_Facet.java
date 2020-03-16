@@ -90,7 +90,7 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
                   }
 
                   final IFile destination = facet.getClassesLocation(tres.modelDescriptor());
-                  if (!(destination.exists())) {
+                  if (destination != null && !(destination.exists())) {
                     ListSequence.fromList(toCreate).addElement(destination);
                   }
                   Sequence.fromIterable(tres.delta()).visitAll(new IVisitor<IDelta>() {
