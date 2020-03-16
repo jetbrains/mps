@@ -18,9 +18,6 @@
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
@@ -42,12 +39,6 @@
         <child id="3887139083693416947" name="postProcessFunction" index="3xT8ml" />
       </concept>
     </language>
-    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
-      <concept id="6332851714983831325" name="jetbrains.mps.baseLanguage.logging.structure.MsgStatement" flags="ng" index="2xdQw9">
-        <property id="6332851714983843871" name="severity" index="2xdLsb" />
-        <child id="5721587534047265374" name="message" index="9lYJi" />
-      </concept>
-    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
     </language>
@@ -63,12 +54,6 @@
       <ref role="1JFXUq" to="zqge:8D0iRqSPW4" resolve="Word" />
       <node concept="1JFUiI" id="64R8dmEY4$s" role="3xT8ml">
         <node concept="3clFbS" id="64R8dmEY4$t" role="2VODD2">
-          <node concept="2xdQw9" id="64R8dmEY6zc" role="3cqZAp">
-            <property role="2xdLsb" value="gZ5fksE/warn" />
-            <node concept="Xl_RD" id="64R8dmEY6ze" role="9lYJi">
-              <property role="Xl_RC" value="AAAAAAAAAAAAAA" />
-            </node>
-          </node>
           <node concept="3clFbF" id="64R8dmEY4_w" role="3cqZAp">
             <node concept="2OqwBi" id="64R8dmEY56Z" role="3clFbG">
               <node concept="1JFAaq" id="64R8dmEY4_v" role="2Oq$k0" />

@@ -3755,6 +3755,9 @@
     <node concept="PrWs8" id="4vRPkgg2YBr" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
+    <node concept="PrWs8" id="6GJhO0n2uM8" role="PzmwI">
+      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
+    </node>
     <node concept="PrWs8" id="ANVkWUkoi1" role="PzmwI">
       <ref role="PrY4T" to="tpck:3$Sh7m_tmYK" resolve="IOldCommentContainer" />
     </node>
@@ -4620,6 +4623,9 @@
     <ref role="1TJDcQ" node="fzclF8l" resolve="Statement" />
     <node concept="PrWs8" id="1w9VmqdQGnn" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+    <node concept="PrWs8" id="6GJhO0n5TBr" role="PzmwI">
+      <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
     </node>
     <node concept="1TJgyj" id="1w9VmqdQGu9" role="1TKVEi">
       <property role="IQ2ns" value="1732176556423038857" />

@@ -51,6 +51,7 @@
     <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" />
+    <import index="vdrq" ref="r:85354f47-14fd-40e6-a7cc-2d1aa842c4cd(jetbrains.mps.lang.text.behavior)" />
     <import index="356a" ref="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)" implicit="true" />
     <import index="bzl4" ref="r:9d0684e9-039f-4e88-b824-947b454f70f2(jetbrains.mps.baseLanguage.javadoc.behavior)" implicit="true" />
   </imports>
@@ -48848,6 +48849,31 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="6GJhO0n2KlM" role="13h7CS">
+      <property role="TrG5h" value="getLines" />
+      <ref role="13i0hy" to="vdrq:6GJhO0n1Xys" resolve="getLines" />
+      <node concept="3Tm1VV" id="6GJhO0n2KlN" role="1B3o_S" />
+      <node concept="3clFbS" id="6GJhO0n2KlQ" role="3clF47">
+        <node concept="3clFbF" id="6GJhO0n2R0N" role="3cqZAp">
+          <node concept="2ShNRf" id="6GJhO0n2R0J" role="3clFbG">
+            <node concept="Tc6Ow" id="6GJhO0n2T0_" role="2ShVmc">
+              <node concept="3Tqbb2" id="6GJhO0n2TAi" role="HW$YZ">
+                <ref role="ehGHo" to="zqge:2cLqkTm6J5A" resolve="Line" />
+              </node>
+              <node concept="2OqwBi" id="6GJhO0n2TX8" role="HW$Y0">
+                <node concept="13iPFW" id="6GJhO0n2TGE" role="2Oq$k0" />
+                <node concept="3TrEf2" id="6GJhO0n2UfN" role="2OqNvi">
+                  <ref role="3Tt5mk" to="tpee:7fQBo8T7qsS" resolve="line" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2I9FWS" id="6GJhO0n2KlR" role="3clF45">
+        <ref role="2I9WkF" to="zqge:2cLqkTm6J5A" resolve="Line" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="3JrbGEZ6KoW">
     <property role="3GE5qa" value="control_flow.if_switch" />
@@ -76010,6 +76036,24 @@
             <property role="3clFbU" value="false" />
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="13i0hz" id="6GJhO0n5WRE" role="13h7CS">
+      <property role="TrG5h" value="getLines" />
+      <ref role="13i0hy" to="vdrq:6GJhO0n1Xys" resolve="getLines" />
+      <node concept="3Tm1VV" id="6GJhO0n5WRF" role="1B3o_S" />
+      <node concept="3clFbS" id="6GJhO0n5WRI" role="3clF47">
+        <node concept="3clFbF" id="6GJhO0n6065" role="3cqZAp">
+          <node concept="2OqwBi" id="6GJhO0n60jM" role="3clFbG">
+            <node concept="13iPFW" id="6GJhO0n6064" role="2Oq$k0" />
+            <node concept="3Tsc0h" id="6GJhO0n60__" role="2OqNvi">
+              <ref role="3TtcxE" to="tpee:1w9VmqdQGu9" resolve="lines" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2I9FWS" id="6GJhO0n5WRJ" role="3clF45">
+        <ref role="2I9WkF" to="zqge:2cLqkTm6J5A" resolve="Line" />
       </node>
     </node>
   </node>
