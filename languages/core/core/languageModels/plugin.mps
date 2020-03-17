@@ -8,7 +8,7 @@
     <use id="c0080a47-7e37-4558-bee9-9ae18e690549" name="jetbrains.mps.lang.extension" version="-1" />
     <use id="696c1165-4a59-463b-bc5d-902caab85dd0" name="jetbrains.mps.make.facet" version="-1" />
     <use id="95f8a3e6-f994-4ca0-a65e-763c9bae2d3b" name="jetbrains.mps.make.script" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
   </languages>
   <imports>
@@ -4672,20 +4672,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="1wplmZ" id="xvs04dFHn9" role="1zxBo6">
-                <node concept="3clFbS" id="BfgvErhJjW" role="1wplMD">
-                  <node concept="3clFbF" id="BfgvErhJGa" role="3cqZAp">
-                    <node concept="2OqwBi" id="BfgvErhJGy" role="3clFbG">
-                      <node concept="37vLTw" id="BfgvErhJG9" role="2Oq$k0">
-                        <ref role="3cqZAo" node="BfgvErhHeY" resolve="tgEngine" />
-                      </node>
-                      <node concept="liA8E" id="BfgvErhJMl" role="2OqNvi">
-                        <ref role="37wK5l" to="ao3:~TextGeneratorEngine.shutdown()" resolve="shutdown" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="3uVAMA" id="BfgvEri64p" role="1zxBo5">
                 <node concept="XOnhg" id="BfgvEri64r" role="1zc67B">
                   <property role="3TUv4t" value="false" />
@@ -4720,6 +4706,20 @@
                     <property role="1daRAr" value="3bEKrlZKrwH/ERROR" />
                     <node concept="Xl_RD" id="BfgvEri6Fp" role="1daK9t">
                       <property role="Xl_RC" value="TextGen interrupted" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1wplmZ" id="xvs04dFHn9" role="1zxBo6">
+                <node concept="3clFbS" id="BfgvErhJjW" role="1wplMD">
+                  <node concept="3clFbF" id="BfgvErhJGa" role="3cqZAp">
+                    <node concept="2OqwBi" id="BfgvErhJGy" role="3clFbG">
+                      <node concept="37vLTw" id="BfgvErhJG9" role="2Oq$k0">
+                        <ref role="3cqZAo" node="BfgvErhHeY" resolve="tgEngine" />
+                      </node>
+                      <node concept="liA8E" id="BfgvErhJMl" role="2OqNvi">
+                        <ref role="37wK5l" to="ao3:~TextGeneratorEngine.shutdown()" resolve="shutdown" />
+                      </node>
                     </node>
                   </node>
                 </node>

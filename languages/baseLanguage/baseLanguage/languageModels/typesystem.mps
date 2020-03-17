@@ -7,7 +7,7 @@
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="-1" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
@@ -58723,15 +58723,15 @@
           </node>
         </node>
         <node concept="3fqX7Q" id="2n6RfgDZvyj" role="3clFbw">
-          <node concept="2OqwBi" id="2n6RfgDZvyk" role="3fr31v">
-            <node concept="37vLTw" id="2n6RfgDZvyl" role="2Oq$k0">
-              <ref role="3cqZAo" node="2n6RfgDZvy3" resolve="languageLevel" />
+          <node concept="2OqwBi" id="6O4vja3SW5a" role="3fr31v">
+            <node concept="Rm8GO" id="2n6RfgDZvyn" role="2Oq$k0">
+              <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+              <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
             </node>
-            <node concept="liA8E" id="2n6RfgDZvym" role="2OqNvi">
-              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
-              <node concept="Rm8GO" id="2n6RfgDZvyn" role="37wK5m">
-                <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
-                <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+            <node concept="liA8E" id="6O4vja3SWd8" role="2OqNvi">
+              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
+              <node concept="37vLTw" id="6O4vja3SWih" role="37wK5m">
+                <ref role="3cqZAo" node="2n6RfgDZvy3" resolve="languageLevel" />
               </node>
             </node>
           </node>
@@ -65656,15 +65656,15 @@
           </node>
         </node>
         <node concept="3fqX7Q" id="2n6RfgDZ$0M" role="3clFbw">
-          <node concept="2OqwBi" id="2n6RfgDZ$0N" role="3fr31v">
-            <node concept="37vLTw" id="2n6RfgDZ$0O" role="2Oq$k0">
-              <ref role="3cqZAo" node="2n6RfgDZ$0y" resolve="languageLevel" />
+          <node concept="2OqwBi" id="6O4vja3SWVb" role="3fr31v">
+            <node concept="Rm8GO" id="6O4vja3SWVc" role="2Oq$k0">
+              <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+              <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
             </node>
-            <node concept="liA8E" id="2n6RfgDZ$0P" role="2OqNvi">
-              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
-              <node concept="Rm8GO" id="2n6RfgDZ$0Q" role="37wK5m">
-                <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-                <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+            <node concept="liA8E" id="6O4vja3SWVd" role="2OqNvi">
+              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
+              <node concept="37vLTw" id="6O4vja3SWVe" role="37wK5m">
+                <ref role="3cqZAo" node="2n6RfgDZ$0y" resolve="languageLevel" />
               </node>
             </node>
           </node>
@@ -73535,15 +73535,15 @@
           </node>
         </node>
         <node concept="3fqX7Q" id="uD1GcGTXRR" role="3clFbw">
-          <node concept="2OqwBi" id="7btLLcgYCc7" role="3fr31v">
-            <node concept="37vLTw" id="uD1GcGTYk0" role="2Oq$k0">
-              <ref role="3cqZAo" node="uD1GcGTYjU" resolve="languageLevel" />
+          <node concept="2OqwBi" id="6O4vja3SUsI" role="3fr31v">
+            <node concept="Rm8GO" id="7btLLcgYCce" role="2Oq$k0">
+              <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+              <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
             </node>
-            <node concept="liA8E" id="7btLLcgYCcd" role="2OqNvi">
-              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
-              <node concept="Rm8GO" id="7btLLcgYCce" role="37wK5m">
-                <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-                <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
+            <node concept="liA8E" id="6O4vja3SV0a" role="2OqNvi">
+              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
+              <node concept="37vLTw" id="6O4vja3SVji" role="37wK5m">
+                <ref role="3cqZAo" node="uD1GcGTYjU" resolve="languageLevel" />
               </node>
             </node>
           </node>
@@ -73602,15 +73602,15 @@
           </node>
         </node>
         <node concept="3fqX7Q" id="2n6RfgDZI$8" role="3clFbw">
-          <node concept="2OqwBi" id="2n6RfgDZI$9" role="3fr31v">
-            <node concept="37vLTw" id="2n6RfgDZI$a" role="2Oq$k0">
-              <ref role="3cqZAo" node="2n6RfgDZIzS" resolve="languageLevel" />
+          <node concept="2OqwBi" id="6O4vja3SX3n" role="3fr31v">
+            <node concept="Rm8GO" id="6O4vja3SX3o" role="2Oq$k0">
+              <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+              <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
             </node>
-            <node concept="liA8E" id="2n6RfgDZI$b" role="2OqNvi">
-              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.isAtLeast(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="isAtLeast" />
-              <node concept="Rm8GO" id="2n6RfgDZI$c" role="37wK5m">
-                <ref role="Rm8GQ" to="b0pz:~JavaLanguageLevel.JAVA_8" resolve="JAVA_8" />
-                <ref role="1Px2BO" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
+            <node concept="liA8E" id="6O4vja3SX3p" role="2OqNvi">
+              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.covers(jetbrains.mps.project.facets.JavaLanguageLevel)" resolve="covers" />
+              <node concept="37vLTw" id="6O4vja3SX3q" role="37wK5m">
+                <ref role="3cqZAo" node="2n6RfgDZIzS" resolve="languageLevel" />
               </node>
             </node>
           </node>

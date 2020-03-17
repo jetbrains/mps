@@ -121,7 +121,7 @@ public class SolutionDescriptorPersistence {
       result.setAttribute(PLUGIN_KIND, descriptor.getKind().name());
     }
     result.setAttribute(COMPILE_IN_MPS, Boolean.toString(descriptor.getCompileInMPS()));
-    if (descriptor.getJavaLanguageLevel() != JavaLanguageLevel.getDefault()) {
+    if (descriptor.getJavaLanguageLevel() != null) {
       result.setAttribute(JAVA_LANGUAGE_LEVEL, descriptor.getJavaLanguageLevel().name());
     }
     if (descriptor.getOutputPath() != null) {

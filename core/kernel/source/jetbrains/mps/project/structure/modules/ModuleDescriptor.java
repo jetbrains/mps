@@ -140,9 +140,9 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return false;
   }
 
-  @NotNull
+  @Nullable
   public JavaLanguageLevel getJavaLanguageLevel() {
-    return JavaLanguageLevel.getDefault();
+    return null;
   }
 
   public void setNeedsExternalIdeaCompile(boolean value) {

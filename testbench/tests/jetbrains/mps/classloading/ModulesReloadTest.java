@@ -552,7 +552,7 @@ public class ModulesReloadTest extends ModuleMpsTest {
 
     @Override
     public JavaLanguageLevel getLanguageLevel() {
-      return JavaLanguageLevel.getDefault();
+      return JavaLanguageLevel.getDefault(true);
     }
 
     @Override

@@ -5,7 +5,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="-1" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="9ded098b-ad6a-4657-bfd9-48636cfe8bc3" name="jetbrains.mps.lang.traceable" version="-1" />
@@ -36,6 +36,7 @@
     <import index="9eha" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.annotations(MPS.Core/)" />
     <import index="gp7a" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.dependency(MPS.Core/)" />
     <import index="i290" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.java.stub(MPS.Core/)" />
+    <import index="l46t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.compiler(MPS.Core/)" />
     <import index="356a" ref="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)" implicit="true" />
     <import index="if8w" ref="r:95397225-9080-48bc-b1aa-0ce7c4f3d2ce(jetbrains.mps.lang.traceable.behavior)" implicit="true" />
   </imports>
@@ -2927,51 +2928,28 @@
       </node>
       <node concept="3Tm1VV" id="uD1GcGTtSE" role="1B3o_S" />
       <node concept="3clFbS" id="uD1GcGTtSF" role="3clF47">
-        <node concept="3cpWs8" id="uD1GcGTtSG" role="3cqZAp">
-          <node concept="3cpWsn" id="uD1GcGTtSH" role="3cpWs9">
-            <property role="TrG5h" value="moduleLevel" />
-            <node concept="3uibUv" id="uD1GcGTtSI" role="1tU5fm">
-              <ref role="3uigEE" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-            </node>
-            <node concept="2EnYce" id="uD1GcGTtSJ" role="33vP2m">
-              <node concept="2EnYce" id="uD1GcGTtSK" role="2Oq$k0">
-                <node concept="2EnYce" id="uD1GcGTtSL" role="2Oq$k0">
-                  <node concept="2JrnkZ" id="uD1GcGTtSN" role="2Oq$k0">
-                    <node concept="37vLTw" id="uD1GcGTtSO" role="2JrQYb">
-                      <ref role="3cqZAo" node="uD1GcGTtT1" resolve="contextModel" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="uD1GcGTtSQ" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="uD1GcGTtSR" role="2OqNvi">
-                  <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
-                  <node concept="3VsKOn" id="uD1GcGTtSS" role="37wK5m">
-                    <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
-                  </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="uD1GcGTtST" role="2OqNvi">
-                <ref role="37wK5l" to="b0pz:~JavaModuleFacet.getLanguageLevel()" resolve="getLanguageLevel" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="uD1GcGTtSU" role="3cqZAp">
-          <node concept="3K4zz7" id="uD1GcGTtSV" role="3cqZAk">
-            <node concept="2YIFZM" id="uD1GcGTtSW" role="3K4E3e">
-              <ref role="37wK5l" to="b0pz:~JavaLanguageLevel.getDefault()" resolve="getDefault" />
-              <ref role="1Pybhc" to="b0pz:~JavaLanguageLevel" resolve="JavaLanguageLevel" />
-            </node>
-            <node concept="37vLTw" id="uD1GcGTtSX" role="3K4GZi">
-              <ref role="3cqZAo" node="uD1GcGTtSH" resolve="moduleLevel" />
-            </node>
-            <node concept="3clFbC" id="uD1GcGTtSY" role="3K4Cdx">
-              <node concept="10Nm6u" id="uD1GcGTtSZ" role="3uHU7w" />
-              <node concept="37vLTw" id="uD1GcGTtT0" role="3uHU7B">
-                <ref role="3cqZAo" node="uD1GcGTtSH" resolve="moduleLevel" />
+          <node concept="2EnYce" id="uD1GcGTtSJ" role="3cqZAk">
+            <node concept="2EnYce" id="uD1GcGTtSK" role="2Oq$k0">
+              <node concept="2EnYce" id="uD1GcGTtSL" role="2Oq$k0">
+                <node concept="2JrnkZ" id="uD1GcGTtSN" role="2Oq$k0">
+                  <node concept="37vLTw" id="uD1GcGTtSO" role="2JrQYb">
+                    <ref role="3cqZAo" node="uD1GcGTtT1" resolve="contextModel" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="uD1GcGTtSQ" role="2OqNvi">
+                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                </node>
               </node>
+              <node concept="liA8E" id="uD1GcGTtSR" role="2OqNvi">
+                <ref role="37wK5l" to="lui2:~SModule.getFacet(java.lang.Class)" resolve="getFacet" />
+                <node concept="3VsKOn" id="uD1GcGTtSS" role="37wK5m">
+                  <ref role="3VsUkX" to="b0pz:~JavaModuleFacet" resolve="JavaModuleFacet" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="uD1GcGTtST" role="2OqNvi">
+              <ref role="37wK5l" to="b0pz:~JavaModuleFacet.getLanguageLevel()" resolve="getLanguageLevel" />
             </node>
           </node>
         </node>

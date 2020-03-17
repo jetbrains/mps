@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.project.facets;
 
+import org.jetbrains.annotations.Nullable;
+
 public enum JavaLanguageLevel {
   JAVA_7(7, ""),
   JAVA_8(8," - default and static interface methods"),
@@ -22,7 +24,11 @@ public enum JavaLanguageLevel {
   JAVA_10(10," - local variable type inference");
 
   public static JavaLanguageLevel getDefault() {
-    return JAVA_10;
+    return getDefault(true);
+  }
+
+  public static JavaLanguageLevel getDefault(boolean compileInMPS) {
+    return compileInMPS ? JAVA_8 : JAVA_10;
   }
 
   private final int myLevel;
@@ -35,7 +41,7 @@ public enum JavaLanguageLevel {
     return getFullDescription();
   }
   public String getFullDescription() {
-    return "Java " + myLevel + myDescription + (this == getDefault() ? " (default)" : "");
+    return "Java " + myLevel + myDescription;
   }
   public String getCompactDescription() {
     return "Java " + myLevel;
@@ -45,5 +51,8 @@ public enum JavaLanguageLevel {
   }
   public boolean isAtLeast(JavaLanguageLevel threshold) {
     return this.getLevel() >= threshold.getLevel();
+  }
+  public boolean covers(@Nullable JavaLanguageLevel found) {
+    return found == null || this.getLevel() <= found.getLevel();
   }
 }

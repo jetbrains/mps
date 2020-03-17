@@ -45,8 +45,7 @@ public class BaseLanguageEnvironmentHelper {
     return getLanguageLevel(SNodeOperations.getModel(contextNode));
   }
   public JavaLanguageLevel getLanguageLevel(SModel contextModel) {
-    JavaLanguageLevel moduleLevel = check_sif9ng_a0a0c(check_sif9ng_a0a0a2(check_sif9ng_a0a0a0c(contextModel)));
-    return (moduleLevel == null ? JavaLanguageLevel.getDefault() : moduleLevel);
+    return check_sif9ng_a0a2(check_sif9ng_a0a0c(check_sif9ng_a0a0a2(contextModel)));
   }
 
   public List<SNode> findStubClassifiers(SNode nodeClassifier) {
@@ -121,19 +120,19 @@ public class BaseLanguageEnvironmentHelper {
     return result;
   }
 
-  private static JavaLanguageLevel check_sif9ng_a0a0c(JavaModuleFacet checkedDotOperand) {
+  private static JavaLanguageLevel check_sif9ng_a0a2(JavaModuleFacet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getLanguageLevel();
     }
     return null;
   }
-  private static JavaModuleFacet check_sif9ng_a0a0a2(SModule checkedDotOperand) {
+  private static JavaModuleFacet check_sif9ng_a0a0c(SModule checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getFacet(JavaModuleFacet.class);
     }
     return null;
   }
-  private static SModule check_sif9ng_a0a0a0c(SModel checkedDotOperand) {
+  private static SModule check_sif9ng_a0a0a2(SModel checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModule();
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="6kizfqdbq8t1el2qwam4ofrkyx1y95l">
+<product version="3" modelHash="-41sxxskmqq7ykrwbtpv04wzh6azsx25">
   <files names="Actions_ApplicationPlugin.java:FindByConditionGroup_ActionGroup.java:FindInstancesByCondition_Action.java:ModifyInstancesByCondition_Action.java:ShowGenerationPlan_Action.java:TextPreviewGroup_Console_ActionGroup.java" />
 </product>
 

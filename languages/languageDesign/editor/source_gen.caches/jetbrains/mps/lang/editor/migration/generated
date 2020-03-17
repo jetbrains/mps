@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-euzzac74avzm8ivm23537u48x7eso0d">
+<product version="3" modelHash="-a98reu3y44g3qbidbarya3kbmu0h58x">
   <files names="DependentModulesUtil.java:MigrateEnumPropertyUsages.java:Migrate_ExplicitMenuForSmartReferences.java:Migrate_InlineReferencePresentations.java:Migrate_MergeNamedAndDefaultMenus.java:Migrate_ReplaceChild_Params.java:Migrate_SCAPartsForSmartReferences.java:MigrationDescriptor.java:RefPresentationFunctionUtil.java:RefScopeFactories.java:RemoveCellModelCollectionDeprecatedProps.java" />
 </product>
 

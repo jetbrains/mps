@@ -6,7 +6,7 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="10" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -339,14 +339,14 @@
       <node concept="3F0ifn" id="4RXh7QRr0Gl" role="3EZMnx">
         <property role="3F0ifm" value="." />
         <ref role="1k5W1q" to="tpen:hFDnyG9" resolve="Dot" />
-        <ref role="1ERwB7" to="tpen:6LG$uYA2eFu" resolve="StaticFieldReference_DeleteDot" />
+        <ref role="1ERwB7" to="tpen:6LG$uYA2eFu" resolve="StaticFieldReference_DeleteToDot" />
       </node>
       <node concept="3EZMnI" id="4ZFm$8SR8Uw" role="3EZMnx">
         <node concept="l2Vlx" id="4ZFm$8SR8Ux" role="2iSdaV" />
         <node concept="1iCGBv" id="4RXh7QRr0Gm" role="3EZMnx">
           <property role="1$x2rV" value="&lt;no static member&gt;" />
           <ref role="1NtTu8" to="tpee:f_2Pw7K" resolve="staticFieldDeclaration" />
-          <ref role="1ERwB7" to="tpen:6LG$uYA2eFu" resolve="StaticFieldReference_DeleteDot" />
+          <ref role="1ERwB7" to="tpen:6LG$uYA2eFu" resolve="StaticFieldReference_DeleteToDot" />
           <node concept="1sVBvm" id="4RXh7QRr0Gn" role="1sWHZn">
             <node concept="3F0A7n" id="4RXh7QRr0Go" role="2wV5jI">
               <property role="1Intyy" value="true" />

@@ -63,7 +63,7 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
 
   @Override
   public JavaLanguageLevel getLanguageLevel() {
-    return JavaLanguageLevel.getDefault();
+    return JavaLanguageLevel.getDefault(true);
   }
 
   @Nullable

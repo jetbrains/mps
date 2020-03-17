@@ -19,6 +19,7 @@ import jetbrains.mps.project.facets.JavaLanguageLevel;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 
@@ -28,7 +29,8 @@ public class SolutionDescriptor extends ModuleDescriptor {
   private boolean myCompileInMPS = true;
   private boolean myRequestCompileIDEA = false;
   private boolean myReadOnlyStubModule = false;
-  private JavaLanguageLevel myJavaLanguageLevel = JavaLanguageLevel.getDefault();
+  @Nullable
+  private JavaLanguageLevel myJavaLanguageLevel = null;
 
   public final String getOutputPath() {
     return myOutputPath;
@@ -57,7 +59,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
   }
 
   @Override
-  @NotNull
+  @Nullable
   public JavaLanguageLevel getJavaLanguageLevel() {
     return myJavaLanguageLevel;
   }
@@ -75,7 +77,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
     myCompileInMPS = compileInMPS;
   }
 
-  public final void setJavaLanguageLevel(@NotNull JavaLanguageLevel level) {
+  public final void setJavaLanguageLevel(@Nullable JavaLanguageLevel level) {
     myJavaLanguageLevel = level;
   }
 
@@ -99,7 +101,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
     stream.writeString(myKind.name());
     stream.writeBoolean(myCompileInMPS);
     stream.writeBoolean(myRequestCompileIDEA);
-    stream.writeString(myJavaLanguageLevel.name());
+    stream.writeString(myJavaLanguageLevel == null ? "" : myJavaLanguageLevel.name());
   }
 
   @Override
@@ -109,7 +111,8 @@ public class SolutionDescriptor extends ModuleDescriptor {
     myKind = SolutionKind.valueOf(stream.readString());
     myCompileInMPS = stream.readBoolean();
     myRequestCompileIDEA = stream.readBoolean();
-    myJavaLanguageLevel = JavaLanguageLevel.valueOf(stream.readString());
+    String languageLevel = stream.readString();
+    myJavaLanguageLevel = languageLevel.isEmpty() ? null : JavaLanguageLevel.valueOf(languageLevel);
   }
 
   @Override
