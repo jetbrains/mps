@@ -12,8 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:7cb72aee-d3e2-47e9-9964-3abda6a73a9a(jetbrains.mps.make.service)/2298333944697014852">
     <file name="AbstractMakeService.java">
       <node id="4671800353872906334" at="26,93,27,76" concept="8" />
@@ -150,7 +149,7 @@
       <node id="1278023359872642248" at="132,18,138,9" concept="5" />
       <node id="4634869729621226779" at="89,0,96,11" concept="5" />
       <node id="4634869729621226870" at="103,89,110,11" concept="5" />
-      <node id="7800382253417727286" at="53,53,62,5" concept="13" />
+      <node id="7800382253417727286" at="53,53,62,5" concept="12" />
       <node id="4634869729621189845" at="78,67,88,11" concept="5" />
       <node id="7184932954667865582" at="53,0,64,0" concept="6" trace="run#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
       <node id="2298333944697014007" at="155,30,166,5" concept="5" />
@@ -158,15 +157,12 @@
       <node id="2298333944697014003" at="155,0,168,0" concept="6" trace="reconcile#()V" />
       <node id="4634869729621182189" at="77,0,117,0" concept="6" trace="invoke#(Ljetbrains/mps/make/script/IScript;Ljava/lang/Iterable;)Ljava/lang/Boolean;" />
       <node id="4634869729620919683" at="75,53,117,9" concept="2" />
-      <node id="7480932071789363674" at="73,30,146,5" concept="13" />
+      <node id="7480932071789363674" at="73,30,146,5" concept="12" />
       <node id="2298333944697013779" at="65,0,148,0" concept="6" trace="doRun#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
       <scope id="2298333944697013764" at="149,43,149,43" />
       <scope id="2298333944697013774" at="152,33,152,33" />
       <scope id="7800382253417727287" at="54,9,55,21" />
       <scope id="7800382253417727297" at="57,11,58,20" />
-      <scope id="7800382253417727300" at="59,0,60,83">
-        <var name="ex" id="7800382253417727301" />
-      </scope>
       <scope id="7800382253417727303" at="59,37,60,83" />
       <scope id="2298333944697013800" at="70,22,71,13" />
       <scope id="4634869729621189870" at="83,57,84,43" />
@@ -180,6 +176,9 @@
       <scope id="6253178419397021640" at="141,47,142,87" />
       <scope id="7184932954667943740" at="169,46,170,28" />
       <scope id="7184932954667943906" at="173,30,174,20" />
+      <scope id="7800382253417727300" at="59,7,61,7">
+        <var name="ex" id="7800382253417727301" />
+      </scope>
       <scope id="1278023359872642250" at="133,47,135,38" />
       <scope id="2298333944697013759" at="149,0,151,0">
         <var name="info" id="2298333944697013760" />

@@ -19,8 +19,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:e1663f0e-a433-4acc-be78-d50e0f2be978(jetbrains.mps.editor.contextActionsTool.pluginSolution.plugin)/1108075632710592791">
     <file name="HoverLabel.java">
@@ -63,7 +62,7 @@
       <node id="1108075632710592828" at="27,0,33,0" concept="8" trace="mouseExited#(Ljava/awt/event/MouseEvent;)V" />
       <node id="1108075632710592880" at="48,0,54,0" concept="8" trace="mouseDragged#(Ljava/awt/event/MouseEvent;)V" />
       <node id="1108075632710592874" at="46,0,54,7" concept="4" />
-      <node id="1108075632710592937" at="72,31,80,7" concept="20" />
+      <node id="1108075632710592937" at="72,31,80,7" concept="19" />
       <node id="1108075632710592929" at="70,34,81,5" concept="7" />
       <node id="1108075632710592923" at="69,0,85,0" concept="8" trace="paint#(Ljava/awt/Graphics;)V" />
       <node id="1108075632710592809" at="20,0,45,7" concept="4" />
@@ -170,7 +169,7 @@
       <node id="1108075632710646118" at="130,5,131,0" concept="12" />
       <node id="1108075632710645949" at="32,0,34,0" concept="5" trace="myTitleComponent" />
       <node id="1108075632710646131" at="109,10,111,5" concept="0" />
-      <node id="8009069486210058415" at="70,24,73,11" concept="21" />
+      <node id="8009069486210058415" at="70,24,73,11" concept="20" />
       <node id="1108075632710646069" at="88,0,91,0" concept="8" trace="addItem#(Ljavax/swing/JComponent;)V" />
       <node id="1108075632710646081" at="92,0,95,0" concept="8" trace="getComponent#()Ljavax/swing/JComponent;" />
       <node id="1108075632710646088" at="96,0,99,0" concept="8" trace="getName#()Ljava/lang/String;" />
@@ -347,13 +346,13 @@
       <node id="5490129062798552710" at="19,46,33,5" concept="7" />
       <node id="5490129062798566647" at="19,0,35,0" concept="14" trace="iconToImage#(Ljavax/swing/Icon;)Ljava/awt/Image;" />
       <node id="1118923038130643805" at="49,0,66,0" concept="14" trace="icon2imageIcon#(Ljavax/swing/Icon;)Ljavax/swing/ImageIcon;" />
-      <scope id="8863972969895144705" at="61,0,61,30">
-        <var name="ex" id="8863972969895144709" />
-      </scope>
       <scope id="8863972969895144707" at="61,30,61,30" />
       <scope id="5490129062798552715" at="20,36,21,43" />
       <scope id="8863972969894724993" at="50,36,51,32" />
       <scope id="8863972969895160851" at="58,44,59,40" />
+      <scope id="8863972969895144705" at="61,7,62,7">
+        <var name="ex" id="8863972969895144709" />
+      </scope>
       <scope id="8863972969895144704" at="54,11,60,9">
         <var name="getRealIcon" id="8863972969895146727" />
         <var name="realIcon" id="8863972969895159085" />
@@ -454,7 +453,7 @@
       <node id="5090237812302521773" at="31,0,37,0" concept="2" trace="ScaledIcon#(IILjavax/swing/Icon;)V" />
       <node id="5090237812302699672" at="12,0,19,0" concept="14" trace="scaleIfNeeded#(IILjavax/swing/Icon;)Ljavax/swing/Icon;" />
       <node id="5090237812302949096" at="19,0,26,0" concept="14" trace="scaleIfNeeded#(ILjavax/swing/Icon;)Ljavax/swing/Icon;" />
-      <node id="5090237812302638936" at="55,46,62,5" concept="20" />
+      <node id="5090237812302638936" at="55,46,62,5" concept="19" />
       <node id="5090237812302518006" at="53,0,64,0" concept="8" trace="paintIcon#(Ljava/awt/Component;Ljava/awt/Graphics;II)V" />
       <scope id="5090237812302659187" at="13,81,14,22" />
       <scope id="5090237812302694405" at="15,12,16,53" />
@@ -959,24 +958,24 @@
       <scope id="6866332489278682103" at="52,44,55,22">
         <var name="subfolderName" id="6866332489278682105" />
       </scope>
-      <scope id="6866332489279193576" at="69,0,72,9">
-        <var name="error" id="6866332489279193577" />
-      </scope>
       <scope id="6866332489279193579" at="69,36,72,9" />
-      <scope id="6866332489278886644" at="73,0,76,9">
-        <var name="exception" id="6866332489278886645" />
-      </scope>
       <scope id="6866332489278886647" at="73,44,76,9" />
-      <scope id="6866332489278902352" at="81,0,84,9">
-        <var name="error" id="6866332489278902353" />
-      </scope>
       <scope id="6866332489278902355" at="81,36,84,9" />
-      <scope id="6866332489279198354" at="85,0,88,9">
-        <var name="exception" id="6866332489279198355" />
-      </scope>
       <scope id="6866332489279198357" at="85,44,88,9" />
       <scope id="6866332489278630014" at="32,0,36,0">
         <var name="selection" id="6866332489278630018" />
+      </scope>
+      <scope id="6866332489279193576" at="69,7,73,7">
+        <var name="error" id="6866332489279193577" />
+      </scope>
+      <scope id="6866332489278886644" at="73,7,77,7">
+        <var name="exception" id="6866332489278886645" />
+      </scope>
+      <scope id="6866332489278902352" at="81,7,85,7">
+        <var name="error" id="6866332489278902353" />
+      </scope>
+      <scope id="6866332489279198354" at="85,7,89,7">
+        <var name="exception" id="6866332489279198355" />
       </scope>
       <scope id="6866332489278630188" at="112,0,116,0" />
       <scope id="6866332489278630198" at="116,0,120,0" />
@@ -1132,17 +1131,11 @@
       <node id="8532164657612699493" at="70,0,108,0" concept="8" trace="run#()V" />
       <node id="8532164657612699489" at="68,0,108,7" concept="4" />
       <node id="8532164657612699467" at="60,0,110,0" concept="8" trace="update#(Ljetbrains/mps/openapi/editor/selection/Selection;)V" />
-      <scope id="8532164657612977456" at="176,0,176,30">
-        <var name="ex" id="8532164657612977458" />
-      </scope>
       <scope id="8532164657612977457" at="176,30,176,30" />
       <scope id="8532164657612804992" at="38,49,39,33" />
       <scope id="8532164657612699474" at="61,45,62,13" />
       <scope id="8532164657612699479" at="64,44,65,13" />
       <scope id="8532164657612699496" at="71,13,72,28" />
-      <scope id="8532164657612699500" at="73,0,74,17">
-        <var name="ex" id="8532164657612699503" />
-      </scope>
       <scope id="8532164657612699501" at="73,43,74,17" />
       <scope id="8532164657612699507" at="77,43,78,17" />
       <scope id="7951930939826753893" at="87,63,88,40" />
@@ -1162,9 +1155,15 @@
       <scope id="8532164657612977421" at="165,92,166,68" />
       <scope id="8532164657612977444" at="170,33,171,15" />
       <scope id="8532164657612977448" at="174,11,175,29" />
+      <scope id="8532164657612977456" at="176,7,177,7">
+        <var name="ex" id="8532164657612977458" />
+      </scope>
       <scope id="8532164657612813592" at="183,36,184,52" />
       <scope id="8532164657612813599" at="189,36,190,52" />
       <scope id="8532164657612813607" at="195,36,196,52" />
+      <scope id="8532164657612699500" at="73,9,75,9">
+        <var name="ex" id="8532164657612699503" />
+      </scope>
       <scope id="4736696158598625583" at="146,31,148,14" />
       <scope id="8532164657612804987" at="38,0,41,0">
         <var name="p0" id="8532164657612804990" />
@@ -1177,14 +1176,14 @@
         <var name="it" id="7951930939826785208" />
       </scope>
       <scope id="8532164657612699554" at="98,0,101,0" />
-      <scope id="8532164657612699583" at="102,0,105,11">
-        <var name="ex" id="8532164657612699588" />
-      </scope>
       <scope id="8532164657612699584" at="102,32,105,11" />
       <scope id="6866332489278955723" at="111,0,114,0">
         <var name="selection" id="6866332489278955727" />
       </scope>
       <scope id="4736696158598703458" at="141,0,144,0" />
+      <scope id="8532164657612699583" at="102,9,106,9">
+        <var name="ex" id="8532164657612699588" />
+      </scope>
       <scope id="8532164657612977390" at="156,0,160,0">
         <var name="component" id="8532164657612977393" />
       </scope>
@@ -1407,7 +1406,7 @@
       <node id="8645458101910562202" at="71,78,76,8" concept="9" />
       <node id="8645458101910562285" at="95,52,100,11" concept="10" />
       <node id="1352533932455538255" at="25,36,31,7" concept="6" />
-      <node id="1352533932457567431" at="60,34,66,5" concept="21" />
+      <node id="1352533932457567431" at="60,34,66,5" concept="20" />
       <node id="8645458101910562249" at="109,0,115,0" concept="14" trace="check_7xpnm0_a0a0a0a0a3a8#(Lcom/intellij/ui/tabs/TabInfo;)Ljavax/swing/JComponent;" />
       <node id="8645458101910562283" at="95,0,102,0" concept="8" trace="select#(Ljavax/swing/JComponent;)Ljetbrains/mps/nodeEditor/EditorComponent;" />
       <node id="1352533932455587942" at="24,0,32,5" concept="7" />

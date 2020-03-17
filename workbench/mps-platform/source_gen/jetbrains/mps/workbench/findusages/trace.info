@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)/2810982631457564914">
     <file name="StubModelsFastFindSupport.java">
@@ -149,11 +149,11 @@
       <scope id="5448605244807314050" at="183,16,184,25" />
       <scope id="5448605244807368279" at="190,31,191,19" />
       <scope id="7184184168621196639" at="208,11,209,128" />
-      <scope id="7184184168621196661" at="210,0,211,48">
-        <var name="ce" id="7184184168621196651" />
-      </scope>
       <scope id="7184184168621196655" at="210,45,211,48" />
       <scope id="2810982631457565121" at="216,55,217,35" />
+      <scope id="7184184168621196661" at="210,7,212,7">
+        <var name="ce" id="7184184168621196651" />
+      </scope>
       <scope id="2810982631457564918" at="60,0,63,0">
         <var name="mpsCore" id="5958074506794807212" />
       </scope>
@@ -310,10 +310,10 @@
       <scope id="3818729150937334519" at="38,41,39,207" />
       <scope id="3822554386093950685" at="45,75,46,58" />
       <scope id="2810982631457565452" at="24,0,26,0" />
-      <scope id="8091930109923280423" at="37,0,41,58">
+      <scope id="8091930109923280426" at="37,27,41,58" />
+      <scope id="8091930109923280423" at="37,5,42,5">
         <var name="t" id="8091930109923280424" />
       </scope>
-      <scope id="8091930109923280426" at="37,27,41,58" />
       <scope id="2810982631457565489" at="28,64,51,31">
         <var name="ac" id="2810982631457565499" />
         <var name="bytes" id="303301571174689165" />

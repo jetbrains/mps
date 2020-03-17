@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
       <unit at="19,0,383,0" name="jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.EditorAspectDescriptorImpl" />
@@ -2644,7 +2644,7 @@
       <node id="3765314946602950383" at="43,304,48,5" concept="15" />
       <node id="368966953912148853" at="112,50,117,9" concept="5" />
       <node id="368966953912164371" at="121,52,126,9" concept="5" />
-      <node id="368966953912137537" at="84,25,90,7" concept="14" />
+      <node id="368966953912137537" at="84,25,90,7" concept="15" />
       <node id="368966953912137537" at="91,51,97,7" concept="15" />
       <node id="3765314946602950391" at="68,51,76,7" concept="15" />
       <node id="368966953912137537" at="120,0,128,0" concept="6" trace="execute#(Ljava/lang/String;)V" />
@@ -2668,11 +2668,11 @@
       <scope id="368966953912164372" at="122,166,123,180" />
       <scope id="368966953912164382" at="124,16,125,210" />
       <scope id="368966953912137537" at="133,49,134,37" />
-      <scope id="368966953912137537" at="87,0,89,20">
-        <var name="t" id="368966953912137537" />
-      </scope>
       <scope id="368966953912137537" at="87,29,89,20" />
       <scope id="368966953912137537" at="92,11,94,71" />
+      <scope id="368966953912137537" at="87,7,90,7">
+        <var name="t" id="368966953912137537" />
+      </scope>
       <scope id="368966953912137537" at="104,0,107,0">
         <var name="context" id="368966953912137537" />
       </scope>
@@ -4035,7 +4035,7 @@
       <node id="4290896314625874651" at="110,0,114,0" concept="6" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
       <node id="4290896314625874638" at="48,296,53,5" concept="15" />
       <node id="4290896314625874651" at="96,0,101,0" concept="6" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="4290896314625874651" at="70,25,76,7" concept="14" />
+      <node id="4290896314625874651" at="70,25,76,7" concept="15" />
       <node id="4290896314625874651" at="77,51,83,7" concept="15" />
       <node id="4290896314625874651" at="115,0,123,0" concept="6" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
       <node id="4290896314625874638" at="56,0,65,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
@@ -4053,11 +4053,11 @@
       <scope id="4290896314625874659" at="103,52,104,81" />
       <scope id="4290896314625874651" at="111,49,112,37" />
       <scope id="4290896314625874651" at="119,114,120,56" />
-      <scope id="4290896314625874651" at="73,0,75,20">
-        <var name="t" id="4290896314625874651" />
-      </scope>
       <scope id="4290896314625874651" at="73,29,75,20" />
       <scope id="4290896314625874651" at="78,11,80,71" />
+      <scope id="4290896314625874651" at="73,7,76,7">
+        <var name="t" id="4290896314625874651" />
+      </scope>
       <scope id="4290896314625874651" at="90,0,93,0">
         <var name="context" id="4290896314625874651" />
       </scope>
@@ -8104,7 +8104,7 @@
       <node id="476103360382557881" at="110,0,114,0" concept="6" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
       <node id="476103360378641500" at="48,317,53,5" concept="15" />
       <node id="476103360382557881" at="96,0,101,0" concept="6" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="476103360382557881" at="70,25,76,7" concept="14" />
+      <node id="476103360382557881" at="70,25,76,7" concept="15" />
       <node id="476103360382557881" at="77,51,83,7" concept="15" />
       <node id="476103360382557881" at="115,0,123,0" concept="6" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
       <node id="476103360378641500" at="56,0,65,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
@@ -8122,11 +8122,11 @@
       <scope id="476103360382557889" at="103,52,104,99" />
       <scope id="476103360382557881" at="111,49,112,37" />
       <scope id="476103360382557881" at="119,114,120,56" />
-      <scope id="476103360382557881" at="73,0,75,20">
-        <var name="t" id="476103360382557881" />
-      </scope>
       <scope id="476103360382557881" at="73,29,75,20" />
       <scope id="476103360382557881" at="78,11,80,71" />
+      <scope id="476103360382557881" at="73,7,76,7">
+        <var name="t" id="476103360382557881" />
+      </scope>
       <scope id="476103360382557881" at="90,0,93,0">
         <var name="context" id="476103360382557881" />
       </scope>
@@ -10567,11 +10567,11 @@
       <node id="705057939850101831" at="179,0,184,0" concept="6" trace="getOutputConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="705057939850102609" at="232,0,237,0" concept="6" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="705057939850102609" at="244,0,249,0" concept="6" trace="getOutputConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="705057939850094057" at="76,25,82,7" concept="14" />
+      <node id="705057939850094057" at="76,25,82,7" concept="15" />
       <node id="705057939850094057" at="83,51,89,7" concept="15" />
-      <node id="705057939850101831" at="141,25,147,7" concept="14" />
+      <node id="705057939850101831" at="141,25,147,7" concept="15" />
       <node id="705057939850101831" at="148,51,154,7" concept="15" />
-      <node id="705057939850102609" at="206,25,212,7" concept="14" />
+      <node id="705057939850102609" at="206,25,212,7" concept="15" />
       <node id="705057939850102609" at="213,51,219,7" concept="15" />
       <node id="705057939850094057" at="126,0,134,0" concept="6" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
       <node id="705057939850101831" at="191,0,199,0" concept="6" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
@@ -10611,22 +10611,16 @@
       <scope id="705057939850102609" at="246,50,247,63" />
       <scope id="705057939850102609" at="252,49,253,37" />
       <scope id="705057939850102609" at="260,114,261,56" />
-      <scope id="705057939850094057" at="79,0,81,20">
-        <var name="t" id="705057939850094057" />
-      </scope>
       <scope id="705057939850094057" at="79,29,81,20" />
       <scope id="705057939850094057" at="84,11,86,71" />
-      <scope id="705057939850101831" at="144,0,146,20">
-        <var name="t" id="705057939850101831" />
-      </scope>
       <scope id="705057939850101831" at="144,29,146,20" />
       <scope id="705057939850101831" at="149,11,151,71" />
-      <scope id="705057939850102609" at="209,0,211,20">
-        <var name="t" id="705057939850102609" />
-      </scope>
       <scope id="705057939850102609" at="209,29,211,20" />
       <scope id="705057939850102609" at="214,11,216,71" />
       <scope id="705057939850094051" at="64,137,67,151" />
+      <scope id="705057939850094057" at="79,7,82,7">
+        <var name="t" id="705057939850094057" />
+      </scope>
       <scope id="705057939850094057" at="96,0,99,0">
         <var name="context" id="705057939850094057" />
       </scope>
@@ -10636,6 +10630,9 @@
       <scope id="705057939850094057" at="129,290,132,9">
         <var name="customizer" id="705057939850094057" />
       </scope>
+      <scope id="705057939850101831" at="144,7,147,7">
+        <var name="t" id="705057939850101831" />
+      </scope>
       <scope id="705057939850101831" at="161,0,164,0">
         <var name="context" id="705057939850101831" />
       </scope>
@@ -10644,6 +10641,9 @@
       </scope>
       <scope id="705057939850101831" at="194,290,197,9">
         <var name="customizer" id="705057939850101831" />
+      </scope>
+      <scope id="705057939850102609" at="209,7,212,7">
+        <var name="t" id="705057939850102609" />
       </scope>
       <scope id="705057939850102609" at="226,0,229,0">
         <var name="context" id="705057939850102609" />
@@ -10857,11 +10857,11 @@
       <node id="705057939850160602" at="179,0,184,0" concept="6" trace="getOutputConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="705057939850160614" at="232,0,237,0" concept="6" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="705057939850160614" at="244,0,249,0" concept="6" trace="getOutputConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="705057939850160588" at="76,25,82,7" concept="14" />
+      <node id="705057939850160588" at="76,25,82,7" concept="15" />
       <node id="705057939850160588" at="83,51,89,7" concept="15" />
-      <node id="705057939850160602" at="141,25,147,7" concept="14" />
+      <node id="705057939850160602" at="141,25,147,7" concept="15" />
       <node id="705057939850160602" at="148,51,154,7" concept="15" />
-      <node id="705057939850160614" at="206,25,212,7" concept="14" />
+      <node id="705057939850160614" at="206,25,212,7" concept="15" />
       <node id="705057939850160614" at="213,51,219,7" concept="15" />
       <node id="705057939850160588" at="126,0,134,0" concept="6" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
       <node id="705057939850160602" at="191,0,199,0" concept="6" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
@@ -10901,22 +10901,16 @@
       <scope id="705057939850160614" at="246,50,247,63" />
       <scope id="705057939850160614" at="252,49,253,37" />
       <scope id="705057939850160614" at="260,114,261,56" />
-      <scope id="705057939850160588" at="79,0,81,20">
-        <var name="t" id="705057939850160588" />
-      </scope>
       <scope id="705057939850160588" at="79,29,81,20" />
       <scope id="705057939850160588" at="84,11,86,71" />
-      <scope id="705057939850160602" at="144,0,146,20">
-        <var name="t" id="705057939850160602" />
-      </scope>
       <scope id="705057939850160602" at="144,29,146,20" />
       <scope id="705057939850160602" at="149,11,151,71" />
-      <scope id="705057939850160614" at="209,0,211,20">
-        <var name="t" id="705057939850160614" />
-      </scope>
       <scope id="705057939850160614" at="209,29,211,20" />
       <scope id="705057939850160614" at="214,11,216,71" />
       <scope id="705057939850160586" at="64,137,67,151" />
+      <scope id="705057939850160588" at="79,7,82,7">
+        <var name="t" id="705057939850160588" />
+      </scope>
       <scope id="705057939850160588" at="96,0,99,0">
         <var name="context" id="705057939850160588" />
       </scope>
@@ -10926,6 +10920,9 @@
       <scope id="705057939850160588" at="129,290,132,9">
         <var name="customizer" id="705057939850160588" />
       </scope>
+      <scope id="705057939850160602" at="144,7,147,7">
+        <var name="t" id="705057939850160602" />
+      </scope>
       <scope id="705057939850160602" at="161,0,164,0">
         <var name="context" id="705057939850160602" />
       </scope>
@@ -10934,6 +10931,9 @@
       </scope>
       <scope id="705057939850160602" at="194,290,197,9">
         <var name="customizer" id="705057939850160602" />
+      </scope>
+      <scope id="705057939850160614" at="209,7,212,7">
+        <var name="t" id="705057939850160614" />
       </scope>
       <scope id="705057939850160614" at="226,0,229,0">
         <var name="context" id="705057939850160614" />
@@ -14759,7 +14759,7 @@
       <node id="8135300941718557820" at="110,0,114,0" concept="6" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
       <node id="8135300941718541233" at="48,319,53,5" concept="15" />
       <node id="8135300941718557820" at="96,0,101,0" concept="6" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="8135300941718557820" at="70,25,76,7" concept="14" />
+      <node id="8135300941718557820" at="70,25,76,7" concept="15" />
       <node id="8135300941718557820" at="77,51,83,7" concept="15" />
       <node id="8135300941718557820" at="115,0,123,0" concept="6" trace="customize#(Ljava/lang/String;Ljetbrains/mps/openapi/editor/menus/style/EditorMenuItemStyle;)V" />
       <node id="8135300941718541233" at="56,0,65,0" concept="6" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
@@ -14777,11 +14777,11 @@
       <scope id="8135300941718557824" at="103,52,104,98" />
       <scope id="8135300941718557820" at="111,49,112,37" />
       <scope id="8135300941718557820" at="119,114,120,56" />
-      <scope id="8135300941718557820" at="73,0,75,20">
-        <var name="t" id="8135300941718557820" />
-      </scope>
       <scope id="8135300941718557820" at="73,29,75,20" />
       <scope id="8135300941718557820" at="78,11,80,71" />
+      <scope id="8135300941718557820" at="73,7,76,7">
+        <var name="t" id="8135300941718557820" />
+      </scope>
       <scope id="8135300941718557820" at="90,0,93,0">
         <var name="context" id="8135300941718557820" />
       </scope>

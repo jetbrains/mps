@@ -12,7 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:86c973b9-f718-41ea-a160-01462892e653(jetbrains.mps.ide.mpsmigration.v_2019_1)/3701865296871042751">
     <file name="UpdateJavaStubMethodRefs.java">
       <node id="3701865296871042751" at="30,0,31,0" concept="10" trace="LOG" />
@@ -84,12 +84,12 @@
       <scope id="3267451467838472113" at="79,0,82,0">
         <var name="it" id="3267451467838472113" />
       </scope>
-      <scope id="3267451467838629102" at="93,0,96,17">
-        <var name="ex" id="3267451467838629116" />
-      </scope>
       <scope id="3267451467838629103" at="93,38,96,17" />
       <scope id="6020273751757613627" at="69,0,73,0">
         <var name="it" id="6020273751757613627" />
+      </scope>
+      <scope id="3267451467838629102" at="93,15,97,15">
+        <var name="ex" id="3267451467838629116" />
       </scope>
       <scope id="3701865296871042860" at="106,0,110,0" />
       <scope id="3267451467838363208" at="49,49,55,17">
@@ -205,12 +205,12 @@
       <scope id="7529972802157611216" at="79,0,82,0">
         <var name="it" id="7529972802157611216" />
       </scope>
-      <scope id="7529972802157611238" at="93,0,96,17">
-        <var name="ex" id="7529972802157611247" />
-      </scope>
       <scope id="7529972802157611239" at="93,38,96,17" />
       <scope id="7529972802157611173" at="69,0,73,0">
         <var name="it" id="7529972802157611173" />
+      </scope>
+      <scope id="7529972802157611238" at="93,15,97,15">
+        <var name="ex" id="7529972802157611247" />
       </scope>
       <scope id="7529972802157611282" at="106,0,110,0" />
       <scope id="7529972802157611107" at="49,49,55,17">

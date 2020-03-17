@@ -6,7 +6,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:8b4f0747-4cce-403c-a9ed-8700a357a916(jetbrains.mps.execution.impl.configurations.runners)/5145867626676113213">
     <file name="MPSProgramRunner.java">
       <node id="5145867626676113213" at="17,0,18,0" concept="5" trace="LOG" />
@@ -24,11 +24,11 @@
       <scope id="4089701389180409548" at="27,9,28,178" />
       <scope id="3818729150937330367" at="30,42,31,77" />
       <scope id="5145867626676113216" at="18,0,20,0" />
-      <scope id="4089701389180409550" at="29,0,33,19">
-        <var name="throwable" id="4089701389180409551" />
-      </scope>
       <scope id="4089701389180409553" at="29,35,33,19" />
       <scope id="5145867626676113220" at="20,0,25,0" />
+      <scope id="4089701389180409550" at="29,5,34,5">
+        <var name="throwable" id="4089701389180409551" />
+      </scope>
       <scope id="5145867626676113236" at="26,82,34,5" />
       <scope id="5145867626676113227" at="25,0,36,0">
         <var name="executorId" id="5145867626676113230" />

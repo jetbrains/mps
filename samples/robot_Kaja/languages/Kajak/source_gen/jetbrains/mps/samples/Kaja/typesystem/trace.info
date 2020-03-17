@@ -13,7 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="TypesystemDescriptor.java">
       <unit at="8,0,32,0" name="jetbrains.mps.samples.Kaja.typesystem.TypesystemDescriptor" />
@@ -414,9 +414,6 @@
       <scope id="6630310702470230800" at="24,49,24,49" />
       <scope id="8249991444799099449" at="27,30,28,13" />
       <scope id="6630310702471402090" at="43,157,44,19" />
-      <scope id="6630310702470948038" at="58,0,59,143">
-        <var name="e" id="6630310702470948040" />
-      </scope>
       <scope id="6630310702470948044" at="58,42,59,143" />
       <scope id="6630310702470230800" at="63,50,64,35" />
       <scope id="6630310702470230800" at="66,68,67,102" />
@@ -433,6 +430,9 @@
       <scope id="6630310702472189615" at="52,11,54,267">
         <var name="_reporter_2309309498" id="6630310702472189615" />
         <var name="errorTarget" id="6630310702472189615" />
+      </scope>
+      <scope id="6630310702470948038" at="58,5,60,5">
+        <var name="e" id="6630310702470948040" />
       </scope>
       <scope id="6630310702470230800" at="63,0,66,0" />
       <scope id="6630310702470230800" at="66,0,69,0">

@@ -10,7 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:39c01cc7-82c8-4706-9a38-48a33acb0535(jetbrains.mps.ide.findusages.view.optionseditor)/28859145781927652">
     <file name="DefaultSearchOptionsComponent.java">
       <node id="28859145781927985" at="23,0,24,0" concept="2" trace="myDefaultOptions" />
@@ -126,19 +126,16 @@
       <node id="28859145781927878" at="63,0,81,0" concept="5" trace="readOptions#(Lorg/jdom/Element;Ljetbrains/mps/project/MPSProject;)V" />
       <scope id="28859145781927692" at="27,36,27,36" />
       <scope id="5345717287655999201" at="43,55,44,91" />
-      <scope id="28859145781927815" at="58,0,59,43">
-        <var name="e" id="28859145781927823" />
-      </scope>
       <scope id="28859145781927816" at="58,44,59,43" />
       <scope id="28859145781927689" at="27,0,29,0" />
       <scope id="28859145781927731" at="35,95,37,76" />
       <scope id="28859145781927755" at="39,58,41,88">
         <var name="scopeOptions" id="28859145781927784" />
       </scope>
-      <scope id="5345717287655999198" at="43,0,46,0" />
-      <scope id="28859145781927896" at="75,0,78,44">
-        <var name="e" id="28859145781927917" />
+      <scope id="28859145781927815" at="58,5,60,5">
+        <var name="e" id="28859145781927823" />
       </scope>
+      <scope id="5345717287655999198" at="43,0,46,0" />
       <scope id="28859145781927897" at="75,44,78,44" />
       <scope id="28859145781927698" at="29,68,33,18">
         <var name="finders" id="28859145781927706" />
@@ -155,6 +152,9 @@
       <scope id="28859145781927943" at="69,68,73,38">
         <var name="np" id="28859145781927945" />
         <var name="opt" id="28859145781927952" />
+      </scope>
+      <scope id="28859145781927896" at="75,5,79,5">
+        <var name="e" id="28859145781927917" />
       </scope>
       <scope id="28859145781927693" at="29,0,35,0">
         <var name="concept" id="28859145781927696" />

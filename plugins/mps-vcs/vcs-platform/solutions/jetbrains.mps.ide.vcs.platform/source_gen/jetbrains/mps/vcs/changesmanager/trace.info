@@ -19,7 +19,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1170075670744:jetbrains.mps.baseLanguage.structure.SynchronizedStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/1890524422885368547">
     <file name="SModelCommandListener.java">
@@ -122,13 +122,7 @@
       <node id="3193265634050715557" at="91,38,140,5" concept="7" />
       <node id="3193265634050636154" at="89,0,143,0" concept="14" trace="getBaseVersionModel#(Lorg/jetbrains/mps/openapi/model/SModel;Lcom/intellij/openapi/project/Project;)Lorg/jetbrains/mps/openapi/model/SModel;" />
       <scope id="7523553402533213941" at="49,29,49,29" />
-      <scope id="8450492655320728553" at="175,0,175,49">
-        <var name="ex" id="8450492655320728545" />
-      </scope>
       <scope id="8450492655320728549" at="175,49,175,49" />
-      <scope id="4946444090186875387" at="176,0,176,37">
-        <var name="ex" id="4946444090186875389" />
-      </scope>
       <scope id="4946444090186875388" at="176,37,176,37" />
       <scope id="1162831315436724780" at="51,71,52,102" />
       <scope id="2518463966370362175" at="63,13,64,44" />
@@ -147,6 +141,12 @@
       <scope id="8450492655320728483" at="157,55,158,34" />
       <scope id="8450492655320728506" at="164,39,165,96" />
       <scope id="8450492655320728522" at="167,39,168,59" />
+      <scope id="8450492655320728553" at="175,5,176,5">
+        <var name="ex" id="8450492655320728545" />
+      </scope>
+      <scope id="4946444090186875387" at="176,5,177,5">
+        <var name="ex" id="4946444090186875389" />
+      </scope>
       <scope id="7523553402533213938" at="49,0,51,0" />
       <scope id="1162831315436724777" at="51,0,54,0">
         <var name="status" id="1162831315436726749" />
@@ -155,15 +155,15 @@
       <scope id="3288882258767889319" at="135,85,138,54">
         <var name="mpsPlatform" id="368748812441388941" />
       </scope>
-      <scope id="2518463966370362182" at="65,0,69,22">
-        <var name="ex" id="2518463966370362184" />
-      </scope>
       <scope id="2518463966370362183" at="65,34,69,22" />
-      <scope id="7675522084224244292" at="82,0,86,18">
-        <var name="ex" id="7675522084224244293" />
-      </scope>
       <scope id="7675522084224244295" at="82,31,86,18" />
       <scope id="8450492655320728473" at="151,0,155,0" />
+      <scope id="2518463966370362182" at="65,9,70,9">
+        <var name="ex" id="2518463966370362184" />
+      </scope>
+      <scope id="7675522084224244292" at="82,5,87,5">
+        <var name="ex" id="7675522084224244293" />
+      </scope>
       <scope id="8450492655320728480" at="155,0,160,0" />
       <scope id="3193265634050837390" at="104,28,112,20">
         <var name="fileStatusManager" id="8260478167596911624" />
@@ -1915,9 +1915,6 @@
       <scope id="3722815385094244340" at="78,51,79,18" />
       <scope id="6669546492594083168" at="84,25,85,17" />
       <scope id="3722815385094360883" at="90,17,91,29" />
-      <scope id="3722815385094360890" at="92,0,93,21">
-        <var name="e" id="3722815385094360891" />
-      </scope>
       <scope id="3722815385094360893" at="92,46,93,21" />
       <scope id="3722815385094360909" at="98,13,99,21" />
       <scope id="3223323963577842286" at="101,98,102,21" />
@@ -1929,6 +1926,9 @@
       <scope id="5365399102993488844" at="137,26,138,32" />
       <scope id="5365399102993488856" at="139,14,140,32" />
       <scope id="6669546492594067003" at="52,25,54,25" />
+      <scope id="3722815385094360890" at="92,13,94,13">
+        <var name="e" id="3722815385094360891" />
+      </scope>
       <scope id="5365399102993215172" at="119,49,121,18" />
       <scope id="3722815385094205363" at="20,0,23,0">
         <var name="threadName" id="3722815385094244350" />
@@ -1969,11 +1969,11 @@
         <var name="task" id="3722815385094377494" />
       </scope>
       <scope id="3722815385094288862" at="59,0,66,0" />
-      <scope id="3722815385094360914" at="100,0,107,33">
-        <var name="e" id="3722815385094360915" />
-      </scope>
       <scope id="3722815385094360917" at="100,31,107,33" />
       <scope id="3722815385094360879" at="88,32,96,42" />
+      <scope id="3722815385094360914" at="100,9,108,9">
+        <var name="e" id="3722815385094360915" />
+      </scope>
       <scope id="5365399102993217881" at="127,0,135,0">
         <var name="o" id="5365399102993217885" />
       </scope>
@@ -2199,10 +2199,10 @@
       <scope id="8579517044346265889" at="71,0,74,0">
         <var name="listener" id="8579517044346265889" />
       </scope>
-      <scope id="8579517044346265811" at="36,0,40,9">
+      <scope id="8579517044346265814" at="36,29,40,9" />
+      <scope id="8579517044346265811" at="36,7,41,7">
         <var name="t" id="8579517044346265812" />
       </scope>
-      <scope id="8579517044346265814" at="36,29,40,9" />
       <scope id="8579517044346265832" at="45,62,50,7" />
       <scope id="8579517044346265851" at="53,64,58,7" />
       <scope id="8579517044346265870" at="61,37,66,7" />

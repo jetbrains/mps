@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:c7bbaee3-030a-4940-995f-2174babaf670(jetbrains.mps.project.io)/557142600900286111">
     <file name="DescriptorIOFacade.java">
       <node id="557142600900532770" at="15,0,16,0" concept="10" trace="INSTANCE" />
@@ -308,9 +308,6 @@
       <scope id="5316007006529125460" at="60,0,63,0">
         <var name="file" id="5316007006529131298" />
       </scope>
-      <scope id="842994667883033033" at="75,0,78,76">
-        <var name="ex" id="842994667883033034" />
-      </scope>
       <scope id="842994667883033036" at="75,30,78,76">
         <var name="mre" id="7732484735483492390" />
       </scope>
@@ -318,41 +315,20 @@
         <var name="macroHelper" id="7732484735483402192" />
         <var name="result" id="3519773938286778009" />
       </scope>
-      <scope id="842994667883033225" at="98,0,101,9">
-        <var name="e" id="842994667883033226" />
-      </scope>
       <scope id="842994667883033228" at="98,29,101,9" />
-      <scope id="842994667883031466" at="128,0,131,76">
-        <var name="ex" id="842994667883031467" />
-      </scope>
       <scope id="842994667883031469" at="128,30,131,76">
         <var name="mre" id="7732484735483166759" />
       </scope>
       <scope id="3519773938288141763" at="134,65,137,7">
         <var name="gd" id="3519773938288141766" />
       </scope>
-      <scope id="7732484735482807061" at="157,0,160,9">
-        <var name="ex" id="7732484735482807063" />
-      </scope>
       <scope id="7732484735482807067" at="157,32,160,9" />
-      <scope id="842994667883030306" at="183,0,186,76">
-        <var name="ex" id="842994667883030307" />
-      </scope>
       <scope id="842994667883030309" at="183,30,186,76">
         <var name="mre" id="7732484735483308097" />
       </scope>
-      <scope id="842994667883030485" at="198,0,201,9">
-        <var name="e" id="842994667883030486" />
-      </scope>
       <scope id="842994667883030488" at="198,29,201,9" />
-      <scope id="8924082750209865970" at="227,0,230,76">
-        <var name="ex" id="8924082750209865971" />
-      </scope>
       <scope id="8924082750209865973" at="227,30,230,76">
         <var name="mre" id="8924082750209865980" />
-      </scope>
-      <scope id="8924082750209925379" at="247,0,250,9">
-        <var name="ex" id="8924082750209925380" />
       </scope>
       <scope id="8924082750209925382" at="247,32,250,9" />
       <scope id="557142600900560790" at="32,0,36,0">
@@ -370,6 +346,12 @@
         <var name="macroHelper" id="7732484735483502791" />
         <var name="rootElement" id="842994667883032862" />
       </scope>
+      <scope id="842994667883033033" at="75,7,79,7">
+        <var name="ex" id="842994667883033034" />
+      </scope>
+      <scope id="842994667883033225" at="98,7,102,7">
+        <var name="e" id="842994667883033226" />
+      </scope>
       <scope id="557142600900560332" at="106,0,110,0">
         <var name="anchorFile" id="557142600900560339" />
         <var name="element" id="557142600900560337" />
@@ -384,7 +366,13 @@
         <var name="languageElement" id="842994667883031188" />
         <var name="macroHelper" id="7732484735483060687" />
       </scope>
+      <scope id="842994667883031466" at="128,7,132,7">
+        <var name="ex" id="842994667883031467" />
+      </scope>
       <scope id="842994667883031503" at="144,30,148,15" />
+      <scope id="7732484735482807061" at="157,7,161,7">
+        <var name="ex" id="7732484735482807063" />
+      </scope>
       <scope id="557142600900560358" at="164,0,168,0">
         <var name="anchorFile" id="557142600900560365" />
         <var name="element" id="557142600900560363" />
@@ -393,6 +381,12 @@
       <scope id="557142600900560350" at="168,0,172,0">
         <var name="anchorFile" id="557142600900560353" />
         <var name="element" id="557142600900560351" />
+      </scope>
+      <scope id="842994667883030306" at="183,7,187,7">
+        <var name="ex" id="842994667883030307" />
+      </scope>
+      <scope id="842994667883030485" at="198,7,202,7">
+        <var name="e" id="842994667883030486" />
       </scope>
       <scope id="557142600900560599" at="207,0,211,0">
         <var name="anchorFile" id="557142600900560602" />
@@ -407,6 +401,12 @@
         <var name="document" id="8924082750209865951" />
         <var name="languageElement" id="8924082750209865956" />
         <var name="macroHelper" id="8924082750209865946" />
+      </scope>
+      <scope id="8924082750209865970" at="227,7,231,7">
+        <var name="ex" id="8924082750209865971" />
+      </scope>
+      <scope id="8924082750209925379" at="247,7,251,7">
+        <var name="ex" id="8924082750209925380" />
       </scope>
       <scope id="8924082750209860420" at="254,0,258,0">
         <var name="anchorFile" id="8924082750209860423" />

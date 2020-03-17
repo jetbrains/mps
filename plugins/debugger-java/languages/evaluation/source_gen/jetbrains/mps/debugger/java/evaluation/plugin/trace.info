@@ -18,6 +18,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="FacetAspectDescriptor.java">
       <unit at="8,0,18,0" name="jetbrains.mps.debugger.java.evaluation.plugin.FacetAspectDescriptor" />
@@ -241,7 +242,7 @@
       <node id="7556192913641927632" at="383,83,393,7" concept="17" />
       <node id="7556192913641927632" at="383,0,395,0" concept="8" trace="loadValues#(Ljava/util/Map;Ljetbrains/mps/make/script/IPropertiesPool;)V" />
       <node id="3008093296142474068" at="238,88,252,19" concept="7" />
-      <node id="7556192913642156165" at="130,52,147,25" concept="17" />
+      <node id="7556192913642156165" at="130,52,147,25" concept="18" />
       <node id="7556192913642152761" at="129,108,148,23" concept="7" />
       <node id="3008093296141881635" at="231,80,254,17" concept="6" />
       <node id="6692531678400786841" at="122,0,150,0" concept="8" trace="run#()V" />
@@ -271,9 +272,6 @@
       <scope id="7556192913641927632" at="92,32,93,21" />
       <scope id="7556192913641927632" at="95,57,96,34" />
       <scope id="5309828024600579164" at="134,61,135,107" />
-      <scope id="7556192913642156167" at="145,0,146,90">
-        <var name="ex" id="7556192913642156168" />
-      </scope>
       <scope id="7556192913642156170" at="145,48,146,90" />
       <scope id="7556192913641954716" at="161,35,162,18" />
       <scope id="7556192913641954716" at="164,46,165,18" />
@@ -314,6 +312,9 @@
       <scope id="7789686367105721246" at="388,158,389,50" />
       <scope id="7556192913641927632" at="76,36,78,77" />
       <scope id="7556192913641954716" at="100,0,102,0" />
+      <scope id="7556192913642156167" at="145,25,147,25">
+        <var name="ex" id="7556192913642156168" />
+      </scope>
       <scope id="7556192913641954718" at="154,20,156,61" />
       <scope id="7556192913641954716" at="199,61,201,15">
         <var name="t" id="7556192913641954716" />

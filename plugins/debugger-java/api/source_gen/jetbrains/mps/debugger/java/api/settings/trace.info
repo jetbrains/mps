@@ -10,7 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:4032b78d-911f-4395-b88c-ccb50cb24300(jetbrains.mps.debugger.java.api.settings)/3432969378036013783">
     <file name="DebugConnectionSettings.java">
       <node id="3432969378036016385" at="11,0,12,0" concept="3" trace="myUseSockets" />
@@ -210,11 +210,11 @@
       <node id="3432969378036017476" at="26,0,30,0" concept="5" trace="isSuspend#()Z" />
       <node id="3432969378036017449" at="12,45,20,5" concept="4" />
       <node id="3432969378036017438" at="11,0,22,0" concept="1" trace="LocalConnectionSettings#(Z)V" />
-      <scope id="3432969378036017457" at="17,0,17,37">
-        <var name="ignored" id="3432969378036017459" />
-      </scope>
       <scope id="3432969378036017458" at="17,37,17,37" />
       <scope id="3432969378036017461" at="15,11,16,54" />
+      <scope id="3432969378036017457" at="17,7,18,7">
+        <var name="ignored" id="3432969378036017459" />
+      </scope>
       <scope id="3432969378036017472" at="23,33,24,16" />
       <scope id="3432969378036017479" at="27,30,28,16" />
       <scope id="3432969378036017469" at="22,0,26,0" />

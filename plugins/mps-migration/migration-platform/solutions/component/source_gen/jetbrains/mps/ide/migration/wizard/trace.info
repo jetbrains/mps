@@ -18,8 +18,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="IconContainer.java">
@@ -1051,14 +1050,14 @@
         <var name="session" id="2620437876315924247" />
       </scope>
       <scope id="3459283717708897455" at="165,0,171,0" />
-      <scope id="3459283717708625427" at="77,0,84,21">
-        <var name="t" id="3459283717708625428" />
-      </scope>
       <scope id="3459283717708625430" at="77,35,84,21">
         <var name="errMsg" id="1246308946705727617" />
       </scope>
       <scope id="6781485246382123239" at="119,0,126,0" />
       <scope id="3459283717708897468" at="157,0,164,0" />
+      <scope id="3459283717708625427" at="77,13,85,13">
+        <var name="t" id="3459283717708625428" />
+      </scope>
       <scope id="3459283717708625461" at="89,35,97,48">
         <var name="sb" id="2107284165256047830" />
       </scope>
@@ -1370,7 +1369,7 @@
       <node id="961570622493019981" at="268,0,278,0" concept="9" trace="checkModels#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Z" />
       <node id="1461857412530909026" at="295,21,305,26" concept="4" />
       <node id="8224028748486564173" at="378,0,388,0" concept="9" trace="findNotMigrated#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Z" />
-      <node id="2624059865481875667" at="68,62,79,5" concept="19" />
+      <node id="2624059865481875667" at="68,62,79,5" concept="18" />
       <node id="4930617085366119417" at="224,36,235,9" concept="8" />
       <node id="3577160840697523876" at="389,0,400,0" concept="9" trace="moduleStepsCount#()I" />
       <node id="3577160840697523402" at="401,0,412,0" concept="9" trace="projectStepsCount#(Z)I" />
@@ -1379,12 +1378,12 @@
       <node id="86837677856940943" at="293,0,306,7" concept="7" />
       <node id="8224028748485976268" at="67,0,81,0" concept="9" trace="run#()V" />
       <node id="8224028748487151939" at="353,54,369,7" concept="8" />
-      <node id="8224028748486462471" at="316,27,334,5" concept="20" />
-      <node id="4930617085366119395" at="217,0,238,7" concept="20" />
-      <node id="9181752706345006015" at="289,88,311,5" concept="19" />
+      <node id="8224028748486462471" at="316,27,334,5" concept="19" />
+      <node id="4930617085366119395" at="217,0,238,7" concept="19" />
+      <node id="9181752706345006015" at="289,88,311,5" concept="18" />
       <node id="8224028748486462515" at="314,0,338,0" concept="9" trace="runProjectMigrations#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Z" />
       <node id="4930617085366119382" at="214,27,241,5" concept="8" />
-      <node id="8224028748486502344" at="343,100,372,5" concept="20" />
+      <node id="8224028748486502344" at="343,100,372,5" concept="19" />
       <node id="5783745319707780363" at="176,0,206,0" concept="9" trace="run#()V" />
       <node id="2216091188716077693" at="174,141,206,22" concept="4" />
       <node id="4930617085366119462" at="211,0,245,0" concept="9" trace="runCleanupMigrations#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Z" />
@@ -1392,9 +1391,6 @@
       <node id="8224028748486502416" at="339,0,377,0" concept="9" trace="runLanguageMigrations#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Z" />
       <node id="2400678414102892478" at="168,0,210,0" concept="9" trace="executeSingleStep#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;Ljava/lang/String;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)Z" />
       <node id="6781485246382123108" at="82,0,139,0" concept="9" trace="doRun#()V" />
-      <scope id="5985196147111665673" at="75,0,76,16">
-        <var name="me" id="5985196147111665674" />
-      </scope>
       <scope id="5985196147111665676" at="75,33,76,16" />
       <scope id="2624059865481875670" at="77,15,78,63" />
       <scope id="7135317402440272454" at="90,25,91,17" />
@@ -1424,6 +1420,9 @@
       <scope id="1461857412530909007" at="419,36,420,46" />
       <scope id="2805796148201642766" at="424,68,425,47" />
       <scope id="1461857412530909008" at="427,70,428,47" />
+      <scope id="5985196147111665673" at="75,5,77,5">
+        <var name="me" id="5985196147111665674" />
+      </scope>
       <scope id="231600208033149813" at="141,52,143,18" />
       <scope id="372484525164596244" at="159,34,161,31" />
       <scope id="2885477569135642224" at="249,48,251,20" />
@@ -1470,9 +1469,6 @@
       </scope>
       <scope id="3676735939761918088" at="152,55,156,30" />
       <scope id="372484525164596241" at="159,0,163,0" />
-      <scope id="4207120766075368082" at="184,0,188,40">
-        <var name="t" id="4207120766075368084" />
-      </scope>
       <scope id="4207120766075368088" at="184,35,188,40" />
       <scope id="2885477569135642221" at="249,0,253,0">
         <var name="sa" id="2885477569135642221" />
@@ -1495,6 +1491,9 @@
         <var name="errors" id="961570622493002568" />
       </scope>
       <scope id="231600208033110594" at="140,47,145,17" />
+      <scope id="4207120766075368082" at="184,13,189,13">
+        <var name="t" id="4207120766075368084" />
+      </scope>
       <scope id="4930617085366119418" at="229,20,234,16" />
       <scope id="8224028748487285183" at="359,33,364,84">
         <var name="next" id="1193478504796054418" />

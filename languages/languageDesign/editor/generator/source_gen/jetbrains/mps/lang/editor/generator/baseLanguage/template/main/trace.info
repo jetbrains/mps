@@ -10,7 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="QueriesGenerated.java">
       <unit at="4127,0,4142,0" name="jetbrains.mps.lang.editor.generator.baseLanguage.template.main.QueriesGenerated$MRRC" />
@@ -4270,9 +4270,6 @@
       <scope id="7651593722933781479" at="225,85,226,85" />
       <scope id="6083395046986715890" at="685,89,686,78" />
       <scope id="6083395046987233756" at="689,9,690,170" />
-      <scope id="6083395046987233750" at="691,0,692,15">
-        <var name="nfe" id="6083395046987233751" />
-      </scope>
       <scope id="6083395046987233753" at="691,41,692,15" />
       <scope id="5298401719285810457" at="695,89,696,124" />
       <scope id="8143891393576906963" at="698,89,699,80" />
@@ -4377,6 +4374,9 @@
       <scope id="5298401719292643137" at="7161,16,7162,71" />
       <scope id="5298401719292828586" at="7163,16,7164,71" />
       <scope id="5266818545798731548" at="7165,16,7166,72" />
+      <scope id="6083395046987233750" at="691,5,693,5">
+        <var name="nfe" id="6083395046987233751" />
+      </scope>
       <scope id="7533883740977705598" at="153,0,156,0">
         <var name="_context" id="7533883740977705598" />
       </scope>

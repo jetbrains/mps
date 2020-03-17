@@ -15,8 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/1986682148700850462">
     <file name="DeploymentDescriptorPersistence.java">
       <node id="1362762974904002750" at="25,54,26,108" concept="9" />
@@ -87,9 +86,6 @@
       <scope id="1362762974903650847" at="61,51,62,51" />
       <scope id="3451207279393967494" at="75,93,76,83" />
       <scope id="1711188937473981632" at="81,91,82,86" />
-      <scope id="5932019537937718987" at="97,0,98,39">
-        <var name="e" id="5932019537937718988" />
-      </scope>
       <scope id="5932019537937718990" at="97,27,98,39" />
       <scope id="1986682148700850464" at="23,0,25,0" />
       <scope id="7672529302541938245" at="41,29,43,71">
@@ -97,6 +93,9 @@
       </scope>
       <scope id="1362762974904191925" at="69,89,71,65">
         <var name="l" id="1362762974904386429" />
+      </scope>
+      <scope id="5932019537937718987" at="97,5,99,5">
+        <var name="e" id="5932019537937718988" />
       </scope>
       <scope id="3451207279393967491" at="74,0,77,11">
         <var name="b" id="3451207279393967492" />
@@ -247,9 +246,6 @@
       <scope id="3519773938288278612" at="36,117,37,158" />
       <scope id="3519773938288278651" at="42,118,43,133" />
       <scope id="3519773938288278692" at="49,123,50,135" />
-      <scope id="3519773938288278741" at="62,0,63,39">
-        <var name="e" id="3519773938288278742" />
-      </scope>
       <scope id="3519773938288278744" at="62,27,63,39" />
       <scope id="2184872129966407275" at="73,41,74,84" />
       <scope id="5386339623102268029" at="20,0,22,0" />
@@ -258,6 +254,9 @@
       </scope>
       <scope id="3519773938288278712" at="54,76,56,84">
         <var name="result_raojav_a0a11a0a0a0a0c" id="3519773938288278712" />
+      </scope>
+      <scope id="3519773938288278741" at="62,5,64,5">
+        <var name="e" id="3519773938288278742" />
       </scope>
       <scope id="3519773938288278603" at="35,11,38,11">
         <var name="exportedLang" id="3519773938288278611" />
@@ -538,9 +537,6 @@
       <scope id="1772246947774055984" at="78,31,79,167" />
       <scope id="2907261777969004463" at="83,31,84,161" />
       <scope id="1772246947774056039" at="90,148,91,162" />
-      <scope id="3519773938286957268" at="114,0,115,40">
-        <var name="ex" id="3519773938286957269" />
-      </scope>
       <scope id="3519773938286957271" at="114,28,115,40" />
       <scope id="842994667883030721" at="122,40,123,61" />
       <scope id="842994667883030729" at="125,44,126,69" />
@@ -567,6 +563,9 @@
       </scope>
       <scope id="1772246947774056115" at="104,35,106,86">
         <var name="result_wk2vdq_a0a4a0a42a0a0a0a0h" id="1772246947774056115" />
+      </scope>
+      <scope id="3519773938286957268" at="114,5,116,5">
+        <var name="ex" id="3519773938286957269" />
       </scope>
       <scope id="3519773938289394449" at="136,44,138,57" />
       <scope id="842994667883030851" at="187,58,189,0" />
@@ -828,29 +827,23 @@
       <node id="842994667883031197" at="40,9,116,17" concept="2" />
       <node id="3519773938287655295" at="39,0,121,5" concept="15" />
       <node id="3519773938287638034" at="36,0,124,0" concept="6" trace="load#(Lorg/jdom/Element;)Ljetbrains/mps/project/structure/modules/LanguageDescriptor;" />
-      <scope id="7363351619055940929" at="59,0,59,53">
-        <var name="ignored" id="7363351619055940930" />
-      </scope>
       <scope id="7363351619055940932" at="59,53,59,53" />
-      <scope id="2765916943355891565" at="66,0,66,53">
-        <var name="ignored" id="2765916943355891567" />
-      </scope>
       <scope id="2765916943355891571" at="66,53,66,53" />
       <scope id="5386339623102268023" at="32,74,33,32" />
       <scope id="7363351619055940922" at="57,17,58,88" />
+      <scope id="7363351619055940929" at="59,13,60,13">
+        <var name="ignored" id="7363351619055940930" />
+      </scope>
       <scope id="2765916943355891564" at="64,17,65,92" />
+      <scope id="2765916943355891565" at="66,13,67,13">
+        <var name="ignored" id="2765916943355891567" />
+      </scope>
       <scope id="842994667883031247" at="71,34,72,170" />
       <scope id="2907261777969093650" at="76,31,77,161" />
       <scope id="842994667883031300" at="82,157,83,146" />
       <scope id="842994667883031338" at="91,102,92,159" />
       <scope id="842994667883031443" at="111,136,112,123" />
-      <scope id="3519773938287674361" at="117,0,118,15">
-        <var name="ex" id="3519773938287674362" />
-      </scope>
       <scope id="3519773938287674364" at="117,38,118,15" />
-      <scope id="3519773938287655297" at="119,0,120,40">
-        <var name="ex" id="3519773938287655298" />
-      </scope>
       <scope id="3519773938287655300" at="119,28,120,40" />
       <scope id="3519773938287398593" at="129,37,130,74" />
       <scope id="2891777537677387078" at="134,44,135,63" />
@@ -864,6 +857,12 @@
       <scope id="842994667883031321" at="87,36,89,68" />
       <scope id="702807520180542922" at="106,41,108,64">
         <var name="roots" id="2896881808974360394" />
+      </scope>
+      <scope id="3519773938287674361" at="117,5,119,5">
+        <var name="ex" id="3519773938287674362" />
+      </scope>
+      <scope id="3519773938287655297" at="119,5,121,5">
+        <var name="ex" id="3519773938287655298" />
       </scope>
       <scope id="5386339623102268020" at="32,0,35,0">
         <var name="macroHelper" id="3519773938287380474" />
@@ -1126,7 +1125,7 @@
       <node id="842994667883031992" at="135,75,152,24" concept="8" />
       <node id="842994667883032122" at="169,0,187,0" concept="12" trace="loadModelRoots#(Ljava/lang/Iterable;Ljetbrains/mps/util/MacroHelper;)Ljava/util/List;" />
       <node id="842994667883031985" at="135,0,154,0" concept="12" trace="loadDependenciesList#(Lorg/jdom/Element;)Ljava/util/List;" />
-      <node id="8222824327012642930" at="289,31,311,5" concept="16" />
+      <node id="8222824327012642930" at="289,31,311,5" concept="15" />
       <node id="842994667883031743" at="55,0,81,0" concept="12" trace="loadDependencies#(Ljetbrains/mps/project/structure/modules/ModuleDescriptor;Lorg/jdom/Element;)V" />
       <node id="8222824327012642906" at="281,0,315,0" concept="12" trace="loadBrokenModule#(Ljetbrains/mps/project/structure/modules/ModuleDescriptor;Ljetbrains/mps/vfs/IFile;Ljetbrains/mps/project/persistence/ModuleReadException;)V" />
       <node id="842994667883031873" at="82,0,134,0" concept="12" trace="saveDependencies#(Lorg/jdom/Element;Ljetbrains/mps/project/structure/modules/ModuleDescriptor;)V" />
@@ -1207,9 +1206,6 @@
         <var name="descriptor" id="2709156219364672181" />
         <var name="file" id="2709156219364672183" />
       </scope>
-      <scope id="8222824327012643005" at="305,0,308,7">
-        <var name="e" id="8222824327012643006" />
-      </scope>
       <scope id="8222824327012643008" at="305,29,308,7" />
       <scope id="3226072627551309853" at="59,0,63,0">
         <var name="it" id="3226072627551309853" />
@@ -1228,6 +1224,9 @@
       </scope>
       <scope id="5876291284226149029" at="205,5,209,5">
         <var name="elem" id="5876291284226149032" />
+      </scope>
+      <scope id="8222824327012643005" at="305,5,309,5">
+        <var name="e" id="8222824327012643006" />
       </scope>
       <scope id="5876291284226230403" at="215,5,220,5">
         <var name="childMemento" id="5876291284226230406" />
@@ -1476,15 +1475,15 @@
       <scope id="1259651549062770423" at="67,23,68,24" />
       <scope id="1259651549062793186" at="85,36,86,20" />
       <scope id="1259651549062849266" at="91,43,92,67" />
-      <scope id="1259651549062793240" at="95,0,96,36">
-        <var name="e" id="1259651549062793231" />
-      </scope>
       <scope id="1259651549062793235" at="95,27,96,36" />
       <scope id="4585436338389638097" at="103,34,104,102" />
       <scope id="4585436338389638114" at="106,36,107,96" />
       <scope id="4585436338389694299" at="108,71,109,79" />
       <scope id="5386339623102269792" at="36,96,38,32" />
       <scope id="2184872129967259058" at="49,15,51,130" />
+      <scope id="1259651549062793240" at="95,5,97,5">
+        <var name="e" id="1259651549062793231" />
+      </scope>
       <scope id="2184872129967259045" at="46,0,49,0">
         <var name="p" id="2184872129967259045" />
       </scope>
@@ -1655,17 +1654,14 @@
       <node id="842994667883032879" at="40,9,103,17" concept="2" />
       <node id="3519773938286614362" at="39,34,106,5" concept="15" />
       <node id="3519773938286550624" at="37,0,109,0" concept="6" trace="load#(Lorg/jdom/Element;)Ljetbrains/mps/project/structure/modules/SolutionDescriptor;" />
-      <scope id="7363351619055973635" at="71,0,71,53">
-        <var name="ignored" id="7363351619055973636" />
-      </scope>
       <scope id="7363351619055973638" at="71,53,71,53" />
       <scope id="5386339623102269797" at="33,74,34,32" />
       <scope id="7363351619055973628" at="69,17,70,88" />
+      <scope id="7363351619055973635" at="71,13,72,13">
+        <var name="ignored" id="7363351619055973636" />
+      </scope>
       <scope id="2907261777969168061" at="85,31,86,161" />
       <scope id="842994667883033017" at="98,141,99,123" />
-      <scope id="3519773938286614365" at="104,0,105,40">
-        <var name="ex" id="3519773938286614367" />
-      </scope>
       <scope id="3519773938286614371" at="104,28,105,40" />
       <scope id="842994667883033071" at="113,44,114,61" />
       <scope id="842994667883033089" at="116,37,117,65" />
@@ -1686,6 +1682,9 @@
       </scope>
       <scope id="702807520180572302" at="91,41,93,64">
         <var name="roots" id="2896881808974360369" />
+      </scope>
+      <scope id="3519773938286614365" at="104,5,106,5">
+        <var name="ex" id="3519773938286614367" />
       </scope>
       <scope id="5386339623102269794" at="33,0,36,0">
         <var name="macroHelper" id="3519773938286528591" />

@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:73cef602-d8a6-459c-91ff-d4e129d1a7c5(jetbrains.mps.tool.builder)/6744798568372185045">
     <file name="CoreWorker.java">
       <node id="6744798568372334015" at="12,38,13,20" concept="14" />
@@ -107,11 +107,11 @@
       <node id="878521226301294266" at="27,0,45,0" concept="8" trace="work#()V" />
       <scope id="8514960456944780549" at="18,41,19,20" />
       <scope id="679099339648939377" at="36,45,37,51" />
-      <scope id="8514960456945579675" at="39,0,40,30">
-        <var name="e" id="8514960456945579677" />
-      </scope>
       <scope id="8514960456945579676" at="39,31,40,30" />
       <scope id="2326999218710575323" at="22,70,24,28" />
+      <scope id="8514960456945579675" at="39,9,41,9">
+        <var name="e" id="8514960456945579677" />
+      </scope>
       <scope id="8514960456944780545" at="18,0,21,0">
         <var name="whatToDo" id="8514960456944780552" />
       </scope>
@@ -312,9 +312,6 @@
       <scope id="878521226300774609" at="245,33,246,26" />
       <scope id="878521226300774619" at="248,36,249,26" />
       <scope id="878521226300774634" at="251,34,252,27" />
-      <scope id="878521226300773833" at="132,0,134,21">
-        <var name="e" id="878521226300773841" />
-      </scope>
       <scope id="878521226300773834" at="132,27,134,21" />
       <scope id="6132171475560891566" at="145,32,147,27" />
       <scope id="878521226300774047" at="163,35,165,22" />
@@ -334,6 +331,9 @@
       </scope>
       <scope id="4063747740852400683" at="116,80,119,5">
         <var name="pd" id="4063747740852400685" />
+      </scope>
+      <scope id="878521226300773833" at="132,5,135,5">
+        <var name="e" id="878521226300773841" />
       </scope>
       <scope id="878521226300773892" at="140,0,143,0" />
       <scope id="5787149849155078405" at="151,0,154,0" />

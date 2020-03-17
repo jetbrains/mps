@@ -18,8 +18,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/2220861080746402276">
     <file name="MpsRunnerProperties.java">
       <node id="6102524510012499463" at="9,0,10,0" concept="14" trace="START_SOLUTION" />
@@ -121,9 +120,6 @@
       <scope id="5682549678865142939" at="32,33,33,67" />
       <scope id="5682549678865142983" at="39,35,40,69" />
       <scope id="4297162197629942118" at="47,9,48,66" />
-      <scope id="4297162197629942119" at="49,0,50,15">
-        <var name="ex" id="4297162197629942121" />
-      </scope>
       <scope id="4297162197629942125" at="49,40,50,15" />
       <scope id="3415722583341320049" at="57,39,58,74" />
       <scope id="3938719774424675064" at="64,35,65,67" />
@@ -132,6 +128,9 @@
       <scope id="5682549678865142919" at="28,64,30,16" />
       <scope id="5682549678865142963" at="35,68,37,16" />
       <scope id="4297162197629886272" at="42,67,44,16" />
+      <scope id="4297162197629942119" at="49,5,51,5">
+        <var name="ex" id="4297162197629942121" />
+      </scope>
       <scope id="3415722583341225074" at="53,74,55,16" />
       <scope id="3938719774424675046" at="60,63,62,16" />
       <scope id="7766370779597762080" at="67,73,69,16" />
@@ -343,9 +342,6 @@
       <scope id="4774692914340655803" at="70,69,71,109" />
       <scope id="4774692914340655762" at="82,31,83,24" />
       <scope id="4774692914340655821" at="93,52,94,130" />
-      <scope id="4774692914340655811" at="96,0,97,17">
-        <var name="e" id="4774692914340655815" />
-      </scope>
       <scope id="4774692914340655812" at="96,29,97,17" />
       <scope id="4774692914340655864" at="102,46,103,74" />
       <scope id="4774692914340656026" at="121,41,122,43" />
@@ -365,6 +361,9 @@
       <scope id="4774692914340656655" at="220,20,221,18" />
       <scope id="4774692914340656663" at="223,29,224,94" />
       <scope id="4774692914340655688" at="63,0,65,0" />
+      <scope id="4774692914340655811" at="96,5,98,5">
+        <var name="e" id="4774692914340655815" />
+      </scope>
       <scope id="4774692914340656003" at="109,48,111,18" />
       <scope id="4774692914340656017" at="116,66,118,37" />
       <scope id="4774692914340656634" at="214,49,216,55">
@@ -377,9 +376,6 @@
       <scope id="4774692914340656023" at="121,0,124,0" />
       <scope id="4774692914340656312" at="173,109,176,18" />
       <scope id="4774692914340656436" at="198,29,201,18" />
-      <scope id="6541744286239455099" at="206,0,209,7">
-        <var name="e" id="6541744286239455101" />
-      </scope>
       <scope id="6541744286239455100" at="206,46,209,7" />
       <scope id="4774692914340656697" at="229,36,232,57">
         <var name="key" id="4774692914340656699" />
@@ -390,6 +386,9 @@
       </scope>
       <scope id="4774692914340656362" at="191,27,195,9">
         <var name="archivePath" id="4774692914340656364" />
+      </scope>
+      <scope id="6541744286239455099" at="206,5,210,5">
+        <var name="e" id="6541744286239455101" />
       </scope>
       <scope id="4774692914340656629" at="214,0,218,0">
         <var name="s" id="4774692914340656632" />
@@ -646,7 +645,7 @@
       <node id="878521226297928209" at="253,0,262,0" concept="15" trace="createTmpFile#()Ljava/io/File;" />
       <node id="878521226297928167" at="240,0,251,0" concept="9" trace="addPerfomanceReport#(Ljava/lang/String;)V" />
       <node id="878521226297928075" at="224,0,239,0" concept="9" trace="dumpToTmpFile#()Ljava/io/File;" />
-      <node id="878521226297928278" at="267,35,282,5" concept="19" />
+      <node id="878521226297928278" at="267,35,282,5" concept="18" />
       <node id="878521226297928267" at="266,0,285,0" concept="15" trace="fromDumpInFile#(Ljava/io/File;)Ljetbrains/mps/tool/common/Script;" />
       <node id="878521226297927964" at="199,39,221,7" concept="8" />
       <node id="878521226297927821" at="173,0,196,0" concept="9" trace="prepareTaskCustomData#()Lorg/jdom/Element;" />
@@ -699,27 +698,24 @@
       <scope id="878521226297928184" at="242,26,243,19" />
       <scope id="878521226297928194" at="245,31,246,21" />
       <scope id="878521226297928260" at="255,9,256,50" />
-      <scope id="878521226297928252" at="257,0,258,26">
-        <var name="e" id="878521226297928258" />
-      </scope>
       <scope id="878521226297928253" at="257,29,258,26" />
-      <scope id="878521226297928285" at="273,0,274,26">
-        <var name="e" id="878521226297928286" />
-      </scope>
       <scope id="878521226297928288" at="273,31,274,26" />
-      <scope id="878521226297928293" at="275,0,276,26">
-        <var name="e" id="878521226297928294" />
-      </scope>
       <scope id="878521226297928296" at="275,29,276,26" />
       <scope id="878521226297928307" at="279,29,280,73" />
       <scope id="878521226297927283" at="42,0,44,0" />
       <scope id="878521226297927317" at="58,39,60,23" />
       <scope id="878521226297927342" at="69,46,71,33" />
       <scope id="878521226297927292" at="80,40,82,24" />
-      <scope id="878521226297928131" at="234,0,236,36">
-        <var name="e" id="878521226297928132" />
-      </scope>
       <scope id="878521226297928134" at="234,29,236,36" />
+      <scope id="878521226297928252" at="257,5,259,5">
+        <var name="e" id="878521226297928258" />
+      </scope>
+      <scope id="878521226297928285" at="273,5,275,5">
+        <var name="e" id="878521226297928286" />
+      </scope>
+      <scope id="878521226297928293" at="275,5,277,5">
+        <var name="e" id="878521226297928294" />
+      </scope>
       <scope id="7110336455354018926" at="44,0,47,0" />
       <scope id="7110336455354018932" at="47,0,50,0">
         <var name="repo" id="7110336455354018939" />
@@ -811,6 +807,9 @@
       </scope>
       <scope id="878521226297928125" at="230,9,233,21">
         <var name="tmpFile" id="878521226297928080" />
+      </scope>
+      <scope id="878521226297928131" at="234,5,237,5">
+        <var name="e" id="878521226297928132" />
       </scope>
       <scope id="878521226297927362" at="51,48,55,5" />
       <scope id="878521226297927312" at="58,0,62,0">
@@ -1299,7 +1298,7 @@
       <node id="8797607015334522899" at="102,0,106,0" concept="9" trace="escapeAttributeEntities#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="8797607015334522910" at="106,0,110,0" concept="9" trace="escapeElementEntities#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="8797607015334522921" at="111,0,115,0" concept="15" trace="escapeText#(Ljava/lang/String;ZZ)Ljava/lang/String;" />
-      <node id="8797607015334522787" at="68,79,73,5" concept="19" />
+      <node id="8797607015334522787" at="68,79,73,5" concept="18" />
       <node id="8797607015334522872" at="94,0,99,0" concept="15" trace="createOutputter#()Lorg/jdom/output/XMLOutputter;" />
       <node id="8797607015334522986" at="131,14,136,9" concept="8" />
       <node id="8797607015334523281" at="184,24,189,15" concept="8" />
@@ -1315,7 +1314,7 @@
       <node id="8797607015334523004" at="121,27,130,9" concept="8" />
       <node id="8797607015334523218" at="204,18,213,13" concept="8" />
       <node id="8797607015334522709" at="51,0,61,0" concept="15" trace="createBuilder#()Lorg/jdom/input/SAXBuilder;" />
-      <node id="8797607015334522663" at="38,51,49,5" concept="19" />
+      <node id="8797607015334522663" at="38,51,49,5" concept="18" />
       <node id="8797607015334522827" at="79,50,91,5" concept="8" />
       <node id="8797607015334523270" at="182,36,195,13" concept="18" />
       <node id="8797607015334522748" at="61,0,75,0" concept="15" trace="writeDocument#(Lorg/jdom/Document;Ljava/io/File;)V" />
@@ -1365,9 +1364,6 @@
       <scope id="8797607015334523313" at="185,87,186,63" />
       <scope id="8797607015334523303" at="187,22,188,63" />
       <scope id="8797607015334523331" at="190,48,191,61" />
-      <scope id="8797607015334523271" at="193,0,194,31">
-        <var name="ex" id="8797607015334523275" />
-      </scope>
       <scope id="8797607015334523272" at="193,48,194,31" />
       <scope id="8797607015334523264" at="198,37,199,32" />
       <scope id="8797607015334523259" at="201,37,202,32" />
@@ -1378,16 +1374,19 @@
       <scope id="8797607015334523365" at="229,32,230,28" />
       <scope id="8797607015334523359" at="231,16,232,35" />
       <scope id="8797607015334522642" at="34,0,36,0" />
-      <scope id="8797607015334522664" at="41,0,43,14">
-        <var name="e" id="8797607015334522677" />
-      </scope>
       <scope id="8797607015334522665" at="41,31,43,14" />
-      <scope id="8797607015334522679" at="44,0,46,14">
-        <var name="e" id="8797607015334522692" />
-      </scope>
       <scope id="8797607015334522680" at="44,29,46,14" />
       <scope id="8797607015334522847" at="86,25,88,13" />
       <scope id="8797607015334522895" at="100,0,102,0" />
+      <scope id="8797607015334523271" at="193,13,195,13">
+        <var name="ex" id="8797607015334523275" />
+      </scope>
+      <scope id="8797607015334522664" at="41,5,44,5">
+        <var name="e" id="8797607015334522677" />
+      </scope>
+      <scope id="8797607015334522679" at="44,5,47,5">
+        <var name="e" id="8797607015334522692" />
+      </scope>
       <scope id="8797607015334522800" at="75,0,78,0">
         <var name="document" id="8797607015334522802" />
         <var name="stream" id="8797607015334522804" />

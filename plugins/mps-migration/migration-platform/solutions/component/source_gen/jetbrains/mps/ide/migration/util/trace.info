@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:22e3ec81-a192-41cd-83a2-488758bdeedc(jetbrains.mps.ide.migration.util)/2009787284780725896">
     <file name="MigrationDataUtil.java">
       <node id="2009787284780725909" at="43,113,44,37" concept="7" />
@@ -77,33 +77,33 @@
       <node id="2009787284780726120" at="105,0,121,0" concept="12" trace="getDataFile#(Ljetbrains/mps/project/AbstractModule;)Ljetbrains/mps/vfs/IFile;" />
       <node id="2009787284780725899" at="43,0,64,0" concept="12" trace="saveData#(Ljetbrains/mps/project/AbstractModule;Ljava/lang/Iterable;)V" />
       <node id="2009787284780725958" at="64,0,87,0" concept="12" trace="loadData#(Ljetbrains/mps/project/AbstractModule;)Ljava/lang/Iterable;" />
-      <scope id="7417095922909010298" at="56,0,57,36">
-        <var name="e" id="7417095922909010300" />
-      </scope>
       <scope id="7417095922909010299" at="56,29,57,36" />
-      <scope id="8274493178029711686" at="58,0,59,37">
-        <var name="ex" id="8274493178029711687" />
-      </scope>
       <scope id="8274493178029711689" at="58,41,59,37" />
-      <scope id="7417095922909010302" at="60,0,61,36">
-        <var name="e" id="7417095922909010304" />
-      </scope>
       <scope id="7417095922909010303" at="60,36,61,36" />
       <scope id="2859175804865249067" at="66,27,67,104" />
       <scope id="7417095922909096505" at="74,9,75,39" />
-      <scope id="7417095922909153758" at="76,0,77,36">
-        <var name="e" id="7417095922909153760" />
-      </scope>
       <scope id="7417095922909153759" at="76,36,77,36" />
-      <scope id="4946444090186621853" at="78,0,79,36">
-        <var name="e" id="4946444090186621859" />
-      </scope>
       <scope id="4946444090186621854" at="78,48,79,36" />
       <scope id="7417095922909197355" at="82,99,83,240" />
       <scope id="1035923429313756588" at="94,29,95,18" />
       <scope id="1035923429313804660" at="98,76,99,47" />
       <scope id="3829578809888937236" at="109,33,110,18" />
       <scope id="8963049984690336624" at="116,12,117,49" />
+      <scope id="7417095922909010298" at="56,5,58,5">
+        <var name="e" id="7417095922909010300" />
+      </scope>
+      <scope id="8274493178029711686" at="58,5,60,5">
+        <var name="ex" id="8274493178029711687" />
+      </scope>
+      <scope id="7417095922909010302" at="60,5,62,5">
+        <var name="e" id="7417095922909010304" />
+      </scope>
+      <scope id="7417095922909153758" at="76,5,78,5">
+        <var name="e" id="7417095922909153760" />
+      </scope>
+      <scope id="4946444090186621853" at="78,5,80,5">
+        <var name="e" id="4946444090186621859" />
+      </scope>
       <scope id="8963049984690326440" at="113,38,115,52" />
       <scope id="2009787284781903598" at="50,88,53,69">
         <var name="stepData" id="7417095922908859587" />

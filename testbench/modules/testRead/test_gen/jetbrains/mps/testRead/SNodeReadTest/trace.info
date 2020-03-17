@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:ee85802d-3f17-4cb5-b08b-75e01c861019(jetbrains.mps.testRead.SNodeReadTest@tests)/8150353254540154656">
     <file name="SNodeReadAccess_Test.java">
       <node id="8150353254540154656" at="46,33,47,25" concept="15" />
@@ -353,9 +353,6 @@
       <scope id="8150353254540154660" at="107,60,108,51" />
       <scope id="8150353254540154656" at="113,52,114,19" />
       <scope id="8150353254540270363" at="350,15,351,33" />
-      <scope id="4195712261513825612" at="352,0,353,54">
-        <var name="e" id="4195712261513825613" />
-      </scope>
       <scope id="4195712261513825615" at="352,33,353,54" />
       <scope id="4195712261513821236" at="359,122,360,75" />
       <scope id="4195712261513821215" at="362,20,363,69" />
@@ -364,6 +361,9 @@
       <scope id="8167646940337393857" at="131,36,133,59" />
       <scope id="8167646940337393890" at="138,40,140,59" />
       <scope id="8358368686239285912" at="342,85,344,16" />
+      <scope id="4195712261513825612" at="352,11,354,11">
+        <var name="e" id="4195712261513825613" />
+      </scope>
       <scope id="4195712261513821478" at="373,53,375,59" />
       <scope id="4195712261513821805" at="380,49,382,59" />
       <scope id="3415879826270702856" at="428,69,430,58" />

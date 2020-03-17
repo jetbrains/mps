@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)/4183391441819863852">
     <file name="ClassifierSuccessorsFinder.java">
@@ -383,12 +383,12 @@
       <scope id="4183391441819864603" at="138,143,139,79" />
       <scope id="4183391441819864609" at="141,86,142,169" />
       <scope id="4183391441819864636" at="146,141,147,80" />
-      <scope id="8164689802185069673" at="152,0,153,164">
-        <var name="ex" id="8164689802185069677" />
-      </scope>
       <scope id="8164689802185069675" at="152,30,153,164" />
       <scope id="4183391441819864651" at="158,134,159,113" />
       <scope id="4183391441819864677" at="164,107,165,15" />
+      <scope id="8164689802185069673" at="152,7,154,7">
+        <var name="ex" id="8164689802185069677" />
+      </scope>
       <scope id="4183391441819864690" at="169,31,171,57" />
       <scope id="6510733641542063952" at="52,0,55,0">
         <var name="filter" id="6510733641542075472" />

@@ -15,8 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:8ef4c1fc-fb61-4d5c-806c-7a971cfb9392(tests.testPersistence.test@tests)/2535783480591520870">
     <file name="TestPersistence_Test.java">
       <node id="2535783480591520870" at="59,33,60,25" concept="14" />
@@ -217,13 +216,7 @@
       <scope id="2535783480591578116" at="72,62,73,53" />
       <scope id="2535783480591520870" at="78,52,79,19" />
       <scope id="1508185362091433098" at="87,11,88,107" />
-      <scope id="1508185362091433099" at="89,0,90,36">
-        <var name="e" id="1508185362091433103" />
-      </scope>
       <scope id="1508185362091433101" at="89,31,90,36" />
-      <scope id="129982235938472455" at="112,0,113,38">
-        <var name="e" id="129982235938472457" />
-      </scope>
       <scope id="129982235938472456" at="112,33,113,38" />
       <scope id="1090488322151946580" at="160,39,161,66" />
       <scope id="1090488322152559345" at="172,82,173,143" />
@@ -236,6 +229,12 @@
       <scope id="8738988869008558039" at="258,57,259,31" />
       <scope id="8738988869008669592" at="261,55,262,31" />
       <scope id="1090488322151188859" at="307,74,308,58" />
+      <scope id="1508185362091433099" at="89,7,91,7">
+        <var name="e" id="1508185362091433103" />
+      </scope>
+      <scope id="129982235938472455" at="112,9,114,9">
+        <var name="e" id="129982235938472457" />
+      </scope>
       <scope id="1090488322151901214" at="181,84,183,18" />
       <scope id="1090488322151901254" at="193,84,195,18" />
       <scope id="1090488322151194184" at="278,26,280,56" />
@@ -521,7 +520,7 @@
       <node id="3895553186365942476" at="101,28,107,7" concept="5" />
       <node id="3895553186365942515" at="113,28,119,7" concept="5" />
       <node id="3895553186365942405" at="89,0,97,0" concept="13" trace="assertListsEqual#(Ljava/util/List;Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="7626086600842584330" at="69,117,78,5" concept="16" />
+      <node id="7626086600842584330" at="69,117,78,5" concept="15" />
       <node id="7626086600842584370" at="69,0,80,0" concept="7" trace="saveTestModelInPersistence#(Ljetbrains/mps/persistence/PersistenceUtil/InMemoryStreamDataSource;I)V" />
       <node id="3895553186365942469" at="99,48,111,5" concept="5" />
       <node id="3895553186365942508" at="111,5,123,5" concept="5" />
@@ -540,12 +539,12 @@
       <scope id="3895553186365942566" at="127,38,128,86" />
       <scope id="3761501395403546885" at="55,65,57,67" />
       <scope id="7626086600842584347" at="70,9,72,83" />
-      <scope id="7626086600842584331" at="73,0,75,26">
-        <var name="e" id="7626086600842584340" />
-      </scope>
       <scope id="7626086600842584332" at="73,29,75,26" />
       <scope id="3895553186365942486" at="103,56,105,16" />
       <scope id="3895553186365942525" at="115,56,117,16" />
+      <scope id="7626086600842584331" at="73,5,76,5">
+        <var name="e" id="7626086600842584340" />
+      </scope>
       <scope id="7626086600842504809" at="81,0,84,0" />
       <scope id="3895553186366694026" at="85,0,88,0" />
       <scope id="3895553186365326311" at="39,0,43,0">

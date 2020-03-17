@@ -8,8 +8,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
       <unit at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.testExtendingLanguage.editor.EditorAspectDescriptorImpl" />
@@ -30,7 +29,7 @@
       <node id="1068638940632627681" at="39,124,40,156" concept="5" />
       <node id="1068638940632627681" at="40,156,41,18" concept="6" />
       <node id="1068638940632627681" at="20,0,24,0" concept="4" trace="isApplicableToLocation#(Ljava/lang/String;)Z" />
-      <node id="1068638940632627681" at="29,296,34,5" concept="9" />
+      <node id="1068638940632627681" at="29,296,34,5" concept="8" />
       <node id="1068638940632627681" at="37,0,43,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
       <node id="1068638940632627681" at="25,0,36,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
       <scope id="1068638940632627681" at="21,67,22,63" />
@@ -87,10 +86,10 @@
       <node id="3526874291840845065" at="92,0,95,0" concept="4" trace="execute#(Ljava/lang/String;)V" />
       <node id="3526874291840845051" at="29,0,33,0" concept="4" trace="isApplicableToLocation#(Ljava/lang/String;)Z" />
       <node id="3526874291840845065" at="99,0,103,0" concept="4" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
-      <node id="3526874291840845051" at="38,311,43,5" concept="9" />
+      <node id="3526874291840845051" at="38,311,43,5" concept="8" />
       <node id="3526874291840845065" at="86,0,91,0" concept="4" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="3526874291840845065" at="60,25,66,7" concept="8" />
-      <node id="3526874291840845065" at="67,51,73,7" concept="9" />
+      <node id="3526874291840845065" at="67,51,73,7" concept="8" />
       <node id="3526874291840845051" at="46,0,55,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
       <node id="3526874291840845051" at="34,0,45,0" concept="4" trace="createMenuItems#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
       <node id="3526874291840845065" at="57,0,76,0" concept="4" trace="createItem#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuItem;" />
@@ -106,12 +105,12 @@
       <scope id="3526874291840845065" at="83,59,84,37" />
       <scope id="3526874291840845069" at="88,50,89,58" />
       <scope id="3526874291840845065" at="100,49,101,37" />
-      <scope id="3526874291840845065" at="63,0,65,20">
-        <var name="t" id="3526874291840845065" />
-      </scope>
       <scope id="3526874291840845065" at="63,29,65,20" />
       <scope id="3526874291840845065" at="68,11,70,71" />
       <scope id="3526874291840845051" at="25,0,28,0" />
+      <scope id="3526874291840845065" at="63,7,66,7">
+        <var name="t" id="3526874291840845065" />
+      </scope>
       <scope id="3526874291840845065" at="80,0,83,0">
         <var name="context" id="3526874291840845065" />
       </scope>

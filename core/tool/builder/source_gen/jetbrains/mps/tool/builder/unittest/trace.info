@@ -9,7 +9,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:128708be-e37c-484b-b372-892904c802d9(jetbrains.mps.tool.builder.unittest)/2546981710036147025">
     <file name="ConsoleTestReporter.java">
@@ -230,9 +230,6 @@
       <node id="2546981710036148675" at="130,0,142,0" concept="4" trace="testErrorLine#(Ljava/lang/String;Ljava/lang/String;)V" />
       <node id="2546981710036148565" at="105,0,118,0" concept="4" trace="testFailed#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" />
       <node id="2546981710036148475" at="91,0,105,0" concept="4" trace="testFinished#(Ljava/lang/String;)V" />
-      <scope id="2546981710036148917" at="180,0,180,45">
-        <var name="ignore" id="2546981710036148918" />
-      </scope>
       <scope id="2546981710036148920" at="180,45,180,45" />
       <scope id="2546981710036148323" at="71,56,72,68" />
       <scope id="2546981710036148384" at="78,35,79,121" />
@@ -249,6 +246,9 @@
       <scope id="2546981710036148774" at="152,48,153,38" />
       <scope id="2546981710036148857" at="165,38,166,54" />
       <scope id="2546981710036148908" at="178,11,179,65" />
+      <scope id="2546981710036148917" at="180,7,181,7">
+        <var name="ignore" id="2546981710036148918" />
+      </scope>
       <scope id="2546981710036148650" at="124,21,126,59" />
       <scope id="2546981710036148700" at="136,21,138,59" />
       <scope id="2546981710036148791" at="157,47,159,63">

@@ -12,7 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:70ba7cf7-d705-4776-9784-5a0abc3ae48a(jetbrains.mps.execution.impl.configurations.tests.outproces@tests)/3604131957890398125">
     <file name="MPSInstance_Test.java">
       <node id="3604131957890398125" at="30,29,31,25" concept="11" />
@@ -154,14 +154,14 @@
       <scope id="7120092006645143122" at="121,69,122,120" />
       <scope id="7120092006645143135" at="123,34,124,57" />
       <scope id="7120092006645143140" at="126,60,127,51" />
-      <scope id="7120092006645245953" at="130,0,131,36">
-        <var name="e" id="7120092006645245954" />
-      </scope>
       <scope id="7120092006645245956" at="130,38,131,36" />
       <scope id="5101378672992822296" at="134,47,135,55" />
       <scope id="7120092006645143150" at="160,57,161,45" />
       <scope id="7120092006645143711" at="83,61,85,92">
         <var name="testsToFail" id="5101378673001047058" />
+      </scope>
+      <scope id="7120092006645245953" at="130,7,132,7">
+        <var name="e" id="7120092006645245954" />
       </scope>
       <scope id="8128243960970298224" at="47,0,50,0" />
       <scope id="8128243960970298224" at="74,0,77,0">

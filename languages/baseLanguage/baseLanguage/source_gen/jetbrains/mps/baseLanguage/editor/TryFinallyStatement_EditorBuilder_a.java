@@ -187,7 +187,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.catchClause$GIrD;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.AbstractCatchClause$ZI;
+      return CONCEPTS.CatchClause$hu;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -343,6 +343,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
-    /*package*/ static final SConcept AbstractCatchClause$ZI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f43fe1c1L, "jetbrains.mps.baseLanguage.structure.AbstractCatchClause");
+    /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
   }
 }

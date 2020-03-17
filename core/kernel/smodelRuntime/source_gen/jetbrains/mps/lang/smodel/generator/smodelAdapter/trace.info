@@ -19,7 +19,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/1101499704720825413">
     <file name="SEnumOperations.java">
@@ -439,9 +439,6 @@
       <scope id="6135675736569512880" at="79,12,80,16" />
       <scope id="6135675736569512902" at="88,70,89,29" />
       <scope id="6135675736569512961" at="109,9,110,51" />
-      <scope id="6135675736569512967" at="111,0,112,54">
-        <var name="e" id="6135675736569512968" />
-      </scope>
       <scope id="6135675736569512970" at="111,40,112,54" />
       <scope id="6135675736569512986" at="117,43,118,58" />
       <scope id="6135675736569513027" at="131,12,132,16" />
@@ -457,9 +454,6 @@
       <scope id="6135675736573027712" at="206,26,207,48" />
       <scope id="6135675736569513235" at="210,30,211,35" />
       <scope id="6135675736569513280" at="223,39,224,20" />
-      <scope id="6135675736569513285" at="226,0,227,54">
-        <var name="e" id="6135675736569513286" />
-      </scope>
       <scope id="6135675736569513288" at="226,40,227,54" />
       <scope id="6135675736569513303" at="232,46,233,51" />
       <scope id="6135675736569513312" at="236,0,237,0" />
@@ -480,12 +474,18 @@
       <scope id="6135675736569512940" at="102,23,104,20">
         <var name="list" id="6135675736569512942" />
       </scope>
+      <scope id="6135675736569512967" at="111,5,113,5">
+        <var name="e" id="6135675736569512968" />
+      </scope>
       <scope id="583719781570936126" at="123,21,125,13" />
       <scope id="6135675736569513009" at="128,25,130,33">
         <var name="anchor" id="6135675736569513011" />
       </scope>
       <scope id="6135675736569513170" at="176,84,178,22" />
       <scope id="6135675736569513244" at="214,25,216,32" />
+      <scope id="6135675736569513285" at="226,5,228,5">
+        <var name="e" id="6135675736569513286" />
+      </scope>
       <scope id="6135675736569512767" at="26,0,29,0" />
       <scope id="8604731600307929209" at="66,22,69,7">
         <var name="i" id="8604731600307929212" />
@@ -3030,9 +3030,6 @@
       <scope id="6599163591527298594" at="88,12,89,18" />
       <scope id="7414301575328177908" at="95,56,96,27" />
       <scope id="6599163591527298639" at="102,9,103,59" />
-      <scope id="6599163591527298633" at="104,0,105,15">
-        <var name="e" id="6599163591527298637" />
-      </scope>
       <scope id="6599163591527298634" at="104,27,105,15" />
       <scope id="7414301575328184392" at="111,39,112,31" />
       <scope id="6599163591527298673" at="117,50,118,32" />
@@ -3073,6 +3070,9 @@
       <scope id="5162844862476597952" at="37,115,39,25" />
       <scope id="6202631021711098334" at="63,23,65,125">
         <var name="enumeration" id="8540066610855927370" />
+      </scope>
+      <scope id="6599163591527298633" at="104,5,106,5">
+        <var name="e" id="6599163591527298637" />
       </scope>
       <scope id="6599163591527298534" at="42,80,45,5" />
       <scope id="7019756663678706151" at="47,77,50,5" />

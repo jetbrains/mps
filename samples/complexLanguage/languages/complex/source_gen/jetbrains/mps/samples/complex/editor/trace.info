@@ -10,8 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
       <unit at="16,0,48,0" name="jetbrains.mps.samples.complex.editor.EditorAspectDescriptorImpl" />
@@ -98,7 +97,7 @@
       <node id="1196264073663" at="93,0,100,0" concept="5" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1196264073663" at="103,0,111,0" concept="5" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="1196420749309" at="65,0,74,0" concept="5" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="1196264073663" at="114,117,123,7" concept="11" />
+      <node id="1196264073663" at="114,117,123,7" concept="10" />
       <node id="1196420762000" at="129,0,138,0" concept="5" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1196264073663" at="47,0,58,0" concept="5" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1196264073663" at="111,0,125,0" concept="5" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -276,8 +275,8 @@
       <node id="1196422134243" at="146,0,153,0" concept="5" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1196422134243" at="89,0,97,0" concept="5" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="1196422134243" at="156,0,164,0" concept="5" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
-      <node id="1196422134243" at="100,117,109,7" concept="11" />
-      <node id="1196422134243" at="167,106,176,7" concept="11" />
+      <node id="1196422134243" at="100,117,109,7" concept="10" />
+      <node id="1196422134243" at="167,106,176,7" concept="10" />
       <node id="1196422134243" at="42,0,54,0" concept="5" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1196422134243" at="97,0,111,0" concept="5" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1196422134243" at="164,0,178,0" concept="5" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -635,7 +634,7 @@
       <node id="1741258697587183712" at="426,0,430,0" concept="5" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
       <node id="1741258697587183760" at="492,0,496,0" concept="5" trace="getShortDescriptionText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="1741258697587183755" at="498,0,502,0" concept="5" trace="getTraceInfo#()Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;" />
-      <node id="1741258697587183534" at="59,274,64,5" concept="11" />
+      <node id="1741258697587183534" at="59,274,64,5" concept="10" />
       <node id="1741258697587183540" at="112,0,117,0" concept="5" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="1741258697587183540" at="127,0,132,0" concept="5" trace="getOutputConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1741258697587183583" at="184,0,189,0" concept="5" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
@@ -649,17 +648,17 @@
       <node id="1741258697587183755" at="472,0,477,0" concept="5" trace="getLabelText#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="1741258697587183755" at="487,0,492,0" concept="5" trace="getOutputConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1741258697587183540" at="86,25,92,7" concept="10" />
-      <node id="1741258697587183540" at="93,51,99,7" concept="11" />
+      <node id="1741258697587183540" at="93,51,99,7" concept="10" />
       <node id="1741258697587183583" at="158,25,164,7" concept="10" />
-      <node id="1741258697587183583" at="165,51,171,7" concept="11" />
+      <node id="1741258697587183583" at="165,51,171,7" concept="10" />
       <node id="1741258697587183626" at="230,25,236,7" concept="10" />
-      <node id="1741258697587183626" at="237,51,243,7" concept="11" />
+      <node id="1741258697587183626" at="237,51,243,7" concept="10" />
       <node id="1741258697587183669" at="302,25,308,7" concept="10" />
-      <node id="1741258697587183669" at="309,51,315,7" concept="11" />
+      <node id="1741258697587183669" at="309,51,315,7" concept="10" />
       <node id="1741258697587183712" at="374,25,380,7" concept="10" />
-      <node id="1741258697587183712" at="381,51,387,7" concept="11" />
+      <node id="1741258697587183712" at="381,51,387,7" concept="10" />
       <node id="1741258697587183755" at="446,25,452,7" concept="10" />
-      <node id="1741258697587183755" at="453,51,459,7" concept="11" />
+      <node id="1741258697587183755" at="453,51,459,7" concept="10" />
       <node id="1741258697587183540" at="118,0,125,0" concept="5" trace="execute#(Ljava/lang/String;)V" />
       <node id="1741258697587183583" at="190,0,197,0" concept="5" trace="execute#(Ljava/lang/String;)V" />
       <node id="1741258697587183626" at="262,0,269,0" concept="5" trace="execute#(Ljava/lang/String;)V" />
@@ -739,37 +738,22 @@
       <scope id="1741258697587183762" at="493,70,494,32" />
       <scope id="1741258697587183755" at="499,49,500,37" />
       <scope id="1741258697587183755" at="507,114,508,56" />
-      <scope id="1741258697587183540" at="89,0,91,20">
-        <var name="t" id="1741258697587183540" />
-      </scope>
       <scope id="1741258697587183540" at="89,29,91,20" />
       <scope id="1741258697587183540" at="94,11,96,71" />
-      <scope id="1741258697587183583" at="161,0,163,20">
-        <var name="t" id="1741258697587183583" />
-      </scope>
       <scope id="1741258697587183583" at="161,29,163,20" />
       <scope id="1741258697587183583" at="166,11,168,71" />
-      <scope id="1741258697587183626" at="233,0,235,20">
-        <var name="t" id="1741258697587183626" />
-      </scope>
       <scope id="1741258697587183626" at="233,29,235,20" />
       <scope id="1741258697587183626" at="238,11,240,71" />
-      <scope id="1741258697587183669" at="305,0,307,20">
-        <var name="t" id="1741258697587183669" />
-      </scope>
       <scope id="1741258697587183669" at="305,29,307,20" />
       <scope id="1741258697587183669" at="310,11,312,71" />
-      <scope id="1741258697587183712" at="377,0,379,20">
-        <var name="t" id="1741258697587183712" />
-      </scope>
       <scope id="1741258697587183712" at="377,29,379,20" />
       <scope id="1741258697587183712" at="382,11,384,71" />
-      <scope id="1741258697587183755" at="449,0,451,20">
-        <var name="t" id="1741258697587183755" />
-      </scope>
       <scope id="1741258697587183755" at="449,29,451,20" />
       <scope id="1741258697587183755" at="454,11,456,71" />
       <scope id="1741258697587183534" at="46,0,49,0" />
+      <scope id="1741258697587183540" at="89,7,92,7">
+        <var name="t" id="1741258697587183540" />
+      </scope>
       <scope id="1741258697587183540" at="106,0,109,0">
         <var name="context" id="1741258697587183540" />
       </scope>
@@ -778,6 +762,9 @@
       </scope>
       <scope id="1741258697587183540" at="146,290,149,9">
         <var name="customizer" id="1741258697587183540" />
+      </scope>
+      <scope id="1741258697587183583" at="161,7,164,7">
+        <var name="t" id="1741258697587183583" />
       </scope>
       <scope id="1741258697587183583" at="178,0,181,0">
         <var name="context" id="1741258697587183583" />
@@ -788,6 +775,9 @@
       <scope id="1741258697587183583" at="218,290,221,9">
         <var name="customizer" id="1741258697587183583" />
       </scope>
+      <scope id="1741258697587183626" at="233,7,236,7">
+        <var name="t" id="1741258697587183626" />
+      </scope>
       <scope id="1741258697587183626" at="250,0,253,0">
         <var name="context" id="1741258697587183626" />
       </scope>
@@ -796,6 +786,9 @@
       </scope>
       <scope id="1741258697587183626" at="290,290,293,9">
         <var name="customizer" id="1741258697587183626" />
+      </scope>
+      <scope id="1741258697587183669" at="305,7,308,7">
+        <var name="t" id="1741258697587183669" />
       </scope>
       <scope id="1741258697587183669" at="322,0,325,0">
         <var name="context" id="1741258697587183669" />
@@ -806,6 +799,9 @@
       <scope id="1741258697587183669" at="362,290,365,9">
         <var name="customizer" id="1741258697587183669" />
       </scope>
+      <scope id="1741258697587183712" at="377,7,380,7">
+        <var name="t" id="1741258697587183712" />
+      </scope>
       <scope id="1741258697587183712" at="394,0,397,0">
         <var name="context" id="1741258697587183712" />
       </scope>
@@ -814,6 +810,9 @@
       </scope>
       <scope id="1741258697587183712" at="434,290,437,9">
         <var name="customizer" id="1741258697587183712" />
+      </scope>
+      <scope id="1741258697587183755" at="449,7,452,7">
+        <var name="t" id="1741258697587183755" />
       </scope>
       <scope id="1741258697587183755" at="466,0,469,0">
         <var name="context" id="1741258697587183755" />

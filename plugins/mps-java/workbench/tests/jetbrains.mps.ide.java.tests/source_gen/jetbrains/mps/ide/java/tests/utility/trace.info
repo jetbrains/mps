@@ -17,7 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:6ea8585f-7b0c-4c4e-a3ae-330a49f753b2(jetbrains.mps.ide.java.tests.utility)/8083368042256321540">
     <file name="JavaToMpsUtils.java">
       <node id="1029938204559296173" at="61,0,62,0" concept="5" trace="myRepo" />
@@ -339,19 +339,10 @@
       <scope id="8540292150831417511" at="92,22,93,47" />
       <scope id="5831050275831670349" at="109,27,110,59" />
       <scope id="5831050275832189297" at="114,43,115,66" />
-      <scope id="8540292150831417579" at="122,0,123,36">
-        <var name="e" id="8540292150831417585" />
-      </scope>
       <scope id="8540292150831417580" at="122,36,123,36" />
       <scope id="8540292150829816833" at="162,61,163,51" />
       <scope id="8540292150831604928" at="216,106,217,39" />
-      <scope id="8540292150831604960" at="226,0,227,36">
-        <var name="e" id="8540292150831604966" />
-      </scope>
       <scope id="8540292150831604961" at="226,36,227,36" />
-      <scope id="8540292150831604968" at="228,0,229,36">
-        <var name="e" id="8540292150831604969" />
-      </scope>
       <scope id="8540292150831604971" at="228,29,229,36" />
       <scope id="8083368042256393778" at="288,56,289,81" />
       <scope id="8083368042256393920" at="293,57,294,82" />
@@ -367,7 +358,16 @@
       <scope id="887121589775260875" at="431,58,432,112" />
       <scope id="887121589775260888" at="435,56,436,144" />
       <scope id="4078359035440159701" at="97,104,99,44" />
+      <scope id="8540292150831417579" at="122,5,124,5">
+        <var name="e" id="8540292150831417585" />
+      </scope>
       <scope id="8540292150829816850" at="171,81,173,85" />
+      <scope id="8540292150831604960" at="226,5,228,5">
+        <var name="e" id="8540292150831604966" />
+      </scope>
+      <scope id="8540292150831604968" at="228,5,230,5">
+        <var name="e" id="8540292150831604969" />
+      </scope>
       <scope id="8083368042256456149" at="386,148,388,144" />
       <scope id="7030568040400251918" at="404,63,406,143" />
       <scope id="8083368042256321542" at="63,0,66,0">

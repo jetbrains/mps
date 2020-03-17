@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:27bc780b-59b2-4d26-9db5-a38b63c35884(jetbrains.mps.refactoring.participant)/1171652495569015565">
     <file name="RecursiveParticipant.java">
@@ -873,10 +873,10 @@
       <scope id="788503456865530955" at="35,0,38,0">
         <var name="change" id="788503456865530959" />
       </scope>
-      <scope id="2503597298435181170" at="43,0,46,9">
+      <scope id="2503597298435181176" at="43,29,46,9" />
+      <scope id="2503597298435181170" at="43,7,47,7">
         <var name="e" id="2503597298435181172" />
       </scope>
-      <scope id="2503597298435181176" at="43,29,46,9" />
       <scope id="6405599828487480899" at="40,62,47,7" />
       <scope id="4331048896013537309" at="39,38,48,5" />
       <scope id="6405599828487480895" at="39,38,48,5">

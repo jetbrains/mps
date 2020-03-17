@@ -19,8 +19,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/1244156871960204835">
     <file name="MigrationSessionImpl.java">
@@ -608,7 +607,7 @@
       <node id="1275212927677624136" at="116,5,119,5" concept="9" />
       <node id="1275212927677624153" at="120,82,123,5" concept="9" />
       <node id="737888207585057201" at="125,72,128,5" concept="9" />
-      <node id="3577160840697522994" at="133,0,136,5" concept="21" />
+      <node id="3577160840697522994" at="133,0,136,5" concept="20" />
       <node id="3577160840697523564" at="137,0,140,5" concept="9" />
       <node id="3577160840697523478" at="142,35,145,5" concept="9" />
       <node id="3577160840697523006" at="160,0,163,5" concept="9" />
@@ -1445,7 +1444,7 @@
       <node id="847913592342650696" at="156,72,189,13" concept="8" />
       <node id="2885477569135967356" at="85,0,119,0" concept="10" trace="checkLibs#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;Lorg/jetbrains/mps/openapi/util/Processor;)V" />
       <node id="2735569489507986187" at="150,13,191,11" concept="8" />
-      <node id="7690769658523061922" at="149,0,194,9" concept="20" />
+      <node id="7690769658523061922" at="149,0,194,9" concept="19" />
       <node id="8810737966314781611" at="201,0,247,0" concept="10" trace="run#()V" />
       <node id="8810737966314781610" at="199,141,247,7" concept="5" />
       <node id="2885477569135058134" at="198,0,249,0" concept="10" trace="findNotMigrated#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;Ljava/lang/Iterable;Lorg/jetbrains/mps/openapi/util/Processor;)V" />
@@ -1909,7 +1908,7 @@
       <node id="1422399395312394604" at="170,48,210,7" concept="5" />
       <node id="1422399395312394724" at="170,0,212,0" concept="10" trace="initModuleVersionsWhereNeeded#()V" />
       <node id="851039011562356520" at="330,0,378,15" concept="9" />
-      <node id="4046973992929756319" at="314,29,381,13" concept="20" />
+      <node id="4046973992929756319" at="314,29,381,13" concept="19" />
       <node id="1847435758022255951" at="314,0,383,0" concept="10" trace="run#()V" />
       <node id="1847435758022250989" at="312,41,383,36" concept="5" />
       <node id="1847435758022247803" at="311,0,385,0" concept="10" trace="run#()V" />
@@ -2318,9 +2317,6 @@
       <scope id="2885477569139370631" at="127,42,128,23" />
       <scope id="4815078419491404951" at="131,44,132,24" />
       <scope id="3013058279687723665" at="73,0,76,0" />
-      <scope id="8712946147663815398" at="83,0,86,7">
-        <var name="e" id="8712946147663815385" />
-      </scope>
       <scope id="8712946147663815393" at="83,29,86,7" />
       <scope id="2885477569139370614" at="118,0,121,0" />
       <scope id="2885477569139370620" at="121,0,124,0" />
@@ -2332,6 +2328,9 @@
       <scope id="8712946147663815349" at="78,9,82,22">
         <var name="file" id="8712946147663815366" />
         <var name="fileOut" id="8712946147663815371" />
+      </scope>
+      <scope id="8712946147663815398" at="83,5,87,5">
+        <var name="e" id="8712946147663815385" />
       </scope>
       <scope id="201922306411011644" at="101,61,105,42" />
       <scope id="201922306411011661" at="108,66,112,44" />

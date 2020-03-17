@@ -19,8 +19,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:d1867d68-bb03-4cb4-adc6-3d5ffa40e888(jetbrains.mps.testbench)/6214179127578263953">
     <file name="TestMakeService.java">
@@ -240,7 +239,7 @@
       <node id="284455749617004866" at="198,186,201,11" concept="9" />
       <node id="3224166544242268084" at="220,0,223,0" concept="10" trace="ignoredFile#(Ljava/lang/String;)Z" />
       <node id="2865656775245812488" at="224,51,227,7" concept="9" />
-      <node id="5378512516364166418" at="236,18,239,7" concept="21" />
+      <node id="5378512516364166418" at="236,18,239,7" concept="20" />
       <node id="6607750055058402180" at="271,54,274,11" concept="9" />
       <node id="6716154713814463524" at="280,0,283,0" concept="10" trace="defaultScriptBuilder#()Ljetbrains/mps/make/script/ScriptBuilder;" />
       <node id="3767231643656643813" at="285,0,288,0" concept="10" trace="translate#(Ljetbrains/mps/smodel/Language;)Ljava/lang/Iterable;" />
@@ -280,7 +279,7 @@
       <node id="6607750055057276483" at="73,0,86,0" concept="3" trace="ModuleGenerationHolder#(Lorg/jetbrains/mps/openapi/module/SModule;Ljetbrains/mps/project/Project;)V" />
       <node id="5460949978728651005" at="290,0,303,0" concept="16" trace="collectResources#(Ljetbrains/mps/project/Project;Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
       <node id="3416062119153932828" at="130,72,145,5" concept="8" />
-      <node id="3416062119153941762" at="233,29,249,5" concept="20" />
+      <node id="3416062119153941762" at="233,29,249,5" concept="19" />
       <node id="4128185861943385942" at="252,0,268,0" concept="10" trace="cleanUp#()V" />
       <node id="8597743085639790683" at="309,38,326,7" concept="17" />
       <node id="3416062119153994947" at="160,62,178,5" concept="9" />
@@ -292,15 +291,9 @@
       <node id="3416062119153995064" at="185,40,217,7" concept="9" />
       <node id="3416062119153995038" at="178,5,218,5" concept="8" />
       <node id="3416062119153932835" at="158,0,220,0" concept="10" trace="diffDirs#(Ljava/io/File;Ljava/io/File;Ljava/util/List;)V" />
-      <scope id="3416062119153994269" at="246,0,246,38">
-        <var name="ignore" id="3416062119153994270" />
-      </scope>
       <scope id="3416062119153994272" at="246,38,246,38" />
       <scope id="8597743085639790681" at="306,32,306,32" />
       <scope id="8597743085639790687" at="325,16,325,16" />
-      <scope id="6078875650364605979" at="81,0,82,37">
-        <var name="ex" id="6078875650364605980" />
-      </scope>
       <scope id="6078875650364605982" at="81,30,82,37" />
       <scope id="9143630131836949592" at="96,21,97,68" />
       <scope id="6725899916508769810" at="108,40,109,29" />
@@ -324,11 +317,11 @@
       <scope id="3224166544242268088" at="220,48,221,118" />
       <scope id="2865656775245812489" at="225,39,226,20" />
       <scope id="5378512516364166420" at="237,46,238,55" />
-      <scope id="3416062119153941757" at="240,0,241,26">
-        <var name="e" id="3416062119153941758" />
-      </scope>
       <scope id="3416062119153941760" at="240,29,241,26" />
       <scope id="3416062119153994268" at="244,13,245,21" />
+      <scope id="3416062119153994269" at="246,9,247,9">
+        <var name="ignore" id="3416062119153994270" />
+      </scope>
       <scope id="4128185861943386011" at="257,30,258,58" />
       <scope id="4128185861943386046" at="259,16,260,27" />
       <scope id="6607750055058402183" at="272,57,273,24" />
@@ -339,9 +332,15 @@
       <scope id="8597743085639790744" at="323,25,324,16" />
       <scope id="8597743085639790746" at="328,47,329,32" />
       <scope id="8597743085639790749" at="331,49,332,34" />
+      <scope id="6078875650364605979" at="81,5,83,5">
+        <var name="ex" id="6078875650364605980" />
+      </scope>
       <scope id="6607750055058621916" at="88,31,90,13" />
       <scope id="284455749616935036" at="202,64,204,21" />
       <scope id="8342545575778517850" at="207,46,209,21" />
+      <scope id="3416062119153941757" at="240,5,242,5">
+        <var name="e" id="3416062119153941758" />
+      </scope>
       <scope id="8597743085639790179" at="306,0,308,0" />
       <scope id="8597743085639790733" at="320,21,322,16" />
       <scope id="8597743085639790752" at="334,27,336,35" />

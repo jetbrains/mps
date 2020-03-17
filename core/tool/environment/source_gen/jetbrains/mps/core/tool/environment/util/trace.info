@@ -12,7 +12,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/2546981710035458892">
     <file name="FileMPSProject.java">
       <node id="2546981710035458892" at="27,0,28,0" concept="9" trace="LOG" />
@@ -64,14 +64,14 @@
       <scope id="4455451047507514766" at="37,43,41,70">
         <var name="fs" id="8753494393315233981" />
       </scope>
-      <scope id="2474867045963922245" at="49,0,53,37">
-        <var name="e" id="2474867045963922247" />
-      </scope>
       <scope id="2474867045963922251" at="49,29,53,37" />
       <scope id="1259651549063123807" at="67,0,71,0" />
       <scope id="2546981710035458906" at="30,0,35,0">
         <var name="file" id="2546981710035458914" />
         <var name="mpsPlatform" id="8193277789682793270" />
+      </scope>
+      <scope id="2474867045963922245" at="49,5,54,5">
+        <var name="e" id="2474867045963922247" />
       </scope>
       <scope id="1259651549063105936" at="57,0,62,0" />
       <scope id="2546981710035459144" at="72,0,77,0" />

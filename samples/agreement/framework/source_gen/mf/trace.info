@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:3160b573-ccb2-45e9-9d2a-2b5104766730(mf)/6531435794299649916">
     <file name="NamedObject.java">
       <node id="6531435794299649918" at="7,0,8,0" concept="4" trace="myName" />
@@ -632,18 +632,18 @@
       <node id="6531435794299651887" at="23,0,30,0" concept="8" trace="testDivideAllButOne#()V" />
       <node id="6531435794299651956" at="39,0,46,0" concept="8" trace="testAdditionOfDifferentCurrencies#()V" />
       <node id="6531435794299651995" at="51,0,62,0" concept="8" trace="testCompare#()V" />
-      <scope id="6531435794299651961" at="43,0,43,32">
-        <var name="ignore" id="6531435794299651963" />
-      </scope>
       <scope id="6531435794299651962" at="43,32,43,32" />
-      <scope id="6531435794299652026" at="59,0,59,32">
-        <var name="ignore" id="6531435794299652028" />
-      </scope>
       <scope id="6531435794299652027" at="59,32,59,32" />
       <scope id="6531435794299651824" at="13,35,14,16" />
       <scope id="6531435794299651878" at="19,47,20,50" />
       <scope id="6531435794299651909" at="25,33,26,60" />
       <scope id="6531435794299651948" at="36,29,37,56" />
+      <scope id="6531435794299651961" at="43,5,44,5">
+        <var name="ignore" id="6531435794299651963" />
+      </scope>
+      <scope id="6531435794299652026" at="59,5,60,5">
+        <var name="ignore" id="6531435794299652028" />
+      </scope>
       <scope id="6531435794299652042" at="62,47,63,50" />
       <scope id="6531435794299652165" at="91,27,92,54" />
       <scope id="6531435794299652189" at="98,33,99,71" />
@@ -976,16 +976,16 @@
       <node id="6531435794299652975" at="42,0,49,0" concept="8" trace="testTooEarly#()V" />
       <node id="6531435794299652829" at="14,0,22,0" concept="8" trace="setUp#()V" />
       <node id="6531435794299652995" at="49,0,58,0" concept="8" trace="testSimpleChange#()V" />
-      <scope id="6531435794299652884" at="27,0,27,41">
-        <var name="correctResponse" id="6531435794299652886" />
-      </scope>
       <scope id="6531435794299652885" at="27,41,27,41" />
-      <scope id="6531435794299652980" at="46,0,46,42">
-        <var name="e" id="6531435794299652982" />
-      </scope>
       <scope id="6531435794299652981" at="46,42,46,42" />
       <scope id="6531435794299652810" at="11,48,12,16" />
       <scope id="6531435794299652875" at="22,0,23,0" />
+      <scope id="6531435794299652884" at="27,5,28,5">
+        <var name="correctResponse" id="6531435794299652886" />
+      </scope>
+      <scope id="6531435794299652980" at="46,5,47,5">
+        <var name="e" id="6531435794299652982" />
+      </scope>
       <scope id="6531435794299652888" at="24,9,26,20" />
       <scope id="6531435794299652984" at="43,9,45,83" />
       <scope id="6531435794299652819" at="58,44,60,26">

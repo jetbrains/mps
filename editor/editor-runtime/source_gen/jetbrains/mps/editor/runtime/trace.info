@@ -20,8 +20,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1170075670744:jetbrains.mps.baseLanguage.structure.SynchronizedStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/4952318787899710481">
     <file name="AbstractLeftEditorHighlighterMessage.java">
@@ -204,7 +203,7 @@
       <node id="2864426673675277850" at="89,0,96,9" concept="10" />
       <node id="2864426673675277546" at="197,60,204,17" concept="8" />
       <node id="2864426673675277544" at="196,31,205,15" concept="7" />
-      <node id="2864426673675277316" at="151,0,161,5" concept="21" />
+      <node id="2864426673675277316" at="151,0,161,5" concept="20" />
       <node id="6994931082881951391" at="196,0,207,0" concept="9" trace="run#()V" />
       <node id="2864426673675277135" at="68,0,80,0" concept="9" trace="isLaterThan#(Ljetbrains/mps/nodeEditor/checking/EditorChecker;)Z" />
       <node id="6994931082881945218" at="194,27,207,13" concept="5" />
@@ -234,13 +233,13 @@
       <scope id="2864426673675277785" at="222,55,223,32" />
       <scope id="2864426673675277824" at="227,57,228,16" />
       <scope id="2864426673675276993" at="58,114,60,57" />
-      <scope id="2864426673675277889" at="98,0,100,14">
-        <var name="e" id="2864426673675277890" />
-      </scope>
       <scope id="2864426673675277892" at="98,40,100,14" />
       <scope id="2864426673675277277" at="139,31,141,36" />
       <scope id="2864426673675277423" at="172,119,174,17" />
       <scope id="2864426673675277558" at="200,46,202,48" />
+      <scope id="2864426673675277889" at="98,5,101,5">
+        <var name="e" id="2864426673675277890" />
+      </scope>
       <scope id="2864426673675277224" at="122,82,125,36" />
       <scope id="2864426673675277351" at="157,15,160,7" />
       <scope id="2864426673675276990" at="58,0,62,0">
@@ -575,9 +574,6 @@
       <scope id="887982272834823286" at="67,46,68,56" />
       <scope id="887982272834635588" at="76,43,77,71" />
       <scope id="887982272835303987" at="89,44,90,35" />
-      <scope id="631117288391680440" at="92,0,93,33">
-        <var name="pfe" id="631117288391680442" />
-      </scope>
       <scope id="631117288391680446" at="92,63,93,33" />
       <scope id="1268820202707352376" at="106,33,107,17" />
       <scope id="1572311180462136212" at="111,35,112,17" />
@@ -594,6 +590,9 @@
       <scope id="887982272834823288" at="236,36,237,53" />
       <scope id="7973955287399271870" at="50,0,52,0" />
       <scope id="7973955287399271896" at="55,138,57,60" />
+      <scope id="631117288391680440" at="92,11,94,11">
+        <var name="pfe" id="631117288391680442" />
+      </scope>
       <scope id="887982272835410332" at="118,29,120,103" />
       <scope id="124033929204625430" at="143,52,145,25" />
       <scope id="887982272834823276" at="63,0,66,0">
@@ -873,14 +872,14 @@
       <node id="8201881142992878078" at="276,103,281,5" concept="7" />
       <node id="8201881142993574523" at="97,27,103,11" concept="8" />
       <node id="8201881142993446414" at="190,7,196,7" concept="8" />
-      <node id="8201881142993150990" at="216,89,222,9" concept="22" />
+      <node id="8201881142993150990" at="216,89,222,9" concept="21" />
       <node id="8201881142991644368" at="302,0,308,0" concept="3" trace="PlaceToMove#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Lorg/jetbrains/mps/openapi/model/SNode;Z)V" />
       <node id="8201881142993420807" at="334,0,340,0" concept="15" trace="getNodesContainmentLink#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/language/SContainmentLink;" />
       <node id="8201881142991720365" at="158,21,165,5" concept="8" />
       <node id="8201881142991903307" at="172,21,179,5" concept="8" />
       <node id="8201881142993369630" at="225,59,232,11" concept="8" />
       <node id="4149817326827321618" at="97,0,105,0" concept="9" trace="run#()V" />
-      <node id="8201881142993417153" at="320,29,328,9" concept="22" />
+      <node id="8201881142993417153" at="320,29,328,9" concept="21" />
       <node id="8201881142992112277" at="247,35,256,7" concept="8" />
       <node id="8201881142992729318" at="275,0,284,0" concept="9" trace="findCellToMoveInsideCell#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="4149817326827317453" at="95,36,105,9" concept="5" />
@@ -890,7 +889,7 @@
       <node id="5295890148250400405" at="93,39,106,5" concept="8" />
       <node id="8201881142991687215" at="156,0,169,0" concept="9" trace="getNodesCommonContainmentLink#()Lorg/jetbrains/mps/openapi/language/SContainmentLink;" />
       <node id="8201881142993446400" at="184,38,197,5" concept="7" />
-      <node id="8201881142992109488" at="245,22,258,5" concept="22" />
+      <node id="8201881142992109488" at="245,22,258,5" concept="21" />
       <node id="2200986774883566484" at="318,0,331,0" concept="9" trace="compute#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5295890148250207559" at="77,0,91,0" concept="9" trace="compute#()Ljava/lang/Boolean;" />
       <node id="2200986774883468835" at="316,103,331,7" concept="10" />
@@ -898,7 +897,7 @@
       <node id="8201881142991352170" at="183,0,199,0" concept="9" trace="doMove#(Ljetbrains/mps/editor/runtime/IntelligentNodeMover/PlaceToMove;)V" />
       <node id="8201881142993417140" at="316,0,334,0" concept="15" trace="findNodeToMove#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="8201881142992082583" at="241,0,261,0" concept="9" trace="getSibling#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8201881142993141097" at="214,64,236,7" concept="22" />
+      <node id="8201881142993141097" at="214,64,236,7" concept="21" />
       <node id="8201881142991687178" at="127,43,150,9" concept="7" />
       <node id="8201881142993083120" at="212,10,238,5" concept="1" />
       <node id="5295890148250168634" at="122,0,153,0" concept="9" trace="compute#()Ljava/lang/Boolean;" />

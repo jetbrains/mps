@@ -11,7 +11,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="BehaviorAspectDescriptor.java">
       <unit at="14,0,41,0" name="jetbrains.mps.build.tips.behavior.BehaviorAspectDescriptor" />
@@ -66,9 +66,6 @@
       <scope id="831924260440079431" at="43,46,44,19" />
       <scope id="1402683484349401175" at="49,23,50,19" />
       <scope id="1402683484349401188" at="54,27,55,19" />
-      <scope id="831924260440079487" at="60,0,61,19">
-        <var name="t" id="831924260440079488" />
-      </scope>
       <scope id="831924260440079490" at="60,27,61,19" />
       <scope id="1402683484349316474" at="69,114,70,21" />
       <scope id="1402683484349316474" at="76,26,77,56" />
@@ -82,6 +79,9 @@
         <var name="__thisNode__" id="1402683484349316474" />
       </scope>
       <scope id="831924260440079480" at="57,9,59,18" />
+      <scope id="831924260440079487" at="60,5,62,5">
+        <var name="t" id="831924260440079488" />
+      </scope>
       <scope id="1402683484349316474" at="65,0,67,0" />
       <scope id="1402683484349316474" at="68,0,72,0">
         <var name="constructor" id="1402683484349316474" />

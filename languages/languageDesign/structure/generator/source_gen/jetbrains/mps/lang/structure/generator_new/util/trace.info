@@ -7,7 +7,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:21cecd12-4cc6-45aa-801b-cce2abc6808c(jetbrains.mps.lang.structure.generator_new.util)/6087305824367432098">
     <file name="IdGenerationUtil.java">
       <node id="2371346285333396929" at="13,83,14,12" concept="3" />
@@ -53,20 +53,20 @@
       <scope id="6087305824367474960" at="51,11,52,84" />
       <scope id="2941220280098302831" at="60,52,61,44" />
       <scope id="2841134663538147877" at="15,86,17,59" />
-      <scope id="2941220280098391659" at="21,0,23,61">
-        <var name="e" id="2941220280098391661" />
-      </scope>
       <scope id="2941220280098391665" at="21,41,23,61" />
       <scope id="6087305824367473811" at="31,84,33,56" />
-      <scope id="6087305824367473846" at="37,0,39,58">
-        <var name="e" id="6087305824367473847" />
-      </scope>
       <scope id="6087305824367473849" at="37,41,39,58" />
       <scope id="6087305824367474933" at="47,80,49,56" />
-      <scope id="6087305824367474968" at="53,0,55,58">
+      <scope id="6087305824367474971" at="53,41,55,58" />
+      <scope id="2941220280098391659" at="21,7,24,7">
+        <var name="e" id="2941220280098391661" />
+      </scope>
+      <scope id="6087305824367473846" at="37,7,40,7">
+        <var name="e" id="6087305824367473847" />
+      </scope>
+      <scope id="6087305824367474968" at="53,7,56,7">
         <var name="e" id="6087305824367474969" />
       </scope>
-      <scope id="6087305824367474971" at="53,41,55,58" />
       <scope id="2941220280098302831" at="60,0,63,0">
         <var name="str" id="2941220280098302831" />
       </scope>

@@ -17,7 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:ba675e48-daa4-42f0-bb41-6ecb53e4758b(jetbrains.mps.java.platform.util)/5646944109420335310">
     <file name="JavaPaster.java">
@@ -140,13 +140,7 @@
       <scope id="5646944109420336631" at="60,78,61,23" />
       <scope id="5646944109420336641" at="65,27,66,18" />
       <scope id="5646944109420336678" at="71,37,72,31" />
-      <scope id="5646944109420336651" at="74,0,75,20">
-        <var name="ex" id="5646944109420336655" />
-      </scope>
       <scope id="5646944109420336652" at="74,47,75,20" />
-      <scope id="5646944109420336657" at="76,0,77,28">
-        <var name="ex" id="5646944109420336664" />
-      </scope>
       <scope id="5646944109420336658" at="76,32,77,28" />
       <scope id="4731776099750300731" at="89,58,90,95" />
       <scope id="663905750953429811" at="97,29,98,214" />
@@ -170,6 +164,12 @@
       <scope id="1333741215284452162" at="180,12,181,113" />
       <scope id="5662895729668294573" at="188,75,189,19" />
       <scope id="5662895729668294593" at="191,61,192,18" />
+      <scope id="5646944109420336651" at="74,7,76,7">
+        <var name="ex" id="5646944109420336655" />
+      </scope>
+      <scope id="5646944109420336657" at="76,7,78,7">
+        <var name="ex" id="5646944109420336664" />
+      </scope>
       <scope id="663905750953429810" at="97,0,100,0" />
       <scope id="1418985936284183497" at="106,0,109,0">
         <var name="node" id="1418985936284183497" />
@@ -189,14 +189,14 @@
       <scope id="5646944109420336589" at="49,63,54,71">
         <var name="javaCode" id="5646944109420336591" />
       </scope>
-      <scope id="8183587472723150351" at="142,0,147,9">
-        <var name="ex" id="8183587472723150352" />
-      </scope>
       <scope id="8183587472723150354" at="142,43,147,9" />
       <scope id="5646944109420336615" at="58,33,64,5">
         <var name="trf" id="5646944109420336619" />
       </scope>
       <scope id="5611348363757625102" at="104,19,110,16" />
+      <scope id="8183587472723150351" at="142,5,148,5">
+        <var name="ex" id="8183587472723150352" />
+      </scope>
       <scope id="5646944109420336553" at="41,0,48,0">
         <var name="anchor" id="5646944109420336556" />
         <var name="featureKind" id="5646944109420336560" />

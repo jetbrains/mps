@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1399798136780143890">
     <file name="RefactoringAccessEx.java">
       <node id="5814231631271810233" at="24,0,25,0" concept="3" trace="myRefactoringFacade" />
@@ -586,33 +586,33 @@
       <node id="2183214647889839547" at="32,0,50,0" concept="6" trace="executeSimple#(Ljetbrains/mps/refactoring/framework/RefactoringContext;)V" />
       <scope id="2183214647889839534" at="30,34,30,34" />
       <scope id="2034046503373011794" at="37,13,38,40" />
-      <scope id="2034046503373011775" at="39,0,40,162">
-        <var name="t" id="2034046503373011791" />
-      </scope>
       <scope id="2034046503373011776" at="39,31,40,162" />
       <scope id="2183214647889839639" at="44,9,45,38" />
-      <scope id="2183214647889839625" at="46,0,47,110">
-        <var name="t" id="2183214647889839637" />
-      </scope>
       <scope id="2183214647889839626" at="46,27,47,110" />
       <scope id="5941819553036350511" at="52,25,53,42" />
       <scope id="2482360940803572383" at="61,18,62,43" />
       <scope id="2034046503361628083" at="89,37,90,47" />
-      <scope id="2034046503361628045" at="92,0,93,31">
-        <var name="t" id="2034046503361628053" />
-      </scope>
       <scope id="2034046503361628046" at="92,31,93,31" />
       <scope id="6271353859742103030" at="105,55,106,65" />
       <scope id="6271353859742103039" at="110,12,111,46" />
       <scope id="1205040951210417824" at="119,53,120,54" />
       <scope id="1205040951210417820" at="121,16,122,48" />
       <scope id="2183214647889839722" at="146,9,147,56" />
-      <scope id="2183214647889839706" at="148,0,149,173">
-        <var name="t" id="2183214647889839720" />
-      </scope>
       <scope id="2183214647889839707" at="148,27,149,173" />
       <scope id="2183214647889839531" at="30,0,32,0" />
+      <scope id="2034046503373011775" at="39,9,41,9">
+        <var name="t" id="2034046503373011791" />
+      </scope>
+      <scope id="2183214647889839625" at="46,5,48,5">
+        <var name="t" id="2183214647889839637" />
+      </scope>
+      <scope id="2034046503361628045" at="92,9,94,9">
+        <var name="t" id="2034046503361628053" />
+      </scope>
       <scope id="2896100793580348073" at="133,29,135,40" />
+      <scope id="2183214647889839706" at="148,5,150,5">
+        <var name="t" id="2183214647889839720" />
+      </scope>
       <scope id="5941819553036350500" at="52,0,55,0" />
       <scope id="2482360940803573038" at="71,65,74,72">
         <var name="usages" id="8325325470383877058" />

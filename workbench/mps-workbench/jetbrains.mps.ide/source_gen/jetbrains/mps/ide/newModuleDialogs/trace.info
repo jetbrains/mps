@@ -16,6 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)/3357388636346012335">
     <file name="AbstractModuleCreationDialog.java">
@@ -130,7 +131,7 @@
       <node id="3357388636347106967" at="39,0,46,0" concept="1" trace="CloneModuleDialog#(Ljetbrains/mps/project/MPSProject;Ljava/lang/String;Ljetbrains/mps/project/AbstractModule;)V" />
       <node id="3288955118346238250" at="58,49,66,9" concept="2" />
       <node id="7650435763716707457" at="70,0,80,0" concept="6" trace="getExtension#()Ljava/lang/String;" />
-      <node id="3288955118346214552" at="50,145,67,5" concept="15" />
+      <node id="3288955118346214552" at="50,145,67,5" concept="16" />
       <node id="7650435763716707197" at="47,0,69,0" concept="6" trace="runCreation#()V" />
       <scope id="3288955118346228489" at="54,27,55,168" />
       <scope id="7650435763716707465" at="72,47,73,40" />
@@ -161,10 +162,10 @@
         <var name="virtualFolder" id="3357388636347106990" />
       </scope>
       <scope id="7650435763716707459" at="71,35,78,16" />
-      <scope id="3288955118346214559" at="58,0,66,9">
+      <scope id="3288955118346214562" at="58,49,66,9" />
+      <scope id="3288955118346214559" at="58,5,67,5">
         <var name="e" id="3288955118346214563" />
       </scope>
-      <scope id="3288955118346214562" at="58,49,66,9" />
       <scope id="7650435763716707457" at="70,0,80,0" />
       <scope id="7650435763716707199" at="48,32,67,5">
         <var name="helper" id="8450492655321204932" />
@@ -419,7 +420,7 @@
       <node id="3357388636346353343" at="69,0,73,0" concept="6" trace="createSettingsInstance#()Ljetbrains/mps/ide/ui/dialogs/modules/NewLanguageSettings;" />
       <node id="8412685000766460613" at="26,0,32,0" concept="1" trace="NewLanguageDialog#(Ljetbrains/mps/project/MPSProject;Ljava/lang/String;)V" />
       <node id="5154621356648615843" at="40,9,50,7" concept="5" />
-      <node id="4152098816593683168" at="39,0,60,5" concept="15" />
+      <node id="4152098816593683168" at="39,0,60,5" concept="16" />
       <node id="3951829814942742941" at="33,0,64,0" concept="6" trace="runCreation#()V" />
       <scope id="7846956121561543646" at="46,91,47,73" />
       <scope id="3818729150937331267" at="57,42,58,63" />
@@ -442,12 +443,12 @@
         <var name="type" id="3951829814942779810" />
       </scope>
       <scope id="8412685000766460615" at="26,80,30,11" />
-      <scope id="4152098816593683171" at="55,0,59,7">
-        <var name="e" id="4152098816593683173" />
-      </scope>
       <scope id="4152098816593683177" at="55,29,59,7" />
       <scope id="3357388636346353337" at="65,0,69,0" />
       <scope id="3357388636346353343" at="69,0,73,0" />
+      <scope id="4152098816593683171" at="55,5,60,5">
+        <var name="e" id="4152098816593683173" />
+      </scope>
       <scope id="8412685000766460613" at="26,0,32,0">
         <var name="project" id="8412685000766483432" />
         <var name="virtualFolder" id="2683439310175192250" />
@@ -538,7 +539,7 @@
       <node id="7650435763716959251" at="117,0,122,0" concept="6" trace="createModule#(Ljetbrains/mps/vfs/IFile;Ljetbrains/mps/project/structure/modules/ModuleDescriptor;)Ljetbrains/mps/project/AbstractModule;" />
       <node id="7650435763716707314" at="123,0,128,0" concept="6" trace="adjustReferences#(Ljetbrains/mps/project/AbstractModule;)V" />
       <node id="7650435763716707424" at="146,104,151,7" concept="4" />
-      <node id="6445803213397011052" at="87,29,93,9" concept="16" />
+      <node id="6445803213397011052" at="87,29,93,9" concept="17" />
       <node id="7337052304717540398" at="103,0,109,0" concept="6" trace="addModuleToProject#(Ljetbrains/mps/project/AbstractModule;)V" />
       <node id="8450492655320933355" at="40,0,47,0" concept="1" trace="CopyModuleHelper#(Ljetbrains/mps/project/MPSProject;Ljetbrains/mps/project/AbstractModule;Ljava/lang/String;Ljetbrains/mps/vfs/IFile;Ljava/lang/String;)V" />
       <node id="7650435763716707281" at="60,56,69,5" concept="15" />

@@ -10,7 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,33,0" name="jetbrains.mps.lang.core.constraints.ConstraintsAspectDescriptor" />
@@ -115,10 +115,10 @@
       <scope id="8703179436979151870" at="27,70,28,51" />
       <scope id="8703179436979151870" at="31,38,32,18" />
       <scope id="8703179436979151870" at="38,53,39,75" />
-      <scope id="8703179436979172138" at="50,0,51,21">
+      <scope id="8703179436979172144" at="50,50,51,21" />
+      <scope id="8703179436979172138" at="50,7,52,7">
         <var name="ignored" id="8703179436979172140" />
       </scope>
-      <scope id="8703179436979172144" at="50,50,51,21" />
       <scope id="8703179436979151869" at="22,0,25,0" />
       <scope id="8703179436979151870" at="27,0,30,0">
         <var name="container" id="8703179436979151870" />

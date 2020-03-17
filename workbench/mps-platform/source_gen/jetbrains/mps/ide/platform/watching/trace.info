@@ -18,8 +18,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/174954467868287275">
     <file name="ReloadSession.java">
@@ -86,7 +85,7 @@
       <node id="2091137892354159806" at="54,0,62,0" concept="10" trace="wantsToShowProgress#()Z" />
       <node id="2034046503373004484" at="82,26,91,7" concept="8" />
       <node id="4774203567228170196" at="106,0,117,0" concept="10" trace="getParticipant#(Ljava/lang/Object;Ljava/util/function/Supplier;)null" />
-      <node id="174954467868287388" at="77,39,98,5" concept="19" />
+      <node id="174954467868287388" at="77,39,98,5" concept="18" />
       <node id="174954467868287367" at="71,0,100,0" concept="10" trace="doReload#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
       <scope id="4774203567225170196" at="32,60,33,85" />
       <scope id="4774203567224396511" at="36,41,37,35" />
@@ -119,9 +118,6 @@
       <scope id="4774203567234382065" at="65,0,68,0">
         <var name="it" id="4774203567234382065" />
       </scope>
-      <scope id="8614869858723966286" at="86,0,89,11">
-        <var name="ex" id="8614869858723966287" />
-      </scope>
       <scope id="8614869858723966289" at="86,32,89,11" />
       <scope id="4774203567230850155" at="118,0,121,0" />
       <scope id="174954467868287447" at="122,36,125,5" />
@@ -134,6 +130,9 @@
       </scope>
       <scope id="4774203567225252892" at="40,0,44,0" />
       <scope id="4774203567225520663" at="45,0,49,0" />
+      <scope id="8614869858723966286" at="86,9,90,9">
+        <var name="ex" id="8614869858723966287" />
+      </scope>
       <scope id="4774203567237411419" at="101,0,105,0" />
       <scope id="4774203567228489395" at="109,20,113,7" />
       <scope id="4774203567233844337" at="63,35,68,7" />
@@ -276,20 +275,20 @@
       <node id="4774203567226023041" at="194,0,199,0" concept="10" trace="dismiss#(Ljetbrains/mps/ide/platform/watching/ReloadSession;)V" />
       <node id="3594858679918507174" at="218,76,223,9" concept="18" />
       <node id="4774203567222689890" at="49,0,55,0" concept="3" trace="ReloadManagerComponent#(Lcom/intellij/openapi/project/ProjectManager;Ljetbrains/mps/make/IMakeService;)V" />
-      <node id="4774203567245684353" at="107,58,113,5" concept="19" />
+      <node id="4774203567245684353" at="107,58,113,5" concept="18" />
       <node id="8306084298676877183" at="132,157,138,5" concept="8" />
       <node id="4774203567224581605" at="147,25,153,9" concept="8" />
-      <node id="2460012800764119675" at="171,48,177,13" concept="19" />
+      <node id="2460012800764119675" at="171,48,177,13" concept="18" />
       <node id="4774203567238855641" at="67,0,74,0" concept="10" trace="resumeReloads#()V" />
       <node id="4774203567225976011" at="186,0,193,0" concept="10" trace="employ#()Ljetbrains/mps/ide/platform/watching/ReloadSession;" />
-      <node id="3594858679918350029" at="217,7,224,7" concept="20" />
+      <node id="3594858679918350029" at="217,7,224,7" concept="19" />
       <node id="4774203567226174417" at="205,0,213,0" concept="10" trace="getUnemployed#()Ljetbrains/mps/ide/platform/watching/ReloadSession;" />
       <node id="4774203567245517408" at="106,0,115,0" concept="10" trace="computeNoReload#(Ljetbrains/mps/util/Computable;)null" />
       <node id="8306084298676837411" at="130,0,140,0" concept="10" trace="saveAllOpenProjects#()V" />
       <node id="4774203567224911999" at="168,0,179,0" concept="10" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <node id="5637031331334112153" at="116,0,129,0" concept="10" trace="flush#()V" />
       <node id="2091137892354488031" at="166,0,179,11" concept="6" />
-      <node id="4774203567227997083" at="78,40,92,5" concept="19" />
+      <node id="4774203567227997083" at="78,40,92,5" concept="18" />
       <node id="3594858679918255854" at="214,0,229,0" concept="10" trace="waitForUnemployed#()Ljetbrains/mps/ide/platform/watching/ReloadSession;" />
       <node id="3029672701256249398" at="75,0,95,0" concept="10" trace="runReload#(Ljava/lang/Object;Ljava/util/function/Supplier;Ljetbrains/mps/ide/platform/watching/ReloadAction;)V" />
       <node id="4774203567224549458" at="147,0,181,0" concept="10" trace="run#()V" />
@@ -311,9 +310,6 @@
       <scope id="4774203567227049555" at="206,73,207,20" />
       <scope id="3594858679918275855" at="215,36,216,20" />
       <scope id="3594858679918507176" at="219,13,220,17" />
-      <scope id="3594858679918507177" at="221,0,222,89">
-        <var name="e" id="3594858679918507179" />
-      </scope>
       <scope id="3594858679918507183" at="221,42,222,89" />
       <scope id="4774203567223025544" at="233,62,234,23" />
       <scope id="4774203567223025553" at="238,62,239,22" />
@@ -325,15 +321,15 @@
       <scope id="4774203567226983392" at="200,41,202,51">
         <var name="rs" id="4774203567227004095" />
       </scope>
+      <scope id="3594858679918507177" at="221,9,223,9">
+        <var name="e" id="3594858679918507179" />
+      </scope>
       <scope id="4774203567238822245" at="61,32,64,26">
         <var name="count" id="4774203567239050495" />
       </scope>
       <scope id="4774203567226023044" at="194,61,197,15" />
       <scope id="4774203567222689893" at="49,90,53,46" />
       <scope id="4774203567222215636" at="56,0,60,0" />
-      <scope id="4774203567229632790" at="85,0,89,14">
-        <var name="e" id="4774203567229632791" />
-      </scope>
       <scope id="4774203567229632793" at="85,34,89,14" />
       <scope id="4774203567243108205" at="96,0,100,0">
         <var name="listener" id="4774203567243108209" />
@@ -358,6 +354,9 @@
       </scope>
       <scope id="4774203567227997085" at="79,9,84,7">
         <var name="participant" id="4774203567229611084" />
+      </scope>
+      <scope id="4774203567229632790" at="85,5,90,5">
+        <var name="e" id="4774203567229632791" />
       </scope>
       <scope id="4774203567225976014" at="186,53,191,29" />
       <scope id="4774203567226023041" at="194,0,199,0">
@@ -469,9 +468,6 @@
       <node id="315321650470802944" at="15,124,25,21" concept="6" />
       <node id="4774203567223348625" at="15,0,27,0" concept="10" trace="runReload#(Ljava/lang/Class;Ljetbrains/mps/ide/platform/watching/ReloadAction;)V" />
       <scope id="315321650470846311" at="18,13,19,48" />
-      <scope id="315321650470846312" at="20,0,21,66">
-        <var name="ex" id="315321650470846314" />
-      </scope>
       <scope id="315321650470846318" at="20,32,21,66" />
       <scope id="315321650470747660" at="34,0,35,0">
         <var name="participantInstance" id="315321650470747662" />
@@ -488,6 +484,9 @@
         <var name="computable" id="4774203567245495920" />
       </scope>
       <scope id="5637031331333965098" at="38,0,39,0" />
+      <scope id="315321650470846312" at="20,9,22,9">
+        <var name="ex" id="315321650470846314" />
+      </scope>
       <scope id="315321650470821780" at="17,22,23,20" />
       <scope id="315321650470821778" at="17,0,25,0" />
       <scope id="4774203567223348633" at="15,124,25,21" />
@@ -724,7 +723,7 @@
       <node id="6225596710075351792" at="189,148,196,5" concept="9" />
       <node id="5775761623033494163" at="203,150,210,5" concept="9" />
       <node id="5968086934301078567" at="214,0,221,0" concept="10" trace="printStat#(Ljava/lang/String;J)V" />
-      <node id="4989082803905658493" at="75,34,83,7" concept="20" />
+      <node id="4989082803905658493" at="75,34,83,7" concept="19" />
       <node id="7799350397879242111" at="115,0,123,0" concept="10" trace="processDelete#(Ljava/lang/String;)V" />
       <node id="7799350397879242118" at="124,0,132,0" concept="10" trace="processCreate#(Ljava/lang/String;)V" />
       <node id="7799350397879242125" at="133,0,141,0" concept="10" trace="processContentChanged#(Ljava/lang/String;)V" />
@@ -734,7 +733,7 @@
       <node id="5775761623033852181" at="186,0,199,0" concept="16" trace="acceptDescendant#(Ljava/lang/String;Ljetbrains/mps/vfs/refresh/FileSystemListener;Ljetbrains/mps/ide/platform/watching/FileProcessor/EventKind;)Z" />
       <node id="5775761623033816764" at="200,0,213,0" concept="16" trace="acceptAncestor#(Ljava/lang/String;Ljetbrains/mps/vfs/refresh/FileSystemListener;Ljetbrains/mps/ide/platform/watching/FileProcessor/EventKind;)Z" />
       <node id="6069288648216988514" at="147,0,170,0" concept="10" trace="getData#(Ljava/lang/String;Ljetbrains/mps/ide/platform/watching/FileProcessor/EventKind;)Ljava/util/List;" />
-      <node id="4237144640466539198" at="59,54,88,5" concept="19" />
+      <node id="4237144640466539198" at="59,54,88,5" concept="18" />
       <node id="4237144640466539185" at="53,0,90,0" concept="10" trace="update#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
       <scope id="6069288648216988292" at="228,28,228,28" />
       <scope id="2656759327034058835" at="55,36,56,13" />
@@ -1025,12 +1024,12 @@
       <node id="8923671739986558214" at="194,51,201,9" concept="9" />
       <node id="6069288648215572741" at="82,9,91,7" concept="8" />
       <node id="6069288648213974101" at="104,9,114,7" concept="8" />
-      <node id="4550458737299866921" at="60,30,71,5" concept="19" />
+      <node id="4550458737299866921" at="60,30,71,5" concept="18" />
       <node id="6069288648213157547" at="175,0,187,0" concept="10" trace="deleteIfEmpty#()V" />
-      <node id="8923671739986528060" at="190,39,202,7" concept="20" />
+      <node id="8923671739986528060" at="190,39,202,7" concept="19" />
       <node id="6069288648212657844" at="161,0,174,0" concept="10" trace="child#(Ljava/lang/String;Z)Ljetbrains/mps/ide/platform/watching/FileSystemListenersContainer/Node;" />
-      <node id="4550458737299878297" at="81,30,95,5" concept="19" />
-      <node id="4550458737299898623" at="103,29,119,5" concept="19" />
+      <node id="4550458737299878297" at="81,30,95,5" concept="18" />
+      <node id="4550458737299898623" at="103,29,119,5" concept="18" />
       <node id="8923671739986515344" at="188,0,205,0" concept="10" trace="childIndex#(Ljava/lang/String;)I" />
       <node id="6069288648213408972" at="99,0,122,0" concept="10" trace="getListenersForPath#(Ljava/lang/String;)Ljetbrains/mps/ide/platform/watching/FileSystemListenersContainer/ListenersForPath;" />
       <node id="6069288648215397558" at="74,0,98,0" concept="10" trace="removeListener#(Ljetbrains/mps/vfs/refresh/FileSystemListener;)V" />

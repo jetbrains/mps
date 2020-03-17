@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:f5448de3-0d76-42bb-afa7-00b3b32de849(jetbrains.mps.debugger.java.runtime.evaluation.container)/138767106959623910">
     <file name="Properties.java">
       <node id="138767106959627491" at="9,0,10,0" concept="12" trace="EVALUATOR_NAME" />
@@ -263,39 +263,39 @@
       <scope id="846214144107996376" at="107,41,107,41" />
       <scope id="7789686367105855960" at="48,43,49,24" />
       <scope id="7789686367106010329" at="57,29,58,39" />
-      <scope id="3008093296143141263" at="76,0,77,55">
-        <var name="ex" id="3008093296143141265" />
-      </scope>
       <scope id="3008093296143141269" at="76,49,77,55" />
-      <scope id="7556192913643153772" at="83,0,84,41">
-        <var name="e" id="7556192913643153774" />
-      </scope>
       <scope id="7556192913643153773" at="83,40,84,41" />
-      <scope id="7556192913643153776" at="85,0,86,41">
-        <var name="e" id="7556192913643153778" />
-      </scope>
       <scope id="7556192913643153777" at="85,38,86,41" />
       <scope id="846214144107996315" at="92,9,93,80" />
-      <scope id="846214144107996326" at="94,0,95,66">
-        <var name="e" id="846214144107996327" />
-      </scope>
       <scope id="846214144107996329" at="94,43,95,66" />
-      <scope id="846214144107996336" at="96,0,97,39">
-        <var name="e" id="846214144107996337" />
-      </scope>
       <scope id="846214144107996339" at="96,39,97,39" />
-      <scope id="846214144107996344" at="98,0,99,39">
-        <var name="e" id="846214144107996345" />
-      </scope>
       <scope id="846214144107996347" at="98,40,99,39" />
-      <scope id="846214144107996352" at="100,0,101,39">
-        <var name="e" id="846214144107996353" />
-      </scope>
       <scope id="846214144107996355" at="100,40,101,39" />
       <scope id="846214144107996413" at="119,32,120,25" />
       <scope id="846214144107996419" at="122,32,123,33" />
       <scope id="3008093296143141262" at="73,17,75,49">
         <var name="cl" id="3008093296143003305" />
+      </scope>
+      <scope id="3008093296143141263" at="76,13,78,13">
+        <var name="ex" id="3008093296143141265" />
+      </scope>
+      <scope id="7556192913643153772" at="83,7,85,7">
+        <var name="e" id="7556192913643153774" />
+      </scope>
+      <scope id="7556192913643153776" at="85,7,87,7">
+        <var name="e" id="7556192913643153778" />
+      </scope>
+      <scope id="846214144107996326" at="94,5,96,5">
+        <var name="e" id="846214144107996327" />
+      </scope>
+      <scope id="846214144107996336" at="96,5,98,5">
+        <var name="e" id="846214144107996337" />
+      </scope>
+      <scope id="846214144107996344" at="98,5,100,5">
+        <var name="e" id="846214144107996345" />
+      </scope>
+      <scope id="846214144107996352" at="100,5,102,5">
+        <var name="e" id="846214144107996353" />
       </scope>
       <scope id="846214144107996373" at="107,0,109,0" />
       <scope id="846214144107996397" at="113,61,115,32" />

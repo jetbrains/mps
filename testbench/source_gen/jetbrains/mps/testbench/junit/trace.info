@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)/5294483648489411750">
     <file name="Order.java">
       <node id="4480898598423846009" at="18,0,19,0" concept="0" trace="value#()I" />
@@ -233,14 +233,8 @@
       <scope id="5294483648489412272" at="62,25,62,25" />
       <scope id="5294483648489412269" at="40,52,41,53" />
       <scope id="5294483648489412359" at="68,9,69,30" />
-      <scope id="5294483648489412374" at="70,0,71,57">
-        <var name="e" id="5294483648489412363" />
-      </scope>
       <scope id="5294483648489412367" at="70,27,71,57" />
       <scope id="5294483648489412383" at="77,9,78,29" />
-      <scope id="5294483648489412398" at="79,0,80,57">
-        <var name="e" id="5294483648489412387" />
-      </scope>
       <scope id="5294483648489412391" at="79,27,80,57" />
       <scope id="5294483648489412505" at="110,46,111,65" />
       <scope id="756918652029598208" at="116,31,117,46" />
@@ -248,6 +242,12 @@
       <scope id="5294483648489412609" at="135,23,136,34" />
       <scope id="235515237953937116" at="55,25,57,31" />
       <scope id="5294483648489412271" at="62,0,64,0" />
+      <scope id="5294483648489412374" at="70,5,72,5">
+        <var name="e" id="5294483648489412363" />
+      </scope>
+      <scope id="5294483648489412398" at="79,5,81,5">
+        <var name="e" id="5294483648489412387" />
+      </scope>
       <scope id="5294483648489412408" at="86,48,88,35" />
       <scope id="5294483648489412426" at="92,57,94,44" />
       <scope id="5294483648489412444" at="98,56,100,39" />

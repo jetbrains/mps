@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)/5890305283801268194">
     <file name="NewModuleUtil.java">
@@ -238,9 +238,6 @@
       <scope id="6456559845239236597" at="219,188,220,52" />
       <scope id="7078490058112055397" at="295,68,296,124" />
       <scope id="2273513587775220636" at="314,34,315,123" />
-      <scope id="7732484735482453158" at="143,0,145,36">
-        <var name="e" id="7732484735482453159" />
-      </scope>
       <scope id="7732484735482453161" at="143,29,145,36" />
       <scope id="8050999366830929491" at="183,25,185,19" />
       <scope id="255299930511425307" at="229,63,231,14" />
@@ -252,6 +249,9 @@
       <scope id="7078490058112055370" at="297,12,299,25" />
       <scope id="2104467979703058209" at="92,36,95,143">
         <var name="extSLang" id="2104467979703090055" />
+      </scope>
+      <scope id="7732484735482453158" at="143,5,146,5">
+        <var name="e" id="7732484735482453159" />
       </scope>
       <scope id="8784082215665182087" at="163,0,166,0">
         <var name="namespace" id="8784082215665182114" />

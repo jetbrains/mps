@@ -21,8 +21,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991215587">
     <file name="Ide_ApplicationPlugin.java">
@@ -1320,7 +1319,7 @@
       <node id="8695989578372685933" at="74,79,83,51" concept="6" />
       <node id="7671826542797292239" at="88,36,97,13" concept="6" />
       <node id="1215889139721" at="40,0,61,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="7640401884101653059" at="66,85,101,9" concept="22" />
+      <node id="7640401884101653059" at="66,85,101,9" concept="21" />
       <node id="7671826542797292152" at="65,0,103,0" concept="11" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <node id="7671826542797268555" at="63,67,103,6" concept="12" />
       <node id="1215889139721" at="61,0,111,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
@@ -3634,7 +3633,7 @@
       <node id="1236360608964" at="61,5,71,5" concept="1" />
       <node id="8695989578372718466" at="102,79,112,51" concept="6" />
       <node id="1236348386008" at="57,0,88,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="7640401884101635695" at="93,85,129,9" concept="22" />
+      <node id="7640401884101635695" at="93,85,129,9" concept="21" />
       <node id="288193919682826277" at="92,0,131,0" concept="11" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <node id="288193919682826270" at="90,53,131,6" concept="12" />
       <node id="1236348386008" at="88,0,139,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
@@ -3788,7 +3787,7 @@
       <node id="3594574169073614256" at="91,64,104,53" concept="6" />
       <node id="288193919682794987" at="89,79,109,11" concept="9" />
       <node id="1236349476737" at="44,0,75,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="7640401884101215817" at="81,79,123,9" concept="22" />
+      <node id="7640401884101215817" at="81,79,123,9" concept="21" />
       <node id="288193919682794953" at="80,0,125,0" concept="11" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <node id="288193919682794947" at="78,104,125,6" concept="12" />
       <node id="1236349476737" at="75,0,133,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
@@ -4327,7 +4326,7 @@
       <node id="1366167984387696950" at="165,0,171,9" concept="9" />
       <node id="9054606037493570920" at="66,5,73,5" concept="1" />
       <node id="8774856961496010263" at="181,0,188,5" concept="9" />
-      <node id="8774856961496010480" at="193,48,200,5" concept="22" />
+      <node id="8774856961496010480" at="193,48,200,5" concept="21" />
       <node id="9054606037493534662" at="92,94,100,15" concept="9" />
       <node id="9054606037493939163" at="127,77,136,8" concept="6" />
       <node id="8774856961496010471" at="192,0,202,0" concept="11" trace="calculateElapsedTime#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;Ljava/util/Map;)J" />
@@ -4357,17 +4356,17 @@
       <scope id="9054606037493994723" at="155,26,156,100" />
       <scope id="1366167984387700484" at="168,79,169,107" />
       <scope id="8774856961496010306" at="183,11,184,357" />
-      <scope id="8774856961496010307" at="185,0,186,111">
-        <var name="e" id="8774856961496010308" />
-      </scope>
       <scope id="8774856961496010310" at="185,29,186,111" />
       <scope id="8774856961496010481" at="194,9,195,21" />
-      <scope id="8774856961496010492" at="196,0,197,109">
-        <var name="e" id="8774856961496010493" />
-      </scope>
       <scope id="8774856961496010495" at="196,27,197,109" />
       <scope id="8774856961496010482" at="198,15,199,52" />
       <scope id="9054606037493534674" at="95,76,97,130" />
+      <scope id="8774856961496010307" at="185,7,187,7">
+        <var name="e" id="8774856961496010308" />
+      </scope>
+      <scope id="8774856961496010492" at="196,5,198,5">
+        <var name="e" id="8774856961496010493" />
+      </scope>
       <scope id="1293684422393038866" at="202,101,204,79">
         <var name="msgObject" id="1293684422393045015" />
       </scope>
@@ -5385,9 +5384,6 @@
       <node id="1818770337282920045" at="86,0,112,0" concept="17" trace="sortMethods#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Iterable;)Ljava/lang/Iterable;" />
       <scope id="1818770337282919828" at="37,82,38,41" />
       <scope id="1818770337282919839" at="42,9,43,148" />
-      <scope id="1818770337282919846" at="44,0,45,23">
-        <var name="e" id="1818770337282919847" />
-      </scope>
       <scope id="1818770337282919849" at="44,27,45,23" />
       <scope id="1818770337282919916" at="54,42,55,16" />
       <scope id="3094928844447631033" at="61,30,62,138" />
@@ -5396,6 +5392,9 @@
       <scope id="1818770337282920062" at="89,191,90,54" />
       <scope id="5577480965331528867" at="100,48,101,42" />
       <scope id="1818770337282920175" at="114,44,115,36" />
+      <scope id="1818770337282919846" at="44,5,46,5">
+        <var name="e" id="1818770337282919847" />
+      </scope>
       <scope id="1818770337282919922" at="68,42,70,109" />
       <scope id="1818770337282919999" at="80,28,82,84" />
       <scope id="1818770337282919820" at="37,0,40,0">
@@ -5479,14 +5478,14 @@
       <node id="1818770337282919795" at="24,0,30,0" concept="11" trace="loadState#(Lorg/jdom/Element;)V" />
       <node id="1818770337282919795" at="30,29,36,5" concept="9" />
       <node id="1818770337282919795" at="30,0,39,0" concept="11" trace="getState#()Lorg/jdom/Element;" />
-      <scope id="1818770337282919795" at="34,0,34,42">
-        <var name="e" id="1818770337282919795" />
-      </scope>
       <scope id="1818770337282919795" at="34,42,34,42" />
       <scope id="1818770337282919795" at="50,22,50,22" />
       <scope id="1818770337282919795" at="21,81,22,19" />
       <scope id="1818770337282919795" at="26,71,27,19" />
       <scope id="1818770337282919795" at="32,11,33,21" />
+      <scope id="1818770337282919795" at="34,7,35,7">
+        <var name="e" id="1818770337282919795" />
+      </scope>
       <scope id="1818770337282919795" at="39,35,40,24" />
       <scope id="1818770337282919795" at="42,44,44,18">
         <var name="result" id="1818770337282919795" />
@@ -6633,14 +6632,14 @@
       <scope id="897922094699955864" at="122,0,125,0">
         <var name="it" id="897922094699955864" />
       </scope>
-      <scope id="2450776685309518012" at="137,0,140,23">
-        <var name="ex" id="2450776685309518013" />
-      </scope>
       <scope id="2450776685309518015" at="137,44,140,23" />
       <scope id="897922094699933250" at="152,0,155,0">
         <var name="_params" id="897922094699933250" />
       </scope>
       <scope id="2533953941693774358" at="48,0,52,0" />
+      <scope id="2450776685309518012" at="137,21,141,21">
+        <var name="ex" id="2450776685309518013" />
+      </scope>
       <scope id="2533953941693774358" at="43,0,48,0" />
       <scope id="120896515006352102" at="57,5,62,7">
         <var name="p" id="120896515006352102" />
@@ -6843,9 +6842,6 @@
       <node id="6352952732703369210" at="72,0,89,7" concept="6" />
       <node id="2589658255268083871" at="35,0,63,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="2589658255268083871" at="63,0,91,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <scope id="835030696107935360" at="86,0,86,33">
-        <var name="e" id="835030696107935361" />
-      </scope>
       <scope id="835030696107935363" at="86,33,86,33" />
       <scope id="2589658255268083871" at="32,32,33,16" />
       <scope id="2589658255268083871" at="37,53,38,19" />
@@ -6855,6 +6851,9 @@
       <scope id="1557895745570983213" at="68,27,69,13" />
       <scope id="1720891269475708584" at="76,78,77,19" />
       <scope id="3812855676554060516" at="82,31,83,212" />
+      <scope id="835030696107935360" at="86,9,87,9">
+        <var name="e" id="835030696107935361" />
+      </scope>
       <scope id="9054337399171418880" at="103,36,104,49" />
       <scope id="7454493598691787142" at="92,49,94,18" />
       <scope id="6134778262076353711" at="96,123,98,18" />
@@ -6967,9 +6966,6 @@
       <node id="6352952732700168223" at="86,122,104,7" concept="6" />
       <node id="2589658255268083877" at="76,0,106,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="2589658255268083877" at="41,0,76,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="835030696107935346" at="101,0,101,33">
-        <var name="e" id="835030696107935347" />
-      </scope>
       <scope id="835030696107935349" at="101,33,101,33" />
       <scope id="2589658255268083877" at="38,32,39,16" />
       <scope id="2589658255268083877" at="43,53,44,19" />
@@ -6980,6 +6976,9 @@
       <scope id="1557895745570983230" at="81,27,82,13" />
       <scope id="7454493598691787105" at="90,76,91,19" />
       <scope id="3812855676554060558" at="97,31,98,231" />
+      <scope id="835030696107935346" at="101,9,102,9">
+        <var name="e" id="835030696107935347" />
+      </scope>
       <scope id="6134778262076358053" at="107,49,109,18" />
       <scope id="6134778262076358063" at="111,154,113,18" />
       <scope id="2589658255268083877" at="32,39,35,40" />
@@ -8043,13 +8042,7 @@
       <scope id="3616898894718121738" at="129,0,132,0">
         <var name="it" id="3616898894718121738" />
       </scope>
-      <scope id="3616898894718121830" at="153,0,156,13">
-        <var name="ex" id="3616898894718121831" />
-      </scope>
       <scope id="3616898894718121833" at="153,36,156,13" />
-      <scope id="8450492655312331260" at="157,0,160,13">
-        <var name="ex" id="8450492655312331261" />
-      </scope>
       <scope id="8450492655312331263" at="157,54,160,13" />
       <scope id="3616898894718121639" at="51,0,55,0" />
       <scope id="3616898894718121639" at="69,0,73,0">
@@ -8058,13 +8051,19 @@
       </scope>
       <scope id="3616898894718121722" at="121,33,125,21" />
       <scope id="3616898894718121757" at="133,61,137,21" />
-      <scope id="3616898894718121839" at="161,0,165,13">
-        <var name="ex" id="3616898894718121840" />
+      <scope id="3616898894718121830" at="153,11,157,11">
+        <var name="ex" id="3616898894718121831" />
+      </scope>
+      <scope id="8450492655312331260" at="157,11,161,11">
+        <var name="ex" id="8450492655312331261" />
       </scope>
       <scope id="3616898894718121842" at="161,43,165,13" />
       <scope id="3616898894718121639" at="46,0,51,0" />
       <scope id="3616898894718121644" at="88,5,93,7">
         <var name="p" id="3616898894718121644" />
+      </scope>
+      <scope id="3616898894718121839" at="161,11,166,11">
+        <var name="ex" id="3616898894718121840" />
       </scope>
       <scope id="3616898894718121642" at="78,5,86,7">
         <var name="p" id="3616898894718121642" />
@@ -8311,9 +8310,6 @@
       <node id="3858094006307618579" at="37,0,58,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="3858094006307874082" at="61,52,86,6" concept="12" />
       <node id="3858094006307618579" at="58,0,97,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <scope id="3858094006307874132" at="80,0,80,37">
-        <var name="e" id="3858094006307874133" />
-      </scope>
       <scope id="3858094006307874135" at="80,37,80,37" />
       <scope id="3858094006307618579" at="34,32,35,16" />
       <scope id="3858094006307618579" at="39,53,40,19" />
@@ -8323,6 +8319,9 @@
       <scope id="3858094006307874109" at="69,30,70,23" />
       <scope id="3858094006307874113" at="72,63,73,23" />
       <scope id="3858094006307874125" at="78,17,79,55" />
+      <scope id="3858094006307874132" at="80,13,81,13">
+        <var name="e" id="3858094006307874133" />
+      </scope>
       <scope id="3812855676554056466" at="91,27,92,168" />
       <scope id="3858094006307618579" at="28,27,31,40" />
       <scope id="3812855676554056465" at="91,0,94,0" />
@@ -8415,9 +8414,6 @@
       <node id="3858094006307618582" at="41,0,62,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="3858094006307749653" at="65,52,90,6" concept="12" />
       <node id="3858094006307618582" at="62,0,101,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <scope id="3858094006307874055" at="84,0,84,37">
-        <var name="e" id="3858094006307874056" />
-      </scope>
       <scope id="3858094006307874058" at="84,37,84,37" />
       <scope id="3858094006307618582" at="34,32,35,16" />
       <scope id="3858094006307874170" at="38,89,39,60" />
@@ -8428,6 +8424,9 @@
       <scope id="3858094006307790601" at="73,30,74,23" />
       <scope id="3858094006307790620" at="76,63,77,23" />
       <scope id="3858094006307874053" at="82,17,83,60" />
+      <scope id="3858094006307874055" at="84,13,85,13">
+        <var name="e" id="3858094006307874056" />
+      </scope>
       <scope id="3812855676554056482" at="95,27,96,168" />
       <scope id="3858094006307618582" at="28,32,31,40" />
       <scope id="3812855676554056481" at="95,0,98,0" />
@@ -12634,9 +12633,6 @@
       <scope id="5171773620272399644" at="115,0,118,0">
         <var name="it" id="5171773620272399644" />
       </scope>
-      <scope id="5171773620271335388" at="135,0,138,13">
-        <var name="ex" id="5171773620271335390" />
-      </scope>
       <scope id="5171773620271335394" at="135,36,138,13" />
       <scope id="6981599660810253824" at="46,0,50,0" />
       <scope id="6981599660810253824" at="59,0,63,0">
@@ -12645,13 +12641,16 @@
       </scope>
       <scope id="5171773620272189228" at="107,33,111,21" />
       <scope id="5171773620271801990" at="119,61,123,21" />
-      <scope id="5171773620275468766" at="139,0,143,13">
-        <var name="ex" id="5171773620275468767" />
+      <scope id="5171773620271335388" at="135,11,139,11">
+        <var name="ex" id="5171773620271335390" />
       </scope>
       <scope id="5171773620275468769" at="139,43,143,13" />
       <scope id="6981599660810253824" at="41,0,46,0" />
       <scope id="120896515001798030" at="78,5,83,7">
         <var name="p" id="120896515001798030" />
+      </scope>
+      <scope id="5171773620275468766" at="139,11,144,11">
+        <var name="ex" id="5171773620275468767" />
       </scope>
       <scope id="6981599660810338692" at="51,87,57,7">
         <var name="m" id="6981599660810339388" />
@@ -13707,9 +13706,6 @@
       <scope id="6239673855080561540" at="178,0,181,0">
         <var name="it" id="6239673855080561540" />
       </scope>
-      <scope id="4445535104158993183" at="184,0,187,7">
-        <var name="t" id="4445535104158993184" />
-      </scope>
       <scope id="4445535104158993186" at="184,27,187,7" />
       <scope id="7889360268649425705" at="51,0,55,0" />
       <scope id="7889360268649425705" at="63,0,67,0">
@@ -13718,6 +13714,9 @@
       </scope>
       <scope id="7889360268649447947" at="76,57,80,11" />
       <scope id="944342063931688357" at="121,0,125,0" />
+      <scope id="4445535104158993183" at="184,5,188,5">
+        <var name="t" id="4445535104158993184" />
+      </scope>
       <scope id="7889360268649425705" at="46,0,51,0" />
       <scope id="7889360268649440578" at="56,87,61,7" />
       <scope id="5882519022999528325" at="99,5,104,7">
@@ -13893,7 +13892,7 @@
       <node id="7889360268649608396" at="57,0,64,0" concept="11" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="7889360268649608480" at="82,5,89,5" concept="1" />
       <node id="7240436440488935183" at="89,5,96,5" concept="1" />
-      <node id="8315304769832105317" at="105,89,114,9" concept="23" />
+      <node id="8315304769832105317" at="105,89,114,9" concept="22" />
       <node id="7889360268649608502" at="72,5,82,5" concept="1" />
       <node id="1574940822537764620" at="160,0,170,0" concept="11" trace="createTextPane#(Ljetbrains/mps/ide/actions/StyledTextPrinterImpl;Ljava/util/Map;)Ljavax/swing/JTextPane;" />
       <node id="6396519110084401830" at="103,0,116,0" concept="11" trace="run#()V" />
@@ -14392,12 +14391,12 @@
       <scope id="4445535104159683221" at="110,0,113,0">
         <var name="it" id="4445535104159683221" />
       </scope>
-      <scope id="4445535104159630746" at="116,0,119,17">
-        <var name="t" id="4445535104159630747" />
-      </scope>
       <scope id="4445535104159630749" at="116,37,119,17" />
       <scope id="7207185148941987179" at="171,0,174,0">
         <var name="it" id="7207185148941987179" />
+      </scope>
+      <scope id="4445535104159630746" at="116,15,120,15">
+        <var name="t" id="4445535104159630747" />
       </scope>
       <scope id="5751935465926815765" at="135,0,139,0" />
       <scope id="7207185148941987254" at="178,114,182,17" />
@@ -14661,13 +14660,13 @@
       <node id="8394433674396747697" at="24,0,33,0" concept="11" trace="append#(Ljava/lang/String;)Ljetbrains/mps/editor/runtime/style/StyledTextPrinter;" />
       <scope id="8394433674396727878" at="17,34,17,34" />
       <scope id="8394433674396747730" at="26,9,27,91" />
-      <scope id="8394433674396747732" at="28,0,29,45">
-        <var name="badLocationException" id="8394433674396747733" />
-      </scope>
       <scope id="8394433674396747735" at="28,57,29,45" />
       <scope id="8394433674396748162" at="33,39,34,27" />
       <scope id="8394433674396727875" at="17,0,19,0" />
       <scope id="8394433674396747678" at="20,50,22,16" />
+      <scope id="8394433674396747732" at="28,5,30,5">
+        <var name="badLocationException" id="8394433674396747733" />
+      </scope>
       <scope id="8394433674396748159" at="33,0,36,0" />
       <scope id="8394433674396747675" at="19,0,24,0">
         <var name="flag" id="8394433674396747679" />

@@ -13,7 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:c7fd1483-2eda-4417-bb41-aecb48302c10(jetbrains.mps.testbench)/3119708621987692562">
     <file name="ProjectCloneSupport.java">
       <node id="3119708621987696839" at="15,0,16,0" concept="4" trace="myEnv" />
@@ -54,10 +54,10 @@
       <scope id="3119708621987701722" at="30,34,31,38" />
       <scope id="3119708621987701763" at="33,41,34,57" />
       <scope id="3119708621987701752" at="39,25,40,94" />
-      <scope id="3119708621987701735" at="43,0,44,87">
+      <scope id="3119708621987701736" at="43,31,44,87" />
+      <scope id="3119708621987701735" at="43,7,45,7">
         <var name="e" id="3119708621987701742" />
       </scope>
-      <scope id="3119708621987701736" at="43,31,44,87" />
       <scope id="3119708621987696771" at="19,0,22,0">
         <var name="env" id="3119708621987696800" />
       </scope>
@@ -143,18 +143,18 @@
       <scope id="5294483648489413938" at="55,20,56,17" />
       <scope id="5294483648489413990" at="68,12,69,62" />
       <scope id="8237867931269778183" at="75,66,76,15" />
-      <scope id="5294483648489414134" at="104,0,105,35">
-        <var name="ex" id="5294483648489414123" />
-      </scope>
       <scope id="5294483648489414127" at="104,30,105,35" />
-      <scope id="8237867931269773282" at="106,0,107,35">
-        <var name="ex" id="8237867931269773284" />
-      </scope>
       <scope id="8237867931269773283" at="106,32,107,35" />
       <scope id="2966246705324093610" at="40,47,42,25" />
       <scope id="5294483648489413976" at="65,20,67,20" />
       <scope id="8237867931269794886" at="81,26,83,42" />
       <scope id="8237867931269798942" at="84,14,86,39" />
+      <scope id="5294483648489414134" at="104,5,106,5">
+        <var name="ex" id="5294483648489414123" />
+      </scope>
+      <scope id="8237867931269773282" at="106,5,108,5">
+        <var name="ex" id="8237867931269773284" />
+      </scope>
       <scope id="5294483648489413905" at="30,0,33,0" />
       <scope id="2966246705324291561" at="34,0,37,0">
         <var name="keyPrefix" id="2966246705324294773" />

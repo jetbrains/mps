@@ -17,7 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672638253">
     <file name="CopyPasteUtil.java">
       <node id="6299533519672638253" at="54,0,55,0" concept="14" trace="LOG" />
@@ -279,13 +279,7 @@
       <node id="6299533519672650419" at="170,0,210,0" concept="15" trace="processReferencesOut#(Ljava/util/Map;Ljava/util/Set;)Ljava/util/Set;" />
       <node id="2781727533174600918" at="304,0,353,0" concept="15" trace="addImportsWithDialog#(Lorg/jetbrains/mps/openapi/model/SModel;Ljava/util/Collection;Ljava/util/Collection;Ljetbrains/mps/project/Project;)Ljava/lang/Runnable;" />
       <scope id="6299533519672649763" at="55,26,55,26" />
-      <scope id="3237530507069942601" at="243,0,243,44">
-        <var name="e" id="3237530507069942603" />
-      </scope>
       <scope id="3237530507069942602" at="243,44,243,44" />
-      <scope id="3237530507069942605" at="244,0,244,30">
-        <var name="ex" id="3237530507069942607" />
-      </scope>
       <scope id="3237530507069942606" at="244,30,244,30" />
       <scope id="6299533519672649800" at="61,36,62,62" />
       <scope id="6299533519672649835" at="67,43,68,53" />
@@ -309,6 +303,12 @@
       <scope id="7543585797633453883" at="215,74,216,60" />
       <scope id="6299533519672650671" at="218,125,219,81" />
       <scope id="3237530507069942635" at="238,72,239,78" />
+      <scope id="3237530507069942601" at="243,5,244,5">
+        <var name="e" id="3237530507069942603" />
+      </scope>
+      <scope id="3237530507069942605" at="244,5,245,5">
+        <var name="ex" id="3237530507069942607" />
+      </scope>
       <scope id="3237530507069914985" at="248,111,249,69" />
       <scope id="6299533519672650719" at="257,21,258,35" />
       <scope id="6299533519672650761" at="269,65,270,73" />
@@ -377,13 +377,7 @@
       <scope id="6299533519672650755" at="269,0,272,0">
         <var name="model" id="6299533519672650759" />
       </scope>
-      <scope id="6299533519672650826" at="288,0,291,9">
-        <var name="e" id="6299533519672650834" />
-      </scope>
       <scope id="6299533519672650827" at="288,46,291,9" />
-      <scope id="6299533519672650836" at="292,0,295,9">
-        <var name="e" id="6299533519672650844" />
-      </scope>
       <scope id="6299533519672650837" at="292,31,295,9" />
       <scope id="6299533519672650865" at="300,0,303,0">
         <var name="model" id="6299533519672650868" />
@@ -411,6 +405,12 @@
         <var name="model" id="7917439975203171658" />
       </scope>
       <scope id="6299533519672650791" at="274,82,278,12" />
+      <scope id="6299533519672650826" at="288,7,292,7">
+        <var name="e" id="6299533519672650834" />
+      </scope>
+      <scope id="6299533519672650836" at="292,7,296,7">
+        <var name="e" id="6299533519672650844" />
+      </scope>
       <scope id="6299533519672651028" at="326,65,330,11" />
       <scope id="6299533519672650102" at="111,57,116,5">
         <var name="sourceNode" id="6299533519672650104" />
@@ -793,11 +793,11 @@
       <scope id="6299533519672652398" at="27,78,28,22" />
       <scope id="6299533519672652408" at="32,26,33,18" />
       <scope id="6299533519672652430" at="39,9,40,73" />
-      <scope id="6299533519672652424" at="41,0,42,18">
-        <var name="e" id="6299533519672652428" />
-      </scope>
       <scope id="6299533519672652425" at="41,27,42,18" />
       <scope id="6299533519672652336" at="12,0,14,0" />
+      <scope id="6299533519672652424" at="41,5,43,5">
+        <var name="e" id="6299533519672652428" />
+      </scope>
       <scope id="6299533519672652354" at="16,82,20,12" />
       <scope id="6299533519672652388" at="26,82,30,12" />
       <scope id="6299533519672652348" at="15,32,21,5">

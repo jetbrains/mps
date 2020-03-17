@@ -17,8 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:cfccec82-df72-4483-9807-88776b4673ab(jetbrains.mps.ide.make.actions)/2017614408232613001">
     <file name="Make_ApplicationPlugin.java">
       <node id="2017614408232613001" at="59,50,60,58" concept="4" />
@@ -908,7 +907,7 @@
       <node id="4753172061859438990" at="52,0,59,7" concept="7" />
       <node id="4198334579408248463" at="43,0,51,0" concept="8" trace="compute#()Ljetbrains/mps/make/MPSCompilationResult;" />
       <node id="4305429072761015117" at="41,9,51,9" concept="9" />
-      <node id="1637160376125502147" at="40,44,62,5" concept="18" />
+      <node id="1637160376125502147" at="40,44,62,5" concept="17" />
       <node id="4753172061859438958" at="37,0,64,0" concept="8" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <scope id="2034046503361606564" at="45,26,46,53" />
       <scope id="2034046503373004766" at="55,29,56,121" />
@@ -2053,9 +2052,6 @@
       <scope id="7526186345427808660" at="59,63,60,49" />
       <scope id="5510448103905251794" at="80,14,81,42" />
       <scope id="7526186345427718148" at="66,98,68,48" />
-      <scope id="5510448103905517398" at="72,0,74,16">
-        <var name="e" id="5510448103905517399" />
-      </scope>
       <scope id="5510448103905517401" at="72,36,74,16" />
       <scope id="7526186345427790258" at="77,29,79,0" />
       <scope id="8406158885479860969" at="27,0,30,0">
@@ -2063,6 +2059,9 @@
       </scope>
       <scope id="7526186345427808659" at="59,0,62,0">
         <var name="it" id="7526186345427808659" />
+      </scope>
+      <scope id="5510448103905517398" at="72,7,75,7">
+        <var name="e" id="5510448103905517399" />
       </scope>
       <scope id="2361823221845763728" at="56,44,63,22">
         <var name="rv" id="7526186345427699699" />
@@ -2750,12 +2749,12 @@
       <scope id="8865414013149215227" at="165,26,166,74" />
       <scope id="8865414013149074549" at="171,79,172,83" />
       <scope id="6711898152277301796" at="178,31,179,29" />
-      <scope id="8865414013148454100" at="181,0,182,112">
-        <var name="e" id="8865414013148454102" />
-      </scope>
       <scope id="8865414013148454101" at="181,33,182,112" />
       <scope id="8610665572788515783" at="190,65,191,58" />
       <scope id="8610665572788515798" at="192,119,193,58" />
+      <scope id="8865414013148454100" at="181,11,183,11">
+        <var name="e" id="8865414013148454102" />
+      </scope>
       <scope id="8610665572788515769" at="54,36,57,40" />
       <scope id="8865414013149206248" at="153,44,156,41" />
       <scope id="8865414013149074545" at="170,83,173,17">

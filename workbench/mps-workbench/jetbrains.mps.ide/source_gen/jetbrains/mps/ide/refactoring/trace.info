@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)/2482360940803570809">
     <file name="RefactoringView.java">
       <node id="2482360940803570840" at="23,0,24,0" concept="4" trace="myRefactoringViews" />
@@ -321,12 +321,12 @@
       <node id="2325849581576430440" at="48,0,58,0" concept="7" trace="doRefactoringAction#()V" />
       <node id="1114145801597395681" at="31,0,47,0" concept="7" trace="checkValue#()Ljava/lang/String;" />
       <scope id="4368217141688789039" at="35,9,36,55" />
-      <scope id="4368217141688789040" at="37,0,38,36">
-        <var name="exception" id="4368217141688789042" />
-      </scope>
       <scope id="4368217141688789046" at="37,50,38,36" />
       <scope id="2325849581576430467" at="41,64,42,68" />
       <scope id="8474866949349192965" at="52,25,53,82" />
+      <scope id="4368217141688789040" at="37,5,39,5">
+        <var name="exception" id="4368217141688789042" />
+      </scope>
       <scope id="8474866949349192963" at="52,0,55,0" />
       <scope id="2482360940803572017" at="23,95,27,62" />
       <scope id="8181224089043021364" at="59,91,63,36" />

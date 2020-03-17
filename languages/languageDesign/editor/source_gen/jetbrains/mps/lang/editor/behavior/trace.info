@@ -22,7 +22,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="BehaviorAspectDescriptor.java">
@@ -1706,9 +1706,6 @@
       <scope id="1219420248546" at="166,30,167,18" />
       <scope id="1225468896183" at="180,30,181,18" />
       <scope id="1225470014181" at="185,13,186,176" />
-      <scope id="1225470014183" at="187,0,188,22">
-        <var name="nfe" id="1225470014184" />
-      </scope>
       <scope id="1225470014186" at="187,45,188,22" />
       <scope id="9118191388513060191" at="193,110,194,18" />
       <scope id="1225468896235" at="197,9,198,145" />
@@ -1783,8 +1780,8 @@
       </scope>
       <scope id="3649021680717357583" at="94,32,96,164" />
       <scope id="1241444787152" at="173,30,175,115" />
-      <scope id="1225468896248" at="199,0,201,18">
-        <var name="t" id="1225468896249" />
+      <scope id="1225470014183" at="187,9,189,9">
+        <var name="nfe" id="1225470014184" />
       </scope>
       <scope id="1225468896251" at="199,27,201,18" />
       <scope id="1220960215406" at="204,86,206,93">
@@ -1795,9 +1792,6 @@
       </scope>
       <scope id="1220972190904" at="212,90,214,93">
         <var name="item" id="1220972190906" />
-      </scope>
-      <scope id="1221054045952" at="248,0,250,108">
-        <var name="t" id="1221054045953" />
       </scope>
       <scope id="1221054045955" at="248,27,250,108" />
       <scope id="1213877386047" at="323,0,325,0" />
@@ -1812,8 +1806,14 @@
       <scope id="1213877386047" at="161,0,164,0">
         <var name="__thisNode__" id="1213877386047" />
       </scope>
+      <scope id="1225468896248" at="199,5,202,5">
+        <var name="t" id="1225468896249" />
+      </scope>
       <scope id="1213877386047" at="223,0,226,0">
         <var name="__thisNode__" id="1213877386047" />
+      </scope>
+      <scope id="1221054045952" at="248,5,251,5">
+        <var name="t" id="1221054045953" />
       </scope>
       <scope id="1213877386047" at="253,0,256,0">
         <var name="__thisNode__" id="1213877386047" />

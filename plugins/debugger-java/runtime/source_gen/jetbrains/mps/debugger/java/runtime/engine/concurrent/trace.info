@@ -15,8 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:4abf334f-133f-4ef7-b458-4b8344e952fb(jetbrains.mps.debugger.java.runtime.engine.concurrent)/6460341978864316851">
     <file name="ManagerThread.java">
@@ -65,11 +64,11 @@
       <node id="3818729150937330421" at="117,29,120,9" concept="7" />
       <node id="6460341978864346235" at="54,10,58,7" concept="15" />
       <node id="6460341978864345857" at="26,47,31,5" concept="7" />
-      <node id="3070226725409646894" at="39,30,44,11" concept="16" />
-      <node id="6520954994829104578" at="47,30,52,11" concept="16" />
+      <node id="3070226725409646894" at="39,30,44,11" concept="15" />
+      <node id="6520954994829104578" at="47,30,52,11" concept="15" />
       <node id="6520954994829104778" at="61,49,66,5" concept="7" />
       <node id="6520954994829104703" at="111,11,116,9" concept="7" />
-      <node id="6460341978864345632" at="82,11,88,9" concept="17" />
+      <node id="6460341978864345632" at="82,11,88,9" concept="16" />
       <node id="6460341978864345582" at="26,0,33,0" concept="8" trace="invoke#(Ljetbrains/mps/debugger/java/runtime/engine/concurrent/IManagerCommand;)V" />
       <node id="3070226725409646873" at="39,0,46,0" concept="8" trace="invoke#()V" />
       <node id="6520954994829104552" at="47,0,54,0" concept="8" trace="invoke#()V" />
@@ -85,9 +84,6 @@
       <node id="6460341978864345876" at="33,60,59,5" concept="7" />
       <node id="6460341978864345599" at="33,0,61,0" concept="8" trace="invokeAndWait#(Ljetbrains/mps/debugger/java/runtime/engine/concurrent/IManagerCommand;)V" />
       <node id="6460341978864345571" at="80,0,110,0" concept="8" trace="run#()V" />
-      <scope id="6460341978864346238" at="57,0,57,45">
-        <var name="ignore" id="6460341978864346239" />
-      </scope>
       <scope id="6460341978864346241" at="57,45,57,45" />
       <scope id="6460341978864345568" at="78,27,78,27" />
       <scope id="6460341978864316856" at="23,26,24,21" />
@@ -99,6 +95,9 @@
       <scope id="6520954994829104579" at="48,15,49,29" />
       <scope id="6520954994829104584" at="50,21,51,34" />
       <scope id="6460341978864346236" at="55,11,56,26" />
+      <scope id="6460341978864346238" at="57,7,58,7">
+        <var name="ignore" id="6460341978864346239" />
+      </scope>
       <scope id="6520954994829104779" at="62,19,63,23" />
       <scope id="6520954994829104808" at="64,12,65,36" />
       <scope id="6460341978864393896" at="68,23,69,20" />
@@ -107,28 +106,28 @@
       <scope id="6460341978864345628" at="84,44,85,18" />
       <scope id="6520954994829104671" at="94,17,95,31" />
       <scope id="3818729150937330391" at="97,50,98,76" />
-      <scope id="3070226725409667379" at="103,0,104,20">
-        <var name="ignore" id="3070226725409667380" />
-      </scope>
       <scope id="3070226725409667382" at="103,45,104,20" />
       <scope id="3818729150937330407" at="106,33,107,59" />
       <scope id="6520954994829104704" at="112,23,113,27" />
       <scope id="6520954994829104733" at="114,16,115,27" />
       <scope id="3818729150937330421" at="118,44,119,70" />
       <scope id="6460341978864345565" at="78,0,80,0" />
+      <scope id="3070226725409667379" at="103,7,105,7">
+        <var name="ignore" id="3070226725409667380" />
+      </scope>
       <scope id="6460341978864316853" at="23,0,26,0" />
       <scope id="6460341978864393893" at="68,0,71,0" />
       <scope id="6460341978864585123" at="71,0,74,0" />
       <scope id="6460341978864585130" at="74,0,77,0" />
-      <scope id="6520954994829104672" at="96,0,99,15">
-        <var name="t" id="6520954994829104673" />
-      </scope>
       <scope id="6520954994829104675" at="96,35,99,15" />
-      <scope id="6460341978864345841" at="117,0,120,9">
-        <var name="t" id="6460341978864345828" />
-      </scope>
       <scope id="6460341978864345843" at="117,29,120,9" />
       <scope id="6460341978864345634" at="83,22,87,48" />
+      <scope id="6520954994829104672" at="96,13,100,13">
+        <var name="t" id="6520954994829104673" />
+      </scope>
+      <scope id="6460341978864345841" at="117,7,121,7">
+        <var name="t" id="6460341978864345828" />
+      </scope>
       <scope id="6460341978864345585" at="26,47,31,5" />
       <scope id="3070226725409646874" at="39,30,44,11" />
       <scope id="6520954994829104553" at="47,30,52,11" />

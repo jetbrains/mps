@@ -13,8 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:bef1ed1f-5598-42b2-8784-93f0f1c6e538(jetbrains.mps.persistence)/1581198836067947976">
     <file name="XmlPersistenceModelDescriptor.java">
       <node id="1581198836068475637" at="46,0,47,0" concept="10" trace="LOG" />
@@ -73,12 +72,12 @@
       <node id="1581198836068022604" at="58,12,66,7" concept="13" />
       <node id="1581198836068052565" at="70,0,78,0" concept="5" trace="save#()V" />
       <node id="8680026619980519666" at="58,10,67,5" concept="0" />
-      <node id="1581198836068122090" at="119,111,128,7" concept="14" />
+      <node id="1581198836068122090" at="119,111,128,7" concept="13" />
       <node id="8680026619980500669" at="55,117,67,5" concept="4" />
       <node id="1581198836067817368" at="83,45,95,7" concept="13" />
       <node id="1581198836068122066" at="117,5,131,5" concept="13" />
       <node id="1581198836067746901" at="52,0,69,0" concept="5" trace="createModel#()Ljetbrains/mps/smodel/ModelLoadResult;" />
-      <node id="1581198836067817321" at="81,52,100,5" concept="14" />
+      <node id="1581198836067817321" at="81,52,100,5" concept="13" />
       <node id="1581198836067809627" at="79,0,102,0" concept="5" trace="readModel#()Ljetbrains/mps/smodel/SModel;" />
       <node id="1581198836068170743" at="103,0,133,0" concept="5" trace="writeModel#(Ljetbrains/mps/extapi/model/SModelData;)V" />
       <scope id="1581198836068052585" at="143,48,143,48" />
@@ -88,29 +87,29 @@
       <scope id="8680026619980500671" at="56,84,57,98" />
       <scope id="1581198836068022605" at="59,11,60,80" />
       <scope id="1581198836068253906" at="72,9,73,38" />
-      <scope id="1581198836068253915" at="74,0,75,34">
-        <var name="e" id="1581198836068253942" />
-      </scope>
       <scope id="1581198836068253916" at="74,42,75,34" />
-      <scope id="1581198836067817369" at="93,0,94,146">
-        <var name="e" id="1581198836067817381" />
-      </scope>
       <scope id="1581198836067817370" at="93,31,94,146" />
-      <scope id="1581198836067817322" at="96,0,97,160">
-        <var name="e" id="1581198836067817336" />
-      </scope>
       <scope id="1581198836067817323" at="96,31,97,160" />
       <scope id="1581198836067817338" at="98,15,99,33" />
       <scope id="1581198836068121987" at="106,23,107,258" />
       <scope id="1581198836068122014" at="110,71,111,331" />
       <scope id="1581198836068122049" at="115,53,116,279" />
       <scope id="1581198836068122091" at="126,17,127,39" />
-      <scope id="1581198836068122067" at="129,0,130,150">
-        <var name="e" id="1581198836068122079" />
-      </scope>
       <scope id="1581198836068122068" at="129,29,130,150" />
       <scope id="1581198836067746925" at="135,54,136,133" />
       <scope id="1581198836068052603" at="151,35,152,17" />
+      <scope id="1581198836068253915" at="74,5,76,5">
+        <var name="e" id="1581198836068253942" />
+      </scope>
+      <scope id="1581198836067817369" at="93,7,95,7">
+        <var name="e" id="1581198836067817381" />
+      </scope>
+      <scope id="1581198836067817322" at="96,5,98,5">
+        <var name="e" id="1581198836067817336" />
+      </scope>
+      <scope id="1581198836068122067" at="129,5,131,5">
+        <var name="e" id="1581198836068122079" />
+      </scope>
       <scope id="1581198836067967623" at="48,0,51,0">
         <var name="dataSource" id="1581198836067967635" />
         <var name="modelReference" id="1581198836067967630" />
@@ -121,14 +120,14 @@
       </scope>
       <scope id="1581198836068052587" at="146,0,149,0" />
       <scope id="1581198836068052607" at="155,0,158,0" />
-      <scope id="1581198836068022600" at="61,0,65,43">
-        <var name="e" id="1581198836068022602" />
-      </scope>
       <scope id="1581198836068022601" at="61,44,65,43">
         <var name="invalidModel" id="3978240706437681618" />
       </scope>
       <scope id="1581198836067746921" at="134,0,138,0" />
       <scope id="1581198836068052596" at="150,0,154,0" />
+      <scope id="1581198836068022600" at="61,7,66,7">
+        <var name="e" id="1581198836068022602" />
+      </scope>
       <scope id="1581198836068052572" at="71,22,76,5" />
       <scope id="1581198836068122095" at="120,11,125,23">
         <var name="auxByteStream" id="1581198836068122117" />

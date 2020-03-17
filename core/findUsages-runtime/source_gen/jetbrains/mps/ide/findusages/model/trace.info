@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)/847291649004062081">
     <file name="CategoryKind.java">
       <node id="847291649004062084" at="10,0,11,0" concept="10" trace="DEFAULT_CATEGORY_KIND" />
@@ -400,10 +400,10 @@
       <scope id="847291649006544613" at="87,45,88,72" />
       <scope id="847291649006544623" at="89,12,90,138" />
       <scope id="847291649006544684" at="103,9,104,137" />
-      <scope id="847291649006544712" at="105,0,106,46">
+      <scope id="847291649006544707" at="105,27,106,46" />
+      <scope id="847291649006544712" at="105,5,107,5">
         <var name="e" id="847291649006544703" />
       </scope>
-      <scope id="847291649006544707" at="105,27,106,46" />
       <scope id="694689711452066651" at="46,109,49,38" />
       <scope id="847291649006544535" at="52,0,55,0">
         <var name="modelReference" id="847291649006544537" />

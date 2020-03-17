@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)/3432969378036013921">
     <file name="ProxyForJava.java">
       <node id="3432969378036015117" at="9,0,10,0" concept="4" trace="myObject" />
@@ -225,14 +225,14 @@
       <scope id="1858303129749160305" at="47,9,50,7">
         <var name="i" id="1858303129749160306" />
       </scope>
-      <scope id="1858303129749160286" at="51,0,54,7">
+      <scope id="1858303129749160287" at="51,51,54,7" />
+      <scope id="6180978056098802301" at="55,44,58,7" />
+      <scope id="1858303129749160286" at="51,5,55,5">
         <var name="ex" id="1858303129749160295" />
       </scope>
-      <scope id="1858303129749160287" at="51,51,54,7" />
-      <scope id="6180978056098802298" at="55,0,58,7">
+      <scope id="6180978056098802298" at="55,5,59,5">
         <var name="e" id="6180978056098802299" />
       </scope>
-      <scope id="6180978056098802301" at="55,44,58,7" />
       <scope id="3432969378036014552" at="61,0,65,0" />
       <scope id="3432969378036014601" at="65,0,69,0" />
       <scope id="3432969378036014624" at="69,0,73,0">
@@ -355,17 +355,8 @@
       <node id="3432969378036017008" at="122,0,134,0" concept="8" trace="getValue#(Ljetbrains/mps/debug/api/programState/IWatchable;)Ljetbrains/mps/debug/api/programState/IValue;" />
       <node id="9093774239583829276" at="105,0,119,0" concept="8" trace="fetchContextWatchable#()Ljetbrains/mps/debug/api/programState/IWatchable;" />
       <node id="6180978056098785347" at="134,0,156,0" concept="8" trace="equals#(Ljava/lang/Object;)Z" />
-      <scope id="9093774239583829562" at="89,0,89,55">
-        <var name="ignore" id="9093774239583829563" />
-      </scope>
       <scope id="9093774239583829565" at="89,55,89,55" />
-      <scope id="9093774239583829567" at="90,0,90,49">
-        <var name="ignore" id="9093774239583829568" />
-      </scope>
       <scope id="9093774239583829570" at="90,49,90,49" />
-      <scope id="6180978056098790569" at="130,0,130,50">
-        <var name="e" id="6180978056098790570" />
-      </scope>
       <scope id="6180978056098790572" at="130,50,130,50" />
       <scope id="3432969378036016746" at="41,29,42,59" />
       <scope id="6180978056098785163" at="43,12,44,24" />
@@ -376,22 +367,31 @@
       <scope id="9093774239583829581" at="75,69,76,23" />
       <scope id="2286111918851965058" at="78,56,79,30" />
       <scope id="8901146352294843700" at="82,24,83,13" />
+      <scope id="9093774239583829562" at="89,5,90,5">
+        <var name="ignore" id="9093774239583829563" />
+      </scope>
+      <scope id="9093774239583829567" at="90,5,91,5">
+        <var name="ignore" id="9093774239583829568" />
+      </scope>
       <scope id="3432969378036016958" at="99,68,100,110" />
       <scope id="9093774239583829381" at="111,31,112,74" />
       <scope id="9093774239583829365" at="113,14,114,98" />
       <scope id="9093774239583829533" at="119,73,120,47" />
+      <scope id="6180978056098790569" at="130,5,131,5">
+        <var name="e" id="6180978056098790570" />
+      </scope>
       <scope id="6180978056098785352" at="136,20,137,18" />
       <scope id="6180978056098785359" at="139,55,140,19" />
       <scope id="6180978056098785385" at="144,34,145,19" />
       <scope id="6180978056098785389" at="147,97,148,19" />
       <scope id="6180978056098785409" at="150,89,151,19" />
-      <scope id="3432969378036016783" at="61,0,63,18">
-        <var name="t" id="3432969378036016792" />
-      </scope>
       <scope id="3432969378036016784" at="61,27,63,18" />
       <scope id="9093774239583829560" at="86,9,88,51" />
       <scope id="3432969378036017018" at="126,51,128,135">
         <var name="localVariable" id="3432969378036017020" />
+      </scope>
+      <scope id="3432969378036016783" at="61,5,64,5">
+        <var name="t" id="3432969378036016792" />
       </scope>
       <scope id="9093774239583829578" at="75,0,78,0" />
       <scope id="2286111918851965055" at="78,0,81,0" />

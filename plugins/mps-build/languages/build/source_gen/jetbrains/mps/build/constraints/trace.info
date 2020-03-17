@@ -10,7 +10,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
       <unit at="13,0,91,0" name="jetbrains.mps.build.constraints.ConstraintsAspectDescriptor" />
@@ -199,11 +199,11 @@
       <scope id="244868996532454387" at="26,62,27,43" />
       <scope id="244868996532454387" at="30,38,31,18" />
       <scope id="244868996532454387" at="37,53,38,75" />
-      <scope id="244868996532454392" at="46,0,47,21">
-        <var name="ex" id="244868996532454393" />
-      </scope>
       <scope id="244868996532454395" at="46,45,47,21" />
       <scope id="244868996532454391" at="43,11,45,20" />
+      <scope id="244868996532454392" at="46,7,48,7">
+        <var name="ex" id="244868996532454393" />
+      </scope>
       <scope id="244868996532454386" at="21,0,24,0" />
       <scope id="244868996532454387" at="26,0,29,0">
         <var name="container" id="244868996532454387" />

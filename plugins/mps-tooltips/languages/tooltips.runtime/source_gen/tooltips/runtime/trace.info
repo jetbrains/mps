@@ -14,8 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:3838bb8b-fecd-4f7c-841e-325717a43980(tooltips.runtime)/2376357876241996936">
     <file name="TooltipTimingProperties.java">
       <node id="2376357876241997428" at="7,0,8,0" concept="7" trace="getShortDelayBeforeShow#()I" />
@@ -95,7 +94,7 @@
       <node id="6042304451028397419" at="16,0,19,0" concept="1" trace="EditorCellCreator#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
       <node id="6042304451028469038" at="26,0,29,0" concept="7" trace="dispose#()V" />
       <node id="6042304451028396021" at="20,0,25,0" concept="7" trace="createEditorCell#(Lorg/jetbrains/mps/openapi/model/SNode;[Ljava/lang/String;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="8799695660252056489" at="32,66,37,5" concept="15" />
+      <node id="8799695660252056489" at="32,66,37,5" concept="14" />
       <node id="8799695660251903184" at="30,0,40,0" concept="12" trace="createEditorCell#(Lorg/jetbrains/mps/openapi/module/SRepository;Lorg/jetbrains/mps/openapi/model/SNode;[Ljava/lang/String;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <scope id="6042304451028397423" at="16,52,17,64" />
       <scope id="6042304451028469042" at="26,25,27,32" />
@@ -238,7 +237,7 @@
       <node id="8803049869095851313" at="19,0,22,0" concept="1" trace="TooltipComponent#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
       <node id="8803049869095868830" at="23,0,28,0" concept="7" trace="doLayout#()V" />
       <node id="4999722417152213362" at="32,9,37,7" concept="6" />
-      <node id="7885261101689579105" at="31,61,40,5" concept="15" />
+      <node id="7885261101689579105" at="31,61,40,5" concept="14" />
       <node id="8803049869095853622" at="29,0,42,0" concept="7" trace="paintComponent#(Ljava/awt/Graphics;)V" />
       <scope id="8803049869095851317" at="19,101,20,45" />
       <scope id="7885261101689579108" at="38,15,39,29" />
@@ -363,9 +362,6 @@
       <node id="9185659875392967639" at="61,0,100,0" concept="7" trace="handleMouseMoved#(Ljava/awt/event/MouseEvent;)V" />
       <scope id="8609451857842853934" at="32,37,33,85" />
       <scope id="4942574072954826183" at="40,11,41,32" />
-      <scope id="4942574072954826184" at="42,0,43,61">
-        <var name="ex" id="4942574072954826186" />
-      </scope>
       <scope id="4942574072954826190" at="42,75,43,61" />
       <scope id="6843388714518477450" at="53,25,54,65" />
       <scope id="9185659875393185483" at="57,44,58,38" />
@@ -383,6 +379,9 @@
       <scope id="8360233457676334211" at="176,36,177,56" />
       <scope id="8360233457676394322" at="181,55,182,43" />
       <scope id="8360233457676328900" at="184,75,185,47" />
+      <scope id="4942574072954826184" at="42,7,44,7">
+        <var name="ex" id="4942574072954826186" />
+      </scope>
       <scope id="9185659875392870615" at="48,73,50,62" />
       <scope id="8803049869097744501" at="70,37,72,32" />
       <scope id="8803049869098732006" at="117,34,119,54">

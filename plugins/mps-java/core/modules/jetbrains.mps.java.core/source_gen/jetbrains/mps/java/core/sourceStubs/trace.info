@@ -17,8 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1170075670744:jetbrains.mps.baseLanguage.structure.SynchronizedStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/4423331261408184030">
     <file name="JavaSourceStubModelRoot.java">
@@ -286,7 +285,7 @@
       <node id="4078359035441861379" at="191,63,196,13" concept="4" />
       <node id="336459899665822465" at="144,23,150,13" concept="8" />
       <node id="503891309339217918" at="234,18,240,9" concept="7" />
-      <node id="503891309338952161" at="215,0,222,5" concept="19" />
+      <node id="503891309338952161" at="215,0,222,5" concept="18" />
       <node id="4078359035441468317" at="189,46,197,9" concept="6" />
       <node id="336459899657961649" at="118,59,127,9" concept="8" />
       <node id="4423331261408311856" at="60,0,70,0" concept="9" trace="createModel#()Ljetbrains/mps/smodel/ModelLoadResult;" />
@@ -295,7 +294,7 @@
       <node id="4423331261408517196" at="89,0,104,0" concept="9" trace="changed#(Lorg/jetbrains/mps/openapi/persistence/DataSource;Ljava/lang/Iterable;)V" />
       <node id="6581343381391836695" at="136,73,152,11" concept="7" />
       <node id="6581343381391937924" at="135,104,153,9" concept="8" />
-      <node id="1530682692004452847" at="184,36,203,7" concept="18" />
+      <node id="1530682692004452847" at="184,36,203,7" concept="17" />
       <node id="503891309339099216" at="223,0,248,5" concept="8" />
       <node id="8873174305360608210" at="174,5,204,5" concept="16" />
       <node id="6380177242303886084" at="170,0,206,0" concept="9" trace="load#()V" />
@@ -310,20 +309,11 @@
       <scope id="4423331261408517217" at="106,42,107,14" />
       <scope id="336459899665669532" at="121,41,122,45" />
       <scope id="4114607859880207" at="129,13,130,21" />
-      <scope id="4114607859880208" at="131,0,132,61">
-        <var name="e" id="4114607859880210" />
-      </scope>
       <scope id="4114607859880214" at="131,33,132,61" />
       <scope id="336459899666607111" at="141,47,142,56" />
       <scope id="336459899665948604" at="148,20,149,67" />
       <scope id="336459899666477340" at="156,39,157,43" />
-      <scope id="6581343381391126843" at="162,0,163,68">
-        <var name="e" id="6581343381391126845" />
-      </scope>
       <scope id="6581343381391126849" at="162,31,163,68" />
-      <scope id="6581343381391754973" at="164,0,165,66">
-        <var name="e" id="6581343381391754974" />
-      </scope>
       <scope id="6581343381391754976" at="164,38,165,66" />
       <scope id="8873174305360568469" at="172,62,173,13" />
       <scope id="1243636546446408232" at="176,31,177,15" />
@@ -334,7 +324,16 @@
       <scope id="2553860361585708911" at="257,51,258,35" />
       <scope id="4423331261408511793" at="72,46,74,29" />
       <scope id="4423331261408522893" at="78,24,80,37" />
+      <scope id="4114607859880208" at="131,9,133,9">
+        <var name="e" id="4114607859880210" />
+      </scope>
       <scope id="336459899665822467" at="145,34,147,67" />
+      <scope id="6581343381391126843" at="162,7,164,7">
+        <var name="e" id="6581343381391126845" />
+      </scope>
+      <scope id="6581343381391754973" at="164,7,166,7">
+        <var name="e" id="6581343381391754974" />
+      </scope>
       <scope id="8873174305360624189" at="180,55,182,15" />
       <scope id="1530682692004452850" at="200,17,202,35" />
       <scope id="4423331261408224791" at="56,0,59,0">
@@ -470,10 +469,10 @@
       <scope id="4423331261408331291" at="20,72,21,26" />
       <scope id="4423331261408337729" at="25,41,26,70" />
       <scope id="3967120106639737164" at="29,33,30,54" />
-      <scope id="3967120106639942675" at="42,0,43,77">
+      <scope id="3967120106639942681" at="42,29,43,77" />
+      <scope id="3967120106639942675" at="42,5,44,5">
         <var name="e" id="3967120106639942677" />
       </scope>
-      <scope id="3967120106639942681" at="42,29,43,77" />
       <scope id="4423331261408331284" at="20,0,23,0">
         <var name="dir" id="4423331261408331286" />
         <var name="modelRoot" id="4423331261408331289" />

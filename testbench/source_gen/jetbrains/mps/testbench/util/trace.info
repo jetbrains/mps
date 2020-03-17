@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)/5294483648489409095">
     <file name="ThreadWatcher.java">
       <node id="5294483648489409507" at="17,0,18,0" concept="4" trace="myState" />
@@ -208,9 +208,6 @@
       <node id="5294483648489409309" at="150,0,183,0" concept="7" trace="diff#(Ljetbrains/mps/testbench/util/ThreadWatcher/ThreadState;)[Ljetbrains/mps/testbench/util/ThreadWatcher/ThreadState;" />
       <node id="5294483648489409562" at="207,0,258,0" concept="7" trace="waitUntilSettled#(J)Z" />
       <scope id="5294483648489409123" at="118,27,118,27" />
-      <scope id="5294483648489409652" at="229,0,229,45">
-        <var name="ignore" id="5294483648489409646" />
-      </scope>
       <scope id="5294483648489409650" at="229,45,229,45" />
       <scope id="5294483648489409198" at="129,63,130,59" />
       <scope id="5294483648489409352" at="156,54,157,71" />
@@ -223,6 +220,9 @@
       <scope id="5294483648489409629" at="221,77,222,20" />
       <scope id="5294483648489409639" at="224,43,225,14" />
       <scope id="5294483648489409641" at="227,11,228,27" />
+      <scope id="5294483648489409652" at="229,7,230,7">
+        <var name="ignore" id="5294483648489409646" />
+      </scope>
       <scope id="5294483648489409121" at="118,0,120,0" />
       <scope id="5294483648489409226" at="138,47,140,19" />
       <scope id="5294483648489409271" at="143,47,145,21" />

@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:54cc1fc5-5f96-4560-9408-18b968230021(postingrules)/6531435794299649861">
     <file name="AccountingException.java">
       <node id="6531435794299649867" at="7,32,8,12" concept="11" />
@@ -436,13 +436,13 @@
       <scope id="6531435794299653503" at="33,42,34,33" />
       <scope id="6531435794299653527" at="38,24,39,46" />
       <scope id="6531435794299653539" at="41,9,42,62" />
-      <scope id="6531435794299653532" at="43,0,44,46">
-        <var name="e" id="6531435794299653537" />
-      </scope>
       <scope id="6531435794299653533" at="43,42,44,46" />
       <scope id="6531435794299653558" at="47,72,48,48" />
       <scope id="6531435794299653575" at="50,49,51,37" />
       <scope id="6531435794299653412" at="14,0,16,0" />
+      <scope id="6531435794299653532" at="43,5,45,5">
+        <var name="e" id="6531435794299653537" />
+      </scope>
       <scope id="6531435794299653416" at="16,0,19,0">
         <var name="key" id="6531435794299653419" />
       </scope>
@@ -737,12 +737,12 @@
       <scope id="6531435794299655364" at="19,31,20,22" />
       <scope id="6531435794299655391" at="29,45,30,43" />
       <scope id="6531435794299655415" at="34,11,35,24" />
-      <scope id="6531435794299655407" at="36,0,37,37">
-        <var name="e" id="6531435794299655413" />
-      </scope>
       <scope id="6531435794299655408" at="36,29,37,37" />
       <scope id="6531435794299655327" at="11,0,13,0" />
       <scope id="6531435794299655379" at="25,79,27,42" />
+      <scope id="6531435794299655407" at="36,7,38,7">
+        <var name="e" id="6531435794299655413" />
+      </scope>
       <scope id="6531435794299655331" at="13,0,16,0">
         <var name="arg" id="6531435794299655334" />
       </scope>

@@ -17,7 +17,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:fc76aa36-3cff-41c7-b94b-eee0e8341932(jetbrains.mps.internal.collections.runtime)/1387087080747245147">
     <file name="CollectionUtils.java">
@@ -2554,9 +2554,6 @@
       <node id="6543581031674029265" at="67,0,85,0" concept="14" trace="last#(Ljava/lang/Iterable;)null" />
       <scope id="6543581031674029079" at="11,26,11,26" />
       <scope id="6543581031674029108" at="15,11,16,34" />
-      <scope id="6543581031674029103" at="17,0,18,14">
-        <var name="stop" id="6543581031674029106" />
-      </scope>
       <scope id="6543581031674029104" at="17,45,18,14" />
       <scope id="6543581031674029125" at="22,60,23,46" />
       <scope id="6543581031674029165" at="28,43,29,21" />
@@ -2576,6 +2573,9 @@
       <scope id="6543581031674029557" at="131,61,132,42" />
       <scope id="6543581031674029577" at="136,49,137,61" />
       <scope id="6543581031674029076" at="11,0,13,0" />
+      <scope id="6543581031674029103" at="17,7,19,7">
+        <var name="stop" id="6543581031674029106" />
+      </scope>
       <scope id="6543581031674029303" at="76,26,78,21" />
       <scope id="6543581031674029353" at="88,73,90,22" />
       <scope id="6543581031674029116" at="22,0,25,0">

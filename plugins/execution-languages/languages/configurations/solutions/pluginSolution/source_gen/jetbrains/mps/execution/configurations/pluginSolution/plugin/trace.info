@@ -13,7 +13,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="BeforeTasksInitializer_ProjectPluginPart.java">
       <unit at="15,0,37,0" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.BeforeTasksInitializer_ProjectPluginPart" />
@@ -233,17 +233,8 @@
       <node id="4253284102553498222" at="64,0,82,0" concept="5" trace="compute#()Ljava/util/List;" />
       <node id="4253284102553498213" at="62,94,82,9" concept="6" />
       <node id="5487985028841950959" at="61,0,103,0" concept="5" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
-      <scope id="5766538065404345106" at="95,0,95,48">
-        <var name="ignore" id="5766538065404345107" />
-      </scope>
       <scope id="5766538065404345109" at="95,48,95,48" />
-      <scope id="5766538065404345118" at="96,0,96,47">
-        <var name="ignore" id="5766538065404345119" />
-      </scope>
       <scope id="5766538065404345121" at="96,47,96,47" />
-      <scope id="5766538065404345123" at="97,0,97,45">
-        <var name="ignore" id="5766538065404345124" />
-      </scope>
       <scope id="5766538065404345126" at="97,45,97,45" />
       <scope id="5487985028841950959" at="37,40,38,38" />
       <scope id="5487985028841950959" at="41,66,42,53" />
@@ -253,6 +244,15 @@
       <scope id="5336808442711681514" at="76,56,77,24" />
       <scope id="5766538065404344183" at="84,55,85,20" />
       <scope id="5766538065404345104" at="93,13,94,32" />
+      <scope id="5766538065404345106" at="95,9,96,9">
+        <var name="ignore" id="5766538065404345107" />
+      </scope>
+      <scope id="5766538065404345118" at="96,9,97,9">
+        <var name="ignore" id="5766538065404345119" />
+      </scope>
+      <scope id="5766538065404345123" at="97,9,98,9">
+        <var name="ignore" id="5766538065404345124" />
+      </scope>
       <scope id="5487985028841950959" at="56,65,58,18" />
       <scope id="5336808442711675099" at="67,53,69,55">
         <var name="n" id="5336808442711675101" />

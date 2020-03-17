@@ -18,8 +18,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164879751025:jetbrains.mps.baseLanguage.structure.TryCatchStatement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1153952380246:jetbrains.mps.baseLanguage.structure.TryFinallyStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:eea68efb-2953-43f4-848f-9829ac5c7101(jetbrains.mps.testbench.junit.runners)/1036071220598694533">
     <file name="ModuleSymbolicSuite.java">
       <node id="1178539434126727742" at="30,0,31,0" concept="13" trace="NO_TESTS" />
@@ -108,9 +107,6 @@
       <node id="1036071220598709528" at="120,0,132,0" concept="9" trace="run#(Lorg/junit/runner/notification/RunNotifier;)V" />
       <node id="1036071220598709534" at="133,0,145,0" concept="9" trace="getDescription#()Lorg/junit/runner/Description;" />
       <node id="1036071220598709418" at="71,0,85,0" concept="9" trace="initialize#()V" />
-      <scope id="6319113474340584800" at="153,0,153,50">
-        <var name="ignored" id="6319113474340584802" />
-      </scope>
       <scope id="6319113474340584801" at="153,50,153,50" />
       <scope id="4089647634161020034" at="42,66,43,108" />
       <scope id="7459215959272510557" at="49,56,50,24" />
@@ -127,6 +123,9 @@
       <scope id="1178539434126727715" at="136,28,137,75" />
       <scope id="4089647634161021266" at="139,37,140,53" />
       <scope id="1036071220598709612" at="150,30,151,64" />
+      <scope id="6319113474340584800" at="153,9,154,9">
+        <var name="ignored" id="6319113474340584802" />
+      </scope>
       <scope id="1036071220598694540" at="173,0,174,0" />
       <scope id="4089647634161018274" at="174,0,175,0" />
       <scope id="1036071220598694769" at="180,0,181,0" />
@@ -632,7 +631,7 @@
       <node id="935017990628671545" at="83,0,88,0" concept="2" trace="TestClassRunnerForParameters#(Ljava/lang/Class;Ljava/util/List;I)V" />
       <node id="935017990628671733" at="94,55,99,7" concept="18" />
       <node id="935017990628671563" at="102,0,107,0" concept="9" trace="getName#()Ljava/lang/String;" />
-      <node id="115383379930123213" at="54,72,60,5" concept="19" />
+      <node id="115383379930123213" at="54,72,60,5" concept="18" />
       <node id="935017990628671679" at="69,98,75,5" concept="7" />
       <node id="935017990628671559" at="94,0,101,0" concept="9" trace="computeParams#()[Ljava/lang/Object;" />
       <node id="2105519997962151905" at="35,0,44,0" concept="9" trace="createChildRunners#(Ljava/lang/Class;Lorg/junit/runners/model/RunnerBuilder;)Ljava/util/List;" />
@@ -645,9 +644,6 @@
       <scope id="935017990628671698" at="72,73,73,20" />
       <scope id="935017990628671722" at="90,49,91,78" />
       <scope id="935017990628671750" at="95,11,96,55" />
-      <scope id="935017990628671734" at="97,0,98,191">
-        <var name="e" id="935017990628671748" />
-      </scope>
       <scope id="935017990628671735" at="97,38,98,191" />
       <scope id="935017990628671810" at="109,61,110,100" />
       <scope id="935017990628671824" at="114,64,115,41" />
@@ -657,6 +653,9 @@
         <var name="runner" id="935017990628671620" />
       </scope>
       <scope id="115383379930123223" at="55,9,57,30" />
+      <scope id="935017990628671734" at="97,7,99,7">
+        <var name="e" id="935017990628671748" />
+      </scope>
       <scope id="935017990628671757" at="103,32,105,59">
         <var name="firstArg" id="935017990628671759" />
       </scope>
