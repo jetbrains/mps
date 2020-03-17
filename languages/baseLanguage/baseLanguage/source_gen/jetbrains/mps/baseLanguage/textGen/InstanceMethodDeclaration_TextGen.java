@@ -5,13 +5,13 @@ package jetbrains.mps.baseLanguage.textGen;
 import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.traceable.behavior.TraceableConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.traceable.behavior.ScopeConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -27,8 +27,12 @@ public class InstanceMethodDeclaration_TextGen extends TextGenDescriptorBase {
     tgs.createPositionInfo();
     tgs.createScopeInfo();
     BaseLanguageTextGen.annotations(ctx.getPrimaryInput(), ctx);
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Interface$Kp))) {
+    if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasVisibility_id1X7GQqyPHmE.invoke(ctx.getPrimaryInput())) {
       BaseLanguageTextGen.visibilityWithIndent(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.visibility$2GiC), ctx);
+    } else {
+      tgs.indent();
+    }
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.Interface$Kp))) {
       if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isFinal$I$Qu)) {
         tgs.append("final ");
       }
@@ -41,8 +45,6 @@ public class InstanceMethodDeclaration_TextGen extends TextGenDescriptorBase {
       if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isNative$LADB)) {
         tgs.append("native ");
       }
-    } else {
-      tgs.indent();
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.modifiers$akE0)).isNotEmpty()) {
       for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.modifiers$akE0)) {

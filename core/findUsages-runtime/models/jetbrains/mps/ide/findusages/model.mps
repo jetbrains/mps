@@ -4055,6 +4055,7 @@
       <node concept="3uibUv" id="7rEOvdELB$I" role="3clF45">
         <ref role="3uigEE" node="7rEOvdELBxZ" resolve="SearchObjectResolver" />
       </node>
+      <node concept="3Tm1VV" id="5AZdGH72DLx" role="1B3o_S" />
     </node>
     <node concept="2YIFZL" id="7rEOvdELB$J" role="jymVt">
       <property role="TrG5h" value="forModule" />
@@ -4087,6 +4088,7 @@
       <node concept="3uibUv" id="7rEOvdELB$R" role="3clF45">
         <ref role="3uigEE" node="7rEOvdELBxZ" resolve="SearchObjectResolver" />
       </node>
+      <node concept="3Tm1VV" id="5AZdGH72E4_" role="1B3o_S" />
     </node>
     <node concept="312cEu" id="7rEOvdELBy1" role="jymVt">
       <property role="TrG5h" value="BasicResolver" />
