@@ -919,7 +919,7 @@
                   <property role="1688n3" value="../../../workbench/mps-ui/source_gen/jetbrains/" />
                   <node concept="NbPM2" id="7XQqoCTlWKS" role="1688n0">
                     <node concept="3Mxwew" id="7XQqoCTlWKV" role="3MwsjC">
-                      <property role="3MwjfP" value="../jetbrains/" />
+                      <property role="3MwjfP" value="/jetbrains/" />
                     </node>
                   </node>
                 </node>
@@ -928,7 +928,7 @@
                   <property role="1688n3" value="../../../workbench/mps-editor/source_gen/jetbrains/" />
                   <node concept="NbPM2" id="t7CJPgoIiL" role="1688n0">
                     <node concept="3Mxwew" id="t7CJPgoIiM" role="3MwsjC">
-                      <property role="3MwjfP" value="../jetbrains/" />
+                      <property role="3MwjfP" value="/jetbrains/" />
                     </node>
                   </node>
                 </node>

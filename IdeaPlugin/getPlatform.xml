@@ -1,8 +1,13 @@
-<project name="mps" default="default">
+<project name="Get IDEA CE for MPS as IDEA Plugin build" default="default">
+  <!-- To use this script, set home.idea_ce parameter to a location where extracted IDEA CE would be stored (e.g. $ProjectFileDir$/build/IDEA)  -->
   <loadproperties srcfile="../build/version.properties" description="Load platform url to download"/>
   <property name="idea_build_number" value ="${idea.platform.version}"/>
-  <property name="idea_ce.url" 
+  <property name="idea_ce.url"
             value="https://www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/idea/ideaIC/${idea_build_number}/ideaIC-${idea_build_number}.zip"/>
+  <!--
+     to access IDEA snapshot build, use another value:
+     value="https://www.jetbrains.com/intellij-repository/snapshots/com/jetbrains/intellij/idea/ideaIC/${idea_build_number}-EAP-SNAPSHOT/ideaIC-${idea_build_number}-EAP-SNAPSHOT.zip"
+  -->
 
   <target name="clean">
     <delete file="home.idea_ce"/>

@@ -64,10 +64,10 @@
           <replaceregex pattern="../../../workbench/mps-ui/source/META-INF/" replace="" flags="gi" />
         </tokenfilter>
         <tokenfilter>
-          <replaceregex pattern="../../../workbench/mps-ui/source_gen/jetbrains/" replace="../jetbrains/" flags="gi" />
+          <replaceregex pattern="../../../workbench/mps-ui/source_gen/jetbrains/" replace="/jetbrains/" flags="gi" />
         </tokenfilter>
         <tokenfilter>
-          <replaceregex pattern="../../../workbench/mps-editor/source_gen/jetbrains/" replace="../jetbrains/" flags="gi" />
+          <replaceregex pattern="../../../workbench/mps-editor/source_gen/jetbrains/" replace="/jetbrains/" flags="gi" />
         </tokenfilter>
       </filterchain>
     </copy>
